@@ -1,0 +1,179 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../data/progress.dart';
+import '../theme.dart';
+import 'onboarding_screen.dart';
+import 'reminder_settings.dart';
+
+const _weekdays = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
+
+class ProfileScreen extends ConsumerWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final p = ref.watch(progressProvider);
+    final now = ref.watch(clockProvider)();
+    final t = Theme.of(context).textTheme;
+    final accuracy = p.answered == 0 ? 0 : (p.correct * 100 / p.answered).round();
+
+    return ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        const Row(
+          children: [
+            LingoraLogo(size: 64),
+            SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Öğrenci', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900)),
+                  Text('İngilizce öğreniyor', style: TextStyle(color: Brand.muted)),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
+        Text('İstatistikler', style: t.titleLarge),
+        const SizedBox(height: 12),
+        GridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          childAspectRatio: 2.2,
+          children: [
+            _StatCard(Icons.local_fire_department, Brand.streak, '${p.streakAt(now)}', 'Günlük seri'),
+            _StatCard(Icons.bolt, Brand.xp, '${p.totalXp}', 'Toplam XP'),
+            _StatCard(Icons.menu_book_rounded, Brand.primary, '${p.lessonsDone}', 'Bitirilen ders'),
+            _StatCard(Icons.track_changes, Brand.success, '%$accuracy', 'Doğruluk'),
+          ],
+        ),
+        const SizedBox(height: 24),
+        Text('Son 7 gün', style: t.titleLarge),
+        const SizedBox(height: 12),
+        TapCard(child: _WeekChart(progress: p, now: now)),
+        const SizedBox(height: 24),
+        Text('Günlük hedef', style: t.titleLarge),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 8,
+          children: [
+            for (final (xp, name, _) in dailyGoals)
+              ChoiceChip(
+                label: Text('$name · $xp XP'),
+                selected: p.dailyGoal == xp,
+                onSelected: (_) => ref.read(progressProvider.notifier).setDailyGoal(xp),
+              ),
+          ],
+        ),
+        const SizedBox(height: 24),
+        Text('Bildirimler', style: t.titleLarge),
+        const SizedBox(height: 12),
+        const ReminderSettings(),
+        const SizedBox(height: 32),
+        OutlinedButton.icon(
+          icon: const Icon(Icons.restart_alt, color: Brand.error),
+          label: const Text('İlerlemeyi sıfırla', style: TextStyle(color: Brand.error)),
+          onPressed: () async {
+            final ok = await showDialog<bool>(
+              context: context,
+              builder: (c) => AlertDialog(
+                title: const Text('İlerleme sıfırlansın mı?'),
+                content: const Text('Tüm XP, seri ve tamamlanan dersler silinir. Bu işlem geri alınamaz.'),
+                actions: [
+                  TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Vazgeç')),
+                  TextButton(
+                    onPressed: () => Navigator.pop(c, true),
+                    child: const Text('Sıfırla', style: TextStyle(color: Brand.error)),
+                  ),
+                ],
+              ),
+            );
+            if (ok == true) ref.read(progressProvider.notifier).reset();
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class _StatCard extends StatelessWidget {
+  const _StatCard(this.icon, this.color, this.value, this.label);
+  final IconData icon;
+  final Color color;
+  final String value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => TapCard(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        child: Row(
+          children: [
+            Icon(icon, color: color, size: 30),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+                  Text(label,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(color: Brand.muted, fontSize: 12)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+}
+
+class _WeekChart extends StatelessWidget {
+  const _WeekChart({required this.progress, required this.now});
+  final Progress progress;
+  final DateTime now;
+
+  @override
+  Widget build(BuildContext context) {
+    final days = [for (var i = 6; i >= 0; i--) now.subtract(Duration(days: i))];
+    final values = [for (final d in days) progress.xpOn(d)];
+    final top = [progress.dailyGoal, ...values].reduce((a, b) => a > b ? a : b);
+    return SizedBox(
+      height: 150,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          for (var i = 0; i < 7; i++)
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text('${values[i]}', style: const TextStyle(fontSize: 11, color: Brand.muted)),
+                  const SizedBox(height: 4),
+                  Container(
+                    height: 100 * values[i] / top + 4,
+                    margin: const EdgeInsets.symmetric(horizontal: 6),
+                    decoration: BoxDecoration(
+                      color: values[i] >= progress.dailyGoal ? Brand.success : Brand.primary,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(_weekdays[days[i].weekday - 1],
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: i == 6 ? FontWeight.w900 : FontWeight.w500,
+                      )),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}

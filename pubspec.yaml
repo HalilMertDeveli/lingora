@@ -1,0 +1,27 @@
+name: lingora
+description: "Lingora - kısa günlük derslerle dil öğrenme uygulaması."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_local_notifications: ^23.0.0
+  flutter_riverpod: ^3.5.0
+  flutter_tts: ^4.2.5
+  shared_preferences: ^2.5.6
+  speech_to_text: ^7.5.0
+  timezone: ^0.11.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/courses/

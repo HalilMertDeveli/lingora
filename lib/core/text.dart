@@ -1,0 +1,21 @@
+/// Lowercases, removes punctuation and collapses whitespace so that
+/// "Good morning, thanks!" and "good morning thanks" compare equal.
+String normalizeAnswer(String s) => s
+    .toLowerCase()
+    .replaceAll('’', "'")
+    .replaceAll(RegExp('[.,!?;:¿¡"]'), ' ')
+    .replaceAll(RegExp(r'\s+'), ' ')
+    .trim();
+
+bool matchesAny(String input, List<String> accepted) {
+  final n = normalizeAnswer(input);
+  return n.isNotEmpty && accepted.any((a) => normalizeAnswer(a) == n);
+}
+
+/// Share of the target's words that appear in what was heard (0..1).
+double spokenSimilarity(String target, String heard) {
+  final want = normalizeAnswer(target).split(' ').where((w) => w.isNotEmpty);
+  final got = normalizeAnswer(heard).split(' ').toSet();
+  if (want.isEmpty) return 0;
+  return want.where(got.contains).length / want.length;
+}

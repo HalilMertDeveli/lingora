@@ -1,0 +1,507 @@
+{
+  "id": "tr_en",
+  "title": "İngilizce",
+  "fromLang": "tr",
+  "learningLang": "en",
+  "units": [
+    {
+      "id": "u1",
+      "title": "Merhaba!",
+      "description": "Selamlaşma, tanışma ve kendini tanıtma",
+      "color": "0xFF6C4CF1",
+      "nodes": [
+        {
+          "id": "u1l1",
+          "type": "lesson",
+          "title": "Selamlaşma",
+          "description": "hello, good morning, thank you",
+          "exercises": [
+            {"type": "select", "prompt": "merhaba", "answer": "hello", "choices": [
+              {"text": "hello", "emoji": "👋"}, {"text": "thank you", "emoji": "🙏"},
+              {"text": "good night", "emoji": "🌙"}, {"text": "coffee", "emoji": "☕"}]},
+            {"type": "translate", "text": "Merhaba", "lang": "tr", "answers": ["Hello", "Hi"],
+              "tokens": ["Hello", "Goodbye", "Thanks", "Night"]},
+            {"type": "select", "prompt": "teşekkürler", "answer": "thank you", "choices": [
+              {"text": "good morning", "emoji": "🌅"}, {"text": "thank you", "emoji": "🙏"},
+              {"text": "hello", "emoji": "👋"}, {"text": "goodbye", "emoji": "🚶"}]},
+            {"type": "fillBlank", "text": "Good ___!", "translation": "Günaydın!", "answer": "morning",
+              "choices": ["morning", "night", "thanks"]},
+            {"type": "listen", "text": "Good morning", "answers": ["Good morning"]},
+            {"type": "translate", "text": "Günaydın, teşekkürler!", "lang": "tr",
+              "answers": ["Good morning, thank you", "Good morning, thanks"],
+              "tokens": ["Good", "morning", "thank", "you", "night", "hello", "see"]},
+            {"type": "match", "pairs": [["merhaba", "hello"], ["günaydın", "good morning"],
+              ["teşekkürler", "thank you"], ["hoşça kal", "goodbye"], ["iyi geceler", "good night"]]},
+            {"type": "speak", "text": "Good morning", "translation": "Günaydın"}
+          ]
+        },
+        {
+          "id": "u1l2",
+          "type": "lesson",
+          "title": "Tanışma",
+          "description": "my name is, I am, nice to meet you",
+          "exercises": [
+            {"type": "fillBlank", "text": "My ___ is Ali.", "translation": "Benim adım Ali.", "answer": "name",
+              "choices": ["name", "am", "you"]},
+            {"type": "translate", "text": "Benim adım Ayşe.", "lang": "tr", "answers": ["My name is Ayşe"],
+              "tokens": ["My", "name", "is", "Ayşe", "your", "am", "I"]},
+            {"type": "select", "prompt": "öğrenci", "answer": "student", "choices": [
+              {"text": "teacher", "emoji": "🧑‍🏫"}, {"text": "doctor", "emoji": "🩺"},
+              {"text": "student", "emoji": "🎓"}, {"text": "chef", "emoji": "👨‍🍳"}]},
+            {"type": "translate", "text": "Ben bir öğrenciyim.", "lang": "tr",
+              "answers": ["I am a student", "I'm a student"],
+              "tokens": ["I", "am", "a", "student", "teacher", "is", "an", "you"]},
+            {"type": "listen", "text": "Nice to meet you", "answers": ["Nice to meet you"]},
+            {"type": "match", "pairs": [["ben", "I"], ["sen", "you"], ["ad", "name"],
+              ["öğrenci", "student"], ["öğretmen", "teacher"]]},
+            {"type": "translate", "text": "Nice to meet you.", "lang": "en",
+              "answers": ["Tanıştığımıza memnun oldum"],
+              "tokens": ["Tanıştığımıza", "memnun", "oldum", "hoşça", "kal", "merhaba"]},
+            {"type": "speak", "text": "I am a student", "translation": "Ben bir öğrenciyim."}
+          ]
+        },
+        {
+          "id": "u1l3",
+          "type": "lesson",
+          "title": "Sen ve O",
+          "description": "you are, he is, she is",
+          "exercises": [
+            {"type": "fillBlank", "text": "You ___ a teacher.", "translation": "Sen bir öğretmensin.", "answer": "are",
+              "choices": ["are", "am", "is"]},
+            {"type": "fillBlank", "text": "She ___ a doctor.", "translation": "O bir doktor.", "answer": "is",
+              "choices": ["is", "are", "am"]},
+            {"type": "select", "prompt": "doktor", "answer": "doctor", "choices": [
+              {"text": "student", "emoji": "🎓"}, {"text": "doctor", "emoji": "🩺"},
+              {"text": "chef", "emoji": "👨‍🍳"}, {"text": "teacher", "emoji": "🧑‍🏫"}]},
+            {"type": "translate", "text": "O bir öğretmen.", "lang": "tr",
+              "answers": ["He is a teacher", "She is a teacher", "He's a teacher", "She's a teacher"],
+              "tokens": ["He", "She", "is", "a", "teacher", "are", "student", "an"]},
+            {"type": "translate", "text": "Sen öğrenci misin?", "lang": "tr", "answers": ["Are you a student"],
+              "tokens": ["Are", "you", "a", "student", "is", "am", "teacher", "I"]},
+            {"type": "listen", "text": "You are a teacher", "answers": ["You are a teacher", "You're a teacher"]},
+            {"type": "match", "pairs": [["o (erkek)", "he"], ["o (kadın)", "she"], ["biz", "we"],
+              ["onlar", "they"], ["doktor", "doctor"]]},
+            {"type": "speak", "text": "She is a doctor", "translation": "O bir doktor."}
+          ]
+        },
+        {"id": "u1c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
+      ]
+    },
+    {
+      "id": "u2",
+      "title": "Yemek ve İçecek",
+      "description": "Yiyecekler, içecekler ve sipariş vermek",
+      "color": "0xFFF2994A",
+      "nodes": [
+        {
+          "id": "u2l1",
+          "type": "lesson",
+          "title": "İçecekler",
+          "description": "water, coffee, tea, milk",
+          "exercises": [
+            {"type": "select", "prompt": "su", "answer": "water", "choices": [
+              {"text": "water", "emoji": "💧"}, {"text": "coffee", "emoji": "☕"},
+              {"text": "tea", "emoji": "🍵"}, {"text": "milk", "emoji": "🥛"}]},
+            {"type": "select", "prompt": "süt", "answer": "milk", "choices": [
+              {"text": "tea", "emoji": "🍵"}, {"text": "milk", "emoji": "🥛"},
+              {"text": "juice", "emoji": "🧃"}, {"text": "water", "emoji": "💧"}]},
+            {"type": "translate", "text": "Kahve, lütfen.", "lang": "tr",
+              "answers": ["Coffee, please", "A coffee, please"],
+              "tokens": ["Coffee", "please", "tea", "water", "thanks", "a"]},
+            {"type": "fillBlank", "text": "I drink ___ every morning.", "translation": "Her sabah çay içerim.",
+              "answer": "tea", "choices": ["tea", "bread", "apple"]},
+            {"type": "listen", "text": "A glass of water", "answers": ["A glass of water"]},
+            {"type": "match", "pairs": [["su", "water"], ["kahve", "coffee"], ["çay", "tea"],
+              ["süt", "milk"], ["meyve suyu", "juice"]]},
+            {"type": "translate", "text": "Ben su içerim.", "lang": "tr", "answers": ["I drink water"],
+              "tokens": ["I", "drink", "water", "eat", "milk", "you"]},
+            {"type": "speak", "text": "Coffee, please", "translation": "Kahve, lütfen."}
+          ]
+        },
+        {
+          "id": "u2l2",
+          "type": "lesson",
+          "title": "Yiyecekler",
+          "description": "apple, bread, cheese, egg",
+          "exercises": [
+            {"type": "select", "prompt": "elma", "answer": "apple", "choices": [
+              {"text": "bread", "emoji": "🍞"}, {"text": "apple", "emoji": "🍎"},
+              {"text": "cheese", "emoji": "🧀"}, {"text": "egg", "emoji": "🥚"}]},
+            {"type": "select", "prompt": "peynir", "answer": "cheese", "choices": [
+              {"text": "egg", "emoji": "🥚"}, {"text": "banana", "emoji": "🍌"},
+              {"text": "cheese", "emoji": "🧀"}, {"text": "bread", "emoji": "🍞"}]},
+            {"type": "translate", "text": "Ben ekmek yerim.", "lang": "tr", "answers": ["I eat bread"],
+              "tokens": ["I", "eat", "bread", "drink", "cheese", "an"]},
+            {"type": "fillBlank", "text": "I eat an ___.", "translation": "Ben bir elma yerim.", "answer": "apple",
+              "choices": ["apple", "bread", "cheese"]},
+            {"type": "translate", "text": "Yumurta ve peynir", "lang": "tr",
+              "answers": ["Egg and cheese", "Eggs and cheese"],
+              "tokens": ["Egg", "and", "cheese", "bread", "or", "milk"]},
+            {"type": "listen", "text": "I like apples", "answers": ["I like apples"]},
+            {"type": "match", "pairs": [["elma", "apple"], ["ekmek", "bread"], ["peynir", "cheese"],
+              ["yumurta", "egg"], ["muz", "banana"]]},
+            {"type": "speak", "text": "I eat an apple", "translation": "Ben bir elma yerim."}
+          ]
+        },
+        {
+          "id": "u2l3",
+          "type": "lesson",
+          "title": "Sipariş",
+          "description": "I want, please, the bill",
+          "exercises": [
+            {"type": "fillBlank", "text": "I ___ a coffee, please.", "translation": "Bir kahve istiyorum, lütfen.",
+              "answer": "want", "choices": ["want", "eat", "am"]},
+            {"type": "translate", "text": "Hesap, lütfen.", "lang": "tr",
+              "answers": ["The bill, please", "The check, please", "Bill, please"],
+              "tokens": ["The", "bill", "please", "water", "menu", "a"]},
+            {"type": "select", "prompt": "hesap", "answer": "bill", "choices": [
+              {"text": "menu", "emoji": "📋"}, {"text": "water", "emoji": "💧"},
+              {"text": "bill", "emoji": "🧾"}, {"text": "coffee", "emoji": "☕"}]},
+            {"type": "translate", "text": "Menü, lütfen.", "lang": "tr",
+              "answers": ["The menu, please", "Menu, please"],
+              "tokens": ["The", "menu", "please", "bill", "tea"]},
+            {"type": "listen", "text": "Can I have the menu", "answers": ["Can I have the menu", "Can I have the menu please"]},
+            {"type": "translate", "text": "I want tea.", "lang": "en", "answers": ["Çay istiyorum", "Ben çay istiyorum"],
+              "tokens": ["Ben", "çay", "istiyorum", "kahve", "su", "yerim"]},
+            {"type": "match", "pairs": [["istemek", "want"], ["lütfen", "please"], ["hesap", "bill"],
+              ["menü", "menu"], ["teşekkürler", "thanks"]]},
+            {"type": "speak", "text": "The bill, please", "translation": "Hesap, lütfen."}
+          ]
+        },
+        {"id": "u2c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
+      ]
+    },
+    {
+      "id": "u3",
+      "title": "Aile",
+      "description": "Aile üyeleri, sahip olmak ve yaşlar",
+      "color": "0xFF14A098",
+      "nodes": [
+        {
+          "id": "u3l1",
+          "type": "lesson",
+          "title": "Aile üyeleri",
+          "description": "mother, father, sister, brother",
+          "exercises": [
+            {"type": "select", "prompt": "anne", "answer": "mother", "choices": [
+              {"text": "mother", "emoji": "👩"}, {"text": "father", "emoji": "👨"},
+              {"text": "baby", "emoji": "👶"}, {"text": "grandmother", "emoji": "👵"}]},
+            {"type": "select", "prompt": "erkek kardeş", "answer": "brother", "choices": [
+              {"text": "sister", "emoji": "👧"}, {"text": "father", "emoji": "👨"},
+              {"text": "brother", "emoji": "👦"}, {"text": "baby", "emoji": "👶"}]},
+            {"type": "translate", "text": "Bu benim annem.", "lang": "tr", "answers": ["This is my mother"],
+              "tokens": ["This", "is", "my", "mother", "father", "your", "are"]},
+            {"type": "fillBlank", "text": "He is my ___.", "translation": "O benim babam.", "answer": "father",
+              "choices": ["father", "mother", "sister"]},
+            {"type": "listen", "text": "My sister is a teacher", "answers": ["My sister is a teacher"]},
+            {"type": "match", "pairs": [["anne", "mother"], ["baba", "father"], ["kız kardeş", "sister"],
+              ["erkek kardeş", "brother"], ["bebek", "baby"]]},
+            {"type": "translate", "text": "My brother is a doctor.", "lang": "en",
+              "answers": ["Erkek kardeşim doktor", "Erkek kardeşim bir doktor"],
+              "tokens": ["Erkek", "kardeşim", "doktor", "bir", "annem", "öğretmen"]},
+            {"type": "speak", "text": "This is my father", "translation": "Bu benim babam."}
+          ]
+        },
+        {
+          "id": "u3l2",
+          "type": "lesson",
+          "title": "Sahip olmak",
+          "description": "I have, she has, pets",
+          "exercises": [
+            {"type": "fillBlank", "text": "I ___ two brothers.", "translation": "İki erkek kardeşim var.",
+              "answer": "have", "choices": ["have", "has", "am"]},
+            {"type": "fillBlank", "text": "She ___ a cat.", "translation": "Onun bir kedisi var.",
+              "answer": "has", "choices": ["has", "have", "is"]},
+            {"type": "select", "prompt": "kedi", "answer": "cat", "choices": [
+              {"text": "dog", "emoji": "🐶"}, {"text": "cat", "emoji": "🐱"},
+              {"text": "bird", "emoji": "🐦"}, {"text": "fish", "emoji": "🐟"}]},
+            {"type": "select", "prompt": "köpek", "answer": "dog", "choices": [
+              {"text": "fish", "emoji": "🐟"}, {"text": "bird", "emoji": "🐦"},
+              {"text": "cat", "emoji": "🐱"}, {"text": "dog", "emoji": "🐶"}]},
+            {"type": "translate", "text": "Benim bir köpeğim var.", "lang": "tr", "answers": ["I have a dog"],
+              "tokens": ["I", "have", "a", "dog", "cat", "has", "am"]},
+            {"type": "listen", "text": "We have a big family", "answers": ["We have a big family"]},
+            {"type": "match", "pairs": [["kedi", "cat"], ["köpek", "dog"], ["kuş", "bird"],
+              ["balık", "fish"], ["aile", "family"]]},
+            {"type": "speak", "text": "I have a cat", "translation": "Benim bir kedim var."}
+          ]
+        },
+        {
+          "id": "u3l3",
+          "type": "lesson",
+          "title": "Yaşlar",
+          "description": "how old, years old",
+          "exercises": [
+            {"type": "fillBlank", "text": "I am twenty years ___.", "translation": "Ben yirmi yaşındayım.",
+              "answer": "old", "choices": ["old", "age", "year"]},
+            {"type": "translate", "text": "Kaç yaşındasın?", "lang": "tr", "answers": ["How old are you"],
+              "tokens": ["How", "old", "are", "you", "is", "age"]},
+            {"type": "translate", "text": "O on yaşında.", "lang": "tr",
+              "answers": ["He is ten years old", "She is ten years old", "He is ten", "She is ten"],
+              "tokens": ["He", "She", "is", "ten", "years", "old", "are"]},
+            {"type": "select", "prompt": "büyükanne", "answer": "grandmother", "choices": [
+              {"text": "baby", "emoji": "👶"}, {"text": "grandfather", "emoji": "👴"},
+              {"text": "grandmother", "emoji": "👵"}, {"text": "mother", "emoji": "👩"}]},
+            {"type": "listen", "text": "My grandfather is eighty", "answers": ["My grandfather is eighty", "My grandfather is 80"]},
+            {"type": "match", "pairs": [["yaşlı", "old"], ["genç", "young"], ["büyükanne", "grandmother"],
+              ["büyükbaba", "grandfather"], ["çocuk", "child"]]},
+            {"type": "translate", "text": "How old is your brother?", "lang": "en",
+              "answers": ["Erkek kardeşin kaç yaşında"],
+              "tokens": ["Erkek", "kardeşin", "kaç", "yaşında", "annen", "ne"]},
+            {"type": "speak", "text": "How old are you", "translation": "Kaç yaşındasın?"}
+          ]
+        },
+        {"id": "u3c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
+      ]
+    },
+    {
+      "id": "u4",
+      "title": "Sayılar ve Zaman",
+      "description": "Sayılar, saatler ve haftanın günleri",
+      "color": "0xFF2D9CDB",
+      "nodes": [
+        {
+          "id": "u4l1",
+          "type": "lesson",
+          "title": "Sayılar",
+          "description": "one, two, three … ten",
+          "exercises": [
+            {"type": "select", "prompt": "üç", "answer": "three", "choices": [
+              {"text": "five", "emoji": "5️⃣"}, {"text": "three", "emoji": "3️⃣"},
+              {"text": "one", "emoji": "1️⃣"}, {"text": "eight", "emoji": "8️⃣"}]},
+            {"type": "select", "prompt": "yedi", "answer": "seven", "choices": [
+              {"text": "two", "emoji": "2️⃣"}, {"text": "nine", "emoji": "9️⃣"},
+              {"text": "seven", "emoji": "7️⃣"}, {"text": "four", "emoji": "4️⃣"}]},
+            {"type": "fillBlank", "text": "One, two, ___, four", "translation": "Bir, iki, üç, dört",
+              "answer": "three", "choices": ["three", "five", "ten"]},
+            {"type": "translate", "text": "İki elma", "lang": "tr", "answers": ["Two apples"],
+              "tokens": ["Two", "apples", "apple", "three", "an"]},
+            {"type": "listen", "text": "Six and four is ten", "answers": ["Six and four is ten", "Six and four are ten", "6 and 4 is 10"]},
+            {"type": "match", "pairs": [["bir", "one"], ["iki", "two"], ["beş", "five"],
+              ["sekiz", "eight"], ["on", "ten"]]},
+            {"type": "translate", "text": "I have three cats.", "lang": "en",
+              "answers": ["Üç kedim var", "Benim üç kedim var"],
+              "tokens": ["Benim", "üç", "kedim", "var", "iki", "köpeğim"]},
+            {"type": "speak", "text": "One, two, three", "translation": "Bir, iki, üç"}
+          ]
+        },
+        {
+          "id": "u4l2",
+          "type": "lesson",
+          "title": "Saat",
+          "description": "what time is it, morning, night",
+          "exercises": [
+            {"type": "fillBlank", "text": "What ___ is it?", "translation": "Saat kaç?",
+              "answer": "time", "choices": ["time", "day", "year"]},
+            {"type": "translate", "text": "Saat kaç?", "lang": "tr", "answers": ["What time is it"],
+              "tokens": ["What", "time", "is", "it", "day", "are"]},
+            {"type": "translate", "text": "Saat beş.", "lang": "tr",
+              "answers": ["It is five o'clock", "It's five o'clock", "It is five", "It's five"],
+              "tokens": ["It", "is", "five", "o'clock", "six", "time"]},
+            {"type": "select", "prompt": "sabah", "answer": "morning", "choices": [
+              {"text": "night", "emoji": "🌙"}, {"text": "morning", "emoji": "🌅"},
+              {"text": "evening", "emoji": "🌆"}, {"text": "noon", "emoji": "🕛"}]},
+            {"type": "listen", "text": "See you at eight", "answers": ["See you at eight", "See you at 8"]},
+            {"type": "match", "pairs": [["sabah", "morning"], ["akşam", "evening"], ["gece", "night"],
+              ["saat", "hour"], ["dakika", "minute"]]},
+            {"type": "fillBlank", "text": "I wake up at seven ___ the morning.", "translation": "Sabah yedide uyanırım.",
+              "answer": "in", "choices": ["in", "on", "at"]},
+            {"type": "speak", "text": "What time is it", "translation": "Saat kaç?"}
+          ]
+        },
+        {
+          "id": "u4l3",
+          "type": "lesson",
+          "title": "Günler",
+          "description": "Monday, Friday, today, tomorrow",
+          "exercises": [
+            {"type": "fillBlank", "text": "Today is ___.", "translation": "Bugün pazartesi.",
+              "answer": "Monday", "choices": ["Monday", "morning", "month"]},
+            {"type": "match", "pairs": [["pazartesi", "Monday"], ["salı", "Tuesday"], ["çarşamba", "Wednesday"],
+              ["cuma", "Friday"], ["pazar", "Sunday"]]},
+            {"type": "translate", "text": "Bugün cuma.", "lang": "tr",
+              "answers": ["Today is Friday", "It is Friday today"],
+              "tokens": ["Today", "is", "Friday", "Monday", "tomorrow"]},
+            {"type": "translate", "text": "Yarın cumartesi.", "lang": "tr", "answers": ["Tomorrow is Saturday"],
+              "tokens": ["Tomorrow", "is", "Saturday", "Sunday", "today"]},
+            {"type": "select", "prompt": "hafta sonu", "answer": "weekend", "choices": [
+              {"text": "school", "emoji": "🏫"}, {"text": "birthday", "emoji": "🎂"},
+              {"text": "work", "emoji": "💼"}, {"text": "weekend", "emoji": "🏖️"}]},
+            {"type": "listen", "text": "I work on Monday", "answers": ["I work on Monday", "I work on Mondays"]},
+            {"type": "translate", "text": "See you on Sunday.", "lang": "en",
+              "answers": ["Pazar günü görüşürüz", "Pazar görüşürüz"],
+              "tokens": ["Pazar", "günü", "görüşürüz", "cuma", "yarın"]},
+            {"type": "speak", "text": "Today is Monday", "translation": "Bugün pazartesi."}
+          ]
+        },
+        {"id": "u4c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
+      ]
+    },
+    {
+      "id": "u5",
+      "title": "Renkler ve Alışveriş",
+      "description": "Renkler, giysiler ve fiyat sormak",
+      "color": "0xFFE0559A",
+      "nodes": [
+        {
+          "id": "u5l1",
+          "type": "lesson",
+          "title": "Renkler",
+          "description": "red, blue, green, yellow",
+          "exercises": [
+            {"type": "select", "prompt": "kırmızı", "answer": "red", "choices": [
+              {"text": "blue", "emoji": "🔵"}, {"text": "red", "emoji": "🔴"},
+              {"text": "green", "emoji": "🟢"}, {"text": "yellow", "emoji": "🟡"}]},
+            {"type": "select", "prompt": "mavi", "answer": "blue", "choices": [
+              {"text": "green", "emoji": "🟢"}, {"text": "yellow", "emoji": "🟡"},
+              {"text": "red", "emoji": "🔴"}, {"text": "blue", "emoji": "🔵"}]},
+            {"type": "fillBlank", "text": "The sky is ___.", "translation": "Gökyüzü mavi.",
+              "answer": "blue", "choices": ["blue", "red", "black"]},
+            {"type": "translate", "text": "Yeşil bir elma", "lang": "tr", "answers": ["A green apple"],
+              "tokens": ["A", "green", "apple", "red", "an", "blue"]},
+            {"type": "listen", "text": "My car is black", "answers": ["My car is black"]},
+            {"type": "match", "pairs": [["beyaz", "white"], ["siyah", "black"], ["sarı", "yellow"],
+              ["yeşil", "green"], ["turuncu", "orange"]]},
+            {"type": "translate", "text": "The banana is yellow.", "lang": "en", "answers": ["Muz sarı"],
+              "tokens": ["Muz", "sarı", "elma", "kırmızı", "mavi"]},
+            {"type": "speak", "text": "I like the color green", "translation": "Yeşil rengi severim."}
+          ]
+        },
+        {
+          "id": "u5l2",
+          "type": "lesson",
+          "title": "Giysiler",
+          "description": "T-shirt, dress, shoes, hat",
+          "exercises": [
+            {"type": "select", "prompt": "tişört", "answer": "T-shirt", "choices": [
+              {"text": "T-shirt", "emoji": "👕"}, {"text": "dress", "emoji": "👗"},
+              {"text": "shoes", "emoji": "👟"}, {"text": "hat", "emoji": "🧢"}]},
+            {"type": "select", "prompt": "ayakkabı", "answer": "shoes", "choices": [
+              {"text": "hat", "emoji": "🧢"}, {"text": "shoes", "emoji": "👟"},
+              {"text": "dress", "emoji": "👗"}, {"text": "T-shirt", "emoji": "👕"}]},
+            {"type": "translate", "text": "Kırmızı bir elbise", "lang": "tr", "answers": ["A red dress"],
+              "tokens": ["A", "red", "dress", "blue", "shoes", "an"]},
+            {"type": "fillBlank", "text": "These ___ are new.", "translation": "Bu ayakkabılar yeni.",
+              "answer": "shoes", "choices": ["shoes", "hat", "dress"]},
+            {"type": "listen", "text": "I need a new jacket", "answers": ["I need a new jacket"]},
+            {"type": "match", "pairs": [["ceket", "jacket"], ["şapka", "hat"], ["elbise", "dress"],
+              ["pantolon", "trousers"], ["çorap", "socks"]]},
+            {"type": "translate", "text": "Bu şapka güzel.", "lang": "tr",
+              "answers": ["This hat is nice", "This hat is beautiful"],
+              "tokens": ["This", "hat", "is", "nice", "dress", "are"]},
+            {"type": "speak", "text": "I like your shoes", "translation": "Ayakkabılarını beğendim."}
+          ]
+        },
+        {
+          "id": "u5l3",
+          "type": "lesson",
+          "title": "Alışveriş",
+          "description": "how much, cheap, expensive",
+          "exercises": [
+            {"type": "fillBlank", "text": "How ___ is this?", "translation": "Bu ne kadar?",
+              "answer": "much", "choices": ["much", "many", "old"]},
+            {"type": "translate", "text": "Bu ne kadar?", "lang": "tr", "answers": ["How much is this"],
+              "tokens": ["How", "much", "is", "this", "many", "are"]},
+            {"type": "translate", "text": "Çok pahalı.", "lang": "tr",
+              "answers": ["It is very expensive", "It's very expensive", "Very expensive"],
+              "tokens": ["It", "is", "very", "expensive", "cheap", "new"]},
+            {"type": "select", "prompt": "ucuz", "answer": "cheap", "choices": [
+              {"text": "expensive", "emoji": "💎"}, {"text": "big", "emoji": "🐘"},
+              {"text": "cheap", "emoji": "🏷️"}, {"text": "small", "emoji": "🐭"}]},
+            {"type": "listen", "text": "Can I try it on", "answers": ["Can I try it on"]},
+            {"type": "match", "pairs": [["ucuz", "cheap"], ["pahalı", "expensive"], ["büyük", "big"],
+              ["küçük", "small"], ["yeni", "new"]]},
+            {"type": "translate", "text": "This jacket is too small.", "lang": "en", "answers": ["Bu ceket çok küçük"],
+              "tokens": ["Bu", "ceket", "çok", "küçük", "büyük", "şapka"]},
+            {"type": "speak", "text": "How much is this", "translation": "Bu ne kadar?"}
+          ]
+        },
+        {"id": "u5c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
+      ]
+    },
+    {
+      "id": "u6",
+      "title": "Günlük Hayat",
+      "description": "Sabah rutini, hobiler ve şehirde yol bulma",
+      "color": "0xFF5A67D8",
+      "nodes": [
+        {
+          "id": "u6l1",
+          "type": "lesson",
+          "title": "Sabah rutini",
+          "description": "wake up, breakfast, go to work",
+          "exercises": [
+            {"type": "fillBlank", "text": "I ___ up at seven.", "translation": "Yedide uyanırım.",
+              "answer": "wake", "choices": ["wake", "eat", "go"]},
+            {"type": "translate", "text": "Kahvaltı yaparım.", "lang": "tr",
+              "answers": ["I eat breakfast", "I have breakfast"],
+              "tokens": ["I", "eat", "have", "breakfast", "dinner", "go"]},
+            {"type": "select", "prompt": "duş", "answer": "shower", "choices": [
+              {"text": "bed", "emoji": "🛏️"}, {"text": "alarm", "emoji": "⏰"},
+              {"text": "shower", "emoji": "🚿"}, {"text": "toothbrush", "emoji": "🪥"}]},
+            {"type": "translate", "text": "İşe giderim.", "lang": "tr", "answers": ["I go to work"],
+              "tokens": ["I", "go", "to", "work", "school", "eat"]},
+            {"type": "listen", "text": "I brush my teeth", "answers": ["I brush my teeth"]},
+            {"type": "match", "pairs": [["uyanmak", "wake up"], ["kahvaltı", "breakfast"], ["duş", "shower"],
+              ["iş", "work"], ["okul", "school"]]},
+            {"type": "translate", "text": "I drink coffee in the morning.", "lang": "en",
+              "answers": ["Sabah kahve içerim", "Sabahları kahve içerim"],
+              "tokens": ["Sabah", "kahve", "içerim", "akşam", "çay", "yerim"]},
+            {"type": "speak", "text": "I go to school", "translation": "Okula giderim."}
+          ]
+        },
+        {
+          "id": "u6l2",
+          "type": "lesson",
+          "title": "Hobiler",
+          "description": "read, play, swim, music",
+          "exercises": [
+            {"type": "select", "prompt": "futbol", "answer": "football", "choices": [
+              {"text": "football", "emoji": "⚽"}, {"text": "music", "emoji": "🎵"},
+              {"text": "book", "emoji": "📚"}, {"text": "swimming", "emoji": "🏊"}]},
+            {"type": "select", "prompt": "kitap", "answer": "book", "choices": [
+              {"text": "music", "emoji": "🎵"}, {"text": "swimming", "emoji": "🏊"},
+              {"text": "book", "emoji": "📚"}, {"text": "football", "emoji": "⚽"}]},
+            {"type": "fillBlank", "text": "I like ___ to music.", "translation": "Müzik dinlemeyi severim.",
+              "answer": "listening", "choices": ["listening", "reading", "playing"]},
+            {"type": "translate", "text": "Ben kitap okurum.", "lang": "tr",
+              "answers": ["I read books", "I read a book"],
+              "tokens": ["I", "read", "books", "a", "play", "music"]},
+            {"type": "listen", "text": "She plays the guitar", "answers": ["She plays the guitar"]},
+            {"type": "match", "pairs": [["yüzmek", "swim"], ["okumak", "read"], ["oynamak", "play"],
+              ["şarkı söylemek", "sing"], ["dans etmek", "dance"]]},
+            {"type": "translate", "text": "Futbol oynarız.", "lang": "tr",
+              "answers": ["We play football", "We play soccer"],
+              "tokens": ["We", "play", "football", "read", "they"]},
+            {"type": "speak", "text": "I like music", "translation": "Müziği severim."}
+          ]
+        },
+        {
+          "id": "u6l3",
+          "type": "lesson",
+          "title": "Şehirde",
+          "description": "where is, left, right, near",
+          "exercises": [
+            {"type": "select", "prompt": "hastane", "answer": "hospital", "choices": [
+              {"text": "school", "emoji": "🏫"}, {"text": "hospital", "emoji": "🏥"},
+              {"text": "bank", "emoji": "🏦"}, {"text": "park", "emoji": "🌳"}]},
+            {"type": "fillBlank", "text": "Where ___ the station?", "translation": "İstasyon nerede?",
+              "answer": "is", "choices": ["is", "are", "am"]},
+            {"type": "translate", "text": "Banka nerede?", "lang": "tr", "answers": ["Where is the bank"],
+              "tokens": ["Where", "is", "the", "bank", "park", "are"]},
+            {"type": "translate", "text": "Sola dön.", "lang": "tr", "answers": ["Turn left"],
+              "tokens": ["Turn", "left", "right", "go"]},
+            {"type": "listen", "text": "The park is near here", "answers": ["The park is near here"]},
+            {"type": "match", "pairs": [["sol", "left"], ["sağ", "right"], ["düz", "straight"],
+              ["yakın", "near"], ["uzak", "far"]]},
+            {"type": "translate", "text": "The hospital is far.", "lang": "en",
+              "answers": ["Hastane uzak", "Hastane uzakta"],
+              "tokens": ["Hastane", "uzak", "yakın", "okul", "banka"]},
+            {"type": "speak", "text": "Where is the station", "translation": "İstasyon nerede?"}
+          ]
+        },
+        {"id": "u6c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 30}
+      ]
+    }
+  ]
+}
