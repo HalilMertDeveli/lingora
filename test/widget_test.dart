@@ -72,7 +72,10 @@ void main() {
     await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Ciddi'));
-    await tester.tap(find.text('Öğrenmeye başla'));
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
+    expect(find.text('Neden İngilizce öğreniyorsun?'), findsOneWidget);
+    await tester.tap(find.text('Sıfırdan başla'));
     await tester.pumpAndSettle();
 
     expect(find.text('Merhaba!'), findsOneWidget);
