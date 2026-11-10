@@ -15,11 +15,14 @@ import '../exercises/select_exercise.dart';
 import '../exercises/speak_exercise.dart';
 import '../exercises/translate_exercise.dart';
 import '../models/course.dart';
+import '../services/growth/analytics.dart';
+import '../services/growth/paywall_trigger.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/why_wrong.dart';
 import 'lesson_result_screen.dart';
+import 'paywall_screen.dart';
 
 const baseLessonXp = 10;
 const perfectBonusXp = 5;
@@ -87,6 +90,12 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
 
   /// "Neden yanlış?" content after a wrong English answer.
   WhyWrongSection? _why;
+
+  @override
+  void initState() {
+    super.initState();
+    logEvent(ref, AnalyticsEvent.lessonStart(widget.nodeId, mode: widget.mode.name));
+  }
 
   LessonItem get _current => _queue[_pos];
   bool get _requeues => widget.mode != LessonMode.test;
@@ -199,7 +208,20 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       perfect: perfect,
       stats: _questStats,
     );
-    nav.pushReplacement(
+    logEvent(
+      ref,
+      AnalyticsEvent.lessonFinish(
+        widget.nodeId,
+        mode: widget.mode.name,
+        accuracy: _accuracy,
+        xp: reward.xp,
+        durationSec: DateTime.now().difference(_started).inSeconds,
+      ),
+    );
+    // Remote Config: a closable paywall after every N lessons (never blocks learning).
+    final autoPaywall =
+        widget.mode == LessonMode.lesson && ref.read(paywallTriggerProvider).takeAfterLesson();
+    final shown = nav.pushReplacement(
       MaterialPageRoute<void>(
         builder: (_) => LessonResultScreen(
           reward: reward,
@@ -215,6 +237,17 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         ),
       ),
     );
+    if (autoPaywall) {
+      shown.then((_) {
+        if (!nav.mounted) return;
+        nav.push(
+          MaterialPageRoute<bool>(
+            fullscreenDialog: true,
+            builder: (_) => const PaywallScreen(placement: PaywallPlacement.afterLessons),
+          ),
+        );
+      });
+    }
   }
 
   Future<void> _confirmQuit() async {

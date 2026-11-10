@@ -11,6 +11,7 @@ import '../exercises/common.dart' show SpeakerButton;
 import '../exercises/speak_exercise.dart' show speakPassRatio;
 import '../models/pronunciation.dart';
 import '../services/speech.dart';
+import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
@@ -112,9 +113,12 @@ class _UnitTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => TapCard(
-    onTap: () => Navigator.of(context).push(
-      MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => PronunciationUnitScreen(unit: unit)),
-    ),
+    onTap: () {
+      logEventFrom(context, AnalyticsEvent.featureUse(AppFeature.pronunciation));
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => PronunciationUnitScreen(unit: unit)),
+      );
+    },
     child: Row(
       children: [
         IconBadge(icon: Icons.graphic_eq_rounded, emoji: unit.emoji, color: _coachColor, size: 42),
