@@ -1,0 +1,75 @@
+rules_version = '2';
+
+// Lingora Firestore rules. The server-side data (leagues, entitlements,
+// quotas) is written only by Cloud Functions through the Admin SDK, which
+// bypasses these rules. Clients may write only their own users/{uid} doc.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    // Progress snapshot synced by the app (lib/services/firebase/progress_sync.dart):
+    // {schema, progress, totalXp, displayName, clientUpdatedAt, updatedAt}.
+    // Progress.toJson() has ~25 keys today; 60 leaves room to grow. The 1 MiB
+    // document limit caps the total size.
+    function validUserDoc() {
+      let d = request.resource.data;
+      return d.keys().hasOnly(['schema', 'progress', 'totalXp', 'displayName', 'clientUpdatedAt', 'updatedAt'])
+        && d.keys().hasAll(['progress', 'updatedAt'])
+        && d.progress is map
+        && d.progress.size() <= 60
+        && d.updatedAt is timestamp
+        && d.updatedAt == request.time
+        && (!('schema' in d) || (d.schema is int && d.schema >= 1 && d.schema <= 1000))
+        && (!('totalXp' in d) || (d.totalXp is int && d.totalXp >= 0))
+        && (!('clientUpdatedAt' in d) || d.clientUpdatedAt is int)
+        && (!('displayName' in d) || d.displayName == null
+          || (d.displayName is string && d.displayName.size() <= 40));
+    }
+
+    match /users/{uid} {
+      allow read: if isOwner(uid);
+      allow create, update: if isOwner(uid) && validUserDoc();
+      allow delete: if false;
+    }
+
+    // Tier, current group and last week's result. Written by functions.
+    match /leagueState/{uid} {
+      allow read: if isOwner(uid);
+      allow write: if false;
+    }
+
+    // Premium status. Written only by verifyPurchase.
+    match /entitlements/{uid} {
+      allow read: if isOwner(uid);
+      allow write: if false;
+    }
+
+    // One league group of up to 15 people: leagues/{weekKey}_{tier}_{group}.
+    // Only its members may see it; XP changes go through addLeagueXp.
+    match /leagues/{groupId} {
+      function isMember() {
+        return signedIn()
+          && exists(/databases/$(database)/documents/leagues/$(groupId)/members/$(request.auth.uid));
+      }
+
+      allow read: if isMember();
+      allow write: if false;
+
+      match /members/{memberId} {
+        allow read: if isMember();
+        allow write: if false;
+      }
+    }
+
+    // Everything else (quotas, purchase tokens, counters) is server-only.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
