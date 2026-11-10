@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lingora/core/text.dart';
 import 'package:lingora/core/tr_errors.dart';
 import 'package:lingora/data/catalog.dart';
 import 'package:lingora/data/dev_scenarios.dart';
@@ -221,6 +222,15 @@ void main() {
     test('typed answers ignore case, spacing and end punctuation', () {
       expect(normalizeAnswer('  Pull   Request. '), 'pull request');
       expect(normalizeAnswer('don’t'), "don't");
+      expect(
+        VocabCard(
+          type: VocabCardType.listenSpell,
+          entry: _entries.first,
+          prompt: '',
+          answer: 'CI',
+        ).check('ci'),
+        isTrue,
+      );
     });
   });
 

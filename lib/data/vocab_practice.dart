@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/text.dart';
 import '../models/vocab.dart';
 import 'progress.dart';
 
@@ -176,15 +177,6 @@ class VocabCard {
 
   bool check(String input) => isTyping ? normalizeAnswer(input) == normalizeAnswer(answer) : input == answer;
 }
-
-/// Lowercase, single spaces, straight apostrophes, no end punctuation.
-String normalizeAnswer(String s) => s
-    .toLowerCase()
-    .replaceAll('’', "'")
-    .replaceAll(RegExp(r'\s+'), ' ')
-    .trim()
-    .replaceAll(RegExp(r'[.!?,;:]+$'), '')
-    .trim();
 
 /// Card types an entry has content for.
 List<VocabCardType> availableCardTypes(VocabEntry e) => [
