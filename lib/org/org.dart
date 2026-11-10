@@ -112,9 +112,7 @@ class MyOrg {
       planExpiresAt: DateTime.fromMillisecondsSinceEpoch((o['planExpiresAt'] as num).toInt()),
       role: OrgRole.parse(j['role']),
       displayName: j['displayName'] as String? ?? '',
-      classes: [
-        for (final c in (j['classes'] as List? ?? const [])) (c as Map)['name'] as String,
-      ],
+      classes: [for (final c in (j['classes'] as List? ?? const [])) (c as Map)['name'] as String],
       assignments: [
         for (final a in (j['assignments'] as List? ?? const []))
           ?OrgAssignment.fromJson((a as Map).cast<String, Object?>()),
