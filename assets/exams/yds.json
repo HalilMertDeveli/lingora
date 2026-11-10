@@ -1,0 +1,1270 @@
+{
+ "id": "yds",
+ "title": "YDS / YÖKDİL",
+ "description": "Akademik ve resmî İngilizce: kelime, dil bilgisi, bağlaçlar, paragraf, cümle tamamlama, çeviri ve okuma soruları. Tüm sorular özgün olarak hazırlanmıştır.",
+ "optionCount": 5,
+ "mockSize": 20,
+ "mockMinutes": 30,
+ "sections": [
+  {
+   "id": "yds_vocab",
+   "title": "Kelime bilgisi",
+   "description": "Cümledeki boşluğa anlamca en uygun kelimeyi seçin.",
+   "questions": [
+    {
+     "id": "yds_vocab_001",
+     "text": "The scientists were unable to ---- the cause of the disease, so further tests were ordered.",
+     "options": [
+      "abandon",
+      "identify",
+      "imitate",
+      "postpone",
+      "consume"
+     ],
+     "answer": 1,
+     "explanation": "'Identify' (tespit etmek, belirlemek) hastalığın nedenini bulmak anlamına gelir; ek testlerin istenmesi nedenin bulunamadığını gösterir. 'Abandon' (terk etmek), 'imitate' (taklit etmek), 'postpone' (ertelemek) ve 'consume' (tüketmek) bağlama uymaz."
+    },
+    {
+     "id": "yds_vocab_002",
+     "text": "Regular physical activity can significantly ---- the risk of heart disease in older adults.",
+     "options": [
+      "reduce",
+      "assign",
+      "inherit",
+      "conceal",
+      "deliver"
+     ],
+     "answer": 0,
+     "explanation": "'Reduce the risk' (riski azaltmak) kalıplaşmış bir ifadedir. 'Assign' (atamak), 'inherit' (miras almak), 'conceal' (gizlemek) ve 'deliver' (teslim etmek) risk kelimesiyle anlamlı bir bütün oluşturmaz."
+    },
+    {
+     "id": "yds_vocab_003",
+     "text": "The new policy was ---- criticised by environmental groups, who claimed it ignored scientific evidence.",
+     "options": [
+      "barely",
+      "accidentally",
+      "heavily",
+      "gratefully",
+      "tidily"
+     ],
+     "answer": 2,
+     "explanation": "'Heavily criticised' (ağır şekilde eleştirilmek) doğru eşdizimdir; grupların politikanın bilimsel kanıtları görmezden geldiğini iddia etmesi sert eleştiriyi destekler. 'Barely' (neredeyse hiç) bu iddiayla çelişir."
+    },
+    {
+     "id": "yds_vocab_004",
+     "text": "Despite limited funding, the research team made ---- progress in developing a cheaper vaccine.",
+     "options": [
+      "reluctant",
+      "obsolete",
+      "negligible",
+      "hostile",
+      "considerable"
+     ],
+     "answer": 4,
+     "explanation": "'Despite' (-e rağmen) bir zıtlık kurar: kısıtlı bütçeye rağmen 'considerable' (kayda değer) ilerleme kaydedilmiştir. 'Negligible' (önemsiz, çok az) zıtlığı ortadan kaldırır; diğerleri 'progress' ile anlam taşımaz."
+    },
+    {
+     "id": "yds_vocab_005",
+     "text": "Archaeologists believe the ancient city was ---- after a series of severe droughts.",
+     "options": [
+      "invented",
+      "persuaded",
+      "nominated",
+      "abandoned",
+      "translated"
+     ],
+     "answer": 3,
+     "explanation": "'Abandon' (terk etmek) şiddetli kuraklıklardan sonra bir şehrin boşaltılmasını anlatır. 'Invent' (icat etmek), 'persuade' (ikna etmek), 'nominate' (aday göstermek) ve 'translate' (çevirmek) şehir için anlamsızdır."
+    },
+    {
+     "id": "yds_vocab_006",
+     "text": "The committee will ---- all applications carefully before announcing the winners.",
+     "options": [
+      "vanish",
+      "collapse",
+      "evaluate",
+      "emerge",
+      "hesitate"
+     ],
+     "answer": 2,
+     "explanation": "'Evaluate' (değerlendirmek) nesne alan bir fiildir ve başvuruları incelemeyi anlatır. 'Vanish' (yok olmak), 'collapse' (çökmek), 'emerge' (ortaya çıkmak) ve 'hesitate' (tereddüt etmek) nesne almaz ve anlama uymaz."
+    },
+    {
+     "id": "yds_vocab_007",
+     "text": "Many species are ---- to extinction because their natural habitats are being destroyed.",
+     "options": [
+      "indifferent",
+      "vulnerable",
+      "superior",
+      "eligible",
+      "immune"
+     ],
+     "answer": 1,
+     "explanation": "'Vulnerable to' (-e karşı savunmasız, -e açık) yaşam alanları yok edilen türlerin durumunu anlatır. 'Immune to' (-e karşı bağışık) tam tersi anlam verir; 'indifferent' (kayıtsız), 'superior' (üstün) ve 'eligible' (uygun, hak sahibi) bağlama uymaz."
+    },
+    {
+     "id": "yds_vocab_008",
+     "text": "The main ---- of the study was that the sample size was too small to draw general conclusions.",
+     "options": [
+      "limitation",
+      "contribution",
+      "celebration",
+      "generosity",
+      "abundance"
+     ],
+     "answer": 0,
+     "explanation": "'Limitation' (sınırlılık, kısıt) bir araştırmanın zayıf yönünü ifade eder; örneklemin küçük olması tipik bir sınırlılıktır. 'Contribution' (katkı), 'celebration' (kutlama), 'generosity' (cömertlik) ve 'abundance' (bolluk) uymaz."
+    },
+    {
+     "id": "yds_vocab_009",
+     "text": "Air pollution levels in the city have risen ---- over the past decade, causing serious concern among health experts.",
+     "options": [
+      "politely",
+      "loosely",
+      "honestly",
+      "dramatically",
+      "silently"
+     ],
+     "answer": 3,
+     "explanation": "'Rise dramatically' (çarpıcı biçimde artmak) ciddi endişeye yol açan büyük bir artışı anlatır. 'Politely' (kibarca), 'loosely' (gevşekçe), 'honestly' (dürüstçe) ve 'silently' (sessizce) bir artış miktarını nitelemez."
+    },
+    {
+     "id": "yds_vocab_010",
+     "text": "The government decided to ---- the old law, as it no longer reflected the needs of modern society.",
+     "options": [
+      "obey",
+      "admire",
+      "inspire",
+      "deserve",
+      "abolish"
+     ],
+     "answer": 4,
+     "explanation": "'Abolish' (yürürlükten kaldırmak) artık ihtiyaçları karşılamayan bir yasa için uygundur. 'Obey' (uymak), 'admire' (hayran olmak), 'inspire' (ilham vermek) ve 'deserve' (hak etmek) cümlenin gerekçesiyle uyuşmaz."
+    },
+    {
+     "id": "yds_vocab_011",
+     "text": "Children who are ---- to several languages at an early age often find it easier to learn new ones later.",
+     "options": [
+      "opposed",
+      "committed",
+      "reduced",
+      "exposed",
+      "entitled"
+     ],
+     "answer": 3,
+     "explanation": "'Be exposed to' (-e maruz kalmak, -le karşılaşmak) çocukların erken yaşta birden çok dili duymasını anlatır. 'Opposed to' (-e karşı), 'committed to' (-e bağlı), 'reduced to' (-e indirgenmiş) ve 'entitled to' (-e hakkı olan) anlam vermez."
+    },
+    {
+     "id": "yds_vocab_012",
+     "text": "The two studies produced ---- results, which led researchers to question the reliability of the method.",
+     "options": [
+      "punctual",
+      "contradictory",
+      "edible",
+      "fluent",
+      "generous"
+     ],
+     "answer": 1,
+     "explanation": "'Contradictory' (birbiriyle çelişen) sonuçlar yöntemin güvenilirliğinin sorgulanmasına yol açar. 'Punctual' (dakik), 'edible' (yenilebilir), 'fluent' (akıcı) ve 'generous' (cömert) 'results' kelimesini anlamlı biçimde nitelemez."
+    },
+    {
+     "id": "yds_vocab_013",
+     "text": "In order to ---- energy, the university has replaced all its old light bulbs with LED lamps.",
+     "options": [
+      "conserve",
+      "waste",
+      "accuse",
+      "pretend",
+      "define"
+     ],
+     "answer": 0,
+     "explanation": "'Conserve energy' (enerji tasarrufu yapmak) LED lambalara geçişin amacını açıklar. 'Waste' (israf etmek) amaca ters düşer; 'accuse' (suçlamak), 'pretend' (-miş gibi yapmak) ve 'define' (tanımlamak) anlamsızdır."
+    }
+   ]
+  },
+  {
+   "id": "yds_grammar",
+   "title": "Dil bilgisi",
+   "description": "Zamanlar, edilgen yapı, kipler, koşul cümleleri, sıfat cümlecikleri ve fiilimsiler.",
+   "questions": [
+    {
+     "id": "yds_grammar_001",
+     "text": "By the time the rescue team arrived, the fire ---- most of the forest.",
+     "options": [
+      "destroys",
+      "has destroyed",
+      "will destroy",
+      "is destroying",
+      "had destroyed"
+     ],
+     "answer": 4,
+     "explanation": "'By the time + past simple' yapısında daha önce tamamlanmış eylem 'past perfect' (had + V3) ile anlatılır: Ekip vardığında yangın ormanı çoktan yok etmişti."
+    },
+    {
+     "id": "yds_grammar_002",
+     "text": "If the government ---- more money in education, the country's economy would grow faster.",
+     "options": [
+      "invests",
+      "will invest",
+      "invested",
+      "has invested",
+      "investing"
+     ],
+     "answer": 2,
+     "explanation": "Ana cümlede 'would grow' olduğu için bu bir ikinci tip (gerçek dışı şimdiki) koşul cümlesidir; 'if' kısmında 'past simple' kullanılır: 'If the government invested...'"
+    },
+    {
+     "id": "yds_grammar_003",
+     "text": "The results of the experiment ---- in a scientific journal next month.",
+     "options": [
+      "published",
+      "are publishing",
+      "will be published",
+      "have published",
+      "had been published"
+     ],
+     "answer": 2,
+     "explanation": "Sonuçlar yayımlanan şeydir, bu yüzden edilgen yapı gerekir; 'next month' gelecek zamanı gösterir: 'will be published' (yayımlanacak)."
+    },
+    {
+     "id": "yds_grammar_004",
+     "text": "Researchers ---- the effects of climate change on coral reefs since the early 1990s.",
+     "options": [
+      "have been studying",
+      "studied",
+      "are studying",
+      "will study",
+      "study"
+     ],
+     "answer": 0,
+     "explanation": "'Since + geçmişteki bir başlangıç noktası' geçmişte başlayıp hâlâ süren eylemi gösterir; bu nedenle 'present perfect continuous' (have been + V-ing) kullanılır."
+    },
+    {
+     "id": "yds_grammar_005",
+     "text": "The patient ---- have taken the medicine, because his symptoms have completely disappeared.",
+     "options": [
+      "can't",
+      "must",
+      "needn't",
+      "shouldn't",
+      "would rather"
+     ],
+     "answer": 1,
+     "explanation": "'Must have + V3' geçmişe yönelik güçlü bir çıkarımı anlatır: Belirtiler kaybolduğuna göre hasta ilacı almış olmalı. 'Can't have' (almış olamaz) kanıtla çelişir."
+    },
+    {
+     "id": "yds_grammar_006",
+     "text": "The scientist ---- discovery changed our understanding of genetics was awarded the Nobel Prize.",
+     "options": [
+      "who",
+      "which",
+      "whom",
+      "where",
+      "whose"
+     ],
+     "answer": 4,
+     "explanation": "'Whose' iyelik bildiren ilgi zamiridir: 'keşfi genetik anlayışımızı değiştiren bilim insanı'. Ardından bir isim (discovery) geldiği için 'who' veya 'whom' kullanılamaz."
+    },
+    {
+     "id": "yds_grammar_007",
+     "text": "Many students avoid ---- difficult questions in exams until they have answered the easy ones.",
+     "options": [
+      "to answer",
+      "answer",
+      "answered",
+      "answering",
+      "to have answered"
+     ],
+     "answer": 3,
+     "explanation": "'Avoid' fiilinden sonra fiil '-ing' (gerund) biçiminde gelir: 'avoid answering' (cevaplamaktan kaçınmak). 'Avoid to do' yapısı yanlıştır."
+    },
+    {
+     "id": "yds_grammar_008",
+     "text": "The bridge, ---- in 1890, is still used by thousands of people every day.",
+     "options": [
+      "building",
+      "was built",
+      "which built",
+      "to build",
+      "built"
+     ],
+     "answer": 4,
+     "explanation": "Köprü inşa edilen şeydir, bu yüzden edilgen anlamlı kısaltılmış sıfat cümleciği (V3) gerekir: 'which was built in 1890' → 'built in 1890'. 'Which built' etken anlam verir."
+    },
+    {
+     "id": "yds_grammar_009",
+     "text": "Had the doctors noticed the symptoms earlier, they ---- the disease more easily.",
+     "options": [
+      "can treat",
+      "could have treated",
+      "will treat",
+      "treated",
+      "would treat"
+     ],
+     "answer": 1,
+     "explanation": "'Had the doctors noticed...' 'If the doctors had noticed...' yapısının devrik hâlidir (üçüncü tip koşul). Ana cümlede 'would/could have + V3' gelir: daha kolay tedavi edebilirlerdi."
+    },
+    {
+     "id": "yds_grammar_010",
+     "text": "It is essential that every participant ---- the consent form before the study begins.",
+     "options": [
+      "signed",
+      "will sign",
+      "sign",
+      "has signed",
+      "signing"
+     ],
+     "answer": 2,
+     "explanation": "'It is essential/important that...' yapısından sonra 'subjunctive' kullanılır ve fiil yalın hâlde gelir: 'every participant sign'. Bu yapı resmî İngilizcede sık görülür."
+    },
+    {
+     "id": "yds_grammar_011",
+     "text": "Not only ---- the cost of the project, but it also delayed its completion by two years.",
+     "options": [
+      "the error increased",
+      "the error did increase",
+      "increased the error",
+      "did the error increase",
+      "has increased the error"
+     ],
+     "answer": 3,
+     "explanation": "'Not only' cümle başına geldiğinde devrik yapı (yardımcı fiil + özne + fiil) gerekir: 'Not only did the error increase...'. Diğer seçeneklerde devrik yapı ya yok ya da hatalı."
+    },
+    {
+     "id": "yds_grammar_012",
+     "text": "The ancient manuscripts are believed ---- by monks in the twelfth century.",
+     "options": [
+      "to have been written",
+      "writing",
+      "to write",
+      "to be writing",
+      "having written"
+     ],
+     "answer": 0,
+     "explanation": "Yazma eylemi 'are believed' eyleminden önce, geçmişte gerçekleşmiştir ve el yazmaları yazılan şeydir; bu nedenle edilgen perfect mastar gerekir: 'to have been written'."
+    },
+    {
+     "id": "yds_grammar_013",
+     "text": "The more carefully a study is designed, ---- its results are likely to be.",
+     "options": [
+      "more reliable",
+      "the most reliable",
+      "most reliable",
+      "the reliable",
+      "the more reliable"
+     ],
+     "answer": 4,
+     "explanation": "'The more..., the more...' (ne kadar ..., o kadar ...) karşılaştırma yapısında her iki yarım da 'the + karşılaştırma sıfatı' ile başlar: 'the more reliable'."
+    }
+   ]
+  },
+  {
+   "id": "yds_conj",
+   "title": "Bağlaçlar ve geçişler",
+   "description": "Cümleler ve fikirler arasındaki ilişkiyi kuran bağlacı seçin.",
+   "questions": [
+    {
+     "id": "yds_conj_001",
+     "text": "---- the treatment was expensive, many patients chose it because of its high success rate.",
+     "options": [
+      "Although",
+      "Because",
+      "Unless",
+      "Therefore",
+      "In case"
+     ],
+     "answer": 0,
+     "explanation": "'Although' (-e rağmen, -dığı hâlde) bir zıtlık bildirir: Tedavi pahalı olmasına rağmen hastalar onu seçti. 'Because' neden, 'unless' koşul bildirir; 'therefore' iki cümleyi bu şekilde bağlayamaz."
+    },
+    {
+     "id": "yds_conj_002",
+     "text": "The first group received the new drug, ---- the second group was given a placebo.",
+     "options": [
+      "so that",
+      "unless",
+      "because of",
+      "whereas",
+      "as if"
+     ],
+     "answer": 3,
+     "explanation": "'Whereas' (oysa, -iken) iki durumu karşılaştırıp zıtlığı vurgular: birinci gruba ilaç, ikinci gruba plasebo verildi. 'Because of' isimle kullanılır; diğerleri anlamı bozar."
+    },
+    {
+     "id": "yds_conj_003",
+     "text": "The experiment was poorly designed; ----, its results cannot be considered reliable.",
+     "options": [
+      "however",
+      "therefore",
+      "nevertheless",
+      "in contrast",
+      "for instance"
+     ],
+     "answer": 1,
+     "explanation": "'Therefore' (bu nedenle) sonuç bildirir: Deney kötü tasarlandığı için sonuçlar güvenilir sayılamaz. 'However', 'nevertheless' ve 'in contrast' zıtlık, 'for instance' örnek bildirir."
+    },
+    {
+     "id": "yds_conj_004",
+     "text": "Plants cannot grow properly ---- they receive enough sunlight and water.",
+     "options": [
+      "as long as",
+      "so that",
+      "unless",
+      "whereas",
+      "even though"
+     ],
+     "answer": 2,
+     "explanation": "'Unless' (-medikçe, -mezse) olumsuz koşul bildirir: Yeterli ışık ve su almadıkça bitkiler düzgün büyüyemez. 'As long as' (-dığı sürece) ve 'even though' cümleye mantıksız bir anlam katar."
+    },
+    {
+     "id": "yds_conj_005",
+     "text": "---- heavy rain, the outdoor conference went ahead as planned.",
+     "options": [
+      "Although",
+      "Because of",
+      "Due to",
+      "Even if",
+      "In spite of"
+     ],
+     "answer": 4,
+     "explanation": "'In spite of' (-e rağmen) bir isim öbeğinden (heavy rain) önce gelir. 'Although' ve 'even if' tam cümle ister; 'because of' ve 'due to' neden bildirdiği için anlamı bozar."
+    },
+    {
+     "id": "yds_conj_006",
+     "text": "Residents may use the public library free of charge ---- they show a valid ID card.",
+     "options": [
+      "unless",
+      "as long as",
+      "although",
+      "whereas",
+      "so as to"
+     ],
+     "answer": 1,
+     "explanation": "'As long as' (-dığı sürece, şartıyla) bir koşul bildirir: Geçerli kimlik gösterdikleri sürece ücretsiz kullanabilirler. 'Unless' anlamı tersine çevirir; 'so as to' fiil yalın hâliyle kullanılır."
+    },
+    {
+     "id": "yds_conj_007",
+     "text": "The company invested heavily in research ---- it could compete with larger rivals.",
+     "options": [
+      "even though",
+      "unless",
+      "whereas",
+      "so that",
+      "in case of"
+     ],
+     "answer": 3,
+     "explanation": "'So that' (-sın diye, -mek için) amaç bildirir ve genellikle 'can/could' ile kullanılır. 'In case of' isimle kullanılır; 'even though', 'unless' ve 'whereas' amaç anlamı vermez."
+    },
+    {
+     "id": "yds_conj_008",
+     "text": "---- the number of cars increases, air quality in big cities gets worse.",
+     "options": [
+      "Despite",
+      "Unless",
+      "As",
+      "Although",
+      "Whereas"
+     ],
+     "answer": 2,
+     "explanation": "'As' burada '-dıkça' anlamındadır ve birlikte değişen iki durumu bağlar: Araba sayısı arttıkça hava kalitesi kötüleşir. 'Despite' tam cümle almaz; diğerleri mantık ilişkisini bozar."
+    },
+    {
+     "id": "yds_conj_009",
+     "text": "The new law aims to protect consumers; ----, it may place a heavy burden on small businesses.",
+     "options": [
+      "however",
+      "thus",
+      "similarly",
+      "therefore",
+      "as a result"
+     ],
+     "answer": 0,
+     "explanation": "'However' (ancak, bununla birlikte) zıt bir fikir sunar: Yasa tüketiciyi korumayı amaçlar, ancak küçük işletmelere yük getirebilir. 'Thus', 'therefore' ve 'as a result' sonuç, 'similarly' benzerlik bildirir."
+    },
+    {
+     "id": "yds_conj_010",
+     "text": "Take an umbrella ---- it rains during the field trip.",
+     "options": [
+      "unless",
+      "so that",
+      "whereas",
+      "in case",
+      "despite"
+     ],
+     "answer": 3,
+     "explanation": "'In case' (-ir diye, ihtimaline karşı) önlem almayı anlatır: Yağmur yağar diye şemsiye al. 'So that it rains' yağmurun amaçlandığı gibi saçma bir anlam verir."
+    },
+    {
+     "id": "yds_conj_011",
+     "text": "The survey was conducted ---- online ---- by telephone, so participants could choose the method they preferred.",
+     "options": [
+      "neither / nor",
+      "both / or",
+      "not only / and",
+      "whether / nor",
+      "either / or"
+     ],
+     "answer": 4,
+     "explanation": "'Either ... or' (ya ... ya da) iki seçenek sunar ve katılımcıların yöntem seçebilmesiyle uyumludur. 'Neither ... nor' (ne ... ne de) anketin hiç yapılmadığı anlamına gelir; diğer çiftler hatalı eşleşmedir."
+    },
+    {
+     "id": "yds_conj_012",
+     "text": "Some species adapt quickly to new environments; ----, others cannot survive even small changes.",
+     "options": [
+      "as a result",
+      "for example",
+      "on the other hand",
+      "in addition",
+      "that is"
+     ],
+     "answer": 2,
+     "explanation": "'On the other hand' (öte yandan) iki karşıt durumu karşılaştırır. 'As a result' sonuç, 'for example' örnek, 'in addition' ekleme, 'that is' açıklama bildirir."
+    },
+    {
+     "id": "yds_conj_013",
+     "text": "---- his lack of experience, the young researcher was chosen to lead the project because of his creative ideas.",
+     "options": [
+      "Despite",
+      "Since",
+      "Owing to",
+      "Although",
+      "Unless"
+     ],
+     "answer": 0,
+     "explanation": "'Despite' (-e rağmen) bir isim öbeğiyle kullanılır: Deneyimsizliğine rağmen seçildi. 'Owing to' (-den dolayı) neden bildirir ve anlamla çelişir; 'although' ve 'unless' tam cümle gerektirir."
+    }
+   ]
+  },
+  {
+   "id": "yds_cloze",
+   "title": "Paragrafta boşluk",
+   "description": "Kısa akademik paragraflardaki boşluğu tamamlayın.",
+   "questions": [
+    {
+     "id": "yds_cloze_001",
+     "passage": "Sleep plays a vital role in memory. During deep sleep, the brain ---- information gathered during the day and stores it in long-term memory. For this reason, students who stay up all night before an exam often perform worse than expected.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "deletes",
+      "processes",
+      "invents",
+      "ignores",
+      "rejects"
+     ],
+     "answer": 1,
+     "explanation": "'Process' (işlemek) beynin bilgiyi ele alıp uzun süreli belleğe aktarmasını anlatır. Paragraf uykunun belleğe yardım ettiğini söylediği için 'delete' (silmek), 'ignore' (görmezden gelmek) ve 'reject' (reddetmek) çelişkilidir."
+    },
+    {
+     "id": "yds_cloze_002",
+     "passage": "Coffee is one of the most widely traded agricultural products in the world. ----, it is produced mainly by small farmers in developing countries, many of whom earn very little from their crops.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "Therefore",
+      "Likewise",
+      "However",
+      "For example",
+      "In short"
+     ],
+     "answer": 2,
+     "explanation": "Birinci cümle kahvenin çok ticareti yapılan bir ürün olduğunu, ikinci cümle ise üreticilerin çok az kazandığını söyler. Bu zıtlığı 'however' (ancak) kurar."
+    },
+    {
+     "id": "yds_cloze_003",
+     "passage": "Urban gardens are becoming popular in many cities. They not only provide fresh vegetables but also give residents a chance ---- with their neighbours.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "connecting",
+      "connected",
+      "connect",
+      "to have connected",
+      "to connect"
+     ],
+     "answer": 4,
+     "explanation": "'Give someone a chance to do something' (birine bir şey yapma fırsatı vermek) yapısında 'chance' isminden sonra mastar (to + V1) gelir: 'a chance to connect'."
+    },
+    {
+     "id": "yds_cloze_004",
+     "passage": "The printing press, invented in the fifteenth century, ---- the way knowledge was shared. Books became cheaper, and ideas spread across Europe much faster than before.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "transformed",
+      "transforms",
+      "will transform",
+      "is transforming",
+      "had been transformed"
+     ],
+     "answer": 0,
+     "explanation": "Matbaa on beşinci yüzyılda icat edilmiştir ve sonraki cümleler 'became', 'spread' gibi geçmiş zaman fiilleri kullanır; bu yüzden 'past simple' etken yapı 'transformed' (dönüştürdü) gerekir."
+    },
+    {
+     "id": "yds_cloze_005",
+     "passage": "Volcanic eruptions can affect the global climate. When a large volcano erupts, it releases ash and gases into the atmosphere. These particles ---- sunlight back into space, which can cause temperatures to fall for several years.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "absorb",
+      "produce",
+      "hide",
+      "reflect",
+      "invent"
+     ],
+     "answer": 3,
+     "explanation": "Parçacıkların güneş ışığını 'back into space' (uzaya geri) göndermesi 'reflect' (yansıtmak) fiiliyle anlatılır; bu da sıcaklıkların düşmesini açıklar. 'Absorb' (emmek) 'back into space' ile uyuşmaz."
+    },
+    {
+     "id": "yds_cloze_006",
+     "passage": "Bilingual children often perform better on tasks that require attention. Researchers think this is ---- they constantly switch between two languages, which trains the brain to focus.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "although",
+      "because",
+      "unless",
+      "so that",
+      "whereas"
+     ],
+     "answer": 1,
+     "explanation": "Boşluktan sonra gelen kısım iki dilli çocukların neden daha başarılı olduğunu açıklar; 'this is because...' (bunun nedeni ... -dir) kalıbı neden bildirir."
+    },
+    {
+     "id": "yds_cloze_007",
+     "passage": "Antibiotics are powerful medicines, but they are not effective against viruses. ----, doctors advise patients not to take antibiotics for the common cold, which is caused by a virus.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "In contrast",
+      "For this reason",
+      "Nevertheless",
+      "Even so",
+      "On the contrary"
+     ],
+     "answer": 1,
+     "explanation": "Antibiyotikler virüslere etki etmediği için doktorlar soğuk algınlığında antibiyotik önermez; bu bir sonuç ilişkisidir ve 'for this reason' (bu nedenle) ile kurulur. Diğer seçenekler zıtlık bildirir."
+    },
+    {
+     "id": "yds_cloze_008",
+     "passage": "Honeybees communicate through a special movement known as the 'waggle dance'. By performing this dance, a bee can tell other members of the colony ---- to find food.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "where",
+      "what",
+      "who",
+      "which",
+      "whose"
+     ],
+     "answer": 0,
+     "explanation": "'Tell someone where to do something' (birine bir şeyi nerede yapacağını söylemek) yapısı yer bildirir; arı, diğerlerine yiyeceği nerede bulacaklarını anlatır."
+    },
+    {
+     "id": "yds_cloze_009",
+     "passage": "In the past, most people lived in rural areas. Today, ----, more than half of the world's population lives in cities, and this number is expected to rise.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "therefore",
+      "similarly",
+      "for instance",
+      "however",
+      "besides"
+     ],
+     "answer": 3,
+     "explanation": "Geçmişte insanların çoğu kırsalda yaşarken bugün yarısından fazlası şehirde yaşar; bu iki dönem arasındaki zıtlığı 'however' (ise, ancak) verir."
+    },
+    {
+     "id": "yds_cloze_010",
+     "passage": "Plastic waste is a serious threat to marine life. Every year, millions of tonnes of plastic ---- into the oceans, where they can harm fish, birds and other animals.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "dumps",
+      "dumping",
+      "are dumped",
+      "to dump",
+      "have dumped"
+     ],
+     "answer": 2,
+     "explanation": "Plastik atılan şeydir, bu yüzden edilgen yapı gerekir; özne 'millions of tonnes' çoğul olduğundan 'are dumped' (atılır) kullanılır. 'Have dumped' etken anlam verir."
+    },
+    {
+     "id": "yds_cloze_011",
+     "passage": "The Silk Road was not a single road but a network of trade routes. Along these routes, merchants exchanged not only goods such as silk and spices ---- ideas, religions and technologies.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "either",
+      "nor",
+      "as well",
+      "rather than",
+      "but also"
+     ],
+     "answer": 4,
+     "explanation": "'Not only ... but also' (yalnızca ... değil, aynı zamanda ...) kalıbı ekleme bildirir: tüccarlar yalnızca mal değil, fikir ve teknoloji de değiş tokuş etti."
+    },
+    {
+     "id": "yds_cloze_012",
+     "passage": "Regular exercise improves mental health as well as physical health. Studies show that people who exercise regularly are less likely ---- from depression and anxiety.",
+     "text": "Paragraftaki boşluğa hangisi gelmelidir?",
+     "options": [
+      "to suffer",
+      "suffering",
+      "suffer",
+      "suffered",
+      "for suffering"
+     ],
+     "answer": 0,
+     "explanation": "'Be likely to do something' (bir şeyi yapma olasılığı olmak) kalıbında 'likely' sıfatından sonra mastar gelir: 'less likely to suffer from' (... yaşama olasılığı daha düşük)."
+    }
+   ]
+  },
+  {
+   "id": "yds_completion",
+   "title": "Cümle tamamlama",
+   "description": "Cümlenin verilen kısmını anlam ve dil bilgisi açısından en iyi tamamlayan seçeneği bulun.",
+   "questions": [
+    {
+     "id": "yds_completion_001",
+     "text": "Although the drug proved effective in laboratory tests, ----.",
+     "options": [
+      "it was therefore approved immediately for public use",
+      "scientists had high hopes for its success",
+      "it caused serious side effects in human trials",
+      "it had been tested on many animals",
+      "because it was very cheap to produce"
+     ],
+     "answer": 2,
+     "explanation": "'Although' zıtlık bildirir; laboratuvarda etkili olan ilacın insan denemelerinde ciddi yan etkiler göstermesi bu zıtlığı kurar. Diğer seçenekler zıtlık içermez ya da ('because...') dil bilgisi açısından hatalıdır."
+    },
+    {
+     "id": "yds_completion_002",
+     "text": "Unless urgent measures are taken to reduce carbon emissions, ----.",
+     "options": [
+      "the climate had already become stable",
+      "scientists were not worried about the future",
+      "many countries signed an agreement in 2015",
+      "global temperatures will continue to rise",
+      "the air would have been cleaner"
+     ],
+     "answer": 3,
+     "explanation": "'Unless' ile kurulan birinci tip koşul cümlesinde ana cümle 'will + V1' ile gelir: Önlem alınmazsa sıcaklıklar artmaya devam edecek. Diğer seçeneklerin zaman yapısı ve anlamı uymaz."
+    },
+    {
+     "id": "yds_completion_003",
+     "text": "If the archaeologists had not found the ancient coins, ----.",
+     "options": [
+      "they will continue digging next year",
+      "the age of the settlement would have remained unknown",
+      "the site is visited by many tourists",
+      "the coins are made of silver",
+      "they would find more evidence tomorrow"
+     ],
+     "answer": 1,
+     "explanation": "Üçüncü tip koşul cümlesinde (if + had + V3) ana cümle 'would have + V3' olur: Paralar bulunmasaydı yerleşimin yaşı bilinmeyecekti. Diğer seçeneklerin zamanı uyumsuzdur."
+    },
+    {
+     "id": "yds_completion_004",
+     "text": "----, the number of people working from home has increased sharply.",
+     "options": [
+      "Although technology has developed rapidly",
+      "Unless companies provide laptops",
+      "Before computers were invented",
+      "In order to reduce internet use",
+      "Since fast internet connections became widespread"
+     ],
+     "answer": 4,
+     "explanation": "'Since' + geçmiş zaman, 'present perfect' ana cümleyle birlikte '-den beri' anlamı verir: Hızlı internet yaygınlaştığından beri evden çalışanlar arttı. 'Although' zıtlık kurduğu için mantıksızdır."
+    },
+    {
+     "id": "yds_completion_005",
+     "text": "The researchers used a larger sample than in previous studies so that ----.",
+     "options": [
+      "the results had been published earlier",
+      "nobody was interested in the topic",
+      "the experiment was cancelled",
+      "they spent less money",
+      "their findings would be more reliable"
+     ],
+     "answer": 4,
+     "explanation": "'So that' amaç bildirir; daha büyük örneklemin amacı bulguların daha güvenilir olmasıdır. Daha büyük örneklem daha az para harcamaya yol açmaz; diğerleri amaç bildirmez."
+    },
+    {
+     "id": "yds_completion_006",
+     "text": "Whereas some experts argue that video games harm young people, ----.",
+     "options": [
+      "many young people play video games every day",
+      "video games have become very popular",
+      "others claim that they can improve problem-solving skills",
+      "the experts agree that games are harmful",
+      "video games were first developed in the 1970s"
+     ],
+     "answer": 2,
+     "explanation": "'Whereas' iki karşıt görüşü karşılaştırır: Bazı uzmanlar oyunların zararlı olduğunu söylerken diğerleri problem çözme becerisini geliştirdiğini iddia eder. Diğer seçeneklerde karşıt bir görüş yoktur."
+    },
+    {
+     "id": "yds_completion_007",
+     "text": "No sooner had the scientist published her results ----.",
+     "options": [
+      "than other researchers began to question her methods",
+      "when other researchers began to question her methods",
+      "after other researchers had questioned her methods",
+      "so other researchers began to question her methods",
+      "until other researchers questioned her methods"
+     ],
+     "answer": 0,
+     "explanation": "'No sooner ... than ...' (... -ir -mez) sabit bir kalıptır ve 'than' ile tamamlanır: Sonuçlarını yayımlar yayımlamaz diğer araştırmacılar yöntemini sorgulamaya başladı. 'When' bu kalıpla kullanılmaz."
+    },
+    {
+     "id": "yds_completion_008",
+     "text": "Even though the town has a long history, ----.",
+     "options": [
+      "it attracts many visitors interested in history",
+      "it was founded several centuries ago",
+      "its museum contains many ancient objects",
+      "very few tourists are aware of its historical sites",
+      "historians have studied it for years"
+     ],
+     "answer": 3,
+     "explanation": "'Even though' güçlü bir zıtlık bildirir: Uzun bir geçmişi olmasına rağmen çok az turist tarihî yerlerinden haberdardır. Diğer seçenekler uzun tarihle uyumlu olduğu için zıtlık oluşturmaz."
+    },
+    {
+     "id": "yds_completion_009",
+     "text": "The city council decided to build more bicycle lanes ----.",
+     "options": [
+      "because there were too few cars",
+      "in order to reduce traffic congestion",
+      "despite the demand from cyclists",
+      "so that more cars could use the roads",
+      "unless citizens wanted them"
+     ],
+     "answer": 1,
+     "explanation": "'In order to' (-mek amacıyla) amaç bildirir: Bisiklet yolları trafik sıkışıklığını azaltmak için yapılır. 'Despite the demand' mantıksız bir zıtlık, 'so that more cars...' ise ters bir amaç verir."
+    },
+    {
+     "id": "yds_completion_010",
+     "text": "Most of the participants who were given the new diet ----, while those in the control group showed no change.",
+     "options": [
+      "had the same results as the control group",
+      "showed no change in their weight",
+      "were not given any diet",
+      "will be selected next year",
+      "lost a significant amount of weight"
+     ],
+     "answer": 4,
+     "explanation": "'While' burada iki grubu karşılaştırır; kontrol grubunda değişiklik olmadığına göre diyet grubunda bir değişiklik olmalıdır: önemli miktarda kilo verdiler. Diğer seçenekler zıtlığı bozar ya da zamana uymaz."
+    },
+    {
+     "id": "yds_completion_011",
+     "text": "It was not until the invention of the microscope ----.",
+     "options": [
+      "when scientists could observe bacteria",
+      "scientists could observe bacteria",
+      "which scientists observed bacteria",
+      "that scientists could observe bacteria",
+      "that scientists could not observe bacteria"
+     ],
+     "answer": 3,
+     "explanation": "'It was not until X that Y' (ancak X'ten sonra Y oldu) kalıbında ikinci kısım 'that' ile başlar ve olumlu olur: Bakterileri ancak mikroskobun icadından sonra gözlemleyebildiler."
+    },
+    {
+     "id": "yds_completion_012",
+     "text": "Since the early twentieth century, life expectancy ----.",
+     "options": [
+      "increased considerably in the eighteenth century",
+      "will increase in the future",
+      "has increased considerably in most parts of the world",
+      "was increasing in ancient times",
+      "increases every day"
+     ],
+     "answer": 2,
+     "explanation": "'Since + geçmişteki başlangıç noktası' ile ana cümlede 'present perfect' kullanılır: Yirminci yüzyılın başından beri yaşam süresi önemli ölçüde arttı."
+    }
+   ]
+  },
+  {
+   "id": "yds_translation",
+   "title": "Çeviri",
+   "description": "İngilizce-Türkçe ve Türkçe-İngilizce anlamca en yakın çeviriyi seçin.",
+   "questions": [
+    {
+     "id": "yds_translation_001",
+     "text": "Aşağıdaki İngilizce cümlenin anlamca en yakın Türkçe karşılığı hangisidir?\n\nScientists have warned that rising sea levels could threaten many coastal cities within the next century.",
+     "options": [
+      "Bilim insanları, yükselen deniz seviyelerinin önümüzdeki yüzyıl içinde birçok kıyı kentini tehdit edebileceği konusunda uyarıda bulunmuştur.",
+      "Bilim insanları, önümüzdeki yüzyılda birçok kıyı kentinin deniz seviyesini yükselteceği konusunda uyarmıştır.",
+      "Bilim insanları, yükselen deniz seviyelerinin geçen yüzyılda birçok kıyı kentini tehdit ettiğini söylemiştir.",
+      "Bilim insanları, deniz seviyelerinin yükselmesinin kıyı kentlerini hiçbir zaman tehdit etmeyeceğini söylemiştir.",
+      "Bilim insanlarına göre, birçok kıyı kenti önümüzdeki yüzyılda deniz seviyelerini düşürebilir."
+     ],
+     "answer": 0,
+     "explanation": "'Could threaten' (tehdit edebilir) olasılık, 'within the next century' (önümüzdeki yüzyıl içinde) gelecek bildirir. Doğru çeviri özneyi (yükselen deniz seviyeleri), kipi ve zamanı korur; diğerleri zamanı veya anlamı değiştirir."
+    },
+    {
+     "id": "yds_translation_002",
+     "text": "Aşağıdaki İngilizce cümlenin anlamca en yakın Türkçe karşılığı hangisidir?\n\nDespite the economic crisis, the number of students applying to universities did not decrease.",
+     "options": [
+      "Ekonomik kriz nedeniyle üniversitelere başvuran öğrenci sayısı azaldı.",
+      "Ekonomik krize rağmen, üniversitelere başvuran öğrenci sayısı azalmadı.",
+      "Ekonomik krize rağmen üniversitelere başvuran öğrenci sayısı iki katına çıktı.",
+      "Ekonomik kriz sona erdiğinde üniversitelere başvuran öğrenci sayısı azalmadı.",
+      "Üniversiteler, ekonomik kriz sırasında daha az öğrenci kabul etti."
+     ],
+     "answer": 1,
+     "explanation": "'Despite' (-e rağmen) ve 'did not decrease' (azalmadı) birlikte korunmalıdır. 'İki katına çıktı' metinde olmayan bir bilgi ekler; 'nedeniyle' ve 'sona erdiğinde' bağlacın anlamını değiştirir."
+    },
+    {
+     "id": "yds_translation_003",
+     "text": "Aşağıdaki İngilizce cümlenin anlamca en yakın Türkçe karşılığı hangisidir?\n\nThe data collected during the survey will be analysed by an independent team.",
+     "options": [
+      "Bağımsız bir ekip, anket sırasında veri toplayacaktır.",
+      "Anket sırasında toplanan veriler bağımsız bir ekip tarafından analiz edildi.",
+      "Bağımsız ekip, anketi analiz etmeden önce verileri toplamıştı.",
+      "Anket verileri, bağımsız bir ekip tarafından toplanmalıdır.",
+      "Anket sırasında toplanan veriler, bağımsız bir ekip tarafından analiz edilecektir."
+     ],
+     "answer": 4,
+     "explanation": "'Will be analysed' gelecek zaman edilgen yapıdır: 'analiz edilecektir'. 'Collected during the survey' (anket sırasında toplanan) veriyi niteler. Diğer çeviriler zamanı ya da kimin ne yaptığını değiştirir."
+    },
+    {
+     "id": "yds_translation_004",
+     "text": "Aşağıdaki İngilizce cümlenin anlamca en yakın Türkçe karşılığı hangisidir?\n\nUnless the patient follows the doctor's advice, his condition may get worse.",
+     "options": [
+      "Hasta doktorun tavsiyelerine uyduğu için durumu kötüleşti.",
+      "Hasta doktorun tavsiyelerine uymazsa durumu kötüleşebilir.",
+      "Hasta doktorun tavsiyelerine uyarsa durumu kötüleşebilir.",
+      "Doktor hastaya tavsiye vermezse hastanın durumu düzelebilir.",
+      "Hastanın durumu kötüleşmesine rağmen doktorun tavsiyelerine uydu."
+     ],
+     "answer": 1,
+     "explanation": "'Unless' olumsuz koşul bildirir ve '-mezse/-mazsa' ile çevrilir; 'may get worse' 'kötüleşebilir' demektir. 'Uyarsa' koşulu tersine çevirir."
+    },
+    {
+     "id": "yds_translation_005",
+     "text": "Aşağıdaki İngilizce cümlenin anlamca en yakın Türkçe karşılığı hangisidir?\n\nIt is widely believed that the ancient Egyptians had advanced knowledge of mathematics.",
+     "options": [
+      "Eski Mısırlıların matematik bilgisinin çok sınırlı olduğu yaygın olarak bilinmektedir.",
+      "Eski Mısırlılar, matematiğin herkes tarafından öğrenilmesi gerektiğine inanıyordu.",
+      "Eski Mısırlıların ileri düzeyde matematik bilgisine sahip olduğuna yaygın olarak inanılmaktadır.",
+      "Eski Mısırlıların matematiği icat ettiği kesin olarak kanıtlanmıştır.",
+      "Pek çok kişi, eski Mısırlıların matematikle hiç ilgilenmediğini düşünmektedir."
+     ],
+     "answer": 2,
+     "explanation": "'It is widely believed that...' (… -dığına yaygın olarak inanılmaktadır) edilgen bir kanaat bildirir; 'advanced knowledge' 'ileri düzeyde bilgi' demektir. 'Kesin olarak kanıtlanmıştır' inanç bildiren yapıyla uyuşmaz."
+    },
+    {
+     "id": "yds_translation_006",
+     "text": "Aşağıdaki İngilizce cümlenin anlamca en yakın Türkçe karşılığı hangisidir?\n\nThe more people use public transport, the less air pollution there will be.",
+     "options": [
+      "İnsanlar toplu taşımayı ne kadar çok kullanırsa hava kirliliği o kadar az olacaktır.",
+      "İnsanlar toplu taşımayı daha az kullandıkça hava kirliliği azalacaktır.",
+      "Toplu taşıma, hava kirliliğinin en önemli nedenidir.",
+      "Hava kirliliği azaldıkça insanlar toplu taşımayı daha çok kullanacaktır.",
+      "İnsanlar toplu taşımayı çok kullansa da hava kirliliği artmaya devam edecektir."
+     ],
+     "answer": 0,
+     "explanation": "'The more ..., the less ...' yapısı 'ne kadar çok ..., o kadar az ...' şeklinde çevrilir. Neden-sonuç yönü korunmalıdır: toplu taşıma kullanımı arttıkça kirlilik azalır."
+    },
+    {
+     "id": "yds_translation_007",
+     "text": "Aşağıdaki Türkçe cümlenin anlamca en yakın İngilizce karşılığı hangisidir?\n\nBu araştırmanın amacı, sosyal medyanın gençlerin uyku düzeni üzerindeki etkilerini incelemektir.",
+     "options": [
+      "This research shows that social media has no effect on young people's sleep patterns.",
+      "The aim of this research was to encourage young people to use social media before sleeping.",
+      "Young people's sleep patterns affect how often they use social media, according to this research.",
+      "The aim of this research is to examine the effects of social media on young people's sleep patterns.",
+      "This research examined whether young people sleep less than adults."
+     ],
+     "answer": 3,
+     "explanation": "'Amacı ... incelemektir' 'the aim is to examine' ile karşılanır; 'üzerindeki etkileri' 'the effects of ... on ...' kalıbıdır. Diğer seçenekler amacı, sonucu veya etki yönünü değiştirir."
+    },
+    {
+     "id": "yds_translation_008",
+     "text": "Aşağıdaki Türkçe cümlenin anlamca en yakın İngilizce karşılığı hangisidir?\n\nYeni ilacın yan etkileri henüz tam olarak bilinmemektedir.",
+     "options": [
+      "The new drug has no known side effects.",
+      "The side effects of the new drug have already been fully identified.",
+      "The side effects of the new drug are not yet fully known.",
+      "The new drug was developed to reduce side effects.",
+      "Scientists will never know the side effects of the new drug."
+     ],
+     "answer": 2,
+     "explanation": "'Henüz' 'not yet', 'tam olarak' 'fully' ile karşılanır; '-mektedir' edilgen yapısı 'are not known' ile verilir. 'Has no known side effects' ise bilinen yan etki olmadığını söyler, aynı anlam değildir."
+    },
+    {
+     "id": "yds_translation_009",
+     "text": "Aşağıdaki Türkçe cümlenin anlamca en yakın İngilizce karşılığı hangisidir?\n\nHükümet, enerji tasarrufu sağlamak amacıyla yeni bir kampanya başlattı.",
+     "options": [
+      "The government launched a new campaign in order to save energy.",
+      "The government will launch a new campaign to produce more energy.",
+      "A new energy company was founded by the government.",
+      "Because of the new campaign, the government spent more energy.",
+      "The government ended its energy-saving campaign."
+     ],
+     "answer": 0,
+     "explanation": "'Amacıyla' amaç bildirir ve 'in order to' ile çevrilir; 'başlattı' geçmiş zamandır: 'launched'. 'Save energy' enerji tasarrufu yapmak demektir."
+    },
+    {
+     "id": "yds_translation_010",
+     "text": "Aşağıdaki Türkçe cümlenin anlamca en yakın İngilizce karşılığı hangisidir?\n\nEğer şimdi daha fazla zamanımız olsaydı, deneyi tekrarlardık.",
+     "options": [
+      "If we have more time, we will repeat the experiment.",
+      "If we had more time now, we would repeat the experiment.",
+      "We repeated the experiment because we had more time.",
+      "Although we had more time, we did not repeat the experiment.",
+      "We need more time to start the experiment."
+     ],
+     "answer": 1,
+     "explanation": "'Şimdi ... olsaydı, ... -ardık' şimdiki zamana ait gerçek dışı bir durumu anlatır; bu İngilizcede ikinci tip koşul cümlesidir: 'If + past simple, would + V1'. 'If we have ..., we will ...' gerçekleşmesi olası bir koşuldur."
+    },
+    {
+     "id": "yds_translation_011",
+     "text": "Aşağıdaki Türkçe cümlenin anlamca en yakın İngilizce karşılığı hangisidir?\n\nKuraklık, bölgedeki tarımsal üretimi ciddi şekilde etkilemiştir.",
+     "options": [
+      "Agricultural production in the region caused a serious drought.",
+      "The drought may affect agricultural production in the region in the future.",
+      "Thanks to the drought, agricultural production in the region increased.",
+      "The drought has seriously affected agricultural production in the region.",
+      "The region is famous for its agricultural production despite the drought."
+     ],
+     "answer": 3,
+     "explanation": "'Etkilemiştir' 'has affected' ile, 'ciddi şekilde' 'seriously' ile karşılanır. Neden kuraklık, etkilenen tarımsal üretimdir; ikinci seçenek bu ilişkiyi ters çevirir."
+    },
+    {
+     "id": "yds_translation_012",
+     "text": "Aşağıdaki Türkçe cümlenin anlamca en yakın İngilizce karşılığı hangisidir?\n\nÖğrencilerin çoğu, çevrim içi derslerin yüz yüze dersler kadar etkili olmadığını düşünüyor.",
+     "options": [
+      "Most students think that online lessons are more effective than face-to-face lessons.",
+      "All students prefer online lessons to face-to-face lessons.",
+      "Most students attend both online and face-to-face lessons.",
+      "Online lessons were as effective as face-to-face lessons, according to teachers.",
+      "Most students think that online lessons are not as effective as face-to-face lessons."
+     ],
+     "answer": 4,
+     "explanation": "'... kadar etkili değil' 'not as effective as' ile karşılanır; 'öğrencilerin çoğu' 'most students' demektir. 'More effective than' karşılaştırmayı tersine çevirir."
+    }
+   ]
+  },
+  {
+   "id": "yds_reading",
+   "title": "Okuma",
+   "description": "Bilim, sağlık, sosyal bilimler ve tarih konulu parçaları okuyup soruları cevaplayın.",
+   "questions": [
+    {
+     "id": "yds_reading_001",
+     "passage": "The human gut is home to trillions of bacteria, collectively known as the gut microbiome. For a long time, these microorganisms were seen mainly as a cause of disease. However, recent research suggests that most of them are not only harmless but also essential for good health. Gut bacteria help us digest certain types of fibre, produce some vitamins and train the immune system to recognise real threats. Interestingly, the composition of the microbiome varies greatly from person to person and is strongly influenced by diet. People who eat a wide variety of plant-based foods tend to have a more diverse microbiome, which scientists associate with better health. On the other hand, the overuse of antibiotics can reduce this diversity, since these drugs kill helpful bacteria as well as harmful ones.",
+     "text": "According to the passage, the gut microbiome ----.",
+     "options": [
+      "consists mainly of harmful bacteria",
+      "is the same in every person",
+      "cannot be affected by what we eat",
+      "contributes to several important functions in the body",
+      "is destroyed completely by antibiotics"
+     ],
+     "answer": 3,
+     "explanation": "Parça bağırsak bakterilerinin lif sindirimine, vitamin üretimine ve bağışıklık sisteminin eğitilmesine yardım ettiğini söyler. Mikrobiyomun kişiden kişiye değiştiği ve beslenmeden etkilendiği belirtildiği için diğer seçenekler yanlıştır."
+    },
+    {
+     "id": "yds_reading_002",
+     "passage": "The human gut is home to trillions of bacteria, collectively known as the gut microbiome. For a long time, these microorganisms were seen mainly as a cause of disease. However, recent research suggests that most of them are not only harmless but also essential for good health. Gut bacteria help us digest certain types of fibre, produce some vitamins and train the immune system to recognise real threats. Interestingly, the composition of the microbiome varies greatly from person to person and is strongly influenced by diet. People who eat a wide variety of plant-based foods tend to have a more diverse microbiome, which scientists associate with better health. On the other hand, the overuse of antibiotics can reduce this diversity, since these drugs kill helpful bacteria as well as harmful ones.",
+     "text": "It is stated in the passage that a diverse microbiome ----.",
+     "options": [
+      "is associated by scientists with better health",
+      "is caused by the overuse of antibiotics",
+      "is rarely found in people eating plant-based foods",
+      "makes the digestion of fibre more difficult",
+      "was considered harmful by all researchers"
+     ],
+     "answer": 0,
+     "explanation": "Parçada 'which scientists associate with better health' ifadesi geçer: bilim insanları çeşitli bir mikrobiyomu daha iyi sağlıkla ilişkilendirir. Antibiyotikler ise çeşitliliği azaltır."
+    },
+    {
+     "id": "yds_reading_003",
+     "passage": "The human gut is home to trillions of bacteria, collectively known as the gut microbiome. For a long time, these microorganisms were seen mainly as a cause of disease. However, recent research suggests that most of them are not only harmless but also essential for good health. Gut bacteria help us digest certain types of fibre, produce some vitamins and train the immune system to recognise real threats. Interestingly, the composition of the microbiome varies greatly from person to person and is strongly influenced by diet. People who eat a wide variety of plant-based foods tend to have a more diverse microbiome, which scientists associate with better health. On the other hand, the overuse of antibiotics can reduce this diversity, since these drugs kill helpful bacteria as well as harmful ones.",
+     "text": "The word 'composition' in the passage is closest in meaning to ----.",
+     "options": [
+      "location",
+      "make-up",
+      "weakness",
+      "origin",
+      "purpose"
+     ],
+     "answer": 1,
+     "explanation": "'Composition' burada bir şeyin hangi parçalardan oluştuğunu, yani bileşimini anlatır; en yakın anlam 'make-up' (yapı, bileşim) kelimesidir."
+    },
+    {
+     "id": "yds_reading_004",
+     "passage": "The human gut is home to trillions of bacteria, collectively known as the gut microbiome. For a long time, these microorganisms were seen mainly as a cause of disease. However, recent research suggests that most of them are not only harmless but also essential for good health. Gut bacteria help us digest certain types of fibre, produce some vitamins and train the immune system to recognise real threats. Interestingly, the composition of the microbiome varies greatly from person to person and is strongly influenced by diet. People who eat a wide variety of plant-based foods tend to have a more diverse microbiome, which scientists associate with better health. On the other hand, the overuse of antibiotics can reduce this diversity, since these drugs kill helpful bacteria as well as harmful ones.",
+     "text": "Which of the following can be inferred from the passage?",
+     "options": [
+      "Scientists have always considered gut bacteria beneficial.",
+      "Plant-based diets reduce the number of bacteria in the gut.",
+      "Antibiotics should be used carefully because they may also harm useful bacteria.",
+      "The immune system works independently of gut bacteria.",
+      "Vitamins cannot be produced inside the human body."
+     ],
+     "answer": 2,
+     "explanation": "Son cümle antibiyotiklerin aşırı kullanımının yararlı bakterileri de öldürdüğünü söyler; buradan antibiyotiklerin dikkatli kullanılması gerektiği çıkarılabilir. Parça bakterilerin uzun süre hastalık nedeni olarak görüldüğünü belirttiği için ikinci seçenek yanlıştır."
+    },
+    {
+     "id": "yds_reading_005",
+     "passage": "Before the nineteenth century, most towns set their clocks according to the position of the sun. As a result, noon in one town might be several minutes different from noon in another town only a short distance away. This caused few problems as long as people travelled slowly on foot or by horse. The arrival of the railways, however, changed everything. Train companies found it extremely difficult to publish clear timetables when every station used a different local time, and the confusion sometimes contributed to dangerous accidents. To solve this problem, railway companies began to adopt a single standard time across their networks. Over the following decades, governments gradually accepted the idea, and in 1884 an international conference agreed on a system that became the basis of the time zones we use today.",
+     "text": "According to the passage, differences in local time ----.",
+     "options": [
+      "were introduced by railway companies",
+      "caused frequent accidents among people travelling on foot",
+      "were eliminated by an international conference in the 1700s",
+      "still determine train timetables today",
+      "became a serious problem with the development of the railways"
+     ],
+     "answer": 4,
+     "explanation": "Parça, yerel saat farklarının yaya ve at ile yolculukta sorun yaratmadığını, ancak demiryollarının gelişiyle her şeyin değiştiğini anlatır. Diğer seçenekler parçadaki bilgilerle çelişir."
+    },
+    {
+     "id": "yds_reading_006",
+     "passage": "Before the nineteenth century, most towns set their clocks according to the position of the sun. As a result, noon in one town might be several minutes different from noon in another town only a short distance away. This caused few problems as long as people travelled slowly on foot or by horse. The arrival of the railways, however, changed everything. Train companies found it extremely difficult to publish clear timetables when every station used a different local time, and the confusion sometimes contributed to dangerous accidents. To solve this problem, railway companies began to adopt a single standard time across their networks. Over the following decades, governments gradually accepted the idea, and in 1884 an international conference agreed on a system that became the basis of the time zones we use today.",
+     "text": "It is clear from the passage that railway timetables ----.",
+     "options": [
+      "were based on the position of the moon",
+      "were prepared only by governments",
+      "were hard to prepare when each station used its own time",
+      "were introduced after 1884",
+      "never caused any confusion"
+     ],
+     "answer": 2,
+     "explanation": "Parçada tren şirketlerinin her istasyon farklı yerel saat kullandığında açık tarifeler yayımlamakta çok zorlandığı belirtilir. 'Find it difficult' (zor bulmak) ifadesi bu bilgiyi verir."
+    },
+    {
+     "id": "yds_reading_007",
+     "passage": "Before the nineteenth century, most towns set their clocks according to the position of the sun. As a result, noon in one town might be several minutes different from noon in another town only a short distance away. This caused few problems as long as people travelled slowly on foot or by horse. The arrival of the railways, however, changed everything. Train companies found it extremely difficult to publish clear timetables when every station used a different local time, and the confusion sometimes contributed to dangerous accidents. To solve this problem, railway companies began to adopt a single standard time across their networks. Over the following decades, governments gradually accepted the idea, and in 1884 an international conference agreed on a system that became the basis of the time zones we use today.",
+     "text": "The word 'adopt' in the passage is closest in meaning to ----.",
+     "options": [
+      "reject",
+      "measure",
+      "repair",
+      "start using",
+      "compare"
+     ],
+     "answer": 3,
+     "explanation": "'Adopt' burada bir sistemi veya fikri benimseyip kullanmaya başlamak anlamındadır; en yakın karşılık 'start using' (kullanmaya başlamak) olur. 'Reject' (reddetmek) zıt anlamlıdır."
+    },
+    {
+     "id": "yds_reading_008",
+     "passage": "Before the nineteenth century, most towns set their clocks according to the position of the sun. As a result, noon in one town might be several minutes different from noon in another town only a short distance away. This caused few problems as long as people travelled slowly on foot or by horse. The arrival of the railways, however, changed everything. Train companies found it extremely difficult to publish clear timetables when every station used a different local time, and the confusion sometimes contributed to dangerous accidents. To solve this problem, railway companies began to adopt a single standard time across their networks. Over the following decades, governments gradually accepted the idea, and in 1884 an international conference agreed on a system that became the basis of the time zones we use today.",
+     "text": "What is the main idea of the passage?",
+     "options": [
+      "Travelling by horse was faster than travelling by train.",
+      "The needs of the railways led to the adoption of standard time.",
+      "Local solar time is more accurate than standard time.",
+      "Railway accidents were common in the twentieth century.",
+      "Governments invented time zones before the railways existed."
+     ],
+     "answer": 1,
+     "explanation": "Parçanın tamamı demiryollarının ortaya çıkardığı tarife sorununun standart saate ve saat dilimlerine geçişe yol açtığını anlatır. Diğer seçenekler ya parçada yoktur ya da parçayla çelişir."
+    },
+    {
+     "id": "yds_reading_009",
+     "passage": "Urban planners have long recognised that parks make cities more attractive, but only recently have researchers begun to measure their effects on well-being. A number of studies indicate that people who live within walking distance of green spaces report lower levels of stress and are more physically active than those who do not. Some researchers argue that these benefits come from exercise alone, while others believe that simply being surrounded by trees and plants has a calming effect on the mind. Whatever the explanation, the findings have practical consequences. Several cities have started to turn empty car parks and unused railway lines into small parks, hoping to improve public health at a relatively low cost. Critics warn, however, that new parks can raise property prices, forcing poorer residents to move away from the very neighbourhoods the parks were meant to benefit.",
+     "text": "According to the passage, people who live near green spaces ----.",
+     "options": [
+      "always earn more money than others",
+      "exercise less than people living elsewhere",
+      "are forced to move away immediately",
+      "are mostly urban planners",
+      "tend to report lower levels of stress"
+     ],
+     "answer": 4,
+     "explanation": "Parçada yeşil alanlara yürüme mesafesinde yaşayanların daha düşük stres bildirdiği ve fiziksel olarak daha aktif olduğu belirtilir. 'Tend to' (-me eğiliminde olmak) bu genellemeyi ifade eder."
+    },
+    {
+     "id": "yds_reading_010",
+     "passage": "Urban planners have long recognised that parks make cities more attractive, but only recently have researchers begun to measure their effects on well-being. A number of studies indicate that people who live within walking distance of green spaces report lower levels of stress and are more physically active than those who do not. Some researchers argue that these benefits come from exercise alone, while others believe that simply being surrounded by trees and plants has a calming effect on the mind. Whatever the explanation, the findings have practical consequences. Several cities have started to turn empty car parks and unused railway lines into small parks, hoping to improve public health at a relatively low cost. Critics warn, however, that new parks can raise property prices, forcing poorer residents to move away from the very neighbourhoods the parks were meant to benefit.",
+     "text": "The researchers mentioned in the passage disagree about ----.",
+     "options": [
+      "why green spaces are beneficial",
+      "whether parks make cities attractive",
+      "whether stress levels can be measured",
+      "how many cities have parks",
+      "whether car parks are necessary"
+     ],
+     "answer": 0,
+     "explanation": "Bazı araştırmacılar faydanın yalnızca egzersizden geldiğini, diğerleri ise ağaç ve bitkilerle çevrili olmanın sakinleştirici etkisinden geldiğini savunur; yani anlaşmazlık faydanın nedeni üzerinedir."
+    },
+    {
+     "id": "yds_reading_011",
+     "passage": "Urban planners have long recognised that parks make cities more attractive, but only recently have researchers begun to measure their effects on well-being. A number of studies indicate that people who live within walking distance of green spaces report lower levels of stress and are more physically active than those who do not. Some researchers argue that these benefits come from exercise alone, while others believe that simply being surrounded by trees and plants has a calming effect on the mind. Whatever the explanation, the findings have practical consequences. Several cities have started to turn empty car parks and unused railway lines into small parks, hoping to improve public health at a relatively low cost. Critics warn, however, that new parks can raise property prices, forcing poorer residents to move away from the very neighbourhoods the parks were meant to benefit.",
+     "text": "It is stated in the passage that some cities ----.",
+     "options": [
+      "have closed their parks to save money",
+      "are building new railway lines through parks",
+      "have banned cars from their centres",
+      "are converting unused areas into parks",
+      "have lowered property prices by creating parks"
+     ],
+     "answer": 3,
+     "explanation": "Parçada bazı şehirlerin boş otoparkları ve kullanılmayan demiryolu hatlarını küçük parklara dönüştürmeye başladığı söylenir. 'Turn X into Y' (X'i Y'ye dönüştürmek) bu bilgiyi verir; parklar fiyatları düşürmez, artırabilir."
+    },
+    {
+     "id": "yds_reading_012",
+     "passage": "Urban planners have long recognised that parks make cities more attractive, but only recently have researchers begun to measure their effects on well-being. A number of studies indicate that people who live within walking distance of green spaces report lower levels of stress and are more physically active than those who do not. Some researchers argue that these benefits come from exercise alone, while others believe that simply being surrounded by trees and plants has a calming effect on the mind. Whatever the explanation, the findings have practical consequences. Several cities have started to turn empty car parks and unused railway lines into small parks, hoping to improve public health at a relatively low cost. Critics warn, however, that new parks can raise property prices, forcing poorer residents to move away from the very neighbourhoods the parks were meant to benefit.",
+     "text": "The author mentions the critics in the last sentence in order to ----.",
+     "options": [
+      "prove that parks reduce stress",
+      "point out a possible negative consequence of new parks",
+      "explain how parks are designed",
+      "support the idea that parks are cheap to build",
+      "show that poorer residents dislike trees"
+     ],
+     "answer": 1,
+     "explanation": "'However' ile başlayan son cümle, yeni parkların konut fiyatlarını artırıp yoksul sakinleri bölgeden çıkarabileceğini söyler; yazar burada olası olumsuz bir sonucu dile getirir."
+    },
+    {
+     "id": "yds_reading_013",
+     "passage": "Ice cores are long cylinders of ice drilled from glaciers and ice sheets, mainly in Antarctica and Greenland. They are extremely valuable to climate scientists because the snow that falls each year is pressed into a new layer of ice, much like the pages of a book. Tiny bubbles trapped in these layers contain samples of the air from the time the snow fell. By analysing the gases in the bubbles, researchers can determine how much carbon dioxide was in the atmosphere hundreds of thousands of years ago. The layers may also contain dust and volcanic ash, which reveal information about past winds and eruptions. Unfortunately, as global temperatures rise, many mountain glaciers are melting, and with them a unique record of the Earth's history is being lost.",
+     "text": "According to the passage, the air bubbles in ice cores ----.",
+     "options": [
+      "are created during the drilling process",
+      "contain no carbon dioxide",
+      "show the depth of the oceans",
+      "are found only in mountain glaciers",
+      "preserve samples of the ancient atmosphere"
+     ],
+     "answer": 4,
+     "explanation": "Parçada buz katmanlarındaki küçük kabarcıkların karın yağdığı döneme ait hava örnekleri içerdiği ve bunların analiziyle geçmişteki karbondioksit miktarının belirlendiği anlatılır."
+    },
+    {
+     "id": "yds_reading_014",
+     "passage": "Ice cores are long cylinders of ice drilled from glaciers and ice sheets, mainly in Antarctica and Greenland. They are extremely valuable to climate scientists because the snow that falls each year is pressed into a new layer of ice, much like the pages of a book. Tiny bubbles trapped in these layers contain samples of the air from the time the snow fell. By analysing the gases in the bubbles, researchers can determine how much carbon dioxide was in the atmosphere hundreds of thousands of years ago. The layers may also contain dust and volcanic ash, which reveal information about past winds and eruptions. Unfortunately, as global temperatures rise, many mountain glaciers are melting, and with them a unique record of the Earth's history is being lost.",
+     "text": "The author compares ice layers to the pages of a book in order to ----.",
+     "options": [
+      "show that they record events in order over time",
+      "emphasise how thin glaciers are",
+      "explain how ice cores are drilled",
+      "suggest that scientists write books about them",
+      "argue that books are older than glaciers"
+     ],
+     "answer": 0,
+     "explanation": "Her yıl yağan kar yeni bir katman oluşturur; tıpkı kitap sayfaları gibi katmanlar zaman sırasına göre dizilir. Benzetme, buzun geçmişi sırayla kaydettiğini göstermek için yapılmıştır."
+    },
+    {
+     "id": "yds_reading_015",
+     "passage": "Ice cores are long cylinders of ice drilled from glaciers and ice sheets, mainly in Antarctica and Greenland. They are extremely valuable to climate scientists because the snow that falls each year is pressed into a new layer of ice, much like the pages of a book. Tiny bubbles trapped in these layers contain samples of the air from the time the snow fell. By analysing the gases in the bubbles, researchers can determine how much carbon dioxide was in the atmosphere hundreds of thousands of years ago. The layers may also contain dust and volcanic ash, which reveal information about past winds and eruptions. Unfortunately, as global temperatures rise, many mountain glaciers are melting, and with them a unique record of the Earth's history is being lost.",
+     "text": "It can be understood from the passage that volcanic ash in ice cores ----.",
+     "options": [
+      "is the main cause of global warming",
+      "makes the layers impossible to analyse",
+      "helps scientists learn about past eruptions",
+      "is trapped inside the air bubbles",
+      "comes mainly from Greenland"
+     ],
+     "answer": 2,
+     "explanation": "Parçada katmanlardaki toz ve volkanik külün geçmişteki rüzgârlar ve patlamalar hakkında bilgi verdiği ('reveal information') belirtilir."
+    },
+    {
+     "id": "yds_reading_016",
+     "passage": "Ice cores are long cylinders of ice drilled from glaciers and ice sheets, mainly in Antarctica and Greenland. They are extremely valuable to climate scientists because the snow that falls each year is pressed into a new layer of ice, much like the pages of a book. Tiny bubbles trapped in these layers contain samples of the air from the time the snow fell. By analysing the gases in the bubbles, researchers can determine how much carbon dioxide was in the atmosphere hundreds of thousands of years ago. The layers may also contain dust and volcanic ash, which reveal information about past winds and eruptions. Unfortunately, as global temperatures rise, many mountain glaciers are melting, and with them a unique record of the Earth's history is being lost.",
+     "text": "What is the author worried about in the last sentence?",
+     "options": [
+      "Melting glaciers are destroying valuable scientific evidence.",
+      "Drilling ice cores is too expensive.",
+      "Scientists are not interested in mountain glaciers.",
+      "Ice cores cannot reveal information about winds.",
+      "Global temperatures have been falling recently."
+     ],
+     "answer": 0,
+     "explanation": "'Unfortunately' ile başlayan son cümle, ısınan iklim nedeniyle eriyen dağ buzullarıyla birlikte Dünya tarihine ait eşsiz bir kaydın kaybolduğunu söyler; yazarın kaygısı budur."
+    }
+   ]
+  }
+ ]
+}

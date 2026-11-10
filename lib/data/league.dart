@@ -30,8 +30,7 @@ DateTime weekStart(DateTime d) {
   return day.subtract(Duration(days: day.weekday - DateTime.monday));
 }
 
-Duration untilWeekEnd(DateTime now) =>
-    weekStart(now).add(const Duration(days: 7)).difference(now);
+Duration untilWeekEnd(DateTime now) => weekStart(now).add(const Duration(days: 7)).difference(now);
 
 class LeagueEntry {
   const LeagueEntry(this.name, this.avatar, this.xp, {this.isUser = false});
@@ -42,13 +41,48 @@ class LeagueEntry {
 }
 
 const _names = [
-  'Ayşe K.', 'Mehmet Y.', 'Elif D.', 'Can B.', 'Zeynep A.', 'Emre T.', 'Deniz S.',
-  'Selin Ö.', 'Burak E.', 'Ece Ç.', 'Kerem G.', 'Duru M.', 'Mert A.', 'İrem B.',
-  'Ali R.', 'Sena K.', 'Arda U.', 'Nehir P.', 'Kaan F.', 'Defne İ.',
+  'Ayşe K.',
+  'Mehmet Y.',
+  'Elif D.',
+  'Can B.',
+  'Zeynep A.',
+  'Emre T.',
+  'Deniz S.',
+  'Selin Ö.',
+  'Burak E.',
+  'Ece Ç.',
+  'Kerem G.',
+  'Duru M.',
+  'Mert A.',
+  'İrem B.',
+  'Ali R.',
+  'Sena K.',
+  'Arda U.',
+  'Nehir P.',
+  'Kaan F.',
+  'Defne İ.',
 ];
 const _avatars = [
-  '🦊', '🐼', '🐨', '🐯', '🦁', '🐸', '🐵', '🐧', '🦉', '🐙',
-  '🦄', '🐢', '🐳', '🐝', '🦋', '🐞', '🐬', '🦔', '🐿️', '🦜',
+  '🦊',
+  '🐼',
+  '🐨',
+  '🐯',
+  '🦁',
+  '🐸',
+  '🐵',
+  '🐧',
+  '🦉',
+  '🐙',
+  '🦄',
+  '🐢',
+  '🐳',
+  '🐝',
+  '🦋',
+  '🐞',
+  '🐬',
+  '🦔',
+  '🐿️',
+  '🦜',
 ];
 
 /// The 14 rivals of a league week. They are simulated on the device (there

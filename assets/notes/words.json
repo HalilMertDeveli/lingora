@@ -1,0 +1,6850 @@
+[
+ {
+  "id": "w_crossaxisalignment",
+  "en": "crossAxisAlignment",
+  "tr": "çapraz eksen hizalaması",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_mainaxisalignment",
+  "en": "mainAxisAlignment",
+  "tr": "ana eksen hizalaması",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_mainaxissize",
+  "en": "mainAxisSize",
+  "tr": "ana eksen boyutu",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_cross",
+  "en": "cross",
+  "tr": "çapraz, kesişen, karşıya geçmek",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_spacebetween",
+  "en": "spaceBetween",
+  "tr": "elemanların arasına eşit boşluk",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_min",
+  "en": "min",
+  "tr": "en az, minimum (içerik kadar yer kaplar)",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_stretch",
+  "en": "stretch",
+  "tr": "esnetmek, germek, uzatmak, yaymak",
+  "topic": "Flutter",
+  "example": "Don't pull my sweater, you'll stretch it.",
+  "story": null
+ },
+ {
+  "id": "w_spacearound",
+  "en": "spaceAround",
+  "tr": "elemanların etrafına eşit boşluk",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_max",
+  "en": "max",
+  "tr": "en çok, maksimum (tüm alanı kaplar)",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_mount",
+  "en": "mount",
+  "tr": "bağlamak, monte etmek, takmak",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_spaceevenly",
+  "en": "spaceEvenly",
+  "tr": "eşit aralıklı boşluk",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_mock",
+  "en": "mock",
+  "tr": "taklit etmek, sahte (test nesnesi)",
+  "topic": "Flutter",
+  "example": null,
+  "story": "MUCK MUCK(mock) diğerlerini TAKLİT EDİYORLARDI"
+ },
+ {
+  "id": "w_justify",
+  "en": "justify",
+  "tr": "haklı çıkarmak, gerekçelendirmek, iki yana yaslamak",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_even",
+  "en": "even",
+  "tr": "bile, eşit, düz, çift (sayı)",
+  "topic": "Flutter",
+  "example": null,
+  "story": "eve(even) gelsen BİLE, çok geç =And even if you could make this work,"
+ },
+ {
+  "id": "w_evaluate",
+  "en": "evaluate",
+  "tr": "değerlendirmek, değer biçmek, (ifadeyi) hesaplamak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_region",
+  "en": "region",
+  "tr": "bölge",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_promote",
+  "en": "promote",
+  "tr": "desteklemek, terfi ettirmek, tanıtmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_through",
+  "en": "through",
+  "tr": "içinden, boyunca, aracılığıyla, baştan sona",
+  "topic": "Karışık",
+  "example": "The River Seine flows through Paris.",
+  "story": "TARIG(throught) VASITASIYLA ile otele hızlı bir şekilde sızdık."
+ },
+ {
+  "id": "w_fluently",
+  "en": "fluently",
+  "tr": "akıcı bir şekilde",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_rather",
+  "en": "rather",
+  "tr": "oldukça, biraz",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_diagnostic",
+  "en": "diagnostic",
+  "tr": "tanı, teşhis",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_interpolation",
+  "en": "interpolation",
+  "tr": "araya ekleme, ara değer bulma",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_within",
+  "en": "within",
+  "tr": "içinde, dahilinde",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_configured",
+  "en": "configured",
+  "tr": "yapılandırılmış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_therefore",
+  "en": "therefore",
+  "tr": "bu nedenle, bu yüzden, öyleyse",
+  "topic": "Karışık",
+  "example": null,
+  "story": "dedem florya(THEREFORE) gidecekse tamam ÖYLEYSE kabul ediyorum dedi → And THEREFORE several"
+ },
+ {
+  "id": "w_auto_increment",
+  "en": "auto increment",
+  "tr": "otomatik artan",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_customize",
+  "en": "customize",
+  "tr": "özelleştirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_that_is",
+  "en": "that is",
+  "tr": "yani, başka bir deyişle",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_subtype",
+  "en": "subtype",
+  "tr": "alt tür",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_in_my_opinion",
+  "en": "in my opinion",
+  "tr": "bence, bana göre",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_budget",
+  "en": "budget",
+  "tr": "bütçe",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_reach",
+  "en": "reach",
+  "tr": "ulaşmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ensure",
+  "en": "ensure",
+  "tr": "sağlamak, emin olmak, garanti etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_valid",
+  "en": "valid",
+  "tr": "geçerli",
+  "topic": "Karışık",
+  "example": "a valid argument",
+  "story": null
+ },
+ {
+  "id": "w_per",
+  "en": "per",
+  "tr": "başına, her biri için",
+  "topic": "Karışık",
+  "example": "Our hotel room costs $60 per night.",
+  "story": null
+ },
+ {
+  "id": "w_receive",
+  "en": "receive",
+  "tr": "almak, teslim almak, karşılamak",
+  "topic": "Karışık",
+  "example": "He receives letters from fans.",
+  "story": "Mustafa CİV CİV'leri pazardan ALMAK için yurttan çıkmıştı."
+ },
+ {
+  "id": "w_cause",
+  "en": "cause",
+  "tr": "neden, sebep, sebep olmak",
+  "topic": "Karışık",
+  "example": "She died of natural causes.",
+  "story": null
+ },
+ {
+  "id": "w_caption",
+  "en": "caption",
+  "tr": "resim altı yazısı, altyazı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_common",
+  "en": "common",
+  "tr": "yaygın, ortak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_rather_than",
+  "en": "rather than",
+  "tr": "yerine, -den ziyade",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_grant",
+  "en": "grant",
+  "tr": "vermek, tahsis etmek, hibe",
+  "topic": "Karışık",
+  "example": "to grant someone a licence",
+  "story": null
+ },
+ {
+  "id": "w_appreciate",
+  "en": "appreciate",
+  "tr": "takdir etmek, minnettar olmak",
+  "topic": "Karışık",
+  "example": "I'd really appreciate your help.",
+  "story": null
+ },
+ {
+  "id": "w_obscure",
+  "en": "obscure",
+  "tr": "az bilinen, anlaşılması güç, belirsiz",
+  "topic": "Karışık",
+  "example": null,
+  "story": "onun bunun sakalını(obscure) orasından burasından çıkararak Pek bilinmeyen bir adam olduğunu ve aynı zamanda çok havalı bir adam olduğunu bize iletmektedir."
+ },
+ {
+  "id": "w_implicit",
+  "en": "implicit",
+  "tr": "örtük, dolaylı",
+  "topic": "Karışık",
+  "example": "an implicit threat",
+  "story": null
+ },
+ {
+  "id": "w_as_above",
+  "en": "as above",
+  "tr": "yukarıdaki gibi",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_represent",
+  "en": "represent",
+  "tr": "temsil etmek, anlamına gelmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_expression",
+  "en": "expression",
+  "tr": "ifade",
+  "topic": "Karışık",
+  "example": "your facial expression",
+  "story": null
+ },
+ {
+  "id": "w_aspect",
+  "en": "aspect",
+  "tr": "yön, bakış açısı, özellik",
+  "topic": "Karışık",
+  "example": null,
+  "story": "aslının Pakete(aspects) hani balonlar var ya BAKIŞ AÇISI Bizi etkiledi → Bu bakış açısı çok tehlikeli olurdu → This aspect would be dangerous / as Yön'ü belirler, üst emri verir"
+ },
+ {
+  "id": "w_caution",
+  "en": "caution",
+  "tr": "dikkat, uyarı, ihtiyat",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_readily",
+  "en": "readily",
+  "tr": "kolayca, hemen",
+  "topic": "Karışık",
+  "example": "Information is readily available on the Internet.",
+  "story": null
+ },
+ {
+  "id": "w_impact",
+  "en": "impact",
+  "tr": "etki, etkilemek",
+  "topic": "Karışık",
+  "example": null,
+  "story": "İmla hataları (impacting) insanlar üzerinde çok fazla etki ve tesir bırakmaktadır dikkat etmek gerek"
+ },
+ {
+  "id": "w_frightened",
+  "en": "frightened",
+  "tr": "korkmuş, dehşete kapılmış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bounded",
+  "en": "bounded",
+  "tr": "sınırlı, sınırlandırılmış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_throughout",
+  "en": "throughout",
+  "tr": "boyunca, baştan sona",
+  "topic": "Karışık",
+  "example": null,
+  "story": "TAAA HAT(THROUGHOUT) BOYUNCA metrobüste kaza olduğu yürümek zorunda kaldı bu İnsanlar EYY amarkia"
+ },
+ {
+  "id": "w_dashboard",
+  "en": "dashboard",
+  "tr": "gösterge paneli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_in_order",
+  "en": "in order",
+  "tr": "sırayla, düzgün; (in order to) -mek için",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_maintainable",
+  "en": "maintainable",
+  "tr": "bakımı yapılabilir",
+  "topic": "Karışık",
+  "example": null,
+  "story": "ana tabloyu(main-table) getir BAKIM YAPILABİLİR yapalım = Bakım yapılabilir"
+ },
+ {
+  "id": "w_properly",
+  "en": "properly",
+  "tr": "düzgün bir şekilde, uygun şekilde",
+  "topic": "Karışık",
+  "example": "The TV doesn't work properly.",
+  "story": "Sınıfları yazarken fieldları get ve set yapınca property(properly) olmaktadır Bu da Düzgünce Kod yazmamıza yaramaktadır → it will be disposed of properly"
+ },
+ {
+  "id": "w_instant",
+  "en": "instant",
+  "tr": "anlık, ani",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_appear",
+  "en": "appear",
+  "tr": "görünmek, gözükmek, ortaya çıkmak",
+  "topic": "Karışık",
+  "example": "She appeared to be crying.",
+  "story": null
+ },
+ {
+  "id": "w_troubleshooting",
+  "en": "troubleshooting",
+  "tr": "sorun giderme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_narrow",
+  "en": "narrow",
+  "tr": "dar",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_various",
+  "en": "various",
+  "tr": "çeşitli, farklı",
+  "topic": "Karışık",
+  "example": "I started learning Spanish for various reasons.",
+  "story": null
+ },
+ {
+  "id": "w_existing",
+  "en": "existing",
+  "tr": "mevcut, var olan",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_section",
+  "en": "section",
+  "tr": "bölüm",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_tie",
+  "en": "tie",
+  "tr": "bağlamak",
+  "topic": "Karışık",
+  "example": "The dog was tied to a tree.",
+  "story": null
+ },
+ {
+  "id": "w_pleased",
+  "en": "pleased",
+  "tr": "memnun",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_adjacent",
+  "en": "adjacent",
+  "tr": "bitişik, yan yana, çok yakın",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_closure",
+  "en": "closure",
+  "tr": "kapanış, son verme; (programlamada) kapanım",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_assume",
+  "en": "assume",
+  "tr": "varsaymak, üstlenmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_absent",
+  "en": "absent",
+  "tr": "yok, bulunmayan, devamsız",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_appropriate",
+  "en": "appropriate",
+  "tr": "uygun, yerinde",
+  "topic": "Karışık",
+  "example": "Is this film appropriate for children?",
+  "story": null
+ },
+ {
+  "id": "w_idiomatic",
+  "en": "idiomatic",
+  "tr": "deyimsel, dile özgü",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_such_as",
+  "en": "such as",
+  "tr": "örneğin, gibi",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_invalid",
+  "en": "invalid",
+  "tr": "geçersiz",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_imperative",
+  "en": "imperative",
+  "tr": "zorunlu, emir kipi; (programlamada) emirsel",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_particular",
+  "en": "particular",
+  "tr": "belirli, özel",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_consume",
+  "en": "consume",
+  "tr": "tüketmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_identifier",
+  "en": "identifier",
+  "tr": "tanımlayıcı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_resource",
+  "en": "resource",
+  "tr": "kaynak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_indeed",
+  "en": "indeed",
+  "tr": "gerçekten, aslında",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_nominal",
+  "en": "nominal",
+  "tr": "itibari, sözde, nominal",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_improve",
+  "en": "improve",
+  "tr": "geliştirmek, iyileştirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_denied",
+  "en": "denied",
+  "tr": "reddedildi, reddedilmiş",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_served",
+  "en": "served",
+  "tr": "sunulan, hizmet verilen",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_aware",
+  "en": "aware",
+  "tr": "farkında, bilinçli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_consent",
+  "en": "consent",
+  "tr": "rıza, izin, onay",
+  "topic": "Karışık",
+  "example": "You can't come without your parents' consent.",
+  "story": null
+ },
+ {
+  "id": "w_enhance",
+  "en": "enhance",
+  "tr": "geliştirmek, iyileştirmek, katkıda bulunmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_related",
+  "en": "related",
+  "tr": "ilgili, bağlantılı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_mark",
+  "en": "mark",
+  "tr": "işaret, işaretlemek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_complicated",
+  "en": "complicated",
+  "tr": "karmaşık",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_suitable",
+  "en": "suitable",
+  "tr": "uygun, elverişli",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Köylümün yanındaki my suit(suitable) otel bu işler için çok uygun, Elverişli bir yer"
+ },
+ {
+  "id": "w_response",
+  "en": "response",
+  "tr": "yanıt, tepki",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_otherwise",
+  "en": "otherwise",
+  "tr": "aksi halde, yoksa, bunun dışında",
+  "topic": "Karışık",
+  "example": "She hurt her arm in the accident, but otherwise she was fine.",
+  "story": null
+ },
+ {
+  "id": "w_underlying",
+  "en": "underlying",
+  "tr": "altta yatan, temel, esas",
+  "topic": "Karışık",
+  "example": "We need to look at the underlying reasons for ill health.",
+  "story": null
+ },
+ {
+  "id": "w_embedded",
+  "en": "embedded",
+  "tr": "gömülü",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_purchase",
+  "en": "purchase",
+  "tr": "satın almak, satın alma",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_layout",
+  "en": "layout",
+  "tr": "düzen, yerleşim",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_enclose",
+  "en": "enclose",
+  "tr": "içine koymak, çevrelemek, (mektuba) iliştirmek",
+  "topic": "Karışık",
+  "example": "I enclose a map of the area.",
+  "story": null
+ },
+ {
+  "id": "w_specification",
+  "en": "specification",
+  "tr": "şartname, belirtim",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_fetch",
+  "en": "fetch",
+  "tr": "gidip getirmek, almak",
+  "topic": "Karışık",
+  "example": "Can you fetch my glasses from the bedroom?",
+  "story": null
+ },
+ {
+  "id": "w_assertion",
+  "en": "assertion",
+  "tr": "iddia, belirtme; (programlamada) doğrulama ifadesi",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Asena(assertion) bir şeyleri Belli etmek için uğraşıyordu ve bunu da başardı kendince"
+ },
+ {
+  "id": "w_physics",
+  "en": "physics",
+  "tr": "fizik",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_reuse",
+  "en": "reuse",
+  "tr": "yeniden kullanmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_exclamation_mark",
+  "en": "exclamation mark",
+  "tr": "ünlem işareti",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_alignment",
+  "en": "alignment",
+  "tr": "hizalama",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_decision",
+  "en": "decision",
+  "tr": "karar",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_produce",
+  "en": "produce",
+  "tr": "üretmek",
+  "topic": "Karışık",
+  "example": "The factory produces 900 cars a year.",
+  "story": null
+ },
+ {
+  "id": "w_overwrite",
+  "en": "overwrite",
+  "tr": "üzerine yazmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_sport",
+  "en": "sport",
+  "tr": "spor",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_restraint",
+  "en": "restraint",
+  "tr": "kısıtlama, kendini tutma",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_process",
+  "en": "process",
+  "tr": "süreç, işlem, işlemek",
+  "topic": "Karışık",
+  "example": "Buying a house can be a long and complicated process.",
+  "story": null
+ },
+ {
+  "id": "w_derivative",
+  "en": "derivative",
+  "tr": "türev",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_staff",
+  "en": "staff",
+  "tr": "personel, kadro",
+  "topic": "Karışık",
+  "example": "Please talk to a member of staff.",
+  "story": null
+ },
+ {
+  "id": "w_framework",
+  "en": "framework",
+  "tr": "çatı, iskelet yapı, çerçeve",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_label",
+  "en": "label",
+  "tr": "etiket",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_inspector",
+  "en": "inspector",
+  "tr": "müfettiş, denetçi",
+  "topic": "Karışık",
+  "example": "a factory inspector",
+  "story": null
+ },
+ {
+  "id": "w_exclude",
+  "en": "exclude",
+  "tr": "hariç tutmak, dahil etmemek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_basis",
+  "en": "basis",
+  "tr": "temel, esas",
+  "topic": "Karışık",
+  "example": "Meetings are held on a weekly basis.",
+  "story": null
+ },
+ {
+  "id": "w_intend",
+  "en": "intend",
+  "tr": "niyet etmek, amaçlamak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_toolbar",
+  "en": "toolbar",
+  "tr": "araç çubuğu",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_consider",
+  "en": "consider",
+  "tr": "düşünmek, dikkate almak, göz önünde bulundurmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_semantics",
+  "en": "semantics",
+  "tr": "anlambilim; (kodda) bir yapının anlamı ve davranışı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_render",
+  "en": "render",
+  "tr": "ekrana çizmek, işlemek, -hale getirmek",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_foreground",
+  "en": "foreground",
+  "tr": "ön plan",
+  "topic": "Karışık",
+  "example": "There's a seated figure in the foreground of the painting.",
+  "story": null
+ },
+ {
+  "id": "w_occupy",
+  "en": "occupy",
+  "tr": "kaplamak, işgal etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_seat",
+  "en": "seat",
+  "tr": "oturacak yer, koltuk",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_recognise",
+  "en": "recognise",
+  "tr": "tanımak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_notion",
+  "en": "notion",
+  "tr": "kavram, fikir, inanış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_imply",
+  "en": "imply",
+  "tr": "ima etmek, anlamına gelmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_such",
+  "en": "such",
+  "tr": "böyle, bu gibi",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_suppose",
+  "en": "suppose",
+  "tr": "varsaymak, farz etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_along",
+  "en": "along",
+  "tr": "boyunca, baştan sona",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_substitute",
+  "en": "substitute",
+  "tr": "yedek, yerine koymak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_look_up",
+  "en": "look up",
+  "tr": "(sözlükte) aramak, bakmak; düzelmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ratio",
+  "en": "ratio",
+  "tr": "oran",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Eskiden Radio'da(Ratio) oran-orantı anlatılırmış"
+ },
+ {
+  "id": "w_persist",
+  "en": "persist",
+  "tr": "sürmek, devam etmek, kalıcı olarak saklamak",
+  "topic": "Karışık",
+  "example": null,
+  "story": "persler(PERSİST) burada kalıcı KALICI,Devam eden olduğunu anlatmak için o kadar savaş verdi → These notes are persisted to file"
+ },
+ {
+  "id": "w_resolution",
+  "en": "resolution",
+  "tr": "çözünürlük, çözüm, karar",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_compare",
+  "en": "compare",
+  "tr": "karşılaştırmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_resolution_appropriate",
+  "en": "resolution-appropriate",
+  "tr": "çözünürlüğe uygun",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_downgrade",
+  "en": "downgrade",
+  "tr": "düşürmek, alt sürüme geçmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_resolution_aware",
+  "en": "resolution-aware",
+  "tr": "çözünürlüğe duyarlı",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_utilize",
+  "en": "utilize",
+  "tr": "yararlanmak, kullanmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_scale",
+  "en": "scale",
+  "tr": "ölçek, boyut, ölçeklemek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ancestor",
+  "en": "ancestor",
+  "tr": "ata, cet",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Kurtlar Vadisi'ndeki Anastasia'nın (ancestor) ATASI, ailedeki büyükleri Rus'tur."
+ },
+ {
+  "id": "w_earnings",
+  "en": "earnings",
+  "tr": "kazanç",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_involve",
+  "en": "involve",
+  "tr": "içermek, gerektirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_amount",
+  "en": "amount",
+  "tr": "miktar",
+  "topic": "Karışık",
+  "example": null,
+  "story": "ağzını bir açtığında(amount of) Miktar ağzımızı kapattırdı"
+ },
+ {
+  "id": "w_retrieve",
+  "en": "retrieve",
+  "tr": "geri almak, getirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Beyaz show'da ki ra eve (retrieve) Geri almak aldım lafı viral oldu"
+ },
+ {
+  "id": "w_persistence",
+  "en": "persistence",
+  "tr": "kalıcılık, ısrar, sebat",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_demonstrate",
+  "en": "demonstrate",
+  "tr": "göstermek, kanıtlamak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_recipe",
+  "en": "recipe",
+  "tr": "tarif",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_interact",
+  "en": "interact",
+  "tr": "etkileşimde bulunmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_clause",
+  "en": "clause",
+  "tr": "madde, yan cümle; (programlamada) koşul bloğu",
+  "topic": "Karışık",
+  "example": "guard clause",
+  "story": null
+ },
+ {
+  "id": "w_consist",
+  "en": "consist",
+  "tr": "-den oluşmak",
+  "topic": "Karışık",
+  "example": "The team consists of four Europeans and two Americans.",
+  "story": null
+ },
+ {
+  "id": "w_in_addition",
+  "en": "in addition",
+  "tr": "ek olarak, ayrıca",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_prerequisite",
+  "en": "prerequisite",
+  "tr": "ön koşul",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_wire",
+  "en": "wire",
+  "tr": "kablo, tel, bağlamak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_advantage",
+  "en": "advantage",
+  "tr": "avantaj",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_eliminate",
+  "en": "eliminate",
+  "tr": "ortadan kaldırmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_consistent",
+  "en": "consistent",
+  "tr": "tutarlı, istikrarlı",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Ankara'daki konsoloslar(consitent) TUTARLI bir ilişki sağlamamaktadır"
+ },
+ {
+  "id": "w_prompt",
+  "en": "prompt",
+  "tr": "istemek, sebep olmak; komut istemi",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_payload",
+  "en": "payload",
+  "tr": "yük, veri yükü",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Kendi payının lan diyerek yük'lü miktarda bir silah çekti ekrem abi"
+ },
+ {
+  "id": "w_applicable",
+  "en": "applicable",
+  "tr": "uygulanabilir",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_reliably",
+  "en": "reliably",
+  "tr": "güvenilir şekilde",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_retention",
+  "en": "retention",
+  "tr": "elde tutma, saklama",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_deploy",
+  "en": "deploy",
+  "tr": "dağıtmak, konuşlandırmak, yayına almak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_user_re_engagement",
+  "en": "user re-engagement",
+  "tr": "kullanıcıyı yeniden etkileşime kazandırma",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_elevation",
+  "en": "elevation",
+  "tr": "yükseklik, yükselti",
+  "topic": "Flutter",
+  "example": "The hotel is situated at an elevation of 1000 m.",
+  "story": null
+ },
+ {
+  "id": "w_detect",
+  "en": "detect",
+  "tr": "algılamak, tespit etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_width",
+  "en": "width",
+  "tr": "genişlik",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_upon",
+  "en": "upon",
+  "tr": "üzerine, üzerinde",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_expose",
+  "en": "expose",
+  "tr": "açığa çıkarmak, dışarıya sunmak",
+  "topic": "Karışık",
+  "example": "He removed the bandage to expose the wound.",
+  "story": null
+ },
+ {
+  "id": "w_height",
+  "en": "height",
+  "tr": "yükseklik",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_associated",
+  "en": "associated",
+  "tr": "ilişkili, bağlantılı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_over_another",
+  "en": "over another",
+  "tr": "bir diğerinin üzerinde",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_annotation",
+  "en": "annotation",
+  "tr": "açıklama notu, ek açıklama; (kodda) anotasyon",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Geçenlerde sistem yazılımı için bir atılan nota(annotation) bir bakıyım dedim anasının nikahıymış be kardeşim Resimli veya kısa küçük notlar falan diyorlardı hiç de öyle değilmiş baya baya kalın bir kitapmş kardeşim o"
+ },
+ {
+  "id": "w_volume",
+  "en": "volume",
+  "tr": "hacim, ses düzeyi, cilt",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_preceding",
+  "en": "preceding",
+  "tr": "önceki",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_computed",
+  "en": "computed",
+  "tr": "hesaplanmış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_prevent",
+  "en": "prevent",
+  "tr": "engellemek, önlemek",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Loldaki PRO AKTİF EVENTLER(preventing) oyuncuları çok etkilemekteydi bu etiler oyuncuyu ENGELLEMEYE kadar gitmekteydi / Sağlıkta PREVENTİF (preventing) tıp, hastalığı ÖNLEME işini yapar."
+ },
+ {
+  "id": "w_wise",
+  "en": "wise",
+  "tr": "bilge, akıllıca",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_across",
+  "en": "across",
+  "tr": "karşısında, karşıdan karşıya, bir uçtan diğerine",
+  "topic": "Karışık",
+  "example": "I was walking across the road.",
+  "story": null
+ },
+ {
+  "id": "w_mutability",
+  "en": "mutability",
+  "tr": "değiştirilebilirlik",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_initstate",
+  "en": "initState",
+  "tr": "durumun ilk kez başlatılması (Flutter State metodu)",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_architecture",
+  "en": "architecture",
+  "tr": "mimari",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_approach",
+  "en": "approach",
+  "tr": "yaklaşım",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_slightly",
+  "en": "slightly",
+  "tr": "biraz, hafifçe",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_implementation",
+  "en": "implementation",
+  "tr": "uygulama, gerçekleştirme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_instance",
+  "en": "instance",
+  "tr": "örnek, nesne örneği",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_substring",
+  "en": "substring",
+  "tr": "alt dize",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_attempt",
+  "en": "attempt",
+  "tr": "denemek, girişim",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Sametlere basketbol oynamaya gittik bir gün atıyorum, atıyorum (attempts) potaya ama olmuyor oradan Samet'in abisi çıktı ve dedi ki Denemeler seni mükemmelleştirecektir."
+ },
+ {
+  "id": "w_cursor",
+  "en": "cursor",
+  "tr": "imleç",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_equals",
+  "en": "equals",
+  "tr": "eşittir",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_multiplication",
+  "en": "multiplication",
+  "tr": "çarpma işlemi",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_average_price",
+  "en": "average price",
+  "tr": "ortalama fiyat",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_aggregate",
+  "en": "aggregate",
+  "tr": "bir araya getirmek, toplamak, toplam",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_assignable",
+  "en": "assignable",
+  "tr": "atanabilir",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_confection",
+  "en": "confection",
+  "tr": "şekerleme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_supply",
+  "en": "supply",
+  "tr": "sağlamak, temin etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_increment",
+  "en": "increment",
+  "tr": "artış, artırmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_presence",
+  "en": "presence",
+  "tr": "varlık, mevcudiyet",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ambiguous",
+  "en": "ambiguous",
+  "tr": "belirsiz, muğlak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_assignment",
+  "en": "assignment",
+  "tr": "atama, ödev",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_start_date",
+  "en": "start date",
+  "tr": "başlangıç tarihi, işe başlama tarihi",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_explicit",
+  "en": "explicit",
+  "tr": "açık, belirgin, net",
+  "topic": "Karışık",
+  "example": "He made no explicit reference to Ted.",
+  "story": null
+ },
+ {
+  "id": "w_generate",
+  "en": "generate",
+  "tr": "üretmek, oluşturmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_specify",
+  "en": "specify",
+  "tr": "belirtmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_concrete",
+  "en": "concrete",
+  "tr": "somut, beton",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_batch",
+  "en": "batch",
+  "tr": "toplu, grup, parti",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_predefined",
+  "en": "predefined",
+  "tr": "önceden tanımlanmış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_lentil_soup",
+  "en": "lentil soup",
+  "tr": "mercimek çorbası",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_reduce",
+  "en": "reduce",
+  "tr": "azaltmak, indirgemek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_noodle_soup",
+  "en": "noodle soup",
+  "tr": "şehriye çorbası",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_derive",
+  "en": "derive",
+  "tr": "türetmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_main_course",
+  "en": "main course",
+  "tr": "ana yemek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_scan",
+  "en": "scan",
+  "tr": "taramak, tarama",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_margin",
+  "en": "margin",
+  "tr": "kenar boşluğu, dış boşluk",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": "Çok marjinal(margin) olan kişilerinde içeriden dışarı boşlukları olmaktadır"
+ },
+ {
+  "id": "w_populate",
+  "en": "populate",
+  "tr": "doldurmak, (veriyle) doldurmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Koca POPOLU shakira(populated) mekanı sadece popsu ile DOLDURUYORDU"
+ },
+ {
+  "id": "w_eclair",
+  "en": "eclair",
+  "tr": "ekler (tatlı)",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_constraint",
+  "en": "constraint",
+  "tr": "kısıtlama",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bind",
+  "en": "bind",
+  "tr": "bağlamak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_pick_up",
+  "en": "pick up",
+  "tr": "almak, kapmak, (bir dili) kapmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_eval",
+  "en": "eval",
+  "tr": "değerlendirmek, (kodu) çalıştırmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_instead",
+  "en": "instead",
+  "tr": "bunun yerine",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_clutter",
+  "en": "clutter",
+  "tr": "dağınıklık, karmaşa",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_failure",
+  "en": "failure",
+  "tr": "başarısızlık, hata, arıza",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_perform",
+  "en": "perform",
+  "tr": "gerçekleştirmek, yerine getirmek",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_fatal",
+  "en": "fatal",
+  "tr": "ölümcül, kritik",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_relevant",
+  "en": "relevant",
+  "tr": "ilgili, alakalı",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_constructor",
+  "en": "constructor",
+  "tr": "yapıcı (metot), kurucu",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_occur",
+  "en": "occur",
+  "tr": "meydana gelmek, oluşmak",
+  "topic": "Kotlin",
+  "example": null,
+  "story": "Ramazan ayı geldiğinde açlık MEYDANA GELİR ama sabretmeyi öğreniriz derler → even invalid values from occurring because throwing an exception is"
+ },
+ {
+  "id": "w_whether",
+  "en": "whether",
+  "tr": "-ip -mediği, olup olmadığı; ister ... ister",
+  "topic": "Kotlin",
+  "example": null,
+  "story": "Veliath'ın(whether) kim İkisinden Biri belli değil → if you check whether or not"
+ },
+ {
+  "id": "w_lay",
+  "en": "lay",
+  "tr": "koymak, yatırmak, sermek",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_match_parent",
+  "en": "match_parent",
+  "tr": "üst öğeyi tamamen kapla",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_determine",
+  "en": "determine",
+  "tr": "belirlemek, karar vermek",
+  "topic": "Kotlin",
+  "example": null,
+  "story": "Dedem emine(determine) dediği zaman KARARLAŞTIRILMIŞ olur: Kararlaştırılmış → Kararlaştırılmış emri yerine getirmiş olacağım → I will have accomplished a determine command"
+ },
+ {
+  "id": "w_gesture_detector",
+  "en": "gesture detector",
+  "tr": "dokunma/hareket algılayıcı",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_wrap_content",
+  "en": "wrap_content",
+  "tr": "içeriği kadar yer kapla",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_separation",
+  "en": "separation",
+  "tr": "ayrılma, ayrım",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_principle",
+  "en": "principle",
+  "tr": "ilke, prensip",
+  "topic": "Kotlin",
+  "example": "It's a matter of principle.",
+  "story": null
+ },
+ {
+  "id": "w_concern",
+  "en": "concern",
+  "tr": "ilgilendirmek, endişe, kaygı",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_guide",
+  "en": "guide",
+  "tr": "rehber, kılavuz, yol göstermek",
+  "topic": "Kotlin",
+  "example": "Some of them are used as guide dogs.",
+  "story": null
+ },
+ {
+  "id": "w_encompass",
+  "en": "encompass",
+  "tr": "kapsamak",
+  "topic": "Kotlin",
+  "example": "Their album encompasses a wide range of music.",
+  "story": null
+ },
+ {
+  "id": "w_sample",
+  "en": "sample",
+  "tr": "örnek, numune",
+  "topic": "Kotlin",
+  "example": "a free sample of chocolate",
+  "story": null
+ },
+ {
+  "id": "w_robust",
+  "en": "robust",
+  "tr": "sağlam, güçlü",
+  "topic": "Kotlin",
+  "example": "a robust economy",
+  "story": null
+ },
+ {
+  "id": "w_wide",
+  "en": "wide",
+  "tr": "geniş",
+  "topic": "Kotlin",
+  "example": "a wide river",
+  "story": null
+ },
+ {
+  "id": "w_mention",
+  "en": "mention",
+  "tr": "bahsetmek, değinmek",
+  "topic": "Kotlin",
+  "example": "I mentioned your ideas to Caroline.",
+  "story": "Kurtlar vadisinde ki metin(mention) ile çok farklı bir yere Değinmek istediler ve kafası gitti adamın"
+ },
+ {
+  "id": "w_component",
+  "en": "component",
+  "tr": "bileşen, parça",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_interval",
+  "en": "interval",
+  "tr": "aralık, ara",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_modifier",
+  "en": "modifier",
+  "tr": "değiştirici",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bounds",
+  "en": "bounds",
+  "tr": "sınırlar",
+  "topic": "Kotlin",
+  "example": "out of bounds",
+  "story": null
+ },
+ {
+  "id": "w_clip",
+  "en": "clip",
+  "tr": "kırpmak, kesmek, klips",
+  "topic": "Kotlin",
+  "example": null,
+  "story": "Kırp(clip) kırpmak, kesmek anlamına gelmektedir"
+ },
+ {
+  "id": "w_differential_equations",
+  "en": "differential equations",
+  "tr": "diferansiyel denklemler",
+  "topic": "Kotlin",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_preliminary_definition",
+  "en": "preliminary definition",
+  "tr": "ön tanımlama",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_growing",
+  "en": "growing",
+  "tr": "artan, büyüyen",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_opposite",
+  "en": "opposite",
+  "tr": "zıt, karşı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_accepted",
+  "en": "accepted",
+  "tr": "kabul edildi, kabul edilmiş",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_decreasing",
+  "en": "decreasing",
+  "tr": "azalan",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bubble",
+  "en": "bubble",
+  "tr": "kabarcık",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_element",
+  "en": "element",
+  "tr": "eleman, öğe",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_organized",
+  "en": "organized",
+  "tr": "düzenli, düzenlenmiş",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_sunday",
+  "en": "Sunday",
+  "tr": "pazar",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_unaligned",
+  "en": "unaligned",
+  "tr": "hizalanmamış, bağlantısız",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_three_dimensional",
+  "en": "three-dimensional",
+  "tr": "üç boyutlu",
+  "topic": "Karışık",
+  "example": "a three-dimensional computer model",
+  "story": null
+ },
+ {
+  "id": "w_despite",
+  "en": "despite",
+  "tr": "-e rağmen, -e karşın",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_probably",
+  "en": "probably",
+  "tr": "muhtemelen",
+  "topic": "Karışık",
+  "example": "I will probably be home in the middle of the night.",
+  "story": null
+ },
+ {
+  "id": "w_axis",
+  "en": "axis",
+  "tr": "eksen",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_arrange",
+  "en": "arrange",
+  "tr": "düzenlemek, ayarlamak",
+  "topic": "Karışık",
+  "example": "to arrange a meeting",
+  "story": null
+ },
+ {
+  "id": "w_affirmative",
+  "en": "affirmative",
+  "tr": "olumlu",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_by_the_time",
+  "en": "by the time",
+  "tr": "-dığında, -e kadar",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_crown",
+  "en": "crown",
+  "tr": "taç",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_overlap",
+  "en": "overlap",
+  "tr": "örtüşmek, çakışmak, üst üste binmek",
+  "topic": "Karışık",
+  "example": "Our responsibilities overlap quite a lot.",
+  "story": null
+ },
+ {
+  "id": "w_constantly",
+  "en": "constantly",
+  "tr": "sürekli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_arbitrary",
+  "en": "arbitrary",
+  "tr": "keyfi, rastgele",
+  "topic": "Karışık",
+  "example": "an arbitrary decision",
+  "story": null
+ },
+ {
+  "id": "w_arouse",
+  "en": "arouse",
+  "tr": "uyandırmak, harekete geçirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_sensible",
+  "en": "sensible",
+  "tr": "mantıklı, makul",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_genuine",
+  "en": "genuine",
+  "tr": "gerçek, hakiki",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_furniture",
+  "en": "furniture",
+  "tr": "mobilya",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_resemble",
+  "en": "resemble",
+  "tr": "benzemek",
+  "topic": "Karışık",
+  "example": "She resembles her father.",
+  "story": null
+ },
+ {
+  "id": "w_sufficient",
+  "en": "sufficient",
+  "tr": "yeterli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_aborigines",
+  "en": "aborigines",
+  "tr": "yerliler, Aborjinler",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_statute",
+  "en": "statute",
+  "tr": "kanun, tüzük, kural",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_keep_in_shape",
+  "en": "keep in shape",
+  "tr": "formda kalmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_corresponding",
+  "en": "corresponding",
+  "tr": "karşılık gelen, ilgili",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_in_fact",
+  "en": "in fact",
+  "tr": "aslında",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bath",
+  "en": "bath",
+  "tr": "banyo, küvet",
+  "topic": "Karışık",
+  "example": "He takes a bath.",
+  "story": null
+ },
+ {
+  "id": "w_correcting",
+  "en": "correcting",
+  "tr": "düzeltme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_graceful",
+  "en": "graceful",
+  "tr": "zarif, hoş",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_surface",
+  "en": "surface",
+  "tr": "yüzey",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ray",
+  "en": "ray",
+  "tr": "ışın",
+  "topic": "Karışık",
+  "example": "the rays of the sun",
+  "story": null
+ },
+ {
+  "id": "w_internally",
+  "en": "internally",
+  "tr": "içten, dahili olarak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_luggage",
+  "en": "luggage",
+  "tr": "bagaj",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_display",
+  "en": "display",
+  "tr": "göstermek, görüntülemek, ekran",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_witness",
+  "en": "witness",
+  "tr": "tanık",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_seer",
+  "en": "seer",
+  "tr": "kâhin",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_replace",
+  "en": "replace",
+  "tr": "yerine koymak, değiştirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_trailer",
+  "en": "trailer",
+  "tr": "fragman, römork",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_receiver",
+  "en": "receiver",
+  "tr": "alıcı",
+  "topic": "Karışık",
+  "example": "The receiver receives signals from the air.",
+  "story": null
+ },
+ {
+  "id": "w_complain",
+  "en": "complain",
+  "tr": "şikâyet etmek",
+  "topic": "Karışık",
+  "example": "Lots of people have complained about the noise.",
+  "story": null
+ },
+ {
+  "id": "w_native",
+  "en": "native",
+  "tr": "yerli, yerel, ana (dil)",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_cyprus",
+  "en": "Cyprus",
+  "tr": "Kıbrıs",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_wipe",
+  "en": "wipe",
+  "tr": "silmek, silip süpürmek",
+  "topic": "Karışık",
+  "example": "I had a job wiping tables in a coffee shop.",
+  "story": null
+ },
+ {
+  "id": "w_several",
+  "en": "several",
+  "tr": "birkaç",
+  "topic": "Karışık",
+  "example": "Several of my friends studied in Manchester.",
+  "story": null
+ },
+ {
+  "id": "w_notice",
+  "en": "notice",
+  "tr": "fark etmek",
+  "topic": "Karışık",
+  "example": "No one will notice it.",
+  "story": null
+ },
+ {
+  "id": "w_incompatible",
+  "en": "incompatible",
+  "tr": "uyumsuz",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_temporary",
+  "en": "temporary",
+  "tr": "geçici",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_highlight",
+  "en": "highlight",
+  "tr": "vurgulamak, dikkat çekmek",
+  "topic": "Karışık",
+  "example": "to highlight a problem",
+  "story": null
+ },
+ {
+  "id": "w_for_the_time_being",
+  "en": "for the time being",
+  "tr": "şimdilik",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_plasterer",
+  "en": "plasterer",
+  "tr": "sıvacı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_exact",
+  "en": "exact",
+  "tr": "tam, kesin, birebir",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_instructions",
+  "en": "instructions",
+  "tr": "talimatlar",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_suffer",
+  "en": "suffer",
+  "tr": "acı çekmek, katlanmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_foolish",
+  "en": "foolish",
+  "tr": "aptalca, aptal",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_at_the_present_time",
+  "en": "at the present time",
+  "tr": "şu anda, şimdiki zamanda",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_artifact",
+  "en": "artifact",
+  "tr": "eser, yapıt; (yazılımda) derleme çıktısı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_manufacturing",
+  "en": "manufacturing",
+  "tr": "üretim, imalat",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_reveal",
+  "en": "reveal",
+  "tr": "ortaya çıkarmak, açığa vurmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_nowadays",
+  "en": "nowadays",
+  "tr": "bugünlerde",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_entry",
+  "en": "entry",
+  "tr": "giriş, kayıt",
+  "topic": "Karışık",
+  "example": null,
+  "story": "eve gelen Reso code yayıncıları ANTENİ(entry) taktığımız an KAYDIMIZIN başlayacağını söylediler"
+ },
+ {
+  "id": "w_caught",
+  "en": "caught",
+  "tr": "yakalanmış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_unreachable",
+  "en": "unreachable",
+  "tr": "ulaşılamaz",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_these_days",
+  "en": "these days",
+  "tr": "bu günlerde, son zamanlarda",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_setting_up",
+  "en": "setting up",
+  "tr": "kurulum",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_repairing",
+  "en": "repairing",
+  "tr": "tamir etme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_remote",
+  "en": "remote",
+  "tr": "uzak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_whom",
+  "en": "whom",
+  "tr": "kimi, kime",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_obtain",
+  "en": "obtain",
+  "tr": "elde etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Elde Etmek, Olm tamam in(OBTAİN) ELDE ETTİN → Elde Etmek"
+ },
+ {
+  "id": "w_income",
+  "en": "income",
+  "tr": "gelir",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_continually",
+  "en": "continually",
+  "tr": "sürekli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_arriving",
+  "en": "arriving",
+  "tr": "varış, varmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_baking",
+  "en": "baking",
+  "tr": "fırında pişirme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_feature",
+  "en": "feature",
+  "tr": "özellik",
+  "topic": "Karışık",
+  "example": "His eyes are his best feature.",
+  "story": null
+ },
+ {
+  "id": "w_next_monday",
+  "en": "next Monday",
+  "tr": "önümüzdeki pazartesi",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_deprecated",
+  "en": "deprecated",
+  "tr": "kullanımdan kaldırılmış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_nearly",
+  "en": "nearly",
+  "tr": "neredeyse",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_recover",
+  "en": "recover",
+  "tr": "kurtarmak, iyileşmek, geri kazanmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_relative",
+  "en": "relative",
+  "tr": "akraba, göreli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_behavior",
+  "en": "behavior",
+  "tr": "davranış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_shorthand",
+  "en": "shorthand",
+  "tr": "kısaltma, kısa gösterim",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_individual",
+  "en": "individual",
+  "tr": "bireysel, kişisel, birey",
+  "topic": "Karışık",
+  "example": "Customers in shops should be given individual attention.",
+  "story": null
+ },
+ {
+  "id": "w_examine",
+  "en": "examine",
+  "tr": "incelemek, muayene etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_speech",
+  "en": "speech",
+  "tr": "konuşma",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_admit",
+  "en": "admit",
+  "tr": "kabul etmek, itiraf etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": "Kemal go-cart't inmemesi için ADAM İTTİ(ADMİT) dedi ve bunu kabul etti, KABUL ETMEK"
+ },
+ {
+  "id": "w_sewing",
+  "en": "sewing",
+  "tr": "dikiş",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_passage",
+  "en": "passage",
+  "tr": "geçit, pasaj",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_meant",
+  "en": "meant",
+  "tr": "anlamına geldi, kastetti",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ironing",
+  "en": "ironing",
+  "tr": "ütüleme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_look_forward_to",
+  "en": "look forward to",
+  "tr": "dört gözle beklemek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_express",
+  "en": "express",
+  "tr": "ifade etmek, açıkça belirtmek; hızlı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_traced",
+  "en": "traced",
+  "tr": "izlenen, takip edilen",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_annual",
+  "en": "annual",
+  "tr": "yıllık",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_elder",
+  "en": "elder",
+  "tr": "yaşça büyük",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_combed",
+  "en": "combed",
+  "tr": "taranmış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_letting",
+  "en": "letting",
+  "tr": "izin verme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_however",
+  "en": "however",
+  "tr": "ancak, ne kadar ... olsa da",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_significant",
+  "en": "significant",
+  "tr": "önemli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_contraction",
+  "en": "contraction",
+  "tr": "kısaltma, büzülme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_hibernate",
+  "en": "hibernate",
+  "tr": "kış uykusuna yatmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_during_the_whole_of_saturday",
+  "en": "during the whole of Saturday",
+  "tr": "bütün cumartesi boyunca",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_arrangement",
+  "en": "arrangement",
+  "tr": "düzenleme, planlama",
+  "topic": "Karışık",
+  "example": "I've made arrangements to go home this week.",
+  "story": null
+ },
+ {
+  "id": "w_exhaust",
+  "en": "exhaust",
+  "tr": "tüketmek, bitirmek, egzoz",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_silly",
+  "en": "silly",
+  "tr": "aptalca, saçma",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_at_this_time_tomorrow",
+  "en": "at this time tomorrow",
+  "tr": "yarın bu saatlerde",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_pharmacy",
+  "en": "pharmacy",
+  "tr": "eczane",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_disturb",
+  "en": "disturb",
+  "tr": "rahatsız etmek",
+  "topic": "Karışık",
+  "example": "Don't disturb him, he needs to sleep.",
+  "story": null
+ },
+ {
+  "id": "w_greedy",
+  "en": "greedy",
+  "tr": "açgözlü",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_from_time_to_time",
+  "en": "from time to time",
+  "tr": "zaman zaman",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_custom",
+  "en": "custom",
+  "tr": "özel (yapım), gelenek, örf",
+  "topic": "Karışık",
+  "example": null,
+  "story": "KOŞTUM, KOŞTUM (costum) ve spor yaparak ÖZEL, AYRICALIKLI bir insan oldum dedi Furkan."
+ },
+ {
+  "id": "w_according_to",
+  "en": "according to",
+  "tr": "-e göre",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_unpleasant",
+  "en": "unpleasant",
+  "tr": "tatsız, hoş olmayan",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_sparkling",
+  "en": "sparkling",
+  "tr": "parıldayan, köpüklü",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_appointment",
+  "en": "appointment",
+  "tr": "randevu",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_wasteful",
+  "en": "wasteful",
+  "tr": "savurgan",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_impatient",
+  "en": "impatient",
+  "tr": "sabırsız",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_threat",
+  "en": "threat",
+  "tr": "tehdit, gözdağı",
+  "topic": "Karışık",
+  "example": "a death threat",
+  "story": null
+ },
+ {
+  "id": "w_restless",
+  "en": "restless",
+  "tr": "huzursuz",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_treasure",
+  "en": "treasure",
+  "tr": "hazine, define",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_wives",
+  "en": "wives",
+  "tr": "eşler (wife çoğulu)",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_plugin",
+  "en": "plugin",
+  "tr": "eklenti",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_registry",
+  "en": "registry",
+  "tr": "kayıt defteri, sicil",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_copper",
+  "en": "copper",
+  "tr": "bakır",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_invent",
+  "en": "invent",
+  "tr": "icat etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_election",
+  "en": "election",
+  "tr": "seçim",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ferry",
+  "en": "ferry",
+  "tr": "feribot, vapur",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_diet",
+  "en": "diet",
+  "tr": "diyet, rejim",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_heart_disease",
+  "en": "heart disease",
+  "tr": "kalp hastalığı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_dangerously",
+  "en": "dangerously",
+  "tr": "tehlikeli bir biçimde",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_theatre",
+  "en": "theatre",
+  "tr": "tiyatro",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_generous",
+  "en": "generous",
+  "tr": "cömert",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_intensive_care",
+  "en": "intensive care",
+  "tr": "yoğun bakım",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_thieves",
+  "en": "thieves",
+  "tr": "hırsızlar (thief çoğulu)",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_satisfactory",
+  "en": "satisfactory",
+  "tr": "tatmin edici",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_crowded",
+  "en": "crowded",
+  "tr": "kalabalık",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bullfighting",
+  "en": "bullfighting",
+  "tr": "boğa güreşi",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_around",
+  "en": "around",
+  "tr": "etrafında, civarında, yaklaşık",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_feast_of_ramadan",
+  "en": "Feast of Ramadan",
+  "tr": "Ramazan Bayramı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_distance",
+  "en": "distance",
+  "tr": "uzaklık, mesafe",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_thoughtful",
+  "en": "thoughtful",
+  "tr": "düşünceli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_shout",
+  "en": "shout",
+  "tr": "bağırmak, haykırmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_plump",
+  "en": "plump",
+  "tr": "tombul",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_condition",
+  "en": "condition",
+  "tr": "durum, koşul",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_nationality",
+  "en": "nationality",
+  "tr": "milliyet, uyruk",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_matter",
+  "en": "matter",
+  "tr": "konu, mesele, önemli olmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_indices",
+  "en": "indices",
+  "tr": "indeksler (index çoğulu)",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_between",
+  "en": "between",
+  "tr": "arasında",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_slice",
+  "en": "slice",
+  "tr": "dilim, bölüm",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_sever",
+  "en": "sever",
+  "tr": "koparmak, kesmek",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_range",
+  "en": "range",
+  "tr": "aralık, kapsam",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_overview",
+  "en": "overview",
+  "tr": "genel bakış, özet",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_log_off",
+  "en": "log off",
+  "tr": "oturumu kapatmak",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_statistics",
+  "en": "statistics",
+  "tr": "istatistik",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_award",
+  "en": "award",
+  "tr": "ödül",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_disrupt",
+  "en": "disrupt",
+  "tr": "bozmak, kesintiye uğratmak",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_via",
+  "en": "via",
+  "tr": "aracılığıyla",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_standard_deviation",
+  "en": "standard deviation",
+  "tr": "standart sapma",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_adapter",
+  "en": "adapter",
+  "tr": "adaptör, bağdaştırıcı",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_curious",
+  "en": "curious",
+  "tr": "meraklı",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_cloth",
+  "en": "cloth",
+  "tr": "kumaş, bez",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_fine_tune",
+  "en": "fine-tune",
+  "tr": "ince ayar yapmak",
+  "topic": "Veri Analizi",
+  "example": "Improve the user experience by fine-tuning app navigation.",
+  "story": null
+ },
+ {
+  "id": "w_achieve",
+  "en": "achieve",
+  "tr": "başarmak",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_edition",
+  "en": "edition",
+  "tr": "baskı, sürüm",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_unless",
+  "en": "unless",
+  "tr": "-medikçe, -mezse",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_anonymous",
+  "en": "anonymous",
+  "tr": "anonim",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_visualize",
+  "en": "visualize",
+  "tr": "görselleştirmek, gözünde canlandırmak",
+  "topic": "Veri Analizi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_acronym",
+  "en": "acronym",
+  "tr": "baş harflerden oluşan kısaltma",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_interlock",
+  "en": "interlock",
+  "tr": "kilitlemek, birbirine geçmek",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "interlocked pipeline stages",
+  "story": null
+ },
+ {
+  "id": "w_firmly",
+  "en": "firmly",
+  "tr": "sıkıca",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_regularity",
+  "en": "regularity",
+  "tr": "düzenlilik",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "We arranged to meet on a regular basis.",
+  "story": null
+ },
+ {
+  "id": "w_pipeline",
+  "en": "pipeline",
+  "tr": "boru hattı, (işlemcide) iş hattı",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_computational",
+  "en": "computational",
+  "tr": "hesaplamalı",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_stage",
+  "en": "stage",
+  "tr": "aşama, evre, sahne",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_constant",
+  "en": "constant",
+  "tr": "sabit, sürekli",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_simplicity",
+  "en": "simplicity",
+  "tr": "sadelik, basitlik",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_reserved",
+  "en": "reserved",
+  "tr": "ayrılmış, saklı; çekingen",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "a quiet, reserved woman",
+  "story": null
+ },
+ {
+  "id": "w_favor",
+  "en": "favor",
+  "tr": "iyilik, lehinde olmak",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "Most people are in favour of reducing traffic in cities.",
+  "story": "el favor (favor) İspanyolca iyilik yapmak anlamına gelmiyor"
+ },
+ {
+  "id": "w_opcode",
+  "en": "opcode",
+  "tr": "işlem kodu",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_demand",
+  "en": "demand",
+  "tr": "talep, istek",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "the demands of modern life",
+  "story": null
+ },
+ {
+  "id": "w_compromise",
+  "en": "compromise",
+  "tr": "uzlaşma, orta yol",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "We need to reach a compromise over this issue.",
+  "story": null
+ },
+ {
+  "id": "w_floating_point",
+  "en": "floating point",
+  "tr": "kayan nokta",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_convention",
+  "en": "convention",
+  "tr": "kural, gelenek, sözleşme",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_formed",
+  "en": "formed",
+  "tr": "oluşmuş, biçimlenmiş",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_so_that",
+  "en": "so that",
+  "tr": "-sın diye, -mesi için",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_register",
+  "en": "register",
+  "tr": "yazmaç (CPU), kayıt, kaydolmak",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_preserve",
+  "en": "preserve",
+  "tr": "korumak, muhafaza etmek",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "to preserve peace",
+  "story": null
+ },
+ {
+  "id": "w_content",
+  "en": "content",
+  "tr": "içerik",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_offset",
+  "en": "offset",
+  "tr": "dengelemek, telafi etmek, kayma (ofset)",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "The costs have been offset by savings in other areas.",
+  "story": "Futbol oyununda defans ile forvet arasında bir denge kurulmak istenmektedir, bunun için offseyt(offset) The costs have been offset by savings in other areas."
+ },
+ {
+  "id": "w_misfit",
+  "en": "misfit",
+  "tr": "uyumsuz kişi",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_hostage",
+  "en": "hostage",
+  "tr": "rehine",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_triplet",
+  "en": "triplet",
+  "tr": "üçlü, üçüz",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bunch",
+  "en": "bunch",
+  "tr": "demet, salkım, bir sürü",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Cüneyt arkın Yumruklarını salladıkça BURNCH BUNCH(BUNCH) diye ses gelirdi ve düşmanları BİR SALKIM çiçeğe dönerlerdi"
+ },
+ {
+  "id": "w_foremost",
+  "en": "foremost",
+  "tr": "en önemli, her şeyden önce",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "FARİUST: HER ŞEYDEN ÖNEMLİ = her şeyden önce."
+ },
+ {
+  "id": "w_nevertheless",
+  "en": "nevertheless",
+  "tr": "yine de, buna rağmen",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Lisede NEREDEYSE(nevertheless) parasızlıktan ölecektik ama YİNE DE çok mutluyduk"
+ },
+ {
+  "id": "w_identical",
+  "en": "identical",
+  "tr": "birbirinin aynı, özdeş",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Epilasyoncuya giden Mazlum İYİ DE KIL(IDENTİCAL) kılların hepsi BİRBİRİNİN AYNISI =Birbiri ile aynı"
+ },
+ {
+  "id": "w_equivalent",
+  "en": "equivalent",
+  "tr": "eşdeğer, eşit",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Aqu samurayjeck(equvalent) biz seninle EŞİTİZ ama ben daha iyim demişti"
+ },
+ {
+  "id": "w_yield",
+  "en": "yield",
+  "tr": "üretmek, sağlamak, yol vermek",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": "YİNE(YİELD) yangınlar yine ben diye bir şarkı ÜRETTİ"
+ },
+ {
+  "id": "w_rely",
+  "en": "rely",
+  "tr": "güvenmek, bel bağlamak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Rapçi RELLY (rely) GÜVENDİĞİ adamlarına sırtını yaslar = güvenmek."
+ },
+ {
+  "id": "w_offend",
+  "en": "offend",
+  "tr": "gücendirmek, kırmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "OFF BE(OFFEND) bitir artık DARATTIN Bizi = Daraltmak"
+ },
+ {
+  "id": "w_versatile",
+  "en": "versatile",
+  "tr": "çok yönlü, elinden her iş gelen",
+  "topic": "Python",
+  "example": null,
+  "story": "versede(VERSİTİLE) vermese ÇOK YÖNLÜ bir kanazaç: Çok Yönlü"
+ },
+ {
+  "id": "w_observe",
+  "en": "observe",
+  "tr": "gözlemlemek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Onu yere serdi (observe), ben de GÖZLEMLEDİM. → I observed you and I think you're up to something."
+ },
+ {
+  "id": "w_ephemeral",
+  "en": "ephemeral",
+  "tr": "geçici, kalıcı olmayan",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Seyfo dayı ile Meral (ephemeral) arasındaki durum GEÇİCİ → geçici, sürekli olmayan → ephemeral state = geçici durum → We are in an ephemeral state."
+ },
+ {
+  "id": "w_entire",
+  "en": "entire",
+  "tr": "bütün, tüm",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "bu ENTARİ(ENTİRE) BÜTÜN Hepsini, kaplamış, = Bütün hepsi → all the entire code is awful"
+ },
+ {
+  "id": "w_notifier",
+  "en": "notifier",
+  "tr": "bildirici, haber veren",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "not ile üfle (notifier), HABER VER bana → Haber vermek → Bu metot bana haber vermiş olacak → The method will notify me"
+ },
+ {
+  "id": "w_broadest",
+  "en": "broadest",
+  "tr": "en geniş",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "in the broadest possible sense",
+  "story": "bro eskiden(brodest) buralar EN GENİŞ arsa idi → In the broadest possible sense → Olabildiğince en geniş anlamda"
+ },
+ {
+  "id": "w_whereas",
+  "en": "whereas",
+  "tr": "oysa, -iken",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "nerede(Where) sevdiğim, OYSA Ona neler almıştım: Oysa → Ben onu seviyorum oysa o beni sevmiyormuş → I had been loving to him whereas he hadn't been"
+ },
+ {
+  "id": "w_neatly",
+  "en": "neatly",
+  "tr": "düzgünce, derli toplu",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "ne atma(neatly) be, DÜZGÜN Bir lock sesi geldi → Neatly contain → düzgünce içeren → İşlerimi her zaman düzgünce yapıyorum → I have been doing my job neatly"
+ },
+ {
+  "id": "w_seldom",
+  "en": "seldom",
+  "tr": "nadiren",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "NADİREN Saldım(seldom) →seldom need → Nadiren Derslere gitmem, → I seldom go to my lessons"
+ },
+ {
+  "id": "w_intentionally",
+  "en": "intentionally",
+  "tr": "kasıtlı olarak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "İnatçı olur (intentionally), KASITLI OLARAK bunu yapar. → She has done this intentionally."
+ },
+ {
+  "id": "w_vague",
+  "en": "vague",
+  "tr": "belirsiz, muğlak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "a vague definition",
+  "story": "ve geldi gene(vague) BELİRSİZ ADAM → Belirsiz,-A vague definition → Belirsiz bir durumdan bahsetti → He had told us a vague topic and he left"
+ },
+ {
+  "id": "w_serialize",
+  "en": "serialize",
+  "tr": "serileştirmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "seri saldım(seri saldım) osurduk diye SERİ HALE GETİRDİ dendi → There is no need to serialize it → he serializes it"
+ },
+ {
+  "id": "w_re_laying",
+  "en": "re-laying",
+  "tr": "yeniden döşeme",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Riley usta (re-laying) evde YENİDEN DÖŞEME işi yapıyor."
+ },
+ {
+  "id": "w_vice_versa",
+  "en": "vice versa",
+  "tr": "tersine, aksine, ve tersi",
+  "topic": "Flutter",
+  "example": null,
+  "story": "\"Ve yine ne varsa (vice versa)\" dedi Ayhan abi, bizim AKSİMİZE: aksine."
+ },
+ {
+  "id": "w_pretend",
+  "en": "pretend",
+  "tr": "-miş gibi yapmak, numara yapmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "peri anne (Pretend) NUMARA YAPIYORDU → he pretended to the whole country"
+ },
+ {
+  "id": "w_track",
+  "en": "track",
+  "tr": "izlemek, takip etmek, iz, ray",
+  "topic": "React",
+  "example": null,
+  "story": "Global Truck(TRANCk) bu yolu İzlemektedir: Bir yolu izlemek → Matt was globally tracking state"
+ },
+ {
+  "id": "w_grain",
+  "en": "grain",
+  "tr": "tane, tanecik, zerre",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Gri madde(grain) UFACIK,Çok KÜÇÜK →take the following diagram with a large grain of salt"
+ },
+ {
+  "id": "w_awkward",
+  "en": "awkward",
+  "tr": "tuhaf, beceriksiz, zahmetli",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Sihirli annemde ki Avni (awkward) SORUN ÇIKARAN kişiliktir → Do whatever is less awkward"
+ },
+ {
+  "id": "w_consideration",
+  "en": "consideration",
+  "tr": "göz önünde bulundurma, düşünce",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "konduramadığı dekorasyonu(consideration) (consideration) onda farklı DÜŞÜNCELER uyandırıyordu→ you would need to take into consideration the current state of uı and apply the new data to it"
+ },
+ {
+  "id": "w_apply",
+  "en": "apply",
+  "tr": "uygulamak, başvurmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "apla apla(apply) dedi teyze UYGULA appla → apply the changes"
+ },
+ {
+  "id": "w_construct",
+  "en": "construct",
+  "tr": "inşa etmek, oluşturmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "C#'taki constructor İNŞA ETMEK demek dedi Mehmet hoca ve omzuma bir tane vurdu → Bizim yurdun yolunu yine inşa etmiyorlar → They don't construct our dorm road again."
+ },
+ {
+  "id": "w_instantiate",
+  "en": "instantiate",
+  "tr": "örneğini oluşturmak, örneklendirmek",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": "Okuldayken furkan beni tiyatroya çağırdı ama ben TAM VAKTİNDE “İnşallah beni atlar”(instentiate) I'm just going to instantiate / İnsan oğlu(İnstantiate) nedense,gerçi anlamak çok zor olmasa gerek, kendinde olan değişiklikleri göstermek istemektedir, ama benim okuduğum kitaplar da hatta Sinan canan bile bu değişimleri kimse ile paylaşmamanın Göstermek veya sergilemek istememenin daha doğru olacağını söylemektedir"
+ },
+ {
+  "id": "w_simplify",
+  "en": "simplify",
+  "tr": "basitleştirmek, kolaylaştırmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "simspsinlar (simplify) işleri daha KOLAY ANLAŞILIR yapmak için geleceği öncen göstermektedirler → This would simplify right down to the build method"
+ },
+ {
+  "id": "w_thus",
+  "en": "thus",
+  "tr": "böylece, bu nedenle, öylece",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "tushhh (TUSH) Bizim eve gelen Ercan eşeğini dedi hayvana ÖYLECE bırakılırmı lan diye bağırdı → Am I thus vindicated ? / Tarsus'tan (thus) gelen bir çocuk yolların kötü olduğunu anlattı; BÖYLECE işi yapanın işini iyi yapmadığını anladık."
+ },
+ {
+  "id": "w_reinvent",
+  "en": "reinvent",
+  "tr": "yeniden icat etmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Başarının sırlarından birinin de keşfedilme(k) yi beklememek olduğunu söyledi bunun üzerine layn event (rainvent) başlamış Seafight'ta diyerek bilgisayara koştu →We don't want to reinvent"
+ },
+ {
+  "id": "w_rehearse",
+  "en": "rehearse",
+  "tr": "prova etmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "We rehearsed this, right?",
+  "story": "Jhin işlerine başlamadan önce PROVA Yapar HASRED(rehearsed) kaldık 4'e der → We rehearsed this, right?"
+ },
+ {
+  "id": "w_fully_fledged",
+  "en": "fully-fledged",
+  "tr": "tam teşekküllü, eksiksiz",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Arabalardan iyi anlamak gerek FULL PAKET bir araba almak ile diğerleri arasında çok fark vardır. → our fully-fledged packet"
+ },
+ {
+  "id": "w_compartmentalize",
+  "en": "compartmentalize",
+  "tr": "bölümlere ayırmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Geçenlerde konuşuyoruz Bir apartmanı Bölümlere ayırmak aslında daha karlı olduğundan bahsetmektedir bunu söyleyen de robert kiyosaki → You can compartmentalize your state into different models"
+ },
+ {
+  "id": "w_fine_grained",
+  "en": "fine-grained",
+  "tr": "ince taneli, ayrıntılı",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "NİNA Hanım GRI NESNELERİ(FİNE-GRAİNED) ile İNCE TANELİ saçmalar atmaktaydı → a more fine-grained approach to listening model"
+ },
+ {
+  "id": "w_below",
+  "en": "below",
+  "tr": "altında, aşağıda",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "berna lastıpın(below) Altında dedi peltek sesi ile ALTINDA→ But any widget below them"
+ },
+ {
+  "id": "w_descendant",
+  "en": "descendant",
+  "tr": "torun, (ağaçta) alt öğe",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Descartes(descendants) ve TORUNLARI →it is the widget that provides an instance of a changeNotifier to its DESCENDANTS"
+ },
+ {
+  "id": "w_pollute",
+  "en": "pollute",
+  "tr": "kirletmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Counter'daki pooll (pollute) çok KİRLETTİK - KİRLETMEK → You don't want to pollute the scope"
+ },
+ {
+  "id": "w_measurement",
+  "en": "measurement",
+  "tr": "ölçüm",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Masumlar apartmanı(mensurement) ÖLÇÜMLERE göre, en çok rating alan dizi oldu → measurement is my favorite topic"
+ },
+ {
+  "id": "w_revert",
+  "en": "revert",
+  "tr": "eski haline döndürmek, geri almak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "rest etti(reverted) ve ESKİ HALİNE GERİ DÖNDÜ → And we just reverted"
+ },
+ {
+  "id": "w_substantial",
+  "en": "substantial",
+  "tr": "önemli, kayda değer, büyük",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "sabah ahmet telli(Substantial) ÖNEMLİ,ÇOK MUNTAZAM Bilgiler vermektedir"
+ },
+ {
+  "id": "w_beneficial",
+  "en": "beneficial",
+  "tr": "faydalı, yararlı",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Ben ten ve dedesi BENOFFİCİAL (beneficial) diye Dünyaya çok FAYDALI Bir kanal açmışlar → beneficial sort"
+ },
+ {
+  "id": "w_brief",
+  "en": "brief",
+  "tr": "kısa, özet",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Brolaf(brief) harki bir köstüm ak KISACA,ÖZET olarak söylersem harika olmuş"
+ },
+ {
+  "id": "w_swirl",
+  "en": "swirl",
+  "tr": "girdap gibi dönmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Winx(swirled) verince ele ele, GİRDAP GİBİ DÖNMEK zorunda kaldı"
+ },
+ {
+  "id": "w_decent",
+  "en": "decent",
+  "tr": "düzgün, terbiyeli, makul",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Kemalin Trabzonlu dedesi 'DEÇENLERDE(decent)' TERBİYELİ,DÜZGÜN bir çocuk bana otobüste yer verdi dedi → decent software pattern"
+ },
+ {
+  "id": "w_compose",
+  "en": "compose",
+  "tr": "oluşturmak, bir araya getirmek, bestelemek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "KOPZİSOYLANRI(comp) DÜZENLEMEK VE OLUŞTURMAK için Bir araya geldik 12a sınıfı olarak"
+ },
+ {
+  "id": "w_distinction",
+  "en": "distinction",
+  "tr": "ayrım, fark",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Fırat konuşurken \"DIŞARIDAN (distinction) bize yapılan bu AYRIM kabul edilemez\" dedi."
+ },
+ {
+  "id": "w_originate",
+  "en": "originate",
+  "tr": "kaynaklanmak, doğmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Laz ziynaın Orhanındann(ORİGİNATE)'ten KAYNAKLANAN bir zafiyet süleymen Çakırın ölmesine sebep oldu"
+ },
+ {
+  "id": "w_tackle",
+  "en": "tackle",
+  "tr": "üstesinden gelmek, ele almak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Memati TAK TAK(tackle) HEMEN İLGİLENİR, ÜSTESİNDEN gelirdi durumun"
+ },
+ {
+  "id": "w_least",
+  "en": "least",
+  "tr": "en az",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Sınıf LİSTESİNDEKİ (least) EN AZINDAN biri okula gelseydi, dedi Esra hoca."
+ },
+ {
+  "id": "w_pesky",
+  "en": "pesky",
+  "tr": "sinir bozucu, baş belası",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Yenikapı'daki PİS KİŞİLER (pesky) SİNİR BOZUCU oluyor."
+ },
+ {
+  "id": "w_initial_excitement",
+  "en": "initial excitement",
+  "tr": "ilk heyecan",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "İNŞALLAH EYŞANDIR(initial excitement) dedi ömer İLK HEYECAN sonuçta"
+ },
+ {
+  "id": "w_fade",
+  "en": "fade",
+  "tr": "solmak, yavaşça kaybolmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Son gelen Nerften sonra Twisted Fate(FADE) tam Anlamıyla SOLDU bitti işi"
+ },
+ {
+  "id": "w_trait",
+  "en": "trait",
+  "tr": "özellik, nitelik",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Atların Arkasındaki Kuyruklarına(TRAİTS) Denmektedir ve onlara özel bir ÖZELLİKTİR"
+ },
+ {
+  "id": "w_outline",
+  "en": "outline",
+  "tr": "ana hatlar, taslak, ana hatlarını çıkarmak",
+  "topic": "Karışık",
+  "example": "Here's a simplified outline of the process.",
+  "story": "Barış abimin ÇİZGİNİN DIŞINDAKİLER(THE OUTLAİRS) olmayan OUTLİNES'dir ve ANA HATLAR ANLAMINA GELMEKTEDİR."
+ },
+ {
+  "id": "w_boundary",
+  "en": "boundary",
+  "tr": "sınır",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Prenses Banunun (BAUNDARY) dayısı SINIR KOYMA işinde çok iyi değildir Çünkü güney ile flörtleşmektedirler"
+ },
+ {
+  "id": "w_rapidly",
+  "en": "rapidly",
+  "tr": "hızlıca",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Kaplumbağa ve Tavşan(RAPİDLY) arasında HIZLICA geçen bir yarış olmamasına rağmen kaplumağa kazanmaktadır"
+ },
+ {
+  "id": "w_serve",
+  "en": "serve",
+  "tr": "hizmet etmek, sunmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "ya seve seve(SERVE) yada seve seve(SERVE) Bize bakmak ve HİZMET ETMEK zorundalar / Okul Bize seve seve(SERVE) hizmet etmek zorundadır, maaşlarını biz veriyoruz"
+ },
+ {
+  "id": "w_sole",
+  "en": "sole",
+  "tr": "tek, yegâne",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Poyraz karayel Ayşegül'e SOYLE(sole) YEGANE sevgilim söyle demekteydi"
+ },
+ {
+  "id": "w_pristine",
+  "en": "pristine",
+  "tr": "bozulmamış, el değmemiş",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Esma ve babası piercing (pristine) yüzünden kavga ettiler; amcam \"BOZULMAMIŞ, el değmemiş yüzüne kimse dokunmasın\" dedi."
+ },
+ {
+  "id": "w_gather",
+  "en": "gather",
+  "tr": "toplamak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "GARFİELD(GATHERED) Toplanan Bütün lazanyaları cebine attı ve daha sonra yemek için çatıya çıkardı"
+ },
+ {
+  "id": "w_pertain",
+  "en": "pertain",
+  "tr": "ilgili olmak, ait olmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Acundaki PELTEK(perteins) adam rap konusunda İLGİLİ OLDUĞUNU ve hiç kekelemeden rep yaptığını söylemektedir"
+ },
+ {
+  "id": "w_expressive",
+  "en": "expressive",
+  "tr": "anlamlı, etkileyici",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "ESKİ MAHALLEDEN KENAN(expressive) çok ANLAMLI konuşuyordu"
+ },
+ {
+  "id": "w_submit",
+  "en": "submit",
+  "tr": "sunmak, göndermek, teslim etmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "Applications must be submitted before 31 January.",
+  "story": "SABUN İLE OYNAYAN İT(SUBMİT) sonunda temizin ne olduğunu bize sundu, göndermek, arz etmek işlerini yaptı → Applications must be submitted before 31 January."
+ },
+ {
+  "id": "w_stand_for",
+  "en": "stand for",
+  "tr": "anlamına gelmek, temsil etmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bir gün kitap satışları için anlataya giden cüneyt abi STANDLARIN(stands for) başında 'Ben burdayım Alfa yayınları için buradayım ' ANLAMINA GELEN bir duruş sergilemişti"
+ },
+ {
+  "id": "w_regard",
+  "en": "regard",
+  "tr": "saymak, ilgi, saygı; (with regard to) ile ilgili",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "RAGNAR(regard) ile İngilizler arasında bir İLİŞKİ var"
+ },
+ {
+  "id": "w_allow",
+  "en": "allow",
+  "tr": "izin vermek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Şener şenin filminden Yağmur duası için gelen hacı VALLA LAW(ALLOW) diyerek Yağmurun Yağmasına İZİN VERMİŞTİ"
+ },
+ {
+  "id": "w_conventional",
+  "en": "conventional",
+  "tr": "geleneksel, alışılagelmiş",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Kartonlara(COnventional) Uygun,alışıla gelmiş Bir şekil verene oragimay adamı denir"
+ },
+ {
+  "id": "w_perpetually",
+  "en": "perpetually",
+  "tr": "sürekli, daima",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Peri pet (perpetually) her gün kapıda bekler, bunu SÜREKLİ olarak yapar."
+ },
+ {
+  "id": "w_data_interchange",
+  "en": "data interchange",
+  "tr": "veri alışverişi",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Trendyol verdiğim siparişleri zamanında getirmeyince DAHA İÇERLEDİ(data interchange) ve insanların aklına galiba bunlar VERİ ALIŞVERİŞİNDE bulunuyor bizim veriler nanay oldu diye geliyor aklıma"
+ },
+ {
+  "id": "w_lightweight",
+  "en": "lightweight",
+  "tr": "hafif",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "light sami le light vedat bey(lightweight) kapıştı ve sami Hafif yollu,Kaldırılması kolay bir laf ile kazandı"
+ },
+ {
+  "id": "w_stick",
+  "en": "stick",
+  "tr": "yapışmak, saplanmak, çubuk",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "telefondaki Stick(stick) oyununan saplandık kaldık moruk a"
+ },
+ {
+  "id": "w_pivot",
+  "en": "pivot",
+  "tr": "pivot, eksen, en önemli öğe",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Diferansiyel Denklemlerde Baştaki elemana Pivot elemana yani En önemli Öğe denmektedir"
+ },
+ {
+  "id": "w_overkill",
+  "en": "overkill",
+  "tr": "aşırıya kaçmak, gereğinden fazlası",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bercan OVER Veight(being overkill) yani şişiko aşırıya kaçmak istemiyordu ve diyetistene gitti"
+ },
+ {
+  "id": "w_reliability",
+  "en": "reliability",
+  "tr": "güvenilirlik",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_in_a_nutshell",
+  "en": "in a nutshell",
+  "tr": "kısaca",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_backbone",
+  "en": "backbone",
+  "tr": "omurga, bel kemiği",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bak Beri Bak(BackBone) diyerek adama bir geçirdi ki adamın OMURGA VE BEL KEMİĞİ kırıldı resmen"
+ },
+ {
+  "id": "w_thread",
+  "en": "thread",
+  "tr": "iş parçacığı, iplik, konu dizisi",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Evdekilere sinirlenen Cana TA HA RED (THEREAD) KENDİNE BİR YOL AÇACAğını duyurdu ve herkesi restleyip evden çıktı"
+ },
+ {
+  "id": "w_inefficient",
+  "en": "inefficient",
+  "tr": "verimsiz",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bir adam \"İnsan farslı\" (inefficient) VERİMSİZDİR dedi; Samet de hemen \"haklısın abi\" moduna girdi."
+ },
+ {
+  "id": "w_trivial",
+  "en": "trivial",
+  "tr": "önemsiz, basit",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Truvalılar turuva(trivial) atının ÖNEMSİZ Olduğunu zannettiler tam bir kerizler diyebiliriz"
+ },
+ {
+  "id": "w_computation",
+  "en": "computation",
+  "tr": "hesaplama",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Düğün Dernekte ki Saffet Koptum(Computition) Himmet abi Diyerek geldi ve HESAPLAYAMADIĞI bir yumruk yedi"
+ },
+ {
+  "id": "w_salient",
+  "en": "salient",
+  "tr": "göze çarpan, belirgin",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Salih (salient) abinin kocaman bıyığı GÖZE ÇARPAN bir özelliğidir."
+ },
+ {
+  "id": "w_encourage",
+  "en": "encourage",
+  "tr": "teşvik etmek, cesaretlendirmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_rapid",
+  "en": "rapid",
+  "tr": "hızlı, ani",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Rabbit(rappid)(tavşan) ani,hızlı bir hayvandır"
+ },
+ {
+  "id": "w_conclusion",
+  "en": "conclusion",
+  "tr": "sonuç, nihai karar",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Konu(Conclusion) ile ilgili Çözüm, nihai sonu da belli oldu / Ekonomisizliğin (conclusion) SONUCU olarak markete girip çıkıyorsun, 200 TL gidiyor; fiyatlar sabit bile kalmıyor."
+ },
+ {
+  "id": "w_insightful",
+  "en": "insightful",
+  "tr": "derin kavrayışlı, aydınlatıcı",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "İnsallah fuat'tır (insightful) askerden gelen yoksa anlaşılması kolay olmayacaktır cemil ile iyi anlaşamıyoruz"
+ },
+ {
+  "id": "w_revolve",
+  "en": "revolve",
+  "tr": "etrafında dönmek, dönmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Rönesans (revolves) bütün kara cahilleri geri döndürdü"
+ },
+ {
+  "id": "w_drawback",
+  "en": "drawback",
+  "tr": "sakınca, dezavantaj",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Daldan kolları ve bacakları (drawbacks) olan bir taşralıdan sakıncalar hakkında bilgi aldık"
+ },
+ {
+  "id": "w_bloatedness",
+  "en": "bloatedness",
+  "tr": "şişkinlik",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Böyle Neslin (blotatedness) diyerek gençler hakkında çok Şişkinlik olmasından yakındı dayım"
+ },
+ {
+  "id": "w_stem",
+  "en": "stem",
+  "tr": "kaynaklanmak, gövde, sap",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Yaptığı sitemlerden (stems) işlerini doğru yapamıyor sebebi bundan kaynaklanmak"
+ },
+ {
+  "id": "w_folks",
+  "en": "folks",
+  "tr": "millet, insanlar, ahali",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Folkler (folks) Milletlerin, Beylerin, Bayanların yani herkesi temsil etmek için kullanılmaktadır"
+ },
+ {
+  "id": "w_essential",
+  "en": "essential",
+  "tr": "temel, gerekli, vazgeçilmez",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Aslında temel (essential) temel olarak temel atmanın en iyi başlangıç dedi jules payot"
+ },
+ {
+  "id": "w_splash",
+  "en": "splash",
+  "tr": "sıçrama, sıçratmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Sıpalar (splash) annelerindeki sütü görünce Sıçrama yapıyorlar"
+ },
+ {
+  "id": "w_majority",
+  "en": "majority",
+  "tr": "çoğunluk",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Malum Jordi'nin (majority) ÇOĞUNLUK oyuyla seçildiği söylenir."
+ },
+ {
+  "id": "w_collaboration",
+  "en": "collaboration",
+  "tr": "iş birliği",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Karbon ve orban (collaboration) İş birliği sayesinde beraber çok para kazandık dedi Mr. white"
+ },
+ {
+  "id": "w_rive",
+  "en": "rive",
+  "tr": "yarmak, koparmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "yine(rive) yangınlar, yine(rive) ben diyerek Yorgun olduğunu ve bu hayattan, Kopmak istediğini söyledi Timuçin esen"
+ },
+ {
+  "id": "w_surrounding",
+  "en": "surrounding",
+  "tr": "çevreleyen, çevre",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "\"Sıvışın beyler\" (surrounding) diyen bir düşünce yapısıyla, bizi ÇEVRELEYEN bir atmosferde LoL oynadık."
+ },
+ {
+  "id": "w_precise",
+  "en": "precise",
+  "tr": "kesin, hassas, net",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "piskovitin(precise)'in hassas, kesin tarafını ilk olarak yemen gerekmektedir."
+ },
+ {
+  "id": "w_certain",
+  "en": "certain",
+  "tr": "belirli, kesin, emin",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Son kertede (ceratin) işlerin Belirli ve keskin olması değerlendirilecekmiş"
+ },
+ {
+  "id": "w_regardless",
+  "en": "regardless",
+  "tr": "ne olursa olsun, -e bakılmaksızın",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Rahatımız bozulursa (regardless) Ne olursa olsun başkasının da rahatını bozarız dedi laz ziya"
+ },
+ {
+  "id": "w_toggle",
+  "en": "toggle",
+  "tr": "açıp kapamak, iki durum arasında geçiş yapmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Togglee abi (toogle) diyerek durumu sakinleştirdi spor salonunda ki Gökhan abi"
+ },
+ {
+  "id": "w_padding",
+  "en": "padding",
+  "tr": "iç boşluk, dolgu",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": "Pastadan (padding) Dışarıdan içeriye boşluk olanı fazla olduğundan dolu gibi gözükmektedir."
+ },
+ {
+  "id": "w_scratch",
+  "en": "scratch",
+  "tr": "sıfırdan, en baştan; kazımak, çizik",
+  "topic": "Android",
+  "example": null,
+  "story": "skatch (scratch) programından satarım tekrardan yapmak için çalıştı bizim"
+ },
+ {
+  "id": "w_overwhelming",
+  "en": "overwhelming",
+  "tr": "bunaltıcı, ezici",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Onun bu halleri (overwhelming) Aşırı Bunaltıcı olmaya başladı artık camdan atacam adamı az kaldı"
+ },
+ {
+  "id": "w_due",
+  "en": "due",
+  "tr": "vadesi gelmiş, beklenen; (due to) -den dolayı",
+  "topic": "React",
+  "example": null,
+  "story": "dün(due) vadesi dolmuş bir yazılım dilini öğrenecektik ama hoca gelmedi"
+ },
+ {
+  "id": "w_language_agnostic",
+  "en": "language-agnostic",
+  "tr": "dilden bağımsız",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_designation",
+  "en": "designation",
+  "tr": "atama, unvan, belirleme",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Dinozorların tonlarca(desinations) görevi başkalarına atamaları gerekmektedir. Bunu sadece dinozor olan anlar"
+ },
+ {
+  "id": "w_indicate",
+  "en": "indicate",
+  "tr": "belirtmek, göstermek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Yapılan soruşturmada inadına katıldığını(indicated) Belirtmekle kalmamış bir de polislere sövmüştü jesse pinkman"
+ },
+ {
+  "id": "w_with_these_principles_in_mind",
+  "en": "with these principles in mind",
+  "tr": "bu ilkeleri göz önünde bulundurarak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_likewise",
+  "en": "likewise",
+  "tr": "aynı şekilde",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Lakayt(likewise) ve Aynı şekilde işleri yerine getirdi ben de bir tane yapıştırdım"
+ },
+ {
+  "id": "w_notation",
+  "en": "notation",
+  "tr": "gösterim, notasyon",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Notları notion'da (notation) Göstermek bana çok faydalı olmaktadır"
+ },
+ {
+  "id": "w_predictable",
+  "en": "predictable",
+  "tr": "tahmin edilebilir",
+  "topic": "React",
+  "example": null,
+  "story": "Paranızı alabiliyorsanız (predictable) Tahmin edilebilir bir geliriniz vardır dedi yine robet abi"
+ },
+ {
+  "id": "w_unauthorized",
+  "en": "unauthorized",
+  "tr": "yetkisiz",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "anlık olarak oturduğumuz da (unauthorized) Yetkisiz olduğumuzu fark ettik"
+ },
+ {
+  "id": "w_onto",
+  "en": "onto",
+  "tr": "üzerine",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "onun tam üstünde (onto) Üzerinde, kendine gel kendine Jesse Pinkman"
+ },
+ {
+  "id": "w_fractionally",
+  "en": "fractionally",
+  "tr": "kesirli olarak, çok az",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Freng etekleri(fractionally) Kesirli olurmuş"
+ },
+ {
+  "id": "w_rounded",
+  "en": "rounded",
+  "tr": "yuvarlak, yuvarlatılmış",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "LoL'de ki Rammus (rounded) Yuvarlak bir şampiyon ve yuvarlanarak oyun kazanmaktadır"
+ },
+ {
+  "id": "w_rectangle",
+  "en": "rectangle",
+  "tr": "dikdörtgen",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Rektör (rectangle) beyin odası tam bir DİKDÖRTGEN."
+ },
+ {
+  "id": "w_border",
+  "en": "border",
+  "tr": "kenarlık, sınır",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Buradan itibaren(border) Sınır"
+ },
+ {
+  "id": "w_radius",
+  "en": "radius",
+  "tr": "yarıçap",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Darius'un (radius) baltasının yarıçapı çok değil 2 falan herhalde"
+ },
+ {
+  "id": "w_outcome",
+  "en": "outcome",
+  "tr": "sonuç",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Ondan gelen(outcome) Sonuç'lar pek iç açıcı olmadığı için insanlar alternatif tıbba yöneldi"
+ },
+ {
+  "id": "w_accordingly",
+  "en": "accordingly",
+  "tr": "buna göre, uygun şekilde",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Ağlamasına göre (accordingly) Ona göre,Buna göre çok farklı sayfalardayız"
+ },
+ {
+  "id": "w_act_accordingly",
+  "en": "act accordingly",
+  "tr": "ona göre davranmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "akşam doğru davranan (act accordingly) Uygun davranan adam benim için kaliteli adımdır"
+ },
+ {
+  "id": "w_implied",
+  "en": "implied",
+  "tr": "ima edilen, örtük",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "İmplant(implied) yapmak için iyi anlaşmak gerek zira pahalı bir şey"
+ },
+ {
+  "id": "w_staging",
+  "en": "staging",
+  "tr": "sahneleme, hazırlık ortamı",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Star(staging) sahneye çıkmak istediğinde yoluna kırmızı halılar dökerler"
+ },
+ {
+  "id": "w_adequate",
+  "en": "adequate",
+  "tr": "yeterli, uygun",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Adeta(adequate) bu iş için biçilmiş kaftan gibi Yeterli uygun gözüküyordu"
+ },
+ {
+  "id": "w_unpredictable",
+  "en": "unpredictable",
+  "tr": "öngörülemeyen",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Onun yapacağı pastırma(unpredictable) Ön görülmeyen bir şekilde bizi zehirledi be abi"
+ },
+ {
+  "id": "w_subsequent",
+  "en": "subsequent",
+  "tr": "sonraki",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "The mistakes were corrected in a subsequent edition of the book.",
+  "story": null
+ },
+ {
+  "id": "w_pagination",
+  "en": "pagination",
+  "tr": "sayfalandırma",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "kendi Payının(pagination) diyerek orada adeta bir türk sineması piyası sayfalandırma'sı yaptı bize ekrem abi"
+ },
+ {
+  "id": "w_rail",
+  "en": "rail",
+  "tr": "ray, parmaklık, askı rayı",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Ragnorok(rail) filminde askılık mevzusunu unutmuyorum"
+ },
+ {
+  "id": "w_ellipsis",
+  "en": "ellipsis",
+  "tr": "üç nokta (…)",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "İlla sipsisiz(ellipsis) olmaz dedi ve masaya 3 nokta gibi 3 kere vurdu"
+ },
+ {
+  "id": "w_span",
+  "en": "span",
+  "tr": "kapsamak, süre, aralık",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bizim mahallede ki sipan (Span) o kadar iriydi ki her yeri Kapsıyordu"
+ },
+ {
+  "id": "w_lift",
+  "en": "lift",
+  "tr": "kaldırmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Power lifting(lift) çok fazla ağırlık kaldırmak için kullanılan bir kas çalışma yöntemidir."
+ },
+ {
+  "id": "w_pound",
+  "en": "pound",
+  "tr": "dövmek, şiddetle vurmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "1 pound(pounded) meth için walter jessiyi çok fena Dövdü"
+ },
+ {
+  "id": "w_possessive",
+  "en": "possessive",
+  "tr": "sahiplenici, iyelik",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Instagram'a bir post(possosive) attıktan sonra herkes dünyanın sahipleri, sahibi zannediyor"
+ },
+ {
+  "id": "w_remarkable",
+  "en": "remarkable",
+  "tr": "dikkate değer, olağanüstü",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "He has a remarkable memory.",
+  "story": null
+ },
+ {
+  "id": "w_experimental",
+  "en": "experimental",
+  "tr": "deneysel",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Seafight'ta ex (experimental) vardır deneysel olarak savaşa girdiğinde bir tecrübe kazandığında verilmekteydi"
+ },
+ {
+  "id": "w_retain",
+  "en": "retain",
+  "tr": "korumak, elde tutmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Kratin(retain) denilen malzeme kasları uzun süre muhafaza etmek için kullanılmaktadır"
+ },
+ {
+  "id": "w_recuperate",
+  "en": "recuperate",
+  "tr": "iyileşmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_reactive",
+  "en": "reactive",
+  "tr": "tepkisel, duyarlı, reaktif",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_trigger",
+  "en": "trigger",
+  "tr": "tetiklemek, başlatmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "His arrest triggered mass protests.",
+  "story": null
+ },
+ {
+  "id": "w_claim",
+  "en": "claim",
+  "tr": "iddia etmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Ben şu akşam namazını KILAYIM (claim) diyerek akşam namazını kılacağını İDDİA ETTİ."
+ },
+ {
+  "id": "w_ancient",
+  "en": "ancient",
+  "tr": "antik, çok eski",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Eskiden biz buralarda otururduk dedi annesi(anicent)"
+ },
+ {
+  "id": "w_carving",
+  "en": "carving",
+  "tr": "oyma",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bir kış o kadar fazla kar yağdı ki okula gidemedik; bunun üzerine karlardan (carvings) OYMA yaptık."
+ },
+ {
+  "id": "w_heat",
+  "en": "heat",
+  "tr": "ısı, ısıtmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "heyt (heat) camı kapatın diyerek soğuk hava ısı kaynağı kapatmak istediğini duyurdu"
+ },
+ {
+  "id": "w_major_factor",
+  "en": "major factor",
+  "tr": "ana etken",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_long_term",
+  "en": "long-term",
+  "tr": "uzun vadeli",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Galatasaray bir aralar çok iyi idi, o zamanlar fatih terim(long-term) başta idi uzun vadeli bir adamdı takımı uzun vadede takımı"
+ },
+ {
+  "id": "w_profitability",
+  "en": "profitability",
+  "tr": "kârlılık",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Yani şimdi aslına bakarsan, her şeyi kararında yemek bize faydalı olacaktır, örnek vermek gerekirse profiterol(profitability) bize katkı sağlayacaktır ama fazlası değil kararınca yemek en iyisidir."
+ },
+ {
+  "id": "w_sink",
+  "en": "sink",
+  "tr": "batmak, lavabo",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bazen annem gaza geldiğinde sini(sink) üzerinde börek pişirirdi ben de onları aşırarak yerdim ama yerken de tadına daha fazla varmak için emerek yerdim"
+ },
+ {
+  "id": "w_newer",
+  "en": "newer",
+  "tr": "daha yeni",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Eskiden Avrupa yakası dizi bir dizi varda orada münevver (newer) teyze vardı hatırlarsınız belik sürekli olarak yeni şeyler gösterirdi bizlere"
+ },
+ {
+  "id": "w_key_chain",
+  "en": "key chain",
+  "tr": "anahtarlık",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_fractional",
+  "en": "fractional",
+  "tr": "kesirli",
+  "topic": "Flutter",
+  "example": null,
+  "story": "Mustafa amcam ile fahri(Froctional) usta arasında az, biraz kırgınlık var ama çözülecek inşallah ya"
+ },
+ {
+  "id": "w_gradient",
+  "en": "gradient",
+  "tr": "eğim, renk geçişi (gradyan)",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bir süper kahraman düşün yeteneği ne biliyor musun,istediği kadar büyüyebiliyor ve istediği kadar küçülebilmektedir. Bu karakteri bildiniz adı ent men (gradient) ama buna oranda çok eğitim siz bir adamdır"
+ },
+ {
+  "id": "w_fabulous",
+  "en": "fabulous",
+  "tr": "muhteşem, efsanevi",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "LoL de fab fabuluous(fabulous) diye bir lol pro user vardı hani hatırlarsın super massive'de oynuyordu efsanevi bir adamdı"
+ },
+ {
+  "id": "w_handy",
+  "en": "handy",
+  "tr": "kullanışlı",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Hani(handly) bir site vardı diye diye aklımıza gelmeyen siteler neden sürekli olarak Kullanışlı olmak zorunda Bunları hatırlaması da zor olmaktadır bak buna oranla durum genelde çok faydalıdır"
+ },
+ {
+  "id": "w_abuse",
+  "en": "abuse",
+  "tr": "kötüye kullanmak, istismar, taciz",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_cord",
+  "en": "cord",
+  "tr": "kordon, kablo, ip",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Biz babam ile Sea fight oynardık, bunun özelinde ise haritalarda koordinat değerleri ile bütün oyuncuların gemilerine gülleler koyardık (cord)"
+ },
+ {
+  "id": "w_schedule",
+  "en": "schedule",
+  "tr": "planlamak, program, takvim",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_intuitive",
+  "en": "intuitive",
+  "tr": "sezgisel",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "an intuitive understanding",
+  "story": null
+ },
+ {
+  "id": "w_curve",
+  "en": "curve",
+  "tr": "eğri, kavis",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bu kaplulo(curve) kulaklıklar yok mu Bunları daha iyi bir şekilde kullanmak için aslında kabloyu kırmadan kullanmak gerekmektedir,yani Eğri hareketler yapmadan kabloyu kullanmak gerekmektedir."
+ },
+ {
+  "id": "w_idle",
+  "en": "idle",
+  "tr": "boşta, atıl",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_trim",
+  "en": "trim",
+  "tr": "kırpmak, budamak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_tidy",
+  "en": "tidy",
+  "tr": "düzenli, derli toplu",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_extensive",
+  "en": "extensive",
+  "tr": "kapsamlı, geniş",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_squiggle",
+  "en": "squiggle",
+  "tr": "eğri büğrü çizgi, dalgalı çizgi",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_accomplished",
+  "en": "accomplished",
+  "tr": "başarılmış, usta",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_estimated",
+  "en": "estimated",
+  "tr": "tahmini, tahmin edilen",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Eskiden insanlar (estimated) borsayla uğraşırdı, şimdi bitcoin var; TAHMİNİ doğru tutturursan güzel paralar kazanırsın ama nasıl tahmin edildiğini hâlâ bilmiyorum."
+ },
+ {
+  "id": "w_accommodate",
+  "en": "accommodate",
+  "tr": "barındırmak, yerleştirmek, uyum sağlamak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "İstanbul akşamları (accommodate) ile Anadolu akşamları birbirini KARŞILAR, çünkü ikisi de hemen hemen aynıdır."
+ },
+ {
+  "id": "w_dimension",
+  "en": "dimension",
+  "tr": "boyut",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "Music has added a new dimension to my life.",
+  "story": "Yapılan bir araştırmadan bahsedelim konu ile ilgili olarak boyutlarında bahsedilen bir dinozorun(dimensions) alında 2 boyutlu olabileceğinden bahsediyordu, galiba dengesiz bir açıklama idi Boyut, → Music has added a new dimension to my life."
+ },
+ {
+  "id": "w_subset",
+  "en": "subset",
+  "tr": "alt küme",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_arc",
+  "en": "arc",
+  "tr": "yay",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_intersect",
+  "en": "intersect",
+  "tr": "kesişmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "The line AB intersects the line CD at X.",
+  "story": null
+ },
+ {
+  "id": "w_segment",
+  "en": "segment",
+  "tr": "bölüm, parça, kesim",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_alias",
+  "en": "alias",
+  "tr": "takma ad, diğer adıyla",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "Grace Kelly, alias Princess Grace of Monaco",
+  "story": "MFÖ takımının kendi arasında da özel bir isim takma merasimi vardı, örnek vermek gerekirse, ali abi vardı ona Ali desidero(alias) mekteydiler takma ad → Grace Kelly, alias Princess Grace of Monaco"
+ },
+ {
+  "id": "w_inform",
+  "en": "inform",
+  "tr": "bilgilendirmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Mustafa ile CS:GO oynuyoruz, bana \"info vermen gerekiyor\" diyor. Abi diyorum, info (inform) dediğin aslında BİLGİLENDİRMEK anlamındaki inform kelimesi olmasın?"
+ },
+ {
+  "id": "w_substantially",
+  "en": "substantially",
+  "tr": "büyük ölçüde, esasen",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_credential",
+  "en": "credential",
+  "tr": "kimlik bilgisi",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_briefly",
+  "en": "briefly",
+  "tr": "kısaca",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Ben sana en iyisi(briefly) kısaca anlatıyım çünkü sınavlarda da başarılı oluyorum kıskanma diye şimdiden uyarmam gerekmektedir."
+ },
+ {
+  "id": "w_gesture",
+  "en": "gesture",
+  "tr": "jest, el hareketi",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "İlber hoca'nın gezilerinde Hareket olmazsa olmazlardandır. Adamın genlerinde(gestures) var bilgin olmak"
+ },
+ {
+  "id": "w_splash_effect",
+  "en": "splash effect",
+  "tr": "sıçrama efekti",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_session",
+  "en": "session",
+  "tr": "oturum",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "The court is now in session.",
+  "story": null
+ },
+ {
+  "id": "w_elegant",
+  "en": "elegant",
+  "tr": "zarif, şık",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "It would be more elegant.",
+  "story": "\"Herkes çok güzel, biz berbatız\" dedi ve elin gayinin (elegant) ZARİF, ŞIK olduğundan bahsetti. → It would be more elegant."
+ },
+ {
+  "id": "w_visual",
+  "en": "visual",
+  "tr": "görsel",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "vs code (visual) bize görsel bir anlam kod görünümü katmaktadır. Onun Sayesinde kodları görerek yazabilmekteyiz"
+ },
+ {
+  "id": "w_fire",
+  "en": "fire",
+  "tr": "ateş, ateşlemek, (olayı) tetiklemek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "Enemy troops set fire to the village.",
+  "story": null
+ },
+ {
+  "id": "w_density",
+  "en": "density",
+  "tr": "yoğunluk",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": "Bir günlük konuşma etkinliğinde daha senin(destini) dedikten sonra konunun yoğunluk içerisinde kendini kaybeden adam iyice iyi hissetmişti"
+ },
+ {
+  "id": "w_adjust",
+  "en": "adjust",
+  "tr": "ayarlamak, uyum sağlamak",
+  "topic": "Robotik",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_raise",
+  "en": "raise",
+  "tr": "kaldırmak, yükseltmek, (para) toplamak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_migration",
+  "en": "migration",
+  "tr": "taşıma, yeni sisteme geçiş, göç",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_predicate",
+  "en": "predicate",
+  "tr": "yüklem, koşul ifadesi",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_shape",
+  "en": "shape",
+  "tr": "şekil, biçim",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "Very few people are really happy with their body shape.",
+  "story": null
+ },
+ {
+  "id": "w_cavity",
+  "en": "cavity",
+  "tr": "boşluk, oyuk, (dişte) çürük",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "The dentist said she had three cavities in her teeth.",
+  "story": null
+ },
+ {
+  "id": "w_comma",
+  "en": "comma",
+  "tr": "virgül",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_redundant",
+  "en": "redundant",
+  "tr": "gereksiz, fazlalık; işten çıkarılmış",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_release",
+  "en": "release",
+  "tr": "yayınlamak, serbest bırakmak, sürüm",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "The list of winners has just been released.",
+  "story": null
+ },
+ {
+  "id": "w_occurrence",
+  "en": "occurrence",
+  "tr": "olay, oluşum",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "a strange occurrence",
+  "story": null
+ },
+ {
+  "id": "w_unopinionated",
+  "en": "unopinionated",
+  "tr": "belirli bir yol dayatmayan, esnek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "React is unopinionated.",
+  "story": null
+ },
+ {
+  "id": "w_domesticated",
+  "en": "domesticated",
+  "tr": "evcilleştirilmiş",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "Dogs are domesticated animals.",
+  "story": null
+ },
+ {
+  "id": "w_propagate",
+  "en": "propagate",
+  "tr": "yaymak, çoğaltmak, iletmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "The idea of the journal is to give students a chance to propagate their ideas.",
+  "story": null
+ },
+ {
+  "id": "w_friction",
+  "en": "friction",
+  "tr": "sürtünme",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_cumbersome",
+  "en": "cumbersome",
+  "tr": "hantal, kullanışsız",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_inversion",
+  "en": "inversion",
+  "tr": "ters çevirme",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_candidate",
+  "en": "candidate",
+  "tr": "aday",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bean",
+  "en": "bean",
+  "tr": "fasulye, çekirdek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_accelerate",
+  "en": "accelerate",
+  "tr": "hızlandırmak, hızlanmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "The taxi driver accelerated to pass the truck.",
+  "story": null
+ },
+ {
+  "id": "w_powerful",
+  "en": "powerful",
+  "tr": "güçlü, kudretli",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "a powerful man",
+  "story": null
+ },
+ {
+  "id": "w_interop",
+  "en": "interop",
+  "tr": "birlikte çalışabilirlik",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_contrast",
+  "en": "contrast",
+  "tr": "zıtlık, karşıtlık; (in contrast to) -in aksine",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_whether_or_not",
+  "en": "whether or not",
+  "tr": "ister ... ister, öyle ya da böyle",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_unidirectional",
+  "en": "unidirectional",
+  "tr": "tek yönlü",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_sandbox",
+  "en": "sandbox",
+  "tr": "korumalı alan, kum havuzu",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_immutability",
+  "en": "immutability",
+  "tr": "değişmezlik",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_traverse",
+  "en": "traverse",
+  "tr": "geçmek, dolaşmak, üzerinde gezinmek",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_differ",
+  "en": "differ",
+  "tr": "farklı olmak, ayrılmak",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_susceptible",
+  "en": "susceptible",
+  "tr": "çabuk etkilenen, duyarlı",
+  "topic": "Hafıza Hikâyeleri",
+  "example": "Old people are more susceptible to the virus.",
+  "story": null
+ },
+ {
+  "id": "w_namely",
+  "en": "namely",
+  "tr": "yani, şöyle ki",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bagel",
+  "en": "bagel",
+  "tr": "simit",
+  "topic": "Hafıza Hikâyeleri",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_semiconductor",
+  "en": "semiconductor",
+  "tr": "yarı iletken",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_faucet",
+  "en": "faucet",
+  "tr": "musluk",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_emitter",
+  "en": "emitter",
+  "tr": "yayıcı, (transistörde) emetör",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_collector",
+  "en": "collector",
+  "tr": "toplayıcı, koleksiyoncu, (transistörde) kolektör",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_restrict",
+  "en": "restrict",
+  "tr": "kısıtlamak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_influence",
+  "en": "influence",
+  "tr": "etki, etkilemek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_overall",
+  "en": "overall",
+  "tr": "genel olarak, toplam, kapsamlı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_crucial",
+  "en": "crucial",
+  "tr": "kritik, çok önemli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_coefficient",
+  "en": "coefficient",
+  "tr": "katsayı",
+  "topic": "Karışık",
+  "example": "the drag coefficient of a car",
+  "story": null
+ },
+ {
+  "id": "w_bump",
+  "en": "bump",
+  "tr": "tümsek, çarpmak",
+  "topic": "Karışık",
+  "example": "My bike hit a bump in the road.",
+  "story": null
+ },
+ {
+  "id": "w_encounter",
+  "en": "encounter",
+  "tr": "karşılaşmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_decoupling",
+  "en": "decoupling",
+  "tr": "ayrıştırma, bağımlılığı azaltma",
+  "topic": "Karışık",
+  "example": "He proposed the decoupling of the company's tobacco operations from the rest of the corporation.",
+  "story": null
+ },
+ {
+  "id": "w_retrieval",
+  "en": "retrieval",
+  "tr": "geri getirme, erişim",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_hardcode",
+  "en": "hardcode",
+  "tr": "koda sabit olarak yazmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_walkthrough",
+  "en": "walkthrough",
+  "tr": "adım adım anlatım, izlenecek yol",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_semi_closed",
+  "en": "semi-closed",
+  "tr": "yarı kapalı",
+  "topic": "Karışık",
+  "example": "an outdoor semi-closed area",
+  "story": null
+ },
+ {
+  "id": "w_stimulation",
+  "en": "stimulation",
+  "tr": "uyarım, teşvik",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_wealth",
+  "en": "wealth",
+  "tr": "zenginlik, servet",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_comply",
+  "en": "comply",
+  "tr": "uymak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_firewall",
+  "en": "firewall",
+  "tr": "güvenlik duvarı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_proportional",
+  "en": "proportional",
+  "tr": "orantılı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_conductor",
+  "en": "conductor",
+  "tr": "iletken",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_proximity",
+  "en": "proximity",
+  "tr": "yakınlık",
+  "topic": "Karışık",
+  "example": "inductive proximity sensor",
+  "story": null
+ },
+ {
+  "id": "w_sensing",
+  "en": "sensing",
+  "tr": "algılama",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_delve",
+  "en": "delve",
+  "tr": "derinlemesine incelemek",
+  "topic": "Karışık",
+  "example": "Let's delve into real-life applications.",
+  "story": null
+ },
+ {
+  "id": "w_perpendicular",
+  "en": "perpendicular",
+  "tr": "dik",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_induce",
+  "en": "induce",
+  "tr": "sebep olmak, (elektrikte) indüklemek",
+  "topic": "Karışık",
+  "example": "It induces a voltage in the sensor.",
+  "story": null
+ },
+ {
+  "id": "w_vary",
+  "en": "vary",
+  "tr": "değişmek, farklılık göstermek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_strength",
+  "en": "strength",
+  "tr": "güç, kuvvet",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_sequence",
+  "en": "sequence",
+  "tr": "dizi, sıra",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_inner",
+  "en": "inner",
+  "tr": "iç, dahili",
+  "topic": "Karışık",
+  "example": "inner list",
+  "story": null
+ },
+ {
+  "id": "w_cultivate",
+  "en": "cultivate",
+  "tr": "geliştirmek, yetiştirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_incentive",
+  "en": "incentive",
+  "tr": "teşvik",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_inquiry",
+  "en": "inquiry",
+  "tr": "sorgulama, araştırma",
+  "topic": "Karışık",
+  "example": "inquiry learning",
+  "story": null
+ },
+ {
+  "id": "w_wholly",
+  "en": "wholly",
+  "tr": "tamamen, bütünüyle",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_participate",
+  "en": "participate",
+  "tr": "katılmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ubiquitous",
+  "en": "ubiquitous",
+  "tr": "her yerde bulunan",
+  "topic": "Karışık",
+  "example": "ubiquitous learning",
+  "story": null
+ },
+ {
+  "id": "w_convenience",
+  "en": "convenience",
+  "tr": "kolaylık, uygunluk",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ease",
+  "en": "ease",
+  "tr": "kolaylık, kolaylaştırmak; (animasyonda) yumuşatma",
+  "topic": "Karışık",
+  "example": "ease of use",
+  "story": null
+ },
+ {
+  "id": "w_enrich",
+  "en": "enrich",
+  "tr": "zenginleştirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_inevitable",
+  "en": "inevitable",
+  "tr": "kaçınılmaz",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_vivid",
+  "en": "vivid",
+  "tr": "canlı, parlak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_picturesque",
+  "en": "picturesque",
+  "tr": "resim gibi, pitoresk",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_leak",
+  "en": "leak",
+  "tr": "sızıntı, sızmak",
+  "topic": "Karışık",
+  "example": "a memory leak",
+  "story": null
+ },
+ {
+  "id": "w_infer",
+  "en": "infer",
+  "tr": "çıkarım yapmak, sonuç çıkarmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_fork",
+  "en": "fork",
+  "tr": "çatal, yol ayrımı, (kodu) çatallamak",
+  "topic": "React",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_junction",
+  "en": "junction",
+  "tr": "kavşak, birleşme noktası",
+  "topic": "React",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_cruise",
+  "en": "cruise",
+  "tr": "seyir, seyir hızında gitmek",
+  "topic": "React",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_concurrency",
+  "en": "concurrency",
+  "tr": "eş zamanlılık",
+  "topic": "React",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_relatively",
+  "en": "relatively",
+  "tr": "nispeten, görece",
+  "topic": "Bilgisayar Mimarisi",
+  "example": "relatively few instructions",
+  "story": null
+ },
+ {
+  "id": "w_throughput",
+  "en": "throughput",
+  "tr": "iş hacmi, verim",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_diverse",
+  "en": "diverse",
+  "tr": "çeşitli, türlü",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_predecessor",
+  "en": "predecessor",
+  "tr": "selef, öncül",
+  "topic": "Bilgisayar Mimarisi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_exhaustive",
+  "en": "exhaustive",
+  "tr": "kapsamlı, her şeyi içeren",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_exhaustiveness",
+  "en": "exhaustiveness",
+  "tr": "eksiksizlik",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_somewhat",
+  "en": "somewhat",
+  "tr": "biraz, bir ölçüde",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_further",
+  "en": "further",
+  "tr": "daha fazla, ek olarak, ileri",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_evaluation",
+  "en": "evaluation",
+  "tr": "değerlendirme",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_restriction",
+  "en": "restriction",
+  "tr": "kısıtlama, sınırlandırma",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_contradictory",
+  "en": "contradictory",
+  "tr": "çelişkili",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_mutually_exclusive",
+  "en": "mutually exclusive",
+  "tr": "birbirini dışlayan",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_literal",
+  "en": "literal",
+  "tr": "sabit değer (literal), harfiyen",
+  "topic": "Flutter",
+  "example": "string literal",
+  "story": null
+ },
+ {
+  "id": "w_flavor",
+  "en": "flavor",
+  "tr": "tür, çeşit, tat",
+  "topic": "Flutter",
+  "example": "Dart numbers come in two flavors.",
+  "story": null
+ },
+ {
+  "id": "w_precision",
+  "en": "precision",
+  "tr": "kesinlik, hassasiyet",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_explicitly",
+  "en": "explicitly",
+  "tr": "açıkça",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_concatenate",
+  "en": "concatenate",
+  "tr": "birleştirmek, uç uca eklemek",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_grapheme",
+  "en": "grapheme",
+  "tr": "grafem, yazı birimi",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_cluster",
+  "en": "cluster",
+  "tr": "küme",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_interpolate",
+  "en": "interpolate",
+  "tr": "araya eklemek, araya yerleştirmek",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_invaluable",
+  "en": "invaluable",
+  "tr": "paha biçilmez",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_heterogeneous",
+  "en": "heterogeneous",
+  "tr": "heterojen, farklı türlerden oluşan",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_delimited",
+  "en": "delimited",
+  "tr": "sınırlandırılmış, ayraçla ayrılmış",
+  "topic": "Flutter",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_estimate",
+  "en": "estimate",
+  "tr": "tahmin, tahmin etmek",
+  "topic": "Proje Yönetimi",
+  "example": "a rough estimate",
+  "story": null
+ },
+ {
+  "id": "w_scheduling",
+  "en": "scheduling",
+  "tr": "çizelgeleme",
+  "topic": "Proje Yönetimi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_capable",
+  "en": "capable",
+  "tr": "yetenekli, muktedir",
+  "topic": "Proje Yönetimi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_distinguish",
+  "en": "distinguish",
+  "tr": "ayırt etmek",
+  "topic": "Proje Yönetimi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_neural",
+  "en": "neural",
+  "tr": "sinirsel",
+  "topic": "Proje Yönetimi",
+  "example": "neural networks",
+  "story": null
+ },
+ {
+  "id": "w_artificial",
+  "en": "artificial",
+  "tr": "yapay",
+  "topic": "Proje Yönetimi",
+  "example": "artificial network",
+  "story": null
+ },
+ {
+  "id": "w_mimic",
+  "en": "mimic",
+  "tr": "taklit etmek",
+  "topic": "Proje Yönetimi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_interconnected",
+  "en": "interconnected",
+  "tr": "birbirine bağlı",
+  "topic": "Proje Yönetimi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_tremendous",
+  "en": "tremendous",
+  "tr": "muazzam",
+  "topic": "Proje Yönetimi",
+  "example": "a tremendous amount of computing power",
+  "story": null
+ },
+ {
+  "id": "w_volatile",
+  "en": "volatile",
+  "tr": "değişken, dengesiz, uçucu",
+  "topic": "Proje Yönetimi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_imitate",
+  "en": "imitate",
+  "tr": "taklit etmek, örnek almak",
+  "topic": "Proje Yönetimi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_inference",
+  "en": "inference",
+  "tr": "çıkarım",
+  "topic": "Proje Yönetimi",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_inclusive",
+  "en": "inclusive",
+  "tr": "dahil, kapsayıcı",
+  "topic": "Python",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_operational",
+  "en": "operational",
+  "tr": "çalışır durumda, kullanıma hazır",
+  "topic": "Python",
+  "example": "operational amplifier",
+  "story": null
+ },
+ {
+  "id": "w_amplifier",
+  "en": "amplifier",
+  "tr": "yükseltici, amfi",
+  "topic": "Python",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_abbreviated",
+  "en": "abbreviated",
+  "tr": "kısaltılmış",
+  "topic": "Python",
+  "example": "often abbreviated as op-amp",
+  "story": null
+ },
+ {
+  "id": "w_wave",
+  "en": "wave",
+  "tr": "dalga",
+  "topic": "Robotik",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_echolocation",
+  "en": "echolocation",
+  "tr": "yankıyla yön bulma",
+  "topic": "Robotik",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_obstacle",
+  "en": "obstacle",
+  "tr": "engel, mani",
+  "topic": "Robotik",
+  "example": "objects as potential obstacles",
+  "story": null
+ },
+ {
+  "id": "w_relay",
+  "en": "relay",
+  "tr": "aktarmak, iletmek, röle",
+  "topic": "Robotik",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_precisely",
+  "en": "precisely",
+  "tr": "tam olarak, kesin olarak",
+  "topic": "Robotik",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_greenhouse",
+  "en": "greenhouse",
+  "tr": "sera",
+  "topic": "Robotik",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_square",
+  "en": "square",
+  "tr": "kare",
+  "topic": "Robotik",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_pin",
+  "en": "pin",
+  "tr": "pim, (elektronikte) bacak, PIN kodu",
+  "topic": "Robotik",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_buffer",
+  "en": "buffer",
+  "tr": "tampon, arabellek",
+  "topic": "Robotik",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_obsolete",
+  "en": "obsolete",
+  "tr": "eskimiş, modası geçmiş",
+  "topic": "Android",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_inline",
+  "en": "inline",
+  "tr": "satır içi",
+  "topic": "Android",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_thumbnail",
+  "en": "thumbnail",
+  "tr": "küçük resim",
+  "topic": "Android",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_accuracy",
+  "en": "accuracy",
+  "tr": "doğruluk",
+  "topic": "Android",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_landscape",
+  "en": "landscape",
+  "tr": "manzara, yatay (ekran yönü)",
+  "topic": "Android",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_so_far",
+  "en": "so far",
+  "tr": "şu ana kadar",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_designate",
+  "en": "designate",
+  "tr": "belirlemek, atamak, görevlendirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_impermissible",
+  "en": "impermissible",
+  "tr": "izin verilmeyen",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_tweak",
+  "en": "tweak",
+  "tr": "ince ayar yapmak, küçük değişiklik yapmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_trail",
+  "en": "trail",
+  "tr": "iz, izini sürmek, takip etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_noteworthy",
+  "en": "noteworthy",
+  "tr": "dikkate değer",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_greet",
+  "en": "greet",
+  "tr": "selamlamak, selam vermek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_designated",
+  "en": "designated",
+  "tr": "belirlenmiş, atanmış",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_mitigate",
+  "en": "mitigate",
+  "tr": "hafifletmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_emit",
+  "en": "emit",
+  "tr": "yaymak, (olay) yayınlamak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_reside",
+  "en": "reside",
+  "tr": "ikamet etmek, bulunmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_adhere",
+  "en": "adhere",
+  "tr": "bağlı kalmak, uymak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_complement",
+  "en": "complement",
+  "tr": "tamamlayıcı, tamamlamak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_standalone",
+  "en": "standalone",
+  "tr": "bağımsız",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_defect",
+  "en": "defect",
+  "tr": "kusur",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_adorned",
+  "en": "adorned",
+  "tr": "süslenmiş",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_qualifier",
+  "en": "qualifier",
+  "tr": "niteleyici",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_nested",
+  "en": "nested",
+  "tr": "iç içe",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_tier",
+  "en": "tier",
+  "tr": "katman, kademe",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_excessive",
+  "en": "excessive",
+  "tr": "aşırı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_depict",
+  "en": "depict",
+  "tr": "tasvir etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_truncation",
+  "en": "truncation",
+  "tr": "kırpma, kesme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_lead",
+  "en": "lead",
+  "tr": "öncülük etmek, yol göstermek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_rigorously",
+  "en": "rigorously",
+  "tr": "titizlikle",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_bespoke",
+  "en": "bespoke",
+  "tr": "ısmarlama, kişiye özel",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_splitter",
+  "en": "splitter",
+  "tr": "ayırıcı",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_assembly",
+  "en": "assembly",
+  "tr": "montaj, derleme, bir araya getirme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_nominee",
+  "en": "nominee",
+  "tr": "aday",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_aid",
+  "en": "aid",
+  "tr": "yardım",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_invocation",
+  "en": "invocation",
+  "tr": "çağırma",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_preliminary",
+  "en": "preliminary",
+  "tr": "ön, hazırlık niteliğinde",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_enumeration",
+  "en": "enumeration",
+  "tr": "sayım, numaralandırma",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_assess",
+  "en": "assess",
+  "tr": "değerlendirmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_assessment",
+  "en": "assessment",
+  "tr": "değerlendirme",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_conduct",
+  "en": "conduct",
+  "tr": "davranış, yürütmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_kick_off",
+  "en": "kick off",
+  "tr": "başlatmak",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_mitigation",
+  "en": "mitigation",
+  "tr": "hafifletme, azaltma",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_gist",
+  "en": "gist",
+  "tr": "özet, ana fikir",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_abort",
+  "en": "abort",
+  "tr": "yarıda kesmek, iptal etmek",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_reasoned",
+  "en": "reasoned",
+  "tr": "mantıklı, gerekçeli",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_border_style",
+  "en": "border-style",
+  "tr": "kenarlık stili",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_dashed",
+  "en": "dashed",
+  "tr": "kesik çizgili",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_solid",
+  "en": "solid",
+  "tr": "düz, katı",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_dotted",
+  "en": "dotted",
+  "tr": "noktalı",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_groove",
+  "en": "groove",
+  "tr": "oluklu (kenarlık stili)",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_ridge",
+  "en": "ridge",
+  "tr": "sırt, çıkıntılı (kenarlık stili)",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_inset",
+  "en": "inset",
+  "tr": "içe gömük (kenarlık stili)",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_outset",
+  "en": "outset",
+  "tr": "dışa çıkık (kenarlık stili)",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_border_width",
+  "en": "border-width",
+  "tr": "kenarlık kalınlığı",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_thin",
+  "en": "thin",
+  "tr": "ince",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_thick",
+  "en": "thick",
+  "tr": "kalın",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_border_color",
+  "en": "border-color",
+  "tr": "kenarlık rengi",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_rrggbb",
+  "en": "#rrggbb",
+  "tr": "onaltılık (hex) renk kodu",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_tutorial",
+  "en": "tutorial",
+  "tr": "eğitim, öğretici",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_background_image",
+  "en": "background-image",
+  "tr": "arka plan görseli",
+  "topic": "Web (HTML/CSS)",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_font",
+  "en": "font",
+  "tr": "yazı tipi",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_script",
+  "en": "script",
+  "tr": "betik, kod dosyası",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_sprite",
+  "en": "sprite",
+  "tr": "2B görsel (sprite)",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_set_native_size",
+  "en": "set native size",
+  "tr": "orijinal boyutuna ayarla",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_preserve_aspect",
+  "en": "preserve aspect",
+  "tr": "en-boy oranını korumak",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_canvas_group",
+  "en": "canvas group",
+  "tr": "tuval grubu",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_fade_out",
+  "en": "fade out",
+  "tr": "yavaşça kaybolmak, solmak",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_tweening",
+  "en": "tweening",
+  "tr": "ara kare animasyonu",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_scene_management",
+  "en": "scene management",
+  "tr": "sahne yönetimi",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_grid_layout",
+  "en": "grid layout",
+  "tr": "ızgara düzeni",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_transform",
+  "en": "transform",
+  "tr": "dönüştürmek, dönüşüm",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_allotted",
+  "en": "allotted",
+  "tr": "tahsis edilmiş",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_rect_transform",
+  "en": "rect transform",
+  "tr": "dikdörtgen dönüşümü (UI)",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_local_scale",
+  "en": "local scale",
+  "tr": "yerel ölçek",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_invoke",
+  "en": "invoke",
+  "tr": "çağırmak",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_set_ease",
+  "en": "set ease",
+  "tr": "yumuşatma (easing) türünü ayarlamak",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_out_back",
+  "en": "out back",
+  "tr": "geri taşarak yavaşlayan (easing türü)",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_count",
+  "en": "count",
+  "tr": "saymak, sayı, adet",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_add_listener",
+  "en": "add listener",
+  "tr": "dinleyici eklemek",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_debug_log",
+  "en": "debug log",
+  "tr": "hata ayıklama günlüğü",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_event_system",
+  "en": "event system",
+  "tr": "olay sistemi",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_current",
+  "en": "current",
+  "tr": "güncel, mevcut; (elektrikte) akım",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_current_selected_game_object",
+  "en": "current selected game object",
+  "tr": "şu an seçili oyun nesnesi",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_parse",
+  "en": "parse",
+  "tr": "ayrıştırmak",
+  "topic": "Unity/Unreal",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_delegate",
+  "en": "delegate",
+  "tr": "temsilci, yetki devretmek",
+  "topic": "C#",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_signature",
+  "en": "signature",
+  "tr": "imza",
+  "topic": "C#",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_action",
+  "en": "action",
+  "tr": "eylem",
+  "topic": "C#",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_handle_exception",
+  "en": "handle exception",
+  "tr": "istisnayı ele almak",
+  "topic": "C#",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_validation",
+  "en": "validation",
+  "tr": "doğrulama",
+  "topic": "C#",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_func",
+  "en": "func",
+  "tr": "fonksiyon (C# Func temsilcisi)",
+  "topic": "C#",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_thread_sleep",
+  "en": "thread sleep",
+  "tr": "iş parçacığını uyutmak (bekletmek)",
+  "topic": "C#",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_scalability",
+  "en": "scalability",
+  "tr": "ölçeklenebilirlik",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ },
+ {
+  "id": "w_valve",
+  "en": "valve",
+  "tr": "vana, valf",
+  "topic": "Karışık",
+  "example": null,
+  "story": null
+ }
+]

@@ -1,0 +1,3163 @@
+{
+  "id": "pro_tourism",
+  "title": "Turizm İngilizcesi",
+  "fromLang": "tr",
+  "learningLang": "en",
+  "units": [
+    {
+      "id": "t1",
+      "title": "Resepsiyon: karşılama ve check-in",
+      "description": "Misafiri karşıla, rezervasyonu bul, anahtarı ver",
+      "color": "0xFF1E88E5",
+      "nodes": [
+        {
+          "id": "t1l1",
+          "type": "lesson",
+          "title": "Karşılama",
+          "description": "welcome, how can I help you, reservation",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "rezervasyon",
+              "answer": "reservation",
+              "choices": [
+                {
+                  "text": "reservation",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "passport",
+                  "emoji": "🛂"
+                },
+                {
+                  "text": "key",
+                  "emoji": "🔑"
+                },
+                {
+                  "text": "breakfast",
+                  "emoji": "🍳"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Otelimize hoş geldiniz.",
+              "lang": "tr",
+              "answers": [
+                "Welcome to our hotel"
+              ],
+              "tokens": [
+                "Welcome",
+                "to",
+                "our",
+                "hotel",
+                "room",
+                "your",
+                "from"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "How can I ___ you?",
+              "translation": "Size nasıl yardımcı olabilirim?",
+              "answer": "help",
+              "choices": [
+                "help",
+                "see",
+                "give"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Do you have a reservation?",
+              "answers": [
+                "Do you have a reservation?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "rezervasyon",
+                  "reservation"
+                ],
+                [
+                  "misafir",
+                  "guest"
+                ],
+                [
+                  "resepsiyon",
+                  "reception"
+                ],
+                [
+                  "oda",
+                  "room"
+                ],
+                [
+                  "gece",
+                  "night"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "How can I help you?",
+              "lang": "en",
+              "answers": [
+                "Size nasıl yardımcı olabilirim"
+              ],
+              "tokens": [
+                "Size",
+                "nasıl",
+                "yardımcı",
+                "olabilirim",
+                "nerede",
+                "oda"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "misafir",
+              "answer": "guest",
+              "choices": [
+                {
+                  "text": "guest",
+                  "emoji": "🧳"
+                },
+                {
+                  "text": "chef",
+                  "emoji": "👨‍🍳"
+                },
+                {
+                  "text": "driver",
+                  "emoji": "🚕"
+                },
+                {
+                  "text": "doctor",
+                  "emoji": "🩺"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Do you have a ___?",
+              "translation": "Rezervasyonunuz var mı?",
+              "answer": "reservation",
+              "choices": [
+                "reservation",
+                "breakfast",
+                "towel"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Adınız nedir, lütfen?",
+              "lang": "tr",
+              "answers": [
+                "What is your name please",
+                "What's your name please"
+              ],
+              "tokens": [
+                "What",
+                "is",
+                "your",
+                "name",
+                "please",
+                "room",
+                "my",
+                "are"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Welcome to our hotel.",
+              "translation": "Otelimize hoş geldiniz."
+            }
+          ]
+        },
+        {
+          "id": "t1l2",
+          "type": "lesson",
+          "title": "Check-in",
+          "description": "passport, room key, floor, nights",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "pasaport",
+              "answer": "passport",
+              "choices": [
+                {
+                  "text": "passport",
+                  "emoji": "🛂"
+                },
+                {
+                  "text": "key",
+                  "emoji": "🔑"
+                },
+                {
+                  "text": "bill",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "map",
+                  "emoji": "🗺️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Pasaportunuzu görebilir miyim, lütfen?",
+              "lang": "tr",
+              "answers": [
+                "Could I see your passport please",
+                "Can I see your passport please"
+              ],
+              "tokens": [
+                "Could",
+                "I",
+                "see",
+                "your",
+                "passport",
+                "please",
+                "key",
+                "you",
+                "room"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Your room is on the third ___.",
+              "translation": "Odanız üçüncü katta.",
+              "answer": "floor",
+              "choices": [
+                "floor",
+                "night",
+                "key"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Here is your room key.",
+              "answers": [
+                "Here is your room key."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "anahtar",
+                  "key"
+                ],
+                [
+                  "kat",
+                  "floor"
+                ],
+                [
+                  "asansör",
+                  "elevator"
+                ],
+                [
+                  "pasaport",
+                  "passport"
+                ],
+                [
+                  "imza",
+                  "signature"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Here is your room key.",
+              "lang": "en",
+              "answers": [
+                "Buyurun, oda anahtarınız",
+                "İşte oda anahtarınız"
+              ],
+              "tokens": [
+                "Buyurun",
+                "oda",
+                "anahtarınız",
+                "kat",
+                "pasaport",
+                "kahvaltı"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "asansör",
+              "answer": "elevator",
+              "choices": [
+                {
+                  "text": "elevator",
+                  "emoji": "🛗"
+                },
+                {
+                  "text": "stairs",
+                  "emoji": "🪜"
+                },
+                {
+                  "text": "door",
+                  "emoji": "🚪"
+                },
+                {
+                  "text": "key",
+                  "emoji": "🔑"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "How many ___ will you stay?",
+              "translation": "Kaç gece kalacaksınız?",
+              "answer": "nights",
+              "choices": [
+                "nights",
+                "floors",
+                "keys"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Lütfen burayı imzalayın.",
+              "lang": "tr",
+              "answers": [
+                "Please sign here",
+                "Sign here please"
+              ],
+              "tokens": [
+                "Please",
+                "sign",
+                "here",
+                "there",
+                "room",
+                "read"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Could I see your passport, please?",
+              "translation": "Pasaportunuzu görebilir miyim, lütfen?"
+            }
+          ]
+        },
+        {
+          "id": "t1s",
+          "type": "story",
+          "title": "İlk misafir",
+          "description": "Deniz resepsiyonda Mark Brown'ı karşılıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Good evening! Welcome to Hotel Lale. How can I help you?",
+              "translation": "İyi akşamlar! Hotel Lale'ye hoş geldiniz. Size nasıl yardımcı olabilirim?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mark",
+              "avatar": "👨‍🦳",
+              "text": "Hi. I have a reservation. My name is Mark Brown.",
+              "translation": "Merhaba. Rezervasyonum var. Adım Mark Brown."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "One moment, please. Yes, a double room for three nights.",
+              "translation": "Bir dakika, lütfen. Evet, üç gecelik çift kişilik oda."
+            },
+            {
+              "kind": "question",
+              "prompt": "Mark kaç gece kalacak?",
+              "choices": [
+                "İki",
+                "Üç",
+                "Beş"
+              ],
+              "answer": "Üç"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Could I see your passport, please?",
+              "translation": "Pasaportunuzu görebilir miyim, lütfen?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mark",
+              "avatar": "👨‍🦳",
+              "text": "Of course. Here you are.",
+              "translation": "Tabii ki. Buyurun."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Thank you. Here is your key. Your room is 304, on the third floor.",
+              "translation": "Teşekkürler. Anahtarınız burada. Odanız 304, üçüncü katta."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mark",
+              "avatar": "👨‍🦳",
+              "text": "Great. What time is breakfast?",
+              "translation": "Harika. Kahvaltı saat kaçta?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Breakfast is served from 7 to 10 in the garden restaurant.",
+              "translation": "Kahvaltı bahçe restoranında 7'den 10'a kadar servis edilir."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kahvaltı nerede servis ediliyor?",
+              "choices": [
+                "Odada",
+                "Bahçe restoranında",
+                "Lobide"
+              ],
+              "answer": "Bahçe restoranında"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mark",
+              "avatar": "👨‍🦳",
+              "text": "Thank you very much.",
+              "translation": "Çok teşekkür ederim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "You're welcome. Enjoy your stay!",
+              "translation": "Rica ederim. İyi konaklamalar!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Mark'ın odası hangi katta?",
+              "choices": [
+                "Birinci katta",
+                "İkinci katta",
+                "Üçüncü katta"
+              ],
+              "answer": "Üçüncü katta"
+            }
+          ]
+        },
+        {
+          "id": "t1l3",
+          "type": "lesson",
+          "title": "Otel bilgileri",
+          "description": "breakfast time, check-out, pool, lobby",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "kahvaltı",
+              "answer": "breakfast",
+              "choices": [
+                {
+                  "text": "breakfast",
+                  "emoji": "🍳"
+                },
+                {
+                  "text": "pool",
+                  "emoji": "🏊"
+                },
+                {
+                  "text": "elevator",
+                  "emoji": "🛗"
+                },
+                {
+                  "text": "taxi",
+                  "emoji": "🚕"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kahvaltı yedide başlar.",
+              "lang": "tr",
+              "answers": [
+                "Breakfast starts at seven",
+                "Breakfast starts at 7"
+              ],
+              "tokens": [
+                "Breakfast",
+                "starts",
+                "at",
+                "seven",
+                "ends",
+                "in",
+                "ten"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Breakfast is served ___ 7 to 10.",
+              "translation": "Kahvaltı 7'den 10'a kadar servis edilir.",
+              "answer": "from",
+              "choices": [
+                "from",
+                "at",
+                "on"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Breakfast is served from 7 to 10.",
+              "answers": [
+                "Breakfast is served from 7 to 10."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kahvaltı",
+                  "breakfast"
+                ],
+                [
+                  "havuz",
+                  "pool"
+                ],
+                [
+                  "çıkış",
+                  "check-out"
+                ],
+                [
+                  "giriş",
+                  "check-in"
+                ],
+                [
+                  "lobi",
+                  "lobby"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Check-out is at twelve.",
+              "lang": "en",
+              "answers": [
+                "Çıkış saat on ikide"
+              ],
+              "tokens": [
+                "Çıkış",
+                "saat",
+                "on",
+                "ikide",
+                "giriş",
+                "yedide",
+                "kahvaltı"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "havuz",
+              "answer": "pool",
+              "choices": [
+                {
+                  "text": "pool",
+                  "emoji": "🏊"
+                },
+                {
+                  "text": "garden",
+                  "emoji": "🌳"
+                },
+                {
+                  "text": "beach",
+                  "emoji": "🏖️"
+                },
+                {
+                  "text": "restaurant",
+                  "emoji": "🍽️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The elevator is on your ___.",
+              "translation": "Asansör solunuzda.",
+              "answer": "left",
+              "choices": [
+                "left",
+                "floor",
+                "key"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Havuz akşam yediye kadar açık.",
+              "lang": "tr",
+              "answers": [
+                "The pool is open until seven",
+                "The pool is open until 7 pm"
+              ],
+              "tokens": [
+                "The",
+                "pool",
+                "is",
+                "open",
+                "until",
+                "seven",
+                "closed",
+                "from",
+                "beach"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Breakfast is served from 7 to 10.",
+              "translation": "Kahvaltı 7'den 10'a kadar servis edilir."
+            }
+          ]
+        },
+        {
+          "id": "t1t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t1c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "t2",
+      "title": "Oda ve misafir istekleri",
+      "description": "Havlu, klima, oda servisi, uyandırma ve Wi-Fi",
+      "color": "0xFF00897B",
+      "nodes": [
+        {
+          "id": "t2l1",
+          "type": "lesson",
+          "title": "Oda eşyaları",
+          "description": "towel, pillow, blanket, air conditioning",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "havlu",
+              "answer": "towel",
+              "choices": [
+                {
+                  "text": "towel",
+                  "emoji": "🧺"
+                },
+                {
+                  "text": "pillow",
+                  "emoji": "🛏️"
+                },
+                {
+                  "text": "soap",
+                  "emoji": "🧼"
+                },
+                {
+                  "text": "lamp",
+                  "emoji": "💡"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hemen yeni havlu getireceğim.",
+              "lang": "tr",
+              "answers": [
+                "I'll bring new towels right away",
+                "I will bring new towels right away"
+              ],
+              "tokens": [
+                "I'll",
+                "bring",
+                "new",
+                "towels",
+                "right",
+                "away",
+                "pillow",
+                "left",
+                "take"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The air conditioning is not ___.",
+              "translation": "Klima çalışmıyor.",
+              "answer": "working",
+              "choices": [
+                "working",
+                "open",
+                "served"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Would you like an extra pillow?",
+              "answers": [
+                "Would you like an extra pillow?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "havlu",
+                  "towel"
+                ],
+                [
+                  "yastık",
+                  "pillow"
+                ],
+                [
+                  "battaniye",
+                  "blanket"
+                ],
+                [
+                  "sabun",
+                  "soap"
+                ],
+                [
+                  "klima",
+                  "air conditioning"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Would you like an extra blanket?",
+              "lang": "en",
+              "answers": [
+                "Ekstra bir battaniye ister misiniz"
+              ],
+              "tokens": [
+                "Ekstra",
+                "bir",
+                "battaniye",
+                "ister",
+                "misiniz",
+                "yastık",
+                "havlu"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "yastık",
+              "answer": "pillow",
+              "choices": [
+                {
+                  "text": "pillow",
+                  "emoji": "🛏️"
+                },
+                {
+                  "text": "soap",
+                  "emoji": "🧼"
+                },
+                {
+                  "text": "lamp",
+                  "emoji": "💡"
+                },
+                {
+                  "text": "key",
+                  "emoji": "🔑"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "You can use the remote ___.",
+              "translation": "Kumandayı kullanabilirsiniz.",
+              "answer": "control",
+              "choices": [
+                "control",
+                "towel",
+                "floor"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Klimayı kontrol edeceğim.",
+              "lang": "tr",
+              "answers": [
+                "I'll check the air conditioning",
+                "I will check the air conditioning"
+              ],
+              "tokens": [
+                "I'll",
+                "check",
+                "the",
+                "air",
+                "conditioning",
+                "open",
+                "towel",
+                "a"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Would you like an extra pillow?",
+              "translation": "Ekstra bir yastık ister misiniz?"
+            }
+          ]
+        },
+        {
+          "id": "t2l2",
+          "type": "lesson",
+          "title": "Oda servisi ve uyandırma",
+          "description": "room service, wake-up call, order",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "oda servisi",
+              "answer": "room service",
+              "choices": [
+                {
+                  "text": "room service",
+                  "emoji": "🛎️"
+                },
+                {
+                  "text": "wake-up call",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "taxi",
+                  "emoji": "🚕"
+                },
+                {
+                  "text": "laundry",
+                  "emoji": "👕"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Oda servisi yirmi dört saat açık.",
+              "lang": "tr",
+              "answers": [
+                "Room service is open twenty-four hours",
+                "Room service is open 24 hours"
+              ],
+              "tokens": [
+                "Room",
+                "service",
+                "is",
+                "open",
+                "twenty-four",
+                "hours",
+                "closed",
+                "days"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "What time would you like your wake-up ___?",
+              "translation": "Uyandırma aramanızı saat kaçta istersiniz?",
+              "answer": "call",
+              "choices": [
+                "call",
+                "room",
+                "key"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Your order will arrive in twenty minutes.",
+              "answers": [
+                "Your order will arrive in twenty minutes."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "uyandırma",
+                  "wake-up call"
+                ],
+                [
+                  "sipariş",
+                  "order"
+                ],
+                [
+                  "çamaşırhane",
+                  "laundry"
+                ],
+                [
+                  "dakika",
+                  "minute"
+                ],
+                [
+                  "sabah",
+                  "morning"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Your order will arrive in twenty minutes.",
+              "lang": "en",
+              "answers": [
+                "Siparişiniz yirmi dakika içinde gelecek"
+              ],
+              "tokens": [
+                "Siparişiniz",
+                "yirmi",
+                "dakika",
+                "içinde",
+                "gelecek",
+                "saat",
+                "otuz"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "çamaşırhane",
+              "answer": "laundry",
+              "choices": [
+                {
+                  "text": "laundry",
+                  "emoji": "👕"
+                },
+                {
+                  "text": "kitchen",
+                  "emoji": "🔪"
+                },
+                {
+                  "text": "pool",
+                  "emoji": "🏊"
+                },
+                {
+                  "text": "gym",
+                  "emoji": "🏋️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I will ___ you at seven o'clock.",
+              "translation": "Sizi saat yedide arayacağım.",
+              "answer": "call",
+              "choices": [
+                "call",
+                "bring",
+                "sign"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ne sipariş etmek istersiniz?",
+              "lang": "tr",
+              "answers": [
+                "What would you like to order"
+              ],
+              "tokens": [
+                "What",
+                "would",
+                "you",
+                "like",
+                "to",
+                "order",
+                "bring",
+                "do"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "What would you like to order?",
+              "translation": "Ne sipariş etmek istersiniz?"
+            }
+          ]
+        },
+        {
+          "id": "t2s",
+          "type": "story",
+          "title": "Gece telefonu",
+          "description": "Anna odasından resepsiyonu arıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Anna",
+              "avatar": "👩‍🦰",
+              "text": "Hello, this is Anna Müller in room 512.",
+              "translation": "Merhaba, ben 512 numaralı odadan Anna Müller."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Good evening, Ms. Müller. How can I help you?",
+              "translation": "İyi akşamlar Bayan Müller. Size nasıl yardımcı olabilirim?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Anna",
+              "avatar": "👩‍🦰",
+              "text": "The air conditioning is not working. It's very hot.",
+              "translation": "Klima çalışmıyor. Çok sıcak."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "I'm sorry about that. I'll send someone right away.",
+              "translation": "Bunun için üzgünüm. Hemen birini gönderiyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Anna'nın sorunu ne?",
+              "choices": [
+                "Klima çalışmıyor",
+                "Havlu yok",
+                "Oda çok soğuk"
+              ],
+              "answer": "Klima çalışmıyor"
+            },
+            {
+              "kind": "line",
+              "speaker": "Anna",
+              "avatar": "👩‍🦰",
+              "text": "Thank you. And what is the Wi-Fi password?",
+              "translation": "Teşekkürler. Bir de Wi-Fi şifresi nedir?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "It's lale2024. It's also on the card on your desk.",
+              "translation": "lale2024. Masanızdaki kartta da yazıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Anna",
+              "avatar": "👩‍🦰",
+              "text": "Great. Can I have a wake-up call at six thirty?",
+              "translation": "Harika. Saat altı buçukta uyandırma alabilir miyim?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Of course. A wake-up call at six thirty.",
+              "translation": "Tabii ki. Altı buçukta uyandırma."
+            },
+            {
+              "kind": "question",
+              "prompt": "Anna saat kaçta uyanmak istiyor?",
+              "choices": [
+                "6.00",
+                "6.30",
+                "7.30"
+              ],
+              "answer": "6.30"
+            },
+            {
+              "kind": "line",
+              "speaker": "Anna",
+              "avatar": "👩‍🦰",
+              "text": "Perfect. Good night!",
+              "translation": "Mükemmel. İyi geceler!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Good night, and sleep well.",
+              "translation": "İyi geceler, iyi uykular."
+            },
+            {
+              "kind": "question",
+              "prompt": "Wi-Fi şifresi başka nerede yazıyor?",
+              "choices": [
+                "Kapıda",
+                "Masadaki kartta",
+                "Asansörde"
+              ],
+              "answer": "Masadaki kartta"
+            }
+          ]
+        },
+        {
+          "id": "t2l3",
+          "type": "lesson",
+          "title": "Wi-Fi ve diğer istekler",
+          "description": "Wi-Fi password, safe, wardrobe, extra bed",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "şifre",
+              "answer": "password",
+              "choices": [
+                {
+                  "text": "password",
+                  "emoji": "🔐"
+                },
+                {
+                  "text": "key",
+                  "emoji": "🔑"
+                },
+                {
+                  "text": "phone",
+                  "emoji": "📱"
+                },
+                {
+                  "text": "card",
+                  "emoji": "💳"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Wi-Fi şifresi oda numaranız.",
+              "lang": "tr",
+              "answers": [
+                "The Wi-Fi password is your room number"
+              ],
+              "tokens": [
+                "The",
+                "Wi-Fi",
+                "password",
+                "is",
+                "your",
+                "room",
+                "number",
+                "key",
+                "floor"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The safe is in the ___.",
+              "translation": "Kasa dolabın içinde.",
+              "answer": "wardrobe",
+              "choices": [
+                "wardrobe",
+                "pool",
+                "lobby"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The Wi-Fi password is on the card.",
+              "answers": [
+                "The Wi-Fi password is on the card."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "şifre",
+                  "password"
+                ],
+                [
+                  "kasa",
+                  "safe"
+                ],
+                [
+                  "ütü",
+                  "iron"
+                ],
+                [
+                  "ek yatak",
+                  "extra bed"
+                ],
+                [
+                  "dolap",
+                  "wardrobe"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Is there anything else I can do for you?",
+              "lang": "en",
+              "answers": [
+                "Sizin için yapabileceğim başka bir şey var mı"
+              ],
+              "tokens": [
+                "Sizin",
+                "için",
+                "yapabileceğim",
+                "başka",
+                "bir",
+                "şey",
+                "var",
+                "mı",
+                "yok",
+                "oda"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "saç kurutma makinesi",
+              "answer": "hair dryer",
+              "choices": [
+                {
+                  "text": "hair dryer",
+                  "emoji": "💨"
+                },
+                {
+                  "text": "safe",
+                  "emoji": "🗄️"
+                },
+                {
+                  "text": "phone",
+                  "emoji": "📱"
+                },
+                {
+                  "text": "lamp",
+                  "emoji": "💡"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Of course, I'll send someone ___ away.",
+              "translation": "Tabii ki, hemen birini gönderiyorum.",
+              "answer": "right",
+              "choices": [
+                "right",
+                "left",
+                "up"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hemen birini gönderiyorum.",
+              "lang": "tr",
+              "answers": [
+                "I'll send someone right away",
+                "I will send someone right away"
+              ],
+              "tokens": [
+                "I'll",
+                "send",
+                "someone",
+                "right",
+                "away",
+                "bring",
+                "left",
+                "nobody"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Is there anything else I can do for you?",
+              "translation": "Sizin için yapabileceğim başka bir şey var mı?"
+            }
+          ]
+        },
+        {
+          "id": "t2t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t2c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "t3",
+      "title": "Restoran ve bar",
+      "description": "Sipariş al, yemek öner, alerjiye dikkat et, hesabı getir",
+      "color": "0xFFE53935",
+      "nodes": [
+        {
+          "id": "t3l1",
+          "type": "lesson",
+          "title": "Sipariş almak",
+          "description": "menu, table, ready to order, drinks",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "menü",
+              "answer": "menu",
+              "choices": [
+                {
+                  "text": "menu",
+                  "emoji": "📋"
+                },
+                {
+                  "text": "bill",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "glass",
+                  "emoji": "🥛"
+                },
+                {
+                  "text": "fork",
+                  "emoji": "🍴"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sipariş vermeye hazır mısınız?",
+              "lang": "tr",
+              "answers": [
+                "Are you ready to order"
+              ],
+              "tokens": [
+                "Are",
+                "you",
+                "ready",
+                "to",
+                "order",
+                "pay",
+                "is",
+                "we"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Here is the ___.",
+              "translation": "Buyurun, menü.",
+              "answer": "menu",
+              "choices": [
+                "menu",
+                "floor",
+                "passport"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Are you ready to order?",
+              "answers": [
+                "Are you ready to order?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "menü",
+                  "menu"
+                ],
+                [
+                  "masa",
+                  "table"
+                ],
+                [
+                  "garson",
+                  "waiter"
+                ],
+                [
+                  "içecek",
+                  "drink"
+                ],
+                [
+                  "tatlı",
+                  "dessert"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "What would you like to drink?",
+              "lang": "en",
+              "answers": [
+                "Ne içmek istersiniz"
+              ],
+              "tokens": [
+                "Ne",
+                "içmek",
+                "istersiniz",
+                "yemek",
+                "sipariş",
+                "nerede"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "masa",
+              "answer": "table",
+              "choices": [
+                {
+                  "text": "table",
+                  "emoji": "🪑"
+                },
+                {
+                  "text": "glass",
+                  "emoji": "🥛"
+                },
+                {
+                  "text": "plate",
+                  "emoji": "🍽️"
+                },
+                {
+                  "text": "bottle",
+                  "emoji": "🍾"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "A table for ___?",
+              "translation": "İki kişilik masa mı?",
+              "answer": "two",
+              "choices": [
+                "two",
+                "order",
+                "menu"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu masa sizin için uygun mu?",
+              "lang": "tr",
+              "answers": [
+                "Is this table okay for you",
+                "Is this table OK for you"
+              ],
+              "tokens": [
+                "Is",
+                "this",
+                "table",
+                "okay",
+                "for",
+                "you",
+                "menu",
+                "are"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Are you ready to order?",
+              "translation": "Sipariş vermeye hazır mısınız?"
+            }
+          ]
+        },
+        {
+          "id": "t3l2",
+          "type": "lesson",
+          "title": "Öneriler ve alerjiler",
+          "description": "recommend, allergy, spicy, vegetarian",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "balık",
+              "answer": "fish",
+              "choices": [
+                {
+                  "text": "fish",
+                  "emoji": "🐟"
+                },
+                {
+                  "text": "chicken",
+                  "emoji": "🍗"
+                },
+                {
+                  "text": "salad",
+                  "emoji": "🥗"
+                },
+                {
+                  "text": "soup",
+                  "emoji": "🍲"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Herhangi bir alerjiniz var mı?",
+              "lang": "tr",
+              "answers": [
+                "Do you have any allergies"
+              ],
+              "tokens": [
+                "Do",
+                "you",
+                "have",
+                "any",
+                "allergies",
+                "are",
+                "some",
+                "drink"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I ___ the grilled fish.",
+              "translation": "Izgara balığı tavsiye ederim.",
+              "answer": "recommend",
+              "choices": [
+                "recommend",
+                "order",
+                "sign"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "This dish contains nuts.",
+              "answers": [
+                "This dish contains nuts."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "balık",
+                  "fish"
+                ],
+                [
+                  "tavuk",
+                  "chicken"
+                ],
+                [
+                  "çorba",
+                  "soup"
+                ],
+                [
+                  "salata",
+                  "salad"
+                ],
+                [
+                  "yer fıstığı",
+                  "peanut"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "This dish is very spicy.",
+              "lang": "en",
+              "answers": [
+                "Bu yemek çok acı"
+              ],
+              "tokens": [
+                "Bu",
+                "yemek",
+                "çok",
+                "acı",
+                "tatlı",
+                "değil"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "çorba",
+              "answer": "soup",
+              "choices": [
+                {
+                  "text": "soup",
+                  "emoji": "🍲"
+                },
+                {
+                  "text": "bread",
+                  "emoji": "🍞"
+                },
+                {
+                  "text": "cake",
+                  "emoji": "🍰"
+                },
+                {
+                  "text": "salad",
+                  "emoji": "🥗"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "This dish ___ nuts.",
+              "translation": "Bu yemekte kuruyemiş var.",
+              "answer": "contains",
+              "choices": [
+                "contains",
+                "recommends",
+                "orders"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Vejetaryen yemeklerimiz de var.",
+              "lang": "tr",
+              "answers": [
+                "We also have vegetarian dishes",
+                "We have vegetarian dishes too"
+              ],
+              "tokens": [
+                "We",
+                "also",
+                "have",
+                "vegetarian",
+                "dishes",
+                "fish",
+                "are",
+                "menu"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I recommend the grilled fish.",
+              "translation": "Izgara balığı tavsiye ederim."
+            }
+          ]
+        },
+        {
+          "id": "t3s",
+          "type": "story",
+          "title": "Akşam yemeği",
+          "description": "Garson Emre, Tom ve Lisa'nın siparişini alıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "Good evening! Here are your menus.",
+              "translation": "İyi akşamlar! Menüleriniz burada."
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom",
+              "avatar": "👨",
+              "text": "Thank you. What do you recommend?",
+              "translation": "Teşekkürler. Ne tavsiye edersiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "I recommend the grilled sea bass. It's fresh today.",
+              "translation": "Izgara levreği tavsiye ederim. Bugün taze."
+            },
+            {
+              "kind": "line",
+              "speaker": "Lisa",
+              "avatar": "👩",
+              "text": "Does the salad contain nuts? I have a nut allergy.",
+              "translation": "Salatada kuruyemiş var mı? Kuruyemiş alerjim var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "Yes, it has walnuts. But we can make it without nuts.",
+              "translation": "Evet, ceviz var. Ama kuruyemişsiz yapabiliriz."
+            },
+            {
+              "kind": "question",
+              "prompt": "Lisa'nın neye alerjisi var?",
+              "choices": [
+                "Balığa",
+                "Kuruyemişe",
+                "Süte"
+              ],
+              "answer": "Kuruyemişe"
+            },
+            {
+              "kind": "line",
+              "speaker": "Lisa",
+              "avatar": "👩",
+              "text": "Great, thank you.",
+              "translation": "Harika, teşekkürler."
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom",
+              "avatar": "👨",
+              "text": "One sea bass and one salad without nuts, please.",
+              "translation": "Bir levrek ve bir kuruyemişsiz salata, lütfen."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre hangi yemeği tavsiye ediyor?",
+              "choices": [
+                "Izgara levrek",
+                "Tavuk çorbası",
+                "Köfte"
+              ],
+              "answer": "Izgara levrek"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "Of course. Would you like something to drink?",
+              "translation": "Tabii ki. Bir şey içmek ister misiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom",
+              "avatar": "👨",
+              "text": "Two lemonades, please.",
+              "translation": "İki limonata, lütfen."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "Perfect. Your food will be ready in fifteen minutes.",
+              "translation": "Harika. Yemeğiniz on beş dakikada hazır olur."
+            },
+            {
+              "kind": "question",
+              "prompt": "Ne içecekler?",
+              "choices": [
+                "Kahve",
+                "Limonata",
+                "Su"
+              ],
+              "answer": "Limonata"
+            }
+          ]
+        },
+        {
+          "id": "t3l3",
+          "type": "lesson",
+          "title": "Bar ve hesap",
+          "description": "bill, card, cash, tip, ice",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "hesap",
+              "answer": "bill",
+              "choices": [
+                {
+                  "text": "bill",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "menu",
+                  "emoji": "📋"
+                },
+                {
+                  "text": "card",
+                  "emoji": "💳"
+                },
+                {
+                  "text": "coin",
+                  "emoji": "🪙"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kartla mı ödemek istersiniz?",
+              "lang": "tr",
+              "answers": [
+                "Would you like to pay by card"
+              ],
+              "tokens": [
+                "Would",
+                "you",
+                "like",
+                "to",
+                "pay",
+                "by",
+                "card",
+                "cash",
+                "bill"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Here is your ___. Thank you!",
+              "translation": "Hesabınız burada. Teşekkürler!",
+              "answer": "bill",
+              "choices": [
+                "bill",
+                "table",
+                "order"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Would you like some ice?",
+              "answers": [
+                "Would you like some ice?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "hesap",
+                  "bill"
+                ],
+                [
+                  "bahşiş",
+                  "tip"
+                ],
+                [
+                  "nakit",
+                  "cash"
+                ],
+                [
+                  "buz",
+                  "ice"
+                ],
+                [
+                  "bardak",
+                  "glass"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Service is not included.",
+              "lang": "en",
+              "answers": [
+                "Servis dahil değil"
+              ],
+              "tokens": [
+                "Servis",
+                "dahil",
+                "değil",
+                "hesap",
+                "var",
+                "nakit"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "buz",
+              "answer": "ice",
+              "choices": [
+                {
+                  "text": "ice",
+                  "emoji": "🧊"
+                },
+                {
+                  "text": "water",
+                  "emoji": "💧"
+                },
+                {
+                  "text": "lemon",
+                  "emoji": "🍋"
+                },
+                {
+                  "text": "coffee",
+                  "emoji": "☕"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Would you like ___ ice?",
+              "translation": "Biraz buz ister misiniz?",
+              "answer": "some",
+              "choices": [
+                "some",
+                "many",
+                "much"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bahşiş için teşekkür ederim.",
+              "lang": "tr",
+              "answers": [
+                "Thank you for the tip"
+              ],
+              "tokens": [
+                "Thank",
+                "you",
+                "for",
+                "the",
+                "tip",
+                "bill",
+                "a",
+                "to"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Here is your bill.",
+              "translation": "Hesabınız burada."
+            }
+          ]
+        },
+        {
+          "id": "t3t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t3c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "t4",
+      "title": "Rehberlik ve yol tarifi",
+      "description": "Tur saatleri, buluşma noktası, yol tarifi ve fiyatlar",
+      "color": "0xFFFB8C00",
+      "nodes": [
+        {
+          "id": "t4l1",
+          "type": "lesson",
+          "title": "Tur saatleri ve buluşma",
+          "description": "tour, meeting point, guide, bus",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "tekne turu",
+              "answer": "boat trip",
+              "choices": [
+                {
+                  "text": "boat trip",
+                  "emoji": "⛵"
+                },
+                {
+                  "text": "bus tour",
+                  "emoji": "🚌"
+                },
+                {
+                  "text": "museum",
+                  "emoji": "🏛️"
+                },
+                {
+                  "text": "beach",
+                  "emoji": "🏖️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Tur saat dokuzda başlıyor.",
+              "lang": "tr",
+              "answers": [
+                "The tour starts at nine",
+                "The tour starts at 9"
+              ],
+              "tokens": [
+                "The",
+                "tour",
+                "starts",
+                "at",
+                "nine",
+                "ends",
+                "in",
+                "bus"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The meeting ___ is the hotel entrance.",
+              "translation": "Buluşma noktası otel girişi.",
+              "answer": "point",
+              "choices": [
+                "point",
+                "time",
+                "trip"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Please be in the lobby at eight thirty.",
+              "answers": [
+                "Please be in the lobby at eight thirty."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "tur",
+                  "tour"
+                ],
+                [
+                  "buluşma noktası",
+                  "meeting point"
+                ],
+                [
+                  "rehber",
+                  "guide"
+                ],
+                [
+                  "otobüs",
+                  "bus"
+                ],
+                [
+                  "giriş",
+                  "entrance"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "The bus leaves at eight.",
+              "lang": "en",
+              "answers": [
+                "Otobüs saat sekizde kalkıyor"
+              ],
+              "tokens": [
+                "Otobüs",
+                "saat",
+                "sekizde",
+                "kalkıyor",
+                "dokuzda",
+                "geliyor",
+                "tekne"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "rehber",
+              "answer": "guide",
+              "choices": [
+                {
+                  "text": "guide",
+                  "emoji": "🚩"
+                },
+                {
+                  "text": "driver",
+                  "emoji": "🚕"
+                },
+                {
+                  "text": "waiter",
+                  "emoji": "🤵"
+                },
+                {
+                  "text": "chef",
+                  "emoji": "👨‍🍳"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The tour ___ about four hours.",
+              "translation": "Tur yaklaşık dört saat sürüyor.",
+              "answer": "takes",
+              "choices": [
+                "takes",
+                "starts",
+                "meets"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Lütfen şapka ve su getirin.",
+              "lang": "tr",
+              "answers": [
+                "Please bring a hat and water"
+              ],
+              "tokens": [
+                "Please",
+                "bring",
+                "a",
+                "hat",
+                "and",
+                "water",
+                "towel",
+                "the"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "The meeting point is the hotel entrance.",
+              "translation": "Buluşma noktası otel girişi."
+            }
+          ]
+        },
+        {
+          "id": "t4l2",
+          "type": "lesson",
+          "title": "Yol tarifi",
+          "description": "straight, left, right, corner, opposite",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "müze",
+              "answer": "museum",
+              "choices": [
+                {
+                  "text": "museum",
+                  "emoji": "🏛️"
+                },
+                {
+                  "text": "bank",
+                  "emoji": "🏦"
+                },
+                {
+                  "text": "pharmacy",
+                  "emoji": "💊"
+                },
+                {
+                  "text": "mosque",
+                  "emoji": "🕌"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Düz gidin ve sola dönün.",
+              "lang": "tr",
+              "answers": [
+                "Go straight and turn left"
+              ],
+              "tokens": [
+                "Go",
+                "straight",
+                "and",
+                "turn",
+                "left",
+                "right",
+                "stop",
+                "up"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The museum is ___ to the bank.",
+              "translation": "Müze bankanın yanında.",
+              "answer": "next",
+              "choices": [
+                "next",
+                "between",
+                "straight"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It's a five-minute walk from here.",
+              "answers": [
+                "It's a five-minute walk from here."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "sağ",
+                  "right"
+                ],
+                [
+                  "sol",
+                  "left"
+                ],
+                [
+                  "düz",
+                  "straight"
+                ],
+                [
+                  "köşe",
+                  "corner"
+                ],
+                [
+                  "karşısında",
+                  "opposite"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Turn right at the corner.",
+              "lang": "en",
+              "answers": [
+                "Köşeden sağa dönün"
+              ],
+              "tokens": [
+                "Köşeden",
+                "sağa",
+                "dönün",
+                "sola",
+                "gidin",
+                "düz"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "eczane",
+              "answer": "pharmacy",
+              "choices": [
+                {
+                  "text": "pharmacy",
+                  "emoji": "💊"
+                },
+                {
+                  "text": "museum",
+                  "emoji": "🏛️"
+                },
+                {
+                  "text": "bank",
+                  "emoji": "🏦"
+                },
+                {
+                  "text": "market",
+                  "emoji": "🛒"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The bank is ___ the museum.",
+              "translation": "Banka müzenin karşısında.",
+              "answer": "opposite",
+              "choices": [
+                "opposite",
+                "next",
+                "left"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Buradan beş dakika yürüme mesafesinde.",
+              "lang": "tr",
+              "answers": [
+                "It's a five-minute walk from here",
+                "It is a five-minute walk from here"
+              ],
+              "tokens": [
+                "It's",
+                "a",
+                "five-minute",
+                "walk",
+                "from",
+                "here",
+                "there",
+                "bus",
+                "the"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Go straight and turn left.",
+              "translation": "Düz gidin ve sola dönün."
+            }
+          ]
+        },
+        {
+          "id": "t4s",
+          "type": "story",
+          "title": "Tekne turu",
+          "description": "Sofia tekne turu için bilgi alıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Good morning! Are you interested in our boat trip?",
+              "translation": "Günaydın! Tekne turumuzla ilgileniyor musunuz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sofia",
+              "avatar": "👩",
+              "text": "Yes! How much is it?",
+              "translation": "Evet! Ne kadar?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "It's thirty euros per person. Lunch is included.",
+              "translation": "Kişi başı otuz euro. Öğle yemeği dahil."
+            },
+            {
+              "kind": "question",
+              "prompt": "Tur kişi başı ne kadar?",
+              "choices": [
+                "20 euro",
+                "30 euro",
+                "40 euro"
+              ],
+              "answer": "30 euro"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sofia",
+              "avatar": "👩",
+              "text": "What time does it start?",
+              "translation": "Saat kaçta başlıyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "The bus leaves at nine. The meeting point is the hotel entrance.",
+              "translation": "Otobüs dokuzda kalkıyor. Buluşma noktası otel girişi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kaan",
+              "avatar": "🧢",
+              "text": "Hello, I'm Kaan, your guide. The trip takes about five hours.",
+              "translation": "Merhaba, ben Kaan, rehberiniz. Tur yaklaşık beş saat sürüyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sofia",
+              "avatar": "👩",
+              "text": "Can my son come? He's five.",
+              "translation": "Oğlum gelebilir mi? Beş yaşında."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kaan",
+              "avatar": "🧢",
+              "text": "Of course. Children under six are free.",
+              "translation": "Tabii ki. Altı yaş altı çocuklar ücretsiz."
+            },
+            {
+              "kind": "question",
+              "prompt": "Sofia oğlu için ne ödeyecek?",
+              "choices": [
+                "Hiçbir şey",
+                "Yarım fiyat",
+                "30 euro"
+              ],
+              "answer": "Hiçbir şey"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kaan",
+              "avatar": "🧢",
+              "text": "Please bring a hat and sunscreen. See you tomorrow!",
+              "translation": "Lütfen şapka ve güneş kremi getirin. Yarın görüşürüz!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Buluşma noktası neresi?",
+              "choices": [
+                "Liman",
+                "Otel girişi",
+                "Müze"
+              ],
+              "answer": "Otel girişi"
+            }
+          ]
+        },
+        {
+          "id": "t4l3",
+          "type": "lesson",
+          "title": "Fiyatlar ve biletler",
+          "description": "ticket, price, free, discount, included",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "bilet",
+              "answer": "ticket",
+              "choices": [
+                {
+                  "text": "ticket",
+                  "emoji": "🎟️"
+                },
+                {
+                  "text": "money",
+                  "emoji": "💵"
+                },
+                {
+                  "text": "map",
+                  "emoji": "🗺️"
+                },
+                {
+                  "text": "camera",
+                  "emoji": "📷"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bilet kişi başı yirmi euro.",
+              "lang": "tr",
+              "answers": [
+                "The ticket is twenty euros per person"
+              ],
+              "tokens": [
+                "The",
+                "ticket",
+                "is",
+                "twenty",
+                "euros",
+                "per",
+                "person",
+                "ten",
+                "a"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Lunch is ___ in the price.",
+              "translation": "Öğle yemeği fiyata dahil.",
+              "answer": "included",
+              "choices": [
+                "included",
+                "opened",
+                "served"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Children under six are free.",
+              "answers": [
+                "Children under six are free."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "bilet",
+                  "ticket"
+                ],
+                [
+                  "fiyat",
+                  "price"
+                ],
+                [
+                  "ücretsiz",
+                  "free"
+                ],
+                [
+                  "indirim",
+                  "discount"
+                ],
+                [
+                  "çocuk",
+                  "child"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Lunch is included in the price.",
+              "lang": "en",
+              "answers": [
+                "Öğle yemeği fiyata dahil"
+              ],
+              "tokens": [
+                "Öğle",
+                "yemeği",
+                "fiyata",
+                "dahil",
+                "değil",
+                "bilet",
+                "kahvaltı"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "harita",
+              "answer": "map",
+              "choices": [
+                {
+                  "text": "map",
+                  "emoji": "🗺️"
+                },
+                {
+                  "text": "ticket",
+                  "emoji": "🎟️"
+                },
+                {
+                  "text": "camera",
+                  "emoji": "📷"
+                },
+                {
+                  "text": "bag",
+                  "emoji": "🎒"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Children under six are ___.",
+              "translation": "Altı yaş altı çocuklar ücretsiz.",
+              "answer": "free",
+              "choices": [
+                "free",
+                "included",
+                "open"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Öğrenciler için indirim var.",
+              "lang": "tr",
+              "answers": [
+                "There is a discount for students"
+              ],
+              "tokens": [
+                "There",
+                "is",
+                "a",
+                "discount",
+                "for",
+                "students",
+                "price",
+                "are",
+                "the"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Lunch is included in the price.",
+              "translation": "Öğle yemeği fiyata dahil."
+            }
+          ]
+        },
+        {
+          "id": "t4t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t4c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "t5",
+      "title": "Şikâyet ve sorun çözme",
+      "description": "Kibarca özür dile, arızayı çöz, check-out yap",
+      "color": "0xFF8E24AA",
+      "nodes": [
+        {
+          "id": "t5l1",
+          "type": "lesson",
+          "title": "Kibarca özür dilemek",
+          "description": "sorry, apologize, noise, manager",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "gürültü",
+              "answer": "noise",
+              "choices": [
+                {
+                  "text": "noise",
+                  "emoji": "🔊"
+                },
+                {
+                  "text": "light",
+                  "emoji": "💡"
+                },
+                {
+                  "text": "water",
+                  "emoji": "💧"
+                },
+                {
+                  "text": "smoke",
+                  "emoji": "💨"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Rahatsızlık için çok özür dilerim.",
+              "lang": "tr",
+              "answers": [
+                "I'm very sorry for the inconvenience",
+                "I am very sorry for the inconvenience"
+              ],
+              "tokens": [
+                "I'm",
+                "very",
+                "sorry",
+                "for",
+                "the",
+                "inconvenience",
+                "happy",
+                "a"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I ___ for the noise.",
+              "translation": "Gürültü için özür dilerim.",
+              "answer": "apologize",
+              "choices": [
+                "apologize",
+                "recommend",
+                "include"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I understand. Let me check that for you.",
+              "answers": [
+                "I understand. Let me check that for you."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "gürültü",
+                  "noise"
+                ],
+                [
+                  "şikâyet",
+                  "complaint"
+                ],
+                [
+                  "özür dilemek",
+                  "apologize"
+                ],
+                [
+                  "sorun",
+                  "problem"
+                ],
+                [
+                  "müdür",
+                  "manager"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I understand how you feel.",
+              "lang": "en",
+              "answers": [
+                "Ne hissettiğinizi anlıyorum"
+              ],
+              "tokens": [
+                "Ne",
+                "hissettiğinizi",
+                "anlıyorum",
+                "istersiniz",
+                "bilmiyorum"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "müdür",
+              "answer": "manager",
+              "choices": [
+                {
+                  "text": "manager",
+                  "emoji": "👔"
+                },
+                {
+                  "text": "guest",
+                  "emoji": "🧳"
+                },
+                {
+                  "text": "driver",
+                  "emoji": "🚕"
+                },
+                {
+                  "text": "cleaner",
+                  "emoji": "🧹"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I will ___ to the manager.",
+              "translation": "Müdürle konuşacağım.",
+              "answer": "talk",
+              "choices": [
+                "talk",
+                "sign",
+                "order"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Size başka bir oda verebiliriz.",
+              "lang": "tr",
+              "answers": [
+                "We can give you another room"
+              ],
+              "tokens": [
+                "We",
+                "can",
+                "give",
+                "you",
+                "another",
+                "room",
+                "key",
+                "the"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I'm very sorry for the inconvenience.",
+              "translation": "Rahatsızlık için çok özür dilerim."
+            }
+          ]
+        },
+        {
+          "id": "t5l2",
+          "type": "lesson",
+          "title": "Arızalar",
+          "description": "broken, shower, light, hot water, technician",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "bozuk",
+              "answer": "broken",
+              "choices": [
+                {
+                  "text": "broken",
+                  "emoji": "💥"
+                },
+                {
+                  "text": "clean",
+                  "emoji": "✨"
+                },
+                {
+                  "text": "hot",
+                  "emoji": "🔥"
+                },
+                {
+                  "text": "cold",
+                  "emoji": "❄️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Teknisyen on dakika içinde gelecek.",
+              "lang": "tr",
+              "answers": [
+                "The technician will come in ten minutes"
+              ],
+              "tokens": [
+                "The",
+                "technician",
+                "will",
+                "come",
+                "in",
+                "ten",
+                "minutes",
+                "hours",
+                "at"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The shower is ___.",
+              "translation": "Duş bozuk.",
+              "answer": "broken",
+              "choices": [
+                "broken",
+                "included",
+                "free"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The technician will come in ten minutes.",
+              "answers": [
+                "The technician will come in ten minutes."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "duş",
+                  "shower"
+                ],
+                [
+                  "ışık",
+                  "light"
+                ],
+                [
+                  "bozuk",
+                  "broken"
+                ],
+                [
+                  "sızıntı",
+                  "leak"
+                ],
+                [
+                  "teknisyen",
+                  "technician"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "The light in the bathroom is broken.",
+              "lang": "en",
+              "answers": [
+                "Banyodaki ışık bozuk"
+              ],
+              "tokens": [
+                "Banyodaki",
+                "ışık",
+                "bozuk",
+                "duş",
+                "odadaki",
+                "temiz"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "duş",
+              "answer": "shower",
+              "choices": [
+                {
+                  "text": "shower",
+                  "emoji": "🚿"
+                },
+                {
+                  "text": "toilet",
+                  "emoji": "🚽"
+                },
+                {
+                  "text": "tap",
+                  "emoji": "🚰"
+                },
+                {
+                  "text": "bath",
+                  "emoji": "🛁"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "There is no hot ___.",
+              "translation": "Sıcak su yok.",
+              "answer": "water",
+              "choices": [
+                "water",
+                "light",
+                "key"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hemen kontrol edeceğiz.",
+              "lang": "tr",
+              "answers": [
+                "We'll check it right away",
+                "We will check it right away"
+              ],
+              "tokens": [
+                "We'll",
+                "check",
+                "it",
+                "right",
+                "away",
+                "left",
+                "you",
+                "will"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "The technician will come in ten minutes.",
+              "translation": "Teknisyen on dakika içinde gelecek."
+            }
+          ]
+        },
+        {
+          "id": "t5s",
+          "type": "story",
+          "title": "Zor bir sabah",
+          "description": "Mark Brown çıkış yaparken iki sorun yaşıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Mark",
+              "avatar": "👨‍🦳",
+              "text": "Good morning. I'm checking out today, but I have a problem.",
+              "translation": "Günaydın. Bugün çıkış yapıyorum ama bir sorunum var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Good morning, Mr. Brown. What's the problem?",
+              "translation": "Günaydın Bay Brown. Sorun nedir?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mark",
+              "avatar": "👨‍🦳",
+              "text": "There was a lot of noise last night. I couldn't sleep.",
+              "translation": "Dün gece çok gürültü vardı. Uyuyamadım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "I'm very sorry for the inconvenience. There was a wedding in the garden.",
+              "translation": "Rahatsızlık için çok özür dilerim. Bahçede bir düğün vardı."
+            },
+            {
+              "kind": "question",
+              "prompt": "Gürültünün sebebi neydi?",
+              "choices": [
+                "Bir düğün",
+                "Bozuk klima",
+                "Bir konser"
+              ],
+              "answer": "Bir düğün"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mark",
+              "avatar": "👨‍🦳",
+              "text": "I understand. And my airport transfer is late.",
+              "translation": "Anlıyorum. Bir de havalimanı transferim gecikti."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Let me check. Your driver is in traffic. He will be here in ten minutes.",
+              "translation": "Kontrol edeyim. Şoförünüz trafikte. On dakika içinde burada olacak."
+            },
+            {
+              "kind": "question",
+              "prompt": "Şoför ne zaman gelecek?",
+              "choices": [
+                "Beş dakikada",
+                "On dakikada",
+                "Yarım saatte"
+              ],
+              "answer": "On dakikada"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Please have a free coffee while you wait.",
+              "translation": "Beklerken lütfen ücretsiz bir kahve için."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mark",
+              "avatar": "👨‍🦳",
+              "text": "That's very kind. Thank you, Deniz.",
+              "translation": "Çok naziksiniz. Teşekkürler Deniz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Could I have your room key, please? Did you enjoy your stay?",
+              "translation": "Oda anahtarınızı alabilir miyim, lütfen? Konaklamanızdan memnun kaldınız mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mark",
+              "avatar": "👨‍🦳",
+              "text": "Yes, apart from the noise!",
+              "translation": "Evet, gürültü dışında!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz, Mark'a ne ikram ediyor?",
+              "choices": [
+                "Çay",
+                "Kahve",
+                "Meyve suyu"
+              ],
+              "answer": "Kahve"
+            }
+          ]
+        },
+        {
+          "id": "t5l3",
+          "type": "lesson",
+          "title": "Transfer ve check-out",
+          "description": "airport, driver, delay, luggage, check-out",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "havalimanı",
+              "answer": "airport",
+              "choices": [
+                {
+                  "text": "airport",
+                  "emoji": "✈️"
+                },
+                {
+                  "text": "station",
+                  "emoji": "🚉"
+                },
+                {
+                  "text": "port",
+                  "emoji": "⚓"
+                },
+                {
+                  "text": "hotel",
+                  "emoji": "🏨"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Transferiniz biraz gecikecek.",
+              "lang": "tr",
+              "answers": [
+                "Your transfer will be a little late"
+              ],
+              "tokens": [
+                "Your",
+                "transfer",
+                "will",
+                "be",
+                "a",
+                "little",
+                "late",
+                "early",
+                "is"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Did you ___ your stay?",
+              "translation": "Konaklamanızdan memnun kaldınız mı?",
+              "answer": "enjoy",
+              "choices": [
+                "enjoy",
+                "order",
+                "sign"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Your taxi is waiting outside.",
+              "answers": [
+                "Your taxi is waiting outside."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "havalimanı",
+                  "airport"
+                ],
+                [
+                  "gecikme",
+                  "delay"
+                ],
+                [
+                  "şoför",
+                  "driver"
+                ],
+                [
+                  "bavul",
+                  "luggage"
+                ],
+                [
+                  "fatura",
+                  "invoice"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Your taxi is waiting outside.",
+              "lang": "en",
+              "answers": [
+                "Taksiniz dışarıda bekliyor"
+              ],
+              "tokens": [
+                "Taksiniz",
+                "dışarıda",
+                "bekliyor",
+                "içeride",
+                "otobüs",
+                "geliyor"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "bavul",
+              "answer": "luggage",
+              "choices": [
+                {
+                  "text": "luggage",
+                  "emoji": "🧳"
+                },
+                {
+                  "text": "ticket",
+                  "emoji": "🎟️"
+                },
+                {
+                  "text": "taxi",
+                  "emoji": "🚕"
+                },
+                {
+                  "text": "passport",
+                  "emoji": "🛂"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Could I have your room ___, please?",
+              "translation": "Oda anahtarınızı alabilir miyim, lütfen?",
+              "answer": "key",
+              "choices": [
+                "key",
+                "bill",
+                "floor"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bavullarınızı lobide tutabiliriz.",
+              "lang": "tr",
+              "answers": [
+                "We can keep your luggage in the lobby"
+              ],
+              "tokens": [
+                "We",
+                "can",
+                "keep",
+                "your",
+                "luggage",
+                "in",
+                "the",
+                "lobby",
+                "room",
+                "at"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Did you enjoy your stay?",
+              "translation": "Konaklamanızdan memnun kaldınız mı?"
+            }
+          ]
+        },
+        {
+          "id": "t5t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t5c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}

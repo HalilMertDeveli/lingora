@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/course.dart';
 import '../services/speech.dart';
 import '../theme.dart';
+import '../ui/motion.dart';
 import 'common.dart';
 
 /// Tap a Turkish word, then its English pair. Wrong taps only flash red.
@@ -24,6 +25,8 @@ class _MatchExerciseState extends ConsumerState<MatchExercise> {
   int? _selLeft;
   int? _selRight;
   (int, int)? _wrong;
+  final Map<int, int> _shakeLeft = {};
+  final Map<int, int> _shakeRight = {};
 
   void _tap({int? left, int? right}) {
     if (widget.locked) return;
@@ -37,6 +40,7 @@ class _MatchExerciseState extends ConsumerState<MatchExercise> {
     if (l == null || r == null) return;
 
     if (l == r) {
+      Haptics.success();
       setState(() {
         _matched.add(l);
         _selLeft = _selRight = null;
@@ -45,8 +49,11 @@ class _MatchExerciseState extends ConsumerState<MatchExercise> {
     } else {
       setState(() {
         _wrong = (l, r);
+        _shakeLeft[l] = (_shakeLeft[l] ?? 0) + 1;
+        _shakeRight[r] = (_shakeRight[r] ?? 0) + 1;
         _selLeft = _selRight = null;
       });
+      Haptics.error();
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted && _wrong == (l, r)) setState(() => _wrong = null);
       });
@@ -60,22 +67,33 @@ class _MatchExerciseState extends ConsumerState<MatchExercise> {
     final color = wrong ? Brand.error : (matched ? Brand.success : Brand.primary);
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
-      child: Opacity(
-        opacity: matched ? 0.45 : 1,
-        child: TapCard(
-          selected: selected || wrong || matched,
-          color: color,
-          onTap: matched ? null : () => isLeft ? _tap(left: pair) : _tap(right: pair),
-          child: SizedBox(
-            height: 28,
-            child: Center(
-              child: Text(text,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: wrong ? Brand.error : Brand.ink,
-                  )),
+      child: Shake(
+        trigger: (isLeft ? _shakeLeft : _shakeRight)[pair] ?? 0,
+        child: AnimatedOpacity(
+          duration: const Duration(milliseconds: 300),
+          opacity: matched ? 0.4 : 1,
+          child: AnimatedScale(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOutBack,
+            scale: matched ? 0.94 : 1,
+            child: TapCard(
+              selected: selected || wrong || matched,
+              color: color,
+              onTap: matched ? null : () => isLeft ? _tap(left: pair) : _tap(right: pair),
+              child: SizedBox(
+                height: 28,
+                child: Center(
+                  child: Text(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: wrong ? Brand.error : Brand.ink,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ),

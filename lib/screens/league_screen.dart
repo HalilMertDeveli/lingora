@@ -32,11 +32,15 @@ class LeagueScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('${info.name} Ligi',
-                        style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900)),
+                    Text(
+                      '${info.name} Ligi',
+                      style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
+                    ),
                     const SizedBox(height: 4),
-                    Text('Hafta bitimine ${formatLeft(untilWeekEnd(now))}',
-                        style: TextStyle(color: Colors.white.withValues(alpha: 0.9))),
+                    Text(
+                      'Hafta bitimine ${formatLeft(untilWeekEnd(now))}',
+                      style: TextStyle(color: Colors.white.withValues(alpha: 0.9)),
+                    ),
                   ],
                 ),
               ),
@@ -80,18 +84,18 @@ class _TierStrip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          for (var i = 0; i < leagueTiers.length; i++)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 6),
-              child: Opacity(
-                opacity: i <= current ? 1 : 0.3,
-                child: Text(leagueTiers[i].emoji, style: TextStyle(fontSize: i == current ? 34 : 24)),
-              ),
-            ),
-        ],
-      );
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      for (var i = 0; i < leagueTiers.length; i++)
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          child: Opacity(
+            opacity: i <= current ? 1 : 0.3,
+            child: Text(leagueTiers[i].emoji, style: TextStyle(fontSize: i == current ? 34 : 24)),
+          ),
+        ),
+    ],
+  );
 }
 
 class _ZoneLine extends StatelessWidget {
@@ -101,19 +105,21 @@ class _ZoneLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Row(
-          children: [
-            Expanded(child: Divider(color: color, thickness: 2)),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text(label,
-                  style: TextStyle(color: color, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1)),
-            ),
-            Expanded(child: Divider(color: color, thickness: 2)),
-          ],
+    padding: const EdgeInsets.symmetric(vertical: 8),
+    child: Row(
+      children: [
+        Expanded(child: Divider(color: color, thickness: 2)),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Text(
+            label,
+            style: TextStyle(color: color, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1),
+          ),
         ),
-      );
+        Expanded(child: Divider(color: color, thickness: 2)),
+      ],
+    ),
+  );
 }
 
 class _Row extends StatelessWidget {
@@ -127,8 +133,8 @@ class _Row extends StatelessWidget {
     final rankColor = inPromotionZone(tier, rank)
         ? Brand.success
         : inDemotionZone(tier, rank)
-            ? Brand.error
-            : Brand.muted;
+        ? Brand.error
+        : Brand.muted;
     return Container(
       margin: const EdgeInsets.only(bottom: 4),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -141,8 +147,10 @@ class _Row extends StatelessWidget {
         children: [
           SizedBox(
             width: 32,
-            child: Text('$rank',
-                style: TextStyle(color: rankColor, fontWeight: FontWeight.w900, fontSize: 16)),
+            child: Text(
+              '$rank',
+              style: TextStyle(color: rankColor, fontWeight: FontWeight.w900, fontSize: 16),
+            ),
           ),
           CircleAvatar(
             radius: 20,
@@ -151,14 +159,15 @@ class _Row extends StatelessWidget {
           ),
           const SizedBox(width: 12),
           Expanded(
-            child: Text(entry.name,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: entry.isUser ? FontWeight.w900 : FontWeight.w600,
-                )),
+            child: Text(
+              entry.name,
+              style: TextStyle(fontSize: 16, fontWeight: entry.isUser ? FontWeight.w900 : FontWeight.w600),
+            ),
           ),
-          Text('${entry.xp} XP',
-              style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700)),
+          Text(
+            '${entry.xp} XP',
+            style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+          ),
         ],
       ),
     );
@@ -171,8 +180,8 @@ Future<void> showLeagueResult(BuildContext context, LeagueResult r) {
   final (title, body) = r.promoted
       ? ('${tier.emoji} Terfi ettin!', 'Geçen haftayı ${r.rank}. bitirdin ve ${tier.name} Ligine yükseldin.')
       : r.demoted
-          ? ('Alt lige düştün', 'Geçen haftayı ${r.rank}. bitirdin. Bu hafta ${tier.name} Liginde yeniden dene!')
-          : ('Hafta bitti', 'Geçen haftayı ${r.rank}. bitirdin ve ${tier.name} Liginde kaldın.');
+      ? ('Alt lige düştün', 'Geçen haftayı ${r.rank}. bitirdin. Bu hafta ${tier.name} Liginde yeniden dene!')
+      : ('Hafta bitti', 'Geçen haftayı ${r.rank}. bitirdin ve ${tier.name} Liginde kaldın.');
   return showDialog<void>(
     context: context,
     builder: (c) => AlertDialog(

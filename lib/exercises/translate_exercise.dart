@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../core/text.dart';
 import '../models/course.dart';
 import '../theme.dart';
+import '../ui/motion.dart';
 import 'common.dart';
 
 /// Build the translation by tapping words from a shuffled word bank.
@@ -23,9 +24,9 @@ class _TranslateExerciseState extends State<TranslateExercise> {
   void _update(VoidCallback change) {
     if (widget.locked) return;
     setState(change);
-    widget.onReady(_chosen.isEmpty
-        ? null
-        : () => matchesAny(_chosen.map((i) => _bank[i]).join(' '), widget.ex.answers));
+    widget.onReady(
+      _chosen.isEmpty ? null : () => matchesAny(_chosen.map((i) => _bank[i]).join(' '), widget.ex.answers),
+    );
   }
 
   @override
@@ -66,7 +67,11 @@ class _TranslateExerciseState extends State<TranslateExercise> {
             runSpacing: 8,
             children: [
               for (final i in _chosen)
-                WordChip(_bank[i], onTap: () => _update(() => _chosen.remove(i))),
+                PopIn(
+                  key: ValueKey(i),
+                  from: 0.7,
+                  child: WordChip(_bank[i], onTap: () => _update(() => _chosen.remove(i))),
+                ),
             ],
           ),
         ),
@@ -77,11 +82,7 @@ class _TranslateExerciseState extends State<TranslateExercise> {
           runSpacing: 10,
           children: [
             for (var i = 0; i < _bank.length; i++)
-              WordChip(
-                _bank[i],
-                hidden: _chosen.contains(i),
-                onTap: () => _update(() => _chosen.add(i)),
-              ),
+              WordChip(_bank[i], hidden: _chosen.contains(i), onTap: () => _update(() => _chosen.add(i))),
           ],
         ),
       ],

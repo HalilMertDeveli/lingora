@@ -1,0 +1,2512 @@
+{
+  "id": "pro_interview",
+  "title": "İş Görüşmesi İngilizcesi",
+  "fromLang": "tr",
+  "learningLang": "en",
+  "units": [
+    {
+      "id": "i1",
+      "title": "Kendini tanıtma",
+      "description": "Adın, eğitimin, şu anki işin ve deneyimin",
+      "color": "0xFF3949AB",
+      "nodes": [
+        {
+          "id": "i1l1",
+          "type": "lesson",
+          "title": "Merhaba, ben...",
+          "description": "my name is, I work as, tell me about yourself",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "mühendis",
+              "answer": "engineer",
+              "choices": [
+                {
+                  "text": "engineer",
+                  "emoji": "👷"
+                },
+                {
+                  "text": "nurse",
+                  "emoji": "🩺"
+                },
+                {
+                  "text": "teacher",
+                  "emoji": "🧑‍🏫"
+                },
+                {
+                  "text": "accountant",
+                  "emoji": "🧮"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Benim adım Selin Aydın.",
+              "lang": "tr",
+              "answers": [
+                "My name is Selin Aydın",
+                "I'm Selin Aydın"
+              ],
+              "tokens": [
+                "My",
+                "name",
+                "is",
+                "Selin",
+                "Aydın",
+                "your",
+                "am",
+                "I"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Thank you for ___ me.",
+              "translation": "Beni davet ettiğiniz için teşekkür ederim.",
+              "answer": "inviting",
+              "choices": [
+                "inviting",
+                "working",
+                "graduating"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Nice to meet you. Please have a seat.",
+              "answers": [
+                "Nice to meet you. Please have a seat."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "mühendis",
+                  "engineer"
+                ],
+                [
+                  "muhasebeci",
+                  "accountant"
+                ],
+                [
+                  "satış",
+                  "sales"
+                ],
+                [
+                  "yönetici",
+                  "manager"
+                ],
+                [
+                  "şirket",
+                  "company"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Please tell me about yourself.",
+              "lang": "en",
+              "answers": [
+                "Lütfen bana kendinizden bahsedin"
+              ],
+              "tokens": [
+                "Lütfen",
+                "bana",
+                "kendinizden",
+                "bahsedin",
+                "şirketten",
+                "söyleyin"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "muhasebeci",
+              "answer": "accountant",
+              "choices": [
+                {
+                  "text": "accountant",
+                  "emoji": "🧮"
+                },
+                {
+                  "text": "engineer",
+                  "emoji": "👷"
+                },
+                {
+                  "text": "designer",
+                  "emoji": "🎨"
+                },
+                {
+                  "text": "nurse",
+                  "emoji": "🩺"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I ___ as a sales assistant.",
+              "translation": "Satış asistanı olarak çalışıyorum.",
+              "answer": "work",
+              "choices": [
+                "work",
+                "graduate",
+                "am"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Şu anda bir bankada çalışıyorum.",
+              "lang": "tr",
+              "answers": [
+                "I currently work at a bank",
+                "I'm currently working at a bank"
+              ],
+              "tokens": [
+                "I",
+                "currently",
+                "work",
+                "at",
+                "a",
+                "bank",
+                "the",
+                "school",
+                "works"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Thank you for inviting me.",
+              "translation": "Beni davet ettiğiniz için teşekkür ederim."
+            }
+          ]
+        },
+        {
+          "id": "i1l2",
+          "type": "lesson",
+          "title": "Eğitim",
+          "description": "graduated from, studied, degree, internship",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "üniversite",
+              "answer": "university",
+              "choices": [
+                {
+                  "text": "university",
+                  "emoji": "🎓"
+                },
+                {
+                  "text": "hospital",
+                  "emoji": "🏥"
+                },
+                {
+                  "text": "office",
+                  "emoji": "🏢"
+                },
+                {
+                  "text": "factory",
+                  "emoji": "🏭"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İstanbul Üniversitesinden mezun oldum.",
+              "lang": "tr",
+              "answers": [
+                "I graduated from Istanbul University"
+              ],
+              "tokens": [
+                "I",
+                "graduated",
+                "from",
+                "Istanbul",
+                "University",
+                "at",
+                "school",
+                "studied"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I ___ economics at university.",
+              "translation": "Üniversitede ekonomi okudum.",
+              "answer": "studied",
+              "choices": [
+                "studied",
+                "worked",
+                "graduated"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I graduated from Ege University in 2020.",
+              "answers": [
+                "I graduated from Ege University in 2020."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "mezun olmak",
+                  "graduate"
+                ],
+                [
+                  "bölüm",
+                  "department"
+                ],
+                [
+                  "diploma",
+                  "degree"
+                ],
+                [
+                  "sertifika",
+                  "certificate"
+                ],
+                [
+                  "staj",
+                  "internship"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I did an internship at a hotel.",
+              "lang": "en",
+              "answers": [
+                "Bir otelde staj yaptım"
+              ],
+              "tokens": [
+                "Bir",
+                "otelde",
+                "staj",
+                "yaptım",
+                "bankada",
+                "okudum"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "sertifika",
+              "answer": "certificate",
+              "choices": [
+                {
+                  "text": "certificate",
+                  "emoji": "📜"
+                },
+                {
+                  "text": "laptop",
+                  "emoji": "💻"
+                },
+                {
+                  "text": "book",
+                  "emoji": "📚"
+                },
+                {
+                  "text": "phone",
+                  "emoji": "📱"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I have a ___ in computer science.",
+              "translation": "Bilgisayar bilimleri diplomam var.",
+              "answer": "degree",
+              "choices": [
+                "degree",
+                "job",
+                "company"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İşletme okudum.",
+              "lang": "tr",
+              "answers": [
+                "I studied business administration",
+                "I studied business"
+              ],
+              "tokens": [
+                "I",
+                "studied",
+                "business",
+                "administration",
+                "worked",
+                "graduated",
+                "in"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I graduated from Istanbul University.",
+              "translation": "İstanbul Üniversitesinden mezun oldum."
+            }
+          ]
+        },
+        {
+          "id": "i1s",
+          "type": "story",
+          "title": "Görüşme günü",
+          "description": "Selin, İK müdürü David ile tanışıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Good morning. You must be Selin.",
+              "translation": "Günaydın. Siz Selin olmalısınız."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Yes, good morning. Nice to meet you.",
+              "translation": "Evet, günaydın. Tanıştığımıza memnun oldum."
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Nice to meet you too. I'm David Clark, the HR manager. Please have a seat.",
+              "translation": "Ben de memnun oldum. Ben David Clark, İK müdürü. Lütfen oturun."
+            },
+            {
+              "kind": "question",
+              "prompt": "David Clark kim?",
+              "choices": [
+                "İK müdürü",
+                "Satış müdürü",
+                "Bir aday"
+              ],
+              "answer": "İK müdürü"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Thank you for inviting me.",
+              "translation": "Beni davet ettiğiniz için teşekkür ederim."
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "So, tell me about yourself.",
+              "translation": "Peki, bana kendinizden bahsedin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "I graduated from Ege University. I studied business administration.",
+              "translation": "Ege Üniversitesinden mezun oldum. İşletme okudum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Now I work as a marketing assistant at a travel company.",
+              "translation": "Şu anda bir seyahat şirketinde pazarlama asistanı olarak çalışıyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Selin hangi bölümü okudu?",
+              "choices": [
+                "Ekonomi",
+                "İşletme",
+                "Turizm"
+              ],
+              "answer": "İşletme"
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "How long have you worked there?",
+              "translation": "Orada ne kadar süredir çalışıyorsunuz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "For three years. I have three years of experience in marketing.",
+              "translation": "Üç yıldır. Pazarlamada üç yıllık deneyimim var."
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Very good.",
+              "translation": "Çok iyi."
+            },
+            {
+              "kind": "question",
+              "prompt": "Selin'in kaç yıllık deneyimi var?",
+              "choices": [
+                "İki",
+                "Üç",
+                "Beş"
+              ],
+              "answer": "Üç"
+            }
+          ]
+        },
+        {
+          "id": "i1l3",
+          "type": "lesson",
+          "title": "Deneyim yılları",
+          "description": "years of experience, for, since, full-time",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "deneyim",
+              "answer": "experience",
+              "choices": [
+                {
+                  "text": "experience",
+                  "emoji": "📈"
+                },
+                {
+                  "text": "salary",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "holiday",
+                  "emoji": "🏖️"
+                },
+                {
+                  "text": "meeting",
+                  "emoji": "🤝"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Üç yıllık deneyimim var.",
+              "lang": "tr",
+              "answers": [
+                "I have three years of experience",
+                "I have 3 years of experience"
+              ],
+              "tokens": [
+                "I",
+                "have",
+                "three",
+                "years",
+                "of",
+                "experience",
+                "has",
+                "year",
+                "an"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I have been a teacher ___ five years.",
+              "translation": "Beş yıldır öğretmenim.",
+              "answer": "for",
+              "choices": [
+                "for",
+                "since",
+                "at"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I have three years of experience in sales.",
+              "answers": [
+                "I have three years of experience in sales."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "deneyim",
+                  "experience"
+                ],
+                [
+                  "yıl",
+                  "year"
+                ],
+                [
+                  "tam zamanlı",
+                  "full-time"
+                ],
+                [
+                  "yarı zamanlı",
+                  "part-time"
+                ],
+                [
+                  "sektör",
+                  "industry"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I work full-time.",
+              "lang": "en",
+              "answers": [
+                "Tam zamanlı çalışıyorum"
+              ],
+              "tokens": [
+                "Tam",
+                "zamanlı",
+                "çalışıyorum",
+                "yarı",
+                "okuyorum"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "maaş",
+              "answer": "salary",
+              "choices": [
+                {
+                  "text": "salary",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "office",
+                  "emoji": "🏢"
+                },
+                {
+                  "text": "computer",
+                  "emoji": "💻"
+                },
+                {
+                  "text": "calendar",
+                  "emoji": "📅"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I have worked here ___ 2021.",
+              "translation": "2021'den beri burada çalışıyorum.",
+              "answer": "since",
+              "choices": [
+                "since",
+                "for",
+                "from"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Turizm sektöründe çalışıyorum.",
+              "lang": "tr",
+              "answers": [
+                "I work in the tourism industry",
+                "I work in tourism"
+              ],
+              "tokens": [
+                "I",
+                "work",
+                "in",
+                "the",
+                "tourism",
+                "industry",
+                "at",
+                "school"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I have three years of experience.",
+              "translation": "Üç yıllık deneyimim var."
+            }
+          ]
+        },
+        {
+          "id": "i1t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "i1c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "i2",
+      "title": "Deneyim ve beceriler",
+      "description": "Sorumluluklar, beceriler, takım çalışması ve başarılar",
+      "color": "0xFF00ACC1",
+      "nodes": [
+        {
+          "id": "i2l1",
+          "type": "lesson",
+          "title": "Sorumluluklar",
+          "description": "responsible for, managed, prepared, customers",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "toplantı",
+              "answer": "meeting",
+              "choices": [
+                {
+                  "text": "meeting",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "report",
+                  "emoji": "📊"
+                },
+                {
+                  "text": "email",
+                  "emoji": "📧"
+                },
+                {
+                  "text": "phone",
+                  "emoji": "📞"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Haftalık raporlar hazırladım.",
+              "lang": "tr",
+              "answers": [
+                "I prepared weekly reports"
+              ],
+              "tokens": [
+                "I",
+                "prepared",
+                "weekly",
+                "reports",
+                "prepare",
+                "daily",
+                "a"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I was ___ for a team of five people.",
+              "translation": "Beş kişilik bir ekipten sorumluydum.",
+              "answer": "responsible",
+              "choices": [
+                "responsible",
+                "interested",
+                "graduated"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I managed a small team.",
+              "answers": [
+                "I managed a small team."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "rapor",
+                  "report"
+                ],
+                [
+                  "müşteri",
+                  "customer"
+                ],
+                [
+                  "ekip",
+                  "team"
+                ],
+                [
+                  "görev",
+                  "task"
+                ],
+                [
+                  "proje",
+                  "project"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I was responsible for customer service.",
+              "lang": "en",
+              "answers": [
+                "Müşteri hizmetlerinden sorumluydum"
+              ],
+              "tokens": [
+                "Müşteri",
+                "hizmetlerinden",
+                "sorumluydum",
+                "satıştan",
+                "çalıştım"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "rapor",
+              "answer": "report",
+              "choices": [
+                {
+                  "text": "report",
+                  "emoji": "📊"
+                },
+                {
+                  "text": "meeting",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "team",
+                  "emoji": "👥"
+                },
+                {
+                  "text": "salary",
+                  "emoji": "💰"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I ___ with customers every day.",
+              "translation": "Her gün müşterilerle çalıştım.",
+              "answer": "worked",
+              "choices": [
+                "worked",
+                "managed",
+                "prepared"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Küçük bir ekibi yönettim.",
+              "lang": "tr",
+              "answers": [
+                "I managed a small team"
+              ],
+              "tokens": [
+                "I",
+                "managed",
+                "a",
+                "small",
+                "team",
+                "big",
+                "manage",
+                "the"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I was responsible for customer service.",
+              "translation": "Müşteri hizmetlerinden sorumluydum."
+            }
+          ]
+        },
+        {
+          "id": "i2l2",
+          "type": "lesson",
+          "title": "Beceriler",
+          "description": "skills, good at, speak, teamwork",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "bilgisayar",
+              "answer": "computer",
+              "choices": [
+                {
+                  "text": "computer",
+                  "emoji": "💻"
+                },
+                {
+                  "text": "phone",
+                  "emoji": "📱"
+                },
+                {
+                  "text": "printer",
+                  "emoji": "🖨️"
+                },
+                {
+                  "text": "camera",
+                  "emoji": "📷"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Excel'i çok iyi kullanırım.",
+              "lang": "tr",
+              "answers": [
+                "I use Excel very well"
+              ],
+              "tokens": [
+                "I",
+                "use",
+                "Excel",
+                "very",
+                "well",
+                "good",
+                "used"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I can ___ English and German.",
+              "translation": "İngilizce ve Almanca konuşabilirim.",
+              "answer": "speak",
+              "choices": [
+                "speak",
+                "talk",
+                "tell"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I am good at solving problems.",
+              "answers": [
+                "I am good at solving problems."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "beceri",
+                  "skill"
+                ],
+                [
+                  "iletişim",
+                  "communication"
+                ],
+                [
+                  "çözmek",
+                  "solve"
+                ],
+                [
+                  "öğrenmek",
+                  "learn"
+                ],
+                [
+                  "dil",
+                  "language"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I am good at communication.",
+              "lang": "en",
+              "answers": [
+                "İletişimde iyiyim",
+                "İletişim konusunda iyiyim"
+              ],
+              "tokens": [
+                "İletişimde",
+                "iyiyim",
+                "kötüyüm",
+                "dilde"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "takım çalışması",
+              "answer": "teamwork",
+              "choices": [
+                {
+                  "text": "teamwork",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "deadline",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "salary",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "holiday",
+                  "emoji": "🏖️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I enjoy working in a ___.",
+              "translation": "Bir ekipte çalışmaktan keyif alırım.",
+              "answer": "team",
+              "choices": [
+                "team",
+                "skill",
+                "report"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Yeni şeyler öğrenmeyi severim.",
+              "lang": "tr",
+              "answers": [
+                "I like learning new things",
+                "I like to learn new things"
+              ],
+              "tokens": [
+                "I",
+                "like",
+                "learning",
+                "new",
+                "things",
+                "old",
+                "teach",
+                "am"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I am good at solving problems.",
+              "translation": "Problem çözmede iyiyim."
+            }
+          ]
+        },
+        {
+          "id": "i2s",
+          "type": "story",
+          "title": "Deneyimini anlat",
+          "description": "Selin sorumluluklarını ve başarılarını anlatıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Can you tell me about your responsibilities?",
+              "translation": "Bana sorumluluklarınızdan bahseder misiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Sure. I manage our social media accounts and prepare weekly reports.",
+              "translation": "Tabii. Sosyal medya hesaplarımızı yönetiyorum ve haftalık raporlar hazırlıyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Do you work alone or in a team?",
+              "translation": "Yalnız mı, yoksa bir ekiple mi çalışıyorsunuz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "In a team of four people. I enjoy teamwork.",
+              "translation": "Dört kişilik bir ekiple. Takım çalışmasını seviyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Selin'in ekibi kaç kişi?",
+              "choices": [
+                "Üç",
+                "Dört",
+                "Altı"
+              ],
+              "answer": "Dört"
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "What is your biggest achievement?",
+              "translation": "En büyük başarınız nedir?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Last year we started a new campaign. Our sales increased by thirty percent.",
+              "translation": "Geçen yıl yeni bir kampanya başlattık. Satışlarımız yüzde otuz arttı."
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Impressive! What skills did you use?",
+              "translation": "Etkileyici! Hangi becerilerinizi kullandınız?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Communication, planning and a lot of Excel!",
+              "translation": "İletişim, planlama ve bolca Excel!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Kampanyadan sonra satışlar ne kadar arttı?",
+              "choices": [
+                "Yüzde on",
+                "Yüzde yirmi",
+                "Yüzde otuz"
+              ],
+              "answer": "Yüzde otuz"
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Excel is important here too.",
+              "translation": "Excel burada da önemli."
+            },
+            {
+              "kind": "question",
+              "prompt": "Selin her hafta ne hazırlıyor?",
+              "choices": [
+                "Rapor",
+                "Bütçe",
+                "Sunum"
+              ],
+              "answer": "Rapor"
+            }
+          ]
+        },
+        {
+          "id": "i2l3",
+          "type": "lesson",
+          "title": "Başarılar",
+          "description": "increased, won, finished on time, goal",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "ödül",
+              "answer": "award",
+              "choices": [
+                {
+                  "text": "award",
+                  "emoji": "🏆"
+                },
+                {
+                  "text": "contract",
+                  "emoji": "📝"
+                },
+                {
+                  "text": "invoice",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "gift",
+                  "emoji": "🎁"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Satışları yüzde yirmi artırdım.",
+              "lang": "tr",
+              "answers": [
+                "I increased sales by twenty percent",
+                "I increased sales by 20 percent"
+              ],
+              "tokens": [
+                "I",
+                "increased",
+                "sales",
+                "by",
+                "twenty",
+                "percent",
+                "decreased",
+                "ten",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Last year I ___ an award.",
+              "translation": "Geçen yıl bir ödül kazandım.",
+              "answer": "won",
+              "choices": [
+                "won",
+                "win",
+                "wins"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "We finished the project on time.",
+              "answers": [
+                "We finished the project on time."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "başarı",
+                  "achievement"
+                ],
+                [
+                  "artırmak",
+                  "increase"
+                ],
+                [
+                  "zamanında",
+                  "on time"
+                ],
+                [
+                  "bütçe",
+                  "budget"
+                ],
+                [
+                  "hedef",
+                  "goal"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "We finished the project on time.",
+              "lang": "en",
+              "answers": [
+                "Projeyi zamanında bitirdik"
+              ],
+              "tokens": [
+                "Projeyi",
+                "zamanında",
+                "bitirdik",
+                "geç",
+                "başladık"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "hedef",
+              "answer": "goal",
+              "choices": [
+                {
+                  "text": "goal",
+                  "emoji": "🎯"
+                },
+                {
+                  "text": "award",
+                  "emoji": "🏆"
+                },
+                {
+                  "text": "budget",
+                  "emoji": "💵"
+                },
+                {
+                  "text": "chart",
+                  "emoji": "📈"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I ___ a new system for the team.",
+              "translation": "Ekip için yeni bir sistem oluşturdum.",
+              "answer": "created",
+              "choices": [
+                "created",
+                "create",
+                "creates"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hedefimize ulaştık.",
+              "lang": "tr",
+              "answers": [
+                "We reached our goal"
+              ],
+              "tokens": [
+                "We",
+                "reached",
+                "our",
+                "goal",
+                "reach",
+                "their",
+                "award"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I increased sales by twenty percent.",
+              "translation": "Satışları yüzde yirmi artırdım."
+            }
+          ]
+        },
+        {
+          "id": "i2t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "i2c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "i3",
+      "title": "Zor sorular",
+      "description": "Güçlü ve zayıf yönler, neden biz, maaş ve gelecek",
+      "color": "0xFFD81B60",
+      "nodes": [
+        {
+          "id": "i3l1",
+          "type": "lesson",
+          "title": "Güçlü ve zayıf yönler",
+          "description": "strength, weakness, organized, improving",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "güçlü yön",
+              "answer": "strength",
+              "choices": [
+                {
+                  "text": "strength",
+                  "emoji": "💪"
+                },
+                {
+                  "text": "weakness",
+                  "emoji": "🐢"
+                },
+                {
+                  "text": "goal",
+                  "emoji": "🎯"
+                },
+                {
+                  "text": "salary",
+                  "emoji": "💰"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "En büyük güçlü yönüm sabrım.",
+              "lang": "tr",
+              "answers": [
+                "My greatest strength is my patience",
+                "My biggest strength is my patience"
+              ],
+              "tokens": [
+                "My",
+                "greatest",
+                "strength",
+                "is",
+                "my",
+                "patience",
+                "weakness",
+                "your"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Sometimes I work too ___.",
+              "translation": "Bazen fazla sıkı çalışırım.",
+              "answer": "hard",
+              "choices": [
+                "hard",
+                "high",
+                "soon"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "My weakness is public speaking.",
+              "answers": [
+                "My weakness is public speaking."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "güçlü yön",
+                  "strength"
+                ],
+                [
+                  "zayıf yön",
+                  "weakness"
+                ],
+                [
+                  "sabır",
+                  "patience"
+                ],
+                [
+                  "düzenli",
+                  "organized"
+                ],
+                [
+                  "güvenilir",
+                  "reliable"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I am working on it.",
+              "lang": "en",
+              "answers": [
+                "Bunun üzerinde çalışıyorum"
+              ],
+              "tokens": [
+                "Bunun",
+                "üzerinde",
+                "çalışıyorum",
+                "biliyorum",
+                "şirket"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "zayıf yön",
+              "answer": "weakness",
+              "choices": [
+                {
+                  "text": "weakness",
+                  "emoji": "🐢"
+                },
+                {
+                  "text": "strength",
+                  "emoji": "💪"
+                },
+                {
+                  "text": "team",
+                  "emoji": "👥"
+                },
+                {
+                  "text": "idea",
+                  "emoji": "💡"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I am very ___ and I never miss deadlines.",
+              "translation": "Çok düzenliyim ve teslim tarihlerini asla kaçırmam.",
+              "answer": "organized",
+              "choices": [
+                "organized",
+                "weak",
+                "late"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Topluluk önünde konuşma becerimi geliştiriyorum.",
+              "lang": "tr",
+              "answers": [
+                "I'm improving my public speaking",
+                "I am improving my public speaking"
+              ],
+              "tokens": [
+                "I'm",
+                "improving",
+                "my",
+                "public",
+                "speaking",
+                "your",
+                "writing",
+                "am"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "My greatest strength is my patience.",
+              "translation": "En büyük güçlü yönüm sabrım."
+            }
+          ]
+        },
+        {
+          "id": "i3l2",
+          "type": "lesson",
+          "title": "Neden bu şirket?",
+          "description": "why us, opportunity, international, values",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "şirket",
+              "answer": "company",
+              "choices": [
+                {
+                  "text": "company",
+                  "emoji": "🏢"
+                },
+                {
+                  "text": "school",
+                  "emoji": "🏫"
+                },
+                {
+                  "text": "home",
+                  "emoji": "🏠"
+                },
+                {
+                  "text": "shop",
+                  "emoji": "🏪"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Şirketinizin değerlerini beğeniyorum.",
+              "lang": "tr",
+              "answers": [
+                "I like your company's values"
+              ],
+              "tokens": [
+                "I",
+                "like",
+                "your",
+                "company's",
+                "values",
+                "our",
+                "products"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Why do you want to ___ for us?",
+              "translation": "Neden bizim için çalışmak istiyorsunuz?",
+              "answer": "work",
+              "choices": [
+                "work",
+                "works",
+                "worked"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I want to grow in an international company.",
+              "answers": [
+                "I want to grow in an international company."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "büyümek",
+                  "grow"
+                ],
+                [
+                  "uluslararası",
+                  "international"
+                ],
+                [
+                  "fırsat",
+                  "opportunity"
+                ],
+                [
+                  "değer",
+                  "value"
+                ],
+                [
+                  "ürün",
+                  "product"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "This is a great opportunity for me.",
+              "lang": "en",
+              "answers": [
+                "Bu benim için harika bir fırsat"
+              ],
+              "tokens": [
+                "Bu",
+                "benim",
+                "için",
+                "harika",
+                "bir",
+                "fırsat",
+                "sorun",
+                "şirket"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "fırsat",
+              "answer": "opportunity",
+              "choices": [
+                {
+                  "text": "opportunity",
+                  "emoji": "🚪"
+                },
+                {
+                  "text": "problem",
+                  "emoji": "⚠️"
+                },
+                {
+                  "text": "product",
+                  "emoji": "📦"
+                },
+                {
+                  "text": "office",
+                  "emoji": "🏢"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I know your products very ___.",
+              "translation": "Ürünlerinizi çok iyi tanıyorum.",
+              "answer": "well",
+              "choices": [
+                "well",
+                "good",
+                "much"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Uluslararası bir ekipte çalışmak istiyorum.",
+              "lang": "tr",
+              "answers": [
+                "I want to work in an international team",
+                "I want to work on an international team"
+              ],
+              "tokens": [
+                "I",
+                "want",
+                "to",
+                "work",
+                "in",
+                "an",
+                "international",
+                "team",
+                "a",
+                "company"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "This is a great opportunity for me.",
+              "translation": "Bu benim için harika bir fırsat."
+            }
+          ]
+        },
+        {
+          "id": "i3s",
+          "type": "story",
+          "title": "Zor sorular",
+          "description": "David, Selin'e zor sorular soruyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Now, some difficult questions. What is your greatest weakness?",
+              "translation": "Şimdi birkaç zor soru. En büyük zayıf yönünüz nedir?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Sometimes I find it hard to say no. I am working on it.",
+              "translation": "Bazen hayır demekte zorlanıyorum. Bunun üzerinde çalışıyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "And your strengths?",
+              "translation": "Peki güçlü yönleriniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "I'm organized and I never miss deadlines.",
+              "translation": "Düzenliyim ve teslim tarihlerini asla kaçırmam."
+            },
+            {
+              "kind": "question",
+              "prompt": "Selin'in zayıf yönü ne?",
+              "choices": [
+                "Hayır diyememek",
+                "Geç kalmak",
+                "Düzensiz olmak"
+              ],
+              "answer": "Hayır diyememek"
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Why do you want to work for us?",
+              "translation": "Neden bizim için çalışmak istiyorsunuz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "I know your products well, and I want to work in an international team.",
+              "translation": "Ürünlerinizi iyi tanıyorum ve uluslararası bir ekipte çalışmak istiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Where do you see yourself in five years?",
+              "translation": "Kendinizi beş yıl sonra nerede görüyorsunuz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "I hope to lead a marketing team.",
+              "translation": "Bir pazarlama ekibini yönetmeyi umuyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Selin beş yıl sonra ne yapmak istiyor?",
+              "choices": [
+                "Kendi şirketini kurmak",
+                "Bir pazarlama ekibini yönetmek",
+                "Yurt dışında okumak"
+              ],
+              "answer": "Bir pazarlama ekibini yönetmek"
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "And what are your salary expectations?",
+              "translation": "Peki maaş beklentileriniz nedir?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Around the market average, but I'm flexible.",
+              "translation": "Piyasa ortalaması civarında ama esneğim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Selin maaş konusunda ne diyor?",
+              "choices": [
+                "Çok yüksek maaş istiyor",
+                "Esnek olduğunu söylüyor",
+                "Cevap vermiyor"
+              ],
+              "answer": "Esnek olduğunu söylüyor"
+            }
+          ]
+        },
+        {
+          "id": "i3l3",
+          "type": "lesson",
+          "title": "Maaş ve gelecek",
+          "description": "salary expectations, promotion, in five years",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "maaş",
+              "answer": "salary",
+              "choices": [
+                {
+                  "text": "salary",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "bonus",
+                  "emoji": "🎁"
+                },
+                {
+                  "text": "holiday",
+                  "emoji": "🏖️"
+                },
+                {
+                  "text": "car",
+                  "emoji": "🚗"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Beş yıl içinde yönetici olmak istiyorum.",
+              "lang": "tr",
+              "answers": [
+                "I want to be a manager in five years",
+                "In five years I want to be a manager"
+              ],
+              "tokens": [
+                "I",
+                "want",
+                "to",
+                "be",
+                "a",
+                "manager",
+                "in",
+                "five",
+                "years",
+                "ten",
+                "an"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "What are your salary ___?",
+              "translation": "Maaş beklentileriniz nedir?",
+              "answer": "expectations",
+              "choices": [
+                "expectations",
+                "strengths",
+                "questions"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Where do you see yourself in five years?",
+              "answers": [
+                "Where do you see yourself in five years?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "maaş",
+                  "salary"
+                ],
+                [
+                  "beklenti",
+                  "expectation"
+                ],
+                [
+                  "yan haklar",
+                  "benefits"
+                ],
+                [
+                  "terfi",
+                  "promotion"
+                ],
+                [
+                  "pazarlığa açık",
+                  "negotiable"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "The salary is negotiable.",
+              "lang": "en",
+              "answers": [
+                "Maaş pazarlığa açık"
+              ],
+              "tokens": [
+                "Maaş",
+                "pazarlığa",
+                "açık",
+                "kapalı",
+                "terfi"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "terfi",
+              "answer": "promotion",
+              "choices": [
+                {
+                  "text": "promotion",
+                  "emoji": "📈"
+                },
+                {
+                  "text": "bonus",
+                  "emoji": "🎁"
+                },
+                {
+                  "text": "salary",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "meeting",
+                  "emoji": "🤝"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I would like to ___ new skills.",
+              "translation": "Yeni beceriler öğrenmek isterim.",
+              "answer": "learn",
+              "choices": [
+                "learn",
+                "learned",
+                "learns"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Maaş konusunda esnekim.",
+              "lang": "tr",
+              "answers": [
+                "I'm flexible about the salary",
+                "I am flexible about the salary"
+              ],
+              "tokens": [
+                "I'm",
+                "flexible",
+                "about",
+                "the",
+                "salary",
+                "a",
+                "strict",
+                "am"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Where do you see yourself in five years?",
+              "translation": "Kendinizi beş yıl sonra nerede görüyorsunuz?"
+            }
+          ]
+        },
+        {
+          "id": "i3t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "i3c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "i4",
+      "title": "Görüşmeyi bitirme ve e-posta",
+      "description": "Soru sor, teşekkür et, takip e-postası yaz, sohbet et",
+      "color": "0xFF43A047",
+      "nodes": [
+        {
+          "id": "i4l1",
+          "type": "lesson",
+          "title": "Soru sormak",
+          "description": "next steps, start date, tell me more",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "soru",
+              "answer": "question",
+              "choices": [
+                {
+                  "text": "question",
+                  "emoji": "❓"
+                },
+                {
+                  "text": "answer",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "email",
+                  "emoji": "📧"
+                },
+                {
+                  "text": "phone",
+                  "emoji": "📞"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bir sorum var.",
+              "lang": "tr",
+              "answers": [
+                "I have a question"
+              ],
+              "tokens": [
+                "I",
+                "have",
+                "a",
+                "question",
+                "has",
+                "an",
+                "answer"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Do you have any ___ for us?",
+              "translation": "Bize sormak istediğiniz bir şey var mı?",
+              "answer": "questions",
+              "choices": [
+                "questions",
+                "offices",
+                "deadlines"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "What does a typical day look like?",
+              "answers": [
+                "What does a typical day look like?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "eğitim programı",
+                  "training"
+                ],
+                [
+                  "sonraki adım",
+                  "next step"
+                ],
+                [
+                  "başlangıç tarihi",
+                  "start date"
+                ],
+                [
+                  "pozisyon",
+                  "position"
+                ],
+                [
+                  "ofis",
+                  "office"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "What are the next steps?",
+              "lang": "en",
+              "answers": [
+                "Sonraki adımlar neler"
+              ],
+              "tokens": [
+                "Sonraki",
+                "adımlar",
+                "neler",
+                "nerede",
+                "soru"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "ofis",
+              "answer": "office",
+              "choices": [
+                {
+                  "text": "office",
+                  "emoji": "🏢"
+                },
+                {
+                  "text": "home",
+                  "emoji": "🏠"
+                },
+                {
+                  "text": "train",
+                  "emoji": "🚆"
+                },
+                {
+                  "text": "café",
+                  "emoji": "☕"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "When is the start ___?",
+              "translation": "Başlangıç tarihi ne zaman?",
+              "answer": "date",
+              "choices": [
+                "date",
+                "step",
+                "team"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ekip hakkında biraz daha bilgi verebilir misiniz?",
+              "lang": "tr",
+              "answers": [
+                "Can you tell me more about the team",
+                "Could you tell me more about the team"
+              ],
+              "tokens": [
+                "Can",
+                "you",
+                "tell",
+                "me",
+                "more",
+                "about",
+                "the",
+                "team",
+                "less",
+                "office"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "What are the next steps?",
+              "translation": "Sonraki adımlar neler?"
+            }
+          ]
+        },
+        {
+          "id": "i4l2",
+          "type": "lesson",
+          "title": "Teşekkür ve vedalaşma",
+          "description": "thank you for your time, look forward to",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "el sıkışmak",
+              "answer": "handshake",
+              "choices": [
+                {
+                  "text": "handshake",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "wave",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "email",
+                  "emoji": "📧"
+                },
+                {
+                  "text": "smile",
+                  "emoji": "😊"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Zaman ayırdığınız için teşekkür ederim.",
+              "lang": "tr",
+              "answers": [
+                "Thank you for your time"
+              ],
+              "tokens": [
+                "Thank",
+                "you",
+                "for",
+                "your",
+                "time",
+                "my",
+                "the",
+                "job"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I look ___ to hearing from you.",
+              "translation": "Sizden haber almayı dört gözle bekliyorum.",
+              "answer": "forward",
+              "choices": [
+                "forward",
+                "back",
+                "up"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It was a pleasure to meet you.",
+              "answers": [
+                "It was a pleasure to meet you."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "zaman",
+                  "time"
+                ],
+                [
+                  "haber almak",
+                  "hear from"
+                ],
+                [
+                  "zevk",
+                  "pleasure"
+                ],
+                [
+                  "yakında",
+                  "soon"
+                ],
+                [
+                  "görüşme",
+                  "interview"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "We will contact you next week.",
+              "lang": "en",
+              "answers": [
+                "Gelecek hafta sizinle iletişime geçeceğiz"
+              ],
+              "tokens": [
+                "Gelecek",
+                "hafta",
+                "sizinle",
+                "iletişime",
+                "geçeceğiz",
+                "yarın",
+                "ay"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "görüşme",
+              "answer": "interview",
+              "choices": [
+                {
+                  "text": "interview",
+                  "emoji": "💼"
+                },
+                {
+                  "text": "party",
+                  "emoji": "🎉"
+                },
+                {
+                  "text": "holiday",
+                  "emoji": "🏖️"
+                },
+                {
+                  "text": "lesson",
+                  "emoji": "📚"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "It was a ___ to meet you.",
+              "translation": "Sizinle tanışmak bir zevkti.",
+              "answer": "pleasure",
+              "choices": [
+                "pleasure",
+                "time",
+                "question"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sizden haber almayı bekliyorum.",
+              "lang": "tr",
+              "answers": [
+                "I look forward to hearing from you"
+              ],
+              "tokens": [
+                "I",
+                "look",
+                "forward",
+                "to",
+                "hearing",
+                "from",
+                "you",
+                "back",
+                "seeing"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Thank you for your time.",
+              "translation": "Zaman ayırdığınız için teşekkür ederim."
+            }
+          ]
+        },
+        {
+          "id": "i4s",
+          "type": "story",
+          "title": "Görüşmenin sonu",
+          "description": "Selin sorularını soruyor ve vedalaşıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Do you have any questions for us?",
+              "translation": "Bize sormak istediğiniz bir şey var mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Yes. What does a typical day look like in this team?",
+              "translation": "Evet. Bu ekipte tipik bir gün nasıl geçiyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "We have a short meeting every morning. Then everyone works on their projects.",
+              "translation": "Her sabah kısa bir toplantı yapıyoruz. Sonra herkes kendi projeleri üzerinde çalışıyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Ekip her sabah ne yapıyor?",
+              "choices": [
+                "Kısa bir toplantı",
+                "Kahvaltı",
+                "Spor"
+              ],
+              "answer": "Kısa bir toplantı"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "That sounds great. What are the next steps?",
+              "translation": "Kulağa harika geliyor. Sonraki adımlar neler?"
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "We will contact you next week.",
+              "translation": "Gelecek hafta sizinle iletişime geçeceğiz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Thank you for your time. It was a pleasure to meet you.",
+              "translation": "Zaman ayırdığınız için teşekkürler. Sizinle tanışmak bir zevkti."
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "You too. Was the traffic OK this morning?",
+              "translation": "Ben de memnun oldum. Bu sabah trafik nasıldı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "It was terrible, but I left home early!",
+              "translation": "Berbattı ama evden erken çıktım!"
+            },
+            {
+              "kind": "line",
+              "speaker": "David",
+              "avatar": "🧔",
+              "text": "Smart! Goodbye, Selin.",
+              "translation": "Akıllıca! Hoşça kalın Selin."
+            },
+            {
+              "kind": "question",
+              "prompt": "Şirket Selin'e ne zaman dönecek?",
+              "choices": [
+                "Yarın",
+                "Gelecek hafta",
+                "Gelecek ay"
+              ],
+              "answer": "Gelecek hafta"
+            },
+            {
+              "kind": "question",
+              "prompt": "Selin trafiğe rağmen nasıl zamanında geldi?",
+              "choices": [
+                "Taksiye bindi",
+                "Evden erken çıktı",
+                "Metroya bindi"
+              ],
+              "answer": "Evden erken çıktı"
+            }
+          ]
+        },
+        {
+          "id": "i4l3",
+          "type": "lesson",
+          "title": "E-posta ve sohbet",
+          "description": "dear, best regards, attached, small talk",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "e-posta",
+              "answer": "email",
+              "choices": [
+                {
+                  "text": "email",
+                  "emoji": "📧"
+                },
+                {
+                  "text": "phone",
+                  "emoji": "📞"
+                },
+                {
+                  "text": "calendar",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "laptop",
+                  "emoji": "💻"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Görüşme için tekrar teşekkürler.",
+              "lang": "tr",
+              "answers": [
+                "Thank you again for the interview",
+                "Thanks again for the interview"
+              ],
+              "tokens": [
+                "Thank",
+                "you",
+                "again",
+                "for",
+                "the",
+                "interview",
+                "meeting",
+                "a"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Dear Mr. Clark, ___ you for the interview.",
+              "translation": "Sayın Bay Clark, görüşme için teşekkür ederim.",
+              "answer": "thank",
+              "choices": [
+                "thank",
+                "thanks",
+                "thanking"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Please find my CV attached.",
+              "answers": [
+                "Please find my CV attached."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "sayın",
+                  "dear"
+                ],
+                [
+                  "saygılarımla",
+                  "best regards"
+                ],
+                [
+                  "ek",
+                  "attachment"
+                ],
+                [
+                  "konu",
+                  "subject"
+                ],
+                [
+                  "hava",
+                  "weather"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "How was your weekend?",
+              "lang": "en",
+              "answers": [
+                "Hafta sonunuz nasıldı"
+              ],
+              "tokens": [
+                "Hafta",
+                "sonunuz",
+                "nasıldı",
+                "nerede",
+                "akşamınız"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "hava",
+              "answer": "weather",
+              "choices": [
+                {
+                  "text": "weather",
+                  "emoji": "🌤️"
+                },
+                {
+                  "text": "traffic",
+                  "emoji": "🚦"
+                },
+                {
+                  "text": "coffee",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "train",
+                  "emoji": "🚆"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The traffic was ___ this morning.",
+              "translation": "Bu sabah trafik berbattı.",
+              "answer": "terrible",
+              "choices": [
+                "terrible",
+                "thank",
+                "forward"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "CV'mi ekte bulabilirsiniz.",
+              "lang": "tr",
+              "answers": [
+                "Please find my CV attached",
+                "You can find my CV attached"
+              ],
+              "tokens": [
+                "Please",
+                "find",
+                "my",
+                "CV",
+                "attached",
+                "your",
+                "send"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Thank you again for the interview.",
+              "translation": "Görüşme için tekrar teşekkürler."
+            }
+          ]
+        },
+        {
+          "id": "i4t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "i4c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}

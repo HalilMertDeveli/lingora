@@ -25,3 +25,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/courses/
+    - assets/exams/
+    - assets/notes/

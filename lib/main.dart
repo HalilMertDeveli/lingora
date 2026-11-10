@@ -10,10 +10,7 @@ import 'theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
-  runApp(ProviderScope(
-    overrides: [prefsProvider.overrideWithValue(prefs)],
-    child: const LingoraApp(),
-  ));
+  runApp(ProviderScope(overrides: [prefsProvider.overrideWithValue(prefs)], child: const LingoraApp()));
 }
 
 class LingoraApp extends ConsumerWidget {

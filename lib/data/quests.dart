@@ -49,5 +49,4 @@ List<QuestDef> questsForDay(DateTime day) {
 }
 
 /// Time left until quests refresh at local midnight.
-Duration untilTomorrow(DateTime now) =>
-    DateTime(now.year, now.month, now.day + 1).difference(now);
+Duration untilTomorrow(DateTime now) => DateTime(now.year, now.month, now.day + 1).difference(now);

@@ -58,9 +58,9 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
       onDone: () {
         if (!mounted) return;
         setState(() => _listening = false);
-        widget.onReady(_heard.isEmpty
-            ? null
-            : () => spokenSimilarity(widget.ex.text!, _heard) >= speakPassRatio);
+        widget.onReady(
+          _heard.isEmpty ? null : () => spokenSimilarity(widget.ex.text!, _heard) >= speakPassRatio,
+        );
       },
     );
   }
@@ -105,8 +105,11 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
               child: SizedBox(
                 width: 96,
                 height: 96,
-                child: Icon(_listening ? Icons.stop_rounded : Icons.mic_rounded,
-                    color: Colors.white, size: 48),
+                child: Icon(
+                  _listening ? Icons.stop_rounded : Icons.mic_rounded,
+                  color: Colors.white,
+                  size: 48,
+                ),
               ),
             ),
           ),
@@ -116,19 +119,15 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
           _unavailable
               ? 'Bu cihazda ses tanıma kullanılamıyor.'
               : _listening
-                  ? 'Dinliyorum…'
-                  : _heard.isEmpty
-                      ? 'Mikrofona dokun ve konuş'
-                      : '“$_heard”',
+              ? 'Dinliyorum…'
+              : _heard.isEmpty
+              ? 'Mikrofona dokun ve konuş'
+              : '“$_heard”',
           textAlign: TextAlign.center,
           style: TextStyle(color: _heard.isEmpty ? Brand.muted : Brand.ink, fontSize: 16),
         ),
         const SizedBox(height: 16),
-        if (!widget.locked)
-          TextButton(
-            onPressed: widget.onSkip,
-            child: const Text('Şu an konuşamıyorum'),
-          ),
+        if (!widget.locked) TextButton(onPressed: widget.onSkip, child: const Text('Şu an konuşamıyorum')),
       ],
     );
   }

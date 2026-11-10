@@ -23,9 +23,7 @@ class _ListenExerciseState extends ConsumerState<ListenExercise> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => ref.read(speechProvider).say(widget.ex.text!),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) => ref.read(speechProvider).say(widget.ex.text!));
   }
 
   @override
@@ -59,9 +57,8 @@ class _ListenExerciseState extends ConsumerState<ListenExercise> {
           textCapitalization: TextCapitalization.sentences,
           style: const TextStyle(fontSize: 18),
           decoration: const InputDecoration(hintText: 'İngilizce yaz'),
-          onChanged: (text) => widget.onReady(
-            text.trim().isEmpty ? null : () => matchesAny(_input.text, ex.answers),
-          ),
+          onChanged: (text) =>
+              widget.onReady(text.trim().isEmpty ? null : () => matchesAny(_input.text, ex.answers)),
         ),
       ],
     );

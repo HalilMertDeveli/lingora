@@ -14,9 +14,9 @@ Future<void> enableReminders(BuildContext context, WidgetRef ref) async {
   final granted = await ref.read(notificationServiceProvider).requestPermission();
   ref.read(progressProvider.notifier).setReminders(enabled: granted);
   if (!granted && context.mounted) {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Bildirim izni verilmedi. Telefon ayarlarından açabilirsin.'),
-    ));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Bildirim izni verilmedi. Telefon ayarlarından açabilirsin.')),
+    );
   }
 }
 
@@ -26,10 +26,8 @@ Future<void> pickReminderTime(BuildContext context, WidgetRef ref) async {
     context: context,
     initialTime: TimeOfDay(hour: current ~/ 60, minute: current % 60),
     helpText: 'Hatırlatma saati',
-    builder: (c, child) => MediaQuery(
-      data: MediaQuery.of(c).copyWith(alwaysUse24HourFormat: true),
-      child: child!,
-    ),
+    builder: (c, child) =>
+        MediaQuery(data: MediaQuery.of(c).copyWith(alwaysUse24HourFormat: true), child: child!),
   );
   if (picked != null) {
     ref.read(progressProvider.notifier).setReminders(minutes: picked.hour * 60 + picked.minute);
@@ -56,8 +54,10 @@ class ReminderPromptCard extends ConsumerWidget {
                 Icon(Icons.notifications_active_rounded, color: Brand.primary, size: 30),
                 SizedBox(width: 10),
                 Expanded(
-                  child: Text('Her gün hatırlatayım mı?',
-                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800)),
+                  child: Text(
+                    'Her gün hatırlatayım mı?',
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
+                  ),
                 ),
               ],
             ),
@@ -117,15 +117,11 @@ class ReminderSettings extends ConsumerWidget {
             enabled: on,
             leading: const Icon(Icons.schedule_rounded, color: Brand.primary),
             title: const Text('Saat', style: TextStyle(fontWeight: FontWeight.w700)),
-            trailing: Text(formatMinutes(p.reminderMinutes),
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Brand.primary)),
+            trailing: Text(
+              formatMinutes(p.reminderMinutes),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Brand.primary),
+            ),
             onTap: () => pickReminderTime(context, ref),
-          ),
-          SwitchListTile(
-            secondary: const Icon(Icons.favorite_rounded, color: Brand.heart),
-            title: const Text('Canlar dolunca haber ver', style: TextStyle(fontWeight: FontWeight.w700)),
-            value: on && p.heartAlerts,
-            onChanged: on ? (v) => notifier.setReminders(heartAlerts: v) : null,
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/course.dart';
 import '../services/speech.dart';
+import '../theme.dart';
 import 'common.dart';
 
 class SelectExercise extends ConsumerStatefulWidget {
@@ -56,26 +57,29 @@ class _ChoiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: selected ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.10) : Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: BorderSide(
-          color: selected ? Theme.of(context).colorScheme.primary : const Color(0xFFE7E5EF),
-          width: 2,
-        ),
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        onTap: onTap,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(choice.emoji, style: const TextStyle(fontSize: 56)),
-            const SizedBox(height: 10),
-            Text(choice.text, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700)),
-          ],
-        ),
+    return TapCard(
+      selected: selected,
+      onTap: onTap,
+      padding: EdgeInsets.zero,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AnimatedScale(
+            scale: selected ? 1.18 : 1,
+            duration: const Duration(milliseconds: 380),
+            curve: Curves.elasticOut,
+            child: Text(choice.emoji, style: const TextStyle(fontSize: 56)),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            choice.text,
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w700,
+              color: selected ? Brand.primary : Brand.ink,
+            ),
+          ),
+        ],
       ),
     );
   }

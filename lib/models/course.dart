@@ -58,16 +58,15 @@ class Exercise {
 
   /// Text shown to the user as the correct answer after a mistake.
   String get displayAnswer => switch (type) {
-        ExerciseType.select || ExerciseType.fillBlank => answer ?? '',
-        ExerciseType.translate || ExerciseType.listen => answers.first,
-        ExerciseType.speak => text ?? '',
-        ExerciseType.match => '',
-      };
+    ExerciseType.select || ExerciseType.fillBlank => answer ?? '',
+    ExerciseType.translate || ExerciseType.listen => answers.first,
+    ExerciseType.speak => text ?? '',
+    ExerciseType.match => '',
+  };
 
   factory Exercise.fromJson(Map<String, dynamic> j) {
     final type = ExerciseType.values.byName(j['type'] as String);
-    List<String> strings(String key) =>
-        ((j[key] as List?) ?? const []).cast<String>();
+    List<String> strings(String key) => ((j[key] as List?) ?? const []).cast<String>();
     return Exercise(
       type: type,
       prompt: j['prompt'] as String?,
@@ -79,8 +78,8 @@ class Exercise {
       tokens: strings('tokens'),
       choices: type == ExerciseType.select
           ? ((j['choices'] as List?) ?? const [])
-              .map((c) => Choice.fromJson(c as Map<String, dynamic>))
-              .toList()
+                .map((c) => Choice.fromJson(c as Map<String, dynamic>))
+                .toList()
           : const [],
       wordChoices: type == ExerciseType.fillBlank ? strings('choices') : const [],
       pairs: ((j['pairs'] as List?) ?? const [])
@@ -90,7 +89,43 @@ class Exercise {
   }
 }
 
-enum NodeType { lesson, chest }
+enum NodeType { lesson, chest, story, test }
+
+/// One step of a story node: a line of dialogue or a comprehension question.
+class StoryStep {
+  const StoryStep.line({required this.speaker, required this.avatar, required this.text, this.translation})
+    : prompt = null,
+      choices = const [],
+      answer = null;
+  const StoryStep.question({required this.prompt, required this.choices, required this.answer})
+    : speaker = null,
+      avatar = null,
+      text = null,
+      translation = null;
+
+  final String? speaker;
+  final String? avatar;
+  final String? text;
+  final String? translation;
+  final String? prompt;
+  final List<String> choices;
+  final String? answer;
+
+  bool get isQuestion => prompt != null;
+
+  factory StoryStep.fromJson(Map<String, dynamic> j) => j['kind'] == 'question'
+      ? StoryStep.question(
+          prompt: j['prompt'] as String,
+          choices: (j['choices'] as List).cast<String>(),
+          answer: j['answer'] as String,
+        )
+      : StoryStep.line(
+          speaker: j['speaker'] as String,
+          avatar: (j['avatar'] as String?) ?? '🙂',
+          text: j['text'] as String,
+          translation: j['translation'] as String?,
+        );
+}
 
 class PathNode {
   const PathNode({
@@ -100,6 +135,7 @@ class PathNode {
     required this.description,
     this.exercises = const [],
     this.rewardXp = 0,
+    this.steps = const [],
   });
 
   final String id;
@@ -109,16 +145,22 @@ class PathNode {
   final List<Exercise> exercises;
   final int rewardXp;
 
+  /// Dialogue and questions (story nodes).
+  final List<StoryStep> steps;
+
   factory PathNode.fromJson(Map<String, dynamic> j) => PathNode(
-        id: j['id'] as String,
-        type: NodeType.values.byName(j['type'] as String),
-        title: j['title'] as String,
-        description: (j['description'] as String?) ?? '',
-        exercises: ((j['exercises'] as List?) ?? const [])
-            .map((e) => Exercise.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        rewardXp: (j['rewardXp'] as int?) ?? 0,
-      );
+    id: j['id'] as String,
+    type: NodeType.values.byName(j['type'] as String),
+    title: j['title'] as String,
+    description: (j['description'] as String?) ?? '',
+    exercises: ((j['exercises'] as List?) ?? const [])
+        .map((e) => Exercise.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    rewardXp: (j['rewardXp'] as int?) ?? 0,
+    steps: ((j['steps'] as List?) ?? const [])
+        .map((s) => StoryStep.fromJson(s as Map<String, dynamic>))
+        .toList(),
+  );
 }
 
 class Unit {
@@ -137,14 +179,12 @@ class Unit {
   final List<PathNode> nodes;
 
   factory Unit.fromJson(Map<String, dynamic> j) => Unit(
-        id: j['id'] as String,
-        title: j['title'] as String,
-        description: (j['description'] as String?) ?? '',
-        color: Color(int.parse(j['color'] as String)),
-        nodes: (j['nodes'] as List)
-            .map((n) => PathNode.fromJson(n as Map<String, dynamic>))
-            .toList(),
-      );
+    id: j['id'] as String,
+    title: j['title'] as String,
+    description: (j['description'] as String?) ?? '',
+    color: Color(int.parse(j['color'] as String)),
+    nodes: (j['nodes'] as List).map((n) => PathNode.fromJson(n as Map<String, dynamic>)).toList(),
+  );
 }
 
 class Course {
@@ -166,12 +206,10 @@ class Course {
   List<PathNode> get allNodes => [for (final u in units) ...u.nodes];
 
   factory Course.fromJson(Map<String, dynamic> j) => Course(
-        id: j['id'] as String,
-        title: j['title'] as String,
-        fromLang: j['fromLang'] as String,
-        learningLang: j['learningLang'] as String,
-        units: (j['units'] as List)
-            .map((u) => Unit.fromJson(u as Map<String, dynamic>))
-            .toList(),
-      );
+    id: j['id'] as String,
+    title: j['title'] as String,
+    fromLang: j['fromLang'] as String,
+    learningLang: j['learningLang'] as String,
+    units: (j['units'] as List).map((u) => Unit.fromJson(u as Map<String, dynamic>)).toList(),
+  );
 }

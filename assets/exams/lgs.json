@@ -1,0 +1,577 @@
+{
+ "id": "lgs",
+ "title": "LGS İngilizce",
+ "description": "8. sınıf İngilizce müfredatına uygun; diyalog, okuma, kelime ve durum soruları. Tüm sorular özgün olarak hazırlanmıştır.",
+ "optionCount": 4,
+ "mockSize": 10,
+ "mockMinutes": 15,
+ "sections": [
+  {
+   "id": "lgs_vocab",
+   "title": "Kelime ve anlam",
+   "description": "8. sınıf ünitelerindeki kelimeleri bağlam içinde kullanın.",
+   "questions": [
+    {
+     "id": "lgs_vocab_001",
+     "text": "Ali is a very ---- friend. He always keeps his promises and never tells my secrets to anyone.",
+     "options": [
+      "selfish",
+      "rude",
+      "jealous",
+      "reliable"
+     ],
+     "answer": 3,
+     "explanation": "'Reliable' güvenilir demektir; sözünü tutan ve sır saklayan biri güvenilir bir arkadaştır. 'Selfish' bencil, 'rude' kaba, 'jealous' kıskanç anlamına gelir."
+    },
+    {
+     "id": "lgs_vocab_002",
+     "text": "My mum asked me to ---- the table before dinner, so I put the plates, forks and glasses on it.",
+     "options": [
+      "set",
+      "clear",
+      "wash",
+      "break"
+     ],
+     "answer": 0,
+     "explanation": "'Set the table' sofrayı kurmak demektir; tabak, çatal ve bardakları masaya koymak tam olarak budur. 'Clear the table' ise sofrayı toplamaktır."
+    },
+    {
+     "id": "lgs_vocab_003",
+     "text": "To make pancakes, first ---- the eggs and milk in a bowl, then add the flour.",
+     "options": [
+      "slice",
+      "peel",
+      "mix",
+      "grill"
+     ],
+     "answer": 2,
+     "explanation": "'Mix' karıştırmak demektir; yumurta ve süt bir kasede karıştırılır. 'Slice' dilimlemek, 'peel' soymak, 'grill' ızgara yapmak anlamına gelir."
+    },
+    {
+     "id": "lgs_vocab_004",
+     "text": "Could you ---- for a moment, please? I'll put you through to the manager.",
+     "options": [
+      "hang up",
+      "hold on",
+      "call back",
+      "run out"
+     ],
+     "answer": 1,
+     "explanation": "'Hold on' telefonda 'hatta kalın, bekleyin' demektir. 'Hang up' telefonu kapatmak, 'call back' geri aramak, 'run out' tükenmek anlamına gelir; 'put you through' sizi bağlayacağım demektir."
+    },
+    {
+     "id": "lgs_vocab_005",
+     "text": "I forgot my ----, so I couldn't log in to my e-mail account.",
+     "options": [
+      "screen",
+      "keyboard",
+      "password",
+      "battery"
+     ],
+     "answer": 2,
+     "explanation": "'Password' şifre demektir; şifreyi unutan kişi hesabına giriş yapamaz ('log in'). Diğer kelimeler ekran, klavye ve pil anlamına gelir."
+    },
+    {
+     "id": "lgs_vocab_006",
+     "text": "Bungee jumping is too ---- for me. I'm afraid of heights, so I prefer reading adventure books.",
+     "options": [
+      "scary",
+      "boring",
+      "safe",
+      "relaxing"
+     ],
+     "answer": 0,
+     "explanation": "'Scary' korkutucu demektir; yükseklikten korkan biri için bungee jumping korkutucudur. 'Boring' sıkıcı, 'safe' güvenli, 'relaxing' rahatlatıcı anlamına gelir."
+    },
+    {
+     "id": "lgs_vocab_007",
+     "text": "We ---- a room at a hotel near the beach before our holiday, so we didn't have any problems when we arrived.",
+     "options": [
+      "cancelled",
+      "cleaned",
+      "missed",
+      "booked"
+     ],
+     "answer": 3,
+     "explanation": "'Book a room' oda ayırtmak, rezervasyon yapmak demektir; önceden rezervasyon yapıldığı için sorun yaşanmamıştır. 'Cancel' iptal etmek, 'miss' kaçırmak anlamına gelir."
+    },
+    {
+     "id": "lgs_vocab_008",
+     "text": "It's my brother's turn to ---- the rubbish today. He has to put it outside before 8 p.m.",
+     "options": [
+      "iron",
+      "take out",
+      "feed",
+      "water"
+     ],
+     "answer": 1,
+     "explanation": "'Take out the rubbish' çöpü dışarı çıkarmak demektir ve sık kullanılan bir ev işidir. 'Iron' ütülemek, 'feed' beslemek, 'water' sulamak anlamına gelir."
+    },
+    {
+     "id": "lgs_vocab_009",
+     "text": "An ---- is a sudden and violent shaking of the ground.",
+     "options": [
+      "flood",
+      "avalanche",
+      "earthquake",
+      "drought"
+     ],
+     "answer": 2,
+     "explanation": "'Earthquake' deprem demektir; yerin aniden ve şiddetle sarsılmasıdır. 'Flood' sel, 'avalanche' çığ, 'drought' kuraklık anlamına gelir."
+    },
+    {
+     "id": "lgs_vocab_010",
+     "text": "Scientists ---- experiments in laboratories to test their ideas.",
+     "options": [
+      "discover",
+      "explode",
+      "borrow",
+      "conduct"
+     ],
+     "answer": 3,
+     "explanation": "'Conduct an experiment' deney yapmak demektir. 'Discover' keşfetmek, 'explode' patlamak, 'borrow' ödünç almak anlamına gelir ve 'experiment' ile uyumlu değildir."
+    },
+    {
+     "id": "lgs_vocab_011",
+     "text": "I'm ---- in science fiction films. I watch one every weekend.",
+     "options": [
+      "interested",
+      "bored",
+      "terrified",
+      "annoyed"
+     ],
+     "answer": 0,
+     "explanation": "'Be interested in' bir şeyle ilgilenmek demektir; her hafta sonu bilim kurgu filmi izleyen biri bu filmlerle ilgilidir. 'Bored' sıkılmış, 'terrified' dehşete düşmüş, 'annoyed' rahatsız olmuş anlamındadır."
+    }
+   ]
+  },
+  {
+   "id": "lgs_dialogue",
+   "title": "Diyalog tamamlama",
+   "description": "Kısa diyaloglardaki boşluğa en uygun ifadeyi seçin.",
+   "questions": [
+    {
+     "id": "lgs_dialogue_001",
+     "text": "Emre: Would you like to come to the cinema with us on Saturday?\nSelin: ----. I have to visit my grandparents.\nEmre: That's OK. Maybe next time.",
+     "options": [
+      "Sure, what time shall we meet?",
+      "I'd love to, but I can't",
+      "Yes, I'm free on Saturday",
+      "Great idea! Let's go"
+     ],
+     "answer": 1,
+     "explanation": "Selin büyükanne ve büyükbabasını ziyaret etmek zorunda olduğunu söylüyor ve Emre 'belki bir dahaki sefere' diyor; demek ki Selin daveti kibarca reddediyor: 'I'd love to, but I can't' (Çok isterdim ama gelemem)."
+    },
+    {
+     "id": "lgs_dialogue_002",
+     "text": "Waiter: Are you ready to order?\nCustomer: Yes. I'd like the chicken soup, please.\nWaiter: ----\nCustomer: Just a glass of water, thanks.",
+     "options": [
+      "How was your meal?",
+      "How much is it?",
+      "What would you like to drink?",
+      "Would you like the bill?"
+     ],
+     "answer": 2,
+     "explanation": "Müşteri 'sadece bir bardak su' diye cevap verdiğine göre garson ne içmek istediğini sormuştur: 'What would you like to drink?'"
+    },
+    {
+     "id": "lgs_dialogue_003",
+     "text": "A: Hello, can I speak to Mr Demir, please?\nB: ----. He's in a meeting right now. Would you like to leave a message?\nA: Yes, please. Tell him Ayşe called.",
+     "options": [
+      "Speaking",
+      "I'm afraid he isn't available",
+      "Yes, I'll put you through now",
+      "Sorry, wrong number"
+     ],
+     "answer": 1,
+     "explanation": "Demir Bey toplantıda olduğu için telefona gelemiyor; 'I'm afraid he isn't available' (Maalesef şu an müsait değil) uygun cevaptır. 'Speaking' konuşan kişinin kendisi olduğunu belirtir."
+    },
+    {
+     "id": "lgs_dialogue_004",
+     "text": "Kerem: I can't download this file. What should I do?\nMert: ----\nKerem: You're right. My connection was off. Thanks!",
+     "options": [
+      "Check your internet connection first.",
+      "Buy a new computer.",
+      "Delete all your files.",
+      "Send me your password."
+     ],
+     "answer": 0,
+     "explanation": "Kerem bağlantısının kapalı olduğunu fark ediyor; demek ki Mert ona önce internet bağlantısını kontrol etmesini önermiştir. Şifre paylaşmak ise güvenli değildir."
+    },
+    {
+     "id": "lgs_dialogue_005",
+     "text": "Deniz: What do you usually do in your free time?\nBerk: ----\nDeniz: Really? I prefer playing basketball.",
+     "options": [
+      "Yes, I have a lot of free time.",
+      "At about 5 o'clock.",
+      "I played basketball yesterday.",
+      "I usually play chess online with my cousin."
+     ],
+     "answer": 3,
+     "explanation": "'What do you usually do...?' sorusu alışkanlık sorar ve geniş zamanla cevaplanır. Deniz 'Ben basketbolu tercih ederim' dediğine göre Berk farklı bir etkinlikten söz etmiştir: online satranç."
+    },
+    {
+     "id": "lgs_dialogue_006",
+     "text": "Tourist: Excuse me, how can I get to the museum?\nLocal: ----\nTourist: Thank you very much!",
+     "options": [
+      "It opens at 9 a.m.",
+      "Go straight and turn left at the bank. It's next to the park.",
+      "It's 20 liras for students.",
+      "I've never been to a museum."
+     ],
+     "answer": 1,
+     "explanation": "'How can I get to...?' yol tarifi ister. 'Go straight' (düz git), 'turn left' (sola dön), 'next to' (yanında) yol tarifinde kullanılan ifadelerdir."
+    },
+    {
+     "id": "lgs_dialogue_007",
+     "text": "Mum: Can you help me with the housework, Ece?\nEce: Of course. ----\nMum: Could you vacuum the living room?",
+     "options": [
+      "I've already finished all of it.",
+      "I hate doing chores.",
+      "Why didn't you ask Dad?",
+      "What do you want me to do?"
+     ],
+     "answer": 3,
+     "explanation": "Ece yardım etmeyi kabul ediyor ve annesi ona bir iş veriyor; arada Ece'nin ne yapması gerektiğini sorması gerekir: 'What do you want me to do?' (Ne yapmamı istersin?)"
+    },
+    {
+     "id": "lgs_dialogue_008",
+     "text": "Can: Have you ever tried rafting?\nZeynep: ----. I did it last summer in Antalya. It was amazing!\nCan: Wow, I'd like to try it too.",
+     "options": [
+      "Yes, I have",
+      "No, I haven't",
+      "Yes, I do",
+      "No, I won't"
+     ],
+     "answer": 0,
+     "explanation": "'Have you ever...?' (Hiç ... yaptın mı?) sorusu 'present perfect' ile sorulur ve 'Yes, I have / No, I haven't' ile cevaplanır. Zeynep geçen yaz rafting yaptığına göre cevap 'Yes, I have' olmalıdır."
+    },
+    {
+     "id": "lgs_dialogue_009",
+     "text": "Elif: How do you make lemonade?\nAhmet: First, squeeze the lemons. ----, add water and sugar. Finally, stir it well.",
+     "options": [
+      "Finally",
+      "Because",
+      "Then",
+      "But"
+     ],
+     "answer": 2,
+     "explanation": "Tarif adımları 'first, then, finally' (önce, sonra, en son) sırasıyla anlatılır. İkinci adım için 'then' (sonra) kullanılır; 'finally' son adım için zaten kullanılmıştır."
+    },
+    {
+     "id": "lgs_dialogue_010",
+     "text": "Teacher: What do you think will happen if we leave this ice in the sun?\nStudent: ----\nTeacher: That's right! Heat turns ice into water.",
+     "options": [
+      "It will freeze.",
+      "It will get bigger.",
+      "It will become harder.",
+      "It will melt."
+     ],
+     "answer": 3,
+     "explanation": "Öğretmen 'ısı buzu suya dönüştürür' diyor; bu olaya 'melt' (erimek) denir. 'Freeze' donmak demektir ve tam tersidir."
+    },
+    {
+     "id": "lgs_dialogue_011",
+     "text": "Aslı: I'm so sorry. I broke your pen by mistake.\nMelis: ----. I have another one.\nAslı: Thank you for understanding.",
+     "options": [
+      "How dare you",
+      "Don't worry about it",
+      "I'm sorry too",
+      "Congratulations"
+     ],
+     "answer": 1,
+     "explanation": "Melis'in başka kalemi var ve Aslı anlayışı için teşekkür ediyor; demek ki Melis özrü kabul ediyor: 'Don't worry about it' (Dert etme, önemli değil)."
+    }
+   ]
+  },
+  {
+   "id": "lgs_reading",
+   "title": "Okuduğunu anlama",
+   "description": "E-posta, not, liste ve kısa metinleri okuyup soruları cevaplayın.",
+   "questions": [
+    {
+     "id": "lgs_reading_001",
+     "passage": "Hi Zeynep,\nI'm writing to invite you to my birthday party. It's on Saturday, 14th June, at 3 p.m. at my house. My mum is going to make a big chocolate cake, and we'll play board games in the garden. Can you bring your guitar? Everyone loves your songs! Please let me know if you can come by Thursday.\nLove,\nDefne",
+     "text": "Which of the following is true according to the e-mail?",
+     "options": [
+      "The party will be at Defne's house.",
+      "The party is on Thursday.",
+      "Zeynep will make a chocolate cake.",
+      "They will play games in the living room."
+     ],
+     "answer": 0,
+     "explanation": "E-postada partinin cumartesi saat 3'te Defne'nin evinde ('at my house') olacağı yazıyor. Pastayı Defne'nin annesi yapacak ve oyunlar bahçede oynanacak."
+    },
+    {
+     "id": "lgs_reading_002",
+     "passage": "Hi Zeynep,\nI'm writing to invite you to my birthday party. It's on Saturday, 14th June, at 3 p.m. at my house. My mum is going to make a big chocolate cake, and we'll play board games in the garden. Can you bring your guitar? Everyone loves your songs! Please let me know if you can come by Thursday.\nLove,\nDefne",
+     "text": "What does Defne want Zeynep to do?",
+     "options": [
+      "Buy a chocolate cake.",
+      "Come to the party at 5 p.m.",
+      "Bring her guitar and reply by Thursday.",
+      "Organise the board games."
+     ],
+     "answer": 2,
+     "explanation": "Defne 'Can you bring your guitar?' diye soruyor ve perşembeye kadar haber vermesini ('let me know by Thursday') istiyor."
+    },
+    {
+     "id": "lgs_reading_003",
+     "passage": "The list below shows how many hours four students spend on the internet each week.\n• Arda: 6 hours for homework, 10 hours for online games\n• Buse: 12 hours for homework, 2 hours for social media\n• Cem: 3 hours for homework, 8 hours for social media\n• Dila: 8 hours for homework, 4 hours for video chats with friends",
+     "text": "According to the list, which student spends the most time on homework?",
+     "options": [
+      "Buse",
+      "Arda",
+      "Cem",
+      "Dila"
+     ],
+     "answer": 0,
+     "explanation": "Listeye göre Buse ödev için haftada 12 saat harcıyor; bu en yüksek değerdir (Arda 6, Cem 3, Dila 8 saat)."
+    },
+    {
+     "id": "lgs_reading_004",
+     "passage": "The list below shows how many hours four students spend on the internet each week.\n• Arda: 6 hours for homework, 10 hours for online games\n• Buse: 12 hours for homework, 2 hours for social media\n• Cem: 3 hours for homework, 8 hours for social media\n• Dila: 8 hours for homework, 4 hours for video chats with friends",
+     "text": "Which of the following is true according to the list?",
+     "options": [
+      "Arda doesn't play online games.",
+      "Dila spends more time on homework than Buse.",
+      "Buse spends 10 hours on online games.",
+      "Cem uses social media more than Buse."
+     ],
+     "answer": 3,
+     "explanation": "Cem sosyal medyada 8 saat, Buse ise 2 saat geçiriyor; bu yüzden Cem sosyal medyayı daha çok kullanıyor. Arda 10 saat oyun oynuyor ve Dila (8 saat) ödeve Buse'den (12 saat) daha az zaman ayırıyor."
+    },
+    {
+     "id": "lgs_reading_005",
+     "passage": "The list below shows how many hours four students spend on the internet each week.\n• Arda: 6 hours for homework, 10 hours for online games\n• Buse: 12 hours for homework, 2 hours for social media\n• Cem: 3 hours for homework, 8 hours for social media\n• Dila: 8 hours for homework, 4 hours for video chats with friends",
+     "text": "Who spends exactly 12 hours online in total each week?",
+     "options": [
+      "Arda",
+      "Buse",
+      "Dila",
+      "Cem"
+     ],
+     "answer": 2,
+     "explanation": "Toplamları hesaplayalım: Dila 8 + 4 = 12, Arda 6 + 10 = 16, Buse 12 + 2 = 14, Cem 3 + 8 = 11 saat. 'In total' toplamda demektir."
+    },
+    {
+     "id": "lgs_reading_006",
+     "passage": "Kids,\nDad and I will be home late tonight. Here are your jobs:\nMert: Feed the cat and water the plants.\nEce: Load the dishwasher after dinner.\nBoth of you: Tidy your rooms before 9 p.m.\nThere's pasta in the fridge. Just heat it in the microwave. Don't use the oven!\nLove,\nMum",
+     "text": "Which of the following is NOT one of Mert's jobs?",
+     "options": [
+      "Feeding the cat",
+      "Loading the dishwasher",
+      "Watering the plants",
+      "Tidying his room"
+     ],
+     "answer": 1,
+     "explanation": "Notta bulaşık makinesini doldurmak ('load the dishwasher') Ece'nin görevi olarak yazılmış. Kediyi beslemek, bitkileri sulamak ve odayı toplamak Mert'in görevleri arasındadır."
+    },
+    {
+     "id": "lgs_reading_007",
+     "passage": "Kids,\nDad and I will be home late tonight. Here are your jobs:\nMert: Feed the cat and water the plants.\nEce: Load the dishwasher after dinner.\nBoth of you: Tidy your rooms before 9 p.m.\nThere's pasta in the fridge. Just heat it in the microwave. Don't use the oven!\nLove,\nMum",
+     "text": "According to the note, the children ----.",
+     "options": [
+      "should cook dinner in the oven",
+      "will go out with their parents tonight",
+      "must tidy their rooms after 9 p.m.",
+      "should heat the pasta in the microwave"
+     ],
+     "answer": 3,
+     "explanation": "Anne makarnayı mikrodalgada ısıtmalarını ve fırını kullanmamalarını ('Don't use the oven!') söylüyor. Odalar saat 9'dan önce ('before 9 p.m.') toplanmalı."
+    },
+    {
+     "id": "lgs_reading_008",
+     "passage": "A tsunami is a series of huge waves. It usually happens after an earthquake under the sea. The waves can travel very fast, almost as fast as a plane! When they reach the coast, they can destroy buildings and roads. If you are near the sea and feel an earthquake, you should move to high ground immediately. Don't wait for an official warning.",
+     "text": "According to the text, what usually causes a tsunami?",
+     "options": [
+      "An earthquake under the sea",
+      "Heavy rain",
+      "Strong winds",
+      "A forest fire"
+     ],
+     "answer": 0,
+     "explanation": "Metinde tsunaminin genellikle deniz altındaki bir depremden sonra oluştuğu yazıyor: 'It usually happens after an earthquake under the sea.'"
+    },
+    {
+     "id": "lgs_reading_009",
+     "passage": "A tsunami is a series of huge waves. It usually happens after an earthquake under the sea. The waves can travel very fast, almost as fast as a plane! When they reach the coast, they can destroy buildings and roads. If you are near the sea and feel an earthquake, you should move to high ground immediately. Don't wait for an official warning.",
+     "text": "What should you do if you feel an earthquake near the sea?",
+     "options": [
+      "Wait for an official warning.",
+      "Swim far out into the sea.",
+      "Go to a high place quickly.",
+      "Stay on the beach and watch the waves."
+     ],
+     "answer": 2,
+     "explanation": "Metin hemen yüksek bir yere çıkmayı ('move to high ground immediately') ve resmî uyarıyı beklememeyi öğütlüyor."
+    },
+    {
+     "id": "lgs_reading_010",
+     "passage": "Last summer, I went to Cappadocia with my family. On the first morning, we woke up at 5 a.m. to go on a hot-air balloon ride. I was nervous at first, but the view was breathtaking. In the afternoon, we visited an underground city. It was a bit dark and narrow, so my little sister got scared. I'd love to go there again! — Kaan, 14",
+     "text": "Which of the following is true according to the text?",
+     "options": [
+      "Kaan's sister enjoyed the underground city a lot.",
+      "Kaan felt nervous before the balloon ride.",
+      "They went on the balloon ride in the afternoon.",
+      "Kaan doesn't want to visit Cappadocia again."
+     ],
+     "answer": 1,
+     "explanation": "Kaan 'I was nervous at first' (önce gergindim) diyor. Kız kardeşi yer altı şehrinde korkmuş, balon turu sabah yapılmış ve Kaan oraya tekrar gitmek istiyor."
+    },
+    {
+     "id": "lgs_reading_011",
+     "text": "What does the word 'breathtaking' mean in the text?",
+     "options": [
+      "very boring",
+      "very dangerous",
+      "very beautiful",
+      "very cold"
+     ],
+     "answer": 2,
+     "explanation": "'Breathtaking' nefes kesici, çok güzel demektir. Kaan gergin olmasına rağmen manzaranın çok güzel olduğunu anlatıyor ('but' zıtlığı).",
+     "passage": "Last summer, I went to Cappadocia with my family. On the first morning, we woke up at 5 a.m. to go on a hot-air balloon ride. I was nervous at first, but the view was breathtaking. In the afternoon, we visited an underground city. It was a bit dark and narrow, so my little sister got scared. I'd love to go there again! — Kaan, 14"
+    }
+   ]
+  },
+  {
+   "id": "lgs_situation",
+   "title": "Durum ve uygun cevap",
+   "description": "Verilen duruma en uygun ifadeyi seçin.",
+   "questions": [
+    {
+     "id": "lgs_situation_001",
+     "text": "Your friend has an important exam tomorrow and feels very nervous. What would you say to him?",
+     "options": [
+      "I don't care about exams.",
+      "You'll definitely fail.",
+      "Let's play games all night instead of sleeping.",
+      "Don't worry. You studied hard, so you'll do well."
+     ],
+     "answer": 3,
+     "explanation": "Gergin bir arkadaşa cesaret vermek gerekir: 'Don't worry' (merak etme) ve 'you'll do well' (başarılı olacaksın) onu rahatlatır. Diğer cevaplar kaba ya da kötü bir öneridir."
+    },
+    {
+     "id": "lgs_situation_002",
+     "text": "You are at a restaurant and your soup is cold. What would you say to the waiter?",
+     "options": [
+      "Excuse me, my soup is cold. Could you heat it up, please?",
+      "The soup is delicious, thank you.",
+      "Can I pay by card?",
+      "I'd like a cold drink, please."
+     ],
+     "answer": 0,
+     "explanation": "Sorunu kibarca belirtip rica etmek gerekir: 'Could you heat it up, please?' (Isıtabilir misiniz, lütfen?). 'Could you...?' kibar rica kalıbıdır."
+    },
+    {
+     "id": "lgs_situation_003",
+     "text": "You call your friend Burak's house, but his mother answers the phone. What would you say?",
+     "options": [
+      "Hold on, please.",
+      "Hello, this is Ahmet. Can I speak to Burak, please?",
+      "Sorry, he isn't here right now.",
+      "Burak speaking."
+     ],
+     "answer": 1,
+     "explanation": "Telefonda kendimizi 'This is ...' ile tanıtırız ve birini istemek için 'Can I speak to ..., please?' kalıbını kullanırız. 'Hold on' ve 'He isn't here' telefonu açan kişinin söyleyeceği sözlerdir."
+    },
+    {
+     "id": "lgs_situation_004",
+     "text": "Your classmate wants to share her home address on a social media site. What advice would you give her?",
+     "options": [
+      "You shouldn't share personal information online.",
+      "You should share your password too.",
+      "Post it on every website.",
+      "Accept friend requests from strangers."
+     ],
+     "answer": 0,
+     "explanation": "İnternette kişisel bilgi ('personal information') paylaşmak güvenli değildir. 'You shouldn't...' (... yapmamalısın) tavsiye vermek için kullanılır."
+    },
+    {
+     "id": "lgs_situation_005",
+     "text": "A tourist asks you to recommend a place to visit in your city. Which of the following is a recommendation?",
+     "options": [
+      "I visited the castle last year.",
+      "How long are you staying here?",
+      "Where are you from?",
+      "You should definitely see the old castle. It has a great view."
+     ],
+     "answer": 3,
+     "explanation": "Tavsiye vermek için 'You should...' (... yapmalısın) kalıbı kullanılır. Diğer seçenekler geçmiş bir deneyimi anlatır veya soru sorar; öneri içermez."
+    },
+    {
+     "id": "lgs_situation_006",
+     "text": "Your friend invites you to go rock climbing, but you think it is too dangerous. How would you refuse?",
+     "options": [
+      "Sure! I can't wait!",
+      "Thanks, but I'd rather not. It seems too risky for me.",
+      "I'd love to. What time?",
+      "Rock climbing is my favourite sport."
+     ],
+     "answer": 1,
+     "explanation": "'I'd rather not' (Yapmamayı tercih ederim) kibarca reddetmek için kullanılır; 'risky' riskli demektir. Diğer seçenekler daveti kabul eder."
+    },
+    {
+     "id": "lgs_situation_007",
+     "text": "Your little brother eats a lot of junk food. What would you advise him?",
+     "options": [
+      "You should eat more chips.",
+      "Why don't you skip breakfast?",
+      "You should eat more fruit and vegetables.",
+      "You'd better drink more fizzy drinks."
+     ],
+     "answer": 2,
+     "explanation": "Abur cubur ('junk food') yiyen birine sağlıklı beslenmeyi önermek gerekir. 'You should...' ve 'You'd better...' tavsiye kalıplarıdır ama diğer seçenekler sağlıksız öneriler içerir."
+    },
+    {
+     "id": "lgs_situation_008",
+     "text": "Your friend says, 'I won the school science competition!' What would you say?",
+     "options": [
+      "Congratulations! You deserve it.",
+      "Get well soon.",
+      "Never mind.",
+      "Enjoy your meal."
+     ],
+     "answer": 0,
+     "explanation": "Başarı haberine 'Congratulations!' (Tebrikler!) ile karşılık verilir; 'You deserve it' hak ettin demektir. 'Get well soon' geçmiş olsun, 'Never mind' boş ver anlamına gelir."
+    },
+    {
+     "id": "lgs_situation_009",
+     "text": "You are in a museum and want to take a photo, but you aren't sure if it's allowed. What would you ask the guard?",
+     "options": [
+      "Where is the gift shop?",
+      "What time does the museum close?",
+      "Excuse me, am I allowed to take photos here?",
+      "Can you show me the exit?"
+     ],
+     "answer": 2,
+     "explanation": "'Am I allowed to...?' (... yapmama izin var mı?) izin sormak için kullanılır. Diğer sorular fotoğraf çekme izniyle ilgili değildir."
+    },
+    {
+     "id": "lgs_situation_010",
+     "text": "Your mum asks you to clean your room, but you are doing your homework. What would you say?",
+     "options": [
+      "I've already finished my homework.",
+      "Sure, Mum. I'll do it after I finish my homework.",
+      "I never clean my room.",
+      "Can you do my homework for me?"
+     ],
+     "answer": 1,
+     "explanation": "Kibarca kabul edip zamanı belirtmek uygundur: 'I'll do it after I finish...' (... bitirdikten sonra yapacağım). Ödevi bitirdiğini söylemek durumla çelişir."
+    },
+    {
+     "id": "lgs_situation_011",
+     "text": "You are going on a picnic with a friend, and you see dark clouds in the sky. What would you say?",
+     "options": [
+      "It's sunny and hot, so let's wear sunglasses.",
+      "I like picnics very much.",
+      "We had a picnic last week.",
+      "It looks like it's going to rain. Let's take umbrellas."
+     ],
+     "answer": 3,
+     "explanation": "Kara bulutlar yağmur işaretidir; 'It looks like it's going to rain' (Yağmur yağacak gibi görünüyor) bir kanıta dayalı tahmindir ve 'be going to' ile anlatılır."
+    }
+   ]
+  }
+ ]
+}

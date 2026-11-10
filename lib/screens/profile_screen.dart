@@ -56,7 +56,9 @@ class ProfileScreen extends ConsumerWidget {
         const SizedBox(height: 24),
         Text('Son 7 gün', style: t.titleLarge),
         const SizedBox(height: 12),
-        TapCard(child: _WeekChart(progress: p, now: now)),
+        TapCard(
+          child: _WeekChart(progress: p, now: now),
+        ),
         const SizedBox(height: 24),
         Text('Günlük hedef', style: t.titleLarge),
         const SizedBox(height: 12),
@@ -111,26 +113,28 @@ class _StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => TapCard(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Row(
-          children: [
-            Icon(icon, color: color, size: 30),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
-                  Text(label,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(color: Brand.muted, fontSize: 12)),
-                ],
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+    child: Row(
+      children: [
+        Icon(icon, color: color, size: 30),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+              Text(
+                label,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(color: Brand.muted, fontSize: 12),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      );
+      ],
+    ),
+  );
 }
 
 class _WeekChart extends StatelessWidget {
@@ -164,11 +168,10 @@ class _WeekChart extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 6),
-                  Text(_weekdays[days[i].weekday - 1],
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: i == 6 ? FontWeight.w900 : FontWeight.w500,
-                      )),
+                  Text(
+                    _weekdays[days[i].weekday - 1],
+                    style: TextStyle(fontSize: 12, fontWeight: i == 6 ? FontWeight.w900 : FontWeight.w500),
+                  ),
                 ],
               ),
             ),

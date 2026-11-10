@@ -1,0 +1,85 @@
+/// Everything the user can study. Courses use the learning path; exams use
+/// question banks with topic practice and mini mock exams.
+enum TrackKind { course, exam, notes }
+
+class Track {
+  const Track({
+    required this.id,
+    required this.kind,
+    required this.title,
+    required this.subtitle,
+    required this.emoji,
+    this.badge,
+  });
+
+  /// Asset name: `assets/courses/<id>.json` or `assets/exams/<id>.json`.
+  final String id;
+  final TrackKind kind;
+  final String title;
+  final String subtitle;
+  final String emoji;
+
+  /// Short label such as "MESLEK" or "SINAV".
+  final String? badge;
+}
+
+const defaultTrackId = 'tr_en';
+
+const courseCatalog = [
+  Track(
+    id: 'tr_en',
+    kind: TrackKind.course,
+    title: 'Genel İngilizce',
+    subtitle: 'A1–A2, günlük hayat',
+    emoji: '🇬🇧',
+  ),
+  Track(
+    id: 'pro_tourism',
+    kind: TrackKind.course,
+    title: 'Turizm İngilizcesi',
+    subtitle: 'Resepsiyon, restoran, rehberlik',
+    emoji: '🏨',
+    badge: 'MESLEK',
+  ),
+  Track(
+    id: 'pro_interview',
+    kind: TrackKind.course,
+    title: 'İş Görüşmesi İngilizcesi',
+    subtitle: 'Kendini anlat, soruları yanıtla',
+    emoji: '💼',
+    badge: 'MESLEK',
+  ),
+];
+
+const examCatalog = [
+  Track(
+    id: 'yds',
+    kind: TrackKind.exam,
+    title: 'YDS / YÖKDİL',
+    subtitle: 'Kelime, dil bilgisi, okuma',
+    emoji: '🎓',
+    badge: 'SINAV',
+  ),
+  Track(
+    id: 'lgs',
+    kind: TrackKind.exam,
+    title: 'LGS İngilizce',
+    subtitle: '8. sınıf konuları',
+    emoji: '📝',
+    badge: 'SINAV',
+  ),
+];
+
+/// The user's own Notion notes, turned into study material.
+const notesTrack = Track(
+  id: 'notes',
+  kind: TrackKind.notes,
+  title: 'Notlarım',
+  subtitle: "Notion'daki kendi notların: sözlük, gramer, günlük",
+  emoji: '📒',
+  badge: 'KİŞİSEL',
+);
+
+const allTracks = [...courseCatalog, ...examCatalog, notesTrack];
+
+Track trackById(String id) => allTracks.firstWhere((t) => t.id == id, orElse: () => allTracks.first);

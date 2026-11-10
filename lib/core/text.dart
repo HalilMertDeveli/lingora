@@ -19,3 +19,6 @@ double spokenSimilarity(String target, String heard) {
   if (want.isEmpty) return 0;
   return want.where(got.contains).length / want.length;
 }
+
+/// Uppercase that keeps Turkish dotted/dotless i correct ("bilgi" → "BİLGİ").
+String trUpper(String s) => s.replaceAll('i', 'İ').replaceAll('ı', 'I').toUpperCase();

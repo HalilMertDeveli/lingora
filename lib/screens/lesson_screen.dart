@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
 import '../exercises/common.dart';
@@ -12,27 +15,55 @@ import '../exercises/speak_exercise.dart';
 import '../exercises/translate_exercise.dart';
 import '../models/course.dart';
 import '../theme.dart';
+import '../ui/mascot.dart';
+import '../ui/motion.dart';
 import 'lesson_result_screen.dart';
-import 'path_screen.dart' show formatWait;
 
 const baseLessonXp = 10;
 const perfectBonusXp = 5;
 
-const _praise = ['Harika!', 'Süper!', 'Doğru!', 'Çok iyi!', 'Mükemmel!'];
+const _praise = ['Harika!', 'Süper!', 'Doğru!', 'Çok iyi!', 'Mükemmel!', 'Tam isabet!'];
 
-/// Runs one lesson: shows exercises in order, re-queues wrong answers at the
-/// end, costs a heart per mistake and awards XP when every exercise is solved.
+/// Runs a lesson, unit test or mistakes review.
+///
+/// * lesson: wrong answers come back at the end (no hearts, no penalty).
+/// * test: one try per question, pass with [testPassPercent].
+/// * practice: wrong answers come back, correct ones clear the
+///   saved mistake.
 class LessonScreen extends ConsumerStatefulWidget {
-  const LessonScreen({super.key, required this.node, required this.color});
-  final PathNode node;
+  const LessonScreen({
+    super.key,
+    required this.nodeId,
+    required this.title,
+    required this.items,
+    required this.color,
+    this.mode = LessonMode.lesson,
+    this.rewardXp = 0,
+    this.retry,
+  });
+
+  /// Lesson for a path node.
+  factory LessonScreen.forNode(PathNode node, Color color) =>
+      LessonScreen(nodeId: node.id, title: node.title, items: lessonItems(node), color: color);
+
+  final String nodeId;
+  final String title;
+  final List<LessonItem> items;
   final Color color;
+  final LessonMode mode;
+
+  /// XP for passing a test.
+  final int rewardXp;
+
+  /// Builds a fresh attempt (tests reshuffle their questions).
+  final LessonScreen Function()? retry;
 
   @override
   ConsumerState<LessonScreen> createState() => _LessonScreenState();
 }
 
 class _LessonScreenState extends ConsumerState<LessonScreen> {
-  late final List<Exercise> _queue = [...widget.node.exercises];
+  late final List<LessonItem> _queue = [...widget.items];
   late final int _total = _queue.length;
   final _started = DateTime.now();
 
@@ -40,22 +71,29 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   int _solved = 0;
   int _answered = 0;
   int _mistakes = 0;
+  int _combo = 0;
+  int _bestCombo = 0;
+  int _shake = 0;
   final Map<QuestMetric, int> _questStats = {};
   Grader? _grader;
 
   /// null while answering; true/false after "Kontrol et".
   bool? _lastCorrect;
 
-  Exercise get _current => _queue[_pos];
+  LessonItem get _current => _queue[_pos];
+  bool get _requeues => widget.mode != LessonMode.test;
 
   void _check() {
     final correct = _grader!.call();
+    final notifier = ref.read(progressProvider.notifier);
     setState(() {
       _answered++;
       _lastCorrect = correct;
       if (correct) {
         _solved++;
-        final metric = switch (_current.type) {
+        _combo++;
+        if (_combo > _bestCombo) _bestCombo = _combo;
+        final metric = switch (_current.ex.type) {
           ExerciseType.listen => QuestMetric.listen,
           ExerciseType.translate => QuestMetric.translate,
           ExerciseType.match => QuestMetric.match,
@@ -64,10 +102,22 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         if (metric != null) _questStats[metric] = (_questStats[metric] ?? 0) + 1;
       } else {
         _mistakes++;
-        _queue.add(_current);
+        _combo = 0;
+        _shake++;
+        if (_requeues) {
+          _queue.add(_current);
+        } else {
+          _solved++; // a test moves on regardless
+        }
       }
     });
-    if (!correct) ref.read(progressProvider.notifier).loseHeart();
+    if (correct) {
+      Haptics.success();
+      if (widget.mode == LessonMode.practice) notifier.clearMistake(_current.key);
+    } else {
+      Haptics.error();
+      notifier.addMistake(_current.key);
+    }
   }
 
   void _skip() {
@@ -75,17 +125,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     _advance();
   }
 
-  Future<void> _continue() async {
-    if (_lastCorrect == false) {
-      final now = ref.read(clockProvider)();
-      final p = ref.read(progressProvider);
-      if (p.heartsAt(now) == 0) {
-        await _outOfHearts(p.nextHeartIn(now));
-        return;
-      }
-    }
-    _advance();
-  }
+  void _continue() => _advance();
 
   void _advance() {
     if (_pos + 1 >= _queue.length) {
@@ -99,50 +139,70 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     });
   }
 
-  void _finish() {
-    final xp = baseLessonXp + (_mistakes == 0 ? perfectBonusXp : 0);
-    final reward = ref.read(progressProvider.notifier).completeNode(
-          widget.node.id,
-          xp: xp,
-          correct: _answered - _mistakes,
-          answered: _answered,
-          perfect: _mistakes == 0,
-          stats: _questStats,
-        );
-    Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
-      builder: (_) => LessonResultScreen(
-        reward: reward,
-        accuracy: _answered == 0 ? 100 : ((_answered - _mistakes) * 100 / _answered).round(),
-        duration: DateTime.now().difference(_started),
-        perfect: _mistakes == 0,
-      ),
-    ));
-  }
+  int get _accuracy => _answered == 0 ? 100 : ((_answered - _mistakes) * 100 / _answered).round();
 
-  Future<void> _outOfHearts(Duration? wait) async {
-    await showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      builder: (c) => AlertDialog(
-        title: const Text('💔 Canın bitti', textAlign: TextAlign.center),
-        content: Text(
-          wait == null
-              ? 'Biraz ara ver ve tekrar dene.'
-              : 'Yeni can ${formatWait(wait)} sonra dolacak. Bu ders kaydedilmedi.',
-          textAlign: TextAlign.center,
+  void _finish() {
+    final notifier = ref.read(progressProvider.notifier);
+    final nav = Navigator.of(context);
+    final perfect = _mistakes == 0;
+
+    if (widget.mode == LessonMode.test && _accuracy < testPassPercent) {
+      nav.pushReplacement(
+        MaterialPageRoute<void>(
+          builder: (_) => TestFailedScreen(
+            accuracy: _accuracy,
+            onRetry: widget.retry == null
+                ? null
+                : () => nav.pushReplacement(
+                    MaterialPageRoute<void>(builder: (_) => widget.retry!(), fullscreenDialog: true),
+                  ),
+          ),
         ),
-        actions: [FilledButton(onPressed: () => Navigator.pop(c), child: const Text('Tamam'))],
+      );
+      return;
+    }
+
+    final xp = switch (widget.mode) {
+      LessonMode.lesson => baseLessonXp + (perfect ? perfectBonusXp : 0),
+      LessonMode.test => widget.rewardXp + (perfect ? perfectBonusXp : 0),
+      LessonMode.practice => practiceXp,
+    };
+    final reward = notifier.completeNode(
+      widget.nodeId,
+      xp: xp,
+      correct: _answered - _mistakes,
+      answered: _answered,
+      perfect: perfect,
+      stats: _questStats,
+    );
+    nav.pushReplacement(
+      MaterialPageRoute<void>(
+        builder: (_) => LessonResultScreen(
+          reward: reward,
+          accuracy: _accuracy,
+          duration: DateTime.now().difference(_started),
+          perfect: perfect,
+          bestCombo: _bestCombo,
+          headline: switch (widget.mode) {
+            LessonMode.test => 'Ünite sınavını geçtin!',
+            LessonMode.practice => 'Tekrar tamamlandı!',
+            LessonMode.lesson => null,
+          },
+        ),
       ),
     );
-    if (mounted) Navigator.of(context).pop();
   }
 
   Future<void> _confirmQuit() async {
     final quit = await showDialog<bool>(
       context: context,
       builder: (c) => AlertDialog(
-        title: const Text('Dersten çıkılsın mı?'),
-        content: const Text('Bu dersteki ilerlemen kaydedilmeyecek.'),
+        icon: const Mascot(mood: Mood.sad, size: 88),
+        title: const Text('Gitme, az kaldı!', textAlign: TextAlign.center),
+        content: const Text(
+          'Şimdi çıkarsan bu dersteki ilerlemen kaydedilmeyecek.',
+          textAlign: TextAlign.center,
+        ),
         actions: [
           TextButton(onPressed: () => Navigator.pop(c, true), child: const Text('Çık')),
           FilledButton(onPressed: () => Navigator.pop(c, false), child: const Text('Devam et')),
@@ -153,7 +213,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   }
 
   Widget _exercise() {
-    final ex = _current;
+    final ex = _current.ex;
     final locked = _lastCorrect != null;
     void onReady(Grader? g) => setState(() => _grader = g);
     // Key by position so a re-queued exercise starts fresh.
@@ -164,14 +224,73 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       ExerciseType.fillBlank => FillBlankExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.listen => ListenExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.match => MatchExercise(key: key, ex: ex, locked: locked, onReady: onReady),
-      ExerciseType.speak =>
-        SpeakExercise(key: key, ex: ex, locked: locked, onReady: onReady, onSkip: _skip),
+      ExerciseType.speak => SpeakExercise(key: key, ex: ex, locked: locked, onReady: onReady, onSkip: _skip),
     };
+  }
+
+  Widget _header() {
+    final Widget badge = switch (widget.mode) {
+      LessonMode.lesson => Text(
+        '${min(_solved, _total)}/$_total',
+        style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w800, fontSize: 15),
+      ),
+      LessonMode.test => const Icon(Icons.workspace_premium_rounded, color: Brand.accent, size: 28),
+      LessonMode.practice => const Icon(Icons.fitness_center_rounded, color: Brand.primary, size: 26),
+    };
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(4, 8, 16, 0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.close, color: Brand.muted),
+                onPressed: _confirmQuit,
+              ),
+              Expanded(
+                child: GlossyProgress(value: _solved / _total, color: widget.color),
+              ),
+              const SizedBox(width: 14),
+              badge,
+            ],
+          ),
+          SizedBox(
+            height: 26,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: _combo >= 3
+                  ? PopIn(
+                      key: ValueKey(_combo),
+                      child: Text(
+                        '🔥 $_combo DOĞRU ÜST ÜSTE',
+                        style: const TextStyle(
+                          color: Brand.streak,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 13,
+                          letterSpacing: 0.8,
+                        ),
+                      ),
+                    )
+                  : (widget.mode != LessonMode.lesson
+                        ? Text(
+                            widget.mode == LessonMode.test ? 'ÜNİTE SINAVI' : 'HATALARINI ÇALIŞ',
+                            style: const TextStyle(
+                              color: Brand.muted,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 12,
+                              letterSpacing: 1,
+                            ),
+                          )
+                        : const SizedBox.shrink()),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final hearts = ref.watch(progressProvider).heartsAt(ref.watch(clockProvider)());
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
@@ -181,47 +300,48 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         body: SafeArea(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(4, 8, 16, 8),
-                child: Row(
-                  children: [
-                    IconButton(icon: const Icon(Icons.close, color: Brand.muted), onPressed: _confirmQuit),
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: TweenAnimationBuilder<double>(
-                          tween: Tween(end: _solved / _total),
-                          duration: const Duration(milliseconds: 300),
-                          builder: (_, v, _) => LinearProgressIndicator(
-                            value: v,
-                            minHeight: 14,
-                            color: widget.color,
-                            backgroundColor: Brand.line,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 14),
-                    const Icon(Icons.favorite, color: Brand.heart),
-                    const SizedBox(width: 4),
-                    Text('$hearts',
-                        style: const TextStyle(color: Brand.heart, fontWeight: FontWeight.w800, fontSize: 16)),
-                  ],
-                ),
-              ),
+              _header(),
               Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
-                  child: _exercise(),
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 320),
+                  switchInCurve: Curves.easeOutCubic,
+                  switchOutCurve: Curves.easeInCubic,
+                  layoutBuilder: (current, previous) =>
+                      Stack(alignment: Alignment.topCenter, children: [...previous, ?current]),
+                  transitionBuilder: (child, anim) {
+                    final incoming = child.key == ValueKey(_pos);
+                    final slide = Tween(
+                      begin: Offset(incoming ? 0.25 : -0.25, 0),
+                      end: Offset.zero,
+                    ).animate(anim);
+                    return FadeTransition(
+                      opacity: anim,
+                      child: SlideTransition(position: slide, child: child),
+                    );
+                  },
+                  child: SingleChildScrollView(
+                    key: ValueKey(_pos),
+                    padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
+                    child: Shake(trigger: _shake, child: _exercise()),
+                  ),
                 ),
               ),
-              _BottomPanel(
-                correct: _lastCorrect,
-                answer: _current.displayAnswer,
-                praise: _praise[_answered % _praise.length],
-                canCheck: _grader != null,
-                onCheck: _check,
-                onContinue: _continue,
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 260),
+                switchInCurve: Curves.easeOutCubic,
+                transitionBuilder: (child, anim) => SlideTransition(
+                  position: Tween(begin: const Offset(0, 1), end: Offset.zero).animate(anim),
+                  child: child,
+                ),
+                child: _lastCorrect == null
+                    ? _CheckBar(key: const ValueKey('check'), enabled: _grader != null, onCheck: _check)
+                    : _FeedbackPanel(
+                        key: ValueKey('fb$_answered'),
+                        correct: _lastCorrect!,
+                        answer: _current.ex.displayAnswer,
+                        praise: _combo >= 3 ? '$_combo doğru üst üste!' : _praise[_answered % _praise.length],
+                        onContinue: _continue,
+                      ),
               ),
             ],
           ),
@@ -231,63 +351,76 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   }
 }
 
-class _BottomPanel extends StatelessWidget {
-  const _BottomPanel({
+class _CheckBar extends StatelessWidget {
+  const _CheckBar({super.key, required this.enabled, required this.onCheck});
+  final bool enabled;
+  final VoidCallback onCheck;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
+    decoration: const BoxDecoration(
+      color: Colors.white,
+      border: Border(top: BorderSide(color: Brand.line, width: 2)),
+    ),
+    child: PressableButton(label: 'KONTROL ET', color: Brand.success, onPressed: enabled ? onCheck : null),
+  );
+}
+
+class _FeedbackPanel extends StatelessWidget {
+  const _FeedbackPanel({
+    super.key,
     required this.correct,
     required this.answer,
     required this.praise,
-    required this.canCheck,
-    required this.onCheck,
     required this.onContinue,
   });
 
-  final bool? correct;
+  final bool correct;
   final String answer;
   final String praise;
-  final bool canCheck;
-  final VoidCallback onCheck;
   final VoidCallback onContinue;
 
   @override
   Widget build(BuildContext context) {
-    if (correct == null) {
-      return Container(
-        padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
-        decoration: const BoxDecoration(border: Border(top: BorderSide(color: Brand.line, width: 2))),
-        child: FilledButton(
-          onPressed: canCheck ? onCheck : null,
-          child: const Text('KONTROL ET'),
-        ),
-      );
-    }
-    final ok = correct!;
+    final ok = correct;
     final fg = ok ? Brand.success : Brand.error;
     return Container(
       width: double.infinity,
       color: ok ? Brand.successBg : Brand.errorBg,
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+      padding: const EdgeInsets.fromLTRB(20, 14, 20, 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(ok ? Icons.check_circle_rounded : Icons.cancel_rounded, color: fg, size: 30),
+              PopIn(child: Icon(ok ? Icons.check_circle_rounded : Icons.cancel_rounded, color: fg, size: 30)),
               const SizedBox(width: 10),
-              Text(ok ? praise : 'Doğru cevap:',
-                  style: TextStyle(color: fg, fontSize: 20, fontWeight: FontWeight.w900)),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      ok ? praise : 'Doğru cevap:',
+                      style: TextStyle(color: fg, fontSize: 20, fontWeight: FontWeight.w900),
+                    ),
+                    if (!ok && answer.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Text(
+                          answer,
+                          style: TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+              Mascot(mood: ok ? Mood.happy : Mood.sad, size: 64),
             ],
           ),
-          if (!ok && answer.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(top: 6, left: 40),
-              child: Text(answer, style: TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w600)),
-            ),
-          const SizedBox(height: 14),
-          FilledButton(
-            style: FilledButton.styleFrom(backgroundColor: fg),
-            onPressed: onContinue,
-            child: const Text('DEVAM'),
-          ),
+          const SizedBox(height: 10),
+          PressableButton(label: 'DEVAM', color: fg, onPressed: onContinue),
         ],
       ),
     );

@@ -4,11 +4,11 @@ import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'catalog.dart';
 import 'league.dart';
 import 'quests.dart';
 
-const maxHearts = 5;
-const heartRefill = Duration(minutes: 30);
+const maxMistakes = 40;
 
 /// Daily counters older than this are dropped when saving.
 const _keepDays = 8;
@@ -24,8 +24,6 @@ class Progress {
     this.streak = 0,
     this.lastActiveDay,
     this.xpByDay = const {},
-    this.hearts = maxHearts,
-    this.heartsSinceMs = 0,
     this.completed = const {},
     this.lessonsDone = 0,
     this.correct = 0,
@@ -37,8 +35,35 @@ class Progress {
     this.leagueResult,
     this.remindersEnabled,
     this.reminderMinutes = 19 * 60,
-    this.heartAlerts = true,
+    this.mistakes = const [],
+    this.trackId = defaultTrackId,
+    this.examBest = const {},
+    this.wordBox = const {},
+    this.wordDue = const {},
+    this.diary = const {},
+    this.goalsDone = const [],
   });
+
+  /// Selected course or exam (see catalog.dart).
+  final String trackId;
+
+  /// Best mini mock exam score (percent) per exam id.
+  final Map<String, int> examBest;
+
+  /// Spaced repetition box (0–5) per personal-dictionary word id.
+  final Map<String, int> wordBox;
+
+  /// Day key when each word is due again.
+  final Map<String, String> wordDue;
+
+  /// English diary: day key → text.
+  final Map<String, String> diary;
+
+  /// Personal goals ticked off.
+  final List<String> goalsDone;
+
+  /// Exercises answered wrong, as "nodeId#index", oldest first.
+  final List<String> mistakes;
 
   final bool onboarded;
   final int dailyGoal;
@@ -48,11 +73,6 @@ class Progress {
 
   /// All XP earned per day (lessons, chests and quest rewards).
   final Map<String, int> xpByDay;
-
-  /// Stored heart count; the real count also depends on time passed
-  /// since [heartsSinceMs] (see [heartsAt]).
-  final int hearts;
-  final int heartsSinceMs;
 
   /// Node id -> times completed.
   final Map<String, int> completed;
@@ -81,23 +101,6 @@ class Progress {
   /// Reminder time as minutes after midnight.
   final int reminderMinutes;
 
-  /// Notify when all hearts have refilled.
-  final bool heartAlerts;
-
-  int heartsAt(DateTime now) {
-    if (hearts >= maxHearts) return maxHearts;
-    final passed = now.millisecondsSinceEpoch - heartsSinceMs;
-    return min(maxHearts, hearts + passed ~/ heartRefill.inMilliseconds);
-  }
-
-  /// Time until the next heart, or null when full.
-  Duration? nextHeartIn(DateTime now) {
-    if (heartsAt(now) >= maxHearts) return null;
-    final passed = now.millisecondsSinceEpoch - heartsSinceMs;
-    final ms = heartRefill.inMilliseconds - passed % heartRefill.inMilliseconds;
-    return Duration(milliseconds: ms);
-  }
-
   /// Streak as shown today: it is lost once a whole day is skipped.
   int streakAt(DateTime now) {
     final today = dayKey(now);
@@ -116,11 +119,9 @@ class Progress {
     return sum;
   }
 
-  int counter(DateTime day, QuestMetric metric) =>
-      counters['${dayKey(day)}:${metric.name}'] ?? 0;
+  int counter(DateTime day, QuestMetric metric) => counters['${dayKey(day)}:${metric.name}'] ?? 0;
 
-  bool isClaimed(DateTime day, String questId) =>
-      claimed.contains('${dayKey(day)}:$questId');
+  bool isClaimed(DateTime day, String questId) => claimed.contains('${dayKey(day)}:$questId');
 
   bool isDone(String nodeId) => (completed[nodeId] ?? 0) > 0;
 
@@ -131,8 +132,6 @@ class Progress {
     int? streak,
     String? lastActiveDay,
     Map<String, int>? xpByDay,
-    int? hearts,
-    int? heartsSinceMs,
     Map<String, int>? completed,
     int? lessonsDone,
     int? correct,
@@ -145,78 +144,95 @@ class Progress {
     bool clearLeagueResult = false,
     bool? remindersEnabled,
     int? reminderMinutes,
-    bool? heartAlerts,
-  }) =>
-      Progress(
-        onboarded: onboarded ?? this.onboarded,
-        dailyGoal: dailyGoal ?? this.dailyGoal,
-        totalXp: totalXp ?? this.totalXp,
-        streak: streak ?? this.streak,
-        lastActiveDay: lastActiveDay ?? this.lastActiveDay,
-        xpByDay: xpByDay ?? this.xpByDay,
-        hearts: hearts ?? this.hearts,
-        heartsSinceMs: heartsSinceMs ?? this.heartsSinceMs,
-        completed: completed ?? this.completed,
-        lessonsDone: lessonsDone ?? this.lessonsDone,
-        correct: correct ?? this.correct,
-        answered: answered ?? this.answered,
-        counters: counters ?? this.counters,
-        claimed: claimed ?? this.claimed,
-        leagueTier: leagueTier ?? this.leagueTier,
-        leagueWeek: leagueWeek ?? this.leagueWeek,
-        leagueResult: clearLeagueResult ? null : (leagueResult ?? this.leagueResult),
-        remindersEnabled: remindersEnabled ?? this.remindersEnabled,
-        reminderMinutes: reminderMinutes ?? this.reminderMinutes,
-        heartAlerts: heartAlerts ?? this.heartAlerts,
-      );
+    List<String>? mistakes,
+    String? trackId,
+    Map<String, int>? examBest,
+    Map<String, int>? wordBox,
+    Map<String, String>? wordDue,
+    Map<String, String>? diary,
+    List<String>? goalsDone,
+  }) => Progress(
+    onboarded: onboarded ?? this.onboarded,
+    dailyGoal: dailyGoal ?? this.dailyGoal,
+    totalXp: totalXp ?? this.totalXp,
+    streak: streak ?? this.streak,
+    lastActiveDay: lastActiveDay ?? this.lastActiveDay,
+    xpByDay: xpByDay ?? this.xpByDay,
+    completed: completed ?? this.completed,
+    lessonsDone: lessonsDone ?? this.lessonsDone,
+    correct: correct ?? this.correct,
+    answered: answered ?? this.answered,
+    counters: counters ?? this.counters,
+    claimed: claimed ?? this.claimed,
+    leagueTier: leagueTier ?? this.leagueTier,
+    leagueWeek: leagueWeek ?? this.leagueWeek,
+    leagueResult: clearLeagueResult ? null : (leagueResult ?? this.leagueResult),
+    remindersEnabled: remindersEnabled ?? this.remindersEnabled,
+    reminderMinutes: reminderMinutes ?? this.reminderMinutes,
+    mistakes: mistakes ?? this.mistakes,
+    trackId: trackId ?? this.trackId,
+    examBest: examBest ?? this.examBest,
+    wordBox: wordBox ?? this.wordBox,
+    wordDue: wordDue ?? this.wordDue,
+    diary: diary ?? this.diary,
+    goalsDone: goalsDone ?? this.goalsDone,
+  );
 
   Map<String, dynamic> toJson() => {
-        'onboarded': onboarded,
-        'dailyGoal': dailyGoal,
-        'totalXp': totalXp,
-        'streak': streak,
-        'lastActiveDay': lastActiveDay,
-        'xpByDay': xpByDay,
-        'hearts': hearts,
-        'heartsSinceMs': heartsSinceMs,
-        'completed': completed,
-        'lessonsDone': lessonsDone,
-        'correct': correct,
-        'answered': answered,
-        'counters': counters,
-        'claimed': claimed,
-        'leagueTier': leagueTier,
-        'leagueWeek': leagueWeek,
-        'leagueResult': leagueResult?.toJson(),
-        'remindersEnabled': remindersEnabled,
-        'reminderMinutes': reminderMinutes,
-        'heartAlerts': heartAlerts,
-      };
+    'onboarded': onboarded,
+    'dailyGoal': dailyGoal,
+    'totalXp': totalXp,
+    'streak': streak,
+    'lastActiveDay': lastActiveDay,
+    'xpByDay': xpByDay,
+    'completed': completed,
+    'lessonsDone': lessonsDone,
+    'correct': correct,
+    'answered': answered,
+    'counters': counters,
+    'claimed': claimed,
+    'leagueTier': leagueTier,
+    'leagueWeek': leagueWeek,
+    'leagueResult': leagueResult?.toJson(),
+    'remindersEnabled': remindersEnabled,
+    'reminderMinutes': reminderMinutes,
+    'mistakes': mistakes,
+    'trackId': trackId,
+    'examBest': examBest,
+    'wordBox': wordBox,
+    'wordDue': wordDue,
+    'diary': diary,
+    'goalsDone': goalsDone,
+  };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
-        onboarded: j['onboarded'] as bool? ?? false,
-        dailyGoal: j['dailyGoal'] as int? ?? 20,
-        totalXp: j['totalXp'] as int? ?? 0,
-        streak: j['streak'] as int? ?? 0,
-        lastActiveDay: j['lastActiveDay'] as String?,
-        xpByDay: (j['xpByDay'] as Map?)?.cast<String, int>() ?? const {},
-        hearts: j['hearts'] as int? ?? maxHearts,
-        heartsSinceMs: j['heartsSinceMs'] as int? ?? 0,
-        completed: (j['completed'] as Map?)?.cast<String, int>() ?? const {},
-        lessonsDone: j['lessonsDone'] as int? ?? 0,
-        correct: j['correct'] as int? ?? 0,
-        answered: j['answered'] as int? ?? 0,
-        counters: (j['counters'] as Map?)?.cast<String, int>() ?? const {},
-        claimed: (j['claimed'] as List?)?.cast<String>() ?? const [],
-        leagueTier: j['leagueTier'] as int? ?? 0,
-        leagueWeek: j['leagueWeek'] as String?,
-        leagueResult: j['leagueResult'] == null
-            ? null
-            : LeagueResult.fromJson(j['leagueResult'] as Map<String, dynamic>),
-        remindersEnabled: j['remindersEnabled'] as bool?,
-        reminderMinutes: j['reminderMinutes'] as int? ?? 19 * 60,
-        heartAlerts: j['heartAlerts'] as bool? ?? true,
-      );
+    onboarded: j['onboarded'] as bool? ?? false,
+    dailyGoal: j['dailyGoal'] as int? ?? 20,
+    totalXp: j['totalXp'] as int? ?? 0,
+    streak: j['streak'] as int? ?? 0,
+    lastActiveDay: j['lastActiveDay'] as String?,
+    xpByDay: (j['xpByDay'] as Map?)?.cast<String, int>() ?? const {},
+    completed: (j['completed'] as Map?)?.cast<String, int>() ?? const {},
+    lessonsDone: j['lessonsDone'] as int? ?? 0,
+    correct: j['correct'] as int? ?? 0,
+    answered: j['answered'] as int? ?? 0,
+    counters: (j['counters'] as Map?)?.cast<String, int>() ?? const {},
+    claimed: (j['claimed'] as List?)?.cast<String>() ?? const [],
+    leagueTier: j['leagueTier'] as int? ?? 0,
+    leagueWeek: j['leagueWeek'] as String?,
+    leagueResult: j['leagueResult'] == null
+        ? null
+        : LeagueResult.fromJson(j['leagueResult'] as Map<String, dynamic>),
+    remindersEnabled: j['remindersEnabled'] as bool?,
+    reminderMinutes: j['reminderMinutes'] as int? ?? 19 * 60,
+    mistakes: (j['mistakes'] as List?)?.cast<String>() ?? const [],
+    trackId: j['trackId'] as String? ?? defaultTrackId,
+    examBest: (j['examBest'] as Map?)?.cast<String, int>() ?? const {},
+    wordBox: (j['wordBox'] as Map?)?.cast<String, int>() ?? const {},
+    wordDue: (j['wordDue'] as Map?)?.cast<String, String>() ?? const {},
+    diary: (j['diary'] as Map?)?.cast<String, String>() ?? const {},
+    goalsDone: (j['goalsDone'] as List?)?.cast<String>() ?? const [],
+  );
 }
 
 /// Result of finishing a lesson, used by the result screen.
@@ -272,30 +288,18 @@ class ProgressNotifier extends Notifier<Progress> {
         for (final e in p.counters.entries)
           if (recent(e.key)) e.key: e.value,
       },
-      claimed: [for (final c in p.claimed) if (recent(c)) c],
+      claimed: [
+        for (final c in p.claimed)
+          if (recent(c)) c,
+      ],
     );
     state = pruned;
     _prefs.setString(_key, jsonEncode(pruned.toJson()));
   }
 
-  void finishOnboarding(int dailyGoal) =>
-      _save(state.copyWith(onboarded: true, dailyGoal: dailyGoal));
+  void finishOnboarding(int dailyGoal) => _save(state.copyWith(onboarded: true, dailyGoal: dailyGoal));
 
   void setDailyGoal(int goal) => _save(state.copyWith(dailyGoal: goal));
-
-  /// Removes one heart; returns how many are left.
-  int loseHeart() {
-    final now = _now();
-    final current = state.heartsAt(now);
-    if (current <= 0) return 0;
-    // Keep the refill timer running if it already was; start it otherwise.
-    final since = current >= maxHearts
-        ? now.millisecondsSinceEpoch
-        : state.heartsSinceMs +
-            (current - state.hearts) * heartRefill.inMilliseconds;
-    _save(state.copyWith(hearts: current - 1, heartsSinceMs: since));
-    return current - 1;
-  }
 
   /// Records a finished lesson or chest. [stats] counts correct answers per
   /// quest metric (e.g. listening exercises) for daily quests.
@@ -328,17 +332,19 @@ class ProgressNotifier extends Notifier<Progress> {
     if (isLesson && perfect) bump(QuestMetric.perfectLessons, 1);
     stats.forEach(bump);
 
-    _save(state.copyWith(
-      totalXp: state.totalXp + xp,
-      streak: newStreak,
-      lastActiveDay: today,
-      xpByDay: {...state.xpByDay, today: todayXp},
-      completed: {...state.completed, nodeId: (state.completed[nodeId] ?? 0) + 1},
-      lessonsDone: state.lessonsDone + (isLesson ? 1 : 0),
-      correct: state.correct + correct,
-      answered: state.answered + answered,
-      counters: counters,
-    ));
+    _save(
+      state.copyWith(
+        totalXp: state.totalXp + xp,
+        streak: newStreak,
+        lastActiveDay: today,
+        xpByDay: {...state.xpByDay, today: todayXp},
+        completed: {...state.completed, nodeId: (state.completed[nodeId] ?? 0) + 1},
+        lessonsDone: state.lessonsDone + (isLesson ? 1 : 0),
+        correct: state.correct + correct,
+        answered: state.answered + answered,
+        counters: counters,
+      ),
+    );
 
     final quests = questsForDay(now);
     return LessonReward(
@@ -360,11 +366,13 @@ class ProgressNotifier extends Notifier<Progress> {
     final now = _now();
     if (!quest.isComplete(state, now) || state.isClaimed(now, quest.id)) return false;
     final today = dayKey(now);
-    _save(state.copyWith(
-      totalXp: state.totalXp + quest.rewardXp,
-      xpByDay: {...state.xpByDay, today: (state.xpByDay[today] ?? 0) + quest.rewardXp},
-      claimed: [...state.claimed, '$today:${quest.id}'],
-    ));
+    _save(
+      state.copyWith(
+        totalXp: state.totalXp + quest.rewardXp,
+        xpByDay: {...state.xpByDay, today: (state.xpByDay[today] ?? 0) + quest.rewardXp},
+        claimed: [...state.claimed, '$today:${quest.id}'],
+      ),
+    );
     return true;
   }
 
@@ -380,28 +388,63 @@ class ProgressNotifier extends Notifier<Progress> {
       return;
     }
     final start = DateTime.parse(week);
-    final result = finishWeek(
-      tier: state.leagueTier,
-      weekStart: start,
-      userXp: state.weekXp(start),
-    );
-    _save(state.copyWith(
-      leagueTier: result.newTier,
-      leagueWeek: current,
-      leagueResult: result,
-    ));
+    final result = finishWeek(tier: state.leagueTier, weekStart: start, userXp: state.weekXp(start));
+    _save(state.copyWith(leagueTier: result.newTier, leagueWeek: current, leagueResult: result));
   }
 
-  void setReminders({bool? enabled, int? minutes, bool? heartAlerts}) => _save(state.copyWith(
-        remindersEnabled: enabled,
-        reminderMinutes: minutes,
-        heartAlerts: heartAlerts,
-      ));
+  void setReminders({bool? enabled, int? minutes}) =>
+      _save(state.copyWith(remindersEnabled: enabled, reminderMinutes: minutes));
+
+  /// Remembers an exercise the user got wrong, for "Hatalarını çalış".
+  void addMistake(String key) {
+    final list = [...state.mistakes.where((k) => k != key), key];
+    _save(
+      state.copyWith(mistakes: list.length > maxMistakes ? list.sublist(list.length - maxMistakes) : list),
+    );
+  }
+
+  /// Forgets a mistake once the user answers it correctly.
+  void clearMistake(String key) {
+    if (state.mistakes.contains(key)) {
+      _save(state.copyWith(mistakes: state.mistakes.where((k) => k != key).toList()));
+    }
+  }
+
+  void setTrack(String id) => _save(state.copyWith(trackId: id));
+
+  /// Keeps the best mock exam score for [examId].
+  void recordExam(String examId, int percent) {
+    if (percent > (state.examBest[examId] ?? -1)) {
+      _save(state.copyWith(examBest: {...state.examBest, examId: percent}));
+    }
+  }
+
+  /// Moves a word up a box when known, back to box 0 when not.
+  void reviewWord(String id, {required bool known}) {
+    final now = _now();
+    final box = known ? min((state.wordBox[id] ?? 0) + 1, reviewIntervals.length - 1) : 0;
+    final due = dayKey(now.add(Duration(days: known ? reviewIntervals[box] : 0)));
+    _save(state.copyWith(wordBox: {...state.wordBox, id: box}, wordDue: {...state.wordDue, id: due}));
+  }
+
+  void saveDiary(String day, String text) {
+    final diary = {...state.diary};
+    text.trim().isEmpty ? diary.remove(day) : diary[day] = text.trim();
+    _save(state.copyWith(diary: diary));
+  }
+
+  void toggleGoal(String goal) {
+    final done = [...state.goalsDone];
+    done.contains(goal) ? done.remove(goal) : done.add(goal);
+    _save(state.copyWith(goalsDone: done));
+  }
 
   void dismissLeagueResult() => _save(state.copyWith(clearLeagueResult: true));
 
   void reset() => _save(const Progress(onboarded: true));
 }
 
-final progressProvider =
-    NotifierProvider<ProgressNotifier, Progress>(ProgressNotifier.new);
+final progressProvider = NotifierProvider<ProgressNotifier, Progress>(ProgressNotifier.new);
+
+/// Days until a word comes back, per spaced-repetition box.
+const reviewIntervals = [0, 1, 3, 7, 14, 30];

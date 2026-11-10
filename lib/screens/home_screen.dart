@@ -1,12 +1,15 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/catalog.dart';
+import '../data/course_repository.dart';
 import '../data/progress.dart';
 import '../services/notifications.dart';
 import '../theme.dart';
+import 'conversation_screen.dart';
+import 'exam_screen.dart';
 import 'league_screen.dart';
+import 'notes_screen.dart';
 import 'path_screen.dart';
 import 'profile_screen.dart';
 import 'quests_screen.dart';
@@ -26,12 +29,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) => _settleLeague());
     // Keep scheduled reminders in sync with progress (e.g. skip today's
-    // reminder once a lesson is done, re-plan hearts-full alerts).
+    // reminder once a lesson is done).
     ref.listenManual<Progress>(
       progressProvider,
-      (_, next) => ref
-          .read(notificationServiceProvider)
-          .apply(planNotifications(next, ref.read(clockProvider)())),
+      (_, next) =>
+          ref.read(notificationServiceProvider).apply(planNotifications(next, ref.read(clockProvider)())),
       fireImmediately: true,
     );
   }
@@ -48,9 +50,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final claimable = ref.watch(claimableQuestsProvider);
+    final track = ref.watch(trackProvider);
     return Scaffold(
       appBar: AppBar(
-        titleSpacing: 16,
+        titleSpacing: 12,
         title: const StatsBar(),
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(1),
@@ -59,14 +62,32 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       body: IndexedStack(
         index: _tab,
-        children: const [PathScreen(), QuestsScreen(), LeagueScreen(), ProfileScreen()],
+        children: [
+          switch (track.kind) {
+            TrackKind.exam => ExamHomeScreen(key: ValueKey(track.id), examId: track.id),
+            TrackKind.notes => const NotesHomeScreen(),
+            TrackKind.course => const PathScreen(),
+          },
+          const ConversationHomeScreen(),
+          const QuestsScreen(),
+          const LeagueScreen(),
+          const ProfileScreen(),
+        ],
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _tab,
         onDestinationSelected: (i) => setState(() => _tab = i),
         destinations: [
           const NavigationDestination(
-              icon: Icon(Icons.route_outlined), selectedIcon: Icon(Icons.route), label: 'Öğren'),
+            icon: Icon(Icons.route_outlined),
+            selectedIcon: Icon(Icons.route),
+            label: 'Öğren',
+          ),
+          const NavigationDestination(
+            icon: Icon(Icons.forum_outlined),
+            selectedIcon: Icon(Icons.forum),
+            label: 'Konuş',
+          ),
           NavigationDestination(
             icon: Badge(
               isLabelVisible: claimable > 0,
@@ -77,54 +98,154 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             label: 'Görevler',
           ),
           const NavigationDestination(
-              icon: Icon(Icons.emoji_events_outlined), selectedIcon: Icon(Icons.emoji_events), label: 'Lig'),
+            icon: Icon(Icons.emoji_events_outlined),
+            selectedIcon: Icon(Icons.emoji_events),
+            label: 'Lig',
+          ),
           const NavigationDestination(
-              icon: Icon(Icons.person_outline), selectedIcon: Icon(Icons.person), label: 'Profil'),
+            icon: Icon(Icons.person_outline),
+            selectedIcon: Icon(Icons.person),
+            label: 'Profil',
+          ),
         ],
       ),
     );
   }
 }
 
-/// Streak, XP and hearts. Refreshes every 30 s so refilled hearts show up.
-class StatsBar extends ConsumerStatefulWidget {
+/// Track switcher plus streak and XP. There are no hearts: mistakes are
+/// never punished in Lingora.
+class StatsBar extends ConsumerWidget {
   const StatsBar({super.key});
 
   @override
-  ConsumerState<StatsBar> createState() => _StatsBarState();
-}
-
-class _StatsBarState extends ConsumerState<StatsBar> {
-  late final Timer _tick;
-
-  @override
-  void initState() {
-    super.initState();
-    _tick = Timer.periodic(const Duration(seconds: 30), (_) => setState(() {}));
-  }
-
-  @override
-  void dispose() {
-    _tick.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final p = ref.watch(progressProvider);
     final now = ref.watch(clockProvider)();
+    final track = ref.watch(trackProvider);
     return Row(
       children: [
-        const Text('🇬🇧', style: TextStyle(fontSize: 24)),
-        const Spacer(),
+        Flexible(
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () => showTrackPicker(context),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(track.emoji, style: const TextStyle(fontSize: 24)),
+                  const SizedBox(width: 6),
+                  Flexible(
+                    child: Text(
+                      track.title,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+                    ),
+                  ),
+                  const Icon(Icons.expand_more_rounded, color: Brand.muted),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
         _Stat(icon: Icons.local_fire_department, color: Brand.streak, value: p.streakAt(now)),
-        const SizedBox(width: 18),
+        const SizedBox(width: 14),
         _Stat(icon: Icons.bolt, color: Brand.xp, value: p.totalXp),
-        const SizedBox(width: 18),
-        _Stat(icon: Icons.favorite, color: Brand.heart, value: p.heartsAt(now)),
       ],
     );
   }
+}
+
+Future<void> showTrackPicker(BuildContext context) => showModalBottomSheet<void>(
+  context: context,
+  showDragHandle: true,
+  isScrollControlled: true,
+  builder: (_) => const _TrackPicker(),
+);
+
+class _TrackPicker extends ConsumerWidget {
+  const _TrackPicker();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final current = ref.watch(trackProvider).id;
+    Widget tile(Track t) => Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: TapCard(
+        selected: t.id == current,
+        onTap: () {
+          ref.read(progressProvider.notifier).setTrack(t.id);
+          Navigator.pop(context);
+        },
+        child: Row(
+          children: [
+            Text(t.emoji, style: const TextStyle(fontSize: 30)),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(t.title, style: Theme.of(context).textTheme.titleMedium),
+                  Text(t.subtitle, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                ],
+              ),
+            ),
+            if (t.badge != null)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  color: Brand.primary.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  t.badge!,
+                  style: const TextStyle(color: Brand.primary, fontSize: 10, fontWeight: FontWeight.w900),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text('Ne çalışmak istersin?', style: Theme.of(context).textTheme.titleLarge),
+            const SizedBox(height: 4),
+            const Text('İlerlemen her kursta ayrı saklanır.', style: TextStyle(color: Brand.muted)),
+            const SizedBox(height: 14),
+            const _SectionLabel('KURSLAR'),
+            for (final t in courseCatalog) tile(t),
+            const SizedBox(height: 8),
+            const _SectionLabel('SINAVLARA HAZIRLIK'),
+            for (final t in examCatalog) tile(t),
+            const SizedBox(height: 8),
+            const _SectionLabel('KENDİ NOTLARIN'),
+            tile(notesTrack),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SectionLabel extends StatelessWidget {
+  const _SectionLabel(this.text);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(bottom: 8),
+    child: Text(
+      text,
+      style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1),
+    ),
+  );
 }
 
 class _Stat extends StatelessWidget {
@@ -135,10 +256,13 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
-        children: [
-          Icon(icon, color: color, size: 24),
-          const SizedBox(width: 4),
-          Text('$value', style: TextStyle(color: color, fontWeight: FontWeight.w800, fontSize: 16)),
-        ],
-      );
+    children: [
+      Icon(icon, color: color, size: 24),
+      const SizedBox(width: 4),
+      Text(
+        '$value',
+        style: TextStyle(color: color, fontWeight: FontWeight.w800, fontSize: 16),
+      ),
+    ],
+  );
 }

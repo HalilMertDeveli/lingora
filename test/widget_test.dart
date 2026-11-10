@@ -40,18 +40,25 @@ Future<void> pumpApp(WidgetTester tester, Map<String, Object> prefs) async {
   SharedPreferences.setMockInitialValues(prefs);
   final p = await SharedPreferences.getInstance();
   await tester.binding.setSurfaceSize(const Size(420, 900));
+  // Reduced motion stops looping animations so pumpAndSettle can finish.
+  tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
+    disableAnimations: true,
+  );
+  addTearDown(tester.platformDispatcher.clearAccessibilityFeaturesTestValue);
   final course = Course.fromJson(
     jsonDecode(File('assets/courses/tr_en.json').readAsStringSync()) as Map<String, dynamic>,
   );
-  await tester.pumpWidget(ProviderScope(
-    overrides: [
-      courseProvider.overrideWith((ref) async => course),
-      prefsProvider.overrideWithValue(p),
-      speechProvider.overrideWithValue(FakeSpeech()),
-      notificationServiceProvider.overrideWithValue(notifications = FakeNotifications()),
-    ],
-    child: const LingoraApp(),
-  ));
+  await tester.pumpWidget(
+    ProviderScope(
+      overrides: [
+        courseProvider.overrideWith((ref) async => course),
+        prefsProvider.overrideWithValue(p),
+        speechProvider.overrideWithValue(FakeSpeech()),
+        notificationServiceProvider.overrideWithValue(notifications = FakeNotifications()),
+      ],
+      child: const LingoraApp(),
+    ),
+  );
   await tester.pumpAndSettle();
 }
 
@@ -80,8 +87,7 @@ void main() {
     await tester.tap(find.text('Aç'));
     await tester.pumpAndSettle();
     expect(find.text('Her gün hatırlatayım mı?'), findsNothing);
-    expect(notifications.last.where((n) => n.id >= reminderBaseId && n.id < heartsFullId),
-        hasLength(greaterThanOrEqualTo(reminderDays - 1)));
+    expect(notifications.last, hasLength(greaterThanOrEqualTo(reminderDays - 1)));
   });
 
   testWidgets('denied permission keeps reminders off', (tester) async {
@@ -93,7 +99,7 @@ void main() {
     expect(notifications.last, isEmpty);
   });
 
-  testWidgets('wrong answer costs a heart and shows the correct one', (tester) async {
+  testWidgets('wrong answer shows the correct one and is remembered', (tester) async {
     await pumpApp(tester, {'progress_v1': '{"onboarded": true}'});
     await tester.tap(find.text('BAŞLA'));
     await tester.pumpAndSettle();
@@ -104,7 +110,9 @@ void main() {
     await tester.tap(find.text('KONTROL ET'));
     await tester.pumpAndSettle();
     expect(find.text('Doğru cevap:'), findsOneWidget);
-    expect(find.text('4'), findsOneWidget); // hearts in the lesson header
+    expect(find.text('0/8'), findsOneWidget); // wrong answers do not count as progress
+    final saved = (await SharedPreferences.getInstance()).getString('progress_v1');
+    expect(saved, contains('u1l1#0')); // kept for "Hatalarını çalış"
 
     await tester.tap(find.text('DEVAM'));
     await tester.pumpAndSettle();

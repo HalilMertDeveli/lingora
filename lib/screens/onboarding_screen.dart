@@ -25,10 +25,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   void _next() {
     if (_page < 2) {
-      _pages.nextPage(
-        duration: const Duration(milliseconds: 280),
-        curve: Curves.easeOut,
-      );
+      _pages.nextPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut);
     } else {
       ref.read(progressProvider.notifier).finishOnboarding(_goal);
     }
@@ -81,17 +78,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   children: [
                     const _Welcome(),
                     const _CoursePick(),
-                    _GoalPick(
-                      goal: _goal,
-                      onChanged: (g) => setState(() => _goal = g),
-                    ),
+                    _GoalPick(goal: _goal, onChanged: (g) => setState(() => _goal = g)),
                   ],
                 ),
               ),
-              FilledButton(
-                onPressed: _next,
-                child: Text(_page == 2 ? 'Öğrenmeye başla' : 'Devam'),
-              ),
+              FilledButton(onPressed: _next, child: Text(_page == 2 ? 'Öğrenmeye başla' : 'Devam')),
             ],
           ),
         ),
@@ -120,11 +111,7 @@ class LingoraLogo extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         'L',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: size * 0.55,
-          fontWeight: FontWeight.w900,
-        ),
+        style: TextStyle(color: Colors.white, fontSize: size * 0.55, fontWeight: FontWeight.w900),
       ),
     );
   }
@@ -206,8 +193,10 @@ class _GoalPick extends StatelessWidget {
       children: [
         Text('Günlük hedefin ne olsun?', style: t.headlineSmall),
         const SizedBox(height: 6),
-        Text('İstediğin zaman profilden değiştirebilirsin.',
-            style: t.bodyMedium?.copyWith(color: Brand.muted)),
+        Text(
+          'İstediğin zaman profilden değiştirebilirsin.',
+          style: t.bodyMedium?.copyWith(color: Brand.muted),
+        ),
         const SizedBox(height: 20),
         for (final (xp, name, hint) in dailyGoals)
           Padding(

@@ -29,10 +29,7 @@ class SpeechService {
 
   /// Listens in English, reporting partial text, and calls [onDone] when
   /// recognition stops.
-  Future<void> listen({
-    required void Function(String words) onWords,
-    required void Function() onDone,
-  }) async {
+  Future<void> listen({required void Function(String words) onWords, required void Function() onDone}) async {
     if (!await canListen) {
       onDone();
       return;

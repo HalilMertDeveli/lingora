@@ -44,27 +44,33 @@ class QuestsScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Günlük görevler',
-                        style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900)),
+                    const Text(
+                      'Günlük görevler',
+                      style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
+                    ),
                     const SizedBox(height: 4),
-                    Text('Yenilenmesine ${formatLeft(untilTomorrow(now))}',
-                        style: TextStyle(color: Colors.white.withValues(alpha: 0.9))),
+                    Text(
+                      'Yenilenmesine ${formatLeft(untilTomorrow(now))}',
+                      style: TextStyle(color: Colors.white.withValues(alpha: 0.9)),
+                    ),
                   ],
                 ),
               ),
-              Text('$done/${quests.length}',
-                  style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w900)),
+              Text(
+                '$done/${quests.length}',
+                style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w900),
+              ),
             ],
           ),
         ),
         const SizedBox(height: 16),
-        for (final q in quests) ...[
-          _QuestCard(quest: q, progress: p, now: now),
-          const SizedBox(height: 12),
-        ],
+        for (final q in quests) ...[_QuestCard(quest: q, progress: p, now: now), const SizedBox(height: 12)],
         const SizedBox(height: 8),
-        Text('Görev ödülleri XP olarak eklenir ve lig puanına da sayılır.',
-            textAlign: TextAlign.center, style: t.bodySmall?.copyWith(color: Brand.muted)),
+        Text(
+          'Görev ödülleri XP olarak eklenir ve lig puanına da sayılır.',
+          textAlign: TextAlign.center,
+          style: t.bodySmall?.copyWith(color: Brand.muted),
+        ),
       ],
     );
   }
@@ -113,8 +119,10 @@ class _QuestCard extends ConsumerWidget {
                       ),
                     ),
                     const SizedBox(width: 10),
-                    Text('$value/${quest.target}',
-                        style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700)),
+                    Text(
+                      '$value/${quest.target}',
+                      style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+                    ),
                   ],
                 ),
               ],
@@ -122,13 +130,13 @@ class _QuestCard extends ConsumerWidget {
           ),
           const SizedBox(width: 12),
           if (claimed)
-            const Text('Alındı', style: TextStyle(color: Brand.success, fontWeight: FontWeight.w800))
+            const Text(
+              'Alındı',
+              style: TextStyle(color: Brand.success, fontWeight: FontWeight.w800),
+            )
           else if (complete)
             FilledButton(
-              style: FilledButton.styleFrom(
-                minimumSize: const Size(64, 40),
-                backgroundColor: Brand.success,
-              ),
+              style: FilledButton.styleFrom(minimumSize: const Size(64, 40), backgroundColor: Brand.success),
               onPressed: () {
                 if (ref.read(progressProvider.notifier).claimQuest(quest)) {
                   ScaffoldMessenger.of(context)
@@ -142,8 +150,10 @@ class _QuestCard extends ConsumerWidget {
             Row(
               children: [
                 const Icon(Icons.bolt, color: Brand.xp, size: 18),
-                Text('${quest.rewardXp}',
-                    style: const TextStyle(color: Brand.xp, fontWeight: FontWeight.w800)),
+                Text(
+                  '${quest.rewardXp}',
+                  style: const TextStyle(color: Brand.xp, fontWeight: FontWeight.w800),
+                ),
               ],
             ),
         ],
@@ -152,11 +162,11 @@ class _QuestCard extends ConsumerWidget {
   }
 
   static IconData _icon(QuestMetric m) => switch (m) {
-        QuestMetric.xp => Icons.bolt,
-        QuestMetric.lessons => Icons.menu_book_rounded,
-        QuestMetric.perfectLessons => Icons.workspace_premium,
-        QuestMetric.listen => Icons.headphones_rounded,
-        QuestMetric.translate => Icons.translate_rounded,
-        QuestMetric.match => Icons.extension_rounded,
-      };
+    QuestMetric.xp => Icons.bolt,
+    QuestMetric.lessons => Icons.menu_book_rounded,
+    QuestMetric.perfectLessons => Icons.workspace_premium,
+    QuestMetric.listen => Icons.headphones_rounded,
+    QuestMetric.translate => Icons.translate_rounded,
+    QuestMetric.match => Icons.extension_rounded,
+  };
 }

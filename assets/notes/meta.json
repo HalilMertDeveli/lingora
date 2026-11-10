@@ -1,0 +1,22 @@
+{
+  "goals": [
+    "Türkçe dil bilgisi kurallarını öğren ve İngilizceye nasıl uygulandığını çalış",
+    "BTK Akademi A2 İngilizce kursunu bitir",
+    "BTK Akademi B1 İngilizce kursunu gerçekten bitir",
+    "BTK Akademi B2 İngilizce kursuna başla ve bitir",
+    "English Book'taki tüm zamanları (tenses) tekrar et",
+    "Her gün en az 5 cümlelik bir İngilizce günlük yaz"
+  ],
+  "diaryPrompts": [
+    "What did you do today? Write at least five sentences.",
+    "What are your plans for tonight? (Örnek: I will be helping a customer remotely at 8 pm.)",
+    "What did you learn today? Use one new word from your dictionary.",
+    "Describe your day using the simple past tense.",
+    "What will you do tomorrow? Use 'will' or 'be going to'.",
+    "Write about a problem you solved this week.",
+    "What would you do if you had a free day? Use 'would'.",
+    "Who did you talk to today and what did you talk about?",
+    "What are you working on these days? Use the present continuous.",
+    "Write three things you are grateful for and why."
+  ]
+}

@@ -16,20 +16,14 @@ class ExerciseTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: 20),
-        child: Text(text, style: Theme.of(context).textTheme.headlineSmall),
-      );
+    padding: const EdgeInsets.only(bottom: 20),
+    child: Text(text, style: Theme.of(context).textTheme.headlineSmall),
+  );
 }
 
 /// Round button that reads [text] aloud.
 class SpeakerButton extends ConsumerWidget {
-  const SpeakerButton({
-    super.key,
-    required this.text,
-    this.lang = 'en',
-    this.size = 48,
-    this.slow = false,
-  });
+  const SpeakerButton({super.key, required this.text, this.lang = 'en', this.size = 48, this.slow = false});
 
   final String text;
   final String lang;
@@ -38,22 +32,22 @@ class SpeakerButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Material(
-        color: Brand.primary,
-        shape: const CircleBorder(),
-        child: InkWell(
-          customBorder: const CircleBorder(),
-          onTap: () => ref.read(speechProvider).say(text, lang: lang, slow: slow),
-          child: SizedBox(
-            width: size,
-            height: size,
-            child: Icon(
-              slow ? Icons.slow_motion_video_rounded : Icons.volume_up_rounded,
-              color: Colors.white,
-              size: size * 0.5,
-            ),
-          ),
+    color: Brand.primary,
+    shape: const CircleBorder(),
+    child: InkWell(
+      customBorder: const CircleBorder(),
+      onTap: () => ref.read(speechProvider).say(text, lang: lang, slow: slow),
+      child: SizedBox(
+        width: size,
+        height: size,
+        child: Icon(
+          slow ? Icons.slow_motion_video_rounded : Icons.volume_up_rounded,
+          color: Colors.white,
+          size: size * 0.5,
         ),
-      );
+      ),
+    ),
+  );
 }
 
 /// Compact word chip used in word banks and answers.
@@ -77,10 +71,7 @@ class WordChip extends StatelessWidget {
     if (hidden) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        decoration: BoxDecoration(
-          color: Brand.line,
-          borderRadius: BorderRadius.circular(12),
-        ),
+        decoration: BoxDecoration(color: Brand.line, borderRadius: BorderRadius.circular(12)),
         child: label,
       );
     }

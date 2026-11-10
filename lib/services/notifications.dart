@@ -7,7 +7,9 @@ import '../data/progress.dart';
 
 const reminderBaseId = 100;
 const reminderDays = 7;
-const heartsFullId = 200;
+
+/// Id once used for "hearts refilled" alerts; still cancelled for old installs.
+const _legacyHeartsId = 200;
 
 class PlannedNotification {
   const PlannedNotification(this.id, this.when, this.title, this.body);
@@ -49,15 +51,6 @@ List<PlannedNotification> planNotifications(Progress p, DateTime now) {
     out.add(PlannedNotification(reminderBaseId + i, when, title, body));
   }
 
-  if (p.heartAlerts && p.hearts < maxHearts) {
-    final full = DateTime.fromMillisecondsSinceEpoch(
-      p.heartsSinceMs + (maxHearts - p.hearts) * heartRefill.inMilliseconds,
-    );
-    if (full.isAfter(now)) {
-      out.add(PlannedNotification(
-          heartsFullId, full, '❤️ Canların doldu', 'Tüm canların yenilendi, derse dönebilirsin.'));
-    }
-  }
   return out;
 }
 
@@ -71,7 +64,7 @@ class NotificationService {
     android: AndroidNotificationDetails(
       'reminders',
       'Hatırlatmalar',
-      channelDescription: 'Günlük ders hatırlatmaları ve can bildirimleri',
+      channelDescription: 'Günlük ders hatırlatmaları',
       importance: Importance.high,
       priority: Priority.high,
     ),
@@ -79,15 +72,15 @@ class NotificationService {
   );
 
   Future<void> _init() => _plugin.initialize(
-        settings: const InitializationSettings(
-          android: AndroidInitializationSettings('@mipmap/ic_launcher'),
-          iOS: DarwinInitializationSettings(
-            requestAlertPermission: false,
-            requestBadgePermission: false,
-            requestSoundPermission: false,
-          ),
-        ),
-      );
+    settings: const InitializationSettings(
+      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+      iOS: DarwinInitializationSettings(
+        requestAlertPermission: false,
+        requestBadgePermission: false,
+        requestSoundPermission: false,
+      ),
+    ),
+  );
 
   /// Asks the OS for permission; returns whether notifications are allowed.
   Future<bool> requestPermission() async {
@@ -115,7 +108,7 @@ class NotificationService {
       for (var i = 0; i < reminderDays; i++) {
         await _plugin.cancel(id: reminderBaseId + i);
       }
-      await _plugin.cancel(id: heartsFullId);
+      await _plugin.cancel(id: _legacyHeartsId);
       for (final n in plan) {
         await _plugin.zonedSchedule(
           id: n.id,

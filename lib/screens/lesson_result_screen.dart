@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../data/practice.dart';
 import '../data/progress.dart';
 import '../theme.dart';
+import '../ui/mascot.dart';
+import '../ui/motion.dart';
 
 class LessonResultScreen extends StatelessWidget {
   const LessonResultScreen({
@@ -10,12 +13,18 @@ class LessonResultScreen extends StatelessWidget {
     required this.accuracy,
     required this.duration,
     required this.perfect,
+    this.bestCombo = 0,
+    this.headline,
   });
 
   final LessonReward reward;
   final int accuracy;
   final Duration duration;
   final bool perfect;
+  final int bestCombo;
+
+  /// Overrides the default "Ders tamamlandı!" title.
+  final String? headline;
 
   @override
   Widget build(BuildContext context) {
@@ -23,80 +32,95 @@ class LessonResultScreen extends StatelessWidget {
     final mm = duration.inMinutes.toString();
     final ss = (duration.inSeconds % 60).toString().padLeft(2, '0');
     final goalDone = reward.todayXp >= reward.dailyGoal;
+    const step = Duration(milliseconds: 140);
+    var delay = const Duration(milliseconds: 350);
+    Duration next() => delay += step;
 
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              const Spacer(),
-              Text(perfect ? '🏆' : '🎉', style: const TextStyle(fontSize: 96)),
-              const SizedBox(height: 12),
-              Text(perfect ? 'Kusursuz ders!' : 'Ders tamamlandı!', style: t.headlineSmall),
-              const SizedBox(height: 28),
-              Row(
-                children: [
-                  _Tile('XP', '+${reward.xp}', Icons.bolt, Brand.xp),
-                  const SizedBox(width: 10),
-                  _Tile('Doğruluk', '%$accuracy', Icons.track_changes, Brand.success),
-                  const SizedBox(width: 10),
-                  _Tile('Süre', '$mm:$ss', Icons.timer_outlined, Brand.primary),
-                ],
-              ),
-              const SizedBox(height: 16),
-              if (reward.streakExtended)
-                TapCard(
-                  selected: true,
-                  color: Brand.streak,
-                  child: Row(
-                    children: [
-                      const Icon(Icons.local_fire_department, color: Brand.streak, size: 36),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          reward.streak == 1
-                              ? 'Seri başladı! Yarın da gel.'
-                              : '${reward.streak} günlük seri!',
-                          style: t.titleMedium,
-                        ),
-                      ),
-                    ],
+      body: Confetti(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                const Spacer(),
+                Mascot(mood: perfect ? Mood.cheer : Mood.happy, size: 150),
+                const SizedBox(height: 8),
+                PopIn(
+                  delay: const Duration(milliseconds: 150),
+                  child: Text(
+                    headline ?? (perfect ? 'Kusursuz ders!' : 'Ders tamamlandı!'),
+                    style: t.headlineSmall?.copyWith(color: perfect ? Brand.accent : Brand.primary),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              for (final q in reward.questsCompleted)
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: TapCard(
-                    selected: true,
-                    color: Brand.success,
-                    child: Row(
-                      children: [
-                        const Icon(Icons.task_alt, color: Brand.success, size: 30),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text('Görev tamamlandı: ${q.title}',
-                              style: Theme.of(context).textTheme.titleSmall),
-                        ),
-                        const Text('Ödül hazır',
-                            style: TextStyle(color: Brand.success, fontWeight: FontWeight.w800)),
-                      ],
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    _Tile(
+                      'TOPLAM XP',
+                      Icons.bolt,
+                      Brand.xp,
+                      next(),
+                      CountUp(value: reward.xp, prefix: '+', style: _Tile.valueStyle),
                     ),
+                    const SizedBox(width: 10),
+                    _Tile(
+                      'DOĞRULUK',
+                      Icons.track_changes,
+                      Brand.success,
+                      next(),
+                      CountUp(value: accuracy, prefix: '%', style: _Tile.valueStyle),
+                    ),
+                    const SizedBox(width: 10),
+                    _Tile(
+                      'SÜRE',
+                      Icons.timer_outlined,
+                      Brand.primary,
+                      next(),
+                      Text('$mm:$ss', style: _Tile.valueStyle),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                if (bestCombo >= 3)
+                  _Banner(
+                    delay: next(),
+                    color: Brand.streak,
+                    icon: Icons.whatshot_rounded,
+                    text: 'En uzun seri: $bestCombo doğru üst üste',
+                  ),
+                if (reward.streakExtended)
+                  _Banner(
+                    delay: next(),
+                    color: Brand.streak,
+                    icon: Icons.local_fire_department,
+                    text: reward.streak == 1
+                        ? 'Seri başladı! Yarın da gel.'
+                        : '${reward.streak} günlük seri!',
+                  ),
+                for (final q in reward.questsCompleted)
+                  _Banner(
+                    delay: next(),
+                    color: Brand.success,
+                    icon: Icons.task_alt,
+                    text: 'Görev tamamlandı: ${q.title}',
+                    trailing: 'Ödül hazır',
+                  ),
+                const SizedBox(height: 10),
+                Text(
+                  goalDone
+                      ? 'Günlük hedef tamam: ${reward.todayXp} / ${reward.dailyGoal} XP'
+                      : 'Günlük hedef: ${reward.todayXp} / ${reward.dailyGoal} XP',
+                  style: TextStyle(
+                    color: goalDone ? Brand.success : Brand.muted,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-              const SizedBox(height: 10),
-              Text(
-                goalDone
-                    ? 'Günlük hedef tamam: ${reward.todayXp} / ${reward.dailyGoal} XP'
-                    : 'Günlük hedef: ${reward.todayXp} / ${reward.dailyGoal} XP',
-                style: TextStyle(color: goalDone ? Brand.success : Brand.muted, fontWeight: FontWeight.w700),
-              ),
-              const Spacer(),
-              FilledButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: const Text('DEVAM'),
-              ),
-            ],
+                const Spacer(),
+                PressableButton(label: 'DEVAM', onPressed: () => Navigator.of(context).pop()),
+              ],
+            ),
           ),
         ),
       ),
@@ -104,35 +128,132 @@ class LessonResultScreen extends StatelessWidget {
   }
 }
 
+/// Shown when a unit test ends below the pass mark.
+class TestFailedScreen extends StatelessWidget {
+  const TestFailedScreen({super.key, required this.accuracy, this.onRetry});
+  final int accuracy;
+  final VoidCallback? onRetry;
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const Spacer(),
+            const Mascot(mood: Mood.sad, size: 150),
+            const SizedBox(height: 12),
+            Text('Az kaldı!', style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 10),
+            Text(
+              '%$accuracy doğru yaptın. Geçmek için %$testPassPercent gerekiyor.\n'
+              'Yanlışların "Hatalarını çalış" listesine eklendi.',
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
+            ),
+            const Spacer(),
+            if (onRetry != null) ...[
+              PressableButton(label: 'TEKRAR DENE', onPressed: onRetry),
+              const SizedBox(height: 12),
+            ],
+            PressableButton(
+              label: 'ŞİMDİLİK ÇIK',
+              outlined: true,
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+class _Banner extends StatelessWidget {
+  const _Banner({
+    required this.delay,
+    required this.color,
+    required this.icon,
+    required this.text,
+    this.trailing,
+  });
+  final Duration delay;
+  final Color color;
+  final IconData icon;
+  final String text;
+  final String? trailing;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(top: 10),
+    child: PopIn(
+      delay: delay,
+      from: 0.85,
+      child: TapCard(
+        selected: true,
+        color: color,
+        child: Row(
+          children: [
+            Icon(icon, color: color, size: 30),
+            const SizedBox(width: 12),
+            Expanded(child: Text(text, style: Theme.of(context).textTheme.titleSmall)),
+            if (trailing != null)
+              Text(
+                trailing!,
+                style: TextStyle(color: color, fontWeight: FontWeight.w800),
+              ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
 class _Tile extends StatelessWidget {
-  const _Tile(this.label, this.value, this.icon, this.color);
+  const _Tile(this.label, this.icon, this.color, this.delay, this.value);
   final String label;
-  final String value;
   final IconData icon;
   final Color color;
+  final Duration delay;
+  final Widget value;
+
+  static const valueStyle = TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Brand.ink);
 
   @override
   Widget build(BuildContext context) => Expanded(
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 14),
-          decoration: BoxDecoration(
-            border: Border.all(color: color, width: 2),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Column(
-            children: [
-              Text(label, style: TextStyle(color: color, fontWeight: FontWeight.w800, fontSize: 12)),
-              const SizedBox(height: 6),
-              Row(
+    child: PopIn(
+      delay: delay,
+      child: Container(
+        decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(16)),
+        padding: const EdgeInsets.fromLTRB(2, 6, 2, 2),
+        child: Column(
+          children: [
+            Text(
+              label,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
+                fontSize: 11,
+                letterSpacing: 0.6,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(13)),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(icon, color: color, size: 20),
                   const SizedBox(width: 4),
-                  Text(value, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900)),
+                  value,
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    ),
+  );
 }

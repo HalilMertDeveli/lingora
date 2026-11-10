@@ -27,19 +27,22 @@ class _FillBlankExerciseState extends State<FillBlankExercise> {
       children: [
         const ExerciseTitle('Boşluğu doldur'),
         Text.rich(
-          TextSpan(style: base, children: [
-            TextSpan(text: parts.first),
-            TextSpan(
-              text: _picked ?? ' ______ ',
-              style: const TextStyle(
-                color: Brand.primary,
-                fontWeight: FontWeight.w800,
-                decoration: TextDecoration.underline,
-                decorationThickness: 2,
+          TextSpan(
+            style: base,
+            children: [
+              TextSpan(text: parts.first),
+              TextSpan(
+                text: _picked ?? ' ______ ',
+                style: const TextStyle(
+                  color: Brand.primary,
+                  fontWeight: FontWeight.w800,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2,
+                ),
               ),
-            ),
-            if (parts.length > 1) TextSpan(text: parts[1]),
-          ]),
+              if (parts.length > 1) TextSpan(text: parts[1]),
+            ],
+          ),
         ),
         if (ex.translation != null) ...[
           const SizedBox(height: 8),
@@ -57,9 +60,11 @@ class _FillBlankExerciseState extends State<FillBlankExercise> {
                       setState(() => _picked = w);
                       widget.onReady(() => _picked == ex.answer);
                     },
-              child: Text(w,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+              child: Text(
+                w,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+              ),
             ),
           ),
       ],

@@ -1,13 +1,21 @@
 import 'dart:convert';
+import 'dart:math';
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/core/text.dart';
+import 'package:lingora/data/catalog.dart';
 import 'package:lingora/data/league.dart';
+import 'package:lingora/data/notes_practice.dart';
+import 'package:lingora/data/practice.dart';
 import 'package:lingora/data/progress.dart';
+import 'package:lingora/data/scenarios.dart';
 import 'package:lingora/data/quests.dart';
 import 'package:lingora/models/course.dart';
+import 'package:lingora/models/exam.dart';
+import 'package:lingora/models/notes.dart';
+import 'package:lingora/services/conversation.dart';
 import 'package:lingora/services/notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,46 +35,192 @@ void main() {
     });
   });
 
-  group('course content', () {
-    final course = Course.fromJson(
-      jsonDecode(File('assets/courses/tr_en.json').readAsStringSync()) as Map<String, dynamic>,
-    );
+  List<Map<String, dynamic>> readAll(String dir) {
+    final files = Directory(dir).listSync().whereType<File>().where((f) => f.path.endsWith('.json')).toList()
+      ..sort((a, b) => a.path.compareTo(b.path));
+    return [for (final f in files) jsonDecode(f.readAsStringSync()) as Map<String, dynamic>];
+  }
 
-    test('ids are unique', () {
-      final ids = course.allNodes.map((n) => n.id).toList();
-      expect(ids.toSet().length, ids.length);
+  final allCourses = [for (final j in readAll('assets/courses')) Course.fromJson(j)];
+  final general = allCourses.singleWhere((c) => c.id == 'tr_en');
+
+  test('every catalog course exists and node ids are unique across courses', () {
+    expect(allCourses.map((c) => c.id).toSet(), containsAll(courseCatalog.map((t) => t.id)));
+    final ids = [for (final c in allCourses) ...c.allNodes.map((n) => n.id)];
+    expect(ids.toSet().length, ids.length);
+  });
+
+  test('mistakes and vocabulary resolve from the general course', () {
+    final items = mistakeItems(general, ['u1l1#0', 'nope#1', 'u2l1#3']);
+    expect(items.map((i) => i.key), ['u2l1#3', 'u1l1#0']);
+    expect(vocabularyPool(general, const Progress()).length, greaterThanOrEqualTo(5));
+    expect(general.units.length, greaterThanOrEqualTo(12));
+  });
+
+  group('exams', () {
+    final exams = [for (final j in readAll('assets/exams')) Exam.fromJson(j)];
+
+    test('every catalog exam exists', () {
+      expect(exams.map((e) => e.id).toSet(), containsAll(examCatalog.map((t) => t.id)));
     });
 
-    test('every exercise is solvable', () {
-      for (final node in course.allNodes.where((n) => n.type == NodeType.lesson)) {
-        expect(node.exercises, isNotEmpty, reason: node.id);
-        for (final ex in node.exercises) {
-          final where = '${node.id} ${ex.type.name} ${ex.text ?? ex.prompt ?? ''}';
-          switch (ex.type) {
-            case ExerciseType.select:
-              expect(ex.choices.map((c) => c.text), contains(ex.answer), reason: where);
-            case ExerciseType.fillBlank:
-              expect(ex.wordChoices, contains(ex.answer), reason: where);
-              expect(ex.text, contains('___'), reason: where);
-            case ExerciseType.translate:
-              // At least one accepted answer must be buildable from the word bank.
-              final buildable = ex.answers.any((a) {
-                final bank = ex.tokens.map((t) => t.toLowerCase()).toList();
-                for (final w in normalizeAnswer(a).split(' ')) {
-                  if (!bank.remove(w)) return false;
-                }
-                return true;
-              });
-              expect(buildable, isTrue, reason: where);
-            case ExerciseType.listen:
-              expect(ex.answers, isNotEmpty, reason: where);
-            case ExerciseType.match:
-              expect(ex.pairs.length, greaterThanOrEqualTo(3), reason: where);
-            case ExerciseType.speak:
-              expect(ex.text, isNotEmpty, reason: where);
+    for (final exam in exams) {
+      test('${exam.id} questions are well formed', () {
+        final ids = exam.allQuestions.map((q) => q.id).toList();
+        expect(ids.toSet().length, ids.length, reason: 'duplicate ids');
+        expect(exam.allQuestions.length, greaterThanOrEqualTo(exam.mockSize * 2));
+        for (final s in exam.sections) {
+          expect(s.questions.length, greaterThanOrEqualTo(8), reason: s.id);
+        }
+        final answers = List.filled(exam.optionCount, 0);
+        for (final q in exam.allQuestions) {
+          expect(q.options, hasLength(exam.optionCount), reason: q.id);
+          expect(q.options.toSet(), hasLength(exam.optionCount), reason: '${q.id} duplicate options');
+          expect(q.answer, inInclusiveRange(0, exam.optionCount - 1), reason: q.id);
+          expect(q.explanation.trim(), isNotEmpty, reason: q.id);
+          answers[q.answer]++;
+        }
+        // Correct answers should be spread over the letters, not always "A".
+        final most = answers.reduce(max);
+        expect(most, lessThan(exam.allQuestions.length * 0.4), reason: 'answer letters $answers');
+      });
+    }
+  });
+
+  for (final course in allCourses) {
+    group('course ${course.id}', () {
+      test('every exercise is solvable', () {
+        for (final node in course.allNodes.where((n) => n.type == NodeType.lesson)) {
+          expect(node.exercises, isNotEmpty, reason: node.id);
+          for (final ex in node.exercises) {
+            final where = '${node.id} ${ex.type.name} ${ex.text ?? ex.prompt ?? ''}';
+            switch (ex.type) {
+              case ExerciseType.select:
+                expect(ex.choices.map((c) => c.text), contains(ex.answer), reason: where);
+              case ExerciseType.fillBlank:
+                expect(ex.wordChoices, contains(ex.answer), reason: where);
+                expect(ex.text, contains('___'), reason: where);
+              case ExerciseType.translate:
+                // At least one accepted answer must be buildable from the word bank.
+                final buildable = ex.answers.any((a) {
+                  final bank = ex.tokens.map((t) => t.toLowerCase()).toList();
+                  for (final w in normalizeAnswer(a).split(' ')) {
+                    if (!bank.remove(w)) return false;
+                  }
+                  return true;
+                });
+                expect(buildable, isTrue, reason: where);
+              case ExerciseType.listen:
+                expect(ex.answers, isNotEmpty, reason: where);
+              case ExerciseType.match:
+                expect(ex.pairs.length, greaterThanOrEqualTo(3), reason: where);
+              case ExerciseType.speak:
+                expect(ex.text, isNotEmpty, reason: where);
+            }
+          }
+        }
+      });
+
+      test('unit tests can be built for every unit', () {
+        for (final u in course.units) {
+          final items = unitTestItems(u, Random(1));
+          expect(items, hasLength(testSize), reason: u.id);
+          expect(items.map((i) => i.key).toSet(), hasLength(testSize), reason: u.id);
+          expect(items.where((i) => i.ex.type == ExerciseType.speak), isEmpty);
+        }
+        expect(vocabularyPool(course, const Progress()).length, greaterThanOrEqualTo(5));
+      });
+
+      test('stories are well formed', () {
+        for (final node in course.allNodes.where((n) => n.type == NodeType.story)) {
+          expect(node.steps.where((s) => !s.isQuestion).length, greaterThanOrEqualTo(6), reason: node.id);
+          expect(node.steps.where((s) => s.isQuestion).length, greaterThanOrEqualTo(2), reason: node.id);
+          expect(node.steps.first.isQuestion, isFalse, reason: node.id);
+          for (final s in node.steps.where((s) => s.isQuestion)) {
+            expect(s.choices, contains(s.answer), reason: '${node.id} ${s.prompt}');
+          }
+        }
+      });
+
+      test('every unit has lessons, a story, a test and a chest', () {
+        for (final u in course.units) {
+          final types = u.nodes.map((n) => n.type).toList();
+          expect(types.where((t) => t == NodeType.lesson).length, greaterThanOrEqualTo(3), reason: u.id);
+          expect(types, contains(NodeType.story), reason: u.id);
+          expect(types, contains(NodeType.test), reason: u.id);
+          expect(types.last, NodeType.chest, reason: u.id);
+        }
+      });
+    });
+  }
+
+  group('notes from Notion', () {
+    final words = (jsonDecode(File('assets/notes/words.json').readAsStringSync()) as List)
+        .map((w) => NoteWord.fromJson(w as Map<String, dynamic>))
+        .toList();
+    final topics = (jsonDecode(File('assets/notes/grammar.json').readAsStringSync()) as List)
+        .map((t) => GrammarTopic.fromJson(t as Map<String, dynamic>))
+        .toList();
+    final meta = jsonDecode(File('assets/notes/meta.json').readAsStringSync()) as Map<String, dynamic>;
+
+    test('words and topics are imported and well formed', () {
+      expect(words.length, greaterThan(500));
+      expect(topics.length, greaterThan(40));
+      expect(words.map((w) => w.id).toSet(), hasLength(words.length));
+      expect(topics.map((t) => t.id).toSet(), hasLength(topics.length));
+      for (final w in words) {
+        expect(w.en.trim(), isNotEmpty, reason: w.id);
+        expect(w.tr.trim(), isNotEmpty, reason: w.id);
+      }
+      expect(meta['goals'] as List, isNotEmpty);
+      expect(meta['diaryPrompts'] as List, isNotEmpty);
+    });
+
+    test('practice from every topic is solvable', () {
+      for (final t in topics) {
+        for (final item in topicItems(t, topics, Random(1))) {
+          final ex = item.ex;
+          if (ex.type == ExerciseType.translate) {
+            final bank = ex.tokens.map((x) => x.toLowerCase()).toList();
+            final ok = normalizeAnswer(ex.answers.first).split(' ').every(bank.remove);
+            expect(ok, isTrue, reason: '${t.id}: ${ex.answers.first}');
           }
         }
       }
+    });
+
+    test('spaced repetition picks due words, then new ones', () {
+      const p = Progress(wordBox: {'a': 2}, wordDue: {'a': '2026-11-09'});
+      const list = [
+        NoteWord(id: 'a', en: 'a', tr: 'a', topic: 'x'),
+        NoteWord(id: 'b', en: 'b', tr: 'b', topic: 'x'),
+      ];
+      expect(dueWordCount(list, p, DateTime(2026, 11, 10)), 1);
+      expect(wordsToReview(list, p, DateTime(2026, 11, 10)).map((w) => w.id), ['a', 'b']);
+      expect(wordQuizItems(words, Random(1)), isNotEmpty);
+    });
+  });
+
+  group('conversation', () {
+    test('app and server know the same scenarios', () {
+      final server = File('server/supabase/functions/converse/scenarios.ts').readAsStringSync();
+      final ids = RegExp(r'^  (\w+): \{', multiLine: true).allMatches(server).map((m) => m[1]).toSet();
+      expect(ids, scenarios.map((s) => s.id).toSet());
+    });
+
+    test('demo corrects typical Turkish-speaker mistakes', () async {
+      final demo = DemoConversationService();
+      final cafe = scenarioById('cafe');
+      Future<ChatTurn> say(String text) => demo.send(cafe, [
+        ChatMessage(fromUser: false, text: cafe.opening),
+        ChatMessage(fromUser: true, text: text),
+      ]);
+      expect((await say('I am agree with you')).correction, 'I agree with you');
+      expect((await say('She like coffee')).correction, 'She likes coffee');
+      expect((await say('I have 25 years')).correction, 'I am 25 years old');
+      final fine = await say('A latte, please.');
+      expect(fine.correction, isNull);
+      expect(fine.reply, isNotEmpty);
     });
   });
 
@@ -78,10 +232,9 @@ void main() {
       SharedPreferences.setMockInitialValues({});
       final prefs = await SharedPreferences.getInstance();
       now = DateTime(2026, 11, 10, 9);
-      c = ProviderContainer(overrides: [
-        prefsProvider.overrideWithValue(prefs),
-        clockProvider.overrideWithValue(() => now),
-      ]);
+      c = ProviderContainer(
+        overrides: [prefsProvider.overrideWithValue(prefs), clockProvider.overrideWithValue(() => now)],
+      );
     });
     tearDown(() => c.dispose());
 
@@ -99,32 +252,23 @@ void main() {
       expect(p().totalXp, 40);
     });
 
-    test('hearts are lost and refill over time', () {
-      expect(n().loseHeart(), 4);
-      expect(n().loseHeart(), 3);
-      now = now.add(heartRefill);
-      expect(p().heartsAt(now), 4);
-      // Losing a heart mid-refill keeps the timer running.
-      now = now.add(const Duration(minutes: 10));
-      expect(n().loseHeart(), 3);
-      expect(p().nextHeartIn(now), const Duration(minutes: 20));
-      now = now.add(heartRefill * 10);
-      expect(p().heartsAt(now), maxHearts);
-      expect(p().nextHeartIn(now), isNull);
-    });
-
     test('daily quests are stable per day and claimable once', () {
       final quests = questsForDay(now);
       expect(quests, hasLength(3));
       expect(quests.map((q) => q.id).toSet(), hasLength(3));
       expect(quests.first.metric, QuestMetric.xp);
-      expect(questsForDay(now.add(const Duration(hours: 5))).map((q) => q.id),
-          quests.map((q) => q.id));
+      expect(questsForDay(now.add(const Duration(hours: 5))).map((q) => q.id), quests.map((q) => q.id));
 
       final xpQuest = quests.first;
       expect(n().claimQuest(xpQuest), isFalse);
-      n().completeNode('a', xp: 15, answered: 8, correct: 8, perfect: true,
-          stats: {QuestMetric.listen: 1, QuestMetric.translate: 2, QuestMetric.match: 1});
+      n().completeNode(
+        'a',
+        xp: 15,
+        answered: 8,
+        correct: 8,
+        perfect: true,
+        stats: {QuestMetric.listen: 1, QuestMetric.translate: 2, QuestMetric.match: 1},
+      );
       final r = n().completeNode('b', xp: 30, answered: 8, correct: 7);
       expect(r.questsCompleted.map((q) => q.id), contains(xpQuest.id));
       expect(p().counter(now, QuestMetric.lessons), 2);
@@ -188,14 +332,14 @@ void main() {
       n().setReminders(enabled: true, minutes: 19 * 60);
 
       var plan = planNotifications(p(), now); // 09:00, nothing done today
-      final reminders = plan.where((x) => x.id < heartsFullId).toList();
+      final reminders = plan;
       expect(reminders, hasLength(reminderDays));
       expect(reminders.first.when, DateTime(2026, 11, 10, 19));
       expect(reminders.first.title, isNot(contains('serini')));
 
       n().completeNode('a', xp: 10, answered: 5, correct: 5);
       plan = planNotifications(p(), now);
-      final next = plan.where((x) => x.id < heartsFullId).toList();
+      final next = plan;
       expect(next, hasLength(reminderDays - 1));
       expect(next.first.when, DateTime(2026, 11, 11, 19));
       expect(next.first.title, contains('1 günlük serini koru'));
@@ -207,15 +351,40 @@ void main() {
       expect(planNotifications(p(), evening).first.when, DateTime(2026, 11, 13, 19));
     });
 
-    test('hearts-full alert is planned only while hearts are refilling', () {
-      n().setReminders(enabled: true);
-      expect(planNotifications(p(), now).where((x) => x.id == heartsFullId), isEmpty);
-      n().loseHeart();
-      n().loseHeart();
-      final alert = planNotifications(p(), now).singleWhere((x) => x.id == heartsFullId);
-      expect(alert.when, now.add(heartRefill * 2));
-      n().setReminders(heartAlerts: false);
-      expect(planNotifications(p(), now).where((x) => x.id == heartsFullId), isEmpty);
+    test('track and best exam score persist', () {
+      expect(p().trackId, defaultTrackId);
+      n().setTrack('yds');
+      n().recordExam('yds', 60);
+      n().recordExam('yds', 45);
+      expect(p().examBest['yds'], 60);
+      expect(Progress.fromJson(p().toJson()).trackId, 'yds');
+    });
+
+    test('word reviews move between boxes; diary and goals persist', () {
+      n().reviewWord('w1', known: true);
+      n().reviewWord('w1', known: true);
+      expect(p().wordBox['w1'], 2);
+      expect(p().wordDue['w1'], '2026-11-13');
+      n().reviewWord('w1', known: false);
+      expect(p().wordBox['w1'], 0);
+      n().saveDiary('2026-11-10', 'Today I studied.');
+      n().toggleGoal('g');
+      final restored = Progress.fromJson(p().toJson());
+      expect(restored.diary['2026-11-10'], 'Today I studied.');
+      expect(restored.goalsDone, ['g']);
+    });
+
+    test('mistakes are remembered, capped and cleared', () {
+      n().addMistake('u1l1#0');
+      n().addMistake('u1l1#2');
+      n().addMistake('u1l1#0'); // moves to the end, no duplicate
+      expect(p().mistakes, ['u1l1#2', 'u1l1#0']);
+      n().clearMistake('u1l1#2');
+      expect(p().mistakes, ['u1l1#0']);
+      for (var i = 0; i < maxMistakes + 5; i++) {
+        n().addMistake('x#$i');
+      }
+      expect(p().mistakes, hasLength(maxMistakes));
     });
 
     test('progress survives a restart', () async {

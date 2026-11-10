@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 abstract final class Brand {
   static const primary = Color(0xFF6C4CF1);
@@ -56,16 +57,14 @@ ThemeData buildTheme() {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: Brand.surface,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16),
-        borderSide: BorderSide.none,
-      ),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
     ),
   );
 }
 
-/// Rounded card with a 2px border that highlights when selected.
-class TapCard extends StatelessWidget {
+/// Rounded card with a 3D bottom edge that highlights when selected and
+/// sinks slightly while pressed.
+class TapCard extends StatefulWidget {
   const TapCard({
     super.key,
     required this.child,
@@ -82,18 +81,45 @@ class TapCard extends StatelessWidget {
   final EdgeInsets padding;
 
   @override
+  State<TapCard> createState() => _TapCardState();
+}
+
+class _TapCardState extends State<TapCard> {
+  bool _down = false;
+
+  void _set(bool v) {
+    if (widget.onTap != null && v != _down) setState(() => _down = v);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final c = color ?? Brand.primary;
-    return Material(
-      color: selected ? c.withValues(alpha: 0.10) : Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: selected ? c : Brand.line, width: 2),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(padding: padding, child: child),
+    final c = widget.color ?? Brand.primary;
+    final border = widget.selected ? c : Brand.line;
+    final edge = widget.selected ? c.withValues(alpha: 0.55) : const Color(0xFFDAD7E5);
+    final depth = widget.onTap == null ? 2.0 : (_down ? 0.0 : 4.0);
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTapDown: (_) => _set(true),
+      onTapUp: (_) => _set(false),
+      onTapCancel: () => _set(false),
+      onTap: widget.onTap == null
+          ? null
+          : () {
+              HapticFeedback.selectionClick();
+              widget.onTap!();
+            },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 90),
+        margin: EdgeInsets.only(top: 4 - depth.clamp(0, 4)),
+        decoration: BoxDecoration(
+          color: widget.selected ? Color.alphaBlend(c.withValues(alpha: 0.10), Colors.white) : Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: border, width: 2),
+          boxShadow: [BoxShadow(color: edge, offset: Offset(0, depth))],
+        ),
+        padding: widget.padding,
+        // Lets ListTiles inside paint their ink above the card colour.
+        child: Material(type: MaterialType.transparency, child: widget.child),
       ),
     );
   }
