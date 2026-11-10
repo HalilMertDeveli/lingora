@@ -1,5 +1,5 @@
 /// Role-play scenarios for conversation practice. The server keeps its own
-/// prompt for each id (server/supabase/functions/converse/scenarios.ts), so
+/// prompt for each id (functions/src/scenarios.ts), so
 /// the app can never change what the AI is told.
 class Scenario {
   const Scenario({

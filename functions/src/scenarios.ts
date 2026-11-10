@@ -1,4 +1,4 @@
-// Server-side role-play prompts. Ids must match lib/data/scenarios.dart.
+// Server-side role-play prompts (ported from server/supabase/functions/converse). Ids must match lib/data/scenarios.dart.
 // Kept on the server so the app cannot change what the model is told.
 
 export interface ScenarioPrompt {

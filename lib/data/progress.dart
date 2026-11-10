@@ -502,6 +502,10 @@ class ProgressNotifier extends Notifier<Progress> {
 
   void dismissLeagueResult() => _save(state.copyWith(clearLeagueResult: true));
 
+  /// Replaces the progress with a copy merged with the cloud (see
+  /// lib/services/firebase/progress_sync.dart).
+  void applySynced(Progress merged) => _save(merged);
+
   void reset() => _save(const Progress(onboarded: true));
 }
 

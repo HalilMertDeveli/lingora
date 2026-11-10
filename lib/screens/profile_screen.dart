@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../theme.dart';
+import 'account_section.dart';
 import 'onboarding_screen.dart';
 import 'placement_screen.dart';
 import 'reminder_settings.dart';
@@ -87,6 +88,10 @@ class ProfileScreen extends ConsumerWidget {
         Text('Bildirimler', style: t.titleLarge),
         const SizedBox(height: 12),
         const ReminderSettings(),
+        const SizedBox(height: 24),
+        Text('Hesap', style: t.titleLarge),
+        const SizedBox(height: 12),
+        const AccountSection(),
         const SizedBox(height: 32),
         OutlinedButton.icon(
           icon: const Icon(Icons.restart_alt, color: Brand.error),

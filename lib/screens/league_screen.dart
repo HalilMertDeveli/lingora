@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/league.dart';
 import '../data/progress.dart';
+import '../services/league_remote.dart';
 import '../theme.dart';
 import 'quests_screen.dart' show formatLeft;
 
@@ -14,9 +15,11 @@ class LeagueScreen extends ConsumerWidget {
     final p = ref.watch(progressProvider);
     final now = ref.watch(clockProvider)();
     final start = weekStart(now);
-    final tier = p.leagueTier;
+    // Real members when signed in to Firebase, otherwise simulated rivals.
+    final remote = ref.watch(remoteLeagueProvider).value;
+    final tier = remote?.tier ?? p.leagueTier;
     final info = leagueTiers[tier];
-    final table = standings(tier: tier, weekStart: start, now: now, userXp: p.weekXp(start));
+    final table = remote?.table ?? standings(tier: tier, weekStart: start, now: now, userXp: p.weekXp(start));
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
@@ -67,11 +70,12 @@ class LeagueScreen extends ConsumerWidget {
           _Row(rank: i + 1, entry: table[i], tier: tier),
         ],
         const SizedBox(height: 16),
-        const Text(
-          'Çevrimdışı mod: rakipler bu cihazda simüle edilir. Gerçek kullanıcılarla lig, '
-          'hesap ve sunucu desteği gelince açılacak.',
+        Text(
+          remote != null
+              ? 'Bu hafta gerçek Lingora kullanıcılarıyla yarışıyorsun.'
+              : 'Çevrimdışı mod: rakipler bu cihazda simüle edilir.',
           textAlign: TextAlign.center,
-          style: TextStyle(color: Brand.muted, fontSize: 12),
+          style: const TextStyle(color: Brand.muted, fontSize: 12),
         ),
       ],
     );
