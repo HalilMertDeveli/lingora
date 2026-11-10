@@ -1,4 +1,6 @@
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:in_app_purchase_android/billing_client_wrappers.dart';
+import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
 import 'billing_service.dart';
 
@@ -15,15 +17,54 @@ class IapBillingService implements BillingService {
   Future<List<StoreProduct>> loadProducts(Set<String> ids) async {
     final res = await _iap.queryProductDetails(ids);
     if (res.error != null) throw BillingException('Ürünler yüklenemedi: ${res.error!.message}');
-    final out = <StoreProduct>[];
-    // Google Play returns one entry per base plan/offer; the first one per
-    // id is the base plan, which is what Lingora sells.
+    // Google Play returns one entry per base plan/offer. Lingora shows the
+    // base plan's price and, when Play offers this user a free-trial offer
+    // (only eligible users get one), buys through that offer.
+    final byId = <String, List<ProductDetails>>{};
     for (final d in res.productDetails) {
-      if (_details.containsKey(d.id)) continue;
-      _details[d.id] = d;
-      out.add(StoreProduct(id: d.id, title: d.title, price: d.price, rawPrice: d.rawPrice));
+      (byId[d.id] ??= []).add(d);
+    }
+    final out = <StoreProduct>[];
+    for (final entry in byId.entries) {
+      final offers = entry.value;
+      final base = offers.firstWhere((d) => _offer(d)?.offerId == null, orElse: () => offers.first);
+      final trial = offers.where((d) => trialDaysOf(d) > 0).firstOrNull;
+      _details[entry.key] = trial ?? base;
+      // The last pricing phase is the recurring price.
+      final phase = _offer(base)?.pricingPhases.lastOrNull;
+      out.add(
+        StoreProduct(
+          id: base.id,
+          title: base.title,
+          price: phase?.formattedPrice ?? base.price,
+          rawPrice: phase == null ? base.rawPrice : phase.priceAmountMicros / 1e6,
+          freeTrialDays: trial == null ? 0 : trialDaysOf(trial),
+        ),
+      );
     }
     return out;
+  }
+
+  static SubscriptionOfferDetailsWrapper? _offer(ProductDetails d) {
+    if (d is! GooglePlayProductDetails) return null;
+    final i = d.subscriptionIndex;
+    final offers = d.productDetails.subscriptionOfferDetails;
+    return i == null || offers == null || i >= offers.length ? null : offers[i];
+  }
+
+  /// Length of a free first phase (price 0), e.g. `P7D` → 7, `P1W` → 7.
+  static int trialDaysOf(ProductDetails d) {
+    final first = _offer(d)?.pricingPhases.firstOrNull;
+    if (first == null || first.priceAmountMicros != 0) return 0;
+    return isoPeriodDays(first.billingPeriod) * (first.billingCycleCount < 1 ? 1 : first.billingCycleCount);
+  }
+
+  /// Days in an ISO 8601 period such as `P7D`, `P2W`, `P1M` (months as 30).
+  static int isoPeriodDays(String period) {
+    final m = RegExp(r'^P(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)W)?(?:(\d+)D)?$').firstMatch(period);
+    if (m == null) return 0;
+    int n(int g) => int.tryParse(m.group(g) ?? '') ?? 0;
+    return n(1) * 365 + n(2) * 30 + n(3) * 7 + n(4);
   }
 
   @override

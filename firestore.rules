@@ -32,9 +32,20 @@ service cloud.firestore {
           || (d.displayName is string && d.displayName.size() <= 40));
     }
 
+    // Cloud backup is a Premium feature: the same check as the converse
+    // function (active or premium flag, expiresAt still in the future).
+    function hasPremium(uid) {
+      let path = /databases/$(database)/documents/entitlements/$(uid);
+      let e = get(path).data;
+      return exists(path)
+        && (e.get('active', false) == true || e.get('premium', false) == true)
+        && e.get('expiresAt', null) is timestamp
+        && e.expiresAt > request.time;
+    }
+
     match /users/{uid} {
       allow read: if isOwner(uid);
-      allow create, update: if isOwner(uid) && validUserDoc();
+      allow create, update: if isOwner(uid) && validUserDoc() && hasPremium(uid);
       allow delete: if false;
     }
 

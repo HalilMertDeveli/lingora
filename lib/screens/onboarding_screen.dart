@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/app_settings.dart';
 import '../data/placement.dart';
 import '../data/progress.dart';
+import '../services/growth/analytics.dart';
 import '../theme.dart';
 import 'placement_screen.dart';
 
@@ -26,31 +28,50 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   int _goal = 20;
   LearnReason _reason = LearnReason.general;
 
-  static const _pageCount = 4;
+  static const _pageCount = 5;
 
   void _next() => _pages.nextPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut);
 
   /// Applies the chosen plan (track + known nodes), then leaves onboarding.
-  void _finish(PlacementRecommendation plan) {
+  void _finish(PlacementRecommendation plan, {required String method}) {
     final progress = ref.read(progressProvider.notifier);
     applyPlacement(progress, plan);
     progress.finishOnboarding(_goal);
+    logEvent(ref, AnalyticsEvent.trackChosen(plan.trackId, source: 'onboarding'));
+    logEvent(ref, AnalyticsEvent.onboardingComplete(method: method, dailyGoal: _goal, track: plan.trackId));
   }
 
-  void _fromScratch() =>
-      _finish(recommend(level: null, reason: _reason, courseUnits: const [], lessons: const []));
-
-  void _startTest() => Navigator.of(context).push(
-    MaterialPageRoute<void>(
-      builder: (_) => PlacementTestScreen(
-        reason: _reason,
-        onDone: (ctx, plan) {
-          Navigator.of(ctx).popUntil((r) => r.isFirst);
-          _finish(plan);
-        },
-      ),
-    ),
+  void _fromScratch() => _finish(
+    recommend(level: null, reason: _reason, courseUnits: const [], lessons: const []),
+    method: 'scratch',
   );
+
+  void _startTest() {
+    logEvent(ref, AnalyticsEvent.placementStart());
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => PlacementTestScreen(
+          reason: _reason,
+          onDone: (ctx, plan) {
+            Navigator.of(ctx).popUntil((r) => r.isFirst);
+            _finish(plan, method: 'placement');
+          },
+        ),
+      ),
+    );
+  }
+
+  /// Page names for `onboarding_step`; extra pages are logged as `step_<i>`.
+  static const _stepNames = ['welcome', 'audience', 'course', 'goal', 'level'];
+
+  void _logStep(int i) =>
+      logEvent(ref, AnalyticsEvent.onboardingStep(i < _stepNames.length ? _stepNames[i] : 'step_$i', i));
+
+  @override
+  void initState() {
+    super.initState();
+    _logStep(0);
+  }
 
   @override
   void dispose() {
@@ -83,7 +104,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       borderRadius: BorderRadius.circular(8),
                       child: LinearProgressIndicator(
                         value: (_page + 1) / _pageCount,
-                        minHeight: 10,
+                        minHeight: Brand.isKid ? 10 : 6,
                         backgroundColor: Brand.line,
                       ),
                     ),
@@ -95,9 +116,13 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 child: PageView(
                   controller: _pages,
                   physics: const NeverScrollableScrollPhysics(),
-                  onPageChanged: (i) => setState(() => _page = i),
+                  onPageChanged: (i) {
+                    setState(() => _page = i);
+                    _logStep(i);
+                  },
                   children: [
                     const _Welcome(),
+                    const _AudiencePick(),
                     const _CoursePick(),
                     _GoalPick(goal: _goal, onChanged: (g) => setState(() => _goal = g)),
                     _LevelStep(reason: _reason, onChanged: (r) => setState(() => _reason = r)),
@@ -129,17 +154,25 @@ class LingoraLogo extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Brand.primary, Color(0xFF9B7BFF)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(size * 0.3),
+        color: Brand.isKid ? null : Brand.primary,
+        gradient: Brand.isKid
+            ? LinearGradient(
+                colors: [Brand.primary, const Color(0xFF9B7BFF)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              )
+            : null,
+        borderRadius: BorderRadius.circular(size * (Brand.isKid ? 0.3 : 0.26)),
       ),
       alignment: Alignment.center,
       child: Text(
         'L',
-        style: TextStyle(color: Colors.white, fontSize: size * 0.55, fontWeight: FontWeight.w900),
+        style: TextStyle(
+          color: Brand.onPrimary,
+          fontSize: size * 0.55,
+          fontWeight: Brand.isKid ? FontWeight.w900 : FontWeight.w700,
+          height: 1.1,
+        ),
       ),
     );
   }
@@ -179,10 +212,10 @@ class _CoursePick extends StatelessWidget {
       children: [
         Text('Ne öğrenmek istiyorsun?', style: t.headlineSmall),
         const SizedBox(height: 20),
-        const TapCard(
+        TapCard(
           selected: true,
           child: ListTile(
-            leading: Text('🇬🇧', style: TextStyle(fontSize: 32)),
+            leading: Glyph(emoji: '🇬🇧', icon: Icons.translate_rounded, size: 32),
             title: Text('İngilizce', style: TextStyle(fontWeight: FontWeight.w800)),
             subtitle: Text('Türkçe konuşanlar için'),
             trailing: Icon(Icons.check_circle, color: Brand.primary),
@@ -196,7 +229,7 @@ class _CoursePick extends StatelessWidget {
               opacity: 0.45,
               child: TapCard(
                 child: ListTile(
-                  leading: Text(flag, style: const TextStyle(fontSize: 32)),
+                  leading: Glyph(emoji: flag, icon: Icons.language_rounded, size: 32, color: Brand.muted),
                   title: Text(name, style: const TextStyle(fontWeight: FontWeight.w800)),
                   subtitle: const Text('Yakında'),
                 ),
@@ -274,6 +307,68 @@ class _LevelStep extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         ReasonPicker(selected: reason, onChanged: onChanged),
+      ],
+    );
+  }
+}
+
+/// "Kimin için?": picks the look. Applies at once so the rest of onboarding
+/// already previews it; changeable later in Profil > Görünüm.
+class _AudiencePick extends ConsumerWidget {
+  const _AudiencePick();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final t = Theme.of(context).textTheme;
+    final mode = ref.watch(appSettingsProvider.select((s) => s.mode));
+    Widget option(AppMode m, IconData icon, String emoji, String title, String hint) => Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: TapCard(
+        selected: mode == m,
+        onTap: () => ref.read(appSettingsProvider.notifier).setMode(m),
+        child: Row(
+          children: [
+            IconBadge(icon: icon, emoji: emoji, size: 44),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: t.titleMedium),
+                  const SizedBox(height: 2),
+                  Text(hint, style: t.bodySmall),
+                ],
+              ),
+            ),
+            if (mode == m) Icon(Icons.check_circle, color: Brand.primary),
+          ],
+        ),
+      ),
+    );
+    return ListView(
+      padding: const EdgeInsets.only(top: 32),
+      children: [
+        Text('Kimin için?', style: t.headlineSmall),
+        const SizedBox(height: 6),
+        Text(
+          'Görünümü buna göre ayarlarız. İstediğin zaman profilden değiştirebilirsin.',
+          style: t.bodyMedium?.copyWith(color: Brand.muted),
+        ),
+        const SizedBox(height: 20),
+        option(
+          AppMode.adult,
+          Icons.school_outlined,
+          '🎓',
+          'Kendim için',
+          'Lise, üniversite, iş ve sınavlar. Sade ve odaklı görünüm.',
+        ),
+        option(
+          AppMode.kid,
+          Icons.child_care_rounded,
+          '🧒',
+          'Çocuğum için (Çocuk modu)',
+          'İlkokul, ortaokul ve LGS. Maskot, renkler ve kutlamalarla eğlenceli görünüm.',
+        ),
       ],
     );
   }

@@ -137,7 +137,7 @@ class _PracticeRow extends ConsumerWidget {
             icon: Icons.fitness_center_rounded,
             color: Brand.primary,
             title: 'Hatalarını çalış',
-            subtitle: mistakes == 0 ? 'Hata yok 👏' : '$mistakes soru · can harcamaz',
+            subtitle: mistakes == 0 ? 'Hata yok' : '$mistakes soru · can harcamaz',
             onTap: mistakes == 0
                 ? null
                 : () => Navigator.of(context).push(
@@ -217,7 +217,7 @@ class _PracticeCard extends StatelessWidget {
                   subtitle,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(color: Brand.muted, fontSize: 12),
+                  style: TextStyle(color: Brand.muted, fontSize: 12),
                 ),
               ],
             ),
@@ -239,7 +239,7 @@ class _DailyGoalCard extends ConsumerWidget {
     return TapCard(
       child: Row(
         children: [
-          const Icon(Icons.flag_rounded, color: Brand.primary, size: 32),
+          Icon(Icons.flag_rounded, color: Brand.primary, size: 32),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -257,7 +257,7 @@ class _DailyGoalCard extends ConsumerWidget {
           const SizedBox(width: 12),
           Text(
             '$today / ${p.dailyGoal} XP',
-            style: const TextStyle(fontWeight: FontWeight.w700, color: Brand.muted),
+            style: TextStyle(fontWeight: FontWeight.w700, color: Brand.muted),
           ),
         ],
       ),
@@ -274,7 +274,7 @@ class _UnitHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(color: unit.color, borderRadius: BorderRadius.circular(20)),
+      decoration: context.lingora.hero(unit.color),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -315,7 +315,7 @@ class _NodeTile extends ConsumerWidget {
   final NodeState state;
   final bool isLast;
 
-  Color get color => unit.color;
+  Color get color => Brand.tone(unit.color);
 
   Future<void> _open(BuildContext context, WidgetRef ref) async {
     if (state == NodeState.locked) {
@@ -389,14 +389,16 @@ class _NodeTile extends ConsumerWidget {
         color: dotColor,
         shape: BoxShape.circle,
         boxShadow: [
-          BoxShadow(
-            color: state == NodeState.locked ? const Color(0xFFD3D1DC) : edgeOf(dotColor),
-            offset: const Offset(0, 4),
-          ),
-          if (active) BoxShadow(color: color.withValues(alpha: 0.35), blurRadius: 14, spreadRadius: 3),
+          if (Brand.isKid)
+            BoxShadow(
+              color: state == NodeState.locked ? Brand.palette.edge : edgeOf(dotColor),
+              offset: const Offset(0, 4),
+            ),
+          if (active && Brand.isKid)
+            BoxShadow(color: color.withValues(alpha: 0.35), blurRadius: 14, spreadRadius: 3),
         ],
       ),
-      child: Icon(icon, color: state == NodeState.locked ? Brand.muted : Colors.white),
+      child: Icon(icon, color: state == NodeState.locked ? Brand.muted : onColor(dotColor)),
     );
 
     return IntrinsicHeight(
@@ -440,7 +442,7 @@ class _NodeTile extends ConsumerWidget {
                           children: [
                             Text(node.title, style: Theme.of(context).textTheme.titleMedium),
                             const SizedBox(height: 2),
-                            Text(node.description, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                            Text(node.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
                           ],
                         ),
                       ),
@@ -450,15 +452,17 @@ class _NodeTile extends ConsumerWidget {
                           decoration: BoxDecoration(
                             color: color,
                             borderRadius: BorderRadius.circular(12),
-                            boxShadow: [BoxShadow(color: edgeOf(color), offset: const Offset(0, 3))],
+                            boxShadow: [
+                              if (Brand.isKid) BoxShadow(color: edgeOf(color), offset: const Offset(0, 3)),
+                            ],
                           ),
                           child: Text(
-                            _cta,
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+                            Brand.isKid ? _cta : sentenceCase(_cta),
+                            style: TextStyle(color: onColor(color), fontWeight: FontWeight.w900),
                           ),
                         )
                       else if (state == NodeState.done && !isChest)
-                        const Icon(Icons.replay_rounded, color: Brand.muted),
+                        Icon(Icons.replay_rounded, color: Brand.muted),
                     ],
                   ),
                 ),
@@ -519,7 +523,13 @@ class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderSta
                       angle: wobble,
                       child: Transform.scale(
                         scale: opened ? 0.9 + 0.3 * burst : 1,
-                        child: Text(opened ? '✨' : '🎁', style: const TextStyle(fontSize: 84)),
+                        child: Brand.isKid
+                            ? Text(opened ? '✨' : '🎁', style: const TextStyle(fontSize: 84))
+                            : Icon(
+                                opened ? Icons.redeem_rounded : Icons.card_giftcard_rounded,
+                                size: 72,
+                                color: Brand.accent,
+                              ),
                       ),
                     ),
                   ),
@@ -535,7 +545,7 @@ class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderSta
                         value: opened ? widget.xp : 0,
                         prefix: '+',
                         suffix: ' XP',
-                        style: const TextStyle(color: Brand.xp, fontSize: 28, fontWeight: FontWeight.w900),
+                        style: TextStyle(color: Brand.xp, fontSize: 28, fontWeight: FontWeight.w900),
                       ),
                     ],
                   ),

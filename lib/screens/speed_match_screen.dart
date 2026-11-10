@@ -171,7 +171,7 @@ class _SpeedMatchScreenState extends ConsumerState<SpeedMatchScreen> {
               Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.close, color: Brand.muted),
+                    icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () {
                       _timer?.cancel();
                       Navigator.of(context).pop();
@@ -209,7 +209,7 @@ class _SpeedMatchScreenState extends ConsumerState<SpeedMatchScreen> {
                     from: 0.7,
                     child: Text(
                       '✓ $_matchedTotal',
-                      style: const TextStyle(color: Brand.success, fontWeight: FontWeight.w900, fontSize: 18),
+                      style: TextStyle(color: Brand.success, fontWeight: FontWeight.w900, fontSize: 18),
                     ),
                   ),
                 ],
@@ -220,9 +220,9 @@ class _SpeedMatchScreenState extends ConsumerState<SpeedMatchScreen> {
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Mascot(mood: Mood.think, size: 120),
+                          const Mascot(mood: Mood.think, size: 120, decorative: true),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             '$speedMatchSeconds saniyede bulabildiğin kadar eş bul.\nYanlış eşleşme 2 saniye götürür.',
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 16, color: Brand.muted, height: 1.4),

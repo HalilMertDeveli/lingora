@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/progress.dart';
+import '../services/growth/analytics.dart';
 import '../org/org_widgets.dart';
 import '../services/notifications.dart';
 import '../theme.dart';
@@ -56,7 +57,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBar: AppBar(
         titleSpacing: 12,
         title: const StatsBar(),
-        bottom: const PreferredSize(
+        bottom: PreferredSize(
           preferredSize: Size.fromHeight(1),
           child: Divider(height: 1, color: Brand.line),
         ),
@@ -143,7 +144,7 @@ class StatsBar extends ConsumerWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(track.emoji, style: const TextStyle(fontSize: 24)),
+                  Glyph(emoji: track.emoji, icon: trackIcon(track), size: 24),
                   const SizedBox(width: 6),
                   Flexible(
                     child: Text(
@@ -152,7 +153,7 @@ class StatsBar extends ConsumerWidget {
                       style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
                     ),
                   ),
-                  const Icon(Icons.expand_more_rounded, color: Brand.muted),
+                  Icon(Icons.expand_more_rounded, color: Brand.muted),
                 ],
               ),
             ),
@@ -186,18 +187,19 @@ class _TrackPicker extends ConsumerWidget {
         selected: t.id == current,
         onTap: () {
           ref.read(progressProvider.notifier).setTrack(t.id);
+          logEvent(ref, AnalyticsEvent.trackChosen(t.id, source: 'home'));
           Navigator.pop(context);
         },
         child: Row(
           children: [
-            Text(t.emoji, style: const TextStyle(fontSize: 30)),
+            IconBadge(icon: trackIcon(t), emoji: t.emoji, size: 40),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(t.title, style: Theme.of(context).textTheme.titleMedium),
-                  Text(t.subtitle, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                  Text(t.subtitle, style: TextStyle(color: Brand.muted, fontSize: 13)),
                 ],
               ),
             ),
@@ -210,7 +212,7 @@ class _TrackPicker extends ConsumerWidget {
                 ),
                 child: Text(
                   t.badge!,
-                  style: const TextStyle(color: Brand.primary, fontSize: 10, fontWeight: FontWeight.w900),
+                  style: TextStyle(color: Brand.primary, fontSize: 10, fontWeight: FontWeight.w900),
                 ),
               ),
           ],
@@ -226,7 +228,7 @@ class _TrackPicker extends ConsumerWidget {
           children: [
             Text('Ne çalışmak istersin?', style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 4),
-            const Text('İlerlemen her kursta ayrı saklanır.', style: TextStyle(color: Brand.muted)),
+            Text('İlerlemen her kursta ayrı saklanır.', style: TextStyle(color: Brand.muted)),
             const SizedBox(height: 14),
             const _SectionLabel('KURSLAR'),
             for (final t in courseCatalog) tile(t),
@@ -248,13 +250,8 @@ class _SectionLabel extends StatelessWidget {
   final String text;
 
   @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(bottom: 8),
-    child: Text(
-      text,
-      style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1),
-    ),
-  );
+  Widget build(BuildContext context) =>
+      Padding(padding: const EdgeInsets.only(bottom: 8), child: SectionLabel(text));
 }
 
 class _Stat extends StatelessWidget {
@@ -275,3 +272,17 @@ class _Stat extends StatelessWidget {
     ],
   );
 }
+
+/// Material icon for a track, used instead of its emoji in adult mode.
+IconData trackIcon(Track t) => switch (t.id) {
+  'pro_tourism' => Icons.hotel_outlined,
+  'pro_interview' => Icons.work_outline_rounded,
+  'pro_software' => Icons.code_rounded,
+  'yds' => Icons.school_outlined,
+  'lgs' => Icons.edit_note_rounded,
+  'notes' => Icons.sticky_note_2_outlined,
+  // Not an exhaustive switch on kind, so new track kinds compile without edits.
+  _ when t.kind == TrackKind.exam => Icons.assignment_outlined,
+  _ when t.kind == TrackKind.notes => Icons.sticky_note_2_outlined,
+  _ => Icons.translate_rounded,
+};

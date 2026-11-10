@@ -128,7 +128,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.close, color: Brand.muted),
+                    icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   Expanded(
@@ -142,7 +142,13 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
                 controller: _scroll,
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
                 children: [
-                  Center(child: Mascot(mood: _pickedRight == false ? Mood.think : Mood.idle, size: 90)),
+                  Center(
+                    child: Mascot(
+                      mood: _pickedRight == false ? Mood.think : Mood.idle,
+                      size: 90,
+                      decorative: true,
+                    ),
+                  ),
                   const SizedBox(height: 4),
                   Text(
                     widget.node.title,
@@ -161,7 +167,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: Brand.line, width: 2)),
               ),
               child: PressableButton(
@@ -199,7 +205,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
         child: Container(
           padding: const EdgeInsets.fromLTRB(14, 10, 14, 12),
           decoration: BoxDecoration(
-            color: right ? widget.color.withValues(alpha: 0.10) : Colors.white,
+            color: right ? widget.color.withValues(alpha: 0.10) : Brand.card,
             border: Border.all(color: right ? widget.color.withValues(alpha: 0.5) : Brand.line, width: 2),
             borderRadius: BorderRadius.only(
               topLeft: const Radius.circular(18),
@@ -222,7 +228,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
                 child: showTr && s.translation != null
                     ? Padding(
                         padding: const EdgeInsets.only(top: 4),
-                        child: Text(s.translation!, style: const TextStyle(color: Brand.muted)),
+                        child: Text(s.translation!, style: TextStyle(color: Brand.muted)),
                       )
                     : const SizedBox(width: double.infinity),
               ),
@@ -256,7 +262,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
           children: [
             Row(
               children: [
-                const Icon(Icons.help_rounded, color: Brand.accent),
+                Icon(Icons.help_rounded, color: Brand.accent),
                 const SizedBox(width: 8),
                 Expanded(child: Text(s.prompt!, style: Theme.of(context).textTheme.titleMedium)),
               ],

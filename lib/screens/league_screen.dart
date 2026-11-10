@@ -26,10 +26,10 @@ class LeagueScreen extends ConsumerWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(color: info.color, borderRadius: BorderRadius.circular(20)),
+          decoration: context.lingora.hero(info.color),
           child: Row(
             children: [
-              Text(info.emoji, style: const TextStyle(fontSize: 48)),
+              Glyph(emoji: info.emoji, icon: Icons.military_tech_rounded, size: 48, color: Colors.white),
               const SizedBox(width: 14),
               Expanded(
                 child: Column(
@@ -60,13 +60,13 @@ class LeagueScreen extends ConsumerWidget {
             (true, false) => 'Son $demoteCount kişi alt lige düşer',
           },
           textAlign: TextAlign.center,
-          style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w600),
+          style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 12),
         for (var i = 0; i < table.length; i++) ...[
           if (i == promoteCount && tier < leagueTiers.length - 1)
-            const _ZoneLine('YÜKSELME BÖLGESİ', Brand.success),
-          if (i == leagueSize - demoteCount && tier > 0) const _ZoneLine('DÜŞME BÖLGESİ', Brand.error),
+            _ZoneLine('YÜKSELME BÖLGESİ', Brand.success),
+          if (i == leagueSize - demoteCount && tier > 0) _ZoneLine('DÜŞME BÖLGESİ', Brand.error),
           _Row(rank: i + 1, entry: table[i], tier: tier),
         ],
         const SizedBox(height: 16),
@@ -75,7 +75,7 @@ class LeagueScreen extends ConsumerWidget {
               ? 'Bu hafta gerçek Lingora kullanıcılarıyla yarışıyorsun.'
               : 'Çevrimdışı mod: rakipler bu cihazda simüle edilir.',
           textAlign: TextAlign.center,
-          style: const TextStyle(color: Brand.muted, fontSize: 12),
+          style: TextStyle(color: Brand.muted, fontSize: 12),
         ),
       ],
     );
@@ -95,7 +95,12 @@ class _TierStrip extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 6),
           child: Opacity(
             opacity: i <= current ? 1 : 0.3,
-            child: Text(leagueTiers[i].emoji, style: TextStyle(fontSize: i == current ? 34 : 24)),
+            child: Glyph(
+              emoji: leagueTiers[i].emoji,
+              icon: Icons.military_tech_rounded,
+              size: i == current ? 34 : 24,
+              color: leagueTiers[i].color,
+            ),
           ),
         ),
     ],
@@ -170,7 +175,7 @@ class _Row extends StatelessWidget {
           ),
           Text(
             '${entry.xp} XP',
-            style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+            style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
           ),
         ],
       ),
@@ -182,7 +187,10 @@ class _Row extends StatelessWidget {
 Future<void> showLeagueResult(BuildContext context, LeagueResult r) {
   final tier = leagueTiers[r.newTier];
   final (title, body) = r.promoted
-      ? ('${tier.emoji} Terfi ettin!', 'Geçen haftayı ${r.rank}. bitirdin ve ${tier.name} Ligine yükseldin.')
+      ? (
+          '${kidEmoji(tier.emoji)}Terfi ettin!',
+          'Geçen haftayı ${r.rank}. bitirdin ve ${tier.name} Ligine yükseldin.',
+        )
       : r.demoted
       ? ('Alt lige düştün', 'Geçen haftayı ${r.rank}. bitirdin. Bu hafta ${tier.name} Liginde yeniden dene!')
       : ('Hafta bitti', 'Geçen haftayı ${r.rank}. bitirdin ve ${tier.name} Liginde kaldın.');

@@ -59,7 +59,7 @@ ThemeData _panelTheme() {
   ButtonStyle compact(ButtonStyle? s) =>
       (s ?? const ButtonStyle()).copyWith(minimumSize: const WidgetStatePropertyAll(Size(64, 44)));
   return base.copyWith(
-    scaffoldBackgroundColor: Brand.surface,
+    scaffoldBackgroundColor: Brand.background,
     filledButtonTheme: FilledButtonThemeData(style: compact(base.filledButtonTheme.style)),
     outlinedButtonTheme: OutlinedButtonThemeData(style: compact(base.outlinedButtonTheme.style)),
   );
@@ -202,7 +202,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
           ),
           if (_error != null) ...[
             const SizedBox(height: 12),
-            Text(_error!, style: const TextStyle(color: Brand.error)),
+            Text(_error!, style: TextStyle(color: Brand.error)),
           ],
           const SizedBox(height: 20),
           FilledButton(
@@ -227,7 +227,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
             ],
           ),
           const SizedBox(height: 12),
-          const Text(
+          Text(
             'Panelde yalnızca öğrenme ilerlemesi (ders, XP, seri, ödev) görünür. '
             'Çalışanların ve öğrencilerin günlükleri, notları ve sohbetleri paylaşılmaz.',
             style: TextStyle(color: Brand.muted, fontSize: 12),
@@ -343,7 +343,7 @@ class _JoinAsAdminPageState extends ConsumerState<JoinAsAdminPage> {
           maxLength: 40,
           decoration: const InputDecoration(labelText: 'Adınız soyadınız', border: OutlineInputBorder()),
         ),
-        if (_error != null) Text(_error!, style: const TextStyle(color: Brand.error)),
+        if (_error != null) Text(_error!, style: TextStyle(color: Brand.error)),
         const SizedBox(height: 12),
         FilledButton(onPressed: _busy ? null : _join, child: const Text('Kuruma bağlan')),
         TextButton(onPressed: () => ref.read(adminAuthProvider)?.signOut(), child: const Text('Çıkış yap')),
@@ -538,7 +538,7 @@ class _OrgFormDialogState extends State<OrgFormDialog> {
               if (d != null) setState(() => _expires = DateTime(d.year, d.month, d.day, 23, 59));
             },
           ),
-          if (_error != null) Text(_error!, style: const TextStyle(color: Brand.error)),
+          if (_error != null) Text(_error!, style: TextStyle(color: Brand.error)),
         ],
       ),
     ),

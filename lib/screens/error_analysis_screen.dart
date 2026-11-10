@@ -29,7 +29,7 @@ class ErrorAnalysisScreen extends ConsumerWidget {
             total == 0
                 ? 'Henüz kayıtlı hata yok. Ders, günlük ve sohbette yaptığın hatalar burada toplanır.'
                 : 'Toplam $total hata, ${all.length} kategoride. Büyükten küçüğe sıralı.',
-            style: const TextStyle(color: Brand.muted),
+            style: TextStyle(color: Brand.muted),
           ),
           const SizedBox(height: 14),
           for (final (category, count) in all)
@@ -46,7 +46,7 @@ class ErrorAnalysisScreen extends ConsumerWidget {
                         ),
                         Text(
                           '$count kez · %${(count * 100 / total).round()}',
-                          style: const TextStyle(color: Brand.muted, fontSize: 13),
+                          style: TextStyle(color: Brand.muted, fontSize: 13),
                         ),
                       ],
                     ),
@@ -61,16 +61,19 @@ class ErrorAnalysisScreen extends ConsumerWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Text('💡 ${category.tip}', style: const TextStyle(height: 1.3, fontSize: 13)),
+                    Text(
+                      '${kidEmoji('💡')}${category.tip}',
+                      style: const TextStyle(height: 1.3, fontSize: 13),
+                    ),
                   ],
                 ),
               ),
             ),
           if (total > 0 && clean.isNotEmpty) ...[
             const SizedBox(height: 8),
-            Text('Temiz kategoriler ✅', style: Theme.of(context).textTheme.titleMedium),
+            Text('Temiz kategoriler', style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 6),
-            Text(clean.map((c) => c.label).join(' · '), style: const TextStyle(color: Brand.muted)),
+            Text(clean.map((c) => c.label).join(' · '), style: TextStyle(color: Brand.muted)),
           ],
         ],
       ),

@@ -220,13 +220,13 @@ class OverviewSection extends ConsumerWidget {
             ),
             _ListCard(
               title: 'Bir haftadır girmeyenler',
-              empty: 'Herkes bu hafta çalıştı. 🎉',
+              empty: 'Herkes bu hafta çalıştı.',
               rows: [for (final m in quiet.take(8)) (m.displayName, 'son: ${fmtDayKey(m.lastActiveDay)}')],
             ),
           ],
         ),
         const SizedBox(height: 24),
-        const Text(
+        Text(
           'Gizlilik: Lingora yalnızca ders, XP, seri ve ödev durumunu paylaşır. Günlükler, kişisel notlar, '
           'kelime listeleri ve yapay zekâ sohbetleri kurumla paylaşılmaz.',
           style: TextStyle(color: Brand.muted, fontSize: 12),
@@ -249,7 +249,7 @@ class _ListCard extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
-        side: const BorderSide(color: Brand.line),
+        side: BorderSide(color: Brand.line),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -258,14 +258,14 @@ class _ListCard extends StatelessWidget {
           children: [
             Text(title, style: const TextStyle(fontWeight: FontWeight.w800)),
             const SizedBox(height: 8),
-            if (rows.isEmpty) Text(empty, style: const TextStyle(color: Brand.muted)),
+            if (rows.isEmpty) Text(empty, style: TextStyle(color: Brand.muted)),
             for (final (a, b) in rows)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: Row(
                   children: [
                     Expanded(child: Text(a)),
-                    Text(b, style: const TextStyle(color: Brand.muted)),
+                    Text(b, style: TextStyle(color: Brand.muted)),
                   ],
                 ),
               ),
@@ -402,7 +402,7 @@ class _PeopleSectionState extends ConsumerState<PeopleSection> {
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
-            side: const BorderSide(color: Brand.line),
+            side: BorderSide(color: Brand.line),
           ),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -434,7 +434,7 @@ class _PeopleSectionState extends ConsumerState<PeopleSection> {
                               m.synced
                                   ? m.classIds.map(r.className).where((n) => n.isNotEmpty).join(', ')
                                   : 'Uygulama henüz eşitlenmedi',
-                              style: const TextStyle(color: Brand.muted, fontSize: 12),
+                              style: TextStyle(color: Brand.muted, fontSize: 12),
                             ),
                           ],
                         ),
@@ -443,7 +443,7 @@ class _PeopleSectionState extends ConsumerState<PeopleSection> {
                       DataCell(Text('${m.lessonsDone}')),
                       DataCell(Text('${m.totalXp}')),
                       DataCell(Text('${m.weekXp}')),
-                      DataCell(Text(m.streak > 0 ? '🔥 ${m.streak}' : '0')),
+                      DataCell(Text('${m.streak} gün')),
                       DataCell(Text(fmtDayKey(m.lastActiveDay))),
                       DataCell(
                         Text(
@@ -466,7 +466,7 @@ class _PeopleSectionState extends ConsumerState<PeopleSection> {
                                 if (role != m.role)
                                   PopupMenuItem(value: role.name, child: Text('Rolü yap: ${role.label}')),
                               const PopupMenuDivider(),
-                              const PopupMenuItem(
+                              PopupMenuItem(
                                 value: 'remove',
                                 child: Text('Kurumdan çıkar', style: TextStyle(color: Brand.error)),
                               ),
@@ -613,7 +613,7 @@ class ClassesSection extends ConsumerWidget {
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
-            side: const BorderSide(color: Brand.line),
+            side: BorderSide(color: Brand.line),
           ),
           child: ListTile(
             leading: const CircleAvatar(child: Icon(Icons.groups_2)),
@@ -747,7 +747,7 @@ class AssignmentsSection extends ConsumerWidget {
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14),
-              side: const BorderSide(color: Brand.line),
+              side: BorderSide(color: Brand.line),
             ),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -761,7 +761,7 @@ class AssignmentsSection extends ConsumerWidget {
                         Text(
                           '${a.kind.label} · ${report.className(a.classId)} · son gün ${fmtDate(a.dueAt)}'
                           '${a.dueAt.isBefore(now) ? ' (geçti)' : ''}',
-                          style: const TextStyle(color: Brand.muted),
+                          style: TextStyle(color: Brand.muted),
                         ),
                         const SizedBox(height: 8),
                         LinearProgressIndicator(
@@ -937,7 +937,7 @@ Future<void> showCodeDialog(BuildContext context, String code, String note) => s
         const SizedBox(height: 12),
         CodeChip(code: code),
         const SizedBox(height: 12),
-        const Text(
+        Text(
           'Uygulamada: Profil → Kurum koduyla katıl. Her katılım bir koltuk kullanır.',
           style: TextStyle(color: Brand.muted, fontSize: 12),
         ),
@@ -991,7 +991,7 @@ class CodesSection extends ConsumerWidget {
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14),
-              side: const BorderSide(color: Brand.line),
+              side: BorderSide(color: Brand.line),
             ),
             child: Padding(
               padding: const EdgeInsets.all(12),
@@ -1025,8 +1025,8 @@ class CodesSection extends ConsumerWidget {
                       );
                       _reload(ref, report);
                     },
-                    icon: const Icon(Icons.block, color: Brand.error),
-                    label: const Text('İptal et', style: TextStyle(color: Brand.error)),
+                    icon: Icon(Icons.block, color: Brand.error),
+                    label: Text('İptal et', style: TextStyle(color: Brand.error)),
                   ),
                 ],
               ),
@@ -1084,7 +1084,7 @@ class _CodeDialogState extends State<_CodeDialog> {
               _role == OrgRole.admin
                   ? 'Yöneticiler paneli kullanır, koltuk harcamaz ve Premium almaz.'
                   : 'Her katılan bir koltuk kullanır ve plan bitişine kadar Premium alır.',
-              style: const TextStyle(color: Brand.muted, fontSize: 12),
+              style: TextStyle(color: Brand.muted, fontSize: 12),
             ),
           ],
         ),

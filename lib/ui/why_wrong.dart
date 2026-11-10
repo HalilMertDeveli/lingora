@@ -31,7 +31,7 @@ class WhyWrongSection extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.75),
+        color: Brand.card.withValues(alpha: 0.75),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Column(
@@ -39,7 +39,7 @@ class WhyWrongSection extends StatelessWidget {
         children: [
           const Row(
             children: [
-              Text('🔍', style: TextStyle(fontSize: 16)),
+              Glyph(emoji: '🔍', icon: Icons.manage_search_rounded, size: 18),
               SizedBox(width: 6),
               Text('Neden yanlış?', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 15)),
             ],
@@ -51,7 +51,7 @@ class WhyWrongSection extends StatelessWidget {
                 if (missing.isNotEmpty) 'Eksik: ${missing.join(', ')}',
                 if (extra.isNotEmpty) 'Fazla: ${extra.join(', ')}',
               ].join(' · '),
-              style: const TextStyle(color: Brand.ink, height: 1.3),
+              style: TextStyle(color: Brand.ink, height: 1.3),
             )
           else
             for (final e in errors.take(maxErrors)) _ErrorTile(e),
@@ -81,12 +81,12 @@ class _ErrorTile extends StatelessWidget {
               decoration: BoxDecoration(color: Brand.errorBg, borderRadius: BorderRadius.circular(8)),
               child: Text(
                 error.category.label,
-                style: const TextStyle(color: Brand.error, fontWeight: FontWeight.w800, fontSize: 12),
+                style: TextStyle(color: Brand.error, fontWeight: FontWeight.w800, fontSize: 12),
               ),
             ),
             Text(
               error.wrong,
-              style: const TextStyle(
+              style: TextStyle(
                 decoration: TextDecoration.lineThrough,
                 color: Brand.muted,
                 fontWeight: FontWeight.w600,
@@ -95,7 +95,7 @@ class _ErrorTile extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 3),
-        Text(error.explanation, style: const TextStyle(color: Brand.ink, height: 1.3)),
+        Text(error.explanation, style: TextStyle(color: Brand.ink, height: 1.3)),
       ],
     ),
   );

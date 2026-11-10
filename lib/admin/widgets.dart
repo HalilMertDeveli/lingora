@@ -31,7 +31,7 @@ class BrandTitle extends StatelessWidget {
   const BrandTitle({super.key});
 
   @override
-  Widget build(BuildContext context) => const FittedBox(
+  Widget build(BuildContext context) => FittedBox(
     fit: BoxFit.scaleDown,
     child: Row(
       mainAxisSize: MainAxisSize.min,
@@ -67,7 +67,7 @@ class CenteredCard extends StatelessWidget {
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
-              side: const BorderSide(color: Brand.line),
+              side: BorderSide(color: Brand.line),
             ),
             child: Padding(padding: const EdgeInsets.all(28), child: child),
           ),
@@ -115,7 +115,7 @@ class StatCard extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
-        side: const BorderSide(color: Brand.line),
+        side: BorderSide(color: Brand.line),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -127,7 +127,7 @@ class StatCard extends StatelessWidget {
                 if (icon != null) Icon(icon, size: 18, color: color ?? Brand.muted),
                 if (icon != null) const SizedBox(width: 6),
                 Expanded(
-                  child: Text(label, style: const TextStyle(color: Brand.muted)),
+                  child: Text(label, style: TextStyle(color: Brand.muted)),
                 ),
               ],
             ),
@@ -136,7 +136,7 @@ class StatCard extends StatelessWidget {
               value,
               style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: color ?? Brand.ink),
             ),
-            if (hint != null) Text(hint!, style: const TextStyle(color: Brand.muted, fontSize: 12)),
+            if (hint != null) Text(hint!, style: TextStyle(color: Brand.muted, fontSize: 12)),
           ],
         ),
       ),
@@ -163,7 +163,7 @@ class SectionHeader extends StatelessWidget {
                 title,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
               ),
-              if (subtitle != null) Text(subtitle!, style: const TextStyle(color: Brand.muted)),
+              if (subtitle != null) Text(subtitle!, style: TextStyle(color: Brand.muted)),
             ],
           ),
         ),

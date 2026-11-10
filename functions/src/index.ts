@@ -60,3 +60,6 @@ export const verifyPurchase = onCall((req) =>
 
 // Lingora Kurumsal (orgs, seats, classes, assignments): orgs_api.ts, docs/kurumsal.md.
 export * from "./orgs_api.js";
+
+// Invite programme: getInviteCode, redeemInvite (functions/src/referral_api.ts).
+export * from "./referral_api.js";
