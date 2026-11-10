@@ -57,3 +57,6 @@ export const verifyPurchase = onCall((req) =>
     now: new Date(),
   }),
 );
+
+// Lingora Kurumsal (orgs, seats, classes, assignments): orgs_api.ts, docs/kurumsal.md.
+export * from "./orgs_api.js";

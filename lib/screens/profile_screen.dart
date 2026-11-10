@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/tr_errors.dart';
 import '../data/progress.dart';
+import '../org/org_widgets.dart';
 import '../services/billing/premium.dart';
 import '../theme.dart';
 import 'account_section.dart';
@@ -128,6 +129,7 @@ class ProfileScreen extends ConsumerWidget {
         const SizedBox(height: 12),
         const ReminderSettings(),
         const SizedBox(height: 24),
+        const OrgSection(),
         Text('Hesap', style: t.titleLarge),
         const SizedBox(height: 12),
         const AccountSection(),

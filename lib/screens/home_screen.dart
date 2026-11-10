@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/progress.dart';
+import '../org/org_widgets.dart';
 import '../services/notifications.dart';
 import '../theme.dart';
 import 'conversation_screen.dart';
@@ -63,11 +64,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: IndexedStack(
         index: _tab,
         children: [
-          switch (track.kind) {
-            TrackKind.exam => ExamHomeScreen(key: ValueKey(track.id), examId: track.id),
-            TrackKind.notes => const NotesHomeScreen(),
-            TrackKind.course => const PathScreen(),
-          },
+          Column(
+            children: [
+              // Lingora Kurumsal: shrinks to nothing without assignments.
+              const OrgAssignmentsCard(),
+              Expanded(
+                child: switch (track.kind) {
+                  TrackKind.exam => ExamHomeScreen(key: ValueKey(track.id), examId: track.id),
+                  TrackKind.notes => const NotesHomeScreen(),
+                  TrackKind.course => const PathScreen(),
+                },
+              ),
+            ],
+          ),
           const ConversationHomeScreen(),
           const QuestsScreen(),
           const LeagueScreen(),
