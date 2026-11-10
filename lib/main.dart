@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'data/progress.dart';
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
+import 'services/billing/premium.dart';
 import 'theme.dart';
 
 Future<void> main() async {
@@ -19,6 +20,9 @@ class LingoraApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final onboarded = ref.watch(progressProvider.select((p) => p.onboarded));
+    // Start listening to the store at launch: Google Play re-delivers
+    // unacknowledged or pending purchases right after start-up.
+    ref.listen(premiumControllerProvider, (_, _) {});
     return MaterialApp(
       title: 'Lingora',
       debugShowCheckedModeBanner: false,

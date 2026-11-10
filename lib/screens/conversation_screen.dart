@@ -4,11 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../data/scenarios.dart';
+import '../services/billing/premium.dart';
 import '../services/conversation.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import 'paywall_screen.dart';
 import 'pronunciation_screen.dart';
 
 const conversationXp = 15;
@@ -20,6 +22,7 @@ class ConversationHomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final live = ref.watch(conversationServiceProvider).isLive;
+    final premium = ref.watch(premiumProvider);
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
       children: [
@@ -70,12 +73,7 @@ class ConversationHomeScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: TapCard(
-              onTap: () => Navigator.of(context).push(
-                MaterialPageRoute<void>(
-                  fullscreenDialog: true,
-                  builder: (_) => ConversationScreen(scenario: s),
-                ),
-              ),
+              onTap: () => openConversation(context, ref, s),
               child: Row(
                 children: [
                   Text(s.emoji, style: const TextStyle(fontSize: 34)),
@@ -89,7 +87,7 @@ class ConversationHomeScreen extends ConsumerWidget {
                             Flexible(child: Text(s.title, style: Theme.of(context).textTheme.titleMedium)),
                             const SizedBox(width: 6),
                             _Tag(s.level),
-                            if (live) ...[
+                            if (live && !premium) ...[
                               const SizedBox(width: 4),
                               const _Tag('PREMIUM', color: Brand.accent),
                             ],
@@ -108,6 +106,35 @@ class ConversationHomeScreen extends ConsumerWidget {
       ],
     );
   }
+}
+
+/// Opens a role-play. The live AI partner is Premium; without Premium the
+/// paywall offers the free scripted demo of the same scenario instead.
+Future<void> openConversation(BuildContext context, WidgetRef ref, Scenario s) async {
+  final live = ref.read(conversationServiceProvider).isLive;
+  var demo = false;
+  if (live) {
+    final gate = await requirePremium(
+      context,
+      ref,
+      PremiumFeature.aiConversation,
+      freeAlternative: 'ÜCRETSİZ DEMO İLE DENE',
+    );
+    if (gate == GateResult.closed || !context.mounted) return;
+    demo = gate == GateResult.free;
+  }
+  final screen = ConversationScreen(scenario: s);
+  await Navigator.of(context).push(
+    MaterialPageRoute<void>(
+      fullscreenDialog: true,
+      builder: (_) => demo
+          ? ProviderScope(
+              overrides: [conversationServiceProvider.overrideWithValue(DemoConversationService())],
+              child: screen,
+            )
+          : screen,
+    ),
+  );
 }
 
 class _Tag extends StatelessWidget {
