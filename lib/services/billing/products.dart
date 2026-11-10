@@ -58,6 +58,11 @@ enum PremiumFeature {
     'Detaylı hata analizi',
     'Türk hata dedektörünün tüm kategorileri: oranlar, sayılar ve her biri için çalışma ipucu.',
     '📊',
+  ),
+  cloudBackup(
+    'Bulut yedekleme ve cihazlar arası senkron',
+    'İlerlemen buluta yedeklenir; telefon değiştirsen de aynı hesapla kaldığın yerden devam edersin.',
+    '☁️',
   );
 
   const PremiumFeature(this.title, this.description, this.emoji);
