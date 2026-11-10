@@ -266,12 +266,12 @@ class _Stat extends StatelessWidget {
 IconData trackIcon(Track t) => switch (t.id) {
   'pro_tourism' => Icons.hotel_outlined,
   'pro_interview' => Icons.work_outline_rounded,
+  'pro_software' => Icons.code_rounded,
   'yds' => Icons.school_outlined,
   'lgs' => Icons.edit_note_rounded,
   'notes' => Icons.sticky_note_2_outlined,
-  _ => switch (t.kind) {
-    TrackKind.exam => Icons.assignment_outlined,
-    TrackKind.notes => Icons.sticky_note_2_outlined,
-    TrackKind.course => Icons.translate_rounded,
-  },
+  // Not an exhaustive switch on kind, so new track kinds compile without edits.
+  _ when t.kind == TrackKind.exam => Icons.assignment_outlined,
+  _ when t.kind == TrackKind.notes => Icons.sticky_note_2_outlined,
+  _ => Icons.translate_rounded,
 };
