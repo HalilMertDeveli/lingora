@@ -80,7 +80,7 @@ Huni: `onboarding_step(0)` → `onboarding_step(4)` → `onboarding_complete` �
 
 | Olay | Parametreler | Ne zaman |
 | --- | --- | --- |
-| `paywall_view` | `placement` (profile, after_lessons, ai_chat, mock_exam, error_analysis), `variant` (a, b) | Paywall Premium olmayan kullanıcıya göründü |
+| `paywall_view` | `placement` (profile, after_lessons, ai_chat, mock_exam, error_analysis, cloud_backup), `variant` (a, b) | Paywall Premium olmayan kullanıcıya göründü |
 | `paywall_close` | `placement`, `variant` | Paywall satın almadan kapandı |
 | `purchase_start` | `plan` (monthly, yearly), `placement` | Satın al düğmesine basıldı |
 | `trial_start` | `plan`, `trial_days` | Ücretsiz denemeyle yeni abonelik başladı (Play deneme teklifi) |

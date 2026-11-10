@@ -28,6 +28,7 @@ abstract final class PaywallPlacement {
   static const aiChat = 'ai_chat';
   static const mockExam = 'mock_exam';
   static const errorAnalysis = 'error_analysis';
+  static const cloudBackup = 'cloud_backup';
 }
 
 class AnalyticsEvent {

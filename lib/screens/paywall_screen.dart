@@ -68,6 +68,7 @@ class PaywallScreen extends ConsumerStatefulWidget {
         PremiumFeature.aiConversation => PaywallPlacement.aiChat,
         PremiumFeature.unlimitedMockExams => PaywallPlacement.mockExam,
         PremiumFeature.errorAnalytics => PaywallPlacement.errorAnalysis,
+        PremiumFeature.cloudBackup => PaywallPlacement.cloudBackup,
         null => PaywallPlacement.profile,
       };
 

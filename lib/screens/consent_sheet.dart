@@ -27,7 +27,9 @@ Future<void> askAnalyticsConsent(BuildContext context, WidgetRef ref) async {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Center(child: IconBadge(icon: Icons.insights_rounded, emoji: '📊', size: 52)),
+            const Center(
+              child: IconBadge(icon: Icons.insights_rounded, emoji: '📊', size: 52),
+            ),
             const SizedBox(height: 8),
             Text(
               'Anonim kullanım istatistikleri',
