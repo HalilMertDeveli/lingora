@@ -147,7 +147,7 @@ class VocabCard {
     this.options = const [],
     this.speak,
     this.hint,
-    this.badge,
+    this.where,
   });
 
   final VocabCardType type;
@@ -169,8 +169,8 @@ class VocabCard {
   /// Typing hint such as "d _ _ _ _ _ (6 harf)".
   final String? hint;
 
-  /// Context label such as "📌 Commit mesajı".
-  final String? badge;
+  /// Where the example sentence comes from (commit, PR, stand-up...).
+  final VocabContext? where;
 
   bool get isTyping => options.isEmpty;
 
@@ -312,7 +312,7 @@ VocabCard? buildCard(VocabEntry e, List<VocabEntry> all, VocabCardType type, Ran
         sub: x.tr,
         answer: x.target,
         hint: _hintFor(x.target),
-        badge: '${x.context.emoji} ${x.context.label}',
+        where: x.context,
       );
     case VocabCardType.collocation:
       final c = e.collocations[r.nextInt(e.collocations.length)];
@@ -386,7 +386,7 @@ VocabCard? buildCard(VocabEntry e, List<VocabEntry> all, VocabCardType type, Ran
         sub: x.tr,
         answer: x.target,
         options: _withAnswer(x.target, d, r),
-        badge: '${x.context.emoji} ${x.context.label}',
+        where: x.context,
       );
   }
 }

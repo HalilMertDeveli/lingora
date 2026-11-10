@@ -48,7 +48,7 @@ class _VocabWordListScreenState extends ConsumerState<VocabWordListScreen> {
           for (final e in list)
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: CircleAvatar(radius: 6, backgroundColor: statusColors[vocabStatus(e, p)]),
+              leading: CircleAvatar(radius: 6, backgroundColor: statusColor(vocabStatus(e, p))),
               title: Text(e.word, style: const TextStyle(fontWeight: FontWeight.w800)),
               subtitle: Text(e.tr),
               trailing: Text('#${e.rank}', style: TextStyle(color: Brand.muted)),
@@ -135,8 +135,8 @@ class VocabEntryDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${x.context.emoji} ${x.context.label}',
-                  style: const TextStyle(fontSize: 12, color: vocabColor, fontWeight: FontWeight.w800),
+                  '${kidEmoji(x.context.emoji)}${x.context.label}',
+                  style: TextStyle(fontSize: 12, color: vocabColor, fontWeight: FontWeight.w800),
                 ),
                 Text(x.en, style: const TextStyle(fontSize: 15)),
                 Text(x.tr, style: TextStyle(color: Brand.muted)),
@@ -161,11 +161,8 @@ class VocabEntryDetails extends StatelessWidget {
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: Brand.accent.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Text('💡 ${e.tip}', style: const TextStyle(height: 1.35)),
+            decoration: BoxDecoration(color: Brand.accentBg, borderRadius: BorderRadius.circular(14)),
+            child: Text('${kidEmoji('💡')}${e.tip}', style: const TextStyle(height: 1.35)),
           ),
         ],
       ],

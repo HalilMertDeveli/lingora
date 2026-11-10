@@ -147,10 +147,10 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (card.badge != null)
+        if (card.where != null)
           Text(
-            card.badge!,
-            style: const TextStyle(color: vocabColor, fontWeight: FontWeight.w800),
+            '${kidEmoji(card.where!.emoji)}${card.where!.label}',
+            style: TextStyle(color: vocabColor, fontWeight: FontWeight.w800),
           ),
         const SizedBox(height: 8),
         if (card.type == VocabCardType.listenSpell) ...[
@@ -199,11 +199,7 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
           ),
           const SizedBox(height: 12),
           if (!locked)
-            FilledButton(
-              style: FilledButton.styleFrom(backgroundColor: vocabColor),
-              onPressed: () => _check(_input.text),
-              child: const Text('Kontrol et'),
-            ),
+            PressableButton(label: 'KONTROL ET', color: vocabColor, onPressed: () => _check(_input.text)),
         ] else
           for (final o in card.options)
             Padding(
@@ -245,18 +241,18 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
           if (!ok) Text('${e.word} = ${e.tr}', style: TextStyle(color: Brand.ink)),
           if (e.tip != null && !ok) ...[
             const SizedBox(height: 6),
-            Text('💡 ${e.tip}', style: const TextStyle(fontSize: 13)),
+            Text('${kidEmoji('💡')}${e.tip}', style: const TextStyle(fontSize: 13)),
           ],
           const SizedBox(height: 10),
           Row(
             children: [
               TextButton(onPressed: () => showVocabEntry(context, e), child: const Text('Kelimeye bak')),
               const Spacer(),
-              FilledButton(
+              PressableButton(
                 key: const Key('vocabNext'),
-                style: FilledButton.styleFrom(backgroundColor: ok ? Brand.success : Brand.error),
+                label: 'DEVAM',
+                color: ok ? Brand.success : Brand.error,
                 onPressed: _next,
-                child: const Text('Devam'),
               ),
             ],
           ),

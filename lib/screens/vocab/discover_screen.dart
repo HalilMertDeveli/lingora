@@ -6,6 +6,7 @@ import '../../data/vocab_practice.dart';
 import '../../exercises/common.dart';
 import '../../models/vocab.dart';
 import '../../theme.dart';
+import '../../ui/motion.dart';
 import 'review_screen.dart';
 import 'vocab_home_screen.dart';
 
@@ -101,7 +102,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                     Text(
                       e.tr,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: vocabColor),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: vocabColor),
                     ),
                     const SizedBox(height: 6),
                     Text(
@@ -111,7 +112,11 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                     ),
                     if (e.tip != null) ...[
                       const SizedBox(height: 12),
-                      Text('💡 ${e.tip}', textAlign: TextAlign.center, style: const TextStyle(fontSize: 13)),
+                      Text(
+                        '${kidEmoji('💡')}${e.tip}',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 13),
+                      ),
                     ],
                   ] else
                     Text('Anlamı görmek için dokun', style: TextStyle(color: Brand.muted)),
@@ -124,23 +129,19 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
         Row(
           children: [
             Expanded(
-              child: OutlinedButton(onPressed: () => _sort(null), child: const Text('Sonra')),
+              child: PressableButton(label: 'SONRA', outlined: true, onPressed: () => _sort(null)),
             ),
             const SizedBox(width: 8),
             Expanded(
-              child: FilledButton(
-                style: FilledButton.styleFrom(backgroundColor: Brand.accent),
+              child: PressableButton(
+                label: 'ÖĞRENECEĞİM',
+                color: Brand.accent,
                 onPressed: () => _sort(false),
-                child: const Text('Öğreneceğim'),
               ),
             ),
             const SizedBox(width: 8),
             Expanded(
-              child: FilledButton(
-                style: FilledButton.styleFrom(backgroundColor: Brand.success),
-                onPressed: () => _sort(true),
-                child: const Text('Biliyorum'),
-              ),
+              child: PressableButton(label: 'BİLİYORUM', color: Brand.success, onPressed: () => _sort(true)),
             ),
           ],
         ),
@@ -152,7 +153,9 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [
-      const Text('🎯', textAlign: TextAlign.center, style: TextStyle(fontSize: 56)),
+      Center(
+        child: Glyph(emoji: '🎯', icon: Icons.flag_rounded, size: 56, color: vocabColor),
+      ),
       const SizedBox(height: 12),
       Text('Tur bitti!', textAlign: TextAlign.center, style: Theme.of(context).textTheme.headlineSmall),
       const SizedBox(height: 8),
@@ -163,18 +166,18 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
       ),
       const SizedBox(height: 24),
       if (_learn.isNotEmpty)
-        FilledButton(
-          style: FilledButton.styleFrom(backgroundColor: vocabColor),
+        PressableButton(
+          label: 'ŞİMDİ ÖĞREN (${_learn.length})',
+          color: vocabColor,
           onPressed: () => Navigator.of(context).pushReplacement(
             MaterialPageRoute<void>(
               fullscreenDialog: true,
               builder: (_) => VocabReviewScreen(queue: _learn, all: widget.all),
             ),
           ),
-          child: Text('Şimdi öğren (${_learn.length})'),
         ),
       const SizedBox(height: 8),
-      OutlinedButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Kapat')),
+      PressableButton(label: 'KAPAT', outlined: true, onPressed: () => Navigator.of(context).pop()),
     ],
   );
 }

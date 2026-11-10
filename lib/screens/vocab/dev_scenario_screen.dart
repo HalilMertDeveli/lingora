@@ -7,6 +7,7 @@ import '../../data/practice.dart';
 import '../../data/progress.dart';
 import '../../exercises/common.dart';
 import '../../theme.dart';
+import '../../ui/motion.dart';
 import '../../ui/why_wrong.dart';
 import '../conversation_screen.dart';
 import 'vocab_home_screen.dart';
@@ -35,7 +36,7 @@ class DevScenarioListScreen extends ConsumerWidget {
                 onTap: () => pushVocab(context, DevScenarioScreen(scenario: s)),
                 child: Row(
                   children: [
-                    Text(s.scenario.emoji, style: const TextStyle(fontSize: 28)),
+                    Glyph(emoji: s.scenario.emoji, icon: devScenarioIcon(s.id), color: vocabColor),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Column(
@@ -59,6 +60,19 @@ class DevScenarioListScreen extends ConsumerWidget {
 }
 
 String devScenarioNodeId(String id) => 'sw_scn_$id';
+
+/// Adult-mode icon per scenario (kid mode shows the scenario emoji).
+IconData devScenarioIcon(String id) => switch (id) {
+  'dev_standup' => Icons.groups_outlined,
+  'dev_code_review' => Icons.rate_review_outlined,
+  'dev_bug_ticket' => Icons.bug_report_outlined,
+  'dev_commit' => Icons.commit_rounded,
+  'dev_pr_description' => Icons.description_outlined,
+  'dev_team_chat' => Icons.chat_bubble_outline_rounded,
+  'dev_interview_intro' => Icons.record_voice_over_outlined,
+  'dev_estimate' => Icons.timer_outlined,
+  _ => Icons.forum_outlined,
+};
 
 /// Guided writing practice for one scenario.
 class DevScenarioScreen extends ConsumerStatefulWidget {
@@ -100,16 +114,13 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
   Widget build(BuildContext context) {
     final s = widget.scenario;
     return Scaffold(
-      appBar: AppBar(title: Text('${s.scenario.emoji} ${s.scenario.title}')),
+      appBar: AppBar(title: Text('${kidEmoji(s.scenario.emoji)}${s.scenario.title}')),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
         children: [
           Text(s.task, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, height: 1.35)),
           const SizedBox(height: 12),
-          Text(
-            'İŞE YARAYAN KALIPLAR',
-            style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1),
-          ),
+          const SectionLabel('İŞE YARAYAN KALIPLAR'),
           const SizedBox(height: 6),
           for (final ph in s.phrases)
             Padding(
@@ -138,17 +149,17 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
             maxLength: 800,
             decoration: InputDecoration(hintText: s.placeholder),
           ),
-          FilledButton(
-            style: FilledButton.styleFrom(backgroundColor: vocabColor),
+          PressableButton(
+            label: _errors == null ? 'KONTROL ET' : 'TEKRAR KONTROL ET',
+            color: vocabColor,
             onPressed: _check,
-            child: Text(_errors == null ? 'Kontrol et' : 'Tekrar kontrol et'),
           ),
           if (_errors != null) ...[
             const SizedBox(height: 16),
             if (_errors!.isEmpty)
-              const Text(
-                '🔍 Türk hata dedektörü tipik bir hata bulmadı. 👏',
-                style: TextStyle(fontWeight: FontWeight.w700),
+              Text(
+                '${kidEmoji('🔍')}Türk hata dedektörü tipik bir hata bulmadı.',
+                style: const TextStyle(fontWeight: FontWeight.w700),
               )
             else
               Container(
@@ -157,15 +168,7 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
                 child: WhyWrongSection(errors: _errors!, maxErrors: 5),
               ),
             const SizedBox(height: 12),
-            Text(
-              'KONTROL LİSTESİ',
-              style: TextStyle(
-                color: Brand.muted,
-                fontWeight: FontWeight.w900,
-                fontSize: 12,
-                letterSpacing: 1,
-              ),
-            ),
+            const SectionLabel('KONTROL LİSTESİ'),
             for (final (label, ok) in _checklist!)
               Row(
                 children: [
@@ -181,10 +184,7 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
             const SizedBox(height: 12),
             Container(
               padding: const EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                color: vocabColor.withValues(alpha: 0.08),
-                borderRadius: BorderRadius.circular(14),
-              ),
+              decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(Radii.md)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -205,10 +205,10 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
             ),
           ],
           const SizedBox(height: 20),
-          OutlinedButton.icon(
+          PressableButton(
+            label: 'Canlı konuş: ${s.scenario.partner} (Premium)',
+            outlined: true,
             onPressed: () => openConversation(context, ref, s.scenario),
-            icon: const Icon(Icons.forum_rounded),
-            label: Text('${s.scenario.partner} ile canlı konuş (Premium)'),
           ),
         ],
       ),

@@ -5,18 +5,39 @@ import '../../data/progress.dart';
 import '../../data/vocab_practice.dart';
 import '../../models/vocab.dart';
 import '../../theme.dart';
+import '../../ui/motion.dart';
 import 'dev_scenario_screen.dart';
 import 'discover_screen.dart';
 import 'review_screen.dart';
 import 'word_list_screen.dart';
 
-const vocabColor = Color(0xFF0F766E);
+/// Track colour (teal), softened in adult mode.
+const _vocabTeal = Color(0xFF0F766E);
+Color get vocabColor => Brand.tone(_vocabTeal);
 
-/// Status colours on the knowledge map.
-const statusColors = {
-  VocabStatus.unknown: Color(0xFFE7E5EF),
-  VocabStatus.learning: Color(0xFFFFB020),
-  VocabStatus.known: Color(0xFF1FA971),
+/// Status colours on the knowledge map, from the active palette.
+Color statusColor(VocabStatus s) => switch (s) {
+  VocabStatus.unknown => Brand.line,
+  VocabStatus.learning => Brand.accent,
+  VocabStatus.known => Brand.success,
+};
+
+/// Adult-mode icon for each topic (kid mode shows the topic's emoji).
+IconData topicIcon(String topic) => switch (topic) {
+  'Temeller' => Icons.code_rounded,
+  'Git ve sürüm kontrolü' => Icons.call_split_rounded,
+  'Hata ayıklama' => Icons.bug_report_outlined,
+  'Test' => Icons.science_outlined,
+  'Mimari ve tasarım' => Icons.account_tree_outlined,
+  'Web' => Icons.language_rounded,
+  'Mobil (Flutter/Android/Kotlin)' => Icons.phone_android_rounded,
+  'Veri ve yapay zekâ' => Icons.insights_rounded,
+  'DevOps ve bulut' => Icons.cloud_outlined,
+  'Güvenlik' => Icons.lock_outline_rounded,
+  'Proje yönetimi ve Agile' => Icons.view_kanban_outlined,
+  'Toplantı ve iletişim' => Icons.groups_outlined,
+  'Mülakat' => Icons.record_voice_over_outlined,
+  _ => Icons.label_outline_rounded,
 };
 
 const statusLabels = {
@@ -61,10 +82,7 @@ class _VocabHome extends ConsumerWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(colors: [Color(0xFF134E4A), vocabColor]),
-            borderRadius: BorderRadius.circular(22),
-          ),
+          decoration: context.lingora.hero(_vocabTeal, from: const Color(0xFF134E4A)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -103,7 +121,7 @@ class _VocabHome extends ConsumerWidget {
           title: 'Kelime keşfet',
           subtitle: fresh > 0
               ? 'Biliyorum / Öğreneceğim / Sonra: $fresh kelime sırada'
-              : 'Tüm kelimeleri ayırdın 🎉',
+              : 'Tüm kelimeleri ayırdın ${kidEmoji('🎉')}'.trim(),
           onTap: fresh == 0 ? null : () => pushVocab(context, DiscoverScreen(all: entries), dialog: true),
         ),
         _Action(
@@ -121,7 +139,7 @@ class _VocabHome extends ConsumerWidget {
           onTap: () => pushVocab(context, VocabWordListScreen(title: 'Tüm kelimeler', entries: entries)),
         ),
         const SizedBox(height: 8),
-        Text('Konular', style: Theme.of(context).textTheme.titleLarge),
+        const SectionLabel('KONULAR'),
         const SizedBox(height: 8),
         for (final t in bundle.topics) _TopicTile(topic: t, entries: bundle.inTopic(t.name), all: entries),
       ],
@@ -140,10 +158,7 @@ class KnowledgeMap extends StatelessWidget {
     final percent = knownPercent(bands);
     return Container(
       padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.95),
-        borderRadius: BorderRadius.circular(16),
-      ),
+      decoration: BoxDecoration(color: Brand.card, borderRadius: BorderRadius.circular(Radii.md)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -155,7 +170,7 @@ class KnowledgeMap extends StatelessWidget {
               Text(
                 '~%$percent biliyorsun',
                 key: const Key('knownPercent'),
-                style: const TextStyle(fontWeight: FontWeight.w900, color: vocabColor),
+                style: TextStyle(fontWeight: FontWeight.w900, color: vocabColor),
               ),
             ],
           ),
@@ -173,7 +188,7 @@ class KnowledgeMap extends StatelessWidget {
                       width: 10,
                       height: 10,
                       decoration: BoxDecoration(
-                        color: statusColors[s],
+                        color: statusColor(s),
                         borderRadius: BorderRadius.circular(3),
                       ),
                     ),
@@ -216,12 +231,13 @@ class _BandRow extends StatelessWidget {
                 height: 14,
                 margin: const EdgeInsets.symmetric(horizontal: 1.5),
                 decoration: BoxDecoration(
-                  color:
-                      statusColors[i < knownBlocks
-                          ? VocabStatus.known
-                          : i < knownBlocks + learningBlocks
-                          ? VocabStatus.learning
-                          : VocabStatus.unknown],
+                  color: statusColor(
+                    i < knownBlocks
+                        ? VocabStatus.known
+                        : i < knownBlocks + learningBlocks
+                        ? VocabStatus.learning
+                        : VocabStatus.unknown,
+                  ),
                   borderRadius: BorderRadius.circular(3),
                 ),
               ),
@@ -257,12 +273,7 @@ class _Action extends StatelessWidget {
         onTap: onTap,
         child: Row(
           children: [
-            Container(
-              width: 46,
-              height: 46,
-              decoration: BoxDecoration(color: color.withValues(alpha: 0.15), shape: BoxShape.circle),
-              child: Icon(icon, color: color),
-            ),
+            IconBadge(icon: icon, color: color, size: 44),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
@@ -279,7 +290,7 @@ class _Action extends StatelessWidget {
                 decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(12)),
                 child: Text(
                   badge!,
-                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+                  style: TextStyle(color: onColor(color), fontWeight: FontWeight.w900),
                 ),
               ),
           ],
@@ -306,7 +317,7 @@ class _TopicTile extends ConsumerWidget {
         onTap: () => pushVocab(context, VocabTopicScreen(topic: topic, entries: entries, all: all)),
         child: Row(
           children: [
-            Text(topic.emoji, style: const TextStyle(fontSize: 28)),
+            Glyph(emoji: topic.emoji, icon: topicIcon(topic.name), color: vocabColor),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
@@ -324,17 +335,17 @@ class _TopicTile extends ConsumerWidget {
                           if (known > 0)
                             Expanded(
                               flex: known,
-                              child: Container(color: statusColors[VocabStatus.known]),
+                              child: Container(color: statusColor(VocabStatus.known)),
                             ),
                           if (learning > 0)
                             Expanded(
                               flex: learning,
-                              child: Container(color: statusColors[VocabStatus.learning]),
+                              child: Container(color: statusColor(VocabStatus.learning)),
                             ),
                           if (entries.length - known - learning > 0)
                             Expanded(
                               flex: entries.length - known - learning,
-                              child: Container(color: statusColors[VocabStatus.unknown]),
+                              child: Container(color: statusColor(VocabStatus.unknown)),
                             ),
                         ],
                       ),
@@ -366,27 +377,26 @@ class VocabTopicScreen extends ConsumerWidget {
     final due = reviewQueue(entries, p, now);
     final fresh = triageQueue(entries, p);
     return VocabWordListScreen(
-      title: '${topic.emoji} ${topic.name}',
+      title: '${kidEmoji(topic.emoji)}${topic.name}',
       entries: entries,
       header: Row(
         children: [
           Expanded(
-            child: FilledButton.icon(
+            child: PressableButton(
+              label: 'KEŞFET (${fresh.length})',
               onPressed: fresh.isEmpty
                   ? null
                   : () => pushVocab(context, DiscoverScreen(all: all, topic: topic.name), dialog: true),
-              icon: const Icon(Icons.style_rounded),
-              label: Text('Keşfet (${fresh.length})'),
             ),
           ),
           const SizedBox(width: 10),
           Expanded(
-            child: FilledButton.tonalIcon(
+            child: PressableButton(
+              label: 'TEKRAR (${due.length})',
+              color: vocabColor,
               onPressed: due.isEmpty
                   ? null
                   : () => pushVocab(context, VocabReviewScreen(queue: due, all: all), dialog: true),
-              icon: const Icon(Icons.replay_rounded),
-              label: Text('Tekrar (${due.length})'),
             ),
           ),
         ],

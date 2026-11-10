@@ -16,6 +16,7 @@ import 'package:lingora/screens/vocab/dev_scenario_screen.dart';
 import 'package:lingora/screens/vocab/discover_screen.dart';
 import 'package:lingora/screens/vocab/vocab_home_screen.dart';
 import 'package:lingora/services/speech.dart';
+import 'package:lingora/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'widget_test.dart' show FakeSpeech;
@@ -243,7 +244,12 @@ void main() {
     });
   });
 
-  Future<ProviderContainer> pumpScreen(WidgetTester tester, Widget home) async {
+  Future<ProviderContainer> pumpScreen(
+    WidgetTester tester,
+    Widget home, {
+    AppMode mode = AppMode.adult,
+    Brightness brightness = Brightness.light,
+  }) async {
     SharedPreferences.setMockInitialValues({});
     final sp = await SharedPreferences.getInstance();
     final container = ProviderContainer(
@@ -260,7 +266,11 @@ void main() {
     await tester.pumpWidget(
       UncontrolledProviderScope(
         container: container,
-        child: MaterialApp(home: Scaffold(body: home)),
+        child: MaterialApp(
+          theme: buildTheme(mode: mode, brightness: brightness),
+          builder: (_, child) => PaletteScope(palette: Palette.of(mode, brightness), child: child!),
+          home: Scaffold(body: home),
+        ),
       ),
     );
     await tester.pump();
@@ -275,6 +285,22 @@ void main() {
     expect(find.text('1–100'), findsOneWidget);
     expect(find.text('Kelime keşfet'), findsOneWidget);
     expect(find.text('İş senaryoları'), findsOneWidget);
+  });
+
+  testWidgets('track home follows the design modes (Çocuk modu, koyu tema)', (tester) async {
+    await pumpScreen(tester, const VocabHomeScreen(), mode: AppMode.kid, brightness: Brightness.dark);
+    expect(tester.takeException(), isNull);
+    expect(find.text('Bilgi haritası'), findsOneWidget);
+    await tester.dragUntilVisible(find.text('Temeller'), find.byType(ListView), const Offset(0, -300));
+    expect(find.text('🧱'), findsOneWidget); // kid mode shows topic emoji
+  });
+
+  testWidgets('track home in adult dark mode uses icons, not emoji', (tester) async {
+    await pumpScreen(tester, const VocabHomeScreen(), brightness: Brightness.dark);
+    expect(tester.takeException(), isNull);
+    await tester.dragUntilVisible(find.text('Temeller'), find.byType(ListView), const Offset(0, -300));
+    expect(find.text('🧱'), findsNothing); // adult mode shows icons instead
+    expect(find.byIcon(Icons.code_rounded), findsWidgets);
   });
 
   testWidgets('scenario practice checks the text and shows the model answer', (tester) async {
