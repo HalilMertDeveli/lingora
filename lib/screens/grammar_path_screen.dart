@@ -33,10 +33,10 @@ const _levelColors = {
   'A2': Color(0xFF2F80ED),
   'B1': Color(0xFF6C4CF1),
   'B2': Color(0xFFE5484D),
-  'C1': Color(0xFF1E1B2E),
+  'C1': Color(0xFF475467),
 };
 
-Color levelColor(String level) => _levelColors[level] ?? Brand.primary;
+Color levelColor(String level) => Brand.tone(_levelColors[level] ?? Brand.primary);
 
 const roleColors = {
   PartRole.subject: Color(0xFF2F80ED),
@@ -82,7 +82,7 @@ class GrammarPathScreen extends ConsumerWidget {
             children: [
               Row(
                 children: [
-                  const Mascot(mood: Mood.think, size: 70),
+                  const Mascot(mood: Mood.think, size: 70, decorative: true),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
@@ -96,7 +96,7 @@ class GrammarPathScreen extends ConsumerWidget {
                           height: 12,
                         ),
                         const SizedBox(height: 6),
-                        const Text(
+                        Text(
                           'Notlarından hazırlanan, A1\'den C1\'e sıralı dersler.',
                           style: TextStyle(color: Brand.muted, fontSize: 13),
                         ),
@@ -138,7 +138,7 @@ class _UnitBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-    decoration: BoxDecoration(color: levelColor(level), borderRadius: BorderRadius.circular(16)),
+    decoration: context.lingora.hero(_levelColors[level] ?? Brand.primary),
     child: Text(
       unit,
       style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w900),
@@ -175,8 +175,13 @@ class _LessonTile extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: done
-                    ? const Icon(Icons.check_rounded, color: Colors.white)
-                    : Text(lesson.emoji, style: const TextStyle(fontSize: 22)),
+                    ? Icon(Icons.check_rounded, color: onColor(Brand.success))
+                    : context.isKid
+                    ? Text(lesson.emoji, style: const TextStyle(fontSize: 22))
+                    : Text(
+                        lesson.level,
+                        style: TextStyle(color: c, fontWeight: FontWeight.w700, fontSize: 13),
+                      ),
               ),
             ),
             const SizedBox(width: 12),
@@ -189,7 +194,7 @@ class _LessonTile extends StatelessWidget {
                     lesson.summary,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(color: Brand.muted, fontSize: 13),
+                    style: TextStyle(color: Brand.muted, fontSize: 13),
                   ),
                 ],
               ),
@@ -198,9 +203,9 @@ class _LessonTile extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 decoration: BoxDecoration(color: c, borderRadius: BorderRadius.circular(10)),
-                child: const Text(
+                child: Text(
                   'SIRADAKİ',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 11),
+                  style: TextStyle(color: onColor(c), fontWeight: FontWeight.w900, fontSize: 11),
                 ),
               ),
           ],
@@ -332,7 +337,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.close, color: Brand.muted),
+                    icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () => Navigator.pop(context),
                   ),
                   Expanded(
@@ -361,7 +366,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 16),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: Brand.line, width: 2)),
               ),
               child: PressableButton(
@@ -405,14 +410,18 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
   Widget _intro() => Column(
     children: [
       const SizedBox(height: 12),
-      PopIn(child: Text(l.emoji, style: const TextStyle(fontSize: 72))),
+      PopIn(
+        child: context.isKid
+            ? Text(l.emoji, style: const TextStyle(fontSize: 72))
+            : IconBadge(icon: Icons.menu_book_outlined, color: _color, size: 64),
+      ),
       const SizedBox(height: 8),
       Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
         decoration: BoxDecoration(color: _color, borderRadius: BorderRadius.circular(8)),
         child: Text(
           l.level,
-          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+          style: TextStyle(color: onColor(_color), fontWeight: FontWeight.w900),
         ),
       ),
       const SizedBox(height: 10),
@@ -420,7 +429,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
       const SizedBox(height: 14),
       Text(l.summary, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, height: 1.45)),
       const SizedBox(height: 22),
-      const Mascot(mood: Mood.happy, size: 110),
+      const Mascot(mood: Mood.happy, size: 110, decorative: true),
       if (l.tip != null) ...[
         const SizedBox(height: 16),
         _InfoBox(icon: '🧠', title: 'Hafıza ipucu', text: l.tip!, color: Brand.accent),
@@ -478,7 +487,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
                     decoration: BoxDecoration(color: roleColors[r], shape: BoxShape.circle),
                   ),
                   const SizedBox(width: 4),
-                  Text(roleNames[r]!, style: const TextStyle(color: Brand.muted, fontSize: 12)),
+                  Text(roleNames[r]!, style: TextStyle(color: Brand.muted, fontSize: 12)),
                 ],
               ),
           ],
@@ -506,11 +515,11 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
       Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('🇹🇷', style: TextStyle(fontSize: 34)),
+          const _Lang('🇹🇷', 'TR'),
           const SizedBox(width: 6),
-          const Icon(Icons.compare_arrows_rounded, color: Brand.muted),
+          Icon(Icons.compare_arrows_rounded, color: Brand.muted),
           const SizedBox(width: 6),
-          const Text('🇬🇧', style: TextStyle(fontSize: 34)),
+          const _Lang('🇬🇧', 'EN'),
           const SizedBox(width: 12),
           Expanded(child: Text(l.compare, style: const TextStyle(fontSize: 17, height: 1.5))),
         ],
@@ -545,7 +554,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
                     Expanded(
                       child: Text(
                         '${t.source} · ${t.title}',
-                        style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700, fontSize: 13),
+                        style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700, fontSize: 13),
                       ),
                     ),
                   ],
@@ -597,7 +606,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
                   child: _revealed.contains(i)
                       ? Padding(
                           padding: const EdgeInsets.only(top: 4),
-                          child: Text(_examples[i].tr, style: const TextStyle(color: Brand.muted)),
+                          child: Text(_examples[i].tr, style: TextStyle(color: Brand.muted)),
                         )
                       : const SizedBox(width: double.infinity),
                 ),
@@ -629,12 +638,12 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.close_rounded, color: Brand.error, size: 20),
+                      Icon(Icons.close_rounded, color: Brand.error, size: 20),
                       const SizedBox(width: 6),
                       Expanded(
                         child: Text(
                           l.mistakes[i].wrong,
-                          style: const TextStyle(
+                          style: TextStyle(
                             decoration: TextDecoration.lineThrough,
                             color: Brand.error,
                             fontWeight: FontWeight.w700,
@@ -650,12 +659,12 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
                       from: 0.9,
                       child: Row(
                         children: [
-                          const Icon(Icons.check_rounded, color: Brand.success, size: 20),
+                          Icon(Icons.check_rounded, color: Brand.success, size: 20),
                           const SizedBox(width: 6),
                           Expanded(
                             child: Text(
                               l.mistakes[i].right,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Brand.success,
                                 fontWeight: FontWeight.w800,
                                 fontSize: 16,
@@ -668,7 +677,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
                     const SizedBox(height: 6),
                     Text(l.mistakes[i].why, style: const TextStyle(height: 1.4)),
                   ] else
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(top: 6),
                       child: Text(
                         'Doğrusunu görmek için dokun',
@@ -761,7 +770,7 @@ class _Chip extends StatelessWidget {
         color: c.withValues(alpha: 0.12),
         border: Border.all(color: c, width: 2),
         borderRadius: BorderRadius.circular(14),
-        boxShadow: [BoxShadow(color: c.withValues(alpha: 0.5), offset: const Offset(0, 3))],
+        boxShadow: [if (Brand.isKid) BoxShadow(color: c.withValues(alpha: 0.5), offset: const Offset(0, 3))],
       ),
       child: Text(
         part.text,
@@ -804,7 +813,7 @@ class _InfoBox extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '$icon $title',
+          context.isKid ? '$icon $title' : title,
           style: TextStyle(color: color, fontWeight: FontWeight.w900),
         ),
         const SizedBox(height: 4),
@@ -812,4 +821,25 @@ class _InfoBox extends StatelessWidget {
       ],
     ),
   );
+}
+
+/// Flag in kid mode, a small language code chip in adult mode.
+class _Lang extends StatelessWidget {
+  const _Lang(this.flag, this.code);
+  final String flag;
+  final String code;
+
+  @override
+  Widget build(BuildContext context) {
+    if (context.isKid) return Text(flag, style: const TextStyle(fontSize: 34));
+    return Container(
+      margin: const EdgeInsets.only(top: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(6)),
+      child: Text(
+        code,
+        style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700, fontSize: 13),
+      ),
+    );
+  }
 }

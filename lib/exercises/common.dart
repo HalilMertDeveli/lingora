@@ -42,7 +42,7 @@ class SpeakerButton extends ConsumerWidget {
         height: size,
         child: Icon(
           slow ? Icons.slow_motion_video_rounded : Icons.volume_up_rounded,
-          color: Colors.white,
+          color: Brand.onPrimary,
           size: size * 0.5,
         ),
       ),

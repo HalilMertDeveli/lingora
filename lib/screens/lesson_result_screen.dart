@@ -150,7 +150,7 @@ class TestFailedScreen extends StatelessWidget {
               '%$accuracy doğru yaptın. Geçmek için %$testPassPercent gerekiyor.\n'
               'Yanlışların "Hatalarını çalış" listesine eklendi.',
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
+              style: TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
             ),
             const Spacer(),
             if (onRetry != null) ...[
@@ -217,43 +217,66 @@ class _Tile extends StatelessWidget {
   final Duration delay;
   final Widget value;
 
-  static const valueStyle = TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Brand.ink);
+  static TextStyle get valueStyle => TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Brand.ink);
 
   @override
   Widget build(BuildContext context) => Expanded(
-    child: PopIn(
-      delay: delay,
-      child: Container(
-        decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(16)),
-        padding: const EdgeInsets.fromLTRB(2, 6, 2, 2),
-        child: Column(
+    child: PopIn(delay: delay, child: context.isKid ? _kid() : _adult(context)),
+  );
+
+  Widget _adult(BuildContext context) => TapCard(
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
           children: [
-            Text(
-              label,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w900,
-                fontSize: 11,
-                letterSpacing: 0.6,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(13)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(icon, color: color, size: 20),
-                  const SizedBox(width: 4),
-                  value,
-                ],
+            Icon(icon, color: color, size: 16),
+            const SizedBox(width: 4),
+            Flexible(
+              child: Text(
+                sentenceCase(label),
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(color: Brand.muted, fontSize: 12, fontWeight: FontWeight.w500),
               ),
             ),
           ],
         ),
-      ),
+        const SizedBox(height: 6),
+        value,
+      ],
+    ),
+  );
+
+  Widget _kid() => Container(
+    decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(16)),
+    padding: const EdgeInsets.fromLTRB(2, 6, 2, 2),
+    child: Column(
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w900,
+            fontSize: 11,
+            letterSpacing: 0.6,
+          ),
+        ),
+        const SizedBox(height: 6),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          decoration: BoxDecoration(color: Brand.card, borderRadius: BorderRadius.circular(13)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, color: color, size: 20),
+              const SizedBox(width: 4),
+              value,
+            ],
+          ),
+        ),
+      ],
     ),
   );
 }

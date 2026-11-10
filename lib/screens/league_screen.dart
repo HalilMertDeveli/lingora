@@ -26,10 +26,10 @@ class LeagueScreen extends ConsumerWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(color: info.color, borderRadius: BorderRadius.circular(20)),
+          decoration: context.lingora.hero(info.color),
           child: Row(
             children: [
-              Text(info.emoji, style: const TextStyle(fontSize: 48)),
+              Glyph(emoji: info.emoji, icon: Icons.military_tech_rounded, size: 48, color: Colors.white),
               const SizedBox(width: 14),
               Expanded(
                 child: Column(
@@ -60,13 +60,13 @@ class LeagueScreen extends ConsumerWidget {
             (true, false) => 'Son $demoteCount kişi alt lige düşer',
           },
           textAlign: TextAlign.center,
-          style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w600),
+          style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 12),
         for (var i = 0; i < table.length; i++) ...[
           if (i == promoteCount && tier < leagueTiers.length - 1)
-            const _ZoneLine('YÜKSELME BÖLGESİ', Brand.success),
-          if (i == leagueSize - demoteCount && tier > 0) const _ZoneLine('DÜŞME BÖLGESİ', Brand.error),
+            _ZoneLine('YÜKSELME BÖLGESİ', Brand.success),
+          if (i == leagueSize - demoteCount && tier > 0) _ZoneLine('DÜŞME BÖLGESİ', Brand.error),
           _Row(rank: i + 1, entry: table[i], tier: tier),
         ],
         const SizedBox(height: 16),
@@ -75,7 +75,7 @@ class LeagueScreen extends ConsumerWidget {
               ? 'Bu hafta gerçek Lingora kullanıcılarıyla yarışıyorsun.'
               : 'Çevrimdışı mod: rakipler bu cihazda simüle edilir.',
           textAlign: TextAlign.center,
-          style: const TextStyle(color: Brand.muted, fontSize: 12),
+          style: TextStyle(color: Brand.muted, fontSize: 12),
         ),
       ],
     );
@@ -170,7 +170,7 @@ class _Row extends StatelessWidget {
           ),
           Text(
             '${entry.xp} XP',
-            style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+            style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
           ),
         ],
       ),

@@ -21,7 +21,7 @@ Future<List<PronUnit>> loadPronUnits(AssetBundle bundle) async =>
 
 final pronUnitsProvider = FutureProvider<List<PronUnit>>((ref) => loadPronUnits(rootBundle));
 
-const _coachColor = Color(0xFFFF7A1A);
+Color get _coachColor => Brand.tone(const Color(0xFFFF7A1A));
 
 /// Card at the top of the Konuş tab that opens the coach.
 class PronunciationEntryCard extends StatelessWidget {
@@ -37,7 +37,7 @@ class PronunciationEntryCard extends StatelessWidget {
           Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const PronunciationScreen())),
       child: Row(
         children: [
-          const Text('👄', style: TextStyle(fontSize: 34)),
+          Glyph(emoji: '👄', icon: Icons.record_voice_over_outlined, size: 34, color: _coachColor),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -45,14 +45,14 @@ class PronunciationEntryCard extends StatelessWidget {
               children: [
                 Text('Telaffuz koçu', style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 2),
-                const Text(
+                Text(
                   'th, w/v, ship/sheep… Türklerin zorlandığı sesleri dinle ve söyle.',
                   style: TextStyle(color: Brand.muted, fontSize: 13),
                 ),
               ],
             ),
           ),
-          const Icon(Icons.chevron_right_rounded, color: _coachColor),
+          Icon(Icons.chevron_right_rounded, color: _coachColor),
         ],
       ),
     ),
@@ -77,13 +77,13 @@ class PronunciationScreen extends ConsumerWidget {
           children: [
             Row(
               children: [
-                const Mascot(mood: Mood.think, size: 76),
+                const Mascot(mood: Mood.think, size: 76, decorative: true),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
                     'Türkçede olmayan ya da farklı çıkan İngilizce sesleri tek tek çalışalım. '
                     'Önce nasıl yapıldığını oku, sonra dinle ve söyle.',
-                    style: const TextStyle(color: Brand.muted),
+                    style: TextStyle(color: Brand.muted),
                   ),
                 ),
               ],
@@ -129,19 +129,19 @@ class _UnitTile extends StatelessWidget {
                   const SizedBox(width: 6),
                   Text(
                     unit.sound,
-                    style: const TextStyle(color: _coachColor, fontWeight: FontWeight.w800, fontSize: 13),
+                    style: TextStyle(color: _coachColor, fontWeight: FontWeight.w800, fontSize: 13),
                   ),
                 ],
               ),
               const SizedBox(height: 2),
-              Text(unit.summary, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+              Text(unit.summary, style: TextStyle(color: Brand.muted, fontSize: 13)),
             ],
           ),
         ),
         const SizedBox(width: 6),
         done
-            ? const Icon(Icons.check_circle_rounded, color: Brand.success)
-            : const Icon(Icons.chevron_right_rounded, color: Brand.muted),
+            ? Icon(Icons.check_circle_rounded, color: Brand.success)
+            : Icon(Icons.chevron_right_rounded, color: Brand.muted),
       ],
     ),
   );
@@ -331,7 +331,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.close, color: Brand.muted),
+                    icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () => Navigator.pop(context),
                   ),
                   Expanded(
@@ -366,7 +366,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 16),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: Brand.line, width: 2)),
               ),
               child: PressableButton(
@@ -388,12 +388,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
       children: [
         Text(
           kicker,
-          style: const TextStyle(
-            color: _coachColor,
-            fontWeight: FontWeight.w900,
-            fontSize: 12,
-            letterSpacing: 1.2,
-          ),
+          style: TextStyle(color: _coachColor, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1.2),
         ),
         const SizedBox(height: 4),
         Text(title, style: Theme.of(context).textTheme.headlineSmall),
@@ -457,7 +452,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
                   backgroundColor: _coachColor,
                   child: Text(
                     '${i + 1}',
-                    style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w900),
+                    style: TextStyle(color: onColor(_coachColor), fontSize: 12, fontWeight: FontWeight.w900),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -487,7 +482,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
           child: Row(
             children: [
               Expanded(child: _hearChip(p.a, p.aTr)),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 6),
                 child: Text('≠', style: TextStyle(color: Brand.muted, fontSize: 18)),
               ),
@@ -503,7 +498,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
     onTap: () => _speech.say(word),
     child: Row(
       children: [
-        const Icon(Icons.volume_up_rounded, color: _coachColor, size: 20),
+        Icon(Icons.volume_up_rounded, color: _coachColor, size: 20),
         const SizedBox(width: 6),
         Expanded(
           child: Column(
@@ -514,7 +509,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
                 tr,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(color: Brand.muted, fontSize: 12),
+                style: TextStyle(color: Brand.muted, fontSize: 12),
               ),
             ],
           ),
@@ -542,7 +537,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
         child: Column(
           children: [
             Text(word, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
-            if (picked != null) Text(tr, style: const TextStyle(color: Brand.muted, fontSize: 12)),
+            if (picked != null) Text(tr, style: TextStyle(color: Brand.muted, fontSize: 12)),
           ],
         ),
       );
@@ -626,7 +621,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(s.target, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700)),
-                  if (s.targetTr.isNotEmpty) Text(s.targetTr, style: const TextStyle(color: Brand.muted)),
+                  if (s.targetTr.isNotEmpty) Text(s.targetTr, style: TextStyle(color: Brand.muted)),
                 ],
               ),
             ),
@@ -657,7 +652,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
                     height: 96,
                     child: Icon(
                       _listening ? Icons.stop_rounded : Icons.mic_rounded,
-                      color: Colors.white,
+                      color: onColor(_listening ? Brand.error : _coachColor),
                       size: 48,
                     ),
                   ),
@@ -673,7 +668,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
                 ? (_heard.isEmpty ? '' : '“$_heard”')
                 : 'Mikrofona dokun ve söyle',
             textAlign: TextAlign.center,
-            style: const TextStyle(color: Brand.muted, fontSize: 16),
+            style: TextStyle(color: Brand.muted, fontSize: 16),
           ),
         ],
         if (feedback != null) ...[

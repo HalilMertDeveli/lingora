@@ -28,7 +28,7 @@ class ConversationHomeScreen extends ConsumerWidget {
       children: [
         Row(
           children: [
-            const Mascot(mood: Mood.happy, size: 84),
+            const Mascot(mood: Mood.happy, size: 84, decorative: true),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
@@ -36,7 +36,7 @@ class ConversationHomeScreen extends ConsumerWidget {
                 children: [
                   Text('Konuşarak öğren', style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 4),
-                  const Text(
+                  Text(
                     'Gerçek bir sahnede İngilizce konuş. Hatalarını anında, Türkçe açıklamayla düzeltelim.',
                     style: TextStyle(color: Brand.muted),
                   ),
@@ -51,11 +51,8 @@ class ConversationHomeScreen extends ConsumerWidget {
         if (!live)
           Container(
             padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: const Color(0xFFFFF4DC),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: const Row(
+            decoration: BoxDecoration(color: Brand.accentBg, borderRadius: BorderRadius.circular(14)),
+            child: Row(
               children: [
                 Icon(Icons.science_rounded, color: Brand.accent),
                 SizedBox(width: 10),
@@ -89,16 +86,16 @@ class ConversationHomeScreen extends ConsumerWidget {
                             _Tag(s.level),
                             if (live && !premium) ...[
                               const SizedBox(width: 4),
-                              const _Tag('PREMIUM', color: Brand.accent),
+                              _Tag('PREMIUM', color: Brand.accent),
                             ],
                           ],
                         ),
                         const SizedBox(height: 2),
-                        Text(s.goal, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                        Text(s.goal, style: TextStyle(color: Brand.muted, fontSize: 13)),
                       ],
                     ),
                   ),
-                  const Icon(Icons.chevron_right_rounded, color: Brand.muted),
+                  Icon(Icons.chevron_right_rounded, color: Brand.muted),
                 ],
               ),
             ),
@@ -138,19 +135,22 @@ Future<void> openConversation(BuildContext context, WidgetRef ref, Scenario s) a
 }
 
 class _Tag extends StatelessWidget {
-  const _Tag(this.text, {this.color = Brand.primary});
+  const _Tag(this.text, {this.color});
   final String text;
-  final Color color;
+  final Color? color;
 
   @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-    decoration: BoxDecoration(color: color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(6)),
-    child: Text(
-      text,
-      style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.w900),
-    ),
-  );
+  Widget build(BuildContext context) {
+    final color = this.color ?? Brand.primary;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      decoration: BoxDecoration(color: color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(6)),
+      child: Text(
+        text,
+        style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.w900),
+      ),
+    );
+  }
 }
 
 class ConversationScreen extends ConsumerStatefulWidget {
@@ -302,7 +302,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('${s.emoji} ${s.title}'),
-        actions: [TextButton(onPressed: _finish, child: const Text('BİTİR'))],
+        actions: [TextButton(onPressed: _finish, child: const Text('Bitir'))],
       ),
       body: SafeArea(
         child: Column(
@@ -313,7 +313,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
               child: Text(
-                '🎯 ${s.goal}\nKarşındaki: ${s.partner}',
+                '${kidEmoji('🎯')}${s.goal}\nKarşındaki: ${s.partner}',
                 style: const TextStyle(fontWeight: FontWeight.w600, height: 1.4),
               ),
             ),
@@ -325,7 +325,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
                   for (var i = 0; i < _messages.length; i++)
                     PopIn(key: ValueKey(i), from: 0.85, child: _bubble(i)),
                   if (_waiting)
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(top: 4),
                       child: Row(
                         children: [
@@ -350,11 +350,11 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
             if (_error != null)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(_error!, style: const TextStyle(color: Brand.error)),
+                child: Text(_error!, style: TextStyle(color: Brand.error)),
               ),
             Container(
               padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: Brand.line, width: 2)),
               ),
               child: Row(
@@ -404,7 +404,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
         constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width * 0.78),
         padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
         decoration: BoxDecoration(
-          color: me ? Brand.primary : Colors.white,
+          color: me ? Brand.primary : Brand.card,
           border: me ? null : Border.all(color: Brand.line, width: 2),
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(18),
@@ -420,14 +420,14 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
               m.text,
               style: TextStyle(
                 fontSize: 16,
-                color: me ? Colors.white : Brand.ink,
+                color: me ? Brand.onPrimary : Brand.ink,
                 fontWeight: FontWeight.w500,
               ),
             ),
             if (!me && _showTr.contains(i) && m.tipTr != null)
               Padding(
                 padding: const EdgeInsets.only(top: 4),
-                child: Text(m.tipTr!, style: const TextStyle(color: Brand.muted)),
+                child: Text(m.tipTr!, style: TextStyle(color: Brand.muted)),
               ),
           ],
         ),
@@ -443,18 +443,18 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
             Container(
               margin: const EdgeInsets.only(top: 6, left: 30),
               padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: const Color(0xFFFFF4DC),
-                borderRadius: BorderRadius.circular(12),
-              ),
+              decoration: BoxDecoration(color: Brand.accentBg, borderRadius: BorderRadius.circular(12)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('💡 Daha doğal: ${m.correction}', style: const TextStyle(fontWeight: FontWeight.w700)),
+                  Text(
+                    '${kidEmoji('💡')}Daha doğal: ${m.correction}',
+                    style: const TextStyle(fontWeight: FontWeight.w700),
+                  ),
                   if (m.tipTr != null)
                     Padding(
                       padding: const EdgeInsets.only(top: 2),
-                      child: Text(m.tipTr!, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                      child: Text(m.tipTr!, style: TextStyle(color: Brand.muted, fontSize: 13)),
                     ),
                 ],
               ),

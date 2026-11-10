@@ -65,7 +65,7 @@ class _TranslateExerciseState extends State<TranslateExercise> {
         Container(
           constraints: const BoxConstraints(minHeight: 110),
           padding: const EdgeInsets.symmetric(vertical: 8),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               top: BorderSide(color: Brand.line, width: 2),
               bottom: BorderSide(color: Brand.line, width: 2),

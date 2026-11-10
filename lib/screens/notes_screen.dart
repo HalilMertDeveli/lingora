@@ -21,7 +21,7 @@ import 'grammar_path_screen.dart';
 import 'lesson_screen.dart';
 import 'reading_screen.dart';
 
-const _notesColor = Color(0xFF2F80ED);
+Color get _notesColor => Brand.tone(const Color(0xFF2F80ED));
 
 /// Home of the "Notlarım" track: the user's own Notion notes as study tools.
 class NotesHomeScreen extends ConsumerWidget {
@@ -59,10 +59,7 @@ class _NotesHome extends ConsumerWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(colors: [Color(0xFF1C5DB8), _notesColor]),
-            borderRadius: BorderRadius.circular(22),
-          ),
+          decoration: context.lingora.hero(_notesColor, from: const Color(0xFF1C5DB8)),
           child: Row(
             children: [
               Expanded(
@@ -87,7 +84,7 @@ class _NotesHome extends ConsumerWidget {
                   ],
                 ),
               ),
-              const Mascot(mood: Mood.happy, size: 80),
+              const Mascot(mood: Mood.happy, size: 80, decorative: true),
             ],
           ),
         ),
@@ -142,7 +139,7 @@ class _NotesHome extends ConsumerWidget {
           icon: Icons.edit_note_rounded,
           color: Brand.streak,
           title: 'Günlüğüm',
-          subtitle: wroteToday ? 'Bugünkü günlüğünü yazdın 👏' : 'Bugün İngilizce birkaç cümle yaz',
+          subtitle: wroteToday ? 'Bugünkü günlüğünü yazdın' : 'Bugün İngilizce birkaç cümle yaz',
           onTap: () => _push(context, DiaryScreen(prompts: notes.diaryPrompts)),
         ),
       ],
@@ -185,7 +182,7 @@ class _BigAction extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title, style: Theme.of(context).textTheme.titleMedium),
-                Text(subtitle, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                Text(subtitle, style: TextStyle(color: Brand.muted, fontSize: 13)),
               ],
             ),
           ),
@@ -195,10 +192,10 @@ class _BigAction extends StatelessWidget {
               decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(12)),
               child: Text(
                 badge!,
-                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+                style: TextStyle(color: onColor(color), fontWeight: FontWeight.w900),
               ),
             ),
-          const Icon(Icons.chevron_right_rounded, color: Brand.muted),
+          Icon(Icons.chevron_right_rounded, color: Brand.muted),
         ],
       ),
     ),
@@ -283,7 +280,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.close, color: Brand.muted),
+                    icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () => Navigator.pop(context),
                   ),
                   Expanded(
@@ -292,7 +289,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
                   const SizedBox(width: 12),
                   Text(
                     '${_pos + 1}/${widget.words.length}',
-                    style: const TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
+                    style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
                   ),
                 ],
               ),
@@ -356,11 +353,12 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
     constraints: const BoxConstraints(minHeight: 320),
     padding: const EdgeInsets.all(24),
     decoration: BoxDecoration(
-      color: back ? const Color(0xFFEFF5FF) : Colors.white,
+      color: back ? Color.alphaBlend(_notesColor.withValues(alpha: 0.1), Brand.card) : Brand.card,
       borderRadius: BorderRadius.circular(24),
       border: Border.all(color: back ? _notesColor : Brand.line, width: 2),
       boxShadow: [
-        BoxShadow(color: edgeOf(back ? _notesColor : const Color(0xFFE7E5EF)), offset: const Offset(0, 6)),
+        if (Brand.isKid)
+          BoxShadow(color: edgeOf(back ? _notesColor : Brand.line), offset: const Offset(0, 6)),
       ],
     ),
     child: Column(
@@ -369,12 +367,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
       children: [
         Text(
           trUpper(w.topic),
-          style: const TextStyle(
-            color: Brand.muted,
-            fontWeight: FontWeight.w800,
-            fontSize: 12,
-            letterSpacing: 1,
-          ),
+          style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800, fontSize: 12, letterSpacing: 1),
         ),
         const SizedBox(height: 14),
         if (!back) ...[
@@ -389,12 +382,12 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
             icon: const Icon(Icons.volume_up_rounded),
           ),
           const SizedBox(height: 16),
-          const Text('Anlamını düşün, sonra karta dokun', style: TextStyle(color: Brand.muted)),
+          Text('Anlamını düşün, sonra karta dokun', style: TextStyle(color: Brand.muted)),
         ] else ...[
           Text(
             w.tr,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: _notesColor),
+            style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: _notesColor),
           ),
           if (w.example != null) ...[
             const SizedBox(height: 14),
@@ -407,9 +400,9 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
           if (w.story != null) ...[
             const SizedBox(height: 14),
             Text(
-              '🧠 ${w.story}',
+              '${kidEmoji('🧠')}${w.story}',
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Brand.muted),
+              style: TextStyle(color: Brand.muted),
             ),
           ],
         ],
@@ -503,7 +496,7 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
             child: ListView.separated(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 88),
               itemCount: shown.length,
-              separatorBuilder: (_, _) => const Divider(height: 1, color: Brand.line),
+              separatorBuilder: (_, _) => Divider(height: 1, color: Brand.line),
               itemBuilder: (_, i) {
                 final w = shown[i];
                 final box = p.wordBox[w.id];
@@ -548,15 +541,18 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
             ),
             Text(
               w.tr,
-              style: const TextStyle(fontSize: 18, color: _notesColor, fontWeight: FontWeight.w700),
+              style: TextStyle(fontSize: 18, color: _notesColor, fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 4),
-            Text(w.topic, style: const TextStyle(color: Brand.muted)),
+            Text(w.topic, style: TextStyle(color: Brand.muted)),
             if (w.example != null) ...[
               const SizedBox(height: 12),
               Text('“${w.example}”', style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 16)),
             ],
-            if (w.story != null) ...[const SizedBox(height: 12), Text('🧠 Hafıza hikâyen: ${w.story}')],
+            if (w.story != null) ...[
+              const SizedBox(height: 12),
+              Text('${kidEmoji('🧠')}Hafıza hikâyen: ${w.story}'),
+            ],
             if (w.topic == customTopic) ...[
               const SizedBox(height: 12),
               TextButton.icon(
@@ -564,8 +560,8 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
                   ref.read(progressProvider.notifier).removeCustomWord(w.id);
                   Navigator.pop(context);
                 },
-                icon: const Icon(Icons.delete_outline_rounded, color: Brand.error),
-                label: const Text('Sözlüğümden çıkar', style: TextStyle(color: Brand.error)),
+                icon: Icon(Icons.delete_outline_rounded, color: Brand.error),
+                label: Text('Sözlüğümden çıkar', style: TextStyle(color: Brand.error)),
               ),
             ],
           ],
@@ -625,13 +621,13 @@ class _GrammarListScreenState extends State<GrammarListScreen> {
                           children: [
                             Text(t.title, style: Theme.of(context).textTheme.titleMedium),
                             Text(
-                              '${t.addedByApp ? '✨ ' : ''}${t.source} · ${t.examples.length} örnek',
-                              style: const TextStyle(color: Brand.muted, fontSize: 13),
+                              '${t.addedByApp ? kidEmoji('✨') : ''}${t.source} · ${t.examples.length} örnek',
+                              style: TextStyle(color: Brand.muted, fontSize: 13),
                             ),
                           ],
                         ),
                       ),
-                      const Icon(Icons.chevron_right_rounded, color: Brand.muted),
+                      Icon(Icons.chevron_right_rounded, color: Brand.muted),
                     ],
                   ),
                 ),
@@ -680,7 +676,7 @@ class TopicScreen extends ConsumerWidget {
                       margin: const EdgeInsets.only(top: 6, bottom: 4),
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFFF4DC),
+                        color: Brand.accentBg,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: const Text('Bu konu notlarında yoktu; eksik kalmasın diye Lingora ekledi.'),
@@ -702,7 +698,7 @@ class TopicScreen extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             'KURALLAR',
                             style: TextStyle(
                               color: Brand.primary,
@@ -732,7 +728,7 @@ class TopicScreen extends ConsumerWidget {
                       ListTile(
                         contentPadding: EdgeInsets.zero,
                         leading: IconButton(
-                          icon: const Icon(Icons.volume_up_rounded, color: Brand.primary),
+                          icon: Icon(Icons.volume_up_rounded, color: Brand.primary),
                           onPressed: () => ref.read(speechProvider).say(e.en),
                         ),
                         title: Text(e.en, style: const TextStyle(fontWeight: FontWeight.w700)),
@@ -745,7 +741,7 @@ class TopicScreen extends ConsumerWidget {
             if (items.isNotEmpty)
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 20, 16),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(top: BorderSide(color: Brand.line, width: 2)),
                 ),
                 child: PressableButton(
@@ -831,13 +827,10 @@ class _DiaryScreenState extends ConsumerState<DiaryScreen> {
         children: [
           Container(
             padding: const EdgeInsets.all(14),
-            decoration: BoxDecoration(
-              color: const Color(0xFFFFF4DC),
-              borderRadius: BorderRadius.circular(14),
-            ),
+            decoration: BoxDecoration(color: Brand.accentBg, borderRadius: BorderRadius.circular(14)),
             child: Row(
               children: [
-                const Text('✍️', style: TextStyle(fontSize: 26)),
+                const Glyph(emoji: '✍️', icon: Icons.edit_note_rounded, size: 28),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(_prompt, style: const TextStyle(fontWeight: FontWeight.w700)),
@@ -855,7 +848,7 @@ class _DiaryScreenState extends ConsumerState<DiaryScreen> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 6),
-            child: Text('$words kelime', style: const TextStyle(color: Brand.muted)),
+            child: Text('$words kelime', style: TextStyle(color: Brand.muted)),
           ),
           Row(
             children: [
@@ -879,7 +872,7 @@ class _DiaryScreenState extends ConsumerState<DiaryScreen> {
                 margin: const EdgeInsets.only(top: 12),
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: _errors.isEmpty ? Brand.successBg : const Color(0xFFFFF4DC),
+                  color: _errors.isEmpty ? Brand.successBg : Brand.accentBg,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: _errors.isEmpty
@@ -891,7 +884,7 @@ class _DiaryScreenState extends ConsumerState<DiaryScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '💡 Daha doğal: ${_errors.first.corrected}',
+                            '${kidEmoji('💡')}Daha doğal: ${_errors.first.corrected}',
                             style: const TextStyle(fontWeight: FontWeight.w700),
                           ),
                           const SizedBox(height: 8),
@@ -920,7 +913,7 @@ class _DiaryScreenState extends ConsumerState<DiaryScreen> {
                     children: [
                       Text(
                         day,
-                        style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w800),
+                        style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800),
                       ),
                       const SizedBox(height: 4),
                       Text(diary[day]!),
@@ -955,17 +948,17 @@ class _GrammarPathCard extends ConsumerWidget {
         children: [
           Row(
             children: [
-              const Text('🧭', style: TextStyle(fontSize: 30)),
+              const Glyph(emoji: '🧭', icon: Icons.route_outlined, size: 30),
               const SizedBox(width: 10),
               Expanded(child: Text('Gramer Yolu', style: Theme.of(context).textTheme.titleLarge)),
               Text(
                 '$done/${lessons.length}',
-                style: const TextStyle(color: Brand.primary, fontWeight: FontWeight.w900),
+                style: TextStyle(color: Brand.primary, fontWeight: FontWeight.w900),
               ),
             ],
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Notlarından hazırlanan adım adım dersler: formül, zaman çizelgesi, '
             'Türkçe karşılaştırma, yaygın hatalar ve mini test.',
             style: TextStyle(color: Brand.muted, fontSize: 13),
@@ -985,7 +978,7 @@ class _GrammarPathCard extends ConsumerWidget {
                 Expanded(
                   child: Text('Sıradaki: ${next.title}', style: const TextStyle(fontWeight: FontWeight.w700)),
                 ),
-                const Icon(Icons.play_circle_fill_rounded, color: Brand.primary, size: 30),
+                Icon(Icons.play_circle_fill_rounded, color: Brand.primary, size: 30),
               ],
             ),
           ],

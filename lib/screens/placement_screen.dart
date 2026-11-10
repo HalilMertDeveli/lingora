@@ -52,7 +52,7 @@ class ReasonPicker extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (r == selected) const Icon(Icons.check_circle, color: Brand.primary),
+                  if (r == selected) Icon(Icons.check_circle, color: Brand.primary),
                 ],
               ),
             ),
@@ -86,7 +86,7 @@ class _PlacementIntroScreenState extends ConsumerState<PlacementIntroScreen> {
               Expanded(
                 child: ListView(
                   children: [
-                    const Center(child: Mascot(mood: Mood.think, size: 90)),
+                    const Center(child: Mascot(mood: Mood.think, size: 90, decorative: true)),
                     const SizedBox(height: 12),
                     Text('Neden İngilizce öğreniyorsun?', style: t.headlineSmall),
                     const SizedBox(height: 6),
@@ -211,7 +211,7 @@ class _PlacementTestScreenState extends ConsumerState<PlacementTestScreen> {
                     if (_ok == null) ...[
                       FilledButton(
                         onPressed: _picked == null ? null : _check,
-                        child: const Text('KONTROL ET'),
+                        child: const Text('Kontrol et'),
                       ),
                       TextButton(onPressed: () => _check(unknown: true), child: const Text('Bilmiyorum')),
                     ] else
@@ -294,12 +294,12 @@ class _Feedback extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 6),
-          Text(question.explanation, style: const TextStyle(color: Brand.ink)),
+          Text(question.explanation, style: TextStyle(color: Brand.ink)),
           const SizedBox(height: 10),
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: fg),
             onPressed: onContinue,
-            child: const Text('DEVAM'),
+            child: const Text('Devam'),
           ),
         ],
       ),
@@ -362,13 +362,15 @@ class PlacementResultScreen extends ConsumerWidget {
                             color: color,
                             shape: BoxShape.circle,
                             boxShadow: [
-                              BoxShadow(color: color.withValues(alpha: 0.4), offset: const Offset(0, 5)),
+                              if (Brand.isKid)
+                                if (Brand.isKid)
+                                  BoxShadow(color: color.withValues(alpha: 0.4), offset: const Offset(0, 5)),
                             ],
                           ),
                           child: Text(
-                            level?.code ?? '🌱',
-                            style: const TextStyle(
-                              color: Colors.white,
+                            level?.code ?? (Brand.isKid ? '🌱' : 'A0'),
+                            style: TextStyle(
+                              color: onColor(color),
                               fontSize: 34,
                               fontWeight: FontWeight.w900,
                             ),
@@ -459,7 +461,7 @@ class PlacementProfileCard extends ConsumerWidget {
           Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const PlacementIntroScreen())),
       child: Row(
         children: [
-          const Icon(Icons.speed_rounded, color: Brand.primary, size: 30),
+          Icon(Icons.speed_rounded, color: Brand.primary, size: 30),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -470,7 +472,7 @@ class PlacementProfileCard extends ConsumerWidget {
               ],
             ),
           ),
-          const Icon(Icons.chevron_right, color: Brand.muted),
+          Icon(Icons.chevron_right, color: Brand.muted),
         ],
       ),
     );

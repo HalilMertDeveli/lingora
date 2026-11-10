@@ -13,9 +13,9 @@ import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import 'lesson_result_screen.dart';
 
-const _readColor = Color(0xFF0E9F8E);
+Color get _readColor => Brand.tone(const Color(0xFF0E9F8E));
 
-const _levelColors = {'A1': Brand.success, 'A2': Color(0xFF2F80ED), 'B1': Brand.primary};
+Map<String, Color> get _levelColors => {'A1': Brand.success, 'A2': Color(0xFF2F80ED), 'B1': Brand.primary};
 
 /// Number of stories the user has finished.
 int readStoryCount(Progress p) => p.completed.keys.where((k) => k.startsWith('read_')).length;
@@ -40,7 +40,7 @@ class ReadingEntryCard extends ConsumerWidget {
             height: 38,
             alignment: Alignment.center,
             decoration: BoxDecoration(color: _readColor.withValues(alpha: 0.15), shape: BoxShape.circle),
-            child: const Text('📚', style: TextStyle(fontSize: 20)),
+            child: Glyph(emoji: '📚', icon: Icons.auto_stories_outlined, size: 22, color: _readColor),
           ),
           const SizedBox(width: 10),
           Expanded(
@@ -52,12 +52,12 @@ class ReadingEntryCard extends ConsumerWidget {
                   done == 0 ? 'Türkçe açıklamalı kısa hikâyeler' : '$done hikâye okundu',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(color: Brand.muted, fontSize: 12),
+                  style: TextStyle(color: Brand.muted, fontSize: 12),
                 ),
               ],
             ),
           ),
-          const Icon(Icons.chevron_right_rounded, color: Brand.muted),
+          Icon(Icons.chevron_right_rounded, color: Brand.muted),
         ],
       ),
     );
@@ -80,7 +80,7 @@ class ReadingLibraryScreen extends ConsumerWidget {
         data: (all) => ListView(
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
           children: [
-            const Text(
+            Text(
               'Türkiye\'de geçen kısa hikâyeler. Her kelimeye dokunup Türkçesini görebilir, '
               'dinleyebilir ve sözlüğüne ekleyebilirsin.',
               style: TextStyle(color: Brand.muted),
@@ -134,15 +134,15 @@ class ReadingLibraryScreen extends ConsumerWidget {
                       Text(s.title, style: Theme.of(context).textTheme.titleMedium),
                       Text(
                         '${s.titleTr} · ${s.wordCount} kelime',
-                        style: const TextStyle(color: Brand.muted, fontSize: 13),
+                        style: TextStyle(color: Brand.muted, fontSize: 13),
                       ),
                     ],
                   ),
                 ),
                 if (p.isDone(readNodeId(s.id)))
-                  const Icon(Icons.check_circle_rounded, color: Brand.success)
+                  Icon(Icons.check_circle_rounded, color: Brand.success)
                 else
-                  const Icon(Icons.chevron_right_rounded, color: Brand.muted),
+                  Icon(Icons.chevron_right_rounded, color: Brand.muted),
               ],
             ),
           ),
@@ -261,9 +261,9 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
-          child: const Text(
-            '👆 Her kelimeye dokunabilirsin. Altı noktalı olanların bu hikâyeye özel Türkçe notu var. '
-            '🎧 ile cümle cümle dinle.',
+          child: Text(
+            '${kidEmoji('👆')}Her kelimeye dokunabilirsin. Altı noktalı olanların bu hikâyeye özel Türkçe notu var. '
+            'Hoparlör düğmesiyle cümle cümle dinle.',
             style: TextStyle(color: Brand.muted, fontSize: 13),
           ),
         ),
@@ -315,8 +315,8 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
   Widget _listenBar(Color color) => SafeArea(
     child: Container(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: Brand.card,
         border: Border(top: BorderSide(color: Brand.line)),
       ),
       child: Row(
@@ -343,7 +343,12 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
             tooltip: 'Yavaş oku',
             isSelected: _slow,
             onPressed: () => setState(() => _slow = !_slow),
-            icon: Text('🐢', style: TextStyle(fontSize: 20, color: _slow ? null : Brand.muted)),
+            icon: Glyph(
+              emoji: '🐢',
+              icon: Icons.slow_motion_video_rounded,
+              size: 22,
+              color: _slow ? _readColor : Brand.muted,
+            ),
           ),
         ],
       ),
@@ -411,10 +416,10 @@ class _WordSheetState extends ConsumerState<_WordSheet> {
               Text(
                 meaning,
                 key: const ValueKey('word-meaning'),
-                style: const TextStyle(fontSize: 20, color: _readColor, fontWeight: FontWeight.w800),
+                style: TextStyle(fontSize: 20, color: _readColor, fontWeight: FontWeight.w800),
               )
             else ...[
-              const Text(
+              Text(
                 'Bu kelimenin hikâyede notu yok. Anlamını kendin yazıp sözlüğüne ekleyebilirsin.',
                 style: TextStyle(color: Brand.muted),
               ),
@@ -428,11 +433,11 @@ class _WordSheetState extends ConsumerState<_WordSheet> {
             const SizedBox(height: 12),
             Text(
               '“${widget.example}”',
-              style: const TextStyle(fontStyle: FontStyle.italic, color: Brand.muted),
+              style: TextStyle(fontStyle: FontStyle.italic, color: Brand.muted),
             ),
             const SizedBox(height: 16),
             if (_added)
-              const Row(
+              Row(
                 children: [
                   Mascot(mood: Mood.happy, size: 40),
                   SizedBox(width: 8),
@@ -445,7 +450,7 @@ class _WordSheetState extends ConsumerState<_WordSheet> {
                 ],
               )
             else if (known != null)
-              const Text(
+              Text(
                 '✓ Bu kelime zaten sözlüğünde',
                 style: TextStyle(color: Brand.success, fontWeight: FontWeight.w800),
               )
@@ -522,7 +527,7 @@ class _QuizState extends State<_Quiz> {
         const SizedBox(height: 16),
         Text(
           'Soru ${_i + 1}/$n',
-          style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w800),
+          style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800),
         ),
         const SizedBox(height: 6),
         Text(q.q, style: Theme.of(context).textTheme.titleLarge),
@@ -544,8 +549,8 @@ class _QuizState extends State<_Quiz> {
                         children: [
                           Expanded(child: Text(q.options[o], style: const TextStyle(fontSize: 16))),
                           if (_solved && o == q.answer)
-                            const Icon(Icons.check_circle_rounded, color: Brand.success),
-                          if (_wrong.contains(o)) const Icon(Icons.close_rounded, color: Brand.error),
+                            Icon(Icons.check_circle_rounded, color: Brand.success),
+                          if (_wrong.contains(o)) Icon(Icons.close_rounded, color: Brand.error),
                         ],
                       ),
                     ),
@@ -555,15 +560,15 @@ class _QuizState extends State<_Quiz> {
           ),
         ),
         if (!_solved && _wrong.isNotEmpty)
-          const Text(
-            'Olmadı, bir daha dene 🙂 Hikâyeye dönüp bakmak serbest.',
+          Text(
+            'Olmadı, bir daha dene. Hikâyeye dönüp bakmak serbest.',
             style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
           ),
         if (_solved) ...[
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(color: Brand.successBg, borderRadius: BorderRadius.circular(14)),
-            child: Text('💡 ${q.explain}', style: const TextStyle(fontSize: 15)),
+            child: Text('${kidEmoji('💡')}${q.explain}', style: const TextStyle(fontSize: 15)),
           ),
           const SizedBox(height: 16),
           PressableButton(label: _i + 1 >= n ? 'BİTİR' : 'DEVAM', color: widget.color, onPressed: _next),
@@ -640,7 +645,7 @@ class _AddWordDialogState extends ConsumerState<_AddWordDialog> {
           ),
           if (_error != null) ...[
             const SizedBox(height: 10),
-            Text(_error!, style: const TextStyle(color: Brand.error)),
+            Text(_error!, style: TextStyle(color: Brand.error)),
           ],
         ],
       ),

@@ -124,7 +124,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               widget.feature == null || premium
                   ? 'Temel öğrenme her zaman ücretsiz. Premium, maliyeti yüksek ekstraları açar.'
                   : '“${widget.feature!.title}” Premium ile açılır. Temel öğrenme her zaman ücretsiz.',
-              style: const TextStyle(color: Brand.muted),
+              style: TextStyle(color: Brand.muted),
             ),
           ],
         ),
@@ -213,7 +213,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
         ),
       ),
       const SizedBox(height: 4),
-      const Text(
+      Text(
         'Abonelik, iptal edilmedikçe her dönem sonunda Google Play hesabından otomatik yenilenir. '
         'İstediğin zaman Google Play > Abonelikler bölümünden iptal edebilirsin; iptal edersen '
         'ödediğin dönemin sonuna kadar Premium kalır. Fiyatlara vergiler dahildir.',
@@ -249,7 +249,7 @@ class _FeatureRow extends StatelessWidget {
             children: [
               Text(feature.title, style: const TextStyle(fontWeight: FontWeight.w800)),
               const SizedBox(height: 2),
-              Text(feature.description, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+              Text(feature.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
             ],
           ),
         ),
@@ -274,13 +274,13 @@ class _FreeBox extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(Icons.check_rounded, size: 18, color: Brand.success),
+                Icon(Icons.check_rounded, size: 18, color: Brand.success),
                 const SizedBox(width: 6),
                 Expanded(child: Text(item, style: const TextStyle(fontSize: 13))),
               ],
             ),
           ),
-        const Text(
+        Text(
           'Can/kalp yok, ceza yok: hata yapmak öğrenmenin parçası.',
           style: TextStyle(color: Brand.muted, fontSize: 12),
         ),
@@ -343,7 +343,7 @@ class _PlanCard extends StatelessWidget {
                     ],
                   ],
                 ),
-                Text('${product.price} / ${plan.period}', style: const TextStyle(color: Brand.muted)),
+                Text('${product.price} / ${plan.period}', style: TextStyle(color: Brand.muted)),
               ],
             ),
           ),

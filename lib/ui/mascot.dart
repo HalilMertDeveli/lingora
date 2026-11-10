@@ -2,23 +2,73 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../theme.dart';
 import 'motion.dart';
 
 /// Lino's mood decides its face and how it moves.
 enum Mood { idle, happy, cheer, sad, think }
 
-/// Lino: Lingora's own mascot, a round purple "speech bubble" creature with a
-/// leaf sprout. Drawn entirely in code so there are no image assets.
-class Mascot extends StatefulWidget {
-  const Mascot({super.key, this.mood = Mood.idle, this.size = 120});
+/// Lingora's guide. Kid mode shows Lino, the animated mascot; adult mode
+/// shows a small, calm status badge instead (or nothing when [decorative]), so every screen adapts without changes.
+class Mascot extends StatelessWidget {
+  const Mascot({super.key, this.mood = Mood.idle, this.size = 120, this.decorative = false});
+  final Mood mood;
+  final double size;
+
+  /// Purely decorative placements (hero banners, empty states) show
+  /// nothing in adult mode.
+  final bool decorative;
+
+  @override
+  Widget build(BuildContext context) {
+    if (context.isKid) return Lino(mood: mood, size: size);
+    if (decorative) return const SizedBox.shrink();
+    return MoodBadge(mood: mood, size: (size * 0.5).clamp(40.0, 72.0));
+  }
+}
+
+/// Adult-mode stand-in for the mascot: an icon in a soft tinted circle.
+class MoodBadge extends StatelessWidget {
+  const MoodBadge({super.key, required this.mood, this.size = 64});
   final Mood mood;
   final double size;
 
   @override
-  State<Mascot> createState() => _MascotState();
+  Widget build(BuildContext context) {
+    final p = context.palette;
+    final (icon, color) = switch (mood) {
+      Mood.cheer => (Icons.workspace_premium_outlined, p.accent),
+      Mood.happy => (Icons.check_rounded, p.success),
+      Mood.sad => (Icons.replay_rounded, p.muted),
+      Mood.think => (Icons.lightbulb_outline_rounded, p.primary),
+      Mood.idle => (Icons.auto_stories_outlined, p.primary),
+    };
+    return SizedBox(
+      width: size,
+      height: size,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: p.isDark ? 0.2 : 0.12),
+          shape: BoxShape.circle,
+        ),
+        child: Icon(icon, color: color, size: size * 0.5),
+      ),
+    );
+  }
 }
 
-class _MascotState extends State<Mascot> with TickerProviderStateMixin {
+/// Lino: Lingora's own mascot, a round purple "speech bubble" creature with a
+/// leaf sprout. Drawn entirely in code so there are no image assets.
+class Lino extends StatefulWidget {
+  const Lino({super.key, this.mood = Mood.idle, this.size = 120});
+  final Mood mood;
+  final double size;
+
+  @override
+  State<Lino> createState() => _LinoState();
+}
+
+class _LinoState extends State<Lino> with TickerProviderStateMixin {
   /// Idle bob / cheer jump, looping.
   late final _loop = AnimationController(vsync: this, duration: const Duration(milliseconds: 1600));
 
@@ -60,7 +110,7 @@ class _MascotState extends State<Mascot> with TickerProviderStateMixin {
   }
 
   @override
-  void didUpdateWidget(Mascot old) {
+  void didUpdateWidget(Lino old) {
     super.didUpdateWidget(old);
     if (old.mood != widget.mood) _react.forward(from: 0);
   }

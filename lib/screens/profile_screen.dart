@@ -5,6 +5,7 @@ import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../services/billing/premium.dart';
 import '../theme.dart';
+import '../ui/appearance.dart';
 import 'account_section.dart';
 import 'error_analysis_screen.dart';
 import 'onboarding_screen.dart';
@@ -28,7 +29,7 @@ class ProfileScreen extends ConsumerWidget {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        const Row(
+        Row(
           children: [
             LingoraLogo(size: 64),
             SizedBox(width: 16),
@@ -92,10 +93,10 @@ class ProfileScreen extends ConsumerWidget {
               Expanded(
                 child: Text(
                   premium ? 'Premium aktif. Aboneliğini görüntüle veya geri yükle.' : 'Yapay zekâ sohbeti, sınırsız deneme ve detaylı hata analizi. Temel öğrenme ücretsiz.',
-                  style: const TextStyle(color: Brand.muted),
+                  style: TextStyle(color: Brand.muted),
                 ),
               ),
-              const Icon(Icons.chevron_right_rounded, color: Brand.muted),
+              Icon(Icons.chevron_right_rounded, color: Brand.muted),
             ],
           ),
         ),
@@ -131,10 +132,14 @@ class ProfileScreen extends ConsumerWidget {
         Text('Hesap', style: t.titleLarge),
         const SizedBox(height: 12),
         const AccountSection(),
+        const SizedBox(height: 24),
+        Text('Görünüm', style: t.titleLarge),
+        const SizedBox(height: 12),
+        const AppearanceSettings(),
         const SizedBox(height: 32),
         OutlinedButton.icon(
-          icon: const Icon(Icons.restart_alt, color: Brand.error),
-          label: const Text('İlerlemeyi sıfırla', style: TextStyle(color: Brand.error)),
+          icon: Icon(Icons.restart_alt, color: Brand.error),
+          label: Text('İlerlemeyi sıfırla', style: TextStyle(color: Brand.error)),
           onPressed: () async {
             final ok = await showDialog<bool>(
               context: context,
@@ -145,7 +150,7 @@ class ProfileScreen extends ConsumerWidget {
                   TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Vazgeç')),
                   TextButton(
                     onPressed: () => Navigator.pop(c, true),
-                    child: const Text('Sıfırla', style: TextStyle(color: Brand.error)),
+                    child: Text('Sıfırla', style: TextStyle(color: Brand.error)),
                   ),
                 ],
               ),
@@ -181,7 +186,7 @@ class _StatCard extends StatelessWidget {
               Text(
                 label,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(color: Brand.muted, fontSize: 12),
+                style: TextStyle(color: Brand.muted, fontSize: 12),
               ),
             ],
           ),
@@ -211,7 +216,7 @@ class _WeekChart extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text('${values[i]}', style: const TextStyle(fontSize: 11, color: Brand.muted)),
+                  Text('${values[i]}', style: TextStyle(fontSize: 11, color: Brand.muted)),
                   const SizedBox(height: 4),
                   Container(
                     height: 100 * values[i] / top + 4,
@@ -245,9 +250,9 @@ class _ErrorStatsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final top = progress.topErrorCategories();
     if (top.isEmpty) {
-      return const Row(
+      return Row(
         children: [
-          Text('🔍', style: TextStyle(fontSize: 24)),
+          const Glyph(emoji: '🔍', icon: Icons.manage_search_rounded, size: 26),
           SizedBox(width: 12),
           Expanded(
             child: Text(
@@ -275,7 +280,7 @@ class _ErrorStatsCard extends StatelessWidget {
                     Expanded(
                       child: Text(category.label, style: const TextStyle(fontWeight: FontWeight.w800)),
                     ),
-                    Text('$count kez', style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                    Text('$count kez', style: TextStyle(color: Brand.muted, fontSize: 13)),
                   ],
                 ),
                 const SizedBox(height: 4),
@@ -294,8 +299,8 @@ class _ErrorStatsCard extends StatelessWidget {
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(color: const Color(0xFFFFF4DC), borderRadius: BorderRadius.circular(12)),
-          child: Text('💡 İpucu: ${first.tip}', style: const TextStyle(height: 1.3)),
+          decoration: BoxDecoration(color: Brand.accentBg, borderRadius: BorderRadius.circular(12)),
+          child: Text('${Brand.isKid ? '💡 ' : ''}İpucu: ${first.tip}', style: const TextStyle(height: 1.3)),
         ),
       ],
     );
