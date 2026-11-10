@@ -46,6 +46,19 @@ alanlar ekleyebilir. `leagues/*` ve `entitlements/*` istemci tarafından yazılm
 
 ## Eşitleme ve birleştirme kuralı
 
+**Bulut yedekleme Premium'a özeldir.** Giriş (anonim, Google, e-posta) herkes için ücretsizdir, çünkü ligler
+ona ihtiyaç duyar. `progressSyncProvider` ise yalnızca `premiumProvider` doğruyken okur ve yazar.
+Ücretsiz kullanıcıda durum `SyncState.premiumOnly` olur ve her şey cihazda kalır. Hesap kartında
+"Buluta yedekleme Premium'a özel" yazısı ve paywall'u açan bir düğme görünür.
+
+- Premium başlayınca (ya da yenilenince) hemen eşitlenir: önce bulut kopyası çekilip birleştirilir,
+  sonra buluta yazılır. Ücretsizken yapılan düzenlemelerin zamanı da tutulur; bu sayede o dönemde
+  değişen ayarlar birleştirmede "en yeni" sayılır.
+- Premium bitince eşitleme durur. Cihazdaki veriler silinmez; bulut kopyası olduğu gibi kalır.
+- Sunucu tarafında da `users/{uid}` yazmaları etkin bir `entitlements/{uid}` ister (Firestore kuralları).
+  Bir yazma reddedilirse (ör. satın alma doğrulanmadan önce) istemci 30 sn sonra tekrar dener.
+  Emülatörde denemek için Emulator UI'dan `entitlements/<uid>` belgesine `{active: true}` ekle.
+
 - Kullanıcı Firebase açıkken otomatik olarak **anonim** giriş yapar; Profil > Hesap'tan Google ya da
   e-posta ile hesabını bağlayabilir (`linkWithCredential` — uid değişmez, ilerleme korunur). Hesap zaten
   varsa ona giriş yapılır ve cihazdaki ilerleme o hesapla birleştirilir.
