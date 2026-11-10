@@ -45,7 +45,11 @@
               "lang": "tr",
               "answers": [
                 "My name is Selin Aydın",
-                "I'm Selin Aydın"
+                "I'm Selin Aydın",
+                "I am Selin Aydın",
+                "My name is Selin Aydin",
+                "I'm Selin Aydin",
+                "I am Selin Aydin"
               ],
               "tokens": [
                 "My",
@@ -106,7 +110,11 @@
               "text": "Please tell me about yourself.",
               "lang": "en",
               "answers": [
-                "Lütfen bana kendinizden bahsedin"
+                "Lütfen bana kendinizden bahsedin",
+                "Lütfen kendinizden bahsedin",
+                "Bana kendinizden bahsedin lütfen",
+                "Lütfen bana kendinizi anlatın",
+                "Lütfen kendinizi anlatın"
               ],
               "tokens": [
                 "Lütfen",
@@ -157,7 +165,12 @@
               "lang": "tr",
               "answers": [
                 "I currently work at a bank",
-                "I'm currently working at a bank"
+                "I'm currently working at a bank",
+                "I am currently working at a bank",
+                "I currently work in a bank",
+                "I'm currently working in a bank",
+                "I work at a bank now",
+                "At the moment I work at a bank"
               ],
               "tokens": [
                 "I",
@@ -314,7 +327,7 @@
               "answer": "degree",
               "choices": [
                 "degree",
-                "job",
+                "holiday",
                 "company"
               ]
             },
@@ -324,7 +337,8 @@
               "lang": "tr",
               "answers": [
                 "I studied business administration",
-                "I studied business"
+                "I studied business",
+                "I studied business management"
               ],
               "tokens": [
                 "I",
@@ -487,7 +501,10 @@
               "lang": "tr",
               "answers": [
                 "I have three years of experience",
-                "I have 3 years of experience"
+                "I have 3 years of experience",
+                "I've got three years of experience",
+                "I have three years' experience",
+                "I have three years experience"
               ],
               "tokens": [
                 "I",
@@ -549,7 +566,8 @@
               "text": "I work full-time.",
               "lang": "en",
               "answers": [
-                "Tam zamanlı çalışıyorum"
+                "Tam zamanlı çalışıyorum",
+                "Tam gün çalışıyorum"
               ],
               "tokens": [
                 "Tam",
@@ -599,7 +617,10 @@
               "lang": "tr",
               "answers": [
                 "I work in the tourism industry",
-                "I work in tourism"
+                "I work in tourism",
+                "I work in the tourism sector",
+                "I'm working in the tourism industry",
+                "I am working in the tourism industry"
               ],
               "tokens": [
                 "I",
@@ -784,7 +805,8 @@
               "text": "Küçük bir ekibi yönettim.",
               "lang": "tr",
               "answers": [
-                "I managed a small team"
+                "I managed a small team",
+                "I led a small team"
               ],
               "tokens": [
                 "I",
@@ -838,6 +860,11 @@
               "text": "Excel'i çok iyi kullanırım.",
               "lang": "tr",
               "answers": [
+                "I am very good at Excel",
+                "I'm very good at Excel",
+                "I'm very good with Excel",
+                "I am very good with Excel",
+                "I can use Excel very well",
                 "I use Excel very well"
               ],
               "tokens": [
@@ -847,7 +874,8 @@
                 "very",
                 "well",
                 "good",
-                "used"
+                "am",
+                "at"
               ]
             },
             {
@@ -865,7 +893,8 @@
               "type": "listen",
               "text": "I am good at solving problems.",
               "answers": [
-                "I am good at solving problems."
+                "I am good at solving problems.",
+                "I'm good at solving problems."
               ]
             },
             {
@@ -899,7 +928,9 @@
               "lang": "en",
               "answers": [
                 "İletişimde iyiyim",
-                "İletişim konusunda iyiyim"
+                "İletişim konusunda iyiyim",
+                "İletişim becerilerim iyi",
+                "İletişim becerilerim iyidir"
               ],
               "tokens": [
                 "İletişimde",
@@ -948,7 +979,10 @@
               "lang": "tr",
               "answers": [
                 "I like learning new things",
-                "I like to learn new things"
+                "I like to learn new things",
+                "I love learning new things",
+                "I love to learn new things",
+                "I enjoy learning new things"
               ],
               "tokens": [
                 "I",
@@ -964,7 +998,7 @@
             {
               "type": "speak",
               "text": "I am good at solving problems.",
-              "translation": "Problem çözmede iyiyim."
+              "translation": "Problem çözmekte iyiyim."
             }
           ]
         },
@@ -1105,7 +1139,10 @@
               "lang": "tr",
               "answers": [
                 "I increased sales by twenty percent",
-                "I increased sales by 20 percent"
+                "I increased sales by 20 percent",
+                "I increased sales by 20%",
+                "I increased sales by twenty per cent",
+                "I increased sales by 20 per cent"
               ],
               "tokens": [
                 "I",
@@ -1167,7 +1204,8 @@
               "text": "We finished the project on time.",
               "lang": "en",
               "answers": [
-                "Projeyi zamanında bitirdik"
+                "Projeyi zamanında bitirdik",
+                "Projeyi zamanında tamamladık"
               ],
               "tokens": [
                 "Projeyi",
@@ -1216,7 +1254,10 @@
               "text": "Hedefimize ulaştık.",
               "lang": "tr",
               "answers": [
-                "We reached our goal"
+                "We reached our goal",
+                "We achieved our goal",
+                "We met our goal",
+                "We reached our target"
               ],
               "tokens": [
                 "We",
@@ -1288,11 +1329,13 @@
             },
             {
               "type": "translate",
-              "text": "En büyük güçlü yönüm sabrım.",
+              "text": "En güçlü yönüm sabrım.",
               "lang": "tr",
               "answers": [
                 "My greatest strength is my patience",
-                "My biggest strength is my patience"
+                "My biggest strength is my patience",
+                "My greatest strength is patience",
+                "My biggest strength is patience"
               ],
               "tokens": [
                 "My",
@@ -1308,7 +1351,7 @@
             {
               "type": "fillBlank",
               "text": "Sometimes I work too ___.",
-              "translation": "Bazen fazla sıkı çalışırım.",
+              "translation": "Bazen gereğinden fazla çalışırım.",
               "answer": "hard",
               "choices": [
                 "hard",
@@ -1353,7 +1396,8 @@
               "text": "I am working on it.",
               "lang": "en",
               "answers": [
-                "Bunun üzerinde çalışıyorum"
+                "Bunun üzerinde çalışıyorum",
+                "Üzerinde çalışıyorum"
               ],
               "tokens": [
                 "Bunun",
@@ -1403,7 +1447,11 @@
               "lang": "tr",
               "answers": [
                 "I'm improving my public speaking",
-                "I am improving my public speaking"
+                "I am improving my public speaking",
+                "I'm improving my public speaking skills",
+                "I am improving my public speaking skills",
+                "I'm working on my public speaking",
+                "I am working on my public speaking"
               ],
               "tokens": [
                 "I'm",
@@ -1419,7 +1467,7 @@
             {
               "type": "speak",
               "text": "My greatest strength is my patience.",
-              "translation": "En büyük güçlü yönüm sabrım."
+              "translation": "En güçlü yönüm sabrım."
             }
           ]
         },
@@ -1457,7 +1505,9 @@
               "text": "Şirketinizin değerlerini beğeniyorum.",
               "lang": "tr",
               "answers": [
-                "I like your company's values"
+                "I like your company's values",
+                "I like the values of your company",
+                "I like your company values"
               ],
               "tokens": [
                 "I",
@@ -1517,7 +1567,9 @@
               "text": "This is a great opportunity for me.",
               "lang": "en",
               "answers": [
-                "Bu benim için harika bir fırsat"
+                "Bu benim için harika bir fırsat",
+                "Bu benim için büyük bir fırsat",
+                "Bu benim için çok iyi bir fırsat"
               ],
               "tokens": [
                 "Bu",
@@ -1570,7 +1622,9 @@
               "lang": "tr",
               "answers": [
                 "I want to work in an international team",
-                "I want to work on an international team"
+                "I want to work on an international team",
+                "I'd like to work in an international team",
+                "I would like to work in an international team"
               ],
               "tokens": [
                 "I",
@@ -1736,7 +1790,11 @@
               "lang": "tr",
               "answers": [
                 "I want to be a manager in five years",
-                "In five years I want to be a manager"
+                "In five years I want to be a manager",
+                "I'd like to be a manager in five years",
+                "I want to become a manager in five years",
+                "In five years I want to become a manager",
+                "I want to be a manager within five years"
               ],
               "tokens": [
                 "I",
@@ -1800,7 +1858,9 @@
               "text": "The salary is negotiable.",
               "lang": "en",
               "answers": [
-                "Maaş pazarlığa açık"
+                "Maaş pazarlığa açık",
+                "Maaş pazarlığa açıktır",
+                "Maaş konusu pazarlığa açık"
               ],
               "tokens": [
                 "Maaş",
@@ -1846,11 +1906,17 @@
             },
             {
               "type": "translate",
-              "text": "Maaş konusunda esnekim.",
+              "text": "Maaş konusunda esneğim.",
               "lang": "tr",
               "answers": [
                 "I'm flexible about the salary",
-                "I am flexible about the salary"
+                "I am flexible about the salary",
+                "I'm flexible about salary",
+                "I am flexible about salary",
+                "I'm flexible on salary",
+                "I am flexible on salary",
+                "I'm flexible on the salary",
+                "I am flexible on the salary"
               ],
               "tokens": [
                 "I'm",
@@ -1926,7 +1992,8 @@
               "text": "Bir sorum var.",
               "lang": "tr",
               "answers": [
-                "I have a question"
+                "I have a question",
+                "I've got a question"
               ],
               "tokens": [
                 "I",
@@ -1986,7 +2053,10 @@
               "text": "What are the next steps?",
               "lang": "en",
               "answers": [
-                "Sonraki adımlar neler"
+                "Sonraki adımlar neler",
+                "Sonraki adımlar nelerdir",
+                "Bundan sonraki adımlar neler",
+                "Sıradaki adımlar neler"
               ],
               "tokens": [
                 "Sonraki",
@@ -2036,7 +2106,12 @@
               "lang": "tr",
               "answers": [
                 "Can you tell me more about the team",
-                "Could you tell me more about the team"
+                "Could you tell me more about the team",
+                "Could you tell me a little more about the team",
+                "Can you tell me a little more about the team",
+                "Could you tell me a bit more about the team",
+                "Can you tell me a bit more about the team",
+                "Could you give me more information about the team"
               ],
               "tokens": [
                 "Can",
@@ -2066,7 +2141,7 @@
           "exercises": [
             {
               "type": "select",
-              "prompt": "el sıkışmak",
+              "prompt": "el sıkışma",
               "answer": "handshake",
               "choices": [
                 {
@@ -2092,7 +2167,8 @@
               "text": "Zaman ayırdığınız için teşekkür ederim.",
               "lang": "tr",
               "answers": [
-                "Thank you for your time"
+                "Thank you for your time",
+                "Thanks for your time"
               ],
               "tokens": [
                 "Thank",
@@ -2153,7 +2229,11 @@
               "text": "We will contact you next week.",
               "lang": "en",
               "answers": [
-                "Gelecek hafta sizinle iletişime geçeceğiz"
+                "Gelecek hafta sizinle iletişime geçeceğiz",
+                "Önümüzdeki hafta sizinle iletişime geçeceğiz",
+                "Sizinle gelecek hafta iletişime geçeceğiz",
+                "Gelecek hafta size ulaşacağız",
+                "Önümüzdeki hafta size ulaşacağız"
               ],
               "tokens": [
                 "Gelecek",
@@ -2204,7 +2284,9 @@
               "text": "Sizden haber almayı bekliyorum.",
               "lang": "tr",
               "answers": [
-                "I look forward to hearing from you"
+                "I look forward to hearing from you",
+                "I'm looking forward to hearing from you",
+                "I am looking forward to hearing from you"
               ],
               "tokens": [
                 "I",
@@ -2288,7 +2370,7 @@
               "kind": "line",
               "speaker": "David",
               "avatar": "🧔",
-              "text": "You too. Was the traffic OK this morning?",
+              "text": "Likewise. Was the traffic OK this morning?",
               "translation": "Ben de memnun oldum. Bu sabah trafik nasıldı?"
             },
             {
@@ -2303,7 +2385,7 @@
               "speaker": "David",
               "avatar": "🧔",
               "text": "Smart! Goodbye, Selin.",
-              "translation": "Akıllıca! Hoşça kalın Selin."
+              "translation": "Akıllıca! Hoşça kalın, Selin."
             },
             {
               "kind": "question",
@@ -2423,7 +2505,10 @@
               "text": "How was your weekend?",
               "lang": "en",
               "answers": [
-                "Hafta sonunuz nasıldı"
+                "Hafta sonunuz nasıldı",
+                "Hafta sonun nasıldı",
+                "Hafta sonunuz nasıl geçti",
+                "Hafta sonun nasıl geçti"
               ],
               "tokens": [
                 "Hafta",
@@ -2473,7 +2558,10 @@
               "lang": "tr",
               "answers": [
                 "Please find my CV attached",
-                "You can find my CV attached"
+                "You can find my CV attached",
+                "My CV is attached",
+                "I have attached my CV",
+                "I've attached my CV"
               ],
               "tokens": [
                 "Please",
