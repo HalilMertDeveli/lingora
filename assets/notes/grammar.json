@@ -2778,7 +2778,7 @@
   "title": "Simple Past Tense (Geçmiş Zaman)",
   "category": "Zamanlar",
   "source": "Translation Methods",
-  "body": "Konuyla alakalı zaman ifadeleri: last Monday (geçen pazartesi), two days ago, in 1985, on Sunday (pazar günü), the other day (geçen gün), the day before (bir önceki gün), on the first day of April.\n\nA) Geçmişte belirli bir zamanda gerçekleşmiş olayları anlatmak için kullanılır.\n\nB) Bazen zaman ifadesi kullanılmaz; zamanı cümleden anlarsın.\n\nC) Geçmişteki bir işi anlatırken başka bir geçmiş zaman cümlesi verilebilir (when I was…).\n\nD) Eskiden yapılan hareketleri hikâyeleştirmek için kullanılır.\n\nG) Bizden uzakta olmuş ama görmediğimiz olayları anlatmak için kullanılır (haberler gibi).\n\nH) Beş duyu ve düşünceyle ilgili anlatımlar genellikle geçmiş zamanla yapılır.",
+  "body": "Konuyla alakalı zaman ifadeleri: last Monday (geçen pazartesi), two days ago, in 1985, on Sunday (pazar günü), the other day (geçen gün), the day before (bir önceki gün), on the first day of April.\n\nA) Geçmişte belirli bir zamanda gerçekleşmiş olayları anlatmak için kullanılır.\n\nB) Bazen zaman ifadesi kullanılmaz; zamanı cümleden anlarsın.\n\nC) Geçmişteki bir işi anlatırken başka bir geçmiş zaman cümlesi verilebilir (when I was…).\n\nD) Eskiden yapılan hareketleri hikâyeleştirmek için kullanılır.\n\nE) Bizden uzakta olmuş ama görmediğimiz olayları anlatmak için kullanılır (haberler gibi).\n\nF) Beş duyu ve düşünceyle ilgili anlatımlar genellikle geçmiş zamanla yapılır.",
   "rules": [
    "S + V2 + O",
    "Olumsuz: S + didn't + V1",
@@ -4119,7 +4119,7 @@
     "tr": "Corrie diye biri sana mesaj bıraktı."
    },
    {
-    "en": "This car makes 140 miles an hour.",
+    "en": "This car does 140 miles an hour.",
     "tr": "Bu araba saatte 140 mil yapıyor."
    },
    {
@@ -4938,7 +4938,7 @@
   "title": "Çoğul İsimler ve Be Fiili",
   "category": "İsimler ve Zamirler",
   "source": "What did I learn?",
-  "body": "İngilizcede çoğul cümlede hem özne hem de tümleç çoğul hale getirilir: 'Spiders are insects'.\n\nKural: y'den önce sessiz bir harf varsa y düşer ve -ies eklenir (city → cities). Y'den önce sesli harf varsa sadece -s eklenir (tray → trays, boy → boys).\n\nKelimeler: scanner = tarayıcı, tray = tepsi, continent = kıta.",
+  "body": "İngilizcede çoğul cümlede hem özne hem de tümleç çoğul hale getirilir: 'Ants are insects'.\n\nKural: y'den önce sessiz bir harf varsa y düşer ve -ies eklenir (city → cities). Y'den önce sesli harf varsa sadece -s eklenir (tray → trays, boy → boys).\n\nKelimeler: scanner = tarayıcı, tray = tepsi, continent = kıta.",
   "rules": [
    "Çoğul özne + are + çoğul tümleç",
    "sessiz + y → -ies (city → cities)",
@@ -4946,8 +4946,8 @@
   ],
   "examples": [
    {
-    "en": "Spiders are insects.",
-    "tr": "Örümcekler böcektir."
+    "en": "Ants are insects.",
+    "tr": "Karıncalar böcektir."
    },
    {
     "en": "Asia and Europe are continents.",
@@ -5440,7 +5440,7 @@
   "title": "Quite ve Rather",
   "category": "Sıfat ve Zarflar",
   "source": "English Book",
-  "body": "Quite: Türkçede 'oldukça, epeyce, tamamen, tam olarak' anlamları verir. Olumsuz cümlede 'tam olarak' anlamına gelir: We can't quite decide.\n\nRather: Türkçede 'oldukça, epeyce' anlamı verir. Genellikle beklenenden fazla ya da biraz olumsuz bir durumu anlatır (These shoes are rather big).\n\nIsimle birlikte kullanırken sıra şöyledir: quite a good teacher, rather a good car (ya da a rather good car).",
+  "body": "Quite: Türkçede 'oldukça, epeyce, tamamen, tam olarak' anlamları verir. Olumsuz cümlede 'tam olarak' anlamına gelir: We can't quite decide.\n\nRather: Türkçede 'oldukça, epeyce' anlamı verir. Genellikle beklenenden fazla ya da biraz olumsuz bir durumu anlatır (These shoes are rather big).\n\nİsimle birlikte kullanırken sıra şöyledir: quite a good teacher, rather a good car (ya da a rather good car).",
   "rules": [
    "quite + sıfat: quite good",
    "quite + a + sıfat + isim: quite a good teacher",
@@ -5778,7 +5778,7 @@
   "title": "In, On, At",
   "category": "Edatlar",
   "source": "English Book",
-  "body": "In, on ve at çok değişik şekillerde kullanılır.\n\nIn ile kullanılanlar: aylar, yıllar, mevsimler (in February, in 1985, in winter); günün bölümleri (in the morning); süreler (in two days, in two weeks' time, in a short time); şehirler ve kapalı yerler (in Izmir, in the house, in a taxi); bazı kalıplar (in a low voice, in ink, in a hurry, in time).\n\nOn ile kullanılanlar: yüzeyler (on the table); tarihler ve günler (on February 22, on Sundays); katlar ve caddeler (on the second floor, on ... Street); toplu taşıma (on the bus / train / ship); bazı kalıplar (on time, on foot, on fire, on the team, a lecture on economy).\n\nAt ile kullanılanlar: saatler (at two o'clock, at noon, at midnight, at the moment); tam adresler (at 458 Lincoln Street); belirli noktalar ve yerler (at the desk, at home, at work, at the library, at the meeting, at the corner, at the bus stop); bazı kalıplar (at war, at sea, two dollars a kilo).",
+  "body": "In, on ve at çok değişik şekillerde kullanılır.\n\nIn ile kullanılanlar: aylar, yıllar, mevsimler (in February, in 1985, in winter); günün bölümleri (in the morning); süreler (in two days, in two weeks' time, in a short time); şehirler ve kapalı yerler (in Izmir, in the house, in a taxi); bazı kalıplar (in a low voice, in ink, in a hurry, in time).\n\nOn ile kullanılanlar: yüzeyler (on the table); tarihler ve günler (on February 22, on Sundays); katlar ve caddeler (on the second floor, on ... Street); toplu taşıma (on the bus / train / ship); bazı kalıplar (on time, on foot, on fire, on the team, a lecture on economy).\n\nAt ile kullanılanlar: saatler (at two o'clock, at noon, at midnight, at the moment); tam adresler (at 458 Lincoln Street); belirli noktalar ve yerler (at the desk, at home, at work, at the library, at the meeting, at the corner, at the bus stop); bazı kalıplar (at war, at sea, at two dollars a kilo).",
   "rules": [
    "in + ay / yıl / mevsim / şehir / kapalı alan",
    "on + gün / tarih / yüzey / kat / cadde / toplu taşıma",
@@ -5796,7 +5796,7 @@
    },
    {
     "en": "He is always in a hurry.",
-    "tr": "O hep aceleyle."
+    "tr": "O hep acele içinde."
    },
    {
     "en": "I want to be there in time.",
@@ -6134,7 +6134,7 @@
     "tr": "Ya itiraf edecek ya da ben şikâyet edeceğim."
    },
    {
-    "en": "Animals take in oxygen; on the contrary, plants take in carbon dioxide.",
+    "en": "Animals take in oxygen; on the other hand, plants take in carbon dioxide.",
     "tr": "Hayvanlar oksijen alır; buna karşılık bitkiler karbondioksit alır."
    },
    {
@@ -6314,8 +6314,8 @@
     "tr": "Bu ikinci el bir araba; öte yandan çok pahalı."
    },
    {
-    "en": "The men were rude to me; on the contrary, the children were polite.",
-    "tr": "Adamlar bana kaba davrandı; çocuklar ise aksine kibardı."
+    "en": "The men weren't rude to me; on the contrary, they were very polite.",
+    "tr": "Adamlar bana kaba davranmadı; aksine çok kibardılar."
    },
    {
     "en": "We worked hard; in spite of this, we couldn't finish on time.",
@@ -8504,7 +8504,7 @@
   "title": "Relative Clauses: Who, Which, That, Where, When, Whose",
   "category": "Yan Cümleler",
   "source": "English Course (YouTube)",
-  "body": "Relative clause'lar ana cümle içinde bir kelime hakkında bilgi vermek için o kelimeden sonra eklenen cümleciklerdir. Örneğin 'I will buy a car' cümlesinde arabayı nitelemek istiyorum: 'senin bana gösterdiğin arabayı alacağım' gibi.\n\nİlk olarak şunu aklına kazı: relative clause her zaman nitelediği kelimeden hemen sonra gelir. Kelime cümlenin başında da olsa sonunda da olsa bu değişmez.\n\nAyrıntı vereceğimiz cümleyi direkt veremiyoruz, WH kelimeleriyle bağlıyoruz: who kişiler için, which cansız nesneler (cinsiyeti olmayan şeyler) için, that who ve which yerine her zaman kullanılabilir, where yer hakkında, when zaman hakkında bilgi verirken, whose ise bir kişiye ait olan şeyden bahsederken (telleri kopuk gitar, arabası kırmızı adam gibi). Whose'dan sonra kişinin neyinden bahsediyorsan onu yazarsın.\n\nİki cümleyi birleştirirken tekrar eden zamir atılır: 'the man who lives here' derken ayrıca he demeyiz.\n\nÖnemli: nitelenen kelime ile yan cümledeki özne farklıysa (yani nitelenen kelime işi yapan değilse) who, which, that cümleden atılabilir.\n\nWhere için özel durum: where'i bir yer hakkında bilgi verirken kullanırız ama o yer işi kendisi yapmayacak. 'Güzel servis yapan restoran' derken işi restoran yaptığı için which kullanırız; 'Ahmet'in çalıştığı restoran' derken işi Ahmet yaptığı için where kullanırız.",
+  "body": "Relative clause'lar ana cümle içinde bir kelime hakkında bilgi vermek için o kelimeden sonra eklenen cümleciklerdir. Örneğin 'I will buy a car' cümlesinde arabayı nitelemek istiyorum: 'senin bana gösterdiğin arabayı alacağım' gibi.\n\nİlk olarak şunu aklına kazı: relative clause her zaman nitelediği kelimeden hemen sonra gelir. Kelime cümlenin başında da olsa sonunda da olsa bu değişmez.\n\nAyrıntı vereceğimiz cümleyi direkt veremiyoruz, WH kelimeleriyle bağlıyoruz: who kişiler için, which cansız nesneler (cinsiyeti olmayan şeyler) için, that who ve which yerine kullanılabilir (virgüllü, non-defining cümleler hariç), where yer hakkında, when zaman hakkında bilgi verirken, whose ise bir kişiye ait olan şeyden bahsederken (telleri kopuk gitar, arabası kırmızı adam gibi). Whose'dan sonra kişinin neyinden bahsediyorsan onu yazarsın.\n\nİki cümleyi birleştirirken tekrar eden zamir atılır: 'the man who lives here' derken ayrıca he demeyiz.\n\nÖnemli: nitelenen kelime ile yan cümledeki özne farklıysa (yani nitelenen kelime işi yapan değilse) who, which, that cümleden atılabilir.\n\nWhere için özel durum: where'i bir yer hakkında bilgi verirken kullanırız ama o yer işi kendisi yapmayacak. 'Güzel servis yapan restoran' derken işi restoran yaptığı için which kullanırız; 'Ahmet'in çalıştığı restoran' derken işi Ahmet yaptığı için where kullanırız.",
   "rules": [
    "isim + who / that + ... (kişi)",
    "isim + which / that + ... (nesne)",
@@ -9670,7 +9670,7 @@
    },
    {
     "en": "If it isn't necessary, you aren't supposed to write code now.",
-    "tr": "Gerekli değilse şimdi kod yazman gerekmiyor."
+    "tr": "Gerekli değilse şimdi kod yazmaman gerekiyor."
    },
    {
     "en": "You weren't supposed to say bad words.",
