@@ -13,7 +13,8 @@ import '../screens/story_screen.dart';
 import '../theme.dart';
 import 'org.dart';
 
-String _date(DateTime d) => '${d.day.toString().padLeft(2, '0')}.${d.month.toString().padLeft(2, '0')}.${d.year}';
+String _date(DateTime d) =>
+    '${d.day.toString().padLeft(2, '0')}.${d.month.toString().padLeft(2, '0')}.${d.year}';
 
 /// "Kurum" card in Profil: join with a code, or the org the user is in.
 /// Hidden when Firebase is off.
@@ -105,7 +106,11 @@ class _OrgCard extends ConsumerWidget {
       children: [
         Row(
           children: [
-            Icon(org.isSchool ? Icons.school_rounded : Icons.apartment_rounded, color: Brand.primary, size: 30),
+            Icon(
+              org.isSchool ? Icons.school_rounded : Icons.apartment_rounded,
+              color: Brand.primary,
+              size: 30,
+            ),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
@@ -113,10 +118,7 @@ class _OrgCard extends ConsumerWidget {
                 children: [
                   Text(org.name, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
                   Text(
-                    [
-                      org.role.label,
-                      if (org.classes.isNotEmpty) org.classes.join(', '),
-                    ].join(' · '),
+                    [org.role.label, if (org.classes.isNotEmpty) org.classes.join(', ')].join(' · '),
                     style: const TextStyle(color: Brand.muted, fontSize: 13),
                   ),
                 ],
@@ -216,7 +218,11 @@ class _JoinOrgDialogState extends ConsumerState<JoinOrgDialog> {
             autofocus: true,
             textCapitalization: TextCapitalization.characters,
             maxLength: 9,
-            decoration: const InputDecoration(labelText: 'Kurum kodu', hintText: 'K7QM-3XPA', counterText: ''),
+            decoration: const InputDecoration(
+              labelText: 'Kurum kodu',
+              hintText: 'K7QM-3XPA',
+              counterText: '',
+            ),
           ),
           const SizedBox(height: 8),
           TextField(
@@ -274,9 +280,8 @@ class OrgAssignmentsCard extends ConsumerWidget {
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
       child: TapCard(
         color: late > 0 ? Brand.errorBg : null,
-        onTap: () => Navigator.of(
-          context,
-        ).push(MaterialPageRoute<void>(builder: (_) => const AssignmentsScreen())),
+        onTap: () =>
+            Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const AssignmentsScreen())),
         child: Row(
           children: [
             const Text('📋', style: TextStyle(fontSize: 26)),
@@ -401,13 +406,13 @@ Future<void> openAssignment(BuildContext context, OrgAssignment a, {AssetBundle?
         }
         missing();
       case AssignmentKind.grammar:
-        final lesson = (await loadLessons(assets))
-            .where((l) => l.id == a.targetId)
-            .firstOrNull;
+        final lesson = (await loadLessons(assets)).where((l) => l.id == a.targetId).firstOrNull;
         if (lesson == null) return missing();
         final notes = await loadNotes(assets);
         await nav.push(
-          MaterialPageRoute<void>(builder: (_) => GrammarLessonScreen(lesson: lesson, notes: notes)),
+          MaterialPageRoute<void>(
+            builder: (_) => GrammarLessonScreen(lesson: lesson, notes: notes),
+          ),
         );
       case AssignmentKind.exam:
         await nav.push(

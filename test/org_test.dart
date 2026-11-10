@@ -110,10 +110,7 @@ void main() {
     });
 
     test('completion follows local progress, like the server', () {
-      const p = Progress(
-        completed: {'u1l1': 1, 'gl_past_simple': 2},
-        examBest: {'lgs': 60},
-      );
+      const p = Progress(completed: {'u1l1': 1, 'gl_past_simple': 2}, examBest: {'lgs': 60});
       expect(assignment('u1l1').isDone(p), isTrue);
       expect(assignment('u1l2').isDone(p), isFalse);
       expect(assignment('past_simple', kind: AssignmentKind.grammar).isDone(p), isTrue);
