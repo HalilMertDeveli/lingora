@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/progress.dart';
+import '../services/growth/analytics.dart';
 import '../services/notifications.dart';
 import '../theme.dart';
 import 'conversation_screen.dart';
@@ -177,6 +178,7 @@ class _TrackPicker extends ConsumerWidget {
         selected: t.id == current,
         onTap: () {
           ref.read(progressProvider.notifier).setTrack(t.id);
+          logEvent(ref, AnalyticsEvent.trackChosen(t.id, source: 'home'));
           Navigator.pop(context);
         },
         child: Row(

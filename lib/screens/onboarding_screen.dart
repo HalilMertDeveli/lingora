@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/app_settings.dart';
 import '../data/placement.dart';
 import '../data/progress.dart';
+import '../services/growth/analytics.dart';
 import '../theme.dart';
 import 'placement_screen.dart';
 
@@ -32,26 +33,45 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   void _next() => _pages.nextPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut);
 
   /// Applies the chosen plan (track + known nodes), then leaves onboarding.
-  void _finish(PlacementRecommendation plan) {
+  void _finish(PlacementRecommendation plan, {required String method}) {
     final progress = ref.read(progressProvider.notifier);
     applyPlacement(progress, plan);
     progress.finishOnboarding(_goal);
+    logEvent(ref, AnalyticsEvent.trackChosen(plan.trackId, source: 'onboarding'));
+    logEvent(ref, AnalyticsEvent.onboardingComplete(method: method, dailyGoal: _goal, track: plan.trackId));
   }
 
-  void _fromScratch() =>
-      _finish(recommend(level: null, reason: _reason, courseUnits: const [], lessons: const []));
-
-  void _startTest() => Navigator.of(context).push(
-    MaterialPageRoute<void>(
-      builder: (_) => PlacementTestScreen(
-        reason: _reason,
-        onDone: (ctx, plan) {
-          Navigator.of(ctx).popUntil((r) => r.isFirst);
-          _finish(plan);
-        },
-      ),
-    ),
+  void _fromScratch() => _finish(
+    recommend(level: null, reason: _reason, courseUnits: const [], lessons: const []),
+    method: 'scratch',
   );
+
+  void _startTest() {
+    logEvent(ref, AnalyticsEvent.placementStart());
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => PlacementTestScreen(
+          reason: _reason,
+          onDone: (ctx, plan) {
+            Navigator.of(ctx).popUntil((r) => r.isFirst);
+            _finish(plan, method: 'placement');
+          },
+        ),
+      ),
+    );
+  }
+
+  /// Page names for `onboarding_step`; extra pages are logged as `step_<i>`.
+  static const _stepNames = ['welcome', 'audience', 'course', 'goal', 'level'];
+
+  void _logStep(int i) =>
+      logEvent(ref, AnalyticsEvent.onboardingStep(i < _stepNames.length ? _stepNames[i] : 'step_$i', i));
+
+  @override
+  void initState() {
+    super.initState();
+    _logStep(0);
+  }
 
   @override
   void dispose() {
@@ -96,7 +116,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 child: PageView(
                   controller: _pages,
                   physics: const NeverScrollableScrollPhysics(),
-                  onPageChanged: (i) => setState(() => _page = i),
+                  onPageChanged: (i) {
+                    setState(() => _page = i);
+                    _logStep(i);
+                  },
                   children: [
                     const _Welcome(),
                     const _AudiencePick(),

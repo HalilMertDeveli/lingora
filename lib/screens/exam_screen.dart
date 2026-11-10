@@ -9,6 +9,7 @@ import '../data/course_repository.dart';
 import '../data/progress.dart';
 import '../models/exam.dart';
 import '../services/billing/premium.dart';
+import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
@@ -37,6 +38,7 @@ class _ExamHome extends ConsumerWidget {
   final Exam exam;
 
   void _open(BuildContext context, List<ExamQuestion> qs, {required bool mock, String? title}) {
+    logEventFrom(context, AnalyticsEvent.featureUse(mock ? AppFeature.mockExam : AppFeature.examPractice));
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         fullscreenDialog: true,
