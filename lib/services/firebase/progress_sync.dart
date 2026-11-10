@@ -14,7 +14,7 @@ import 'progress_merge.dart';
 const userDocSchema = 1;
 
 /// Fields of `users/{uid}` owned by the app (functions may add others).
-const userDocFields = ['schema', 'progress', 'totalXp', 'displayName', 'clientUpdatedAt', 'updatedAt'];
+const userDocFields = ['schemaVersion', 'progress', 'totalXp', 'displayName', 'clientUpdatedAt', 'updatedAt'];
 
 const _metaKey = 'progress_sync_meta_v1';
 
@@ -157,7 +157,7 @@ class ProgressSync extends Notifier<SyncStatus> {
     _uploads++;
     try {
       await doc.set({
-        'schema': userDocSchema,
+        'schemaVersion': userDocSchema,
         'progress': p.toJson(),
         'totalXp': p.totalXp,
         'displayName': ref.read(authStateProvider).value?.displayName,

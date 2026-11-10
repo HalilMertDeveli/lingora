@@ -32,7 +32,7 @@ Profil ekranındaki "Hesap" kartı: `lib/screens/account_section.dart`.
 
 ```json
 {
-  "schema": 1,
+  "schemaVersion": 1,
   "progress": { "...": "Progress.toJson()" },
   "totalXp": 1234,
   "displayName": "…" ,

@@ -184,7 +184,7 @@ void main() {
       final c = await start(const Progress(onboarded: true, totalXp: 42, completed: {'a': 1}));
       expect(c.read(currentUidProvider), 'u1');
       final doc = (await db.doc('users/u1').get()).data()!;
-      expect(doc['schema'], userDocSchema);
+      expect(doc['schemaVersion'], userDocSchema);
       expect(doc['totalXp'], 42);
       expect((doc['progress'] as Map)['completed'], {'a': 1});
       expect(c.read(progressSyncProvider).state, SyncState.synced);
@@ -192,7 +192,7 @@ void main() {
 
     test('pull on sign-in merges the cloud copy without losing anything', () async {
       await db.doc('users/u1').set({
-        'schema': 1,
+        'schemaVersion': 1,
         'clientUpdatedAt': DateTime(2026, 11, 9).millisecondsSinceEpoch,
         'totalXp': 500,
         'progress': const Progress(
