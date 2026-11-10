@@ -141,7 +141,7 @@
   "tr": "içinden, boyunca, aracılığıyla, baştan sona",
   "topic": "Karışık",
   "example": "The River Seine flows through Paris.",
-  "story": "TARIG(throught) VASITASIYLA ile otele hızlı bir şekilde sızdık."
+  "story": "TARIG(through) VASITASIYLA ile otele hızlı bir şekilde sızdık."
  },
  {
   "id": "w_fluently",
@@ -986,7 +986,7 @@
  {
   "id": "w_render",
   "en": "render",
-  "tr": "ekrana çizmek, işlemek, -hale getirmek",
+  "tr": "ekrana çizmek, işlemek, hâle getirmek",
   "topic": "Flutter",
   "example": null,
   "story": null
@@ -1285,7 +1285,7 @@
   "tr": "tutarlı, istikrarlı",
   "topic": "Karışık",
   "example": null,
-  "story": "Ankara'daki konsoloslar(consitent) TUTARLI bir ilişki sağlamamaktadır"
+  "story": "Ankara'daki konsoloslar(consistent) TUTARLI bir ilişki sağlamamaktadır"
  },
  {
   "id": "w_prompt",
@@ -1413,7 +1413,7 @@
   "tr": "açıklama notu, ek açıklama; (kodda) anotasyon",
   "topic": "Karışık",
   "example": null,
-  "story": "Geçenlerde sistem yazılımı için bir atılan nota(annotation) bir bakıyım dedim anasının nikahıymış be kardeşim Resimli veya kısa küçük notlar falan diyorlardı hiç de öyle değilmiş baya baya kalın bir kitapmş kardeşim o"
+  "story": "Geçenlerde sistem yazılımı için bir atılan nota(annotation) bir bakıyım dedim anasının nikahıymış be kardeşim Resimli veya kısa küçük notlar falan diyorlardı hiç de öyle değilmiş baya baya kalın bir kitapmış kardeşim o"
  },
  {
   "id": "w_volume",
@@ -1445,7 +1445,7 @@
   "tr": "engellemek, önlemek",
   "topic": "Karışık",
   "example": null,
-  "story": "Loldaki PRO AKTİF EVENTLER(preventing) oyuncuları çok etkilemekteydi bu etiler oyuncuyu ENGELLEMEYE kadar gitmekteydi / Sağlıkta PREVENTİF (preventing) tıp, hastalığı ÖNLEME işini yapar."
+  "story": "Loldaki PRO AKTİF EVENTLER(preventing) oyuncuları çok etkilemekteydi bu etkiler oyuncuyu ENGELLEMEYE kadar gitmekteydi / Sağlıkta PREVENTİF (preventing) tıp, hastalığı ÖNLEME işini yapar."
  },
  {
   "id": "w_wise",
@@ -1885,7 +1885,7 @@
   "tr": "belirlemek, karar vermek",
   "topic": "Kotlin",
   "example": null,
-  "story": "Dedem emine(determine) dediği zaman KARARLAŞTIRILMIŞ olur: Kararlaştırılmış → Kararlaştırılmış emri yerine getirmiş olacağım → I will have accomplished a determine command"
+  "story": "Dedem emine(determine) dediği zaman KARARLAŞTIRILMIŞ olur: Kararlaştırılmış → Kararlaştırılmış emri yerine getirmiş olacağım → I will have accomplished the determined command"
  },
  {
   "id": "w_gesture_detector",
@@ -2741,7 +2741,7 @@
   "tr": "kabul etmek, itiraf etmek",
   "topic": "Karışık",
   "example": null,
-  "story": "Kemal go-cart't inmemesi için ADAM İTTİ(ADMİT) dedi ve bunu kabul etti, KABUL ETMEK"
+  "story": "Kemal go-kart'tan inmemesi için ADAM İTTİ(ADMİT) dedi ve bunu kabul etti, KABUL ETMEK"
  },
  {
   "id": "w_sewing",
@@ -2941,7 +2941,7 @@
   "tr": "özel (yapım), gelenek, örf",
   "topic": "Karışık",
   "example": null,
-  "story": "KOŞTUM, KOŞTUM (costum) ve spor yaparak ÖZEL, AYRICALIKLI bir insan oldum dedi Furkan."
+  "story": "KOŞTUM, KOŞTUM (custom) ve spor yaparak ÖZEL, AYRICALIKLI bir insan oldum dedi Furkan."
  },
  {
   "id": "w_according_to",
@@ -3420,7 +3420,7 @@
   "en": "regularity",
   "tr": "düzenlilik",
   "topic": "Bilgisayar Mimarisi",
-  "example": "We arranged to meet on a regular basis.",
+  "example": "The buses run with great regularity.",
   "story": null
  },
  {
@@ -3629,7 +3629,7 @@
   "tr": "eşdeğer, eşit",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Aqu samurayjeck(equvalent) biz seninle EŞİTİZ ama ben daha iyim demişti"
+  "story": "Aqu samurayjeck(equivalent) biz seninle EŞİTİZ ama ben daha iyim demişti"
  },
  {
   "id": "w_yield",
@@ -3653,7 +3653,7 @@
   "tr": "gücendirmek, kırmak",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "OFF BE(OFFEND) bitir artık DARATTIN Bizi = Daraltmak"
+  "story": "OFF BE(OFFEND) bitir artık DARALTTIN, KIRDIN Bizi = Gücendirmek, kırmak"
  },
  {
   "id": "w_versatile",
@@ -3661,7 +3661,7 @@
   "tr": "çok yönlü, elinden her iş gelen",
   "topic": "Python",
   "example": null,
-  "story": "versede(VERSİTİLE) vermese ÇOK YÖNLÜ bir kanazaç: Çok Yönlü"
+  "story": "versede(VERSATILE) vermese ÇOK YÖNLÜ bir kanazaç: Çok Yönlü"
  },
  {
   "id": "w_observe",
@@ -3685,7 +3685,7 @@
   "tr": "bütün, tüm",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "bu ENTARİ(ENTİRE) BÜTÜN Hepsini, kaplamış, = Bütün hepsi → all the entire code is awful"
+  "story": "bu ENTARİ(ENTİRE) BÜTÜN Hepsini, kaplamış, = Bütün hepsi → the entire code is awful"
  },
  {
   "id": "w_notifier",
@@ -3701,7 +3701,7 @@
   "tr": "en geniş",
   "topic": "Hafıza Hikâyeleri",
   "example": "in the broadest possible sense",
-  "story": "bro eskiden(brodest) buralar EN GENİŞ arsa idi → In the broadest possible sense → Olabildiğince en geniş anlamda"
+  "story": "bro eskiden(broadest) buralar EN GENİŞ arsa idi → In the broadest possible sense → Olabildiğince en geniş anlamda"
  },
  {
   "id": "w_whereas",
@@ -3709,7 +3709,7 @@
   "tr": "oysa, -iken",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "nerede(Where) sevdiğim, OYSA Ona neler almıştım: Oysa → Ben onu seviyorum oysa o beni sevmiyormuş → I had been loving to him whereas he hadn't been"
+  "story": "nerede(Where) sevdiğim, OYSA Ona neler almıştım: Oysa → Ben onu seviyorum oysa o beni sevmiyormuş → I love him, whereas he doesn't love me"
  },
  {
   "id": "w_neatly",
@@ -3741,7 +3741,7 @@
   "tr": "belirsiz, muğlak",
   "topic": "Hafıza Hikâyeleri",
   "example": "a vague definition",
-  "story": "ve geldi gene(vague) BELİRSİZ ADAM → Belirsiz,-A vague definition → Belirsiz bir durumdan bahsetti → He had told us a vague topic and he left"
+  "story": "ve geldi gene(vague) BELİRSİZ ADAM → Belirsiz,-A vague definition → Belirsiz bir durumdan bahsetti → He told us about a vague situation and left"
  },
  {
   "id": "w_serialize",
@@ -3749,7 +3749,7 @@
   "tr": "serileştirmek",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "seri saldım(seri saldım) osurduk diye SERİ HALE GETİRDİ dendi → There is no need to serialize it → he serializes it"
+  "story": "seri saldım(serialize) osurduk diye SERİ HALE GETİRDİ dendi → There is no need to serialize it → he serializes it"
  },
  {
   "id": "w_re_laying",
@@ -3773,7 +3773,7 @@
   "tr": "-miş gibi yapmak, numara yapmak",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "peri anne (Pretend) NUMARA YAPIYORDU → he pretended to the whole country"
+  "story": "peri anne (Pretend) NUMARA YAPIYORDU → he pretended in front of the whole country"
  },
  {
   "id": "w_track",
@@ -3781,7 +3781,7 @@
   "tr": "izlemek, takip etmek, iz, ray",
   "topic": "React",
   "example": null,
-  "story": "Global Truck(TRANCk) bu yolu İzlemektedir: Bir yolu izlemek → Matt was globally tracking state"
+  "story": "Global Truck(TRACK) bu yolu İzlemektedir: Bir yolu izlemek → Matt was globally tracking state"
  },
  {
   "id": "w_grain",
@@ -3829,7 +3829,7 @@
   "tr": "örneğini oluşturmak, örneklendirmek",
   "topic": "Unity/Unreal",
   "example": null,
-  "story": "Okuldayken furkan beni tiyatroya çağırdı ama ben TAM VAKTİNDE “İnşallah beni atlar”(instentiate) I'm just going to instantiate / İnsan oğlu(İnstantiate) nedense,gerçi anlamak çok zor olmasa gerek, kendinde olan değişiklikleri göstermek istemektedir, ama benim okuduğum kitaplar da hatta Sinan canan bile bu değişimleri kimse ile paylaşmamanın Göstermek veya sergilemek istememenin daha doğru olacağını söylemektedir"
+  "story": "Okuldayken furkan beni tiyatroya çağırdı ama ben TAM VAKTİNDE “İnşallah beni atlar”(instantiate) I'm just going to instantiate / İnsan oğlu(İnstantiate) nedense,gerçi anlamak çok zor olmasa gerek, kendinde olan değişiklikleri göstermek istemektedir, ama benim okuduğum kitaplar da hatta Sinan canan bile bu değişimleri kimse ile paylaşmamanın Göstermek veya sergilemek istememenin daha doğru olacağını söylemektedir"
  },
  {
   "id": "w_simplify",
@@ -3845,7 +3845,7 @@
   "tr": "böylece, bu nedenle, öylece",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "tushhh (TUSH) Bizim eve gelen Ercan eşeğini dedi hayvana ÖYLECE bırakılırmı lan diye bağırdı → Am I thus vindicated ? / Tarsus'tan (thus) gelen bir çocuk yolların kötü olduğunu anlattı; BÖYLECE işi yapanın işini iyi yapmadığını anladık."
+  "story": "tushhh (TUSH) Bizim eve gelen Ercan eşeğini dedi hayvana ÖYLECE bırakılır mı lan diye bağırdı → Am I thus vindicated? / Tarsus'tan (thus) gelen bir çocuk yolların kötü olduğunu anlattı; BÖYLECE işi yapanın işini iyi yapmadığını anladık."
  },
  {
   "id": "w_reinvent",
@@ -3853,7 +3853,7 @@
   "tr": "yeniden icat etmek",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Başarının sırlarından birinin de keşfedilme(k) yi beklememek olduğunu söyledi bunun üzerine layn event (rainvent) başlamış Seafight'ta diyerek bilgisayara koştu →We don't want to reinvent"
+  "story": "Başarının sırlarından birinin de keşfedilme(k) yi beklememek olduğunu söyledi bunun üzerine layn event (reinvent) başlamış Seafight'ta diyerek bilgisayara koştu →We don't want to reinvent"
  },
  {
   "id": "w_rehearse",
@@ -3917,7 +3917,7 @@
   "tr": "ölçüm",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Masumlar apartmanı(mensurement) ÖLÇÜMLERE göre, en çok rating alan dizi oldu → measurement is my favorite topic"
+  "story": "Masumlar apartmanı(measurement) ÖLÇÜMLERE göre, en çok rating alan dizi oldu → measurement is my favorite topic"
  },
  {
   "id": "w_revert",
@@ -3973,7 +3973,7 @@
   "tr": "oluşturmak, bir araya getirmek, bestelemek",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "KOPZİSOYLANRI(comp) DÜZENLEMEK VE OLUŞTURMAK için Bir araya geldik 12a sınıfı olarak"
+  "story": "KOPZİSOYLANRI(compose) DÜZENLEMEK VE OLUŞTURMAK için Bir araya geldik 12a sınıfı olarak"
  },
  {
   "id": "w_distinction",
@@ -4069,7 +4069,7 @@
   "tr": "hizmet etmek, sunmak",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "ya seve seve(SERVE) yada seve seve(SERVE) Bize bakmak ve HİZMET ETMEK zorundalar / Okul Bize seve seve(SERVE) hizmet etmek zorundadır, maaşlarını biz veriyoruz"
+  "story": "ya seve seve(SERVE) ya da seve seve(SERVE) Bize bakmak ve HİZMET ETMEK zorundalar / Okul Bize seve seve(SERVE) hizmet etmek zorundadır, maaşlarını biz veriyoruz"
  },
  {
   "id": "w_sole",
@@ -4101,7 +4101,7 @@
   "tr": "ilgili olmak, ait olmak",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Acundaki PELTEK(perteins) adam rap konusunda İLGİLİ OLDUĞUNU ve hiç kekelemeden rep yaptığını söylemektedir"
+  "story": "Acundaki PELTEK(pertains) adam rap konusunda İLGİLİ OLDUĞUNU ve hiç kekelemeden rep yaptığını söylemektedir"
  },
  {
   "id": "w_expressive",
@@ -4149,7 +4149,7 @@
   "tr": "geleneksel, alışılagelmiş",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Kartonlara(COnventional) Uygun,alışıla gelmiş Bir şekil verene oragimay adamı denir"
+  "story": "Kartonlara(COnventional) Uygun,alışılagelmiş Bir şekil verene origami adamı denir"
  },
  {
   "id": "w_perpetually",
@@ -4181,7 +4181,7 @@
   "tr": "yapışmak, saplanmak, çubuk",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "telefondaki Stick(stick) oyununan saplandık kaldık moruk a"
+  "story": "telefondaki Stick(stick) oyununa saplandık kaldık moruk a"
  },
  {
   "id": "w_pivot",
@@ -4197,7 +4197,7 @@
   "tr": "aşırıya kaçmak, gereğinden fazlası",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Bercan OVER Veight(being overkill) yani şişiko aşırıya kaçmak istemiyordu ve diyetistene gitti"
+  "story": "Bercan OVER Veight(being overkill) yani şişiko aşırıya kaçmak istemiyordu ve diyetisyene gitti"
  },
  {
   "id": "w_reliability",
@@ -4229,7 +4229,7 @@
   "tr": "iş parçacığı, iplik, konu dizisi",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Evdekilere sinirlenen Cana TA HA RED (THEREAD) KENDİNE BİR YOL AÇACAğını duyurdu ve herkesi restleyip evden çıktı"
+  "story": "Evdekilere sinirlenen Cana TA HA RED (THREAD) KENDİNE BİR YOL AÇACAğını duyurdu ve herkesi restleyip evden çıktı"
  },
  {
   "id": "w_inefficient",
@@ -4253,7 +4253,7 @@
   "tr": "hesaplama",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Düğün Dernekte ki Saffet Koptum(Computition) Himmet abi Diyerek geldi ve HESAPLAYAMADIĞI bir yumruk yedi"
+  "story": "Düğün Dernekte ki Saffet Koptum(Computation) Himmet abi Diyerek geldi ve HESAPLAYAMADIĞI bir yumruk yedi"
  },
  {
   "id": "w_salient",
@@ -4277,7 +4277,7 @@
   "tr": "hızlı, ani",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Rabbit(rappid)(tavşan) ani,hızlı bir hayvandır"
+  "story": "Rabbit(rapid)(tavşan) ani,hızlı bir hayvandır"
  },
  {
   "id": "w_conclusion",
@@ -4317,7 +4317,7 @@
   "tr": "şişkinlik",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Böyle Neslin (blotatedness) diyerek gençler hakkında çok Şişkinlik olmasından yakındı dayım"
+  "story": "Böyle Neslin (bloatedness) diyerek gençler hakkında çok Şişkinlik olmasından yakındı dayım"
  },
  {
   "id": "w_stem",
@@ -4397,7 +4397,7 @@
   "tr": "belirli, kesin, emin",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Son kertede (ceratin) işlerin Belirli ve keskin olması değerlendirilecekmiş"
+  "story": "Son kertede (certain) işlerin Belirli ve keskin olması değerlendirilecekmiş"
  },
  {
   "id": "w_regardless",
@@ -4413,7 +4413,7 @@
   "tr": "açıp kapamak, iki durum arasında geçiş yapmak",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Togglee abi (toogle) diyerek durumu sakinleştirdi spor salonunda ki Gökhan abi"
+  "story": "Togglee abi (toggle) diyerek durumu sakinleştirdi spor salonunda ki Gökhan abi"
  },
  {
   "id": "w_padding",
@@ -4461,7 +4461,7 @@
   "tr": "atama, unvan, belirleme",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Dinozorların tonlarca(desinations) görevi başkalarına atamaları gerekmektedir. Bunu sadece dinozor olan anlar"
+  "story": "Dinozorların tonlarca(designations) görevi başkalarına atamaları gerekmektedir. Bunu sadece dinozor olan anlar"
  },
  {
   "id": "w_indicate",
@@ -4677,7 +4677,7 @@
   "tr": "sahiplenici, iyelik",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Instagram'a bir post(possosive) attıktan sonra herkes dünyanın sahipleri, sahibi zannediyor"
+  "story": "Instagram'a bir post(possessive) attıktan sonra herkes dünyanın sahipleri, sahibi zannediyor"
  },
  {
   "id": "w_remarkable",
@@ -4741,7 +4741,7 @@
   "tr": "antik, çok eski",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Eskiden biz buralarda otururduk dedi annesi(anicent)"
+  "story": "Eskiden biz buralarda otururduk dedi annesi(ancient)"
  },
  {
   "id": "w_carving",
@@ -4773,7 +4773,7 @@
   "tr": "uzun vadeli",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Galatasaray bir aralar çok iyi idi, o zamanlar fatih terim(long-term) başta idi uzun vadeli bir adamdı takımı uzun vadede takımı"
+  "story": "Galatasaray bir aralar çok iyi idi, o zamanlar fatih terim(long-term) başta idi uzun vadeli bir adamdı"
  },
  {
   "id": "w_profitability",
@@ -4797,7 +4797,7 @@
   "tr": "daha yeni",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Eskiden Avrupa yakası dizi bir dizi varda orada münevver (newer) teyze vardı hatırlarsınız belik sürekli olarak yeni şeyler gösterirdi bizlere"
+  "story": "Eskiden Avrupa yakası dizi bir dizi varda orada münevver (newer) teyze vardı hatırlarsınız belki sürekli olarak yeni şeyler gösterirdi bizlere"
  },
  {
   "id": "w_key_chain",
@@ -4813,7 +4813,7 @@
   "tr": "kesirli",
   "topic": "Flutter",
   "example": null,
-  "story": "Mustafa amcam ile fahri(Froctional) usta arasında az, biraz kırgınlık var ama çözülecek inşallah ya"
+  "story": "Mustafa amcam ile fahri(fractional) usta arasında az, biraz kırgınlık var ama çözülecek inşallah ya"
  },
  {
   "id": "w_gradient",
@@ -4821,7 +4821,7 @@
   "tr": "eğim, renk geçişi (gradyan)",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Bir süper kahraman düşün yeteneği ne biliyor musun,istediği kadar büyüyebiliyor ve istediği kadar küçülebilmektedir. Bu karakteri bildiniz adı ent men (gradient) ama buna oranda çok eğitim siz bir adamdır"
+  "story": "Bir süper kahraman düşün yeteneği ne biliyor musun,istediği kadar büyüyebiliyor ve istediği kadar küçülebilmektedir. Bu karakteri bildiniz adı ent men (gradient) ama buna oranda çok eğitimsiz bir adamdır"
  },
  {
   "id": "w_fabulous",
@@ -4837,7 +4837,7 @@
   "tr": "kullanışlı",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Hani(handly) bir site vardı diye diye aklımıza gelmeyen siteler neden sürekli olarak Kullanışlı olmak zorunda Bunları hatırlaması da zor olmaktadır bak buna oranla durum genelde çok faydalıdır"
+  "story": "Hani(handy) bir site vardı diye diye aklımıza gelmeyen siteler neden sürekli olarak Kullanışlı olmak zorunda Bunları hatırlaması da zor olmaktadır bak buna oranla durum genelde çok faydalıdır"
  },
  {
   "id": "w_abuse",
@@ -4949,7 +4949,7 @@
   "tr": "boyut",
   "topic": "Hafıza Hikâyeleri",
   "example": "Music has added a new dimension to my life.",
-  "story": "Yapılan bir araştırmadan bahsedelim konu ile ilgili olarak boyutlarında bahsedilen bir dinozorun(dimensions) alında 2 boyutlu olabileceğinden bahsediyordu, galiba dengesiz bir açıklama idi Boyut, → Music has added a new dimension to my life."
+  "story": "Yapılan bir araştırmadan bahsedelim konu ile ilgili olarak boyutlarında bahsedilen bir dinozorun(dimensions) aslında 2 boyutlu olabileceğinden bahsediyordu, galiba dengesiz bir açıklama idi Boyut, → Music has added a new dimension to my life."
  },
  {
   "id": "w_subset",
@@ -5021,7 +5021,7 @@
   "tr": "kısaca",
   "topic": "Hafıza Hikâyeleri",
   "example": null,
-  "story": "Ben sana en iyisi(briefly) kısaca anlatıyım çünkü sınavlarda da başarılı oluyorum kıskanma diye şimdiden uyarmam gerekmektedir."
+  "story": "Ben sana en iyisi(briefly) kısaca anlatayım çünkü sınavlarda da başarılı oluyorum kıskanma diye şimdiden uyarmam gerekmektedir."
  },
  {
   "id": "w_gesture",
