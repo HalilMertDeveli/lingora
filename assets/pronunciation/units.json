@@ -1,0 +1,272 @@
+[
+  {
+    "id": "th_voiceless",
+    "emoji": "👅",
+    "title": "Sert th: think",
+    "sound": "/θ/",
+    "summary": "think, three, mouth: t veya s değil, dişlerin arasından üflenen ses.",
+    "how": [
+      "Dilinin ucunu üst ve alt ön dişlerinin arasına hafifçe koy; dişlerinin dışına birazcık çıksın.",
+      "Sesini titretmeden, dilinle dişin arasından havayı yavaşça üfle. Boğazına dokunursan titreşim olmamalı.",
+      "Hava kesilmesin: 't' gibi patlatma, 's' gibi dişlerin arkasında tıslama."
+    ],
+    "turkish": "Türkçede bu ses yok. Kulağımız onu en yakın sesle, 't' ya da 's' ile değiştirir. 'think' derken 'tink' ya da 'sink' çıkarsa anlam değişebilir.",
+    "mistake": "three → 'tri' (ağaç: tree), thank → 'tenk' (tank) gibi duyulur.",
+    "pairs": [
+      { "a": "think", "aTr": "düşünmek", "b": "sink", "bTr": "lavabo / batmak" },
+      { "a": "thank", "aTr": "teşekkür etmek", "b": "tank", "bTr": "tank, depo" },
+      { "a": "three", "aTr": "üç", "b": "tree", "bTr": "ağaç" },
+      { "a": "thin", "aTr": "ince", "b": "tin", "bTr": "teneke" },
+      { "a": "mouth", "aTr": "ağız", "b": "mouse", "bTr": "fare" },
+      { "a": "path", "aTr": "patika, yol", "b": "pass", "bTr": "geçmek" }
+    ],
+    "sentences": [
+      { "en": "I think three is enough.", "tr": "Bence üç yeterli." },
+      { "en": "Thank you for the thick book.", "tr": "Kalın kitap için teşekkürler." },
+      { "en": "Open your mouth and breathe out.", "tr": "Ağzını aç ve nefes ver." }
+    ]
+  },
+  {
+    "id": "th_voiced",
+    "emoji": "🐝",
+    "title": "Yumuşak th: they",
+    "sound": "/ð/",
+    "summary": "they, this, mother: d veya z değil, titreşimli th.",
+    "how": [
+      "Dilin yine dişlerinin arasında, tıpkı 'think' sesindeki gibi.",
+      "Bu sefer ses tellerini çalıştır: arı vızıldaması gibi hafif bir titreşim duymalısın.",
+      "Dilini dişlerden hemen çekme; sesi bir an uzat, sonra sesli harfe geç."
+    ],
+    "turkish": "Türkçe konuşanlar bu sesi genelde 'd' (dey) ya da 'z' (zey) yapar. 'the, this, that' gibi çok sık kelimelerde olduğu için düzeltmesi konuşmanı hemen değiştirir.",
+    "mistake": "they → 'dey' (day: gün), those → 'doz' gibi duyulur.",
+    "pairs": [
+      { "a": "they", "aTr": "onlar", "b": "day", "bTr": "gün" },
+      { "a": "then", "aTr": "sonra, o zaman", "b": "den", "bTr": "in, oda" },
+      { "a": "though", "aTr": "gerçi", "b": "dough", "bTr": "hamur" },
+      { "a": "breathe", "aTr": "nefes almak", "b": "breeze", "bTr": "esinti" },
+      { "a": "those", "aTr": "şunlar", "b": "doze", "bTr": "uyuklamak" },
+      { "a": "there", "aTr": "orada", "b": "dare", "bTr": "cesaret etmek" }
+    ],
+    "sentences": [
+      { "en": "They are with their mother.", "tr": "Anneleriyle birlikteler." },
+      { "en": "This is the other one.", "tr": "Bu diğeri." },
+      { "en": "Breathe in, then breathe out.", "tr": "Nefes al, sonra nefes ver." }
+    ]
+  },
+  {
+    "id": "w_v",
+    "emoji": "💋",
+    "title": "w ile v",
+    "sound": "/w/ – /v/",
+    "summary": "wine ve vine: biri dudakla, biri dişle yapılır.",
+    "how": [
+      "w için dişlerin dudağa hiç değmez. Dudaklarını 'u' der gibi yuvarlayıp öne uzat, sonra hızla aç: 'uayn' → wine.",
+      "v için üst dişlerin alt dudağına hafifçe değer ve ses titreşir; Türkçedeki 'v' gibidir.",
+      "Ayna karşısında dene: w'de dişin görünmez, v'de üst dişin alt dudağın üstündedir."
+    ],
+    "turkish": "Türkçede yazıda tek 'v' var ama 'tavuk, vapur' derken dudaklar bazen w'ye yaklaşır. İngilizcede bu fark anlamı değiştirir; w gördüğünde dişlerini dudağından uzak tut.",
+    "mistake": "wine → 'vayn' (vine: asma), west → 'vest' (yelek) gibi duyulur.",
+    "pairs": [
+      { "a": "wine", "aTr": "şarap", "b": "vine", "bTr": "asma" },
+      { "a": "west", "aTr": "batı", "b": "vest", "bTr": "yelek" },
+      { "a": "wet", "aTr": "ıslak", "b": "vet", "bTr": "veteriner" },
+      { "a": "while", "aTr": "iken", "b": "vile", "bTr": "iğrenç" },
+      { "a": "worse", "aTr": "daha kötü", "b": "verse", "bTr": "dize, mısra" },
+      { "a": "wail", "aTr": "feryat etmek", "b": "veil", "bTr": "peçe, duvak" }
+    ],
+    "sentences": [
+      { "en": "We want very warm weather.", "tr": "Çok sıcak bir hava istiyoruz." },
+      { "en": "The vet was wet.", "tr": "Veteriner ıslaktı." },
+      { "en": "Will you visit us in winter?", "tr": "Kışın bizi ziyaret edecek misin?" }
+    ]
+  },
+  {
+    "id": "i_ee",
+    "emoji": "🐑",
+    "title": "Kısa i, uzun ii",
+    "sound": "/ɪ/ – /iː/",
+    "summary": "ship ve sheep: süre ve ağız gerginliği farkı.",
+    "how": [
+      "Uzun /iː/ (sheep): dudaklarını gülümser gibi yana ger, dilini öne it ve sesi uzat: 'şiiip'.",
+      "Kısa /ɪ/ (ship): ağzını gevşet, dili biraz geri ve aşağı bırak. Ses Türkçe 'i' ile 'ı' arasında bir yerde, kısacık.",
+      "İpucu: kısa olanda yüzün rahat, uzun olanda gülümsüyorsun."
+    ],
+    "turkish": "Türkçede sesli harflerin uzunluğu anlamı pek değiştirmez, o yüzden iki sesi de aynı 'i' ile söyleriz. İngilizcede 'live' ve 'leave' tamamen ayrı kelimeler.",
+    "mistake": "ship ↔ sheep, sit ↔ seat karışır; 'I live here' cümlesi 'I leave here' gibi duyulabilir.",
+    "pairs": [
+      { "a": "ship", "aTr": "gemi", "b": "sheep", "bTr": "koyun" },
+      { "a": "live", "aTr": "yaşamak", "b": "leave", "bTr": "ayrılmak" },
+      { "a": "sit", "aTr": "oturmak", "b": "seat", "bTr": "koltuk" },
+      { "a": "fill", "aTr": "doldurmak", "b": "feel", "bTr": "hissetmek" },
+      { "a": "hit", "aTr": "vurmak", "b": "heat", "bTr": "ısı" },
+      { "a": "bin", "aTr": "çöp kutusu", "b": "bean", "bTr": "fasulye" }
+    ],
+    "sentences": [
+      { "en": "Please sit in this seat.", "tr": "Lütfen bu koltuğa otur." },
+      { "en": "I live here, I don't want to leave.", "tr": "Burada yaşıyorum, ayrılmak istemiyorum." },
+      { "en": "The sheep is on the ship.", "tr": "Koyun gemide." }
+    ]
+  },
+  {
+    "id": "ae_e",
+    "emoji": "😮",
+    "title": "Geniş a: bad / bed",
+    "sound": "/æ/ – /e/",
+    "summary": "bad ve bed: Türkçede olmayan geniş 'ae' sesi.",
+    "how": [
+      "/e/ (bed): Türkçe 'e' ile neredeyse aynı, ağız orta açıklıkta.",
+      "/æ/ (bad): çeneni 'e' konumundan biraz daha aşağı indir, dudakları yana ger. 'a' ile 'e' arasında, geniş bir ses: 'baed'.",
+      "Önce 'e' de, sonra çeneni yavaşça düşür: sesin /æ/'ye kaydığını duyacaksın."
+    ],
+    "turkish": "Türkçede bu ara ses yok; ya 'e' ya 'a' deriz. 'man' kelimesini 'men' gibi söylersen tekil çoğula döner.",
+    "mistake": "bad → 'bed' (yatak), man → 'men' (adamlar) gibi duyulur.",
+    "pairs": [
+      { "a": "bad", "aTr": "kötü", "b": "bed", "bTr": "yatak" },
+      { "a": "man", "aTr": "adam", "b": "men", "bTr": "adamlar" },
+      { "a": "sad", "aTr": "üzgün", "b": "said", "bTr": "söyledi" },
+      { "a": "pan", "aTr": "tava", "b": "pen", "bTr": "kalem" },
+      { "a": "had", "aTr": "sahipti", "b": "head", "bTr": "baş" },
+      { "a": "flash", "aTr": "flaş, parıltı", "b": "flesh", "bTr": "et, ten" }
+    ],
+    "sentences": [
+      { "en": "That man has a black cat.", "tr": "O adamın siyah bir kedisi var." },
+      { "en": "The bed is not bad.", "tr": "Yatak fena değil." },
+      { "en": "She said she was sad.", "tr": "Üzgün olduğunu söyledi." }
+    ]
+  },
+  {
+    "id": "final_consonants",
+    "emoji": "🧱",
+    "title": "Kelime sonu ünsüzler",
+    "sound": "-g, -d, -b, -z",
+    "summary": "bag ≠ back, school ≠ 'iskul': sonu yumuşat, araya sesli harf ekleme.",
+    "how": [
+      "Türkçede kelime sonundaki b, c, d, g sertleşir (kitap, ağaç). İngilizcede sondaki ses yumuşak kalır: bag'in sonu 'k' değil, titreşimli 'g'.",
+      "Yumuşak sondan önceki sesli harf biraz daha uzun söylenir: 'bag' uzunca, 'back' kısa ve keskin.",
+      "Ünsüz kümelerinde (school, street, sport) başa ya da araya 'i' ekleme: 'iskul, sitrit' değil, doğrudan 'skuul, striit'."
+    ],
+    "turkish": "Türkçe hece yapısı iki ünsüzle başlamayı sevmez, bu yüzden 'istasyon, spor → ispor' gibi ekleriz. İngilizcede bu ek sesi dinleyen kişi fazladan bir hece gibi duyar.",
+    "mistake": "dog → 'dok' (dock: rıhtım), need → 'nit' (neat: düzenli), school → 'iskul'.",
+    "pairs": [
+      { "a": "bag", "aTr": "çanta", "b": "back", "bTr": "geri, sırt" },
+      { "a": "dog", "aTr": "köpek", "b": "dock", "bTr": "rıhtım" },
+      { "a": "need", "aTr": "ihtiyaç duymak", "b": "neat", "bTr": "düzenli" },
+      { "a": "prize", "aTr": "ödül", "b": "price", "bTr": "fiyat" },
+      { "a": "cab", "aTr": "taksi", "b": "cap", "bTr": "şapka, kep" },
+      { "a": "rise", "aTr": "yükselmek", "b": "rice", "bTr": "pirinç" }
+    ],
+    "sentences": [
+      { "en": "The school is on Smith Street.", "tr": "Okul Smith Caddesi'nde." },
+      { "en": "My dog sleeps on a big bed.", "tr": "Köpeğim büyük bir yatakta uyur." },
+      { "en": "I need a small bag for sport.", "tr": "Spor için küçük bir çantaya ihtiyacım var." }
+    ]
+  },
+  {
+    "id": "stress_schwa",
+    "emoji": "🥁",
+    "title": "Vurgu ve schwa",
+    "sound": "/ə/",
+    "summary": "comFORtable değil COMfortable: vurgusuz heceler küçülür.",
+    "how": [
+      "Her uzun kelimede bir hece güçlüdür: daha yüksek, daha uzun ve net söylenir. COMfortable, deVElop, PHOtograph.",
+      "Vurgusuz heceler küçülüp tembel bir 'ı' sesine döner: buna schwa /ə/ denir. 'about' → 'ıbaut', 'banana' → 'bınaanı'.",
+      "Her harfi yazıldığı gibi tek tek okuma; vurguyu bul, gerisini hafiflet. Kelimenin ritmi çoğu zaman sesten daha önemlidir."
+    ],
+    "turkish": "Türkçede heceler hemen hemen eşit güçte söylenir ve vurgu çoğunlukla sondadır. İngilizcede vurgu yanlış yere düşünce kelime tanınmaz hale gelebilir: deSERT (tatlı) ile DEsert (çöl) gibi.",
+    "mistake": "comfortable → 'komfortıbıl' (4 eşit hece), photographer → 'fotoGRAFer'.",
+    "pairs": [
+      { "a": "desert", "aTr": "çöl (DE-sert)", "b": "dessert", "bTr": "tatlı (de-SERT)" },
+      { "a": "photograph", "aTr": "fotoğraf (PHO-)", "b": "photographer", "bTr": "fotoğrafçı (-TOG-)" },
+      { "a": "economy", "aTr": "ekonomi (-CON-)", "b": "economic", "bTr": "ekonomik (-NOM-)" },
+      { "a": "personal", "aTr": "kişisel (PER-)", "b": "personnel", "bTr": "personel (-NEL)" },
+      { "a": "comfortable", "aTr": "rahat (COM-)", "b": "comfort", "bTr": "konfor" },
+      { "a": "record", "aTr": "kayıt", "b": "reward", "bTr": "ödül" }
+    ],
+    "sentences": [
+      { "en": "This sofa is very comfortable.", "tr": "Bu kanepe çok rahat." },
+      { "en": "The photographer took a photograph.", "tr": "Fotoğrafçı bir fotoğraf çekti." },
+      { "en": "We had a banana for dessert.", "tr": "Tatlı olarak muz yedik." }
+    ]
+  },
+  {
+    "id": "silent_letters",
+    "emoji": "🤫",
+    "title": "Okunmayan harfler",
+    "sound": "k, l, b, s, w",
+    "summary": "walk, knife, island: yazılır ama söylenmez.",
+    "how": [
+      "kn- başında k okunmaz: knife 'nayf', know 'nou', knee 'nii'.",
+      "-alk ve -ould içinde l okunmaz: walk 'wook', talk 'took', could 'kud', should 'şud'.",
+      "-mb sonunda b okunmaz (climb, comb), island içinde s okunmaz, wr- başında w okunmaz (write, wrong)."
+    ],
+    "turkish": "Türkçe yazıldığı gibi okunur, bu yüzden her harfi seslendirmek doğal gelir. İngilizcede eski telaffuzdan kalan harfler yazıda durur ama artık söylenmez.",
+    "mistake": "walk → 'valk', could → 'kould' (cold: soğuk gibi), island → 'aysland'.",
+    "pairs": [
+      { "a": "walk", "aTr": "yürümek", "b": "work", "bTr": "çalışmak" },
+      { "a": "could", "aTr": "-ebilirdi", "b": "cold", "bTr": "soğuk" },
+      { "a": "island", "aTr": "ada", "b": "Iceland", "bTr": "İzlanda" },
+      { "a": "listen", "aTr": "dinlemek", "b": "lesson", "bTr": "ders" },
+      { "a": "should", "aTr": "-meli", "b": "shoulder", "bTr": "omuz" },
+      { "a": "talk", "aTr": "konuşmak", "b": "took", "bTr": "aldı" }
+    ],
+    "sentences": [
+      { "en": "I know how to use this knife.", "tr": "Bu bıçağı nasıl kullanacağımı biliyorum." },
+      { "en": "We could walk and talk.", "tr": "Yürüyüp konuşabilirdik." },
+      { "en": "Write the wrong answer again.", "tr": "Yanlış cevabı tekrar yaz." }
+    ]
+  },
+  {
+    "id": "ed_endings",
+    "emoji": "⏪",
+    "title": "-ed sonları",
+    "sound": "/t/ /d/ /ɪd/",
+    "summary": "worked, played, wanted: -ed üç farklı şekilde okunur.",
+    "how": [
+      "Kelime sert (titreşimsiz) bir sesle bitiyorsa (p, k, s, ş, ç, f) -ed '/t/' olur: worked 'wörkt', stopped 'stopt'.",
+      "Yumuşak bir sesle ya da sesli harfle bitiyorsa '/d/' olur: played 'pleyd', called 'koold'.",
+      "Sadece t veya d ile bitiyorsa ekstra hece eklenir '/ɪd/': wanted 'wontıd', needed 'niidıd'. Diğerlerinde 'ed' diye ayrı hece okuma!"
+    ],
+    "turkish": "Yazılışa bakıp her -ed'i 'ed' diye okumak Türkçe okuma alışkanlığından gelir. 'worked' iki değil tek hecedir; sondaki küçük /t/ geçmiş zamanı taşır, onu yutma.",
+    "mistake": "worked → 'workıd', liked → 'laykıd'; ya da tam tersi, -ed'i hiç söylememek.",
+    "pairs": [
+      { "a": "walked", "aTr": "yürüdü", "b": "walk", "bTr": "yürümek" },
+      { "a": "played", "aTr": "oynadı", "b": "play", "bTr": "oynamak" },
+      { "a": "wanted", "aTr": "istedi", "b": "want", "bTr": "istemek" },
+      { "a": "needed", "aTr": "ihtiyaç duydu", "b": "need", "bTr": "ihtiyaç duymak" },
+      { "a": "laughed", "aTr": "güldü", "b": "laugh", "bTr": "gülmek" },
+      { "a": "cleaned", "aTr": "temizledi", "b": "clean", "bTr": "temizlemek" }
+    ],
+    "sentences": [
+      { "en": "I walked home and cooked dinner.", "tr": "Eve yürüdüm ve akşam yemeği pişirdim." },
+      { "en": "She played and laughed all day.", "tr": "Bütün gün oynadı ve güldü." },
+      { "en": "We wanted help, so we waited.", "tr": "Yardım istedik, o yüzden bekledik." }
+    ]
+  },
+  {
+    "id": "r_h_ng",
+    "emoji": "🔔",
+    "title": "r, h ve ng",
+    "sound": "/r/ /h/ /ŋ/",
+    "summary": "Dönmeyen r, nefes gibi h ve burundan ng.",
+    "how": [
+      "r: Türkçe r'deki gibi dilini damağa vurdurma. Dilin ucunu hafifçe geriye kıvır, hiçbir yere değmesin; dudaklar biraz yuvarlak: red, very.",
+      "h: her zaman söylenir ve hafif bir nefestir, gırtlaktan hırıltı yok. 'eat' ile 'heat' arasındaki tek fark bu nefes.",
+      "ng: kelime sonundaki 'ng' tek bir burun sesidir; dilin arkası damağa yapışır ve 'g' patlatılmaz: sing 'siŋ', 'sing-g' değil. 'n' ile de karıştırma."
+    ],
+    "turkish": "Türkçe r titrek ve vuruşludur; İngilizcede bu ses yabancı duyulur. 'ng' sesi Türkçede 'renk, ahenk' kelimelerinde zaten var: aynı burun sesini kelime sonunda, k olmadan kullan.",
+    "mistake": "sing → 'sin' (günah) ya da 'sing-g', heart → 'art' (sanat), red → titrek 'rrred'.",
+    "pairs": [
+      { "a": "sing", "aTr": "şarkı söylemek", "b": "sin", "bTr": "günah" },
+      { "a": "rang", "aTr": "çaldı (zil)", "b": "ran", "bTr": "koştu" },
+      { "a": "wing", "aTr": "kanat", "b": "win", "bTr": "kazanmak" },
+      { "a": "heat", "aTr": "ısı", "b": "eat", "bTr": "yemek" },
+      { "a": "hair", "aTr": "saç", "b": "air", "bTr": "hava" },
+      { "a": "heart", "aTr": "kalp", "b": "art", "bTr": "sanat" }
+    ],
+    "sentences": [
+      { "en": "The phone rang in the morning.", "tr": "Telefon sabah çaldı." },
+      { "en": "Her hair is very red.", "tr": "Saçı çok kızıl." },
+      { "en": "He is singing a long song.", "tr": "Uzun bir şarkı söylüyor." }
+    ]
+  }
+]
