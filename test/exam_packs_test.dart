@@ -406,10 +406,10 @@ void main() {
       await tester.pumpWidget(app(overrides, const ExamHomeScreen(examId: 'lgs')));
       await tester.pumpAndSettle();
       expect(find.text('LGS İngilizce Tam Deneme Paketi'), findsOneWidget);
-      expect(find.text('SATIN AL · ₺99,99'), findsOneWidget);
+      expect(find.text('Satın al · ₺99,99'), findsOneWidget);
       expect(find.byKey(const ValueKey('full-mock-lgs_m1')), findsNothing);
 
-      await tester.tap(find.text('SATIN AL · ₺99,99'));
+      await tester.tap(find.text('Satın al · ₺99,99'));
       await tester.pumpAndSettle();
       expect(billing.bought, ['lingora_pack_lgs_full']);
       expect(find.byKey(const ValueKey('full-mock-lgs_m4')), findsOneWidget);
@@ -442,18 +442,18 @@ void main() {
       // Answer the first question right, the second wrong, leave the rest blank.
       await tester.tap(find.text(qs[0].options[qs[0].answer]));
       await tester.pump();
-      await tester.tap(find.text('SONRAKİ'));
+      await tester.tap(find.text('Sonraki'));
       await tester.pumpAndSettle();
       await tester.tap(find.text(qs[1].options[(qs[1].answer + 1) % 4]));
       await tester.pump();
-      await tester.tap(find.text('ÖNCEKİ'));
+      await tester.tap(find.text('Önceki'));
       await tester.pumpAndSettle();
       expect(find.textContaining('SORU 1/10'), findsOneWidget);
       for (var i = 0; i < 9; i++) {
-        await tester.tap(find.text(i == 0 ? 'SONRAKİ' : (i == 1 ? 'SONRAKİ' : 'BOŞ BIRAK')).first);
+        await tester.tap(find.text(i == 0 ? 'Sonraki' : (i == 1 ? 'Sonraki' : 'Boş bırak')).first);
         await tester.pumpAndSettle();
       }
-      await tester.tap(find.text('DENEMEYİ BİTİR'));
+      await tester.tap(find.text('Denemeyi bitir'));
       await tester.pumpAndSettle();
       expect(find.text('8 soru boş. Bitirirsen boş sorular puanlanmaz.'), findsOneWidget);
       await tester.tap(find.text('Bitir'));
@@ -578,7 +578,7 @@ void main() {
       await tester.pumpWidget(app(overrides, const PaywallScreen(showFamily: true)));
       await tester.pumpAndSettle();
       expect(find.text('₺900,00 / yıl · 5 kişiye kadar'), findsOneWidget);
-      await tester.tap(find.text('AİLE · ₺900,00'));
+      await tester.tap(find.text('Aile · ₺900,00'));
       await tester.pumpAndSettle();
       expect(billing.bought, ['lingora_premium_family_yearly']);
     });

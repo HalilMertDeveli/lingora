@@ -3,20 +3,23 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../models/grammar_lesson.dart';
+import '../theme.dart';
 
 /// Past–now–future line showing when the action happens. Draws itself in.
 class TenseTimeline extends StatelessWidget {
-  const TenseTimeline({super.key, required this.kind, this.color = const Color(0xFF6C4CF1)});
+  const TenseTimeline({super.key, required this.kind, this.color});
   final TimelineKind kind;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) => TweenAnimationBuilder<double>(
     tween: Tween(begin: 0, end: 1),
     duration: const Duration(milliseconds: 1100),
     curve: Curves.easeOutCubic,
-    builder: (_, t, _) =>
-        CustomPaint(size: const Size(double.infinity, 120), painter: _TimelinePainter(kind, t, color)),
+    builder: (_, t, _) => CustomPaint(
+      size: const Size(double.infinity, 120),
+      painter: _TimelinePainter(kind, t, color ?? Brand.primary),
+    ),
   );
 }
 
@@ -26,7 +29,7 @@ class _TimelinePainter extends CustomPainter {
   final double t;
   final Color color;
 
-  static const _muted = Color(0xFF8A8799);
+  static Color get _muted => Brand.muted;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -36,7 +39,7 @@ class _TimelinePainter extends CustomPainter {
 
     // Axis with arrow head, drawn left to right.
     final axis = Paint()
-      ..color = const Color(0xFFD3D1DC)
+      ..color = Brand.line
       ..strokeWidth = 4
       ..strokeCap = StrokeCap.round;
     final end = x(min(1, t * 1.4));
@@ -48,13 +51,13 @@ class _TimelinePainter extends CustomPainter {
           ..lineTo(x(1) - 8, y - 7)
           ..lineTo(x(1) - 8, y + 7)
           ..close(),
-        Paint()..color = const Color(0xFFD3D1DC),
+        Paint()..color = Brand.line,
       );
     }
 
     // "Now" marker.
     final nowPaint = Paint()
-      ..color = const Color(0xFFFF7A1A)
+      ..color = Brand.streak
       ..strokeWidth = 3;
     canvas.drawLine(Offset(x(0.5), y - 26), Offset(x(0.5), y + 26), nowPaint);
 
@@ -63,7 +66,7 @@ class _TimelinePainter extends CustomPainter {
         text: TextSpan(
           text: label,
           style: TextStyle(
-            color: label == 'ŞİMDİ' ? const Color(0xFFFF7A1A) : _muted,
+            color: label == 'ŞİMDİ' ? Brand.streak : _muted,
             fontSize: 11,
             fontWeight: FontWeight.w800,
             letterSpacing: 1,
@@ -103,7 +106,7 @@ class _TimelinePainter extends CustomPainter {
         dot(0.25);
       case TimelineKind.pastSpan:
         span(0.12, 0.38);
-        dot(0.25, r: 6, paint: Paint()..color = Colors.white);
+        dot(0.25, r: 6, paint: Paint()..color = Brand.card);
       case TimelineKind.now:
         span(0.43, 0.57);
       case TimelineKind.habit:

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../services/billing/products.dart';
 import '../services/firebase/account_service.dart';
 import '../services/firebase/firebase_providers.dart';
 import '../services/firebase/progress_sync.dart';
 import '../theme.dart';
+import 'paywall_screen.dart';
 
 /// "Hesap" card in Profil: account status, cloud backup state and
 /// sign-in / sign-out actions.
@@ -15,7 +17,7 @@ class AccountSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final sync = ref.watch(progressSyncProvider);
     if (sync.state == SyncState.off) {
-      return const TapCard(
+      return TapCard(
         child: _Line(
           icon: Icons.phone_android,
           color: Brand.muted,
@@ -35,9 +37,11 @@ class AccountSection extends ConsumerWidget {
       ),
       SyncState.syncing => (Icons.cloud_sync_outlined, Brand.primary, 'Bulutla eşitleniyor…'),
       SyncState.error => (Icons.cloud_off, Brand.error, 'Yedekleme şu an yapılamadı, tekrar denenecek'),
+      SyncState.premiumOnly => (Icons.lock_outline, Brand.muted, "Buluta yedekleme Premium'a özel"),
       _ => (Icons.cloud_off, Brand.muted, 'Hesap hazırlanıyor…'),
     };
     final signedIn = user != null && !user.isAnonymous;
+    final premiumOnly = sync.state == SyncState.premiumOnly;
     return TapCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -46,12 +50,29 @@ class AccountSection extends ConsumerWidget {
             icon: signedIn ? Icons.verified_user : Icons.person_outline,
             color: signedIn ? Brand.primary : Brand.muted,
             title: signedIn ? (user.email ?? user.displayName ?? 'Giriş yapıldı') : 'Misafir hesabı',
-            subtitle: signedIn
-                ? 'Başka bir cihazda aynı hesapla giriş yaparak devam edebilirsin.'
-                : 'Hesabını bağla, ilerlemen telefonunu değiştirsen de kaybolmasın.',
+            subtitle: switch ((signedIn, premiumOnly)) {
+              (true, false) => 'Başka bir cihazda aynı hesapla giriş yaparak devam edebilirsin.',
+              (true, true) => 'Ligler için hesabın hazır. İlerlemen bu cihazda saklanıyor.',
+              (false, false) => 'Hesabını bağla, ilerlemen telefonunu değiştirsen de kaybolmasın.',
+              (false, true) => 'Hesabını bağla; ligler ücretsiz, bulut yedekleme Premium ile.',
+            },
           ),
           const SizedBox(height: 12),
-          _Line(icon: icon, color: color, title: label),
+          _Line(
+            icon: icon,
+            color: color,
+            title: label,
+            subtitle: premiumOnly ? 'Ücretsiz planda ilerlemen bu cihazda güvende kalır.' : null,
+          ),
+          if (premiumOnly) ...[
+            const SizedBox(height: 8),
+            TextButton.icon(
+              key: const ValueKey('account-premium-backup'),
+              icon: const Icon(Icons.cloud_upload_outlined),
+              label: const Text('Premium ile buluta yedekle'),
+              onPressed: () => requirePremium(context, ref, PremiumFeature.cloudBackup),
+            ),
+          ],
           if (service != null) ...[
             const SizedBox(height: 12),
             if (!signedIn) ...[
@@ -106,7 +127,7 @@ class _Line extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(title, style: const TextStyle(fontWeight: FontWeight.w800)),
-            if (subtitle != null) Text(subtitle!, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+            if (subtitle != null) Text(subtitle!, style: TextStyle(color: Brand.muted, fontSize: 13)),
           ],
         ),
       ),
@@ -173,7 +194,7 @@ class _EmailDialogState extends State<_EmailDialog> {
         if (_error != null)
           Padding(
             padding: const EdgeInsets.only(top: 12),
-            child: Text(_error!, style: const TextStyle(color: Brand.error)),
+            child: Text(_error!, style: TextStyle(color: Brand.error)),
           ),
       ],
     ),

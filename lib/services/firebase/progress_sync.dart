@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart' show StringCharacters;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/progress.dart';
+import '../billing/premium.dart';
 import 'account_service.dart';
 import 'firebase_providers.dart';
 import 'progress_merge.dart';
@@ -25,6 +26,10 @@ enum SyncState {
 
   /// Waiting for a (possibly anonymous) user.
   signedOut,
+
+  /// Signed in without Premium: cloud backup is Premium-only, progress stays
+  /// on this device.
+  premiumOnly,
 
   /// Reading the cloud copy.
   syncing,
@@ -51,6 +56,9 @@ class SyncStatus {
 /// becomes a single write.
 final syncDebounceProvider = Provider<Duration>((ref) => const Duration(seconds: 3));
 
+/// Delay before a failed write is retried.
+final syncRetryProvider = Provider<Duration>((ref) => const Duration(seconds: 30));
+
 /// Offline-first, two-way sync of [progressProvider] with `users/{uid}`.
 ///
 /// * every local save marks the device copy as changed and schedules a
@@ -73,12 +81,18 @@ class ProgressSync extends Notifier<SyncStatus> {
     ref.watch(autoAnonymousSignInProvider);
     final db = ref.watch(firestoreProvider);
     if (db == null) return const SyncStatus(SyncState.off);
+    // Edits are timestamped even while not syncing, so settings changed on a
+    // free account still win the merge when Premium (re)starts.
+    ref.listen(progressProvider, (_, next) => _onLocal(next));
     final uid = ref.watch(currentUidProvider);
     if (uid == null) return const SyncStatus(SyncState.signedOut);
+    // Cloud backup is a Premium feature; free users keep everything on the
+    // device. Becoming Premium rebuilds this and syncs at once (pull, merge,
+    // push); lapsing disposes the listeners and keeps the local data.
+    if (!ref.watch(premiumProvider)) return const SyncStatus(SyncState.premiumOnly);
 
     _doc = db.collection('users').doc(uid);
     _sub = _doc!.snapshots().listen(_onRemote, onError: _onError);
-    ref.listen(progressProvider, (_, next) => _onLocal(next));
     ref.onDispose(() {
       _sub?.cancel();
       _timer?.cancel();
@@ -169,7 +183,12 @@ class ProgressSync extends Notifier<SyncStatus> {
       if (ref.mounted && _doc == doc && _timer == null && _uploads == 0) _setSynced();
     } catch (e) {
       _uploads--;
-      if (ref.mounted && _doc == doc) _onError(e);
+      if (ref.mounted && _doc == doc) {
+        _onError(e);
+        // E.g. permission-denied until verifyPurchase has written the
+        // entitlement the rules check: try again later.
+        _timer ??= Timer(ref.read(syncRetryProvider), _upload);
+      }
     }
   }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'data/app_settings.dart';
 import 'data/progress.dart';
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
@@ -42,11 +43,21 @@ class LingoraApp extends ConsumerWidget {
     // Start listening to the store at launch: Google Play re-delivers
     // unacknowledged or pending purchases right after start-up.
     ref.listen(premiumControllerProvider, (_, _) {});
+    final settings = ref.watch(appSettingsProvider);
+    final brightness = switch (settings.theme) {
+      ThemePref.light => Brightness.light,
+      ThemePref.dark => Brightness.dark,
+      ThemePref.system => MediaQuery.maybePlatformBrightnessOf(context) ?? Brightness.light,
+    };
+    final palette = Palette.of(settings.mode, brightness);
+    // Set before building so the first frame already uses the right colours.
+    Brand.apply(palette);
     ref.listen(examPackControllerProvider, (_, _) {});
     return MaterialApp(
       title: 'Lingora',
       debugShowCheckedModeBanner: false,
-      theme: buildTheme(),
+      theme: buildTheme(mode: settings.mode, brightness: brightness),
+      builder: (_, child) => PaletteScope(palette: palette, child: child!),
       home: onboarded ? const HomeScreen() : const OnboardingScreen(),
     );
   }

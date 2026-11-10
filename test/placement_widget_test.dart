@@ -80,7 +80,7 @@ Future<void> _pump(WidgetTester tester, Map<String, Object> prefs) async {
 /// Answers every question: right when [right] is true, otherwise "Bilmiyorum".
 Future<int> _answerAll(WidgetTester tester, {required bool right}) async {
   var asked = 0;
-  while (find.text('KONTROL ET').evaluate().isNotEmpty) {
+  while (find.text('Kontrol et').evaluate().isNotEmpty) {
     asked++;
     if (right) {
       final q = _bank.firstWhere((q) => find.text(q.prompt).evaluate().isNotEmpty);
@@ -89,15 +89,15 @@ Future<int> _answerAll(WidgetTester tester, {required bool right}) async {
       await tester.pumpAndSettle();
       await tester.tap(choice);
       await tester.pump();
-      await tester.tap(find.text('KONTROL ET'));
+      await tester.tap(find.text('Kontrol et'));
     } else {
       await tester.tap(find.text('Bilmiyorum'));
     }
     await tester.pumpAndSettle();
     expect(right ? find.text('Doğru!') : find.textContaining('Doğrusu:'), findsOneWidget);
-    await tester.ensureVisible(find.text('DEVAM'));
+    await tester.ensureVisible(find.text('Devam'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('DEVAM'));
+    await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
   }
   return asked;
@@ -109,7 +109,7 @@ Future<Progress> _saved() async {
 }
 
 Future<void> _toLevelStep(WidgetTester tester) async {
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < 4; i++) {
     await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
   }

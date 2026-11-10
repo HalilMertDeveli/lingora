@@ -43,8 +43,22 @@ after(async () => {
   await env?.cleanup();
 });
 
+const DAY = 24 * 60 * 60 * 1000;
+
+/** Writes entitlements/{uid} as verifyPurchase would (rules bypassed). */
+async function setEntitlement(uid: string, data: Record<string, unknown>) {
+  await env.withSecurityRulesDisabled(async (ctx) => {
+    await setDoc(doc(ctx.firestore(), `entitlements/${uid}`), data);
+  });
+}
+
+const premium = (uid: string) =>
+  setEntitlement(uid, { active: true, premium: true, status: "active", expiresAt: Timestamp.fromMillis(Date.now() + DAY) });
+
 beforeEach(async () => {
   await env.clearFirestore();
+  // Backup is Premium-only; most user tests run as a Premium user.
+  await premium("alice");
 });
 
 const db = (uid?: string) => (uid ? env.authenticatedContext(uid).firestore() : env.unauthenticatedContext().firestore());
@@ -65,6 +79,30 @@ test("users: owner can write a valid snapshot and read it back", async () => {
   await assertSucceeds(
     setDoc(doc(db("alice"), "users/alice"), { ...progressDoc(), displayName: "Alice" }),
   );
+});
+
+test("users: backup needs an active entitlement", async () => {
+  const write = (uid: string) => setDoc(doc(db(uid), `users/${uid}`), progressDoc());
+  // No entitlement at all.
+  await assertFails(write("bob"));
+  // Turned off.
+  await setEntitlement("bob", { active: false, premium: false, expiresAt: Timestamp.fromMillis(Date.now() + DAY) });
+  await assertFails(write("bob"));
+  // Expired.
+  await setEntitlement("bob", { active: true, expiresAt: Timestamp.fromMillis(Date.now() - DAY) });
+  await assertFails(write("bob"));
+  // No expiry date.
+  await setEntitlement("bob", { active: true });
+  await assertFails(write("bob"));
+  // The app's shape (premium + status) works too.
+  await setEntitlement("bob", { premium: true, status: "grace", expiresAt: Timestamp.fromMillis(Date.now() + DAY) });
+  await assertSucceeds(write("bob"));
+  // Lapsed Premium: the old backup stays readable but cannot be updated.
+  await setEntitlement("bob", { active: true, expiresAt: Timestamp.fromMillis(Date.now() - DAY) });
+  await assertFails(write("bob"));
+  await assertSucceeds(getDoc(doc(db("bob"), "users/bob")));
+  // Someone else's Premium does not help.
+  await assertFails(setDoc(doc(db("bob"), "users/alice"), progressDoc()));
 });
 
 test("users: others and guests are locked out", async () => {

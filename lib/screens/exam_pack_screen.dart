@@ -47,8 +47,8 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
           'önceki sorulara dönebilirsin.',
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Vazgeç')),
-          FilledButton(onPressed: () => Navigator.pop(c, true), child: const Text('Başla')),
+          TextButton(onPressed: () => Navigator.pop(c, false), child: Text('Vazgeç')),
+          FilledButton(onPressed: () => Navigator.pop(c, true), child: Text('Başla')),
         ],
       ),
     );
@@ -86,18 +86,18 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
           children: [
             Expanded(child: Text('Tam denemeler', style: Theme.of(context).textTheme.titleLarge)),
             if (unlocked)
-              const Icon(Icons.lock_open_rounded, color: Brand.success)
+              Icon(Icons.lock_open_rounded, color: Brand.success)
             else
-              const Icon(Icons.lock_rounded, color: Brand.muted),
+              Icon(Icons.lock_rounded, color: Brand.muted),
           ],
         ),
-        const SizedBox(height: 4),
-        Text(widget.pack.summary, style: const TextStyle(color: Brand.muted)),
-        const SizedBox(height: 10),
+        SizedBox(height: 4),
+        Text(widget.pack.summary, style: TextStyle(color: Brand.muted)),
+        SizedBox(height: 10),
         content.when(
           // No spinner: the asset loads in a moment, and an endless animation
           // would keep widget tests from settling.
-          loading: () => const SizedBox(height: 48),
+          loading: () => SizedBox(height: 48),
           error: (e, _) => Text('Deneme paketi yüklenemedi: $e'),
           data: (c) => unlocked ? _mockList(c) : _locked(c),
         ),
@@ -111,14 +111,14 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
       children: [
         for (final m in c.mocks)
           Padding(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding: EdgeInsets.only(bottom: 10),
             child: TapCard(
               key: ValueKey('full-mock-${m.id}'),
               onTap: () => _start(c, m),
               child: Row(
                 children: [
-                  const Icon(Icons.assignment_rounded, color: Brand.primary),
-                  const SizedBox(width: 12),
+                  Icon(Icons.assignment_rounded, color: Brand.primary),
+                  SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,12 +127,12 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
                         Text(
                           '${m.questions.length} soru · ${m.minutes} dk'
                           '${best[m.id] == null ? '' : ' · en iyi %${best[m.id]}'}',
-                          style: const TextStyle(color: Brand.muted, fontSize: 13),
+                          style: TextStyle(color: Brand.muted, fontSize: 13),
                         ),
                       ],
                     ),
                   ),
-                  const Icon(Icons.play_arrow_rounded, color: Brand.primary),
+                  Icon(Icons.play_arrow_rounded, color: Brand.primary),
                 ],
               ),
             ),
@@ -148,46 +148,46 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
     final pending = s.pending.contains(widget.pack.examId);
     final busy = s.busy == widget.pack;
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Brand.card,
         border: Border.all(color: Brand.line, width: 2),
         borderRadius: BorderRadius.circular(18),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.pack.title, style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 17)),
-          const SizedBox(height: 6),
-          Text(c.description, style: const TextStyle(height: 1.35)),
-          const SizedBox(height: 10),
-          for (final line in const [
+          Text(widget.pack.title, style: TextStyle(fontWeight: FontWeight.w900, fontSize: 17)),
+          SizedBox(height: 6),
+          Text(c.description, style: TextStyle(height: 1.35)),
+          SizedBox(height: 10),
+          for (final line in [
             'Gerçek sınav süresiyle tam deneme',
             'Net ve puan tahmini',
             'Konu konu başarı dökümü',
             'Yanlış ve boşların Türkçe çözümleri',
           ])
             Padding(
-              padding: const EdgeInsets.only(bottom: 4),
+              padding: EdgeInsets.only(bottom: 4),
               child: Row(
                 children: [
-                  const Icon(Icons.check_rounded, size: 18, color: Brand.success),
-                  const SizedBox(width: 6),
-                  Expanded(child: Text(line, style: const TextStyle(fontSize: 13))),
+                  Icon(Icons.check_rounded, size: 18, color: Brand.success),
+                  SizedBox(width: 6),
+                  Expanded(child: Text(line, style: TextStyle(fontSize: 13))),
                 ],
               ),
             ),
-          const SizedBox(height: 6),
-          const Text(
+          SizedBox(height: 6),
+          Text(
             'Tek seferlik ödeme, abonelik değil. Premium üyelerde paket zaten açıktır. Konu pratiği ve '
             'günlük mini deneme ücretsiz kalır.',
             style: TextStyle(color: Brand.muted, fontSize: 12, height: 1.35),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12),
           if (pending)
-            const _Info('Ödemen onay bekliyor. Onaylanınca paket kendiliğinden açılır.')
+            _Info('Ödemen onay bekliyor. Onaylanınca paket kendiliğinden açılır.')
           else if (s.storeAvailable == false)
-            const _Info('Satın alma bu cihazda şu an kullanılamıyor. Paketi aldıysan geri yükleyebilirsin.'),
+            _Info('Satın alma bu cihazda şu an kullanılamıyor. Paketi aldıysan geri yükleyebilirsin.'),
           if (s.error != null) _Info(s.error!, color: Brand.errorBg),
           if (s.message != null) _Info(s.message!),
           PressableButton(
@@ -202,7 +202,7 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
                 ? () => ctrl.buy(widget.pack)
                 : null,
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8),
           PressableButton(
             label: 'PREMIUM İLE AÇ',
             outlined: true,
@@ -213,7 +213,7 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
           Center(
             child: TextButton(
               onPressed: s.busy == null ? () => ctrl.restore(widget.pack) : null,
-              child: const Text('Satın alımları geri yükle'),
+              child: Text('Satın alımları geri yükle'),
             ),
           ),
         ],
@@ -223,17 +223,17 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
 }
 
 class _Info extends StatelessWidget {
-  const _Info(this.text, {this.color = const Color(0xFFFFF4DC)});
+  const _Info(this.text, {this.color});
   final String text;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) => Container(
     width: double.infinity,
-    margin: const EdgeInsets.only(bottom: 10),
-    padding: const EdgeInsets.all(12),
-    decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(14)),
-    child: Text(text, style: const TextStyle(fontSize: 13)),
+    margin: EdgeInsets.only(bottom: 10),
+    padding: EdgeInsets.all(12),
+    decoration: BoxDecoration(color: color ?? Brand.accentBg, borderRadius: BorderRadius.circular(14)),
+    child: Text(text, style: TextStyle(fontSize: 13)),
   );
 }
 
@@ -295,22 +295,22 @@ class _FullMockResultScreenState extends State<FullMockResultScreen> {
           children: [
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
                 children: [
                   Center(child: Mascot(mood: good ? Mood.cheer : Mood.think, size: 100)),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   Center(
                     child: Text(
                       '${widget.pack.title} · ${widget.mock.title}',
-                      style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+                      style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4),
                   Center(
                     child: Text(
                       headline,
-                      key: const ValueKey('mock-headline'),
+                      key: ValueKey('mock-headline'),
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.w900,
@@ -322,15 +322,15 @@ class _FullMockResultScreenState extends State<FullMockResultScreen> {
                     child: Text(
                       '${r.correct} doğru · ${r.wrong} yanlış · ${r.blank} boş · net ${_fmtNet(r.net)} · '
                       '$minutes dk · +${widget.xp} XP',
-                      style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+                      style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Text(note, style: const TextStyle(color: Brand.muted, fontSize: 12, height: 1.35)),
-                  const SizedBox(height: 18),
+                  SizedBox(height: 8),
+                  Text(note, style: TextStyle(color: Brand.muted, fontSize: 12, height: 1.35)),
+                  SizedBox(height: 18),
                   Text('Konu dökümü', style: Theme.of(context).textTheme.titleLarge),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   for (final e in r.topics.entries)
                     _TopicRow(
                       title: widget.pack.sectionTitle(e.key),
@@ -338,22 +338,22 @@ class _FullMockResultScreenState extends State<FullMockResultScreen> {
                       wrong: e.value.wrong,
                       total: e.value.total,
                     ),
-                  const SizedBox(height: 18),
+                  SizedBox(height: 18),
                   Row(
                     children: [
                       Expanded(
                         child: Text('Cevapları incele', style: Theme.of(context).textTheme.titleLarge),
                       ),
                       FilterChip(
-                        label: const Text('Yalnız yanlış/boş'),
+                        label: Text('Yalnız yanlış/boş'),
                         selected: _onlyMistakes,
                         onSelected: (v) => setState(() => _onlyMistakes = v),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   if (review.isEmpty)
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(12),
                       child: Text('Hiç yanlışın ya da boşun yok. Harika! 🎉'),
                     ),
@@ -362,7 +362,7 @@ class _FullMockResultScreenState extends State<FullMockResultScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
+              padding: EdgeInsets.fromLTRB(20, 8, 20, 16),
               child: PressableButton(label: 'DEVAM', onPressed: () => Navigator.of(context).pop()),
             ),
           ],
@@ -384,14 +384,14 @@ class _TopicRow extends StatelessWidget {
     final ratio = total == 0 ? 0.0 : correct / total;
     final color = ratio >= 0.7 ? Brand.success : (ratio >= 0.4 ? Brand.accent : Brand.error);
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: EdgeInsets.only(bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Expanded(
-                child: Text(title, style: const TextStyle(fontWeight: FontWeight.w700)),
+                child: Text(title, style: TextStyle(fontWeight: FontWeight.w700)),
               ),
               Text(
                 '$correct/$total',
@@ -399,7 +399,7 @@ class _TopicRow extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           GlossyProgress(value: ratio, color: color, height: 10),
         ],
       ),
@@ -418,11 +418,11 @@ class _ReviewCard extends StatelessWidget {
     final ok = picked == q.answer;
     final color = picked == null ? Brand.muted : (ok ? Brand.success : Brand.error);
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: EdgeInsets.only(bottom: 8),
       child: TapCard(
         padding: EdgeInsets.zero,
         child: ExpansionTile(
-          shape: const Border(),
+          shape: Border(),
           leading: CircleAvatar(
             radius: 15,
             backgroundColor: color.withValues(alpha: 0.15),
@@ -439,18 +439,18 @@ class _ReviewCard extends StatelessWidget {
                 : 'Senin: ${_letters[picked!]} · doğru: ${_letters[q.answer]}',
             style: TextStyle(color: color, fontWeight: FontWeight.w700),
           ),
-          childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 14),
+          childrenPadding: EdgeInsets.fromLTRB(16, 0, 16, 14),
           expandedCrossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (q.passage != null) ...[
-              Text(q.passage!, style: const TextStyle(color: Brand.muted, height: 1.4, fontSize: 13)),
-              const SizedBox(height: 8),
+              Text(q.passage!, style: TextStyle(color: Brand.muted, height: 1.4, fontSize: 13)),
+              SizedBox(height: 8),
             ],
-            Text(q.text, style: const TextStyle(fontWeight: FontWeight.w700)),
-            const SizedBox(height: 6),
+            Text(q.text, style: TextStyle(fontWeight: FontWeight.w700)),
+            SizedBox(height: 6),
             for (var i = 0; i < q.options.length; i++)
               Padding(
-                padding: const EdgeInsets.only(bottom: 2),
+                padding: EdgeInsets.only(bottom: 2),
                 child: Text(
                   '${_letters[i]}) ${q.options[i]}',
                   style: TextStyle(
@@ -459,8 +459,8 @@ class _ReviewCard extends StatelessWidget {
                   ),
                 ),
               ),
-            const SizedBox(height: 6),
-            Text(q.explanation, style: const TextStyle(height: 1.4)),
+            SizedBox(height: 6),
+            Text(q.explanation, style: TextStyle(height: 1.4)),
           ],
         ),
       ),

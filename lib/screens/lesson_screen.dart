@@ -269,10 +269,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final Widget badge = switch (widget.mode) {
       LessonMode.lesson => Text(
         '${min(_solved, _total)}/$_total',
-        style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w800, fontSize: 15),
+        style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800, fontSize: 15),
       ),
-      LessonMode.test => const Icon(Icons.workspace_premium_rounded, color: Brand.accent, size: 28),
-      LessonMode.practice => const Icon(Icons.fitness_center_rounded, color: Brand.primary, size: 26),
+      LessonMode.test => Icon(Icons.workspace_premium_rounded, color: Brand.accent, size: 28),
+      LessonMode.practice => Icon(Icons.fitness_center_rounded, color: Brand.primary, size: 26),
     };
     return Padding(
       padding: const EdgeInsets.fromLTRB(4, 8, 16, 0),
@@ -281,7 +281,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
           Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.close, color: Brand.muted),
+                icon: Icon(Icons.close, color: Brand.muted),
                 onPressed: _confirmQuit,
               ),
               Expanded(
@@ -299,8 +299,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                   ? PopIn(
                       key: ValueKey(_combo),
                       child: Text(
-                        '🔥 $_combo DOĞRU ÜST ÜSTE',
-                        style: const TextStyle(
+                        '${kidEmoji('🔥')}$_combo DOĞRU ÜST ÜSTE',
+                        style: TextStyle(
                           color: Brand.streak,
                           fontWeight: FontWeight.w900,
                           fontSize: 13,
@@ -311,7 +311,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                   : (widget.mode != LessonMode.lesson
                         ? Text(
                             widget.mode == LessonMode.test ? 'ÜNİTE SINAVI' : 'HATALARINI ÇALIŞ',
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Brand.muted,
                               fontWeight: FontWeight.w800,
                               fontSize: 12,
@@ -397,9 +397,9 @@ class _CheckBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
-    decoration: const BoxDecoration(
-      color: Colors.white,
-      border: Border(top: BorderSide(color: Brand.line, width: 2)),
+    decoration: BoxDecoration(
+      color: Brand.background,
+      border: Border(top: BorderSide(color: Brand.line, width: 1)),
     ),
     child: PressableButton(label: 'KONTROL ET', color: Brand.success, onPressed: enabled ? onCheck : null),
   );
