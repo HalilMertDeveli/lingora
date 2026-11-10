@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/text.dart';
+import '../services/billing/family.dart';
 import '../services/billing/premium.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import 'family_screen.dart';
 
 enum GateResult {
   /// The user has Premium (already, or bought/restored it on the paywall).
@@ -47,7 +50,7 @@ const freeItems = [
 ];
 
 class PaywallScreen extends ConsumerStatefulWidget {
-  const PaywallScreen({super.key, this.feature, this.freeAlternative});
+  const PaywallScreen({super.key, this.feature, this.freeAlternative, this.showFamily = false});
 
   /// The feature the user tried to open (highlighted), if any.
   final PremiumFeature? feature;
@@ -55,12 +58,15 @@ class PaywallScreen extends ConsumerStatefulWidget {
   /// Label of a free fallback (pops the paywall with `true`).
   final String? freeAlternative;
 
+  /// Preselects the family plan (opened from the family screen).
+  final bool showFamily;
+
   @override
   ConsumerState<PaywallScreen> createState() => _PaywallScreenState();
 }
 
 class _PaywallScreenState extends ConsumerState<PaywallScreen> {
-  PremiumPlan _plan = PremiumPlan.yearly;
+  late PremiumPlan _plan = widget.showFamily ? PremiumPlan.familyYearly : PremiumPlan.yearly;
 
   @override
   void initState() {
@@ -132,8 +138,31 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     ],
   );
 
+  void _openFamily(BuildContext context) =>
+      Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const FamilyScreen()));
+
   Widget _activeBox(PremiumState s) {
     final plan = PremiumPlan.byId(s.productId);
+    if (plan == PremiumPlan.familyYearly) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(color: Brand.successBg, borderRadius: BorderRadius.circular(16)),
+            child: const Text(
+              'Aile planı Premium'
+              'in aktif. Aileni yönetmek, davet kodu oluşturmak ya da aileden '
+              'ayrılmak için aile planı ekranını aç. Aboneliği yalnızca satın alan kişi Google Play '
+              '> Abonelikler bölümünden yönetebilir.',
+              style: TextStyle(height: 1.35),
+            ),
+          ),
+          const SizedBox(height: 10),
+          PressableButton(label: 'AİLE PLANI', color: Brand.primary, onPressed: () => _openFamily(context)),
+        ],
+      );
+    }
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(color: Brand.successBg, borderRadius: BorderRadius.circular(16)),
@@ -149,6 +178,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   List<Widget> _purchase(BuildContext context, PremiumState s) {
     final ctrl = ref.read(premiumControllerProvider.notifier);
     final available = s.storeAvailable;
+    final familyReady = ref.watch(familyBackendProvider) != null;
     final selected = s.product(_plan);
     return [
       if (available == null)
@@ -163,7 +193,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               'emin ol; Premium satın alındıysa aşağıdan geri yükleyebilirsin.',
         )
       else
-        for (final plan in PremiumPlan.values)
+        for (final plan in [...PremiumPlan.personal, if (familyReady) PremiumPlan.familyYearly])
           if (s.product(plan) case final product?)
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
@@ -189,7 +219,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
             ? 'BEKLENİYOR…'
             : selected == null
             ? 'PREMIUM\'A GEÇ'
-            : '${_plan.label.toUpperCase()} · ${selected.price}',
+            : '${trUpper(_plan.label)} · ${selected.price}',
         color: Brand.primary,
         onPressed: available == true && selected != null && !s.busy && !s.pending
             ? () => ctrl.buy(_plan)
@@ -212,6 +242,19 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           child: const Text('Satın alımları geri yükle'),
         ),
       ),
+      Center(
+        child: TextButton(
+          key: const ValueKey('paywall-family-code'),
+          onPressed: () => _openFamily(context),
+          child: const Text('Aile davet kodum var'),
+        ),
+      ),
+      if (!familyReady)
+        const Text(
+          'Aile planı ($familySeats kişiye kadar) hesap ve sunucu bağlantısı gerektirir; bu sürümde satın alınamaz.',
+          style: TextStyle(color: Brand.muted, fontSize: 12),
+          textAlign: TextAlign.center,
+        ),
       const SizedBox(height: 4),
       const Text(
         'Abonelik, iptal edilmedikçe her dönem sonunda Google Play hesabından otomatik yenilenir. '
@@ -343,7 +386,12 @@ class _PlanCard extends StatelessWidget {
                     ],
                   ],
                 ),
-                Text('${product.price} / ${plan.period}', style: const TextStyle(color: Brand.muted)),
+                Text(
+                  plan.isFamily
+                      ? '${product.price} / ${plan.period} · $familySeats kişiye kadar'
+                      : '${product.price} / ${plan.period}',
+                  style: const TextStyle(color: Brand.muted),
+                ),
               ],
             ),
           ),

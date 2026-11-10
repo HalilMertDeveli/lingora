@@ -8,10 +8,12 @@ import '../core/text.dart';
 import '../data/course_repository.dart';
 import '../data/progress.dart';
 import '../models/exam.dart';
+import '../models/exam_pack.dart';
 import '../services/billing/premium.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import 'exam_pack_screen.dart';
 import 'paywall_screen.dart';
 
 const _letters = ['A', 'B', 'C', 'D', 'E'];
@@ -144,6 +146,10 @@ class _ExamHome extends ConsumerWidget {
             ],
           ),
         ),
+        if (ExamPack.forExam(exam.id) case final pack?) ...[
+          const SizedBox(height: 22),
+          ExamPackSection(exam: exam, pack: pack),
+        ],
         const SizedBox(height: 22),
         Text('Konu çalış', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 4),
@@ -225,12 +231,22 @@ class ExamSessionScreen extends ConsumerStatefulWidget {
     required this.questions,
     required this.mock,
     required this.title,
+    this.minutes,
+    this.pack,
+    this.fullMock,
   });
 
   final Exam exam;
   final List<ExamQuestion> questions;
   final bool mock;
   final String title;
+
+  /// Time limit of a mock exam; defaults to the mini mock's.
+  final int? minutes;
+
+  /// Set for a full-length mock exam from a paid pack.
+  final ExamPackContent? pack;
+  final FullMock? fullMock;
 
   @override
   ConsumerState<ExamSessionScreen> createState() => _ExamSessionScreenState();
@@ -244,7 +260,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   bool _revealed = false;
   int _shake = 0;
   Timer? _timer;
-  late int _secondsLeft = widget.exam.mockMinutes * 60;
+  late int _secondsLeft = (widget.minutes ?? widget.exam.mockMinutes) * 60;
 
   ExamQuestion get _q => widget.questions[_pos];
 
@@ -269,7 +285,22 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   void _pick(int i) {
     if (_revealed) return;
     Haptics.tap();
-    setState(() => _picked = i);
+    setState(() {
+      // In a mock exam tapping the chosen option again clears it (blank).
+      _picked = widget.mock && _picked == i ? null : i;
+      if (widget.mock) {
+        _picked == null ? _answers.remove(_pos) : _answers[_pos] = _picked!;
+      }
+    });
+  }
+
+  /// Mock exams: move freely between questions; blanks are allowed.
+  void _goTo(int pos) {
+    if (pos < 0 || pos >= widget.questions.length) return;
+    setState(() {
+      _pos = pos;
+      _picked = _answers[pos];
+    });
   }
 
   void _check() {
@@ -283,7 +314,10 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   }
 
   void _next() {
-    if (widget.mock) _answers[_pos] = _picked!;
+    if (widget.mock && _pos + 1 < widget.questions.length) {
+      _goTo(_pos + 1);
+      return;
+    }
     if (_pos + 1 >= widget.questions.length) {
       _finish();
       return;
@@ -306,7 +340,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     ].length;
     final percent = qs.isEmpty ? 0 : (correct * 100 / qs.length).round();
     final notifier = ref.read(progressProvider.notifier);
-    if (widget.mock) notifier.recordExam(widget.exam.id, percent);
+    if (widget.mock) notifier.recordExam(widget.fullMock?.id ?? widget.exam.id, percent);
     final reward = notifier.completeNode(
       'exam_${widget.exam.id}',
       xp: max(5, correct),
@@ -314,6 +348,21 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
       correct: correct,
       perfect: correct == qs.length,
     );
+    final pack = widget.pack, full = widget.fullMock;
+    if (pack != null && full != null) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute<void>(
+          builder: (_) => FullMockResultScreen(
+            pack: pack,
+            mock: full,
+            answers: _answers,
+            xp: reward.xp,
+            duration: DateTime.now().difference(_started),
+          ),
+        ),
+      );
+      return;
+    }
     Navigator.of(context).pushReplacement(
       MaterialPageRoute<void>(
         builder: (_) => ExamResultScreen(
@@ -326,6 +375,25 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _confirmFinish() async {
+    final blank = widget.questions.length - _answers.length;
+    if (blank > 0) {
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (c) => AlertDialog(
+          title: const Text('Deneme bitirilsin mi?'),
+          content: Text('$blank soru boş. Bitirirsen boş sorular puanlanmaz.'),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Geri dön')),
+            FilledButton(onPressed: () => Navigator.pop(c, true), child: const Text('Bitir')),
+          ],
+        ),
+      );
+      if (ok != true || !mounted) return;
+    }
+    _finish();
   }
 
   Future<void> _quit() async {
@@ -409,7 +477,9 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                     padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
                     children: [
                       Text(
-                        trUpper(widget.title),
+                        widget.mock
+                            ? '${trUpper(widget.title)} · SORU ${_pos + 1}/${widget.questions.length}'
+                            : trUpper(widget.title),
                         style: const TextStyle(
                           color: Brand.muted,
                           fontWeight: FontWeight.w800,
@@ -509,9 +579,31 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                   border: Border(top: BorderSide(color: Brand.line, width: 2)),
                 ),
                 child: widget.mock
-                    ? PressableButton(
-                        label: _pos + 1 == widget.questions.length ? 'DENEMEYİ BİTİR' : 'SONRAKİ',
-                        onPressed: _picked == null ? null : _next,
+                    ? Row(
+                        children: [
+                          if (_pos > 0) ...[
+                            Expanded(
+                              flex: 2,
+                              child: PressableButton(
+                                label: 'ÖNCEKİ',
+                                outlined: true,
+                                color: Brand.primary,
+                                foreground: Brand.primary,
+                                onPressed: () => _goTo(_pos - 1),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                          ],
+                          Expanded(
+                            flex: 3,
+                            child: PressableButton(
+                              label: _pos + 1 == widget.questions.length
+                                  ? 'DENEMEYİ BİTİR'
+                                  : (_picked == null ? 'BOŞ BIRAK' : 'SONRAKİ'),
+                              onPressed: _pos + 1 == widget.questions.length ? _confirmFinish : _next,
+                            ),
+                          ),
+                        ],
                       )
                     : PressableButton(
                         label: _revealed ? 'DEVAM' : 'KONTROL ET',

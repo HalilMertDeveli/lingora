@@ -7,8 +7,10 @@ import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
 import 'services/firebase/firebase_bootstrap.dart';
 import 'services/firebase/firebase_config.dart';
+import 'services/firebase/billing_backends_firebase.dart';
 import 'services/firebase/firebase_providers.dart';
 import 'services/firebase/progress_sync.dart';
+import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
 import 'theme.dart';
 
@@ -22,6 +24,7 @@ Future<void> main() async {
       overrides: [
         prefsProvider.overrideWithValue(prefs),
         firebaseReadyProvider.overrideWithValue(firebaseReady),
+        ...firebaseBillingOverrides,
       ],
       child: const LingoraApp(),
     ),
@@ -39,6 +42,7 @@ class LingoraApp extends ConsumerWidget {
     // Start listening to the store at launch: Google Play re-delivers
     // unacknowledged or pending purchases right after start-up.
     ref.listen(premiumControllerProvider, (_, _) {});
+    ref.listen(examPackControllerProvider, (_, _) {});
     return MaterialApp(
       title: 'Lingora',
       debugShowCheckedModeBanner: false,

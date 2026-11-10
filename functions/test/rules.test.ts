@@ -123,7 +123,13 @@ test("leagues: only group members can read, nobody writes", async () => {
 });
 
 test("server-only collections are closed", async () => {
-  for (const path of ["usage/alice", "purchases/abc", "leagueWeeks/2026-11-09_0"]) {
+  for (const path of [
+    "usage/alice",
+    "purchases/abc",
+    "leagueWeeks/2026-11-09_0",
+    "families/alice",
+    "familyCodes/ABCDEFGH",
+  ]) {
     await assertFails(getDoc(doc(db("alice"), path)));
     await assertFails(setDoc(doc(db("alice"), path), { x: 1 }));
   }

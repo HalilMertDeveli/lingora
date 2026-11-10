@@ -9,6 +9,7 @@ import { CallableRequest, HttpsError, onCall } from "firebase-functions/v2/https
 import { onSchedule } from "firebase-functions/v2/scheduler";
 
 import * as conversation from "./converse.js";
+import * as family from "./family.js";
 import * as league from "./league.js";
 import * as purchase from "./purchase.js";
 
@@ -49,7 +50,7 @@ export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 
   return conversation.converse(getFirestore(), claude, uid, req.data, new Date());
 });
 
-/** { productId, purchaseToken } -> { active, productId, expiresAt } */
+/** { productId, purchaseToken } -> { active, productId, expiresAt?, packs } (subscriptions, family plan, exam packs) */
 export const verifyPurchase = onCall((req) =>
   purchase.verifyPurchase(getFirestore(), requireUid(req), req.data, {
     // Only the emulator grants Premium without a real Play check.
@@ -57,3 +58,19 @@ export const verifyPurchase = onCall((req) =>
     now: new Date(),
   }),
 );
+
+// Family plan (functions/src/family.ts).
+/** {} -> { code, expiresAt } (owner of an active family plan) */
+export const createFamilyInvite = onCall((req) => family.createFamilyInvite(getFirestore(), requireUid(req), new Date()));
+/** { code } -> { active, productId, expiresAt, ownerUid } */
+export const redeemFamilyCode = onCall((req) =>
+  family.redeemFamilyCode(getFirestore(), requireUid(req), req.data, new Date()),
+);
+/** { memberUid } -> { removed } (owner) */
+export const removeFamilyMember = onCall((req) =>
+  family.removeFamilyMember(getFirestore(), requireUid(req), req.data),
+);
+/** {} -> { left } (member) */
+export const leaveFamily = onCall((req) => family.leaveFamily(getFirestore(), requireUid(req)));
+/** {} -> { role: 'none' | 'member' | 'owner', ... } */
+export const getFamily = onCall((req) => family.getFamily(getFirestore(), requireUid(req), new Date()));

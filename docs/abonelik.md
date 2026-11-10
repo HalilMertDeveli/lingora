@@ -14,6 +14,7 @@ ekstraları açar.
 | Tüm dersler, gramer yolu, notlar, kelime tekrarı | 🤖 **Yapay zekâ sohbet partneri** (Konuş sekmesi, sunucu bağlıyken) |
 | Okuma, telaffuz | 📝 **Sınırsız mini deneme** (YDS/YÖKDİL, LGS) |
 | Sınav **konu pratiği** (sınırsız) + **günde 1 mini deneme** | 📊 **Detaylı hata analizi** (tüm kategoriler, oranlar, her biri için ipucu) |
+| | 🎯 **Tüm tam deneme paketleri** (paketler tek tek de satın alınabilir, bölüm 7) |
 | Sohbet senaryolarının **demo modu** (hazır senaryo + kural tabanlı düzeltme) | |
 | Türk hata dedektörü ve profilde **en sık 3 hata** | |
 
@@ -38,6 +39,9 @@ ve paywall'daki `freeItems` (`lib/screens/paywall_screen.dart`).
 | --- | --- | --- |
 | `lingora_premium_monthly` | Abonelik, 1 aylık otomatik yenilenen temel plan | **129,99 TL / ay** |
 | `lingora_premium_yearly` | Abonelik, 1 yıllık otomatik yenilenen temel plan | **799,99 TL / yıl** (~66,67 TL/ay, aylığa göre ~%49 tasarruf) |
+| `lingora_premium_family_yearly` | Abonelik, 1 yıllık otomatik yenilenen temel plan; **5 kişiye kadar** (alan + 4 davetli), bkz. bölüm 8 | **1.199,99 TL / yıl** (kişi başı ~240 TL/yıl) |
+| `lingora_pack_yds_full` | **Tek seferlik** uygulama içi ürün (tüketilemez), bkz. bölüm 7 | **149,99 TL** |
+| `lingora_pack_lgs_full` | **Tek seferlik** uygulama içi ürün (tüketilemez), bkz. bölüm 7 | **99,99 TL** |
 
 Notlar:
 
@@ -175,3 +179,98 @@ override eder.
   "Satın alma bu cihazda şu an kullanılamıyor" der.
 - iOS (App Store) daha sonra: aynı ürün kimlikleriyle App Store Connect'te
   abonelik grubu açılır, sunucuya App Store doğrulaması eklenir.
+
+## 7. Sınav paketleri (tek seferlik)
+
+Abonelik istemeyen sınav adayları için. Bir kez ödenir, **süresiz** açık kalır;
+Premium üyelerde tüm paketler zaten açıktır. Ücretsiz kullanıcının konu pratiği
+ve günlük 1 mini denemesi hiç değişmez.
+
+| Ürün | İçerik |
+| --- | --- |
+| `lingora_pack_yds_full` | 3 tam YDS/YÖKDİL denemesi × 80 soru, 180 dakika, gerçek bölüm oranları: kelime 6, dil bilgisi 10, cloze 10 (2 parça), cümle tamamlama 10, çeviri 6, okuma 20 (5 parça), diyalog 6, anlamca en yakın cümle 3, paragraf tamamlama 4, anlam bütünlüğünü bozan cümle 5 |
+| `lingora_pack_lgs_full` | 4 tam LGS İngilizce denemesi × 10 soru, 15 dakika: kelime 2, diyalog 2, okuma/tablo 4, durum 2 |
+
+Toplam **280 özgün soru**, hepsinde Türkçe çözüm. Sorular Lingora için yazıldı;
+ÖSYM/MEB sorusu değildir (uygulamada da yazar). İçerik: `assets/exam_packs/`.
+
+Paket sahibine açılanlar: gerçek süreli tam deneme (süre durdurulamaz, bitince
+deneme kendiliğinden biter; boş bırakma ve önceki soruya dönme serbest), **net
+ve puan tahmini** (YDS: doğru × 1,25, yanlış götürmez; LGS: doğru − yanlış/3,
+LGS puanı tüm derslerle hesaplandığı için yalnız İngilizce neti gösterilir),
+**konu dökümü** ve **yanlış/boş incelemesi** (Türkçe çözümle).
+
+**Play Console**: Para kazanma > Ürünler > **Uygulama içi ürünler** > Ürün oluştur:
+ürün kimliği yukarıdakiyle birebir aynı, ad/açıklama Türkçe, fiyat, **Etkinleştir**.
+Abonelik değil, uygulama içi üründür; uygulama bunu tüketmez (tek seferlik).
+Lisans test hesaplarıyla satın alma ücretsiz denenir; test satın alımı Play
+Console > Sipariş yönetimi'nden iade edilip tekrar denenebilir.
+
+**Yetki**: satın alma `verifyPurchase` ile doğrulanır ve `entitlements/{uid}.packs`
+alanına yazılır (`{ yds: true }`, `{ lgs: true }`); Premium alanlarına dokunmaz.
+Cihazda `SharedPreferences` (`packs.owned`) önbelleğinde süresiz tutulur;
+sunucu `packs` listesini gönderdiğinde (ör. iade sonrası) o geçerli olur.
+"Satın alımları geri yükle" paketleri Play'den yeniden getirir.
+
+Not: Paket içeriği uygulamanın içinde gelir; kilit istemcidedir. Değiştirilmiş
+bir APK içeriği açabilir. Bu risk düşük fiyatlı içerik için kabul edildi; ileride
+içerik sunucudan (Storage + entitlement kontrolü) indirilebilir.
+
+## 8. Aile planı
+
+`lingora_premium_family_yearly`: bir kişi yıllık öder, **toplam 5 kişi**
+(kendisi + 4 davetli) kendi hesabıyla Premium kullanır. İlerlemeler ayrıdır.
+**Firebase gerekir**: sunucu yoksa paywall aile planını satmaz, aile ekranı
+nedenini söyler.
+
+Akış:
+
+1. Yönetici paywall'da aile planını satın alır. `verifyPurchase` yöneticiye
+   Premium yazar ve `families/{ownerUid}` belgesini oluşturur.
+2. Profil > **Aile planı** ekranında "Davet kodu oluştur": 8 karakterli kod
+   (ör. `ABCD-EFGH`, 7 gün geçerli; yeni kod eskisini geçersiz kılar).
+3. Davetli giriş yapar (Profil > Hesap), aynı ekranda kodu girer →
+   `redeemFamilyCode` ona `entitlements/{uid}` içinde
+   `{active, expiresAt: yöneticinin plan bitişi, source: 'family', family: {ownerUid, role: 'member'}}`
+   yazar. Kendi daha uzun Premium'u varsa o korunur.
+4. Yönetici üyeyi çıkarabilir (`removeFamilyMember`), üye ayrılabilir
+   (`leaveFamily`): aileden gelen Premium hemen biter, başka alanlar (paketler) kalır.
+5. Yönetici aboneliği yenilediğinde (`verifyPurchase`) ailedeki üyelerin
+   bitiş tarihi de uzar.
+
+Callable'lar (europe-west1, `functions/src/family.ts`): `createFamilyInvite`,
+`redeemFamilyCode {code}`, `removeFamilyMember {memberUid}`, `leaveFamily`,
+`getFamily`. `families/*` ve `familyCodes/*` yalnızca sunucuya açıktır.
+Hata kodları uygulamada Türkçe mesaja çevrilir (aile dolu, kod süresi dolmuş vb.).
+
+**Play Console**: Abonelikler > `lingora_premium_family_yearly`, 1 yıllık
+otomatik yenilenen temel plan, fiyat, Etkinleştir. Google Play'in kendi aile
+kitaplığı paylaşımı kullanılmaz; paylaşım tamamen Lingora'nın davet koduyla
+yapılır. Mağaza açıklamasına "5 kişiye kadar, davet koduyla" yaz.
+
+**Canlıya çıkmadan**: Gerçek Play doğrulaması (`verifyPurchase` içindeki TODO)
+yokken yalnız emülatör yetki yazar. Paketler için `purchases.products.get`
+(tek seferlik ürün), abonelikler için `purchases.subscriptionsv2.get`
+kullanılmalı; iade/iptal RTDN ile `packs`/`active` alanlarından düşürülmeli.
+Aile planı iptal edilince üyelerin Premium'u yöneticinin bitiş tarihinde
+kendiliğinden biter (aynı `expiresAt`).
+
+### entitlements/{uid} ortak kuralı
+
+Belgeye birden fazla yazan var (satın alma, aile planı, kurumsal lisans).
+Her yazan **merge** ile yalnız kendi alanlarını yazar; başka kaynaktan gelen
+daha uzun Premium'u kısaltmaz; Premium'u kapatırken yalnız `source` kendisiyse
+kapatır.
+
+### Kod haritası (ek)
+
+| Dosya | Görev |
+| --- | --- |
+| `lib/services/billing/products.dart` | `ExamPack`, `PremiumPlan.familyYearly`, `familySeats` |
+| `lib/services/billing/exam_packs.dart` | `ExamPackController`, `examPackUnlockedProvider` |
+| `lib/services/billing/family.dart` | `FamilyBackend` arayüzü, Türkçe hata mesajları |
+| `lib/services/firebase/billing_backends_firebase.dart` | Firebase `EntitlementBackend` ve `FamilyBackend`; `main.dart` override eder |
+| `lib/screens/exam_pack_screen.dart` | Sınav ekranındaki paket kartı, tam deneme sonucu |
+| `lib/screens/family_screen.dart` | Aile planı ekranı (Profil > Aile planı) |
+| `functions/src/purchase.ts`, `functions/src/family.ts` | Sunucu |
+| `test/exam_packs_test.dart`, `functions/test/family.test.ts` | Testler |
