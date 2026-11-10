@@ -96,12 +96,15 @@ class FirebaseFamilyBackend implements FamilyBackend {
 /// (see main.dart): real backends once Firebase is ready, null otherwise.
 final firebaseBillingOverrides = [
   entitlementBackendProvider.overrideWith((ref) {
+    // Only with Firebase on and a signed-in user; otherwise Premium and packs
+    // rely on the store and the local cache.
     final functions = ref.watch(functionsProvider);
-    if (functions == null) return null;
+    final uid = ref.watch(currentUidProvider);
+    if (functions == null || uid == null) return null;
     return FirebaseEntitlementBackend(
       call: callableOf(functions),
       firestore: ref.watch(firestoreProvider),
-      uid: ref.watch(currentUidProvider),
+      uid: uid,
     );
   }),
   familyBackendProvider.overrideWith((ref) {
