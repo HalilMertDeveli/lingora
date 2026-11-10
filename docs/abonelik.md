@@ -109,22 +109,22 @@ Kullanıcı ── satın al ──▶ Google Play ── purchaseStream ──�
                      Play Developer API ile doğrula     Mağazaya güven (yerel)
                      entitlements/{uid} yaz              süre: dönem + 3 gün
                                    │
-             { premium, status, productId, expiresAt } ──▶ yerel önbellek
+             { active, productId, expiresAt } ──▶ yerel önbellek
 ```
 
 1. **Satın alma**: Paywall `in_app_purchase` ile Google Play satın alma
    ekranını açar. Sonuç `purchaseStream` üzerinden gelir: `pending`
    (ör. havale/nakit onayı bekliyor), `purchased`, `restored`, `canceled`, `error`.
 2. **Doğrulama**: Firebase hazırsa (`entitlementBackendProvider` dolu) uygulama
-   satın alma token'ını `verifyPurchase` callable fonksiyonuna gönderir:
-   - Girdi: `{platform: 'android', productId, purchaseToken}` (uid, oturumdan alınır;
+   satın alma token'ını `verifyPurchase` callable fonksiyonuna (bölge `europe-west1`) gönderir:
+   - Girdi: `{productId, purchaseToken}` (uid, oturumdan alınır;
      girdiye asla güvenilmez).
    - Sunucu: `purchases.subscriptionsv2.get` ile Play'den sorgular, gerekirse
      onaylar (acknowledge), token'ı tek bir uid'ye bağlar (başka hesapta
      yeniden kullanılamaz) ve `entitlements/{uid}` belgesini yazar.
-   - Çıktı: `{premium, status: 'active'|'grace'|'pending'|'expired'|'invalid', productId, expiresAt (ms)}`.
+   - Çıktı: `{active, productId, expiresAt (ms)}`. Hatalar: `invalid-argument`, `already-exists` (token başka hesaba bağlı → Premium açılmaz, kullanıcıya söylenir), `unimplemented` (Play doğrulaması henüz kurulmadı → geçici olarak mağazaya güvenilir).
 3. **Firestore belgesi** `entitlements/{uid}`:
-   `{premium, status, productId, platform: 'android', expiresAt: Timestamp, updatedAt}`.
+   `{active, productId, expiresAt: Timestamp, source: 'play'|'test', updatedAt}`; Premium = `active && expiresAt > şimdi`.
    Yalnızca Cloud Functions yazar; kullanıcı yalnızca kendi belgesini okur
    (`firestore.rules`). Uygulama bu belgeyi dinler: başka cihazda giriş yapınca
    Premium oraya da gelir; sunucu iptal/iade görürse Premium kapanır.
@@ -137,7 +137,7 @@ Kullanıcı ── satın al ──▶ Google Play ── purchaseStream ──�
    onaylanmayan abonelik Google tarafından 3 gün içinde iade edilir.
 6. **Sunucuya ulaşılamazsa**: Kullanıcı mağazadan ödediyse cezalandırılmaz;
    yerel olarak açılır ve sonraki açılışta yeniden doğrulanır. Sunucu
-   açıkça `invalid` derse Premium açılmaz.
+   satın almayı açıkça reddederse (`active: false` ya da `already-exists`) Premium açılmaz.
 7. **Geri yükleme**: "Satın alımları geri yükle" Play'deki aktif abonelikleri
    yeniden getirir (yeni telefon, yeniden kurulum). Bulunamazsa bunu söyler.
 

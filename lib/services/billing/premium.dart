@@ -287,6 +287,16 @@ class PremiumController extends Notifier<PremiumState> {
           );
         }
         return;
+      } on EntitlementRejected catch (e) {
+        if (!ref.mounted) return;
+        state = state.copyWith(
+          busy: false,
+          pending: false,
+          error: () => e.code == 'already-exists'
+              ? 'Bu abonelik başka bir Lingora hesabına bağlı.'
+              : 'Satın alma doğrulanamadı. Ücret alındıysa "Satın alımları geri yükle"yi dene.',
+        );
+        return;
       } on Object {
         // Server unreachable: trust the store for now; the next restore
         // re-verifies.

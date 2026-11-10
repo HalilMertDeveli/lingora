@@ -69,12 +69,14 @@ class FakeBilling implements BillingService {
 class FakeBackend implements EntitlementBackend {
   FakeBackend(this.result);
   ServerEntitlement result;
+  Object? error;
   final verified = <String>[];
   final server = StreamController<ServerEntitlement?>.broadcast();
 
   @override
   Future<ServerEntitlement> verify({required String productId, required String purchaseToken}) async {
     verified.add(purchaseToken);
+    if (error case final e?) throw e;
     return result;
   }
 
@@ -245,6 +247,39 @@ void main() {
       await pumpEventQueue();
       expect(c.read(premiumProvider), isFalse);
       expect(c.read(prefsProvider).getString('premium.cache'), isNull);
+    });
+
+    test('parses the verifyPurchase output', () {
+      final e = ServerEntitlement.fromJson({
+        'active': true,
+        'productId': 'lingora_premium_yearly',
+        'expiresAt': now.add(const Duration(days: 365)).millisecondsSinceEpoch,
+      });
+      expect(e.premium, isTrue);
+      expect(e.status, 'active');
+      expect(e.activeAt(now), isTrue);
+      expect(e.activeAt(now.add(const Duration(days: 400))), isFalse);
+      expect(ServerEntitlement.fromJson({'active': false}).activeAt(now), isFalse);
+    });
+
+    test('a token bound to another account is refused', () async {
+      final backend = FakeBackend(const ServerEntitlement(premium: true, status: 'active'))
+        ..error = const EntitlementRejected('already-exists');
+      final c = await makeContainer(billing: FakeBilling(), backend: backend);
+      await c.read(premiumControllerProvider.notifier).buy(PremiumPlan.monthly);
+      await pumpEventQueue();
+      expect(c.read(premiumProvider), isFalse);
+      expect(c.read(premiumControllerProvider).error, contains('başka bir Lingora hesabına'));
+    });
+
+    test('server unreachable or not ready: the store is trusted for now', () async {
+      final backend = FakeBackend(const ServerEntitlement(premium: false, status: 'invalid'))
+        ..error = Exception('unimplemented');
+      final c = await makeContainer(billing: FakeBilling(), backend: backend);
+      await c.read(premiumControllerProvider.notifier).buy(PremiumPlan.monthly);
+      await pumpEventQueue();
+      expect(c.read(premiumProvider), isTrue);
+      expect(c.read(premiumControllerProvider).source, PremiumSource.store);
     });
 
     test('a purchase the server rejects does not unlock', () async {

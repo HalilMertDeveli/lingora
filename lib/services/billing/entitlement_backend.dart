@@ -12,19 +12,33 @@ class ServerEntitlement {
   final String? productId;
   final DateTime? expiresAt;
 
-  /// Output of the `verifyPurchase` callable:
-  /// `{premium, status, productId, expiresAt (ms since epoch | null)}`.
-  factory ServerEntitlement.fromJson(Map<String, Object?> j) => ServerEntitlement(
-    premium: j['premium'] == true,
-    status: (j['status'] as String?) ?? 'invalid',
-    productId: j['productId'] as String?,
-    expiresAt: switch (j['expiresAt']) {
-      final int ms => DateTime.fromMillisecondsSinceEpoch(ms),
-      _ => null,
-    },
-  );
+  /// Output of the `verifyPurchase` callable (europe-west1):
+  /// `{active, productId, expiresAt (ms since epoch)}`. `premium` and
+  /// `status` are accepted too.
+  factory ServerEntitlement.fromJson(Map<String, Object?> j) {
+    final premium = j['active'] == true || j['premium'] == true;
+    return ServerEntitlement(
+      premium: premium,
+      status: (j['status'] as String?) ?? (premium ? 'active' : 'expired'),
+      productId: j['productId'] as String?,
+      expiresAt: switch (j['expiresAt']) {
+        final int ms => DateTime.fromMillisecondsSinceEpoch(ms),
+        _ => null,
+      },
+    );
+  }
 
   bool activeAt(DateTime now) => premium && (expiresAt == null || expiresAt!.isAfter(now));
+}
+
+/// The server refused the purchase for good (e.g. `already-exists`: the
+/// token belongs to another account, or `invalid-argument`). Unlike network
+/// errors, the app must not fall back to trusting the store.
+class EntitlementRejected implements Exception {
+  const EntitlementRejected(this.code);
+  final String code;
+  @override
+  String toString() => 'EntitlementRejected($code)';
 }
 
 /// Server side of Premium. The Firebase implementation calls the
@@ -32,7 +46,9 @@ class ServerEntitlement {
 /// [entitlementBackendProvider] once Firebase is ready.
 abstract class EntitlementBackend {
   /// Verifies a Google Play purchase token server-side and returns the
-  /// resulting entitlement. Throws on network/server errors.
+  /// resulting entitlement. Throws [EntitlementRejected] when the server
+  /// refuses the purchase, anything else on network/server errors
+  /// (including `unimplemented`), after which the store is trusted for now.
   Future<ServerEntitlement> verify({required String productId, required String purchaseToken});
 
   /// The signed-in user's entitlement document (null when it doesn't exist).
