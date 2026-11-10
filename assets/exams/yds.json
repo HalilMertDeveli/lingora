@@ -245,12 +245,12 @@
      "options": [
       "can't",
       "must",
-      "needn't",
+      "may not",
       "shouldn't",
       "would rather"
      ],
      "answer": 1,
-     "explanation": "'Must have + V3' geçmişe yönelik güçlü bir çıkarımı anlatır: Belirtiler kaybolduğuna göre hasta ilacı almış olmalı. 'Can't have' (almış olamaz) kanıtla çelişir."
+     "explanation": "'Must have + V3' geçmişe yönelik güçlü bir çıkarımı anlatır: Belirtiler kaybolduğuna göre hasta ilacı almış olmalı. 'Can't have' (almış olamaz) ve 'may not have' (almamış olabilir) kanıtla çelişir."
     },
     {
      "id": "yds_grammar_006",
@@ -311,11 +311,11 @@
       "signed",
       "will sign",
       "sign",
-      "has signed",
+      "to sign",
       "signing"
      ],
      "answer": 2,
-     "explanation": "'It is essential/important that...' yapısından sonra 'subjunctive' kullanılır ve fiil yalın hâlde gelir: 'every participant sign'. Bu yapı resmî İngilizcede sık görülür."
+     "explanation": "'It is essential/important that...' yapısından sonra 'subjunctive' kullanılır ve fiil yalın hâlde gelir: 'every participant sign'. Bu yapı resmî İngilizcede sık görülür. 'That' cümleciğinde özneden sonra 'to sign' ya da 'signing' gelemez."
     },
     {
      "id": "yds_grammar_011",
@@ -482,7 +482,7 @@
     },
     {
      "id": "yds_conj_010",
-     "text": "Take an umbrella ---- it rains during the field trip.",
+     "text": "The research team carried spare batteries for their equipment ---- the power supply failed during the field study.",
      "options": [
       "unless",
       "so that",
@@ -491,7 +491,7 @@
       "despite"
      ],
      "answer": 3,
-     "explanation": "'In case' (-ir diye, ihtimaline karşı) önlem almayı anlatır: Yağmur yağar diye şemsiye al. 'So that it rains' yağmurun amaçlandığı gibi saçma bir anlam verir."
+     "explanation": "'In case' (-ir diye, ihtimaline karşı) önlem almayı anlatır: Araştırma ekibi, saha çalışması sırasında elektrik kesilir diye yanına yedek pil aldı. 'So that' elektrik kesintisinin amaçlandığı gibi saçma bir anlam verir; 'unless' ve 'whereas' mantık ilişkisini bozar, 'despite' tam cümle almaz."
     },
     {
      "id": "yds_conj_011",
@@ -504,7 +504,7 @@
       "either / or"
      ],
      "answer": 4,
-     "explanation": "'Either ... or' (ya ... ya da) iki seçenek sunar ve katılımcıların yöntem seçebilmesiyle uyumludur. 'Neither ... nor' (ne ... ne de) anketin hiç yapılmadığı anlamına gelir; diğer çiftler hatalı eşleşmedir."
+     "explanation": "'Either ... or' (ya ... ya da) iki seçenek sunar ve katılımcıların yöntem seçebilmesiyle uyumludur. 'Neither ... nor' (ne ... ne de) anketin ne çevrim içi ne de telefonla yapıldığı anlamına gelir ve katılımcıların yöntem seçebilmesiyle çelişir; diğer çiftler ('both / or', 'not only / and', 'whether / nor') hatalı eşleşmedir."
     },
     {
      "id": "yds_conj_012",
@@ -1018,7 +1018,7 @@
       "The region is famous for its agricultural production despite the drought."
      ],
      "answer": 3,
-     "explanation": "'Etkilemiştir' 'has affected' ile, 'ciddi şekilde' 'seriously' ile karşılanır. Neden kuraklık, etkilenen tarımsal üretimdir; ikinci seçenek bu ilişkiyi ters çevirir."
+     "explanation": "'Etkilemiştir' 'has affected' ile, 'ciddi şekilde' 'seriously' ile karşılanır. Neden kuraklık, etkilenen tarımsal üretimdir; A seçeneği bu ilişkiyi ters çevirir, B seçeneği ise zamanı geleceğe taşır ve kesinliği 'may' ile olasılığa çevirir."
     },
     {
      "id": "yds_translation_012",
@@ -1094,7 +1094,7 @@
       "Vitamins cannot be produced inside the human body."
      ],
      "answer": 2,
-     "explanation": "Son cümle antibiyotiklerin aşırı kullanımının yararlı bakterileri de öldürdüğünü söyler; buradan antibiyotiklerin dikkatli kullanılması gerektiği çıkarılabilir. Parça bakterilerin uzun süre hastalık nedeni olarak görüldüğünü belirttiği için ikinci seçenek yanlıştır."
+     "explanation": "Son cümle antibiyotiklerin aşırı kullanımının yararlı bakterileri de öldürdüğünü söyler; buradan antibiyotiklerin dikkatli kullanılması gerektiği çıkarılabilir. Parça bakterilerin uzun süre hastalık nedeni olarak görüldüğünü belirttiği için A seçeneği ('have always considered ... beneficial') yanlıştır; bitkisel beslenme bakteri sayısını azaltmaz, çeşitliliği artırır."
     },
     {
      "id": "yds_reading_005",

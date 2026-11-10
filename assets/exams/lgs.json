@@ -109,7 +109,7 @@
     },
     {
      "id": "lgs_vocab_009",
-     "text": "An ---- is a sudden and violent shaking of the ground.",
+     "text": "A(n) ---- is a sudden and violent shaking of the ground.",
      "options": [
       "flood",
       "avalanche",
@@ -188,7 +188,7 @@
     },
     {
      "id": "lgs_dialogue_004",
-     "text": "Kerem: I can't download this file. What should I do?\nMert: ----\nKerem: You're right. My connection was off. Thanks!",
+     "text": "Kerem: I can't download this file. What should I do?\nMert: ----\nKerem: You're right. My Wi-Fi was turned off. Thanks!",
      "options": [
       "Check your internet connection first.",
       "Buy a new computer.",
@@ -196,7 +196,7 @@
       "Send me your password."
      ],
      "answer": 0,
-     "explanation": "Kerem bağlantısının kapalı olduğunu fark ediyor; demek ki Mert ona önce internet bağlantısını kontrol etmesini önermiştir. Şifre paylaşmak ise güvenli değildir."
+     "explanation": "Kerem Wi-Fi'ının kapalı olduğunu fark ediyor; demek ki Mert ona önce internet bağlantısını kontrol etmesini önermiştir. Şifre paylaşmak ise güvenli değildir."
     },
     {
      "id": "lgs_dialogue_005",
