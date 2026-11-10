@@ -64,8 +64,11 @@ alanlar ekleyebilir. `leagues/*` ve `entitlements/*` istemci tarafından yazılm
 
 ## Emülatörle çalıştırma
 
+Emülatörler, kurallar ve Cloud Functions sunucu tarafındadır (`firebase.json`, `.firebaserc`, `functions/`);
+ayrıntılar için `docs/firebase-backend.md`. Kısaca:
+
 ```bash
-firebase emulators:start --project demo-lingora
+cd functions && npm run serve
 ```
 
 ```bash
