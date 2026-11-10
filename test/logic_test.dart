@@ -10,6 +10,7 @@ import 'package:lingora/data/league.dart';
 import 'package:lingora/data/notes_practice.dart';
 import 'package:lingora/data/practice.dart';
 import 'package:lingora/data/progress.dart';
+import 'package:lingora/data/dev_scenarios.dart';
 import 'package:lingora/data/scenarios.dart';
 import 'package:lingora/data/quests.dart';
 import 'package:lingora/models/course.dart';
@@ -234,7 +235,7 @@ void main() {
     test('app and server know the same scenarios', () {
       final server = File('functions/src/scenarios.ts').readAsStringSync();
       final ids = RegExp(r'^  (\w+): \{', multiLine: true).allMatches(server).map((m) => m[1]).toSet();
-      expect(ids, scenarios.map((s) => s.id).toSet());
+      expect(ids, {...scenarios.map((s) => s.id), ...devScenarios.map((s) => s.id)});
     });
 
     test('demo corrects typical Turkish-speaker mistakes', () async {

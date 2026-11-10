@@ -20,6 +20,7 @@ import 'lesson_result_screen.dart';
 import 'grammar_path_screen.dart';
 import 'lesson_screen.dart';
 import 'reading_screen.dart';
+import 'vocab/word_list_screen.dart';
 
 Color get _notesColor => Brand.tone(const Color(0xFF2F80ED));
 
@@ -134,6 +135,13 @@ class _NotesHome extends ConsumerWidget {
           title: 'Sözlüğüm',
           subtitle: '${words.length} kelime, konulara göre, hafıza hikâyelerinle',
           onTap: () => _push(context, WordListScreen(notes: notes)),
+        ),
+        _BigAction(
+          icon: Icons.code_rounded,
+          color: const Color(0xFF0F766E),
+          title: 'Notlarındaki yazılım kelimeleri',
+          subtitle: 'Yazılımcı İngilizcesi kartlarıyla: örnek commit, PR ve stand-up cümleleri',
+          onTap: () => _push(context, const NotesSoftwareWordsScreen()),
         ),
         _BigAction(
           icon: Icons.edit_note_rounded,

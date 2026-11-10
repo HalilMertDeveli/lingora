@@ -41,6 +41,7 @@ flutter:
     - assets/pronunciation/
     - assets/reading/
     - assets/placement/
+    - assets/vocab/
 
   # Inter (SIL OFL 1.1, assets/fonts/Inter-OFL.txt). "LingoraSans" is the
   # adult-mode family: the heavy weights map to Bold so headings stay calm.

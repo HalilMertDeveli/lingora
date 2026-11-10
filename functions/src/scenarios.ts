@@ -45,6 +45,55 @@ export const SCENARIOS: Record<string, ScenarioPrompt> = {
     goal: "The patient describes the problem, says how long it has lasted and asks about the medicine.",
     level: "A2",
   },
+  // Yazılımcı İngilizcesi (lib/data/dev_scenarios.dart): workplace English for software developers.
+  dev_standup: {
+    partner: "a friendly team lead running the daily stand-up of a software team",
+    setting: "A short online daily stand-up meeting. The learner is a developer on the team.",
+    goal: "The developer says what they did yesterday, what they will do today and whether anything blocks them.",
+    level: "B1",
+  },
+  dev_code_review: {
+    partner: "a teammate who opened a pull request and wants feedback",
+    setting: "A code review chat. The learner reviewed the teammate's pull request, which opens a new database connection on every request.",
+    goal: "The reviewer politely points out the problem, explains why it matters and suggests a fix.",
+    level: "B1",
+  },
+  dev_bug_ticket: {
+    partner: "a QA engineer reading a new bug ticket",
+    setting: "A bug tracker discussion. The checkout page resets the cart total to zero after a coupon code is entered. The learner wrote the ticket.",
+    goal: "The developer explains the steps to reproduce, the expected result and the actual result.",
+    level: "B1",
+  },
+  dev_commit: {
+    partner: "a senior developer reading the git history",
+    setting: "A quick chat about the learner's latest commit, which fixes a crash when a profile photo upload is cancelled.",
+    goal: "The developer summarizes the change in a short imperative commit message and explains why the change was needed.",
+    level: "B1",
+  },
+  dev_pr_description: {
+    partner: "a teammate assigned to review the learner's pull request",
+    setting: "A pull request that adds dark mode to a mobile app. The learner is the author.",
+    goal: "The author explains what the pull request changes, why, and how to test it.",
+    level: "B1",
+  },
+  dev_team_chat: {
+    partner: "a helpful backend developer in the team chat",
+    setting: "A team chat channel. The staging /orders endpoint returns 401 for the learner's test user.",
+    goal: "The learner gives context, says what they already tried and asks a clear question.",
+    level: "B1",
+  },
+  dev_interview_intro: {
+    partner: "an engineering manager running a technical interview",
+    setting: "The first minutes of a technical job interview for a software developer role. The learner is the candidate.",
+    goal: "The candidate describes their experience, main technologies, a project they are proud of and why they want the role.",
+    level: "B1",
+  },
+  dev_estimate: {
+    partner: "a product manager planning the next release",
+    setting: "A planning chat about adding push notifications to a mobile app. The learner is the developer.",
+    goal: "The developer gives a time estimate, states their assumptions and names the main risk.",
+    level: "B1",
+  },
 };
 
 /** Fixed per scenario, so the prompt prefix stays cacheable. */

@@ -137,6 +137,47 @@ class DemoConversationService implements ConversationService {
       'Do you have a fever as well?',
       'Take this medicine twice a day after meals. You should rest.',
     ],
+    // Yazılımcı İngilizcesi (lib/data/dev_scenarios.dart)
+    'dev_standup': [
+      'Thanks. And what are you planning to work on today?',
+      'Got it. Is anything blocking you?',
+      "Okay, let's sync after the meeting. Thanks, everyone!",
+    ],
+    'dev_code_review': [
+      'Good catch. Why do you think it matters here?',
+      'Makes sense. What would you suggest instead?',
+      "Great idea, I'll update the PR this afternoon. Thanks for the review!",
+    ],
+    'dev_bug_ticket': [
+      'Thanks. What did you expect to happen?',
+      'And what actually happened? Does it happen every time?',
+      "Perfect, I can reproduce it now. I'll add it to this sprint.",
+    ],
+    'dev_commit': [
+      'Okay. How would you write that as a short commit title?',
+      'Nice and clear. Why was the change needed?',
+      'Great, that will help whoever reads the log later. Thanks!',
+    ],
+    'dev_pr_description': [
+      'Sounds good. Why did we need this change?',
+      'Got it. How should I test it?',
+      "Thanks, that's a clear description. I'll start the review now.",
+    ],
+    'dev_team_chat': [
+      'Hmm, what have you already tried?',
+      'Okay. Which user and environment are you using?',
+      'Ah, you need the new orders:read permission. I just added it, try again!',
+    ],
+    'dev_interview_intro': [
+      'Interesting. Which technologies do you mostly work with?',
+      "Tell me about a project you're proud of.",
+      'Great. Why are you interested in this role?',
+    ],
+    'dev_estimate': [
+      'Okay. What are you assuming in that estimate?',
+      'And what is the biggest risk?',
+      "Thanks, that's very helpful for planning the release.",
+    ],
   };
 
   /// Ordering a drink or snack: "I want coffee" is not wrong, just blunt.

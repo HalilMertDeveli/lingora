@@ -14,6 +14,7 @@ import 'notes_screen.dart';
 import 'path_screen.dart';
 import 'profile_screen.dart';
 import 'quests_screen.dart';
+import 'vocab/vocab_home_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -67,6 +68,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           switch (track.kind) {
             TrackKind.exam => ExamHomeScreen(key: ValueKey(track.id), examId: track.id),
             TrackKind.notes => const NotesHomeScreen(),
+            TrackKind.vocab => const VocabHomeScreen(),
             TrackKind.course => const PathScreen(),
           },
           const ConversationHomeScreen(),
@@ -223,6 +225,7 @@ class _TrackPicker extends ConsumerWidget {
             const SizedBox(height: 14),
             const _SectionLabel('KURSLAR'),
             for (final t in courseCatalog) tile(t),
+            for (final t in vocabCatalog) tile(t),
             const SizedBox(height: 8),
             const _SectionLabel('SINAVLARA HAZIRLIK'),
             for (final t in examCatalog) tile(t),
