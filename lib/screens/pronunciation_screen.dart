@@ -117,7 +117,7 @@ class _UnitTile extends StatelessWidget {
     ),
     child: Row(
       children: [
-        Text(unit.emoji, style: const TextStyle(fontSize: 32)),
+        IconBadge(icon: Icons.graphic_eq_rounded, emoji: unit.emoji, color: _coachColor, size: 42),
         const SizedBox(width: 12),
         Expanded(
           child: Column(
@@ -431,7 +431,9 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
     children: [
       Row(
         children: [
-          PopIn(child: Text(u.emoji, style: const TextStyle(fontSize: 56))),
+          PopIn(
+            child: IconBadge(icon: Icons.graphic_eq_rounded, emoji: u.emoji, color: _coachColor, size: 64),
+          ),
           const SizedBox(width: 12),
           Expanded(child: _title('SES  ${u.sound}', u.title)),
         ],

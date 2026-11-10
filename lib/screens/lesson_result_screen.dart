@@ -50,7 +50,9 @@ class LessonResultScreen extends StatelessWidget {
                   delay: const Duration(milliseconds: 150),
                   child: Text(
                     headline ?? (perfect ? 'Kusursuz ders!' : 'Ders tamamlandı!'),
-                    style: t.headlineSmall?.copyWith(color: perfect ? Brand.accent : Brand.primary),
+                    style: t.headlineSmall?.copyWith(
+                      color: !Brand.isKid ? Brand.ink : (perfect ? Brand.accent : Brand.primary),
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),

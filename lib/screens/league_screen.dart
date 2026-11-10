@@ -95,7 +95,12 @@ class _TierStrip extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 6),
           child: Opacity(
             opacity: i <= current ? 1 : 0.3,
-            child: Text(leagueTiers[i].emoji, style: TextStyle(fontSize: i == current ? 34 : 24)),
+            child: Glyph(
+              emoji: leagueTiers[i].emoji,
+              icon: Icons.military_tech_rounded,
+              size: i == current ? 34 : 24,
+              color: leagueTiers[i].color,
+            ),
           ),
         ),
     ],
@@ -182,7 +187,10 @@ class _Row extends StatelessWidget {
 Future<void> showLeagueResult(BuildContext context, LeagueResult r) {
   final tier = leagueTiers[r.newTier];
   final (title, body) = r.promoted
-      ? ('${tier.emoji} Terfi ettin!', 'Geçen haftayı ${r.rank}. bitirdin ve ${tier.name} Ligine yükseldin.')
+      ? (
+          '${kidEmoji(tier.emoji)}Terfi ettin!',
+          'Geçen haftayı ${r.rank}. bitirdin ve ${tier.name} Ligine yükseldin.',
+        )
       : r.demoted
       ? ('Alt lige düştün', 'Geçen haftayı ${r.rank}. bitirdin. Bu hafta ${tier.name} Liginde yeniden dene!')
       : ('Hafta bitti', 'Geçen haftayı ${r.rank}. bitirdin ve ${tier.name} Liginde kaldın.');

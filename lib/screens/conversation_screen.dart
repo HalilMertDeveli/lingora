@@ -73,7 +73,7 @@ class ConversationHomeScreen extends ConsumerWidget {
               onTap: () => openConversation(context, ref, s),
               child: Row(
                 children: [
-                  Text(s.emoji, style: const TextStyle(fontSize: 34)),
+                  IconBadge(icon: scenarioIcon(s.id), emoji: s.emoji, size: 44),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
@@ -301,7 +301,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     final s = widget.scenario;
     return Scaffold(
       appBar: AppBar(
-        title: Text('${s.emoji} ${s.title}'),
+        title: Text('${kidEmoji(s.emoji)}${s.title}'),
         actions: [TextButton(onPressed: _finish, child: const Text('Bitir'))],
       ),
       body: SafeArea(
@@ -464,3 +464,14 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     );
   }
 }
+
+/// Adult-mode icon for a role-play scenario (kid mode shows its emoji).
+IconData scenarioIcon(String id) => switch (id) {
+  'cafe' => Icons.local_cafe_outlined,
+  'hotel_checkin' => Icons.hotel_outlined,
+  'restaurant_guest' => Icons.restaurant_outlined,
+  'directions' => Icons.map_outlined,
+  'interview' => Icons.work_outline_rounded,
+  'doctor' => Icons.medical_services_outlined,
+  _ => Icons.forum_outlined,
+};

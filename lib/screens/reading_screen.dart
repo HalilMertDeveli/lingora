@@ -125,7 +125,7 @@ class ReadingLibraryScreen extends ConsumerWidget {
                     .push(MaterialPageRoute<void>(builder: (_) => StoryReaderScreen(story: s))),
             child: Row(
               children: [
-                Text(s.emoji, style: const TextStyle(fontSize: 30)),
+                IconBadge(icon: Icons.menu_book_outlined, emoji: s.emoji, color: _readColor, size: 42),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(
@@ -241,7 +241,7 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
       children: [
         Row(
           children: [
-            Text(s.emoji, style: const TextStyle(fontSize: 34)),
+            IconBadge(icon: Icons.menu_book_outlined, emoji: s.emoji, color: _readColor, size: 48),
             const SizedBox(width: 10),
             Expanded(
               child: Column(

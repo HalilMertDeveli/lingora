@@ -75,7 +75,8 @@ class _PressableButtonState extends State<PressableButton> {
     final p = lt.palette;
     final enabled = widget.onPressed != null;
     final base = widget.color ?? p.primary;
-    final onBase = widget.foreground ?? (widget.color == null ? p.onPrimary : Colors.white);
+    final onBase =
+        widget.foreground ?? (widget.color == null ? p.onPrimary : (lt.isKid ? Colors.white : onColor(base)));
     final disabledFace = p.isDark ? p.surface : p.line;
     final disabledFg = p.muted;
     final kid = lt.isKid;

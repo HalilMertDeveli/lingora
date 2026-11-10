@@ -973,7 +973,7 @@ class _GrammarPathCard extends ConsumerWidget {
             const SizedBox(height: 10),
             Row(
               children: [
-                Text(next.emoji, style: const TextStyle(fontSize: 20)),
+                Glyph(emoji: next.emoji, icon: Icons.play_lesson_outlined, size: 22),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text('Sıradaki: ${next.title}', style: const TextStyle(fontWeight: FontWeight.w700)),
