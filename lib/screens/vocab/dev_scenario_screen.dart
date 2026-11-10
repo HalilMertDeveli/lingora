@@ -22,7 +22,7 @@ class DevScenarioListScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
         children: [
-          const Text(
+          Text(
             'Yaz, Türk hata dedektörüyle kontrol et, örnek cevapla karşılaştır. Ücretsiz. '
             'İstersen aynı senaryoyu yapay zekâyla canlı konuşarak da çalışabilirsin (Premium).',
             style: TextStyle(color: Brand.muted),
@@ -42,12 +42,12 @@ class DevScenarioListScreen extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(s.scenario.title, style: Theme.of(context).textTheme.titleMedium),
-                          Text(s.scenario.goal, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                          Text(s.scenario.goal, style: TextStyle(color: Brand.muted, fontSize: 13)),
                         ],
                       ),
                     ),
                     if (p.isDone(devScenarioNodeId(s.id)))
-                      const Icon(Icons.check_circle_rounded, color: Brand.success),
+                      Icon(Icons.check_circle_rounded, color: Brand.success),
                   ],
                 ),
               ),
@@ -106,7 +106,7 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
         children: [
           Text(s.task, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, height: 1.35)),
           const SizedBox(height: 12),
-          const Text(
+          Text(
             'İŞE YARAYAN KALIPLAR',
             style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1),
           ),
@@ -123,7 +123,7 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
                     ),
                     TextSpan(
                       text: '  ${ph.tr}',
-                      style: const TextStyle(color: Brand.muted),
+                      style: TextStyle(color: Brand.muted),
                     ),
                   ],
                 ),
@@ -157,7 +157,7 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
                 child: WhyWrongSection(errors: _errors!, maxErrors: 5),
               ),
             const SizedBox(height: 12),
-            const Text(
+            Text(
               'KONTROL LİSTESİ',
               style: TextStyle(
                 color: Brand.muted,
@@ -199,7 +199,7 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
                   const SizedBox(height: 6),
                   Text(s.modelAnswer, key: const Key('modelAnswer'), style: const TextStyle(height: 1.4)),
                   const SizedBox(height: 6),
-                  Text(s.modelAnswerTr, style: const TextStyle(color: Brand.muted, height: 1.35)),
+                  Text(s.modelAnswerTr, style: TextStyle(color: Brand.muted, height: 1.35)),
                 ],
               ),
             ),

@@ -182,7 +182,7 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
         ),
         if (card.sub != null) ...[
           const SizedBox(height: 6),
-          Text(card.sub!, style: const TextStyle(color: Brand.muted, fontSize: 15)),
+          Text(card.sub!, style: TextStyle(color: Brand.muted, fontSize: 15)),
         ],
         const SizedBox(height: 20),
         if (card.isTyping) ...[
@@ -242,7 +242,7 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
               color: ok ? Brand.success : Brand.error,
             ),
           ),
-          if (!ok) Text('${e.word} = ${e.tr}', style: const TextStyle(color: Brand.ink)),
+          if (!ok) Text('${e.word} = ${e.tr}', style: TextStyle(color: Brand.ink)),
           if (e.tip != null && !ok) ...[
             const SizedBox(height: 6),
             Text('💡 ${e.tip}', style: const TextStyle(fontSize: 13)),

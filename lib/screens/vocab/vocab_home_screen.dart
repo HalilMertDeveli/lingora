@@ -178,7 +178,7 @@ class KnowledgeMap extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 4),
-                    Text(statusLabels[s]!, style: const TextStyle(fontSize: 12, color: Brand.muted)),
+                    Text(statusLabels[s]!, style: TextStyle(fontSize: 12, color: Brand.muted)),
                   ],
                 ),
             ],
@@ -207,7 +207,7 @@ class _BandRow extends StatelessWidget {
             width: 68,
             child: Text(
               '${band.from}–${band.to}',
-              style: const TextStyle(fontSize: 12, color: Brand.muted, fontWeight: FontWeight.w700),
+              style: TextStyle(fontSize: 12, color: Brand.muted, fontWeight: FontWeight.w700),
             ),
           ),
           for (var i = 0; i < blocks; i++)
@@ -269,7 +269,7 @@ class _Action extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title, style: Theme.of(context).textTheme.titleMedium),
-                  Text(subtitle, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                  Text(subtitle, style: TextStyle(color: Brand.muted, fontSize: 13)),
                 ],
               ),
             ),
@@ -313,7 +313,7 @@ class _TopicTile extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(topic.name, style: Theme.of(context).textTheme.titleMedium),
-                  Text(topic.description, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                  Text(topic.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
                   const SizedBox(height: 6),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(4),

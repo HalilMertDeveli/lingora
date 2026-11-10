@@ -51,11 +51,11 @@ class _VocabWordListScreenState extends ConsumerState<VocabWordListScreen> {
               leading: CircleAvatar(radius: 6, backgroundColor: statusColors[vocabStatus(e, p)]),
               title: Text(e.word, style: const TextStyle(fontWeight: FontWeight.w800)),
               subtitle: Text(e.tr),
-              trailing: Text('#${e.rank}', style: const TextStyle(color: Brand.muted)),
+              trailing: Text('#${e.rank}', style: TextStyle(color: Brand.muted)),
               onTap: () => showVocabEntry(context, e),
             ),
           if (list.isEmpty)
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(24),
               child: Center(
                 child: Text('Sonuç yok', style: TextStyle(color: Brand.muted)),
@@ -96,12 +96,7 @@ class VocabEntryDetails extends StatelessWidget {
       padding: const EdgeInsets.only(top: 14, bottom: 6),
       child: Text(
         title,
-        style: const TextStyle(
-          color: Brand.muted,
-          fontWeight: FontWeight.w900,
-          fontSize: 12,
-          letterSpacing: 1,
-        ),
+        style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1),
       ),
     );
     return Column(
@@ -115,7 +110,7 @@ class VocabEntryDetails extends StatelessWidget {
         ),
         Text(
           '${e.posTr} · ${e.topic} · #${e.rank}${e.fromNotes ? ' · 📒 notlarında' : ''}',
-          style: const TextStyle(color: Brand.muted),
+          style: TextStyle(color: Brand.muted),
         ),
         section('ANLAMLAR'),
         for (final s in e.senses)
@@ -127,7 +122,7 @@ class VocabEntryDetails extends StatelessWidget {
                 Text(s.tr, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
                 Text(
                   s.def,
-                  style: const TextStyle(color: Brand.muted, fontStyle: FontStyle.italic),
+                  style: TextStyle(color: Brand.muted, fontStyle: FontStyle.italic),
                 ),
               ],
             ),
@@ -144,7 +139,7 @@ class VocabEntryDetails extends StatelessWidget {
                   style: const TextStyle(fontSize: 12, color: vocabColor, fontWeight: FontWeight.w800),
                 ),
                 Text(x.en, style: const TextStyle(fontSize: 15)),
-                Text(x.tr, style: const TextStyle(color: Brand.muted)),
+                Text(x.tr, style: TextStyle(color: Brand.muted)),
               ],
             ),
           ),
@@ -192,7 +187,7 @@ class NotesSoftwareWordsScreen extends ConsumerWidget {
         data: (v) => VocabWordListScreen(
           title: 'Notlarındaki yazılım kelimeleri',
           entries: v.entries.where((e) => e.fromNotes).toList(),
-          header: const Text(
+          header: Text(
             'Notion sözlüğündeki yazılım kelimelerin, Yazılımcı İngilizcesi kartlarıyla: anlamlar, '
             'commit/PR örnekleri, eşdizimler ve ipuçları.',
             style: TextStyle(color: Brand.muted),

@@ -80,14 +80,14 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
               child: Column(
                 children: [
                   const SizedBox(height: 8),
-                  Text('#${e.rank} · ${e.topic}', style: const TextStyle(color: Brand.muted)),
+                  Text('#${e.rank} · ${e.topic}', style: TextStyle(color: Brand.muted)),
                   const SizedBox(height: 16),
                   Text(
                     e.word,
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 32, fontWeight: FontWeight.w900),
                   ),
-                  Text(e.posTr, style: const TextStyle(color: Brand.muted)),
+                  Text(e.posTr, style: TextStyle(color: Brand.muted)),
                   const SizedBox(height: 12),
                   SpeakerButton(text: e.word),
                   const SizedBox(height: 16),
@@ -107,14 +107,14 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                     Text(
                       e.examples.first.tr,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(color: Brand.muted),
+                      style: TextStyle(color: Brand.muted),
                     ),
                     if (e.tip != null) ...[
                       const SizedBox(height: 12),
                       Text('💡 ${e.tip}', textAlign: TextAlign.center, style: const TextStyle(fontSize: 13)),
                     ],
                   ] else
-                    const Text('Anlamı görmek için dokun', style: TextStyle(color: Brand.muted)),
+                    Text('Anlamı görmek için dokun', style: TextStyle(color: Brand.muted)),
                 ],
               ),
             ),
@@ -159,7 +159,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
       Text(
         '$_known biliyorum · ${_learn.length} öğreneceğim · $_later sonra',
         textAlign: TextAlign.center,
-        style: const TextStyle(color: Brand.muted),
+        style: TextStyle(color: Brand.muted),
       ),
       const SizedBox(height: 24),
       if (_learn.isNotEmpty)
