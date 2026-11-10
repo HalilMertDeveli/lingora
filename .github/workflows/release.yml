@@ -32,7 +32,7 @@ jobs:
         uses: android-actions/setup-android@v4
 
       - name: Install Android platform 37
-        run: sdkmanager --install "platforms;android-37" "platform-tools"
+        run: sdkmanager --install "platforms;android-37.0" "platform-tools"
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2.23.0
