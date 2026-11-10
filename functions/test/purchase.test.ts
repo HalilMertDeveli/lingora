@@ -59,3 +59,35 @@ test("production mode is not implemented yet", async () => {
   );
   assert.equal((await db.doc("entitlements/u").get()).exists, false);
 });
+
+test("exam packs are stored next to Premium and survive Premium writes", async () => {
+  const pack = await verifyPurchase(db, "u", { productId: "lingora_pack_yds_full", purchaseToken: token }, test_);
+  assert.equal(pack.active, false);
+  assert.deepEqual(pack.packs, { yds: true });
+  assert.equal(pack.expiresAt, undefined);
+  let e = (await db.doc("entitlements/u").get()).data()!;
+  assert.deepEqual(e.packs, { yds: true });
+  assert.equal(e.active, undefined);
+
+  const sub = await verifyPurchase(
+    db,
+    "u",
+    { productId: "lingora_premium_monthly", purchaseToken: "monthly-token-1" },
+    test_,
+  );
+  assert.equal(sub.active, true);
+  assert.deepEqual(sub.packs, { yds: true });
+  const lgs = await verifyPurchase(db, "u", { productId: "lingora_pack_lgs_full", purchaseToken: "lgs-token-1" }, test_);
+  assert.equal(lgs.active, true);
+  assert.equal(lgs.expiresAt, sub.expiresAt);
+  e = (await db.doc("entitlements/u").get()).data()!;
+  assert.deepEqual(e.packs, { yds: true, lgs: true });
+  assert.equal(e.active, true);
+  assert.equal(e.productId, "lingora_premium_monthly");
+});
+
+test("a shorter purchase never shortens a longer Premium", async () => {
+  const y = await verifyPurchase(db, "u", { productId: "lingora_premium_yearly", purchaseToken: "y-token-123" }, test_);
+  const m = await verifyPurchase(db, "u", { productId: "lingora_premium_monthly", purchaseToken: token }, test_);
+  assert.equal(m.expiresAt, y.expiresAt);
+});

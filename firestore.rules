@@ -55,7 +55,9 @@ service cloud.firestore {
       allow write: if false;
     }
 
-    // Premium status. Written only by verifyPurchase.
+    // Premium, exam packs and family membership. Written only by Cloud
+    // Functions (verifyPurchase, family callables). families/{ownerUid} and
+    // familyCodes/{code} are server-only (catch-all below).
     match /entitlements/{uid} {
       allow read: if isOwner(uid);
       allow write: if false;

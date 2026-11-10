@@ -10,6 +10,7 @@ import '../ui/appearance.dart';
 import 'account_section.dart';
 import 'error_analysis_screen.dart';
 import 'growth_profile_section.dart';
+import 'family_screen.dart';
 import 'onboarding_screen.dart';
 import 'paywall_screen.dart';
 import 'placement_screen.dart';
@@ -103,7 +104,17 @@ class ProfileScreen extends ConsumerWidget {
             ],
           ),
         ),
-        const SizedBox(height: 24),
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextButton.icon(
+            key: const ValueKey('profile-family'),
+            onPressed: () =>
+                Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const FamilyScreen())),
+            icon: const Icon(Icons.family_restroom_rounded, size: 18),
+            label: const Text('Aile planı'),
+          ),
+        ),
+        const SizedBox(height: 12),
         Text('Son 7 gün', style: t.titleLarge),
         const SizedBox(height: 12),
         TapCard(
