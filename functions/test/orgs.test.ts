@@ -132,6 +132,28 @@ test("a longer store subscription is not shortened by the org", async () => {
   assert.equal(e.expiresAt.toMillis(), far.toMillis());
 });
 
+test("org grants merge: other writers' fields (exam packs) survive join and leave", async () => {
+  const { classCode } = await setup();
+  await db.doc("entitlements/ali").set({ packs: { yds: true } });
+  await joinOrg(db, u("ali"), { code: classCode, displayName: "Ali" }, now);
+  assert.deepEqual((await ent("ali"))!.packs, { yds: true });
+  assert.equal((await ent("ali"))!.source, "org");
+  await leaveOrg(db, u("ali"), {}, now);
+  assert.deepEqual((await ent("ali"))!.packs, { yds: true });
+  assert.equal((await ent("ali"))!.active, false);
+});
+
+test("leaving does not touch Premium that another source took over", async () => {
+  const { classCode } = await setup();
+  await joinOrg(db, u("ali"), { code: classCode, displayName: "Ali" }, now);
+  const far = Timestamp.fromMillis(now.getTime() + 300 * DAY);
+  await db.doc("entitlements/ali").set({ source: "family", expiresAt: far, family: { ownerUid: "mom" } }, { merge: true });
+  await leaveOrg(db, u("ali"), {}, now);
+  const e = (await ent("ali"))!;
+  assert.equal(e.active, true);
+  assert.equal(e.source, "family");
+});
+
 test("leaving and removal free the seat and end the org Premium", async () => {
   const { orgId, classCode } = await setup();
   await joinOrg(db, u("ali"), { code: classCode, displayName: "Ali" }, now);
