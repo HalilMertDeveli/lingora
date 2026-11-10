@@ -78,6 +78,24 @@ service cloud.firestore {
       }
     }
 
+    // ---- Lingora Kurumsal (functions/src/orgs.ts, docs/kurumsal.md) ----
+    // Org data is read and written only through the org* callables, which
+    // filter the progress report (KVKK: no diary, notes or chats). A user may
+    // read which org they belong to.
+    match /memberships/{uid} {
+      allow read: if isOwner(uid);
+      allow write: if false;
+    }
+
+    match /orgs/{orgId}/{document=**} {
+      allow read, write: if false;
+    }
+
+    match /orgCodes/{code} {
+      allow read, write: if false;
+    }
+    // ---- end Lingora Kurumsal ----
+
     // Everything else (quotas, purchase tokens, counters) is server-only.
     match /{document=**} {
       allow read, write: if false;
