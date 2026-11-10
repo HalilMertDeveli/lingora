@@ -9,6 +9,7 @@ import '../services/speech.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import 'pronunciation_screen.dart';
 
 const conversationXp = 15;
 
@@ -41,6 +42,8 @@ class ConversationHomeScreen extends ConsumerWidget {
             ),
           ],
         ),
+        const SizedBox(height: 12),
+        const PronunciationEntryCard(),
         const SizedBox(height: 12),
         if (!live)
           Container(
