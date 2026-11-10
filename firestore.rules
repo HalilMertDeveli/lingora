@@ -14,18 +14,18 @@ service cloud.firestore {
     }
 
     // Progress snapshot synced by the app (lib/services/firebase/progress_sync.dart):
-    // {schema, progress, totalXp, displayName, clientUpdatedAt, updatedAt}.
+    // {schemaVersion, progress, totalXp, displayName, clientUpdatedAt, updatedAt}.
     // Progress.toJson() has ~25 keys today; 60 leaves room to grow. The 1 MiB
     // document limit caps the total size.
     function validUserDoc() {
       let d = request.resource.data;
-      return d.keys().hasOnly(['schema', 'progress', 'totalXp', 'displayName', 'clientUpdatedAt', 'updatedAt'])
+      return d.keys().hasOnly(['schemaVersion', 'progress', 'totalXp', 'displayName', 'clientUpdatedAt', 'updatedAt'])
         && d.keys().hasAll(['progress', 'updatedAt'])
         && d.progress is map
         && d.progress.size() <= 60
         && d.updatedAt is timestamp
         && d.updatedAt == request.time
-        && (!('schema' in d) || (d.schema is int && d.schema >= 1 && d.schema <= 1000))
+        && (!('schemaVersion' in d) || (d.schemaVersion is int && d.schemaVersion >= 1 && d.schemaVersion <= 1000))
         && (!('totalXp' in d) || (d.totalXp is int && d.totalXp >= 0))
         && (!('clientUpdatedAt' in d) || d.clientUpdatedAt is int)
         && (!('displayName' in d) || d.displayName == null

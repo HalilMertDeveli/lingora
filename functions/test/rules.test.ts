@@ -51,7 +51,7 @@ const db = (uid?: string) => (uid ? env.authenticatedContext(uid).firestore() : 
 
 // Same fields as lib/services/firebase/progress_sync.dart writes.
 const progressDoc = () => ({
-  schema: 1,
+  schemaVersion: 1,
   progress: { totalXp: 10, streak: 2 },
   totalXp: 10,
   displayName: null,
@@ -85,7 +85,7 @@ test("users: shape and size are validated", async () => {
   await assertFails(setDoc(ref, { progress: "x", updatedAt: serverTimestamp() }));
   await assertFails(setDoc(ref, { progress: {}, updatedAt: Timestamp.fromMillis(0) })); // client clock
   await assertFails(setDoc(ref, { ...progressDoc(), displayName: "x".repeat(41) }));
-  await assertFails(setDoc(ref, { ...progressDoc(), schema: "1" }));
+  await assertFails(setDoc(ref, { ...progressDoc(), schemaVersion: "1" }));
   await assertFails(setDoc(ref, { ...progressDoc(), totalXp: -5 }));
   await assertFails(setDoc(ref, { ...progressDoc(), clientUpdatedAt: "now" }));
   const big: Record<string, number> = {};
