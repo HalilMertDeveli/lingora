@@ -123,6 +123,13 @@ void main() {
     });
   });
 
+  test('display name fits the 40-character rule', () {
+    expect(shortDisplayName(null), isNull);
+    expect(shortDisplayName('  '), isNull);
+    expect(shortDisplayName(' Ayşe '), 'Ayşe');
+    expect(shortDisplayName('x' * 50)!.length, 40);
+  });
+
   test('FirebaseMode parsing defaults to off', () {
     expect(FirebaseMode.parse(null), FirebaseMode.off);
     expect(FirebaseMode.parse(''), FirebaseMode.off);

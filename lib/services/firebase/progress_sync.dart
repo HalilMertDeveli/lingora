@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart' show StringCharacters;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/progress.dart';
@@ -160,7 +161,7 @@ class ProgressSync extends Notifier<SyncStatus> {
         'schemaVersion': userDocSchema,
         'progress': p.toJson(),
         'totalXp': p.totalXp,
-        'displayName': ref.read(authStateProvider).value?.displayName,
+        'displayName': shortDisplayName(ref.read(authStateProvider).value?.displayName),
         'clientUpdatedAt': _localUpdatedAt,
         'updatedAt': FieldValue.serverTimestamp(),
       }, SetOptions(mergeFields: userDocFields));
@@ -179,3 +180,11 @@ class ProgressSync extends Notifier<SyncStatus> {
 }
 
 final progressSyncProvider = NotifierProvider<ProgressSync, SyncStatus>(ProgressSync.new);
+
+/// Firestore rules accept a display name of at most 40 characters (or null).
+String? shortDisplayName(String? name) {
+  final t = name?.trim();
+  if (t == null || t.isEmpty) return null;
+  final chars = t.characters;
+  return chars.length <= 40 ? t : chars.take(40).toString().trimRight();
+}
