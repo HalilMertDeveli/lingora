@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/tr_errors.dart';
+import '../models/notes.dart';
 import 'catalog.dart';
 import 'league.dart';
 import 'quests.dart';
@@ -43,6 +44,7 @@ class Progress {
     this.wordDue = const {},
     this.diary = const {},
     this.errorStats = const {},
+    this.customWords = const [],
   });
 
   /// Selected course or exam (see catalog.dart).
@@ -72,6 +74,10 @@ class Progress {
     ]..sort((a, b) => b.$2.compareTo(a.$2));
     return list.take(count).toList();
   }
+
+  /// Words the user added to the personal dictionary themselves (from
+  /// reading or by hand), merged with assets/notes/words.json.
+  final List<NoteWord> customWords;
 
   /// Exercises answered wrong, as "nodeId#index", oldest first.
   final List<String> mistakes;
@@ -162,6 +168,7 @@ class Progress {
     Map<String, String>? wordDue,
     Map<String, String>? diary,
     Map<String, int>? errorStats,
+    List<NoteWord>? customWords,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -187,6 +194,7 @@ class Progress {
     wordDue: wordDue ?? this.wordDue,
     diary: diary ?? this.diary,
     errorStats: errorStats ?? this.errorStats,
+    customWords: customWords ?? this.customWords,
   );
 
   Map<String, dynamic> toJson() => {
@@ -214,6 +222,7 @@ class Progress {
     'wordDue': wordDue,
     'diary': diary,
     'errorStats': errorStats,
+    'customWords': [for (final w in customWords) w.toJson()],
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -243,6 +252,9 @@ class Progress {
     wordDue: (j['wordDue'] as Map?)?.cast<String, String>() ?? const {},
     diary: (j['diary'] as Map?)?.cast<String, String>() ?? const {},
     errorStats: (j['errorStats'] as Map?)?.cast<String, int>() ?? const {},
+    customWords: [
+      for (final w in (j['customWords'] as List?) ?? const []) NoteWord.fromJson(w as Map<String, dynamic>),
+    ],
   );
 }
 
@@ -454,6 +466,28 @@ class ProgressNotifier extends Notifier<Progress> {
       stats[n] = (stats[n] ?? 0) + 1;
     }
     _save(state.copyWith(errorStats: stats));
+  }
+
+  /// Adds a word to the personal dictionary. Returns false if the user has
+  /// already added the same English word.
+  bool addCustomWord(NoteWord word) {
+    final key = word.en.trim().toLowerCase();
+    if (key.isEmpty || state.customWords.any((w) => w.en.toLowerCase() == key)) return false;
+    _save(state.copyWith(customWords: [...state.customWords, word]));
+    return true;
+  }
+
+  /// Removes a user-added word and its review history.
+  void removeCustomWord(String id) {
+    final box = {...state.wordBox}..remove(id);
+    final due = {...state.wordDue}..remove(id);
+    _save(
+      state.copyWith(
+        customWords: state.customWords.where((w) => w.id != id).toList(),
+        wordBox: box,
+        wordDue: due,
+      ),
+    );
   }
 
   void dismissLeagueResult() => _save(state.copyWith(clearLeagueResult: true));

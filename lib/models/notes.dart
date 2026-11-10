@@ -30,6 +30,15 @@ class NoteWord {
     example: j['example'] as String?,
     story: j['story'] as String?,
   );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'en': en,
+    'tr': tr,
+    'topic': topic,
+    if (example != null) 'example': example,
+    if (story != null) 'story': story,
+  };
 }
 
 class NoteExample {

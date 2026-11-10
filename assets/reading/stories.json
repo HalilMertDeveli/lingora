@@ -1,0 +1,1040 @@
+[
+  {
+    "id": "a1_ferry",
+    "level": "A1",
+    "emoji": "⛴️",
+    "title": "The Ferry to Kadıköy",
+    "titleTr": "Kadıköy vapuru",
+    "text": "My name is Elif. I live in Beşiktaş, and I work in Kadıköy. Every morning I take the ferry. I love the ferry. It is slow, but it is beautiful.\n\nI buy a simit and a glass of tea on the ferry. The tea is hot and the simit is fresh. I sit next to the window and I look at the sea. The sea is blue and calm today.\n\nThere are many seagulls behind the ferry. A small boy throws a piece of simit, and a seagull catches it. Everybody laughs.\n\nThe trip takes twenty minutes. When we arrive, I am happy and ready for work.",
+    "glosses": {
+      "live": "yaşamak, oturmak",
+      "work": "çalışmak; iş",
+      "every morning": "her sabah",
+      "take the ferry": "vapura binmek",
+      "ferry": "vapur",
+      "slow": "yavaş",
+      "beautiful": "güzel",
+      "a glass of tea": "bir bardak çay",
+      "fresh": "taze",
+      "next to": "yanında",
+      "window": "pencere",
+      "look at": "bakmak",
+      "calm": "sakin",
+      "seagulls": "martılar",
+      "seagull": "martı",
+      "behind": "arkasında",
+      "throws": "atar, fırlatır",
+      "a piece of": "bir parça",
+      "catches": "yakalar",
+      "laughs": "güler",
+      "trip": "yolculuk",
+      "takes twenty minutes": "yirmi dakika sürer",
+      "arrive": "varmak",
+      "ready for": "… için hazır"
+    },
+    "questions": [
+      {
+        "q": "Where does Elif work?",
+        "options": ["In Beşiktaş", "In Kadıköy", "On the ferry"],
+        "answer": 1,
+        "explain": "Metinde “I work in Kadıköy” diyor: Beşiktaş'ta oturuyor, Kadıköy'de çalışıyor."
+      },
+      {
+        "q": "What does Elif drink on the ferry?",
+        "options": ["Coffee", "Water", "Tea"],
+        "answer": 2,
+        "explain": "“a glass of tea” = bir bardak çay. Simitle birlikte çay alıyor."
+      },
+      {
+        "q": "Who catches the piece of simit?",
+        "options": ["A seagull", "A small boy", "Elif"],
+        "answer": 0,
+        "explain": "Simidi küçük çocuk atıyor (throws), martı yakalıyor (catches)."
+      }
+    ]
+  },
+  {
+    "id": "a1_breakfast",
+    "level": "A1",
+    "emoji": "🍳",
+    "title": "Sunday Breakfast",
+    "titleTr": "Pazar kahvaltısı",
+    "text": "On Sundays my family has a big breakfast. We don't hurry on Sundays. My father goes to the bakery and buys fresh bread. My mother makes menemen with eggs, tomatoes and peppers.\n\nI put the plates on the table. There is white cheese, black olives, honey, butter and jam. My little brother loves honey. He eats it with a spoon!\n\nMy grandmother pours the tea. She always asks, “Do you want more tea?” and we always say yes. We talk, we laugh and we eat for two hours.\n\nAfter breakfast, we wash the dishes together. Sunday is my favourite day of the week.",
+    "glosses": {
+      "on sundays": "pazar günleri",
+      "big": "büyük",
+      "hurry": "acele etmek",
+      "bakery": "fırın",
+      "bread": "ekmek",
+      "makes": "yapar",
+      "eggs": "yumurtalar",
+      "tomatoes": "domatesler",
+      "peppers": "biberler",
+      "plates": "tabaklar",
+      "table": "masa",
+      "white cheese": "beyaz peynir",
+      "olives": "zeytinler",
+      "honey": "bal",
+      "butter": "tereyağı",
+      "jam": "reçel",
+      "little brother": "küçük erkek kardeş",
+      "spoon": "kaşık",
+      "grandmother": "büyükanne, babaanne/anneanne",
+      "pours": "döker, (çay) koyar",
+      "always": "her zaman",
+      "more": "daha fazla",
+      "together": "birlikte",
+      "wash the dishes": "bulaşıkları yıkamak",
+      "favourite": "en sevdiği",
+      "week": "hafta"
+    },
+    "questions": [
+      {
+        "q": "Who buys the bread?",
+        "options": ["The mother", "The father", "The grandmother"],
+        "answer": 1,
+        "explain": "“My father goes to the bakery” – babası fırına gidip ekmek alıyor."
+      },
+      {
+        "q": "What does the little brother eat with a spoon?",
+        "options": ["Jam", "Olives", "Honey"],
+        "answer": 2,
+        "explain": "“My little brother loves honey. He eats it with a spoon!” – balı kaşıkla yiyor."
+      },
+      {
+        "q": "How long is the breakfast?",
+        "options": ["Two hours", "Twenty minutes", "One hour"],
+        "answer": 0,
+        "explain": "“for two hours” = iki saat boyunca. İngilizcede süre “for” ile anlatılır."
+      }
+    ]
+  },
+  {
+    "id": "a1_bazaar",
+    "level": "A1",
+    "emoji": "🍅",
+    "title": "Saturday at the Bazaar",
+    "titleTr": "Cumartesi pazarı",
+    "text": "Every Saturday there is a bazaar on our street. It opens early in the morning. I go there with my aunt. She carries a big shopping bag with wheels.\n\nThe bazaar is very noisy. The sellers shout, “Fresh tomatoes! Cheap cucumbers!” My aunt touches every tomato. She is very careful. She asks the price, and then she says, “It is too expensive.” The seller smiles and gives a better price.\n\nWe buy potatoes, onions, apples and a kilo of cherries. The cherries are sweet and dark red. I eat some on the way home.\n\nThe bag is heavy now, so I pull it for my aunt.",
+    "glosses": {
+      "bazaar": "pazar (semt pazarı)",
+      "street": "sokak",
+      "opens": "açılır",
+      "early": "erken",
+      "aunt": "teyze, hala",
+      "carries": "taşır",
+      "shopping bag": "alışveriş çantası",
+      "wheels": "tekerlekler",
+      "noisy": "gürültülü",
+      "sellers": "satıcılar",
+      "seller": "satıcı",
+      "shout": "bağırırlar",
+      "cheap": "ucuz",
+      "cucumbers": "salatalıklar",
+      "touches": "dokunur",
+      "careful": "dikkatli",
+      "price": "fiyat",
+      "too expensive": "çok pahalı",
+      "smiles": "gülümser",
+      "better": "daha iyi",
+      "potatoes": "patatesler",
+      "onions": "soğanlar",
+      "a kilo of": "bir kilo",
+      "cherries": "kirazlar",
+      "sweet": "tatlı",
+      "dark red": "koyu kırmızı",
+      "on the way home": "eve dönerken, eve giderken yolda",
+      "heavy": "ağır",
+      "pull": "çekmek"
+    },
+    "questions": [
+      {
+        "q": "When is the bazaar?",
+        "options": ["Every Sunday", "Every Saturday", "Every evening"],
+        "answer": 1,
+        "explain": "İlk cümle: “Every Saturday there is a bazaar” – her cumartesi kuruluyor."
+      },
+      {
+        "q": "Why does the seller give a better price?",
+        "options": [
+          "Because the aunt says it is too expensive",
+          "Because the tomatoes are old",
+          "Because it is late"
+        ],
+        "answer": 0,
+        "explain": "Teyze “It is too expensive” (çok pahalı) diyor, satıcı da gülümseyip daha iyi bir fiyat veriyor – tanıdık bir pazarlık!"
+      },
+      {
+        "q": "What colour are the cherries?",
+        "options": ["Yellow", "Light green", "Dark red"],
+        "answer": 2,
+        "explain": "“sweet and dark red” – tatlı ve koyu kırmızı."
+      }
+    ]
+  },
+  {
+    "id": "a1_cat",
+    "level": "A1",
+    "emoji": "🐈",
+    "title": "The Cat of Our Street",
+    "titleTr": "Sokağımızın kedisi",
+    "text": "There is an orange cat on our street. Her name is Pamuk. She doesn't have a home, but everybody on the street is her family.\n\nIn the morning, the grocer gives her milk. At noon, the woman on the second floor puts some food in a small bowl. In the evening, the children play with her in the park.\n\nPamuk sleeps in a box in front of the pharmacy. The pharmacist puts an old blanket in the box for her. In winter, it is warm and soft.\n\nPamuk is lazy and a little fat, but she is very friendly. When I come home from school, she runs to me and says, “Meow!” I think she says hello.",
+    "glosses": {
+      "orange": "turuncu",
+      "doesn't have": "… yok, sahip değil",
+      "home": "ev, yuva",
+      "everybody": "herkes",
+      "grocer": "bakkal",
+      "milk": "süt",
+      "at noon": "öğlen",
+      "second floor": "ikinci kat",
+      "puts": "koyar",
+      "food": "yemek, mama",
+      "bowl": "kase, kap",
+      "children": "çocuklar",
+      "sleeps": "uyur",
+      "box": "kutu",
+      "in front of": "önünde",
+      "pharmacy": "eczane",
+      "pharmacist": "eczacı",
+      "blanket": "battaniye",
+      "winter": "kış",
+      "warm": "sıcak, ılık",
+      "soft": "yumuşak",
+      "lazy": "tembel",
+      "a little": "biraz",
+      "fat": "şişman",
+      "friendly": "cana yakın, arkadaş canlısı",
+      "runs": "koşar",
+      "says hello": "merhaba der, selam verir"
+    },
+    "questions": [
+      {
+        "q": "Who gives Pamuk milk in the morning?",
+        "options": ["The pharmacist", "The grocer", "The children"],
+        "answer": 1,
+        "explain": "“In the morning, the grocer gives her milk.” – sabahları bakkal süt veriyor."
+      },
+      {
+        "q": "Where does Pamuk sleep?",
+        "options": ["In a box in front of the pharmacy", "In the park", "On the second floor"],
+        "answer": 0,
+        "explain": "“in front of the pharmacy” = eczanenin önünde. Kutuda, eski bir battaniyenin üstünde uyuyor."
+      },
+      {
+        "q": "Which word describes Pamuk?",
+        "options": ["Angry", "Fast", "Friendly"],
+        "answer": 2,
+        "explain": "Metinde “lazy, a little fat, but very friendly” deniyor. Tembel ama çok cana yakın."
+      }
+    ]
+  },
+  {
+    "id": "a1_neighbour",
+    "level": "A1",
+    "emoji": "🏠",
+    "title": "My New Neighbour",
+    "titleTr": "Yeni komşum",
+    "text": "We have a new neighbour. His name is Mr. Kaya. He is a teacher, and he is sixty years old. He lives alone with a lot of books and a small bird.\n\nOn his first day, my mother makes a plate of börek. I take it to his door. He opens the door and smiles. “Thank you very much! Come in, please,” he says.\n\nHis flat is full of plants and old photos. He shows me a photo of a little village near Trabzon. “This is my village. I was born there,” he says.\n\nA few days later, he gives back the plate. It is not empty. There is a cake on it! In Turkey, we never give back an empty plate.",
+    "glosses": {
+      "neighbour": "komşu",
+      "teacher": "öğretmen",
+      "years old": "yaşında",
+      "alone": "yalnız, tek başına",
+      "a lot of": "çok sayıda, bir sürü",
+      "bird": "kuş",
+      "first day": "ilk gün",
+      "a plate of": "bir tabak",
+      "door": "kapı",
+      "come in": "içeri gel(in)",
+      "flat": "daire",
+      "full of": "… ile dolu",
+      "plants": "bitkiler, saksı çiçekleri",
+      "shows": "gösterir",
+      "village": "köy",
+      "near": "yakınında",
+      "i was born": "doğdum",
+      "a few days later": "birkaç gün sonra",
+      "gives back": "geri verir",
+      "empty": "boş",
+      "never": "asla, hiç"
+    },
+    "questions": [
+      {
+        "q": "What is Mr. Kaya's job?",
+        "options": ["He is a doctor", "He is a teacher", "He is a baker"],
+        "answer": 1,
+        "explain": "“He is a teacher” – öğretmen. Meslek söylerken “a/an” kullanmayı unutma: a teacher."
+      },
+      {
+        "q": "Where was Mr. Kaya born?",
+        "options": ["In a village near Trabzon", "In İstanbul", "In Ankara"],
+        "answer": 0,
+        "explain": "Fotoğrafı göstererek “This is my village. I was born there” diyor: Trabzon yakınındaki bir köy."
+      },
+      {
+        "q": "What is on the plate when Mr. Kaya gives it back?",
+        "options": ["Nothing", "Börek", "A cake"],
+        "answer": 2,
+        "explain": "Tabak boş dönmüyor; üstünde kek var. “Boş tabak geri verilmez” geleneği İngilizce anlatılmış."
+      },
+      {
+        "q": "“He lives alone” means…",
+        "options": ["Ailesiyle yaşıyor", "Yalnız yaşıyor", "Köyde yaşıyor"],
+        "answer": 1,
+        "explain": "alone = yalnız, tek başına. “lives alone” = yalnız yaşıyor."
+      }
+    ]
+  },
+  {
+    "id": "a2_bayram",
+    "level": "A2",
+    "emoji": "🍬",
+    "title": "A Bayram Visit",
+    "titleTr": "Bayram ziyareti",
+    "text": "Last Bayram, we drove from İzmir to Manisa to visit my grandparents. We left early in the morning because the roads are always busy during the holiday.\n\nWhen we arrived, my grandmother was waiting at the door. I kissed her hand and put it on my forehead. She gave me some money in an envelope and said, “Buy yourself something nice.” My cousins were already there, and the house was very crowded.\n\nAll day, neighbours and relatives came and went. Every time the doorbell rang, my grandmother offered them coffee, chocolate and lokum. I helped her in the kitchen and carried the trays.\n\nIn the afternoon, my grandfather told us stories about his childhood. When he was young, children went from door to door and collected candy in a handkerchief.\n\nWe returned home late at night. I was tired, but I was also very happy.",
+    "glosses": {
+      "last": "geçen",
+      "drove": "arabayla gittik (drive → drove)",
+      "visit": "ziyaret etmek",
+      "grandparents": "büyükanne ve büyükbaba",
+      "left": "ayrıldık, yola çıktık (leave → left)",
+      "busy": "yoğun, kalabalık",
+      "during": "boyunca, sırasında",
+      "holiday": "tatil, bayram",
+      "was waiting": "bekliyordu",
+      "kissed her hand": "elini öptüm",
+      "forehead": "alın",
+      "envelope": "zarf",
+      "buy yourself": "kendine al",
+      "cousins": "kuzenler",
+      "already": "zaten, çoktan",
+      "crowded": "kalabalık",
+      "relatives": "akrabalar",
+      "came and went": "gelip gittiler",
+      "every time": "her seferinde",
+      "doorbell": "kapı zili",
+      "rang": "çaldı (ring → rang)",
+      "offered": "ikram etti, teklif etti",
+      "kitchen": "mutfak",
+      "carried": "taşıdım",
+      "trays": "tepsiler",
+      "told us stories": "bize hikâyeler anlattı",
+      "childhood": "çocukluk",
+      "from door to door": "kapı kapı",
+      "collected": "topladı",
+      "candy": "şeker",
+      "handkerchief": "mendil",
+      "returned": "döndük",
+      "late at night": "gece geç saatte",
+      "tired": "yorgun"
+    },
+    "questions": [
+      {
+        "q": "Why did the family leave early?",
+        "options": [
+          "Because the roads are busy during the holiday",
+          "Because the grandmother was ill",
+          "Because they wanted breakfast in Manisa"
+        ],
+        "answer": 0,
+        "explain": "“because the roads are always busy during the holiday” – bayramda yollar hep yoğun olduğu için erken çıktılar."
+      },
+      {
+        "q": "What did the grandmother give the writer?",
+        "options": ["A box of lokum", "Money in an envelope", "A handkerchief"],
+        "answer": 1,
+        "explain": "Bayram harçlığı! “She gave me some money in an envelope” – zarfın içinde para."
+      },
+      {
+        "q": "What did children collect in the grandfather's childhood?",
+        "options": ["Money", "Flowers", "Candy"],
+        "answer": 2,
+        "explain": "“collected candy in a handkerchief” – mendile şeker topluyorlardı."
+      },
+      {
+        "q": "“The house was very crowded” – Türkçesi hangisi?",
+        "options": ["Ev çok sessizdi", "Ev çok kalabalıktı", "Ev çok soğuktu"],
+        "answer": 1,
+        "explain": "crowded = kalabalık. was = -di (geçmiş zaman): “kalabalıktı”."
+      }
+    ]
+  },
+  {
+    "id": "a2_cappadocia",
+    "level": "A2",
+    "emoji": "🎈",
+    "title": "Balloons over Cappadocia",
+    "titleTr": "Kapadokya'da balonlar",
+    "text": "For my thirtieth birthday, my husband gave me a surprise: a hot air balloon ride in Cappadocia. I was excited, but I was also a bit scared because I don't like heights.\n\nThe minibus picked us up from our hotel at five o'clock in the morning. It was still dark and very cold. At the field, the pilot explained the safety rules. Then we climbed into the basket with twelve other people.\n\nSlowly, the balloon went up. Suddenly the sun came out, and I forgot my fear. Below us, there were valleys, strange rocks called fairy chimneys, and small villages. Around us, more than a hundred colourful balloons were flying in the sky.\n\nThe ride lasted one hour. When we landed, the crew gave us a glass of fruit juice and a small certificate. I am going to keep it forever.",
+    "glosses": {
+      "thirtieth": "otuzuncu",
+      "husband": "koca, eş",
+      "surprise": "sürpriz",
+      "hot air balloon": "sıcak hava balonu",
+      "ride": "binme, gezinti",
+      "excited": "heyecanlı",
+      "a bit": "biraz",
+      "scared": "korkmuş",
+      "heights": "yükseklik",
+      "picked us up": "bizi aldı",
+      "still": "hâlâ",
+      "dark": "karanlık",
+      "field": "alan, tarla",
+      "pilot": "pilot",
+      "explained": "açıkladı",
+      "safety rules": "güvenlik kuralları",
+      "climbed into": "içine tırmandık",
+      "basket": "sepet",
+      "slowly": "yavaşça",
+      "went up": "yükseldi",
+      "suddenly": "aniden",
+      "came out": "çıktı, doğdu",
+      "forgot": "unuttum (forget → forgot)",
+      "fear": "korku",
+      "below us": "altımızda",
+      "valleys": "vadiler",
+      "strange": "tuhaf, garip",
+      "rocks": "kayalar",
+      "called": "denilen, adı … olan",
+      "fairy chimneys": "peri bacaları",
+      "around us": "çevremizde",
+      "more than": "… den fazla",
+      "colourful": "rengârenk",
+      "lasted": "sürdü",
+      "landed": "indik",
+      "crew": "ekip, mürettebat",
+      "fruit juice": "meyve suyu",
+      "certificate": "sertifika, belge",
+      "i am going to keep": "saklayacağım",
+      "forever": "sonsuza dek"
+    },
+    "questions": [
+      {
+        "q": "Why was the writer a bit scared?",
+        "options": [
+          "She doesn't like heights",
+          "She doesn't like her husband's surprises",
+          "She was late for the minibus"
+        ],
+        "answer": 0,
+        "explain": "“because I don't like heights” – yükseklikten hoşlanmıyor. heights = yükseklik."
+      },
+      {
+        "q": "What time did the minibus come?",
+        "options": ["At seven", "At five", "At noon"],
+        "answer": 1,
+        "explain": "“at five o'clock in the morning” – sabah saat beşte."
+      },
+      {
+        "q": "What are “fairy chimneys”?",
+        "options": ["Small villages", "Hot air balloons", "Strange rocks"],
+        "answer": 2,
+        "explain": "Metin açıklıyor: “strange rocks called fairy chimneys” – peri bacaları denilen tuhaf kayalar."
+      }
+    ]
+  },
+  {
+    "id": "a2_dolmus",
+    "level": "A2",
+    "emoji": "🚐",
+    "title": "The Wrong Dolmuş",
+    "titleTr": "Yanlış dolmuş",
+    "text": "Last month I started university in İzmir. On my first day, I wanted to go to the campus by dolmuş. A dolmuş stopped in front of me, and I got on quickly without reading the sign.\n\nI passed my money to the man in front of me, and he passed it to the driver. That is how people pay in a dolmuş. After fifteen minutes, I looked out of the window. There was the sea on my left. That was strange, because the campus is far from the sea.\n\nI asked the woman next to me, “Excuse me, does this dolmuş go to the university?” She laughed kindly. “No, dear, it goes to Karşıyaka. You need to get off and take the one on the other side of the road.”\n\nI got off at the next stop and crossed the road. I was forty minutes late for my first class, but the teacher was late too!",
+    "glosses": {
+      "last month": "geçen ay",
+      "started": "başladım",
+      "university": "üniversite",
+      "campus": "kampüs",
+      "by dolmuş": "dolmuşla",
+      "stopped": "durdu",
+      "got on": "bindim (get on → got on)",
+      "quickly": "hızlıca",
+      "without reading": "okumadan",
+      "sign": "tabela, levha",
+      "passed": "uzattım, verdim",
+      "driver": "şoför",
+      "that is how": "işte böyle",
+      "pay": "ödemek",
+      "looked out of": "dışarı baktım",
+      "on my left": "solumda",
+      "far from": "… dan uzak",
+      "excuse me": "affedersiniz",
+      "kindly": "nazikçe",
+      "dear": "canım, yavrum",
+      "you need to": "… man/men gerek",
+      "get off": "inmek",
+      "the other side of the road": "yolun karşı tarafı",
+      "next stop": "sonraki durak",
+      "crossed": "karşıya geçtim",
+      "late for": "… e geç kalmış",
+      "class": "ders",
+      "too": "de/da (ayrıca)"
+    },
+    "questions": [
+      {
+        "q": "How do people pay in a dolmuş, according to the story?",
+        "options": [
+          "They pass the money to the driver through other passengers",
+          "They pay with a card at the door",
+          "They pay when they get off"
+        ],
+        "answer": 0,
+        "explain": "Parayı öndeki kişiye uzatıyor, o da şoföre veriyor. “That is how people pay” = insanlar böyle ödüyor."
+      },
+      {
+        "q": "Why did the writer think something was wrong?",
+        "options": ["The dolmuş was empty", "The sea was on the left", "The driver was angry"],
+        "answer": 1,
+        "explain": "Solunda deniz vardı; oysa kampüs denizden uzak (far from the sea)."
+      },
+      {
+        "q": "Where did the dolmuş go?",
+        "options": ["To the campus", "To the airport", "To Karşıyaka"],
+        "answer": 2,
+        "explain": "Kadın “it goes to Karşıyaka” diyor."
+      },
+      {
+        "q": "“I got off at the next stop” – Türkçesi?",
+        "options": ["Sonraki durakta bindim", "Sonraki durakta indim", "Sonraki durağı bekledim"],
+        "answer": 1,
+        "explain": "get off = inmek, get on = binmek. got, get'in geçmiş hâli."
+      }
+    ]
+  },
+  {
+    "id": "a2_phone",
+    "level": "A2",
+    "emoji": "📱",
+    "title": "A New Phone",
+    "titleTr": "Yeni telefon",
+    "text": "My old phone was very slow, and the battery died every afternoon. So last weekend I went to a shopping mall in Ankara to buy a new one.\n\nThe shop assistant was a young man called Burak. He showed me three phones. The first one was cheap, but its camera was bad. The second one was beautiful, but it was too expensive for me. The third one was perfect: a good camera, a big battery and a fair price.\n\n“Can I pay in instalments?” I asked. “Yes, you can pay in six instalments with your credit card,” Burak said. He also explained the warranty. “It is valid for two years. Please keep the receipt.”\n\nAt home, I moved my photos and contacts to the new phone. It took almost an hour. Then I took a selfie with my cat and sent it to all my friends. The photo was really clear!",
+    "glosses": {
+      "battery": "pil, batarya",
+      "died": "bitti (pil için)",
+      "every afternoon": "her öğleden sonra",
+      "last weekend": "geçen hafta sonu",
+      "shopping mall": "alışveriş merkezi, AVM",
+      "shop assistant": "satış görevlisi",
+      "called": "adında",
+      "showed": "gösterdi",
+      "camera": "kamera",
+      "bad": "kötü",
+      "perfect": "mükemmel",
+      "fair price": "makul fiyat",
+      "pay in instalments": "taksitle ödemek",
+      "instalments": "taksitler",
+      "credit card": "kredi kartı",
+      "warranty": "garanti",
+      "valid": "geçerli",
+      "receipt": "fiş, fatura",
+      "moved": "aktardım, taşıdım",
+      "contacts": "kişiler (rehber)",
+      "it took": "(zaman) sürdü",
+      "almost": "neredeyse",
+      "took a selfie": "selfie çektim",
+      "sent": "gönderdim (send → sent)",
+      "clear": "net"
+    },
+    "questions": [
+      {
+        "q": "What was the problem with the second phone?",
+        "options": ["Its camera was bad", "It was too expensive", "It was very slow"],
+        "answer": 1,
+        "explain": "“it was too expensive for me” – benim için çok pahalıydı. Kamerası kötü olan birincisiydi."
+      },
+      {
+        "q": "How many instalments can the writer pay in?",
+        "options": ["Six", "Two", "Twelve"],
+        "answer": 0,
+        "explain": "“you can pay in six instalments” – altı taksit. “Two years” garantinin süresi."
+      },
+      {
+        "q": "Why should the writer keep the receipt?",
+        "options": ["To get a discount", "To take selfies", "For the warranty"],
+        "answer": 2,
+        "explain": "Burak garantiyi anlatırken “Please keep the receipt” diyor: garanti için fiş/fatura saklanmalı."
+      }
+    ]
+  },
+  {
+    "id": "a2_snow",
+    "level": "A2",
+    "emoji": "❄️",
+    "title": "Snow Day in Erzurum",
+    "titleTr": "Erzurum'da kar tatili",
+    "text": "Erzurum is one of the coldest cities in Turkey. In January, it often snows for days. Last winter, on a Tuesday morning, my mother woke me up with good news. “Schools are closed today because of the snow!”\n\nI looked out of the window. Everything was white. The cars were under the snow, and the streets were empty. I put on two jumpers, a thick coat, gloves and a hat, and I went out with my sister.\n\nWe built a snowman in the garden. We used coal for his eyes and a carrot for his nose. Then the neighbours' children came, and we had a big snowball fight. My sister threw a snowball at me, but it hit our neighbour, Mr. Arslan! Luckily, he laughed and threw one back.\n\nWhen we came inside, our hands were red and frozen. My mother made hot soup and we drank sahlep with cinnamon. It was the best day of the winter.",
+    "glosses": {
+      "one of the coldest": "en soğuklarından biri",
+      "often": "sık sık",
+      "snows": "kar yağar",
+      "woke me up": "beni uyandırdı",
+      "good news": "iyi haber",
+      "closed": "kapalı",
+      "because of": "… yüzünden, … nedeniyle",
+      "everything": "her şey",
+      "under": "altında",
+      "put on": "giydim",
+      "jumpers": "kazaklar",
+      "thick": "kalın",
+      "coat": "mont, palto",
+      "gloves": "eldivenler",
+      "hat": "bere, şapka",
+      "went out": "dışarı çıktım",
+      "built": "yaptık (build → built)",
+      "snowman": "kardan adam",
+      "garden": "bahçe",
+      "coal": "kömür",
+      "carrot": "havuç",
+      "nose": "burun",
+      "snowball fight": "kar topu savaşı",
+      "threw": "attı (throw → threw)",
+      "hit": "çarptı, isabet etti",
+      "luckily": "neyse ki",
+      "threw one back": "o da bir tane geri attı",
+      "came inside": "içeri girdik",
+      "frozen": "donmuş",
+      "soup": "çorba",
+      "cinnamon": "tarçın",
+      "the best": "en iyi"
+    },
+    "questions": [
+      {
+        "q": "Why were the schools closed?",
+        "options": ["Because it was a holiday", "Because of the snow", "Because the teachers were ill"],
+        "answer": 1,
+        "explain": "“Schools are closed today because of the snow!” – kar yüzünden okullar tatil."
+      },
+      {
+        "q": "What did they use for the snowman's nose?",
+        "options": ["A carrot", "Coal", "A hat"],
+        "answer": 0,
+        "explain": "Gözler için kömür (coal), burun için havuç (carrot) kullandılar."
+      },
+      {
+        "q": "Who did the sister's snowball hit?",
+        "options": ["The writer", "The mother", "Mr. Arslan"],
+        "answer": 2,
+        "explain": "Kardeşi kar topunu yazara attı ama komşuları Arslan Bey'e çarptı (hit)."
+      }
+    ]
+  },
+  {
+    "id": "b1_interview",
+    "level": "B1",
+    "emoji": "💼",
+    "title": "A Job Interview in Ankara",
+    "titleTr": "Ankara'da iş görüşmesi",
+    "text": "Zeynep had been looking for a job for four months when she finally got an email from a logistics company in Ankara. They wanted to interview her for a customer relations position. The interview would be in English, because the company works with partners in Germany and the Netherlands.\n\nThe night before, she prepared answers to common questions, ironed her shirt and set two alarms. In the morning she took the metro to Kızılay and arrived twenty minutes early, which gave her time to calm down.\n\nThe interviewer, Mr. Demir, asked her to introduce herself. Zeynep talked about her degree in international trade and her internship at a shipping firm in Mersin. Then he asked a difficult question: “Tell me about a time you dealt with an angry customer.”\n\nShe took a deep breath and described a real situation. A container had been delayed at the port, and the client was furious. Instead of making excuses, she had called him every day with updates until the problem was solved. In the end, he had sent her a thank-you note.\n\nAt the end of the interview, Zeynep asked about training opportunities. Mr. Demir seemed impressed. A week later, her phone rang. She had got the job.",
+    "glosses": {
+      "had been looking for": "… arıyordu (bir süredir)",
+      "finally": "sonunda",
+      "logistics company": "lojistik şirketi",
+      "interview": "mülakat, görüşme",
+      "customer relations": "müşteri ilişkileri",
+      "position": "pozisyon, kadro",
+      "would be": "olacaktı",
+      "partners": "ortaklar, iş ortakları",
+      "the night before": "önceki gece",
+      "prepared": "hazırladı",
+      "common questions": "sık sorulan sorular",
+      "ironed": "ütüledi",
+      "set two alarms": "iki alarm kurdu",
+      "which gave her time": "bu da ona zaman tanıdı",
+      "calm down": "sakinleşmek",
+      "interviewer": "mülakatı yapan kişi",
+      "introduce herself": "kendini tanıtmak",
+      "degree": "diploma, lisans derecesi",
+      "international trade": "uluslararası ticaret",
+      "internship": "staj",
+      "shipping firm": "nakliye/denizcilik firması",
+      "difficult": "zor",
+      "dealt with": "ilgilendin, başa çıktın (deal with)",
+      "angry": "kızgın",
+      "took a deep breath": "derin bir nefes aldı",
+      "described": "anlattı, tarif etti",
+      "situation": "durum",
+      "container": "konteyner",
+      "had been delayed": "gecikmişti",
+      "port": "liman",
+      "client": "müşteri",
+      "furious": "öfkeden kudurmuş, çok kızgın",
+      "instead of": "… yerine",
+      "making excuses": "bahane uydurmak",
+      "updates": "güncel bilgiler",
+      "until": "… e kadar",
+      "solved": "çözüldü",
+      "in the end": "sonunda",
+      "thank-you note": "teşekkür notu",
+      "training opportunities": "eğitim olanakları",
+      "seemed": "görünüyordu",
+      "impressed": "etkilenmiş",
+      "she had got the job": "işi almıştı"
+    },
+    "questions": [
+      {
+        "q": "Why was the interview in English?",
+        "options": [
+          "Because Mr. Demir didn't speak Turkish",
+          "Because the company works with partners abroad",
+          "Because Zeynep asked for it"
+        ],
+        "answer": 1,
+        "explain": "Şirket Almanya ve Hollanda'daki ortaklarla çalıştığı için mülakat İngilizceydi."
+      },
+      {
+        "q": "What did Zeynep do when the container was delayed?",
+        "options": [
+          "She called the client every day with updates",
+          "She made excuses",
+          "She asked her manager to call the client"
+        ],
+        "answer": 0,
+        "explain": "“Instead of making excuses” – bahane uydurmak yerine, sorun çözülene kadar her gün arayıp bilgi verdi."
+      },
+      {
+        "q": "“Arrived twenty minutes early” – what does it tell us about Zeynep?",
+        "options": ["She was late", "She was careless", "She was well prepared"],
+        "answer": 2,
+        "explain": "Erken gelip sakinleşmek için zaman kazandı; önceki gece de hazırlık yapmıştı – iyi hazırlanmıştı."
+      },
+      {
+        "q": "“A container had been delayed” – which tense is this?",
+        "options": ["Past perfect passive (gecikmişti)", "Present perfect (gecikti)", "Future (gecikecek)"],
+        "answer": 0,
+        "explain": "had been + V3 = geçmişteki bir olaydan daha önce olan edilgen durum: “gecikmişti / geciktirilmişti”."
+      }
+    ]
+  },
+  {
+    "id": "b1_developer",
+    "level": "B1",
+    "emoji": "💻",
+    "title": "A Developer's First Day",
+    "titleTr": "Bir yazılımcının ilk günü",
+    "text": "Can had dreamed of working at a tech company since high school. On Monday, he finally started as a junior developer at a start-up in Maslak that builds a food delivery app.\n\nHis team lead, Selin, welcomed him at the door with a laptop and a badge. “Don't worry about writing code today,” she said. “Today is for setting up your environment and meeting people.”\n\nAt ten o'clock there was a stand-up meeting. Everyone stood in a circle and said three things: what they had done yesterday, what they were going to do today, and whether anything was blocking them. Can was nervous, so he simply said, “I'm new, and I'm going to install everything.” People smiled and clapped.\n\nAfter lunch, Selin assigned him a mentor, Mert, who showed him the code base and explained how they review each other's work. “Nobody merges code without a review,” Mert said. “And if you break something, it isn't a disaster. We fix it together.”\n\nBy the evening, Can had managed to run the app on his computer and had fixed a tiny spelling mistake on the login screen. It was a one-line change, but when it was approved, he felt like a real developer.",
+    "glosses": {
+      "had dreamed of": "… hayal etmişti",
+      "tech company": "teknoloji şirketi",
+      "since high school": "liseden beri",
+      "junior developer": "yeni başlayan (junior) yazılımcı",
+      "start-up": "girişim şirketi",
+      "food delivery": "yemek teslimatı",
+      "team lead": "takım lideri",
+      "welcomed": "karşıladı",
+      "badge": "giriş kartı, yaka kartı",
+      "don't worry about": "… için endişelenme",
+      "setting up": "kurmak, hazırlamak",
+      "environment": "(geliştirme) ortam(ı)",
+      "stand-up meeting": "ayakta kısa günlük toplantı",
+      "in a circle": "daire şeklinde",
+      "whether": "… olup olmadığı",
+      "blocking": "engelleyen",
+      "nervous": "gergin, heyecanlı",
+      "simply": "sadece, basitçe",
+      "install": "kurmak, yüklemek",
+      "clapped": "alkışladılar",
+      "assigned": "atadı, görevlendirdi",
+      "mentor": "rehber, akıl hocası",
+      "code base": "kod tabanı",
+      "review each other's work": "birbirlerinin işini gözden geçirmek",
+      "merges": "birleştirir (merge)",
+      "without": "… olmadan",
+      "break": "bozmak",
+      "disaster": "felaket",
+      "fix": "düzeltmek",
+      "by the evening": "akşama kadar",
+      "had managed to": "başarmıştı",
+      "tiny": "minicik",
+      "spelling mistake": "yazım hatası",
+      "login screen": "giriş ekranı",
+      "approved": "onaylandı",
+      "felt like": "… gibi hissetti"
+    },
+    "questions": [
+      {
+        "q": "What did Selin say Can should do on his first day?",
+        "options": [
+          "Write as much code as possible",
+          "Set up his environment and meet people",
+          "Fix the login screen"
+        ],
+        "answer": 1,
+        "explain": "“Today is for setting up your environment and meeting people.” – Bugün ortamını kurmak ve insanlarla tanışmak için."
+      },
+      {
+        "q": "In a stand-up meeting, people say…",
+        "options": [
+          "what they did, what they will do and what is blocking them",
+          "only their names",
+          "what they will eat for lunch"
+        ],
+        "answer": 0,
+        "explain": "Metindeki üç şey: dün ne yaptıkları, bugün ne yapacakları ve önlerinde bir engel olup olmadığı."
+      },
+      {
+        "q": "What was Can's first change?",
+        "options": ["A new payment page", "A big new feature", "A fix for a spelling mistake"],
+        "answer": 2,
+        "explain": "“fixed a tiny spelling mistake on the login screen” – giriş ekranındaki küçük bir yazım hatasını düzeltti."
+      },
+      {
+        "q": "What does Mert say about breaking something?",
+        "options": [
+          "You will lose your job",
+          "It isn't a disaster; they fix it together",
+          "You must fix it alone"
+        ],
+        "answer": 1,
+        "explain": "“it isn't a disaster. We fix it together.” – felaket değil, birlikte düzeltiriz. Hata yapmak cezalandırılmıyor."
+      }
+    ]
+  },
+  {
+    "id": "b1_train",
+    "level": "B1",
+    "emoji": "🚆",
+    "title": "The Night Train to Kars",
+    "titleTr": "Kars'a gece treni",
+    "text": "Ece and her best friend Deniz had wanted to take the train from Ankara to Kars for years. Tickets for the sleeper cabins sell out in minutes, so they set an alarm for midnight on the day sales opened, and they managed to get one.\n\nThe journey takes about twenty-five hours. Before leaving, they packed snacks, a small kettle, a string of fairy lights and a good book each. Their cabin was tiny, with two narrow beds and a window, but they decorated it with the lights and felt at home.\n\nAs the train moved east, the landscape changed completely. The yellow fields of Central Anatolia slowly turned into mountains and frozen rivers. At some stations, the train stopped long enough for passengers to jump out, stretch their legs and take photos in the snow.\n\nIn the dining car, they met a retired railway worker who was travelling to visit his grandchildren. He told them that the route had once been a simple way for people to get home, not a tourist attraction. “Now young people come for the photos,” he joked, “but I am glad they discover the east.”\n\nWhen they finally reached Kars, it was minus twenty degrees. They were exhausted, but both agreed it had been the best trip of their lives.",
+    "glosses": {
+      "had wanted to": "… istemişlerdi",
+      "for years": "yıllardır",
+      "sleeper cabins": "yataklı kompartımanlar",
+      "sell out": "tükenmek",
+      "set an alarm": "alarm kurmak",
+      "midnight": "gece yarısı",
+      "sales opened": "satışlar açıldı",
+      "managed to": "… meyi başardılar",
+      "journey": "yolculuk",
+      "about": "yaklaşık",
+      "packed": "(çantaya) koydular, topladılar",
+      "snacks": "atıştırmalıklar",
+      "kettle": "su ısıtıcısı",
+      "a string of fairy lights": "bir sıra peri ışığı (dekoratif ışık)",
+      "each": "her biri",
+      "narrow": "dar",
+      "decorated": "süslediler",
+      "felt at home": "kendilerini evlerinde hissettiler",
+      "as the train moved east": "tren doğuya ilerledikçe",
+      "landscape": "manzara, peyzaj",
+      "completely": "tamamen",
+      "turned into": "… e dönüştü",
+      "mountains": "dağlar",
+      "rivers": "nehirler",
+      "long enough": "yeterince uzun",
+      "passengers": "yolcular",
+      "stretch their legs": "bacaklarını açmak, biraz yürümek",
+      "dining car": "yemekli vagon",
+      "retired": "emekli",
+      "railway worker": "demiryolu çalışanı",
+      "grandchildren": "torunlar",
+      "route": "güzergâh, hat",
+      "had once been": "bir zamanlar … idi",
+      "tourist attraction": "turistik cazibe merkezi",
+      "joked": "şaka yaptı",
+      "i am glad": "memnunum, sevindim",
+      "discover": "keşfetmek",
+      "reached": "ulaştılar",
+      "minus twenty degrees": "eksi yirmi derece",
+      "exhausted": "bitkin, çok yorgun",
+      "agreed": "hemfikir oldular"
+    },
+    "questions": [
+      {
+        "q": "Why did Ece and Deniz set an alarm for midnight?",
+        "options": [
+          "Because the train left at midnight",
+          "Because tickets sell out very quickly",
+          "Because they wanted to see the stars"
+        ],
+        "answer": 1,
+        "explain": "“Tickets for the sleeper cabins sell out in minutes” – biletler dakikalar içinde tükendiği için satış açılır açılmaz almaya çalıştılar."
+      },
+      {
+        "q": "How did the landscape change?",
+        "options": [
+          "From mountains to the sea",
+          "From cities to forests",
+          "From yellow fields to mountains and frozen rivers"
+        ],
+        "answer": 2,
+        "explain": "İç Anadolu'nun sarı tarlaları yavaş yavaş dağlara ve donmuş nehirlere dönüştü (turned into)."
+      },
+      {
+        "q": "What did the retired railway worker think about young tourists?",
+        "options": [
+          "He was glad they discover the east",
+          "He was angry about the photos",
+          "He wanted them to stay home"
+        ],
+        "answer": 0,
+        "explain": "Şaka yollu “fotoğraf için geliyorlar” dese de “I am glad they discover the east” diyor – doğuyu keşfetmelerine seviniyor."
+      }
+    ]
+  },
+  {
+    "id": "b1_flat",
+    "level": "B1",
+    "emoji": "🔑",
+    "title": "Looking for a Flat in İzmir",
+    "titleTr": "İzmir'de ev aramak",
+    "text": "When Ahmet got a job offer in İzmir, he had only three weeks to find a place to live. He spent his evenings scrolling through property websites, but most of the flats near his new office in Bayraklı were either too expensive or already rented.\n\nA colleague advised him to walk around the neighbourhood instead. “Lots of landlords here don't advertise online,” she said. “They just put a sign in the window or tell the local grocer.” So on Saturday, Ahmet took the ferry across the bay and spent the whole day exploring the side streets.\n\nIn the afternoon, a grocer told him about a two-bedroom flat on the third floor of an old building. The landlady, Mrs. Nermin, showed him around. The kitchen was small and the bathroom needed new tiles, but the balcony had a view of the sea and the rent was reasonable.\n\nBefore signing the contract, Ahmet checked a few important things: whether the deposit was refundable, who would pay for repairs and how much the monthly building fee was. Mrs. Nermin answered every question patiently. She even offered to fix the bathroom before he moved in.\n\nTwo weeks later, Ahmet was drinking his morning coffee on the balcony, watching the ferries cross the bay.",
+    "glosses": {
+      "job offer": "iş teklifi",
+      "a place to live": "yaşayacak bir yer",
+      "spent his evenings": "akşamlarını geçirdi",
+      "scrolling through": "(ekranda) kaydırarak bakmak",
+      "property websites": "emlak siteleri",
+      "either": "ya … ya da",
+      "rented": "kiralanmış",
+      "colleague": "iş arkadaşı",
+      "advised": "tavsiye etti",
+      "neighbourhood": "mahalle",
+      "instead": "bunun yerine",
+      "landlords": "ev sahipleri",
+      "advertise": "ilan vermek",
+      "local": "mahalledeki, yerel",
+      "across the bay": "körfezin karşısına",
+      "exploring": "keşfederek",
+      "side streets": "ara sokaklar",
+      "two-bedroom": "iki yatak odalı (2+1)",
+      "building": "bina",
+      "landlady": "(kadın) ev sahibi",
+      "showed him around": "ona evi gezdirdi",
+      "bathroom": "banyo",
+      "tiles": "fayanslar",
+      "balcony": "balkon",
+      "view": "manzara",
+      "rent": "kira",
+      "reasonable": "makul, uygun",
+      "signing the contract": "sözleşmeyi imzalamak",
+      "checked": "kontrol etti",
+      "deposit": "depozito",
+      "refundable": "iade edilebilir",
+      "repairs": "tamirat",
+      "monthly": "aylık",
+      "building fee": "aidat",
+      "patiently": "sabırla",
+      "even": "hatta",
+      "moved in": "taşındı (eve)",
+      "watching": "izleyerek"
+    },
+    "questions": [
+      {
+        "q": "What problem did Ahmet have with the websites?",
+        "options": [
+          "The flats were too expensive or already rented",
+          "The websites were in German",
+          "There were no flats near the sea"
+        ],
+        "answer": 0,
+        "explain": "“either too expensive or already rented” – ya çok pahalıydı ya da çoktan kiralanmıştı."
+      },
+      {
+        "q": "How did Ahmet find the flat?",
+        "options": ["Through a website", "A grocer told him about it", "His colleague owned it"],
+        "answer": 1,
+        "explain": "İş arkadaşının tavsiyesiyle mahallede dolaştı; bir bakkal ona daireden bahsetti."
+      },
+      {
+        "q": "Which of these is the “building fee”?",
+        "options": ["Kira", "Depozito", "Aidat"],
+        "answer": 2,
+        "explain": "building fee = aidat. rent = kira, deposit = depozito."
+      },
+      {
+        "q": "What did Mrs. Nermin offer to do?",
+        "options": ["Lower the rent", "Fix the bathroom", "Paint the balcony"],
+        "answer": 1,
+        "explain": "“She even offered to fix the bathroom before he moved in.” – taşınmadan önce banyoyu yaptırmayı teklif etti."
+      }
+    ]
+  },
+  {
+    "id": "b1_baklava",
+    "level": "B1",
+    "emoji": "🥮",
+    "title": "The Family Baklava Shop",
+    "titleTr": "Ailenin baklava dükkânı",
+    "text": "Three generations of the Yıldız family have made baklava in the same small shop in Gaziantep. Every morning at four, Grandfather Hüseyin still rolls out the dough until it is so thin that you can read a newspaper through it.\n\nHis grandson Emre, who studied business administration in İstanbul, came home last year with a bold idea. “We should sell online and ship all over the country,” he suggested at dinner. His grandfather frowned. “Baklava is not a phone. It must be eaten fresh. If it arrives broken or dry, people will say the Yıldız family has lost its quality.”\n\nInstead of arguing, Emre decided to experiment. For two months he tested different boxes and delivery companies, sending trays to friends in İzmir, Ankara and Trabzon and asking them for honest feedback. Most of the early boxes arrived damaged, but eventually he designed a package that kept the baklava cool and in one piece for two days.\n\nWhen the first online order arrived from a customer in Edirne, the whole family gathered around the computer. Grandfather Hüseyin read the review out loud: “It tastes exactly like the baklava I ate in Gaziantep as a child.” He was quiet for a moment, then smiled. “Fine,” he said. “But I am still choosing the pistachios.”",
+    "glosses": {
+      "three generations": "üç kuşak",
+      "rolls out": "(hamuru oklavayla) açar",
+      "dough": "hamur",
+      "so thin that": "o kadar ince ki",
+      "through it": "içinden, arkasından",
+      "grandson": "erkek torun",
+      "business administration": "işletme",
+      "bold": "cesur, iddialı",
+      "should": "… meli",
+      "ship": "kargolamak, göndermek",
+      "all over the country": "ülkenin her yerine",
+      "suggested": "önerdi",
+      "frowned": "kaşlarını çattı",
+      "must be eaten fresh": "taze yenmeli",
+      "broken": "kırık",
+      "dry": "kuru",
+      "has lost its quality": "kalitesini kaybetti",
+      "instead of arguing": "tartışmak yerine",
+      "decided": "karar verdi",
+      "experiment": "deneme yapmak",
+      "tested": "denedi, test etti",
+      "delivery companies": "kargo şirketleri",
+      "honest feedback": "dürüst geri bildirim",
+      "early": "ilk, erken",
+      "damaged": "hasarlı",
+      "eventually": "sonunda, nihayetinde",
+      "designed": "tasarladı",
+      "package": "paket",
+      "cool": "serin",
+      "in one piece": "tek parça, sağlam",
+      "order": "sipariş",
+      "gathered around": "… etrafında toplandılar",
+      "review": "değerlendirme, yorum",
+      "out loud": "yüksek sesle",
+      "tastes exactly like": "tıpkı … gibi tadı var",
+      "as a child": "çocukken",
+      "for a moment": "bir an",
+      "pistachios": "antep fıstıkları"
+    },
+    "questions": [
+      {
+        "q": "Why was Grandfather Hüseyin against selling online at first?",
+        "options": [
+          "He didn't like computers",
+          "He was afraid the baklava would arrive broken or dry",
+          "He wanted to close the shop"
+        ],
+        "answer": 1,
+        "explain": "“If it arrives broken or dry…” – baklavanın kırık ya da kuru ulaşmasından ve ailenin itibarının zedelenmesinden korkuyordu."
+      },
+      {
+        "q": "How did Emre respond to his grandfather?",
+        "options": [
+          "He argued with him every day",
+          "He went back to İstanbul",
+          "He tested boxes and asked friends for feedback"
+        ],
+        "answer": 2,
+        "explain": "“Instead of arguing, Emre decided to experiment.” – tartışmak yerine denemeler yaptı ve arkadaşlarından dürüst geri bildirim istedi."
+      },
+      {
+        "q": "What does “eventually” mean in this story?",
+        "options": ["Sonunda", "Asla", "Hemen"],
+        "answer": 0,
+        "explain": "eventually = sonunda, bir süre sonra. Dikkat: “eventual(ly)” Türkçedeki “eventüel / muhtemelen” anlamına gelmez!"
+      },
+      {
+        "q": "What does the grandfather's last sentence show?",
+        "options": [
+          "He still wants to keep the quality in his hands",
+          "He wants to stop working",
+          "He doesn't like pistachios"
+        ],
+        "answer": 0,
+        "explain": "İnternet satışını kabul ediyor ama “fıstıkları hâlâ ben seçiyorum” diyerek kaliteyi kendi kontrolünde tutmak istiyor."
+      }
+    ]
+  }
+]

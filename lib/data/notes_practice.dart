@@ -64,6 +64,33 @@ List<LessonItem> topicItems(GrammarTopic topic, List<GrammarTopic> all, [Random?
   return items;
 }
 
+/// Topic of the words the user adds to the dictionary themselves.
+const customTopic = 'Eklediklerim';
+
+/// Stable id for a user-added word.
+String customWordId(String en) => 'u_${en.trim().toLowerCase().replaceAll(RegExp(r'[^a-z0-9ğüşöçı]+'), '_')}';
+
+/// A user-added dictionary word.
+NoteWord customWord(String en, String tr, {String? example}) => NoteWord(
+  id: customWordId(en),
+  en: en.trim(),
+  tr: tr.trim(),
+  topic: customTopic,
+  example: (example == null || example.trim().isEmpty) ? null : example.trim(),
+);
+
+/// The whole personal dictionary: imported notes plus the user's own words.
+List<NoteWord> dictionaryWords(NotesBundle notes, Progress p) => [...notes.words, ...p.customWords];
+
+/// Looks up [word] (case-insensitive) in [words].
+NoteWord? findWord(List<NoteWord> words, String word) {
+  final key = word.trim().toLowerCase();
+  for (final w in words) {
+    if (w.en.toLowerCase() == key) return w;
+  }
+  return null;
+}
+
 /// Words to review now: due ones first (oldest box first), then new ones.
 List<NoteWord> wordsToReview(List<NoteWord> words, Progress p, DateTime now, {String? topic}) {
   final today = dayKey(now);

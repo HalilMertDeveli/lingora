@@ -39,7 +39,7 @@ late FakeNotifications notifications;
 Future<void> pumpApp(WidgetTester tester, Map<String, Object> prefs) async {
   SharedPreferences.setMockInitialValues(prefs);
   final p = await SharedPreferences.getInstance();
-  await tester.binding.setSurfaceSize(const Size(420, 900));
+  await tester.binding.setSurfaceSize(const Size(420, 1000));
   // Reduced motion stops looping animations so pumpAndSettle can finish.
   tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
     disableAnimations: true,

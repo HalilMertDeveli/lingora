@@ -19,6 +19,7 @@ import '../ui/why_wrong.dart';
 import 'lesson_result_screen.dart';
 import 'grammar_path_screen.dart';
 import 'lesson_screen.dart';
+import 'reading_screen.dart';
 
 const _notesColor = Color(0xFF2F80ED);
 
@@ -48,7 +49,8 @@ class _NotesHome extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final p = ref.watch(progressProvider);
     final now = ref.watch(clockProvider)();
-    final due = dueWordCount(notes.words, p, now);
+    final words = dictionaryWords(notes, p);
+    final due = dueWordCount(words, p, now);
     final learned = learnedWordCount(p);
     final wroteToday = p.diary.containsKey(dayKey(now));
 
@@ -92,6 +94,8 @@ class _NotesHome extends ConsumerWidget {
         const SizedBox(height: 16),
         _GrammarPathCard(notes: notes),
         const SizedBox(height: 10),
+        const ReadingEntryCard(),
+        const SizedBox(height: 10),
         _BigAction(
           icon: Icons.style_rounded,
           color: _notesColor,
@@ -99,7 +103,7 @@ class _NotesHome extends ConsumerWidget {
           subtitle: due > 0 ? '$due kelimenin tekrar zamanı geldi' : 'Yeni kelimelerle başla',
           badge: due > 0 ? '$due' : null,
           onTap: () {
-            final list = wordsToReview(notes.words, ref.read(progressProvider), now);
+            final list = wordsToReview(words, ref.read(progressProvider), now);
             _push(context, FlashcardScreen(words: list), dialog: true);
           },
         ),
@@ -113,7 +117,7 @@ class _NotesHome extends ConsumerWidget {
             LessonScreen(
               nodeId: 'notes_quiz',
               title: 'Kelime testi',
-              items: wordQuizItems(notes.words),
+              items: wordQuizItems(words),
               color: Brand.accent,
               mode: LessonMode.practice,
             ),
@@ -131,7 +135,7 @@ class _NotesHome extends ConsumerWidget {
           icon: Icons.translate_rounded,
           color: Brand.success,
           title: 'Sözlüğüm',
-          subtitle: '${notes.words.length} kelime, konulara göre, hafıza hikâyelerinle',
+          subtitle: '${words.length} kelime, konulara göre, hafıza hikâyelerinle',
           onTap: () => _push(context, WordListScreen(notes: notes)),
         ),
         _BigAction(
@@ -429,16 +433,21 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final words = widget.notes.words;
+    final p = ref.watch(progressProvider);
+    final words = dictionaryWords(widget.notes, p);
     final topics = {for (final w in words) w.topic}.toList()..sort();
     final q = _query.toLowerCase();
     final shown = words
         .where((w) => _topic == null || w.topic == _topic)
         .where((w) => q.isEmpty || w.en.toLowerCase().contains(q) || w.tr.toLowerCase().contains(q))
         .toList();
-    final p = ref.watch(progressProvider);
     return Scaffold(
       appBar: AppBar(title: Text('Sözlüğüm (${words.length})')),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => showAddWordDialog(context),
+        icon: const Icon(Icons.add_rounded),
+        label: const Text('Kelime ekle'),
+      ),
       body: Column(
         children: [
           Padding(
@@ -485,16 +494,14 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
                 color: _notesColor,
                 onPressed: () => _push(
                   context,
-                  FlashcardScreen(
-                    words: wordsToReview(widget.notes.words, p, ref.read(clockProvider)(), topic: _topic),
-                  ),
+                  FlashcardScreen(words: wordsToReview(words, p, ref.read(clockProvider)(), topic: _topic)),
                   dialog: true,
                 ),
               ),
             ),
           Expanded(
             child: ListView.separated(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 88),
               itemCount: shown.length,
               separatorBuilder: (_, _) => const Divider(height: 1, color: Brand.line),
               itemBuilder: (_, i) {
@@ -550,6 +557,17 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
               Text('“${w.example}”', style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 16)),
             ],
             if (w.story != null) ...[const SizedBox(height: 12), Text('🧠 Hafıza hikâyen: ${w.story}')],
+            if (w.topic == customTopic) ...[
+              const SizedBox(height: 12),
+              TextButton.icon(
+                onPressed: () {
+                  ref.read(progressProvider.notifier).removeCustomWord(w.id);
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.delete_outline_rounded, color: Brand.error),
+                label: const Text('Sözlüğümden çıkar', style: TextStyle(color: Brand.error)),
+              ),
+            ],
           ],
         ),
       ),

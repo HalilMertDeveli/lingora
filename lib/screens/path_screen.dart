@@ -11,6 +11,7 @@ import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import 'lesson_screen.dart';
+import 'reading_screen.dart';
 import 'reminder_settings.dart';
 import 'speed_match_screen.dart';
 import 'story_screen.dart';
@@ -84,6 +85,8 @@ class _PathListState extends ConsumerState<_PathList> {
         const _DailyGoalCard(),
         const SizedBox(height: 12),
         _PracticeRow(course: course),
+        const SizedBox(height: 10),
+        const ReadingEntryCard(),
         const SizedBox(height: 20),
         for (final unit in course.units) ...[
           _UnitHeader(unit: unit, index: course.units.indexOf(unit) + 1),
