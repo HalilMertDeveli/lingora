@@ -2472,6 +2472,127 @@
   ]
  },
  {
+  "id": "lx_future_present_forms",
+  "title": "Gelecek için Present Simple (Tarifeler), Present Continuous (Planlar) ve Be about to",
+  "category": "Zamanlar",
+  "source": "Lingora ekledi",
+  "body": "Türkçede gelecekten bahsederken sık sık şimdiki zamanı kullanırız: 'Yarın İzmir'e gidiyorum.' İngilizcede de bu mümkündür, ama hangi zamanın kullanılacağı durumun türüne bağlıdır.\n\nPresent Continuous (am/is/are + V-ing), önceden ayarlanmış kişisel planlar için kullanılır: biriyle buluşma, bilet alınmış bir yolculuk, kararlaştırılmış bir düğün. Genellikle bir zaman ifadesiyle birlikte gelir (tomorrow, next week, on Friday).\n\nPresent Simple ise tarifeler, programlar ve takvimler için kullanılır: trenin kalkış saati, filmin başlama saati, dönemin başlangıcı. Bu olaylar kişinin isteğine değil, resmî bir programa bağlıdır.\n\nBe about to + V1 ise 'tam … mek üzere' demektir; bir şey birazdan, hemen olacaktır. Geçmişte was/were about to = 'tam … ecektim'. Tipik hatalar: kişisel planlar için Present Simple kullanmak (Tomorrow I meet Selin → I'm meeting Selin tomorrow) ve be about to ile tomorrow gibi uzak zaman ifadeleri kullanmak.",
+  "rules": [
+   "Kişisel plan: Subject + am/is/are + V-ing + zaman ifadesi",
+   "Tarife / program: Subject + V1(-s) + saat/tarih",
+   "Tarife sorusu: What time does + subject + V1?",
+   "Hemen olacak: Subject + am/is/are about to + V1 (… mek üzere)",
+   "Geçmiş: Subject + was/were about to + V1 (tam … ecektim)",
+   "Yaygın hata: Tomorrow I meet Selin → I'm meeting Selin tomorrow",
+   "Yaygın hata: The bus is about to leave tomorrow → The bus leaves tomorrow"
+  ],
+  "examples": [
+   {
+    "en": "The train leaves at 7:45 tomorrow morning.",
+    "tr": "Tren yarın sabah 7.45'te kalkıyor."
+   },
+   {
+    "en": "The meeting starts at nine on Monday.",
+    "tr": "Toplantı pazartesi saat dokuzda başlıyor."
+   },
+   {
+    "en": "What time does the film start tonight?",
+    "tr": "Film bu akşam saat kaçta başlıyor?"
+   },
+   {
+    "en": "Term begins on 15 September.",
+    "tr": "Dönem 15 Eylül'de başlıyor."
+   },
+   {
+    "en": "I'm meeting Selin for lunch tomorrow.",
+    "tr": "Yarın öğle yemeğinde Selin'le buluşuyorum."
+   },
+   {
+    "en": "We're flying to Antalya next weekend.",
+    "tr": "Gelecek hafta sonu Antalya'ya uçuyoruz."
+   },
+   {
+    "en": "What are you doing this evening?",
+    "tr": "Bu akşam ne yapıyorsun?"
+   },
+   {
+    "en": "My brother is getting married in June.",
+    "tr": "Kardeşim haziranda evleniyor."
+   },
+   {
+    "en": "Hurry up! The bus is about to leave.",
+    "tr": "Acele et! Otobüs kalkmak üzere."
+   },
+   {
+    "en": "I was about to call you.",
+    "tr": "Tam seni arayacaktım."
+   },
+   {
+    "en": "The concert is about to start; turn off your phone.",
+    "tr": "Konser başlamak üzere, telefonunu kapat."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_future_time_clauses",
+  "title": "Gelecekte Zaman Bildiren Cümleler: when / as soon as / until + Present Simple",
+  "category": "Zamanlar",
+  "source": "Lingora ekledi",
+  "body": "Türkçede gelecekten bahsederken zaman bildiren yan cümlede gelecek zaman eki kullanmayız: 'Eve gelince seni ararım', 'Bitirir bitirmez çıkacağım'. İngilizcede de mantık aynıdır: when, as soon as, until, before, after, once gibi zaman bağlaçlarından sonra gelecek anlam taşısa bile will kullanılmaz, Present Simple kullanılır.\n\nAna cümlede ise will, be going to, emir ya da can gibi yapılar olabilir: When I get home, I'll call you. Bağlaçlı kısım cümlenin başında da sonunda da olabilir; başta olduğunda araya virgül konur.\n\nEylemin diğerinden önce tamamlanacağını vurgulamak için Present Perfect de kullanılabilir: I'll give you the book after I've read it. Until 'e kadar' demektir ve ana cümle çoğu zaman olumsuz olur: I won't leave until you come back (Sen dönene kadar gitmeyeceğim).\n\nTürkçe bu konuda aslında bize yardım eder; ancak Türkler İngilizcede 'gelecek = will' kuralını fazla genelleyerek 'when I will arrive' gibi hatalar yapar. Unutmayın: zaman bağlacından sonra will yok.",
+  "rules": [
+   "when / as soon as / until / before / after / once + Present Simple",
+   "Ana cümle: will / be going to / emir / can",
+   "When + Present Simple, + will ...",
+   "Önce bitmiş eylem: after / when + Present Perfect",
+   "until = -e kadar (ana cümle genelde olumsuz)",
+   "Bağlaçlı kısım başta ise virgül",
+   "Yaygın hata: When I will arrive, I'll call you → When I arrive, I'll call you",
+   "Yaygın hata: until he will come → until he comes"
+  ],
+  "examples": [
+   {
+    "en": "I'll call you when I get home.",
+    "tr": "Eve gelince seni ararım."
+   },
+   {
+    "en": "As soon as the film ends, we'll leave.",
+    "tr": "Film biter bitmez çıkacağız."
+   },
+   {
+    "en": "Wait here until I come back.",
+    "tr": "Ben dönene kadar burada bekle."
+   },
+   {
+    "en": "Brush your teeth before you go to bed.",
+    "tr": "Yatmadan önce dişlerini fırçala."
+   },
+   {
+    "en": "After the class finishes, I'll go shopping.",
+    "tr": "Ders bittikten sonra alışverişe gideceğim."
+   },
+   {
+    "en": "Once you sign the contract, you can start.",
+    "tr": "Sözleşmeyi imzaladıktan sonra başlayabilirsin."
+   },
+   {
+    "en": "I won't decide until I talk to my wife.",
+    "tr": "Eşimle konuşana kadar karar vermeyeceğim."
+   },
+   {
+    "en": "Text me as soon as your plane lands.",
+    "tr": "Uçağın iner inmez bana mesaj at."
+   },
+   {
+    "en": "I'll lend you the book after I've finished it.",
+    "tr": "Kitabı bitirdikten sonra sana ödünç vereceğim."
+   },
+   {
+    "en": "When she graduates, she is going to travel.",
+    "tr": "Mezun olunca seyahat edecek."
+   }
+  ]
+ },
+ {
   "id": "tm_simple_present",
   "title": "Simple Present Tense (Geniş Zaman)",
   "category": "Zamanlar",
@@ -3330,6 +3451,422 @@
    {
     "en": "Where shall we go?",
     "tr": "Nereye gidelim?"
+   }
+  ]
+ },
+ {
+  "id": "lx_must_have_to",
+  "title": "Must / Have to / Mustn't / Don't have to: Zorunluluk ve Yasak",
+  "category": "Modallar",
+  "source": "Lingora ekledi",
+  "body": "Türkçede zorunluluğu -meli/-malı ya da 'zorunda olmak' ile söyleriz. İngilizcede bunun iki karşılığı vardır: must ve have to. Must daha çok konuşanın kendi hissettiği zorunluluktur (Annemi aramalıyım) ya da tabelalarda, resmi kurallarda görülür. Have to ise dışarıdan gelen zorunluluğu anlatır: kural, patron, okul, tarife.\n\nMust'ın geçmiş ve gelecek hâli yoktur. Geçmişte had to (zorunda kaldım), gelecekte will have to (zorunda kalacağım) kullanırız. Soru ve olumsuzda da günlük dilde genellikle have to tercih edilir: Do I have to...?\n\nEn önemli fark olumsuzdadır. Mustn't 'yasak, yapma' demektir (-mamalısın, yapmak yasak). Don't have to ise 'zorunda değilsin, gerek yok' demektir; istersen yapabilirsin. Bu ikisinin anlamı birbirine çok uzaktır.\n\nTürk öğrencilerin tipik hatası 'gelmek zorunda değilsin' demek isterken 'You mustn't come' demektir. Bu cümle 'gelmemelisin, gelmen yasak' anlamına gelir. Doğrusu: You don't have to come.",
+  "rules": [
+   "Olumlu: Subject + must + V1 / Subject + have to (has to) + V1",
+   "Geçmiş: Subject + had to + V1 (must'ın geçmişi yoktur)",
+   "Gelecek: Subject + will have to + V1",
+   "Yasak: Subject + mustn't + V1 (= -mamalı, yasak)",
+   "Gereksizlik: Subject + don't/doesn't have to + V1 (= zorunda değil)",
+   "Soru: Do/Does + subject + have to + V1?",
+   "Yaygın hata: You mustn't come (gelmen yasak) → You don't have to come (gelmek zorunda değilsin)",
+   "Yaygın hata: I must went / I musted → I had to go"
+  ],
+  "examples": [
+   {
+    "en": "I must call my mother tonight.",
+    "tr": "Bu akşam annemi aramalıyım."
+   },
+   {
+    "en": "We have to wear a uniform at work.",
+    "tr": "İşte üniforma giymek zorundayız."
+   },
+   {
+    "en": "She has to get up at six every day.",
+    "tr": "Her gün saat altıda kalkmak zorunda."
+   },
+   {
+    "en": "You mustn't smoke in the hospital.",
+    "tr": "Hastanede sigara içmemelisin."
+   },
+   {
+    "en": "You don't have to bring anything to the party.",
+    "tr": "Partiye bir şey getirmek zorunda değilsin."
+   },
+   {
+    "en": "Students mustn't use their phones during the exam.",
+    "tr": "Öğrenciler sınav sırasında telefonlarını kullanmamalı."
+   },
+   {
+    "en": "I had to work late yesterday.",
+    "tr": "Dün geç saate kadar çalışmak zorunda kaldım."
+   },
+   {
+    "en": "Do we have to finish this report today?",
+    "tr": "Bu raporu bugün bitirmek zorunda mıyız?"
+   },
+   {
+    "en": "He doesn't have to work on Saturdays.",
+    "tr": "Cumartesileri çalışmak zorunda değil."
+   },
+   {
+    "en": "You must see this film; it's great.",
+    "tr": "Bu filmi mutlaka görmelisin, harika."
+   },
+   {
+    "en": "We will have to leave early tomorrow.",
+    "tr": "Yarın erken çıkmak zorunda kalacağız."
+   }
+  ]
+ },
+ {
+  "id": "lx_should_ought_had_better",
+  "title": "Should / Ought to / Had better: Tavsiye ve Uyarı",
+  "category": "Modallar",
+  "source": "Lingora ekledi",
+  "body": "Birine tavsiye verirken Türkçede yine -meli/-malı kullanırız: 'Daha çok su içmelisin.' İngilizcede bunun en yaygın karşılığı should'dur. Should zorunluluk değil, öneridir; must kadar güçlü değildir. 'Bence...' anlamı katmak için çoğu zaman I think you should... deriz.\n\nOught to, should ile hemen hemen aynı anlamdadır ama daha resmîdir ve günlük konuşmada daha az kullanılır. Olumsuzu ought not to şeklindedir.\n\nHad better (kısaca 'd better) daha güçlü bir uyarıdır: 'Yapsan iyi olur, yoksa kötü bir şey olur.' Türkçedeki '-sen iyi olur' kalıbına çok yakındır. Görünüşte geçmiş zaman gibi dursa da anlamı şimdi ve gelecektir.\n\nTipik hatalar: had better'dan sonra to kullanmak (You had better to go) ya da olumsuzu yanlış kurmak (You hadn't better). Doğrusu: You'd better go / You'd better not go.",
+  "rules": [
+   "Tavsiye: Subject + should / shouldn't + V1",
+   "Resmî tavsiye: Subject + ought to / ought not to + V1",
+   "Uyarı: Subject + had better ('d better) + V1",
+   "Olumsuz uyarı: Subject + had better not + V1",
+   "Soru: Should + subject + V1? (… meli miyim?)",
+   "Yaygın hata: You had better to go → You'd better go",
+   "Yaygın hata: You hadn't better be late → You'd better not be late"
+  ],
+  "examples": [
+   {
+    "en": "You should drink more water.",
+    "tr": "Daha fazla su içmelisin."
+   },
+   {
+    "en": "You shouldn't work so hard.",
+    "tr": "Bu kadar çok çalışmamalısın."
+   },
+   {
+    "en": "Should I tell my boss about the problem?",
+    "tr": "Sorunu patronuma söylemeli miyim?"
+   },
+   {
+    "en": "We ought to visit our grandparents more often.",
+    "tr": "Büyükanne ve büyükbabamızı daha sık ziyaret etmeliyiz."
+   },
+   {
+    "en": "You'd better take an umbrella; it's going to rain.",
+    "tr": "Şemsiye alsan iyi olur, yağmur yağacak."
+   },
+   {
+    "en": "We'd better hurry or we'll miss the train.",
+    "tr": "Acele etsek iyi olur, yoksa treni kaçıracağız."
+   },
+   {
+    "en": "You'd better not be late again.",
+    "tr": "Bir daha geç kalmasan iyi olur."
+   },
+   {
+    "en": "I think you should apply for that job.",
+    "tr": "Bence o işe başvurmalısın."
+   },
+   {
+    "en": "What time should we meet tomorrow?",
+    "tr": "Yarın saat kaçta buluşalım?"
+   },
+   {
+    "en": "You ought not to drive when you're tired.",
+    "tr": "Yorgunken araba kullanmamalısın."
+   }
+  ]
+ },
+ {
+  "id": "lx_can_could_may_request",
+  "title": "Can / Could / May: İzin İsteme ve Rica",
+  "category": "Modallar",
+  "source": "Lingora ekledi",
+  "body": "Türkçede izin isterken '-ebilir miyim?', rica ederken '-ebilir misin / -ir misiniz?' deriz. İngilizcede izin için Can I...?, Could I...?, May I...? kullanılır. Can en samimi, could daha kibar, may ise en resmî olanıdır.\n\nBirinden bir şey rica ederken Can you...? veya daha kibar olarak Could you...? deriz. Buradaki could geçmiş zaman değildir; sadece nezaket katar. Çok kibar bir seçenek de Would you mind + V-ing kalıbıdır.\n\nMay you...? diye rica cümlesi kurulmaz; may sadece I ve we ile izin isterken kullanılır. İzin verirken ya da reddederken ise can / can't kullanırız: You can sit here. / You can't park here.\n\nTipik hata, Could I...? sorusuna 'Yes, you could' diye cevap vermektir. Kısa ve doğal cevaplar: Yes, of course. / Sure. / Go ahead.",
+  "rules": [
+   "İzin isteme: Can / Could / May + I + V1? (samimi → resmî)",
+   "Rica: Can / Could + you + V1? (could daha kibar)",
+   "Çok kibar rica: Would you mind + V-ing?",
+   "İzin verme / reddetme: You can / can't + V1",
+   "Yaygın hata: May you help me? → Could you help me?",
+   "Yaygın hata: Could I...? — Yes, you could → Yes, of course / Sure"
+  ],
+  "examples": [
+   {
+    "en": "Can I open the window?",
+    "tr": "Pencereyi açabilir miyim?"
+   },
+   {
+    "en": "Could you help me carry this box?",
+    "tr": "Bu kutuyu taşımama yardım edebilir misiniz?"
+   },
+   {
+    "en": "May I use your phone, please?",
+    "tr": "Telefonunuzu kullanabilir miyim lütfen?"
+   },
+   {
+    "en": "Could you speak more slowly, please?",
+    "tr": "Daha yavaş konuşabilir misiniz lütfen?"
+   },
+   {
+    "en": "Can you pass me the salt?",
+    "tr": "Tuzu uzatır mısın?"
+   },
+   {
+    "en": "Could I leave work early today?",
+    "tr": "Bugün işten erken çıkabilir miyim?"
+   },
+   {
+    "en": "May I come in?",
+    "tr": "Girebilir miyim?"
+   },
+   {
+    "en": "Would you mind closing the door?",
+    "tr": "Kapıyı kapatır mısınız?"
+   },
+   {
+    "en": "You can sit here if you like.",
+    "tr": "İstersen buraya oturabilirsin."
+   },
+   {
+    "en": "Sorry, you can't park here.",
+    "tr": "Üzgünüm, buraya park edemezsiniz."
+   },
+   {
+    "en": "Can you send me the file by email?",
+    "tr": "Dosyayı bana e-postayla gönderebilir misin?"
+   }
+  ]
+ },
+ {
+  "id": "lx_may_might_could_possibility",
+  "title": "May / Might / Could: Olasılık (Şimdi ve Gelecek)",
+  "category": "Modallar",
+  "source": "Lingora ekledi",
+  "body": "Bir şeyin olabileceğini ama emin olmadığımızı söylerken Türkçede '-ebilir' ya da 'belki' kullanırız: 'Yarın yağmur yağabilir.' İngilizcede bunun karşılığı may, might ve could'dur. Üçü de yaklaşık yüzde elli ihtimal bildirir; might ve could biraz daha zayıf, may biraz daha resmî sayılır.\n\nBu modallar hem şimdiki hem gelecekteki olasılık için kullanılır: She might be at home now (şu an evde olabilir) / We might go to Izmir (İzmir'e gidebiliriz). Şu anda süren bir şey için might be + V-ing de diyebiliriz.\n\nOlumsuzda dikkat: may not ve might not '-meyebilir' demektir (gelmeyebilirim). Ama couldn't olasılık için 'imkânsız, olamaz' anlamına gelir; yani could not ile might not aynı şey değildir.\n\nTürklerin tipik hatası, belirli bir olay hakkında tahmin yaparken can kullanmaktır: It can rain tomorrow. Can genel olarak mümkün olanı anlatır; belirli tahmin için It may / might rain tomorrow denir. Ayrıca maybe (belki, zarf) ile may be (olabilir, fiil) karıştırılmamalıdır.",
+  "rules": [
+   "Olasılık: Subject + may / might / could + V1",
+   "Şu an süren olasılık: Subject + might + be + V-ing",
+   "Olumsuz olasılık: Subject + may not / might not + V1 (= -meyebilir)",
+   "Dikkat: couldn't = imkânsız, olamaz (might not ile aynı değil)",
+   "Yaygın hata: It can rain tomorrow → It might rain tomorrow",
+   "Yaygın hata: He may be comes → He may come / Maybe he comes"
+  ],
+  "examples": [
+   {
+    "en": "It may rain this afternoon.",
+    "tr": "Bu öğleden sonra yağmur yağabilir."
+   },
+   {
+    "en": "She might be at the library now.",
+    "tr": "Şu an kütüphanede olabilir."
+   },
+   {
+    "en": "I might not come to the meeting tomorrow.",
+    "tr": "Yarın toplantıya gelmeyebilirim."
+   },
+   {
+    "en": "The shop may be closed on Sunday.",
+    "tr": "Dükkân pazar günü kapalı olabilir."
+   },
+   {
+    "en": "That could be the answer to our problem.",
+    "tr": "Bu, sorunumuzun cevabı olabilir."
+   },
+   {
+    "en": "He may not know about the changes yet.",
+    "tr": "Değişikliklerden henüz haberi olmayabilir."
+   },
+   {
+    "en": "We might go to Izmir for the weekend.",
+    "tr": "Hafta sonu İzmir'e gidebiliriz."
+   },
+   {
+    "en": "Take a jacket; it could get cold tonight.",
+    "tr": "Ceket al, bu gece hava soğuyabilir."
+   },
+   {
+    "en": "The train might be a little late.",
+    "tr": "Tren biraz gecikebilir."
+   },
+   {
+    "en": "Ask Ali; he might know the password.",
+    "tr": "Ali'ye sor, şifreyi biliyor olabilir."
+   }
+  ]
+ },
+ {
+  "id": "lx_deduction_must_cant_might",
+  "title": "Tahmin Bildiren Modallar: Must be / Can't be / Might be",
+  "category": "Modallar",
+  "source": "Lingora ekledi",
+  "body": "Elimizdeki ipuçlarına bakarak mantıklı bir sonuç çıkardığımızda Türkçede '-meli/-malı' ya da 'olmalı' deriz: 'Bütün gün çalıştın, yorgun olmalısın.' İngilizcede de aynı şekilde must be kullanılır. Buradaki must zorunluluk değil, 'eminim ki' anlamında güçlü bir tahmindir.\n\nBir şeyin imkânsız olduğundan eminsek can't be kullanırız: 'O Murat olamaz, Londra'da.' Emin değilsek, sadece ihtimal görüyorsak might be, may be veya could be deriz (olabilir).\n\nŞu anda devam eden bir eylem için must be / can't be / might be + V-ing kullanılır: She must be working (çalışıyor olmalı).\n\nTürklerin en sık hatası, must be'nin olumsuzunu mustn't be ile yapmaktır. 'Evde olamaz' demek için He mustn't be at home değil, He can't be at home denir. Mustn't tahmin değil, yasak bildirir.",
+  "rules": [
+   "Güçlü tahmin (eminim): Subject + must be + sıfat/isim/yer",
+   "İmkânsızlık (olamaz): Subject + can't be + ...",
+   "Zayıf tahmin (olabilir): Subject + might / may / could be + ...",
+   "Süren eylem: Subject + must / can't / might + be + V-ing",
+   "Yaygın hata: He mustn't be at home → He can't be at home"
+  ],
+  "examples": [
+   {
+    "en": "You've worked all day; you must be tired.",
+    "tr": "Bütün gün çalıştın, yorgun olmalısın."
+   },
+   {
+    "en": "That can't be Murat; he's in London.",
+    "tr": "O Murat olamaz, Londra'da."
+   },
+   {
+    "en": "She must be at home; her car is outside.",
+    "tr": "Evde olmalı, arabası dışarıda."
+   },
+   {
+    "en": "The keys might be in your coat pocket.",
+    "tr": "Anahtarlar ceketinin cebinde olabilir."
+   },
+   {
+    "en": "This can't be the right address.",
+    "tr": "Bu doğru adres olamaz."
+   },
+   {
+    "en": "He must be joking!",
+    "tr": "Şaka yapıyor olmalı!"
+   },
+   {
+    "en": "They must be really happy with the result.",
+    "tr": "Sonuçtan gerçekten memnun olmalılar."
+   },
+   {
+    "en": "It can't be true; I saw him this morning.",
+    "tr": "Bu doğru olamaz, onu bu sabah gördüm."
+   },
+   {
+    "en": "Someone is at the door; it might be the courier.",
+    "tr": "Kapıda biri var, kurye olabilir."
+   },
+   {
+    "en": "She isn't answering; she must be in a meeting.",
+    "tr": "Cevap vermiyor, toplantıda olmalı."
+   }
+  ]
+ },
+ {
+  "id": "lx_past_modals",
+  "title": "Geçmiş Modallar: Should have / Must have / Could have / Might have / Can't have + V3",
+  "category": "Modallar",
+  "source": "Lingora ekledi",
+  "body": "Geçmişle ilgili pişmanlık, eleştiri veya tahmin bildirmek için modal + have + V3 yapısını kullanırız. Modal hiç değişmez; geçmiş anlamını have + V3 verir.\n\nShould have + V3 = '-meliydim / -meliydin': yapılması gerekirdi ama yapılmadı (pişmanlık ya da eleştiri). Shouldn't have + V3 = '-memeliydin': yapıldı ama yapılmamalıydı.\n\nMust have + V3 = '-miş olmalı' (geçmişle ilgili güçlü tahmin). Can't have + V3 = '-miş olamaz'. Might have / may have + V3 = '-miş olabilir'. Could have + V3 ise çoğunlukla '-ebilirdi' anlamındadır: o imkân vardı ama kullanılmadı (We could have taken a taxi).\n\nTürklerin tipik hatası, geçmişteki zorunluluk için must have kullanmaktır. 'Erken kalkmak zorunda kaldım' I must have got up early değil, I had to get up early olur. Ayrıca konuşmada duyulan should've bazen yanlışlıkla should of diye yazılır; doğrusu should have'dir.",
+  "rules": [
+   "Pişmanlık / eleştiri: Subject + should have / shouldn't have + V3 (-meliydi)",
+   "Güçlü tahmin: Subject + must have + V3 (-miş olmalı)",
+   "İmkânsızlık: Subject + can't have / couldn't have + V3 (-miş olamaz)",
+   "Olasılık: Subject + might have / may have + V3 (-miş olabilir)",
+   "Kullanılmayan imkân: Subject + could have + V3 (-ebilirdi)",
+   "Yaygın hata: I must have worked late yesterday (zorunluluk) → I had to work late yesterday",
+   "Yaygın hata: should of / I should went → should have gone"
+  ],
+  "examples": [
+   {
+    "en": "I should have studied harder for the exam.",
+    "tr": "Sınava daha çok çalışmalıydım."
+   },
+   {
+    "en": "You shouldn't have said that to her.",
+    "tr": "Ona bunu söylememeliydin."
+   },
+   {
+    "en": "He must have missed the bus.",
+    "tr": "Otobüsü kaçırmış olmalı."
+   },
+   {
+    "en": "She can't have finished the project already.",
+    "tr": "Projeyi şimdiden bitirmiş olamaz."
+   },
+   {
+    "en": "They might have gone home early.",
+    "tr": "Eve erken gitmiş olabilirler."
+   },
+   {
+    "en": "We could have taken a taxi, but we walked.",
+    "tr": "Taksiye binebilirdik ama yürüdük."
+   },
+   {
+    "en": "You could have told me earlier!",
+    "tr": "Bana daha önce söyleyebilirdin!"
+   },
+   {
+    "en": "I may have left my wallet at the café.",
+    "tr": "Cüzdanımı kafede bırakmış olabilirim."
+   },
+   {
+    "en": "The ground is wet; it must have rained.",
+    "tr": "Yer ıslak, yağmur yağmış olmalı."
+   },
+   {
+    "en": "He can't have seen us; it was too dark.",
+    "tr": "Bizi görmüş olamaz, hava çok karanlıktı."
+   },
+   {
+    "en": "We should have booked a table.",
+    "tr": "Masa ayırtmalıydık."
+   }
+  ]
+ },
+ {
+  "id": "lx_need_neednt",
+  "title": "Need / Needn't / Don't need to / Needn't have done",
+  "category": "Modallar",
+  "source": "Lingora ekledi",
+  "body": "Türkçede '-mem gerekiyor', '-mene gerek yok' ya da 'ihtiyacım var' deriz. İngilizcede need iki şekilde kullanılır. Birincisi normal fiil olarak: need + isim (ihtiyacı var) veya need to + V1 (-mesi gerekiyor). Bu durumda do/does/did ile soru ve olumsuz yapılır: Do I need to...? / You don't need to...\n\nİkincisi modal olarak, özellikle olumsuzda: needn't + V1. Modal olduğu için to almaz ve üçüncü tekil şahısta -s almaz: He needn't come. Anlamı don't need to ile aynıdır: 'gerek yok'. Needn't biraz daha İngiliz İngilizcesine ve resmî dile yakındır.\n\nGeçmişte iki farklı anlam vardır. Didn't need to + V1 genellikle 'gerek yoktu, (o yüzden) yapmadım' demektir. Needn't have + V3 ise 'yaptım ama gerek yokmuş' anlamına gelir: We needn't have hurried (acele ettik ama gerek yokmuş).\n\nTipik hatalar: needn't'tan sonra to kullanmak (You needn't to come) ya da need'den sonra to'yu unutmak (He needs go). Ayrıca need + V-ing edilgen anlam taşır: My car needs washing (arabanın yıkanması gerek).",
+  "rules": [
+   "İhtiyaç: Subject + need(s) + isim",
+   "Gereklilik: Subject + need(s) to + V1",
+   "Gerek yok: Subject + don't/doesn't need to + V1 = Subject + needn't + V1",
+   "Geçmiş, yapılmadı: Subject + didn't need to + V1",
+   "Geçmiş, yapıldı ama gereksizdi: Subject + needn't have + V3",
+   "Edilgen anlam: Something + needs + V-ing (needs washing)",
+   "Yaygın hata: You needn't to come → You needn't come",
+   "Yaygın hata: He needs go → He needs to go"
+  ],
+  "examples": [
+   {
+    "en": "I need to buy a new laptop.",
+    "tr": "Yeni bir dizüstü bilgisayar almam gerekiyor."
+   },
+   {
+    "en": "You don't need to wait for me.",
+    "tr": "Beni beklemene gerek yok."
+   },
+   {
+    "en": "You needn't worry about the money.",
+    "tr": "Para konusunda endişelenmene gerek yok."
+   },
+   {
+    "en": "Do I need to bring my passport?",
+    "tr": "Pasaportumu getirmem gerekiyor mu?"
+   },
+   {
+    "en": "She doesn't need to come to the office tomorrow.",
+    "tr": "Yarın ofise gelmesine gerek yok."
+   },
+   {
+    "en": "We needn't have hurried; the film started late.",
+    "tr": "Acele etmemize gerek yokmuş, film geç başladı."
+   },
+   {
+    "en": "I didn't need to take a taxi, so I walked.",
+    "tr": "Taksiye binmeme gerek yoktu, o yüzden yürüdüm."
+   },
+   {
+    "en": "You needn't have bought flowers, but thank you!",
+    "tr": "Çiçek almana gerek yoktu ama teşekkürler!"
+   },
+   {
+    "en": "My car needs washing.",
+    "tr": "Arabamın yıkanması gerekiyor."
+   },
+   {
+    "en": "He needs a long holiday.",
+    "tr": "Uzun bir tatile ihtiyacı var."
    }
   ]
  },
@@ -4220,6 +4757,183 @@
   ]
  },
  {
+  "id": "lx_b_some_any_no_none",
+  "title": "Some / Any / No / None",
+  "category": "İsimler ve Zamirler",
+  "source": "Lingora ekledi",
+  "body": "Türkçede 'biraz', 'birkaç', 'hiç' gibi kelimeler bu görevleri paylaşır. İngilizcede some genellikle olumlu cümlelerde 'biraz, birkaç' anlamında kullanılır: I have some questions.\n\nAny olumsuz cümlelerde ve sorularda kullanılır: I don't have any money (Hiç param yok). Do you have any questions? İkram ederken ya da bir şey isterken soruda bile some kullanılır: Would you like some tea? Olumlu cümlede any 'herhangi bir, hangisi olursa' anlamı verir: Take any seat.\n\nNo, isimden önce gelir ve fiil olumlu kalır: I have no time = I don't have any time. None ise tek başına durur ya da none of ile kullanılır: None of my friends came.\n\nTürklerin tipik hatası çift olumsuz kurmaktır: 'I don't have no money'. Türkçede 'hiç yok' olumsuzluğu iki kez söyler ama İngilizcede tek olumsuzluk yeterlidir. Ayrıca no tek başına cevap olarak kullanılmaz; 'How many?' sorusuna 'None.' denir.",
+  "rules": [
+   "Olumlu: some + isim (some water, some books)",
+   "Olumsuz / soru: any + isim",
+   "İkram ve rica: Would you like some ...? / Can I have some ...?",
+   "Olumlu cümlede any = herhangi bir",
+   "no + isim (fiil olumlu): I have no idea",
+   "none / none of + the/my + isim",
+   "Yaygın hata: I don't have no time → I don't have any time / I have no time",
+   "Yaygın hata: No of them → None of them"
+  ],
+  "examples": [
+   {
+    "en": "I bought some bread on the way home.",
+    "tr": "Eve gelirken biraz ekmek aldım."
+   },
+   {
+    "en": "We don't have any milk left.",
+    "tr": "Hiç sütümüz kalmadı."
+   },
+   {
+    "en": "Do you have any questions about the project?",
+    "tr": "Proje hakkında sorunuz var mı?"
+   },
+   {
+    "en": "Would you like some coffee?",
+    "tr": "Biraz kahve ister misiniz?"
+   },
+   {
+    "en": "You can call me any time.",
+    "tr": "Beni istediğin zaman arayabilirsin."
+   },
+   {
+    "en": "There is no sugar in my tea.",
+    "tr": "Çayımda hiç şeker yok."
+   },
+   {
+    "en": "None of the students knew the answer.",
+    "tr": "Öğrencilerin hiçbiri cevabı bilmiyordu."
+   },
+   {
+    "en": "I have no idea where my keys are.",
+    "tr": "Anahtarlarımın nerede olduğu hakkında hiçbir fikrim yok."
+   },
+   {
+    "en": "Some of my colleagues work from home.",
+    "tr": "İş arkadaşlarımın bazıları evden çalışıyor."
+   },
+   {
+    "en": "How many tickets are left? None.",
+    "tr": "Kaç bilet kaldı? Hiç."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_quantifiers",
+  "title": "Much / Many / A lot of / (A) Few / (A) Little",
+  "category": "İsimler ve Zamirler",
+  "source": "Lingora ekledi",
+  "body": "Türkçede 'çok' ve 'az' her isimle kullanılır: çok su, çok kitap. İngilizcede seçim ismin sayılabilir olup olmamasına bağlıdır. Sayılabilen çoğul isimlerle many ve few, sayılamayan isimlerle much ve little kullanılır.\n\nMuch ve many daha çok soru ve olumsuz cümlelerde doğal durur: How many people? I don't have much time. Olumlu cümlelerde ise a lot of / lots of daha yaygındır ve her iki tür isimle de kullanılır: a lot of people, a lot of work.\n\nA few ve a little 'birkaç, biraz' anlamında olumlu bir anlam taşır: yeterli olmasa da var. Few ve little (a olmadan) ise 'çok az, neredeyse hiç' anlamında olumsuz bir vurgu yapar: Few people came (Pek az kişi geldi, hayal kırıklığı).\n\nTürklerin sık hatası 'much people' veya 'many money' demektir. Information, advice, news, furniture, homework gibi kelimeler İngilizcede sayılamaz; bu yüzden much information denir, many informations denmez.",
+  "rules": [
+   "Sayılabilen çoğul: many / a few / few + isim",
+   "Sayılamayan: much / a little / little + isim",
+   "a lot of / lots of: iki türle de, özellikle olumlu cümlede",
+   "How many + sayılabilen? / How much + sayılamayan?",
+   "a few / a little = biraz var (olumlu)",
+   "few / little = neredeyse hiç (olumsuz vurgu)",
+   "Yaygın hata: much people → many people / a lot of people",
+   "Yaygın hata: many informations → much information"
+  ],
+  "examples": [
+   {
+    "en": "How many languages do you speak?",
+    "tr": "Kaç dil konuşuyorsun?"
+   },
+   {
+    "en": "I don't have much time this morning.",
+    "tr": "Bu sabah pek vaktim yok."
+   },
+   {
+    "en": "There were a lot of people at the concert.",
+    "tr": "Konserde çok insan vardı."
+   },
+   {
+    "en": "We still have a few minutes before the train.",
+    "tr": "Trenden önce hâlâ birkaç dakikamız var."
+   },
+   {
+    "en": "Can I have a little milk in my coffee?",
+    "tr": "Kahveme biraz süt alabilir miyim?"
+   },
+   {
+    "en": "Few people understood his speech.",
+    "tr": "Konuşmasını pek az kişi anladı."
+   },
+   {
+    "en": "There is little hope of finding the wallet.",
+    "tr": "Cüzdanı bulma umudu çok az."
+   },
+   {
+    "en": "How much does this jacket cost?",
+    "tr": "Bu ceket ne kadar?"
+   },
+   {
+    "en": "The teacher gave us a lot of homework.",
+    "tr": "Öğretmen bize çok ödev verdi."
+   },
+   {
+    "en": "I need some information about the course.",
+    "tr": "Kurs hakkında biraz bilgiye ihtiyacım var."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_all_both_each_every",
+  "title": "All / Both / Each / Every / Either / Neither",
+  "category": "İsimler ve Zamirler",
+  "source": "Lingora ekledi",
+  "body": "Bu kelimeler bir gruptaki kişi ya da şeylerin hangisini kapsadığımızı gösterir. Both, either ve neither yalnızca İKİ şey için kullanılır: both (ikisi de), either (ikisinden biri, hangisi olursa), neither (hiçbiri, ikisi de değil). All ise üç ve daha fazlası için 'hepsi' anlamındadır.\n\nEach ve every 'her' demektir ve tekil isim ile tekil fiil alır: Every student has a book. Each, grubun üyelerini tek tek düşündüğümüzde kullanılır ve iki şey için de olabilir; every ise grubu bütün olarak görür ve en az üç şey için kullanılır.\n\nNeither olumsuz anlam taşıdığı için fiil olumlu kalır: Neither answer is correct. Türkçede 'ikisi de doğru değil' deriz; bu yüzden Türkler sık sık 'Neither answer isn't correct' diye çift olumsuz kurar. Ayrıca both of, all of, each of, neither of + the/my/them yapıları da yaygındır.\n\nTürklerin bir diğer hatası, Türkçedeki 'her öğrenciler' benzeri düşünceyle every'den sonra çoğul isim kullanmaktır: every students yanlıştır.",
+  "rules": [
+   "İki şey: both / either / neither",
+   "Üç ve fazlası: all",
+   "each / every + tekil isim + tekil fiil",
+   "both of / all of / each of / neither of + the/my/them",
+   "Neither + olumlu fiil (anlam zaten olumsuz)",
+   "either ... or / neither ... nor / both ... and",
+   "Yaygın hata: every students → every student",
+   "Yaygın hata: Neither of them didn't come → Neither of them came"
+  ],
+  "examples": [
+   {
+    "en": "Both of my sisters live in Izmir.",
+    "tr": "Kız kardeşlerimin ikisi de İzmir'de yaşıyor."
+   },
+   {
+    "en": "All the shops close at nine.",
+    "tr": "Bütün dükkanlar dokuzda kapanıyor."
+   },
+   {
+    "en": "Every employee has a parking card.",
+    "tr": "Her çalışanın bir otopark kartı var."
+   },
+   {
+    "en": "Each room has its own bathroom.",
+    "tr": "Her odanın kendi banyosu var."
+   },
+   {
+    "en": "You can sit on either side.",
+    "tr": "İki taraftan birine oturabilirsin."
+   },
+   {
+    "en": "Neither of them knew the address.",
+    "tr": "İkisi de adresi bilmiyordu."
+   },
+   {
+    "en": "We can meet on either Monday or Tuesday.",
+    "tr": "Pazartesi ya da salı buluşabiliriz."
+   },
+   {
+    "en": "Neither the bus nor the train was on time.",
+    "tr": "Ne otobüs ne de tren zamanında geldi."
+   },
+   {
+    "en": "I go to the gym every morning.",
+    "tr": "Her sabah spor salonuna giderim."
+   },
+   {
+    "en": "The teacher spoke to each student separately.",
+    "tr": "Öğretmen her öğrenciyle ayrı ayrı konuştu."
+   }
+  ]
+ },
+ {
   "id": "yt_plural_nouns",
   "title": "Çoğul İsimler ve Be Fiili",
   "category": "İsimler ve Zamirler",
@@ -4769,6 +5483,126 @@
   ]
  },
  {
+  "id": "lx_b_comparatives",
+  "title": "Sıfatlarda Karşılaştırma (-er / more ... than / as ... as)",
+  "category": "Sıfat ve Zarflar",
+  "source": "Lingora ekledi",
+  "body": "Türkçede iki şeyi karşılaştırırken 'daha' kelimesini ve '-den' ekini kullanırız: 'Ali Ayşe'den daha uzun.' İngilizcede 'daha' anlamı sıfatın kendisine eklenir, '-den' karşılığı ise than kelimesidir: Ali is taller than Ayşe.\n\nTek heceli sıfatlar ve -y ile biten iki heceli sıfatlar -er alır: cheap → cheaper, big → bigger, easy → easier. Daha uzun sıfatlarda sıfatın önüne more gelir: expensive → more expensive, comfortable → more comfortable.\n\nEşitlik için as ... as kalıbı kullanılır: 'onun kadar hızlı' = as fast as him. Olumsuzu not as ... as olur ve 'o kadar ... değil' anlamı verir. 'Daha az' demek için less + sıfat kullanılır: less expensive (daha az pahalı), ama günlük dilde not as expensive as daha doğaldır.\n\nTürklerin en sık yaptığı hata, -er ile more'u birlikte kullanmaktır (more cheaper). Bir başka hata da than yerine 'from' demektir; çünkü '-den' eki aklımıza from'u getirir.",
+  "rules": [
+   "Kısa sıfat + -er + than: cheaper than, bigger than",
+   "more + uzun sıfat + than: more expensive than",
+   "-y ile biten: easy → easier, happy → happier",
+   "Eşitlik: as + sıfat + as",
+   "Olumsuz eşitlik: not as + sıfat + as",
+   "Daha az: less + sıfat + than",
+   "Pekiştirme: much / a lot / a bit + karşılaştırma (much cheaper)",
+   "Yaygın hata: more cheaper → cheaper",
+   "Yaygın hata: taller from me → taller than me"
+  ],
+  "examples": [
+   {
+    "en": "My new phone is lighter than the old one.",
+    "tr": "Yeni telefonum eskisinden daha hafif."
+   },
+   {
+    "en": "The train is more comfortable than the bus.",
+    "tr": "Tren otobüsten daha rahat."
+   },
+   {
+    "en": "This exam was easier than I expected.",
+    "tr": "Bu sınav beklediğimden daha kolaydı."
+   },
+   {
+    "en": "Istanbul is much bigger than Bursa.",
+    "tr": "İstanbul Bursa'dan çok daha büyük."
+   },
+   {
+    "en": "My brother is as tall as my father.",
+    "tr": "Kardeşim babam kadar uzun."
+   },
+   {
+    "en": "The second hotel wasn't as clean as the first.",
+    "tr": "İkinci otel ilki kadar temiz değildi."
+   },
+   {
+    "en": "This laptop is less expensive than that one.",
+    "tr": "Bu dizüstü bilgisayar şundan daha ucuz."
+   },
+   {
+    "en": "Could you speak a bit more slowly?",
+    "tr": "Biraz daha yavaş konuşabilir misiniz?"
+   },
+   {
+    "en": "Her English is better than mine now.",
+    "tr": "Onun İngilizcesi artık benimkinden daha iyi."
+   },
+   {
+    "en": "The meeting took longer than we planned.",
+    "tr": "Toplantı planladığımızdan daha uzun sürdü."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_superlatives",
+  "title": "Üstünlük Derecesi (the -est / the most / the more ... the more)",
+  "category": "Sıfat ve Zarflar",
+  "source": "Lingora ekledi",
+  "body": "Türkçede bir grubun içinde en üst dereceyi 'en' kelimesiyle anlatırız: 'sınıfın en çalışkan öğrencisi'. İngilizcede kısa sıfatlara -est, uzun sıfatlara the most getirilir ve önüne neredeyse her zaman the gelir: the cheapest, the most beautiful.\n\nBazı sıfatlar düzensizdir ve ezberlenmelidir: good → better → the best, bad → worse → the worst, far → further/farther → the furthest/farthest. Many/much → more → the most ve little → less → the least de bu gruptadır.\n\nGrubu belirtirken yer ve topluluklar için in, sayılan şeyler için of kullanılır: the best player in the team, the oldest of the three. Türkçedeki '-in en ...' yapısı bizi her zaman of kullanmaya iter; bu yaygın bir hatadır.\n\nThe more ... the more kalıbı 'ne kadar çok ..., o kadar ...' anlamına gelir: The more you practise, the better you get. Her iki tarafta da the bulunur ve ikinci kısım sıfatın karşılaştırma halidir.",
+  "rules": [
+   "the + kısa sıfat + -est: the cheapest",
+   "the most + uzun sıfat: the most expensive",
+   "good → better → the best",
+   "bad → worse → the worst",
+   "far → further → the furthest",
+   "Grup: in + yer/topluluk, of + sayılan şeyler",
+   "The + karşılaştırma ..., the + karşılaştırma ...",
+   "Yaygın hata: the most cheapest → the cheapest",
+   "Yaygın hata: the best student of the class → the best student in the class"
+  ],
+  "examples": [
+   {
+    "en": "This is the cheapest restaurant in the area.",
+    "tr": "Burası bölgedeki en ucuz restoran."
+   },
+   {
+    "en": "She is the most experienced person on our team.",
+    "tr": "O ekibimizdeki en deneyimli kişi."
+   },
+   {
+    "en": "That was the worst film I've ever seen.",
+    "tr": "Şimdiye kadar izlediğim en kötü filmdi."
+   },
+   {
+    "en": "Who is the best player in your class?",
+    "tr": "Sınıfınızdaki en iyi oyuncu kim?"
+   },
+   {
+    "en": "Ankara is the furthest city we visited.",
+    "tr": "Ankara ziyaret ettiğimiz en uzak şehir."
+   },
+   {
+    "en": "He is the youngest of the three brothers.",
+    "tr": "O üç kardeşin en küçüğü."
+   },
+   {
+    "en": "Today was the hottest day of the year.",
+    "tr": "Bugün yılın en sıcak günüydü."
+   },
+   {
+    "en": "The more you read, the more you learn.",
+    "tr": "Ne kadar çok okursan o kadar çok öğrenirsin."
+   },
+   {
+    "en": "The sooner we start, the better.",
+    "tr": "Ne kadar erken başlarsak o kadar iyi."
+   },
+   {
+    "en": "This is the least important part of the report.",
+    "tr": "Bu, raporun en az önemli kısmı."
+   }
+  ]
+ },
+ {
   "id": "tm_linking_verbs",
   "title": "Linking Verb + Sıfat, Action Verb + Zarf",
   "category": "Sıfat ve Zarflar",
@@ -5067,6 +5901,73 @@
    {
     "en": "He has a house among the trees.",
     "tr": "Ağaçların arasında bir evi var."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_dependent_prepositions",
+  "title": "Edat Alan Sıfat ve Fiiller (interested in, good at, depend on)",
+  "category": "Edatlar",
+  "source": "Lingora ekledi",
+  "body": "Bazı sıfat ve fiiller İngilizcede belirli bir edatla birlikte kullanılır ve bu edat çoğunlukla mantıkla değil ezberle öğrenilir. Türkçede aynı anlamı hal ekleriyle veririz: 'müziğe ilgi duymak' (-e), 'matematikte iyi' (-de), 'köpekten korkmak' (-den). Ama İngilizcedeki edat Türkçedeki ekle her zaman eşleşmez.\n\nSık kullanılan sıfatlar: interested in, good at, bad at, afraid of, proud of, tired of, full of, fond of, responsible for, famous for, similar to, married to, different from, angry with (kişi) / angry about (durum), worried about, excited about.\n\nSık kullanılan fiiller: depend on, rely on, focus on, listen to, belong to, wait for, apply for, pay for, look for, ask for, agree with, deal with, think about, worry about, believe in, succeed in, consist of.\n\nTürklerin tipik hataları Türkçedeki eki birebir çevirmekten gelir: 'depend from' (bağlı olmak '-e' olduğu halde from seçilir), 'listen music' (to unutulur), 'married with' (doğrusu married to), 'good in math' (doğrusu good at). Edattan sonra fiil gelirse -ing alır: I'm interested in learning Spanish.",
+  "rules": [
+   "Sıfat + edat: interested in, good at, afraid of, proud of",
+   "Sıfat + edat: responsible for, similar to, different from, married to",
+   "Fiil + edat: depend on, rely on, listen to, belong to",
+   "Fiil + edat: wait for, apply for, pay for, agree with, believe in",
+   "Edattan sonra fiil → V-ing: good at cooking",
+   "Yaygın hata: depend from → depend on",
+   "Yaygın hata: listen music → listen to music",
+   "Yaygın hata: married with → married to"
+  ],
+  "examples": [
+   {
+    "en": "I'm very interested in modern art.",
+    "tr": "Modern sanata çok ilgi duyuyorum."
+   },
+   {
+    "en": "My sister is good at solving puzzles.",
+    "tr": "Kız kardeşim bulmaca çözmekte iyidir."
+   },
+   {
+    "en": "Many children are afraid of the dark.",
+    "tr": "Birçok çocuk karanlıktan korkar."
+   },
+   {
+    "en": "Our plans depend on the weather.",
+    "tr": "Planlarımız havaya bağlı."
+   },
+   {
+    "en": "I usually listen to podcasts on the bus.",
+    "tr": "Otobüste genellikle podcast dinlerim."
+   },
+   {
+    "en": "We waited for the bus for half an hour.",
+    "tr": "Otobüsü yarım saat bekledik."
+   },
+   {
+    "en": "She applied for a job at a bank.",
+    "tr": "Bir bankadaki işe başvurdu."
+   },
+   {
+    "en": "Who is responsible for this project?",
+    "tr": "Bu projeden kim sorumlu?"
+   },
+   {
+    "en": "His parents are very proud of him.",
+    "tr": "Ailesi onunla çok gurur duyuyor."
+   },
+   {
+    "en": "I completely agree with you.",
+    "tr": "Sana tamamen katılıyorum."
+   },
+   {
+    "en": "This phone is similar to mine.",
+    "tr": "Bu telefon benimkine benziyor."
+   },
+   {
+    "en": "I'm tired of waiting in queues.",
+    "tr": "Kuyrukta beklemekten bıktım."
    }
   ]
  },
@@ -6341,6 +7242,131 @@
   ]
  },
  {
+  "id": "lx_b_inversion",
+  "title": "Devrik Cümle (Inversion): Never, Not only, No sooner, Had I known",
+  "category": "Cümle Yapısı",
+  "source": "Lingora ekledi",
+  "body": "Devrik cümlede, olumsuz ya da kısıtlayıcı bir ifade cümlenin başına alınır ve ardından soru cümlesindeki gibi yardımcı fiil özneden önce gelir. Bu yapı resmi, yazılı ya da vurgulu anlatımda kullanılır; günlük konuşmada daha seyrektir. Türkçede vurguyu genelde kelime sırası ve tonlamayla yaparız ('Hayatımda böyle bir şey görmedim!'), İngilizcede ise yapı değişir: Never have I seen such a thing.\n\nNever, rarely, seldom, little ile başlayan cümlelerde zamana uygun yardımcı fiil kullanılır: Rarely does he complain. Not only ... but also kalıbında devrik kısım baştadır: Not only did she pass, but she also got the top score.\n\nHardly ... when ve No sooner ... than 'tam ...mıştı ki' anlamı verir ve çoğunlukla Past Perfect ile kurulur: No sooner had we arrived than it started to rain. Only then, only after, only when ile başlayan cümlelerde devrik yapı ana cümlede olur: Only after the meeting did I understand.\n\nKoşul cümlelerinde if düşürülerek de devrik yapılabilir: Had I known (If I had known), Were I you (If I were you), Should you need (If you should need). Türklerin tipik hatası, başa olumsuz ifadeyi alıp yardımcı fiili yerinde bırakmaktır: 'Never I have seen' yanlıştır.",
+  "rules": [
+   "Never / Rarely / Seldom / Little + yardımcı fiil + özne + fiil",
+   "Not only + yardımcı fiil + özne ..., but (özne) also ...",
+   "Hardly + had + özne + V3 ... when ...",
+   "No sooner + had + özne + V3 ... than ...",
+   "Only then / Only after ... / Only when ... + yardımcı fiil + özne",
+   "Had + özne + V3 = If + özne + had + V3",
+   "Were + özne ... = If + özne + were ...",
+   "Should + özne + V1 = If + özne + should + V1",
+   "Yaygın hata: Never I have seen → Never have I seen",
+   "Yaygın hata: No sooner had we left when → No sooner had we left than"
+  ],
+  "examples": [
+   {
+    "en": "Never have I seen such a beautiful view.",
+    "tr": "Hayatımda hiç bu kadar güzel bir manzara görmedim."
+   },
+   {
+    "en": "Rarely does our manager leave before six.",
+    "tr": "Müdürümüz altıdan önce nadiren çıkar."
+   },
+   {
+    "en": "Seldom do we get such good news.",
+    "tr": "Bu kadar iyi haberi pek nadir alırız."
+   },
+   {
+    "en": "Not only did she pass, but she also won a prize.",
+    "tr": "Sadece geçmekle kalmadı, bir de ödül kazandı."
+   },
+   {
+    "en": "Hardly had I sat down when the phone rang.",
+    "tr": "Tam oturmuştum ki telefon çaldı."
+   },
+   {
+    "en": "No sooner had we arrived than it started raining.",
+    "tr": "Varır varmaz yağmur yağmaya başladı."
+   },
+   {
+    "en": "Only then did I realise my mistake.",
+    "tr": "Hatamı ancak o zaman fark ettim."
+   },
+   {
+    "en": "Only after the exam did he start to relax.",
+    "tr": "Ancak sınavdan sonra rahatlamaya başladı."
+   },
+   {
+    "en": "Had I known, I would have called you.",
+    "tr": "Bilseydim seni arardım."
+   },
+   {
+    "en": "Were I you, I would accept the offer.",
+    "tr": "Senin yerinde olsam teklifi kabul ederdim."
+   },
+   {
+    "en": "Should you need help, please contact reception.",
+    "tr": "Yardıma ihtiyacınız olursa lütfen resepsiyona başvurun."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_question_tags",
+  "title": "Soru Ekleri (Question Tags): ..., isn't it? / ..., don't you?",
+  "category": "Cümle Yapısı",
+  "source": "Lingora ekledi",
+  "body": "Türkçede bir şeyi onaylatmak için cümlenin sonuna 'değil mi?' ekleriz ve bu her cümlede aynıdır. İngilizcede ise bu ek cümlenin yardımcı fiiline ve öznesine göre değişir: It's cold, isn't it? You like tea, don't you?\n\nKural basittir: cümle olumluysa ek olumsuz, cümle olumsuzsa ek olumlu olur. Ekte cümledeki yardımcı fiil (be, have, can, will, should...) tekrarlanır; yardımcı fiil yoksa zamana göre do / does / did kullanılır. Özne her zaman zamirle tekrarlanır: Your brother works here, doesn't he?\n\nBazı özel durumlar vardır: I am cümlesinin eki aren't I olur. Let's ile başlayan cümlede shall we kullanılır. Emir cümlelerinde will you / can you kibar bir rica anlamı verir. Never, nobody, nothing gibi olumsuz kelimeler içeren cümlede ek olumlu olur.\n\nTürklerin en sık yaptığı hata, her cümleye 'isn't it?' eklemektir: 'You are coming, isn't it?' yanlıştır; doğrusu aren't you? olmalıdır. Sesin sonda düşmesi onay beklediğimizi, yükselmesi gerçekten soru sorduğumuzu gösterir.",
+  "rules": [
+   "Olumlu cümle + olumsuz ek: She is busy, isn't she?",
+   "Olumsuz cümle + olumlu ek: You can't swim, can you?",
+   "Yardımcı fiil yoksa: do / does / did",
+   "Özne zamirle tekrarlanır: Tom → he, the meeting → it",
+   "I am ..., aren't I?",
+   "Let's ..., shall we?",
+   "Emir: Close the door, will you?",
+   "never / nothing / nobody → olumlu ek",
+   "Yaygın hata: You are coming, isn't it? → aren't you?"
+  ],
+  "examples": [
+   {
+    "en": "It's a lovely day, isn't it?",
+    "tr": "Çok güzel bir gün, değil mi?"
+   },
+   {
+    "en": "You live near the station, don't you?",
+    "tr": "İstasyonun yakınında oturuyorsun, değil mi?"
+   },
+   {
+    "en": "She didn't call yesterday, did she?",
+    "tr": "Dün aramadı, değil mi?"
+   },
+   {
+    "en": "They have finished the report, haven't they?",
+    "tr": "Raporu bitirdiler, değil mi?"
+   },
+   {
+    "en": "You can drive, can't you?",
+    "tr": "Araba kullanabiliyorsun, değil mi?"
+   },
+   {
+    "en": "The meeting starts at ten, doesn't it?",
+    "tr": "Toplantı onda başlıyor, değil mi?"
+   },
+   {
+    "en": "I'm a bit late, aren't I?",
+    "tr": "Biraz geç kaldım, değil mi?"
+   },
+   {
+    "en": "Let's order a pizza, shall we?",
+    "tr": "Bir pizza söyleyelim mi?"
+   },
+   {
+    "en": "Nobody called while I was out, did they?",
+    "tr": "Ben yokken kimse aramadı, değil mi?"
+   },
+   {
+    "en": "You won't forget my birthday, will you?",
+    "tr": "Doğum günümü unutmayacaksın, değil mi?"
+   }
+  ]
+ },
+ {
   "id": "tm_svo_temel",
   "title": "Temel Cümle Yapısı: S + V + O / C",
   "category": "Cümle Yapısı",
@@ -6717,6 +7743,64 @@
    {
     "en": "It is you who are bothering me.",
     "tr": "Beni rahatsız eden sensin."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_participle_clauses",
+  "title": "Participle Clauses: -ing, V3 ve Having + V3 ile Cümle Kısaltma",
+  "category": "Yan Cümleler",
+  "source": "Lingora ekledi",
+  "body": "Participle clause, bir yan cümleyi bağlaç ve özne olmadan kısaltmanın yoludur. Türkçede bunu zaten sürekli yaparız: 'Eve gelince', 'Yorulduğu için', 'İşini bitirince' gibi zarf-fiiller aynı işi görür. İngilizcede bu görevi -ing, V3 ve Having + V3 üstlenir.\n\n-ing (etken) iki eylem aynı anda olduğunda ya da sebep bildirirken kullanılır: Walking home, I met an old friend (Eve yürürken eski bir arkadaşla karşılaştım). Feeling tired, she went to bed (Yorgun hissettiği için yattı).\n\nV3 (edilgen) özne eylemi yapmıyor, eyleme maruz kalıyorsa kullanılır: Built in 1900, the house needs repairs. Having + V3 ise bir eylemin diğerinden ÖNCE bittiğini vurgular: Having finished the report, he went home (Raporu bitirdikten sonra eve gitti).\n\nEn önemli kural: kısaltılmış kısmın öznesi, ana cümlenin öznesiyle aynı olmalıdır. Türklerin tipik hatası buna dikkat etmemektir: 'Walking in the park, the rain started' cümlesi yağmurun parkta yürüdüğünü söyler. Doğrusu: Walking in the park, we got caught in the rain.",
+  "rules": [
+   "Aynı anda / sebep (etken): V-ing ..., ana cümle",
+   "Edilgen anlam: V3 ..., ana cümle",
+   "Önce biten eylem: Having + V3 ..., ana cümle",
+   "Olumsuz: Not + V-ing (Not knowing the way, ...)",
+   "Bağlaçla da olur: After / Before / While + V-ing",
+   "İki kısmın öznesi aynı olmalı",
+   "Yaygın hata: Walking home, the rain started → Walking home, I got caught in the rain"
+  ],
+  "examples": [
+   {
+    "en": "Walking to work, I saw an accident.",
+    "tr": "İşe yürürken bir kaza gördüm."
+   },
+   {
+    "en": "Feeling ill, she stayed at home.",
+    "tr": "Kendini hasta hissettiği için evde kaldı."
+   },
+   {
+    "en": "Not knowing the way, we asked a taxi driver.",
+    "tr": "Yolu bilmediğimiz için bir taksiciye sorduk."
+   },
+   {
+    "en": "Having finished dinner, they watched a film.",
+    "tr": "Akşam yemeğini bitirdikten sonra film izlediler."
+   },
+   {
+    "en": "Having lost his keys, he couldn't get in.",
+    "tr": "Anahtarlarını kaybettiği için içeri giremedi."
+   },
+   {
+    "en": "Built in 1890, the bridge is still in use.",
+    "tr": "1890'da inşa edilen köprü hâlâ kullanılıyor."
+   },
+   {
+    "en": "Written in simple English, the book is easy to read.",
+    "tr": "Sade bir İngilizceyle yazıldığı için kitap kolay okunuyor."
+   },
+   {
+    "en": "Surprised by the news, she didn't say anything.",
+    "tr": "Habere şaşırdığı için hiçbir şey söylemedi."
+   },
+   {
+    "en": "Before leaving the office, check your email.",
+    "tr": "Ofisten çıkmadan önce e-postanı kontrol et."
+   },
+   {
+    "en": "While cooking, he listened to the radio.",
+    "tr": "Yemek yaparken radyo dinledi."
    }
   ]
  },
@@ -7619,6 +8703,134 @@
   ]
  },
  {
+  "id": "lx_gerund_infinitive_meaning_change",
+  "title": "-ing mi, to mu? Anlamı Değişen Fiiller: stop, remember, forget, try, regret, go on",
+  "category": "Fiilimsiler",
+  "source": "Lingora ekledi",
+  "body": "Bazı fiillerden sonra hem -ing hem to + V1 gelebilir, ama anlam tamamen değişir. Genel bir ipucu: -ing çoğu zaman daha önce olan ya da süregelen eylemi, to + V1 ise sonra yapılacak eylemi veya amacı gösterir.\n\nStop + V-ing = o eylemi bırakmak (sigarayı bıraktı). Stop + to V1 = başka bir şeyi yapmak için durmak (kahve almak için durduk). Remember / forget + V-ing = geçmişte yapılanı hatırlamak / unutmak. Remember / forget + to V1 = yapılması gereken şeyi hatırlamak / unutmak (kapıyı kilitlemeyi unutma).\n\nTry + to V1 = bir şeyi yapmaya çalışmak, uğraşmak (zor olabilir). Try + V-ing = sonucu görmek için bir yöntemi denemek (bilgisayarı yeniden başlatmayı dene). Regret + V-ing = yapılan bir şeye pişman olmak. Regret + to V1 = kötü bir haberi resmî olarak bildirmek (üzülerek bildiririz). Go on + V-ing = aynı şeye devam etmek; go on + to V1 = bir sonraki işe geçmek.\n\nTürkçede 'sigarayı bırakmak' ile 'sigara içmek için durmak' çok farklı ifadeler olduğu için Türk öğrenciler bu farkı gözden kaçırabilir. I stopped to smoke 'sigarayı bıraktım' değil, 'sigara içmek için durdum' demektir.",
+  "rules": [
+   "stop + V-ing = bırakmak | stop + to V1 = …mek için durmak",
+   "remember / forget + V-ing = geçmişte olanı hatırlamak / unutmak",
+   "remember / forget + to V1 = yapılacak işi hatırlamak / unutmak",
+   "try + to V1 = çabalamak | try + V-ing = yöntem olarak denemek",
+   "regret + V-ing = pişman olmak | regret + to V1 = üzülerek bildirmek",
+   "go on + V-ing = devam etmek | go on + to V1 = sonraki işe geçmek",
+   "Yaygın hata: I stopped to smoke (= sigara içmek için durdum) → I stopped smoking (= sigarayı bıraktım)"
+  ],
+  "examples": [
+   {
+    "en": "He stopped smoking last year.",
+    "tr": "Geçen yıl sigarayı bıraktı."
+   },
+   {
+    "en": "We stopped to buy some coffee.",
+    "tr": "Kahve almak için durduk."
+   },
+   {
+    "en": "Remember to lock the door when you leave.",
+    "tr": "Çıkarken kapıyı kilitlemeyi unutma."
+   },
+   {
+    "en": "I remember meeting her at a conference.",
+    "tr": "Onunla bir konferansta tanıştığımı hatırlıyorum."
+   },
+   {
+    "en": "Don't forget to send the invoice today.",
+    "tr": "Faturayı bugün göndermeyi unutma."
+   },
+   {
+    "en": "I'll never forget seeing the sea for the first time.",
+    "tr": "Denizi ilk kez gördüğüm anı asla unutmayacağım."
+   },
+   {
+    "en": "I tried to open the window, but it was stuck.",
+    "tr": "Pencereyi açmaya çalıştım ama sıkışmıştı."
+   },
+   {
+    "en": "Try restarting your computer.",
+    "tr": "Bilgisayarını yeniden başlatmayı dene."
+   },
+   {
+    "en": "I regret telling him my secret.",
+    "tr": "Ona sırrımı söylediğime pişmanım."
+   },
+   {
+    "en": "We regret to inform you that the flight is cancelled.",
+    "tr": "Uçuşun iptal edildiğini üzülerek bildiririz."
+   },
+   {
+    "en": "She went on talking for an hour.",
+    "tr": "Bir saat boyunca konuşmaya devam etti."
+   },
+   {
+    "en": "After the introduction, he went on to explain the plan.",
+    "tr": "Girişten sonra planı anlatmaya geçti."
+   }
+  ]
+ },
+ {
+  "id": "lx_let_make_help_want_to",
+  "title": "Let / Make / Help + V1 ve Want / Ask / Tell / Allow + Someone + to V1",
+  "category": "Fiilimsiler",
+  "source": "Lingora ekledi",
+  "body": "Türkçede birine bir şey yaptırmayı ya da izin vermeyi ettirgen eklerle (-dır, -t) veya '-mesine izin vermek' gibi yapılarla söyleriz: 'Öğretmen bize yeniden yazdırdı.' İngilizcede bunun için let ve make kullanılır. Let = izin vermek, make = zorla ya da etkiyle yaptırmak. İkisinden sonra da nesne + to'suz V1 gelir: let me go, made us wait.\n\nHelp'ten sonra to kullanmak isteğe bağlıdır: help me move / help me to move ikisi de doğrudur.\n\nWant, ask, tell, allow, expect, would like gibi fiillerde ise yapı farklıdır: fiil + kişi + to V1. Türkçedeki 'aramanı istiyorum', 'kontrol etmemi istedi', 'dinlenmesini söyledi' cümleleri bu kalıpla kurulur. Olumsuz için to'nun önüne not gelir: told me not to worry.\n\nTürklerin tipik hataları: I want that you call me (Türkçe yapıdan çeviri) yerine I want you to call me demek gerekir. Ayrıca make ve let'ten sonra to kullanılmaz: He made me to wait değil, He made me wait. (Edilgende ise to geri gelir: I was made to wait.)",
+  "rules": [
+   "İzin vermek: let + kişi + V1 (to yok)",
+   "Yaptırmak / zorlamak: make + kişi + V1 (to yok)",
+   "Yardım: help + kişi + (to) V1",
+   "İstek ve emir: want / ask / tell / allow + kişi + to V1",
+   "Olumsuz: tell / ask + kişi + not to V1",
+   "Yaygın hata: I want that you call me → I want you to call me",
+   "Yaygın hata: He made me to wait → He made me wait"
+  ],
+  "examples": [
+   {
+    "en": "My parents let me stay out late on Fridays.",
+    "tr": "Ailem cuma günleri geç saate kadar dışarıda kalmama izin verir."
+   },
+   {
+    "en": "Our teacher made us rewrite the essay.",
+    "tr": "Öğretmenimiz kompozisyonu bize yeniden yazdırdı."
+   },
+   {
+    "en": "The film made me cry.",
+    "tr": "Film beni ağlattı."
+   },
+   {
+    "en": "Can you help me move this table?",
+    "tr": "Bu masayı taşımama yardım eder misin?"
+   },
+   {
+    "en": "She helped me to prepare the presentation.",
+    "tr": "Sunumu hazırlamama yardım etti."
+   },
+   {
+    "en": "I want you to call me tonight.",
+    "tr": "Bu akşam beni aramanı istiyorum."
+   },
+   {
+    "en": "My manager asked me to check the numbers.",
+    "tr": "Müdürüm rakamları kontrol etmemi istedi."
+   },
+   {
+    "en": "The doctor told him to rest for a week.",
+    "tr": "Doktor ona bir hafta dinlenmesini söyledi."
+   },
+   {
+    "en": "They don't allow us to use phones here.",
+    "tr": "Burada telefon kullanmamıza izin vermiyorlar."
+   },
+   {
+    "en": "Let me know if you need anything.",
+    "tr": "Bir şeye ihtiyacın olursa bana haber ver."
+   },
+   {
+    "en": "She told me not to worry.",
+    "tr": "Bana endişelenmememi söyledi."
+   }
+  ]
+ },
+ {
   "id": "tm_haber_basliklarinda_to",
   "title": "Haber Başlıklarında To ve Amaç Bildiren To",
   "category": "Fiilimsiler",
@@ -8022,6 +9234,126 @@
    {
     "en": "He said that he couldn't read anymore.",
     "tr": "Artık okuyamadığını söyledi."
+   }
+  ]
+ },
+ {
+  "id": "lx_mixed_conditionals",
+  "title": "Karışık Koşul Cümleleri (Mixed Conditionals)",
+  "category": "Koşul ve Dilek",
+  "source": "Lingora ekledi",
+  "body": "Normal koşul cümlelerinde iki taraf aynı zamana bakar. Karışık koşul cümlelerinde ise if kısmı bir zamana, ana cümle başka bir zamana bakar. En yaygın iki tür vardır.\n\nBirinci tür: geçmişteki gerçek dışı bir durumun şimdiki sonucu. If + Past Perfect, would + V1: If I had studied medicine, I would be a doctor now (tıp okusaydım, şimdi doktor olurdum). Geçmiş değişseydi, bugün farklı olurdu.\n\nİkinci tür: şimdiki (ya da genel) bir özelliğin geçmişteki sonucu. If + Past Simple, would have + V3: If I spoke French, I would have applied for that job (Fransızca bilseydim, o işe başvururdum). Burada 'Fransızca bilmemek' genel ve hâlâ geçerli bir durumdur.\n\nTürkçede iki türü de çoğunlukla '-seydi … -urdu' ile çeviririz, bu yüzden İngilizcede hangi zamanın gerektiğini anlamak için 'şimdi mi, geçmişte mi?' diye sormak gerekir. Tipik hatalar: if kısmında would kullanmak (If I would have studied) ve şimdiki sonuç için would have kullanmak (I would have been a doctor now → I would be a doctor now).",
+  "rules": [
+   "Geçmiş koşul → şimdiki sonuç: If + Past Perfect, Subject + would + V1 (now)",
+   "Şimdiki/genel koşul → geçmiş sonuç: If + Past Simple, Subject + would have + V3",
+   "could / might da would yerine gelebilir: could buy, might have passed",
+   "Yaygın hata: If I would have studied → If I had studied",
+   "Yaygın hata: I would have been a doctor now → I would be a doctor now"
+  ],
+  "examples": [
+   {
+    "en": "If I had studied medicine, I would be a doctor now.",
+    "tr": "Tıp okusaydım, şimdi doktor olurdum."
+   },
+   {
+    "en": "If she hadn't missed the flight, she would be here.",
+    "tr": "Uçağı kaçırmasaydı, şimdi burada olurdu."
+   },
+   {
+    "en": "If I spoke French, I would have applied for that job.",
+    "tr": "Fransızca bilseydim, o işe başvururdum."
+   },
+   {
+    "en": "If he weren't so lazy, he would have passed the exam.",
+    "tr": "Bu kadar tembel olmasaydı, sınavı geçmiş olurdu."
+   },
+   {
+    "en": "If we had left earlier, we wouldn't be stuck in traffic.",
+    "tr": "Daha erken çıksaydık, şimdi trafikte sıkışıp kalmazdık."
+   },
+   {
+    "en": "If I hadn't met you, my life would be different.",
+    "tr": "Seninle tanışmasaydım, hayatım farklı olurdu."
+   },
+   {
+    "en": "If you were more careful, you wouldn't have lost your keys.",
+    "tr": "Daha dikkatli biri olsaydın, anahtarlarını kaybetmezdin."
+   },
+   {
+    "en": "If I had saved money, I could buy a car now.",
+    "tr": "Para biriktirseydim, şimdi araba alabilirdim."
+   },
+   {
+    "en": "If she didn't love her job, she would have quit.",
+    "tr": "İşini sevmeseydi, çoktan bırakırdı."
+   },
+   {
+    "en": "If they had invited me, I would be at the party.",
+    "tr": "Beni davet etselerdi, şimdi partide olurdum."
+   }
+  ]
+ },
+ {
+  "id": "lx_if_only_its_time_suggest_rather",
+  "title": "If only, It's (high) time, Suggest / Recommend that + V1, Would rather + Past",
+  "category": "Koşul ve Dilek",
+  "source": "Lingora ekledi",
+  "body": "If only, Türkçedeki 'keşke'nin güçlü ve duygusal hâlidir; I wish ile aynı şekilde kurulur. If only + Past Simple şimdiki durum için ('Keşke daha çok vaktim olsa'), If only + Past Perfect geçmiş için kullanılır ('Keşke satmasaydım').\n\nIt's time + to V1 'bir şeyin vakti geldi' demektir. It's time / It's high time + subject + Past Simple ise 'artık … manın zamanı geldi (hatta geçiyor)' anlamına gelir. Fiil geçmiş zamanda görünse de anlam şimdi ve gelecektir. High eklemek, işin gecikmiş olduğunu vurgular.\n\nSuggest, recommend, insist ve It's important that gibi yapılardan sonra resmî İngilizcede 'subjunctive' kullanılır: that + subject + V1 (yalın fiil). Üçüncü tekil şahısta bile -s gelmez: suggested that he rest. Ayrıca suggest + V-ing de kullanılabilir.\n\nWould rather ('d rather) 'tercih ederim' demektir. Kendimiz için would rather + V1, başka biri için would rather + kişi + Past Simple kullanılır: I'd rather you didn't smoke (sigara içmemeni tercih ederim). Tipik hatalar: suggest him to go (doğrusu: suggest that he go / suggest going) ve I'd rather you don't smoke (doğrusu: didn't).",
+  "rules": [
+   "Keşke (şimdi): If only + Subject + Past Simple",
+   "Keşke (geçmiş): If only + Subject + Past Perfect",
+   "Vakti geldi: It's time + to V1",
+   "Artık zamanı geldi: It's (high) time + Subject + Past Simple",
+   "Öneri: suggest / recommend + that + Subject + V1 (-s yok) | suggest + V-ing",
+   "Tercih (kendin): Subject + would rather + V1",
+   "Tercih (başkası): Subject + would rather + kişi + Past Simple",
+   "Yaygın hata: She suggested me to go → She suggested that I go / suggested going",
+   "Yaygın hata: I'd rather you don't smoke → I'd rather you didn't smoke"
+  ],
+  "examples": [
+   {
+    "en": "If only I had more free time!",
+    "tr": "Keşke daha fazla boş vaktim olsa!"
+   },
+   {
+    "en": "If only I hadn't sold my old car.",
+    "tr": "Keşke eski arabamı satmasaydım."
+   },
+   {
+    "en": "It's time to go home.",
+    "tr": "Eve gitme vakti."
+   },
+   {
+    "en": "It's high time you found a job.",
+    "tr": "Artık bir iş bulmanın vakti çoktan geldi."
+   },
+   {
+    "en": "It's time we started the meeting.",
+    "tr": "Toplantıya başlamamızın zamanı geldi."
+   },
+   {
+    "en": "The doctor suggested that he rest for a few days.",
+    "tr": "Doktor birkaç gün dinlenmesini önerdi."
+   },
+   {
+    "en": "I recommend that she take the morning train.",
+    "tr": "Sabah trenine binmesini öneririm."
+   },
+   {
+    "en": "They suggested going to a Thai restaurant.",
+    "tr": "Bir Tayland restoranına gitmeyi önerdiler."
+   },
+   {
+    "en": "I'd rather stay at home tonight.",
+    "tr": "Bu akşam evde kalmayı tercih ederim."
+   },
+   {
+    "en": "I'd rather you didn't smoke in the car.",
+    "tr": "Arabada sigara içmemeni tercih ederim."
+   },
+   {
+    "en": "She'd rather we met on Friday.",
+    "tr": "Cuma günü buluşmamızı tercih eder."
    }
   ]
  },
@@ -8479,6 +9811,206 @@
   ]
  },
  {
+  "id": "lx_b_phrasal_daily",
+  "title": "Yaygın Phrasal Verbs 1: Günlük Hayat",
+  "category": "Phrasal Verbs",
+  "source": "Lingora ekledi",
+  "body": "Phrasal verb, bir fiil ile bir edat ya da zarfın (up, off, out, for...) birleşerek yeni bir anlam oluşturmasıdır. Anlam çoğu zaman parçalardan tahmin edilemez: give (vermek) + up = vazgeçmek, bırakmak. Türkçede buna en yakın şey 'vazgeçmek, ortaya çıkmak' gibi kalıplaşmış birleşik fiillerdir.\n\nGünlük hayatta en sık duyacağınız on tanesi: get up (yataktan kalkmak), wake up (uyanmak), turn on / turn off (açmak / kapatmak: cihaz, ışık), put on (giymek, takmak), take off (çıkarmak: kıyafet; uçak için kalkmak), look for (aramak), give up (vazgeçmek, bırakmak), run out of (bitmek, tükenmek), pick up (almak, yerden kaldırmak, birini arabayla almak), find out (öğrenmek, öğrenip ortaya çıkarmak).\n\nBazı phrasal verb'ler ayrılabilir: nesne ortaya da girebilir (turn the light off / turn off the light). Nesne bir zamir ise mutlaka ortaya girer: turn it off, put it on. Look for ve run out of gibi bazıları ise ayrılmaz: look for it.\n\nTürklerin tipik hatası, Türkçedeki 'ışığı aç/kapa' ifadesini open/close ile çevirmektir: 'Open the TV' yerine turn on the TV denir. Ayrıca zamiri sona koymak da sık görülür: 'turn off it' yanlıştır.",
+  "rules": [
+   "get up = yataktan kalkmak / wake up = uyanmak",
+   "turn on / turn off = (cihaz, ışık) açmak / kapatmak",
+   "put on = giymek, takmak / take off = çıkarmak",
+   "look for = aramak",
+   "give up = vazgeçmek, bırakmak (give up smoking)",
+   "run out of = bitmek, tükenmek",
+   "pick up = almak, kaldırmak, birini arabayla almak",
+   "find out = öğrenmek, keşfetmek",
+   "Zamir ortaya girer: turn it off, put them on",
+   "Yaygın hata: open the TV → turn on the TV",
+   "Yaygın hata: turn off it → turn it off"
+  ],
+  "examples": [
+   {
+    "en": "I usually get up at seven on weekdays.",
+    "tr": "Hafta içi genellikle yedide kalkarım."
+   },
+   {
+    "en": "Please turn off the lights when you leave.",
+    "tr": "Çıkarken lütfen ışıkları kapat."
+   },
+   {
+    "en": "Can you turn on the air conditioner?",
+    "tr": "Klimayı açabilir misin?"
+   },
+   {
+    "en": "Put on your coat, it's cold outside.",
+    "tr": "Montunu giy, dışarısı soğuk."
+   },
+   {
+    "en": "Take off your shoes at the door.",
+    "tr": "Ayakkabılarını kapıda çıkar."
+   },
+   {
+    "en": "I'm looking for my phone charger.",
+    "tr": "Telefon şarj aletimi arıyorum."
+   },
+   {
+    "en": "My father gave up smoking last year.",
+    "tr": "Babam geçen yıl sigarayı bıraktı."
+   },
+   {
+    "en": "We've run out of eggs again.",
+    "tr": "Yine yumurtamız bitti."
+   },
+   {
+    "en": "I'll pick you up from the airport.",
+    "tr": "Seni havaalanından alacağım."
+   },
+   {
+    "en": "Did you find out why he was late?",
+    "tr": "Neden geç kaldığını öğrendin mi?"
+   },
+   {
+    "en": "I woke up early because of the noise.",
+    "tr": "Gürültü yüzünden erken uyandım."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_phrasal_work_school",
+  "title": "Yaygın Phrasal Verbs 2: İş ve Okul",
+  "category": "Phrasal Verbs",
+  "source": "Lingora ekledi",
+  "body": "İş yerinde ve okulda phrasal verb'ler çok sık kullanılır; e-postalarda, toplantılarda ve ödev talimatlarında karşınıza çıkar. Bazılarının daha resmi tek kelimelik karşılıkları vardır (carry out = conduct, put off = postpone) ama konuşmada phrasal verb daha doğaldır.\n\nBu konudaki on fiil: carry out (yürütmek, gerçekleştirmek: bir araştırma, plan), set up (kurmak: bir şirket, toplantı, sistem), figure out (çözmek, anlamak), deal with (ilgilenmek, halletmek), put off (ertelemek), hand in (teslim etmek: ödev, rapor), fill in / fill out (doldurmak: form), look into (incelemek, araştırmak), go over (gözden geçirmek), point out (belirtmek, dikkat çekmek).\n\nPut off'tan sonra fiil gelirse -ing alır: We put off making a decision. Deal with ve look into ayrılmaz: deal with it, look into the problem.\n\nTürklerin sık hatası 'ödevi vermek' ifadesini give ile çevirmektir: öğretmene ödev teslim ederken hand in denir. Ayrıca 'bir problemi çözmek' için solve ile birlikte figure out da çok kullanılır ama 'figure out' daha çok 'anlamaya çalışıp bulmak' anlamı taşır.",
+  "rules": [
+   "carry out = gerçekleştirmek, yürütmek",
+   "set up = kurmak, ayarlamak",
+   "figure out = çözmek, anlamak",
+   "deal with = ilgilenmek, halletmek",
+   "put off = ertelemek (+ V-ing)",
+   "hand in = teslim etmek",
+   "fill in / fill out = (form) doldurmak",
+   "look into = incelemek, araştırmak",
+   "go over = gözden geçirmek",
+   "point out = belirtmek, dikkat çekmek",
+   "Yaygın hata: give the homework → hand in the homework",
+   "Yaygın hata: put off to decide → put off deciding"
+  ],
+  "examples": [
+   {
+    "en": "The team carried out a survey of customers.",
+    "tr": "Ekip müşterilerle bir anket yaptı."
+   },
+   {
+    "en": "She set up her own company in 2020.",
+    "tr": "2020'de kendi şirketini kurdu."
+   },
+   {
+    "en": "Can you set up a meeting for Friday?",
+    "tr": "Cuma için bir toplantı ayarlayabilir misin?"
+   },
+   {
+    "en": "I can't figure out this maths problem.",
+    "tr": "Bu matematik problemini çözemiyorum."
+   },
+   {
+    "en": "Who will deal with the angry customer?",
+    "tr": "Kızgın müşteriyle kim ilgilenecek?"
+   },
+   {
+    "en": "They put off the meeting until next week.",
+    "tr": "Toplantıyı gelecek haftaya ertelediler."
+   },
+   {
+    "en": "Please hand in your essays by Monday.",
+    "tr": "Lütfen kompozisyonlarınızı pazartesiye kadar teslim edin."
+   },
+   {
+    "en": "Fill in this form and sign it.",
+    "tr": "Bu formu doldurup imzalayın."
+   },
+   {
+    "en": "The manager promised to look into the problem.",
+    "tr": "Müdür sorunu incelemeye söz verdi."
+   },
+   {
+    "en": "Let's go over the main points again.",
+    "tr": "Ana noktaları tekrar gözden geçirelim."
+   },
+   {
+    "en": "My teacher pointed out a few mistakes.",
+    "tr": "Öğretmenim birkaç hataya dikkat çekti."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_phrasal_people",
+  "title": "Yaygın Phrasal Verbs 3: İnsanlar ve İlişkiler",
+  "category": "Phrasal Verbs",
+  "source": "Lingora ekledi",
+  "body": "İnsan ilişkilerini anlatırken İngilizce konuşanlar çok sık phrasal verb kullanır. Bu fiilleri bilmek, arkadaşlık, aile ve iş ilişkileri hakkındaki sohbetleri anlamayı çok kolaylaştırır.\n\nBu konudaki on fiil: get along (with) (iyi geçinmek), look up to (örnek almak, saygı duymak), look after (bakmak, ilgilenmek), let down (hayal kırıklığına uğratmak), bring up (yetiştirmek; bir konuyu açmak), fall out (with) (bozuşmak, küsmek), make up (barışmak), catch up (with) (hasret gidermek, son durumu konuşmak; yetişmek), turn down (reddetmek), count on (güvenmek, birine bel bağlamak).\n\nGet along with ve fall out with üç parçalıdır ve ayrılmaz: I get along with my boss. Let down ve bring up ayrılabilir: She let me down. My grandmother brought me up.\n\nTürklerin tipik hatası, 'büyümek' ile 'büyütmek'i karıştırmaktır: grow up kendi kendine büyümektir (I grew up in Konya), bring up ise birini yetiştirmektir. Ayrıca 'birine bakmak' derken look at (bakmak, göz atmak) ile look after (ilgilenmek) karıştırılır.",
+  "rules": [
+   "get along (with) = iyi geçinmek",
+   "look up to = örnek almak, saygı duymak",
+   "look after = bakmak, ilgilenmek",
+   "let down = hayal kırıklığına uğratmak",
+   "bring up = yetiştirmek / (konu) açmak",
+   "grow up = büyümek (kendi kendine)",
+   "fall out (with) = bozuşmak / make up = barışmak",
+   "catch up (with) = hasret gidermek, yetişmek",
+   "turn down = reddetmek",
+   "count on = güvenmek",
+   "Yaygın hata: My aunt grew me up → My aunt brought me up",
+   "Yaygın hata: look at the baby (ilgilenmek anlamında) → look after the baby"
+  ],
+  "examples": [
+   {
+    "en": "I get along well with my flatmates.",
+    "tr": "Ev arkadaşlarımla iyi geçinirim."
+   },
+   {
+    "en": "Many young players look up to him.",
+    "tr": "Birçok genç oyuncu onu örnek alıyor."
+   },
+   {
+    "en": "Who will look after the kids tonight?",
+    "tr": "Bu akşam çocuklara kim bakacak?"
+   },
+   {
+    "en": "I promised to help, and I won't let you down.",
+    "tr": "Yardım edeceğime söz verdim, seni hayal kırıklığına uğratmayacağım."
+   },
+   {
+    "en": "She was brought up by her grandparents.",
+    "tr": "Büyükanne ve büyükbabası tarafından yetiştirildi."
+   },
+   {
+    "en": "Please don't bring up politics at dinner.",
+    "tr": "Lütfen akşam yemeğinde siyaset konusunu açma."
+   },
+   {
+    "en": "The two brothers fell out over money.",
+    "tr": "İki kardeş para yüzünden bozuştu."
+   },
+   {
+    "en": "They argued but made up the next day.",
+    "tr": "Tartıştılar ama ertesi gün barıştılar."
+   },
+   {
+    "en": "Let's meet for coffee and catch up.",
+    "tr": "Kahve içip hasret giderelim."
+   },
+   {
+    "en": "He turned down the job offer.",
+    "tr": "İş teklifini reddetti."
+   },
+   {
+    "en": "You can always count on me.",
+    "tr": "Bana her zaman güvenebilirsin."
+   }
+  ]
+ },
+ {
   "id": "yt_pv_perk_find_make",
   "title": "Phrasal Verbs: Perk Up / Find Out / Make Up",
   "category": "Phrasal Verbs",
@@ -8622,6 +10154,75 @@
    {
     "en": "Don't worry, I'll see to the tickets.",
     "tr": "Merak etme, biletler bende."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_word_formation",
+  "title": "Kelime Türetme: Ön Ekler ve Son Ekler",
+  "category": "Kelime Türetme",
+  "source": "Lingora ekledi",
+  "body": "Türkçe ekler sayesinde kelime türetmekte çok zengindir: güz-el-lik, sev-gi-siz. İngilizcede de benzer bir sistem vardır; tek fark, anlamı değiştiren eklerin kelimenin başına (prefix) da gelebilmesidir. Ekleri tanırsanız bilmediğiniz bir kelimenin anlamını çoğu zaman tahmin edebilirsiniz.\n\nÖn ekler anlamı değiştirir ama kelime türünü genelde değiştirmez: un-, in-/im-, dis- olumsuzluk verir (unhappy, impossible, dislike); re- 'yeniden' (rewrite), mis- 'yanlış' (misunderstand), over- 'fazla' (overeat, overtime), pre- 'önce' (preview). im- genellikle p, b, m ile başlayan kelimelerden önce gelir: impolite, impatient.\n\nSon ekler kelime türünü değiştirir. İsim yapanlar: -tion (inform → information), -ment (develop → development), -ness (kind → kindness), -ity (able → ability), -er/-or (teach → teacher, act → actor). Sıfat yapanlar: -ful (dolu, -li: careful), -less (-siz: careless), -able (-ebilir: washable), -ous (dangerous), -ive (creative). -ly sıfattan zarf yapar (quick → quickly); -ize fiil yapar (modern → modernize).\n\nTürklerin sık hatası, olumsuz ön eki rastgele seçmektir: 'unpossible' yerine impossible, 'inhappy' yerine unhappy denir; bu tercihleri kelimeyle birlikte öğrenmek gerekir. Ayrıca -ful ve -less karıştırılır: useful (faydalı) ve useless (faydasız) zıt anlamlıdır.",
+  "rules": [
+   "un- / in- / im- / dis- = olumsuz (unfair, incorrect, impossible, dislike)",
+   "re- = yeniden (rewrite, rebuild)",
+   "mis- = yanlış (misunderstand, misspell)",
+   "over- = fazla (oversleep, overwork) / pre- = önce (prepay)",
+   "İsim: -tion, -ment, -ness, -ity, -er / -or",
+   "Sıfat: -ful (-li), -less (-siz), -able (-ebilir), -ous, -ive",
+   "Zarf: sıfat + -ly (careful → carefully)",
+   "Fiil: -ize (modern → modernize)",
+   "Yaygın hata: unpossible → impossible",
+   "Yaygın hata: inhappy → unhappy"
+  ],
+  "examples": [
+   {
+    "en": "It's impossible to finish this in one day.",
+    "tr": "Bunu bir günde bitirmek imkansız."
+   },
+   {
+    "en": "I'm afraid I misunderstood your question.",
+    "tr": "Korkarım sorunuzu yanlış anladım."
+   },
+   {
+    "en": "Please rewrite the last paragraph.",
+    "tr": "Lütfen son paragrafı yeniden yaz."
+   },
+   {
+    "en": "I overslept and missed the bus.",
+    "tr": "Uyuyakaldım ve otobüsü kaçırdım."
+   },
+   {
+    "en": "Most people dislike waiting in traffic.",
+    "tr": "Çoğu insan trafikte beklemekten hoşlanmaz."
+   },
+   {
+    "en": "Thank you for your kindness.",
+    "tr": "Nezaketiniz için teşekkür ederim."
+   },
+   {
+    "en": "The development of the app took two years.",
+    "tr": "Uygulamanın geliştirilmesi iki yıl sürdü."
+   },
+   {
+    "en": "This old map is completely useless.",
+    "tr": "Bu eski harita tamamen işe yaramaz."
+   },
+   {
+    "en": "Be careful, the floor is wet.",
+    "tr": "Dikkatli ol, zemin ıslak."
+   },
+   {
+    "en": "She is a very creative designer.",
+    "tr": "Çok yaratıcı bir tasarımcıdır."
+   },
+   {
+    "en": "Is this jacket washable?",
+    "tr": "Bu ceket yıkanabilir mi?"
+   },
+   {
+    "en": "The city wants to modernize its buses.",
+    "tr": "Şehir otobüslerini modernleştirmek istiyor."
    }
   ]
  },
@@ -8981,6 +10582,66 @@
    {
     "en": "The sign-in operation always has to be completed in the app.",
     "tr": "Giriş işlemi her zaman uygulama içinde tamamlanmalıdır."
+   }
+  ]
+ },
+ {
+  "id": "lx_b_short_responses",
+  "title": "Kısa Tepkiler: So do I / Neither do I / I think so / I hope not",
+  "category": "Günlük İngilizce",
+  "source": "Lingora ekledi",
+  "body": "Konuşmada birine katıldığımızı göstermek için Türkçede 'Ben de', 'Ben de değil / Ben de yapmam' deriz. İngilizcede olumlu bir cümleye katılırken So + yardımcı fiil + özne, olumsuz bir cümleye katılırken Neither + yardımcı fiil + özne kullanılır: I love coffee. – So do I. I can't swim. – Neither can I.\n\nYardımcı fiil, karşı tarafın cümlesine ve zamanına uymalıdır: I was tired. – So was I. I went home. – So did I. Günlük dilde Me too ve Me neither de çok yaygındır ve daha rahat bir tondadır.\n\nKatılmıyorsak kısa cevapla karşılık veririz: I like jazz. – Oh, I don't. I don't eat meat. – I do.\n\nBir tahmin ya da umut bildirirken think, hope, guess, suppose, be afraid fiillerinden sonra so (olumlu) ve not (olumsuz) kullanılır: I think so, I hope not, I'm afraid so. Türklerin sık hatası 'I don't hope so' demektir; doğrusu I hope not. Ayrıca 'I think yes' denmez, I think so denir.",
+  "rules": [
+   "Olumluya katılma: So + yardımcı fiil + özne (So do I)",
+   "Olumsuza katılma: Neither / Nor + yardımcı fiil + özne (Neither can I)",
+   "Gündelik: Me too / Me neither",
+   "Katılmama: I don't. / I do. / I can't.",
+   "I think so / I don't think so",
+   "I hope so / I hope not",
+   "I'm afraid so / I'm afraid not",
+   "Yaygın hata: I don't hope so → I hope not",
+   "Yaygın hata: I think yes → I think so"
+  ],
+  "examples": [
+   {
+    "en": "I'm really hungry. – So am I.",
+    "tr": "Çok açım. – Ben de."
+   },
+   {
+    "en": "I don't like horror films. – Neither do I.",
+    "tr": "Korku filmlerini sevmem. – Ben de sevmem."
+   },
+   {
+    "en": "We went to the beach yesterday. – So did we.",
+    "tr": "Dün plaja gittik. – Biz de."
+   },
+   {
+    "en": "I can't find my glasses. – Neither can I.",
+    "tr": "Gözlüğümü bulamıyorum. – Ben de bulamıyorum."
+   },
+   {
+    "en": "I've never been to London. – Me neither.",
+    "tr": "Hiç Londra'ya gitmedim. – Ben de."
+   },
+   {
+    "en": "Is the shop open today? – I think so.",
+    "tr": "Dükkan bugün açık mı? – Sanırım öyle."
+   },
+   {
+    "en": "Will it rain tomorrow? – I hope not.",
+    "tr": "Yarın yağmur yağacak mı? – Umarım yağmaz."
+   },
+   {
+    "en": "Is the flight cancelled? – I'm afraid so.",
+    "tr": "Uçuş iptal mi? – Maalesef öyle."
+   },
+   {
+    "en": "Is he coming to the party? – I don't think so.",
+    "tr": "Partiye geliyor mu? – Sanmıyorum."
+   },
+   {
+    "en": "I love spicy food. – Really? I don't.",
+    "tr": "Acılı yemeğe bayılırım. – Gerçekten mi? Ben sevmem."
    }
   ]
  },

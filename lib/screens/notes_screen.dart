@@ -8,6 +8,7 @@ import '../data/notes_practice.dart';
 import '../data/notes_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
+import '../models/grammar_lesson.dart';
 import '../models/notes.dart';
 import '../services/conversation.dart';
 import '../services/speech.dart';
@@ -15,6 +16,7 @@ import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import 'lesson_result_screen.dart';
+import 'grammar_path_screen.dart';
 import 'lesson_screen.dart';
 
 const _notesColor = Color(0xFF2F80ED);
@@ -71,7 +73,7 @@ class _NotesHome extends ConsumerWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Notion\'da yazdığın ${notes.words.length} kelime ve ${notes.topics.length} gramer konusu, '
+                      'Notion\'da yazdığın ${notes.words.length} kelime ve ${notes.topics.where((t) => !t.addedByApp).length} gramer konusu, '
                       'artık çalışılabilir hâlde.',
                       style: TextStyle(color: Colors.white.withValues(alpha: 0.9)),
                     ),
@@ -88,6 +90,8 @@ class _NotesHome extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 16),
+        _GrammarPathCard(notes: notes),
+        const SizedBox(height: 10),
         _BigAction(
           icon: Icons.style_rounded,
           color: _notesColor,
@@ -119,9 +123,8 @@ class _NotesHome extends ConsumerWidget {
         _BigAction(
           icon: Icons.menu_book_rounded,
           color: Brand.primary,
-          title: 'Gramer notlarım',
-          subtitle:
-              '${notes.categories.length} başlık, ${notes.topics.length} konu, kendi örneklerinle alıştırma',
+          title: 'Tüm gramer notlarım',
+          subtitle: '${notes.topics.length} konu, Notion\'daki hâliyle, aranabilir',
           onTap: () => _push(context, GrammarListScreen(notes: notes)),
         ),
         _BigAction(
@@ -621,7 +624,7 @@ class _GrammarListScreenState extends State<GrammarListScreen> {
                           children: [
                             Text(t.title, style: Theme.of(context).textTheme.titleMedium),
                             Text(
-                              '${t.source} · ${t.examples.length} örnek',
+                              '${t.addedByApp ? '✨ ' : ''}${t.source} · ${t.examples.length} örnek',
                               style: const TextStyle(color: Brand.muted, fontSize: 13),
                             ),
                           ],
@@ -663,11 +666,24 @@ class TopicScreen extends ConsumerWidget {
                     children: [
                       Chip(label: Text(topic.category)),
                       Chip(
-                        avatar: const Icon(Icons.description_outlined, size: 16),
+                        avatar: Icon(
+                          topic.addedByApp ? Icons.auto_awesome_rounded : Icons.description_outlined,
+                          size: 16,
+                        ),
                         label: Text(topic.source),
                       ),
                     ],
                   ),
+                  if (topic.addedByApp)
+                    Container(
+                      margin: const EdgeInsets.only(top: 6, bottom: 4),
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFF4DC),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text('Bu konu notlarında yoktu; eksik kalmasın diye Lingora ekledi.'),
+                    ),
                   const SizedBox(height: 8),
                   for (final para in topic.body.split('\n\n').where((s) => s.trim().isNotEmpty))
                     Padding(
@@ -907,6 +923,66 @@ class _DiaryScreenState extends ConsumerState<DiaryScreen> {
                   ),
                 ),
               ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Entry to the guided "Gramer Yolu", with progress and the next lesson.
+class _GrammarPathCard extends ConsumerWidget {
+  const _GrammarPathCard({required this.notes});
+  final NotesBundle notes;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lessons = ref.watch(grammarLessonsProvider).value ?? const <GrammarLesson>[];
+    final p = ref.watch(progressProvider);
+    final done = lessons.where((l) => p.isDone(lessonNodeId(l))).length;
+    final next = lessons.where((l) => !p.isDone(lessonNodeId(l))).firstOrNull;
+    return TapCard(
+      selected: true,
+      color: Brand.primary,
+      onTap: () => _push(context, GrammarPathScreen(notes: notes)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Text('🧭', style: TextStyle(fontSize: 30)),
+              const SizedBox(width: 10),
+              Expanded(child: Text('Gramer Yolu', style: Theme.of(context).textTheme.titleLarge)),
+              Text(
+                '$done/${lessons.length}',
+                style: const TextStyle(color: Brand.primary, fontWeight: FontWeight.w900),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          const Text(
+            'Notlarından hazırlanan adım adım dersler: formül, zaman çizelgesi, '
+            'Türkçe karşılaştırma, yaygın hatalar ve mini test.',
+            style: TextStyle(color: Brand.muted, fontSize: 13),
+          ),
+          const SizedBox(height: 10),
+          GlossyProgress(
+            value: lessons.isEmpty ? 0 : done / lessons.length,
+            color: Brand.primary,
+            height: 10,
+          ),
+          if (next != null) ...[
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Text(next.emoji, style: const TextStyle(fontSize: 20)),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text('Sıradaki: ${next.title}', style: const TextStyle(fontWeight: FontWeight.w700)),
+                ),
+                const Icon(Icons.play_circle_fill_rounded, color: Brand.primary, size: 30),
+              ],
+            ),
           ],
         ],
       ),

@@ -40,6 +40,8 @@ class NoteExample {
   factory NoteExample.fromJson(Map<String, dynamic> j) => NoteExample(j['en'] as String, j['tr'] as String);
 }
 
+const addedSource = 'Lingora ekledi';
+
 /// One grammar topic from the user's notebooks.
 class GrammarTopic {
   const GrammarTopic({
@@ -65,6 +67,9 @@ class GrammarTopic {
   final String body;
   final List<String> rules;
   final List<NoteExample> examples;
+
+  /// Topics written by the app to fill gaps in the user's notes.
+  bool get addedByApp => source == addedSource;
 
   factory GrammarTopic.fromJson(Map<String, dynamic> j) => GrammarTopic(
     id: j['id'] as String,

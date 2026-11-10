@@ -21,7 +21,8 @@ const clean = (s) => (typeof s === 'string' ? s.trim() : s);
 const ORDER = [
   'Temeller', 'To be', 'Zamanlar', 'Modallar', 'İsimler ve Zamirler', 'Sıfat ve Zarflar', 'Edatlar',
   'Bağlaçlar', 'Cümle Yapısı', 'Yan Cümleler', 'Fiilimsiler', 'Edilgen Yapı', 'Dolaylı Anlatım',
-  'Koşul ve Dilek', 'Kalıplar ve Deyimler', 'Phrasal Verbs', 'Çeviri Yöntemi', 'Günlük İngilizce',
+  'Koşul ve Dilek', 'Kalıplar ve Deyimler', 'Phrasal Verbs', 'Kelime Türetme', 'Çeviri Yöntemi',
+  'Günlük İngilizce',
 ];
 
 // Words

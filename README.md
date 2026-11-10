@@ -12,6 +12,8 @@ tasarım projeye özgüdür.
 - **Sınav hazırlık:** YDS/YÖKDİL ve LGS soru bankaları. Konu çalışmada Türkçe açıklama, süreli
   mini deneme ve cevap anahtarı. Sorular özgündür, resmî sınav soruları değildir.
 - **Notlarım:** Notion'da tutulan kişisel İngilizce notlarından üretilen içerik:
+  - Gramer Yolu: notlardan hazırlanan, A1'den C1'e 80 adım adım ders (formül kartı, zaman çizelgesi,
+    Türkçe karşılaştırma, notundan alıntı, yaygın hatalar, mini test),
   - kişisel sözlük (aralıklı tekrar kartları ve kelime testi),
   - gramer notları (kendi örneklerinden otomatik alıştırma),
   - İngilizce günlük,

@@ -14,6 +14,7 @@ import 'package:lingora/data/scenarios.dart';
 import 'package:lingora/data/quests.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/models/exam.dart';
+import 'package:lingora/models/grammar_lesson.dart';
 import 'package:lingora/models/notes.dart';
 import 'package:lingora/services/conversation.dart';
 import 'package:lingora/services/notifications.dart';
@@ -187,6 +188,33 @@ void main() {
           }
         }
       }
+    });
+
+    test('grammar path lessons are complete and cover every note topic', () {
+      final lessons = (jsonDecode(File('assets/notes/lessons.json').readAsStringSync()) as List)
+          .map((l) => GrammarLesson.fromJson(l as Map<String, dynamic>))
+          .toList();
+      expect(lessons.length, greaterThanOrEqualTo(70));
+      expect(lessons.map((l) => l.id).toSet(), hasLength(lessons.length));
+      final topicIds = topics.map((t) => t.id).toSet();
+      final covered = <String>{};
+      for (final l in lessons) {
+        expect(l.summary.trim(), isNotEmpty, reason: l.id);
+        expect(l.compare.trim(), isNotEmpty, reason: l.id);
+        expect(l.quiz, isNotEmpty, reason: l.id);
+        for (final id in l.noteIds) {
+          expect(topicIds, contains(id), reason: '${l.id} -> $id');
+          covered.add(id);
+        }
+        for (final q in l.quiz) {
+          expect(q.answer, inInclusiveRange(0, q.options.length - 1), reason: '${l.id}: ${q.q}');
+          expect(q.options.toSet(), hasLength(q.options.length), reason: '${l.id}: ${q.q}');
+        }
+        for (final f in l.formulas) {
+          expect(f.parts, isNotEmpty, reason: l.id);
+        }
+      }
+      expect(topicIds.difference(covered), isEmpty, reason: 'note topics without a lesson');
     });
 
     test('spaced repetition picks due words, then new ones', () {
