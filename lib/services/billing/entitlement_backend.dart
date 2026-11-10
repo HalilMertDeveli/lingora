@@ -1,9 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// Premium entitlement as stored by the server in Firestore
-/// `entitlements/{uid}` (written only by Cloud Functions).
+/// Entitlements as stored by the server in Firestore `entitlements/{uid}`
+/// (written only by Cloud Functions): Premium plus one-time exam packs.
 class ServerEntitlement {
-  const ServerEntitlement({required this.premium, required this.status, this.productId, this.expiresAt});
+  const ServerEntitlement({
+    required this.premium,
+    required this.status,
+    this.productId,
+    this.expiresAt,
+    this.packs = const {},
+    this.source,
+    this.familyOwnerUid,
+    this.familyRole,
+  });
 
   final bool premium;
 
@@ -12,21 +21,49 @@ class ServerEntitlement {
   final String? productId;
   final DateTime? expiresAt;
 
-  /// Output of the `verifyPurchase` callable (europe-west1):
-  /// `{active, productId, expiresAt (ms since epoch)}`. `premium` and
-  /// `status` are accepted too.
+  /// Owned exam packs by exam id (`yds`, `lgs`), see `ExamPack.examId`.
+  final Set<String> packs;
+
+  /// Where Premium came from: 'play' | 'test' | 'family' | 'org'.
+  final String? source;
+
+  /// Family plan membership (null when not in a family).
+  final String? familyOwnerUid;
+
+  /// 'owner' | 'member'
+  final String? familyRole;
+
+  /// Output of the `verifyPurchase` / `redeemFamilyCode` callables
+  /// (europe-west1): `{active, productId, expiresAt (ms since epoch), packs?}`.
+  /// `premium` and `status` are accepted too.
   factory ServerEntitlement.fromJson(Map<String, Object?> j) {
     final premium = j['active'] == true || j['premium'] == true;
+    final family = j['family'];
     return ServerEntitlement(
       premium: premium,
       status: (j['status'] as String?) ?? (premium ? 'active' : 'expired'),
       productId: j['productId'] as String?,
       expiresAt: switch (j['expiresAt']) {
         final int ms => DateTime.fromMillisecondsSinceEpoch(ms),
+        final DateTime d => d,
         _ => null,
       },
+      packs: switch (j['packs']) {
+        final Map<Object?, Object?> m => {
+          for (final e in m.entries)
+            if (e.value == true) '${e.key}',
+        },
+        _ => const {},
+      },
+      source: j['source'] as String?,
+      familyOwnerUid: family is Map ? family['ownerUid'] as String? : null,
+      familyRole: family is Map ? family['role'] as String? : null,
     );
   }
+
+  /// An `entitlements/{uid}` document. The caller converts the Firestore
+  /// `expiresAt` Timestamp to a [DateTime] or milliseconds first.
+  factory ServerEntitlement.fromDoc(Map<String, Object?> data) => ServerEntitlement.fromJson(data);
 
   bool activeAt(DateTime now) => premium && (expiresAt == null || expiresAt!.isAfter(now));
 }
@@ -41,9 +78,9 @@ class EntitlementRejected implements Exception {
   String toString() => 'EntitlementRejected($code)';
 }
 
-/// Server side of Premium. The Firebase implementation calls the
-/// `verifyPurchase` callable and watches `entitlements/{uid}`; it overrides
-/// [entitlementBackendProvider] once Firebase is ready.
+/// Server side of Premium and exam packs. The Firebase implementation calls
+/// the `verifyPurchase` callable and watches `entitlements/{uid}`; it
+/// overrides [entitlementBackendProvider] once Firebase is ready.
 abstract class EntitlementBackend {
   /// Verifies a Google Play purchase token server-side and returns the
   /// resulting entitlement. Throws [EntitlementRejected] when the server

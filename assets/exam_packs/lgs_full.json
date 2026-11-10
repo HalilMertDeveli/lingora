@@ -1,0 +1,592 @@
+{
+ "id": "lgs_full",
+ "examId": "lgs",
+ "title": "LGS İngilizce Tam Deneme Paketi",
+ "scoring": "lgs",
+ "optionCount": 4,
+ "description": "LGS İngilizce bölümü formatında 4 özgün tam deneme (10 soru, 15 dakika). Her sorunun Türkçe çözümü var. Sorular Lingora tarafından hazırlanmıştır; MEB soruları değildir.",
+ "sections": [
+  {
+   "id": "lgs_vocab",
+   "title": "Kelime ve anlam"
+  },
+  {
+   "id": "lgs_dialogue",
+   "title": "Diyalog tamamlama"
+  },
+  {
+   "id": "lgs_reading",
+   "title": "Okuduğunu anlama"
+  },
+  {
+   "id": "lgs_situation",
+   "title": "Durum ve uygun cevap"
+  }
+ ],
+ "mocks": [
+  {
+   "id": "lgs_m1",
+   "title": "Tam Deneme 1",
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "lgs_m1_q01",
+     "section": "lgs_vocab",
+     "text": "Deniz and I had a small argument about the school project last week, but we ---- the next day. Now we are best friends again.",
+     "options": [
+      "made up",
+      "fell out",
+      "gave up",
+      "broke down"
+     ],
+     "answer": 0,
+     "explanation": "'Make up' (barışmak) tartışmadan sonra yeniden iyi arkadaş olmak demektir; 'Now we are best friends again' cümlesi bunu doğrular. 'Fall out' (bozuşmak, küsmek) tam tersi anlamdadır; 'give up' vazgeçmek, 'break down' ise bozulmak anlamına gelir."
+    },
+    {
+     "id": "lgs_m1_q02",
+     "section": "lgs_vocab",
+     "text": "First, ---- the onions into small pieces with a sharp knife. Then fry them in olive oil for five minutes.",
+     "options": [
+      "boil",
+      "chop",
+      "pour",
+      "bake"
+     ],
+     "answer": 1,
+     "explanation": "Soğanı keskin bir bıçakla küçük parçalara ayırmak 'chop' (doğramak) fiiliyle anlatılır. 'Boil' (haşlamak), 'pour' (dökmek) ve 'bake' (fırında pişirmek) bıçakla ve 'into small pieces' ifadesiyle uyuşmaz."
+    },
+    {
+     "id": "lgs_m1_q03",
+     "section": "lgs_dialogue",
+     "text": "Receptionist: Good morning, Sunny Dental Clinic. How can I help you?\nMr. Clark: Hello, could I speak to Dr. Aydın, please?\nReceptionist: ----\nMr. Clark: Yes, please. Can you tell her that Tom Clark called about his appointment?",
+     "options": [
+      "Sorry, you've got the wrong number.",
+      "Speaking. What can I do for you?",
+      "I'm afraid she's with a patient. Would you like to leave a message?",
+      "Hold on, please. I'll put you through."
+     ],
+     "answer": 2,
+     "explanation": "Mr. Clark 'Yes, please' deyip doktora iletilmesini istediği bir mesaj bırakıyor; demek ki resepsiyonist mesaj bırakmak isteyip istemediğini sormuştur ('leave a message': mesaj bırakmak). 'Hold on, I'll put you through' (bekleyin, bağlıyorum) cevabından sonra mesaj bırakmaya gerek kalmaz; 'Speaking' (benim) ve 'wrong number' (yanlış numara) da konuşmanın devamıyla uyuşmaz."
+    },
+    {
+     "id": "lgs_m1_q04",
+     "section": "lgs_dialogue",
+     "text": "Kerem: I want to download this game, but the website asks for my home address and my mum's phone number.\nAylin: ----\nKerem: You're right. I'll ask my dad first.",
+     "options": [
+      "Be careful! Never share personal information on unknown websites.",
+      "Great! Just write them all and click the button.",
+      "Why don't you buy a new computer instead?",
+      "I don't like computer games at all."
+     ],
+     "answer": 0,
+     "explanation": "Kerem 'Haklısın, önce babama soracağım' diyor; yani Aylin onu uyarmıştır. 'Personal information' (kişisel bilgi) tanımadığın sitelerle paylaşılmamalıdır. Bilgileri hemen yazmasını söyleyen cevap ya da bilgisayar ve oyun zevkiyle ilgili cevaplar 'You're right' tepkisine uymaz."
+    },
+    {
+     "id": "lgs_m1_q05",
+     "section": "lgs_reading",
+     "passage": "8/C Nature Club – group chat\nMert (18:05): Hi everyone! The camping trip to Lake Abant is on Saturday. The bus leaves the school at 7:30 a.m. sharp.\nLucy (18:07): Do we need to bring tents?\nMert (18:08): No, the club has tents. But bring a sleeping bag, a torch and warm clothes. It gets cold at night.\nEce (18:10): I can't find my sleeping bag. Does anyone have an extra one?\nLucy (18:11): My brother has two. I'll bring one for you, Ece.\nEce (18:12): Thanks a lot, Lucy! You're a lifesaver!\nMert (18:14): And don't forget: no mobile phones during the canoe race on Sunday morning!",
+     "text": "Which of the following is NOT true according to the chat?",
+     "options": [
+      "The students will go to Lake Abant by bus.",
+      "The students don't have to bring tents.",
+      "Ece is going to buy a new sleeping bag.",
+      "There will be a canoe race on Sunday."
+     ],
+     "answer": 2,
+     "explanation": "Ece uyku tulumunu bulamıyor ama yeni bir tane satın almayacak; Lucy erkek kardeşinin fazla tulumunu ona getirecek. Otobüsle gidilmesi, çadırların kulüpten sağlanması ('the club has tents') ve pazar sabahı kano yarışı ('canoe race') mesajlarda açıkça yazıyor."
+    },
+    {
+     "id": "lgs_m1_q06",
+     "section": "lgs_reading",
+     "passage": "8/C Nature Club – group chat\nMert (18:05): Hi everyone! The camping trip to Lake Abant is on Saturday. The bus leaves the school at 7:30 a.m. sharp.\nLucy (18:07): Do we need to bring tents?\nMert (18:08): No, the club has tents. But bring a sleeping bag, a torch and warm clothes. It gets cold at night.\nEce (18:10): I can't find my sleeping bag. Does anyone have an extra one?\nLucy (18:11): My brother has two. I'll bring one for you, Ece.\nEce (18:12): Thanks a lot, Lucy! You're a lifesaver!\nMert (18:14): And don't forget: no mobile phones during the canoe race on Sunday morning!",
+     "text": "What does Lucy offer to do?",
+     "options": [
+      "Organise the canoe race.",
+      "Bring extra tents for the club.",
+      "Wake everyone up at 7:30 a.m.",
+      "Bring a sleeping bag for Ece."
+     ],
+     "answer": 3,
+     "explanation": "Lucy 'I'll bring one for you, Ece' diyerek erkek kardeşinin uyku tulumlarından birini Ece'ye getirmeyi teklif ediyor ('offer': teklif etmek). Çadırlar zaten kulüpte var, kano yarışını ve saat 7:30'u hatırlatan kişi ise Mert."
+    },
+    {
+     "id": "lgs_m1_q07",
+     "section": "lgs_reading",
+     "passage": "How do 8th graders spend their free time? (A survey of 100 students)\n\nActivity | Every day | Once a week | Never\nPlaying online games | 45 | 30 | 25\nReading books | 20 | 50 | 30\nDoing sports | 35 | 55 | 10\nWatching series | 60 | 30 | 10",
+     "text": "According to the table, which of the following is true?",
+     "options": [
+      "Most students read books every day.",
+      "Watching series is the most popular everyday activity.",
+      "More students never do sports than never play online games.",
+      "Half of the students play online games once a week."
+     ],
+     "answer": 1,
+     "explanation": "Her gün dizi izleyen öğrenci sayısı 60'tır ve 'Every day' sütunundaki en yüksek sayı budur. Her gün kitap okuyan sadece 20 kişidir; hiç spor yapmayan 10 kişi, hiç oyun oynamayan 25 kişiden azdır; haftada bir oyun oynayanlar ise yarısı değil, 30 kişidir."
+    },
+    {
+     "id": "lgs_m1_q08",
+     "section": "lgs_reading",
+     "passage": "How do 8th graders spend their free time? (A survey of 100 students)\n\nActivity | Every day | Once a week | Never\nPlaying online games | 45 | 30 | 25\nReading books | 20 | 50 | 30\nDoing sports | 35 | 55 | 10\nWatching series | 60 | 30 | 10",
+     "text": "According to the table, how many students never read books?",
+     "options": [
+      "10",
+      "20",
+      "25",
+      "30"
+     ],
+     "answer": 3,
+     "explanation": "'Reading books' satırında 'Never' (hiçbir zaman) sütununda 30 yazıyor. 20 her gün okuyanların, 25 hiç oyun oynamayanların, 10 ise hiç spor yapmayanların ve dizi izlemeyenlerin sayısıdır."
+    },
+    {
+     "id": "lgs_m1_q09",
+     "section": "lgs_situation",
+     "text": "Your little brother wants to help with the housework, but he is only five. You don't want him to carry the heavy rubbish bag. What would you say to him?",
+     "options": [
+      "Take out the rubbish and then mop the floor.",
+      "Why don't you ever help me with the chores?",
+      "I hate doing the washing-up every evening.",
+      "You can feed the cat instead. The bag is too heavy for you."
+     ],
+     "answer": 3,
+     "explanation": "Küçük kardeşine ağır çöp torbasını taşıtmak istemiyorsun, bu yüzden ona daha kolay bir iş vermelisin: 'feed the cat' (kediyi beslemek), 'too heavy' (çok ağır). Çöpü çıkarmasını istemek durumla çelişir; diğer iki cevap ise yardım etmek isteyen birine uygun değildir."
+    },
+    {
+     "id": "lgs_m1_q10",
+     "section": "lgs_situation",
+     "text": "During an earthquake drill, Ms. Yavuz tells her students: \"Drop to the floor, cover your head and hold on to a strong table until the shaking stops.\" What is Ms. Yavuz doing?",
+     "options": [
+      "She is explaining why earthquakes happen.",
+      "She is complaining about a broken table.",
+      "She is giving safety tips.",
+      "She is inviting the students to a picnic."
+     ],
+     "answer": 2,
+     "explanation": "Öğretmen deprem tatbikatında ('earthquake drill') öğrencilere yere çömelmelerini, başlarını korumalarını ve sağlam bir masaya tutunmalarını söylüyor; bu güvenlik tavsiyesi ('safety tips') vermektir. Depremlerin nedenini açıklamıyor, şikâyet etmiyor ya da bir davet yapmıyor."
+    }
+   ]
+  },
+  {
+   "id": "lgs_m2",
+   "title": "Tam Deneme 2",
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "lgs_m2_q01",
+     "section": "lgs_vocab",
+     "text": "The ---- of the telephone changed the way people communicate. Before it, people had to send letters and wait for weeks.",
+     "options": [
+      "experiment",
+      "laboratory",
+      "invention",
+      "research"
+     ],
+     "answer": 2,
+     "explanation": "Telefonun 'invention' (icat) olması insanların iletişim şeklini değiştirmiştir; cümle yeni bir aletin ortaya çıkışından söz ediyor. 'Experiment' (deney), 'laboratory' (laboratuvar) ve 'research' (araştırma) telefonun ortaya çıkışını anlatmak için uygun değildir."
+    },
+    {
+     "id": "lgs_m2_q02",
+     "section": "lgs_vocab",
+     "text": "Burak is crazy about football. He never ---- a match of his favourite team on TV, even when he has a lot of homework.",
+     "options": [
+      "wins",
+      "misses",
+      "catches",
+      "loses"
+     ],
+     "answer": 1,
+     "explanation": "'Miss a match' bir maçı kaçırmak demektir; futbol hayranı Burak, tuttuğu takımın hiçbir maçını kaçırmaz. Burak maçı televizyondan izlediği için 'win' (kazanmak) ve 'lose' (kaybetmek) ona uymaz; 'catch a match' ise bu anlamda doğal bir ifade değildir."
+    },
+    {
+     "id": "lgs_m2_q03",
+     "section": "lgs_dialogue",
+     "text": "Tourist: Excuse me, how can I get to the Blue Mosque from here?\nPolice officer: ----\nTourist: Great! Then I'll walk. Thank you very much.",
+     "options": [
+      "You should take a taxi. It's very far.",
+      "It closes at six o'clock in the evening.",
+      "Entrance is free for all visitors.",
+      "It's only about ten minutes on foot."
+     ],
+     "answer": 3,
+     "explanation": "Turist 'Harika! O zaman yürüyeceğim' diyor; demek ki polis yerin yürüme mesafesinde olduğunu söylemiştir: 'on foot' (yürüyerek). Çok uzak olduğunu ve taksi önermesi yürüme kararıyla çelişir; kapanış saati ve giriş ücreti ise 'nasıl giderim' sorusunun cevabı değildir."
+    },
+    {
+     "id": "lgs_m2_q04",
+     "section": "lgs_dialogue",
+     "text": "Mum: Kaan, your room is a mess again! There are clothes everywhere.\nKaan: Sorry, Mum. I was busy with my science project.\nMum: ----\nKaan: OK, I'll tidy it up right after lunch.",
+     "options": [
+      "I understand, but please clean it today.",
+      "Don't worry, I'll do it for you.",
+      "Your project looks really great.",
+      "Shall we go out for lunch?"
+     ],
+     "answer": 0,
+     "explanation": "Kaan 'öğle yemeğinden hemen sonra toplayacağım' ('tidy up': toplamak, düzenlemek) diyor; yani annesi odayı bugün temizlemesini istemiştir. Annenin 'ben yaparım' demesi Kaan'ın cevabıyla çelişir; projeyi övmek veya yemeğe çıkmayı önermek de bu cevaba yol açmaz."
+    },
+    {
+     "id": "lgs_m2_q05",
+     "section": "lgs_reading",
+     "passage": "CAPPADOCIA DISCOVERY WEEKEND\n\nDay 1 – Saturday\n• 05:30 Hot-air balloon ride over the fairy chimneys (not suitable for children under 6)\n• 10:00 Breakfast at the hotel\n• 13:00 Visit to an underground city – bring a jacket, it is cold inside!\n\nDay 2 – Sunday\n• 09:00 Hiking in Love Valley (4 km, easy level)\n• 14:00 Pottery workshop in Avanos\n\nPrice: 3,500 TL per person (hotel and all meals included)\nBooking: at the reception desk or by phone",
+     "text": "Which of the following is NOT mentioned in the poster?",
+     "options": [
+      "the price of the tour",
+      "the length of the hiking route",
+      "the age limit for the balloon ride",
+      "the name of the hotel"
+     ],
+     "answer": 3,
+     "explanation": "Afişte otelde kahvaltı yapılacağı yazıyor ama otelin adı hiçbir yerde geçmiyor. Fiyat (3,500 TL), yürüyüş rotasının uzunluğu (4 km) ve balon için yaş sınırı ('not suitable for children under 6': 6 yaş altı çocuklar için uygun değil) afişte belirtilmiş."
+    },
+    {
+     "id": "lgs_m2_q06",
+     "section": "lgs_reading",
+     "passage": "CAPPADOCIA DISCOVERY WEEKEND\n\nDay 1 – Saturday\n• 05:30 Hot-air balloon ride over the fairy chimneys (not suitable for children under 6)\n• 10:00 Breakfast at the hotel\n• 13:00 Visit to an underground city – bring a jacket, it is cold inside!\n\nDay 2 – Sunday\n• 09:00 Hiking in Love Valley (4 km, easy level)\n• 14:00 Pottery workshop in Avanos\n\nPrice: 3,500 TL per person (hotel and all meals included)\nBooking: at the reception desk or by phone",
+     "text": "According to the poster, ----.",
+     "options": [
+      "the pottery workshop is on Saturday morning",
+      "visitors should take warm clothes to the underground city",
+      "meals are not included in the price",
+      "the hiking route is very difficult"
+     ],
+     "answer": 1,
+     "explanation": "Afişte yeraltı şehri için 'bring a jacket, it is cold inside' (ceket getirin, içerisi soğuk) yazıyor; yani ziyaretçiler sıcak tutan giysiler almalı. Çömlek atölyesi ('pottery workshop') pazar öğleden sonradır, yemekler fiyata dahildir ('included') ve yürüyüş rotası kolay ('easy level') seviyededir."
+    },
+    {
+     "id": "lgs_m2_q07",
+     "section": "lgs_reading",
+     "passage": "What do you think about social media?\n\nElif: I use it to follow science pages and learn new things. But I never spend more than an hour a day online.\nJack: Honestly, it wasted my time. I deleted all my accounts last month, and now I have more time for basketball.\nNehir: I love sharing photos with my cousins in Germany. It helps me stay in touch with them.\nCan: Some people write mean comments, so social media can be harmful. I only use it with my parents' permission.",
+     "text": "Who uses social media to communicate with relatives?",
+     "options": [
+      "Elif",
+      "Jack",
+      "Nehir",
+      "Can"
+     ],
+     "answer": 2,
+     "explanation": "Nehir Almanya'daki kuzenleriyle fotoğraf paylaştığını ve sosyal medyanın onlarla iletişimde kalmasına ('stay in touch') yardım ettiğini söylüyor; kuzenler akrabadır ('relatives'). Elif bilim sayfalarını takip ediyor, Jack hesaplarını silmiş, Can ise sadece ailesinin izniyle kullanıyor."
+    },
+    {
+     "id": "lgs_m2_q08",
+     "section": "lgs_reading",
+     "passage": "What do you think about social media?\n\nElif: I use it to follow science pages and learn new things. But I never spend more than an hour a day online.\nJack: Honestly, it wasted my time. I deleted all my accounts last month, and now I have more time for basketball.\nNehir: I love sharing photos with my cousins in Germany. It helps me stay in touch with them.\nCan: Some people write mean comments, so social media can be harmful. I only use it with my parents' permission.",
+     "text": "Which of the following is true according to the opinions?",
+     "options": [
+      "Jack doesn't use social media anymore.",
+      "Elif spends hours online every day.",
+      "Nehir thinks social media is harmful.",
+      "Can deleted his accounts last month."
+     ],
+     "answer": 0,
+     "explanation": "Jack geçen ay tüm hesaplarını sildiğini ('deleted all my accounts') söylüyor, yani artık sosyal medya kullanmıyor. Elif günde bir saatten fazla internette kalmıyor; sosyal medyanın zararlı ('harmful') olabileceğini düşünen Nehir değil Can'dır ve hesaplarını silen de Can değil Jack'tir."
+    },
+    {
+     "id": "lgs_m2_q09",
+     "section": "lgs_situation",
+     "text": "Your friend Zoe calls you on your mobile phone, but you are in the middle of a piano lesson. What would you say to her?",
+     "options": [
+      "Hi Zoe, I'm free all day. What's up?",
+      "Can I take a message for her?",
+      "Hang on, I'll put you through to the teacher.",
+      "Sorry, I can't talk now. Can I call you back later?"
+     ],
+     "answer": 3,
+     "explanation": "Derstesin ve konuşamıyorsun, bu yüzden kibarca daha sonra geri aramayı ('call back': geri aramak) önermelisin. 'Bütün gün boşum' demek durumla çelişir; mesaj almayı teklif etmek ya da öğretmene bağlamak ise telefona başkası için cevap veren birinin sözleridir."
+    },
+    {
+     "id": "lgs_m2_q10",
+     "section": "lgs_situation",
+     "text": "Defne says, \"I've found an easy recipe for lemon cake online. We have flour, eggs and sugar at home, but we need some lemons and butter.\" What does Defne want to do?",
+     "options": [
+      "She wants to buy a cake from the bakery.",
+      "She wants to get some ingredients and bake a cake.",
+      "She wants to find a recipe on the internet.",
+      "She wants to make lemonade for her friends."
+     ],
+     "answer": 1,
+     "explanation": "Defne tarifi zaten bulmuş; eksik malzemeleri ('ingredients': malzemeler), yani limon ve tereyağını alıp limonlu kek yapmak istiyor. Tarif bulmak zaten yapılmış bir iş; pastaneden kek almak veya limonata yapmak ise sözlerinde geçmiyor."
+    }
+   ]
+  },
+  {
+   "id": "lgs_m3",
+   "title": "Tam Deneme 3",
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "lgs_m3_q01",
+     "section": "lgs_vocab",
+     "text": "After three days of heavy rain, the river rose quickly, and the ---- damaged many houses and farms in the village.",
+     "options": [
+      "drought",
+      "flood",
+      "avalanche",
+      "earthquake"
+     ],
+     "answer": 1,
+     "explanation": "Şiddetli yağmurdan sonra nehrin yükselmesi 'flood' (sel) ile sonuçlanır. 'Drought' (kuraklık) yağmursuzluk demektir; 'avalanche' (çığ) kar ile, 'earthquake' (deprem) ise yer kabuğunun hareketiyle ilgilidir, yağmurla oluşmaz."
+    },
+    {
+     "id": "lgs_m3_q02",
+     "section": "lgs_vocab",
+     "text": "Climbing that mountain without any experience is too ----. You should go with a professional guide and the right equipment.",
+     "options": [
+      "safe",
+      "ordinary",
+      "relaxing",
+      "risky"
+     ],
+     "answer": 3,
+     "explanation": "Deneyimsiz biri için dağa tırmanmak 'risky' (riskli, tehlikeli) bir iştir; bu yüzden profesyonel bir rehberle gitmek öneriliyor. 'Safe' (güvenli), 'ordinary' (sıradan) ve 'relaxing' (rahatlatıcı) rehber önerisiyle mantıklı bir bağ kurmaz."
+    },
+    {
+     "id": "lgs_m3_q03",
+     "section": "lgs_dialogue",
+     "text": "Chef Ayşe: Good! The tomatoes are soft now, so let's add the eggs.\nRosa: ----\nChef Ayşe: Just a pinch. Too much salt isn't good for your health.",
+     "options": [
+      "How many eggs do we need?",
+      "How long should I cook it?",
+      "How much salt should I add?",
+      "How often do you make menemen?"
+     ],
+     "answer": 2,
+     "explanation": "Şef 'Just a pinch' (sadece bir tutam) diyor ve tuzdan bahsediyor; bu yüzden Rosa ne kadar tuz eklemesi gerektiğini sormuştur: 'How much salt...?'. Yumurta sayısı ('How many'), pişirme süresi ('How long') ve sıklık ('How often') sorularının cevabı 'bir tutam' olamaz."
+    },
+    {
+     "id": "lgs_m3_q04",
+     "section": "lgs_dialogue",
+     "text": "Ömer: I'm going to move to İzmir next month because of my dad's new job.\nSophie: Oh no! ----\nÖmer: Don't be sad. We can video chat every weekend.",
+     "options": [
+      "I'll really miss you.",
+      "Congratulations on your new job!",
+      "Can I borrow your bike?",
+      "I'm glad you're staying here."
+     ],
+     "answer": 0,
+     "explanation": "Sophie 'Oh no!' diyerek üzüldüğünü gösteriyor ve Ömer de 'üzülme' cevabını veriyor; bu yüzden en uygun cümle 'I'll really miss you' (seni çok özleyeceğim). Yeni iş Ömer'in babasına ait; Ömer taşındığı için 'burada kalmana sevindim' de yanlış, bisiklet istemek ise konuyla ilgisiz."
+    },
+    {
+     "id": "lgs_m3_q05",
+     "section": "lgs_reading",
+     "passage": "Dear Grade 8 Students,\n\nOur school Science Fair will take place on 12th March in the sports hall. Each group should have three or four students. You can choose any topic, but your project must include a simple experiment. Please send your project title to me by 20th February. On the day of the fair, judges from the local university will visit every stand, and the best three projects will join the city competition in April. Don't forget to prepare a poster that explains your experiment!\n\nBest wishes,\nMs. Harper\nScience Teacher",
+     "text": "Which of the following is NOT true according to the e-mail?",
+     "options": [
+      "The fair will be held in the sports hall.",
+      "Students can work alone on their projects.",
+      "Every project needs an experiment.",
+      "The best projects will go to a city competition."
+     ],
+     "answer": 1,
+     "explanation": "E-postada her grubun üç ya da dört öğrenciden oluşması gerektiği yazıyor; yani öğrenciler projeyi tek başına ('alone') hazırlayamaz. Fuarın spor salonunda olacağı, her projede bir deney ('experiment') bulunması gerektiği ve en iyi üç projenin şehir yarışmasına katılacağı ise metinde açıkça belirtilmiş."
+    },
+    {
+     "id": "lgs_m3_q06",
+     "section": "lgs_reading",
+     "passage": "Dear Grade 8 Students,\n\nOur school Science Fair will take place on 12th March in the sports hall. Each group should have three or four students. You can choose any topic, but your project must include a simple experiment. Please send your project title to me by 20th February. On the day of the fair, judges from the local university will visit every stand, and the best three projects will join the city competition in April. Don't forget to prepare a poster that explains your experiment!\n\nBest wishes,\nMs. Harper\nScience Teacher",
+     "text": "What should the students do by 20th February?",
+     "options": [
+      "Prepare a poster for the fair.",
+      "Visit the local university.",
+      "Choose the judges for the fair.",
+      "Send their project title to Ms. Harper."
+     ],
+     "answer": 3,
+     "explanation": "Ms. Harper 'Please send your project title to me by 20th February' diyor; 'by' burada 'en geç ... tarihine kadar' anlamındadır. Afiş fuar için hazırlanacak ama bu tarihe bağlanmamış; jüriler ('judges') de öğrencileri üniversiteden gelip ziyaret edecek, öğrenciler onları seçmeyecek."
+    },
+    {
+     "id": "lgs_m3_q07",
+     "section": "lgs_reading",
+     "passage": "Natural events reported in Greenvale (2021–2024)\n\nYear | Floods | Storms | Forest fires\n2021 | 4 | 3 | 2\n2022 | 6 | 8 | 3\n2023 | 3 | 9 | 5\n2024 | 2 | 6 | 8",
+     "text": "According to the table, which of the following is true?",
+     "options": [
+      "The number of forest fires increased every year.",
+      "There were more floods than storms in 2022.",
+      "2023 had the highest number of floods.",
+      "Storms were the most common event in 2021."
+     ],
+     "answer": 0,
+     "explanation": "Orman yangını ('forest fire') sayısı her yıl artmış: 2, 3, 5 ve 8. 2022'de 6 sel ('flood') ve 8 fırtına ('storm') olduğu için fırtına daha fazladır; en çok sel 2023'te değil 2022'dedir; 2021'de ise en sık görülen olay fırtına değil seldir (4)."
+    },
+    {
+     "id": "lgs_m3_q08",
+     "section": "lgs_reading",
+     "passage": "Natural events reported in Greenvale (2021–2024)\n\nYear | Floods | Storms | Forest fires\n2021 | 4 | 3 | 2\n2022 | 6 | 8 | 3\n2023 | 3 | 9 | 5\n2024 | 2 | 6 | 8",
+     "text": "In which year did Greenvale have the most storms?",
+     "options": [
+      "2021",
+      "2022",
+      "2023",
+      "2024"
+     ],
+     "answer": 2,
+     "explanation": "'Storms' (fırtınalar) sütunundaki en büyük sayı 9'dur ve 2023 yılına aittir. 2022'de 8, 2024'te 6, 2021'de ise sadece 3 fırtına olmuştur."
+    },
+    {
+     "id": "lgs_m3_q09",
+     "section": "lgs_situation",
+     "text": "Hannah is a tourist in İstanbul. She wants to visit Galata Tower, but she doesn't know how to get there. What would she say to a local person?",
+     "options": [
+      "Excuse me, how much does this souvenir cost?",
+      "Could I book a double room for three nights?",
+      "Could you take a photo of me, please?",
+      "Excuse me, could you tell me the way to Galata Tower?"
+     ],
+     "answer": 3,
+     "explanation": "Hannah yolu bilmediği için kibarca yol tarifi istemelidir: 'Could you tell me the way to...?' (... nereden gidildiğini söyler misiniz?). Hediyelik eşyanın ('souvenir') fiyatını sormak, otel odası ayırtmak veya fotoğraf çektirmek onun sorununu çözmez."
+    },
+    {
+     "id": "lgs_m3_q10",
+     "section": "lgs_situation",
+     "text": "Arda's computer has become very slow, and strange windows keep opening on the screen. His friend thinks the computer has a virus. What would his friend say to Arda?",
+     "options": [
+      "You should open those windows and click on all the links.",
+      "You should install an antivirus program and scan your computer.",
+      "You should share your password with your classmates.",
+      "You should play more online games on it."
+     ],
+     "answer": 1,
+     "explanation": "Virüs şüphesi varsa en mantıklı öneri bir virüs programı kurup ('install': kurmak, yüklemek) bilgisayarı taramaktır ('scan': taramak). Garip pencerelerdeki bağlantılara tıklamak ve şifre paylaşmak durumu daha da kötüleştirir; daha çok oyun oynamak da sorunu çözmez."
+    }
+   ]
+  },
+  {
+   "id": "lgs_m4",
+   "title": "Tam Deneme 4",
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "lgs_m4_q01",
+     "section": "lgs_vocab",
+     "text": "I hate ---- the laundry because I always mix the colours, and my white shirts turn pink!",
+     "options": [
+      "making",
+      "setting",
+      "doing",
+      "taking"
+     ],
+     "answer": 2,
+     "explanation": "'Do the laundry' çamaşır yıkamak anlamına gelen kalıptır; renkleri karıştırınca beyaz gömleklerin pembeleşmesi de bunu gösterir. 'Make', 'set' ve 'take' fiilleri 'laundry' kelimesiyle bu anlamda kullanılmaz ('set the table' sofrayı kurmaktır)."
+    },
+    {
+     "id": "lgs_m4_q02",
+     "section": "lgs_vocab",
+     "text": "Operator: Mr. Demir's line is busy right now. Please ---- for a moment. I'll connect you as soon as the line is free.",
+     "options": [
+      "hang up",
+      "hold on",
+      "pick up",
+      "call back"
+     ],
+     "answer": 1,
+     "explanation": "'Hold on' telefonda 'hatta kalın, bekleyin' demektir; operatör hat boşalınca bağlayacağını söylediği için arayanın beklemesi gerekir. 'Hang up' (telefonu kapatmak) ve 'call back' (geri aramak) bağlanmayı beklemekle çelişir; 'pick up' ise telefonu açmak demektir."
+    },
+    {
+     "id": "lgs_m4_q03",
+     "section": "lgs_dialogue",
+     "text": "Instructor: Have you ever tried rafting before, Naz?\nNaz: ----\nInstructor: Don't worry. I'll explain everything before we start, and you'll wear a life jacket.",
+     "options": [
+      "Yes, I've done it many times.",
+      "I'd rather go skydiving instead.",
+      "It was amazing last summer.",
+      "No, this is my first time, and I'm a bit nervous."
+     ],
+     "answer": 3,
+     "explanation": "Eğitmen 'Endişelenme, başlamadan önce her şeyi anlatacağım' diyor; demek ki Naz daha önce rafting yapmamış ve biraz gergin ('nervous'). Defalarca yaptığını ya da geçen yaz harika olduğunu söyleseydi eğitmenin her şeyi açıklamasına gerek kalmazdı; paraşütle atlamayı ('skydiving') tercih etmek de bu cevaba uymaz."
+    },
+    {
+     "id": "lgs_m4_q04",
+     "section": "lgs_dialogue",
+     "text": "Leo: My online order still hasn't arrived. It's been two weeks!\nBerk: ----\nLeo: Good idea. I'll write to them right now.",
+     "options": [
+      "Why don't you send an e-mail to the company?",
+      "Did you like the shoes you bought?",
+      "You should never go shopping in real stores.",
+      "I always pay in cash at the market."
+     ],
+     "answer": 0,
+     "explanation": "Leo 'İyi fikir, onlara hemen yazacağım' diyor; yani Berk şirkete e-posta göndermesini önermiştir. 'Why don't you...?' bir öneri kalıbıdır. Ayakkabıyı beğenip beğenmediğini sormak mantıksızdır çünkü sipariş henüz gelmemiş; diğer iki cevap da 'onlara yazacağım' tepkisine uymaz."
+    },
+    {
+     "id": "lgs_m4_q05",
+     "section": "lgs_reading",
+     "passage": "The Yılmaz family's weekly chore chart\n\nName | Monday | Wednesday | Saturday\nDad | cook dinner | iron the clothes | wash the car\nMum | do the shopping | cook dinner | water the plants\nEce | set the table | feed the cat | vacuum the carpets\nYusuf | take out the rubbish | do the washing-up | tidy his room",
+     "text": "According to the chart, which of the following is true?",
+     "options": [
+      "Mum cooks dinner on Monday.",
+      "Ece feeds the cat on Wednesday.",
+      "Yusuf washes the car on Saturday.",
+      "Dad does the shopping on Wednesday."
+     ],
+     "answer": 1,
+     "explanation": "Tabloda Ece'nin çarşamba görevi 'feed the cat' (kediyi beslemek) olarak yazıyor. Pazartesi akşam yemeğini Anne değil Baba pişiriyor, cumartesi arabayı yıkayan da Yusuf değil Baba'dır ('wash the car') ve alışverişi ('do the shopping') Anne pazartesi yapıyor."
+    },
+    {
+     "id": "lgs_m4_q06",
+     "section": "lgs_reading",
+     "passage": "The Yılmaz family's weekly chore chart\n\nName | Monday | Wednesday | Saturday\nDad | cook dinner | iron the clothes | wash the car\nMum | do the shopping | cook dinner | water the plants\nEce | set the table | feed the cat | vacuum the carpets\nYusuf | take out the rubbish | do the washing-up | tidy his room",
+     "text": "Who washes the dishes on Wednesday?",
+     "options": [
+      "Dad",
+      "Mum",
+      "Ece",
+      "Yusuf"
+     ],
+     "answer": 3,
+     "explanation": "Bulaşık yıkamak İngilizcede 'do the washing-up' olarak ifade edilir ve çarşamba günü bu görev Yusuf'a aittir. O gün Baba ütü yapıyor ('iron the clothes'), Anne yemek pişiriyor, Ece ise kediyi besliyor."
+    },
+    {
+     "id": "lgs_m4_q07",
+     "section": "lgs_reading",
+     "passage": "My First Paragliding Experience – by Kemal, 14\n\nLast summer, my family and I went on holiday to Fethiye. My uncle, who is a professional paragliding pilot, offered to take me on a tandem flight from Babadağ. At first, I was terrified because the mountain is nearly 2,000 metres high. However, my uncle checked all the equipment carefully and showed me how to run before take-off. When we were in the air, my fear disappeared. The view of the sea was breathtaking! We landed on the beach after about thirty minutes. I can't wait to do it again, but next time I want to take a training course and fly by myself.",
+     "text": "Which of the following is NOT true according to the text?",
+     "options": [
+      "Kemal's uncle is an experienced pilot.",
+      "Kemal was scared before the flight.",
+      "Kemal flew alone for thirty minutes.",
+      "They landed on the beach."
+     ],
+     "answer": 2,
+     "explanation": "Kemal yalnız uçmadı; amcasıyla birlikte 'tandem' (iki kişilik) bir uçuş yaptı. Tek başına uçmak ('by myself') onun gelecekteki hayali. Amcasının profesyonel pilot olduğu, Kemal'in uçuştan önce çok korktuğu ('terrified') ve sahile indikleri metinde yazıyor."
+    },
+    {
+     "id": "lgs_m4_q08",
+     "section": "lgs_reading",
+     "passage": "My First Paragliding Experience – by Kemal, 14\n\nLast summer, my family and I went on holiday to Fethiye. My uncle, who is a professional paragliding pilot, offered to take me on a tandem flight from Babadağ. At first, I was terrified because the mountain is nearly 2,000 metres high. However, my uncle checked all the equipment carefully and showed me how to run before take-off. When we were in the air, my fear disappeared. The view of the sea was breathtaking! We landed on the beach after about thirty minutes. I can't wait to do it again, but next time I want to take a training course and fly by myself.",
+     "text": "What does Kemal want to do in the future?",
+     "options": [
+      "Take a course and fly on his own.",
+      "Become a professional swimmer.",
+      "Climb Babadağ on foot.",
+      "Check the equipment for his uncle."
+     ],
+     "answer": 0,
+     "explanation": "Kemal metnin sonunda bir eğitim kursuna katılıp ('take a training course') tek başına uçmak istediğini söylüyor; 'by myself' ve 'on his own' aynı anlama gelir (kendi başına). Yüzücü olmak ya da dağa yürüyerek tırmanmaktan söz etmiyor; ekipmanı kontrol eden kişi ise amcası."
+    },
+    {
+     "id": "lgs_m4_q09",
+     "section": "lgs_situation",
+     "text": "You call your friend Mina's house, but her father answers the phone and tells you that she isn't at home. What would you say?",
+     "options": [
+      "Speaking. Who's calling, please?",
+      "Hold on, I'll get her for you.",
+      "Could you ask her to call me back, please?",
+      "Sorry, I think you have the wrong number."
+     ],
+     "answer": 2,
+     "explanation": "Mina evde olmadığı için babasından ona bir mesaj iletmesini, yani seni geri aramasını ('call back') rica etmelisin. 'Speaking' ve 'Hold on, I'll get her' telefonu açan kişinin sözleridir; yanlış numara cümlesi de Mina'nın babası telefonu açtığı için uygun değildir."
+    },
+    {
+     "id": "lgs_m4_q10",
+     "section": "lgs_situation",
+     "text": "Ela is interested in robots. She has heard about a free coding workshop at the science centre this weekend. She says, \"I'd love to join it, but I need to ask my parents first.\" What does Ela want to do?",
+     "options": [
+      "She wants to buy a robot from the science centre.",
+      "She wants to teach coding to her parents.",
+      "She wants to work at the science centre.",
+      "She wants to attend a coding workshop."
+     ],
+     "answer": 3,
+     "explanation": "Ela 'I'd love to join it' (katılmayı çok isterim) diyerek kodlama atölyesine ('workshop') katılmak istediğini söylüyor; 'attend' de katılmak demektir. Robot satın almak, ailesine kodlama öğretmek ya da bilim merkezinde çalışmak sözlerinde geçmiyor; ailesine sadece izin için soracak."
+    }
+   ]
+  }
+ ]
+}

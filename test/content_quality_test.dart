@@ -190,6 +190,17 @@ void main() {
           'options',
           'text',
         ),
+      // Paid exam packs: full mock exams.
+      for (final f in files.where((f) => f.startsWith('assets/exam_packs/')))
+        (
+          f,
+          [
+            for (final m in ((_read(f) as Map)['mocks'] as List?) ?? const [])
+              for (final q in ((m as Map)['questions'] as List?) ?? const []) q as Map<String, dynamic>,
+          ],
+          'options',
+          'text',
+        ),
       (
         'assets/placement/questions.json',
         (_read('assets/placement/questions.json') as List).cast(),

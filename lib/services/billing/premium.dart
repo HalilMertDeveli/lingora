@@ -237,6 +237,8 @@ class PremiumController extends Notifier<PremiumState> {
 
   Future<void> _onPurchases(List<StorePurchase> purchases) async {
     for (final p in purchases) {
+      // Exam packs are handled (and completed) by ExamPackController.
+      if (PremiumPlan.byId(p.productId) == null) continue;
       switch (p.status) {
         case StorePurchaseStatus.pending:
           state = state.copyWith(busy: false, pending: true);
@@ -249,10 +251,8 @@ class PremiumController extends Notifier<PremiumState> {
             error: () => 'Satın alma tamamlanamadı${p.errorMessage == null ? '' : ' (${p.errorMessage})'}.',
           );
         case StorePurchaseStatus.purchased || StorePurchaseStatus.restored:
-          if (PremiumPlan.byId(p.productId) != null) {
-            if (p.status == StorePurchaseStatus.restored) _restoredSomething = true;
-            await _grant(p);
-          }
+          if (p.status == StorePurchaseStatus.restored) _restoredSomething = true;
+          await _grant(p);
       }
       if (p.needsCompletion) {
         try {
@@ -342,6 +342,10 @@ class PremiumController extends Notifier<PremiumState> {
               : AnalyticsEvent.purchase(plan: plan.name),
         );
   }
+
+  /// Applies an entitlement the server just returned (e.g. after joining a
+  /// family plan), before the Firestore listener catches up.
+  void applyServer(ServerEntitlement e) => _onServer(e);
 
   void _onServer(ServerEntitlement? e) {
     if (e == null) return;

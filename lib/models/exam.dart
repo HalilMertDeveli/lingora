@@ -7,9 +7,13 @@ class ExamQuestion {
     required this.answer,
     required this.explanation,
     this.passage,
+    this.section,
   });
 
   final String id;
+
+  /// Section id; set in exam pack mocks, where sections are mixed.
+  final String? section;
 
   /// Optional reading text shown above the question.
   final String? passage;
@@ -25,6 +29,7 @@ class ExamQuestion {
   factory ExamQuestion.fromJson(Map<String, dynamic> j) => ExamQuestion(
     id: j['id'] as String,
     passage: j['passage'] as String?,
+    section: j['section'] as String?,
     text: j['text'] as String,
     options: (j['options'] as List).cast<String>(),
     answer: j['answer'] as int,
