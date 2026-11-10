@@ -113,7 +113,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Nasıl söylenir?'), findsOneWidget);
 
-    await tester.tap(find.text('ALIŞTIRMAYA BAŞLA'));
+    await tester.tap(find.text('Alıştırmaya başla'));
     await tester.pumpAndSettle();
     expect(find.text('Hangisini duydun?'), findsOneWidget);
 
@@ -123,7 +123,7 @@ void main() {
     await tester.tap(find.text(heard));
     await tester.pumpAndSettle();
     expect(find.textContaining('Doğru!'), findsOneWidget);
-    await tester.tap(find.text('DEVAM'));
+    await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
 
     // Second drill: pick the wrong word; no punishment, just a gentle replay.
@@ -131,14 +131,14 @@ void main() {
     await tester.tap(find.text(target == 'thank' ? 'tank' : 'thank'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Bu sefer “$target” dedim'), findsOneWidget);
-    await tester.tap(find.text('DEVAM'));
+    await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
 
     // Remaining listening drills.
     for (var i = 0; i < 4; i++) {
       await tester.tap(find.text(speech.said.last));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('DEVAM'));
+      await tester.tap(find.text('Devam'));
       await tester.pumpAndSettle();
     }
 
@@ -148,10 +148,10 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Mikrofon kullanılamıyor'), findsOneWidget);
     for (var i = 0; i < 3; i++) {
-      await tester.tap(find.text('DEVAM'));
+      await tester.tap(find.text('Devam'));
       await tester.pumpAndSettle();
     }
-    await tester.tap(find.text('BİTİR'));
+    await tester.tap(find.text('Bitir'));
     await tester.pumpAndSettle();
 
     expect(container.read(progressProvider).isDone('pron_th_voiceless'), isTrue);

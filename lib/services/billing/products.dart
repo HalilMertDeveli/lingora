@@ -58,6 +58,11 @@ enum PremiumFeature {
     'Detaylı hata analizi',
     'Türk hata dedektörünün tüm kategorileri: oranlar, sayılar ve her biri için çalışma ipucu.',
     '📊',
+  ),
+  cloudBackup(
+    'Bulut yedekleme ve cihazlar arası senkron',
+    'İlerlemen buluta yedeklenir; telefon değiştirsen de aynı hesapla kaldığın yerden devam edersin.',
+    '☁️',
   );
 
   const PremiumFeature(this.title, this.description, this.emoji);
@@ -68,3 +73,7 @@ enum PremiumFeature {
 
 /// Free mini mock exams per day (all exams together) without Premium.
 const freeMockExamsPerDay = 1;
+
+/// `productId` of an entitlement granted by the invite programme
+/// (functions/src/referral.ts), not a store product.
+const referralProductId = 'referral';

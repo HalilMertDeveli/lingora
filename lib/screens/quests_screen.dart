@@ -34,10 +34,7 @@ class QuestsScreen extends ConsumerWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(colors: [Brand.primary, Color(0xFF9B7BFF)]),
-            borderRadius: BorderRadius.circular(20),
-          ),
+          decoration: context.lingora.hero(const Color(0xFF9B7BFF), from: Brand.primary),
           child: Row(
             children: [
               Expanded(
@@ -121,7 +118,7 @@ class _QuestCard extends ConsumerWidget {
                     const SizedBox(width: 10),
                     Text(
                       '$value/${quest.target}',
-                      style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+                      style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
                     ),
                   ],
                 ),
@@ -130,7 +127,7 @@ class _QuestCard extends ConsumerWidget {
           ),
           const SizedBox(width: 12),
           if (claimed)
-            const Text(
+            Text(
               'Alındı',
               style: TextStyle(color: Brand.success, fontWeight: FontWeight.w800),
             )
@@ -149,10 +146,10 @@ class _QuestCard extends ConsumerWidget {
           else
             Row(
               children: [
-                const Icon(Icons.bolt, color: Brand.xp, size: 18),
+                Icon(Icons.bolt, color: Brand.xp, size: 18),
                 Text(
                   '${quest.rewardXp}',
-                  style: const TextStyle(color: Brand.xp, fontWeight: FontWeight.w800),
+                  style: TextStyle(color: Brand.xp, fontWeight: FontWeight.w800),
                 ),
               ],
             ),

@@ -28,6 +28,8 @@ void main() {
       expect(matchesAny("I’m a student", ["I'm a student"]), isTrue);
       expect(matchesAny('Good night', ['Good morning']), isFalse);
       expect(matchesAny('   ', ['']), isFalse);
+      expect(matchesAny("izmir'e gittik", ["İzmir'e gittik."]), isTrue);
+      expect(matchesAny('İstanbul', ['istanbul']), isTrue);
     });
 
     test('spoken similarity counts recognized words', () {
@@ -105,7 +107,7 @@ void main() {
               case ExerciseType.translate:
                 // At least one accepted answer must be buildable from the word bank.
                 final buildable = ex.answers.any((a) {
-                  final bank = ex.tokens.map((t) => t.toLowerCase()).toList();
+                  final bank = ex.tokens.map(normalizeAnswer).toList();
                   for (final w in normalizeAnswer(a).split(' ')) {
                     if (!bank.remove(w)) return false;
                   }
@@ -182,7 +184,7 @@ void main() {
         for (final item in topicItems(t, topics, Random(1))) {
           final ex = item.ex;
           if (ex.type == ExerciseType.translate) {
-            final bank = ex.tokens.map((x) => x.toLowerCase()).toList();
+            final bank = ex.tokens.map(normalizeAnswer).toList();
             final ok = normalizeAnswer(ex.answers.first).split(' ').every(bank.remove);
             expect(ok, isTrue, reason: '${t.id}: ${ex.answers.first}');
           }

@@ -1,6 +1,9 @@
 /// Lowercases, removes punctuation and collapses whitespace so that
 /// "Good morning, thanks!" and "good morning thanks" compare equal.
+/// Turkish dotted capital İ becomes plain i ("İzmir" == "izmir"); Dart's toLowerCase would
+/// otherwise leave a combining dot behind.
 String normalizeAnswer(String s) => s
+    .replaceAll('İ', 'i')
     .toLowerCase()
     .replaceAll('’', "'")
     .replaceAll(RegExp('[.,!?;:¿¡"]'), ' ')

@@ -9,6 +9,7 @@ import '../data/course_repository.dart';
 import '../data/progress.dart';
 import '../models/exam.dart';
 import '../services/billing/premium.dart';
+import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
@@ -37,6 +38,7 @@ class _ExamHome extends ConsumerWidget {
   final Exam exam;
 
   void _open(BuildContext context, List<ExamQuestion> qs, {required bool mock, String? title}) {
+    logEventFrom(context, AnalyticsEvent.featureUse(mock ? AppFeature.mockExam : AppFeature.examPractice));
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         fullscreenDialog: true,
@@ -86,10 +88,7 @@ class _ExamHome extends ConsumerWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(colors: [Color(0xFF3B2FA8), Brand.primary]),
-            borderRadius: BorderRadius.circular(22),
-          ),
+          decoration: context.lingora.hero(Brand.primary, from: const Color(0xFF3B2FA8)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -112,7 +111,7 @@ class _ExamHome extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  const Mascot(mood: Mood.think, size: 76),
+                  const Mascot(mood: Mood.think, size: 76, decorative: true),
                 ],
               ),
               const SizedBox(height: 14),
@@ -147,7 +146,7 @@ class _ExamHome extends ConsumerWidget {
         const SizedBox(height: 22),
         Text('Konu çalış', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 4),
-        const Text('Her sorudan sonra Türkçe açıklama gösterilir.', style: TextStyle(color: Brand.muted)),
+        Text('Her sorudan sonra Türkçe açıklama gösterilir.', style: TextStyle(color: Brand.muted)),
         const SizedBox(height: 12),
         for (final s in exam.sections)
           Padding(
@@ -162,21 +161,21 @@ class _ExamHome extends ConsumerWidget {
                       children: [
                         Text(s.title, style: Theme.of(context).textTheme.titleMedium),
                         if (s.description.isNotEmpty)
-                          Text(s.description, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                          Text(s.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
                       ],
                     ),
                   ),
                   Text(
                     '${s.questions.length} soru',
-                    style: const TextStyle(color: Brand.primary, fontWeight: FontWeight.w800),
+                    style: TextStyle(color: Brand.primary, fontWeight: FontWeight.w800),
                   ),
-                  const Icon(Icons.chevron_right_rounded, color: Brand.muted),
+                  Icon(Icons.chevron_right_rounded, color: Brand.muted),
                 ],
               ),
             ),
           ),
         const SizedBox(height: 8),
-        const Text(
+        Text(
           'Sorular Lingora tarafından sınav formatına uygun olarak hazırlanmıştır; '
           'resmî sınav soruları değildir.',
           style: TextStyle(color: Brand.muted, fontSize: 12),
@@ -375,7 +374,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                 child: Row(
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.close, color: Brand.muted),
+                      icon: Icon(Icons.close, color: Brand.muted),
                       onPressed: _quit,
                     ),
                     Expanded(
@@ -394,7 +393,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                     else
                       Text(
                         '${_pos + 1}/${widget.questions.length}',
-                        style: const TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
+                        style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
                       ),
                   ],
                 ),
@@ -410,7 +409,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                     children: [
                       Text(
                         trUpper(widget.title),
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Brand.muted,
                           fontWeight: FontWeight.w800,
                           fontSize: 12,
@@ -505,7 +504,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
               ),
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(top: BorderSide(color: Brand.line, width: 2)),
                 ),
                 child: widget.mock
@@ -580,7 +579,7 @@ class ExamResultScreen extends StatelessWidget {
                     Center(
                       child: Text(
                         '$correct doğru · ${answers.length - correct} yanlış · $blank boş · +$xp XP',
-                        style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+                        style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
                       ),
                     ),
                     const SizedBox(height: 6),
@@ -649,7 +648,7 @@ class _ReviewTile extends StatelessWidget {
           children: [
             Text(
               '${_letters[q.answer]}) ${q.options[q.answer]}',
-              style: const TextStyle(fontWeight: FontWeight.w800, color: Brand.success),
+              style: TextStyle(fontWeight: FontWeight.w800, color: Brand.success),
             ),
             const SizedBox(height: 6),
             Text(q.explanation, style: const TextStyle(height: 1.4)),

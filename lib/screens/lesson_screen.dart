@@ -15,11 +15,14 @@ import '../exercises/select_exercise.dart';
 import '../exercises/speak_exercise.dart';
 import '../exercises/translate_exercise.dart';
 import '../models/course.dart';
+import '../services/growth/analytics.dart';
+import '../services/growth/paywall_trigger.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/why_wrong.dart';
 import 'lesson_result_screen.dart';
+import 'paywall_screen.dart';
 
 const baseLessonXp = 10;
 const perfectBonusXp = 5;
@@ -87,6 +90,12 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
 
   /// "Neden yanlış?" content after a wrong English answer.
   WhyWrongSection? _why;
+
+  @override
+  void initState() {
+    super.initState();
+    logEvent(ref, AnalyticsEvent.lessonStart(widget.nodeId, mode: widget.mode.name));
+  }
 
   LessonItem get _current => _queue[_pos];
   bool get _requeues => widget.mode != LessonMode.test;
@@ -199,7 +208,20 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       perfect: perfect,
       stats: _questStats,
     );
-    nav.pushReplacement(
+    logEvent(
+      ref,
+      AnalyticsEvent.lessonFinish(
+        widget.nodeId,
+        mode: widget.mode.name,
+        accuracy: _accuracy,
+        xp: reward.xp,
+        durationSec: DateTime.now().difference(_started).inSeconds,
+      ),
+    );
+    // Remote Config: a closable paywall after every N lessons (never blocks learning).
+    final autoPaywall =
+        widget.mode == LessonMode.lesson && ref.read(paywallTriggerProvider).takeAfterLesson();
+    final shown = nav.pushReplacement(
       MaterialPageRoute<void>(
         builder: (_) => LessonResultScreen(
           reward: reward,
@@ -215,6 +237,17 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         ),
       ),
     );
+    if (autoPaywall) {
+      shown.then((_) {
+        if (!nav.mounted) return;
+        nav.push(
+          MaterialPageRoute<bool>(
+            fullscreenDialog: true,
+            builder: (_) => const PaywallScreen(placement: PaywallPlacement.afterLessons),
+          ),
+        );
+      });
+    }
   }
 
   Future<void> _confirmQuit() async {
@@ -269,10 +302,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final Widget badge = switch (widget.mode) {
       LessonMode.lesson => Text(
         '${min(_solved, _total)}/$_total',
-        style: const TextStyle(color: Brand.muted, fontWeight: FontWeight.w800, fontSize: 15),
+        style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800, fontSize: 15),
       ),
-      LessonMode.test => const Icon(Icons.workspace_premium_rounded, color: Brand.accent, size: 28),
-      LessonMode.practice => const Icon(Icons.fitness_center_rounded, color: Brand.primary, size: 26),
+      LessonMode.test => Icon(Icons.workspace_premium_rounded, color: Brand.accent, size: 28),
+      LessonMode.practice => Icon(Icons.fitness_center_rounded, color: Brand.primary, size: 26),
     };
     return Padding(
       padding: const EdgeInsets.fromLTRB(4, 8, 16, 0),
@@ -281,7 +314,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
           Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.close, color: Brand.muted),
+                icon: Icon(Icons.close, color: Brand.muted),
                 onPressed: _confirmQuit,
               ),
               Expanded(
@@ -299,8 +332,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                   ? PopIn(
                       key: ValueKey(_combo),
                       child: Text(
-                        '🔥 $_combo DOĞRU ÜST ÜSTE',
-                        style: const TextStyle(
+                        '${kidEmoji('🔥')}$_combo DOĞRU ÜST ÜSTE',
+                        style: TextStyle(
                           color: Brand.streak,
                           fontWeight: FontWeight.w900,
                           fontSize: 13,
@@ -311,7 +344,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                   : (widget.mode != LessonMode.lesson
                         ? Text(
                             widget.mode == LessonMode.test ? 'ÜNİTE SINAVI' : 'HATALARINI ÇALIŞ',
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Brand.muted,
                               fontWeight: FontWeight.w800,
                               fontSize: 12,
@@ -397,9 +430,9 @@ class _CheckBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
-    decoration: const BoxDecoration(
-      color: Colors.white,
-      border: Border(top: BorderSide(color: Brand.line, width: 2)),
+    decoration: BoxDecoration(
+      color: Brand.background,
+      border: Border(top: BorderSide(color: Brand.line, width: 1)),
     ),
     child: PressableButton(label: 'KONTROL ET', color: Brand.success, onPressed: enabled ? onCheck : null),
   );

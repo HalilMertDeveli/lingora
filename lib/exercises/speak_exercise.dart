@@ -87,8 +87,7 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(ex.text!, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700)),
-                  if (ex.translation != null)
-                    Text(ex.translation!, style: const TextStyle(color: Brand.muted)),
+                  if (ex.translation != null) Text(ex.translation!, style: TextStyle(color: Brand.muted)),
                 ],
               ),
             ),
@@ -107,7 +106,7 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
                 height: 96,
                 child: Icon(
                   _listening ? Icons.stop_rounded : Icons.mic_rounded,
-                  color: Colors.white,
+                  color: Brand.onPrimary,
                   size: 48,
                 ),
               ),

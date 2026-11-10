@@ -68,6 +68,9 @@ void main() {
     expect(find.text('Lingora'), findsOneWidget);
     await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
+    expect(find.text('Kimin için?'), findsOneWidget);
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
     expect(find.text('Ne öğrenmek istiyorsun?'), findsOneWidget);
     await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
@@ -104,39 +107,39 @@ void main() {
 
   testWidgets('wrong answer shows the correct one and is remembered', (tester) async {
     await pumpApp(tester, {'progress_v1': '{"onboarded": true}'});
-    await tester.tap(find.text('BAŞLA'));
+    await tester.tap(find.text('Başla'));
     await tester.pumpAndSettle();
 
     expect(find.text('“merhaba” hangisi?'), findsOneWidget);
     await tester.tap(find.text('coffee'));
     await tester.pump();
-    await tester.tap(find.text('KONTROL ET'));
+    await tester.tap(find.text('Kontrol et'));
     await tester.pumpAndSettle();
     expect(find.text('Doğru cevap:'), findsOneWidget);
     expect(find.text('0/8'), findsOneWidget); // wrong answers do not count as progress
     final saved = (await SharedPreferences.getInstance()).getString('progress_v1');
     expect(saved, contains('u1l1#0')); // kept for "Hatalarını çalış"
 
-    await tester.tap(find.text('DEVAM'));
+    await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
     expect(find.text('Bu cümleyi çevir'), findsOneWidget);
   });
 
   testWidgets('correct word-bank answer is accepted', (tester) async {
     await pumpApp(tester, {'progress_v1': '{"onboarded": true}'});
-    await tester.tap(find.text('BAŞLA'));
+    await tester.tap(find.text('Başla'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('hello'));
     await tester.pump();
-    await tester.tap(find.text('KONTROL ET'));
+    await tester.tap(find.text('Kontrol et'));
     await tester.pumpAndSettle();
     expect(find.text('Doğru cevap:'), findsNothing);
-    await tester.tap(find.text('DEVAM'));
+    await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('Hello').last);
     await tester.pump();
-    await tester.tap(find.text('KONTROL ET'));
+    await tester.tap(find.text('Kontrol et'));
     await tester.pumpAndSettle();
     expect(find.text('Doğru cevap:'), findsNothing);
     expect(find.byIcon(Icons.check_circle_rounded), findsOneWidget);
