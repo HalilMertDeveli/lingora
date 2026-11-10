@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/placement.dart';
 import '../data/progress.dart';
 import '../theme.dart';
+import 'placement_screen.dart';
 
 const dailyGoals = [
   (10, 'Rahat', 'Günde ~5 dakika'),
@@ -22,14 +24,33 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final _pages = PageController();
   int _page = 0;
   int _goal = 20;
+  LearnReason _reason = LearnReason.general;
 
-  void _next() {
-    if (_page < 2) {
-      _pages.nextPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut);
-    } else {
-      ref.read(progressProvider.notifier).finishOnboarding(_goal);
-    }
+  static const _pageCount = 4;
+
+  void _next() => _pages.nextPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut);
+
+  /// Applies the chosen plan (track + known nodes), then leaves onboarding.
+  void _finish(PlacementRecommendation plan) {
+    final progress = ref.read(progressProvider.notifier);
+    applyPlacement(progress, plan);
+    progress.finishOnboarding(_goal);
   }
+
+  void _fromScratch() =>
+      _finish(recommend(level: null, reason: _reason, courseUnits: const [], lessons: const []));
+
+  void _startTest() => Navigator.of(context).push(
+    MaterialPageRoute<void>(
+      builder: (_) => PlacementTestScreen(
+        reason: _reason,
+        onDone: (ctx, plan) {
+          Navigator.of(ctx).popUntil((r) => r.isFirst);
+          _finish(plan);
+        },
+      ),
+    ),
+  );
 
   @override
   void dispose() {
@@ -61,7 +82,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: LinearProgressIndicator(
-                        value: (_page + 1) / 3,
+                        value: (_page + 1) / _pageCount,
                         minHeight: 10,
                         backgroundColor: Brand.line,
                       ),
@@ -79,10 +100,17 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     const _Welcome(),
                     const _CoursePick(),
                     _GoalPick(goal: _goal, onChanged: (g) => setState(() => _goal = g)),
+                    _LevelStep(reason: _reason, onChanged: (r) => setState(() => _reason = r)),
                   ],
                 ),
               ),
-              FilledButton(onPressed: _next, child: Text(_page == 2 ? 'Öğrenmeye başla' : 'Devam')),
+              if (_page < _pageCount - 1)
+                FilledButton(onPressed: _next, child: const Text('Devam'))
+              else ...[
+                FilledButton(onPressed: _startTest, child: const Text('Seviyeni ölç')),
+                const SizedBox(height: 8),
+                OutlinedButton(onPressed: _fromScratch, child: const Text('Sıfırdan başla')),
+              ],
             ],
           ),
         ),
@@ -220,6 +248,32 @@ class _GoalPick extends StatelessWidget {
               ),
             ),
           ),
+      ],
+    );
+  }
+}
+
+/// Optional placement step: why the user learns, then test or skip.
+class _LevelStep extends StatelessWidget {
+  const _LevelStep({required this.reason, required this.onChanged});
+  final LearnReason reason;
+  final ValueChanged<LearnReason> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return ListView(
+      padding: const EdgeInsets.only(top: 24),
+      children: [
+        Text('Neden İngilizce öğreniyorsun?', style: t.headlineSmall),
+        const SizedBox(height: 6),
+        Text(
+          'Biraz biliyorsan kısa bir seviye testiyle bildiğin yerleri atlayabilirsin. '
+          "İstersen sıfırdan başla; testi sonra Profil'den de çözebilirsin.",
+          style: t.bodyMedium?.copyWith(color: Brand.muted),
+        ),
+        const SizedBox(height: 16),
+        ReasonPicker(selected: reason, onChanged: onChanged),
       ],
     );
   }

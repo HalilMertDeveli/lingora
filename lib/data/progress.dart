@@ -435,6 +435,16 @@ class ProgressNotifier extends Notifier<Progress> {
 
   void setTrack(String id) => _save(state.copyWith(trackId: id));
 
+  /// Marks nodes as already known (e.g. after the placement test) so the
+  /// path starts further on. No XP, streak or lesson counts are given.
+  void markKnown(Iterable<String> nodeIds) {
+    final completed = {...state.completed};
+    for (final id in nodeIds) {
+      if ((completed[id] ?? 0) == 0) completed[id] = 1;
+    }
+    _save(state.copyWith(completed: completed));
+  }
+
   /// Keeps the best mock exam score for [examId].
   void recordExam(String examId, int percent) {
     if (percent > (state.examBest[examId] ?? -1)) {

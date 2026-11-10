@@ -5,6 +5,7 @@ import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../theme.dart';
 import 'onboarding_screen.dart';
+import 'placement_screen.dart';
 import 'reminder_settings.dart';
 
 const _weekdays = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
@@ -64,6 +65,10 @@ class ProfileScreen extends ConsumerWidget {
         TapCard(
           child: _WeekChart(progress: p, now: now),
         ),
+        const SizedBox(height: 24),
+        Text('Seviye testi', style: t.titleLarge),
+        const SizedBox(height: 12),
+        const PlacementProfileCard(),
         const SizedBox(height: 24),
         Text('Günlük hedef', style: t.titleLarge),
         const SizedBox(height: 12),

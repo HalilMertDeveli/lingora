@@ -1,0 +1,422 @@
+[
+  {
+    "id": "a1_g1",
+    "level": "A1",
+    "skill": "grammar",
+    "prompt": "My sister ___ a teacher.",
+    "choices": ["is", "am", "are", "be"],
+    "answer": 0,
+    "explanation": "“My sister” tek bir kişi (she) olduğu için to be fiili “is” olur: My sister is a teacher."
+  },
+  {
+    "id": "a1_g2",
+    "level": "A1",
+    "skill": "grammar",
+    "prompt": "They ___ football every Saturday.",
+    "choices": ["plays", "play", "playing", "is play"],
+    "answer": 1,
+    "explanation": "Geniş zamanda “they” ile fiil yalın kalır: they play. -s takısı yalnızca he/she/it ile gelir."
+  },
+  {
+    "id": "a1_g3",
+    "level": "A1",
+    "skill": "grammar",
+    "prompt": "There ___ two cats in the garden.",
+    "choices": ["is", "be", "are", "am"],
+    "answer": 2,
+    "explanation": "Çoğul bir şeyin “var” olduğunu söylerken “there are” kullanılır: two cats → there are."
+  },
+  {
+    "id": "a1_v1",
+    "level": "A1",
+    "skill": "vocabulary",
+    "prompt": "Hangisi bir meyvedir?",
+    "choices": ["bread", "apple", "chair", "milk"],
+    "answer": 1,
+    "explanation": "apple = elma. bread ekmek, chair sandalye, milk süt demektir."
+  },
+  {
+    "id": "a1_v2",
+    "level": "A1",
+    "skill": "vocabulary",
+    "prompt": "“Kahvaltı” İngilizcede hangisidir?",
+    "choices": ["lunch", "dinner", "breakfast", "snack"],
+    "answer": 2,
+    "explanation": "breakfast = kahvaltı. lunch öğle yemeği, dinner akşam yemeği, snack atıştırmalıktır."
+  },
+  {
+    "id": "a1_v3",
+    "level": "A1",
+    "skill": "vocabulary",
+    "prompt": "The opposite of “hot” is ___.",
+    "choices": ["cold", "warm", "big", "tall"],
+    "answer": 0,
+    "explanation": "hot (sıcak) kelimesinin zıttı cold (soğuk) kelimesidir. warm ılık anlamına gelir."
+  },
+  {
+    "id": "a1_r1",
+    "level": "A1",
+    "skill": "reading",
+    "passage": "Hi! I'm Deniz. I'm twelve years old. I live in İzmir with my mother and my two brothers. I love swimming.",
+    "prompt": "Deniz kiminle yaşıyor?",
+    "choices": ["Babası ve kız kardeşiyle", "Yalnız", "Arkadaşlarıyla", "Annesi ve iki erkek kardeşiyle"],
+    "answer": 3,
+    "explanation": "Metinde “with my mother and my two brothers” deniyor: annesi ve iki erkek kardeşi (brothers)."
+  },
+  {
+    "id": "a1_r2",
+    "level": "A1",
+    "skill": "reading",
+    "passage": "The shop opens at 9 a.m. and closes at 6 p.m. It is closed on Sundays.",
+    "prompt": "Mağaza pazar günü saat 10'da açık mı?",
+    "choices": ["Evet, açık", "Hayır, pazar günleri kapalı", "Sadece öğleden sonra açık", "Saat 10'da kapanıyor"],
+    "answer": 1,
+    "explanation": "“It is closed on Sundays” = Pazar günleri kapalıdır. Saat kaç olursa olsun pazar günü açık değil."
+  },
+  {
+    "id": "a1_r3",
+    "level": "A1",
+    "skill": "reading",
+    "passage": "Ali, your lunch is in the fridge. Please feed the dog at 5. Love, Mom",
+    "prompt": "Ali saat 5'te ne yapmalı?",
+    "choices": ["Öğle yemeği yemeli", "Annesini aramalı", "Köpeği beslemeli", "Buzdolabını temizlemeli"],
+    "answer": 2,
+    "explanation": "“Please feed the dog at 5” = Lütfen köpeği saat 5'te besle. feed = beslemek, yemek vermek."
+  },
+  {
+    "id": "a2_g1",
+    "level": "A2",
+    "skill": "grammar",
+    "prompt": "Yesterday we ___ to the cinema.",
+    "choices": ["go", "goes", "went", "gone"],
+    "answer": 2,
+    "explanation": "“Yesterday” geçmişi gösterir. go düzensiz bir fiildir, geçmiş hâli “went” olur."
+  },
+  {
+    "id": "a2_g2",
+    "level": "A2",
+    "skill": "grammar",
+    "prompt": "This bag is ___ than that one.",
+    "choices": ["expensive", "more expensive", "most expensive", "expensiver"],
+    "answer": 1,
+    "explanation": "Uzun sıfatlarda karşılaştırma “more … than” ile yapılır: more expensive than (-den daha pahalı)."
+  },
+  {
+    "id": "a2_g3",
+    "level": "A2",
+    "skill": "grammar",
+    "prompt": "I'm ___ visit my grandmother next weekend.",
+    "choices": ["going to", "go to", "will to", "going"],
+    "answer": 0,
+    "explanation": "Önceden kararlaştırılmış planlar için “be going to + fiil” kullanılır: I'm going to visit."
+  },
+  {
+    "id": "a2_v1",
+    "level": "A2",
+    "skill": "vocabulary",
+    "prompt": "I need to ___ a room at the hotel.",
+    "choices": ["book", "read", "write", "open"],
+    "answer": 0,
+    "explanation": "“book” fiil olarak “rezervasyon yapmak” demektir: book a room = oda ayırtmak."
+  },
+  {
+    "id": "a2_v2",
+    "level": "A2",
+    "skill": "vocabulary",
+    "prompt": "“Sık sık” anlamına gelen kelime hangisi?",
+    "choices": ["never", "often", "rarely", "hardly"],
+    "answer": 1,
+    "explanation": "often = sık sık. never hiçbir zaman, rarely nadiren, hardly neredeyse hiç demektir."
+  },
+  {
+    "id": "a2_v3",
+    "level": "A2",
+    "skill": "vocabulary",
+    "prompt": "Can you ___ me the salt, please?",
+    "choices": ["take", "borrow", "pass", "give up"],
+    "answer": 2,
+    "explanation": "Sofrada bir şeyi uzatmayı istemek için “pass” kullanılır: Tuzu uzatır mısın? = Can you pass me the salt?"
+  },
+  {
+    "id": "a2_r1",
+    "level": "A2",
+    "skill": "reading",
+    "passage": "Last summer, Elif worked in a café in Bodrum. She started at 7 every morning, so she went to bed early. At the weekends she swam in the sea with her friends.",
+    "prompt": "Elif neden erken yatıyordu?",
+    "choices": ["Hafta sonları yüzdüğü için", "Kafede canı sıkıldığı için", "Arkadaşları erken yattığı için", "Her sabah 7'de işe başladığı için"],
+    "answer": 3,
+    "explanation": "“She started at 7 every morning, so she went to bed early” — so (bu yüzden) sonucu bağlar: erken başladığı için erken yattı."
+  },
+  {
+    "id": "a2_r2",
+    "level": "A2",
+    "skill": "reading",
+    "passage": "Hi Can, I'm sorry, I can't come to your party on Friday because my cousin is getting married that day. Can we meet on Sunday instead? Mert",
+    "prompt": "Mert neden partiye gelemiyor?",
+    "choices": ["Kuzeni o gün evleniyor", "Cuma günü çalışıyor", "Hasta", "Pazar günü işi var"],
+    "answer": 0,
+    "explanation": "“because my cousin is getting married that day” = çünkü kuzeni o gün evleniyor. get married = evlenmek."
+  },
+  {
+    "id": "a2_r3",
+    "level": "A2",
+    "skill": "reading",
+    "passage": "Library rules: You can borrow up to three books for two weeks. Please don't eat or drink inside.",
+    "prompt": "Kütüphaneden aynı anda en fazla kaç kitap alabilirsin?",
+    "choices": ["İki", "Üç", "Dört", "Beş"],
+    "answer": 1,
+    "explanation": "“up to three books” = en fazla üç kitap. “two weeks” ise ödünç alma süresidir, kitap sayısı değil."
+  },
+  {
+    "id": "b1_g1",
+    "level": "B1",
+    "skill": "grammar",
+    "prompt": "I ___ in this city since 2019.",
+    "choices": ["live", "lived", "have lived", "am living"],
+    "answer": 2,
+    "explanation": "Türkçede “2019'dan beri yaşıyorum” deriz ama İngilizcede geçmişte başlayıp süren durum için present perfect gerekir: have lived … since."
+  },
+  {
+    "id": "b1_g2",
+    "level": "B1",
+    "skill": "grammar",
+    "prompt": "If it rains tomorrow, we ___ at home.",
+    "choices": ["stay", "will stay", "would stay", "stayed"],
+    "answer": 1,
+    "explanation": "Gerçek bir olasılıktan söz eden 1. tip koşulda: If + geniş zaman, will + fiil. If it rains, we will stay."
+  },
+  {
+    "id": "b1_g3",
+    "level": "B1",
+    "skill": "grammar",
+    "prompt": "The bridge ___ in 1973.",
+    "choices": ["built", "was built", "has built", "is building"],
+    "answer": 1,
+    "explanation": "Köprü kendini yapmaz, yapılır: edilgen (passive) yapı gerekir. Geçmişte olduğu için was + V3: was built (inşa edildi)."
+  },
+  {
+    "id": "b1_v1",
+    "level": "B1",
+    "skill": "vocabulary",
+    "prompt": "She is very ___; she always helps her neighbours.",
+    "choices": ["rude", "lazy", "generous", "jealous"],
+    "answer": 2,
+    "explanation": "generous = cömert, eli açık. rude kaba, lazy tembel, jealous kıskanç demektir."
+  },
+  {
+    "id": "b1_v2",
+    "level": "B1",
+    "skill": "vocabulary",
+    "prompt": "We had to ___ the meeting because the manager was ill.",
+    "choices": ["put off", "put on", "take off", "turn up"],
+    "answer": 0,
+    "explanation": "put off = ertelemek. put on giymek, take off çıkarmak/havalanmak, turn up ortaya çıkmak demektir."
+  },
+  {
+    "id": "b1_v3",
+    "level": "B1",
+    "skill": "vocabulary",
+    "prompt": "“I rely on my brother.” cümlesindeki “rely on” ne demektir?",
+    "choices": ["vazgeçmek", "güvenmek, bel bağlamak", "itiraz etmek", "ödünç almak"],
+    "answer": 1,
+    "explanation": "rely on = birine güvenmek, bel bağlamak. “I rely on my brother” = Kardeşime güvenirim."
+  },
+  {
+    "id": "b1_r1",
+    "level": "B1",
+    "skill": "reading",
+    "passage": "Many people think that working from home is always easier. However, a recent survey of office workers showed that nearly half of them felt lonelier at home and missed chatting with colleagues.",
+    "prompt": "According to the text, what did the survey show?",
+    "choices": ["Most workers want to work from home.", "Working from home is always easier.", "Office workers dislike their colleagues.", "Almost half of the workers felt lonelier at home."],
+    "answer": 3,
+    "explanation": "“nearly half of them felt lonelier at home” = neredeyse yarısı evde daha yalnız hissetti. “However” ile ilk görüşün tersi anlatılıyor."
+  },
+  {
+    "id": "b1_r2",
+    "level": "B1",
+    "skill": "reading",
+    "passage": "Although the museum is free on Wednesdays, it is often crowded, so visitors who prefer a quiet visit are advised to come on weekday mornings and pay the small entrance fee.",
+    "prompt": "What does the text suggest for a quiet visit?",
+    "choices": ["Come on a weekday morning and pay the fee.", "Come on Wednesday because it is free.", "Visit only at the weekend.", "Buy a ticket online."],
+    "answer": 0,
+    "explanation": "Sakin bir ziyaret isteyenlere “come on weekday mornings and pay the small entrance fee” öneriliyor. Çarşamba ücretsiz ama kalabalık."
+  },
+  {
+    "id": "b1_r3",
+    "level": "B1",
+    "skill": "reading",
+    "passage": "Ahmet had planned to cycle to work, but when he saw the dark clouds, he changed his mind and took the bus. He arrived early, yet it never rained.",
+    "prompt": "Why did Ahmet take the bus?",
+    "choices": ["His bicycle was broken.", "He was late for work.", "He thought it was going to rain.", "It rained heavily."],
+    "answer": 2,
+    "explanation": "Kara bulutları (dark clouds) görünce fikrini değiştirdi, yani yağmur yağacağını düşündü. “yet it never rained” = ama hiç yağmadı."
+  },
+  {
+    "id": "b2_g1",
+    "level": "B2",
+    "skill": "grammar",
+    "prompt": "You ___ have told me earlier; I could have helped you.",
+    "choices": ["should", "mustn't", "can", "will"],
+    "answer": 0,
+    "explanation": "Geçmişte yapılmamış bir şeye sitem için “should have + V3” kullanılır: Bana daha önce söylemeliydin."
+  },
+  {
+    "id": "b2_g2",
+    "level": "B2",
+    "skill": "grammar",
+    "prompt": "If I had studied harder, I ___ the exam.",
+    "choices": ["would pass", "would have passed", "will pass", "passed"],
+    "answer": 1,
+    "explanation": "Geçmişle ilgili gerçek dışı koşul (3. tip): If + had V3, would have + V3. Daha çok çalışsaydım sınavı geçerdim."
+  },
+  {
+    "id": "b2_g3",
+    "level": "B2",
+    "skill": "grammar",
+    "prompt": "By the time we arrived, the film ___.",
+    "choices": ["already started", "has already started", "had already started", "was already start"],
+    "answer": 2,
+    "explanation": "Geçmişteki bir andan (biz vardığımızda) daha önce olan iş için past perfect kullanılır: had already started (çoktan başlamıştı)."
+  },
+  {
+    "id": "b2_v1",
+    "level": "B2",
+    "skill": "vocabulary",
+    "prompt": "The government has decided to ___ a new tax on plastic bags.",
+    "choices": ["oppose", "impose", "expose", "suppose"],
+    "answer": 1,
+    "explanation": "impose a tax = vergi koymak, dayatmak. oppose karşı çıkmak, expose açığa çıkarmak, suppose varsaymak demektir."
+  },
+  {
+    "id": "b2_v2",
+    "level": "B2",
+    "skill": "vocabulary",
+    "prompt": "Despite the ___ evidence, the jury was not convinced.",
+    "choices": ["overwhelmed", "overall", "overwhelming", "overdue"],
+    "answer": 2,
+    "explanation": "overwhelming = ezici, çok güçlü. -ing sıfatı etkiyi yapanı, -ed sıfatı etkilenen kişiyi anlatır: overwhelming evidence."
+  },
+  {
+    "id": "b2_v3",
+    "level": "B2",
+    "skill": "vocabulary",
+    "prompt": "“Inevitable” kelimesinin anlamı nedir?",
+    "choices": ["gereksiz", "görünmez", "şaşırtıcı", "kaçınılmaz"],
+    "answer": 3,
+    "explanation": "inevitable = kaçınılmaz. YDS'de sık çıkar; eş anlamlısı “unavoidable” kelimesidir."
+  },
+  {
+    "id": "b2_r1",
+    "level": "B2",
+    "skill": "reading",
+    "passage": "While renewable energy sources such as wind and solar have become considerably cheaper over the past decade, their output depends on the weather. Consequently, investment in storage technologies has become just as important as building new turbines and panels.",
+    "prompt": "Why has energy storage become important, according to the passage?",
+    "choices": ["Because turbines are too expensive.", "Because wind and solar output varies with the weather.", "Because solar panels are no longer built.", "Because renewable energy has become more expensive."],
+    "answer": 1,
+    "explanation": "“their output depends on the weather. Consequently …” — üretim havaya bağlı olduğu için (consequently = bu nedenle) depolama önem kazandı."
+  },
+  {
+    "id": "b2_r2",
+    "level": "B2",
+    "skill": "reading",
+    "passage": "The author argues that children who read for pleasure not only develop richer vocabularies but also show greater empathy, since fiction invites them to see the world through other people's eyes.",
+    "prompt": "Which claim does the author make?",
+    "choices": ["Reading fiction can help children understand others' feelings.", "Children should read only non-fiction.", "Vocabulary matters more than empathy.", "Children rarely read for pleasure."],
+    "answer": 0,
+    "explanation": "“show greater empathy … see the world through other people's eyes” — kurgu okumak başkalarının duygularını anlamaya (empati) yardım eder."
+  },
+  {
+    "id": "b2_r3",
+    "level": "B2",
+    "skill": "reading",
+    "passage": "Initially dismissed as a passing trend, online learning has, in many universities, evolved into a permanent part of the curriculum, prompting debates about how to assess students fairly.",
+    "prompt": "What does the passage say about online learning?",
+    "choices": ["It has disappeared from universities.", "Everyone agrees on how to assess it.", "It was first seen as temporary but has become permanent.", "It was always part of the curriculum."],
+    "answer": 2,
+    "explanation": "“Initially dismissed as a passing trend” = başta geçici bir moda sanıldı; “evolved into a permanent part” = kalıcı hâle geldi."
+  },
+  {
+    "id": "c1_g1",
+    "level": "C1",
+    "skill": "grammar",
+    "prompt": "Not only ___ the deadline, but he also went over the budget.",
+    "choices": ["he missed", "did he miss", "he did miss", "missed he"],
+    "answer": 1,
+    "explanation": "“Not only” cümle başına gelince devrik yapı (inversion) gerekir: yardımcı fiil özneden önce gelir → Not only did he miss …"
+  },
+  {
+    "id": "c1_g2",
+    "level": "C1",
+    "skill": "grammar",
+    "prompt": "___ I known about the strike, I would have taken a taxi.",
+    "choices": ["Should", "Were", "Unless", "Had"],
+    "answer": 3,
+    "explanation": "3. tip koşulda “if” atılıp devrik yapı kurulabilir: If I had known → Had I known (grevi bilseydim)."
+  },
+  {
+    "id": "c1_g3",
+    "level": "C1",
+    "skill": "grammar",
+    "prompt": "It is high time the council ___ something about the traffic.",
+    "choices": ["do", "will do", "did", "has done"],
+    "answer": 2,
+    "explanation": "“It's (high) time + özne” kalıbından sonra anlam şimdiki zaman olsa da geçmiş zaman kullanılır: it's high time the council did something."
+  },
+  {
+    "id": "c1_v1",
+    "level": "C1",
+    "skill": "vocabulary",
+    "prompt": "The minister's speech was deliberately ___, leaving journalists unsure of her real position.",
+    "choices": ["ambiguous", "unanimous", "eloquent", "transparent"],
+    "answer": 0,
+    "explanation": "ambiguous = belirsiz, iki anlama çekilebilir. Gazeteciler gerçek tutumundan emin olamadığına göre konuşma bilerek muğlak tutulmuş."
+  },
+  {
+    "id": "c1_v2",
+    "level": "C1",
+    "skill": "vocabulary",
+    "prompt": "Her argument doesn't ___ water; the figures she quotes are out of date.",
+    "choices": ["keep", "carry", "hold", "bear"],
+    "answer": 2,
+    "explanation": "“hold water” kalıbı “mantıklı olmak, tutarlı olmak” demektir. doesn't hold water = inandırıcı değil, su götürür."
+  },
+  {
+    "id": "c1_v3",
+    "level": "C1",
+    "skill": "vocabulary",
+    "prompt": "“They cut corners on the new building.” cümlesindeki “cut corners” ne anlama gelir?",
+    "choices": ["Kestirmeden gitmek", "İşi ucuza ve özensizce yapmak", "Masrafları paylaşmak", "Binanın köşelerini yuvarlatmak"],
+    "answer": 1,
+    "explanation": "cut corners = zaman ya da para kazanmak için kaliteden ödün vermek, işi baştan savma yapmak."
+  },
+  {
+    "id": "c1_r1",
+    "level": "C1",
+    "skill": "reading",
+    "passage": "Critics of the scheme contend that, far from reducing congestion, the new ring road has merely shifted it to the suburbs, where residents now face the very delays that city-centre commuters once endured.",
+    "prompt": "What is the critics' main point?",
+    "choices": ["The ring road has solved the traffic problem.", "Suburban residents asked for the road.", "City-centre traffic has become worse.", "The road moved the traffic problem rather than solving it."],
+    "answer": 3,
+    "explanation": "“far from reducing congestion … merely shifted it to the suburbs” = trafiği azaltmak bir yana, sadece banliyölere taşıdı."
+  },
+  {
+    "id": "c1_r2",
+    "level": "C1",
+    "skill": "reading",
+    "passage": "Few would dispute that the novel is ambitious; whether its ambition is matched by its execution is another matter entirely.",
+    "prompt": "What is the writer's attitude to the novel?",
+    "choices": ["They accept it is ambitious but doubt it is well executed.", "They think it lacks ambition.", "They praise it without reservation.", "They refuse to comment on it."],
+    "answer": 0,
+    "explanation": "“Few would dispute” = pek kimse itiraz etmez (iddialı olduğu kesin); “another matter entirely” ise uygulamanın başarılı olduğundan şüphe ettiğini gösterir."
+  },
+  {
+    "id": "c1_r3",
+    "level": "C1",
+    "skill": "reading",
+    "passage": "The researchers were careful to stress that the correlation between screen time and poor sleep did not, in itself, establish that one caused the other.",
+    "prompt": "What did the researchers emphasise?",
+    "choices": ["Screen time causes poor sleep.", "There is no link between screen time and sleep.", "A link between the two does not prove that one causes the other.", "Poor sleep leads to more screen time."],
+    "answer": 2,
+    "explanation": "correlation (ilişki/bağıntı) ile causation (neden-sonuç) farklıdır: araştırmacılar ilişkinin tek başına nedensellik kanıtlamadığını vurguluyor."
+  }
+]
