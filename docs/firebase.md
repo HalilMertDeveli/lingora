@@ -57,7 +57,7 @@ ona ihtiyaç duyar. `progressSyncProvider` ise yalnızca `premiumProvider` doğr
 - Premium bitince eşitleme durur. Cihazdaki veriler silinmez; bulut kopyası olduğu gibi kalır.
 - Sunucu tarafında da `users/{uid}` yazmaları etkin bir `entitlements/{uid}` ister (Firestore kuralları).
   Bir yazma reddedilirse (ör. satın alma doğrulanmadan önce) istemci 30 sn sonra tekrar dener.
-  Kural PR #8'de: `active == true` (ya da `premium == true`) ve gelecekte bir `expiresAt` (timestamp) ister;
+  Kural PR #10'da: `active == true` (ya da `premium == true`) ve gelecekte bir `expiresAt` (timestamp) ister;
   `expiresAt` yoksa yazma reddedilir. Premium'u biten kullanıcı eski yedeğini okuyabilir ama güncelleyemez.
   Emülatörde denemek için Emulator UI'dan `entitlements/<uid>` belgesine `{active: true, expiresAt: <ileri bir
   tarih (timestamp)>}` ekle.
