@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/tr_errors.dart';
 import '../data/scenarios.dart';
 
 /// Endpoint of the conversation proxy (see server/README.md). Pass at build
@@ -146,44 +147,12 @@ class DemoConversationService implements ConversationService {
     ],
   };
 
-  /// (pattern, natural version, Turkish tip) for classic Turkish-speaker errors.
-  static final _rules = <(RegExp, String Function(Match), String)>[
-    (
-      RegExp(r'\bI am agree\b', caseSensitive: false),
-      (_) => 'I agree',
-      '"agree" zaten fiil; Türkçedeki "katılıyorum" gibi başına "am" gelmez.',
-    ),
-    (
-      RegExp(r'\bI am (want|like|need|know|have)\b', caseSensitive: false),
-      (m) => 'I ${m[1]}',
-      'Geniş zamanda fiilden önce "am" kullanılmaz: "I ${'{verb}'}" yeterli.',
-    ),
-    (
-      RegExp(r'\b(he|she|it) (want|like|need|go|have|work|live)\b', caseSensitive: false),
-      (m) =>
-          '${m[1]} ${m[2] == 'have'
-              ? 'has'
-              : m[2] == 'go'
-              ? 'goes'
-              : '${m[2]}s'}',
-      'He/she/it ile geniş zamanda fiile -s eklenir.',
-    ),
-    (
-      RegExp(r'\bI want (coffee|tea|water|cake|sandwich)\b', caseSensitive: false),
-      (m) => 'I would like a ${m[1]}, please',
-      'Sipariş verirken "I would like ..., please" daha kibar duyulur.',
-    ),
-    (
-      RegExp(r'\bI have (\d+) years\b', caseSensitive: false),
-      (m) => 'I am ${m[1]} years old',
-      'Yaş söylerken İngilizcede "have" değil "be" kullanılır: "I am 25 years old".',
-    ),
-    (
-      RegExp(r'\bI am working here since\b', caseSensitive: false),
-      (_) => 'I have been working here since',
-      '"since" ile geçmişten bugüne süren durumlar için present perfect kullanılır.',
-    ),
-  ];
+  /// Ordering a drink or snack: "I want coffee" is not wrong, just blunt.
+  static final _politeOrder = RegExp(
+    r'\bI want (?:a |an )?(coffee|tea|water|cake|sandwich)\b',
+    caseSensitive: false,
+  );
+  static const _orderingScenarios = {'cafe', 'restaurant_guest'};
 
   @override
   Future<ChatTurn> send(Scenario scenario, List<ChatMessage> history) async {
@@ -191,23 +160,26 @@ class DemoConversationService implements ConversationService {
     final userTurns = history.where((m) => m.fromUser).length;
     final script = _scripts[scenario.id] ?? const ['I see. Tell me more.'];
     final reply = script[(userTurns - 1).clamp(0, script.length - 1)];
-    final fix = suggestCorrection(history.last.text);
+    var fix = suggestCorrection(history.last.text);
+    if (fix == null && _orderingScenarios.contains(scenario.id)) {
+      final m = _politeOrder.firstMatch(history.last.text);
+      if (m != null) {
+        fix = (
+          history.last.text.replaceRange(m.start, m.end, 'I would like a ${m[1]!.toLowerCase()}, please'),
+          'Sipariş verirken "I would like ..., please" daha kibar duyulur.',
+        );
+      }
+    }
     return ChatTurn(reply: reply, correction: fix?.$1, tipTr: fix?.$2, done: userTurns >= script.length);
   }
 
-  /// Offline check for classic Turkish-speaker mistakes: the corrected text
-  /// and a Turkish tip, or null when no rule matches. Applies every rule.
+  /// Offline check for classic Turkish-speaker mistakes with the Türk hata
+  /// dedektörü: the corrected text and the Turkish tips (one per line), or
+  /// null when no rule matches.
   static (String, String)? suggestCorrection(String text) {
-    var fixed = text;
-    final tips = <String>[];
-    for (final (pattern, fix, why) in _rules) {
-      final m = pattern.firstMatch(fixed);
-      if (m != null) {
-        fixed = fixed.replaceRange(m.start, m.end, fix(m));
-        tips.add(why.replaceAll('{verb}', m.groupCount >= 1 ? (m[1] ?? '') : ''));
-      }
-    }
-    return tips.isEmpty ? null : (fixed, tips.join('\n'));
+    final errors = detectTrErrors(text);
+    if (errors.isEmpty) return null;
+    return (errors.first.corrected, errors.map((e) => e.explanation).toSet().join('\n'));
   }
 }
 

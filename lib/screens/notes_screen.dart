@@ -4,17 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/text.dart';
+import '../core/tr_errors.dart';
 import '../data/notes_practice.dart';
 import '../data/notes_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../models/grammar_lesson.dart';
 import '../models/notes.dart';
-import '../services/conversation.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../ui/why_wrong.dart';
 import 'lesson_result_screen.dart';
 import 'grammar_path_screen.dart';
 import 'lesson_screen.dart';
@@ -763,7 +764,7 @@ class DiaryScreen extends ConsumerStatefulWidget {
 class _DiaryScreenState extends ConsumerState<DiaryScreen> {
   late final String _today = dayKey(ref.read(clockProvider)());
   late final _text = TextEditingController(text: ref.read(progressProvider).diary[_today] ?? '');
-  (String, String)? _check;
+  List<TrError> _errors = const [];
   bool _checked = false;
 
   @override
@@ -791,10 +792,14 @@ class _DiaryScreenState extends ConsumerState<DiaryScreen> {
     );
   }
 
-  void _runCheck() => setState(() {
-    _check = DemoConversationService.suggestCorrection(_text.text);
-    _checked = true;
-  });
+  void _runCheck() {
+    final errors = detectTrErrors(_text.text);
+    ref.read(progressProvider.notifier).recordTrErrors(errors);
+    setState(() {
+      _errors = errors;
+      _checked = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -856,27 +861,27 @@ class _DiaryScreenState extends ConsumerState<DiaryScreen> {
                 margin: const EdgeInsets.only(top: 12),
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: _check == null ? Brand.successBg : const Color(0xFFFFF4DC),
+                  color: _errors.isEmpty ? Brand.successBg : const Color(0xFFFFF4DC),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: _check == null
+                child: _errors.isEmpty
                     ? const Text(
-                        'Sık yapılan hatalardan birini bulamadım. Harika! '
+                        'Türklerin sık yaptığı hatalardan birini bulamadım. Harika! '
                         '(Ayrıntılı kontrol, yapay zekâ sunucusu bağlanınca gelecek.)',
                       )
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '💡 Daha doğal: ${_check!.$1}',
+                            '💡 Daha doğal: ${_errors.first.corrected}',
                             style: const TextStyle(fontWeight: FontWeight.w700),
                           ),
-                          const SizedBox(height: 4),
-                          Text(_check!.$2, style: const TextStyle(color: Brand.muted)),
+                          const SizedBox(height: 8),
+                          WhyWrongSection(errors: _errors, maxErrors: 6),
                           const SizedBox(height: 6),
                           TextButton(
                             onPressed: () => setState(() {
-                              _text.text = _check!.$1;
+                              _text.text = _errors.first.corrected;
                               _checked = false;
                             }),
                             child: const Text('Düzeltmeyi uygula'),
