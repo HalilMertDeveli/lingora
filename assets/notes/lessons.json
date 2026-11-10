@@ -79,7 +79,7 @@
       "o"
      ]
     ],
-    "example": "The clouds were dark and scary."
+    "example": "The clouds are dark and scary."
    },
    {
     "label": "Ana + yan cümle",
@@ -115,9 +115,9 @@
     "why": "İngilizcede özne düşmez; boş kalırsa 'it' ile doldurulur."
    },
    {
-    "wrong": "We study every day at home.",
-    "right": "We study at home every day.",
-    "why": "Tümleçlerde önce yer (where), sonra sıklık ve zaman gelir."
+    "wrong": "I go every day to school.",
+    "right": "I go to school every day.",
+    "why": "Tümleçlerde önce yer (where), sonra sıklık ve zaman gelir; özellikle go gibi hareket fiillerinde yer fiile yapışık durur."
    }
   ],
   "tip": "Türkçe cümlenin son kelimesini (yüklemi) kopar, öznenin hemen yanına yapıştır. Sonra sırayla: NEYİ? → NEREDE? → NE SIKLIKTA? → NE ZAMAN?",
@@ -145,12 +145,12 @@
    {
     "q": "Tümleç sırası hangisinde doğru?",
     "options": [
-     "We study at home every day.",
-     "We study every day at home.",
-     "We at home study every day."
+     "We go to the gym every day.",
+     "We go every day to the gym.",
+     "We every day go to the gym."
     ],
     "answer": 0,
-    "why": "Önce yer (at home), sonra sıklık/zaman (every day) gelir."
+    "why": "Önce yer (to the gym), sonra sıklık/zaman (every day) gelir; zaman ifadesi fiille yer arasına girmez."
    },
    {
     "q": "'What caused this accident?' sorusunun öznesi hangisi?",
@@ -266,7 +266,7 @@
       "s"
      ]
     ],
-    "example": "Where is the responsible software engineer?"
+    "example": "Where is the meeting room?"
    }
   ],
   "timeline": null,
@@ -366,7 +366,7 @@
       "v"
      ],
      [
-      "a + tekil / sayılamayan isim",
+      "a + tekil isim / sayılamayan isim",
       "o"
      ],
      [
@@ -844,7 +844,7 @@
       "o"
      ],
      [
-      "+ s / es / ies / ves",
+      "-s / -es / -ies / -ves",
       "x"
      ]
     ],
@@ -1103,24 +1103,24 @@
     "why": "-s ile biten çoğul isimlerde sadece kesme işareti eklenir: girls'."
    },
    {
-    "q": "Carol and her husband never blame ___.",
+    "q": "'Carol ve kocası birbirlerini asla suçlamaz.' → Carol and her husband never blame ___.",
     "options": [
      "themselves",
      "each other",
      "theirs"
     ],
     "answer": 1,
-    "why": "İki kişinin karşılıklı yaptığı eylem: each other (birbirini)."
+    "why": "İki kişinin karşılıklı yaptığı eylem: each other (birbirini). Themselves 'kendilerini' demek olurdu."
    },
    {
-    "q": "'It is high time you finished your work.' ne demek?",
+    "q": "'Onun çantası' (çantanın sahibi bir erkek) nasıl söylenir?",
     "options": [
-     "İşini bitirdiğin iyi oldu.",
-     "İşini bitirmenin vakti çoktan geldi.",
-     "İşini bitirmek çok zaman aldı."
+     "her bag",
+     "his bag",
+     "him bag"
     ],
     "answer": 1,
-    "why": "It is high time + V2 'çoktan ... vakti geldi' anlamında bir kalıptır."
+    "why": "İyelik sahibine göre seçilir: sahip erkekse his, kadınsa her. Him nesne zamiridir, isimden önce gelmez."
    }
   ]
  },
@@ -1172,7 +1172,7 @@
       "o"
      ]
     ],
-    "example": "He does his lessons every day."
+    "example": "He does his homework every day."
    },
    {
     "label": "Olumsuz",
@@ -1231,7 +1231,7 @@
    {
     "wrong": "I haven't a car.",
     "right": "I don't have a car.",
-    "why": "Sahiplikte olumsuz don't / doesn't have ile kurulur."
+    "why": "Günlük dilde sahiplikte olumsuz don't / doesn't have ile kurulur; 'I haven't a car' eski ve resmî bir İngiliz kullanımıdır (İngiliz İngilizcesinde 'I haven't got a car' da olur)."
    },
    {
     "wrong": "He do the dishes every night.",
@@ -1254,7 +1254,7 @@
    {
     "q": "Hangi soru doğru?",
     "options": [
-     "Has he a witness?",
+     "Have he a witness?",
      "Do he have a witness?",
      "Does he have a witness?"
     ],
@@ -2120,14 +2120,14 @@
     "why": "Do ile sorulan soruya kısa cevap: Yes, I do."
    },
    {
-    "q": "'Who did you give it to?' cümlesinin resmî hali hangisi?",
+    "q": "Where ___ she live? — In Izmir.",
     "options": [
-     "Whom to you gave it?",
-     "To whom did you give it?",
-     "To who you gave it?"
+     "do",
+     "does",
+     "is"
     ],
     "answer": 1,
-    "why": "Edat başa da alınabilir; resmî dilde 'To whom ...?' kullanılır."
+    "why": "She üçüncü tekil kişidir: Where does she live? Fiil (live) varken is kullanılmaz."
    }
   ]
  },
@@ -2409,7 +2409,7 @@
      "dispossible"
     ],
     "answer": 1,
-    "why": "P ile başlayan sıfatlar genellikle im- alır: impossible."
+    "why": "Possible olumsuzluğu in- ile yapar; p, b, m'den önce in- → im- olur: impossible (ama unpopular gibi un- alanlar değişmez)."
    },
    {
     "q": "Hangisi doğru?",
@@ -2922,9 +2922,9 @@
    {
     "q": "Hangi cümle doğru?",
     "options": [
-     "When the alarm was ringing, I woke up.",
+     "When the alarm was rang, I was sleeping.",
      "When the alarm rang, I was sleeping.",
-     "While the alarm rang, I slept."
+     "When the alarm rang, I were sleeping."
     ],
     "answer": 1,
     "why": "Kısa olay (rang) V2, o sırada süren iş (was sleeping) continuous."
@@ -3326,7 +3326,7 @@
       "v"
      ],
      [
-      "+ zaman",
+      "zaman",
       "o"
      ]
     ],
@@ -3344,7 +3344,7 @@
       "v"
      ],
      [
-      "+ saat/tarih",
+      "saat/tarih",
       "o"
      ]
     ],
@@ -3392,12 +3392,12 @@
       "aux"
      ]
     ],
-    "example": "I'll call you when I get home."
+    "example": "When I get home, I'll call you."
    }
   ],
   "timeline": "futurePoint",
   "timelineNote": "Olay gelecekte bir noktada; ama karar ya da program şimdiden hazır, bu yüzden şimdiki zamanın formları kullanılıyor.",
-  "compare": "Türkçede 'Yarın İzmir'e gidiyorum' deriz; İngilizce de aynısını yapar: I'm going to İzmir tomorrow. Fark şu: tarifeler için Türkçe yine '-iyor' der (Tren 7'de kalkıyor), İngilizce geniş zamana geçer: The train leaves at 7. 'Eve gelince ararım' cümlesindeki '-ince' kısmında Türkçede gelecek eki olmadığı gibi, İngilizcede de when'den sonra will gelmez.",
+  "compare": "Türkçede 'Yarın İzmir'e gidiyorum' deriz; İngilizce de aynısını yapar: I'm going to Izmir tomorrow. Fark şu: tarifeler için Türkçe yine '-iyor' der (Tren 7'de kalkıyor), İngilizce geniş zamana geçer: The train leaves at 7. 'Eve gelince ararım' cümlesindeki '-ince' kısmında Türkçede gelecek eki olmadığı gibi, İngilizcede de when'den sonra will gelmez.",
   "mistakes": [
    {
     "wrong": "Tomorrow I meet Selin.",
@@ -3804,10 +3804,10 @@
     "options": [
      "Must I to pay now?",
      "Do I have to pay now?",
-     "Have I to pay now?"
+     "Do I has to pay now?"
     ],
     "answer": 1,
-    "why": "Günlük dilde soru Do/Does + özne + have to + V1 ile kurulur."
+    "why": "Soru Do/Does + özne + have to + V1 ile kurulur; do/does geldiğinde has değil have kalır. (Must I pay now? da doğrudur ama must'tan sonra to gelmez.)"
    },
    {
     "q": "Boşluğu doldur: If the bridge is closed, we ___ take the ferry next week.",
@@ -4984,7 +4984,7 @@
      "slowness",
      "slowly",
      "more slow",
-     "slow"
+     "slows"
     ],
     "answer": 1,
     "why": "Fiili niteleyen biçim zarfı: slow + -ly = slowly."
@@ -5222,7 +5222,7 @@
       "v"
      ]
     ],
-    "example": "The ice is thick enough for skating."
+    "example": "The ice is thick enough to skate on."
    },
    {
     "label": "Öyle ... ki",
@@ -5275,8 +5275,8 @@
   "mistakes": [
    {
     "wrong": "This soup is too delicious!",
-    "right": "This soup is very delicious!",
-    "why": "too olumsuz bir anlam taşır; övgü için very."
+    "right": "This soup is really delicious!",
+    "why": "too 'gereğinden fazla' der ve olumsuz bir anlam taşır; övgü için really / so kullanılır."
    },
    {
     "wrong": "He isn't enough old to drive.",
@@ -5938,7 +5938,7 @@
     "why": "When ile belirli zaman sorulur: did + V1."
    },
    {
-    "q": "Boşluğu doldur: Have you finished the report? – Yes, I ___ it this morning.",
+    "q": "Boşluğu doldur: Have you finished the report? – Yes, I ___ it an hour ago.",
     "options": [
      "have finish",
      "have finished",
@@ -5946,7 +5946,7 @@
      "finished"
     ],
     "answer": 3,
-    "why": "this morning (bitmiş bir zaman dilimi) ayrıntısı verildi: simple past."
+    "why": "an hour ago belirli bir geçmiş zamandır; ayrıntı verilince simple past'a geçilir."
    }
   ]
  },
@@ -6161,7 +6161,7 @@
       "o"
      ]
     ],
-    "example": "We hadn't spoken Turkish."
+    "example": "We hadn't met before the party."
    },
    {
     "label": "İki olay",
@@ -6223,9 +6223,9 @@
     "why": "had'den sonra V3 gelir."
    },
    {
-    "wrong": "I had seen Bill before he had gone to Adana.",
+    "wrong": "I saw Bill before he had gone to Adana.",
     "right": "I had seen Bill before he went to Adana.",
-    "why": "Sonra olan olay simple past kalır."
+    "why": "had + V3 önce olan olaya (görmek) gelir; sonra olan olay (gitmek) simple past kalır. Had'i yanlış olaya koyma."
    }
   ],
   "tip": "'-mıştı' duydun mu? Had + V3. İki olay sırala: önce olan had alır, sonra olan V2 kalır.",
@@ -7708,7 +7708,7 @@
       "v"
      ]
     ],
-    "example": "I wish I had woken up early."
+    "example": "I wish I had woken up earlier."
    },
    {
     "label": "Şikâyet",
@@ -8155,7 +8155,7 @@
       "o"
      ]
     ],
-    "example": "Sıla said she wouldn't come tomorrow."
+    "example": "Sıla said she wouldn't come to the party."
    },
    {
     "label": "Tell",
@@ -8232,7 +8232,7 @@
    {
     "wrong": "He said he will come.",
     "right": "He said he would come.",
-    "why": "Geçmişten bakınca will → would."
+    "why": "Söyleme fiili geçmişte olduğu için will → would olur. (Söz hâlâ geçerliyse konuşmada will de duyulur, ama güvenli kural would'dur.)"
    },
    {
     "wrong": "I told him don't go.",
@@ -8253,14 +8253,14 @@
     "why": "Arkasında kişi (me) var → told."
    },
    {
-    "q": "'I will call you.' → He said he ___ me.",
+    "q": "Geçen hafta: 'I will call you tonight.' → He said he ___ me that night.",
     "options": [
      "would call",
      "will call",
      "calls"
     ],
     "answer": 0,
-    "why": "Geçmiş aktarımda will → would."
+    "why": "Söz geçmişte kaldı (that night): will → would."
    },
    {
     "q": "Hangisi 'Ayşe'ye partiye gelmesini söyledim.' demek?",
@@ -11300,7 +11300,7 @@
     "why": "Preposition'dan hemen sonra whom gelir; that gelmez."
    },
    {
-    "q": "'Bana her zaman geç kalıyor, ki bu da beni kızdırıyor.'",
+    "q": "'Her zaman geç kalıyor, ki bu da beni kızdırıyor.'",
     "options": [
      "He is always late, that annoys me.",
      "He is always late, who annoys me.",
@@ -11584,7 +11584,7 @@
   ],
   "timeline": null,
   "timelineNote": null,
-  "compare": "Türkçede nesneleri eklerle işaretleriz (-ı, -e) ve sıra serbesttir: 'Susan'a bir hediye verdim' ya da 'Bir hediyeyi Susan'a verdim'. İngilizcede ek yoktur, görevi sıra belirler: I gave Susan a present / I gave a present to Susan. Özne-fiil uyumu da daha katıdır: Türkçede 'Öğrenciler geldi' diyebiliriz ama İngilizcede 'The students are here' demek zorundayız.",
+  "compare": "Türkçede nesneleri eklerle işaretleriz (-ı, -e) ve sıra serbesttir: 'Susan'a bir hediye verdim' ya da 'Bir hediyeyi Susan'a verdim'. İngilizcede ek yoktur, görevi sıra belirler: I gave Susan a present / I gave a present to Susan. Özne-fiil uyumu da daha katıdır: Türkçede çoğul özneyle tekil fiil kullanabiliriz ('Öğrenciler geldi'), İngilizcede ise fiil özneye uymak zorundadır: 'The students are here' / 'The student is here'.",
   "mistakes": [
    {
     "wrong": "I explained him the problem.",
@@ -11706,7 +11706,7 @@
       "o"
      ]
     ],
-    "example": "It was rainy; nevertheless, we decided to eat out."
+    "example": "It was rainy; however, we decided to eat out."
    },
    {
     "label": "ne … ne de",
@@ -11759,7 +11759,7 @@
   ],
   "timeline": null,
   "timelineNote": null,
-  "compare": "Türkçede iki cümleyi virgülle rahatça bağlarız: 'Arabası çalışmadı, bu yüzden otobüse bindi.' İngilizcede however, therefore gibi uzun bağlayıcılar iki tam cümleyi virgülle bağlayamaz; noktalı virgül ya da nokta gerekir. Ayrıca Türkçede 'Ne gelir ne arar' olumsuz anlamı fiile de yükler, İngilizcede neither … nor varken fiil olumlu kalır.",
+  "compare": "Türkçede iki cümleyi virgülle rahatça bağlarız: 'Arabası çalışmadı, bu yüzden otobüse bindi.' İngilizcede however, therefore gibi uzun bağlayıcılar iki tam cümleyi virgülle bağlayamaz; noktalı virgül ya da nokta gerekir. Ne … ne yapısında ise iki dil aynı mantıkla çalışır: Türkçede 'Ne gelir ne arar' derken olumsuzluğu ne … ne taşır, fiiller olumlu kalır; İngilizcede de neither … nor varken fiil olumlu kalır: He neither visits nor calls.",
   "mistakes": [
    {
     "wrong": "He was tired, however he kept working.",
@@ -11800,14 +11800,14 @@
     "why": "Uzun bağlaç: noktalı virgül + however + virgül."
    },
    {
-    "q": "'The men were rude; on the contrary, the children were polite.' ne anlatır?",
+    "q": "'The men were rude; in contrast, the children were polite.' ne anlatır?",
     "options": [
      "Ekleme",
      "Sonuç",
      "Zıtlık"
     ],
     "answer": 2,
-    "why": "on the contrary = tam aksine; zıtlık grubundandır."
+    "why": "in contrast / by contrast = buna karşılık; zıtlık grubundandır. Dikkat: on the contrary iki şeyi karşılaştırmaz, önceki bir ifadeyi reddeder: 'It isn't cheap. On the contrary, it's very expensive.'"
    },
    {
     "q": "'He has ___ money ___ fame.' (Hem parası hem şöhreti var.)",
@@ -12180,14 +12180,14 @@
     "why": "All + S + do + is + V1: All tekil bir bütün sayılır."
    },
    {
-    "q": "Hangisi vurgulu olumsuz emirdir?",
+    "q": "Hangisi vurgulu (ısrarcı ve sıcak) bir davettir?",
     "options": [
-     "Don't leave me.",
-     "Do not leave me.",
-     "Not leave me."
+     "Come in.",
+     "Do come in.",
+     "Does come in."
     ],
     "answer": 1,
-    "why": "do ve not ayrı yazılınca vurgu artar."
+    "why": "Emirde do + V1 daveti ya da ricayı vurgular: Do come in! = Buyurun, lütfen girin! Emir hep yalın do alır, does olmaz."
    },
    {
     "q": "'Why ever did you do that?' ne anlatır?",
@@ -12276,7 +12276,7 @@
    {
     "wrong": "It is unpossible.",
     "right": "It is impossible.",
-    "why": "p ile başlayan kelimeler im- alır: impossible, impolite."
+    "why": "Possible olumsuzluğu in- ile yapar ve p'den önce in- → im- olur: impossible, impolite. (un- alan kelimeler değişmez: unpopular, unpleasant.)"
    },
    {
     "wrong": "Thank you for your kind.",
@@ -12289,7 +12289,7 @@
     "why": "Fiili niteleyen zarftır: careful + -ly."
    }
   ],
-  "tip": "Ön ek harf ipucu: p, b, m → im- (impatient), l → il- (illegal), r → ir- (irregular). Diğerlerinde çoğunlukla un- ya da in-.",
+  "tip": "in- ailesinde harf ipucu: p, b, m → im- (impatient, imbalance, immature), l → il- (illegal), r → ir- (irregular). un- alan kelimeler ise hiç değişmez: unpopular, unlucky, unreal.",
   "quiz": [
    {
     "q": "'I'm afraid I ___ your question.' (yanlış anladım)",
@@ -12984,7 +12984,7 @@
       "o"
      ]
     ],
-    "example": "The trip took over four hours."
+    "example": "It took over four hours to get there."
    },
    {
     "label": "Haber edilgeni",

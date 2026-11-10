@@ -198,7 +198,7 @@
     "id": "b1_v1",
     "level": "B1",
     "skill": "vocabulary",
-    "prompt": "She is very ___; she always helps her neighbours.",
+    "prompt": "She is very ___; she always shares what she has with her neighbours.",
     "choices": ["rude", "lazy", "generous", "jealous"],
     "answer": 2,
     "explanation": "generous = cömert, eli açık. rude kaba, lazy tembel, jealous kıskanç demektir."
@@ -235,11 +235,11 @@
     "id": "b1_r2",
     "level": "B1",
     "skill": "reading",
-    "passage": "Although the museum is free on Wednesdays, it is often crowded, so visitors who prefer a quiet visit are advised to come on weekday mornings and pay the small entrance fee.",
+    "passage": "Although the museum is free on Wednesdays, it is often crowded, so visitors who prefer a quiet visit are advised to come on other weekday mornings and pay the small entrance fee.",
     "prompt": "What does the text suggest for a quiet visit?",
     "choices": ["Come on a weekday morning and pay the fee.", "Come on Wednesday because it is free.", "Visit only at the weekend.", "Buy a ticket online."],
     "answer": 0,
-    "explanation": "Sakin bir ziyaret isteyenlere “come on weekday mornings and pay the small entrance fee” öneriliyor. Çarşamba ücretsiz ama kalabalık."
+    "explanation": "Sakin bir ziyaret isteyenlere “come on other weekday mornings and pay the small entrance fee” öneriliyor. Çarşamba ücretsiz ama kalabalık."
   },
   {
     "id": "b1_r3",
@@ -282,7 +282,7 @@
     "id": "b2_v1",
     "level": "B2",
     "skill": "vocabulary",
-    "prompt": "The government has decided to ___ a new tax on plastic bags.",
+    "prompt": "The government will ___ a new tax on plastic bags, so shoppers will pay extra for each one.",
     "choices": ["oppose", "impose", "expose", "suppose"],
     "answer": 1,
     "explanation": "impose a tax = vergi koymak, dayatmak. oppose karşı çıkmak, expose açığa çıkarmak, suppose varsaymak demektir."
@@ -378,14 +378,14 @@
     "prompt": "Her argument doesn't ___ water; the figures she quotes are out of date.",
     "choices": ["keep", "carry", "hold", "bear"],
     "answer": 2,
-    "explanation": "“hold water” kalıbı “mantıklı olmak, tutarlı olmak” demektir. doesn't hold water = inandırıcı değil, su götürür."
+    "explanation": "“hold water” kalıbı “mantıklı olmak, tutarlı olmak” demektir. doesn't hold water = inandırıcı değil, su götürür. keep, carry ve bear bu kalıpta kullanılmaz."
   },
   {
     "id": "c1_v3",
     "level": "C1",
     "skill": "vocabulary",
     "prompt": "“They cut corners on the new building.” cümlesindeki “cut corners” ne anlama gelir?",
-    "choices": ["Kestirmeden gitmek", "İşi ucuza ve özensizce yapmak", "Masrafları paylaşmak", "Binanın köşelerini yuvarlatmak"],
+    "choices": ["Bütçeyi aşmak", "İşi ucuza ve özensizce yapmak", "Masrafları paylaşmak", "Binanın köşelerini yuvarlatmak"],
     "answer": 1,
     "explanation": "cut corners = zaman ya da para kazanmak için kaliteden ödün vermek, işi baştan savma yapmak."
   },

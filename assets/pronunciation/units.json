@@ -23,7 +23,7 @@
     "sentences": [
       { "en": "I think three is enough.", "tr": "Bence üç yeterli." },
       { "en": "Thank you for the thick book.", "tr": "Kalın kitap için teşekkürler." },
-      { "en": "Open your mouth and breathe out.", "tr": "Ağzını aç ve nefes ver." }
+      { "en": "I think Beth is thirty.", "tr": "Bence Beth otuz yaşında." }
     ]
   },
   {
@@ -64,7 +64,7 @@
       "v için üst dişlerin alt dudağına hafifçe değer ve ses titreşir; Türkçedeki 'v' gibidir.",
       "Ayna karşısında dene: w'de dişin görünmez, v'de üst dişin alt dudağın üstündedir."
     ],
-    "turkish": "Türkçede yazıda tek 'v' var ama 'tavuk, vapur' derken dudaklar bazen w'ye yaklaşır. İngilizcede bu fark anlamı değiştirir; w gördüğünde dişlerini dudağından uzak tut.",
+    "turkish": "Türkçede yazıda tek 'v' var ama 'tavuk, havuç' derken dudaklar bazen w'ye yaklaşır. İngilizcede bu fark anlamı değiştirir; w gördüğünde dişlerini dudağından uzak tut.",
     "mistake": "wine → 'vayn' (vine: asma), west → 'vest' (yelek) gibi duyulur.",
     "pairs": [
       { "a": "wine", "aTr": "şarap", "b": "vine", "bTr": "asma" },
@@ -172,15 +172,15 @@
       "Vurgusuz heceler küçülüp tembel bir 'ı' sesine döner: buna schwa /ə/ denir. 'about' → 'ıbaut', 'banana' → 'bınaanı'.",
       "Her harfi yazıldığı gibi tek tek okuma; vurguyu bul, gerisini hafiflet. Kelimenin ritmi çoğu zaman sesten daha önemlidir."
     ],
-    "turkish": "Türkçede heceler hemen hemen eşit güçte söylenir ve vurgu çoğunlukla sondadır. İngilizcede vurgu yanlış yere düşünce kelime tanınmaz hale gelebilir: deSERT (tatlı) ile DEsert (çöl) gibi.",
+    "turkish": "Türkçede heceler hemen hemen eşit güçte söylenir ve vurgu çoğunlukla sondadır. İngilizcede vurgu yanlış yere düşünce kelime tanınmaz hale gelebilir: deSSERT (tatlı) ile DEsert (çöl) gibi.",
     "mistake": "comfortable → 'komfortıbıl' (4 eşit hece), photographer → 'fotoGRAFer'.",
     "pairs": [
-      { "a": "desert", "aTr": "çöl (DE-sert)", "b": "dessert", "bTr": "tatlı (de-SERT)" },
+      { "a": "desert", "aTr": "çöl (DE-sert)", "b": "dessert", "bTr": "tatlı (de-SSERT)" },
       { "a": "photograph", "aTr": "fotoğraf (PHO-)", "b": "photographer", "bTr": "fotoğrafçı (-TOG-)" },
       { "a": "economy", "aTr": "ekonomi (-CON-)", "b": "economic", "bTr": "ekonomik (-NOM-)" },
       { "a": "personal", "aTr": "kişisel (PER-)", "b": "personnel", "bTr": "personel (-NEL)" },
-      { "a": "comfortable", "aTr": "rahat (COM-)", "b": "comfort", "bTr": "konfor" },
-      { "a": "record", "aTr": "kayıt", "b": "reward", "bTr": "ödül" }
+      { "a": "history", "aTr": "tarih (HIS-)", "b": "historic", "bTr": "tarihî (-TOR-)" },
+      { "a": "Japan", "aTr": "Japonya (-PAN)", "b": "Japanese", "bTr": "Japon (-NESE)" }
     ],
     "sentences": [
       { "en": "This sofa is very comfortable.", "tr": "Bu kanepe çok rahat." },
@@ -192,12 +192,12 @@
     "id": "silent_letters",
     "emoji": "🤫",
     "title": "Okunmayan harfler",
-    "sound": "k, l, b, s, w",
+    "sound": "k, l, b, s, t, w",
     "summary": "walk, knife, island: yazılır ama söylenmez.",
     "how": [
       "kn- başında k okunmaz: knife 'nayf', know 'nou', knee 'nii'.",
-      "-alk ve -ould içinde l okunmaz: walk 'wook', talk 'took', could 'kud', should 'şud'.",
-      "-mb sonunda b okunmaz (climb, comb), island içinde s okunmaz, wr- başında w okunmaz (write, wrong)."
+      "-alk ve -ould içinde l okunmaz: walk 'wôk', talk 'tôk' (uzun, yuvarlak o), could 'kud', should 'şud'.",
+      "-mb sonunda b okunmaz (climb, comb), island içinde s okunmaz, listen içinde t okunmaz, wr- başında w okunmaz (write, wrong)."
     ],
     "turkish": "Türkçe yazıldığı gibi okunur, bu yüzden her harfi seslendirmek doğal gelir. İngilizcede eski telaffuzdan kalan harfler yazıda durur ama artık söylenmez.",
     "mistake": "walk → 'valk', could → 'kould' (cold: soğuk gibi), island → 'aysland'.",
@@ -207,7 +207,7 @@
       { "a": "island", "aTr": "ada", "b": "Iceland", "bTr": "İzlanda" },
       { "a": "listen", "aTr": "dinlemek", "b": "lesson", "bTr": "ders" },
       { "a": "should", "aTr": "-meli", "b": "shoulder", "bTr": "omuz" },
-      { "a": "talk", "aTr": "konuşmak", "b": "took", "bTr": "aldı" }
+      { "a": "write", "aTr": "yazmak", "b": "white", "bTr": "beyaz" }
     ],
     "sentences": [
       { "en": "I know how to use this knife.", "tr": "Bu bıçağı nasıl kullanacağımı biliyorum." },

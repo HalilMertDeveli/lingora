@@ -104,7 +104,10 @@
               "text": "How can I help you?",
               "lang": "en",
               "answers": [
-                "Size nasıl yardımcı olabilirim"
+                "Size nasıl yardımcı olabilirim",
+                "Nasıl yardımcı olabilirim",
+                "Size nasıl yardım edebilirim",
+                "Nasıl yardım edebilirim"
               ],
               "tokens": [
                 "Size",
@@ -146,7 +149,7 @@
               "choices": [
                 "reservation",
                 "breakfast",
-                "towel"
+                "floor"
               ]
             },
             {
@@ -155,7 +158,10 @@
               "lang": "tr",
               "answers": [
                 "What is your name please",
-                "What's your name please"
+                "What's your name please",
+                "May I have your name please",
+                "Could I have your name please",
+                "Can I have your name please"
               ],
               "tokens": [
                 "What",
@@ -210,7 +216,8 @@
               "lang": "tr",
               "answers": [
                 "Could I see your passport please",
-                "Can I see your passport please"
+                "Can I see your passport please",
+                "May I see your passport please"
               ],
               "tokens": [
                 "Could",
@@ -273,7 +280,9 @@
               "lang": "en",
               "answers": [
                 "Buyurun, oda anahtarınız",
-                "İşte oda anahtarınız"
+                "İşte oda anahtarınız",
+                "Buyrun oda anahtarınız",
+                "Oda anahtarınız burada"
               ],
               "tokens": [
                 "Buyurun",
@@ -324,7 +333,9 @@
               "lang": "tr",
               "answers": [
                 "Please sign here",
-                "Sign here please"
+                "Sign here please",
+                "Could you sign here please",
+                "Can you sign here please"
               ],
               "tokens": [
                 "Please",
@@ -486,7 +497,9 @@
               "lang": "tr",
               "answers": [
                 "Breakfast starts at seven",
-                "Breakfast starts at 7"
+                "Breakfast starts at 7",
+                "Breakfast begins at seven",
+                "Breakfast begins at 7"
               ],
               "tokens": [
                 "Breakfast",
@@ -546,7 +559,10 @@
               "text": "Check-out is at twelve.",
               "lang": "en",
               "answers": [
-                "Çıkış saat on ikide"
+                "Çıkış saat on ikide",
+                "Çıkış on ikide",
+                "Çıkış saat 12'de",
+                "Check-out saat on ikide"
               ],
               "tokens": [
                 "Çıkış",
@@ -598,7 +614,12 @@
               "lang": "tr",
               "answers": [
                 "The pool is open until seven",
-                "The pool is open until 7 pm"
+                "The pool is open until 7 pm",
+                "The pool is open until 7",
+                "The pool is open until seven pm",
+                "The pool is open until 7pm",
+                "The pool is open until seven in the evening",
+                "The pool is open until 7 in the evening"
               ],
               "tokens": [
                 "The",
@@ -676,7 +697,11 @@
               "lang": "tr",
               "answers": [
                 "I'll bring new towels right away",
-                "I will bring new towels right away"
+                "I will bring new towels right away",
+                "I'll bring you new towels right away",
+                "I will bring you new towels right away",
+                "I'll bring new towels immediately",
+                "I will bring new towels immediately"
               ],
               "tokens": [
                 "I'll",
@@ -738,7 +763,10 @@
               "text": "Would you like an extra blanket?",
               "lang": "en",
               "answers": [
-                "Ekstra bir battaniye ister misiniz"
+                "Ekstra bir battaniye ister misiniz",
+                "Fazladan bir battaniye ister misiniz",
+                "Ekstra battaniye ister misiniz",
+                "Bir battaniye daha ister misiniz"
               ],
               "tokens": [
                 "Ekstra",
@@ -790,7 +818,9 @@
               "lang": "tr",
               "answers": [
                 "I'll check the air conditioning",
-                "I will check the air conditioning"
+                "I will check the air conditioning",
+                "I'll check the air conditioner",
+                "I will check the air conditioner"
               ],
               "tokens": [
                 "I'll",
@@ -845,7 +875,12 @@
               "lang": "tr",
               "answers": [
                 "Room service is open twenty-four hours",
-                "Room service is open 24 hours"
+                "Room service is open 24 hours",
+                "Room service is open twenty four hours",
+                "Room service is open twenty-four hours a day",
+                "Room service is open 24 hours a day",
+                "Room service is available twenty-four hours",
+                "Room service is available 24 hours"
               ],
               "tokens": [
                 "Room",
@@ -906,7 +941,11 @@
               "text": "Your order will arrive in twenty minutes.",
               "lang": "en",
               "answers": [
-                "Siparişiniz yirmi dakika içinde gelecek"
+                "Siparişiniz yirmi dakika içinde gelecek",
+                "Siparişiniz yirmi dakikada gelecek",
+                "Siparişiniz 20 dakika içinde gelecek",
+                "Siparişiniz 20 dakikada gelecek",
+                "Siparişiniz yirmi dakika sonra gelecek"
               ],
               "tokens": [
                 "Siparişiniz",
@@ -996,7 +1035,7 @@
               "speaker": "Deniz",
               "avatar": "👩‍💼",
               "text": "Good evening, Ms. Müller. How can I help you?",
-              "translation": "İyi akşamlar Bayan Müller. Size nasıl yardımcı olabilirim?"
+              "translation": "İyi akşamlar, Bayan Müller. Size nasıl yardımcı olabilirim?"
             },
             {
               "kind": "line",
@@ -1010,7 +1049,7 @@
               "speaker": "Deniz",
               "avatar": "👩‍💼",
               "text": "I'm sorry about that. I'll send someone right away.",
-              "translation": "Bunun için üzgünüm. Hemen birini gönderiyorum."
+              "translation": "Bunu duyduğuma üzüldüm. Hemen birini gönderiyorum."
             },
             {
               "kind": "question",
@@ -1142,7 +1181,7 @@
               "choices": [
                 "wardrobe",
                 "pool",
-                "lobby"
+                "menu"
               ]
             },
             {
@@ -1182,7 +1221,9 @@
               "text": "Is there anything else I can do for you?",
               "lang": "en",
               "answers": [
-                "Sizin için yapabileceğim başka bir şey var mı"
+                "Sizin için yapabileceğim başka bir şey var mı",
+                "Başka yapabileceğim bir şey var mı",
+                "Sizin için başka yapabileceğim bir şey var mı"
               ],
               "tokens": [
                 "Sizin",
@@ -1237,7 +1278,10 @@
               "lang": "tr",
               "answers": [
                 "I'll send someone right away",
-                "I will send someone right away"
+                "I will send someone right away",
+                "I'm sending someone right away",
+                "I am sending someone right away",
+                "I'll send someone immediately"
               ],
               "tokens": [
                 "I'll",
@@ -1374,7 +1418,9 @@
               "text": "What would you like to drink?",
               "lang": "en",
               "answers": [
-                "Ne içmek istersiniz"
+                "Ne içmek istersiniz",
+                "Ne içersiniz",
+                "İçecek olarak ne istersiniz"
               ],
               "tokens": [
                 "Ne",
@@ -1425,7 +1471,10 @@
               "lang": "tr",
               "answers": [
                 "Is this table okay for you",
-                "Is this table OK for you"
+                "Is this table OK for you",
+                "Is this table all right for you",
+                "Is this table alright for you",
+                "Is this table fine for you"
               ],
               "tokens": [
                 "Is",
@@ -1479,7 +1528,9 @@
               "text": "Herhangi bir alerjiniz var mı?",
               "lang": "tr",
               "answers": [
-                "Do you have any allergies"
+                "Do you have any allergies",
+                "Do you have any food allergies",
+                "Are you allergic to anything"
               ],
               "tokens": [
                 "Do",
@@ -1499,7 +1550,7 @@
               "answer": "recommend",
               "choices": [
                 "recommend",
-                "order",
+                "contain",
                 "sign"
               ]
             },
@@ -1540,7 +1591,9 @@
               "text": "This dish is very spicy.",
               "lang": "en",
               "answers": [
-                "Bu yemek çok acı"
+                "Bu yemek çok acı",
+                "Bu yemek çok acılı",
+                "Bu yemek çok baharatlı"
               ],
               "tokens": [
                 "Bu",
@@ -1591,7 +1644,10 @@
               "lang": "tr",
               "answers": [
                 "We also have vegetarian dishes",
-                "We have vegetarian dishes too"
+                "We have vegetarian dishes too",
+                "We have vegetarian dishes as well",
+                "We also have vegetarian meals",
+                "We also have vegetarian options"
               ],
               "tokens": [
                 "We",
@@ -1706,7 +1762,7 @@
               "speaker": "Emre",
               "avatar": "🤵",
               "text": "Perfect. Your food will be ready in fifteen minutes.",
-              "translation": "Harika. Yemeğiniz on beş dakikada hazır olur."
+              "translation": "Harika. Yemeğiniz on beş dakika içinde hazır olacak."
             },
             {
               "kind": "question",
@@ -1754,7 +1810,10 @@
               "text": "Kartla mı ödemek istersiniz?",
               "lang": "tr",
               "answers": [
-                "Would you like to pay by card"
+                "Would you like to pay by card",
+                "Would you like to pay with a card",
+                "Would you like to pay with card",
+                "Would you like to pay by credit card"
               ],
               "tokens": [
                 "Would",
@@ -1775,8 +1834,8 @@
               "answer": "bill",
               "choices": [
                 "bill",
-                "table",
-                "order"
+                "allergy",
+                "floor"
               ]
             },
             {
@@ -1816,7 +1875,10 @@
               "text": "Service is not included.",
               "lang": "en",
               "answers": [
-                "Servis dahil değil"
+                "Servis dahil değil",
+                "Servis dahil değildir",
+                "Servis ücreti dahil değil",
+                "Servis ücreti dahil değildir"
               ],
               "tokens": [
                 "Servis",
@@ -1866,7 +1928,9 @@
               "text": "Bahşiş için teşekkür ederim.",
               "lang": "tr",
               "answers": [
-                "Thank you for the tip"
+                "Thank you for the tip",
+                "Thanks for the tip",
+                "Thank you very much for the tip"
               ],
               "tokens": [
                 "Thank",
@@ -1943,7 +2007,10 @@
               "lang": "tr",
               "answers": [
                 "The tour starts at nine",
-                "The tour starts at 9"
+                "The tour starts at 9",
+                "The tour begins at nine",
+                "The tour begins at 9",
+                "The tour starts at nine o'clock"
               ],
               "tokens": [
                 "The",
@@ -1971,7 +2038,8 @@
               "type": "listen",
               "text": "Please be in the lobby at eight thirty.",
               "answers": [
-                "Please be in the lobby at eight thirty."
+                "Please be in the lobby at eight thirty.",
+                "Please be in the lobby at 8:30."
               ]
             },
             {
@@ -2004,7 +2072,10 @@
               "text": "The bus leaves at eight.",
               "lang": "en",
               "answers": [
-                "Otobüs saat sekizde kalkıyor"
+                "Otobüs saat sekizde kalkıyor",
+                "Otobüs sekizde kalkıyor",
+                "Otobüs saat 8'de kalkıyor",
+                "Otobüs saat sekizde hareket ediyor"
               ],
               "tokens": [
                 "Otobüs",
@@ -2055,7 +2126,9 @@
               "text": "Lütfen şapka ve su getirin.",
               "lang": "tr",
               "answers": [
-                "Please bring a hat and water"
+                "Please bring a hat and water",
+                "Please bring a hat and some water",
+                "Bring a hat and water please"
               ],
               "tokens": [
                 "Please",
@@ -2109,7 +2182,9 @@
               "text": "Düz gidin ve sola dönün.",
               "lang": "tr",
               "answers": [
-                "Go straight and turn left"
+                "Go straight and turn left",
+                "Go straight ahead and turn left",
+                "Go straight on and turn left"
               ],
               "tokens": [
                 "Go",
@@ -2137,7 +2212,10 @@
               "type": "listen",
               "text": "It's a five-minute walk from here.",
               "answers": [
-                "It's a five-minute walk from here."
+                "It's a five-minute walk from here.",
+                "It is a five-minute walk from here.",
+                "It's a five minute walk from here.",
+                "It is a five minute walk from here."
               ]
             },
             {
@@ -2170,7 +2248,8 @@
               "text": "Turn right at the corner.",
               "lang": "en",
               "answers": [
-                "Köşeden sağa dönün"
+                "Köşeden sağa dönün",
+                "Köşede sağa dönün"
               ],
               "tokens": [
                 "Köşeden",
@@ -2217,11 +2296,13 @@
             },
             {
               "type": "translate",
-              "text": "Buradan beş dakika yürüme mesafesinde.",
+              "text": "Buradan beş dakikalık yürüme mesafesinde.",
               "lang": "tr",
               "answers": [
                 "It's a five-minute walk from here",
-                "It is a five-minute walk from here"
+                "It is a five-minute walk from here",
+                "It's a five minute walk from here",
+                "It is a five minute walk from here"
               ],
               "tokens": [
                 "It's",
@@ -2378,7 +2459,11 @@
               "text": "Bilet kişi başı yirmi euro.",
               "lang": "tr",
               "answers": [
-                "The ticket is twenty euros per person"
+                "The ticket is twenty euros per person",
+                "The ticket is 20 euros per person",
+                "Tickets are twenty euros per person",
+                "Tickets are 20 euros per person",
+                "The ticket costs twenty euros per person"
               ],
               "tokens": [
                 "The",
@@ -2440,7 +2525,10 @@
               "text": "Lunch is included in the price.",
               "lang": "en",
               "answers": [
-                "Öğle yemeği fiyata dahil"
+                "Öğle yemeği fiyata dahil",
+                "Öğle yemeği fiyata dahildir",
+                "Öğle yemeği ücrete dahil",
+                "Öğlen yemeği fiyata dahil"
               ],
               "tokens": [
                 "Öğle",
@@ -2482,7 +2570,7 @@
               "answer": "free",
               "choices": [
                 "free",
-                "included",
+                "late",
                 "open"
               ]
             },
@@ -2491,7 +2579,11 @@
               "text": "Öğrenciler için indirim var.",
               "lang": "tr",
               "answers": [
-                "There is a discount for students"
+                "There is a discount for students",
+                "There's a discount for students",
+                "There is a student discount",
+                "There's a student discount",
+                "Students get a discount"
               ],
               "tokens": [
                 "There",
@@ -2569,7 +2661,11 @@
               "lang": "tr",
               "answers": [
                 "I'm very sorry for the inconvenience",
-                "I am very sorry for the inconvenience"
+                "I am very sorry for the inconvenience",
+                "I'm so sorry for the inconvenience",
+                "I am so sorry for the inconvenience",
+                "I'm very sorry about the inconvenience",
+                "I am very sorry about the inconvenience"
               ],
               "tokens": [
                 "I'm",
@@ -2630,10 +2726,13 @@
               "text": "I understand how you feel.",
               "lang": "en",
               "answers": [
-                "Ne hissettiğinizi anlıyorum"
+                "Ne hissettiğinizi anlıyorum",
+                "Nasıl hissettiğinizi anlıyorum",
+                "Sizi anlıyorum"
               ],
               "tokens": [
                 "Ne",
+                "Nasıl",
                 "hissettiğinizi",
                 "anlıyorum",
                 "istersiniz",
@@ -2679,7 +2778,9 @@
               "text": "Size başka bir oda verebiliriz.",
               "lang": "tr",
               "answers": [
-                "We can give you another room"
+                "We can give you another room",
+                "We can offer you another room",
+                "We could give you another room"
               ],
               "tokens": [
                 "We",
@@ -2733,7 +2834,10 @@
               "text": "Teknisyen on dakika içinde gelecek.",
               "lang": "tr",
               "answers": [
-                "The technician will come in ten minutes"
+                "The technician will come in ten minutes",
+                "The technician will come in 10 minutes",
+                "The technician will be here in ten minutes",
+                "The technician will come within ten minutes"
               ],
               "tokens": [
                 "The",
@@ -2755,7 +2859,7 @@
               "choices": [
                 "broken",
                 "included",
-                "free"
+                "served"
               ]
             },
             {
@@ -2795,7 +2899,10 @@
               "text": "The light in the bathroom is broken.",
               "lang": "en",
               "answers": [
-                "Banyodaki ışık bozuk"
+                "Banyodaki ışık bozuk",
+                "Banyodaki lamba bozuk",
+                "Banyonun ışığı bozuk",
+                "Banyodaki ışık çalışmıyor"
               ],
               "tokens": [
                 "Banyodaki",
@@ -2846,7 +2953,11 @@
               "lang": "tr",
               "answers": [
                 "We'll check it right away",
-                "We will check it right away"
+                "We will check it right away",
+                "We'll check right away",
+                "We will check right away",
+                "We'll check it immediately",
+                "We will check it immediately"
               ],
               "tokens": [
                 "We'll",
@@ -2885,7 +2996,7 @@
               "speaker": "Deniz",
               "avatar": "👩‍💼",
               "text": "Good morning, Mr. Brown. What's the problem?",
-              "translation": "Günaydın Bay Brown. Sorun nedir?"
+              "translation": "Günaydın, Bay Brown. Sorun nedir?"
             },
             {
               "kind": "line",
@@ -2922,8 +3033,8 @@
               "kind": "line",
               "speaker": "Deniz",
               "avatar": "👩‍💼",
-              "text": "Let me check. Your driver is in traffic. He will be here in ten minutes.",
-              "translation": "Kontrol edeyim. Şoförünüz trafikte. On dakika içinde burada olacak."
+              "text": "Let me check. Your driver is stuck in traffic. He will be here in ten minutes.",
+              "translation": "Kontrol edeyim. Şoförünüz trafiğe takılmış. On dakika içinde burada olacak."
             },
             {
               "kind": "question",
@@ -2939,15 +3050,15 @@
               "kind": "line",
               "speaker": "Deniz",
               "avatar": "👩‍💼",
-              "text": "Please have a free coffee while you wait.",
-              "translation": "Beklerken lütfen ücretsiz bir kahve için."
+              "text": "Please have a coffee on us while you wait.",
+              "translation": "Beklerken bir kahve ikramımız olsun."
             },
             {
               "kind": "line",
               "speaker": "Mark",
               "avatar": "👨‍🦳",
               "text": "That's very kind. Thank you, Deniz.",
-              "translation": "Çok naziksiniz. Teşekkürler Deniz."
+              "translation": "Çok naziksiniz. Teşekkürler, Deniz."
             },
             {
               "kind": "line",
@@ -3009,7 +3120,11 @@
               "text": "Transferiniz biraz gecikecek.",
               "lang": "tr",
               "answers": [
-                "Your transfer will be a little late"
+                "Your transfer will be a little late",
+                "Your transfer will be a bit late",
+                "Your transfer will be slightly late",
+                "Your transfer will be a little delayed",
+                "Your transfer will be slightly delayed"
               ],
               "tokens": [
                 "Your",
@@ -3071,7 +3186,8 @@
               "text": "Your taxi is waiting outside.",
               "lang": "en",
               "answers": [
-                "Taksiniz dışarıda bekliyor"
+                "Taksiniz dışarıda bekliyor",
+                "Taksiniz dışarıda sizi bekliyor"
               ],
               "tokens": [
                 "Taksiniz",
@@ -3118,10 +3234,13 @@
             },
             {
               "type": "translate",
-              "text": "Bavullarınızı lobide tutabiliriz.",
+              "text": "Bavullarınızı lobide saklayabiliriz.",
               "lang": "tr",
               "answers": [
-                "We can keep your luggage in the lobby"
+                "We can keep your luggage in the lobby",
+                "We can store your luggage in the lobby",
+                "We can keep your bags in the lobby",
+                "We can store your bags in the lobby"
               ],
               "tokens": [
                 "We",
