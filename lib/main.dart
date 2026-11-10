@@ -9,8 +9,10 @@ import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
 import 'services/firebase/firebase_bootstrap.dart';
 import 'services/firebase/firebase_config.dart';
+import 'services/firebase/billing_backends_firebase.dart';
 import 'services/firebase/firebase_providers.dart';
 import 'services/firebase/progress_sync.dart';
+import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
 import 'services/growth/growth.dart';
 import 'theme.dart';
@@ -27,6 +29,7 @@ Future<void> main() async {
         firebaseReadyProvider.overrideWithValue(firebaseReady),
         // Analytics + Remote Config: production Firebase only (no-op otherwise).
         ...growthOverrides(enabled: firebaseReady && FirebaseMode.fromEnvironment == FirebaseMode.prod),
+        ...firebaseBillingOverrides,
       ],
       child: const LingoraApp(),
     ),
@@ -55,6 +58,7 @@ class LingoraApp extends ConsumerWidget {
     final palette = Palette.of(settings.mode, brightness);
     // Set before building so the first frame already uses the right colours.
     Brand.apply(palette);
+    ref.listen(examPackControllerProvider, (_, _) {});
     return MaterialApp(
       title: 'Lingora',
       debugShowCheckedModeBanner: false,

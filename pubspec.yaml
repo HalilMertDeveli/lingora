@@ -38,6 +38,7 @@ flutter:
   assets:
     - assets/courses/
     - assets/exams/
+    - assets/exam_packs/
     - assets/notes/
     - assets/pronunciation/
     - assets/reading/
