@@ -38,10 +38,10 @@ class OrgSection extends ConsumerWidget {
             AsyncLoading() => const TapCard(child: LinearProgressIndicator()),
             _ => TapCard(
               onTap: () => showJoinOrgDialog(context, ref),
-              child: const Row(
+              child: Row(
                 children: [
-                  Icon(Icons.apartment_rounded, color: Brand.primary, size: 30),
-                  SizedBox(width: 12),
+                  const IconBadge(icon: Icons.apartment_rounded, emoji: '🏢'),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +83,7 @@ class _OrgCard extends ConsumerWidget {
           TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Vazgeç')),
           TextButton(
             onPressed: () => Navigator.pop(c, true),
-            child: const Text('Ayrıl', style: TextStyle(color: Brand.error)),
+            child: Text('Ayrıl', style: TextStyle(color: Brand.error)),
           ),
         ],
       ),
@@ -106,10 +106,9 @@ class _OrgCard extends ConsumerWidget {
       children: [
         Row(
           children: [
-            Icon(
-              org.isSchool ? Icons.school_rounded : Icons.apartment_rounded,
-              color: Brand.primary,
-              size: 30,
+            IconBadge(
+              icon: org.isSchool ? Icons.school_rounded : Icons.apartment_rounded,
+              emoji: org.isSchool ? '🏫' : '🏢',
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -119,7 +118,7 @@ class _OrgCard extends ConsumerWidget {
                   Text(org.name, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
                   Text(
                     [org.role.label, if (org.classes.isNotEmpty) org.classes.join(', ')].join(' · '),
-                    style: const TextStyle(color: Brand.muted, fontSize: 13),
+                    style: TextStyle(color: Brand.muted, fontSize: 13),
                   ),
                 ],
               ),
@@ -134,7 +133,7 @@ class _OrgCard extends ConsumerWidget {
           style: const TextStyle(fontSize: 13),
         ),
         const SizedBox(height: 6),
-        const Text(
+        Text(
           'Kurumun yalnızca ders, XP, seri ve ödev durumunu görür; günlüğün, notların ve '
           'sohbetlerin sende kalır.',
           style: TextStyle(color: Brand.muted, fontSize: 12),
@@ -152,7 +151,8 @@ Future<void> showJoinOrgDialog(BuildContext context, WidgetRef ref) async {
   final name = await showDialog<String>(context: context, builder: (_) => const JoinOrgDialog());
   if (name == null || !context.mounted) return;
   ref.invalidate(myOrgProvider);
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$name kurumuna katıldın! 🎉')));
+  ScaffoldMessenger.of(context)
+      .showSnackBar(SnackBar(content: Text('$name kurumuna katıldın! ${kidEmoji('🎉')}'.trim())));
 }
 
 /// Code + name form. Pops with the org's name once joined.
@@ -234,14 +234,14 @@ class _JoinOrgDialogState extends ConsumerState<JoinOrgDialog> {
             onSubmitted: (_) => _submit(),
           ),
           const SizedBox(height: 8),
-          const Text(
+          Text(
             'Kurumun yalnızca ders sayını, XP, seri ve ödev durumunu görür. '
             'Günlüğün, notların ve sohbetlerin paylaşılmaz.',
             style: TextStyle(color: Brand.muted, fontSize: 12),
           ),
           if (_error != null) ...[
             const SizedBox(height: 10),
-            Text(_error!, style: const TextStyle(color: Brand.error)),
+            Text(_error!, style: TextStyle(color: Brand.error)),
           ],
         ],
       ),
@@ -284,7 +284,7 @@ class OrgAssignmentsCard extends ConsumerWidget {
             Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const AssignmentsScreen())),
         child: Row(
           children: [
-            const Text('📋', style: TextStyle(fontSize: 26)),
+            IconBadge(icon: Icons.assignment_outlined, emoji: '📋', color: late > 0 ? Brand.error : null),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
@@ -303,7 +303,7 @@ class OrgAssignmentsCard extends ConsumerWidget {
                 ],
               ),
             ),
-            const Icon(Icons.chevron_right, color: Brand.muted),
+            Icon(Icons.chevron_right, color: Brand.muted),
           ],
         ),
       ),
@@ -326,10 +326,10 @@ class AssignmentsScreen extends ConsumerWidget {
         onRefresh: () => ref.refresh(myOrgProvider.future),
         child: list.isEmpty
             ? ListView(
-                children: const [
+                children: [
                   Padding(
-                    padding: EdgeInsets.all(32),
-                    child: Text('Şu an ödevin yok. 🎉', textAlign: TextAlign.center),
+                    padding: const EdgeInsets.all(32),
+                    child: Text('Şu an ödevin yok. ${kidEmoji('🎉')}'.trim(), textAlign: TextAlign.center),
                   ),
                 ],
               )
@@ -368,7 +368,7 @@ class AssignmentsScreen extends ConsumerWidget {
                             ],
                           ),
                         ),
-                        const Icon(Icons.play_arrow_rounded, color: Brand.primary),
+                        Icon(Icons.play_arrow_rounded, color: Brand.primary),
                       ],
                     ),
                   );

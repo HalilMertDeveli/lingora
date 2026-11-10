@@ -154,7 +154,7 @@ void main() {
     await tester.tap(find.text('Katıl'));
     await tester.pumpAndSettle();
     expect(service.joins.single, ('K7QM3XPA', 'Ali Yılmaz'));
-    expect(find.text('Deniz Otel kurumuna katıldın! 🎉'), findsOneWidget);
+    expect(find.text('Deniz Otel kurumuna katıldın!'), findsOneWidget);
     expect(find.text('Deniz Otel'), findsOneWidget);
     expect(find.text('Üye · Resepsiyon'), findsOneWidget);
     expect(find.textContaining('31.01.2027'), findsOneWidget);
