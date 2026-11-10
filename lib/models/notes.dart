@@ -85,17 +85,9 @@ class GrammarTopic {
 }
 
 class NotesBundle {
-  const NotesBundle({
-    required this.words,
-    required this.topics,
-    required this.goals,
-    required this.diaryPrompts,
-  });
+  const NotesBundle({required this.words, required this.topics, required this.diaryPrompts});
   final List<NoteWord> words;
   final List<GrammarTopic> topics;
-
-  /// Personal goals from the notes (e.g. finishing the B1/B2 courses).
-  final List<String> goals;
 
   /// Writing prompts for the diary.
   final List<String> diaryPrompts;

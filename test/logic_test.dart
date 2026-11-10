@@ -173,7 +173,6 @@ void main() {
         expect(w.en.trim(), isNotEmpty, reason: w.id);
         expect(w.tr.trim(), isNotEmpty, reason: w.id);
       }
-      expect(meta['goals'] as List, isNotEmpty);
       expect(meta['diaryPrompts'] as List, isNotEmpty);
     });
 
@@ -388,7 +387,7 @@ void main() {
       expect(Progress.fromJson(p().toJson()).trackId, 'yds');
     });
 
-    test('word reviews move between boxes; diary and goals persist', () {
+    test('word reviews move between boxes; diary persists', () {
       n().reviewWord('w1', known: true);
       n().reviewWord('w1', known: true);
       expect(p().wordBox['w1'], 2);
@@ -396,10 +395,8 @@ void main() {
       n().reviewWord('w1', known: false);
       expect(p().wordBox['w1'], 0);
       n().saveDiary('2026-11-10', 'Today I studied.');
-      n().toggleGoal('g');
       final restored = Progress.fromJson(p().toJson());
       expect(restored.diary['2026-11-10'], 'Today I studied.');
-      expect(restored.goalsDone, ['g']);
     });
 
     test('mistakes are remembered, capped and cleared', () {

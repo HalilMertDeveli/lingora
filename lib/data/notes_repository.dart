@@ -18,7 +18,6 @@ Future<NotesBundle> loadNotes(AssetBundle bundle) async {
   return NotesBundle(
     words: words,
     topics: topics,
-    goals: (meta['goals'] as List).cast<String>(),
     diaryPrompts: (meta['diaryPrompts'] as List).cast<String>(),
   );
 }

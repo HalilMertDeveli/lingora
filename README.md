@@ -16,8 +16,7 @@ tasarım projeye özgüdür.
     Türkçe karşılaştırma, notundan alıntı, yaygın hatalar, mini test),
   - kişisel sözlük (aralıklı tekrar kartları ve kelime testi),
   - gramer notları (kendi örneklerinden otomatik alıştırma),
-  - İngilizce günlük,
-  - hedefler.
+  - İngilizce günlük.
 - **Konuş:** Rol yapma sohbetleri. Hatalar Türkçe açıklamayla düzeltilir. Sunucu bağlı değilken
   demo modunda çalışır.
 - **Cezasız öğrenme:** Can sistemi yok. Yanlış cevaplar tekrar sorulur ve "Hatalarını çalış"

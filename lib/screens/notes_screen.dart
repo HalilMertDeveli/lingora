@@ -50,7 +50,6 @@ class _NotesHome extends ConsumerWidget {
     final due = dueWordCount(notes.words, p, now);
     final learned = learnedWordCount(p);
     final wroteToday = p.diary.containsKey(dayKey(now));
-    final goalsDone = notes.goals.where(p.goalsDone.contains).length;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
@@ -141,23 +140,6 @@ class _NotesHome extends ConsumerWidget {
           subtitle: wroteToday ? 'Bugünkü günlüğünü yazdın 👏' : 'Bugün İngilizce birkaç cümle yaz',
           onTap: () => _push(context, DiaryScreen(prompts: notes.diaryPrompts)),
         ),
-        const SizedBox(height: 10),
-        Text('Hedeflerim ($goalsDone/${notes.goals.length})', style: Theme.of(context).textTheme.titleLarge),
-        const SizedBox(height: 8),
-        for (final g in notes.goals)
-          CheckboxListTile(
-            value: p.goalsDone.contains(g),
-            onChanged: (_) => ref.read(progressProvider.notifier).toggleGoal(g),
-            title: Text(
-              g,
-              style: TextStyle(
-                decoration: p.goalsDone.contains(g) ? TextDecoration.lineThrough : null,
-                color: p.goalsDone.contains(g) ? Brand.muted : Brand.ink,
-              ),
-            ),
-            controlAffinity: ListTileControlAffinity.leading,
-            contentPadding: EdgeInsets.zero,
-          ),
       ],
     );
   }

@@ -41,7 +41,6 @@ class Progress {
     this.wordBox = const {},
     this.wordDue = const {},
     this.diary = const {},
-    this.goalsDone = const [],
   });
 
   /// Selected course or exam (see catalog.dart).
@@ -58,9 +57,6 @@ class Progress {
 
   /// English diary: day key → text.
   final Map<String, String> diary;
-
-  /// Personal goals ticked off.
-  final List<String> goalsDone;
 
   /// Exercises answered wrong, as "nodeId#index", oldest first.
   final List<String> mistakes;
@@ -150,7 +146,6 @@ class Progress {
     Map<String, int>? wordBox,
     Map<String, String>? wordDue,
     Map<String, String>? diary,
-    List<String>? goalsDone,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -175,7 +170,6 @@ class Progress {
     wordBox: wordBox ?? this.wordBox,
     wordDue: wordDue ?? this.wordDue,
     diary: diary ?? this.diary,
-    goalsDone: goalsDone ?? this.goalsDone,
   );
 
   Map<String, dynamic> toJson() => {
@@ -202,7 +196,6 @@ class Progress {
     'wordBox': wordBox,
     'wordDue': wordDue,
     'diary': diary,
-    'goalsDone': goalsDone,
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -231,7 +224,6 @@ class Progress {
     wordBox: (j['wordBox'] as Map?)?.cast<String, int>() ?? const {},
     wordDue: (j['wordDue'] as Map?)?.cast<String, String>() ?? const {},
     diary: (j['diary'] as Map?)?.cast<String, String>() ?? const {},
-    goalsDone: (j['goalsDone'] as List?)?.cast<String>() ?? const [],
   );
 }
 
@@ -431,12 +423,6 @@ class ProgressNotifier extends Notifier<Progress> {
     final diary = {...state.diary};
     text.trim().isEmpty ? diary.remove(day) : diary[day] = text.trim();
     _save(state.copyWith(diary: diary));
-  }
-
-  void toggleGoal(String goal) {
-    final done = [...state.goalsDone];
-    done.contains(goal) ? done.remove(goal) : done.add(goal);
-    _save(state.copyWith(goalsDone: done));
   }
 
   void dismissLeagueResult() => _save(state.copyWith(clearLeagueResult: true));

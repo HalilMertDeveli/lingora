@@ -1,12 +1,4 @@
 {
-  "goals": [
-    "Türkçe dil bilgisi kurallarını öğren ve İngilizceye nasıl uygulandığını çalış",
-    "BTK Akademi A2 İngilizce kursunu bitir",
-    "BTK Akademi B1 İngilizce kursunu gerçekten bitir",
-    "BTK Akademi B2 İngilizce kursuna başla ve bitir",
-    "English Book'taki tüm zamanları (tenses) tekrar et",
-    "Her gün en az 5 cümlelik bir İngilizce günlük yaz"
-  ],
   "diaryPrompts": [
     "What did you do today? Write at least five sentences.",
     "What are your plans for tonight? (Örnek: I will be helping a customer remotely at 8 pm.)",
