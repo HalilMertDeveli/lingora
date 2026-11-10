@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Format, analyze, test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2.23.0
+        with:
+          channel: stable
+          flutter-version: 3.47.9
+          # Flutter SDK'yı ve pub önbelleğini (pubspec.lock'a göre) önbellekler.
+          cache: true
+
+      - run: flutter --version
+      - run: flutter pub get
+      - name: Format check
+        run: dart format --set-exit-if-changed -l 110 lib test
+      - name: Analyze
+        run: flutter analyze
+      - name: Test
+        run: flutter test

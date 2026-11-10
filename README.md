@@ -1,5 +1,8 @@
 # Lingora
 
+[![CI](https://github.com/HalilMertDeveli/lingora/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/HalilMertDeveli/lingora/actions/workflows/ci.yml)
+[![Release APK](https://github.com/HalilMertDeveli/lingora/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/HalilMertDeveli/lingora/actions/workflows/release.yml)
+
 Türkçe konuşanlar için İngilizce öğrenme uygulaması (Flutter). İçerik, karakterler, maskot ve
 tasarım projeye özgüdür.
 
@@ -62,3 +65,27 @@ node tool/import_notes.js <dönüştürülmüş-notlar-klasörü>
 - `lib/ui`: animasyonlar ve maskot
 - `assets/courses`, `assets/exams`, `assets/notes`: içerik
 - `test/`: mantık ve arayüz testleri (içerik doğrulaması dahil)
+
+## Sürüm ve imzalama
+
+- Her `main` push'unda **Release APK** iş akışı bir release APK derler ve Actions sayfasında
+  `lingora-apk` artifact'ı olarak yükler.
+- `v*` etiketi gönderildiğinde (ör. `git tag v0.2.0 && git push origin v0.2.0`) aynı APK ile bir
+  GitHub Release oluşturulur.
+
+Şu an APK **debug anahtarıyla** imzalanır (Play Store'a yüklenemez). Gerçek bir anahtar eklemek için:
+
+1. Bir upload keystore oluştur (keystore dosyasını ve şifreleri asla repoya koyma):
+
+   ```bash
+   keytool -genkey -v -keystore upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+   ```
+
+2. Dosyayı base64'e çevir: `base64 -w0 upload-keystore.jks` (Windows PowerShell:
+   `[Convert]::ToBase64String([IO.File]::ReadAllBytes("upload-keystore.jks"))`).
+3. GitHub'da **Settings → Secrets and variables → Actions** altında şu repository secret'larını ekle:
+   `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`.
+
+İş akışı secret'ları görünce `android/key.properties` ve `android/app/upload-keystore.jks` dosyalarını
+üretir; `android/app/build.gradle.kts` bu dosya varsa gerçek anahtarı, yoksa debug anahtarını kullanır.
+Yerelde imzalı derleme için aynı `key.properties` dosyasını elle oluşturabilirsin (git'e eklenmez).
