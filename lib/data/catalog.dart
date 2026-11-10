@@ -1,6 +1,6 @@
 /// Everything the user can study. Courses use the learning path; exams use
 /// question banks with topic practice and mini mock exams.
-enum TrackKind { course, exam, notes }
+enum TrackKind { course, exam, notes, vocab }
 
 class Track {
   const Track({
@@ -51,6 +51,19 @@ const courseCatalog = [
   ),
 ];
 
+/// Vocabulary tracks: knowledge map, triage and spaced review
+/// (lib/screens/vocab/).
+const vocabCatalog = [
+  Track(
+    id: 'pro_software',
+    kind: TrackKind.vocab,
+    title: 'Yazılımcı İngilizcesi',
+    subtitle: 'Commit, PR, stand-up, mülakat kelimeleri',
+    emoji: '💻',
+    badge: 'MESLEK',
+  ),
+];
+
 const examCatalog = [
   Track(
     id: 'yds',
@@ -80,6 +93,6 @@ const notesTrack = Track(
   badge: 'KİŞİSEL',
 );
 
-const allTracks = [...courseCatalog, ...examCatalog, notesTrack];
+const allTracks = [...courseCatalog, ...vocabCatalog, ...examCatalog, notesTrack];
 
 Track trackById(String id) => allTracks.firstWhere((t) => t.id == id, orElse: () => allTracks.first);
