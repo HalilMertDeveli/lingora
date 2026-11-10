@@ -21,7 +21,7 @@ class _FillBlankExerciseState extends State<FillBlankExercise> {
   Widget build(BuildContext context) {
     final ex = widget.ex;
     final parts = ex.text!.split('___');
-    const base = TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: Brand.ink);
+    final base = TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: Brand.ink);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -33,7 +33,7 @@ class _FillBlankExerciseState extends State<FillBlankExercise> {
               TextSpan(text: parts.first),
               TextSpan(
                 text: _picked ?? ' ______ ',
-                style: const TextStyle(
+                style: TextStyle(
                   color: Brand.primary,
                   fontWeight: FontWeight.w800,
                   decoration: TextDecoration.underline,
@@ -46,7 +46,7 @@ class _FillBlankExerciseState extends State<FillBlankExercise> {
         ),
         if (ex.translation != null) ...[
           const SizedBox(height: 8),
-          Text(ex.translation!, style: const TextStyle(color: Brand.muted, fontSize: 16)),
+          Text(ex.translation!, style: TextStyle(color: Brand.muted, fontSize: 16)),
         ],
         const SizedBox(height: 32),
         for (final w in ex.wordChoices)

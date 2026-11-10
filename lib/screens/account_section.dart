@@ -15,7 +15,7 @@ class AccountSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final sync = ref.watch(progressSyncProvider);
     if (sync.state == SyncState.off) {
-      return const TapCard(
+      return TapCard(
         child: _Line(
           icon: Icons.phone_android,
           color: Brand.muted,
@@ -106,7 +106,7 @@ class _Line extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(title, style: const TextStyle(fontWeight: FontWeight.w800)),
-            if (subtitle != null) Text(subtitle!, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+            if (subtitle != null) Text(subtitle!, style: TextStyle(color: Brand.muted, fontSize: 13)),
           ],
         ),
       ),
@@ -173,7 +173,7 @@ class _EmailDialogState extends State<_EmailDialog> {
         if (_error != null)
           Padding(
             padding: const EdgeInsets.only(top: 12),
-            child: Text(_error!, style: const TextStyle(color: Brand.error)),
+            child: Text(_error!, style: TextStyle(color: Brand.error)),
           ),
       ],
     ),

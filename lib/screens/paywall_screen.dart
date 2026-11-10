@@ -74,7 +74,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       if (!now) return;
       ref.read(premiumControllerProvider.notifier).acknowledge();
       ScaffoldMessenger.maybeOf(context)
-          ?.showSnackBar(const SnackBar(content: Text('Premium açıldı. İyi çalışmalar! 🎉')));
+          ?.showSnackBar(const SnackBar(content: Text('Premium açıldı. İyi çalışmalar!')));
       Navigator.of(context).maybePop();
     });
     final s = ref.watch(premiumControllerProvider);
@@ -116,7 +116,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              premium ? 'Premium aktif 🎉' : 'Daha fazla konuş, daha çok deneme çöz',
+              premium ? 'Premium aktif' : 'Daha fazla konuş, daha çok deneme çöz',
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 4),
@@ -124,7 +124,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               widget.feature == null || premium
                   ? 'Temel öğrenme her zaman ücretsiz. Premium, maliyeti yüksek ekstraları açar.'
                   : '“${widget.feature!.title}” Premium ile açılır. Temel öğrenme her zaman ücretsiz.',
-              style: const TextStyle(color: Brand.muted),
+              style: TextStyle(color: Brand.muted),
             ),
           ],
         ),
@@ -213,7 +213,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
         ),
       ),
       const SizedBox(height: 4),
-      const Text(
+      Text(
         'Abonelik, iptal edilmedikçe her dönem sonunda Google Play hesabından otomatik yenilenir. '
         'İstediğin zaman Google Play > Abonelikler bölümünden iptal edebilirsin; iptal edersen '
         'ödediğin dönemin sonuna kadar Premium kalır. Fiyatlara vergiler dahildir.',
@@ -234,14 +234,14 @@ class _FeatureRow extends StatelessWidget {
     margin: const EdgeInsets.only(bottom: 8),
     padding: const EdgeInsets.all(12),
     decoration: BoxDecoration(
-      color: highlighted ? Brand.primary.withValues(alpha: 0.08) : Colors.white,
+      color: highlighted ? Brand.primary.withValues(alpha: 0.08) : Brand.card,
       border: Border.all(color: highlighted ? Brand.primary : Brand.line, width: 2),
       borderRadius: BorderRadius.circular(14),
     ),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(feature.emoji, style: const TextStyle(fontSize: 26)),
+        Glyph(emoji: feature.emoji, icon: Icons.check_circle_outline_rounded, size: 26),
         const SizedBox(width: 12),
         Expanded(
           child: Column(
@@ -249,7 +249,7 @@ class _FeatureRow extends StatelessWidget {
             children: [
               Text(feature.title, style: const TextStyle(fontWeight: FontWeight.w800)),
               const SizedBox(height: 2),
-              Text(feature.description, style: const TextStyle(color: Brand.muted, fontSize: 13)),
+              Text(feature.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
             ],
           ),
         ),
@@ -274,13 +274,13 @@ class _FreeBox extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(Icons.check_rounded, size: 18, color: Brand.success),
+                Icon(Icons.check_rounded, size: 18, color: Brand.success),
                 const SizedBox(width: 6),
                 Expanded(child: Text(item, style: const TextStyle(fontSize: 13))),
               ],
             ),
           ),
-        const Text(
+        Text(
           'Can/kalp yok, ceza yok: hata yapmak öğrenmenin parçası.',
           style: TextStyle(color: Brand.muted, fontSize: 12),
         ),
@@ -343,7 +343,7 @@ class _PlanCard extends StatelessWidget {
                     ],
                   ],
                 ),
-                Text('${product.price} / ${plan.period}', style: const TextStyle(color: Brand.muted)),
+                Text('${product.price} / ${plan.period}', style: TextStyle(color: Brand.muted)),
               ],
             ),
           ),
@@ -354,16 +354,16 @@ class _PlanCard extends StatelessWidget {
 }
 
 class _Notice extends StatelessWidget {
-  const _Notice({required this.icon, required this.text, this.color = const Color(0xFFFFF4DC)});
+  const _Notice({required this.icon, required this.text, this.color});
   final IconData icon;
   final String text;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) => Container(
     margin: const EdgeInsets.only(bottom: 10),
     padding: const EdgeInsets.all(12),
-    decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(14)),
+    decoration: BoxDecoration(color: color ?? Brand.accentBg, borderRadius: BorderRadius.circular(14)),
     child: Row(
       children: [
         Icon(icon, color: Brand.ink),

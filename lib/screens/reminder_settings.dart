@@ -49,7 +49,7 @@ class ReminderPromptCard extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               children: [
                 Icon(Icons.notifications_active_rounded, color: Brand.primary, size: 30),
                 SizedBox(width: 10),
@@ -65,7 +65,7 @@ class ReminderPromptCard extends ConsumerWidget {
             Text(
               'Saat ${formatMinutes(p.reminderMinutes)}\'da, o gün ders yapmadıysan kısa bir hatırlatma gönderirim. '
               'Saati profilden değiştirebilirsin.',
-              style: const TextStyle(color: Brand.muted),
+              style: TextStyle(color: Brand.muted),
             ),
             const SizedBox(height: 12),
             Row(
@@ -107,7 +107,7 @@ class ReminderSettings extends ConsumerWidget {
       child: Column(
         children: [
           SwitchListTile(
-            secondary: const Icon(Icons.notifications_rounded, color: Brand.primary),
+            secondary: Icon(Icons.notifications_rounded, color: Brand.primary),
             title: const Text('Günlük hatırlatma', style: TextStyle(fontWeight: FontWeight.w700)),
             subtitle: const Text('O gün ders yapmadıysan'),
             value: on,
@@ -115,11 +115,11 @@ class ReminderSettings extends ConsumerWidget {
           ),
           ListTile(
             enabled: on,
-            leading: const Icon(Icons.schedule_rounded, color: Brand.primary),
+            leading: Icon(Icons.schedule_rounded, color: Brand.primary),
             title: const Text('Saat', style: TextStyle(fontWeight: FontWeight.w700)),
             trailing: Text(
               formatMinutes(p.reminderMinutes),
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Brand.primary),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Brand.primary),
             ),
             onTap: () => pickReminderTime(context, ref),
           ),

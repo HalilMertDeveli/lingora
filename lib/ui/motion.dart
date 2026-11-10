@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../theme.dart';
+
 /// Looping animations (pulses, idle mascot) are skipped when the system asks
 /// for reduced motion. Tests turn this on so `pumpAndSettle` can finish.
 bool loopsEnabled(BuildContext context) => !MediaQuery.disableAnimationsOf(context);
@@ -19,21 +21,42 @@ Color edgeOf(Color c) {
   return h.withLightness((h.lightness - 0.14).clamp(0.0, 1.0)).toColor();
 }
 
-/// Chunky button with a darker bottom edge that sinks when pressed.
+/// Turkish-aware sentence case for all-caps labels: "ŞİMDİLİK ÇIK" →
+/// "Şimdilik çık". Labels that aren't all caps are returned unchanged.
+String sentenceCase(String s) {
+  if (s.isEmpty || s != s.toUpperCase() || s == s.toLowerCase()) return s;
+  // Loanwords written with a dotless capital I (PREMIUM) keep their English i.
+  String lower(String x) =>
+      x.startsWith('PREMIUM') ? x.toLowerCase() : x.replaceAll('I', 'ı').replaceAll('İ', 'i').toLowerCase();
+  // Keep short acronyms such as XP, LGS, YDS.
+  final words = s
+      .split(' ')
+      .map((w) => RegExp(r'^(XP|LGS|YDS|YÖKDİL|A1|A2|B1|B2|C1)$').hasMatch(w) ? w : lower(w));
+  final out = words.join(' ');
+  final first = switch (out[0]) {
+    'i' => 'İ',
+    'ı' => 'I',
+    final c => c.toUpperCase(),
+  };
+  return first + out.substring(1);
+}
+
+/// Primary action button. Kid mode: chunky button with a darker bottom edge
+/// that sinks when pressed. Adult mode: flat, refined button in sentence case.
 class PressableButton extends StatefulWidget {
   const PressableButton({
     super.key,
     required this.label,
     required this.onPressed,
     this.color,
-    this.foreground = Colors.white,
+    this.foreground,
     this.outlined = false,
   });
 
   final String label;
   final VoidCallback? onPressed;
   final Color? color;
-  final Color foreground;
+  final Color? foreground;
   final bool outlined;
 
   @override
@@ -50,14 +73,78 @@ class _PressableButtonState extends State<PressableButton> {
 
   @override
   Widget build(BuildContext context) {
+    final lt = context.lingora;
+    final p = lt.palette;
     final enabled = widget.onPressed != null;
-    final base = widget.color ?? Theme.of(context).colorScheme.primary;
-    final face = widget.outlined ? Colors.white : (enabled ? base : const Color(0xFFE5E4EC));
-    final edge = widget.outlined
-        ? const Color(0xFFE0DEE8)
-        : (enabled ? edgeOf(base) : const Color(0xFFD3D1DC));
-    final fg = widget.outlined ? base : (enabled ? widget.foreground : const Color(0xFFA09DAE));
-    final offset = _down ? _depth : 0.0;
+    final base = widget.color ?? p.primary;
+    final onBase =
+        widget.foreground ?? (widget.color == null ? p.onPrimary : (lt.isKid ? Colors.white : onColor(base)));
+    final disabledFace = p.isDark ? p.surface : p.line;
+    final disabledFg = p.muted;
+    final kid = lt.isKid;
+
+    final Widget body;
+    if (kid) {
+      final face = widget.outlined ? p.card : (enabled ? base : disabledFace);
+      final edge = widget.outlined
+          ? p.edge
+          : (enabled ? edgeOf(base) : Color.alphaBlend(p.edge, disabledFace));
+      final fg = widget.outlined ? base : (enabled ? onBase : disabledFg);
+      final offset = _down ? _depth : 0.0;
+      body = SizedBox(
+        height: 54 + _depth,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              top: _depth,
+              child: DecoratedBox(
+                decoration: BoxDecoration(color: edge, borderRadius: BorderRadius.circular(Radii.lg)),
+              ),
+            ),
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 70),
+              left: 0,
+              right: 0,
+              top: offset,
+              height: 54,
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: face,
+                  borderRadius: BorderRadius.circular(Radii.lg),
+                  border: widget.outlined ? Border.all(color: edge, width: 2) : null,
+                ),
+                child: Text(
+                  widget.label,
+                  style: TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w900, letterSpacing: 0.6),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    } else {
+      final face = widget.outlined
+          ? (_down ? p.surface : Colors.transparent)
+          : (enabled
+                ? (_down ? Color.alphaBlend(Colors.black.withValues(alpha: 0.12), base) : base)
+                : disabledFace);
+      final fg = widget.outlined ? (enabled ? p.ink : disabledFg) : (enabled ? onBase : disabledFg);
+      body = AnimatedContainer(
+        duration: AppDurations.fast,
+        height: 52,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: face,
+          borderRadius: BorderRadius.circular(Radii.md),
+          border: widget.outlined ? Border.all(color: p.line) : null,
+        ),
+        child: Text(
+          sentenceCase(widget.label),
+          style: TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.1),
+        ),
+      );
+    }
 
     return Semantics(
       button: true,
@@ -73,43 +160,7 @@ class _PressableButtonState extends State<PressableButton> {
                 widget.onPressed!();
               }
             : null,
-        child: SizedBox(
-          height: 54 + _depth,
-          child: Stack(
-            children: [
-              Positioned.fill(
-                top: _depth,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(color: edge, borderRadius: BorderRadius.circular(16)),
-                ),
-              ),
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 70),
-                left: 0,
-                right: 0,
-                top: offset,
-                height: 54,
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: face,
-                    borderRadius: BorderRadius.circular(16),
-                    border: widget.outlined ? Border.all(color: edge, width: 2) : null,
-                  ),
-                  child: Text(
-                    widget.label,
-                    style: TextStyle(
-                      color: fg,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 0.6,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        child: body,
       ),
     );
   }
@@ -146,7 +197,7 @@ class _ShakeState extends State<Shake> with SingleTickerProviderStateMixin {
     animation: _c,
     builder: (_, child) {
       final t = _c.value;
-      final dx = sin(t * pi * 6) * widget.distance * (1 - t);
+      final dx = sin(t * pi * 6) * widget.distance * (context.isKid ? 1 : 0.5) * (1 - t);
       return Transform.translate(offset: Offset(dx, 0), child: child);
     },
     child: widget.child,
@@ -167,13 +218,20 @@ class PopIn extends StatefulWidget {
 class _PopInState extends State<PopIn> with SingleTickerProviderStateMixin {
   late final _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 420));
 
+  bool _started = false;
+
   @override
-  void initState() {
-    super.initState();
-    if (widget.delay == Duration.zero) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_started) return;
+    _started = true;
+    // Adult mode: a quick fade + short slide, with half the stagger.
+    final delay = context.isKid ? widget.delay : widget.delay ~/ 2;
+    if (!context.isKid) _c.duration = const Duration(milliseconds: 260);
+    if (delay == Duration.zero) {
       _c.forward();
     } else {
-      Future.delayed(widget.delay, () {
+      Future.delayed(delay, () {
         if (mounted) _c.forward();
       });
     }
@@ -187,6 +245,17 @@ class _PopInState extends State<PopIn> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    if (!context.isKid) {
+      final t = CurvedAnimation(parent: _c, curve: Curves.easeOutCubic);
+      return FadeTransition(
+        opacity: t,
+        child: AnimatedBuilder(
+          animation: t,
+          builder: (_, child) => Transform.translate(offset: Offset(0, 8 * (1 - t.value)), child: child),
+          child: widget.child,
+        ),
+      );
+    }
     final scale = CurvedAnimation(parent: _c, curve: Curves.elasticOut);
     final fade = CurvedAnimation(parent: _c, curve: const Interval(0, 0.4));
     return FadeTransition(
@@ -228,7 +297,7 @@ class _PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
   }
 
   void _sync() {
-    final run = widget.enabled && loopsEnabled(context);
+    final run = widget.enabled && loopsEnabled(context) && context.isKid;
     if (run && !_c.isAnimating) {
       _c.repeat(reverse: true);
     } else if (!run && _c.isAnimating) {
@@ -321,7 +390,16 @@ class _ConfettiState extends State<Confetti> with SingleTickerProviderStateMixin
         ),
       );
     }
-    if (widget.active) _c.forward();
+  }
+
+  bool _started = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Confetti is a Çocuk modu treat; adult mode celebrates quietly.
+    if (!_started && widget.active && context.isKid) _c.forward();
+    _started = true;
   }
 
   @override
@@ -334,16 +412,17 @@ class _ConfettiState extends State<Confetti> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) => Stack(
     children: [
       widget.child,
-      Positioned.fill(
-        child: IgnorePointer(
-          child: AnimatedBuilder(
-            animation: _c,
-            builder: (_, _) => _c.isAnimating
-                ? CustomPaint(painter: _ConfettiPainter(_pieces, _c.value))
-                : const SizedBox.shrink(),
+      if (context.isKid)
+        Positioned.fill(
+          child: IgnorePointer(
+            child: AnimatedBuilder(
+              animation: _c,
+              builder: (_, _) => _c.isAnimating
+                  ? CustomPaint(painter: _ConfettiPainter(_pieces, _c.value))
+                  : const SizedBox.shrink(),
+            ),
           ),
         ),
-      ),
     ],
   );
 }
@@ -396,7 +475,8 @@ class _ConfettiPainter extends CustomPainter {
   bool shouldRepaint(_ConfettiPainter old) => old.t != t;
 }
 
-/// Progress bar with rounded fill, a glossy highlight and smooth growth.
+/// Progress bar. Kid mode: thick rounded fill with a glossy highlight and a
+/// springy growth. Adult mode: thin flat bar (at most 8 px) that eases in.
 class GlossyProgress extends StatelessWidget {
   const GlossyProgress({super.key, required this.value, required this.color, this.height = 16});
   final double value;
@@ -404,13 +484,41 @@ class GlossyProgress extends StatelessWidget {
   final double height;
 
   @override
-  Widget build(BuildContext context) => TweenAnimationBuilder<double>(
+  Widget build(BuildContext context) {
+    final p = context.palette;
+    if (!context.isKid) {
+      final h = height.clamp(4.0, 8.0);
+      return TweenAnimationBuilder<double>(
+        tween: Tween(end: value.clamp(0.0, 1.0)),
+        duration: const Duration(milliseconds: 320),
+        curve: Curves.easeOutCubic,
+        builder: (_, v, _) => Container(
+          height: h,
+          decoration: BoxDecoration(
+            color: p.isDark ? p.surface : p.line,
+            borderRadius: BorderRadius.circular(h),
+          ),
+          alignment: Alignment.centerLeft,
+          child: FractionallySizedBox(
+            widthFactor: v.clamp(0.0, 1.0),
+            heightFactor: 1,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(h)),
+            ),
+          ),
+        ),
+      );
+    }
+    return _kid(p);
+  }
+
+  Widget _kid(Palette p) => TweenAnimationBuilder<double>(
     tween: Tween(end: value.clamp(0.0, 1.0)),
     duration: const Duration(milliseconds: 450),
     curve: Curves.easeOutBack,
     builder: (_, v, _) => Container(
       height: height,
-      decoration: BoxDecoration(color: const Color(0xFFE7E5EF), borderRadius: BorderRadius.circular(height)),
+      decoration: BoxDecoration(color: p.line, borderRadius: BorderRadius.circular(height)),
       alignment: Alignment.centerLeft,
       child: FractionallySizedBox(
         widthFactor: v.clamp(0.0, 1.0),

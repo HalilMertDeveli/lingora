@@ -189,8 +189,8 @@ void main() {
 
       await tester.tap(find.byTooltip('Dinlemeyi kapat'));
       await tester.pumpAndSettle();
-      await tester.scrollUntilVisible(find.text('SORULARA GEÇ'), 300);
-      await tester.tap(find.text('SORULARA GEÇ'));
+      await tester.scrollUntilVisible(find.text('Sorulara geç'), 300);
+      await tester.tap(find.text('Sorulara geç'));
       await tester.pumpAndSettle();
 
       final story = _stories.first;
@@ -204,8 +204,8 @@ void main() {
         }
         await tester.tap(find.text(q.options[q.answer]));
         await tester.pumpAndSettle();
-        expect(find.text('💡 ${q.explain}'), findsOneWidget);
-        await tester.tap(find.text(i == story.questions.length - 1 ? 'BİTİR' : 'DEVAM'));
+        expect(find.text(q.explain), findsOneWidget);
+        await tester.tap(find.text(i == story.questions.length - 1 ? 'Bitir' : 'Devam'));
         await tester.pumpAndSettle();
       }
 

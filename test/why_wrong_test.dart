@@ -66,7 +66,7 @@ Future<void> _build(WidgetTester tester, List<String> words) async {
     await tester.tap(find.text(w));
     await tester.pump();
   }
-  await tester.tap(find.text('KONTROL ET'));
+  await tester.tap(find.text('Kontrol et'));
   await tester.pumpAndSettle();
 }
 
@@ -149,7 +149,7 @@ void main() {
     expect(find.text(TrErrorCategory.toBe.label), findsOneWidget);
     expect(find.text(TrErrorCategory.spelling.label), findsNothing); // top 3 only
     expect(find.text('5 kez'), findsOneWidget);
-    expect(find.text('💡 İpucu: ${TrErrorCategory.article.tip}'), findsOneWidget);
+    expect(find.text('İpucu: ${TrErrorCategory.article.tip}'), findsOneWidget);
   });
 
   testWidgets('profile explains the empty mistakes card', (tester) async {
