@@ -167,22 +167,27 @@ function grantOrgPremium(
   orgId: string,
   planExpiresAt: Timestamp,
 ): void {
-  // Keep a longer store subscription; the org grant would only shorten it.
+  // Keep a longer Premium from another source (store, family); the org grant would only shorten it.
   if (current.exists && current.get("active") === true && current.get("source") !== "org") {
     const exp = current.get("expiresAt") as Timestamp | undefined;
     if (exp && exp.toMillis() >= planExpiresAt.toMillis()) return;
   }
-  tx.set(ref, {
-    active: true,
-    premium: true,
-    status: "active",
-    productId: "org",
-    platform: "org",
-    expiresAt: planExpiresAt,
-    source: "org",
-    orgId,
-    updatedAt: FieldValue.serverTimestamp(),
-  });
+  // Merge, never a full set: other writers' fields (exam `packs`, `family`) must survive.
+  tx.set(
+    ref,
+    {
+      active: true,
+      premium: true,
+      status: "active",
+      productId: "org",
+      platform: "org",
+      expiresAt: planExpiresAt,
+      source: "org",
+      orgId,
+      updatedAt: FieldValue.serverTimestamp(),
+    },
+    { merge: true },
+  );
 }
 
 function revokeOrgPremium(tx: Transaction, ref: DocumentReference, current: DocumentSnapshot, orgId: string, now: Date) {
