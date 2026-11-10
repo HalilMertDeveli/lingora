@@ -106,8 +106,10 @@ int dueWordCount(List<NoteWord> words, Progress p, DateTime now) {
   return words.where((w) => p.wordDue[w.id] != null && p.wordDue[w.id]!.compareTo(today) <= 0).length;
 }
 
-/// Words in box 3 or higher count as learned.
-int learnedWordCount(Progress p) => p.wordBox.values.where((b) => b >= 3).length;
+/// Dictionary words in box 3 or higher count as learned (Yazılımcı
+/// İngilizcesi words, `sw_...`, are counted on their own track).
+int learnedWordCount(Progress p) =>
+    p.wordBox.entries.where((e) => !e.key.startsWith('sw_') && e.value >= 3).length;
 
 /// Quiz from the dictionary: match rounds and multiple choice.
 List<LessonItem> wordQuizItems(List<NoteWord> words, [Random? random]) {

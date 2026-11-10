@@ -460,6 +460,15 @@ class ProgressNotifier extends Notifier<Progress> {
     _save(state.copyWith(wordBox: {...state.wordBox, id: box}, wordDue: {...state.wordDue, id: due}));
   }
 
+  /// Sorts a new word in "Kelime keşfet": a known word skips ahead to the
+  /// first "known" box and comes back in a week; a word to learn joins
+  /// today's review queue.
+  void triageWord(String id, {required bool known}) {
+    final box = known ? 3 : 0;
+    final due = dayKey(_now().add(Duration(days: reviewIntervals[box])));
+    _save(state.copyWith(wordBox: {...state.wordBox, id: box}, wordDue: {...state.wordDue, id: due}));
+  }
+
   void saveDiary(String day, String text) {
     final diary = {...state.diary};
     text.trim().isEmpty ? diary.remove(day) : diary[day] = text.trim();
