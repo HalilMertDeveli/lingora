@@ -7,6 +7,8 @@ import '../data/scenarios.dart';
 import '../services/billing/premium.dart';
 import '../services/conversation.dart';
 import '../services/speech.dart';
+import '../services/growth/analytics.dart';
+import '../services/growth/remote_flags.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
@@ -112,8 +114,9 @@ class ConversationHomeScreen extends ConsumerWidget {
 /// paywall offers the free scripted demo of the same scenario instead.
 Future<void> openConversation(BuildContext context, WidgetRef ref, Scenario s) async {
   final live = ref.read(conversationServiceProvider).isLive;
-  var demo = false;
-  if (live) {
+  // Remote Config can switch the live AI off (cost/incident); the demo stays.
+  var demo = live && !ref.read(remoteFlagsProvider).aiChatEnabled;
+  if (live && !demo) {
     final gate = await requirePremium(
       context,
       ref,
@@ -123,6 +126,7 @@ Future<void> openConversation(BuildContext context, WidgetRef ref, Scenario s) a
     if (gate == GateResult.closed || !context.mounted) return;
     demo = gate == GateResult.free;
   }
+  logEvent(ref, AnalyticsEvent.featureUse(live && !demo ? AppFeature.aiChat : AppFeature.demoChat));
   final screen = ConversationScreen(scenario: s);
   await Navigator.of(context).push(
     MaterialPageRoute<void>(

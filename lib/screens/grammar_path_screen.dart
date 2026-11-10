@@ -11,6 +11,7 @@ import '../data/progress.dart';
 import '../models/grammar_lesson.dart';
 import '../models/notes.dart';
 import '../services/speech.dart';
+import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
@@ -114,12 +115,15 @@ class GrammarPathScreen extends ConsumerWidget {
                     lesson: l,
                     done: p.isDone(lessonNodeId(l)),
                     isNext: next >= 0 && all[next].id == l.id,
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        fullscreenDialog: true,
-                        builder: (_) => GrammarLessonScreen(lesson: l, notes: notes),
-                      ),
-                    ),
+                    onTap: () {
+                      logEventFrom(context, AnalyticsEvent.featureUse(AppFeature.grammar));
+                      Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          fullscreenDialog: true,
+                          builder: (_) => GrammarLessonScreen(lesson: l, notes: notes),
+                        ),
+                      );
+                    },
                   ),
               ],
             ],

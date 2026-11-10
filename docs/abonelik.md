@@ -50,9 +50,10 @@ Notlar:
   avantajlı tutmak dönüşümü artırır. Enflasyon nedeniyle fiyatları 6 ayda bir
   gözden geçir (Play Console'da mevcut aboneler için fiyat değişikliği ayrı
   bir onay akışıdır).
-- İstersen ileride yıllık plana **7 günlük ücretsiz deneme** teklifi (offer)
-  eklenebilir; uygulama ilk (temel) planı satar, teklif eklemek için kodda
-  küçük bir değişiklik gerekir.
+- **Ücretsiz deneme**: Play Console'da bir plana ücretsiz deneme teklifi (offer)
+  eklersen uygulama, Play'in o kullanıcıya döndürdüğü deneme teklifini seçer ve
+  satın almayı onunla başlatır; paywall bunu Remote Config `trial_days` > 0 iken
+  duyurur (bkz. `docs/analitik.md`). Gösterilen fiyat her zaman temel planın fiyatıdır.
 - KDV dahil fiyat girilir (Play Console Türkiye için vergiyi fiyata dahil eder).
 
 ## 3. Play Console'da yapılacaklar

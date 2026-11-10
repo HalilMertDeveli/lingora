@@ -8,6 +8,7 @@ import '../data/reading_repository.dart';
 import '../models/notes.dart';
 import '../models/reading.dart';
 import '../services/speech.dart';
+import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
@@ -120,9 +121,11 @@ class ReadingLibraryScreen extends ConsumerWidget {
           padding: const EdgeInsets.only(bottom: 8),
           child: TapCard(
             color: color,
-            onTap: () =>
-                Navigator.of(context)
-                    .push(MaterialPageRoute<void>(builder: (_) => StoryReaderScreen(story: s))),
+            onTap: () {
+              logEventFrom(context, AnalyticsEvent.featureUse(AppFeature.reading));
+              Navigator.of(context)
+                  .push(MaterialPageRoute<void>(builder: (_) => StoryReaderScreen(story: s)));
+            },
             child: Row(
               children: [
                 Text(s.emoji, style: const TextStyle(fontSize: 30)),

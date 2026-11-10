@@ -2,10 +2,20 @@ import 'dart:async';
 
 /// A subscription as offered by the store, in the store's own currency.
 class StoreProduct {
-  const StoreProduct({required this.id, required this.title, required this.price, required this.rawPrice});
+  const StoreProduct({
+    required this.id,
+    required this.title,
+    required this.price,
+    required this.rawPrice,
+    this.freeTrialDays = 0,
+  });
 
   final String id;
   final String title;
+
+  /// Free trial the store offers this user before the first payment (0 = none).
+  /// Google Play only returns trial offers to users who are eligible.
+  final int freeTrialDays;
 
   /// Formatted, localised price from the store, e.g. "₺129,99".
   final String price;

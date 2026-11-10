@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/progress.dart';
+import '../growth/analytics.dart';
 import 'billing_service.dart';
 import 'entitlement_backend.dart';
 import 'iap_billing_service.dart';
@@ -215,6 +216,9 @@ class PremiumController extends Notifier<PremiumState> {
     try {
       await _billing.restore();
       await Future<void>.delayed(restoreSettle);
+      if (_restoring) {
+        ref.read(analyticsProvider).log(AnalyticsEvent.purchaseRestore(found: _restoredSomething));
+      }
       if (_restoring && !_restoredSomething) {
         state = state.copyWith(
           busy: false,
@@ -323,6 +327,20 @@ class PremiumController extends Notifier<PremiumState> {
       justPurchased: isNew || state.justPurchased || _restoring,
     );
     _writeCache();
+    if (isNew) _logPurchase(productId);
+  }
+
+  void _logPurchase(String productId) {
+    final plan = PremiumPlan.byId(productId);
+    if (plan == null) return;
+    final trialDays = state.product(plan)?.freeTrialDays ?? 0;
+    ref
+        .read(analyticsProvider)
+        .log(
+          trialDays > 0
+              ? AnalyticsEvent.trialStart(plan: plan.name, trialDays: trialDays)
+              : AnalyticsEvent.purchase(plan: plan.name),
+        );
   }
 
   void _onServer(ServerEntitlement? e) {

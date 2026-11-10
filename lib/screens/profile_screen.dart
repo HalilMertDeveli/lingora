@@ -4,9 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../services/billing/premium.dart';
+import '../services/growth/analytics.dart';
 import '../theme.dart';
 import 'account_section.dart';
 import 'error_analysis_screen.dart';
+import 'growth_profile_section.dart';
 import 'onboarding_screen.dart';
 import 'paywall_screen.dart';
 import 'placement_screen.dart';
@@ -70,6 +72,7 @@ class ProfileScreen extends ConsumerWidget {
             onPressed: () async {
               final gate = await requirePremium(context, ref, PremiumFeature.errorAnalytics);
               if (gate == GateResult.premium && context.mounted) {
+                logEventFrom(context, AnalyticsEvent.featureUse(AppFeature.errorAnalysis));
                 await Navigator.of(context)
                     .push(MaterialPageRoute<void>(builder: (_) => const ErrorAnalysisScreen()));
               }
@@ -131,6 +134,7 @@ class ProfileScreen extends ConsumerWidget {
         Text('Hesap', style: t.titleLarge),
         const SizedBox(height: 12),
         const AccountSection(),
+        const GrowthProfileSection(),
         const SizedBox(height: 32),
         OutlinedButton.icon(
           icon: const Icon(Icons.restart_alt, color: Brand.error),

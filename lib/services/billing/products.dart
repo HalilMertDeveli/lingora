@@ -68,3 +68,7 @@ enum PremiumFeature {
 
 /// Free mini mock exams per day (all exams together) without Premium.
 const freeMockExamsPerDay = 1;
+
+/// `productId` of an entitlement granted by the invite programme
+/// (functions/src/referral.ts), not a store product.
+const referralProductId = 'referral';

@@ -57,3 +57,6 @@ export const verifyPurchase = onCall((req) =>
     now: new Date(),
   }),
 );
+
+// Invite programme: getInviteCode, redeemInvite (functions/src/referral_api.ts).
+export * from "./referral_api.js";
