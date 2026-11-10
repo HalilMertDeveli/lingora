@@ -25,7 +25,7 @@
               {"text": "good morning", "emoji": "🌅"}, {"text": "thank you", "emoji": "🙏"},
               {"text": "hello", "emoji": "👋"}, {"text": "goodbye", "emoji": "🚶"}]},
             {"type": "fillBlank", "text": "Good ___!", "translation": "Günaydın!", "answer": "morning",
-              "choices": ["morning", "night", "thanks"]},
+              "choices": ["morning", "hello", "thanks"]},
             {"type": "listen", "text": "Good morning", "answers": ["Good morning"]},
             {"type": "translate", "text": "Günaydın, teşekkürler!", "lang": "tr",
               "answers": ["Good morning, thank you", "Good morning, thanks"],
@@ -43,7 +43,7 @@
           "exercises": [
             {"type": "fillBlank", "text": "My ___ is Ali.", "translation": "Benim adım Ali.", "answer": "name",
               "choices": ["name", "am", "you"]},
-            {"type": "translate", "text": "Benim adım Ayşe.", "lang": "tr", "answers": ["My name is Ayşe"],
+            {"type": "translate", "text": "Benim adım Ayşe.", "lang": "tr", "answers": ["My name is Ayşe", "My name's Ayşe", "I am Ayşe", "I'm Ayşe"],
               "tokens": ["My", "name", "is", "Ayşe", "your", "am", "I"]},
             {"type": "select", "prompt": "öğrenci", "answer": "student", "choices": [
               {"text": "teacher", "emoji": "🧑‍🏫"}, {"text": "doctor", "emoji": "🩺"},
@@ -55,7 +55,7 @@
             {"type": "match", "pairs": [["ben", "I"], ["sen", "you"], ["ad", "name"],
               ["öğrenci", "student"], ["öğretmen", "teacher"]]},
             {"type": "translate", "text": "Nice to meet you.", "lang": "en",
-              "answers": ["Tanıştığımıza memnun oldum"],
+              "answers": ["Tanıştığımıza memnun oldum", "Tanıştığıma memnun oldum", "Memnun oldum"],
               "tokens": ["Tanıştığımıza", "memnun", "oldum", "hoşça", "kal", "merhaba"]},
             {"type": "speak", "text": "I am a student", "translation": "Ben bir öğrenciyim."}
           ]
@@ -70,11 +70,11 @@
             {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "Hello! Good morning.", "translation": "Merhaba! Günaydın."},
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "Good morning! My name is Sam.", "translation": "Günaydın! Benim adım Sam."},
             {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "I'm Elif. Nice to meet you.", "translation": "Ben Elif. Tanıştığımıza memnun oldum."},
-            {"kind": "question", "prompt": "Yeni gelen çocuğun adı ne?", "choices": ["Sam", "Elif", "Kerem"], "answer": "Sam"},
+            {"kind": "question", "prompt": "Yeni arkadaşın adı ne?", "choices": ["Sam", "Elif", "Kerem"], "answer": "Sam"},
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "Nice to meet you. Are you a student?", "translation": "Tanıştığımıza memnun oldum. Sen öğrenci misin?"},
             {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "Yes, I am a student.", "translation": "Evet, ben bir öğrenciyim."},
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "I am a student, too.", "translation": "Ben de öğrenciyim."},
-            {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "She is Ayla. She is a teacher.", "translation": "O Ayla. O bir öğretmen."},
+            {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "This is Ayla. She is a teacher.", "translation": "Bu Ayla. O bir öğretmen."},
             {"kind": "question", "prompt": "Ayla ne iş yapıyor?", "choices": ["Öğretmen", "Doktor", "Öğrenci"], "answer": "Öğretmen"},
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "Thank you, Elif!", "translation": "Teşekkürler, Elif!"},
             {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "Goodbye, Sam!", "translation": "Hoşça kal, Sam!"},
@@ -154,8 +154,8 @@
               {"text": "cheese", "emoji": "🧀"}, {"text": "bread", "emoji": "🍞"}]},
             {"type": "translate", "text": "Ben ekmek yerim.", "lang": "tr", "answers": ["I eat bread"],
               "tokens": ["I", "eat", "bread", "drink", "cheese", "an"]},
-            {"type": "fillBlank", "text": "I eat an ___.", "translation": "Ben bir elma yerim.", "answer": "apple",
-              "choices": ["apple", "bread", "cheese"]},
+            {"type": "fillBlank", "text": "I eat ___ apple.", "translation": "Ben bir elma yerim.", "answer": "an",
+              "choices": ["an", "a", "two"]},
             {"type": "translate", "text": "Yumurta ve peynir", "lang": "tr",
               "answers": ["Egg and cheese", "Eggs and cheese"],
               "tokens": ["Egg", "and", "cheese", "bread", "or", "milk"]},
@@ -194,7 +194,7 @@
             {"type": "fillBlank", "text": "I ___ a coffee, please.", "translation": "Bir kahve istiyorum, lütfen.",
               "answer": "want", "choices": ["want", "eat", "am"]},
             {"type": "translate", "text": "Hesap, lütfen.", "lang": "tr",
-              "answers": ["The bill, please", "The check, please", "Bill, please"],
+              "answers": ["The bill, please", "The check, please", "Bill, please", "Check, please"],
               "tokens": ["The", "bill", "please", "water", "menu", "a"]},
             {"type": "select", "prompt": "hesap", "answer": "bill", "choices": [
               {"text": "menu", "emoji": "📋"}, {"text": "water", "emoji": "💧"},
@@ -232,7 +232,7 @@
             {"type": "select", "prompt": "erkek kardeş", "answer": "brother", "choices": [
               {"text": "sister", "emoji": "👧"}, {"text": "father", "emoji": "👨"},
               {"text": "brother", "emoji": "👦"}, {"text": "baby", "emoji": "👶"}]},
-            {"type": "translate", "text": "Bu benim annem.", "lang": "tr", "answers": ["This is my mother"],
+            {"type": "translate", "text": "Bu benim annem.", "lang": "tr", "answers": ["This is my mother", "This is my mom", "This is my mum"],
               "tokens": ["This", "is", "my", "mother", "father", "your", "are"]},
             {"type": "fillBlank", "text": "He is my ___.", "translation": "O benim babam.", "answer": "father",
               "choices": ["father", "mother", "sister"]},
@@ -240,7 +240,7 @@
             {"type": "match", "pairs": [["anne", "mother"], ["baba", "father"], ["kız kardeş", "sister"],
               ["erkek kardeş", "brother"], ["bebek", "baby"]]},
             {"type": "translate", "text": "My brother is a doctor.", "lang": "en",
-              "answers": ["Erkek kardeşim doktor", "Erkek kardeşim bir doktor"],
+              "answers": ["Erkek kardeşim doktor", "Erkek kardeşim bir doktor", "Benim erkek kardeşim doktor", "Kardeşim doktor", "Kardeşim bir doktor"],
               "tokens": ["Erkek", "kardeşim", "doktor", "bir", "annem", "öğretmen"]},
             {"type": "speak", "text": "This is my father", "translation": "Bu benim babam."}
           ]
@@ -281,7 +281,7 @@
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "Hi, Kerem! How old are you?", "translation": "Selam Kerem! Kaç yaşındasın?"},
             {"kind": "line", "speaker": "Kerem", "avatar": "👦", "text": "I am ten years old.", "translation": "On yaşındayım."},
             {"kind": "question", "prompt": "Kerem kaç yaşında?", "choices": ["On", "Yirmi", "Sekiz"], "answer": "On"},
-            {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "I have a sister. She is twenty.", "translation": "Benim bir kız kardeşim var. O yirmi yaşında."},
+            {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "I have a sister. She is sixteen.", "translation": "Benim bir kız kardeşim var. O on altı yaşında."},
             {"kind": "line", "speaker": "Kerem", "avatar": "👦", "text": "We have a dog and a cat!", "translation": "Bizim bir köpeğimiz ve bir kedimiz var!"},
             {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "And my grandmother has a bird.", "translation": "Büyükannemin de bir kuşu var."},
             {"kind": "question", "prompt": "Büyükannenin hangi hayvanı var?", "choices": ["Kuş", "Köpek", "Balık"], "answer": "Kuş"},
@@ -302,7 +302,8 @@
             {"type": "translate", "text": "Kaç yaşındasın?", "lang": "tr", "answers": ["How old are you"],
               "tokens": ["How", "old", "are", "you", "is", "age"]},
             {"type": "translate", "text": "O on yaşında.", "lang": "tr",
-              "answers": ["He is ten years old", "She is ten years old", "He is ten", "She is ten"],
+              "answers": ["He is ten years old", "She is ten years old", "He is ten", "She is ten",
+                "He's ten years old", "She's ten years old", "He's ten", "She's ten"],
               "tokens": ["He", "She", "is", "ten", "years", "old", "are"]},
             {"type": "select", "prompt": "büyükanne", "answer": "grandmother", "choices": [
               {"text": "baby", "emoji": "👶"}, {"text": "grandfather", "emoji": "👴"},
@@ -311,7 +312,7 @@
             {"type": "match", "pairs": [["yaşlı", "old"], ["genç", "young"], ["büyükanne", "grandmother"],
               ["büyükbaba", "grandfather"], ["çocuk", "child"]]},
             {"type": "translate", "text": "How old is your brother?", "lang": "en",
-              "answers": ["Erkek kardeşin kaç yaşında"],
+              "answers": ["Erkek kardeşin kaç yaşında", "Senin erkek kardeşin kaç yaşında", "Kardeşin kaç yaşında"],
               "tokens": ["Erkek", "kardeşin", "kaç", "yaşında", "annen", "ne"]},
             {"type": "speak", "text": "How old are you", "translation": "Kaç yaşındasın?"}
           ]
@@ -407,9 +408,9 @@
             {"type": "match", "pairs": [["pazartesi", "Monday"], ["salı", "Tuesday"], ["çarşamba", "Wednesday"],
               ["cuma", "Friday"], ["pazar", "Sunday"]]},
             {"type": "translate", "text": "Bugün cuma.", "lang": "tr",
-              "answers": ["Today is Friday", "It is Friday today"],
+              "answers": ["Today is Friday", "It is Friday today", "Today's Friday", "It's Friday today"],
               "tokens": ["Today", "is", "Friday", "Monday", "tomorrow"]},
-            {"type": "translate", "text": "Yarın cumartesi.", "lang": "tr", "answers": ["Tomorrow is Saturday"],
+            {"type": "translate", "text": "Yarın cumartesi.", "lang": "tr", "answers": ["Tomorrow is Saturday", "Tomorrow's Saturday", "It is Saturday tomorrow", "It's Saturday tomorrow"],
               "tokens": ["Tomorrow", "is", "Saturday", "Sunday", "today"]},
             {"type": "select", "prompt": "hafta sonu", "answer": "weekend", "choices": [
               {"text": "school", "emoji": "🏫"}, {"text": "birthday", "emoji": "🎂"},
@@ -450,7 +451,7 @@
             {"type": "listen", "text": "My car is black", "answers": ["My car is black"]},
             {"type": "match", "pairs": [["beyaz", "white"], ["siyah", "black"], ["sarı", "yellow"],
               ["yeşil", "green"], ["turuncu", "orange"]]},
-            {"type": "translate", "text": "The banana is yellow.", "lang": "en", "answers": ["Muz sarı"],
+            {"type": "translate", "text": "The banana is yellow.", "lang": "en", "answers": ["Muz sarı", "Muz sarıdır"],
               "tokens": ["Muz", "sarı", "elma", "kırmızı", "mavi"]},
             {"type": "speak", "text": "I like the color green", "translation": "Yeşil rengi severim."}
           ]
@@ -475,7 +476,7 @@
             {"type": "match", "pairs": [["ceket", "jacket"], ["şapka", "hat"], ["elbise", "dress"],
               ["pantolon", "trousers"], ["çorap", "socks"]]},
             {"type": "translate", "text": "Bu şapka güzel.", "lang": "tr",
-              "answers": ["This hat is nice", "This hat is beautiful"],
+              "answers": ["This hat is nice", "This hat is beautiful", "This hat is pretty", "This hat's nice"],
               "tokens": ["This", "hat", "is", "nice", "dress", "are"]},
             {"type": "speak", "text": "I like your shoes", "translation": "Ayakkabılarını beğendim."}
           ]
@@ -494,7 +495,7 @@
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "Can I try it on?", "translation": "Deneyebilir miyim?"},
             {"kind": "question", "prompt": "Sam hangi rengi istiyor?", "choices": ["Mavi", "Kırmızı", "Yeşil"], "answer": "Mavi"},
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "Oh, it is too small.", "translation": "Ah, çok küçük."},
-            {"kind": "line", "speaker": "Satıcı", "avatar": "🧔", "text": "This jacket is big.", "translation": "Bu ceket büyük."},
+            {"kind": "line", "speaker": "Satıcı", "avatar": "🧔", "text": "Try this one. It is big.", "translation": "Bunu deneyin. Bu büyük."},
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "Good! How much is this?", "translation": "Güzel! Bu ne kadar?"},
             {"kind": "line", "speaker": "Satıcı", "avatar": "🧔", "text": "It is eighty lira.", "translation": "Seksen lira."},
             {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "Eighty? It is cheap!", "translation": "Seksen mi? Ucuz!"},
@@ -508,11 +509,12 @@
           "description": "how much, cheap, expensive",
           "exercises": [
             {"type": "fillBlank", "text": "How ___ is this?", "translation": "Bu ne kadar?",
-              "answer": "much", "choices": ["much", "many", "old"]},
+              "answer": "much", "choices": ["much", "many", "very"]},
             {"type": "translate", "text": "Bu ne kadar?", "lang": "tr", "answers": ["How much is this"],
               "tokens": ["How", "much", "is", "this", "many", "are"]},
             {"type": "translate", "text": "Çok pahalı.", "lang": "tr",
-              "answers": ["It is very expensive", "It's very expensive", "Very expensive"],
+              "answers": ["It is very expensive", "It's very expensive", "Very expensive",
+                "It is too expensive", "It's too expensive", "Too expensive"],
               "tokens": ["It", "is", "very", "expensive", "cheap", "new"]},
             {"type": "select", "prompt": "ucuz", "answer": "cheap", "choices": [
               {"text": "expensive", "emoji": "💎"}, {"text": "big", "emoji": "🐘"},
@@ -520,7 +522,7 @@
             {"type": "listen", "text": "Can I try it on", "answers": ["Can I try it on"]},
             {"type": "match", "pairs": [["ucuz", "cheap"], ["pahalı", "expensive"], ["büyük", "big"],
               ["küçük", "small"], ["yeni", "new"]]},
-            {"type": "translate", "text": "This jacket is too small.", "lang": "en", "answers": ["Bu ceket çok küçük"],
+            {"type": "translate", "text": "This jacket is too small.", "lang": "en", "answers": ["Bu ceket çok küçük", "Bu ceket fazla küçük"],
               "tokens": ["Bu", "ceket", "çok", "küçük", "büyük", "şapka"]},
             {"type": "speak", "text": "How much is this", "translation": "Bu ne kadar?"}
           ]
@@ -555,7 +557,7 @@
             {"type": "match", "pairs": [["uyanmak", "wake up"], ["kahvaltı", "breakfast"], ["duş", "shower"],
               ["iş", "work"], ["okul", "school"]]},
             {"type": "translate", "text": "I drink coffee in the morning.", "lang": "en",
-              "answers": ["Sabah kahve içerim", "Sabahları kahve içerim"],
+              "answers": ["Sabah kahve içerim", "Sabahları kahve içerim", "Ben sabah kahve içerim", "Ben sabahları kahve içerim"],
               "tokens": ["Sabah", "kahve", "içerim", "akşam", "çay", "yerim"]},
             {"type": "speak", "text": "I go to school", "translation": "Okula giderim."}
           ]
@@ -575,7 +577,7 @@
             {"type": "fillBlank", "text": "I like ___ to music.", "translation": "Müzik dinlemeyi severim.",
               "answer": "listening", "choices": ["listening", "reading", "playing"]},
             {"type": "translate", "text": "Ben kitap okurum.", "lang": "tr",
-              "answers": ["I read books", "I read a book"],
+              "answers": ["I read books", "I read a book", "I read"],
               "tokens": ["I", "read", "books", "a", "play", "music"]},
             {"type": "listen", "text": "She plays the guitar", "answers": ["She plays the guitar"]},
             {"type": "match", "pairs": [["yüzmek", "swim"], ["okumak", "read"], ["oynamak", "play"],
@@ -583,7 +585,7 @@
             {"type": "translate", "text": "Futbol oynarız.", "lang": "tr",
               "answers": ["We play football", "We play soccer"],
               "tokens": ["We", "play", "football", "read", "they"]},
-            {"type": "speak", "text": "I like music", "translation": "Müziği severim."}
+            {"type": "speak", "text": "I like music", "translation": "Müzik severim."}
           ]
         },
         {
@@ -618,7 +620,7 @@
               {"text": "bank", "emoji": "🏦"}, {"text": "park", "emoji": "🌳"}]},
             {"type": "fillBlank", "text": "Where ___ the station?", "translation": "İstasyon nerede?",
               "answer": "is", "choices": ["is", "are", "am"]},
-            {"type": "translate", "text": "Banka nerede?", "lang": "tr", "answers": ["Where is the bank"],
+            {"type": "translate", "text": "Banka nerede?", "lang": "tr", "answers": ["Where is the bank", "Where's the bank"],
               "tokens": ["Where", "is", "the", "bank", "park", "are"]},
             {"type": "translate", "text": "Sola dön.", "lang": "tr", "answers": ["Turn left"],
               "tokens": ["Turn", "left", "right", "go"]},
@@ -666,8 +668,8 @@
           "description": "in, on, under, next to, between",
           "exercises": [
             {"type": "select", "prompt": "kanepe", "answer": "sofa", "choices": [{"text": "bed", "emoji": "🛏️"}, {"text": "sofa", "emoji": "🛋️"}, {"text": "chair", "emoji": "🪑"}, {"text": "lamp", "emoji": "💡"}]},
-            {"type": "fillBlank", "text": "The book is ___ the table.", "translation": "Kitap masanın üstünde.", "answer": "on", "choices": ["on", "at", "of"]},
-            {"type": "translate", "text": "Kedi yatağın altında.", "lang": "tr", "answers": ["The cat is under the bed"], "tokens": ["The", "cat", "is", "under", "the", "bed", "on", "table", "are"]},
+            {"type": "fillBlank", "text": "The book is ___ the table.", "translation": "Kitap masanın üstünde.", "answer": "on", "choices": ["on", "of", "between"]},
+            {"type": "translate", "text": "Kedi yatağın altında.", "lang": "tr", "answers": ["The cat is under the bed", "The cat's under the bed"], "tokens": ["The", "cat", "is", "under", "the", "bed", "on", "table", "are"]},
             {"type": "select", "prompt": "anahtar", "answer": "key", "choices": [{"text": "phone", "emoji": "📱"}, {"text": "bag", "emoji": "👜"}, {"text": "key", "emoji": "🔑"}, {"text": "lamp", "emoji": "💡"}]},
             {"type": "translate", "text": "My phone is next to the lamp.", "lang": "en", "answers": ["Telefonum lambanın yanında"], "tokens": ["Telefonum", "lambanın", "yanında", "altında", "masanın", "çantam"]},
             {"type": "listen", "text": "The keys are in my bag", "answers": ["The keys are in my bag"]},
@@ -706,10 +708,10 @@
           "description": "library, museum, street, there isn’t",
           "exercises": [
             {"type": "select", "prompt": "kütüphane", "answer": "library", "choices": [{"text": "museum", "emoji": "🏛️"}, {"text": "library", "emoji": "📚"}, {"text": "market", "emoji": "🛒"}, {"text": "bridge", "emoji": "🌉"}]},
-            {"type": "fillBlank", "text": "Is ___ a pharmacy near here?", "translation": "Buralarda bir eczane var mı?", "answer": "there", "choices": ["there", "it", "are"]},
+            {"type": "fillBlank", "text": "Is ___ a pharmacy near here?", "translation": "Buralarda bir eczane var mı?", "answer": "there", "choices": ["there", "they", "are"]},
             {"type": "translate", "text": "Bu sokakta iki restoran var.", "lang": "tr", "answers": ["There are two restaurants on this street", "There are two restaurants in this street"], "tokens": ["There", "are", "two", "restaurants", "on", "this", "street", "is", "a", "cafés"]},
             {"type": "select", "prompt": "müze", "answer": "museum", "choices": [{"text": "bridge", "emoji": "🌉"}, {"text": "hospital", "emoji": "🏥"}, {"text": "library", "emoji": "📚"}, {"text": "museum", "emoji": "🏛️"}]},
-            {"type": "translate", "text": "There are a lot of cafés in my city.", "lang": "en", "answers": ["Şehrimde bir sürü kafe var", "Şehrimde çok kafe var", "Şehrimde çok fazla kafe var"], "tokens": ["Şehrimde", "bir", "sürü", "kafe", "var", "köprü", "yok", "müzede"]},
+            {"type": "translate", "text": "There are a lot of cafés in my city.", "lang": "en", "answers": ["Şehrimde bir sürü kafe var", "Şehrimde çok kafe var", "Şehrimde birçok kafe var", "Benim şehrimde bir sürü kafe var", "Benim şehrimde çok kafe var"], "tokens": ["Şehrimde", "bir", "sürü", "kafe", "var", "köprü", "yok", "müzede"]},
             {"type": "listen", "text": "There isn't a museum in our town", "answers": ["There isn't a museum in our town", "There is not a museum in our town"]},
             {"type": "fillBlank", "text": "There ___ any shops on this street.", "translation": "Bu sokakta hiç dükkân yok.", "answer": "aren't", "choices": ["aren't", "isn't", "don't"]},
             {"type": "match", "pairs": [["şehir", "city"], ["sokak", "street"], ["köprü", "bridge"], ["müze", "museum"], ["kütüphane", "library"]]},
@@ -735,7 +737,7 @@
           "exercises": [
             {"type": "select", "prompt": "otobüs", "answer": "bus", "choices": [{"text": "bus", "emoji": "🚌"}, {"text": "train", "emoji": "🚆"}, {"text": "plane", "emoji": "✈️"}, {"text": "bicycle", "emoji": "🚲"}]},
             {"type": "fillBlank", "text": "I go to work ___ bus.", "translation": "İşe otobüsle giderim.", "answer": "by", "choices": ["by", "in", "at"]},
-            {"type": "translate", "text": "Trenle seyahat ederiz.", "lang": "tr", "answers": ["We travel by train"], "tokens": ["We", "travel", "by", "train", "plane", "go", "on"]},
+            {"type": "translate", "text": "Trenle seyahat ederiz.", "lang": "tr", "answers": ["We travel by train", "We go by train"], "tokens": ["We", "travel", "by", "train", "plane", "go", "on"]},
             {"type": "select", "prompt": "uçak", "answer": "plane", "choices": [{"text": "ship", "emoji": "🚢"}, {"text": "taxi", "emoji": "🚕"}, {"text": "plane", "emoji": "✈️"}, {"text": "bus", "emoji": "🚌"}]},
             {"type": "translate", "text": "She goes to school by bike.", "lang": "en", "answers": ["O okula bisikletle gider", "Okula bisikletle gider"], "tokens": ["O", "okula", "bisikletle", "gider", "otobüsle", "işe", "gideriz"]},
             {"type": "listen", "text": "The train is very fast", "answers": ["The train is very fast"]},
@@ -753,13 +755,13 @@
           "exercises": [
             {"type": "select", "prompt": "bavul", "answer": "suitcase", "choices": [{"text": "passport", "emoji": "🛂"}, {"text": "suitcase", "emoji": "🧳"}, {"text": "ticket", "emoji": "🎫"}, {"text": "map", "emoji": "🗺️"}]},
             {"type": "fillBlank", "text": "I am ___ to visit Antalya.", "translation": "Antalya'yı ziyaret edeceğim.", "answer": "going", "choices": ["going", "go", "goes"]},
-            {"type": "translate", "text": "Yarın Bodrum'a gideceğiz.", "lang": "tr", "answers": ["We are going to Bodrum tomorrow", "We are going to go to Bodrum tomorrow", "We're going to Bodrum tomorrow"], "tokens": ["We", "are", "going", "to", "Bodrum", "tomorrow", "will", "went", "is"]},
+            {"type": "translate", "text": "Yarın Bodrum'a gideceğiz.", "lang": "tr", "answers": ["We are going to Bodrum tomorrow", "We are going to go to Bodrum tomorrow", "We're going to Bodrum tomorrow", "We're going to go to Bodrum tomorrow", "Tomorrow we are going to Bodrum", "Tomorrow we're going to Bodrum", "We will go to Bodrum tomorrow", "We'll go to Bodrum tomorrow"], "tokens": ["We", "are", "going", "to", "Bodrum", "tomorrow", "will", "went", "is"]},
             {"type": "select", "prompt": "harita", "answer": "map", "choices": [{"text": "ticket", "emoji": "🎫"}, {"text": "suitcase", "emoji": "🧳"}, {"text": "map", "emoji": "🗺️"}, {"text": "passport", "emoji": "🛂"}]},
-            {"type": "translate", "text": "They are going to take the train.", "lang": "en", "answers": ["Onlar trene binecekler", "Trene binecekler", "Trenle gidecekler"], "tokens": ["Onlar", "trene", "binecekler", "uçağa", "bindik", "biz"]},
+            {"type": "translate", "text": "They are going to take the train.", "lang": "en", "answers": ["Onlar trene binecekler", "Trene binecekler", "Trenle gidecekler", "Onlar trenle gidecekler"], "tokens": ["Onlar", "trene", "binecekler", "uçağa", "bindik", "biz"]},
             {"type": "listen", "text": "I am going to pack my suitcase", "answers": ["I am going to pack my suitcase", "I'm going to pack my suitcase"]},
             {"type": "fillBlank", "text": "She is going to ___ a hotel.", "translation": "O bir otel ayırtacak.", "answer": "book", "choices": ["book", "books", "booking"]},
             {"type": "match", "pairs": [["bavul", "suitcase"], ["pasaport", "passport"], ["bilet", "ticket"], ["harita", "map"], ["otel", "hotel"]]},
-            {"type": "translate", "text": "Bu yaz ne yapacaksın?", "lang": "tr", "answers": ["What are you going to do this summer"], "tokens": ["What", "are", "you", "going", "to", "do", "this", "summer", "is", "did", "winter"]},
+            {"type": "translate", "text": "Bu yaz ne yapacaksın?", "lang": "tr", "answers": ["What are you going to do this summer", "What're you going to do this summer", "What will you do this summer"], "tokens": ["What", "are", "you", "going", "to", "do", "this", "summer", "is", "did", "winter"]},
             {"type": "speak", "text": "We are going to visit Ankara", "translation": "Ankara'yı ziyaret edeceğiz."}
           ]
         },
@@ -792,14 +794,14 @@
           "description": "go straight, turn left, how do I get to",
           "exercises": [
             {"type": "select", "prompt": "durak", "answer": "bus stop", "choices": [{"text": "bus stop", "emoji": "🚏"}, {"text": "traffic lights", "emoji": "🚦"}, {"text": "station", "emoji": "🚉"}, {"text": "airport", "emoji": "🛫"}]},
-            {"type": "fillBlank", "text": "Go ___ and turn right.", "translation": "Düz git ve sağa dön.", "answer": "straight", "choices": ["straight", "right", "far"]},
-            {"type": "translate", "text": "İkinci sokaktan sola dönün.", "lang": "tr", "answers": ["Turn left at the second street", "Take the second street on the left"], "tokens": ["Turn", "left", "at", "the", "second", "street", "right", "first", "on"]},
+            {"type": "fillBlank", "text": "Go ___ and turn right.", "translation": "Düz git ve sağa dön.", "answer": "straight", "choices": ["straight", "near", "corner"]},
+            {"type": "translate", "text": "İkinci sokaktan sola dönün.", "lang": "tr", "answers": ["Turn left at the second street", "Take the second street on the left", "Take the second left", "Turn left into the second street", "Turn left on the second street"], "tokens": ["Turn", "left", "at", "the", "second", "street", "right", "first", "on"]},
             {"type": "select", "prompt": "havalimanı", "answer": "airport", "choices": [{"text": "station", "emoji": "🚉"}, {"text": "airport", "emoji": "🛫"}, {"text": "bus stop", "emoji": "🚏"}, {"text": "port", "emoji": "⚓"}]},
             {"type": "translate", "text": "The station is at the end of the street.", "lang": "en", "answers": ["İstasyon sokağın sonunda"], "tokens": ["İstasyon", "sokağın", "sonunda", "başında", "köprü", "havalimanı"]},
             {"type": "listen", "text": "Excuse me, how do I get to the airport?", "answers": ["Excuse me, how do I get to the airport"]},
             {"type": "fillBlank", "text": "Turn left ___ the traffic lights.", "translation": "Trafik ışıklarından sola dön.", "answer": "at", "choices": ["at", "on", "in"]},
             {"type": "match", "pairs": [["sağ", "right"], ["sol", "left"], ["köşe", "corner"], ["durak", "bus stop"], ["havalimanı", "airport"]]},
-            {"type": "translate", "text": "Affedersiniz, istasyon uzak mı?", "lang": "tr", "answers": ["Excuse me, is the station far"], "tokens": ["Excuse", "me", "is", "the", "station", "far", "near", "are", "airport"]},
+            {"type": "translate", "text": "Affedersiniz, istasyon uzak mı?", "lang": "tr", "answers": ["Excuse me, is the station far", "Excuse me, is the station far away"], "tokens": ["Excuse", "me", "is", "the", "station", "far", "near", "are", "airport"]},
             {"type": "speak", "text": "How do I get to the station?", "translation": "İstasyona nasıl giderim?"}
           ]
         },
@@ -839,11 +841,11 @@
           "exercises": [
             {"type": "select", "prompt": "pişirmek", "answer": "cook", "choices": [{"text": "cook", "emoji": "👩‍🍳"}, {"text": "clean", "emoji": "🧹"}, {"text": "watch", "emoji": "📺"}, {"text": "walk", "emoji": "🚶"}]},
             {"type": "fillBlank", "text": "I ___ a film last night.", "translation": "Dün gece bir film izledim.", "answer": "watched", "choices": ["watched", "watch", "watching"]},
-            {"type": "translate", "text": "Annem akşam yemeği pişirdi.", "lang": "tr", "answers": ["My mother cooked dinner", "My mom cooked dinner"], "tokens": ["My", "mother", "cooked", "dinner", "cooks", "father", "lunch"]},
+            {"type": "translate", "text": "Annem akşam yemeği pişirdi.", "lang": "tr", "answers": ["My mother cooked dinner", "My mom cooked dinner", "My mum cooked dinner", "My mother made dinner"], "tokens": ["My", "mother", "cooked", "dinner", "cooks", "father", "lunch"]},
             {"type": "select", "prompt": "temizlemek", "answer": "clean", "choices": [{"text": "call", "emoji": "📞"}, {"text": "play", "emoji": "⚽"}, {"text": "clean", "emoji": "🧹"}, {"text": "cook", "emoji": "👩‍🍳"}]},
-            {"type": "translate", "text": "We played football in the park.", "lang": "en", "answers": ["Parkta futbol oynadık"], "tokens": ["Parkta", "futbol", "oynadık", "oynarız", "okulda", "basketbol"]},
+            {"type": "translate", "text": "We played football in the park.", "lang": "en", "answers": ["Parkta futbol oynadık", "Biz parkta futbol oynadık"], "tokens": ["Parkta", "futbol", "oynadık", "oynarız", "okulda", "basketbol"]},
             {"type": "listen", "text": "She called me last night", "answers": ["She called me last night"]},
-            {"type": "fillBlank", "text": "They ___ to the station.", "translation": "İstasyona yürüdüler.", "answer": "walked", "choices": ["walked", "walks", "walk"]},
+            {"type": "fillBlank", "text": "They ___ to the station.", "translation": "İstasyona yürüdüler.", "answer": "walked", "choices": ["walked", "walks", "walking"]},
             {"type": "match", "pairs": [["izlemek", "watch"], ["pişirmek", "cook"], ["temizlemek", "clean"], ["aramak", "call"], ["yürümek", "walk"]]},
             {"type": "translate", "text": "Dün odamı temizledim.", "lang": "tr", "answers": ["I cleaned my room yesterday", "Yesterday I cleaned my room"], "tokens": ["I", "cleaned", "my", "room", "yesterday", "clean", "your", "today"]},
             {"type": "speak", "text": "I watched a film", "translation": "Bir film izledim."}
@@ -877,14 +879,14 @@
           "description": "went, ate, saw, bought",
           "exercises": [
             {"type": "select", "prompt": "satın aldı", "answer": "bought", "choices": [{"text": "ate", "emoji": "🍽️"}, {"text": "saw", "emoji": "👀"}, {"text": "went", "emoji": "🚶"}, {"text": "bought", "emoji": "🛍️"}]},
-            {"type": "fillBlank", "text": "We ___ to the cinema on Saturday.", "translation": "Cumartesi sinemaya gittik.", "answer": "went", "choices": ["went", "go", "goes"]},
+            {"type": "fillBlank", "text": "We ___ to the cinema on Saturday.", "translation": "Cumartesi sinemaya gittik.", "answer": "went", "choices": ["went", "goes", "going"]},
             {"type": "translate", "text": "Kahvaltıda yumurta yedim.", "lang": "tr", "answers": ["I ate eggs for breakfast", "I had eggs for breakfast", "I ate an egg for breakfast"], "tokens": ["I", "ate", "eggs", "for", "breakfast", "eat", "lunch", "at"]},
             {"type": "select", "prompt": "gördü", "answer": "saw", "choices": [{"text": "saw", "emoji": "👀"}, {"text": "bought", "emoji": "🛍️"}, {"text": "ate", "emoji": "🍽️"}, {"text": "went", "emoji": "🚶"}]},
             {"type": "translate", "text": "She bought a new dress.", "lang": "en", "answers": ["O yeni bir elbise aldı", "Yeni bir elbise aldı", "Yeni bir elbise satın aldı"], "tokens": ["O", "yeni", "bir", "elbise", "aldı", "ceket", "alır", "eski"]},
             {"type": "listen", "text": "We had a great time", "answers": ["We had a great time"]},
-            {"type": "fillBlank", "text": "I ___ my friend at the market.", "translation": "Arkadaşımı pazarda gördüm.", "answer": "saw", "choices": ["saw", "see", "seen"]},
+            {"type": "fillBlank", "text": "I ___ my friend at the market.", "translation": "Arkadaşımı pazarda gördüm.", "answer": "saw", "choices": ["saw", "seen", "sees"]},
             {"type": "match", "pairs": [["gitti", "went"], ["yedi", "ate"], ["gördü", "saw"], ["aldı", "bought"], ["içti", "drank"]]},
-            {"type": "translate", "text": "Geçen yaz İzmir'e gittik.", "lang": "tr", "answers": ["We went to Izmir last summer", "Last summer we went to Izmir"], "tokens": ["We", "went", "to", "Izmir", "last", "summer", "go", "winter", "are"]},
+            {"type": "translate", "text": "Geçen yaz İzmir'e gittik.", "lang": "tr", "answers": ["We went to İzmir last summer", "Last summer we went to İzmir"], "tokens": ["We", "went", "to", "İzmir", "last", "summer", "go", "winter", "are"]},
             {"type": "speak", "text": "I went to the market", "translation": "Pazara gittim."}
           ]
         },
@@ -906,9 +908,9 @@
           "exercises": [
             {"type": "select", "prompt": "el", "answer": "hand", "choices": [{"text": "hand", "emoji": "✋"}, {"text": "foot", "emoji": "🦶"}, {"text": "eye", "emoji": "👁️"}, {"text": "ear", "emoji": "👂"}]},
             {"type": "fillBlank", "text": "I have two ___.", "translation": "İki elim var.", "answer": "hands", "choices": ["hands", "hand", "head"]},
-            {"type": "translate", "text": "Gözleri mavi.", "lang": "tr", "answers": ["Her eyes are blue", "His eyes are blue"], "tokens": ["Her", "eyes", "are", "blue", "is", "green", "ears"]},
+            {"type": "translate", "text": "Gözleri mavi.", "lang": "tr", "answers": ["Her eyes are blue", "His eyes are blue", "Their eyes are blue"], "tokens": ["Her", "eyes", "are", "blue", "is", "green", "ears"]},
             {"type": "select", "prompt": "ağız", "answer": "mouth", "choices": [{"text": "nose", "emoji": "👃"}, {"text": "mouth", "emoji": "👄"}, {"text": "ear", "emoji": "👂"}, {"text": "tooth", "emoji": "🦷"}]},
-            {"type": "translate", "text": "Wash your hands.", "lang": "en", "answers": ["Ellerini yıka"], "tokens": ["Ellerini", "yıka", "yüzünü", "yıkarım", "ayak"]},
+            {"type": "translate", "text": "Wash your hands.", "lang": "en", "answers": ["Ellerini yıka", "Ellerinizi yıkayın"], "tokens": ["Ellerini", "yıka", "yüzünü", "yıkarım", "ayak"]},
             {"type": "listen", "text": "She has long hair", "answers": ["She has long hair"]},
             {"type": "fillBlank", "text": "I brush my ___ every morning.", "translation": "Her sabah dişlerimi fırçalarım.", "answer": "teeth", "choices": ["teeth", "tooth", "toes"]},
             {"type": "match", "pairs": [["baş", "head"], ["göz", "eye"], ["kulak", "ear"], ["burun", "nose"], ["ayak", "foot"]]},
@@ -923,8 +925,8 @@
           "description": "headache, fever, cold, I feel sick",
           "exercises": [
             {"type": "select", "prompt": "ateş", "answer": "fever", "choices": [{"text": "cold", "emoji": "🤧"}, {"text": "headache", "emoji": "🤕"}, {"text": "fever", "emoji": "🤒"}, {"text": "toothache", "emoji": "🦷"}]},
-            {"type": "fillBlank", "text": "I have a ___. My head hurts.", "translation": "Başım ağrıyor. Başım çok acıyor.", "answer": "headache", "choices": ["headache", "toothache", "stomachache"]},
-            {"type": "translate", "text": "Kendimi iyi hissetmiyorum.", "lang": "tr", "answers": ["I don't feel well", "I do not feel well"], "tokens": ["I", "don't", "feel", "well", "am", "sick", "feels"]},
+            {"type": "fillBlank", "text": "I have a ___. My head hurts.", "translation": "Baş ağrım var. Başım ağrıyor.", "answer": "headache", "choices": ["headache", "toothache", "stomachache"]},
+            {"type": "translate", "text": "Kendimi iyi hissetmiyorum.", "lang": "tr", "answers": ["I don't feel well", "I do not feel well", "I'm not feeling well", "I am not feeling well"], "tokens": ["I", "don't", "feel", "well", "am", "sick", "feels"]},
             {"type": "select", "prompt": "öksürük", "answer": "cough", "choices": [{"text": "fever", "emoji": "🤒"}, {"text": "cold", "emoji": "🤧"}, {"text": "medicine", "emoji": "💊"}, {"text": "cough", "emoji": "😷"}]},
             {"type": "translate", "text": "My stomach hurts.", "lang": "en", "answers": ["Midem ağrıyor", "Karnım ağrıyor"], "tokens": ["Midem", "ağrıyor", "başım", "ağrıdı", "dişim"]},
             {"type": "listen", "text": "I have a cold and a fever", "answers": ["I have a cold and a fever"]},
@@ -948,7 +950,7 @@
             {"kind": "question", "prompt": "Kerem'in nesi var?", "choices": ["Baş ağrısı, ateş ve öksürük", "Diş ağrısı", "Hiçbir şeyi yok"], "answer": "Baş ağrısı, ateş ve öksürük"},
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "Hi, Elif! Is Kerem okay?", "translation": "Selam Elif! Kerem iyi mi?"},
             {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "No, he is sick. We are going to see a doctor.", "translation": "Hayır, hasta. Doktora gideceğiz."},
-            {"kind": "line", "speaker": "Doktor", "avatar": "👩‍⚕️", "text": "You have a cold. You should rest and drink a lot of water.", "translation": "Nezle olmuşsun. Dinlenmeli ve bol su içmelisin."},
+            {"kind": "line", "speaker": "Doktor", "avatar": "👩‍⚕️", "text": "You have a cold. You should rest and drink a lot of water.", "translation": "Nezle olmuşsun. Dinlenmelisin ve bol su içmelisin."},
             {"kind": "line", "speaker": "Doktor", "avatar": "👩‍⚕️", "text": "Take this medicine three times a day.", "translation": "Bu ilacı günde üç kez al."},
             {"kind": "question", "prompt": "Doktor ne diyor?", "choices": ["Dinlenmeli ve bol su içmeli", "Okula gitmeli", "Futbol oynamalı"], "answer": "Dinlenmeli ve bol su içmeli"},
             {"kind": "line", "speaker": "Kerem", "avatar": "👦", "text": "Can I play football tomorrow?", "translation": "Yarın futbol oynayabilir miyim?"},
@@ -963,12 +965,12 @@
           "description": "you should, medicine, appointment",
           "exercises": [
             {"type": "select", "prompt": "hastane", "answer": "hospital", "choices": [{"text": "pharmacy", "emoji": "⚕️"}, {"text": "hospital", "emoji": "🏥"}, {"text": "doctor", "emoji": "🩺"}, {"text": "bed", "emoji": "🛏️"}]},
-            {"type": "fillBlank", "text": "You ___ drink a lot of water.", "translation": "Bol su içmelisin.", "answer": "should", "choices": ["should", "are", "did"]},
+            {"type": "fillBlank", "text": "You ___ drink a lot of water.", "translation": "Bol su içmelisin.", "answer": "should", "choices": ["should", "are", "is"]},
             {"type": "translate", "text": "Dinlenmelisin.", "lang": "tr", "answers": ["You should rest", "You must rest"], "tokens": ["You", "should", "rest", "I", "sleep", "rested"]},
             {"type": "select", "prompt": "ilaç", "answer": "medicine", "choices": [{"text": "water", "emoji": "💧"}, {"text": "tea", "emoji": "🍵"}, {"text": "medicine", "emoji": "💊"}, {"text": "soup", "emoji": "🍲"}]},
             {"type": "translate", "text": "Take this medicine three times a day.", "lang": "en", "answers": ["Bu ilacı günde üç kez al", "Bu ilacı günde üç defa al"], "tokens": ["Bu", "ilacı", "günde", "üç", "kez", "al", "iki", "haftada", "su"]},
             {"type": "listen", "text": "You should stay in bed", "answers": ["You should stay in bed"]},
-            {"type": "fillBlank", "text": "I have an ___ with the doctor at ten.", "translation": "Saat onda doktordan randevum var.", "answer": "appointment", "choices": ["appointment", "apartment", "hospital"]},
+            {"type": "fillBlank", "text": "I have an ___ with the doctor at ten.", "translation": "Saat onda doktordan randevum var.", "answer": "appointment", "choices": ["appointment", "apartment", "office"]},
             {"type": "match", "pairs": [["doktor", "doctor"], ["hemşire", "nurse"], ["eczane", "pharmacy"], ["hastane", "hospital"], ["randevu", "appointment"]]},
             {"type": "translate", "text": "Bugün okula gitmemelisin.", "lang": "tr", "answers": ["You shouldn't go to school today", "You should not go to school today"], "tokens": ["You", "shouldn't", "go", "to", "school", "today", "should", "work", "tomorrow"]},
             {"type": "speak", "text": "You should see a doctor", "translation": "Bir doktora görünmelisin."}
@@ -998,7 +1000,7 @@
             {"type": "listen", "text": "What's the weather like today?", "answers": ["What's the weather like today", "What is the weather like today"]},
             {"type": "fillBlank", "text": "It is ___. Everything is white.", "translation": "Kar yağıyor. Her yer beyaz.", "answer": "snowing", "choices": ["snowing", "raining", "sunny"]},
             {"type": "match", "pairs": [["güneş", "sun"], ["yağmur", "rain"], ["kar", "snow"], ["rüzgâr", "wind"], ["bulut", "cloud"]]},
-            {"type": "translate", "text": "Bugün hava nasıl?", "lang": "tr", "answers": ["What's the weather like today", "What is the weather like today", "How is the weather today"], "tokens": ["What's", "the", "weather", "like", "today", "how", "are", "tomorrow"]},
+            {"type": "translate", "text": "Bugün hava nasıl?", "lang": "tr", "answers": ["What's the weather like today", "What is the weather like today", "How is the weather today", "How's the weather today"], "tokens": ["What's", "the", "weather", "like", "today", "how", "are", "tomorrow"]},
             {"type": "speak", "text": "It is sunny today", "translation": "Bugün hava güneşli."}
           ]
         },
@@ -1009,10 +1011,10 @@
           "description": "spring, summer, autumn, winter",
           "exercises": [
             {"type": "select", "prompt": "kış", "answer": "winter", "choices": [{"text": "summer", "emoji": "🏖️"}, {"text": "winter", "emoji": "⛄"}, {"text": "spring", "emoji": "🌸"}, {"text": "autumn", "emoji": "🍂"}]},
-            {"type": "fillBlank", "text": "We go to the beach in ___.", "translation": "Yazın plaja gideriz.", "answer": "summer", "choices": ["summer", "winter", "snow"]},
+            {"type": "fillBlank", "text": "We go to the beach in ___.", "translation": "Yazın plaja gideriz.", "answer": "summer", "choices": ["summer", "snow", "hot"]},
             {"type": "translate", "text": "Kışın kar yağar.", "lang": "tr", "answers": ["It snows in winter", "In winter it snows"], "tokens": ["It", "snows", "in", "winter", "summer", "rains", "on"]},
             {"type": "select", "prompt": "ilkbahar", "answer": "spring", "choices": [{"text": "autumn", "emoji": "🍂"}, {"text": "summer", "emoji": "🏖️"}, {"text": "winter", "emoji": "⛄"}, {"text": "spring", "emoji": "🌸"}]},
-            {"type": "translate", "text": "My favorite season is autumn.", "lang": "en", "answers": ["En sevdiğim mevsim sonbahar", "Benim en sevdiğim mevsim sonbahar"], "tokens": ["En", "sevdiğim", "mevsim", "sonbahar", "kış", "yaz", "senin"]},
+            {"type": "translate", "text": "My favorite season is autumn.", "lang": "en", "answers": ["En sevdiğim mevsim sonbahar", "Benim en sevdiğim mevsim sonbahar", "En sevdiğim mevsim sonbahardır", "En sevdiğim mevsim güz"], "tokens": ["En", "sevdiğim", "mevsim", "sonbahar", "kış", "yaz", "senin"]},
             {"type": "listen", "text": "In summer the days are long", "answers": ["In summer the days are long"]},
             {"type": "fillBlank", "text": "Which season do you ___?", "translation": "Hangi mevsimi seversin?", "answer": "like", "choices": ["like", "likes", "liking"]},
             {"type": "match", "pairs": [["ilkbahar", "spring"], ["yaz", "summer"], ["sonbahar", "autumn"], ["kış", "winter"], ["mevsim", "season"]]},
@@ -1049,13 +1051,13 @@
           "exercises": [
             {"type": "select", "prompt": "daha sıcak", "answer": "hotter", "choices": [{"text": "hotter", "emoji": "🔥"}, {"text": "colder", "emoji": "🧊"}, {"text": "bigger", "emoji": "🐘"}, {"text": "smaller", "emoji": "🐭"}]},
             {"type": "fillBlank", "text": "Ankara is ___ than Antalya in winter.", "translation": "Kışın Ankara, Antalya'dan daha soğuktur.", "answer": "colder", "choices": ["colder", "cold", "coldest"]},
-            {"type": "translate", "text": "Bugün dünden daha sıcak.", "lang": "tr", "answers": ["Today is hotter than yesterday", "Today is warmer than yesterday", "It is hotter today than yesterday"], "tokens": ["Today", "is", "hotter", "than", "yesterday", "colder", "then", "more"]},
+            {"type": "translate", "text": "Bugün dünden daha sıcak.", "lang": "tr", "answers": ["Today is hotter than yesterday", "Today is warmer than yesterday", "It is hotter today than yesterday", "It is warmer today than yesterday", "It's hotter today than yesterday", "It's warmer today than yesterday"], "tokens": ["Today", "is", "hotter", "than", "yesterday", "colder", "then", "more"]},
             {"type": "select", "prompt": "daha hızlı", "answer": "faster", "choices": [{"text": "slower", "emoji": "🐢"}, {"text": "faster", "emoji": "🚀"}, {"text": "bigger", "emoji": "🐘"}, {"text": "colder", "emoji": "🧊"}]},
             {"type": "translate", "text": "The train is faster than the bus.", "lang": "en", "answers": ["Tren otobüsten daha hızlı", "Tren otobüsten hızlı"], "tokens": ["Tren", "otobüsten", "daha", "hızlı", "yavaş", "uçaktan", "değil"]},
             {"type": "listen", "text": "Summer is better than winter", "answers": ["Summer is better than winter"]},
             {"type": "fillBlank", "text": "London is ___ than İstanbul.", "translation": "Londra, İstanbul'dan daha yağmurlu.", "answer": "rainier", "choices": ["rainier", "rainy", "rainiest"]},
             {"type": "match", "pairs": [["daha sıcak", "hotter"], ["daha soğuk", "colder"], ["daha iyi", "better"], ["daha kötü", "worse"], ["daha güzel", "more beautiful"]]},
-            {"type": "translate", "text": "Kardeşim benden daha uzun.", "lang": "tr", "answers": ["My brother is taller than me", "My sister is taller than me", "My brother is taller than I am"], "tokens": ["My", "brother", "is", "taller", "than", "me", "tall", "then", "more"]},
+            {"type": "translate", "text": "Kardeşim benden daha uzun.", "lang": "tr", "answers": ["My brother is taller than me", "My sister is taller than me", "My brother is taller than I am", "My sister is taller than I am"], "tokens": ["My", "brother", "is", "taller", "than", "me", "tall", "then", "more"]},
             {"type": "speak", "text": "Spring is warmer than winter", "translation": "İlkbahar kıştan daha sıcaktır."}
           ]
         },
@@ -1077,13 +1079,13 @@
           "exercises": [
             {"type": "select", "prompt": "gelecek yıl", "answer": "next year", "choices": [{"text": "next year", "emoji": "🗓️"}, {"text": "yesterday", "emoji": "⏪"}, {"text": "now", "emoji": "⏱️"}, {"text": "never", "emoji": "🚫"}]},
             {"type": "fillBlank", "text": "I ___ call you tomorrow.", "translation": "Seni yarın arayacağım.", "answer": "will", "choices": ["will", "am", "did"]},
-            {"type": "translate", "text": "Yarın yağmur yağacak.", "lang": "tr", "answers": ["It will rain tomorrow", "It'll rain tomorrow"], "tokens": ["It", "will", "rain", "tomorrow", "rained", "is", "today"]},
+            {"type": "translate", "text": "Yarın yağmur yağacak.", "lang": "tr", "answers": ["It will rain tomorrow", "It'll rain tomorrow", "It is going to rain tomorrow", "It's going to rain tomorrow", "Tomorrow it will rain"], "tokens": ["It", "will", "rain", "tomorrow", "rained", "is", "today"]},
             {"type": "select", "prompt": "yardım etmek", "answer": "help", "choices": [{"text": "sleep", "emoji": "😴"}, {"text": "help", "emoji": "🤝"}, {"text": "run", "emoji": "🏃"}, {"text": "sing", "emoji": "🎤"}]},
             {"type": "translate", "text": "I think she will win.", "lang": "en", "answers": ["Bence o kazanacak", "Bence kazanacak", "Sanırım o kazanacak"], "tokens": ["Bence", "o", "kazanacak", "kaybedecek", "kazandı", "ben"]},
             {"type": "listen", "text": "I will help you with your homework", "answers": ["I will help you with your homework"]},
             {"type": "fillBlank", "text": "Don't worry, I won't ___.", "translation": "Merak etme, unutmayacağım.", "answer": "forget", "choices": ["forget", "forgot", "forgets"]},
             {"type": "match", "pairs": [["yardım etmek", "help"], ["söz vermek", "promise"], ["unutmak", "forget"], ["kazanmak", "win"], ["gelecek yıl", "next year"]]},
-            {"type": "translate", "text": "Sana yardım edeceğim.", "lang": "tr", "answers": ["I will help you", "I'll help you"], "tokens": ["I", "will", "help", "you", "helped", "me", "am"]},
+            {"type": "translate", "text": "Sana yardım edeceğim.", "lang": "tr", "answers": ["I will help you", "I'll help you", "I am going to help you", "I'm going to help you"], "tokens": ["I", "will", "help", "you", "helped", "me", "am"]},
             {"type": "speak", "text": "I will call you later", "translation": "Seni sonra arayacağım."}
           ]
         },
@@ -1095,9 +1097,9 @@
           "exercises": [
             {"type": "select", "prompt": "dondurma", "answer": "ice cream", "choices": [{"text": "cake", "emoji": "🍰"}, {"text": "pizza", "emoji": "🍕"}, {"text": "ice cream", "emoji": "🍦"}, {"text": "sandwich", "emoji": "🥪"}]},
             {"type": "fillBlank", "text": "I would ___ a glass of water, please.", "translation": "Bir bardak su istiyorum, lütfen.", "answer": "like", "choices": ["like", "likes", "liking"]},
-            {"type": "translate", "text": "Bir dondurma ister misin?", "lang": "tr", "answers": ["Would you like an ice cream", "Would you like ice cream", "Do you want an ice cream"], "tokens": ["Would", "you", "like", "an", "ice", "cream", "a", "cake", "is"]},
+            {"type": "translate", "text": "Bir dondurma ister misin?", "lang": "tr", "answers": ["Would you like an ice cream", "Would you like ice cream", "Do you want an ice cream", "Do you want ice cream"], "tokens": ["Would", "you", "like", "an", "ice", "cream", "a", "cake", "is"]},
             {"type": "select", "prompt": "sinema", "answer": "cinema", "choices": [{"text": "concert", "emoji": "🎵"}, {"text": "beach", "emoji": "🏖️"}, {"text": "museum", "emoji": "🏛️"}, {"text": "cinema", "emoji": "🎬"}]},
-            {"type": "translate", "text": "I want to learn English.", "lang": "en", "answers": ["İngilizce öğrenmek istiyorum"], "tokens": ["İngilizce", "öğrenmek", "istiyorum", "Türkçe", "öğreniyorum", "sen"]},
+            {"type": "translate", "text": "I want to learn English.", "lang": "en", "answers": ["İngilizce öğrenmek istiyorum", "Ben İngilizce öğrenmek istiyorum"], "tokens": ["İngilizce", "öğrenmek", "istiyorum", "Türkçe", "öğreniyorum", "sen"]},
             {"type": "listen", "text": "Would you like to come to the cinema?", "answers": ["Would you like to come to the cinema"]},
             {"type": "fillBlank", "text": "She wants ___ be a doctor.", "translation": "O doktor olmak istiyor.", "answer": "to", "choices": ["to", "for", "at"]},
             {"type": "match", "pairs": [["istemek", "want"], ["öğrenmek", "learn"], ["olmak", "be"], ["seyahat etmek", "travel"], ["dondurma", "ice cream"]]},
@@ -1113,7 +1115,7 @@
           "rewardXp": 15,
           "steps": [
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "I will go back to London next month.", "translation": "Gelecek ay Londra'ya döneceğim."},
-            {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "Oh no! We will miss you, Sam.", "translation": "Eyvah! Seni özleyeceğiz, Sam."},
+            {"kind": "line", "speaker": "Elif", "avatar": "👩", "text": "Oh no! We will miss you, Sam.", "translation": "Olamaz! Seni özleyeceğiz, Sam."},
             {"kind": "line", "speaker": "Kerem", "avatar": "👦", "text": "Will you come back to İstanbul?", "translation": "İstanbul'a geri gelecek misin?"},
             {"kind": "line", "speaker": "Sam", "avatar": "🧑", "text": "Yes, I promise! I want to see Cappadocia again.", "translation": "Evet, söz veriyorum! Kapadokya'yı tekrar görmek istiyorum."},
             {"kind": "question", "prompt": "Sam gelecek ay nereye gidecek?", "choices": ["Londra'ya", "Kapadokya'ya", "İzmir'e"], "answer": "Londra'ya"},
