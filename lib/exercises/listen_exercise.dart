@@ -8,10 +8,19 @@ import 'common.dart';
 
 /// Hear an English sentence and type it.
 class ListenExercise extends ConsumerStatefulWidget {
-  const ListenExercise({super.key, required this.ex, required this.locked, required this.onReady});
+  const ListenExercise({
+    super.key,
+    required this.ex,
+    required this.locked,
+    required this.onReady,
+    this.onText,
+  });
   final Exercise ex;
   final bool locked;
   final ReadyCallback onReady;
+
+  /// Reports what the user typed (for the "Neden yanlış?" panel).
+  final ValueChanged<String>? onText;
 
   @override
   ConsumerState<ListenExercise> createState() => _ListenExerciseState();
@@ -57,8 +66,10 @@ class _ListenExerciseState extends ConsumerState<ListenExercise> {
           textCapitalization: TextCapitalization.sentences,
           style: const TextStyle(fontSize: 18),
           decoration: const InputDecoration(hintText: 'İngilizce yaz'),
-          onChanged: (text) =>
-              widget.onReady(text.trim().isEmpty ? null : () => matchesAny(_input.text, ex.answers)),
+          onChanged: (text) {
+            widget.onText?.call(text);
+            widget.onReady(text.trim().isEmpty ? null : () => matchesAny(_input.text, ex.answers));
+          },
         ),
       ],
     );

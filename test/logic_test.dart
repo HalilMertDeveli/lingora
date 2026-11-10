@@ -245,6 +245,9 @@ void main() {
       expect((await say('I am agree with you')).correction, 'I agree with you');
       expect((await say('She like coffee')).correction, 'She likes coffee');
       expect((await say('I have 25 years')).correction, 'I am 25 years old');
+      expect((await say('He go to home')).correction, 'He goes home');
+      expect((await say('I want coffee')).correction, 'I would like a coffee, please');
+      expect((await say('I listen music')).tipTr, contains('"to"'));
       final fine = await say('A latte, please.');
       expect(fine.correction, isNull);
       expect(fine.reply, isNotEmpty);

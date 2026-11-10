@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../theme.dart';
 import 'onboarding_screen.dart';
@@ -53,6 +54,10 @@ class ProfileScreen extends ConsumerWidget {
             _StatCard(Icons.track_changes, Brand.success, '%$accuracy', 'Doğruluk'),
           ],
         ),
+        const SizedBox(height: 24),
+        Text('Sık yaptığın hatalar', style: t.titleLarge),
+        const SizedBox(height: 12),
+        TapCard(child: _ErrorStatsCard(progress: p)),
         const SizedBox(height: 24),
         Text('Son 7 gün', style: t.titleLarge),
         const SizedBox(height: 12),
@@ -177,6 +182,73 @@ class _WeekChart extends StatelessWidget {
             ),
         ],
       ),
+    );
+  }
+}
+
+/// "Sık yaptığın hatalar": the Türk hata dedektörü's most frequent
+/// categories with a tip for the top one.
+class _ErrorStatsCard extends StatelessWidget {
+  const _ErrorStatsCard({required this.progress});
+  final Progress progress;
+
+  @override
+  Widget build(BuildContext context) {
+    final top = progress.topErrorCategories();
+    if (top.isEmpty) {
+      return const Row(
+        children: [
+          Text('🔍', style: TextStyle(fontSize: 24)),
+          SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              'Henüz kayıtlı hata yok. Ders, günlük ve sohbette yaptığın hatalar burada toplanır; '
+              'en sık olanlara özel ipuçları göreceksin.',
+              style: TextStyle(color: Brand.muted),
+            ),
+          ),
+        ],
+      );
+    }
+    final most = top.first.$2;
+    final TrErrorCategory first = top.first.$1;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (final (category, count) in top)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(category.label, style: const TextStyle(fontWeight: FontWeight.w800)),
+                    ),
+                    Text('$count kez', style: const TextStyle(color: Brand.muted, fontSize: 13)),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(6),
+                  child: LinearProgressIndicator(
+                    value: count / most,
+                    minHeight: 8,
+                    color: Brand.error,
+                    backgroundColor: Brand.line,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(color: const Color(0xFFFFF4DC), borderRadius: BorderRadius.circular(12)),
+          child: Text('💡 İpucu: ${first.tip}', style: const TextStyle(height: 1.3)),
+        ),
+      ],
     );
   }
 }

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/tr_errors.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
@@ -17,6 +18,7 @@ import '../models/course.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../ui/why_wrong.dart';
 import 'lesson_result_screen.dart';
 
 const baseLessonXp = 10;
@@ -80,13 +82,33 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   /// null while answering; true/false after "Kontrol et".
   bool? _lastCorrect;
 
+  /// English sentence the user built or typed (translate, listen).
+  String _answerText = '';
+
+  /// "Neden yanlış?" content after a wrong English answer.
+  WhyWrongSection? _why;
+
   LessonItem get _current => _queue[_pos];
   bool get _requeues => widget.mode != LessonMode.test;
+
+  /// Runs the Türk hata dedektörü on a wrong English answer.
+  WhyWrongSection? _explain(Exercise ex) {
+    final english = ex.type == ExerciseType.listen || (ex.type == ExerciseType.translate && ex.lang == 'tr');
+    if (!english || _answerText.trim().isEmpty || ex.answers.isEmpty) return null;
+    final expected = closestAnswer(_answerText, ex.answers);
+    final errors = detectTrErrors(_answerText, expected: expected);
+    ref.read(progressProvider.notifier).recordTrErrors(errors);
+    final diff = answerWordDiff(_answerText, expected);
+    final why = WhyWrongSection(errors: errors, missing: diff.missing, extra: diff.extra);
+    return why.isEmpty ? null : why;
+  }
 
   void _check() {
     final correct = _grader!.call();
     final notifier = ref.read(progressProvider.notifier);
+    final why = correct ? null : _explain(_current.ex);
     setState(() {
+      _why = why;
       _answered++;
       _lastCorrect = correct;
       if (correct) {
@@ -136,6 +158,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       _pos++;
       _grader = null;
       _lastCorrect = null;
+      _answerText = '';
+      _why = null;
     });
   }
 
@@ -216,13 +240,26 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final ex = _current.ex;
     final locked = _lastCorrect != null;
     void onReady(Grader? g) => setState(() => _grader = g);
+    void onText(String t) => _answerText = t;
     // Key by position so a re-queued exercise starts fresh.
     final key = ValueKey('$_pos-${ex.type}');
     return switch (ex.type) {
       ExerciseType.select => SelectExercise(key: key, ex: ex, locked: locked, onReady: onReady),
-      ExerciseType.translate => TranslateExercise(key: key, ex: ex, locked: locked, onReady: onReady),
+      ExerciseType.translate => TranslateExercise(
+        key: key,
+        ex: ex,
+        locked: locked,
+        onReady: onReady,
+        onText: onText,
+      ),
       ExerciseType.fillBlank => FillBlankExercise(key: key, ex: ex, locked: locked, onReady: onReady),
-      ExerciseType.listen => ListenExercise(key: key, ex: ex, locked: locked, onReady: onReady),
+      ExerciseType.listen => ListenExercise(
+        key: key,
+        ex: ex,
+        locked: locked,
+        onReady: onReady,
+        onText: onText,
+      ),
       ExerciseType.match => MatchExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.speak => SpeakExercise(key: key, ex: ex, locked: locked, onReady: onReady, onSkip: _skip),
     };
@@ -339,6 +376,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                         key: ValueKey('fb$_answered'),
                         correct: _lastCorrect!,
                         answer: _current.ex.displayAnswer,
+                        why: _why,
                         praise: _combo >= 3 ? '$_combo doğru üst üste!' : _praise[_answered % _praise.length],
                         onContinue: _continue,
                       ),
@@ -373,12 +411,14 @@ class _FeedbackPanel extends StatelessWidget {
     required this.correct,
     required this.answer,
     required this.praise,
+    this.why,
     required this.onContinue,
   });
 
   final bool correct;
   final String answer;
   final String praise;
+  final WhyWrongSection? why;
   final VoidCallback onContinue;
 
   @override
@@ -419,6 +459,14 @@ class _FeedbackPanel extends StatelessWidget {
               Mascot(mood: ok ? Mood.happy : Mood.sad, size: 64),
             ],
           ),
+          if (!ok && why != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 200),
+                child: SingleChildScrollView(child: why),
+              ),
+            ),
           const SizedBox(height: 10),
           PressableButton(label: 'DEVAM', color: fg, onPressed: onContinue),
         ],

@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../core/tr_errors.dart';
 import 'catalog.dart';
 import 'league.dart';
 import 'quests.dart';
@@ -41,6 +42,7 @@ class Progress {
     this.wordBox = const {},
     this.wordDue = const {},
     this.diary = const {},
+    this.errorStats = const {},
   });
 
   /// Selected course or exam (see catalog.dart).
@@ -57,6 +59,19 @@ class Progress {
 
   /// English diary: day key → text.
   final Map<String, String> diary;
+
+  /// Türk hata dedektörü: how often each [TrErrorCategory] (by name) was
+  /// found in the user's answers, diary and conversations.
+  final Map<String, int> errorStats;
+
+  /// Most frequent mistake categories, most frequent first.
+  List<(TrErrorCategory, int)> topErrorCategories([int count = 3]) {
+    final list = [
+      for (final e in errorStats.entries)
+        if (TrErrorCategory.byName(e.key) case final c? when e.value > 0) (c, e.value),
+    ]..sort((a, b) => b.$2.compareTo(a.$2));
+    return list.take(count).toList();
+  }
 
   /// Exercises answered wrong, as "nodeId#index", oldest first.
   final List<String> mistakes;
@@ -146,6 +161,7 @@ class Progress {
     Map<String, int>? wordBox,
     Map<String, String>? wordDue,
     Map<String, String>? diary,
+    Map<String, int>? errorStats,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -170,6 +186,7 @@ class Progress {
     wordBox: wordBox ?? this.wordBox,
     wordDue: wordDue ?? this.wordDue,
     diary: diary ?? this.diary,
+    errorStats: errorStats ?? this.errorStats,
   );
 
   Map<String, dynamic> toJson() => {
@@ -196,6 +213,7 @@ class Progress {
     'wordBox': wordBox,
     'wordDue': wordDue,
     'diary': diary,
+    'errorStats': errorStats,
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -224,6 +242,7 @@ class Progress {
     wordBox: (j['wordBox'] as Map?)?.cast<String, int>() ?? const {},
     wordDue: (j['wordDue'] as Map?)?.cast<String, String>() ?? const {},
     diary: (j['diary'] as Map?)?.cast<String, String>() ?? const {},
+    errorStats: (j['errorStats'] as Map?)?.cast<String, int>() ?? const {},
   );
 }
 
@@ -423,6 +442,18 @@ class ProgressNotifier extends Notifier<Progress> {
     final diary = {...state.diary};
     text.trim().isEmpty ? diary.remove(day) : diary[day] = text.trim();
     _save(state.copyWith(diary: diary));
+  }
+
+  /// Counts the categories of mistakes the hata dedektörü found, each
+  /// category once per check.
+  void recordTrErrors(Iterable<TrError> errors) {
+    final names = errors.map((e) => e.category.name).toSet();
+    if (names.isEmpty) return;
+    final stats = {...state.errorStats};
+    for (final n in names) {
+      stats[n] = (stats[n] ?? 0) + 1;
+    }
+    _save(state.copyWith(errorStats: stats));
   }
 
   void dismissLeagueResult() => _save(state.copyWith(clearLeagueResult: true));

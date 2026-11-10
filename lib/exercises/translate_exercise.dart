@@ -8,10 +8,19 @@ import 'common.dart';
 
 /// Build the translation by tapping words from a shuffled word bank.
 class TranslateExercise extends StatefulWidget {
-  const TranslateExercise({super.key, required this.ex, required this.locked, required this.onReady});
+  const TranslateExercise({
+    super.key,
+    required this.ex,
+    required this.locked,
+    required this.onReady,
+    this.onText,
+  });
   final Exercise ex;
   final bool locked;
   final ReadyCallback onReady;
+
+  /// Reports the sentence built so far (for the "Neden yanlış?" panel).
+  final ValueChanged<String>? onText;
 
   @override
   State<TranslateExercise> createState() => _TranslateExerciseState();
@@ -24,9 +33,9 @@ class _TranslateExerciseState extends State<TranslateExercise> {
   void _update(VoidCallback change) {
     if (widget.locked) return;
     setState(change);
-    widget.onReady(
-      _chosen.isEmpty ? null : () => matchesAny(_chosen.map((i) => _bank[i]).join(' '), widget.ex.answers),
-    );
+    final text = _chosen.map((i) => _bank[i]).join(' ');
+    widget.onText?.call(text);
+    widget.onReady(_chosen.isEmpty ? null : () => matchesAny(text, widget.ex.answers));
   }
 
   @override

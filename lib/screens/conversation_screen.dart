@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../data/scenarios.dart';
 import '../services/conversation.dart';
@@ -194,6 +195,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
         _waiting = false;
       });
       turn.correction == null ? Haptics.success() : Haptics.tap();
+      ref.read(progressProvider.notifier).recordTrErrors(detectTrErrors(text));
       _speech.say(turn.reply);
     } on ConversationException catch (e) {
       if (!mounted) return;
