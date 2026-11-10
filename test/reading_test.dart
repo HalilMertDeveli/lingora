@@ -1,0 +1,235 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:lingora/data/notes_practice.dart';
+import 'package:lingora/data/notes_repository.dart';
+import 'package:lingora/data/progress.dart';
+import 'package:lingora/data/reading_repository.dart';
+import 'package:lingora/models/notes.dart';
+import 'package:lingora/models/reading.dart';
+import 'package:lingora/screens/notes_screen.dart';
+import 'package:lingora/screens/reading_screen.dart';
+import 'package:lingora/services/speech.dart';
+import 'package:lingora/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class _FakeSpeech implements SpeechService {
+  final said = <String>[];
+  @override
+  Future<void> say(String text, {String lang = 'en', bool slow = false}) async => said.add(text);
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+}
+
+final _stories = parseStories(File('assets/reading/stories.json').readAsStringSync());
+
+const _emptyNotes = NotesBundle(words: [], topics: [], diaryPrompts: []);
+
+void main() {
+  group('reading stories', () {
+    test('15 stories, 5 per level, unique ids', () {
+      expect(_stories, hasLength(15));
+      expect(_stories.map((s) => s.id).toSet(), hasLength(15));
+      for (final level in readingLevels) {
+        expect(_stories.where((s) => s.level == level), hasLength(5), reason: level);
+      }
+      expect(_stories.every((s) => readingLevels.contains(s.level)), isTrue);
+    });
+
+    for (final s in _stories) {
+      test('${s.id} is well formed', () {
+        expect(s.wordCount, inInclusiveRange(80, 250));
+        expect(s.title.trim(), isNotEmpty);
+        expect(s.titleTr.trim(), isNotEmpty);
+        expect(s.glosses, isNotEmpty);
+        for (final e in s.glosses.entries) {
+          expect(e.key.trim(), isNotEmpty);
+          expect(e.value.trim(), isNotEmpty, reason: e.key);
+        }
+        expect(s.questions.length, inInclusiveRange(3, 4));
+        for (final q in s.questions) {
+          expect(q.options.length, greaterThanOrEqualTo(2), reason: q.q);
+          expect(q.options.toSet(), hasLength(q.options.length), reason: q.q);
+          expect(q.answer, inInclusiveRange(0, q.options.length - 1), reason: q.q);
+          expect(q.explain.trim(), isNotEmpty, reason: q.q);
+        }
+      });
+
+      test('${s.id}: every gloss can be tapped in the text', () {
+        final glossed = {
+          for (final p in tokenizeStory(s))
+            for (final t in p)
+              if (t.gloss != null) t.word,
+        };
+        for (final key in s.glosses.keys) {
+          expect(glossed, contains(key), reason: '${s.id}: "$key"');
+        }
+      });
+    }
+
+    test('sentences split on full stops but not on titles', () {
+      final story = _stories.firstWhere((s) => s.id == 'a1_neighbour');
+      final sentences = storySentences(tokenizeStory(story));
+      expect(sentences.first, 'We have a new neighbour.');
+      expect(sentences[1], 'His name is Mr. Kaya.');
+    });
+  });
+
+  group('user-added words', () {
+    late ProviderContainer c;
+    final now = DateTime(2026, 11, 10, 9);
+
+    setUp(() async {
+      SharedPreferences.setMockInitialValues({});
+      final prefs = await SharedPreferences.getInstance();
+      c = ProviderContainer(
+        overrides: [prefsProvider.overrideWithValue(prefs), clockProvider.overrideWithValue(() => now)],
+      );
+    });
+    tearDown(() => c.dispose());
+
+    test('persist, are not duplicated and appear in review', () {
+      final n = c.read(progressProvider.notifier);
+      expect(n.addCustomWord(customWord('Seagull', 'martı', example: 'A seagull catches it.')), isTrue);
+      expect(n.addCustomWord(customWord('seagull', 'martı')), isFalse);
+
+      final p = c.read(progressProvider);
+      final restored = Progress.fromJson(p.toJson());
+      expect(restored.customWords.single.en, 'Seagull');
+      expect(restored.customWords.single.topic, customTopic);
+      expect(restored.customWords.single.example, 'A seagull catches it.');
+
+      const notes = NotesBundle(
+        words: [NoteWord(id: 'w_ferry', en: 'ferry', tr: 'vapur', topic: 'Genel')],
+        topics: [],
+        diaryPrompts: [],
+      );
+      final words = dictionaryWords(notes, p);
+      expect(words.map((w) => w.en), ['ferry', 'Seagull']);
+      expect(findWord(words, 'SEAGULL')?.tr, 'martı');
+      expect(wordsToReview(words, p, now).map((w) => w.en), contains('Seagull'));
+
+      final id = customWordId('Seagull');
+      n.reviewWord(id, known: false);
+      expect(dueWordCount(words, c.read(progressProvider), now), 1);
+      expect(wordsToReview(words, c.read(progressProvider), now).first.id, id);
+
+      n.removeCustomWord(id);
+      expect(c.read(progressProvider).customWords, isEmpty);
+      expect(c.read(progressProvider).wordBox.containsKey(id), isFalse);
+    });
+  });
+
+  group('reading screens', () {
+    late _FakeSpeech speech;
+
+    Future<ProviderContainer> pump(WidgetTester tester, Widget home) async {
+      SharedPreferences.setMockInitialValues({});
+      final prefs = await SharedPreferences.getInstance();
+      await tester.binding.setSurfaceSize(const Size(420, 900));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
+        disableAnimations: true,
+      );
+      addTearDown(tester.platformDispatcher.clearAccessibilityFeaturesTestValue);
+      speech = _FakeSpeech();
+      final c = ProviderContainer(
+        overrides: [
+          prefsProvider.overrideWithValue(prefs),
+          speechProvider.overrideWithValue(speech),
+          notesProvider.overrideWith((ref) async => _emptyNotes),
+          storiesProvider.overrideWith((ref) async => _stories),
+        ],
+      );
+      addTearDown(c.dispose);
+      await tester.pumpWidget(
+        UncontrolledProviderScope(
+          container: c,
+          child: MaterialApp(theme: buildTheme(), home: home),
+        ),
+      );
+      await tester.pumpAndSettle();
+      return c;
+    }
+
+    testWidgets('open a story, tap a glossed word, add it, listen and answer', (tester) async {
+      final c = await pump(tester, const ReadingLibraryScreen());
+      expect(find.text('0/5'), findsNWidgets(2));
+
+      await tester.tap(find.text('The Ferry to Kadıköy'));
+      await tester.pumpAndSettle();
+
+      await tester.scrollUntilVisible(find.text('seagulls'), 200);
+      await tester.tap(find.text('seagulls'));
+      await tester.pumpAndSettle();
+      expect(find.text('martılar'), findsOneWidget);
+      await tester.tap(find.byTooltip('Telaffuz'));
+      expect(speech.said.last, 'seagulls');
+
+      await tester.tap(find.text('Sözlüğüme ekle'));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Sözlüğüne eklendi'), findsOneWidget);
+      final added = c.read(progressProvider).customWords.single;
+      expect(added.en, 'seagulls');
+      expect(added.tr, 'martılar');
+      expect(added.example, 'There are many seagulls behind the ferry.');
+      Navigator.of(tester.element(find.text('martılar'))).pop();
+      await tester.pumpAndSettle();
+
+      // Sentence-by-sentence listening.
+      await tester.tap(find.byTooltip('Dinle'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.textContaining('Cümle 1/'));
+      expect(speech.said.last, 'My name is Elif.');
+      await tester.tap(find.byTooltip('Sonraki cümle'));
+      await tester.pumpAndSettle();
+      expect(speech.said.last, 'I live in Beşiktaş, and I work in Kadıköy.');
+
+      await tester.tap(find.byTooltip('Dinlemeyi kapat'));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(find.text('SORULARA GEÇ'), 300);
+      await tester.tap(find.text('SORULARA GEÇ'));
+      await tester.pumpAndSettle();
+
+      final story = _stories.first;
+      for (var i = 0; i < story.questions.length; i++) {
+        final q = story.questions[i];
+        // A wrong pick on the first question only asks to try again.
+        if (i == 0) {
+          await tester.tap(find.text(q.options[(q.answer + 1) % q.options.length]));
+          await tester.pumpAndSettle();
+          expect(find.textContaining('bir daha dene'), findsOneWidget);
+        }
+        await tester.tap(find.text(q.options[q.answer]));
+        await tester.pumpAndSettle();
+        expect(find.text('💡 ${q.explain}'), findsOneWidget);
+        await tester.tap(find.text(i == story.questions.length - 1 ? 'BİTİR' : 'DEVAM'));
+        await tester.pumpAndSettle();
+      }
+
+      expect(find.textContaining('Hikâye bitti!'), findsOneWidget);
+      final p = c.read(progressProvider);
+      expect(p.isDone(readNodeId(story.id)), isTrue);
+      expect(p.totalXp, 10 + (story.questions.length - 1) * 2);
+      // Let the result screen's delayed animations finish.
+      await tester.pump(const Duration(seconds: 5));
+    });
+
+    testWidgets('a word can be added to the dictionary by hand', (tester) async {
+      final c = await pump(tester, const WordListScreen(notes: _emptyNotes));
+      await tester.tap(find.text('Kelime ekle'));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byKey(const ValueKey('add-en')), 'deadline');
+      await tester.enterText(find.byKey(const ValueKey('add-tr')), 'son teslim tarihi');
+      await tester.tap(find.text('Ekle'));
+      await tester.pumpAndSettle();
+
+      expect(c.read(progressProvider).customWords.single.tr, 'son teslim tarihi');
+      expect(find.text('deadline'), findsOneWidget);
+      expect(find.text(customTopic), findsOneWidget);
+      expect(find.text('Sözlüğüm (1)'), findsOneWidget);
+    });
+  });
+}

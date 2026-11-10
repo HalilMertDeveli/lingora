@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/notes.dart';
 import 'catalog.dart';
 import 'league.dart';
 import 'quests.dart';
@@ -41,6 +42,7 @@ class Progress {
     this.wordBox = const {},
     this.wordDue = const {},
     this.diary = const {},
+    this.customWords = const [],
   });
 
   /// Selected course or exam (see catalog.dart).
@@ -57,6 +59,10 @@ class Progress {
 
   /// English diary: day key → text.
   final Map<String, String> diary;
+
+  /// Words the user added to the personal dictionary themselves (from
+  /// reading or by hand), merged with assets/notes/words.json.
+  final List<NoteWord> customWords;
 
   /// Exercises answered wrong, as "nodeId#index", oldest first.
   final List<String> mistakes;
@@ -146,6 +152,7 @@ class Progress {
     Map<String, int>? wordBox,
     Map<String, String>? wordDue,
     Map<String, String>? diary,
+    List<NoteWord>? customWords,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -170,6 +177,7 @@ class Progress {
     wordBox: wordBox ?? this.wordBox,
     wordDue: wordDue ?? this.wordDue,
     diary: diary ?? this.diary,
+    customWords: customWords ?? this.customWords,
   );
 
   Map<String, dynamic> toJson() => {
@@ -196,6 +204,7 @@ class Progress {
     'wordBox': wordBox,
     'wordDue': wordDue,
     'diary': diary,
+    'customWords': [for (final w in customWords) w.toJson()],
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -224,6 +233,9 @@ class Progress {
     wordBox: (j['wordBox'] as Map?)?.cast<String, int>() ?? const {},
     wordDue: (j['wordDue'] as Map?)?.cast<String, String>() ?? const {},
     diary: (j['diary'] as Map?)?.cast<String, String>() ?? const {},
+    customWords: [
+      for (final w in (j['customWords'] as List?) ?? const []) NoteWord.fromJson(w as Map<String, dynamic>),
+    ],
   );
 }
 
@@ -423,6 +435,28 @@ class ProgressNotifier extends Notifier<Progress> {
     final diary = {...state.diary};
     text.trim().isEmpty ? diary.remove(day) : diary[day] = text.trim();
     _save(state.copyWith(diary: diary));
+  }
+
+  /// Adds a word to the personal dictionary. Returns false if the user has
+  /// already added the same English word.
+  bool addCustomWord(NoteWord word) {
+    final key = word.en.trim().toLowerCase();
+    if (key.isEmpty || state.customWords.any((w) => w.en.toLowerCase() == key)) return false;
+    _save(state.copyWith(customWords: [...state.customWords, word]));
+    return true;
+  }
+
+  /// Removes a user-added word and its review history.
+  void removeCustomWord(String id) {
+    final box = {...state.wordBox}..remove(id);
+    final due = {...state.wordDue}..remove(id);
+    _save(
+      state.copyWith(
+        customWords: state.customWords.where((w) => w.id != id).toList(),
+        wordBox: box,
+        wordDue: due,
+      ),
+    );
   }
 
   void dismissLeagueResult() => _save(state.copyWith(clearLeagueResult: true));
