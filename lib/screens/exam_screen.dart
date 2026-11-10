@@ -8,9 +8,11 @@ import '../core/text.dart';
 import '../data/course_repository.dart';
 import '../data/progress.dart';
 import '../models/exam.dart';
+import '../services/billing/premium.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import 'paywall_screen.dart';
 
 const _letters = ['A', 'B', 'C', 'D', 'E'];
 
@@ -43,6 +45,17 @@ class _ExamHome extends ConsumerWidget {
     );
   }
 
+  /// Mini mock exams: [freeMockExamsPerDay] a day for free, unlimited with
+  /// Premium. Topic practice is always free.
+  Future<void> _startMock(BuildContext context, WidgetRef ref) async {
+    if (!canStartMockExam(ref)) {
+      final gate = await requirePremium(context, ref, PremiumFeature.unlimitedMockExams);
+      if (gate != GateResult.premium || !context.mounted) return;
+    }
+    if (!ref.read(premiumProvider)) ref.read(mockExamQuotaProvider.notifier).recordStart();
+    _open(context, _mockQuestions(), mock: true, title: 'Mini deneme');
+  }
+
   /// A mock exam samples every section in proportion to its size.
   List<ExamQuestion> _mockQuestions() {
     final r = Random();
@@ -66,6 +79,8 @@ class _ExamHome extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final best = ref.watch(progressProvider.select((p) => p.examBest[exam.id]));
+    final premium = ref.watch(premiumProvider);
+    final freeLeft = (freeMockExamsPerDay - ref.watch(mockExamQuotaProvider)).clamp(0, freeMockExamsPerDay);
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
       children: [
@@ -115,8 +130,17 @@ class _ExamHome extends ConsumerWidget {
                 label: 'MİNİ DENEME BAŞLAT',
                 color: Brand.accent,
                 foreground: Brand.ink,
-                onPressed: () => _open(context, _mockQuestions(), mock: true, title: 'Mini deneme'),
+                onPressed: () => _startMock(context, ref),
               ),
+              if (!premium) ...[
+                const SizedBox(height: 8),
+                Text(
+                  freeLeft > 0
+                      ? 'Bugün $freeLeft ücretsiz deneme hakkın var. Konu çalışması her zaman ücretsiz.'
+                      : 'Bugünkü ücretsiz denemeni kullandın. Yarın yenilenir; Premium ile sınırsız.',
+                  style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 12),
+                ),
+              ],
             ],
           ),
         ),

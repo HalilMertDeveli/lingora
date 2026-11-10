@@ -9,6 +9,7 @@ import 'services/firebase/firebase_bootstrap.dart';
 import 'services/firebase/firebase_config.dart';
 import 'services/firebase/firebase_providers.dart';
 import 'services/firebase/progress_sync.dart';
+import 'services/billing/premium.dart';
 import 'theme.dart';
 
 Future<void> main() async {
@@ -35,6 +36,9 @@ class LingoraApp extends ConsumerWidget {
     // Keeps the cloud sync alive (does nothing when Firebase is off).
     ref.listen(progressSyncProvider, (_, _) {});
     final onboarded = ref.watch(progressProvider.select((p) => p.onboarded));
+    // Start listening to the store at launch: Google Play re-delivers
+    // unacknowledged or pending purchases right after start-up.
+    ref.listen(premiumControllerProvider, (_, _) {});
     return MaterialApp(
       title: 'Lingora',
       debugShowCheckedModeBanner: false,

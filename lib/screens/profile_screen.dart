@@ -3,9 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/tr_errors.dart';
 import '../data/progress.dart';
+import '../services/billing/premium.dart';
 import '../theme.dart';
 import 'account_section.dart';
+import 'error_analysis_screen.dart';
 import 'onboarding_screen.dart';
+import 'paywall_screen.dart';
 import 'placement_screen.dart';
 import 'reminder_settings.dart';
 
@@ -17,6 +20,7 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final p = ref.watch(progressProvider);
+    final premium = ref.watch(premiumProvider);
     final now = ref.watch(clockProvider)();
     final t = Theme.of(context).textTheme;
     final accuracy = p.answered == 0 ? 0 : (p.correct * 100 / p.answered).round();
@@ -60,6 +64,41 @@ class ProfileScreen extends ConsumerWidget {
         Text('Sık yaptığın hatalar', style: t.titleLarge),
         const SizedBox(height: 12),
         TapCard(child: _ErrorStatsCard(progress: p)),
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextButton.icon(
+            onPressed: () async {
+              final gate = await requirePremium(context, ref, PremiumFeature.errorAnalytics);
+              if (gate == GateResult.premium && context.mounted) {
+                await Navigator.of(context)
+                    .push(MaterialPageRoute<void>(builder: (_) => const ErrorAnalysisScreen()));
+              }
+            },
+            icon: Icon(premium ? Icons.insights_rounded : Icons.lock_rounded, size: 18),
+            label: const Text('Detaylı hata analizi'),
+          ),
+        ),
+        const SizedBox(height: 12),
+        Text('Lingora Premium', style: t.titleLarge),
+        const SizedBox(height: 12),
+        TapCard(
+          key: const ValueKey('profile-premium'),
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => const PaywallScreen())),
+          child: Row(
+            children: [
+              Text(premium ? '⭐' : '✨', style: const TextStyle(fontSize: 28)),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  premium ? 'Premium aktif. Aboneliğini görüntüle veya geri yükle.' : 'Yapay zekâ sohbeti, sınırsız deneme ve detaylı hata analizi. Temel öğrenme ücretsiz.',
+                  style: const TextStyle(color: Brand.muted),
+                ),
+              ),
+              const Icon(Icons.chevron_right_rounded, color: Brand.muted),
+            ],
+          ),
+        ),
         const SizedBox(height: 24),
         Text('Son 7 gün', style: t.titleLarge),
         const SizedBox(height: 12),
