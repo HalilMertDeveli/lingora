@@ -103,6 +103,7 @@ void main() {
       expect(sentenceCase('BİLMİYORUM'), 'Bilmiyorum');
       expect(sentenceCase('MİNİ DENEME BAŞLAT'), 'Mini deneme başlat');
       expect(sentenceCase('+20 XP AL'), '+20 XP al');
+      expect(sentenceCase("PREMIUM'A GEÇ"), "Premium'a geç");
     });
 
     test('leaves mixed-case labels alone', () {

@@ -326,7 +326,7 @@ void main() {
       expect(find.text('₺100,00 / ay'), findsOneWidget);
       expect(find.text('₺600,00 / yıl'), findsOneWidget);
       expect(find.text('%50 tasarruf'), findsOneWidget);
-      expect(find.text('YILLIK · ₺600,00'), findsOneWidget);
+      expect(find.text('Yıllık · ₺600,00'), findsOneWidget);
       expect(find.text('Satın alımları geri yükle'), findsOneWidget);
       expect(find.textContaining('iptal edebilirsin'), findsOneWidget);
     });
@@ -340,7 +340,7 @@ void main() {
       expect(find.text('₺100,00 / ay'), findsNothing);
       await tester.tap(find.byKey(const ValueKey('paywall-buy')));
       await tester.pumpAndSettle();
-      expect(find.text('PREMIUM\'A GEÇ'), findsOneWidget);
+      expect(find.text("Premium'a geç"), findsOneWidget);
     });
 
     testWidgets('buying the monthly plan unlocks and closes the paywall', (tester) async {
@@ -368,7 +368,7 @@ void main() {
       expect(find.textContaining('“Detaylı hata analizi” Premium ile açılır'), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('plan-monthly')));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('AYLIK · ₺100,00'));
+      await tester.tap(find.text('Aylık · ₺100,00'));
       await tester.pumpAndSettle();
       expect(billing.bought, ['lingora_premium_monthly']);
       expect(find.byType(PaywallScreen), findsNothing);
@@ -403,7 +403,7 @@ void main() {
       final billing = FakeBilling()..autoResult = StorePurchaseStatus.pending;
       await tester.pumpWidget(app(await widgetOverrides(tester, billing), const PaywallScreen()));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('YILLIK · ₺600,00'));
+      await tester.tap(find.text('Yıllık · ₺600,00'));
       await tester.pumpAndSettle();
       expect(find.textContaining('onay bekliyor'), findsOneWidget);
       expect(find.byType(PaywallScreen), findsOneWidget);
@@ -414,7 +414,7 @@ void main() {
         app(await widgetOverrides(tester, FakeBilling(), dev: true), const PaywallScreen()),
       );
       await tester.pumpAndSettle();
-      expect(find.text('Premium aktif 🎉'), findsOneWidget);
+      expect(find.text('Premium aktif'), findsOneWidget);
       expect(find.textContaining('aboneliğin aktif'), findsOneWidget);
       expect(find.byKey(const ValueKey('paywall-buy')), findsNothing);
     });
@@ -447,7 +447,7 @@ void main() {
       expect(find.byType(PaywallScreen), findsOneWidget);
       expect(find.text(PremiumFeature.aiConversation.title), findsOneWidget);
 
-      await tester.tap(find.text('ÜCRETSİZ DEMO İLE DENE'));
+      await tester.tap(find.text('Ücretsiz demo ile dene'));
       await tester.pumpAndSettle();
       expect(find.byType(ConversationScreen), findsOneWidget);
       final container = ProviderScope.containerOf(tester.element(find.byType(ConversationScreen)));
@@ -495,7 +495,7 @@ void main() {
       await tester.pumpWidget(app(overrides, ExamHomeScreen(examId: exam.id)));
       await tester.pumpAndSettle();
       expect(find.textContaining('Bugün 1 ücretsiz deneme'), findsOneWidget);
-      await tester.tap(find.text('MİNİ DENEME BAŞLAT'));
+      await tester.tap(find.text('Mini deneme başlat'));
       await tester.pumpAndSettle();
       expect(find.byType(ExamSessionScreen), findsOneWidget);
       expect(find.byType(PaywallScreen), findsNothing);
@@ -504,13 +504,13 @@ void main() {
       Navigator.of(tester.element(find.byType(ExamSessionScreen))).pop();
       await tester.pumpAndSettle();
       expect(find.textContaining('ücretsiz denemeni kullandın'), findsOneWidget);
-      await tester.tap(find.text('MİNİ DENEME BAŞLAT'));
+      await tester.tap(find.text('Mini deneme başlat'));
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsOneWidget);
       expect(find.text(PremiumFeature.unlimitedMockExams.title), findsOneWidget);
 
       // Buying Premium continues straight into the exam.
-      await tester.tap(find.text('YILLIK · ₺600,00'));
+      await tester.tap(find.text('Yıllık · ₺600,00'));
       await tester.pumpAndSettle();
       expect(find.byType(ExamSessionScreen), findsOneWidget);
     });

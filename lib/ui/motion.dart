@@ -25,7 +25,9 @@ Color edgeOf(Color c) {
 /// "Şimdilik çık". Labels that aren't all caps are returned unchanged.
 String sentenceCase(String s) {
   if (s.isEmpty || s != s.toUpperCase() || s == s.toLowerCase()) return s;
-  String lower(String x) => x.replaceAll('I', 'ı').replaceAll('İ', 'i').toLowerCase();
+  // Loanwords written with a dotless capital I (PREMIUM) keep their English i.
+  String lower(String x) =>
+      x.startsWith('PREMIUM') ? x.toLowerCase() : x.replaceAll('I', 'ı').replaceAll('İ', 'i').toLowerCase();
   // Keep short acronyms such as XP, LGS, YDS.
   final words = s
       .split(' ')
