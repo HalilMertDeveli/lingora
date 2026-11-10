@@ -26,10 +26,10 @@ class GrowthProfileSection extends ConsumerWidget {
             key: const ValueKey('profile-invite'),
             onTap: () =>
                 Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const InviteScreen())),
-            child: const Row(
+            child: Row(
               children: [
-                Text('🎁', style: TextStyle(fontSize: 28)),
-                SizedBox(width: 12),
+                const Text('🎁', style: TextStyle(fontSize: 28)),
+                const SizedBox(width: 12),
                 Expanded(
                   child: Text(
                     'Arkadaşını davet et: o katılınca ikiniz de 7 gün Premium kazanın.',

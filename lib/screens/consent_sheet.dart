@@ -37,7 +37,7 @@ Future<void> askAnalyticsConsent(BuildContext context, WidgetRef ref) async {
             const SizedBox(height: 10),
             const Text(analyticsConsentText, style: TextStyle(height: 1.4)),
             const SizedBox(height: 6),
-            const Text(
+            Text(
               'Ayrıntılar: Gizlilik Politikası (Profil > Gizlilik).',
               style: TextStyle(color: Brand.muted, fontSize: 12),
             ),
@@ -105,7 +105,7 @@ class AnalyticsConsentTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (ref.watch(analyticsSinkProvider) == null) {
-      return const TapCard(
+      return TapCard(
         child: Text(
           'Bu sürümde kullanım istatistiği toplanmıyor. İlerlemen ve notların yalnızca bu cihazda '
           '(ve açtıysan kendi hesabının bulut yedeğinde) tutulur.',

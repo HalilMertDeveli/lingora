@@ -75,7 +75,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
             const SizedBox(height: 8),
             Text('Birlikte öğrenin, ikiniz de kazanın', style: t.titleLarge, textAlign: TextAlign.center),
             const SizedBox(height: 6),
-            const Text(
+            Text(
               'Arkadaşın Lingora\'ya katılıp kodunu girdiğinde ikiniz de 7 gün Premium kazanırsınız. '
               'Ödeme bilgisi istenmez, süre bitince kendiliğinden ücretsiz sürüme dönülür.',
               style: TextStyle(color: Brand.muted, height: 1.35),
@@ -95,7 +95,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
               Text('Davet kodun mu var?', style: t.titleMedium),
               const SizedBox(height: 8),
               if (_redeemed)
-                const _Box(
+                _Box(
                   icon: Icons.celebration_rounded,
                   color: Brand.successBg,
                   text: 'Kod kabul edildi! 7 günlük Premium birkaç saniye içinde hesabına tanımlanır.',
@@ -125,7 +125,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
               ],
             ],
             const SizedBox(height: 24),
-            const Text(
+            Text(
               'Kurallar: Kod yalnızca yeni hesaplarda (ilk 14 gün), hesap ve cihaz başına bir kez kullanılabilir. '
               'Davet eden kişi ayda en fazla 5 ödül kazanır. Kötüye kullanımda ödüller geri alınabilir.',
               style: TextStyle(color: Brand.muted, fontSize: 12, height: 1.35),
@@ -156,7 +156,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
       return TapCard(
         child: Column(
           children: [
-            const Text('Senin davet kodun', style: TextStyle(color: Brand.muted)),
+            Text('Senin davet kodun', style: TextStyle(color: Brand.muted)),
             const SizedBox(height: 4),
             SelectableText(
               info.code,
@@ -166,7 +166,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
             const SizedBox(height: 4),
             Text(
               'Bu ay ${info.rewardedThisMonth}/${info.maxPerMonth} ödül kazandın.',
-              style: const TextStyle(color: Brand.muted, fontSize: 13),
+              style: TextStyle(color: Brand.muted, fontSize: 13),
             ),
             const SizedBox(height: 12),
             Row(
@@ -202,15 +202,15 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
 }
 
 class _Box extends StatelessWidget {
-  const _Box({required this.icon, required this.text, this.color = Brand.surface});
+  const _Box({required this.icon, required this.text, this.color});
   final IconData icon;
   final String text;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.all(14),
-    decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(14)),
+    decoration: BoxDecoration(color: color ?? Brand.surface, borderRadius: BorderRadius.circular(14)),
     child: Row(
       children: [
         Icon(icon, color: Brand.ink),

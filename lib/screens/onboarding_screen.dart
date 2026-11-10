@@ -60,9 +60,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     );
   }
 
+  /// Page names for `onboarding_step`; extra pages are logged as `step_<i>`.
   static const _stepNames = ['welcome', 'course', 'goal', 'level'];
 
-  void _logStep(int i) => logEvent(ref, AnalyticsEvent.onboardingStep(_stepNames[i], i));
+  void _logStep(int i) =>
+      logEvent(ref, AnalyticsEvent.onboardingStep(i < _stepNames.length ? _stepNames[i] : 'step_$i', i));
 
   @override
   void initState() {

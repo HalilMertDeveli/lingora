@@ -276,7 +276,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           padding: const EdgeInsets.only(top: 6),
           child: Text(
             'Deneme bitince ${selected.price} / ${_plan.period}. Deneme süresince iptal edersen ücret alınmaz.',
-            style: const TextStyle(color: Brand.muted, fontSize: 12),
+            style: TextStyle(color: Brand.muted, fontSize: 12),
             textAlign: TextAlign.center,
           ),
         ),
@@ -443,7 +443,7 @@ class _PlanCard extends StatelessWidget {
                 if (showTrial && product.freeTrialDays > 0)
                   Text(
                     '${product.freeTrialDays} gün ücretsiz deneme',
-                    style: const TextStyle(color: Brand.success, fontWeight: FontWeight.w700),
+                    style: TextStyle(color: Brand.success, fontWeight: FontWeight.w700),
                   ),
               ],
             ),
