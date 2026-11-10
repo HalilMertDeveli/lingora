@@ -133,3 +133,14 @@ test("enforces the daily quota and refunds failed turns", async () => {
   const tomorrow = new Date(NOW.getTime() + DAY);
   assert.equal((await converse(db, client, "u", goodRequest, tomorrow)).remaining, DAILY_MESSAGE_LIMIT - 1);
 });
+
+test("accepts the app's entitlement shape (premium + status)", async () => {
+  await db.doc("entitlements/u").set({
+    premium: true,
+    status: "grace",
+    productId: "lingora_premium_monthly",
+    expiresAt: Timestamp.fromMillis(NOW.getTime() + DAY),
+  });
+  const { client } = fakeClient(() => jsonReply({ reply: "ok", correction: "", tip_tr: "", done: false }));
+  assert.equal((await converse(db, client, "u", goodRequest, NOW)).reply, "ok");
+});

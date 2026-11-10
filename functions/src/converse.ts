@@ -76,7 +76,8 @@ export function parseMessages(raw: unknown): Message[] | null {
 export async function hasPremium(db: Firestore, uid: string, now: Date): Promise<boolean> {
   const e = (await db.doc(`entitlements/${uid}`).get()).data();
   const expires = e?.expiresAt as Timestamp | undefined;
-  return e?.active === true && !!expires && expires.toMillis() > now.getTime();
+  const on = e?.active === true || e?.premium === true;
+  return on && !!expires && expires.toMillis() > now.getTime();
 }
 
 /** Counts one message against today's quota; returns how many are left. */

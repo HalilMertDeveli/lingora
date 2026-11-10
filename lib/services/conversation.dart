@@ -1,17 +1,9 @@
-import 'dart:convert';
-import 'dart:io';
-
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/tr_errors.dart';
 import '../data/scenarios.dart';
-
-/// Endpoint of the conversation proxy (see server/README.md). Pass at build
-/// time: --dart-define=LINGORA_AI_URL=... --dart-define=LINGORA_AI_KEY=...
-/// LINGORA_AI_KEY is the public (anon) key of the backend, never an
-/// Anthropic API key: that one stays on the server.
-const aiEndpoint = String.fromEnvironment('LINGORA_AI_URL');
-const aiPublicKey = String.fromEnvironment('LINGORA_AI_KEY');
+import 'firebase/firebase_providers.dart';
 
 class ChatMessage {
   const ChatMessage({required this.fromUser, required this.text, this.correction, this.tipTr});
@@ -54,60 +46,60 @@ abstract class ConversationService {
   Future<ChatTurn> send(Scenario scenario, List<ChatMessage> history);
 }
 
-/// Talks to the server proxy, which calls Claude.
-class RemoteConversationService implements ConversationService {
-  RemoteConversationService(this.endpoint, this.publicKey);
-  final String endpoint;
-  final String publicKey;
-  final _http = HttpClient()..connectionTimeout = const Duration(seconds: 15);
+/// Calls a callable Cloud Function with JSON-like data and returns its result.
+typedef CallableInvoker = Future<Object?> Function(String name, Map<String, Object?> data);
+
+/// Talks to the `converse` Cloud Function (functions/src/converse.ts), which
+/// checks Premium and the daily quota and calls Claude. The Anthropic API key
+/// stays on the server.
+class CallableConversationService implements ConversationService {
+  CallableConversationService(this._invoke);
+
+  CallableConversationService.firebase(FirebaseFunctions functions)
+    : this((name, data) async => (await functions.httpsCallable(name).call<Object?>(data)).data);
+
+  final CallableInvoker _invoke;
 
   @override
   bool get isLive => true;
 
   @override
   Future<ChatTurn> send(Scenario scenario, List<ChatMessage> history) async {
+    // Only the most recent turns are sent; the server enforces limits too.
+    final recent = history.length > 20 ? history.sublist(history.length - 20) : history;
+    final Object? raw;
     try {
-      final req = await _http.postUrl(Uri.parse(endpoint));
-      req.headers
-        ..contentType = ContentType.json
-        ..set('Authorization', 'Bearer $publicKey')
-        ..set('apikey', publicKey);
-      // Only the most recent turns are sent; the server enforces limits too.
-      final recent = history.length > 20 ? history.sublist(history.length - 20) : history;
-      req.add(
-        utf8.encode(
-          jsonEncode({
-            'scenarioId': scenario.id,
-            'messages': [for (final m in recent) m.toApi()],
-          }),
-        ),
-      );
-      final res = await req.close().timeout(const Duration(seconds: 60));
-      final body = await res.transform(utf8.decoder).join();
-      if (res.statusCode == 429) {
-        throw const ConversationException('Bugünlük konuşma hakkın doldu. Yarın tekrar dene.');
-      }
-      if (res.statusCode != 200) {
-        throw ConversationException('Sunucu hatası (${res.statusCode}). Biraz sonra tekrar dene.');
-      }
-      final j = jsonDecode(body) as Map<String, dynamic>;
-      return ChatTurn(
-        reply: j['reply'] as String,
-        correction: _nonEmpty(j['correction']),
-        tipTr: _nonEmpty(j['tip_tr']),
-        done: j['done'] as bool? ?? false,
-      );
-    } on ConversationException {
-      rethrow;
+      raw = await _invoke('converse', {
+        'scenarioId': scenario.id,
+        'messages': [for (final m in recent) m.toApi()],
+      }).timeout(const Duration(seconds: 90));
+    } on FirebaseFunctionsException catch (e) {
+      throw ConversationException(messageForCode(e.code));
     } on Exception {
       throw const ConversationException('Bağlantı kurulamadı. İnternetini kontrol et.');
     }
+    final j = Map<String, Object?>.from(raw as Map);
+    return ChatTurn(
+      reply: j['reply'] as String? ?? '',
+      correction: _nonEmpty(j['correction']),
+      tipTr: _nonEmpty(j['tip_tr']),
+      done: j['done'] as bool? ?? false,
+    );
   }
+
+  /// Turkish message for a callable error code.
+  static String messageForCode(String code) => switch (code) {
+    'resource-exhausted' => 'Bugünlük konuşma hakkın doldu. Yarın tekrar dene.',
+    'permission-denied' => 'Yapay zekâ ile konuşma Premium üyelere açık.',
+    'unauthenticated' => 'Konuşmak için önce giriş yapmalısın.',
+    'unavailable' || 'deadline-exceeded' => 'Sunucu şu an yoğun. Biraz sonra tekrar dene.',
+    _ => 'Sunucu hatası. Biraz sonra tekrar dene.',
+  };
 
   static String? _nonEmpty(Object? v) => (v is String && v.trim().isNotEmpty) ? v : null;
 }
 
-/// Offline stand-in used until the proxy is deployed: a short scripted
+/// Offline stand-in used when Firebase is off or nobody is signed in: a short scripted
 /// conversation per scenario with rule-based corrections of common Turkish
 /// learner mistakes. Labelled "Demo" in the UI.
 class DemoConversationService implements ConversationService {
@@ -183,7 +175,11 @@ class DemoConversationService implements ConversationService {
   }
 }
 
-final conversationServiceProvider = Provider<ConversationService>(
-  (ref) =>
-      aiEndpoint.isEmpty ? DemoConversationService() : RemoteConversationService(aiEndpoint, aiPublicKey),
-);
+/// The live AI when Firebase is ready and someone is signed in, otherwise
+/// the offline demo. (Premium itself is checked by the server; the
+/// conversation screen gates it in the UI.)
+final conversationServiceProvider = Provider<ConversationService>((ref) {
+  final functions = ref.watch(functionsProvider);
+  if (functions == null || ref.watch(currentUidProvider) == null) return DemoConversationService();
+  return CallableConversationService.firebase(functions);
+});

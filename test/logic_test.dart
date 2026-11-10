@@ -230,7 +230,7 @@ void main() {
 
   group('conversation', () {
     test('app and server know the same scenarios', () {
-      final server = File('server/supabase/functions/converse/scenarios.ts').readAsStringSync();
+      final server = File('functions/src/scenarios.ts').readAsStringSync();
       final ids = RegExp(r'^  (\w+): \{', multiLine: true).allMatches(server).map((m) => m[1]).toSet();
       expect(ids, scenarios.map((s) => s.id).toSet());
     });

@@ -18,14 +18,28 @@ test("validates input", async () => {
     "invalid-argument",
   );
   await rejectsWith(verifyPurchase(db, "u", null, test_), "invalid-argument");
+  await rejectsWith(
+    verifyPurchase(db, "u", { platform: "ios", productId: "lingora_premium_monthly", purchaseToken: token }, test_),
+    "invalid-argument",
+  );
 });
 
 test("test mode writes the entitlement", async () => {
-  const r = await verifyPurchase(db, "u", { productId: "lingora_premium_yearly", purchaseToken: token }, test_);
+  const r = await verifyPurchase(
+    db,
+    "u",
+    { platform: "android", productId: "lingora_premium_yearly", purchaseToken: token },
+    test_,
+  );
   assert.equal(r.active, true);
-  assert.equal(r.expiresAt, now.getTime() + 365 * 24 * 60 * 60 * 1000);
+  assert.equal(r.premium, true);
+  assert.equal(r.status, "active");
+  assert.equal(r.expiresAt, now.getTime() + 366 * 24 * 60 * 60 * 1000);
   const e = (await db.doc("entitlements/u").get()).data()!;
   assert.equal(e.active, true);
+  assert.equal(e.premium, true);
+  assert.equal(e.status, "active");
+  assert.equal(e.platform, "android");
   assert.equal(e.productId, "lingora_premium_yearly");
   assert.equal(e.source, "test");
   assert.equal(e.expiresAt.toMillis(), r.expiresAt);

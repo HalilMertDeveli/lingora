@@ -1,20 +1,23 @@
 // Google Play purchase check -> entitlements/{uid}.
 //
 // Only the emulator/test path is implemented: it trusts the token and grants
-// Premium. Real verification is the TODO below.
+// Premium. Real verification is the TODO below. Contract with the app:
+// lib/services/billing/entitlement_backend.dart (ServerEntitlement.fromJson).
 import { createHash } from "node:crypto";
 
-import { Firestore, Timestamp, FieldValue } from "firebase-admin/firestore";
+import { FieldValue, Firestore, Timestamp } from "firebase-admin/firestore";
 import { HttpsError } from "firebase-functions/v2/https";
 
-/** Play product id -> Premium days per purchase. Keep in sync with lib/services/billing/. */
+/** Play product id -> Premium days per purchase (lib/services/billing/products.dart). */
 export const PRODUCTS: Record<string, number> = {
-  lingora_premium_monthly: 30,
-  lingora_premium_yearly: 365,
+  lingora_premium_monthly: 31,
+  lingora_premium_yearly: 366,
 };
 
 export interface PurchaseResult {
   active: boolean;
+  premium: boolean;
+  status: "active";
   productId: string;
   /** Milliseconds since epoch. */
   expiresAt: number;
@@ -22,6 +25,9 @@ export interface PurchaseResult {
 
 export function parsePurchaseInput(data: unknown): { productId: string; purchaseToken: string } {
   const d = (typeof data === "object" && data !== null ? data : {}) as Record<string, unknown>;
+  if (d.platform !== undefined && d.platform !== "android") {
+    throw new HttpsError("invalid-argument", "unsupported_platform");
+  }
   if (typeof d.productId !== "string" || !(d.productId in PRODUCTS)) {
     throw new HttpsError("invalid-argument", "unknown_product");
   }
@@ -45,10 +51,11 @@ export async function verifyPurchase(
     // launch. Needs a service account with access to the Play Console app
     // (Play Console > Users and permissions) and the androidpublisher API:
     //   GET https://androidpublisher.googleapis.com/androidpublisher/v3/
-    //       applications/{packageName}/purchases/subscriptionsv2/tokens/{token}
-    // Grant only if subscriptionState is ACTIVE/IN_GRACE_PERIOD, take expiresAt
-    // from lineItems[].expiryTime, acknowledge the purchase, and handle renewals
-    // and cancellations with Real-time developer notifications (Pub/Sub).
+    //       applications/com.lingora.lingora/purchases/subscriptionsv2/tokens/{token}
+    // Grant only if subscriptionState is ACTIVE or IN_GRACE_PERIOD (status
+    // 'active' / 'grace'), take expiresAt from lineItems[].expiryTime,
+    // acknowledge the purchase, and follow renewals and cancellations with
+    // Real-time developer notifications (Pub/Sub).
     throw new HttpsError("unimplemented", "play_verification_not_configured");
   }
 
@@ -63,11 +70,14 @@ export async function verifyPurchase(
     if (!bound.exists) tx.set(tokenRef, { uid, productId, createdAt: FieldValue.serverTimestamp() });
     tx.set(entRef, {
       active: true,
+      premium: true,
+      status: "active",
       productId,
+      platform: "android",
       expiresAt: Timestamp.fromMillis(expiresAt),
       source: "test",
       updatedAt: FieldValue.serverTimestamp(),
     });
   });
-  return { active: true, productId, expiresAt };
+  return { active: true, premium: true, status: "active", productId, expiresAt };
 }

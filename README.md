@@ -43,11 +43,12 @@ Testler:
 flutter test
 ```
 
-## Yapay zekâ sohbet sunucusu
+## Sunucu (Firebase)
 
-`server/` klasöründe Claude ile konuşan bir Supabase Edge Function var. Kurulumu ve uygulamaya
-bağlamak için [server/README.md](server/README.md) dosyasına bak. Bağlanmadığında "Konuş" sekmesi
-demo modunda çalışır.
+Lig, yapay zekâ sohbeti ve abonelik doğrulaması Firebase üzerinde çalışır: Firestore kuralları
+`firestore.rules`, Cloud Functions `functions/` klasöründe. Kurulum, emülatörle yerel çalıştırma ve
+yayına alma adımları için [docs/firebase-backend.md](docs/firebase-backend.md) dosyasına bak.
+Firebase kapalıyken lig cihazda simüle edilir, "Konuş" sekmesi demo modunda çalışır.
 
 ## Notion notlarını güncelleme
 
