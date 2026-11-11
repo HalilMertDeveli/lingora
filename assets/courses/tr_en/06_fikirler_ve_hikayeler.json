@@ -3894,8 +3894,8 @@
             },
             {
               "type": "fillBlank",
-              "text": "Do you have a ___ pen? Mine has stopped working.",
-              "translation": "Yedek bir kalemin var mı? Benimki yazmıyor.",
+              "text": "Have you got any ___ pens? Mine has stopped working.",
+              "translation": "Hiç yedek kalemin var mı? Benimki yazmıyor.",
               "answer": "spare",
               "choices": [
                 "spare",
