@@ -270,9 +270,39 @@ void main() {
       expect(find.text(sentenceCaseStart), findsNWidgets(2));
     });
 
+    testWidgets('a locked section starts folded and unfolds on request', (tester) async {
+      final course = await tester.runAsync(_courseWithFixture);
+      await pump(tester, course!, fresh);
+      final toggle = find.byKey(const ValueKey('section-toggle-s2'));
+      await tester.scrollUntilVisible(toggle, 600, scrollable: find.byType(Scrollable).first);
+      expect(find.byKey(const ValueKey('s2u1l1')), findsNothing);
+      expect(find.text('1 üniteye göz at'), findsOneWidget);
+
+      await tester.tap(toggle);
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('s2u1l1')), findsOneWidget);
+      expect(find.text('Üniteleri gizle'), findsOneWidget);
+
+      await tester.tap(toggle);
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('s2u1l1')), findsNothing);
+    });
+
+    testWidgets('an open section is unfolded without a toggle', (tester) async {
+      final course = await tester.runAsync(_courseWithFixture);
+      await pump(tester, course!, fresh.copyWith(completed: {sectionPassId(2): 1}));
+      expect(find.byKey(const ValueKey('section-toggle-s2')), findsNothing);
+      // s2u1l1 is the current node (it carries the focus key, not its id).
+      expect(find.text('Sabah rutini', skipOffstage: false), findsWidgets);
+    });
+
     testWidgets('a locked section explains how to open it', (tester) async {
       final course = await tester.runAsync(_courseWithFixture);
       await pump(tester, course!, fresh);
+      final toggle = find.byKey(const ValueKey('section-toggle-s2'));
+      await tester.scrollUntilVisible(toggle, 600, scrollable: find.byType(Scrollable).first);
+      await tester.tap(toggle);
+      await tester.pumpAndSettle();
       final lesson = find.descendant(
         of: find.byKey(const ValueKey('s2u1l1')),
         matching: find.text('Sabah rutini'),
