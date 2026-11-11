@@ -85,6 +85,7 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     mistakes: newer.mistakes,
     trackId: newer.trackId,
     examBest: maxMap(local.examBest, remote.examBest),
+    examSeconds: {...older.examSeconds, ...newer.examSeconds},
     wordBox: wordBox,
     wordDue: wordDue,
     diary: {...older.diary, ...newer.diary},

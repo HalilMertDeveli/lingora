@@ -1,0 +1,3265 @@
+{
+ "section": {
+  "id": "ls2",
+  "index": 2,
+  "title": "LGS 2. dönem",
+  "cefr": "A2",
+  "description": "Adventures, Tourism, Chores, Science, Natural Forces",
+  "grammar": [
+   "karşılaştırma: -er / more, the most",
+   "tercih bildirme: prefer, would rather",
+   "geçmiş zaman: deneyim anlatma",
+   "have to / must / don't have to",
+   "edilgen yapı: is made, was invented",
+   "tahmin: will, if ... will"
+  ]
+ },
+ "units": [
+  {
+   "id": "ls2u1",
+   "title": "Adventures",
+   "description": "Maceralar: macera sporları, sıfatlar, karşılaştırma ve tercih bildirme",
+   "color": "0xFF3FA34D",
+   "theme": "spor",
+   "guide": "## Bu ünitede ne öğreneceğiz?\n\nAdrenalin zamanı! Bu ünitede rafting, yamaç paraşütü ve dalış gibi macera sporlarını, onları anlatan sıfatları ve sporları karşılaştırmayı öğreneceksin. Ayrıca hangi etkinliği neden tercih ettiğini İngilizce söyleyebileceksin.\n\n## Hedef kalıplar\n\n- **X is more ... than Y**: X, Y'den daha ...dır (uzun sıfatlar). Örnek: Skydiving is more dangerous than hiking.\n- **X is ...er than Y**: X, Y'den daha ...dır (kısa sıfatlar). Örnek: Camping is safer than rafting.\n- **the most ... / the ...est**: en ... Örnek: It was the most exciting day of my life.\n- **X is as ... as Y**: X, Y kadar ...dır. Örnek: Hiking is as tiring as cycling.\n- **I prefer X to Y**: X'i Y'ye tercih ederim. Örnek: I prefer scuba diving to surfing.\n- **I'd rather X than Y**: Y yerine X'i yapmayı tercih ederim. Örnek: I'd rather go camping than go skydiving.\n- **Because...**: Çünkü... (sebep). Örnek: Because I'm afraid of heights.\n\n## Anahtar kelimeler\n\n- **rafting**: bot ile hızlı nehirde iniş\n- **paragliding**: yamaç paraşütü\n- **scuba diving**: tüplü dalış\n- **rock climbing**: kaya tırmanışı\n- **bungee jumping**: yüksekten iple atlama\n- **skydiving**: serbest paraşüt\n- **camping**: kamp yapmak\n- **hiking**: doğa yürüyüşü\n- **exciting / thrilling**: heyecan verici\n- **dangerous**: tehlikeli\n- **safe**: güvenli\n- **boring**: sıkıcı\n- **scary**: korkutucu\n- **equipment**: ekipman, malzeme\n- **helmet**: kask\n\n## Türklerin sık yaptığı hatalar\n\n- \"Rafting is dangerouser than hiking.\" yanlış → \"Rafting is more dangerous than hiking.\" doğru. Uzun sıfatlar \"more\" alır.\n- \"I'd rather to go camping.\" yanlış → \"I'd rather go camping.\" doğru. I'd rather'dan sonra \"to\" gelmez.\n- \"I prefer hiking than climbing.\" yanlış → \"I prefer hiking to climbing.\" doğru. Prefer ile \"to\", I'd rather ile \"than\" kullanılır.\n\n## LGS ipuçları\n\n- LGS sık sık bir tablo ya da bilgi kutusu verip \"Which sentence is TRUE?\" diye sorar. Her seçeneği tablodaki sayılarla tek tek karşılaştır.\n- Boşluktan sonra \"than\" varsa cevap karşılaştırma (more ... / ...er) olur. Önünde \"the\" varsa en üstünlük (most / ...est) gelir.\n- Tercih sorularında kişinin söylediği sebebe bak: \"I'm afraid of heights\" diyen biri yüksek yerlerde yapılan sporu seçmez.\n\n> İpucu: \"as ... as\" eşitlik demektir. İki etkinliğin puanı aynıysa doğru cevap genellikle bu kalıptır!",
+   "nodes": [
+    {
+     "id": "ls2u1l1",
+     "type": "lesson",
+     "title": "Macera sporları",
+     "description": "Macera sporlarının adları ve onları anlatan sıfatlar",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "tüplü dalış",
+       "answer": "scuba diving",
+       "choices": [
+        {
+         "text": "scuba diving",
+         "emoji": "🤿"
+        },
+        {
+         "text": "rafting",
+         "emoji": "🚣"
+        },
+        {
+         "text": "hiking",
+         "emoji": "🥾"
+        },
+        {
+         "text": "camping",
+         "emoji": "🏕️"
+        }
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "kaya tırmanışı",
+       "answer": "rock climbing",
+       "choices": [
+        {
+         "text": "skydiving",
+         "emoji": "🪂"
+        },
+        {
+         "text": "rock climbing",
+         "emoji": "🧗"
+        },
+        {
+         "text": "cycling",
+         "emoji": "🚴"
+        },
+        {
+         "text": "surfing",
+         "emoji": "🏄"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "heyecan verici",
+         "exciting"
+        ],
+        [
+         "tehlikeli",
+         "dangerous"
+        ],
+        [
+         "sıkıcı",
+         "boring"
+        ],
+        [
+         "güvenli",
+         "safe"
+        ],
+        [
+         "korkutucu",
+         "scary"
+        ]
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "yamaç paraşütü",
+         "paragliding"
+        ],
+        [
+         "kamp yapmak",
+         "camping"
+        ],
+        [
+         "doğa yürüyüşü",
+         "hiking"
+        ],
+        [
+         "serbest paraşüt",
+         "skydiving"
+        ]
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "People do ---- on a fast river in a rubber boat.",
+       "options": [
+        "rafting",
+        "skydiving",
+        "rock climbing",
+        "camping"
+       ],
+       "answer": 0,
+       "explanation": "Hızlı bir nehirde lastik botla yapılan spor 'rafting'tir. 'Skydiving' uçaktan atlamak, 'rock climbing' kayaya tırmanmak, 'camping' ise kamp yapmaktır."
+      },
+      {
+       "type": "fillBlank",
+       "text": "Bungee jumping is so ___ that my heart beats really fast.",
+       "translation": "Bungee jumping o kadar heyecan verici ki kalbim çok hızlı atıyor.",
+       "choices": [
+        "thrilling",
+        "boring",
+        "safe"
+       ],
+       "answer": "thrilling"
+      },
+      {
+       "type": "choice",
+       "question": "You need special equipment and an oxygen tank for ----.",
+       "options": [
+        "hiking",
+        "scuba diving",
+        "camping",
+        "cycling"
+       ],
+       "answer": 1,
+       "explanation": "Oksijen tüpü su altında nefes almak için gerekir, yani 'scuba diving' (tüplü dalış). Yürüyüş, kamp ve bisiklette oksijen tüpüne ihtiyaç yoktur."
+      },
+      {
+       "type": "choice",
+       "question": "Which adjective is the opposite of 'dangerous'?",
+       "options": [
+        "scary",
+        "thrilling",
+        "exciting",
+        "safe"
+       ],
+       "answer": 3,
+       "explanation": "'Dangerous' tehlikeli demektir; zıt anlamlısı 'safe' (güvenli). 'Scary', 'thrilling' ve 'exciting' zıt anlam taşımaz, hatta tehlikeli sporları anlatırken sık kullanılır."
+      },
+      {
+       "type": "fillBlank",
+       "text": "We put up our tent near the lake and went ___ for the weekend.",
+       "translation": "Çadırımızı gölün yanına kurduk ve hafta sonu kampa gittik.",
+       "choices": [
+        "camping",
+        "diving",
+        "jumping"
+       ],
+       "answer": "camping"
+      },
+      {
+       "type": "choice",
+       "question": "Kerem: I jumped out of a plane and flew through the sky before I opened my parachute!\nWhich activity did Kerem do?",
+       "options": [
+        "paragliding",
+        "bungee jumping",
+        "skydiving",
+        "rafting"
+       ],
+       "answer": 2,
+       "explanation": "Uçaktan atlayıp sonra paraşüt açmak 'skydiving' (serbest paraşüt) demektir. Yamaç paraşütünde uçaktan atlanmaz; bungee jumping iple, rafting ise botla yapılır."
+      },
+      {
+       "type": "select",
+       "prompt": "korkutucu",
+       "answer": "scary",
+       "choices": [
+        {
+         "text": "boring",
+         "emoji": "🥱"
+        },
+        {
+         "text": "safe",
+         "emoji": "🛡️"
+        },
+        {
+         "text": "scary",
+         "emoji": "😱"
+        },
+        {
+         "text": "exciting",
+         "emoji": "🤩"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ls2u1l2",
+     "type": "lesson",
+     "title": "Karşılaştırma ve tercih kalıpları",
+     "description": "more/-er than, the most, as ... as, I prefer ve I'd rather",
+     "exercises": [
+      {
+       "type": "fillBlank",
+       "text": "Rafting is ___ than hiking.",
+       "translation": "Rafting doğa yürüyüşünden daha tehlikelidir.",
+       "choices": [
+        "more dangerous",
+        "most dangerous",
+        "dangerouser"
+       ],
+       "answer": "more dangerous"
+      },
+      {
+       "type": "choice",
+       "question": "Skydiving is ---- sport I have ever tried.",
+       "options": [
+        "more exciting than",
+        "the most exciting",
+        "as exciting",
+        "exciting than"
+       ],
+       "answer": 1,
+       "explanation": "'I have ever tried' (şimdiye kadar denediğim) ifadesi en üstünlük ister: 'the most exciting'. 'More exciting than' ve 'exciting than' iki şeyi karşılaştırır, 'as exciting' ise eşitlik bildirir ve ikinci 'as' eksiktir."
+      },
+      {
+       "type": "choice",
+       "question": "Camping is ---- than bungee jumping. You don't need to jump from a bridge!",
+       "options": [
+        "safer",
+        "the safest",
+        "more safer",
+        "safest"
+       ],
+       "answer": 0,
+       "explanation": "'Than' varsa karşılaştırma yapılır. 'Safe' kısa bir sıfat olduğu için '-er' alır: 'safer'. 'More safer' iki kez karşılaştırma yapar, 'the safest' ve 'safest' ise en üstünlüktür."
+      },
+      {
+       "type": "choice",
+       "question": "Hiking is ---- rock climbing. They are both very tiring.",
+       "options": [
+        "more tiring",
+        "as tiring as",
+        "the most tiring",
+        "tiring than"
+       ],
+       "answer": 1,
+       "explanation": "İkisi de aynı derecede yorucu, yani eşitlik var: 'as tiring as'. 'More tiring' cümlesinde 'than' eksik, 'the most tiring' en üstünlük, 'tiring than' ise hatalı bir yapıdır."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: Do you prefer surfing or scuba diving?\nCan: ----",
+       "options": [
+        "Scuba diving is very expensive",
+        "I went surfing last summer",
+        "I prefer scuba diving to surfing because I love sea animals",
+        "I'd rather to go surfing"
+       ],
+       "answer": 2,
+       "explanation": "Ece tercih soruyor; Can 'I prefer scuba diving to surfing' diyerek tercihini ve sebebini söylüyor. Diğer cevaplar tercih bildirmiyor, 'I'd rather to' ise dil bilgisi açısından yanlış."
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence is grammatically correct?",
+       "options": [
+        "I'd rather go camping than go skydiving",
+        "I'd rather going camping than skydiving",
+        "I prefer go camping to skydiving",
+        "I'd rather to go camping"
+       ],
+       "answer": 0,
+       "explanation": "'I'd rather' fiilin yalın hâliyle ve 'than' ile kullanılır: 'I'd rather go camping than go skydiving'. 'Rather going', 'prefer go' ve 'rather to go' hatalı yapılardır."
+      },
+      {
+       "type": "choice",
+       "question": "Mount Everest is ---- mountain in the world, so climbing it is very difficult.",
+       "options": [
+        "higher",
+        "as high as",
+        "the highest",
+        "more high"
+       ],
+       "answer": 2,
+       "explanation": "'In the world' (dünyadaki) ifadesi en üstünlük ister: 'the highest'. 'Higher' iki şeyi karşılaştırır, 'as high as' eşitliktir, 'more high' ise yanlış bir yapıdır."
+      },
+      {
+       "type": "choice",
+       "question": "Danger level (out of 5):\nParagliding: 3\nBungee jumping: 4\nRafting: 3\nSkydiving: 5\nWhich sentence is TRUE?",
+       "options": [
+        "Rafting is more dangerous than skydiving",
+        "Paragliding is as dangerous as rafting",
+        "Bungee jumping is the most dangerous",
+        "Skydiving is safer than paragliding"
+       ],
+       "answer": 1,
+       "explanation": "Yamaç paraşütü ve rafting'in ikisi de 3 puan, yani 'Paragliding is as dangerous as rafting' doğru. En tehlikelisi 5 puanla skydiving; bu yüzden diğer cümleler yanlış."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep: I'd rather stay at home than go rock climbing. ----",
+       "options": [
+        "I love high places",
+        "So I'm going to climb tomorrow",
+        "Rock climbing is my favourite sport",
+        "Because I'm afraid of heights"
+       ],
+       "answer": 3,
+       "explanation": "Zeynep kaya tırmanışına gitmek istemiyor, buna uygun sebep 'Because I'm afraid of heights' (yükseklikten korkuyorum). Yüksek yerleri sevdiğini ya da tırmanacağını söylemesi cümlesiyle çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: Why do you prefer hiking to rafting?\nTom: ----",
+       "options": [
+        "Twice a month",
+        "With my cousins",
+        "In the mountains",
+        "Because I can't swim well"
+       ],
+       "answer": 3,
+       "explanation": "'Why' sebep sorar ve cevap 'Because' ile başlar: 'Because I can't swim well'. 'Twice a month' sıklık, 'With my cousins' kişi, 'In the mountains' yer bildirir."
+      },
+      {
+       "type": "translate",
+       "text": "Kamp yapmayı tüplü dalışa tercih ederim.",
+       "lang": "tr",
+       "answers": [
+        "I prefer camping to scuba diving"
+       ],
+       "tokens": [
+        "I",
+        "prefer",
+        "camping",
+        "to",
+        "scuba",
+        "diving",
+        "than",
+        "rather",
+        "the"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ls2u1l3",
+     "type": "lesson",
+     "title": "Macera planları",
+     "description": "Macera önerme, kabul ve ret, tercih ve sebep bildirme",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Mert: Let's go rafting on the river this weekend!\nEce: ----. I'm scared of fast rivers. Why don't we go hiking instead?",
+       "options": [
+        "What a great idea",
+        "I'm not sure about that",
+        "Sure, let's go",
+        "I can't wait"
+       ],
+       "answer": 1,
+       "explanation": "Ece hızlı nehirlerden korktuğunu söylüyor ve başka bir plan öneriyor, yani kararsız ve isteksiz: 'I'm not sure about that'. Diğer cevaplar teklifi hevesle kabul ediyor."
+      },
+      {
+       "type": "choice",
+       "question": "Can: Would you like to try paragliding in Ölüdeniz with me?\nLisa: ----! I have always wanted to fly like a bird.",
+       "options": [
+        "I'd love to",
+        "No way",
+        "I'd rather not",
+        "I'm afraid of heights"
+       ],
+       "answer": 0,
+       "explanation": "Lisa hep bir kuş gibi uçmak istediğini söylüyor, yani daveti kabul ediyor: 'I'd love to'. 'No way', 'I'd rather not' ve 'I'm afraid of heights' reddetme ya da korku bildirir."
+      },
+      {
+       "type": "choice",
+       "question": "Instructor: Before you start rock climbing, you ---- wear a helmet. It's a rule.",
+       "options": [
+        "mustn't",
+        "don't",
+        "must",
+        "shouldn't"
+       ],
+       "answer": 2,
+       "explanation": "Kask takmak bir kural, yani zorunluluk: 'must'. 'Mustn't' ve 'shouldn't' kask takmayı yasaklar ya da önermez, 'don't' ise anlamsız olur. Güvenlik her zaman önce gelir!"
+      },
+      {
+       "type": "choice",
+       "question": "Tom thinks skydiving is too dangerous, and he prefers safe activities. Which of the following can Tom say?",
+       "options": [
+        "I'd rather go skydiving than camping",
+        "Skydiving is the safest sport for me",
+        "I can't wait to jump out of a plane",
+        "I'd rather go camping than go skydiving"
+       ],
+       "answer": 3,
+       "explanation": "Tom güvenli etkinlikleri seviyor, bu yüzden kampı tercih eder: 'I'd rather go camping than go skydiving'. Diğer cümleler skydiving'i sevdiğini ya da güvenli bulduğunu gösterir."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep: Which do you prefer, scuba diving or bungee jumping?\nArda: ----\nZeynep: Why?\nArda: Because I love exploring the underwater world.",
+       "options": [
+        "I prefer bungee jumping",
+        "I prefer scuba diving",
+        "I don't like either of them",
+        "I've never tried them"
+       ],
+       "answer": 1,
+       "explanation": "Arda su altı dünyasını keşfetmeyi sevdiğini söylüyor, yani dalışı tercih ediyor: 'I prefer scuba diving'. Bungee jumping su altında yapılmaz; diğer iki cevap da sebep cümlesiyle uyuşmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: Hiking is more relaxing than rock climbing.\nCan: ----. Rock climbing is really tiring, but hiking is calm and peaceful.",
+       "options": [
+        "I don't agree",
+        "You're wrong",
+        "I totally agree",
+        "Not really"
+       ],
+       "answer": 2,
+       "explanation": "Can, Ece'nin fikrini destekleyen bir açıklama yapıyor, yani katılıyor: 'I totally agree'. 'I don't agree', 'You're wrong' ve 'Not really' karşı çıkmak için kullanılır."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: ----?\nMert: Rafting. We went down a fast river in a small boat. It was the most thrilling day of my life!",
+       "options": [
+        "What was the most exciting activity at the camp",
+        "How often do you go camping",
+        "Where is the camp",
+        "Who did you go with"
+       ],
+       "answer": 0,
+       "explanation": "Mert bir etkinlik adı söylüyor ve en heyecanlı günü olduğunu anlatıyor. Bu yüzden soru 'What was the most exciting activity at the camp?' olmalı. Diğer sorular sıklık, yer ve kişi sorar."
+      },
+      {
+       "type": "choice",
+       "question": "Kerem wants to persuade his father to let him go bungee jumping. Which of the following is a good reason for Kerem to give?",
+       "options": [
+        "It is the most dangerous sport in the world",
+        "The instructors are very experienced and the equipment is safe",
+        "Nobody wears safety equipment there",
+        "My friends say it is boring"
+       ],
+       "answer": 1,
+       "explanation": "Babasını ikna etmek için güvenliği vurgulamalı: 'The instructors are very experienced and the equipment is safe'. Çok tehlikeli olduğunu, ekipman olmadığını ya da sıkıcı olduğunu söylemek ikna etmez."
+      },
+      {
+       "type": "choice",
+       "question": "Put the dialogue in the correct order.\n(I) Because I don't like heights.\n(II) Do you want to go skydiving with us next month?\n(III) No, thanks. I'd rather go camping.\n(IV) Really? Why?",
+       "options": [
+        "II - IV - III - I",
+        "III - II - I - IV",
+        "II - III - IV - I",
+        "IV - I - II - III"
+       ],
+       "answer": 2,
+       "explanation": "Önce davet (II), sonra ret ve tercih (III), ardından 'Neden?' sorusu (IV) ve en son sebep (I) gelir. Doğru sıra II - III - IV - I."
+      },
+      {
+       "type": "choice",
+       "question": "Ali: I went bungee jumping last weekend.\nSelin: ----\nAli: It was scary at first, but then it was amazing!",
+       "options": [
+        "Where did you go",
+        "Who did you go with",
+        "When will you go",
+        "How was it"
+       ],
+       "answer": 3,
+       "explanation": "Ali deneyiminin nasıl geçtiğini anlatıyor, yani Selin 'How was it?' diye sormuş. Yer, kişi ya da gelecek zaman soruları bu cevaba uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Can: Let's go camping by the lake on Saturday.\nZeynep: I'd love to, but ----.",
+       "options": [
+        "I'm free on Saturday",
+        "it sounds fun",
+        "I have a basketball match that day",
+        "camping is exciting"
+       ],
+       "answer": 2,
+       "explanation": "'I'd love to, but' kibar bir ret başlangıcıdır ve ardından bir bahane gelir: 'I have a basketball match that day'. Diğer seçenekler 'but' bağlacından sonra anlamı bozar."
+      }
+     ]
+    },
+    {
+     "id": "ls2u1l4",
+     "type": "lesson",
+     "title": "Okuma: Macera dolu günler",
+     "description": "Blog yazısı, macera parkı ilanı ve tercih diyaloğu okuma",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "My Adventure Summer\nHi, I'm Deniz and I'm 14. This summer, my family and I went to Fethiye for a week. On the first day, we went paragliding over Ölüdeniz. It was the most exciting experience of my life! I was a little scared at first, but the view was amazing. Then, we went scuba diving. I saw colourful fish and a big turtle. Diving was more relaxing than paragliding. On the last day, my brother wanted to go bungee jumping, but I said no. I think it is more dangerous than the other sports. I'd rather do safer activities. Next summer, I want to try rafting with my cousins.",
+       "question": "According to the text, which activity was the most exciting for Deniz?",
+       "options": [
+        "Paragliding",
+        "Scuba diving",
+        "Bungee jumping",
+        "Rafting"
+       ],
+       "answer": 0,
+       "explanation": "Deniz yamaç paraşütü için 'the most exciting experience of my life' diyor. Dalışı rahatlatıcı buluyor, bungee jumping yapmıyor, rafting'i ise gelecek yaz denemek istiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "My Adventure Summer\nHi, I'm Deniz and I'm 14. This summer, my family and I went to Fethiye for a week. On the first day, we went paragliding over Ölüdeniz. It was the most exciting experience of my life! I was a little scared at first, but the view was amazing. Then, we went scuba diving. I saw colourful fish and a big turtle. Diving was more relaxing than paragliding. On the last day, my brother wanted to go bungee jumping, but I said no. I think it is more dangerous than the other sports. I'd rather do safer activities. Next summer, I want to try rafting with my cousins.",
+       "question": "Why didn't Deniz go bungee jumping?",
+       "options": [
+        "Because it was too expensive",
+        "Because Deniz thinks it is more dangerous than the other sports",
+        "Because Deniz's brother didn't want to go",
+        "Because the weather was bad"
+       ],
+       "answer": 1,
+       "explanation": "Deniz bungee jumping'in diğer sporlardan daha tehlikeli olduğunu düşünüyor. Metinde fiyat ya da hava durumundan bahsedilmiyor; aslında gitmek isteyen kişi Deniz'in kardeşi."
+      },
+      {
+       "type": "choice",
+       "passage": "My Adventure Summer\nHi, I'm Deniz and I'm 14. This summer, my family and I went to Fethiye for a week. On the first day, we went paragliding over Ölüdeniz. It was the most exciting experience of my life! I was a little scared at first, but the view was amazing. Then, we went scuba diving. I saw colourful fish and a big turtle. Diving was more relaxing than paragliding. On the last day, my brother wanted to go bungee jumping, but I said no. I think it is more dangerous than the other sports. I'd rather do safer activities. Next summer, I want to try rafting with my cousins.",
+       "question": "Which of the following is NOT true according to the text?",
+       "options": [
+        "Deniz stayed in Fethiye for a week",
+        "Deniz saw a turtle while diving",
+        "Deniz found diving more relaxing than paragliding",
+        "Deniz went rafting with cousins last summer"
+       ],
+       "answer": 3,
+       "explanation": "Deniz rafting'i geçen yaz yapmadı, gelecek yaz denemek istiyor. Bu yüzden 'Deniz went rafting with cousins last summer' yanlış. Bir hafta kalmak, kaplumbağa görmek ve dalışı daha rahatlatıcı bulmak metinde var."
+      },
+      {
+       "type": "choice",
+       "passage": "My Adventure Summer\nHi, I'm Deniz and I'm 14. This summer, my family and I went to Fethiye for a week. On the first day, we went paragliding over Ölüdeniz. It was the most exciting experience of my life! I was a little scared at first, but the view was amazing. Then, we went scuba diving. I saw colourful fish and a big turtle. Diving was more relaxing than paragliding. On the last day, my brother wanted to go bungee jumping, but I said no. I think it is more dangerous than the other sports. I'd rather do safer activities. Next summer, I want to try rafting with my cousins.",
+       "question": "Which question is NOT answered in the text?",
+       "options": [
+        "How much did the paragliding flight cost?",
+        "How old is Deniz?",
+        "What did Deniz see underwater?",
+        "What does Deniz want to do next summer?"
+       ],
+       "answer": 0,
+       "explanation": "Metinde Deniz'in yaşı (14), su altında ne gördüğü ve gelecek yaz planı var. Ama yamaç paraşütünün fiyatı hiç yazmıyor: 'How much did the paragliding flight cost?'"
+      },
+      {
+       "type": "choice",
+       "passage": "Green Valley Adventure Park\nRock climbing: Age 10+, 2 hours, 300 TL. Helmets and shoes are provided.\nRafting: Age 12+, 3 hours, 450 TL. You must know how to swim.\nZipline: Age 8+, 30 minutes, 200 TL.\nBungee jumping: Age 18+, 15 minutes, 900 TL.\nCamping: All ages, 1 night, 250 TL per person. Bring your own sleeping bag.\nWe are open every day from 9 a.m. to 6 p.m. Our instructors are experienced, and we check all equipment every morning.",
+       "question": "According to the advertisement, which activity is the most expensive?",
+       "options": [
+        "Rafting",
+        "Camping",
+        "Rock climbing",
+        "Bungee jumping"
+       ],
+       "answer": 3,
+       "explanation": "Bungee jumping 900 TL ile en pahalı etkinliktir. Rafting 450 TL, kaya tırmanışı 300 TL, kamp ise 250 TL."
+      },
+      {
+       "type": "choice",
+       "passage": "Green Valley Adventure Park\nRock climbing: Age 10+, 2 hours, 300 TL. Helmets and shoes are provided.\nRafting: Age 12+, 3 hours, 450 TL. You must know how to swim.\nZipline: Age 8+, 30 minutes, 200 TL.\nBungee jumping: Age 18+, 15 minutes, 900 TL.\nCamping: All ages, 1 night, 250 TL per person. Bring your own sleeping bag.\nWe are open every day from 9 a.m. to 6 p.m. Our instructors are experienced, and we check all equipment every morning.",
+       "question": "Elif is 11 years old. Which of these activities can she NOT do?",
+       "options": [
+        "Rafting",
+        "Rock climbing",
+        "Zipline",
+        "Camping"
+       ],
+       "answer": 0,
+       "explanation": "Rafting için en az 12 yaşında olmak gerekiyor, Elif ise 11 yaşında. Kaya tırmanışı 10+, zipline 8+, kamp ise her yaşa uygun."
+      },
+      {
+       "type": "choice",
+       "passage": "Green Valley Adventure Park\nRock climbing: Age 10+, 2 hours, 300 TL. Helmets and shoes are provided.\nRafting: Age 12+, 3 hours, 450 TL. You must know how to swim.\nZipline: Age 8+, 30 minutes, 200 TL.\nBungee jumping: Age 18+, 15 minutes, 900 TL.\nCamping: All ages, 1 night, 250 TL per person. Bring your own sleeping bag.\nWe are open every day from 9 a.m. to 6 p.m. Our instructors are experienced, and we check all equipment every morning.",
+       "question": "Which of the following is TRUE according to the advertisement?",
+       "options": [
+        "Zipline takes longer than rafting",
+        "Rock climbing is cheaper than zipline",
+        "Camping is cheaper than rock climbing",
+        "The park is closed at weekends"
+       ],
+       "answer": 2,
+       "explanation": "Kamp 250 TL, kaya tırmanışı 300 TL; yani 'Camping is cheaper than rock climbing' doğru. Zipline 30 dakika, rafting 3 saat sürüyor; tırmanış zipline'dan pahalı ve park her gün açık."
+      },
+      {
+       "type": "choice",
+       "passage": "Green Valley Adventure Park\nRock climbing: Age 10+, 2 hours, 300 TL. Helmets and shoes are provided.\nRafting: Age 12+, 3 hours, 450 TL. You must know how to swim.\nZipline: Age 8+, 30 minutes, 200 TL.\nBungee jumping: Age 18+, 15 minutes, 900 TL.\nCamping: All ages, 1 night, 250 TL per person. Bring your own sleeping bag.\nWe are open every day from 9 a.m. to 6 p.m. Our instructors are experienced, and we check all equipment every morning.",
+       "question": "What should people bring for camping?",
+       "options": [
+        "A helmet",
+        "Their own sleeping bag",
+        "Climbing shoes",
+        "A swimsuit"
+       ],
+       "answer": 1,
+       "explanation": "İlanda kamp için 'Bring your own sleeping bag' yazıyor. Kask ve ayakkabı tırmanışta park tarafından veriliyor; mayodan hiç bahsedilmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Lisa: Kaan, the school is organising a nature trip on Saturday. We can choose hiking or rock climbing. Which one do you prefer?\nKaan: I prefer rock climbing to hiking. It is more challenging, and I love reaching the top.\nLisa: Really? I'd rather go hiking. Rock climbing looks scary to me, and hiking is as healthy as climbing.\nKaan: That's true, but hiking is a bit boring for me.\nLisa: OK. Don't forget, climbers must bring gloves. The teacher said so.\nKaan: Thanks! I'll buy a pair tomorrow.",
+       "question": "What is Kaan going to do on the trip?",
+       "options": [
+        "Go hiking with Lisa",
+        "Stay at home",
+        "Go camping",
+        "Go rock climbing"
+       ],
+       "answer": 3,
+       "explanation": "Kaan 'I prefer rock climbing to hiking' diyor ve eldiven almayı planlıyor, yani kaya tırmanışına gidecek. Yürüyüşü Lisa seçiyor; evde kalmak ya da kamp söz konusu değil."
+      },
+      {
+       "type": "choice",
+       "passage": "Lisa: Kaan, the school is organising a nature trip on Saturday. We can choose hiking or rock climbing. Which one do you prefer?\nKaan: I prefer rock climbing to hiking. It is more challenging, and I love reaching the top.\nLisa: Really? I'd rather go hiking. Rock climbing looks scary to me, and hiking is as healthy as climbing.\nKaan: That's true, but hiking is a bit boring for me.\nLisa: OK. Don't forget, climbers must bring gloves. The teacher said so.\nKaan: Thanks! I'll buy a pair tomorrow.",
+       "question": "Why does Lisa prefer hiking?",
+       "options": [
+        "Because hiking is more challenging",
+        "Because she loves reaching the top",
+        "Because rock climbing looks scary to her",
+        "Because she has gloves"
+       ],
+       "answer": 2,
+       "explanation": "Lisa 'Rock climbing looks scary to me' diyor. Daha zorlu olması ve zirveye ulaşmayı sevmek Kaan'ın sebepleridir; eldivenler ise tırmanıcılar için."
+      },
+      {
+       "type": "choice",
+       "passage": "Lisa: Kaan, the school is organising a nature trip on Saturday. We can choose hiking or rock climbing. Which one do you prefer?\nKaan: I prefer rock climbing to hiking. It is more challenging, and I love reaching the top.\nLisa: Really? I'd rather go hiking. Rock climbing looks scary to me, and hiking is as healthy as climbing.\nKaan: That's true, but hiking is a bit boring for me.\nLisa: OK. Don't forget, climbers must bring gloves. The teacher said so.\nKaan: Thanks! I'll buy a pair tomorrow.",
+       "question": "Which of the following is TRUE according to the dialogue?",
+       "options": [
+        "Climbers have to bring gloves",
+        "Kaan thinks hiking is exciting",
+        "Lisa wants to go rock climbing",
+        "The trip is on Sunday"
+       ],
+       "answer": 0,
+       "explanation": "Lisa öğretmenin, tırmanıcıların eldiven getirmesi gerektiğini söylediğini aktarıyor. Kaan yürüyüşü biraz sıkıcı buluyor, Lisa yürüyüşü seçiyor ve gezi cumartesi günü."
+      }
+     ]
+    },
+    {
+     "id": "ls2u1t",
+     "type": "test",
+     "title": "Ünite testi",
+     "description": "Üniteyi geçmek için %80 doğru yap",
+     "rewardXp": 30
+    },
+    {
+     "id": "ls2u1c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    }
+   ]
+  },
+  {
+   "id": "ls2u2",
+   "title": "Tourism",
+   "description": "Turizm: turistik yerler, geçmiş tatiller, gezi önerileri ve yerleri anlatma",
+   "color": "0xFF0E9FD8",
+   "theme": "seyahat",
+   "guide": "## Bu ünitede ne öğreneceğiz?\nBu ünitede turistik yerleri anlatmayı, geçmiş tatillerini İngilizce paylaşmayı ve arkadaşlarına gezi önerileri vermeyi öğreneceksin. Kapadokya'dan Efes'e, Pamukkale'den Kaş'a kadar güzel bir yolculuğa çıkıyoruz. Hazırsan çantanı topla!\n\n## Hedef kalıplar\n- **Have you ever been to ...?**: Hiç ... gittin mi? Örnek: Have you ever been to Mardin?\n- **Yes, I have. / No, I haven't.**: Evet, gittim. / Hayır, gitmedim.\n- **I visited / stayed / saw / tried ...**: Ziyaret ettim / kaldım / gördüm / denedim. Örnek: We stayed in a cave hotel.\n- **Where did you stay? / How long did you stay?**: Nerede kaldın? / Ne kadar kaldın?\n- **You should visit ...**: ... ziyaret etmelisin. Örnek: You should visit Ephesus.\n- **Don't miss ...**: ... kaçırma. Örnek: Don't miss the sunrise in Cappadocia.\n- **It was crowded / peaceful / breathtaking.**: Kalabalık / huzurlu / nefes kesiciydi.\n\n## Anahtar kelimeler\n- **accommodation**: konaklama\n- **sightseeing**: gezip görme\n- **souvenir**: hediyelik eşya\n- **guided tour**: rehberli tur\n- **local food**: yerel yemek\n- **passport**: pasaport\n- **abroad**: yurt dışı, yurt dışında\n- **landmark**: simge yapı, önemli yer\n- **historical**: tarihi\n- **ancient**: antik, çok eski\n- **crowded**: kalabalık\n- **peaceful**: huzurlu, sakin\n- **breathtaking**: nefes kesici\n- **museum**: müze\n- **beach**: plaj\n\n## Türklerin sık yaptığı hatalar\n- \"I goed to Antalya.\" → **I went to Antalya.** Düzensiz fiillerin ikinci hâlini ezberle: go → went, see → saw, buy → bought.\n- \"Did you saw the castle?\" → **Did you see the castle?** Cümlede did varsa fiil yalın kalır.\n- \"Have you ever been to Bodrum? Yes, I did.\" → **Yes, I have.** Soru have ile başlıyorsa kısa cevap da have ile verilir.\n\n## LGS ipuçları\n- Diyalog tamamlama sorularında boşluktan **sonraki** cümleye bak. \"I went there last spring\" diyorsa soru büyük ihtimalle \"Have you ever been to...?\" olur.\n- \"Which question is NOT answered in the text?\" sorularında her seçeneği metinde tek tek ara; cevabı metinde olmayan soruyu işaretle.\n- Sıfat sorularında ipucu cümleleri yakala: \"hundreds of people\" → crowded, \"quiet and calm\" → peaceful.\n- Öneri isteyen birine \"You should...\" ya da \"Don't miss...\" ile başlayan cevap uygundur; geçmiş zamanlı cümleler öneri değildir.\n\n> İpucu: Geçmiş zaman ifadelerini (yesterday, last summer, two years ago) görünce aklına hemen fiilin ikinci hâli gelsin!",
+   "nodes": [
+    {
+     "id": "ls2u2l1",
+     "type": "lesson",
+     "title": "Seyahat kelimeleri",
+     "description": "Turistik yerler, konaklama ve yerleri anlatan sıfatlar",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "hediyelik eşya",
+       "answer": "souvenir",
+       "choices": [
+        {
+         "text": "souvenir",
+         "emoji": "🎁"
+        },
+        {
+         "text": "passport",
+         "emoji": "🛂"
+        },
+        {
+         "text": "beach",
+         "emoji": "🏖️"
+        },
+        {
+         "text": "museum",
+         "emoji": "🏛️"
+        }
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "pasaport",
+       "answer": "passport",
+       "choices": [
+        {
+         "text": "ticket",
+         "emoji": "🎫"
+        },
+        {
+         "text": "passport",
+         "emoji": "🛂"
+        },
+        {
+         "text": "suitcase",
+         "emoji": "🧳"
+        },
+        {
+         "text": "map",
+         "emoji": "🗺️"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "konaklama",
+         "accommodation"
+        ],
+        [
+         "gezip görme",
+         "sightseeing"
+        ],
+        [
+         "rehberli tur",
+         "guided tour"
+        ],
+        [
+         "yurt dışı",
+         "abroad"
+        ],
+        [
+         "yerel yemek",
+         "local food"
+        ]
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "kalabalık",
+         "crowded"
+        ],
+        [
+         "huzurlu",
+         "peaceful"
+        ],
+        [
+         "nefes kesici",
+         "breathtaking"
+        ],
+        [
+         "tarihi",
+         "historical"
+        ],
+        [
+         "antik",
+         "ancient"
+        ]
+       ]
+      },
+      {
+       "type": "fillBlank",
+       "text": "We stayed in a small hotel near the ___.",
+       "translation": "Plajın yakınındaki küçük bir otelde kaldık.",
+       "choices": [
+        "beach",
+        "passport",
+        "souvenir"
+       ],
+       "answer": "beach"
+      },
+      {
+       "type": "fillBlank",
+       "text": "You need a ___ to travel abroad.",
+       "translation": "Yurt dışına seyahat etmek için pasaporta ihtiyacın var.",
+       "choices": [
+        "passport",
+        "souvenir",
+        "landmark"
+       ],
+       "answer": "passport"
+      },
+      {
+       "type": "choice",
+       "question": "My aunt bought a small carpet as a ---- for us from Cappadocia.",
+       "options": [
+        "souvenir",
+        "passport",
+        "ticket",
+        "landmark"
+       ],
+       "answer": 0,
+       "explanation": "Halam gezi dönüşü bize hatıra olarak halı almış; bunun adı 'souvenir' (hediyelik eşya). 'passport', 'ticket' ve 'landmark' satın alınıp hediye edilen şeyler değil."
+      },
+      {
+       "type": "choice",
+       "question": "The beach was very ----. There were hundreds of people and we couldn't find a place to sit.",
+       "options": [
+        "peaceful",
+        "crowded",
+        "empty",
+        "quiet"
+       ],
+       "answer": 1,
+       "explanation": "Yüzlerce insan var ve oturacak yer yok; demek ki plaj 'crowded' (kalabalık). 'peaceful', 'empty' ve 'quiet' sakin ve boş bir yeri anlatır."
+      },
+      {
+       "type": "choice",
+       "question": "Which of the following is NOT a type of accommodation?",
+       "options": [
+        "hotel",
+        "hostel",
+        "campsite",
+        "souvenir"
+       ],
+       "answer": 3,
+       "explanation": "Accommodation, tatilde kaldığın yer demek. 'hotel', 'hostel' ve 'campsite' kalınacak yerlerdir ama 'souvenir' bir hediyelik eşyadır. Harika, bu tuzağa düşmedin!"
+      },
+      {
+       "type": "choice",
+       "question": "We didn't want to get lost in the old city, so we joined a ----. A local expert showed us all the important places.",
+       "options": [
+        "local dish",
+        "beach towel",
+        "guided tour",
+        "travel bag"
+       ],
+       "answer": 2,
+       "explanation": "Yerel bir uzmanın önemli yerleri gösterdiği gezi 'guided tour' (rehberli tur) olur. 'local dish' yemek, 'beach towel' havlu, 'travel bag' çantadır."
+      },
+      {
+       "type": "choice",
+       "question": "Pamukkale has white terraces and warm blue water. The view is ----. Everyone takes lots of photos there.",
+       "options": [
+        "boring",
+        "terrible",
+        "noisy",
+        "breathtaking"
+       ],
+       "answer": 3,
+       "explanation": "Herkes bol bol fotoğraf çekiyorsa manzara çok güzel demektir: 'breathtaking' (nefes kesici). 'boring', 'terrible' ve 'noisy' olumsuz anlamlıdır."
+      }
+     ]
+    },
+    {
+     "id": "ls2u2l2",
+     "type": "lesson",
+     "title": "Geçmiş tatil ve öneri kalıpları",
+     "description": "Past simple ile tatil anlatma, Have you ever been to...?, You should / Don't miss",
+     "exercises": [
+      {
+       "type": "fillBlank",
+       "text": "Last summer we ___ in a hotel in Antalya.",
+       "translation": "Geçen yaz Antalya'da bir otelde kaldık.",
+       "choices": [
+        "stayed",
+        "stay",
+        "staying"
+       ],
+       "answer": "stayed"
+      },
+      {
+       "type": "fillBlank",
+       "text": "You ___ visit Ephesus. It's amazing!",
+       "translation": "Efes'i ziyaret etmelisin. Muhteşem bir yer!",
+       "choices": [
+        "should",
+        "shouldn't",
+        "did"
+       ],
+       "answer": "should"
+      },
+      {
+       "type": "translate",
+       "text": "Hiç Kapadokya'ya gittin mi?",
+       "lang": "tr",
+       "answers": [
+        "Have you ever been to Cappadocia"
+       ],
+       "tokens": [
+        "Have",
+        "you",
+        "ever",
+        "been",
+        "to",
+        "Cappadocia",
+        "did",
+        "went"
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Mert ---- Pamukkale with his family two years ago.",
+       "options": [
+        "visits",
+        "visited",
+        "has visited",
+        "will visit"
+       ],
+       "answer": 1,
+       "explanation": "'two years ago' geçmişte belli bir zamanı gösterir, bu yüzden past simple gerekir: 'visited'. 'has visited' ago ile kullanılmaz; 'visits' ve 'will visit' zamana uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep: ----?\nLisa: Yes, I have. I went there last spring with my school.",
+       "options": [
+        "Have you ever been to Ephesus",
+        "Did you like the hotel",
+        "Where did you stay",
+        "What will you buy there"
+       ],
+       "answer": 0,
+       "explanation": "Lisa 'Yes, I have' diye cevap veriyor; bu kısa cevap ancak 'Have you ever been to...?' sorusuna uyar. 'Did you like the hotel' sorusunun cevabı 'Yes, I did' olurdu; diğer sorular evet/hayır sorusu değil."
+      },
+      {
+       "type": "choice",
+       "question": "Can: I'm going to Istanbul next week. What do you recommend?\nEce: ----.",
+       "options": [
+        "I stayed at home last weekend",
+        "You should visit the Galata Tower",
+        "I have never been abroad",
+        "We didn't try the local food"
+       ],
+       "answer": 1,
+       "explanation": "Can öneri istiyor; öneri kalıbı 'You should...' ile kurulur: 'You should visit the Galata Tower.' Diğer cümleler Ece'nin kendi deneyimini anlatıyor, öneri vermiyor."
+      },
+      {
+       "type": "choice",
+       "question": "Don't miss ---- in Cappadocia. You can watch the sunrise from the sky!",
+       "options": [
+        "the busy car park",
+        "the airport hotel",
+        "the hot air balloon tour",
+        "the ticket office"
+       ],
+       "answer": 2,
+       "explanation": "Gün doğumunu gökyüzünden izlemek ancak sıcak hava balonuyla mümkün: 'the hot air balloon tour'. Otopark, havalimanı oteli ve gişe gökyüzünde değil!"
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence is grammatically correct?",
+       "options": [
+        "We goed to the museum yesterday.",
+        "Did you saw the castle?",
+        "I tried the local food in Gaziantep.",
+        "She didn't visited the old bridge."
+       ],
+       "answer": 2,
+       "explanation": "'I tried the local food in Gaziantep.' doğru bir past simple cümlesi. 'go' fiilinin geçmişi 'went' olmalı; 'did' ve 'didn't' ile fiil yalın kalır, yani 'see' ve 'visit' olmalıydı."
+      },
+      {
+       "type": "choice",
+       "question": "Tom: ----?\nCan: We stayed in a small cave hotel. It was very comfortable.",
+       "options": [
+        "How long did you stay",
+        "When did you go there",
+        "Who did you travel with",
+        "Where did you stay in Cappadocia"
+       ],
+       "answer": 3,
+       "explanation": "Can kaldığı yeri (küçük bir mağara oteli) anlatıyor, yani soru 'Where did you stay in Cappadocia?' olmalı. 'How long' süre, 'When' zaman, 'Who' kişi sorar."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: Have you ever been to Mardin?\nMert: ----",
+       "options": [
+        "No, I haven't. But I'd love to go.",
+        "Yes, I did. It was great.",
+        "No, I don't. I'm busy.",
+        "Yes, I am. It's beautiful."
+       ],
+       "answer": 0,
+       "explanation": "'Have you ever...?' sorusu have ile sorulduğu için kısa cevap da have ile verilir: 'No, I haven't.' 'did', 'don't' ve 'am' bu soruya uymaz. Bu kalıbı LGS çok sever!"
+      },
+      {
+       "type": "choice",
+       "question": "Ece: How was your trip to Bodrum?\nMert: ----. The town was too crowded and our hotel was noisy.",
+       "options": [
+        "It was fantastic",
+        "I loved every minute",
+        "It was disappointing",
+        "It was the best holiday ever"
+       ],
+       "answer": 2,
+       "explanation": "Mert kasabanın çok kalabalık, otelin gürültülü olduğunu söylüyor; yani gezi hayal kırıklığıydı: 'It was disappointing'. Diğer cevaplar geziyi övüyor, devamındaki şikâyetlerle çelişiyor."
+      }
+     ]
+    },
+    {
+     "id": "ls2u2l3",
+     "type": "lesson",
+     "title": "Tatil sohbetleri",
+     "description": "Otelde, müzede ve hediyelik eşya dükkânında diyaloglar",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Receptionist: Good evening. How can I help you?\nLisa: ----.\nReceptionist: Of course. Can I see your passport, please?",
+       "options": [
+        "I'm leaving tomorrow morning",
+        "I'd like to check in, please. I have a reservation",
+        "The museum closes at five",
+        "I bought this souvenir yesterday"
+       ],
+       "answer": 1,
+       "explanation": "Resepsiyonist pasaport istiyor; bu, otele giriş yaparken olur. Lisa'nın cevabı 'I'd like to check in, please. I have a reservation.' olmalı. Müze saati ve hediyelik eşya konuşmaya uymuyor."
+      },
+      {
+       "type": "choice",
+       "question": "Tourist: Excuse me, how can I get to the Archaeology Museum?\nCan: ----.",
+       "options": [
+        "It opened in 1891",
+        "You should try the kebab",
+        "I visited it last year",
+        "Go straight and turn left at the second street"
+       ],
+       "answer": 3,
+       "explanation": "Turist yol soruyor, Can da yol tarif etmeli: 'Go straight and turn left at the second street.' Müzenin açılış yılı, kebap önerisi ya da geçen yılki ziyaret yolu anlatmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Ali visited Ephesus last week. His friend wants to go there too and asks for advice. Which of the following can Ali say?",
+       "options": [
+        "I have never been to Ephesus.",
+        "Shall we go to the cinema tonight?",
+        "You should wear comfortable shoes because you'll walk a lot.",
+        "I didn't buy anything there."
+       ],
+       "answer": 2,
+       "explanation": "Arkadaşı tavsiye istiyor; tavsiye 'You should...' ile verilir. Ali Efes'e gittiği için 'I have never been' yanlış; sinema daveti ve alışveriş bilgisi tavsiye değil."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep: Did you try any local food in Gaziantep?\nTom: ----. I ate baklava every day!",
+       "options": [
+        "No, I didn't",
+        "Of course, I did",
+        "No, I haven't",
+        "I'm not hungry"
+       ],
+       "answer": 1,
+       "explanation": "Tom her gün baklava yediğini söylüyor, yani cevap olumlu: 'Of course, I did.' 'Did' ile sorulan soruya 'haven't' ile cevap verilmez; olumsuz cevaplar da devamıyla çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: ----?\nLisa: For ten days. We wanted to see every part of the city.",
+       "options": [
+        "How long did you stay in Rome",
+        "Where did you stay in Rome",
+        "How did you go to Rome",
+        "What did you buy in Rome"
+       ],
+       "answer": 0,
+       "explanation": "'For ten days' bir süre bildirir; süre 'How long...?' ile sorulur. 'Where' yer, 'How did you go' ulaşım şekli, 'What did you buy' satın alınan şeyi sorar."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: I'm going to Antalya in July. Any suggestions?\nZeynep: ----. The water is clear and it's not crowded.",
+       "options": [
+        "Don't take your swimsuit",
+        "Never go to the seaside",
+        "Stay in your hotel room",
+        "Don't miss Kaputaş Beach"
+       ],
+       "answer": 3,
+       "explanation": "Zeynep suyun berrak ve plajın sakin olduğunu söylüyor; bu bir plaj önerisi: 'Don't miss Kaputaş Beach.' Mayo almamak, denize gitmemek ya da odada kalmak bu açıklamayla uyuşmuyor."
+      },
+      {
+       "type": "choice",
+       "question": "Shop assistant: Can I help you?\nTom: Yes, I'm looking for a souvenir for my sister.\nShop assistant: ----\nTom: Great, she loves blue. I'll take it.",
+       "options": [
+        "How about this blue evil eye bead? It's handmade.",
+        "Sorry, we are closed on Sundays.",
+        "The museum is next to the bank.",
+        "Your flight leaves at nine."
+       ],
+       "answer": 0,
+       "explanation": "Tom 'Kız kardeşim maviyi sever, bunu alıyorum' diyor; demek ki satıcı mavi bir ürün önermiş: nazar boncuğu. Dükkânın kapalı olması, müze yeri ve uçuş saati bu cevaba uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Can: Have you ever been abroad?\nEce: ----. I visited my cousins in Germany last summer.",
+       "options": [
+        "No, never",
+        "No, I haven't",
+        "Yes, I have",
+        "Yes, I do"
+       ],
+       "answer": 2,
+       "explanation": "Ece geçen yaz Almanya'ya gitmiş, yani yurt dışında bulunmuş: 'Yes, I have.' 'Yes, I do' have ile sorulan soruya uymaz; olumsuz cevaplar da devamıyla çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Guide: ----\nTourist: Wow, so it's almost 2,000 years old!",
+       "options": [
+        "The bus leaves in ten minutes.",
+        "This theatre was built in the 2nd century.",
+        "Please don't take photos here.",
+        "The gift shop is on your right."
+       ],
+       "answer": 1,
+       "explanation": "Turist yapının yaşına şaşırıyor, yani rehber yapının ne zaman inşa edildiğini söylemiş: 'This theatre was built in the 2nd century.' Otobüs saati, fotoğraf yasağı ve dükkân yeri yaşla ilgili değil."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: The hotel was nice, but the city was too noisy for me.\nWhich of the following is TRUE about Lisa?",
+       "options": [
+        "She didn't like the hotel.",
+        "She thinks the city was peaceful.",
+        "She liked the hotel but not the city.",
+        "She loved everything about the trip."
+       ],
+       "answer": 2,
+       "explanation": "Lisa oteli beğenmiş ('nice') ama şehri fazla gürültülü bulmuş. Bu yüzden doğru cevap 'She liked the hotel but not the city.' Şehrin huzurlu olduğu ya da her şeyi sevdiği söylenemez."
+      },
+      {
+       "type": "choice",
+       "question": "Your friend is planning a trip to Cappadocia and asks you where to stay. Which of the following can you say?",
+       "options": [
+        "I stayed at home last summer.",
+        "Don't forget to buy me a souvenir from Paris.",
+        "The cave hotels are in Antalya.",
+        "You should stay in a cave hotel. It's a unique experience."
+       ],
+       "answer": 3,
+       "explanation": "Arkadaşın nerede kalacağını soruyor; uygun öneri 'You should stay in a cave hotel.' Evde kalman, Paris'ten hediye ya da mağara otellerinin Antalya'da olduğu bilgisi soruya cevap değil."
+      }
+     ]
+    },
+    {
+     "id": "ls2u2l4",
+     "type": "lesson",
+     "title": "Okuma: Gezi notları",
+     "description": "Gezi yazısı, tur ilanı ve sınıf anketi okuma",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "Last April, I went to Cappadocia with my family. We stayed in a cave hotel for three nights. It was cool inside even in the afternoon. On the first morning, we woke up at five o'clock and watched hundreds of hot air balloons over the valleys. It was breathtaking! Then we visited an underground city. It was very old and a bit dark, but our guide told us interesting stories about the people who lived there. We also tried testi kebabı, a local dish cooked in a clay pot. I didn't buy many souvenirs, but I got a small pottery bowl for my grandmother. If you go there, you should take a warm jacket because the mornings are cold. – Deniz",
+       "question": "According to the text, Deniz ----.",
+       "options": [
+        "stayed in Cappadocia for a week",
+        "flew in a hot air balloon",
+        "watched the balloons early in the morning",
+        "bought a lot of souvenirs"
+       ],
+       "answer": 2,
+       "explanation": "Deniz sabah saat beşte kalkıp balonları izlediğini yazıyor. Üç gece kalmış, bir hafta değil; balona binmemiş, sadece izlemiş; çok fazla hediyelik eşya da almamış."
+      },
+      {
+       "type": "choice",
+       "passage": "Last April, I went to Cappadocia with my family. We stayed in a cave hotel for three nights. It was cool inside even in the afternoon. On the first morning, we woke up at five o'clock and watched hundreds of hot air balloons over the valleys. It was breathtaking! Then we visited an underground city. It was very old and a bit dark, but our guide told us interesting stories about the people who lived there. We also tried testi kebabı, a local dish cooked in a clay pot. I didn't buy many souvenirs, but I got a small pottery bowl for my grandmother. If you go there, you should take a warm jacket because the mornings are cold. – Deniz",
+       "question": "Which question is NOT answered in the text?",
+       "options": [
+        "How did Deniz's family travel to Cappadocia?",
+        "Where did Deniz's family stay?",
+        "What local dish did Deniz try?",
+        "What did Deniz buy for his grandmother?"
+       ],
+       "answer": 0,
+       "explanation": "Metinde ailenin Kapadokya'ya nasıl gittiği (araba, otobüs, uçak) yazmıyor. Kaldıkları yer (mağara oteli), yerel yemek (testi kebabı) ve büyükanneye alınan hediye (çanak) metinde var."
+      },
+      {
+       "type": "choice",
+       "passage": "Last April, I went to Cappadocia with my family. We stayed in a cave hotel for three nights. It was cool inside even in the afternoon. On the first morning, we woke up at five o'clock and watched hundreds of hot air balloons over the valleys. It was breathtaking! Then we visited an underground city. It was very old and a bit dark, but our guide told us interesting stories about the people who lived there. We also tried testi kebabı, a local dish cooked in a clay pot. I didn't buy many souvenirs, but I got a small pottery bowl for my grandmother. If you go there, you should take a warm jacket because the mornings are cold. – Deniz",
+       "question": "Deniz advises visitors to ----.",
+       "options": [
+        "visit the underground city at night",
+        "take warm clothes for the mornings",
+        "stay in a modern hotel",
+        "avoid the local food"
+       ],
+       "answer": 1,
+       "explanation": "Metnin sonunda 'you should take a warm jacket because the mornings are cold' diyor; yani sabahlar için sıcak kıyafet almayı öneriyor. Gece ziyareti, modern otel ya da yerel yemekten kaçınma önerisi yok."
+      },
+      {
+       "type": "choice",
+       "passage": "Last April, I went to Cappadocia with my family. We stayed in a cave hotel for three nights. It was cool inside even in the afternoon. On the first morning, we woke up at five o'clock and watched hundreds of hot air balloons over the valleys. It was breathtaking! Then we visited an underground city. It was very old and a bit dark, but our guide told us interesting stories about the people who lived there. We also tried testi kebabı, a local dish cooked in a clay pot. I didn't buy many souvenirs, but I got a small pottery bowl for my grandmother. If you go there, you should take a warm jacket because the mornings are cold. – Deniz",
+       "question": "Which of the following is TRUE about the underground city?",
+       "options": [
+        "It was new and bright.",
+        "Deniz didn't visit it.",
+        "The guide didn't speak to them.",
+        "It was old and a little dark."
+       ],
+       "answer": 3,
+       "explanation": "Metinde yeraltı şehri için 'very old and a bit dark' deniyor, yani eski ve biraz karanlık. Deniz orayı ziyaret etmiş ve rehber onlara ilginç hikâyeler anlatmış."
+      },
+      {
+       "type": "choice",
+       "passage": "SEASIDE DAYS IN KAŞ\nJoin our three-day guided tour this summer!\nDay 1: Arrive in Kaş, check in to a family-run guesthouse and enjoy fresh fish at the harbour.\nDay 2: Take a boat trip to the sunken city of Kekova. Swimming is allowed only in special areas.\nDay 3: Visit the ancient theatre in the morning and do some souvenir shopping before you leave.\nPrice: 4,500 TL per person (breakfast and boat trip included, lunch and dinner not included)\nChildren under 7 travel for free.\nBook online before 1 June and get a 10% discount!",
+       "question": "According to the advert, ----.",
+       "options": [
+        "lunch is included in the price",
+        "the tour lasts a week",
+        "children under seven don't pay",
+        "you can swim anywhere at Kekova"
+       ],
+       "answer": 2,
+       "explanation": "İlanda 'Children under 7 travel for free' yazıyor, yani yedi yaşından küçükler ücret ödemiyor. Öğle yemeği fiyata dahil değil, tur üç gün sürüyor ve yüzmek sadece belirli alanlarda serbest."
+      },
+      {
+       "type": "choice",
+       "passage": "SEASIDE DAYS IN KAŞ\nJoin our three-day guided tour this summer!\nDay 1: Arrive in Kaş, check in to a family-run guesthouse and enjoy fresh fish at the harbour.\nDay 2: Take a boat trip to the sunken city of Kekova. Swimming is allowed only in special areas.\nDay 3: Visit the ancient theatre in the morning and do some souvenir shopping before you leave.\nPrice: 4,500 TL per person (breakfast and boat trip included, lunch and dinner not included)\nChildren under 7 travel for free.\nBook online before 1 June and get a 10% discount!",
+       "question": "Which question is NOT answered in the advert?",
+       "options": [
+        "What is the name of the tour guide?",
+        "How many days does the tour last?",
+        "Where will the tourists stay?",
+        "How can people get a discount?"
+       ],
+       "answer": 0,
+       "explanation": "İlanda rehberin adı geçmiyor. Turun süresi (üç gün), kalınacak yer (aile pansiyonu) ve indirim yolu (1 Haziran'dan önce online rezervasyon) ilanda yazıyor."
+      },
+      {
+       "type": "choice",
+       "passage": "SEASIDE DAYS IN KAŞ\nJoin our three-day guided tour this summer!\nDay 1: Arrive in Kaş, check in to a family-run guesthouse and enjoy fresh fish at the harbour.\nDay 2: Take a boat trip to the sunken city of Kekova. Swimming is allowed only in special areas.\nDay 3: Visit the ancient theatre in the morning and do some souvenir shopping before you leave.\nPrice: 4,500 TL per person (breakfast and boat trip included, lunch and dinner not included)\nChildren under 7 travel for free.\nBook online before 1 June and get a 10% discount!",
+       "question": "Ece's family wants to join the tour. What can they do on the second day?",
+       "options": [
+        "Watch a show at the ancient theatre",
+        "Go on a boat trip to Kekova",
+        "Check in to the guesthouse",
+        "Go souvenir shopping"
+       ],
+       "answer": 1,
+       "explanation": "İkinci gün (Day 2) Kekova'ya tekne gezisi var. Antik tiyatro ve hediyelik eşya alışverişi üçüncü gün, pansiyona yerleşmek ise ilk gün yapılıyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Our class did a survey about holiday places. Thirty students answered the question 'Where would you like to go on your next holiday?'\nTwelve students chose the seaside because they love swimming and sunbathing. Eight students chose historical cities like Mardin and Safranbolu. They want to see old houses and learn about the past. Six students chose the mountains because they enjoy peaceful places and fresh air. Only four students chose big cities for shopping and concerts. Many other students think big cities are too crowded and noisy.",
+       "question": "According to the survey, ----.",
+       "options": [
+        "most students prefer the mountains",
+        "the seaside is the most popular choice",
+        "nobody wants to visit big cities",
+        "historical cities are less popular than the mountains"
+       ],
+       "answer": 1,
+       "explanation": "En çok öğrenci (on iki kişi) deniz kenarını seçmiş, yani en popüler seçenek deniz. Dağları altı kişi seçmiş; büyük şehirleri dört kişi seçmiş; tarihi şehirler (sekiz) dağlardan daha popüler."
+      },
+      {
+       "type": "choice",
+       "passage": "Our class did a survey about holiday places. Thirty students answered the question 'Where would you like to go on your next holiday?'\nTwelve students chose the seaside because they love swimming and sunbathing. Eight students chose historical cities like Mardin and Safranbolu. They want to see old houses and learn about the past. Six students chose the mountains because they enjoy peaceful places and fresh air. Only four students chose big cities for shopping and concerts. Many other students think big cities are too crowded and noisy.",
+       "question": "The students who chose the mountains ----.",
+       "options": [
+        "like quiet places and fresh air",
+        "want to go shopping",
+        "love sunbathing",
+        "want to learn about old houses"
+       ],
+       "answer": 0,
+       "explanation": "Metinde dağları seçenlerin 'peaceful places and fresh air' sevdiği yazıyor; peaceful = quiet. Alışveriş büyük şehirleri, güneşlenmek denizi, eski evler ise tarihi şehirleri seçenler için."
+      },
+      {
+       "type": "choice",
+       "passage": "Our class did a survey about holiday places. Thirty students answered the question 'Where would you like to go on your next holiday?'\nTwelve students chose the seaside because they love swimming and sunbathing. Eight students chose historical cities like Mardin and Safranbolu. They want to see old houses and learn about the past. Six students chose the mountains because they enjoy peaceful places and fresh air. Only four students chose big cities for shopping and concerts. Many other students think big cities are too crowded and noisy.",
+       "question": "How many students chose historical cities?",
+       "options": [
+        "Four",
+        "Six",
+        "Eight",
+        "Twelve"
+       ],
+       "answer": 2,
+       "explanation": "Metinde 'Eight students chose historical cities' yazıyor. Dört büyük şehir, altı dağ, on iki ise deniz kenarı sayısı. Sayıları karıştırmamak için metinde tek tek işaretle!"
+      },
+      {
+       "type": "choice",
+       "passage": "Our class did a survey about holiday places. Thirty students answered the question 'Where would you like to go on your next holiday?'\nTwelve students chose the seaside because they love swimming and sunbathing. Eight students chose historical cities like Mardin and Safranbolu. They want to see old houses and learn about the past. Six students chose the mountains because they enjoy peaceful places and fresh air. Only four students chose big cities for shopping and concerts. Many other students think big cities are too crowded and noisy.",
+       "question": "Which of the following is NOT TRUE according to the text?",
+       "options": [
+        "Thirty students took part in the survey.",
+        "Some students think big cities are noisy.",
+        "Safranbolu is one of the historical cities in the text.",
+        "Half of the students chose historical cities."
+       ],
+       "answer": 3,
+       "explanation": "Otuz öğrencinin yarısı on beş eder ama tarihi şehirleri sadece sekiz öğrenci seçmiş; bu yüzden 'Half of the students chose historical cities' yanlış. Öteki üç bilgi metinde açıkça var."
+      }
+     ]
+    },
+    {
+     "id": "ls2u2t",
+     "type": "test",
+     "title": "Ünite testi",
+     "description": "Üniteyi geçmek için %80 doğru yap",
+     "rewardXp": 30
+    },
+    {
+     "id": "ls2u2c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    }
+   ]
+  },
+  {
+   "id": "ls2u3",
+   "title": "Chores",
+   "description": "Ev işleri: zorunluluk ve sorumluluk, kibar rica ve yardım teklifi",
+   "color": "0xFFC28A1E",
+   "theme": "tamir",
+   "guide": "## Bu ünitede ne öğreneceğiz?\nBu ünitede ev işlerini İngilizce söylemeyi, zorunlulukları ve sorumlulukları anlatmayı öğreneceksin. Ayrıca kibarca yardım istemeyi ve yardım teklif etmeyi göreceğiz. Evde herkes bir şeyler yapar; sen de bu ünitede İngilizce konuşarak takıma katılıyorsun!\n\n## Hedef kalıplar\n- **have to / has to**: zorunda olmak (genelde dışarıdan gelen kural). Örnek: She has to feed the cat every day.\n- **must**: -meli, -malı (güçlü zorunluluk). Örnek: I must clean my room today.\n- **mustn't**: yasak. Örnek: You mustn't touch the hot iron.\n- **don't have to / doesn't have to**: gerek yok, zorunda değil. Örnek: You don't have to cook today.\n- **need to**: gerekmek, ihtiyaç olmak. Örnek: I need to water the plants.\n- **Can / Could you ...?**: ... yapabilir misin? Örnek: Could you set the table, please?\n- **Shall I ...? / I'll help you.**: ... yapayım mı? / Sana yardım edeceğim. Örnek: Shall I do the dishes?\n- **I don't mind / I can't stand ...**: Sorun etmem / Hiç dayanamam. Örnek: I can't stand ironing.\n\n## Anahtar kelimeler\n- **do the laundry**: çamaşır yıkamak\n- **do the dishes**: bulaşık yıkamak\n- **vacuum the carpet**: halıyı elektrik süpürgesiyle süpürmek\n- **dust the furniture**: mobilyaların tozunu almak\n- **make the bed**: yatağı toplamak\n- **take out the rubbish**: çöpü çıkarmak\n- **feed the pet**: evcil hayvanı beslemek\n- **set the table**: sofrayı kurmak\n- **clear the table**: sofrayı toplamak\n- **iron the clothes**: kıyafetleri ütülemek\n- **water the plants**: bitkileri sulamak\n- **chore**: ev işi\n- **responsibility**: sorumluluk\n- **tidy up**: toplamak, düzenlemek\n\n## Türklerin sık yaptığı hatalar\n- \"She have to do the dishes.\" → **She has to do the dishes.** He, she ve it ile has to kullanılır.\n- \"You mustn't come early.\" (gerek yok anlamında) → **You don't have to come early.** Mustn't yasak demektir, don't have to ise gerek yok demektir.\n- \"I make the laundry.\" → **I do the laundry.** Laundry ve dishes ile do, bed ile make kullanılır.\n\n## LGS ipuçları\n- Zorunluluk sorularında ipucu cümleleri yakala: \"It's Saturday, I can sleep late\" gibi bir cümle varsa cevap genellikle **don't have to** olur.\n- Yardım teklifi istendiğinde **Shall I...?** ya da **I'll...** ile başlayan seçeneği ara; Could you...? ise birinden rica etmektir.\n- Görev çizelgesi (chore chart) sorularında günleri ve kişileri dikkatlice eşleştir; çeldiriciler çoğu zaman başka bir günün görevidir.\n- \"Do you mind...?\" sorusuna verilen \"Not at all\" cevabı \"hiç sorun değil\" demektir; olumsuz görünse de kabul anlamı taşır.\n\n> İpucu: Mustn't = yasak, don't have to = gerek yok. Bu ikisini karıştırmazsan LGS'de birçok soruyu kolayca çözersin!",
+   "nodes": [
+    {
+     "id": "ls2u3l1",
+     "type": "lesson",
+     "title": "Ev işi kelimeleri",
+     "description": "Çamaşır, bulaşık, toz alma ve diğer ev işleri",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "bulaşık yıkamak",
+       "answer": "do the dishes",
+       "choices": [
+        {
+         "text": "do the laundry",
+         "emoji": "🧺"
+        },
+        {
+         "text": "do the dishes",
+         "emoji": "🍽️"
+        },
+        {
+         "text": "make the bed",
+         "emoji": "🛏️"
+        },
+        {
+         "text": "water the plants",
+         "emoji": "🪴"
+        }
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "çöpü çıkarmak",
+       "answer": "take out the rubbish",
+       "choices": [
+        {
+         "text": "iron the clothes",
+         "emoji": "👔"
+        },
+        {
+         "text": "feed the pet",
+         "emoji": "🐱"
+        },
+        {
+         "text": "take out the rubbish",
+         "emoji": "🗑️"
+        },
+        {
+         "text": "vacuum the carpet",
+         "emoji": "🧹"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "çamaşır yıkamak",
+         "do the laundry"
+        ],
+        [
+         "yatağı toplamak",
+         "make the bed"
+        ],
+        [
+         "toz almak",
+         "dust the furniture"
+        ],
+        [
+         "halıyı süpürmek",
+         "vacuum the carpet"
+        ],
+        [
+         "bitkileri sulamak",
+         "water the plants"
+        ]
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "sofrayı kurmak",
+         "set the table"
+        ],
+        [
+         "sofrayı toplamak",
+         "clear the table"
+        ],
+        [
+         "kıyafetleri ütülemek",
+         "iron the clothes"
+        ],
+        [
+         "evcil hayvanı beslemek",
+         "feed the pet"
+        ]
+       ]
+      },
+      {
+       "type": "fillBlank",
+       "text": "Can you ___ the plants? They look very dry.",
+       "translation": "Bitkileri sulayabilir misin? Çok kuru görünüyorlar.",
+       "choices": [
+        "water",
+        "iron",
+        "dust"
+       ],
+       "answer": "water"
+      },
+      {
+       "type": "fillBlank",
+       "text": "I always ___ my bed after I wake up.",
+       "translation": "Uyandıktan sonra her zaman yatağımı toplarım.",
+       "choices": [
+        "make",
+        "do",
+        "take"
+       ],
+       "answer": "make"
+      },
+      {
+       "type": "choice",
+       "question": "My shirt is very wrinkled. I need to ---- it before school.",
+       "options": [
+        "iron",
+        "vacuum",
+        "feed",
+        "water"
+       ],
+       "answer": 0,
+       "explanation": "Buruşuk bir gömlek ütülenir: 'iron'. Halı süpürülür (vacuum), hayvan beslenir (feed), bitki sulanır (water)."
+      },
+      {
+       "type": "choice",
+       "question": "The rubbish bin is full. Can you ---- the rubbish, please?",
+       "options": [
+        "make",
+        "take out",
+        "set",
+        "dust"
+       ],
+       "answer": 1,
+       "explanation": "Çöp kutusu dolunca çöp dışarı çıkarılır: 'take out the rubbish'. 'make' yatak için, 'set' sofra için, 'dust' toz almak için kullanılır."
+      },
+      {
+       "type": "choice",
+       "question": "We have guests for dinner. Let's ---- the table: plates, forks and glasses.",
+       "options": [
+        "clear",
+        "wash",
+        "feed",
+        "set"
+       ],
+       "answer": 3,
+       "explanation": "Misafirler gelmeden tabak, çatal ve bardak koyarak sofra kurulur: 'set the table'. 'clear the table' yemekten sonra sofrayı toplamaktır; bu ikisini karıştırma!"
+      },
+      {
+       "type": "choice",
+       "question": "There is a lot of dust on the shelves. I should ---- them.",
+       "options": [
+        "feed",
+        "iron",
+        "dust",
+        "water"
+       ],
+       "answer": 2,
+       "explanation": "Raflarda toz varsa tozları alınır: 'dust'. Bu kelime hem isim (toz) hem fiil (toz almak) olarak kullanılır. Ütülemek, sulamak ve beslemek raflara uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Mert's cat is hungry and keeps meowing. Mert should ----.",
+       "options": [
+        "do the laundry",
+        "feed the pet",
+        "make the bed",
+        "iron the clothes"
+       ],
+       "answer": 1,
+       "explanation": "Kedi aç olduğu için miyavlıyor; Mert'in onu beslemesi gerek: 'feed the pet'. Çamaşır, yatak ve ütü kedinin açlığını gidermez."
+      }
+     ]
+    },
+    {
+     "id": "ls2u3l2",
+     "type": "lesson",
+     "title": "Zorunluluk ve rica kalıpları",
+     "description": "have to, must, don't have to, need to; Can/Could you...?, Shall I...?",
+     "exercises": [
+      {
+       "type": "fillBlank",
+       "text": "My sister ___ to do the dishes every evening.",
+       "translation": "Kız kardeşim her akşam bulaşıkları yıkamak zorunda.",
+       "choices": [
+        "has",
+        "have",
+        "must"
+       ],
+       "answer": "has"
+      },
+      {
+       "type": "fillBlank",
+       "text": "You don't ___ to make breakfast. I already made it.",
+       "translation": "Kahvaltı hazırlamak zorunda değilsin. Ben zaten hazırladım.",
+       "choices": [
+        "have",
+        "has",
+        "must"
+       ],
+       "answer": "have"
+      },
+      {
+       "type": "translate",
+       "text": "Bulaşıklarda bana yardım edebilir misin?",
+       "lang": "tr",
+       "answers": [
+        "Can you help me with the dishes",
+        "Could you help me with the dishes"
+       ],
+       "tokens": [
+        "Can",
+        "Could",
+        "you",
+        "help",
+        "me",
+        "with",
+        "the",
+        "dishes",
+        "make"
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Children ---- play with fire. It's dangerous.",
+       "options": [
+        "must",
+        "mustn't",
+        "have to",
+        "don't have to"
+       ],
+       "answer": 1,
+       "explanation": "Ateşle oynamak tehlikeli, yani yasak: 'mustn't'. 'must' ve 'have to' zorunluluk bildirir; 'don't have to' ise sadece gerek olmadığını söyler, yasak anlamı vermez."
+      },
+      {
+       "type": "choice",
+       "question": "Tomorrow is Saturday, so I ---- get up early. I can sleep until ten!",
+       "options": [
+        "have to",
+        "must",
+        "don't have to",
+        "has to"
+       ],
+       "answer": 2,
+       "explanation": "Cumartesi olduğu için erken kalkmaya gerek yok ve saat ona kadar uyuyabilir: 'don't have to'. 'have to' ve 'must' zorunluluk bildirir; 'has to' ise I ile kullanılmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Mother: The living room is so messy.\nCan: ----\nMother: Thank you, dear! That would be great.",
+       "options": [
+        "Shall I vacuum the carpet?",
+        "Do you have to clean it?",
+        "I hate cleaning.",
+        "Why is it messy?"
+       ],
+       "answer": 0,
+       "explanation": "Annesi teşekkür ediyor, demek ki Can yardım teklif etmiş: 'Shall I vacuum the carpet?' Teklif kalıbı 'Shall I...?' Diğer cümleler teklif değil, teşekkürü hak etmiyor."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep ---- feed her dog twice a day because it's her responsibility.",
+       "options": [
+        "have to",
+        "has to",
+        "don't have to",
+        "haven't to"
+       ],
+       "answer": 1,
+       "explanation": "Özne 'Zeynep' (she) olduğu için 'has to' kullanılır. 'have to' ve 'don't have to' he/she ile uymaz; 'haven't to' diye bir yapı yoktur. Sorumluluk olduğu için olumlu olmalı."
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence is a polite request?",
+       "options": [
+        "Clean your room now!",
+        "I don't have to clean my room.",
+        "Could you help me fold the clothes, please?",
+        "I can't stand ironing."
+       ],
+       "answer": 2,
+       "explanation": "Kibar rica 'Could you..., please?' ile yapılır. 'Clean your room now!' emir cümlesi; diğer ikisi zorunluluk olmadığını ve bir şeyi sevmediğini anlatıyor."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: I can't stand ironing. It's so boring!\nTom: ----. I actually enjoy it. It's relaxing.",
+       "options": [
+        "Me neither",
+        "I agree with you",
+        "I hate it too",
+        "Really? I don't mind it"
+       ],
+       "answer": 3,
+       "explanation": "Tom ütü yapmaktan hoşlandığını söylüyor, yani Lisa'ya katılmıyor: 'Really? I don't mind it.' 'Me neither', 'I agree with you' ve 'I hate it too' Lisa'ya katıldığını gösterir."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: ----?\nMert: No, you don't. I already watered them this morning.",
+       "options": [
+        "Do I have to water the plants",
+        "Did you feed the fish",
+        "Can you iron my shirt",
+        "Where are the plants"
+       ],
+       "answer": 0,
+       "explanation": "'No, you don't' cevabı 'Do I have to...?' sorusuna uyar; Mert bitkileri zaten sulamış. 'Did you...?' sorusunun cevabı 'No, I didn't' olurdu; rica ve yer sorusu da bu cevaba uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence has the SAME meaning as 'It isn't necessary for you to clear the table.'?",
+       "options": [
+        "You mustn't clear the table.",
+        "You have to clear the table.",
+        "You must clear the table.",
+        "You don't have to clear the table."
+       ],
+       "answer": 3,
+       "explanation": "'It isn't necessary' gerek yok demektir; bunun karşılığı 'don't have to'. 'mustn't' yasak bildirir; 'have to' ve 'must' ise zorunluluk anlatır."
+      }
+     ]
+    },
+    {
+     "id": "ls2u3l3",
+     "type": "lesson",
+     "title": "Evde yardımlaşma",
+     "description": "Yardım isteme, teklif etme, kabul ve ret diyalogları",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Mum: I'm so tired. I still have to do the laundry.\nZeynep: ----\nMum: Oh, thank you, sweetheart.",
+       "options": [
+        "I'll do it for you, Mum.",
+        "I don't like laundry.",
+        "Where is the laundry?",
+        "You must do it now."
+       ],
+       "answer": 0,
+       "explanation": "Annesi teşekkür ettiğine göre Zeynep yardım teklif etmiş: 'I'll do it for you, Mum.' Çamaşırı sevmediğini söylemek, yerini sormak ya da annesine emir vermek teşekkürü getirmez."
+      },
+      {
+       "type": "choice",
+       "question": "Dad: Could you set the table, Can?\nCan: ----. I'm just finishing my homework.",
+       "options": [
+        "No, I never set it",
+        "Sure, in five minutes",
+        "I set it last year",
+        "Yes, I did"
+       ],
+       "answer": 1,
+       "explanation": "Can ödevini bitirmek üzere, yani kısa bir süre sonra yardım edecek: 'Sure, in five minutes.' 'Yes, I did' geçmiş zaman sorusuna verilir; diğer cevaplar kaba ya da ilgisiz."
+      },
+      {
+       "type": "choice",
+       "question": "Ece's grandmother wants to carry heavy shopping bags upstairs. Ece wants to offer help. What can she say?",
+       "options": [
+        "Could you carry my bags?",
+        "You have to carry them.",
+        "Shall I carry the bags for you, Grandma?",
+        "I don't have to help you."
+       ],
+       "answer": 2,
+       "explanation": "Yardım teklifi 'Shall I...?' ile yapılır: 'Shall I carry the bags for you, Grandma?' 'Could you carry my bags?' Ece'nin yardım istemesi olur; diğer iki cümle teklif değil."
+      },
+      {
+       "type": "choice",
+       "question": "Tom: ----?\nLisa: Not at all. I actually love it because I listen to music while I'm doing it.",
+       "options": [
+        "Why do you hate vacuuming",
+        "When did you vacuum the carpet",
+        "Who vacuumed the carpet",
+        "Do you mind vacuuming the carpet"
+       ],
+       "answer": 3,
+       "explanation": "'Not at all' (hiç sorun değil) cevabı 'Do you mind...?' sorusuna verilir. Lisa süpürmeyi sevdiğini söylüyor, bu yüzden 'Why do you hate...?' uymaz; 'When' ve 'Who' soruları da bu cevapla eşleşmez."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: I can't go out tonight. ----\nZeynep: Oh, I see. Maybe we can meet tomorrow.",
+       "options": [
+        "I have to look after my little brother.",
+        "I don't have to do anything.",
+        "My chores are finished.",
+        "I'm free tonight."
+       ],
+       "answer": 0,
+       "explanation": "Mert dışarı çıkamıyor, bunun bir nedeni olmalı: 'I have to look after my little brother.' Hiçbir işinin olmaması, işlerinin bitmesi ya da boş olması dışarı çıkamamasını açıklamaz."
+      },
+      {
+       "type": "choice",
+       "question": "Mum: Kids, ----. Your grandparents are coming for dinner.\nCan: OK, Mum. I'll tidy my room right now.",
+       "options": [
+        "you don't have to tidy up",
+        "you can watch TV all evening",
+        "the house must be clean",
+        "let's go to the cinema"
+       ],
+       "answer": 2,
+       "explanation": "Büyükanne ve büyükbaba geliyor ve Can hemen odasını toplayacağını söylüyor; annesi evin temiz olması gerektiğini söylemiş: 'the house must be clean'. Diğer seçenekler toplanmaya gerek olmadığını ya da eğlenceyi anlatıyor."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: Could you help me with the dishes?\nTom: ----. I'm busy with my project right now.",
+       "options": [
+        "Of course, here I am",
+        "Sure, no problem",
+        "I'm sorry, I can't",
+        "Yes, I'd be happy to"
+       ],
+       "answer": 2,
+       "explanation": "Tom projesiyle meşgul, yani ricayı kibarca reddediyor: 'I'm sorry, I can't.' Diğer üç cevap ricayı kabul ediyor ve devamındaki cümleyle çelişiyor."
+      },
+      {
+       "type": "choice",
+       "question": "Mert's family made a chore chart. Mert hates taking out the rubbish, but his sister doesn't mind it. What can Mert say to her?",
+       "options": [
+        "I love taking out the rubbish.",
+        "You mustn't take out the rubbish.",
+        "I took out the rubbish yesterday, too.",
+        "Could we swap? I'll wash the car if you take out the rubbish."
+       ],
+       "answer": 3,
+       "explanation": "Mert çöpü çıkarmayı sevmiyor, kız kardeşi ise sorun etmiyor; mantıklı olan görev değiş tokuşu önermek: 'Could we swap?' Çöpü sevdiğini söylemek ya da kardeşine yasak koymak duruma uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Grandpa: The plants in the garden look dry.\nEce: ----\nGrandpa: That's very kind of you.",
+       "options": [
+        "Shall I water them?",
+        "They don't have to drink water.",
+        "I can't stand plants.",
+        "Did you buy new plants?"
+       ],
+       "answer": 0,
+       "explanation": "Dede 'Çok naziksin' diyor, demek ki Ece yardım teklif etmiş: 'Shall I water them?' Diğer cevaplar teklif değil, dedenin teşekkürüne uymuyor."
+      },
+      {
+       "type": "choice",
+       "question": "Dad: You don't have to wash the car today, Zeynep.\nWhat does Dad mean?",
+       "options": [
+        "Zeynep must wash the car now.",
+        "It isn't necessary for Zeynep to wash the car today.",
+        "Zeynep can't wash the car.",
+        "Zeynep washed the car today."
+       ],
+       "answer": 1,
+       "explanation": "'don't have to' gerek yok demektir: Zeynep'in bugün arabayı yıkamasına gerek yok. Babası yıkamayı yasaklamıyor ya da zorunlu tutmuyor; arabanın yıkandığı da söylenmiyor."
+      },
+      {
+       "type": "choice",
+       "question": "Can: I always make my bed and tidy my desk. My mum doesn't have to tell me.\nWhich of the following is TRUE about Can?",
+       "options": [
+        "He never makes his bed.",
+        "His mum always reminds him.",
+        "He hates tidying up.",
+        "He is a responsible child."
+       ],
+       "answer": 3,
+       "explanation": "Can işlerini annesi söylemeden kendisi yapıyor; bu onun sorumluluk sahibi olduğunu gösterir: 'He is a responsible child.' Yatağını hep topluyor ve annesinin hatırlatmasına gerek kalmıyor."
+      }
+     ]
+    },
+    {
+     "id": "ls2u3l4",
+     "type": "lesson",
+     "title": "Okuma: Ailede görev paylaşımı",
+     "description": "Görev çizelgesi, e-posta ve sınıf anketi okuma",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "THE YILMAZ FAMILY CHORE CHART\nMonday, Wednesday and Friday: Ece does the dishes and Kerem takes out the rubbish.\nTuesday and Thursday: Kerem does the dishes and Ece feeds the cat and waters the plants.\nSaturday: Mum and Dad do the laundry. Ece and Kerem clean their own rooms.\nSunday: Everybody helps Dad cook a big family breakfast. After breakfast, Mum and Kerem clear the table.\nRule: If you finish all your chores during the week, you can choose the Sunday film!",
+       "question": "According to the chart, Kerem ---- on Thursdays.",
+       "options": [
+        "takes out the rubbish",
+        "does the dishes",
+        "feeds the cat",
+        "does the laundry"
+       ],
+       "answer": 1,
+       "explanation": "Salı ve perşembe günleri bulaşıkları Kerem yıkıyor. Çöpü pazartesi, çarşamba ve cuma çıkarıyor; kediyi Ece besliyor; çamaşırı anne ve baba yıkıyor."
+      },
+      {
+       "type": "choice",
+       "passage": "THE YILMAZ FAMILY CHORE CHART\nMonday, Wednesday and Friday: Ece does the dishes and Kerem takes out the rubbish.\nTuesday and Thursday: Kerem does the dishes and Ece feeds the cat and waters the plants.\nSaturday: Mum and Dad do the laundry. Ece and Kerem clean their own rooms.\nSunday: Everybody helps Dad cook a big family breakfast. After breakfast, Mum and Kerem clear the table.\nRule: If you finish all your chores during the week, you can choose the Sunday film!",
+       "question": "Who has to water the plants?",
+       "options": [
+        "Kerem",
+        "Mum",
+        "Ece",
+        "Dad"
+       ],
+       "answer": 2,
+       "explanation": "Çizelgede salı ve perşembe 'Ece feeds the cat and waters the plants' yazıyor. Bitkileri sulamak Ece'nin görevi."
+      },
+      {
+       "type": "choice",
+       "passage": "THE YILMAZ FAMILY CHORE CHART\nMonday, Wednesday and Friday: Ece does the dishes and Kerem takes out the rubbish.\nTuesday and Thursday: Kerem does the dishes and Ece feeds the cat and waters the plants.\nSaturday: Mum and Dad do the laundry. Ece and Kerem clean their own rooms.\nSunday: Everybody helps Dad cook a big family breakfast. After breakfast, Mum and Kerem clear the table.\nRule: If you finish all your chores during the week, you can choose the Sunday film!",
+       "question": "Which of the following is NOT TRUE according to the chart?",
+       "options": [
+        "Ece and Kerem clean their rooms on Saturdays.",
+        "Mum and Kerem clear the table on Sundays.",
+        "The children don't have to do the laundry.",
+        "Ece takes out the rubbish on Mondays."
+       ],
+       "answer": 3,
+       "explanation": "Pazartesi çöpü Ece değil Kerem çıkarıyor; Ece o gün bulaşık yıkıyor. Odaların cumartesi temizlenmesi, pazar sofrayı anne ile Kerem'in toplaması ve çamaşırın çocuklara düşmemesi doğru bilgiler."
+      },
+      {
+       "type": "choice",
+       "passage": "THE YILMAZ FAMILY CHORE CHART\nMonday, Wednesday and Friday: Ece does the dishes and Kerem takes out the rubbish.\nTuesday and Thursday: Kerem does the dishes and Ece feeds the cat and waters the plants.\nSaturday: Mum and Dad do the laundry. Ece and Kerem clean their own rooms.\nSunday: Everybody helps Dad cook a big family breakfast. After breakfast, Mum and Kerem clear the table.\nRule: If you finish all your chores during the week, you can choose the Sunday film!",
+       "question": "Which question CANNOT be answered using the chart?",
+       "options": [
+        "Who cooks dinner on Fridays?",
+        "Who does the laundry?",
+        "What can the children do if they finish their chores?",
+        "When does Ece do the dishes?"
+       ],
+       "answer": 0,
+       "explanation": "Çizelgede cuma akşam yemeğini kimin pişirdiği yazmıyor; sadece pazar kahvaltısından söz ediliyor. Çamaşırı kimin yıkadığı, ödül (pazar filmini seçmek) ve Ece'nin bulaşık günleri çizelgede var."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Zeynep,\nGuess what? My parents decided that I'm old enough to have my own responsibilities at home. Now I have to make my bed every morning and feed our dog, Max, twice a day. I don't mind feeding Max because I love him so much. But I really can't stand ironing! Last Saturday I had to iron my brother's shirts and it took two hours. My mum said I don't have to do the ironing every week, only when she's at work. What about you? Do you have any chores?\nLove,\nLisa",
+       "question": "Why did Lisa write this email?",
+       "options": [
+        "To invite Zeynep to a party",
+        "To tell Zeynep about her new chores",
+        "To ask Zeynep for help with ironing",
+        "To complain about her dog"
+       ],
+       "answer": 1,
+       "explanation": "Lisa e-postada evdeki yeni sorumluluklarını anlatıyor: yatak toplamak, köpeği beslemek ve ütü. Davet yok, ütü için yardım istemiyor ve köpeğinden şikâyet etmiyor; aksine onu çok seviyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Zeynep,\nGuess what? My parents decided that I'm old enough to have my own responsibilities at home. Now I have to make my bed every morning and feed our dog, Max, twice a day. I don't mind feeding Max because I love him so much. But I really can't stand ironing! Last Saturday I had to iron my brother's shirts and it took two hours. My mum said I don't have to do the ironing every week, only when she's at work. What about you? Do you have any chores?\nLove,\nLisa",
+       "question": "According to the email, Lisa ----.",
+       "options": [
+        "enjoys ironing clothes",
+        "has to feed Max once a week",
+        "doesn't have to iron every week",
+        "doesn't make her bed"
+       ],
+       "answer": 2,
+       "explanation": "Annesi 'You don't have to do the ironing every week' demiş, yani her hafta ütü yapmak zorunda değil. Lisa ütüden hiç hoşlanmıyor, Max'i günde iki kez besliyor ve her sabah yatağını topluyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Zeynep,\nGuess what? My parents decided that I'm old enough to have my own responsibilities at home. Now I have to make my bed every morning and feed our dog, Max, twice a day. I don't mind feeding Max because I love him so much. But I really can't stand ironing! Last Saturday I had to iron my brother's shirts and it took two hours. My mum said I don't have to do the ironing every week, only when she's at work. What about you? Do you have any chores?\nLove,\nLisa",
+       "question": "How does Lisa feel about feeding Max?",
+       "options": [
+        "She hates it.",
+        "It takes two hours.",
+        "Her brother does it.",
+        "She doesn't mind it."
+       ],
+       "answer": 3,
+       "explanation": "Lisa 'I don't mind feeding Max' diyor, yani bu iş onun için sorun değil. İki saat süren iş ütü; köpeği kardeşi değil Lisa besliyor ve bu işten nefret etmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Mr. Aksoy asked his 25 students about household chores. Here are the results:\nEighteen students said they make their beds every day.\nWashing the dishes is the most unpopular chore. Fifteen students said they hate it.\nOnly five students do the laundry, and most of them said they don't mind it.\nFeeding pets is the favourite chore. All the students with pets said they enjoy it.\nTwenty students said their parents have to remind them about their chores.",
+       "question": "According to the survey, ----.",
+       "options": [
+        "students love washing the dishes",
+        "feeding pets is the most popular chore",
+        "nobody makes their bed",
+        "all students do the laundry"
+       ],
+       "answer": 1,
+       "explanation": "Ankette 'Feeding pets is the favourite chore' yazıyor, yani en sevilen iş evcil hayvan beslemek. Bulaşık en sevilmeyen iş; on sekiz öğrenci yatağını topluyor; çamaşırı sadece beş öğrenci yıkıyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Mr. Aksoy asked his 25 students about household chores. Here are the results:\nEighteen students said they make their beds every day.\nWashing the dishes is the most unpopular chore. Fifteen students said they hate it.\nOnly five students do the laundry, and most of them said they don't mind it.\nFeeding pets is the favourite chore. All the students with pets said they enjoy it.\nTwenty students said their parents have to remind them about their chores.",
+       "question": "How many students make their beds every day?",
+       "options": [
+        "Five",
+        "Fifteen",
+        "Eighteen",
+        "Twenty"
+       ],
+       "answer": 2,
+       "explanation": "Metinde 'Eighteen students said they make their beds every day' yazıyor. Beş çamaşır yıkayanların, on beş bulaşıktan nefret edenlerin, yirmi ise hatırlatılmaya ihtiyaç duyanların sayısı."
+      },
+      {
+       "type": "choice",
+       "passage": "Mr. Aksoy asked his 25 students about household chores. Here are the results:\nEighteen students said they make their beds every day.\nWashing the dishes is the most unpopular chore. Fifteen students said they hate it.\nOnly five students do the laundry, and most of them said they don't mind it.\nFeeding pets is the favourite chore. All the students with pets said they enjoy it.\nTwenty students said their parents have to remind them about their chores.",
+       "question": "Which of the following can we say about the students?",
+       "options": [
+        "Many of them need reminders from their parents.",
+        "They all hate doing the laundry.",
+        "None of them have pets.",
+        "They never help at home."
+       ],
+       "answer": 0,
+       "explanation": "Yirmi öğrencinin ailesi onlara görevlerini hatırlatmak zorunda; bu yüzden 'Many of them need reminders from their parents' doğru. Çamaşır yıkayanların çoğu bu işi sorun etmiyor, evcil hayvanı olanlar var ve öğrenciler evde yardım ediyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Mr. Aksoy asked his 25 students about household chores. Here are the results:\nEighteen students said they make their beds every day.\nWashing the dishes is the most unpopular chore. Fifteen students said they hate it.\nOnly five students do the laundry, and most of them said they don't mind it.\nFeeding pets is the favourite chore. All the students with pets said they enjoy it.\nTwenty students said their parents have to remind them about their chores.",
+       "question": "The word 'unpopular' in the text is closest in meaning to ----.",
+       "options": [
+        "not liked by many people",
+        "liked by many people",
+        "very easy",
+        "done every day"
+       ],
+       "answer": 0,
+       "explanation": "'unpopular' pek sevilmeyen demektir; metinde on beş öğrencinin bulaşıktan nefret ettiğini söylemesi de bunu destekliyor. 'liked by many people' tam tersi anlamdadır; kolaylık ya da her gün yapılmakla ilgisi yok."
+      }
+     ]
+    },
+    {
+     "id": "ls2u3t",
+     "type": "test",
+     "title": "Ünite testi",
+     "description": "Üniteyi geçmek için %80 doğru yap",
+     "rewardXp": 30
+    },
+    {
+     "id": "ls2u3c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    }
+   ]
+  },
+  {
+   "id": "ls2u4",
+   "title": "Science",
+   "description": "Bilim: deneyler, icatlar, edilgen yapı ve ünlü bilim insanları",
+   "color": "0xFF5B5BD6",
+   "theme": "kutuphane",
+   "guide": "## Bu ünitede ne öğreneceğiz?\n\nBu ünitede bilim dünyasına adım atıyoruz! Deneyleri, icatları ve ünlü bilim insanlarını İngilizce anlatmayı öğreneceğiz. Edilgen yapı (passive) ilk bakışta zor görünebilir ama birkaç örnekten sonra çok kolaylaşacak, söz veriyoruz.\n\n## Hedef kalıplar\n\n- **... is/are made from ...**: ... -den yapılır. Glass is made from sand.\n- **... is/are used for ...**: ... için kullanılır. A microscope is used for looking at very small things.\n- **... was/were invented by ...**: ... tarafından icat edildi. The telephone was invented by Alexander Graham Bell.\n- **... was discovered in ...**: ... yılında keşfedildi. Penicillin was discovered in 1928.\n- **First, ... Then, ... After that, ... Finally, ...**: Önce, sonra, ondan sonra, en sonunda. First, fill the glass with water.\n- **What happened when ...?**: ... olunca ne oldu? What happened when you added salt?\n- **The result was ...**: Sonuç ... oldu. The result was surprising.\n\n## Anahtar kelimeler\n\n- **experiment**: deney\n- **invention**: icat\n- **inventor**: mucit\n- **invent**: icat etmek\n- **discover**: keşfetmek\n- **scientist**: bilim insanı\n- **laboratory**: laboratuvar\n- **research**: araştırma\n- **telescope**: teleskop\n- **microscope**: mikroskop\n- **result**: sonuç\n- **observe**: gözlemlemek\n- **measure**: ölçmek\n- **mix**: karıştırmak\n\n## Türklerin sık yaptığı hatalar\n\n- \"The phone invented by Bell.\" yanlış → \"The phone **was** invented by Bell.\" doğru. Edilgen yapıda be fiilini (is, are, was, were) unutma.\n- \"Penicillin was discover in 1928.\" yanlış → \"Penicillin was **discovered** in 1928.\" doğru. Fiilin üçüncü hâlini kullanmalısın.\n- **invent** ile **discover** karışır. Daha önce hiç olmayan bir şeyi yapmak **invent**, var olan ama bilinmeyen bir şeyi bulmak **discover** demektir. Telefon icat edilir, bir gezegen ise keşfedilir.\n\n## LGS ipuçları\n\n- LGS edilgen yapıyı çok sever. Boşluktan önce cümlenin öznesine bak: tekil ise **is/was**, çoğul ise **are/were** gelir. Zaman ifadesine de dikkat et: \"in 1928\", \"last year\" geçmiş zamandır.\n- Deney adımlarını anlatan sorularda **First, Then, After that, Finally** sıralamasını takip et. Diyalog sıralama sorularında önce soruyu, sonra cevabı bul.\n- Okuma parçalarında \"Which question is NOT answered?\" sorusu sık gelir. Her seçeneği metinde tek tek ara; metinde olmayan bilgi doğru cevaptır.\n\n> İpucu: \"by\" kelimesini görünce işi yapan kişiyi düşün. \"was invented by Bell\" yani işi yapan Bell. Takılırsan bu rehbere dön, sen bunu yaparsın!",
+   "nodes": [
+    {
+     "id": "ls2u4l1",
+     "type": "lesson",
+     "title": "Bilim kelimeleri",
+     "description": "Deney, icat, mucit, laboratuvar gibi temel bilim kelimeleri",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "deney",
+       "answer": "experiment",
+       "choices": [
+        {
+         "text": "experiment",
+         "emoji": "🧪"
+        },
+        {
+         "text": "telescope",
+         "emoji": "🔭"
+        },
+        {
+         "text": "magnet",
+         "emoji": "🧲"
+        },
+        {
+         "text": "result",
+         "emoji": "📊"
+        }
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "mikroskop",
+       "answer": "microscope",
+       "choices": [
+        {
+         "text": "rocket",
+         "emoji": "🚀"
+        },
+        {
+         "text": "microscope",
+         "emoji": "🔬"
+        },
+        {
+         "text": "telescope",
+         "emoji": "🔭"
+        },
+        {
+         "text": "battery",
+         "emoji": "🔋"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "deney",
+         "experiment"
+        ],
+        [
+         "icat",
+         "invention"
+        ],
+        [
+         "mucit",
+         "inventor"
+        ],
+        [
+         "bilim insanı",
+         "scientist"
+        ],
+        [
+         "laboratuvar",
+         "laboratory"
+        ]
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "keşfetmek",
+         "discover"
+        ],
+        [
+         "araştırma",
+         "research"
+        ],
+        [
+         "sonuç",
+         "result"
+        ],
+        [
+         "gözlemlemek",
+         "observe"
+        ],
+        [
+         "ölçmek",
+         "measure"
+        ]
+       ]
+      },
+      {
+       "type": "fillBlank",
+       "text": "Thomas Edison was a famous ___.",
+       "translation": "Thomas Edison ünlü bir mucitti.",
+       "choices": [
+        "inventor",
+        "invention",
+        "experiment"
+       ],
+       "answer": "inventor"
+      },
+      {
+       "type": "fillBlank",
+       "text": "We look at the moon and the stars through the ___.",
+       "translation": "Ay'a ve yıldızlara teleskopla bakarız.",
+       "choices": [
+        "microscope",
+        "telescope",
+        "laboratory"
+       ],
+       "answer": "telescope"
+      },
+      {
+       "type": "choice",
+       "question": "Mr. Kaya ---- a new kind of battery last year. Now it is used in many phones.",
+       "options": [
+        "discovered",
+        "invented",
+        "observed",
+        "measured"
+       ],
+       "answer": 1,
+       "explanation": "Bu pil daha önce yoktu, Kaya Bey onu ilk kez yaptı; bu yüzden 'invented' (icat etti) doğru. 'discovered' var olan bir şeyi bulmak, 'observed' gözlemlemek, 'measured' ölçmek demektir."
+      },
+      {
+       "type": "choice",
+       "question": "Scientists usually do their experiments in ----.",
+       "options": [
+        "a laboratory",
+        "a stadium",
+        "a shopping mall",
+        "a cinema"
+       ],
+       "answer": 0,
+       "explanation": "Bilim insanları deneylerini laboratuvarda yapar: 'a laboratory'. Stadyum, alışveriş merkezi ve sinema deney yapılacak yerler değildir."
+      },
+      {
+       "type": "choice",
+       "question": "A ---- helps us see very small things like cells and bacteria.",
+       "options": [
+        "telescope",
+        "calculator",
+        "microscope",
+        "compass"
+       ],
+       "answer": 2,
+       "explanation": "Hücre ve bakteri gibi çok küçük şeyleri 'microscope' ile görürüz. 'telescope' uzaktaki yıldızlar için kullanılır; 'calculator' hesap makinesi, 'compass' pusuladır."
+      },
+      {
+       "type": "choice",
+       "question": "Which word matches the definition below?\n'A person who studies the world and does research to learn new facts.'",
+       "options": [
+        "a reporter",
+        "a farmer",
+        "a pilot",
+        "a scientist"
+       ],
+       "answer": 3,
+       "explanation": "Dünyayı inceleyen ve yeni bilgiler için araştırma yapan kişi 'a scientist' yani bilim insanıdır. Muhabir, çiftçi ve pilotun işi araştırma yapmak değildir. Harika gidiyorsun!"
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep did an experiment with two plants. The ---- showed that plants grow faster in sunlight.",
+       "options": [
+        "inventor",
+        "telescope",
+        "result",
+        "machine"
+       ],
+       "answer": 2,
+       "explanation": "Deneyin ne gösterdiğini 'result' (sonuç) anlatır: 'The result showed that...'. Mucit, teleskop ve makine bir şey göstermez; cümlenin anlamına uymaz."
+      }
+     ]
+    },
+    {
+     "id": "ls2u4l2",
+     "type": "lesson",
+     "title": "Edilgen yapı ve geçmiş zaman",
+     "description": "is made, are used, was invented by kalıpları ve deney adımları",
+     "exercises": [
+      {
+       "type": "fillBlank",
+       "text": "Paper ___ made from trees.",
+       "translation": "Kâğıt ağaçlardan yapılır.",
+       "choices": [
+        "is",
+        "are",
+        "was"
+       ],
+       "answer": "is"
+      },
+      {
+       "type": "fillBlank",
+       "text": "The telephone was ___ by Alexander Graham Bell.",
+       "translation": "Telefon Alexander Graham Bell tarafından icat edildi.",
+       "choices": [
+        "invent",
+        "invented",
+        "inventing"
+       ],
+       "answer": "invented"
+      },
+      {
+       "type": "translate",
+       "text": "Mikroskop küçük şeyleri görmek için kullanılır.",
+       "lang": "tr",
+       "answers": [
+        "A microscope is used to see small things"
+       ],
+       "tokens": [
+        "A",
+        "microscope",
+        "is",
+        "used",
+        "to",
+        "see",
+        "small",
+        "things",
+        "was",
+        "big"
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Glass ---- from sand.",
+       "options": [
+        "makes",
+        "is made",
+        "made",
+        "is making"
+       ],
+       "answer": 1,
+       "explanation": "Cam kendi kendine bir şey yapmaz, kumdan yapılır. Bu yüzden edilgen yapı gerekir: 'is made'. 'makes', 'made' ve 'is making' etken yapıdır, anlamı bozar."
+      },
+      {
+       "type": "choice",
+       "question": "Penicillin ---- by Alexander Fleming in 1928.",
+       "options": [
+        "discovered",
+        "is discovered",
+        "was discovered",
+        "discovers"
+       ],
+       "answer": 2,
+       "explanation": "'in 1928' geçmiş zamanı gösterir ve penisilin keşfedilen şeydir. Bu yüzden geçmiş zaman edilgen yapı 'was discovered' doğru. 'is discovered' geniş zaman, 'discovered' ve 'discovers' etken yapıdır."
+      },
+      {
+       "type": "choice",
+       "question": "Today, smartphones ---- by millions of people all over the world.",
+       "options": [
+        "are used",
+        "were used",
+        "use",
+        "is used"
+       ],
+       "answer": 0,
+       "explanation": "'Today' şimdiki genel durumu anlatır ve 'smartphones' çoğuldur. Bu yüzden 'are used' doğru. 'were used' geçmiş zaman, 'is used' tekil, 'use' ise etken yapıdır."
+      },
+      {
+       "type": "choice",
+       "question": "Marie and Pierre Curie discovered radium.\nWhich sentence has the same meaning?",
+       "options": [
+        "Radium discovered Marie and Pierre Curie.",
+        "Radium is discovered by Marie and Pierre Curie.",
+        "Radium was discovering by Marie and Pierre Curie.",
+        "Radium was discovered by Marie and Pierre Curie."
+       ],
+       "answer": 3,
+       "explanation": "Cümle geçmiş zamanda, bu yüzden edilgen hâli 'was discovered by' olur. 'is discovered' zamanı değiştirir, 'was discovering' yanlış yapı, 'Radium discovered...' ise anlamı tersine çevirir."
+      },
+      {
+       "type": "choice",
+       "question": "Can: What did you do in the science club yesterday?\nEce: We ---- a volcano model and ---- what happened.",
+       "options": [
+        "make / watch",
+        "made / watched",
+        "are making / watching",
+        "will make / watch"
+       ],
+       "answer": 1,
+       "explanation": "Can 'yesterday' diye soruyor, yani geçmiş zaman gerekir: 'made / watched'. Diğer seçeneklerde geniş zaman, şimdiki zaman ve gelecek zaman var; dünü anlatmazlar."
+      },
+      {
+       "type": "choice",
+       "question": "Read the steps of the experiment. Which word fits the blank?\nFirst, put some water in a glass. ----, add a spoon of salt. Finally, mix it and wait.",
+       "options": [
+        "Then",
+        "Before",
+        "Finally",
+        "Because"
+       ],
+       "answer": 0,
+       "explanation": "Adımlar sırayla anlatılıyor: First, sonra 'Then', en son 'Finally'. 'Finally' zaten en sonda kullanılmış; 'Before' ve 'Because' bu sıralamaya uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence is NOT correct?",
+       "options": [
+        "Bread is made from flour.",
+        "Cars are made in factories.",
+        "Telescopes is used to look at stars.",
+        "Many books were written about science."
+       ],
+       "answer": 2,
+       "explanation": "'Telescopes' çoğul olduğu için 'are used' olmalı: 'Telescopes are used to look at stars.' Diğer cümlelerde özne ve be fiili uyumlu, hepsi doğru."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: ----?\nLisa: It was invented in 1876.",
+       "options": [
+        "Who invented the telephone",
+        "Where is the telephone made",
+        "What is the telephone used for",
+        "When was the telephone invented"
+       ],
+       "answer": 3,
+       "explanation": "Lisa bir yıl söylüyor: 'in 1876'. Yıl sorusu 'When' ile sorulur: 'When was the telephone invented?' 'Who' kişi, 'Where' yer, 'What ... used for' ise kullanım amacı sorar."
+      }
+     ]
+    },
+    {
+     "id": "ls2u4l3",
+     "type": "lesson",
+     "title": "Bilim fuarında",
+     "description": "Projeni anlatma, deneyi sorma ve bilim insanlarını tanıtma",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Ali: What is your project for the science fair?\nZeynep: ----.\nAli: Wow, that sounds interesting!",
+       "options": [
+        "I'm making a water filter from sand and stones",
+        "I didn't like science last year",
+        "The fair is in the school gym",
+        "My brother is an engineer"
+       ],
+       "answer": 0,
+       "explanation": "Ali projeyi soruyor ve cevaba 'Wow, that sounds interesting!' diyor. Proje anlatan tek cevap su filtresi yapmak. Fuarın yeri, ağabeyin mesleği ya da geçen yılki duygular projeyi anlatmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Teacher: Did you finish your experiment, Can?\nCan: ----. I'm still waiting for the results.\nTeacher: OK, tell me when you finish.",
+       "options": [
+        "Yes, I finished it yesterday",
+        "Not yet",
+        "Of course, here are my results",
+        "Yes, it was successful"
+       ],
+       "answer": 1,
+       "explanation": "Can hâlâ sonuçları beklediğini söylüyor, yani deney bitmedi: 'Not yet'. Diğer cevaplar deneyin bittiğini söylediği için devamındaki cümleyle çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa is at the science museum. She wants to learn the name of the person who made an old machine.\nWhat can she ask the guide?",
+       "options": [
+        "How much is the ticket?",
+        "When does the museum close?",
+        "Who was this machine invented by?",
+        "Where is the gift shop?"
+       ],
+       "answer": 2,
+       "explanation": "Lisa makineyi yapan kişiyi öğrenmek istiyor; bunun sorusu 'Who was this machine invented by?' olur. Bilet fiyatı, kapanış saati ve hediyelik eşya dükkânı bu amaca uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: ----?\nEce: It's used for measuring temperature.",
+       "options": [
+        "Who invented the thermometer",
+        "Where did you buy the thermometer",
+        "How old is the thermometer",
+        "What is a thermometer used for"
+       ],
+       "answer": 3,
+       "explanation": "Ece 'It's used for...' diyerek kullanım amacını anlatıyor. Bunun sorusu 'What is a thermometer used for?' olur. Diğer sorular kişi, yer ve yaş soruyor."
+      },
+      {
+       "type": "choice",
+       "question": "Tom: How did you do the egg experiment?\nEce: First, I put an egg in a glass of water. It sank. Then, I added a lot of salt to the water. Finally, the egg floated!\n\nAccording to Ece, what happened at the end of the experiment?",
+       "options": [
+        "The egg broke.",
+        "The egg floated.",
+        "The water became hot.",
+        "The egg sank again."
+       ],
+       "answer": 1,
+       "explanation": "Ece 'Finally, the egg floated!' diyor; tuzlu suda yumurta yüzdü. Yumurtanın kırıldığı ya da suyun ısındığı söylenmiyor; yumurta yalnızca başta battı."
+      },
+      {
+       "type": "choice",
+       "question": "Can: I want to be a scientist in the future.\nLisa: ----\nCan: Because I want to find cures for illnesses.",
+       "options": [
+        "Where do you want to work?",
+        "Why do you want to be a scientist?",
+        "When did you decide?",
+        "What is your favourite subject?"
+       ],
+       "answer": 1,
+       "explanation": "Can 'Because...' diye cevap veriyor; 'because' neden sorusunun cevabıdır. Bu yüzden 'Why do you want to be a scientist?' doğru. Yer, zaman ve favori ders soruları 'because' ile cevaplanmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Reporter: ----?\nDr. Demir: I study space. I use big telescopes to observe the planets.",
+       "options": [
+        "What do you do in your research",
+        "How many telescopes do you have",
+        "When did you start school",
+        "Do you like planets"
+       ],
+       "answer": 0,
+       "explanation": "Dr. Demir araştırmasında ne yaptığını anlatıyor, bu yüzden soru 'What do you do in your research?' olmalı. Teleskop sayısı, okula başlama zamanı sorulmuyor; 'Do you like...?' sorusu ise Yes/No ile cevaplanır."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep's experiment didn't work and she feels sad. Her friend wants to encourage her.\nWhich of the following can her friend say?",
+       "options": [
+        "Science is boring, forget it.",
+        "I don't care about your project.",
+        "Don't give up! Let's try it again.",
+        "You never do anything right."
+       ],
+       "answer": 2,
+       "explanation": "Cesaret vermek için 'Don't give up! Let's try it again.' denir. Diğer cümleler Zeynep'i daha da üzer; hiçbiri cesaret vermez."
+      },
+      {
+       "type": "choice",
+       "question": "Put the dialogue in the correct order.\n(I) Great! What did you invent?\n(II) A robot that waters the plants. It is controlled by a phone app.\n(III) Guess what? I won first prize at the science fair!\n(IV) That's amazing! Congratulations!",
+       "options": [
+        "III - I - II - IV",
+        "I - III - II - IV",
+        "III - II - I - IV",
+        "IV - III - I - II"
+       ],
+       "answer": 0,
+       "explanation": "Önce haber verilir (III), sonra ne icat edildiği sorulur (I), cevap gelir (II) ve en sonda tebrik edilir (IV). Diğer sıralamalarda soru, haberden önce ya da cevaptan sonra geliyor."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: Which invention do you think is the most important?\nTom: ----. Without it, we couldn't read books and newspapers so easily.",
+       "options": [
+        "I'm reading a book now",
+        "Newspapers are expensive these days",
+        "I prefer watching films",
+        "I think it's the printing press"
+       ],
+       "answer": 3,
+       "explanation": "Ece fikir soruyor ve Tom kitapları kolay okumamızı sağlayan icattan bahsediyor: 'I think it's the printing press.' Diğer cevaplar bir icadı söylemiyor."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: Who is Aziz Sancar?\nMert: ----.\nLisa: Wow, I didn't know that!",
+       "options": [
+        "He is a famous football player from Brazil",
+        "He is a Turkish scientist who won the Nobel Prize in Chemistry in 2015",
+        "He invented the first car in Germany",
+        "He is the singer of a popular rock band"
+       ],
+       "answer": 1,
+       "explanation": "Aziz Sancar, 2015'te Nobel Kimya Ödülü'nü kazanan Türk bilim insanıdır. Futbolcu, şarkıcı ya da ilk otomobilin mucidi değildir. Bunu bilmek LGS'de de işine yarar!"
+      }
+     ]
+    },
+    {
+     "id": "ls2u4l4",
+     "type": "lesson",
+     "title": "Okuma: Bilimin izinde",
+     "description": "Aziz Sancar, bir okul deneyi ve müze bilgi panosu",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "Aziz Sancar was born in 1946 in Savur, a small town in Mardin. He was a hard-working student and he loved learning. First, he studied medicine in İstanbul and worked as a doctor for a short time. Then, he became more interested in science and went to the USA to do research. He spent many years in his laboratory and studied how our cells repair their DNA. In 2015, he won the Nobel Prize in Chemistry with two other scientists. Today, his work helps many researchers who study cancer. Later, he gave his Nobel medal to Anıtkabir as a gift.",
+       "question": "According to the text, which of the following is TRUE about Aziz Sancar?",
+       "options": [
+        "He was born in İstanbul.",
+        "He studied medicine before he did research.",
+        "He won the Nobel Prize alone.",
+        "He never worked as a doctor."
+       ],
+       "answer": 1,
+       "explanation": "Metne göre önce İstanbul'da tıp okudu, sonra araştırma yapmak için ABD'ye gitti. Mardin'in Savur ilçesinde doğdu, ödülü iki bilim insanıyla birlikte aldı ve kısa bir süre doktorluk yaptı."
+      },
+      {
+       "type": "choice",
+       "passage": "Aziz Sancar was born in 1946 in Savur, a small town in Mardin. He was a hard-working student and he loved learning. First, he studied medicine in İstanbul and worked as a doctor for a short time. Then, he became more interested in science and went to the USA to do research. He spent many years in his laboratory and studied how our cells repair their DNA. In 2015, he won the Nobel Prize in Chemistry with two other scientists. Today, his work helps many researchers who study cancer. Later, he gave his Nobel medal to Anıtkabir as a gift.",
+       "question": "Which question is NOT answered in the text?",
+       "options": [
+        "Where was Aziz Sancar born?",
+        "What did he study in İstanbul?",
+        "How many children does he have?",
+        "When did he win the Nobel Prize?"
+       ],
+       "answer": 2,
+       "explanation": "Metinde doğum yeri (Savur), İstanbul'da okuduğu bölüm (medicine) ve ödül yılı (2015) var. Çocuk sayısı hakkında hiçbir bilgi yok."
+      },
+      {
+       "type": "choice",
+       "passage": "Aziz Sancar was born in 1946 in Savur, a small town in Mardin. He was a hard-working student and he loved learning. First, he studied medicine in İstanbul and worked as a doctor for a short time. Then, he became more interested in science and went to the USA to do research. He spent many years in his laboratory and studied how our cells repair their DNA. In 2015, he won the Nobel Prize in Chemistry with two other scientists. Today, his work helps many researchers who study cancer. Later, he gave his Nobel medal to Anıtkabir as a gift.",
+       "question": "The word 'repair' in the text is closest in meaning to ----.",
+       "options": [
+        "break",
+        "sell",
+        "find",
+        "fix"
+       ],
+       "answer": 3,
+       "explanation": "'repair' onarmak demektir, anlamca en yakın kelime 'fix'. 'break' kırmak, 'sell' satmak, 'find' bulmak anlamına gelir."
+      },
+      {
+       "type": "choice",
+       "passage": "Aziz Sancar was born in 1946 in Savur, a small town in Mardin. He was a hard-working student and he loved learning. First, he studied medicine in İstanbul and worked as a doctor for a short time. Then, he became more interested in science and went to the USA to do research. He spent many years in his laboratory and studied how our cells repair their DNA. In 2015, he won the Nobel Prize in Chemistry with two other scientists. Today, his work helps many researchers who study cancer. Later, he gave his Nobel medal to Anıtkabir as a gift.",
+       "question": "What did Aziz Sancar give to Anıtkabir?",
+       "options": [
+        "his Nobel medal",
+        "his first microscope",
+        "his doctor's bag",
+        "a book about cells"
+       ],
+       "answer": 0,
+       "explanation": "Metnin sonunda 'he gave his Nobel medal to Anıtkabir' yazıyor. Mikroskop, doktor çantası ya da kitaptan söz edilmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi everyone! Last week, my friend Can and I did a fun experiment in our school laboratory. We wanted to learn if plants need light to grow. First, we planted bean seeds in two small pots. Then, we put one pot near the window and the other pot in a dark cupboard. We gave both pots the same amount of water every day. After ten days, we observed the plants and measured them. The plant near the window was green and 12 centimetres tall. The plant in the cupboard was yellow, thin and weak. The result was clear: plants need light to grow well. Our teacher, Ms. Aydın, liked our report and put it on the school board!\nEce",
+       "question": "What was the aim of the experiment?",
+       "options": [
+        "to find the best kind of water for beans",
+        "to make a new type of plant pot",
+        "to see if plants need light to grow",
+        "to learn which seeds are the cheapest"
+       ],
+       "answer": 2,
+       "explanation": "Ece 'We wanted to learn if plants need light to grow' diyor; amaç bitkilerin ışığa ihtiyacı olup olmadığını öğrenmek. Su türü, saksı ya da tohum fiyatı hakkında bir amaç yok."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi everyone! Last week, my friend Can and I did a fun experiment in our school laboratory. We wanted to learn if plants need light to grow. First, we planted bean seeds in two small pots. Then, we put one pot near the window and the other pot in a dark cupboard. We gave both pots the same amount of water every day. After ten days, we observed the plants and measured them. The plant near the window was green and 12 centimetres tall. The plant in the cupboard was yellow, thin and weak. The result was clear: plants need light to grow well. Our teacher, Ms. Aydın, liked our report and put it on the school board!\nEce",
+       "question": "Which of the following is NOT one of the steps in the experiment?",
+       "options": [
+        "planting bean seeds in two pots",
+        "giving the plants different amounts of water",
+        "putting one pot in a dark place",
+        "measuring the plants after ten days"
+       ],
+       "answer": 1,
+       "explanation": "Metne göre iki saksıya 'the same amount of water' yani aynı miktarda su verildi, farklı değil. Tohum ekmek, bir saksıyı karanlığa koymak ve on gün sonra ölçmek deneyin adımlarıdır."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi everyone! Last week, my friend Can and I did a fun experiment in our school laboratory. We wanted to learn if plants need light to grow. First, we planted bean seeds in two small pots. Then, we put one pot near the window and the other pot in a dark cupboard. We gave both pots the same amount of water every day. After ten days, we observed the plants and measured them. The plant near the window was green and 12 centimetres tall. The plant in the cupboard was yellow, thin and weak. The result was clear: plants need light to grow well. Our teacher, Ms. Aydın, liked our report and put it on the school board!\nEce",
+       "question": "According to the text, the plant in the cupboard was ----.",
+       "options": [
+        "green and strong",
+        "12 centimetres tall",
+        "near the window",
+        "yellow, thin and weak"
+       ],
+       "answer": 3,
+       "explanation": "Dolaptaki bitki için 'yellow, thin and weak' deniyor. Yeşil ve 12 santimetre olan bitki pencerenin yanındaki bitkiydi."
+      },
+      {
+       "type": "choice",
+       "passage": "SCIENCE MUSEUM: GREAT IDEAS ROOM\nThe Printing Press: It was developed by Johannes Gutenberg in Germany around 1440. After that, books were printed much faster and became cheaper.\nThe Telephone: In 1876, the first telephone patent was given to Alexander Graham Bell. People could talk to each other from far away.\nPenicillin: It was discovered by Alexander Fleming in 1928. It is used as a medicine to fight infections.\nThe World Wide Web: It was invented by Tim Berners-Lee in 1989. Today, it is used by billions of people.\nCahit Arf Corner: Cahit Arf was a great Turkish mathematician. His picture is on the Turkish 10 lira banknote.",
+       "question": "According to the information, which invention is the oldest?",
+       "options": [
+        "the telephone",
+        "the printing press",
+        "penicillin",
+        "the World Wide Web"
+       ],
+       "answer": 1,
+       "explanation": "Matbaa yaklaşık 1440'ta geliştirildi; bu en eski tarih. Telefon 1876, penisilin 1928, World Wide Web ise 1989 yılına ait."
+      },
+      {
+       "type": "choice",
+       "passage": "SCIENCE MUSEUM: GREAT IDEAS ROOM\nThe Printing Press: It was developed by Johannes Gutenberg in Germany around 1440. After that, books were printed much faster and became cheaper.\nThe Telephone: In 1876, the first telephone patent was given to Alexander Graham Bell. People could talk to each other from far away.\nPenicillin: It was discovered by Alexander Fleming in 1928. It is used as a medicine to fight infections.\nThe World Wide Web: It was invented by Tim Berners-Lee in 1989. Today, it is used by billions of people.\nCahit Arf Corner: Cahit Arf was a great Turkish mathematician. His picture is on the Turkish 10 lira banknote.",
+       "question": "Which of the following is TRUE?",
+       "options": [
+        "Penicillin was invented by Tim Berners-Lee.",
+        "The telephone was discovered in 1928.",
+        "Penicillin is used to fight infections.",
+        "Cahit Arf was a German inventor."
+       ],
+       "answer": 2,
+       "explanation": "Panoda penisilin için 'It is used as a medicine to fight infections' yazıyor. Penisilini Fleming keşfetti, telefonun tarihi 1876 ve Cahit Arf Türk matematikçidir."
+      },
+      {
+       "type": "choice",
+       "passage": "SCIENCE MUSEUM: GREAT IDEAS ROOM\nThe Printing Press: It was developed by Johannes Gutenberg in Germany around 1440. After that, books were printed much faster and became cheaper.\nThe Telephone: In 1876, the first telephone patent was given to Alexander Graham Bell. People could talk to each other from far away.\nPenicillin: It was discovered by Alexander Fleming in 1928. It is used as a medicine to fight infections.\nThe World Wide Web: It was invented by Tim Berners-Lee in 1989. Today, it is used by billions of people.\nCahit Arf Corner: Cahit Arf was a great Turkish mathematician. His picture is on the Turkish 10 lira banknote.",
+       "question": "Which question CANNOT be answered using the information?",
+       "options": [
+        "How much does a museum ticket cost?",
+        "Who discovered penicillin?",
+        "When was the World Wide Web invented?",
+        "Whose picture is on the 10 lira banknote?"
+       ],
+       "answer": 0,
+       "explanation": "Panoda bilet fiyatı yok. Penisilini kimin keşfettiği (Fleming), Web'in tarihi (1989) ve 10 lirada kimin resmi olduğu (Cahit Arf) yazıyor."
+      },
+      {
+       "type": "choice",
+       "passage": "SCIENCE MUSEUM: GREAT IDEAS ROOM\nThe Printing Press: It was developed by Johannes Gutenberg in Germany around 1440. After that, books were printed much faster and became cheaper.\nThe Telephone: In 1876, the first telephone patent was given to Alexander Graham Bell. People could talk to each other from far away.\nPenicillin: It was discovered by Alexander Fleming in 1928. It is used as a medicine to fight infections.\nThe World Wide Web: It was invented by Tim Berners-Lee in 1989. Today, it is used by billions of people.\nCahit Arf Corner: Cahit Arf was a great Turkish mathematician. His picture is on the Turkish 10 lira banknote.",
+       "question": "According to the information, books became cheaper because ----.",
+       "options": [
+        "people started to use the Internet",
+        "the telephone was invented by Bell",
+        "Fleming discovered penicillin",
+        "they were printed much faster with the printing press"
+       ],
+       "answer": 3,
+       "explanation": "Matbaa bölümünde kitapların çok daha hızlı basıldığı ve ucuzladığı yazıyor. İnternet, telefon ve penisilin kitapların fiyatıyla ilgili anlatılmıyor. Tebrikler, okuma dersini bitirdin!"
+      }
+     ]
+    },
+    {
+     "id": "ls2u4t",
+     "type": "test",
+     "title": "Ünite testi",
+     "description": "Üniteyi geçmek için %80 doğru yap",
+     "rewardXp": 30
+    },
+    {
+     "id": "ls2u4c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    }
+   ]
+  },
+  {
+   "id": "ls2u5",
+   "title": "Natural Forces",
+   "description": "Doğa olayları: afetler, çevre, tahminler, uyarılar ve koşul cümleleri",
+   "color": "0xFF4C7BD9",
+   "theme": "hava",
+   "guide": "## Bu ünitede ne öğreneceğiz?\n\nBu ünitede deprem, sel ve orman yangını gibi doğa olaylarını, çevre sorunlarını ve afetlere nasıl hazırlanacağımızı İngilizce konuşacağız. Geleceğe dair tahmin yapmayı, uyarı ve tavsiye vermeyi de öğreneceğiz. Hem İngilizcen hem de güvenlik bilgin güçlenecek!\n\n## Hedef kalıplar\n\n- **... will / won't ...**: tahmin: ... olacak / olmayacak. It will be hotter in the future.\n- **be going to ...**: plan ya da işaretlere dayalı tahmin. Look at the clouds! It is going to rain.\n- **You should / shouldn't ...**: -meli / -memelisin. You shouldn't stand near the windows.\n- **Don't ...**: yapma (uyarı). Don't use the lift during an earthquake.\n- **Make sure you ...**: ... yaptığından emin ol. Make sure you have a torch.\n- **If we ..., we will ...**: Eğer ... -rsak, ... -ecek. If we recycle, there will be less rubbish.\n- **What will happen if ...?**: ... olursa ne olur? What will happen if we cut down the forests?\n\n## Anahtar kelimeler\n\n- **earthquake**: deprem\n- **flood**: sel\n- **drought**: kuraklık\n- **landslide**: toprak kayması, heyelan\n- **avalanche**: çığ\n- **wildfire**: orman yangını\n- **storm**: fırtına\n- **tsunami**: tsunami, dev dalga\n- **hurricane**: kasırga\n- **global warming**: küresel ısınma\n- **pollution**: kirlilik\n- **recycle**: geri dönüştürmek\n- **save energy**: enerji tasarrufu yapmak\n- **emergency kit**: acil durum çantası\n\n## Türklerin sık yaptığı hatalar\n\n- \"If we will recycle, ...\" yanlış → \"If we **recycle**, there will be less rubbish.\" doğru. If'li kısımda will kullanılmaz.\n- \"You should to stay inside.\" yanlış → \"You should **stay** inside.\" doğru. should'dan sonra fiil yalın gelir, to almaz.\n- \"It going to rain.\" yanlış → \"It **is** going to rain.\" doğru. going to kalıbında am/is/are unutulmaz.\n\n## LGS ipuçları\n\n- LGS bu ünitede sık sık afet anında ne yapılmalı ya da ne yapılmamalı diye sorar. \"Which of the following is NOT good advice?\" gibi sorularda olumsuz kelimeyi kaçırma.\n- Koşul cümlelerinde boşluk if'li kısımdaysa geniş zaman, diğer kısımdaysa will gelir.\n- Anket ve uyarı metinlerinde sayıları dikkatle karşılaştır. \"most\", \"half\", \"only\" gibi kelimeler cevabın anahtarıdır.\n\n> İpucu: Uyarı cümleleri genelde Don't, Never, Make sure ya da You should ile başlar. Bu kelimeleri görünce tavsiye verildiğini anla. Sakin kal ve şıkları tek tek dene, başarırsın!",
+   "nodes": [
+    {
+     "id": "ls2u5l1",
+     "type": "lesson",
+     "title": "Doğa olayları kelimeleri",
+     "description": "Afetler ve çevreyle ilgili temel kelimeler",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "deprem",
+       "answer": "earthquake",
+       "choices": [
+        {
+         "text": "earthquake",
+         "emoji": "🏚️"
+        },
+        {
+         "text": "flood",
+         "emoji": "🌊"
+        },
+        {
+         "text": "wildfire",
+         "emoji": "🔥"
+        },
+        {
+         "text": "storm",
+         "emoji": "⛈️"
+        }
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "çığ",
+       "answer": "avalanche",
+       "choices": [
+        {
+         "text": "drought",
+         "emoji": "🏜️"
+        },
+        {
+         "text": "hurricane",
+         "emoji": "🌀"
+        },
+        {
+         "text": "avalanche",
+         "emoji": "🏔️"
+        },
+        {
+         "text": "tsunami",
+         "emoji": "🌊"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "sel",
+         "flood"
+        ],
+        [
+         "kuraklık",
+         "drought"
+        ],
+        [
+         "toprak kayması",
+         "landslide"
+        ],
+        [
+         "orman yangını",
+         "wildfire"
+        ],
+        [
+         "kasırga",
+         "hurricane"
+        ]
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "küresel ısınma",
+         "global warming"
+        ],
+        [
+         "kirlilik",
+         "pollution"
+        ],
+        [
+         "geri dönüştürmek",
+         "recycle"
+        ],
+        [
+         "enerji tasarrufu yapmak",
+         "save energy"
+        ],
+        [
+         "ilk yardım çantası",
+         "first aid kit"
+        ]
+       ]
+      },
+      {
+       "type": "fillBlank",
+       "text": "There was no rain for months, so there was a terrible ___.",
+       "translation": "Aylarca yağmur yağmadı, bu yüzden korkunç bir kuraklık oldu.",
+       "choices": [
+        "drought",
+        "flood",
+        "avalanche"
+       ],
+       "answer": "drought"
+      },
+      {
+       "type": "fillBlank",
+       "text": "We should ___ plastic bottles and paper.",
+       "translation": "Plastik şişeleri ve kâğıdı geri dönüştürmeliyiz.",
+       "choices": [
+        "recycle",
+        "waste",
+        "burn"
+       ],
+       "answer": "recycle"
+      },
+      {
+       "type": "choice",
+       "question": "Which natural disaster is described below?\n'It is a series of huge waves. It usually happens after an earthquake under the sea.'",
+       "options": [
+        "drought",
+        "tsunami",
+        "avalanche",
+        "wildfire"
+       ],
+       "answer": 1,
+       "explanation": "Deniz altındaki depremden sonra gelen dev dalgalar 'tsunami' olarak adlandırılır. 'drought' kuraklık, 'avalanche' çığ, 'wildfire' orman yangınıdır."
+      },
+      {
+       "type": "choice",
+       "question": "After the heavy rain, mud and rocks slid down the hill and blocked the road. This is called ----.",
+       "options": [
+        "a drought",
+        "a heatwave",
+        "a landslide",
+        "an avalanche"
+       ],
+       "answer": 2,
+       "explanation": "Yağmurdan sonra çamur ve kayaların yamaçtan kayması 'a landslide' yani heyelandır. Çığ karla olur; kuraklık ve sıcak hava dalgası yağmurla ilgili değildir."
+      },
+      {
+       "type": "choice",
+       "question": "Which word does NOT belong to the group?",
+       "options": [
+        "earthquake",
+        "hurricane",
+        "flood",
+        "recycle"
+       ],
+       "answer": 3,
+       "explanation": "Deprem, kasırga ve sel birer doğal afettir. 'recycle' ise geri dönüştürmek demektir, afet değildir. Süper, gruplama sorularını çözmeyi öğreniyorsun!"
+      },
+      {
+       "type": "choice",
+       "question": "Factories, cars and plastic waste cause ----. It makes our air and water dirty.",
+       "options": [
+        "pollution",
+        "recycling",
+        "energy",
+        "weather"
+       ],
+       "answer": 0,
+       "explanation": "Havayı ve suyu kirleten şey 'pollution' yani kirliliktir. 'recycling' çevreye yardım eder; 'energy' ve 'weather' kirlilik anlamına gelmez."
+      },
+      {
+       "type": "choice",
+       "question": "Global warming means ----.",
+       "options": [
+        "the Earth is getting colder every year",
+        "the Earth's temperature is rising",
+        "there are more forests in the world",
+        "people are using less energy"
+       ],
+       "answer": 1,
+       "explanation": "Küresel ısınma, Dünya'nın sıcaklığının artması demektir: 'the Earth's temperature is rising'. Soğuma, ormanların artması ya da daha az enerji kullanımı bu anlamı vermez."
+      }
+     ]
+    },
+    {
+     "id": "ls2u5l2",
+     "type": "lesson",
+     "title": "Tahmin, uyarı ve koşul",
+     "description": "will, be going to, should, Don't ve If cümleleri",
+     "exercises": [
+      {
+       "type": "fillBlank",
+       "text": "Look at those dark clouds! It ___ going to rain.",
+       "translation": "Şu kara bulutlara bak! Yağmur yağacak.",
+       "choices": [
+        "is",
+        "will",
+        "does"
+       ],
+       "answer": "is"
+      },
+      {
+       "type": "fillBlank",
+       "text": "If we save water, we ___ have problems in summer.",
+       "translation": "Su tasarrufu yaparsak yazın sorun yaşamayız.",
+       "choices": [
+        "won't",
+        "don't",
+        "didn't"
+       ],
+       "answer": "won't"
+      },
+      {
+       "type": "translate",
+       "text": "Deprem sırasında asansörü kullanma.",
+       "lang": "tr",
+       "answers": [
+        "Don't use the lift during an earthquake",
+        "Don't use the elevator during an earthquake"
+       ],
+       "tokens": [
+        "Don't",
+        "use",
+        "the",
+        "lift",
+        "elevator",
+        "during",
+        "an",
+        "earthquake",
+        "after",
+        "window"
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Scientists say summers ---- hotter in the future because of global warming.",
+       "options": [
+        "were",
+        "will be",
+        "was",
+        "are being"
+       ],
+       "answer": 1,
+       "explanation": "'in the future' geleceği gösterir ve bu bir tahmindir: 'will be'. 'were' ve 'was' geçmiş zaman, 'are being' ise burada kullanılmaz."
+      },
+      {
+       "type": "choice",
+       "question": "If people ---- too many trees, there will be more floods and landslides.",
+       "options": [
+        "cut down",
+        "will cut down",
+        "cuts down",
+        "cutting down"
+       ],
+       "answer": 0,
+       "explanation": "If'li kısımda geniş zaman kullanılır ve özne 'people' çoğuldur: 'cut down'. If'li kısımda 'will' gelmez; 'cuts down' tekil özne içindir, 'cutting down' ise tek başına fiil olamaz."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: The weather report says there will be a big storm tonight.\nMert: Then you ---- go out. It's dangerous.",
+       "options": [
+        "should",
+        "must to",
+        "shouldn't",
+        "can"
+       ],
+       "answer": 2,
+       "explanation": "Mert fırtınanın tehlikeli olduğunu söylüyor, yani dışarı çıkmamasını tavsiye ediyor: 'shouldn't'. 'should' ve 'can' tam tersini söyler; 'must to' ise yanlış bir yapıdır."
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence gives a WARNING?",
+       "options": [
+        "I'm going to visit my grandma tomorrow.",
+        "It was very sunny yesterday.",
+        "My brother likes hiking in the forest.",
+        "Don't stand near the windows during an earthquake."
+       ],
+       "answer": 3,
+       "explanation": "Uyarı cümleleri genelde 'Don't' ile başlar: 'Don't stand near the windows during an earthquake.' Diğer cümleler bir plan, geçmişteki hava durumu ve bir hobiyi anlatıyor."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: I bought new batteries and a torch today.\nLisa: What are they for?\nMert: ----.",
+       "options": [
+        "I'm going to prepare an emergency kit",
+        "I prepared an emergency kit last year",
+        "I didn't need them at all",
+        "I was sleeping at that time"
+       ],
+       "answer": 0,
+       "explanation": "Mert pil ve el feneri aldı; bunları ne için kullanacağını, yani planını söylüyor: 'I'm going to prepare an emergency kit'. Plan için 'be going to' kullanılır. Geçen yılki çanta ya da uyumak bu soruya cevap olmaz."
+      },
+      {
+       "type": "choice",
+       "question": "If we don't recycle, ----.",
+       "options": [
+        "we recycled paper last week",
+        "there was less rubbish in the past",
+        "there will be more rubbish in the world",
+        "all the rubbish disappears soon"
+       ],
+       "answer": 2,
+       "explanation": "Koşul cümlesinin sonuç kısmında 'will' kullanılır ve anlam mantıklı olmalı: geri dönüşüm yapmazsak daha çok çöp olur. Geçmiş zamanlı cümleler ve çöpün kaybolması anlama uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Make sure you ---- your emergency kit in a place that is easy to reach.",
+       "options": [
+        "keep",
+        "to keep",
+        "keeping",
+        "kept"
+       ],
+       "answer": 0,
+       "explanation": "'Make sure you' kalıbından sonra fiil yalın hâliyle gelir: 'keep'. 'to keep', 'keeping' ve 'kept' bu kalıpla kullanılmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence is a prediction about the future?",
+       "options": [
+        "Last year there was a flood in our town.",
+        "I think there will be less snow in the mountains in the future.",
+        "Please turn off the lights.",
+        "We recycle glass every week."
+       ],
+       "answer": 1,
+       "explanation": "'I think ... will ...' bir gelecek tahminidir. Diğer cümleler geçmişte olan bir seli, bir ricayı ve her hafta yapılan bir alışkanlığı anlatıyor."
+      }
+     ]
+    },
+    {
+     "id": "ls2u5l3",
+     "type": "lesson",
+     "title": "Afete hazırlık",
+     "description": "Acil durum çantası, güvenlik kuralları ve tavsiyeler",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Zeynep: What should we put in our emergency kit?\nCan: ----.\nZeynep: Good idea. I'll also add some medicine.",
+       "options": [
+        "The kit is in the cupboard",
+        "I bought it last month",
+        "Earthquakes are very scary",
+        "Some water, food, a torch and a whistle"
+       ],
+       "answer": 3,
+       "explanation": "Zeynep çantaya ne koyacaklarını soruyor; cevap eşyaları saymalı: su, yiyecek, el feneri ve düdük. Çantanın yeri, ne zaman alındığı ya da depremin korkutucu olması soruya cevap değil."
+      },
+      {
+       "type": "choice",
+       "question": "Teacher: What should you do during an earthquake?\nMert: ----.",
+       "options": [
+        "I should run to the lift",
+        "I should drop, cover and hold on",
+        "I should stand near the window",
+        "I should go out on the balcony"
+       ],
+       "answer": 1,
+       "explanation": "Deprem sırasında 'drop, cover and hold on' yani çök, kapan, tutun yapılır. Asansöre koşmak, pencere kenarında durmak ve balkona çıkmak tehlikelidir."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa's friend wants to have a barbecue in the forest on a very hot and windy day. Lisa wants to warn her.\nWhat can Lisa say?",
+       "options": [
+        "Take your swimsuit with you.",
+        "I love walking in the snow.",
+        "Don't light a fire in the forest. It can cause a wildfire.",
+        "Let's buy some more sausages."
+       ],
+       "answer": 2,
+       "explanation": "Sıcak ve rüzgârlı havada ormanda ateş yakmak yangına yol açabilir. Uyarı veren tek cümle 'Don't light a fire in the forest.' Mayo, kar ve sosis cümleleri uyarı değildir."
+      },
+      {
+       "type": "choice",
+       "question": "Tom: Do you think it will snow tomorrow?\nEce: ----. The weather report says it will be sunny and warm.",
+       "options": [
+        "Yes, I'm sure it will",
+        "I don't think so",
+        "Of course, take your gloves",
+        "It snowed a lot yesterday"
+       ],
+       "answer": 1,
+       "explanation": "Ece hava raporunun güneşli ve ılık olacağını söylediğini anlatıyor; yani kar yağacağını düşünmüyor: 'I don't think so'. Kar yağacağını söyleyen cevaplar devamıyla çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Can: I'm worried about global warming.\nZeynep: Me too. ----\nCan: You're right. Let's start today!",
+       "options": [
+        "If we save energy, we will help our planet.",
+        "I don't care about the planet.",
+        "Global warming isn't important.",
+        "It was cold last winter."
+       ],
+       "answer": 0,
+       "explanation": "Can 'You're right. Let's start today!' diyerek bir öneriye katılıyor. Öneri içeren tek cümle 'If we save energy, we will help our planet.' Diğerleri bir şey yapmayı önermiyor."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: Dad, the river is rising very fast!\nDad: ----. We will be safe there.",
+       "options": [
+        "Let's go down to the river",
+        "Let's stay in the basement",
+        "Let's go to higher ground",
+        "Let's have a picnic by the water"
+       ],
+       "answer": 2,
+       "explanation": "Sel tehlikesinde yüksek bir yere çıkılır: 'Let's go to higher ground'. Nehre inmek, bodrumda kalmak ve su kenarında piknik yapmak sel sırasında çok tehlikelidir."
+      },
+      {
+       "type": "choice",
+       "question": "Put the dialogue in the correct order.\n(I) Yes, we do. It's in the hall cupboard.\n(II) Do you have an emergency kit at home?\n(III) Great! Make sure you check it every six months.\n(IV) OK, I will. Thanks for the advice.",
+       "options": [
+        "I - II - IV - III",
+        "II - III - I - IV",
+        "III - I - II - IV",
+        "II - I - III - IV"
+       ],
+       "answer": 3,
+       "explanation": "Önce soru sorulur (II), cevap verilir (I), tavsiye gelir (III) ve teşekkür edilir (IV). Diğer sıralamalarda cevap sorudan önce ya da tavsiye cevaptan önce geliyor."
+      },
+      {
+       "type": "choice",
+       "question": "Which of the following is NOT good advice during a storm?",
+       "options": [
+        "Stay indoors if you can.",
+        "Stand under a tall tree outside.",
+        "Keep away from windows.",
+        "Charge your phone before the storm."
+       ],
+       "answer": 1,
+       "explanation": "Fırtınada uzun bir ağacın altında durmak tehlikelidir; ağaç devrilebilir ya da yıldırım düşebilir. İçeride kalmak, pencerelerden uzak durmak ve telefonu şarj etmek iyi tavsiyelerdir."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: What will happen if we don't protect the forests?\nTom: ----.",
+       "options": [
+        "Animals will lose their homes",
+        "We planted trees last week",
+        "Forests are green",
+        "I'm going to the cinema"
+       ],
+       "answer": 0,
+       "explanation": "'What will happen if...?' sorusunun cevabı 'will' ile verilen bir sonuçtur: 'Animals will lose their homes.' Diğer cevaplar soruyla ilgili bir sonuç söylemiyor."
+      },
+      {
+       "type": "choice",
+       "question": "Principal: Attention, please! This is a fire drill. ----.\nStudents: OK!",
+       "options": [
+        "Run as fast as you can and push your friends",
+        "Stay in your classroom and close your eyes",
+        "Take all your books and bags with you",
+        "Don't use the lift and walk calmly to the garden"
+       ],
+       "answer": 3,
+       "explanation": "Yangın tatbikatında asansör kullanılmaz ve sakin şekilde toplanma alanına yürünür. Koşup itişmek, sınıfta kalmak ya da bütün eşyaları toplamak güvenli değildir."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: Are you going to join the tree-planting event on Sunday?\nMert: ----. I've already bought my gloves!",
+       "options": [
+        "No, I'm not going to",
+        "I planted them yesterday",
+        "Of course, I'm going to",
+        "I don't like Sundays"
+       ],
+       "answer": 2,
+       "explanation": "Mert eldivenlerini çoktan aldığını söylüyor, yani etkinliğe katılacak: 'Of course, I'm going to'. Katılmayacağını söyleyen cevaplar devamıyla çelişir. Harika iş çıkardın!"
+      }
+     ]
+    },
+    {
+     "id": "ls2u5l4",
+     "type": "lesson",
+     "title": "Okuma: Doğaya hazır ol",
+     "description": "Depreme hazırlık, enerji anketi ve fırtına uyarısı",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "Türkiye is on active fault lines, so earthquakes happen here quite often. We can't stop earthquakes, and scientists can't tell us the exact time of the next one. But we can be ready! First, every family should prepare an emergency kit. It should include water, some food, a torch, a whistle, batteries and a first aid kit. Second, heavy furniture like bookcases should be fixed to the walls. Third, families should choose a safe meeting place outside, like a park. During an earthquake, remember: drop, cover and hold on. After the shaking stops, leave the building carefully and don't use the lift. If you are ready, you will feel much safer.",
+       "question": "According to the text, which of the following is TRUE?",
+       "options": [
+        "Scientists can tell the exact time of an earthquake.",
+        "Heavy furniture should be fixed to the walls.",
+        "You should use the lift after an earthquake.",
+        "Earthquakes rarely happen in Türkiye."
+       ],
+       "answer": 1,
+       "explanation": "Metinde 'heavy furniture like bookcases should be fixed to the walls' yazıyor. Bilim insanları depremin zamanını bilemez, asansör kullanılmamalı ve depremler Türkiye'de sık olur."
+      },
+      {
+       "type": "choice",
+       "passage": "Türkiye is on active fault lines, so earthquakes happen here quite often. We can't stop earthquakes, and scientists can't tell us the exact time of the next one. But we can be ready! First, every family should prepare an emergency kit. It should include water, some food, a torch, a whistle, batteries and a first aid kit. Second, heavy furniture like bookcases should be fixed to the walls. Third, families should choose a safe meeting place outside, like a park. During an earthquake, remember: drop, cover and hold on. After the shaking stops, leave the building carefully and don't use the lift. If you are ready, you will feel much safer.",
+       "question": "Which of the following is NOT mentioned as something in an emergency kit?",
+       "options": [
+        "a whistle",
+        "a torch",
+        "a laptop",
+        "batteries"
+       ],
+       "answer": 2,
+       "explanation": "Metinde çantada su, yiyecek, el feneri, düdük, pil ve ilk yardım çantası sayılıyor. Dizüstü bilgisayardan (laptop) söz edilmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Türkiye is on active fault lines, so earthquakes happen here quite often. We can't stop earthquakes, and scientists can't tell us the exact time of the next one. But we can be ready! First, every family should prepare an emergency kit. It should include water, some food, a torch, a whistle, batteries and a first aid kit. Second, heavy furniture like bookcases should be fixed to the walls. Third, families should choose a safe meeting place outside, like a park. During an earthquake, remember: drop, cover and hold on. After the shaking stops, leave the building carefully and don't use the lift. If you are ready, you will feel much safer.",
+       "question": "What is the main idea of the text?",
+       "options": [
+        "Being prepared helps us stay safer in an earthquake.",
+        "Earthquakes can be stopped by scientists.",
+        "Parks are the best places for picnics.",
+        "Families should buy new furniture."
+       ],
+       "answer": 0,
+       "explanation": "Metnin tamamı depreme nasıl hazırlanacağımızı anlatıyor ve 'If you are ready, you will feel much safer' diye bitiyor. Depremler durdurulamaz; park ve mobilya sadece küçük ayrıntılardır."
+      },
+      {
+       "type": "choice",
+       "passage": "Türkiye is on active fault lines, so earthquakes happen here quite often. We can't stop earthquakes, and scientists can't tell us the exact time of the next one. But we can be ready! First, every family should prepare an emergency kit. It should include water, some food, a torch, a whistle, batteries and a first aid kit. Second, heavy furniture like bookcases should be fixed to the walls. Third, families should choose a safe meeting place outside, like a park. During an earthquake, remember: drop, cover and hold on. After the shaking stops, leave the building carefully and don't use the lift. If you are ready, you will feel much safer.",
+       "question": "The word 'exact' in the text is closest in meaning to ----.",
+       "options": [
+        "wrong",
+        "late",
+        "early",
+        "correct and certain"
+       ],
+       "answer": 3,
+       "explanation": "'exact time' tam ve kesin zaman demektir; en yakın anlam 'correct and certain'. 'wrong' yanlış, 'late' geç, 'early' erken anlamına gelir."
+      },
+      {
+       "type": "choice",
+       "passage": "Our class did a survey about saving energy at home. 30 students answered the questions. Here are the results:\n- 24 students turn off the lights when they leave a room.\n- 18 students unplug their chargers after using them.\n- 12 students take short showers to save water and energy.\n- Only 6 students walk or cycle to school.\nOur teacher said, 'These are good results, but we can do better. If more students walk to school, there will be less air pollution.' Next month, we are going to do the survey again.",
+       "question": "According to the survey, what do most students do?",
+       "options": [
+        "walk or cycle to school",
+        "take short showers",
+        "turn off the lights when they leave a room",
+        "unplug their chargers"
+       ],
+       "answer": 2,
+       "explanation": "En yüksek sayı 24; bu öğrenciler odadan çıkarken ışıkları kapatıyor. Şarj aletini çıkaranlar 18, kısa duş alanlar 12, yürüyen ya da bisiklete binenler sadece 6 kişi."
+      },
+      {
+       "type": "choice",
+       "passage": "Our class did a survey about saving energy at home. 30 students answered the questions. Here are the results:\n- 24 students turn off the lights when they leave a room.\n- 18 students unplug their chargers after using them.\n- 12 students take short showers to save water and energy.\n- Only 6 students walk or cycle to school.\nOur teacher said, 'These are good results, but we can do better. If more students walk to school, there will be less air pollution.' Next month, we are going to do the survey again.",
+       "question": "Which statement is TRUE according to the survey?",
+       "options": [
+        "Half of the students take short showers.",
+        "Eighteen students unplug their chargers after using them.",
+        "Most students walk or cycle to school.",
+        "All the students turn off the lights."
+       ],
+       "answer": 1,
+       "explanation": "Ankette 18 öğrencinin şarj aletini çıkardığı yazıyor. 30 kişinin yarısı 15 eder ama kısa duş alanlar 12 kişi; yürüyenler sadece 6 kişi; ışıkları kapatanlar 30 değil 24 kişi."
+      },
+      {
+       "type": "choice",
+       "passage": "Our class did a survey about saving energy at home. 30 students answered the questions. Here are the results:\n- 24 students turn off the lights when they leave a room.\n- 18 students unplug their chargers after using them.\n- 12 students take short showers to save water and energy.\n- Only 6 students walk or cycle to school.\nOur teacher said, 'These are good results, but we can do better. If more students walk to school, there will be less air pollution.' Next month, we are going to do the survey again.",
+       "question": "What is the class going to do next month?",
+       "options": [
+        "plant trees in the garden",
+        "visit a power station",
+        "buy new bicycles",
+        "do the survey again"
+       ],
+       "answer": 3,
+       "explanation": "Metnin sonunda 'Next month, we are going to do the survey again' yazıyor. Ağaç dikmek, santral ziyareti ve bisiklet almak metinde geçmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Our class did a survey about saving energy at home. 30 students answered the questions. Here are the results:\n- 24 students turn off the lights when they leave a room.\n- 18 students unplug their chargers after using them.\n- 12 students take short showers to save water and energy.\n- Only 6 students walk or cycle to school.\nOur teacher said, 'These are good results, but we can do better. If more students walk to school, there will be less air pollution.' Next month, we are going to do the survey again.",
+       "question": "According to the teacher, what will happen if more students walk to school?",
+       "options": [
+        "There will be less air pollution.",
+        "They will be late for school.",
+        "The lights will be turned off.",
+        "There will be more cars on the road."
+       ],
+       "answer": 0,
+       "explanation": "Öğretmen 'If more students walk to school, there will be less air pollution' diyor. Geç kalmak, ışıklar ve daha çok araba öğretmenin sözlerinde yok."
+      },
+      {
+       "type": "choice",
+       "passage": "WEATHER WARNING: COAST CITY\nA strong storm is going to hit our city tomorrow afternoon. The wind will be very strong and there may be floods near the river. Schools will be closed tomorrow. Please follow this advice:\n- Stay at home and don't go near the river or the sea.\n- Make sure your phone is fully charged.\n- Bring your plants and bikes inside.\n- Keep a torch and extra batteries near you in case the electricity goes off.\nThe storm won't last long. It will probably end on Thursday morning.\nCoast City Emergency Office",
+       "question": "When will the storm probably end?",
+       "options": [
+        "tomorrow afternoon",
+        "on Thursday morning",
+        "next week",
+        "tonight"
+       ],
+       "answer": 1,
+       "explanation": "Uyarıda 'It will probably end on Thursday morning' yazıyor. 'tomorrow afternoon' fırtınanın başlayacağı zamandır; 'next week' ve 'tonight' metinde geçmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "WEATHER WARNING: COAST CITY\nA strong storm is going to hit our city tomorrow afternoon. The wind will be very strong and there may be floods near the river. Schools will be closed tomorrow. Please follow this advice:\n- Stay at home and don't go near the river or the sea.\n- Make sure your phone is fully charged.\n- Bring your plants and bikes inside.\n- Keep a torch and extra batteries near you in case the electricity goes off.\nThe storm won't last long. It will probably end on Thursday morning.\nCoast City Emergency Office",
+       "question": "Which of the following is NOT advice in the warning?",
+       "options": [
+        "Charge your phone.",
+        "Bring your bike inside.",
+        "Go to the beach to watch the waves.",
+        "Keep a torch near you."
+       ],
+       "answer": 2,
+       "explanation": "Uyarıda denize ve nehre yaklaşmamak söyleniyor, yani plaja gitmek tavsiye değil, tehlikeli. Telefonu şarj etmek, bisikleti içeri almak ve el fenerini yakında tutmak metindeki tavsiyelerdir."
+      },
+      {
+       "type": "choice",
+       "passage": "WEATHER WARNING: COAST CITY\nA strong storm is going to hit our city tomorrow afternoon. The wind will be very strong and there may be floods near the river. Schools will be closed tomorrow. Please follow this advice:\n- Stay at home and don't go near the river or the sea.\n- Make sure your phone is fully charged.\n- Bring your plants and bikes inside.\n- Keep a torch and extra batteries near you in case the electricity goes off.\nThe storm won't last long. It will probably end on Thursday morning.\nCoast City Emergency Office",
+       "question": "Why should people keep a torch and extra batteries near them?",
+       "options": [
+        "because schools will be closed",
+        "because the storm will last for weeks",
+        "because they will go to the river",
+        "because the electricity may go off"
+       ],
+       "answer": 3,
+       "explanation": "Metinde 'in case the electricity goes off' yazıyor, yani elektrik kesilebilir. Okulların kapanması fenerle ilgili değil, fırtına uzun sürmeyecek ve nehre gidilmemeli. Tebrikler, üniteyi bitirdin!"
+      }
+     ]
+    },
+    {
+     "id": "ls2u5t",
+     "type": "test",
+     "title": "Ünite testi",
+     "description": "Üniteyi geçmek için %80 doğru yap",
+     "rewardXp": 30
+    },
+    {
+     "id": "ls2u5c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    },
+    {
+     "id": "ls2m",
+     "type": "mock",
+     "title": "Bölüm 2 denemesi",
+     "description": "Bölüm 2'in tüm ünitelerinden LGS tipi sorular. Süre tutulur, sonunda cevap anahtarını görürsün.",
+     "examId": "lgs",
+     "size": 20,
+     "minutes": 30
+    }
+   ]
+  }
+ ]
+}

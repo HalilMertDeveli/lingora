@@ -120,6 +120,11 @@ void main() {
                 expect(ex.pairs.length, greaterThanOrEqualTo(3), reason: where);
               case ExerciseType.speak:
                 expect(ex.text, isNotEmpty, reason: where);
+              case ExerciseType.choice:
+                expect(ex.question, isNotEmpty, reason: where);
+                expect(ex.options.length, inInclusiveRange(4, 5), reason: where);
+                expect(ex.answerIndex, inInclusiveRange(0, ex.options.length - 1), reason: where);
+                expect(ex.explanation?.trim(), isNotEmpty, reason: where);
             }
           }
         }
@@ -146,11 +151,14 @@ void main() {
         }
       });
 
+      // Exam study paths read passages in lessons instead of stories and end a
+      // section with a mock exam after the last chest.
+      final examPath = course.id.startsWith('exam_');
       test('every unit has lessons, a story, a test and a chest', () {
         for (final u in course.units) {
-          final types = u.nodes.map((n) => n.type).toList();
+          final types = u.nodes.map((n) => n.type).where((t) => t != NodeType.mock).toList();
           expect(types.where((t) => t == NodeType.lesson).length, greaterThanOrEqualTo(3), reason: u.id);
-          expect(types, contains(NodeType.story), reason: u.id);
+          if (!examPath) expect(types, contains(NodeType.story), reason: u.id);
           expect(types, contains(NodeType.test), reason: u.id);
           expect(types.last, NodeType.chest, reason: u.id);
         }

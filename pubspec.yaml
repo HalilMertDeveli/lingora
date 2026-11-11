@@ -40,6 +40,9 @@ flutter:
   assets:
     - assets/courses/
     - assets/courses/tr_en/
+    # Exam study paths (LGS, YDS/YÖKDİL); see lib/data/exam_path.dart.
+    - assets/courses/exam_lgs/
+    - assets/courses/exam_yds/
     - assets/exams/
     - assets/exam_packs/
     - assets/notes/

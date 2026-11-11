@@ -8,6 +8,7 @@ import '../data/break_reminder.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
+import '../exercises/choice_exercise.dart';
 import '../exercises/common.dart';
 import '../exercises/fill_blank_exercise.dart';
 import '../exercises/listen_exercise.dart';
@@ -293,7 +294,23 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       ),
       ExerciseType.match => MatchExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.speak => SpeakExercise(key: key, ex: ex, locked: locked, onReady: onReady, onSkip: _skip),
+      ExerciseType.choice => ChoiceExercise(key: key, ex: ex, locked: locked, onReady: onReady),
     };
+  }
+
+  /// The right answer after a mistake; exam questions name the letter too.
+  String _shownAnswer(Exercise ex) {
+    final i = ex.answerIndex;
+    if (ex.type != ExerciseType.choice || i == null) return ex.displayAnswer;
+    return '${choiceLetters[i % choiceLetters.length]}) ${ex.displayAnswer}';
+  }
+
+  /// Under the answer: the Turkish explanation of an exam question (right or
+  /// wrong), or "Neden yanlış?" after a wrong English sentence.
+  Widget? _feedbackDetail(Exercise ex) {
+    final explanation = ex.explanation?.trim() ?? '';
+    if (ex.type == ExerciseType.choice && explanation.isNotEmpty) return ChoiceExplanation(text: explanation);
+    return _lastCorrect! ? null : _why;
   }
 
   Widget _header() {
@@ -366,8 +383,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                         title: _lastCorrect!
                             ? (_combo >= comboThreshold ? '$_combo doğru üst üste!' : praiseFor(_answered))
                             : 'Doğru cevap:',
-                        answer: _lastCorrect! ? null : _current.ex.displayAnswer,
-                        detail: _lastCorrect! ? null : _why,
+                        answer: _lastCorrect! ? null : _shownAnswer(_current.ex),
+                        detail: _feedbackDetail(_current.ex),
                         onContinue: _continue,
                       ),
               ),

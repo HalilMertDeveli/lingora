@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/course_repository.dart';
+import '../data/exam_path.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/sections.dart';
 import '../models/course.dart';
+import '../models/exam.dart';
 import '../nav/tab_navigator.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
@@ -22,7 +24,9 @@ import 'lesson_screen.dart';
 import 'path_map.dart';
 import 'reminder_settings.dart';
 import 'section_header.dart';
+import 'exam_screen.dart';
 import 'story_screen.dart';
+import 'topic_guide.dart';
 
 export 'path_map.dart' show NodeState;
 
@@ -319,6 +323,13 @@ class _PathListState extends ConsumerState<_PathList> {
                 above: c.above,
                 arrowX: c.arrowX,
                 theme: themeOf(c.unit),
+                note: c.node.type == NodeType.mock
+                    ? mockSummary(
+                        c.node.id,
+                        ref.read(progressProvider).examBest,
+                        ref.read(progressProvider).examSeconds,
+                      )
+                    : null,
                 lockedMessage: c.sectionOpen
                     ? 'Önce önceki adımları tamamla.'
                     : 'Bu bölüm kilitli. Önceki bölümü bitir ya da "Bölüme atla" sınavını geç.',
@@ -366,15 +377,75 @@ class _PathListState extends ConsumerState<_PathList> {
           retry: build,
         );
         await nav.push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => build()));
+      case NodeType.mock:
+        await _openMock(node);
       case NodeType.lesson:
+        if (!await _guideFirst(node, unit)) return;
         await nav.push(
           MaterialPageRoute<void>(builder: (_) => LessonScreen.forNode(node, color), fullscreenDialog: true),
         );
     }
   }
 
-  void _guide(Unit unit, int index, NodeState Function(PathNode) stateOf) =>
-      showUnitGuide(context, unit: unit, index: index, stateOf: stateOf);
+  /// Unit number inside its section ("ÜNİTE 3").
+  int _numberOf(Unit unit) {
+    final s = widget.course.sections.where((s) => s.units.contains(unit)).firstOrNull;
+    return s == null ? 1 : s.units.indexOf(unit) + 1;
+  }
+
+  /// "Önce konuyu oku": before the first lesson of a unit with a topic guide,
+  /// suggests reading it, once. Returns whether to start the lesson.
+  Future<bool> _guideFirst(PathNode node, Unit unit) async {
+    final p = ref.read(progressProvider);
+    final first = unit.nodes.where((n) => n.type == NodeType.lesson).firstOrNull;
+    if (!unit.hasGuide || node != first || p.guideSeen(unit.id) || p.isDone(node.id)) return true;
+    final choice = await showGuideSuggestion(context, unit);
+    if (choice == null || !mounted) return false;
+    ref.read(progressProvider.notifier).markGuideSeen(unit.id);
+    if (choice == GuideChoice.skip) return true;
+    final start = await Navigator.of(context).push<bool>(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (_) => TopicGuideScreen(unit: unit, index: _numberOf(unit), startLabel: 'DERSE BAŞLA'),
+      ),
+    );
+    return start == true && mounted;
+  }
+
+  /// A section mock: the exam engine (timer, blanks, answer key) on the
+  /// section's questions, topped up from the exam's question bank.
+  Future<void> _openMock(PathNode node) async {
+    final section = sectionOf(widget.course, node);
+    if (section == null) return;
+    Exam? bank;
+    if (node.examId case final id?) {
+      try {
+        bank = await ref.read(examProvider(id).future);
+      } catch (e) {
+        debugPrint('Deneme bankası yüklenemedi ($id): $e');
+      }
+    }
+    if (!mounted) return;
+    final questions = mockQuestions(section, node, bank: bank);
+    if (questions.isEmpty) return;
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        fullscreenDialog: true,
+        builder: (_) => ExamSessionScreen(
+          exam: mockExam(node, bank, questions),
+          questions: questions,
+          mock: true,
+          title: node.title,
+          nodeId: node.id,
+        ),
+      ),
+    );
+  }
+
+  void _guide(Unit unit, int index, NodeState Function(PathNode) stateOf) {
+    if (unit.hasGuide) ref.read(progressProvider.notifier).markGuideSeen(unit.id);
+    showUnitGuide(context, unit: unit, index: index, stateOf: stateOf);
+  }
 
   @override
   Widget build(BuildContext context) {

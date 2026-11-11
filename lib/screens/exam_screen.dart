@@ -20,10 +20,16 @@ import 'paywall_screen.dart';
 
 const _letters = ['A', 'B', 'C', 'D', 'E'];
 
+/// What an exam home shows: everything (an exam track without a study
+/// path), the question bank by topic ("Soru bankası") or the mock exams
+/// and full packs ("Deneme sınavları").
+enum ExamHomeView { all, bank, mocks }
+
 /// Home of an exam track: mini mock exam plus practice by topic.
 class ExamHomeScreen extends ConsumerWidget {
-  const ExamHomeScreen({super.key, required this.examId});
+  const ExamHomeScreen({super.key, required this.examId, this.view = ExamHomeView.all});
   final String examId;
+  final ExamHomeView view;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,14 +37,15 @@ class ExamHomeScreen extends ConsumerWidget {
     return exam.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (e, _) => Center(child: Text('Sınav yüklenemedi: $e')),
-      data: (e) => _ExamHome(exam: e),
+      data: (e) => _ExamHome(exam: e, view: view),
     );
   }
 }
 
 class _ExamHome extends ConsumerWidget {
-  const _ExamHome({required this.exam});
+  const _ExamHome({required this.exam, required this.view});
   final Exam exam;
+  final ExamHomeView view;
 
   void _open(BuildContext context, List<ExamQuestion> qs, {required bool mock, String? title}) {
     logEventFrom(context, AnalyticsEvent.featureUse(mock ? AppFeature.mockExam : AppFeature.examPractice));
@@ -89,94 +96,101 @@ class _ExamHome extends ConsumerWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
       children: [
-        Container(
-          padding: const EdgeInsets.all(18),
-          decoration: context.lingora.hero(Brand.primary, from: const Color(0xFF3B2FA8)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          exam.title,
-                          style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(exam.description, style: TextStyle(color: Colors.white.withValues(alpha: 0.85))),
-                      ],
+        if (view != ExamHomeView.bank)
+          Container(
+            padding: const EdgeInsets.all(18),
+            decoration: context.lingora.hero(Brand.primary, from: const Color(0xFF3B2FA8)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            exam.title,
+                            style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            exam.description,
+                            style: TextStyle(color: Colors.white.withValues(alpha: 0.85)),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const Mascot(mood: Mood.think, size: 76, decorative: true),
-                ],
-              ),
-              const SizedBox(height: 14),
-              Row(
-                children: [
-                  _Pill(Icons.quiz_rounded, '${exam.mockSize} soru'),
-                  const SizedBox(width: 8),
-                  _Pill(Icons.timer_rounded, '${exam.mockMinutes} dk'),
-                  const SizedBox(width: 8),
-                  if (best != null) _Pill(Icons.emoji_events_rounded, 'En iyi %$best'),
-                ],
-              ),
-              const SizedBox(height: 14),
-              PressableButton(
-                label: 'MİNİ DENEME BAŞLAT',
-                color: Brand.accent,
-                foreground: Brand.ink,
-                onPressed: () => _startMock(context, ref),
-              ),
-              if (!premium) ...[
-                const SizedBox(height: 8),
-                Text(
-                  freeLeft > 0
-                      ? 'Bugün $freeLeft ücretsiz deneme hakkın var. Konu çalışması her zaman ücretsiz.'
-                      : 'Bugünkü ücretsiz denemeni kullandın. Yarın yenilenir; Premium ile sınırsız.',
-                  style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 12),
+                    const Mascot(mood: Mood.think, size: 76, decorative: true),
+                  ],
                 ),
-              ],
-            ],
-          ),
-        ),
-        if (ExamPack.forExam(exam.id) case final pack?) ...[
-          const SizedBox(height: 22),
-          ExamPackSection(exam: exam, pack: pack),
-        ],
-        const SizedBox(height: 22),
-        Text('Konu çalış', style: Theme.of(context).textTheme.titleLarge),
-        const SizedBox(height: 4),
-        Text('Her sorudan sonra Türkçe açıklama gösterilir.', style: TextStyle(color: Brand.muted)),
-        const SizedBox(height: 12),
-        for (final s in exam.sections)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: TapCard(
-              onTap: () => _open(context, [...s.questions]..shuffle(), mock: false, title: s.title),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(s.title, style: Theme.of(context).textTheme.titleMedium),
-                        if (s.description.isNotEmpty)
-                          Text(s.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
-                      ],
-                    ),
-                  ),
+                const SizedBox(height: 14),
+                Row(
+                  children: [
+                    _Pill(Icons.quiz_rounded, '${exam.mockSize} soru'),
+                    const SizedBox(width: 8),
+                    _Pill(Icons.timer_rounded, '${exam.mockMinutes} dk'),
+                    const SizedBox(width: 8),
+                    if (best != null) _Pill(Icons.emoji_events_rounded, 'En iyi %$best'),
+                  ],
+                ),
+                const SizedBox(height: 14),
+                PressableButton(
+                  label: 'MİNİ DENEME BAŞLAT',
+                  color: Brand.accent,
+                  foreground: Brand.ink,
+                  onPressed: () => _startMock(context, ref),
+                ),
+                if (!premium) ...[
+                  const SizedBox(height: 8),
                   Text(
-                    '${s.questions.length} soru',
-                    style: TextStyle(color: Brand.primary, fontWeight: FontWeight.w800),
+                    freeLeft > 0
+                        ? 'Bugün $freeLeft ücretsiz deneme hakkın var. Konu çalışması her zaman ücretsiz.'
+                        : 'Bugünkü ücretsiz denemeni kullandın. Yarın yenilenir; Premium ile sınırsız.',
+                    style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 12),
                   ),
-                  Icon(Icons.chevron_right_rounded, color: Brand.muted),
                 ],
-              ),
+              ],
             ),
           ),
+        if (view != ExamHomeView.bank)
+          if (ExamPack.forExam(exam.id) case final pack?) ...[
+            const SizedBox(height: 22),
+            ExamPackSection(exam: exam, pack: pack),
+          ],
+        if (view != ExamHomeView.mocks) ...[
+          const SizedBox(height: 22),
+          Text('Konu çalış', style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 4),
+          Text('Her sorudan sonra Türkçe açıklama gösterilir.', style: TextStyle(color: Brand.muted)),
+          const SizedBox(height: 12),
+          for (final s in exam.sections)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: TapCard(
+                onTap: () => _open(context, [...s.questions]..shuffle(), mock: false, title: s.title),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(s.title, style: Theme.of(context).textTheme.titleMedium),
+                          if (s.description.isNotEmpty)
+                            Text(s.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
+                        ],
+                      ),
+                    ),
+                    Text(
+                      '${s.questions.length} soru',
+                      style: TextStyle(color: Brand.primary, fontWeight: FontWeight.w800),
+                    ),
+                    Icon(Icons.chevron_right_rounded, color: Brand.muted),
+                  ],
+                ),
+              ),
+            ),
+        ],
         const SizedBox(height: 8),
         Text(
           'Sorular Dilbaz tarafından sınav formatına uygun olarak hazırlanmıştır; '
@@ -230,6 +244,7 @@ class ExamSessionScreen extends ConsumerStatefulWidget {
     this.minutes,
     this.pack,
     this.fullMock,
+    this.nodeId,
   });
 
   final Exam exam;
@@ -243,6 +258,10 @@ class ExamSessionScreen extends ConsumerStatefulWidget {
   /// Set for a full-length mock exam from a paid pack.
   final ExamPackContent? pack;
   final FullMock? fullMock;
+
+  /// Set for a learning path's section mock: the result completes this node
+  /// and its score and time are kept under its id.
+  final String? nodeId;
 
   @override
   ConsumerState<ExamSessionScreen> createState() => _ExamSessionScreenState();
@@ -336,9 +355,14 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     ].length;
     final percent = qs.isEmpty ? 0 : (correct * 100 / qs.length).round();
     final notifier = ref.read(progressProvider.notifier);
-    if (widget.mock) notifier.recordExam(widget.fullMock?.id ?? widget.exam.id, percent);
+    final nodeId = widget.nodeId;
+    if (nodeId != null) {
+      notifier.recordMock(nodeId, percent, DateTime.now().difference(_started));
+    } else if (widget.mock) {
+      notifier.recordExam(widget.fullMock?.id ?? widget.exam.id, percent);
+    }
     final reward = notifier.completeNode(
-      'exam_${widget.exam.id}',
+      nodeId ?? 'exam_${widget.exam.id}',
       xp: max(5, correct),
       answered: _answers.length,
       correct: correct,
