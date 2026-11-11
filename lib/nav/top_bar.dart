@@ -127,17 +127,17 @@ class _Stat extends StatelessWidget {
 /// Opens [panel] sliding down from under the top bar, over the whole app
 /// (bottom bar included). Tapping outside or back closes it.
 Future<void> showTopPanel(BuildContext context, Widget panel) {
-  final top = MediaQuery.paddingOf(context).top + kToolbarHeight;
   return showGeneralDialog<void>(
     context: context,
     barrierDismissible: true,
     barrierLabel: 'Kapat',
     barrierColor: Colors.black38,
     transitionDuration: const Duration(milliseconds: 220),
-    pageBuilder: (_, _, _) => Align(
+    // Measured in the dialog: the AppBar hides the status bar padding from its children.
+    pageBuilder: (dialogContext, _, _) => Align(
       alignment: Alignment.topCenter,
       child: Padding(
-        padding: EdgeInsets.only(top: top),
+        padding: EdgeInsets.only(top: MediaQuery.paddingOf(dialogContext).top + kToolbarHeight + 1),
         child: Material(
           color: Brand.background,
           elevation: 6,
@@ -301,6 +301,7 @@ class StreakPanel extends ConsumerWidget {
           crossAxisCount: 7,
           shrinkWrap: true,
           primary: false,
+          padding: EdgeInsets.zero,
           physics: const NeverScrollableScrollPhysics(),
           mainAxisSpacing: 4,
           crossAxisSpacing: 4,
