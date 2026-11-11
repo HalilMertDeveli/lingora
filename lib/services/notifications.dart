@@ -115,7 +115,7 @@ class NotificationService {
     }
   }
 
-  /// Replaces Lingora's scheduled notifications with [plan] (no-op if
+  /// Replaces Dilbaz's scheduled notifications with [plan] (no-op if
   /// nothing changed since the last call).
   Future<void> apply(List<PlannedNotification> plan) async {
     final signature = plan.join(';');

@@ -155,7 +155,7 @@ class _FamilyScreenState extends ConsumerState<FamilyScreen> {
     _MemberTile(name: 'Sen (yönetici)', trailing: null),
     for (final m in info.members)
       _MemberTile(
-        name: m.displayName ?? 'Lingora üyesi',
+        name: m.displayName ?? 'Dilbaz üyesi',
         subtitle: m.joinedAt == null ? null : 'Katıldı: ${_date(m.joinedAt!)}',
         trailing: IconButton(
           tooltip: 'Aileden çıkar',
@@ -231,7 +231,7 @@ class _FamilyScreenState extends ConsumerState<FamilyScreen> {
 
   List<Widget> _member(FamilyInfo info) => [
     _Box(
-      '${info.ownerName ?? 'Bir Lingora kullanıcısının'} aile planındasın. Premium'
+      '${info.ownerName ?? 'Bir Dilbaz kullanıcısının'} aile planındasın. Premium'
       '${info.expiresAt == null ? '' : ' ${_date(info.expiresAt!)} tarihine kadar'} açık.',
       color: Brand.successBg,
     ),

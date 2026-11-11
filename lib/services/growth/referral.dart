@@ -115,7 +115,7 @@ final installIdProvider = Provider<String>((ref) {
 /// Arkadaşını davet et); the Play link carries it as an install referrer
 /// for a later automatic step.
 String inviteShareText(InviteInfo info) =>
-    'Lingora ile İngilizce öğreniyorum: kısa dersler, can sistemi yok, temel öğrenme ücretsiz. '
+    'Dilbaz ile İngilizce öğreniyorum: kısa dersler, can sistemi yok, temel öğrenme ücretsiz. '
     'Uygulamayı indir, Profil > Arkadaşını davet et bölümüne ${info.code} kodunu gir; '
     'ikimiz de ${info.rewardDays} gün Premium kazanalım! '
     'https://play.google.com/store/apps/details?id=com.lingora.lingora&referrer=invite%3D${info.code}';

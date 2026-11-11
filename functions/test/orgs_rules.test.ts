@@ -1,4 +1,4 @@
-// Security rules for Lingora Kurumsal: org data never reaches clients directly.
+// Security rules for Dilbaz Kurumsal: org data never reaches clients directly.
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { after, before, beforeEach, test } from "node:test";

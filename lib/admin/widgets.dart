@@ -39,7 +39,7 @@ class BrandTitle extends StatelessWidget {
         Icon(Icons.translate_rounded, color: Brand.primary, size: 30),
         SizedBox(width: 8),
         Text(
-          'Lingora',
+          'Dilbaz',
           style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Brand.ink),
         ),
         SizedBox(width: 6),

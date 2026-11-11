@@ -179,7 +179,7 @@ class _ExamHome extends ConsumerWidget {
           ),
         const SizedBox(height: 8),
         Text(
-          'Sorular Lingora tarafından sınav formatına uygun olarak hazırlanmıştır; '
+          'Sorular Dilbaz tarafından sınav formatına uygun olarak hazırlanmıştır; '
           'resmî sınav soruları değildir.',
           style: TextStyle(color: Brand.muted, fontSize: 12),
           textAlign: TextAlign.center,

@@ -1,6 +1,6 @@
-# Lingora Kurumsal
+# Dilbaz Kurumsal
 
-Oteller, turizm şirketleri, işletmeler ve okullar için Lingora. Kurum, çalışanları ya da öğrencileri
+Oteller, turizm şirketleri, işletmeler ve okullar için Dilbaz. Kurum, çalışanları ya da öğrencileri
 için koltuk (lisans) satın alır; kişiler uygulamada **kurum kodu** ile katılır ve plan süresince Premium
 kullanır. Yönetici ve öğretmenler web panelinden ilerlemeyi izler, sınıf kurar ve ödev verir.
 
@@ -12,7 +12,7 @@ Bu belge: satış teklifi, kurulum adımları, KVKK notları, faturalama ve tekn
 
 ### Otel / turizm / şirket ne alır?
 
-- **Her çalışana Lingora Premium** (plan bitişine kadar): yapay zekâ konuşma partneri, bulut yedekleme,
+- **Her çalışana Dilbaz Premium** (plan bitişine kadar): yapay zekâ konuşma partneri, bulut yedekleme,
   sınırsız deneme, ayrıntılı hata analizi.
 - **Mesleğe özel içerik:** Turizm İngilizcesi (resepsiyon, restoran, rehberlik) ve İş Görüşmesi İngilizcesi
   paketleri; genel İngilizce A1–A2 yolu ve A1–C1 gramer yolu.
@@ -69,7 +69,7 @@ kişi başı bunun yaklaşık yarısıdır.
 1. Firebase projesi, Blaze planı ve `flutterfire configure` (bkz. `docs/firebase.md`, `docs/firebase-backend.md`).
    Web için de yapılandırın: `--platforms=android,ios,web`.
 2. **Authentication → Sign-in method → E-posta/Şifre** sağlayıcısını açın (panel girişi için).
-3. **Lingora yöneticisi tanımlayın** (kurum oluşturma yetkisi). İki yoldan biri:
+3. **Dilbaz yöneticisi tanımlayın** (kurum oluşturma yetkisi). İki yoldan biri:
    - Firestore konsolunda `config/lingoraAdmins` belgesi oluşturun: `{ uids: ["<sizin uid'iniz>"] }`.
      Uid'i Authentication → Users listesinden alırsınız (önce panelde bir hesap açın).
    - ya da Admin SDK ile özel claim: `admin.auth().setCustomUserClaims(uid, { isLingoraAdmin: true })`.
@@ -91,12 +91,12 @@ kişi başı bunun yaklaşık yarısıdır.
 ### Her yeni müşteri için
 
 1. Sözleşme ve fatura (bkz. bölüm 4); ödeme alınır.
-2. Panelde Lingora yöneticisi olarak giriş yapın → **Yeni kurum**: ad, tür (kurum/okul), koltuk sayısı,
+2. Panelde Dilbaz yöneticisi olarak giriş yapın → **Yeni kurum**: ad, tür (kurum/okul), koltuk sayısı,
    plan bitişi. Panel bir **yönetici kodu** gösterir.
 3. Kodu müşterinin yetkilisine iletin. Yetkili panelde e-postasıyla hesap açar, kodu ve adını girer;
    artık kurumun yöneticisidir.
 4. Yönetici panelde **Sınıflar** (departman) ve **Davet kodları** oluşturur, kodları çalışanlarla paylaşır.
-   Çalışan: Lingora uygulaması → Profil → **Kurum koduyla katıl** → kod + ad soyad.
+   Çalışan: Dilbaz uygulaması → Profil → **Kurum koduyla katıl** → kod + ad soyad.
 5. Yenileme: panelde kurumun yanındaki düzenle düğmesinden plan bitişini uzatın; tüm üyelerin Premium'u
    otomatik uzar. Koltuk artırımı da aynı yerden.
 
@@ -113,7 +113,7 @@ bir betikle ekleyin.
 
 ## 3. KVKK ve gizlilik
 
-Lingora, kurumla yalnızca **öğrenme ilerlemesini** paylaşır:
+Dilbaz, kurumla yalnızca **öğrenme ilerlemesini** paylaşır:
 
 | Paylaşılır | Paylaşılmaz |
 |---|---|
@@ -124,18 +124,18 @@ Lingora, kurumla yalnızca **öğrenme ilerlemesini** paylaşır:
 | Ödev durumu (tamamlandı / bekliyor / gecikti) | E-posta, telefon, cihaz bilgisi |
 
 Teknik güvence:
-- Kurum verisi istemciden doğrudan okunamaz (`firestore.rules` → "Lingora Kurumsal" bölümü). Panel her şeyi
+- Kurum verisi istemciden doğrudan okunamaz (`firestore.rules` → "Dilbaz Kurumsal" bölümü). Panel her şeyi
   Cloud Functions üzerinden alır; rapor `functions/src/orgs.ts` içindeki `progressSummary()` beyaz listesiyle
   üretilir. Testler (`functions/test/orgs.test.ts`) günlük metninin rapora sızmadığını doğrular.
 - Öğretmen yalnızca kendi sınıflarındaki öğrencileri görür.
 - Kişi istediği zaman Profil → Kurumdan ayrıl ile ayrılır; kurumun ona dair görebildiği her şey o anda kesilir.
 
 Sözleşme ve aydınlatma için:
-- Kurum **veri sorumlusu**, Lingora **veri işleyen** sıfatındadır (çalışan/öğrenci verisinin eğitim takibi
+- Kurum **veri sorumlusu**, Dilbaz **veri işleyen** sıfatındadır (çalışan/öğrenci verisinin eğitim takibi
   amacıyla işlenmesi). Sözleşmeye bir **veri işleme eki** konur: amaç (dil eğitimi takibi), kategori
   (yukarıdaki tablo), saklama (üyelik süresi + 30 gün), yurt dışına aktarım (Firebase, AB bölgesi
   `europe-west1`) ve alt işleyenler (Google Cloud).
-- Kurum, çalışanlarına/velilere bir **aydınlatma metni** verir. Örnek cümle: "Lingora uygulamasındaki ders,
+- Kurum, çalışanlarına/velilere bir **aydınlatma metni** verir. Örnek cümle: "Dilbaz uygulamasındaki ders,
   XP, seri ve ödev durumunuz eğitim takibi amacıyla kurumumuzla paylaşılır; günlük, not ve sohbet
   içerikleriniz paylaşılmaz."
 - 18 yaş altı öğrenciler için okul, veli onayını kendi süreçleriyle alır; uygulamada reklam ve üçüncü taraf
@@ -179,8 +179,8 @@ config/lingoraAdmins            {uids: [...]}
 
 | Fonksiyon | Kim | Ne yapar |
 |---|---|---|
-| `orgCreate`, `orgUpdate` | Lingora yöneticisi | Kurum oluşturur (yönetici kodu döner); koltuk/plan değiştirir, üyelerin Premium'unu günceller |
-| `orgList` | Herkes | Lingora yöneticisine tüm kurumlar, kurum yöneticisi/öğretmene kendi kurumu |
+| `orgCreate`, `orgUpdate` | Dilbaz yöneticisi | Kurum oluşturur (yönetici kodu döner); koltuk/plan değiştirir, üyelerin Premium'unu günceller |
+| `orgList` | Herkes | Dilbaz yöneticisine tüm kurumlar, kurum yöneticisi/öğretmene kendi kurumu |
 | `orgReport` | Yönetici, öğretmen | Panel verisi: kurum, sınıflar, ödevler, kodlar, kişiler ve ilerleme özeti |
 | `orgCreateCode`, `orgRotateCode`, `orgRevokeCode` | Yönetici; öğretmen kendi sınıfına üye kodu | Davet kodları |
 | `orgRemoveMember`, `orgSetRole` | Yönetici | Kişi çıkarma, rol değiştirme (koltuk ve Premium buna göre) |

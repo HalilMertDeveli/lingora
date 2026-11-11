@@ -1,6 +1,6 @@
-# Lingora Premium (abonelik)
+# Dilbaz Premium (abonelik)
 
-Bu belge Lingora Premium'un ne olduğunu, nasıl çalıştığını ve yayına almak için
+Bu belge Dilbaz Premium'un ne olduğunu, nasıl çalıştığını ve yayına almak için
 Google Play Console ile Firebase'de **senin** yapman gerekenleri anlatır.
 
 ## 1. Ne ücretsiz, ne Premium?
@@ -192,7 +192,7 @@ ve günlük 1 mini denemesi hiç değişmez.
 | `lingora_pack_yds_full` | 3 tam YDS/YÖKDİL denemesi × 80 soru, 180 dakika, gerçek bölüm oranları: kelime 6, dil bilgisi 10, cloze 10 (2 parça), cümle tamamlama 10, çeviri 6, okuma 20 (5 parça), diyalog 6, anlamca en yakın cümle 3, paragraf tamamlama 4, anlam bütünlüğünü bozan cümle 5 |
 | `lingora_pack_lgs_full` | 4 tam LGS İngilizce denemesi × 10 soru, 15 dakika: kelime 2, diyalog 2, okuma/tablo 4, durum 2 |
 
-Toplam **280 özgün soru**, hepsinde Türkçe çözüm. Sorular Lingora için yazıldı;
+Toplam **280 özgün soru**, hepsinde Türkçe çözüm. Sorular Dilbaz için yazıldı;
 ÖSYM/MEB sorusu değildir (uygulamada da yazar). İçerik: `assets/exam_packs/`.
 
 Paket sahibine açılanlar: gerçek süreli tam deneme (süre durdurulamaz, bitince
@@ -246,7 +246,7 @@ Hata kodları uygulamada Türkçe mesaja çevrilir (aile dolu, kod süresi dolmu
 
 **Play Console**: Abonelikler > `lingora_premium_family_yearly`, 1 yıllık
 otomatik yenilenen temel plan, fiyat, Etkinleştir. Google Play'in kendi aile
-kitaplığı paylaşımı kullanılmaz; paylaşım tamamen Lingora'nın davet koduyla
+kitaplığı paylaşımı kullanılmaz; paylaşım tamamen Dilbaz'ın davet koduyla
 yapılır. Mağaza açıklamasına "5 kişiye kadar, davet koduyla" yaz.
 
 **Canlıya çıkmadan**: Gerçek Play doğrulaması (`verifyPurchase` içindeki TODO)

@@ -1,6 +1,6 @@
 # Katkı rehberi
 
-Lingora'ya katkı için kısa çalışma düzeni.
+Dilbaz'a katkı için kısa çalışma düzeni.
 
 ## Dal (branch) akışı
 

@@ -55,7 +55,7 @@ async function setup(seats = 3) {
 const org = async (orgId: string) => (await db.doc(`orgs/${orgId}`).get()).data()!;
 const ent = async (uid: string) => (await db.doc(`entitlements/${uid}`).get()).data();
 
-test("only Lingora staff can create and update orgs", async () => {
+test("only Dilbaz staff can create and update orgs", async () => {
   const data = { name: "Okul", type: "okul", seats: 10, planExpiresAt: now.getTime() + DAY };
   await rejectsWith(createOrg(db, u("eve"), data, now), "permission-denied", "lingora_admin_only");
   await rejectsWith(createOrg(db, staff, { ...data, type: "x" }, now), "invalid-argument");
@@ -183,7 +183,7 @@ test("roles: who may hand out which code", async () => {
   await rejectsWith(createJoinCode(db, u("ali"), { orgId, role: "member", classId }, now), "permission-denied");
   await rejectsWith(createJoinCode(db, u("eve"), { orgId, role: "member" }, now), "permission-denied");
   await rejectsWith(createJoinCode(db, u("boss"), { orgId, role: "admin", classId }, now), "invalid-argument");
-  // Lingora staff may manage any org.
+  // Dilbaz staff may manage any org.
   await createJoinCode(db, staff, { orgId, role: "admin" }, now);
 
   // Rotate retires the old code; revoke just retires it.

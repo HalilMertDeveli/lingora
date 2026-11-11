@@ -85,7 +85,7 @@ class ProfileScreen extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 12),
-        Text('Lingora Premium', style: t.titleLarge),
+        Text('Dilbaz Premium', style: t.titleLarge),
         const SizedBox(height: 12),
         TapCard(
           key: const ValueKey('profile-premium'),

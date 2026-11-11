@@ -4,7 +4,7 @@
  "title": "LGS İngilizce Tam Deneme Paketi",
  "scoring": "lgs",
  "optionCount": 4,
- "description": "LGS İngilizce bölümü formatında 4 özgün tam deneme (10 soru, 15 dakika). Her sorunun Türkçe çözümü var. Sorular Lingora tarafından hazırlanmıştır; MEB soruları değildir.",
+ "description": "LGS İngilizce bölümü formatında 4 özgün tam deneme (10 soru, 15 dakika). Her sorunun Türkçe çözümü var. Sorular Dilbaz tarafından hazırlanmıştır; MEB soruları değildir.",
  "sections": [
   {
    "id": "lgs_vocab",

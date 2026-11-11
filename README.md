@@ -1,10 +1,17 @@
-# Lingora
+# Dilbaz
 
 [![CI](https://github.com/HalilMertDeveli/lingora/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/HalilMertDeveli/lingora/actions/workflows/ci.yml)
 [![Release APK](https://github.com/HalilMertDeveli/lingora/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/HalilMertDeveli/lingora/actions/workflows/release.yml)
 
 Türkçe konuşanlar için İngilizce öğrenme uygulaması (Flutter). İçerik, karakterler, maskot ve
 tasarım projeye özgüdür.
+
+> Uygulamanın adı **Dilbaz**'dır ("dili güzel, lafı akıcı"). Teknik kimlikler eski adla kalır: Dart
+> paket adı `lingora`, Android `applicationId`/namespace ve iOS bundle id `com.lingora.lingora`, Firebase
+> proje kimlikleri (`demo-lingora`), Firestore koleksiyon/alan adları (ör. `config/lingoraAdmins`,
+> `isLingoraAdmin` claim'i), analitik olay adları, shared_preferences anahtarları, Play ürün kimlikleri
+> (`lingora_premium_*`, `lingora_pack_*`), kod içi sınıf adları (`LingoraApp`, `LingoraTheme`, `LingoraSans`
+> font ailesi) ve GitHub repo adı.
 
 ## Özellikler
 
