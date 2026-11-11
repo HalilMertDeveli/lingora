@@ -71,7 +71,7 @@ void main() {
         ..setTheme(ThemePref.dark);
       final prefs = await SharedPreferences.getInstance();
       final saved = jsonDecode(prefs.getString(AppSettingsNotifier.key)!) as Map<String, dynamic>;
-      expect(saved, {'mode': 'kid', 'theme': 'dark'});
+      expect(saved, {'mode': 'kid', 'theme': 'dark', 'sound': true, 'reduceMotion': false});
       // Learning progress is stored separately and untouched.
       expect(prefs.getString('progress_v1'), isNull);
 

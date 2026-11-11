@@ -15,11 +15,12 @@ import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import 'lesson_screen.dart';
+import 'path_map.dart';
 import 'reminder_settings.dart';
 import 'section_header.dart';
 import 'story_screen.dart';
 
-enum NodeState { done, active, locked }
+export 'path_map.dart' show NodeState;
 
 String formatWait(Duration d) => d.inMinutes >= 1 ? '${d.inMinutes} dk' : '${d.inSeconds} sn';
 
@@ -45,11 +46,40 @@ class _PathList extends ConsumerStatefulWidget {
   ConsumerState<_PathList> createState() => _PathListState();
 }
 
+/// The node whose lesson card is open.
+class _CardInfo {
+  _CardInfo({
+    required this.node,
+    required this.unit,
+    required this.state,
+    required this.sectionOpen,
+    required this.above,
+    required this.dx,
+    required this.width,
+    required this.arrowX,
+  });
+  final PathNode node;
+  final Unit unit;
+  final NodeState state;
+  final bool sectionOpen;
+  final bool above;
+  final double dx;
+  final double width;
+  final double arrowX;
+}
+
 class _PathListState extends ConsumerState<_PathList> {
   final _activeKey = GlobalKey();
   final _viewportKey = GlobalKey();
   final _scroll = ScrollController();
+  final _card = OverlayPortalController();
   ValueListenable<int>? _reselected;
+
+  /// One link per node, so the lesson card can follow its node.
+  final _links = <String, LayerLink>{};
+
+  /// Unit bands, to find which unit is under the pinned band.
+  final _bandKeys = <String, GlobalKey>{};
 
   /// Active node the path was last scrolled to.
   String? _focusedId;
@@ -67,7 +97,15 @@ class _PathListState extends ConsumerState<_PathList> {
   /// Direction of the active node when it is off screen ("Bulunduğun yere dön").
   AxisDirection? _jump;
 
+  /// Unit whose band is pinned to the top (scrolled past its own band).
+  String? _pinnedUnit;
+
+  _CardInfo? _cardInfo;
+
   bool get _visible => TickerMode.valuesOf(context).enabled;
+
+  LayerLink _linkOf(String id) => _links.putIfAbsent(id, LayerLink.new);
+  GlobalKey _bandKeyOf(String id) => _bandKeys.putIfAbsent(id, GlobalKey.new);
 
   @override
   void didChangeDependencies() {
@@ -89,7 +127,10 @@ class _PathListState extends ConsumerState<_PathList> {
     super.dispose();
   }
 
-  void _onReselect() => _focusSoon(force: true);
+  void _onReselect() {
+    _hideCard();
+    _focusSoon(force: true);
+  }
 
   /// Brings the active node into view after this frame.
   void _focusSoon({bool force = false}) {
@@ -106,7 +147,7 @@ class _PathListState extends ConsumerState<_PathList> {
         alignment: 0.4,
         duration: const Duration(milliseconds: 600),
         curve: Curves.easeInOutCubic,
-      ).then((_) => _updateJump());
+      ).then((_) => _afterScroll());
     });
   }
 
@@ -122,7 +163,7 @@ class _PathListState extends ConsumerState<_PathList> {
     // On start only scroll once the user is past the first unit's opening steps.
     if (first && activeIndex <= 2) {
       _focusedId = activeId;
-      WidgetsBinding.instance.addPostFrameCallback((_) => _updateJump());
+      WidgetsBinding.instance.addPostFrameCallback((_) => _afterScroll());
       return;
     }
     if (activeId == _focusedId) return;
@@ -141,10 +182,17 @@ class _PathListState extends ConsumerState<_PathList> {
     }
   }
 
+  void _afterScroll() {
+    _updateJump();
+    _updatePinned();
+  }
+
+  RenderBox? get _viewport => _viewportKey.currentContext?.findRenderObject() as RenderBox?;
+
   void _updateJump() {
     if (!mounted) return;
     final tile = _activeKey.currentContext?.findRenderObject() as RenderBox?;
-    final viewport = _viewportKey.currentContext?.findRenderObject() as RenderBox?;
+    final viewport = _viewport;
     AxisDirection? next;
     if (tile != null && viewport != null && tile.attached && tile.hasSize && viewport.hasSize) {
       final top = tile.localToGlobal(Offset.zero, ancestor: viewport).dy;
@@ -155,12 +203,28 @@ class _PathListState extends ConsumerState<_PathList> {
     if (next != _jump) setState(() => _jump = next);
   }
 
+  /// Pins the band of the unit being read: the last one whose own band has
+  /// scrolled above the top edge.
+  void _updatePinned() {
+    if (!mounted) return;
+    final viewport = _viewport;
+    if (viewport == null || !viewport.hasSize) return;
+    String? next;
+    for (final unit in widget.course.units) {
+      final box = _bandKeys[unit.id]?.currentContext?.findRenderObject() as RenderBox?;
+      if (box == null || !box.attached || !box.hasSize) continue;
+      final top = box.localToGlobal(Offset.zero, ancestor: viewport).dy;
+      if (top < -box.size.height * 0.5) next = unit.id;
+    }
+    if (next != _pinnedUnit) setState(() => _pinnedUnit = next);
+  }
+
   /// Sections the learner opened by hand ("üniteye göz at").
   final _expanded = <String>{};
 
   /// Sections shown unfolded without asking: the one with the current node,
   /// and open sections still in progress. Locked and finished sections start
-  /// folded, so the path does not build hundreds of tiles up front.
+  /// folded, so the path does not build hundreds of nodes up front.
   bool _autoExpanded(Section s, bool open, PathNode? current, Progress p) =>
       s.implicit ||
       (current != null && s.units.any((u) => u.nodes.contains(current))) ||
@@ -168,6 +232,131 @@ class _PathListState extends ConsumerState<_PathList> {
 
   bool _showUnits(Section s, bool open, PathNode? current, Progress p) =>
       _autoExpanded(s, open, current, p) || _expanded.contains(s.id);
+
+  // ---- lesson card ------------------------------------------------------
+
+  void _showCard(PathNode node, Unit unit, NodeState state, bool sectionOpen) {
+    final viewport = _viewport;
+    final ctx = _nodeContexts[node.id];
+    final box = ctx != null && ctx.mounted ? ctx.findRenderObject() as RenderBox? : null;
+    if (viewport == null || box == null || !box.hasSize) return;
+    final center = box.localToGlobal(box.size.center(Offset.zero), ancestor: viewport);
+    final w = viewport.size.width;
+    final width = min(w - 32, 360.0);
+    final left = (w - width) / 2;
+    setState(() {
+      _cardInfo = _CardInfo(
+        node: node,
+        unit: unit,
+        state: state,
+        sectionOpen: sectionOpen,
+        above: center.dy > viewport.size.height * 0.55,
+        dx: w / 2 - center.dx,
+        width: width,
+        arrowX: (center.dx - left).clamp(24.0, width - 24),
+      );
+    });
+    _card.show();
+  }
+
+  void _hideCard() {
+    if (_cardInfo == null) return;
+    _card.hide();
+    setState(() => _cardInfo = null);
+  }
+
+  /// Contexts of the round node buttons (to place the card).
+  final _nodeContexts = <String, BuildContext>{};
+
+  Widget _cardOverlay(BuildContext context) {
+    final c = _cardInfo;
+    if (c == null) return const SizedBox.shrink();
+    final color = Brand.tone(c.unit.color);
+    final lessons = c.unit.nodes.where((n) => n.type == NodeType.lesson).toList();
+    final index = max(0, lessons.indexOf(c.node));
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: GestureDetector(
+            key: const Key('lesson-card-barrier'),
+            behavior: HitTestBehavior.opaque,
+            onTap: _hideCard,
+          ),
+        ),
+        CompositedTransformFollower(
+          link: _linkOf(c.node.id),
+          showWhenUnlinked: false,
+          targetAnchor: c.above ? Alignment.topCenter : Alignment.bottomCenter,
+          followerAnchor: c.above ? Alignment.bottomCenter : Alignment.topCenter,
+          offset: Offset(c.dx, c.above ? -6 : 6),
+          child: SizedBox(
+            width: c.width,
+            child: _CardPop(
+              above: c.above,
+              child: LessonCard(
+                node: c.node,
+                state: c.state,
+                color: color,
+                position: index + 1,
+                count: lessons.length,
+                above: c.above,
+                arrowX: c.arrowX,
+                lockedMessage: c.sectionOpen
+                    ? 'Önce önceki adımları tamamla.'
+                    : 'Bu bölüm kilitli. Önceki bölümü bitir ya da "Bölüme atla" sınavını geç.',
+                onStart: () {
+                  _hideCard();
+                  _open(c.node, c.unit, c.state);
+                },
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  // ---- opening a step ----------------------------------------------------
+
+  Future<void> _open(PathNode node, Unit unit, NodeState state) async {
+    if (state == NodeState.locked) return;
+    final nav = Navigator.of(context);
+    final color = Brand.tone(unit.color);
+    switch (node.type) {
+      case NodeType.chest:
+        if (state == NodeState.done) return;
+        ref.read(progressProvider.notifier).completeNode(node.id, xp: node.rewardXp);
+        await showDialog<void>(
+          context: context,
+          builder: (_) => _ChestDialog(xp: node.rewardXp),
+        );
+      case NodeType.story:
+        await nav.push(
+          MaterialPageRoute<void>(
+            fullscreenDialog: true,
+            builder: (_) => StoryScreen(node: node, color: color),
+          ),
+        );
+      case NodeType.test:
+        LessonScreen build() => LessonScreen(
+          nodeId: node.id,
+          title: node.title,
+          items: unitTestItems(unit),
+          color: color,
+          mode: LessonMode.test,
+          rewardXp: node.rewardXp,
+          retry: build,
+        );
+        await nav.push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => build()));
+      case NodeType.lesson:
+        await nav.push(
+          MaterialPageRoute<void>(builder: (_) => LessonScreen.forNode(node, color), fullscreenDialog: true),
+        );
+    }
+  }
+
+  void _guide(Unit unit, int index, NodeState Function(PathNode) stateOf) =>
+      showUnitGuide(context, unit: unit, index: index, stateOf: stateOf);
 
   @override
   Widget build(BuildContext context) {
@@ -186,102 +375,313 @@ class _PathListState extends ConsumerState<_PathList> {
       return active.contains(n.id) ? NodeState.active : NodeState.locked;
     }
 
-    return Stack(
-      key: _viewportKey,
-      children: [
-        NotificationListener<ScrollNotification>(
-          onNotification: (_) {
-            _updateJump();
-            return false;
-          },
-          // Not lazy: every node exists, so the active one can always be found.
-          child: SingleChildScrollView(
-            controller: _scroll,
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const ReminderPromptCard(),
-                const _DailyGoalCard(),
-                const SizedBox(height: 20),
-                for (final section in course.sections) ...[
-                  if (!section.implicit) ...[
-                    SectionHeader(section: section, open: open[section.id]!),
-                    const SizedBox(height: 8),
-                    if (!_autoExpanded(section, open[section.id]!, current, p))
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextButton.icon(
-                          key: ValueKey('section-toggle-${section.id}'),
-                          icon: Icon(_expanded.contains(section.id) ? Icons.expand_less : Icons.expand_more),
-                          label: Text(
-                            _expanded.contains(section.id)
-                                ? 'Üniteleri gizle'
-                                : '${section.units.length} üniteye göz at',
-                          ),
-                          onPressed: () => setState(() {
-                            if (!_expanded.remove(section.id)) _expanded.add(section.id);
-                          }),
-                        ),
-                      ),
-                    const SizedBox(height: 8),
-                  ],
-                  if (_showUnits(section, open[section.id]!, current, p))
-                    for (final unit in section.units) ...[
-                      _UnitHeader(unit: unit, index: section.units.indexOf(unit) + 1),
+    final unitIndex = {for (final (i, u) in course.units.indexed) u.id: i};
+    final pinned = _pinnedUnit == null ? null : course.units.where((u) => u.id == _pinnedUnit).firstOrNull;
+    int numberInSection(Unit u) {
+      final s = course.sections.firstWhere((s) => s.units.contains(u), orElse: () => course.sections.first);
+      return s.units.indexOf(u) + 1;
+    }
+
+    return OverlayPortal(
+      controller: _card,
+      overlayChildBuilder: _cardOverlay,
+      child: Stack(
+        key: _viewportKey,
+        children: [
+          NotificationListener<ScrollNotification>(
+            onNotification: (n) {
+              if (n is ScrollUpdateNotification && n.dragDetails != null) _hideCard();
+              _afterScroll();
+              return false;
+            },
+            // Not lazy: every node exists, so the active one can always be found.
+            child: SingleChildScrollView(
+              controller: _scroll,
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const ReminderPromptCard(),
+                  const _DailyGoalCard(),
+                  const SizedBox(height: 20),
+                  for (final section in course.sections) ...[
+                    if (!section.implicit) ...[
+                      SectionHeader(section: section, open: open[section.id]!),
                       const SizedBox(height: 8),
-                      for (final node in unit.nodes)
-                        _NodeTile(
-                          key: node == current ? _activeKey : ValueKey(node.id),
-                          node: node,
-                          unit: unit,
-                          state: stateOf(node),
-                          sectionOpen: open[section.id]!,
-                          isLast: node == unit.nodes.last,
-                          highlight: node.id == _highlightId,
+                      if (!_autoExpanded(section, open[section.id]!, current, p))
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextButton.icon(
+                            key: ValueKey('section-toggle-${section.id}'),
+                            icon: Icon(
+                              _expanded.contains(section.id) ? Icons.expand_less : Icons.expand_more,
+                            ),
+                            label: Text(
+                              _expanded.contains(section.id)
+                                  ? 'Üniteleri gizle'
+                                  : '${section.units.length} üniteye göz at',
+                            ),
+                            onPressed: () => setState(() {
+                              if (!_expanded.remove(section.id)) _expanded.add(section.id);
+                            }),
+                          ),
                         ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 8),
                     ],
-                ],
-                if (current == null)
-                  const Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        Mascot(mood: Mood.cheer, size: 120),
-                        SizedBox(height: 8),
-                        Text(
-                          'Tüm üniteleri bitirdin! Yeni üniteler yakında.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontWeight: FontWeight.w700),
+                    if (_showUnits(section, open[section.id]!, current, p))
+                      for (final unit in section.units) ...[
+                        UnitBand(
+                          key: _bandKeyOf(unit.id),
+                          unit: unit,
+                          index: section.units.indexOf(unit) + 1,
+                          onGuide: () => _guide(unit, section.units.indexOf(unit) + 1, stateOf),
                         ),
+                        const SizedBox(height: 18),
+                        _UnitMap(
+                          unit: unit,
+                          mirror: unitIndex[unit.id]!.isOdd,
+                          stateOf: stateOf,
+                          current: current,
+                          activeKey: _activeKey,
+                          highlightId: _highlightId,
+                          linkOf: _linkOf,
+                          nodeContexts: _nodeContexts,
+                          onNode: (n, st) => _showCard(n, unit, st, open[section.id]!),
+                          onStart: (n, st) => _open(n, unit, st),
+                        ),
+                        const SizedBox(height: 24),
                       ],
+                  ],
+                  if (current == null)
+                    const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Column(
+                        children: [
+                          Mascot(mood: Mood.cheer, size: 120),
+                          SizedBox(height: 8),
+                          Text(
+                            'Tüm üniteleri bitirdin! Yeni üniteler yakında.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-              ],
-            ),
-          ),
-        ),
-        if (_jump != null)
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 16,
-            child: Center(
-              child: FloatingActionButton.extended(
-                key: const Key('back-to-current'),
-                heroTag: null,
-                onPressed: () => _focusSoon(force: true),
-                icon: Icon(
-                  _jump == AxisDirection.up ? Icons.arrow_upward_rounded : Icons.arrow_downward_rounded,
-                ),
-                label: const Text('Bulunduğun yere dön'),
+                ],
               ),
             ),
           ),
-      ],
+          // Sticky unit band: the unit being read stays on top with its guide.
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 0,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 250),
+              child: pinned == null
+                  ? const SizedBox.shrink()
+                  : ColoredBox(
+                      key: ValueKey('pinned-${pinned.id}'),
+                      color: Brand.background,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                        child: UnitBand(
+                          key: const Key('sticky-unit-band'),
+                          unit: pinned,
+                          index: numberInSection(pinned),
+                          compact: true,
+                          onGuide: () => _guide(pinned, numberInSection(pinned), stateOf),
+                        ),
+                      ),
+                    ),
+            ),
+          ),
+          if (_jump != null)
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 16,
+              child: Center(
+                child: FloatingActionButton.extended(
+                  key: const Key('back-to-current'),
+                  heroTag: null,
+                  onPressed: () => _focusSoon(force: true),
+                  icon: Icon(
+                    _jump == AxisDirection.up ? Icons.arrow_upward_rounded : Icons.arrow_downward_rounded,
+                  ),
+                  label: const Text('Bulunduğun yere dön'),
+                ),
+              ),
+            ),
+        ],
+      ),
     );
   }
+}
+
+/// Pops the lesson card in from its arrow (scale + fade, 200 ms).
+class _CardPop extends StatelessWidget {
+  const _CardPop({required this.above, required this.child});
+  final bool above;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    if (MediaQuery.disableAnimationsOf(context)) return child;
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: 1),
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeOutBack,
+      builder: (_, t, child) => Opacity(
+        opacity: t.clamp(0.0, 1.0),
+        child: Transform.scale(
+          scale: 0.85 + 0.15 * t,
+          alignment: above ? Alignment.bottomCenter : Alignment.topCenter,
+          child: child,
+        ),
+      ),
+      child: child,
+    );
+  }
+}
+
+/// The nodes of one unit, laid out in a zigzag, with Çaycı Dayı beside them.
+class _UnitMap extends StatelessWidget {
+  const _UnitMap({
+    required this.unit,
+    required this.mirror,
+    required this.stateOf,
+    required this.current,
+    required this.activeKey,
+    required this.highlightId,
+    required this.linkOf,
+    required this.nodeContexts,
+    required this.onNode,
+    required this.onStart,
+  });
+
+  final Unit unit;
+  final bool mirror;
+  final NodeState Function(PathNode) stateOf;
+  final PathNode? current;
+  final GlobalKey activeKey;
+  final String? highlightId;
+  final LayerLink Function(String) linkOf;
+  final Map<String, BuildContext> nodeContexts;
+  final void Function(PathNode, NodeState) onNode;
+  final void Function(PathNode, NodeState) onStart;
+
+  /// Width of the column holding a node and its title.
+  static const _colWidth = 150.0;
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, box) {
+      final w = box.maxWidth;
+      final swing = zigzagSwing(w);
+      final color = Brand.tone(unit.color);
+      final count = unit.nodes.length;
+      final mascotAt = mascotRow(unit);
+      final unitDone = unit.nodes.every((n) => stateOf(n) == NodeState.done);
+      return Column(
+        children: [
+          for (final (i, node) in unit.nodes.indexed)
+            Builder(
+              builder: (context) {
+                final state = stateOf(node);
+                final active = state == NodeState.active;
+                final dx = zigzag(i, count: count, mirror: mirror) * swing;
+                final left = (w / 2 + dx - _colWidth / 2).clamp(0.0, max(0.0, w - _colWidth)).toDouble();
+                final nodeHeight = pathNodeSize + pathNodeLip + (active ? 20 : 0);
+                final height = (active ? balloonRoom : 0) + nodeHeight + 40;
+                return SizedBox(
+                  key: node == current ? activeKey : ValueKey(node.id),
+                  height: height,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      if (i == mascotAt)
+                        Positioned(
+                          top: max(0, (height - 110) / 2),
+                          left: dx > 0 ? 4 : null,
+                          right: dx > 0 ? null : 4,
+                          child: PathMascot(mood: unitDone ? Mood.joy : Mood.calm),
+                        ),
+                      Positioned(
+                        left: left,
+                        width: _colWidth,
+                        top: 0,
+                        child: Column(
+                          children: [
+                            if (active)
+                              SizedBox(
+                                height: balloonRoom,
+                                child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: StartBalloon(
+                                    key: Key('start-balloon-${node.id}'),
+                                    label: nodeCta(node.type),
+                                    color: node.type == NodeType.chest ? Brand.accent : color,
+                                    onTap: () => onStart(node, state),
+                                  ),
+                                ),
+                              ),
+                            NodeHighlight(
+                              on: node.id == highlightId,
+                              color: color,
+                              child: Column(
+                                children: [
+                                  Builder(
+                                    builder: (nodeContext) {
+                                      nodeContexts[node.id] = nodeContext;
+                                      return CompositedTransformTarget(
+                                        link: linkOf(node.id),
+                                        child: PathNodeButton(
+                                          key: Key('path-node-${node.id}'),
+                                          type: node.type,
+                                          state: state,
+                                          color: color,
+                                          semanticLabel: node.title,
+                                          onTap: () => onNode(node, state),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  const SizedBox(height: 4),
+                                  GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
+                                    onTap: () => onNode(node, state),
+                                    child: Text(
+                                      node.title,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: active ? FontWeight.w800 : FontWeight.w600,
+                                        color: switch (state) {
+                                          NodeState.active => color,
+                                          NodeState.done => Brand.ink,
+                                          NodeState.locked => Brand.muted,
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+        ],
+      );
+    },
+  );
 }
 
 /// A soft glow around the node the user has just reached.
@@ -295,7 +695,7 @@ class NodeHighlight extends StatelessWidget {
   Widget build(BuildContext context) => AnimatedContainer(
     duration: const Duration(milliseconds: 400),
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(Radii.md + 2),
+      borderRadius: BorderRadius.circular(Radii.xl),
       boxShadow: [if (on) BoxShadow(color: color.withValues(alpha: 0.55), blurRadius: 18, spreadRadius: 2)],
     ),
     child: child,
@@ -339,236 +739,6 @@ class _DailyGoalCard extends ConsumerWidget {
   }
 }
 
-class _UnitHeader extends StatelessWidget {
-  const _UnitHeader({required this.unit, required this.index});
-  final Unit unit;
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(18),
-      decoration: context.lingora.hero(unit.color),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'ÜNİTE $index',
-            style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.8),
-              fontWeight: FontWeight.w800,
-              letterSpacing: 1.2,
-              fontSize: 12,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            unit.title,
-            style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
-          ),
-          const SizedBox(height: 2),
-          Text(unit.description, style: TextStyle(color: Colors.white.withValues(alpha: 0.9))),
-        ],
-      ),
-    );
-  }
-}
-
-/// One stop on the vertical timeline: a status dot on the line plus a card.
-class _NodeTile extends ConsumerWidget {
-  const _NodeTile({
-    super.key,
-    required this.node,
-    required this.unit,
-    required this.state,
-    required this.isLast,
-    this.sectionOpen = true,
-    this.highlight = false,
-  });
-
-  final PathNode node;
-  final Unit unit;
-  final NodeState state;
-  final bool isLast;
-
-  /// False while the node's section is still locked.
-  final bool sectionOpen;
-
-  /// Just reached after a lesson: glows for a moment.
-  final bool highlight;
-
-  Color get color => Brand.tone(unit.color);
-
-  Future<void> _open(BuildContext context, WidgetRef ref) async {
-    if (state == NodeState.locked) {
-      ScaffoldMessenger.of(context)
-        ..hideCurrentSnackBar()
-        ..showSnackBar(
-          SnackBar(
-            content: Text(
-              sectionOpen
-                  ? 'Önce önceki adımları tamamla.'
-                  : 'Bu bölüm kilitli. Önceki bölümü bitir ya da "Bölüme atla" sınavını geç.',
-            ),
-          ),
-        );
-      return;
-    }
-    final nav = Navigator.of(context);
-    switch (node.type) {
-      case NodeType.chest:
-        if (state == NodeState.done) return;
-        ref.read(progressProvider.notifier).completeNode(node.id, xp: node.rewardXp);
-        await showDialog<void>(
-          context: context,
-          builder: (_) => _ChestDialog(xp: node.rewardXp),
-        );
-      case NodeType.story:
-        await nav.push(
-          MaterialPageRoute<void>(
-            fullscreenDialog: true,
-            builder: (_) => StoryScreen(node: node, color: color),
-          ),
-        );
-      case NodeType.test:
-        LessonScreen build() => LessonScreen(
-          nodeId: node.id,
-          title: node.title,
-          items: unitTestItems(unit),
-          color: color,
-          mode: LessonMode.test,
-          rewardXp: node.rewardXp,
-          retry: build,
-        );
-        await nav.push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => build()));
-      case NodeType.lesson:
-        await nav.push(
-          MaterialPageRoute<void>(builder: (_) => LessonScreen.forNode(node, color), fullscreenDialog: true),
-        );
-    }
-  }
-
-  IconData get _typeIcon => switch (node.type) {
-    NodeType.chest => Icons.card_giftcard_rounded,
-    NodeType.story => Icons.auto_stories_rounded,
-    NodeType.test => Icons.workspace_premium_rounded,
-    NodeType.lesson => Icons.star_rounded,
-  };
-
-  String get _cta => switch (node.type) {
-    NodeType.chest => 'AÇ',
-    NodeType.story => 'OKU',
-    NodeType.test => 'SINAV',
-    NodeType.lesson => 'BAŞLA',
-  };
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isChest = node.type == NodeType.chest;
-    final active = state == NodeState.active;
-    final (Color dotColor, IconData icon) = switch (state) {
-      NodeState.done => (Brand.success, Icons.check_rounded),
-      NodeState.active => (color, _typeIcon),
-      NodeState.locked => (Brand.line, node.type == NodeType.lesson ? Icons.lock_rounded : _typeIcon),
-    };
-
-    final dot = Container(
-      width: 46,
-      height: 46,
-      decoration: BoxDecoration(
-        color: dotColor,
-        shape: BoxShape.circle,
-        boxShadow: [
-          if (Brand.isKid)
-            BoxShadow(
-              color: state == NodeState.locked ? Brand.palette.edge : edgeOf(dotColor),
-              offset: const Offset(0, 4),
-            ),
-          if (active && Brand.isKid)
-            BoxShadow(color: color.withValues(alpha: 0.35), blurRadius: 14, spreadRadius: 3),
-        ],
-      ),
-      child: Icon(icon, color: state == NodeState.locked ? Brand.muted : onColor(dotColor)),
-    );
-
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SizedBox(
-            width: 56,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Pulse(enabled: active, amount: 0.08, child: dot),
-                ),
-                if (!isLast)
-                  Expanded(
-                    child: Container(
-                      width: 4,
-                      margin: const EdgeInsets.only(top: 4),
-                      color: state == NodeState.done ? Brand.success : Brand.line,
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Opacity(
-                opacity: state == NodeState.locked ? 0.55 : 1,
-                child: NodeHighlight(
-                  on: highlight,
-                  color: color,
-                  child: TapCard(
-                    selected: active,
-                    color: color,
-                    onTap: () => _open(context, ref),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(node.title, style: Theme.of(context).textTheme.titleMedium),
-                              const SizedBox(height: 2),
-                              Text(node.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
-                            ],
-                          ),
-                        ),
-                        if (active)
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                            decoration: BoxDecoration(
-                              color: color,
-                              borderRadius: BorderRadius.circular(12),
-                              boxShadow: [
-                                if (Brand.isKid) BoxShadow(color: edgeOf(color), offset: const Offset(0, 3)),
-                              ],
-                            ),
-                            child: Text(
-                              Brand.isKid ? _cta : sentenceCase(_cta),
-                              style: TextStyle(color: onColor(color), fontWeight: FontWeight.w900),
-                            ),
-                          )
-                        else if (state == NodeState.done && !isChest)
-                          Icon(Icons.replay_rounded, color: Brand.muted),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 /// Chest wobbles, bursts open and reveals the XP with confetti.
 class _ChestDialog extends StatefulWidget {
   const _ChestDialog({required this.xp});
@@ -579,12 +749,20 @@ class _ChestDialog extends StatefulWidget {
 }
 
 class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderStateMixin {
-  late final _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 1300))..forward();
+  late final _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 1300));
 
   @override
   void initState() {
     super.initState();
-    Haptics.success();
+    SessionFx.celebrate();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_c.status == AnimationStatus.dismissed) {
+      MediaQuery.disableAnimationsOf(context) ? _c.value = 1 : _c.forward();
+    }
   }
 
   @override

@@ -47,6 +47,26 @@ class AppearanceSettings extends ConsumerWidget {
             selected: {s.theme},
             onSelectionChanged: (v) => n.setTheme(v.first),
           ),
+          const SizedBox(height: 8),
+          SwitchListTile(
+            key: const ValueKey('sound-switch'),
+            contentPadding: EdgeInsets.zero,
+            title: Text('Ses efektleri', style: t.titleMedium),
+            subtitle: Text('Doğru cevapta ve kutlamalarda kısa bir tık sesi.', style: t.bodySmall),
+            value: s.sound,
+            onChanged: n.setSound,
+          ),
+          SwitchListTile(
+            key: const ValueKey('reduce-motion-switch'),
+            contentPadding: EdgeInsets.zero,
+            title: Text('Animasyonları azalt', style: t.titleMedium),
+            subtitle: Text(
+              'Zıplama, konfeti ve geçiş animasyonları kapanır. Telefonun ayarı da dikkate alınır.',
+              style: t.bodySmall,
+            ),
+            value: s.reduceMotion,
+            onChanged: n.setReduceMotion,
+          ),
         ],
       ),
     );

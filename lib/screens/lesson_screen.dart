@@ -19,8 +19,8 @@ import '../models/course.dart';
 import '../services/growth/analytics.dart';
 import '../services/growth/paywall_trigger.dart';
 import '../theme.dart';
-import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../ui/session.dart';
 import '../ui/why_wrong.dart';
 import '../nav/flow.dart';
 import 'lesson_result_screen.dart';
@@ -153,10 +153,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       }
     });
     if (correct) {
-      Haptics.success();
+      SessionFx.correct();
       if (widget.mode == LessonMode.practice) notifier.clearMistake(_current.key);
     } else {
-      Haptics.error();
+      SessionFx.wrong();
       notifier.addMistake(_current.key);
     }
   }
@@ -232,9 +232,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final autoPaywall =
         widget.mode == LessonMode.lesson && ref.read(paywallTriggerProvider).takeAfterLesson();
     final duration = DateTime.now().difference(_started);
-    final streakScreen = reward.streakExtended;
     final takeBreak = ref.read(breakTrackerProvider).recordLesson(duration);
-    // Result, then streak, then (after a run of lessons) a break reminder,
+    // Result, then streak, then daily goal and quests, then (after a run of lessons) a break reminder,
     // then (sometimes) a closable paywall; the last
     // "Devam" goes straight back to the path.
     showEndSequence(nav, [
@@ -244,7 +243,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         duration: duration,
         perfect: perfect,
         bestCombo: _bestCombo,
-        showStreak: !streakScreen,
+        showStreak: !reward.streakExtended,
+        showQuests: !hasQuestStep(reward),
         onContinue: next,
         headline: switch (widget.mode) {
           LessonMode.test => widget.passHeadline ?? 'Ünite sınavını geçtin!',
@@ -252,7 +252,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
           LessonMode.lesson => null,
         },
       ),
-      if (streakScreen) (next) => StreakCelebrationScreen(streak: reward.streak, onContinue: next),
+      ...celebrationSteps(reward),
       if (takeBreak) (next) => BreakReminderScreen(onContinue: next),
       if (autoPaywall) (_) => const PaywallScreen(placement: PaywallPlacement.afterLessons),
     ]);
@@ -305,57 +305,17 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       LessonMode.test => Icon(Icons.workspace_premium_rounded, color: Brand.accent, size: 28),
       LessonMode.practice => Icon(Icons.fitness_center_rounded, color: Brand.primary, size: 26),
     };
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(4, 8, 16, 0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              IconButton(
-                icon: Icon(Icons.close, color: Brand.muted),
-                onPressed: _confirmQuit,
-              ),
-              Expanded(
-                child: GlossyProgress(value: _solved / _total, color: widget.color),
-              ),
-              const SizedBox(width: 14),
-              badge,
-            ],
-          ),
-          SizedBox(
-            height: 26,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 300),
-              child: _combo >= 3
-                  ? PopIn(
-                      key: ValueKey(_combo),
-                      child: Text(
-                        '${kidEmoji('🔥')}$_combo DOĞRU ÜST ÜSTE',
-                        style: TextStyle(
-                          color: Brand.streak,
-                          fontWeight: FontWeight.w900,
-                          fontSize: 13,
-                          letterSpacing: 0.8,
-                        ),
-                      ),
-                    )
-                  : (widget.mode != LessonMode.lesson
-                        ? Text(
-                            widget.mode == LessonMode.test
-                                ? (widget.badge ?? 'ÜNİTE SINAVI')
-                                : 'HATALARINI ÇALIŞ',
-                            style: TextStyle(
-                              color: Brand.muted,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 12,
-                              letterSpacing: 1,
-                            ),
-                          )
-                        : const SizedBox.shrink()),
-            ),
-          ),
-        ],
-      ),
+    return SessionHeader(
+      progress: _solved / _total,
+      color: widget.color,
+      combo: _combo,
+      onClose: _confirmQuit,
+      trailing: badge,
+      caption: switch (widget.mode) {
+        LessonMode.lesson => null,
+        LessonMode.test => widget.badge ?? 'ÜNİTE SINAVI',
+        LessonMode.practice => 'HATALARINI ÇALIŞ',
+      },
     );
   }
 
@@ -373,17 +333,16 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
               _header(),
               Expanded(
                 child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 320),
-                  switchInCurve: Curves.easeOutCubic,
-                  switchOutCurve: Curves.easeInCubic,
+                  duration: MediaQuery.disableAnimationsOf(context)
+                      ? Duration.zero
+                      : const Duration(milliseconds: 500),
+                  switchInCurve: Curves.fastOutSlowIn,
+                  switchOutCurve: Curves.fastOutSlowIn,
                   layoutBuilder: (current, previous) =>
                       Stack(alignment: Alignment.topCenter, children: [...previous, ?current]),
                   transitionBuilder: (child, anim) {
                     final incoming = child.key == ValueKey(_pos);
-                    final slide = Tween(
-                      begin: Offset(incoming ? 0.25 : -0.25, 0),
-                      end: Offset.zero,
-                    ).animate(anim);
+                    final slide = Tween(begin: Offset(incoming ? 1 : -1, 0), end: Offset.zero).animate(anim);
                     return FadeTransition(
                       opacity: anim,
                       child: SlideTransition(position: slide, child: child),
@@ -397,112 +356,26 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                 ),
               ),
               AnimatedSwitcher(
-                duration: const Duration(milliseconds: 260),
-                switchInCurve: Curves.easeOutCubic,
-                transitionBuilder: (child, anim) => SlideTransition(
-                  position: Tween(begin: const Offset(0, 1), end: Offset.zero).animate(anim),
-                  child: child,
-                ),
+                duration: const Duration(milliseconds: 160),
+                transitionBuilder: (child, anim) => FadeTransition(opacity: anim, child: child),
                 child: _lastCorrect == null
-                    ? _CheckBar(key: const ValueKey('check'), enabled: _grader != null, onCheck: _check)
-                    : _FeedbackPanel(
+                    ? CheckBar(key: const ValueKey('check'), onCheck: _grader != null ? _check : null)
+                    : AnswerFeedbackPanel(
                         key: ValueKey('fb$_answered'),
                         correct: _lastCorrect!,
-                        answer: _current.ex.displayAnswer,
-                        why: _why,
-                        praise: _combo >= 3 ? '$_combo doğru üst üste!' : _praise[_answered % _praise.length],
+                        title: _lastCorrect!
+                            ? (_combo >= comboThreshold
+                                  ? '$_combo doğru üst üste!'
+                                  : _praise[_answered % _praise.length])
+                            : 'Doğru cevap:',
+                        answer: _lastCorrect! ? null : _current.ex.displayAnswer,
+                        detail: _lastCorrect! ? null : _why,
                         onContinue: _continue,
                       ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _CheckBar extends StatelessWidget {
-  const _CheckBar({super.key, required this.enabled, required this.onCheck});
-  final bool enabled;
-  final VoidCallback onCheck;
-
-  @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
-    decoration: BoxDecoration(
-      color: Brand.background,
-      border: Border(top: BorderSide(color: Brand.line, width: 1)),
-    ),
-    child: PressableButton(label: 'KONTROL ET', color: Brand.success, onPressed: enabled ? onCheck : null),
-  );
-}
-
-class _FeedbackPanel extends StatelessWidget {
-  const _FeedbackPanel({
-    super.key,
-    required this.correct,
-    required this.answer,
-    required this.praise,
-    this.why,
-    required this.onContinue,
-  });
-
-  final bool correct;
-  final String answer;
-  final String praise;
-  final WhyWrongSection? why;
-  final VoidCallback onContinue;
-
-  @override
-  Widget build(BuildContext context) {
-    final ok = correct;
-    final fg = ok ? Brand.success : Brand.error;
-    return Container(
-      width: double.infinity,
-      color: ok ? Brand.successBg : Brand.errorBg,
-      padding: const EdgeInsets.fromLTRB(20, 14, 20, 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              PopIn(child: Icon(ok ? Icons.check_circle_rounded : Icons.cancel_rounded, color: fg, size: 30)),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      ok ? praise : 'Doğru cevap:',
-                      style: TextStyle(color: fg, fontSize: 20, fontWeight: FontWeight.w900),
-                    ),
-                    if (!ok && answer.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 4),
-                        child: Text(
-                          answer,
-                          style: TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-              Mascot(mood: ok ? Mood.happy : Mood.sad, size: 64),
-            ],
-          ),
-          if (!ok && why != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 200),
-                child: SingleChildScrollView(child: why),
-              ),
-            ),
-          const SizedBox(height: 10),
-          PressableButton(label: 'DEVAM', color: fg, onPressed: onContinue),
-        ],
       ),
     );
   }

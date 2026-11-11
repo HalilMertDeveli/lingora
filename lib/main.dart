@@ -16,6 +16,7 @@ import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
 import 'services/growth/growth.dart';
 import 'theme.dart';
+import 'ui/motion.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,12 +59,18 @@ class LingoraApp extends ConsumerWidget {
     final palette = Palette.of(settings.mode, brightness);
     // Set before building so the first frame already uses the right colours.
     Brand.apply(palette);
+    SessionFx.sound = settings.sound;
     ref.listen(examPackControllerProvider, (_, _) {});
     return MaterialApp(
       title: 'Dilbaz',
       debugShowCheckedModeBanner: false,
       theme: buildTheme(mode: settings.mode, brightness: brightness),
-      builder: (_, child) => PaletteScope(palette: palette, child: child!),
+      builder: (context, child) => PaletteScope(
+        palette: palette,
+        child: settings.reduceMotion
+            ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
+            : child!,
+      ),
       home: ConsentGate(child: onboarded ? const HomeScreen() : const OnboardingScreen()),
     );
   }

@@ -10,6 +10,7 @@ import '../nav/tab_navigator.dart';
 import '../nav/top_bar.dart';
 import '../org/org_widgets.dart';
 import '../services/notifications.dart';
+import '../ui/transitions.dart';
 import 'exam_screen.dart';
 import 'league_screen.dart';
 import 'notes_screen.dart';
@@ -181,11 +182,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               if (_opened.contains(tab))
                 TickerMode(
                   enabled: i == _index,
-                  child: TabScope(
-                    reselected: _reselectOf(tab),
-                    child: TabNavigator(
-                      key: _keyOf(tab),
-                      root: (_) => Scaffold(appBar: const LingoraTopBar(), body: _root(tab)),
+                  child: FadeThroughIn(
+                    active: i == _index,
+                    child: TabScope(
+                      reselected: _reselectOf(tab),
+                      child: TabNavigator(
+                        key: _keyOf(tab),
+                        root: (_) => Scaffold(appBar: const LingoraTopBar(), body: _root(tab)),
+                      ),
                     ),
                   ),
                 )
