@@ -1,4 +1,4 @@
-/// Lingora's analytics event taxonomy (documented in docs/analitik.md).
+/// Dilbaz's analytics event taxonomy (documented in docs/analitik.md).
 ///
 /// Every event is built here, so names and parameters stay consistent and
 /// nothing personal can slip in: parameters are short enums, content ids

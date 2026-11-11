@@ -1,6 +1,6 @@
 # Firebase (istemci)
 
-Lingora Firebase olmadan da tamamen çalışır. Firebase yalnızca derleme sırasında
+Dilbaz Firebase olmadan da tamamen çalışır. Firebase yalnızca derleme sırasında
 `--dart-define=LINGORA_FIREBASE=...` verilirse açılır:
 
 | Değer | Ne olur |

@@ -15,7 +15,7 @@ Genel:
 | Kişisel bilgiler > Kullanıcı kimlikleri | Evet | Hayır | İsteğe bağlı (hesap) | Uygulama işlevselliği, hesap yönetimi, sahtekârlığı önleme (davet) |
 | Finansal bilgiler > Satın alma geçmişi | Evet | Hayır | İsteğe bağlı | Uygulama işlevselliği (Premium) |
 | Mesajlar > Diğer uygulama içi mesajlar | Evet (yapay zekâ sohbeti) | Evet (Anthropic, hizmet sağlayıcı)* | İsteğe bağlı | Uygulama işlevselliği |
-| Ses > Ses kayıtları | Hayır (cihazın konuşma tanıma hizmeti işler, Lingora almaz) | – | – | – |
+| Ses > Ses kayıtları | Hayır (cihazın konuşma tanıma hizmeti işler, Dilbaz almaz) | – | – | – |
 | Uygulama etkinliği > Uygulama etkileşimleri | Evet (izinle) | Hayır | İsteğe bağlı | Analiz |
 | Uygulama bilgileri ve performansı > Kilitlenme günlükleri | Hayır (Crashlytics yok) | – | – | – |
 | Cihaz veya diğer kimlikler | Evet (Firebase kurulum/analiz kimliği, rastgele kurulum kimliği özeti) | Hayır | Analiz isteğe bağlı | Analiz, sahtekârlığı önleme, uygulama işlevselliği |

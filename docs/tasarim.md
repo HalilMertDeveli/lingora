@@ -1,6 +1,6 @@
-# Lingora tasarım sistemi
+# Dilbaz tasarım sistemi
 
-Lingora'nın **varsayılan görünümü yetişkin** (sade, sakin, üniversite öğrencisi ve çalışanlar için).
+Dilbaz'ın **varsayılan görünümü yetişkin** (sade, sakin, üniversite öğrencisi ve çalışanlar için).
 **Çocuk modu** isteğe bağlıdır ve eski oyunsu görünümü (Lino maskotu, emoji, konfeti, zıplayan
 animasyonlar) geri getirir. Her iki mod da **açık** ve **koyu** temada çalışır.
 

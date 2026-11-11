@@ -189,7 +189,7 @@ class _Welcome extends StatelessWidget {
       children: [
         const LingoraLogo(size: 112),
         const SizedBox(height: 28),
-        Text('Lingora', style: t.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
+        Text('Dilbaz', style: t.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
         const SizedBox(height: 10),
         Text(
           'Her gün birkaç dakika,\nadım adım yeni bir dil.',

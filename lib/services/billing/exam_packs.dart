@@ -194,7 +194,7 @@ class ExamPackController extends Notifier<ExamPackState> {
         _fail(
           pack,
           e.code == 'already-exists'
-              ? 'Bu paket başka bir Lingora hesabına bağlı.'
+              ? 'Bu paket başka bir Dilbaz hesabına bağlı.'
               : 'Satın alma doğrulanamadı. Ücret alındıysa "Satın alımları geri yükle"yi dene.',
         );
         return;

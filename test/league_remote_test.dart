@@ -65,8 +65,8 @@ const rows = [
 void main() {
   test('leagueDisplayName shows only the first name', () {
     expect(leagueDisplayName('Mert Develi'), 'Mert');
-    expect(leagueDisplayName('  '), 'Lingora öğrencisi');
-    expect(leagueDisplayName(null), 'Lingora öğrencisi');
+    expect(leagueDisplayName('  '), 'Dilbaz öğrencisi');
+    expect(leagueDisplayName(null), 'Dilbaz öğrencisi');
   });
 
   test('no Firebase means no remote league', () async {
@@ -117,8 +117,8 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Burak'), findsOneWidget);
     expect(find.text('Altın Ligi'), findsOneWidget);
-    await tester.scrollUntilVisible(find.textContaining('gerçek Lingora'), 200);
-    expect(find.textContaining('gerçek Lingora'), findsOneWidget);
+    await tester.scrollUntilVisible(find.textContaining('gerçek Dilbaz'), 200);
+    expect(find.textContaining('gerçek Dilbaz'), findsOneWidget);
   });
 
   testWidgets('league screen stays simulated without Firebase', (tester) async {

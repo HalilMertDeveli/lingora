@@ -72,7 +72,7 @@ class LeagueScreen extends ConsumerWidget {
         const SizedBox(height: 16),
         Text(
           remote != null
-              ? 'Bu hafta gerçek Lingora kullanıcılarıyla yarışıyorsun.'
+              ? 'Bu hafta gerçek Dilbaz kullanıcılarıyla yarışıyorsun.'
               : 'Çevrimdışı mod: rakipler bu cihazda simüle edilir.',
           textAlign: TextAlign.center,
           style: TextStyle(color: Brand.muted, fontSize: 12),

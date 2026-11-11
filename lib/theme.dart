@@ -135,7 +135,7 @@ class Palette {
     edge: Color(0xFF0A0B0F),
   );
 
-  /// Playful look (Çocuk modu): the original Lingora colours.
+  /// Playful look (Çocuk modu): the original Dilbaz colours.
   static const kidLight = Palette(
     kid: true,
     brightness: Brightness.light,

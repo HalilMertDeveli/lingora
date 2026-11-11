@@ -37,7 +37,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
 
   Future<void> _share(InviteInfo info) async {
     logEvent(ref, AnalyticsEvent.inviteShare());
-    await SharePlus.instance.share(ShareParams(text: inviteShareText(info), subject: 'Lingora daveti'));
+    await SharePlus.instance.share(ShareParams(text: inviteShareText(info), subject: 'Dilbaz daveti'));
   }
 
   Future<void> _redeem(ReferralService service) async {
@@ -78,7 +78,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
             Text('Birlikte öğrenin, ikiniz de kazanın', style: t.titleLarge, textAlign: TextAlign.center),
             const SizedBox(height: 6),
             Text(
-              'Arkadaşın Lingora\'ya katılıp kodunu girdiğinde ikiniz de 7 gün Premium kazanırsınız. '
+              'Arkadaşın Dilbaz\'a katılıp kodunu girdiğinde ikiniz de 7 gün Premium kazanırsınız. '
               'Ödeme bilgisi istenmez, süre bitince kendiliğinden ücretsiz sürüme dönülür.',
               style: TextStyle(color: Brand.muted, height: 1.35),
               textAlign: TextAlign.center,
@@ -88,7 +88,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
               const _Box(
                 icon: Icons.cloud_off_rounded,
                 text:
-                    'Davet programı için internet bağlantısı ve bir Lingora hesabı gerekir. '
+                    'Davet programı için internet bağlantısı ve bir Dilbaz hesabı gerekir. '
                     'Profil > Hesap bölümünden hesabını bağlayıp tekrar dene.',
               )
             else ...[

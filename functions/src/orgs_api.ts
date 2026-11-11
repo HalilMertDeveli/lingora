@@ -1,4 +1,4 @@
-// Callable wrappers for Lingora Kurumsal (logic and data model: orgs.ts).
+// Callable wrappers for Dilbaz Kurumsal (logic and data model: orgs.ts).
 import { Firestore, getFirestore } from "firebase-admin/firestore";
 import { CallableRequest, HttpsError, onCall } from "firebase-functions/v2/https";
 
@@ -14,7 +14,7 @@ function callable<T>(handler: Handler<T>) {
   });
 }
 
-// Lingora staff (custom claim isLingoraAdmin or config/lingoraAdmins).
+// Dilbaz staff (custom claim isLingoraAdmin or config/lingoraAdmins).
 export const orgCreate = callable(orgs.createOrg);
 export const orgUpdate = callable(orgs.updateOrg);
 // Panel.

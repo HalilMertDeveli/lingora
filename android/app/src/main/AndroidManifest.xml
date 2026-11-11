@@ -5,7 +5,7 @@
     <!-- Reminders: re-schedule after reboot. Inexact alarms, so no exact-alarm permission. -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <application
-        android:label="Lingora"
+        android:label="Dilbaz"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -60,7 +60,7 @@ class LingoraApp extends ConsumerWidget {
     Brand.apply(palette);
     ref.listen(examPackControllerProvider, (_, _) {});
     return MaterialApp(
-      title: 'Lingora',
+      title: 'Dilbaz',
       debugShowCheckedModeBanner: false,
       theme: buildTheme(mode: settings.mode, brightness: brightness),
       builder: (_, child) => PaletteScope(palette: palette, child: child!),

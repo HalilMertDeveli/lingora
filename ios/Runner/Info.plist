@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Lingora</string>
+	<string>Dilbaz</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Konuşma alıştırmalarında telaffuzunu dinlemek için mikrofon kullanılır.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
@@ -19,7 +19,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>lingora</string>
+	<string>Dilbaz</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

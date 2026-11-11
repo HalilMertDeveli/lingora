@@ -24,7 +24,7 @@ beforeEach(clearFirestore);
 
 test("parseJoinInput cleans names and validates tier", () => {
   assert.deepEqual(parseJoinInput({ name: "  Ayşe\n K. ", tier: 2 }), { name: "Ayşe K.", avatar: "⭐", tier: 2 });
-  assert.equal(parseJoinInput({}).name, "Lingora öğrencisi");
+  assert.equal(parseJoinInput({}).name, "Dilbaz öğrencisi");
   assert.equal(parseJoinInput({ name: "x".repeat(50) }).name.length, 24);
   assert.throws(() => parseJoinInput({ tier: 5 }));
   assert.throws(() => parseJoinInput({ tier: 1.5 }));

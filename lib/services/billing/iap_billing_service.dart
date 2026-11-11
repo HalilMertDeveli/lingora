@@ -17,7 +17,7 @@ class IapBillingService implements BillingService {
   Future<List<StoreProduct>> loadProducts(Set<String> ids) async {
     final res = await _iap.queryProductDetails(ids);
     if (res.error != null) throw BillingException('Ürünler yüklenemedi: ${res.error!.message}');
-    // Google Play returns one entry per base plan/offer. Lingora shows the
+    // Google Play returns one entry per base plan/offer. Dilbaz shows the
     // base plan's price and, when Play offers this user a free-trial offer
     // (only eligible users get one), buys through that offer.
     final byId = <String, List<ProductDetails>>{};

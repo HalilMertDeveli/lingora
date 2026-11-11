@@ -297,7 +297,7 @@ class PremiumController extends Notifier<PremiumState> {
           busy: false,
           pending: false,
           error: () => e.code == 'already-exists'
-              ? 'Bu abonelik başka bir Lingora hesabına bağlı.'
+              ? 'Bu abonelik başka bir Dilbaz hesabına bağlı.'
               : 'Satın alma doğrulanamadı. Ücret alındıysa "Satın alımları geri yükle"yi dene.',
         );
         return;

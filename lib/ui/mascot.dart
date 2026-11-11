@@ -8,7 +8,7 @@ import 'motion.dart';
 /// Lino's mood decides its face and how it moves.
 enum Mood { idle, happy, cheer, sad, think }
 
-/// Lingora's guide. Kid mode shows Lino, the animated mascot; adult mode
+/// Dilbaz's guide. Kid mode shows Lino, the animated mascot; adult mode
 /// shows a small, calm status badge instead (or nothing when [decorative]), so every screen adapts without changes.
 class Mascot extends StatelessWidget {
   const Mascot({super.key, this.mood = Mood.idle, this.size = 120, this.decorative = false});
@@ -57,7 +57,7 @@ class MoodBadge extends StatelessWidget {
   }
 }
 
-/// Lino: Lingora's own mascot, a round purple "speech bubble" creature with a
+/// Lino: Dilbaz's own mascot, a round purple "speech bubble" creature with a
 /// leaf sprout. Drawn entirely in code so there are no image assets.
 class Lino extends StatefulWidget {
   const Lino({super.key, this.mood = Mood.idle, this.size = 120});

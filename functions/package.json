@@ -1,7 +1,7 @@
 {
   "name": "lingora-functions",
   "private": true,
-  "description": "Lingora Cloud Functions: leagues, AI conversation proxy, purchases.",
+  "description": "Dilbaz Cloud Functions: leagues, AI conversation proxy, purchases.",
   "main": "lib/src/index.js",
   "engines": {
     "node": "22"

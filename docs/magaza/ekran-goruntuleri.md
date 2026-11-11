@@ -28,7 +28,7 @@ Notlar:
   (ücretsiz + Türklere özel) ilk ikide olmalı.
 - Premium özelliği gösteren görselde "Premium" etiketi açıkça yazılır (yanıltıcı
   olmasın).
-- **Öne çıkan grafik** (1024×500): logo + "Lingora: İngilizce Öğren" + "Günde 5
+- **Öne çıkan grafik** (1024×500): logo + "Dilbaz: İngilizce Öğren" + "Günde 5
   dakika. Can sistemi yok." ve maskot.
 - **Uygulama simgesi** 512×512, mevcut "L" logosu.
 - İsteğe bağlı tanıtım videosu (30 sn): ders → hata açıklaması → seri → sınav pratiği.

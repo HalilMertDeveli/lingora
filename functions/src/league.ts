@@ -18,7 +18,7 @@ export const MIN_XP_INTERVAL_MS = 3000;
 
 const MAX_NAME = 24;
 const MAX_AVATAR = 8;
-const DEFAULT_NAME = "Lingora öğrencisi";
+const DEFAULT_NAME = "Dilbaz öğrencisi";
 const DEFAULT_AVATAR = "⭐";
 
 export interface LeagueResult {
