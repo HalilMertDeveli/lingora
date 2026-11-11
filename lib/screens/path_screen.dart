@@ -155,6 +155,20 @@ class _PathListState extends ConsumerState<_PathList> {
     if (next != _jump) setState(() => _jump = next);
   }
 
+  /// Sections the learner opened by hand ("üniteye göz at").
+  final _expanded = <String>{};
+
+  /// Sections shown unfolded without asking: the one with the current node,
+  /// and open sections still in progress. Locked and finished sections start
+  /// folded, so the path does not build hundreds of tiles up front.
+  bool _autoExpanded(Section s, bool open, PathNode? current, Progress p) =>
+      s.implicit ||
+      (current != null && s.units.any((u) => u.nodes.contains(current))) ||
+      (open && sectionProgress(s, p) < 1);
+
+  bool _showUnits(Section s, bool open, PathNode? current, Progress p) =>
+      _autoExpanded(s, open, current, p) || _expanded.contains(s.id);
+
   @override
   Widget build(BuildContext context) {
     final course = widget.course;
@@ -193,23 +207,41 @@ class _PathListState extends ConsumerState<_PathList> {
                 for (final section in course.sections) ...[
                   if (!section.implicit) ...[
                     SectionHeader(section: section, open: open[section.id]!),
-                    const SizedBox(height: 16),
-                  ],
-                  for (final unit in section.units) ...[
-                    _UnitHeader(unit: unit, index: section.units.indexOf(unit) + 1),
                     const SizedBox(height: 8),
-                    for (final node in unit.nodes)
-                      _NodeTile(
-                        key: node == current ? _activeKey : ValueKey(node.id),
-                        node: node,
-                        unit: unit,
-                        state: stateOf(node),
-                        sectionOpen: open[section.id]!,
-                        isLast: node == unit.nodes.last,
-                        highlight: node.id == _highlightId,
+                    if (!_autoExpanded(section, open[section.id]!, current, p))
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton.icon(
+                          key: ValueKey('section-toggle-${section.id}'),
+                          icon: Icon(_expanded.contains(section.id) ? Icons.expand_less : Icons.expand_more),
+                          label: Text(
+                            _expanded.contains(section.id)
+                                ? 'Üniteleri gizle'
+                                : '${section.units.length} üniteye göz at',
+                          ),
+                          onPressed: () => setState(() {
+                            if (!_expanded.remove(section.id)) _expanded.add(section.id);
+                          }),
+                        ),
                       ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 8),
                   ],
+                  if (_showUnits(section, open[section.id]!, current, p))
+                    for (final unit in section.units) ...[
+                      _UnitHeader(unit: unit, index: section.units.indexOf(unit) + 1),
+                      const SizedBox(height: 8),
+                      for (final node in unit.nodes)
+                        _NodeTile(
+                          key: node == current ? _activeKey : ValueKey(node.id),
+                          node: node,
+                          unit: unit,
+                          state: stateOf(node),
+                          sectionOpen: open[section.id]!,
+                          isLast: node == unit.nodes.last,
+                          highlight: node.id == _highlightId,
+                        ),
+                      const SizedBox(height: 20),
+                    ],
                 ],
                 if (current == null)
                   const Padding(
