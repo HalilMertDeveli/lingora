@@ -8,10 +8,10 @@ iddialar, emoji yığını ve fiyat bilgisi kullanılmaz (Play politikası).
 ## Uygulama adı (≤ 30)
 
 ```
-Lingora: İngilizce Öğren
+Dilbaz: İngilizce Öğren
 ```
 
-(24 karakter.) Yedek: `Lingora - İngilizce Dersleri` (28).
+(24 karakter.) Yedek: `Dilbaz - İngilizce Dersleri` (28).
 
 ## Kısa açıklama (≤ 80)
 
@@ -24,7 +24,7 @@ Günde 5 dakikada İngilizce. Can sistemi yok, temel öğrenme her zaman ücrets
 ## Uzun açıklama (≤ 4000)
 
 ```
-Lingora, Türkçe konuşanlar için hazırlanmış kısa ve eğlenceli İngilizce dersleri sunar. Her gün birkaç dakika ayır, adım adım ilerle. Hata yapmak öğrenmenin parçası: can sistemi yok, ceza yok, reklam yok.
+Dilbaz, Türkçe konuşanlar için hazırlanmış kısa ve eğlenceli İngilizce dersleri sunar. Her gün birkaç dakika ayır, adım adım ilerle. Hata yapmak öğrenmenin parçası: can sistemi yok, ceza yok, reklam yok.
 
 NEDEN LINGORA?
 • Türkçe konuşanlara özel: Türklerin en sık yaptığı hataları (the/a, -s takısı, zamanlar, kelime sırası) yakalayan hata dedektörü, her yanlışta "Neden yanlış?" açıklaması.

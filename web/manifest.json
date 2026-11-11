@@ -1,11 +1,11 @@
 {
-    "name": "Lingora",
-    "short_name": "Lingora",
+    "name": "Dilbaz",
+    "short_name": "Dilbaz",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Lingora kurumsal yönetim paneli",
+    "description": "Dilbaz kurumsal yönetim paneli",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

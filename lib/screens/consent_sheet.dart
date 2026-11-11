@@ -6,7 +6,7 @@ import '../theme.dart';
 
 /// KVKK-friendly explanation shown before asking (and in Profil).
 const analyticsConsentText =
-    'Lingora\'yı geliştirmek için hangi ekranların kullanıldığını ve nerede zorlanıldığını '
+    'Dilbaz\'ı geliştirmek için hangi ekranların kullanıldığını ve nerede zorlanıldığını '
     'anonim olarak ölçmek istiyoruz (ör. "ders bitti", "okuma açıldı"). '
     'Adın, e-postan, yazdıkların, ses kayıtların ve konum bilgin gönderilmez; reklam '
     'kimliği kullanılmaz ve veriler reklam için kullanılmaz. Veriler Google Firebase Analytics '

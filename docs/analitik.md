@@ -1,6 +1,6 @@
 # Ölçüm, Remote Config ve davet programı
 
-Bu belge Lingora'nın büyüme ve ölçüm katmanını anlatır: hangi olayların neden
+Bu belge Dilbaz'ın büyüme ve ölçüm katmanını anlatır: hangi olayların neden
 ölçüldüğü, kullanıcı iznini nasıl aldığımız, Remote Config parametreleri, ilk
 A/B deneyi ve "Arkadaşını davet et" programının kuralları.
 

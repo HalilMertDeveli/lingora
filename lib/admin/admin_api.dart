@@ -1,4 +1,4 @@
-/// Data layer of the Lingora Kurumsal web panel: thin wrappers around the
+/// Data layer of the Dilbaz Kurumsal web panel: thin wrappers around the
 /// org* callables in functions/src/orgs.ts (report shape: orgReport()).
 library;
 
@@ -39,7 +39,7 @@ class OrgSummary {
   final int seatsUsed;
   final DateTime planExpiresAt;
 
-  /// The viewer's role (null for Lingora staff looking at any org).
+  /// The viewer's role (null for Dilbaz staff looking at any org).
   final OrgRole? role;
 
   String get typeLabel => isSchool ? 'Okul' : 'Kurum';
@@ -263,8 +263,8 @@ class AdminException implements Exception {
   String get message => switch (code) {
     'invalid_code' => 'Kod geçersiz ya da iptal edilmiş.',
     'already_in_org' => 'Bu hesap zaten başka bir kuruma bağlı.',
-    'plan_expired' => 'Kurumun planı sona ermiş. Lingora ile iletişime geçin.',
-    'no_seats' => 'Boş koltuk kalmadı. Koltuk eklemek için Lingora ile iletişime geçin.',
+    'plan_expired' => 'Kurumun planı sona ermiş. Dilbaz ile iletişime geçin.',
+    'no_seats' => 'Boş koltuk kalmadı. Koltuk eklemek için Dilbaz ile iletişime geçin.',
     'seats_below_used' => 'Koltuk sayısı, kullanılan koltuktan az olamaz.',
     'last_admin' => 'Kurumda en az bir yönetici kalmalı.',
     'use_leave' => 'Kendinizi buradan çıkaramazsınız.',
@@ -272,7 +272,7 @@ class AdminException implements Exception {
     'too_many_classes' => 'Sınıf sınırına ulaşıldı.',
     'too_many_assignments' => 'Bu sınıf için ödev sınırına ulaşıldı.',
     'not_your_class' || 'not_allowed' || 'permission-denied' => 'Bu işlem için yetkiniz yok.',
-    'lingora_admin_only' => 'Bu işlemi yalnızca Lingora ekibi yapabilir.',
+    'lingora_admin_only' => 'Bu işlemi yalnızca Dilbaz ekibi yapabilir.',
     'unauthenticated' => 'Oturumunuz kapanmış. Lütfen yeniden giriş yapın.',
     final c when c.startsWith('invalid_') => 'Lütfen alanları kontrol edin.',
     _ => 'İşlem tamamlanamadı. Bağlantınızı kontrol edip tekrar deneyin.',

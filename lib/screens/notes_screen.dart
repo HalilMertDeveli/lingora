@@ -687,7 +687,7 @@ class TopicScreen extends ConsumerWidget {
                         color: Brand.accentBg,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Text('Bu konu notlarında yoktu; eksik kalmasın diye Lingora ekledi.'),
+                      child: const Text('Bu konu notlarında yoktu; eksik kalmasın diye Dilbaz ekledi.'),
                     ),
                   const SizedBox(height: 8),
                   for (final para in topic.body.split('\n\n').where((s) => s.trim().isNotEmpty))

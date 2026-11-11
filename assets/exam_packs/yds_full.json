@@ -4,7 +4,7 @@
  "title": "YDS/YÖKDİL Tam Deneme Paketi",
  "scoring": "yds",
  "optionCount": 5,
- "description": "Gerçek sınavın bölüm oranlarında 3 özgün tam deneme (80 soru, 180 dakika). Her sorunun Türkçe çözümü var. Sorular Lingora tarafından hazırlanmıştır; ÖSYM soruları değildir.",
+ "description": "Gerçek sınavın bölüm oranlarında 3 özgün tam deneme (80 soru, 180 dakika). Her sorunun Türkçe çözümü var. Sorular Dilbaz tarafından hazırlanmıştır; ÖSYM soruları değildir.",
  "sections": [
   {
    "id": "yds_vocab",

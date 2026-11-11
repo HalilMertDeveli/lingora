@@ -1,4 +1,4 @@
-/// Lingora Kurumsal on the learner's side: which org the user belongs to,
+/// Dilbaz Kurumsal on the learner's side: which org the user belongs to,
 /// joining with a code and the assignments from their teacher.
 ///
 /// Server: functions/src/orgs.ts (callables orgJoin, orgLeave, orgMine).
@@ -137,7 +137,7 @@ class OrgException implements Exception {
 
   String get message => switch (code) {
     'invalid_code' || 'invalid-argument' => 'Kod geçersiz ya da artık kullanılmıyor. Yöneticine sor.',
-    'plan_expired' => 'Kurumun Lingora planı sona ermiş. Yöneticinle görüş.',
+    'plan_expired' => 'Kurumun Dilbaz planı sona ermiş. Yöneticinle görüş.',
     'already_in_org' => 'Zaten başka bir kuruma bağlısın. Önce oradan ayrılman gerekiyor.',
     'no_seats' => 'Kurumun boş koltuğu kalmamış. Yöneticinden koltuk eklemesini iste.',
     'unauthenticated' => 'Hesabın henüz hazır değil. Birkaç saniye sonra tekrar dene.',

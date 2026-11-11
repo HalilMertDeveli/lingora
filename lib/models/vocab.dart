@@ -1,5 +1,5 @@
 /// Yazılımcı İngilizcesi: English vocabulary for Turkish software developers
-/// (assets/vocab/software.json, written for Lingora).
+/// (assets/vocab/software.json, written for Dilbaz).
 library;
 
 /// Where an example sentence would appear in a developer's working day.

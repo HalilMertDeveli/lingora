@@ -48,7 +48,7 @@ class _OrgDashboardState extends ConsumerState<OrgDashboard> {
     final csv = membersCsv(r);
     final now = ref.read(adminClockProvider)();
     final name =
-        'lingora-${r.org.name.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]+'), '-')}-'
+        'dilbaz-${r.org.name.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]+'), '-')}-'
         '${now.year}${now.month.toString().padLeft(2, '0')}${now.day.toString().padLeft(2, '0')}.csv';
     if (!downloadText(name, csv)) {
       showDialog<void>(
@@ -69,9 +69,7 @@ class _OrgDashboardState extends ConsumerState<OrgDashboard> {
     final wide = MediaQuery.sizeOf(context).width >= 1000;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          r == null ? 'Lingora Kurumsal' : '${r.org.name} · ${r.isAdmin ? 'Yönetici' : 'Öğretmen'}',
-        ),
+        title: Text(r == null ? 'Dilbaz Kurumsal' : '${r.org.name} · ${r.isAdmin ? 'Yönetici' : 'Öğretmen'}'),
         actions: [
           IconButton(
             tooltip: 'Yenile',
@@ -227,7 +225,7 @@ class OverviewSection extends ConsumerWidget {
         ),
         const SizedBox(height: 24),
         Text(
-          'Gizlilik: Lingora yalnızca ders, XP, seri ve ödev durumunu paylaşır. Günlükler, kişisel notlar, '
+          'Gizlilik: Dilbaz yalnızca ders, XP, seri ve ödev durumunu paylaşır. Günlükler, kişisel notlar, '
           'kelime listeleri ve yapay zekâ sohbetleri kurumla paylaşılmaz.',
           style: TextStyle(color: Brand.muted, fontSize: 12),
         ),

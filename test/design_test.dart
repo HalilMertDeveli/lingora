@@ -194,7 +194,7 @@ void main() {
   group('app', () {
     testWidgets('stored settings apply on start (Çocuk modu + dark)', (tester) async {
       await pumpApp(tester, {AppSettingsNotifier.key: '{"mode":"kid","theme":"dark"}'});
-      final ctx = tester.element(find.text('Lingora').first);
+      final ctx = tester.element(find.text('Dilbaz').first);
       expect(Theme.of(ctx).brightness, Brightness.dark);
       expect(ctx.isKid, isTrue);
       expect(Brand.palette, Palette.kidDark);
