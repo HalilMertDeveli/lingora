@@ -187,29 +187,115 @@ class Unit {
   );
 }
 
+/// A part of the main course at one CEFR level (e.g. "Bölüm 2 · A1 · Günlük
+/// hayat"). Sections open one after another; see `sectionOpen`.
+class Section {
+  const Section({
+    required this.id,
+    required this.index,
+    required this.title,
+    this.cefr = '',
+    this.description = '',
+    this.grammar = const [],
+    this.units = const [],
+    this.implicit = false,
+  });
+
+  /// "s1", "s2", ...
+  final String id;
+
+  /// 1-based position, shown as "Bölüm N".
+  final int index;
+  final String title;
+  final String cefr;
+  final String description;
+
+  /// Grammar topics, shown in the section summary.
+  final List<String> grammar;
+  final List<Unit> units;
+
+  /// True for a course without section metadata (the professional courses):
+  /// the path shows no section header for it.
+  final bool implicit;
+
+  List<PathNode> get nodes => [for (final u in units) ...u.nodes];
+
+  /// The section exam: the last unit test. Passing it opens the next section.
+  PathNode? get exam {
+    final all = nodes;
+    for (var i = all.length - 1; i >= 0; i--) {
+      if (all[i].type == NodeType.test) return all[i];
+    }
+    return null;
+  }
+
+  /// Reads a `section` object (of a section file or of tr_en.json).
+  factory Section.fromJson(Map<String, dynamic> j, {List<Unit> units = const []}) => Section(
+    id: j['id'] as String,
+    index: j['index'] as int,
+    title: j['title'] as String,
+    cefr: (j['cefr'] as String?) ?? '',
+    description: (j['description'] as String?) ?? '',
+    grammar: ((j['grammar'] as List?) ?? const []).cast<String>(),
+    units: units,
+  );
+
+  /// Reads a whole section file: `{"section": {...}, "units": [...]}`.
+  factory Section.fromFile(Map<String, dynamic> j) => Section.fromJson(
+    j['section'] as Map<String, dynamic>,
+    units: (j['units'] as List).map((u) => Unit.fromJson(u as Map<String, dynamic>)).toList(),
+  );
+}
+
 class Course {
-  const Course({
+  Course({
     required this.id,
     required this.title,
     required this.fromLang,
     required this.learningLang,
-    required this.units,
-  });
+    List<Unit>? units,
+    List<Section>? sections,
+  }) : assert(units != null || sections != null),
+       sections = sections ?? [Section(id: 'main', index: 1, title: title, units: units!, implicit: true)],
+       units = units ?? [for (final s in sections!) ...s.units];
 
   final String id;
   final String title;
   final String fromLang;
   final String learningLang;
+
+  /// Sections in path order; at least one.
+  final List<Section> sections;
+
+  /// Units of every section, in path order.
   final List<Unit> units;
 
   /// All nodes in path order.
   List<PathNode> get allNodes => [for (final u in units) ...u.nodes];
 
-  factory Course.fromJson(Map<String, dynamic> j) => Course(
-    id: j['id'] as String,
-    title: j['title'] as String,
-    fromLang: j['fromLang'] as String,
-    learningLang: j['learningLang'] as String,
-    units: (j['units'] as List).map((u) => Unit.fromJson(u as Map<String, dynamic>)).toList(),
-  );
+  /// Same course with [extra] sections appended after the existing ones.
+  Course withSections(List<Section> extra) => extra.isEmpty
+      ? this
+      : Course(
+          id: id,
+          title: title,
+          fromLang: fromLang,
+          learningLang: learningLang,
+          sections: [...sections, ...extra],
+        );
+
+  /// Reads a course file. An optional `section` object makes the file's units
+  /// the course's first section (tr_en.json is "Bölüm 1 · A1 · Temeller").
+  factory Course.fromJson(Map<String, dynamic> j) {
+    final units = (j['units'] as List).map((u) => Unit.fromJson(u as Map<String, dynamic>)).toList();
+    final meta = j['section'] as Map<String, dynamic>?;
+    return Course(
+      id: j['id'] as String,
+      title: j['title'] as String,
+      fromLang: j['fromLang'] as String,
+      learningLang: j['learningLang'] as String,
+      units: meta == null ? units : null,
+      sections: meta == null ? null : [Section.fromJson(meta, units: units)],
+    );
+  }
 }

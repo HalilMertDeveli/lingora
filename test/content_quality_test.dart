@@ -105,7 +105,8 @@ void main() {
 
   for (final path in files.where((f) => f.startsWith('assets/courses/'))) {
     final course = _read(path) as Map<String, dynamic>;
-    group('course ${course['id']}', () {
+    // Section files (assets/courses/tr_en/NN_slug.json) have a section id instead.
+    group('course ${course['id'] ?? (course['section'] as Map?)?['id']}', () {
       final nodes = [
         for (final u in course['units'] as List)
           for (final n in (u as Map)['nodes'] as List) n as Map<String, dynamic>,

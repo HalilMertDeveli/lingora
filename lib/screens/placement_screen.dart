@@ -6,6 +6,7 @@ import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/placement.dart';
 import '../data/progress.dart';
+import '../models/course.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import 'grammar_path_screen.dart' show grammarLessonsProvider, levelColor;
@@ -13,13 +14,21 @@ import 'grammar_path_screen.dart' show grammarLessonsProvider, levelColor;
 /// Called when the user picks a plan on the result screen.
 typedef PlacementDone = void Function(BuildContext context, PlacementRecommendation plan);
 
-/// General-course units as node-id lists, for the recommendation.
+final _generalCourseProvider = FutureProvider<Course>((ref) => loadCourse(rootBundle, defaultTrackId));
+
+/// First-section ("Temeller") units of the general course as node-id lists,
+/// for the recommendation.
 final placementCourseUnitsProvider = FutureProvider<List<List<String>>>((ref) async {
-  final course = await loadCourse(rootBundle, defaultTrackId);
+  final course = await ref.watch(_generalCourseProvider.future);
   return [
-    for (final u in course.units) [for (final n in u.nodes) n.id],
+    for (final u in course.sections.first.units) [for (final n in u.nodes) n.id],
   ];
 });
+
+/// Number of general-course sections shipped.
+final placementSectionCountProvider = FutureProvider<int>(
+  (ref) async => (await ref.watch(_generalCourseProvider.future)).sections.length,
+);
 
 /// "Neden İngilizce öğreniyorsun?" choices.
 class ReasonPicker extends StatelessWidget {
@@ -329,12 +338,15 @@ class PlacementResultScreen extends ConsumerWidget {
     final t = Theme.of(context).textTheme;
     final units = ref.watch(placementCourseUnitsProvider);
     final lessons = ref.watch(grammarLessonsProvider);
+    final sections = ref.watch(placementSectionCountProvider);
+    // The section count only adds a line to the plan; it never holds it up.
     final ready = !units.isLoading && !lessons.isLoading;
     PlacementRecommendation planFor(Cefr? l) => recommend(
       level: l,
       reason: reason,
       courseUnits: units.value ?? const [],
       lessons: lessons.value ?? const [],
+      sectionCount: sections.value ?? 1,
     );
     final plan = planFor(level);
     final track = trackById(plan.trackId);
@@ -420,6 +432,14 @@ class PlacementResultScreen extends ConsumerWidget {
                         'istediğin an geri dönüp tekrar edebilirsin.',
                         style: t.bodyMedium,
                       ),
+                    if (ready && plan.openSection != null) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        "Genel İngilizce'de Bölüm ${plan.openSection} ve öncesi açılıyor.",
+                        key: const Key('placement-open-section'),
+                        style: t.bodyMedium,
+                      ),
+                    ],
                   ],
                 ),
               ),

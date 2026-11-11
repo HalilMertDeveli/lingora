@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/grammar_lesson.dart';
 import 'catalog.dart';
 import 'progress.dart';
+import 'sections.dart';
 
 /// CEFR levels covered by the placement test, lowest first.
 enum Cefr {
@@ -176,6 +178,7 @@ class PlacementRecommendation {
     this.knownUnits = 0,
     this.knownLessons = 0,
     this.knownNodeIds = const [],
+    this.openSection,
   });
 
   /// Null for a beginner.
@@ -192,7 +195,19 @@ class PlacementRecommendation {
   final int knownUnits;
   final int knownLessons;
   final List<String> knownNodeIds;
+
+  /// General-course section the plan opens ("Bölüm 3"), if past the first.
+  final int? openSection;
 }
+
+/// Section of the general course the placement test opens for [level]:
+/// A2 → 3, B1 → 5, B2 and above → 7. Null keeps the normal start.
+int? placementSection(Cefr? level) => switch (level) {
+  Cefr.a2 => 3,
+  Cefr.b1 => 5,
+  Cefr.b2 || Cefr.c1 => 7,
+  _ => null,
+};
 
 /// General-course units (of 12, A1→A2) a learner at [level] can skip.
 /// Conservative: the last units of a level are kept for review.
@@ -207,12 +222,17 @@ int knownCourseUnits(Cefr? level) => switch (level) {
 String grammarNodeId(GrammarLesson l) => 'gl_${l.id}';
 
 /// Builds the recommendation. [courseUnits] are the general course's units as
-/// lists of node ids, in path order; [lessons] is the grammar path.
+/// lists of node ids, in path order; [lessons] is the grammar path;
+/// [sectionCount] is the number of general-course sections shipped.
+///
+/// The plan also opens the section for the level ([placementSection]). It is
+/// stored by section number, so a section that ships later opens too.
 PlacementRecommendation recommend({
   required Cefr? level,
   required LearnReason reason,
   required List<List<String>> courseUnits,
   required List<GrammarLesson> lessons,
+  int sectionCount = 1,
 }) {
   final rank = level?.index ?? -1;
   final atLeastA2 = rank >= Cefr.a2.index;
@@ -225,6 +245,7 @@ PlacementRecommendation recommend({
   };
 
   final units = courseUnits.take(knownCourseUnits(level)).toList();
+  final section = placementSection(level);
   // Grammar lessons strictly below the estimated level; workshops are kept.
   final known = [
     for (final l in lessons)
@@ -240,7 +261,12 @@ PlacementRecommendation recommend({
     nextTrackId: next,
     knownUnits: units.length,
     knownLessons: known.length,
-    knownNodeIds: [for (final u in units) ...u, for (final l in known) grammarNodeId(l)],
+    knownNodeIds: [
+      for (final u in units) ...u,
+      for (final l in known) grammarNodeId(l),
+      if (section != null) sectionPassId(section),
+    ],
+    openSection: section == null || sectionCount < 2 ? null : min(section, sectionCount),
   );
 }
 
