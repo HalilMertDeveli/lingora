@@ -1,0 +1,1406 @@
+{
+  "section": {"id":"s2","index":2,"title":"Günlük hayat","cefr":"A1","description":"Günlük rutin, ev ve mahalle, sevdiklerin, eşyalar, saat ve tarih","grammar":["present simple","do/does, don't/doesn't","there is/are","can/can’t","iyelik ('s, my/your…, whose)","emir kipi","yer edatları","like/love + -ing","sayılabilen/sayılamayan + some/any","saat ve tarih","a/an/the"]},
+  "units": [
+    {
+      "id": "s2u1",
+      "title": "Sabahtan akşama",
+      "description": "Günlük rutin ve geniş zaman (I/you/we/they)",
+      "color": "0xFF7C5CFC",
+      "nodes": [
+        {
+          "id": "s2u1l1",
+          "type": "lesson",
+          "title": "Sabah",
+          "description": "wake up, get up, have a shower",
+          "exercises": [
+            {"type":"select","prompt":"uyanmak","answer":"wake up","choices":[{"text":"go to bed","emoji":"🛏️"},{"text":"cook","emoji":"🍳"},{"text":"wake up","emoji":"⏰"},{"text":"have lunch","emoji":"🍽️"}]},
+            {"type":"select","prompt":"duş almak","answer":"have a shower","choices":[{"text":"get dressed","emoji":"👕"},{"text":"brush teeth","emoji":"🪥"},{"text":"leave home","emoji":"🚪"},{"text":"have a shower","emoji":"🚿"}]},
+            {"type":"fillBlank","text":"I ___ up at seven.","translation":"Yedide uyanırım.","answer":"wake","choices":["eat","sleep","wake"]},
+            {"type":"fillBlank","text":"I ___ breakfast at eight.","translation":"Sekizde kahvaltı yaparım.","answer":"have","choices":["make","do","have"]},
+            {"type":"translate","text":"Her gün duş alırım.","lang":"tr","answers":["I have a shower every day","I take a shower every day"],"tokens":["day","get","I","have","every","shower","the","am","a"]},
+            {"type":"translate","text":"I get dressed and I leave home.","lang":"en","answers":["Giyinirim ve evden çıkarım","Giyiniyorum ve evden çıkıyorum"],"tokens":["evden","Giyinirim","çıkarım","ev","ve","okula"]},
+            {"type":"listen","text":"I brush my teeth after breakfast","answers":["I brush my teeth after breakfast"]},
+            {"type":"match","pairs":[["uyanmak","wake up"],["kalkmak","get up"],["giyinmek","get dressed"],["dişleri fırçalamak","brush teeth"],["evden çıkmak","leave home"]]},
+            {"type":"translate","text":"Sabah yedide kalkarım.","lang":"tr","answers":["I get up at seven in the morning","I get up at 7 in the morning","I get up at seven"],"tokens":["the","at","get","up","on","am","I","seven","morning","in","the"]},
+            {"type":"speak","text":"I wake up early every day","translation":"Her gün erken uyanırım."}
+          ]
+        },
+        {
+          "id": "s2u1l2",
+          "type": "lesson",
+          "title": "Gün içinde",
+          "description": "start, finish, arrive, have lunch",
+          "exercises": [
+            {"type":"select","prompt":"varmak","answer":"arrive","choices":[{"text":"arrive","emoji":"📍"},{"text":"leave","emoji":"🚪"},{"text":"start","emoji":"▶️"},{"text":"finish","emoji":"🏁"}]},
+            {"type":"select","prompt":"öğle yemeği","answer":"lunch","choices":[{"text":"snack","emoji":"🍪"},{"text":"lunch","emoji":"🥪"},{"text":"dinner","emoji":"🍝"},{"text":"breakfast","emoji":"🥐"}]},
+            {"type":"fillBlank","text":"We ___ work at nine.","translation":"Dokuzda işe başlarız.","answer":"start","choices":["start","arrive","finish"]},
+            {"type":"fillBlank","text":"They ___ to school by bus.","translation":"Okula otobüsle giderler.","answer":"go","choices":["goes","are go","go"]},
+            {"type":"translate","text":"Okula sekizde varırım.","lang":"tr","answers":["I arrive at school at eight","I get to school at eight"],"tokens":["arrive","to","school","I","in","at","eight","at"]},
+            {"type":"translate","text":"We have lunch at one o'clock.","lang":"en","answers":["Saat birde öğle yemeği yeriz","Birde öğle yemeği yeriz","Saat birde öğle yemeği yiyoruz"],"tokens":["ikide","Saat","öğle","yeriz","yemeği","akşam","birde"]},
+            {"type":"listen","text":"You finish work at five","answers":["You finish work at five"]},
+            {"type":"match","pairs":[["başlamak","start"],["bitirmek","finish"],["varmak","arrive"],["çalışmak","work"],["öğle yemeği","lunch"]]},
+            {"type":"translate","text":"Öğretmenler işi saat dörtte bitirir.","lang":"tr","answers":["Teachers finish work at four","The teachers finish work at four"],"tokens":["finishes","at","work","start","four","finish","Teachers"]},
+            {"type":"speak","text":"We start school at eight","translation":"Okula sekizde başlarız."}
+          ]
+        },
+        {
+          "id": "s2u1s",
+          "type": "story",
+          "title": "Londra'dan arama",
+          "description": "Sam, Londra’dan görüntülü arıyor; kız kardeşi Mia ile tanışıyoruz",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Hi, Elif! Good morning from London!","translation":"Merhaba Elif! Londra’dan günaydın!"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Hi, Sam! It's eleven o'clock here.","translation":"Merhaba Sam! Burada saat on bir."},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"It's eight here. I get up at seven every day.","translation":"Burada saat sekiz. Her gün yedide kalkarım."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"I get up early, too. I have a shower first.","translation":"Ben de erken kalkarım. Önce duş alırım."},
+            {"kind":"question","prompt":"Sam her gün saat kaçta kalkıyor?","choices":["Yedide","On birde","Sekizde"],"answer":"Yedide"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"This is my sister, Mia. Say hello, Mia!","translation":"Bu kız kardeşim Mia. Merhaba de, Mia!"},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"Hello, Elif! I go to school at half past eight.","translation":"Merhaba Elif! Sekiz buçukta okula giderim."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Nice to meet you, Mia! We start school at nine.","translation":"Tanıştığımıza memnun oldum Mia! Biz okula dokuzda başlarız."},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"We finish at three and we play in the park.","translation":"Üçte bitiririz ve parkta oynarız."},
+            {"kind":"question","prompt":"Mia okuldan sonra ne yapıyor?","choices":["Uyuyor","Parkta oynuyor","Yemek yapıyor"],"answer":"Parkta oynuyor"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"I cook dinner on Mondays. I like it!","translation":"Pazartesileri akşam yemeğini ben yaparım. Hoşuma gidiyor!"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Really? I wash the dishes every night.","translation":"Gerçekten mi? Ben her akşam bulaşıkları yıkarım."},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Bye, Elif! Have a nice day!","translation":"Hoşça kal Elif! İyi günler!"},
+            {"kind":"question","prompt":"Elif her akşam ne yapıyor?","choices":["Bulaşık yıkıyor","Parkta oynuyor","Yemek yapıyor"],"answer":"Bulaşık yıkıyor"}
+          ]
+        },
+        {
+          "id": "s2u1l3",
+          "type": "lesson",
+          "title": "Akşam",
+          "description": "come back, cook, relax, go to bed",
+          "exercises": [
+            {"type":"select","prompt":"akşam yemeği","answer":"dinner","choices":[{"text":"dinner","emoji":"🍝"},{"text":"lunch","emoji":"🥪"},{"text":"tea","emoji":"☕"},{"text":"breakfast","emoji":"🥐"}]},
+            {"type":"select","prompt":"dinlenmek","answer":"relax","choices":[{"text":"wash","emoji":"🧽"},{"text":"cook","emoji":"🍳"},{"text":"relax","emoji":"🛋️"},{"text":"work","emoji":"💼"}]},
+            {"type":"fillBlank","text":"We come back ___ at six.","translation":"Altıda eve döneriz.","answer":"home","choices":["home","to home","at home"]},
+            {"type":"fillBlank","text":"I ___ the dishes after dinner.","translation":"Akşam yemeğinden sonra bulaşıkları yıkarım.","answer":"wash","choices":["watch","cook","wash"]},
+            {"type":"translate","text":"Akşam yemeğini birlikte yaparız.","lang":"tr","answers":["We cook dinner together","We make dinner together"],"tokens":["make","We","have","cook","together","dinner"]},
+            {"type":"translate","text":"I go to bed at eleven.","lang":"en","answers":["On birde yatarım","Saat on birde yatarım"],"tokens":["birde","yatarım","onda","On","uyanırım"]},
+            {"type":"listen","text":"They watch TV in the evening","answers":["They watch TV in the evening"]},
+            {"type":"translate","text":"Akşamları televizyon izlerim.","lang":"tr","answers":["I watch TV in the evening","I watch TV in the evenings"],"tokens":["look","on","in","TV","evening","the","am","watch","I"]},
+            {"type":"match","pairs":[["dönmek","come back"],["yemek pişirmek","cook"],["dinlenmek","relax"],["izlemek","watch"],["yatmak","go to bed"]]},
+            {"type":"speak","text":"I relax after dinner","translation":"Akşam yemeğinden sonra dinlenirim."}
+          ]
+        },
+        {
+          "id": "s2u1l4",
+          "type": "lesson",
+          "title": "Erken mi, geç mi?",
+          "description": "early, late, every day, at night",
+          "exercises": [
+            {"type":"select","prompt":"erken","answer":"early","choices":[{"text":"late","emoji":"🌙"},{"text":"every day","emoji":"📅"},{"text":"early","emoji":"🌅"},{"text":"at night","emoji":"🌃"}]},
+            {"type":"select","prompt":"geç","answer":"late","choices":[{"text":"early","emoji":"🌅"},{"text":"now","emoji":"⏱️"},{"text":"late","emoji":"🌙"},{"text":"today","emoji":"📆"}]},
+            {"type":"fillBlank","text":"I go to bed late ___ night.","translation":"Geceleri geç yatarım.","answer":"at","choices":["in","at","on"]},
+            {"type":"fillBlank","text":"We get up early ___ the morning.","translation":"Sabahları erken kalkarız.","answer":"in","choices":["at","in","on"]},
+            {"type":"translate","text":"Her gün İngilizce çalışırım.","lang":"tr","answers":["I study English every day","Every day I study English"],"tokens":["study","every","English","am","all","day","I"]},
+            {"type":"translate","text":"They work late every day.","lang":"en","answers":["Her gün geç saate kadar çalışırlar","Her gün geç çalışırlar"],"tokens":["çalışırlar","gün","sabah","geç","kadar","erken","Her","saate"]},
+            {"type":"listen","text":"We have breakfast early on Sundays","answers":["We have breakfast early on Sundays"]},
+            {"type":"match","pairs":[["erken","early"],["geç","late"],["her gün","every day"],["geceleri","at night"],["sabahları","in the morning"]]},
+            {"type":"translate","text":"Arkadaşlarım hafta sonları geç kalkar.","lang":"tr","answers":["My friends get up late at the weekend","My friends get up late at weekends","My friends get up late on weekends"],"tokens":["weekend","My","at","get","early","late","the","up","friends","gets"]},
+            {"type":"speak","text":"I go to bed early on weekdays","translation":"Hafta içi erken yatarım."}
+          ]
+        },
+        {
+          "id": "s2u1t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u1c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u2",
+      "title": "Onun günü",
+      "description": "He/she/it ile geniş zaman ve meslekler",
+      "color": "0xFF2D9CDB",
+      "nodes": [
+        {
+          "id": "s2u2l1",
+          "type": "lesson",
+          "title": "-s takısı",
+          "description": "works, lives, drinks",
+          "exercises": [
+            {"type":"select","prompt":"hemşire","answer":"nurse","choices":[{"text":"bus driver","emoji":"🚌"},{"text":"farmer","emoji":"🧑‍🌾"},{"text":"nurse","emoji":"🩺"},{"text":"cook","emoji":"🧑‍🍳"}]},
+            {"type":"select","prompt":"hastane","answer":"hospital","choices":[{"text":"restaurant","emoji":"🍽️"},{"text":"hospital","emoji":"🏥"},{"text":"office","emoji":"🏢"},{"text":"farm","emoji":"🚜"}]},
+            {"type":"fillBlank","text":"She ___ in a hospital.","translation":"O bir hastanede çalışır.","answer":"works","choices":["works","work","working"]},
+            {"type":"fillBlank","text":"My father ___ tea every morning.","translation":"Babam her sabah çay içer.","answer":"drinks","choices":["is drink","drink","drinks"]},
+            {"type":"translate","text":"Annem bir hastanede çalışır.","lang":"tr","answers":["My mother works in a hospital","My mother works at a hospital","My mom works in a hospital","My mum works in a hospital"],"tokens":["at","a","My","mother","works","is","hospital","in","work"]},
+            {"type":"translate","text":"He lives on a farm.","lang":"en","answers":["O bir çiftlikte yaşar","Bir çiftlikte yaşar","O bir çiftlikte yaşıyor"],"tokens":["hastanede","O","çiftlikte","bir","yaşar","şehirde"]},
+            {"type":"listen","text":"Elif's mother works in a hospital","answers":["Elif's mother works in a hospital"]},
+            {"type":"match","pairs":[["hemşire","nurse"],["çiftçi","farmer"],["aşçı","cook"],["otobüs şoförü","bus driver"],["polis memuru","police officer"]]},
+            {"type":"translate","text":"Kerem süt sever.","lang":"tr","answers":["Kerem likes milk"],"tokens":["like","likes","milk","the","Kerem","is"]},
+            {"type":"speak","text":"She works in an office","translation":"O bir ofiste çalışır."}
+          ]
+        },
+        {
+          "id": "s2u2l2",
+          "type": "lesson",
+          "title": "-es ve -ies",
+          "description": "teaches, does, studies",
+          "exercises": [
+            {"type":"select","prompt":"tamir etmek","answer":"fix","choices":[{"text":"study","emoji":"📖"},{"text":"carry","emoji":"📦"},{"text":"teach","emoji":"📚"},{"text":"fix","emoji":"🔧"}]},
+            {"type":"fillBlank","text":"Ayla ___ English at a school.","translation":"Ayla bir okulda İngilizce öğretir.","answer":"teaches","choices":["teach","teachs","teaches"]},
+            {"type":"fillBlank","text":"Kerem ___ his homework after school.","translation":"Kerem okuldan sonra ödevini yapar.","answer":"does","choices":["do","does","makes"]},
+            {"type":"fillBlank","text":"Deniz ___ maths every evening.","translation":"Deniz her akşam matematik çalışır.","answer":"studies","choices":["study","studies","studys"]},
+            {"type":"fillBlank","text":"The mechanic ___ cars.","translation":"Tamirci araba tamir eder.","answer":"fixes","choices":["fixes","fix","fixs"]},
+            {"type":"translate","text":"Babam otobüsle işe gider.","lang":"tr","answers":["My father goes to work by bus","My dad goes to work by bus"],"tokens":["the","with","goes","bus","by","My","work","to","go","father"]},
+            {"type":"translate","text":"She has a big bag.","lang":"en","answers":["Onun büyük bir çantası var","Büyük bir çantası var"],"tokens":["bir","çantası","Onun","büyük","benim","var","küçük"]},
+            {"type":"listen","text":"He watches TV after dinner","answers":["He watches TV after dinner"]},
+            {"type":"match","pairs":[["öğretir","teaches"],["yıkar","washes"],["taşır","carries"],["ders çalışır","studies"],["gider","goes"]]},
+            {"type":"speak","text":"Mia studies English and French","translation":"Mia İngilizce ve Fransızca çalışır."}
+          ]
+        },
+        {
+          "id": "s2u2s",
+          "type": "story",
+          "title": "Annen ne iş yapıyor?",
+          "description": "Elif ve Deniz ailelerinin işlerini anlatıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Elif, what does your mother do?","translation":"Elif, annen ne iş yapıyor?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"She is a nurse. She works in a hospital.","translation":"O bir hemşire. Bir hastanede çalışıyor."},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Does she work at night?","translation":"Geceleri çalışıyor mu?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Yes, sometimes. Then she sleeps in the morning.","translation":"Evet, bazen. O zaman sabahları uyuyor."},
+            {"kind":"question","prompt":"Elif'in annesi nerede çalışıyor?","choices":["Hastanede","Okulda","Çiftlikte"],"answer":"Hastanede"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"And your father?","translation":"Peki senin baban?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"My dad is a bus driver. He starts work at six.","translation":"Babam otobüs şoförü. İşe altıda başlıyor."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Wow, very early!","translation":"Vay, çok erken!"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Yes. He drives the number 25 bus.","translation":"Evet. 25 numaralı otobüsü kullanıyor."},
+            {"kind":"question","prompt":"Deniz'in babası saat kaçta işe başlıyor?","choices":["Altıda","Dokuzda","Sekizde"],"answer":"Altıda"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"My uncle has a farm. He grows tomatoes.","translation":"Amcamın bir çiftliği var. Domates yetiştiriyor."},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"I love tomatoes! Does he sell them?","translation":"Domatese bayılırım! Satıyor mu?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Yes, he sells them at the market on Saturdays.","translation":"Evet, cumartesileri pazarda satıyor."},
+            {"kind":"question","prompt":"Elif'in amcası domatesleri nerede satıyor?","choices":["Pazarda","Hastanede","Okulda"],"answer":"Pazarda"}
+          ]
+        },
+        {
+          "id": "s2u2l3",
+          "type": "lesson",
+          "title": "Meslekler",
+          "description": "shop assistant, police officer, uniform",
+          "exercises": [
+            {"type":"select","prompt":"satış görevlisi","answer":"shop assistant","choices":[{"text":"nurse","emoji":"🩺"},{"text":"police officer","emoji":"👮"},{"text":"shop assistant","emoji":"🛍️"},{"text":"farmer","emoji":"🧑‍🌾"}]},
+            {"type":"select","prompt":"üniforma","answer":"uniform","choices":[{"text":"hat","emoji":"🧢"},{"text":"shoe","emoji":"👟"},{"text":"bag","emoji":"👜"},{"text":"uniform","emoji":"🦺"}]},
+            {"type":"fillBlank","text":"A cook ___ food in a restaurant.","translation":"Aşçı restoranda yemek yapar.","answer":"makes","choices":["does","makes","make"]},
+            {"type":"fillBlank","text":"My sister ___ in a shop.","translation":"Kız kardeşim bir dükkânda çalışır.","answer":"works","choices":["is work","work","works"]},
+            {"type":"fillBlank","text":"A police officer ___ people.","translation":"Polis memuru insanlara yardım eder.","answer":"helps","choices":["help","helping","helps"]},
+            {"type":"translate","text":"O bir üniforma giyer.","lang":"tr","answers":["She wears a uniform","He wears a uniform"],"tokens":["She","an","wear","a","wears","uniform"]},
+            {"type":"translate","text":"The shop assistant sells shoes.","lang":"en","answers":["Satış görevlisi ayakkabı satar","Satış görevlisi ayakkabı satıyor"],"tokens":["ayakkabı","alır","satar","görevlisi","Satış","çanta"]},
+            {"type":"listen","text":"The farmer gets up at five","answers":["The farmer gets up at five"]},
+            {"type":"match","pairs":[["satmak","sell"],["yardım etmek","help"],["giymek","wear"],["insanlar","people"],["dükkân","shop"]]},
+            {"type":"speak","text":"My uncle is a police officer","translation":"Amcam polis memuru."}
+          ]
+        },
+        {
+          "id": "s2u2l4",
+          "type": "lesson",
+          "title": "Kim ne yapar?",
+          "description": "opens, closes, catches, flies",
+          "exercises": [
+            {"type":"select","prompt":"taşımak","answer":"carry","choices":[{"text":"wash","emoji":"🧽"},{"text":"fly","emoji":"✈️"},{"text":"carry","emoji":"📦"},{"text":"catch","emoji":"⚾"}]},
+            {"type":"fillBlank","text":"The bakery ___ at seven.","translation":"Fırın yedide açılır.","answer":"opens","choices":["opens","open","opening"]},
+            {"type":"fillBlank","text":"The bus ___ near the school.","translation":"Otobüs okulun yakınında durur.","answer":"stops","choices":["stops","is stop","stop"]},
+            {"type":"fillBlank","text":"Sam ___ the train to school.","translation":"Sam okula gitmek için trene biner.","answer":"catches","choices":["catch","catches","catchs"]},
+            {"type":"translate","text":"Fırın akşam altıda kapanır.","lang":"tr","answers":["The bakery closes at six in the evening","The bakery closes at 6 in the evening"],"tokens":["The","closes","close","on","at","the","bakery","evening","six","in"]},
+            {"type":"translate","text":"My cat sleeps all day.","lang":"en","answers":["Kedim bütün gün uyur","Kedim bütün gün uyuyor"],"tokens":["gece","köpeğim","gün","Kedim","bütün","uyur"]},
+            {"type":"listen","text":"Mia carries her bag to school","answers":["Mia carries her bag to school"]},
+            {"type":"match","pairs":[["açılır","opens"],["kapanır","closes"],["uçar","flies"],["yakalar","catches"],["durur","stops"]]},
+            {"type":"translate","text":"Kerem futbol oynar.","lang":"tr","answers":["Kerem plays football","Kerem plays soccer"],"tokens":["plays","play","football","Kerem","the","is"]},
+            {"type":"speak","text":"The shop closes at eight","translation":"Dükkân sekizde kapanır."}
+          ]
+        },
+        {
+          "id": "s2u2t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u2c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u3",
+      "title": "Seni tanıyalım",
+      "description": "do/does ile soru, olumsuz ve kısa cevap",
+      "color": "0xFF14A098",
+      "nodes": [
+        {
+          "id": "s2u3l1",
+          "type": "lesson",
+          "title": "Don't, doesn't",
+          "description": "olumsuz cümleler",
+          "exercises": [
+            {"type":"select","prompt":"et","answer":"meat","choices":[{"text":"sugar","emoji":"🍬"},{"text":"meat","emoji":"🥩"},{"text":"fish","emoji":"🐟"},{"text":"milk","emoji":"🥛"}]},
+            {"type":"select","prompt":"şeker","answer":"sugar","choices":[{"text":"milk","emoji":"🥛"},{"text":"salt","emoji":"🧂"},{"text":"rice","emoji":"🍚"},{"text":"sugar","emoji":"🍬"}]},
+            {"type":"fillBlank","text":"I ___ eat meat. I'm a vegetarian.","translation":"Et yemem. Vejetaryenim.","answer":"don't","choices":["doesn't","don't","not"]},
+            {"type":"fillBlank","text":"Elif ___ drink coffee.","translation":"Elif kahve içmez.","answer":"doesn't","choices":["doesn't","don't","isn't"]},
+            {"type":"translate","text":"Babam şekerli çay içmez.","lang":"tr","answers":["My father doesn't drink tea with sugar","My dad doesn't drink tea with sugar","My father does not drink tea with sugar","My dad does not drink tea with sugar"],"tokens":["don't","drink","sugar","doesn't","father","My","tea","with","isn't"]},
+            {"type":"translate","text":"We don't live in a big city.","lang":"en","answers":["Büyük bir şehirde yaşamıyoruz","Biz büyük bir şehirde yaşamıyoruz","Büyük bir şehirde yaşamayız"],"tokens":["Büyük","küçük","yaşamıyoruz","köyde","bir","şehirde"]},
+            {"type":"listen","text":"She doesn't like fish","answers":["She doesn't like fish","She does not like fish"]},
+            {"type":"match","pairs":[["et","meat"],["balık","fish"],["şeker","sugar"],["süt","milk"],["vejetaryen","vegetarian"]]},
+            {"type":"translate","text":"Onlar süt istemiyor.","lang":"tr","answers":["They don't want milk","They do not want milk"],"tokens":["wants","want","don't","They","doesn't","milk"]},
+            {"type":"speak","text":"I don't eat meat","translation":"Et yemem."}
+          ]
+        },
+        {
+          "id": "s2u3l2",
+          "type": "lesson",
+          "title": "Do you...? Does she...?",
+          "description": "evet-hayır soruları",
+          "exercises": [
+            {"type":"select","prompt":"araba kullanmak","answer":"drive","choices":[{"text":"fly","emoji":"✈️"},{"text":"walk","emoji":"🚶"},{"text":"ride","emoji":"🚲"},{"text":"drive","emoji":"🚗"}]},
+            {"type":"fillBlank","text":"___ you speak German?","translation":"Almanca konuşur musun?","answer":"Do","choices":["Does","Are","Do"]},
+            {"type":"fillBlank","text":"___ she live in a flat?","translation":"O bir dairede mi yaşıyor?","answer":"Does","choices":["Does","Is","Do"]},
+            {"type":"fillBlank","text":"Does Sam play the guitar? Yes, he ___.","translation":"Sam gitar çalar mı? Evet, çalar.","answer":"does","choices":["does","plays","is"]},
+            {"type":"translate","text":"Araba kullanır mısın?","lang":"tr","answers":["Do you drive","Do you drive a car"],"tokens":["drive","Are","a","you","Do","car"]},
+            {"type":"translate","text":"Does your brother have a pet?","lang":"en","answers":["Kardeşinin evcil hayvanı var mı?","Erkek kardeşinin evcil hayvanı var mı?"],"tokens":["Kardeşinin","kedisi","evcil","hayvanı","var","senin","mı"]},
+            {"type":"listen","text":"Do you know my friend Deniz?","answers":["Do you know my friend Deniz?"]},
+            {"type":"match","pairs":[["yaşamak","live"],["konuşmak","speak"],["bilmek","know"],["anlamak","understand"],["ihtiyacı olmak","need"]]},
+            {"type":"translate","text":"Elif İspanyolca anlıyor mu?","lang":"tr","answers":["Does Elif understand Spanish"],"tokens":["Elif","Does","is","Spanish","Do","understands","understand"]},
+            {"type":"speak","text":"Do you live near here?","translation":"Buraya yakın mı oturuyorsun?"}
+          ]
+        },
+        {
+          "id": "s2u3s",
+          "type": "story",
+          "title": "Röportaj ödevi",
+          "description": "Elif ve Deniz sınıfta birbirine sorular soruyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Ayla","avatar":"👩‍🏫","text":"Today you ask your partner questions.","translation":"Bugün eşinize sorular soruyorsunuz."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Deniz, where do you live?","translation":"Deniz, nerede oturuyorsun?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"I live in a flat near the school.","translation":"Okulun yakınında bir dairede oturuyorum."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Do you have a pet?","translation":"Evcil hayvanın var mı?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Yes, I do. I have a cat. Her name is Pamuk.","translation":"Evet, var. Bir kedim var. Adı Pamuk."},
+            {"kind":"question","prompt":"Deniz nerede oturuyor?","choices":["Bir çiftlikte","Bir köyde","Okulun yakınında bir dairede"],"answer":"Okulun yakınında bir dairede"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Does your cat eat fish?","translation":"Kedin balık yer mi?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"No, she doesn't! She only eats cat food.","translation":"Hayır, yemez! Sadece kedi maması yer."},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Now my turn. Do you speak German?","translation":"Şimdi sıra bende. Almanca konuşur musun?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"No, I don't. But I understand a little Spanish.","translation":"Hayır. Ama biraz İspanyolca anlarım."},
+            {"kind":"question","prompt":"Elif hangi dili biraz anlıyor?","choices":["İspanyolca","Fransızca","Almanca"],"answer":"İspanyolca"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Does your brother speak Spanish, too?","translation":"Erkek kardeşin de İspanyolca konuşur mu?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"No, he doesn't. Kerem speaks Turkish and English.","translation":"Hayır. Kerem Türkçe ve İngilizce konuşur."},
+            {"kind":"question","prompt":"Pamuk balık yer mi?","choices":["Sadece pazar günleri","Evet, yer","Hayır, yemez"],"answer":"Hayır, yemez"}
+          ]
+        },
+        {
+          "id": "s2u3l3",
+          "type": "lesson",
+          "title": "Wh- soruları",
+          "description": "where, what, when + do/does",
+          "exercises": [
+            {"type":"select","prompt":"uzak","answer":"far","choices":[{"text":"near","emoji":"📍"},{"text":"small","emoji":"🏠"},{"text":"far","emoji":"🗺️"},{"text":"big","emoji":"🏙️"}]},
+            {"type":"fillBlank","text":"Where ___ your sister work?","translation":"Kız kardeşin nerede çalışıyor?","answer":"does","choices":["is","do","does"]},
+            {"type":"fillBlank","text":"What time ___ you get up?","translation":"Kaçta kalkarsın?","answer":"do","choices":["do","does","are"]},
+            {"type":"fillBlank","text":"What ___ Kerem want for his birthday?","translation":"Kerem doğum günü için ne istiyor?","answer":"does","choices":["is","does","do"]},
+            {"type":"translate","text":"Nerede yaşıyorsun?","lang":"tr","answers":["Where do you live"],"tokens":["Where","does","live","do","lives","you","are"]},
+            {"type":"translate","text":"What does your father do?","lang":"en","answers":["Baban ne iş yapıyor?","Baban ne iş yapar?"],"tokens":["yapıyor","Baban","annen","iş","ne","nerede"]},
+            {"type":"listen","text":"When do you finish school?","answers":["When do you finish school?"]},
+            {"type":"match","pairs":[["nerede","where"],["ne zaman","when"],["ne","what"],["kim","who"],["saat kaçta","what time"]]},
+            {"type":"translate","text":"Okul evine uzak mı?","lang":"tr","answers":["Is the school far from your house","Is the school far from your home"],"tokens":["does","near","the","to","house","school","far","from","Is","your"]},
+            {"type":"speak","text":"Where does your brother work?","translation":"Erkek kardeşin nerede çalışıyor?"}
+          ]
+        },
+        {
+          "id": "s2u3l4",
+          "type": "lesson",
+          "title": "Kısa cevaplar",
+          "description": "Yes, I do. No, she doesn’t.",
+          "exercises": [
+            {"type":"select","prompt":"köy","answer":"village","choices":[{"text":"village","emoji":"🏡"},{"text":"farm","emoji":"🚜"},{"text":"flat","emoji":"🏢"},{"text":"city","emoji":"🏙️"}]},
+            {"type":"select","prompt":"daire","answer":"flat","choices":[{"text":"street","emoji":"🛣️"},{"text":"garden","emoji":"🌳"},{"text":"flat","emoji":"🏢"},{"text":"village","emoji":"🏡"}]},
+            {"type":"fillBlank","text":"Do they live in a village? No, they ___.","translation":"Köyde mi yaşıyorlar? Hayır, yaşamıyorlar.","answer":"don't","choices":["aren't","doesn't","don't"]},
+            {"type":"fillBlank","text":"Does Mia speak French? Yes, she ___.","translation":"Mia Fransızca konuşur mu? Evet, konuşur.","answer":"does","choices":["is","does","speaks"]},
+            {"type":"fillBlank","text":"Do you need help? Yes, I ___. Thank you!","translation":"Yardıma ihtiyacın var mı? Evet, var. Teşekkürler!","answer":"do","choices":["do","am","need"]},
+            {"type":"translate","text":"Hayır, bilmiyorum.","lang":"tr","answers":["No, I don't know","No, I do not know"],"tokens":["am","not","No","I","doesn't","don't","know"]},
+            {"type":"translate","text":"Do you understand me? Yes, I do.","lang":"en","answers":["Beni anlıyor musun? Evet, anlıyorum"],"tokens":["anlıyorum","Beni","Evet","musun","hayır","anlıyor","seni"]},
+            {"type":"listen","text":"Yes, she does. She speaks three languages","answers":["Yes, she does. She speaks three languages"]},
+            {"type":"match","pairs":[["Almanca","German"],["İspanyolca","Spanish"],["Fransızca","French"],["dil","language"],["şehir","city"]]},
+            {"type":"speak","text":"No, I don't. I live in the city","translation":"Hayır. Ben şehirde yaşıyorum."}
+          ]
+        },
+        {
+          "id": "s2u3t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u3c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u4",
+      "title": "Sevdiğim şeyler",
+      "description": "like, love, hate, enjoy + -ing ile hobiler",
+      "color": "0xFFE0559A",
+      "nodes": [
+        {
+          "id": "s2u4l1",
+          "type": "lesson",
+          "title": "Hobiler",
+          "description": "swimming, reading, drawing",
+          "exercises": [
+            {"type":"select","prompt":"yüzmek","answer":"swimming","choices":[{"text":"cycling","emoji":"🚴"},{"text":"running","emoji":"🏃"},{"text":"swimming","emoji":"🏊"},{"text":"dancing","emoji":"💃"}]},
+            {"type":"select","prompt":"resim çizmek","answer":"drawing","choices":[{"text":"drawing","emoji":"✏️"},{"text":"reading","emoji":"📖"},{"text":"fishing","emoji":"🎣"},{"text":"singing","emoji":"🎤"}]},
+            {"type":"fillBlank","text":"I like ___ in the sea.","translation":"Denizde yüzmeyi severim.","answer":"swimming","choices":["swimming","swim","swims"]},
+            {"type":"fillBlank","text":"Kerem loves ___ football.","translation":"Kerem futbol oynamayı çok sever.","answer":"playing","choices":["plays","play","playing"]},
+            {"type":"translate","text":"Kitap okumayı severim.","lang":"tr","answers":["I like reading books","I like reading","I like to read books"],"tokens":["I","am","reading","like","read","books"]},
+            {"type":"translate","text":"My sister loves dancing.","lang":"en","answers":["Kız kardeşim dans etmeyi çok sever","Kız kardeşim dans etmeyi seviyor"],"tokens":["şarkı","sever","dans","kardeşim","çok","etmeyi","Kız","nefret"]},
+            {"type":"listen","text":"Deniz likes drawing animals","answers":["Deniz likes drawing animals"]},
+            {"type":"match","pairs":[["yüzmek","swimming"],["koşmak","running"],["dans etmek","dancing"],["şarkı söylemek","singing"],["balık tutmak","fishing"]]},
+            {"type":"translate","text":"Boş zamanında ne yapmayı seversin?","lang":"tr","answers":["What do you like doing in your free time","What do you like to do in your free time"],"tokens":["doing","you","on","What","your","time","do","like","are","free","in"]},
+            {"type":"speak","text":"I love cycling in the park","translation":"Parkta bisiklet sürmeyi çok severim."}
+          ]
+        },
+        {
+          "id": "s2u4l2",
+          "type": "lesson",
+          "title": "Hate, enjoy, don't mind",
+          "description": "sevmek ve sevmemek",
+          "exercises": [
+            {"type":"select","prompt":"nefret etmek","answer":"hate","choices":[{"text":"love","emoji":"😍"},{"text":"enjoy","emoji":"😊"},{"text":"hate","emoji":"😖"},{"text":"want","emoji":"🙋"}]},
+            {"type":"select","prompt":"alışveriş","answer":"shopping","choices":[{"text":"running","emoji":"🏃"},{"text":"shopping","emoji":"🛍️"},{"text":"camping","emoji":"⛺"},{"text":"cooking","emoji":"🍳"}]},
+            {"type":"fillBlank","text":"I ___ getting up early. It's terrible!","translation":"Erken kalkmaktan nefret ederim. Berbat!","answer":"hate","choices":["love","hate","enjoy"]},
+            {"type":"fillBlank","text":"We enjoy ___ photos.","translation":"Fotoğraf çekmekten keyif alırız.","answer":"taking","choices":["taking","pulling","take"]},
+            {"type":"fillBlank","text":"I don't mind ___ the dishes.","translation":"Bulaşık yıkamak bana dert değil.","answer":"washing","choices":["washing","washes","wash"]},
+            {"type":"translate","text":"Kamp yapmaktan nefret ederler.","lang":"tr","answers":["They hate camping"],"tokens":["are","hate","camping","hates","They"]},
+            {"type":"translate","text":"Sam enjoys cooking for his friends.","lang":"en","answers":["Sam arkadaşları için yemek yapmaktan keyif alır","Sam arkadaşlarına yemek yapmayı sever"],"tokens":["alır","annesi","için","yemek","yapmaktan","arkadaşları","için","Sam","keyif"]},
+            {"type":"listen","text":"Mia doesn't like shopping","answers":["Mia doesn't like shopping","Mia does not like shopping"]},
+            {"type":"match","pairs":[["nefret etmek","hate"],["keyif almak","enjoy"],["çok sevmek","love"],["dert etmemek","don't mind"],["fotoğraf çekmek","take photos"]]},
+            {"type":"speak","text":"I don't mind cooking","translation":"Yemek yapmak bana dert değil."}
+          ]
+        },
+        {
+          "id": "s2u4s",
+          "type": "story",
+          "title": "Hafta sonu planı",
+          "description": "Elif, Kerem ve Deniz herkesin sevdiği bir plan arıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"What do you like doing at the weekend?","translation":"Hafta sonu ne yapmayı seversin?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"I love cycling. And I enjoy taking photos.","translation":"Bisiklet sürmeyi çok severim. Fotoğraf çekmekten de keyif alırım."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"I hate cycling! I like playing video games.","translation":"Bisiklet sürmekten nefret ederim! Video oyunu oynamayı severim."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Kerem, you play video games every day!","translation":"Kerem, her gün video oyunu oynuyorsun!"},
+            {"kind":"question","prompt":"Kerem neyi sevmiyor?","choices":["Video oyunlarını","Fotoğraf çekmeyi","Bisiklet sürmeyi"],"answer":"Bisiklet sürmeyi"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Do you like board games, Kerem?","translation":"Kerem, kutu oyunlarını sever misin?"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Yes, I love chess!","translation":"Evet, satrancı çok severim!"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Me too! And I don't mind cycling.","translation":"Ben de! Bisiklet sürmek de bana dert değil."},
+            {"kind":"question","prompt":"Deniz ve Kerem hangi oyunu seviyor?","choices":["Futbol","Satranç","Video oyunu"],"answer":"Satranç"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"OK. Saturday: cycling in the park. Sunday: chess at home.","translation":"Tamam. Cumartesi parkta bisiklet, pazar evde satranç."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"And video games on Sunday night!","translation":"Pazar akşamı da video oyunu!"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Ha ha! Kerem really loves video games.","translation":"Ha ha! Kerem video oyunlarını gerçekten çok seviyor."},
+            {"kind":"question","prompt":"Cumartesi ne yapacaklar?","choices":["Parkta bisiklet sürecekler","Alışverişe gidecekler","Evde satranç oynayacaklar"],"answer":"Parkta bisiklet sürecekler"}
+          ]
+        },
+        {
+          "id": "s2u4l3",
+          "type": "lesson",
+          "title": "Do you like...?",
+          "description": "sevdiklerini sormak",
+          "exercises": [
+            {"type":"select","prompt":"satranç","answer":"chess","choices":[{"text":"music","emoji":"🎵"},{"text":"football","emoji":"⚽"},{"text":"chess","emoji":"♟️"},{"text":"cards","emoji":"🃏"}]},
+            {"type":"fillBlank","text":"Do you like ___?","translation":"Dans etmeyi sever misin?","answer":"dancing","choices":["dances","dancing","dance"]},
+            {"type":"fillBlank","text":"___ your brother like swimming?","translation":"Erkek kardeşin yüzmeyi sever mi?","answer":"Does","choices":["Do","Does","Is"]},
+            {"type":"fillBlank","text":"What does Elif like ___?","translation":"Elif ne yapmayı sever?","answer":"doing","choices":["do","does","doing"]},
+            {"type":"translate","text":"Sam şarkı söylemeyi sever mi?","lang":"tr","answers":["Does Sam like singing","Does Sam like to sing"],"tokens":["like","Is","Sam","Does","singing","likes"]},
+            {"type":"translate","text":"Do they enjoy fishing?","lang":"en","answers":["Balık tutmaktan hoşlanırlar mı?","Balık tutmayı severler mi?"],"tokens":["değil","Balık","yüzmekten","mı","tutmaktan","hoşlanırlar"]},
+            {"type":"listen","text":"Do you like playing board games?","answers":["Do you like playing board games?"]},
+            {"type":"match","pairs":[["satranç","chess"],["kutu oyunu","board game"],["video oyunu","video game"],["boş zaman","free time"],["hobi","hobby"]]},
+            {"type":"translate","text":"En sevdiğim hobi resim çizmek.","lang":"tr","answers":["My favourite hobby is drawing","My favorite hobby is drawing"],"tokens":["My","drawing","hobbies","is","draw","hobby","favourite"]},
+            {"type":"speak","text":"What do you like doing?","translation":"Ne yapmayı seversin?"}
+          ]
+        },
+        {
+          "id": "s2u4l4",
+          "type": "lesson",
+          "title": "Gerçekten çok",
+          "description": "really, a lot, very much",
+          "exercises": [
+            {"type":"select","prompt":"gerçekten","answer":"really","choices":[{"text":"again","emoji":"🔁"},{"text":"only","emoji":"☝️"},{"text":"maybe","emoji":"🤔"},{"text":"really","emoji":"💯"}]},
+            {"type":"translate","text":"Kahveyi çok severim.","lang":"tr","answers":["I like coffee very much","I really like coffee","I like coffee a lot"],"tokens":["very","very","coffee","much","I","like","am"]},
+            {"type":"fillBlank","text":"We ___ like camping. It's great!","translation":"Kamp yapmayı gerçekten severiz. Harika!","answer":"really","choices":["much","really","very"]},
+            {"type":"fillBlank","text":"Mia loves singing a ___.","translation":"Mia şarkı söylemeyi çok sever.","answer":"lot","choices":["many","much","lot"]},
+            {"type":"translate","text":"Deniz koşmayı gerçekten seviyor.","lang":"tr","answers":["Deniz really likes running","Deniz really loves running"],"tokens":["running","likes","run","really","like","Deniz"]},
+            {"type":"translate","text":"I don't like shopping very much.","lang":"en","answers":["Alışverişi pek sevmem","Alışveriş yapmayı pek sevmem"],"tokens":["çok","severim","Alışverişi","pek","sevmem"]},
+            {"type":"listen","text":"Kerem really loves chess","answers":["Kerem really loves chess"]},
+            {"type":"match","pairs":[["gerçekten","really"],["çok","a lot"],["belki","maybe"],["sadece","only"],["yine","again"]]},
+            {"type":"fillBlank","text":"Elif ___ taking photos of cats.","translation":"Elif kedilerin fotoğrafını çekmeye bayılır.","answer":"loves","choices":["love","is love","loves"]},
+            {"type":"speak","text":"I really enjoy reading","translation":"Okumaktan gerçekten keyif alırım."}
+          ]
+        },
+        {
+          "id": "s2u4t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u4c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u5",
+      "title": "Kimin bu?",
+      "description": "İyelik: my/your/his/her, 's, whose, mine",
+      "color": "0xFFF2994A",
+      "nodes": [
+        {
+          "id": "s2u5l1",
+          "type": "lesson",
+          "title": "my, your, his, her",
+          "description": "iyelik sıfatları",
+          "exercises": [
+            {"type":"select","prompt":"anahtarlar","answer":"keys","choices":[{"text":"phone","emoji":"📱"},{"text":"keys","emoji":"🔑"},{"text":"wallet","emoji":"👛"},{"text":"glasses","emoji":"👓"}]},
+            {"type":"select","prompt":"cüzdan","answer":"wallet","choices":[{"text":"umbrella","emoji":"☂️"},{"text":"watch","emoji":"⌚"},{"text":"wallet","emoji":"👛"},{"text":"bottle","emoji":"🧴"}]},
+            {"type":"fillBlank","text":"This is Kerem. ___ bag is blue.","translation":"Bu Kerem. Onun çantası mavi.","answer":"His","choices":["He","Her","His"]},
+            {"type":"fillBlank","text":"This is Mia. ___ jacket is red.","translation":"Bu Mia. Onun ceketi kırmızı.","answer":"Her","choices":["His","She","Her"]},
+            {"type":"translate","text":"Sam'in bir kız kardeşi var. Onun adı Mia.","lang":"tr","answers":["Sam has a sister. Her name is Mia"],"tokens":["name","His","sister","is","Mia","Her","Sam","a","has"]},
+            {"type":"translate","text":"Where are my keys?","lang":"en","answers":["Anahtarlarım nerede?"],"tokens":["nerede","senin","cüzdanım","Anahtarlarım"]},
+            {"type":"listen","text":"Your umbrella is in the car","answers":["Your umbrella is in the car"]},
+            {"type":"match","pairs":[["benim","my"],["senin","your"],["onun (erkek)","his"],["onun (kadın)","her"],["bizim","our"]]},
+            {"type":"translate","text":"Gözlüğüm nerede?","lang":"tr","answers":["Where are my glasses"],"tokens":["Where","glasses","are","is","my","glass"]},
+            {"type":"speak","text":"This is my new watch","translation":"Bu benim yeni saatim."}
+          ]
+        },
+        {
+          "id": "s2u5l2",
+          "type": "lesson",
+          "title": "'s ile sahiplik",
+          "description": "Elif's, my aunt's",
+          "exercises": [
+            {"type":"select","prompt":"kuzen","answer":"cousin","choices":[{"text":"uncle","emoji":"👨"},{"text":"cousin","emoji":"🧑‍🤝‍🧑"},{"text":"aunt","emoji":"👩"},{"text":"neighbour","emoji":"🏘️"}]},
+            {"type":"fillBlank","text":"This is ___ laptop.","translation":"Bu Elif'in dizüstü bilgisayarı.","answer":"Elif's","choices":["Elifs","Elif's","Elif"]},
+            {"type":"fillBlank","text":"Mia is ___ sister.","translation":"Mia, Sam'in kız kardeşi.","answer":"Sam's","choices":["Sam's","Sam","of Sam"]},
+            {"type":"fillBlank","text":"My ___ house is near the sea.","translation":"Teyzemin evi denize yakın.","answer":"aunt's","choices":["aunt's","aunts","aunt"]},
+            {"type":"translate","text":"Babamın arabası beyaz.","lang":"tr","answers":["My father's car is white","My dad's car is white"],"tokens":["white","father","of","father's","is","car","My","fathers"]},
+            {"type":"translate","text":"Deniz's cat is very small.","lang":"en","answers":["Deniz'in kedisi çok küçük","Deniz'in kedisi çok ufak"],"tokens":["küçük","büyük","Deniz'in","kedisi","köpeği","çok"]},
+            {"type":"listen","text":"Kerem's notebook is on the table","answers":["Kerem's notebook is on the table"]},
+            {"type":"match","pairs":[["teyze","aunt"],["amca","uncle"],["kuzen","cousin"],["komşu","neighbour"],["dizüstü bilgisayar","laptop"]]},
+            {"type":"translate","text":"Bu, komşumun köpeği.","lang":"tr","answers":["This is my neighbour's dog","This is my neighbor's dog"],"tokens":["of","my","neighbour's","dog","neighbours","is","This"]},
+            {"type":"speak","text":"This is my cousin's laptop","translation":"Bu kuzenimin dizüstü bilgisayarı."}
+          ]
+        },
+        {
+          "id": "s2u5s",
+          "type": "story",
+          "title": "Kayıp şarj aleti",
+          "description": "Evde herkesin eşyası birbirine karışıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"Whose bag is this? It's on the floor.","translation":"Bu kimin çantası? Yerde duruyor."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"It's mine! Sorry, Mom.","translation":"Benim! Pardon anne."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Mom, where is my charger? My phone is dead.","translation":"Anne, şarj aletim nerede? Telefonumun şarjı bitti."},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"Is this your charger? It's white.","translation":"Bu senin şarj aletin mi? Beyaz."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"No, that's Dad's charger. Mine is black.","translation":"Hayır, o babamın şarj aleti. Benimki siyah."},
+            {"kind":"question","prompt":"Elif'in şarj aleti ne renk?","choices":["Beyaz","Mavi","Siyah"],"answer":"Siyah"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Elif, are these your headphones?","translation":"Elif, bu kulaklıklar senin mi?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"No, they're Deniz's headphones. I need to give them back.","translation":"Hayır, Deniz'in kulaklıkları. Onları geri vermem lazım."},
+            {"kind":"question","prompt":"Kulaklıklar kimin?","choices":["Kerem'in","Deniz'in","Babanın"],"answer":"Deniz'in"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Look! A black charger. It's in my bag!","translation":"Bak! Siyah bir şarj aleti. Benim çantamda!"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Kerem! That's my charger!","translation":"Kerem! O benim şarj aletim!"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Oops. Sorry! My charger is at school.","translation":"Hoppala. Pardon! Benim şarj aletim okulda."},
+            {"kind":"question","prompt":"Elif'in şarj aleti nerede çıktı?","choices":["Kerem'in çantasında","Okulda","Babanın masasında"],"answer":"Kerem'in çantasında"}
+          ]
+        },
+        {
+          "id": "s2u5l3",
+          "type": "lesson",
+          "title": "Whose? mine, yours",
+          "description": "kimin, benimki, seninki",
+          "exercises": [
+            {"type":"select","prompt":"kulaklık","answer":"headphones","choices":[{"text":"charger","emoji":"🔌"},{"text":"glasses","emoji":"👓"},{"text":"keys","emoji":"🔑"},{"text":"headphones","emoji":"🎧"}]},
+            {"type":"fillBlank","text":"___ umbrella is this?","translation":"Bu kimin şemsiyesi?","answer":"Whose","choices":["Who's","Whose","Who"]},
+            {"type":"fillBlank","text":"This bag isn't ___. It's Elif's.","translation":"Bu çanta benim değil. Elif'in.","answer":"mine","choices":["mine","me","my"]},
+            {"type":"fillBlank","text":"Is this pen ___? No, it's his.","translation":"Bu kalem senin mi? Hayır, onun.","answer":"yours","choices":["your","yours","you"]},
+            {"type":"translate","text":"Bu bilet kimin?","lang":"tr","answers":["Whose ticket is this","Whose is this ticket"],"tokens":["is","Who's","who","ticket","this","Whose"]},
+            {"type":"translate","text":"These keys are ours.","lang":"en","answers":["Bu anahtarlar bizim","Bunlar bizim anahtarlarımız"],"tokens":["sizin","anahtarlar","Bu","onların","bizim"]},
+            {"type":"listen","text":"Whose headphones are these?","answers":["Whose headphones are these?"]},
+            {"type":"match","pairs":[["benimki","mine"],["seninki","yours"],["onunki (kadın)","hers"],["bizimki","ours"],["kimin","whose"]]},
+            {"type":"translate","text":"Şarj aleti onun, benim değil.","lang":"tr","answers":["The charger is his, not mine","The charger is hers, not mine"],"tokens":["mine","not","his","charger","is","my","The","he"]},
+            {"type":"speak","text":"Is this yours?","translation":"Bu senin mi?"}
+          ]
+        },
+        {
+          "id": "s2u5l4",
+          "type": "lesson",
+          "title": "our, their, its",
+          "description": "bizim, onların, onun (eşya/hayvan)",
+          "exercises": [
+            {"type":"select","prompt":"şemsiye","answer":"umbrella","choices":[{"text":"bottle","emoji":"🧴"},{"text":"jacket","emoji":"🧥"},{"text":"umbrella","emoji":"☂️"},{"text":"ticket","emoji":"🎫"}]},
+            {"type":"fillBlank","text":"We love ___ new flat.","translation":"Yeni dairemizi çok seviyoruz.","answer":"our","choices":["we","ours","our"]},
+            {"type":"fillBlank","text":"The dog is in ___ bed.","translation":"Köpek kendi yatağında.","answer":"its","choices":["it","its","it's"]},
+            {"type":"fillBlank","text":"They are my cousins. ___ house is big.","translation":"Onlar benim kuzenlerim. Evleri büyük.","answer":"Their","choices":["They","There","Their"]},
+            {"type":"translate","text":"Onların çocukları okulda.","lang":"tr","answers":["Their children are at school","Their kids are at school"],"tokens":["They","children","there","school","are","Their","at","is"]},
+            {"type":"translate","text":"Our teacher's name is Ayla.","lang":"en","answers":["Öğretmenimizin adı Ayla"],"tokens":["onların","adı","Ayla","bizim","Öğretmenimizin"]},
+            {"type":"listen","text":"Their bottle is in our car","answers":["Their bottle is in our car"]},
+            {"type":"match","pairs":[["onların","their"],["bizim","our"],["onun (eşya)","its"],["çocuklar","children"],["şişe","bottle"]]},
+            {"type":"translate","text":"Kedimiz kutusunu çok sever.","lang":"tr","answers":["Our cat loves its box"],"tokens":["its","box","his","loves","Our","it's","cat"]},
+            {"type":"speak","text":"Their grandmother is very kind","translation":"Onların büyükannesi çok nazik."}
+          ]
+        },
+        {
+          "id": "s2u5t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u5c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u6",
+      "title": "Mahallem",
+      "description": "There is/are, Is there…?, How many…?",
+      "color": "0xFF27AE60",
+      "nodes": [
+        {
+          "id": "s2u6l1",
+          "type": "lesson",
+          "title": "There is / There are",
+          "description": "mahallede neler var",
+          "exercises": [
+            {"type":"select","prompt":"eczane","answer":"pharmacy","choices":[{"text":"bakery","emoji":"🥖"},{"text":"pharmacy","emoji":"💊"},{"text":"library","emoji":"📚"},{"text":"bank","emoji":"🏦"}]},
+            {"type":"select","prompt":"fırın","answer":"bakery","choices":[{"text":"bakery","emoji":"🥖"},{"text":"pharmacy","emoji":"💊"},{"text":"gym","emoji":"🏋️"},{"text":"cinema","emoji":"🎬"}]},
+            {"type":"fillBlank","text":"There ___ a bakery on my street.","translation":"Sokağımda bir fırın var.","answer":"is","choices":["have","is","are"]},
+            {"type":"fillBlank","text":"___ two banks in the square.","translation":"Meydanda iki banka var.","answer":"There are","choices":["There is","There are","Have"]},
+            {"type":"translate","text":"Mahallemde bir kütüphane var.","lang":"tr","answers":["There is a library in my neighbourhood","There is a library in my neighborhood","My neighbourhood has a library","There's a library in my neighbourhood","There's a library in my neighborhood"],"tokens":["neighbourhood","a","is","have","has","library","There","my","in"]},
+            {"type":"translate","text":"There are three cafés near the bus stop.","lang":"en","answers":["Otobüs durağının yakınında üç kafe var","Otobüs durağına yakın üç kafe var"],"tokens":["durağının","var","iki","yakınında","uzak","kafe","üç","Otobüs"]},
+            {"type":"listen","text":"There is a big park near my house","answers":["There is a big park near my house","There's a big park near my house"]},
+            {"type":"match","pairs":[["eczane","pharmacy"],["fırın","bakery"],["kütüphane","library"],["sinema","cinema"],["spor salonu","gym"]]},
+            {"type":"translate","text":"Köprünün yakınında bir cami var.","lang":"tr","answers":["There is a mosque near the bridge","There is a mosque next to the bridge","There's a mosque near the bridge","There's a mosque next to the bridge"],"tokens":["near","a","are","There","bridge","the","is","mosque","on"]},
+            {"type":"speak","text":"There is a pharmacy on the corner","translation":"Köşede bir eczane var."}
+          ]
+        },
+        {
+          "id": "s2u6l2",
+          "type": "lesson",
+          "title": "Is there...? Are there any...?",
+          "description": "var mı, yok mu",
+          "exercises": [
+            {"type":"select","prompt":"otobüs durağı","answer":"bus stop","choices":[{"text":"bus stop","emoji":"🚏"},{"text":"bridge","emoji":"🌉"},{"text":"post office","emoji":"📮"},{"text":"square","emoji":"⛲"}]},
+            {"type":"fillBlank","text":"___ there a post office near here?","translation":"Buraya yakın bir postane var mı?","answer":"Is","choices":["Does","Is","Are"]},
+            {"type":"fillBlank","text":"Are there ___ cinemas in your town?","translation":"Kasabanda hiç sinema var mı?","answer":"any","choices":["some","a","any"]},
+            {"type":"fillBlank","text":"Is there a supermarket here? No, there ___.","translation":"Burada süpermarket var mı? Hayır, yok.","answer":"isn't","choices":["aren't","doesn't","isn't"]},
+            {"type":"translate","text":"Burada banka var mı?","lang":"tr","answers":["Is there a bank here","Is there a bank near here"],"tokens":["Is","have","a","bank","here","there","Are"]},
+            {"type":"translate","text":"There aren't any trees on our street.","lang":"en","answers":["Sokağımızda hiç ağaç yok","Bizim sokakta hiç ağaç yok"],"tokens":["yok","sokağınızda","Sokağımızda","hiç","var","ağaç"]},
+            {"type":"listen","text":"Are there any good cafés here?","answers":["Are there any good cafés here?"]},
+            {"type":"match","pairs":[["postane","post office"],["otobüs durağı","bus stop"],["süpermarket","supermarket"],["banka","bank"],["ağaç","tree"]]},
+            {"type":"translate","text":"Parkta oyun alanı var mı?","lang":"tr","answers":["Is there a playground in the park"],"tokens":["a","the","there","Are","playground","park","any","in","Is"]},
+            {"type":"speak","text":"Is there a bus stop near here?","translation":"Buraya yakın bir otobüs durağı var mı?"}
+          ]
+        },
+        {
+          "id": "s2u6s",
+          "type": "story",
+          "title": "Mahalle turu",
+          "description": "Elif görüntülü aramada Sam’e mahallesini gösteriyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Show me your neighbourhood, Elif!","translation":"Bana mahalleni göster Elif!"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"OK! This is my street. There's a bakery on the corner.","translation":"Tamam! Burası benim sokağım. Köşede bir fırın var."},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Is there a park near your house?","translation":"Evinin yakınında park var mı?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Yes, there is. There's a small playground, too.","translation":"Evet, var. Küçük bir oyun alanı da var."},
+            {"kind":"question","prompt":"Köşede ne var?","choices":["Eczane","Fırın","Banka"],"answer":"Fırın"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Are there any cinemas?","translation":"Hiç sinema var mı?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"No, there aren't. But there's a big library.","translation":"Hayır, yok. Ama büyük bir kütüphane var."},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"And what's that? It's very beautiful.","translation":"Peki o ne? Çok güzel."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"That's a mosque. It's very old.","translation":"O bir cami. Çok eski."},
+            {"kind":"question","prompt":"Elif'in mahallesinde ne yok?","choices":["Kütüphane","Sinema","Park"],"answer":"Sinema"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Is your street quiet?","translation":"Sokağın sessiz mi?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"No! It's very busy. There are a lot of shops.","translation":"Hayır! Çok kalabalık. Bir sürü dükkân var."},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"My street is very quiet. There are only trees!","translation":"Benim sokağım çok sessiz. Sadece ağaçlar var!"},
+            {"kind":"question","prompt":"Elif'in sokağı nasıl?","choices":["Küçük","Kalabalık","Sessiz"],"answer":"Kalabalık"}
+          ]
+        },
+        {
+          "id": "s2u6l3",
+          "type": "lesson",
+          "title": "How many...?",
+          "description": "kaç tane var",
+          "exercises": [
+            {"type":"select","prompt":"meydan","answer":"square","choices":[{"text":"square","emoji":"⛲"},{"text":"corner","emoji":"📐"},{"text":"bridge","emoji":"🌉"},{"text":"street","emoji":"🛣️"}]},
+            {"type":"fillBlank","text":"How many ___ are there on your street?","translation":"Sokağında kaç dükkân var?","answer":"shops","choices":["shops","shop","shopes"]},
+            {"type":"fillBlank","text":"There are three ___ in the garden.","translation":"Bahçede üç ağaç var.","answer":"trees","choices":["the tree","tree","trees"]},
+            {"type":"fillBlank","text":"How many people ___ there in the gym?","translation":"Spor salonunda kaç kişi var?","answer":"are","choices":["have","are","is"]},
+            {"type":"translate","text":"Bu şehirde kaç köprü var?","lang":"tr","answers":["How many bridges are there in this city"],"tokens":["bridges","much","many","bridge","there","How","is","city","in","this","are"]},
+            {"type":"translate","text":"There are two supermarkets and a market.","lang":"en","answers":["İki süpermarket ve bir pazar var"],"tokens":["bir","ve","pazar","süpermarket","fırın","var","üç","İki"]},
+            {"type":"listen","text":"How many libraries are there in your town?","answers":["How many libraries are there in your town?"]},
+            {"type":"match","pairs":[["kaç tane","how many"],["köprü","bridge"],["meydan","square"],["sokak","street"],["köşe","corner"]]},
+            {"type":"translate","text":"Sınıfımda yirmi öğrenci var.","lang":"tr","answers":["There are twenty students in my class","There are 20 students in my class"],"tokens":["student","are","my","class","has","twenty","students","is","There","in"]},
+            {"type":"speak","text":"How many parks are there?","translation":"Kaç tane park var?"}
+          ]
+        },
+        {
+          "id": "s2u6l4",
+          "type": "lesson",
+          "title": "Sessiz mi, kalabalık mı?",
+          "description": "quiet, busy, some, any",
+          "exercises": [
+            {"type":"select","prompt":"sessiz","answer":"quiet","choices":[{"text":"busy","emoji":"🚦"},{"text":"old","emoji":"🏚️"},{"text":"quiet","emoji":"🤫"},{"text":"new","emoji":"✨"}]},
+            {"type":"select","prompt":"kalabalık","answer":"busy","choices":[{"text":"small","emoji":"🐜"},{"text":"quiet","emoji":"🤫"},{"text":"clean","emoji":"🧼"},{"text":"busy","emoji":"🚦"}]},
+            {"type":"fillBlank","text":"There are ___ nice cafés in the square.","translation":"Meydanda birkaç güzel kafe var.","answer":"some","choices":["some","any","a"]},
+            {"type":"fillBlank","text":"There ___ a lot of cars on the street.","translation":"Sokakta çok araba var.","answer":"are","choices":["are","is","have"]},
+            {"type":"translate","text":"Benim mahallem sessiz ve temiz.","lang":"tr","answers":["My neighbourhood is quiet and clean","My neighborhood is quiet and clean"],"tokens":["My","busy","and","quiet","neighbourhood","is","clean","are"]},
+            {"type":"translate","text":"The market is very busy on Saturdays.","lang":"en","answers":["Pazar yeri cumartesileri çok kalabalık","Pazar cumartesileri çok kalabalık"],"tokens":["sessiz","yeri","pazarları","Pazar","kalabalık","cumartesileri","çok"]},
+            {"type":"listen","text":"There are some old houses near the bridge","answers":["There are some old houses near the bridge"]},
+            {"type":"match","pairs":[["sessiz","quiet"],["kalabalık","busy"],["temiz","clean"],["eski","old"],["mahalle","neighbourhood"]]},
+            {"type":"translate","text":"Sokağımda hiç kafe yok.","lang":"tr","answers":["There aren't any cafés on my street","There are no cafés on my street","There aren't any cafes on my street","There are not any cafés on my street","There are not any cafes on my street"],"tokens":["on","aren't","some","street","There","my","any","isn't","cafés"]},
+            {"type":"speak","text":"My street is busy but nice","translation":"Sokağım kalabalık ama güzel."}
+          ]
+        },
+        {
+          "id": "s2u6t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u6c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u7",
+      "title": "Nerede?",
+      "description": "Yer edatları: in, on, under, next to, between…",
+      "color": "0xFF9B51E0",
+      "nodes": [
+        {
+          "id": "s2u7l1",
+          "type": "lesson",
+          "title": "in, on, under",
+          "description": "içinde, üstünde, altında",
+          "exercises": [
+            {"type":"select","prompt":"raf","answer":"shelf","choices":[{"text":"mirror","emoji":"🪞"},{"text":"drawer","emoji":"🗃️"},{"text":"shelf","emoji":"📚"},{"text":"lamp","emoji":"💡"}]},
+            {"type":"select","prompt":"lavabo","answer":"sink","choices":[{"text":"sofa","emoji":"🛋️"},{"text":"desk","emoji":"🖥️"},{"text":"fridge","emoji":"🧊"},{"text":"sink","emoji":"🚰"}]},
+            {"type":"fillBlank","text":"The keys are ___ the table.","translation":"Anahtarlar masanın üstünde.","answer":"on","choices":["on","at","in"]},
+            {"type":"translate","text":"Kitap masanın üstünde.","lang":"tr","answers":["The book is on the table"],"tokens":["in","book","The","the","table","on","is","table's","top"]},
+            {"type":"fillBlank","text":"The milk is ___ the fridge.","translation":"Süt buzdolabının içinde.","answer":"in","choices":["in","under","on"]},
+            {"type":"fillBlank","text":"Your shoes are ___ the bed.","translation":"Ayakkabıların yatağın altında.","answer":"under","choices":["on","in","under"]},
+            {"type":"translate","text":"The lamp is on the desk.","lang":"en","answers":["Lamba masanın üstünde","Lamba çalışma masasının üstünde"],"tokens":["altında","yatak","Lamba","üstünde","masanın"]},
+            {"type":"listen","text":"The box is under the sofa","answers":["The box is under the sofa"]},
+            {"type":"match","pairs":[["içinde","in"],["üstünde","on"],["altında","under"],["raf","shelf"],["çekmece","drawer"]]},
+            {"type":"speak","text":"My bag is on the chair","translation":"Çantam sandalyenin üstünde."}
+          ]
+        },
+        {
+          "id": "s2u7l2",
+          "type": "lesson",
+          "title": "next to, between, behind",
+          "description": "yanında, arasında, arkasında",
+          "exercises": [
+            {"type":"select","prompt":"ayna","answer":"mirror","choices":[{"text":"mirror","emoji":"🪞"},{"text":"lamp","emoji":"💡"},{"text":"sofa","emoji":"🛋️"},{"text":"plant","emoji":"🪴"}]},
+            {"type":"select","prompt":"gardırop","answer":"wardrobe","choices":[{"text":"fridge","emoji":"🧊"},{"text":"cupboard","emoji":"🗄️"},{"text":"sink","emoji":"🚰"},{"text":"wardrobe","emoji":"👗"}]},
+            {"type":"fillBlank","text":"The lamp is ___ the sofa.","translation":"Lamba kanepenin yanında.","answer":"next to","choices":["near to","next","next to"]},
+            {"type":"fillBlank","text":"The plant is ___ the TV and the window.","translation":"Bitki televizyonla pencerenin arasında.","answer":"between","choices":["among","in","between"]},
+            {"type":"fillBlank","text":"The ball is ___ the door.","translation":"Top kapının arkasında.","answer":"behind","choices":["front","between","behind"]},
+            {"type":"translate","text":"Ayna dolabın arkasında.","lang":"tr","answers":["The mirror is behind the cupboard"],"tokens":["is","cupboard's","the","back","mirror","behind","The","of","cupboard"]},
+            {"type":"translate","text":"My desk is next to the window.","lang":"en","answers":["Masam pencerenin yanında","Çalışma masam pencerenin yanında"],"tokens":["pencerenin","Masam","yanında","kapının","arkasında"]},
+            {"type":"listen","text":"The fridge is next to the sink","answers":["The fridge is next to the sink"]},
+            {"type":"match","pairs":[["yanında","next to"],["arasında","between"],["arkasında","behind"],["ayna","mirror"],["lavabo","sink"]]},
+            {"type":"speak","text":"The cat is behind the sofa","translation":"Kedi kanepenin arkasında."}
+          ]
+        },
+        {
+          "id": "s2u7s",
+          "type": "story",
+          "title": "Gözlük nerede?",
+          "description": "Kerem, ninesinin kayıp gözlüğünü arıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"Kerem, where are my glasses?","translation":"Kerem, gözlüğüm nerede?"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Are they on the table, Grandma?","translation":"Masanın üstünde mi, nineciğim?"},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"No, they aren't. I can't see anything!","translation":"Hayır, değil. Hiçbir şey göremiyorum!"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Are they in the drawer?","translation":"Çekmecede mi?"},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"No. There's only a box and some pens.","translation":"Hayır. Sadece bir kutu ve birkaç kalem var."},
+            {"kind":"question","prompt":"Çekmecede ne var?","choices":["Gözlük","Telefon","Bir kutu ve kalemler"],"answer":"Bir kutu ve kalemler"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Look! Your bag is under the sofa.","translation":"Bak! Çantan kanepenin altında."},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"My glasses aren't in my bag.","translation":"Gözlüğüm çantamda değil."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Are they next to the TV? Or behind the plant?","translation":"Televizyonun yanında mı? Ya da bitkinin arkasında mı?"},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"No, Kerem. Not there.","translation":"Hayır Kerem. Orada değil."},
+            {"kind":"question","prompt":"Ninenin çantası nerede?","choices":["Bitkinin arkasında","Kanepenin altında","Masanın üstünde"],"answer":"Kanepenin altında"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Grandma! Look in the mirror!","translation":"Nineciğim! Aynaya bak!"},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"Oh! My glasses are on my head!","translation":"Aa! Gözlüğüm başımın üstündeymiş!"},
+            {"kind":"question","prompt":"Gözlük neredeymiş?","choices":["Televizyonun yanında","Çekmecede","Ninenin başının üstünde"],"answer":"Ninenin başının üstünde"}
+          ]
+        },
+        {
+          "id": "s2u7l3",
+          "type": "lesson",
+          "title": "Önünde, karşısında",
+          "description": "in front of, opposite, near",
+          "exercises": [
+            {"type":"select","prompt":"karşısında","answer":"opposite","choices":[{"text":"under","emoji":"⬇️"},{"text":"behind","emoji":"⬅️"},{"text":"on","emoji":"⬆️"},{"text":"opposite","emoji":"↔️"}]},
+            {"type":"fillBlank","text":"The bus stop is ___ the bank.","translation":"Otobüs durağı bankanın karşısında.","answer":"opposite","choices":["opposite of","front","opposite"]},
+            {"type":"fillBlank","text":"There is a tree in front ___ my house.","translation":"Evimin önünde bir ağaç var.","answer":"of","choices":["to","of","at"]},
+            {"type":"fillBlank","text":"The pharmacy is ___ the bakery and the bank.","translation":"Eczane fırınla bankanın arasında.","answer":"between","choices":["next","between","behind of"]},
+            {"type":"translate","text":"Okul parkın yanında.","lang":"tr","answers":["The school is next to the park","The school is near the park"],"tokens":["in","next","park","of","The","to","is","school","the"]},
+            {"type":"translate","text":"There is a café opposite the library.","lang":"en","answers":["Kütüphanenin karşısında bir kafe var"],"tokens":["önünde","karşısında","bir","var","Kütüphanenin","kafe","fırın"]},
+            {"type":"listen","text":"My car is in front of the post office","answers":["My car is in front of the post office"]},
+            {"type":"match","pairs":[["önünde","in front of"],["karşısında","opposite"],["yakınında","near"],["duvar","wall"],["yer (zemin)","floor"]]},
+            {"type":"translate","text":"Masa duvarın önünde.","lang":"tr","answers":["The table is in front of the wall"],"tokens":["table","of","behind","The","is","front","the","in","front","wall"]},
+            {"type":"speak","text":"The bakery is opposite my house","translation":"Fırın evimin karşısında."}
+          ]
+        },
+        {
+          "id": "s2u7l4",
+          "type": "lesson",
+          "title": "Where is...? Where are...?",
+          "description": "nerede diye sormak",
+          "exercises": [
+            {"type":"select","prompt":"battaniye","answer":"blanket","choices":[{"text":"carpet","emoji":"🧶"},{"text":"blanket","emoji":"🧣"},{"text":"plant","emoji":"🪴"},{"text":"pillow","emoji":"🛏️"}]},
+            {"type":"fillBlank","text":"Where ___ my socks?","translation":"Çoraplarım nerede?","answer":"are","choices":["is","are","do"]},
+            {"type":"fillBlank","text":"Where ___ the blanket?","translation":"Battaniye nerede?","answer":"is","choices":["are","does","is"]},
+            {"type":"fillBlank","text":"The pillows are ___ the sofa.","translation":"Yastıklar kanepenin üstünde.","answer":"on","choices":["on","between","at"]},
+            {"type":"translate","text":"Kedi nerede? Halının üstünde.","lang":"tr","answers":["Where is the cat? It's on the carpet","Where is the cat? It is on the carpet","Where's the cat? It's on the carpet"],"tokens":["in","the","on","the","are","cat","carpet","It's","Where","is"]},
+            {"type":"translate","text":"Your phone is between the pillows.","lang":"en","answers":["Telefonun yastıkların arasında"],"tokens":["yatak","yastıkların","arasında","Telefonun","altında"]},
+            {"type":"listen","text":"Where are the plates? They're in the cupboard","answers":["Where are the plates? They're in the cupboard","Where are the plates? They are in the cupboard"]},
+            {"type":"match","pairs":[["yastık","pillow"],["battaniye","blanket"],["halı","carpet"],["dolap","cupboard"],["buzdolabı","fridge"]]},
+            {"type":"translate","text":"Bitkiler pencerenin önünde.","lang":"tr","answers":["The plants are in front of the window"],"tokens":["plants","are","plant","is","window","front","the","in","The","of"]},
+            {"type":"speak","text":"Where are my keys?","translation":"Anahtarlarım nerede?"}
+          ]
+        },
+        {
+          "id": "s2u7t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u7c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u8",
+      "title": "Şunu yap!",
+      "description": "Emir kipi, don't ve let's ile talimatlar",
+      "color": "0xFFEB5757",
+      "nodes": [
+        {
+          "id": "s2u8l1",
+          "type": "lesson",
+          "title": "Sınıfta",
+          "description": "sit down, stand up, open",
+          "exercises": [
+            {"type":"select","prompt":"oturmak","answer":"sit down","choices":[{"text":"listen","emoji":"👂"},{"text":"stand up","emoji":"🧍"},{"text":"open","emoji":"📖"},{"text":"sit down","emoji":"🪑"}]},
+            {"type":"select","prompt":"ayağa kalkmak","answer":"stand up","choices":[{"text":"wait","emoji":"⏳"},{"text":"sit down","emoji":"🪑"},{"text":"stop","emoji":"🛑"},{"text":"stand up","emoji":"🧍"}]},
+            {"type":"fillBlank","text":"___ your books, please.","translation":"Kitaplarınızı açın, lütfen.","answer":"Open","choices":["Opens","Open","You open"]},
+            {"type":"translate","text":"Beni dinle!","lang":"tr","answers":["Listen to me"],"tokens":["me","to","at","Listen"]},
+            {"type":"fillBlank","text":"___ quiet, please!","translation":"Sessiz olun, lütfen!","answer":"Be","choices":["Do","Are","Be"]},
+            {"type":"translate","text":"Lütfen pencereyi kapat.","lang":"tr","answers":["Please close the window","Close the window, please"],"tokens":["open","Please","the","window","closes","close"]},
+            {"type":"translate","text":"Stand up and look at the board.","lang":"en","answers":["Ayağa kalk ve tahtaya bak","Ayağa kalkın ve tahtaya bakın"],"tokens":["Ayağa","otur","tahtaya","kalk","ve","bak","kapıya"]},
+            {"type":"listen","text":"Sit down and open your notebooks","answers":["Sit down and open your notebooks"]},
+            {"type":"match","pairs":[["oturun","sit down"],["kalkın","stand up"],["dinleyin","listen"],["açın","open"],["kapatın","close"]]},
+            {"type":"speak","text":"Please be quiet","translation":"Lütfen sessiz olun."}
+          ]
+        },
+        {
+          "id": "s2u8l2",
+          "type": "lesson",
+          "title": "Yapma!",
+          "description": "don't touch, be careful",
+          "exercises": [
+            {"type":"select","prompt":"dokunmak","answer":"touch","choices":[{"text":"put","emoji":"📥"},{"text":"touch","emoji":"✋"},{"text":"wait","emoji":"⏳"},{"text":"take","emoji":"🤲"}]},
+            {"type":"fillBlank","text":"___ touch the oven! It's hot.","translation":"Fırına dokunma! Sıcak.","answer":"Don't","choices":["No","Don't","Not"]},
+            {"type":"fillBlank","text":"Don't ___ late, please.","translation":"Lütfen geç kalma.","answer":"be","choices":["are","be","is"]},
+            {"type":"fillBlank","text":"Be ___! The floor is wet.","translation":"Dikkatli ol! Yer ıslak.","answer":"careful","choices":["care","careful","carefully"]},
+            {"type":"translate","text":"Koşma! Yavaş yürü.","lang":"tr","answers":["Don't run! Walk slowly","Do not run! Walk slowly"],"tokens":["slow","run","Not","slowly","Don't","Walk"]},
+            {"type":"translate","text":"Hurry up! The bus is here.","lang":"en","answers":["Acele et! Otobüs burada","Acele et! Otobüs geldi"],"tokens":["tren","et","burada","Acele","bekle","Otobüs"]},
+            {"type":"listen","text":"Don't open the door","answers":["Don't open the door","Do not open the door"]},
+            {"type":"match","pairs":[["acele et","hurry up"],["bekle","wait"],["dikkatli ol","be careful"],["dokunma","don't touch"],["dur","stop"]]},
+            {"type":"translate","text":"Lütfen burada bekleyin.","lang":"tr","answers":["Please wait here","Wait here, please"],"tokens":["wait","here","waits","Please","there"]},
+            {"type":"speak","text":"Be careful!","translation":"Dikkatli ol!"}
+          ]
+        },
+        {
+          "id": "s2u8s",
+          "type": "story",
+          "title": "Kerem'in ilk keki",
+          "description": "Annesi Kerem’e adım adım kek tarifi veriyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Mom, let's make a cake!","translation":"Anne, hadi kek yapalım!"},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"OK! First, wash your hands.","translation":"Tamam! Önce ellerini yıka."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Done! Now what?","translation":"Tamam! Şimdi ne yapıyoruz?"},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"Take a big bowl. Put the eggs and sugar in it.","translation":"Büyük bir kâse al. Yumurtaları ve şekeri içine koy."},
+            {"kind":"question","prompt":"Kerem önce ne yapıyor?","choices":["Fırını açıyor","Ellerini yıkıyor","Yumurta kırıyor"],"answer":"Ellerini yıkıyor"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Eggs and sugar. Yes!","translation":"Yumurta ve şeker. Tamam!"},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"Now add the milk and mix slowly.","translation":"Şimdi sütü ekle ve yavaşça karıştır."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Slowly? OK, slowly.","translation":"Yavaşça mı? Tamam, yavaşça."},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"Good. Now add the flour. Don't stop!","translation":"Güzel. Şimdi unu ekle. Durma!"},
+            {"kind":"question","prompt":"Sütten sonra ne ekliyorlar?","choices":["Tuz","Un","Yağ"],"answer":"Un"},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"Careful! Don't touch the oven. It's very hot.","translation":"Dikkat! Fırına dokunma. Çok sıcak."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Can I open it now?","translation":"Şimdi açabilir miyim?"},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"No! Wait thirty minutes. Be patient!","translation":"Hayır! Otuz dakika bekle. Sabırlı ol!"},
+            {"kind":"question","prompt":"Kerem kaç dakika beklemeli?","choices":["On","Altmış","Otuz"],"answer":"Otuz"}
+          ]
+        },
+        {
+          "id": "s2u8l3",
+          "type": "lesson",
+          "title": "Yol tarifi",
+          "description": "turn left, go straight on, cross",
+          "exercises": [
+            {"type":"select","prompt":"sola dönmek","answer":"turn left","choices":[{"text":"turn left","emoji":"⬅️"},{"text":"go straight on","emoji":"⬆️"},{"text":"stop","emoji":"🛑"},{"text":"turn right","emoji":"➡️"}]},
+            {"type":"select","prompt":"trafik ışıkları","answer":"traffic lights","choices":[{"text":"corner","emoji":"📐"},{"text":"traffic lights","emoji":"🚦"},{"text":"bus stop","emoji":"🚏"},{"text":"bridge","emoji":"🌉"}]},
+            {"type":"fillBlank","text":"Go straight ___ and turn right.","translation":"Düz git ve sağa dön.","answer":"on","choices":["on","in","to"]},
+            {"type":"fillBlank","text":"Turn left ___ the traffic lights.","translation":"Trafik ışıklarından sola dön.","answer":"at","choices":["at","from","in"]},
+            {"type":"fillBlank","text":"___ the street at the corner.","translation":"Köşeden karşıya geç.","answer":"Cross","choices":["Cross","Pass","Across"]},
+            {"type":"translate","text":"İkinci sokaktan sağa dön.","lang":"tr","answers":["Take the second street on the right","Turn right at the second street","Take the second right"],"tokens":["street","right","turn","second","on","Take","the","from","the"]},
+            {"type":"translate","text":"Go straight on. The bank is on your left.","lang":"en","answers":["Düz git. Banka solunda","Düz gidin. Banka solunuzda"],"tokens":["solunda","Banka","Düz","git","sağında","eczane"]},
+            {"type":"listen","text":"Turn right at the bakery","answers":["Turn right at the bakery"]},
+            {"type":"match","pairs":[["sola dön","turn left"],["sağa dön","turn right"],["düz git","go straight on"],["karşıya geç","cross"],["trafik ışıkları","traffic lights"]]},
+            {"type":"speak","text":"Turn left at the traffic lights","translation":"Trafik ışıklarından sola dön."}
+          ]
+        },
+        {
+          "id": "s2u8l4",
+          "type": "lesson",
+          "title": "Let's...",
+          "description": "öneri ve tarif fiilleri",
+          "exercises": [
+            {"type":"select","prompt":"doğramak","answer":"cut","choices":[{"text":"cut","emoji":"🔪"},{"text":"add","emoji":"➕"},{"text":"mix","emoji":"🥣"},{"text":"boil","emoji":"♨️"}]},
+            {"type":"fillBlank","text":"___ go to the park!","translation":"Hadi parka gidelim!","answer":"Let's","choices":["Let's","We","Let"]},
+            {"type":"fillBlank","text":"Let's ___ a cake.","translation":"Hadi kek yapalım.","answer":"make","choices":["do","making","make"]},
+            {"type":"fillBlank","text":"___ the onions and put them in the pan.","translation":"Soğanları doğra ve tavaya koy.","answer":"Cut","choices":["Cut","Cutting","Cuts"]},
+            {"type":"translate","text":"Hadi sinemaya gidelim.","lang":"tr","answers":["Let's go to the cinema"],"tokens":["go","to","the","Let's","we","goes","cinema"]},
+            {"type":"translate","text":"Boil the water and add the rice.","lang":"en","answers":["Suyu kaynat ve pirinci ekle","Suyu kaynatın ve pirinci ekleyin"],"tokens":["kaynat","kes","sütü","pirinci","ekle","ve","Suyu"]},
+            {"type":"listen","text":"Mix the eggs and the sugar","answers":["Mix the eggs and the sugar"]},
+            {"type":"match","pairs":[["karıştır","mix"],["ekle","add"],["doğra","cut"],["kaynat","boil"],["koy","put"]]},
+            {"type":"translate","text":"Yavaşça karıştır.","lang":"tr","answers":["Mix slowly","Stir slowly"],"tokens":["slowly","slow","Mix","Mixes"]},
+            {"type":"speak","text":"Let's cook dinner together","translation":"Hadi akşam yemeğini birlikte yapalım."}
+          ]
+        },
+        {
+          "id": "s2u8t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u8c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u9",
+      "title": "Yapabilirim",
+      "description": "can / can't: yetenek, rica ve izin",
+      "color": "0xFF00A3C4",
+      "nodes": [
+        {
+          "id": "s2u9l1",
+          "type": "lesson",
+          "title": "I can, I can't",
+          "description": "yetenekler",
+          "exercises": [
+            {"type":"select","prompt":"bisiklete binmek","answer":"ride a bike","choices":[{"text":"drive a car","emoji":"🚗"},{"text":"climb a tree","emoji":"🌳"},{"text":"play the piano","emoji":"🎹"},{"text":"ride a bike","emoji":"🚲"}]},
+            {"type":"fillBlank","text":"I ___ swim. I love the sea!","translation":"Yüzebilirim. Denizi çok severim!","answer":"can","choices":["can't","can","am"]},
+            {"type":"fillBlank","text":"Kerem can ___ the piano.","translation":"Kerem piyano çalabilir.","answer":"play","choices":["plays","play","to play"]},
+            {"type":"fillBlank","text":"My grandma can't ___ a car.","translation":"Ninem araba kullanamaz.","answer":"drive","choices":["drive","driving","use"]},
+            {"type":"translate","text":"Sam iyi yemek yapabilir.","lang":"tr","answers":["Sam can cook well","Sam can cook very well"],"tokens":["Sam","can","cook","good","cooks","well"]},
+            {"type":"translate","text":"I can't sing, but I can dance.","lang":"en","answers":["Şarkı söyleyemem ama dans edebilirim","Şarkı söyleyemiyorum ama dans edebiliyorum"],"tokens":["yüzebilirim","ama","dans","ve","söyleyemem","Şarkı","edebilirim"]},
+            {"type":"listen","text":"Mia can ride a bike","answers":["Mia can ride a bike"]},
+            {"type":"match","pairs":[["yüzmek","swim"],["tırmanmak","climb"],["zıplamak","jump"],["şarkı söylemek","sing"],["piyano çalmak","play the piano"]]},
+            {"type":"translate","text":"Kedim ağaca tırmanabilir.","lang":"tr","answers":["My cat can climb a tree","My cat can climb trees"],"tokens":["climbs","a","My","can","climb","to","cat","tree"]},
+            {"type":"speak","text":"I can swim very well","translation":"Çok iyi yüzebilirim."}
+          ]
+        },
+        {
+          "id": "s2u9l2",
+          "type": "lesson",
+          "title": "Can you...?",
+          "description": "yetenek sormak ve rica",
+          "exercises": [
+            {"type":"select","prompt":"tamir etmek","answer":"fix","choices":[{"text":"type","emoji":"⌨️"},{"text":"jump","emoji":"🤸"},{"text":"lift","emoji":"🏋️"},{"text":"fix","emoji":"🔧"}]},
+            {"type":"fillBlank","text":"___ you speak Spanish?","translation":"İspanyolca konuşabilir misin?","answer":"Can","choices":["Are","Do can","Can"]},
+            {"type":"fillBlank","text":"Can Mia type fast? Yes, she ___.","translation":"Mia hızlı yazabilir mi? Evet, yazabilir.","answer":"can","choices":["does","is","can"]},
+            {"type":"fillBlank","text":"Can you ___ me? This box is heavy.","translation":"Bana yardım edebilir misin? Bu kutu ağır.","answer":"help","choices":["help","help to","helping"]},
+            {"type":"translate","text":"Bisikletimi tamir edebilir misin?","lang":"tr","answers":["Can you fix my bike","Can you repair my bike"],"tokens":["Can","bike","Do","my","you","fix","fixing"]},
+            {"type":"translate","text":"Can your brother swim?","lang":"en","answers":["Erkek kardeşin yüzebilir mi?","Kardeşin yüzebilir mi?"],"tokens":["mi","yüzebilir","senin","Erkek","kardeşin","koşabilir"]},
+            {"type":"listen","text":"Can you climb that tree?","answers":["Can you climb that tree?"]},
+            {"type":"match","pairs":[["tamir etmek","fix"],["klavyede yazmak","type"],["kaldırmak","lift"],["yardım etmek","help"],["kullanmak","use"]]},
+            {"type":"translate","text":"Hayır, yapamam.","lang":"tr","answers":["No, I can't","No, I cannot"],"tokens":["not","can't","don't","No","I"]},
+            {"type":"speak","text":"Can you help me, please?","translation":"Bana yardım edebilir misin, lütfen?"}
+          ]
+        },
+        {
+          "id": "s2u9s",
+          "type": "story",
+          "title": "Yetenek gösterisi",
+          "description": "Sınıf cuma günkü yetenek gösterisine hazırlanıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Ayla","avatar":"👩‍🏫","text":"We have a talent show on Friday. What can you do?","translation":"Cuma günü yetenek gösterimiz var. Neler yapabilirsiniz?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"I can play the guitar.","translation":"Ben gitar çalabilirim."},
+            {"kind":"line","speaker":"Ayla","avatar":"👩‍🏫","text":"Great! Can you sing, too?","translation":"Harika! Şarkı da söyleyebilir misin?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"No, I can't sing at all!","translation":"Hayır, hiç şarkı söyleyemem!"},
+            {"kind":"question","prompt":"Deniz ne yapabilir?","choices":["Şarkı söyleyebilir","Dans edebilir","Gitar çalabilir"],"answer":"Gitar çalabilir"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"I can sing! Deniz, let's do it together.","translation":"Ben şarkı söyleyebilirim! Deniz, hadi birlikte yapalım."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"And I can jump very high!","translation":"Ben de çok yükseğe zıplayabilirim!"},
+            {"kind":"line","speaker":"Ayla","avatar":"👩‍🏫","text":"Can you do it on the stage, Kerem?","translation":"Bunu sahnede yapabilir misin Kerem?"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Of course! Watch me!","translation":"Tabii ki! İzleyin beni!"},
+            {"kind":"question","prompt":"Kerem ne yapabiliyor?","choices":["Gitar çalabiliyor","Çok yükseğe zıplayabiliyor","Şarkı söyleyebiliyor"],"answer":"Çok yükseğe zıplayabiliyor"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Can we use the piano, please?","translation":"Piyanoyu kullanabilir miyiz, lütfen?"},
+            {"kind":"line","speaker":"Ayla","avatar":"👩‍🏫","text":"Yes, of course. But be careful with it!","translation":"Evet, tabii. Ama dikkatli olun!"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Thank you! Let's practise, Elif.","translation":"Teşekkürler! Hadi prova yapalım Elif."},
+            {"kind":"question","prompt":"Elif ve Deniz neyi kullanabilir?","choices":["Mikrofonu","Bilgisayarı","Piyanoyu"],"answer":"Piyanoyu"}
+          ]
+        },
+        {
+          "id": "s2u9l3",
+          "type": "lesson",
+          "title": "Can I...?",
+          "description": "izin istemek",
+          "exercises": [
+            {"type":"select","prompt":"ödünç almak","answer":"borrow","choices":[{"text":"borrow","emoji":"🤝"},{"text":"sell","emoji":"💰"},{"text":"buy","emoji":"🛒"},{"text":"give","emoji":"🎁"}]},
+            {"type":"fillBlank","text":"___ I borrow your pen?","translation":"Kalemini ödünç alabilir miyim?","answer":"Can","choices":["Can","Do","Am"]},
+            {"type":"fillBlank","text":"Can I ___ your phone, please?","translation":"Telefonunu kullanabilir miyim lütfen?","answer":"use","choices":["using","use","to use"]},
+            {"type":"fillBlank","text":"Can I open the window? Yes, of ___.","translation":"Pencereyi açabilir miyim? Evet, tabii ki.","answer":"course","choices":["course","yes","sure"]},
+            {"type":"translate","text":"Biraz su alabilir miyim, lütfen?","lang":"tr","answers":["Can I have some water, please"],"tokens":["please","give","Can","have","some","I","water","take"]},
+            {"type":"translate","text":"Sorry, you can't park here.","lang":"en","answers":["Üzgünüm, buraya park edemezsiniz","Pardon, buraya park edemezsin"],"tokens":["Üzgünüm","edebilirsiniz","park","buraya","edemezsiniz","orada"]},
+            {"type":"listen","text":"Can I sit here?","answers":["Can I sit here?"]},
+            {"type":"match","pairs":[["ödünç almak","borrow"],["kullanmak","use"],["tabii ki","of course"],["olur","sure"],["üzgünüm","sorry"]]},
+            {"type":"translate","text":"Bisikletini ödünç alabilir miyim?","lang":"tr","answers":["Can I borrow your bike"],"tokens":["borrow","bike","lend","I","you","Can","your"]},
+            {"type":"speak","text":"Can I use your charger?","translation":"Şarj aletini kullanabilir miyim?"}
+          ]
+        },
+        {
+          "id": "s2u9l4",
+          "type": "lesson",
+          "title": "Ne kadar iyi?",
+          "description": "well, a little, at all",
+          "exercises": [
+            {"type":"select","prompt":"hızlı","answer":"fast","choices":[{"text":"fast","emoji":"⚡"},{"text":"high","emoji":"🪜"},{"text":"slow","emoji":"🐢"},{"text":"heavy","emoji":"🏋️"}]},
+            {"type":"fillBlank","text":"Elif can speak English very ___.","translation":"Elif çok iyi İngilizce konuşabilir.","answer":"well","choices":["well","much","good"]},
+            {"type":"fillBlank","text":"I can't cook at ___.","translation":"Hiç yemek yapamam.","answer":"all","choices":["never","nothing","all"]},
+            {"type":"fillBlank","text":"Sam can speak Turkish a ___.","translation":"Sam biraz Türkçe konuşabilir.","answer":"little","choices":["few","little","small"]},
+            {"type":"translate","text":"Babam çok hızlı yazabilir.","lang":"tr","answers":["My father can type very fast","My dad can type very fast"],"tokens":["father","types","can","type","fast","My","quick","very"]},
+            {"type":"translate","text":"My grandma can't use a computer at all.","lang":"en","answers":["Ninem bilgisayarı hiç kullanamaz","Büyükannem bilgisayarı hiç kullanamaz"],"tokens":["hiç","iyi","kullanamaz","bilgisayarı","Ninem","telefonu"]},
+            {"type":"listen","text":"Kerem can play chess very well","answers":["Kerem can play chess very well"]},
+            {"type":"match","pairs":[["iyi","well"],["hızlı","fast"],["biraz","a little"],["hiç","at all"],["ağır","heavy"]]},
+            {"type":"translate","text":"Bu kutuyu kaldıramam. Çok ağır.","lang":"tr","answers":["I can't lift this box. It's very heavy","I can't lift this box. It is very heavy","I cannot lift this box. It's very heavy"],"tokens":["not","very","can't","I","lift","box","too","It's","heavy","this"]},
+            {"type":"speak","text":"I can cook a little","translation":"Biraz yemek yapabilirim."}
+          ]
+        },
+        {
+          "id": "s2u9t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u9c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u10",
+      "title": "Mutfakta",
+      "description": "Sayılabilen ve sayılamayan isimler, some/any",
+      "color": "0xFFF2A900",
+      "nodes": [
+        {
+          "id": "s2u10l1",
+          "type": "lesson",
+          "title": "Sayılabilen, sayılamayan",
+          "description": "eggs, bread, water",
+          "exercises": [
+            {"type":"select","prompt":"un","answer":"flour","choices":[{"text":"flour","emoji":"🌾"},{"text":"salt","emoji":"🧂"},{"text":"rice","emoji":"🍚"},{"text":"butter","emoji":"🧈"}]},
+            {"type":"select","prompt":"bal","answer":"honey","choices":[{"text":"honey","emoji":"🍯"},{"text":"oil","emoji":"🛢️"},{"text":"juice","emoji":"🧃"},{"text":"cheese","emoji":"🧀"}]},
+            {"type":"fillBlank","text":"I need two ___.","translation":"İki yumurtaya ihtiyacım var.","answer":"eggs","choices":["egg","eggs","egges"]},
+            {"type":"fillBlank","text":"We need ___ bread.","translation":"Biraz ekmeğe ihtiyacımız var.","answer":"some","choices":["a","two","some"]},
+            {"type":"translate","text":"Bir bardak su, lütfen.","lang":"tr","answers":["A glass of water, please"],"tokens":["an","water","waters","please","glass","of","A"]},
+            {"type":"fillBlank","text":"There are three ___ in the bag.","translation":"Çantada üç domates var.","answer":"tomatoes","choices":["tomatoes","tomato","tomatos"]},
+            {"type":"translate","text":"I have some cheese and some olives.","lang":"en","answers":["Biraz peynirim ve birkaç zeytinim var","Biraz peynir ve zeytinim var"],"tokens":["ve","peynirim","ekmek","var","birkaç","zeytinim","bal","Biraz"]},
+            {"type":"listen","text":"We need some rice and two onions","answers":["We need some rice and two onions"]},
+            {"type":"match","pairs":[["un","flour"],["tuz","salt"],["yağ","oil"],["tereyağı","butter"],["pirinç","rice"]]},
+            {"type":"speak","text":"I want some bread and cheese","translation":"Biraz ekmek ve peynir istiyorum."}
+          ]
+        },
+        {
+          "id": "s2u10l2",
+          "type": "lesson",
+          "title": "some ve any",
+          "description": "biraz, hiç",
+          "exercises": [
+            {"type":"select","prompt":"patates","answer":"potato","choices":[{"text":"tomato","emoji":"🍅"},{"text":"onion","emoji":"🧅"},{"text":"potato","emoji":"🥔"},{"text":"apple","emoji":"🍎"}]},
+            {"type":"fillBlank","text":"Is there ___ milk in the fridge?","translation":"Buzdolabında hiç süt var mı?","answer":"any","choices":["some","a","any"]},
+            {"type":"fillBlank","text":"There isn't ___ sugar.","translation":"Hiç şeker yok.","answer":"any","choices":["some","any","no"]},
+            {"type":"fillBlank","text":"There are ___ apples on the table.","translation":"Masada birkaç elma var.","answer":"some","choices":["a","some","any"]},
+            {"type":"translate","text":"Hiç yumurtamız yok.","lang":"tr","answers":["We don't have any eggs","We haven't got any eggs","We have no eggs","We do not have any eggs"],"tokens":["eggs","some","don't","have","any","We","egg"]},
+            {"type":"translate","text":"Are there any potatoes?","lang":"en","answers":["Hiç patates var mı?","Patates var mı?"],"tokens":["Hiç","patates","mı","var","soğan","yok"]},
+            {"type":"listen","text":"There isn't any juice","answers":["There isn't any juice","There is not any juice"]},
+            {"type":"match","pairs":[["patates","potato"],["soğan","onion"],["domates","tomato"],["elma","apple"],["yumurta","egg"]]},
+            {"type":"translate","text":"Biraz bal istiyorum.","lang":"tr","answers":["I want some honey","I'd like some honey"],"tokens":["some","I","want","honey","a","any"]},
+            {"type":"speak","text":"Is there any bread?","translation":"Hiç ekmek var mı?"}
+          ]
+        },
+        {
+          "id": "s2u10s",
+          "type": "story",
+          "title": "Alışveriş listesi",
+          "description": "Elif ve babası mutfakta eksikleri yazıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"Elif, let's make a shopping list.","translation":"Elif, hadi bir alışveriş listesi yapalım."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"OK. Is there any milk?","translation":"Tamam. Hiç süt var mı?"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"No, there isn't. Write 'a bottle of milk'.","translation":"Hayır, yok. 'Bir şişe süt' yaz."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Are there any eggs?","translation":"Hiç yumurta var mı?"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"Yes, there are some eggs. But we need some bread.","translation":"Evet, birkaç yumurta var. Ama ekmek lazım."},
+            {"kind":"question","prompt":"Hangisi evde yok?","choices":["Peynir","Yumurta","Süt"],"answer":"Süt"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"A loaf of bread. What about cheese?","translation":"Bir somun ekmek. Peki ya peynir?"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"There's some cheese, but there isn't any butter.","translation":"Biraz peynir var ama hiç tereyağı yok."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"And Kerem wants some honey for breakfast.","translation":"Kerem de kahvaltı için biraz bal istiyor."},
+            {"kind":"question","prompt":"Kerem ne istiyor?","choices":["Meyve suyu","Tereyağı","Bal"],"answer":"Bal"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"OK. A jar of honey. Anything else?","translation":"Tamam. Bir kavanoz bal. Başka bir şey?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Yes! A kilo of apples, please.","translation":"Evet! Bir kilo elma, lütfen."},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"Good. Milk, bread, butter, honey and apples.","translation":"Güzel. Süt, ekmek, tereyağı, bal ve elma."},
+            {"kind":"question","prompt":"Kaç kilo elma alacaklar?","choices":["İki","Üç","Bir"],"answer":"Bir"}
+          ]
+        },
+        {
+          "id": "s2u10l3",
+          "type": "lesson",
+          "title": "Bir şişe, bir paket",
+          "description": "a bottle of, a loaf of",
+          "exercises": [
+            {"type":"select","prompt":"bir şişe","answer":"a bottle of","choices":[{"text":"a kilo of","emoji":"⚖️"},{"text":"a bottle of","emoji":"🍾"},{"text":"a loaf of","emoji":"🍞"},{"text":"a packet of","emoji":"📦"}]},
+            {"type":"select","prompt":"bir somun","answer":"a loaf of","choices":[{"text":"a bottle of","emoji":"🍾"},{"text":"a piece of","emoji":"🍰"},{"text":"a glass of","emoji":"🥛"},{"text":"a loaf of","emoji":"🍞"}]},
+            {"type":"fillBlank","text":"Can I have a ___ of cake, please?","translation":"Bir dilim kek alabilir miyim, lütfen?","answer":"piece","choices":["bottle","loaf","piece"]},
+            {"type":"fillBlank","text":"I want a bottle ___ water.","translation":"Bir şişe su istiyorum.","answer":"of","choices":["with","in","of"]},
+            {"type":"fillBlank","text":"Buy a ___ of rice, please.","translation":"Bir paket pirinç al, lütfen.","answer":"packet","choices":["packet","loaf","glass"]},
+            {"type":"translate","text":"İki kilo patates, lütfen.","lang":"tr","answers":["Two kilos of potatoes, please"],"tokens":["of","potatoes","please","kilo","potato","Two","kilos"]},
+            {"type":"translate","text":"I drink a glass of milk every night.","lang":"en","answers":["Her gece bir bardak süt içerim","Her akşam bir bardak süt içerim"],"tokens":["bardak","şişe","gece","içerim","su","bir","süt","Her"]},
+            {"type":"listen","text":"A packet of rice and a bottle of oil","answers":["A packet of rice and a bottle of oil"]},
+            {"type":"match","pairs":[["bir şişe","a bottle of"],["bir paket","a packet of"],["bir kilo","a kilo of"],["bir somun","a loaf of"],["bir dilim","a piece of"]]},
+            {"type":"speak","text":"A loaf of bread, please","translation":"Bir somun ekmek, lütfen."}
+          ]
+        },
+        {
+          "id": "s2u10l4",
+          "type": "lesson",
+          "title": "Alışveriş listesi",
+          "description": "listeyi tamamlamak",
+          "exercises": [
+            {"type":"select","prompt":"meyve suyu","answer":"juice","choices":[{"text":"tea","emoji":"☕"},{"text":"milk","emoji":"🥛"},{"text":"juice","emoji":"🧃"},{"text":"water","emoji":"💧"}]},
+            {"type":"select","prompt":"zeytin","answer":"olive","choices":[{"text":"onion","emoji":"🧅"},{"text":"cheese","emoji":"🧀"},{"text":"olive","emoji":"🫒"},{"text":"egg","emoji":"🥚"}]},
+            {"type":"fillBlank","text":"We need some ___ for the salad.","translation":"Salata için birkaç domates lazım.","answer":"tomatoes","choices":["tomato","rice","tomatoes"]},
+            {"type":"fillBlank","text":"Is there ___ butter in the fridge?","translation":"Buzdolabında hiç tereyağı var mı?","answer":"any","choices":["any","a","many"]},
+            {"type":"translate","text":"Alışveriş listesinde ne var?","lang":"tr","answers":["What's on the shopping list","What is on the shopping list"],"tokens":["shop","shopping","list","on","in","the","What's"]},
+            {"type":"translate","text":"We don't need any salt.","lang":"en","answers":["Hiç tuza ihtiyacımız yok","Tuza ihtiyacımız yok"],"tokens":["var","Hiç","şeker","ihtiyacımız","tuza","yok"]},
+            {"type":"listen","text":"Don't forget the olive oil","answers":["Don't forget the olive oil","Do not forget the olive oil"]},
+            {"type":"match","pairs":[["zeytin","olive"],["meyve suyu","juice"],["kâse","bowl"],["peynir","cheese"],["alışveriş listesi","shopping list"]]},
+            {"type":"translate","text":"Biraz pirinç ve iki soğan al.","lang":"tr","answers":["Buy some rice and two onions","Get some rice and two onions"],"tokens":["rice","Buy","and","two","onions","any","onion","some"]},
+            {"type":"speak","text":"We need some olive oil","translation":"Biraz zeytinyağı lazım."}
+          ]
+        },
+        {
+          "id": "s2u10t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u10c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u11",
+      "title": "Saat ve tarih",
+      "description": "Saat, ay ve tarih; at/on/in ile zaman",
+      "color": "0xFF5A67D8",
+      "nodes": [
+        {
+          "id": "s2u11l1",
+          "type": "lesson",
+          "title": "Saat kaç?",
+          "description": "half past, quarter to",
+          "exercises": [
+            {"type":"select","prompt":"çeyrek","answer":"quarter","choices":[{"text":"quarter","emoji":"🕒"},{"text":"hour","emoji":"⌛"},{"text":"minute","emoji":"⏱️"},{"text":"half","emoji":"🕧"}]},
+            {"type":"fillBlank","text":"It's half ___ seven.","translation":"Saat yedi buçuk.","answer":"past","choices":["to","and","past"]},
+            {"type":"fillBlank","text":"It's quarter ___ nine.","translation":"Saat dokuza çeyrek var.","answer":"to","choices":["to","past","at"]},
+            {"type":"fillBlank","text":"It's ten ___.","translation":"Saat tam on.","answer":"o'clock","choices":["o'clock","hours","clock"]},
+            {"type":"translate","text":"Saat sekizi çeyrek geçiyor.","lang":"tr","answers":["It's quarter past eight","It's a quarter past eight","It is quarter past eight","It is a quarter past eight"],"tokens":["eight","half","past","quarter","It's","to"]},
+            {"type":"translate","text":"It's twenty to five.","lang":"en","answers":["Saat beşe yirmi var","Beşe yirmi var"],"tokens":["Saat","yirmi","geçiyor","var","beşe","dört"]},
+            {"type":"listen","text":"It's half past three","answers":["It's half past three","It is half past three"]},
+            {"type":"match","pairs":[["saat tam üç","three o'clock"],["üç buçuk","half past three"],["üçü çeyrek geçiyor","quarter past three"],["üçe çeyrek var","quarter to three"],["dakika","minute"]]},
+            {"type":"translate","text":"Saat kaç?","lang":"tr","answers":["What time is it","What's the time","What is the time"],"tokens":["much","is","time","it","How","clock","What"]},
+            {"type":"speak","text":"It's quarter to ten","translation":"Saat ona çeyrek var."}
+          ]
+        },
+        {
+          "id": "s2u11l2",
+          "type": "lesson",
+          "title": "at, on, in",
+          "description": "saat, gün ve ay",
+          "exercises": [
+            {"type":"select","prompt":"randevu","answer":"appointment","choices":[{"text":"birthday","emoji":"🎂"},{"text":"appointment","emoji":"📋"},{"text":"weekend","emoji":"🏖️"},{"text":"calendar","emoji":"📅"}]},
+            {"type":"fillBlank","text":"My lesson is ___ ten o'clock.","translation":"Dersim saat onda.","answer":"at","choices":["on","at","in"]},
+            {"type":"fillBlank","text":"I don't work ___ Sunday.","translation":"Pazar günü çalışmam.","answer":"on","choices":["at","in","on"]},
+            {"type":"fillBlank","text":"We go on holiday ___ July.","translation":"Temmuzda tatile gideriz.","answer":"in","choices":["on","at","in"]},
+            {"type":"fillBlank","text":"Her birthday is ___ the weekend.","translation":"Onun doğum günü hafta sonunda.","answer":"at","choices":["at","in","to"]},
+            {"type":"translate","text":"Doktor randevum salı günü.","lang":"tr","answers":["My doctor's appointment is on Tuesday","My appointment with the doctor is on Tuesday"],"tokens":["Tuesday","My","in","on","doctor's","appointment","is","at"]},
+            {"type":"translate","text":"The shop opens at nine in the morning.","lang":"en","answers":["Dükkân sabah dokuzda açılır","Dükkân sabah saat dokuzda açılır"],"tokens":["akşam","dokuzda","açılır","sabah","Dükkân","kapanır"]},
+            {"type":"listen","text":"I have an appointment on Friday","answers":["I have an appointment on Friday"]},
+            {"type":"match","pairs":[["saatle","at"],["günle","on"],["ayla","in"],["hafta sonu","weekend"],["takvim","calendar"]]},
+            {"type":"speak","text":"See you on Monday at five","translation":"Pazartesi saat beşte görüşürüz."}
+          ]
+        },
+        {
+          "id": "s2u11s",
+          "type": "story",
+          "title": "Sürpriz parti",
+          "description": "Elif ve Deniz, annenin doğum günü için plan yapıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Deniz, when is your birthday?","translation":"Deniz, doğum günün ne zaman?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"It's on the third of May. And yours?","translation":"Üç mayısta. Ya seninki?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Mine is in December. But my mom's birthday is on Saturday!","translation":"Benimki aralıkta. Ama annemin doğum günü cumartesi!"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Let's have a surprise party!","translation":"Hadi sürpriz parti yapalım!"},
+            {"kind":"question","prompt":"Deniz'in doğum günü ne zaman?","choices":["Üç mayısta","Cumartesi","Aralıkta"],"answer":"Üç mayısta"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Good idea! What's the date today?","translation":"İyi fikir! Bugün ayın kaçı?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"It's the twentieth. Saturday is the twenty-third.","translation":"Bugün yirmisi. Cumartesi yirmi üçü."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Mom finishes work at six. Let's start at seven.","translation":"Annem işi altıda bitiriyor. Saat yedide başlayalım."},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"OK. I can come at half past five and help.","translation":"Tamam. Beş buçukta gelip yardım edebilirim."},
+            {"kind":"question","prompt":"Parti saat kaçta başlıyor?","choices":["Yedide","Altıda","Beş buçukta"],"answer":"Yedide"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Kerem, don't tell Mom!","translation":"Kerem, anneme söyleme!"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Tell her what? I don't know anything!","translation":"Neyi? Ben hiçbir şey bilmiyorum ki!"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Ha ha! Perfect, Kerem.","translation":"Ha ha! Mükemmel, Kerem."},
+            {"kind":"question","prompt":"Parti kimin için?","choices":["Kerem için","Elif'in annesi için","Deniz için"],"answer":"Elif'in annesi için"}
+          ]
+        },
+        {
+          "id": "s2u11l3",
+          "type": "lesson",
+          "title": "Aylar ve tarihler",
+          "description": "January, the first of May",
+          "exercises": [
+            {"type":"select","prompt":"ocak","answer":"January","choices":[{"text":"January","emoji":"❄️"},{"text":"October","emoji":"🍂"},{"text":"March","emoji":"🌱"},{"text":"June","emoji":"☀️"}]},
+            {"type":"select","prompt":"üçüncü","answer":"third","choices":[{"text":"fourth","emoji":"🎗️"},{"text":"first","emoji":"🥇"},{"text":"third","emoji":"🥉"},{"text":"second","emoji":"🥈"}]},
+            {"type":"fillBlank","text":"Today is the ___ of March.","translation":"Bugün bir mart.","answer":"first","choices":["once","one","first"]},
+            {"type":"fillBlank","text":"My birthday is ___ the fifth of June.","translation":"Doğum günüm beş haziranda.","answer":"on","choices":["at","in","on"]},
+            {"type":"fillBlank","text":"December is the ___ month of the year.","translation":"Aralık yılın on ikinci ayı.","answer":"twelfth","choices":["twelfth","twelve","twelveth"]},
+            {"type":"translate","text":"Bugün ayın kaçı?","lang":"tr","answers":["What's the date today","What's today's date","What is the date today","What is today's date"],"tokens":["the","much","today","day","How","What's","date"]},
+            {"type":"translate","text":"We start school in September.","lang":"en","answers":["Okula eylülde başlarız","Eylülde okula başlarız"],"tokens":["eylülde","Okula","ekimde","başlarız","bitiririz"]},
+            {"type":"listen","text":"My birthday is on the second of July","answers":["My birthday is on the second of July"]},
+            {"type":"match","pairs":[["ocak","January"],["mart","March"],["temmuz","July"],["eylül","September"],["aralık","December"]]},
+            {"type":"speak","text":"Today is the first of May","translation":"Bugün bir mayıs."}
+          ]
+        },
+        {
+          "id": "s2u11l4",
+          "type": "lesson",
+          "title": "Randevu ayarlamak",
+          "description": "Are you free on…?",
+          "exercises": [
+            {"type":"select","prompt":"yıl","answer":"year","choices":[{"text":"week","emoji":"📅"},{"text":"hour","emoji":"⌛"},{"text":"year","emoji":"🎆"},{"text":"month","emoji":"🗓️"}]},
+            {"type":"fillBlank","text":"Are you free ___ Thursday?","translation":"Perşembe boş musun?","answer":"on","choices":["in","on","at"]},
+            {"type":"fillBlank","text":"Let's meet ___ five o'clock.","translation":"Saat beşte buluşalım.","answer":"at","choices":["on","at","in"]},
+            {"type":"fillBlank","text":"Sorry, I can't. I have a doctor's ___ at four.","translation":"Üzgünüm, olmaz. Saat dörtte doktor randevum var.","answer":"appointment","choices":["date","appointment","hour"]},
+            {"type":"translate","text":"Cuma saat üç sana uyar mı?","lang":"tr","answers":["Is Friday at three OK for you","Is three on Friday OK for you"],"tokens":["Is","for","at","three","good","you","in","Friday","OK"]},
+            {"type":"translate","text":"See you next week!","lang":"en","answers":["Haftaya görüşürüz!","Gelecek hafta görüşürüz!"],"tokens":["Haftaya","yarın","görüşürüz","ay"]},
+            {"type":"listen","text":"Is Saturday at ten OK?","answers":["Is Saturday at ten OK?"]},
+            {"type":"match","pairs":[["hafta","week"],["ay (takvim)","month"],["yıl","year"],["saat (süre)","hour"],["doğum günü","birthday"]]},
+            {"type":"translate","text":"Toplantı yarın saat on birde.","lang":"tr","answers":["The meeting is tomorrow at eleven","The meeting is at eleven tomorrow"],"tokens":["in","The","meeting","on","at","eleven","is","tomorrow"]},
+            {"type":"speak","text":"Let's meet on Saturday","translation":"Cumartesi buluşalım."}
+          ]
+        },
+        {
+          "id": "s2u11t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u11c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u12",
+      "title": "Tatilde",
+      "description": "a, an, the ve bölüm tekrarı",
+      "color": "0xFFFF7A59",
+      "nodes": [
+        {
+          "id": "s2u12l1",
+          "type": "lesson",
+          "title": "a ve an",
+          "description": "an island, a museum",
+          "exercises": [
+            {"type":"select","prompt":"ada","answer":"island","choices":[{"text":"river","emoji":"🏞️"},{"text":"mountain","emoji":"⛰️"},{"text":"beach","emoji":"🏖️"},{"text":"island","emoji":"🏝️"}]},
+            {"type":"select","prompt":"müze","answer":"museum","choices":[{"text":"boat","emoji":"⛵"},{"text":"hotel","emoji":"🏨"},{"text":"castle","emoji":"🏰"},{"text":"museum","emoji":"🏛️"}]},
+            {"type":"fillBlank","text":"There is ___ old castle on the hill.","translation":"Tepede eski bir kale var.","answer":"an","choices":["the","an","a"]},
+            {"type":"fillBlank","text":"My father is ___ engineer.","translation":"Babam bir mühendis.","answer":"an","choices":["one","an","a"]},
+            {"type":"fillBlank","text":"She has ___ umbrella and a map.","translation":"Onun bir şemsiyesi ve bir haritası var.","answer":"an","choices":["a","one","an"]},
+            {"type":"translate","text":"Tatilde bir otelde kalırız.","lang":"tr","answers":["We stay in a hotel on holiday","We stay at a hotel on holiday"],"tokens":["holiday","stay","on","one","in","hotel","an","a","We"]},
+            {"type":"translate","text":"There is a boat on the river.","lang":"en","answers":["Nehirde bir tekne var","Nehrin üstünde bir tekne var"],"tokens":["tekne","denizde","Nehirde","var","ada","bir"]},
+            {"type":"listen","text":"The museum opens in an hour","answers":["The museum opens in an hour"]},
+            {"type":"match","pairs":[["ada","island"],["dağ","mountain"],["nehir","river"],["tekne","boat"],["kale","castle"]]},
+            {"type":"speak","text":"It's an old museum","translation":"Eski bir müze."}
+          ]
+        },
+        {
+          "id": "s2u12l2",
+          "type": "lesson",
+          "title": "the",
+          "description": "the sun, the map",
+          "exercises": [
+            {"type":"select","prompt":"güneş","answer":"sun","choices":[{"text":"sea","emoji":"🌊"},{"text":"moon","emoji":"🌙"},{"text":"sky","emoji":"🌌"},{"text":"sun","emoji":"☀️"}]},
+            {"type":"fillBlank","text":"___ sun is very hot today.","translation":"Bugün güneş çok sıcak.","answer":"The","choices":["An","The","A"]},
+            {"type":"fillBlank","text":"I have a map. ___ map is very old.","translation":"Bir haritam var. Harita çok eski.","answer":"The","choices":["The","One","A"]},
+            {"type":"fillBlank","text":"Look at ___ moon! It's beautiful.","translation":"Aya bak! Çok güzel.","answer":"the","choices":["an","a","the"]},
+            {"type":"translate","text":"Gökyüzü bugün çok mavi.","lang":"tr","answers":["The sky is very blue today","Today the sky is very blue"],"tokens":["very","The","A","sky","blue","is","today"]},
+            {"type":"translate","text":"The hotel is near the beach.","lang":"en","answers":["Otel plaja yakın","Otel sahile yakın"],"tokens":["plaja","Otel","yakın","uzak","müze"]},
+            {"type":"listen","text":"The sea is warm in August","answers":["The sea is warm in August"]},
+            {"type":"match","pairs":[["güneş","sun"],["ay (gökte)","moon"],["gökyüzü","sky"],["deniz","sea"],["plaj","beach"]]},
+            {"type":"translate","text":"Rehber bize bir harita verir. Harita ücretsiz.","lang":"tr","answers":["The guide gives us a map. The map is free"],"tokens":["a","gives","guide","A","an","us","free","is","The","map","The","map"]},
+            {"type":"speak","text":"The view is amazing","translation":"Manzara harika."}
+          ]
+        },
+        {
+          "id": "s2u12s",
+          "type": "story",
+          "title": "Antalya'dan kartpostal",
+          "description": "Elif tatilde Sam ve Mia’ya kartpostal yazıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Mom, can I buy a postcard for Sam?","translation":"Anne, Sam için bir kartpostal alabilir miyim?"},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"Of course. Look, there's a shop opposite the hotel.","translation":"Tabii. Bak, otelin karşısında bir dükkân var."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"This postcard has a castle and a boat on it.","translation":"Bu kartpostalda bir kale ve bir tekne var."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"The castle is near our hotel!","translation":"Kale bizim otelin yakınında!"},
+            {"kind":"question","prompt":"Kartpostalda ne var?","choices":["Bir müze","Bir kale ve bir tekne","Bir dağ ve bir nehir"],"answer":"Bir kale ve bir tekne"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Dear Sam, we are in Antalya. The sea is beautiful.","translation":"Sevgili Sam, Antalya'dayız. Deniz çok güzel."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"The sun is hot and the beach is very busy.","translation":"Güneş sıcak, plaj da çok kalabalık."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Write about the boat trip, too!","translation":"Tekne gezisini de yaz!"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Tomorrow we take a boat to an island.","translation":"Yarın tekneyle bir adaya gidiyoruz."},
+            {"kind":"question","prompt":"Yarın nereye gidiyorlar?","choices":["Bir müzeye","Dağa","Bir adaya"],"answer":"Bir adaya"},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"Don't forget a souvenir for Sam and Mia.","translation":"Sam ve Mia için hediyelik eşyayı unutma."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"I have two small boats for them. They're blue!","translation":"Onlar için iki küçük tekne aldım. Mavi renkteler!"},
+            {"kind":"question","prompt":"Elif, Sam ve Mia için ne almış?","choices":["İki küçük tekne","İki kartpostal","Bir harita"],"answer":"İki küçük tekne"}
+          ]
+        },
+        {
+          "id": "s2u12l3",
+          "type": "lesson",
+          "title": "Artikel var mı, yok mu?",
+          "description": "I love cats, play the guitar",
+          "exercises": [
+            {"type":"select","prompt":"rehber","answer":"guide","choices":[{"text":"tourist","emoji":"📸"},{"text":"waiter","emoji":"🍽️"},{"text":"guide","emoji":"🧑‍💼"},{"text":"driver","emoji":"🚌"}]},
+            {"type":"translate","text":"Kedileri çok severim.","lang":"tr","answers":["I love cats","I really like cats"],"tokens":["love","cats","I","the","cat","a"]},
+            {"type":"fillBlank","text":"Deniz plays ___ guitar very well.","translation":"Deniz çok iyi gitar çalar.","answer":"the","choices":["a","the","an"]},
+            {"type":"fillBlank","text":"Kerem goes to ___ at eight.","translation":"Kerem sekizde okula gider.","answer":"school","choices":["school","the school","a school"]},
+            {"type":"fillBlank","text":"Let's go to ___ cinema tonight.","translation":"Bu akşam sinemaya gidelim.","answer":"the","choices":["the","some","an"]},
+            {"type":"translate","text":"Tourists love the museums in İstanbul.","lang":"en","answers":["Turistler İstanbul'daki müzeleri çok sever","Turistler İstanbul'daki müzelere bayılır"],"tokens":["Turistler","müzeleri","çok","otelleri","sever","İstanbul'daki"]},
+            {"type":"listen","text":"My brother plays the piano","answers":["My brother plays the piano"]},
+            {"type":"match","pairs":[["rehber","guide"],["turist","tourist"],["harita","map"],["kartpostal","postcard"],["hediyelik eşya","souvenir"]]},
+            {"type":"translate","text":"Akşam yemeğinden sonra televizyon izleriz.","lang":"tr","answers":["We watch TV after dinner","We watch television after dinner"],"tokens":["the","watch","TV","after","We","a","dinner"]},
+            {"type":"speak","text":"I go to school by bus","translation":"Okula otobüsle giderim."}
+          ]
+        },
+        {
+          "id": "s2u12l4",
+          "type": "lesson",
+          "title": "Bölüm tekrarı",
+          "description": "bölümün tüm konuları",
+          "exercises": [
+            {"type":"select","prompt":"manzara","answer":"view","choices":[{"text":"sky","emoji":"🌌"},{"text":"hill","emoji":"⛰️"},{"text":"view","emoji":"🌄"},{"text":"map","emoji":"🗺️"}]},
+            {"type":"select","prompt":"güneş gözlüğü","answer":"sunglasses","choices":[{"text":"glasses","emoji":"👓"},{"text":"sunglasses","emoji":"🕶️"},{"text":"hat","emoji":"👒"},{"text":"umbrella","emoji":"☂️"}]},
+            {"type":"fillBlank","text":"There ___ two museums near our hotel.","translation":"Otelimizin yakınında iki müze var.","answer":"are","choices":["is","have","are"]},
+            {"type":"fillBlank","text":"Our guide ___ four languages.","translation":"Rehberimiz dört dil konuşur.","answer":"speaks","choices":["speaks","is speak","speak"]},
+            {"type":"fillBlank","text":"Is this ___ hotel?","translation":"Bu sizin oteliniz mi?","answer":"your","choices":["you","yours","your"]},
+            {"type":"translate","text":"Tatilde her gün yüzeriz.","lang":"tr","answers":["We swim every day on holiday","On holiday we swim every day"],"tokens":["holiday","are","every","day","in","on","swim","We"]},
+            {"type":"translate","text":"I can see the sea from my window.","lang":"en","answers":["Penceremden denizi görebiliyorum","Penceremden denizi görebilirim"],"tokens":["dağı","görebiliyorum","Penceremden","denizi","göremiyorum"]},
+            {"type":"listen","text":"The island is beautiful in summer","answers":["The island is beautiful in summer"]},
+            {"type":"match","pairs":[["tatil","holiday"],["manzara","view"],["güneş gözlüğü","sunglasses"],["tepe","hill"],["mühendis","engineer"]]},
+            {"type":"speak","text":"We love the sea and the sun","translation":"Denizi ve güneşi çok severiz."}
+          ]
+        },
+        {
+          "id": "s2u12t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u12c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}
