@@ -7,27 +7,90 @@
     {
       "source": "functions",
       "codebase": "default",
-      "ignore": ["node_modules", ".git", "test", "lib/test", "*.local", "firebase-debug.log"],
-      "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run build"]
+      "ignore": [
+        "node_modules",
+        ".git",
+        "test",
+        "lib/test",
+        "*.local",
+        "firebase-debug.log"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
     }
   ],
   "hosting": [
     {
       "target": "admin",
       "public": "build/admin",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-      "rewrites": [{ "source": "**", "destination": "/index.html" }],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
       "headers": [
-        { "source": "/index.html", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
-        { "source": "**", "headers": [{ "key": "X-Frame-Options", "value": "DENY" }] }
+        {
+          "source": "/index.html",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            }
+          ]
+        }
       ]
     }
   ],
   "emulators": {
-    "auth": { "port": 9099 },
-    "firestore": { "port": 8080 },
-    "functions": { "port": 5001 },
-    "ui": { "enabled": false },
+    "auth": {
+      "port": 9099
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "functions": {
+      "port": 5001
+    },
+    "ui": {
+      "enabled": false
+    },
     "singleProjectMode": true
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "dilbaz-3392e",
+          "appId": "1:1069247179653:android:b043565aa877166d7ab2ec",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/services/firebase/firebase_options_prod.dart": {
+          "projectId": "dilbaz-3392e",
+          "configurations": {
+            "android": "1:1069247179653:android:b043565aa877166d7ab2ec",
+            "ios": "1:1069247179653:ios:4c89849928c7ad9d7ab2ec",
+            "web": "1:1069247179653:web:bb64aecb0fc86b437ab2ec"
+          }
+        }
+      }
+    }
   }
 }

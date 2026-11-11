@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1069247179653",
+    "project_id": "dilbaz-3392e",
+    "storage_bucket": "dilbaz-3392e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069247179653:android:b043565aa877166d7ab2ec",
+        "android_client_info": {
+          "package_name": "com.lingora.lingora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069247179653-8gqs9s1ip8dc00ohkp2ike576orpek7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lingora.lingora",
+            "certificate_hash": "9ca2e5841a550c564ba34d0a5731a524af23cc9f"
+          }
+        },
+        {
+          "client_id": "1069247179653-1tfadmvakc5s1p6n7qn4mnglmo6klu7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEKLLeu9wMSXdxBCHiFPSO-DM1KXKUoZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069247179653-1tfadmvakc5s1p6n7qn4mnglmo6klu7u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1069247179653-0q27dfl370j718k61bb5l9qo3mrcsurm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lingora.lingora"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "demo-lingora"
+    "default": "demo-lingora",
+    "prod": "dilbaz-3392e"
   }
 }

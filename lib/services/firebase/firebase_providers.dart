@@ -31,6 +31,7 @@ class AppUser {
     this.isAnonymous = true,
     this.email,
     this.displayName,
+    this.phoneNumber,
     this.providers = const [],
   });
 
@@ -39,6 +40,7 @@ class AppUser {
     isAnonymous: u.isAnonymous,
     email: u.email,
     displayName: u.displayName,
+    phoneNumber: u.phoneNumber,
     providers: [for (final p in u.providerData) p.providerId],
   );
 
@@ -46,6 +48,7 @@ class AppUser {
   final bool isAnonymous;
   final String? email;
   final String? displayName;
+  final String? phoneNumber;
 
   /// Linked sign-in providers, e.g. `password`, `google.com`.
   final List<String> providers;
@@ -57,10 +60,11 @@ class AppUser {
       other.isAnonymous == isAnonymous &&
       other.email == email &&
       other.displayName == displayName &&
+      other.phoneNumber == phoneNumber &&
       other.providers.join(',') == providers.join(',');
 
   @override
-  int get hashCode => Object.hash(uid, isAnonymous, email, displayName, providers.join(','));
+  int get hashCode => Object.hash(uid, isAnonymous, email, displayName, phoneNumber, providers.join(','));
 }
 
 /// Current user (null when signed out or Firebase is off).

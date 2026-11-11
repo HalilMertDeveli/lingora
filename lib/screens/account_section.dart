@@ -49,7 +49,9 @@ class AccountSection extends ConsumerWidget {
           _Line(
             icon: signedIn ? Icons.verified_user : Icons.person_outline,
             color: signedIn ? Brand.primary : Brand.muted,
-            title: signedIn ? (user.email ?? user.displayName ?? 'Giriş yapıldı') : 'Misafir hesabı',
+            title: signedIn
+                ? (user.email ?? user.phoneNumber ?? user.displayName ?? 'Giriş yapıldı')
+                : 'Misafir hesabı',
             subtitle: switch ((signedIn, premiumOnly)) {
               (true, false) => 'Başka bir cihazda aynı hesapla giriş yaparak devam edebilirsin.',
               (true, true) => 'Ligler için hesabın hazır. İlerlemen bu cihazda saklanıyor.',
@@ -86,6 +88,13 @@ class AccountSection extends ConsumerWidget {
                 icon: const Icon(Icons.mail_outline),
                 label: const Text('E-posta ile bağla / giriş yap'),
                 onPressed: () => showDialog<void>(context: context, builder: (_) => _EmailDialog(service)),
+              ),
+              const SizedBox(height: 8),
+              OutlinedButton.icon(
+                key: const ValueKey('account-phone'),
+                icon: const Icon(Icons.sms_outlined),
+                label: const Text('Telefon numarasıyla bağla'),
+                onPressed: () => showDialog<void>(context: context, builder: (_) => _PhoneDialog(service)),
               ),
             ] else
               OutlinedButton.icon(
@@ -207,4 +216,107 @@ class _EmailDialogState extends State<_EmailDialog> {
       ),
     ],
   );
+}
+
+/// Two steps: phone number, then the 6-digit SMS code.
+class _PhoneDialog extends StatefulWidget {
+  const _PhoneDialog(this.service);
+  final AccountService service;
+
+  @override
+  State<_PhoneDialog> createState() => _PhoneDialogState();
+}
+
+class _PhoneDialogState extends State<_PhoneDialog> {
+  final _phone = TextEditingController();
+  final _code = TextEditingController();
+  String? _verificationId;
+  bool _busy = false;
+  String? _error;
+
+  @override
+  void dispose() {
+    _phone.dispose();
+    _code.dispose();
+    super.dispose();
+  }
+
+  Future<void> _step(Future<void> Function() run) async {
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      await run();
+    } on AccountException catch (e) {
+      if (mounted) setState(() => _error = e.message);
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  Future<void> _sendCode() => _step(() async {
+    final id = await widget.service.startPhoneSignIn(_phone.text);
+    if (!mounted) return;
+    if (id == null) {
+      Navigator.pop(context); // verified automatically
+    } else {
+      setState(() => _verificationId = id);
+    }
+  });
+
+  Future<void> _confirm() => _step(() async {
+    await widget.service.confirmPhoneCode(_verificationId!, _code.text);
+    if (mounted) Navigator.pop(context);
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final codeStep = _verificationId != null;
+    return AlertDialog(
+      title: const Text('Telefonla hesap'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (!codeStep)
+            TextField(
+              key: const ValueKey('phone-number'),
+              controller: _phone,
+              keyboardType: TextInputType.phone,
+              autofillHints: const [AutofillHints.telephoneNumber],
+              decoration: const InputDecoration(labelText: 'Telefon numarası', hintText: '0532 123 45 67'),
+            )
+          else ...[
+            Text('${_phone.text} numarasına gelen 6 haneli kodu gir.', style: TextStyle(color: Brand.muted)),
+            TextField(
+              key: const ValueKey('phone-code'),
+              controller: _code,
+              keyboardType: TextInputType.number,
+              autofillHints: const [AutofillHints.oneTimeCode],
+              maxLength: 6,
+              decoration: const InputDecoration(labelText: 'SMS kodu'),
+            ),
+          ],
+          if (_error != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 12),
+              child: Text(_error!, style: TextStyle(color: Brand.error)),
+            ),
+        ],
+      ),
+      actions: [
+        TextButton(onPressed: _busy ? null : () => Navigator.pop(context), child: const Text('Vazgeç')),
+        if (codeStep)
+          TextButton(
+            onPressed: _busy ? null : () => setState(() => _verificationId = null),
+            child: const Text('Numarayı değiştir'),
+          ),
+        FilledButton(
+          onPressed: _busy ? null : (codeStep ? _confirm : _sendCode),
+          child: Text(codeStep ? 'Onayla' : 'Kod gönder'),
+        ),
+      ],
+    );
+  }
 }

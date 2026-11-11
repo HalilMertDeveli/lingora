@@ -17,7 +17,8 @@ enum FirebaseMode {
   };
 
   /// The mode this build was compiled with.
-  static FirebaseMode get fromEnvironment => parse(const String.fromEnvironment('LINGORA_FIREBASE'));
+  static FirebaseMode get fromEnvironment =>
+      parse(const String.fromEnvironment('LINGORA_FIREBASE', defaultValue: 'prod'));
 }
 
 /// Demo project used with the Local Emulator Suite. `demo-*` ids never touch
@@ -44,4 +45,7 @@ String emulatorHost({TargetPlatform? platform}) {
 
 /// Web client id for Google Sign-In on Android (the "Web client" OAuth id of
 /// the real project). Optional when google-services.json provides it.
-const googleServerClientId = String.fromEnvironment('LINGORA_GOOGLE_SERVER_CLIENT_ID');
+const googleServerClientId = String.fromEnvironment(
+  'LINGORA_GOOGLE_SERVER_CLIENT_ID',
+  defaultValue: '1069247179653-1tfadmvakc5s1p6n7qn4mnglmo6klu7u.apps.googleusercontent.com',
+);
