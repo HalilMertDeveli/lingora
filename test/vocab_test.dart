@@ -288,25 +288,28 @@ void main() {
     return container;
   }
 
-  testWidgets('track home shows the knowledge map, actions and topics', (tester) async {
-    await pumpScreen(tester, const VocabHomeScreen());
+  testWidgets('Keşfet and Harita tabs show actions, topics and the knowledge map', (tester) async {
+    await pumpScreen(tester, const VocabDiscoverTab());
+    expect(find.text('Kelime keşfet'), findsOneWidget);
+    expect(find.text('KONULAR'), findsOneWidget);
+    await pumpScreen(tester, const VocabMapTab());
     expect(find.text('Bilgi haritası'), findsOneWidget);
     expect(find.text('~%0 biliyorsun'), findsOneWidget);
     expect(find.text('1–100'), findsOneWidget);
-    expect(find.text('Kelime keşfet'), findsOneWidget);
-    expect(find.text('İş senaryoları'), findsOneWidget);
+    await pumpScreen(tester, const VocabReviewTab());
+    expect(find.text('Şu an tekrar bekleyen kelime yok'), findsOneWidget);
   });
 
   testWidgets('track home follows the design modes (Çocuk modu, koyu tema)', (tester) async {
-    await pumpScreen(tester, const VocabHomeScreen(), mode: AppMode.kid, brightness: Brightness.dark);
+    await pumpScreen(tester, const VocabDiscoverTab(), mode: AppMode.kid, brightness: Brightness.dark);
     expect(tester.takeException(), isNull);
-    expect(find.text('Bilgi haritası'), findsOneWidget);
+    expect(find.text('Kelime keşfet'), findsOneWidget);
     await tester.dragUntilVisible(find.text('Temeller'), find.byType(ListView), const Offset(0, -300));
     expect(find.text('🧱'), findsOneWidget); // kid mode shows topic emoji
   });
 
   testWidgets('track home in adult dark mode uses icons, not emoji', (tester) async {
-    await pumpScreen(tester, const VocabHomeScreen(), brightness: Brightness.dark);
+    await pumpScreen(tester, const VocabDiscoverTab(), brightness: Brightness.dark);
     expect(tester.takeException(), isNull);
     await tester.dragUntilVisible(find.text('Temeller'), find.byType(ListView), const Offset(0, -300));
     expect(find.text('🧱'), findsNothing); // adult mode shows icons instead

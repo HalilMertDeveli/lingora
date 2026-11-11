@@ -411,6 +411,7 @@ Future<void> openAssignment(BuildContext context, OrgAssignment a, {AssetBundle?
         final notes = await loadNotes(assets);
         await nav.push(
           MaterialPageRoute<void>(
+            fullscreenDialog: true,
             builder: (_) => GrammarLessonScreen(lesson: lesson, notes: notes),
           ),
         );

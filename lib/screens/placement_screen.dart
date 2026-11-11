@@ -457,8 +457,9 @@ class PlacementProfileCard extends ConsumerWidget {
         ? 'Henüz test çözmedin.'
         : 'Son sonuç: ${record.level == null ? 'Başlangıç' : '${record.level!.code} · ${record.level!.name}'}';
     return TapCard(
-      onTap: () =>
-          Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const PlacementIntroScreen())),
+      onTap: () => Navigator.of(
+        context,
+      ).push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => const PlacementIntroScreen())),
       child: Row(
         children: [
           Icon(Icons.speed_rounded, color: Brand.primary, size: 30),

@@ -27,6 +27,8 @@ class _SilentSpeech implements SpeechService {
 
 class _NoNotifications implements NotificationService {
   @override
+  void Function(String? payload)? get onTap => null;
+  @override
   Future<bool> requestPermission() async => false;
   @override
   Future<void> apply(List<PlannedNotification> plan) async {}

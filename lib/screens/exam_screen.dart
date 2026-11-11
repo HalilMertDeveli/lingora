@@ -14,6 +14,7 @@ import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../nav/flow.dart';
 import 'exam_pack_screen.dart';
 import 'paywall_screen.dart';
 
@@ -392,20 +393,14 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   }
 
   Future<void> _quit() async {
-    final quit = await showDialog<bool>(
-      context: context,
-      builder: (c) => AlertDialog(
-        title: const Text('Çıkılsın mı?'),
-        content: Text(
-          widget.mock ? 'Deneme yarıda kalacak ve puanlanmayacak.' : 'Bu oturum kaydedilmeyecek.',
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(c, true), child: const Text('Çık')),
-          FilledButton(onPressed: () => Navigator.pop(c, false), child: const Text('Devam et')),
-        ],
-      ),
+    final quit = await confirmQuitFlow(
+      context,
+      title: widget.mock ? 'Denemeden çıkılsın mı?' : 'Çıkılsın mı?',
+      detail: widget.mock
+          ? 'Deneme yarıda kalır ve puanlanmaz; ilerleme kaydedilmez.'
+          : 'Bu oturumdaki ilerleme kaydedilmez.',
     );
-    if (quit == true && mounted) {
+    if (quit && mounted) {
       _timer?.cancel();
       Navigator.of(context).pop();
     }

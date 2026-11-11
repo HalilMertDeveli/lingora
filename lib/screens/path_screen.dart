@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -7,13 +9,12 @@ import '../data/course_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../models/course.dart';
+import '../nav/tab_navigator.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import 'lesson_screen.dart';
-import 'reading_screen.dart';
 import 'reminder_settings.dart';
-import 'speed_match_screen.dart';
 import 'story_screen.dart';
 
 enum NodeState { done, active, locked }
@@ -44,23 +45,112 @@ class _PathList extends ConsumerStatefulWidget {
 
 class _PathListState extends ConsumerState<_PathList> {
   final _activeKey = GlobalKey();
-  String? _scrolledTo;
+  final _viewportKey = GlobalKey();
+  final _scroll = ScrollController();
+  ValueListenable<int>? _reselected;
 
-  /// Brings the next step into view when it changes (e.g. after a lesson).
-  void _scrollToActive(String? id) {
-    if (id == null || id == _scrolledTo) return;
-    _scrolledTo = id;
+  /// Active node the path was last scrolled to.
+  String? _focusedId;
+
+  /// Active node seen on the last build (a change means a step was finished).
+  String? _seenActiveId;
+
+  /// Scroll to the active node once the path is visible again.
+  bool _focusPending = false;
+
+  /// Newly reached node, briefly highlighted.
+  String? _highlightId;
+  Timer? _highlightTimer;
+
+  /// Direction of the active node when it is off screen ("Bulunduğun yere dön").
+  AxisDirection? _jump;
+
+  bool get _visible => TickerMode.valuesOf(context).enabled;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final next = TabScope.maybeOf(context)?.reselected;
+    if (next != _reselected) {
+      _reselected?.removeListener(_onReselect);
+      _reselected = next?..addListener(_onReselect);
+    }
+    // Became visible again (a lesson closed, or the tab was selected).
+    if (_focusPending && _visible) _focusSoon();
+  }
+
+  @override
+  void dispose() {
+    _reselected?.removeListener(_onReselect);
+    _highlightTimer?.cancel();
+    _scroll.dispose();
+    super.dispose();
+  }
+
+  void _onReselect() => _focusSoon(force: true);
+
+  /// Brings the active node into view after this frame.
+  void _focusSoon({bool force = false}) {
+    _focusPending = false;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final ctx = _activeKey.currentContext;
-      if (ctx != null && ctx.mounted) {
-        Scrollable.ensureVisible(
-          ctx,
-          alignment: 0.4,
-          duration: const Duration(milliseconds: 600),
-          curve: Curves.easeInOutCubic,
-        );
+      if (!mounted || ctx == null || !ctx.mounted) {
+        if (force && mounted && _scroll.hasClients) _animateTo(0);
+        return;
       }
+      _focusedId = _seenActiveId;
+      Scrollable.ensureVisible(
+        ctx,
+        alignment: 0.4,
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInOutCubic,
+      ).then((_) => _updateJump());
     });
+  }
+
+  void _animateTo(double offset) =>
+      _scroll.animateTo(offset, duration: const Duration(milliseconds: 400), curve: Curves.easeOutCubic);
+
+  /// Called on every build with the current active node.
+  void _track(String? activeId, int activeIndex) {
+    final previous = _seenActiveId;
+    _seenActiveId = activeId;
+    if (activeId == null) return;
+    final first = previous == null && _focusedId == null;
+    // On start only scroll once the user is past the first unit's opening steps.
+    if (first && activeIndex <= 2) {
+      _focusedId = activeId;
+      WidgetsBinding.instance.addPostFrameCallback((_) => _updateJump());
+      return;
+    }
+    if (activeId == _focusedId) return;
+    if (!first) {
+      _highlightTimer?.cancel();
+      _highlightId = activeId;
+      _highlightTimer = Timer(const Duration(milliseconds: 2400), () {
+        if (mounted) setState(() => _highlightId = null);
+      });
+    }
+    _focusedId = activeId;
+    if (_visible) {
+      _focusSoon();
+    } else {
+      _focusPending = true;
+    }
+  }
+
+  void _updateJump() {
+    if (!mounted) return;
+    final tile = _activeKey.currentContext?.findRenderObject() as RenderBox?;
+    final viewport = _viewportKey.currentContext?.findRenderObject() as RenderBox?;
+    AxisDirection? next;
+    if (tile != null && viewport != null && tile.attached && tile.hasSize && viewport.hasSize) {
+      final top = tile.localToGlobal(Offset.zero, ancestor: viewport).dy;
+      final bottom = top + tile.size.height;
+      if (bottom < 0) next = AxisDirection.up;
+      if (top > viewport.size.height) next = AxisDirection.down;
+    }
+    if (next != _jump) setState(() => _jump = next);
   }
 
   @override
@@ -69,8 +159,7 @@ class _PathListState extends ConsumerState<_PathList> {
     final p = ref.watch(progressProvider);
     final all = course.allNodes;
     final activeIndex = all.indexWhere((n) => !p.isDone(n.id));
-    // Only scroll once the user is past the first unit's opening steps.
-    if (activeIndex > 2) _scrollToActive(all[activeIndex].id);
+    _track(activeIndex == -1 ? null : all[activeIndex].id, activeIndex);
 
     NodeState stateOf(PathNode n) {
       final i = all.indexOf(n);
@@ -78,153 +167,94 @@ class _PathListState extends ConsumerState<_PathList> {
       return i == activeIndex ? NodeState.active : NodeState.locked;
     }
 
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+    return Stack(
+      key: _viewportKey,
       children: [
-        const ReminderPromptCard(),
-        const _DailyGoalCard(),
-        const SizedBox(height: 12),
-        _PracticeRow(course: course),
-        const SizedBox(height: 10),
-        const ReadingEntryCard(),
-        const SizedBox(height: 20),
-        for (final unit in course.units) ...[
-          _UnitHeader(unit: unit, index: course.units.indexOf(unit) + 1),
-          const SizedBox(height: 8),
-          for (final node in unit.nodes)
-            _NodeTile(
-              key: stateOf(node) == NodeState.active ? _activeKey : null,
-              node: node,
-              unit: unit,
-              state: stateOf(node),
-              isLast: node == unit.nodes.last,
-            ),
-          const SizedBox(height: 20),
-        ],
-        if (activeIndex == -1)
-          const Padding(
-            padding: EdgeInsets.all(16),
+        NotificationListener<ScrollNotification>(
+          onNotification: (_) {
+            _updateJump();
+            return false;
+          },
+          // Not lazy: every node exists, so the active one can always be found.
+          child: SingleChildScrollView(
+            controller: _scroll,
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Mascot(mood: Mood.cheer, size: 120),
-                SizedBox(height: 8),
-                Text(
-                  'Tüm üniteleri bitirdin! Yeni üniteler yakında.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.w700),
-                ),
+                const ReminderPromptCard(),
+                const _DailyGoalCard(),
+                const SizedBox(height: 20),
+                for (final unit in course.units) ...[
+                  _UnitHeader(unit: unit, index: course.units.indexOf(unit) + 1),
+                  const SizedBox(height: 8),
+                  for (final node in unit.nodes)
+                    _NodeTile(
+                      key: stateOf(node) == NodeState.active ? _activeKey : ValueKey(node.id),
+                      node: node,
+                      unit: unit,
+                      state: stateOf(node),
+                      isLast: node == unit.nodes.last,
+                      highlight: node.id == _highlightId,
+                    ),
+                  const SizedBox(height: 20),
+                ],
+                if (activeIndex == -1)
+                  const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Mascot(mood: Mood.cheer, size: 120),
+                        SizedBox(height: 8),
+                        Text(
+                          'Tüm üniteleri bitirdin! Yeni üniteler yakında.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                  ),
               ],
             ),
           ),
-      ],
-    );
-  }
-}
-
-/// "Hatalarını çalış" and "Hızlı eşleştirme" shortcuts.
-class _PracticeRow extends ConsumerWidget {
-  const _PracticeRow({required this.course});
-  final Course course;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final p = ref.watch(progressProvider);
-    final mistakes = p.mistakes.length;
-    return Row(
-      children: [
-        Expanded(
-          child: _PracticeCard(
-            icon: Icons.fitness_center_rounded,
-            color: Brand.primary,
-            title: 'Hatalarını çalış',
-            subtitle: mistakes == 0 ? 'Hata yok' : '$mistakes soru · can harcamaz',
-            onTap: mistakes == 0
-                ? null
-                : () => Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      fullscreenDialog: true,
-                      builder: (_) => LessonScreen(
-                        nodeId: 'practice',
-                        title: 'Hatalarını çalış',
-                        items: mistakeItems(course, p.mistakes),
-                        color: Brand.primary,
-                        mode: LessonMode.practice,
-                      ),
-                    ),
-                  ),
-          ),
         ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: _PracticeCard(
-            icon: Icons.timer_rounded,
-            color: Brand.accent,
-            title: 'Hızlı eşleştirme',
-            subtitle: '$speedMatchSeconds saniye',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                fullscreenDialog: true,
-                builder: (_) => SpeedMatchScreen(pool: vocabularyPool(course, p)),
+        if (_jump != null)
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 16,
+            child: Center(
+              child: FloatingActionButton.extended(
+                key: const Key('back-to-current'),
+                heroTag: null,
+                onPressed: () => _focusSoon(force: true),
+                icon: Icon(
+                  _jump == AxisDirection.up ? Icons.arrow_upward_rounded : Icons.arrow_downward_rounded,
+                ),
+                label: const Text('Bulunduğun yere dön'),
               ),
             ),
           ),
-        ),
       ],
     );
   }
 }
 
-class _PracticeCard extends StatelessWidget {
-  const _PracticeCard({
-    required this.icon,
-    required this.color,
-    required this.title,
-    required this.subtitle,
-    required this.onTap,
-  });
-  final IconData icon;
+/// A soft glow around the node the user has just reached.
+class NodeHighlight extends StatelessWidget {
+  const NodeHighlight({super.key, required this.on, required this.color, required this.child});
+  final bool on;
   final Color color;
-  final String title;
-  final String subtitle;
-  final VoidCallback? onTap;
+  final Widget child;
 
   @override
-  Widget build(BuildContext context) => Opacity(
-    opacity: onTap == null ? 0.6 : 1,
-    child: TapCard(
-      onTap: onTap,
-      padding: const EdgeInsets.all(12),
-      child: Row(
-        children: [
-          Container(
-            width: 38,
-            height: 38,
-            decoration: BoxDecoration(color: color.withValues(alpha: 0.15), shape: BoxShape.circle),
-            child: Icon(icon, color: color, size: 22),
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 14),
-                ),
-                Text(
-                  subtitle,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Brand.muted, fontSize: 12),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+  Widget build(BuildContext context) => AnimatedContainer(
+    duration: const Duration(milliseconds: 400),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(Radii.md + 2),
+      boxShadow: [if (on) BoxShadow(color: color.withValues(alpha: 0.55), blurRadius: 18, spreadRadius: 2)],
     ),
+    child: child,
   );
 }
 
@@ -308,12 +338,16 @@ class _NodeTile extends ConsumerWidget {
     required this.unit,
     required this.state,
     required this.isLast,
+    this.highlight = false,
   });
 
   final PathNode node;
   final Unit unit;
   final NodeState state;
   final bool isLast;
+
+  /// Just reached after a lesson: glows for a moment.
+  final bool highlight;
 
   Color get color => Brand.tone(unit.color);
 
@@ -430,40 +464,44 @@ class _NodeTile extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Opacity(
                 opacity: state == NodeState.locked ? 0.55 : 1,
-                child: TapCard(
-                  selected: active,
+                child: NodeHighlight(
+                  on: highlight,
                   color: color,
-                  onTap: () => _open(context, ref),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(node.title, style: Theme.of(context).textTheme.titleMedium),
-                            const SizedBox(height: 2),
-                            Text(node.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
-                          ],
-                        ),
-                      ),
-                      if (active)
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: color,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
-                              if (Brand.isKid) BoxShadow(color: edgeOf(color), offset: const Offset(0, 3)),
+                  child: TapCard(
+                    selected: active,
+                    color: color,
+                    onTap: () => _open(context, ref),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(node.title, style: Theme.of(context).textTheme.titleMedium),
+                              const SizedBox(height: 2),
+                              Text(node.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
                             ],
                           ),
-                          child: Text(
-                            Brand.isKid ? _cta : sentenceCase(_cta),
-                            style: TextStyle(color: onColor(color), fontWeight: FontWeight.w900),
-                          ),
-                        )
-                      else if (state == NodeState.done && !isChest)
-                        Icon(Icons.replay_rounded, color: Brand.muted),
-                    ],
+                        ),
+                        if (active)
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: color,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                if (Brand.isKid) BoxShadow(color: edgeOf(color), offset: const Offset(0, 3)),
+                              ],
+                            ),
+                            child: Text(
+                              Brand.isKid ? _cta : sentenceCase(_cta),
+                              style: TextStyle(color: onColor(color), fontWeight: FontWeight.w900),
+                            ),
+                          )
+                        else if (state == NodeState.done && !isChest)
+                          Icon(Icons.replay_rounded, color: Brand.muted),
+                      ],
+                    ),
                   ),
                 ),
               ),
