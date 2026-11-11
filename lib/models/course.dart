@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum ExerciseType { select, translate, fillBlank, listen, match, speak }
+enum ExerciseType { select, translate, fillBlank, listen, match, speak, choice }
 
 class Choice {
   const Choice(this.text, this.emoji);
@@ -24,6 +24,11 @@ class Exercise {
     this.choices = const [],
     this.wordChoices = const [],
     this.pairs = const [],
+    this.question,
+    this.passage,
+    this.options = const [],
+    this.answerIndex,
+    this.explanation,
   });
 
   final ExerciseType type;
@@ -56,24 +61,41 @@ class Exercise {
   /// [native, learning] pairs (match).
   final List<(String, String)> pairs;
 
+  /// Exam-style multiple choice (choice): an optional reading text, the
+  /// question, 4 (LGS) or 5 (YDS) options, the right option's index and a
+  /// Turkish explanation shown after answering.
+  final String? question;
+  final String? passage;
+  final List<String> options;
+  final int? answerIndex;
+  final String? explanation;
+
+  /// The right option of a choice exercise.
+  String get correctOption {
+    final i = answerIndex;
+    return i != null && i >= 0 && i < options.length ? options[i] : '';
+  }
+
   /// Text shown to the user as the correct answer after a mistake.
   String get displayAnswer => switch (type) {
     ExerciseType.select || ExerciseType.fillBlank => answer ?? '',
     ExerciseType.translate || ExerciseType.listen => answers.first,
     ExerciseType.speak => text ?? '',
     ExerciseType.match => '',
+    ExerciseType.choice => correctOption,
   };
 
   factory Exercise.fromJson(Map<String, dynamic> j) {
     final type = ExerciseType.values.byName(j['type'] as String);
     List<String> strings(String key) => ((j[key] as List?) ?? const []).cast<String>();
+    final choice = type == ExerciseType.choice;
     return Exercise(
       type: type,
       prompt: j['prompt'] as String?,
       text: j['text'] as String?,
       lang: (j['lang'] as String?) ?? 'en',
       translation: j['translation'] as String?,
-      answer: j['answer'] as String?,
+      answer: choice ? null : j['answer'] as String?,
       answers: strings('answers'),
       tokens: strings('tokens'),
       choices: type == ExerciseType.select
@@ -85,11 +107,18 @@ class Exercise {
       pairs: ((j['pairs'] as List?) ?? const [])
           .map((p) => ((p as List)[0] as String, p[1] as String))
           .toList(),
+      question: j['question'] as String?,
+      passage: j['passage'] as String?,
+      options: choice ? strings('options') : const [],
+      answerIndex: choice ? j['answer'] as int? : null,
+      explanation: j['explanation'] as String?,
     );
   }
 }
 
-enum NodeType { lesson, chest, story, test }
+/// Steps of a path. [mock] is a section's timed practice exam (exam paths):
+/// it opens the exam engine with the section's questions.
+enum NodeType { lesson, chest, story, test, mock }
 
 /// One step of a story node: a line of dialogue or a comprehension question.
 class StoryStep {
@@ -136,6 +165,11 @@ class PathNode {
     this.exercises = const [],
     this.rewardXp = 0,
     this.steps = const [],
+    this.examId,
+    this.size = 0,
+    this.minutes = 0,
+    this.packId,
+    this.mockId,
   });
 
   final String id;
@@ -147,6 +181,17 @@ class PathNode {
 
   /// Dialogue and questions (story nodes).
   final List<StoryStep> steps;
+
+  /// Mock nodes: the question bank that tops up the section's questions
+  /// (`assets/exams/<examId>.json`), question count and time limit.
+  final String? examId;
+  final int size;
+  final int minutes;
+
+  /// A full mock exam of a paid pack instead of a mixed one: the pack's
+  /// content id ("yds_full", `assets/exam_packs/<packId>.json`) and mock id.
+  final String? packId;
+  final String? mockId;
 
   factory PathNode.fromJson(Map<String, dynamic> j) => PathNode(
     id: j['id'] as String,
@@ -160,6 +205,11 @@ class PathNode {
     steps: ((j['steps'] as List?) ?? const [])
         .map((s) => StoryStep.fromJson(s as Map<String, dynamic>))
         .toList(),
+    examId: j['examId'] as String?,
+    size: (j['size'] as int?) ?? 0,
+    minutes: (j['minutes'] as int?) ?? 0,
+    packId: j['packId'] as String?,
+    mockId: j['mockId'] as String?,
   );
 }
 
@@ -171,6 +221,7 @@ class Unit {
     required this.color,
     required this.nodes,
     this.theme,
+    this.guide,
   });
 
   final String id;
@@ -178,6 +229,12 @@ class Unit {
   final String description;
   final Color color;
   final List<PathNode> nodes;
+
+  /// Turkish topic explanation in simple markdown (exam paths), shown by the
+  /// unit's "Rehber" button and suggested once before its first lesson.
+  final String? guide;
+
+  bool get hasGuide => guide?.trim().isNotEmpty ?? false;
 
   /// Topic theme id (lib/data/topic_themes.dart); null uses the default.
   final String? theme;
@@ -189,6 +246,7 @@ class Unit {
     color: Color(int.parse(j['color'] as String)),
     nodes: (j['nodes'] as List).map((n) => PathNode.fromJson(n as Map<String, dynamic>)).toList(),
     theme: j['theme'] as String?,
+    guide: j['guide'] as String?,
   );
 }
 

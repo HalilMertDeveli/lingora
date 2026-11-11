@@ -12,6 +12,9 @@ import 'quests.dart';
 
 const maxMistakes = 40;
 
+/// Progress key of a unit's topic guide (see [Progress.guideSeen]).
+String guideKey(String unitId) => 'guide_$unitId';
+
 /// Daily counters older than this are dropped when saving.
 const _keepDays = 8;
 
@@ -40,6 +43,7 @@ class Progress {
     this.mistakes = const [],
     this.trackId = defaultTrackId,
     this.examBest = const {},
+    this.examSeconds = const {},
     this.wordBox = const {},
     this.wordDue = const {},
     this.diary = const {},
@@ -52,6 +56,12 @@ class Progress {
 
   /// Best mini mock exam score (percent) per exam id.
   final Map<String, int> examBest;
+
+  /// Time (seconds) of the last finished mock exam per exam or mock node id.
+  final Map<String, int> examSeconds;
+
+  /// Whether the unit's topic guide was opened or its suggestion dismissed.
+  bool guideSeen(String unitId) => isDone(guideKey(unitId));
 
   /// Spaced repetition box (0–5) per personal-dictionary word id.
   final Map<String, int> wordBox;
@@ -164,6 +174,7 @@ class Progress {
     List<String>? mistakes,
     String? trackId,
     Map<String, int>? examBest,
+    Map<String, int>? examSeconds,
     Map<String, int>? wordBox,
     Map<String, String>? wordDue,
     Map<String, String>? diary,
@@ -190,6 +201,7 @@ class Progress {
     mistakes: mistakes ?? this.mistakes,
     trackId: trackId ?? this.trackId,
     examBest: examBest ?? this.examBest,
+    examSeconds: examSeconds ?? this.examSeconds,
     wordBox: wordBox ?? this.wordBox,
     wordDue: wordDue ?? this.wordDue,
     diary: diary ?? this.diary,
@@ -218,6 +230,7 @@ class Progress {
     'mistakes': mistakes,
     'trackId': trackId,
     'examBest': examBest,
+    'examSeconds': examSeconds,
     'wordBox': wordBox,
     'wordDue': wordDue,
     'diary': diary,
@@ -248,6 +261,7 @@ class Progress {
     mistakes: (j['mistakes'] as List?)?.cast<String>() ?? const [],
     trackId: j['trackId'] as String? ?? defaultTrackId,
     examBest: (j['examBest'] as Map?)?.cast<String, int>() ?? const {},
+    examSeconds: (j['examSeconds'] as Map?)?.cast<String, int>() ?? const {},
     wordBox: (j['wordBox'] as Map?)?.cast<String, int>() ?? const {},
     wordDue: (j['wordDue'] as Map?)?.cast<String, String>() ?? const {},
     diary: (j['diary'] as Map?)?.cast<String, String>() ?? const {},
@@ -472,6 +486,22 @@ class ProgressNotifier extends Notifier<Progress> {
     if (percent > (state.examBest[examId] ?? -1)) {
       _save(state.copyWith(examBest: {...state.examBest, examId: percent}));
     }
+  }
+
+  /// Records a finished mock exam: the best score and this attempt's time.
+  void recordMock(String id, int percent, Duration time) {
+    _save(
+      state.copyWith(
+        examBest: {...state.examBest, id: max(percent, state.examBest[id] ?? -1)},
+        examSeconds: {...state.examSeconds, id: time.inSeconds},
+      ),
+    );
+  }
+
+  /// Remembers that the unit's guide was offered, so it is suggested once.
+  void markGuideSeen(String unitId) {
+    if (state.guideSeen(unitId)) return;
+    _save(state.copyWith(completed: {...state.completed, guideKey(unitId): 1}));
   }
 
   /// Moves a word up a box when known, back to box 0 when not.

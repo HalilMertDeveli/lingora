@@ -1,0 +1,3770 @@
+{
+ "id": "exam_lgs",
+ "title": "LGS İngilizce çalışma yolu",
+ "fromLang": "tr",
+ "learningLang": "en",
+ "section": {
+  "id": "ls1",
+  "index": 1,
+  "title": "LGS 1. dönem",
+  "cefr": "A2",
+  "description": "Friendship, Teen Life, In the Kitchen, On the Phone, The Internet",
+  "grammar": [
+   "davet etme, kabul ve ret",
+   "özür dileme ve sebep bildirme",
+   "like/love/hate + -ing, prefer",
+   "sıklık zarfları",
+   "süreç anlatma: first, then, finally",
+   "telefon kalıpları, will / be going to",
+   "should / must: tavsiye ve kurallar"
+  ]
+ },
+ "units": [
+  {
+   "id": "ls1u1",
+   "title": "Friendship",
+   "description": "Arkadaşlık: kişilik sıfatları, davet etme, kabul ve ret, özür dileme",
+   "color": "0xFFE5577A",
+   "theme": "duygular",
+   "guide": "## Bu ünitede ne öğreneceğiz?\nBu ünitede arkadaşlarımızı anlatan kişilik sıfatlarını, bir arkadaşı davet etmeyi ve daveti kibarca kabul edip reddetmeyi öğreneceğiz. Özür dilemeyi, nedenini söylemeyi ve bir özrü kabul etmeyi de çalışacağız. Hazırsan başlayalım!\n\n## Özet tablo\n| Ne yapmak istiyorsun? | Kalıp | Örnek |\n|---|---|---|\n| Davet etmek | **Would you like to …?** | Would you like to come to my party? |\n| Öneride bulunmak | **How about …ing?** | How about going to the cinema? |\n| Daveti kabul etmek | **Sure, I'd love to.** | Sure, I'd love to. What time? |\n| Daveti reddetmek | **Sorry, I can't. I have to …** | Sorry, I can't. I have to study. |\n| Özür dilemek | **I'm sorry for/about …** | I'm sorry about your book. |\n| Özrü kabul etmek | **Never mind. / That's OK.** | Never mind. Everybody makes mistakes. |\n| Arkadaşını anlatmak | **He/She is … and …** | She is honest and cheerful. |\n\n## Hedef kalıplar\n- **Would you like to …? / Do you want to …?**: … ister misin? Örnek: Do you want to hang out after school?\n- **How about …ing?**: … yapmaya ne dersin? Örnek: How about playing basketball?\n- **Sure, I'd love to. / Why not?**: Elbette, çok isterim. / Neden olmasın? Örnek: Why not? See you there!\n- **Sorry, I can't. I have to …**: Üzgünüm, yapamam. … yapmam gerekiyor. Örnek: Sorry, I can't. I have to visit my grandma.\n- **I'm afraid I can't because …**: Maalesef yapamam çünkü … Örnek: I'm afraid I can't because I'm ill.\n- **I'm sorry for/about …**: … için özür dilerim. Örnek: I'm sorry for being late.\n- **Never mind. / Don't worry. / That's OK.**: Önemli değil, dert etme. Özrü kabul ederken kullanılır.\n- **A true friend shares / supports / keeps secrets.**: Gerçek bir arkadaş paylaşır, destek olur, sır tutar.\n\n## Anahtar kelimeler\n- **reliable**: güvenilir\n- **honest**: dürüst\n- **generous**: cömert\n- **supportive**: destek olan\n- **easygoing**: rahat, uysal\n- **cheerful**: neşeli\n- **polite**: kibar\n- **selfish**: bencil\n- **rude**: kaba\n- **jealous**: kıskanç\n- **moody**: huysuz, keyfi çabuk değişen\n- **bossy**: başkalarına emir veren\n- **trust**: güvenmek\n- **keep a secret**: sır tutmak\n- **make up**: barışmak\n- **apologize**: özür dilemek\n- **invite / invitation**: davet etmek / davet\n- **refuse**: reddetmek\n- **forgive**: affetmek\n\n## Türklerin sık yaptığı hatalar\n- \"Would you like come?\" → **Would you like to come?**: like'tan sonra gelen to unutulmaz.\n- \"How about go to the park?\" → **How about going to the park?**: How about'tan sonra fiil -ing takısı alır.\n- \"I am agree.\" → **I agree.**: agree bir fiildir, önüne am gelmez.\n\n## Sınav ipuçları\n> **Sınav ipucu 1:** Diyalog tamamlamada boşluktan SONRA gelen cümleyi oku. \"I have to study\" gibi bir mazeret varsa cevap bir ret cümlesidir; \"What time?\" gibi bir soru varsa kabul cümlesidir.\n\n> **Sınav ipucu 2:** Kibar bir ret iki parçalıdır: teşekkür ya da özür + neden. Sebep vermeden yalnızca \"No\" diyen şık kaba sayılır ve LGS'de neredeyse hiç doğru cevap değildir.\n\n> **Sınav ipucu 3:** Kişilik sıfatı sorularında kişinin davranışına bak: eşyasını paylaşan biri generous, sır tutan biri reliable, başkasının başarısına üzülen biri jealous olur. Generous ile jealous kelimelerini karıştırma!",
+   "nodes": [
+    {
+     "id": "ls1u1l1",
+     "type": "lesson",
+     "title": "Arkadaşlık kelimeleri",
+     "description": "Arkadaşlarını anlatan kişilik sıfatları ve arkadaşlık fiilleri",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "cömert",
+       "answer": "generous",
+       "choices": [
+        {
+         "text": "generous",
+         "emoji": "🎁"
+        },
+        {
+         "text": "jealous",
+         "emoji": "😒"
+        },
+        {
+         "text": "shy",
+         "emoji": "🙈"
+        },
+        {
+         "text": "lazy",
+         "emoji": "😴"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "dürüst",
+         "honest"
+        ],
+        [
+         "kaba",
+         "rude"
+        ],
+        [
+         "kıskanç",
+         "jealous"
+        ],
+        [
+         "komik",
+         "funny"
+        ],
+        [
+         "utangaç",
+         "shy"
+        ]
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "bencil",
+       "answer": "selfish",
+       "choices": [
+        {
+         "text": "selfish",
+         "emoji": "🙅"
+        },
+        {
+         "text": "polite",
+         "emoji": "🙇"
+        },
+        {
+         "text": "cheerful",
+         "emoji": "😄"
+        },
+        {
+         "text": "patient",
+         "emoji": "⏳"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "güvenilir",
+         "reliable"
+        ],
+        [
+         "destek olan",
+         "supportive"
+        ],
+        [
+         "yardımsever",
+         "helpful"
+        ],
+        [
+         "arkadaş canlısı",
+         "friendly"
+        ],
+        [
+         "iyi kalpli",
+         "kind"
+        ]
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "barışmak",
+       "answer": "make up",
+       "choices": [
+        {
+         "text": "make up",
+         "emoji": "🤝"
+        },
+        {
+         "text": "argue",
+         "emoji": "😤"
+        },
+        {
+         "text": "gossip",
+         "emoji": "🗣️"
+        },
+        {
+         "text": "tell lies",
+         "emoji": "🤥"
+        }
+       ]
+      },
+      {
+       "type": "fillBlank",
+       "text": "Zeynep doesn't tell lies to her friends. She is very ___.",
+       "translation": "Zeynep arkadaşlarına yalan söylemez. O çok dürüsttür.",
+       "choices": [
+        "honest",
+        "bossy",
+        "moody"
+       ],
+       "answer": "honest"
+      },
+      {
+       "type": "choice",
+       "question": "My friend Can never gets angry or worried. He is calm and relaxed about everything. He is ----.",
+       "options": [
+        "easygoing",
+        "jealous",
+        "bossy",
+        "moody"
+       ],
+       "answer": 0,
+       "explanation": "İpucu 'calm and relaxed about everything': her şeye sakin ve rahat yaklaşan biri 'easygoing' yani rahat biridir. 'Moody' keyfi çabuk değişen biri demektir; 'never gets angry' diyen Can'a uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa always ---- her snacks with her classmates. She is a generous girl.",
+       "options": [
+        "hides",
+        "shares",
+        "forgets",
+        "sells"
+       ],
+       "answer": 1,
+       "explanation": "Cümle 'She is a generous girl' diye bitiyor; cömert biri yiyeceğini arkadaşlarıyla paylaşır, yani 'shares'. 'Hides' (saklar) ve 'sells' (satar) cömertlikle çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Which word is the opposite of 'rude'?",
+       "options": [
+        "mean",
+        "bossy",
+        "polite",
+        "moody"
+       ],
+       "answer": 2,
+       "explanation": "'Rude' kaba demektir; zıttı 'polite' yani kibardır. 'Mean' (kaba, kötü kalpli) ise 'rude' kelimesine yakın anlamlıdır, zıttı değildir."
+      },
+      {
+       "type": "choice",
+       "question": "Tom: I failed my maths exam. I feel really upset.\nEce: Don't worry, Tom. I'm your best friend. I can help you study for the next one.\nEce is very ----.",
+       "options": [
+        "jealous",
+        "rude",
+        "selfish",
+        "supportive"
+       ],
+       "answer": 3,
+       "explanation": "Ece üzgün arkadaşına 'I can help you study' diyerek yardım teklif ediyor, yani 'supportive' (destek olan) biri. Bencil (selfish) biri arkadaşına zamanını ayırmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Deniz is my true friend. She can keep a secret and I can always count on her. Which word describes Deniz best?",
+       "options": [
+        "reliable",
+        "shy",
+        "bossy",
+        "jealous"
+       ],
+       "answer": 0,
+       "explanation": "'She can keep a secret' ve 'I can always count on her' ifadeleri güvenilir birini anlatır: 'reliable'. Metinde Deniz'in utangaç (shy) olduğuna dair hiçbir ipucu yok."
+      }
+     ]
+    },
+    {
+     "id": "ls1u1l2",
+     "type": "lesson",
+     "title": "Davet ve özür kalıpları",
+     "description": "Davet etme, kabul, ret, özür dileme ve arkadaşını anlatma kalıpları",
+     "exercises": [
+      {
+       "type": "fillBlank",
+       "text": "Would you like ___ to the cinema with us?",
+       "translation": "Bizimle sinemaya gelmek ister misin?",
+       "choices": [
+        "to come",
+        "coming",
+        "come"
+       ],
+       "answer": "to come"
+      },
+      {
+       "type": "choice",
+       "question": "Ali: ---- to my house for dinner tonight?\nSena: Sure, I'd love to.",
+       "options": [
+        "Do you like coming",
+        "Would you like to come",
+        "Have you come",
+        "Did you come"
+       ],
+       "answer": 1,
+       "explanation": "Sena 'Sure, I'd love to' diyerek bir daveti kabul ediyor; davet kalıbı 'Would you like to come...?' olmalı. 'Do you like coming' bir alışkanlığı sorar, davet etmez."
+      },
+      {
+       "type": "fillBlank",
+       "text": "Sorry, I can't. I have ___ visit my grandmother.",
+       "translation": "Üzgünüm, gelemem. Büyükannemi ziyaret etmem gerekiyor.",
+       "choices": [
+        "to",
+        "for",
+        "at"
+       ],
+       "answer": "to"
+      },
+      {
+       "type": "choice",
+       "question": "Which of the following ACCEPTS an invitation?",
+       "options": [
+        "Sorry, I'm busy that day.",
+        "I'm afraid I can't.",
+        "That sounds great! What time?",
+        "Maybe another time."
+       ],
+       "answer": 2,
+       "explanation": "'That sounds great! What time?' daveti sevinçle kabul edip saati soruyor. 'Maybe another time' (Belki başka zaman) kabul gibi görünse de aslında kibar bir rettir."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: How about ---- to the park after school?\nAyşe: Good idea! I'll bring my ball.",
+       "options": [
+        "go",
+        "going",
+        "to go",
+        "went"
+       ],
+       "answer": 1,
+       "explanation": "'How about' kalıbından sonra fiil -ing alır: 'How about going...?' Bu soru dilbilgisiyle çözülür; 'to go' ancak 'Would you like' kalıbından sonra gelir."
+      },
+      {
+       "type": "translate",
+       "text": "Partiye gelmek ister misin?",
+       "lang": "tr",
+       "answers": [
+        "Would you like to come to the party",
+        "Do you want to come to the party"
+       ],
+       "tokens": [
+        "Would",
+        "you",
+        "like",
+        "to",
+        "come",
+        "to",
+        "the",
+        "party",
+        "want",
+        "do",
+        "going"
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "I'm sorry I was late for class ---- the bus broke down.",
+       "options": [
+        "because",
+        "but",
+        "so",
+        "or"
+       ],
+       "answer": 0,
+       "explanation": "Geç kalmanın nedeni 'the bus broke down' (otobüs bozuldu); neden bildirirken 'because' kullanılır. 'So' ise sonuç bildirir, burada anlamı bozar."
+      },
+      {
+       "type": "choice",
+       "question": "Kerem: I'm really sorry, Ayşe. I forgot your birthday.\nAyşe: ----. Everybody forgets things sometimes.",
+       "options": [
+        "I'm so angry with you",
+        "No, thanks",
+        "You're welcome",
+        "Never mind"
+       ],
+       "answer": 3,
+       "explanation": "Ayşe 'Everybody forgets things sometimes' diyerek özrü kabul ediyor; bunun kalıbı 'Never mind' (Önemli değil). 'You're welcome' teşekküre verilen cevaptır, özre değil."
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence gives a reason for refusing an invitation?",
+       "options": [
+        "I'd love to come to your party.",
+        "Thanks for inviting me.",
+        "I can't come because I have a piano lesson.",
+        "What time does the party start?"
+       ],
+       "answer": 2,
+       "explanation": "'I can't come because I have a piano lesson' hem reddediyor hem de 'because' ile nedenini veriyor. 'Thanks for inviting me' kibar bir cümle ama ret ya da neden içermiyor."
+      },
+      {
+       "type": "choice",
+       "question": "Which one is NOT used to apologize?",
+       "options": [
+        "I'm so sorry.",
+        "I apologize.",
+        "Please forgive me.",
+        "Don't mention it."
+       ],
+       "answer": 3,
+       "explanation": "'Don't mention it' teşekküre verilen bir cevaptır (Lafı bile olmaz). 'I'm so sorry', 'I apologize' ve 'Please forgive me' ise özür dilemek için kullanılır."
+      },
+      {
+       "type": "choice",
+       "question": "Defne: What is your best friend like?\nArda: ----",
+       "options": [
+        "He is honest and cheerful.",
+        "He likes playing chess.",
+        "He is fine, thanks.",
+        "He lives near my house."
+       ],
+       "answer": 0,
+       "explanation": "'What is he like?' kişiliği sorar, cevabı sıfatlarla verilir: 'He is honest and cheerful.' 'He likes playing chess' ise 'What does he like?' sorusunun cevabıdır."
+      }
+     ]
+    },
+    {
+     "id": "ls1u1l3",
+     "type": "lesson",
+     "title": "Diyaloglar ve durumlar",
+     "description": "Davet, ret ve özür diyalogları, durumlar ve anket tablosu",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Mert: Do you want to go to the science fair with me on Sunday?\nCan: ----. I really want to see the robots there!",
+       "options": [
+        "Sorry, I'm busy",
+        "Sure, why not",
+        "I don't think so",
+        "Maybe next time"
+       ],
+       "answer": 1,
+       "explanation": "Can 'I really want to see the robots there!' diyor, yani daveti kabul ediyor: 'Sure, why not.' 'Maybe next time' ise kibar bir rettir ve Can'ın isteğiyle çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep: Would you like to join our drama club?\nLisa: ----. I have to study for my exams this term.\nZeynep: That's OK. Maybe next term.",
+       "options": [
+        "Yes, I'd love to",
+        "Sounds fun, count me in",
+        "Thanks, but I can't",
+        "Sure, when does it start"
+       ],
+       "answer": 2,
+       "explanation": "Lisa 'I have to study for my exams' diye mazeret veriyor, Zeynep de 'Maybe next term' diyor; demek ki Lisa reddetmiş: 'Thanks, but I can't.' 'Count me in' (Beni de say) kabul anlamı taşır."
+      },
+      {
+       "type": "choice",
+       "question": "Ali: ----?\nEce: Because my mum was ill and I had to look after her.",
+       "options": [
+        "When did you come to school",
+        "Who did you visit yesterday",
+        "Where were you on Monday",
+        "Why didn't you come to the picnic"
+       ],
+       "answer": 3,
+       "explanation": "Ece 'Because...' ile cevap veriyor; 'because' ile başlayan cevap 'Why' sorusuna verilir. 'Where were you on Monday' yer sorar, cevabı 'At home' gibi olmalıydı."
+      },
+      {
+       "type": "choice",
+       "question": "Put the dialogue in the correct order.\n(I) Sorry, I can't. I have to visit my grandparents.\n(II) Hi Burak! Do you want to hang out at the mall on Saturday?\n(III) Sure! See you next week then.\n(IV) That's OK. How about next Saturday?",
+       "options": [
+        "II - I - IV - III",
+        "II - IV - I - III",
+        "I - II - III - IV",
+        "IV - I - II - III"
+       ],
+       "answer": 0,
+       "explanation": "Önce davet gelir (II), Burak reddeder (I), arkadaşı 'How about next Saturday?' diye yeni gün önerir (IV), Burak da 'See you next week then' diye kabul eder (III). Davetten hemen sonra 'That's OK' demek anlamsız olurdu."
+      },
+      {
+       "type": "choice",
+       "question": "Selin invites Defne to a concert on Friday evening, but Defne has a family dinner then. What does Defne say to Selin?",
+       "options": [
+        "Great idea! I'll be there.",
+        "Thanks for inviting me, but I can't. I have a family dinner.",
+        "Sure, I'm free on Friday evening.",
+        "Can I bring my cousin too?"
+       ],
+       "answer": 1,
+       "explanation": "Defne'nin cuma akşamı aile yemeği var, bu yüzden teşekkür edip nedenini söyleyerek reddetmeli: 'I have a family dinner.' 'Can I bring my cousin too?' daveti kabul ettiğini gösterir."
+      },
+      {
+       "type": "choice",
+       "question": "Kaan borrowed Emir's bike and broke it by accident. How can Kaan apologize to Emir?",
+       "options": [
+        "Thank you for lending me your bike.",
+        "Never mind. It was an old bike anyway.",
+        "I'm really sorry about your bike. I'll pay for the repair.",
+        "How about riding bikes on Sunday?"
+       ],
+       "answer": 2,
+       "explanation": "'I'm really sorry about your bike. I'll pay for the repair.' hem özür diliyor hem de çözüm sunuyor. 'Never mind' ise özrü kabul eden kişinin söylediği bir sözdür, özür dileyenin değil."
+      },
+      {
+       "type": "choice",
+       "question": "Tom: I'm so sorry, Kerem. I broke your headphones. I'll buy you new ones.\nKerem: ----. It was an accident.",
+       "options": [
+        "Don't worry about it",
+        "You're welcome",
+        "I'd love to",
+        "Good luck"
+       ],
+       "answer": 0,
+       "explanation": "Kerem 'It was an accident' diyerek özrü kabul ediyor: 'Don't worry about it.' 'You're welcome' teşekküre, 'I'd love to' ise davete verilen cevaptır."
+      },
+      {
+       "type": "choice",
+       "passage": "Survey: What do you do after an argument with a friend? (50 students)\n| Answer | Students |\n|---|---|\n| I apologize first. | 20 |\n| I wait for my friend to apologize. | 15 |\n| I talk to another friend about it. | 10 |\n| I do nothing. | 5 |",
+       "question": "According to the survey, which of the following is TRUE?",
+       "options": [
+        "Nobody waits for the friend to apologize.",
+        "Ten students do nothing after an argument.",
+        "More students talk to another friend than wait for an apology.",
+        "Twenty students apologize first."
+       ],
+       "answer": 3,
+       "explanation": "Tabloda 'I apologize first' satırında 20 öğrenci var. Başka bir arkadaşla konuşanlar 10, özür bekleyenler 15 kişi; yani özür bekleyenler daha fazla."
+      },
+      {
+       "type": "choice",
+       "question": "Your friend tells you about a problem and says, 'Please don't tell anyone.' What can you say?",
+       "options": [
+        "Sorry, I can't come tonight.",
+        "Don't worry. Your secret is safe with me.",
+        "Never mind. Everybody makes mistakes.",
+        "How about going to the cinema?"
+       ],
+       "answer": 1,
+       "explanation": "Arkadaşın 'Please don't tell anyone' diyor; ona sır tutacağını söylemelisin: 'Your secret is safe with me.' 'Never mind' bir özrü kabul ederken söylenir, burada özür yok."
+      },
+      {
+       "type": "choice",
+       "question": "Arda: Can you help me with my English homework this evening?\nDeniz: Sorry, I can't. ----.\nArda: No problem. I'll ask my brother.",
+       "options": [
+        "I'm free all evening",
+        "I really like English",
+        "Your homework is easy",
+        "I have a piano lesson this evening"
+       ],
+       "answer": 3,
+       "explanation": "'Sorry, I can't' dedikten sonra bir mazeret gelmeli: 'I have a piano lesson this evening.' 'I'm free all evening' (Bütün akşam boşum) retle çelişir."
+      }
+     ]
+    },
+    {
+     "id": "ls1u1l4",
+     "type": "lesson",
+     "title": "Okuma: Özür ve davet",
+     "description": "Özür e-postası ve pijama partisi mesajı okuma",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "Hi Zeynep,\nI'm writing to say sorry about yesterday. I know you waited for me in front of the library for an hour. I'm really sorry! My phone's battery was dead, so I couldn't call you. Then my dad needed help at his shop and I couldn't leave. I know it isn't a great excuse, but it's the truth. I felt terrible all evening. You're my best friend, and I don't want you to be upset with me. Can you forgive me? I promise it won't happen again. Would you like to go to the new café on Saturday afternoon? I'll buy you a hot chocolate. Please write back soon!\nLove,\nElif",
+       "question": "Why did Elif write this email?",
+       "options": [
+        "To invite Zeynep to the library",
+        "To ask for help at the shop",
+        "To apologize to her friend",
+        "To describe her new phone"
+       ],
+       "answer": 2,
+       "explanation": "Elif e-postaya 'I'm writing to say sorry about yesterday' diye başlıyor; amacı özür dilemek. Kütüphane dünkü buluşma yeri, Elif Zeynep'i oraya değil kafeye davet ediyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Zeynep,\nI'm writing to say sorry about yesterday. I know you waited for me in front of the library for an hour. I'm really sorry! My phone's battery was dead, so I couldn't call you. Then my dad needed help at his shop and I couldn't leave. I know it isn't a great excuse, but it's the truth. I felt terrible all evening. You're my best friend, and I don't want you to be upset with me. Can you forgive me? I promise it won't happen again. Would you like to go to the new café on Saturday afternoon? I'll buy you a hot chocolate. Please write back soon!\nLove,\nElif",
+       "question": "According to the email, why couldn't Elif call Zeynep?",
+       "options": [
+        "She lost her phone.",
+        "Her phone's battery was dead.",
+        "She didn't have Zeynep's number.",
+        "Her dad took her phone."
+       ],
+       "answer": 1,
+       "explanation": "Metinde 'My phone's battery was dead, so I couldn't call you' yazıyor. Babasından bahsediliyor ama telefonu aldığı değil, dükkânda yardıma ihtiyacı olduğu söyleniyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Zeynep,\nI'm writing to say sorry about yesterday. I know you waited for me in front of the library for an hour. I'm really sorry! My phone's battery was dead, so I couldn't call you. Then my dad needed help at his shop and I couldn't leave. I know it isn't a great excuse, but it's the truth. I felt terrible all evening. You're my best friend, and I don't want you to be upset with me. Can you forgive me? I promise it won't happen again. Would you like to go to the new café on Saturday afternoon? I'll buy you a hot chocolate. Please write back soon!\nLove,\nElif",
+       "question": "What does Elif offer at the end of the email?",
+       "options": [
+        "To help Zeynep with her homework",
+        "To meet in front of the library again",
+        "To visit Zeynep's house on Sunday",
+        "To buy Zeynep a hot chocolate at a café"
+       ],
+       "answer": 3,
+       "explanation": "Elif 'Would you like to go to the new café on Saturday afternoon? I'll buy you a hot chocolate' diyor. Kütüphanenin önü dünkü buluşma yeri; yeniden orada buluşmayı önermiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Zeynep,\nI'm writing to say sorry about yesterday. I know you waited for me in front of the library for an hour. I'm really sorry! My phone's battery was dead, so I couldn't call you. Then my dad needed help at his shop and I couldn't leave. I know it isn't a great excuse, but it's the truth. I felt terrible all evening. You're my best friend, and I don't want you to be upset with me. Can you forgive me? I promise it won't happen again. Would you like to go to the new café on Saturday afternoon? I'll buy you a hot chocolate. Please write back soon!\nLove,\nElif",
+       "question": "Which question is NOT answered in the email?",
+       "options": [
+        "Where did Zeynep wait for Elif?",
+        "Why couldn't Elif leave?",
+        "What time did they plan to meet yesterday?",
+        "Where does Elif want to go on Saturday?"
+       ],
+       "answer": 2,
+       "explanation": "Bekleme yeri ('in front of the library'), Elif'in neden ayrılamadığı ('my dad needed help at his shop') ve cumartesi gidilecek yer ('the new café') metinde var. Dünkü buluşmanın saati ise hiç söylenmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Zeynep,\nI'm writing to say sorry about yesterday. I know you waited for me in front of the library for an hour. I'm really sorry! My phone's battery was dead, so I couldn't call you. Then my dad needed help at his shop and I couldn't leave. I know it isn't a great excuse, but it's the truth. I felt terrible all evening. You're my best friend, and I don't want you to be upset with me. Can you forgive me? I promise it won't happen again. Would you like to go to the new café on Saturday afternoon? I'll buy you a hot chocolate. Please write back soon!\nLove,\nElif",
+       "question": "Which of the following is TRUE according to the email?",
+       "options": [
+        "Zeynep waited for Elif for an hour.",
+        "Elif forgot about their meeting.",
+        "Elif's dad was angry with her.",
+        "Zeynep called Elif many times."
+       ],
+       "answer": 0,
+       "explanation": "Metinde 'you waited for me in front of the library for an hour' yazıyor. Elif buluşmayı unutmadı; telefonunun şarjı bitti ve babasına yardım etmesi gerekti."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi everyone!\nMy parents said yes, so I'm having a sleepover on Friday night for my birthday! We can watch films, play board games and eat pizza. Please come to my house at 7 p.m. and bring your pyjamas and a sleeping bag. On Saturday morning, my mum will take us to a café for breakfast. Please tell me by Wednesday if you can come.\nCan't wait!\nMelis",
+       "question": "What is the main purpose of the message?",
+       "options": [
+        "To apologize for a party",
+        "To invite friends to a sleepover",
+        "To ask for a birthday present",
+        "To refuse an invitation"
+       ],
+       "answer": 1,
+       "explanation": "Melis 'I'm having a sleepover on Friday night' diyor ve arkadaşlarını evine çağırıyor; mesaj bir davettir. Doğum gününden bahsediyor ama hediye istemiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi everyone!\nMy parents said yes, so I'm having a sleepover on Friday night for my birthday! We can watch films, play board games and eat pizza. Please come to my house at 7 p.m. and bring your pyjamas and a sleeping bag. On Saturday morning, my mum will take us to a café for breakfast. Please tell me by Wednesday if you can come.\nCan't wait!\nMelis",
+       "question": "What should the guests bring?",
+       "options": [
+        "Pizza and drinks",
+        "Their favourite films",
+        "A birthday cake",
+        "Pyjamas and a sleeping bag"
+       ],
+       "answer": 3,
+       "explanation": "Mesajda 'bring your pyjamas and a sleeping bag' yazıyor. Pizza yeneceği söyleniyor ama misafirlerin getirmesi istenmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi everyone!\nMy parents said yes, so I'm having a sleepover on Friday night for my birthday! We can watch films, play board games and eat pizza. Please come to my house at 7 p.m. and bring your pyjamas and a sleeping bag. On Saturday morning, my mum will take us to a café for breakfast. Please tell me by Wednesday if you can come.\nCan't wait!\nMelis",
+       "question": "Which question is NOT answered in the message?",
+       "options": [
+        "What time should the guests arrive?",
+        "When should friends answer Melis?",
+        "How old will Melis be?",
+        "Where will they have breakfast?"
+       ],
+       "answer": 2,
+       "explanation": "Geliş saati ('at 7 p.m.'), cevap günü ('by Wednesday') ve kahvaltı yeri ('a café') mesajda var. Melis'in kaç yaşına gireceği ise hiç söylenmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi everyone!\nMy parents said yes, so I'm having a sleepover on Friday night for my birthday! We can watch films, play board games and eat pizza. Please come to my house at 7 p.m. and bring your pyjamas and a sleeping bag. On Saturday morning, my mum will take us to a café for breakfast. Please tell me by Wednesday if you can come.\nCan't wait!\nMelis",
+       "question": "Ece is visiting her grandparents in another city this weekend. Which reply can she send to Melis?",
+       "options": [
+        "Count me in! See you at 7 p.m.",
+        "I'm sorry, Melis, but I can't come. I'm visiting my grandparents this weekend.",
+        "Can I bring my own sleeping bag?",
+        "Happy birthday! I'll bring my pyjamas."
+       ],
+       "answer": 1,
+       "explanation": "Ece hafta sonu şehir dışında olacağı için daveti reddedip nedenini söylemeli: 'I'm visiting my grandparents this weekend.' 'Happy birthday! I'll bring my pyjamas' partiye geleceğini gösterir."
+      }
+     ]
+    },
+    {
+     "id": "ls1u1t",
+     "type": "test",
+     "title": "Mini LGS testi",
+     "description": "10 soru, gerçek LGS biçiminde. %80 ile geçersin.",
+     "rewardXp": 30,
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Kerem is happy one minute and angry the next. You never know how he feels. He is ----.",
+       "options": [
+        "generous",
+        "polite",
+        "moody",
+        "easygoing"
+       ],
+       "answer": 2,
+       "explanation": "'Happy one minute and angry the next' keyfi çabuk değişen birini anlatır: 'moody'. 'Easygoing' her zaman sakin ve rahat biri demektir, Kerem'in tam tersidir."
+      },
+      {
+       "type": "choice",
+       "question": "Yesterday Ece and Selin had a big argument, but today they ---- and now they are friends again.",
+       "options": [
+        "made up",
+        "told lies",
+        "broke a promise",
+        "refused"
+       ],
+       "answer": 0,
+       "explanation": "İpucu 'now they are friends again': kavgadan sonra yeniden arkadaş olmak 'make up' (barışmak) demektir. 'Broke a promise' (sözünü bozdu) arkadaşlığı onarmaz, tam tersine zarar verir."
+      },
+      {
+       "type": "choice",
+       "question": "Can: I'm sorry ---- your birthday, Ayşe. I was really busy last week.\nAyşe: That's OK. Don't worry.",
+       "options": [
+        "forgot to",
+        "for forgetting",
+        "forget",
+        "to forgetting"
+       ],
+       "answer": 1,
+       "explanation": "'I'm sorry for' kalıbından sonra fiil -ing alır: 'I'm sorry for forgetting your birthday.' Bu soru dilbilgisiyle çözülür; diğer seçenekler cümleyi bozar."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: Would you like to play tennis with me this afternoon?\nSena: I'm afraid I can't. I ---- clean my room first.",
+       "options": [
+        "has to",
+        "having to",
+        "must to",
+        "have to"
+       ],
+       "answer": 3,
+       "explanation": "'I' öznesiyle 'have to' kullanılır: 'I have to clean my room.' 'Has to' yalnızca he/she/it ile gelir, 'must' ise kendinden sonra 'to' almaz."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: I'm really sorry, Mert. I told your secret to Can.\nMert: ----. I trusted you!\nEce: You're right. I promise it won't happen again.",
+       "options": [
+        "It doesn't matter at all",
+        "I'm really upset with you",
+        "Thanks a lot for your help",
+        "Sure, I'd love to"
+       ],
+       "answer": 1,
+       "explanation": "Mert 'I trusted you!' diyor, yani kırgın: 'I'm really upset with you.' 'It doesn't matter at all' özrü kolayca kabul eder, bu da Mert'in kırgınlığıyla çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Arda is new at your school. He is shy and always sits alone during the break. You want to be friendly. What do you say to him?",
+       "options": [
+        "Do you want to hang out with us during the break?",
+        "Why are you so shy?",
+        "Sorry, I can't. I'm busy.",
+        "Never mind. It doesn't matter."
+       ],
+       "answer": 0,
+       "explanation": "Arkadaş canlısı olmak için Arda'yı aranıza davet etmelisin: 'Do you want to hang out with us?' 'Why are you so shy?' onu utandırır ve kaba kaçar."
+      },
+      {
+       "type": "choice",
+       "passage": "Survey: What is the most important quality in a friend? (Class 8A, 30 students)\n| Quality | Boys | Girls |\n|---|---|---|\n| honest | 6 | 5 |\n| funny | 5 | 2 |\n| supportive | 2 | 6 |\n| generous | 2 | 2 |",
+       "question": "According to the table, which of the following is TRUE?",
+       "options": [
+        "More girls than boys chose 'funny'.",
+        "'Generous' got as many votes as 'funny'.",
+        "'Honest' is the most popular quality in the class.",
+        "'Supportive' is more popular with boys than girls."
+       ],
+       "answer": 2,
+       "explanation": "'Honest' toplam 11 oy (6 + 5) alıyor; 'supportive' 8, 'funny' 7, 'generous' 4 oyda kalıyor. 'Funny' diyen erkekler 5, kızlar 2; yani erkekler daha fazla."
+      },
+      {
+       "type": "choice",
+       "passage": "My name is Kaan and I moved to Izmir last year. On my first day at the new school, I didn't know anyone and I felt very lonely. During the break, a boy named Emir came to me and said, 'Do you want to play football with us?' I was shy, but I said, 'Sure, I'd love to!' After that day, Emir and I became best friends. He is easygoing and very funny, so I never feel bored with him. Once, I forgot my lunch money and he shared his sandwich with me. Last month I couldn't go to his birthday party because I had the flu, but he wasn't angry. He just said, 'Get well soon!' I'm really lucky to have him.",
+       "question": "How did Kaan feel on his first day at the new school?",
+       "options": [
+        "Excited",
+        "Angry",
+        "Bored",
+        "Lonely"
+       ],
+       "answer": 3,
+       "explanation": "Kaan 'I didn't know anyone and I felt very lonely' diyor; yani yalnız hissetmiş. 'Bored' kelimesi metinde geçiyor ama Emir'le hiç sıkılmadığını anlatmak için."
+      },
+      {
+       "type": "choice",
+       "passage": "My name is Kaan and I moved to Izmir last year. On my first day at the new school, I didn't know anyone and I felt very lonely. During the break, a boy named Emir came to me and said, 'Do you want to play football with us?' I was shy, but I said, 'Sure, I'd love to!' After that day, Emir and I became best friends. He is easygoing and very funny, so I never feel bored with him. Once, I forgot my lunch money and he shared his sandwich with me. Last month I couldn't go to his birthday party because I had the flu, but he wasn't angry. He just said, 'Get well soon!' I'm really lucky to have him.",
+       "question": "Which of the following is NOT mentioned about Emir?",
+       "options": [
+        "He is funny.",
+        "He shared his food with Kaan.",
+        "He is the captain of the football team.",
+        "He wasn't angry when Kaan missed his party."
+       ],
+       "answer": 2,
+       "explanation": "Metinde Emir'in 'very funny' olduğu, sandviçini paylaştığı ('he shared his sandwich') ve kızmadığı ('he wasn't angry') var. Futbol geçiyor ama Emir'in takım kaptanı olduğu söylenmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "My name is Kaan and I moved to Izmir last year. On my first day at the new school, I didn't know anyone and I felt very lonely. During the break, a boy named Emir came to me and said, 'Do you want to play football with us?' I was shy, but I said, 'Sure, I'd love to!' After that day, Emir and I became best friends. He is easygoing and very funny, so I never feel bored with him. Once, I forgot my lunch money and he shared his sandwich with me. Last month I couldn't go to his birthday party because I had the flu, but he wasn't angry. He just said, 'Get well soon!' I'm really lucky to have him.",
+       "question": "Why couldn't Kaan go to Emir's birthday party?",
+       "options": [
+        "He was ill.",
+        "He was angry with Emir.",
+        "He had to study.",
+        "He moved to another city."
+       ],
+       "answer": 0,
+       "explanation": "Kaan 'I had the flu' diyor, yani gripti, hastaydı. İzmir'e taşınması geçen yıl olmuş, partiyle ilgisi yok."
+      }
+     ]
+    },
+    {
+     "id": "ls1u1c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    }
+   ]
+  },
+  {
+   "id": "ls1u2",
+   "title": "Teen Life",
+   "description": "Gençlik hayatı: sevdiklerimiz, tercihler, günlük rutin ve hobiler",
+   "color": "0xFF7C5CFC",
+   "theme": "gunluk",
+   "guide": "## Bu ünitede ne öğreneceğiz?\nBu ünitede sevdiğin ve sevmediğin şeyleri, tercihlerini ve günlük rutinini anlatmayı öğreneceksin. Hobiler ve müzik türleri de bizimle. Kendi hayatını İngilizce anlatmaya hazır mısın?\n\n## Özet tablo\n| Ne yapmak istiyorsun? | Kalıp | Örnek |\n|---|---|---|\n| Sevdiğini söylemek | **love / like / enjoy + -ing** | I enjoy reading comics. |\n| İlgini anlatmak | **be fond of / keen on / interested in + -ing** | She is keen on dancing. |\n| Sorun etmediğini söylemek | **don't mind + -ing** | I don't mind doing the dishes. |\n| Sevmediğini söylemek | **dislike / hate / can't stand + -ing** | I can't stand waiting. |\n| Tercih bildirmek | **prefer X to Y / I'd rather … than …** | I prefer pop to rock. |\n| Sıklık sormak ve söylemek | **How often …? / once a week** | I play chess twice a week. |\n| Sebep ve sonuç vermek | **because / so** | It's boring, so I never watch it. |\n\n## Hedef kalıplar\n- **love / like / enjoy + -ing**: çok sevmek / sevmek / hoşlanmak. Örnek: I love playing the guitar.\n- **be fond of / be keen on / be interested in + -ing**: düşkün, meraklı, ilgili olmak. Örnek: Mert is interested in taking photos.\n- **don't mind + -ing**: sakınca görmemek, sorun etmemek. Örnek: I don't mind getting up early.\n- **dislike / hate / can't stand + -ing**: sevmemek / nefret etmek / dayanamamak. Örnek: Ece can't stand loud music.\n- **prefer X to Y**: X'i Y'ye tercih etmek. Örnek: I prefer swimming to running.\n- **I'd rather + yalın fiil (+ than …)**: … yapmayı tercih ederim. Örnek: I'd rather stay at home than go out.\n- **How often …? / twice a week**: Ne sıklıkla? / haftada iki kez. Örnek: How often do you swim? Twice a week.\n\n## Anahtar kelimeler\n- **teenager**: genç, ergen\n- **hobby**: hobi\n- **free time / spare time**: boş zaman\n- **routine**: günlük rutin\n- **weekday / weekend**: hafta içi günü / hafta sonu\n- **hang out**: takılmak, vakit geçirmek\n- **chat**: sohbet etmek\n- **surf the net**: internette gezinmek\n- **collect stamps**: pul biriktirmek\n- **instrument**: müzik aleti\n- **concert**: konser\n- **band**: müzik grubu\n- **folk music**: halk müziği\n- **prefer**: tercih etmek\n- **can't stand**: dayanamamak\n- **don't mind**: sorun etmemek\n- **boring / exciting**: sıkıcı / heyecan verici\n- **relaxing / annoying**: dinlendirici / sinir bozucu\n- **rarely**: nadiren\n\n## Türklerin sık yaptığı hatalar\n- \"I like play chess.\" → **I like playing chess.**: Like'tan sonra fiil yalın gelmez, -ing alır.\n- \"I prefer tea than coffee.\" → **I prefer tea to coffee.**: Prefer kalıbında karşılaştırma 'to' ile yapılır.\n- \"I am interesting in music.\" → **I am interested in music.**: 'Interesting' ilginç demektir.\n\n## Sınav ipuçları\n> **Sınav ipucu 1:** Duyguları sıraya koy: love > like > don't mind > dislike > hate / can't stand. Diyalogdaki sonraki cümle doğru duyguyu gösterir.\n\n> **Sınav ipucu 2:** Sıklık zarfı ana fiilden önce, 'be' fiilinden sonra gelir: She usually walks. / He is never late. \"How often\" sorusunun cevabı bir sıklıktır.\n\n> **Sınav ipucu 3:** Anket tablolarında sayıları tek tek karşılaştır; \"most\", \"least\" ve \"half\" tuzak olabilir.",
+   "nodes": [
+    {
+     "id": "ls1u2l1",
+     "type": "lesson",
+     "title": "Gençlik hayatı kelimeleri",
+     "description": "Hobiler, müzik türleri, sıklık ve duygu kelimeleri",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "hobi",
+       "answer": "hobby",
+       "choices": [
+        {
+         "text": "hobby",
+         "emoji": "🎨"
+        },
+        {
+         "text": "concert",
+         "emoji": "🎤"
+        },
+        {
+         "text": "routine",
+         "emoji": "⏰"
+        },
+        {
+         "text": "teenager",
+         "emoji": "🧑"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "boş zaman",
+         "free time"
+        ],
+        [
+         "hafta sonu",
+         "weekend"
+        ],
+        [
+         "hafta içi günü",
+         "weekday"
+        ],
+        [
+         "takılmak",
+         "hang out"
+        ],
+        [
+         "sohbet etmek",
+         "chat"
+        ]
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "keman",
+       "answer": "violin",
+       "choices": [
+        {
+         "text": "violin",
+         "emoji": "🎻"
+        },
+        {
+         "text": "guitar",
+         "emoji": "🎸"
+        },
+        {
+         "text": "drums",
+         "emoji": "🥁"
+        },
+        {
+         "text": "singer",
+         "emoji": "👩‍🎤"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "satranç oynamak",
+         "play chess"
+        ],
+        [
+         "pul biriktirmek",
+         "collect stamps"
+        ],
+        [
+         "bisiklete binmek",
+         "ride a bike"
+        ],
+        [
+         "çizgi roman okumak",
+         "read comics"
+        ],
+        [
+         "alışverişe gitmek",
+         "go shopping"
+        ]
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "dinlendirici",
+       "answer": "relaxing",
+       "choices": [
+        {
+         "text": "relaxing",
+         "emoji": "🛀"
+        },
+        {
+         "text": "boring",
+         "emoji": "🥱"
+        },
+        {
+         "text": "exciting",
+         "emoji": "🤩"
+        },
+        {
+         "text": "annoying",
+         "emoji": "😤"
+        }
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Selin listens to Mozart and Beethoven every evening. She loves ---- music.",
+       "options": [
+        "classical",
+        "rap",
+        "rock",
+        "folk"
+       ],
+       "answer": 0,
+       "explanation": "İpucu 'Mozart and Beethoven': ikisi de klasik müzik bestecisidir, bu yüzden 'classical' doğru. Rap, rock ve folk music başka müzik türleridir."
+      },
+      {
+       "type": "choice",
+       "question": "Kerem plays the ---- in the school band. He hits them with two sticks.",
+       "options": [
+        "violin",
+        "guitar",
+        "drums",
+        "piano"
+       ],
+       "answer": 2,
+       "explanation": "'He hits them with two sticks' (onlara iki bagetle vuruyor) cümlesi davulu anlatır: 'drums'. Keman (violin) yayla, gitar (guitar) ve piyano (piano) parmaklarla çalınır."
+      },
+      {
+       "type": "fillBlank",
+       "text": "My little brother always sings loudly while I study. He is so ___!",
+       "translation": "Küçük kardeşim ben ders çalışırken hep yüksek sesle şarkı söylüyor. Çok sinir bozucu!",
+       "choices": [
+        "annoying",
+        "relaxing",
+        "exciting"
+       ],
+       "answer": "annoying"
+      },
+      {
+       "type": "choice",
+       "question": "I ---- the net for about an hour every evening. I mostly read news about football.",
+       "options": [
+        "ride",
+        "surf",
+        "collect",
+        "hang"
+       ],
+       "answer": 1,
+       "explanation": "'Surf the net' internette gezinmek demektir; ipucu 'read news' (haber okumak). 'Ride' bisiklet gibi araçlar için, 'collect' biriktirmek için kullanılır; 'hang' ise 'hang out' kalıbında anlam kazanır."
+      },
+      {
+       "type": "choice",
+       "question": "Ali goes to the cinema only once or twice a year. He ---- goes to the cinema.",
+       "options": [
+        "always",
+        "usually",
+        "rarely",
+        "often"
+       ],
+       "answer": 2,
+       "explanation": "'Once or twice a year' (yılda bir iki kez) çok az demektir, yani 'rarely' (nadiren). 'Always', 'usually' ve 'often' sık yapılan şeyler için kullanılır."
+      },
+      {
+       "type": "choice",
+       "question": "The film was so ---- that I fell asleep in the middle of it.",
+       "options": [
+        "exciting",
+        "entertaining",
+        "annoying",
+        "boring"
+       ],
+       "answer": 3,
+       "explanation": "'I fell asleep' (uyuyakaldım) ipucu filmin sıkıcı olduğunu gösterir: 'boring'. 'Exciting' ve 'entertaining' insanı uyanık tutar; 'annoying' sinir bozucu demektir, insanı uyutmaz."
+      }
+     ]
+    },
+    {
+     "id": "ls1u2l2",
+     "type": "lesson",
+     "title": "Tercih ve sıklık kalıpları",
+     "description": "-ing alan fiiller, prefer, I'd rather ve sıklık zarfları",
+     "exercises": [
+      {
+       "type": "fillBlank",
+       "text": "I enjoy ___ comics in my free time.",
+       "translation": "Boş zamanımda çizgi roman okumaktan hoşlanırım.",
+       "choices": [
+        "reading",
+        "read",
+        "to read"
+       ],
+       "answer": "reading"
+      },
+      {
+       "type": "choice",
+       "question": "Mert is fond ---- playing video games with his cousins.",
+       "options": [
+        "on",
+        "in",
+        "at",
+        "of"
+       ],
+       "answer": 3,
+       "explanation": "Doğru kalıp 'be fond of + -ing'. 'On' 'keen on', 'in' 'interested in' kalıbında kullanılır; 'at' ise 'good at' gibi kalıplarda gelir."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep: How often do you go swimming?\nCan: ----",
+       "options": [
+        "Twice a week.",
+        "With my sister.",
+        "At the sports centre.",
+        "Yes, I love it."
+       ],
+       "answer": 0,
+       "explanation": "'How often' ne sıklıkla demektir, cevap bir sıklık olmalı: 'Twice a week.' 'With my sister' kiminle, 'At the sports centre' nerede sorusunun cevabıdır; 'Yes, I love it' ise evet-hayır sorusuna uyar."
+      },
+      {
+       "type": "fillBlank",
+       "text": "I prefer tea ___ coffee.",
+       "translation": "Çayı kahveye tercih ederim.",
+       "choices": [
+        "to",
+        "than",
+        "from"
+       ],
+       "answer": "to"
+      },
+      {
+       "type": "choice",
+       "question": "Ece is a very good student. She ---- late for school.",
+       "options": [
+        "never is",
+        "is never",
+        "never",
+        "are never"
+       ],
+       "answer": 1,
+       "explanation": "Sıklık zarfı 'be' fiilinden sonra gelir: 'She is never late.' 'Never is' sıralaması yanlış, tek başına 'never' cümleyi fiilsiz bırakır, 'are' ise 'she' ile kullanılmaz. Burada şıklar yalnızca dil bilgisiyle ayrışıyor."
+      },
+      {
+       "type": "choice",
+       "question": "Can: Do you want to play chess or watch a film?\nLisa: ---- Chess is too slow for me.",
+       "options": [
+        "I'd rather play chess.",
+        "I prefer chess to films.",
+        "I'd rather watch a film.",
+        "I'm keen on playing chess."
+       ],
+       "answer": 2,
+       "explanation": "Lisa 'Chess is too slow for me' diyor, yani film izlemeyi tercih ediyor: 'I'd rather watch a film.' Satrancı tercih eden ya da satranca meraklı olan cevaplar bu sözle çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Sena: Do you like dancing?\nEce: Well, I don't love it, but I ---- doing it at family weddings. It's not a problem for me.",
+       "options": [
+        "don't mind",
+        "hate",
+        "can't stand",
+        "dislike"
+       ],
+       "answer": 0,
+       "explanation": "'It's not a problem for me' (benim için sorun değil) anlamı 'don't mind' (sakınca görmemek) ile verilir. 'Hate', 'can't stand' ve 'dislike' olumsuz duygulardır ve bu cümleyle çelişir."
+      },
+      {
+       "type": "translate",
+       "text": "Müzik dinlemekten hoşlanırım.",
+       "lang": "tr",
+       "answers": [
+        "I enjoy listening to music",
+        "I like listening to music"
+       ],
+       "tokens": [
+        "I",
+        "enjoy",
+        "like",
+        "listening",
+        "listen",
+        "to",
+        "music",
+        "at"
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence has the SAME meaning as 'I prefer reading books to watching TV.'?",
+       "options": [
+        "I like watching TV more than reading books.",
+        "I don't like reading books or watching TV.",
+        "I never read books or watch TV.",
+        "I like reading books more than watching TV."
+       ],
+       "answer": 3,
+       "explanation": "'Prefer X to Y' X'i Y'den daha çok sevmek demektir: 'I like reading books more than watching TV.' 'I like watching TV more than reading books' tercihi tersine çeviriyor; diğer iki cümle ise ikisini de reddediyor."
+      },
+      {
+       "type": "choice",
+       "question": "Arda: Are you interested ---- taking photos?\nBerk: Yes, I take photos of birds every weekend.",
+       "options": [
+        "on",
+        "in",
+        "of",
+        "at"
+       ],
+       "answer": 1,
+       "explanation": "Doğru kalıp 'be interested in + -ing'. 'On' 'keen on', 'of' 'fond of' kalıbıyla kullanılır; 'interested at' diye bir kalıp yoktur."
+      },
+      {
+       "type": "choice",
+       "question": "Kaan: Let's go to the cinema tonight.\nDefne: Sorry, I'd rather ---- at home. I'm really tired.",
+       "options": [
+        "to stay",
+        "staying",
+        "stay",
+        "stays"
+       ],
+       "answer": 2,
+       "explanation": "'I'd rather' kalıbından sonra yalın fiil gelir: 'I'd rather stay at home.' 'To stay', 'staying' ve 'stays' bu kalıpta dil bilgisi açısından yanlıştır."
+      }
+     ]
+    },
+    {
+     "id": "ls1u2l3",
+     "type": "lesson",
+     "title": "Diyaloglar ve durumlar",
+     "description": "Boş zaman sohbetleri, tercihler ve anket tablosu",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Lisa: What do you usually do in your spare time?\nEce: ----",
+       "options": [
+        "I'm thirteen years old.",
+        "I often play the drums with my band.",
+        "I went to a concert yesterday.",
+        "My favourite colour is blue."
+       ],
+       "answer": 1,
+       "explanation": "Lisa boş zamanda genellikle ne yapıldığını soruyor ('usually'); cevap bir alışkanlık olmalı: 'I often play the drums with my band.' 'I went to a concert yesterday' tek bir geçmiş olayı anlatır, alışkanlık değildir."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: ----\nCan: I'm really into rap. I listen to it on the bus every morning.",
+       "options": [
+        "Can you play an instrument?",
+        "Where do you buy your headphones?",
+        "When did you go to the concert?",
+        "What kind of music do you like?"
+       ],
+       "answer": 3,
+       "explanation": "Can sevdiği müzik türünü söylüyor ('I'm really into rap'), o hâlde soru 'What kind of music do you like?' olmalı. Enstrüman, kulaklık ya da konser sorusuna bu cevap uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep: Do you like skateboarding?\nTom: ---- I think it's dangerous.",
+       "options": [
+        "Not really, I'm not fond of it.",
+        "Yes, I'm crazy about it.",
+        "Of course, I do it every day.",
+        "I'm very keen on it."
+       ],
+       "answer": 0,
+       "explanation": "Tom 'I think it's dangerous' diyor, yani kaykayı sevmiyor: 'Not really, I'm not fond of it.' Diğer cevapların hepsi kaykayı sevdiğini gösterir ve 'dangerous' sözüyle çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Put the dialogue in the correct order.\n(I) Yes, I go to the chess club.\n(II) Do you go to any clubs after school?\n(III) Twice a week, on Tuesdays and Thursdays.\n(IV) Really? How often do you go there?",
+       "options": [
+        "I - II - III - IV",
+        "II - IV - I - III",
+        "II - I - IV - III",
+        "IV - III - II - I"
+       ],
+       "answer": 2,
+       "explanation": "Önce soru gelir: 'Do you go to any clubs after school?' (II). Cevap 'Yes, I go to the chess club.' (I), ardından 'How often do you go there?' (IV) ve sıklık cevabı (III). 'II - IV - I - III' sırasında kulüp söylenmeden 'there' diye sorulmuş olur."
+      },
+      {
+       "type": "choice",
+       "question": "Kerem loves watching football, but he hates playing it because he isn't good at sports. What can he say?",
+       "options": [
+        "I like watching football, but I can't stand playing it.",
+        "I enjoy playing football with my friends.",
+        "I'm not interested in football at all.",
+        "Playing football is my favourite hobby."
+       ],
+       "answer": 0,
+       "explanation": "Kerem futbol izlemeyi seviyor ama oynamaktan nefret ediyor; ikisini birden anlatan cümle 'I like watching football, but I can't stand playing it.' 'I'm not interested in football at all' yanlış, çünkü Kerem futbol izlemeyi seviyor."
+      },
+      {
+       "type": "choice",
+       "question": "Elif's friends want to go shopping on Saturday. Elif finds shopping boring and prefers going to the cinema. What does Elif say?",
+       "options": [
+        "Great! I love going shopping.",
+        "I don't mind going shopping. It's fun.",
+        "Shopping is more exciting than films.",
+        "I'd rather go to the cinema than go shopping."
+       ],
+       "answer": 3,
+       "explanation": "Elif alışverişi sıkıcı buluyor ve sinemayı tercih ediyor: 'I'd rather go to the cinema than go shopping.' 'I don't mind going shopping' sorun etmediğini söyler, oysa Elif alışverişi 'boring' buluyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Survey: What do 8/B students do in their free time? (30 students)\n| Activity | Students |\n|---|---|\n| play video games | 11 |\n| hang out with friends | 8 |\n| do sports | 5 |\n| read comics | 4 |\n| play chess | 2 |",
+       "question": "According to the survey, which of the following is TRUE?",
+       "options": [
+        "Reading comics is the least popular activity.",
+        "Playing video games is the most popular activity.",
+        "More students do sports than hang out with friends.",
+        "Half of the students play chess."
+       ],
+       "answer": 1,
+       "explanation": "En yüksek sayı 11 ile 'play video games', yani en popüler etkinlik bu. En az seçilen etkinlik çizgi roman (4) değil satranç (2); spor yapan 5 kişi, arkadaşlarıyla takılan 8 kişiden az."
+      },
+      {
+       "type": "choice",
+       "question": "Ali: Why do you get up so early on Saturdays?\nBerk: ----",
+       "options": [
+        "Yes, I always do.",
+        "I usually get up at 10.",
+        "Because I have a swimming lesson at 8 a.m.",
+        "So I can sleep until noon."
+       ],
+       "answer": 2,
+       "explanation": "'Why' sorusu sebep ister; sebep 'because' ile verilir: 'Because I have a swimming lesson at 8 a.m.' 'I usually get up at 10' ve 'So I can sleep until noon' erken kalkmakla çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: I can't stand waiting in long queues, so I always shop online.\nWhat does Ece mean?",
+       "options": [
+        "She enjoys waiting in queues.",
+        "She hates waiting in queues.",
+        "She doesn't mind waiting in queues.",
+        "She is keen on waiting in queues."
+       ],
+       "answer": 1,
+       "explanation": "'Can't stand' dayanamamak, yani nefret etmek demektir: 'She hates waiting in queues.' 'Doesn't mind' sorun etmemek, 'enjoys' ve 'is keen on' ise sevmek anlamındadır."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: Would you like to join our band? We need a guitar player.\nCan: ---- But I can sing. Do you need a singer?",
+       "options": [
+        "Of course, I'm a great guitar player.",
+        "Sorry, I hate music.",
+        "Yes, I play it every day.",
+        "Thanks, but I can't play the guitar."
+       ],
+       "answer": 3,
+       "explanation": "Can 'But I can sing' diyerek başka bir şey öneriyor; demek ki gitar çalamıyor: 'Thanks, but I can't play the guitar.' 'Sorry, I hate music' şarkı söylemek istemesiyle çelişir."
+      }
+     ]
+    },
+    {
+     "id": "ls1u2l4",
+     "type": "lesson",
+     "title": "Okuma: Gençlerin dünyası",
+     "description": "Bir gencin blog yazısı ve gençlik merkezi programı",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "Hi! I'm Ceren and I'm fourteen. I'm a big fan of K-pop, and I know all the dance moves of my favourite band. On weekdays, I always get up at 6.45 and catch the school bus at 7.30. After school, I usually do my homework first. Then I practise dancing for an hour in my room. My little brother can't stand K-pop, so he wears headphones when I practise! I rarely watch TV because I find most programmes boring. At weekends, I sometimes meet my friends at the shopping mall, but I never stay out late. My parents want me home by 7 p.m. My dream is to be a dance teacher one day.",
+       "question": "What does Ceren usually do first after school?",
+       "options": [
+        "She does her homework.",
+        "She watches TV.",
+        "She goes to a dance course.",
+        "She meets her friends at the mall."
+       ],
+       "answer": 0,
+       "explanation": "Ceren 'After school, I usually do my homework first' diyor. Dansı bir kursta değil odasında çalışıyor; arkadaşlarıyla AVM'de ise hafta sonları buluşuyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi! I'm Ceren and I'm fourteen. I'm a big fan of K-pop, and I know all the dance moves of my favourite band. On weekdays, I always get up at 6.45 and catch the school bus at 7.30. After school, I usually do my homework first. Then I practise dancing for an hour in my room. My little brother can't stand K-pop, so he wears headphones when I practise! I rarely watch TV because I find most programmes boring. At weekends, I sometimes meet my friends at the shopping mall, but I never stay out late. My parents want me home by 7 p.m. My dream is to be a dance teacher one day.",
+       "question": "Which of the following is NOT true about Ceren?",
+       "options": [
+        "She is a K-pop fan.",
+        "She practises dancing at home.",
+        "She often watches TV.",
+        "She wants to be a dance teacher."
+       ],
+       "answer": 2,
+       "explanation": "Ceren 'I rarely watch TV' diyor, yani TV'yi sık izlemiyor; bu bilgi yanlış. K-pop hayranı olduğu, odasında dans çalıştığı ve dans öğretmeni olmak istediği metinde yazıyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi! I'm Ceren and I'm fourteen. I'm a big fan of K-pop, and I know all the dance moves of my favourite band. On weekdays, I always get up at 6.45 and catch the school bus at 7.30. After school, I usually do my homework first. Then I practise dancing for an hour in my room. My little brother can't stand K-pop, so he wears headphones when I practise! I rarely watch TV because I find most programmes boring. At weekends, I sometimes meet my friends at the shopping mall, but I never stay out late. My parents want me home by 7 p.m. My dream is to be a dance teacher one day.",
+       "question": "Which question is NOT answered in the text?",
+       "options": [
+        "How old is Ceren?",
+        "What time does Ceren get up on weekdays?",
+        "When must Ceren be home at weekends?",
+        "What is the name of Ceren's favourite band?"
+       ],
+       "answer": 3,
+       "explanation": "Metinde Ceren'in yaşı ('fourteen'), kalkış saati ('6.45') ve eve dönüş saati ('by 7 p.m.') var. En sevdiği grubun adı ise hiç söylenmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi! I'm Ceren and I'm fourteen. I'm a big fan of K-pop, and I know all the dance moves of my favourite band. On weekdays, I always get up at 6.45 and catch the school bus at 7.30. After school, I usually do my homework first. Then I practise dancing for an hour in my room. My little brother can't stand K-pop, so he wears headphones when I practise! I rarely watch TV because I find most programmes boring. At weekends, I sometimes meet my friends at the shopping mall, but I never stay out late. My parents want me home by 7 p.m. My dream is to be a dance teacher one day.",
+       "question": "Why does Ceren's brother wear headphones when she practises?",
+       "options": [
+        "He wants to sleep.",
+        "He doesn't like K-pop at all.",
+        "He is doing his homework.",
+        "He is learning the dance moves."
+       ],
+       "answer": 1,
+       "explanation": "Metinde 'My little brother can't stand K-pop, so he wears headphones' yazıyor; kardeşi K-pop'a dayanamıyor. Uyumak ya da ödev yapmakla ilgili bir bilgi metinde yok."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi! I'm Ceren and I'm fourteen. I'm a big fan of K-pop, and I know all the dance moves of my favourite band. On weekdays, I always get up at 6.45 and catch the school bus at 7.30. After school, I usually do my homework first. Then I practise dancing for an hour in my room. My little brother can't stand K-pop, so he wears headphones when I practise! I rarely watch TV because I find most programmes boring. At weekends, I sometimes meet my friends at the shopping mall, but I never stay out late. My parents want me home by 7 p.m. My dream is to be a dance teacher one day.",
+       "question": "We understand from the text that Ceren ----.",
+       "options": [
+        "must be home by 7 p.m. when she goes out at weekends",
+        "walks to school on weekdays",
+        "practises dancing at a dance course",
+        "never meets her friends"
+       ],
+       "answer": 0,
+       "explanation": "Ceren hafta sonu arkadaşlarıyla buluştuğunu ve 'My parents want me home by 7 p.m.' dediğini yazıyor. Okula servisle gidiyor ('catch the school bus'), dansı odasında çalışıyor ve arkadaşlarıyla bazen ('sometimes') buluşuyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Sunny Hills Youth Centre: Summer Clubs (ages 12-16)\n| Club | Day | Time | Note |\n|---|---|---|---|\n| Photography | Monday and Wednesday | 2-4 p.m. | Bring your camera or phone. |\n| Street Dance | Tuesday and Thursday | 5-7 p.m. | No experience needed! |\n| Chess | Saturday | 10 a.m.-12 p.m. | Boards are free to use. |\n| Band | Friday | 3-5 p.m. | Bring your guitar, drums or keyboard. |\nAll clubs are free for members. Membership is 50 liras for the summer.",
+       "question": "Burak is interested in photography, but he doesn't have a camera. What can we understand from the table?",
+       "options": [
+        "He can't join the Photography Club.",
+        "He has to buy a camera first.",
+        "He can use his phone in the club.",
+        "The centre gives free cameras."
+       ],
+       "answer": 2,
+       "explanation": "Tabloda fotoğraf kulübü için 'Bring your camera or phone' yazıyor; Burak telefonunu getirebilir. Kamera alması gerektiği ya da merkezin ücretsiz kamera verdiği yazmıyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Sunny Hills Youth Centre: Summer Clubs (ages 12-16)\n| Club | Day | Time | Note |\n|---|---|---|---|\n| Photography | Monday and Wednesday | 2-4 p.m. | Bring your camera or phone. |\n| Street Dance | Tuesday and Thursday | 5-7 p.m. | No experience needed! |\n| Chess | Saturday | 10 a.m.-12 p.m. | Boards are free to use. |\n| Band | Friday | 3-5 p.m. | Bring your guitar, drums or keyboard. |\nAll clubs are free for members. Membership is 50 liras for the summer.",
+       "question": "Ela is keen on dancing, but she has never taken a dance class. Which club is best for her, and when can she go?",
+       "options": [
+        "Band Club on Fridays",
+        "Street Dance Club on Tuesdays",
+        "Chess Club on Saturdays",
+        "Photography Club on Mondays"
+       ],
+       "answer": 1,
+       "explanation": "Ela dansa meraklı ve Street Dance kulübü için 'No experience needed!' yazıyor; kulüp salı ve perşembe toplanıyor. Band, Chess ve Photography kulüpleri dansla ilgili değil."
+      },
+      {
+       "type": "choice",
+       "passage": "Sunny Hills Youth Centre: Summer Clubs (ages 12-16)\n| Club | Day | Time | Note |\n|---|---|---|---|\n| Photography | Monday and Wednesday | 2-4 p.m. | Bring your camera or phone. |\n| Street Dance | Tuesday and Thursday | 5-7 p.m. | No experience needed! |\n| Chess | Saturday | 10 a.m.-12 p.m. | Boards are free to use. |\n| Band | Friday | 3-5 p.m. | Bring your guitar, drums or keyboard. |\nAll clubs are free for members. Membership is 50 liras for the summer.",
+       "question": "Kaan can only go to the centre at weekends. Which club can he join?",
+       "options": [
+        "Band Club",
+        "Street Dance Club",
+        "Photography Club",
+        "Chess Club"
+       ],
+       "answer": 3,
+       "explanation": "Hafta sonu toplanan tek kulüp 'Saturday' günü buluşan Chess. Band cuma, Street Dance salı ve perşembe, Photography ise pazartesi ve çarşamba günleri toplanıyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Sunny Hills Youth Centre: Summer Clubs (ages 12-16)\n| Club | Day | Time | Note |\n|---|---|---|---|\n| Photography | Monday and Wednesday | 2-4 p.m. | Bring your camera or phone. |\n| Street Dance | Tuesday and Thursday | 5-7 p.m. | No experience needed! |\n| Chess | Saturday | 10 a.m.-12 p.m. | Boards are free to use. |\n| Band | Friday | 3-5 p.m. | Bring your guitar, drums or keyboard. |\nAll clubs are free for members. Membership is 50 liras for the summer.",
+       "question": "Which question is NOT answered in the table?",
+       "options": [
+        "Who teaches the Band Club?",
+        "How much does membership cost?",
+        "How old should the members be?",
+        "When does the Chess Club meet?"
+       ],
+       "answer": 0,
+       "explanation": "Tabloda üyelik ücreti ('50 liras'), yaş aralığı ('ages 12-16') ve satranç kulübünün günü ('Saturday') var. Band kulübünü kimin yönettiği ise yazmıyor."
+      }
+     ]
+    },
+    {
+     "id": "ls1u2t",
+     "type": "test",
+     "title": "Mini LGS testi",
+     "description": "10 soru, gerçek LGS biçiminde. %80 ile geçersin.",
+     "rewardXp": 30,
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "My grandfather has a big album full of stamps from different countries. He started to ---- stamps when he was ten.",
+       "options": [
+        "ride",
+        "collect",
+        "surf",
+        "chat"
+       ],
+       "answer": 1,
+       "explanation": "'A big album full of stamps' ipucu pul biriktirmeyi gösterir: 'collect stamps'. 'Ride' bisiklet için, 'surf' internet için, 'chat' ise sohbet için kullanılır."
+      },
+      {
+       "type": "choice",
+       "question": "Deniz: How was the concert last night?\nEce: It was really ----! Everybody was dancing and singing along.",
+       "options": [
+        "boring",
+        "annoying",
+        "exciting",
+        "relaxing"
+       ],
+       "answer": 2,
+       "explanation": "'Everybody was dancing and singing along' (herkes dans edip şarkılara eşlik ediyordu) konserin heyecanlı olduğunu gösterir: 'exciting'. 'Relaxing' sakin ve dinlendirici demektir, bu coşkulu sahneye uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Tom: Do you like jazz?\nAyşe: Not really. I prefer pop ---- jazz.",
+       "options": [
+        "to",
+        "than",
+        "from",
+        "with"
+       ],
+       "answer": 0,
+       "explanation": "'Prefer X to Y' kalıbında 'to' kullanılır: 'I prefer pop to jazz.' 'Than' Türklerin en sık yaptığı hatadır; 'from' ve 'with' bu kalıpta yer almaz."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: Would you rather go swimming or play tennis this afternoon?\nKaan: I'd rather ----. The water is too cold today.",
+       "options": [
+        "go swimming",
+        "to play tennis",
+        "playing tennis",
+        "play tennis"
+       ],
+       "answer": 3,
+       "explanation": "Kaan 'The water is too cold today' diyor, yani yüzmek istemiyor; 'I'd rather' kalıbından sonra yalın fiil gelir: 'play tennis'. 'To play tennis' ve 'playing tennis' anlamca uysa da dil bilgisi açısından yanlış."
+      },
+      {
+       "type": "choice",
+       "question": "Arda: ----\nNil: I usually hang out with my friends or chat with my cousins online.",
+       "options": [
+        "Where do your cousins live?",
+        "What do you usually do at weekends?",
+        "How old are your friends?",
+        "Do you like your school?"
+       ],
+       "answer": 1,
+       "explanation": "Nil genellikle ne yaptığını anlatıyor ('I usually hang out...'), demek ki soru 'What do you usually do at weekends?' Kuzenlerin nerede yaşadığı ya da arkadaşların yaşı bu cevapla karşılanmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Onur is at a friend's birthday party. His friends want to dance, but Onur doesn't like dancing. He prefers chatting. What does Onur say?",
+       "options": [
+        "Let's dance all night!",
+        "I'm really keen on dancing.",
+        "I'd rather sit and chat than dance.",
+        "I never chat with my friends."
+       ],
+       "answer": 2,
+       "explanation": "Onur dansı sevmiyor ve sohbeti tercih ediyor: 'I'd rather sit and chat than dance.' 'I'm really keen on dancing' dansa meraklı olduğunu söyler, bu durumla çelişir."
+      },
+      {
+       "type": "choice",
+       "passage": "Survey: Favourite music of 8/A students (32 students)\n| Music | Boys | Girls |\n|---|---|---|\n| pop | 4 | 9 |\n| rap | 7 | 3 |\n| rock | 2 | 3 |\n| folk music | 2 | 2 |",
+       "question": "According to the survey, which of the following is TRUE?",
+       "options": [
+        "Rap is more popular among girls than boys.",
+        "Pop is the most popular music in the class.",
+        "Nobody in the class likes folk music.",
+        "More boys than girls like rock."
+       ],
+       "answer": 1,
+       "explanation": "Pop'u 4 erkek ve 9 kız, toplam 13 öğrenci seçmiş; bu en yüksek sayı. Rap'i erkekler (7) kızlardan (3) çok seviyor, folk music'i 4 kişi seçmiş, rock'ı ise kızlar (3) erkeklerden (2) çok seviyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Emre,\nThanks for your email! You asked about my weekly routine, so here it is. On weekdays, I get up at seven and walk to school with my sister. After school, I usually play football in the park. On Wednesdays, I have violin lessons. To be honest, I don't enjoy them much, but my mum loves classical music! I rarely play video games on weekdays because I have a lot of homework. At weekends, I often go to the cinema with my cousins. Last month, we went to a rock concert in London. It was amazing! What about you? What do you do in your free time?\nBest wishes,\nTom",
+       "question": "Which of the following is TRUE about Tom?",
+       "options": [
+        "He goes to school by bus.",
+        "He often plays video games on weekdays.",
+        "He has violin lessons once a week.",
+        "He goes to the cinema with his sister."
+       ],
+       "answer": 2,
+       "explanation": "Tom 'On Wednesdays, I have violin lessons' diyor, yani haftada bir keman dersi var. Okula yürüyerek gidiyor, hafta içi nadiren ('rarely') oyun oynuyor ve sinemaya kardeşiyle değil kuzenleriyle gidiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Emre,\nThanks for your email! You asked about my weekly routine, so here it is. On weekdays, I get up at seven and walk to school with my sister. After school, I usually play football in the park. On Wednesdays, I have violin lessons. To be honest, I don't enjoy them much, but my mum loves classical music! I rarely play video games on weekdays because I have a lot of homework. At weekends, I often go to the cinema with my cousins. Last month, we went to a rock concert in London. It was amazing! What about you? What do you do in your free time?\nBest wishes,\nTom",
+       "question": "What does Tom think about his violin lessons?",
+       "options": [
+        "He doesn't really like them.",
+        "He is very keen on them.",
+        "He prefers them to football.",
+        "He loves classical music."
+       ],
+       "answer": 0,
+       "explanation": "Tom 'I don't enjoy them much' diyor, yani keman derslerini pek sevmiyor. Klasik müziği seven Tom değil annesi: 'my mum loves classical music'."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Emre,\nThanks for your email! You asked about my weekly routine, so here it is. On weekdays, I get up at seven and walk to school with my sister. After school, I usually play football in the park. On Wednesdays, I have violin lessons. To be honest, I don't enjoy them much, but my mum loves classical music! I rarely play video games on weekdays because I have a lot of homework. At weekends, I often go to the cinema with my cousins. Last month, we went to a rock concert in London. It was amazing! What about you? What do you do in your free time?\nBest wishes,\nTom",
+       "question": "Which question is NOT answered in the email?",
+       "options": [
+        "Who does Tom walk to school with?",
+        "When does Tom have violin lessons?",
+        "Where did Tom go last month?",
+        "What is the name of Tom's football team?"
+       ],
+       "answer": 3,
+       "explanation": "E-postada Tom'un okula kız kardeşiyle yürüdüğü ('with my sister'), keman dersinin çarşamba olduğu ve geçen ay Londra'da bir rock konserine gittiği yazıyor. Futbol takımının adı ise hiç geçmiyor."
+      }
+     ]
+    },
+    {
+     "id": "ls1u2c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    }
+   ]
+  },
+  {
+   "id": "ls1u3",
+   "title": "In the Kitchen",
+   "description": "Mutfakta: tarif anlatma, malzeme ve miktar, pişirme fiilleri ve yemek tanıtma",
+   "color": "0xFFF08A24",
+   "theme": "yemek",
+   "guide": "## Bu ünitede ne öğreneceğiz?\n\nBu ünitede mutfağa giriyoruz! Bir tarifi adım adım anlatmayı, malzeme ve miktar söylemeyi ve sevdiğin yemekleri İngilizce tanıtmayı öğreneceksin. Tarif dili kısa ve düzenlidir, yani çok hızlı ilerleyeceksin.\n\n## Özet tablo\n\n| Ne yapmak istiyorsun? | Kalıp | Örnek |\n|---|---|---|\n| Tarife başlamak | **First, …** | First, wash the vegetables. |\n| Sonraki adımı söylemek | **Then / Next / After that, …** | Then, chop the onions. |\n| Son adımı söylemek | **Finally, …** | Finally, serve it hot. |\n| Talimat vermek | **Emir kipi** | Boil the water. Don't touch the pan. |\n| Miktar sormak | **How much / How many …?** | How many eggs do we need? |\n| Malzeme ve miktar söylemek | **You need … / a pinch of …** | You need two cups of flour. |\n| Yemeği tanıtmak | **It is made with / served with …** | Mantı is served with yoghurt. |\n\n## Hedef kalıplar\n\n- **First, … Then, … Next, … After that, … Finally, …**: Önce… sonra… ardından… bundan sonra… son olarak… Örnek: First, peel the potatoes. Finally, fry them.\n- **Emir kipi (fiil + nesne)**: Tarifte özne yoktur, cümle fiille başlar. Örnek: Chop the onions.\n- **Don't + fiil**: Olumsuz talimat. Örnek: Don't add too much salt.\n- **How much …?**: Sayılamayan şeyler için \"ne kadar?\" Örnek: How much sugar do we need?\n- **How many …?**: Sayılabilen şeyler için \"kaç tane?\" Örnek: How many eggs do we need?\n- **a cup of / a spoonful of / a pinch of / a slice of**: bir su bardağı / bir kaşık / bir tutam / bir dilim. Örnek: Add a pinch of salt.\n- **It is made with … / It is served with …**: … ile yapılır / … ile servis edilir. Örnek: Ayran is made with yoghurt and water.\n- **You need …**: … gerekiyor. Örnek: You need three eggs for this cake.\n\n## Anahtar kelimeler\n\n- **recipe**: tarif\n- **ingredient**: malzeme\n- **dish**: yemek (bir tabak yemek)\n- **cook**: aşçı; pişirmek\n- **cooker**: ocak\n- **chop**: doğramak\n- **slice**: dilimlemek; dilim\n- **peel**: soymak\n- **grate**: rendelemek\n- **boil**: kaynatmak, haşlamak\n- **fry**: kızartmak\n- **bake**: fırında pişirmek\n- **stir**: kaşıkla karıştırmak\n- **mix**: karıştırmak, birleştirmek\n- **pour**: dökmek\n- **melt**: eritmek\n- **serve**: servis etmek, sunmak\n- **flour**: un\n- **a pinch of**: bir tutam\n- **delicious**: çok lezzetli\n\n## Türklerin sık yaptığı hatalar\n\n- \"Add a sugar.\" → **Add some sugar.**: sugar, salt, milk ve flour sayılamaz; a/an almaz, çoğul da olmaz.\n- \"My mother is a good cooker.\" → **My mother is a good cook.**: cook aşçı demektir, cooker ise ocaktır.\n- \"How many sugar do we need?\" → **How much sugar do we need?**: Sayılamayan isimlerle How much kullanılır.\n\n## Sınav ipuçları\n\n> **Sınav ipucu 1:** Sıralama sorularında önce hazırlık (wash, peel, chop), sonra pişirme (boil, fry, bake), en son sunum (serve) gelir. First ve Finally kelimelerini bul, gerisi kolay.\n\n> **Sınav ipucu 2:** Diyalogda boşluktan sonraki cümleye bak. Cevap \"Just a pinch.\" gibi bir miktarsa boşluktaki soru How much ile başlıyordur.\n\n> **Sınav ipucu 3:** \"Which ingredient is NOT used?\" sorularında metindeki malzemeleri tek tek işaretle ve metinde olmayanı seç. Takılırsan bu rehbere dön, sen bunu yaparsın!",
+   "nodes": [
+    {
+     "id": "ls1u3l1",
+     "type": "lesson",
+     "title": "Mutfak kelimeleri",
+     "description": "Pişirme fiilleri, mutfak eşyaları, malzemeler ve miktarlar",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "doğramak",
+       "answer": "chop",
+       "choices": [
+        {
+         "text": "chop",
+         "emoji": "🔪"
+        },
+        {
+         "text": "boil",
+         "emoji": "♨️"
+        },
+        {
+         "text": "fry",
+         "emoji": "🍳"
+        },
+        {
+         "text": "bake",
+         "emoji": "🥧"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "kase",
+         "bowl"
+        ],
+        [
+         "tava",
+         "pan"
+        ],
+        [
+         "tencere",
+         "pot"
+        ],
+        [
+         "fırın",
+         "oven"
+        ],
+        [
+         "bıçak",
+         "knife"
+        ]
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "soymak",
+       "answer": "peel",
+       "choices": [
+        {
+         "text": "pour",
+         "emoji": "🫗"
+        },
+        {
+         "text": "peel",
+         "emoji": "🍌"
+        },
+        {
+         "text": "stir",
+         "emoji": "🥄"
+        },
+        {
+         "text": "grate",
+         "emoji": "🧀"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "un",
+         "flour"
+        ],
+        [
+         "tereyağı",
+         "butter"
+        ],
+        [
+         "sarımsak",
+         "garlic"
+        ],
+        [
+         "karabiber",
+         "pepper"
+        ],
+        [
+         "soğan",
+         "onion"
+        ]
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "ocak",
+       "answer": "cooker",
+       "choices": [
+        {
+         "text": "cook",
+         "emoji": "👨‍🍳"
+        },
+        {
+         "text": "cooker",
+         "emoji": "🔥"
+        },
+        {
+         "text": "knife",
+         "emoji": "🔪"
+        },
+        {
+         "text": "spoon",
+         "emoji": "🥄"
+        }
+       ]
+      },
+      {
+       "type": "fillBlank",
+       "text": "Put the cake in the oven and ___ it for forty minutes.",
+       "translation": "Keki fırına koy ve kırk dakika pişir.",
+       "choices": [
+        "bake",
+        "fry",
+        "peel"
+       ],
+       "answer": "bake"
+      },
+      {
+       "type": "choice",
+       "question": "Ayşe: How can I cook an egg without oil?\nMert: Put the egg in a pot of water and ---- it for eight minutes. Then peel it.",
+       "options": [
+        "grate",
+        "boil",
+        "pour",
+        "bake"
+       ],
+       "answer": 1,
+       "explanation": "Yumurta 'a pot of water' içine konuyor, yani suda haşlanıyor: 'boil'. 'bake' de pişirmek ama fırında pişirmek demek; suyla pişirmeye uymuyor. 'grate' rendelemek, 'pour' dökmek."
+      },
+      {
+       "type": "choice",
+       "question": "Which word completes both sentences?\n---- the milk into a glass.\nDon't ---- hot water on your hands!",
+       "options": [
+        "slice",
+        "peel",
+        "pour",
+        "chop"
+       ],
+       "answer": 2,
+       "explanation": "Süt ve sıcak su gibi sıvılar dökülür: 'pour'. 'slice', 'peel' ve 'chop' katı yiyecekler için kullanılır; 'the milk' ya da 'hot water' ile anlamlı olmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Can: My uncle works at a big restaurant. He makes delicious soups and kebabs.\nEce: So he is a ----, right?",
+       "options": [
+        "cook",
+        "cooker",
+        "menu",
+        "recipe"
+       ],
+       "answer": 0,
+       "explanation": "Yemek yapan kişi 'cook' (aşçı) olarak anılır. En güçlü çeldirici 'cooker', ama o bir kişi değil, ocaktır. 'menu' yemek listesi, 'recipe' ise tarif demek."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: Mum, how can I help you?\nMum: Please ---- the potatoes first. We don't eat the skin.",
+       "options": [
+        "pour",
+        "serve",
+        "stir",
+        "peel"
+       ],
+       "answer": 3,
+       "explanation": "Anne 'We don't eat the skin' diyor, yani patatesin kabuğu soyulmalı: 'peel'. 'serve' en son yapılan sunum adımı, 'stir' kaşıkla karıştırmak, 'pour' ise sıvılar için."
+      },
+      {
+       "type": "choice",
+       "question": "Can: I'm hungry, Mum.\nMum: There is some cheese in the fridge. Have it with ---- bread.",
+       "options": [
+        "a cup of",
+        "a slice of",
+        "a glass of",
+        "a pinch of"
+       ],
+       "answer": 1,
+       "explanation": "Ekmek dilim dilim kesilir: 'a slice of bread' (bir dilim ekmek). 'a cup of' ve 'a glass of' sıvılar için, 'a pinch of' ise tuz gibi çok az miktarlar için kullanılır."
+      }
+     ]
+    },
+    {
+     "id": "ls1u3l2",
+     "type": "lesson",
+     "title": "Tarif kalıpları",
+     "description": "Sıralama sözcükleri, emir kipi, How much/How many ve 'is made with' yapısı",
+     "exercises": [
+      {
+       "type": "fillBlank",
+       "text": "___, wash your hands.",
+       "translation": "İlk önce ellerini yıka.",
+       "choices": [
+        "First",
+        "Finally",
+        "After"
+       ],
+       "answer": "First"
+      },
+      {
+       "type": "choice",
+       "question": "First, mix the flour and the eggs. ----, add the milk. Finally, bake the cake for thirty minutes.",
+       "options": [
+        "First",
+        "Before",
+        "Next",
+        "Finally"
+       ],
+       "answer": 2,
+       "explanation": "Bu adım ilk adımla son adımın arasında geliyor, o yüzden 'Next' (ardından) doğru. 'First' ve 'Finally' tarifte zaten kullanılmış; 'Before' tek başına cümle başında sıra bildirmez."
+      },
+      {
+       "type": "translate",
+       "text": "Önce soğanları doğra.",
+       "lang": "tr",
+       "answers": [
+        "First chop the onions",
+        "Chop the onions first"
+       ],
+       "tokens": [
+        "First",
+        "chop",
+        "the",
+        "onions",
+        "boil",
+        "then"
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Mert is giving a safety rule to his little brother in the kitchen. Which sentence is correct?",
+       "options": [
+        "Don't touch the hot pan.",
+        "Don't touching the hot pan.",
+        "Not touch the hot pan.",
+        "You don't touched the hot pan."
+       ],
+       "answer": 0,
+       "explanation": "Olumsuz emir 'Don't + fiilin yalın hâli' ile kurulur: 'Don't touch the hot pan.' En güçlü çeldirici 'Don't touching', ama Don't'tan sonra -ing gelmez; 'Not touch' ve 'touched' de hatalı."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: ---- eggs do we need for the cake?\nCan: Three. We only have two, so let's buy some more.",
+       "options": [
+        "How much",
+        "How long",
+        "How often",
+        "How many"
+       ],
+       "answer": 3,
+       "explanation": "Yumurta sayılabilir ve Can 'Three' diye bir sayı veriyor; bu yüzden 'How many' doğru. 'How much' sayılamayan şeyler (sugar, milk) için kullanılır; 'How long' süre, 'How often' sıklık sorar."
+      },
+      {
+       "type": "fillBlank",
+       "text": "You need two ___ of milk for this cake.",
+       "translation": "Bu kek için iki su bardağı süt gerekiyor.",
+       "choices": [
+        "cups",
+        "slices",
+        "pinches"
+       ],
+       "answer": "cups"
+      },
+      {
+       "type": "choice",
+       "question": "Ayşe: Do we need anything for the pancakes?\nMum: Yes, we need ----. Can you go to the shop?",
+       "options": [
+        "a milk and two eggs",
+        "some milk and two eggs",
+        "some milk and two egg",
+        "a milks and an egg"
+       ],
+       "answer": 1,
+       "explanation": "'milk' sayılamaz, bu yüzden 'a' almaz ve çoğul olmaz: 'some milk'. 'egg' sayılabilir, iki tane olunca 'two eggs' olur. 'a milk and two eggs' en güçlü çeldirici ama sayılamayan isme 'a' gelmez."
+      },
+      {
+       "type": "choice",
+       "question": "Can: I want to make menemen. What do I need?\nZeynep: ----",
+       "options": [
+        "It is served at breakfast.",
+        "Cook it for ten minutes.",
+        "You need eggs, tomatoes and green peppers.",
+        "I made it yesterday."
+       ],
+       "answer": 2,
+       "explanation": "Can 'What do I need?' diye malzemeleri soruyor; cevap 'You need eggs, tomatoes and green peppers.' 'It is served at breakfast' ne zaman yendiğini, 'Cook it for ten minutes' ise pişirme süresini söylüyor, malzemeyi değil."
+      },
+      {
+       "type": "choice",
+       "question": "Ayran ---- with yoghurt, water and a pinch of salt.",
+       "options": [
+        "makes",
+        "is making",
+        "made",
+        "is made"
+       ],
+       "answer": 3,
+       "explanation": "Ayran kendisi bir şey yapmaz, yapılır; bu yüzden edilgen 'is made' gerekir. 'makes' ve 'is making' ayranın bir şey yaptığını söyler; 'made' ise 'is' olmadan eksik kalır."
+      },
+      {
+       "type": "choice",
+       "question": "Waiter: Mantı ---- with yoghurt and garlic sauce. Would you like to try it?",
+       "options": [
+        "is served",
+        "serves",
+        "serving",
+        "are served"
+       ],
+       "answer": 0,
+       "explanation": "Mantı servis edilir, kendisi servis yapmaz; bu yüzden edilgen 'is served' doğru. Mantı tek bir yemek adı olduğu için 'are served' olmaz; 'serves' ve 'serving' edilgen değil."
+      },
+      {
+       "type": "choice",
+       "question": "Grandma: Stuffed peppers ---- with rice, onions and spices.",
+       "options": [
+        "is filled",
+        "are filled",
+        "fills",
+        "filling"
+       ],
+       "answer": 1,
+       "explanation": "'Stuffed peppers' çoğul olduğu için 'are filled' gelir. En güçlü çeldirici 'is filled', ama 'is' tekil öznelerle kullanılır; 'fills' ve 'filling' ise edilgen değil."
+      }
+     ]
+    },
+    {
+     "id": "ls1u3l3",
+     "type": "lesson",
+     "title": "Diyaloglar ve durumlar",
+     "description": "Tarif sorma, yardım teklif etme, menü okuma ve yemek tanıtma",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Kerem: Grandma, your börek is delicious! What's in it?\nGrandma: ----. I also add some parsley.",
+       "options": [
+        "It takes an hour to bake",
+        "I bought it from the bakery",
+        "Put it in the fridge",
+        "It is made with cheese and thin dough"
+       ],
+       "answer": 3,
+       "explanation": "Kerem 'What's in it?' diye içindekileri soruyor ve büyükanne 'I also add some parsley' diyerek malzeme saymaya devam ediyor. Bu yüzden 'It is made with cheese and thin dough' doğru. 'I bought it from the bakery' ise büyükannenin böreği kendisinin yaptığıyla çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: I want to make a salad. What should I do first?\nZeynep: ----",
+       "options": [
+        "First, wash the vegetables and slice the cucumbers.",
+        "Finally, serve it in a big bowl.",
+        "It is a very healthy dish.",
+        "I don't like salad very much."
+       ],
+       "answer": 0,
+       "explanation": "Lisa 'What should I do first?' diye ilk adımı soruyor; cevap 'First' ile başlayan adım olmalı. 'Finally, serve it…' de bir adım ama son adımı anlatıyor; diğer iki cevap yapılacak işi söylemiyor."
+      },
+      {
+       "type": "choice",
+       "question": "Mum: Don't forget to add the salt.\nLisa: ----\nMum: Just a pinch. Too much salt isn't healthy.",
+       "options": [
+        "Where do we keep the plates?",
+        "How much should I add?",
+        "When is dinner ready?",
+        "How long should I bake it?"
+       ],
+       "answer": 1,
+       "explanation": "Anne 'Just a pinch' (sadece bir tutam) diye bir miktar söylüyor; demek ki Lisa 'How much should I add?' diye sormuş. 'How long should I bake it?' süre sorar, cevabı dakika olurdu; tabak yeri ve yemek saati de bu cevaba uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Ece is teaching her friend how to make Turkish tea. Now she wants to tell the last step.\nWhich of the following can she say?",
+       "options": [
+        "First, boil the water in the kettle.",
+        "Next, put the tea leaves in the small teapot.",
+        "Finally, pour the tea into glasses and serve it.",
+        "After that, wait for fifteen minutes."
+       ],
+       "answer": 2,
+       "explanation": "Son adım 'Finally' ile anlatılır ve çay en son bardaklara dökülüp servis edilir. 'First', 'Next' ve 'After that' ile başlayan cümleler son adımı değil, aradaki ya da ilk adımları anlatır."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: Can I help you in the kitchen, Mum?\nMum: ----. Can you wash the lettuce and slice the cucumbers?",
+       "options": [
+        "No, thanks. I can do it alone",
+        "I'm not hungry now",
+        "It's too salty",
+        "Yes, please. That's very kind of you"
+       ],
+       "answer": 3,
+       "explanation": "Anne hemen ardından 'Can you wash the lettuce…?' diye Mert'ten iş istiyor, yani yardımı kabul ediyor. 'No, thanks. I can do it alone' yardımı reddeder ve sonraki cümleyle çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Chef: ----\nStudent: Oh, sorry! I'll turn down the heat right now.",
+       "options": [
+        "This soup smells delicious.",
+        "Be careful! The oil is getting too hot.",
+        "Can you pass me the plates?",
+        "Add some more salt, please."
+       ],
+       "answer": 1,
+       "explanation": "Öğrenci özür dileyip 'I'll turn down the heat' (ateşi kısacağım) diyor; demek ki şef yağın çok ısındığı konusunda uyarmış. Çorbayı övmek, tabak istemek ya da tuz eklemek ateşi kısmayı gerektirmez."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep is at a restaurant in London. A waiter asks her about pide, a Turkish dish.\nWhich of the following can she say?",
+       "options": [
+        "It is a cold drink made with yoghurt.",
+        "It is a soup made with red lentils.",
+        "It is a sweet dessert made with nuts and syrup.",
+        "It is a long flatbread. It is baked with cheese or meat on top."
+       ],
+       "answer": 3,
+       "explanation": "Pide, üstüne peynir ya da kıyma konup fırında pişirilen uzun, yassı bir ekmektir. Yoğurtlu soğuk içecek ayranı, mercimekli çorba mercimek çorbasını, cevizli şerbetli tatlı ise baklavayı anlatır."
+      },
+      {
+       "type": "choice",
+       "question": "Put the dialogue in the correct order.\n(I) Great! What do I do next?\n(II) Sure! First, mix the flour, milk and eggs in a bowl.\n(III) Can you teach me how to make pancakes?\n(IV) Then, pour a little of the mix into a hot pan.",
+       "options": [
+        "II - III - IV - I",
+        "III - II - I - IV",
+        "III - I - IV - II",
+        "I - III - II - IV"
+       ],
+       "answer": 1,
+       "explanation": "Konuşma bir istekle başlar (III), 'Sure! First…' ile ilk adım verilir (II), 'What do I do next?' diye sorulur (I) ve 'Then…' ile sonraki adım gelir (IV). Süper, sıralamada soru-cevap zincirini takip et!"
+      },
+      {
+       "type": "choice",
+       "passage": "Café Lezzet: Lunch Menu\n| Dish | Served with | Price |\n|---|---|---|\n| Lentil soup | a slice of lemon | 60 TL |\n| Chicken pasta | grated cheese | 120 TL |\n| Vegetable omelette | fresh bread | 90 TL |\n| Rice pudding | cinnamon | 70 TL |",
+       "question": "Which of the following is TRUE according to the menu?",
+       "options": [
+        "The rice pudding is the cheapest dish.",
+        "The omelette is more expensive than the pasta.",
+        "The pasta is served with grated cheese.",
+        "The soup is served with fresh bread."
+       ],
+       "answer": 2,
+       "explanation": "Tabloda 'Chicken pasta | grated cheese' yazıyor, yani makarna rendelenmiş peynirle geliyor. En ucuz yemek 60 TL ile çorba, sütlaç değil; omlet (90 TL) makarnadan (120 TL) ucuz; çorba ise ekmekle değil limonla servis ediliyor."
+      },
+      {
+       "type": "choice",
+       "question": "Can: Is this soup made with lentils?\nAunt: ----. It's my special red lentil soup.",
+       "options": [
+        "Yes, it is",
+        "No, it isn't",
+        "Yes, they are",
+        "No, I don't"
+       ],
+       "answer": 0,
+       "explanation": "Soru 'Is this soup…?' ile soruluyor ve teyze 'It's my special red lentil soup' diyor; kısa cevap 'Yes, it is.' 'No, it isn't' anlama ters düşer; 'they are' ve 'I don't' soruya dilbilgisi olarak uymaz."
+      }
+     ]
+    },
+    {
+     "id": "ls1u3l4",
+     "type": "lesson",
+     "title": "Okuma: Yemek kursu ve anket",
+     "description": "Bir e-posta ve bir anket tablosu okuyup soruları cevapla",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "Hi Ece,\nYesterday I went to a cooking class with my cousin. There were ten students in a big, bright kitchen. The chef taught us how to make sütlaç, a Turkish rice pudding. First, we boiled the rice in water. Then, we added milk and sugar and stirred everything slowly for twenty minutes. The chef said, 'Don't stop stirring, or the milk will burn.' It was hard because my arm got really tired! After that, we poured the pudding into small bowls and put them in the oven for a few minutes. Finally, we left them in the fridge. It is served cold, sometimes with cinnamon on top. Next week, I'm going to cook it for my family.\nLove,\nLisa",
+       "question": "What is the email mainly about?",
+       "options": [
+        "Lisa's favourite restaurant",
+        "her cousin's birthday party",
+        "a dessert Lisa learned to make",
+        "shopping for a cooking class"
+       ],
+       "answer": 2,
+       "explanation": "Lisa e-postada 'The chef taught us how to make sütlaç' diyerek kursta öğrendiği tatlıyı anlatıyor. Kuzeni sadece kursa onunla gelmiş; doğum günü, restoran ya da alışverişten söz edilmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Ece,\nYesterday I went to a cooking class with my cousin. There were ten students in a big, bright kitchen. The chef taught us how to make sütlaç, a Turkish rice pudding. First, we boiled the rice in water. Then, we added milk and sugar and stirred everything slowly for twenty minutes. The chef said, 'Don't stop stirring, or the milk will burn.' It was hard because my arm got really tired! After that, we poured the pudding into small bowls and put them in the oven for a few minutes. Finally, we left them in the fridge. It is served cold, sometimes with cinnamon on top. Next week, I'm going to cook it for my family.\nLove,\nLisa",
+       "question": "Which of the following is NOT a step in making sütlaç in the email?",
+       "options": [
+        "frying the rice in butter",
+        "boiling the rice",
+        "stirring the milk",
+        "putting the bowls in the fridge"
+       ],
+       "answer": 0,
+       "explanation": "E-postada pirinç kaynatılıyor ('we boiled the rice'), süt karıştırılıyor ('stirred everything') ve kâseler buzdolabına konuyor ('we left them in the fridge'). Pirinci tereyağında kızartmaktan hiç söz edilmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Ece,\nYesterday I went to a cooking class with my cousin. There were ten students in a big, bright kitchen. The chef taught us how to make sütlaç, a Turkish rice pudding. First, we boiled the rice in water. Then, we added milk and sugar and stirred everything slowly for twenty minutes. The chef said, 'Don't stop stirring, or the milk will burn.' It was hard because my arm got really tired! After that, we poured the pudding into small bowls and put them in the oven for a few minutes. Finally, we left them in the fridge. It is served cold, sometimes with cinnamon on top. Next week, I'm going to cook it for my family.\nLove,\nLisa",
+       "question": "Why was the class hard for Lisa?",
+       "options": [
+        "The chef spoke very fast.",
+        "She burned the rice.",
+        "She didn't like cinnamon.",
+        "She had to stir for a long time."
+       ],
+       "answer": 3,
+       "explanation": "Lisa yirmi dakika karıştırdığını ve 'my arm got really tired' dediğini yazıyor. Şef sütün yanabileceği konusunda uyarıyor ama Lisa'nın bir şeyi yaktığı söylenmiyor; hızlı konuşma ve tarçın da sebep değil."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Ece,\nYesterday I went to a cooking class with my cousin. There were ten students in a big, bright kitchen. The chef taught us how to make sütlaç, a Turkish rice pudding. First, we boiled the rice in water. Then, we added milk and sugar and stirred everything slowly for twenty minutes. The chef said, 'Don't stop stirring, or the milk will burn.' It was hard because my arm got really tired! After that, we poured the pudding into small bowls and put them in the oven for a few minutes. Finally, we left them in the fridge. It is served cold, sometimes with cinnamon on top. Next week, I'm going to cook it for my family.\nLove,\nLisa",
+       "question": "Which question is NOT answered in the email?",
+       "options": [
+        "Who taught them how to make sütlaç?",
+        "How long did they stir the mixture?",
+        "How much rice did they use?",
+        "When is Lisa going to cook it for her family?"
+       ],
+       "answer": 2,
+       "explanation": "Metinde öğretenin şef olduğu ('The chef taught us'), karıştırma süresi ('for twenty minutes') ve Lisa'nın ne zaman yapacağı ('Next week') var. Ne kadar pirinç kullanıldığı ise hiç söylenmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Ece,\nYesterday I went to a cooking class with my cousin. There were ten students in a big, bright kitchen. The chef taught us how to make sütlaç, a Turkish rice pudding. First, we boiled the rice in water. Then, we added milk and sugar and stirred everything slowly for twenty minutes. The chef said, 'Don't stop stirring, or the milk will burn.' It was hard because my arm got really tired! After that, we poured the pudding into small bowls and put them in the oven for a few minutes. Finally, we left them in the fridge. It is served cold, sometimes with cinnamon on top. Next week, I'm going to cook it for my family.\nLove,\nLisa",
+       "question": "According to the email, sütlaç ----.",
+       "options": [
+        "is usually eaten cold",
+        "is served hot with honey",
+        "is cooked in a frying pan",
+        "is made without sugar"
+       ],
+       "answer": 0,
+       "explanation": "Metinde 'It is served cold' deniyor, yani sütlaç soğuk yenir. Sütlaç kısa bir süre fırına giriyor ama sıcak ve ballı servis edilmiyor; tavada pişirilmiyor ve içine şeker ekleniyor ('added milk and sugar')."
+      },
+      {
+       "type": "choice",
+       "passage": "Class 8-B asked 30 students: What is your favourite Turkish dish?\n| Dish | Students | Main reason |\n|---|---|---|\n| Kebab | 9 | tasty meat |\n| Mantı | 8 | yoghurt and garlic sauce |\n| Lahmacun | 6 | quick and cheap |\n| Karnıyarık | 4 | made with aubergines |\n| Other dishes | 3 | different reasons |",
+       "question": "According to the survey, ----.",
+       "options": [
+        "mantı is more popular than kebab",
+        "karnıyarık is the most popular dish",
+        "lahmacun is less popular than mantı",
+        "only three students like kebab"
+       ],
+       "answer": 2,
+       "explanation": "Lahmacunu 6, mantıyı 8 öğrenci seçmiş; yani lahmacun mantıdan daha az popüler. Kebap 9 öğrenciyle mantının önünde ve en popüler yemek; karnıyarığı ise sadece 4 öğrenci seçmiş."
+      },
+      {
+       "type": "choice",
+       "passage": "Class 8-B asked 30 students: What is your favourite Turkish dish?\n| Dish | Students | Main reason |\n|---|---|---|\n| Kebab | 9 | tasty meat |\n| Mantı | 8 | yoghurt and garlic sauce |\n| Lahmacun | 6 | quick and cheap |\n| Karnıyarık | 4 | made with aubergines |\n| Other dishes | 3 | different reasons |",
+       "question": "How many students chose mantı or lahmacun?",
+       "options": [
+        "12",
+        "14",
+        "15",
+        "17"
+       ],
+       "answer": 1,
+       "explanation": "Mantıyı 8, lahmacunu 6 öğrenci seçmiş: 8 + 6 = 14. 17 kebap ile mantıyı (9 + 8), 15 ise kebap ile lahmacunu (9 + 6) toplarsan çıkar; tabloyu dikkatli oku!"
+      },
+      {
+       "type": "choice",
+       "passage": "Class 8-B asked 30 students: What is your favourite Turkish dish?\n| Dish | Students | Main reason |\n|---|---|---|\n| Kebab | 9 | tasty meat |\n| Mantı | 8 | yoghurt and garlic sauce |\n| Lahmacun | 6 | quick and cheap |\n| Karnıyarık | 4 | made with aubergines |\n| Other dishes | 3 | different reasons |",
+       "question": "Why do some students like karnıyarık?",
+       "options": [
+        "It is made with aubergines.",
+        "It is served with yoghurt sauce.",
+        "It is quick and cheap.",
+        "It is a sweet dish."
+       ],
+       "answer": 0,
+       "explanation": "Tabloda karnıyarığın yanında 'made with aubergines' yazıyor. 'quick and cheap' lahmacunun, yoğurtlu sos ise mantının sebebi; tatlı bir yemek olduğu da hiç söylenmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Class 8-B asked 30 students: What is your favourite Turkish dish?\n| Dish | Students | Main reason |\n|---|---|---|\n| Kebab | 9 | tasty meat |\n| Mantı | 8 | yoghurt and garlic sauce |\n| Lahmacun | 6 | quick and cheap |\n| Karnıyarık | 4 | made with aubergines |\n| Other dishes | 3 | different reasons |",
+       "question": "Which question is NOT answered in the table?",
+       "options": [
+        "How many students answered the question?",
+        "Why do students like mantı?",
+        "How many students chose kebab?",
+        "How do you make lahmacun?"
+       ],
+       "answer": 3,
+       "explanation": "Tablodan öğrenci sayısını (30), mantının sebebini ('yoghurt and garlic sauce') ve kebabı seçenleri (9) öğrenebiliyoruz. Lahmacunun nasıl yapıldığı ise tabloda yok."
+      }
+     ]
+    },
+    {
+     "id": "ls1u3t",
+     "type": "test",
+     "title": "Mini LGS testi",
+     "description": "10 soru, gerçek LGS biçiminde. %80 ile geçersin.",
+     "rewardXp": 30,
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Ali: These potatoes are very big.\nMum: ---- them into thin pieces. Then we can fry them.",
+       "options": [
+        "Pour",
+        "Melt",
+        "Slice",
+        "Stir"
+       ],
+       "answer": 2,
+       "explanation": "Patatesler 'into thin pieces' yani ince parçalara ayrılacak: 'Slice' (dilimle). 'Pour' sıvıları dökmek, 'Melt' eritmek, 'Stir' kaşıkla karıştırmak demek; hiçbiri parçalara ayırmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep: This chocolate is very hard. How can I use it for the cake?\nDad: Put it in a bowl over hot water and ---- it. Then mix it with the butter.",
+       "options": [
+        "melt",
+        "peel",
+        "roast",
+        "serve"
+       ],
+       "answer": 0,
+       "explanation": "Sert çikolata sıcak suyun üstünde eritilir: 'melt'. Babanın 'Then mix it with the butter' demesi de çikolatanın sıvı hâle geldiğini gösterir. 'peel' soymak, 'roast' kızartmak/kavurmak, 'serve' sunmak demek."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: ---- garlic do we need for the sauce?\nMert: Not much. Just two small pieces.",
+       "options": [
+        "How many",
+        "How much",
+        "How often",
+        "How long"
+       ],
+       "answer": 1,
+       "explanation": "Mert 'Not much' diye cevap veriyor; 'much' sayılamayan 'garlic' için kullanılır, o yüzden soru 'How much garlic…?' olmalı. 'How many' sayılabilen çoğul isimlerle gelir ('How many eggs'); 'How often' sıklık, 'How long' süre sorar."
+      },
+      {
+       "type": "choice",
+       "question": "Tourist: Excuse me, what is lahmacun?\nWaiter: It's a thin, round bread with meat on top. It ---- with lemon and fresh salad.",
+       "options": [
+        "serves",
+        "is serving",
+        "is served",
+        "are served"
+       ],
+       "answer": 2,
+       "explanation": "Lahmacun servis edilir, kendisi servis yapmaz; edilgen 'is served' gerekir. Özne 'It' tekil olduğu için 'are served' olmaz; 'serves' ve 'is serving' ise etken yapılar."
+      },
+      {
+       "type": "choice",
+       "question": "Can: Dad, the water is boiling. What do I do now?\nDad: ----\nCan: OK. How long do I cook it?\nDad: About ten minutes. Then we can add the tomato sauce.",
+       "options": [
+        "Put the pasta in the pot and add some salt.",
+        "Finally, serve the pasta on plates.",
+        "Wash the pot and put it away.",
+        "We don't have any pasta."
+       ],
+       "answer": 0,
+       "explanation": "Can'in sonraki sorusu 'How long do I cook it?', yani boşlukta pişirilecek bir şey verilmeli: 'Put the pasta in the pot…' 'Finally, serve the pasta' son adımı anlatır, pişirme süresi sorusundan önce gelemez."
+      },
+      {
+       "type": "choice",
+       "question": "Elif is having dinner at her friend's house. Her friend's mother cooked a dish, and Elif loves it.\nWhat can Elif say?",
+       "options": [
+        "The soup is too cold to eat.",
+        "Can you heat the oven, please?",
+        "I don't want any more. It's terrible.",
+        "This is delicious! Can I have the recipe?"
+       ],
+       "answer": 3,
+       "explanation": "Elif yemeği çok sevdiği için hem övüyor hem tarifi istiyor: 'This is delicious! Can I have the recipe?' Çorbanın soğuk olduğunu söylemek ya da 'It's terrible' demek yemeği beğenmediğini gösterir ve kaba olur."
+      },
+      {
+       "type": "choice",
+       "passage": "Pancakes (for 4 people)\n| Ingredient | Amount |\n|---|---|\n| flour | 2 cups |\n| milk | 1 cup |\n| eggs | 2 |\n| sugar | 1 spoonful |\n| salt | a pinch |",
+       "question": "Which of the following is TRUE according to the recipe card?",
+       "options": [
+        "You need more milk than flour.",
+        "You need two eggs.",
+        "There is no sugar in the pancakes.",
+        "You need a cup of sugar."
+       ],
+       "answer": 1,
+       "explanation": "Tabloda 'eggs | 2' yazıyor, yani iki yumurta gerekiyor. Un 2 bardak, süt 1 bardak olduğu için süt daha az; şeker var ama bir bardak değil, sadece bir kaşık ('1 spoonful')."
+      },
+      {
+       "type": "choice",
+       "passage": "Last Saturday, my dad and I made a pizza for our family. For the dough, we used flour, water, a little oil and a pinch of salt. First, we mixed them in a big bowl. Then, Dad left the dough for an hour. During that time, I sliced the tomatoes and grated the cheese. My little sister Ela helped me, but she ate half of the cheese! After that, we put tomato sauce, cheese and some olives on the dough. Finally, we baked it in the oven for fifteen minutes. Everybody said it was delicious. Next time, I want to add mushrooms.\nKaan",
+       "question": "Which ingredient is NOT used in the dough?",
+       "options": [
+        "flour",
+        "oil",
+        "sugar",
+        "salt"
+       ],
+       "answer": 2,
+       "explanation": "Hamur için 'flour, water, a little oil and a pinch of salt' kullanılıyor. Un, yağ ve tuz listede var; şeker ise hiç geçmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Last Saturday, my dad and I made a pizza for our family. For the dough, we used flour, water, a little oil and a pinch of salt. First, we mixed them in a big bowl. Then, Dad left the dough for an hour. During that time, I sliced the tomatoes and grated the cheese. My little sister Ela helped me, but she ate half of the cheese! After that, we put tomato sauce, cheese and some olives on the dough. Finally, we baked it in the oven for fifteen minutes. Everybody said it was delicious. Next time, I want to add mushrooms.\nKaan",
+       "question": "What did Kaan do while the dough was waiting?",
+       "options": [
+        "He sliced the tomatoes and grated the cheese.",
+        "He baked the pizza in the oven.",
+        "He added mushrooms to the pizza.",
+        "He ate half of the cheese."
+       ],
+       "answer": 0,
+       "explanation": "Metinde 'During that time, I sliced the tomatoes and grated the cheese' deniyor. Peynirin yarısını Kaan değil kardeşi Ela yiyor; mantarı ise bir dahaki sefere eklemek istiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Last Saturday, my dad and I made a pizza for our family. For the dough, we used flour, water, a little oil and a pinch of salt. First, we mixed them in a big bowl. Then, Dad left the dough for an hour. During that time, I sliced the tomatoes and grated the cheese. My little sister Ela helped me, but she ate half of the cheese! After that, we put tomato sauce, cheese and some olives on the dough. Finally, we baked it in the oven for fifteen minutes. Everybody said it was delicious. Next time, I want to add mushrooms.\nKaan",
+       "question": "Which question is NOT answered in the text?",
+       "options": [
+        "How long did they bake the pizza?",
+        "Who ate some of the cheese?",
+        "What does Kaan want to add next time?",
+        "How many people ate the pizza?"
+       ],
+       "answer": 3,
+       "explanation": "Metinde pişirme süresi ('for fifteen minutes'), peyniri kimin yediği (Ela) ve Kaan'ın ne eklemek istediği ('mushrooms') var. Pizzayı kaç kişinin yediği ise söylenmiyor; sadece 'Everybody' deniyor."
+      }
+     ]
+    },
+    {
+     "id": "ls1u3c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    }
+   ]
+  },
+  {
+   "id": "ls1u4",
+   "title": "On the Phone",
+   "description": "Telefonda: arama yapma, mesaj bırakma, telefonla plan yapma ve kısa mesajlar",
+   "color": "0xFF2F80ED",
+   "theme": "yazisma",
+   "guide": "## Bu ünitede ne öğreneceğiz?\n\nBu ünitede telefonda konuşmayı öğreniyoruz! Birini aramayı, kendini tanıtmayı, mesaj bırakmayı ve arkadaşlarınla plan yapmayı İngilizce yapabileceksin. Kalıpları öğrenince soruların çoğu kolaylaşır.\n\n## Özet tablo\n\n| Ne yapmak istiyorsun? | Kalıp | Örnek |\n|---|---|---|\n| Kendini tanıtmak | **Hello, this is …** | Hello, this is Burak. |\n| Birini istemek | **Can/Could I speak to …?** | Could I speak to Elif, please? |\n| Arayanı sormak | **Who's calling, please?** | Who's calling, please? It's Selin. |\n| Beklemesini istemek | **Hold on, please.** | Hold on, I'll get her. |\n| Kişi müsait değilse | **Can I take a message?** | She isn't available. Can I take a message? |\n| Sonra aramak | **I'll call back later.** | I'm busy now. I'll call you back later. |\n| Plan anlatmak | **I'm going to …** | I'm going to visit my grandma on Sunday. |\n\n## Hedef kalıplar\n\n- **Hello, this is …**: Merhaba, ben … (telefonda).\n- **Can/Could I speak to …?**: … ile görüşebilir miyim? Örnek: Can I speak to Mr. Aydın, please?\n- **Who's calling, please?**: Kim arıyor acaba? Örnek: Who's calling, please? It's Selin.\n- **Hold on / Hold the line, please.**: Hatta kalın lütfen. Örnek: Hold on, I'll get him.\n- **He isn't available right now.**: Şu an müsait değil. Örnek: He isn't available right now. He's in a meeting.\n- **Can I take a message? / Can I leave a message?**: Mesaj alayım mı? / Mesaj bırakabilir miyim? Örnek: She's out. Can I take a message?\n- **I'll call back later. / Sorry, wrong number. / The line is busy.**: Sonra tekrar ararım. / Pardon, yanlış numara. / Hat meşgul.\n- **I'm going to … / I'll …**: Plan (going to) ve anlık karar (will). Örnek: The phone is ringing. I'll answer it.\n\n## Anahtar kelimeler\n\n- **call**: aramak\n- **call back**: geri aramak\n- **hang up**: telefonu kapatmak\n- **dial**: numarayı tuşlamak\n- **answer**: telefonu açmak, cevap vermek\n- **text message**: kısa (yazılı) mesaj\n- **voice message**: sesli mesaj\n- **leave a message**: mesaj bırakmak\n- **available**: müsait\n- **busy / engaged**: meşgul\n- **wrong number**: yanlış numara\n- **signal**: sinyal, çekim\n- **battery / charge**: pil / şarj etmek\n- **appointment**: randevu\n- **postpone / cancel**: ertelemek / iptal etmek\n- **confirm**: onaylamak\n\n## Türklerin sık yaptığı hatalar\n\n- \"Hello, I am Burak.\" → **Hello, this is Burak.**: Telefonda kendini tanıtırken 'this is' kullanılır.\n- \"Can I talk with Elif?\" → **Can I speak to Elif?**: Telefonda birini isterken en doğal kalıp 'speak to' kalıbıdır.\n- \"I will visit my grandma tomorrow. I bought the ticket.\" → **I'm going to visit my grandma tomorrow.**: Bilet alınmış, plan hazır; planda 'going to', anlık kararda 'will' kullanılır.\n\n## Sınav ipuçları\n\n> **Sınav ipucu 1:** Diyalog tamamlamada boşluktan sonraki cümleye mutlaka bak. 'I'll get her' geliyorsa kişi evdedir; 'Can I take a message?' geliyorsa kişi müsait değildir.\n\n> **Sınav ipucu 2:** Telefon notu sorularında kim aradı, ne zaman aradı ve ne istedi bilgilerini işaretle. 'Which question is NOT answered?' sorusunda metinde olmayan bilgiyi ara.\n\n> **Sınav ipucu 3:** Plan önceden yapılmışsa 'going to', o anda karar veriliyorsa 'will' seç. 'What will Ali do?' sorusunda son cümleye bak.",
+   "nodes": [
+    {
+     "id": "ls1u4l1",
+     "type": "lesson",
+     "title": "Telefon kelimeleri",
+     "description": "Arama, mesaj, pil ve randevu gibi temel telefon kelimeleri",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "telefonu kapatmak",
+       "answer": "hang up",
+       "choices": [
+        {
+         "text": "hang up",
+         "emoji": "📴"
+        },
+        {
+         "text": "call back",
+         "emoji": "🔁"
+        },
+        {
+         "text": "hold on",
+         "emoji": "⏳"
+        },
+        {
+         "text": "dial",
+         "emoji": "🔢"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "numarayı tuşlamak",
+         "dial"
+        ],
+        [
+         "geri aramak",
+         "call back"
+        ],
+        [
+         "hatta beklemek",
+         "hold on"
+        ],
+        [
+         "yanlış numara",
+         "wrong number"
+        ],
+        [
+         "sesli mesaj",
+         "voice message"
+        ]
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "pil",
+       "answer": "battery",
+       "choices": [
+        {
+         "text": "battery",
+         "emoji": "🔋"
+        },
+        {
+         "text": "signal",
+         "emoji": "📶"
+        },
+        {
+         "text": "app",
+         "emoji": "📱"
+        },
+        {
+         "text": "contact",
+         "emoji": "👤"
+        }
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Deniz: My phone's battery is almost empty. I need to ---- it before I go out.",
+       "options": [
+        "charge",
+        "dial",
+        "cancel",
+        "answer"
+       ],
+       "answer": 0,
+       "explanation": "Pil bitmek üzereyse ('almost empty') telefonu şarj etmek gerekir: 'charge'. 'dial' numara tuşlamak, 'cancel' iptal etmek, 'answer' telefonu açmak demek; hiçbiri boşalan pili doldurmaz."
+      },
+      {
+       "type": "fillBlank",
+       "text": "Sorry, Elif isn't available right now. Can I take a ___?",
+       "translation": "Üzgünüm, Elif şu an müsait değil. Mesaj alayım mı?",
+       "choices": [
+        "message",
+        "number",
+        "signal"
+       ],
+       "answer": "message"
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "arayan kişi",
+         "caller"
+        ],
+        [
+         "ahize",
+         "receiver"
+        ],
+        [
+         "kısa mesaj",
+         "text message"
+        ],
+        [
+         "görüntülü arama",
+         "video call"
+        ],
+        [
+         "uygulama",
+         "app"
+        ]
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Can: I called Mert three times, but his line was ----. He was talking to his grandma.",
+       "options": [
+        "free",
+        "busy",
+        "wrong",
+        "available"
+       ],
+       "answer": 1,
+       "explanation": "Mert o sırada büyükannesiyle konuşuyormuş ('He was talking to his grandma'), yani hattı meşgulmüş: 'busy'. 'free' ve 'available' tam tersini, yani boş ve müsait olmayı anlatır; 'wrong' ise yanlış numara için kullanılır."
+      },
+      {
+       "type": "select",
+       "prompt": "ertelemek",
+       "answer": "postpone",
+       "choices": [
+        {
+         "text": "cancel",
+         "emoji": "❌"
+        },
+        {
+         "text": "confirm",
+         "emoji": "✅"
+        },
+        {
+         "text": "postpone",
+         "emoji": "⏩"
+        },
+        {
+         "text": "invite",
+         "emoji": "💌"
+        }
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Our grandma lives in Germany. Every Sunday we talk to her and see her face on the screen. We have a ---- with her.",
+       "options": [
+        "voice message",
+        "wrong number",
+        "video call",
+        "text message"
+       ],
+       "answer": 2,
+       "explanation": "Ekranda yüzünü görerek konuşmak ('see her face on the screen') görüntülü aramadır: 'video call'. 'voice message' ve 'text message' karşılıklı konuşma değildir, yüz de görünmez; 'wrong number' ise yanlış numaradır."
+      },
+      {
+       "type": "choice",
+       "question": "Elif: Can we meet tomorrow afternoon?\nAda: Sorry, I can't. I have a dentist ---- at three. What about Saturday?",
+       "options": [
+        "signal",
+        "contact",
+        "receiver",
+        "appointment"
+       ],
+       "answer": 3,
+       "explanation": "Diş hekimine belirli bir saatte ('at three') gitmek randevudur: 'a dentist appointment'. 'signal' telefon çekimi, 'contact' rehberdeki kişi, 'receiver' ahize demek; hiçbiri bir saate bağlı değildir."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: It's going to rain on Sunday. We can't have our picnic.\nLisa: You're right. Let's ---- it until next Sunday.",
+       "options": [
+        "postpone",
+        "confirm",
+        "invite",
+        "dial"
+       ],
+       "answer": 0,
+       "explanation": "Piknik yağmur yüzünden bir sonraki pazara kalıyor; bir planı ileri bir tarihe almak 'postpone' (ertelemek) demektir. 'confirm' (onaylamak) 'until next Sunday' ile anlam kurmaz; 'invite' ve 'dial' de pikniğe uymaz."
+      }
+     ]
+    },
+    {
+     "id": "ls1u4l2",
+     "type": "lesson",
+     "title": "Telefon kalıpları",
+     "description": "Kendini tanıtma, birini isteme, mesaj alma, going to ve will",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Burak: Hello, ---- Burak. Can I speak to Deniz, please?",
+       "options": [
+        "I'm calling",
+        "my name",
+        "here is",
+        "this is"
+       ],
+       "answer": 3,
+       "explanation": "Telefonda kendimizi 'Hello, this is Burak.' diye tanıtırız. 'I'm calling Burak' Burak'ı aradığını söyler, kendini tanıtmaz; 'my name Burak' ve 'here is Burak' ise dilbilgisi olarak hatalıdır."
+      },
+      {
+       "type": "fillBlank",
+       "text": "Can I ___ to Elif, please?",
+       "translation": "Elif'le görüşebilir miyim lütfen?",
+       "choices": [
+        "speak",
+        "say",
+        "tell"
+       ],
+       "answer": "speak"
+      },
+      {
+       "type": "choice",
+       "question": "Elif's mum: Hello?\nSelin: Hello. Can I speak to Elif, please?\nElif's mum: ----\nSelin: It's Selin, her classmate.",
+       "options": [
+        "Hold on, please.",
+        "Can I take a message?",
+        "Who's calling, please?",
+        "Sorry, wrong number."
+       ],
+       "answer": 2,
+       "explanation": "Selin 'It's Selin, her classmate.' diye cevap veriyor; demek ki anne arayanın kim olduğunu sormuş: 'Who's calling, please?' 'Hold on, please.' ya da 'Can I take a message?' sonrasında kişi kendini tanıtmaz."
+      },
+      {
+       "type": "fillBlank",
+       "text": "Hold the ___, please. I'll get her.",
+       "translation": "Hatta kalın lütfen. Onu çağırıyorum.",
+       "choices": [
+        "line",
+        "call",
+        "number"
+       ],
+       "answer": "line"
+      },
+      {
+       "type": "choice",
+       "question": "Receptionist: Good morning, Star Language School.\nCaller: Hi, can I speak to Mr. Brown, please?\nReceptionist: I'm afraid ----. He's in a meeting.",
+       "options": [
+        "he isn't available right now",
+        "the line is free",
+        "he is speaking to you now",
+        "you've got the right number"
+       ],
+       "answer": 0,
+       "explanation": "Mr. Brown toplantıda ('He's in a meeting'), bu yüzden şu an konuşamaz: 'he isn't available right now'. 'I'm afraid' kötü bir haber geleceğini gösterir; 'the line is free' ve diğerleri toplantı bilgisiyle uyuşmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Which of the following is NOT used for ending a phone call?",
+       "options": [
+        "Talk to you later.",
+        "Bye for now.",
+        "Who's calling, please?",
+        "See you tomorrow then."
+       ],
+       "answer": 2,
+       "explanation": "'Who's calling, please?' konuşmanın başında arayanın kim olduğunu sormak için kullanılır. 'Talk to you later.', 'Bye for now.' ve 'See you tomorrow then.' ise telefonu kapatmadan önce söylenen veda sözleridir."
+      },
+      {
+       "type": "choice",
+       "question": "Man: Hello, is that Pizza Palace? I'd like to order a pizza.\nAyşe: No, it isn't. Sorry, ----.",
+       "options": [
+        "you've got the wrong number",
+        "the line is busy",
+        "hold on, please",
+        "I'll take a message"
+       ],
+       "answer": 0,
+       "explanation": "Ayşe 'No, it isn't.' diyerek burasının pizzacı olmadığını söylüyor; adam yanlış numarayı aramış: 'you've got the wrong number'. Hat meşgul olsaydı konuşamazlardı; beklemek ya da mesaj almak da yanlış yeri arayan birine uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Deniz: Hello, can I leave a message for Arda?\nArda's mum: Of course. ----",
+       "options": [
+        "Who is he visiting?",
+        "What would you like me to tell him?",
+        "Why is the line busy?",
+        "Where did you buy your phone?"
+       ],
+       "answer": 1,
+       "explanation": "Deniz mesaj bırakmak istiyor ('Can I leave a message for Arda?'); anne de mesajın ne olduğunu soruyor: 'What would you like me to tell him?' Hat meşgul olsaydı zaten konuşamazlardı; diğer sorular da mesajla ilgili değil."
+      },
+      {
+       "type": "translate",
+       "text": "Seni daha sonra geri arayacağım.",
+       "lang": "tr",
+       "answers": [
+        "I will call you back later"
+       ],
+       "tokens": [
+        "I",
+        "will",
+        "call",
+        "you",
+        "back",
+        "later",
+        "up",
+        "going"
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "Mert: What are your plans for the weekend?\nCan: I ---- my grandparents in İzmir. I've already bought the bus ticket.",
+       "options": [
+        "visited",
+        "am going to visit",
+        "visits",
+        "visiting"
+       ],
+       "answer": 1,
+       "explanation": "Can otobüs biletini zaten almış ('I've already bought the bus ticket'); bu önceden yapılmış bir plan: 'am going to visit'. 'visited' geçmiş zaman, 'visits' 'he/she' ile kullanılır, 'visiting' ise 'am' olmadan eksik kalır."
+      },
+      {
+       "type": "choice",
+       "question": "Ayşe: The phone is ringing, but my hands are wet!\nBerk: Don't worry. I ---- it.",
+       "options": [
+        "answered",
+        "answers",
+        "to answer",
+        "will answer"
+       ],
+       "answer": 3,
+       "explanation": "Berk yardım etmeye o anda karar veriyor; anlık kararlarda 'will' kullanılır: 'I will answer it.' 'answered' geçmiş zaman, 'answers' 'I' ile kullanılmaz, 'to answer' ise cümleyi eksik bırakır."
+      }
+     ]
+    },
+    {
+     "id": "ls1u4l3",
+     "type": "lesson",
+     "title": "Diyaloglar ve durumlar",
+     "description": "Telefon diyaloglarını tamamla, sırala ve duruma uygun cevabı bul",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Cem: Hello, can I speak to Ayşe, please?\nAyşe's sister: ----. I'll get her.\nAyşe: Hi Cem, it's me!",
+       "options": [
+        "Hold on a second",
+        "Sorry, wrong number",
+        "She's out now",
+        "The line is busy"
+       ],
+       "answer": 0,
+       "explanation": "Kardeşi 'I'll get her.' diyor ve Ayşe telefona geliyor; demek ki Cem'den biraz beklemesini istiyor: 'Hold on a second'. 'She's out now' deseydi Ayşe telefona gelemezdi; yanlış numara ve meşgul hat da bu akışa uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Mr. Demir: Hello, is that Gül?\nGül: ----\nMr. Demir: Hi Gül, this is your science teacher.",
+       "options": [
+        "Can I take a message?",
+        "I'll call you back.",
+        "Sorry, the line is busy.",
+        "Yes, speaking."
+       ],
+       "answer": 3,
+       "explanation": "Öğretmen 'Gül müsün?' diye soruyor ve hemen 'Hi Gül' diyerek konuşmaya devam ediyor; Gül 'Yes, speaking.' (Evet, benim) demiş olmalı. 'Can I take a message?' başkası için mesaj alırken söylenir; hat meşgul olsaydı da konuşamazlardı."
+      },
+      {
+       "type": "choice",
+       "question": "Selin calls her friend Elif, but Elif's brother answers the phone. Elif is at her guitar lesson.\nWhat can her brother say?",
+       "options": [
+        "Hold on, I'll get her for you.",
+        "Yes, speaking.",
+        "Sorry, she's out. Can I take a message?",
+        "You've got the wrong number."
+       ],
+       "answer": 2,
+       "explanation": "Elif evde değil, gitar dersinde; kardeşi bunu söyleyip mesaj almayı teklif eder: 'Sorry, she's out. Can I take a message?' Elif evde olmadığı için onu çağıramaz; 'Yes, speaking.' ise aranan kişinin kendisinin söyleyeceği sözdür."
+      },
+      {
+       "type": "choice",
+       "question": "Burak: Are you free on Saturday afternoon?\nLisa: Yes, I am. Why?\nBurak: ----\nLisa: Great idea! I'll meet you there at two.",
+       "options": [
+        "I'm going to stay at home all day.",
+        "We're going to see a film at the Star Cinema. Do you want to join us?",
+        "I can't come on Saturday.",
+        "I'll call you back later."
+       ],
+       "answer": 1,
+       "explanation": "Lisa 'Great idea! I'll meet you there at two.' diyor; demek ki Burak onu bir yere davet etmiş. Evde kalmak ya da gelememek bir davet değildir ve 'there' (orada) denebilecek bir yer de söylemez."
+      },
+      {
+       "type": "choice",
+       "question": "Kerem has a dentist appointment on Friday, but he can't go. He calls the clinic.\nWhat does Kerem say?",
+       "options": [
+        "Can I make an appointment for Friday, please?",
+        "Can you confirm my appointment on Friday, please?",
+        "I'd like to cancel my appointment on Friday, please.",
+        "I'm going to be there early on Friday."
+       ],
+       "answer": 2,
+       "explanation": "Kerem cuma günü gidemeyecek ('he can't go'), bu yüzden randevusunu iptal ettirmek istiyor: 'cancel my appointment'. 'confirm' randevuyu onaylamak, yani geleceğini söylemek olur; yeni randevu almak ya da erken gelmek de duruma ters."
+      },
+      {
+       "type": "choice",
+       "question": "Put the dialogue in the correct order.\n(I) Sure. Can you ask her to call me back?\n(II) Hello, this is Kerem. Can I speak to Nil, please?\n(III) Of course. Bye for now!\n(IV) Sorry, she's at the library. Can I take a message?",
+       "options": [
+        "IV - II - III - I",
+        "II - I - IV - III",
+        "I - IV - II - III",
+        "II - IV - I - III"
+       ],
+       "answer": 3,
+       "explanation": "Önce Kerem kendini tanıtıp Nil'i ister (II), sonra Nil'in kütüphanede olduğu söylenip mesaj teklif edilir (IV), Kerem mesajını bırakır (I) ve vedalaşılır (III). 'II - I - IV - III' sırasında Kerem, mesaj teklif edilmeden 'Sure' diyor; bu mantıksız."
+      },
+      {
+       "type": "choice",
+       "passage": "Survey: What do 8th graders use their phones for most? (120 students)\n| Activity | Students |\n|---|---|\n| text messages | 45 |\n| video calls | 30 |\n| games | 30 |\n| phone calls | 15 |",
+       "question": "Which of the following is TRUE according to the survey?",
+       "options": [
+        "Phone calls are the most popular activity.",
+        "Video calls and games are equally popular.",
+        "Half of the students use their phones for text messages.",
+        "More students make phone calls than video calls."
+       ],
+       "answer": 1,
+       "explanation": "Tabloda 'video calls' ve 'games' ikisi de 30 öğrenci; yani eşit derecede popüler. En popüler etkinlik 45 öğrenciyle kısa mesaj, ama 45 sayısı 120'nin yarısı değil; telefonla arama ise 15 ile en az."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: Let's go to the science museum tomorrow.\nCan: ----. I'm going to help my dad in his shop all day.",
+       "options": [
+        "Sure, why not",
+        "That sounds like fun",
+        "I'd love to, but I can't",
+        "OK, see you there"
+       ],
+       "answer": 2,
+       "explanation": "Can yarın bütün gün babasına yardım edecek ('I'm going to help my dad in his shop all day'), yani teklifi kibarca reddediyor: 'I'd love to, but I can't'. Diğer cevapların hepsi teklifi kabul ediyor."
+      },
+      {
+       "type": "choice",
+       "question": "You are at the cinema and your friend Ozan calls you. You can't talk now.\nWhat do you say?",
+       "options": [
+        "I can't talk now. I'll call you back later.",
+        "Hold on, I'll get him.",
+        "Sorry, you've got the wrong number.",
+        "Can I speak to Ozan, please?"
+       ],
+       "answer": 0,
+       "explanation": "Sinemadasın ve şimdi konuşamazsın; bunu söyleyip sonra aramaya söz verirsin: 'I'll call you back later.' 'Hold on, I'll get him.' başka birini çağırırken söylenir; Ozan seni aradığı için yanlış numara da değildir."
+      },
+      {
+       "type": "choice",
+       "question": "Ali: Hello, can I speak to Mr. Aydın, please?\nSecretary: I'm sorry, he's in a meeting until three o'clock.\nAli: OK, no problem. I'll try again when his meeting finishes.\nWhat will Ali do?",
+       "options": [
+        "He will leave a voice message.",
+        "He will call Mr. Aydın again after three.",
+        "He will go to the meeting.",
+        "He will send a text message to the secretary."
+       ],
+       "answer": 1,
+       "explanation": "Toplantı saat üçe kadar sürüyor ve Ali 'I'll try again when his meeting finishes.' diyor; yani saat üçten sonra Mr. Aydın'ı tekrar arayacak. Mesaj bırakmıyor, toplantıya gitmiyor ve sekretere yazılı mesaj göndermekten de söz etmiyor."
+      }
+     ]
+    },
+    {
+     "id": "ls1u4l4",
+     "type": "lesson",
+     "title": "Okuma: Telefon ve planlar",
+     "description": "Bir blog yazısı ve bir telefon notu oku, soruları cevapla",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "From Defne's blog: My Grandma's First Smartphone\nLast month my grandma got her first smartphone. At first, she didn't know how to use it. She called me every evening and asked lots of questions. So I made a plan. Every Saturday I visit her and teach her something new. First, I added all our family to her contacts. Then I showed her how to make a video call. Now she talks to my uncle in Germany and sees his face on the screen! Last week she sent me her first text message: 'Hello dear, I am learning!' There is only one problem. She often forgets to charge the battery, so sometimes her phone is off. Tomorrow I'm going to teach her how to send voice messages, because typing is slow for her.",
+       "question": "What is the text mainly about?",
+       "options": [
+        "how Defne helps her grandma use her new phone",
+        "why Defne's uncle lives in Germany",
+        "how to choose a cheap smartphone",
+        "Defne's favourite phone apps"
+       ],
+       "answer": 0,
+       "explanation": "Metin baştan sona Defne'nin büyükannesine telefonu kullanmayı nasıl öğrettiğini anlatıyor ('teach her something new'). Amcanın Almanya'da yaşaması yalnızca bir ayrıntı; ucuz telefon seçmek ya da uygulamalar konu edilmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "From Defne's blog: My Grandma's First Smartphone\nLast month my grandma got her first smartphone. At first, she didn't know how to use it. She called me every evening and asked lots of questions. So I made a plan. Every Saturday I visit her and teach her something new. First, I added all our family to her contacts. Then I showed her how to make a video call. Now she talks to my uncle in Germany and sees his face on the screen! Last week she sent me her first text message: 'Hello dear, I am learning!' There is only one problem. She often forgets to charge the battery, so sometimes her phone is off. Tomorrow I'm going to teach her how to send voice messages, because typing is slow for her.",
+       "question": "Which of the following is TRUE according to the text?",
+       "options": [
+        "Grandma got her phone last year.",
+        "Defne visits her grandma every Sunday.",
+        "Grandma can see Defne's uncle on the screen when they talk.",
+        "Grandma never forgets to charge her phone."
+       ],
+       "answer": 2,
+       "explanation": "Metinde 'Now she talks to my uncle in Germany and sees his face on the screen!' yazıyor; yani amcayla konuşurken onu ekranda görüyor. Telefonu geçen ay ('Last month') almış, Defne cumartesi günleri gidiyor ve büyükanne şarj etmeyi sık sık unutuyor."
+      },
+      {
+       "type": "choice",
+       "passage": "From Defne's blog: My Grandma's First Smartphone\nLast month my grandma got her first smartphone. At first, she didn't know how to use it. She called me every evening and asked lots of questions. So I made a plan. Every Saturday I visit her and teach her something new. First, I added all our family to her contacts. Then I showed her how to make a video call. Now she talks to my uncle in Germany and sees his face on the screen! Last week she sent me her first text message: 'Hello dear, I am learning!' There is only one problem. She often forgets to charge the battery, so sometimes her phone is off. Tomorrow I'm going to teach her how to send voice messages, because typing is slow for her.",
+       "question": "Which question is NOT answered in the text?",
+       "options": [
+        "When does Defne visit her grandma?",
+        "Where does Defne's uncle live?",
+        "What is Defne going to teach her grandma tomorrow?",
+        "How much did Grandma's phone cost?"
+       ],
+       "answer": 3,
+       "explanation": "Metinde ziyaret günü ('Every Saturday'), amcanın yaşadığı yer ('Germany') ve yarınki ders ('voice messages') var. Telefonun fiyatı ise hiç söylenmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "From Defne's blog: My Grandma's First Smartphone\nLast month my grandma got her first smartphone. At first, she didn't know how to use it. She called me every evening and asked lots of questions. So I made a plan. Every Saturday I visit her and teach her something new. First, I added all our family to her contacts. Then I showed her how to make a video call. Now she talks to my uncle in Germany and sees his face on the screen! Last week she sent me her first text message: 'Hello dear, I am learning!' There is only one problem. She often forgets to charge the battery, so sometimes her phone is off. Tomorrow I'm going to teach her how to send voice messages, because typing is slow for her.",
+       "question": "Why is Grandma's phone sometimes off?",
+       "options": [
+        "There is no signal in her house.",
+        "She forgets to charge the battery.",
+        "She doesn't like phone calls.",
+        "Defne switches it off."
+       ],
+       "answer": 1,
+       "explanation": "Metinde 'She often forgets to charge the battery, so sometimes her phone is off.' yazıyor. Evde çekim olmaması ya da telefonla konuşmayı sevmemek metinde geçmiyor; Defne de telefonu kapatmıyor."
+      },
+      {
+       "type": "choice",
+       "passage": "From Defne's blog: My Grandma's First Smartphone\nLast month my grandma got her first smartphone. At first, she didn't know how to use it. She called me every evening and asked lots of questions. So I made a plan. Every Saturday I visit her and teach her something new. First, I added all our family to her contacts. Then I showed her how to make a video call. Now she talks to my uncle in Germany and sees his face on the screen! Last week she sent me her first text message: 'Hello dear, I am learning!' There is only one problem. She often forgets to charge the battery, so sometimes her phone is off. Tomorrow I'm going to teach her how to send voice messages, because typing is slow for her.",
+       "question": "Why is Defne going to teach her grandma how to send voice messages?",
+       "options": [
+        "Her grandma's phone has no keyboard.",
+        "Her uncle doesn't read text messages.",
+        "Typing is slow for her grandma.",
+        "Voice messages are cheaper."
+       ],
+       "answer": 2,
+       "explanation": "Defne 'because typing is slow for her' diyor; büyükannesi yazarken yavaş kalıyor. Klavye olmaması, amcanın mesaj okumaması ya da sesli mesajın daha ucuz olması metinde geçmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Phone message\nTo: Mum\nFrom: Aunt Nermin\nTime: Tuesday, 5:30 p.m.\nMessage: Aunt Nermin called, but you were at the market. She wants to postpone Thursday's dinner until Friday at 7 p.m. because Uncle Kemal has a doctor's appointment on Thursday evening. Please call her back tonight to confirm. Her mobile phone has no signal at home, so call the home number.\nTaken by: Efe",
+       "question": "Who took the message?",
+       "options": [
+        "Mum",
+        "Aunt Nermin",
+        "Uncle Kemal",
+        "Efe"
+       ],
+       "answer": 3,
+       "explanation": "Notun sonunda 'Taken by: Efe' yazıyor; mesajı Efe almış. Mesaj annesi için yazılmış ('To: Mum'), arayan kişi ise Nermin teyze."
+      },
+      {
+       "type": "choice",
+       "passage": "Phone message\nTo: Mum\nFrom: Aunt Nermin\nTime: Tuesday, 5:30 p.m.\nMessage: Aunt Nermin called, but you were at the market. She wants to postpone Thursday's dinner until Friday at 7 p.m. because Uncle Kemal has a doctor's appointment on Thursday evening. Please call her back tonight to confirm. Her mobile phone has no signal at home, so call the home number.\nTaken by: Efe",
+       "question": "Which of the following is TRUE according to the message?",
+       "options": [
+        "Aunt Nermin wants to have the dinner on Friday.",
+        "Aunt Nermin called in the morning.",
+        "Mum was at work when Aunt Nermin called.",
+        "Uncle Kemal has an appointment on Friday."
+       ],
+       "answer": 0,
+       "explanation": "Nermin teyze 'postpone Thursday's dinner until Friday' diyor; yemeği cumaya almak istiyor. Akşamüstü 17.30'da aramış, anne işte değil pazardaymış; Kemal eniştenin randevusu da cuma değil perşembe akşamı."
+      },
+      {
+       "type": "choice",
+       "passage": "Phone message\nTo: Mum\nFrom: Aunt Nermin\nTime: Tuesday, 5:30 p.m.\nMessage: Aunt Nermin called, but you were at the market. She wants to postpone Thursday's dinner until Friday at 7 p.m. because Uncle Kemal has a doctor's appointment on Thursday evening. Please call her back tonight to confirm. Her mobile phone has no signal at home, so call the home number.\nTaken by: Efe",
+       "question": "What should Mum do tonight?",
+       "options": [
+        "send a text message to Efe",
+        "call Aunt Nermin's home number",
+        "go to the doctor with Uncle Kemal",
+        "cook dinner for Aunt Nermin"
+       ],
+       "answer": 1,
+       "explanation": "Notta 'Please call her back tonight' ve 'call the home number' yazıyor, çünkü Nermin teyzenin cep telefonu evde çekmiyor. Efe'ye mesaj atmak, doktora gitmek ya da yemek pişirmek istenmiyor."
+      },
+      {
+       "type": "choice",
+       "passage": "Phone message\nTo: Mum\nFrom: Aunt Nermin\nTime: Tuesday, 5:30 p.m.\nMessage: Aunt Nermin called, but you were at the market. She wants to postpone Thursday's dinner until Friday at 7 p.m. because Uncle Kemal has a doctor's appointment on Thursday evening. Please call her back tonight to confirm. Her mobile phone has no signal at home, so call the home number.\nTaken by: Efe",
+       "question": "Which question is NOT answered in the message?",
+       "options": [
+        "Why does Aunt Nermin want to postpone the dinner?",
+        "Where was Mum when Aunt Nermin called?",
+        "What is Aunt Nermin's home number?",
+        "What time is the dinner on Friday?"
+       ],
+       "answer": 2,
+       "explanation": "Notta erteleme nedeni ('a doctor's appointment'), annenin nerede olduğu ('at the market') ve yemeğin saati ('7 p.m.') var. Ev telefonunun numarası ise yazılmamış."
+      }
+     ]
+    },
+    {
+     "id": "ls1u4t",
+     "type": "test",
+     "title": "Mini LGS testi",
+     "description": "10 soru, gerçek LGS biçiminde. %80 ile geçersin.",
+     "rewardXp": 30,
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Emre: Can you send me Aylin's phone number?\nTuna: Sorry, I don't have it. She isn't in my ---- list.",
+       "options": [
+        "signal",
+        "battery",
+        "receiver",
+        "contact"
+       ],
+       "answer": 3,
+       "explanation": "Telefondaki kişi listesine 'contact list' (rehber) denir; Aylin'in numarası Tuna'nın rehberinde yok. 'signal' çekim, 'battery' pil, 'receiver' ahize demek; hiçbiri numara listesi değildir."
+      },
+      {
+       "type": "choice",
+       "question": "Bora: I tried to call you yesterday, but I couldn't.\nNehir: Sorry! I was in a small village. There was no ---- there.",
+       "options": [
+        "app",
+        "signal",
+        "caller",
+        "message"
+       ],
+       "answer": 1,
+       "explanation": "Köyde telefon çekmediği için Bora arayamamış: 'There was no signal there.' 'app' uygulama, 'caller' arayan kişi, 'message' mesaj demek; hiçbiri aramanın neden yapılamadığını açıklamaz."
+      },
+      {
+       "type": "choice",
+       "question": "Receptionist: Good morning, City Library. How can I help you?\nZehra: Hello, ---- speak to Mrs. Arslan, please?",
+       "options": [
+        "could I",
+        "may you",
+        "do I",
+        "will I"
+       ],
+       "answer": 0,
+       "explanation": "Telefonda birini kibarca istemek için 'Could I speak to ...?' kalıbını kullanırız. 'may you' yanlış bir yapıdır; 'do I' ve 'will I' ise izin istemez, soruyu anlamsız yapar."
+      },
+      {
+       "type": "choice",
+       "question": "Selim: Why are you charging your phone?\nAras: I ---- a video call with my cousin in London at eight. My battery is low.",
+       "options": [
+        "made",
+        "make to",
+        "was making",
+        "am going to make"
+       ],
+       "answer": 3,
+       "explanation": "Aras'ın saat sekizde kuzeniyle görüntülü görüşme planı var ve bunun için telefonunu şarj ediyor; önceden yapılmış plan için 'am going to make' kullanılır. 'made' ve 'was making' geçmiş zaman, 'make to' ise dilbilgisi olarak yanlış."
+      },
+      {
+       "type": "choice",
+       "question": "Pelin: Hello, can I speak to Doğa, please?\nDoğa's dad: Sorry, she isn't at home. ----\nPelin: Yes, please. Can you tell her the school trip is cancelled?",
+       "options": [
+        "Can I leave a message?",
+        "Can I take a message?",
+        "Hold on, I'll get her.",
+        "Who's calling, please?"
+       ],
+       "answer": 1,
+       "explanation": "Baba Doğa'nın evde olmadığını söyleyip mesaj almayı teklif ediyor: 'Can I take a message?' 'Can I leave a message?' mesaj bırakmak isteyen arayanın sözüdür; Doğa evde olmadığı için onu çağırmak da mümkün değil."
+      },
+      {
+       "type": "choice",
+       "question": "Mert calls his friend Can, but Can doesn't answer. Mert hears: 'Please leave a message after the beep.'\nWhat can Mert say?",
+       "options": [
+        "Hi Can, it's Mert. Please call me back when you're free.",
+        "Hello, who's calling, please?",
+        "Hold on, I'll get him for you.",
+        "Sorry, you've got the wrong number."
+       ],
+       "answer": 0,
+       "explanation": "Mert sesli mesaj bırakıyor; kendini tanıtıp geri aranmak istediğini söyler: 'Please call me back when you're free.' 'Who's calling, please?' telefona cevap veren kişinin sorusudur; diğer ikisi de arayan birinin söyleyeceği sözler değildir."
+      },
+      {
+       "type": "choice",
+       "passage": "Star Sports Centre: Class changes this week\n| Class | Usual day | This week |\n|---|---|---|\n| Swimming | Monday | Wednesday |\n| Tennis | Tuesday | cancelled |\n| Chess | Thursday | Thursday |\n| Basketball | Friday | Saturday |",
+       "question": "Which of the following is TRUE according to the table?",
+       "options": [
+        "The swimming class is on Monday this week.",
+        "The basketball class is cancelled.",
+        "There is no tennis class this week.",
+        "The chess class is postponed until Friday."
+       ],
+       "answer": 2,
+       "explanation": "Tabloda tenis için 'cancelled' yazıyor; yani bu hafta tenis dersi yok. Yüzme bu hafta çarşamba, basketbol iptal edilmemiş, cumartesiye ertelenmiş; satranç ise her zamanki gibi perşembe."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Ece,\nThanks for your voice message last night. Sorry, I didn't answer the phone. I was at my cousin's wedding and it was really noisy there! You asked about our plans for Saturday. I talked to Selin and Arda. We're going to meet at the Science Centre at 10 a.m. and then have lunch in the park. Selin can't come in the morning because she has a piano lesson, so she's going to meet us at lunch. Arda is going to bring his camera. Can you come too? Please text me tonight and confirm. My battery is low, so I can't call you now.\nSee you,\nLisa",
+       "question": "Why didn't Lisa answer Ece's call?",
+       "options": [
+        "Her battery was empty.",
+        "She was at a piano lesson.",
+        "She was at the Science Centre.",
+        "She was at a noisy wedding."
+       ],
+       "answer": 3,
+       "explanation": "Lisa 'I was at my cousin's wedding and it was really noisy there!' diyor; bu yüzden telefonu açamamış. Pilin az olması şimdiki durum ('now'), dün geceki değil; piyano dersi ise Selin'in."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Ece,\nThanks for your voice message last night. Sorry, I didn't answer the phone. I was at my cousin's wedding and it was really noisy there! You asked about our plans for Saturday. I talked to Selin and Arda. We're going to meet at the Science Centre at 10 a.m. and then have lunch in the park. Selin can't come in the morning because she has a piano lesson, so she's going to meet us at lunch. Arda is going to bring his camera. Can you come too? Please text me tonight and confirm. My battery is low, so I can't call you now.\nSee you,\nLisa",
+       "question": "Which of the following is TRUE according to the message?",
+       "options": [
+        "Selin is going to join them at lunch.",
+        "Arda can't come on Saturday.",
+        "They are going to meet in the park at 10 a.m.",
+        "Lisa wants Ece to call her tonight."
+       ],
+       "answer": 0,
+       "explanation": "Lisa Selin için 'she's going to meet us at lunch' diyor; Selin onlara öğle yemeğinde katılacak. Saat 10'da parkta değil Science Centre'da buluşacaklar; Lisa da arama değil yazılı mesaj istiyor ('Please text me tonight')."
+      },
+      {
+       "type": "choice",
+       "passage": "Hi Ece,\nThanks for your voice message last night. Sorry, I didn't answer the phone. I was at my cousin's wedding and it was really noisy there! You asked about our plans for Saturday. I talked to Selin and Arda. We're going to meet at the Science Centre at 10 a.m. and then have lunch in the park. Selin can't come in the morning because she has a piano lesson, so she's going to meet us at lunch. Arda is going to bring his camera. Can you come too? Please text me tonight and confirm. My battery is low, so I can't call you now.\nSee you,\nLisa",
+       "question": "Which question is NOT answered in the message?",
+       "options": [
+        "What is Arda going to bring?",
+        "What time does Selin's piano lesson finish?",
+        "Where are they going to have lunch?",
+        "Where are they going to meet?"
+       ],
+       "answer": 1,
+       "explanation": "Mesajda Arda'nın fotoğraf makinesi ('his camera') getireceği, öğle yemeğinin parkta olacağı ve buluşma yerinin Science Centre olduğu yazıyor. Selin'in piyano dersinin kaçta bittiği ise söylenmiyor."
+      }
+     ]
+    },
+    {
+     "id": "ls1u4c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    }
+   ]
+  },
+  {
+   "id": "ls1u5",
+   "title": "The Internet",
+   "description": "İnternet: kelimeler, kullanım alışkanlıkları, güvenlik tavsiyeleri, görüş bildirme ve anket yorumlama",
+   "color": "0xFF1BA4A4",
+   "theme": "teknoloji",
+   "guide": "## Bu ünitede ne öğreneceğiz?\n\nİnterneti her gün kullanıyoruz, şimdi de onu İngilizce anlatma zamanı! Bu ünitede internet kelimelerini, interneti ne için kullandığımızı, çevrim içi güvenlik için tavsiye ve kuralları, görüş bildirmeyi ve anket tablolarını okumayı öğreneceksin. Hazırsan başlayalım!\n\n## Özet tablo\n\n| Ne yapmak istiyorsun? | Kalıp | Örnek |\n|---|---|---|\n| İnterneti ne için kullandığını söylemek | **I use the internet to/for …** | I use the internet to do my homework. |\n| Tavsiye vermek | **You should / shouldn't …** | You shouldn't share your password. |\n| Güçlü tavsiye ya da uyarı | **You'd better …** | You'd better log out now. |\n| Kural ya da yasak bildirmek | **You must / mustn't …** | You mustn't download apps in the lab. |\n| Gerek olmadığını söylemek | **You don't have to …** | You don't have to bring a laptop. |\n| Görüş bildirmek | **I think … / In my opinion …** | In my opinion, social media is useful. |\n| Katılmak ya da katılmamak | **I agree. / I don't agree.** | I don't agree. Some games are useful. |\n\n## Hedef kalıplar\n\n- **I use the internet to/for …**: İnterneti … için kullanırım. Örnek: I use it for research.\n- **You should / shouldn't …**: … malısın / …mamalısın (tavsiye). Örnek: You should use a strong password.\n- **You'd better …**: … sen iyi olur (güçlü tavsiye). Örnek: You'd better charge your tablet.\n- **You must / mustn't …**: … zorundasın / … yasak (kural). Örnek: You mustn't eat in the computer lab.\n- **You don't have to …**: … gerek yok. Örnek: You don't have to bring a laptop.\n- **I think … / In my opinion …**: Bence … Örnek: In my opinion, online lessons are useful.\n- **… percent of the students …**: Öğrencilerin yüzde …'i. Örnek: 60 percent of the students use a smartphone.\n\n## Anahtar kelimeler\n\n- **download / upload**: indirmek / yüklemek\n- **log in / log out**: giriş yapmak / çıkış yapmak\n- **account**: hesap\n- **password**: şifre\n- **username**: kullanıcı adı\n- **online / offline**: çevrim içi / çevrim dışı\n- **search engine**: arama motoru\n- **personal information**: kişisel bilgi\n- **privacy**: gizlilik\n- **secure**: güvenli\n- **cyberbullying**: siber zorbalık\n- **digital footprint**: dijital ayak izi\n- **screen time**: ekran süresi\n- **addiction**: bağımlılık\n- **survey**: anket\n- **majority**: çoğunluk\n\n## Türklerin sık yaptığı hatalar\n\n- \"You should to change your password.\" → **You should change your password.**: should, must ve had better'dan sonra to gelmez, fiil yalın kalır.\n- \"You mustn't bring a laptop.\" (gerek yok demek isterken) → **You don't have to bring a laptop.**: mustn't yasak demektir, don't have to ise gerek yok demektir.\n- \"I upload a game from the internet.\" → **I download a game from the internet.**: internetten bilgisayarına alıyorsan download, internete gönderiyorsan upload.\n\n## Sınav ipuçları\n\n> **Sınav ipucu 1:** Tablo ve anket sorularında sayıları tek tek karşılaştır. En büyük sayı en popüler olandır; majority yarıdan fazla demektir (%50'den çok).\n\n> **Sınav ipucu 2:** Diyalog tamamlamada boşluktan sonraki cümleye bak. Arkadaşın bir sebep söyleyip karşı çıkıyorsa cevap I don't agree gibi bir katılmama ifadesidir.\n\n> **Sınav ipucu 3:** \"Which question is NOT answered?\" sorusunda her seçeneğin cevabını metinde ara. Cevabını bulamadığın soru doğru cevaptır!",
+   "nodes": [
+    {
+     "id": "ls1u5l1",
+     "type": "lesson",
+     "title": "İnternet kelimeleri",
+     "description": "Hesap, şifre, indirme, yükleme ve güvenlik kelimeleri",
+     "exercises": [
+      {
+       "type": "select",
+       "prompt": "şifre",
+       "answer": "password",
+       "choices": [
+        {
+         "text": "password",
+         "emoji": "🔑"
+        },
+        {
+         "text": "username",
+         "emoji": "👤"
+        },
+        {
+         "text": "browser",
+         "emoji": "🌐"
+        },
+        {
+         "text": "laptop",
+         "emoji": "💻"
+        }
+       ]
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "yüklemek",
+         "upload"
+        ],
+        [
+         "hesap",
+         "account"
+        ],
+        [
+         "kullanıcı adı",
+         "username"
+        ],
+        [
+         "çevrim dışı",
+         "offline"
+        ],
+        [
+         "arama motoru",
+         "search engine"
+        ]
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "indirmek",
+       "answer": "download",
+       "choices": [
+        {
+         "text": "upload",
+         "emoji": "⬆️"
+        },
+        {
+         "text": "download",
+         "emoji": "⬇️"
+        },
+        {
+         "text": "share",
+         "emoji": "📤"
+        },
+        {
+         "text": "comment",
+         "emoji": "💬"
+        }
+       ]
+      },
+      {
+       "type": "select",
+       "prompt": "akıllı telefon",
+       "answer": "smartphone",
+       "choices": [
+        {
+         "text": "laptop",
+         "emoji": "💻"
+        },
+        {
+         "text": "wifi",
+         "emoji": "📶"
+        },
+        {
+         "text": "virus",
+         "emoji": "🦠"
+        },
+        {
+         "text": "smartphone",
+         "emoji": "📱"
+        }
+       ]
+      },
+      {
+       "type": "fillBlank",
+       "text": "Don't forget to log ___ when you use a shared computer.",
+       "translation": "Ortak bir bilgisayar kullandığında çıkış yapmayı unutma.",
+       "choices": [
+        "out",
+        "in",
+        "up"
+       ],
+       "answer": "out"
+      },
+      {
+       "type": "match",
+       "pairs": [
+        [
+         "siber zorbalık",
+         "cyberbullying"
+        ],
+        [
+         "gizlilik",
+         "privacy"
+        ],
+        [
+         "bağımlılık",
+         "addiction"
+        ],
+        [
+         "ekran süresi",
+         "screen time"
+        ],
+        [
+         "e-posta eki",
+         "attachment"
+        ]
+       ]
+      },
+      {
+       "type": "choice",
+       "question": "My grandfather has no internet connection at home, so he is ---- most of the time.",
+       "options": [
+        "online",
+        "secure",
+        "offline",
+        "shared"
+       ],
+       "answer": 2,
+       "explanation": "İpucu 'has no internet connection': interneti olmayan biri çoğu zaman çevrim dışıdır, yani 'offline'. 'Online' bunun tam tersidir; 'secure' ve 'shared' bir kişinin internet durumunu anlatmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep types her username and password to ---- to her account.",
+       "options": [
+        "upload",
+        "log in",
+        "log out",
+        "follow"
+       ],
+       "answer": 1,
+       "explanation": "Kullanıcı adı ve şifre hesaba giriş yapmak için yazılır: 'log in to her account'. En güçlü çeldirici 'log out', ama o çıkış yapmak demektir ve şifre gerektirmez."
+      },
+      {
+       "type": "choice",
+       "question": "Your ---- is everything you leave on the internet, like your posts, comments and likes.",
+       "options": [
+        "digital footprint",
+        "search engine",
+        "attachment",
+        "connection"
+       ],
+       "answer": 0,
+       "explanation": "İnternette bıraktığın gönderi, yorum ve beğenilerin hepsi 'digital footprint' (dijital ayak izi) olur. 'Search engine' arama motoru, 'attachment' e-posta eki, 'connection' ise bağlantıdır."
+      },
+      {
+       "type": "choice",
+       "question": "Sending mean messages to someone online again and again is called ----.",
+       "options": [
+        "privacy",
+        "research",
+        "online shopping",
+        "cyberbullying"
+       ],
+       "answer": 3,
+       "explanation": "İpucu 'mean messages … again and again': birine internette tekrar tekrar kırıcı mesaj göndermek 'cyberbullying', yani siber zorbalıktır. 'Privacy' gizlilik, 'research' araştırma, 'online shopping' ise internetten alışveriştir."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: My laptop is very slow and strange windows keep opening.\nLisa: Maybe it has a ----. You should ask your brother to check it.",
+       "options": [
+        "profile",
+        "virus",
+        "survey",
+        "majority"
+       ],
+       "answer": 1,
+       "explanation": "Bilgisayarın yavaşlaması ve garip pencerelerin açılması virüs belirtisidir: 'Maybe it has a virus.' 'Profile' (profil) bilgisayarı bozmaz; 'survey' anket, 'majority' çoğunluk demektir."
+      }
+     ]
+    },
+    {
+     "id": "ls1u5l2",
+     "type": "lesson",
+     "title": "Tavsiye ve görüş kalıpları",
+     "description": "I use it to…, should, must, had better, don't have to ve görüş bildirme",
+     "exercises": [
+      {
+       "type": "fillBlank",
+       "text": "You ___ share your password with anyone.",
+       "translation": "Şifreni kimseyle paylaşmamalısın.",
+       "choices": [
+        "shouldn't",
+        "should",
+        "can"
+       ],
+       "answer": "shouldn't"
+      },
+      {
+       "type": "choice",
+       "question": "Can: What do you use the internet for?\nLisa: ----.",
+       "options": [
+        "Three times a week",
+        "About an hour a day",
+        "I use it to watch videos and chat with my friends",
+        "Yes, I use it every day"
+       ],
+       "answer": 2,
+       "explanation": "'What do you use the internet for?' amaç sorar, cevap da amaç bildirir: 'I use it to watch videos and chat with my friends.' 'Three times a week' sıklık, 'About an hour a day' süre bildirir; 'Yes' ile başlayan cevap ise evet/hayır sorusuna uyar."
+      },
+      {
+       "type": "fillBlank",
+       "text": "I use the internet ___ do my homework.",
+       "translation": "İnterneti ödevimi yapmak için kullanırım.",
+       "choices": [
+        "to",
+        "for",
+        "at"
+       ],
+       "answer": "to"
+      },
+      {
+       "type": "choice",
+       "question": "Teacher: You ---- eat or drink in the computer lab. Food and water can damage the computers.",
+       "options": [
+        "mustn't",
+        "don't have to",
+        "should",
+        "can"
+       ],
+       "answer": 0,
+       "explanation": "Yiyecek ve su bilgisayarlara zarar verebilir, yani bu bir yasak: 'You mustn't eat or drink.' En güçlü çeldirici 'don't have to', ama o sadece 'gerek yok' demektir, yasak bildirmez."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: My tablet's battery is almost empty, and my online lesson starts in ten minutes.\nAli: ----.",
+       "options": [
+        "I use it to play games",
+        "You'd better charge it now",
+        "You mustn't join the lesson",
+        "I disagree with you"
+       ],
+       "answer": 1,
+       "explanation": "Ece'nin pili bitmek üzere ve dersi on dakika sonra başlıyor; Ali ona tavsiye veriyor: 'You'd better charge it now.' 'You mustn't join the lesson' derse girmesini yasaklar, bu duruma hiç uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: I think online games are a waste of time.\nCan: ----. Some games help us think faster.",
+       "options": [
+        "I totally agree",
+        "You're right",
+        "Exactly",
+        "I don't agree"
+       ],
+       "answer": 3,
+       "explanation": "Can, bazı oyunların daha hızlı düşünmemize yardım ettiğini söyleyerek Mert'e karşı çıkıyor: 'I don't agree.' 'I totally agree', 'You're right' ve 'Exactly' ise Mert'e katıldığını gösterir."
+      },
+      {
+       "type": "choice",
+       "question": "Can: In our class survey, 80 percent of the students use social media every day.\nWhat does this mean?",
+       "options": [
+        "The majority of the students use social media every day",
+        "Only a few students use social media",
+        "Half of the students never use social media",
+        "All of the students use social media every day"
+       ],
+       "answer": 0,
+       "explanation": "Yüzde 80, yarıdan fazladır; bu yüzden 'The majority of the students use social media every day' doğru. 'All of the students' yüzde 100 olurdu, 'Only a few' ise çok az demektir."
+      },
+      {
+       "type": "choice",
+       "question": "A stranger sends you a message online and asks for your home address. What should you do?",
+       "options": [
+        "You should give it to him quickly",
+        "You should tell an adult you trust",
+        "You'd better send him a photo of your house",
+        "You must reply at once"
+       ],
+       "answer": 1,
+       "explanation": "Yabancı biri adresini isterse kişisel bilgini paylaşmamalı ve güvendiğin bir yetişkine söylemelisin: 'You should tell an adult you trust.' Adresi vermek, ev fotoğrafı göndermek ya da hemen cevap yazmak tehlikelidir."
+      },
+      {
+       "type": "choice",
+       "question": "Teacher: You ---- bring your laptops to the coding club. There are computers in the room.",
+       "options": [
+        "mustn't",
+        "must",
+        "should",
+        "don't have to"
+       ],
+       "answer": 3,
+       "explanation": "Odada bilgisayar var, yani dizüstü getirmeye gerek yok: 'You don't have to bring your laptops.' En güçlü çeldirici 'mustn't', ama o yasak demektir; öğretmen bir yasaktan değil, gereksizlikten bahsediyor."
+      },
+      {
+       "type": "choice",
+       "question": "Which sentence is grammatically correct?",
+       "options": [
+        "You should to change your password often",
+        "You must not shares personal photos",
+        "You should change your password often",
+        "You mustn't to click on strange links"
+       ],
+       "answer": 2,
+       "explanation": "Should ve must'tan sonra fiil yalın gelir, 'to' ya da '-s' almaz: 'You should change your password often.' 'should to', 'must not shares' ve 'mustn't to' hatalıdır."
+      },
+      {
+       "type": "translate",
+       "text": "İnternette kişisel bilgilerini paylaşmamalısın.",
+       "lang": "tr",
+       "answers": [
+        "You shouldn't share your personal information online"
+       ],
+       "tokens": [
+        "You",
+        "shouldn't",
+        "share",
+        "your",
+        "personal",
+        "information",
+        "online",
+        "should",
+        "to",
+        "my"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ls1u5l3",
+     "type": "lesson",
+     "title": "Diyaloglar ve durumlar",
+     "description": "Görüş bildirme, tavsiye verme, diyalog sıralama ve tablo okuma",
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Lisa: I think online lessons are very useful.\nTom: ----. I can watch the lessons again when I don't understand something.",
+       "options": [
+        "I agree with you",
+        "I don't think so",
+        "I'm afraid I disagree",
+        "That's not true"
+       ],
+       "answer": 0,
+       "explanation": "Tom, dersleri tekrar izleyebildiğini söyleyerek Lisa'yı destekliyor: 'I agree with you.' 'I don't think so', 'I'm afraid I disagree' ve 'That's not true' ise karşı çıkma ifadeleridir."
+      },
+      {
+       "type": "choice",
+       "question": "Can: Mum, can I download this game? It's free.\nMum: ----. Free games sometimes have viruses. Let's check it together first.",
+       "options": [
+        "Sure, download it now",
+        "Of course, go ahead",
+        "Yes, no problem",
+        "Not yet"
+       ],
+       "answer": 3,
+       "explanation": "Annesi 'Let's check it together first' diyor, yani şimdilik izin vermiyor: 'Not yet.' Diğer cevapların hepsi hemen izin veriyor; bu da virüs uyarısıyla çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Ece: I forgot my password and I can't log in to my account.\nMert: ----\nEce: Good idea. I'll try it now.",
+       "options": [
+        "You should share your account with me",
+        "I log in twice a day",
+        "You should click on 'Forgot password' and create a new one",
+        "I don't use social media"
+       ],
+       "answer": 2,
+       "explanation": "Ece 'Good idea' diyor, demek ki Mert faydalı bir tavsiye vermiş: 'You should click on Forgot password and create a new one.' Hesabı paylaşmak tehlikeli bir tavsiyedir; diğer iki cevap tavsiye bile değildir."
+      },
+      {
+       "type": "choice",
+       "question": "Arda: ----?\nDeniz: About two hours a day. But I'm trying to spend less time online.",
+       "options": [
+        "How often do you post photos",
+        "How long do you spend online every day",
+        "What do you use the internet for",
+        "Which apps do you like"
+       ],
+       "answer": 1,
+       "explanation": "'About two hours a day' bir süre bildirir, süre de 'How long' ile sorulur: 'How long do you spend online every day?' En güçlü çeldirici 'How often', ama o sıklık sorar ve cevabı 'twice a week' gibi olur."
+      },
+      {
+       "type": "choice",
+       "question": "Put the dialogue in the correct order.\n(I) You'd better turn off your phone an hour before bed.\n(II) You look tired, Kerem. Did you go to bed late?\n(III) Thanks, I'll try that tonight.\n(IV) Yes, I chatted with my friends online until midnight.",
+       "options": [
+        "II - IV - I - III",
+        "IV - II - III - I",
+        "II - I - IV - III",
+        "I - IV - II - III"
+       ],
+       "answer": 0,
+       "explanation": "Önce Kerem'in yorgun olduğu söylenir (II), Kerem gece yarısına kadar sohbet ettiğini anlatır (IV), arkadaşı tavsiye verir (I) ve Kerem teşekkür eder (III). 'II - I - IV - III' olmaz, çünkü tavsiye sebep söylenmeden gelmez."
+      },
+      {
+       "type": "choice",
+       "question": "Zeynep's classmate posted a photo of her online without asking. Zeynep is upset. What can Zeynep say to her classmate?",
+       "options": [
+        "Thanks for sharing my photo!",
+        "Can you post more photos of me?",
+        "Please delete the photo. You should ask me first",
+        "I think this photo is great"
+       ],
+       "answer": 2,
+       "explanation": "Zeynep üzgün, bu yüzden fotoğrafın silinmesini istiyor ve önce izin alınması gerektiğini söylüyor: 'Please delete the photo. You should ask me first.' Teşekkür etmek ya da daha fazla fotoğraf istemek üzgün birine uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Kaan uses the same password for all his accounts. Which advice can his friend give him?",
+       "options": [
+        "You'd better write your password on your profile",
+        "You must share your password with your friends",
+        "You should use your name as your password",
+        "You should use a different password for each account"
+       ],
+       "answer": 3,
+       "explanation": "Her hesap için aynı şifreyi kullanmak risklidir, doğru tavsiye: 'You should use a different password for each account.' Şifreyi profile yazmak, arkadaşlarla paylaşmak ya da adını şifre yapmak hesabı güvensiz yapar."
+      },
+      {
+       "type": "choice",
+       "passage": "Survey: What do students use the internet for most? (200 students)\n| Activity | Students |\n|---|---|\n| homework | 70 |\n| games | 50 |\n| videos | 45 |\n| chatting | 35 |",
+       "question": "Which of the following is TRUE according to the table?",
+       "options": [
+        "Most students use the internet for chatting",
+        "Homework is the most popular reason to go online",
+        "More students watch videos than play games",
+        "The same number of students play games and chat"
+       ],
+       "answer": 1,
+       "explanation": "En büyük sayı 70 ile 'homework', yani en popüler sebep ödev. 'More students watch videos than play games' yanlış, çünkü video 45, oyun 50; sohbet ise 35 ile en az olandır."
+      },
+      {
+       "type": "choice",
+       "passage": "Daily screen time\n| Name | Weekdays | Weekends |\n|---|---|---|\n| Mert | 3 hours | 5 hours |\n| Lisa | 2 hours | 3 hours |\n| Ece | 1 hour | 2 hours |\n| Can | 1 hour | 4 hours |",
+       "question": "Their teacher says, 'You shouldn't be online for more than two hours a day.' Who follows this advice every day?",
+       "options": [
+        "Mert",
+        "Lisa",
+        "Ece",
+        "Can"
+       ],
+       "answer": 2,
+       "explanation": "Ece hafta içi 1, hafta sonu 2 saat çevrim içi; hiçbir gün iki saati geçmiyor. En güçlü çeldirici Lisa, ama o hafta sonu 3 saat çevrim içi; Can da hafta sonu 4 saat."
+      },
+      {
+       "type": "choice",
+       "question": "Ece wants to give her opinion about online shopping. What can she say?",
+       "options": [
+        "In my opinion, online shopping is easy, but it can be risky",
+        "How often do you shop online?",
+        "You mustn't shop online",
+        "Let's go to the shopping mall tomorrow"
+       ],
+       "answer": 0,
+       "explanation": "Görüş 'In my opinion' ile bildirilir: 'In my opinion, online shopping is easy, but it can be risky.' 'You mustn't shop online' bir görüş değil, yasak; diğerleri soru ve öneridir."
+      }
+     ]
+    },
+    {
+     "id": "ls1u5l4",
+     "type": "lesson",
+     "title": "Okuma: Ekran süresi ve kurallar",
+     "description": "Bir blog yazısı ve bilgisayar laboratuvarı kuralları",
+     "exercises": [
+      {
+       "type": "choice",
+       "passage": "My One-Hour Challenge\nLast month, I checked my screen time and I was shocked. I was online for five hours a day! I used my smartphone to chat with friends, watch videos and follow singers on social media. I didn't have enough time for my homework or my family. So, I started a 'one-hour challenge'. I put my phone in another room at night and used it for only one hour a day. I also logged out of my social media accounts on weekdays. At first, it was really difficult. But after three days, I felt better. I slept more and read two books. Now I think the internet is great for research, but we shouldn't let it control our lives.\nSelin, 14",
+       "question": "Why did Selin start the challenge?",
+       "options": [
+        "Her phone was broken",
+        "Her teacher gave her homework about it",
+        "She wanted to buy a new laptop",
+        "She spent too much time online"
+       ],
+       "answer": 3,
+       "explanation": "Selin 'I was online for five hours a day!' diyor ve ödevine ve ailesine vakit ayıramadığını söylüyor. Telefonun bozulması, öğretmen ödevi ya da yeni dizüstü bilgisayar metinde yok."
+      },
+      {
+       "type": "choice",
+       "passage": "My One-Hour Challenge\nLast month, I checked my screen time and I was shocked. I was online for five hours a day! I used my smartphone to chat with friends, watch videos and follow singers on social media. I didn't have enough time for my homework or my family. So, I started a 'one-hour challenge'. I put my phone in another room at night and used it for only one hour a day. I also logged out of my social media accounts on weekdays. At first, it was really difficult. But after three days, I felt better. I slept more and read two books. Now I think the internet is great for research, but we shouldn't let it control our lives.\nSelin, 14",
+       "question": "Which of the following is TRUE according to the text?",
+       "options": [
+        "Selin deleted her social media accounts",
+        "The challenge was easy from the first day",
+        "Selin slept more during the challenge",
+        "Selin stopped using the internet for research"
+       ],
+       "answer": 2,
+       "explanation": "Metinde 'I slept more and read two books' yazıyor. Selin hesaplarını silmedi, sadece hafta içi çıkış yaptı ('logged out'); ayrıca 'At first, it was really difficult' dediği için meydan okuma başta kolay değildi."
+      },
+      {
+       "type": "choice",
+       "passage": "My One-Hour Challenge\nLast month, I checked my screen time and I was shocked. I was online for five hours a day! I used my smartphone to chat with friends, watch videos and follow singers on social media. I didn't have enough time for my homework or my family. So, I started a 'one-hour challenge'. I put my phone in another room at night and used it for only one hour a day. I also logged out of my social media accounts on weekdays. At first, it was really difficult. But after three days, I felt better. I slept more and read two books. Now I think the internet is great for research, but we shouldn't let it control our lives.\nSelin, 14",
+       "question": "Which question is NOT answered in the text?",
+       "options": [
+        "How many hours a day was Selin online before the challenge?",
+        "Which singers does Selin follow?",
+        "How many books did Selin read?",
+        "When did Selin log out of her accounts?"
+       ],
+       "answer": 1,
+       "explanation": "Selin şarkıcıları takip ettiğini söylüyor ama hangi şarkıcılar olduğunu yazmıyor. Diğer soruların cevapları metinde var: günde beş saat, iki kitap ve hafta içi ('on weekdays')."
+      },
+      {
+       "type": "choice",
+       "passage": "My One-Hour Challenge\nLast month, I checked my screen time and I was shocked. I was online for five hours a day! I used my smartphone to chat with friends, watch videos and follow singers on social media. I didn't have enough time for my homework or my family. So, I started a 'one-hour challenge'. I put my phone in another room at night and used it for only one hour a day. I also logged out of my social media accounts on weekdays. At first, it was really difficult. But after three days, I felt better. I slept more and read two books. Now I think the internet is great for research, but we shouldn't let it control our lives.\nSelin, 14",
+       "question": "What does Selin think about the internet now?",
+       "options": [
+        "It is useful, but it shouldn't control our lives",
+        "It is a waste of time",
+        "Students mustn't use it for research",
+        "It is only good for chatting"
+       ],
+       "answer": 0,
+       "explanation": "Selin metnin sonunda 'the internet is great for research, but we shouldn't let it control our lives' diyor. İnterneti araştırma için harika bulduğu için 'It is a waste of time' ve araştırmayı yasaklayan cevap yanlıştır."
+      },
+      {
+       "type": "choice",
+       "passage": "My One-Hour Challenge\nLast month, I checked my screen time and I was shocked. I was online for five hours a day! I used my smartphone to chat with friends, watch videos and follow singers on social media. I didn't have enough time for my homework or my family. So, I started a 'one-hour challenge'. I put my phone in another room at night and used it for only one hour a day. I also logged out of my social media accounts on weekdays. At first, it was really difficult. But after three days, I felt better. I slept more and read two books. Now I think the internet is great for research, but we shouldn't let it control our lives.\nSelin, 14",
+       "question": "What did Selin do during the challenge?",
+       "options": [
+        "She watched more videos",
+        "She chatted with her friends all day",
+        "She followed new singers",
+        "She read two books"
+       ],
+       "answer": 3,
+       "explanation": "Meydan okuma sırasında Selin 'I slept more and read two books' diyor. Video izlemek, bütün gün sohbet etmek ve şarkıcı takip etmek meydan okumadan önceki alışkanlıklarıydı."
+      },
+      {
+       "type": "choice",
+       "passage": "School Computer Lab Rules\n- You must log in with your own username and password.\n- You mustn't play games or download apps.\n- You don't have to bring a laptop. There are 25 computers in the lab.\n- You should save your work on the school cloud.\n- You must log out before you leave.\nThe lab is open from Monday to Friday at lunchtime (12:30-13:15).",
+       "question": "According to the rules, students mustn't ----.",
+       "options": [
+        "log in with their own password",
+        "download apps",
+        "save their work on the school cloud",
+        "use the lab on Fridays"
+       ],
+       "answer": 1,
+       "explanation": "Kurallarda 'You mustn't play games or download apps' yazıyor. Kendi şifreyle giriş yapmak bir zorunluluk ('must'), buluta kaydetmek bir tavsiye ('should'); laboratuvar cuma günü de açık."
+      },
+      {
+       "type": "choice",
+       "passage": "School Computer Lab Rules\n- You must log in with your own username and password.\n- You mustn't play games or download apps.\n- You don't have to bring a laptop. There are 25 computers in the lab.\n- You should save your work on the school cloud.\n- You must log out before you leave.\nThe lab is open from Monday to Friday at lunchtime (12:30-13:15).",
+       "question": "Which of the following is TRUE according to the notice?",
+       "options": [
+        "Students have to bring their own laptops",
+        "The lab is open at the weekend",
+        "Students must log out before they leave",
+        "Students can use a friend's username"
+       ],
+       "answer": 2,
+       "explanation": "Kurallarda 'You must log out before you leave' yazıyor. 'You don't have to bring a laptop' dediği için dizüstü getirmek zorunlu değil; laboratuvar sadece hafta içi açık ve herkes kendi kullanıcı adıyla girmeli."
+      },
+      {
+       "type": "choice",
+       "passage": "School Computer Lab Rules\n- You must log in with your own username and password.\n- You mustn't play games or download apps.\n- You don't have to bring a laptop. There are 25 computers in the lab.\n- You should save your work on the school cloud.\n- You must log out before you leave.\nThe lab is open from Monday to Friday at lunchtime (12:30-13:15).",
+       "question": "Which question is NOT answered in the notice?",
+       "options": [
+        "When is the lab open?",
+        "How many computers are there in the lab?",
+        "Where should students save their work?",
+        "Who is the teacher in the lab?"
+       ],
+       "answer": 3,
+       "explanation": "Duyuruda öğretmenin kim olduğu yazmıyor. Açılış saati ('Monday to Friday at lunchtime'), bilgisayar sayısı (25) ve kayıt yeri ('the school cloud') duyuruda var."
+      },
+      {
+       "type": "choice",
+       "passage": "School Computer Lab Rules\n- You must log in with your own username and password.\n- You mustn't play games or download apps.\n- You don't have to bring a laptop. There are 25 computers in the lab.\n- You should save your work on the school cloud.\n- You must log out before you leave.\nThe lab is open from Monday to Friday at lunchtime (12:30-13:15).",
+       "question": "Kaan wants to play a game in the lab at lunchtime. What can his friend say to him?",
+       "options": [
+        "You'd better not. Games aren't allowed in the lab",
+        "Sure. You must download it first",
+        "Don't forget to use my password",
+        "Bring your laptop. There are no computers there"
+       ],
+       "answer": 0,
+       "explanation": "Kurallarda 'You mustn't play games' yazdığı için arkadaşı onu uyarır: 'You'd better not. Games aren't allowed in the lab.' Laboratuvarda 25 bilgisayar var ve herkes kendi şifresini kullanmalı, bu yüzden diğer cevaplar kurallara uymuyor."
+      }
+     ]
+    },
+    {
+     "id": "ls1u5t",
+     "type": "test",
+     "title": "Mini LGS testi",
+     "description": "10 soru, gerçek LGS biçiminde. %80 ile geçersin.",
+     "rewardXp": 30,
+     "exercises": [
+      {
+       "type": "choice",
+       "question": "Before you shop online, make sure the website is ----. Look for the small lock next to the web address.",
+       "options": [
+        "secure",
+        "offline",
+        "popular",
+        "slow"
+       ],
+       "answer": 0,
+       "explanation": "Adresin yanındaki küçük kilit, sitenin güvenli olduğunu gösterir: 'secure'. 'Popular' bir sitenin ünlü olduğunu anlatır ama güvenli olduğunu göstermez; 'offline' ve 'slow' ise anlama uymaz."
+      },
+      {
+       "type": "choice",
+       "question": "Mert: I want to send you the photos from our trip, but they are too big for a chat message.\nEce: No problem. Send them to my email as ----.",
+       "options": [
+        "passwords",
+        "hackers",
+        "surveys",
+        "attachments"
+       ],
+       "answer": 3,
+       "explanation": "E-postayla gönderilen dosyalar 'attachments' (ekler) olur. 'Passwords' şifre, 'hackers' bilgisayar korsanı, 'surveys' ise anket demektir; hiçbiri e-postayla fotoğraf göndermeyi anlatmaz."
+      },
+      {
+       "type": "choice",
+       "question": "Deniz: I want to chat online until midnight tonight.\nMum: You ---- go to bed early. You have an exam tomorrow.",
+       "options": [
+        "mustn't",
+        "had better",
+        "don't have to",
+        "shouldn't"
+       ],
+       "answer": 1,
+       "explanation": "Yarın sınav var, annesi erken yatmasını tavsiye ediyor: 'You had better go to bed early.' 'Mustn't' ve 'shouldn't' erken yatmayı yasaklar ya da kötüler, 'don't have to' ise gerek yok der; hepsi sınav sebebiyle çelişir."
+      },
+      {
+       "type": "choice",
+       "question": "Kerem: ----?\nAyşe: I mostly use it for research and online shopping.",
+       "options": [
+        "How often do you use your laptop",
+        "When did you buy your laptop",
+        "What do you use your laptop for",
+        "Where is your laptop"
+       ],
+       "answer": 2,
+       "explanation": "Ayşe 'I mostly use it for research and online shopping' diyerek amaç bildiriyor; amaç 'What do you use your laptop for?' ile sorulur. 'How often' sıklık sorar, cevabı 'every day' gibi olurdu."
+      },
+      {
+       "type": "choice",
+       "question": "Lisa: Social media is the best way to make new friends.\nCan: ----. You don't really know the people you meet online.\nLisa: Hmm, maybe you're right.",
+       "options": [
+        "I totally agree",
+        "I'm not sure about that",
+        "That's exactly right",
+        "You're absolutely right"
+       ],
+       "answer": 1,
+       "explanation": "Can, internette tanıştığımız insanları gerçekten tanımadığımızı söyleyerek Lisa'ya katılmıyor: 'I'm not sure about that.' Lisa'nın 'maybe you're right' cevabı da bunu gösterir. Diğer üç ifade katılma bildirir."
+      },
+      {
+       "type": "choice",
+       "question": "Ali sees that someone writes mean comments under his classmate's photos every day. What should Ali say to his classmate?",
+       "options": [
+        "You should tell a teacher or your parents about it",
+        "You'd better write mean comments too",
+        "Just post more photos",
+        "Forget it. It isn't important"
+       ],
+       "answer": 0,
+       "explanation": "Her gün kırıcı yorum yazmak siber zorbalıktır ve bir yetişkine söylenmelidir: 'You should tell a teacher or your parents about it.' 'Forget it. It isn't important' sorunu küçümser; karşılık vermek ya da daha çok paylaşmak da çözüm değildir."
+      },
+      {
+       "type": "choice",
+       "passage": "Survey: Which device do you use most to go online? (200 students)\n| Device | Percent |\n|---|---|\n| smartphone | 55% |\n| tablet | 20% |\n| laptop | 15% |\n| desktop computer | 10% |",
+       "question": "Which of the following is TRUE according to the survey?",
+       "options": [
+        "Laptops are more popular than tablets",
+        "Only ten percent of the students use a smartphone most",
+        "The majority of the students use a smartphone most",
+        "Tablets and laptops are equally popular"
+       ],
+       "answer": 2,
+       "explanation": "Akıllı telefon yüzde 55, yani yarıdan fazla: 'The majority of the students use a smartphone most.' Tablet yüzde 20, dizüstü yüzde 15 olduğu için tablet daha popülerdir; yüzde 10 ise masaüstü bilgisayarındır."
+      },
+      {
+       "type": "choice",
+       "passage": "Dear Ayla,\nI'm Burak and I'm 13. Last week, I posted a funny video of my best friend Ozan on social media. I didn't ask him first. Now more than 200 people have seen it, and some of them wrote mean comments. Ozan is very upset and he isn't talking to me. What should I do?\nBurak\n\nDear Burak,\nFirst, you should delete the video right now. Then, say sorry to Ozan face to face, not in a message. Remember, everything we post online leaves a digital footprint. In the future, you must always ask your friends before you share their photos or videos.\nAyla",
+       "question": "Why is Ozan upset?",
+       "options": [
+        "Burak deleted his account",
+        "Ozan lost his smartphone",
+        "Nobody watched his video",
+        "Burak posted a video of him without asking"
+       ],
+       "answer": 3,
+       "explanation": "Burak 'I posted a funny video of my best friend Ozan … I didn't ask him first' diyor. Videoyu 200'den fazla kişi izlemiş, yani 'Nobody watched his video' yanlış; hesap silme ya da telefon kaybı metinde yok."
+      },
+      {
+       "type": "choice",
+       "passage": "Dear Ayla,\nI'm Burak and I'm 13. Last week, I posted a funny video of my best friend Ozan on social media. I didn't ask him first. Now more than 200 people have seen it, and some of them wrote mean comments. Ozan is very upset and he isn't talking to me. What should I do?\nBurak\n\nDear Burak,\nFirst, you should delete the video right now. Then, say sorry to Ozan face to face, not in a message. Remember, everything we post online leaves a digital footprint. In the future, you must always ask your friends before you share their photos or videos.\nAyla",
+       "question": "Which of the following is NOT Ayla's advice?",
+       "options": [
+        "Delete the video",
+        "Send Ozan a long message",
+        "Say sorry to Ozan face to face",
+        "Ask friends before sharing their photos"
+       ],
+       "answer": 1,
+       "explanation": "Ayla 'say sorry to Ozan face to face, not in a message' diyor, yani mesaj göndermeyi önermiyor. Videoyu silmek, yüz yüze özür dilemek ve paylaşmadan önce izin istemek Ayla'nın tavsiyeleridir."
+      },
+      {
+       "type": "choice",
+       "passage": "Dear Ayla,\nI'm Burak and I'm 13. Last week, I posted a funny video of my best friend Ozan on social media. I didn't ask him first. Now more than 200 people have seen it, and some of them wrote mean comments. Ozan is very upset and he isn't talking to me. What should I do?\nBurak\n\nDear Burak,\nFirst, you should delete the video right now. Then, say sorry to Ozan face to face, not in a message. Remember, everything we post online leaves a digital footprint. In the future, you must always ask your friends before you share their photos or videos.\nAyla",
+       "question": "Which question is NOT answered in the text?",
+       "options": [
+        "How old is Burak?",
+        "How many people have seen the video?",
+        "Which app did Burak use?",
+        "What did Burak post?"
+       ],
+       "answer": 2,
+       "explanation": "Burak videoyu sosyal medyada paylaştığını söylüyor ama hangi uygulamayı kullandığını yazmıyor. Yaşı (13), izleyen sayısı ('more than 200 people') ve paylaştığı şey ('a funny video') metinde var."
+      }
+     ]
+    },
+    {
+     "id": "ls1u5c",
+     "type": "chest",
+     "title": "Ünite ödülü",
+     "description": "Tebrikler! Bonus XP seni bekliyor",
+     "rewardXp": 20
+    },
+    {
+     "id": "ls1m",
+     "type": "mock",
+     "title": "Bölüm 1 denemesi",
+     "description": "Gerçek LGS biçiminde: 10 soru, 15 dakika. Bu bölümün her ünitesinden 2 soru; sonunda netini ve cevap anahtarını görürsün.",
+     "examId": "lgs",
+     "size": 10,
+     "minutes": 15
+    }
+   ]
+  }
+ ]
+}
