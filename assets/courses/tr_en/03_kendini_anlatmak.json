@@ -1,0 +1,1398 @@
+{
+  "section": {"id":"s3","index":3,"title":"Kendini anlatmak","cefr":"A2","description":"Geçmişin, alışkanlıkların, insanları karşılaştırma, planların ve tahminlerin","grammar":["was/were born","past simple düzenli","past simple düzensiz","past continuous","sıklık zarfları","nesne zamirleri","comparative/superlative","much/many/a lot of","be going to","will (tahmin/teklif)"]},
+  "units": [
+    {
+      "id": "s3u1",
+      "title": "Hayat hikâyem",
+      "description": "was/were born, was/were ve çocukluk",
+      "color": "0xFF7C5CFC",
+      "nodes": [
+        {
+          "id": "s3u1l1",
+          "type": "lesson",
+          "title": "Ne zaman doğdun?",
+          "description": "was born, were born",
+          "exercises": [
+            {"type":"select","prompt":"doğmak","answer":"be born","choices":[{"text":"be born","emoji":"👶"},{"text":"grow up","emoji":"🌱"},{"text":"remember","emoji":"🧠"},{"text":"move","emoji":"🚚"}]},
+            {"type":"fillBlank","text":"I ___ born in İzmir.","translation":"İzmir'de doğdum.","answer":"was","choices":["were","was","am"]},
+            {"type":"fillBlank","text":"Where ___ you born?","translation":"Nerede doğdun?","answer":"were","choices":["was","were","did"]},
+            {"type":"translate","text":"2008'de doğdum.","lang":"tr","answers":["I was born in 2008"],"tokens":["on","am","was","born","in","I","2008"]},
+            {"type":"fillBlank","text":"My twin sisters were born ___ the fourth of July.","translation":"İkiz kız kardeşlerim dört temmuzda doğdu.","answer":"on","choices":["in","on","at"]},
+            {"type":"translate","text":"Kerem was born in a small hospital in Bursa.","lang":"en","answers":["Kerem Bursa'da küçük bir hastanede doğdu"],"tokens":["Kerem","doğdu","hastanede","bir","büyük","küçük","İzmir'de","Bursa'da"]},
+            {"type":"listen","text":"My grandparents were born in a village","answers":["My grandparents were born in a village"]},
+            {"type":"match","pairs":[["doğmak","be born"],["ikizler","twins"],["bebek","baby"],["büyükanne ve büyükbaba","grandparents"],["memleket","hometown"]]},
+            {"type":"translate","text":"Annen nerede doğdu?","lang":"tr","answers":["Where was your mother born","Where was your mom born"],"tokens":["did","Where","born","was","were","your","mother"]},
+            {"type":"speak","text":"I was born in a big city","translation":"Büyük bir şehirde doğdum."}
+          ]
+        },
+        {
+          "id": "s3u1l2",
+          "type": "lesson",
+          "title": "Çocukken",
+          "description": "when I was a child",
+          "exercises": [
+            {"type":"select","prompt":"çocukluk","answer":"childhood","choices":[{"text":"baby","emoji":"👶"},{"text":"village","emoji":"🏡"},{"text":"hometown","emoji":"🏘️"},{"text":"childhood","emoji":"🧸"}]},
+            {"type":"fillBlank","text":"When I ___ a child, I was very shy.","translation":"Çocukken çok utangaçtım.","answer":"was","choices":["am","was","were"]},
+            {"type":"fillBlank","text":"My brother and I ___ naughty kids.","translation":"Kardeşim ve ben yaramaz çocuklardık.","answer":"were","choices":["are","were","was"]},
+            {"type":"fillBlank","text":"Our house ___ near the sea.","translation":"Evimiz denize yakındı.","answer":"was","choices":["did","was","were"]},
+            {"type":"translate","text":"Ben tek çocuğum.","lang":"tr","answers":["I'm an only child","I am an only child"],"tokens":["I'm","one","only","child","a","an"]},
+            {"type":"translate","text":"When I was five, we lived in a village.","lang":"en","answers":["Ben beş yaşındayken bir köyde yaşıyorduk","Beş yaşındayken bir köyde yaşıyorduk"],"tokens":["beş","Ben","köyde","yaşındayken","altı","bir","şehirde","yaşıyorduk"]},
+            {"type":"listen","text":"I wasn't a shy child","answers":["I wasn't a shy child","I was not a shy child"]},
+            {"type":"match","pairs":[["çocukluk","childhood"],["ilkokul","primary school"],["anaokulu","kindergarten"],["utangaç","shy"],["yaramaz","naughty"]]},
+            {"type":"translate","text":"Öğretmenim çok nazikti.","lang":"tr","answers":["My teacher was very kind","My teacher was very nice"],"tokens":["were","teacher","was","kind","very","My","is"]},
+            {"type":"speak","text":"When I was a child, I loved cartoons","translation":"Çocukken çizgi filmlere bayılırdım."}
+          ]
+        },
+        {
+          "id": "s3u1s",
+          "type": "story",
+          "title": "Eski fotoğraflar",
+          "description": "Nene, Elif’e eski aile fotoğraflarını gösteriyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Grandma, who is this baby?","translation":"Nineciğim, bu bebek kim?"},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"That's your mother! She was born in 1982.","translation":"O senin annen! 1982'de doğdu."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Wow! Where was she born?","translation":"Vay! Nerede doğdu?"},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"In a small village near Trabzon. We were farmers then.","translation":"Trabzon yakınında küçük bir köyde. O zamanlar çiftçiydik."},
+            {"kind":"question","prompt":"Elif'in annesi nerede doğdu?","choices":["Bursa'da","Trabzon yakınında bir köyde","İstanbul'da"],"answer":"Trabzon yakınında bir köyde"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Was Mom a quiet child?","translation":"Annem sessiz bir çocuk muydu?"},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"No, she wasn't! She was very naughty.","translation":"Hayır, değildi! Çok yaramazdı."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"And who are these two girls?","translation":"Peki bu iki kız kim?"},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"They're my sisters, Ayşe and Fatma. They were twins.","translation":"Kız kardeşlerim Ayşe ve Fatma. İkizdiler."},
+            {"kind":"question","prompt":"Fotoğraftaki iki kız kim?","choices":["Annenin arkadaşları","Ninenin ikiz kız kardeşleri","Elif'in kuzenleri"],"answer":"Ninenin ikiz kız kardeşleri"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Were you happy in the village?","translation":"Köyde mutlu muydunuz?"},
+            {"kind":"line","speaker":"Nene","avatar":"👵","text":"Yes, we were. Life was simple, but it was beautiful.","translation":"Evet, mutluyduk. Hayat basitti ama güzeldi."},
+            {"kind":"question","prompt":"Nene köydeki hayatı nasıl anlatıyor?","choices":["Basit ama güzel","Kalabalık ve gürültülü","Zor ve sıkıcı"],"answer":"Basit ama güzel"}
+          ]
+        },
+        {
+          "id": "s3u1l3",
+          "type": "lesson",
+          "title": "Was it...? Were you...?",
+          "description": "geçmişte durum sormak",
+          "exercises": [
+            {"type":"select","prompt":"hatırlamak","answer":"remember","choices":[{"text":"move","emoji":"🚚"},{"text":"forget","emoji":"🤷"},{"text":"grow up","emoji":"🌱"},{"text":"remember","emoji":"🧠"}]},
+            {"type":"fillBlank","text":"___ you happy at school?","translation":"Okulda mutlu muydun?","answer":"Were","choices":["Did","Was","Were"]},
+            {"type":"fillBlank","text":"___ your grandfather a teacher?","translation":"Deden öğretmen miydi?","answer":"Was","choices":["Were","Did","Was"]},
+            {"type":"fillBlank","text":"Was it cold yesterday? No, it ___.","translation":"Dün soğuk muydu? Hayır, değildi.","answer":"wasn't","choices":["weren't","wasn't","didn't"]},
+            {"type":"translate","text":"Çocukken nerede yaşıyordun?","lang":"tr","answers":["Where did you live when you were a child"],"tokens":["you","are","did","child","Where","a","live","when","were","you","was"]},
+            {"type":"translate","text":"Were your parents strict?","lang":"en","answers":["Annenle baban katı mıydı?","Ailen katı mıydı?"],"tokens":["katı","muydu","nazik","baban","Annenle","mıydı"]},
+            {"type":"listen","text":"Where were you at nine o'clock?","answers":["Where were you at nine o'clock?"]},
+            {"type":"match","pairs":[["katı","strict"],["mutlu","happy"],["nazik","kind"],["anne baba","parents"],["hatırlamak","remember"]]},
+            {"type":"translate","text":"Dün evde değildim.","lang":"tr","answers":["I wasn't at home yesterday","I wasn't home yesterday","I was not at home yesterday","I was not home yesterday"],"tokens":["home","wasn't","yesterday","I","weren't","at","didn't"]},
+            {"type":"speak","text":"Were you a happy child?","translation":"Mutlu bir çocuk muydun?"}
+          ]
+        },
+        {
+          "id": "s3u1l4",
+          "type": "lesson",
+          "title": "Büyümek, taşınmak",
+          "description": "grow up, move, ago",
+          "exercises": [
+            {"type":"select","prompt":"taşınmak","answer":"move","choices":[{"text":"move","emoji":"🚚"},{"text":"visit","emoji":"🧳"},{"text":"stay","emoji":"🏠"},{"text":"grow up","emoji":"🌱"}]},
+            {"type":"fillBlank","text":"We moved to İstanbul ten years ___.","translation":"On yıl önce İstanbul'a taşındık.","answer":"ago","choices":["past","before","ago"]},
+            {"type":"fillBlank","text":"I grew up ___ a small town.","translation":"Küçük bir kasabada büyüdüm.","answer":"in","choices":["on","at","in"]},
+            {"type":"fillBlank","text":"Sam grew ___ in London.","translation":"Sam Londra'da büyüdü.","answer":"up","choices":["up","in","on"]},
+            {"type":"translate","text":"İki yıl önce taşındık.","lang":"tr","answers":["We moved two years ago"],"tokens":["ago","moving","before","two","moved","years","We"]},
+            {"type":"translate","text":"My hometown was very quiet.","lang":"en","answers":["Memleketim çok sessizdi","Doğduğum yer çok sessizdi"],"tokens":["sessizdi","değildi","Memleketim","çok","kalabalık"]},
+            {"type":"listen","text":"I grew up in a house with a big garden","answers":["I grew up in a house with a big garden"]},
+            {"type":"match","pairs":[["büyümek","grow up"],["taşınmak","move"],["(… yıl) önce","ago"],["memleket","hometown"],["kasaba","town"]]},
+            {"type":"translate","text":"Annemle babam Ankara'da tanıştı.","lang":"tr","answers":["My parents met in Ankara"],"tokens":["was","in","parents","meet","My","Ankara","met"]},
+            {"type":"speak","text":"We moved here five years ago","translation":"Buraya beş yıl önce taşındık."}
+          ]
+        },
+        {
+          "id": "s3u1t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u1c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u2",
+      "title": "Geçen hafta sonu",
+      "description": "Düzenli fiillerle geçmiş zaman (-ed)",
+      "color": "0xFF2D9CDB",
+      "nodes": [
+        {
+          "id": "s3u2l1",
+          "type": "lesson",
+          "title": "-ed ekleri",
+          "description": "visited, watched, tidied",
+          "exercises": [
+            {"type":"select","prompt":"ziyaret etmek","answer":"visit","choices":[{"text":"visit","emoji":"🧳"},{"text":"invite","emoji":"💌"},{"text":"tidy","emoji":"🧹"},{"text":"travel","emoji":"✈️"}]},
+            {"type":"select","prompt":"toplamak (oda)","answer":"tidy","choices":[{"text":"cook","emoji":"🍳"},{"text":"call","emoji":"📞"},{"text":"clean","emoji":"🧽"},{"text":"tidy","emoji":"🧹"}]},
+            {"type":"fillBlank","text":"Last weekend I ___ my grandparents.","translation":"Geçen hafta sonu büyükannemle büyükbabamı ziyaret ettim.","answer":"visited","choices":["visitted","visited","visit"]},
+            {"type":"fillBlank","text":"Yesterday we ___ a film at home.","translation":"Dün evde film izledik.","answer":"watched","choices":["watch","are watched","watched"]},
+            {"type":"fillBlank","text":"Mia ___ her room on Saturday.","translation":"Mia cumartesi odasını topladı.","answer":"tidied","choices":["tidyed","tidied","tidies"]},
+            {"type":"translate","text":"Dün akşam annemi aradım.","lang":"tr","answers":["I called my mother last night","I called my mom last night","I called my mother yesterday evening"],"tokens":["night","call","last","yesterday","mother","my","called","I"]},
+            {"type":"translate","text":"We stayed at home and played board games.","lang":"en","answers":["Evde kaldık ve kutu oyunları oynadık"],"tokens":["kaldık","kutu","oynadık","oynuyoruz","Evde","dışarı","oyunları","ve"]},
+            {"type":"listen","text":"They travelled to Ankara by train","answers":["They travelled to Ankara by train"]},
+            {"type":"match","pairs":[["ziyaret etti","visited"],["kaldı","stayed"],["aradı","called"],["davet etti","invited"],["seyahat etti","travelled"]]},
+            {"type":"speak","text":"I cleaned my room yesterday","translation":"Dün odamı temizledim."}
+          ]
+        },
+        {
+          "id": "s3u2l2",
+          "type": "lesson",
+          "title": "Yazım: stopped, studied",
+          "description": "ünsüz ikilemesi ve -ied",
+          "exercises": [
+            {"type":"select","prompt":"karar vermek","answer":"decide","choices":[{"text":"plan","emoji":"🗒️"},{"text":"decide","emoji":"🤔"},{"text":"stop","emoji":"🛑"},{"text":"try","emoji":"🎯"}]},
+            {"type":"fillBlank","text":"The bus ___ near the park.","translation":"Otobüs parkın yakınında durdu.","answer":"stopped","choices":["stoped","stops","stopped"]},
+            {"type":"fillBlank","text":"Deniz ___ for the exam all night.","translation":"Deniz bütün gece sınava çalıştı.","answer":"studied","choices":["studyed","study","studied"]},
+            {"type":"fillBlank","text":"We ___ to go to the beach.","translation":"Plaja gitmeye karar verdik.","answer":"decided","choices":["decide","decideed","decided"]},
+            {"type":"translate","text":"Geçen yıl Londra'ya seyahat ettik.","lang":"tr","answers":["We travelled to London last year","We traveled to London last year","Last year we travelled to London"],"tokens":["the","We","to","travelled","London","in","last","year"]},
+            {"type":"translate","text":"Kerem planned a surprise for his mother.","lang":"en","answers":["Kerem annesi için bir sürpriz planladı"],"tokens":["planladı","babası","sürpriz","Kerem","için","annesi","bir","hediye"]},
+            {"type":"listen","text":"She studied English for two hours","answers":["She studied English for two hours"]},
+            {"type":"match","pairs":[["durdu","stopped"],["ders çalıştı","studied"],["denedi","tried"],["planladı","planned"],["karar verdi","decided"]]},
+            {"type":"translate","text":"Yağmur yağdı, o yüzden evde kaldık.","lang":"tr","answers":["It rained, so we stayed at home","It rained, so we stayed home"],"tokens":["we","rain","stayed","rained","so","stay","home","at","It"]},
+            {"type":"speak","text":"We enjoyed the weekend","translation":"Hafta sonunun tadını çıkardık."}
+          ]
+        },
+        {
+          "id": "s3u2s",
+          "type": "story",
+          "title": "Pazartesi sabahı",
+          "description": "Elif ve Deniz hafta sonlarını anlatıyor; Sam’den mesaj geliyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Good morning, Elif! How was your weekend?","translation":"Günaydın Elif! Hafta sonun nasıldı?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"It was great! On Saturday I visited my grandmother.","translation":"Harikaydı! Cumartesi ninemi ziyaret ettim."},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Nice! What did you do there?","translation":"Güzel! Orada ne yaptınız?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"We cooked dinner together and looked at old photos.","translation":"Birlikte akşam yemeği yaptık ve eski fotoğraflara baktık."},
+            {"kind":"question","prompt":"Elif cumartesi kimi ziyaret etti?","choices":["Deniz'i","Sam'i","Ninesini"],"answer":"Ninesini"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"I stayed at home. It rained all day.","translation":"Ben evde kaldım. Bütün gün yağmur yağdı."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Oh no. Did you study for the exam?","translation":"Eyvah. Sınava çalıştın mı?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Yes, I studied for three hours. Then I played the guitar.","translation":"Evet, üç saat çalıştım. Sonra gitar çaldım."},
+            {"kind":"question","prompt":"Deniz kaç saat ders çalıştı?","choices":["İki","Dört","Üç"],"answer":"Üç"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Look, a message from Sam. He travelled to Scotland!","translation":"Bak, Sam’den mesaj var. İskoçya’ya gitmiş!"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Really? Did he like it?","translation":"Gerçekten mi? Beğenmiş mi?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"He loved it. He walked in the mountains with Mia.","translation":"Bayılmış. Mia ile dağlarda yürüyüş yapmış."},
+            {"kind":"question","prompt":"Sam nereye seyahat etti?","choices":["Antalya'ya","İskoçya'ya","Paris'e"],"answer":"İskoçya'ya"}
+          ]
+        },
+        {
+          "id": "s3u2l3",
+          "type": "lesson",
+          "title": "Dün, geçen hafta",
+          "description": "yesterday, last, ago",
+          "exercises": [
+            {"type":"select","prompt":"dün","answer":"yesterday","choices":[{"text":"tonight","emoji":"🌙"},{"text":"yesterday","emoji":"📆"},{"text":"tomorrow","emoji":"🔜"},{"text":"today","emoji":"📅"}]},
+            {"type":"fillBlank","text":"We cleaned the house ___ Sunday.","translation":"Geçen pazar evi temizledik.","answer":"last","choices":["before","last","ago"]},
+            {"type":"fillBlank","text":"I watched that film two weeks ___.","translation":"O filmi iki hafta önce izledim.","answer":"ago","choices":["last","before","ago"]},
+            {"type":"fillBlank","text":"She called me ___ morning.","translation":"Dün sabah beni aradı.","answer":"yesterday","choices":["yesterday","ago","last"]},
+            {"type":"translate","text":"Dün gece çok geç saate kadar çalıştım.","lang":"tr","answers":["I worked very late last night"],"tokens":["last","worked","very","night","yesterday","late","I"]},
+            {"type":"translate","text":"I finished my homework an hour ago.","lang":"en","answers":["Ödevimi bir saat önce bitirdim"],"tokens":["bir","dün","saat","başladım","Ödevimi","bitirdim","önce"]},
+            {"type":"listen","text":"We walked to school yesterday","answers":["We walked to school yesterday"]},
+            {"type":"match","pairs":[["dün","yesterday"],["geçen hafta","last week"],["iki gün önce","two days ago"],["dün gece","last night"],["geçen yıl","last year"]]},
+            {"type":"translate","text":"Geçen ay Kapadokya'yı ziyaret ettik.","lang":"tr","answers":["We visited Cappadocia last month","Last month we visited Cappadocia"],"tokens":["visited","the","month","Cappadocia","We","last","in"]},
+            {"type":"speak","text":"I visited my cousins last week","translation":"Geçen hafta kuzenlerimi ziyaret ettim."}
+          ]
+        },
+        {
+          "id": "s3u2l4",
+          "type": "lesson",
+          "title": "Önce, sonra, sonunda",
+          "description": "first, then, finally",
+          "exercises": [
+            {"type":"select","prompt":"sonunda","answer":"finally","choices":[{"text":"first","emoji":"🥇"},{"text":"after that","emoji":"⏭️"},{"text":"finally","emoji":"🏁"},{"text":"then","emoji":"➡️"}]},
+            {"type":"fillBlank","text":"___, we visited the museum. Then we had lunch.","translation":"Önce müzeyi gezdik. Sonra öğle yemeği yedik.","answer":"First","choices":["First","Then","Finally"]},
+            {"type":"fillBlank","text":"After ___, we walked to the park.","translation":"Ondan sonra parka yürüdük.","answer":"that","choices":["then","that","this"]},
+            {"type":"fillBlank","text":"We arrived ___ the hotel at ten.","translation":"Otele onda vardık.","answer":"at","choices":["in","to","at"]},
+            {"type":"translate","text":"Sonunda eve döndük.","lang":"tr","answers":["Finally we came back home","Finally, we returned home","In the end we came back home"],"tokens":["home","Finally","we","to","back","came"]},
+            {"type":"translate","text":"First I cooked, then I washed the dishes.","lang":"en","answers":["Önce yemek yaptım, sonra bulaşıkları yıkadım"],"tokens":["bulaşıkları","sonunda","temizledim","Önce","yaptım","yemek","yıkadım","sonra"]},
+            {"type":"listen","text":"Then we watched a film and relaxed","answers":["Then we watched a film and relaxed"]},
+            {"type":"match","pairs":[["önce","first"],["sonra","then"],["ondan sonra","after that"],["sonunda","finally"],["birlikte","together"]]},
+            {"type":"translate","text":"Hafta sonu kuzenlerimi davet ettim.","lang":"tr","answers":["I invited my cousins at the weekend","I invited my cousins on the weekend"],"tokens":["invite","in","my","weekend","I","cousins","invited","at","the"]},
+            {"type":"speak","text":"First we played, then we cooked","translation":"Önce oynadık, sonra yemek yaptık."}
+          ]
+        },
+        {
+          "id": "s3u2t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u2c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u3",
+      "title": "Adada bir gün",
+      "description": "Düzensiz fiillerle geçmiş zaman",
+      "color": "0xFF14A098",
+      "nodes": [
+        {
+          "id": "s3u3l1",
+          "type": "lesson",
+          "title": "went, had, saw",
+          "description": "en sık düzensiz fiiller",
+          "exercises": [
+            {"type":"select","prompt":"gördü","answer":"saw","choices":[{"text":"saw","emoji":"👀"},{"text":"went","emoji":"🚶"},{"text":"ate","emoji":"🍽️"},{"text":"had","emoji":"🤲"}]},
+            {"type":"select","prompt":"içti","answer":"drank","choices":[{"text":"took","emoji":"📸"},{"text":"drank","emoji":"🥤"},{"text":"ate","emoji":"🍽️"},{"text":"made","emoji":"🍳"}]},
+            {"type":"fillBlank","text":"We ___ to Büyükada on Sunday.","translation":"Pazar günü Büyükada'ya gittik.","answer":"went","choices":["went","goed","go"]},
+            {"type":"fillBlank","text":"I ___ a big breakfast this morning.","translation":"Bu sabah büyük bir kahvaltı yaptım.","answer":"had","choices":["had","has","haved"]},
+            {"type":"fillBlank","text":"We ___ a lot of cats on the island.","translation":"Adada bir sürü kedi gördük.","answer":"saw","choices":["see","saw","seed"]},
+            {"type":"translate","text":"Dondurma yedik ve limonata içtik.","lang":"tr","answers":["We ate ice cream and drank lemonade","We had ice cream and drank lemonade"],"tokens":["We","eat","ice","lemonade","drinked","ate","drank","cream","and"]},
+            {"type":"translate","text":"Elif took a lot of photos.","lang":"en","answers":["Elif bir sürü fotoğraf çekti","Elif çok fotoğraf çekti"],"tokens":["video","izledi","sürü","çekti","Elif","bir","fotoğraf"]},
+            {"type":"listen","text":"We went to the island by boat","answers":["We went to the island by boat"]},
+            {"type":"match","pairs":[["gitti","went"],["gördü","saw"],["yedi","ate"],["içti","drank"],["çekti (fotoğraf)","took"]]},
+            {"type":"speak","text":"I had a great day","translation":"Harika bir gün geçirdim."}
+          ]
+        },
+        {
+          "id": "s3u3l2",
+          "type": "lesson",
+          "title": "bought, made, met",
+          "description": "alışveriş ve buluşmalar",
+          "exercises": [
+            {"type":"select","prompt":"satın aldı","answer":"bought","choices":[{"text":"bought","emoji":"🛍️"},{"text":"paid","emoji":"💳"},{"text":"sold","emoji":"💰"},{"text":"brought","emoji":"📦"}]},
+            {"type":"fillBlank","text":"Kerem ___ a souvenir for Mia.","translation":"Kerem Mia için bir hediyelik eşya aldı.","answer":"bought","choices":["buyed","brought","bought"]},
+            {"type":"fillBlank","text":"I ___ a new friend at the camp.","translation":"Kampta yeni bir arkadaş edindim.","answer":"made","choices":["took","did","made"]},
+            {"type":"fillBlank","text":"We ___ Deniz at the café.","translation":"Deniz'le kafede buluştuk.","answer":"met","choices":["meet","meeted","met"]},
+            {"type":"translate","text":"Annem bir kek yaptı.","lang":"tr","answers":["My mother made a cake","My mom made a cake"],"tokens":["a","did","My","made","maked","mother","cake"]},
+            {"type":"translate","text":"They came home very late.","lang":"en","answers":["Eve çok geç geldiler"],"tokens":["gittiler","çok","geldiler","geç","Eve","erken"]},
+            {"type":"listen","text":"Sam gave me a book for my birthday","answers":["Sam gave me a book for my birthday"]},
+            {"type":"match","pairs":[["satın aldı","bought"],["yaptı","made"],["buluştu","met"],["geldi","came"],["verdi","gave"]]},
+            {"type":"translate","text":"Dün bir mektup yazdım.","lang":"tr","answers":["I wrote a letter yesterday","Yesterday I wrote a letter"],"tokens":["I","did","writed","letter","wrote","yesterday","a"]},
+            {"type":"speak","text":"We met in a café","translation":"Bir kafede buluştuk."}
+          ]
+        },
+        {
+          "id": "s3u3s",
+          "type": "story",
+          "title": "Adada bir gün",
+          "description": "Elif, Deniz ve Kerem Büyükada’ya gidiyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"We took the ferry at nine o'clock.","translation":"Saat dokuzda vapura bindik."},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"The sea was blue and we saw dolphins!","translation":"Deniz masmaviydi ve yunus gördük!"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"I ate three simits on the ferry.","translation":"Vapurda üç simit yedim."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Kerem! You had a big breakfast at home!","translation":"Kerem! Evde kocaman bir kahvaltı yaptın!"},
+            {"kind":"question","prompt":"Vapurdan ne gördüler?","choices":["Yunus","Kartal","Balina"],"answer":"Yunus"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"On the island, we rented bikes and rode to the top.","translation":"Adada bisiklet kiraladık ve tepeye kadar çıktık."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Then I found a nice café. We drank lemonade.","translation":"Sonra güzel bir kafe buldum. Limonata içtik."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Oh no! I left my bag in the café!","translation":"Eyvah! Çantamı kafede unuttum!"},
+            {"kind":"question","prompt":"Kerem çantasını nerede unuttu?","choices":["Bisiklette","Vapurda","Kafede"],"answer":"Kafede"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"We ran back. The waiter had the bag!","translation":"Geri koştuk. Çanta garsondaymış!"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"I gave him a big smile and said thank you.","translation":"Ona kocaman gülümsedim ve teşekkür ettim."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"We came home at seven. We felt tired but happy.","translation":"Yedide eve geldik. Yorgun ama mutluyduk."},
+            {"kind":"question","prompt":"Eve saat kaçta geldiler?","choices":["Dokuzda","Yedide","Altıda"],"answer":"Yedide"}
+          ]
+        },
+        {
+          "id": "s3u3l3",
+          "type": "lesson",
+          "title": "found, lost, left",
+          "description": "kaybetmek ve bulmak",
+          "exercises": [
+            {"type":"select","prompt":"kaybetti","answer":"lost","choices":[{"text":"lost","emoji":"😟"},{"text":"forgot","emoji":"🤯"},{"text":"found","emoji":"🔍"},{"text":"left","emoji":"🚪"}]},
+            {"type":"fillBlank","text":"I ___ my keys yesterday, but I found them today.","translation":"Dün anahtarlarımı kaybettim ama bugün buldum.","answer":"lost","choices":["lost","losed","lose"]},
+            {"type":"fillBlank","text":"Sam ___ his umbrella on the bus.","translation":"Sam şemsiyesini otobüste unuttu.","answer":"left","choices":["forgetted","left","forgot"]},
+            {"type":"fillBlank","text":"We ___ the museum at five.","translation":"Müzeden beşte ayrıldık.","answer":"left","choices":["left","leaved","leave"]},
+            {"type":"translate","text":"Telefonumu kanepenin altında buldum.","lang":"tr","answers":["I found my phone under the sofa"],"tokens":["the","on","my","I","find","under","phone","found","sofa"]},
+            {"type":"translate","text":"She felt sick, so she slept all day.","lang":"en","answers":["Kendini hasta hissetti, o yüzden bütün gün uyudu","Hastalandı, o yüzden bütün gün uyudu"],"tokens":["uyudu","gün","hissetti","hasta","Kendini","o","uyudum","yüzden","bütün","iyi"]},
+            {"type":"listen","text":"He forgot my birthday","answers":["He forgot my birthday"]},
+            {"type":"match","pairs":[["buldu","found"],["kaybetti","lost"],["ayrıldı","left"],["hissetti","felt"],["uyudu","slept"]]},
+            {"type":"translate","text":"Bisikletle okula gittim.","lang":"tr","answers":["I went to school by bike","I rode my bike to school"],"tokens":["bicycle","school","with","to","went","by","bike","I"]},
+            {"type":"speak","text":"I lost my wallet","translation":"Cüzdanımı kaybettim."}
+          ]
+        },
+        {
+          "id": "s3u3l4",
+          "type": "lesson",
+          "title": "said, told, thought",
+          "description": "söylemek, anlatmak, düşünmek",
+          "exercises": [
+            {"type":"select","prompt":"düşündü","answer":"thought","choices":[{"text":"thought","emoji":"💭"},{"text":"brought","emoji":"📦"},{"text":"taught","emoji":"📚"},{"text":"bought","emoji":"🛍️"}]},
+            {"type":"fillBlank","text":"Elif ___ me about her trip.","translation":"Elif bana gezisini anlattı.","answer":"told","choices":["talked","said","told"]},
+            {"type":"fillBlank","text":"He ___ 'Good night' and went to bed.","translation":"'İyi geceler' dedi ve yattı.","answer":"said","choices":["told","said","say"]},
+            {"type":"fillBlank","text":"I ___ the test was easy, but it wasn't.","translation":"Sınavın kolay olduğunu düşündüm ama değildi.","answer":"thought","choices":["thinked","thought","think"]},
+            {"type":"translate","text":"Bana doğruyu söyledi.","lang":"tr","answers":["She told me the truth","He told me the truth"],"tokens":["told","She","me","truth","said","the","to"]},
+            {"type":"translate","text":"Mia began her new job last week.","lang":"en","answers":["Mia geçen hafta yeni işine başladı"],"tokens":["hafta","geçen","işine","bitirdi","yeni","işini","başladı","Mia"]},
+            {"type":"listen","text":"I thought about you yesterday","answers":["I thought about you yesterday"]},
+            {"type":"match","pairs":[["dedi","said"],["anlattı","told"],["düşündü","thought"],["başladı","began"],["koştu","ran"]]},
+            {"type":"translate","text":"Gölde yüzdük ve sonra eve koştuk.","lang":"tr","answers":["We swam in the lake and then ran home","We swam in the lake and then we ran home"],"tokens":["ran","and","in","the","swimmed","We","then","lake","swam","home","runned"]},
+            {"type":"speak","text":"She told me a funny story","translation":"Bana komik bir hikâye anlattı."}
+          ]
+        },
+        {
+          "id": "s3u3t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u3c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u4",
+      "title": "Tatilin nasıldı?",
+      "description": "Geçmiş zamanda olumsuz ve soru: didn't, Did…?",
+      "color": "0xFFE0559A",
+      "nodes": [
+        {
+          "id": "s3u4l1",
+          "type": "lesson",
+          "title": "didn't",
+          "description": "geçmişte olumsuz",
+          "exercises": [
+            {"type":"select","prompt":"bagaj","answer":"luggage","choices":[{"text":"hostel","emoji":"🛏️"},{"text":"flight","emoji":"✈️"},{"text":"ticket","emoji":"🎫"},{"text":"luggage","emoji":"🧳"}]},
+            {"type":"fillBlank","text":"We didn't ___ abroad last summer.","translation":"Geçen yaz yurt dışına gitmedik.","answer":"go","choices":["going","went","go"]},
+            {"type":"fillBlank","text":"I ___ like the hotel food.","translation":"Otelin yemeğini sevmedim.","answer":"didn't","choices":["didn't","wasn't","don't"]},
+            {"type":"fillBlank","text":"The flight ___ late. It was on time.","translation":"Uçuş gecikmedi. Zamanındaydı.","answer":"wasn't","choices":["didn't","weren't","wasn't"]},
+            {"type":"translate","text":"Otobüsü kaçırmadık.","lang":"tr","answers":["We didn't miss the bus","We did not miss the bus"],"tokens":["miss","missed","didn't","We","the","bus","not"]},
+            {"type":"translate","text":"Kerem didn't sleep on the plane.","lang":"en","answers":["Kerem uçakta uyumadı"],"tokens":["uyudu","Kerem","otobüste","uyumadı","uçakta"]},
+            {"type":"listen","text":"I didn't pack my sunglasses","answers":["I didn't pack my sunglasses","I did not pack my sunglasses"]},
+            {"type":"match","pairs":[["uçuş","flight"],["bagaj","luggage"],["yurt dışı","abroad"],["kaçırmak","miss"],["bavul hazırlamak","pack"]]},
+            {"type":"translate","text":"Dün akşam televizyon izlemedim.","lang":"tr","answers":["I didn't watch TV last night","I didn't watch TV yesterday evening","I did not watch TV last night","I did not watch TV yesterday evening"],"tokens":["didn't","wasn't","watched","night","I","last","watch","TV"]},
+            {"type":"speak","text":"We didn't take a taxi","translation":"Taksiye binmedik."}
+          ]
+        },
+        {
+          "id": "s3u4l2",
+          "type": "lesson",
+          "title": "Did you...?",
+          "description": "geçmişle ilgili sorular",
+          "exercises": [
+            {"type":"select","prompt":"tur","answer":"tour","choices":[{"text":"journey","emoji":"🛤️"},{"text":"tour","emoji":"🚌"},{"text":"flight","emoji":"✈️"},{"text":"trip","emoji":"🧳"}]},
+            {"type":"fillBlank","text":"Did you ___ a good time?","translation":"İyi vakit geçirdin mi?","answer":"have","choices":["has","have","had"]},
+            {"type":"fillBlank","text":"___ they stay in a hostel?","translation":"Bir hostelde mi kaldılar?","answer":"Did","choices":["Did","Were","Do"]},
+            {"type":"fillBlank","text":"Did Mia enjoy the tour? Yes, she ___.","translation":"Mia turdan keyif aldı mı? Evet, aldı.","answer":"did","choices":["enjoyed","was","did"]},
+            {"type":"translate","text":"Plajda güneşlendin mi?","lang":"tr","answers":["Did you sunbathe on the beach","Did you sunbathe at the beach"],"tokens":["Did","on","the","sunbathe","sunbathed","you","were","beach"]},
+            {"type":"translate","text":"Did you rent a car?","lang":"en","answers":["Araba kiraladın mı?","Bir araba kiraladınız mı?"],"tokens":["aldın","otobüs","Araba","kiraladın","mı"]},
+            {"type":"listen","text":"Did you visit any museums?","answers":["Did you visit any museums?"]},
+            {"type":"match","pairs":[["güneşlenmek","sunbathe"],["kiralamak","rent"],["tur","tour"],["yolculuk","journey"],["şehri gezmek","go sightseeing"]]},
+            {"type":"translate","text":"Uçuşun nasıldı?","lang":"tr","answers":["How was your flight"],"tokens":["How","was","were","flight","your","did"]},
+            {"type":"speak","text":"Did you enjoy your holiday?","translation":"Tatilin keyifli geçti mi?"}
+          ]
+        },
+        {
+          "id": "s3u4s",
+          "type": "story",
+          "title": "Sam'in tatili",
+          "description": "Sam, ailesiyle yaptığı İspanya tatilini anlatıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Welcome back, Sam! How was Spain?","translation":"Tekrar hoş geldin Sam! İspanya nasıldı?"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"It was amazing! But the journey wasn't easy.","translation":"Muhteşemdi! Ama yolculuk kolay değildi."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Why? What happened?","translation":"Neden? Ne oldu?"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Our flight was three hours late. Mia slept at the airport.","translation":"Uçuşumuz üç saat rötar yaptı. Mia havalimanında uyudu."},
+            {"kind":"question","prompt":"Uçuş kaç saat gecikti?","choices":["Dört","Üç","İki"],"answer":"Üç"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Oh no! Did you lose your luggage, too?","translation":"Eyvah! Bavulunuzu da mı kaybettiniz?"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"No, we didn't, luckily.","translation":"Hayır, neyse ki kaybetmedik."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Did you go to the beach every day?","translation":"Her gün plaja gittiniz mi?"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"No. Mom wanted to go sightseeing. We saw lots of old buildings.","translation":"Hayır. Annem şehri gezmek istedi. Bir sürü eski bina gördük."},
+            {"kind":"question","prompt":"Sam'in annesi ne yapmak istedi?","choices":["Plajda güneşlenmek","Şehri gezmek","Alışveriş yapmak"],"answer":"Şehri gezmek"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Did you try the local food?","translation":"Yerel yemekleri denediniz mi?"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Yes! I ate paella every day. Mia didn't like it.","translation":"Evet! Her gün paella yedim. Mia sevmedi."},
+            {"kind":"question","prompt":"Mia neyi sevmedi?","choices":["Plajı","Paellayı","Uçağı"],"answer":"Paellayı"}
+          ]
+        },
+        {
+          "id": "s3u4l3",
+          "type": "lesson",
+          "title": "Where did you...?",
+          "description": "soru kelimeleri + did",
+          "exercises": [
+            {"type":"select","prompt":"rötar","answer":"delay","choices":[{"text":"journey","emoji":"🛤️"},{"text":"tour","emoji":"🚌"},{"text":"ferry","emoji":"⛴️"},{"text":"delay","emoji":"⏳"}]},
+            {"type":"fillBlank","text":"Where ___ you go last summer?","translation":"Geçen yaz nereye gittin?","answer":"did","choices":["were","did","do"]},
+            {"type":"fillBlank","text":"What did you ___ in Antalya?","translation":"Antalya'da ne yaptın?","answer":"do","choices":["do","did","done"]},
+            {"type":"fillBlank","text":"How long ___ the journey take?","translation":"Yolculuk ne kadar sürdü?","answer":"did","choices":["does","was","did"]},
+            {"type":"translate","text":"Ne zaman döndünüz?","lang":"tr","answers":["When did you come back","When did you return"],"tokens":["come","When","back","did","were","came","you"]},
+            {"type":"translate","text":"Who did you travel with?","lang":"en","answers":["Kiminle seyahat ettin?","Kimlerle seyahat ettiniz?"],"tokens":["nereye","ettin","Kiminle","seyahat","gittin"]},
+            {"type":"listen","text":"Why did you miss the flight?","answers":["Why did you miss the flight?"]},
+            {"type":"match","pairs":[["rötar","delay"],["vapur","ferry"],["yerel","local"],["dönmek","return"],["bavul","suitcase"]]},
+            {"type":"translate","text":"Tatilde ne yediniz?","lang":"tr","answers":["What did you eat on holiday","What did you eat on your holiday"],"tokens":["you","in","eat","did","holiday","ate","on","What"]},
+            {"type":"speak","text":"Where did you stay?","translation":"Nerede kaldınız?"}
+          ]
+        },
+        {
+          "id": "s3u4l4",
+          "type": "lesson",
+          "title": "Tatil anlatmak",
+          "description": "bölümün tekrarı: tatil",
+          "exercises": [
+            {"type":"select","prompt":"kamp alanı","answer":"campsite","choices":[{"text":"campsite","emoji":"⛺"},{"text":"beach","emoji":"🏖️"},{"text":"hotel","emoji":"🏨"},{"text":"hostel","emoji":"🛏️"}]},
+            {"type":"fillBlank","text":"We ___ in a tent at the campsite.","translation":"Kamp alanında çadırda uyuduk.","answer":"slept","choices":["sleeped","slept","sleep"]},
+            {"type":"fillBlank","text":"The weather ___ terrible, so we didn't swim.","translation":"Hava berbattı, o yüzden yüzmedik.","answer":"was","choices":["was","did","were"]},
+            {"type":"fillBlank","text":"I didn't ___ any souvenirs.","translation":"Hiç hediyelik eşya almadım.","answer":"buy","choices":["buying","bought","buy"]},
+            {"type":"translate","text":"Bavulumu kaybettim ama havalimanında buldum.","lang":"tr","answers":["I lost my suitcase but I found it at the airport"],"tokens":["lost","suitcase","find","at","but","my","I","found","it","the","I","airport"]},
+            {"type":"translate","text":"The hotel wasn't expensive, and the staff were friendly.","lang":"en","answers":["Otel pahalı değildi ve çalışanlar güler yüzlüydü","Otel pahalı değildi ve personel güler yüzlüydü"],"tokens":["ve","kaba","ucuz","yüzlüydü","pahalı","değildi","güler","çalışanlar","Otel"]},
+            {"type":"listen","text":"We had a wonderful time in Spain","answers":["We had a wonderful time in Spain"]},
+            {"type":"match","pairs":[["çadır","tent"],["kamp alanı","campsite"],["pahalı","expensive"],["güler yüzlü","friendly"],["harika","wonderful"]]},
+            {"type":"translate","text":"Havalimanına taksiyle gittik.","lang":"tr","answers":["We went to the airport by taxi","We took a taxi to the airport"],"tokens":["by","with","taxi","the","We","airport","go","went","to"]},
+            {"type":"speak","text":"The holiday was wonderful","translation":"Tatil harikaydı."}
+          ]
+        },
+        {
+          "id": "s3u4t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u4c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u5",
+      "title": "O sırada",
+      "description": "Past continuous, when ve while",
+      "color": "0xFFF2994A",
+      "nodes": [
+        {
+          "id": "s3u5l1",
+          "type": "lesson",
+          "title": "was/were + -ing",
+          "description": "geçmişte devam eden",
+          "exercises": [
+            {"type":"select","prompt":"fırtına","answer":"storm","choices":[{"text":"noise","emoji":"🔊"},{"text":"storm","emoji":"⛈️"},{"text":"accident","emoji":"🚑"},{"text":"candle","emoji":"🕯️"}]},
+            {"type":"fillBlank","text":"At eight o'clock I ___ dinner.","translation":"Saat sekizde akşam yemeği yiyordum.","answer":"was having","choices":["was have","were having","was having"]},
+            {"type":"fillBlank","text":"They ___ TV when I arrived.","translation":"Ben geldiğimde televizyon izliyorlardı.","answer":"were watching","choices":["was watching","watching","were watching"]},
+            {"type":"fillBlank","text":"It ___ all night.","translation":"Bütün gece yağmur yağıyordu.","answer":"was raining","choices":["was raining","rains","were raining"]},
+            {"type":"translate","text":"Dün saat altıda ders çalışıyordum.","lang":"tr","answers":["I was studying at six yesterday","Yesterday at six I was studying"],"tokens":["six","I","were","was","studying","at","yesterday","studied"]},
+            {"type":"translate","text":"We were sitting in the garden.","lang":"en","answers":["Bahçede oturuyorduk"],"tokens":["oturduk","evde","Bahçede","oturuyorduk"]},
+            {"type":"listen","text":"What were you doing at ten?","answers":["What were you doing at ten?"]},
+            {"type":"match","pairs":[["fırtına","storm"],["gürültü","noise"],["kaza","accident"],["mum","candle"],["korkmuş","scared"]]},
+            {"type":"translate","text":"Kerem uyumuyordu, oyun oynuyordu.","lang":"tr","answers":["Kerem wasn't sleeping, he was playing a game","Kerem was not sleeping, he was playing a game"],"tokens":["was","sleeping","game","didn't","he","wasn't","playing","Kerem","slept","a"]},
+            {"type":"speak","text":"I was reading a book","translation":"Bir kitap okuyordum."}
+          ]
+        },
+        {
+          "id": "s3u5l2",
+          "type": "lesson",
+          "title": "when ve while",
+          "description": "iki olayı bağlamak",
+          "exercises": [
+            {"type":"select","prompt":"aniden","answer":"suddenly","choices":[{"text":"finally","emoji":"🏁"},{"text":"quietly","emoji":"🤫"},{"text":"suddenly","emoji":"⚡"},{"text":"slowly","emoji":"🐢"}]},
+            {"type":"fillBlank","text":"I was cooking ___ the phone rang.","translation":"Telefon çaldığında yemek yapıyordum.","answer":"when","choices":["while","during","when"]},
+            {"type":"fillBlank","text":"___ I was walking home, it started to rain.","translation":"Eve yürürken yağmur başladı.","answer":"While","choices":["Between","While","During"]},
+            {"type":"fillBlank","text":"She ___ her arm when she was skiing.","translation":"Kayak yaparken kolunu kırdı.","answer":"broke","choices":["was breaking","breaked","broke"]},
+            {"type":"translate","text":"Biz konuşurken ışıklar söndü.","lang":"tr","answers":["The lights went out while we were talking","While we were talking, the lights went out"],"tokens":["was","lights","while","out","talking","went","we","The","talk","were"]},
+            {"type":"translate","text":"Someone knocked on the door while I was sleeping.","lang":"en","answers":["Ben uyurken biri kapıyı çaldı"],"tokens":["uyandım","çaldı","pencereyi","kapıyı","biri","Ben","uyurken"]},
+            {"type":"listen","text":"The phone rang while I was having a shower","answers":["The phone rang while I was having a shower"]},
+            {"type":"match","pairs":[["aniden","suddenly"],["olmak (olay)","happen"],["düşmek","fall"],["kırmak","break"],["düşürmek","drop"]]},
+            {"type":"translate","text":"Okula giderken Sam'i gördüm.","lang":"tr","answers":["I saw Sam when I was going to school","I saw Sam while I was going to school","While I was going to school, I saw Sam"],"tokens":["going","when","school","I","Sam","during","to","I","saw","was","went"]},
+            {"type":"speak","text":"Suddenly, the lights went out","translation":"Aniden ışıklar söndü."}
+          ]
+        },
+        {
+          "id": "s3u5s",
+          "type": "story",
+          "title": "Elektrik kesintisi",
+          "description": "Fırtınalı bir akşam evde elektrikler kesiliyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Last night there was a big storm.","translation":"Dün gece büyük bir fırtına vardı."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Dad was cooking and Kerem was doing his homework.","translation":"Babam yemek yapıyordu, Kerem de ödevini yapıyordu."},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"Suddenly the lights went out!","translation":"Aniden ışıklar söndü!"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"I was scared. It was very dark.","translation":"Korktum. Çok karanlıktı."},
+            {"kind":"question","prompt":"Işıklar söndüğünde baba ne yapıyordu?","choices":["Ödev yapıyordu","Yemek yapıyordu","Uyuyordu"],"answer":"Yemek yapıyordu"},
+            {"kind":"line","speaker":"Anne","avatar":"👩‍🦱","text":"Don't worry. There are some candles in the drawer.","translation":"Merak etmeyin. Çekmecede birkaç mum var."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"While Mom was looking for the candles, someone knocked on the door.","translation":"Annem mumları ararken biri kapıyı çaldı."},
+            {"kind":"line","speaker":"Komşu","avatar":"👴","text":"Good evening! Is everyone OK? Do you need anything?","translation":"İyi akşamlar! Herkes iyi mi? Bir şeye ihtiyacınız var mı?"},
+            {"kind":"question","prompt":"Kapıyı kim çaldı?","choices":["Komşu","Nene","Deniz"],"answer":"Komşu"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"We're fine, thank you. Please come in.","translation":"İyiyiz, teşekkürler. Lütfen içeri gelin."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"We sat around the candles and Dad told funny stories.","translation":"Mumların etrafında oturduk ve babam komik hikâyeler anlattı."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"It was the best evening of the week!","translation":"Haftanın en güzel akşamıydı!"},
+            {"kind":"question","prompt":"Kerem o akşamı nasıl buldu?","choices":["Çok sıkıcı","Haftanın en güzel akşamı","Çok korkutucu"],"answer":"Haftanın en güzel akşamı"}
+          ]
+        },
+        {
+          "id": "s3u5l3",
+          "type": "lesson",
+          "title": "What were you doing?",
+          "description": "past continuous soruları",
+          "exercises": [
+            {"type":"select","prompt":"bağırmak","answer":"shout","choices":[{"text":"laugh","emoji":"😂"},{"text":"whisper","emoji":"🤫"},{"text":"sing","emoji":"🎤"},{"text":"shout","emoji":"📢"}]},
+            {"type":"fillBlank","text":"What ___ you doing when I called?","translation":"Seni aradığımda ne yapıyordun?","answer":"were","choices":["did","were","was"]},
+            {"type":"fillBlank","text":"___ it raining when you left?","translation":"Çıktığında yağmur yağıyor muydu?","answer":"Was","choices":["Did","Were","Was"]},
+            {"type":"fillBlank","text":"Were they sleeping? No, they ___.","translation":"Uyuyorlar mıydı? Hayır, uyumuyorlardı.","answer":"weren't","choices":["wasn't","didn't","weren't"]},
+            {"type":"translate","text":"Kaza olduğunda nerede bekliyordun?","lang":"tr","answers":["Where were you waiting when the accident happened"],"tokens":["were","waiting","accident","did","you","happened","Where","the","was","when"]},
+            {"type":"translate","text":"Why were you shouting?","lang":"en","answers":["Neden bağırıyordun?"],"tokens":["Neden","gülüyordun","bağırıyordun","ne"]},
+            {"type":"listen","text":"Was Deniz playing the guitar?","answers":["Was Deniz playing the guitar?"]},
+            {"type":"match","pairs":[["bağırmak","shout"],["gülmek","laugh"],["kaymak","slip"],["ambulans","ambulance"],["karanlık","dark"]]},
+            {"type":"translate","text":"Ne yapıyordun?","lang":"tr","answers":["What were you doing"],"tokens":["you","doing","was","What","were","do","did"]},
+            {"type":"speak","text":"What were you doing last night?","translation":"Dün gece ne yapıyordun?"}
+          ]
+        },
+        {
+          "id": "s3u5l4",
+          "type": "lesson",
+          "title": "Olay anlatmak",
+          "description": "kısa bir hikâye kurmak",
+          "exercises": [
+            {"type":"select","prompt":"kaza","answer":"accident","choices":[{"text":"accident","emoji":"🚑"},{"text":"party","emoji":"🎉"},{"text":"trip","emoji":"🧳"},{"text":"storm","emoji":"⛈️"}]},
+            {"type":"fillBlank","text":"I ___ my phone while I was running.","translation":"Koşarken telefonumu düşürdüm.","answer":"dropped","choices":["dropped","was dropping","droped"]},
+            {"type":"fillBlank","text":"Mia slipped and ___ on the ice.","translation":"Mia buzda kaydı ve düştü.","answer":"fell","choices":["fell","felled","was fall"]},
+            {"type":"fillBlank","text":"The children ___ in the park when the storm started.","translation":"Fırtına başladığında çocuklar parkta oynuyordu.","answer":"were playing","choices":["were playing","are playing","was playing"]},
+            {"type":"translate","text":"Biz uyurken kedi vazoyu kırdı.","lang":"tr","answers":["The cat broke the vase while we were sleeping","While we were sleeping, the cat broke the vase"],"tokens":["the","we","sleeping","The","cat","breaked","was","were","broke","vase","while"]},
+            {"type":"translate","text":"An ambulance arrived quickly and helped the man.","lang":"en","answers":["Hızlıca bir ambulans geldi ve adama yardım etti","Bir ambulans çabucak geldi ve adama yardım etti"],"tokens":["adama","yardım","geldi","yavaşça","ambulans","Hızlıca","ve","kadına","etti","bir"]},
+            {"type":"listen","text":"Nobody was hurt in the accident","answers":["Nobody was hurt in the accident"]},
+            {"type":"match","pairs":[["vazo","vase"],["buz","ice"],["hızlıca","quickly"],["yaralı","hurt"],["hiç kimse","nobody"]]},
+            {"type":"translate","text":"Otobüs beklerken eski bir arkadaşımı gördüm.","lang":"tr","answers":["I saw an old friend while I was waiting for the bus","While I was waiting for the bus, I saw an old friend"],"tokens":["friend","I","was","waiting","bus","I","an","the","for","old","while","saw","waited","a"]},
+            {"type":"speak","text":"It was a dark and stormy night","translation":"Karanlık ve fırtınalı bir geceydi."}
+          ]
+        },
+        {
+          "id": "s3u5t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u5c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u6",
+      "title": "Ne sıklıkla?",
+      "description": "Sıklık zarfları ve alışkanlıklar",
+      "color": "0xFF27AE60",
+      "nodes": [
+        {
+          "id": "s3u6l1",
+          "type": "lesson",
+          "title": "always, usually, never",
+          "description": "ne sıklıkla",
+          "exercises": [
+            {"type":"select","prompt":"her zaman","answer":"always","choices":[{"text":"never","emoji":"🚫"},{"text":"sometimes","emoji":"🤷"},{"text":"always","emoji":"🔁"},{"text":"usually","emoji":"👍"}]},
+            {"type":"translate","text":"Her zaman kahvaltı yaparım.","lang":"tr","answers":["I always have breakfast","I always eat breakfast"],"tokens":["always","I","every","breakfast","have","make"]},
+            {"type":"fillBlank","text":"Kerem is ___ late for school. He's never on time!","translation":"Kerem okula hep geç kalır. Asla zamanında gelmez!","answer":"always","choices":["rarely","never","always"]},
+            {"type":"fillBlank","text":"She ___ drinks coffee. She doesn't like it.","translation":"Neredeyse hiç kahve içmez. Sevmez.","answer":"hardly ever","choices":["often","usually","hardly ever"]},
+            {"type":"fillBlank","text":"My dad ___ cooks on Sundays. It's his day.","translation":"Babam pazarları genellikle yemek yapar. O gün onun günü.","answer":"usually","choices":["hardly ever","usually","never"]},
+            {"type":"translate","text":"We never watch TV in the morning.","lang":"en","answers":["Sabahları asla televizyon izlemeyiz","Sabahları hiç televizyon izlemeyiz"],"tokens":["akşamları","izlemeyiz","her","asla","Sabahları","televizyon","zaman"]},
+            {"type":"listen","text":"I usually walk to school","answers":["I usually walk to school"]},
+            {"type":"match","pairs":[["her zaman","always"],["genellikle","usually"],["sık sık","often"],["bazen","sometimes"],["asla","never"]]},
+            {"type":"translate","text":"Bazen yürüyüşe çıkarız.","lang":"tr","answers":["We sometimes go for a walk","Sometimes we go for a walk"],"tokens":["walk","walking","goes","sometimes","We","for","a","go"]},
+            {"type":"speak","text":"I never drink coffee at night","translation":"Geceleri asla kahve içmem."}
+          ]
+        },
+        {
+          "id": "s3u6l2",
+          "type": "lesson",
+          "title": "am/is/are ile sıra",
+          "description": "Elif is always kind",
+          "exercises": [
+            {"type":"select","prompt":"nadiren","answer":"rarely","choices":[{"text":"never","emoji":"🚫"},{"text":"often","emoji":"🔂"},{"text":"always","emoji":"🔁"},{"text":"rarely","emoji":"🌘"}]},
+            {"type":"translate","text":"Elif her zaman naziktir.","lang":"tr","answers":["Elif is always kind","Elif is always nice"],"tokens":["is","kind","usually","always","Elif","be"]},
+            {"type":"fillBlank","text":"We are ___ at home on Sundays.","translation":"Pazar günleri genellikle evdeyiz.","answer":"usually","choices":["usual","usually","use"]},
+            {"type":"fillBlank","text":"The bus is ___ late in winter.","translation":"Kışın otobüs sık sık gecikir.","answer":"often","choices":["often","many","oftenly"]},
+            {"type":"translate","text":"Asla geç kalmam.","lang":"tr","answers":["I'm never late","I am never late"],"tokens":["not","I'm","late","don't","never"]},
+            {"type":"translate","text":"My grandma is rarely ill.","lang":"en","answers":["Ninem nadiren hastalanır","Ninem nadiren hasta olur"],"tokens":["sık","iyi","sık","hastalanır","nadiren","Ninem"]},
+            {"type":"listen","text":"The children are often noisy","answers":["The children are often noisy"]},
+            {"type":"match","pairs":[["nadiren","rarely"],["neredeyse hiç","hardly ever"],["sık sık","often"],["alışkanlık","habit"],["sağlıklı","healthy"]]},
+            {"type":"translate","text":"Deniz genellikle sessizdir.","lang":"tr","answers":["Deniz is usually quiet"],"tokens":["noisy","always","quiet","Deniz","usually","is"]},
+            {"type":"speak","text":"I'm always hungry after school","translation":"Okuldan sonra hep acıkırım."}
+          ]
+        },
+        {
+          "id": "s3u6s",
+          "type": "story",
+          "title": "Alışkanlık anketi",
+          "description": "Elif okul ödevi için babasına sorular soruyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Dad, can I ask you some questions? It's for school.","translation":"Baba, sana birkaç soru sorabilir miyim? Okul için."},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"Sure. Go ahead.","translation":"Tabii. Sor bakalım."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"How often do you exercise?","translation":"Ne sıklıkla spor yaparsın?"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"Hmm. I go to the gym twice a week.","translation":"Hmm. Haftada iki kez spor salonuna giderim."},
+            {"kind":"question","prompt":"Baba haftada kaç kez spor salonuna gidiyor?","choices":["İki kez","Hiç","Bir kez"],"answer":"İki kez"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Do you ever eat junk food?","translation":"Hiç abur cubur yer misin?"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"Sometimes. I usually have a burger on Fridays.","translation":"Bazen. Cumaları genellikle hamburger yerim."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"And how many hours do you sleep?","translation":"Peki kaç saat uyursun?"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"I usually sleep six hours. That isn't enough!","translation":"Genellikle altı saat uyurum. Bu yetmez!"},
+            {"kind":"question","prompt":"Baba genellikle kaç saat uyuyor?","choices":["Sekiz","Yedi","Altı"],"answer":"Altı"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Last question. How often do you check your phone?","translation":"Son soru. Telefonuna ne sıklıkla bakarsın?"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"Hmm... I hardly ever check it.","translation":"Hmm... Neredeyse hiç bakmam."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Dad! You always check it, even at dinner!","translation":"Baba! Hep bakıyorsun, akşam yemeğinde bile!"},
+            {"kind":"question","prompt":"Kerem'e göre baba telefonuna ne sıklıkla bakıyor?","choices":["Haftada bir","Her zaman","Neredeyse hiç"],"answer":"Her zaman"}
+          ]
+        },
+        {
+          "id": "s3u6l3",
+          "type": "lesson",
+          "title": "How often...?",
+          "description": "once, twice, three times",
+          "exercises": [
+            {"type":"select","prompt":"haftada iki kez","answer":"twice a week","choices":[{"text":"three times a week","emoji":"🤟"},{"text":"once a week","emoji":"☝️"},{"text":"every day","emoji":"📅"},{"text":"twice a week","emoji":"✌️"}]},
+            {"type":"fillBlank","text":"How ___ do you go swimming?","translation":"Ne sıklıkla yüzmeye gidersin?","answer":"often","choices":["many","much","often"]},
+            {"type":"fillBlank","text":"I visit my grandma ___ a month.","translation":"Ayda bir ninemi ziyaret ederim.","answer":"once","choices":["one","one in","once"]},
+            {"type":"fillBlank","text":"We have English lessons three ___ a week.","translation":"Haftada üç kez İngilizce dersimiz var.","answer":"times","choices":["times","once","time"]},
+            {"type":"translate","text":"Ne sıklıkla spor yaparsın?","lang":"tr","answers":["How often do you exercise","How often do you do exercise"],"tokens":["do","often","much","make","How","you","exercise"]},
+            {"type":"translate","text":"I check social media twice a day.","lang":"en","answers":["Sosyal medyaya günde iki kez bakarım"],"tokens":["Sosyal","günde","haftada","kez","bakarım","bir","medyaya","iki"]},
+            {"type":"listen","text":"How often do you walk the dog?","answers":["How often do you walk the dog?"]},
+            {"type":"match","pairs":[["bir kez","once"],["iki kez","twice"],["üç kez","three times"],["günde","a day"],["haftada","a week"]]},
+            {"type":"translate","text":"Annem yılda bir kez Ankara'ya gider.","lang":"tr","answers":["My mother goes to Ankara once a year","My mom goes to Ankara once a year"],"tokens":["goes","once","a","in","mother","Ankara","year","to","one","My"]},
+            {"type":"speak","text":"I go to the gym three times a week","translation":"Haftada üç kez spor salonuna giderim."}
+          ]
+        },
+        {
+          "id": "s3u6l4",
+          "type": "lesson",
+          "title": "İyi ve kötü alışkanlıklar",
+          "description": "healthy habits",
+          "exercises": [
+            {"type":"select","prompt":"abur cubur","answer":"junk food","choices":[{"text":"vegetables","emoji":"🥦"},{"text":"water","emoji":"💧"},{"text":"fruit","emoji":"🍎"},{"text":"junk food","emoji":"🍟"}]},
+            {"type":"select","prompt":"merdiven","answer":"stairs","choices":[{"text":"lift","emoji":"🛗"},{"text":"stairs","emoji":"🪜"},{"text":"floor","emoji":"🟫"},{"text":"door","emoji":"🚪"}]},
+            {"type":"fillBlank","text":"I ___ take the stairs. I never use the lift.","translation":"Hep merdivenleri kullanırım. Asansöre hiç binmem.","answer":"always","choices":["hardly ever","never","always"]},
+            {"type":"translate","text":"Spor yapmayı severim.","lang":"tr","answers":["I like doing sport","I like doing exercise","I like exercising"],"tokens":["sport","the","make","doing","like","I"]},
+            {"type":"fillBlank","text":"I eat vegetables ___ day.","translation":"Her gün sebze yerim.","answer":"every","choices":["all","every","each of"]},
+            {"type":"translate","text":"Kerem hardly ever eats vegetables.","lang":"en","answers":["Kerem neredeyse hiç sebze yemez"],"tokens":["yemez","Kerem","neredeyse","sebze","meyve","her","hiç"]},
+            {"type":"listen","text":"I don't use my phone after ten","answers":["I don't use my phone after ten","I do not use my phone after ten"]},
+            {"type":"match","pairs":[["abur cubur","junk food"],["sebzeler","vegetables"],["merdiven","stairs"],["ekran süresi","screen time"],["kontrol etmek","check"]]},
+            {"type":"translate","text":"Genellikle gece on birde yatarım.","lang":"tr","answers":["I usually go to bed at eleven","I usually go to bed at 11"],"tokens":["eleven","to","sleep","usually","go","I","in","bed","at"]},
+            {"type":"speak","text":"I always drink a lot of water","translation":"Her zaman bol su içerim."}
+          ]
+        },
+        {
+          "id": "s3u6t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u6c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u7",
+      "title": "Bana, ona, onlara",
+      "description": "Nesne zamirleri: me, him, her, us, them",
+      "color": "0xFF9B51E0",
+      "nodes": [
+        {
+          "id": "s3u7l1",
+          "type": "lesson",
+          "title": "me, him, her",
+          "description": "beni, onu",
+          "exercises": [
+            {"type":"select","prompt":"sarılmak","answer":"hug","choices":[{"text":"send","emoji":"📨"},{"text":"miss","emoji":"😢"},{"text":"call","emoji":"📞"},{"text":"hug","emoji":"🤗"}]},
+            {"type":"fillBlank","text":"Can you help ___?","translation":"Bana yardım edebilir misin?","answer":"me","choices":["my","me","I"]},
+            {"type":"fillBlank","text":"I often call Sam. I miss ___.","translation":"Sam'i sık sık ararım. Onu özlüyorum.","answer":"him","choices":["he","him","his"]},
+            {"type":"fillBlank","text":"Mia is my friend. I send ___ messages every day.","translation":"Mia benim arkadaşım. Ona her gün mesaj gönderirim.","answer":"her","choices":["she","her","hers"]},
+            {"type":"translate","text":"Elif'i severim. Onu her gün görürüm.","lang":"tr","answers":["I like Elif. I see her every day","I love Elif. I see her every day"],"tokens":["every","I","I","like","day","him","see","Elif","she","her"]},
+            {"type":"translate","text":"Kerem called me last night.","lang":"en","answers":["Kerem dün gece beni aradı","Kerem dün akşam beni aradı"],"tokens":["onu","bana","Kerem","aradı","beni","dün","gece"]},
+            {"type":"listen","text":"Please give him this card","answers":["Please give him this card"]},
+            {"type":"match","pairs":[["beni","me"],["onu (erkek)","him"],["onu (kadın)","her"],["bizi","us"],["onları","them"]]},
+            {"type":"translate","text":"Annem bana bir kart gönderdi.","lang":"tr","answers":["My mother sent me a card","My mom sent me a card","My mother sent a card to me"],"tokens":["My","sent","a","send","me","mother","card","I"]},
+            {"type":"speak","text":"I miss you","translation":"Seni özlüyorum."}
+          ]
+        },
+        {
+          "id": "s3u7l2",
+          "type": "lesson",
+          "title": "us, them, it",
+          "description": "bizi, onları, onu (eşya)",
+          "exercises": [
+            {"type":"select","prompt":"hediye","answer":"gift","choices":[{"text":"card","emoji":"💌"},{"text":"message","emoji":"💬"},{"text":"gift","emoji":"🎁"},{"text":"flowers","emoji":"💐"}]},
+            {"type":"fillBlank","text":"Our teacher gave ___ a lot of homework.","translation":"Öğretmenimiz bize çok ödev verdi.","answer":"us","choices":["our","we","us"]},
+            {"type":"fillBlank","text":"These flowers are for my mom. I bought ___ yesterday.","translation":"Bu çiçekler annem için. Onları dün aldım.","answer":"them","choices":["them","they","it"]},
+            {"type":"fillBlank","text":"I love this song. Listen to ___!","translation":"Bu şarkıyı çok seviyorum. Onu dinle!","answer":"it","choices":["him","its","it"]},
+            {"type":"translate","text":"Bizi partiye davet ettiler.","lang":"tr","answers":["They invited us to the party","They invited us to their party"],"tokens":["invited","They","to","we","party","the","our","us"]},
+            {"type":"translate","text":"Can you show them the photos?","lang":"en","answers":["Onlara fotoğrafları gösterebilir misin?"],"tokens":["mektubu","Onlara","bize","gösterebilir","fotoğrafları","misin"]},
+            {"type":"listen","text":"We visited them last summer","answers":["We visited them last summer"]},
+            {"type":"match","pairs":[["hediye","gift"],["kart","card"],["çiçekler","flowers"],["sürpriz","surprise"],["mesaj","message"]]},
+            {"type":"translate","text":"Lütfen bize yazın.","lang":"tr","answers":["Please write to us","Please write us"],"tokens":["us","to","we","our","write","Please"]},
+            {"type":"speak","text":"Call us when you arrive","translation":"Varınca bizi ara."}
+          ]
+        },
+        {
+          "id": "s3u7s",
+          "type": "story",
+          "title": "Sam'e sürpriz",
+          "description": "Arkadaşlar Sam’in doğum günü için Londra’ya paket gönderiyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Sam's birthday is next week. Let's send him something.","translation":"Sam'in doğum günü haftaya. Ona bir şey gönderelim."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Good idea! We can make him a video.","translation":"İyi fikir! Ona bir video hazırlayabiliriz."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"And let's send him some Turkish delight. He loves it!","translation":"Bir de ona biraz lokum gönderelim. Bayılıyor!"},
+            {"kind":"question","prompt":"Sam'e ne göndermek istiyorlar?","choices":["Çiçek","Bir kitap","Bir video ve lokum"],"answer":"Bir video ve lokum"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"What about Mia? Let's send her a gift, too.","translation":"Peki ya Mia? Ona da bir hediye gönderelim."},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"She likes drawing. Let's buy her some colourful pens.","translation":"Resim çizmeyi seviyor. Ona renkli kalemler alalım."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"I can write them a card in English!","translation":"Onlara İngilizce bir kart yazabilirim!"},
+            {"kind":"question","prompt":"Mia'ya ne alacaklar?","choices":["Lokum","Renkli kalemler","Bir kitap"],"answer":"Renkli kalemler"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Elif! We got your package! Thank you so much!","translation":"Elif! Paketinizi aldık! Çok teşekkürler!"},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"I love the pens! I drew a picture for you.","translation":"Kalemlere bayıldım! Size bir resim çizdim."},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"We miss you all. Come and visit us!","translation":"Hepinizi özlüyoruz. Gelin, bizi ziyaret edin!"},
+            {"kind":"question","prompt":"Mia onlar için ne yaptı?","choices":["Bir kart yazdı","Bir resim çizdi","Bir video çekti"],"answer":"Bir resim çizdi"}
+          ]
+        },
+        {
+          "id": "s3u7l3",
+          "type": "lesson",
+          "title": "give, send, show",
+          "description": "birine bir şey vermek",
+          "exercises": [
+            {"type":"select","prompt":"ödünç vermek","answer":"lend","choices":[{"text":"borrow","emoji":"🤝"},{"text":"give","emoji":"🎁"},{"text":"lend","emoji":"🤲"},{"text":"sell","emoji":"💰"}]},
+            {"type":"fillBlank","text":"Can you lend ___ your bike?","translation":"Bisikletini bana ödünç verebilir misin?","answer":"me","choices":["me","my","to me"]},
+            {"type":"fillBlank","text":"Show ___ your new phone!","translation":"Bize yeni telefonunu göster!","answer":"us","choices":["our","us","we"]},
+            {"type":"fillBlank","text":"I told ___ the news, and they were very happy.","translation":"Onlara haberi verdim ve çok mutlu oldular.","answer":"them","choices":["their","they","them"]},
+            {"type":"translate","text":"Kerem'e bir mesaj gönderdim.","lang":"tr","answers":["I sent Kerem a message","I sent a message to Kerem"],"tokens":["sent","Kerem","to","him","I","a","message"]},
+            {"type":"translate","text":"My best friend gave me a book.","lang":"en","answers":["En iyi arkadaşım bana bir kitap verdi"],"tokens":["kitap","kalem","bir","bana","arkadaşım","iyi","En","ona","verdi"]},
+            {"type":"listen","text":"Can you send me the photos?","answers":["Can you send me the photos?"]},
+            {"type":"match","pairs":[["ödünç vermek","lend"],["göstermek","show"],["göndermek","send"],["davet etmek","invite"],["en iyi arkadaş","best friend"]]},
+            {"type":"translate","text":"Bana gerçeği söyle.","lang":"tr","answers":["Tell me the truth"],"tokens":["Say","me","the","to","Tell","truth"]},
+            {"type":"speak","text":"Give me a hug!","translation":"Bana sarıl!"}
+          ]
+        },
+        {
+          "id": "s3u7l4",
+          "type": "lesson",
+          "title": "İnsanlar ve ilişkiler",
+          "description": "colleague, classmate, relative",
+          "exercises": [
+            {"type":"select","prompt":"iş arkadaşı","answer":"colleague","choices":[{"text":"colleague","emoji":"💼"},{"text":"neighbour","emoji":"🏘️"},{"text":"relative","emoji":"👪"},{"text":"classmate","emoji":"🎒"}]},
+            {"type":"fillBlank","text":"My mom has a new colleague. She likes ___ a lot.","translation":"Annemin yeni bir iş arkadaşı var. Onu çok seviyor.","answer":"him","choices":["he","him","his"]},
+            {"type":"fillBlank","text":"Deniz and I are classmates. The teacher often puts ___ together.","translation":"Deniz ve ben sınıf arkadaşıyız. Öğretmen bizi sık sık yan yana oturtur.","answer":"us","choices":["we","us","our"]},
+            {"type":"fillBlank","text":"Where are my keys? I can't find ___.","translation":"Anahtarlarım nerede? Onları bulamıyorum.","answer":"them","choices":["it","they","them"]},
+            {"type":"translate","text":"Komşularımızı yemeğe davet ettik.","lang":"tr","answers":["We invited our neighbours to dinner","We invited our neighbors to dinner","We invited our neighbours for dinner"],"tokens":["invited","us","neighbours","We","our","dinner","to","them"]},
+            {"type":"translate","text":"I don't know her, but my sister knows her well.","lang":"en","answers":["Onu tanımıyorum ama kız kardeşim onu iyi tanıyor"],"tokens":["beni","kardeşim","kız","biliyor","iyi","tanıyor","onu","Onu","ama","tanımıyorum"]},
+            {"type":"listen","text":"I met her at a friend's party","answers":["I met her at a friend's party"]},
+            {"type":"match","pairs":[["iş arkadaşı","colleague"],["sınıf arkadaşı","classmate"],["akraba","relative"],["misafir","guest"],["paket","package"]]},
+            {"type":"translate","text":"Sam'i dün aradım ama cevap vermedi.","lang":"tr","answers":["I called Sam yesterday, but he didn't answer","I called Sam yesterday, but he did not answer"],"tokens":["yesterday","I","she","him","he","didn't","Sam","but","called","answer"]},
+            {"type":"speak","text":"We always help each other","translation":"Hep birbirimize yardım ederiz."}
+          ]
+        },
+        {
+          "id": "s3u7t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u7c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u8",
+      "title": "Daha iyi, en iyi",
+      "description": "Karşılaştırma ve üstünlük: -er, more, the most, as…as",
+      "color": "0xFFEB5757",
+      "nodes": [
+        {
+          "id": "s3u8l1",
+          "type": "lesson",
+          "title": "-er ve more",
+          "description": "daha kısa, daha pahalı",
+          "exercises": [
+            {"type":"select","prompt":"komik","answer":"funny","choices":[{"text":"tall","emoji":"🦒"},{"text":"clever","emoji":"🧠"},{"text":"funny","emoji":"😂"},{"text":"noisy","emoji":"📢"}]},
+            {"type":"fillBlank","text":"Kerem is ___ than Elif.","translation":"Kerem Elif'ten daha kısa.","answer":"shorter","choices":["more shorter","shorter","more short"]},
+            {"type":"fillBlank","text":"This sofa is ___ comfortable than that one.","translation":"Bu kanepe şundan daha rahat.","answer":"more","choices":["more","much","most"]},
+            {"type":"fillBlank","text":"A bike is ___ than a car.","translation":"Bisiklet arabadan daha ucuz.","answer":"cheaper","choices":["cheapper","cheaper","more cheap"]},
+            {"type":"translate","text":"İstanbul Bursa'dan daha kalabalık.","lang":"tr","answers":["İstanbul is more crowded than Bursa"],"tokens":["Bursa","is","İstanbul","crowdeder","crowded","than","more","that"]},
+            {"type":"translate","text":"My new phone is better than my old phone.","lang":"en","answers":["Yeni telefonum eski telefonumdan daha iyi"],"tokens":["daha","Yeni","eski","daha","telefonumdan","kötü","telefonum","iyi"]},
+            {"type":"listen","text":"Sam is funnier than his sister","answers":["Sam is funnier than his sister"]},
+            {"type":"match","pairs":[["uzun boylu","tall"],["kısa","short"],["genç","young"],["zeki","clever"],["gürültülü","noisy"]]},
+            {"type":"translate","text":"Bu çanta daha pahalı.","lang":"tr","answers":["This bag is more expensive"],"tokens":["expensiver","bag","is","more","most","expensive","This"]},
+            {"type":"speak","text":"Summer is hotter than spring","translation":"Yaz ilkbahardan daha sıcak."}
+          ]
+        },
+        {
+          "id": "s3u8l2",
+          "type": "lesson",
+          "title": "better, worse, further",
+          "description": "düzensiz karşılaştırmalar",
+          "exercises": [
+            {"type":"select","prompt":"tehlikeli","answer":"dangerous","choices":[{"text":"popular","emoji":"⭐"},{"text":"dangerous","emoji":"⚠️"},{"text":"safe","emoji":"🛡️"},{"text":"modern","emoji":"🏙️"}]},
+            {"type":"fillBlank","text":"My English is ___ than last year.","translation":"İngilizcem geçen yıldan daha iyi.","answer":"better","choices":["gooder","better","more good"]},
+            {"type":"fillBlank","text":"The weather today is ___ than yesterday.","translation":"Bugün hava dünden daha kötü.","answer":"worse","choices":["badder","worse","more bad"]},
+            {"type":"fillBlank","text":"Ankara is ___ from İzmir than İstanbul.","translation":"Ankara İzmir'e İstanbul'dan daha uzak.","answer":"further","choices":["more far","further","farer"]},
+            {"type":"translate","text":"Trenle gitmek daha güvenli.","lang":"tr","answers":["Going by train is safer","It's safer to go by train","It is safer to go by train"],"tokens":["safe","is","Going","more","safer","by","train"]},
+            {"type":"translate","text":"This film is more popular than the book.","lang":"en","answers":["Bu film kitaptan daha popüler"],"tokens":["daha","dizi","Bu","popüler","az","kitaptan","film"]},
+            {"type":"listen","text":"Walking is safer than cycling here","answers":["Walking is safer than cycling here"]},
+            {"type":"match","pairs":[["tehlikeli","dangerous"],["güvenli","safe"],["modern","modern"],["popüler","popular"],["rahat","comfortable"]]},
+            {"type":"translate","text":"Ağabeyim benden daha uzun.","lang":"tr","answers":["My brother is taller than me","My brother is taller than I am"],"tokens":["taller","brother","than","more","My","from","is","me"]},
+            {"type":"speak","text":"My cooking is better than my dad's","translation":"Benim yemeklerim babamınkilerden daha iyi."}
+          ]
+        },
+        {
+          "id": "s3u8s",
+          "type": "story",
+          "title": "Hangi şehir?",
+          "description": "Sam ve Mia yaz için Türkiye’de nereye gideceklerini soruyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Mia and I want to visit Turkey this summer!","translation":"Mia ve ben bu yaz Türkiye’ye gelmek istiyoruz!"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Great! Where do you want to go?","translation":"Harika! Nereye gitmek istiyorsunuz?"},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"İstanbul or İzmir? Which city is better?","translation":"İstanbul mu İzmir mi? Hangi şehir daha iyi?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"İstanbul is bigger and more exciting.","translation":"İstanbul daha büyük ve daha heyecanlı."},
+            {"kind":"question","prompt":"Deniz'e göre İstanbul nasıl?","choices":["Daha büyük ve heyecanlı","Daha ucuz","Daha sakin"],"answer":"Daha büyük ve heyecanlı"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"But İzmir is quieter, and the sea is warmer.","translation":"Ama İzmir daha sakin ve denizi daha sıcak."},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Which city is cheaper?","translation":"Hangi şehir daha ucuz?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"İzmir, I think. İstanbul is the most expensive city in Turkey.","translation":"Bence İzmir. İstanbul Türkiye’nin en pahalı şehri."},
+            {"kind":"question","prompt":"Deniz'e göre Türkiye'nin en pahalı şehri hangisi?","choices":["İzmir","Ankara","İstanbul"],"answer":"İstanbul"},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"I want to see the best beaches!","translation":"En güzel plajları görmek istiyorum!"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Then come to İzmir first, then İstanbul. We can come with you!","translation":"O zaman önce İzmir’e, sonra İstanbul’a gelin. Biz de sizinle gelebiliriz!"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"That's the best idea!","translation":"Bu en iyi fikir!"},
+            {"kind":"question","prompt":"Elif nasıl bir plan öneriyor?","choices":["Önce Ankara","Sadece İstanbul","Önce İzmir, sonra İstanbul"],"answer":"Önce İzmir, sonra İstanbul"}
+          ]
+        },
+        {
+          "id": "s3u8l3",
+          "type": "lesson",
+          "title": "the most, the -est",
+          "description": "en yüksek, en güzel",
+          "exercises": [
+            {"type":"select","prompt":"en iyi","answer":"the best","choices":[{"text":"good","emoji":"🙂"},{"text":"the worst","emoji":"👎"},{"text":"better","emoji":"👍"},{"text":"the best","emoji":"🏆"}]},
+            {"type":"fillBlank","text":"Everest is the ___ mountain in the world.","translation":"Everest dünyanın en yüksek dağıdır.","answer":"highest","choices":["highest","most high","higher"]},
+            {"type":"fillBlank","text":"This is the ___ beautiful beach in Turkey.","translation":"Bu Türkiye'nin en güzel plajı.","answer":"most","choices":["most","more","best"]},
+            {"type":"fillBlank","text":"Kerem is the ___ in our family.","translation":"Kerem ailemizin en küçüğü.","answer":"youngest","choices":["younger","most young","youngest"]},
+            {"type":"translate","text":"Yılın en kötü günüydü.","lang":"tr","answers":["It was the worst day of the year","That was the worst day of the year"],"tokens":["day","the","the","was","worst","of","worse","year","in","It"]},
+            {"type":"translate","text":"Who is the funniest person in your class?","lang":"en","answers":["Sınıfındaki en komik kişi kim?","Sınıfının en komik kişisi kim?"],"tokens":["kim","Sınıfındaki","komik","en","zeki","kişi","en"]},
+            {"type":"listen","text":"It's the most popular café in town","answers":["It's the most popular café in town","It is the most popular café in town"]},
+            {"type":"match","pairs":[["en iyi","the best"],["en kötü","the worst"],["en uzak","the furthest"],["en büyük","the biggest"],["en ucuz","the cheapest"]]},
+            {"type":"translate","text":"O, okulumuzdaki en hızlı koşucu.","lang":"tr","answers":["She is the fastest runner in our school","He is the fastest runner in our school","She's the fastest runner in our school","He's the fastest runner in our school"],"tokens":["most","school","of","the","fastest","our","in","is","She","runner"]},
+            {"type":"speak","text":"This is the best day ever!","translation":"Bu şimdiye kadarki en güzel gün!"}
+          ]
+        },
+        {
+          "id": "s3u8l4",
+          "type": "lesson",
+          "title": "as ... as",
+          "description": "kadar, kadar değil",
+          "exercises": [
+            {"type":"select","prompt":"rahat","answer":"comfortable","choices":[{"text":"comfortable","emoji":"🛋️"},{"text":"crowded","emoji":"👥"},{"text":"modern","emoji":"🏙️"},{"text":"dangerous","emoji":"⚠️"}]},
+            {"type":"fillBlank","text":"Elif is ___ tall as her mother.","translation":"Elif annesi kadar uzun.","answer":"as","choices":["so","than","as"]},
+            {"type":"fillBlank","text":"My room isn't as big ___ yours.","translation":"Benim odam seninki kadar büyük değil.","answer":"as","choices":["than","like","as"]},
+            {"type":"fillBlank","text":"Cats are ___ than dogs, I think.","translation":"Bence kediler köpeklerden daha sessiz.","answer":"quieter","choices":["quieter","quietter","more quiet than"]},
+            {"type":"translate","text":"Kerem babası kadar komik.","lang":"tr","answers":["Kerem is as funny as his father","Kerem is as funny as his dad"],"tokens":["than","Kerem","as","funny","his","father","as","is","more"]},
+            {"type":"translate","text":"The train isn't as fast as the plane.","lang":"en","answers":["Tren uçak kadar hızlı değil"],"tokens":["değil","kadar","daha","uçak","hızlı","yavaş","Tren"]},
+            {"type":"listen","text":"My sister is as tall as my dad","answers":["My sister is as tall as my dad"]},
+            {"type":"match","pairs":[["heyecanlı","exciting"],["-den daha","than"],["kalabalık","crowded"],["ucuz","cheap"],["zeki","clever"]]},
+            {"type":"translate","text":"Bu yol öbüründen daha tehlikeli.","lang":"tr","answers":["This road is more dangerous than the other one","This road is more dangerous than that one"],"tokens":["road","than","other","is","more","This","dangerous","the","one","dangerouser","from"]},
+            {"type":"speak","text":"You are as clever as your sister","translation":"Sen de kız kardeşin kadar zekisin."}
+          ]
+        },
+        {
+          "id": "s3u8t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u8c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u9",
+      "title": "Ne kadar? Kaç tane?",
+      "description": "much, many, a lot of, a few, a little",
+      "color": "0xFF00A3C4",
+      "nodes": [
+        {
+          "id": "s3u9l1",
+          "type": "lesson",
+          "title": "much ve many",
+          "description": "sayılabilen ve sayılamayan",
+          "exercises": [
+            {"type":"select","prompt":"para üstü","answer":"change","choices":[{"text":"change","emoji":"🪙"},{"text":"price","emoji":"💲"},{"text":"discount","emoji":"🏷️"},{"text":"receipt","emoji":"🧾"}]},
+            {"type":"fillBlank","text":"How ___ money do you have?","translation":"Ne kadar paran var?","answer":"much","choices":["much","lot","many"]},
+            {"type":"fillBlank","text":"How ___ people were at the party?","translation":"Partide kaç kişi vardı?","answer":"many","choices":["lot of","many","much"]},
+            {"type":"fillBlank","text":"We don't have ___ time. Hurry up!","translation":"Fazla vaktimiz yok. Acele et!","answer":"much","choices":["a few","many","much"]},
+            {"type":"translate","text":"Kaç kardeşin var?","lang":"tr","answers":["How many brothers and sisters do you have","How many siblings do you have"],"tokens":["you","have","much","many","and","How","do","sisters","brothers"]},
+            {"type":"translate","text":"There isn't much milk in the fridge.","lang":"en","answers":["Buzdolabında fazla süt yok","Buzdolabında çok süt yok"],"tokens":["ekmek","yok","var","süt","fazla","Buzdolabında"]},
+            {"type":"listen","text":"How many coins are in your wallet?","answers":["How many coins are in your wallet?"]},
+            {"type":"match","pairs":[["fiyat","price"],["fiş","receipt"],["indirim","discount"],["para üstü","change"],["bozuk para","coin"]]},
+            {"type":"translate","text":"Bu ne kadar?","lang":"tr","answers":["How much is this","How much does this cost"],"tokens":["what","much","How","this","is","many"]},
+            {"type":"speak","text":"How much is this jacket?","translation":"Bu ceket ne kadar?"}
+          ]
+        },
+        {
+          "id": "s3u9l2",
+          "type": "lesson",
+          "title": "a lot of, a few, a little",
+          "description": "çok, birkaç, biraz",
+          "exercises": [
+            {"type":"select","prompt":"biriktirmek","answer":"save","choices":[{"text":"save","emoji":"🐷"},{"text":"pay","emoji":"💳"},{"text":"spend","emoji":"💸"},{"text":"cost","emoji":"🏷️"}]},
+            {"type":"fillBlank","text":"I have ___ friends in London.","translation":"Londra'da birkaç arkadaşım var.","answer":"a few","choices":["much","a few","a little"]},
+            {"type":"fillBlank","text":"Can I have ___ sugar in my tea?","translation":"Çayıma biraz şeker alabilir miyim?","answer":"a little","choices":["a little","a few","many"]},
+            {"type":"fillBlank","text":"Elif spent ___ money on books.","translation":"Elif kitaplara çok para harcadı.","answer":"a lot of","choices":["many","a lot of","a few"]},
+            {"type":"translate","text":"Biraz para biriktirdim.","lang":"tr","answers":["I saved a little money","I saved some money"],"tokens":["money","saved","a","I","many","few","little"]},
+            {"type":"translate","text":"We have a lot of homework this week.","lang":"en","answers":["Bu hafta çok ödevimiz var"],"tokens":["geçen","Bu","ödevimiz","hafta","az","var","çok"]},
+            {"type":"listen","text":"I only have a few coins","answers":["I only have a few coins"]},
+            {"type":"match","pairs":[["biriktirmek","save"],["harcamak","spend"],["ödemek","pay"],["tutmak (fiyat)","cost"],["harçlık","pocket money"]]},
+            {"type":"translate","text":"Kerem bütün harçlığını oyunlara harcadı.","lang":"tr","answers":["Kerem spent all his pocket money on games"],"tokens":["spent","games","Kerem","his","spend","for","on","money","all","pocket"]},
+            {"type":"speak","text":"I need a little help","translation":"Biraz yardıma ihtiyacım var."}
+          ]
+        },
+        {
+          "id": "s3u9s",
+          "type": "story",
+          "title": "İndirim günü",
+          "description": "Deniz biriktirdiği harçlıkla kulaklık alıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Look! There's a big sale today!","translation":"Bak! Bugün büyük indirim var!"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Great! How much money do you have?","translation":"Harika! Ne kadar paran var?"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Not much. I saved 400 lira from my pocket money.","translation":"Çok değil. Harçlığımdan 400 lira biriktirdim."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"I have a lot of coins, but only a few notes.","translation":"Bende bir sürü bozuk para var ama sadece birkaç kâğıt para."},
+            {"kind":"question","prompt":"Deniz ne kadar biriktirdi?","choices":["400 lira","50 lira","300 lira"],"answer":"400 lira"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Excuse me, how much are these headphones?","translation":"Affedersiniz, bu kulaklıklar ne kadar?"},
+            {"kind":"line","speaker":"Kasiyer","avatar":"🧑‍💼","text":"They were 500 lira. Now they're 350.","translation":"500 liraydı. Şimdi 350."},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Perfect! Here's 400 lira.","translation":"Mükemmel! Buyurun, 400 lira."},
+            {"kind":"question","prompt":"Kulaklıkların indirimli fiyatı ne?","choices":["350 lira","400 lira","500 lira"],"answer":"350 lira"},
+            {"kind":"line","speaker":"Kasiyer","avatar":"🧑‍💼","text":"Thank you. Here is your change and your receipt.","translation":"Teşekkürler. Buyurun para üstünüz ve fişiniz."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"You have 50 lira left. Let's buy some ice cream!","translation":"50 liran kaldı. Hadi dondurma alalım!"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"OK, but just a little. I want to save some money, too.","translation":"Tamam ama birazcık. Biraz para da biriktirmek istiyorum."},
+            {"kind":"question","prompt":"Deniz’e ne kadar para üstü verildi?","choices":["50 lira","Hiç","100 lira"],"answer":"50 lira"}
+          ]
+        },
+        {
+          "id": "s3u9l3",
+          "type": "lesson",
+          "title": "How much...? How many...?",
+          "description": "fiyat ve miktar sormak",
+          "exercises": [
+            {"type":"select","prompt":"fiyat","answer":"price","choices":[{"text":"price","emoji":"💲"},{"text":"prize","emoji":"🏆"},{"text":"pay","emoji":"💳"},{"text":"sale","emoji":"🏷️"}]},
+            {"type":"fillBlank","text":"How ___ does this bag cost?","translation":"Bu çanta ne kadar tutuyor?","answer":"much","choices":["many","much","long"]},
+            {"type":"fillBlank","text":"How many ___ do you need?","translation":"Kaç yumurtaya ihtiyacın var?","answer":"eggs","choices":["eggs","egg","egges"]},
+            {"type":"fillBlank","text":"How ___ hours do you sleep?","translation":"Kaç saat uyursun?","answer":"many","choices":["much","many","long"]},
+            {"type":"translate","text":"Ne kadar paran kaldı?","lang":"tr","answers":["How much money do you have left","How much money have you got left"],"tokens":["How","you","many","much","do","left","have","are","money"]},
+            {"type":"translate","text":"How many people work in this shop?","lang":"en","answers":["Bu dükkânda kaç kişi çalışıyor?"],"tokens":["ne","kaç","kadar","Bu","dükkânda","kişi","çalışıyor"]},
+            {"type":"listen","text":"How much did you pay for it?","answers":["How much did you pay for it?"]},
+            {"type":"match","pairs":[["indirim","sale"],["ödül","prize"],["bütçe","budget"],["nakit","cash"],["kâğıt para","note"]]},
+            {"type":"translate","text":"Bilet ne kadar tuttu?","lang":"tr","answers":["How much did the ticket cost","How much was the ticket"],"tokens":["many","ticket","did","the","How","much","costed","cost"]},
+            {"type":"speak","text":"How much time do we have?","translation":"Ne kadar vaktimiz var?"}
+          ]
+        },
+        {
+          "id": "s3u9l4",
+          "type": "lesson",
+          "title": "Para konuşmak",
+          "description": "pay by card, spend on, save for",
+          "exercises": [
+            {"type":"select","prompt":"nakit","answer":"cash","choices":[{"text":"card","emoji":"💳"},{"text":"coin","emoji":"🪙"},{"text":"receipt","emoji":"🧾"},{"text":"cash","emoji":"💵"}]},
+            {"type":"fillBlank","text":"Can I pay ___ card?","translation":"Kartla ödeyebilir miyim?","answer":"by","choices":["in","by","with the"]},
+            {"type":"fillBlank","text":"Do you want to pay ___ cash?","translation":"Nakit mi ödemek istiyorsunuz?","answer":"in","choices":["on","in","by the"]},
+            {"type":"fillBlank","text":"I'm saving money ___ a new bike.","translation":"Yeni bir bisiklet için para biriktiriyorum.","answer":"for","choices":["to","for","on"]},
+            {"type":"translate","text":"Bu ayki bütçemiz çok az.","lang":"tr","answers":["Our budget is very small this month","Our budget this month is very small"],"tokens":["small","budget","month","many","little","is","Our","this","very"]},
+            {"type":"translate","text":"Mia spent a lot of money on clothes.","lang":"en","answers":["Mia kıyafetlere çok para harcadı"],"tokens":["biraz","para","çok","harcadı","yiyeceğe","kıyafetlere","Mia"]},
+            {"type":"listen","text":"Can I have the receipt, please?","answers":["Can I have the receipt, please?"]},
+            {"type":"match","pairs":[["nakit","cash"],["kart","card"],["harçlık","pocket money"],["harcamak","spend"],["bütçe","budget"]]},
+            {"type":"translate","text":"Fazla paramız yok.","lang":"tr","answers":["We don't have much money","We haven't got much money","We do not have much money"],"tokens":["We","have","don't","no","many","money","much"]},
+            {"type":"speak","text":"Can I pay by card?","translation":"Kartla ödeyebilir miyim?"}
+          ]
+        },
+        {
+          "id": "s3u9t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u9c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u10",
+      "title": "Planlarım",
+      "description": "be going to: planlar ve kanıta dayalı tahmin",
+      "color": "0xFFF2A900",
+      "nodes": [
+        {
+          "id": "s3u10l1",
+          "type": "lesson",
+          "title": "be going to: planlar",
+          "description": "I'm going to…",
+          "exercises": [
+            {"type":"select","prompt":"kutlamak","answer":"celebrate","choices":[{"text":"rent","emoji":"🔑"},{"text":"celebrate","emoji":"🎉"},{"text":"graduate","emoji":"🎓"},{"text":"apply","emoji":"📝"}]},
+            {"type":"fillBlank","text":"I ___ going to visit my aunt this weekend.","translation":"Bu hafta sonu teyzemi ziyaret edeceğim.","answer":"am","choices":["is","will","am"]},
+            {"type":"fillBlank","text":"We're going ___ a new flat.","translation":"Yeni bir daire kiralayacağız.","answer":"to rent","choices":["renting","to rent","rent"]},
+            {"type":"fillBlank","text":"Elif ___ going to start a guitar course.","translation":"Elif gitar kursuna başlayacak.","answer":"is","choices":["are","is","am"]},
+            {"type":"translate","text":"Gelecek yaz araba kullanmayı öğreneceğim.","lang":"tr","answers":["I'm going to learn to drive next summer","Next summer I'm going to learn to drive","I am going to learn to drive next summer","Next summer I am going to learn to drive"],"tokens":["learn","going","drive","to","to","drives","will","summer","I'm","next"]},
+            {"type":"translate","text":"They're going to get married in June.","lang":"en","answers":["Haziranda evlenecekler"],"tokens":["evlenecekler","mayısta","ayrılacaklar","Haziranda"]},
+            {"type":"listen","text":"We're going to move house next month","answers":["We're going to move house next month","We are going to move house next month"]},
+            {"type":"match","pairs":[["kutlamak","celebrate"],["mezun olmak","graduate"],["başvurmak","apply"],["kiralamak","rent"],["evlenmek","get married"]]},
+            {"type":"translate","text":"Bu akşam ne yapacaksın?","lang":"tr","answers":["What are you going to do tonight","What are you doing tonight"],"tokens":["tonight","is","What","to","going","are","do","you","go"]},
+            {"type":"speak","text":"I'm going to study medicine","translation":"Tıp okuyacağım."}
+          ]
+        },
+        {
+          "id": "s3u10l2",
+          "type": "lesson",
+          "title": "Olumsuz ve soru",
+          "description": "I'm not going to…, Are you going to…?",
+          "exercises": [
+            {"type":"select","prompt":"iş aramak","answer":"look for a job","choices":[{"text":"look for a job","emoji":"🔎"},{"text":"get a job","emoji":"💼"},{"text":"apply","emoji":"📝"},{"text":"quit","emoji":"🚪"}]},
+            {"type":"fillBlank","text":"I'm not going ___ to the party.","translation":"Partiye gitmeyeceğim.","answer":"to go","choices":["go","going","to go"]},
+            {"type":"fillBlank","text":"___ you going to apply for the job?","translation":"İşe başvuracak mısın?","answer":"Are","choices":["Are","Do","Will"]},
+            {"type":"fillBlank","text":"Is Kerem going to come? No, he ___.","translation":"Kerem gelecek mi? Hayır, gelmeyecek.","answer":"isn't","choices":["isn't","doesn't","not"]},
+            {"type":"translate","text":"Ne zaman mezun olacaksın?","lang":"tr","answers":["When are you going to graduate"],"tokens":["graduated","will","When","graduate","are","going","you","to"]},
+            {"type":"translate","text":"We aren't going to buy a new car this year.","lang":"en","answers":["Bu yıl yeni bir araba almayacağız"],"tokens":["araba","bir","yeni","yıl","Bu","eski","almayacağız","alacağız"]},
+            {"type":"listen","text":"Are they going to celebrate?","answers":["Are they going to celebrate?"]},
+            {"type":"match","pairs":[["aramak (bir şeyi)","look for"],["iş bulmak","get a job"],["kursa başlamak","start a course"],["bilet ayırtmak","book a ticket"],["yakında","soon"]]},
+            {"type":"translate","text":"Ben de gelmeyeceğim.","lang":"tr","answers":["I'm not going to come either","I am not going to come either"],"tokens":["I'm","to","too","also","either","not","come","going"]},
+            {"type":"speak","text":"Are you going to come with us?","translation":"Bizimle gelecek misin?"}
+          ]
+        },
+        {
+          "id": "s3u10s",
+          "type": "story",
+          "title": "Yaz planları",
+          "description": "Sam ve Mia biletlerini aldı; herkes yaz planlarını anlatıyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Great news! We booked our tickets!","translation":"Harika haber! Biletlerimizi aldık!"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Yay! When are you going to arrive?","translation":"Yaşasın! Ne zaman geliyorsunuz?"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"We're going to arrive on the fifth of July.","translation":"Beş temmuzda geleceğiz."},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"And we're going to stay for two weeks!","translation":"Ve iki hafta kalacağız!"},
+            {"kind":"question","prompt":"Sam ve Mia ne zaman gelecek?","choices":["Beş temmuzda","Beş haziranda","On temmuzda"],"answer":"Beş temmuzda"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Perfect. What are you going to do first?","translation":"Mükemmel. İlk ne yapacaksınız?"},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"I'm going to swim in the sea every day!","translation":"Her gün denizde yüzeceğim!"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"I'm going to eat a lot of kebab. And I'm going to practise my Turkish.","translation":"Bol bol kebap yiyeceğim. Bir de Türkçe pratiği yapacağım."},
+            {"kind":"question","prompt":"Sam neyi pratik yapacak?","choices":["Türkçesini","Yüzmeyi","Gitarı"],"answer":"Türkçesini"},
+            {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"Elif, look at those clouds. It's going to rain.","translation":"Elif, şu bulutlara bak. Yağmur yağacak."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Don't worry, Mia. It isn't going to rain in July!","translation":"Merak etme Mia. Temmuzda yağmur yağmayacak!"},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"Good! I'm going to pack my swimsuit tonight.","translation":"Güzel! Bu akşam mayomu bavula koyacağım."},
+            {"kind":"question","prompt":"Deniz neden yağmur yağacağını düşünüyor?","choices":["Bulutları gördüğü için","Kış olduğu için","Hava durumunu izlediği için"],"answer":"Bulutları gördüğü için"}
+          ]
+        },
+        {
+          "id": "s3u10l3",
+          "type": "lesson",
+          "title": "Kanıta dayalı tahmin",
+          "description": "It's going to rain",
+          "exercises": [
+            {"type":"select","prompt":"bulut","answer":"cloud","choices":[{"text":"sun","emoji":"☀️"},{"text":"rain","emoji":"🌧️"},{"text":"wind","emoji":"💨"},{"text":"cloud","emoji":"☁️"}]},
+            {"type":"fillBlank","text":"Look at those clouds! It's going ___ rain.","translation":"Şu bulutlara bak! Yağmur yağacak.","answer":"to","choices":["will","for","to"]},
+            {"type":"fillBlank","text":"Be careful! You're going ___ fall!","translation":"Dikkat et! Düşeceksin!","answer":"to","choices":["for","to","will"]},
+            {"type":"fillBlank","text":"The bus is late. We ___ going to miss the film.","translation":"Otobüs gecikti. Filmi kaçıracağız.","answer":"are","choices":["will","are","is"]},
+            {"type":"translate","text":"Saat dokuz oldu. Geç kalacağım!","lang":"tr","answers":["It's nine o'clock. I'm going to be late","It's nine. I'm going to be late","It's nine o'clock. I am going to be late","It is nine o'clock. I'm going to be late","It's nine. I am going to be late","It is nine. I'm going to be late"],"tokens":["late","I'm","going","nine","to","be","It's","will","o'clock"]},
+            {"type":"translate","text":"She's very tired. She's going to fall asleep.","lang":"en","answers":["Çok yorgun. Uyuyakalacak"],"tokens":["yorgun","Çok","uyanacak","dinç","Uyuyakalacak"]},
+            {"type":"listen","text":"The sky is dark. It's going to snow","answers":["The sky is dark. It's going to snow","The sky is dark. It is going to snow"]},
+            {"type":"match","pairs":[["bulut","cloud"],["rüzgâr","wind"],["karanlık","dark"],["düşmek","fall"],["uyuyakalmak","fall asleep"]]},
+            {"type":"translate","text":"Bu takım kazanacak!","lang":"tr","answers":["This team is going to win","This team's going to win"],"tokens":["winning","win","team","going","This","wins","to","is"]},
+            {"type":"speak","text":"Look! It's going to rain","translation":"Bak! Yağmur yağacak."}
+          ]
+        },
+        {
+          "id": "s3u10l4",
+          "type": "lesson",
+          "title": "next, this, soon",
+          "description": "zaman ifadeleri",
+          "exercises": [
+            {"type":"select","prompt":"yakında","answer":"soon","choices":[{"text":"never","emoji":"🚫"},{"text":"soon","emoji":"🔜"},{"text":"later","emoji":"⌛"},{"text":"now","emoji":"⏱️"}]},
+            {"type":"fillBlank","text":"I'm going to see her ___ week.","translation":"Onu gelecek hafta göreceğim.","answer":"next","choices":["last","next","the next"]},
+            {"type":"fillBlank","text":"We're going to travel to Spain ___ summer.","translation":"Bu yaz İspanya'ya gideceğiz.","answer":"this","choices":["this","at this","in this"]},
+            {"type":"fillBlank","text":"Mia is going to start university ___.","translation":"Mia yakında üniversiteye başlayacak.","answer":"soon","choices":["ago","last","soon"]},
+            {"type":"translate","text":"Gelecek ay İzmir'e taşınacağız.","lang":"tr","answers":["We're going to move to İzmir next month","We are going to move to Izmir next month"],"tokens":["to","going","move","to","month","next","İzmir","the","in","We're"]},
+            {"type":"translate","text":"What are you going to do after school?","lang":"en","answers":["Okuldan sonra ne yapacaksın?"],"tokens":["okula","yapacaksın","ne","sonra","Okuldan","önce"]},
+            {"type":"listen","text":"I'm going to book the tickets tonight","answers":["I'm going to book the tickets tonight","I am going to book the tickets tonight"]},
+            {"type":"match","pairs":[["gelecek hafta","next week"],["bu yaz","this summer"],["yakında","soon"],["bu akşam","tonight"],["daha sonra","later"]]},
+            {"type":"translate","text":"Bu yıl daha fazla kitap okuyacağım.","lang":"tr","answers":["I'm going to read more books this year","I am going to read more books this year"],"tokens":["more","year","to","read","many","books","going","I'm","this"]},
+            {"type":"speak","text":"I'm going to visit London next year","translation":"Gelecek yıl Londra'yı ziyaret edeceğim."}
+          ]
+        },
+        {
+          "id": "s3u10t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u10c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u11",
+      "title": "Tahmin ve teklif",
+      "description": "will: tahmin, söz, teklif ve anlık karar",
+      "color": "0xFF5A67D8",
+      "nodes": [
+        {
+          "id": "s3u11l1",
+          "type": "lesson",
+          "title": "will: tahmin",
+          "description": "gelecekte ne olacak",
+          "exercises": [
+            {"type":"select","prompt":"gelecek","answer":"future","choices":[{"text":"present","emoji":"🎁"},{"text":"future","emoji":"🔮"},{"text":"past","emoji":"📜"},{"text":"world","emoji":"🌍"}]},
+            {"type":"fillBlank","text":"I think it ___ be sunny tomorrow.","translation":"Bence yarın hava güneşli olacak.","answer":"will","choices":["is","will","going"]},
+            {"type":"fillBlank","text":"People will ___ on Mars one day.","translation":"İnsanlar bir gün Mars'ta yaşayacak.","answer":"live","choices":["to live","live","lives"]},
+            {"type":"fillBlank","text":"Robots will ___ do our homework.","translation":"Robotlar muhtemelen ödevlerimizi yapacak.","answer":"probably","choices":["probable","be probably","probably"]},
+            {"type":"translate","text":"Bence o sınavı geçecek.","lang":"tr","answers":["I think she will pass the exam","I think he will pass the exam","I think she'll pass the exam","I think he'll pass the exam"],"tokens":["pass","I","exam","think","going","the","will","she","passes"]},
+            {"type":"translate","text":"Cars will probably fly in the future.","lang":"en","answers":["Gelecekte arabalar muhtemelen uçacak"],"tokens":["yürüyecek","geçmişte","arabalar","Gelecekte","muhtemelen","uçacak"]},
+            {"type":"listen","text":"I don't think it will snow","answers":["I don't think it will snow","I do not think it will snow","I don't think it'll snow"]},
+            {"type":"match","pairs":[["gelecek","future"],["dünya","world"],["gezegen","planet"],["uzay","space"],["teknoloji","technology"]]},
+            {"type":"translate","text":"Yarın yağmur yağmayacak.","lang":"tr","answers":["It won't rain tomorrow","It will not rain tomorrow"],"tokens":["won't","tomorrow","doesn't","It","rain","not"]},
+            {"type":"speak","text":"I think you'll love it","translation":"Bence ona bayılacaksın."}
+          ]
+        },
+        {
+          "id": "s3u11l2",
+          "type": "lesson",
+          "title": "won't, probably, definitely",
+          "description": "emin olmak ve söz vermek",
+          "exercises": [
+            {"type":"select","prompt":"kesinlikle","answer":"definitely","choices":[{"text":"perhaps","emoji":"🤷"},{"text":"probably","emoji":"🤔"},{"text":"definitely","emoji":"✅"},{"text":"never","emoji":"🚫"}]},
+            {"type":"fillBlank","text":"I ___ forget your birthday. I promise!","translation":"Doğum gününü unutmayacağım. Söz veriyorum!","answer":"won't","choices":["won't","don't","am not"]},
+            {"type":"fillBlank","text":"He'll ___ be late again.","translation":"Muhtemelen yine geç kalacak.","answer":"probably","choices":["probably will","probable","probably"]},
+            {"type":"fillBlank","text":"Don't worry. Everything ___ be OK.","translation":"Merak etme. Her şey yoluna girecek.","answer":"will","choices":["will","is","going"]},
+            {"type":"translate","text":"Belki gelecek yıl Londra'yı ziyaret ederim.","lang":"tr","answers":["Perhaps I'll visit London next year","Maybe I'll visit London next year","Perhaps I will visit London next year","Maybe I will visit London next year"],"tokens":["Perhaps","visited","I'll","year","going","next","visit","London"]},
+            {"type":"translate","text":"I hope you'll come to my party.","lang":"en","answers":["Umarım partime gelirsin","Umarım partime gelirsiniz"],"tokens":["gelmezsin","gelirsin","senin","partime","Umarım"]},
+            {"type":"listen","text":"She will definitely win the race","answers":["She will definitely win the race","She'll definitely win the race"]},
+            {"type":"match","pairs":[["kesinlikle","definitely"],["muhtemelen","probably"],["belki","perhaps"],["umarım","I hope"],["söz veriyorum","I promise"]]},
+            {"type":"translate","text":"Söz veriyorum, bir daha geç kalmayacağım.","lang":"tr","answers":["I promise I won't be late again","I promise I will not be late again"],"tokens":["am","late","I","won't","don't","again","I","be","promise"]},
+            {"type":"speak","text":"I promise I'll call you","translation":"Söz veriyorum, seni arayacağım."}
+          ]
+        },
+        {
+          "id": "s3u11s",
+          "type": "story",
+          "title": "Havalimanında",
+          "description": "Sam ve Mia İstanbul’a geliyor; herkes yardım teklif ediyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"There they are! Sam! Mia!","translation":"İşte oradalar! Sam! Mia!"},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Elif! It's so good to see you!","translation":"Elif! Seni görmek çok güzel!"},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"My bag is so heavy.","translation":"Çantam çok ağır."},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"I'll carry it for you!","translation":"Ben senin için taşırım!"},
+            {"kind":"question","prompt":"Kerem ne teklif ediyor?","choices":["Taksi çağırmayı","Su almayı","Çantayı taşımayı"],"answer":"Çantayı taşımayı"},
+            {"kind":"line","speaker":"Baba","avatar":"👨","text":"Welcome to İstanbul! I'll get the car. Wait here.","translation":"İstanbul'a hoş geldiniz! Ben arabayı getireyim. Burada bekleyin."},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Thank you. I'm so thirsty.","translation":"Teşekkürler. Çok susadım."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"There's a café over there. I'll buy you some water.","translation":"Şurada bir kafe var. Sana su alayım."},
+            {"kind":"question","prompt":"Elif ne alıyor?","choices":["Kahve","Su","Dondurma"],"answer":"Su"},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"Do you think it will be hot tomorrow?","translation":"Sence yarın hava sıcak olacak mı?"},
+            {"kind":"line","speaker":"Kerem","avatar":"👦","text":"Definitely! It will be thirty-five degrees.","translation":"Kesinlikle! Otuz beş derece olacak."},
+            {"kind":"line","speaker":"Mia","avatar":"👧","text":"Great! I'll be in the sea all day!","translation":"Harika! Bütün gün denizde olacağım!"},
+            {"kind":"question","prompt":"Kerem’e göre yarın hava kaç derece olacak?","choices":["Otuz","Otuz beş","Yirmi beş"],"answer":"Otuz beş"}
+          ]
+        },
+        {
+          "id": "s3u11l3",
+          "type": "lesson",
+          "title": "Teklif: I'll...",
+          "description": "yardım teklif etmek",
+          "exercises": [
+            {"type":"select","prompt":"taşımak","answer":"carry","choices":[{"text":"carry","emoji":"🧳"},{"text":"throw","emoji":"🤾"},{"text":"drop","emoji":"⬇️"},{"text":"pull","emoji":"🪢"}]},
+            {"type":"fillBlank","text":"The phone is ringing. I'll ___ it.","translation":"Telefon çalıyor. Ben açarım.","answer":"answer","choices":["open","take","answer"]},
+            {"type":"fillBlank","text":"It's cold in here. I'll ___ the window.","translation":"Burası soğuk. Pencereyi kapatayım.","answer":"close","choices":["closing","close","to close"]},
+            {"type":"fillBlank","text":"You look tired. I'll ___ dinner tonight.","translation":"Yorgun görünüyorsun. Bu akşam yemeği ben yaparım.","answer":"cook","choices":["cooks","cooking","cook"]},
+            {"type":"translate","text":"Kapıya ben bakarım.","lang":"tr","answers":["I'll get the door","I'll answer the door","I will get the door","I will answer the door"],"tokens":["look","I'll","at","the","door","get"]},
+            {"type":"translate","text":"Wait, I'll help you with those bags.","lang":"en","answers":["Dur, o çantalarla sana yardım edeyim","Bekle, o çantalarla sana yardım edeyim"],"tokens":["bana","bunlar","çantalarla","sana","o","Dur","edeyim","yardım"]},
+            {"type":"listen","text":"I'll turn on the light","answers":["I'll turn on the light","I will turn on the light"]},
+            {"type":"match","pairs":[["ışığı açmak","turn on the light"],["ışığı kapatmak","turn off the light"],["telefonu açmak","answer the phone"],["kapıya bakmak","get the door"],["teklif etmek","offer"]]},
+            {"type":"translate","text":"Su ister misin? Ben getiririm.","lang":"tr","answers":["Do you want some water? I'll get it","Would you like some water? I'll get it","Do you want some water? I'll bring it","Do you want some water? I will get it","Would you like some water? I will get it","Do you want some water? I will bring it"],"tokens":["it","want","water","get","will","you","some","I'll","Do","bring"]},
+            {"type":"speak","text":"Don't worry, I'll do it","translation":"Merak etme, ben yaparım."}
+          ]
+        },
+        {
+          "id": "s3u11l4",
+          "type": "lesson",
+          "title": "will mi, going to mı?",
+          "description": "plan mı, anlık karar mı",
+          "exercises": [
+            {"type":"select","prompt":"belki","answer":"perhaps","choices":[{"text":"definitely","emoji":"✅"},{"text":"always","emoji":"🔁"},{"text":"perhaps","emoji":"🤷"},{"text":"never","emoji":"🚫"}]},
+            {"type":"fillBlank","text":"My plan is ready. I ___ going to study medicine.","translation":"Planım hazır. Tıp okuyacağım.","answer":"am","choices":["do","am","will"]},
+            {"type":"fillBlank","text":"Oh, there's no milk! ___ go to the shop.","translation":"Aa, süt yok! Markete gideyim.","answer":"I'll","choices":["I'm going","I'll","I going"]},
+            {"type":"fillBlank","text":"Look at the sky! It's ___ to rain.","translation":"Gökyüzüne bak! Yağmur yağacak.","answer":"going","choices":["go","will","going"]},
+            {"type":"translate","text":"Bence bu filmi seveceksin.","lang":"tr","answers":["I think you'll like this film","I think you'll like this movie","I think you will like this film","I think you will like this movie"],"tokens":["you'll","think","this","film","liked","I","going","like"]},
+            {"type":"translate","text":"We're going to visit Cappadocia next week.","lang":"en","answers":["Gelecek hafta Kapadokya'yı ziyaret edeceğiz"],"tokens":["ay","hafta","edeceğiz","Kapadokya'yı","geçen","ziyaret","Gelecek"]},
+            {"type":"listen","text":"I'll call you when I arrive","answers":["I'll call you when I arrive","I will call you when I arrive"]},
+            {"type":"match","pairs":[["yarın","tomorrow"],["gelecek yıl","next year"],["bir gün","one day"],["robot","robot"],["uçan araba","flying car"]]},
+            {"type":"translate","text":"Merak etme, sırrını kimseye söylemeyeceğim.","lang":"tr","answers":["Don't worry, I won't tell anyone your secret","Don't worry, I won't tell your secret to anyone","Do not worry, I won't tell anyone your secret","Don't worry, I will not tell anyone your secret","Do not worry, I won't tell your secret to anyone","Don't worry, I will not tell your secret to anyone"],"tokens":["worry","tell","not","nobody","won't","your","secret","anyone","I","Don't"]},
+            {"type":"speak","text":"I think it will be a great summer","translation":"Bence harika bir yaz olacak."}
+          ]
+        },
+        {
+          "id": "s3u11t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u11c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u12",
+      "title": "Kendimi anlatıyorum",
+      "description": "Kişilik, güçlü yanlar, hedefler ve bölüm tekrarı",
+      "color": "0xFFFF7A59",
+      "nodes": [
+        {
+          "id": "s3u12l1",
+          "type": "lesson",
+          "title": "Kişilik",
+          "description": "hard-working, patient, honest",
+          "exercises": [
+            {"type":"select","prompt":"çalışkan","answer":"hard-working","choices":[{"text":"lazy","emoji":"😴"},{"text":"patient","emoji":"⏳"},{"text":"hard-working","emoji":"💪"},{"text":"honest","emoji":"🤝"}]},
+            {"type":"select","prompt":"sabırlı","answer":"patient","choices":[{"text":"patient","emoji":"⏳"},{"text":"calm","emoji":"😌"},{"text":"generous","emoji":"🎁"},{"text":"creative","emoji":"🎨"}]},
+            {"type":"fillBlank","text":"Kerem never tidies his room. He's very ___.","translation":"Kerem odasını hiç toplamaz. Çok tembeldir.","answer":"lazy","choices":["lazy","hard-working","organised"]},
+            {"type":"fillBlank","text":"My sister is very ___. She talks to everyone.","translation":"Kız kardeşim çok dışa dönüktür. Herkesle konuşur.","answer":"outgoing","choices":["sympathetic","shy","outgoing"]},
+            {"type":"fillBlank","text":"Ayla is a ___ teacher. She never shouts.","translation":"Ayla sabırlı bir öğretmendir. Asla bağırmaz.","answer":"patient","choices":["noisy","patient","lazy"]},
+            {"type":"translate","text":"En iyi arkadaşım dürüst ve cömerttir.","lang":"tr","answers":["My best friend is honest and generous"],"tokens":["generous","and","honesty","best","honest","generously","is","My","friend"]},
+            {"type":"translate","text":"I'm calm, but sometimes I'm a bit shy.","lang":"en","answers":["Sakinimdir ama bazen biraz utangacımdır","Sakin biriyim ama bazen biraz utangacım"],"tokens":["Sakinimdir","biraz","sinirli","bazen","utangacımdır","ama","hep"]},
+            {"type":"listen","text":"She is creative and very organised","answers":["She is creative and very organised","She's creative and very organised"]},
+            {"type":"match","pairs":[["çalışkan","hard-working"],["tembel","lazy"],["dürüst","honest"],["cömert","generous"],["yaratıcı","creative"]]},
+            {"type":"speak","text":"I'm hard-working and patient","translation":"Çalışkan ve sabırlıyım."}
+          ]
+        },
+        {
+          "id": "s3u12l2",
+          "type": "lesson",
+          "title": "Güçlü yanlar ve beceriler",
+          "description": "good at, strength, skill",
+          "exercises": [
+            {"type":"select","prompt":"beceri","answer":"skill","choices":[{"text":"team","emoji":"👥"},{"text":"dream","emoji":"💭"},{"text":"goal","emoji":"🎯"},{"text":"skill","emoji":"🛠️"}]},
+            {"type":"fillBlank","text":"My biggest ___ is teamwork.","translation":"En büyük güçlü yanım takım çalışması.","answer":"strength","choices":["weakness","strength","strong"]},
+            {"type":"fillBlank","text":"I'm good ___ maths, but I'm bad at drawing.","translation":"Matematikte iyiyim ama resimde kötüyüm.","answer":"at","choices":["at","in","on"]},
+            {"type":"fillBlank","text":"Deniz can play three instruments. That's a great ___.","translation":"Deniz üç enstrüman çalabilir. Bu harika bir beceri.","answer":"skill","choices":["skills","skilled","skill"]},
+            {"type":"translate","text":"İnsanlarla çalışmayı severim.","lang":"tr","answers":["I like working with people","I enjoy working with people","I like to work with people"],"tokens":["at","to","with","I","working","people","like"]},
+            {"type":"translate","text":"I was a volunteer at an animal shelter last summer.","lang":"en","answers":["Geçen yaz bir hayvan barınağında gönüllüydüm"],"tokens":["yaz","bir","bu","hayvan","barınağında","Geçen","gönüllüydüm","kış"]},
+            {"type":"listen","text":"I'm not very good at singing","answers":["I'm not very good at singing","I am not very good at singing"]},
+            {"type":"match","pairs":[["güçlü yan","strength"],["zayıf yan","weakness"],["beceri","skill"],["takım","team"],["gönüllü","volunteer"]]},
+            {"type":"translate","text":"İngilizcede iyiyim.","lang":"tr","answers":["I'm good at English","I am good at English"],"tokens":["well","at","good","I'm","in","English"]},
+            {"type":"speak","text":"I'm good at solving problems","translation":"Problem çözmede iyiyim."}
+          ]
+        },
+        {
+          "id": "s3u12s",
+          "type": "story",
+          "title": "Gönüllü rehber",
+          "description": "Elif yaz için müzede gönüllü rehberlik görüşmesine giriyor",
+          "rewardXp": 15,
+          "steps": [
+            {"kind":"line","speaker":"Ozan","avatar":"👨‍💼","text":"Hello, Elif. Please introduce yourself.","translation":"Merhaba Elif. Lütfen kendini tanıt."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Hi! I'm Elif. I was born in İstanbul and I'm sixteen.","translation":"Merhaba! Ben Elif. İstanbul'da doğdum ve on altı yaşındayım."},
+            {"kind":"line","speaker":"Ozan","avatar":"👨‍💼","text":"Why do you want to be a volunteer guide?","translation":"Neden gönüllü rehber olmak istiyorsun?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"I love history, and I'm good at English.","translation":"Tarihi çok severim ve İngilizcem iyidir."},
+            {"kind":"question","prompt":"Elif neden rehber olmak istiyor?","choices":["Ailesi istediği için","Tarihi sevdiği ve İngilizcesi iyi olduğu için","Para kazanmak için"],"answer":"Tarihi sevdiği ve İngilizcesi iyi olduğu için"},
+            {"kind":"line","speaker":"Ozan","avatar":"👨‍💼","text":"Tell me about your strengths.","translation":"Bana güçlü yanlarından bahset."},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"I'm patient and hard-working. I'm also very organised.","translation":"Sabırlı ve çalışkanım. Ayrıca çok düzenliyim."},
+            {"kind":"line","speaker":"Ozan","avatar":"👨‍💼","text":"And your weaknesses?","translation":"Peki zayıf yanların?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Sometimes I'm a bit shy, but I'm getting better.","translation":"Bazen biraz utangacım ama gittikçe daha iyi oluyorum."},
+            {"kind":"question","prompt":"Elif'in zayıf yanı ne?","choices":["Tembel","Sabırsız","Bazen utangaç"],"answer":"Bazen utangaç"},
+            {"kind":"line","speaker":"Ozan","avatar":"👨‍💼","text":"Did you do any volunteer work before?","translation":"Daha önce gönüllü çalıştın mı?"},
+            {"kind":"line","speaker":"Elif","avatar":"👩","text":"Yes. Last summer I helped at an animal shelter.","translation":"Evet. Geçen yaz bir hayvan barınağında yardım ettim."},
+            {"kind":"line","speaker":"Ozan","avatar":"👨‍💼","text":"Great. I think you'll be a wonderful guide!","translation":"Harika. Bence harika bir rehber olacaksın!"},
+            {"kind":"question","prompt":"Elif geçen yaz nerede yardım etti?","choices":["Hayvan barınağında","Müzede","Hastanede"],"answer":"Hayvan barınağında"}
+          ]
+        },
+        {
+          "id": "s3u12l3",
+          "type": "lesson",
+          "title": "Hedefler ve hayaller",
+          "description": "goal, dream, proud of",
+          "exercises": [
+            {"type":"select","prompt":"hedef","answer":"goal","choices":[{"text":"skill","emoji":"🛠️"},{"text":"goal","emoji":"🎯"},{"text":"prize","emoji":"🏆"},{"text":"dream","emoji":"💭"}]},
+            {"type":"fillBlank","text":"My ___ is to become a doctor.","translation":"Hayalim doktor olmak.","answer":"dream","choices":["dream","dreaming","dreams"]},
+            {"type":"fillBlank","text":"Next year I'm going to ___ part in a competition.","translation":"Gelecek yıl bir yarışmaya katılacağım.","answer":"take","choices":["attend to","take","join to"]},
+            {"type":"fillBlank","text":"I'm proud ___ my sister.","translation":"Kız kardeşimle gurur duyuyorum.","answer":"of","choices":["of","with","for"]},
+            {"type":"translate","text":"Bir gün kendi şirketimi kuracağım.","lang":"tr","answers":["One day I'll start my own company","One day I'll set up my own company","One day I will start my own company","One day I will set up my own company"],"tokens":["build","own","I'll","my","going","One","company","start","day"]},
+            {"type":"translate","text":"I hope I'll speak English fluently one day.","lang":"en","answers":["Umarım bir gün akıcı İngilizce konuşurum","Umarım bir gün İngilizceyi akıcı konuşurum"],"tokens":["bir","İngilizce","akıcı","Umarım","Türkçe","gün","hiç","konuşurum"]},
+            {"type":"listen","text":"My goal is to travel around the world","answers":["My goal is to travel around the world"]},
+            {"type":"match","pairs":[["hedef","goal"],["hayal","dream"],["gurur duymak","be proud"],["yarışma","competition"],["akıcı bir şekilde","fluently"]]},
+            {"type":"translate","text":"Gelecek yıl üniversiteye başlayacağım.","lang":"tr","answers":["I'm going to start university next year","Next year I'm going to start university","I am going to start university next year","Next year I am going to start university"],"tokens":["the","to","I'm","next","year","university","going","will","start"]},
+            {"type":"speak","text":"I'm very proud of you","translation":"Seninle çok gurur duyuyorum."}
+          ]
+        },
+        {
+          "id": "s3u12l4",
+          "type": "lesson",
+          "title": "Bölüm tekrarı",
+          "description": "bölümün tüm konuları",
+          "exercises": [
+            {"type":"select","prompt":"tanıtmak","answer":"introduce","choices":[{"text":"introduce","emoji":"🙋"},{"text":"explain","emoji":"🧑‍🏫"},{"text":"invite","emoji":"💌"},{"text":"describe","emoji":"🗣️"}]},
+            {"type":"fillBlank","text":"I ___ born in 2009, and I grew up in Bursa.","translation":"2009'da doğdum ve Bursa'da büyüdüm.","answer":"was","choices":["am","was","were"]},
+            {"type":"fillBlank","text":"Last year I ___ to Spain with my family.","translation":"Geçen yıl ailemle İspanya'ya gittim.","answer":"went","choices":["go","goed","went"]},
+            {"type":"fillBlank","text":"My brother is ___ than me, but I'm taller.","translation":"Erkek kardeşim benden büyük ama ben daha uzunum.","answer":"older","choices":["oldest","older","more old"]},
+            {"type":"fillBlank","text":"I ___ go to the cinema. Maybe twice a year.","translation":"Sinemaya nadiren giderim. Belki yılda iki kez.","answer":"rarely","choices":["always","rarely","usually"]},
+            {"type":"translate","text":"Bu yaz rehber olarak çalışacağım.","lang":"tr","answers":["I'm going to work as a guide this summer","This summer I'm going to work as a guide","I am going to work as a guide this summer","This summer I am going to work as a guide"],"tokens":["summer","guide","to","a","going","I'm","as","like","this","work"]},
+            {"type":"translate","text":"When I was a child, I wanted to be a pilot.","lang":"en","answers":["Çocukken pilot olmak istiyordum","Çocukken pilot olmak isterdim"],"tokens":["doktor","Çocukken","şimdi","istiyordum","olmak","pilot"]},
+            {"type":"listen","text":"I'll tell you more about myself","answers":["I'll tell you more about myself","I will tell you more about myself"]},
+            {"type":"match","pairs":[["tanıtmak","introduce"],["tarif etmek","describe"],["deneyim","experience"],["kişilik","personality"],["düzenli","organised"]]},
+            {"type":"speak","text":"Let me introduce myself","translation":"Kendimi tanıtayım."}
+          ]
+        },
+        {
+          "id": "s3u12t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u12c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}
