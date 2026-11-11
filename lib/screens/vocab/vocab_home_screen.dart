@@ -6,7 +6,7 @@ import '../../data/vocab_practice.dart';
 import '../../models/vocab.dart';
 import '../../theme.dart';
 import '../../ui/motion.dart';
-import 'dev_scenario_screen.dart';
+import '../../nav/tab_navigator.dart';
 import 'discover_screen.dart';
 import 'review_screen.dart';
 import 'word_list_screen.dart';
@@ -49,10 +49,17 @@ const statusLabels = {
 void pushVocab(BuildContext context, Widget screen, {bool dialog = false}) =>
     Navigator.of(context).push(MaterialPageRoute<void>(fullscreenDialog: dialog, builder: (_) => screen));
 
-/// Yazılımcı İngilizcesi track home: knowledge map, discover, review,
-/// scenarios and topics.
-class VocabHomeScreen extends ConsumerWidget {
-  const VocabHomeScreen({super.key});
+/// Words whose review is due, for the "Tekrar" tab badge.
+final vocabDueProvider = Provider<int>((ref) {
+  final v = ref.watch(vocabProvider).value;
+  if (v == null) return 0;
+  return dueVocabCount(v.entries, ref.watch(progressProvider), ref.watch(clockProvider)());
+});
+
+/// Loads the word bundle, then builds a tab of the Yazılımcı İngilizcesi track.
+class _VocabTab extends ConsumerWidget {
+  const _VocabTab({required this.builder});
+  final Widget Function(BuildContext context, VocabBundle bundle) builder;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => ref
@@ -60,91 +67,144 @@ class VocabHomeScreen extends ConsumerWidget {
       .when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Kelimeler yüklenemedi: $e')),
-        data: (v) => _VocabHome(bundle: v),
+        data: (v) => ScrollToTopOnReselect(child: builder(context, v)),
       );
 }
 
-class _VocabHome extends ConsumerWidget {
-  const _VocabHome({required this.bundle});
-  final VocabBundle bundle;
+/// "Keşfet" tab (home of the track): sort new words, then study by topic.
+class VocabDiscoverTab extends ConsumerWidget {
+  const VocabDiscoverTab({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final p = ref.watch(progressProvider);
-    final now = ref.watch(clockProvider)();
-    final entries = bundle.entries;
-    final bands = rankBands(entries, p);
-    final due = dueVocabCount(entries, p, now);
-    final fresh = triageQueue(entries, p).length;
-
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
-      children: [
-        Container(
-          padding: const EdgeInsets.all(18),
-          decoration: context.lingora.hero(_vocabTeal, from: const Color(0xFF134E4A)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Yazılımcı İngilizcesi',
-                style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Commit, PR, stand-up ve mülakatta gereken ${entries.length} kelime, önem sırasına göre.',
-                style: TextStyle(color: Colors.white.withValues(alpha: 0.9)),
-              ),
-              const SizedBox(height: 14),
-              KnowledgeMap(bands: bands),
-            ],
-          ),
-        ),
-        const SizedBox(height: 16),
-        _Action(
-          icon: Icons.replay_rounded,
-          color: vocabColor,
-          title: 'Tekrar et',
-          subtitle: due > 0 ? '$due kelimenin tekrar zamanı geldi' : 'Şu an tekrar bekleyen kelime yok',
-          badge: due > 0 ? '$due' : null,
-          onTap: due == 0
-              ? null
-              : () => pushVocab(
-                  context,
-                  VocabReviewScreen(queue: reviewQueue(entries, p, now), all: entries),
-                  dialog: true,
+  Widget build(BuildContext context, WidgetRef ref) => _VocabTab(
+    builder: (context, bundle) {
+      final p = ref.watch(progressProvider);
+      final entries = bundle.entries;
+      final fresh = triageQueue(entries, p).length;
+      return ListView(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+        children: [
+          Container(
+            padding: const EdgeInsets.all(18),
+            decoration: context.lingora.hero(_vocabTeal, from: const Color(0xFF134E4A)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Yazılımcı İngilizcesi',
+                  style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
                 ),
-        ),
-        _Action(
-          icon: Icons.style_rounded,
-          color: Brand.primary,
-          title: 'Kelime keşfet',
-          subtitle: fresh > 0
-              ? 'Biliyorum / Öğreneceğim / Sonra: $fresh kelime sırada'
-              : 'Tüm kelimeleri ayırdın ${kidEmoji('🎉')}'.trim(),
-          onTap: fresh == 0 ? null : () => pushVocab(context, DiscoverScreen(all: entries), dialog: true),
-        ),
-        _Action(
-          icon: Icons.forum_rounded,
-          color: Brand.streak,
-          title: 'İş senaryoları',
-          subtitle: 'Stand-up, kod incelemesi, commit, PR, mülakat: yaz ve karşılaştır',
-          onTap: () => pushVocab(context, const DevScenarioListScreen()),
-        ),
-        _Action(
-          icon: Icons.search_rounded,
-          color: Brand.success,
-          title: 'Tüm kelimeler',
-          subtitle: 'Ara, anlamına ve örneklerine bak',
-          onTap: () => pushVocab(context, VocabWordListScreen(title: 'Tüm kelimeler', entries: entries)),
-        ),
-        const SizedBox(height: 8),
-        const SectionLabel('KONULAR'),
-        const SizedBox(height: 8),
-        for (final t in bundle.topics) _TopicTile(topic: t, entries: bundle.inTopic(t.name), all: entries),
-      ],
-    );
-  }
+                const SizedBox(height: 4),
+                Text(
+                  'Commit, PR, stand-up ve mülakatta gereken ${entries.length} kelime, önem sırasına göre.',
+                  style: TextStyle(color: Colors.white.withValues(alpha: 0.9)),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          _Action(
+            icon: Icons.style_rounded,
+            color: Brand.primary,
+            title: 'Kelime keşfet',
+            subtitle: fresh > 0
+                ? 'Biliyorum / Öğreneceğim / Sonra: $fresh kelime sırada'
+                : 'Tüm kelimeleri ayırdın ${kidEmoji('🎉')}'.trim(),
+            onTap: fresh == 0 ? null : () => pushVocab(context, DiscoverScreen(all: entries), dialog: true),
+          ),
+          const SizedBox(height: 8),
+          const SectionLabel('KONULAR'),
+          const SizedBox(height: 8),
+          for (final t in bundle.topics) _TopicTile(topic: t, entries: bundle.inTopic(t.name), all: entries),
+        ],
+      );
+    },
+  );
+}
+
+/// "Tekrar" tab: spaced repetition of the words being learned.
+class VocabReviewTab extends ConsumerWidget {
+  const VocabReviewTab({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) => _VocabTab(
+    builder: (context, bundle) {
+      final p = ref.watch(progressProvider);
+      final now = ref.watch(clockProvider)();
+      final entries = bundle.entries;
+      final due = reviewQueue(entries, p, now);
+      final learning = entries.where((e) => vocabStatus(e, p) == VocabStatus.learning).toList();
+      return ListView(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+        children: [
+          Text('Tekrar', style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 4),
+          Text(
+            'Öğrendiğin kelimeler unutmadan önce geri gelir. Yanlış cevap ceza değildir, kelime sadece daha sık gelir.',
+            style: TextStyle(color: Brand.muted),
+          ),
+          const SizedBox(height: 16),
+          _Action(
+            icon: Icons.replay_rounded,
+            color: vocabColor,
+            title: 'Tekrar et',
+            subtitle: due.isNotEmpty
+                ? '${due.length} kelimenin tekrar zamanı geldi'
+                : 'Şu an tekrar bekleyen kelime yok',
+            badge: due.isNotEmpty ? '${due.length}' : null,
+            onTap: due.isEmpty
+                ? null
+                : () => pushVocab(context, VocabReviewScreen(queue: due, all: entries), dialog: true),
+          ),
+          _Action(
+            icon: Icons.school_outlined,
+            color: Brand.accent,
+            title: 'Öğrendiğin kelimeler',
+            subtitle: learning.isEmpty
+                ? 'Keşfet sekmesinde "Öğreneceğim" dediklerin burada toplanır'
+                : '${learning.length} kelime öğreniliyor',
+            onTap: learning.isEmpty
+                ? null
+                : () => pushVocab(
+                    context,
+                    VocabWordListScreen(title: 'Öğrendiğin kelimeler', entries: learning),
+                  ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+/// "Harita" tab: the knowledge map and the full word list.
+class VocabMapTab extends ConsumerWidget {
+  const VocabMapTab({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) => _VocabTab(
+    builder: (context, bundle) {
+      final p = ref.watch(progressProvider);
+      final entries = bundle.entries;
+      return ListView(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+        children: [
+          Container(
+            padding: const EdgeInsets.all(14),
+            decoration: context.lingora.hero(_vocabTeal, from: const Color(0xFF134E4A)),
+            child: KnowledgeMap(bands: rankBands(entries, p)),
+          ),
+          const SizedBox(height: 16),
+          _Action(
+            icon: Icons.search_rounded,
+            color: Brand.success,
+            title: 'Tüm kelimeler',
+            subtitle: 'Ara, anlamına ve örneklerine bak',
+            onTap: () => pushVocab(context, VocabWordListScreen(title: 'Tüm kelimeler', entries: entries)),
+          ),
+        ],
+      );
+    },
+  );
 }
 
 /// Rank bands as coloured blocks: one row per band, one cell per word

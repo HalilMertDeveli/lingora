@@ -21,6 +21,7 @@ import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/why_wrong.dart';
+import '../nav/flow.dart';
 import 'lesson_result_screen.dart';
 import 'paywall_screen.dart';
 
@@ -221,52 +222,37 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     // Remote Config: a closable paywall after every N lessons (never blocks learning).
     final autoPaywall =
         widget.mode == LessonMode.lesson && ref.read(paywallTriggerProvider).takeAfterLesson();
-    final shown = nav.pushReplacement(
-      MaterialPageRoute<void>(
-        builder: (_) => LessonResultScreen(
-          reward: reward,
-          accuracy: _accuracy,
-          duration: DateTime.now().difference(_started),
-          perfect: perfect,
-          bestCombo: _bestCombo,
-          headline: switch (widget.mode) {
-            LessonMode.test => 'Ünite sınavını geçtin!',
-            LessonMode.practice => 'Tekrar tamamlandı!',
-            LessonMode.lesson => null,
-          },
-        ),
+    final duration = DateTime.now().difference(_started);
+    final streakScreen = reward.streakExtended;
+    // Result, then streak, then (sometimes) a closable paywall; the last
+    // "Devam" goes straight back to the path.
+    showEndSequence(nav, [
+      (next) => LessonResultScreen(
+        reward: reward,
+        accuracy: _accuracy,
+        duration: duration,
+        perfect: perfect,
+        bestCombo: _bestCombo,
+        showStreak: !streakScreen,
+        onContinue: next,
+        headline: switch (widget.mode) {
+          LessonMode.test => 'Ünite sınavını geçtin!',
+          LessonMode.practice => 'Tekrar tamamlandı!',
+          LessonMode.lesson => null,
+        },
       ),
-    );
-    if (autoPaywall) {
-      shown.then((_) {
-        if (!nav.mounted) return;
-        nav.push(
-          MaterialPageRoute<bool>(
-            fullscreenDialog: true,
-            builder: (_) => const PaywallScreen(placement: PaywallPlacement.afterLessons),
-          ),
-        );
-      });
-    }
+      if (streakScreen) (next) => StreakCelebrationScreen(streak: reward.streak, onContinue: next),
+      if (autoPaywall) (_) => const PaywallScreen(placement: PaywallPlacement.afterLessons),
+    ]);
   }
 
   Future<void> _confirmQuit() async {
-    final quit = await showDialog<bool>(
-      context: context,
-      builder: (c) => AlertDialog(
-        icon: const Mascot(mood: Mood.sad, size: 88),
-        title: const Text('Gitme, az kaldı!', textAlign: TextAlign.center),
-        content: const Text(
-          'Şimdi çıkarsan bu dersteki ilerlemen kaydedilmeyecek.',
-          textAlign: TextAlign.center,
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(c, true), child: const Text('Çık')),
-          FilledButton(onPressed: () => Navigator.pop(c, false), child: const Text('Devam et')),
-        ],
-      ),
+    final quit = await confirmQuitFlow(
+      context,
+      title: widget.mode == LessonMode.test ? 'Sınavdan çıkılsın mı?' : 'Dersten çıkılsın mı?',
+      detail: 'Bu dersteki ilerleme kaydedilmez; istediğin zaman baştan başlayabilirsin.',
     );
-    if (quit == true && mounted) Navigator.of(context).pop();
+    if (quit && mounted) Navigator.of(context).pop();
   }
 
   Widget _exercise() {

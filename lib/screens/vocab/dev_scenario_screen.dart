@@ -12,49 +12,57 @@ import '../../ui/why_wrong.dart';
 import '../conversation_screen.dart';
 import 'vocab_home_screen.dart';
 
-class DevScenarioListScreen extends ConsumerWidget {
+class DevScenarioListScreen extends StatelessWidget {
   const DevScenarioListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(title: const Text('İş senaryoları')),
+    body: const DevScenarioList(),
+  );
+}
+
+/// The work scenarios of the Yazılımcı İngilizcesi track ("Senaryolar" tab).
+class DevScenarioList extends ConsumerWidget {
+  const DevScenarioList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final p = ref.watch(progressProvider);
-    return Scaffold(
-      appBar: AppBar(title: const Text('İş senaryoları')),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
-        children: [
-          Text(
-            'Yaz, Türk hata dedektörüyle kontrol et, örnek cevapla karşılaştır. Ücretsiz. '
-            'İstersen aynı senaryoyu yapay zekâyla canlı konuşarak da çalışabilirsin (Premium).',
-            style: TextStyle(color: Brand.muted),
-          ),
-          const SizedBox(height: 12),
-          for (final s in devScenarios)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: TapCard(
-                onTap: () => pushVocab(context, DevScenarioScreen(scenario: s)),
-                child: Row(
-                  children: [
-                    Glyph(emoji: s.scenario.emoji, icon: devScenarioIcon(s.id), color: vocabColor),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(s.scenario.title, style: Theme.of(context).textTheme.titleMedium),
-                          Text(s.scenario.goal, style: TextStyle(color: Brand.muted, fontSize: 13)),
-                        ],
-                      ),
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+      children: [
+        Text(
+          'Yaz, Türk hata dedektörüyle kontrol et, örnek cevapla karşılaştır. Ücretsiz. '
+          'İstersen aynı senaryoyu yapay zekâyla canlı konuşarak da çalışabilirsin (Premium).',
+          style: TextStyle(color: Brand.muted),
+        ),
+        const SizedBox(height: 12),
+        for (final s in devScenarios)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: TapCard(
+              onTap: () => pushVocab(context, DevScenarioScreen(scenario: s)),
+              child: Row(
+                children: [
+                  Glyph(emoji: s.scenario.emoji, icon: devScenarioIcon(s.id), color: vocabColor),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(s.scenario.title, style: Theme.of(context).textTheme.titleMedium),
+                        Text(s.scenario.goal, style: TextStyle(color: Brand.muted, fontSize: 13)),
+                      ],
                     ),
-                    if (p.isDone(devScenarioNodeId(s.id)))
-                      Icon(Icons.check_circle_rounded, color: Brand.success),
-                  ],
-                ),
+                  ),
+                  if (p.isDone(devScenarioNodeId(s.id)))
+                    Icon(Icons.check_circle_rounded, color: Brand.success),
+                ],
               ),
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 }

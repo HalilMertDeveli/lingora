@@ -29,6 +29,8 @@ class FakeNotifications implements NotificationService {
   bool grant = true;
   List<PlannedNotification> last = const [];
   @override
+  void Function(String? payload)? get onTap => null;
+  @override
   Future<bool> requestPermission() async => grant;
   @override
   Future<void> apply(List<PlannedNotification> plan) async => last = plan;

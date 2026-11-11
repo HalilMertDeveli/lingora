@@ -15,6 +15,8 @@ class LessonResultScreen extends StatelessWidget {
     required this.perfect,
     this.bestCombo = 0,
     this.headline,
+    this.onContinue,
+    this.showStreak = true,
   });
 
   final LessonReward reward;
@@ -25,6 +27,12 @@ class LessonResultScreen extends StatelessWidget {
 
   /// Overrides the default "Ders tamamlandı!" title.
   final String? headline;
+
+  /// "Devam": the next end-of-lesson screen; closes the screen when null.
+  final VoidCallback? onContinue;
+
+  /// False when a separate streak screen follows.
+  final bool showStreak;
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +100,7 @@ class LessonResultScreen extends StatelessWidget {
                     icon: Icons.whatshot_rounded,
                     text: 'En uzun seri: $bestCombo doğru üst üste',
                   ),
-                if (reward.streakExtended)
+                if (showStreak && reward.streakExtended)
                   _Banner(
                     delay: next(),
                     color: Brand.streak,
@@ -120,7 +128,7 @@ class LessonResultScreen extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                PressableButton(label: 'DEVAM', onPressed: () => Navigator.of(context).pop()),
+                PressableButton(label: 'DEVAM', onPressed: onContinue ?? () => Navigator.of(context).pop()),
               ],
             ),
           ),
@@ -128,6 +136,45 @@ class LessonResultScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Second end-of-lesson screen when the lesson started or extended a streak.
+class StreakCelebrationScreen extends StatelessWidget {
+  const StreakCelebrationScreen({super.key, required this.streak, this.onContinue});
+  final int streak;
+  final VoidCallback? onContinue;
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    key: const Key('streak-celebration'),
+    body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const Spacer(),
+            PopIn(child: Icon(Icons.local_fire_department, color: Brand.streak, size: 120)),
+            const SizedBox(height: 12),
+            Text(
+              streak == 1 ? 'Seri başladı!' : '$streak günlük seri!',
+              style: Theme.of(context).textTheme.headlineSmall,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              streak == 1
+                  ? 'Yarın da kısa bir ders yaparsan serin büyür.'
+                  : 'Her gün biraz: en etkili öğrenme yolu bu.',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
+            ),
+            const Spacer(),
+            PressableButton(label: 'DEVAM', onPressed: onContinue ?? () => Navigator.of(context).pop()),
+          ],
+        ),
+      ),
+    ),
+  );
 }
 
 /// Shown when a unit test ends below the pass mark.

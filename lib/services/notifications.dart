@@ -3,7 +3,9 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timezone/timezone.dart' as tz;
 
+import '../data/catalog.dart';
 import '../data/progress.dart';
+import '../nav/nav_target.dart';
 
 const reminderBaseId = 100;
 const reminderDays = 7;
@@ -12,14 +14,17 @@ const reminderDays = 7;
 const _legacyHeartsId = 200;
 
 class PlannedNotification {
-  const PlannedNotification(this.id, this.when, this.title, this.body);
+  const PlannedNotification(this.id, this.when, this.title, this.body, {this.payload});
   final int id;
   final DateTime when;
   final String title;
   final String body;
 
+  /// Where a tap on it leads, see [NavTarget].
+  final String? payload;
+
   @override
-  String toString() => '$id@${when.toIso8601String()}|$title|$body';
+  String toString() => '$id@${when.toIso8601String()}|$title|$body|$payload';
 }
 
 const _nudges = [
@@ -39,6 +44,8 @@ List<PlannedNotification> planNotifications(Progress p, DateTime now) {
   final out = <PlannedNotification>[];
   final practicedToday = p.lastActiveDay == dayKey(now);
   final h = p.reminderMinutes ~/ 60, m = p.reminderMinutes % 60;
+  // A tap opens the home tab, or the due words on a vocabulary track.
+  final target = NavTarget(trackById(p.trackId).kind == TrackKind.vocab ? AppTab.review : AppTab.learn);
 
   for (var i = 0; i < reminderDays; i++) {
     final when = DateTime(now.year, now.month, now.day + i, h, m);
@@ -48,7 +55,7 @@ List<PlannedNotification> planNotifications(Progress p, DateTime now) {
     final (title, body) = streak > 0
         ? ('🔥 $streak günlük serini koru!', 'Bugün kısa bir ders serini devam ettirir.')
         : _nudges[i % _nudges.length];
-    out.add(PlannedNotification(reminderBaseId + i, when, title, body));
+    out.add(PlannedNotification(reminderBaseId + i, when, title, body, payload: target.payload));
   }
 
   return out;
@@ -56,6 +63,12 @@ List<PlannedNotification> planNotifications(Progress p, DateTime now) {
 
 /// Schedules local notifications on the device.
 class NotificationService {
+  NotificationService({this.onTap});
+
+  /// Called with the payload of a tapped notification, also when the tap
+  /// launched the app.
+  final void Function(String? payload)? onTap;
+
   final _plugin = FlutterLocalNotificationsPlugin();
   Future<void>? _ready;
   String? _applied;
@@ -71,16 +84,21 @@ class NotificationService {
     iOS: DarwinNotificationDetails(),
   );
 
-  Future<void> _init() => _plugin.initialize(
-    settings: const InitializationSettings(
-      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
-      iOS: DarwinInitializationSettings(
-        requestAlertPermission: false,
-        requestBadgePermission: false,
-        requestSoundPermission: false,
+  Future<void> _init() async {
+    await _plugin.initialize(
+      settings: const InitializationSettings(
+        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        iOS: DarwinInitializationSettings(
+          requestAlertPermission: false,
+          requestBadgePermission: false,
+          requestSoundPermission: false,
+        ),
       ),
-    ),
-  );
+      onDidReceiveNotificationResponse: (r) => onTap?.call(r.payload),
+    );
+    final launch = await _plugin.getNotificationAppLaunchDetails();
+    if (launch?.didNotificationLaunchApp ?? false) onTap?.call(launch!.notificationResponse?.payload);
+  }
 
   /// Asks the OS for permission; returns whether notifications are allowed.
   Future<bool> requestPermission() async {
@@ -114,6 +132,7 @@ class NotificationService {
           id: n.id,
           title: n.title,
           body: n.body,
+          payload: n.payload,
           // An absolute instant; UTC avoids needing the device's zone name.
           scheduledDate: tz.TZDateTime.from(n.when, tz.UTC),
           notificationDetails: _details,
@@ -127,4 +146,8 @@ class NotificationService {
   }
 }
 
-final notificationServiceProvider = Provider<NotificationService>((ref) => NotificationService());
+final notificationServiceProvider = Provider<NotificationService>(
+  (ref) => NotificationService(
+    onTap: (payload) => ref.read(pendingNavTargetProvider.notifier).open(NavTarget.parse(payload)),
+  ),
+);

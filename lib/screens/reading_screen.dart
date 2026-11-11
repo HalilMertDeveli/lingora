@@ -123,8 +123,9 @@ class ReadingLibraryScreen extends ConsumerWidget {
             color: color,
             onTap: () {
               logEventFrom(context, AnalyticsEvent.featureUse(AppFeature.reading));
-              Navigator.of(context)
-                  .push(MaterialPageRoute<void>(builder: (_) => StoryReaderScreen(story: s)));
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => StoryReaderScreen(story: s)),
+              );
             },
             child: Row(
               children: [

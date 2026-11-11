@@ -194,6 +194,15 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Notlarım seçildi.'), findsOneWidget);
+    // A new track resets the tabs and opens its first tab (Öğren).
+    expect(find.text('Notlarım'), findsWidgets);
+    await tester.tap(find.text('Profil'));
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.text('Son sonuç: C1 · İleri'),
+      200,
+      scrollable: find.byType(Scrollable).last,
+    );
     expect(find.text('Son sonuç: C1 · İleri'), findsOneWidget);
     expect((await _saved()).trackId, 'notes');
   });
