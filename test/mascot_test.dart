@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lingora/data/app_settings.dart';
 import 'package:lingora/data/break_reminder.dart';
 import 'package:lingora/data/catalog.dart';
 import 'package:lingora/data/progress.dart';
@@ -9,6 +10,7 @@ import 'package:lingora/screens/lesson_result_screen.dart';
 import 'package:lingora/screens/onboarding_screen.dart';
 import 'package:lingora/theme.dart';
 import 'package:lingora/ui/mascot.dart';
+import 'package:lingora/ui/session.dart';
 
 Future<void> _pump(
   WidgetTester tester,
@@ -46,23 +48,44 @@ void main() {
     expect(File('assets/mascot/cayci_dayi.svg').existsSync(), isTrue, reason: 'owner original kept');
     expect(File('assets/icon/icon.png').existsSync(), isTrue);
     expect(File('assets/brand/google_g.png').existsSync(), isTrue);
+    for (final m in Mood.values) {
+      expect(File(pofudukPose(m)).existsSync(), isTrue, reason: pofudukPose(m));
+    }
+    expect(File(pofudukAvatar).existsSync(), isTrue);
+    expect(File(pofudukAccount).existsSync(), isTrue);
+    for (final a in Accent.values) {
+      expect(File(a.flag).existsSync(), isTrue, reason: a.flag);
+    }
+    for (final c in guestCountries.keys) {
+      expect(File(flagAsset(c)).existsSync(), isTrue, reason: c);
+    }
     for (final t in courseCatalog) {
       if (t.flag != null) expect(File(t.flag!).existsSync(), isTrue, reason: t.flag);
     }
   });
 
   group('Mascot', () {
-    testWidgets('kid mode: big, animated Çaycı Dayı', (tester) async {
+    testWidgets('kid mode: Pofuduk is the host, big and animated', (tester) async {
       await _pump(
         tester,
         const Scaffold(
           body: Center(child: Mascot(mood: Mood.cheer, size: 150)),
         ),
       );
-      expect(tester.widget<Dayi>(find.byType(Dayi)).animate, isTrue);
-      expect(tester.getSize(find.byType(Dayi)), const Size(150, 150));
-      expect(find.bySemanticsLabel('Çaycı Dayı'), findsOneWidget);
+      expect(find.byType(Dayi), findsNothing);
+      expect(tester.widget<Pofuduk>(find.byType(Pofuduk)).animate, isTrue);
+      expect(tester.getSize(find.byType(Pofuduk)), const Size(150, 150));
+      expect(find.bySemanticsLabel('Pofuduk'), findsOneWidget);
+      expect(find.byKey(const ValueKey('pofuduk-cheer')), findsOneWidget);
       expect(tester.takeException(), isNull);
+    });
+
+    test('each mood has its own Pofuduk pose', () {
+      expect(pofudukPose(Mood.cheer), endsWith('gozluk.png'), reason: 'celebration: sunglasses');
+      expect(pofudukPose(Mood.calm), endsWith('meditasyon.png'), reason: 'break: meditation');
+      expect(pofudukPose(Mood.wave), endsWith('selam.png'), reason: 'welcome: waving');
+      expect(pofudukPose(Mood.sad), endsWith('uzgun.png'));
+      expect(pofudukPose(Mood.happy), endsWith('dans.png'));
     });
 
     for (final b in Brightness.values) {
@@ -80,7 +103,8 @@ void main() {
           mode: AppMode.adult,
           b: b,
         );
-        expect(find.byType(Dayi), findsOneWidget);
+        expect(find.byType(Dayi), findsOneWidget, reason: 'adults are hosted by Çaycı Dayı');
+        expect(find.byType(Pofuduk), findsNothing);
         expect(tester.widget<Dayi>(find.byType(Dayi)).animate, isFalse);
         expect(tester.getSize(find.byType(Dayi)).width, 72);
         expect(tester.takeException(), isNull);
@@ -90,7 +114,7 @@ void main() {
     testWidgets('EmptyState shows the mascot with the message', (tester) async {
       await _pump(tester, const Scaffold(body: EmptyState(message: 'Şu an tekrar edilecek kelime yok.')));
       expect(find.text('Şu an tekrar edilecek kelime yok.'), findsOneWidget);
-      expect(find.byKey(const ValueKey('dayi-calm')), findsOneWidget);
+      expect(find.byKey(const ValueKey('pofuduk-calm')), findsOneWidget);
     });
 
     testWidgets('onboarding: kid mode greets with Çaycı Dayı, adult shows the logo', (tester) async {
@@ -115,18 +139,45 @@ void main() {
             perfect: perfect,
           ),
         );
-        expect(find.byKey(ValueKey('dayi-$mood')), findsOneWidget);
+        expect(find.byKey(ValueKey('pofuduk-$mood')), findsOneWidget);
         await tester.pump(const Duration(seconds: 3));
       });
     }
 
-    testWidgets('streak and break screens use the calm mascot', (tester) async {
-      await _pump(tester, const StreakCelebrationScreen(streak: 4));
-      expect(find.byKey(const ValueKey('dayi-calm')), findsOneWidget);
-      await _pump(tester, const BreakReminderScreen());
-      expect(find.text('Kısa bir çay molası?'), findsOneWidget);
-      expect(find.byKey(const ValueKey('dayi-calm')), findsOneWidget);
-    });
+    for (final mode in AppMode.values) {
+      testWidgets('${mode.name}: Pofuduk celebrates, dances for the streak and meditates on breaks', (
+        tester,
+      ) async {
+        await _pump(
+          tester,
+          const LessonResultScreen(
+            reward: _reward,
+            accuracy: 100,
+            duration: Duration(minutes: 2),
+            perfect: true,
+          ),
+          mode: mode,
+        );
+        expect(find.byKey(const ValueKey('pofuduk-cheer')), findsOneWidget);
+        await _pump(tester, const StreakCelebrationScreen(streak: 4), mode: mode);
+        expect(find.byKey(const ValueKey('pofuduk-happy')), findsOneWidget);
+        await _pump(tester, const BreakReminderScreen(), mode: mode);
+        expect(find.text('Kısa bir çay molası?'), findsOneWidget);
+        expect(find.byKey(const ValueKey('pofuduk-calm')), findsOneWidget);
+      });
+    }
+
+    for (final mode in AppMode.values) {
+      testWidgets('${mode.name}: the feedback panel shows the mode\'s host', (tester) async {
+        await _pump(
+          tester,
+          Scaffold(body: AnswerFeedbackPanel(correct: true, onContinue: () {})),
+          mode: mode,
+        );
+        expect(find.byType(Dayi), mode == AppMode.adult ? findsOneWidget : findsNothing);
+        expect(find.byType(Pofuduk), mode == AppMode.kid ? findsOneWidget : findsNothing);
+      });
+    }
   });
 
   test('BreakTracker suggests a break after 3 lessons or 20 minutes', () {

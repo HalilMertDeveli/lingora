@@ -318,8 +318,8 @@ void main() {
   });
 }
 
-/// "BAŞLA" in adult mode.
-const sentenceCaseStart = 'Başla';
+/// The invite over each playable lesson (Çaycı Dayı's "bir çay daha").
+const sentenceCaseStart = 'Hadi, bir çay daha!';
 
 Future<SharedPreferences> _prefs(Map<String, Object> values) async {
   SharedPreferences.setMockInitialValues(values);

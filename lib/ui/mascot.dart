@@ -6,15 +6,15 @@ import '../theme.dart';
 import 'motion.dart';
 
 /// The mascot's mood decides how it moves.
-enum Mood { idle, happy, cheer, sad, think, calm, joy }
+enum Mood { idle, happy, cheer, sad, think, calm, joy, wave }
 
 /// The Çaycı Dayı artwork (owner-supplied; source SVG next to it, see
 /// docs/assets.md).
 const mascotAsset = 'assets/mascot/cayci_dayi.png';
 
-/// Dilbaz's guide, Çaycı Dayı. Kid mode shows him big and animated; adult
-/// mode shows him small and still (or nothing when [decorative]), so every
-/// screen adapts without changes.
+/// The two hosts. Adult mode: Çaycı Dayı, small and still (or nothing when
+/// [decorative]). Çocuk modu: Pofuduk, the orange cushion, big and animated,
+/// with a pose for each mood. Every screen adapts without changes.
 class Mascot extends StatelessWidget {
   const Mascot({
     super.key,
@@ -38,7 +38,7 @@ class Mascot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (context.isKid) return Dayi(mood: mood, size: size);
+    if (context.isKid) return Pofuduk(mood: mood, size: size);
     if (decorative) return const SizedBox.shrink();
     return Dayi(mood: mood, size: adultSize(size), animate: react, loop: false);
   }
@@ -127,7 +127,7 @@ class _DayiState extends State<Dayi> with TickerProviderStateMixin {
               var tilt = 0.0;
               var scale = 1.0;
               switch (widget.mood) {
-                case Mood.cheer || Mood.joy:
+                case Mood.cheer || Mood.joy || Mood.wave:
                   dy = -sin(t * pi * 2).abs() * s * 0.06;
                   scale = 1 + sin(r * pi) * 0.08;
                 case Mood.happy:
@@ -152,6 +152,124 @@ class _DayiState extends State<Dayi> with TickerProviderStateMixin {
             },
           );
     return SizedBox(key: ValueKey('dayi-${widget.mood.name}'), width: s, height: s, child: body);
+  }
+}
+
+/// Pofuduk's artwork, one owner-supplied pose per mood (docs/assets.md).
+String pofudukPose(Mood mood) =>
+    'assets/mascot/pofuduk_${switch (mood) {
+      Mood.idle || Mood.think => 'isaret',
+      Mood.happy || Mood.joy => 'dans',
+      Mood.cheer => 'gozluk',
+      Mood.sad => 'uzgun',
+      Mood.calm => 'meditasyon',
+      Mood.wave => 'selam',
+    }}.png';
+
+/// Pofuduk's square face: the Çocuk modu profile avatar.
+const pofudukAvatar = 'assets/mascot/pofuduk_avatar.png';
+
+/// Pofuduk with a phone: the account / sign-in illustration.
+const pofudukAccount = 'assets/mascot/pofuduk_hesap.png';
+
+/// Pofuduk, the orange cushion: the main character in Çocuk modu, and the
+/// one who shows up in both modes for welcomes ([Mood.wave]), celebrations
+/// ([Mood.cheer]) and breaks ([Mood.calm]). Each mood has its own pose; the
+/// motion matches it (a hop, a sway, a slow float while meditating).
+class Pofuduk extends StatefulWidget {
+  const Pofuduk({super.key, this.mood = Mood.idle, this.size = 120, this.animate = true});
+  final Mood mood;
+  final double size;
+
+  /// Idle motion and reactions (also off when the system reduces motion).
+  final bool animate;
+
+  @override
+  State<Pofuduk> createState() => _PofudukState();
+}
+
+class _PofudukState extends State<Pofuduk> with SingleTickerProviderStateMixin {
+  late final _loop = AnimationController(vsync: this, duration: const Duration(milliseconds: 2200));
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _sync();
+  }
+
+  @override
+  void didUpdateWidget(Pofuduk old) {
+    super.didUpdateWidget(old);
+    _sync();
+  }
+
+  void _sync() {
+    if (widget.animate && loopsEnabled(context)) {
+      if (!_loop.isAnimating) _loop.repeat();
+    } else {
+      _loop
+        ..stop()
+        ..value = 0;
+    }
+  }
+
+  @override
+  void dispose() {
+    _loop.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final s = widget.size;
+    final image = Image.asset(
+      pofudukPose(widget.mood),
+      width: s,
+      height: s,
+      fit: BoxFit.contain,
+      filterQuality: FilterQuality.medium,
+      gaplessPlayback: true,
+      semanticLabel: 'Pofuduk',
+      errorBuilder: (_, _, _) => SizedBox(width: s, height: s),
+    );
+    final body = AnimatedBuilder(
+      animation: _loop,
+      child: image,
+      builder: (_, child) {
+        if (!_loop.isAnimating) return child!;
+        final t = _loop.value;
+        var dy = 0.0, tilt = 0.0, sx = 1.0, sy = 1.0;
+        switch (widget.mood) {
+          case Mood.cheer || Mood.happy || Mood.joy:
+            // A happy hop with a jelly squash on landing.
+            final hop = sin(t * pi * 2).abs();
+            dy = -hop * s * 0.07;
+            sy = 1 - (1 - hop) * 0.05;
+            sx = 1 + (1 - hop) * 0.03;
+          case Mood.wave:
+            tilt = sin(t * pi * 2) * 0.05;
+          case Mood.calm:
+            dy = sin(t * pi * 2) * s * 0.035;
+          case Mood.sad:
+            tilt = sin(t * pi * 2) * 0.02;
+          case Mood.idle || Mood.think:
+            sy = 1 + sin(t * pi * 2) * 0.02;
+            sx = 1 - sin(t * pi * 2) * 0.01;
+        }
+        return Transform.translate(
+          offset: Offset(0, dy),
+          child: Transform.rotate(
+            angle: tilt,
+            child: Transform(
+              alignment: Alignment.bottomCenter,
+              transform: Matrix4.diagonal3Values(sx, sy, 1),
+              child: child,
+            ),
+          ),
+        );
+      },
+    );
+    return SizedBox(key: ValueKey('pofuduk-${widget.mood.name}'), width: s, height: s, child: body);
   }
 }
 

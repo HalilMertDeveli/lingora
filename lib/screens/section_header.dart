@@ -7,6 +7,7 @@ import '../data/sections.dart';
 import '../models/course.dart';
 import '../theme.dart';
 import '../ui/motion.dart';
+import '../ui/tea_art.dart';
 import 'lesson_screen.dart';
 
 /// "Bölüm 2 · A1 · Günlük hayat" with the share of finished steps. Tapping
@@ -27,28 +28,74 @@ class SectionHeader extends ConsumerWidget {
       key: Key('section-${section.id}'),
       color: _color,
       onTap: () => showSectionSummary(context, section, open: open),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Icon(
-            open ? Icons.flag_circle_rounded : Icons.lock_rounded,
-            color: open ? _color : Brand.muted,
-            size: 34,
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(sectionLabel(section), style: t.titleMedium),
-                const SizedBox(height: 8),
-                GlossyProgress(value: ratio, height: 10, color: _color),
-              ],
+          // The place this section walks through (Mahalle, Çarşı, Vapur…).
+          ClipRRect(
+            borderRadius: BorderRadius.circular(Radii.md),
+            child: SizedBox(
+              height: 58,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: CustomPaint(
+                      key: Key('district-${section.id}'),
+                      painter: DistrictPainter(
+                        district: District.of(section.index),
+                        color: open ? _color : Brand.muted,
+                        palette: Brand.palette,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 8,
+                    top: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: Brand.card.withValues(alpha: 0.92),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        District.of(section.index).label,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 12,
+                          color: open ? _color : Brand.muted,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          const SizedBox(width: 12),
-          Text(
-            open ? '%$percent' : 'Kilitli',
-            style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              Icon(
+                open ? Icons.flag_circle_rounded : Icons.lock_rounded,
+                color: open ? _color : Brand.muted,
+                size: 34,
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(sectionLabel(section), style: t.titleMedium),
+                    const SizedBox(height: 8),
+                    GlossyProgress(value: ratio, height: 10, color: _color),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                open ? '%$percent' : 'Kilitli',
+                style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
+              ),
+            ],
           ),
         ],
       ),

@@ -172,14 +172,26 @@ class _Welcome extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Kid mode: Çaycı Dayı greets you, big and lively. Adult: the still brand mark.
-        if (context.isKid) const Dayi(mood: Mood.happy, size: 180) else const LingoraLogo(size: 112),
+        // Welcome: Pofuduk waves in both modes. Kid mode: he is the host, big
+        // and lively. Adult: beside Çaycı Dayı's still brand mark.
+        if (context.isKid)
+          const Pofuduk(mood: Mood.wave, size: 180)
+        else
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              LingoraLogo(size: 96),
+              SizedBox(width: 12),
+              Pofuduk(mood: Mood.wave, size: 112),
+            ],
+          ),
         const SizedBox(height: 28),
         Text('Dilbaz', style: t.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
         const SizedBox(height: 10),
         Text(
           context.isKid
-              ? 'Hoş geldin, ben Çaycı Dayı!\nÇayını al, her gün birkaç dakika birlikte öğrenelim.'
+              ? 'Hoş geldin, ben Pofuduk!\nÇaycı Dayı çayı demledi; her gün birkaç dakika birlikte öğrenelim.'
               : 'Her gün birkaç dakika,\nadım adım yeni bir dil.',
           textAlign: TextAlign.center,
           style: t.titleMedium?.copyWith(color: Brand.muted, fontWeight: FontWeight.w500),
@@ -210,14 +222,17 @@ class _CoursePick extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        for (final (flag, name) in const [('🇩🇪', 'Almanca'), ('🇪🇸', 'İspanyolca')])
+        for (final (flag, name) in const [
+          ('assets/flags/es.png', 'İspanyolca'),
+          ('assets/flags/fr.png', 'Fransızca'),
+        ])
           Padding(
             padding: const EdgeInsets.only(bottom: 12),
             child: Opacity(
               opacity: 0.45,
               child: TapCard(
                 child: ListTile(
-                  leading: Glyph(emoji: flag, icon: Icons.language_rounded, size: 32, color: Brand.muted),
+                  leading: FlagIcon(flag, width: 36),
                   title: Text(name, style: const TextStyle(fontWeight: FontWeight.w800)),
                   subtitle: const Text('Yakında'),
                 ),

@@ -104,101 +104,105 @@ class Palette {
     return h.withSaturation(s).withLightness(isDark ? 0.68 : 0.42).toColor();
   }
 
-  /// Calm, premium look for students and professionals.
+  /// Calm, warm look for students and professionals: a tea house in the
+  /// morning. Tea red / amber for actions and right answers, İznik navy for
+  /// wrong ones (never alarm red), cream paper behind everything.
   static const adultLight = Palette(
     kid: false,
     brightness: Brightness.light,
-    primary: Color(0xFFE06C00),
+    primary: Color(0xFFA63F1B),
     onPrimary: Colors.white,
-    accent: Color(0xFFD9900B),
-    accentBg: Color(0xFFFCF3E1),
-    success: Color(0xFF13885A),
-    successBg: Color(0xFFE8F5EE),
-    error: Color(0xFFD03A33),
-    errorBg: Color(0xFFFCEDEC),
-    streak: Color(0xFFE2672A),
-    xp: Color(0xFFD9900B),
-    info: Color(0xFF2F6FD6),
-    ink: Color(0xFF14171F),
-    muted: Color(0xFF636B7A),
-    line: Color(0xFFE3E6EC),
-    surface: Color(0xFFF2F4F7),
-    card: Colors.white,
-    background: Color(0xFFF8F9FB),
-    edge: Color(0xFFD5D9E1),
+    accent: Color(0xFFC07812),
+    accentBg: Color(0xFFFBEFD9),
+    success: Color(0xFF9A4513),
+    successBg: Color(0xFFF8E8D6),
+    error: Color(0xFF284A86),
+    errorBg: Color(0xFFE7EDF7),
+    streak: Color(0xFFD5611D),
+    xp: Color(0xFFC07812),
+    info: Color(0xFF24508F),
+    ink: Color(0xFF2A1E16),
+    muted: Color(0xFF75665A),
+    line: Color(0xFFE8DCCA),
+    surface: Color(0xFFF4ECDF),
+    card: Color(0xFFFFFCF7),
+    background: Color(0xFFFAF4EA),
+    edge: Color(0xFFDCCBB3),
   );
 
+  /// The tea house at night: dark walnut, tea-in-lamplight amber, pale navy.
   static const adultDark = Palette(
     kid: false,
     brightness: Brightness.dark,
-    primary: Color(0xFFF39A3D),
-    onPrimary: Color(0xFF1A0E00),
-    accent: Color(0xFFF0B13E),
-    accentBg: Color(0xFF2A2214),
-    success: Color(0xFF45C08A),
-    successBg: Color(0xFF15281F),
-    error: Color(0xFFF2766C),
-    errorBg: Color(0xFF2E1816),
+    primary: Color(0xFFE99460),
+    onPrimary: Color(0xFF1E0E05),
+    accent: Color(0xFFEDB04F),
+    accentBg: Color(0xFF33270F),
+    success: Color(0xFFE79A5E),
+    successBg: Color(0xFF33200F),
+    error: Color(0xFF94B4EA),
+    errorBg: Color(0xFF172238),
     streak: Color(0xFFF08A52),
-    xp: Color(0xFFF0B13E),
-    info: Color(0xFF6EA2F2),
-    ink: Color(0xFFE8EAF0),
-    muted: Color(0xFF9AA2B1),
-    line: Color(0xFF2B303B),
-    surface: Color(0xFF1F232C),
-    card: Color(0xFF181B22),
-    background: Color(0xFF101217),
-    edge: Color(0xFF0A0B0F),
+    xp: Color(0xFFEDB04F),
+    info: Color(0xFF86AAE8),
+    ink: Color(0xFFF2E9DE),
+    muted: Color(0xFFB2A292),
+    line: Color(0xFF3A2F27),
+    surface: Color(0xFF2B231D),
+    card: Color(0xFF211A16),
+    background: Color(0xFF17120F),
+    edge: Color(0xFF0E0B09),
     mascot: Color(0xFFF39A3D),
     onMascot: Color(0xFF1A0E00),
     mascotBg: Color(0xFF2E2010),
   );
 
-  /// Playful look (Çocuk modu): the original Dilbaz colours.
+  /// Çocuk modu: the same tea house, brighter: Lexigo orange, vivid tea,
+  /// sky-tile blue.
   static const kidLight = Palette(
     kid: true,
     brightness: Brightness.light,
-    primary: Color(0xFFF17F04),
+    primary: Color(0xFFCC4A0C),
     onPrimary: Colors.white,
-    accent: Color(0xFFFFB020),
-    accentBg: Color(0xFFFFF4DC),
-    success: Color(0xFF1FA971),
-    successBg: Color(0xFFE3F7EE),
-    error: Color(0xFFE5484D),
-    errorBg: Color(0xFFFDECEC),
+    accent: Color(0xFFFFA91A),
+    accentBg: Color(0xFFFFF0D4),
+    success: Color(0xFFC2520E),
+    successBg: Color(0xFFFFE9D6),
+    error: Color(0xFF2856B8),
+    errorBg: Color(0xFFE5EDFF),
     streak: Color(0xFFFF7A1A),
-    xp: Color(0xFFFFB020),
-    info: Color(0xFF2F80ED),
-    ink: Color(0xFF1E1B2E),
-    muted: Color(0xFF8A8799),
-    line: Color(0xFFE7E5EF),
-    surface: Color(0xFFF7F6FB),
+    xp: Color(0xFFFFA91A),
+    info: Color(0xFF2F6FDB),
+    ink: Color(0xFF2A1A12),
+    muted: Color(0xFF8A7464),
+    line: Color(0xFFF0E1CC),
+    surface: Color(0xFFFFF5E8),
     card: Colors.white,
-    background: Colors.white,
-    edge: Color(0xFFDAD7E5),
+    background: Color(0xFFFFF9F0),
+    edge: Color(0xFFEAD5B9),
   );
 
   static const kidDark = Palette(
     kid: true,
     brightness: Brightness.dark,
-    primary: Color(0xFFFF9F43),
-    onPrimary: Color(0xFF1A0E00),
-    accent: Color(0xFFFFBE45),
-    accentBg: Color(0xFF33290F),
-    success: Color(0xFF34C77B),
-    successBg: Color(0xFF16301F),
-    error: Color(0xFFFF6B6F),
-    errorBg: Color(0xFF3A1A1C),
+    primary: Color(0xFFFF9A4D),
+    onPrimary: Color(0xFF1E0D02),
+    accent: Color(0xFFFFC04D),
+    accentBg: Color(0xFF3A2A0E),
+    success: Color(0xFFFFA45C),
+    successBg: Color(0xFF3A2210),
+    error: Color(0xFF8DB4FF),
+    errorBg: Color(0xFF172447),
     streak: Color(0xFFFF8B3D),
-    xp: Color(0xFFFFBE45),
-    info: Color(0xFF5B9DF5),
-    ink: Color(0xFFF0EDF9),
-    muted: Color(0xFFA6A2B8),
-    line: Color(0xFF342E47),
-    surface: Color(0xFF242034),
-    card: Color(0xFF1E1A2B),
-    background: Color(0xFF15121F),
-    edge: Color(0xFF0D0B14),
+    xp: Color(0xFFFFC04D),
+    info: Color(0xFF72A8FF),
+    ink: Color(0xFFFFF1E4),
+    muted: Color(0xFFC2AE9C),
+    line: Color(0xFF45352A),
+    surface: Color(0xFF30251D),
+    card: Color(0xFF251C16),
+    background: Color(0xFF1A1310),
+    edge: Color(0xFF100B08),
     mascot: Color(0xFFF39A3D),
     onMascot: Color(0xFF1A0E00),
     mascotBg: Color(0xFF2E2010),
@@ -491,9 +495,101 @@ ThemeData buildTheme({AppMode mode = AppMode.adult, Brightness brightness = Brig
   );
 }
 
-/// Card used everywhere. Adult mode: flat card with a hairline border and a
-/// soft shadow. Kid mode: chunky card with a 3D bottom edge that sinks while
-/// pressed. Selected cards get a primary (or [color]) border and tint.
+/// Dilbaz's press effect, "jelibon": the child squashes softly while held
+/// and springs back with a small wobble when released. Nothing moves when
+/// animations are reduced. [amount] scales the squash (cards use less).
+class JellyPress extends StatefulWidget {
+  const JellyPress({super.key, required this.child, required this.onTap, this.amount = 1, this.onDown});
+  final Widget child;
+  final VoidCallback? onTap;
+  final double amount;
+
+  /// Reports press state changes (for shadows that sink with the press).
+  final ValueChanged<bool>? onDown;
+
+  /// Squash time and spring-back time.
+  static const pressDuration = Duration(milliseconds: 90);
+  static const releaseDuration = Duration(milliseconds: 520);
+
+  @override
+  State<JellyPress> createState() => _JellyPressState();
+}
+
+class _JellyPressState extends State<JellyPress> with SingleTickerProviderStateMixin {
+  late final _c = AnimationController(vsync: this, duration: JellyPress.pressDuration);
+
+  bool get _reduced => MediaQuery.disableAnimationsOf(context);
+
+  void _down() {
+    if (widget.onTap == null) return;
+    widget.onDown?.call(true);
+    if (_reduced) return;
+    _c.animateTo(1, duration: JellyPress.pressDuration, curve: Curves.easeOut);
+  }
+
+  void _up() {
+    if (widget.onTap == null) return;
+    widget.onDown?.call(false);
+    if (_reduced) {
+      _c.value = 0;
+      return;
+    }
+    _c.animateBack(0, duration: JellyPress.releaseDuration, curve: Curves.elasticOut);
+  }
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => widget.onTap == null
+      ? widget.child
+      : GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTapDown: (_) => _down(),
+          onTapUp: (_) => _up(),
+          onTapCancel: _up,
+          onTap: widget.onTap == null
+              ? null
+              : () {
+                  HapticFeedback.selectionClick();
+                  widget.onTap!();
+                },
+          child: AnimatedBuilder(
+            animation: _c,
+            builder: (_, child) {
+              final v = _c.value * widget.amount;
+              if (v == 0) return child!;
+              return Transform(
+                alignment: Alignment.bottomCenter,
+                transform: Matrix4.diagonal3Values(1 + 0.035 * v, 1 - 0.07 * v, 1),
+                child: child,
+              );
+            },
+            child: widget.child,
+          ),
+        );
+}
+
+/// Soft, warm shadow under raised surfaces (cards, buttons). It shrinks while
+/// the surface is pressed.
+List<BoxShadow> softShadow(Palette p, {Color? tint, bool pressed = false, double lift = 1}) {
+  final c = tint ?? (p.isDark ? Colors.black : const Color(0xFF5A3A1E));
+  final a = p.isDark ? 0.45 : 0.14;
+  return [
+    BoxShadow(
+      color: c.withValues(alpha: a * (pressed ? 0.6 : 1)),
+      blurRadius: (pressed ? 4 : 12) * lift,
+      offset: Offset(0, (pressed ? 1 : 4) * lift),
+    ),
+  ];
+}
+
+/// Card used everywhere: warm card colour, hairline border and a soft shadow.
+/// Tappable cards squash like a jelly when pressed. Selected cards get a
+/// primary (or [color]) border and tint.
 class TapCard extends StatefulWidget {
   const TapCard({
     super.key,
@@ -517,64 +613,30 @@ class TapCard extends StatefulWidget {
 class _TapCardState extends State<TapCard> {
   bool _down = false;
 
-  void _set(bool v) {
-    if (widget.onTap != null && v != _down) setState(() => _down = v);
-  }
-
   @override
   Widget build(BuildContext context) {
     final lt = context.lingora;
     final p = lt.palette;
     final c = widget.color ?? p.primary;
     final tint = Color.alphaBlend(c.withValues(alpha: p.isDark ? 0.16 : 0.08), p.card);
-    final BoxDecoration deco;
-    double margin = 0;
-    if (!lt.isKid && widget.onTap != null) {
-      // Adult choice cards: a thinner 3D lip that sinks while pressed.
-      final edge = widget.selected ? edgeOf3d(c) : (p.isDark ? p.edge : p.line);
-      final depth = _down ? 0.0 : 3.0;
-      margin = 3 - depth;
-      deco = BoxDecoration(
-        color: widget.selected ? tint : p.card,
-        borderRadius: BorderRadius.circular(Radii.md + 2),
-        border: Border.all(color: widget.selected ? c : p.line, width: 2),
-        boxShadow: [BoxShadow(color: edge, offset: Offset(0, depth))],
-      );
-    } else if (lt.isKid) {
-      final edge = widget.selected ? c.withValues(alpha: 0.55) : p.edge;
-      final depth = widget.onTap == null ? 2.0 : (_down ? 0.0 : 4.0);
-      margin = 4 - depth.clamp(0, 4);
-      deco = BoxDecoration(
-        color: widget.selected ? tint : p.card,
-        borderRadius: BorderRadius.circular(Radii.lg),
-        border: Border.all(color: widget.selected ? c : p.line, width: 2),
-        boxShadow: [BoxShadow(color: edge, offset: Offset(0, depth))],
-      );
-    } else {
-      final pressed = _down ? Color.alphaBlend(p.ink.withValues(alpha: 0.04), p.card) : p.card;
-      deco = BoxDecoration(
-        color: widget.selected ? tint : pressed,
-        borderRadius: BorderRadius.circular(Radii.md),
-        border: Border.all(color: widget.selected ? c : p.line, width: widget.selected ? 1.5 : 1),
-        boxShadow: p.isDark || widget.selected
-            ? null
-            : const [BoxShadow(color: Color(0x0A101828), blurRadius: 3, offset: Offset(0, 1))],
-      );
-    }
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTapDown: (_) => _set(true),
-      onTapUp: (_) => _set(false),
-      onTapCancel: () => _set(false),
-      onTap: widget.onTap == null
-          ? null
-          : () {
-              HapticFeedback.selectionClick();
-              widget.onTap!();
-            },
+    final tappable = widget.onTap != null;
+    final deco = BoxDecoration(
+      color: widget.selected ? tint : p.card,
+      borderRadius: BorderRadius.circular(lt.isKid ? Radii.xl : Radii.lg),
+      border: Border.all(
+        color: widget.selected ? c : p.line,
+        width: widget.selected ? 2 : (lt.isKid ? 1.5 : 1),
+      ),
+      boxShadow: softShadow(p, pressed: _down, lift: tappable ? 1 : 0.5),
+    );
+    return JellyPress(
+      amount: 0.35,
+      onTap: widget.onTap,
+      onDown: (v) {
+        if (v != _down) setState(() => _down = v);
+      },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: lt.isKid ? 90 : 120),
-        margin: EdgeInsets.only(top: margin),
+        duration: const Duration(milliseconds: 120),
         decoration: deco,
         padding: widget.padding,
         // Lets ListTiles inside paint their ink above the card colour.

@@ -15,6 +15,7 @@ import 'services/firebase/progress_sync.dart';
 import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
 import 'services/growth/growth.dart';
+import 'services/speech.dart';
 import 'theme.dart';
 import 'ui/motion.dart';
 
@@ -60,6 +61,7 @@ class LingoraApp extends ConsumerWidget {
     // Set before building so the first frame already uses the right colours.
     Brand.apply(palette);
     SessionFx.sound = settings.sound;
+    SpeechService.englishLocale = settings.accent.locale;
     ref.listen(examPackControllerProvider, (_, _) {});
     return MaterialApp(
       title: 'Dilbaz',

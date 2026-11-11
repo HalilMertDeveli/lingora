@@ -637,7 +637,7 @@ class ExamResultScreen extends StatelessWidget {
     final percent = questions.isEmpty ? 0 : (correct * 100 / questions.length).round();
     final good = percent >= 70;
     return Scaffold(
-      body: Confetti(
+      body: TeaCelebration(
         active: good,
         child: SafeArea(
           child: Column(

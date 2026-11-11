@@ -4,6 +4,10 @@ import 'package:speech_to_text/speech_to_text.dart';
 
 /// Text-to-speech for prompts and speech recognition for speaking exercises.
 class SpeechService {
+  /// Locale of the English voice (en-US or en-GB); set by the app root from
+  /// the accent setting.
+  static String englishLocale = 'en-US';
+
   final _tts = FlutterTts();
   final _stt = SpeechToText();
   bool? _sttReady;
@@ -11,7 +15,7 @@ class SpeechService {
   Future<void> say(String text, {String lang = 'en', bool slow = false}) async {
     try {
       await _tts.stop();
-      await _tts.setLanguage(lang == 'tr' ? 'tr-TR' : 'en-US');
+      await _tts.setLanguage(lang == 'tr' ? 'tr-TR' : englishLocale);
       await _tts.setSpeechRate(slow ? 0.22 : 0.45);
       await _tts.speak(text);
     } catch (_) {

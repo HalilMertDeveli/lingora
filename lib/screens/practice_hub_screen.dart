@@ -69,6 +69,7 @@ class PracticeHubScreen extends ConsumerWidget {
             icon: Icons.forum_rounded,
             emoji: '💬',
             color: Brand.primary,
+            image: 'assets/brand/video.png',
             title: 'Konuşma',
             subtitle: 'Gerçek sahnelerde sohbet et, hataların Türkçe açıklansın',
             onTap: () => openPage(context, 'Konuşma', const ConversationHomeScreen()),
@@ -197,8 +198,12 @@ class _HubTile extends StatelessWidget {
     required this.subtitle,
     required this.onTap,
     this.badge,
+    this.image,
   });
   final IconData icon;
+
+  /// Owner-supplied picture shown instead of the icon (e.g. the scene icon).
+  final String? image;
   final String emoji;
   final Color color;
   final String title;
@@ -215,7 +220,10 @@ class _HubTile extends StatelessWidget {
         onTap: onTap,
         child: Row(
           children: [
-            IconBadge(icon: icon, emoji: emoji, color: Brand.tone(color), size: 44),
+            if (image != null)
+              Image.asset(image!, width: 44, height: 44, filterQuality: FilterQuality.medium)
+            else
+              IconBadge(icon: icon, emoji: emoji, color: Brand.tone(color), size: 44),
             const SizedBox(width: 12),
             Expanded(
               child: Column(

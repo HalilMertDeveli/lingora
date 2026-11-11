@@ -14,6 +14,8 @@ import '../nav/tab_navigator.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../ui/flag.dart';
+import '../ui/tea_art.dart';
 import 'lesson_screen.dart';
 import 'path_map.dart';
 import 'reminder_settings.dart';
@@ -403,6 +405,7 @@ class _PathListState extends ConsumerState<_PathList> {
                 children: [
                   const ReminderPromptCard(),
                   const _DailyGoalCard(),
+                  if (ref.watch(trackProvider).id == 'pro_tourism') const GuestFlagsCard(),
                   const SizedBox(height: 20),
                   for (final section in course.sections) ...[
                     if (!section.implicit) ...[
@@ -545,7 +548,8 @@ class _CardPop extends StatelessWidget {
   }
 }
 
-/// The nodes of one unit, laid out in a zigzag, with Çaycı Dayı beside them.
+/// The nodes of one unit along a winding, dashed lane (a tea-garden walk),
+/// with the host (Çaycı Dayı, or Pofuduk in Çocuk modu) beside them.
 class _UnitMap extends StatelessWidget {
   const _UnitMap({
     required this.unit,
@@ -571,113 +575,138 @@ class _UnitMap extends StatelessWidget {
   final void Function(PathNode, NodeState) onNode;
   final void Function(PathNode, NodeState) onStart;
 
-  /// Width of the column holding a node and its title.
+  /// Width of the column holding a node, its invite and its title.
   static const _colWidth = 150.0;
+
+  /// Widest the invite bubble may be.
+  static const _inviteWidth = 270.0;
+
+  /// Height of the title under a node.
+  static const _titleRoom = 34.0;
 
   @override
   Widget build(BuildContext context) => LayoutBuilder(
     builder: (context, box) {
+      final p = context.palette;
       final w = box.maxWidth;
-      final swing = zigzagSwing(w);
+      final swing = laneSwing(w);
       final color = Brand.tone(unit.color);
-      final count = unit.nodes.length;
       final mascotAt = mascotRow(unit);
       final unitDone = unit.nodes.every((n) => stateOf(n) == NodeState.done);
-      return Column(
-        children: [
-          for (final (i, node) in unit.nodes.indexed)
-            Builder(
-              builder: (context) {
-                final state = stateOf(node);
-                final active = state == NodeState.active;
-                final dx = zigzag(i, count: count, mirror: mirror) * swing;
-                final left = (w / 2 + dx - _colWidth / 2).clamp(0.0, max(0.0, w - _colWidth)).toDouble();
-                final nodeHeight = pathNodeSize + pathNodeLip + (active ? 20 : 0);
-                final height = (active ? balloonRoom : 0) + nodeHeight + 40;
-                return SizedBox(
-                  key: node == current ? activeKey : ValueKey(node.id),
-                  height: height,
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      if (i == mascotAt)
-                        Positioned(
-                          top: max(0, (height - 110) / 2),
-                          left: dx > 0 ? 4 : null,
-                          right: dx > 0 ? null : 4,
-                          child: PathMascot(mood: unitDone ? Mood.joy : Mood.calm),
-                        ),
-                      Positioned(
-                        left: left,
-                        width: _colWidth,
-                        top: 0,
-                        child: Column(
-                          children: [
-                            if (active)
-                              SizedBox(
-                                height: balloonRoom,
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: StartBalloon(
-                                    key: Key('start-balloon-${node.id}'),
-                                    label: nodeCta(node.type),
-                                    color: node.type == NodeType.chest ? Brand.accent : color,
-                                    onTap: () => onStart(node, state),
-                                  ),
-                                ),
-                              ),
-                            NodeHighlight(
-                              on: node.id == highlightId,
-                              color: color,
-                              child: Column(
-                                children: [
-                                  Builder(
-                                    builder: (nodeContext) {
-                                      nodeContexts[node.id] = nodeContext;
-                                      return CompositedTransformTarget(
-                                        link: linkOf(node.id),
-                                        child: PathNodeButton(
-                                          key: Key('path-node-${node.id}'),
-                                          type: node.type,
-                                          state: state,
-                                          color: color,
-                                          semanticLabel: node.title,
-                                          onTap: () => onNode(node, state),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  const SizedBox(height: 4),
-                                  GestureDetector(
-                                    behavior: HitTestBehavior.opaque,
-                                    onTap: () => onNode(node, state),
-                                    child: Text(
-                                      node.title,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: active ? FontWeight.w800 : FontWeight.w600,
-                                        color: switch (state) {
-                                          NodeState.active => color,
-                                          NodeState.done => Brand.ink,
-                                          NodeState.locked => Brand.muted,
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+      // Node centres, for the lane drawn behind them.
+      final centres = <Offset>[];
+      var y = 0.0;
+      final rows = <Widget>[];
+      for (final (i, node) in unit.nodes.indexed) {
+        final state = stateOf(node);
+        final active = state == NodeState.active;
+        final dx = laneOffset(i, mirror: mirror) * swing;
+        final left = (w / 2 + dx - _colWidth / 2).clamp(0.0, max(0.0, w - _colWidth)).toDouble();
+        final above = active ? balloonRoom : 0.0;
+        final height = above + pathNodeHeight + _titleRoom;
+        centres.add(Offset(w / 2 + dx, y + above + pathNodeHeight * 0.6));
+        y += height;
+        rows.add(
+          SizedBox(
+            key: node == current ? activeKey : ValueKey(node.id),
+            height: height,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                if (i == mascotAt)
+                  Positioned(
+                    top: max(0, (height - 110) / 2),
+                    left: dx > 0 ? 4 : null,
+                    right: dx > 0 ? null : 4,
+                    child: PathMascot(mood: unitDone ? Mood.joy : Mood.calm),
                   ),
-                );
-              },
+                // The invite floats over the node, kept inside the path.
+                if (active)
+                  Positioned(
+                    left: (w / 2 + dx - min(w, _inviteWidth) / 2).clamp(
+                      0.0,
+                      max(0.0, w - min(w, _inviteWidth)),
+                    ),
+                    width: min(w, _inviteWidth),
+                    top: 0,
+                    height: balloonRoom - 6,
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: TeaInvite(
+                        key: Key('tea-invite-${node.id}'),
+                        label: nodeInvite(node.type),
+                        color: node.type == NodeType.chest ? Brand.accent : color,
+                        onTap: () => onStart(node, state),
+                      ),
+                    ),
+                  ),
+                Positioned(
+                  left: left,
+                  width: _colWidth,
+                  top: above,
+                  child: NodeHighlight(
+                    on: node.id == highlightId,
+                    color: color,
+                    child: Column(
+                      children: [
+                        Builder(
+                          builder: (nodeContext) {
+                            nodeContexts[node.id] = nodeContext;
+                            return CompositedTransformTarget(
+                              link: linkOf(node.id),
+                              child: TeaNode(
+                                key: Key('path-node-${node.id}'),
+                                type: node.type,
+                                state: state,
+                                color: color,
+                                semanticLabel: node.title,
+                                onTap: () => onNode(node, state),
+                              ),
+                            );
+                          },
+                        ),
+                        const SizedBox(height: 4),
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () => onNode(node, state),
+                          child: Text(
+                            node.title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: active ? FontWeight.w800 : FontWeight.w600,
+                              color: switch (state) {
+                                NodeState.active => color,
+                                NodeState.done => Brand.ink,
+                                NodeState.locked => Brand.muted,
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
+          ),
+        );
+      }
+      return Stack(
+        children: [
+          Positioned.fill(
+            child: CustomPaint(
+              key: Key('lane-${unit.id}'),
+              painter: LanePainter(
+                points: centres,
+                lane: Color.alphaBlend(color.withValues(alpha: p.isDark ? 0.12 : 0.08), p.surface),
+                dash: color.withValues(alpha: 0.45),
+              ),
+            ),
+          ),
+          Column(children: rows),
         ],
       );
     },
@@ -713,7 +742,17 @@ class _DailyGoalCard extends ConsumerWidget {
     return TapCard(
       child: Row(
         children: [
-          Icon(Icons.flag_rounded, color: Brand.primary, size: 32),
+          // The day's glass fills up with the daily goal.
+          CustomPaint(
+            key: const Key('daily-glass'),
+            size: const Size(34, 44),
+            painter: TeaGlassPainter(
+              level: ratio,
+              color: Brand.primary,
+              palette: Brand.palette,
+              goldRim: ratio >= 1,
+            ),
+          ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -739,7 +778,7 @@ class _DailyGoalCard extends ConsumerWidget {
   }
 }
 
-/// Chest wobbles, bursts open and reveals the XP with confetti.
+/// The teapot rattles, its lid pops up and sugar cubes (the XP) tumble out.
 class _ChestDialog extends StatefulWidget {
   const _ChestDialog({required this.xp});
   final int xp;
@@ -775,7 +814,7 @@ class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderSta
   Widget build(BuildContext context) => Dialog(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
     clipBehavior: Clip.antiAlias,
-    child: Confetti(
+    child: TeaCelebration(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(24, 28, 24, 20),
         child: AnimatedBuilder(
@@ -795,13 +834,11 @@ class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderSta
                       angle: wobble,
                       child: Transform.scale(
                         scale: opened ? 0.9 + 0.3 * burst : 1,
-                        child: Brand.isKid
-                            ? Text(opened ? '✨' : '🎁', style: const TextStyle(fontSize: 84))
-                            : Icon(
-                                opened ? Icons.redeem_rounded : Icons.card_giftcard_rounded,
-                                size: 72,
-                                color: Brand.accent,
-                              ),
+                        child: CustomPaint(
+                          key: const Key('teapot-reward'),
+                          size: const Size(110, 110),
+                          painter: TeapotPainter(color: Brand.accent, palette: Brand.palette, open: opened),
+                        ),
                       ),
                     ),
                   ),
@@ -811,7 +848,13 @@ class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderSta
                   opacity: opened ? 1 : 0,
                   child: Column(
                     children: [
-                      Text('Ödül açıldı!', style: Theme.of(context).textTheme.titleLarge),
+                      Text('Bir avuç şeker!', style: Theme.of(context).textTheme.titleLarge),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Çaydanlığın dibinden şeker çıktı; XP olarak hesabına geçti.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Brand.muted),
+                      ),
                       const SizedBox(height: 6),
                       CountUp(
                         value: opened ? widget.xp : 0,
@@ -823,7 +866,7 @@ class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderSta
                   ),
                 ),
                 const SizedBox(height: 18),
-                PressableButton(label: 'HARİKA', onPressed: () => Navigator.pop(context)),
+                PressableButton(label: 'AFİYET OLSUN', onPressed: () => Navigator.pop(context)),
               ],
             );
           },

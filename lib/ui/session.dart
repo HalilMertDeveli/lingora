@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
@@ -10,6 +12,28 @@ import 'motion.dart';
 
 /// Answers in a row from which the progress bar and header celebrate.
 const comboThreshold = 3;
+
+/// Turkish tea-house praise for a right answer ("tavşan kanı" is the deep red
+/// of perfectly brewed tea). Rotated so the same line does not come twice.
+const teaPraises = [
+  'Şıkır şıkır!',
+  'Tavşan kanı gibi!',
+  'Demi tam oturdu!',
+  'Tıkır tıkır!',
+  'Aferin, çayı hak ettin!',
+  'Maşallah!',
+];
+
+/// Gentle words after a wrong answer: no penalty, no alarm.
+const softRetries = [
+  'Bir daha dene, olur o kadar.',
+  'Dert etme, çay daha sıcak.',
+  'Az kaldı, sıradakinde.',
+  'Olur böyle şeyler, devam!',
+];
+
+/// The [n]th praise line.
+String praiseFor(int n) => teaPraises[n % teaPraises.length];
 
 /// Top of a session: close X, a thick progress bar and a trailing badge.
 /// A run of [comboThreshold]+ correct answers lights the bar up and shows a
@@ -220,15 +244,16 @@ class CheckBar extends StatelessWidget {
     padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
     decoration: BoxDecoration(
       color: Brand.background,
-      border: Border(top: BorderSide(color: Brand.line, width: 2)),
+      border: Border(top: BorderSide(color: Brand.line)),
     ),
-    child: PressableButton(label: label, color: color ?? Brand.success, onPressed: onCheck),
+    child: PressableButton(label: label, color: color ?? Brand.primary, onPressed: onCheck),
   );
 }
 
-/// Panel that slides up from the bottom after "Kontrol et": green for a
-/// correct answer, red with the right answer for a wrong one, and a
-/// "Devam" button. The mascot reacts at its side.
+/// Panel that slides up from the bottom after "Kontrol et". A right answer
+/// gets the tea colour and a tea-house praise ("Şıkır şıkır!"); a wrong one
+/// gets soft İznik navy, a calm "olur o kadar" line and the right answer. No
+/// penalty either way. The mascot reacts at its side; "Devam" goes on.
 class AnswerFeedbackPanel extends StatefulWidget {
   const AnswerFeedbackPanel({
     super.key,
@@ -239,12 +264,13 @@ class AnswerFeedbackPanel extends StatefulWidget {
     this.detail,
     this.secondary,
     this.continueKey,
+    this.seed,
   });
 
   final bool correct;
   final VoidCallback onContinue;
 
-  /// Headline; "Doğru!" / "Doğru cevap:" by default.
+  /// Headline; a praise line / "Doğru cevap:" by default.
   final String? title;
 
   /// The right answer (wrong answers) or the learned pair (correct ones).
@@ -259,6 +285,9 @@ class AnswerFeedbackPanel extends StatefulWidget {
   /// Key for the "Devam" button (tests and older call sites).
   final Key? continueKey;
 
+  /// Picks the praise / comfort line; random when null.
+  final int? seed;
+
   /// Slide-up time of the panel.
   static const slideDuration = Duration(milliseconds: 300);
 
@@ -268,6 +297,7 @@ class AnswerFeedbackPanel extends StatefulWidget {
 
 class _AnswerFeedbackPanelState extends State<AnswerFeedbackPanel> with SingleTickerProviderStateMixin {
   late final _c = AnimationController(vsync: this, duration: AnswerFeedbackPanel.slideDuration);
+  late final int _seed = widget.seed ?? Random().nextInt(1000);
 
   @override
   void didChangeDependencies() {
@@ -290,7 +320,8 @@ class _AnswerFeedbackPanelState extends State<AnswerFeedbackPanel> with SingleTi
   @override
   Widget build(BuildContext context) {
     final ok = widget.correct;
-    final fg = ok ? Brand.success : Brand.error;
+    final p = context.palette;
+    final fg = ok ? p.success : p.error;
     final slide = CurvedAnimation(parent: _c, curve: Curves.easeOutCubic);
     return SlideTransition(
       position: Tween(begin: const Offset(0, 1), end: Offset.zero).animate(slide),
@@ -298,10 +329,11 @@ class _AnswerFeedbackPanelState extends State<AnswerFeedbackPanel> with SingleTi
         key: Key(ok ? 'feedback-correct' : 'feedback-wrong'),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: ok ? Brand.successBg : Brand.errorBg,
-          border: Border(top: BorderSide(color: fg.withValues(alpha: 0.35), width: 2)),
+          color: ok ? p.successBg : p.errorBg,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+          boxShadow: softShadow(p, tint: fg, lift: 1.4),
         ),
-        padding: const EdgeInsets.fromLTRB(20, 14, 20, 16),
+        padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
@@ -310,15 +342,30 @@ class _AnswerFeedbackPanelState extends State<AnswerFeedbackPanel> with SingleTi
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 PopIn(
-                  child: Icon(ok ? Icons.check_circle_rounded : Icons.cancel_rounded, color: fg, size: 32),
+                  child: Icon(
+                    ok ? Icons.check_circle_rounded : Icons.lightbulb_circle_rounded,
+                    color: fg,
+                    size: 36,
+                  ),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      if (!ok)
+                        Text(
+                          softRetries[_seed % softRetries.length],
+                          key: const Key('feedback-soft'),
+                          style: TextStyle(
+                            color: fg.withValues(alpha: 0.85),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       Text(
-                        widget.title ?? (ok ? 'Doğru!' : 'Doğru cevap:'),
+                        widget.title ?? (ok ? praiseFor(_seed) : 'Doğru cevap:'),
+                        key: const Key('feedback-title'),
                         style: TextStyle(color: fg, fontSize: 20, fontWeight: FontWeight.w900),
                       ),
                       if (widget.answer != null && widget.answer!.isNotEmpty)

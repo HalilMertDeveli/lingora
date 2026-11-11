@@ -118,7 +118,15 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      Dayi(mood: Mood.happy, size: context.isKid ? 96 : 64, animate: context.isKid),
+                      // Pofuduk with his phone: the account illustration.
+                      Image.asset(
+                        pofudukAccount,
+                        key: const Key('auth-illustration'),
+                        width: context.isKid ? 104 : 80,
+                        height: context.isKid ? 104 : 80,
+                        semanticLabel: 'Pofuduk ve telefonu',
+                        errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 20),
