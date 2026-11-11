@@ -1,7 +1,7 @@
 # Dilbaz tasarım sistemi
 
 Dilbaz'ın **varsayılan görünümü yetişkin** (sade, sakin, üniversite öğrencisi ve çalışanlar için).
-**Çocuk modu** isteğe bağlıdır ve eski oyunsu görünümü (büyük ve hareketli Çaycı Dayı maskotu, emoji, konfeti, zıplayan
+**Çocuk modu** isteğe bağlıdır ve eski oyunsu görünümü (büyük ve hareketli Pofuduk maskotu, emoji, çay kutlaması, zıplayan
 animasyonlar) geri getirir. Her iki mod da **açık** ve **koyu** temada çalışır.
 
 Kural: Stil ekranlardan değil **tema ve ortak widget'lardan** gelir. Yeni ekran yazarken aşağıdaki
@@ -62,7 +62,7 @@ bir başlık olur. Ölçek `Theme.of(context).textTheme`: `headlineSmall 24`, `t
 
 - `Space.xs/sm/md/lg/xl/xxl` = 4 / 8 / 12 / 16 / 24 / 32
 - `Radii.sm/md/lg/xl` = 8 / 12 / 16 / 20 (yetişkin kart ve buton 12, çocuk 16)
-- `AppDurations.fast/normal` = 150 / 220 ms. Yetişkinde animasyonlar kısa fade/slide; zıplama, konfeti,
+- `AppDurations.fast/normal` = 150 / 220 ms. Yetişkinde animasyonlar kısa fade/slide; zıplama, buhar ve kutlama,
   nabız (Pulse) yok.
 
 ## Ortak widget'lar (mod bilgisi içlerinde)
@@ -115,7 +115,44 @@ Tekil görüntüler `docs/tasarim/` altında: `once-*`, `yetiskin-acik-*`, `yeti
 Referans uygulamanın davranış tarifi ve Dilbaz karşılıkları: [arayuz-referans.md](arayuz-referans.md).
 
 - Oturum parçaları `lib/ui/session.dart`: `SessionHeader`, `SessionProgressBar` (seri vurgusu), `CheckBar`, `AnswerFeedbackPanel`. Yeni bir cevap-kontrol ekranı bunları kullanmalı.
-- Yol haritası parçaları `lib/screens/path_map.dart`: `PathNodeButton`, `StartBalloon`, `LessonCard`, `UnitBand`, `showUnitGuide`.
+- Yol haritası parçaları `lib/screens/path_map.dart`: `TeaNode`, `TeaInvite`, `LessonCard`, `UnitBand`, `showUnitGuide` (aşağıda "Çay kimliği").
 - Kutlama zinciri: `celebrationSteps(reward)` (görevler, sonra seri), `showEndSequence` ile.
 - Geçişler `lib/ui/transitions.dart`: `fullscreenDialog` rotaları aşağıdan yukarı açılır; sekmeler `FadeThroughIn`.
 - Ses ve titreşim `SessionFx` (`AppSettings.sound`). "Animasyonları azalt" (`AppSettings.reduceMotion`) uygulama kökünde `MediaQuery.disableAnimations` değerini açar. Yeni animasyon yazarken `MediaQuery.disableAnimationsOf(context)` ya da `loopsEnabled` kontrol edin.
+
+## Çay kimliği (feature/ozgun-tasarim)
+
+PR #26 arayüzü referans uygulamaya fazla benzetmişti. Bu bölüm Dilbaz'ın kendi kimliğini anlatır: bir çay bahçesinde yürüyüş.
+
+**Renkler** (`lib/theme.dart`): çay kırmızısı / kehribar (`primary`, `success`), İznik lacivertı (`error`, `info`), krem kâğıt (`background`, `card`) ve Lexigo turuncusu (`mascot`). Açık ve koyu tema; Çocuk modu daha canlı. Yanlış cevap rengi kırmızı değil, yumuşak lacivert.
+
+**Çizimler** (`lib/ui/tea_art.dart`, hepsi vektör, asset yok):
+- `TeaGlassPainter`: ince belli çay bardağı ve tabağı. Bitmiş ders dolu, demli ve altın yaldızlı; sıradaki ders yarım, buharlı (`Steam`) ve hafif nefes alır; kilitli ders boş cam.
+- `TeapotPainter`: ödül düğümü, iki katlı çaydanlık. Açılınca kapağı kalkar, yanına şeker küpleri düşer (ödül XP, "şeker" olarak gösterilir).
+- `TulipPainter`: ünite sınavı, lale rozeti. Geçilince kırmızı açar.
+- `LanePainter`: düğümleri bağlayan kesik çizgili, yumuşak S kıvrımlı patika (`laneOffset`).
+- `DistrictPainter`: bölüm kartlarındaki mekân şeridi. Bölüm 1 Mahalle, 2 Çarşı, 3 Vapur, 4 Ofis, 5 Yolculuk, 6 Kütüphane, 7 Toplantı, 8 Sahne (`District.of`).
+- `CiniPainter`: ünite bandının sağında soluk İznik motifi.
+
+**Davet balonu** (`TeaInvite`): "Başla" yerine sunucunun yüzüyle "Hadi, bir çay daha!" (ödülde "Demlik hazır", sınavda "Lale seni bekliyor").
+
+**Geri bildirim** (`AnswerFeedbackPanel`): doğruda çay rengi ve dönen övgü (`teaPraises`: "Şıkır şıkır!", "Tavşan kanı gibi!"…), yanlışta lacivert ve `softRetries` ("Bir daha dene, olur o kadar."). Ceza yok.
+
+**Basma efekti** (`JellyPress`): "jelibon". Buton ve kartlar basılıyken yumuşakça ezilir, bırakınca küçük bir yaylanmayla geri gelir; gölge yumuşak ve sıcak (`softShadow`). 3B dudak yok. Animasyonlar azaltılınca hareket etmez.
+
+**Kutlama** (`TeaCelebration`): konfeti yerine alttan yükselen buhar, düşen şeker küpleri ve lale yaprakları.
+
+**İki maskot** (`lib/ui/mascot.dart`):
+- Yetişkin modu: Çaycı Dayı (`Dayi`) ana sunucu, küçük ve hareketsiz.
+- Çocuk modu: Pofuduk (`Pofuduk`) ana karakter; her ruh hâlinin kendi pozu var (`pofudukPose`).
+- İki modda da Pofuduk görünür: karşılama (`Mood.wave`, el sallayan), kutlama (`Mood.cheer`, gözlüklü), seri (`Mood.happy`, dans eden), çay molası (`Mood.calm`, meditasyon).
+- Çocuk modu profil avatarı Pofuduk'un kare yüzü (`pofudukAvatar`), giriş ekranı çizimi telefonlu Pofuduk (`pofudukAccount`).
+
+**Bayraklar**: kurs çekmecesinde sesli okuma aksanı (ABD / Birleşik Krallık, `Accent`); Turizm İngilizcesi yolunda "Misafirlerin nereden geliyor?" kartı (`GuestFlagsCard`); karşılamadaki "Yakında" dilleri (İspanyolca, Fransızca).
+
+Testler: `test/arayuz_test.dart` (düğüm durumları, azaltılmış animasyon), `test/mascot_test.dart` (maskot ve mod), `test/ozgun_test.dart` (renkler, mekânlar, aksan, misafir bayrakları).
+
+Yetişkin (açık yol, doğru, yanlış, koyu yol) ve Çocuk modu (yol, doğru, profil avatarı, turizm misafir bayrakları):
+
+![Yetişkin](tasarim/ozgun-yetiskin.png)
+![Çocuk modu](tasarim/ozgun-cocuk.png)

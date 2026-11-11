@@ -1,0 +1,161 @@
+// Lexigo asset seti -> assets/ (Pofuduk pozlari, bayraklar, ikonlar).
+// Repoda analiz edilmesin diye .txt; calistirmak icin ayri bir klasore
+// proc.dart olarak kopyala, pubspec'e 'image: 4.12.0' ekle ve:
+//   dart run bin/proc.dart <Lexigo_assets klasoru> <cikti klasoru>
+// Ayrintilar: docs/assets.md
+
+import 'dart:collection';
+import 'dart:io';
+import 'package:image/image.dart' as img;
+
+/// Removes the near-white background (and the beige floor shadow) connected
+/// to the image border, feathers the edge, trims and resizes.
+img.Image cutout(img.Image src, {int thr = 186, bool holes = true}) {
+  final im = src.convert(numChannels: 4);
+  final w = im.width, h = im.height;
+  final bg = List<bool>.filled(w * h, false);
+  bool light(int x, int y) {
+    final p = im.getPixel(x, y);
+    final r = p.r.toInt(), g = p.g.toInt(), b = p.b.toInt();
+    final mn = [r, g, b].reduce((a, c) => a < c ? a : c);
+    final mx = [r, g, b].reduce((a, c) => a > c ? a : c);
+    // near white, or the pale beige shadow (low saturation, light)
+    return mn >= thr || (mn >= 160 && mx - mn <= 85 && r >= 225);
+  }
+  final q = Queue<int>();
+  void seed(int x, int y) {
+    final i = y * w + x;
+    if (!bg[i] && light(x, y)) {
+      bg[i] = true;
+      q.add(i);
+    }
+  }
+  for (var x = 0; x < w; x++) { seed(x, 0); seed(x, h - 1); }
+  for (var y = 0; y < h; y++) { seed(0, y); seed(w - 1, y); }
+  while (q.isNotEmpty) {
+    final i = q.removeFirst();
+    final x = i % w, y = i ~/ w;
+    if (x > 0) seed(x - 1, y);
+    if (x < w - 1) seed(x + 1, y);
+    if (y > 0) seed(x, y - 1);
+    if (y < h - 1) seed(x, y + 1);
+  }
+  if (holes) {
+    // Enclosed light regions (gaps between an arm and the body) also go;
+    // eye whites are rings around a pupil (centroid outside the region) and
+    // highlights/teeth are small, so they stay.
+    final seen = List<bool>.filled(w * h, false);
+    for (var s0 = 0; s0 < w * h; s0++) {
+      if (bg[s0] || seen[s0] || !light(s0 % w, s0 ~/ w)) continue;
+      final region = <int>[];
+      final rq = Queue<int>()..add(s0);
+      seen[s0] = true;
+      while (rq.isNotEmpty) {
+        final i = rq.removeFirst();
+        region.add(i);
+        final x = i % w, y = i ~/ w;
+        for (final (nx, ny) in [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)]) {
+          if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
+          final j = ny * w + nx;
+          if (!seen[j] && !bg[j] && light(nx, ny)) { seen[j] = true; rq.add(j); }
+        }
+      }
+      if (region.length < 1500) continue;
+      var sx = 0, sy = 0;
+      for (final i in region) { sx += i % w; sy += i ~/ w; }
+      final c = (sy ~/ region.length) * w + sx ~/ region.length;
+      final set = region.toSet();
+      if (set.contains(c)) { for (final i in region) bg[i] = true; }
+    }
+  }
+  for (var y = 0; y < h; y++) {
+    for (var x = 0; x < w; x++) {
+      final i = y * w + x;
+      final p = im.getPixel(x, y);
+      if (bg[i]) {
+        p.a = 0;
+        continue;
+      }
+      // Edge feather: pixels touching the background get alpha from lightness.
+      var near = false;
+      for (var dy = -1; dy <= 1 && !near; dy++) {
+        for (var dx = -1; dx <= 1; dx++) {
+          final nx = x + dx, ny = y + dy;
+          if (nx >= 0 && ny >= 0 && nx < w && ny < h && bg[ny * w + nx]) { near = true; break; }
+        }
+      }
+      if (near) {
+        final mn = [p.r, p.g, p.b].map((v) => v.toInt()).reduce((a, c) => a < c ? a : c);
+        final a = ((255 - mn) / (255 - 140)).clamp(0.0, 1.0);
+        p.a = (a * 255).round();
+      }
+    }
+  }
+  return im;
+}
+
+img.Image trim(img.Image im, {int pad = 6}) {
+  var x0 = im.width, y0 = im.height, x1 = 0, y1 = 0;
+  for (var y = 0; y < im.height; y++) {
+    for (var x = 0; x < im.width; x++) {
+      if (im.getPixel(x, y).a > 8) {
+        if (x < x0) x0 = x; if (y < y0) y0 = y; if (x > x1) x1 = x; if (y > y1) y1 = y;
+      }
+    }
+  }
+  x0 = (x0 - pad).clamp(0, im.width - 1); y0 = (y0 - pad).clamp(0, im.height - 1);
+  x1 = (x1 + pad).clamp(0, im.width - 1); y1 = (y1 + pad).clamp(0, im.height - 1);
+  return img.copyCrop(im, x: x0, y: y0, width: x1 - x0 + 1, height: y1 - y0 + 1);
+}
+
+img.Image fit(img.Image im, int maxSide) {
+  if (im.width <= maxSide && im.height <= maxSide) return im;
+  return im.width >= im.height
+      ? img.copyResize(im, width: maxSide, interpolation: img.Interpolation.average)
+      : img.copyResize(im, height: maxSide, interpolation: img.Interpolation.average);
+}
+
+void save(img.Image im, String path) {
+  File(path).writeAsBytesSync(img.encodePng(im, level: 9));
+  stdout.writeln('$path ${im.width}x${im.height} ${File(path).lengthSync() ~/ 1024} KB');
+}
+
+void main(List<String> args) {
+  final src = args[0], out = args[1];
+  Directory('$out/mascot').createSync(recursive: true);
+  Directory('$out/flags').createSync(recursive: true);
+  Directory('$out/brand').createSync(recursive: true);
+  img.Image load(String p) => img.decodePng(File('$src/$p').readAsBytesSync())!;
+  const poses = {
+    'maskot/01_image-11_140x140.png': 'pofuduk_avatar',
+    'maskot/02_image-31_140x136.png': 'pofuduk_hesap',
+    'maskot/03_image-15_304x264.png': 'pofuduk_selam',
+    'maskot/04_image-16_120x111.png': 'pofuduk_uzgun',
+    'maskot/05_image-18_311x274.png': 'pofuduk_gozluk',
+    'maskot/07_image-20_108x110.png': 'pofuduk_dans',
+    'maskot/08_image-15_311x263.png': 'pofuduk_isaret',
+    'maskot/13_image-21_304x280.png': 'pofuduk_meditasyon',
+  };
+  poses.forEach((k, v) {
+    save(fit(trim(cutout(load(k), holes: v != 'pofuduk_hesap')), v == 'pofuduk_avatar' ? 256 : 420), '$out/mascot/$v.png');
+  });
+  const flags = {
+    'bayraklar/21_Rectangle-3_60x40.png': 'es',
+    'bayraklar/15_Rectangle-3_60x40.png': 'gb',
+    'bayraklar/16_Rectangle-3_60x40.png': 'sa',
+    'bayraklar/17_Rectangle-3_60x40.png': 'pk',
+    'bayraklar/18_Rectangle-3_60x40.png': 'fr',
+    'bayraklar/19_Rectangle-3_60x40.png': 'in',
+    'bayraklar/20_Rectangle-3_60x40.png': 'us',
+  };
+  flags.forEach((k, v) {
+    var f = load(k).convert(numChannels: 4);
+    final tw = (f.height * 1.5).round().clamp(1, f.width), th = (tw / 1.5).round();
+    f = img.copyCrop(f, x: (f.width - tw) ~/ 2, y: (f.height - th) ~/ 2, width: tw, height: th);
+    f = img.copyResize(f, width: 120, height: 80, interpolation: img.Interpolation.average);
+    save(f, '$out/flags/$v.png');
+  });
+  save(fit(load('ikonlar/22_image-23_32x32.png'), 96), '$out/brand/google_g.png');
+  save(fit(load('ikonlar/06_image-27_24x24.png'), 96), '$out/brand/arkadaslar.png');
+  save(fit(load('ikonlar/23_image-28_32x32.png'), 96), '$out/brand/video.png');
+}

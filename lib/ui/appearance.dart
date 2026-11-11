@@ -61,7 +61,7 @@ class AppearanceSettings extends ConsumerWidget {
             contentPadding: EdgeInsets.zero,
             title: Text('Animasyonları azalt', style: t.titleMedium),
             subtitle: Text(
-              'Zıplama, konfeti ve geçiş animasyonları kapanır. Telefonun ayarı da dikkate alınır.',
+              'Zıplama, buhar, kutlama ve geçiş animasyonları kapanır. Telefonun ayarı da dikkate alınır.',
               style: t.bodySmall,
             ),
             value: s.reduceMotion,

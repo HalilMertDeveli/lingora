@@ -33,7 +33,7 @@ Future<void> _pumpKit(WidgetTester tester, AppMode mode, Brightness b) async {
       theme: buildTheme(mode: mode, brightness: b),
       builder: (_, child) => PaletteScope(palette: palette, child: child!),
       home: Scaffold(
-        body: Confetti(
+        body: TeaCelebration(
           child: ListView(
             children: [
               const Mascot(mood: Mood.happy),
@@ -71,7 +71,14 @@ void main() {
         ..setTheme(ThemePref.dark);
       final prefs = await SharedPreferences.getInstance();
       final saved = jsonDecode(prefs.getString(AppSettingsNotifier.key)!) as Map<String, dynamic>;
-      expect(saved, {'mode': 'kid', 'theme': 'dark', 'sound': true, 'reduceMotion': false});
+      expect(saved, {
+        'mode': 'kid',
+        'theme': 'dark',
+        'sound': true,
+        'reduceMotion': false,
+        'accent': 'us',
+        'guests': <String>[],
+      });
       // Learning progress is stored separately and untouched.
       expect(prefs.getString('progress_v1'), isNull);
 
@@ -162,11 +169,12 @@ void main() {
         expect(Theme.of(ctx).scaffoldBackgroundColor, Palette.of(AppMode.adult, b).background);
       });
 
-      testWidgets('Çocuk modu (${b.name}) brings back a big animated mascot, emoji and caps', (tester) async {
+      testWidgets('Çocuk modu (${b.name}) brings Pofuduk, big and animated, emoji and caps', (tester) async {
         await _pumpKit(tester, AppMode.kid, b);
         expect(tester.takeException(), isNull);
-        expect(find.byType(Dayi), findsNWidgets(2));
-        expect(tester.getSize(find.byType(Dayi).first).height, 120);
+        expect(find.byType(Pofuduk), findsNWidgets(2));
+        expect(find.byType(Dayi), findsNothing);
+        expect(tester.getSize(find.byType(Pofuduk).first).height, 120);
         expect(find.text('KONTROL ET'), findsOneWidget);
         expect(find.text('🎓'), findsOneWidget);
         expect(find.text('⚡'), findsOneWidget);

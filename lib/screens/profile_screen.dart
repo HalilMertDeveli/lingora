@@ -8,6 +8,7 @@ import '../services/billing/premium.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/appearance.dart';
+import '../ui/mascot.dart';
 import 'account_section.dart';
 import 'error_analysis_screen.dart';
 import 'growth_profile_section.dart';
@@ -35,7 +36,14 @@ class ProfileScreen extends ConsumerWidget {
       children: [
         Row(
           children: [
-            LingoraLogo(size: 64),
+            // Çocuk modu: Pofuduk's square face is the avatar.
+            if (Brand.isKid)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(18),
+                child: Image.asset(pofudukAvatar, key: const Key('kid-avatar'), width: 64, height: 64),
+              )
+            else
+              const LingoraLogo(size: 64),
             SizedBox(width: 16),
             Expanded(
               child: Column(

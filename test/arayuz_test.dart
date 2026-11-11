@@ -12,6 +12,7 @@ import 'package:lingora/screens/path_map.dart';
 import 'package:lingora/theme.dart';
 import 'package:lingora/ui/motion.dart';
 import 'package:lingora/ui/session.dart';
+import 'package:lingora/ui/tea_art.dart';
 import 'package:lingora/ui/transitions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -55,26 +56,73 @@ LessonReward _reward({bool streak = true, bool quest = true}) => LessonReward(
 
 void main() {
   group('path map', () {
-    test('zigzag swings in a wave of eight, mirrors odd units, centres the last node', () {
-      expect([for (var i = 0; i < 8; i++) zigzag(i)], [0, -0.5, -1, -0.5, 0, 0.5, 1, 0.5]);
-      expect(zigzag(2, mirror: true), 1);
-      expect(zigzag(5, count: 6), 0);
-      expect(zigzagSwing(1000), 70);
+    test('the lane winds as a soft S-curve and mirrors odd units', () {
+      expect([for (var i = 0; i < 8; i++) laneOffset(i)], [0, 0.707, 1, 0.707, 0, -0.707, -1, -0.707]);
+      expect(laneOffset(2, mirror: true), -1);
+      expect(laneSwing(1000), 72);
+      expect(laneSwing(300), 60);
     });
 
-    testWidgets('done, active and locked nodes look different; the active one has a balloon', (tester) async {
+    test('a glass fills up as the lesson is done', () {
+      expect(glassLevel(NodeState.locked), 0);
+      expect(glassLevel(NodeState.active), 0.5);
+      expect(glassLevel(NodeState.done), greaterThan(0.8));
+    });
+
+    testWidgets('done, active and locked glasses differ; the active one is invited', (tester) async {
       await pumpApp(tester, {'progress_v1': _progress(done: 2)});
       final nodes = _course.units.first.nodes;
-      PathNodeButton node(int i) => tester.widget(find.byKey(Key('path-node-${nodes[i].id}')));
+      TeaNode node(int i) => tester.widget(find.byKey(Key('path-node-${nodes[i].id}')));
       expect(node(0).state, NodeState.done);
       expect(node(2).state, NodeState.active);
       expect(node(3).state, NodeState.locked);
-      expect(find.byKey(const Key('active-ring')), findsOneWidget);
-      expect(find.byKey(Key('start-balloon-${nodes[2].id}')), findsOneWidget);
+      // Full glass with a gold rim, half glass, empty glass.
+      TeaGlassPainter glass(int i) => tester
+          .widgetList<CustomPaint>(
+            find.descendant(
+              of: find.byKey(Key('path-node-${nodes[i].id}')),
+              matching: find.byType(CustomPaint),
+            ),
+          )
+          .map((c) => c.painter)
+          .whereType<TeaGlassPainter>()
+          .single;
+      expect(glass(0).level, glassLevel(NodeState.done));
+      expect(glass(0).goldRim, isTrue);
+      expect(glass(2).level, closeTo(0.5, 0.05));
+      expect(glass(3).level, 0);
+      expect(glass(3).dim, isTrue);
+      expect(find.byKey(const Key('active-glow')), findsOneWidget);
+      expect(find.byKey(Key('tea-invite-${nodes[2].id}')), findsOneWidget);
+      expect(find.text(nodeInvite(nodes[2].type)), findsOneWidget);
       expect(find.byIcon(Icons.check_rounded), findsNWidgets(2));
       expect(find.byIcon(Icons.lock_rounded), findsWidgets);
-      // Çaycı Dayı stands beside the path.
+      // The host stands beside the lane, and the lane is drawn.
       expect(find.byKey(const Key('path-mascot')), findsWidgets);
+      expect(find.byKey(Key('lane-${_course.units.first.id}')), findsOneWidget);
+    });
+
+    testWidgets('the reward is a teapot and the unit test a tulip', (tester) async {
+      await _pumpKit(
+        tester,
+        Row(
+          children: [
+            for (final (t, s) in [
+              (NodeType.chest, NodeState.active),
+              (NodeType.chest, NodeState.done),
+              (NodeType.test, NodeState.locked),
+            ])
+              TeaNode(type: t, state: s, color: Colors.teal, onTap: () {}),
+          ],
+        ),
+      );
+      final painters = tester
+          .widgetList<CustomPaint>(find.byType(CustomPaint))
+          .map((c) => c.painter)
+          .toList();
+      expect(painters.whereType<TeapotPainter>().map((p) => p.open), [false, true]);
+      expect(painters.whereType<TulipPainter>().single.dim, isTrue);
+      expect(find.byKey(const Key('steam')), findsNothing, reason: 'only glasses steam');
     });
 
     testWidgets('tapping a node opens its lesson card; Başla starts the lesson', (tester) async {
@@ -134,7 +182,9 @@ void main() {
   });
 
   group('session', () {
-    testWidgets('feedback panel: green when right, red with the answer when wrong', (tester) async {
+    testWidgets('feedback panel: tea and a praise when right, soft navy with the answer when wrong', (
+      tester,
+    ) async {
       var next = 0;
       await _pumpKit(
         tester,
@@ -144,7 +194,10 @@ void main() {
         ),
       );
       expect(find.byKey(const Key('feedback-correct')), findsOneWidget);
-      expect(find.text('Doğru!'), findsOneWidget);
+      final praise = tester.widget<Text>(find.byKey(const Key('feedback-title'))).data;
+      expect(teaPraises, contains(praise));
+      final ok = tester.widget<Container>(find.byKey(const Key('feedback-correct')));
+      expect((ok.decoration! as BoxDecoration).color, Brand.successBg);
       await tester.tap(find.text('Devam'));
       expect(next, 1);
 
@@ -158,8 +211,12 @@ void main() {
       expect(find.byKey(const Key('feedback-wrong')), findsOneWidget);
       expect(find.text('Doğru cevap:'), findsOneWidget);
       expect(find.text('Hello'), findsOneWidget);
+      expect(softRetries, contains(tester.widget<Text>(find.byKey(const Key('feedback-soft'))).data));
       final box = tester.widget<Container>(find.byKey(const Key('feedback-wrong')));
       expect((box.decoration! as BoxDecoration).color, Brand.errorBg);
+      // Wrong answers are navy, never alarm red.
+      final navy = HSLColor.fromColor(Brand.error);
+      expect(navy.hue, inInclusiveRange(200, 240));
     });
 
     testWidgets('feedback panel slides up from below', (tester) async {
@@ -192,7 +249,7 @@ void main() {
 
     testWidgets('a lesson shows the check bar, then the panel after Kontrol et', (tester) async {
       await pumpApp(tester, {'progress_v1': _progress()});
-      await tester.tap(find.text('Başla'));
+      await tester.tap(find.text('Hadi, bir çay daha!'));
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('check-bar')), findsOneWidget);
       expect(find.byKey(const Key('session-progress')), findsOneWidget);
@@ -269,31 +326,50 @@ void main() {
       expect(find.text('home'), findsOneWidget);
     });
 
-    testWidgets('confetti bursts on the result screen', (tester) async {
-      await _pumpKit(tester, const Confetti(child: SizedBox.expand()), reduced: false);
+    testWidgets('steam, sugar and tulip petals rise and fall on the result screen', (tester) async {
+      await _pumpKit(tester, const TeaCelebration(child: SizedBox.expand()), reduced: false);
       await tester.pump(const Duration(milliseconds: 300));
-      expect(find.byKey(const Key('confetti')), findsOneWidget);
-      await tester.pump(Confetti.duration);
-      expect(find.byKey(const Key('confetti')), findsNothing);
+      expect(find.byKey(const Key('tea-celebration')), findsOneWidget);
+      final painter =
+          tester.widget<CustomPaint>(find.byKey(const Key('tea-celebration'))).painter! as CelebrationPainter;
+      expect(painter.pieces.map((p) => p.kind).toSet(), PieceKind.values.toSet());
+      await tester.pump(TeaCelebration.duration);
+      expect(find.byKey(const Key('tea-celebration')), findsNothing);
     });
   });
 
   group('reduced motion', () {
-    testWidgets('no confetti, no bobbing balloon, panel and bar appear at once', (tester) async {
+    testWidgets('no celebration, no steam, no breathing glass; panel and bar appear at once', (tester) async {
       await _pumpKit(
         tester,
         Column(
           children: [
-            const Expanded(child: Confetti(child: SizedBox.expand())),
-            StartBalloon(label: 'Başla', color: Colors.orange, onTap: () {}),
+            const Expanded(child: TeaCelebration(child: SizedBox.expand())),
+            TeaInvite(label: 'Hadi, bir çay daha!', color: Colors.orange, onTap: () {}),
+            TeaNode(type: NodeType.lesson, state: NodeState.active, color: Colors.orange, onTap: () {}),
+            const Steam(),
             SessionHeader(progress: 0.5, color: Colors.green, onClose: () {}),
             AnswerFeedbackPanel(correct: true, onContinue: () {}),
           ],
         ),
       );
       await tester.pump(const Duration(milliseconds: 16));
-      expect(find.byKey(const Key('confetti')), findsNothing);
+      expect(find.byKey(const Key('tea-celebration')), findsNothing);
+      expect(find.byKey(const Key('steam')), findsNothing);
       expect(tester.hasRunningAnimations, isFalse);
+    });
+
+    testWidgets('with motion on, the current glass steams and breathes', (tester) async {
+      await _pumpKit(
+        tester,
+        Center(
+          child: TeaNode(type: NodeType.lesson, state: NodeState.active, color: Colors.orange, onTap: () {}),
+        ),
+        reduced: false,
+      );
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(find.byKey(const Key('steam')), findsOneWidget);
+      expect(tester.hasRunningAnimations, isTrue);
     });
 
     testWidgets('"Animasyonları azalt" in Profil turns on reduced motion app-wide', (tester) async {

@@ -82,15 +82,16 @@ class _LessonResultScreenState extends State<LessonResultScreen> {
 
     return Scaffold(
       key: const Key('lesson-result'),
-      body: Confetti(
+      body: TeaCelebration(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 const Spacer(),
-                // The mascot cheers for a strong lesson and waves otherwise.
-                Mascot(mood: success ? Mood.cheer : Mood.happy, size: 150, react: true),
+                // Celebration: Pofuduk (both modes) puts on his sunglasses for a
+                // strong lesson and dances otherwise.
+                Pofuduk(mood: success ? Mood.cheer : Mood.happy, size: Brand.isKid ? 150 : 124),
                 const SizedBox(height: 8),
                 PopIn(
                   delay: const Duration(milliseconds: 150),
@@ -220,7 +221,7 @@ class _StreakCelebrationScreenState extends State<StreakCelebrationScreen> {
           child: Column(
             children: [
               const Spacer(),
-              const Mascot(mood: Mood.calm, size: 130, react: true),
+              Pofuduk(mood: Mood.happy, size: Brand.isKid ? 130 : 110),
               const SizedBox(height: 8),
               PopIn(from: 0.2, child: Icon(Icons.local_fire_department, color: Brand.streak, size: 84)),
               CountUp(
@@ -341,7 +342,7 @@ class _QuestProgressScreenState extends State<QuestProgressScreen> {
     final anyDone = r.questsCompleted.isNotEmpty;
     return Scaffold(
       key: const Key('quest-progress'),
-      body: Confetti(
+      body: TeaCelebration(
         active: anyDone,
         child: SafeArea(
           child: Padding(
@@ -495,8 +496,8 @@ class _QuestBarState extends State<_QuestBar> {
   }
 }
 
-/// Gentle break reminder after a run of lessons (see BreakTracker): Çaycı Dayı
-/// offers a tea break; never blocks learning.
+/// Gentle break reminder after a run of lessons (see BreakTracker): Pofuduk
+/// meditates and offers a tea break (both modes); never blocks learning.
 class BreakReminderScreen extends StatelessWidget {
   const BreakReminderScreen({super.key, this.onContinue});
   final VoidCallback? onContinue;
@@ -510,7 +511,7 @@ class BreakReminderScreen extends StatelessWidget {
         child: Column(
           children: [
             const Spacer(),
-            const Mascot(mood: Mood.calm, size: 170),
+            Pofuduk(mood: Mood.calm, size: Brand.isKid ? 170 : 140),
             const SizedBox(height: 12),
             Text('Kısa bir çay molası?', style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: 10),

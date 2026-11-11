@@ -230,6 +230,7 @@ class TrackDrawer extends ConsumerWidget {
         const _SectionLabel('KURSLAR'),
         for (final t in courseCatalog) tile(t),
         for (final t in vocabCatalog) tile(t),
+        const AccentPicker(),
         const SizedBox(height: 8),
         const _SectionLabel('SINAVLARA HAZIRLIK'),
         for (final t in examCatalog) tile(t),

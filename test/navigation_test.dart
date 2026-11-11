@@ -191,7 +191,7 @@ void main() {
 
   testWidgets('a lesson covers the bottom bar; back asks, without penalty', (tester) async {
     await _pumpShell(tester);
-    await tester.tap(find.text('Başla'));
+    await tester.tap(find.text('Hadi, bir çay daha!'));
     await tester.pumpAndSettle();
     expect(find.text('“merhaba” hangisi?'), findsOneWidget);
     expect(_bar, findsNothing);
@@ -364,7 +364,7 @@ void main() {
 
     testWidgets('a tapped notification opens its tab, closing a lesson', (tester) async {
       final c = await _pumpShell(tester);
-      await tester.tap(find.text('Başla'));
+      await tester.tap(find.text('Hadi, bir çay daha!'));
       await tester.pumpAndSettle();
       expect(_bar, findsNothing);
       c.read(pendingNavTargetProvider.notifier).open(NavTarget.parse('tab:quests'));

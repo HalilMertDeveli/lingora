@@ -109,7 +109,7 @@ void main() {
 
   testWidgets('wrong answer shows the correct one and is remembered', (tester) async {
     await pumpApp(tester, {'progress_v1': '{"onboarded": true}'});
-    await tester.tap(find.text('Başla'));
+    await tester.tap(find.text('Hadi, bir çay daha!'));
     await tester.pumpAndSettle();
 
     expect(find.text('“merhaba” hangisi?'), findsOneWidget);
@@ -129,7 +129,7 @@ void main() {
 
   testWidgets('correct word-bank answer is accepted', (tester) async {
     await pumpApp(tester, {'progress_v1': '{"onboarded": true}'});
-    await tester.tap(find.text('Başla'));
+    await tester.tap(find.text('Hadi, bir çay daha!'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('hello'));
     await tester.pump();

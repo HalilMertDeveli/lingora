@@ -6,49 +6,50 @@ import '../models/course.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../ui/tea_art.dart';
 
-/// Building blocks of the learning path map (docs/arayuz-referans.md,
-/// "Yol ekranı"): zigzag round nodes, the unit band, the bouncing start
-/// balloon, the lesson card and the unit guide.
+/// Building blocks of the learning path, Dilbaz's tea-house walk (see
+/// docs/tasarim.md, "Çay kimliği"): tea glass nodes on a winding lane, the
+/// teapot reward, the tulip test, Çaycı Dayı's "bir çay daha" invite, the
+/// unit band with its tile motif, the lesson card and the unit guide.
 
 enum NodeState { done, active, locked }
 
-/// Size of a path node (the round face, without its lip).
-const pathNodeSize = 70.0;
+/// Size of a path node (glass and saucer).
+const pathNodeWidth = 66.0;
+const pathNodeHeight = 84.0;
 
-/// Height of the darker lip under a node.
-const pathNodeLip = 7.0;
+/// Extra room above the active node for its invite bubble and steam.
+const balloonRoom = 74.0;
 
-/// Vertical space for one node row.
-const pathRowHeight = 96.0;
-
-/// Extra room above the active node for its start balloon.
-const balloonRoom = 58.0;
-
-/// Horizontal offset of the [i]th of [count] nodes in a unit, as a share of
-/// the maximum swing. Five lanes, walked in a repeating wave of eight
-/// (centre, half left, left, half left, centre, half right, right, half
-/// right). Odd units start the other way; a unit's last node (its test or
-/// chest) is always centred.
-double zigzag(int i, {int? count, bool mirror = false}) {
-  if (count != null && i == count - 1) return 0;
-  const pattern = [0.0, -0.5, -1.0, -0.5, 0.0, 0.5, 1.0, 0.5];
-  final v = pattern[i % pattern.length];
+/// Horizontal offset of the [i]th node of a unit, as a share of the maximum
+/// swing: a soft S-curve (a sine wave of eight steps). Odd units start the
+/// other way, so the lane keeps winding from unit to unit.
+double laneOffset(int i, {bool mirror = false}) {
+  final v = (sin(i * pi / 4) * 1000).roundToDouble() / 1000;
   return mirror ? -v : v;
 }
 
-/// Maximum swing of the zigzag for a path [width].
-double zigzagSwing(double width) => min(70.0, width * 0.2);
+/// Maximum swing of the lane for a path [width].
+double laneSwing(double width) => min(72.0, width * 0.2);
 
-/// Row of the unit (0-based) next to which Çaycı Dayı stands, or -1 when
-/// the unit is too short. He waits where the path swings away from him.
+/// Row of the unit (0-based) next to which the host stands, or -1 when the
+/// unit is too short. They wait where the lane swings away from them.
 int mascotRow(Unit unit) => unit.nodes.length < 4 ? -1 : 2;
 
 IconData nodeIcon(NodeType type) => switch (type) {
-  NodeType.chest => Icons.card_giftcard_rounded,
+  NodeType.chest => Icons.coffee_maker_outlined,
   NodeType.story => Icons.auto_stories_rounded,
-  NodeType.test => Icons.emoji_events_rounded,
-  NodeType.lesson => Icons.star_rounded,
+  NodeType.test => Icons.local_florist_rounded,
+  NodeType.lesson => Icons.local_cafe_rounded,
+};
+
+/// Çaycı Dayı's invite over the current node.
+String nodeInvite(NodeType type) => switch (type) {
+  NodeType.chest => 'Demlik hazır, aç bakalım!',
+  NodeType.story => 'Çayını al, hikâye başlıyor!',
+  NodeType.test => 'Lale seni bekliyor!',
+  NodeType.lesson => 'Hadi, bir çay daha!',
 };
 
 /// Call to action of a node ("BAŞLA", "AÇ"…), in the current mode's case.
@@ -62,10 +63,20 @@ String nodeCta(NodeType type) {
   return Brand.isKid ? s : sentenceCase(s);
 }
 
-/// One round node of the path: a coloured face on a darker lip that sinks
-/// while pressed. Chests and unit tests (trophies) have their own icons.
-class PathNodeButton extends StatefulWidget {
-  const PathNodeButton({
+/// How full a lesson glass is.
+double glassLevel(NodeState s) => switch (s) {
+  NodeState.done => 0.86,
+  NodeState.active => 0.5,
+  NodeState.locked => 0,
+};
+
+/// One node of the path. Lessons and stories are tea glasses: a finished one
+/// is full of deep tea with a gold rim, the current one is half full,
+/// steaming and gently breathing, a locked one is an empty glass. The reward
+/// is a double teapot (opened: lid up, sugar cubes beside it) and the unit
+/// test a tulip. Every node squashes like a jelly when pressed.
+class TeaNode extends StatefulWidget {
+  const TeaNode({
     super.key,
     required this.type,
     required this.state,
@@ -80,135 +91,174 @@ class PathNodeButton extends StatefulWidget {
   final VoidCallback onTap;
   final String? semanticLabel;
 
+  /// One breath of the current node (in and out).
+  static const breath = Duration(milliseconds: 2600);
+
   @override
-  State<PathNodeButton> createState() => _PathNodeButtonState();
+  State<TeaNode> createState() => _TeaNodeState();
 }
 
-class _PathNodeButtonState extends State<PathNodeButton> {
-  bool _down = false;
+class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
+  late final _c = AnimationController(vsync: this, duration: TeaNode.breath);
 
-  void _set(bool v) {
-    if (v != _down) setState(() => _down = v);
+  bool get _active => widget.state == NodeState.active;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _sync();
+  }
+
+  @override
+  void didUpdateWidget(TeaNode old) {
+    super.didUpdateWidget(old);
+    _sync();
+  }
+
+  void _sync() {
+    if (_active && loopsEnabled(context)) {
+      if (!_c.isAnimating) _c.repeat();
+    } else if (_c.isAnimating || _c.value != 0) {
+      _c
+        ..stop()
+        ..value = 0;
+    }
+  }
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  CustomPainter _painter(Palette p, double t) {
+    final dim = widget.state == NodeState.locked;
+    final done = widget.state == NodeState.done;
+    return switch (widget.type) {
+      NodeType.chest => TeapotPainter(color: p.accent, palette: p, open: done, dim: dim),
+      NodeType.test => TulipPainter(
+        color: done ? tulipRed : widget.color,
+        palette: p,
+        bloom: done ? 1 : (_active ? 0.5 + 0.2 * sin(t * pi * 2).abs() : 0.2),
+        dim: dim,
+      ),
+      _ => TeaGlassPainter(
+        level: glassLevel(widget.state) + (_active ? sin(t * pi * 2) * 0.03 : 0),
+        wave: t,
+        color: widget.color,
+        palette: p,
+        goldRim: done,
+        dim: dim,
+      ),
+    };
   }
 
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
-    final (Color face, Color fg, IconData icon) = switch (widget.state) {
-      NodeState.done => (
-        widget.type == NodeType.chest ? p.accent : widget.color,
-        onColor(widget.type == NodeType.chest ? p.accent : widget.color),
-        widget.type == NodeType.lesson ? Icons.check_rounded : nodeIcon(widget.type),
+    final locked = widget.state == NodeState.locked;
+    final done = widget.state == NodeState.done;
+    Widget badge(IconData icon, Color bg, Color fg) => Container(
+      width: 22,
+      height: 22,
+      decoration: BoxDecoration(
+        color: bg,
+        shape: BoxShape.circle,
+        border: Border.all(color: p.card, width: 2),
       ),
-      NodeState.active => (
-        widget.type == NodeType.chest ? p.accent : widget.color,
-        onColor(widget.type == NodeType.chest ? p.accent : widget.color),
-        nodeIcon(widget.type),
-      ),
-      NodeState.locked => (
-        p.isDark ? p.surface : p.line,
-        p.muted,
-        widget.type == NodeType.lesson ? Icons.lock_rounded : nodeIcon(widget.type),
-      ),
-    };
-    final lip = widget.state == NodeState.locked ? Color.alphaBlend(p.edge, face) : edgeOf(face);
-    final sink = _down ? pathNodeLip - 2 : 0.0;
-    final active = widget.state == NodeState.active;
+      child: Icon(icon, size: 13, color: fg),
+    );
+    final art = AnimatedBuilder(
+      animation: _c,
+      builder: (_, _) {
+        final t = _c.value;
+        final breathe = _active ? 1 + sin(t * pi * 2) * 0.035 : 1.0;
+        return Transform.scale(
+          scale: breathe,
+          alignment: Alignment.bottomCenter,
+          child: CustomPaint(size: const Size(pathNodeWidth, pathNodeHeight), painter: _painter(p, t)),
+        );
+      },
+    );
     final node = SizedBox(
-      width: pathNodeSize,
-      height: pathNodeSize + pathNodeLip,
+      width: pathNodeWidth,
+      height: pathNodeHeight,
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: pathNodeSize,
-            child: DecoratedBox(
-              decoration: BoxDecoration(color: lip, shape: BoxShape.circle),
-            ),
-          ),
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 70),
-            left: 0,
-            right: 0,
-            top: sink,
-            height: pathNodeSize,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: face,
-                shape: BoxShape.circle,
-                // Done nodes are a touch lighter than the current one.
-                gradient: widget.state == NodeState.done
-                    ? null
-                    : RadialGradient(
-                        center: const Alignment(-0.3, -0.4),
-                        radius: 0.9,
-                        colors: [Color.lerp(face, Colors.white, 0.12)!, face],
-                      ),
+          if (_active)
+            Positioned(
+              left: -16,
+              right: -16,
+              top: -4,
+              bottom: -10,
+              child: DecoratedBox(
+                key: const Key('active-glow'),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: RadialGradient(
+                    colors: [
+                      widget.color.withValues(alpha: p.isDark ? 0.34 : 0.24),
+                      widget.color.withValues(alpha: 0),
+                    ],
+                  ),
+                ),
               ),
-              child: Icon(icon, color: fg, size: widget.type == NodeType.lesson ? 34 : 32),
             ),
-          ),
+          Positioned.fill(child: art),
+          if (_active && (widget.type == NodeType.lesson || widget.type == NodeType.story))
+            const Positioned(left: 13, top: -30, child: Steam(width: 40, height: 32)),
+          if (done && widget.type != NodeType.chest)
+            Positioned(right: -2, top: 2, child: badge(Icons.check_rounded, p.success, onColor(p.success))),
+          if (locked)
+            Positioned(
+              right: 0,
+              bottom: 6,
+              child: badge(Icons.lock_rounded, p.isDark ? p.surface : p.line, p.muted),
+            ),
+          if (widget.type == NodeType.story && !locked)
+            Positioned(
+              left: -2,
+              top: 2,
+              child: badge(Icons.auto_stories_rounded, widget.color, onColor(widget.color)),
+            ),
         ],
       ),
     );
     return Semantics(
       button: true,
       label: widget.semanticLabel,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTapDown: (_) => _set(true),
-        onTapUp: (_) => _set(false),
-        onTapCancel: () => _set(false),
-        onTap: () {
-          Haptics.tap();
-          widget.onTap();
-        },
-        // The current node wears a ring, like a target to aim for.
-        child: active ? _Ring(color: widget.color, child: node) : node,
-      ),
+      value: switch (widget.state) {
+        NodeState.done => 'Bitti',
+        NodeState.active => 'Sıradaki',
+        NodeState.locked => 'Kilitli',
+      },
+      child: JellyPress(amount: 0.8, onTap: widget.onTap, child: node),
     );
   }
 }
 
-class _Ring extends StatelessWidget {
-  const _Ring({required this.color, required this.child});
-  final Color color;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) => Container(
-    key: const Key('active-ring'),
-    padding: const EdgeInsets.all(5),
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      border: Border.all(color: color.withValues(alpha: 0.35), width: 5),
-    ),
-    child: child,
-  );
-}
-
-/// "Başla" speech balloon over the current node. It bobs up and down
+/// Çaycı Dayı (Pofuduk in Çocuk modu) holding out the next glass: a speech
+/// bubble over the current node, "Hadi, bir çay daha!". It sways gently
 /// (unless animations are reduced); tapping it starts the step at once.
-class StartBalloon extends StatefulWidget {
-  const StartBalloon({super.key, required this.label, required this.color, required this.onTap});
+class TeaInvite extends StatefulWidget {
+  const TeaInvite({super.key, required this.label, required this.color, required this.onTap});
   final String label;
   final Color color;
   final VoidCallback onTap;
 
-  /// One leg of the bob (up, then the same back down).
-  static const leg = Duration(milliseconds: 1000);
+  /// One leg of the sway.
+  static const leg = Duration(milliseconds: 1200);
 
-  /// How far the balloon rises.
-  static const amplitude = 8.0;
+  /// How far the bubble rises.
+  static const amplitude = 5.0;
 
   @override
-  State<StartBalloon> createState() => _StartBalloonState();
+  State<TeaInvite> createState() => _TeaInviteState();
 }
 
-class _StartBalloonState extends State<StartBalloon> with SingleTickerProviderStateMixin {
-  late final _c = AnimationController(vsync: this, duration: StartBalloon.leg);
+class _TeaInviteState extends State<TeaInvite> with SingleTickerProviderStateMixin {
+  late final _c = AnimationController(vsync: this, duration: TeaInvite.leg);
 
   @override
   void didChangeDependencies() {
@@ -231,7 +281,8 @@ class _StartBalloonState extends State<StartBalloon> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
-    final fg = widget.color;
+    final kid = context.isKid;
+    final border = widget.color.withValues(alpha: 0.45);
     final bubble = GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -242,21 +293,41 @@ class _StartBalloonState extends State<StartBalloon> with SingleTickerProviderSt
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.fromLTRB(5, 5, 14, 5),
             decoration: BoxDecoration(
               color: p.card,
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: p.isDark ? p.line : p.line, width: 2),
-              boxShadow: [BoxShadow(color: p.isDark ? p.edge : p.line, offset: const Offset(0, 3))],
+              borderRadius: BorderRadius.circular(22),
+              border: Border.all(color: border, width: 1.5),
+              boxShadow: softShadow(p, tint: widget.color),
             ),
-            child: Text(
-              widget.label,
-              style: TextStyle(color: fg, fontWeight: FontWeight.w900, fontSize: 15, letterSpacing: 0.4),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(9),
+                  child: Image.asset(
+                    kid ? pofudukAvatar : mascotAsset,
+                    width: 28,
+                    height: 28,
+                    filterQuality: FilterQuality.medium,
+                    errorBuilder: (_, _, _) => const SizedBox(width: 28, height: 28),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Flexible(
+                  child: Text(
+                    widget.label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: widget.color, fontWeight: FontWeight.w800, fontSize: 14),
+                  ),
+                ),
+              ],
             ),
           ),
           CustomPaint(
-            size: const Size(16, 8),
-            painter: _PointerPainter(fill: p.card, border: p.line),
+            size: const Size(14, 8),
+            painter: _PointerPainter(fill: p.card, border: border),
           ),
         ],
       ),
@@ -264,7 +335,7 @@ class _StartBalloonState extends State<StartBalloon> with SingleTickerProviderSt
     return AnimatedBuilder(
       animation: _c,
       builder: (_, child) => Transform.translate(
-        offset: Offset(0, -StartBalloon.amplitude * Curves.easeInOut.transform(_c.value)),
+        offset: Offset(0, -TeaInvite.amplitude * Curves.easeInOut.transform(_c.value)),
         child: child,
       ),
       child: bubble,
@@ -297,7 +368,7 @@ class _PointerPainter extends CustomPainter {
         Paint()
           ..color = border
           ..style = PaintingStyle.stroke
-          ..strokeWidth = 2,
+          ..strokeWidth = 1.5,
       );
   }
 
@@ -326,52 +397,54 @@ class UnitBand extends StatelessWidget {
     final lt = context.lingora;
     final deco = lt.hero(unit.color);
     final base = deco.color ?? unit.color;
-    final lip = edgeOf(base);
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
-        color: lip,
         borderRadius: (deco.borderRadius ?? BorderRadius.circular(Radii.lg)) as BorderRadius,
+        boxShadow: softShadow(lt.palette, tint: base),
       ),
-      padding: const EdgeInsets.only(bottom: 4),
       child: Container(
         padding: EdgeInsets.fromLTRB(18, compact ? 10 : 16, 10, compact ? 10 : 16),
         decoration: deco,
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'ÜNİTE $index',
-                    style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.8),
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 1.2,
-                      fontSize: 12,
+        clipBehavior: Clip.antiAlias,
+        child: CustomPaint(
+          painter: CiniPainter(color: Colors.white.withValues(alpha: 0.16), start: 0.45),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'ÜNİTE $index',
+                      style: TextStyle(
+                        color: Colors.white.withValues(alpha: 0.8),
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 1.2,
+                        fontSize: 12,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    unit.title,
-                    maxLines: compact ? 1 : 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: compact ? 17 : 22,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  if (!compact) ...[
                     const SizedBox(height: 2),
-                    Text(unit.description, style: TextStyle(color: Colors.white.withValues(alpha: 0.9))),
+                    Text(
+                      unit.title,
+                      maxLines: compact ? 1 : 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: compact ? 17 : 22,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    if (!compact) ...[
+                      const SizedBox(height: 2),
+                      Text(unit.description, style: TextStyle(color: Colors.white.withValues(alpha: 0.9))),
+                    ],
                   ],
-                ],
+                ),
               ),
-            ),
-            const SizedBox(width: 8),
-            _GuideButton(key: Key('unit-guide-${unit.id}${compact ? '-pinned' : ''}'), onTap: onGuide),
-          ],
+              const SizedBox(width: 8),
+              _GuideButton(key: Key('unit-guide-${unit.id}${compact ? '-pinned' : ''}'), onTap: onGuide),
+            ],
+          ),
         ),
       ),
     );
@@ -455,8 +528,8 @@ class LessonCard extends StatelessWidget {
     final kind = switch (node.type) {
       NodeType.lesson => 'Ders $position / $count',
       NodeType.story => 'Hikâye',
-      NodeType.test => 'Ünite sınavı',
-      NodeType.chest => 'Ödül sandığı',
+      NodeType.test => 'Ünite sınavı · lale rozeti',
+      NodeType.chest => 'Çaydanlık · şeker ödülü',
     };
     final (String label, bool enabled) = switch ((state, node.type)) {
       (NodeState.locked, _) => ('', false),
@@ -492,12 +565,7 @@ class LessonCard extends StatelessWidget {
               color: face,
               borderRadius: BorderRadius.circular(Radii.lg),
               border: locked ? Border.all(color: p.line, width: 2) : null,
-              boxShadow: [
-                BoxShadow(
-                  color: locked ? (p.isDark ? p.edge : p.line) : edgeOf(color),
-                  offset: const Offset(0, 4),
-                ),
-              ],
+              boxShadow: softShadow(p, tint: locked ? null : color, lift: 1.4),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -534,8 +602,8 @@ class LessonCard extends StatelessWidget {
                   PressableButton(
                     key: const Key('lesson-card-start'),
                     label: label,
-                    color: Colors.white,
-                    foreground: edgeOf(edgeOf(color)),
+                    color: p.card,
+                    foreground: edgeOf(color),
                     onPressed: enabled ? onStart : null,
                   ),
                 ],
@@ -549,14 +617,17 @@ class LessonCard extends StatelessWidget {
   }
 }
 
-/// Çaycı Dayı standing beside the path. Kid mode: bigger and bobbing.
+/// The host beside the lane: Çaycı Dayı (still) for adults, Pofuduk
+/// (bigger, moving) in Çocuk modu.
 class PathMascot extends StatelessWidget {
   const PathMascot({super.key, required this.mood});
   final Mood mood;
 
   @override
-  Widget build(BuildContext context) =>
-      Dayi(key: const Key('path-mascot'), mood: mood, size: context.isKid ? 104 : 84, animate: context.isKid);
+  Widget build(BuildContext context) => KeyedSubtree(
+    key: const Key('path-mascot'),
+    child: context.isKid ? Pofuduk(mood: mood, size: 104) : Dayi(mood: mood, size: 84, animate: false),
+  );
 }
 
 /// Key words and phrases of a unit, from its exercises (English → Turkish).

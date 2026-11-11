@@ -71,8 +71,15 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
           children: [
-            const Center(
-              child: IconBadge(icon: Icons.card_giftcard_rounded, emoji: '🎁', size: 64),
+            // Owner-supplied friends picture.
+            Center(
+              child: Image.asset(
+                'assets/brand/arkadaslar.png',
+                key: const Key('invite-friends'),
+                width: 72,
+                height: 72,
+                semanticLabel: 'Arkadaşlar',
+              ),
             ),
             const SizedBox(height: 8),
             Text('Birlikte öğrenin, ikiniz de kazanın', style: t.titleLarge, textAlign: TextAlign.center),

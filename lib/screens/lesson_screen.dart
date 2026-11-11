@@ -29,7 +29,7 @@ import 'paywall_screen.dart';
 const baseLessonXp = 10;
 const perfectBonusXp = 5;
 
-const _praise = ['Harika!', 'Süper!', 'Doğru!', 'Çok iyi!', 'Mükemmel!', 'Tam isabet!'];
+// Praise lines live in lib/ui/session.dart (teaPraises).
 
 /// Runs a lesson, unit test or mistakes review.
 ///
@@ -364,9 +364,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                         key: ValueKey('fb$_answered'),
                         correct: _lastCorrect!,
                         title: _lastCorrect!
-                            ? (_combo >= comboThreshold
-                                  ? '$_combo doğru üst üste!'
-                                  : _praise[_answered % _praise.length])
+                            ? (_combo >= comboThreshold ? '$_combo doğru üst üste!' : praiseFor(_answered))
                             : 'Doğru cevap:',
                         answer: _lastCorrect! ? null : _current.ex.displayAnswer,
                         detail: _lastCorrect! ? null : _why,

@@ -67,8 +67,9 @@ String sentenceCase(String s) {
   return first + out.substring(1);
 }
 
-/// Primary action button. Kid mode: chunky button with a darker bottom edge
-/// that sinks when pressed. Adult mode: flat, refined button in sentence case.
+/// Primary action button, the "jelibon": a soft, glossy pill on a warm
+/// shadow that squashes while held and springs back with a wobble. Kid mode
+/// is chunkier and keeps capitals; adult mode uses sentence case.
 class PressableButton extends StatefulWidget {
   const PressableButton({
     super.key,
@@ -90,13 +91,7 @@ class PressableButton extends StatefulWidget {
 }
 
 class _PressableButtonState extends State<PressableButton> {
-  static const _depth = 5.0;
-  static const _adultDepth = 4.0;
   bool _down = false;
-
-  void _set(bool v) {
-    if (widget.onPressed != null && _down != v) setState(() => _down = v);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,77 +100,61 @@ class _PressableButtonState extends State<PressableButton> {
     final enabled = widget.onPressed != null;
     final base = widget.color ?? p.primary;
     final onBase =
-        widget.foreground ?? (widget.color == null ? p.onPrimary : (lt.isKid ? Colors.white : onColor(base)));
+        widget.foreground ??
+        (widget.color == null ? p.onPrimary : (lt.isKid ? onColor(base) : onColor(base)));
     final disabledFace = p.isDark ? p.surface : p.line;
-    final disabledFg = p.muted;
     final kid = lt.isKid;
-
-    // Both modes: a rounded pill standing on a darker lip that sinks while
-    // pressed. Kid mode is chunkier and keeps capitals.
-    final depth = kid ? _depth : _adultDepth;
     final height = kid ? 54.0 : 50.0;
     final face = widget.outlined ? p.card : (enabled ? base : disabledFace);
-    final edge = widget.outlined
-        ? (p.isDark ? p.edge : p.line)
-        : (enabled ? edgeOf(base) : Color.alphaBlend(p.edge.withValues(alpha: 0.6), disabledFace));
-    final fg = widget.outlined
-        ? (enabled ? (kid ? base : p.ink) : disabledFg)
-        : (enabled ? onBase : disabledFg);
+    final fg = widget.outlined ? (enabled ? (kid ? base : p.ink) : p.muted) : (enabled ? onBase : p.muted);
     final radius = BorderRadius.circular(height / 2);
-    final offset = _down ? depth : 0.0;
-    final body = SizedBox(
-      height: height + depth,
-      child: Stack(
-        children: [
-          Positioned.fill(
-            top: depth,
-            child: DecoratedBox(
-              decoration: BoxDecoration(color: edge, borderRadius: radius),
-            ),
-          ),
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 70),
-            left: 0,
-            right: 0,
-            top: offset,
-            height: height,
-            child: Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: face,
-                borderRadius: radius,
-                border: widget.outlined ? Border.all(color: edge, width: 2) : null,
-              ),
-              child: Text(
-                kid ? widget.label : sentenceCase(widget.label),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: kid
-                    ? TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w900, letterSpacing: 0.6)
-                    : TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w700, letterSpacing: 0.2),
-              ),
-            ),
-          ),
-        ],
+    final glossy = enabled && !widget.outlined;
+    final body = Container(
+      height: height,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        color: face,
+        borderRadius: radius,
+        // Jelly gloss: lighter at the top, a touch deeper at the bottom.
+        gradient: glossy
+            ? LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color.lerp(face, Colors.white, 0.16)!, face, Color.lerp(face, Colors.black, 0.08)!],
+                stops: const [0, 0.55, 1],
+              )
+            : null,
+        border: widget.outlined
+            ? Border.all(color: enabled ? p.line : disabledFace, width: kid ? 2 : 1.5)
+            : null,
+        boxShadow: enabled ? softShadow(p, tint: widget.outlined ? null : base, pressed: _down) : null,
+      ),
+      child: Text(
+        kid ? widget.label : sentenceCase(widget.label),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: kid
+            ? TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w900, letterSpacing: 0.6)
+            : TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w700, letterSpacing: 0.2),
       ),
     );
 
     return Semantics(
       button: true,
       enabled: enabled,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTapDown: (_) => _set(true),
-        onTapCancel: () => _set(false),
-        onTapUp: (_) => _set(false),
-        onTap: enabled
-            ? () {
-                Haptics.tap();
-                widget.onPressed!();
-              }
-            : null,
-        child: body,
+      child: Padding(
+        // Room for the shadow, so neighbours do not cover it.
+        padding: const EdgeInsets.only(bottom: 4),
+        child: enabled
+            ? JellyPress(
+                onTap: widget.onPressed,
+                onDown: (v) {
+                  if (v != _down) setState(() => _down = v);
+                },
+                child: body,
+              )
+            : body,
       ),
     );
   }
@@ -375,27 +354,25 @@ class CountUp extends StatelessWidget {
   );
 }
 
-/// One-shot confetti burst drawn over [child] (our own painter, no assets).
-///
-/// Paper pieces shoot up from just below the top centre, spread out, then
-/// fall and flutter (each piece flips by squashing its width). Colours come
-/// from the active palette. Nothing is drawn when animations are reduced.
-class Confetti extends StatefulWidget {
-  const Confetti({super.key, required this.child, this.active = true, this.pieces = 110});
+/// Dilbaz's one-shot celebration over [child]: steam rises from the bottom
+/// like from a fresh glass, sugar cubes tumble down and tulip petals drift.
+/// Our own painter, no assets. Nothing is drawn when animations are reduced.
+class TeaCelebration extends StatefulWidget {
+  const TeaCelebration({super.key, required this.child, this.active = true, this.pieces = 60});
   final Widget child;
   final bool active;
   final int pieces;
 
-  /// Length of one burst.
+  /// Length of one celebration.
   static const duration = Duration(milliseconds: 2800);
 
   @override
-  State<Confetti> createState() => _ConfettiState();
+  State<TeaCelebration> createState() => _TeaCelebrationState();
 }
 
-class _ConfettiState extends State<Confetti> with SingleTickerProviderStateMixin {
-  late final _c = AnimationController(vsync: this, duration: Confetti.duration);
-  final _pieces = <ConfettiPiece>[];
+class _TeaCelebrationState extends State<TeaCelebration> with SingleTickerProviderStateMixin {
+  late final _c = AnimationController(vsync: this, duration: TeaCelebration.duration);
+  final _pieces = <CelebrationPiece>[];
   bool _started = false;
 
   @override
@@ -405,22 +382,28 @@ class _ConfettiState extends State<Confetti> with SingleTickerProviderStateMixin
     _started = true;
     if (!widget.active || MediaQuery.disableAnimationsOf(context)) return;
     final p = context.palette;
-    final colors = [p.primary, p.success, p.accent, p.info, p.streak, p.mascot, p.error];
     final r = Random();
+    const petals = [Color(0xFFD7263D), Color(0xFFE85D75), Color(0xFFF29E4C), Color(0xFFB5179E)];
     for (var i = 0; i < widget.pieces; i++) {
-      final angle = -pi / 2 + (r.nextDouble() - 0.5) * pi * 0.9;
-      final speed = 0.55 + r.nextDouble() * 0.75;
+      final kind = i % 3 == 0 ? PieceKind.steam : (i % 3 == 1 ? PieceKind.sugar : PieceKind.petal);
       _pieces.add(
-        ConfettiPiece(
-          x: 0.5 + (r.nextDouble() - 0.5) * 0.3,
-          vx: cos(angle) * speed * 0.7,
-          vy: sin(angle) * speed,
-          spin: (r.nextDouble() - 0.5) * 12,
-          flip: 4 + r.nextDouble() * 8,
-          size: 7 + r.nextDouble() * 7,
-          color: colors[r.nextInt(colors.length)],
-          delay: r.nextDouble() * 0.12,
-          shape: r.nextInt(3),
+        CelebrationPiece(
+          kind: kind,
+          x: kind == PieceKind.steam ? 0.15 + r.nextDouble() * 0.7 : r.nextDouble(),
+          drift: (r.nextDouble() - 0.5) * 0.25,
+          sway: 2 + r.nextDouble() * 4,
+          spin: (r.nextDouble() - 0.5) * 8,
+          size: switch (kind) {
+            PieceKind.steam => 26 + r.nextDouble() * 26,
+            PieceKind.sugar => 9 + r.nextDouble() * 6,
+            PieceKind.petal => 10 + r.nextDouble() * 8,
+          },
+          color: switch (kind) {
+            PieceKind.steam => p.isDark ? Colors.white : const Color(0xFFB9A796),
+            PieceKind.sugar => Colors.white,
+            PieceKind.petal => petals[r.nextInt(petals.length)],
+          },
+          delay: r.nextDouble() * 0.35,
         ),
       );
     }
@@ -443,7 +426,10 @@ class _ConfettiState extends State<Confetti> with SingleTickerProviderStateMixin
             child: AnimatedBuilder(
               animation: _c,
               builder: (_, _) => _c.isAnimating
-                  ? CustomPaint(key: const Key('confetti'), painter: ConfettiPainter(_pieces, _c.value))
+                  ? CustomPaint(
+                      key: const Key('tea-celebration'),
+                      painter: CelebrationPainter(_pieces, _c.value, edge: context.palette.line),
+                    )
                   : const SizedBox.shrink(),
             ),
           ),
@@ -452,74 +438,101 @@ class _ConfettiState extends State<Confetti> with SingleTickerProviderStateMixin
   );
 }
 
-class ConfettiPiece {
-  ConfettiPiece({
+enum PieceKind { steam, sugar, petal }
+
+class CelebrationPiece {
+  CelebrationPiece({
+    required this.kind,
     required this.x,
-    required this.vx,
-    required this.vy,
+    required this.drift,
+    required this.sway,
     required this.spin,
-    required this.flip,
     required this.size,
     required this.color,
     required this.delay,
-    required this.shape,
   });
-  final double x, vx, vy, spin, flip, size, delay;
+  final PieceKind kind;
+  final double x, drift, sway, spin, size, delay;
   final Color color;
-
-  /// 0: ribbon, 1: square, 2: dot.
-  final int shape;
 }
 
-/// Paints confetti pieces at time [t] (0..1) of a burst.
-class ConfettiPainter extends CustomPainter {
-  ConfettiPainter(this.pieces, this.t);
-  final List<ConfettiPiece> pieces;
+/// Paints the celebration at time [t] (0..1).
+class CelebrationPainter extends CustomPainter {
+  CelebrationPainter(this.pieces, this.t, {required this.edge});
+  final List<CelebrationPiece> pieces;
   final double t;
+  final Color edge;
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint();
+    final fill = Paint();
+    final stroke = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
     for (final p in pieces) {
       final lt = ((t - p.delay) / (1 - p.delay)).clamp(0.0, 1.0);
-      if (lt <= 0) continue;
-      // Launch from 28 % down the screen, decelerate (drag), then fall.
-      final drag = 1 - pow(1 - lt, 2.2).toDouble();
-      final x = (p.x + p.vx * drag * 0.6 + sin(lt * p.flip) * 0.015) * size.width;
-      final y = (0.28 + p.vy * drag * 0.45 + 1.1 * lt * lt) * size.height;
-      final fade = lt > 0.75 ? (1 - lt) * 4 : 1.0;
-      paint.color = p.color.withValues(alpha: fade.clamp(0.0, 1.0));
-      final squash = cos(lt * p.flip * 2).abs().clamp(0.15, 1.0);
-      canvas
-        ..save()
-        ..translate(x, y)
-        ..rotate(p.spin * lt);
-      switch (p.shape) {
-        case 0:
-          canvas.drawRRect(
-            RRect.fromRectAndRadius(
-              Rect.fromCenter(center: Offset.zero, width: p.size * 0.45 * squash, height: p.size * 1.4),
-              const Radius.circular(2),
-            ),
-            paint,
+      if (lt <= 0 || lt >= 1) continue;
+      final fade = lt < 0.15 ? lt / 0.15 : (lt > 0.7 ? (1 - lt) / 0.3 : 1.0);
+      switch (p.kind) {
+        case PieceKind.steam:
+          // A curl that rises from the bottom edge, widens and fades.
+          final x = (p.x + p.drift * lt) * size.width;
+          final y = size.height * (1.02 - 0.75 * Curves.easeOut.transform(lt));
+          final h = p.size * (1 + lt);
+          stroke
+            ..color = p.color.withValues(alpha: 0.42 * fade)
+            ..strokeWidth = 3 + 3 * lt;
+          final path = Path()..moveTo(x, y + h);
+          for (var k = 1; k <= 8; k++) {
+            final f = k / 8;
+            path.lineTo(x + sin(f * pi * 2 + lt * p.sway * 2) * h * 0.18, y + h - f * h * 2);
+          }
+          canvas.drawPath(path, stroke);
+        case PieceKind.sugar:
+          // A sugar cube tumbling down.
+          final x = (p.x + p.drift * lt) * size.width;
+          final y = (-0.05 + 1.1 * lt * lt + 0.08 * lt) * size.height;
+          canvas
+            ..save()
+            ..translate(x, y)
+            ..rotate(p.spin * lt);
+          final rect = RRect.fromRectAndRadius(
+            Rect.fromCenter(center: Offset.zero, width: p.size, height: p.size),
+            Radius.circular(p.size * 0.2),
           );
-        case 1:
-          canvas.drawRect(
-            Rect.fromCenter(center: Offset.zero, width: p.size * squash, height: p.size * 0.7),
-            paint,
-          );
-        default:
-          canvas.drawOval(
-            Rect.fromCenter(center: Offset.zero, width: p.size * 0.7 * squash, height: p.size * 0.7),
-            paint,
-          );
+          fill.color = p.color.withValues(alpha: fade);
+          canvas.drawRRect(rect, fill);
+          stroke
+            ..color = edge.withValues(alpha: fade)
+            ..strokeWidth = 1.2;
+          canvas
+            ..drawRRect(rect, stroke)
+            ..restore();
+        case PieceKind.petal:
+          // A tulip petal drifting down, swinging side to side.
+          final x = (p.x + p.drift * lt + sin(lt * p.sway * pi) * 0.04) * size.width;
+          final y = (-0.05 + 0.95 * lt) * size.height;
+          final squash = cos(lt * p.sway * 2).abs().clamp(0.3, 1.0);
+          canvas
+            ..save()
+            ..translate(x, y)
+            ..rotate(sin(lt * p.sway * 2) * 0.9 + p.spin * 0.1);
+          final w = p.size * 0.62 * squash, h = p.size;
+          final petal = Path()
+            ..moveTo(0, h / 2)
+            ..cubicTo(-w, h * 0.2, -w * 0.8, -h * 0.45, 0, -h / 2)
+            ..cubicTo(w * 0.8, -h * 0.45, w, h * 0.2, 0, h / 2)
+            ..close();
+          fill.color = p.color.withValues(alpha: fade);
+          canvas
+            ..drawPath(petal, fill)
+            ..restore();
       }
-      canvas.restore();
     }
   }
 
   @override
-  bool shouldRepaint(ConfettiPainter old) => old.t != t;
+  bool shouldRepaint(CelebrationPainter old) => old.t != t;
 }
 
 /// Progress bar. Kid mode: thick rounded fill with a glossy highlight and a
