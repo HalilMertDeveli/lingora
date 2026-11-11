@@ -365,7 +365,7 @@
         "acknowledge"
        ],
        "answer": 1,
-       "explanation": "'Attribute A to B' (A'yı B'ye bağlamak) kalıbı 'to' edatıyla kurulur. 'Assert' (ileri sürmek), 'refute' (çürütmek), 'imply' (ima etmek) ve 'acknowledge' (kabul etmek) 'A to B' yapısıyla kullanılmaz."
+       "explanation": "'Attribute X to Y' (bir şeyi bir nedene bağlamak) kalıbı 'to' edatıyla kurulur. 'Assert' (ileri sürmek), 'refute' (çürütmek), 'imply' (ima etmek) ve 'acknowledge' (kabul etmek) bu 'X to Y' yapısıyla kullanılmaz."
       },
       {
        "type": "choice",
@@ -691,7 +691,7 @@
         "exceed"
        ],
        "answer": 1,
-       "explanation": "'Attribute A to B' (A'yı B'ye bağlamak) 'to changes in diet' yapısıyla tamamlanır. 'Estimate' (tahmin etmek), 'verify' (doğrulamak), 'detect' (saptamak) ve 'exceed' (aşmak) 'to + neden' yapısıyla kullanılmaz."
+       "explanation": "'Attribute X to Y' (bir şeyi bir nedene bağlamak) 'to changes in diet' yapısıyla tamamlanır. 'Estimate' (tahmin etmek), 'verify' (doğrulamak), 'detect' (saptamak) ve 'exceed' (aşmak) 'to + neden' yapısıyla kullanılmaz."
       },
       {
        "type": "choice",
@@ -825,7 +825,7 @@
         "Arı nüfusunun azalması, bilim insanlarının tarım ilaçları üzerinde daha fazla araştırma yapmasına yol açtı."
        ],
        "answer": 3,
-       "explanation": "'Attribute A to B' = A'yı B'ye bağlamak; 'largely' = büyük ölçüde. Doğru çeviri dördüncü şıktır. Birinci şıkta 'kanıtladı' ve 'kısmen', ikincide 'artış', üçüncüde ters neden-sonuç vardır; beşincisi farklı bir anlam taşır."
+       "explanation": "'Attribute X to Y' = bir şeyi bir nedene bağlamak; 'largely' = büyük ölçüde. Doğru çeviri 'düşüşü büyük ölçüde tarım ilaçlarının yaygın kullanımına bağlıyor' diyen şıktır. 'kanıtladı' ve 'kısmen' içeren şıkta bu iki ifade, 'artışa bağlıyor' diyen şıkta 'artış', 'kullanımını büyük ölçüde azalttı' diyen şıkta ters neden-sonuç vardır; 'daha fazla araştırma yapmasına yol açtı' diyen şık farklı bir anlam taşır."
       },
       {
        "type": "choice",
@@ -851,7 +851,7 @@
         "Factors other than the economic crisis also contributed to the sharp fall in sales."
        ],
        "answer": 4,
-       "explanation": "'Cannot be attributed solely to' (yalnızca ... bağlanamaz) krizin tek neden olmadığını, başka etkenlerin de katkıda bulunduğunu söyler; bu son şıktır. Birinci şık krizin hiç etkisi olmadığını söyleyerek aşırıya kaçar; ikinci şık tam tersini söyler."
+       "explanation": "'Cannot be attributed solely to' (yalnızca ... bağlanamaz) krizin tek neden olmadığını, başka etkenlerin de katkıda bulunduğunu söyler; bu 'Factors other than the economic crisis also contributed' diyen şıktır. 'not responsible … at all' diyen şık krizin hiç etkisi olmadığını söyleyerek aşırıya kaçar; 'the only reason' diyen şık tam tersini söyler."
       }
      ]
     },
@@ -986,12 +986,12 @@
        "options": [
         "feasible",
         "crucial",
-        "adequate",
+        "sufficient",
         "comprehensive",
-        "absent"
+        "missing"
        ],
        "answer": 1,
-       "explanation": "'Play a crucial role' (hayati bir rol oynamak) kalıplaşmış bir ifadedir. 'An adequate role' artikel bakımından da uymaz; 'feasible' (uygulanabilir), 'comprehensive' (kapsamlı) ve 'absent' (yok) rolü bu anlamda nitelemez."
+       "explanation": "'Play a crucial role' (hayati bir rol oynamak) kalıplaşmış bir ifadedir. 'feasible' (uygulanabilir), 'sufficient' (yeterli), 'comprehensive' (kapsamlı) ve 'missing' (eksik) rolü bu anlamda nitelemez."
       },
       {
        "type": "choice",
@@ -1670,7 +1670,7 @@
         "Çocuklar hava kirliliğinin zararlı etkilerine karşı özellikle savunmasızdır."
        ],
        "answer": 4,
-       "explanation": "'Particularly vulnerable to' = '-e karşı özellikle savunmasız'. Doğru çeviri son şıktır. İlk şık özneyi yetişkinlere çevirir; ikinci 'korunabilir' der; üçüncüde 'uzun vadede' eklenmiştir; dördüncü korumanın önemini anlatır."
+       "explanation": "'Particularly vulnerable to' = '-e karşı özellikle savunmasız'. Doğru çeviri 'zararlı etkilerine karşı özellikle savunmasızdır' diyen şıktır. 'en çok yetişkinlerde' diyen şık özneyi yetişkinlere çevirir; 'kısmen korunabilir' diyen şık 'korunabilir' der; 'özellikle uzun vadede etkiler' diyen şıkta 'uzun vadede' eklenmiştir; 'korumak özellikle önemlidir' diyen şık korumanın önemini anlatır."
       },
       {
        "type": "choice",
@@ -2515,7 +2515,7 @@
         "İnternetin yayılması, haber okuma alışkanlıklarında küçük değişikliklere neden olabilir."
        ],
        "answer": 2,
-       "explanation": "'Bring about major changes' = 'büyük değişikliklere yol açmak'. Doğru çeviri üçüncü şıktır. Birinci şık neden-sonucu tersine çevirir; ikinci değişimi reddeder; dördüncü 'daha az haber' der; beşincide 'küçük' ve 'olabilir' vardır."
+       "explanation": "'Bring about major changes' = 'büyük değişikliklere yol açmak'. Doğru çeviri 'okuma biçiminde büyük değişikliklere yol açtı' diyen şıktır. 'okuma biçimi, internetin hızla yayılmasına yol açtı' diyen şık neden-sonucu tersine çevirir; 'hâlâ aynı biçimde okuyor' diyen şık değişimi reddeder; 'daha az haber okumaya başladı' diyen şık 'daha az haber' der; 'küçük değişikliklere neden olabilir' diyen şıkta 'küçük' ve 'olabilir' vardır."
       },
       {
        "type": "choice",
@@ -2541,7 +2541,7 @@
         "The strike lasted longer than anyone had expected."
        ],
        "answer": 1,
-       "explanation": "'Nothing can make up for' (hiçbir şey telafi edemez) = 'can never be compensated for' (asla telafi edilemez). 'Very little time' ve 'easily recover' anlamı tersine çevirir; üçüncü ve beşinci şık farklı bilgiler verir."
+       "explanation": "'Nothing can make up for' (hiçbir şey telafi edemez) = 'can never be compensated for' (asla telafi edilemez). 'Very little time' ve 'easily recover' anlamı tersine çevirir; 'organised to make up for lost time' ve 'lasted longer than anyone had expected' diyen şıklar farklı bilgiler verir."
       }
      ]
     },
@@ -3178,7 +3178,7 @@
       },
       {
        "type": "choice",
-       "question": "A ---- of skilled workers has slowed down the construction of new homes.",
+       "question": "The construction of new homes has slowed down because of the ---- of skilled workers.",
        "options": [
         "outcome",
         "evidence",
@@ -3187,7 +3187,7 @@
         "hypothesis"
        ],
        "answer": 2,
-       "explanation": "'A shortage of skilled workers' (nitelikli işçi eksikliği) inşaatın yavaşlamasını açıklar. 'Outcome' (sonuç), 'evidence' (kanıt), 'awareness' (farkındalık) ve 'hypothesis' (hipotez) bu neden-sonucu kurmaz."
+       "explanation": "'The shortage of skilled workers' (nitelikli işçi eksikliği) inşaatın yavaşlamasını açıklar. 'Outcome' (sonuç), 'evidence' (kanıt), 'awareness' (farkındalık) ve 'hypothesis' (hipotez) bu neden-sonucu kurmaz."
       },
       {
        "type": "choice",
@@ -3360,7 +3360,7 @@
         "Artan kamuoyu endişesine rağmen bakanlık, aşının güvenliğinden emin olduğunu açıkladı."
        ],
        "answer": 1,
-       "explanation": "'In response to' = '-e yanıt olarak'; 'conduct further research' = 'daha fazla araştırma yapmak'. Doğru çeviri ikinci şıktır. Üçüncü şık olumsuz yapar; dördüncü neden-sonucu ters çevirir; birinci ve beşinci farklı bilgi verir."
+       "explanation": "'In response to' = '-e yanıt olarak'; 'conduct further research' = 'daha fazla araştırma yapmak'. Doğru çeviri 'Artan kamuoyu endişesine yanıt olarak' diye başlayan şıktır. 'yeni araştırma yapmamaya karar verdi' diyen şık olumsuz yapar; 'araştırmaları, kamuoyunda artan bir endişeye yol açtı' diyen şık neden-sonucu ters çevirir; 'endişesini giderdi' ve 'güvenliğinden emin olduğunu açıkladı' diyen şıklar farklı bilgi verir."
       },
       {
        "type": "choice",
@@ -3386,7 +3386,7 @@
         "The company is trying to buy a bankrupt competitor."
        ],
        "answer": 1,
-       "explanation": "'On the verge of bankruptcy' (iflasın eşiğinde) = 'very close to going bankrupt' (iflasa çok yakın). Birinci ve üçüncü şık iflası geçmişe taşır; dördüncü tersini söyler; beşinci farklı bir durumu anlatır."
+       "explanation": "'On the verge of bankruptcy' (iflasın eşiğinde) = 'very close to going bankrupt' (iflasa çok yakın). 'recently recovered from bankruptcy' ve 'went bankrupt several years ago' diyen şıklar iflası geçmişe taşır; 'will never go bankrupt' tersini söyler; 'trying to buy a bankrupt competitor' farklı bir durumu anlatır."
       }
      ]
     },
@@ -4223,7 +4223,7 @@
         "Yeni politika şehir merkezindeki trafiği biraz rahatlatmış olabilir."
        ],
        "answer": 2,
-       "explanation": "'Is expected to' = '... bekleniyor'; 'considerably alleviate' = 'önemli ölçüde hafifletmek'. Doğru çeviri üçüncü şıktır. Birinci şıkta 'tamamen' ve geçmiş zaman; ikincide 'artırma'; dördüncüde ters neden-sonuç; beşincide 'biraz' ve 'olabilir' vardır."
+       "explanation": "'Is expected to' = '... bekleniyor'; 'considerably alleviate' = 'önemli ölçüde hafifletmek'. Doğru çeviri 'önemli ölçüde hafifletmesi bekleniyor' diyen şıktır. 'tamamen ortadan kaldırdı' diyen şıkta 'tamamen' ve geçmiş zaman; 'artırmasından korkuluyor' diyen şıkta 'artırma'; 'yeni bir politikayı zorunlu hâle getirdi' diyen şıkta ters neden-sonuç; 'biraz rahatlatmış olabilir' diyen şıkta 'biraz' ve 'olabilir' vardır."
       },
       {
        "type": "choice",
@@ -4522,12 +4522,12 @@
        "options": [
         "historical",
         "sensitive",
-        "economical",
+        "periodic",
         "principal",
         "historic"
        ],
        "answer": 4,
-       "explanation": "Barış anlaşmasının imzalandığı gün ‘tarihî önemi olan’ bir andır: 'historic moment'. 'Historical' yalnızca ‘tarihle ilgili, geçmişe ait’ demektir; 'sensitive' (hassas), 'economical' (tutumlu) ve 'principal' (başlıca) anlamca zayıftır."
+       "explanation": "Barış anlaşmasının imzalandığı gün ‘tarihî önemi olan’ bir andır: 'historic moment'. 'Historical' yalnızca ‘tarihle ilgili, geçmişe ait’ demektir; 'sensitive' (hassas), 'periodic' (dönemsel) ve 'principal' (başlıca) anlamca zayıftır."
       },
       {
        "type": "match",
@@ -4911,7 +4911,7 @@
       },
       {
        "type": "choice",
-       "question": "Switching to LED bulbs is an ---- way to reduce household electricity bills.",
+       "question": "Switching to LED bulbs is one of the most ---- ways to reduce household electricity bills.",
        "options": [
         "economic",
         "historical",
@@ -5080,7 +5080,7 @@
         "Yakıt fiyatları yükselse de toplu taşıma maliyeti önemli ölçüde değişmedi."
        ],
        "answer": 3,
-       "explanation": "'Rising' (yükselen) geçişsiz anlam taşır, 'have had a significant effect on' ‘üzerinde önemli bir etki yarattı’ demektir; doğru çeviri D’dir. A 'raise' anlamı ve gelecek zaman katar, B neden-sonucu tersine çevirir, C ve E 'significant' anlamını bozar."
+       "explanation": "'Rising' (yükselen) geçişsiz anlam taşır, 'have had a significant effect on' ‘üzerinde önemli bir etki yarattı’ demektir; doğru çeviri ‘üzerinde önemli bir etki yarattı’ diyen şıktır. ‘Yakıt fiyatlarını yükseltmek … etkileyecek’ diyen şık 'raise' anlamı ve gelecek zaman katar, ‘maliyetindeki artış yakıt fiyatlarını … etkiledi’ diyen şık neden-sonucu tersine çevirir, ‘etkisi önemsiz kaldı’ ve ‘önemli ölçüde değişmedi’ diyen şıklar 'significant' anlamını bozar."
       },
       {
        "type": "choice",
@@ -5093,7 +5093,7 @@
         "The author's final words implied that a sequel to the book would soon be published."
        ],
        "answer": 0,
-       "explanation": "‘İma etmek’ 'imply' ile karşılanır ve devamın gelmeyeceği söylenir: A doğrudur. B'de sözler 'infer' edemez; C'de 'implied from' yanlış kullanımdır ve anlam terstir; D ‘açıkça söyledi’ der; E anlamı tersine çevirir."
+       "explanation": "‘İma etmek’ 'imply' ile karşılanır ve devamın gelmeyeceği söylenir: 'implied that there would be no sequel to the book' doğrudur. 'inferred' diyen şıkta sözler 'infer' edemez; 'readers implied that a sequel would come' diyen şıkta 'implied from' yanlış kullanımdır ve anlam terstir; 'openly stated' diyen şık ‘açıkça söyledi’ der; 'would soon be published' diyen şık anlamı tersine çevirir."
       },
       {
        "type": "choice",
@@ -5106,7 +5106,7 @@
         "The new regulations proscribe the dumping of waste into the river by companies."
        ],
        "answer": 4,
-       "explanation": "'Prohibit' (yasaklamak) ile 'proscribe' eş anlamlıdır; E aynı anlamı verir. A 'prescribe' (öngörmek) ile anlamı tersine çevirir, B yasağı teşvike indirger, C ve D yasağı ortadan kaldırır."
+       "explanation": "'Prohibit' (yasaklamak) ile 'proscribe' eş anlamlıdır; 'proscribe the dumping of waste' diyen şık aynı anlamı verir. 'prescribe' (öngörmek) içeren şık anlamı tersine çevirir, 'merely encouraged' diyen şık yasağı teşvike indirger, 'have no effect' ve 'whenever the regulations allow it' diyen şıklar yasağı ortadan kaldırır."
       }
      ]
     },
@@ -5655,7 +5655,7 @@
         "the ecologists had banned fishing too late to protect the fish"
        ],
        "answer": 2,
-       "explanation": "Metne göre sıcaklık artışı derin sulardaki oksijeni azaltmış, balıklar sığ sulara itilmiş ve kuşlara av olmuştur: C doğrudur. A ve E balıkçılığın baştan yasak olmasıyla çelişir; B ve D metinde geçmez."
+       "explanation": "Metne göre sıcaklık artışı derin sulardaki oksijeni azaltmış, balıklar sığ sulara itilmiş ve kuşlara av olmuştur: 'warmer water reduced oxygen levels' diyen şık doğrudur. 'fishing had increased' ve 'banned fishing too late' diyen şıklar balıkçılığın baştan yasak olmasıyla çelişir; 'predatory birds had recently been introduced' ve 'polluted by chemicals' diyen şıklar metinde geçmez."
       },
       {
        "type": "choice",
@@ -5669,7 +5669,7 @@
         "the deeper parts of the lake now contain more oxygen than before"
        ],
        "answer": 0,
-       "explanation": "Son cümlede yalnızca yerel önlemlerin değil bölgesel ısınmayı sınırlama çabalarının da gerektiği söylenir; buradan A çıkarılır. B metinle çelişir, C ve D metinde yer almaz, E ise oksijenin azaldığı bilgisiyle çelişir."
+       "explanation": "Son cümlede yalnızca yerel önlemlerin değil bölgesel ısınmayı sınırlama çabalarının da gerektiği söylenir; buradan 'local measures alone will not be enough' çıkarılır. 'overfishing remains the biggest threat' metinle çelişir, 'recover without any intervention' ve 'predatory birds should be removed' metinde yer almaz, 'contain more oxygen than before' ise oksijenin azaldığı bilgisiyle çelişir."
       },
       {
        "type": "choice",
@@ -5683,7 +5683,7 @@
         "they are made from rare and costly materials"
        ],
        "answer": 3,
-       "explanation": "'However' ile başlayan cümle, panellerin uzun süre yüksek neme maruz kalınca nem çekip güç kaybettiğini söyler: D doğrudur. A, B, C ve E metindeki bilgilerle (az enerji, ucuzluk, iyi yalıtım, tarımsal atık) çelişir."
+       "explanation": "'However' ile başlayan cümle, panellerin uzun süre yüksek neme maruz kalınca nem çekip güç kaybettiğini söyler: 'they become weaker in very humid conditions' doğrudur. Öteki dört şık metindeki bilgilerle (az enerji, ucuzluk, iyi yalıtım, tarımsal atık) çelişir."
       },
       {
        "type": "choice",
@@ -5904,7 +5904,7 @@
         "nobody tested its durability last year"
        ],
        "answer": 3,
-       "explanation": "'Unless' (-medikçe) gerçek bir koşul kurar ve gelecek zamanla tamamlanır: prototip testleri geçmezse seri üretime girmez, D doğrudur. Öteki şıklar zaman bakımından uyumsuzdur ya da koşulla mantıksal bağ kurmaz."
+       "explanation": "'Unless' (-medikçe) gerçek bir koşul kurar ve gelecek zamanla tamamlanır: prototip testleri geçmezse seri üretime girmez, 'it will not go into mass production' doğrudur. Öteki şıklar zaman bakımından uyumsuzdur ya da koşulla mantıksal bağ kurmaz."
       },
       {
        "type": "choice",
@@ -5917,7 +5917,7 @@
         "it is rarely found in modern homes"
        ],
        "answer": 0,
-       "explanation": "'Since' neden bildirir: bakır elektriği iyi ilettiği için elektrik tesisatında yaygın kullanılır, A doğrudur. B 'insulate' (yalıtmak) ile çelişir; C, D ve E iyi iletkenliğin mantıklı sonucu değildir."
+       "explanation": "'Since' neden bildirir: bakır elektriği iyi ilettiği için elektrik tesisatında yaygın kullanılır, 'it is widely used in electrical wiring' doğrudur. 'insulate' (yalıtmak) içeren şık bununla çelişir; 'cannot be used safely', 'prefer rubber' ve 'rarely found' diyen şıklar iyi iletkenliğin mantıklı sonucu değildir."
       },
       {
        "type": "choice",
@@ -5930,7 +5930,7 @@
         "As a result, it has very little effect on transport"
        ],
        "answer": 1,
-       "explanation": "Boşluktan önce sürtünmenin her zaman istenmeyen bir şey olmadığı, sonra da onsuz lastiklerin tutunamayacağı söylenir; aradaki cümle sürtünmenin güvenli hareket için gerekli olduğunu belirtmelidir: B. A ve E akışla çelişir, C ve D konudan sapar."
+       "explanation": "Boşluktan önce sürtünmenin her zaman istenmeyen bir şey olmadığı, sonra da onsuz lastiklerin tutunamayacağı söylenir; aradaki cümle sürtünmenin güvenli hareket için gerekli olduğunu belirtmelidir: 'it is actually essential for safe movement'. 'eliminate it completely' ve 'very little effect on transport' diyen şıklar akışla çelişir, 'density of liquids' ve 'catalysts' diyen şıklar konudan sapar."
       },
       {
        "type": "choice",
@@ -5943,7 +5943,7 @@
         "Mühendisler, kışın içlerindeki suyun donmasını önlemek için boruları yalıttı."
        ],
        "answer": 4,
-       "explanation": "'Insulated the pipes' ‘boruları yalıttı’, 'to prevent ... from freezing' ‘donmasını önlemek için’ demektir: E doğrudur. A ve D yanlış eylem bildirir, B neden-sonucu değiştirir, C cümleyi olumsuza çevirir."
+       "explanation": "'Insulated the pipes' ‘boruları yalıttı’, 'to prevent ... from freezing' ‘donmasını önlemek için’ demektir: ‘donmasını önlemek için boruları yalıttı’ doğrudur. ‘yeni borular döşedi’ ve ‘suyu boşaltmak için boruları kesti’ diyen şıklar yanlış eylem bildirir, ‘su donduğu için … boruları değiştirdi’ diyen şık neden-sonucu değiştirir, ‘boruları yalıtmadı’ diyen şık cümleyi olumsuza çevirir."
       },
       {
        "type": "choice",
@@ -5956,7 +5956,7 @@
         "This organism survived even though the environment was rich in oxygen."
        ],
        "answer": 2,
-       "explanation": "‘Bile’ 'even', ‘oksijenin çok az olduğu ortamlar’ 'environments where there is very little oxygen' ile karşılanır: C doğrudur. A ve B anlamı tersine çevirir, D özneyi değiştirir, E zamanı ve oksijen miktarını bozar."
+       "explanation": "‘Bile’ 'even', ‘oksijenin çok az olduğu ortamlar’ 'environments where there is very little oxygen' ile karşılanır: 'can survive even in environments where there is very little oxygen' doğrudur. 'cannot survive' ve 'needs large amounts of oxygen' diyen şıklar anlamı tersine çevirir, 'Only a few organisms' diyen şık özneyi değiştirir, 'rich in oxygen' diyen şık zamanı ve oksijen miktarını bozar."
       },
       {
        "type": "choice",
@@ -6160,7 +6160,7 @@
       },
       {
        "type": "choice",
-       "question": "Asthma is a ---- condition, which means patients may live with it for many years.",
+       "question": "Asthma and diabetes are ---- conditions, which means patients may live with them for many years.",
        "options": [
         "acute",
         "chronic",
@@ -6338,12 +6338,12 @@
        "options": [
         "onset",
         "intake",
-        "dosage",
+        "allergy",
         "outbreak",
         "immunity"
        ],
        "answer": 3,
-       "explanation": "Altmıştan fazla öğrenciyi etkileyen ani vaka artışı 'outbreak' (salgın)tır. 'Onset' (başlangıç) tek bir hasta için kullanılır; 'intake' (alım), 'dosage' (doz) ve 'immunity' (bağışıklık) okul kapatmayı açıklamaz."
+       "explanation": "Altmıştan fazla öğrenciyi etkileyen ani vaka artışı 'outbreak' (salgın)tır. 'Onset' (başlangıç) tek bir hasta için kullanılır; 'intake' (alım), 'allergy' (alerji) ve 'immunity' (bağışıklık) okul kapatmayı açıklamaz."
       },
       {
        "type": "choice",
@@ -6518,7 +6518,7 @@
         "were more common among the doctors than the patients"
        ],
        "answer": 0,
-       "explanation": "Metne göre bulantı ve baş dönmesi doz azaltılınca ortadan kalkmıştır: A doğrudur. B ‘onda bir’ bilgisiyle, C ‘mild’ (hafif) ifadesiyle çelişir; D ve E metinde geçmez."
+       "explanation": "Metne göre bulantı ve baş dönmesi doz azaltılınca ortadan kalkmıştır: 'became less of a problem when patients took a lower dose' doğrudur. 'nearly half of the participants' diyen şık ‘onda bir’ bilgisiyle, 'serious enough to stop the trial' diyen şık ‘mild’ (hafif) ifadesiyle çelişir; 'only in the placebo group' ve 'more common among the doctors' diyen şıklar metinde geçmez."
       },
       {
        "type": "choice",
@@ -6532,7 +6532,7 @@
         "was designed so that neither patients nor doctors knew who received the drug"
        ],
        "answer": 4,
-       "explanation": "Metinde hastaların da doktorların da kimin ilacı aldığını bilmediği açıkça söylenir: E doğrudur. A (altı ay), B (üç hastane), C (daha büyük çalışmalar gerekli) ve D (kronik migren) metinle çelişir."
+       "explanation": "Metinde hastaların da doktorların da kimin ilacı aldığını bilmediği açıkça söylenir: 'neither patients nor doctors knew' diyen şık doğrudur. 'more than a year' (altı ay), 'a single hospital' (üç hastane), 'ready for general use' (daha büyük çalışmalar gerekli) ve 'only patients with acute migraine' (kronik migren) diyen şıklar metinle çelişir."
       },
       {
        "type": "choice",
@@ -6546,7 +6546,7 @@
         "health workers who investigated the outbreak"
        ],
        "answer": 2,
-       "explanation": "Metinde yaşlıların ve kronik akciğer hastalığı olanların komplikasyonlara daha 'susceptible' (yatkın) olduğu söylenir: C doğrudur. A, B ve E metinde geçmez; D ise hastaların çoğu için geçerli genel bir belirtidir, risk grubu değildir."
+       "explanation": "Metinde yaşlıların ve kronik akciğer hastalığı olanların komplikasyonlara daha 'susceptible' (yatkın) olduğu söylenir: 'elderly residents and people with chronic lung problems' doğrudur. 'already been vaccinated', 'young people' ve 'health workers' diyen şıklar metinde geçmez; 'developed a fever within two days' ise hastaların çoğu için geçerli genel bir belirtidir, risk grubu değildir."
       },
       {
        "type": "choice",
@@ -6767,7 +6767,7 @@
         "he was discharged because he had fully recovered"
        ],
        "answer": 1,
-       "explanation": "'Although' bir zıtlık ister: belirtiler geçse de doktor antibiyotiğin tamamlanmasını önermiştir, B doğrudur. Öteki şıklar belirtilerin kaybolmasının doğal sonuçlarıdır ve zıtlık kurmaz."
+       "explanation": "'Although' bir zıtlık ister: belirtiler geçse de doktor antibiyotiğin tamamlanmasını önermiştir, 'the doctor advised him to finish the full course of antibiotics' doğrudur. Öteki şıklar belirtilerin kaybolmasının doğal sonuçlarıdır ve zıtlık kurmaz."
       },
       {
        "type": "choice",
@@ -6780,7 +6780,7 @@
         "fewer people would have been infected"
        ],
        "answer": 4,
-       "explanation": "'Had been detected' üçüncü tip koşuldur ve 'would have been' ile tamamlanır: E doğrudur. A, B ve C zaman bakımından uyumsuzdur; D'de 'had administered' koşul cümlesinin sonucu olamaz."
+       "explanation": "'Had been detected' üçüncü tip koşuldur ve 'would have been' ile tamamlanır: 'fewer people would have been infected' doğrudur. 'will need', 'spreads' ve 'are falling' içeren şıklar zaman bakımından uyumsuzdur; 'had administered' içeren şık koşul cümlesinin sonucu olamaz."
       },
       {
        "type": "choice",
@@ -6793,7 +6793,7 @@
         "Their symptoms disappear on their own within a few days"
        ],
        "answer": 2,
-       "explanation": "Boşluktan sonraki 'for this reason' cümlesi diyet ve egzersiz eğitimini gerekçelendirir; bu gerekçe hastaların günlük alışkanlıklarını değiştirmesi gerektiğidir: C. A ve E 'long-term' ile çelişir, B ve D konudan sapar."
+       "explanation": "Boşluktan sonraki 'for this reason' cümlesi diyet ve egzersiz eğitimini gerekçelendirir; bu gerekçe hastaların günlük alışkanlıklarını değiştirmesi gerektiğidir: 'Patients must often change their daily habits'. 'cured with a single injection' ve 'disappear on their own' diyen şıklar 'long-term' ile çelişir, 'spread easily' ve 'Contagious diseases' diyen şıklar konudan sapar."
       },
       {
        "type": "choice",
@@ -6806,7 +6806,7 @@
         "İlaç bir doktorun gözetiminde uygulandığında daha etkili olur."
        ],
        "answer": 0,
-       "explanation": "'Should be administered' ‘uygulanmalıdır’, 'only under the supervision of' ‘yalnızca ... gözetiminde’ demektir: A doğrudur. B ‘reçete’ der, C ve D anlamı tersine çevirir, E ‘yalnızca’ zorunluluğunu etkinlik iddiasına çevirir."
+       "explanation": "'Should be administered' ‘uygulanmalıdır’, 'only under the supervision of' ‘yalnızca ... gözetiminde’ demektir: ‘yalnızca yetkin bir doktorun gözetiminde uygulanmalıdır’ doğrudur. ‘reçete edebilir’ diyen şık ‘reçete’ der, ‘doktor olmadan da güvenle’ ve ‘genellikle denetlemez’ diyen şıklar anlamı tersine çevirir, ‘daha etkili olur’ diyen şık ‘yalnızca’ zorunluluğunu etkinlik iddiasına çevirir."
       },
       {
        "type": "choice",
@@ -6819,7 +6819,7 @@
         "The researchers found that mortality among elderly patients fell before the new vaccine was introduced."
        ],
        "answer": 3,
-       "explanation": "‘Ölüm oranını önemli ölçüde düşürdü’ 'significantly reduced mortality' ile karşılanır: D doğrudur. A yönü tersine çevirir, B ‘umdu’ ve ‘genç’ der, C özneyi ve konuyu değiştirir, E düşüşü aşıdan önceye koyar."
+       "explanation": "‘Ölüm oranını önemli ölçüde düşürdü’ 'significantly reduced mortality' ile karşılanır: 'significantly reduced mortality among elderly patients' doğrudur. 'slightly increased' diyen şık yönü tersine çevirir, 'hoped … young patients' diyen şık ‘umdu’ ve ‘genç’ der, 'Elderly patients found' diyen şık özneyi ve konuyu değiştirir, 'fell before the new vaccine was introduced' diyen şık düşüşü aşıdan önceye koyar."
       },
       {
        "type": "choice",
@@ -6832,7 +6832,7 @@
         "Only a small number of patients experience side effects from this medication."
        ],
        "answer": 4,
-       "explanation": "‘Hastaların çoğu yan etki yaşamaz’ cümlesi, yalnızca az sayıda hastanın yan etki yaşadığı anlamına gelir: E. A ve D anlamı tersine çevirir, B ‘hiçbir hasta’ diyerek abartır, C yan etkilerin ciddiyetinden söz eder."
+       "explanation": "‘Hastaların çoğu yan etki yaşamaz’ cümlesi, yalnızca az sayıda hastanın yan etki yaşadığı anlamına gelir: 'Only a small number of patients experience side effects'. 'nearly every patient' ve 'stop taking this medication' diyen şıklar anlamı tersine çevirir, 'No patient has ever' diyen şık ‘hiçbir hasta’ diyerek abartır, 'more serious than expected' diyen şık yan etkilerin ciddiyetinden söz eder."
       }
      ]
     },
@@ -7381,7 +7381,7 @@
         "was gradually abandoned because of environmental and economic problems"
        ],
        "answer": 4,
-       "explanation": "Metne göre nehrin yön değiştirmesi, tarımın kuruması ve ekonomik sıkıntılar şehrin yavaş yavaş terk edilmesine yol açmıştır: E. A yeni bulgularla çelişir, B 'several decades' ile çelişir, C ve D metinde yer almaz."
+       "explanation": "Metne göre nehrin yön değiştirmesi, tarımın kuruması ve ekonomik sıkıntılar şehrin yavaş yavaş terk edilmesine yol açmıştır: 'was gradually abandoned because of environmental and economic problems'. 'burned down by foreign invaders' yeni bulgularla çelişir, 'within a single year' 'several decades' ile çelişir, 'never been an important trading centre' ve 'rebuilt by merchants from the coast' metinde yer almaz."
       },
       {
        "type": "choice",
@@ -7409,7 +7409,7 @@
         "showed lower levels of trust in their neighbours"
        ],
        "answer": 2,
-       "explanation": "Metinde bu mahalle sakinlerinin yerel karar alma süreçlerine iki kat daha fazla katıldığı söylenir: C. A ‘benzer gelir’ bilgisiyle, B oturma süresinin farklı olduğu bilgisiyle, E daha yüksek güven bilgisiyle çelişir; D metinde geçmez."
+       "explanation": "Metinde bu mahalle sakinlerinin yerel karar alma süreçlerine iki kat daha fazla katıldığı söylenir: 'were more involved in local decision-making'. 'earned considerably more' ‘benzer gelir’ bilgisiyle, 'exactly the same period' oturma süresinin farklı olduğu bilgisiyle, 'lower levels of trust' daha yüksek güven bilgisiyle çelişir; 'refused to attend the weekly events' metinde geçmez."
       },
       {
        "type": "choice",
@@ -7423,7 +7423,7 @@
         "the second neighbourhood actually had more public spaces"
        ],
        "answer": 3,
-       "explanation": "Araştırmacılar oturma süresinin de farklı olduğunu belirterek sonucu başka bir etkenin de etkilemiş olabileceğini söyler: D. A aşırı bir yorumdur, B ve E metinde yoktur, C gelirlerin benzer olduğu bilgisiyle çelişir."
+       "explanation": "Araştırmacılar oturma süresinin de farklı olduğunu belirterek sonucu başka bir etkenin de etkilemiş olabileceğini söyler: 'another factor may also have influenced the results'. 'no effect at all' aşırı bir yorumdur, 'only one year' ve 'more public spaces' diyen şıklar metinde yoktur, 'income level was the main cause' gelirlerin benzer olduğu bilgisiyle çelişir."
       },
       {
        "type": "match",
@@ -7630,7 +7630,7 @@
         "adult education programmes have been very successful"
        ],
        "answer": 3,
-       "explanation": "'Although' bir zıtlık ister: okuryazarlık artmış olsa da kırsal kesimde milyonlarca yetişkin hâlâ okuyamamaktadır, D doğrudur. Öteki şıklar okuryazarlık artışını destekleyen ya da onunla uyumlu bilgilerdir."
+       "explanation": "'Although' bir zıtlık ister: okuryazarlık artmış olsa da kırsal kesimde milyonlarca yetişkin hâlâ okuyamamaktadır, 'millions of adults in rural areas still cannot read a newspaper' doğrudur. Öteki şıklar okuryazarlık artışını destekleyen ya da onunla uyumlu bilgilerdir."
       },
       {
        "type": "choice",
@@ -7656,7 +7656,7 @@
         "It is mainly observed among very young children"
        ],
        "answer": 2,
-       "explanation": "'In such cases' ifadesi önceki cümlede belirli bir durumun tanımlanmasını gerektirir: belirsizlik anında başkalarını taklit etmek akıllıca bir stratejidir, C. A ve B ilk cümleyle çelişir, D ve E akışı koparır."
+       "explanation": "'In such cases' ifadesi önceki cümlede belirli bir durumun tanımlanmasını gerektirir: belirsizlik anında başkalarını taklit etmek akıllıca bir stratejidir, 'When people are uncertain, copying others can be a sensible strategy'. 'strongly dislike being part of any group' ve 'regard it as a mental disorder' diyen şıklar ilk cümleyle çelişir, 'rarely have any norms' ve 'very young children' diyen şıklar akışı koparır."
       },
       {
        "type": "choice",
@@ -7669,7 +7669,7 @@
         "Mahkemenin kararı, savunmanın hiç kanıt sunmaması nedeniyle eleştirildi."
        ],
        "answer": 1,
-       "explanation": "'Was widely criticised for ignoring key evidence' ‘önemli kanıtları göz ardı ettiği için geniş çapta eleştirildi’ demektir: B doğrudur. A ve C anlamı tersine çevirir, D göz ardı edenin kim olduğunu değiştirir, E kanıtın hiç sunulmadığını söyler."
+       "explanation": "'Was widely criticised for ignoring key evidence' ‘önemli kanıtları göz ardı ettiği için geniş çapta eleştirildi’ demektir: bu ifadeyi taşıyan şık doğrudur. ‘kararı eleştirmedi’ ve ‘geniş çapta övülen’ diyen şıklar anlamı tersine çevirir, ‘eleştirenler tarafından göz ardı edildi’ diyen şık göz ardı edenin kim olduğunu değiştirir, ‘hiç kanıt sunmaması’ diyen şık kanıtın hiç sunulmadığını söyler."
       },
       {
        "type": "choice",
@@ -7682,7 +7682,7 @@
         "The government decided to raise interest rates in order to reduce inflation."
        ],
        "answer": 4,
-       "explanation": "‘Faiz oranlarını artırmak’ 'raise interest rates', ‘enflasyonu düşürmek amacıyla’ 'in order to reduce inflation' ile karşılanır: E doğrudur. A yönleri tersine çevirir, B neden-sonucu değiştirir, C ‘yerine’ der, D amaç ile aracı yer değiştirir."
+       "explanation": "‘Faiz oranlarını artırmak’ 'raise interest rates', ‘enflasyonu düşürmek amacıyla’ 'in order to reduce inflation' ile karşılanır: 'decided to raise interest rates in order to reduce inflation' doğrudur. 'lower interest rates in order to increase inflation' diyen şık yönleri tersine çevirir, 'Interest rates rose because' diyen şık neden-sonucu değiştirir, 'instead of raising' diyen şık ‘yerine’ der, 'In order to raise interest rates' ile başlayan şık amaç ile aracı yer değiştirir."
       },
       {
        "type": "choice",
@@ -7695,7 +7695,7 @@
         "The empire collapsed suddenly, although historians accepted this view only recently."
        ],
        "answer": 0,
-       "explanation": "'Few historians accept' ‘çok az tarihçi kabul ediyor’, yani çoğu reddediyor demektir: A aynı anlamı verir. B ve E anlamı tersine çevirir, C tartışmanın hiç olmadığını söyler, D ‘kabul etmek’ yerine ‘incelemek’ der ve ani çöküşü veri olarak alır."
+       "explanation": "'Few historians accept' ‘çok az tarihçi kabul ediyor’, yani çoğu reddediyor demektir: 'Most historians today reject the idea' aynı anlamı verir. 'Many historians now agree' ve 'accepted this view only recently' diyen şıklar anlamı tersine çevirir, 'have never discussed' diyen şık tartışmanın hiç olmadığını söyler, 'Only a few historians have studied' diyen şık ‘kabul etmek’ yerine ‘incelemek’ der ve ani çöküşü veri olarak alır."
       }
      ]
     },

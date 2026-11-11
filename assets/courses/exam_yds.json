@@ -4638,8 +4638,8 @@
         "elderly",
         "invasive",
         "external",
-        "metabolic",
-        "contradictory"
+        "edible",
+        "ornamental"
        ],
        "answer": 2,
        "explanation": "Kurul kendi muhasebecilerine güvenmediği için dışarıdan bir denetim, yani ‘external audit’ (dış denetim) ister. Diğer sıfatlar ‘audit’ ile anlamlı bir bağlantı kurmaz."
@@ -4665,7 +4665,7 @@
        "choices": [
         "consent",
         "survey",
-        "origin"
+        "border"
        ]
       },
       {
@@ -4790,7 +4790,7 @@
         "It the river changed its course explains the location of the ruins."
        ],
        "answer": 0,
-       "explanation": "A doğrudur: ‘the fact that’ + tam cümle özne olur ve tekil fiil (explains) alır. B’de özne cümleciği tekil sayıldığı hâlde ‘explain’ kullanılmış; D’de ‘the fact which’ isim cümleciği kurmaz."
+       "explanation": "‘The fact that the river changed its course explains…’ doğrudur: ‘the fact that’ + tam cümle özne olur ve tekil fiil (explains) alır. ‘That the river … explain’ diyen şıkta özne cümleciği tekil sayıldığı hâlde ‘explain’ kullanılmış; ‘the fact which’ ile kurulan şık isim cümleciği kurmaz."
       },
       {
        "type": "choice",
@@ -4965,7 +4965,7 @@
         "She said me where I stored the files."
        ],
        "answer": 1,
-       "explanation": "B doğrudur: aktarılan soruda düz cümle sırası (I stored) kullanılır. A’da soru sırası korunmuş; D’de ‘ask’ten sonra ‘to’ gereksiz; E’de ‘say’ dolaylı nesneyi ‘to’ olmadan almaz."
+       "explanation": "‘She asked me where I stored the files’ doğrudur: aktarılan soruda düz cümle sırası (I stored) kullanılır. ‘where did I store’ diyen şıkta soru sırası korunmuş; ‘asked to me’ diyen şıkta ‘ask’ten sonra ‘to’ gereksiz; ‘She said me’ diyen şıkta ‘say’ dolaylı nesneyi ‘to’ olmadan almaz."
       },
       {
        "type": "choice",
@@ -4978,7 +4978,7 @@
         "resigning / be conducted"
        ],
        "answer": 2,
-       "explanation": "‘demand that’ sonrasında iki cümlecikte de yalın fiil gerekir: ‘resign’ (etken) ve ‘be conducted’ (denetim yapılan şey olduğu için edilgen). A’daki ‘resigns / is conducted’ subjunctive değildir; E’deki ‘resigning’ çekimli değildir."
+       "explanation": "‘demand that’ sonrasında iki cümlecikte de yalın fiil gerekir: ‘resign’ (etken) ve ‘be conducted’ (denetim yapılan şey olduğu için edilgen). ‘resigns / is conducted’ subjunctive değildir; ‘resigning / be conducted’ şıkkındaki ‘resigning’ çekimli değildir."
       },
       {
        "type": "fillBlank",
@@ -5119,7 +5119,7 @@
         "Why this theory was accepted for so long is still being debated."
        ],
        "answer": 4,
-       "explanation": "E doğrudur: ‘neden’ ‘why’ ile ve düz cümle sırasıyla aktarılır. A’da soru sırası (was this theory) kullanılmış; D ‘kabul görüp görmediği’ anlamına gelir; B ‘neden’ anlamını kaybeder."
+       "explanation": "‘Why this theory was accepted for so long is still being debated’ doğrudur: ‘neden’ ‘why’ ile ve düz cümle sırasıyla aktarılır. ‘Why was this theory’ ile başlayan şıkta soru sırası (was this theory) kullanılmış; ‘Whether’ ile başlayan şık ‘kabul görüp görmediği’ anlamına gelir; ‘It is still debated that’ diyen şık ‘neden’ anlamını kaybeder."
       },
       {
        "type": "match",
@@ -5257,7 +5257,7 @@
         "The samples must be kept at a temperature below freezing."
        ],
        "answer": 4,
-       "explanation": "‘It is vital that … be stored’ bir zorunluluk bildirir; E’deki ‘must be kept’ bunu karşılar. B belirsizlik, C geçmişte yapılmış bir hata anlatır; D ise sıcaklığın önemsiz olduğunu söyler."
+       "explanation": "‘It is vital that … be stored’ bir zorunluluk bildirir; ‘must be kept’ diyen şık bunu karşılar. ‘It is not clear whether’ diyen şık belirsizlik, ‘which was a mistake’ diyen şık geçmişte yapılmış bir hata anlatır; ‘at any temperature’ diyen şık ise sıcaklığın önemsiz olduğunu söyler."
       },
       {
        "type": "choice",
@@ -5270,7 +5270,7 @@
         "The researchers question if or not the findings can be generalised."
        ],
        "answer": 0,
-       "explanation": "‘-ip -emeyeceği’ evet-hayır belirsizliğidir; A’daki ‘whether the findings can be generalised’ doğrudur. D’de soru sırası (can the findings) yanlış, E’de ‘if or not’ hatalıdır."
+       "explanation": "‘-ip -emeyeceği’ evet-hayır belirsizliğidir; ‘whether the findings can be generalised’ doğrudur. ‘whether can the findings’ diyen şıkta soru sırası (can the findings) yanlış, ‘if or not’ diyen şıkta bu ifade hatalıdır."
       },
       {
        "type": "choice",
@@ -5283,7 +5283,7 @@
         "Araştırmacıları şaşırtan şey, düşüşün hızlı değil büyük olmasıydı."
        ],
        "answer": 3,
-       "explanation": "‘What surprised the researchers’ ‘araştırmacıları şaşırtan şey’, ‘not … but how quickly’ ise ‘… değil, ne kadar hızlı’ demektir; D doğrudur. A anlamı tersine çevirir, B iki unsuru birden şaşırtıcı sayar, C ‘neden’ sorusuna kayar, E ise vurguyu yer değiştirir."
+       "explanation": "‘What surprised the researchers’ ‘araştırmacıları şaşırtan şey’, ‘not … but how quickly’ ise ‘… değil, ne kadar hızlı’ demektir; ‘Araştırmacıları şaşırtan şey düşüşün büyüklüğü değil, ne kadar hızlı gerçekleştiğiydi’ doğrudur. ‘şaşırmadıklarını belirtti’ diyen şık anlamı tersine çevirir, ‘hem büyüklüğü hem de hızı’ diyen şık iki unsuru birden şaşırtıcı sayar, ‘neden bu kadar hızlı’ diyen şık ‘neden’ sorusuna kayar, ‘hızlı değil büyük olmasıydı’ diyen şık ise vurguyu yer değiştirir."
       },
       {
        "type": "choice",
@@ -5296,7 +5296,7 @@
         "What the antibodies reacted to a related strain"
        ],
        "answer": 1,
-       "explanation": "Boşluğa ana cümle gerekir; B’de özne (Researchers) ve ana fiil (observed) vardır ve ‘which suggests’ bu gözleme gönderme yapar. A, C ve D ana fiili olmayan isim cümlecikleridir; E dilbilgisel olarak bozuktur."
+       "explanation": "Boşluğa ana cümle gerekir; ‘Researchers observed that…’ şıkkında özne (Researchers) ve ana fiil (observed) vardır ve ‘which suggests’ bu gözleme gönderme yapar. ‘Why’, ‘Whether’ ve ‘That’ ile başlayan şıklar ana fiili olmayan isim cümlecikleridir; ‘What the antibodies reacted to…’ dilbilgisel olarak bozuktur."
       },
       {
        "type": "choice",
@@ -5309,7 +5309,7 @@
         "how the collapse could have been prevented"
        ],
        "answer": 2,
-       "explanation": "‘The fact that …’ uzun bir öznedir ve ana fiile ihtiyaç duyar; C’deki ‘made’ bu fiili sağlar ve anlamca tutarlıdır. Öteki şıklar yine yan cümle olduğundan cümle yüklemsiz kalır."
+       "explanation": "‘The fact that …’ uzun bir öznedir ve ana fiile ihtiyaç duyar; ‘made its sudden collapse even more puzzling’ şıkkındaki ‘made’ bu fiili sağlar ve anlamca tutarlıdır. Öteki şıklar yine yan cümle olduğundan cümle yüklemsiz kalır."
       },
       {
        "type": "choice",
@@ -5322,7 +5322,7 @@
         "as every study has confirmed that it will"
        ],
        "answer": 0,
-       "explanation": "Belirsizliğin gerekçesi A’da verilir: hükümet verginin nasıl uygulanacağını henüz açıklamamıştır. E ‘her çalışma doğruladı’ diyerek belirsizlikle çelişir; C ise başarı kesinliği bildirir."
+       "explanation": "Belirsizliğin gerekçesi ‘since the government has not yet published…’ şıkkında verilir: hükümet verginin nasıl uygulanacağını henüz açıklamamıştır. ‘as every study has confirmed’ diyen şık ‘her çalışma doğruladı’ diyerek belirsizlikle çelişir; ‘so the policy was fully successful’ ise başarı kesinliği bildirir."
       },
       {
        "type": "choice",
@@ -5832,7 +5832,7 @@
         "The new employees weren't using to writing detailed reports."
        ],
        "answer": 1,
-       "explanation": "‘-meye alışkın olmamak’ ‘not be used to doing’ ile verilir; B doğrudur. A ‘eskiden yazmazlardı’ anlamına gelir; C ve D’de edat ‘to’dan sonra yalın fiil kullanılmıştır."
+       "explanation": "‘-meye alışkın olmamak’ ‘not be used to doing’ ile verilir; ‘weren't used to writing’ doğrudur. ‘didn't use to write’ ‘eskiden yazmazlardı’ anlamına gelir; ‘weren't used to write’ ve ‘didn't get used to write’ şıklarında edat ‘to’dan sonra yalın fiil kullanılmıştır."
       },
       {
        "type": "fillBlank",
@@ -5973,7 +5973,7 @@
         "there were no boats leaving the harbour"
        ],
        "answer": 2,
-       "explanation": "‘Having been warned’ yapısının öznesi ana cümlenin öznesiyle aynı olmalıdır; uyarılan kişi kaptandır, C doğrudur. A’da ‘departure’, D’de ‘harbour’ uyarılamaz; B ve E’de mantıksal özne yoktur."
+       "explanation": "‘Having been warned’ yapısının öznesi ana cümlenin öznesiyle aynı olmalıdır; uyarılan kişi kaptandır, ‘the captain decided to keep the boats in the harbour’ doğrudur. ‘the fishing boats' departure’ şıkkında ‘departure’, ‘the harbour remained closed’ şıkkında ‘harbour’ uyarılamaz; ‘it was decided’ ve ‘there were no boats’ şıklarında mantıksal özne yoktur."
       },
       {
        "type": "choice",
@@ -6124,7 +6124,7 @@
         "The engineers regretted reducing the noise."
        ],
        "answer": 3,
-       "explanation": "‘not succeed in doing’ ‘fail to do’ ile aynı anlamdadır; D doğrudur. A çaba olmadığını söyler; C anlamı tersine çevirir; E pişmanlık bildirir."
+       "explanation": "‘not succeed in doing’ ‘fail to do’ ile aynı anlamdadır; ‘failed to reduce the noise’ doğrudur. ‘did not try to reduce’ çaba olmadığını söyler; ‘reduced the noise successfully’ anlamı tersine çevirir; ‘regretted reducing’ pişmanlık bildirir."
       },
       {
        "type": "choice",
@@ -6137,7 +6137,7 @@
         "Şirketin kazadan önce birkaç uyarıyı görmezden geldiği söyleniyor."
        ],
        "answer": 4,
-       "explanation": "‘is said to have ignored’ ‘görmezden geldiği söyleniyor’ demektir; E doğrudur. A’da söyleyen şirketin kendisidir; C anlamı tersine çevirir; D uyarı alınmadığını iddia eder."
+       "explanation": "‘is said to have ignored’ ‘görmezden geldiği söyleniyor’ demektir; ‘Şirketin kazadan önce birkaç uyarıyı görmezden geldiği söyleniyor’ doğrudur. ‘görmezden geleceğini söyledi’ diyen şıkta söyleyen şirketin kendisidir; ‘uyarılara dikkat ettiği’ diyen şık anlamı tersine çevirir; ‘hiçbir uyarı almadığını’ diyen şık uyarı alınmadığını iddia eder."
       },
       {
        "type": "choice",
@@ -6150,7 +6150,7 @@
         "The researchers remembered checking the data before they published the results."
        ],
        "answer": 0,
-       "explanation": "‘önermek’ ‘suggest doing’, ‘yayımlamadan önce’ ‘before publishing’ ile verilir; A doğrudur. B’de ‘suggest to’ ve ‘before publish’ hatalıdır; D ve E anlamı değiştirir."
+       "explanation": "‘önermek’ ‘suggest doing’, ‘yayımlamadan önce’ ‘before publishing’ ile verilir; ‘suggested checking the data again before publishing the results’ doğrudur. ‘suggested to check’ diyen şıkta ‘suggest to’ ve ‘before publish’ hatalıdır; ‘published without checking’ ve ‘remembered checking’ diyen şıklar anlamı değiştirir."
       },
       {
        "type": "choice",
@@ -6163,7 +6163,7 @@
         "to raising fuel taxes after the economy recovered"
        ],
        "answer": 1,
-       "explanation": "‘postpone’ -ing alır: ‘postponed raising fuel taxes’; B hem dilbilgisel hem anlamca doğrudur. A’da ‘to raise’, D’de yalın fiil, E’de ‘to raising’ hatalıdır; C’deki that-cümleciği postpone ile kullanılmaz."
+       "explanation": "‘postpone’ -ing alır: ‘postponed raising fuel taxes’; ‘raising fuel taxes until the economy had recovered’ hem dilbilgisel hem anlamca doğrudur. ‘to raise’, yalın ‘raise’ ve ‘to raising’ kullanan şıklar hatalıdır; ‘that fuel taxes would rise’ ile kurulan that-cümleciği postpone ile kullanılmaz."
       },
       {
        "type": "choice",
@@ -6176,7 +6176,7 @@
         "they relied on outdated measurements"
        ],
        "answer": 0,
-       "explanation": "‘instead of’ edat öbeğidir ve -ing ister: ‘relying on outdated measurements’ (A). B ve C mastar/yalın biçimdir; D ve E çekimli fiil içerdiği için edattan sonra gelemez."
+       "explanation": "‘instead of’ edat öbeğidir ve -ing ister: ‘relying on outdated measurements’. ‘to rely’ ve yalın ‘rely’ ile başlayan şıklar mastar/yalın biçimdir; ‘relied’ ve ‘they relied’ ile başlayan şıklar çekimli fiil içerdiği için edattan sonra gelemez."
       },
       {
        "type": "choice",
@@ -6189,7 +6189,7 @@
         "To measure the effects of the new medication accurately"
        ],
        "answer": 4,
-       "explanation": "Ana cümleye amaç bildiren bir to-mastar öbeği eklenir: ‘ilacın etkilerini doğru ölçmek için’ (E). C bağımsız bir cümledir ve virgülle bağlanamaz; D yüklemsiz bir isim cümleciğidir; A ve B dilbilgisel olarak bozuktur."
+       "explanation": "Ana cümleye amaç bildiren bir to-mastar öbeği eklenir: ‘ilacın etkilerini doğru ölçmek için’ (‘To measure the effects of the new medication accurately’). ‘It was difficult to measure…’ bağımsız bir cümledir ve virgülle bağlanamaz; ‘That the effects … were measured’ yüklemsiz bir isim cümleciğidir; ‘Measured the effects…’ ve ‘Being measured the effects…’ dilbilgisel olarak bozuktur."
       },
       {
        "type": "choice",
@@ -6358,7 +6358,7 @@
        "options": [
         "shortage",
         "subsidy",
-        "emission",
+        "famine",
         "migration",
         "drought"
        ],
@@ -6867,7 +6867,7 @@
         "the government decided to subsidise it for all farmers"
        ],
        "answer": 2,
-       "explanation": "‘Although’ beklentinin bozulmasını ister: su tasarrufuna rağmen çiftçiler sistemi benimsemekte isteksizdi (C). A, D ve E olumlu sonuçları sürdürür, zıtlık kurmaz; B’deki ‘therefore’ ‘although’ ile çelişir."
+       "explanation": "‘Although’ beklentinin bozulmasını ister: su tasarrufuna rağmen çiftçiler sistemi benimsemekte isteksizdi (‘farmers … were reluctant to adopt it’). ‘widely praised’, ‘water shortages became much less common’ ve ‘decided to subsidise it’ diyen şıklar olumlu sonuçları sürdürür, zıtlık kurmaz; ‘it therefore became…’ şıkkındaki ‘therefore’ ‘although’ ile çelişir."
       },
       {
        "type": "choice",
@@ -7004,7 +7004,7 @@
         "Despite the failed experiment, the equipment worked well."
        ],
        "answer": 3,
-       "explanation": "‘because + cümle’ ‘owing to + isim’ ile aynı ilişkiyi kurar; D doğrudur. B neden-sonucu tersine çevirir; A ve E anlamı değiştirir."
+       "explanation": "‘because + cümle’ ‘owing to + isim’ ile aynı ilişkiyi kurar; ‘Owing to faulty equipment, the experiment was unsuccessful’ doğrudur. ‘so the equipment became faulty’ diyen şık neden-sonucu tersine çevirir; ‘Although the equipment was faulty’ ve ‘Despite the failed experiment’ ile başlayan şıklar anlamı değiştirir."
       },
       {
        "type": "choice",
@@ -7017,7 +7017,7 @@
         "Yeni yasa yalnızca emisyonları azaltmakla kalmadı, aynı zamanda binlerce iş de yarattı."
        ],
        "answer": 4,
-       "explanation": "‘Not only … but also’ ‘yalnızca … değil, aynı zamanda …’ demektir; E doğrudur. A ikinci bilgiyi olumsuzlar; B ve D neden-sonuç ilişkisi uydurur; C her şeyi olumsuz yapar."
+       "explanation": "‘Not only … but also’ ‘yalnızca … değil, aynı zamanda …’ demektir; ‘yalnızca emisyonları azaltmakla kalmadı, aynı zamanda binlerce iş de yarattı’ doğrudur. ‘hiç iş yaratmadı’ diyen şık ikinci bilgiyi olumsuzlar; ‘iş yarattığı için’ ve ‘azalmasaydı’ diyen şıklar neden-sonuç ilişkisi uydurur; ‘ne … ne de’ ile kurulan şık her şeyi olumsuz yapar."
       },
       {
        "type": "choice",
@@ -7030,7 +7030,7 @@
         "The excavation will continue by October so that the weather conditions are suitable."
        ],
        "answer": 0,
-       "explanation": "‘-dığı sürece’ ‘as long as’, ‘-e kadar’ ‘until’ ile verilir; A doğrudur. B koşulu tersine çevirir; D’de koşul cümlesinde ‘will’ ve zaman uyumsuzluğu vardır; E’de ‘by’ ve ‘so that’ anlamı bozar."
+       "explanation": "‘-dığı sürece’ ‘as long as’, ‘-e kadar’ ‘until’ ile verilir; ‘As long as the weather conditions are suitable, the excavation will continue until October’ doğrudur. ‘Unless’ ile başlayan şık koşulu tersine çevirir; ‘will be suitable … continued’ diyen şıkta koşul cümlesinde ‘will’ ve zaman uyumsuzluğu vardır; ‘by October so that’ diyen şıkta ‘by’ ve ‘so that’ anlamı bozar."
       },
       {
        "type": "choice",
@@ -7043,7 +7043,7 @@
         "whereas the rain had stopped completely"
        ],
        "answer": 1,
-       "explanation": "‘Since’ burada neden bildirir; nehrin iki metre yükselmesinin mantıklı sonucu tahliyedir (B). A ve C mantıksal olarak çelişir; D ve E ana cümle içermez."
+       "explanation": "‘Since’ burada neden bildirir; nehrin iki metre yükselmesinin mantıklı sonucu tahliyedir (‘the authorities ordered the evacuation of the lower village’). ‘in no danger of flooding’ ve ‘plant their crops near the bank’ diyen şıklar mantıksal olarak çelişir; ‘although’ ve ‘whereas’ ile başlayan şıklar ana cümle içermez."
       },
       {
        "type": "choice",
@@ -7056,7 +7056,7 @@
         "The new machine also needs two operators"
        ],
        "answer": 3,
-       "explanation": "‘whereas’ iki durumu karşılaştırır; eski model iki operatör isterken yenisinin tek teknisyenle çalışması (D) karşıtlığı kurar. B ve E benzerlik bildirir; A ve C ana cümle değildir."
+       "explanation": "‘whereas’ iki durumu karşılaştırır; eski model iki operatör isterken yenisinin tek teknisyenle çalışması (‘can be run by a single technician’) karşıtlığı kurar. ‘Both the new and the old machines…’ ve ‘also needs two operators’ diyen şıklar benzerlik bildirir; ‘Because’ ve ‘Despite’ ile başlayan şıklar ana cümle değildir."
       },
       {
        "type": "choice",
@@ -7069,7 +7069,7 @@
         "otherwise, the survey was conducted online"
        ],
        "answer": 2,
-       "explanation": "‘in fact’ önceki iddiayı (şaşırtıcı sonuçlar) somut bir bilgiyle destekler; C doğrudur. A ve D ‘şaşırtıcı’ ifadesiyle çelişir; B ve E konuyla ilgisizdir."
+       "explanation": "‘in fact’ önceki iddiayı (şaşırtıcı sonuçlar) somut bir bilgiyle destekler; ‘in fact, more than half of the respondents said…’ doğrudur. ‘had predicted them exactly’ ve ‘completely expected’ diyen şıklar ‘şaşırtıcı’ ifadesiyle çelişir; ‘for example’ ve ‘otherwise’ ile başlayan şıklar konuyla ilgisizdir."
       },
       {
        "type": "choice",
@@ -7592,7 +7592,7 @@
         "The committee was held responsible with the errors on the report."
        ],
        "answer": 0,
-       "explanation": "‘-den sorumlu tutulmak’ ‘be held responsible for’ ile verilir; A doğrudur. B ve E’de edat yanlıştır; C’de sorumlu tutulan rapordur; D ‘düzeltmekle sorumlu’ anlamına kayar."
+       "explanation": "‘-den sorumlu tutulmak’ ‘be held responsible for’ ile verilir; ‘was held responsible for the errors in the report’ doğrudur. ‘responsible of’ ve ‘responsible with’ diyen şıklarda edat yanlıştır; ‘held the report responsible’ diyen şıkta sorumlu tutulan rapordur; ‘responsible to correct’ diyen şık ‘düzeltmekle sorumlu’ anlamına kayar."
       },
       {
        "type": "match",
@@ -7845,7 +7845,7 @@
         "between"
        ],
        "answer": 4,
-       "explanation": "İki şey arasındaki bağlantı ‘link between A and B’ ile anlatılır. ‘among’ üç ve daha fazla öğe için kullanılır; ‘with’ ‘and’ ile birlikte iki öğeyi bağlayamaz."
+       "explanation": "İki şey arasındaki bağlantı ‘link between X and Y’ ile anlatılır. ‘among’ üç ve daha fazla öğe için kullanılır; ‘with’ ‘and’ ile birlikte iki öğeyi bağlayamaz."
       },
       {
        "type": "choice",
@@ -7884,7 +7884,7 @@
         "Regardless of the city's decision, the project was cancelled."
        ],
        "answer": 3,
-       "explanation": "‘In spite of + isim’ ‘Although + cümle’ ile aynı zıtlığı kurar; D doğrudur. A projenin terk edildiğini, B ucuz olduğunu söyler; E ise iptal edildiğini iddia eder."
+       "explanation": "‘In spite of + isim’ ‘Although + cümle’ ile aynı zıtlığı kurar; ‘Although the project was expensive, the city continued with it’ doğrudur. ‘abandoned the project’ diyen şık projenin terk edildiğini, ‘because it was cheap’ diyen şık ucuz olduğunu söyler; ‘the project was cancelled’ diyen şık ise iptal edildiğini iddia eder."
       },
       {
        "type": "choice",
@@ -7897,7 +7897,7 @@
         "Güvenlik açısından yeni tasarım eskisinden çok daha üstündür."
        ],
        "answer": 4,
-       "explanation": "‘With regard to’ ‘… açısından’, ‘far superior to’ ‘-den çok daha üstün’ demektir; E doğrudur. D karşılaştırmayı tersine çevirir; B ve C anlamı değiştirir."
+       "explanation": "‘With regard to’ ‘… açısından’, ‘far superior to’ ‘-den çok daha üstün’ demektir; ‘Güvenlik açısından yeni tasarım eskisinden çok daha üstündür’ doğrudur. ‘Eski tasarım … yenisinden daha iyidir’ diyen şık karşılaştırmayı tersine çevirir; ‘Güvenlik nedeniyle’ ve ‘güvenliğe rağmen’ diyen şıklar anlamı değiştirir."
       },
       {
        "type": "choice",
@@ -7910,7 +7910,7 @@
         "Poverty in the region has largely contributed to job opportunities."
        ],
        "answer": 0,
-       "explanation": "‘-den kaynaklanmak’ ‘result from’ ile verilir; A doğrudur. B ve C neden-sonucu tersine çevirir; D ve E anlamı değiştirir."
+       "explanation": "‘-den kaynaklanmak’ ‘result from’ ile verilir; ‘Poverty in the region largely results from a lack of job opportunities’ doğrudur. ‘results in a lack’ ve ‘results from poverty’ diyen şıklar neden-sonucu tersine çevirir; ‘depends on’ ve ‘contributed to’ diyen şıklar anlamı değiştirir."
       },
       {
        "type": "choice",
@@ -7923,7 +7923,7 @@
         "Instead of equipment failures"
        ],
        "answer": 1,
-       "explanation": "Neden bir isim öbeğiyle ‘Due to’ ile verilir ve olumsuz sonuçla uyumludur (B). A’da ‘Because’ isimle kullanılmış; C ve D olumlu bir neden verip olumsuz sonuçla çelişir; E anlamsızdır."
+       "explanation": "Neden bir isim öbeğiyle ‘Due to’ ile verilir ve olumsuz sonuçla uyumludur (‘Due to a series of equipment failures’). ‘Because a series of…’ şıkkında ‘Because’ isimle kullanılmış; ‘Since the equipment worked perfectly’ ve ‘Thanks to the new equipment’ olumlu bir neden verip olumsuz sonuçla çelişir; ‘Instead of equipment failures’ anlamsızdır."
       },
       {
        "type": "choice",
@@ -7936,7 +7936,7 @@
         "instead of students"
        ],
        "answer": 2,
-       "explanation": "Ücretsiz giriş öğrencilere uyruklarına bakılmaksızın sunuluyor (C). A ve E çelişkilidir; B anlamsızdır; D yüksek bilet fiyatını ücretsiz girişin nedeni yapar."
+       "explanation": "Ücretsiz giriş öğrencilere uyruklarına bakılmaksızın sunuluyor (‘regardless of their nationality’). ‘in spite of being a student’ ve ‘instead of students’ çelişkilidir; ‘on behalf of their teachers' salaries’ anlamsızdır; ‘because of the museum's high ticket prices’ yüksek bilet fiyatını ücretsiz girişin nedeni yapar."
       },
       {
        "type": "choice",
@@ -7949,7 +7949,7 @@
         "which had been destroyed by an earthquake decades earlier"
        ],
        "answer": 4,
-       "explanation": "Virgüller arasındaki ek bilgi ‘which’ ile verilir (E). B’de virgülden sonra ‘that’ kullanılamaz; A, C ve D’de edattan sonra çekimli bir cümle gelmiş, bu yanlıştır."
+       "explanation": "Virgüller arasındaki ek bilgi ‘which’ ile verilir (‘which had been destroyed by an earthquake decades earlier’). ‘that was destroyed…’ şıkkında virgülden sonra ‘that’ kullanılamaz; ‘in the wake of’, ‘regardless of’ ve ‘due to’ ile başlayan şıklarda edattan sonra çekimli bir cümle gelmiş, bu yanlıştır."
       },
       {
        "type": "choice",
@@ -8472,7 +8472,7 @@
         "This method is less costly as the others."
        ],
        "answer": 1,
-       "explanation": "‘çok daha az maliyetli’ ‘far less costly than’ ile verilir; B doğrudur. A’da çift karşılaştırma (less costlier), D’de ‘the least … than’, E’de ‘as’ hatası vardır; C anlamı tersine çevirir."
+       "explanation": "‘çok daha az maliyetli’ ‘far less costly than’ ile verilir; ‘This method is far less costly than the others’ doğrudur. ‘much less costlier’ diyen şıkta çift karşılaştırma (less costlier), ‘the least costly than’ diyen şıkta ‘the least … than’, ‘less costly as’ diyen şıkta ‘as’ hatası vardır; ‘far more costly’ anlamı tersine çevirir."
       },
       {
        "type": "match",
@@ -8627,7 +8627,7 @@
         "the analysis was much easier than expected"
        ],
        "answer": 0,
-       "explanation": "Çok sayıda hatanın mantıklı sonucu verilerin yeniden toplanmasıdır (A). B, C, D ve E hata çokluğuyla çelişen olumlu sonuçlar bildirir."
+       "explanation": "Çok sayıda hatanın mantıklı sonucu verilerin yeniden toplanmasıdır (‘the researchers had to collect the information again’). Diğer dört şık hata çokluğuyla çelişen olumlu sonuçlar bildirir."
       },
       {
        "type": "choice",
@@ -8640,7 +8640,7 @@
         "No other river in the country is as long as the Kessel."
        ],
        "answer": 4,
-       "explanation": "En üstünlük, ‘başka hiçbir nehir onun kadar uzun değil’ yapısıyla aynı anlamı verir; E doğrudur. A yalnızca bazı nehirlerle karşılaştırır; B eşitlik, C ve D tersini söyler."
+       "explanation": "En üstünlük, ‘başka hiçbir nehir onun kadar uzun değil’ yapısıyla aynı anlamı verir; ‘No other river in the country is as long as the Kessel’ doğrudur. ‘longer than some rivers’ yalnızca bazı nehirlerle karşılaştırır; ‘as long as the other rivers’ eşitlik, ‘Several rivers … are longer’ ve ‘not as long as the longest river’ tersini söyler."
       },
       {
        "type": "fillBlank",
@@ -8764,7 +8764,7 @@
         "The northern route is more dangerous than the southern one."
        ],
        "answer": 3,
-       "explanation": "‘A, B kadar tehlikeli değil’ = ‘B, A’dan daha tehlikeli’; D doğrudur. A ve E anlamı tersine çevirir; C eşitlik bildirir."
+       "explanation": "‘X, Y kadar tehlikeli değil’ = ‘Y, X’ten daha tehlikeli’; ‘The southern route is more dangerous than the northern one’ doğrudur. ‘The southern route is safer’ ve ‘The northern route is more dangerous’ anlamı tersine çevirir; ‘equally dangerous’ eşitlik bildirir."
       },
       {
        "type": "choice",
@@ -8777,7 +8777,7 @@
         "Bu yıl müzeyi beklenenden çok daha az kişi ziyaret etti."
        ],
        "answer": 4,
-       "explanation": "‘Far fewer … than had been expected’ ‘beklenenden çok daha az’ demektir; E doğrudur. A anlamı tersine çevirir; B eşitlik bildirir; D beklentinin içeriğini değiştirir."
+       "explanation": "‘Far fewer … than had been expected’ ‘beklenenden çok daha az’ demektir; ‘Bu yıl müzeyi beklenenden çok daha az kişi ziyaret etti’ doğrudur. ‘biraz daha fazla’ diyen şık anlamı tersine çevirir; ‘beklendiği kadardı’ diyen şık eşitlik bildirir; ‘çok az kişinin ziyaret edeceği beklenmişti’ diyen şık beklentinin içeriğini değiştirir."
       },
       {
        "type": "choice",
@@ -8790,7 +8790,7 @@
         "Few of the participants answered all the questions in the survey."
        ],
        "answer": 0,
-       "explanation": "‘hiçbiri’ ‘None of’ ile verilir ve fiil olumlu kalır; A doğrudur. B ve C’de çift olumsuzluk vardır; D iki kişi için kullanılır ve anlamı değiştirir; E ‘birkaçı’ der."
+       "explanation": "‘hiçbiri’ ‘None of’ ile verilir ve fiil olumlu kalır; ‘None of the participants answered all the questions in the survey’ doğrudur. ‘None … didn't answer’ ve ‘All … didn't answer none’ diyen şıklarda çift olumsuzluk vardır; ‘Neither of’ iki kişi için kullanılır ve anlamı değiştirir; ‘Few of’ ‘birkaçı’ der."
       },
       {
        "type": "choice",
@@ -8803,7 +8803,7 @@
         "the town has decided to close its tourist office"
        ],
        "answer": 1,
-       "explanation": "Turist sayısındaki keskin artışın mantıklı sonucu yeni otel yapılmasıdır (B). A, C, D ve E artışla çelişen sonuçlar bildirir."
+       "explanation": "Turist sayısındaki keskin artışın mantıklı sonucu yeni otel yapılmasıdır (‘the town has had to build two new hotels’). Diğer dört şık artışla çelişen sonuçlar bildirir."
       },
       {
        "type": "choice",
@@ -8816,7 +8816,7 @@
         "The most complex a system is"
        ],
        "answer": 2,
-       "explanation": "‘The more …, the more …’ yapısının ilk yarısı ‘The more complex a system is’dir (C). A’da ‘the’ eksik; B bağımsız bir cümledir; E en üstünlük biçimini yanlış kullanır."
+       "explanation": "‘The more …, the more …’ yapısının ilk yarısı ‘The more complex a system is’dir. ‘More complex a system is’ şıkkında ‘the’ eksik; ‘The system is more complex’ bağımsız bir cümledir; ‘The most complex a system is’ en üstünlük biçimini yanlış kullanır."
       },
       {
        "type": "choice",
@@ -8829,7 +8829,7 @@
         "it contained fewer cases"
        ],
        "answer": 3,
-       "explanation": "‘Although’ beklentinin bozulmasını ister: küçük örneklemin eşit derecede güvenilir sonuç vermesi (D) bu zıtlığı kurar. A ‘therefore’ ile zıtlığı bozar; C, E ve özellikle B ilk bilgiyi tekrarlar."
+       "explanation": "‘Although’ beklentinin bozulmasını ister: küçük örneklemin eşit derecede güvenilir sonuç vermesi (‘it produced equally reliable results’) bu zıtlığı kurar. ‘it was therefore less reliable’ ‘therefore’ ile zıtlığı bozar; ‘the first sample was larger’, ‘it contained fewer cases’ ve özellikle ‘it was smaller than expected’ ilk bilgiyi tekrarlar."
       },
       {
        "type": "choice",

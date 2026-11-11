@@ -118,7 +118,7 @@
       },
       {
        "type": "choice",
-       "question": "Critics argued that the documentary gave a ---- picture of rural life, focusing only on poverty while ignoring the region's rich cultural traditions.",
+       "question": "Critics argued that the documentary's portrayal of rural life was ----, focusing only on poverty while ignoring the region's rich cultural traditions.",
        "options": [
         "comprehensive",
         "one-sided",
@@ -811,7 +811,7 @@
         "Daha uzun uyuyan öğrenciler, sınavlardan önce altı saatten az çalışma eğilimindedir."
        ],
        "answer": 0,
-       "explanation": "*fewer than six hours* (altı saatten az), *tend to* (eğilimindedir) ve *than those who sleep longer* (daha uzun uyuyanlara göre) eksiksiz karşılanan tek şık birincisidir. İkinci şık 'fewer than' ifadesini 'fazla' diye ters çevirir; dördüncü şık uykuyu 'ders çalışma'ya dönüştürür."
+       "explanation": "*fewer than six hours* (altı saatten az), *tend to* (eğilimindedir) ve *than those who sleep longer* (daha uzun uyuyanlara göre) eksiksiz karşılanan tek şık 'daha uzun uyuyanlara göre … eğilimindedir' diyendir. 'Altı saatten fazla uyuyan' diyen şık 'fewer than' ifadesini 'fazla' diye ters çevirir; 'en az altı saat ders çalışması' diyen şık uykuyu 'ders çalışma'ya dönüştürür."
       },
       {
        "type": "choice",
@@ -824,7 +824,7 @@
         "The new law will be introduced once companies stop damaging the environment."
        ],
        "answer": 3,
-       "explanation": "'Zorunlu kılmak' = *require*, 'zararın bedelini ödemek' = *pay for the damage* → 'The new law requires companies to pay for the damage they cause to the environment.' İlk şık yasayı zarar vermeye izin veren bir şeye dönüştürür; ikinci şıkta zarara yasa neden oluyor gibi anlatılır."
+       "explanation": "'Zorunlu kılmak' = *require*, 'zararın bedelini ödemek' = *pay for the damage* → 'The new law requires companies to pay for the damage they cause to the environment.' 'allows companies to damage the environment' diyen şık yasayı zarar vermeye izin veren bir şeye dönüştürür; 'damage caused by the new law' diyen şıkta zarara yasa neden oluyor gibi anlatılır."
       },
       {
        "type": "choice",
@@ -838,7 +838,7 @@
         "the channels were badly built centuries ago"
        ],
        "answer": 2,
-       "explanation": "Metin gençlerin şehre göçtüğünü ve bu ağır iş için daha az el bulunduğunu söyler → 'there are fewer people available to maintain them'. Plastik borular henüz yalnızca değerlendiriliyor, yani ilk şık metinde geçen bir kelimeyi kullanan çeldiricidir; yaşlıların çalışmayı reddettiği de söylenmez."
+       "explanation": "Metin gençlerin şehre göçtüğünü ve bu ağır iş için daha az el bulunduğunu söyler → 'there are fewer people available to maintain them'. Plastik borular henüz yalnızca değerlendiriliyor, yani 'plastic pipes have already replaced' diyen şık metinde geçen bir kelimeyi kullanan çeldiricidir; yaşlıların çalışmayı reddettiği de söylenmez."
       },
       {
        "type": "choice",
@@ -852,7 +852,7 @@
         "value the spring work for its social as well as practical role"
        ],
        "answer": 4,
-       "explanation": "Yaşlılar, ortak bahar çalışmasının ve yarattığı topluluk duygusunun kaybolmasından korkuyor; demek ki işi hem pratik hem toplumsal yönüyle önemsiyorlar → son şık. İkinci şık metni tersine çevirir: daha az bakım isteyen, plastik borulardır."
+       "explanation": "Yaşlılar, ortak bahar çalışmasının ve yarattığı topluluk duygusunun kaybolmasından korkuyor; demek ki işi hem pratik hem toplumsal yönüyle önemsiyorlar → 'value the spring work for its social as well as practical role'. 'stone channels require less maintenance' diyen şık metni tersine çevirir: daha az bakım isteyen, plastik borulardır."
       },
       {
        "type": "choice",
@@ -866,7 +866,7 @@
         "compare coastal and inland provinces"
        ],
        "answer": 1,
-       "explanation": "Gelir ve sağlık hesaba katıldıktan sonra da etkinin sürdüğü vurgulanır; amaç farkın bu etkenlerden kaynaklanmadığından emin olmaktır → ikinci şık. Üçüncü şık metnin son cümlesiyle çelişir: araştırma nedensellik kanıtlayamaz."
+       "explanation": "Gelir ve sağlık hesaba katıldıktan sonra da etkinin sürdüğü vurgulanır; amaç farkın bu etkenlerden kaynaklanmadığından emin olmaktır → 'make sure these factors did not explain the difference'. 'prove that time near water causes better health' diyen şık metnin son cümlesiyle çelişir: araştırma nedensellik kanıtlayamaz."
       },
       {
        "type": "choice",
@@ -880,7 +880,7 @@
         "They argue that daily stress has no effect on well-being."
        ],
        "answer": 0,
-       "explanation": "Yazarlar bir bağlantı görür ama nedensellik iddia etmez (*shows only a link … cannot prove*) → ilk şık. 'They are certain …' aşırı genellemedir; 'completely unreliable' ise yazarların tutumunu abartarak ters yöne çeker."
+       "explanation": "Yazarlar bir bağlantı görür ama nedensellik iddia etmez (*shows only a link … cannot prove*) → 'They see a connection … but do not claim that one causes the other.' 'They are certain …' aşırı genellemedir; 'completely unreliable' ise yazarların tutumunu abartarak ters yöne çeker."
       },
       {
        "type": "choice",
@@ -894,7 +894,7 @@
         "Why don't you do only the reading questions?"
        ],
        "answer": 2,
-       "explanation": "Ayla'nın cevabı (evde çözersem telefona bakarım) ve Mert'in 'gerçek sınav gibi davran' sözü, kesintisiz ve süreli çözme önerisine yanıt verir → üçüncü şık. İlk şık deneme gereksiz derse Ayla'nın 'Good point' cevabı ve devamı anlamsız kalır."
+       "explanation": "Ayla'nın cevabı (evde çözersem telefona bakarım) ve Mert'in 'gerçek sınav gibi davran' sözü, kesintisiz ve süreli çözme önerisine yanıt verir → 'Take each one in a single sitting, with a timer and no interruptions.' 'You don't really need mock exams' diyen şık deneme gereksiz derse Ayla'nın 'Good point' cevabı ve devamı anlamsız kalır."
       },
       {
        "type": "choice",
@@ -907,7 +907,7 @@
         "The project will be completed on time only if volunteers help."
        ],
        "answer": 3,
-       "explanation": "Cümle: gönüllüler olmasaydı proje zamanında bitmezdi, yani gönüllüler sayesinde zamanında bitti → 'It was thanks to the volunteers that …'. İlk şık projenin geciktiğini söyler, ana cümleyle çelişir; son şık zamanı geleceğe taşır."
+       "explanation": "Cümle: gönüllüler olmasaydı proje zamanında bitmezdi, yani gönüllüler sayesinde zamanında bitti → 'It was thanks to the volunteers that …'. 'The project was delayed' diyen şık projenin geciktiğini söyler, ana cümleyle çelişir; 'will be completed … only if' diyen şık zamanı geleceğe taşır."
       },
       {
        "type": "choice",
@@ -1135,7 +1135,7 @@
         "According to researchers, reading books regularly is the only way to improve children's vocabulary."
        ],
        "answer": 1,
-       "explanation": "'Bulmuşlardır' = *have found*, 'önemli ölçüde geliştirdiğini' = *improves … significantly* → ikinci şık. Üçüncü şık 'bulmaya çalışıyorlar' der, sonuç henüz yok; son şıktaki *the only way* kaynakta olmayan bir aşırı genellemedir."
+       "explanation": "'Bulmuşlardır' = *have found*, 'önemli ölçüde geliştirdiğini' = *improves … significantly* → 'reading books regularly improves children's vocabulary significantly'. 'are trying to find out' diyen şık 'bulmaya çalışıyorlar' der, sonuç henüz yok; *the only way* diyen şık kaynakta olmayan bir aşırı genellemedir."
       },
       {
        "type": "choice",
@@ -1148,7 +1148,7 @@
         "İçme suyunu düzgün şekilde arıtmak, ciddi hastalıkları tedavi etmenin en etkili yoludur."
        ],
        "answer": 3,
-       "explanation": "*Unless* = '-mezse', *may contain* = 'içerebilir' → dördüncü şık. İlk şık *unless*'i 'bile' diye çevirerek anlamı bozar; üçüncü şıktaki 'yalnızca' kaynakta olmayan bir genellemedir."
+       "explanation": "*Unless* = '-mezse', *may contain* = 'içerebilir' → 'düzgün şekilde arıtılmazsa … içerebilir'. 'Arıtılsa bile' diyen şık *unless*'i 'bile' diye çevirerek anlamı bozar; 'yalnızca düzgün arıtılmamış sularda' diyen şıktaki 'yalnızca' kaynakta olmayan bir genellemedir."
       },
       {
        "type": "choice",
@@ -1161,7 +1161,7 @@
         "Araştırmacılar, ilk sonuçların daha büyük denemelerden elde edilenler kadar umut verici olmadığı konusunda uyarmıştır."
        ],
        "answer": 1,
-       "explanation": "*Although* = 'olsa da', *should not be used until* = 'tamamlanana kadar kullanılmamalı', *warned* = 'uyarmıştır' → ikinci şık. İlk şık zıtlığı sebebe çevirir ve uyarıyı yok eder; dördüncü şık 'umut verici olmasa da' diyerek olumluyu olumsuza çevirir."
+       "explanation": "*Although* = 'olsa da', *should not be used until* = 'tamamlanana kadar kullanılmamalı', *warned* = 'uyarmıştır' → 'umut verici olsa da … uyarmıştır'. 'Umut verici olduğundan' diyen şık zıtlığı sebebe çevirir ve uyarıyı yok eder; 'umut verici olmasa da' diyen şık olumluyu olumsuza çevirir."
       },
       {
        "type": "choice",
@@ -1174,7 +1174,7 @@
         "According to experts, the more time young people spend on social media, the lower their sleep quality becomes."
        ],
        "answer": 4,
-       "explanation": "'… arttıkça … düşmektedir' yapısı *the more …, the lower …* kalıbıyla karşılanır → son şık. Dördüncü şık kalitenin 'arttığını' söyleyerek yönü tersine çevirir; ilk şık neden-sonucu değiştirir."
+       "explanation": "'… arttıkça … düşmektedir' yapısı *the more …, the lower …* kalıbıyla karşılanır → 'the more time young people spend on social media, the lower their sleep quality becomes'. 'sleep quality has increased' diyen şık kalitenin 'arttığını' söyleyerek yönü tersine çevirir; 'young people who sleep well spend less time' diyen şık neden-sonucu değiştirir."
       },
       {
        "type": "choice",
@@ -1187,7 +1187,7 @@
         "In the late twentieth century, archaeologists decided not to excavate the ancient harbour."
        ],
        "answer": 0,
-       "explanation": "*It was not until X that …* = 'ancak X'te …' ya da 'X'ten önce … değil' → ilk şık. Dördüncü şık kazının çok daha önce yapıldığını söyleyerek anlamı tersine çevirir; üçüncü şık 'başlamak' yerine 'durmak' der."
+       "explanation": "*It was not until X that …* = 'ancak X'te …' ya da 'X'ten önce … değil' → 'were not properly excavated before the late twentieth century'. 'had been properly excavated long before' diyen şık kazının çok daha önce yapıldığını söyleyerek anlamı tersine çevirir; 'Excavations … stopped' diyen şık 'başlamak' yerine 'durmak' der."
       },
       {
        "type": "choice",
@@ -1201,7 +1201,7 @@
         "Most medicines are sold without a prescription."
        ],
        "answer": 3,
-       "explanation": "B'nin cevabı *Possibly* ile başlıyor ve sebebi açıklıyor (yazı küçük, terimler teknik); öyleyse A bir sebep tahmini sormuştur → 'Do you think that's because the instructions are hard to understand?'. 'When will the survey be sent…' anket zaten yapılmışken anlamsızdır."
+       "explanation": "Diyalogdaki ikinci konuşmacının cevabı *Possibly* ile başlıyor ve sebebi açıklıyor (yazı küçük, terimler teknik); öyleyse ilk konuşmacı bir sebep tahmini sormuştur → 'Do you think that's because the instructions are hard to understand?'. 'When will the survey be sent…' anket zaten yapılmışken anlamsızdır."
       },
       {
        "type": "choice",
@@ -1215,7 +1215,7 @@
         "engineers designed a cheaper type of harbour"
        ],
        "answer": 2,
-       "explanation": "Çalışma, ticaretin liman bitmeden on yıl önce yerel vergilerin kaldırılmasıyla arttığını söyler → üçüncü şık (*abolished* = *removed*). İlk şık geleneksel açıklamadır; liman büyümeyi hızlandırmış ama başlatmamıştır."
+       "explanation": "Çalışma, ticaretin liman bitmeden on yıl önce yerel vergilerin kaldırılmasıyla arttığını söyler → 'the city had removed some local taxes' (*abolished* = *removed*). 'large merchant ships could dock' diyen şık geleneksel açıklamadır; liman büyümeyi hızlandırmış ama başlatmamıştır."
       },
       {
        "type": "choice",
@@ -1229,7 +1229,7 @@
         "the harbour contributed to the city's growth but was not its original cause"
        ],
        "answer": 4,
-       "explanation": "Yazar limanın büyümeyi hızlandırdığını ama başlatmadığını söyler → son şık. İlk şık aşırıya kaçar (*no effect at all*); yazar limanın etkisini kabul eder. Dördüncü şık yazarın görüşünün tam tersidir."
+       "explanation": "Yazar limanın büyümeyi hızlandırdığını ama başlatmadığını söyler → 'contributed to the city's growth but was not its original cause'. 'had no effect at all' diyen şık aşırıya kaçar; yazar limanın etkisini kabul eder. 'engineering projects are always more important' diyen şık yazarın görüşünün tam tersidir."
       },
       {
        "type": "choice",
@@ -1270,7 +1270,7 @@
         "Tesadüf, dikkatli tasarlanmış çalışmaların sonuçlarını daha çok etkiler."
        ],
        "answer": 0,
-       "explanation": "*The more …, the less …* = 'ne kadar … o kadar az' → ilk şık. İkinci şık 'hiçbir zaman' diyerek aşırı genelleme yapar; dördüncü şıktaki 'ne kadar … tasarlanırsa tasarlansın' ise *no matter how* anlamıdır, kaynakta yoktur."
+       "explanation": "*The more …, the less …* = 'ne kadar … o kadar az' → 'ne kadar dikkatli tasarlanırsa … o kadar azalır'. 'Hiçbir zaman tesadüften etkilenmez' diyen şık aşırı genelleme yapar; 'ne kadar … tasarlanırsa tasarlansın' diyen şık ise *no matter how* anlamıdır, kaynakta yoktur."
       },
       {
        "type": "choice",
@@ -1283,7 +1283,7 @@
         "It is stated in the report that healthcare in rural areas had improved slightly before the last decade."
        ],
        "answer": 2,
-       "explanation": "'Belirtilmektedir' = *states*, 'kayda değer ölçüde iyileştiği' = *has improved considerably*, 'son on yılda' = *over the past decade* → üçüncü şık. İlk şık geleceğe yönelik bir öneriye dönüştürür; son şıktaki *slightly* ve *before the last decade* hem derece hem zaman hatasıdır."
+       "explanation": "'Belirtilmektedir' = *states*, 'kayda değer ölçüde iyileştiği' = *has improved considerably*, 'son on yılda' = *over the past decade* → 'has improved considerably over the past decade'. 'should be improved within the next decade' diyen şık geleceğe yönelik bir öneriye dönüştürür; *slightly* ve *before the last decade* içeren şık hem derece hem zaman hatasıdır."
       }
      ]
     },
@@ -1304,7 +1304,7 @@
         "Sulak alanların yavaş yavaş yok olması, yaygın olarak varsayıldığı üzere bölgedeki avcılığın azalmasına neden olmuştur."
        ],
        "answer": 3,
-       "explanation": "*Contrary to* = 'aksine', *less to hunting than to …* = 'avcılıktan çok …', *appears* = 'görünmektedir' → dördüncü şık. İkinci şık karşılaştırmayı tersine çevirir (avcılık ön plana çıkar); ilk şık *contrary to*'yu 'gibi' diye çevirir."
+       "explanation": "*Contrary to* = 'aksine', *less to hunting than to …* = 'avcılıktan çok …', *appears* = 'görünmektedir' → 'yaygın olarak varsayılanın aksine … avcılıktan çok sulak alan habitatlarının … görünmektedir'. 'Sulak alanların kaybından çok avcılıkla' diyen şık karşılaştırmayı tersine çevirir (avcılık ön plana çıkar); 'Yaygın olarak varsayıldığı gibi' diye başlayan şık *contrary to*'yu 'gibi' diye çevirir."
       },
       {
        "type": "choice",
@@ -1317,7 +1317,7 @@
         "Although pilot applications were expensive, the new method has reduced costs more than expected."
        ],
        "answer": 0,
-       "explanation": "'Beklense de' = *Although … is expected*, 'ancak uzun vadede' = *only … in the long term* → ilk şık. Üçüncü şık tasarrufun hiç gerçekleşmeyeceğini söyler; dördüncü şık 'ancak'ı koşula (*only if*) çevirip anlamı bozar."
+       "explanation": "'Beklense de' = *Although … is expected*, 'ancak uzun vadede' = *only … in the long term* → 'the expected savings can only be achieved in the long term'. 'will not reduce costs, even in the long term' diyen şık tasarrufun hiç gerçekleşmeyeceğini söyler; 'only if the pilot applications are carried out' diyen şık 'ancak'ı koşula (*only if*) çevirip anlamı bozar."
       },
       {
        "type": "choice",
@@ -1330,7 +1330,7 @@
         "The warning signs were taken seriously only after the bridge had collapsed."
        ],
        "answer": 2,
-       "explanation": "Devrik 3. tip koşul geçmişteki gerçeğin tersini anlatır: uyarılar ciddiye alınmadı, çöküş önlenebilirdi → üçüncü şık. İlk şık uyarıların ciddiye alındığını söyleyerek tersini iddia eder; ikinci şık 'kimse fark etmedi' ve 'kaçınılmazdı' diyerek anlamı değiştirir."
+       "explanation": "Devrik 3. tip koşul geçmişteki gerçeğin tersini anlatır: uyarılar ciddiye alınmadı, çöküş önlenebilirdi → 'The collapse of the bridge was preventable, but the warning signs were not taken seriously.' 'even though the warning signs had been taken seriously' diyen şık uyarıların ciddiye alındığını söyleyerek tersini iddia eder; 'Since nobody noticed any warning signs' diyen şık 'kimse fark etmedi' ve 'kaçınılmazdı' diyerek anlamı değiştirir."
       },
       {
        "type": "choice",
@@ -1344,7 +1344,7 @@
         "The real challenge is producing it cheaply and safely on a large scale."
        ],
        "answer": 4,
-       "explanation": "Mühendis 'laboratuvarda çalışıyor' deyip bir sınırlama ekliyor; gazetecinin 'ne zaman tüketiciye ulaşır' sorusu ve 5–6 yıllık cevap, seri üretim sorununa işaret eder → son şık. İlk şık pilin zaten satıldığını söyleyerek son cevapla çelişir."
+       "explanation": "Mühendis 'laboratuvarda çalışıyor' deyip bir sınırlama ekliyor; gazetecinin 'ne zaman tüketiciye ulaşır' sorusu ve 5–6 yıllık cevap, seri üretim sorununa işaret eder → 'The real challenge is producing it cheaply and safely on a large scale.' 'already sold in most electronics shops' diyen şık pilin zaten satıldığını söyleyerek son cevapla çelişir."
       },
       {
        "type": "choice",
@@ -1358,7 +1358,7 @@
         "why the drought lasted for two centuries"
        ],
        "answer": 1,
-       "explanation": "Metin, nehrin iki yüzyılda yer değiştirmesinin yerleşimlerin bir anda değil, birbiri ardına terk edilmesini açıkladığını söyler → ikinci şık. Dördüncü şık bunun tam tersidir; ilk şık metindeki *moisture-loving plants* ifadesini kullanır ama azalmayı artışa çevirir."
+       "explanation": "Metin, nehrin iki yüzyılda yer değiştirmesinin yerleşimlerin bir anda değil, birbiri ardına terk edilmesini açıkladığını söyler → 'abandoned gradually rather than simultaneously'. 'the sudden disappearance of all Orvan towns' diyen şık bunun tam tersidir; 'the sharp increase in moisture-loving plants' diyen şık metindeki *moisture-loving plants* ifadesini kullanır ama azalmayı artışa çevirir."
       },
       {
        "type": "choice",
@@ -1372,7 +1372,7 @@
         "They have not yet examined any evidence related to it."
        ],
        "answer": 2,
-       "explanation": "Son cümle: ekip kuraklığı dışlamıyor (*does not rule out*) ama tek başına yeterli bulmuyor (*cannot, on its own*) → üçüncü şık. İlk şık aşırıya kaçar (*entirely*); ikinci şık kuraklığı ana neden yapar, ekip ise nehrin yer değiştirmesini öne çıkarır."
+       "explanation": "Son cümle: ekip kuraklığı dışlamıyor (*does not rule out*) ama tek başına yeterli bulmuyor (*cannot, on its own*) → 'They accept it as a possible factor but consider it insufficient on its own.' 'They reject it entirely' diyen şık aşırıya kaçar (*entirely*); 'the main cause of abandonment' diyen şık kuraklığı ana neden yapar, ekip ise nehrin yer değiştirmesini öne çıkarır."
       },
       {
        "type": "choice",
@@ -1386,7 +1386,7 @@
         "As a result, poorer neighbourhoods now have more parks than wealthy ones."
        ],
        "answer": 0,
-       "explanation": "Önceki cümle geleneksel ölçütü verir, sonraki cümleler bu ölçütün kimin yararlandığını göstermediğini anlatır; köprü 'This approach, however, may conceal important inequalities.' olur. Dördüncü şık geleneksel yöntemi över, paragrafın eleştirisiyle çelişir."
+       "explanation": "Önceki cümle geleneksel ölçütü verir, sonraki cümleler bu ölçütün kimin yararlandığını göstermediğini anlatır; köprü 'This approach, however, may conceal important inequalities.' olur. 'Visitor numbers are the most reliable measure' diyen şık geleneksel yöntemi över, paragrafın eleştirisiyle çelişir."
       },
       {
        "type": "choice",
@@ -1413,7 +1413,7 @@
         "İnsanların davranışlarını değiştirmesi için bilgi miktarının değil, bilginin doğruluğunun önemli olduğu belirlenmiştir."
        ],
        "answer": 3,
-       "explanation": "*It is not X but Y that …* vurgu yapısı 'belirleyen X değil, Y'dir' şeklinde çevrilir → dördüncü şık. İlk şık 'eşit ölçüde' diyerek vurguyu yok eder; son şık 'sunuluş biçimi' yerine 'doğruluk' der."
+       "explanation": "*It is not X but Y that …* vurgu yapısı 'belirleyen X değil, Y'dir' şeklinde çevrilir → 'belirleyen … miktarı değil, bu bilginin sunuluş biçimidir'. 'Eşit ölçüde bağlıdır' diyen şık vurguyu yok eder; 'bilginin doğruluğunun önemli olduğu' diyen şık 'sunuluş biçimi' yerine 'doğruluk' der."
       },
       {
        "type": "choice",
@@ -1426,7 +1426,7 @@
         "Unless the study is repeated, the findings of different age groups cannot be compared."
        ],
        "answer": 1,
-       "explanation": "'… için' amaç bildirir: *For the findings to be generalised*, 'tekrarlanması gerekmektedir' = *needs to be repeated* → ikinci şık. İlk şık tekrara gerek olmadığını söyleyerek ters anlam verir; üçüncü şık işi geçmişte yapılmış gibi anlatır."
+       "explanation": "'… için' amaç bildirir: *For the findings to be generalised*, 'tekrarlanması gerekmektedir' = *needs to be repeated* → 'For the findings to be generalised, the study needs to be repeated …'. 'does not need to be repeated' diyen şık tekrara gerek olmadığını söyleyerek ters anlam verir; 'The study was repeated …' diye başlayan şık işi geçmişte yapılmış gibi anlatır."
       }
      ]
     },
@@ -1447,7 +1447,7 @@
         "Dünyadaki türlerin çoğunun tanımlanmasıyla birlikte, biyolojik çeşitlilik kaybına ilişkin belirsizlikler büyük ölçüde ortadan kalkacaktır."
        ],
        "answer": 2,
-       "explanation": "*Given that* = 'göz önüne alındığında', *have yet to be described* = 'henüz tanımlanmamış', *subject to considerable uncertainty* = 'önemli ölçüde belirsizlik içermekte' → üçüncü şık. İlk şık *have yet to* yapısını 'tanımlandığından' diye olumluya çevirir; Türk adayların sık düştüğü bir tuzaktır."
+       "explanation": "*Given that* = 'göz önüne alındığında', *have yet to be described* = 'henüz tanımlanmamış', *subject to considerable uncertainty* = 'önemli ölçüde belirsizlik içermekte' → 'göz önüne alındığında … kaçınılmaz olarak önemli ölçüde belirsizlik içermektedir'. 'Henüz tanımlandığından … oldukça kesindir' diyen şık *have yet to* yapısını 'tanımlandığından' diye olumluya çevirir; Türk adayların sık düştüğü bir tuzaktır."
       },
       {
        "type": "choice",
@@ -1460,7 +1460,7 @@
         "This disease, which can be treated if diagnosed early, still remains a serious public health problem because its symptoms usually appear late."
        ],
        "answer": 4,
-       "explanation": "'Erken teşhis edildiği takdirde tedavi edilebilen' = *which can be treated if diagnosed early*, 'hâlâ … olmaya devam etmektedir' = *still remains* → son şık. İkinci şık 'tedavi edilemez' diyerek anlamı tersine çevirir; dördüncü şık sorunun artık olmadığını söyler."
+       "explanation": "'Erken teşhis edildiği takdirde tedavi edilebilen' = *which can be treated if diagnosed early*, 'hâlâ … olmaya devam etmektedir' = *still remains* → 'which can be treated if diagnosed early, still remains a serious public health problem'. 'cannot be treated even if diagnosed early' diyen şık 'tedavi edilemez' diyerek anlamı tersine çevirir; 'no longer a serious public health problem' diyen şık sorunun artık olmadığını söyler."
       },
       {
        "type": "choice",
@@ -1473,7 +1473,7 @@
         "Air pollution in the city has fallen, although officials did not introduce any new measures."
        ],
        "answer": 1,
-       "explanation": "*Scarcely any* = 'neredeyse hiçbiri' → önlemlerin neredeyse hiçbiri beklenen sonucu vermedi: ikinci şık. Üçüncü şık *scarcely*'yi gözden kaçıran adayı yakalar, anlamı tam tersidir; dördüncü şık 'yeterli önlem alınmadı' diyerek başka bir iddiaya geçer."
+       "explanation": "*Scarcely any* = 'neredeyse hiçbiri' → önlemlerin neredeyse hiçbiri beklenen sonucu vermedi: 'Almost none of the measures … have been as effective as officials had expected.' 'have worked better than officials had anticipated' diyen şık *scarcely*'yi gözden kaçıran adayı yakalar, anlamı tam tersidir; 'have not introduced enough measures' diyen şık 'yeterli önlem alınmadı' diyerek başka bir iddiaya geçer."
       },
       {
        "type": "choice",
@@ -1487,7 +1487,7 @@
         "Classroom observations are usually less reliable than surveys."
        ],
        "answer": 0,
-       "explanation": "Öğrencinin çözümü (ankete sınıf gözlemi eklemek), anketin gerçek davranışı göstermediği eleştirisine cevaptır → ilk şık. Son şık gözlemi anketten daha az güvenilir sayar; o zaman öğrencinin gözlem ekleme önerisi anlamsız olurdu."
+       "explanation": "Öğrencinin çözümü (ankete sınıf gözlemi eklemek), anketin gerçek davranışı göstermediği eleştirisine cevaptır → 'Because surveys tell you what teachers say they do, not necessarily what they actually do in class.' 'Classroom observations are usually less reliable' diyen şık gözlemi anketten daha az güvenilir sayar; o zaman öğrencinin gözlem ekleme önerisi anlamsız olurdu."
       },
       {
        "type": "choice",
@@ -1501,7 +1501,7 @@
         "forgot the incident completely within a week"
        ],
        "answer": 3,
-       "explanation": "Metin bu katılımcıların filmde hiç olmayan kırık camı 'hatırlama' olasılığının daha yüksek olduğunu söyler → dördüncü şık. İlk şık tam tersidir; üçüncü şık yanlıştır çünkü tüm katılımcılar aynı filmi izlemiştir."
+       "explanation": "Metin bu katılımcıların filmde hiç olmayan kırık camı 'hatırlama' olasılığının daha yüksek olduğunu söyler → 'were more likely to recall details that did not exist in the film'. 'remembered the film more accurately' diyen şık tam tersidir; 'were shown a different film' diyen şık yanlıştır çünkü tüm katılımcılar aynı filmi izlemiştir."
       },
       {
        "type": "choice",
@@ -1515,7 +1515,7 @@
         "point out a practical consequence of the research findings"
        ],
        "answer": 4,
-       "explanation": "*Such findings have obvious implications for legal settings* bulguların pratik bir sonucuna dikkat çeker → son şık. İlk şık aşırı yorumdur: tanıklar yalan söylemez, belleği yanıltılabilir. Dördüncü şık metnin ilk cümlesiyle çelişir."
+       "explanation": "*Such findings have obvious implications for legal settings* bulguların pratik bir sonucuna dikkat çeker → 'point out a practical consequence of the research findings'. 'eyewitnesses usually lie in court' diyen şık aşırı yorumdur: tanıklar yalan söylemez, belleği yanıltılabilir. 'prove that memory works like a video recorder' diyen şık metnin ilk cümlesiyle çelişir."
       },
       {
        "type": "choice",
@@ -1529,7 +1529,7 @@
         "This is why productivity tends to fall when wages rise."
        ],
        "answer": 2,
-       "explanation": "Kuram istihdamın düşeceğini öngörür, sonraki cümle ise fark bulunmadığını gösterir; aradaki zıtlık köprüsü 'Empirical studies, however, have often failed to confirm this prediction.' olur. Son şık paragrafın sonundaki 'verimlilik artar' bilgisiyle çelişir."
+       "explanation": "Kuram istihdamın düşeceğini öngörür, sonraki cümle ise fark bulunmadığını gösterir; aradaki zıtlık köprüsü 'Empirical studies, however, have often failed to confirm this prediction.' olur. 'productivity tends to fall when wages rise' diyen şık paragrafın sonundaki 'verimlilik artar' bilgisiyle çelişir."
       },
       {
        "type": "choice",
@@ -1542,7 +1542,7 @@
         "Companies will not be allowed to relocate abroad once the new regulations come into force."
        ],
        "answer": 0,
-       "explanation": "*No sooner … than* = '… yapar yapmaz' → düzenlemeler yürürlüğe girer girmez şirketler yurt dışına taşınma planlarını açıkladı: ilk şık. İkinci şık sıralamayı tersine çevirir (*long before*); üçüncü şık sebep-sonucu değiştirir."
+       "explanation": "*No sooner … than* = '… yapar yapmaz' → düzenlemeler yürürlüğe girer girmez şirketler yurt dışına taşınma planlarını açıkladı: 'announced plans to move abroad immediately after the new regulations took effect'. *long before* diyen şık sıralamayı tersine çevirir; 'came into force because several companies had moved abroad' diyen şık sebep-sonucu değiştirir."
       },
       {
        "type": "choice",
@@ -1569,7 +1569,7 @@
         "Kazının yıllar önce terk edilmesinin nedeni, yerel gönüllülerin daha önce bilinmeyen yapılara destek vermemesiydi."
        ],
        "answer": 3,
-       "explanation": "*Were it not for* = '… olmasaydı', *would have been abandoned* = 'terk edilmiş olurdu', *has already revealed* = 'şimdiden ortaya çıkarmış olan' → dördüncü şık. İlk şık kazının gerçekten terk edildiğini söyler; oysa koşul cümlesi bunun olmadığını anlatır."
+       "explanation": "*Were it not for* = '… olmasaydı', *would have been abandoned* = 'terk edilmiş olurdu', *has already revealed* = 'şimdiden ortaya çıkarmış olan' → 'desteği olmasaydı … terk edilmiş olurdu'. 'Desteğine rağmen … terk edilmiştir' diyen şık kazının gerçekten terk edildiğini söyler; oysa koşul cümlesi bunun olmadığını anlatır."
       }
      ]
     },
@@ -1724,7 +1724,7 @@
         "İklim değişikliğinin gıda üretimine etkisinin önümüzdeki on yıllarda azalacağına pek çok bilim insanı inanmamaktadır."
        ],
        "answer": 0,
-       "explanation": "*will have* = 'olacağına', *in the coming decades* = 'önümüzdeki on yıllarda', *many* = 'pek çok' → ilk şık. İkinci şık zamanı geçmişe çevirir ('son on yıllarda'); üçüncü şık hem *many*'yi 'bazı' yapar hem de etkileyen-etkilenen ilişkisini tersine çevirir."
+       "explanation": "*will have* = 'olacağına', *in the coming decades* = 'önümüzdeki on yıllarda', *many* = 'pek çok' → 'önümüzdeki on yıllarda … ciddi bir etkisi olacağına inanmaktadır'. 'Son on yıllarda' diyen şık zamanı geçmişe çevirir; 'Bazı bilim insanları' diye başlayan şık hem *many*'yi 'bazı' yapar hem de etkileyen-etkilenen ilişkisini tersine çevirir."
       },
       {
        "type": "choice",
@@ -1737,7 +1737,7 @@
         "The city's traffic problem has nothing to do with investment in public transport."
        ],
        "answer": 2,
-       "explanation": "'-madıkça' = *unless*, 'çözülemeyecektir' = *will not be solved* → üçüncü şık. Dördüncü şıktaki *even if* ('artırılsa bile') anlamı tamamen değiştirir; ilk şık sorunu çözülmüş gibi gösterir."
+       "explanation": "'-madıkça' = *unless*, 'çözülemeyecektir' = *will not be solved* → 'will not be solved unless investment in public transport is increased'. *Even if* ile başlayan şık ('artırılsa bile') anlamı tamamen değiştirir; 'was solved after investment … increased' diyen şık sorunu çözülmüş gibi gösterir."
       },
       {
        "type": "choice",
@@ -1751,7 +1751,7 @@
         "Because beans and lentils add nitrogen to the soil."
        ],
        "answer": 4,
-       "explanation": "Metin: *Because legumes add nitrogen to the soil, farmers now need far less chemical fertiliser* → son şık (*legumes* = fasulye ve mercimek). İlk şık metindeki *nitrogen* kelimesini kullanır ama anlamı çarpıtır; dördüncü şık verimin arttığı bilgisini tersine çevirir."
+       "explanation": "Metin: *Because legumes add nitrogen to the soil, farmers now need far less chemical fertiliser* → 'Because beans and lentils add nitrogen to the soil.' (*legumes* = fasulye ve mercimek). 'barley no longer needs nitrogen' diyen şık metindeki *nitrogen* kelimesini kullanır ama anlamı çarpıtır; 'barley yields have fallen by a fifth' diyen şık verimin arttığı bilgisini tersine çevirir."
       },
       {
        "type": "choice",
@@ -1765,7 +1765,7 @@
         "families in Teralon earn most of their income from lentils"
        ],
        "answer": 1,
-       "explanation": "*Not everyone is convinced* ve bazı yaşlı çiftçilerin şikâyeti, herkesin memnun olmadığını gösterir → ikinci şık. Dördüncü şık metnin tersini söyler (münavebe daha çok emek ister); üçüncü şıktaki *completely* yanlıştır, fasulye ve mercimek arpa sezonları arasında ekilir."
+       "explanation": "*Not everyone is convinced* ve bazı yaşlı çiftçilerin şikâyeti, herkesin memnun olmadığını gösterir → 'not all farmers are satisfied with the new crop rotation system'. 'crop rotation requires less work' diyen şık metnin tersini söyler (münavebe daha çok emek ister); 'have replaced barley completely' diyen şıktaki *completely* yanlıştır, fasulye ve mercimek arpa sezonları arasında ekilir."
       },
       {
        "type": "choice",
@@ -1779,7 +1779,7 @@
         "surveys would not be completed by visitors"
        ],
        "answer": 3,
-       "explanation": "Metin: küratörler başta çevrimiçi modellerin bilet satışlarını azaltacağından endişe ediyordu → dördüncü şık. İlk şık metindeki *viewed* kelimesini kullanır ama endişeyi tersine çevirir; nesnelerin taranırken zarar görmesinden hiç söz edilmez."
+       "explanation": "Metin: küratörler başta çevrimiçi modellerin bilet satışlarını azaltacağından endişe ediyordu → 'fewer people would buy tickets to visit the museum'. 'the online models would be viewed too rarely' diyen şık metindeki *viewed* kelimesini kullanır ama endişeyi tersine çevirir; nesnelerin taranırken zarar görmesinden hiç söz edilmez."
       },
       {
        "type": "choice",
@@ -1793,7 +1793,7 @@
         "was more expensive than expected"
        ],
        "answer": 0,
-       "explanation": "Ziyaretçi sayısı hafifçe arttı ve birçok ziyaretçi müzeyi önce internette keşfetti; demek ki proje bazı insanları müzeye gelmeye teşvik etmiş olabilir → ilk şık. İkinci şık metnin tam tersidir; dördüncü şık yanlıştır, yalnızca 200 nesne modellenmiştir."
+       "explanation": "Ziyaretçi sayısı hafifçe arttı ve birçok ziyaretçi müzeyi önce internette keşfetti; demek ki proje bazı insanları müzeye gelmeye teşvik etmiş olabilir → 'may have encouraged some people to visit the museum in person'. 'led to a sharp fall in visitor numbers' diyen şık metnin tam tersidir; 'included every object' diyen şık yanlıştır, yalnızca 200 nesne modellenmiştir."
       },
       {
        "type": "choice",
@@ -1820,7 +1820,7 @@
         "The museum will not reopen before the renovation work is finished."
        ],
        "answer": 4,
-       "explanation": "*remain closed until …* = '… bitene kadar kapalı kalacak' = 'bitmeden yeniden açılmayacak' → son şık. Dördüncü şık müzenin açık kalacağını söyleyerek anlamı tersine çevirir; üçüncü şık onarımın bittiğini iddia eder."
+       "explanation": "*remain closed until …* = '… bitene kadar kapalı kalacak' = 'bitmeden yeniden açılmayacak' → 'The museum will not reopen before the renovation work is finished.' 'will stay open while the renovation work continues' diyen şık müzenin açık kalacağını söyleyerek anlamı tersine çevirir; 'Although the renovation is complete' diyen şık onarımın bittiğini iddia eder."
       },
       {
        "type": "choice",
@@ -1834,7 +1834,7 @@
         "As a result, most people never take naps."
        ],
        "answer": 1,
-       "explanation": "İlk cümle yaygın bir varsayımı verir, sonraki araştırma bunu çürütür; köprü zıtlık bildiren 'However, recent findings suggest that this is not always the case.' olmalıdır. 'Therefore, doctors recommend avoiding naps completely' araştırmanın bulgusuyla çelişir; 'office workers' kelimesini tekrarlayan ilk şık konuya katkı vermez."
+       "explanation": "Paragrafın açılış cümlesi yaygın bir varsayımı verir, sonraki araştırma bunu çürütür; köprü zıtlık bildiren 'However, recent findings suggest that this is not always the case.' olmalıdır. 'Therefore, doctors recommend avoiding naps completely' araştırmanın bulgusuyla çelişir; 'office workers' kelimesini tekrarlayan şık konuya katkı vermez."
       },
       {
        "type": "choice",
@@ -2228,7 +2228,7 @@
         "biologists recommended even stricter limits"
        ],
        "answer": 2,
-       "explanation": "Kısayol: kökteki *limits* kelimesini tara → *Yet the harvests continued to decline … the real cause became apparent*. Sınırlar başarısız oldu çünkü asıl neden (gübre akışı) ele alınmamıştı → üçüncü şık. Kuralların çiğnendiğine dair bilgi metinde yoktur."
+       "explanation": "Kısayol: kökteki *limits* kelimesini tara → *Yet the harvests continued to decline … the real cause became apparent*. Sınırlar başarısız oldu çünkü asıl neden (gübre akışı) ele alınmamıştı → 'they did not address the actual cause of the decline'. Kuralların çiğnendiğine dair bilgi metinde yoktur."
       },
       {
        "type": "choice",
@@ -2242,7 +2242,7 @@
         "attracting predators to the bay"
        ],
        "answer": 0,
-       "explanation": "Kısayol: *algae* kelimesini tara → *as the algae decomposed, they consumed much of the oxygen* → ilk şık. İkinci şık metinde geçen bir bilgiyi yanlış özneye bağlar: gübreyi körfeze taşıyan yüzey akışıdır, alg değil."
+       "explanation": "Kısayol: *algae* kelimesini tara → *as the algae decomposed, they consumed much of the oxygen* → 'reducing the amount of oxygen in the water'. 'carrying fertiliser into the bay' diyen şık metinde geçen bir bilgiyi yanlış özneye bağlar: gübreyi körfeze taşıyan yüzey akışıdır, alg değil."
       },
       {
        "type": "choice",
@@ -2256,7 +2256,7 @@
         "Changes in land use far from the bay can affect marine life within it."
        ],
        "answer": 4,
-       "explanation": "Yukarıdaki tarım alanlarının genişlemesi körfezdeki istiridyeleri öldürmüştür; buradan uzaktaki arazi kullanımının deniz yaşamını etkileyebileceği çıkarılır → son şık. Kısayol: ilk üç şık metindeki bilgilerin tam tersidir ve hızla elenir."
+       "explanation": "Yukarıdaki tarım alanlarının genişlemesi körfezdeki istiridyeleri öldürmüştür; buradan uzaktaki arazi kullanımının deniz yaşamını etkileyebileceği çıkarılır → 'Changes in land use far from the bay can affect marine life within it.' Kısayol: aşırı avlanmayı ana neden sayan, endüstrinin hiç toparlanmadığını söyleyen ve tampon şeritleri suçlayan şıklar metindeki bilgilerin tam tersidir ve hızla elenir."
       },
       {
        "type": "choice",
@@ -2269,7 +2269,7 @@
         "The new policy was introduced to measure unemployment more accurately."
        ],
        "answer": 3,
-       "explanation": "*remains to be seen* = 'henüz belli değil' → dördüncü şık. Kısayol: kaynak cümle belirsizlik bildiriyor; kesin yargı içeren şıklar ('has already reduced', 'will remain high', 'has been shown') tek hamlede elenir."
+       "explanation": "*remains to be seen* = 'henüz belli değil' → 'It is not yet known how much the new policy will reduce unemployment.' Kısayol: kaynak cümle belirsizlik bildiriyor; kesin yargı içeren şıklar ('has already reduced', 'will remain high', 'has been shown') tek hamlede elenir."
       },
       {
        "type": "choice",
@@ -2311,7 +2311,7 @@
         "were written long after the empire's fall by foreign historians"
        ],
        "answer": 2,
-       "explanation": "Metin, geleneksel anlatıları yeni hanedana hizmet eden saray tarihçilerinin yazdığını ve selefi olumsuz göstermek için sebepleri olduğunu söyler → taraflı olabilirler: üçüncü şık. İkinci şık yeni çalışmaların kaynaklarını eski anlatılara mal eder."
+       "explanation": "Metin, geleneksel anlatıları yeni hanedana hizmet eden saray tarihçilerinin yazdığını ve selefi olumsuz göstermek için sebepleri olduğunu söyler → taraflı olabilirler: 'may be biased because of who wrote them'. 'were based on tax records and merchant letters' diyen şık yeni çalışmaların kaynaklarını eski anlatılara mal eder."
       },
       {
        "type": "choice",
@@ -2325,7 +2325,7 @@
         "had started before the last emperor took the throne"
        ],
        "answer": 4,
-       "explanation": "*well before the last emperor came to power* → gerileme son imparatordan önce başlamıştı: son şık. Kısayol: kökteki *recent studies* ifadesini tara, tek cümlede cevap var. Dördüncü şık metne zıttır; gerilemenin nedeni ticaret yollarının değişmesidir."
+       "explanation": "*well before the last emperor came to power* → gerileme son imparatordan önce başlamıştı: 'had started before the last emperor took the throne'. Kısayol: kökteki *recent studies* ifadesini tara, tek cümlede cevap var. 'had nothing to do with changes in trade' diyen şık metne zıttır; gerilemenin nedeni ticaret yollarının değişmesidir."
       },
       {
        "type": "choice",
@@ -2339,7 +2339,7 @@
         "compare the Kerran Empire with the dynasty that replaced it"
        ],
        "answer": 3,
-       "explanation": "Metin geleneksel açıklamayı verir, sonra yeni kanıtlarla onu sorgular → dördüncü şık. İkinci şık aşırıya kaçar: yazar imparatorun ciddi hatalar yapmış olabileceğini kabul eder. Ana fikir sorularında ilk ve son cümleleri okumak çoğu zaman yeterlidir."
+       "explanation": "Metin geleneksel açıklamayı verir, sonra yeni kanıtlarla onu sorgular → 'challenge a traditional explanation for the fall of the empire'. 'the final emperor was an excellent ruler' diyen şık aşırıya kaçar: yazar imparatorun ciddi hatalar yapmış olabileceğini kabul eder. Ana fikir sorularında metnin ilk ve son cümlelerini okumak çoğu zaman yeterlidir."
       },
       {
        "type": "choice",
@@ -2353,7 +2353,7 @@
         "I didn't know there was a reading section in the exam."
        ],
        "answer": 1,
-       "explanation": "Öğrencinin sorunu süre; metni iki kez okumak bunun sebebi. Öğretmenin mantıklı önerisi önce soruyu okuyup metni taramaktır → ikinci şık. İlk şık sorunu daha da büyütür; dördüncü şık okuma sorununa çözüm getirmez."
+       "explanation": "Öğrencinin sorunu süre; metni iki kez okumak bunun sebebi. Öğretmenin mantıklı önerisi önce soruyu okuyup metni taramaktır → 'Try reading the question first, then scan the passage …'. 'reading the passage three times' diyen şık sorunu daha da büyütür; kelime sorularına daha çok zaman ayırmayı öneren şık okuma sorununa çözüm getirmez."
       },
       {
        "type": "choice",
@@ -2366,7 +2366,7 @@
         "Önce soru köklerini okuyup metinde ilgili yeri tarayarak soruları çözmek, son dakikada kalan boş soruları tahminle işaretlemek"
        ],
        "answer": 4,
-       "explanation": "10 dakikada 6 soru için en verimli yol soru kökünden metne gitmek ve süre biterken boşları tahminle doldurmaktır → son şık. İlk şık üç soruyu boş bırakır; YDS'de yanlış doğruyu götürmediği için boş bırakmak kesin puan kaybıdır. Rastgele işaretleme ise çözülebilecek soruları da harcar."
+       "explanation": "10 dakikada 6 soru için en verimli yol soru kökünden metne gitmek ve süre biterken boşları tahminle doldurmaktır → 'önce soru köklerini okuyup metinde ilgili yeri tarayarak … kalan boş soruları tahminle işaretlemek'. 'Birinci metni dikkatle baştan sona okuyup' diyen şık üç soruyu boş bırakır; YDS'de yanlış doğruyu götürmediği için boş bırakmak kesin puan kaybıdır. Rastgele işaretleme ise çözülebilecek soruları da harcar."
       }
      ]
     },
@@ -2439,7 +2439,7 @@
         "Mevcut eğilimler, araştırmacıların antibiyotiklere karşı direnç geliştirmesine neden olmaktadır."
        ],
        "answer": 2,
-       "explanation": "Kısayol: üç kontrol yap: zaman (*within the next few decades* = önümüzdeki), kesinlik (*could* = -ebilir) ve fiil (*warned* = uyarmıştır). Üçünü birden karşılayan tek şık üçüncüsüdür. İlk şık zamanı geçmişe çevirir; dördüncü şık *could*'u 'kesinlikle' yapar."
+       "explanation": "Kısayol: üç kontrol yap: zaman (*within the next few decades* = önümüzdeki), kesinlik (*could* = -ebilir) ve fiil (*warned* = uyarmıştır). Üçünü birden karşılayan tek şık 'mevcut eğilimler sürerse … hâline gelebileceği konusunda uyarmıştır' diyendir. 'Son on yıllarda' diyen şık zamanı geçmişe çevirir; 'kesinlikle … olacağını kanıtlamıştır' diyen şık *could*'u 'kesinlikle' yapar."
       },
       {
        "type": "choice",
@@ -2466,7 +2466,7 @@
         "Drivers reported lower stress than cyclists."
        ],
        "answer": 1,
-       "explanation": "Kısayol: *limitation* soruları çoğunlukla *however, caution, may partly explain* gibi ifadelerin olduğu son cümlelerde cevaplanır → ikinci şık. İlk şık metne zıttır (*even when their journeys took longer*); son şık bulguyu tersine çevirir."
+       "explanation": "Kısayol: *limitation* soruları çoğunlukla *however, caution, may partly explain* gibi ifadelerin olduğu son cümlelerde cevaplanır → 'Cyclists tended to live nearer to work, which might affect the results.' 'Cyclists' journeys always took less time' diyen şık metne zıttır (*even when their journeys took longer*); 'Drivers reported lower stress' diyen şık bulguyu tersine çevirir."
       },
       {
        "type": "choice",
@@ -2493,7 +2493,7 @@
         "Only the independent laboratory was allowed to see the results."
        ],
        "answer": 0,
-       "explanation": "*Only after X … Y* = 'X'ten sonra ancak Y' = *not … until X* → ilk şık. Kısayol: önce olayların sırasını belirle (önce kontrol, sonra açıklama); sırayı tersine çeviren ikinci ve üçüncü şıklar hemen elenir."
+       "explanation": "*Only after X … Y* = 'X'ten sonra ancak Y' = *not … until X* → 'The results were not made public until an independent laboratory had checked them.' Kısayol: önce olayların sırasını belirle (önce kontrol, sonra açıklama); sırayı tersine çeviren 'published the results before checking them' ve 'made public, and then … checked them' şıkları hemen elenir."
       },
       {
        "type": "choice",
@@ -2506,7 +2506,7 @@
         "The number of trees in urban areas should be increased in the summer months to reduce costs."
        ],
        "answer": 2,
-       "explanation": "'Artırılması' = *Increasing*, 'katkıda bulunabilir' = *can help* → üçüncü şık. Kısayol: kaynakta 'olasılık' (-abilir) var; kesin geçmiş bir sonuç bildiren ilk şık bu yüzden elenir. İkinci şık neden-sonucu tersine çevirir."
+       "explanation": "'Artırılması' = *Increasing*, 'katkıda bulunabilir' = *can help* → 'Increasing the number of trees … can help reduce temperatures'. Kısayol: kaynakta 'olasılık' (-abilir) var; kesin geçmiş bir sonuç bildiren 'Temperatures … have fallen' şıkkı bu yüzden elenir. 'Increasing temperatures … have reduced the number of trees' diyen şık neden-sonucu tersine çevirir."
       },
       {
        "type": "choice",
@@ -2519,7 +2519,7 @@
         "Cevapları aktarmayı bırakıp yalnızca kolay soruları çözmek"
        ],
        "answer": 0,
-       "explanation": "Değerlendirilen yalnızca optik formdur; 68 cevabı aktarmak 10 dakikayı bulabilir, bu yüzden önce güvenceye almak gerekir → ilk şık. 'Son 2 dakikada aktarmak' kaydırma hatası ve yetişememe riski taşır; kitapçıktaki işaretler puanlanmaz."
+       "explanation": "Değerlendirilen yalnızca optik formdur; 68 cevabı aktarmak 10 dakikayı bulabilir, bu yüzden önce güvenceye almak gerekir → 'hemen cevapları optik forma aktarmaya başlamak'. 'Son 2 dakikada aktarmak' kaydırma hatası ve yetişememe riski taşır; kitapçıktaki işaretler puanlanmaz."
       }
      ]
     },
@@ -2674,7 +2674,7 @@
         "Adayların çoğu, zor soruları atlayıp sınavın sonunda cevaplamayı tercih etmektedir."
        ],
        "answer": 1,
-       "explanation": "Kısayol: kaynaktaki karşılaştırmayı (*score higher than*) ve kesinlik derecesini (*tend to* = eğilimindedir) kontrol et → ikinci şık. İlk şık 'daha düşük' diyerek karşılaştırmayı tersine çevirir; dördüncü şıktaki 'kesinlikle' kaynakta yoktur."
+       "explanation": "Kısayol: kaynaktaki karşılaştırmayı (*score higher than*) ve kesinlik derecesini (*tend to* = eğilimindedir) kontrol et → 'zor soruları atlayıp onlara daha sonra dönen adaylar … daha yüksek puan alma eğilimindedir'. 'Daha düşük puan alır' diyen şık karşılaştırmayı tersine çevirir; 'kesinlikle sağlar' diyen şıktaki 'kesinlikle' kaynakta yoktur."
       },
       {
        "type": "choice",
@@ -2687,7 +2687,7 @@
         "Candidates must answer the reading questions first in order to manage their time well."
        ],
        "answer": 0,
-       "explanation": "'Zamanını iyi yöneten adaylar' = *Candidates who manage their time well*, 'daha fazla süre ayırabilir' = *can allocate more time* → ilk şık. Son şıktaki *must … first* zorunluluk ve sıralama ekler; üçüncü şık 'daha az süre alır' diyerek anlamı değiştirir."
+       "explanation": "'Zamanını iyi yöneten adaylar' = *Candidates who manage their time well*, 'daha fazla süre ayırabilir' = *can allocate more time* → 'Candidates who manage their time well … can allocate more time to the reading questions.' *must … first* diyen şık zorunluluk ve sıralama ekler; 'Reading questions take less time' diyen şık 'daha az süre alır' diyerek anlamı değiştirir."
       },
       {
        "type": "choice",
@@ -2701,7 +2701,7 @@
         "the candidate changed several answers at once"
        ],
        "answer": 3,
-       "explanation": "Metin: yeni cevap ancak değişiklik belirli bir sebebe (ör. atlanan bir kelime) dayandığında çoğunlukla doğruydu → dördüncü şık. İlk şık metinde geçen *uneasy* kelimesini kullanır ama tam tersi bir durumu anlatır."
+       "explanation": "Metin: yeni cevap ancak değişiklik belirli bir sebebe (ör. atlanan bir kelime) dayandığında çoğunlukla doğruydu → 'the change was based on a concrete reason such as a missed word'. 'the candidate felt uneasy' diyen şık metinde geçen *uneasy* kelimesini kullanır ama tam tersi bir durumu anlatır."
       },
       {
        "type": "choice",
@@ -2715,7 +2715,7 @@
         "avoid revising an answer unless they can find a specific mistake"
        ],
        "answer": 4,
-       "explanation": "*revise answers only when they can identify a clear error* = belirli bir hata bulmadıkça cevabı değiştirme → son şık. İlk şık aşırı genellemedir (*never*); ikinci şık araştırmanın uyarısının tam tersidir."
+       "explanation": "*revise answers only when they can identify a clear error* = belirli bir hata bulmadıkça cevabı değiştirme → 'avoid revising an answer unless they can find a specific mistake'. *never change* diyen şık aşırı genellemedir; 'always change answers they feel uneasy about' diyen şık araştırmanın uyarısının tam tersidir."
       },
       {
        "type": "choice",
@@ -2729,7 +2729,7 @@
         "the answer sheet is submitted late"
        ],
        "answer": 2,
-       "explanation": "Kaydırma hatası: kitapçıkta atlanan soru formda atlanmayınca sonraki tüm cevaplar bir satır kayar → üçüncü şık. İlk şık metindeki ikinci sorunu (silik işaretler) anlatır; kaydırmayla karıştırılması için konmuş 'kısmen doğru' bir çeldiricidir."
+       "explanation": "Kaydırma hatası: kitapçıkta atlanan soru formda atlanmayınca sonraki tüm cevaplar bir satır kayar → 'a skipped question causes later answers to be marked on the wrong line'. 'makes the marks too light' diyen şık metindeki ikinci sorunu (silik işaretler) anlatır; kaydırmayla karıştırılması için konmuş 'kısmen doğru' bir çeldiricidir."
       },
       {
        "type": "choice",
@@ -2743,7 +2743,7 @@
         "answering every question in order"
        ],
        "answer": 1,
-       "explanation": "Cevaplarını küçük gruplar hâlinde (ör. her sayfadan sonra) aktaranlar çok daha az hata yapmış → düzenli aktarmak hatayı azaltır: ikinci şık. İlk şık metnin tam tersidir; dördüncü şık ikinci yaygın sorunu (silik işaret) önerir."
+       "explanation": "Cevaplarını küçük gruplar hâlinde (ör. her sayfadan sonra) aktaranlar çok daha az hata yapmış → düzenli aktarmak hatayı azaltır: 'transferring their answers to the sheet regularly during the exam'. 'only at the very end' diyen şık metnin tam tersidir; 'using lighter marks' diyen şık ikinci yaygın sorunu (silik işaret) önerir."
       },
       {
        "type": "choice",
@@ -2757,7 +2757,7 @@
         "Then you should leave the reading passages blank."
        ],
        "answer": 0,
-       "explanation": "140 dakika / 64 soru ≈ 2,2 dakika → 'a little over two minutes per question' doğru hesap ve mantıklı tavsiyedir: ilk şık. İkinci şık hesabı yanlış yapar; son şık okuma sorularını boş bırakmayı önerir, bu da kesin puan kaybıdır."
+       "explanation": "140 dakika / 64 soru ≈ 2,2 dakika → 'a little over two minutes per question' doğru hesap ve mantıklı tavsiyedir. 'less than one minute for each question' diyen şık hesabı yanlış yapar; 'leave the reading passages blank' diyen şık okuma sorularını boş bırakmayı önerir, bu da kesin puan kaybıdır."
       },
       {
        "type": "choice",
@@ -2770,7 +2770,7 @@
         "Candidates can leave the exam hall only after the first hour of the exam."
        ],
        "answer": 4,
-       "explanation": "*not allowed … until at least one hour has passed* = 'ilk bir saat dolmadan çıkamazlar' = 'ancak ilk saatten sonra çıkabilirler' → son şık. İlk şık izni zorunluluğa çevirir (*must leave*); ikinci şık kısıtlamayı tamamen kaldırır."
+       "explanation": "*not allowed … until at least one hour has passed* = 'ilk bir saat dolmadan çıkamazlar' = 'ancak ilk saatten sonra çıkabilirler' → 'can leave the exam hall only after the first hour'. *must leave* diyen şık izni zorunluluğa çevirir; 'may leave the hall whenever they finish' diyen şık kısıtlamayı tamamen kaldırır."
       },
       {
        "type": "choice",
@@ -3162,7 +3162,7 @@
         "disease affecting all the bird species in the region"
        ],
        "answer": 3,
-       "explanation": "Metin: nüfus *mainly because of a disease that spread from poultry farms nearby* düştü → dördüncü şık. Tuzak: metinde geçen kelimeyi tekrarlayan şık — 'grazing by deer' metinde geçer ama genç ağaçların azalmasıyla ilgilidir. Son şık ise aşırı genellemedir (*all the bird species*)."
+       "explanation": "Metin: nüfus *mainly because of a disease that spread from poultry farms nearby* düştü → 'a disease that came from nearby poultry farms'. Tuzak: metinde geçen kelimeyi tekrarlayan şık — 'grazing by deer' metinde geçer ama genç ağaçların azalmasıyla ilgilidir. *all the bird species* diyen şık ise aşırı genellemedir."
       },
       {
        "type": "choice",
@@ -3176,7 +3176,7 @@
         "poultry farms have been closed to protect the forest"
        ],
        "answer": 1,
-       "explanation": "Kuşun geri almadığı tohumlar yeni ağaçlara dönüşür; yani kuş, tohumların hepsini bulamayarak ormanın yenilenmesine katkı yapar → ikinci şık. Tuzak: ilk şık aşırı genellemedir (*the only cause*); üçüncü ve dördüncü şık zıt anlam çeldiricisidir; son şık metinde geçen *poultry farms* ifadesini tekrarlar."
+       "explanation": "Kuşun geri almadığı tohumlar yeni ağaçlara dönüşür; yani kuş, tohumların hepsini bulamayarak ormanın yenilenmesine katkı yapar → 'nutcatchers help new pine trees grow by not recovering all the seeds'. Tuzak: *the only cause* diyen şık aşırı genellemedir; 'deer grazing has been proved to have no effect' ve 'the nutcatcher population has increased' diyen şıklar zıt anlam çeldiricisidir; 'poultry farms have been closed' diyen şık metinde geçen *poultry farms* ifadesini tekrarlar."
       },
       {
        "type": "choice",
@@ -3190,7 +3190,7 @@
         "doubtful that the nutcatcher population has declined at all"
        ],
        "answer": 0,
-       "explanation": "Araştırmacılar başka etkenlerin de olabileceğini vurgular ve deney yapmaktadır → temkinli: ilk şık. Tuzak: ikinci şık aşırı genellemedir (*completely certain*); dördüncü şık kısmen doğrudur — hastalık kümes hayvanı çiftliklerinden yayılmıştır, ama araştırmacılar kimseyi eleştirmez."
+       "explanation": "Araştırmacılar başka etkenlerin de olabileceğini vurgular ve deney yapmaktadır → temkinli: 'cautious, since they recognise that other factors may be involved'. Tuzak: *completely certain* diyen şık aşırı genellemedir; 'critical of poultry farmers' diyen şık kısmen doğrudur — hastalık kümes hayvanı çiftliklerinden yayılmıştır, ama araştırmacılar kimseyi eleştirmez."
       },
       {
        "type": "choice",
@@ -3203,7 +3203,7 @@
         "Uykularında iyileşme olduğunu bildiren katılımcıların hepsi gerçekte alışkanlıklarını değiştirmiş değildi."
        ],
        "answer": 4,
-       "explanation": "*Not all* = 'hepsi … değil' → son şık. Tuzak: ilk şık aşırı genellemedir — *not all* 'hiçbiri' demek değildir. Dördüncü şık kısmen doğrudur: konu katılımcılar ve alışkanlıklardır ama 'çoğu' ve 'istememişti' kaynakta yoktur."
+       "explanation": "*Not all* = 'hepsi … değil' → 'hepsi gerçekte alışkanlıklarını değiştirmiş değildi'. Tuzak: 'hiçbiri … değiştirmemişti' diyen şık aşırı genellemedir — *not all* 'hiçbiri' demek değildir. 'Çoğu … değiştirmek istememişti' diyen şık kısmen doğrudur: konu katılımcılar ve alışkanlıklardır ama 'çoğu' ve 'istememişti' kaynakta yoktur."
       },
       {
        "type": "choice",
@@ -3216,7 +3216,7 @@
         "Elderly patients often complain about the side effects of drugs that young people use."
        ],
        "answer": 2,
-       "explanation": "'Yaşlı hastalarda gençlere kıyasla daha sık' = *more frequently in elderly patients than in younger ones* → üçüncü şık. Tuzak: ilk şık zıt anlamdır (karşılaştırmayı ters çevirir); dördüncü şık aşırı genellemedir (*only*); ikinci şık kaynaktaki kelimeleri kullanıp yan etkiyi 'reçete'ye çevirir."
+       "explanation": "'Yaşlı hastalarda gençlere kıyasla daha sık' = *more frequently in elderly patients than in younger ones* → 'occur more frequently in elderly patients than in younger ones'. Tuzak: 'more often in young patients' diyen şık zıt anlamdır (karşılaştırmayı ters çevirir); *only* diyen şık aşırı genellemedir; 'more often prescribed' diyen şık kaynaktaki kelimeleri kullanıp yan etkiyi 'reçete'ye çevirir."
       },
       {
        "type": "choice",
@@ -3229,7 +3229,7 @@
         "The disease progresses quickly unless it is cured with the new treatment."
        ],
        "answer": 1,
-       "explanation": "*by no means a cure* = 'kesinlikle bir tedavi/şifa değil'; *but* … yavaşlatabilir → ikinci şık. Tuzak: ilk şık zıt anlamdır — *by no means* olumsuzluğunu kaçıran aday 'tedavi eder' sanır. Üçüncü şık da aşırıya kaçarak hiçbir etkisi olmadığını söyler."
+       "explanation": "*by no means a cure* = 'kesinlikle bir tedavi/şifa değil'; *but* … yavaşlatabilir → 'Although the new treatment does not cure the disease, it can considerably slow its progress.' Tuzak: 'The new treatment cures the disease' diyen şık zıt anlamdır — *by no means* olumsuzluğunu kaçıran aday 'tedavi eder' sanır. 'has no effect on the progression' diyen şık da aşırıya kaçarak hiçbir etkisi olmadığını söyler."
       },
       {
        "type": "choice",
@@ -3243,7 +3243,7 @@
         "Most volunteers stay abroad for several years."
        ],
        "answer": 3,
-       "explanation": "Büyüme bilgisinden eleştirilere geçiş için zıtlık köprüsü gerekir → 'However, its benefits … have increasingly been questioned.' Tuzak: ilk şık aşırı genellemedir; üçüncü şık metnin sonunda geçen *qualifications* kelimesini tekrarlar ve sırayı bozar; son şık zıt anlamdır (metin *short stays* diyor)."
+       "explanation": "Büyüme bilgisinden eleştirilere geçiş için zıtlık köprüsü gerekir → 'However, its benefits … have increasingly been questioned.' Tuzak: 'has solved most of the problems' diyen şık aşırı genellemedir; 'required to hold teaching qualifications' diyen şık metnin sonunda geçen *qualifications* kelimesini tekrarlar ve sırayı bozar; 'stay abroad for several years' diyen şık zıt anlamdır (metin *short stays* diyor)."
       },
       {
        "type": "choice",
@@ -3257,7 +3257,7 @@
         "So the survey was conducted by a courier company."
        ],
        "answer": 0,
-       "explanation": "Analistin *Exactly* cevabı ve kurye önerisi, müdürün sorunun teslimatta olduğunu doğrulayan bir soru sorduğunu gösterir → ilk şık. Tuzak: ikinci şık zıt anlamdır (sorun ürünlerde değil); üçüncü şık aşırı genellemedir (*always*); son şık *courier* kelimesini tekrarlayan çeldiricidir."
+       "explanation": "Analistin *Exactly* cevabı ve kurye önerisi, müdürün sorunun teslimatta olduğunu doğrulayan bir soru sorduğunu gösterir → 'So the problem lies with our delivery service rather than our products?' Tuzak: 'our products must be of poor quality' diyen şık zıt anlamdır (sorun ürünlerde değil); *always* diyen şık aşırı genellemedir; 'conducted by a courier company' diyen şık *courier* kelimesini tekrarlayan çeldiricidir."
       },
       {
        "type": "choice",
@@ -3284,7 +3284,7 @@
         "The critics who praised the novel helped it become a best-seller."
        ],
        "answer": 2,
-       "explanation": "*Few critics expected …, yet …* = eleştirmenlerin çoğunun beklentisinin aksine roman çok sattı → üçüncü şık. Tuzak: ilk ve ikinci şık zıt anlamdır (*few* ile *a few* farkını kaçıran aday düşer); son şık kısmen doğrudur — roman başarılıdır ama eleştirmenlerin katkısı kaynakta yoktur."
+       "explanation": "*Few critics expected …, yet …* = eleştirmenlerin çoğunun beklentisinin aksine roman çok sattı → 'Contrary to what most critics expected, the novel became one of the decade's best-sellers.' Tuzak: 'Most critics correctly predicted' ve 'The novel sold poorly' diyen şıklar zıt anlamdır (*few* ile *a few* farkını kaçıran aday düşer); 'The critics who praised the novel helped' diyen şık kısmen doğrudur — roman başarılıdır ama eleştirmenlerin katkısı kaynakta yoktur."
       }
      ]
     },
@@ -3344,7 +3344,7 @@
         "economic costs are the most important aspect of migration"
        ],
        "answer": 3,
-       "explanation": "*Whereas* iki şeyi karşılaştırır: önceki çalışmalar ekonomiye, yenileri toplumsal ve kültürel etkilere odaklandı → dördüncü şık. Tuzak: metinde geçen kelimeyi tekrarlayan şık — ilk ve son şık *economic costs* ifadesini tekrarlar ama karşıtlık kurmaz; ikinci şık *earlier* kelimesini yineler."
+       "explanation": "*Whereas* iki şeyi karşılaştırır: önceki çalışmalar ekonomiye, yenileri toplumsal ve kültürel etkilere odaklandı → 'recent research has increasingly examined its social and cultural effects'. Tuzak: metinde geçen kelimeyi tekrarlayan şık — 'they found that migration had significant economic costs' ve 'economic costs are the most important aspect' şıkları *economic costs* ifadesini tekrarlar ama karşıtlık kurmaz; 'earlier researchers collected data' diyen şık *earlier* kelimesini yineler."
       },
       {
        "type": "choice",
@@ -3358,7 +3358,7 @@
         "the beetles are found on many other islands"
        ],
        "answer": 1,
-       "explanation": "Analiz en az üç formun çok önce ayrışmış ayrı türler olduğunu öne sürer → ikinci şık. Tuzak: ilk şık zıt anlamdır (eski varsayımı verir); dördüncü şık aşırı genellemedir (*at least three* → *every island*); son şık metinle doğrudan çelişir (*found nowhere else*)."
+       "explanation": "Analiz en az üç formun çok önce ayrışmış ayrı türler olduğunu öne sürer → 'some of the beetle forms are separate species that diverged long ago'. Tuzak: 'belong to a single species' diyen şık zıt anlamdır (eski varsayımı verir); 'every island hosts a distinct species' diyen şık aşırı genellemedir (*at least three* → *every island*); 'found on many other islands' diyen şık metinle doğrudan çelişir (*found nowhere else*)."
       },
       {
        "type": "choice",
@@ -3372,7 +3372,7 @@
         "conservationists are not allowed to study the beetles"
        ],
        "answer": 0,
-       "explanation": "Mevcut kurallarda yalnızca tür bütün olarak korunuyor; tek bir adadaki kayıp ciddi sayılmıyor → ilk şık. Tuzak: ikinci şık zıt anlamdır; üçüncü şık metinde geçen *critically endangered* ifadesini kullanır ama bu yalnızca formlar ayrı tür sayılırsa olabilecek bir durumdur (kısmen doğru)."
+       "explanation": "Mevcut kurallarda yalnızca tür bütün olarak korunuyor; tek bir adadaki kayıp ciddi sayılmıyor → 'the disappearance of beetles from a single island would attract little official concern'. Tuzak: 'each island's beetle population is protected separately' diyen şık zıt anlamdır; 'already classified as critically endangered' diyen şık metinde geçen *critically endangered* ifadesini kullanır ama bu yalnızca formlar ayrı tür sayılırsa olabilecek bir durumdur (kısmen doğru)."
       },
       {
        "type": "choice",
@@ -3386,7 +3386,7 @@
         "how a new scientific finding could change the protection of an island species"
        ],
        "answer": 4,
-       "explanation": "Metin yeni genetik bulguyu ve bunun koruma kurallarına olası etkisini anlatır → son şık. Tuzak: üçüncü şık metinde geçen *genetic analysis* ifadesini tekrarlar ama yöntemler anlatılmaz; dördüncü şık aşırı genellemedir (tüm uçamayan böcekler hakkında yargı)."
+       "explanation": "Metin yeni genetik bulguyu ve bunun koruma kurallarına olası etkisini anlatır → 'how a new scientific finding could change the protection of an island species'. Tuzak: 'the methods used in genetic analysis' diyen şık metinde geçen *genetic analysis* ifadesini tekrarlar ama yöntemler anlatılmaz; 'why flightless insects are found only on islands' diyen şık aşırı genellemedir (tüm uçamayan böcekler hakkında yargı)."
       },
       {
        "type": "choice",
@@ -3399,7 +3399,7 @@
         "Komite, çevresel etki değerlendirmesi yapılmadan önce projeyi çoğunlukla onaylamaktadır."
        ],
        "answer": 2,
-       "explanation": "*Much as* = 'her ne kadar … istese de', *cannot … until* = '… yapılana kadar yapamaz' → üçüncü şık. Tuzak: son şık *much* kelimesini 'çoğunlukla' diye çevirip kalıbı kelime kelime okur; ilk şık zıt anlamdır ('istemediği için')."
+       "explanation": "*Much as* = 'her ne kadar … istese de', *cannot … until* = '… yapılana kadar yapamaz' → 'ne kadar onaylamak istese de … yapılana kadar bunu yapamaz'. Tuzak: 'projeyi çoğunlukla onaylamaktadır' diyen şık *much* kelimesini 'çoğunlukla' diye çevirip kalıbı kelime kelime okur; 'onaylamak istemediği için' diyen şık zıt anlamdır."
       },
       {
        "type": "choice",
@@ -3412,7 +3412,7 @@
         "The new technology has reduced the need for trained staff in hospitals."
        ],
        "answer": 3,
-       "explanation": "*not so much X as Y* = 'X'ten çok Y' → asıl engel eğitimli personel eksikliğidir: dördüncü şık. Tuzak: ilk ve üçüncü şık zıt anlamdır — kalıbı bilmeyen aday cümlede ilk gördüğü *cost* kelimesine odaklanır; ikinci şık 'eşit ölçüde' diyerek kısmen doğru bir çeldiricidir."
+       "explanation": "*not so much X as Y* = 'X'ten çok Y' → asıl engel eğitimli personel eksikliğidir: 'the shortage of trained staff rather than the cost of the equipment'. Tuzak: 'mainly because the equipment is too expensive' ve 'have enough trained staff but cannot afford the equipment' diyen şıklar zıt anlamdır — kalıbı bilmeyen aday cümlede ilk gördüğü *cost* kelimesine odaklanır; *equally responsible* diyen şık 'eşit ölçüde' diyerek kısmen doğru bir çeldiricidir."
       },
       {
        "type": "choice",
@@ -3542,7 +3542,7 @@
         "showed significant improvement in their symptoms"
        ],
        "answer": 4,
-       "explanation": "*Not all … showed significant improvement* = 'hepsi belirgin iyileşme göstermedi' → son şık. Tuzak: Türkçe yapı etkisi (çift olumsuz) — 'never showed' *Not all* ile birleşince iki olumsuz yan yana gelir; 'had been given any treatment at all' ise tedaviyi aldıkları bilgisiyle çelişir."
+       "explanation": "*Not all … showed significant improvement* = 'hepsi belirgin iyileşme göstermedi' → doğru cevap 'showed significant improvement in their symptoms'. Tuzak: Türkçe yapı etkisi (çift olumsuz) — 'never showed' *Not all* ile birleşince iki olumsuz yan yana gelir; 'had been given any treatment at all' ise tedaviyi aldıkları bilgisiyle çelişir."
       },
       {
        "type": "choice",
@@ -3555,7 +3555,7 @@
         "because it is too expensive"
        ],
        "answer": 0,
-       "explanation": "*not because X but because Y* kalıbı → ilk şık. Tuzak: cümlede geçen kelimeyi tekrarlayan şık — 'and because it is too expensive' ve 'because it is too expensive' cümledeki ifadeyi aynen tekrarlar ve *not* olumsuzluğuyla çelişir."
+       "explanation": "*not because X but because Y* kalıbı → 'but because it fails to address the real causes of the problem'. Tuzak: cümlede geçen kelimeyi tekrarlayan şık — 'and because it is too expensive' ve 'because it is too expensive' cümledeki ifadeyi aynen tekrarlar ve *not* olumsuzluğuyla çelişir."
       },
       {
        "type": "choice",
@@ -3581,7 +3581,7 @@
         "Ankete katılan öğrencilerin çok azı zevk için okuduğunu söyledi."
        ],
        "answer": 4,
-       "explanation": "*Few of* = 'çok azı' → son şık. Tuzak: ilk şık zıt anlamdır ('çoğu'); ikinci şık aşırı genellemedir ('hiçbiri'); üçüncü şık kaynaktaki kelimeleri kullanıp kimin ne yaptığını değiştirir; dördüncü şık 'daha az' diyerek kısmen doğru bir çeldiricidir."
+       "explanation": "*Few of* = 'çok azı' → 'öğrencilerin çok azı zevk için okuduğunu söyledi'. Tuzak: 'çoğu' diyen şık zıt anlamdır; 'hiçbiri' diyen şık aşırı genellemedir; 'zevk için okuyan öğrencilerin azı ankete katılmıştır' diyen şık kaynaktaki kelimeleri kullanıp kimin ne yaptığını değiştirir; 'daha az okuduklarını' diyen şık kısmen doğru bir çeldiricidir."
       },
       {
        "type": "choice",
@@ -3594,7 +3594,7 @@
         "These findings show that a healthy diet is sufficient to prevent obesity."
        ],
        "answer": 1,
-       "explanation": "'Tek başına … yetmediğini' = *alone is not sufficient* → ikinci şık. Tuzak: ilk şık zıt anlamdır (*the only explanation*); üçüncü şık aşırı genellemedir (*nothing to do with*); dördüncü şık aynı kelimelerle özne ve nesneyi yer değiştirir."
+       "explanation": "'Tek başına … yetmediğini' = *alone is not sufficient* → 'diet alone is not sufficient to explain obesity'. Tuzak: *the only explanation* diyen şık zıt anlamdır; *nothing to do with* diyen şık aşırı genellemedir; 'obesity alone cannot explain people's diet' diyen şık aynı kelimelerle özne ve nesneyi yer değiştirir."
       },
       {
        "type": "choice",
@@ -3608,7 +3608,7 @@
         "customers could park closer to the shops"
        ],
        "answer": 3,
-       "explanation": "Toplam satış yaklaşık %8 arttı ama mobilya gibi dükkânların satışı düştü → dördüncü şık. Tuzak: ilk şık aşırı genellemedir (*every type*); üçüncü şık zıt anlamdır; son şık metinde geçen *park* kelimesini tekrarlar ama anlamı tersine çevirir."
+       "explanation": "Toplam satış yaklaşık %8 arttı ama mobilya gibi dükkânların satışı düştü → 'total sales increased, although some shops lost business'. Tuzak: 'every type of shop' diyen şık aşırı genellemedir; 'furniture shops benefited more than cafés' diyen şık zıt anlamdır; 'customers could park closer' diyen şık metinde geçen *park* kelimesini tekrarlar ama anlamı tersine çevirir."
       },
       {
        "type": "choice",
@@ -3622,7 +3622,7 @@
         "reduce the number of pedestrians"
        ],
        "answer": 0,
-       "explanation": "Teslimat önerisi, müşterileri arabaya dayanan ve ağır mal satan dükkânlara yöneliktir → ilk şık. Tuzak: üçüncü şık metinde geçen *cafés and clothing shops* ifadesini tekrarlar ama onlar zaten kazanan taraftır; ikinci şık kısmen doğrudur (arabalarla ilgili) ama öneri arabaları geri getirmez."
+       "explanation": "Teslimat önerisi, müşterileri arabaya dayanan ve ağır mal satan dükkânlara yöneliktir → 'help businesses whose customers have difficulty carrying their purchases without a car'. Tuzak: 'increase sales in cafés and clothing shops' diyen şık metinde geçen *cafés and clothing shops* ifadesini tekrarlar ama onlar zaten kazanan taraftır; 'allow cars to return' diyen şık kısmen doğrudur (arabalarla ilgili) ama öneri arabaları geri getirmez."
       },
       {
        "type": "choice",
@@ -3636,7 +3636,7 @@
         "wanted newspapers to report on family incomes instead"
        ],
        "answer": 2,
-       "explanation": "Araştırmacılar *more careful* davranır ve kahvaltının etkisinin ayrıştırılamadığını söyler; yani haberler bulguyu abartmıştır → üçüncü şık. Tuzak: ilk şık aşırı genellemedir (*fully agreed*); ikinci şık da ters yönde aşırıdır (*no effect*), oysa araştırmacılar *may well play a role* der."
+       "explanation": "Araştırmacılar *more careful* davranır ve kahvaltının etkisinin ayrıştırılamadığını söyler; yani haberler bulguyu abartmıştır → 'thought the reports overstated what the study had shown'. Tuzak: *fully agreed* diyen şık aşırı genellemedir; *no effect* diyen şık da ters yönde aşırıdır, oysa araştırmacılar *may well play a role* der."
       },
       {
        "type": "choice",
@@ -3650,7 +3650,7 @@
         "Because breakfast eaters also differed in other ways that affect school performance"
        ],
        "answer": 4,
-       "explanation": "Kahvaltı yapan öğrencilerin aileleri daha düzenli ve daha yüksek gelirliydi; bu etkenler de başarıyla bağlantılıdır → son şık. Tuzak: ilk şık metinle çelişir (2.000 öğrenci az değildir); üçüncü şık metinde geçen *newspapers* kelimesini kullanır ama gazeteler sonuçları değiştirmemiş, yalnızca abartmıştır."
+       "explanation": "Kahvaltı yapan öğrencilerin aileleri daha düzenli ve daha yüksek gelirliydi; bu etkenler de başarıyla bağlantılıdır → 'breakfast eaters also differed in other ways that affect school performance'. Tuzak: 'too few pupils took part' diyen şık metinle çelişir (2.000 öğrenci az değildir); 'newspapers changed the results' diyen şık metinde geçen *newspapers* kelimesini kullanır ama gazeteler sonuçları değiştirmemiş, yalnızca abartmıştır."
       },
       {
        "type": "choice",
@@ -3664,7 +3664,7 @@
         "Why didn't you study the vocabulary lists?"
        ],
        "answer": 1,
-       "explanation": "Öğrencinin *Mostly the ones about the author's attitude* cevabı, hangi tür okuma sorusunda zorlandığının sorulduğunu gösterir → ikinci şık. Tuzak: ilk şık *section* kelimesini tekrarlar ama dilbilgisine geçer; üçüncü şık aşırı genellemedir (*always*)."
+       "explanation": "Öğrencinin *Mostly the ones about the author's attitude* cevabı, hangi tür okuma sorusunda zorlandığının sorulduğunu gösterir → 'Which type of reading question gave you the most trouble?' Tuzak: 'Did you finish the grammar section on time?' diyen şık *section* kelimesini tekrarlar ama dilbilgisine geçer; *always* diyen şık aşırı genellemedir."
       },
       {
        "type": "choice",
@@ -3677,7 +3677,7 @@
         "Neither the new evidence nor the original theory can be questioned."
        ],
        "answer": 3,
-       "explanation": "*casts doubt on, rather than disproves* = 'çürütmüyor, şüphe düşürüyor' → dördüncü şık. Tuzak: ilk şık aşırı genellemedir (şüpheyi kesin çürütmeye çevirir); ikinci şık zıt anlamdır (*fully supports*)."
+       "explanation": "*casts doubt on, rather than disproves* = 'çürütmüyor, şüphe düşürüyor' → 'raises questions about the original theory without showing it to be false'. Tuzak: 'clearly proves that the original theory is wrong' diyen şık aşırı genellemedir (şüpheyi kesin çürütmeye çevirir); *fully supports* diyen şık zıt anlamdır."
       },
       {
        "type": "choice",
@@ -3691,7 +3691,7 @@
         "As a result, they never make the same mistake twice."
        ],
        "answer": 0,
-       "explanation": "Sonraki cümle yalnızca doğru cevabı yazmanın yetmediğini söyler; boşluk bu eleştiriyi tanıtan 'Such a list, however, is only helpful if it records more than the correct answer.' olmalıdır. Tuzak: son şık aşırı genellemedir (*never*) ve paragrafla çelişir; dördüncü şık metinde geçen *distractor* kelimesini tekrarlar."
+       "explanation": "Sonraki cümle yalnızca doğru cevabı yazmanın yetmediğini söyler; boşluk bu eleştiriyi tanıtan 'Such a list, however, is only helpful if it records more than the correct answer.' olmalıdır. Tuzak: *never* diyen şık aşırı genellemedir ve paragrafla çelişir; 'Most distractors are designed by computer programs' diyen şık metinde geçen *distractor* kelimesini tekrarlar."
       },
       {
        "type": "choice",
