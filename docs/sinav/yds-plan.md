@@ -1,106 +1,259 @@
-# YDS / YÖKDİL çalışma yolu: araştırma ve plan
+# YDS / YÖKDİL çalışma yolu: 90 puan hedefli araştırma ve plan
 
-Bu belge Dilbaz'ın **YDS / YÖKDİL** sınav yolunun dayandığı araştırmayı ve ünite ünite planı içerir. İçerik dosyaları şunlardır: `assets/courses/exam_yds.json` (Bölüm 1) ve `assets/courses/exam_yds/*.json` (Bölüm 2–4).
+**Hedef:** Temel İngilizcesi olan (yaklaşık A2–B1) bir aday, yolu bitirdiğinde YDS'de **90 puan** alabilmeli.
 
-> Yolun amacı, soru bankasını rastgele çözmek yerine sıralı ve kilitli ilerlemektir: **konu anlatımı (Rehber) → kelime dersi → rehberli alıştırma → karışık tekrar → ünite testi → deneme**. Sorular ÖSYM'nin gerçek sorularından kopyalanmamıştır. Yalnızca soru tipleri ve konular örnek alınmıştır. Metinler uydurma ama gerçekçi akademik konular üzerine yazılmıştır.
+İçerik dosyaları:
+- `assets/courses/exam_yds.json` ve `assets/courses/exam_yds/*.json`: çalışma yolu.
+- `assets/exam_packs/yds_full.json`: tam denemeler.
 
-## 1. Sınav biçimleri
+> Yol sıralı ve kilitlidir. Her ünite şu adımlardan geçer: Rehber, kelime dersi, rehberli dersler, ünite testi ve deneme. Sorular ÖSYM sorusu değildir; tipler ve konular örnek alınmış, metinler özgün yazılmıştır.
 
-Aşağıdaki sayılar ÖSYM kılavuzlarındaki genel yapıyı özetler. Soru tiplerinin dağılımı dönemden döneme ±1–2 soru oynayabilir. Kesin bilgi için her dönemin kılavuzuna bakılmalıdır.
+## 1. Hedefin matematiği
 
-### YDS (Yabancı Dil Bilgisi Seviye Tespit Sınavı)
-- **80 soru, 180 dakika**, 5 şıklı, yanlış doğruyu götürmez; her soru 1,25 puan (100 üzerinden).
-- Yılda genellikle iki kez kâğıt-kalem olarak yapılır. Diller: İngilizce, Almanca, Fransızca, Arapça, Rusça vb.
-- Kullanım: akademik kadro (doçentlik, araştırma görevliliği), lisansüstü başvurusu, kamu yabancı dil tazminatı, yurt dışı burs.
-- **Tipik soru dağılımı (İngilizce):**
-  - Kelime bilgisi: 6
-  - Dilbilgisi: 10
-  - Cloze test: 10 (2 metin × 5 boşluk)
-  - Cümle tamamlama: 10
-  - Çeviri: 6 (3 İngilizce → Türkçe, 3 Türkçe → İngilizce)
-  - Paragraf / okuma: 20 (5 metin × 4 soru)
-  - Diyalog tamamlama: 5–6
-  - Anlamca en yakın cümle (restatement): 3–4
-  - Paragraf tamamlama: 4
-  - Anlam bütünlüğünü bozan cümle: 5
-- Ortalama süre: soru başına 2 dakika, ama kelime ve dilbilgisi sorularında 30–60 saniye, okuma sorularında 2,5–3 dakika hedeflenir (bkz. Ünite ys4u3).
+- YDS'de **80 soru** vardır, süre **180 dakikadır**. Her doğru **1,25 puan**dır ve yanlış doğruyu götürmez.
+- **90 puan = 72 doğru.** Aday en fazla 8 soruyu boş bırakabilir ya da yanlış yapabilir.
+- 85 puan 68 doğru, 80 puan 64 doğru, 70 puan 56 doğru demektir.
 
-### e-YDS
-- YDS ile **aynı yapı** (80 soru, 180 dakika, aynı soru tipleri), ancak ÖSYM elektronik sınav merkezlerinde **bilgisayarda** yapılır.
-- Yıl içinde çok daha sık oturum açılır; sonuç birkaç gün içinde açıklanır. Puanı YDS ile eşdeğer kabul edilir.
-- Farklar: soruların ekranda gösterilmesi (uzun metinlerde kaydırma), işaretleyip geri dönme düğmesi, müsvedde kâğıdının sınırlı olması. Strateji aynı kalır.
+## 2. Sınav biçimleri
 
-### YÖKDİL (Yükseköğretim Kurumları Yabancı Dil Sınavı)
-- **80 soru, 180 dakika**, 5 şıklı. Üç alan vardır: **Fen Bilimleri, Sağlık Bilimleri, Sosyal Bilimler**. Aday kendi alanını seçer; metinler ve kelimeler o alandan gelir.
-- Kullanım: lisansüstü (yüksek lisans ve doktora) başvuruları, akademik kadro. Bazı kurumlar YDS yerine kabul eder.
-- **Tipik soru dağılımı:**
-  - Kelime ve dilbilgisi: ~20
-  - Cloze: ~5
-  - Cümle tamamlama: ~10–15
-  - Çeviri: ~12 (6 + 6)
-  - Okuma: ~20–25
-  - Paragraf tamamlama: ~5
-  - Anlam bütünlüğünü bozan cümle: ~5
-  - Diyalog ve restatement soruları genellikle **yoktur**.
-- Alanlara göre en sık konular:
-  - **Fen:** fizik ve kimya süreçleri, biyoloji ve ekoloji, iklim, mühendislik ve malzeme, bilişim.
-  - **Sağlık:** anatomi ve fizyoloji, hastalıklar ve tanı, farmakoloji, epidemiyoloji, halk sağlığı, beslenme.
-  - **Sosyal:** sosyoloji, psikoloji, ekonomi, siyaset ve uluslararası ilişkiler, tarih, eğitim, hukuk.
-- Yoldaki karşılığı: Bölüm 2'de üç ayrı alan ünitesi (ys2u7 Fen, ys2u8 Sağlık, ys2u9 Sosyal). Çeviri ve okuma üniteleri (Bölüm 3) YÖKDİL adayı için de birebir geçerlidir.
+### YDS ve e-YDS
+- Kâğıt sınav (YDS) ile bilgisayarda yapılan sınav (e-YDS) aynı yapıdadır: 80 soru, 180 dakika, 5 şık.
+- e-YDS yıl içinde daha sık yapılır ve sonucu birkaç gün içinde açıklanır.
+
+### Son yıllarda soru tiplerinin dağılımı (İngilizce)
+ÖSYM kılavuzu soru tiplerinin sayısını sabitlemez, ama son dönemlerin oturumları şu düzene çok yakındır:
+
+| Soru tipi | Soru | Not |
+|---|---|---|
+| Kelime | 6 | |
+| Dilbilgisi | 10 | |
+| Cloze test | 10 | 2 metin × 5 boşluk |
+| Cümle tamamlama | 10 | |
+| Çeviri | 6 | 3 İngilizce → Türkçe, 3 Türkçe → İngilizce |
+| Okuma | 20 | 5 metin × 4 soru |
+| Diyalog tamamlama | 5–6 | |
+| Anlamca en yakın cümle (restatement) | 3–4 | |
+| Paragraf tamamlama | 4 | |
+| Anlam bütünlüğünü bozan cümle | 5 | |
+| **Toplam** | **80** | |
+
+Uygulamadaki tam denemeler (`yds_full`, 8 deneme) 6 diyalog + 3 restatement düzenini kullanır. Bu sayılar dönemden döneme ±1 oynayabilir. Kesin bilgi her dönemin kılavuzundadır.
+
+### YÖKDİL
+- 80 soru, 180 dakika. Üç alan vardır: Fen, Sağlık ve Sosyal Bilimler.
+- Kelime, dilbilgisi, cümle tamamlama, çeviri ve okuma payı YDS'ye benzer.
+- Diyalog ve restatement soruları genellikle **yoktur**. Çeviri ve okuma payı biraz daha büyüktür.
+- Sayılar yaklaşıktır, güncel ÖSYM kılavuzuyla karşılaştırılmalıdır.
 
 ### ALES hakkında not
-**ALES'te İngilizce (yabancı dil) bölümü yoktur.** ALES yalnızca sayısal ve sözel (Türkçe) testlerden oluşur. Lisansüstü başvurularda ALES'e **ek olarak** ayrı bir yabancı dil puanı (YDS, e-YDS veya YÖKDİL; çoğu programda en az 50–55) istenir. Bu yüzden "ALES İngilizcesi" diye bir hazırlık yoktur. Lisansüstüne hazırlanan aday için doğru hedef YDS veya YÖKDİL'dir ve bu yol o hedefe göre kurulmuştur.
+**ALES'te İngilizce bölümü yoktur.** Lisansüstü başvurusunda ALES'e ek olarak ayrı bir dil puanı (YDS, e-YDS ya da YÖKDİL) istenir. Bu yol o puan içindir.
 
-## 2. Yolun yapısı
+## 3. 72 doğru için tür bazında hedef
 
-- **4 bölüm, 33 ünite**: Temel dilbilgisi (10), Kelime ve kalıplar (9), Soru tipleri (10), Deneme ve zaman yönetimi (4).
-- **Her ünite** şu sırayla ilerler:
-  - Rehber (Türkçe konu anlatımı): kural, örnekler, *nasıl çözülür* adımları, tuzaklar, sınav ipucu.
-  - 4 ders: en az biri kelime dersidir; zorluk 1. dersten 4. derse artar.
-  - Ünite testi: 15–20 yeni soru, gerçek dağılıma göre.
-  - Ödül.
-- **Denemeler:** her bölümün sonunda bir bölüm denemesi var (20 / 20 / 40 soru). Bölüm 4'te gerçek biçimde **üç tam deneme** var (80 soru / 180 dakika, `yds_full` paketindeki Tam Deneme 1–3).
-- Soru türleri:
-  - `choice`: YDS tipi, 5 şıklı, Türkçe açıklamalı.
-  - `match`: kelime eşleştirme.
-  - `fillBlank`: boşluk doldurma, kelime pekiştirme için.
+| Tür | Soru | Hedef doğru | Neden ulaşılabilir |
+|---|---|---|---|
+| Kelime | 6 | 5 | Yoldaki kelime bilgisi + bağlam ipucu |
+| Dilbilgisi | 10 | 9 | Kalıplar sınırlı ve öğrenilebilir; zaman uyumu, bağlaç ve yapı ipuçlarıyla şık elenir |
+| Cloze | 10 | 9 | Dilbilgisi ve bağlaç bilgisinin metin içindeki uygulaması |
+| Cümle tamamlama | 10 | 9 | Bağlacın anlamı ve zaman uyumu çoğu şıkkı eler |
+| Çeviri | 6 | 6 | Özne–yüklem ve anlam ayrıntısı (zaman, olumsuzluk, miktar) karşılaştırması tekniği |
+| Okuma | 20 | 17 | En zor kısım; strateji ve 60+ metinlik pratikle 17 doğru gerçekçidir (16'da kalan aday başka bir türden 1 fazla yapmalı) |
+| Diyalog | 6 | 5 | Bağlam ve ton ipuçları |
+| Restatement | 3 | 3 | Yapı dönüşümleri (although ↔ despite, unless ↔ if…not) |
+| Paragraf tamamlama | 4 | 4 | Bağlantı kelimesi ve gönderim ipuçları |
+| Anlam bütünlüğü | 5 | 5 | Konu cümlesinden sapan cümleyi bulma tekniği |
+| **Toplam** | **80** | **72** | Yanlış yapma payı: 8 soru |
 
-## 3. Haftalık çalışma planı (12 hafta)
+## 4. "Biraz bilen" aday için eksik analizi ve yolun karşılığı
 
-Günde 60–90 dakika, haftada 6 gün varsayılmıştır. Her gün bir ders ya da bir ünite testi yapılır. Pazar günleri tekrar ve hata defteri günüdür. Daha kısa süre isteyen aday için **8 haftalık sıkıştırılmış** sürüm sağ sütundadır.
+A2–B1 düzeyindeki bir adayın tipik eksikleri ve yolun bunları nasıl kapattığı:
 
-| Hafta | 12 haftalık plan | 8 haftalık plan |
+1. **Cümle yapısı ve uzun cümle okuma.** A2 aday uzun akademik cümlede ana fiili bulamaz. Bu yüzden çeviri, cümle tamamlama ve okuma sorularını çözemez.
+   *Yol:* Bölüm 1'in başındaki altı **Temel köprü** ünitesi: cümlenin iskeleti, isim öbeği ve gönderim, temel zamanlar, sözcük türetme, temel bağlaçlar ve uzun cümle okuma.
+2. **Dilbilgisi ve bağlaç çekirdeği.** Bunlar kelime dışındaki 30+ soruyu (dilbilgisi, cloze, cümle tamamlama, restatement) doğrudan etkiler.
+   *Yol:* Bölüm 1'deki 10 dilbilgisi ünitesi: zamanlar, kipler, edilgen, koşul, yan cümleler, isim cümlecikleri, gerund/infinitive, bağlaçlar, edatlar, karşılaştırma.
+3. **Akademik kelime.** En büyük açık budur.
+   - B1 aday genel kelimelerin 2.000–3.000'ini bilir.
+   - YDS'de 90 için yaklaşık 4.000–5.000 kelime ailesini tanımak gerekir; bunun bir kısmı akademik ve sınava özgü kelimelerdir.
+   - *Yol:* Bölüm 2: akademik fiiller, sıfat/zarf, phrasal verbs, eşdizimler, karıştırılanlar, üç YÖKDİL alanı ve **6 kelime seti (480 yeni kelime)**. Yolda toplam **2.630 benzersiz kelime/kalıp** vardır.
+   - Kalan genel kelime açığı yoldaki 60+ okuma metni ve denemelerle kapanır. Ek olarak günde 15 dakika İngilizce okuma önerilir.
+4. **Okuma (20 soru) ve paragraf stratejileri.**
+   *Yol:* Bölüm 3'teki 10 soru tipi ünitesi (strateji + adım adım çözüm) ve 4 **Okuma kampı** ünitesi (fen, sağlık, sosyal, tarih/kültür; her biri 7–8 metin, 150–250 kelimelik gerçek YDS uzunluğunda).
+5. **Çeviri.**
+   *Yol:* İki çeviri ünitesi (İng→Tr, Tr→İng). Çeviri soruları her ünite testinde ve denemede de var.
+6. **Süre ve sınav dayanıklılığı.** 180 dakikalık sınavı bitiremeyen aday puan kaybeder.
+   *Yol:*
+   - Bölüm 4: süre stratejisi ve hata analizi.
+   - Beş **Deneme haftası** ünitesi; her hafta bir tam deneme.
+   - Puan hedefi her hafta yükselir: 60 → 65 → 68 → 70 → 90 puan (72 doğru).
+
+## 5. Kaç tam deneme, hangi aralıklarla?
+
+- **Toplam 8 tam deneme** (80 soru / 180 dakika, gerçek dağılım) ve **5 bölüm denemesi** (20–40 soru) vardır.
+- **Bölüm denemeleri:** her bölümün ve kampın sonunda. Konu bitince o bölümün sorularıyla ölçülür.
+- **Tam denemeler 1–3:** Bölüm 4'ün başında, karışık setler ve süre stratejisi ünitelerinin sonunda, haftada bir.
+- **Tam denemeler 4–8:** son beş hafta, haftada bir, her biri bir Deneme haftası ünitesinin sonunda. Son iki deneme (7 ve 8) arasında 3–4 gün olabilir.
+- **Kural:** Her tam denemeden sonraki gün yanlışlar ys4u4 yöntemiyle (hata defteri) analiz edilir. Zayıf tür bir sonraki deneme haftasında çalışılır.
+- **Neden 8 deneme:** Bu bir tasarım tercihidir, ölçülmüş bir sonuç değildir. Yaygın hazırlık pratiği son 4–6 haftada 6–10 tam deneme çözmektir: süre yönetimi ve puan istikrarı ancak birkaç tam denemeden sonra oturur. Daha azı sınav dayanıklılığını, daha fazlası konu çalışmasını azaltır.
+- **Erişim:** Tam denemeler `yds_full` paketindedir. Paket açık değilse yol "Deneme sınavları" sayfasına yönlendirir. Bölüm denemeleri herkese açıktır.
+
+## 6. Yolun yapısı
+
+- **4 bölüm:**
+  - Temel ve dilbilgisi (16 ünite)
+  - Kelime ve kalıplar (15)
+  - Soru tipleri (14)
+  - Deneme ve zaman yönetimi (9)
+- **Her ünite:** Rehber (kural, örnekler, nasıl çözülür, tuzaklar, sınav ipucu), 4 ders (en az biri kelime dersi), 15–20 soruluk ünite testi ve ödül.
+- **Kimlikler:** Yeni üniteler mevcut kimliklere dokunmadan eklendi; ilerleme kaybı olmaz.
+  - Temel köprü ys1u11–ys1u16'dır, ama yolda Bölüm 1'in **başında** görünür.
+  - Kelime setleri ys2u10–ys2u15, okuma kampı ys3u11–ys3u14, deneme haftaları ys4u5–ys4u9'dur.
+
+## 7. Haftalık çalışma takvimi
+
+- **A2'den başlayan için 20 hafta:** günde yaklaşık 2 saat, haftada 6 gün. Bir gün tekrar ve hata defteri günüdür.
+- **B1'den başlayan için 14 hafta:** Temel köprü 1 haftada geçilir, kelime setleri daha hızlı biter.
+
+| Hafta | A2 başlangıç (20 hafta) | B1 başlangıç (14 hafta) |
 |---|---|---|
-| 1 | ys1u1 Zamanlar, ys1u2 Modals, ys1u3 Passive | ys1u1–ys1u4 |
-| 2 | ys1u4 If clauses, ys1u5 Relative clauses, ys1u6 Noun clauses | ys1u5–ys1u8 |
-| 3 | ys1u7 Gerund/infinitive, ys1u8 Bağlaçlar | ys1u9–ys1u10 + Bölüm 1 denemesi, ys2u1–ys2u2 |
-| 4 | ys1u9 Edatlar, ys1u10 Miktar ve karşılaştırma + **Bölüm 1 denemesi** | ys2u3–ys2u6 |
-| 5 | ys2u1 Akademik fiiller, ys2u2 Sıfat ve zarflar, ys2u3 Phrasal verbs | ys2u7–ys2u9 (kendi YÖKDİL alanına ağırlık) + Bölüm 2 denemesi |
-| 6 | ys2u4 İsim kalıpları, ys2u5 Eş anlamlılar, ys2u6 Karıştırılanlar | ys3u1–ys3u4 |
-| 7 | ys2u7 Fen, ys2u8 Sağlık, ys2u9 Sosyal + **Bölüm 2 denemesi** | ys3u5–ys3u10 + Bölüm 3 denemesi |
-| 8 | ys3u1 Cloze, ys3u2 Cümle tamamlama, ys3u3 Çeviri EN→TR | Bölüm 4 (ys4u1–ys4u4) + Tam deneme 1–3 |
-| 9 | ys3u4 Çeviri TR→EN, ys3u5 Paragraf: ana fikir, ys3u6 Paragraf: detay ve çıkarım | |
-| 10 | ys3u7 Diyalog, ys3u8 Restatement, ys3u9 Paragraf tamamlama, ys3u10 Anlam bütünlüğü + **Bölüm 3 denemesi** | |
-| 11 | ys4u1 Karışık set 1, ys4u2 Karışık set 2 + **Tam deneme 1**, ys4u3 Süre stratejisi + **Tam deneme 2** | |
-| 12 | ys4u4 Hata analizi + **Tam deneme 3**, hata defterinden zayıf ünitelerin tekrarı | |
+| 1 | Temel köprü: ys1u11–ys1u13 | Temel köprü (hızlı): ys1u11–ys1u16 |
+| 2 | Temel köprü: ys1u14–ys1u16 | ys1u1–ys1u4 |
+| 3 | ys1u1 Zamanlar, ys1u2 Kipler | ys1u5–ys1u8 |
+| 4 | ys1u3 Edilgen, ys1u4 Koşul | ys1u9–ys1u10 + Bölüm 1 denemesi; ys2u1–ys2u2 |
+| 5 | ys1u5 Sıfat cümlecikleri, ys1u6 İsim cümlecikleri | ys2u3–ys2u6 |
+| 6 | ys1u7 Gerund/infinitive, ys1u8 Bağlaçlar | ys2u7–ys2u9 + Bölüm 2 denemesi; kelime seti 1 |
+| 7 | ys1u9 Edatlar, ys1u10 Karşılaştırma + **Bölüm 1 denemesi** | Kelime setleri 2–4; ys3u1–ys3u2 |
+| 8 | ys2u1–ys2u3 | Kelime setleri 5–6 + kelime denemesi; ys3u3–ys3u5 |
+| 9 | ys2u4–ys2u6 | ys3u6–ys3u10 + Bölüm 3 denemesi |
+| 10 | ys2u7–ys2u9 (kendi YÖKDİL alanına ağırlık) + **Bölüm 2 denemesi** | Okuma kampı 1–4 + okuma denemesi |
+| 11 | Kelime setleri 1–3 (setler sınava kadar her hafta tekrar edilir) | ys4u1–ys4u2 + **Tam deneme 1**; ys4u3 + **Tam deneme 2** |
+| 12 | Kelime setleri 4–6 + **Kelime setleri denemesi** | ys4u4 + **Tam deneme 3**; Deneme haftası 1 + **Tam deneme 4** |
+| 13 | ys3u1 Cloze, ys3u2 Cümle tamamlama, ys3u3 Çeviri EN→TR | Deneme haftaları 2–3 + **Tam deneme 5–6** |
+| 14 | ys3u4 Çeviri TR→EN, ys3u5–ys3u6 Paragraf | Deneme haftaları 4–5 + **Tam deneme 7–8**, sınav |
+| 15 | ys3u7 Diyalog, ys3u8 Restatement, ys3u9–ys3u10 + **Bölüm 3 denemesi** | |
+| 16 | Okuma kampı 1–4 + **Okuma kampı denemesi** | |
+| 17 | ys4u1, ys4u2 + **Tam deneme 1**, ys4u3 + **Tam deneme 2** | |
+| 18 | ys4u4 + **Tam deneme 3**, Deneme haftası 1 + **Tam deneme 4** | |
+| 19 | Deneme haftası 2 + **Tam deneme 5**, Deneme haftası 3 + **Tam deneme 6** | |
+| 20 | Deneme haftası 4 + **Tam deneme 7**, Deneme haftası 5 + **Tam deneme 8**, sınav | |
 
-Notlar:
-- **YÖKDİL adayı:**
-  - Bölüm 2'de kendi alan ünitesini iki kez yapsın.
-  - Bölüm 3'te diyalog (ys3u7) ve restatement (ys3u8) ünitelerini hızlı geçebilir.
-  - Çeviri ve okuma ünitelerine ek zaman ayırsın.
-- **Yüksek puan hedefi (80+):**
-  - Okuma soruları puanın dörtte birini taşır.
-  - 9. haftadan itibaren her gün en az bir paragraf seti çözülmeli.
-- **Tam denemeler:**
-  - Tam denemeyi tek oturumda, 180 dakika kesintisiz çöz.
-  - Ertesi gün ys4u4'teki hata analizi yöntemiyle yanlışları sınıflandır.
+**Gerçekçilik notu:**
+- A2'den 90'a 20 haftada ulaşmak iddialı bir hedeftir; günlük düzen ve tekrarları atlamamak şarttır.
+- Ölçüt: Tam denemelerde puan Tam deneme 4'te 60'ın, Tam deneme 6'da 68'in altında kalırsa sınavı 4–6 hafta ertele. Bu sürede o haftalardaki kelime setlerini ve okuma kampını tekrar et.
 
-## 4. Ünite ünite plan
+## 8. Ünite ünite plan
 
-Her ünite için hedef beceri, dersler (dilbilgisi ya da strateji), soru tipleri, Türk adayların sık yaptığı hatalar, sayılar ve kelime listesi verilmiştir. Kelime listeleri ünite içeriğinde geçen akademik kelime ve kalıplardır. Kelime dersinde ve ünite testinde bu kelimeler çalışılır.
+Her ünite için şunlar verilmiştir:
+- hedef beceri
+- dersler
+- soru tipleri
+- Türk adayların sık yaptığı hatalar
+- sayılar
+- kelime listesi
 
-### Bölüm 1 · Temel dilbilgisi
+### Bölüm 1 · Temel ve dilbilgisi
+
+#### ys1u11 · Cümlenin iskeleti
+
+- **Hedef beceri:** Sözcük türleri, özne-yüklem-nesne dizilişi ve ana fiili bulma
+- **Dilbilgisi (ders ders):**
+  1. Ünitenin kelimeleri *(kelime dersi)* — Köy, kıyı ve günlük yaşamla ilgili temel kelimeler
+  2. Sözcük türleri — İsim, fiil, sıfat ve zarfı ekinden ve yerinden tanıma
+  3. Özne, yüklem, nesne — İngilizce ve Türkçe söz dizimi farkı; be, have, do yardımcı fiilleri
+  4. Uzun cümlede ana fiil — Araya giren öbekleri ayıklayıp ana fiili ve özne-fiil uyumunu bulma
+- **Soru tipleri:** dilbilgisi cümlesi, cloze, cümle tamamlama, çeviri; kelime dersinde kelime sorusu, eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - **Türkçe sıralamayı taşımak:** *My mother bread buys.* yanlıştır; fiil öznenin arkasına gelir.
+  - **Yakındaki isme uymak:** *The bridge between the two villages were repaired.* yanlış; özne *bridge*, fiil *was*.
+  - **Sıfat yerine zarf, zarf yerine sıfat:** *He drives careful.* yanlış, *carefully* olmalı; *She looks happily.* yanlış, *happy* olmalı.
+  - **do ile çekimli fiil:** *Did you finished?* yanlış; *Did you finish?*
+- **Sayılar:** 4 ders, 40 ders alıştırması (35 çoktan seçmeli), 18 soruluk ünite testi, 66 kelime
+- **Kelime listesi (66):** noun (isim), verb (fiil), adjective (sıfat), adverb (zarf), subject (özne), object (nesne), word order (söz dizimi), main verb (ana fiil), auxiliary verb (yardımcı fiil), sentence (cümle), meaning (anlam), careful (dikkatli), carefully (dikkatlice), quickly (hızla), slowly (yavaşça), suddenly (aniden), village (köy), farmer (çiftçi), wheat (buğday), tractor (traktör), bridge (köprü), weather (hava durumu), storm (fırtına), coast (kıyı), island (ada), ferry (feribot), sunrise (gün doğumu), explain (açıklamak), collect (toplamak), repair (onarmak), build (inşa etmek), construction (inşaat, inşa), grow (yetiştirmek; büyümek), decide (karar vermek), protect (korumak), climb (tırmanmak), borrow (ödünç almak), lend (ödünç vermek), return (geri dönmek; geri vermek), attract (çekmek, cezbetmek), fail (başarısız olmak; (sınavdan) kalmak), visitor (ziyaretçi), museum (müze), library (kütüphane), dormitory (yurt), neighbour (komşu), council (meclis, kurul), report (rapor), traffic (trafik), equipment (ekipman, donanım), solution (çözüm), healthy (sağlıklı), dangerous (tehlikeli), useful (yararlı), helpful (yardımcı, faydalı), cheap (ucuz), expensive (pahalı), crowded (kalabalık), quiet (sessiz, sakin), noisy (gürültülü), comfortable (rahat, konforlu), excited (heyecanlı), usually (genellikle), together (birlikte), a number of (birçok, bir miktar), parking space (park yeri)
+
+#### ys1u12 · İsim öbeği ve gönderim
+
+- **Hedef beceri:** a/an/the, sayılabilirlik, çoğul, iyelik, isim tamlaması ve zamirlerin gösterdiği şey
+- **Dilbilgisi (ders ders):**
+  1. Ünitenin kelimeleri *(kelime dersi)* — Yiyecek, ticaret ve doğayla ilgili somut isimler
+  2. a/an/the ve miktar — Artikel seçimi, sayılabilen ve sayılamayan isimler, much/many, a few/a little
+  3. Çoğul, iyelik ve tamlama — Düzensiz çoğullar, 's ve of, isim + isim tamlaması
+  4. Zamirler ve gönderim — it, they, this, these, which, who neyi gösterir; paragrafta gönderim
+- **Soru tipleri:** dilbilgisi cümlesi, cloze, cümle tamamlama, çeviri; kelime dersinde kelime sorusu, eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - **advices, informations, furnitures, luggages** yanlıştır; bu isimler çoğul olmaz.
+  - **an advice / a information** yanlıştır; *a piece of advice* ya da *some information* denir.
+  - **Türkçedeki iyelik ekini taşımak:** *Ali sister's teacher* yanlış; *Ali's sister's teacher*.
+  - **İsim tamlamasında çoğul ilk isim:** *a cities centre* yanlış; *a city centre*.
+- **Sayılar:** 4 ders, 40 ders alıştırması (35 çoktan seçmeli), 18 soruluk ünite testi, 65 kelime
+- **Kelime listesi (65):** article (artikel, tanımlık), noun phrase (isim öbeği), singular (tekil), plural (çoğul), countable (sayılabilen), uncountable (sayılamayan), possessive (iyelik), pronoun (zamir), refer to (...e gönderme yapmak, ...i göstermek), furniture (mobilya), advice (tavsiye, öğüt), information (bilgi), luggage (bagaj, valiz), knowledge (bilgi birikimi), homework (ev ödevi), jewellery (mücevher, takı), bread (ekmek), salt (tuz), sugar (şeker), rice (pirinç), flour (un), honey (bal), wool (yün), cotton (pamuk), timber (kereste), clay (kil), coin (madeni para), jar (kavanoz), bottle (şişe), a loaf of (bir somun), a piece of (bir parça), a pair of (bir çift), a sheet of (bir yaprak (kâğıt)), herd (sürü), crop (ekin, mahsul), seed (tohum), soil (toprak), bakery (fırın), baker (fırıncı), owner (sahip), tribe (kabile), custom (gelenek, âdet), tradition (gelenek), recipe (yemek tarifi), ingredient (malzeme (yemek)), trade (ticaret), trader (tüccar), goods (mallar, eşya), cargo (yük, kargo), port (liman), lighthouse (deniz feneri), valley (vadi), hill (tepe), desert (çöl), forest (orman), sheep (koyun), teeth (dişler), mice (fareler), each other (birbirini), themselves (kendileri), both (her ikisi), neither (hiçbiri (ikisinden)), cousin (kuzen), dentist (diş hekimi), secret (sır)
+
+#### ys1u13 · Temel zamanlar ve sorular
+
+- **Hedef beceri:** Present simple/continuous, past simple, will/be going to, there is/are; olumsuz ve soru cümleleri
+- **Dilbilgisi (ders ders):**
+  1. Ünitenin kelimeleri *(kelime dersi)* — Yolculuk, etkinlik, hava ve zaman zarfları
+  2. Geniş zaman ve şimdiki zaman — Present simple ve present continuous; do/does ile soru ve olumsuz
+  3. Geçmiş, gelecek ve there is — Past simple, will ve be going to, there is/are/was/were
+  4. Sınav düzeyinde zaman ve soru — İki boşluklu zaman soruları, soru sırası, kısa diyalog ve cümle tamamlama
+- **Soru tipleri:** dilbilgisi cümlesi, cloze, cümle tamamlama, çeviri; kelime dersinde kelime sorusu, eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - **Türkçedeki ‘-yor’ eki:** Türkçede alışkanlıklar için de ‘-yor’ kullanırız (*Her sabah koşuyorum*). İngilizcede alışkanlık present simple ister: *I run every morning.*
+  - **do ile çekimli fiil:** *Did you went? She doesn't likes.* yanlıştır; *did / does* sonrası fiil yalın kalır.
+  - **Soru sırası:** *Where you did go?* yanlıştır; *Where did you go?*
+  - **will ile çekimli fiil:** *will visited* yanlış; *will visit*.
+- **Sayılar:** 4 ders, 40 ders alıştırması (35 çoktan seçmeli), 18 soruluk ünite testi, 65 kelime
+- **Kelime listesi (65):** habit (alışkanlık), appointment (randevu), arrive (varmak, gelmek), leave (ayrılmak, kalkmak), forecast (hava tahmini, öngörü), festival (festival, şenlik), exhibition (sergi), prepare (hazırlamak), invite (davet etmek), celebrate (kutlamak), tourist (turist), traveller (yolcu, gezgin), journey (yolculuk), flight (uçuş), departure (kalkış, hareket), cancel (iptal etmek), rent (kiralamak), share (paylaşmak), at the moment (şu anda), right now (hemen şimdi), nowadays (günümüzde), these days (bu günlerde, son zamanlarda), once a week (haftada bir), twice a year (yılda iki kez), ago (önce (zaman)), last night (dün gece), yesterday (dün), tomorrow (yarın), next week (gelecek hafta), soon (yakında), tonight (bu gece), often (sık sık), sometimes (bazen), never (asla, hiç), always (her zaman), weekend (hafta sonu), holiday (tatil), season (mevsim), concert (konser), ticket (bilet), platform (peron), passenger (yolcu), guest (misafir), menu (menü, yemek listesi), waiter (garson), bill (hesap, fatura), queue (kuyruk, sıra), umbrella (şemsiye), cloudy (bulutlu), sunny (güneşli), promise (söz vermek), offer (teklif etmek), guess (tahmin etmek), on time (zamanında), wait for (...i beklemek), look for (...i aramak), get up (kalkmak (yataktan)), take place (gerçekleşmek, yapılmak), lantern (fener), volunteer (gönüllü), organiser (düzenleyici), disappointed (hayal kırıklığına uğramış), receptionist (resepsiyon görevlisi), picnic (piknik), driving test (sürücü sınavı)
+
+#### ys1u14 · Sözcük türetme
+
+- **Hedef beceri:** Ekler, önekler ve kelime aileleri: bilinmeyen kelimeyi ekinden tanı
+- **Dilbilgisi (ders ders):**
+  1. Kelime aileleri *(kelime dersi)* — decide / decision / decisive / decisively: aynı kökün dört yüzü
+  2. İsim ve sıfat ekleri — -tion, -ment, -ness, -ance, -er/-or, -ous, -able, -ful, -less
+  3. Fiil, zarf ekleri ve önekler — -ly, -ize, -en ile un-, il-, mis-, re-, over-, under-, pre-
+  4. Ekten anlam tahmini — Bilinmeyen kelimeyi kök + ek olarak bölme ve sınav düzeyi sorular
+- **Soru tipleri:** dilbilgisi cümlesi, cloze, cümle tamamlama, çeviri; kelime dersinde kelime sorusu, eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - **Sıfatı zarf yerine kullanmak.** Türkçede "hızlı koştu" deriz; İngilizcede *ran quick* değil, *ran quickly* doğrudur.
+  - **-ly her zaman zarf değildir.** *friendly, lovely, lonely* sıfattır: *a friendly teacher*.
+  - **-er ve -ee karışıklığı.** *employer* işveren, *employee* çalışandır.
+  - **Fiil yerine isim seçmek.** *They want to success* yanlış; *to succeed* doğru.
+- **Sayılar:** 4 ders, 40 ders alıştırması (35 çoktan seçmeli), 18 soruluk ünite testi, 66 kelime
+- **Kelime listesi (66):** decide (karar vermek), decision (karar), decisive (kararlı, belirleyici), decisively (kararlılıkla), succeed (başarmak, başarılı olmak), success (başarı), successful (başarılı), successfully (başarıyla), create (yaratmak, oluşturmak), creative (yaratıcı), creativity (yaratıcılık), employ (işe almak, istihdam etmek), employer (işveren), employee (çalışan, işçi), unemployment (işsizlik), dependence (bağımlılık), dependent (bağımlı), helpful (yardımsever), careful (dikkatli), careless (dikkatsiz, özensiz), carefully (dikkatlice), strength (güç, kuvvet), strengthen (güçlendirmek), weakness (zayıflık), helpless (çaresiz), width (genişlik), misuse (yanlış kullanmak), predictable (öngörülebilir), prediction (tahmin), unbreakable (kırılamaz), perform (gerçekleştirmek, performans göstermek), performance (performans, başarım), differ (farklı olmak), difference (fark), kindness (nezaket, iyilik), useful (yararlı), useless (yararsız), reuse (yeniden kullanmak), reusable (yeniden kullanılabilir), dangerous (tehlikeli), endanger (tehlikeye atmak), modernize (modernleştirmek), misunderstand (yanlış anlamak), misunderstanding (yanlış anlaşılma), rebuild (yeniden inşa etmek), overwork (aşırı çalışmak), underestimate (olduğundan az tahmin etmek, küçümsemek), preheat (önceden ısıtmak), overcook (fazla pişirmek), illegal (yasa dışı), impossible (imkânsız), impatient (sabırsız), dishonest (dürüst olmayan), washable (yıkanabilir), recyclable (geri dönüştürülebilir), priceless (paha biçilemez), worthless (değersiz), hopeful (umutlu), hopeless (umutsuz), explanation (açıklama), construction (inşaat, yapım), unsuitable (uygun olmayan), inaccessible (ulaşılamaz, erişilemez), disappearance (ortadan kaybolma), lengthen (uzatmak), enjoyable (keyifli, zevkli)
+
+#### ys1u15 · Temel bağlaçlar ve edatlar
+
+- **Hedef beceri:** and, but, because, although, when, until; in/on/at ve basit geçiş kelimeleri
+- **Dilbilgisi (ders ders):**
+  1. Bağlaç ve edat kelimeleri *(kelime dersi)* — Ünitenin temel bağlaçları, in/on/at ve günlük kelimeler
+  2. and, but, so, because, although — Ekleme, zıtlık ve neden–sonuç bağlaçları
+  3. Zaman bağlaçları ve in/on/at — when, while, before, after, until, if ile zaman ve yer edatları
+  4. Geçiş kelimeleri ve anlam ilişkisi — however, therefore, for example, also ve sınav düzeyi bağlaç soruları
+- **Soru tipleri:** dilbilgisi cümlesi, cloze, cümle tamamlama, çeviri; kelime dersinde kelime sorusu, eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - **because ile so karışıklığı.** *because* nedenin önüne, *so* sonucun önüne gelir: *I slept because I was tired.* / *I was tired, so I slept.*
+  - **although ile but'u birlikte kullanmak.** Türkçedeki "-e rağmen ... ama" alışkanlığı yüzünden *Although it rained, but we went out* yazılır; bu yanlıştır. İkisinden yalnızca biri kullanılır.
+  - **however'ı although gibi kullanmak.** *However* iki cümleyi virgülle tek cümlede bağlamaz; genellikle noktadan ya da noktalı virgülden sonra gelir.
+  - **when / until / before sonrasında will.** *When I will finish, I will call you* yanlış; *When I finish, I will call you* doğrudur.
+- **Sayılar:** 4 ders, 40 ders alıştırması (35 çoktan seçmeli), 18 soruluk ünite testi, 62 kelime
+- **Kelime listesi (62):** and (ve), but (ama, fakat), or (veya, ya da), so (bu yüzden, bu nedenle), because (çünkü, -dığı için), although (-e rağmen, -dığı hâlde), when (-dığında, -ınca), while (-iken, -dığı sırada), if (eğer, -se/-sa), before (-meden önce), after (-dıktan sonra), until (-e kadar, -ene kadar), however (ancak, bununla birlikte), therefore (bu nedenle), for example (örneğin), also (ayrıca, de/da), too (de/da (cümle sonunda)), as well (de/da, üstelik), then (sonra, o zaman), first of all (her şeyden önce, ilk olarak), finally (son olarak, sonunda), during (sırasında, boyunca), since (-den beri), ago (önce (… yıl önce)), both ... and (hem ... hem de), either ... or (ya ... ya da), not only ... but also (yalnızca ... değil, aynı zamanda), in the morning (sabahleyin), at night (gece, geceleyin), on time (tam zamanında, dakik), in time (zamanında, vaktinde (yetişmek)), at the weekend (hafta sonu), at the moment (şu anda), at home (evde), on foot (yürüyerek), by train (trenle), on the bus (otobüste), at the station (istasyonda), umbrella (şemsiye), traffic jam (trafik sıkışıklığı), cancel (iptal etmek), crowded (kalabalık), commute (işe gidip gelmek), neighbourhood (mahalle, semt), rent (kira; kiralamak), appointment (randevu), journey (yolculuk), exhausted (bitkin, çok yorgun), discount (indirim), queue (kuyruk, sıra), abroad (yurt dışında, yurt dışına), lecture (ders, konferans), assignment (ödev, görev), salary (maaş), flood (sel), shelter (barınak, sığınak), concentrate (konsantre olmak, odaklanmak), convenient (uygun, elverişli), organiser (düzenleyici, organizatör), festival (festival, şenlik), tent (çadır), degree (diploma, derece)
+
+#### ys1u16 · Uzun cümle ve kısa paragraf
+
+- **Hedef beceri:** Uzun cümleyi bölme, who/which/that/when, ana fikir ve çeviriye giriş
+- **Dilbilgisi (ders ders):**
+  1. Okuma kelimeleri *(kelime dersi)* — Paragraf ve cümle sorularında geçen temel kelimeler
+  2. Uzun cümleyi parçalara bölme — Ana fiil, özne ve who / which / that / when / where yan cümleleri
+  3. Ana fikir ve kısa paragraf — 60–110 kelimelik paragraflarda ana fikir ve ayrıntı soruları
+  4. Cümle çevirisine giriş — İngilizce cümleyi parçalara bölerek anlamca en yakın çeviriyi bulma
+- **Soru tipleri:** dilbilgisi cümlesi, cloze, cümle tamamlama, çeviri; kelime dersinde kelime sorusu, eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - **Türkçe sırayla okumak.** Türkçede fiil sondadır; İngilizcede fiil özneden hemen sonra gelir. Cümleyi sondan başa çevirmeye çalışma, önce iskeleti bul.
+  - **Yan cümlenin fiilini ana fiil sanmak.** *The man who called you is my uncle.* cümlesinde ana fiil *called* değil, *is*'dir.
+  - **who / which karışıklığı.** *who* kişiler, *which* nesneler ve hayvanlar için kullanılır; *that* ikisi için de olur, ama virgülden sonra kullanılmaz.
+  - **where ile which karışıklığı.** *the village where I was born* doğrudur; *the village which I was born* yanlıştır (*which* kullanılacaksa *in which* gerekir).
+- **Sayılar:** 4 ders, 40 ders alıştırması (35 çoktan seçmeli), 18 soruluk ünite testi, 62 kelime
+- **Kelime listesi (62):** main idea (ana fikir), topic (konu), detail (ayrıntı), summary (özet), summarize (özetlemek), title (başlık), author (yazar), reader (okuyucu), subject (özne; konu), object (nesne), clause (yan cümle, cümlecik), relative clause (sıfat cümleciği (who/which/that)), paragraph (paragraf), purpose (amaç), explain (açıklamak), example (örnek), translation (çeviri), meaning (anlam), key word (anahtar kelime), fisherman (balıkçı), honey (bal), bee (arı), pollen (polen, çiçek tozu), keeper (bekçi, görevli), lighthouse (deniz feneri), flooding (su baskını), coast (kıyı, sahil), decorate (süslemek), fully booked (tamamen dolu (rezervasyon)), recognize (tanımak), hometown (memleket, doğduğu şehir), miss (özlemek; kaçırmak), lonely (yalnız, kimsesiz), neighbour (komşu), borrow (ödünç almak), lend (ödünç vermek), rubbish (çöp), river bank (nehir kıyısı), picnic (piknik), chemical (kimyasal madde), gene (gen), remove (uzaklaştırmak, çıkarmak), blood (kan), regular customer (müdavim, düzenli müşteri), fresh (taze), crop (ürün, mahsul), seed (tohum), exhibition (sergi), repair (onarmak; onarım), roof (çatı), grow up (büyümek, yetişmek), chance (şans, fırsat), fail (başarısız olmak, (sınavdan) kalmak), nurse (hemşire), delicious (lezzetli), run through ((nehir, yol) içinden geçmek), collect (toplamak), join (katılmak, üye olmak), sail ((gemi, tekne) denizde ilerlemek), cyclist (bisikletli), advantage (avantaj, üstünlük), attract (çekmek, ilgisini çekmek)
 
 #### ys1u1 · Zamanlar (Tenses)
 
@@ -427,6 +580,108 @@ Her ünite için hedef beceri, dersler (dilbilgisi ya da strateji), soru tipleri
 - **Sayılar:** 4 ders, 40 ders alıştırması (33 çoktan seçmeli), 18 soruluk ünite testi, 57 kelime; ardından **Bölüm 2 denemesi (20 soru, 45 dk)**
 - **Kelime listesi (57):** cohesion (bütünlük, uyum (toplumsal)), norm (norm, toplumsal kural), perception (algı), conformity (uyma, uyumculuk), cognitive (bilişsel), peer (akran), behaviour (davranış), peer pressure (akran baskısı), first impression (ilk izlenim), community (topluluk), trust (güven), exclude (dışlamak), fit in (uyum sağlamak, kaynaşmak), inflation (enflasyon), revenue (gelir), legislation (yasa(lar), mevzuat), sovereignty (egemenlik), recession ((ekonomik) durgunluk), tariff (gümrük vergisi), manipulate (manipüle etmek, çarpıtmak), unemployment rate (işsizlik oranı), interest rate (faiz oranı), purchasing power (satın alma gücü), consumer spending (tüketici harcaması), low-income household (düşük gelirli hane), dismissal (işten çıkarma), parliament (meclis, parlamento), election (seçim), opposition (muhalefet), majority (çoğunluk), treaty (antlaşma), decline (gerileme; gerilemek), curriculum (müfredat), literacy (okuryazarlık), verdict ((mahkeme/jüri) kararı), empire (imparatorluk), ratify ((antlaşmayı) onaylamak), appeal (itiraz etmek, temyize gitmek), jury (jüri), trial (dava, yargılama), defendant (sanık), excavation (kazı), archaeologist (arkeolog), archive (arşiv), merchant (tüccar), abandonment (terk edilme), territory (toprak, bölge), undermine (zayıflatmak, baltalamak), erode (aşındırmak), favour (tercih etmek, kayırmak), ambiguous (belirsiz, muğlak), relocate (taşınmak, yer değiştirmek), urbanisation (kentleşme), confirm (doğrulamak), contradict (çelişmek), approve (onaylamak), caution (uyarmak; ihtiyat)
 
+#### ys2u10 · Kelime seti 1: fiiller A–L
+
+- **Hedef beceri:** YDS/YÖKDİL metinlerinde sık geçen 80 akademik fiil (A–L)
+- **Kelime grubu (ders ders):**
+  1. Fiiller 1: abate – collaborate *(kelime dersi)* — abate, accommodate, ascertain, avert, bolster, circumvent, coincide
+  2. Fiiller 2: commence – derive *(kelime dersi)* — compel, constitute, counteract, culminate, curtail, deplete, deprive
+  3. Fiiller 3: designate – exert *(kelime dersi)* — deter, deviate, displace, distort, elicit, embrace, enforce, eradicate
+  4. Fiiller 4: exploit – linger — Sınav düzeyi: facilitate, harness, impede, incorporate, inhibit, jeopardise
+- **Soru tipleri:** kelime sorusu, cloze, cümle tamamlama, kısa paragraf, çeviri; eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - *Avert* (önlemek) ile *divert* (yönünü değiştirmek) ve *avoid* (kaçınmak) karıştırılır: *avert a disaster* doğru, *avert from doing* yanlıştır.
+  - *Deplete* nesneyi doğrudan alır (*deplete reserves*); *deprive* mutlaka *of* ister (*deprive sb of sth*).
+  - *Ascribe* ve *attribute* aynı yapıdadır: *ascribe A to B*; Türkçe 'nedeniyle' etkisiyle *for* kullanma.
+  - *Adhere to* (uymak) ile *adapt to / adjust to* (alışmak) farklıdır: kurala *adhere* edilir, yeni bir ortama *adjust* edilir.
+- **Sayılar:** 4 ders, 48 ders alıştırması (32 çoktan seçmeli), 20 soruluk ünite testi, 80 kelime
+- **Kelime listesi (80):** abate (azalmak, dinmek, hafiflemek), accommodate (barındırmak, yer sağlamak; uyum sağlamak), accomplish (başarmak, gerçekleştirmek), accrue (birikmek, tahakkuk etmek), adhere (to) (bağlı kalmak, uymak; yapışmak), adjust (ayarlamak, uyarlamak; (to) alışmak), alienate (yabancılaştırmak, soğutmak), amend ((yasa, metin) değiştirmek, düzeltmek), amplify (yükseltmek, güçlendirmek, büyütmek), ascertain (kesin olarak belirlemek, tespit etmek), ascribe (to) (atfetmek, -e bağlamak), attain (ulaşmak, erişmek, elde etmek), avert (önlemek, savuşturmak), bolster (desteklemek, güçlendirmek), boost (artırmak, canlandırmak), cease (sona ermek, durmak; durdurmak), circumvent ((kural, engel) atlatmak, dolanmak), cite (alıntılamak, kaynak göstermek; örnek vermek), coincide (with) (aynı zamana denk gelmek, örtüşmek), collaborate (with) (iş birliği yapmak), commence (başlamak, başlatmak), compel (zorlamak, mecbur etmek), compensate (for) (telafi etmek, tazmin etmek), compile (derlemek, bir araya getirmek), comprehend (kavramak, anlamak), condemn (kınamak; mahkûm etmek), confine (to) (sınırlamak, kısıtlamak; kapatmak), conform (to) (uymak, uygun olmak), confront (yüzleşmek, karşı karşıya gelmek), constitute (oluşturmak, teşkil etmek), contemplate (üzerinde düşünmek, tasarlamak), convey (iletmek, aktarmak, ifade etmek), counteract (etkisini gidermek, karşı koymak), culminate (in) (doruğa ulaşmak, ile sonuçlanmak), cultivate (yetiştirmek, ekip biçmek; geliştirmek), curtail (kısmak, kısıtlamak, azaltmak), deem (saymak, addetmek, kabul etmek), deplete (tüketmek, azaltmak), deprive (of) (yoksun bırakmak, mahrum etmek), derive (from) (türetmek, elde etmek; kaynaklanmak), designate (belirlemek, tayin etmek, ilan etmek), deter (from) (caydırmak, vazgeçirmek), deviate (from) (sapmak, ayrılmak), devise (tasarlamak, geliştirmek, bulmak), discern (ayırt etmek, fark etmek, sezmek), disperse (dağıtmak, dağılmak, yaymak), displace (yerinden etmek; yerini almak), distort (çarpıtmak, bozmak), dominate (hâkim olmak, egemen olmak), dwindle (giderek azalmak, erimek), elaborate (on) (ayrıntılandırmak, ayrıntılı anlatmak), elicit ((tepki, bilgi) almak, ortaya çıkarmak), embark (on) ((işe) girişmek, başlamak), embrace (benimsemek, kucaklamak), encompass (kapsamak, içine almak), enforce ((yasa, kural) uygulamak, yürürlüğe koymak), entail (gerektirmek, içermek, beraberinde getirmek), envisage (öngörmek, tasavvur etmek), eradicate (kökünü kazımak, tamamen yok etmek), exert ((güç, etki, baskı) uygulamak), exploit (sömürmek, istismar etmek; yararlanmak), facilitate (kolaylaştırmak), formulate (formüle etmek, oluşturmak), fulfil (yerine getirmek, karşılamak), generate (üretmek, oluşturmak), govern (yönetmek; belirlemek, düzenlemek), harness ((enerji, kaynak) kullanmak, yararlanmak), impede (engellemek, sekteye uğratmak), incorporate (dahil etmek, bünyesine katmak), incur ((zarar, masraf) uğramak, üstlenmek), induce (neden olmak, tetiklemek; ikna etmek), inhibit (engellemek, baskılamak), initiate (başlatmak), integrate (bütünleştirmek, kaynaştırmak), intensify (yoğunlaşmak, şiddetlenmek; artırmak), intervene (müdahale etmek, araya girmek), invoke ((yasa, ilke) öne sürmek, başvurmak), jeopardise (tehlikeye atmak), justify (haklı çıkarmak, gerekçelendirmek), linger (sürüp gitmek, kalmaya devam etmek)
+
+#### ys2u11 · Kelime seti 2: fiiller M–Z
+
+- **Hedef beceri:** YDS/YÖKDİL metinlerinde sık geçen 80 akademik fiil (M–Z)
+- **Kelime grubu (ders ders):**
+  1. Fiiller 1: magnify – precede *(kelime dersi)* — necessitate, neglect, obscure, outweigh, perpetuate, pinpoint, plummet
+  2. Fiiller 2: preclude – retain *(kelime dersi)* — preclude, prevail, prolong, proliferate, provoke, reconcile, rectify, render
+  3. Fiiller 3: revise – surpass *(kelime dersi)* — revoke, safeguard, spur, stimulate, stipulate, succumb, supersede
+  4. Fiiller 4: tackle – strive — Sınav düzeyi: trigger, withstand, violate, warrant, relinquish, uphold
+- **Soru tipleri:** kelime sorusu, cloze, cümle tamamlama, kısa paragraf, çeviri; eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - *Persist* (sürmek) nesne almaz; 'ısrar etmek' anlamında *persist in doing* kullanılır, *persist to do* yanlıştır.
+  - *Precede* (önce gelmek) ile *proceed* (devam etmek) yazımca karışır; *supersede* (yerini almak) ile *surpass* (aşmak) da sık karıştırılır.
+  - *Refrain from doing*: Türkçedeki 'yapmamaya çalışmak' etkisiyle *refrain to do* yazma.
+  - *Render* 'hâle getirmek' anlamında nesne + sıfat alır: *render sth useless*. 'Çevirmek' ya da 'sunmak' anlamları da vardır.
+- **Sayılar:** 4 ders, 48 ders alıştırması (32 çoktan seçmeli), 20 soruluk ünite testi, 80 kelime
+- **Kelime listesi (80):** magnify (büyütmek; abartmak), mediate (arabuluculuk yapmak), merge (birleşmek, birleştirmek), mimic (taklit etmek), mobilise (seferber etmek, harekete geçirmek), necessitate (gerektirmek, zorunlu kılmak), neglect (ihmal etmek), nurture (beslemek, yetiştirmek, geliştirmek), obscure (örtmek, gizlemek, belirsizleştirmek), omit (atlamak, dahil etmemek), originate (in/from) (kaynaklanmak, ortaya çıkmak), outweigh (-den ağır basmak, daha önemli olmak), oversee (denetlemek, gözetmek), perceive (algılamak, fark etmek), perpetuate (sürdürmek, kalıcı kılmak), persist (sürmek, devam etmek; (in) ısrar etmek), pinpoint (tam yerini belirlemek, kesin olarak saptamak), plummet (hızla düşmek, çakılmak), ponder (derin derin düşünmek), precede (önce gelmek, öncesinde olmak), preclude (olanaksız kılmak, önlemek), presume (varsaymak, farz etmek), prevail (galip gelmek, hâkim olmak, yaygın olmak), proceed (ilerlemek, devam etmek), procure (tedarik etmek, sağlamak), prolong (uzatmak), proliferate (hızla çoğalmak, yayılmak), prosper (refaha ermek, gelişmek), provoke (kışkırtmak, yol açmak), pursue (peşinden gitmek, sürdürmek), quantify (sayısal olarak ifade etmek, ölçmek), reconcile (uzlaştırmak, bağdaştırmak), rectify (düzeltmek), refine (inceltmek, arıtmak, geliştirmek), regulate (düzenlemek, denetlemek), reiterate (yinelemek, tekrar söylemek), render ((bir hâle) getirmek; sunmak), replenish (yeniden doldurmak, yenilemek), reside (ikamet etmek, oturmak), retain (korumak, elinde tutmak), revise (gözden geçirmek, düzeltmek), revoke (iptal etmek, geri almak), safeguard (korumak, güvence altına almak), scatter (saçmak, dağıtmak, dağılmak), secure (elde etmek; güvenceye almak), segregate (ayırmak, ayrı tutmak), signify (anlamına gelmek, göstermek), soar (fırlamak, hızla yükselmek), solicit (talep etmek, istemek), specify (belirtmek, açıkça söylemek), spur (teşvik etmek, hızlandırmak), stimulate (uyarmak, canlandırmak), stipulate (şart koşmak, öngörmek), subside (azalmak, dinmek, çekilmek), substitute (for) (yerine koymak, yerine geçmek), succumb (to) (yenik düşmek, dayanamamak), supersede (yerini almak, geçersiz kılmak), suppress (bastırmak, engellemek), surpass (aşmak, geçmek), shrink (küçülmek, daralmak), tackle (ele almak, üstesinden gelmeye çalışmak), terminate (sona erdirmek, feshetmek), trigger (tetiklemek, başlatmak), underline (vurgulamak, altını çizmek), underpin (temelini oluşturmak, desteklemek), undertake (üstlenmek, girişmek), unveil (tanıtmak, açıklamak, gün yüzüne çıkarmak), uphold (korumak, sürdürmek; (karar) onamak), utilise (kullanmak, yararlanmak), validate (doğrulamak, geçerli kılmak), vanish (gözden kaybolmak, yok olmak), violate (ihlal etmek, çiğnemek), warrant (haklı kılmak, gerektirmek), wane (azalmak, zayıflamak), withstand (dayanmak, karşı koymak), refrain (from) (kaçınmak, sakınmak), relinquish (bırakmak, vazgeçmek, devretmek), resume (yeniden başlamak, kaldığı yerden sürdürmek), revert (to) (eski hâline dönmek), strive (çabalamak, uğraşmak)
+
+#### ys2u12 · Kelime seti 3: isimler A–L
+
+- **Hedef beceri:** YDS/YÖKDİL metinlerinde sık geçen 80 akademik isim (A–L)
+- **Kelime grubu (ders ders):**
+  1. İsimler 1: abundance – capacity *(kelime dersi)* — analogy, anomaly, array, asset, backlash, bias, breakthrough, capacity
+  2. İsimler 2: catastrophe – discrepancy *(kelime dersi)* — commitment, compliance, consensus, controversy, correlation, credibility, deficiency
+  3. İsimler 3: disparity – hierarchy *(kelime dersi)* — disparity, distinction, empathy, equilibrium, exemption, expertise, hazard
+  4. İsimler 4: hostility – longevity — Sınav düzeyi: influx, incidence, intuition, jurisdiction, impetus, liability, legacy
+- **Soru tipleri:** kelime sorusu, cloze, cümle tamamlama, kısa paragraf, çeviri; eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - *Debris* ve *expertise* sayılamaz: *debris are* ya da *expertises* yazma.
+  - *Incidence* (görülme sıklığı) ile *incident* (olay) karıştırılır; *the incidence of cancer* doğru, *the incident of cancer* yanlıştır.
+  - *Disparity* (eşitsizlik) ile *discrepancy* (iki veri arasındaki tutarsızlık) yakın ama farklıdır: gelirler arasında *disparity*, rakamlar arasında *discrepancy* olur.
+  - *Conviction* hem 'inanç' hem 'mahkûmiyet' demektir; bağlama göre çevir.
+- **Sayılar:** 4 ders, 48 ders alıştırması (32 çoktan seçmeli), 20 soruluk ünite testi, 80 kelime
+- **Kelime listesi (80):** abundance (bolluk), adversity (zorluk, sıkıntı, talihsizlik), advent (ortaya çıkış, geliş), affinity (yakınlık, ilgi, benzerlik), allegation (iddia, suçlama), alliance (ittifak), analogy (benzetme, örnekseme), anomaly (anormallik, sapma), aptitude (yetenek, yatkınlık), array (dizi, çeşitlilik, yelpaze), aspiration (arzu, hedef, istek), asset (varlık, değerli unsur), autonomy (özerklik), aversion (isteksizlik, hoşlanmama), backlash (sert tepki), benchmark (ölçüt, kıyas noktası), bias (önyargı, taraflılık), breakthrough (çığır açan buluş, atılım), by-product (yan ürün), capacity (kapasite, sığa; yeterlik), catastrophe (felaket), circumstance (koşul, durum), coalition (koalisyon), cohort ((araştırmada) grup, kuşak), commitment (bağlılık, taahhüt), commodity (emtia, ticari mal), compliance (with) (uyma, uygunluk), consensus (fikir birliği, uzlaşı), constituent (bileşen; seçmen), controversy (tartışma, anlaşmazlık), conviction (inanç, kanaat; mahkûmiyet), correlation (bağıntı, ilişki), counterpart (muadil, karşılık), coverage (haber yapma; kapsam), credibility (güvenilirlik, inandırıcılık), cue (işaret, ipucu), debris (enkaz, döküntü), deficiency (eksiklik, yetersizlik), dilemma (ikilem), discrepancy (tutarsızlık, uyuşmazlık), disparity (eşitsizlik, büyük fark), distinction (ayrım; seçkinlik), discourse (söylem), duration (süre), endeavour (çaba, girişim), empathy (empati, duygudaşlık), entity (varlık, kuruluş, birim), equilibrium (denge), era (çağ, dönem), essence (öz, esas), exemption (from) (muafiyet), expertise (uzmanlık), famine (kıtlık), fatality (ölüm, ölümlü kaza kurbanı), flaw (kusur, hata), fallacy (yanılgı, safsata), genre ((sanat) tür), hazard (tehlike, risk), heritage (miras), hierarchy (hiyerarşi, aşama düzeni), hostility (düşmanlık, husumet), ideology (ideoloji), impetus (itici güç, ivme), incidence (görülme sıklığı), inclination (eğilim, istek), influx (akın, büyük giriş), ingredient (bileşen, malzeme), intake (alım, tüketim miktarı), innovation (yenilik), integrity (dürüstlük; bütünlük), interval (aralık, ara), intuition (sezgi), inventory (envanter, stok listesi), jurisdiction (yetki alanı, yargı yetkisi), kinship (akrabalık, yakınlık), landmark (simge yapı; dönüm noktası), legacy (miras, kalıt), liability ((hukuki) sorumluluk; yük), likelihood (olasılık), longevity (uzun ömür)
+
+#### ys2u13 · Kelime seti 4: isimler M–Z
+
+- **Hedef beceri:** YDS/YÖKDİL metinlerinde sık çıkan M–Z harfli 80 akademik isim
+- **Kelime grubu (ders ders):**
+  1. İsimler: magnitude–observation *(kelime dersi)* — magnitude, malnutrition, mechanism, myth, novelty, nuance ve 14 isim daha
+  2. İsimler: occupation–priority *(kelime dersi)* — oversight, paradigm, plight, precedent, premise, prevalence ve 14 isim daha
+  3. İsimler: proponent–stance *(kelime dersi)* — prospect, provision, rationale, repercussion, resilience, stake ve 14 isim daha
+  4. İsimler: stimulus–welfare (sınav) *(kelime dersi)* — strain, surveillance, threshold, trade-off, validity, viability; sınav düzeyi karışık sorular
+- **Soru tipleri:** kelime sorusu, cloze, cümle tamamlama, kısa paragraf, çeviri; eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - **perspective / outlook / prospect:** bakış açısı / genel tutum ya da gelecek beklentisi (*the economic outlook*) / olası gelecek durum (*the prospect of war*).
+  - **precedent / precursor:** emsal / öncü, habercisi.
+  - *oversight* hem 'gözden kaçırma' hem 'denetim'; *strain* hem 'baskı' hem 'virüs suşu' demektir.
+  - *tendency* genel eğilim; *susceptibility* hastalığa ya da etkiye yatkınlıktır.
+- **Sayılar:** 4 ders, 46 ders alıştırması (31 çoktan seçmeli), 20 soruluk ünite testi, 80 kelime
+- **Kelime listesi (80):** magnitude (büyüklük, şiddet), malnutrition (yetersiz beslenme), mandate (yetki, görev), manifestation (belirti, dışavurum), mechanism (mekanizma, işleyiş), merit (değer, artı yön, erdem), methodology (yöntem, yöntembilim), milestone (dönüm noktası, kilometre taşı), misconception (yanlış kanı), modification (değişiklik, uyarlama), momentum (ivme, hız kazanma), motive (güdü, sebep), myth (efsane; yaygın yanlış inanış), necessity (gereklilik, zorunluluk), niche (niş, özel alan), nourishment (besin, beslenme), novelty (yenilik), nuance (ince fark, nüans), objection (itiraz), observation (gözlem), occupation (meslek; işgal), occurrence (olay, meydana gelme), omission (atlama, eksik bırakma), orientation (yönelim; uyum eğitimi), outlook (bakış açısı; gelecek beklentisi), output (üretim, çıktı), oversight (gözden kaçırma; denetim), paradigm (paradigma, model), paradox (paradoks, çelişki), parameter (parametre, sınır), pathogen (hastalık etkeni, patojen), perspective (bakış açısı), pitfall (gizli tehlike, tuzak), plight (zor durum, çile), precedent (emsal, örnek), precursor (öncü, habercisi), premise (öncül, temel varsayım), prerequisite (ön koşul), prevalence (yaygınlık), priority (öncelik), proponent (savunucu, destekçi), prospect (olasılık, beklenti), provision (sağlama, temin; hüküm), proximity (yakınlık), rationale (gerekçe), recipient (alıcı), reluctance (isteksizlik), remnant (kalıntı), repercussion ((olumsuz) yankı, sonuç), requirement (gereksinim, şart), resilience (dayanıklılık, toparlanma gücü), retention (tutma, akılda tutma), rivalry (rekabet), scarcity (kıtlık), scenario (senaryo, olası durum), setback (aksilik, gerileme), shift (değişim, kayma), significance (önem, anlam), stake (pay, çıkar; (at stake) tehlikede), stance (tutum), stimulus (uyarıcı, teşvik), strain (baskı, yük; (mikrop) suşu), surge (ani artış), surveillance (gözetim), susceptibility (yatkınlık, duyarlılık), tendency (eğilim), tension (gerginlik), threshold (eşik), trade-off (ödünleşim, denge), transition (geçiş), transparency (şeffaflık), turmoil (kargaşa), utility (fayda, yarar), validity (geçerlilik), variable (değişken), variation (farklılık, değişkenlik), venture (girişim, riskli iş), viability (uygulanabilirlik, yaşayabilirlik), vicinity (civar, yakın çevre), welfare (refah; sosyal yardım)
+
+#### ys2u14 · Kelime seti 5: sık sıfatlar
+
+- **Hedef beceri:** YDS/YÖKDİL metinlerinde sık çıkan 80 akademik sıfat ve eşdizimleri
+- **Kelime grubu (ders ders):**
+  1. Sıfatlar: abrupt–erratic *(kelime dersi)* — adverse, arbitrary, compatible, conspicuous, discernible, distinctive ve 14 sıfat daha
+  2. Sıfatlar: excessive–mundane *(kelime dersi)* — exhaustive, imminent, indispensable, inherent, intrinsic, meticulous ve 14 sıfat daha
+  3. Sıfatlar: mutual–salient *(kelime dersi)* — novel, pervasive, pivotal, pragmatic, precarious, profound ve 14 sıfat daha
+  4. Sıfatlar: selective–volatile (sınav) *(kelime dersi)* — sophisticated, sporadic, subtle, superficial, unprecedented, viable; sınav düzeyi karışık sorular
+- **Soru tipleri:** kelime sorusu, cloze, cümle tamamlama, kısa paragraf, çeviri; eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - **eminent / imminent:** seçkin, saygın / eli kulağında (*imminent danger*).
+  - **exhaustive / exhausting:** eksiksiz, ayrıntılı / yorucu.
+  - **sparse / scarce:** seyrek dağılmış / az bulunan, kıt.
+  - **spontaneous / sporadic:** kendiliğinden / ara sıra.
+- **Sayılar:** 4 ders, 47 ders alıştırması (32 çoktan seçmeli), 20 soruluk ünite testi, 80 kelime
+- **Kelime listesi (80):** abrupt (ani, beklenmedik), adjacent (bitişik, komşu), adverse (olumsuz, ters), affluent (varlıklı, zengin), alarming (endişe verici), ample (bol, yeterinden fazla), analogous (benzer, benzeşik), arbitrary (keyfi, gelişigüzel), authentic (gerçek, sahici), coherent (tutarlı, mantıklı), compatible (uyumlu, bağdaşır), competent (yetkin, ehil), conspicuous (göze çarpan), diligent (çalışkan, özenli), discernible (fark edilebilir, seçilebilir), disproportionate (orantısız), distinctive (ayırt edici, kendine özgü), dormant (uykuda, etkin olmayan), eminent (seçkin, saygın), erratic (düzensiz, tutarsız), excessive (aşırı), exceptional (olağanüstü, istisnai), exhaustive (eksiksiz, ayrıntılı), extensive (geniş kapsamlı, yaygın), finite (sınırlı, sonlu), hazardous (tehlikeli, zararlı), immense (muazzam, çok büyük), imminent (eli kulağında, yakında olacak), indispensable (vazgeçilmez), inherent (doğasında olan), innate (doğuştan), integral (ayrılmaz, temel), intricate (karmaşık, girift), intrinsic (içsel, özünde olan), irreversible (geri döndürülemez), lenient (hoşgörülü, gevşek), lucrative (kârlı, kazançlı), meagre (cüzi, yetersiz), meticulous (titiz), mundane (sıradan, gündelik), mutual (karşılıklı, ortak), novel (yeni, özgün), numerous (çok sayıda), ominous (uğursuz, kötü habercisi), overt (açık, aleni), paramount (son derece önemli), pervasive (her yere yayılmış), pivotal (kilit, belirleyici), potent (güçlü, etkili), pragmatic (gerçekçi, pragmatik), precarious (güvencesiz, tehlikeli), profound (derin, köklü), prolific (üretken, verimli), prominent (önde gelen, belirgin), prone (to) (yatkın, eğilimli), rampant (kontrolsüz yayılan), redundant (gereksiz, fazla), renowned (ünlü, tanınmış), rudimentary (temel, ilkel), salient (belirgin, en önemli), selective (seçici), sole (tek, yegâne), sophisticated (gelişmiş, karmaşık), sparse (seyrek, dağınık), spontaneous (kendiliğinden, anlık), sporadic (ara sıra olan, düzensiz), static (durağan, sabit), subtle (ince, belli belirsiz), superficial (yüzeysel), tangible (somut, elle tutulur), tedious (sıkıcı, usandırıcı), thorough (kapsamlı, titiz), trivial (önemsiz), unprecedented (eşi görülmemiş), uniform (tekdüze, her yerde aynı), versatile (çok yönlü), viable (uygulanabilir, yaşayabilir), vigilant (tetikte, uyanık), vigorous (güçlü, enerjik), volatile (değişken, istikrarsız)
+
+#### ys2u15 · Kelime seti 6: zarf, kalıp
+
+- **Hedef beceri:** YDS/YÖKDİL'de sık çıkan 52 zarf ve 28 bağlaç benzeri kalıp
+- **Kelime grubu (ders ders):**
+  1. Görüş, kesinlik ve sıklık *(kelime dersi)* — arguably, invariably, allegedly, reportedly, ostensibly, conclusively, seldom ve 13 zarf daha
+  2. Derece ve zaman zarfları *(kelime dersi)* — drastically, markedly, somewhat, overwhelmingly, effectively, hitherto, ultimately ve 13 zarf daha
+  3. Bağlaç benzeri zarflar *(kelime dersi)* — accordingly, alternatively, likewise, nonetheless, namely, respectively, by and large, in the long run ve fazlası
+  4. Edat kalıpları (sınav) *(kelime dersi)* — on balance, in essence, as opposed to, in conjunction with, by virtue of, irrespective of; sınav düzeyi karışık sorular
+- **Soru tipleri:** kelime sorusu, cloze, cümle tamamlama, kısa paragraf, çeviri; eşleştirme, boşluk doldurma
+- **Türk adayların sık hataları:**
+  - **allegedly / reportedly / ostensibly:** iddia (kanıtlanmamış) / haber (kaynak belirtilmeden) / görünüşte (gerçek amaç başka).
+  - **namely / respectively:** *namely* bir şeyi adlandırıp açar; *respectively* iki listeyi sırayla eşleştirir.
+  - **invariably / inevitably:** her zaman / kaçınılmaz olarak.
+  - **in principle / in practice** ve **at first glance / in retrospect** zıt çiftlerdir; sınavda birbirinin çeldiricisidir.
+- **Sayılar:** 4 ders, 47 ders alıştırması (32 çoktan seçmeli), 20 soruluk ünite testi, 80 kelime; ardından **Kelime setleri denemesi (30 soru, 60 dk)**
+- **Kelime listesi (80):** arguably (tartışmaya açık olsa da, büyük olasılıkla), invariably (her zaman, istisnasız), admittedly (kabul etmek gerekir ki), allegedly (iddiaya göre), reportedly (bildirildiğine göre), purportedly (güya, iddia edildiğine göre), ostensibly (görünüşte, sözde), evidently (belli ki, açıkça), undeniably (inkâr edilemez biçimde), conceivably (akla yatkın olarak, belki), conclusively (kesin olarak), seldom (nadiren), occasionally (ara sıra), intermittently (aralıklı olarak), persistently (ısrarla, sürekli), notoriously (kötü şöhretiyle bilinen biçimde), ideally (ideal olarak), precisely (tam olarak), explicitly (açıkça, açık açık), implicitly (örtük olarak, dolaylı olarak), broadly (genel olarak, kabaca), comparatively (görece, nispeten), drastically (büyük ölçüde, sert biçimde), markedly (belirgin biçimde), substantially (önemli ölçüde), vastly (çok büyük ölçüde), somewhat (biraz, bir ölçüde), moderately (orta derecede), overwhelmingly (ezici biçimde), progressively (giderek, aşamalı olarak), entirely (tamamen), essentially (esasen, özünde), chiefly (başlıca, esas olarak), exclusively (yalnızca, sadece), effectively (fiilen; etkili biçimde), temporarily (geçici olarak), concurrently (eş zamanlı olarak), thereafter (ondan sonra), hitherto (şimdiye dek), ultimately (nihayetinde, sonuçta), accordingly (buna göre, bu doğrultuda), alternatively (alternatif olarak, ya da), correspondingly (buna paralel olarak), crucially (en önemlisi), incidentally (bu arada; tesadüfen), indirectly (dolaylı olarak), likewise (aynı şekilde), namely (yani, şöyle ki), nonetheless (yine de), paradoxically (işin garibi, paradoksal olarak), respectively (sırasıyla), unanimously (oy birliğiyle), by and large (genel olarak), to some extent (bir ölçüde), in the long run (uzun vadede), as a rule (genellikle, kural olarak), at first glance (ilk bakışta), for the most part (çoğunlukla), in the short term (kısa vadede), in retrospect (geriye dönüp bakınca), on the whole (genel olarak, bütün olarak), in particular (özellikle), in principle (ilke olarak, teoride), in practice (uygulamada), by far (açık ara, kat kat), above all (her şeyden önce), at the outset (en başta), in the meantime (bu arada, o zamana kadar), on balance (her şey hesaba katıldığında), to a large extent (büyük ölçüde), in essence (özünde), as opposed to (-in aksine, -e karşın), in conjunction with (ile birlikte), in excess of (-den fazla), by virtue of (sayesinde, -den dolayı), with respect to (ile ilgili olarak), irrespective of (-den bağımsız olarak), on account of (yüzünden, nedeniyle), on the grounds that (... gerekçesiyle), in effect (fiilen, aslında)
+
 ### Bölüm 3 · Soru tipleri
 
 #### ys3u1 · Cloze test
@@ -599,12 +854,80 @@ Her ünite için hedef beceri, dersler (dilbilgisi ya da strateji), soru tipleri
 - **Sayılar:** 4 ders, 42 ders alıştırması (39 çoktan seçmeli), 17 soruluk ünite testi, 62 kelime; ardından **Bölüm 3 denemesi (40 soru, 90 dk)**
 - **Kelime listesi (62):** coherence (tutarlılık, anlam bütünlüğü), irrelevant (ilgisiz, konu dışı), relevant (ilgili), in turn (de, sırasıyla, bunun sonucunda da), the former (öncekisi), the latter (sonraki, ikincisi), undeterred (yılmadan), thus (böylece), furthermore (ayrıca), remarkably (şaşırtıcı biçimde), ripen (olgunlaşmak), acidity (asitlik), infrared radiation (kızılötesi ışınım), emerge (ortaya çıkmak), hearing loss (işitme kaybı), emission (salım), maintenance (bakım), emigrant (göçmen (giden)), homesickness (sıla hasreti), digitise (dijitalleştirmek), domesticate (evcilleştirmek), hygiene (hijyen), pesticide (tarım ilacı), parasite (parazit), meadow (çayır), fall behind (geride kalmak), entrepreneur (girişimci), guarantee (teminat, güvence), proposal (öneri, teklif), investor (yatırımcı), gill (solungaç), predator (yırtıcı hayvan), boatyard (tersane (küçük)), coordinate (eş güdümlemek), dispute (anlaşmazlık), obstacle (engel), renewable (yenilenebilir), labour-intensive (emek yoğun), alloy (alaşım), corrosion (aşınma, korozyon), restoration (restorasyon), heat island (ısı adası), resistance (direnç), life-threatening (hayati tehlike taşıyan), fluently (akıcı biçimde), lure (yem, cezbetmek), overfishing (aşırı avlanma), bilingualism (iki dillilik), fragment (parça), bandit (eşkıya), preserve (korumak, saklamak), allergic (alerjik), strip (soymak, çıplak bırakmak), sea urchin (deniz kestanesi), kelp (büyük deniz yosunu), night shift (gece vardiyası), metabolic (metabolik), consecutive (art arda), scold (azarlamak, bağırmak), sediment (tortu, alüvyon), contradictory (çelişkili), overwhelm (taşırmak, boğmak)
 
+#### ys3u11 · Okuma kampı 1: fen
+
+- **Hedef beceri:** Gerçek YDS uzunluğunda fen ve teknoloji metinleriyle okuma pratiği
+- **Strateji (ders ders):**
+  1. Fen metinlerinin kelimeleri *(kelime dersi)* — Kampın fen ve teknoloji metinlerindeki akademik kelimeler
+  2. Kısa fen metinleri — İki kısa metin: kendini onaran beton ve beyaz çatılar
+  3. Orta uzunlukta metinler — Güneşle tuzdan arındırma ve uzay enkazı takibi
+  4. Sınav düzeyi uzun metinler — Dijital ikiz kentler ve derin deniz madenciliği
+- **Soru tipleri:** okuma (150–250 kelimelik metin × 4 soru) (ünite testinde öteki tiplerle karışık)
+- **Türk adayların sık hataları:**
+  - **Aşırı genelleme:** Metin *some, may, often* derken şık *all, always, never, completely* der. Bu şıklar neredeyse her zaman yanlıştır.
+  - **Kısmen doğru şık:** Şıkkın ilk yarısı metinle uyuşur, ikinci yarısı uydurmadır. Şıkkı sonuna kadar oku.
+  - **Kelime tekrarı tuzağı:** Metindeki *forty percent, Southern Hemisphere* gibi ifadeleri aynen taşıyan ama başka bilgiye bağlayan şık. Tanıdık kelime görmek doğruluk kanıtı değildir.
+  - **Zıt anlam:** *however* öncesi ile sonrası karıştırılırsa yazarın görüşünün tam tersi seçilir.
+- **Sayılar:** 4 ders, 38 ders alıştırması (35 çoktan seçmeli), 16 soruluk ünite testi, 66 kelime
+- **Kelime listesi (66):** dormant (uykuda, etkin olmayan), inactive (etkisiz, hareketsiz), seep (in/into) (sızmak), seal (kapatmak, mühürlemek), microbe (mikrop, mikroorganizma), limestone (kireçtaşı), ingredient (bileşen, içerik maddesi), reflect (yansıtmak), noticeably (gözle görülür biçimde), solely (yalnızca, sadece), porous (gözenekli), vapour (buhar), membrane (zar, membran), condense (yoğunlaşmak), output (üretim miktarı, çıktı), replacement (yerine geçen şey, ikame), debris (enkaz, döküntü), catalogue (katalog, kayıt listesi), consortium (konsorsiyum, ortak girişim), inexpensive (ucuz, masrafsız), receiver (alıcı (cihaz)), locate (yerini belirlemek), collision (çarpışma), limitation (sınırlılık, kısıt), hemisphere (yarımküre), coverage (kapsama (alanı)), municipality (belediye), continuously (sürekli olarak), simulate (benzetimini yapmak, simüle etmek), straightforward (basit, dolaysız), publicity (tanıtım, kamuoyu ilgisi), unreliable (güvenilmez), upkeep (bakım (masrafı)), from the outset (en başından beri), substitute (ikame, yerine geçen şey), consultation (danışma, görüş alma), scatter (saçmak, dağıtmak), seabed (deniz tabanı), plume ((duman/çamur) bulutu, sütun), stir up (karıştırıp kaldırmak; kışkırtmak), settle (çökmek, yerleşmek), detectable (saptanabilir), drift (sürüklenmek), disturb (bozmak, rahatsız etmek), reassuring (içi rahatlatan, güven veren), in demand (rağbette, aranan), stack (üst üste yığmak), modest (mütevazı, sınırlı), niche (niş, özel pazar alanı), staple (food) (temel (gıda)), overlapping (üst üste binen, örtüşen), successive (ardışık, birbirini izleyen), sobering (düşündürücü, ayıltıcı), precision (kesinlik, hassasiyet), stake (kazık), vanish (yok olmak, kaybolmak), mesh (ağ, file), degrade (bozunmak, çözünmek), fragmentation (parçalanma), swallow (yutmak), shred (parçalamak, kıymak), constituent (bileşen, kurucu öğe), replenish (yeniden doldurmak, yenilemek), confined to (-e sınırlı, -le kısıtlı), standardised (standartlaştırılmış), pilot (plant/study) (deneme (tesisi/çalışması))
+
+#### ys3u12 · Okuma kampı 2: sağlık
+
+- **Hedef beceri:** Gerçek YDS uzunluğunda sağlık ve biyoloji metinleriyle okuma pratiği
+- **Strateji (ders ders):**
+  1. Sağlık metinlerinin kelimeleri *(kelime dersi)* — Sağlık ve yaşam bilimleri metinlerindeki akademik kelimeler
+  2. Kısa sağlık metinleri — Kestirme ve bellek; lif ve bağırsak bakterileri
+  3. Orta uzunlukta sağlık metinleri — Okul toprağında antibiyotik arayışı; yalnızlık ve sağlık
+  4. Sınav düzeyi sağlık metinleri — Açık etiketli plasebo ve sivrisinek kontrolü
+- **Soru tipleri:** okuma (150–250 kelimelik metin × 4 soru) (ünite testinde öteki tiplerle karışık)
+- **Türk adayların sık hataları:**
+  - **Neden-sonuç tuzağı:** *associated with / linked to* ilişkiyi gösterir. Türk adaylar bunu çoğu zaman 'neden olur' diye okur.
+  - **Kesinliği artıran şık (aşırı genelleme):** *The nap improved memory in all students* gibi. Metin genç ve sağlıklı gönüllülerle sınırlıysa bu genelleme yanlıştır.
+  - **Kısmen doğru şık:** Bulgunun ilk yarısı doğru, ikinci yarısı uydurma (*fibre increased bacterial variety and cured inflammation*).
+  - **Metindeki kelimeyi tekrarlayan şık:** *forty minutes, two weeks* gibi sayıları başka bilgiye bağlayan şık. Sayı tanıdık diye işaretleme.
+- **Sayılar:** 4 ders, 38 ders alıştırması (35 çoktan seçmeli), 16 soruluk ünite testi, 64 kelime
+- **Kelime listesi (64):** nap (kestirme, şekerleme), unfamiliar (yabancı, bilinmeyen), storage (depolama), digest (sindirmek), nourishment (besin, beslenme), ferment (mayalamak, fermente etmek), lining (iç zar, astar), intestine (bağırsak), inflammation (iltihap, enflamasyon), intake (alım (miktarı)), bloating (şişkinlik), discomfort (rahatsızlık), adjust (uyum sağlamak, ayarlamak), strain ((mikrop) suşu, türü), antibacterial (antibakteriyel), let alone (bırakın ... -i, şöyle dursun), social ties (sosyal bağlar), mild (hafif, ılımlı), immune response (bağışıklık tepkisi), in itself (kendi başına, tek başına), associated with (ile ilişkili), nuisance (baş belası, sıkıntı), objection (itiraz), deception (aldatma), forbid (yasaklamak), knowingly (bile bile, bilerek), capsule (kapsül), sceptic (şüpheci kişi), insecticide (böcek ilacı), evolve (evrimleşmek, gelişmek), spray (püskürtmek, ilaçlamak), tropical (tropik), pose a risk (risk oluşturmak), mate (çiftleşmek; eş), shrink (küçülmek, azalmak), accordingly (buna uygun olarak, dolayısıyla), laborious (zahmetli, emek isteyen), ineffective (etkisiz), circulation ((kan) dolaşım(ı)), height-adjustable (yüksekliği ayarlanabilir), novelty (yenilik, yeniliğin çekiciliği), wear off ((etkisi) geçmek, azalmak), noise-induced (gürültüye bağlı), go unnoticed (fark edilmemek), irreversible (geri dönüşü olmayan), ringing (in the ears) ((kulak) çınlama(sı)), noise-cancelling (gürültü engelleyici), drown out ((sesi) bastırmak), rule of thumb (pratik kural), by default (varsayılan olarak), rumble (gürleme, uğultu), attract (çekmek, cezbetmek), pitch (ses perdesi), low-frequency (düşük frekanslı), rush hour (trafiğin yoğun olduğu saat), aviary (büyük kuş kafesi), genetic basis (genetik temel), attractiveness (çekicilik), audibility (duyulabilirlik), puberty (ergenlik), outweigh (-den ağır basmak), inconvenience (zahmet, rahatsızlık), interfere with (engel olmak, karışmak), alertness (uyanıklık, dikkat)
+
+#### ys3u13 · Okuma kampı 3: sosyal
+
+- **Hedef beceri:** Gerçek YDS uzunluğunda sosyal bilim ve ekonomi metinleriyle okuma pratiği
+- **Strateji (ders ders):**
+  1. Ekonomi metinlerinin kelimeleri *(kelime dersi)* — Sosyal bilimler ve ekonomi metinlerindeki akademik kelimeler
+  2. Kısa sosyal bilim metinleri — Dört günlük çalışma haftası ve nakit ödemeler
+  3. Orta uzunlukta ekonomi metinleri — Otomatik emeklilik kaydı ve kentsel dönüşüm
+  4. Sınav düzeyi ekonomi metinleri — Küçük krediler ve evden çalışmanın kent ekonomisine etkisi
+- **Soru tipleri:** okuma (150–250 kelimelik metin × 4 soru) (ünite testinde öteki tiplerle karışık)
+- **Türk adayların sık hataları:**
+  - **Görüş sahibini karıştırmak:** Metinde yetkililerin, eleştirmenlerin ve yazarın görüşü ayrı ayrı verilir. *Critics warn…* cümlesi yazarın görüşü değildir.
+  - **Girişi ana fikir sanmak:** İlk cümledeki beklenti (*were once promoted as a powerful tool*) çoğu zaman metnin çürüttüğü düşüncedir.
+  - **Aşırı genelleme:** *Small loans have no effect at all* ya da *every company benefited* gibi şıklar. Metin *a minority, most, some* der.
+  - **Kısmen doğru şık:** 'Spending in the centre fell, so the city lost money' — ilk yarı doğru, ikinci yarı metne aykırı.
+- **Sayılar:** 4 ders, 38 ders alıştırması (35 çoktan seçmeli), 16 soruluk ünite testi, 60 kelime
+- **Kelime listesi (60):** salary (maaş), exhausted (bitkin, tükenmiş), sick leave (hastalık izni), convenient (kullanışlı, elverişli), notes and coins (banknot ve madeni para), take out (money) ((para) çekmek), weigh (up) (tartmak, değerlendirmek), scheme (program, plan), retirement (emeklilik), arrangement (düzenleme), participation (katılım), nudge (dürtme; yönlendirme), admirable (takdire değer), subscription (abonelik), rent (kira), triple (üç katına çıkmak), property value (mülk değeri), landlord (ev sahibi), renewal (yenilenme, kentsel dönüşüm), unevenly (eşit olmayan biçimde), rent control (kira denetimi), family-run (aile işletmesi olan), mixed (karışık, olumlu-olumsuz), sum (miktar (para)), repay (geri ödemek), hardship (sıkıntı, yoksulluk), sober (ölçülü, ayık, gerçekçi), randomly (rastgele), borrower (borçlu, borç alan), credit (kredi), flexibility (esneklik), miracle cure (mucize çözüm), suburban (banliyöye ait), to a large extent (büyük ölçüde), winners and losers (kazananlar ve kaybedenler), opening hours (açılış saatleri), conversion (dönüştürme), earnings (kazanç), shift (vardiya; kayma), relative to (-e göre, -e oranla), prosperous (müreffeh, zengin), selfishly (bencilce), genuine (gerçek, sahici), survivor (hayatta kalan), threat (tehdit), irrationally (mantıksızca), withhold (saklamak, vermemek), alarm (telaşlandırmak, korkutmak), striking (çarpıcı), best-selling (en çok satan), by volume (hacim olarak), unpaid (ücretsiz, karşılıksız), systematically (sistematik olarak), understate (olduğundan az göstermek), contribution (katkı), inherently (doğası gereği), alongside (yanında, ile birlikte), shift onto (-e yüklemek, -in üzerine kaydırmak), lift out of (-den kurtarmak), dry cleaner (kuru temizlemeci)
+
+#### ys3u14 · Okuma kampı 4: tarih, kültür
+
+- **Hedef beceri:** Gerçek YDS uzunluğunda tarih, kültür ve dilbilim metinleriyle okuma pratiği
+- **Strateji (ders ders):**
+  1. Tarih ve dil metinlerinin kelimeleri *(kelime dersi)* — Tarih, kültür ve dil metinlerindeki akademik kelimeler
+  2. Kısa tarih ve dil metinleri — Köprü kayıtları ve ıslık dili
+  3. Orta uzunlukta tarih metinleri — Batık ticaret gemisi ve okuma odaları
+  4. Sınav düzeyi tarih ve dil metinleri — Dil akademisinin sözcük kampanyası ve bir kıtlığın iki nedeni
+- **Soru tipleri:** okuma (150–250 kelimelik metin × 4 soru) (ünite testinde öteki tiplerle karışık)
+- **Türk adayların sık hataları:**
+  - **Eski görüşü yazarın görüşü sanmak:** *Historians long believed…* ile başlayan cümle çoğu zaman metnin düzelttiği görüştür.
+  - **Aşırı genelleme:** *war was irrelevant* ya da *the campaign completely failed* gibi şıklar; metin *not wholly without effect, played a part* der.
+  - **Kısmen doğru şık:** 'Women were members as owners' widows and as readers' — ilk yarı metinde var, ikinci yarı yok.
+  - **Kelime tekrarı:** *seasonal, autumn, harvest* gibi metindeki kelimeleri taşıyan ama soruyla ilgisi olmayan şık.
+- **Sayılar:** 4 ders, 38 ders alıştırması (35 çoktan seçmeli), 16 soruluk ünite testi, 61 kelime; ardından **Okuma kampı denemesi (32 soru, 80 dk)**
+- **Kelime listesi (61):** surviving (günümüze ulaşan), toll (geçiş ücreti), keeper (bekçi, sorumlu), cart (at arabası, el arabası), seasonal (mevsimlik), generation (kuşak, nesil), steep (dik, sarp), whistle (ıslık çalmak), melody (ezgi), annual (yıllık), headland (burun (coğrafya)), hull (gemi gövdesi), rot (çürümek), cargo (yük, kargo), bead (boncuk), copper (bakır), revealing (aydınlatıcı, çok şey anlatan), establishment (kuruluş, işletme), pamphlet (broşür, risale), nuanced (ince ayrımlı, nüanslı), elite (seçkinler), labourer (işçi, amele), widow (dul kadın), circulate (dolaşmak, yayılmak), loyalty (bağlılık), campaign (kampanya), scholar (bilim insanı, âlim), root (kök), coinage (yeni türetilmiş sözcük), catch on (tutmak, yaygınlaşmak), curiosity (ilginç şey; merak), established (yerleşik, kabul görmüş), loanword (alıntı sözcük), elegant (zarif), displace (yerinden etmek), prestige (saygınlık, prestij), wholly (tamamen), famine (kıtlık), seize (el koymak), growth ring ((ağaç) büyüme halkası), beam (kiriş), in a row (üst üste, art arda), prolong (uzatmak), plunder (yağmalamak), noon (öğle vakti), minute hand (yelkovan), local pride (yerel gurur), insert (yerleştirmek, sokmak), word of mouth (ağızdan ağıza), outwit (kurnazlıkla alt etmek), plot (olay örgüsü), migration (göç), independently (bağımsız olarak), retell (yeniden anlatmak), tablet (tablet (kil levha)), defy (meydan okumak; -e direnmek), syllable (hece), breakthrough (çığır açan buluş), inventory (envanter, döküm), livestock (çiftlik hayvanları), sound value (ses değeri)
+
 ### Bölüm 4 · Deneme ve zaman yönetimi
 
 #### ys4u1 · Karışık set 1
 
 - **Hedef beceri:** Kelime, dilbilgisi, bağlaç, cloze ve cümle tamamlama karışık mini denemeler
-- **Strateji (ders ders):**
+- **Odak (ders ders):**
   1. Kelime mini denemesi *(kelime dersi)* — Karışık setlerde sık geçen akademik kelimeler: eşleştirme, boşluk doldurma ve YDS tipi kelime soruları
   2. Mini deneme 1 — Kolay düzey karışık set: zaman, bağlaç, edat, koşul, cloze ve ilgi cümlesi
   3. Mini deneme 2 — Orta düzey karışık set: devrik yapı, koşul, bağlaç, cloze ve özne-yüklem uyumu
@@ -621,7 +944,7 @@ Her ünite için hedef beceri, dersler (dilbilgisi ya da strateji), soru tipleri
 #### ys4u2 · Karışık set 2
 
 - **Hedef beceri:** Çeviri, paragraf, diyalog, restatement, paragraf tamamlama ve anlam bütünlüğü karışık setleri
-- **Strateji (ders ders):**
+- **Odak (ders ders):**
   1. Okuma ve çeviri kelimeleri *(kelime dersi)* — Paragraf, çeviri ve restatement sorularında sık geçen akademik kelimeler
   2. Okuma seti 1 — Orta düzey: çift yönlü çeviri, restatement, diyalog, paragraf soruları ve anlam bütünlüğü
   3. Okuma seti 2 — İleri düzey: uzun paragraf, çıkarım ve tutum soruları, zor çeviriler
@@ -638,7 +961,7 @@ Her ünite için hedef beceri, dersler (dilbilgisi ya da strateji), soru tipleri
 #### ys4u3 · Süre stratejisi
 
 - **Hedef beceri:** 80 soru / 180 dakika: bölüm bölüm hedef süreler, hızlı turlar ve son 15 dakika planı
-- **Strateji (ders ders):**
+- **Odak (ders ders):**
   1. Hızlı tur 1: kelime *(kelime dersi)* — 30–40 saniyede çözülmesi gereken kelime soruları ve sınavda sık çıkan kalıplar
   2. Hızlı tur 2: dilbilgisi ve orta tempo — Zaman uyumu kısayolları, cümle tamamlama, kısa cloze ve bir strateji sorusu
   3. Hızlı tur 3: zaman alan okuma — Uzun paragraflarda soru kökünden metne gitme, restatement, anlam bütünlüğü ve süre kararı
@@ -655,7 +978,7 @@ Her ünite için hedef beceri, dersler (dilbilgisi ya da strateji), soru tipleri
 #### ys4u4 · Hata analizi
 
 - **Hedef beceri:** Hata defteri, hata türleri ve çeldirici türlerini tanıyarak aynı hatayı tekrarlamamak
-- **Strateji (ders ders):**
+- **Odak (ders ders):**
   1. Dilbilgisi tuzakları — Türkçe yapı etkisi, özne-yüklem uyumu, koşul ve devrik yapılarda en sık düşülen tuzaklar
   2. Kelime tuzakları *(kelime dersi)* — Yazılışı benzer, yakın anlamlı ve sık karıştırılan kelimeler
   3. Okuma ve çeviri tuzakları — Paragraf, çeviri, restatement ve diyalogda dört çeldirici türünü adlandırarak eleme
@@ -669,10 +992,95 @@ Her ünite için hedef beceri, dersler (dilbilgisi ya da strateji), soru tipleri
 - **Sayılar:** 4 ders, 42 ders alıştırması (40 çoktan seçmeli), 20 soruluk ünite testi, 60 kelime; ardından **Tam deneme 3 (80 soru, 180 dk)**
 - **Kelime listesi (60):** despite (-e rağmen (+ isim/-ing)), neither … nor (ne … ne de), wish (keşke, dilemek), hardly anyone (neredeyse hiç kimse), each of (-in her biri), it is high time (-in zamanı çoktan geldi), affect (etkilemek), effect (etki, sonuç), accessible (erişilebilir), affordable (uygun fiyatlı), compelling (ikna edici, güçlü), complacent (kayıtsız, kendinden fazla emin), impose ((vergi, kural) koymak), oppose (karşı çıkmak), consistent with (ile tutarlı), constant (sürekli, sabit), advise (tavsiye etmek, öğüt vermek), lay off (işten çıkarmak), resolve (çözmek, çözüme kavuşturmak), dissolve (çözmek (sıvıda), feshetmek), distinct (farklı, ayrı), ensure (sağlamak, güvenceye almak), insure (sigortalamak), principle (ilke), principal (müdür; ana, başlıca), retrieve (geri almak, (bilgiyi) hatırlamak), poultry (kümes hayvanları), side effect (yan etki), by no means (asla, hiçbir şekilde), progression (ilerleme), volunteer (gönüllü), placement (staj, yerleştirme), courier (kurye), immune system (bağışıklık sistemi), domesticate (evcilleştirmek), negligible (önemsiz, ihmal edilebilir), provided that (-mesi şartıyla), diverge (ayrışmak, farklılaşmak), critically endangered (kritik tehlike altında), much as (her ne kadar … olsa da), environmental impact assessment (çevresel etki değerlendirmesi), not so much … as (… -den çok … ), precise (kesin, tam), temporary (geçici), contemporary (çağdaş), would rather (-meyi tercih etmek), illusion (yanılsama), sample (örneklem), sufficient (yeterli), pedestrianisation (yayalaştırma), bulky (hacimli, iri), routine (rutin, alışkanlık), overstate (abartmak), cast doubt on (-e şüphe düşürmek), disprove (çürütmek, yanlışlığını kanıtlamak), distractor (çeldirici), eliminate (elemek), exaggerate (abartmak), partly (kısmen), carelessness (dikkatsizlik)
 
-## 5. Toplamlar
+#### ys4u5 · Deneme haftası 1: dilbilgisi
 
-- 33 ünite, 132 ders
-- 1387 ders alıştırması (1229 tanesi 5 şıklı çoktan seçmeli)
-- 587 ünite testi sorusu
-- 2013 kelime ve kalıp
-- 6 deneme düğümü: 3 bölüm denemesi, 3 tam deneme (80 soru / 180 dk)
+- **Hedef beceri:** Tam Deneme 4'e hazırlık: hata analizi, 60+ puan hedefi, dilbilgisi ve bağlaçta hızlı çözüm
+- **Odak (ders ders):**
+  1. Bağlaç ve kalıp kelimeleri *(kelime dersi)* — Sık çıkan bağlaçlar, edatlar ve kalıplar: anlam ilişkisi ve arkadan gelen yapı
+  2. Hızlı set: dilbilgisi ve bağlaç — Soru başına 40 saniye: zaman, ilgi zamiri, devrik yapı, koşul ve amaç bağlaçları
+  3. Sınav düzeyi: yapı ve cümle tamamlama — Devrik koşul, mastar zamanları, katılımsı yapılar ve bağlaçla başlayan cümle tamamlama
+  4. Zayıf nokta seti — Okuma, diyalog, restatement, paragraf tamamlama, anlam bütünlüğü ve çeviri: dilbilgisi gözüyle karışık tur
+- **Soru tipleri:** YDS’nin gerçek dağılımında karışık sorular (kelime, dilbilgisi, cloze, cümle tamamlama, çeviri, paragraf, diyalog, restatement, paragraf tamamlama, anlam bütünlüğü)
+- **Türk adayların sık hataları:**
+  - **Edat ile bağlacı karıştırmak:** *despite / notwithstanding / on account of* arkasından tam cümle gelmez; Türkçedeki '-mesine rağmen' yapısı bu hatayı doğurur.
+  - **Devrikte yardımcı fiili unutmak:** *No sooner had …, Hardly had …, Not only has …*; Türkçede böyle bir yapı olmadığı için düz sıralı şık cazip gelir.
+  - **Kalıp eşini karıştırmak:** *no sooner … than*, ama *hardly / scarcely … when*.
+  - **Bağlacı anlama bakmadan seçmek:** *nonetheless* ile *accordingly* aynı yere girer gibi görünür; biri zıtlık, öteki sonuçtur.
+- **Sayılar:** 4 ders, 42 ders alıştırması (38 çoktan seçmeli), 20 soruluk ünite testi, 64 kelime; ardından **Tam deneme 4 (80 soru, 180 dk; hedef 60+)**
+- **Kelime listesi (64):** notwithstanding (-e rağmen (resmî; + isim)), insofar as (-diği ölçüde), inasmuch as (-diği için, madem ki), granted that (kabul edelim ki, -se bile), lest (-mesin diye, -mesinden korkarak), so long as (-diği sürece), in the event that (-mesi durumunda), seeing that (-diğine göre), in spite of the fact that (-diği gerçeğine rağmen), only after (ancak -den sonra), under no circumstances (hiçbir koşulda), on the grounds that (-diği gerekçesiyle), whether or not (-se de -mese de), let alone (… şöyle dursun), as opposed to (-in aksine, -e karşın), whilst (-iken; oysa), nonetheless (yine de), likewise (aynı şekilde), accordingly (buna göre, bu nedenle), alternatively (alternatif olarak, ya da), scarcely (neredeyse hiç, ancak), providing that (-mesi şartıyla), supposing (farz edelim ki), only if (ancak -se), as though (sanki), so as to (-mek için), in order that (-sin diye), for fear that (-ir korkusuyla), on account of (-den dolayı, yüzünden), irrespective of (-e bakılmaksızın), apart from (-in dışında; -e ek olarak), aside from (-in dışında, bir yana), except for (hariç), in place of (-in yerine), along with (ile birlikte), with a view to (-mek amacıyla), in view of (-i göz önünde bulundurarak), such … that (öyle … ki), too … to (-emeyecek kadar), so much so that (o kadar ki), the moment (-diği anda), whereupon (bunun üzerine), all the same (yine de, gene de), that said (bununla birlikte), namely (yani, şöyle ki), in particular (özellikle), above all (her şeyden önce), after all (ne de olsa), to sum up (özetlemek gerekirse), on the whole (genel olarak), by and large (genel olarak, büyük ölçüde), at the same time (aynı zamanda; öte yandan), had better (-se iyi olur), it is essential that (-mesi şarttır), besides (ayrıca; -in yanı sıra), indeed (gerçekten; hatta), as a matter of fact (aslında), in the meantime (bu arada), in conclusion (sonuç olarak), in the same way (aynı şekilde), deem (saymak, kabul etmek), render (-e dönüştürmek, kılmak), adhere to (-e bağlı kalmak, uymak), oblige (zorunda bırakmak)
+
+#### ys4u6 · Deneme haftası 2: kelime
+
+- **Hedef beceri:** Tam Deneme 5'e hazırlık: hata analizi, 65+ puan hedefi, kelime ve cloze stratejisi
+- **Odak (ders ders):**
+  1. Sık çıkan fiil ve sıfatlar *(kelime dersi)* — YDS kelime sorularının çekirdeği: artış-azalış fiilleri, engelleme fiilleri ve edatlı sıfatlar
+  2. Hızlı set: kelime — Soru başına 30 saniye: artış-azalış, engelleme, kapsama ve tasvir fiilleri
+  3. Sınav düzeyi: cloze — İki tam cloze metni: kelime, kalıp, bağlaç, zaman, ilgi zamiri ve edat boşlukları
+  4. Zayıf nokta seti — Okuma, diyalog, restatement, paragraf tamamlama, anlam bütünlüğü ve çeviri: kelime gözüyle karışık tur
+- **Soru tipleri:** YDS’nin gerçek dağılımında karışık sorular (kelime, dilbilgisi, cloze, cümle tamamlama, çeviri, paragraf, diyalog, restatement, paragraf tamamlama, anlam bütünlüğü)
+- **Türk adayların sık hataları:**
+  - **Kelimeyi edatsız ezberlemek:** *conducive to*, *compatible with*, *eligible for*; edat bilinmezse doğru kelime tanınsa bile seçilemez.
+  - **Yazılışı benzer kelimeler:** *precede / proceed*, *deter / detect*, *adverse / averse*. Hızlı okuyan aday tanıdık görünen şıkkı seçer.
+  - **Türkçe tek kelimeye bağlanmak:** 'artmak' hem *soar* hem *rise* olabilir ama *soar* hızlı ve büyük artış bildirir; cümledeki ölçüye bak.
+  - **Cloze'da yalnızca boşluklu cümleyi okumak:** Bağlaç sorusunun cevabı çoğu zaman önceki cümlededir.
+- **Sayılar:** 4 ders, 42 ders alıştırması (38 çoktan seçmeli), 20 soruluk ünite testi, 68 kelime; ardından **Tam deneme 5 (80 soru, 180 dk; hedef 65+)**
+- **Kelime listesi (68):** attain (ulaşmak, elde etmek), curtail (kısıtlamak, kısmak), impede (engellemek), bolster (desteklemek, güçlendirmek), substantiate (kanıtlamak, doğrulamak), discern (ayırt etmek, sezmek), ascertain (kesin olarak tespit etmek), undertake (üstlenmek, girişmek), uphold (korumak, onaylamak), outweigh (-den ağır basmak), surpass (geçmek, aşmak), coincide (aynı zamana denk gelmek), precede (önce gelmek), prevail (hâkim olmak, galip gelmek), persist (sürmek, ısrar etmek), subside (yatışmak, çekilmek), dwindle (giderek azalmak), soar (hızla yükselmek), plummet (hızla düşmek), deter (caydırmak), inhibit (engellemek, bastırmak), amplify (güçlendirmek, yükseltmek), consolidate (sağlamlaştırmak, pekiştirmek), disseminate (yaymak), deploy (konuşlandırmak, kullanıma sokmak), devise (tasarlamak, geliştirmek), formulate (formüle etmek, oluşturmak), envisage (öngörmek, tasavvur etmek), foresee (önceden görmek), convey (iletmek, aktarmak), depict (tasvir etmek), denote (belirtmek, göstermek), signify (anlamına gelmek, işaret etmek), encompass (kapsamak), incorporate (dahil etmek, içermek), integrate (bütünleştirmek), pertain to (-e ilişkin olmak), prone to (-e eğilimli), susceptible to (-e yatkın, -e karşı savunmasız), liable to (-mesi muhtemel; -den sorumlu), inclined to (-e meyilli), reluctant to (-mekte isteksiz), eligible for (-e hak kazanmış, uygun), compatible with (ile uyumlu), conducive to (-e elverişli), indispensable (vazgeçilmez), viable (uygulanabilir, yaşayabilir), profound (derin, köklü), pervasive (her yere yayılmış), ample (bol, yeterli), adverse (olumsuz, ters), resilient (dayanıklı, çabuk toparlanan), inherent (doğasında olan), intrinsic (içsel, özünde olan), coherent (tutarlı), meticulous (titiz), arbitrary (keyfî, gelişigüzel), deliberate (kasıtlı), inadvertent (istemeden yapılan), spontaneous (kendiliğinden), simultaneous (eş zamanlı), novel (yeni, alışılmamış), unprecedented (eşi görülmemiş), allegedly (iddiaya göre), arguably (muhtemelen, tartışmaya açık olarak), abruptly (aniden), respectively (sırasıyla), solely (yalnızca)
+
+#### ys4u7 · Deneme haftası 3: çeviri
+
+- **Hedef beceri:** Tam Deneme 6'ya hazırlık: hata analizi, 68+ puan hedefi, çeviri ve cümle tamamlama stratejisi
+- **Odak (ders ders):**
+  1. Çeviri ve tamamlama kalıpları *(kelime dersi)* — Akademik isimler, oran-miktar ifadeleri ve çeviride sık geçen kalıplar
+  2. Hızlı set: çeviri — Soru başına bir dakika: yüklem, zaman, olumsuzluk ve miktar ifadesiyle eleme
+  3. Sınav düzeyi: tamamlama ve çeviri — Bağlaç-zaman uyumuyla cümle tamamlama ve uzun, katmanlı cümlelerin çevirisi
+  4. Zayıf nokta seti — Okuma, diyalog, restatement, paragraf tamamlama, anlam bütünlüğü, kelime ve tamamlama: karışık tur
+- **Soru tipleri:** YDS’nin gerçek dağılımında karışık sorular (kelime, dilbilgisi, cloze, cümle tamamlama, çeviri, paragraf, diyalog, restatement, paragraf tamamlama, anlam bütünlüğü)
+- **Türk adayların sık hataları:**
+  - **Türkçe sıraya göre okumak:** İngilizce cümlenin sonundaki yan cümleyi ana fikir sanmak; önce ana yüklemi bul.
+  - **Edilgeni etken çevirmek:** *were being observed* 'gözlemleniyorlardı'dır, 'gözlemliyorlardı' değil.
+  - **Miktar ve olumsuzluk:** *few* 'az', *a few* 'birkaç', *not all* 'hepsi değil', *hardly any* 'neredeyse hiç'. Bu farklar tek başına şık eler.
+  - **İlişkiyi kanıt sanmak:** *a strong relationship* 'güçlü bir ilişki'dir; 'biri ötekine yol açar' diyen şık fazladan bilgi ekler.
+- **Sayılar:** 4 ders, 42 ders alıştırması (38 çoktan seçmeli), 20 soruluk ünite testi, 74 kelime; ardından **Tam deneme 6 (80 soru, 180 dk; hedef 68+)**
+- **Kelime listesi (74):** so-called (sözde, … diye adlandırılan), the extent to which (-in ne ölçüde … olduğu), to a large extent (büyük ölçüde), to some extent (bir ölçüde), far from (… bir yana, -mekten çok uzak), not necessarily (illa ki değil, şart değil), as yet (henüz, şimdiye dek), to date (bugüne kadar), in recent years (son yıllarda), which in turn (bu da sırasıyla, bu da), be associated with (ile ilişkilendirilmek), correlate with (ile bağıntılı olmak), derive from (-den türemek, kaynaklanmak), range from … to (… ile … arasında değişmek), lead to (-e yol açmak), be subject to (-e tabi olmak), a wide range of (çok çeşitli), the majority of (-in çoğunluğu), a great deal of (çok miktarda), in the long term (uzun vadede), in the short term (kısa vadede), on average (ortalama olarak), per capita (kişi başına), thereafter (ondan sonra), henceforth (bundan böyle), counterpart (muadil, karşılık), prerequisite (önkoşul), setback (aksilik, gerileme), breakthrough (çığır açan buluş), milestone (dönüm noktası), consensus (uzlaşı, fikir birliği), discrepancy (tutarsızlık, fark), disparity (eşitsizlik, uçurum), tendency (eğilim), ratio (oran), magnitude (büyüklük, boyut), premise (öncül, temel varsayım), mechanism (mekanizma, işleyiş), paradigm (paradigma, model), retain (korumak, elde tutmak), emergence (ortaya çıkış), expansion (genişleme), validate (doğrulamak, geçerli kılmak), calculate (hesaplamak), classify (sınıflandırmak), distinguish (ayırt etmek), differentiate (farklılaştırmak, ayırmak), neglect (ihmal etmek), valid (geçerli), fundamental (temel), striking (çarpıcı), equivalent (eşdeğer), uniform (tek tip, tekdüze), gradual (kademeli), rapid (hızlı), steady (istikrarlı, düzenli), sharp (keskin, ani), moderate (ılımlı, orta düzeyde), extensive (kapsamlı, geniş), partial (kısmi), initial (ilk, başlangıçtaki), eventual (nihai, sonunda gerçekleşen), ultimate (en son, nihai), in comparison with (ile karşılaştırıldığında), constitute (oluşturmak), presume (varsaymak), pose ((sorun/tehdit) oluşturmak), entail (gerektirmek, içermek), conflicting (çelişen), at first sight (ilk bakışta), be in danger of (… tehlikesiyle karşı karşıya olmak), it was not until (ancak … -de), in practice (uygulamada), put into practice (uygulamaya koymak)
+
+#### ys4u8 · Deneme haftası 4: okuma
+
+- **Hedef beceri:** Tam Deneme 7'ye hazırlık: okuma derinlemesine (çıkarım, yazarın tutumu, değinilmeyen); hedef 70+ doğru
+- **Odak (ders ders):**
+  1. Okumanın kelimeleri *(kelime dersi)* — Tutum, çıkarım ve araştırma dilinde sık geçen kelime ve kalıplar
+  2. Çıkarım, tutum ve değinilmeyen — 150–200 kelimelik metinlerde çıkarım, yazarın tutumu ve NOT soruları
+  3. Sınav düzeyi okuma seti — 200–250 kelimelik metinler, metin başına 4 soru: gerçek YDS okuma düzeni
+  4. Karışık zor set — Tüm soru türlerinden sınav düzeyinde birer soru: kelime, dilbilgisi, cloze, çeviri, okuma, diyalog ve paragraf
+- **Soru tipleri:** YDS’nin gerçek dağılımında karışık sorular (kelime, dilbilgisi, cloze, cümle tamamlama, çeviri, paragraf, diyalog, restatement, paragraf tamamlama, anlam bütünlüğü)
+- **Türk adayların sık hataları:**
+  - **Bildiğinle cevaplamak:** Genel kültürün doğru dediği şık metinde yoksa yanlıştır.
+  - **Aşırı genelleme:** *prove, all, never, completely* içeren şık, metin *suggests, may, some* diyorsa elenir.
+  - **Kelime eşleştirme:** Metindeki sözcüğü aynen taşıyan şık çoğu zaman tuzaktır; doğru şık eş anlamlıyla yazılır (*cut costs* → *save money*).
+  - **Başkasının sesini yazarın sanmak:** *Critics argue …, Supporters claim …* yazarın değil, başkalarının görüşüdür.
+- **Sayılar:** 4 ders, 42 ders alıştırması (38 çoktan seçmeli), 20 soruluk ünite testi, 55 kelime; ardından **Tam deneme 7 (80 soru, 180 dk; hedef 70+)**
+- **Kelime listesi (55):** dubious (kuşkulu, şüpheli), reconcile (uzlaştırmak, bağdaştırmak), assertion (iddia, sav), prevalence (yaygınlık), anomaly (anormallik, sapma), subtle (ince, belli belirsiz), trigger (tetiklemek), warrant (haklı çıkarmak, gerektirmek), to a lesser extent (daha az ölçüde), at odds with (ile çelişen, uyuşmayan), call into question (sorgulamak, şüphe düşürmek), shed light on (aydınlatmak, ışık tutmak), set out to (-meye girişmek, amaçlamak), biased (taraflı, önyargılı), sympathetic (anlayışlı, yakınlık duyan), scathing (sert, yerden yere vuran), wary (temkinli, ihtiyatlı), acclaim (övgü; övmek), downplay (önemsiz göstermek, küçümsemek), underline (vurgulamak, altını çizmek), deduce (sonuç çıkarmak), ambiguity (belirsizlik, iki anlamlılık), nuance (ince ayrım, nüans), caveat (uyarı, çekince), controversy (tartışma, anlaşmazlık), correlation (bağıntı, ilişki), causation (nedensellik), variable (değişken), longitudinal (boylamsal, uzun süreli (çalışma)), methodology (yöntem bilimi, yöntem), limitation (sınırlılık), extrapolate (eldeki veriden öteye genellemek), preceding (önceki, önce gelen), latter (ikincisi, sonraki), ostensibly (görünüşte, sözde), admittedly (kabul etmek gerekir ki), inference (çıkarım), stance (tutum, duruş), tone (üslup, ton), at best (en iyi ihtimalle), qualification (sınırlama, kayıt (bir iddiaya getirilen)), legitimately (meşru biçimde, haklı olarak), outright (açıkça, tamamen), level off (durağanlaşmak, sabitlenmek), modestly (az miktarda, ılımlı biçimde), compensate (tazmin etmek, telafi etmek), smuggling (kaçakçılık), shelter (barındırmak, korumak), catalogue (uzun liste, dizi), rigorously (titizlikle), persistence (azim, sebat), captivity (esaret, tutsaklık (hayvanlar için: kafes ortamı)), unconvinced (ikna olmamış), avoidable (önlenebilir), vary widely (büyük ölçüde değişmek)
+
+#### ys4u9 · Deneme haftası 5: son prova
+
+- **Hedef beceri:** Tam Deneme 8'e hazırlık: diyalog, restatement, paragraf tamamlama, anlam bütünlüğü ve karışık zor sorular; hedef 72+ (90 puan)
+- **Odak (ders ders):**
+  1. Son haftanın kelimeleri *(kelime dersi)* — Diyalog kalıpları, bağlaçlar ve sınav haftası kelimeleri
+  2. Diyalog, restatement ve paragraf — Son bölümün dört soru türü: orta düzeyde, kural odaklı alıştırma
+  3. Son bölüm: sınav düzeyi — Diyalog, restatement, paragraf tamamlama ve anlam bütünlüğü: gerçek sınav zorluğunda
+  4. Karışık zor set — Son prova: kelime, dilbilgisi, cloze, çeviri, okuma ve son bölüm türlerinden sınav düzeyinde sorular
+- **Soru tipleri:** YDS’nin gerçek dağılımında karışık sorular (kelime, dilbilgisi, cloze, cümle tamamlama, çeviri, paragraf, diyalog, restatement, paragraf tamamlama, anlam bütünlüğü)
+- **Türk adayların sık hataları:**
+  - **Diyalogda yalnızca önceki repliğe bakmak:** Türk adaylar soruya "mantıklı" bir cevap seçer; ama sonraki replikle bağ kurmayan şık yanlıştır.
+  - **Restatement'ta kelime avı:** Aynı kelimeleri taşıyan şık anlamı tersine çevirmiş olabilir (*not until* → *only after* doğru; *before* yanlış).
+  - **Paragraf tamamlamada genel doğruya kanmak:** Kendi başına doğru ama zamiri ya da bağlacı boşta kalan cümle tuzaktır.
+  - **Anlam bütünlüğünde ilk ve son cümleyi elemek:** Bozan cümle çoğu zaman II–IV arasındadır, ama V de olabilir.
+- **Sayılar:** 4 ders, 42 ders alıştırması (38 çoktan seçmeli), 20 soruluk ünite testi, 61 kelime; ardından **Tam deneme 8 · son prova (80 soru, 180 dk; hedef 90)**
+- **Kelime listesi (61):** with the exception of (-in dışında, hariç), that is to say (yani, başka bir deyişle), not to mention (… de cabası, üstelik), alongside (ile birlikte, yanında), amid (ortasında, arasında), a host of (bir sürü, çok sayıda), a wide array of (geniş bir yelpazede), transition (geçiş), digress (konudan sapmak), paraphrase (başka sözcüklerle ifade etmek), elaborate (ayrıntılandırmak), summarise (özetlemek), outline (ana hatlarını çizmek), signpost (yol gösterici işaret (metinde)), pace (hız, tempo), stamina (dayanıklılık), anxiety (kaygı), composure (soğukkanlılık), skim (göz gezdirmek), guesswork (tahmin, sallama), hunch (önsezi), venue (yer, mekân), identity card (kimlik kartı), stationery (kırtasiye), rehearsal (prova), mock exam (deneme sınavı), hydration (sıvı alımı), warm-up (ısınma), cram (son dakika yoğun çalışmak), revise (tekrar etmek, gözden geçirmek), pitfall (tuzak, gizli tehlike), second-guess ((kararından) şüphe etmek), trade-off (ödünleşim, denge), prioritise (önceliklendirmek), adamant (kararlı, ısrarcı), hesitant (tereddütlü), apologetic (özür diler tavırda), grateful (minnettar), reassure (içini rahatlatmak), objection (itiraz), inquire (soruşturmak, bilgi istemek), remind (hatırlatmak), accommodate (yer vermek, karşılamak), appointment (randevu), inconvenience (rahatsızlık, zahmet), by all means (elbette, tabii), no wonder (hiç şaşırtıcı değil), mind you (ama şunu da belirteyim), to be honest (açıkçası), it depends (duruma bağlı), whatsoever (hiç, hiçbir şekilde), stubbornly (inatla, direnerek), in disguise (kılık değiştirmiş, gizli), dwell on (üzerinde fazla durmak), go over (gözden geçirmek), come along (katılmak, birlikte gelmek), come up ((soru, konu) çıkmak), on impulse (dürtüyle, düşünmeden), interfere with (-i engellemek, bozmak), sharpen (keskinleştirmek), distressing (üzücü, rahatsız edici)
+
+## 9. Toplamlar
+
+- 54 ünite, 216 ders
+- 2.273 ders alıştırması (1.960 tanesi 5 şıklı çoktan seçmeli)
+- 979 ünite testi sorusu
+- 2.630 benzersiz kelime ve kalıp
+- 13 deneme düğümü: 5 bölüm/kamp denemesi ve 8 tam deneme (80 soru / 180 dk, `yds_full`)

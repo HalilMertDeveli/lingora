@@ -69,7 +69,7 @@ enum ExamPack {
     id: 'lingora_pack_yds_full',
     examId: 'yds',
     title: 'YDS/YÖKDİL Tam Deneme Paketi',
-    summary: '3 tam deneme · 80 soru · 180 dakika',
+    summary: '8 tam deneme · 80 soru · 180 dakika',
     suggestedPriceTl: 149.99,
   ),
   lgs(
@@ -129,7 +129,7 @@ enum PremiumFeature {
   ),
   unlimitedMockExams(
     'Sınırsız deneme sınavı',
-    'Sınırsız mini deneme ve tüm tam deneme paketleri (YDS/YÖKDİL 3×80, LGS 4×10 soru).',
+    'Sınırsız mini deneme ve tüm tam deneme paketleri (YDS/YÖKDİL 8×80, LGS 4×10 soru).',
     '📝',
   ),
   errorAnalytics(

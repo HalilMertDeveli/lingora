@@ -229,7 +229,7 @@ void main() {
         final layout = pack == ExamPack.yds ? ydsLayout : lgsLayout;
         expect(c.examId, pack.examId);
         expect(c.optionCount, bank.optionCount);
-        expect(c.mocks, hasLength(pack == ExamPack.yds ? 3 : 4));
+        expect(c.mocks, hasLength(pack == ExamPack.yds ? 8 : 4));
         expect(c.sections.map((s) => s.id).toSet(), layout.keys.toSet());
         final bankTexts = {for (final q in bank.allQuestions) q.text};
         final letters = List.filled(c.optionCount, 0);
