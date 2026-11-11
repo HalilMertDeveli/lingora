@@ -27,6 +27,7 @@ import 'package:lingora/theme.dart';
 import 'package:lingora/ui/markdown_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'sections_test.dart' show FakeBundle;
 import 'widget_test.dart' show FakeNotifications, FakeSpeech;
 
 Course _readCourse(String id) {
@@ -434,22 +435,34 @@ void main() {
     });
   });
 
-  group('no YDS path yet', () {
-    test('a missing exam_yds.json is not an error: the track keeps its question bank home', () async {
+  // Independent of whether exam_yds.json is shipped: a bundle without it
+  // stands in for "not shipped yet".
+  group('an exam track without a path', () {
+    test('a missing exam path is not an error: loading it gives null', () async {
       TestWidgetsFlutterBinding.ensureInitialized();
-      expect(File('assets/courses/exam_yds.json').existsSync(), isFalse, reason: 'YDS ships in its own PR');
-      expect(await loadExamPath(rootBundle, 'yds'), isNull);
+      expect(await loadExamPath(FakeBundle({}), 'yds'), isNull);
+      expect(
+        await loadExamPath(FakeBundle({}, extraManifest: ['assets/courses/exam_yds.json']), 'yds'),
+        isNull,
+      );
       expect(await loadExamPath(rootBundle, 'lgs'), isNotNull);
     });
 
-    testWidgets('the YDS track falls back to the general course for practice', (tester) async {
-      final (_, c) = await _pump(
-        tester,
-        const SizedBox(),
-        progress: const Progress(onboarded: true, remindersEnabled: false, trackId: 'yds'),
-      );
-      final course = await tester.runAsync(() => c.read(courseProvider.future));
-      expect(course!.id, 'tr_en');
+    testWidgets('falls back to the general course for practice; a shipped path is used instead', (
+      tester,
+    ) async {
+      Future<String?> courseId(Course? path) async {
+        final (_, c) = await _pump(
+          tester,
+          const SizedBox(),
+          progress: const Progress(onboarded: true, remindersEnabled: false, trackId: 'yds'),
+          overrides: [examPathProvider.overrideWith((ref, id) async => path)],
+        );
+        return (await tester.runAsync(() => c.read(courseProvider.future)))?.id;
+      }
+
+      expect(await courseId(null), 'tr_en');
+      expect(await courseId(_lgs), 'exam_lgs');
       expect(trackById('yds').kind, TrackKind.exam);
     });
   });
