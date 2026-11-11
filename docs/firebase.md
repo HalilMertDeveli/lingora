@@ -1,13 +1,13 @@
 # Firebase (istemci)
 
-Dilbaz Firebase olmadan da tamamen çalışır. Firebase yalnızca derleme sırasında
-`--dart-define=LINGORA_FIREBASE=...` verilirse açılır:
+Dilbaz varsayılan olarak gerçek Firebase projesine (`dilbaz-3392e`) bağlanır. Mod derleme sırasında
+`--dart-define=LINGORA_FIREBASE=...` ile değiştirilebilir:
 
 | Değer | Ne olur |
 |---|---|
-| *(yok)* / `off` | Varsayılan. Firebase hiç başlatılmaz, ilerleme sadece cihazda (`shared_preferences`). |
+| `off` | Firebase hiç başlatılmaz, ilerleme sadece cihazda (`shared_preferences`). |
 | `emulator` | `demo-lingora` projesi ile yerel Firebase Emulator Suite'e bağlanır (Auth 9099, Firestore 8080, Functions 5001). |
-| `prod` | Gerçek proje. `lib/services/firebase/firebase_options_prod.dart` dosyasının `flutterfire configure` ile üretilmiş olması gerekir. |
+| *(yok)* / `prod` | Varsayılan. Gerçek proje `dilbaz-3392e` (`firebase_options_prod.dart`, `android/app/google-services.json`). |
 
 Başlatma başarısız olursa (yapılandırma yok, ağ yok…) uygulama çökmez, yerel modda devam eder.
 
@@ -18,11 +18,11 @@ Başlatma başarısız olursa (yapılandırma yok, ağ yok…) uygulama çökmez
 - `firebase_config.dart` — mod (`FirebaseMode`), emülatör portları/host'u, Functions bölgesi.
 - `firebase_bootstrap.dart` — `initFirebase(mode)`; emülatör bağlantıları.
 - `demo_firebase_options.dart` — `demo-lingora` için elle yazılmış seçenekler (yalnızca emülatörle çalışır).
-- `firebase_options_prod.dart` — **yer tutucu**; `flutterfire configure` ile değiştirilecek.
+- `firebase_options_prod.dart` — `flutterfire configure --project=dilbaz-3392e` çıktısı (Android, iOS, web).
 - `firebase_providers.dart` — diğer modüllerin kullandığı sözleşme:
   - `firebaseReadyProvider` (`bool`), `authStateProvider` (`Stream<AppUser?>`), `currentUidProvider` (`String?`)
   - `firebaseAuthProvider`, `firestoreProvider`, `functionsProvider` (Firebase kapalıyken `null`)
-- `account_service.dart` — anonim giriş, e-posta / Google ile hesaba bağlama (aynı uid korunur), çıkış.
+- `account_service.dart` — anonim giriş, e-posta / Google / telefon (SMS) ile hesaba bağlama (aynı uid korunur), çıkış. `normalizePhoneTr` Türk numaralarını `+90…` biçimine çevirir.
 - `progress_merge.dart` — iki ilerleme kopyasını birleştirme kuralı.
 - `progress_sync.dart` — `users/{uid}` ile çevrimdışı öncelikli iki yönlü eşitleme.
 
@@ -131,3 +131,17 @@ gerçek proje ister.
    ```
 
    CI/release iş akışında da aynı `--dart-define` eklenmelidir; eklenmezse uygulama yerel modda kalır.
+
+## Gerçek proje: dilbaz-3392e
+
+- Kayıtlı uygulamalar: Android `com.lingora.lingora`, iOS `com.lingora.lingora`, web. Teknik kimlikler eski adla kalır.
+- Giriş yöntemleri açık: anonim, e-posta/şifre, Google, telefon. Google için web OAuth istemcisi
+  `googleServerClientId` varsayılanında (`firebase_config.dart`).
+- Android debug anahtarının SHA-1/SHA-256'sı projeye ekli. **Yayın (release) anahtarı oluşturulunca onun SHA-1 ve
+  SHA-256'sı da** `npx -y firebase-tools@latest apps:android:sha:create <APP_ID> <SHA>` ile eklenmeli; yoksa Google ve
+  telefon girişi mağaza sürümünde çalışmaz. Ardından `google-services.json` yeniden indirilmeli
+  (`apps:sdkconfig ANDROID <APP_ID>`).
+- Firestore: `(default)` veritabanı, kurallar ve indeksler `npx -y firebase-tools@latest deploy --only firestore --project dilbaz-3392e`
+  ile yüklenir.
+- `.firebaserc`: `default` = `demo-lingora` (emülatör), `prod` = `dilbaz-3392e`. Gerçek projeye komut verirken her zaman
+  `--project dilbaz-3392e` (ya da `--project prod`) yaz.

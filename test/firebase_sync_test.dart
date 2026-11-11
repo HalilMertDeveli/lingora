@@ -146,7 +146,7 @@ void main() {
     expect(FirebaseMode.parse(''), FirebaseMode.off);
     expect(FirebaseMode.parse('emulator'), FirebaseMode.emulator);
     expect(FirebaseMode.parse('PROD'), FirebaseMode.prod);
-    expect(FirebaseMode.fromEnvironment, FirebaseMode.off);
+    expect(FirebaseMode.fromEnvironment, FirebaseMode.prod);
     expect(emulatorHost(platform: TargetPlatform.android), '10.0.2.2');
     expect(emulatorHost(platform: TargetPlatform.iOS), 'localhost');
   });

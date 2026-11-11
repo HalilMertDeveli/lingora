@@ -69,6 +69,52 @@ class AccountService {
     await _linkOrSignIn(cred);
   });
 
+  /// Sends an SMS code to [rawPhone] (Turkish numbers may be typed as
+  /// `0532…` or `532…`). Returns the verification id to pass to
+  /// [confirmPhoneCode], or null when Android verified the number by itself
+  /// (the user is then already signed in).
+  Future<String?> startPhoneSignIn(String rawPhone) async {
+    final phone = normalizePhoneTr(rawPhone);
+    if (phone == null) throw const AccountException('Telefon numarası geçerli değil. Örnek: 0532 123 45 67');
+    if (kIsWeb) throw const AccountException('Telefonla giriş şimdilik yalnızca mobil uygulamada var.');
+    final done = Completer<String?>();
+    try {
+      await _auth.verifyPhoneNumber(
+        phoneNumber: phone,
+        timeout: const Duration(seconds: 60),
+        verificationCompleted: (cred) async {
+          if (done.isCompleted) return;
+          try {
+            await _linkOrSignIn(cred);
+            done.complete(null);
+          } catch (e) {
+            done.completeError(e);
+          }
+        },
+        verificationFailed: (e) {
+          if (!done.isCompleted) done.completeError(e);
+        },
+        codeSent: (verificationId, _) {
+          if (!done.isCompleted) done.complete(verificationId);
+        },
+        codeAutoRetrievalTimeout: (_) {},
+      );
+    } on FirebaseAuthException catch (e) {
+      throw AccountException(authErrorTr(e.code));
+    }
+    try {
+      return await done.future;
+    } on FirebaseAuthException catch (e) {
+      throw AccountException(authErrorTr(e.code));
+    }
+  }
+
+  /// Signs in (or links the guest account) with the SMS [code].
+  Future<void> confirmPhoneCode(String verificationId, String code) => _guard(() async {
+    final cred = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: code.trim());
+    await _linkOrSignIn(cred);
+  });
+
   Future<void> _linkOrSignIn(AuthCredential cred) async {
     final user = _user;
     if (user != null && user.isAnonymous) {
@@ -147,8 +193,28 @@ String authErrorTr(String code) => switch (code) {
   'operation-not-allowed' => 'Bu giriş yöntemi henüz açık değil.',
   'user-disabled' => 'Bu hesap devre dışı bırakılmış.',
   'requires-recent-login' => 'Güvenlik için lütfen yeniden giriş yap.',
+  'invalid-phone-number' => 'Telefon numarası geçerli değil.',
+  'invalid-verification-code' => 'Kod hatalı. SMS ile gelen 6 haneli kodu gir.',
+  'invalid-verification-id' || 'session-expired' => 'Kodun süresi doldu. Yeni kod iste.',
+  'quota-exceeded' => 'Şu an çok fazla SMS isteği var. Biraz sonra tekrar dene.',
+  'missing-client-identifier' || 'app-not-authorized' => 'Bu uygulama sürümü telefonla girişe yetkili değil.',
   _ => 'Giriş yapılamadı ($code).',
 };
+
+/// E.164 form of a phone number. Numbers without a country code are taken as
+/// Turkish: `0532 123 45 67`, `532 123 45 67` and `+90 532…` all become
+/// `+905321234567`. Returns null when it cannot be a valid number.
+String? normalizePhoneTr(String raw) {
+  var d = raw.replaceAll(RegExp(r'[\s\-().]'), '');
+  if (d.startsWith('00')) d = '+${d.substring(2)}';
+  if (!d.startsWith('+')) {
+    if (d.startsWith('0')) d = d.substring(1);
+    if (d.startsWith('90') && d.length == 12) d = d.substring(2);
+    if (d.length != 10) return null;
+    d = '+90$d';
+  }
+  return RegExp(r'^\+[1-9]\d{7,14}$').hasMatch(d) ? d : null;
+}
 
 /// Account actions, or null when Firebase is off.
 final accountServiceProvider = Provider<AccountService?>((ref) {
