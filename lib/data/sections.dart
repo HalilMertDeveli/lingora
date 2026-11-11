@@ -41,11 +41,26 @@ double sectionProgress(Section section, Progress p) {
   return nodes.where((n) => p.isDone(n.id)).length / nodes.length;
 }
 
-/// Next node to play in each open section, by section id.
+/// Next node to play in each open section, by section id. Mock exams never
+/// hold the path up (see [mockOpen]).
 Map<String, PathNode> activeNodes(Course course, Progress p) => {
   for (final s in course.sections)
-    if (sectionOpen(course, s, p)) s.id: ?s.nodes.where((n) => !p.isDone(n.id)).firstOrNull,
+    if (sectionOpen(course, s, p))
+      s.id: ?s.nodes.where((n) => n.type != NodeType.mock && !p.isDone(n.id)).firstOrNull,
 };
+
+/// Whether mock exam [mock] can be taken: its section is open and every step
+/// before it in the section is finished. Mocks are extra practice, so the
+/// steps after them open without them.
+bool mockOpen(Course course, PathNode mock, Progress p) {
+  for (final s in course.sections) {
+    final i = s.nodes.indexOf(mock);
+    if (i < 0) continue;
+    return sectionOpen(course, s, p) &&
+        s.nodes.take(i).every((n) => n.type == NodeType.mock || p.isDone(n.id));
+  }
+  return false;
+}
 
 /// The node the path focuses on ("Bulunduğun yere dön"): the next node of the
 /// furthest open section that is not finished yet.

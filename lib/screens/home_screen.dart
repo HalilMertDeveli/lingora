@@ -240,7 +240,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 }
 
 /// "Öğren" tab root: the track's home (path, exam, notes) under the
-/// Dilbaz Kurumsal assignments card.
+/// Dilbaz Kurumsal assignments card. An exam track shows its study path
+/// (LGS → exam_lgs) when one is shipped, else its question bank home.
 class _LearnRoot extends ConsumerWidget {
   const _LearnRoot();
 
@@ -253,9 +254,13 @@ class _LearnRoot extends ConsumerWidget {
         const OrgAssignmentsCard(),
         Expanded(
           child: switch (track.kind) {
-            TrackKind.exam => ScrollToTopOnReselect(
-              child: ExamHomeScreen(key: ValueKey(track.id), examId: track.id),
-            ),
+            TrackKind.exam => switch (ref.watch(examPathProvider(track.id))) {
+              AsyncData(value: null) || AsyncError() => ScrollToTopOnReselect(
+                child: ExamHomeScreen(key: ValueKey(track.id), examId: track.id),
+              ),
+              AsyncData() => PathScreen(key: ValueKey('path-${track.id}')),
+              _ => const Center(child: CircularProgressIndicator()),
+            },
             TrackKind.notes => const ScrollToTopOnReselect(child: NotesHomeScreen()),
             // Vocabulary tracks have their own tabs; kept for exhaustiveness.
             TrackKind.vocab => const VocabDiscoverTab(),

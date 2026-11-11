@@ -47,6 +47,8 @@ class PracticeHubScreen extends ConsumerWidget {
     final course = ref.watch(courseProvider).value;
     final premium = ref.watch(premiumProvider);
     final mistakes = p.mistakes.length;
+    // Mistakes resolve in the open course (an exam path keeps its own).
+    final mistakeQueue = course == null ? const <LessonItem>[] : mistakeItems(course, p.mistakes);
 
     void fullScreen(Widget screen) =>
         Navigator.of(context).push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => screen));
@@ -96,13 +98,13 @@ class PracticeHubScreen extends ConsumerWidget {
             title: 'Hatalarını çalış',
             subtitle: mistakes == 0 ? 'Şu an çalışılacak hata yok' : '$mistakes soru seni bekliyor',
             badge: mistakes > 0 ? '$mistakes' : null,
-            onTap: mistakes == 0 || course == null
+            onTap: mistakeQueue.isEmpty
                 ? null
                 : () => fullScreen(
                     LessonScreen(
                       nodeId: 'practice',
                       title: 'Hatalarını çalış',
-                      items: mistakeItems(course, p.mistakes),
+                      items: mistakeQueue,
                       color: Brand.primary,
                       mode: LessonMode.practice,
                     ),
@@ -160,6 +162,40 @@ class PracticeHubScreen extends ConsumerWidget {
           const SizedBox(height: 8),
           const SectionLabel('SINAVLAR VE SEVİYE'),
           const SizedBox(height: 8),
+          // The selected exam's question bank and mock exams (its study path
+          // is in the Öğren tab).
+          if (track.kind == TrackKind.exam) ...[
+            _HubTile(
+              key: const Key('hub-bank'),
+              icon: Icons.quiz_rounded,
+              emoji: '🗂️',
+              color: Brand.primary,
+              title: 'Soru bankası',
+              subtitle: '${track.title}: konu konu soru çöz, her sorudan sonra açıklama',
+              onTap: () => openPage(
+                context,
+                'Soru bankası',
+                ExamHomeScreen(key: ValueKey('bank-${track.id}'), examId: track.id, view: ExamHomeView.bank),
+              ),
+            ),
+            _HubTile(
+              key: const Key('hub-mocks'),
+              icon: Icons.timer_rounded,
+              emoji: '⏱️',
+              color: Brand.accent,
+              title: 'Deneme sınavları',
+              subtitle: 'Mini deneme ve tam deneme paketleri',
+              onTap: () => openPage(
+                context,
+                'Deneme sınavları',
+                ExamHomeScreen(
+                  key: ValueKey('mocks-${track.id}'),
+                  examId: track.id,
+                  view: ExamHomeView.mocks,
+                ),
+              ),
+            ),
+          ],
           for (final e in examCatalog)
             if (e.id != track.id)
               _HubTile(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../data/topic_themes.dart';
 import '../models/course.dart';
 import '../theme.dart';
+import '../ui/markdown_text.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/tea_art.dart';
@@ -44,6 +45,7 @@ IconData nodeIcon(NodeType type) => switch (type) {
   NodeType.story => Icons.auto_stories_rounded,
   NodeType.test => Icons.local_florist_rounded,
   NodeType.lesson => Icons.local_cafe_rounded,
+  NodeType.mock => Icons.timer_rounded,
 };
 
 /// The host's invite over the current node, in the unit's topic.
@@ -54,6 +56,7 @@ String nodeInvite(NodeType type, [TopicTheme? theme]) {
     NodeType.story => t.storyInvite,
     NodeType.test => t.testInvite,
     NodeType.lesson => t.lessonInvite,
+    NodeType.mock => 'Deneme zamanı, hazırsın!',
   };
 }
 
@@ -66,7 +69,7 @@ String nodeObject(Unit unit, PathNode node) {
   final t = themeOf(unit);
   return switch (node.type) {
     NodeType.chest => t.reward,
-    NodeType.test => t.badge,
+    NodeType.test || NodeType.mock => t.badge,
     _ => t.stepObject(
       unit.nodes.where((n) => n.type == NodeType.lesson || n.type == NodeType.story).toList().indexOf(node),
     ),
@@ -80,6 +83,7 @@ String nodeCta(NodeType type) {
     NodeType.story => 'OKU',
     NodeType.test => 'SINAV',
     NodeType.lesson => 'BAŞLA',
+    NodeType.mock => 'DENEME',
   };
   return Brand.isKid ? s : sentenceCase(s);
 }
@@ -166,7 +170,7 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
     final done = widget.state == NodeState.done;
     return switch (widget.type) {
       NodeType.chest => TeapotPainter(color: p.accent, palette: p, open: done, dim: dim),
-      NodeType.test => TulipPainter(
+      NodeType.test || NodeType.mock => TulipPainter(
         color: done ? tulipRed : widget.color,
         palette: p,
         bloom: done ? 1 : (_active ? 0.5 + 0.2 * sin(t * pi * 2).abs() : 0.2),
@@ -263,6 +267,13 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
               top: 2,
               child: badge(Icons.auto_stories_rounded, widget.color, onColor(widget.color)),
             ),
+          if (widget.type == NodeType.mock && !locked)
+            Positioned(
+              key: const Key('mock-badge'),
+              left: -2,
+              top: 2,
+              child: badge(Icons.timer_rounded, widget.color, onColor(widget.color)),
+            ),
         ],
       ),
     );
@@ -317,13 +328,13 @@ class _ThemedArt extends StatelessWidget {
       object: object,
       size: switch (type) {
         NodeType.chest => 58,
-        NodeType.test => 30,
+        NodeType.test || NodeType.mock => 30,
         _ => 44,
       },
       grey: dim,
     );
     return switch (type) {
-      NodeType.test => moving(
+      NodeType.test || NodeType.mock => moving(
         Stack(
           alignment: Alignment.topCenter,
           children: [
@@ -689,7 +700,11 @@ class LessonCard extends StatelessWidget {
     this.arrowX,
     this.above = false,
     this.theme,
+    this.note,
   });
+
+  /// Extra line under the step's kind (e.g. the last mock exam's result).
+  final String? note;
 
   /// Topic of the unit (names the badge and the reward).
   final TopicTheme? theme;
@@ -723,6 +738,9 @@ class LessonCard extends StatelessWidget {
       NodeType.story => 'Hikâye',
       NodeType.test => t.tea ? 'Ünite sınavı · lale rozeti' : 'Ünite sınavı · ${t.badgeName} rozeti',
       NodeType.chest => t.tea ? 'Çaydanlık · şeker ödülü' : '${t.rewardName} · sürpriz ödül',
+      NodeType.mock =>
+        'Bölüm denemesi · ${node.size > 0 ? '${node.size} soru' : 'karışık sorular'}'
+            '${node.minutes > 0 ? ' · ${node.minutes} dk' : ''}',
     };
     final (String label, bool enabled) = switch ((state, node.type)) {
       (NodeState.locked, _) => ('', false),
@@ -731,6 +749,7 @@ class LessonCard extends StatelessWidget {
       (NodeState.active, NodeType.chest) => ('AÇ', true),
       (NodeState.active, NodeType.test) => ('SINAVA BAŞLA', true),
       (NodeState.active, NodeType.story) => ('OKU', true),
+      (NodeState.active, NodeType.mock) => ('DENEMEYE BAŞLA', true),
       (NodeState.active, NodeType.lesson) => ('BAŞLA +${node.rewardXp > 0 ? node.rewardXp : 10} XP', true),
     };
     final pointer = CustomPaint(
@@ -773,6 +792,14 @@ class LessonCard extends StatelessWidget {
                   locked ? (lockedMessage ?? 'Önce önceki adımları tamamla.') : kind,
                   style: TextStyle(color: sub, fontWeight: FontWeight.w600),
                 ),
+                if (note != null && !locked) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    note!,
+                    key: const Key('lesson-card-note'),
+                    style: TextStyle(color: fg, fontWeight: FontWeight.w800),
+                  ),
+                ],
                 if (node.type == NodeType.lesson) ...[
                   const SizedBox(height: 10),
                   ClipRRect(
@@ -909,6 +936,12 @@ Future<void> showUnitGuide(
           const SizedBox(height: 4),
           Text(unit.description, style: TextStyle(color: Brand.muted, height: 1.4)),
           const SizedBox(height: 18),
+          if (unit.hasGuide) ...[
+            Text('Konu anlatımı', style: t.titleMedium),
+            const SizedBox(height: 4),
+            KeyedSubtree(key: const Key('unit-guide-text'), child: MarkdownText(unit.guide!)),
+            const SizedBox(height: 18),
+          ],
           if (phrases.isNotEmpty) ...[
             Text('Anahtar ifadeler', style: t.titleMedium),
             const SizedBox(height: 8),

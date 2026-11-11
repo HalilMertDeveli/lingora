@@ -60,6 +60,22 @@ Future<List<Section>> loadSections(AssetBundle bundle, String id, {Course? after
   return sections;
 }
 
+/// The study path of exam track [examTrackId] (LGS → `exam_lgs`), or null
+/// when it is not shipped (yet) or cannot be read: the exam track then shows
+/// its question bank home as before.
+Future<Course?> loadExamPath(AssetBundle bundle, String examTrackId) async {
+  final id = examPathId(examTrackId);
+  try {
+    // Ask the manifest first: a missing file is the normal case, not an error.
+    final manifest = await AssetManifest.loadFromAssetBundle(bundle);
+    if (!manifest.listAssets().contains('assets/courses/$id.json')) return null;
+    return await loadCourse(bundle, id);
+  } catch (e) {
+    debugPrint('Sınav yolu yok ($examTrackId): $e');
+    return null;
+  }
+}
+
 Future<Exam> loadExam(AssetBundle bundle, String id) async {
   final raw = await bundle.loadString('assets/exams/$id.json');
   return Exam.fromJson(jsonDecode(raw) as Map<String, dynamic>);
@@ -70,10 +86,18 @@ final trackProvider = Provider<Track>(
   (ref) => trackById(ref.watch(progressProvider.select((p) => p.trackId))),
 );
 
-/// Course for the learning path: the selected course, or the general course
-/// while an exam track is selected.
-final courseProvider = FutureProvider<Course>((ref) {
+/// Study path of an exam track by track id; null without one.
+final examPathProvider = FutureProvider.family<Course?, String>((ref, id) => loadExamPath(rootBundle, id));
+
+/// Course for the learning path: the selected course, an exam track's study
+/// path (its progress is kept apart by its own node ids), or the general
+/// course for an exam track without a path and for the other tracks.
+final courseProvider = FutureProvider<Course>((ref) async {
   final track = ref.watch(trackProvider);
+  if (track.kind == TrackKind.exam) {
+    final path = await ref.watch(examPathProvider(track.id).future);
+    if (path != null) return path;
+  }
   return loadCourse(rootBundle, track.kind == TrackKind.course ? track.id : defaultTrackId);
 });
 

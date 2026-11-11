@@ -29,6 +29,10 @@ class Track {
 
 const defaultTrackId = 'tr_en';
 
+/// Course id of an exam track's study path: `assets/courses/exam_<id>.json`
+/// plus its section files. A track without one keeps the question bank home.
+String examPathId(String examTrackId) => 'exam_$examTrackId';
+
 const courseCatalog = [
   Track(
     id: 'tr_en',

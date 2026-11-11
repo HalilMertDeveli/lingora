@@ -92,7 +92,11 @@ void main() {
           if (_isIdKey(key)) return;
           if (s != s.trim()) problems.add('$where: leading/trailing space');
           if (RegExp(r'[^\s] {2,}[^\s]').hasMatch(s)) problems.add('$where: double space');
-          if (RegExp(r'�|\*\*|&nbsp;|</?[a-z]+>').hasMatch(s)) problems.add('$where: import artifact');
+          // Topic guides are markdown, so they may use **bold**.
+          final artifact = key == 'guide'
+              ? RegExp(r'�|&nbsp;|</?[a-z]+>')
+              : RegExp(r'�|\*\*|&nbsp;|</?[a-z]+>');
+          if (artifact.hasMatch(s)) problems.add('$where: import artifact');
           for (final r in ascii) {
             final m = r.firstMatch(s);
             if (m != null) problems.add('$where: "${m.group(0)!.trim()}" lacks Turkish characters');
@@ -126,8 +130,20 @@ void main() {
 
       test('options are distinct, also ignoring case', () {
         for (final (id, e) in exercises) {
-          final reason = '$id ${e['type']} ${e['text'] ?? e['prompt']}';
+          final reason = '$id ${e['type']} ${e['text'] ?? e['prompt'] ?? e['question']}';
           switch (e['type']) {
+            case 'choice':
+              final options = (e['options'] as List).cast<String>();
+              expect(_dupes(options, _lower), isEmpty, reason: reason);
+              expect(_articleGiveaway('${e['question']}', options), isFalse, reason: reason);
+              expect(
+                RegExp(
+                  r'(ilk|ikinci|üçüncü|dördüncü|beşinci|son) (seçenek|şık)',
+                  caseSensitive: false,
+                ).hasMatch('${e['explanation']}'),
+                isFalse,
+                reason: 'refer to options by their text, positions change: $reason',
+              );
             case 'select':
               final texts = [for (final c in e['choices'] as List) (c as Map)['text'] as String];
               expect(_dupes(texts, _lower), isEmpty, reason: reason);

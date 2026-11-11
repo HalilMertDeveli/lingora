@@ -53,6 +53,11 @@ List<LessonItem> unitTestItems(Unit unit, [Random? random]) {
   return picked..shuffle(r);
 }
 
+/// Questions of a unit test node: its own questions when it has them (exam
+/// paths: a fixed mini exam in the real format), else [unitTestItems].
+List<LessonItem> testItems(Unit unit, PathNode test, [Random? random]) =>
+    test.exercises.isNotEmpty ? lessonItems(test) : unitTestItems(unit, random);
+
 /// Resolves saved mistake keys, most recent first.
 List<LessonItem> mistakeItems(Course course, List<String> keys) {
   final byId = {for (final n in course.allNodes) n.id: n};
