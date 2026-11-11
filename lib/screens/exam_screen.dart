@@ -12,6 +12,7 @@ import '../models/exam_pack.dart';
 import '../services/billing/premium.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
+import '../ui/markdown_text.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../nav/flow.dart';
@@ -356,9 +357,10 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     final percent = qs.isEmpty ? 0 : (correct * 100 / qs.length).round();
     final notifier = ref.read(progressProvider.notifier);
     final nodeId = widget.nodeId;
-    if (nodeId != null) {
-      notifier.recordMock(nodeId, percent, DateTime.now().difference(_started));
-    } else if (widget.mock) {
+    if (nodeId != null) notifier.recordMock(nodeId, percent, DateTime.now().difference(_started));
+    // A path's mock leaves the question bank's mini mock score alone; a pack
+    // mock keeps its own best score wherever it was opened from.
+    if (widget.mock && (nodeId == null || widget.fullMock != null)) {
       notifier.recordExam(widget.fullMock?.id ?? widget.exam.id, percent);
     }
     final reward = notifier.completeNode(
@@ -510,7 +512,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                             color: Brand.surface,
                             borderRadius: BorderRadius.circular(14),
                           ),
-                          child: Text(q.passage!, style: const TextStyle(fontSize: 15, height: 1.5)),
+                          child: PassageText(q.passage!, fontSize: 15),
                         ),
                       Text(
                         q.text,
@@ -525,6 +527,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: TapCard(
+                                  key: Key('exam-option-$i'),
                                   selected: _optionColor(i) != null,
                                   color: _optionColor(i),
                                   onTap: _revealed ? null : () => _pick(i),
@@ -651,6 +654,13 @@ class ExamResultScreen extends StatelessWidget {
   final bool mock;
   final Duration duration;
 
+  /// "6,67": correct − wrong / 3 with a Turkish decimal comma.
+  static String _net(int correct, int wrong) {
+    final n = correct - wrong / 3;
+    final s = n == n.roundToDouble() ? n.round().toString() : n.toStringAsFixed(2);
+    return s.replaceAll('.', ',');
+  }
+
   @override
   Widget build(BuildContext context) {
     final correct = [
@@ -689,6 +699,18 @@ class ExamResultScreen extends StatelessWidget {
                         style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
                       ),
                     ),
+                    // LGS: 3 wrong answers cancel 1 right one.
+                    if (mock && exam.optionCount == 4) ...[
+                      const SizedBox(height: 4),
+                      Center(
+                        child: Text(
+                          'İngilizce neti: ${_net(correct, answers.length - correct)} / ${questions.length}'
+                          ' · süre ${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}',
+                          key: const Key('exam-net'),
+                          style: TextStyle(color: Brand.ink, fontWeight: FontWeight.w800),
+                        ),
+                      ),
+                    ],
                     const SizedBox(height: 6),
                     Center(
                       child: Text(

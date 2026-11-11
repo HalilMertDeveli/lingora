@@ -23,31 +23,41 @@ ExamQuestion examQuestionOf(LessonItem item) => ExamQuestion(
 Section? sectionOf(Course course, PathNode node) =>
     course.sections.where((s) => s.nodes.contains(node)).firstOrNull;
 
-/// Questions of a section mock: the section's `choice` exercises, taken in
-/// turns from every unit so each topic is asked, then topped up from the
-/// question bank [bank] when the section has too few.
+/// Units a mock covers: those of its section up to (and with) its own.
+List<Unit> mockUnits(Section section, PathNode mock) {
+  final i = section.units.indexWhere((u) => u.nodes.contains(mock));
+  return i < 0 ? section.units : section.units.take(i + 1).toList();
+}
+
+/// Questions of a section mock, in turns from every unit it covers so each
+/// topic is asked: first the units' mini exams (test nodes with their own
+/// questions, already in the real format), then their lessons' `choice`
+/// questions, then the question bank [bank].
 List<ExamQuestion> mockQuestions(Section section, PathNode mock, {Exam? bank, Random? random}) {
   final r = random ?? Random();
   final size = mock.size > 0 ? mock.size : defaultMockSize;
-  final pools = [
-    for (final unit in section.units)
-      [
-        for (final lesson in unit.nodes.where((n) => n.type == NodeType.lesson))
-          for (final item in lessonItems(lesson))
-            if (item.ex.type == ExerciseType.choice && item.ex.options.length >= 2) examQuestionOf(item),
-      ]..shuffle(r),
-  ];
+  final units = mockUnits(section, mock);
+  List<ExamQuestion> choices(Iterable<PathNode> nodes) => [
+    for (final n in nodes)
+      for (final item in lessonItems(n))
+        if (item.ex.type == ExerciseType.choice && item.ex.options.length >= 2) examQuestionOf(item),
+  ]..shuffle(r);
   final picked = <ExamQuestion>[];
-  for (var round = 0; picked.length < size; round++) {
-    var added = false;
-    for (final pool in pools) {
-      if (round < pool.length && picked.length < size) {
-        picked.add(pool[round]);
-        added = true;
+  void roundRobin(List<List<ExamQuestion>> pools) {
+    for (var round = 0; picked.length < size; round++) {
+      var added = false;
+      for (final pool in pools) {
+        if (round < pool.length && picked.length < size) {
+          picked.add(pool[round]);
+          added = true;
+        }
       }
+      if (!added) break;
     }
-    if (!added) break;
   }
+
+  roundRobin([for (final u in units) choices(u.nodes.where((n) => n.type == NodeType.test))]);
+  roundRobin([for (final u in units) choices(u.nodes.where((n) => n.type == NodeType.lesson))]);
   if (picked.length < size && bank != null) {
     final extra = [...bank.allQuestions]..shuffle(r);
     picked.addAll(extra.take(size - picked.length));

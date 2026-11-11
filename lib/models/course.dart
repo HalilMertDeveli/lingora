@@ -168,6 +168,8 @@ class PathNode {
     this.examId,
     this.size = 0,
     this.minutes = 0,
+    this.packId,
+    this.mockId,
   });
 
   final String id;
@@ -186,6 +188,11 @@ class PathNode {
   final int size;
   final int minutes;
 
+  /// A full mock exam of a paid pack instead of a mixed one: the pack's
+  /// content id ("yds_full", `assets/exam_packs/<packId>.json`) and mock id.
+  final String? packId;
+  final String? mockId;
+
   factory PathNode.fromJson(Map<String, dynamic> j) => PathNode(
     id: j['id'] as String,
     type: NodeType.values.byName(j['type'] as String),
@@ -201,6 +208,8 @@ class PathNode {
     examId: j['examId'] as String?,
     size: (j['size'] as int?) ?? 0,
     minutes: (j['minutes'] as int?) ?? 0,
+    packId: j['packId'] as String?,
+    mockId: j['mockId'] as String?,
   );
 }
 

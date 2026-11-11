@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/course.dart';
 import '../theme.dart';
+import '../ui/markdown_text.dart';
 import 'common.dart';
 
 /// Option letters of exam-style questions (A–E).
@@ -62,10 +63,7 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
               child: SingleChildScrollView(
                 controller: _passageScroll,
                 padding: const EdgeInsets.fromLTRB(16, 14, 18, 14),
-                child: Text(
-                  passage,
-                  style: TextStyle(fontSize: kid ? 17 : 16, height: 1.5, color: p.ink),
-                ),
+                child: PassageText(passage, fontSize: kid ? 17 : 16),
               ),
             ),
           ),

@@ -236,9 +236,11 @@ List<String> validateExercise(Object? e, String at) {
 
 /// Exam study paths: `assets/courses/<id>.json` plus `<id>/NN_slug.json`
 /// (_cikti/sinav_yolu_plan.md). [prefix] is the id letter ("l" LGS, "y"
-/// YDS), [options] the option count of its choice questions. No file, no
-/// problems: the YDS path ships in its own PR.
-List<String> validateExamPath(String id, String prefix, int options) {
+/// YDS), [options] the option count of its choice questions and [testSize]
+/// the allowed size of a unit test's own questions (a test node without
+/// questions samples the lessons). No file, no problems: the YDS path ships
+/// in its own PR.
+List<String> validateExamPath(String id, String prefix, int options, {(int, int) testSize = (10, 20)}) {
   final top = File('assets/courses/$id.json');
   if (!top.existsSync()) return const [];
   final problems = <String>[];
@@ -284,38 +286,62 @@ List<String> validateExamPath(String id, String prefix, int options) {
       check(u['guide'] is String && (u['guide'] as String).trim().length > 200, '$where: guide yok');
       final nodes = (u['nodes'] as List).cast<Map<String, dynamic>>();
       final types = nodes.map((n) => n['type'] as String?).toList();
-      final tail = ui == units.length - 1 ? ['test', 'chest', 'mock'] : ['test', 'chest'];
+      // Lessons (and optional stories), then test and chest, then an
+      // optional mock; the section's last unit always ends with a mock.
+      final mock = types.isNotEmpty && types.last == 'mock';
+      final tail = mock ? ['test', 'chest', 'mock'] : ['test', 'chest'];
       final head = types.take(max(0, types.length - tail.length)).toList();
       check(
         types.length > tail.length &&
             types.skip(types.length - tail.length).join(',') == tail.join(',') &&
             head.every((t) => t == 'lesson' || t == 'story') &&
-            head.where((t) => t == 'lesson').length >= 4,
-        '$where: düğüm deseni ${types.join(',')} (ders×4+, test, chest; bölüm sonunda mock)',
+            head.where((t) => t == 'lesson').length >= 4 &&
+            (mock || ui < units.length - 1),
+        '$where: düğüm deseni ${types.join(',')} (ders×4+, test, chest, [mock]; bölüm sonunda mock)',
       );
       for (final n in nodes) {
         final nid = n['id'] as String?;
         final at = '$where/$nid';
         check(nid != null && nid.startsWith('${prefix}s$index'), '$at: id bölüm önekiyle başlamalı');
         if (nid != null) check(seen.add(nid), '$at: id kullanılmış');
+        final ex = (n['exercises'] as List?) ?? const [];
+        void exercises() {
+          for (final (k, e) in ex.indexed) {
+            problems.addAll(validateExercise(e, '$at#$k'));
+            if (e is Map && e['type'] == 'choice' && e['answer'] is int) {
+              choices++;
+              check((e['options'] as List?)?.length == options, '$at#$k: $options seçenek olmalı');
+              letters[e['answer'] as int] = (letters[e['answer'] as int] ?? 0) + 1;
+            }
+          }
+        }
+
         switch (n['type']) {
           case 'lesson':
-            final ex = (n['exercises'] as List?) ?? const [];
             check(ex.length >= 8 && ex.length <= 12, '$at: ${ex.length} alıştırma (8–12)');
-            for (final (k, e) in ex.indexed) {
-              problems.addAll(validateExercise(e, '$at#$k'));
-              if (e is Map && e['type'] == 'choice' && e['answer'] is int) {
-                choices++;
-                check((e['options'] as List?)?.length == options, '$at#$k: $options seçenek olmalı');
-                letters[e['answer'] as int] = (letters[e['answer'] as int] ?? 0) + 1;
-              }
+            exercises();
+          case 'test':
+            check(n['rewardXp'] is int && (n['rewardXp'] as int) > 0, '$at: rewardXp yok');
+            // A unit test with its own questions: a fixed exam in the real format.
+            if (ex.isNotEmpty) {
+              check(
+                ex.length >= testSize.$1 && ex.length <= testSize.$2,
+                '$at: ${ex.length} test sorusu (${testSize.$1}–${testSize.$2})',
+              );
+              check(ex.every((e) => e is Map && e['type'] == 'choice'), '$at: test soruları choice olmalı');
+              exercises();
             }
-          case 'test' || 'chest':
+          case 'chest':
             check(n['rewardXp'] is int && (n['rewardXp'] as int) > 0, '$at: rewardXp yok');
           case 'mock':
             check(n['examId'] is String, '$at: examId yok');
-            check(n['size'] is int && (n['size'] as int) >= 10, '$at: size en az 10');
-            check(n['minutes'] is int && (n['minutes'] as int) > 0, '$at: minutes yok');
+            // A pack's full mock (packId + mockId) brings its own size and time.
+            if (n['packId'] != null) {
+              check(n['mockId'] is String, '$at: packId ile mockId gerekli');
+            } else {
+              check(n['size'] is int && (n['size'] as int) >= 10, '$at: size en az 10');
+              check(n['minutes'] is int && (n['minutes'] as int) > 0, '$at: minutes yok');
+            }
         }
       }
     }
@@ -365,7 +391,7 @@ void main() {
     }
 
     test('LGS path follows the contract: guides, 4-option choice questions, mocks', () {
-      final problems = validateExamPath('exam_lgs', 'l', 4);
+      final problems = validateExamPath('exam_lgs', 'l', 4, testSize: (10, 10));
       expect(problems, isEmpty, reason: problems.take(30).join('\n'));
     });
 
@@ -396,8 +422,42 @@ void main() {
       );
     });
 
+    // docs/sinav/lgs-plan.md: what every unit has, and mocks in the real format.
+    test('LGS units follow the plan: guide table and 3 exam tips, lesson sizes, a 10-question mini test', () {
+      for (final u in lgsUnits()) {
+        final id = u['id'];
+        final guide = u['guide'] as String;
+        expect(guide, contains('## Özet tablo'), reason: '$id');
+        final tableLines = RegExp(r'^\|.*\|$', multiLine: true).allMatches(guide);
+        expect(tableLines.length, greaterThanOrEqualTo(7), reason: '$id summary table');
+        final tips = RegExp(r'^> \*\*Sınav ipucu [1-3]:\*\*', multiLine: true).allMatches(guide);
+        expect(tips, hasLength(3), reason: '$id exam tips');
+        final nodes = (u['nodes'] as List).cast<Map<String, dynamic>>();
+        List<Map> ex(int i) => ((nodes[i]['exercises'] as List?) ?? const []).cast<Map>();
+        expect([for (var i = 0; i < 5; i++) ex(i).length], [11, 11, 10, 9, 10], reason: '$id lesson sizes');
+        expect(ex(0).where((e) => e['type'] == 'match'), hasLength(2), reason: '$id vocabulary: match');
+        expect(ex(0).where((e) => e['type'] == 'select'), hasLength(3), reason: '$id vocabulary: select');
+        // Reading: a text with 5 questions and a short one with 4.
+        expect(ex(3).map((e) => e['passage']).toSet(), hasLength(2), reason: '$id reading texts');
+        expect(nodes[4]['type'], 'test');
+        expect(ex(4).every((e) => e['type'] == 'choice'), isTrue, reason: '$id mini test');
+      }
+    });
+
+    test('LGS section mocks match the real exam: 10 questions in 15 minutes', () {
+      final mocks = [
+        for (final u in lgsUnits())
+          for (final n in (u['nodes'] as List).cast<Map>())
+            if (n['type'] == 'mock') n,
+      ];
+      expect(mocks.map((m) => (m['id'], m['examId'], m['size'], m['minutes'])), [
+        ('ls1m', 'lgs', 10, 15),
+        ('ls2m', 'lgs', 10, 15),
+      ]);
+    });
+
     test('YDS path, once shipped, follows the contract with 5 options', () {
-      final problems = validateExamPath('exam_yds', 'y', 5);
+      final problems = validateExamPath('exam_yds', 'y', 5, testSize: (15, 20));
       expect(problems, isEmpty, reason: problems.take(30).join('\n'));
     });
 
