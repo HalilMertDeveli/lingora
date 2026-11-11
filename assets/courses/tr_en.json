@@ -3,6 +3,14 @@
   "title": "İngilizce",
   "fromLang": "tr",
   "learningLang": "en",
+  "section": {
+    "id": "s1",
+    "index": 1,
+    "title": "Temeller",
+    "cefr": "A1",
+    "description": "Selamlaşmadan geçmiş zamana: kendini tanıtmak, sipariş vermek, yol sormak ve plan yapmak",
+    "grammar": ["to be (am/is/are)", "have/has", "present simple giriş", "there is/are", "yer edatları", "be going to", "was/were", "past simple giriş", "should", "karşılaştırma (-er than)", "will, want to, would like"]
+  },
   "units": [
     {
       "id": "u1",

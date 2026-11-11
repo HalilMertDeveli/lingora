@@ -1,0 +1,588 @@
+{
+  "section": {
+    "id": "s2",
+    "index": 2,
+    "title": "Günlük hayat",
+    "cefr": "A1",
+    "description": "Örnek bölüm (test fixture): present simple ile günlük rutin",
+    "grammar": [
+      "present simple",
+      "don't / doesn't",
+      "Do / Does soruları"
+    ]
+  },
+  "units": [
+    {
+      "id": "s2u1",
+      "title": "Günüm",
+      "description": "Her gün yaptıklarımız: present simple",
+      "color": "0xFF1E88E5",
+      "nodes": [
+        {
+          "id": "s2u1l1",
+          "type": "lesson",
+          "title": "Sabah rutini",
+          "description": "I wake up, I get up, I have breakfast",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "kahvaltı",
+              "answer": "breakfast",
+              "choices": [
+                {
+                  "text": "breakfast",
+                  "emoji": "🍳"
+                },
+                {
+                  "text": "dinner",
+                  "emoji": "🍽️"
+                },
+                {
+                  "text": "lunch",
+                  "emoji": "🥪"
+                },
+                {
+                  "text": "bed",
+                  "emoji": "🛏️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I ___ up at seven.",
+              "translation": "Yedide uyanırım.",
+              "answer": "wake",
+              "choices": [
+                "wake",
+                "wakes",
+                "waking"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Her sabah kahvaltı yaparım.",
+              "lang": "tr",
+              "answers": [
+                "I have breakfast every morning",
+                "Every morning I have breakfast"
+              ],
+              "tokens": [
+                "I",
+                "have",
+                "breakfast",
+                "every",
+                "morning",
+                "do",
+                "make"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Elif ___ breakfast at eight.",
+              "translation": "Elif sekizde kahvaltı yapar.",
+              "answer": "has",
+              "choices": [
+                "has",
+                "have",
+                "having"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I get up early",
+              "answers": [
+                "I get up early"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "uyanmak",
+                  "wake up"
+                ],
+                [
+                  "kalkmak",
+                  "get up"
+                ],
+                [
+                  "kahvaltı",
+                  "breakfast"
+                ],
+                [
+                  "her sabah",
+                  "every morning"
+                ],
+                [
+                  "erken",
+                  "early"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kerem erken kalkar.",
+              "lang": "tr",
+              "answers": [
+                "Kerem gets up early"
+              ],
+              "tokens": [
+                "Kerem",
+                "gets",
+                "get",
+                "up",
+                "early",
+                "is"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I have breakfast at eight",
+              "translation": "Sekizde kahvaltı yaparım"
+            }
+          ]
+        },
+        {
+          "id": "s2u1l2",
+          "type": "lesson",
+          "title": "Her gün",
+          "description": "go to work, take the bus, every day",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "otobüs",
+              "answer": "bus",
+              "choices": [
+                {
+                  "text": "bus",
+                  "emoji": "🚌"
+                },
+                {
+                  "text": "train",
+                  "emoji": "🚆"
+                },
+                {
+                  "text": "car",
+                  "emoji": "🚗"
+                },
+                {
+                  "text": "bike",
+                  "emoji": "🚲"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "She ___ to work by bus.",
+              "translation": "O işe otobüsle gider.",
+              "answer": "goes",
+              "choices": [
+                "goes",
+                "go",
+                "going"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Her gün otobüse binerim.",
+              "lang": "tr",
+              "answers": [
+                "I take the bus every day",
+                "Every day I take the bus"
+              ],
+              "tokens": [
+                "I",
+                "take",
+                "the",
+                "bus",
+                "every",
+                "day",
+                "am",
+                "go"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We ___ the train every day.",
+              "translation": "Her gün trene bineriz.",
+              "answer": "take",
+              "choices": [
+                "take",
+                "takes",
+                "taking"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Sam goes to work by bike",
+              "answers": [
+                "Sam goes to work by bike"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "otobüs",
+                  "bus"
+                ],
+                [
+                  "tren",
+                  "train"
+                ],
+                [
+                  "iş",
+                  "work"
+                ],
+                [
+                  "her gün",
+                  "every day"
+                ],
+                [
+                  "bisiklet",
+                  "bike"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Mia işe trenle gider.",
+              "lang": "tr",
+              "answers": [
+                "Mia goes to work by train"
+              ],
+              "tokens": [
+                "Mia",
+                "goes",
+                "go",
+                "to",
+                "work",
+                "by",
+                "train",
+                "with"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I go to work by bus",
+              "translation": "İşe otobüsle giderim"
+            }
+          ]
+        },
+        {
+          "id": "s2u1s",
+          "type": "story",
+          "title": "Erken kalkan Kerem",
+          "description": "Kerem sabah rutinini anlatıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Do you get up early, Kerem?",
+              "translation": "Erken kalkar mısın, Kerem?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "Yes, I get up at six every day.",
+              "translation": "Evet, her gün altıda kalkarım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem kaçta kalkar?",
+              "choices": [
+                "Altıda",
+                "Sekizde",
+                "Onda"
+              ],
+              "answer": "Altıda"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "I don't drink coffee. I have tea.",
+              "translation": "Kahve içmem. Çay içerim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem ne içer?",
+              "choices": [
+                "Çay",
+                "Kahve",
+                "Süt"
+              ],
+              "answer": "Çay"
+            }
+          ],
+          "exercises": []
+        },
+        {
+          "id": "s2u1l3",
+          "type": "lesson",
+          "title": "Olumsuz",
+          "description": "I don't, she doesn't",
+          "exercises": [
+            {
+              "type": "fillBlank",
+              "text": "I ___ drink coffee.",
+              "translation": "Kahve içmem.",
+              "answer": "don't",
+              "choices": [
+                "don't",
+                "doesn't",
+                "not"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Deniz ___ like tea.",
+              "translation": "Deniz çay sevmez.",
+              "answer": "doesn't",
+              "choices": [
+                "doesn't",
+                "don't",
+                "isn't"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kahve içmem.",
+              "lang": "tr",
+              "answers": [
+                "I don't drink coffee",
+                "I do not drink coffee"
+              ],
+              "tokens": [
+                "I",
+                "don't",
+                "drink",
+                "coffee",
+                "not",
+                "am"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "çay",
+              "answer": "tea",
+              "choices": [
+                {
+                  "text": "tea",
+                  "emoji": "🍵"
+                },
+                {
+                  "text": "coffee",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "milk",
+                  "emoji": "🥛"
+                },
+                {
+                  "text": "water",
+                  "emoji": "💧"
+                }
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "She doesn't work on Sunday",
+              "answers": [
+                "She doesn't work on Sunday"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "içmek",
+                  "drink"
+                ],
+                [
+                  "sevmek",
+                  "like"
+                ],
+                [
+                  "çalışmak",
+                  "work"
+                ],
+                [
+                  "pazar",
+                  "Sunday"
+                ],
+                [
+                  "süt",
+                  "milk"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kerem pazar günü çalışmaz.",
+              "lang": "tr",
+              "answers": [
+                "Kerem doesn't work on Sunday",
+                "Kerem does not work on Sunday",
+                "Kerem doesn't work on Sundays"
+              ],
+              "tokens": [
+                "Kerem",
+                "doesn't",
+                "work",
+                "on",
+                "Sunday",
+                "not",
+                "is"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I don't drink milk",
+              "translation": "Süt içmem"
+            }
+          ]
+        },
+        {
+          "id": "s2u1l4",
+          "type": "lesson",
+          "title": "Sorular",
+          "description": "Do you…? Does she…?",
+          "exercises": [
+            {
+              "type": "fillBlank",
+              "text": "___ you like music?",
+              "translation": "Müzik sever misin?",
+              "answer": "Do",
+              "choices": [
+                "Do",
+                "Does",
+                "Are"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "___ Elif work here?",
+              "translation": "Elif burada mı çalışıyor?",
+              "answer": "Does",
+              "choices": [
+                "Does",
+                "Do",
+                "Is"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Çay sever misin?",
+              "lang": "tr",
+              "answers": [
+                "Do you like tea"
+              ],
+              "tokens": [
+                "Do",
+                "you",
+                "like",
+                "tea",
+                "Are",
+                "Does"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "müzik",
+              "answer": "music",
+              "choices": [
+                {
+                  "text": "music",
+                  "emoji": "🎵"
+                },
+                {
+                  "text": "book",
+                  "emoji": "📖"
+                },
+                {
+                  "text": "film",
+                  "emoji": "🎬"
+                },
+                {
+                  "text": "game",
+                  "emoji": "🎮"
+                }
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Does Sam play the guitar?",
+              "answers": [
+                "Does Sam play the guitar"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "müzik",
+                  "music"
+                ],
+                [
+                  "kitap",
+                  "book"
+                ],
+                [
+                  "oynamak",
+                  "play"
+                ],
+                [
+                  "burada",
+                  "here"
+                ],
+                [
+                  "gitar",
+                  "guitar"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Mia kitap okur mu?",
+              "lang": "tr",
+              "answers": [
+                "Does Mia read books"
+              ],
+              "tokens": [
+                "Does",
+                "Mia",
+                "read",
+                "books",
+                "reads",
+                "Is"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Do you like music?",
+              "translation": "Müzik sever misin?"
+            }
+          ]
+        },
+        {
+          "id": "s2u1t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u1c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}

@@ -46,6 +46,8 @@ class LessonScreen extends ConsumerStatefulWidget {
     this.mode = LessonMode.lesson,
     this.rewardXp = 0,
     this.retry,
+    this.badge,
+    this.passHeadline,
   });
 
   /// Lesson for a path node.
@@ -63,6 +65,12 @@ class LessonScreen extends ConsumerStatefulWidget {
 
   /// Builds a fresh attempt (tests reshuffle their questions).
   final LessonScreen Function()? retry;
+
+  /// Label above a test's questions; "ÜNİTE SINAVI" when null.
+  final String? badge;
+
+  /// Result headline after passing a test; "Ünite sınavını geçtin!" when null.
+  final String? passHeadline;
 
   @override
   ConsumerState<LessonScreen> createState() => _LessonScreenState();
@@ -236,7 +244,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         showStreak: !streakScreen,
         onContinue: next,
         headline: switch (widget.mode) {
-          LessonMode.test => 'Ünite sınavını geçtin!',
+          LessonMode.test => widget.passHeadline ?? 'Ünite sınavını geçtin!',
           LessonMode.practice => 'Tekrar tamamlandı!',
           LessonMode.lesson => null,
         },
@@ -329,7 +337,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                     )
                   : (widget.mode != LessonMode.lesson
                         ? Text(
-                            widget.mode == LessonMode.test ? 'ÜNİTE SINAVI' : 'HATALARINI ÇALIŞ',
+                            widget.mode == LessonMode.test
+                                ? (widget.badge ?? 'ÜNİTE SINAVI')
+                                : 'HATALARINI ÇALIŞ',
                             style: TextStyle(
                               color: Brand.muted,
                               fontWeight: FontWeight.w800,

@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/course_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
+import '../data/sections.dart';
 import '../models/course.dart';
 import '../nav/tab_navigator.dart';
 import '../theme.dart';
@@ -15,6 +16,7 @@ import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import 'lesson_screen.dart';
 import 'reminder_settings.dart';
+import 'section_header.dart';
 import 'story_screen.dart';
 
 enum NodeState { done, active, locked }
@@ -158,13 +160,16 @@ class _PathListState extends ConsumerState<_PathList> {
     final course = widget.course;
     final p = ref.watch(progressProvider);
     final all = course.allNodes;
-    final activeIndex = all.indexWhere((n) => !p.isDone(n.id));
-    _track(activeIndex == -1 ? null : all[activeIndex].id, activeIndex);
+    // Each open section has its own next node; the path focuses on the one in
+    // the furthest section (see currentNode).
+    final active = {for (final n in activeNodes(course, p).values) n.id};
+    final current = currentNode(course, p);
+    final open = {for (final s in course.sections) s.id: sectionOpen(course, s, p)};
+    _track(current?.id, current == null ? -1 : all.indexOf(current));
 
     NodeState stateOf(PathNode n) {
-      final i = all.indexOf(n);
       if (p.isDone(n.id)) return NodeState.done;
-      return i == activeIndex ? NodeState.active : NodeState.locked;
+      return active.contains(n.id) ? NodeState.active : NodeState.locked;
     }
 
     return Stack(
@@ -185,21 +190,28 @@ class _PathListState extends ConsumerState<_PathList> {
                 const ReminderPromptCard(),
                 const _DailyGoalCard(),
                 const SizedBox(height: 20),
-                for (final unit in course.units) ...[
-                  _UnitHeader(unit: unit, index: course.units.indexOf(unit) + 1),
-                  const SizedBox(height: 8),
-                  for (final node in unit.nodes)
-                    _NodeTile(
-                      key: stateOf(node) == NodeState.active ? _activeKey : ValueKey(node.id),
-                      node: node,
-                      unit: unit,
-                      state: stateOf(node),
-                      isLast: node == unit.nodes.last,
-                      highlight: node.id == _highlightId,
-                    ),
-                  const SizedBox(height: 20),
+                for (final section in course.sections) ...[
+                  if (!section.implicit) ...[
+                    SectionHeader(section: section, open: open[section.id]!),
+                    const SizedBox(height: 16),
+                  ],
+                  for (final unit in section.units) ...[
+                    _UnitHeader(unit: unit, index: section.units.indexOf(unit) + 1),
+                    const SizedBox(height: 8),
+                    for (final node in unit.nodes)
+                      _NodeTile(
+                        key: node == current ? _activeKey : ValueKey(node.id),
+                        node: node,
+                        unit: unit,
+                        state: stateOf(node),
+                        sectionOpen: open[section.id]!,
+                        isLast: node == unit.nodes.last,
+                        highlight: node.id == _highlightId,
+                      ),
+                    const SizedBox(height: 20),
+                  ],
                 ],
-                if (activeIndex == -1)
+                if (current == null)
                   const Padding(
                     padding: EdgeInsets.all(16),
                     child: Column(
@@ -338,6 +350,7 @@ class _NodeTile extends ConsumerWidget {
     required this.unit,
     required this.state,
     required this.isLast,
+    this.sectionOpen = true,
     this.highlight = false,
   });
 
@@ -345,6 +358,9 @@ class _NodeTile extends ConsumerWidget {
   final Unit unit;
   final NodeState state;
   final bool isLast;
+
+  /// False while the node's section is still locked.
+  final bool sectionOpen;
 
   /// Just reached after a lesson: glows for a moment.
   final bool highlight;
@@ -355,7 +371,15 @@ class _NodeTile extends ConsumerWidget {
     if (state == NodeState.locked) {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
-        ..showSnackBar(const SnackBar(content: Text('Önce önceki adımları tamamla.')));
+        ..showSnackBar(
+          SnackBar(
+            content: Text(
+              sectionOpen
+                  ? 'Önce önceki adımları tamamla.'
+                  : 'Bu bölüm kilitli. Önceki bölümü bitir ya da "Bölüme atla" sınavını geç.',
+            ),
+          ),
+        );
       return;
     }
     final nav = Navigator.of(context);

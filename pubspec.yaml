@@ -37,6 +37,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/courses/
+    - assets/courses/tr_en/
     - assets/exams/
     - assets/exam_packs/
     - assets/notes/
