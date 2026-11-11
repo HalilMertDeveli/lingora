@@ -573,8 +573,9 @@ List<(String, String)> unitPhrases(Unit unit, {int max = 14}) {
     for (final ex in n.exercises) {
       switch (ex.type) {
         case ExerciseType.match:
-          for (final (a, b) in ex.pairs) {
-            add(a, b);
+          // Match pairs are [native, learning].
+          for (final (tr, en) in ex.pairs) {
+            add(en, tr);
           }
         case ExerciseType.select:
           if (ex.answer != null && ex.prompt != null) add(ex.answer!, ex.prompt!);

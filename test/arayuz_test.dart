@@ -118,7 +118,10 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('unit-guide')), findsOneWidget);
       expect(find.text('Bu ünitedeki adımlar'), findsOneWidget);
-      expect(unitPhrases(unit), isNotEmpty);
+      final phrases = unitPhrases(unit);
+      expect(phrases, isNotEmpty);
+      expect(phrases.map((p) => p.$1), contains('hello'));
+      expect(phrases.map((p) => p.$1), isNot(contains('merhaba')), reason: 'English on the left');
     });
 
     testWidgets('the unit band sticks to the top while its unit scrolls by', (tester) async {
