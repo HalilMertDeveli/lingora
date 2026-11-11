@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'data/app_settings.dart';
+import 'ui/transitions.dart';
 
 export 'data/app_settings.dart' show AppMode, ThemePref;
 
@@ -106,7 +108,7 @@ class Palette {
   static const adultLight = Palette(
     kid: false,
     brightness: Brightness.light,
-    primary: Color(0xFF4553D0),
+    primary: Color(0xFFE06C00),
     onPrimary: Colors.white,
     accent: Color(0xFFD9900B),
     accentBg: Color(0xFFFCF3E1),
@@ -129,8 +131,8 @@ class Palette {
   static const adultDark = Palette(
     kid: false,
     brightness: Brightness.dark,
-    primary: Color(0xFF8E98F5),
-    onPrimary: Color(0xFF0E1120),
+    primary: Color(0xFFF39A3D),
+    onPrimary: Color(0xFF1A0E00),
     accent: Color(0xFFF0B13E),
     accentBg: Color(0xFF2A2214),
     success: Color(0xFF45C08A),
@@ -156,7 +158,7 @@ class Palette {
   static const kidLight = Palette(
     kid: true,
     brightness: Brightness.light,
-    primary: Color(0xFF6C4CF1),
+    primary: Color(0xFFF17F04),
     onPrimary: Colors.white,
     accent: Color(0xFFFFB020),
     accentBg: Color(0xFFFFF4DC),
@@ -179,8 +181,8 @@ class Palette {
   static const kidDark = Palette(
     kid: true,
     brightness: Brightness.dark,
-    primary: Color(0xFF9479FF),
-    onPrimary: Colors.white,
+    primary: Color(0xFFFF9F43),
+    onPrimary: Color(0xFF1A0E00),
     accent: Color(0xFFFFBE45),
     accentBg: Color(0xFF33290F),
     success: Color(0xFF34C77B),
@@ -434,6 +436,15 @@ ThemeData buildTheme({AppMode mode = AppMode.adult, Brightness brightness = Brig
       checkmarkColor: p.primary,
     ),
     listTileTheme: ListTileThemeData(iconColor: p.muted, textColor: p.ink),
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: DilbazPageTransitionsBuilder(),
+        TargetPlatform.iOS: DilbazPageTransitionsBuilder(fallback: CupertinoPageTransitionsBuilder()),
+        TargetPlatform.windows: DilbazPageTransitionsBuilder(),
+        TargetPlatform.macOS: DilbazPageTransitionsBuilder(fallback: CupertinoPageTransitionsBuilder()),
+        TargetPlatform.linux: DilbazPageTransitionsBuilder(),
+      },
+    ),
     progressIndicatorTheme: ProgressIndicatorThemeData(color: p.primary, linearTrackColor: p.line),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
@@ -518,7 +529,18 @@ class _TapCardState extends State<TapCard> {
     final tint = Color.alphaBlend(c.withValues(alpha: p.isDark ? 0.16 : 0.08), p.card);
     final BoxDecoration deco;
     double margin = 0;
-    if (lt.isKid) {
+    if (!lt.isKid && widget.onTap != null) {
+      // Adult choice cards: a thinner 3D lip that sinks while pressed.
+      final edge = widget.selected ? edgeOf3d(c) : (p.isDark ? p.edge : p.line);
+      final depth = _down ? 0.0 : 3.0;
+      margin = 3 - depth;
+      deco = BoxDecoration(
+        color: widget.selected ? tint : p.card,
+        borderRadius: BorderRadius.circular(Radii.md + 2),
+        border: Border.all(color: widget.selected ? c : p.line, width: 2),
+        boxShadow: [BoxShadow(color: edge, offset: Offset(0, depth))],
+      );
+    } else if (lt.isKid) {
       final edge = widget.selected ? c.withValues(alpha: 0.55) : p.edge;
       final depth = widget.onTap == null ? 2.0 : (_down ? 0.0 : 4.0);
       margin = 4 - depth.clamp(0, 4);
@@ -671,3 +693,9 @@ Color onColor(Color c) => c.computeLuminance() > 0.4 ? const Color(0xFF111318) :
 
 /// Emoji prefix shown only in Çocuk modu: `'${kidEmoji('💡')}Daha doğal'`.
 String kidEmoji(String emoji) => Brand.isKid ? '$emoji ' : '';
+
+/// Darker shade of [c] for a selected 3D card's lip (same rule as `edgeOf`).
+Color edgeOf3d(Color c) {
+  final h = HSLColor.fromColor(c);
+  return h.withLightness((h.lightness - 0.14).clamp(0.0, 1.0)).toColor();
+}

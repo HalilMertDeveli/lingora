@@ -308,6 +308,9 @@ void main() {
         matching: find.text('Sabah rutini'),
       );
       await tester.scrollUntilVisible(lesson, 600, scrollable: find.byType(Scrollable).first);
+      // Move it clear of the pinned unit band at the top.
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, 200));
+      await tester.pumpAndSettle();
       await tester.tap(lesson);
       await tester.pump();
       expect(find.textContaining('Bu bölüm kilitli'), findsOneWidget);

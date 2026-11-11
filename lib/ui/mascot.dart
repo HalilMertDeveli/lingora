@@ -16,12 +16,22 @@ const mascotAsset = 'assets/mascot/cayci_dayi.png';
 /// mode shows him small and still (or nothing when [decorative]), so every
 /// screen adapts without changes.
 class Mascot extends StatelessWidget {
-  const Mascot({super.key, this.mood = Mood.idle, this.size = 120, this.decorative = false});
+  const Mascot({
+    super.key,
+    this.mood = Mood.idle,
+    this.size = 120,
+    this.decorative = false,
+    this.react = false,
+  });
   final Mood mood;
   final double size;
 
   /// Purely decorative placements (hero banners) show nothing in adult mode.
   final bool decorative;
+
+  /// Adult mode: play the one-shot mood reaction (a hop, a droop) without the
+  /// idle loop. Used where the mascot answers something the learner did.
+  final bool react;
 
   /// The mascot's size in adult mode: small and quiet.
   static double adultSize(double size) => (size * 0.5).clamp(44.0, 72.0);
@@ -30,19 +40,22 @@ class Mascot extends StatelessWidget {
   Widget build(BuildContext context) {
     if (context.isKid) return Dayi(mood: mood, size: size);
     if (decorative) return const SizedBox.shrink();
-    return Dayi(mood: mood, size: adultSize(size), animate: false);
+    return Dayi(mood: mood, size: adultSize(size), animate: react, loop: false);
   }
 }
 
 /// Çaycı Dayı, the Dilbaz mascot: a tea seller on an orange tile. The tile
 /// carries its own background, so it reads on light and dark themes alike.
 class Dayi extends StatefulWidget {
-  const Dayi({super.key, this.mood = Mood.idle, this.size = 120, this.animate = true});
+  const Dayi({super.key, this.mood = Mood.idle, this.size = 120, this.animate = true, this.loop = true});
   final Mood mood;
   final double size;
 
   /// Idle bob and mood reactions (also off when the system reduces motion).
   final bool animate;
+
+  /// Keep the idle bob running between reactions.
+  final bool loop;
 
   @override
   State<Dayi> createState() => _DayiState();
@@ -55,20 +68,20 @@ class _DayiState extends State<Dayi> with TickerProviderStateMixin {
   /// One-shot reaction when the mood changes.
   late final _react = AnimationController(vsync: this, duration: const Duration(milliseconds: 650));
 
-  @override
-  void initState() {
-    super.initState();
-    if (widget.animate) _react.forward();
-  }
+  bool _reacted = false;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    if (!_reacted) {
+      _reacted = true;
+      if (widget.animate && loopsEnabled(context)) _react.forward();
+    }
     _syncLoop();
   }
 
   void _syncLoop() {
-    if (widget.animate && loopsEnabled(context)) {
+    if (widget.animate && widget.loop && loopsEnabled(context)) {
       if (!_loop.isAnimating) _loop.repeat();
     } else {
       _loop.stop();
@@ -79,7 +92,7 @@ class _DayiState extends State<Dayi> with TickerProviderStateMixin {
   void didUpdateWidget(Dayi old) {
     super.didUpdateWidget(old);
     _syncLoop();
-    if (old.mood != widget.mood && widget.animate) _react.forward(from: 0);
+    if (old.mood != widget.mood && widget.animate && loopsEnabled(context)) _react.forward(from: 0);
   }
 
   @override

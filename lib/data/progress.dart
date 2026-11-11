@@ -267,6 +267,7 @@ class LessonReward {
     required this.todayXp,
     required this.dailyGoal,
     this.questsCompleted = const [],
+    this.questProgress = const [],
   });
   final int xp;
   final int streak;
@@ -276,6 +277,23 @@ class LessonReward {
 
   /// Daily quests that became complete with this lesson.
   final List<QuestDef> questsCompleted;
+
+  /// Today's quests with their progress before and after this lesson.
+  final List<QuestStep> questProgress;
+
+  /// XP earned today before this lesson.
+  int get todayXpBefore => (todayXp - xp).clamp(0, todayXp);
+}
+
+/// One daily quest's progress across a lesson (for the celebration chain).
+class QuestStep {
+  const QuestStep({required this.quest, required this.before, required this.after});
+  final QuestDef quest;
+  final int before;
+  final int after;
+
+  bool get moved => after > before;
+  bool get completedNow => after >= quest.target && before < quest.target;
 }
 
 final prefsProvider = Provider<SharedPreferences>(
@@ -379,6 +397,10 @@ class ProgressNotifier extends Notifier<Progress> {
       questsCompleted: [
         for (final q in quests)
           if (!q.isComplete(before, now) && q.isComplete(state, now)) q,
+      ],
+      questProgress: [
+        for (final q in quests)
+          QuestStep(quest: q, before: q.progressOf(before, now), after: q.progressOf(state, now)),
       ],
     );
   }

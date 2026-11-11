@@ -213,7 +213,9 @@ void main() {
     expect(_rootCanPop(tester), isFalse);
   });
 
-  testWidgets('end of a lesson: result, streak, then one tap back with nothing left over', (tester) async {
+  testWidgets('end of a lesson: result, quests, streak, then one tap back with nothing left over', (
+    tester,
+  ) async {
     await _pumpShell(tester, _withDone(0, mistakes: ['u1l1#0']));
     await _tapTab(tester, AppTab.practice);
     await tester.tap(find.byKey(const Key('hub-mistakes')));
@@ -227,6 +229,9 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Tekrar tamamlandı!'), findsOneWidget);
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('quest-progress')), findsOneWidget);
     await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('streak-celebration')), findsOneWidget);
