@@ -77,18 +77,18 @@ flutter:
         - asset: assets/fonts/Inter-Bold.ttf
           weight: 900
 
-# App icon: Pofu's face (owner-supplied Lexigo set, see docs/assets.md).
+# App icon: the Çaycı Dayı mascot (owner-supplied, see docs/assets.md).
 # Regenerate with: dart run flutter_launcher_icons
 flutter_launcher_icons:
   image_path: assets/icon/icon.png
   android: true
   ios: true
   remove_alpha_ios: true
-  adaptive_icon_background: "#D37209"
+  adaptive_icon_background: "#F17F04"
   adaptive_icon_foreground: assets/icon/icon_foreground.png
   min_sdk_android: 21
   web:
     generate: true
     image_path: assets/icon/icon.png
-    background_color: "#D37209"
-    theme_color: "#D37209"
+    background_color: "#F17F04"
+    theme_color: "#F17F04"

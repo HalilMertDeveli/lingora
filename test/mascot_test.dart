@@ -6,6 +6,7 @@ import 'package:lingora/data/break_reminder.dart';
 import 'package:lingora/data/catalog.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/screens/lesson_result_screen.dart';
+import 'package:lingora/screens/onboarding_screen.dart';
 import 'package:lingora/theme.dart';
 import 'package:lingora/ui/mascot.dart';
 
@@ -38,94 +39,73 @@ double _contrast(Color a, Color b) {
 const _reward = LessonReward(xp: 15, streak: 3, streakExtended: false, todayXp: 15, dailyGoal: 20);
 
 void main() {
-  test('every pose has an image asset declared in pubspec', () {
+  test('mascot, icon, logo and flag assets exist and are declared', () {
     final pubspec = File('pubspec.yaml').readAsStringSync();
     expect(pubspec, contains('- assets/mascot/'));
-    for (final pose in PofuPose.values) {
-      expect(File(pose.asset).existsSync(), isTrue, reason: pose.asset);
-    }
-    expect(File('assets/mascot/face.png').existsSync(), isTrue);
+    expect(File(mascotAsset).existsSync(), isTrue);
+    expect(File('assets/mascot/cayci_dayi.svg').existsSync(), isTrue, reason: 'owner original kept');
+    expect(File('assets/icon/icon.png').existsSync(), isTrue);
     expect(File('assets/brand/google_g.png').existsSync(), isTrue);
     for (final t in courseCatalog) {
       if (t.flag != null) expect(File(t.flag!).existsSync(), isTrue, reason: t.flag);
     }
   });
 
-  test('moods map to the agreed poses', () {
-    expect(PofuPose.of(Mood.cheer), PofuPose.cool);
-    expect(PofuPose.of(Mood.happy), PofuPose.hello);
-    expect(PofuPose.of(Mood.idle), PofuPose.hello);
-    expect(PofuPose.of(Mood.calm), PofuPose.calm);
-    expect(PofuPose.of(Mood.sad), PofuPose.sad);
-    expect(PofuPose.of(Mood.think), PofuPose.point);
-    expect(PofuPose.of(Mood.joy), PofuPose.dance);
-  });
-
   group('Mascot', () {
-    testWidgets('kid mode: big, animated Pofu', (tester) async {
+    testWidgets('kid mode: big, animated Çaycı Dayı', (tester) async {
       await _pump(
         tester,
         const Scaffold(
           body: Center(child: Mascot(mood: Mood.cheer, size: 150)),
         ),
       );
-      final pofu = tester.widget<Pofu>(find.byType(Pofu));
-      expect(pofu.animate, isTrue);
-      expect(tester.getSize(find.byType(Pofu)), const Size(150, 150));
-      expect(find.byKey(const ValueKey('pofu-cool')), findsOneWidget);
+      expect(tester.widget<Dayi>(find.byType(Dayi)).animate, isTrue);
+      expect(tester.getSize(find.byType(Dayi)), const Size(150, 150));
+      expect(find.bySemanticsLabel('Çaycı Dayı'), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('adult mode: small and still; decorative ones hidden', (tester) async {
-      await _pump(
-        tester,
-        const Scaffold(
-          body: Column(
-            children: [
-              Mascot(mood: Mood.happy, size: 150),
-              Mascot(mood: Mood.joy, size: 150, decorative: true),
-            ],
-          ),
-        ),
-        mode: AppMode.adult,
-      );
-      expect(find.byType(Pofu), findsOneWidget);
-      expect(tester.widget<Pofu>(find.byType(Pofu)).animate, isFalse);
-      expect(tester.getSize(find.byType(Pofu)).width, 72);
-      expect(find.byKey(const ValueKey('pofu-hello')), findsOneWidget);
-    });
-
     for (final b in Brightness.values) {
-      testWidgets('dark themes give Pofu a light spot (${b.name})', (tester) async {
+      testWidgets('adult mode (${b.name}): small and still; decorative ones hidden', (tester) async {
         await _pump(
           tester,
-          const Scaffold(body: Mascot(mood: Mood.calm)),
+          const Scaffold(
+            body: Column(
+              children: [
+                Mascot(mood: Mood.happy, size: 150),
+                Mascot(mood: Mood.joy, size: 150, decorative: true),
+              ],
+            ),
+          ),
+          mode: AppMode.adult,
           b: b,
         );
-        final spot = find.descendant(
-          of: find.byKey(const ValueKey('pofu-calm')),
-          matching: find.byWidgetPredicate(
-            (w) => w is DecoratedBox && (w.decoration as BoxDecoration).color == Palette.mascotSpot,
-          ),
-        );
-        expect(spot, b == Brightness.dark ? findsOneWidget : findsNothing);
+        expect(find.byType(Dayi), findsOneWidget);
+        expect(tester.widget<Dayi>(find.byType(Dayi)).animate, isFalse);
+        expect(tester.getSize(find.byType(Dayi)).width, 72);
+        expect(tester.takeException(), isNull);
       });
     }
 
-    testWidgets('EmptyState shows Pofu with the message', (tester) async {
+    testWidgets('EmptyState shows the mascot with the message', (tester) async {
       await _pump(tester, const Scaffold(body: EmptyState(message: 'Şu an tekrar edilecek kelime yok.')));
       expect(find.text('Şu an tekrar edilecek kelime yok.'), findsOneWidget);
-      expect(find.byKey(const ValueKey('pofu-calm')), findsOneWidget);
+      expect(find.byKey(const ValueKey('dayi-calm')), findsOneWidget);
+    });
+
+    testWidgets('onboarding: kid mode greets with Çaycı Dayı, adult shows the logo', (tester) async {
+      await _pump(tester, const Scaffold(body: LingoraLogo()));
+      expect(find.byKey(const ValueKey('dilbaz-logo')), findsOneWidget);
     });
   });
 
   group('end of lesson', () {
-    for (final (accuracy, perfect, pose) in [
-      (100, true, 'cool'),
-      (92, false, 'cool'),
-      (70, false, 'hello'),
+    for (final (accuracy, perfect, mood) in [
+      (100, true, 'cheer'),
+      (92, false, 'cheer'),
+      (70, false, 'happy'),
     ]) {
-      testWidgets('accuracy $accuracy shows Pofu $pose', (tester) async {
+      testWidgets('accuracy $accuracy: mascot is $mood', (tester) async {
         await _pump(
           tester,
           LessonResultScreen(
@@ -135,17 +115,17 @@ void main() {
             perfect: perfect,
           ),
         );
-        expect(find.byKey(ValueKey('pofu-$pose')), findsOneWidget);
+        expect(find.byKey(ValueKey('dayi-$mood')), findsOneWidget);
         await tester.pump(const Duration(seconds: 3));
       });
     }
 
-    testWidgets('streak and break screens use calm Pofu', (tester) async {
+    testWidgets('streak and break screens use the calm mascot', (tester) async {
       await _pump(tester, const StreakCelebrationScreen(streak: 4));
-      expect(find.byKey(const ValueKey('pofu-calm')), findsOneWidget);
+      expect(find.byKey(const ValueKey('dayi-calm')), findsOneWidget);
       await _pump(tester, const BreakReminderScreen());
-      expect(find.text('Kısa bir mola?'), findsOneWidget);
-      expect(find.byKey(const ValueKey('pofu-calm')), findsOneWidget);
+      expect(find.text('Kısa bir çay molası?'), findsOneWidget);
+      expect(find.byKey(const ValueKey('dayi-calm')), findsOneWidget);
     });
   });
 
@@ -158,7 +138,7 @@ void main() {
     expect(t.recordLesson(const Duration(minutes: 18)), isTrue);
   });
 
-  test('Pofu orange is readable in every palette', () {
+  test('mascot orange is readable in every palette', () {
     for (final p in [Palette.adultLight, Palette.adultDark, Palette.kidLight, Palette.kidDark]) {
       expect(
         _contrast(p.mascot, p.onMascot),

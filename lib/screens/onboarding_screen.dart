@@ -146,26 +146,20 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 }
 
-/// Dilbaz brand mark: Pofu's face, the same art as the app icon.
+/// Dilbaz brand mark: Çaycı Dayı on his orange tile, the same art as the
+/// app icon.
 class LingoraLogo extends StatelessWidget {
   const LingoraLogo({super.key, this.size = 96});
   final double size;
 
   @override
-  Widget build(BuildContext context) => ClipRRect(
+  Widget build(BuildContext context) => Image.asset(
+    mascotAsset,
     key: const ValueKey('dilbaz-logo'),
-    borderRadius: BorderRadius.circular(size * 0.24),
-    child: ColoredBox(
-      color: Palette.pofuOrange,
-      child: Image.asset(
-        'assets/mascot/face.png',
-        width: size,
-        height: size,
-        fit: BoxFit.cover,
-        semanticLabel: 'Dilbaz',
-        errorBuilder: (_, _, _) => SizedBox(width: size, height: size),
-      ),
-    ),
+    width: size,
+    height: size,
+    semanticLabel: 'Dilbaz',
+    errorBuilder: (_, _, _) => SizedBox(width: size, height: size),
   );
 }
 
@@ -178,14 +172,14 @@ class _Welcome extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Kid mode: Pofu waves hello, big. Adult mode: the calm brand mark.
-        if (context.isKid) const Pofu(mood: Mood.happy, size: 180) else const LingoraLogo(size: 112),
+        // Kid mode: Çaycı Dayı greets you, big and lively. Adult: the still brand mark.
+        if (context.isKid) const Dayi(mood: Mood.happy, size: 180) else const LingoraLogo(size: 112),
         const SizedBox(height: 28),
         Text('Dilbaz', style: t.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
         const SizedBox(height: 10),
         Text(
           context.isKid
-              ? 'Merhaba, ben Pofu!\nHer gün birkaç dakika, birlikte öğrenelim.'
+              ? 'Hoş geldin, ben Çaycı Dayı!\nÇayını al, her gün birkaç dakika birlikte öğrenelim.'
               : 'Her gün birkaç dakika,\nadım adım yeni bir dil.',
           textAlign: TextAlign.center,
           style: t.titleMedium?.copyWith(color: Brand.muted, fontWeight: FontWeight.w500),

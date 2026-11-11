@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="bg"><rect width="512" height="512" rx="112"/></clipPath>
+    <clipPath id="glass"><path d="M347 330 L403 330 C402 360 390 372 392 385 C394 400 404 415 400 440 L350 440 C346 415 356 400 358 385 C360 372 348 360 347 330 Z"/></clipPath>
+    <radialGradient id="bgGrad" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#FF9A2E"/>
+      <stop offset="1" stop-color="#F17F04"/>
+    </radialGradient>
+  </defs>
+  <g clip-path="url(#bg)">
+    <rect width="512" height="512" fill="url(#bgGrad)"/>
+    <!-- body -->
+    <path d="M110 512 C110 425 165 392 240 392 C315 392 370 425 370 512 Z" fill="#3C5A7A"/>
+    <path d="M205 395 L240 440 L275 395 Z" fill="#FFFFFF"/>
+    <!-- ears -->
+    <circle cx="122" cy="285" r="22" fill="#EDB088"/>
+    <circle cx="358" cy="285" r="22" fill="#EDB088"/>
+    <!-- face -->
+    <circle cx="240" cy="275" r="120" fill="#F5C49C"/>
+    <!-- cap -->
+    <path d="M116 208 C112 158 175 124 245 124 C320 124 374 154 364 208 Z" fill="#5B4636"/>
+    <path d="M152 165 C192 142 290 142 330 165" fill="none" stroke="#6E5644" stroke-width="6" stroke-linecap="round"/>
+    <path d="M104 206 Q240 236 376 206 Q380 224 364 230 Q240 254 116 230 Q100 224 104 206 Z" fill="#45352A"/>
+    <circle cx="245" cy="129" r="8" fill="#45352A"/>
+    <!-- eyebrows -->
+    <path d="M178 258 Q197 246 216 254" fill="none" stroke="#3A2E28" stroke-width="11" stroke-linecap="round"/>
+    <path d="M264 254 Q283 246 302 258" fill="none" stroke="#3A2E28" stroke-width="11" stroke-linecap="round"/>
+    <!-- eyes -->
+    <ellipse cx="198" cy="276" rx="11" ry="14" fill="#2E2420"/>
+    <ellipse cx="282" cy="276" rx="11" ry="14" fill="#2E2420"/>
+    <circle cx="195" cy="271" r="4" fill="#FFFFFF"/>
+    <circle cx="279" cy="271" r="4" fill="#FFFFFF"/>
+    <!-- cheeks -->
+    <circle cx="176" cy="322" r="18" fill="#F0846E" opacity="0.45"/>
+    <circle cx="304" cy="322" r="18" fill="#F0846E" opacity="0.45"/>
+    <!-- mouth -->
+    <path d="M214 350 Q240 384 266 350 Z" fill="#7A2E22"/>
+    <!-- nose -->
+    <ellipse cx="240" cy="305" rx="22" ry="18" fill="#E9A57C"/>
+    <!-- mustache -->
+    <path d="M240 318 C220 305 180 308 165 330 C158 342 168 352 178 345 C195 335 215 345 240 338 C265 345 285 335 302 345 C312 352 322 342 315 330 C300 308 260 305 240 318 Z" fill="#2E2420"/>
+    <!-- steam -->
+    <g fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.75">
+      <path d="M362 318 C352 304 372 296 362 282"/>
+      <path d="M378 312 C368 296 390 288 378 270"/>
+      <path d="M394 318 C384 304 404 296 394 282"/>
+    </g>
+    <!-- saucer -->
+    <ellipse cx="375" cy="446" rx="54" ry="13" fill="#FFFFFF"/>
+    <ellipse cx="375" cy="446" rx="54" ry="13" fill="none" stroke="#D7263D" stroke-width="4"/>
+    <!-- tea glass -->
+    <g clip-path="url(#glass)">
+      <rect x="340" y="320" width="70" height="130" fill="#B5321A"/>
+      <rect x="340" y="320" width="70" height="22" fill="#FBE3D2" opacity="0.9"/>
+      <path d="M356 335 C356 365 366 375 366 390 C366 405 358 420 358 438" fill="none" stroke="#FFFFFF" stroke-width="5" opacity="0.45"/>
+    </g>
+    <path d="M347 330 L403 330 C402 360 390 372 392 385 C394 400 404 415 400 440 L350 440 C346 415 356 400 358 385 C360 372 348 360 347 330 Z" fill="none" stroke="#FFFFFF" stroke-width="3" opacity="0.9"/>
+    <!-- hand -->
+    <ellipse cx="350" cy="402" rx="22" ry="19" fill="#F5C49C"/>
+    <path d="M360 392 L372 392 M360 402 L373 402 M360 412 L371 412" stroke="#E0A27C" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -6,7 +6,7 @@ import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 
-/// Accuracy from which the end screen shows Pofu's "cool" pose.
+/// Accuracy from which the end screen cheers (big hop) instead of a wave.
 const successAccuracy = 90;
 
 class LessonResultScreen extends StatelessWidget {
@@ -56,7 +56,7 @@ class LessonResultScreen extends StatelessWidget {
             child: Column(
               children: [
                 const Spacer(),
-                // Pofu: sunglasses for a strong lesson, a wave otherwise.
+                // The mascot cheers for a strong lesson and waves otherwise.
                 Mascot(mood: success ? Mood.cheer : Mood.happy, size: 150),
                 const SizedBox(height: 8),
                 PopIn(
@@ -184,8 +184,8 @@ class StreakCelebrationScreen extends StatelessWidget {
   );
 }
 
-/// Gentle break reminder after a run of lessons (see BreakTracker): Pofu
-/// meditates; never blocks learning.
+/// Gentle break reminder after a run of lessons (see BreakTracker): Çaycı Dayı
+/// offers a tea break; never blocks learning.
 class BreakReminderScreen extends StatelessWidget {
   const BreakReminderScreen({super.key, this.onContinue});
   final VoidCallback? onContinue;
@@ -201,11 +201,11 @@ class BreakReminderScreen extends StatelessWidget {
             const Spacer(),
             const Mascot(mood: Mood.calm, size: 170),
             const SizedBox(height: 12),
-            Text('Kısa bir mola?', style: Theme.of(context).textTheme.headlineSmall),
+            Text('Kısa bir çay molası?', style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: 10),
             Text(
               'Art arda birkaç ders yaptın, harika!\n'
-              'Birkaç dakika gözlerini dinlendir, su iç; öğrendiklerin yerine otursun.',
+              'Birkaç dakika gözlerini dinlendir, bir çay iç; öğrendiklerin yerine otursun.',
               textAlign: TextAlign.center,
               style: TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
             ),

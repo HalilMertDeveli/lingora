@@ -5,7 +5,7 @@ import '../theme.dart';
 import '../ui/mascot.dart';
 
 /// "Giriş yap / Hesap oluştur": e-mail + password, password reset, and
-/// Google or phone sign-in, in Pofu orange. Pops with `true` on success.
+/// Google or phone sign-in, in the mascot orange. Pops with `true` on success.
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key, required this.service, this.register = false});
   final AccountService service;
@@ -118,7 +118,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      Pofu(mood: Mood.happy, size: context.isKid ? 96 : 64, animate: context.isKid),
+                      Dayi(mood: Mood.happy, size: context.isKid ? 96 : 64, animate: context.isKid),
                     ],
                   ),
                   const SizedBox(height: 20),

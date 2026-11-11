@@ -80,7 +80,7 @@ class Palette {
   /// Kid mode's darker 3D edge under neutral cards.
   final Color edge;
 
-  /// Pofu orange: the brand accent for sign-in, mascot moments and the
+  /// Mascot orange: the brand accent for sign-in, mascot moments and the
   /// app icon. Dark palettes use a lighter tone with dark text on it.
   final Color mascot;
   final Color onMascot;
@@ -88,11 +88,8 @@ class Palette {
   /// Soft orange fill (inputs, chips) behind mascot-accented content.
   final Color mascotBg;
 
-  /// The orange of Pofu's drawings and the launcher icon background.
-  static const pofuOrange = Color(0xFFD37209);
-
-  /// Cream spot Pofu sits on in dark themes.
-  static const mascotSpot = Color(0xFFF7EBDD);
+  /// Çaycı Dayı's orange tile and the launcher icon background.
+  static const mascotOrange = Color(0xFFF17F04);
 
   bool get isDark => brightness == Brightness.dark;
 
