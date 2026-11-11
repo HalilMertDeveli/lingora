@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/progress.dart';
+import '../../data/topic_themes.dart';
 import '../../data/vocab_practice.dart';
 import '../../models/vocab.dart';
 import '../../theme.dart';
 import '../../ui/motion.dart';
+import '../../ui/theme_art.dart';
 import '../../nav/tab_navigator.dart';
 import 'discover_screen.dart';
 import 'review_screen.dart';
@@ -20,24 +22,6 @@ Color statusColor(VocabStatus s) => switch (s) {
   VocabStatus.unknown => Brand.line,
   VocabStatus.learning => Brand.accent,
   VocabStatus.known => Brand.success,
-};
-
-/// Adult-mode icon for each topic (kid mode shows the topic's emoji).
-IconData topicIcon(String topic) => switch (topic) {
-  'Temeller' => Icons.code_rounded,
-  'Git ve sürüm kontrolü' => Icons.call_split_rounded,
-  'Hata ayıklama' => Icons.bug_report_outlined,
-  'Test' => Icons.science_outlined,
-  'Mimari ve tasarım' => Icons.account_tree_outlined,
-  'Web' => Icons.language_rounded,
-  'Mobil (Flutter/Android/Kotlin)' => Icons.phone_android_rounded,
-  'Veri ve yapay zekâ' => Icons.insights_rounded,
-  'DevOps ve bulut' => Icons.cloud_outlined,
-  'Güvenlik' => Icons.lock_outline_rounded,
-  'Proje yönetimi ve Agile' => Icons.view_kanban_outlined,
-  'Toplantı ve iletişim' => Icons.groups_outlined,
-  'Mülakat' => Icons.record_voice_over_outlined,
-  _ => Icons.label_outline_rounded,
 };
 
 const statusLabels = {
@@ -115,7 +99,8 @@ class VocabDiscoverTab extends ConsumerWidget {
           const SizedBox(height: 8),
           const SectionLabel('KONULAR'),
           const SizedBox(height: 8),
-          for (final t in bundle.topics) _TopicTile(topic: t, entries: bundle.inTopic(t.name), all: entries),
+          for (final (i, t) in bundle.topics.indexed)
+            _TopicTile(index: i, topic: t, entries: bundle.inTopic(t.name), all: entries),
         ],
       );
     },
@@ -361,7 +346,10 @@ class _Action extends StatelessWidget {
 }
 
 class _TopicTile extends ConsumerWidget {
-  const _TopicTile({required this.topic, required this.entries, required this.all});
+  const _TopicTile({required this.index, required this.topic, required this.entries, required this.all});
+
+  /// Position of the topic: picks its object from the code theme.
+  final int index;
   final VocabTopic topic;
   final List<VocabEntry> entries;
   final List<VocabEntry> all;
@@ -377,7 +365,22 @@ class _TopicTile extends ConsumerWidget {
         onTap: () => pushVocab(context, VocabTopicScreen(topic: topic, entries: entries, all: all)),
         child: Row(
           children: [
-            Glyph(emoji: topic.emoji, icon: topicIcon(topic.name), color: vocabColor),
+            // The code theme's objects (terminal, branch, bug…) on a soft tile.
+            Container(
+              width: 46,
+              height: 46,
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: vocabColor.withValues(alpha: context.palette.isDark ? 0.22 : 0.12),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: ThemeObject(
+                theme: themeById(softwareThemeId),
+                object: softwareTopicObject(index),
+                size: 36,
+                semanticLabel: topic.name,
+              ),
+            ),
             const SizedBox(width: 12),
             Expanded(
               child: Column(

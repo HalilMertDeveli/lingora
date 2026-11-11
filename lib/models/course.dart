@@ -170,6 +170,7 @@ class Unit {
     required this.description,
     required this.color,
     required this.nodes,
+    this.theme,
   });
 
   final String id;
@@ -178,12 +179,16 @@ class Unit {
   final Color color;
   final List<PathNode> nodes;
 
+  /// Topic theme id (lib/data/topic_themes.dart); null uses the default.
+  final String? theme;
+
   factory Unit.fromJson(Map<String, dynamic> j) => Unit(
     id: j['id'] as String,
     title: j['title'] as String,
     description: (j['description'] as String?) ?? '',
     color: Color(int.parse(j['color'] as String)),
     nodes: (j['nodes'] as List).map((n) => PathNode.fromJson(n as Map<String, dynamic>)).toList(),
+    theme: j['theme'] as String?,
   );
 }
 

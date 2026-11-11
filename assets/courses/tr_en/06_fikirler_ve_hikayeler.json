@@ -23,6 +23,7 @@
       "title": "Ben gelmeden önce",
       "description": "Past perfect ile bir olaydan daha önce olanları anlatma",
       "color": "0xFF6C4CF1",
+      "theme": "gecmis",
       "nodes": [
         {
           "id": "s6u1l1",
@@ -731,6 +732,7 @@
       "title": "Bir varmış bir yokmuş",
       "description": "Geçmiş zamanları bir arada kullanıp olayları sırasıyla bir hikâye gibi anlatma",
       "color": "0xFFF2994A",
+      "theme": "kutuphane",
       "nodes": [
         {
           "id": "s6u2l1",
@@ -1480,6 +1482,7 @@
       "title": "Aradığım kişi",
       "description": "who, which, that, where, whose ile insanları, nesneleri ve yerleri tanımlayarak ayırt etme",
       "color": "0xFF14A098",
+      "theme": "dedektif",
       "nodes": [
         {
           "id": "s6u3l1",
@@ -2205,6 +2208,7 @@
       "title": "Bu arada…",
       "description": "Virgüllü who, which, whose ile ek bilgi verme ve cümleye which ile yorum ekleme",
       "color": "0xFF2D9CDB",
+      "theme": "haber",
       "nodes": [
         {
           "id": "s6u4l1",
@@ -2939,6 +2943,7 @@
       "title": "O kadar güzeldi ki",
       "description": "so … that ve such … that ile duyguları ve sonuçları güçlü biçimde anlatma",
       "color": "0xFFE0559A",
+      "theme": "duygular",
       "nodes": [
         {
           "id": "s6u5l1",
@@ -3693,6 +3698,7 @@
       "title": "Keşke",
       "description": "wish / if only ile şimdiki durumla ilgili dilekleri ve hayalleri söyleme",
       "color": "0xFF5A67D8",
+      "theme": "hayaller",
       "nodes": [
         {
           "id": "s6u6l1",
@@ -4413,6 +4419,7 @@
       "title": "Pişmanlıklar ve şikâyetler",
       "description": "wish + past perfect ile geçmişteki pişmanlıkları, wish + would ile başkalarından şikâyetleri ifade etme",
       "color": "0xFF27AE60",
+      "theme": "duygular",
       "nodes": [
         {
           "id": "s6u7l1",
@@ -5117,6 +5124,7 @@
       "title": "Değil mi?",
       "description": "Question tag'lerle onay isteme, özel durumlar (aren't I, shall we) ve sohbeti canlı tutma",
       "color": "0xFF00A3C4",
+      "theme": "cay",
       "nodes": [
         {
           "id": "s6u8l1",
@@ -5815,6 +5823,7 @@
       "title": "İnsanlar arasında",
       "description": "İlişkileri anlatan phrasal verb'lerle (get on with, fall out, look up to…) insanlar arasındaki duyguları anlatma",
       "color": "0xFF9B51E0",
+      "theme": "duygular",
       "nodes": [
         {
           "id": "s6u9l1",
@@ -6518,6 +6527,7 @@
       "title": "Fikir bulmak",
       "description": "come up with, turn down, put off gibi phrasal verb'lerle plan, sorun ve çözümleri anlatma; nesnenin yeri",
       "color": "0xFFEB5757",
+      "theme": "toplanti",
       "nodes": [
         {
           "id": "s6u10l1",
@@ -7222,6 +7232,7 @@
       "title": "Yine de",
       "description": "although, even though, despite, however ve whereas ile karşıtlıkları ve beklenmedik sonuçları bağlama",
       "color": "0xFFF2A900",
+      "theme": "toplanti",
       "nodes": [
         {
           "id": "s6u11l1",
@@ -7929,6 +7940,7 @@
       "title": "Bence",
       "description": "in my opinion, I see your point but… gibi kalıplarla bir film ya da kitap hakkında fikir bildirme, katılma ve katılmama",
       "color": "0xFFFF7A59",
+      "theme": "sanat",
       "nodes": [
         {
           "id": "s6u12l1",

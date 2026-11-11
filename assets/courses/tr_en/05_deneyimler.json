@@ -22,6 +22,7 @@
       "title": "Ne zamandır?",
       "description": "Bir yıl sonra İzmir: for, since ve How long have you…?",
       "color": "0xFF6C4CF1",
+      "theme": "zaman",
       "nodes": [
         {
           "id": "s5u1l1",
@@ -807,6 +808,7 @@
       "title": "Bütün gün ne yaptın?",
       "description": "Süregelen eylemler ve izleri: have been + -ing",
       "color": "0xFFF2994A",
+      "theme": "tamir",
       "nodes": [
         {
           "id": "s5u2l1",
@@ -1624,6 +1626,7 @@
       "title": "Eskiden",
       "description": "Geçmişteki alışkanlıklar: used to, didn't use to, Did you use to…?",
       "color": "0xFF14A098",
+      "theme": "gecmis",
       "nodes": [
         {
           "id": "s5u3l1",
@@ -2410,6 +2413,7 @@
       "title": "Nasıl yapılıyor?",
       "description": "Süreçleri anlatmak: is/are + V3, by, made of/from",
       "color": "0xFF2D9CDB",
+      "theme": "doga",
       "nodes": [
         {
           "id": "s5u4l1",
@@ -3196,6 +3200,7 @@
       "title": "Kim yaptı?",
       "description": "Buluşlar, tarih ve olaylar: was/were + V3, by",
       "color": "0xFFE0559A",
+      "theme": "kutuphane",
       "nodes": [
         {
           "id": "s5u5l1",
@@ -3980,6 +3985,7 @@
       "title": "Bir piyango çıksa",
       "description": "Hayalî durumlar ve tavsiye: If + past, would; If I were you",
       "color": "0xFF5A67D8",
+      "theme": "olasilik",
       "nodes": [
         {
           "id": "s5u6l1",
@@ -4783,6 +4789,7 @@
       "title": "Dedi ki…",
       "description": "Başkalarının sözlerini aktarmak: say/tell, zaman kayması ve dolaylı sorular",
       "color": "0xFF27AE60",
+      "theme": "haber",
       "nodes": [
         {
           "id": "s5u7l1",
@@ -5645,6 +5652,7 @@
       "title": "Kalk, çık, vazgeç",
       "description": "Günlük phrasal verb'ler: get up, give up, look for, set off ve fazlası",
       "color": "0xFF00A3C4",
+      "theme": "gunluk",
       "nodes": [
         {
           "id": "s5u8l1",
@@ -6506,6 +6514,7 @@
       "title": "Kim almış olabilir?",
       "description": "Kanıta dayalı tahmin: might, may, could, must ve can't",
       "color": "0xFF9B51E0",
+      "theme": "dedektif",
       "nodes": [
         {
           "id": "s5u9l1",
@@ -7361,6 +7370,7 @@
       "title": "Yolculuk anıları",
       "description": "Seyahat deneyimleri: present perfect mi past simple mı, for/since ve used to",
       "color": "0xFFEB5757",
+      "theme": "seyahat",
       "nodes": [
         {
           "id": "s5u10l1",
@@ -8234,6 +8244,7 @@
       "title": "Kariyer yolculuğu",
       "description": "İş görüşmesinde deneyimini anlatmak: perfect continuous, passive ve used to",
       "color": "0xFFF2A900",
+      "theme": "mulakat",
       "nodes": [
         {
           "id": "s5u11l1",
@@ -9100,6 +9111,7 @@
       "title": "Unutulmaz anlar",
       "description": "Anılar, duygular ve bölümün genel tekrarı",
       "color": "0xFFFF7A59",
+      "theme": "duygular",
       "nodes": [
         {
           "id": "s5u12l1",

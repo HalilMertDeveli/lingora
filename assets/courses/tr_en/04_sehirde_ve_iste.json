@@ -22,6 +22,7 @@
       "title": "Yeni şehir, yeni ev",
       "description": "İzmir'e taşınmak ve present perfect ile ilk adımlar",
       "color": "0xFF6C4CF1",
+      "theme": "aile",
       "nodes": [
         {
           "id": "s4u1l1",
@@ -732,6 +733,7 @@
       "title": "Hiç denedin mi?",
       "description": "Deneyimler: ever/never, been to/gone to ve \"ne zaman?\" sorusu",
       "color": "0xFFF2994A",
+      "theme": "seyahat",
       "nodes": [
         {
           "id": "s4u2l1",
@@ -1485,6 +1487,7 @@
       "title": "Az önce, zaten, henüz",
       "description": "just, already ve yet ile yapılacak işleri konuşmak",
       "color": "0xFF14A098",
+      "theme": "zaman",
       "nodes": [
         {
           "id": "s4u3l1",
@@ -2225,6 +2228,7 @@
       "title": "Ofiste ilk gün",
       "description": "have to, has to ve don't have to ile iş yerinde görevler",
       "color": "0xFF2D9CDB",
+      "theme": "is",
       "nodes": [
         {
           "id": "s4u4l1",
@@ -3030,6 +3034,7 @@
       "title": "Kurallar ve tavsiyeler",
       "description": "must, mustn't, should, shouldn't; mustn't ile don't have to farkı",
       "color": "0xFFE0559A",
+      "theme": "is",
       "nodes": [
         {
           "id": "s4u5l1",
@@ -3848,6 +3853,7 @@
       "title": "Çok mu pahalı?",
       "description": "too, enough, too much/many ile ev ve işi değerlendirmek",
       "color": "0xFF5A67D8",
+      "theme": "alisveris",
       "nodes": [
         {
           "id": "s4u6l1",
@@ -4558,6 +4564,7 @@
       "title": "Yağmur yağarsa…",
       "description": "Plan ve olasılıklar: first conditional ve unless",
       "color": "0xFF27AE60",
+      "theme": "hava",
       "nodes": [
         {
           "id": "s4u7l1",
@@ -5376,6 +5383,7 @@
       "title": "Yapmayı seviyorum",
       "description": "Alışkanlıklar ve kararlar: -ing mi, to mu?",
       "color": "0xFF00A3C4",
+      "theme": "spor",
       "nodes": [
         {
           "id": "s4u8l1",
@@ -6128,6 +6136,7 @@
       "title": "Hangi kafe, hangi kişi?",
       "description": "İnsanları ve şeyleri tanımlamak: who, which, that",
       "color": "0xFF9B51E0",
+      "theme": "cay",
       "nodes": [
         {
           "id": "s4u9l1",
@@ -6870,6 +6879,7 @@
       "title": "İlk iş e-postam",
       "description": "Basit iş e-postası: Dear…, I'm writing to…, Best regards",
       "color": "0xFFEB5757",
+      "theme": "yazisma",
       "nodes": [
         {
           "id": "s4u10l1",
@@ -7631,6 +7641,7 @@
       "title": "Telefonda",
       "description": "İş telefonu: bağlamak, beklemek, mesaj bırakmak",
       "color": "0xFFF2A900",
+      "theme": "teknoloji",
       "nodes": [
         {
           "id": "s4u11l1",
@@ -8387,6 +8398,7 @@
       "title": "Şehirde bir gün",
       "description": "Postane, eczane, banka: resmî işler ve bölüm tekrarı",
       "color": "0xFFFF7A59",
+      "theme": "sehir",
       "nodes": [
         {
           "id": "s4u12l1",

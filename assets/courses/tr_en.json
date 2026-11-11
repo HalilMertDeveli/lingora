@@ -17,6 +17,7 @@
       "title": "Merhaba!",
       "description": "Selamlaşma, tanışma ve kendini tanıtma",
       "color": "0xFF6C4CF1",
+      "theme": "cay",
       "nodes": [
         {
           "id": "u1l1",
@@ -122,6 +123,7 @@
       "title": "Yemek ve İçecek",
       "description": "Yiyecekler, içecekler ve sipariş vermek",
       "color": "0xFFF2994A",
+      "theme": "yemek",
       "nodes": [
         {
           "id": "u2l1",
@@ -227,6 +229,7 @@
       "title": "Aile",
       "description": "Aile üyeleri, sahip olmak ve yaşlar",
       "color": "0xFF14A098",
+      "theme": "aile",
       "nodes": [
         {
           "id": "u3l1",
@@ -334,6 +337,7 @@
       "title": "Sayılar ve Zaman",
       "description": "Sayılar, saatler ve haftanın günleri",
       "color": "0xFF2D9CDB",
+      "theme": "zaman",
       "nodes": [
         {
           "id": "u4l1",
@@ -439,6 +443,7 @@
       "title": "Renkler ve Alışveriş",
       "description": "Renkler, giysiler ve fiyat sormak",
       "color": "0xFFE0559A",
+      "theme": "alisveris",
       "nodes": [
         {
           "id": "u5l1",
@@ -544,6 +549,7 @@
       "title": "Günlük Hayat",
       "description": "Sabah rutini, hobiler ve şehirde yol bulma",
       "color": "0xFF5A67D8",
+      "theme": "gunluk",
       "nodes": [
         {
           "id": "u6l1",
@@ -650,6 +656,7 @@
       "title": "Ev ve Şehir",
       "description": "Evdeki odalar, there is/are ve yer bildiren edatlar",
       "color": "0xFF27AE60",
+      "theme": "aile",
       "nodes": [
         {
           "id": "u7l1",
@@ -736,6 +743,7 @@
       "title": "Seyahat",
       "description": "Ulaşım, going to ile planlar ve yol tarifi",
       "color": "0xFF00A3C4",
+      "theme": "seyahat",
       "nodes": [
         {
           "id": "u8l1",
@@ -822,6 +830,7 @@
       "title": "Geçmiş Zaman",
       "description": "was/were, düzenli ve düzensiz fiillerle geçmiş zaman",
       "color": "0xFF9B51E0",
+      "theme": "gecmis",
       "nodes": [
         {
           "id": "u9l1",
@@ -907,6 +916,7 @@
       "title": "Sağlık ve Vücut",
       "description": "Vücudun bölümleri, hastalıklar ve doktorda",
       "color": "0xFFEB5757",
+      "theme": "saglik",
       "nodes": [
         {
           "id": "u10l1",
@@ -993,6 +1003,7 @@
       "title": "Hava ve Mevsimler",
       "description": "Hava durumu, mevsimler ve karşılaştırma yapmak",
       "color": "0xFFF2A900",
+      "theme": "hava",
       "nodes": [
         {
           "id": "u11l1",
@@ -1078,6 +1089,7 @@
       "title": "Planlar ve Hayaller",
       "description": "will, want to ve would like ile gelecek ve hayaller",
       "color": "0xFFFF7A59",
+      "theme": "hayaller",
       "nodes": [
         {
           "id": "u12l1",
