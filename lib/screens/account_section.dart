@@ -6,6 +6,7 @@ import '../services/firebase/account_service.dart';
 import '../services/firebase/firebase_providers.dart';
 import '../services/firebase/progress_sync.dart';
 import '../theme.dart';
+import 'auth_screen.dart';
 import 'paywall_screen.dart';
 
 /// "Hesap" card in Profil: account status, cloud backup state and
@@ -77,26 +78,21 @@ class AccountSection extends ConsumerWidget {
           ],
           if (service != null) ...[
             const SizedBox(height: 12),
-            if (!signedIn) ...[
+            if (!signedIn)
               FilledButton.icon(
-                icon: const Icon(Icons.g_mobiledata),
-                label: const Text('Google ile bağla'),
-                onPressed: () => _run(context, service.signInWithGoogle),
-              ),
-              const SizedBox(height: 8),
-              OutlinedButton.icon(
-                icon: const Icon(Icons.mail_outline),
-                label: const Text('E-posta ile bağla / giriş yap'),
-                onPressed: () => showDialog<void>(context: context, builder: (_) => _EmailDialog(service)),
-              ),
-              const SizedBox(height: 8),
-              OutlinedButton.icon(
-                key: const ValueKey('account-phone'),
-                icon: const Icon(Icons.sms_outlined),
-                label: const Text('Telefon numarasıyla bağla'),
-                onPressed: () => showDialog<void>(context: context, builder: (_) => _PhoneDialog(service)),
-              ),
-            ] else
+                key: const ValueKey('account-sign-in'),
+                style: FilledButton.styleFrom(
+                  backgroundColor: Brand.mascot,
+                  foregroundColor: Brand.onMascot,
+                  minimumSize: const Size.fromHeight(48),
+                ),
+                icon: const Icon(Icons.login_rounded),
+                label: const Text('Giriş yap / Hesap oluştur'),
+                onPressed: () =>
+                    Navigator.of(context)
+                        .push(MaterialPageRoute<bool>(builder: (_) => AuthScreen(service: service))),
+              )
+            else
               OutlinedButton.icon(
                 icon: const Icon(Icons.logout),
                 label: const Text('Çıkış yap'),
@@ -142,181 +138,4 @@ class _Line extends StatelessWidget {
       ),
     ],
   );
-}
-
-class _EmailDialog extends StatefulWidget {
-  const _EmailDialog(this.service);
-  final AccountService service;
-
-  @override
-  State<_EmailDialog> createState() => _EmailDialogState();
-}
-
-class _EmailDialogState extends State<_EmailDialog> {
-  final _email = TextEditingController();
-  final _password = TextEditingController();
-  bool _busy = false;
-  String? _error;
-
-  @override
-  void dispose() {
-    _email.dispose();
-    _password.dispose();
-    super.dispose();
-  }
-
-  Future<void> _submit({required bool register}) async {
-    setState(() {
-      _busy = true;
-      _error = null;
-    });
-    try {
-      register
-          ? await widget.service.registerWithEmail(_email.text, _password.text)
-          : await widget.service.signInWithEmail(_email.text, _password.text);
-      if (mounted) Navigator.pop(context);
-    } on AccountException catch (e) {
-      if (mounted) setState(() => _error = e.message);
-    } finally {
-      if (mounted) setState(() => _busy = false);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) => AlertDialog(
-    title: const Text('E-posta ile hesap'),
-    content: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        TextField(
-          controller: _email,
-          keyboardType: TextInputType.emailAddress,
-          autofillHints: const [AutofillHints.email],
-          decoration: const InputDecoration(labelText: 'E-posta'),
-        ),
-        TextField(
-          controller: _password,
-          obscureText: true,
-          autofillHints: const [AutofillHints.password],
-          decoration: const InputDecoration(labelText: 'Şifre (en az 6 karakter)'),
-        ),
-        if (_error != null)
-          Padding(
-            padding: const EdgeInsets.only(top: 12),
-            child: Text(_error!, style: TextStyle(color: Brand.error)),
-          ),
-      ],
-    ),
-    actions: [
-      TextButton(onPressed: _busy ? null : () => Navigator.pop(context), child: const Text('Vazgeç')),
-      TextButton(onPressed: _busy ? null : () => _submit(register: false), child: const Text('Giriş yap')),
-      FilledButton(
-        onPressed: _busy ? null : () => _submit(register: true),
-        child: const Text('Hesap oluştur'),
-      ),
-    ],
-  );
-}
-
-/// Two steps: phone number, then the 6-digit SMS code.
-class _PhoneDialog extends StatefulWidget {
-  const _PhoneDialog(this.service);
-  final AccountService service;
-
-  @override
-  State<_PhoneDialog> createState() => _PhoneDialogState();
-}
-
-class _PhoneDialogState extends State<_PhoneDialog> {
-  final _phone = TextEditingController();
-  final _code = TextEditingController();
-  String? _verificationId;
-  bool _busy = false;
-  String? _error;
-
-  @override
-  void dispose() {
-    _phone.dispose();
-    _code.dispose();
-    super.dispose();
-  }
-
-  Future<void> _step(Future<void> Function() run) async {
-    setState(() {
-      _busy = true;
-      _error = null;
-    });
-    try {
-      await run();
-    } on AccountException catch (e) {
-      if (mounted) setState(() => _error = e.message);
-    } finally {
-      if (mounted) setState(() => _busy = false);
-    }
-  }
-
-  Future<void> _sendCode() => _step(() async {
-    final id = await widget.service.startPhoneSignIn(_phone.text);
-    if (!mounted) return;
-    if (id == null) {
-      Navigator.pop(context); // verified automatically
-    } else {
-      setState(() => _verificationId = id);
-    }
-  });
-
-  Future<void> _confirm() => _step(() async {
-    await widget.service.confirmPhoneCode(_verificationId!, _code.text);
-    if (mounted) Navigator.pop(context);
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final codeStep = _verificationId != null;
-    return AlertDialog(
-      title: const Text('Telefonla hesap'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (!codeStep)
-            TextField(
-              key: const ValueKey('phone-number'),
-              controller: _phone,
-              keyboardType: TextInputType.phone,
-              autofillHints: const [AutofillHints.telephoneNumber],
-              decoration: const InputDecoration(labelText: 'Telefon numarası', hintText: '0532 123 45 67'),
-            )
-          else ...[
-            Text('${_phone.text} numarasına gelen 6 haneli kodu gir.', style: TextStyle(color: Brand.muted)),
-            TextField(
-              key: const ValueKey('phone-code'),
-              controller: _code,
-              keyboardType: TextInputType.number,
-              autofillHints: const [AutofillHints.oneTimeCode],
-              maxLength: 6,
-              decoration: const InputDecoration(labelText: 'SMS kodu'),
-            ),
-          ],
-          if (_error != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 12),
-              child: Text(_error!, style: TextStyle(color: Brand.error)),
-            ),
-        ],
-      ),
-      actions: [
-        TextButton(onPressed: _busy ? null : () => Navigator.pop(context), child: const Text('Vazgeç')),
-        if (codeStep)
-          TextButton(
-            onPressed: _busy ? null : () => setState(() => _verificationId = null),
-            child: const Text('Numarayı değiştir'),
-          ),
-        FilledButton(
-          onPressed: _busy ? null : (codeStep ? _confirm : _sendCode),
-          child: Text(codeStep ? 'Onayla' : 'Kod gönder'),
-        ),
-      ],
-    );
-  }
 }

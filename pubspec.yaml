@@ -33,6 +33,7 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   fake_cloud_firestore: ^4.5.0
   firebase_auth_mocks: ^0.16.0
+  flutter_launcher_icons: ^0.14.4
 flutter:
   uses-material-design: true
   assets:
@@ -44,6 +45,9 @@ flutter:
     - assets/reading/
     - assets/placement/
     - assets/vocab/
+    - assets/mascot/
+    - assets/flags/
+    - assets/brand/
 
   # Inter (SIL OFL 1.1, assets/fonts/Inter-OFL.txt). "LingoraSans" is the
   # adult-mode family: the heavy weights map to Bold so headings stay calm.
@@ -72,3 +76,19 @@ flutter:
           weight: 800
         - asset: assets/fonts/Inter-Bold.ttf
           weight: 900
+
+# App icon: Pofu's face (owner-supplied Lexigo set, see docs/assets.md).
+# Regenerate with: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  image_path: assets/icon/icon.png
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  adaptive_icon_background: "#D37209"
+  adaptive_icon_foreground: assets/icon/icon_foreground.png
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: assets/icon/icon.png
+    background_color: "#D37209"
+    theme_color: "#D37209"

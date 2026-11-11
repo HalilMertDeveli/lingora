@@ -10,6 +10,7 @@ import '../../exercises/common.dart';
 import '../../models/vocab.dart';
 import '../../services/speech.dart';
 import '../../theme.dart';
+import '../../ui/mascot.dart';
 import '../../ui/motion.dart';
 import '../lesson_result_screen.dart';
 import 'vocab_home_screen.dart';
@@ -114,7 +115,7 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
     if (_cards.isEmpty) {
       return Scaffold(
         appBar: AppBar(),
-        body: const Center(child: Text('Şu an tekrar edilecek kelime yok.')),
+        body: const Center(child: EmptyState(message: 'Şu an tekrar edilecek kelime yok.')),
       );
     }
     final card = _card;

@@ -275,7 +275,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
     if (widget.words.isEmpty) {
       return Scaffold(
         appBar: AppBar(),
-        body: const Center(child: Text('Şu an tekrar edilecek kelime yok. Yarın tekrar bak!')),
+        body: const Center(child: EmptyState(message: 'Şu an tekrar edilecek kelime yok. Yarın tekrar bak!')),
       );
     }
     final w = _w;

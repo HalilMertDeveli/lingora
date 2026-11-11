@@ -142,11 +142,12 @@ void main() {
 
   group('shared widgets', () {
     for (final b in Brightness.values) {
-      testWidgets('adult mode (${b.name}) is calm: no mascot, sentence-case buttons', (tester) async {
+      testWidgets('adult mode (${b.name}) is calm: small still Pofu, sentence-case buttons', (tester) async {
         await _pumpKit(tester, AppMode.adult, b);
         expect(tester.takeException(), isNull);
-        expect(find.byType(Lino), findsNothing);
-        expect(find.byType(MoodBadge), findsOneWidget, reason: 'decorative mascot is hidden');
+        expect(find.byType(Pofu), findsOneWidget, reason: 'decorative mascot is hidden');
+        expect(tester.getSize(find.byType(Pofu)).height, Mascot.adultSize(120));
+        expect(tester.widget<Pofu>(find.byType(Pofu)).animate, isFalse);
         expect(find.text('Kontrol et'), findsOneWidget);
         expect(find.text('KONTROL ET'), findsNothing);
         expect(find.text('🎓'), findsNothing);
@@ -159,10 +160,11 @@ void main() {
         expect(Theme.of(ctx).scaffoldBackgroundColor, Palette.of(AppMode.adult, b).background);
       });
 
-      testWidgets('Çocuk modu (${b.name}) brings back Lino, emoji and caps', (tester) async {
+      testWidgets('Çocuk modu (${b.name}) brings back a big Pofu, emoji and caps', (tester) async {
         await _pumpKit(tester, AppMode.kid, b);
         expect(tester.takeException(), isNull);
-        expect(find.byType(Lino), findsNWidgets(2));
+        expect(find.byType(Pofu), findsNWidgets(2));
+        expect(tester.getSize(find.byType(Pofu).first).height, 120);
         expect(find.text('KONTROL ET'), findsOneWidget);
         expect(find.text('🎓'), findsOneWidget);
         expect(find.text('⚡'), findsOneWidget);

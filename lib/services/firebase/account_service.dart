@@ -48,6 +48,14 @@ class AccountService {
     await _auth.signInWithEmailAndPassword(email: email.trim(), password: password);
   });
 
+  /// Sends a password-reset link to [email]. Firebase does not reveal
+  /// whether the address has an account, so success is always reported.
+  Future<void> sendPasswordResetEmail(String email) => _guard(() async {
+    final e = email.trim();
+    if (e.isEmpty) throw const AccountException('Önce e-posta adresini yaz.');
+    await _auth.sendPasswordResetEmail(email: e);
+  });
+
   /// Google sign-in; links to the anonymous user when possible.
   Future<void> signInWithGoogle() => _guard(() async {
     if (kIsWeb) {

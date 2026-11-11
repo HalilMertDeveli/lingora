@@ -10,6 +10,7 @@ class Track {
     required this.subtitle,
     required this.emoji,
     this.badge,
+    this.flag,
   });
 
   /// Asset name: `assets/courses/<id>.json` or `assets/exams/<id>.json`.
@@ -21,6 +22,9 @@ class Track {
 
   /// Short label such as "MESLEK" or "SINAV".
   final String? badge;
+
+  /// Flag image for language courses (shown instead of the emoji/icon).
+  final String? flag;
 }
 
 const defaultTrackId = 'tr_en';
@@ -32,6 +36,7 @@ const courseCatalog = [
     title: 'Genel İngilizce',
     subtitle: 'A1–A2, günlük hayat',
     emoji: '🇬🇧',
+    flag: 'assets/flags/gb.png',
   ),
   Track(
     id: 'pro_tourism',

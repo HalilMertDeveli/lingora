@@ -425,7 +425,7 @@ void main() {
       ]);
       expect(find.text('İlerlemem buluta yedeklendi'), findsOneWidget);
       expect(find.text('Misafir hesabı'), findsOneWidget);
-      expect(find.text('Google ile bağla'), findsOneWidget);
+      expect(find.text('Giriş yap / Hesap oluştur'), findsOneWidget);
     });
 
     testWidgets('free user: backup is Premium-only with a paywall button', (tester) async {

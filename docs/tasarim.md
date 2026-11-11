@@ -1,7 +1,7 @@
 # Dilbaz tasarım sistemi
 
 Dilbaz'ın **varsayılan görünümü yetişkin** (sade, sakin, üniversite öğrencisi ve çalışanlar için).
-**Çocuk modu** isteğe bağlıdır ve eski oyunsu görünümü (Lino maskotu, emoji, konfeti, zıplayan
+**Çocuk modu** isteğe bağlıdır ve eski oyunsu görünümü (büyük ve hareketli Pofu maskotu, emoji, konfeti, zıplayan
 animasyonlar) geri getirir. Her iki mod da **açık** ve **koyu** temada çalışır.
 
 Kural: Stil ekranlardan değil **tema ve ortak widget'lardan** gelir. Yeni ekran yazarken aşağıdaki
@@ -36,6 +36,7 @@ token ve widget'ları kullanın; renk/emoji/gölge kodlamayın.
 | `success` / `successBg` | `#13885A` / `#E8F5EE` | `#45C08A` / `#15281F` | Doğru cevap |
 | `error` / `errorBg` | `#D03A33` / `#FCEDEC` | `#F2766C` / `#2E1816` | Yanlış cevap |
 | `accent` / `accentBg` | `#D9900B` / `#FCF3E1` | `#F0B13E` / `#2A2214` | İpucu, "Daha doğal" kutuları |
+| `mascot` / `onMascot` / `mascotBg` | `#B85A00` / beyaz / `#FFF3E6` | `#F39A3D` / `#1A0E00` / `#2E2010` | Pofu turuncusu: giriş ekranı, marka vurgusu (her iki modda aynı). Kontrast testi: `test/mascot_test.dart` |
 | `streak`, `xp`, `info` | turuncu, amber, mavi | | İstatistikler |
 
 Çocuk modu paletleri (`Palette.kidLight` / `kidDark`) eski mor `#6C4CF1` temayı korur.
@@ -70,7 +71,8 @@ bir başlık olur. Ölçek `Theme.of(context).textTheme`: `headlineSmall 24`, `t
 |---|---|---|
 | `TapCard` | Düz kart, 1 px kenarlık, hafif gölge, 12 köşe | 3D alt kenar, basınca çöker |
 | `PressableButton` | Düz buton, **cümle düzeni** ("KONTROL ET" → "Kontrol et") | Kalın 3D buton, BÜYÜK HARF |
-| `Mascot` | Küçük durum rozeti (`MoodBadge`); `decorative: true` ise hiç görünmez | Animasyonlu Lino |
+| `Mascot` | Küçük (44–72 px), hareketsiz Pofu; `decorative: true` ise hiç görünmez | Büyük, hareketli Pofu |
+| `EmptyState(message:)` | Boş liste: küçük Pofu + mesaj | Büyük Pofu + mesaj |
 | `Confetti` | Kapalı | Konfeti |
 | `PopIn` | 260 ms fade + 8 px kayma, yarı gecikme | Elastik büyüme |
 | `Pulse` | Kapalı | Nabız |
@@ -89,7 +91,7 @@ ya da context yoksa `Brand.isKid`.
 1. Arka planı `Scaffold`'a bırakın; kartlar için `TapCard` kullanın.
 2. Metin rengi vermeyin (tema verir) ya da `Brand.ink/muted` kullanın; `Colors.white/black` sadece renkli zemin üstünde ve tercihen `onColor()` ile.
 3. Dekoratif emoji yerine `Glyph`/`IconBadge`; metin içi emoji için `kidEmoji()`. İçerik emojileri (ör. resimli seçenek kartları) kalabilir.
-4. Başlık maskotları `Mascot(..., decorative: true)`; sonuç/geri bildirim maskotları normal `Mascot` (yetişkinde rozet olur).
+4. Başlık maskotları `Mascot(..., decorative: true)`; sonuç/geri bildirim maskotları normal `Mascot` (yetişkinde küçük, hareketsiz Pofu olur). Koyu temada Pofu açık bir yuvarlak zemin üstünde durur.
 5. Buton etiketleri büyük harf yazılabilir; yetişkinde otomatik cümle düzenine çevrilir. **Testlerde** yetişkin görünümü varsayılan olduğundan `find.text('Kontrol et')` kullanın.
 6. Hem açık hem koyu temada bakın (Profil > Görünüm > Tema).
 

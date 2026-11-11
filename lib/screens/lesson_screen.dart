@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/tr_errors.dart';
+import '../data/break_reminder.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
@@ -224,7 +225,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         widget.mode == LessonMode.lesson && ref.read(paywallTriggerProvider).takeAfterLesson();
     final duration = DateTime.now().difference(_started);
     final streakScreen = reward.streakExtended;
-    // Result, then streak, then (sometimes) a closable paywall; the last
+    final takeBreak = ref.read(breakTrackerProvider).recordLesson(duration);
+    // Result, then streak, then (after a run of lessons) a break reminder,
+    // then (sometimes) a closable paywall; the last
     // "Devam" goes straight back to the path.
     showEndSequence(nav, [
       (next) => LessonResultScreen(
@@ -242,6 +245,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         },
       ),
       if (streakScreen) (next) => StreakCelebrationScreen(streak: reward.streak, onContinue: next),
+      if (takeBreak) (next) => BreakReminderScreen(onContinue: next),
       if (autoPaywall) (_) => const PaywallScreen(placement: PaywallPlacement.afterLessons),
     ]);
   }

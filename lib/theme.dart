@@ -33,6 +33,9 @@ class Palette {
     required this.card,
     required this.background,
     required this.edge,
+    this.mascot = const Color(0xFFB85A00),
+    this.onMascot = Colors.white,
+    this.mascotBg = const Color(0xFFFFF3E6),
   });
 
   /// Çocuk modu palette.
@@ -76,6 +79,20 @@ class Palette {
 
   /// Kid mode's darker 3D edge under neutral cards.
   final Color edge;
+
+  /// Pofu orange: the brand accent for sign-in, mascot moments and the
+  /// app icon. Dark palettes use a lighter tone with dark text on it.
+  final Color mascot;
+  final Color onMascot;
+
+  /// Soft orange fill (inputs, chips) behind mascot-accented content.
+  final Color mascotBg;
+
+  /// The orange of Pofu's drawings and the launcher icon background.
+  static const pofuOrange = Color(0xFFD37209);
+
+  /// Cream spot Pofu sits on in dark themes.
+  static const mascotSpot = Color(0xFFF7EBDD);
 
   bool get isDark => brightness == Brightness.dark;
 
@@ -133,6 +150,9 @@ class Palette {
     card: Color(0xFF181B22),
     background: Color(0xFF101217),
     edge: Color(0xFF0A0B0F),
+    mascot: Color(0xFFF39A3D),
+    onMascot: Color(0xFF1A0E00),
+    mascotBg: Color(0xFF2E2010),
   );
 
   /// Playful look (Çocuk modu): the original Dilbaz colours.
@@ -180,6 +200,9 @@ class Palette {
     card: Color(0xFF1E1A2B),
     background: Color(0xFF15121F),
     edge: Color(0xFF0D0B14),
+    mascot: Color(0xFFF39A3D),
+    onMascot: Color(0xFF1A0E00),
+    mascotBg: Color(0xFF2E2010),
   );
 
   static Palette of(AppMode mode, Brightness b) => switch ((mode, b)) {
@@ -287,6 +310,9 @@ abstract final class Brand {
   static Color get streak => _active.streak;
   static Color get xp => _active.xp;
   static Color get info => _active.info;
+  static Color get mascot => _active.mascot;
+  static Color get onMascot => _active.onMascot;
+  static Color get mascotBg => _active.mascotBg;
   static Color get ink => _active.ink;
   static Color get muted => _active.muted;
   static Color get line => _active.line;
