@@ -5,7 +5,7 @@ import '../ui/motion.dart';
 
 /// Asks before leaving a lesson or exam (X button or Android back).
 ///
-/// Lingora never punishes leaving: the sheet says only that this session's
+/// Dilbaz never punishes leaving: the sheet says only that this session's
 /// progress is not saved. Returns true when the user chose to leave.
 Future<bool> confirmQuitFlow(BuildContext context, {required String title, required String detail}) async {
   final quit = await showModalBottomSheet<bool>(

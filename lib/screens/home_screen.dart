@@ -236,7 +236,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 }
 
 /// "Öğren" tab root: the track's home (path, exam, notes) under the
-/// Lingora Kurumsal assignments card.
+/// Dilbaz Kurumsal assignments card.
 class _LearnRoot extends ConsumerWidget {
   const _LearnRoot();
 
@@ -245,7 +245,7 @@ class _LearnRoot extends ConsumerWidget {
     final track = ref.watch(trackProvider);
     return Column(
       children: [
-        // Lingora Kurumsal: shrinks to nothing without assignments.
+        // Dilbaz Kurumsal: shrinks to nothing without assignments.
         const OrgAssignmentsCard(),
         Expanded(
           child: switch (track.kind) {

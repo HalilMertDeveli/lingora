@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/catalog.dart';
 
-/// Every bottom tab Lingora can show. Which five appear depends on the
+/// Every bottom tab Dilbaz can show. Which five appear depends on the
 /// track kind, see [tabsFor].
 enum AppTab {
   learn('Öğren'),

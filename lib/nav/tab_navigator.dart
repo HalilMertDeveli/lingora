@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-/// Lingora's navigation rules, in one place.
+/// Dilbaz's navigation rules, in one place.
 ///
 /// * Every bottom tab owns a [TabNavigator]. Pages pushed inside a tab keep
 ///   the bottom bar visible and survive switching tabs.
