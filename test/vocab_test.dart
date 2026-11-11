@@ -305,15 +305,16 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(find.text('Kelime keşfet'), findsOneWidget);
     await tester.dragUntilVisible(find.text('Temeller'), find.byType(ListView), const Offset(0, -300));
-    expect(find.text('🧱'), findsOneWidget); // kid mode shows topic emoji
+    // Topics show the code theme's objects in every mode.
+    expect(find.byKey(const ValueKey('theme-object-kod-kod')), findsOneWidget);
   });
 
-  testWidgets('track home in adult dark mode uses icons, not emoji', (tester) async {
+  testWidgets('track home in adult dark mode uses the code theme, not emoji', (tester) async {
     await pumpScreen(tester, const VocabDiscoverTab(), brightness: Brightness.dark);
     expect(tester.takeException(), isNull);
     await tester.dragUntilVisible(find.text('Temeller'), find.byType(ListView), const Offset(0, -300));
-    expect(find.text('🧱'), findsNothing); // adult mode shows icons instead
-    expect(find.byIcon(Icons.code_rounded), findsWidgets);
+    expect(find.text('🧱'), findsNothing);
+    expect(find.byKey(const ValueKey('theme-object-kod-kod')), findsOneWidget);
   });
 
   testWidgets('scenario practice checks the text and shows the model answer', (tester) async {

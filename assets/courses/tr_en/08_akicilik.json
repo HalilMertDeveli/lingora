@@ -22,6 +22,7 @@
       "title": "Konuşmanın tutkalı",
       "description": "Konuşma belirteçleri (actually, anyway, by the way, mind you, I mean) ile sohbette düzeltme yap, konu değiştir ve konuya geri dön",
       "color": "0xFF6C4CF1",
+      "theme": "cay",
       "nodes": [
         {
           "id": "s8u1l1",
@@ -829,6 +830,7 @@
       "title": "Yazıda bağlantı",
       "description": "Yazı belirteçleri (furthermore, nevertheless, consequently, in contrast, to sum up) ile rapor ve e-postada fikirleri mantıklı bağla",
       "color": "0xFFF2994A",
+      "theme": "yazisma",
       "nodes": [
         {
           "id": "s8u2l1",
@@ -1651,6 +1653,7 @@
       "title": "Asıl mesele şu",
       "description": "Cleft yapılar (It was … that, What I need is, All I want is, The thing is, The reason why … is that) ile cümlenin odağını öne çıkar",
       "color": "0xFF14A098",
+      "theme": "toplanti",
       "nodes": [
         {
           "id": "s8u3l1",
@@ -2403,6 +2406,7 @@
       "title": "Gerçekten de",
       "description": "Vurgu araçları (do/did + V1, at all, whatsoever, by far, even, such/so, the very, -self) ile duygu ve fikirlerini güçlendir",
       "color": "0xFF2D9CDB",
+      "theme": "sahne",
       "nodes": [
         {
           "id": "s8u4l1",
@@ -3161,6 +3165,7 @@
       "title": "Deyimler",
       "description": "Günlük ve iş konuşmasında yaygın deyimleri (piece of cake, break the ice, on the same page, cut corners…) anla ve Türkçeden birebir çevirme tuzağına düşmeden kullan",
       "color": "0xFFE0559A",
+      "theme": "sahne",
       "nodes": [
         {
           "id": "s8u5l1",
@@ -3966,6 +3971,7 @@
       "title": "Resmî mi, samimi mi?",
       "description": "purchase/buy gibi üslup çiftleri ve kısaltmalarla duruma göre resmî ya da samimi konuşma",
       "color": "0xFF5A67D8",
+      "theme": "is",
       "nodes": [
         {
           "id": "s8u6l1",
@@ -4763,6 +4769,7 @@
       "title": "Yumuşatarak söylemek",
       "description": "seem, tend to, arguably, to some extent gibi hedging kalıplarıyla fikirleri temkinli ve kibar ifade etme",
       "color": "0xFF27AE60",
+      "theme": "toplanti",
       "nodes": [
         {
           "id": "s8u7l1",
@@ -5522,6 +5529,7 @@
       "title": "İnce farklar",
       "description": "slim/skinny, affordable/cheap, famous/notorious gibi yakın anlamlı kelimelerin olumlu ve olumsuz çağrışımlarını seçme",
       "color": "0xFF00A3C4",
+      "theme": "dedektif",
       "nodes": [
         {
           "id": "s8u8l1",
@@ -6337,6 +6345,7 @@
       "title": "İş yazışmaları",
       "description": "I am writing to…, Please find attached, I look forward to… kalıplarıyla profesyonel e-posta açma, rica etme ve kapatma",
       "color": "0xFF9B51E0",
+      "theme": "yazisma",
       "nodes": [
         {
           "id": "s8u9l1",
@@ -7105,6 +7114,7 @@
       "title": "Akademik ses",
       "description": "this essay argues, the data suggest, signposting ve isimleştirmeyle akademik yazı ve sunumda iddia, kanıt ve sonuç sunma",
       "color": "0xFFEB5757",
+      "theme": "kutuphane",
       "nodes": [
         {
           "id": "s8u10l1",

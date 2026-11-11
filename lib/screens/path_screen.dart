@@ -16,6 +16,8 @@ import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/flag.dart';
 import '../ui/tea_art.dart';
+import '../ui/theme_art.dart';
+import '../data/topic_themes.dart';
 import 'lesson_screen.dart';
 import 'path_map.dart';
 import 'reminder_settings.dart';
@@ -184,6 +186,19 @@ class _PathListState extends ConsumerState<_PathList> {
     }
   }
 
+  /// Theme whose pictures were loaded ahead (the current unit's).
+  String? _warmed;
+
+  /// Loads the current unit's theme pictures once; the other units load as
+  /// they come into view, and folded sections load nothing.
+  void _warmTheme(Course course, PathNode? current) {
+    final unit = current == null ? null : course.units.where((u) => u.nodes.contains(current)).firstOrNull;
+    final theme = themeOf(unit ?? course.units.first);
+    if (_warmed == theme.id) return;
+    _warmed = theme.id;
+    unawaited(precacheTheme(theme));
+  }
+
   void _afterScroll() {
     _updateJump();
     _updatePinned();
@@ -303,6 +318,7 @@ class _PathListState extends ConsumerState<_PathList> {
                 count: lessons.length,
                 above: c.above,
                 arrowX: c.arrowX,
+                theme: themeOf(c.unit),
                 lockedMessage: c.sectionOpen
                     ? 'Önce önceki adımları tamamla.'
                     : 'Bu bölüm kilitli. Önceki bölümü bitir ya da "Bölüme atla" sınavını geç.',
@@ -330,7 +346,7 @@ class _PathListState extends ConsumerState<_PathList> {
         ref.read(progressProvider.notifier).completeNode(node.id, xp: node.rewardXp);
         await showDialog<void>(
           context: context,
-          builder: (_) => _ChestDialog(xp: node.rewardXp),
+          builder: (_) => _ChestDialog(xp: node.rewardXp, theme: themeOf(unit)),
         );
       case NodeType.story:
         await nav.push(
@@ -371,6 +387,7 @@ class _PathListState extends ConsumerState<_PathList> {
     final current = currentNode(course, p);
     final open = {for (final s in course.sections) s.id: sectionOpen(course, s, p)};
     _track(current?.id, current == null ? -1 : all.indexOf(current));
+    _warmTheme(course, current);
 
     NodeState stateOf(PathNode n) {
       if (p.isDone(n.id)) return NodeState.done;
@@ -593,6 +610,7 @@ class _UnitMap extends StatelessWidget {
       final color = Brand.tone(unit.color);
       final mascotAt = mascotRow(unit);
       final unitDone = unit.nodes.every((n) => stateOf(n) == NodeState.done);
+      final theme = themeOf(unit);
       // Node centres, for the lane drawn behind them.
       final centres = <Offset>[];
       var y = 0.0;
@@ -618,7 +636,19 @@ class _UnitMap extends StatelessWidget {
                     top: max(0, (height - 110) / 2),
                     left: dx > 0 ? 4 : null,
                     right: dx > 0 ? null : 4,
-                    child: PathMascot(mood: unitDone ? Mood.joy : Mood.calm),
+                    child: PathMascot(mood: unitDone ? Mood.joy : Mood.calm, theme: theme),
+                  ),
+                // Roadside decorations on the far side of the lane, every other row.
+                if (!theme.tea && i != mascotAt && i.isOdd && dx.abs() > swing * 0.3)
+                  Positioned(
+                    top: above + 18,
+                    left: dx > 0 ? 18 : null,
+                    right: dx > 0 ? null : 18,
+                    child: RoadsideDecor(
+                      key: Key('decor-${node.id}'),
+                      theme: theme,
+                      object: theme.decor[(i ~/ 2) % theme.decor.length],
+                    ),
                   ),
                 // The invite floats over the node, kept inside the path.
                 if (active)
@@ -634,7 +664,7 @@ class _UnitMap extends StatelessWidget {
                       alignment: Alignment.topCenter,
                       child: TeaInvite(
                         key: Key('tea-invite-${node.id}'),
-                        label: nodeInvite(node.type),
+                        label: nodeInvite(node.type, theme),
                         color: node.type == NodeType.chest ? Brand.accent : color,
                         onTap: () => onStart(node, state),
                       ),
@@ -660,6 +690,8 @@ class _UnitMap extends StatelessWidget {
                                 state: state,
                                 color: color,
                                 semanticLabel: node.title,
+                                theme: theme,
+                                object: nodeObject(unit, node),
                                 onTap: () => onNode(node, state),
                               ),
                             );
@@ -780,8 +812,11 @@ class _DailyGoalCard extends ConsumerWidget {
 
 /// The teapot rattles, its lid pops up and sugar cubes (the XP) tumble out.
 class _ChestDialog extends StatefulWidget {
-  const _ChestDialog({required this.xp});
+  const _ChestDialog({required this.xp, required this.theme});
   final int xp;
+
+  /// Topic of the unit: the teapot, or the theme's surprise.
+  final TopicTheme theme;
 
   @override
   State<_ChestDialog> createState() => _ChestDialogState();
@@ -834,11 +869,22 @@ class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderSta
                       angle: wobble,
                       child: Transform.scale(
                         scale: opened ? 0.9 + 0.3 * burst : 1,
-                        child: CustomPaint(
-                          key: const Key('teapot-reward'),
-                          size: const Size(110, 110),
-                          painter: TeapotPainter(color: Brand.accent, palette: Brand.palette, open: opened),
-                        ),
+                        child: widget.theme.tea
+                            ? CustomPaint(
+                                key: const Key('teapot-reward'),
+                                size: const Size(110, 110),
+                                painter: TeapotPainter(
+                                  color: Brand.accent,
+                                  palette: Brand.palette,
+                                  open: opened,
+                                ),
+                              )
+                            : ThemeObject(
+                                key: const Key('theme-reward'),
+                                theme: widget.theme,
+                                object: widget.theme.reward,
+                                size: 104,
+                              ),
                       ),
                     ),
                   ),
@@ -848,10 +894,12 @@ class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderSta
                   opacity: opened ? 1 : 0,
                   child: Column(
                     children: [
-                      Text('Bir avuç şeker!', style: Theme.of(context).textTheme.titleLarge),
+                      Text(widget.theme.rewardLine, style: Theme.of(context).textTheme.titleLarge),
                       const SizedBox(height: 4),
                       Text(
-                        'Çaydanlığın dibinden şeker çıktı; XP olarak hesabına geçti.',
+                        widget.theme.tea
+                            ? 'Çaydanlığın dibinden şeker çıktı; XP olarak hesabına geçti.'
+                            : '${widget.theme.rewardName} açıldı; içinden çıkanlar XP olarak hesabına geçti.',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Brand.muted),
                       ),
@@ -866,7 +914,10 @@ class _ChestDialogState extends State<_ChestDialog> with SingleTickerProviderSta
                   ),
                 ),
                 const SizedBox(height: 18),
-                PressableButton(label: 'AFİYET OLSUN', onPressed: () => Navigator.pop(context)),
+                PressableButton(
+                  label: widget.theme.tea ? 'AFİYET OLSUN' : 'HARİKA',
+                  onPressed: () => Navigator.pop(context),
+                ),
               ],
             );
           },

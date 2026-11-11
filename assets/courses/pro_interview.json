@@ -9,6 +9,7 @@
       "title": "Kendini tanıtma",
       "description": "Adın, eğitimin, şu anki işin ve deneyimin",
       "color": "0xFF3949AB",
+      "theme": "mulakat",
       "nodes": [
         {
           "id": "i1l1",
@@ -661,6 +662,7 @@
       "title": "Deneyim ve beceriler",
       "description": "Sorumluluklar, beceriler, takım çalışması ve başarılar",
       "color": "0xFF00ACC1",
+      "theme": "mulakat",
       "nodes": [
         {
           "id": "i2l1",
@@ -1297,6 +1299,7 @@
       "title": "Zor sorular",
       "description": "Güçlü ve zayıf yönler, neden biz, maaş ve gelecek",
       "color": "0xFFD81B60",
+      "theme": "mulakat",
       "nodes": [
         {
           "id": "i3l1",
@@ -1957,6 +1960,7 @@
       "title": "Görüşmeyi bitirme ve e-posta",
       "description": "Soru sor, teşekkür et, takip e-postası yaz, sohbet et",
       "color": "0xFF43A047",
+      "theme": "mulakat",
       "nodes": [
         {
           "id": "i4l1",

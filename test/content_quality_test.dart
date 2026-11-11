@@ -16,8 +16,8 @@ const _asciiTurkish = [
   'turkiye', 'ogle', 'cumle', 'yapiyorum', 'odeme', 'gorusme', 'sirket', 'is gorusmesi',
 ];
 
-/// Keys holding identifiers, which are ASCII on purpose.
-bool _isIdKey(String key) => key == 'id' || key.endsWith('Id') || key.endsWith('Ids');
+/// Keys holding identifiers (and topic theme ids), which are ASCII on purpose.
+bool _isIdKey(String key) => key == 'id' || key == 'theme' || key.endsWith('Id') || key.endsWith('Ids');
 
 List<String> _assetFiles() =>
     Directory('assets')

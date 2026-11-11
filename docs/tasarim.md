@@ -120,6 +120,10 @@ Referans uygulamanın davranış tarifi ve Dilbaz karşılıkları: [arayuz-refe
 - Geçişler `lib/ui/transitions.dart`: `fullscreenDialog` rotaları aşağıdan yukarı açılır; sekmeler `FadeThroughIn`.
 - Ses ve titreşim `SessionFx` (`AppSettings.sound`). "Animasyonları azalt" (`AppSettings.reduceMotion`) uygulama kökünde `MediaQuery.disableAnimations` değerini açar. Yeni animasyon yazarken `MediaQuery.disableAnimationsOf(context)` ya da `loopsEnabled` kontrol edin.
 
+## Konu temaları (feature/konu-temalari)
+
+Her ünite kendi konusunun nesneleriyle çizilir; çay yalnızca selamlaşma, misafirlik, mahalle ve sohbet ünitelerinde. Ayrıntı, stil rehberi ve Figma bağlantısı: [docs/tasarim/temalar.md](tasarim/temalar.md).
+
 ## Çay kimliği (feature/ozgun-tasarim)
 
 PR #26 arayüzü referans uygulamaya fazla benzetmişti. Bu bölüm Dilbaz'ın kendi kimliğini anlatır: bir çay bahçesinde yürüyüş.

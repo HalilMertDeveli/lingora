@@ -9,6 +9,7 @@
       "title": "Resepsiyon: karşılama ve check-in",
       "description": "Misafiri karşıla, rezervasyonu bul, anahtarı ver",
       "color": "0xFF1E88E5",
+      "theme": "otel",
       "nodes": [
         {
           "id": "t1l1",
@@ -661,6 +662,7 @@
       "title": "Oda ve misafir istekleri",
       "description": "Havlu, klima, oda servisi, uyandırma ve Wi-Fi",
       "color": "0xFF00897B",
+      "theme": "otel",
       "nodes": [
         {
           "id": "t2l1",
@@ -1322,6 +1324,7 @@
       "title": "Restoran ve bar",
       "description": "Sipariş al, yemek öner, alerjiye dikkat et, hesabı getir",
       "color": "0xFFE53935",
+      "theme": "yemek",
       "nodes": [
         {
           "id": "t3l1",
@@ -1971,6 +1974,7 @@
       "title": "Rehberlik ve yol tarifi",
       "description": "Tur saatleri, buluşma noktası, yol tarifi ve fiyatlar",
       "color": "0xFFFB8C00",
+      "theme": "seyahat",
       "nodes": [
         {
           "id": "t4l1",
@@ -2625,6 +2629,7 @@
       "title": "Şikâyet ve sorun çözme",
       "description": "Kibarca özür dile, arızayı çöz, check-out yap",
       "color": "0xFF8E24AA",
+      "theme": "otel",
       "nodes": [
         {
           "id": "t5l1",

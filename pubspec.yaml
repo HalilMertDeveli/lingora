@@ -17,6 +17,7 @@ dependencies:
     sdk: flutter
   flutter_local_notifications: ^23.0.0
   flutter_riverpod: ^3.5.0
+  flutter_svg: ^2.3.3
   flutter_tts: ^4.2.5
   google_sign_in: ^7.2.0
   in_app_purchase: ^3.3.1
@@ -49,6 +50,36 @@ flutter:
     - assets/mascot/
     - assets/flags/
     - assets/brand/
+    # Topic themes (tool/themes/gen_theme_svgs.mjs, docs/tasarim/temalar.md).
+    - assets/themes/aile/
+    - assets/themes/alisveris/
+    - assets/themes/cay/
+    - assets/themes/dedektif/
+    - assets/themes/doga/
+    - assets/themes/duygular/
+    - assets/themes/gecmis/
+    - assets/themes/gunluk/
+    - assets/themes/haber/
+    - assets/themes/hava/
+    - assets/themes/hayaller/
+    - assets/themes/is/
+    - assets/themes/kod/
+    - assets/themes/kutuphane/
+    - assets/themes/mulakat/
+    - assets/themes/olasilik/
+    - assets/themes/otel/
+    - assets/themes/saglik/
+    - assets/themes/sahne/
+    - assets/themes/sanat/
+    - assets/themes/sehir/
+    - assets/themes/seyahat/
+    - assets/themes/spor/
+    - assets/themes/tamir/
+    - assets/themes/teknoloji/
+    - assets/themes/toplanti/
+    - assets/themes/yazisma/
+    - assets/themes/yemek/
+    - assets/themes/zaman/
 
   # Inter (SIL OFL 1.1, assets/fonts/Inter-OFL.txt). "LingoraSans" is the
   # adult-mode family: the heavy weights map to Bold so headings stay calm.

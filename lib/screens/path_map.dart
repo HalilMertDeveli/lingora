@@ -2,11 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../data/topic_themes.dart';
 import '../models/course.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/tea_art.dart';
+import '../ui/theme_art.dart';
 
 /// Building blocks of the learning path, Dilbaz's tea-house walk (see
 /// docs/tasarim.md, "Çay kimliği"): tea glass nodes on a winding lane, the
@@ -44,13 +46,32 @@ IconData nodeIcon(NodeType type) => switch (type) {
   NodeType.lesson => Icons.local_cafe_rounded,
 };
 
-/// Çaycı Dayı's invite over the current node.
-String nodeInvite(NodeType type) => switch (type) {
-  NodeType.chest => 'Demlik hazır, aç bakalım!',
-  NodeType.story => 'Çayını al, hikâye başlıyor!',
-  NodeType.test => 'Lale seni bekliyor!',
-  NodeType.lesson => 'Hadi, bir çay daha!',
-};
+/// The host's invite over the current node, in the unit's topic.
+String nodeInvite(NodeType type, [TopicTheme? theme]) {
+  final t = theme ?? themeById(null);
+  return switch (type) {
+    NodeType.chest => t.chestInvite,
+    NodeType.story => t.storyInvite,
+    NodeType.test => t.testInvite,
+    NodeType.lesson => t.lessonInvite,
+  };
+}
+
+/// Theme of [unit] (the default for units without one).
+TopicTheme themeOf(Unit unit) => themeById(unit.theme);
+
+/// Object drawn for [node] of [unit]: lessons and stories walk through the
+/// theme's story objects in order; tests and rewards have their own.
+String nodeObject(Unit unit, PathNode node) {
+  final t = themeOf(unit);
+  return switch (node.type) {
+    NodeType.chest => t.reward,
+    NodeType.test => t.badge,
+    _ => t.stepObject(
+      unit.nodes.where((n) => n.type == NodeType.lesson || n.type == NodeType.story).toList().indexOf(node),
+    ),
+  };
+}
 
 /// Call to action of a node ("BAŞLA", "AÇ"…), in the current mode's case.
 String nodeCta(NodeType type) {
@@ -83,6 +104,8 @@ class TeaNode extends StatefulWidget {
     required this.color,
     required this.onTap,
     this.semanticLabel,
+    this.theme,
+    this.object,
   });
 
   final NodeType type;
@@ -90,6 +113,13 @@ class TeaNode extends StatefulWidget {
   final Color color;
   final VoidCallback onTap;
   final String? semanticLabel;
+
+  /// Topic of the unit; null (or the tea theme) draws the tea glass, teapot
+  /// and tulip.
+  final TopicTheme? theme;
+
+  /// Theme object of this node (see [nodeObject]).
+  final String? object;
 
   /// One breath of the current node (in and out).
   static const breath = Duration(milliseconds: 2600);
@@ -168,18 +198,29 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
       ),
       child: Icon(icon, size: 13, color: fg),
     );
-    final art = AnimatedBuilder(
-      animation: _c,
-      builder: (_, _) {
-        final t = _c.value;
-        final breathe = _active ? 1 + sin(t * pi * 2) * 0.035 : 1.0;
-        return Transform.scale(
-          scale: breathe,
-          alignment: Alignment.bottomCenter,
-          child: CustomPaint(size: const Size(pathNodeWidth, pathNodeHeight), painter: _painter(p, t)),
-        );
-      },
-    );
+    final theme = widget.theme;
+    final themed = theme != null && !theme.tea && widget.object != null;
+    final art = themed
+        ? _ThemedArt(
+            theme: theme,
+            object: widget.object!,
+            type: widget.type,
+            state: widget.state,
+            animation: _c,
+          )
+        : AnimatedBuilder(
+            animation: _c,
+            builder: (_, _) {
+              final t = _c.value;
+              final breathe = _active ? 1 + sin(t * pi * 2) * 0.035 : 1.0;
+              return Transform.scale(
+                scale: breathe,
+                alignment: Alignment.bottomCenter,
+                child: CustomPaint(size: const Size(pathNodeWidth, pathNodeHeight), painter: _painter(p, t)),
+              );
+            },
+          );
+    final glow = themed ? theme.accent : widget.color;
     final node = SizedBox(
       width: pathNodeWidth,
       height: pathNodeHeight,
@@ -198,15 +239,15 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
                   shape: BoxShape.circle,
                   gradient: RadialGradient(
                     colors: [
-                      widget.color.withValues(alpha: p.isDark ? 0.34 : 0.24),
-                      widget.color.withValues(alpha: 0),
+                      glow.withValues(alpha: p.isDark ? 0.34 : 0.24),
+                      glow.withValues(alpha: 0),
                     ],
                   ),
                 ),
               ),
             ),
           Positioned.fill(child: art),
-          if (_active && (widget.type == NodeType.lesson || widget.type == NodeType.story))
+          if (!themed && _active && (widget.type == NodeType.lesson || widget.type == NodeType.story))
             const Positioned(left: 13, top: -30, child: Steam(width: 40, height: 32)),
           if (done && widget.type != NodeType.chest)
             Positioned(right: -2, top: 2, child: badge(Icons.check_rounded, p.success, onColor(p.success))),
@@ -235,6 +276,93 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
       },
       child: JellyPress(amount: 0.8, onTap: widget.onTap, child: node),
     );
+  }
+}
+
+/// A themed node: the step's object on a soft plate, the test emblem in a
+/// rosette, or the reward on its own. Locked objects are grey silhouettes;
+/// the current one moves the theme's way.
+class _ThemedArt extends StatelessWidget {
+  const _ThemedArt({
+    required this.theme,
+    required this.object,
+    required this.type,
+    required this.state,
+    required this.animation,
+  });
+
+  final TopicTheme theme;
+  final String object;
+  final NodeType type;
+  final NodeState state;
+  final Animation<double> animation;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.palette;
+    final dim = state == NodeState.locked;
+    final done = state == NodeState.done;
+    final active = state == NodeState.active;
+    final accent = Brand.tone(theme.accent);
+    const size = Size(pathNodeWidth, pathNodeHeight);
+    Widget moving(Widget child) => active
+        ? AnimatedBuilder(
+            animation: animation,
+            builder: (_, c) => applyMotion(theme.motion, animation.value, c!, accent),
+            child: child,
+          )
+        : child;
+    final obj = ThemeObject(
+      theme: theme,
+      object: object,
+      size: switch (type) {
+        NodeType.chest => 58,
+        NodeType.test => 30,
+        _ => 44,
+      },
+      grey: dim,
+    );
+    return switch (type) {
+      NodeType.test => moving(
+        Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            CustomPaint(
+              size: size,
+              painter: BadgePainter(color: accent, palette: p, dim: dim, done: done),
+            ),
+            Positioned(top: size.height * 0.42 - 15, child: obj),
+          ],
+        ),
+      ),
+      NodeType.chest => Stack(
+        alignment: Alignment.center,
+        clipBehavior: Clip.none,
+        children: [
+          CustomPaint(
+            size: size,
+            painter: PlatePainter(color: accent, palette: p, dim: dim, done: done),
+          ),
+          Positioned(top: 4, child: moving(obj)),
+          if (done)
+            for (final (dx, dy, s) in [(-26.0, -30.0, 9.0), (24.0, -26.0, 7.0), (20.0, 18.0, 6.0)])
+              Transform.translate(
+                offset: Offset(dx, dy),
+                child: Icon(Icons.auto_awesome, size: s * 1.6, color: const Color(0xFFF4C542)),
+              ),
+        ],
+      ),
+      _ => Stack(
+        alignment: Alignment.center,
+        children: [
+          CustomPaint(
+            size: size,
+            painter: PlatePainter(color: accent, palette: p, dim: dim, done: done),
+          ),
+          Positioned(top: size.height * 0.46 - 22, child: moving(obj)),
+        ],
+      ),
+    };
   }
 }
 
@@ -397,6 +525,7 @@ class UnitBand extends StatelessWidget {
     final lt = context.lingora;
     final deco = lt.hero(unit.color);
     final base = deco.color ?? unit.color;
+    final theme = themeOf(unit);
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: (deco.borderRadius ?? BorderRadius.circular(Radii.lg)) as BorderRadius,
@@ -407,48 +536,107 @@ class UnitBand extends StatelessWidget {
         decoration: deco,
         clipBehavior: Clip.antiAlias,
         child: CustomPaint(
-          painter: CiniPainter(color: Colors.white.withValues(alpha: 0.16), start: 0.45),
-          child: Row(
+          painter: theme.tea ? CiniPainter(color: Colors.white.withValues(alpha: 0.16), start: 0.45) : null,
+          child: Stack(
             children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'ÜNİTE $index',
-                      style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.8),
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 1.2,
-                        fontSize: 12,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      unit.title,
-                      maxLines: compact ? 1 : 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: compact ? 17 : 22,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    if (!compact) ...[
-                      const SizedBox(height: 2),
-                      Text(unit.description, style: TextStyle(color: Colors.white.withValues(alpha: 0.9))),
-                    ],
-                  ],
-                ),
-              ),
-              const SizedBox(width: 8),
-              _GuideButton(key: Key('unit-guide-${unit.id}${compact ? '-pinned' : ''}'), onTap: onGuide),
+              if (!theme.tea) Positioned.fill(child: _BandPattern(theme: theme)),
+              _bandRow(compact, theme),
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget _bandRow(bool compact, TopicTheme theme) => Row(
+    children: [
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'ÜNİTE $index',
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.8),
+                fontWeight: FontWeight.w800,
+                letterSpacing: 1.2,
+                fontSize: 12,
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              unit.title,
+              maxLines: compact ? 1 : 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: Colors.white, fontSize: compact ? 17 : 22, fontWeight: FontWeight.w900),
+            ),
+            if (!compact) ...[
+              const SizedBox(height: 2),
+              Text(unit.description, style: TextStyle(color: Colors.white.withValues(alpha: 0.9))),
+            ],
+          ],
+        ),
+      ),
+      if (!compact && !theme.tea) ...[
+        const SizedBox(width: 4),
+        // The band's illustration: the unit's first story object, tilted.
+        Transform.rotate(
+          angle: -0.12,
+          child: DecoratedBox(
+            decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.9), shape: BoxShape.circle),
+            child: Padding(
+              padding: const EdgeInsets.all(6),
+              child: ThemeObject(
+                key: Key('band-art-${unit.id}'),
+                theme: theme,
+                object: theme.steps.first,
+                size: 40,
+              ),
+            ),
+          ),
+        ),
+      ],
+      const SizedBox(width: 8),
+      _GuideButton(key: Key('unit-guide-${unit.id}${compact ? '-pinned' : ''}'), onTap: onGuide),
+    ],
+  );
+}
+
+/// The band's pattern: the theme's decorations as faint white stamps,
+/// fading in from the middle of the band.
+class _BandPattern extends StatelessWidget {
+  const _BandPattern({required this.theme});
+  final TopicTheme theme;
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, box) {
+      const cell = 30.0;
+      final stamps = <Widget>[];
+      var k = 0;
+      for (var y = -6.0; y < box.maxHeight; y += cell) {
+        final row = (y / cell).round();
+        for (var x = box.maxWidth * 0.42 + (row.isOdd ? cell / 2 : 0); x < box.maxWidth; x += cell) {
+          final f = ((x / box.maxWidth - 0.42) / 0.4).clamp(0.0, 1.0);
+          stamps.add(
+            Positioned(
+              left: x,
+              top: y,
+              child: ThemeObject(
+                theme: theme,
+                object: theme.decor[k++ % theme.decor.length],
+                size: 18,
+                tint: Colors.white.withValues(alpha: 0.08 + 0.12 * f),
+              ),
+            ),
+          );
+        }
+      }
+      return ExcludeSemantics(
+        child: Stack(key: Key('band-pattern-${theme.id}'), clipBehavior: Clip.hardEdge, children: stamps),
+      );
+    },
+  );
 }
 
 class _GuideButton extends StatelessWidget {
@@ -500,7 +688,11 @@ class LessonCard extends StatelessWidget {
     this.lockedMessage,
     this.arrowX,
     this.above = false,
+    this.theme,
   });
+
+  /// Topic of the unit (names the badge and the reward).
+  final TopicTheme? theme;
 
   final PathNode node;
   final NodeState state;
@@ -525,11 +717,12 @@ class LessonCard extends StatelessWidget {
     final face = locked ? p.card : color;
     final fg = locked ? p.ink : onColor(color);
     final sub = locked ? p.muted : fg.withValues(alpha: 0.85);
+    final t = theme ?? themeById(null);
     final kind = switch (node.type) {
       NodeType.lesson => 'Ders $position / $count',
       NodeType.story => 'Hikâye',
-      NodeType.test => 'Ünite sınavı · lale rozeti',
-      NodeType.chest => 'Çaydanlık · şeker ödülü',
+      NodeType.test => t.tea ? 'Ünite sınavı · lale rozeti' : 'Ünite sınavı · ${t.badgeName} rozeti',
+      NodeType.chest => t.tea ? 'Çaydanlık · şeker ödülü' : '${t.rewardName} · sürpriz ödül',
     };
     final (String label, bool enabled) = switch ((state, node.type)) {
       (NodeState.locked, _) => ('', false),
@@ -620,13 +813,37 @@ class LessonCard extends StatelessWidget {
 /// The host beside the lane: Çaycı Dayı (still) for adults, Pofuduk
 /// (bigger, moving) in Çocuk modu.
 class PathMascot extends StatelessWidget {
-  const PathMascot({super.key, required this.mood});
+  const PathMascot({super.key, required this.mood, this.theme});
   final Mood mood;
 
+  /// Topic of the unit: some topics dress the host up (a chef's hat, a
+  /// captain's cap…).
+  final TopicTheme? theme;
+
   @override
-  Widget build(BuildContext context) => KeyedSubtree(
-    key: const Key('path-mascot'),
-    child: context.isKid ? Pofuduk(mood: mood, size: 104) : Dayi(mood: mood, size: 84, animate: false),
+  Widget build(BuildContext context) {
+    final kid = context.isKid;
+    final size = kid ? 104.0 : 84.0;
+    final host = kid ? Pofuduk(mood: mood, size: size) : Dayi(mood: mood, size: size, animate: false);
+    return KeyedSubtree(
+      key: const Key('path-mascot'),
+      child: theme == null ? host : Costume(theme: theme!, size: size, kid: kid, child: host),
+    );
+  }
+}
+
+/// Small roadside decorations of a theme, beside the lane.
+class RoadsideDecor extends StatelessWidget {
+  const RoadsideDecor({super.key, required this.theme, required this.object});
+  final TopicTheme theme;
+  final String object;
+
+  @override
+  Widget build(BuildContext context) => ExcludeSemantics(
+    child: Opacity(
+      opacity: context.palette.isDark ? 0.7 : 0.85,
+      child: ThemeObject(theme: theme, object: object, size: 34),
+    ),
   );
 }
 

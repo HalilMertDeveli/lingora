@@ -22,6 +22,7 @@
       "title": "Olsaydı…",
       "description": "Third conditional (if + had + V3, would have + V3) ile geçmişte farklı olabilecek şeyleri ve sonuçlarını konuşma",
       "color": "0xFF6C4CF1",
+      "theme": "olasilik",
       "nodes": [
         {
           "id": "s7u1l1",
@@ -829,6 +830,7 @@
       "title": "Başka bir hayat",
       "description": "Mixed conditionals ile geçmiş kararların bugüne, bugünkü durumun geçmişe etkisini değerlendirme",
       "color": "0xFFF2994A",
+      "theme": "olasilik",
       "nodes": [
         {
           "id": "s7u2l1",
@@ -1622,6 +1624,7 @@
       "title": "Olmamalıydı",
       "description": "Perfect modals (should have, must have, can't have…) ile geçmişteki hataları eleştirme ve geçmiş hakkında çıkarım yapma",
       "color": "0xFF14A098",
+      "theme": "dedektif",
       "nodes": [
         {
           "id": "s7u3l1",
@@ -2400,6 +2403,7 @@
       "title": "Haber dili",
       "description": "İleri passive yapılar (is being done, has been done, it is said that) ile haber ve şirket duyurularını anlama ve aktarma",
       "color": "0xFF2D9CDB",
+      "theme": "haber",
       "nodes": [
         {
           "id": "s7u4l1",
@@ -3173,6 +3177,7 @@
       "title": "Ne dediler?",
       "description": "Suggest, deny, warn, refuse, accuse… gibi aktarma fiilleriyle toplantıda söylenenleri doğru kalıpla aktarma",
       "color": "0xFFE0559A",
+      "theme": "toplanti",
       "nodes": [
         {
           "id": "s7u5l1",
@@ -3973,6 +3978,7 @@
       "title": "Toplantı tutanağı",
       "description": "Reported questions (asked whether/if, wanted to know) ve zaman kaydırma ile toplantıdaki soruları ve kararları tutanakta ya da e-postada aktarma",
       "color": "0xFF5A67D8",
+      "theme": "yazisma",
       "nodes": [
         {
           "id": "s7u6l1",
@@ -4766,6 +4772,7 @@
       "title": "Yaptırmak",
       "description": "Causative have/get ile başkasına iş yaptırmayı ve hizmet almayı anlatma",
       "color": "0xFF27AE60",
+      "theme": "tamir",
       "nodes": [
         {
           "id": "s7u7l1",
@@ -5507,6 +5514,7 @@
       "title": "Asla ve asla",
       "description": "Inversion ile resmî konuşma ve yazıda vurgulu ifadeler kurma",
       "color": "0xFF00A3C4",
+      "theme": "sahne",
       "nodes": [
         {
           "id": "s7u8l1",
@@ -6264,6 +6272,7 @@
       "title": "İşin dili",
       "description": "Fiil + isim eşdizimleriyle iş hayatında doğal ve akıcı konuşma",
       "color": "0xFF9B51E0",
+      "theme": "is",
       "nodes": [
         {
           "id": "s7u9l1",
@@ -7028,6 +7037,7 @@
       "title": "Tartışma masası",
       "description": "Zarf + sıfat ve sıfat + isim eşdizimleriyle kibarca katılmama ve uzlaşma arama",
       "color": "0xFFEB5757",
+      "theme": "toplanti",
       "nodes": [
         {
           "id": "s7u10l1",
@@ -7796,6 +7806,7 @@
       "title": "Pazarlık",
       "description": "Provided that, as long as, unless ile şart koşma ve would/could ile teklif verip anlaşmaya varma",
       "color": "0xFFF2A900",
+      "theme": "alisveris",
       "nodes": [
         {
           "id": "s7u11l1",
@@ -8584,6 +8595,7 @@
       "title": "Kriz yönetimi",
       "description": "Bölüm tekrarı: perfect modals, passive, third conditional ve reported speech ile özür, açıklama ve çözüm planı sunma",
       "color": "0xFFFF7A59",
+      "theme": "haber",
       "nodes": [
         {
           "id": "s7u12l1",

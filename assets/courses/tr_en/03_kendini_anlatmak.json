@@ -6,6 +6,7 @@
       "title": "Hayat hikâyem",
       "description": "was/were born, was/were ve çocukluk",
       "color": "0xFF7C5CFC",
+      "theme": "gecmis",
       "nodes": [
         {
           "id": "s3u1l1",
@@ -122,6 +123,7 @@
       "title": "Geçen hafta sonu",
       "description": "Düzenli fiillerle geçmiş zaman (-ed)",
       "color": "0xFF2D9CDB",
+      "theme": "gecmis",
       "nodes": [
         {
           "id": "s3u2l1",
@@ -238,6 +240,7 @@
       "title": "Adada bir gün",
       "description": "Düzensiz fiillerle geçmiş zaman",
       "color": "0xFF14A098",
+      "theme": "doga",
       "nodes": [
         {
           "id": "s3u3l1",
@@ -354,6 +357,7 @@
       "title": "Tatilin nasıldı?",
       "description": "Geçmiş zamanda olumsuz ve soru: didn't, Did…?",
       "color": "0xFFE0559A",
+      "theme": "seyahat",
       "nodes": [
         {
           "id": "s3u4l1",
@@ -470,6 +474,7 @@
       "title": "O sırada",
       "description": "Past continuous, when ve while",
       "color": "0xFFF2994A",
+      "theme": "dedektif",
       "nodes": [
         {
           "id": "s3u5l1",
@@ -586,6 +591,7 @@
       "title": "Ne sıklıkla?",
       "description": "Sıklık zarfları ve alışkanlıklar",
       "color": "0xFF27AE60",
+      "theme": "zaman",
       "nodes": [
         {
           "id": "s3u6l1",
@@ -703,6 +709,7 @@
       "title": "Bana, ona, onlara",
       "description": "Nesne zamirleri: me, him, her, us, them",
       "color": "0xFF9B51E0",
+      "theme": "duygular",
       "nodes": [
         {
           "id": "s3u7l1",
@@ -818,6 +825,7 @@
       "title": "Daha iyi, en iyi",
       "description": "Karşılaştırma ve üstünlük: -er, more, the most, as…as",
       "color": "0xFFEB5757",
+      "theme": "spor",
       "nodes": [
         {
           "id": "s3u8l1",
@@ -934,6 +942,7 @@
       "title": "Ne kadar? Kaç tane?",
       "description": "much, many, a lot of, a few, a little",
       "color": "0xFF00A3C4",
+      "theme": "alisveris",
       "nodes": [
         {
           "id": "s3u9l1",
@@ -1050,6 +1059,7 @@
       "title": "Planlarım",
       "description": "be going to: planlar ve kanıta dayalı tahmin",
       "color": "0xFFF2A900",
+      "theme": "hayaller",
       "nodes": [
         {
           "id": "s3u10l1",
@@ -1166,6 +1176,7 @@
       "title": "Tahmin ve teklif",
       "description": "will: tahmin, söz, teklif ve anlık karar",
       "color": "0xFF5A67D8",
+      "theme": "olasilik",
       "nodes": [
         {
           "id": "s3u11l1",
@@ -1282,6 +1293,7 @@
       "title": "Kendimi anlatıyorum",
       "description": "Kişilik, güçlü yanlar, hedefler ve bölüm tekrarı",
       "color": "0xFFFF7A59",
+      "theme": "hayaller",
       "nodes": [
         {
           "id": "s3u12l1",
