@@ -272,7 +272,8 @@ class _PathListState extends ConsumerState<_PathList> {
     final c = _cardInfo;
     if (c == null) return const SizedBox.shrink();
     final color = Brand.tone(c.unit.color);
-    final index = c.unit.nodes.indexOf(c.node);
+    final lessons = c.unit.nodes.where((n) => n.type == NodeType.lesson).toList();
+    final index = max(0, lessons.indexOf(c.node));
     return Stack(
       children: [
         Positioned.fill(
@@ -297,7 +298,7 @@ class _PathListState extends ConsumerState<_PathList> {
                 state: c.state,
                 color: color,
                 position: index + 1,
-                count: c.unit.nodes.where((n) => n.type == NodeType.lesson).length,
+                count: lessons.length,
                 above: c.above,
                 arrowX: c.arrowX,
                 lockedMessage: c.sectionOpen
@@ -472,19 +473,26 @@ class _PathListState extends ConsumerState<_PathList> {
           ),
           // Sticky unit band: the unit being read stays on top with its guide.
           Positioned(
-            left: 16,
-            right: 16,
-            top: 8,
+            left: 0,
+            right: 0,
+            top: 0,
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 250),
               child: pinned == null
                   ? const SizedBox.shrink()
-                  : UnitBand(
-                      key: const Key('sticky-unit-band'),
-                      unit: pinned,
-                      index: numberInSection(pinned),
-                      compact: true,
-                      onGuide: () => _guide(pinned, numberInSection(pinned), stateOf),
+                  : ColoredBox(
+                      key: ValueKey('pinned-${pinned.id}'),
+                      color: Brand.background,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                        child: UnitBand(
+                          key: const Key('sticky-unit-band'),
+                          unit: pinned,
+                          index: numberInSection(pinned),
+                          compact: true,
+                          onGuide: () => _guide(pinned, numberInSection(pinned), stateOf),
+                        ),
+                      ),
                     ),
             ),
           ),

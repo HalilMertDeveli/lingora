@@ -261,7 +261,9 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
       correct: ok,
       continueKey: const Key('vocabNext'),
       title: ok ? (_combo >= comboThreshold ? 'Doğru! $_combo üst üste' : 'Doğru!') : 'Doğru cevap:',
-      answer: ok ? '${e.word} = ${e.tr}' : '${card.answer}  ·  ${e.word} = ${e.tr}',
+      answer: ok || card.answer == e.word || card.answer == e.tr
+          ? '${e.word} = ${e.tr}'
+          : '${card.answer}  ·  ${e.word} = ${e.tr}',
       detail: e.tip != null && !ok
           ? Text('${kidEmoji('💡')}${e.tip}', style: TextStyle(fontSize: 13, color: Brand.ink))
           : null,

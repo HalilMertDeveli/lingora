@@ -1,0 +1,339 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:lingora/data/app_settings.dart';
+import 'package:lingora/data/progress.dart';
+import 'package:lingora/data/quests.dart';
+import 'package:lingora/models/course.dart';
+import 'package:lingora/screens/lesson_result_screen.dart';
+import 'package:lingora/screens/path_map.dart';
+import 'package:lingora/theme.dart';
+import 'package:lingora/ui/motion.dart';
+import 'package:lingora/ui/session.dart';
+import 'package:lingora/ui/transitions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'widget_test.dart' show pumpApp;
+
+final _course = Course.fromJson(
+  jsonDecode(File('assets/courses/tr_en.json').readAsStringSync()) as Map<String, dynamic>,
+);
+
+String _progress({int done = 0}) => jsonEncode(
+  Progress(onboarded: true, completed: {for (final n in _course.allNodes.take(done)) n.id: 1}).toJson(),
+);
+
+/// Shared widgets in a themed app; [reduced] turns on reduced motion.
+Future<void> _pumpKit(WidgetTester tester, Widget child, {bool reduced = true}) async {
+  if (reduced) {
+    tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
+      disableAnimations: true,
+    );
+    addTearDown(tester.platformDispatcher.clearAccessibilityFeaturesTestValue);
+  }
+  await tester.pumpWidget(
+    MaterialApp(
+      theme: buildTheme(),
+      home: Scaffold(body: child),
+    ),
+  );
+}
+
+const _quest = QuestDef('lessons2', QuestMetric.lessons, 2, '2 ders bitir', 10);
+
+LessonReward _reward({bool streak = true, bool quest = true}) => LessonReward(
+  xp: 15,
+  streak: 3,
+  streakExtended: streak,
+  todayXp: 25,
+  dailyGoal: 30,
+  questsCompleted: quest ? const [_quest] : const [],
+  questProgress: [QuestStep(quest: _quest, before: quest ? 1 : 0, after: quest ? 2 : 0)],
+);
+
+void main() {
+  group('path map', () {
+    test('zigzag swings in a wave of eight, mirrors odd units, centres the last node', () {
+      expect([for (var i = 0; i < 8; i++) zigzag(i)], [0, -0.5, -1, -0.5, 0, 0.5, 1, 0.5]);
+      expect(zigzag(2, mirror: true), 1);
+      expect(zigzag(5, count: 6), 0);
+      expect(zigzagSwing(1000), 70);
+    });
+
+    testWidgets('done, active and locked nodes look different; the active one has a balloon', (tester) async {
+      await pumpApp(tester, {'progress_v1': _progress(done: 2)});
+      final nodes = _course.units.first.nodes;
+      PathNodeButton node(int i) => tester.widget(find.byKey(Key('path-node-${nodes[i].id}')));
+      expect(node(0).state, NodeState.done);
+      expect(node(2).state, NodeState.active);
+      expect(node(3).state, NodeState.locked);
+      expect(find.byKey(const Key('active-ring')), findsOneWidget);
+      expect(find.byKey(Key('start-balloon-${nodes[2].id}')), findsOneWidget);
+      expect(find.byIcon(Icons.check_rounded), findsNWidgets(2));
+      expect(find.byIcon(Icons.lock_rounded), findsWidgets);
+      // Çaycı Dayı stands beside the path.
+      expect(find.byKey(const Key('path-mascot')), findsWidgets);
+    });
+
+    testWidgets('tapping a node opens its lesson card; Başla starts the lesson', (tester) async {
+      await pumpApp(tester, {'progress_v1': _progress()});
+      final first = _course.units.first.nodes.first;
+      await tester.tap(find.byKey(Key('path-node-${first.id}')));
+      await tester.pumpAndSettle();
+      final card = find.byKey(const Key('lesson-card'));
+      expect(card, findsOneWidget);
+      expect(find.descendant(of: card, matching: find.text(first.title)), findsOneWidget);
+      expect(find.descendant(of: card, matching: find.textContaining('Ders 1 /')), findsOneWidget);
+      expect(find.byKey(const Key('lesson-card-progress')), findsOneWidget);
+
+      // Tapping outside closes it.
+      await tester.tapAt(const Offset(10, 990));
+      await tester.pumpAndSettle();
+      expect(card, findsNothing);
+
+      await tester.tap(find.byKey(Key('path-node-${first.id}')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('lesson-card-start')));
+      await tester.pumpAndSettle();
+      expect(find.text('“merhaba” hangisi?'), findsOneWidget);
+    });
+
+    testWidgets('a locked node card explains instead of starting', (tester) async {
+      await pumpApp(tester, {'progress_v1': _progress()});
+      final locked = _course.units.first.nodes[1];
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, -300));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(Key('path-node-${locked.id}')));
+      await tester.pumpAndSettle();
+      expect(find.text('Önce önceki adımları tamamla.'), findsOneWidget);
+      expect(find.byKey(const Key('lesson-card-start')), findsNothing);
+    });
+
+    testWidgets('unit band opens the unit guide', (tester) async {
+      await pumpApp(tester, {'progress_v1': _progress()});
+      final unit = _course.units.first;
+      await tester.tap(find.byKey(Key('unit-guide-${unit.id}')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('unit-guide')), findsOneWidget);
+      expect(find.text('Bu ünitedeki adımlar'), findsOneWidget);
+      expect(unitPhrases(unit), isNotEmpty);
+    });
+
+    testWidgets('the unit band sticks to the top while its unit scrolls by', (tester) async {
+      await pumpApp(tester, {'progress_v1': _progress()});
+      expect(find.byKey(const Key('sticky-unit-band')), findsNothing);
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, -700));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('sticky-unit-band')), findsOneWidget);
+    });
+  });
+
+  group('session', () {
+    testWidgets('feedback panel: green when right, red with the answer when wrong', (tester) async {
+      var next = 0;
+      await _pumpKit(
+        tester,
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: AnswerFeedbackPanel(correct: true, onContinue: () => next++),
+        ),
+      );
+      expect(find.byKey(const Key('feedback-correct')), findsOneWidget);
+      expect(find.text('Doğru!'), findsOneWidget);
+      await tester.tap(find.text('Devam'));
+      expect(next, 1);
+
+      await _pumpKit(
+        tester,
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: AnswerFeedbackPanel(correct: false, answer: 'Hello', onContinue: () {}),
+        ),
+      );
+      expect(find.byKey(const Key('feedback-wrong')), findsOneWidget);
+      expect(find.text('Doğru cevap:'), findsOneWidget);
+      expect(find.text('Hello'), findsOneWidget);
+      final box = tester.widget<Container>(find.byKey(const Key('feedback-wrong')));
+      expect((box.decoration! as BoxDecoration).color, Brand.errorBg);
+    });
+
+    testWidgets('feedback panel slides up from below', (tester) async {
+      await _pumpKit(
+        tester,
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: AnswerFeedbackPanel(correct: true, onContinue: () {}),
+        ),
+        reduced: false,
+      );
+      final rest = tester.getTopLeft(find.byKey(const Key('feedback-correct'))).dy;
+      await tester.pump(const Duration(milliseconds: 60));
+      final moving = tester.getTopLeft(find.byKey(const Key('feedback-correct'))).dy;
+      await tester.pumpAndSettle();
+      final settled = tester.getTopLeft(find.byKey(const Key('feedback-correct'))).dy;
+      expect(rest, greaterThan(settled));
+      expect(moving, greaterThan(settled));
+    });
+
+    testWidgets('three right answers in a row light the progress bar up', (tester) async {
+      Widget header(int combo) =>
+          SessionHeader(progress: 0.5, color: Colors.green, combo: combo, onClose: () {});
+      await _pumpKit(tester, header(2));
+      expect(find.byKey(const Key('combo-label')), findsNothing);
+      await _pumpKit(tester, header(3));
+      expect(find.byKey(const Key('combo-label')), findsOneWidget);
+      expect(find.text('3 DOĞRU ÜST ÜSTE'), findsOneWidget);
+    });
+
+    testWidgets('a lesson shows the check bar, then the panel after Kontrol et', (tester) async {
+      await pumpApp(tester, {'progress_v1': _progress()});
+      await tester.tap(find.text('Başla'));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('check-bar')), findsOneWidget);
+      expect(find.byKey(const Key('session-progress')), findsOneWidget);
+      await tester.tap(find.text('hello'));
+      await tester.pump();
+      await tester.tap(find.text('Kontrol et'));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('feedback-correct')), findsOneWidget);
+      expect(find.byKey(const Key('check-bar')), findsNothing);
+    });
+  });
+
+  group('celebration chain', () {
+    test('quests come before the streak, and only when something moved', () {
+      expect(celebrationSteps(_reward()), hasLength(2));
+      expect(celebrationSteps(_reward(streak: false, quest: false)), isEmpty);
+      expect(hasQuestStep(_reward(quest: false)), isFalse);
+    });
+
+    testWidgets('result → quests → streak, each with its own Devam', (tester) async {
+      final key = GlobalKey<NavigatorState>();
+      tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
+        disableAnimations: true,
+      );
+      addTearDown(tester.platformDispatcher.clearAccessibilityFeaturesTestValue);
+      await tester.binding.setSurfaceSize(const Size(420, 1000));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.pumpWidget(MaterialApp(theme: buildTheme(), navigatorKey: key, home: const Text('home')));
+      key.currentState!.push(MaterialPageRoute<void>(builder: (_) => const Text('lesson')));
+      await tester.pumpAndSettle();
+      final reward = _reward();
+      // Same steps the lesson screen builds.
+      final steps = [
+        (VoidCallback next) => LessonResultScreen(
+          reward: reward,
+          accuracy: 100,
+          duration: const Duration(seconds: 70),
+          perfect: true,
+          showStreak: false,
+          showQuests: false,
+          onContinue: next,
+        ),
+        ...celebrationSteps(reward),
+      ];
+      var current = 0;
+      Route<void> route(int i) => MaterialPageRoute<void>(
+        builder: (_) => steps[i](() {
+          if (++current < steps.length) {
+            key.currentState!.pushReplacement(route(current));
+          } else {
+            key.currentState!.pop();
+          }
+        }),
+      );
+      key.currentState!.pushReplacement(route(0));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(const Key('lesson-result')), findsOneWidget);
+      expect(find.text('+15'), findsOneWidget, reason: 'XP counter reached its value');
+      await tester.tap(find.text('Devam'));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(const Key('quest-progress')), findsOneWidget);
+      expect(find.text('Görev tamamlandı!'), findsOneWidget);
+      expect(find.text('25 / 30 XP'), findsOneWidget);
+      expect(find.text('Ödül hazır'), findsOneWidget);
+      await tester.tap(find.text('Devam'));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(const Key('streak-celebration')), findsOneWidget);
+      expect(find.text('3 günlük seri!'), findsOneWidget);
+      await tester.tap(find.text('Devam'));
+      await tester.pumpAndSettle();
+      expect(find.text('home'), findsOneWidget);
+    });
+
+    testWidgets('confetti bursts on the result screen', (tester) async {
+      await _pumpKit(tester, const Confetti(child: SizedBox.expand()), reduced: false);
+      await tester.pump(const Duration(milliseconds: 300));
+      expect(find.byKey(const Key('confetti')), findsOneWidget);
+      await tester.pump(Confetti.duration);
+      expect(find.byKey(const Key('confetti')), findsNothing);
+    });
+  });
+
+  group('reduced motion', () {
+    testWidgets('no confetti, no bobbing balloon, panel and bar appear at once', (tester) async {
+      await _pumpKit(
+        tester,
+        Column(
+          children: [
+            const Expanded(child: Confetti(child: SizedBox.expand())),
+            StartBalloon(label: 'Başla', color: Colors.orange, onTap: () {}),
+            SessionHeader(progress: 0.5, color: Colors.green, onClose: () {}),
+            AnswerFeedbackPanel(correct: true, onContinue: () {}),
+          ],
+        ),
+      );
+      await tester.pump(const Duration(milliseconds: 16));
+      expect(find.byKey(const Key('confetti')), findsNothing);
+      expect(tester.hasRunningAnimations, isFalse);
+    });
+
+    testWidgets('"Animasyonları azalt" in Profil turns on reduced motion app-wide', (tester) async {
+      await pumpApp(tester, {
+        'progress_v1': _progress(),
+        AppSettingsNotifier.key: '{"mode":"adult","theme":"light","reduceMotion":true}',
+      });
+      tester.platformDispatcher.clearAccessibilityFeaturesTestValue();
+      await tester.pump();
+      final ctx = tester.element(find.byType(Scaffold).first);
+      expect(MediaQuery.disableAnimationsOf(ctx), isTrue);
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getString(AppSettingsNotifier.key), contains('"reduceMotion":true'));
+    });
+
+    testWidgets('full-screen flows rise from the bottom unless motion is reduced', (tester) async {
+      const builder = DilbazPageTransitionsBuilder();
+      final route = MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => const SizedBox());
+      late BuildContext ctx;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (c) {
+              ctx = c;
+              return const SizedBox();
+            },
+          ),
+        ),
+      );
+      const anim = AlwaysStoppedAnimation(0.5);
+      expect(builder.buildTransitions(route, ctx, anim, anim, const SizedBox()), isA<SlideTransition>());
+      tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
+        disableAnimations: true,
+      );
+      addTearDown(tester.platformDispatcher.clearAccessibilityFeaturesTestValue);
+      await tester.pump();
+      expect(builder.buildTransitions(route, ctx, anim, anim, const SizedBox()), isA<SizedBox>());
+    });
+  });
+
+  test('settings keep sound and reduced motion', () {
+    const s = AppSettings(sound: false, reduceMotion: true);
+    expect(AppSettings.fromJson(s.toJson()), s);
+    expect(AppSettings.fromJson(const {'mode': 'kid'}).sound, isTrue);
+  });
+}

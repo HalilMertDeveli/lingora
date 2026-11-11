@@ -372,7 +372,7 @@ class _QuestProgressScreenState extends State<QuestProgressScreen> {
                 for (final q in r.questProgress)
                   _QuestBar(
                     key: Key('quest-bar-${q.quest.id}'),
-                    icon: Icons.task_alt,
+                    icon: q.after >= q.quest.target ? Icons.task_alt : Icons.radio_button_unchecked,
                     color: Brand.success,
                     title: q.quest.title,
                     before: q.before,

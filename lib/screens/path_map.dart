@@ -534,8 +534,8 @@ class LessonCard extends StatelessWidget {
                   PressableButton(
                     key: const Key('lesson-card-start'),
                     label: label,
-                    color: p.card,
-                    foreground: color,
+                    color: Colors.white,
+                    foreground: edgeOf(edgeOf(color)),
                     onPressed: enabled ? onStart : null,
                   ),
                 ],

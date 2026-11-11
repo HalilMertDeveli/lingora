@@ -25,8 +25,8 @@ token ve widget'ları kullanın; renk/emoji/gölge kodlamayın.
 
 | Token | Yetişkin açık | Yetişkin koyu | Kullanım |
 |---|---|---|---|
-| `primary` | `#4553D0` | `#8E98F5` | Ana buton, seçim, bağlantı |
-| `onPrimary` | beyaz | `#0E1120` | Primary üstündeki yazı/ikon |
+| `primary` | `#E06C00` | `#F39A3D` | Ana buton, seçim, bağlantı (Lexigo turuncusu; çocuk modu `#F17F04` / `#FF9F43`) |
+| `onPrimary` | beyaz | `#1A0E00` | Primary üstündeki yazı/ikon |
 | `ink` | `#14171F` | `#E8EAF0` | Ana metin |
 | `muted` | `#636B7A` | `#9AA2B1` | İkincil metin, ikonlar |
 | `line` | `#E3E6EC` | `#2B303B` | Kenarlık, ayırıcı |
@@ -39,7 +39,7 @@ token ve widget'ları kullanın; renk/emoji/gölge kodlamayın.
 | `mascot` / `onMascot` / `mascotBg` | `#B85A00` / beyaz / `#FFF3E6` | `#F39A3D` / `#1A0E00` / `#2E2010` | Maskot turuncusu: giriş ekranı, marka vurgusu (her iki modda aynı). Kontrast testi: `test/mascot_test.dart` |
 | `streak`, `xp`, `info` | turuncu, amber, mavi | | İstatistikler |
 
-Çocuk modu paletleri (`Palette.kidLight` / `kidDark`) eski mor `#6C4CF1` temayı korur.
+Çocuk modu paletleri (`Palette.kidLight` / `kidDark`) daha canlı tonlar kullanır; vurgu iki modda da turuncudur.
 
 `Brand.*` artık **sabit değil**, aktif paleti okuyan getter'dır; bu yüzden `const TextStyle(color: Brand.ink)`
 yazılamaz (`const`'u kaldırın). Eski kod çalışmaya devam eder, ama koyu temada doğru görünmesi için
@@ -69,11 +69,11 @@ bir başlık olur. Ölçek `Theme.of(context).textTheme`: `headlineSmall 24`, `t
 
 | Widget | Yetişkin | Çocuk modu |
 |---|---|---|
-| `TapCard` | Düz kart, 1 px kenarlık, hafif gölge, 12 köşe | 3D alt kenar, basınca çöker |
-| `PressableButton` | Düz buton, **cümle düzeni** ("KONTROL ET" → "Kontrol et") | Kalın 3D buton, BÜYÜK HARF |
+| `TapCard` | Dokunulabilirse 3D: 2 px kenar + 3 px dudak, basınca iner; değilse düz kart | 2 px kenar + 4 px dudak, basınca çöker |
+| `PressableButton` | Yuvarlak (hap) 3D buton, 4 px dudak, **cümle düzeni** ("KONTROL ET" → "Kontrol et") | Kalın 3D hap buton, 5 px dudak, BÜYÜK HARF |
 | `Mascot` | Küçük (44–72 px), hareketsiz Çaycı Dayı; `decorative: true` ise hiç görünmez | Büyük, hareketli Çaycı Dayı |
 | `EmptyState(message:)` | Boş liste: küçük maskot + mesaj | Büyük maskot + mesaj |
-| `Confetti` | Kapalı | Konfeti |
+| `Confetti` | Kendi `ConfettiPainter` çizicimiz; kutlama ekranlarında (animasyon azaltılmışsa yok) | Aynı |
 | `PopIn` | 260 ms fade + 8 px kayma, yarı gecikme | Elastik büyüme |
 | `Pulse` | Kapalı | Nabız |
 | `Shake` | Yarım mesafe | Tam |
@@ -109,3 +109,13 @@ Ders: önce (geri bildirim) → yetişkin geri bildirim → yetişkin sonuç →
 ![Ders](tasarim/karsilastirma-ders.png)
 
 Tekil görüntüler `docs/tasarim/` altında: `once-*`, `yetiskin-acik-*`, `yetiskin-koyu-*`, `cocuk-*`.
+
+## Arayüz animasyonları (feature/arayuz-animasyon)
+
+Referans uygulamanın davranış tarifi ve Dilbaz karşılıkları: [arayuz-referans.md](arayuz-referans.md).
+
+- Oturum parçaları `lib/ui/session.dart`: `SessionHeader`, `SessionProgressBar` (seri vurgusu), `CheckBar`, `AnswerFeedbackPanel`. Yeni bir cevap-kontrol ekranı bunları kullanmalı.
+- Yol haritası parçaları `lib/screens/path_map.dart`: `PathNodeButton`, `StartBalloon`, `LessonCard`, `UnitBand`, `showUnitGuide`.
+- Kutlama zinciri: `celebrationSteps(reward)` (görevler, sonra seri), `showEndSequence` ile.
+- Geçişler `lib/ui/transitions.dart`: `fullscreenDialog` rotaları aşağıdan yukarı açılır; sekmeler `FadeThroughIn`.
+- Ses ve titreşim `SessionFx` (`AppSettings.sound`). "Animasyonları azalt" (`AppSettings.reduceMotion`) uygulama kökünde `MediaQuery.disableAnimations` değerini açar. Yeni animasyon yazarken `MediaQuery.disableAnimationsOf(context)` ya da `loopsEnabled` kontrol edin.
