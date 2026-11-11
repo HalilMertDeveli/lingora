@@ -6,6 +6,7 @@ import '../../data/vocab_practice.dart';
 import '../../exercises/common.dart';
 import '../../models/vocab.dart';
 import '../../theme.dart';
+import '../../ui/mascot.dart';
 import 'vocab_home_screen.dart';
 
 /// Searchable list of track words; tapping one opens its card.
@@ -55,11 +56,8 @@ class _VocabWordListScreenState extends ConsumerState<VocabWordListScreen> {
               onTap: () => showVocabEntry(context, e),
             ),
           if (list.isEmpty)
-            Padding(
-              padding: EdgeInsets.all(24),
-              child: Center(
-                child: Text('Sonuç yok', style: TextStyle(color: Brand.muted)),
-              ),
+            const Center(
+              child: EmptyState(message: 'Sonuç yok. Başka bir kelime ya da filtre dene.', mood: Mood.think),
             ),
         ],
       ),

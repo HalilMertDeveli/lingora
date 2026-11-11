@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../theme.dart';
+import '../ui/mascot.dart';
 
 /// Premium: every Türk hata dedektörü category with its share of all
 /// mistakes and a study tip for each.
@@ -25,12 +26,16 @@ class ErrorAnalysisScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Text(
-            total == 0
-                ? 'Henüz kayıtlı hata yok. Ders, günlük ve sohbette yaptığın hatalar burada toplanır.'
-                : 'Toplam $total hata, ${all.length} kategoride. Büyükten küçüğe sıralı.',
-            style: TextStyle(color: Brand.muted),
-          ),
+          if (total == 0)
+            const EmptyState(
+              mood: Mood.happy,
+              message: 'Henüz kayıtlı hata yok. Ders, günlük ve sohbette yaptığın hatalar burada toplanır.',
+            )
+          else
+            Text(
+              'Toplam $total hata, ${all.length} kategoride. Büyükten küçüğe sıralı.',
+              style: TextStyle(color: Brand.muted),
+            ),
           const SizedBox(height: 14),
           for (final (category, count) in all)
             Padding(

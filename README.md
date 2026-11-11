@@ -3,8 +3,8 @@
 [![CI](https://github.com/HalilMertDeveli/lingora/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/HalilMertDeveli/lingora/actions/workflows/ci.yml)
 [![Release APK](https://github.com/HalilMertDeveli/lingora/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/HalilMertDeveli/lingora/actions/workflows/release.yml)
 
-Türkçe konuşanlar için İngilizce öğrenme uygulaması (Flutter). İçerik, karakterler, maskot ve
-tasarım projeye özgüdür.
+Türkçe konuşanlar için İngilizce öğrenme uygulaması (Flutter). İçerik, karakterler ve
+tasarım projeye özgüdür; maskot (Çaycı Dayı) ve görseller uygulama sahibi tarafından sağlandı.
 
 > Uygulamanın adı **Dilbaz**'dır ("dili güzel, lafı akıcı"). Teknik kimlikler eski adla kalır: Dart
 > paket adı `lingora`, Android `applicationId`/namespace ve iOS bundle id `com.lingora.lingora`, Firebase
@@ -33,7 +33,7 @@ tasarım projeye özgüdür.
   listesine eklenir.
 - **Motivasyon:** Seri, XP, günlük hedef, günlük görevler, haftalık lig (cihazda simülasyon) ve
   yerel hatırlatma bildirimleri.
-- **Görünüm:** Animasyonlar ve tamamen kodla çizilen maskot "Lino".
+- **Görünüm:** Animasyonlar ve maskot **Çaycı Dayı** (görsel kaynağı: `docs/assets.md`).
 
 Tüm ilerleme cihazda saklanır (shared_preferences). Hesap ya da sunucu gerekmez.
 

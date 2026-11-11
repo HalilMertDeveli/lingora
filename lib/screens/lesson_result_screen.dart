@@ -6,6 +6,9 @@ import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 
+/// Accuracy from which the end screen cheers (big hop) instead of a wave.
+const successAccuracy = 90;
+
 class LessonResultScreen extends StatelessWidget {
   const LessonResultScreen({
     super.key,
@@ -40,6 +43,7 @@ class LessonResultScreen extends StatelessWidget {
     final mm = duration.inMinutes.toString();
     final ss = (duration.inSeconds % 60).toString().padLeft(2, '0');
     final goalDone = reward.todayXp >= reward.dailyGoal;
+    final success = perfect || accuracy >= successAccuracy;
     const step = Duration(milliseconds: 140);
     var delay = const Duration(milliseconds: 350);
     Duration next() => delay += step;
@@ -52,7 +56,8 @@ class LessonResultScreen extends StatelessWidget {
             child: Column(
               children: [
                 const Spacer(),
-                Mascot(mood: perfect ? Mood.cheer : Mood.happy, size: 150),
+                // The mascot cheers for a strong lesson and waves otherwise.
+                Mascot(mood: success ? Mood.cheer : Mood.happy, size: 150),
                 const SizedBox(height: 8),
                 PopIn(
                   delay: const Duration(milliseconds: 150),
@@ -153,7 +158,9 @@ class StreakCelebrationScreen extends StatelessWidget {
         child: Column(
           children: [
             const Spacer(),
-            PopIn(child: Icon(Icons.local_fire_department, color: Brand.streak, size: 120)),
+            const Mascot(mood: Mood.calm, size: 150),
+            const SizedBox(height: 8),
+            PopIn(child: Icon(Icons.local_fire_department, color: Brand.streak, size: 56)),
             const SizedBox(height: 12),
             Text(
               streak == 1 ? 'Seri başladı!' : '$streak günlük seri!',
@@ -170,6 +177,40 @@ class StreakCelebrationScreen extends StatelessWidget {
             ),
             const Spacer(),
             PressableButton(label: 'DEVAM', onPressed: onContinue ?? () => Navigator.of(context).pop()),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+/// Gentle break reminder after a run of lessons (see BreakTracker): Çaycı Dayı
+/// offers a tea break; never blocks learning.
+class BreakReminderScreen extends StatelessWidget {
+  const BreakReminderScreen({super.key, this.onContinue});
+  final VoidCallback? onContinue;
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    key: const Key('break-reminder'),
+    body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const Spacer(),
+            const Mascot(mood: Mood.calm, size: 170),
+            const SizedBox(height: 12),
+            Text('Kısa bir çay molası?', style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 10),
+            Text(
+              'Art arda birkaç ders yaptın, harika!\n'
+              'Birkaç dakika gözlerini dinlendir, bir çay iç; öğrendiklerin yerine otursun.',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
+            ),
+            const Spacer(),
+            PressableButton(label: 'TAMAM', onPressed: onContinue ?? () => Navigator.of(context).pop()),
           ],
         ),
       ),

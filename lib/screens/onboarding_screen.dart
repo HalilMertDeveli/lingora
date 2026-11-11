@@ -6,6 +6,8 @@ import '../data/placement.dart';
 import '../data/progress.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
+import '../ui/flag.dart';
+import '../ui/mascot.dart';
 import 'placement_screen.dart';
 
 const dailyGoals = [
@@ -144,38 +146,21 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 }
 
+/// Dilbaz brand mark: Çaycı Dayı on his orange tile, the same art as the
+/// app icon.
 class LingoraLogo extends StatelessWidget {
   const LingoraLogo({super.key, this.size = 96});
   final double size;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        color: Brand.isKid ? null : Brand.primary,
-        gradient: Brand.isKid
-            ? LinearGradient(
-                colors: [Brand.primary, const Color(0xFF9B7BFF)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              )
-            : null,
-        borderRadius: BorderRadius.circular(size * (Brand.isKid ? 0.3 : 0.26)),
-      ),
-      alignment: Alignment.center,
-      child: Text(
-        'L',
-        style: TextStyle(
-          color: Brand.onPrimary,
-          fontSize: size * 0.55,
-          fontWeight: Brand.isKid ? FontWeight.w900 : FontWeight.w700,
-          height: 1.1,
-        ),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Image.asset(
+    mascotAsset,
+    key: const ValueKey('dilbaz-logo'),
+    width: size,
+    height: size,
+    semanticLabel: 'Dilbaz',
+    errorBuilder: (_, _, _) => SizedBox(width: size, height: size),
+  );
 }
 
 class _Welcome extends StatelessWidget {
@@ -187,12 +172,15 @@ class _Welcome extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const LingoraLogo(size: 112),
+        // Kid mode: Çaycı Dayı greets you, big and lively. Adult: the still brand mark.
+        if (context.isKid) const Dayi(mood: Mood.happy, size: 180) else const LingoraLogo(size: 112),
         const SizedBox(height: 28),
         Text('Dilbaz', style: t.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
         const SizedBox(height: 10),
         Text(
-          'Her gün birkaç dakika,\nadım adım yeni bir dil.',
+          context.isKid
+              ? 'Hoş geldin, ben Çaycı Dayı!\nÇayını al, her gün birkaç dakika birlikte öğrenelim.'
+              : 'Her gün birkaç dakika,\nadım adım yeni bir dil.',
           textAlign: TextAlign.center,
           style: t.titleMedium?.copyWith(color: Brand.muted, fontWeight: FontWeight.w500),
         ),
@@ -215,7 +203,7 @@ class _CoursePick extends StatelessWidget {
         TapCard(
           selected: true,
           child: ListTile(
-            leading: Glyph(emoji: '🇬🇧', icon: Icons.translate_rounded, size: 32),
+            leading: const FlagIcon('assets/flags/gb.png', width: 36),
             title: Text('İngilizce', style: TextStyle(fontWeight: FontWeight.w800)),
             subtitle: Text('Türkçe konuşanlar için'),
             trailing: Icon(Icons.check_circle, color: Brand.primary),
@@ -252,6 +240,7 @@ class _GoalPick extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.only(top: 32),
       children: [
+        const Center(child: Mascot(mood: Mood.joy, size: 100, decorative: true)),
         Text('Günlük hedefin ne olsun?', style: t.headlineSmall),
         const SizedBox(height: 6),
         Text(

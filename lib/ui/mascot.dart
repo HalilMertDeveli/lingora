@@ -5,121 +5,86 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 import 'motion.dart';
 
-/// Lino's mood decides its face and how it moves.
-enum Mood { idle, happy, cheer, sad, think }
+/// The mascot's mood decides how it moves.
+enum Mood { idle, happy, cheer, sad, think, calm, joy }
 
-/// Dilbaz's guide. Kid mode shows Lino, the animated mascot; adult mode
-/// shows a small, calm status badge instead (or nothing when [decorative]), so every screen adapts without changes.
+/// The Çaycı Dayı artwork (owner-supplied; source SVG next to it, see
+/// docs/assets.md).
+const mascotAsset = 'assets/mascot/cayci_dayi.png';
+
+/// Dilbaz's guide, Çaycı Dayı. Kid mode shows him big and animated; adult
+/// mode shows him small and still (or nothing when [decorative]), so every
+/// screen adapts without changes.
 class Mascot extends StatelessWidget {
   const Mascot({super.key, this.mood = Mood.idle, this.size = 120, this.decorative = false});
   final Mood mood;
   final double size;
 
-  /// Purely decorative placements (hero banners, empty states) show
-  /// nothing in adult mode.
+  /// Purely decorative placements (hero banners) show nothing in adult mode.
   final bool decorative;
 
+  /// The mascot's size in adult mode: small and quiet.
+  static double adultSize(double size) => (size * 0.5).clamp(44.0, 72.0);
+
   @override
   Widget build(BuildContext context) {
-    if (context.isKid) return Lino(mood: mood, size: size);
+    if (context.isKid) return Dayi(mood: mood, size: size);
     if (decorative) return const SizedBox.shrink();
-    return MoodBadge(mood: mood, size: (size * 0.5).clamp(40.0, 72.0));
+    return Dayi(mood: mood, size: adultSize(size), animate: false);
   }
 }
 
-/// Adult-mode stand-in for the mascot: an icon in a soft tinted circle.
-class MoodBadge extends StatelessWidget {
-  const MoodBadge({super.key, required this.mood, this.size = 64});
+/// Çaycı Dayı, the Dilbaz mascot: a tea seller on an orange tile. The tile
+/// carries its own background, so it reads on light and dark themes alike.
+class Dayi extends StatefulWidget {
+  const Dayi({super.key, this.mood = Mood.idle, this.size = 120, this.animate = true});
   final Mood mood;
   final double size;
 
-  @override
-  Widget build(BuildContext context) {
-    final p = context.palette;
-    final (icon, color) = switch (mood) {
-      Mood.cheer => (Icons.workspace_premium_outlined, p.accent),
-      Mood.happy => (Icons.check_rounded, p.success),
-      Mood.sad => (Icons.replay_rounded, p.muted),
-      Mood.think => (Icons.lightbulb_outline_rounded, p.primary),
-      Mood.idle => (Icons.auto_stories_outlined, p.primary),
-    };
-    return SizedBox(
-      width: size,
-      height: size,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: color.withValues(alpha: p.isDark ? 0.2 : 0.12),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(icon, color: color, size: size * 0.5),
-      ),
-    );
-  }
-}
-
-/// Lino: Dilbaz's own mascot, a round purple "speech bubble" creature with a
-/// leaf sprout. Drawn entirely in code so there are no image assets.
-class Lino extends StatefulWidget {
-  const Lino({super.key, this.mood = Mood.idle, this.size = 120});
-  final Mood mood;
-  final double size;
+  /// Idle bob and mood reactions (also off when the system reduces motion).
+  final bool animate;
 
   @override
-  State<Lino> createState() => _LinoState();
+  State<Dayi> createState() => _DayiState();
 }
 
-class _LinoState extends State<Lino> with TickerProviderStateMixin {
-  /// Idle bob / cheer jump, looping.
-  late final _loop = AnimationController(vsync: this, duration: const Duration(milliseconds: 1600));
-
-  /// Blink, fired at random intervals.
-  late final _blink = AnimationController(vsync: this, duration: const Duration(milliseconds: 180));
+class _DayiState extends State<Dayi> with TickerProviderStateMixin {
+  /// Idle bob / cheer hop, looping.
+  late final _loop = AnimationController(vsync: this, duration: const Duration(milliseconds: 1800));
 
   /// One-shot reaction when the mood changes.
   late final _react = AnimationController(vsync: this, duration: const Duration(milliseconds: 650));
 
-  final _rand = Random();
-  bool _alive = true;
-
   @override
   void initState() {
     super.initState();
-    _react.forward();
+    if (widget.animate) _react.forward();
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (loopsEnabled(context)) {
-      if (!_loop.isAnimating) {
-        _loop.repeat();
-        _scheduleBlink();
-      }
+    _syncLoop();
+  }
+
+  void _syncLoop() {
+    if (widget.animate && loopsEnabled(context)) {
+      if (!_loop.isAnimating) _loop.repeat();
     } else {
       _loop.stop();
     }
   }
 
-  void _scheduleBlink() {
-    Future.delayed(Duration(milliseconds: 1800 + _rand.nextInt(2600)), () async {
-      if (!_alive || !_loop.isAnimating) return;
-      await _blink.forward(from: 0);
-      if (_alive) await _blink.reverse();
-      _scheduleBlink();
-    });
-  }
-
   @override
-  void didUpdateWidget(Lino old) {
+  void didUpdateWidget(Dayi old) {
     super.didUpdateWidget(old);
-    if (old.mood != widget.mood) _react.forward(from: 0);
+    _syncLoop();
+    if (old.mood != widget.mood && widget.animate) _react.forward(from: 0);
   }
 
   @override
   void dispose() {
-    _alive = false;
     _loop.dispose();
-    _blink.dispose();
     _react.dispose();
     super.dispose();
   }
@@ -127,253 +92,78 @@ class _LinoState extends State<Lino> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final s = widget.size;
-    return SizedBox(
+    final image = Image.asset(
+      mascotAsset,
       width: s,
       height: s,
-      child: AnimatedBuilder(
-        animation: Listenable.merge([_loop, _blink, _react]),
-        builder: (_, _) {
-          final t = _loop.value;
-          final r = Curves.easeOut.transform(_react.value);
-          var dy = 0.0;
-          var squash = 1.0;
-          var tilt = 0.0;
-          switch (widget.mood) {
-            case Mood.cheer:
-              final j = sin(t * pi * 4).abs();
-              dy = -j * s * 0.12;
-              squash = 1 + (1 - j) * 0.05;
-            case Mood.happy:
-              dy = -sin(r * pi) * s * 0.12 + sin(t * 2 * pi) * s * 0.015;
-            case Mood.sad:
-              dy = s * 0.03;
-              tilt = sin(r * pi * 3) * 0.06 * (1 - r);
-            case Mood.think:
-              tilt = sin(t * 2 * pi) * 0.04;
-            case Mood.idle:
-              dy = sin(t * 2 * pi) * s * 0.02;
-          }
-          return Transform.translate(
-            offset: Offset(0, dy),
-            child: Transform.rotate(
-              angle: tilt,
-              child: Transform.scale(
-                scaleX: 1 / squash,
-                scaleY: squash,
-                alignment: Alignment.bottomCenter,
-                child: CustomPaint(
-                  painter: _MascotPainter(mood: widget.mood, blink: _blink.value, wave: t),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
+      fit: BoxFit.contain,
+      filterQuality: FilterQuality.medium,
+      gaplessPlayback: true,
+      semanticLabel: 'Çaycı Dayı',
+      errorBuilder: (_, _, _) => SizedBox(width: s, height: s),
     );
+    final body = !widget.animate
+        ? image
+        : AnimatedBuilder(
+            animation: Listenable.merge([_loop, _react]),
+            child: image,
+            builder: (_, child) {
+              final t = _loop.value;
+              final r = Curves.easeOut.transform(_react.value);
+              var dy = 0.0;
+              var tilt = 0.0;
+              var scale = 1.0;
+              switch (widget.mood) {
+                case Mood.cheer || Mood.joy:
+                  dy = -sin(t * pi * 2).abs() * s * 0.06;
+                  scale = 1 + sin(r * pi) * 0.08;
+                case Mood.happy:
+                  dy = -sin(r * pi) * s * 0.1 + sin(t * 2 * pi) * s * 0.012;
+                case Mood.sad:
+                  tilt = sin(r * pi * 3) * 0.05 * (1 - r);
+                  scale = 0.96;
+                case Mood.think:
+                  tilt = sin(t * 2 * pi) * 0.03;
+                case Mood.calm:
+                  dy = sin(t * 2 * pi) * s * 0.02;
+                case Mood.idle:
+                  dy = sin(t * 2 * pi) * s * 0.015;
+              }
+              return Transform.translate(
+                offset: Offset(0, dy),
+                child: Transform.rotate(
+                  angle: tilt,
+                  child: Transform.scale(scale: scale, child: child),
+                ),
+              );
+            },
+          );
+    return SizedBox(key: ValueKey('dayi-${widget.mood.name}'), width: s, height: s, child: body);
   }
 }
 
-class _MascotPainter extends CustomPainter {
-  _MascotPainter({required this.mood, required this.blink, required this.wave});
+/// Empty list / nothing-to-do message with the mascot above it.
+class EmptyState extends StatelessWidget {
+  const EmptyState({super.key, required this.message, this.mood = Mood.calm, this.size = 120});
+  final String message;
   final Mood mood;
-  final double blink;
-  final double wave;
-
-  static const _body = Color(0xFF7B5CF5);
-  static const _bodyDark = Color(0xFF5A3BD6);
-  static const _belly = Color(0xFFB9A8FF);
-  static const _leaf = Color(0xFF34C77B);
-  static const _ink = Color(0xFF231C3D);
-  static const _cheek = Color(0xFFFF8FB1);
+  final double size;
 
   @override
-  void paint(Canvas canvas, Size size) {
-    final w = size.width;
-    final c = Offset(w / 2, w * 0.56);
-    final r = w * 0.36;
-
-    // Shadow.
-    canvas.drawOval(
-      Rect.fromCenter(center: Offset(w / 2, w * 0.96), width: r * 1.5, height: w * 0.07),
-      Paint()..color = Colors.black.withValues(alpha: 0.10),
-    );
-
-    // Sprout.
-    final stem = Paint()
-      ..color = _leaf
-      ..strokeWidth = w * 0.03
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke;
-    final top = Offset(w / 2, c.dy - r);
-    canvas.drawLine(top, top.translate(0, -w * 0.1), stem);
-    final sway = sin(wave * 2 * pi) * 0.15;
-    for (final side in [-1.0, 1.0]) {
-      canvas
-        ..save()
-        ..translate(top.dx, top.dy - w * 0.1)
-        ..rotate(side * (0.7 + sway));
-      canvas.drawOval(Rect.fromLTWH(0, -w * 0.035, w * 0.13, w * 0.07), Paint()..color = _leaf);
-      canvas.restore();
-    }
-
-    // Feet.
-    final feet = Paint()..color = _bodyDark;
-    for (final side in [-1.0, 1.0]) {
-      canvas.drawOval(
-        Rect.fromCenter(
-          center: Offset(w / 2 + side * r * 0.45, c.dy + r * 0.95),
-          width: r * 0.5,
-          height: r * 0.28,
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.all(24),
+    child: Column(
+      key: const ValueKey('empty-state'),
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Mascot(mood: mood, size: size),
+        const SizedBox(height: 12),
+        Text(
+          message,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: context.palette.muted, fontSize: 15, height: 1.4),
         ),
-        feet,
-      );
-    }
-
-    // Body with a soft gradient.
-    final body = Rect.fromCircle(center: c, radius: r);
-    canvas.drawOval(
-      body,
-      Paint()
-        ..shader = const RadialGradient(
-          center: Alignment(-0.35, -0.45),
-          radius: 1.1,
-          colors: [Color(0xFF9B83FF), _body, _bodyDark],
-          stops: [0, 0.55, 1],
-        ).createShader(body),
-    );
-    // Belly.
-    canvas.drawOval(
-      Rect.fromCenter(center: c.translate(0, r * 0.42), width: r * 1.1, height: r * 0.8),
-      Paint()..color = _belly.withValues(alpha: 0.55),
-    );
-
-    // Arms: raised when cheering, tucked otherwise.
-    final arm = Paint()
-      ..color = _body
-      ..strokeWidth = w * 0.07
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke;
-    for (final side in [-1.0, 1.0]) {
-      final shoulder = c.translate(side * r * 0.9, r * 0.15);
-      final Offset hand;
-      switch (mood) {
-        case Mood.cheer:
-          final flap = sin(wave * pi * 8) * 0.08;
-          hand = shoulder.translate(side * r * 0.35, -r * (0.75 + flap));
-        case Mood.happy:
-          hand = shoulder.translate(side * r * 0.4, -r * 0.35);
-        case Mood.sad:
-          hand = shoulder.translate(side * r * 0.12, r * 0.45);
-        case Mood.think:
-          hand = side < 0
-              ? shoulder.translate(r * 0.45, -r * 0.35)
-              : shoulder.translate(side * r * 0.2, r * 0.35);
-        case Mood.idle:
-          hand = shoulder.translate(side * r * 0.25, r * 0.3);
-      }
-      canvas.drawLine(shoulder, hand, arm);
-    }
-
-    // Eyes.
-    final eyeY = c.dy - r * 0.12;
-    final eyeDx = r * 0.36;
-    final eyeOpen = 1 - blink;
-    for (final side in [-1.0, 1.0]) {
-      final e = Offset(c.dx + side * eyeDx, eyeY);
-      if (mood == Mood.happy || mood == Mood.cheer) {
-        // Closed happy arcs.
-        canvas.drawArc(
-          Rect.fromCenter(center: e.translate(0, r * 0.05), width: r * 0.34, height: r * 0.3),
-          pi,
-          pi,
-          false,
-          Paint()
-            ..color = _ink
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = w * 0.03
-            ..strokeCap = StrokeCap.round,
-        );
-        continue;
-      }
-      final eyeH = r * 0.42 * max(eyeOpen, 0.08);
-      canvas.drawOval(
-        Rect.fromCenter(center: e, width: r * 0.34, height: eyeH),
-        Paint()..color = Colors.white,
-      );
-      if (eyeOpen > 0.3) {
-        final look = mood == Mood.think ? Offset(r * 0.05, -r * 0.07) : Offset(0, r * 0.03);
-        canvas.drawCircle(e + look, r * 0.1, Paint()..color = _ink);
-        canvas.drawCircle(
-          e + look.translate(-r * 0.035, -r * 0.04),
-          r * 0.035,
-          Paint()..color = Colors.white,
-        );
-      }
-      if (mood == Mood.sad) {
-        // Worried brows.
-        canvas.drawLine(
-          e.translate(-side * r * 0.15, -r * 0.4),
-          e.translate(side * r * 0.12, -r * 0.3),
-          Paint()
-            ..color = _ink
-            ..strokeWidth = w * 0.022
-            ..strokeCap = StrokeCap.round,
-        );
-      }
-    }
-
-    // Cheeks.
-    for (final side in [-1.0, 1.0]) {
-      canvas.drawOval(
-        Rect.fromCenter(
-          center: Offset(c.dx + side * r * 0.62, eyeY + r * 0.3),
-          width: r * 0.24,
-          height: r * 0.13,
-        ),
-        Paint()..color = _cheek.withValues(alpha: 0.7),
-      );
-    }
-
-    // Mouth.
-    final m = Offset(c.dx, eyeY + r * 0.36);
-    final mouth = Paint()
-      ..color = _ink
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = w * 0.028
-      ..strokeCap = StrokeCap.round;
-    switch (mood) {
-      case Mood.cheer:
-      case Mood.happy:
-        final open = Path()
-          ..moveTo(m.dx - r * 0.22, m.dy - r * 0.04)
-          ..quadraticBezierTo(m.dx, m.dy + r * 0.34, m.dx + r * 0.22, m.dy - r * 0.04)
-          ..close();
-        canvas.drawPath(open, Paint()..color = _ink);
-        canvas.drawOval(
-          Rect.fromCenter(center: m.translate(0, r * 0.12), width: r * 0.18, height: r * 0.08),
-          Paint()..color = _cheek,
-        );
-      case Mood.sad:
-        canvas.drawArc(
-          Rect.fromCenter(center: m.translate(0, r * 0.1), width: r * 0.3, height: r * 0.2),
-          pi * 1.1,
-          pi * 0.8,
-          false,
-          mouth,
-        );
-      case Mood.think:
-        canvas.drawLine(m.translate(-r * 0.1, 0), m.translate(r * 0.12, -r * 0.03), mouth);
-      case Mood.idle:
-        canvas.drawArc(
-          Rect.fromCenter(center: m, width: r * 0.32, height: r * 0.22),
-          0.15 * pi,
-          0.7 * pi,
-          false,
-          mouth,
-        );
-    }
-  }
-
-  @override
-  bool shouldRepaint(_MascotPainter old) => old.mood != mood || old.blink != blink || old.wave != wave;
+      ],
+    ),
+  );
 }

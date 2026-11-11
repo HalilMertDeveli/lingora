@@ -6,6 +6,7 @@ import '../data/course_repository.dart';
 import '../data/progress.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
+import '../ui/flag.dart';
 import 'nav_target.dart';
 
 /// Top bar of every tab root: the track button on the left (opens the track
@@ -49,7 +50,10 @@ class StatsBar extends ConsumerWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Glyph(emoji: track.emoji, icon: trackIcon(track), size: 24),
+                  if (track.flag != null)
+                    FlagIcon(track.flag!, width: 26)
+                  else
+                    Glyph(emoji: track.emoji, icon: trackIcon(track), size: 24),
                   const SizedBox(width: 6),
                   Flexible(
                     child: Text(
@@ -184,7 +188,10 @@ class TrackDrawer extends ConsumerWidget {
         },
         child: Row(
           children: [
-            IconBadge(icon: trackIcon(t), emoji: t.emoji, size: 40),
+            if (t.flag != null)
+              SizedBox(width: 40, height: 40, child: Center(child: FlagIcon(t.flag!, width: 36)))
+            else
+              IconBadge(icon: trackIcon(t), emoji: t.emoji, size: 40),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
