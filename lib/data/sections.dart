@@ -34,6 +34,24 @@ int sectionReach(Course course, Progress p) {
 bool sectionOpen(Course course, Section section, Progress p) =>
     section == course.sections.first || section.index <= sectionReach(course, p);
 
+/// The section skills test (curriculum §4): the last unit's test with its
+/// own questions; null for a section without one.
+PathNode? skillsTest(Section section) => section.units.lastOrNull?.nodes
+    .where((n) => n.type == NodeType.test && n.exercises.isNotEmpty)
+    .lastOrNull;
+
+/// Whether [section] is "tamamlandı" (curriculum §4): its skills test is
+/// passed and, when its last unit has a writing task, that lesson is done
+/// too. Opening the next section does not depend on it.
+bool sectionCompleted(Section section, Progress p) {
+  final test = skillsTest(section);
+  if (test == null || !p.isDone(test.id)) return false;
+  final writing = section.units.last.nodes.where(
+    (n) => n.type == NodeType.lesson && n.exercises.any((e) => e.type == ExerciseType.write),
+  );
+  return writing.every((n) => p.isDone(n.id));
+}
+
 /// Share of finished nodes in [section], 0–1.
 double sectionProgress(Section section, Progress p) {
   final nodes = section.nodes;
@@ -79,7 +97,7 @@ List<LessonItem> sectionSkipItems(Section section, [Random? random]) {
   final pools = [
     for (final unit in section.units)
       for (final l in unit.nodes.where((n) => n.type == NodeType.lesson))
-        lessonItems(l).where((it) => it.ex.type != ExerciseType.speak).toList()..shuffle(r),
+        lessonItems(l).where((it) => !ungradedTypes.contains(it.ex.type)).toList()..shuffle(r),
   ]..shuffle(r);
   final picked = <LessonItem>[];
   for (var round = 0; picked.length < sectionSkipSize; round++) {

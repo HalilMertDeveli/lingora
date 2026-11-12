@@ -19,7 +19,20 @@ const cefrLevels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'};
 
 /// Question types a unit test may carry as its own questions.
 const testTypes = {'listen', 'choice', 'translate', 'fillBlank', 'select'};
-const exerciseTypes = {'select', 'translate', 'fillBlank', 'listen', 'match', 'speak', 'choice'};
+const exerciseTypes = {
+  'select',
+  'translate',
+  'fillBlank',
+  'listen',
+  'match',
+  'speak',
+  'choice',
+  'write',
+  'shadow',
+};
+
+/// Error types a writing task may focus on (lib/models/course.dart).
+const focusTypes = {'article', 'tense', 'preposition', 'word_order', 'be'};
 
 List<File> sectionFiles(String dir) {
   final d = Directory(dir);
@@ -148,8 +161,18 @@ List<String> validateSection(String fileName, Object? json, Set<String> seen) {
           check(exercises.length >= 8 && exercises.length <= 10, '$at: ${exercises.length} alıştırma (8–10)');
           for (final (i, e) in exercises.indexed) {
             problems.addAll(validateExercise(e, '$fileName: $at#$i'));
+            // A writing task's rubric lives on the server under "<node id>w".
+            if (e is Map && e['type'] == 'write') {
+              check(e['taskId'] == '${id}w', '$at#$i: taskId "${id}w" olmalı');
+            }
           }
+          final writes = exercises.where((e) => e is Map && e['type'] == 'write').length;
+          check(writes <= 1, '$at: bir derste en fazla bir write');
         case 'story':
+          check(
+            !n.containsKey('listenFirst') || n['listenFirst'] is bool,
+            '$at: listenFirst true/false olmalı',
+          );
           final steps = n['steps'];
           check(steps is List && steps.isNotEmpty, '$at: steps yok');
           for (final s in (steps is List ? steps : const []).whereType<Map>()) {
@@ -266,6 +289,29 @@ List<String> validateExercise(Object? e, String at) {
       }
     case 'speak':
       check(str(e['text']), 'text yok');
+    case 'shadow':
+      check(str(e['text']), 'text yok');
+      check(str(e['translation']), 'translation yok');
+      final rate = e['rate'];
+      check(rate == null || (rate is num && rate >= 0.5 && rate <= 1.2), 'rate 0.5–1.2 olmalı');
+    case 'write':
+      final min = e['minWords'];
+      final max = e['maxWords'];
+      final focus = e['focus'] ?? const [];
+      check(str(e['prompt']), 'Türkçe görev (prompt) yok');
+      check(str(e['model']), 'model metin yok');
+      check(min is int && min > 0, 'minWords yok');
+      check(max is int && min is int && max >= min, "maxWords minWords'ten küçük");
+      check(strList(e['checklist']) != null, 'checklist yok');
+      check(
+        focus is List && focus.length <= 3 && focus.every(focusTypes.contains),
+        'focus en fazla 3 tür: ${focusTypes.join('/')}',
+      );
+      check(str(e['taskId']), 'taskId yok');
+      if (str(e['model']) && min is int && max is int) {
+        final words = RegExp(r"[A-Za-z0-9'’-]+").allMatches(e['model'] as String).length;
+        check(words >= min && words <= max * 1.2, 'model metin $words kelime ($min–$max)');
+      }
     case 'choice':
       final options = strList(e['options']);
       final answer = e['answer'];
@@ -421,6 +467,42 @@ void main() {
     // Passes with an empty folder too: the content teams add the files.
     final problems = validateAll(sectionFiles(sectionDir));
     expect(problems, isEmpty, reason: problems.take(30).join('\n'));
+  });
+
+  test('every writing task has its rubric on the server, with the same length and focus', () {
+    // functions/src/writing_tasks.json feeds assessWriting (functions/src/assess_writing.ts).
+    final tasks =
+        jsonDecode(File('functions/src/writing_tasks.json').readAsStringSync()) as Map<String, dynamic>;
+    final used = <String>{};
+    final problems = <String>[];
+    for (final f in [File('assets/courses/tr_en.json'), ...sectionFiles(sectionDir)]) {
+      final units = (jsonDecode(f.readAsStringSync()) as Map)['units'] as List;
+      for (final u in units) {
+        for (final n in (u as Map)['nodes'] as List) {
+          for (final e in ((n as Map)['exercises'] as List?) ?? const []) {
+            if ((e as Map)['type'] != 'write') continue;
+            final id = e['taskId'] as String;
+            used.add(id);
+            final t = tasks[id] as Map?;
+            if (t == null) {
+              problems.add('$id: functions/src/writing_tasks.json içinde yok');
+              continue;
+            }
+            if (t['minWords'] != e['minWords'] || t['maxWords'] != e['maxWords']) {
+              problems.add('$id: kelime aralığı sunucuyla aynı değil');
+            }
+            String focus(Map m) => ([...((m['focus'] as List?) ?? const [])]..sort()).join(',');
+            if (focus(e) != focus(t)) {
+              problems.add('$id: focus sunucuyla aynı değil');
+            }
+          }
+        }
+      }
+    }
+    for (final id in tasks.keys.where((k) => !used.contains(k))) {
+      problems.add('$id: sunucuda var ama hiçbir write alıştırması kullanmıyor');
+    }
+    expect(problems, isEmpty, reason: problems.join(r' | '));
   });
 
   test('section folder is declared in pubspec.yaml and keeps no fixture', () {

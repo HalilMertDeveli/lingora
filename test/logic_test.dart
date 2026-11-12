@@ -118,8 +118,11 @@ void main() {
                 expect(ex.answers, isNotEmpty, reason: where);
               case ExerciseType.match:
                 expect(ex.pairs.length, greaterThanOrEqualTo(3), reason: where);
-              case ExerciseType.speak:
+              case ExerciseType.speak || ExerciseType.shadow:
                 expect(ex.text, isNotEmpty, reason: where);
+              case ExerciseType.write:
+                expect(ex.model, isNotEmpty, reason: where);
+                expect(ex.minWords, greaterThan(0), reason: where);
               case ExerciseType.choice:
                 expect(ex.question, isNotEmpty, reason: where);
                 expect(ex.options.length, inInclusiveRange(4, 5), reason: where);

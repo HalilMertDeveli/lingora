@@ -12,11 +12,13 @@ class SpeechService {
   final _stt = SpeechToText();
   bool? _sttReady;
 
-  Future<void> say(String text, {String lang = 'en', bool slow = false}) async {
+  /// Reads [text] aloud. [rate] scales the normal speed (0.75 for the
+  /// slower listening of stories and shadowing).
+  Future<void> say(String text, {String lang = 'en', bool slow = false, double rate = 1}) async {
     try {
       await _tts.stop();
       await _tts.setLanguage(lang == 'tr' ? 'tr-TR' : englishLocale);
-      await _tts.setSpeechRate(slow ? 0.22 : 0.45);
+      await _tts.setSpeechRate((slow ? 0.22 : 0.45) * rate);
       await _tts.speak(text);
     } catch (_) {
       // No TTS engine on the device: exercises still work without audio.
