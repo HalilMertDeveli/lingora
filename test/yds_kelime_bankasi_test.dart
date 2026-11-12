@@ -47,6 +47,19 @@ final _banks = <(String, String, int, List<String> Function(), List<String>)>[
     () => [..._generalAll(), ..._oldYds, 'assets/courses/exam_yds/05_kelime_bankasi_1.json'],
     ['ys5'],
   ),
+  // Faz 3a: everything shipped before ys9 (sections 05–08, every yd_ and ydm_ card). No exceptions.
+  (
+    'ys9',
+    'assets/courses/exam_yds/09_kelime_bankasi_3.json',
+    12,
+    () => [
+      ..._generalAll(),
+      ..._oldYds,
+      for (final n in ['05_kelime_bankasi_1', '06_okuma_evi_1', '07_kelime_bankasi_2', '08_okuma_evi_2'])
+        'assets/courses/exam_yds/$n.json',
+    ],
+    ['ys5', 'ys7', 'ys1', 'ys2', 'ys3', 'ys4'],
+  ),
 ];
 
 Map<String, dynamic> _read(String path) =>
@@ -132,10 +145,13 @@ void main() {
           if (((e as Map)['topic'] as String).startsWith('${sec}u')) e as Map<String, dynamic>,
       ];
 
-      test('${units * 80} cards, 80 per unit, ids yd_<word>', () {
-        expect(bankCards.length, units * 80);
+      // ys5 and ys7: 80 words a unit; ys9 (Faz 3a): 1,300 words over 12 units (108–109 each).
+      final total = const {'ys5': 800, 'ys7': 1200, 'ys9': 1300}[sec]!;
+      test('$total cards, about ${total ~/ units} per unit', () {
+        expect(bankCards.length, total);
         for (var i = 1; i <= units; i++) {
-          expect(bankCards.where((e) => e['topic'] == '${sec}u$i'), hasLength(80), reason: '${sec}u$i');
+          final n = bankCards.where((e) => e['topic'] == '${sec}u$i').length;
+          expect(n, inInclusiveRange(total ~/ units, total ~/ units + 1), reason: '${sec}u$i');
         }
       });
 

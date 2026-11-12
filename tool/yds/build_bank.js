@@ -14,6 +14,11 @@ const BANKS = {
     description: 'Akademik kelime: 15 temada 1.200 yeni kelime (NAWL ve sık genel kelimeler), her biri kart, eşdizim ve B2 bağlam cümlesiyle',
     emoji: ['🧪', '⚖️', '🔗', '📈', '🏛️', '💹', '🤖', '🩺', '⚡', '🏺', '🧠', '📜', '🧩', '🤔', '🧷'],
   },
+  ys9: {
+    file: '09_kelime_bankasi_3.json', index: 9, units: 12, title: 'Kelime bankası 3', cefr: 'B2',
+    description: 'Orta sıklık bandı ve YÖKDİL alan terimleri: 12 temada 1.300 yeni kelime, her biri kart, eşdizim ve B2 bağlam cümlesiyle',
+    emoji: ['🔬', '🧬', '⚗️', '💊', '🥗', '👪', '🌐', '🏦', '📰', '🎭', '🧵', '🔀'],
+  },
 };
 const sec = process.argv[2];
 const b = BANKS[sec];
