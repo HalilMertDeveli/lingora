@@ -94,10 +94,11 @@ const sectionMocks = {
   26: [{ kind: 'section', nodeId: 'ys1u10m', size: 20, minutes: 45 }],
   33: [{ kind: 'section', nodeId: 'ys2u15m', size: 30, minutes: 60 }],
   32: [{ kind: 'half', nodeId: 'ys8u10m', size: 40, minutes: 90 }],
-  // F3 (docs/sinav/yds-faz3-icerik.md): half mocks 2–4 appended to ys8 units, 6–8 in ys10.
-  22: [{ kind: 'half', nodeId: 'ys8u1h', size: 40, minutes: 90 }],
-  24: [{ kind: 'half', nodeId: 'ys8u3h', size: 40, minutes: 90 }],
-  27: [{ kind: 'half', nodeId: 'ys8u5h', size: 40, minutes: 90 }],
+  // F3 (docs/sinav/yds-faz3-icerik.md): half mocks 2–4 in ys11 Ara denemeler (a new side path, so no
+  // finished unit gains a step), 6–8 in ys10.
+  22: [{ kind: 'half', nodeId: 'ys11u1m', size: 40, minutes: 90 }],
+  24: [{ kind: 'half', nodeId: 'ys11u2m', size: 40, minutes: 90 }],
+  27: [{ kind: 'half', nodeId: 'ys11u3m', size: 40, minutes: 90 }],
   37: [{ kind: 'half', nodeId: 'ys10u3m', size: 40, minutes: 90 }],
   39: [{ kind: 'half', nodeId: 'ys10u5m', size: 40, minutes: 90 }],
   40: [{ kind: 'section', nodeId: 'ys3u10m', size: 40, minutes: 90 }],
@@ -141,6 +142,8 @@ for (const [w, id] of Object.entries(okuma)) parallel[w].push(id);
 for (let w = 21; w <= 34; w++) parallel[w] = [`ys7u${w - 20}`];
 parallel[34].push('ys7u15');
 [22, 23, 24, 26, 27, 28, 29, 30, 31, 32].forEach((w, i) => parallel[w].push(`ys8u${i + 1}`));
+// F3d: ys11 Ara denemeler, one unit before each of half mocks 2–4.
+[22, 24, 27].forEach((w, i) => parallel[w].push(`ys11u${i + 1}`));
 // F3: ys9 Kelime bankası 3 (12 units) and ys10 Okuma evi 3 (8 units) over weeks 35–42.
 const ys9 = { 35: [1, 2], 36: [3], 37: [4, 5], 38: [6], 39: [7, 8], 40: [9], 41: [10, 11], 42: [12] };
 for (let w = 35; w <= 42; w++) parallel[w] = [...ys9[w].map((u) => `ys9u${u}`), `ys10u${w - 34}`];
