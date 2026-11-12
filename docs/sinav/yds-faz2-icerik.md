@@ -100,7 +100,7 @@ Bölüm `ys8`, index 8, `parallel: true`, cefr "B2". Deseni ys6 ile aynıdır:
 | Soru dağılımı | Gerçek YDS okuma soru türlerine yakın: ana fikir/başlık, ayrıntı, çıkarım, gönderim, yazarın tutumu/amacı, bağlamda kelime. Her metinde en az 1 çıkarım ya da tutum sorusu. |
 | Ünite stratejisi (Rehber) | u1 başlık sorusu; u2 çıkarım; u3 yazarın tutumu; u4 karşılaştırma metinleri; u5 sayı ve istatistik içeren metin; u6 tanım ve örnek; u7 problem–çözüm; u8 neden–sonuç zinciri; u9 metin başına 12 dk zamanlı; u10 karışık zamanlı |
 
-Son ünite chest'ten sonra **yarım deneme 2** ile biter: 40 soru / 90 dk, F1 §4 dağılımı, gerçek YDS düzeyi (B2).
+Son ünite chest'ten sonra **yarım deneme 5** ile biter (plandaki H32 yarım denemesi; düğüm id `ys8u10m`): 40 soru / 90 dk, F1 §4 dağılımı, gerçek YDS düzeyi (B2).
 
 ### Bol okuma: `assets/reading/yds_bol_okuma_1.json`
 
@@ -164,7 +164,7 @@ Bunlar gelene kadar dosya yüklenmez; ama PR'ın bir JSON şema testi olmalıdı
 
 `assets/plans/yds_1_yil.json` içindeki `parallelUnitIds` alanı H21–34 için ys7 ve ys8 ünitelerini taşır:
 - ys7: haftada 1 ünite, H34'te 2 ünite
-- ys8: H22–34 arası 10 ünite
+- ys8: H22–32 arası 10 ünite (son ünitenin denemesi H32 yarım denemesidir)
 
 ## Kabul ölçütleri
 
