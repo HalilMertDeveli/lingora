@@ -581,7 +581,8 @@
       ],
       "parallelUnitIds": [
         "ys7u2",
-        "ys8u1"
+        "ys8u1",
+        "ys11u1"
       ],
       "grammar": "noun clause, mixed conditionals",
       "questionWork": "Dilbilgisi, cümle tamamlama",
@@ -589,7 +590,7 @@
       "mocks": [
         {
           "kind": "half",
-          "nodeId": "ys8u1h",
+          "nodeId": "ys11u1m",
           "size": 40,
           "minutes": 90
         }
@@ -632,7 +633,8 @@
       ],
       "parallelUnitIds": [
         "ys7u4",
-        "ys8u3"
+        "ys8u3",
+        "ys11u2"
       ],
       "grammar": "bağlaç ve geçiş ifadeleri, haber dili",
       "questionWork": "Cümle tamamlama, paragraf tamamlama (giriş)",
@@ -640,7 +642,7 @@
       "mocks": [
         {
           "kind": "half",
-          "nodeId": "ys8u3h",
+          "nodeId": "ys11u2m",
           "size": 40,
           "minutes": 90
         }
@@ -711,7 +713,8 @@
       ],
       "parallelUnitIds": [
         "ys7u7",
-        "ys8u5"
+        "ys8u5",
+        "ys11u3"
       ],
       "grammar": "akademik fiil kalıpları",
       "questionWork": "Kelime, cümle tamamlama",
@@ -719,7 +722,7 @@
       "mocks": [
         {
           "kind": "half",
-          "nodeId": "ys8u5h",
+          "nodeId": "ys11u3m",
           "size": 40,
           "minutes": 90
         }

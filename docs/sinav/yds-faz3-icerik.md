@@ -118,16 +118,33 @@ Başlıklar plandaki adlarla aynı olmalıdır: "Yarım deneme 6/7/8".
 ## F3d. Yarım denemeler 2–4 (F2'de eksik kalanlar)
 
 - Plan H22, H24 ve H27'de yarım deneme istiyor, ama düğümleri yok.
-- Bunlar ys8'in ilgili ünitelerine **yeni bir mock düğümü olarak** eklenir. Ünitenin mevcut düğümlerine ve ID'lerine dokunulmaz, yalnızca chest'ten sonra eklenir:
+- **Gönderilmiş bölümlere (ys8) düğüm eklenmez.** Bitmiş bir ünite ya da bölüm yeni bir adım kazanırsa ilerleme yüzdesi düşer, "Tamamlandı" işareti ve ünite maskotu kaybolur. İlerleme bozulmamalıdır.
+- Bunun yerine yeni bir yan yol açılır: `assets/courses/exam_yds/11_ara_denemeler.json`, bölüm `ys11` "Ara denemeler", index 11, `parallel: true`, cefr "B1+–B2".
+- Bölümde 3 ünite vardır. Her ünite, yarım denemeye hazırlayan bir **karışık tekrar** ünitesidir:
+  - **4 ders**, ders başına 10–12 `choice`. O ana kadarki hafta konularından karışık sorular gelir (karışık çalışma, araştırma §2.3). Dersler 1–4 sırasıyla şunlardır:
+    1. dilbilgisi ve cloze
+    2. cümle tamamlama ve çeviri
+    3. okuma
+    4. diyalog, restatement ve paragraf
+  - 15 soruluk test ve chest.
+  - Chest'ten sonra yarım deneme (40 soru / 90 dk, kendi `exercises` listesiyle, F1 §4 dağılımı).
+  - Rehber: o noktaya kadar hangi soru tiplerinin öğrenildiğini, denemede süre planını ve deneme sonrası analiz adımlarını anlatır.
 
-| Düğüm | Plandaki deneme | Hafta |
-|---|---|---|
-| `ys8u1h` | Yarım deneme 2 | H22 |
-| `ys8u3h` | Yarım deneme 3 | H24 |
-| `ys8u5h` | Yarım deneme 4 | H27 |
+| Ünite | Düğüm | Plandaki deneme | Hafta | Kapsam (sorular nereden) |
+|---|---|---|---|---|
+| ys11u1 | `ys11u1m` | Yarım deneme 2 | H22 | ys1u11–16, ys1u1–u5, ys5 |
+| ys11u2 | `ys11u2m` | Yarım deneme 3 | H24 | + ys1u6–u8, ys7u1–u4 |
+| ys11u3 | `ys11u3m` | Yarım deneme 4 | H27 | + ys1u9–u10, ys2u1, ys7u5–u7 |
 
-- Düzey B1+–B2 olmalı; Evre 3'ün ortasıdır. Dağılım F1 §4 ile aynıdır.
-- Not: Denemeler yolu kilitlemez. Bölüm ilerleme yüzdesi yeni düğüm nedeniyle biraz düşebilir; bu kabul edilmiştir.
+- **Kapsam** sütunu konuları gösterir. Sorular yeni yazılır; o ünitelerden kopyalanmaz.
+- **Düzey:** B1+–B2. Evre 3'ün ortasına denk gelir.
+- **Kilit:** ys11 paralel olduğu için her zaman açıktır. Deneme, kendi ünitesinin adımları bitince açılır (`mockOpen`). Plan haftasında önce ünite gelir, sonra deneme.
+- **Regresyon testi zorunludur.** Testte bir ilerleme kaydı kurulur: ys1–ys8'in tüm düğümleri bitmiş olsun. Yeni içerik (ys9, ys10, ys11) yüklendikten sonra:
+  - ys1–ys8'in `sectionProgress` değeri 1.0 kalmalı
+  - her bölüm açık kalmalı
+  - her ünitenin bütün düğümleri `done` kalmalı
+
+  Bu test, gönderilmiş hiçbir bölüme yeni düğüm eklenmediğini de garanti eder.
 
 ---
 
@@ -135,7 +152,8 @@ Başlıklar plandaki adlarla aynı olmalıdır: "Yarım deneme 6/7/8".
 
 `assets/plans/yds_1_yil.json` bu PR'da güncellendi:
 - **H35–42 `parallelUnitIds`:** ys9 haftada 1–2 ünite, ys10 haftada 1 ünite.
-- **`mocks` alanına eklenen yarım deneme düğümleri:** H22 `ys8u1h`, H24 `ys8u3h`, H27 `ys8u5h`, H37 `ys10u3m`, H39 `ys10u5m`, H41 `ys10u7m`.
+- **H22, H24, H27 `parallelUnitIds`:** `ys11u1`, `ys11u2`, `ys11u3` eklendi.
+- **`mocks` alanına eklenen yarım deneme düğümleri:** H22 `ys11u1m`, H24 `ys11u2m`, H27 `ys11u3m`, H37 `ys10u3m`, H39 `ys10u5m`, H41 `ys10u7m`.
 
 Düğüm ID'leri bu tabloyla aynı olmalıdır.
 
