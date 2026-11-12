@@ -313,7 +313,7 @@ Desen aynı: `lesson, lesson, story, lesson, lesson, test, chest`. C1'de beceri 
   - `listen` 15–25 kelime;
   - `write` 220–300 kelime, model metin aralıkta.
 - **Kelime:**
-  - Ünite başına en fazla 60 yeni lemma; en az 25'i l1–l4'te yeniden geçer.
+  - Ünite başına en fazla 60 **hedef** lemma (l1/l2'de öğretilen kelimeler ve guide listesi); en az 25'i l1–l4'te yeniden geçer. Okuma metnindeki tanıma kelimeleri bu sayıya girmez, ama her l3 okuma metninde bilinmeyen kelime oranı (kurs kelimeleri + NGSL'ye göre) en fazla %5 olmalı. Hiçbir sorunun cevabı bağlamdan çıkarılamayan nadir bir kelimeye bağlı olmamalı; "bağlamdaki anlam" sorusu bunun istisnası. PR'da ünite başına iki sayı verilir: hedef lemma sayısı ve bilinmeyen kelime oranı.
   - **YDS ys7 ve sonrası bankasının kelimeleri hedef kelime (match, kelime `select`) olamaz.** Metinde geçebilir; mevcut test bunu denetliyor.
   - C1 genel kursun ağırlığı akademik kelime değil. Eşdizim, deyim, söylem ve üslup ön planda. Akademik kelime YDS yolunda öğretiliyor.
 - **Kadro:** Elif, Kerem, Sam, Mia ve Deniz yetişkin hâlleriyle. Kalite turunun kararıyla Deniz erkektir (he/his). Ünitelerin yarısında bağımsız konuşmacılar olsun ki C1 dinlemede ses ve aksan çeşitliliği artsın; TTS ses seçimi değişebiliyorsa farklı sesler kullanılmalı.
