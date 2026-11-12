@@ -327,6 +327,7 @@
           "title": "Kötü bir sabah",
           "description": "Elif kafeye geç kalıyor ve her şey ters gidiyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1042,6 +1043,7 @@
           "title": "Fırtınalı gece",
           "description": "Sam, Mia'ya Ayvalık yakınlarındaki bir köyde yaşadığı garip geceyi anlatıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1788,6 +1790,7 @@
           "title": "Ev arıyorum",
           "description": "Sam yeni bir ev arıyor, Elif'in aklına biri geliyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -2518,6 +2521,7 @@
           "title": "Bir kafenin hikâyesi",
           "description": "Gazeteci Mia, bir yazı için Elif'le kafesi hakkında konuşuyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -3269,6 +3273,7 @@
           "title": "Kapadokya hafta sonu",
           "description": "Deniz, Kerem'e Kapadokya gezisini anlatıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -4005,6 +4010,7 @@
           "title": "Herkesin bir dileği var",
           "description": "Elif ve Sam kafede dileklerini konuşuyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -4721,6 +4727,7 @@
           "title": "Dağınık tezgâh",
           "description": "Elif yeni baristadan şikâyet ediyor ve bir hatasına pişman oluyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -5423,6 +5430,7 @@
           "title": "Vapurda sohbet",
           "description": "Sam, Londra'dan gelen Mia'yla Kadıköy vapurunda sohbet ediyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -6127,6 +6135,7 @@
           "title": "Bozulan bir dostluk",
           "description": "Deniz iş arkadaşıyla bozuşuyor, Elif ona akıl veriyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -6827,6 +6836,7 @@
           "title": "Moda şubesi",
           "description": "Elif, Kerem ve Deniz ikinci kafe için bir plan buluyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -7535,6 +7545,7 @@
           "title": "Pahalı ama değer mi?",
           "description": "Mia İstanbul'a taşınmayı düşünüyor, Sam artıları ve eksileri anlatıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -8248,6 +8259,7 @@
           "title": "Film gecesi",
           "description": "Kerem, Mia ve Sam yeni bir Türk filmini tartışıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",

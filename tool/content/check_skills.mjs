@@ -11,6 +11,9 @@
 // story, one `write` per unit with its server rubric. Rubrics are read from
 // functions/src/writing_tasks.json and, while content is being written, from
 // every *.json in $RUBRIC_DIR (same shape, merged later).
+//
+// Sections 1–4 (A1–A2) follow "Faz 3": shadow in l1/l3, a short `write` in l4
+// (practice only, not part of section completion) and listen-first stories.
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -143,10 +146,13 @@ for (const f of extFiles) {
         if (!e.prompt || !e.model) say(at, 'write prompt/model');
         if (!(e.minWords > 0) || !(e.maxWords >= e.minWords)) say(at, 'write min/maxWords');
         if (m < e.minWords || m > e.maxWords) say(at, `write model ${m} words (${e.minWords}–${e.maxWords})`);
-        if (!between(e.checklist?.length ?? 0, 3, 5)) say(at, 'write checklist 3–5 items');
-        if (!(e.focus?.length >= 1 && e.focus.length <= 3) || e.focus.some((x) => !focusTypes.has(x))) {
-          say(at, 'write focus 1–3 of article/tense/preposition/word_order/be');
+        const a = level.startsWith('A');
+        if (!between(e.checklist?.length ?? 0, 3, a ? 3 : 5)) say(at, `write checklist ${a ? '3' : '3–5'} items`);
+        if (!(e.focus?.length >= 1 && e.focus.length <= (a ? 2 : 3)) || e.focus.some((x) => !focusTypes.has(x))) {
+          say(at, `write focus 1–${a ? 2 : 3} of article/tense/preposition/word_order/be`);
         }
+        const len = { 1: [20, 40], 2: [30, 50], 3: [50, 80], 4: [60, 90] }[index];
+        if (len && (e.minWords !== len[0] || e.maxWords !== len[1])) say(at, `write length ${len.join('–')} for S${index}`);
         const r = rubrics[e.taskId];
         if (!r) say(at, `no server rubric for ${e.taskId}`);
         else {
@@ -230,8 +236,25 @@ for (const f of extFiles) {
           if (!e.answers.some((a) => model.includes(normalize(a)))) say(l4.id, `translate "${e.answers[0]}" is not a sentence of the model text`);
         }
       }
-    } else if (!between(count(e1, 'listen'), 5, 6) || count(e1, 'fillBlank') < 2 || count(e1, 'speak') < 1 || count(e1, 'match') < 1) {
-      say(l1.id, 'listening recipe: listen×5–6, fillBlank×2, speak×1, match×1');
+    } else {
+      const sig = (xs) =>
+        ['listen', 'shadow', 'speak', 'fillBlank', 'select', 'match', 'translate', 'choice', 'write'].map((t) => count(xs, t)).join();
+      if (sig(e1) !== '5,2,0,2,0,1,0,0,0') say(l1.id, 'A1–A2 listening: listen×5, shadow×2, fillBlank×2, match×1');
+      if (sig(e3) !== '0,1,4,0,2,1,2,0,0') say(l3.id, 'A1–A2 speaking: shadow×1, speak×4, select×2, translate×2, match×1');
+      if (
+        count(e4, 'write') !== 1 || !between(count(e4, 'translate'), 4, 5) || !between(count(e4, 'fillBlank'), 2, 3) ||
+        count(e4, 'select') !== 1 || count(e4, 'match') !== 1 || e4.length > 10
+      ) say(l4.id, 'A1–A2 writing: write×1, translate×4–5, fillBlank×2–3, select×1, match×1 (≤10)');
+      const rate = index <= 2 ? 0.8 : 0.85;
+      for (const e of [...e1, ...e3].filter((e) => e.type === 'shadow')) if (e.rate !== rate) say(l1.id, `shadow rate ${rate} at ${level}`);
+      const w = e4.find((e) => e.type === 'write');
+      if (w) {
+        if (w.taskId !== `${l4.id}w`) say(l4.id, `taskId should be ${l4.id}w`);
+        const model = normalize(w.model ?? '');
+        for (const e of e4.filter((e) => e.type === 'translate' && e.lang === 'tr')) {
+          if (!e.answers.some((a) => model.includes(normalize(a)))) say(l4.id, `translate "${e.answers[0]}" is not a sentence of the model text`);
+        }
+      }
     }
     const listens = [...e1, ...(t.exercises ?? [])].filter((e) => e.type === 'listen');
     const linked = listens.filter((e) => linking.test(e.text)).length;
@@ -243,8 +266,7 @@ for (const f of extFiles) {
     const passage = [...passages][0] ?? '';
     row.reading = words(passage);
     if (!between(words(passage), textRange[0], textRange[1])) say(l2.id, `passage ${words(passage)} words (${level} ${textRange.join('–')})`);
-    if (!b2b && (!between(count(e3, 'speak'), 4, 5) || count(e3, 'select') < 2 || count(e3, 'translate') < 2 || count(e3, 'match') < 1)) say(l3.id, 'speaking recipe: speak×4–5, select×2, translate×2, match×1');
-    if (!b2b && (count(e4, 'translate') < 4 || count(e4, 'fillBlank') < 3 || count(e4, 'select') < 1 || count(e4, 'match') < 1)) say(l4.id, 'writing recipe: translate×4, fillBlank×3, select×1, match×1');
+
     // Story: 14–20 lines, 4–5 questions.
     const lines = s.steps.filter((x) => x.kind === 'line'), qs = s.steps.filter((x) => x.kind === 'question');
     if (b2b) {
@@ -253,7 +275,8 @@ for (const f of extFiles) {
       row.story = storyWords;
       if (s.listenFirst !== true) say(s.id, 'B1–B2 story must be listenFirst');
       if (!between(storyWords, lo, hi) || qs.length !== 5) say(s.id, `story ${storyWords} words, ${qs.length} questions (${lo}–${hi}, 5)`);
-    } else if (!between(lines.length, 14, 20) || !between(qs.length, 4, 5)) say(s.id, `story ${lines.length} lines, ${qs.length} questions (14–20, 4–5)`);
+    } else if (s.listenFirst !== true) say(s.id, 'skill story must be listenFirst');
+    if (!b2b && (!between(lines.length, 14, 20) || !between(qs.length, 4, 5))) say(s.id, `story ${lines.length} lines, ${qs.length} questions (14–20, 4–5)`);
     for (const q of qs) {
       if (!q.choices.includes(q.answer)) say(s.id, `story answer "${q.answer}" not in choices`);
       if (dupes(q.choices).length) say(s.id, 'duplicate story choices');
