@@ -34,6 +34,7 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
   // Spaced repetition: per word, the copy with the later due day.
   final wordBox = <String, int>{};
   final wordDue = <String, String>{};
+  final wordLast = <String, String>{};
   for (final id in {
     ...local.wordBox.keys,
     ...remote.wordBox.keys,
@@ -47,6 +48,7 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     final due = useRemote ? rd : ld;
     if (src.wordBox[id] case final b?) wordBox[id] = b;
     if (due != null) wordDue[id] = due;
+    if (src.wordLast[id] case final l?) wordLast[id] = l;
   }
 
   // League: the later week wins; same week → the newer copy.
@@ -91,6 +93,11 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     diary: {...older.diary, ...newer.diary},
     errorStats: maxMap(local.errorStats, remote.errorStats),
     customWords: words.values.toList(),
+    wordLast: wordLast,
+    // The error notebook travels with its list.
+    mistakeStage: {for (final k in newer.mistakes) k: ?newer.mistakeStage[k]},
+    mistakeDue: {for (final k in newer.mistakes) k: ?newer.mistakeDue[k]},
+    mistakeRun: {for (final k in newer.mistakes) k: ?newer.mistakeRun[k]},
   );
 }
 

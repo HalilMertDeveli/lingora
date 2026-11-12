@@ -11,7 +11,11 @@ enum VocabContext {
   standup('standup', 'Stand-up', '🧍'),
   mulakat('mulakat', 'Teknik mülakat', '🎤'),
   dokuman('dokuman', 'Dokümantasyon', '📄'),
-  mesaj('mesaj', 'E-posta / Slack', '✉️');
+  mesaj('mesaj', 'E-posta / Slack', '✉️'),
+  // YDS cards (assets/vocab/yds.json).
+  genel('genel', 'Genel', '💬'),
+  akademik('akademik', 'Akademik metin', '📚'),
+  haber('haber', 'Haber', '📰');
 
   const VocabContext(this.key, this.label, this.emoji);
   final String key;
@@ -21,7 +25,8 @@ enum VocabContext {
   /// Sentences written in the team's tools: commits, reviews and tickets.
   bool get isWritten => this == commit || this == pr || this == ticket;
 
-  static VocabContext byKey(String key) => values.firstWhere((c) => c.key == key);
+  /// Unknown keys (newer content) read as [genel] instead of failing.
+  static VocabContext byKey(String key) => values.firstWhere((c) => c.key == key, orElse: () => genel);
 }
 
 class VocabSense {
@@ -83,6 +88,7 @@ class VocabEntry {
     this.tip,
     this.fromNotes = false,
     this.notesWord,
+    this.family = const [],
   });
 
   /// Namespaced id (`sw_...`), also the key in the review boxes.
@@ -105,6 +111,9 @@ class VocabEntry {
   final bool fromNotes;
   final String? notesWord;
 
+  /// Word family of a YDS card (analyse → analysis, analytical).
+  final List<String> family;
+
   String get tr => senses.first.tr;
   String get def => senses.first.def;
 
@@ -123,17 +132,19 @@ class VocabEntry {
     id: j['id'] as String,
     word: j['word'] as String,
     pos: j['pos'] as String,
-    rank: j['rank'] as int,
+    rank: j['rank'] as int? ?? 0,
     topic: j['topic'] as String,
     senses: [for (final s in j['senses'] as List) VocabSense.fromJson(s as Map<String, dynamic>)],
     examples: [for (final e in j['examples'] as List) VocabExample.fromJson(e as Map<String, dynamic>)],
     collocations: [
-      for (final c in j['collocations'] as List) Collocation.fromJson(c as Map<String, dynamic>),
+      for (final c in (j['collocations'] as List?) ?? const [])
+        Collocation.fromJson(c as Map<String, dynamic>),
     ],
     synonym: j['synonym'] as String?,
     tip: j['tip'] as String?,
     fromNotes: j['fromNotes'] as bool? ?? false,
     notesWord: j['notesWord'] as String?,
+    family: ((j['family'] as List?) ?? const []).cast<String>(),
   );
 }
 

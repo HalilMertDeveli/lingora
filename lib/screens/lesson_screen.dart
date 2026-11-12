@@ -19,6 +19,7 @@ import '../exercises/translate_exercise.dart';
 import '../models/course.dart';
 import '../services/growth/analytics.dart';
 import '../services/growth/paywall_trigger.dart';
+import '../study/answer_recorder.dart';
 import '../theme.dart';
 import '../ui/motion.dart';
 import '../ui/session.dart';
@@ -50,6 +51,8 @@ class LessonScreen extends ConsumerStatefulWidget {
     this.retry,
     this.badge,
     this.passHeadline,
+    this.logSource,
+    this.onAnswered,
   });
 
   /// Lesson for a path node.
@@ -74,6 +77,12 @@ class LessonScreen extends ConsumerStatefulWidget {
   /// Result headline after passing a test; "Ünite sınavını geçtin!" when null.
   final String? passHeadline;
 
+  /// Answer log source ("mixed", "review"...); the mode's name when null.
+  final String? logSource;
+
+  /// Called after each checked answer (spaced review grades its cards).
+  final void Function(LessonItem item, bool correct)? onAnswered;
+
   @override
   ConsumerState<LessonScreen> createState() => _LessonScreenState();
 }
@@ -82,6 +91,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   late final List<LessonItem> _queue = [...widget.items];
   late final int _total = _queue.length;
   final _started = DateTime.now();
+
+  /// When the current question was shown (time per question).
+  DateTime _shownAt = DateTime.now();
 
   int _pos = 0;
   int _solved = 0;
@@ -127,6 +139,14 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final correct = _grader!.call();
     final notifier = ref.read(progressProvider.notifier);
     final why = correct ? null : _explain(_current.ex);
+    recordLessonAnswer(
+      ref,
+      item: _current,
+      correct: correct,
+      time: DateTime.now().difference(_shownAt),
+      source: widget.logSource ?? widget.mode.name,
+    );
+    widget.onAnswered?.call(_current, correct);
     setState(() {
       _why = why;
       _answered++;
@@ -155,7 +175,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     });
     if (correct) {
       SessionFx.correct();
-      if (widget.mode == LessonMode.practice) notifier.clearMistake(_current.key);
+      if (widget.mode == LessonMode.practice) notifier.answerMistakeRight(_current.key);
     } else {
       SessionFx.wrong();
       notifier.addMistake(_current.key);
@@ -176,6 +196,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     }
     setState(() {
       _pos++;
+      _shownAt = DateTime.now();
       _grader = null;
       _lastCorrect = null;
       _answerText = '';

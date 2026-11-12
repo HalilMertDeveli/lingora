@@ -102,7 +102,9 @@ void main() {
         for (final e in _entries)
           for (final x in e.examples) x.context,
       };
-      expect(contexts, VocabContext.values.toSet());
+      // The YDS contexts (genel, akademik, haber) belong to assets/vocab/yds.json.
+      const yds = {VocabContext.genel, VocabContext.akademik, VocabContext.haber};
+      expect(contexts, VocabContext.values.toSet().difference(yds));
       expect(_entries.where((e) => e.examples.any((x) => x.context.isWritten)).length, greaterThan(150));
       expect(_entries.where((e) => e.tip != null).length, greaterThan(150));
     });

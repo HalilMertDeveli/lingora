@@ -29,6 +29,7 @@ class Exercise {
     this.options = const [],
     this.answerIndex,
     this.explanation,
+    this.qtype,
   });
 
   final ExerciseType type;
@@ -69,6 +70,10 @@ class Exercise {
   final List<String> options;
   final int? answerIndex;
   final String? explanation;
+
+  /// Exam question type ("vocab", "cloze"...), when the content names it;
+  /// otherwise it is worked out (lib/study/question_types.dart).
+  final String? qtype;
 
   /// The right option of a choice exercise.
   String get correctOption {
@@ -112,6 +117,7 @@ class Exercise {
       options: choice ? strings('options') : const [],
       answerIndex: choice ? j['answer'] as int? : null,
       explanation: j['explanation'] as String?,
+      qtype: j['qtype'] as String?,
     );
   }
 }
@@ -156,6 +162,22 @@ class StoryStep {
         );
 }
 
+/// `"reading": {"field": "fen|saglik|sosyal", "words": 240, "cefr": "B1"}`
+/// on a lesson or story node.
+class ReadingMeta {
+  const ReadingMeta({this.field, this.words = 0, this.cefr});
+
+  /// YÖKDİL field: fen, saglik, sosyal (null: general).
+  final String? field;
+
+  /// Words in the text.
+  final int words;
+  final String? cefr;
+
+  factory ReadingMeta.fromJson(Map<String, dynamic> j) =>
+      ReadingMeta(field: j['field'] as String?, words: (j['words'] as int?) ?? 0, cefr: j['cefr'] as String?);
+}
+
 class PathNode {
   const PathNode({
     required this.id,
@@ -170,6 +192,8 @@ class PathNode {
     this.minutes = 0,
     this.packId,
     this.mockId,
+    this.vocab = false,
+    this.reading,
   });
 
   final String id;
@@ -193,6 +217,13 @@ class PathNode {
   final String? packId;
   final String? mockId;
 
+  /// A vocabulary lesson: its match pairs become review cards once done.
+  final bool vocab;
+
+  /// A reading text (Okuma evi): its field, length and level, for the
+  /// reading library and the reading counter.
+  final ReadingMeta? reading;
+
   factory PathNode.fromJson(Map<String, dynamic> j) => PathNode(
     id: j['id'] as String,
     type: NodeType.values.byName(j['type'] as String),
@@ -210,6 +241,8 @@ class PathNode {
     minutes: (j['minutes'] as int?) ?? 0,
     packId: j['packId'] as String?,
     mockId: j['mockId'] as String?,
+    vocab: (j['vocab'] as bool?) ?? false,
+    reading: j['reading'] == null ? null : ReadingMeta.fromJson(j['reading'] as Map<String, dynamic>),
   );
 }
 
@@ -267,8 +300,10 @@ class Section {
     this.grammar = const [],
     this.units = const [],
     this.implicit = false,
+    this.parallel = false,
+    int? order,
     this.fixedExam,
-  });
+  }) : order = order ?? index;
 
   /// Fixed section exam, set when units were appended by an extension file.
   final PathNode? fixedExam;
@@ -289,6 +324,15 @@ class Section {
   /// True for a course without section metadata (the professional courses):
   /// the path shows no section header for it.
   final bool implicit;
+
+  /// A side path (word bank, reading house) that is always open and runs
+  /// next to the main path, in its own order.
+  final bool parallel;
+
+  /// Place on the path; sections are shown by [order], then [index]. Defaults
+  /// to [index], so a section file can be listed before earlier numbers
+  /// (a from-zero foundation section) without changing its id or index.
+  final int order;
 
   List<PathNode> get nodes => [for (final u in units) ...u.nodes];
 
@@ -314,6 +358,8 @@ class Section {
     description: (j['description'] as String?) ?? '',
     grammar: ((j['grammar'] as List?) ?? const []).cast<String>(),
     units: units,
+    parallel: (j['parallel'] as bool?) ?? false,
+    order: j['order'] as int?,
   );
 
   /// This section with [extra] units appended at its end (an extension file,
@@ -329,6 +375,8 @@ class Section {
           grammar: grammar,
           units: [...units, ...extra],
           implicit: implicit,
+          parallel: parallel,
+          order: order,
           fixedExam: exam,
         );
 
@@ -349,8 +397,16 @@ class Course {
     List<Section>? sections,
     this.outline = false,
   }) : assert(units != null || sections != null),
-       sections = sections ?? [Section(id: 'main', index: 1, title: title, units: units!, implicit: true)],
-       units = units ?? [for (final s in sections!) ...s.units];
+       sections = sections == null
+           ? [Section(id: 'main', index: 1, title: title, units: units!, implicit: true)]
+           : _inPathOrder(sections),
+       units = units ?? [for (final s in _inPathOrder(sections!)) ...s.units];
+
+  /// Path order is the sections' order (default: index), not their file
+  /// names. The sort is stable.
+  static List<Section> _inPathOrder(List<Section> sections) =>
+      [...sections]
+        ..sort((a, b) => a.order != b.order ? a.order.compareTo(b.order) : a.index.compareTo(b.index));
 
   final String id;
   final String title;

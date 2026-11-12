@@ -183,11 +183,11 @@ class _SectionSummary extends ConsumerWidget {
 }
 
 /// "Bölüme atla": a mixed test over the whole section. Passing it records
-/// [sectionPassId], which opens the section; failing changes nothing.
+/// [sectionPassKey], which opens the section; failing changes nothing.
 Future<void> startSectionSkip(NavigatorState nav, Section section) {
   final color = Brand.tone(section.units.first.color);
   LessonScreen build() => LessonScreen(
-    nodeId: sectionPassId(section.index),
+    nodeId: sectionPassKey(section),
     title: 'Bölüm ${section.index}',
     items: sectionSkipItems(section),
     color: color,
