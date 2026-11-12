@@ -13,6 +13,10 @@
 // The general exercise rules (answers in choices, buildable tokens…) are in course_content_test.
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const lex = require('../yds/lex.js');
 
 const dir = 'assets/courses/tr_en';
 const files = process.argv.slice(2).length
@@ -43,6 +47,46 @@ for (const f of ['../tr_en.json', ...fs.readdirSync(dir).filter((f) => f.endsWit
   for (const u of JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')).units) {
     for (const n of u.nodes) for (const e of n.exercises ?? []) seen.set(keyOf(e), n.id);
   }
+}
+
+// Reading texts (curriculum, C1 rule): at most 5% unknown words, where "known" is every word
+// used in S1–S8 (tool/yds/lex.js), function words and NGSL (NGSL=<csv>, not shipped).
+const known = new Set(fs.readFileSync('tool/yds/function_words.txt', 'utf8').split(/\s+/).filter(Boolean));
+const courseFiles = ['assets/courses/tr_en.json', ...fs.readdirSync(dir).filter((f) => /^0[1-8]/.test(f)).map((f) => `${dir}/${f}`)];
+for (const w of lex.seen(courseFiles)) known.add(w);
+if (process.env.NGSL) {
+  for (const r of fs.readFileSync(process.env.NGSL, 'utf8').split(/\r?\n/).slice(1)) known.add(r.split(',')[0].toLowerCase());
+} else console.warn('NGSL= verilmedi: okuma metni bilinmeyen oranı katı hesaplanır.');
+const isKnown = (w) => known.has(w) || lex.lemmas(w).some((x) => known.has(x));
+const contraction = (w) => {
+  const m = w.match(/^(\p{L}+)['’](t|s|re|ll|ve|d|m)$/u);
+  if (!m) return null;
+  return m[2] === 't' ? ({ won: 'will', can: 'can' }[m[1]] ?? m[1].replace(/n$/, '')) : m[1];
+};
+/** Share of unknown words in an English text (names inside a sentence skipped), 0–100. */
+function unknownPct(text) {
+  const ws = text.match(/\p{L}+(?:[-'’]\p{L}+)*/gu) ?? [];
+  const initial = new Set(text.split(/(?<=[.!?…"”:])\s+/).map((x) => (x.match(/\p{L}+/u) ?? [''])[0]));
+  let unknown = 0;
+  for (const w of ws) {
+    if (/^\p{Lu}/u.test(w) && !initial.has(w)) continue;
+    const lw = w.toLowerCase();
+    const b = contraction(lw);
+    if (b && isKnown(b)) continue;
+    if (lw.split(/[-'’]/).filter((x) => x.length > 1).some((x) => !isKnown(x))) unknown++;
+  }
+  return (100 * unknown) / Math.max(ws.length, 1);
+}
+/** Target words a unit teaches: English sides of l1/l2 match pairs, select and fillBlank answers. */
+function targets(u) {
+  const out = new Set();
+  for (const n of u.nodes.slice(0, 2)) {
+    for (const e of n.exercises ?? []) {
+      if (e.type === 'match') e.pairs.forEach((x) => out.add(x[1].toLowerCase()));
+      if (e.type === 'fillBlank' || e.type === 'select') out.add(String(e.answer).toLowerCase());
+    }
+  }
+  return out;
 }
 
 const problems = [];
@@ -81,7 +125,8 @@ for (const file of files) {
       }
     }
     for (const n of [l1, l2]) if ((n.exercises ?? []).some((e) => ['write', 'shadow', 'choice'].includes(e.type))) say(n.id, 'language lesson: no write/shadow/choice');
-    const row = { unit: uid, title: u.title, kind: odd ? 'dinleme/konuşma' : 'okuma/yazma' };
+    const row = { unit: uid, title: u.title, kind: odd ? 'dinleme/konuşma' : 'okuma/yazma', targets: targets(u).size };
+    if (row.targets > 60) say(uid, `${row.targets} target words (≤60)`);
     if (odd) {
       if (sig(l3.exercises) !== '4,2,0,2,0,1,0,0,0') say(l3.id, 'C1 listening: listen×4, shadow×2, fillBlank×2, match×1');
       for (const e of l3.exercises.filter((e) => e.type === 'listen')) {
@@ -99,6 +144,9 @@ for (const file of files) {
       const passages = new Set(ch.map((e) => e.passage));
       if (ch.length !== 6 || passages.size !== 1) say(l3.id, 'C1 reading: one text, choice×6');
       row.reading = words([...passages][0]);
+      const pct = unknownPct([...passages][0] ?? '');
+      row.unknown = `${pct.toFixed(1)}%`;
+      if (pct > 5) say(l3.id, `reading text ${pct.toFixed(1)}% unknown words (≤5%)`);
       if (!between(row.reading, 500, 800)) say(l3.id, `reading ${row.reading} words (500–800)`);
       if (sig(l4.exercises) !== '0,0,0,3,1,1,3,0,1') say(l4.id, 'C1 writing: write×1, translate×3, fillBlank×3, select×1, match×1');
       const w = l4.exercises.find((e) => e.type === 'write');
