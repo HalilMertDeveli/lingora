@@ -3,6 +3,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'firebase_bootstrap.dart';
 import 'firebase_config.dart';
 
 /// True once Firebase was initialised (see `initFirebase`). Overridden in
@@ -11,17 +12,19 @@ final firebaseReadyProvider = Provider<bool>((ref) => false);
 
 /// Firebase Auth, or null when Firebase is off.
 final firebaseAuthProvider = Provider<FirebaseAuth?>(
-  (ref) => ref.watch(firebaseReadyProvider) ? FirebaseAuth.instance : null,
+  (ref) => ref.watch(firebaseReadyProvider) ? FirebaseAuth.instanceFor(app: lingoraFirebaseApp) : null,
 );
 
 /// Firestore, or null when Firebase is off.
 final firestoreProvider = Provider<FirebaseFirestore?>(
-  (ref) => ref.watch(firebaseReadyProvider) ? FirebaseFirestore.instance : null,
+  (ref) => ref.watch(firebaseReadyProvider) ? FirebaseFirestore.instanceFor(app: lingoraFirebaseApp) : null,
 );
 
 /// Callable Cloud Functions in [functionsRegion], or null when Firebase is off.
 final functionsProvider = Provider<FirebaseFunctions?>(
-  (ref) => ref.watch(firebaseReadyProvider) ? FirebaseFunctions.instanceFor(region: functionsRegion) : null,
+  (ref) => ref.watch(firebaseReadyProvider)
+      ? FirebaseFunctions.instanceFor(app: lingoraFirebaseApp, region: functionsRegion)
+      : null,
 );
 
 /// The signed-in user, without Firebase types so UI and tests stay simple.
