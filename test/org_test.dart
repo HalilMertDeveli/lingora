@@ -201,11 +201,14 @@ void main() {
     expect(find.text('Süresi geçti'), findsNothing); // the status is in the subtitle line
     expect(find.textContaining('Süresi geçti'), findsOneWidget);
     expect(find.textContaining('Tamamlandı'), findsOneWidget);
-    await tester.runAsync(() async {
-      await tester.tap(find.text('Ödev u1l1'));
-      await Future<void>.delayed(const Duration(milliseconds: 200));
-    });
-    await tester.pump();
+    // Opening an assignment loads the course from the real asset bundle,
+    // which takes longer as content grows (and on a slow CI machine): wait
+    // for the lesson route instead of a fixed delay.
+    await tester.runAsync(() async => tester.tap(find.text('Ödev u1l1')));
+    for (var i = 0; i < 200 && find.byType(LessonScreen).evaluate().isEmpty; i++) {
+      await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
+      await tester.pump(const Duration(milliseconds: 50));
+    }
     await tester.pump(const Duration(milliseconds: 500));
     expect(find.byType(LessonScreen), findsOneWidget);
   });
