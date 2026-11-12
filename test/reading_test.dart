@@ -36,15 +36,21 @@ final _general = [
 ];
 
 /// Word range of a general library text by level.
-const _generalLengths = {'A1': (100, 180), 'A2': (150, 250), 'B1': (250, 400), 'B2': (400, 650)};
+const _generalLengths = {
+  'A1': (100, 180),
+  'A2': (150, 250),
+  'B1': (250, 400),
+  'B2': (400, 650),
+  'C1': (600, 900),
+};
 
 const _emptyNotes = NotesBundle(words: [], topics: [], diaryPrompts: []);
 
 void main() {
   group('general reading library (genel_okuma_*)', () {
-    test('65 texts: 15 A1, 20 A2, 10 B1, 20 B2; ids go_, unique across the library', () {
+    test('80 texts: 15 A1, 20 A2, 10 B1, 20 B2, 15 C1; ids go_, unique across the library', () {
       final counts = {for (final l in _generalLengths.keys) l: _general.where((s) => s.level == l).length};
-      expect(counts, {'A1': 15, 'A2': 20, 'B1': 10, 'B2': 20});
+      expect(counts, {'A1': 15, 'A2': 20, 'B1': 10, 'B2': 20, 'C1': 15});
       expect(_general.every((s) => s.id.startsWith('go_')), isTrue);
       final all = [..._stories, ..._general].map((s) => s.id);
       expect(all.toSet(), hasLength(all.length));

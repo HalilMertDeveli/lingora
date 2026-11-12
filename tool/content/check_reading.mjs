@@ -3,11 +3,11 @@
 //
 //   NGSL=<ngsl_1.2.csv> node tool/content/check_reading.mjs [file ...]   (default: every genel_okuma_*.json)
 //
-// Per story: level A1/A2/B1/B2 and its length, 3 questions with 4 options and a Turkish explanation
+// Per story: level A1/A2/B1/B2/C1 and its length, 3 questions with 4 options and a Turkish explanation
 // that quotes the right option, glosses (lower-case, found in the text), and at most 2% unknown words
 // once glosses are counted. "Known" depends on the level: the words used in the general course up to
 // that level (tool/yds/lex.js), function words and the first N lemmas of NGSL (A1 800, A2 1200,
-// B1 2000, B2 all). NGSL itself is not shipped (docs/kaynaklar.md); pass its CSV with NGSL=.
+// B1 2000, B2 and C1 all). NGSL itself is not shipped (docs/kaynaklar.md); pass its CSV with NGSL=.
 // Also: unique ids, balanced answer positions, a third of each file dialogue-heavy, genre mix.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -28,10 +28,12 @@ const upTo = {
   A2: [sec('03_kendini_anlatmak'), ...ext(3), sec('04_sehirde_ve_iste'), ...ext(4)],
   B1: [sec('05_deneyimler'), ...ext(5), sec('06_fikirler_ve_hikayeler'), ...ext(6)],
   B2: [sec('07_is_ve_tartisma'), ...ext(7), sec('08_akicilik'), ...ext(8)],
+  // C1: the C1 sections (S9, S10) that exist.
+  C1: fs.readdirSync('assets/courses/tr_en').filter((f) => /^(09|10)_[a-z0-9_]+.json$/.test(f)).map((f) => `assets/courses/tr_en/${f}`),
 };
-const levels = ['A1', 'A2', 'B1', 'B2'];
-const ngslTop = { A1: 800, A2: 1200, B1: 2000, B2: 100000 };
-const lengths = { A1: [100, 180], A2: [150, 250], B1: [250, 400], B2: [400, 650] };
+const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
+const ngslTop = { A1: 800, A2: 1200, B1: 2000, B2: 100000, C1: 100000 };
+const lengths = { A1: [100, 180], A2: [150, 250], B1: [250, 400], B2: [400, 650], C1: [600, 900] };
 
 const ngsl = process.env.NGSL
   ? fs.readFileSync(process.env.NGSL, 'utf8').split(/\r?\n/).slice(1).map((r) => r.split(',')[0].toLowerCase()).filter(Boolean)
@@ -63,7 +65,7 @@ for (const file of files) {
     P(/^go_[a-z0-9_]+$/.test(s.id || ''), `${at}: id go_<slug>`);
     P(!ids.has(s.id), `${at}: id tekrar`);
     ids.add(s.id);
-    P(levels.includes(s.level), `${at}: level A1/A2/B1/B2`);
+    P(levels.includes(s.level), `${at}: level A1/A2/B1/B2/C1`);
     P(Object.keys(s).every((k) => ['id', 'level', 'emoji', 'title', 'titleTr', 'text', 'glosses', 'questions', 'genre'].includes(k)), `${at}: bilinmeyen alan`);
     for (const k of ['emoji', 'title', 'titleTr', 'text']) P(clean(s[k]), `${at}: ${k}`);
     const text = s.text || '';

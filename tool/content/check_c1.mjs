@@ -57,7 +57,29 @@ for (const w of lex.seen(courseFiles)) known.add(w);
 if (process.env.NGSL) {
   for (const r of fs.readFileSync(process.env.NGSL, 'utf8').split(/\r?\n/).slice(1)) known.add(r.split(',')[0].toLowerCase());
 } else console.warn('NGSL= verilmedi: okuma metni bilinmeyen oranı katı hesaplanır.');
-const isKnown = (w) => known.has(w) || lex.lemmas(w).some((x) => known.has(x));
+// A later C1 section also knows the words of the C1 sections before it (S10 knows S9).
+const knownBefore = new Map();
+for (const f of fs.readdirSync(dir).filter((f) => /^(09|10)_[a-z0-9_]+\.json$/.test(f)).sort()) {
+  knownBefore.set(f, new Set(knownBefore.size ? lex.seen([...knownBefore.keys()].map((x) => `${dir}/${x}`)) : []));
+}
+let sectionKnown = new Set();
+const isKnown = (w) => known.has(w) || sectionKnown.has(w) || lex.lemmas(w).some((x) => known.has(x) || sectionKnown.has(x));
+
+// YDS banks ys7 and later: their card words may appear in text but may not be taught as targets
+// (match pairs, fillBlank answers, the right option of a choice), as test/yds_kelime_bankasi_test.dart checks.
+const bankWords = new Set(
+  JSON.parse(fs.readFileSync('assets/vocab/yds.json', 'utf8'))
+    .entries.filter((e) => Number((/^ys(\d+)u/.exec(e.topic) ?? [])[1]) >= 7)
+    .map((e) => e.word.toLowerCase()),
+);
+const taughtWords = (e) =>
+  e.type === 'match'
+    ? e.pairs.map((p) => p[1])
+    : e.type === 'fillBlank'
+      ? [e.answer]
+      : e.type === 'choice'
+        ? [e.options?.[e.answer]]
+        : [];
 const contraction = (w) => {
   const m = w.match(/^(\p{L}+)['’](t|s|re|ll|ve|d|m)$/u);
   if (!m) return null;
@@ -97,6 +119,16 @@ for (const file of files) {
   const s = j.section ?? {};
   const index = s.index;
   if (s.cefr !== 'C1') say(file, 'section.cefr C1');
+  // A draft file outside assets is checked as the section its index names.
+  const own = [...knownBefore.keys()].find((f) => f.startsWith(String(index).padStart(2, '0')));
+  sectionKnown = own ? knownBefore.get(own) : index === 10 ? lex.seen([...knownBefore.keys()].filter((f) => f.startsWith('09')).map((x) => `${dir}/${x}`)) : new Set();
+  for (const u of j.units ?? []) {
+    for (const n of u.nodes) {
+      for (const [i, e] of (n.exercises ?? []).entries()) {
+        for (const w of taughtWords(e)) if (bankWords.has(String(w).trim().toLowerCase())) say(`${n.id}#${i}`, `"${w}" is a YDS ys7+ bank word: not as a target`);
+      }
+    }
+  }
   const letters = [0, 0, 0, 0];
   for (const [ui, u] of (j.units ?? []).entries()) {
     const no = ui + 1;
@@ -199,6 +231,23 @@ for (const file of files) {
   }
   const total = letters.reduce((a, b) => a + b, 0);
   if (total && Math.max(...letters) >= total * 0.4) say(file, `answer positions ${letters}`);
+  // The app shows fillBlank, select and story choices in JSON order: the answer must not sit in
+  // one place (scratchpad order_choices.cjs moves it by a hash of the item).
+  const places = { fillBlank: [0, 0, 0, 0], select: [0, 0, 0, 0], story: [0, 0, 0, 0] };
+  for (const u of j.units ?? []) {
+    for (const n of u.nodes) {
+      for (const e of n.exercises ?? []) {
+        if (e.type === 'fillBlank') places.fillBlank[e.choices.indexOf(e.answer)]++;
+        if (e.type === 'select') places.select[e.choices.findIndex((c) => c.text === e.answer)]++;
+        for (const c of e.type === 'select' ? e.choices : []) if (/^(✅|❌|✔️|✖️)$/u.test(c.emoji ?? '')) say(`${n.id}`, `select choice emoji ${c.emoji} gives the answer away`);
+      }
+      for (const s of n.steps ?? []) if (s.kind === 'question') places.story[s.choices.indexOf(s.answer)]++;
+    }
+  }
+  for (const [k, v] of Object.entries(places)) {
+    const n = v.reduce((a, b) => a + b, 0);
+    if (n >= 10 && Math.max(...v) >= n * 0.6) say(file, `${k} answers bunched at one position ${v}`);
+  }
 }
 console.table(rows);
 console.log(problems.length ? `${problems.length} problem(s):\n${problems.join('\n')}` : 'OK');
