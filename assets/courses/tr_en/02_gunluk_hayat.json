@@ -19,7 +19,7 @@
             {"type":"fillBlank","text":"I ___ up at seven.","translation":"Yedide uyanırım.","answer":"wake","choices":["eat","sleep","wake"]},
             {"type":"fillBlank","text":"I ___ breakfast at eight.","translation":"Sekizde kahvaltı yaparım.","answer":"have","choices":["make","do","have"]},
             {"type":"translate","text":"Her gün duş alırım.","lang":"tr","answers":["I have a shower every day","I take a shower every day"],"tokens":["day","get","I","have","every","shower","the","am","a"]},
-            {"type":"translate","text":"I get dressed and I leave home.","lang":"en","answers":["Giyinirim ve evden çıkarım","Giyiniyorum ve evden çıkıyorum"],"tokens":["evden","Giyinirim","çıkarım","ev","ve","okula"]},
+            {"type":"translate","text":"I get dressed and I leave home.","lang":"en","answers":["Giyinirim ve evden çıkarım","Giyiniyorum ve evden çıkıyorum","Giyinip evden çıkarım"],"tokens":["evden","Giyinirim","çıkarım","ev","ve","okula"]},
             {"type":"listen","text":"I brush my teeth after breakfast","answers":["I brush my teeth after breakfast"]},
             {"type":"match","pairs":[["uyanmak","wake up"],["kalkmak","get up"],["giyinmek","get dressed"],["dişleri fırçalamak","brush teeth"],["evden çıkmak","leave home"]]},
             {"type":"translate","text":"Sabah yedide kalkarım.","lang":"tr","answers":["I get up at seven in the morning","I get up at 7 in the morning","I get up at seven"],"tokens":["the","at","get","up","on","am","I","seven","morning","in","the"]},
@@ -80,7 +80,7 @@
             {"type":"translate","text":"Akşam yemeğini birlikte yaparız.","lang":"tr","answers":["We cook dinner together","We make dinner together"],"tokens":["make","We","have","cook","together","dinner"]},
             {"type":"translate","text":"I go to bed at eleven.","lang":"en","answers":["On birde yatarım","Saat on birde yatarım"],"tokens":["birde","yatarım","onda","On","uyanırım"]},
             {"type":"listen","text":"They watch TV in the evening","answers":["They watch TV in the evening"]},
-            {"type":"translate","text":"Akşamları televizyon izlerim.","lang":"tr","answers":["I watch TV in the evening","I watch TV in the evenings"],"tokens":["look","on","in","TV","evening","the","am","watch","I"]},
+            {"type":"translate","text":"Akşamları televizyon izlerim.","lang":"tr","answers":["I watch TV in the evening","I watch TV in the evenings","I watch television in the evenings"],"tokens":["look","on","in","TV","evening","the","am","watch","I"]},
             {"type":"match","pairs":[["dönmek","come back"],["yemek pişirmek","cook"],["dinlenmek","relax"],["izlemek","watch"],["yatmak","go to bed"]]},
             {"type":"speak","text":"I relax after dinner","translation":"Akşam yemeğinden sonra dinlenirim."}
           ]
@@ -140,7 +140,7 @@
             {"type":"translate","text":"He lives on a farm.","lang":"en","answers":["O bir çiftlikte yaşar","Bir çiftlikte yaşar","O bir çiftlikte yaşıyor"],"tokens":["hastanede","O","çiftlikte","bir","yaşar","şehirde"]},
             {"type":"listen","text":"Elif's mother works in a hospital","answers":["Elif's mother works in a hospital"]},
             {"type":"match","pairs":[["hemşire","nurse"],["çiftçi","farmer"],["aşçı","cook"],["otobüs şoförü","bus driver"],["polis memuru","police officer"]]},
-            {"type":"translate","text":"Kerem süt sever.","lang":"tr","answers":["Kerem likes milk"],"tokens":["like","likes","milk","the","Kerem","is"]},
+            {"type":"translate","text":"Kerem süt sever.","lang":"tr","answers":["Kerem likes milk","Kerem loves milk"],"tokens":["like","likes","milk","the","Kerem","is"]},
             {"type":"speak","text":"She works in an office","translation":"O bir ofiste çalışır."}
           ]
         },
@@ -214,7 +214,7 @@
             {"type":"fillBlank","text":"The bus ___ near the school.","translation":"Otobüs okulun yakınında durur.","answer":"stops","choices":["stops","is stop","stop"]},
             {"type":"fillBlank","text":"Sam ___ the train to school.","translation":"Sam okula gitmek için trene biner.","answer":"catches","choices":["catch","catches","catchs"]},
             {"type":"translate","text":"Fırın akşam altıda kapanır.","lang":"tr","answers":["The bakery closes at six in the evening","The bakery closes at 6 in the evening"],"tokens":["The","closes","close","on","at","the","bakery","evening","six","in"]},
-            {"type":"translate","text":"My cat sleeps all day.","lang":"en","answers":["Kedim bütün gün uyur","Kedim bütün gün uyuyor"],"tokens":["gece","köpeğim","gün","Kedim","bütün","uyur"]},
+            {"type":"translate","text":"My cat sleeps all day.","lang":"en","answers":["Kedim bütün gün uyur","Kedim bütün gün uyuyor","Kedim tüm gün uyur"],"tokens":["gece","köpeğim","gün","Kedim","bütün","uyur"]},
             {"type":"listen","text":"Mia carries her bag to school","answers":["Mia carries her bag to school"]},
             {"type":"match","pairs":[["açılır","opens"],["kapanır","closes"],["uçar","flies"],["yakalar","catches"],["durur","stops"]]},
             {"type":"translate","text":"Kerem futbol oynar.","lang":"tr","answers":["Kerem plays football","Kerem plays soccer"],"tokens":["plays","play","football","Kerem","the","is"]},
@@ -287,7 +287,7 @@
           "description": "Elif ve Deniz sınıfta birbirine sorular soruyor",
           "rewardXp": 15,
           "steps": [
-            {"kind":"line","speaker":"Ayla","avatar":"👩‍🏫","text":"Today you ask your partner questions.","translation":"Bugün eşinize sorular soruyorsunuz."},
+            {"kind":"line","speaker":"Ayla","avatar":"👩‍🏫","text":"Today you ask your partner questions.","translation":"Bugün sıra arkadaşınıza sorular soruyorsunuz."},
             {"kind":"line","speaker":"Elif","avatar":"👩","text":"Deniz, where do you live?","translation":"Deniz, nerede oturuyorsun?"},
             {"kind":"line","speaker":"Deniz","avatar":"🧒","text":"I live in a flat near the school.","translation":"Okulun yakınında bir dairede oturuyorum."},
             {"kind":"line","speaker":"Elif","avatar":"👩","text":"Do you have a pet?","translation":"Evcil hayvanın var mı?"},
@@ -445,7 +445,7 @@
           "description": "really, a lot, very much",
           "exercises": [
             {"type":"select","prompt":"gerçekten","answer":"really","choices":[{"text":"again","emoji":"🔁"},{"text":"only","emoji":"☝️"},{"text":"maybe","emoji":"🤔"},{"text":"really","emoji":"💯"}]},
-            {"type":"translate","text":"Kahveyi çok severim.","lang":"tr","answers":["I like coffee very much","I really like coffee","I like coffee a lot"],"tokens":["very","very","coffee","much","I","like","am"]},
+            {"type":"translate","text":"Kahveyi çok severim.","lang":"tr","answers":["I like coffee very much","I really like coffee","I like coffee a lot","I love coffee"],"tokens":["very","very","coffee","much","I","like","am"]},
             {"type":"fillBlank","text":"We ___ like camping. It's great!","translation":"Kamp yapmayı gerçekten severiz. Harika!","answer":"really","choices":["much","really","very"]},
             {"type":"fillBlank","text":"Mia loves singing a ___.","translation":"Mia şarkı söylemeyi çok sever.","answer":"lot","choices":["many","much","lot"]},
             {"type":"translate","text":"Deniz koşmayı gerçekten seviyor.","lang":"tr","answers":["Deniz really likes running","Deniz really loves running"],"tokens":["running","likes","run","really","like","Deniz"]},
@@ -490,7 +490,7 @@
             {"type":"fillBlank","text":"This is Kerem. ___ bag is blue.","translation":"Bu Kerem. Onun çantası mavi.","answer":"His","choices":["He","Her","His"]},
             {"type":"fillBlank","text":"This is Mia. ___ jacket is red.","translation":"Bu Mia. Onun ceketi kırmızı.","answer":"Her","choices":["His","She","Her"]},
             {"type":"translate","text":"Sam'in bir kız kardeşi var. Onun adı Mia.","lang":"tr","answers":["Sam has a sister. Her name is Mia"],"tokens":["name","His","sister","is","Mia","Her","Sam","a","has"]},
-            {"type":"translate","text":"Where are my keys?","lang":"en","answers":["Anahtarlarım nerede?"],"tokens":["nerede","senin","cüzdanım","Anahtarlarım"]},
+            {"type":"translate","text":"Where are my keys?","lang":"en","answers":["Anahtarlarım nerede?","Benim anahtarlarım nerede?"],"tokens":["nerede","senin","cüzdanım","Anahtarlarım"]},
             {"type":"listen","text":"Your umbrella is in the car","answers":["Your umbrella is in the car"]},
             {"type":"match","pairs":[["benim","my"],["senin","your"],["onun (erkek)","his"],["onun (kadın)","her"],["bizim","our"]]},
             {"type":"translate","text":"Gözlüğüm nerede?","lang":"tr","answers":["Where are my glasses"],"tokens":["Where","glasses","are","is","my","glass"]},
@@ -566,10 +566,10 @@
             {"type":"fillBlank","text":"The dog is in ___ bed.","translation":"Köpek kendi yatağında.","answer":"its","choices":["it","its","it's"]},
             {"type":"fillBlank","text":"They are my cousins. ___ house is big.","translation":"Onlar benim kuzenlerim. Evleri büyük.","answer":"Their","choices":["They","There","Their"]},
             {"type":"translate","text":"Onların çocukları okulda.","lang":"tr","answers":["Their children are at school","Their kids are at school"],"tokens":["They","children","there","school","are","Their","at","is"]},
-            {"type":"translate","text":"Our teacher's name is Ayla.","lang":"en","answers":["Öğretmenimizin adı Ayla"],"tokens":["onların","adı","Ayla","bizim","Öğretmenimizin"]},
+            {"type":"translate","text":"Our teacher's name is Ayla.","lang":"en","answers":["Öğretmenimizin adı Ayla","Bizim öğretmenimizin adı Ayla"],"tokens":["onların","adı","Ayla","bizim","Öğretmenimizin"]},
             {"type":"listen","text":"Their bottle is in our car","answers":["Their bottle is in our car"]},
             {"type":"match","pairs":[["onların","their"],["bizim","our"],["onun (eşya)","its"],["çocuklar","children"],["şişe","bottle"]]},
-            {"type":"translate","text":"Kedimiz kutusunu çok sever.","lang":"tr","answers":["Our cat loves its box"],"tokens":["its","box","his","loves","Our","it's","cat"]},
+            {"type":"translate","text":"Kedimiz kutusunu çok sever.","lang":"tr","answers":["Our cat loves its box","Our cat really likes its box"],"tokens":["its","box","his","loves","Our","it's","cat"]},
             {"type":"speak","text":"Their grandmother is very kind","translation":"Onların büyükannesi çok nazik."}
           ]
         },
@@ -628,7 +628,7 @@
             {"type":"translate","text":"There aren't any trees on our street.","lang":"en","answers":["Sokağımızda hiç ağaç yok","Bizim sokakta hiç ağaç yok"],"tokens":["yok","sokağınızda","Sokağımızda","hiç","var","ağaç"]},
             {"type":"listen","text":"Are there any good cafés here?","answers":["Are there any good cafés here?"]},
             {"type":"match","pairs":[["postane","post office"],["otobüs durağı","bus stop"],["süpermarket","supermarket"],["banka","bank"],["ağaç","tree"]]},
-            {"type":"translate","text":"Parkta oyun alanı var mı?","lang":"tr","answers":["Is there a playground in the park"],"tokens":["a","the","there","Are","playground","park","any","in","Is"]},
+            {"type":"translate","text":"Parkta oyun alanı var mı?","lang":"tr","answers":["Is there a playground in the park","Are there any playgrounds in the park"],"tokens":["a","the","there","Are","playground","park","any","in","Is"]},
             {"type":"speak","text":"Is there a bus stop near here?","translation":"Buraya yakın bir otobüs durağı var mı?"}
           ]
         },
@@ -669,7 +669,7 @@
             {"type":"translate","text":"There are two supermarkets and a market.","lang":"en","answers":["İki süpermarket ve bir pazar var"],"tokens":["bir","ve","pazar","süpermarket","fırın","var","üç","İki"]},
             {"type":"listen","text":"How many libraries are there in your town?","answers":["How many libraries are there in your town?"]},
             {"type":"match","pairs":[["kaç tane","how many"],["köprü","bridge"],["meydan","square"],["sokak","street"],["köşe","corner"]]},
-            {"type":"translate","text":"Sınıfımda yirmi öğrenci var.","lang":"tr","answers":["There are twenty students in my class","There are 20 students in my class"],"tokens":["student","are","my","class","has","twenty","students","is","There","in"]},
+            {"type":"translate","text":"Sınıfımda yirmi öğrenci var.","lang":"tr","answers":["There are twenty students in my class","There are 20 students in my class","My class has twenty students"],"tokens":["student","are","my","class","has","twenty","students","is","There","in"]},
             {"type":"speak","text":"How many parks are there?","translation":"Kaç tane park var?"}
           ]
         },
@@ -740,7 +740,7 @@
           "exercises": [
             {"type":"select","prompt":"ayna","answer":"mirror","choices":[{"text":"mirror","emoji":"🪞"},{"text":"lamp","emoji":"💡"},{"text":"sofa","emoji":"🛋️"},{"text":"plant","emoji":"🪴"}]},
             {"type":"select","prompt":"gardırop","answer":"wardrobe","choices":[{"text":"fridge","emoji":"🧊"},{"text":"cupboard","emoji":"🗄️"},{"text":"sink","emoji":"🚰"},{"text":"wardrobe","emoji":"👗"}]},
-            {"type":"fillBlank","text":"The lamp is ___ the sofa.","translation":"Lamba kanepenin yanında.","answer":"next to","choices":["near to","next","next to"]},
+            {"type":"fillBlank","text":"The lamp is ___ the sofa.","translation":"Lamba kanepenin yanında.","answer":"next to","choices":["next of","next","next to"]},
             {"type":"fillBlank","text":"The plant is ___ the TV and the window.","translation":"Bitki televizyonla pencerenin arasında.","answer":"between","choices":["among","in","between"]},
             {"type":"fillBlank","text":"The ball is ___ the door.","translation":"Top kapının arkasında.","answer":"behind","choices":["front","between","behind"]},
             {"type":"translate","text":"Ayna dolabın arkasında.","lang":"tr","answers":["The mirror is behind the cupboard"],"tokens":["is","cupboard's","the","back","mirror","behind","The","of","cupboard"]},
@@ -959,7 +959,7 @@
             {"type":"select","prompt":"bisiklete binmek","answer":"ride a bike","choices":[{"text":"drive a car","emoji":"🚗"},{"text":"climb a tree","emoji":"🌳"},{"text":"play the piano","emoji":"🎹"},{"text":"ride a bike","emoji":"🚲"}]},
             {"type":"fillBlank","text":"I ___ swim. I love the sea!","translation":"Yüzebilirim. Denizi çok severim!","answer":"can","choices":["can't","can","am"]},
             {"type":"fillBlank","text":"Kerem can ___ the piano.","translation":"Kerem piyano çalabilir.","answer":"play","choices":["plays","play","to play"]},
-            {"type":"fillBlank","text":"My grandma can't ___ a car.","translation":"Ninem araba kullanamaz.","answer":"drive","choices":["drive","driving","use"]},
+            {"type":"fillBlank","text":"My grandma can't ___ a car.","translation":"Ninem araba kullanamaz.","answer":"drive","choices":["drive","driving","drives"]},
             {"type":"translate","text":"Sam iyi yemek yapabilir.","lang":"tr","answers":["Sam can cook well","Sam can cook very well"],"tokens":["Sam","can","cook","good","cooks","well"]},
             {"type":"translate","text":"I can't sing, but I can dance.","lang":"en","answers":["Şarkı söyleyemem ama dans edebilirim","Şarkı söyleyemiyorum ama dans edebiliyorum"],"tokens":["yüzebilirim","ama","dans","ve","söyleyemem","Şarkı","edebilirim"]},
             {"type":"listen","text":"Mia can ride a bike","answers":["Mia can ride a bike"]},
@@ -1019,8 +1019,8 @@
             {"type":"fillBlank","text":"___ I borrow your pen?","translation":"Kalemini ödünç alabilir miyim?","answer":"Can","choices":["Can","Do","Am"]},
             {"type":"fillBlank","text":"Can I ___ your phone, please?","translation":"Telefonunu kullanabilir miyim lütfen?","answer":"use","choices":["using","use","to use"]},
             {"type":"fillBlank","text":"Can I open the window? Yes, of ___.","translation":"Pencereyi açabilir miyim? Evet, tabii ki.","answer":"course","choices":["course","yes","sure"]},
-            {"type":"translate","text":"Biraz su alabilir miyim, lütfen?","lang":"tr","answers":["Can I have some water, please"],"tokens":["please","give","Can","have","some","I","water","take"]},
-            {"type":"translate","text":"Sorry, you can't park here.","lang":"en","answers":["Üzgünüm, buraya park edemezsiniz","Pardon, buraya park edemezsin"],"tokens":["Üzgünüm","edebilirsiniz","park","buraya","edemezsiniz","orada"]},
+            {"type":"translate","text":"Biraz su alabilir miyim, lütfen?","lang":"tr","answers":["Can I have some water, please","Can I get some water, please"],"tokens":["please","give","Can","have","some","I","water","take"]},
+            {"type":"translate","text":"Sorry, you can't park here.","lang":"en","answers":["Üzgünüm, buraya park edemezsiniz","Pardon, buraya park edemezsin","Üzgünüm, buraya park edemezsin"],"tokens":["Üzgünüm","edebilirsiniz","park","buraya","edemezsiniz","orada"]},
             {"type":"listen","text":"Can I sit here?","answers":["Can I sit here?"]},
             {"type":"match","pairs":[["ödünç almak","borrow"],["kullanmak","use"],["tabii ki","of course"],["olur","sure"],["üzgünüm","sorry"]]},
             {"type":"translate","text":"Bisikletini ödünç alabilir miyim?","lang":"tr","answers":["Can I borrow your bike"],"tokens":["borrow","bike","lend","I","you","Can","your"]},
@@ -1273,7 +1273,7 @@
             {"type":"fillBlank","text":"Are you free ___ Thursday?","translation":"Perşembe boş musun?","answer":"on","choices":["in","on","at"]},
             {"type":"fillBlank","text":"Let's meet ___ five o'clock.","translation":"Saat beşte buluşalım.","answer":"at","choices":["on","at","in"]},
             {"type":"fillBlank","text":"Sorry, I can't. I have a doctor's ___ at four.","translation":"Üzgünüm, olmaz. Saat dörtte doktor randevum var.","answer":"appointment","choices":["date","appointment","hour"]},
-            {"type":"translate","text":"Cuma saat üç sana uyar mı?","lang":"tr","answers":["Is Friday at three OK for you","Is three on Friday OK for you"],"tokens":["Is","for","at","three","good","you","in","Friday","OK"]},
+            {"type":"translate","text":"Cuma saat üç sana uyar mı?","lang":"tr","answers":["Is Friday at three OK for you","Is three on Friday OK for you","Is Friday at three good for you"],"tokens":["Is","for","at","three","good","you","in","Friday","OK"]},
             {"type":"translate","text":"See you next week!","lang":"en","answers":["Haftaya görüşürüz!","Gelecek hafta görüşürüz!"],"tokens":["Haftaya","yarın","görüşürüz","ay"]},
             {"type":"listen","text":"Is Saturday at ten OK?","answers":["Is Saturday at ten OK?"]},
             {"type":"match","pairs":[["hafta","week"],["ay (takvim)","month"],["yıl","year"],["saat (süre)","hour"],["doğum günü","birthday"]]},
@@ -1369,7 +1369,7 @@
           "description": "I love cats, play the guitar",
           "exercises": [
             {"type":"select","prompt":"rehber","answer":"guide","choices":[{"text":"tourist","emoji":"📸"},{"text":"waiter","emoji":"🍽️"},{"text":"guide","emoji":"🧑‍💼"},{"text":"driver","emoji":"🚌"}]},
-            {"type":"translate","text":"Kedileri çok severim.","lang":"tr","answers":["I love cats","I really like cats"],"tokens":["love","cats","I","the","cat","a"]},
+            {"type":"translate","text":"Kedileri çok severim.","lang":"tr","answers":["I love cats","I really like cats","I like cats very much"],"tokens":["love","cats","I","the","cat","a"]},
             {"type":"fillBlank","text":"Deniz plays ___ guitar very well.","translation":"Deniz çok iyi gitar çalar.","answer":"the","choices":["a","the","an"]},
             {"type":"fillBlank","text":"Kerem goes to ___ at eight.","translation":"Kerem sekizde okula gider.","answer":"school","choices":["school","the school","a school"]},
             {"type":"fillBlank","text":"Let's go to ___ cinema tonight.","translation":"Bu akşam sinemaya gidelim.","answer":"the","choices":["the","some","an"]},

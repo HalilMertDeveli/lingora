@@ -75,6 +75,16 @@ bool _articleGiveaway(String prompt, List<String> options) {
   return starts.length > 1;
 }
 
+/// An explanation that names an option by its position ("ikinci şık", "Birinci seçenek",
+/// "A şıkkı", "C) seçeneği") goes wrong once options are shuffled; options are named by text.
+bool _namesOptionByPosition(String explanation) =>
+    RegExp(
+      r'(ilk|birinci|ikinci|üçüncü|dördüncü|beşinci|sonuncu|son) ?(seçene|şık)',
+      caseSensitive: false,
+      // Dart's case folding does not map the Turkish 'İ' to 'i'.
+    ).hasMatch(explanation.replaceAll('İ', 'i')) ||
+    RegExp(r'''(^|[\s("'])\(?[A-E]\)? ?(şık|seçene)''').hasMatch(explanation);
+
 void main() {
   final files = _assetFiles();
 
@@ -137,10 +147,7 @@ void main() {
               expect(_dupes(options, _lower), isEmpty, reason: reason);
               expect(_articleGiveaway('${e['question']}', options), isFalse, reason: reason);
               expect(
-                RegExp(
-                  r'(ilk|ikinci|üçüncü|dördüncü|beşinci|son) (seçenek|şık)',
-                  caseSensitive: false,
-                ).hasMatch('${e['explanation']}'),
+                _namesOptionByPosition('${e['explanation']}'),
                 isFalse,
                 reason: 'refer to options by their text, positions change: $reason',
               );
@@ -247,16 +254,33 @@ void main() {
             expect(_articleGiveaway(prompt, options), isFalse, reason: reason);
             final explanation = (q['explanation'] as String?) ?? '';
             expect(
-              RegExp(
-                r'(ilk|ikinci|üçüncü|dördüncü|beşinci|son) (seçenek|şık)',
-                caseSensitive: false,
-              ).hasMatch(explanation),
+              _namesOptionByPosition(explanation),
               isFalse,
               reason: 'refer to options by their text, positions change: $reason',
             );
           }
         },
       );
+    }
+  });
+
+  test('position check catches ordinal and letter references, not option text', () {
+    for (final bad in [
+      'İkinci şık yanlış.',
+      'Birinci şık tam tersini söyler.',
+      'İlk seçenek zamanı karıştırır.',
+      'Doğru cevap A şıkkı.',
+      'C) seçeneği dilbilgisi hatası içerir.',
+      'Sonuncu şık konu dışı.',
+    ]) {
+      expect(_namesOptionByPosition(bad), isTrue, reason: bad);
+    }
+    for (final ok in [
+      "'Have discovered' doğru; 'had discovered' geçmişteki bir andan önceyi anlatır.",
+      'Bu şık metinde geçmez.',
+      'Sonuç: doğru şık "abundant".',
+    ]) {
+      expect(_namesOptionByPosition(ok), isFalse, reason: ok);
     }
   });
 

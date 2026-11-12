@@ -1,0 +1,1089 @@
+{
+  "id": "yds_1_yil",
+  "title": "YDS 1 yıllık program",
+  "doc": "docs/sinav/yds-1-yil.md",
+  "daysPerWeek": 6,
+  "blocks": [
+    {
+      "id": "review",
+      "title": "Tekrar kartları",
+      "share": 0.15
+    },
+    {
+      "id": "lesson",
+      "title": "Yeni ders",
+      "share": 0.3
+    },
+    {
+      "id": "reading",
+      "title": "Okuma",
+      "share": 0.225
+    },
+    {
+      "id": "questions",
+      "title": "Soru",
+      "share": 0.225
+    },
+    {
+      "id": "mistakes",
+      "title": "Hata defteri",
+      "share": 0.1
+    }
+  ],
+  "targetSeconds": {
+    "vocabulary": 45,
+    "grammar": 45,
+    "cloze": 70,
+    "sentenceCompletion": 90,
+    "translation": 120,
+    "reading": 180,
+    "dialogue": 100,
+    "restatement": 100,
+    "paragraphCompletion": 135,
+    "irrelevantSentence": 135
+  },
+  "phases": [
+    {
+      "id": 1,
+      "title": "Sıfır → A2 temel",
+      "weeks": [
+        1,
+        10
+      ],
+      "minutes": "H1–4: 120–150 dk, H5–10: 180 dk"
+    },
+    {
+      "id": 2,
+      "title": "A2 → B1 ve YDS temeli",
+      "weeks": [
+        11,
+        20
+      ],
+      "minutes": "210 dk"
+    },
+    {
+      "id": 3,
+      "title": "B1 → B2 akademik",
+      "weeks": [
+        21,
+        34
+      ],
+      "minutes": "210–240 dk"
+    },
+    {
+      "id": 4,
+      "title": "Sınav stratejisi",
+      "weeks": [
+        35,
+        42
+      ],
+      "minutes": "210–240 dk"
+    },
+    {
+      "id": 5,
+      "title": "Deneme kampı",
+      "weeks": [
+        43,
+        52
+      ],
+      "minutes": "240 dk"
+    }
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "phase": 1,
+      "units": "Genel s1 u1–u5",
+      "unitIds": [
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "u5"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "to be, isim çoğulu, a/an, this/that",
+      "questionWork": "—",
+      "mock": null,
+      "newWords": 100,
+      "wordsTotal": 100,
+      "readingWordsPerDay": 300,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 0
+    },
+    {
+      "week": 2,
+      "phase": 1,
+      "units": "Genel s1 u6–u12",
+      "unitIds": [
+        "u6",
+        "u7",
+        "u8",
+        "u9",
+        "u10",
+        "u11",
+        "u12"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "present simple, there is/are, can, past simple giriş",
+      "questionWork": "—",
+      "mock": null,
+      "newWords": 100,
+      "wordsTotal": 200,
+      "readingWordsPerDay": 300,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 0
+    },
+    {
+      "week": 3,
+      "phase": 1,
+      "units": "Genel s2 u1–u6",
+      "unitIds": [
+        "s2u1",
+        "s2u2",
+        "s2u3",
+        "s2u4",
+        "s2u5",
+        "s2u6"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "present simple 3. tekil, sıklık zarfları, iyelik",
+      "questionWork": "—",
+      "mock": null,
+      "newWords": 160,
+      "wordsTotal": 360,
+      "readingWordsPerDay": 300,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 0
+    },
+    {
+      "week": 4,
+      "phase": 1,
+      "units": "Genel s2 u7–u12",
+      "unitIds": [
+        "s2u7",
+        "s2u8",
+        "s2u9",
+        "s2u10",
+        "s2u11",
+        "s2u12"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "edatlar (yer/zaman), emir, can/can't",
+      "questionWork": "—",
+      "mock": null,
+      "newWords": 160,
+      "wordsTotal": 520,
+      "readingWordsPerDay": 300,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 0
+    },
+    {
+      "week": 5,
+      "phase": 1,
+      "units": "Genel s3 u1–u6",
+      "unitIds": [
+        "s3u1",
+        "s3u2",
+        "s3u3",
+        "s3u4",
+        "s3u5",
+        "s3u6"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "past simple, past continuous",
+      "questionWork": "—",
+      "mock": null,
+      "newWords": 160,
+      "wordsTotal": 680,
+      "readingWordsPerDay": 600,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 0
+    },
+    {
+      "week": 6,
+      "phase": 1,
+      "units": "Genel s3 u7–u12",
+      "unitIds": [
+        "s3u7",
+        "s3u8",
+        "s3u9",
+        "s3u10",
+        "s3u11",
+        "s3u12"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "nesne zamirleri, karşılaştırma, much/many, going to/will",
+      "questionWork": "—",
+      "mock": null,
+      "newWords": 160,
+      "wordsTotal": 840,
+      "readingWordsPerDay": 600,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 0
+    },
+    {
+      "week": 7,
+      "phase": 1,
+      "units": "Genel s4 u1–u4",
+      "unitIds": [
+        "s4u1",
+        "s4u2",
+        "s4u3",
+        "s4u4"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "present perfect (ever/never, just/already/yet)",
+      "questionWork": "—",
+      "mock": null,
+      "newWords": 160,
+      "wordsTotal": 1000,
+      "readingWordsPerDay": 600,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 0
+    },
+    {
+      "week": 8,
+      "phase": 1,
+      "units": "Genel s4 u5–u8",
+      "unitIds": [
+        "s4u5",
+        "s4u6",
+        "s4u7",
+        "s4u8"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "should/must/have to, too/enough, first conditional, -ing/to",
+      "questionWork": "Tadım: 5 şıklı dilbilgisi (A2)",
+      "mock": null,
+      "newWords": 160,
+      "wordsTotal": 1160,
+      "readingWordsPerDay": 600,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 10
+    },
+    {
+      "week": 9,
+      "phase": 1,
+      "units": "Genel s4 u9–u12",
+      "unitIds": [
+        "s4u9",
+        "s4u10",
+        "s4u11",
+        "s4u12"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "who/which/that (giriş), resmî e-posta dili",
+      "questionWork": "Tadım: kelime ve dilbilgisi (A2)",
+      "mock": null,
+      "newWords": 160,
+      "wordsTotal": 1320,
+      "readingWordsPerDay": 600,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 10
+    },
+    {
+      "week": 10,
+      "phase": 1,
+      "units": "Tekrar haftası: s1–s4 ünite testleri",
+      "unitIds": [],
+      "parallelUnitIds": [],
+      "grammar": "A1–A2 karışık",
+      "questionWork": "Tadım: kısa paragraf (A2)",
+      "mock": "Seviye kontrolü (genel kurs s4 sonu)",
+      "newWords": 160,
+      "wordsTotal": 1480,
+      "readingWordsPerDay": 600,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 10
+    },
+    {
+      "week": 11,
+      "phase": 2,
+      "units": "Genel s5 u1–u4",
+      "unitIds": [
+        "s5u1",
+        "s5u2",
+        "s5u3",
+        "s5u4"
+      ],
+      "parallelUnitIds": [
+        "ys5u1"
+      ],
+      "grammar": "present perfect continuous, used to, edilgen (giriş)",
+      "questionWork": "Dilbilgisi (B1)",
+      "mock": null,
+      "newWords": 150,
+      "wordsTotal": 1630,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 25
+    },
+    {
+      "week": 12,
+      "phase": 2,
+      "units": "Genel s5 u5–u8",
+      "unitIds": [
+        "s5u5",
+        "s5u6",
+        "s5u7",
+        "s5u8"
+      ],
+      "parallelUnitIds": [
+        "ys5u2",
+        "ys6u1"
+      ],
+      "grammar": "edilgen, second conditional, reported speech, phrasal verbs",
+      "questionWork": "Dilbilgisi, kelime",
+      "mock": null,
+      "newWords": 150,
+      "wordsTotal": 1780,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 25
+    },
+    {
+      "week": 13,
+      "phase": 2,
+      "units": "YDS ys1u11 Cümlenin iskeleti, ys1u12 İsim öbeği ve gönderim",
+      "unitIds": [
+        "ys1u11",
+        "ys1u12"
+      ],
+      "parallelUnitIds": [
+        "ys5u3",
+        "ys6u2"
+      ],
+      "grammar": "özne–yüklem, isim öbeği, gönderim",
+      "questionWork": "Dilbilgisi, kelime",
+      "mock": null,
+      "newWords": 150,
+      "wordsTotal": 1930,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 25
+    },
+    {
+      "week": 14,
+      "phase": 2,
+      "units": "YDS ys1u13 Temel zamanlar, Genel s5 u9–u12",
+      "unitIds": [
+        "s5u9",
+        "s5u10",
+        "s5u11",
+        "s5u12",
+        "ys1u13"
+      ],
+      "parallelUnitIds": [
+        "ys5u4"
+      ],
+      "grammar": "zaman çekirdeği, modal of deduction",
+      "questionWork": "Dilbilgisi, cümle tamamlama (giriş)",
+      "mock": null,
+      "newWords": 150,
+      "wordsTotal": 2080,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 0,
+      "choicePerDay": 25
+    },
+    {
+      "week": 15,
+      "phase": 2,
+      "units": "YDS ys1u14 Sözcük türetme, Genel s6 u1–u3",
+      "unitIds": [
+        "s6u1",
+        "s6u2",
+        "s6u3",
+        "ys1u14"
+      ],
+      "parallelUnitIds": [
+        "ys5u5",
+        "ys6u3"
+      ],
+      "grammar": "ek ile türetme, past perfect",
+      "questionWork": "Kelime, cloze (giriş)",
+      "mock": null,
+      "newWords": 150,
+      "wordsTotal": 2230,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 25
+    },
+    {
+      "week": 16,
+      "phase": 2,
+      "units": "YDS ys1u15 Temel bağlaçlar, ys1u16 Uzun cümle",
+      "unitIds": [
+        "ys1u15",
+        "ys1u16"
+      ],
+      "parallelUnitIds": [
+        "ys5u6",
+        "ys6u4"
+      ],
+      "grammar": "bağlaç ve edat çekirdeği, sıfat cümleciği",
+      "questionWork": "Cümle tamamlama, çeviri (giriş)",
+      "mock": null,
+      "newWords": 150,
+      "wordsTotal": 2380,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 25
+    },
+    {
+      "week": 17,
+      "phase": 2,
+      "units": "YDS ys1u1 Zamanlar, Genel s6 u4–u6",
+      "unitIds": [
+        "s6u4",
+        "s6u5",
+        "s6u6",
+        "ys1u1"
+      ],
+      "parallelUnitIds": [
+        "ys5u7"
+      ],
+      "grammar": "zaman uyumu, so/such…that, wish",
+      "questionWork": "Dilbilgisi, cloze",
+      "mock": null,
+      "newWords": 150,
+      "wordsTotal": 2530,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 25
+    },
+    {
+      "week": 18,
+      "phase": 2,
+      "units": "YDS ys1u2 Kipler, Genel s6 u7–u9",
+      "unitIds": [
+        "s6u7",
+        "s6u8",
+        "s6u9",
+        "ys1u2"
+      ],
+      "parallelUnitIds": [
+        "ys5u8",
+        "ys6u5"
+      ],
+      "grammar": "kipler, question tags",
+      "questionWork": "Dilbilgisi, cümle tamamlama",
+      "mock": null,
+      "newWords": 150,
+      "wordsTotal": 2680,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 25
+    },
+    {
+      "week": 19,
+      "phase": 2,
+      "units": "YDS ys1u3 Edilgen ve ettirgen, Genel s6 u10–u12",
+      "unitIds": [
+        "s6u10",
+        "s6u11",
+        "s6u12",
+        "ys1u3"
+      ],
+      "parallelUnitIds": [
+        "ys5u9"
+      ],
+      "grammar": "edilgen, ettirgen, karşıtlık (yine de)",
+      "questionWork": "Dilbilgisi, çeviri",
+      "mock": null,
+      "newWords": 150,
+      "wordsTotal": 2830,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 25
+    },
+    {
+      "week": 20,
+      "phase": 2,
+      "units": "YDS ys1u4 Koşul ve wish",
+      "unitIds": [
+        "ys1u4"
+      ],
+      "parallelUnitIds": [
+        "ys5u10",
+        "ys6u6"
+      ],
+      "grammar": "koşul türleri, wish/if only",
+      "questionWork": "Karışık set (H11–20)",
+      "mock": "Yarım deneme 1 (tanı, 40 soru / 90 dk)",
+      "newWords": 150,
+      "wordsTotal": 2980,
+      "readingWordsPerDay": 1000,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 25
+    },
+    {
+      "week": 21,
+      "phase": 3,
+      "units": "YDS ys1u5 Sıfat cümlecikleri",
+      "unitIds": [
+        "ys1u5"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "relative clause, kısaltma",
+      "questionWork": "Dilbilgisi, çeviri",
+      "mock": null,
+      "newWords": 145,
+      "wordsTotal": 3125,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 22,
+      "phase": 3,
+      "units": "YDS ys1u6 İsim cümlecikleri, Genel s7 u1–u2",
+      "unitIds": [
+        "s7u1",
+        "s7u2",
+        "ys1u6"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "noun clause, mixed conditionals",
+      "questionWork": "Dilbilgisi, cümle tamamlama",
+      "mock": "Yarım deneme 2",
+      "newWords": 145,
+      "wordsTotal": 3270,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 23,
+      "phase": 3,
+      "units": "YDS ys1u7 Gerund ve infinitive, Genel s7 u3",
+      "unitIds": [
+        "s7u3",
+        "ys1u7"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "gerund/infinitive, should have",
+      "questionWork": "Dilbilgisi, cloze",
+      "mock": null,
+      "newWords": 145,
+      "wordsTotal": 3415,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 24,
+      "phase": 3,
+      "units": "YDS ys1u8 Bağlaçlar ve geçişler, Genel s7 u4",
+      "unitIds": [
+        "s7u4",
+        "ys1u8"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "bağlaç ve geçiş ifadeleri, haber dili",
+      "questionWork": "Cümle tamamlama, paragraf tamamlama (giriş)",
+      "mock": "Yarım deneme 3",
+      "newWords": 145,
+      "wordsTotal": 3560,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 25,
+      "phase": 3,
+      "units": "YDS ys1u9 Edatlar, Genel s7 u7",
+      "unitIds": [
+        "s7u7",
+        "ys1u9"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "edat + eşdizim, causative",
+      "questionWork": "Kelime, cloze",
+      "mock": null,
+      "newWords": 145,
+      "wordsTotal": 3705,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 26,
+      "phase": 3,
+      "units": "YDS ys1u10 Miktar ve karşılaştırma, Genel s7 u8",
+      "unitIds": [
+        "s7u8",
+        "ys1u10"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "quantifier, karşılaştırma, inversion",
+      "questionWork": "Karışık set (ys1)",
+      "mock": "Bölüm 1 denemesi (ys1 sonu)",
+      "newWords": 145,
+      "wordsTotal": 3850,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 27,
+      "phase": 3,
+      "units": "YDS ys2u1 Akademik fiiller, ys2u2 Sıfatlar ve zarflar",
+      "unitIds": [
+        "ys2u1",
+        "ys2u2"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "akademik fiil kalıpları",
+      "questionWork": "Kelime, cümle tamamlama",
+      "mock": "Yarım deneme 4",
+      "newWords": 145,
+      "wordsTotal": 3995,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 28,
+      "phase": 3,
+      "units": "YDS ys2u3 Phrasal verbs, ys2u4 İsim kalıpları",
+      "unitIds": [
+        "ys2u3",
+        "ys2u4"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "phrasal verb, eşdizim",
+      "questionWork": "Kelime, cloze",
+      "mock": null,
+      "newWords": 145,
+      "wordsTotal": 4140,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 29,
+      "phase": 3,
+      "units": "YDS ys2u5 Eş anlamlılar, ys2u6 Karıştırılanlar, Genel s8 u2",
+      "unitIds": [
+        "s8u2",
+        "ys2u5",
+        "ys2u6"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "eş anlam, bağlamdan anlam, yazıda bağlantı",
+      "questionWork": "Kelime, restatement (giriş)",
+      "mock": null,
+      "newWords": 145,
+      "wordsTotal": 4285,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 30,
+      "phase": 3,
+      "units": "YDS ys2u7–u9 YÖKDİL alan kelimeleri (hedef alana ağırlık)",
+      "unitIds": [
+        "ys2u7",
+        "ys2u8",
+        "ys2u9"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "alan terimleri",
+      "questionWork": "Okuma (alan metinleri)",
+      "mock": "Tam deneme 1 (yeni: yds_m9)",
+      "newWords": 145,
+      "wordsTotal": 4430,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 31,
+      "phase": 3,
+      "units": "YDS ys2u10–u11 Kelime setleri 1–2, Genel s8 u8",
+      "unitIds": [
+        "s8u8",
+        "ys2u10",
+        "ys2u11"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "ince anlam farkları",
+      "questionWork": "Kelime, cloze",
+      "mock": null,
+      "newWords": 145,
+      "wordsTotal": 4575,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 32,
+      "phase": 3,
+      "units": "YDS ys2u12–u13 Kelime setleri 3–4, Genel s8 u10",
+      "unitIds": [
+        "s8u10",
+        "ys2u12",
+        "ys2u13"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "akademik ses",
+      "questionWork": "Kelime, okuma",
+      "mock": "Yarım deneme 5",
+      "newWords": 145,
+      "wordsTotal": 4720,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 33,
+      "phase": 3,
+      "units": "YDS ys2u14–u15 Kelime setleri 5–6",
+      "unitIds": [
+        "ys2u14",
+        "ys2u15"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "zarf ve kalıplar",
+      "questionWork": "Karışık set (ys2)",
+      "mock": "Bölüm 2 denemesi (ys2 sonu)",
+      "newWords": 145,
+      "wordsTotal": 4865,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 34,
+      "phase": 3,
+      "units": "Tekrar haftası: ys1–ys2 zayıf üniteler (analize göre)",
+      "unitIds": [],
+      "parallelUnitIds": [],
+      "grammar": "zayıf konular",
+      "questionWork": "Karışık set (ys1–ys2)",
+      "mock": "Tam deneme 2 (yeni: yds_m10)",
+      "newWords": 145,
+      "wordsTotal": 5010,
+      "readingWordsPerDay": 1500,
+      "intensiveTextsPerDay": 1,
+      "choicePerDay": 35
+    },
+    {
+      "week": 35,
+      "phase": 4,
+      "units": "YDS ys3u1 Cloze, ys3u2 Cümle tamamlama",
+      "unitIds": [
+        "ys3u1",
+        "ys3u2"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Cloze, cümle tamamlama (strateji)",
+      "mock": null,
+      "newWords": 125,
+      "wordsTotal": 5135,
+      "readingWordsPerDay": 1800,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 36,
+      "phase": 4,
+      "units": "YDS ys3u3 Çeviri İng→Tr, ys3u4 Çeviri Tr→İng",
+      "unitIds": [
+        "ys3u3",
+        "ys3u4"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Çeviri (iki yön)",
+      "mock": "Tam deneme 3 (yeni: yds_m11)",
+      "newWords": 125,
+      "wordsTotal": 5260,
+      "readingWordsPerDay": 1800,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 37,
+      "phase": 4,
+      "units": "YDS ys3u5 Ana fikir, ys3u6 Paragraf soruları",
+      "unitIds": [
+        "ys3u5",
+        "ys3u6"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Okuma (strateji)",
+      "mock": "Yarım deneme 6",
+      "newWords": 125,
+      "wordsTotal": 5385,
+      "readingWordsPerDay": 1800,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 38,
+      "phase": 4,
+      "units": "YDS ys3u7 Diyalog, ys3u8 Restatement (YÖKDİL: çeviri tekrarı)",
+      "unitIds": [
+        "ys3u7",
+        "ys3u8"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Diyalog, restatement",
+      "mock": "Tam deneme 4 (yeni: yds_m12)",
+      "newWords": 125,
+      "wordsTotal": 5510,
+      "readingWordsPerDay": 1800,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 39,
+      "phase": 4,
+      "units": "YDS ys3u9 Paragraf tamamlama, ys3u10 Anlam bütünlüğü",
+      "unitIds": [
+        "ys3u9",
+        "ys3u10"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Paragraf tamamlama, anlam bütünlüğü",
+      "mock": "Yarım deneme 7",
+      "newWords": 125,
+      "wordsTotal": 5635,
+      "readingWordsPerDay": 1800,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 40,
+      "phase": 4,
+      "units": "YDS ys3u11 Okuma kampı: fen, ys3u12 sağlık",
+      "unitIds": [
+        "ys3u11",
+        "ys3u12"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Okuma (zamanlı)",
+      "mock": "Tam deneme 5 (yeni: yds_m13) + Bölüm 3 denemesi",
+      "newWords": 125,
+      "wordsTotal": 5760,
+      "readingWordsPerDay": 1800,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 41,
+      "phase": 4,
+      "units": "YDS ys3u13 Okuma kampı: sosyal, ys3u14 tarih/kültür",
+      "unitIds": [
+        "ys3u13",
+        "ys3u14"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Okuma (zamanlı)",
+      "mock": "Yarım deneme 8 + okuma kampı denemesi",
+      "newWords": 125,
+      "wordsTotal": 5885,
+      "readingWordsPerDay": 1800,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 42,
+      "phase": 4,
+      "units": "Tekrar haftası: ys3 zayıf soru tipleri",
+      "unitIds": [],
+      "parallelUnitIds": [],
+      "grammar": "zayıf konular",
+      "questionWork": "Karışık set (tüm tipler)",
+      "mock": "Tam deneme 6 (yeni: yds_m14)",
+      "newWords": 125,
+      "wordsTotal": 6010,
+      "readingWordsPerDay": 1800,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 43,
+      "phase": 5,
+      "units": "YDS ys4u1 Karışık set 1",
+      "unitIds": [
+        "ys4u1"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Karışık (tam dağılım)",
+      "mock": "Tam deneme 7 (yeni: yds_m15)",
+      "newWords": 75,
+      "wordsTotal": 6085,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 44,
+      "phase": 5,
+      "units": "YDS ys4u2 Karışık set 2",
+      "unitIds": [
+        "ys4u2"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Karışık (tam dağılım)",
+      "mock": "Tam deneme 8 (yds_m1, ys4u2)",
+      "newWords": 75,
+      "wordsTotal": 6160,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 45,
+      "phase": 5,
+      "units": "YDS ys4u3 Süre stratejisi",
+      "unitIds": [
+        "ys4u3"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Bölüm süre çalışması",
+      "mock": "Tam deneme 9 (yds_m2, ys4u3)",
+      "newWords": 75,
+      "wordsTotal": 6235,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 46,
+      "phase": 5,
+      "units": "YDS ys4u4 Hata analizi",
+      "unitIds": [
+        "ys4u4"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Hata defteri yoğun",
+      "mock": "Tam deneme 10 (yds_m3, ys4u4)",
+      "newWords": 75,
+      "wordsTotal": 6310,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 47,
+      "phase": 5,
+      "units": "YDS ys4u5 Deneme haftası 1: dilbilgisi",
+      "unitIds": [
+        "ys4u5"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Zayıf tip (analize göre)",
+      "mock": "Tam deneme 11 (yds_m4, ys4u5)",
+      "newWords": 75,
+      "wordsTotal": 6385,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 48,
+      "phase": 5,
+      "units": "YDS ys4u6 Deneme haftası 2: kelime",
+      "unitIds": [
+        "ys4u6"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Zayıf tip",
+      "mock": "Tam deneme 12 (yds_m5, ys4u6) ve 13 (yeni: yds_m16)",
+      "newWords": 75,
+      "wordsTotal": 6460,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 49,
+      "phase": 5,
+      "units": "YDS ys4u7 Deneme haftası 3: çeviri",
+      "unitIds": [
+        "ys4u7"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Zayıf tip",
+      "mock": "Tam deneme 14 (yds_m6, ys4u7) ve 15 (yeni: yds_m17)",
+      "newWords": 75,
+      "wordsTotal": 6535,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 50,
+      "phase": 5,
+      "units": "YDS ys4u8 Deneme haftası 4: okuma",
+      "unitIds": [
+        "ys4u8"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Zayıf tip",
+      "mock": "Tam deneme 16 (yds_m7, ys4u8) ve 17 (yeni: yds_m18)",
+      "newWords": 75,
+      "wordsTotal": 6610,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 51,
+      "phase": 5,
+      "units": "YDS ys4u9 Deneme haftası 5: son prova",
+      "unitIds": [
+        "ys4u9"
+      ],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Zayıf tip",
+      "mock": "Tam deneme 18 (yds_m8, ys4u9) ve 19 (yeni: yds_m19)",
+      "newWords": 0,
+      "wordsTotal": 6610,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    },
+    {
+      "week": 52,
+      "phase": 5,
+      "units": "Son hafta: yalnızca tekrar ve hata defteri",
+      "unitIds": [],
+      "parallelUnitIds": [],
+      "grammar": "—",
+      "questionWork": "Hafif karışık set",
+      "mock": "Tam deneme 20 (yeni: yds_m20, sınavdan 4–5 gün önce)",
+      "newWords": 0,
+      "wordsTotal": 6610,
+      "readingWordsPerDay": 2000,
+      "intensiveTextsPerDay": 2,
+      "choicePerDay": 40
+    }
+  ],
+  "totals": {
+    "newWords": 6610,
+    "readingWords": 421200,
+    "fullMocks": 20,
+    "halfMocks": 8
+  }
+}
