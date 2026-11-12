@@ -30,11 +30,17 @@
 
 | Evre sonu | Planın kümülatif saati | Cambridge değeri |
 |---|---|---|
-| A2 (H10) | ≈ 210 sa | 180–200 |
-| B1 (H20) | ≈ 435 sa | 350–400 |
-| B2 (H34) | ≈ 750 sa | 500–600 |
+| A2 (H10) | ≈ 180 sa | 180–200 |
+| B1 (H20) | ≈ 400 sa | 350–400 |
+| B2 (H34) | ≈ 740 sa | 500–600 |
 
-Fazla saat sınav pratiğinden ve akademik kelimeden gelir.
+Hesap şöyle:
+- H1–4: haftada ~15 sa
+- H5–10: ~19,5 sa
+- H11–20: ~22,5 sa
+- H21–34: ~24 sa
+
+B2'deki fazla saat sınav pratiğinden ve akademik kelimeden gelir.
 
 **Birim notu:** Kelime hedefleri bu belgede **aile** olarak verilir. Genel kurs belgesi **lemma** kullanır. Aile sayısı lemma sayısından küçüktür.
 
