@@ -7,7 +7,7 @@
       "description": "Adını hecele, telefon ve e-posta ver, form doldur",
       "color": "0xFF6C4CF1",
       "theme": "spor",
-      "guide": "## Bu ünitede yapabileceklerin\n\n- Adını ve soyadını harf harf hecelersin.\n- Telefon numarası ve e-posta adresi söyler, duyunca anlarsın.\n- Basit bir kayıt formunu okur ve doldurursun.\n- Kendini iki üç cümleyle tanıtırsın.\n\n## Strateji\n\n- Dinlerken sayının sonuna dikkat et: **thirteen** sonda vurgulu ve uzun, **thirty** başta vurgulu ve kısa.\n- İngilizce harf adları Türkçeden farklı: **A** \"ey\", **E** \"ii\", **I** \"ay\" diye okunur.\n- Formu okurken önce başlıklara bak: First name, Surname, Phone, Email.\n- Emin değilsen sor: \"Can you repeat that?\" ya da \"Is it E or I?\"\n\n## Model metin\n\nMy name is Elif Erdem. I'm a student in İstanbul. My phone number is 0533 220 4040. I'd like to swim on Saturdays.\n\n> Formdaki \"About me\" kutusuna kısa ve tam cümleler yaz. Her cümle tek bir bilgi versin.\n\n## Türklerin sık hatası\n\n- Meslekten önce **a** düşer: ❌ I'm student. ✅ I'm a student.\n- İki kalıp karışır: ❌ I'm name is Elif. ✅ My name is Elif. / ✅ I'm Elif.",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Adını ve soyadını harf harf hecelersin.\n- Telefon numarası ve e-posta adresi söyler, duyunca anlarsın.\n- Basit bir kayıt formunu okur ve doldurursun.\n- Kendini iki üç cümleyle tanıtırsın.\n\n## Strateji\n\n- Dinlerken sayının sonuna dikkat et: **thirteen** sonda vurgulu ve uzun, **thirty** başta vurgulu ve kısa.\n- İngilizce harf adları Türkçeden farklı: **A** \"ey\", **E** \"ii\", **I** \"ay\" diye okunur.\n- Formu okurken önce başlıklara bak: First name, Surname, Phone, Email.\n- Emin değilsen sor: \"Can you repeat that?\" ya da \"Is it E or I?\"\n\n## Model metin\n\n> Hello! My name is Elif Erdem. I'm a student in İstanbul. My phone number is 0533 220 4040. I'd like to swim on Saturdays. I can come in the morning. Thank you!\n\nFormdaki \"About me\" kutusuna kısa ve tam cümleler yaz. Her cümle tek bir bilgi versin.\n\n## Türklerin sık hatası\n\n- Meslekten önce **a** düşer: ❌ I'm student. ✅ I'm a student.\n- İki kalıp karışır: ❌ I'm name is Elif. ✅ My name is Elif. / ✅ I'm Elif.",
       "nodes": [
         {
           "id": "s1u13l1",
@@ -51,14 +51,10 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "I'm a student and I'm nineteen.",
-              "answers": [
-                "I'm a student and I'm nineteen.",
-                "I am a student and I am nineteen.",
-                "I'm a student and I'm 19.",
-                "I am a student and I am 19."
-              ]
+              "translation": "Öğrenciyim ve on dokuz yaşındayım.",
+              "rate": 0.8
             },
             {
               "type": "listen",
@@ -87,9 +83,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Hi, I'm Elif. I'm a student here.",
-              "translation": "Merhaba, ben Elif. Burada öğrenciyim."
+              "translation": "Merhaba, ben Elif. Burada öğrenciyim.",
+              "rate": 0.8
             },
             {
               "type": "match",
@@ -289,15 +286,15 @@
               "kind": "line",
               "speaker": "Kerem",
               "avatar": "👦",
-              "text": "E-R-D-E-M.",
-              "translation": "E-R-D-E-M."
+              "text": "E, R, D, E, M.",
+              "translation": "E, R, D, E, M."
             },
             {
               "kind": "line",
               "speaker": "Sam",
               "avatar": "🧑",
-              "text": "E-R-D-I-M?",
-              "translation": "E-R-D-I-M mi?"
+              "text": "E, R, D, I, M?",
+              "translation": "E, R, D, I, M mi?"
             },
             {
               "kind": "line",
@@ -389,8 +386,8 @@
               "kind": "line",
               "speaker": "Kerem",
               "avatar": "👦",
-              "text": "Baker? Is that B-A-K-E-R?",
-              "translation": "Baker mı? B-A-K-E-R mi?"
+              "text": "Baker? Is that B, A, K, E, R?",
+              "translation": "Baker mı? B, A, K, E, R mi?"
             },
             {
               "kind": "line",
@@ -433,7 +430,8 @@
               ],
               "answer": "Sam"
             }
-          ]
+          ],
+          "listenFirst": true
         },
         {
           "id": "s1u13l3",
@@ -462,9 +460,10 @@
               "translation": "Telefon numaram 0533 220 4040."
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Thank you! See you on Saturday.",
-              "translation": "Teşekkürler! Cumartesi görüşürüz."
+              "translation": "Teşekkürler! Cumartesi görüşürüz.",
+              "rate": 0.8
             },
             {
               "type": "select",
@@ -745,6 +744,23 @@
                   "swim"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Yüzme kulübünün formundaki \"About me\" kutusuna kendini tanıtan kısa bir metin yaz: adın, telefonun ve ne zaman yüzmek istediğin olsun.",
+              "model": "Hello! My name is Elif Erdem. I'm a student in İstanbul. My phone number is 0533 220 4040. I'd like to swim on Saturdays. I can come in the morning. Thank you!",
+              "minWords": 20,
+              "maxWords": 40,
+              "checklist": [
+                "Adını ve soyadını My name is ile yazdın",
+                "Telefon numaranı yazdın",
+                "Ne zaman yüzmek istediğini yazdın: on Saturdays"
+              ],
+              "focus": [
+                "be",
+                "article"
+              ],
+              "taskId": "s1u13l4w"
             }
           ]
         },
@@ -770,7 +786,7 @@
       "description": "Fiyatı ve miktarı anla, menüden sipariş ver",
       "color": "0xFFF2994A",
       "theme": "yemek",
-      "guide": "## Bu ünitede yapabileceklerin\n\n- Fiyatları duyunca anlarsın (£3.50, fifteen/fifty).\n- Menüyü ve fiyat etiketlerini okursun.\n- Kafede baştan sona sipariş verirsin.\n- Kısa bir alışveriş listesi yazarsın.\n\n## Strateji\n\n- Fiyat iki parça okunur: £3.50 = \"three pounds fifty\". Önce pound, sonra pence gelir.\n- **fifteen** ile **fifty** farkı sondadır: fif-TEEN uzun ve vurgulu, FIF-ty kısa.\n- Menüde önce başlığa bak (Drinks, Food), sonra fiyat sütununu tara.\n- Sipariş verirken hep aynı kalıbı kullan: \"Can I have..., please?\"\n\n## Model metin\n\nKerem, please buy some bread at the market. Buy six apples and two bottles of water. Don't buy cheese, we have some. Here is fifty lira. Thank you!\n\n> Alışveriş notunda emir kipi kibarlıkla birlikte kullanılır: please buy...\n\n## Türklerin sık hatası\n\n- Sayıdan sonra çoğul eki unutulur: ❌ two coffee ✅ two coffees\n- Sesli harften önce **an** gelir, sayılamayana **some**: ❌ a apple, a milk ✅ an apple, some milk",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Fiyatları duyunca anlarsın (£3.50, fifteen/fifty).\n- Menüyü ve fiyat etiketlerini okursun.\n- Kafede baştan sona sipariş verirsin.\n- Kısa bir alışveriş listesi yazarsın.\n\n## Strateji\n\n- Fiyat iki parça okunur: £3.50 = \"three pounds fifty\". Önce pound, sonra pence gelir.\n- **fifteen** ile **fifty** farkı sondadır: fif-TEEN uzun ve vurgulu, FIF-ty kısa.\n- Menüde önce başlığa bak (Drinks, Food), sonra fiyat sütununu tara.\n- Sipariş verirken hep aynı kalıbı kullan: \"Can I have..., please?\"\n\n## Model metin\n\n> Kerem, please buy some bread at the market. Buy six apples and two bottles of water. Get an orange, too. Don't buy cheese, we have some. Here is fifty lira. Thank you! Elif\n\nAlışveriş notunda emir kipi kibarlıkla birlikte kullanılır: please buy...\n\n## Türklerin sık hatası\n\n- Sayıdan sonra çoğul eki unutulur: ❌ two coffee ✅ two coffees\n- Sesli harften önce **an** gelir, sayılamayana **some**: ❌ a apple, a milk ✅ an apple, some milk",
       "nodes": [
         {
           "id": "s1u14l1",
@@ -833,11 +849,10 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "How much are the bananas?",
-              "answers": [
-                "How much are the bananas?"
-              ]
+              "translation": "Muzlar ne kadar?",
+              "rate": 0.8
             },
             {
               "type": "fillBlank",
@@ -851,9 +866,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Two coffees and an orange juice, please.",
-              "translation": "İki kahve ve bir portakal suyu, lütfen."
+              "translation": "İki kahve ve bir portakal suyu, lütfen.",
+              "rate": 0.8
             },
             {
               "type": "match",
@@ -1190,7 +1206,8 @@
               ],
               "answer": "Piknik için yiyecek almaya"
             }
-          ]
+          ],
+          "listenFirst": true
         },
         {
           "id": "s1u14l3",
@@ -1219,9 +1236,10 @@
               "translation": "Hayır, teşekkürler. Ne kadar?"
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Here you are. Thank you!",
-              "translation": "Buyurun. Teşekkür ederim!"
+              "translation": "Buyurun. Teşekkür ederim!",
+              "rate": 0.8
             },
             {
               "type": "select",
@@ -1506,6 +1524,22 @@
                   "need"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Kerem'e markete gitmesi için kısa bir alışveriş notu yaz: ne alacağını, ne almayacağını ve parayı yaz.",
+              "model": "Kerem, please buy some bread at the market. Buy six apples and two bottles of water. Get an orange, too. Don't buy cheese, we have some. Here is fifty lira. Thank you! Elif",
+              "minWords": 20,
+              "maxWords": 40,
+              "checklist": [
+                "Please ile kibar bir emir yazdın",
+                "Sayıdan sonra çoğul kullandın: six apples",
+                "a/an ya da some'ı doğru kullandın: some bread, an orange"
+              ],
+              "focus": [
+                "article"
+              ],
+              "taskId": "s1u14l4w"
             }
           ]
         },
@@ -1531,7 +1565,7 @@
       "description": "Kısa mesaj oku ve yaz, saat ve yer belirle",
       "color": "0xFF14A098",
       "theme": "yazisma",
-      "guide": "## Bu ünitede yapabileceklerin\n\n- Arkadaşlarının kısa mesajlarını okursun.\n- Sesli mesajda saati ve yeri anlarsın.\n- Telefonda buluşma saati ve yeri ayarlarsın.\n- 3–4 cümlelik kısa bir mesaj yazarsın.\n\n## Strateji\n\n- Sesli mesajda üç şeyi yakala: gün, saat, yer. Gerisi önemli değil.\n- Mesajı okurken soru işaretlerine bak: soru soranın cevabı genelde bir sonraki satırda.\n- Buluşma ayarlarken kalıp kullan: \"Are you free on...?\", \"Let's meet at...\"\n- Kısa mesajda selamla başla, tek bir soruyla bitir.\n\n## Model metin\n\nHi Sam! Are you free on Sunday? Let's have a picnic in the park at two. Kerem wants to come, too. What time can you come?\n\n> Arkadaşa mesajda \"Dear\" gerekmez; \"Hi\" yeterli.\n\n## Türklerin sık hatası\n\n- Edatlar karışır: ❌ in 5, in Monday ✅ at 5, on Monday, in the park\n- Soruda yardımcı fiil unutulur: ❌ Where we meet? ✅ Where do we meet?\n\n## Beceri testi\n\n- Dinleme (6 soru): telefon numarası dikte, fiyat, saat ve yer anlama — s1u13, s1u14, s1u15\n- Okuma (6 soru): üyelik formu ve arkadaş mesajları — s1u13, s1u14, s1u15\n- Yazma (5 soru): kendini tanıtma, sipariş, buluşma cümleleri — s1u13, s1u14, s1u15 ve u1, u2, u4\n- Dil (3 soru): a/an, çoğul, soru dizilimi — s1u13, s1u14, s1u15",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Arkadaşlarının kısa mesajlarını okursun.\n- Sesli mesajda saati ve yeri anlarsın.\n- Telefonda buluşma saati ve yeri ayarlarsın.\n- 3–4 cümlelik kısa bir mesaj yazarsın.\n\n## Strateji\n\n- Sesli mesajda üç şeyi yakala: gün, saat, yer. Gerisi önemli değil.\n- Mesajı okurken soru işaretlerine bak: soru soranın cevabı genelde bir sonraki satırda.\n- Buluşma ayarlarken kalıp kullan: \"Are you free on...?\", \"Let's meet at...\"\n- Kısa mesajda selamla başla, tek bir soruyla bitir.\n\n## Model metin\n\n> Hi Sam! Are you free on Sunday? Let's have a picnic in the park at two. Kerem wants to come, too. I can bring some sandwiches. Can you come to the picnic? See you soon! Elif\n\nArkadaşa mesajda \"Dear\" gerekmez; \"Hi\" yeterli.\n\n## Türklerin sık hatası\n\n- Edatlar karışır: ❌ in 5, in Monday ✅ at 5, on Monday, in the park\n- Soruda yardımcı fiil unutulur: ❌ Where we meet? ✅ Where do we meet?\n\n## Beceri testi\n\n- Dinleme (6 soru): telefon numarası dikte, fiyat, saat ve yer anlama — s1u13, s1u14, s1u15\n- Okuma (6 soru): üyelik formu ve arkadaş mesajları — s1u13, s1u14, s1u15\n- Yazma (5 soru): kendini tanıtma, sipariş, buluşma cümleleri — s1u13, s1u14, s1u15 ve u1, u2, u4\n- Dil (3 soru): a/an, çoğul, soru dizilimi — s1u13, s1u14, s1u15",
       "nodes": [
         {
           "id": "s1u15l1",
@@ -1555,12 +1589,10 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "See you on Saturday at half past six.",
-              "answers": [
-                "See you on Saturday at half past six.",
-                "See you on Saturday at 6:30."
-              ]
+              "translation": "Cumartesi saat altı buçukta görüşürüz.",
+              "rate": 0.8
             },
             {
               "type": "fillBlank",
@@ -1608,9 +1640,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Let's meet at the cinema at seven.",
-              "translation": "Saat yedide sinemada buluşalım."
+              "translation": "Saat yedide sinemada buluşalım.",
+              "rate": 0.8
             },
             {
               "type": "match",
@@ -1944,7 +1977,8 @@
               ],
               "answer": "Dörtte"
             }
-          ]
+          ],
+          "listenFirst": true
         },
         {
           "id": "s1u15l3",
@@ -1953,9 +1987,10 @@
           "description": "Sam'i telefonda sinemaya davet et, saat ve yer belirle",
           "exercises": [
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Hi Sam, it's Elif. Are you free on Friday?",
-              "translation": "Merhaba Sam, ben Elif. Cuma müsait misin?"
+              "translation": "Merhaba Sam, ben Elif. Cuma müsait misin?",
+              "rate": 0.8
             },
             {
               "type": "speak",
@@ -2159,18 +2194,19 @@
             },
             {
               "type": "translate",
-              "text": "Saat kaçta gelebilirsin?",
+              "text": "Pikniğe gelebilir misin?",
               "lang": "tr",
               "answers": [
-                "What time can you come?",
-                "When can you come?"
+                "Can you come to the picnic?",
+                "Can you come?"
               ],
               "tokens": [
-                "What",
-                "time",
-                "can",
+                "Can",
                 "you",
                 "come",
+                "to",
+                "the",
+                "picnic",
                 "do",
                 "are"
               ]
@@ -2255,6 +2291,22 @@
                   "picnic"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Sam'e pazar günü piknik için kısa bir mesaj yaz: gün, saat ve yer olsun.",
+              "model": "Hi Sam! Are you free on Sunday? Let's have a picnic in the park at two. Kerem wants to come, too. I can bring some sandwiches. Can you come to the picnic? See you soon! Elif",
+              "minWords": 20,
+              "maxWords": 40,
+              "checklist": [
+                "Hi ile başladın",
+                "Günü, saati ve yeri yazdın: on Sunday, at two, in the park",
+                "Bir soruyla bitirdin: Can you come to the picnic?"
+              ],
+              "focus": [
+                "word_order"
+              ],
+              "taskId": "s1u15l4w"
             }
           ]
         },

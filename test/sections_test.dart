@@ -133,6 +133,21 @@ void main() {
       }
     });
 
+    test(
+      'listen-first stories: every skill story and the B1–B2 stories; A1–A2 base stories keep their text',
+      () async {
+        final course = await loadCourse(rootBundle, 'tr_en');
+        for (final s in course.sections.take(8)) {
+          final own = s.index == 8 ? 10 : 12;
+          for (final (i, u) in s.units.indexed) {
+            final story = u.nodes.firstWhere((n) => n.type == NodeType.story);
+            final skill = i >= own;
+            expect(story.listenFirst, skill || s.index >= 5, reason: story.id);
+          }
+        }
+      },
+    );
+
     test('courses without section metadata get one hidden section', () async {
       final course = await loadCourse(rootBundle, 'pro_tourism');
       expect(course.sections, hasLength(1));

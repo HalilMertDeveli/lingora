@@ -7,7 +7,7 @@
       "description": "Geçmiş bir olayı sırayla anlat: önce, sonra, ondan sonra",
       "color": "0xFF7C5CFC",
       "theme": "gecmis",
-      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir arkadaşının tatil anlatısını dinleyip olayların sırasını takip edebilirsin.\n- Bir blog yazısında ya da kartpostalda kimin ne yaptığını bulabilirsin.\n- Bir anını 45 saniyede, sırayla anlatabilirsin.\n- 6–8 cümlelik bir kartpostal yazabilirsin.\n\n## Strateji\n\n- Dinlerken **first**, **then**, **after that** ve **in the end** sözcüklerine kulak ver: her biri yeni bir adım başlatır.\n- Okurken **he**, **she**, **it** ve **them** zamirlerinin kimi gösterdiğini bul; bir önceki cümleye bak.\n- Anlatmaya zaman ve yerle başla (Last summer, in July…), sonra olayları sırayla ver.\n- Düzensiz fiillerin geçmiş hâlini önceden hazırla: go → went, take → took, eat → ate, see → saw.\n- Kartpostalı sıcak bir selamla aç (Dear…) ve kısa bir kapanışla bitir (Love, …).\n\n## Model metin\n\nDear Grandma,\n\nYesterday we went to Galata Tower with Elif. First, we took photos of the city. Then we ate ice cream by the sea. After that, Sam saw a cat and played with it. It was very hot, but it was a great day.\n\nLove, Mia\n\n> Mia'nın İstanbul'dan kartpostalı. Olaylar **first → then → after that** sırasıyla akıyor ve bütün fiiller geçmiş zamanda: went, took, ate, saw.\n\n## Türklerin sık hatası\n\n- ❌ We goed to the island. ✅ We **went** to the island. Düzensiz fiiller -ed almaz.\n- ❌ Mia lost his hat. ✅ Mia lost **her** hat. Türkçedeki \"o\" İngilizcede he ya da she olur; kimden söz ettiğini takip et.",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir arkadaşının tatil anlatısını dinleyip olayların sırasını takip edebilirsin.\n- Bir blog yazısında ya da kartpostalda kimin ne yaptığını bulabilirsin.\n- Bir anını 45 saniyede, sırayla anlatabilirsin.\n- 6–8 cümlelik bir kartpostal yazabilirsin.\n\n## Strateji\n\n- Dinlerken **first**, **then**, **after that** ve **in the end** sözcüklerine kulak ver: her biri yeni bir adım başlatır.\n- Okurken **he**, **she**, **it** ve **them** zamirlerinin kimi gösterdiğini bul; bir önceki cümleye bak.\n- Anlatmaya zaman ve yerle başla (Last summer, in July…), sonra olayları sırayla ver.\n- Düzensiz fiillerin geçmiş hâlini önceden hazırla: go → went, take → took, eat → ate, see → saw.\n- Kartpostalı sıcak bir selamla aç (Dear…) ve kısa bir kapanışla bitir (Love, …).\n\n## Model metin\n\n> Dear Grandma,\n>\n> Yesterday we went to Galata Tower with Elif. First, we took photos of the city. Then we ate ice cream by the sea. After that, Sam saw a cat and played with it. In the end, we took the ferry home at seven. It was very hot, but it was a great day.\n>\n> See you soon! Love, Mia\n\nMia'nın İstanbul'dan kartpostalı. Olaylar **first → then → after that** sırasıyla akıyor ve bütün fiiller geçmiş zamanda: went, took, ate, saw.\n\n## Türklerin sık hatası\n\n- ❌ We goed to the island. ✅ We **went** to the island. Düzensiz fiiller -ed almaz.\n- ❌ Mia lost his hat. ✅ Mia lost **her** hat. Türkçedeki \"o\" İngilizcede he ya da she olur; kimden söz ettiğini takip et.",
       "nodes": [
         {
           "id": "s3u13l1",
@@ -16,12 +16,10 @@
           "description": "Sam İstanbul tatilini anlatıyor",
           "exercises": [
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "We stayed in İstanbul for two weeks in July.",
-              "answers": [
-                "We stayed in İstanbul for two weeks in July.",
-                "We stayed in İstanbul for 2 weeks in July."
-              ]
+              "translation": "Temmuzda iki hafta İstanbul'da kaldık.",
+              "rate": 0.85
             },
             {
               "type": "listen",
@@ -83,9 +81,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "First we went to the tower, then we had lunch.",
-              "translation": "Önce kuleye gittik, sonra öğle yemeği yedik."
+              "translation": "Önce kuleye gittik, sonra öğle yemeği yedik.",
+              "rate": 0.85
             },
             {
               "type": "match",
@@ -252,6 +251,7 @@
           "title": "Kerem'in yaz anısı",
           "description": "Kerem, Sam ve Mia'yla geçen yazı anlatıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -431,9 +431,10 @@
           "description": "45 saniyede bir yaz anını sırayla anlat",
           "exercises": [
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "My best memory is from last summer.",
-              "translation": "En güzel anım geçen yazdan."
+              "translation": "En güzel anım geçen yazdan.",
+              "rate": 0.85
             },
             {
               "type": "speak",
@@ -718,17 +719,6 @@
               ]
             },
             {
-              "type": "fillBlank",
-              "text": "We arrived ___ İstanbul on Monday.",
-              "translation": "Pazartesi İstanbul'a vardık.",
-              "answer": "in",
-              "choices": [
-                "in",
-                "to",
-                "at"
-              ]
-            },
-            {
               "type": "select",
               "prompt": "Mia kartpostalı büyükannesine yazıyor. En uygun kapanış hangisi?",
               "answer": "Love, Mia",
@@ -775,6 +765,22 @@
                   "yesterday"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Büyükannene bir kartpostal yaz: dün nereye gittin, sırayla neler yaptın ve gün nasıldı?",
+              "model": "Dear Grandma,\n\nYesterday we went to Galata Tower with Elif. First, we took photos of the city. Then we ate ice cream by the sea. After that, Sam saw a cat and played with it. In the end, we took the ferry home at seven. It was very hot, but it was a great day.\n\nSee you soon! Love, Mia",
+              "minWords": 50,
+              "maxWords": 80,
+              "checklist": [
+                "Dear ile başlayıp Love ile bitirdin",
+                "Olayları first, then, after that ile sıraladın",
+                "Fiilleri geçmiş zamanda yazdın (went, took, ate, saw)"
+              ],
+              "focus": [
+                "tense"
+              ],
+              "taskId": "s3u13l4w"
             }
           ]
         },
@@ -800,7 +806,7 @@
       "description": "Anonslardaki saat, peron ve değişikliği yakala; danışmaya sor",
       "color": "0xFF2D9CDB",
       "theme": "seyahat",
-      "guide": "## Bu ünitede yapabileceklerin\n\n- Tren, havalimanı ve market anonslarındaki saat, peron ve kapı numarasını anlayabilirsin.\n- Bir tarifede hangi trenin ne zaman kalktığını ve hangisinin iptal olduğunu bulabilirsin.\n- Danışmada kibarca bilgi sorabilirsin.\n- Bir arkadaşına plan değişikliğini kısa bir mesajla bildirebilirsin.\n\n## Strateji\n\n- Anonsu dinlemeden önce neyi aradığını bil: saat mi, peron mu, kapı mı?\n- **delayed** (gecikmeli) ve **cancelled** (iptal) sözcüklerine dikkat et; anonsun en önemli bilgisi çoğu zaman budur.\n- Sayıları ayırt et: **thirteen** /θɜːˈtiːn/ sonda vurgulu, **thirty** /ˈθɜːti/ başta vurgulu. Emin değilsen \"Did you say thirteen or thirty?\" diye sor.\n- Kibar soru için kalıbı kullan: **Could you tell me** + soru sözcüğü + özne + fiil.\n- Değişiklik mesajında önce haberi ver, sonra yeni planı ve saati yaz.\n\n## Model metin\n\nHi Deniz, bad news: our train is cancelled. We're going to take the next train. It arrives at ten past four, so we'll miss lunch. Can you meet us at the station?\n\n> Elif'in Ankara'daki Deniz'e mesajı. Önce kötü haber, sonra yeni plan, en sonda bir rica var.\n\n## Türklerin sık hatası\n\n- ❌ Could you tell me when does the train leave? ✅ Could you tell me when **the train leaves**? Kalıptan sonra soru dizilimi kullanılmaz.\n- ❌ The train is late, it is cancelled. ✅ The train is **delayed**. / The train is **cancelled**. Gecikmeli tren gelir, iptal edilen tren hiç gelmez.",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Tren, havalimanı ve market anonslarındaki saat, peron ve kapı numarasını anlayabilirsin.\n- Bir tarifede hangi trenin ne zaman kalktığını ve hangisinin iptal olduğunu bulabilirsin.\n- Danışmada kibarca bilgi sorabilirsin.\n- Bir arkadaşına plan değişikliğini kısa bir mesajla bildirebilirsin.\n\n## Strateji\n\n- Anonsu dinlemeden önce neyi aradığını bil: saat mi, peron mu, kapı mı?\n- **delayed** (gecikmeli) ve **cancelled** (iptal) sözcüklerine dikkat et; anonsun en önemli bilgisi çoğu zaman budur.\n- Sayıları ayırt et: **thirteen** /θɜːˈtiːn/ sonda vurgulu, **thirty** /ˈθɜːti/ başta vurgulu. Emin değilsen \"Did you say thirteen or thirty?\" diye sor.\n- Kibar soru için kalıbı kullan: **Could you tell me** + soru sözcüğü + özne + fiil.\n- Değişiklik mesajında önce haberi ver, sonra yeni planı ve saati yaz.\n\n## Model metin\n\n> Hi Deniz, bad news: our train is cancelled. We're still in İstanbul. We're going to take the next train. It arrives at ten past four, so we'll miss lunch. Can you meet us at the station? We'll wait for you at the information desk. Let's have dinner together instead. Sorry about this!\n>\n> See you soon, Elif\n\nElif'in Ankara'daki Deniz'e mesajı. Önce kötü haber, sonra yeni plan, en sonda bir rica var.\n\n## Türklerin sık hatası\n\n- ❌ Could you tell me when does the train leave? ✅ Could you tell me when **the train leaves**? Kalıptan sonra soru dizilimi kullanılmaz.\n- ❌ The train is late, it is cancelled. ✅ The train is **delayed**. / The train is **cancelled**. Gecikmeli tren gelir, iptal edilen tren hiç gelmez.",
       "nodes": [
         {
           "id": "s3u14l1",
@@ -819,12 +825,10 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "The eight fifteen train to İzmir is cancelled.",
-              "answers": [
-                "The eight fifteen train to İzmir is cancelled.",
-                "The 8:15 train to İzmir is cancelled."
-              ]
+              "translation": "Sekiz on beş İzmir treni iptal edildi.",
+              "rate": 0.85
             },
             {
               "type": "listen",
@@ -880,9 +884,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Excuse me, could you tell me where platform four is?",
-              "translation": "Affedersiniz, dört numaralı peronun nerede olduğunu söyler misiniz?"
+              "translation": "Affedersiniz, dört numaralı peronun nerede olduğunu söyler misiniz?",
+              "rate": 0.85
             },
             {
               "type": "match",
@@ -1049,6 +1054,7 @@
           "title": "Uçuş gecikti",
           "description": "Sam ve Mia Londra'ya dönerken havalimanında",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1204,9 +1210,10 @@
           "description": "İstasyonda danışmaya kibarca bilgi sor",
           "exercises": [
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Excuse me, could you help me, please?",
-              "translation": "Affedersiniz, bana yardım edebilir misiniz?"
+              "translation": "Affedersiniz, bana yardım edebilir misiniz lütfen?",
+              "rate": 0.85
             },
             {
               "type": "speak",
@@ -1517,6 +1524,23 @@
                   "station"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Ankara'daki arkadaşın Deniz'e kısa bir mesaj yaz: trenin iptal edildi; yeni planı, varış saatini ve bir ricanı ekle.",
+              "model": "Hi Deniz, bad news: our train is cancelled. We're still in İstanbul. We're going to take the next train. It arrives at ten past four, so we'll miss lunch. Can you meet us at the station? We'll wait for you at the information desk. Let's have dinner together instead. Sorry about this!\n\nSee you soon, Elif",
+              "minWords": 50,
+              "maxWords": 80,
+              "checklist": [
+                "Kötü haberi ilk cümlede verdin (our train is cancelled)",
+                "Yeni planı ve varış saatini yazdın",
+                "Arkadaşından kibar bir ricada bulundun (Can you meet us…?)"
+              ],
+              "focus": [
+                "word_order",
+                "tense"
+              ],
+              "taskId": "s3u14l4w"
             }
           ]
         },
@@ -1542,7 +1566,7 @@
       "description": "Teşekkür, özür ve açıklama içeren kısa bir e-posta yaz",
       "color": "0xFF14A098",
       "theme": "yazisma",
-      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir sesli mesajda kimin neden aradığını ve ne istediğini anlayabilirsin.\n- Kişisel bir e-postada teşekkürü, özrü ve nedenini bulabilirsin.\n- Bir arkadaşından özür dileyip nedenini açıklayabilirsin.\n- Teşekkür, özür ve açıklama içeren 60–80 kelimelik bir e-posta yazabilirsin.\n\n## Strateji\n\n- Sesli mesajda üç şeyi yakala: kim arıyor, neden arıyor, senden ne istiyor (Can you call me back…?).\n- E-postayı okurken **Thank you for**, **I'm sorry** ve **because / so** kalıplarını işaretle; bilginin çoğu oradadır.\n- Özür dilerken önce özür, sonra kısa bir neden, en sonda bir teklif söyle: I'm sorry… because… Can I…?\n- E-postayı üç parçaya böl: teşekkür, özür ve açıklama, kapanış. Arkadaşa **Hi** ile başla, **Love** ya da **Write soon** ile bitir.\n\n## Model metin\n\nHi Sam,\n\nThank you for your email and the lovely photos. I'm sorry I didn't write sooner. I was very busy because I started my new job at the museum. On my first day the ferry was cancelled, so I was late! Please say hello to Mia.\n\nWrite soon! Love, Elif\n\n> Elif'in Sam'e cevabı. Teşekkür (Thank you for…), özür (I'm sorry…) ve neden (because / so) sırayla geliyor.\n\n## Türklerin sık hatası\n\n- ❌ Thank you for to help me. ✅ Thank you for **helping** me. **for**'dan sonra fiil -ing alır.\n- ❌ I was late so the ferry was cancelled. ✅ I was late **because** the ferry was cancelled. **because** nedeni, **so** sonucu verir.\n\n## Beceri testi\n\n- Dinleme (6 soru): geçmiş olayı ve sırayı anlama (s3u13), anonsta saat, kapı ve gecikme (s3u14), teşekkür ve özür cümleleri (s3u15).\n- Okuma (6 soru): Kerem'in yaz yazısında sıra, süre ve zamir takibi (s3u13); Ozan'ın e-postasında saat değişikliği, neden ve iptal (s3u14, s3u15).\n- Yazma (5 soru): geçmiş zamanla olay anlatma (s3u13, s3u3), kibar dolaylı soru ve iptal bildirme (s3u14), teşekkür cümlesi (s3u15).\n- Dil (3 soru): düzensiz geçmiş (s3u13), cancelled anonsu (s3u14), so / because (s3u15).",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir sesli mesajda kimin neden aradığını ve ne istediğini anlayabilirsin.\n- Kişisel bir e-postada teşekkürü, özrü ve nedenini bulabilirsin.\n- Bir arkadaşından özür dileyip nedenini açıklayabilirsin.\n- Teşekkür, özür ve açıklama içeren 50–80 kelimelik bir e-posta yazabilirsin.\n\n## Strateji\n\n- Sesli mesajda üç şeyi yakala: kim arıyor, neden arıyor, senden ne istiyor (Can you call me back…?).\n- E-postayı okurken **Thank you for**, **I'm sorry** ve **because / so** kalıplarını işaretle; bilginin çoğu oradadır.\n- Özür dilerken önce özür, sonra kısa bir neden, en sonda bir teklif söyle: I'm sorry… because… Can I…?\n- E-postayı üç parçaya böl: teşekkür, özür ve açıklama, kapanış. Arkadaşa **Hi** ile başla, **Love** ya da **Write soon** ile bitir.\n\n## Model metin\n\n> Hi Sam,\n>\n> Thank you for your email and the lovely photos. I'm sorry I didn't write sooner. I was very busy because I started my new job at the museum. On my first day the ferry was cancelled, so I was late! My boss was very kind, and now I really love my job. Please say hello to Mia.\n>\n> Write soon! Love, Elif\n\nElif'in Sam'e cevabı. Teşekkür (Thank you for…), özür (I'm sorry…) ve neden (because / so) sırayla geliyor.\n\n## Türklerin sık hatası\n\n- ❌ Thank you for to help me. ✅ Thank you for **helping** me. **for**'dan sonra fiil -ing alır.\n- ❌ I was late so the ferry was cancelled. ✅ I was late **because** the ferry was cancelled. **because** nedeni, **so** sonucu verir.\n\n## Beceri testi\n\n- Dinleme (6 soru): geçmiş olayı ve sırayı anlama (s3u13), anonsta saat, kapı ve gecikme (s3u14), teşekkür ve özür cümleleri (s3u15).\n- Okuma (6 soru): Kerem'in yaz yazısında sıra, süre ve zamir takibi (s3u13); Ozan'ın e-postasında saat değişikliği, neden ve iptal (s3u14, s3u15).\n- Yazma (5 soru): geçmiş zamanla olay anlatma (s3u13, s3u3), kibar dolaylı soru ve iptal bildirme (s3u14), teşekkür cümlesi (s3u15).\n- Dil (3 soru): düzensiz geçmiş (s3u13), cancelled anonsu (s3u14), so / because (s3u15).",
       "nodes": [
         {
           "id": "s3u15l1",
@@ -1584,12 +1608,10 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "Our plane landed at eleven thirty at night.",
-              "answers": [
-                "Our plane landed at eleven thirty at night.",
-                "Our plane landed at 11:30 at night."
-              ]
+              "translation": "Uçağımız gece on bir buçukta indi.",
+              "rate": 0.85
             },
             {
               "type": "listen",
@@ -1622,9 +1644,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Thanks for calling. I'll call you back later.",
-              "translation": "Aradığın için teşekkürler. Seni sonra geri arayacağım."
+              "translation": "Aradığın için teşekkürler. Seni sonra geri arayacağım.",
+              "rate": 0.85
             },
             {
               "type": "match",
@@ -1791,6 +1814,7 @@
           "title": "İlk gün geç kaldım",
           "description": "Elif rehberliğin ilk gününde geç kalıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1976,9 +2000,10 @@
               "translation": "Beni beklediğin için teşekkür ederim."
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Can I buy you a coffee this weekend?",
-              "translation": "Bu hafta sonu sana bir kahve ısmarlayabilir miyim?"
+              "translation": "Bu hafta sonu sana bir kahve ısmarlayabilir miyim?",
+              "rate": 0.85
             },
             {
               "type": "select",
@@ -2276,6 +2301,22 @@
                   "job"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Sam'in e-postasına kısa bir cevap yaz: bir şey için teşekkür et, geç yazdığın için özür dile ve nedenini anlat.",
+              "model": "Hi Sam,\n\nThank you for your email and the lovely photos. I'm sorry I didn't write sooner. I was very busy because I started my new job at the museum. On my first day the ferry was cancelled, so I was late! My boss was very kind, and now I really love my job. Please say hello to Mia.\n\nWrite soon! Love, Elif",
+              "minWords": 50,
+              "maxWords": 80,
+              "checklist": [
+                "Önce bir şey için teşekkür ettin (Thank you for…)",
+                "Geç yazdığın için özür diledin (I'm sorry I didn't…)",
+                "Nedeni because ya da so ile açıkladın"
+              ],
+              "focus": [
+                "tense"
+              ],
+              "taskId": "s3u15l4w"
             }
           ]
         },

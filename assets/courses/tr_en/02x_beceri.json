@@ -16,12 +16,10 @@
           "description": "Bir öğrencinin gününü dinle ve yaz",
           "exercises": [
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "Mia gets up at half past seven.",
-              "answers": [
-                "Mia gets up at half past seven.",
-                "Mia gets up at 7:30."
-              ]
+              "translation": "Mia yedi buçukta kalkar.",
+              "rate": 0.8
             },
             {
               "type": "listen",
@@ -83,9 +81,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "She usually has lunch at school.",
-              "translation": "Genellikle okulda öğle yemeği yer."
+              "translation": "Genellikle okulda öğle yemeği yer.",
+              "rate": 0.8
             },
             {
               "type": "match",
@@ -411,7 +410,8 @@
               ],
               "answer": "Yatakta çizgi roman okur."
             }
-          ]
+          ],
+          "listenFirst": true
         },
         {
           "id": "s2u13l3",
@@ -440,9 +440,10 @@
               "translation": "Akşamları bazen televizyon izlerim."
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "I always go to bed at ten.",
-              "translation": "Her zaman onda yatarım."
+              "translation": "Her zaman onda yatarım.",
+              "rate": 0.8
             },
             {
               "type": "select",
@@ -741,6 +742,22 @@
                   "get dressed"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Annenin ya da bir yakınının bir gününü anlatan kısa bir paragraf yaz: kalkma saati, işi ve akşamı olsun.",
+              "model": "My mother gets up at six every day. She always drinks a cup of tea before breakfast. She works in a hospital and she gets home at four. She usually reads a book in the evening. She goes to bed at ten o'clock.",
+              "minWords": 30,
+              "maxWords": 50,
+              "checklist": [
+                "she ile fiile -s ekledin: gets, drinks, works",
+                "always ve usually'yi fiilden önce yazdın",
+                "Saatleri at ile yazdın: at six, at four"
+              ],
+              "focus": [
+                "word_order"
+              ],
+              "taskId": "s2u13l4w"
             }
           ]
         },
@@ -766,7 +783,7 @@
       "description": "Yol sor, yol tarif et ve tarifi anla",
       "color": "0xFF2D9CDB",
       "theme": "sehir",
-      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir yerin nerede olduğunu kibarca sorabilirsin.\n- Sağ, sol, düz ve sıra sayılarıyla verilen tarifi anlayabilirsin.\n- Şehirdeki tabelaları ve kısa kuralları okuyabilirsin.\n- Bir arkadaşına evine ya da bir yere nasıl gelineceğini mesajla yazabilirsin.\n\n## Strateji\n\n- Tarif dinlerken üç şeyi not et: yön (left/right), sıra (first/second/third) ve yer (opposite, next to).\n- Anlamadığında tekrar sor: Sorry, the second right or the second left?\n- Tabelalarda Don't ve No ile başlayan cümleler yasaktır.\n- Tarif yazarken emir kipi kullan ve adımları sırayla ver: Get off, turn, walk.\n\n## Model metin\n\n> Hi Deniz! Get off the bus at the library. Turn left and walk to the bakery. The cinema is opposite the bakery, next to a bank. See you at six!\n\nKısa bir tarif mesajı: her adım bir emir cümlesidir. Yerleri opposite ve next to ile tarif ediyoruz.\n\n## Türklerin sık hatası\n\n- ❌ I go to the home. / I go to home. ✅ I go home. (home'dan önce to ve the gelmez)\n- ❌ It's next the bank. / You turn left. ✅ It's next to the bank. / Turn left. (next to iki kelimedir; tarifte özne yok, emir kipi var)",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir yerin nerede olduğunu kibarca sorabilirsin.\n- Sağ, sol, düz ve sıra sayılarıyla verilen tarifi anlayabilirsin.\n- Şehirdeki tabelaları ve kısa kuralları okuyabilirsin.\n- Bir arkadaşına evine ya da bir yere nasıl gelineceğini mesajla yazabilirsin.\n\n## Strateji\n\n- Tarif dinlerken üç şeyi not et: yön (left/right), sıra (first/second/third) ve yer (opposite, next to).\n- Anlamadığında tekrar sor: Sorry, the second right or the second left?\n- Tabelalarda Don't ve No ile başlayan cümleler yasaktır.\n- Tarif yazarken emir kipi kullan ve adımları sırayla ver: Get off, turn, walk.\n\n## Model metin\n\n> Hi Deniz! Take bus 25 from your house. Get off the bus at the library. Turn left and walk to the bakery. The cinema is opposite the bakery, next to a bank. It's only five minutes. See you at six!\n\nKısa bir tarif mesajı: her adım bir emir cümlesidir. Yerleri opposite ve next to ile tarif ediyoruz.\n\n## Türklerin sık hatası\n\n- ❌ I go to the home. / I go to home. ✅ I go home. (home'dan önce to ve the gelmez)\n- ❌ It's next the bank. / You turn left. ✅ It's next to the bank. / Turn left. (next to iki kelimedir; tarifte özne yok, emir kipi var)",
       "nodes": [
         {
           "id": "s2u14l1",
@@ -808,14 +825,10 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "Go straight on for two hundred metres.",
-              "answers": [
-                "Go straight on for two hundred metres.",
-                "Go straight on for 200 metres.",
-                "Go straight on for two hundred meters.",
-                "Go straight on for 200 meters."
-              ]
+              "translation": "İki yüz metre düz git.",
+              "rate": 0.8
             },
             {
               "type": "listen",
@@ -844,9 +857,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Excuse me, where's the bus station?",
-              "translation": "Affedersiniz, otogar nerede?"
+              "translation": "Affedersiniz, otogar nerede?",
+              "rate": 0.8
             },
             {
               "type": "match",
@@ -1172,7 +1186,8 @@
               ],
               "answer": "Elif'in evinin yolunu bilmiyor."
             }
-          ]
+          ],
+          "listenFirst": true
         },
         {
           "id": "s2u14l3",
@@ -1201,9 +1216,10 @@
               "translation": "Buradan uzak mı?"
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Thank you very much. Have a nice day!",
-              "translation": "Çok teşekkür ederim. İyi günler!"
+              "translation": "Çok teşekkür ederim. İyi günler!",
+              "rate": 0.8
             },
             {
               "type": "select",
@@ -1481,6 +1497,22 @@
                   "cinema"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Deniz'e sinemaya nasıl geleceğini anlatan kısa bir mesaj yaz: otobüs, yön, sinemanın yeri ve buluşma saati olsun.",
+              "model": "Hi Deniz! Take bus 25 from your house. Get off the bus at the library. Turn left and walk to the bakery. The cinema is opposite the bakery, next to a bank. It's only five minutes. See you at six!",
+              "minWords": 30,
+              "maxWords": 50,
+              "checklist": [
+                "Her adımı emir cümlesiyle yazdın: Take, Turn, Walk",
+                "Sinemanın yerini opposite ve next to ile anlattın",
+                "Saati yazıp See you ile bitirdin"
+              ],
+              "focus": [
+                "article"
+              ],
+              "taskId": "s2u14l4w"
             }
           ]
         },
@@ -1506,7 +1538,7 @@
       "description": "Davet et, daveti kabul et ya da kibarca reddet",
       "color": "0xFFF2994A",
       "theme": "yazisma",
-      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir arkadaşını bir etkinliğe davet edebilirsin.\n- Bir daveti kabul edebilir ya da kibarca reddedebilirsin.\n- Telefondaki bir davette gün, saat ve yeri anlayabilirsin.\n- Bir davetiyeyi okuyup kısa bir davet mesajı yazabilirsin.\n\n## Strateji\n\n- Davet dinlerken üç bilgiyi yakala: ne, ne zaman, nerede.\n- Kabul ederken: I'd love to! / Good idea! Reddederken önce özür dile, sonra sebep söyle: Sorry, I can't. I have a piano lesson.\n- Davetiyede tarih, saat, adres ve cevap için son günü (reply by) ara.\n- Davet mesajında sırayla: selam, davet (Would you like to…?), saat ve yer, rica, kapanış.\n\n## Model metin\n\n> Hi Deniz! Would you like to come to a picnic on Sunday? We can meet at the park at eleven. Please bring some fruit. Let me know by Friday! Love, Elif\n\nKısa ve samimi bir davet mesajı. Would you like to'dan ve can'den sonra fiil yalın gelir: come, meet.\n\n## Türklerin sık hatası\n\n- ❌ Would you like come? / I can to come. ✅ Would you like to come? / I can come. (would like'tan sonra to; can'den sonra yalın fiil)\n- ❌ I am agree. ✅ I agree. (agree bir fiildir, am ile kullanılmaz)\n\n## Beceri testi\n\nBölüm 2 beceri testi 20 sorudur ve bu bölümün hedeflerini ölçer:\n\n- Dinleme (6 soru): rutin cümlelerini, saatleri, yol tarifini ve daveti anlama — s2u13, s2u14, s2u15\n- Okuma (6 soru): Mia'nın günü üzerine kısa yazı ve tarifli davet mesajı — s2u13, s2u14, s2u15\n- Yazma (5 cümle): rutin, yol tarifi ve davete cevap cümleleri kurma — s2u13, s2u14, s2u15\n- Dil (3 soru): 3. tekil -s, would like to + fiil ve I agree — s2u13, s2u15",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir arkadaşını bir etkinliğe davet edebilirsin.\n- Bir daveti kabul edebilir ya da kibarca reddedebilirsin.\n- Telefondaki bir davette gün, saat ve yeri anlayabilirsin.\n- Bir davetiyeyi okuyup kısa bir davet mesajı yazabilirsin.\n\n## Strateji\n\n- Davet dinlerken üç bilgiyi yakala: ne, ne zaman, nerede.\n- Kabul ederken: I'd love to! / Good idea! Reddederken önce özür dile, sonra sebep söyle: Sorry, I can't. I have a piano lesson.\n- Davetiyede tarih, saat, adres ve cevap için son günü (reply by) ara.\n- Davet mesajında sırayla: selam, davet (Would you like to…?), saat ve yer, rica, kapanış.\n\n## Model metin\n\n> Hi Deniz! Would you like to come to a picnic on Sunday? We can meet at the park at eleven. My brother Kerem can come, too. Please bring some fruit. Let me know by Friday! Love, Elif\n\nKısa ve samimi bir davet mesajı. Would you like to'dan ve can'den sonra fiil yalın gelir: come, meet.\n\n## Türklerin sık hatası\n\n- ❌ Would you like come? / I can to come. ✅ Would you like to come? / I can come. (would like'tan sonra to; can'den sonra yalın fiil)\n- ❌ I am agree. ✅ I agree. (agree bir fiildir, am ile kullanılmaz)\n\n## Beceri testi\n\nBölüm 2 beceri testi 20 sorudur ve bu bölümün hedeflerini ölçer:\n\n- Dinleme (6 soru): rutin cümlelerini, saatleri, yol tarifini ve daveti anlama — s2u13, s2u14, s2u15\n- Okuma (6 soru): Mia'nın günü üzerine kısa yazı ve tarifli davet mesajı — s2u13, s2u14, s2u15\n- Yazma (5 cümle): rutin, yol tarifi ve davete cevap cümleleri kurma — s2u13, s2u14, s2u15\n- Dil (3 soru): 3. tekil -s, would like to + fiil ve I agree — s2u13, s2u15",
       "nodes": [
         {
           "id": "s2u15l1",
@@ -1577,16 +1609,16 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "My flat is near the school.",
-              "answers": [
-                "My flat is near the school."
-              ]
+              "translation": "Evim okulun yakınında.",
+              "rate": 0.8
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "I'd love to come to your party.",
-              "translation": "Partine gelmeyi çok isterim."
+              "translation": "Partine gelmeyi çok isterim.",
+              "rate": 0.8
             },
             {
               "type": "match",
@@ -1912,7 +1944,8 @@
               ],
               "answer": "Okulun yakınında"
             }
-          ]
+          ],
+          "listenFirst": true
         },
         {
           "id": "s2u15l3",
@@ -1941,9 +1974,10 @@
               "translation": "Kerem'i de getirebilir miyim?"
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Great! See you at the café at half past five.",
-              "translation": "Harika! Beş buçukta kafede görüşürüz."
+              "translation": "Harika! Beş buçukta kafede görüşürüz.",
+              "rate": 0.8
             },
             {
               "type": "select",
@@ -2226,6 +2260,22 @@
                   "bring"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Deniz'i pazar günü pikniğe davet eden kısa bir mesaj yaz: gün, saat, yer ve getirmesi gereken şey olsun.",
+              "model": "Hi Deniz! Would you like to come to a picnic on Sunday? We can meet at the park at eleven. My brother Kerem can come, too. Please bring some fruit. Let me know by Friday! Love, Elif",
+              "minWords": 30,
+              "maxWords": 50,
+              "checklist": [
+                "Hi ile başladın, Love ile bitirdin",
+                "Would you like to come ile davet ettin",
+                "Günü, saati ve yeri yazdın: Sunday, eleven, park"
+              ],
+              "focus": [
+                "be"
+              ],
+              "taskId": "s2u15l4w"
             }
           ]
         },

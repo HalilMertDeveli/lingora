@@ -322,6 +322,7 @@
           "title": "Bir yıl oldu!",
           "description": "Elif, Martı Apps'teki ilk yılını dolduruyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1123,6 +1124,7 @@
           "title": "Boya, ter ve otogar",
           "description": "Kerem hafta sonu için İzmir'e geliyor, Elif ise dairesini yeniliyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1932,6 +1934,7 @@
           "title": "Babaannenin bahçesinde",
           "description": "Elif ve Kerem, Ayvalık'ta babaanneyle dedeyi ziyaret ediyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -2718,6 +2721,7 @@
           "title": "Zeytinden yağa",
           "description": "Elif ve Kerem, dedeyle zeytin hasadına ve yağhaneye gidiyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -3512,6 +3516,7 @@
           "title": "Sam Efes'te",
           "description": "Sam sonunda Türkiye'ye geliyor; Elif onu Efes'e götürüyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -4315,6 +4320,7 @@
           "title": "Piyango bileti",
           "description": "Deniz eski ceketinde bir piyango bileti buluyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -5143,6 +5149,7 @@
           "title": "Ofisteki söylenti",
           "description": "Mia bir şey duydu ve herkes merak içinde",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -6003,6 +6010,7 @@
           "title": "Ayvalık yolunda",
           "description": "Elif ve Kerem hasadın son günlerinde yardım etmek için yine Ayvalık'a gidiyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -6874,6 +6882,7 @@
           "title": "Kayıp cüzdan",
           "description": "Mia'nın cüzdanı ortadan kayboldu, Elif ipuçlarını topluyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -7734,6 +7743,7 @@
           "title": "Doğu Ekspresi",
           "description": "Kerem uzun bir tren yolculuğundan döndü ve fotoğraflarını gösteriyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -8605,6 +8615,7 @@
           "title": "Prova görüşmesi",
           "description": "Kerem'in yarın önemli bir iş görüşmesi var, Elif ve Deniz onu hazırlıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -9478,6 +9489,7 @@
           "title": "Mezuniyet günü",
           "description": "Kerem mezun oluyor, Elif'in de büyük bir haberi var",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",

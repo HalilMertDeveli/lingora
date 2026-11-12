@@ -318,6 +318,31 @@ void main() {
       expect(find.text('Tamamlandı'), findsOneWidget);
     });
 
+    test('A1–A2: a writing task in the last unit is practice, the skills test alone completes', () {
+      for (final cefr in ['A1', 'A2']) {
+        final section = Section(
+          id: 's3',
+          index: 3,
+          title: 'x',
+          cefr: cefr,
+          units: [
+            _unit('s2u15', [writeLesson, skillsTestNode]),
+          ],
+        );
+        expect(sectionCompleted(section, _done(['s2u15t'])), isTrue, reason: cefr);
+      }
+      final b1 = Section(
+        id: 's5',
+        index: 5,
+        title: 'x',
+        cefr: 'B1',
+        units: [
+          _unit('s2u15', [writeLesson, skillsTestNode]),
+        ],
+      );
+      expect(sectionCompleted(b1, _done(['s2u15t'])), isFalse);
+    });
+
     test('a section without a skills test is never "completed"', () {
       final section = Section(
         id: 's6',
