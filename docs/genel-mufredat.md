@@ -49,7 +49,7 @@ Uygulama `guide`'ı tr_en ünitelerinde göstermiyorsa bu Faz 1a'da eklenir (§3
 
 Her ünite için: can-do (CEFR satırından), görev ve Türk hatası odağı. Kelime kuralı:
 
-- Ünite başına en fazla 25 yeni lemma.
+- Ünite başına yeni lemma: A1–A2 en fazla 25 (hedef kelime grubu olan ünitede, ör. sayılar, aşılabilir); B1+ en fazla 50, bunların en az 20'si l1–l4'te yeniden geçer.
 - Aynı bölümün önceki ünitelerinden en az 15 kelime ve 2 yapı yeniden kullanılır (sarmal).
 - Kadro mevcut: Elif, Kerem, Sam, Mia, Deniz… Bölümün hikâye çizgisi sürdürülür (`side-session-notes` dosyalarındaki dersler-a, dersler-b1 ve dersler-b2 notlarına bakın).
 
