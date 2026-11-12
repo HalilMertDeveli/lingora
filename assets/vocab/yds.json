@@ -839,7 +839,10 @@
           "tr": "birinin bir şey yapmasını sağlamak"
         }
       ],
-      "family": [],
+      "family": [
+        "ability (n)",
+        "able (adj)"
+      ],
       "synonym": "allow",
       "tip": "Kalıp: enable + kişi + to do."
     },
@@ -1066,7 +1069,10 @@
           "tr": "sorunlar ortaya çıkar"
         }
       ],
-      "family": [],
+      "family": [
+        "arose (v)",
+        "arisen (v)"
+      ],
       "synonym": "occur",
       "tip": "Düzensiz: arise – arose – arisen. Nesne almaz."
     },
@@ -1982,7 +1988,10 @@
           "tr": "ameliyat olmak"
         }
       ],
-      "family": [],
+      "family": [
+        "underwent (v)",
+        "undergone (v)"
+      ],
       "synonym": "experience",
       "tip": "Düzensiz: undergo – underwent – undergone."
     },
@@ -2602,7 +2611,9 @@
           "tr": "durumu kötüleştirmek"
         }
       ],
-      "family": [],
+      "family": [
+        "worse (adj)"
+      ],
       "synonym": "deteriorate"
     },
     {
@@ -2986,7 +2997,10 @@
           "tr": "işçi sendikası"
         }
       ],
-      "family": [],
+      "family": [
+        "unite (v)",
+        "unionise (v)"
+      ],
       "synonym": "association",
       "tip": "‘the European Union’ = Avrupa Birliği."
     },
@@ -3051,7 +3065,9 @@
           "tr": "-me görevi"
         }
       ],
-      "family": [],
+      "family": [
+        "dutiful (adj)"
+      ],
       "synonym": "responsibility",
       "tip": "‘on duty’ = görevde, nöbette; ‘duty-free’ = gümrüksüz."
     },
@@ -3562,7 +3578,9 @@
           "tr": "sınırı geçmek"
         }
       ],
-      "family": [],
+      "family": [
+        "border (v)"
+      ],
       "synonym": "frontier"
     },
     {
@@ -3691,7 +3709,10 @@
           "tr": "genç işsizliği"
         }
       ],
-      "family": [],
+      "family": [
+        "young (adj)",
+        "youthful (adj)"
+      ],
       "synonym": "young people"
     },
     {
@@ -4052,7 +4073,9 @@
           "tr": "hane geliri"
         }
       ],
-      "family": [],
+      "family": [
+        "householder (n)"
+      ],
       "synonym": "family"
     },
     {
@@ -5412,7 +5435,9 @@
           "tr": "özel sektör"
         }
       ],
-      "family": [],
+      "family": [
+        "sectoral (adj)"
+      ],
       "synonym": "industry",
       "tip": "public sector = kamu sektörü, private sector = özel sektör."
     },
@@ -7116,7 +7141,9 @@
           "tr": "vergi teşviki"
         }
       ],
-      "family": [],
+      "family": [
+        "incentivise (v)"
+      ],
       "synonym": "motivation"
     },
     {
@@ -8859,7 +8886,10 @@
           "tr": "doğa olayı"
         }
       ],
-      "family": [],
+      "family": [
+        "phenomena (n)",
+        "phenomenal (adj)"
+      ],
       "synonym": "event",
       "tip": "Çoğulu phenomena: one phenomenon, two phenomena."
     },
@@ -9316,7 +9346,9 @@
           "tr": "fizik profesörü"
         }
       ],
-      "family": [],
+      "family": [
+        "professorship (n)"
+      ],
       "synonym": "lecturer"
     },
     {
@@ -11635,7 +11667,9 @@
           "tr": "diz sakatlığı"
         }
       ],
-      "family": [],
+      "family": [
+        "kneel (v)"
+      ],
       "tip": "k harfi okunmaz: /niː/."
     },
     {
@@ -13122,7 +13156,10 @@
           "tr": "sıcak hava dalgası"
         }
       ],
-      "family": [],
+      "family": [
+        "wavy (adj)",
+        "wave (v)"
+      ],
       "tip": "heat wave = sıcak hava dalgası; a wave of protests = protesto dalgası."
     },
     {
@@ -13216,7 +13253,9 @@
           "tr": "ürün yetiştirmek"
         }
       ],
-      "family": [],
+      "family": [
+        "crop (v)"
+      ],
       "synonym": "harvest"
     },
     {
@@ -13276,7 +13315,9 @@
           "tr": "güzel bir manzara"
         }
       ],
-      "family": [],
+      "family": [
+        "landscaping (n)"
+      ],
       "synonym": "scenery"
     },
     {
@@ -13466,7 +13507,9 @@
           "tr": "dağ deresi"
         }
       ],
-      "family": [],
+      "family": [
+        "stream (v)"
+      ],
       "synonym": "brook",
       "tip": "Mecazi olarak \"akış\" da demektir: a stream of visitors."
     },
@@ -13526,7 +13569,9 @@
           "tr": "Sahra Çölü"
         }
       ],
-      "family": [],
+      "family": [
+        "desertification (n)"
+      ],
       "tip": "desert /ˈdezət/ çöl; dessert /dɪˈzɜːt/ tatlı. Okunuşlarına dikkat!"
     },
     {
@@ -13588,7 +13633,10 @@
           "tr": "kıyıda"
         }
       ],
-      "family": [],
+      "family": [
+        "offshore (adj)",
+        "ashore (adv)"
+      ],
       "synonym": "coast"
     },
     {
@@ -13618,7 +13666,9 @@
           "tr": "dik yamaç"
         }
       ],
-      "family": []
+      "family": [
+        "sloping (adj)"
+      ]
     },
     {
       "id": "yd_sand",
@@ -13709,7 +13759,10 @@
           "tr": "su üstünde yüzmek"
         }
       ],
-      "family": [],
+      "family": [
+        "floating (adj)",
+        "float (n)"
+      ],
       "tip": "float batmadan yüzeyde kalmaktır; swim ise yüzme hareketi yapmaktır."
     },
     {
@@ -13771,7 +13824,9 @@
           "tr": "tohum ekmek"
         }
       ],
-      "family": []
+      "family": [
+        "seedling (n)"
+      ]
     },
     {
       "id": "yd_breed",
@@ -13898,7 +13953,9 @@
           "tr": "tehlikeli bölge"
         }
       ],
-      "family": [],
+      "family": [
+        "zoning (n)"
+      ],
       "synonym": "area"
     },
     {
@@ -13928,7 +13985,9 @@
           "tr": "doğal sınır"
         }
       ],
-      "family": [],
+      "family": [
+        "boundless (adj)"
+      ],
       "synonym": "border",
       "tip": "border genellikle ülkeler arası sınırdır; boundary her tür alanın sınırı olabilir."
     },
@@ -13988,7 +14047,9 @@
           "tr": "karbondioksit"
         }
       ],
-      "family": [],
+      "family": [
+        "decarbonise (v)"
+      ],
       "tip": "carbon footprint = karbon ayak izi."
     },
     {
@@ -14018,7 +14079,10 @@
           "tr": "fosil yakıtlar"
         }
       ],
-      "family": []
+      "family": [
+        "fuel (v)",
+        "refuel (v)"
+      ]
     },
     {
       "id": "yd_solar",
@@ -14327,7 +14391,9 @@
           "tr": "plastik atık"
         }
       ],
-      "family": []
+      "family": [
+        "plasticity (n)"
+      ]
     },
     {
       "id": "yd_heat",
@@ -14421,7 +14487,9 @@
           "tr": "sert kabuk"
         }
       ],
-      "family": []
+      "family": [
+        "shellfish (n)"
+      ]
     },
     {
       "id": "yd_grain",
@@ -14450,7 +14518,9 @@
           "tr": "bir pirinç tanesi"
         }
       ],
-      "family": [],
+      "family": [
+        "grainy (adj)"
+      ],
       "tip": "whole grain = tam tahıl."
     },
     {
@@ -14480,7 +14550,9 @@
           "tr": "demir cevheri"
         }
       ],
-      "family": [],
+      "family": [
+        "iron (adj)"
+      ],
       "tip": "Ayrıca \"ütü\" demektir; okunuşu /ˈaɪən/."
     },
     {
@@ -14510,7 +14582,9 @@
           "tr": "elektrikli araçlar"
         }
       ],
-      "family": [],
+      "family": [
+        "vehicular (adj)"
+      ],
       "tip": "h harfi okunmaz: /ˈviːəkl/."
     },
     {
@@ -14573,7 +14647,9 @@
           "tr": "çelik sanayisi"
         }
       ],
-      "family": []
+      "family": [
+        "steely (adj)"
+      ]
     },
     {
       "id": "yd_storage",
@@ -14666,7 +14742,9 @@
           "tr": "kuyruğunu sallamak"
         }
       ],
-      "family": []
+      "family": [
+        "tail (v)"
+      ]
     },
     {
       "id": "yd_harbour",
@@ -14695,7 +14773,9 @@
           "tr": "limanda"
         }
       ],
-      "family": [],
+      "family": [
+        "harbour (v)"
+      ],
       "synonym": "port",
       "tip": "Amerikan yazımı harbor; bu uygulama İngiliz yazımını kullanır."
     },
@@ -14819,7 +14899,9 @@
           "tr": "biyolojik çeşitlilik kaybı"
         }
       ],
-      "family": []
+      "family": [
+        "biodiverse (adj)"
+      ]
     },
     {
       "id": "yd_deforestation",
@@ -14880,7 +14962,9 @@
           "tr": "eriyen bir buzul"
         }
       ],
-      "family": []
+      "family": [
+        "glacial (adj)"
+      ]
     },
     {
       "id": "yd_mammal",
@@ -14909,7 +14993,9 @@
           "tr": "deniz memelileri"
         }
       ],
-      "family": []
+      "family": [
+        "mammalian (adj)"
+      ]
     },
     {
       "id": "yd_prey",
@@ -15035,7 +15121,9 @@
           "tr": "tarım ilacı kullanmak"
         }
       ],
-      "family": [],
+      "family": [
+        "pest (n)"
+      ],
       "tip": "pest = zararlı böcek + -cide = öldüren."
     },
     {
@@ -15328,7 +15416,9 @@
           "tr": "...in kenarında"
         }
       ],
-      "family": [],
+      "family": [
+        "edge (v)"
+      ],
       "tip": "on the edge of extinction = yok olmanın eşiğinde."
     },
     {
@@ -15518,7 +15608,9 @@
           "tr": "besin zinciri"
         }
       ],
-      "family": [],
+      "family": [
+        "chain (v)"
+      ],
       "tip": "supply chain = tedarik zinciri; ekonomi haberlerinde sık geçer."
     },
     {
@@ -15915,7 +16007,9 @@
           "tr": "…fikrini reddetmek"
         }
       ],
-      "family": [],
+      "family": [
+        "notional (adj)"
+      ],
       "synonym": "idea",
       "tip": "notion çoğu zaman 'the notion that…' kalıbıyla gelir."
     },
@@ -17773,7 +17867,10 @@
           "tr": "ses tonu"
         }
       ],
-      "family": [],
+      "family": [
+        "tonal (adj)",
+        "tone (v)"
+      ],
       "synonym": "manner"
     },
     {
@@ -18687,7 +18784,9 @@
           "tr": "büyük bir porsiyon/kısım"
         }
       ],
-      "family": [],
+      "family": [
+        "portion (v)"
+      ],
       "synonym": "part"
     },
     {
@@ -25267,7 +25366,9 @@
           "tr": "şekeri azaltmak"
         }
       ],
-      "family": [],
+      "family": [
+        "cut (n)"
+      ],
       "synonym": "reduce",
       "tip": "cut down on + isim: cut down on coffee."
     },
@@ -25298,7 +25399,10 @@
           "tr": "… -e ayak uydurmak"
         }
       ],
-      "family": [],
+      "family": [
+        "kept up (past)",
+        "upkeep (n)"
+      ],
       "synonym": "maintain",
       "tip": "keep up with + isim: keep up with technology."
     },
@@ -25329,7 +25433,9 @@
           "tr": "vakit kalmamak"
         }
       ],
-      "family": [],
+      "family": [
+        "ran out (past)"
+      ],
       "synonym": "use up",
       "tip": "run out of + isim: We ran out of time."
     },
@@ -25360,7 +25466,10 @@
           "tr": "bir spora başlamak"
         }
       ],
-      "family": [],
+      "family": [
+        "took up (past)",
+        "uptake (n)"
+      ],
       "synonym": "start"
     },
     {
@@ -25422,7 +25531,9 @@
           "tr": "sonunda daha fazla ödemek"
         }
       ],
-      "family": [],
+      "family": [
+        "ended up (past)"
+      ],
       "synonym": "finish up",
       "tip": "end up + -ing: We ended up waiting for hours."
     },
@@ -25453,7 +25564,9 @@
           "tr": "zor bir dönem geçirmek"
         }
       ],
-      "family": [],
+      "family": [
+        "went through (past)"
+      ],
       "synonym": "experience"
     },
     {
@@ -25483,7 +25596,9 @@
           "tr": "bir sorunla karşılaşmak"
         }
       ],
-      "family": [],
+      "family": [
+        "came across (past)"
+      ],
       "synonym": "find"
     },
     {
@@ -25513,7 +25628,10 @@
           "tr": "atıklardan kurtulmak"
         }
       ],
-      "family": [],
+      "family": [
+        "got rid of (past)",
+        "riddance (n)"
+      ],
       "synonym": "remove"
     },
     {
@@ -25543,7 +25661,9 @@
           "tr": "her yıl düzenlenmek"
         }
       ],
-      "family": [],
+      "family": [
+        "took place (past)"
+      ],
       "synonym": "happen",
       "tip": "Edilgen yapılmaz: was taken place değil, took place."
     },
@@ -25607,7 +25727,9 @@
           "tr": "tamamen yok olmak"
         }
       ],
-      "family": [],
+      "family": [
+        "died out (past)"
+      ],
       "synonym": "disappear"
     },
     {
@@ -25637,7 +25759,10 @@
           "tr": "süreci hızlandırmak"
         }
       ],
-      "family": [],
+      "family": [
+        "sped up (past)",
+        "speed (n)"
+      ],
       "synonym": "accelerate",
       "tip": "accelerate ys5u1'de geçti; speed up onun daha gündelik eş anlamlısıdır."
     },
@@ -25668,7 +25793,10 @@
           "tr": "ekonomiyi yavaşlatmak"
         }
       ],
-      "family": [],
+      "family": [
+        "slowdown (n)",
+        "slow (adj)"
+      ],
       "synonym": "decelerate"
     },
     {
@@ -25730,7 +25858,9 @@
           "tr": "kanıtlar … gösteriyor"
         }
       ],
-      "family": [],
+      "family": [
+        "point (n)"
+      ],
       "synonym": "indicate"
     },
     {
@@ -25792,7 +25922,9 @@
           "tr": "stresle başa çıkmak"
         }
       ],
-      "family": [],
+      "family": [
+        "coping (n)"
+      ],
       "synonym": "deal with",
       "tip": "cope with + isim: cope with pressure."
     }

@@ -86,6 +86,30 @@ const W = [
 
 const phaseOf = (w) => phases.find((p) => w >= p.weeks[0] && w <= p.weeks[1]);
 
+// Structured mocks of a week, so the app never has to parse the Turkish `mock` text.
+// kind: full (80/180, pack yds_full), half (40/90), section (a path mock node), check (level check, no mock).
+// nodeId: the path node that runs it, when it exists; id: the pack mock id.
+const sectionMocks = {
+  20: [{ kind: 'half', nodeId: 'ys6u6m', size: 40, minutes: 90 }],
+  26: [{ kind: 'section', nodeId: 'ys1u10m', size: 20, minutes: 45 }],
+  33: [{ kind: 'section', nodeId: 'ys2u15m', size: 30, minutes: 60 }],
+  32: [{ kind: 'half', nodeId: 'ys8u10m', size: 40, minutes: 90 }],
+  40: [{ kind: 'section', nodeId: 'ys3u10m', size: 40, minutes: 90 }],
+  41: [{ kind: 'section', nodeId: 'ys3u14m', size: 32, minutes: 80 }],
+};
+function mocksFor(week, text) {
+  if (!text) return [];
+  const out = [];
+  for (const m of text.matchAll(/yds_m(\d+)/g)) out.push({ kind: 'full', id: `yds_m${m[1]}`, size: 80, minutes: 180 });
+  const listed = sectionMocks[week] ?? [];
+  out.push(...listed);
+  if (/Yarım deneme/.test(text) && !listed.some((m) => m.kind === 'half')) {
+    out.push({ kind: 'half', nodeId: null, size: 40, minutes: 90 });
+  }
+  if (/Seviye kontrolü/.test(text)) out.push({ kind: 'check', size: 0, minutes: 0 });
+  return out;
+}
+
 // Path unit ids named in a week's text: "Genel s2 u1–u6" → s2u1..s2u6 (section 1 ids are u1..u12),
 // "ys2u7–u9" → ys2u7..ys2u9, "ys1u11" → ys1u11. Review weeks name no units.
 function unitIds(text) {
@@ -104,6 +128,10 @@ const parallel = {};
 for (let w = 11; w <= 20; w++) parallel[w] = [`ys5u${w - 10}`];
 const okuma = { 12: 'ys6u1', 13: 'ys6u2', 15: 'ys6u3', 16: 'ys6u4', 18: 'ys6u5', 20: 'ys6u6' };
 for (const [w, id] of Object.entries(okuma)) parallel[w].push(id);
+// F2 (docs/sinav/yds-faz2-icerik.md): ys7 one unit a week (two in week 34), ys8 in weeks 22–32 (its end mock is half mock 5, week 32).
+for (let w = 21; w <= 34; w++) parallel[w] = [`ys7u${w - 20}`];
+parallel[34].push('ys7u15');
+[22, 23, 24, 26, 27, 28, 29, 30, 31, 32].forEach((w, i) => parallel[w].push(`ys8u${i + 1}`));
 let total = 0;
 let readTotal = 0;
 const weeks = W.map(([week, units, grammar, qtype, mock]) => {
@@ -119,6 +147,7 @@ const weeks = W.map(([week, units, grammar, qtype, mock]) => {
     grammar,
     questionWork: qtype,
     mock: mock || null,
+    mocks: mocksFor(week, mock),
     newWords: t.newWords,
     wordsTotal: total,
     readingWordsPerDay: t.readPerDay,

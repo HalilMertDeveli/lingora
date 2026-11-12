@@ -105,6 +105,7 @@
       "grammar": "to be, isim çoğulu, a/an, this/that",
       "questionWork": "—",
       "mock": null,
+      "mocks": [],
       "newWords": 100,
       "wordsTotal": 100,
       "readingWordsPerDay": 300,
@@ -128,6 +129,7 @@
       "grammar": "present simple, there is/are, can, past simple giriş",
       "questionWork": "—",
       "mock": null,
+      "mocks": [],
       "newWords": 100,
       "wordsTotal": 200,
       "readingWordsPerDay": 300,
@@ -150,6 +152,7 @@
       "grammar": "present simple 3. tekil, sıklık zarfları, iyelik",
       "questionWork": "—",
       "mock": null,
+      "mocks": [],
       "newWords": 160,
       "wordsTotal": 360,
       "readingWordsPerDay": 300,
@@ -172,6 +175,7 @@
       "grammar": "edatlar (yer/zaman), emir, can/can't",
       "questionWork": "—",
       "mock": null,
+      "mocks": [],
       "newWords": 160,
       "wordsTotal": 520,
       "readingWordsPerDay": 300,
@@ -194,6 +198,7 @@
       "grammar": "past simple, past continuous",
       "questionWork": "—",
       "mock": null,
+      "mocks": [],
       "newWords": 160,
       "wordsTotal": 680,
       "readingWordsPerDay": 600,
@@ -216,6 +221,7 @@
       "grammar": "nesne zamirleri, karşılaştırma, much/many, going to/will",
       "questionWork": "—",
       "mock": null,
+      "mocks": [],
       "newWords": 160,
       "wordsTotal": 840,
       "readingWordsPerDay": 600,
@@ -236,6 +242,7 @@
       "grammar": "present perfect (ever/never, just/already/yet)",
       "questionWork": "—",
       "mock": null,
+      "mocks": [],
       "newWords": 160,
       "wordsTotal": 1000,
       "readingWordsPerDay": 600,
@@ -256,6 +263,7 @@
       "grammar": "should/must/have to, too/enough, first conditional, -ing/to",
       "questionWork": "Tadım: 5 şıklı dilbilgisi (A2)",
       "mock": null,
+      "mocks": [],
       "newWords": 160,
       "wordsTotal": 1160,
       "readingWordsPerDay": 600,
@@ -276,6 +284,7 @@
       "grammar": "who/which/that (giriş), resmî e-posta dili",
       "questionWork": "Tadım: kelime ve dilbilgisi (A2)",
       "mock": null,
+      "mocks": [],
       "newWords": 160,
       "wordsTotal": 1320,
       "readingWordsPerDay": 600,
@@ -291,6 +300,13 @@
       "grammar": "A1–A2 karışık",
       "questionWork": "Tadım: kısa paragraf (A2)",
       "mock": "Seviye kontrolü (genel kurs s4 sonu)",
+      "mocks": [
+        {
+          "kind": "check",
+          "size": 0,
+          "minutes": 0
+        }
+      ],
       "newWords": 160,
       "wordsTotal": 1480,
       "readingWordsPerDay": 600,
@@ -313,6 +329,7 @@
       "grammar": "present perfect continuous, used to, edilgen (giriş)",
       "questionWork": "Dilbilgisi (B1)",
       "mock": null,
+      "mocks": [],
       "newWords": 150,
       "wordsTotal": 1630,
       "readingWordsPerDay": 1000,
@@ -336,6 +353,7 @@
       "grammar": "edilgen, second conditional, reported speech, phrasal verbs",
       "questionWork": "Dilbilgisi, kelime",
       "mock": null,
+      "mocks": [],
       "newWords": 150,
       "wordsTotal": 1780,
       "readingWordsPerDay": 1000,
@@ -357,6 +375,7 @@
       "grammar": "özne–yüklem, isim öbeği, gönderim",
       "questionWork": "Dilbilgisi, kelime",
       "mock": null,
+      "mocks": [],
       "newWords": 150,
       "wordsTotal": 1930,
       "readingWordsPerDay": 1000,
@@ -380,6 +399,7 @@
       "grammar": "zaman çekirdeği, modal of deduction",
       "questionWork": "Dilbilgisi, cümle tamamlama (giriş)",
       "mock": null,
+      "mocks": [],
       "newWords": 150,
       "wordsTotal": 2080,
       "readingWordsPerDay": 1000,
@@ -403,6 +423,7 @@
       "grammar": "ek ile türetme, past perfect",
       "questionWork": "Kelime, cloze (giriş)",
       "mock": null,
+      "mocks": [],
       "newWords": 150,
       "wordsTotal": 2230,
       "readingWordsPerDay": 1000,
@@ -424,6 +445,7 @@
       "grammar": "bağlaç ve edat çekirdeği, sıfat cümleciği",
       "questionWork": "Cümle tamamlama, çeviri (giriş)",
       "mock": null,
+      "mocks": [],
       "newWords": 150,
       "wordsTotal": 2380,
       "readingWordsPerDay": 1000,
@@ -446,6 +468,7 @@
       "grammar": "zaman uyumu, so/such…that, wish",
       "questionWork": "Dilbilgisi, cloze",
       "mock": null,
+      "mocks": [],
       "newWords": 150,
       "wordsTotal": 2530,
       "readingWordsPerDay": 1000,
@@ -469,6 +492,7 @@
       "grammar": "kipler, question tags",
       "questionWork": "Dilbilgisi, cümle tamamlama",
       "mock": null,
+      "mocks": [],
       "newWords": 150,
       "wordsTotal": 2680,
       "readingWordsPerDay": 1000,
@@ -491,6 +515,7 @@
       "grammar": "edilgen, ettirgen, karşıtlık (yine de)",
       "questionWork": "Dilbilgisi, çeviri",
       "mock": null,
+      "mocks": [],
       "newWords": 150,
       "wordsTotal": 2830,
       "readingWordsPerDay": 1000,
@@ -511,6 +536,14 @@
       "grammar": "koşul türleri, wish/if only",
       "questionWork": "Karışık set (H11–20)",
       "mock": "Yarım deneme 1 (tanı, 40 soru / 90 dk)",
+      "mocks": [
+        {
+          "kind": "half",
+          "nodeId": "ys6u6m",
+          "size": 40,
+          "minutes": 90
+        }
+      ],
       "newWords": 150,
       "wordsTotal": 2980,
       "readingWordsPerDay": 1000,
@@ -524,10 +557,13 @@
       "unitIds": [
         "ys1u5"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u1"
+      ],
       "grammar": "relative clause, kısaltma",
       "questionWork": "Dilbilgisi, çeviri",
       "mock": null,
+      "mocks": [],
       "newWords": 145,
       "wordsTotal": 3125,
       "readingWordsPerDay": 1500,
@@ -543,10 +579,21 @@
         "s7u2",
         "ys1u6"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u2",
+        "ys8u1"
+      ],
       "grammar": "noun clause, mixed conditionals",
       "questionWork": "Dilbilgisi, cümle tamamlama",
       "mock": "Yarım deneme 2",
+      "mocks": [
+        {
+          "kind": "half",
+          "nodeId": null,
+          "size": 40,
+          "minutes": 90
+        }
+      ],
       "newWords": 145,
       "wordsTotal": 3270,
       "readingWordsPerDay": 1500,
@@ -561,10 +608,14 @@
         "s7u3",
         "ys1u7"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u3",
+        "ys8u2"
+      ],
       "grammar": "gerund/infinitive, should have",
       "questionWork": "Dilbilgisi, cloze",
       "mock": null,
+      "mocks": [],
       "newWords": 145,
       "wordsTotal": 3415,
       "readingWordsPerDay": 1500,
@@ -579,10 +630,21 @@
         "s7u4",
         "ys1u8"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u4",
+        "ys8u3"
+      ],
       "grammar": "bağlaç ve geçiş ifadeleri, haber dili",
       "questionWork": "Cümle tamamlama, paragraf tamamlama (giriş)",
       "mock": "Yarım deneme 3",
+      "mocks": [
+        {
+          "kind": "half",
+          "nodeId": null,
+          "size": 40,
+          "minutes": 90
+        }
+      ],
       "newWords": 145,
       "wordsTotal": 3560,
       "readingWordsPerDay": 1500,
@@ -597,10 +659,13 @@
         "s7u7",
         "ys1u9"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u5"
+      ],
       "grammar": "edat + eşdizim, causative",
       "questionWork": "Kelime, cloze",
       "mock": null,
+      "mocks": [],
       "newWords": 145,
       "wordsTotal": 3705,
       "readingWordsPerDay": 1500,
@@ -615,10 +680,21 @@
         "s7u8",
         "ys1u10"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u6",
+        "ys8u4"
+      ],
       "grammar": "quantifier, karşılaştırma, inversion",
       "questionWork": "Karışık set (ys1)",
       "mock": "Bölüm 1 denemesi (ys1 sonu)",
+      "mocks": [
+        {
+          "kind": "section",
+          "nodeId": "ys1u10m",
+          "size": 20,
+          "minutes": 45
+        }
+      ],
       "newWords": 145,
       "wordsTotal": 3850,
       "readingWordsPerDay": 1500,
@@ -633,10 +709,21 @@
         "ys2u1",
         "ys2u2"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u7",
+        "ys8u5"
+      ],
       "grammar": "akademik fiil kalıpları",
       "questionWork": "Kelime, cümle tamamlama",
       "mock": "Yarım deneme 4",
+      "mocks": [
+        {
+          "kind": "half",
+          "nodeId": null,
+          "size": 40,
+          "minutes": 90
+        }
+      ],
       "newWords": 145,
       "wordsTotal": 3995,
       "readingWordsPerDay": 1500,
@@ -651,10 +738,14 @@
         "ys2u3",
         "ys2u4"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u8",
+        "ys8u6"
+      ],
       "grammar": "phrasal verb, eşdizim",
       "questionWork": "Kelime, cloze",
       "mock": null,
+      "mocks": [],
       "newWords": 145,
       "wordsTotal": 4140,
       "readingWordsPerDay": 1500,
@@ -670,10 +761,14 @@
         "ys2u5",
         "ys2u6"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u9",
+        "ys8u7"
+      ],
       "grammar": "eş anlam, bağlamdan anlam, yazıda bağlantı",
       "questionWork": "Kelime, restatement (giriş)",
       "mock": null,
+      "mocks": [],
       "newWords": 145,
       "wordsTotal": 4285,
       "readingWordsPerDay": 1500,
@@ -689,10 +784,21 @@
         "ys2u8",
         "ys2u9"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u10",
+        "ys8u8"
+      ],
       "grammar": "alan terimleri",
       "questionWork": "Okuma (alan metinleri)",
       "mock": "Tam deneme 1 (yeni: yds_m9)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m9",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 145,
       "wordsTotal": 4430,
       "readingWordsPerDay": 1500,
@@ -708,10 +814,14 @@
         "ys2u10",
         "ys2u11"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u11",
+        "ys8u9"
+      ],
       "grammar": "ince anlam farkları",
       "questionWork": "Kelime, cloze",
       "mock": null,
+      "mocks": [],
       "newWords": 145,
       "wordsTotal": 4575,
       "readingWordsPerDay": 1500,
@@ -727,10 +837,21 @@
         "ys2u12",
         "ys2u13"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u12",
+        "ys8u10"
+      ],
       "grammar": "akademik ses",
       "questionWork": "Kelime, okuma",
       "mock": "Yarım deneme 5",
+      "mocks": [
+        {
+          "kind": "half",
+          "nodeId": "ys8u10m",
+          "size": 40,
+          "minutes": 90
+        }
+      ],
       "newWords": 145,
       "wordsTotal": 4720,
       "readingWordsPerDay": 1500,
@@ -745,10 +866,20 @@
         "ys2u14",
         "ys2u15"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u13"
+      ],
       "grammar": "zarf ve kalıplar",
       "questionWork": "Karışık set (ys2)",
       "mock": "Bölüm 2 denemesi (ys2 sonu)",
+      "mocks": [
+        {
+          "kind": "section",
+          "nodeId": "ys2u15m",
+          "size": 30,
+          "minutes": 60
+        }
+      ],
       "newWords": 145,
       "wordsTotal": 4865,
       "readingWordsPerDay": 1500,
@@ -760,10 +891,21 @@
       "phase": 3,
       "units": "Tekrar haftası: ys1–ys2 zayıf üniteler (analize göre)",
       "unitIds": [],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u14",
+        "ys7u15"
+      ],
       "grammar": "zayıf konular",
       "questionWork": "Karışık set (ys1–ys2)",
       "mock": "Tam deneme 2 (yeni: yds_m10)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m10",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 145,
       "wordsTotal": 5010,
       "readingWordsPerDay": 1500,
@@ -782,6 +924,7 @@
       "grammar": "—",
       "questionWork": "Cloze, cümle tamamlama (strateji)",
       "mock": null,
+      "mocks": [],
       "newWords": 125,
       "wordsTotal": 5135,
       "readingWordsPerDay": 1800,
@@ -800,6 +943,14 @@
       "grammar": "—",
       "questionWork": "Çeviri (iki yön)",
       "mock": "Tam deneme 3 (yeni: yds_m11)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m11",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 125,
       "wordsTotal": 5260,
       "readingWordsPerDay": 1800,
@@ -818,6 +969,14 @@
       "grammar": "—",
       "questionWork": "Okuma (strateji)",
       "mock": "Yarım deneme 6",
+      "mocks": [
+        {
+          "kind": "half",
+          "nodeId": null,
+          "size": 40,
+          "minutes": 90
+        }
+      ],
       "newWords": 125,
       "wordsTotal": 5385,
       "readingWordsPerDay": 1800,
@@ -836,6 +995,14 @@
       "grammar": "—",
       "questionWork": "Diyalog, restatement",
       "mock": "Tam deneme 4 (yeni: yds_m12)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m12",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 125,
       "wordsTotal": 5510,
       "readingWordsPerDay": 1800,
@@ -854,6 +1021,14 @@
       "grammar": "—",
       "questionWork": "Paragraf tamamlama, anlam bütünlüğü",
       "mock": "Yarım deneme 7",
+      "mocks": [
+        {
+          "kind": "half",
+          "nodeId": null,
+          "size": 40,
+          "minutes": 90
+        }
+      ],
       "newWords": 125,
       "wordsTotal": 5635,
       "readingWordsPerDay": 1800,
@@ -872,6 +1047,20 @@
       "grammar": "—",
       "questionWork": "Okuma (zamanlı)",
       "mock": "Tam deneme 5 (yeni: yds_m13) + Bölüm 3 denemesi",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m13",
+          "size": 80,
+          "minutes": 180
+        },
+        {
+          "kind": "section",
+          "nodeId": "ys3u10m",
+          "size": 40,
+          "minutes": 90
+        }
+      ],
       "newWords": 125,
       "wordsTotal": 5760,
       "readingWordsPerDay": 1800,
@@ -890,6 +1079,20 @@
       "grammar": "—",
       "questionWork": "Okuma (zamanlı)",
       "mock": "Yarım deneme 8 + okuma kampı denemesi",
+      "mocks": [
+        {
+          "kind": "section",
+          "nodeId": "ys3u14m",
+          "size": 32,
+          "minutes": 80
+        },
+        {
+          "kind": "half",
+          "nodeId": null,
+          "size": 40,
+          "minutes": 90
+        }
+      ],
       "newWords": 125,
       "wordsTotal": 5885,
       "readingWordsPerDay": 1800,
@@ -905,6 +1108,14 @@
       "grammar": "zayıf konular",
       "questionWork": "Karışık set (tüm tipler)",
       "mock": "Tam deneme 6 (yeni: yds_m14)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m14",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 125,
       "wordsTotal": 6010,
       "readingWordsPerDay": 1800,
@@ -922,6 +1133,14 @@
       "grammar": "—",
       "questionWork": "Karışık (tam dağılım)",
       "mock": "Tam deneme 7 (yeni: yds_m15)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m15",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 75,
       "wordsTotal": 6085,
       "readingWordsPerDay": 2000,
@@ -939,6 +1158,14 @@
       "grammar": "—",
       "questionWork": "Karışık (tam dağılım)",
       "mock": "Tam deneme 8 (yds_m1, ys4u2)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m1",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 75,
       "wordsTotal": 6160,
       "readingWordsPerDay": 2000,
@@ -956,6 +1183,14 @@
       "grammar": "—",
       "questionWork": "Bölüm süre çalışması",
       "mock": "Tam deneme 9 (yds_m2, ys4u3)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m2",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 75,
       "wordsTotal": 6235,
       "readingWordsPerDay": 2000,
@@ -973,6 +1208,14 @@
       "grammar": "—",
       "questionWork": "Hata defteri yoğun",
       "mock": "Tam deneme 10 (yds_m3, ys4u4)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m3",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 75,
       "wordsTotal": 6310,
       "readingWordsPerDay": 2000,
@@ -990,6 +1233,14 @@
       "grammar": "—",
       "questionWork": "Zayıf tip (analize göre)",
       "mock": "Tam deneme 11 (yds_m4, ys4u5)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m4",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 75,
       "wordsTotal": 6385,
       "readingWordsPerDay": 2000,
@@ -1007,6 +1258,20 @@
       "grammar": "—",
       "questionWork": "Zayıf tip",
       "mock": "Tam deneme 12 (yds_m5, ys4u6) ve 13 (yeni: yds_m16)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m5",
+          "size": 80,
+          "minutes": 180
+        },
+        {
+          "kind": "full",
+          "id": "yds_m16",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 75,
       "wordsTotal": 6460,
       "readingWordsPerDay": 2000,
@@ -1024,6 +1289,20 @@
       "grammar": "—",
       "questionWork": "Zayıf tip",
       "mock": "Tam deneme 14 (yds_m6, ys4u7) ve 15 (yeni: yds_m17)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m6",
+          "size": 80,
+          "minutes": 180
+        },
+        {
+          "kind": "full",
+          "id": "yds_m17",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 75,
       "wordsTotal": 6535,
       "readingWordsPerDay": 2000,
@@ -1041,6 +1320,20 @@
       "grammar": "—",
       "questionWork": "Zayıf tip",
       "mock": "Tam deneme 16 (yds_m7, ys4u8) ve 17 (yeni: yds_m18)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m7",
+          "size": 80,
+          "minutes": 180
+        },
+        {
+          "kind": "full",
+          "id": "yds_m18",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 75,
       "wordsTotal": 6610,
       "readingWordsPerDay": 2000,
@@ -1058,6 +1351,20 @@
       "grammar": "—",
       "questionWork": "Zayıf tip",
       "mock": "Tam deneme 18 (yds_m8, ys4u9) ve 19 (yeni: yds_m19)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m8",
+          "size": 80,
+          "minutes": 180
+        },
+        {
+          "kind": "full",
+          "id": "yds_m19",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 0,
       "wordsTotal": 6610,
       "readingWordsPerDay": 2000,
@@ -1073,6 +1380,14 @@
       "grammar": "—",
       "questionWork": "Hafif karışık set",
       "mock": "Tam deneme 20 (yeni: yds_m20, sınavdan 4–5 gün önce)",
+      "mocks": [
+        {
+          "kind": "full",
+          "id": "yds_m20",
+          "size": 80,
+          "minutes": 180
+        }
+      ],
       "newWords": 0,
       "wordsTotal": 6610,
       "readingWordsPerDay": 2000,
