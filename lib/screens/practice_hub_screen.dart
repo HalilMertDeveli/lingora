@@ -22,6 +22,7 @@ import 'pronunciation_screen.dart';
 import 'reading_screen.dart';
 import 'speed_match_screen.dart';
 import 'study/srs_review_screen.dart';
+import 'study/today_screen.dart';
 import '../study/review_queue.dart';
 
 /// "Pratik" tab: every practice tool in one place, whatever track is open.
@@ -53,7 +54,10 @@ class PracticeHubScreen extends ConsumerWidget {
     // They resolve in the open course (an exam path keeps its own).
     final mistakeQueue = course == null ? const <LessonItem>[] : mistakeItems(course, p.mistakesDue(today));
     final mistakes = mistakeQueue.length;
-    final cards = ref.watch(reviewQueueProvider(defaultNewWordsPerDay));
+    // A study plan sets the day's new words (the week's new words / 6).
+    final plan = ref.watch(todayPlanProvider);
+    final newPerDay = plan == null ? defaultNewWordsPerDay : newWordsPerDay(plan.week, plan.year);
+    final cards = ref.watch(reviewQueueProvider(newPerDay));
     final cardCount = cards == null ? 0 : cards.cards.length;
 
     void fullScreen(Widget screen) =>
@@ -70,6 +74,8 @@ class PracticeHubScreen extends ConsumerWidget {
             style: TextStyle(color: Brand.muted),
           ),
           const SizedBox(height: 16),
+          // The YDS daily plan; other tracks see it once a plan exists.
+          if (track.id == 'yds' || p.studyPlan != null) ...[const TodayCard(), const SizedBox(height: 16)],
           const SectionLabel('KONUŞ VE DİNLE'),
           const SizedBox(height: 8),
           _HubTile(
@@ -106,7 +112,7 @@ class PracticeHubScreen extends ConsumerWidget {
                 ? 'Kelime dersi bitirdikçe kartların gelir'
                 : 'Bugün $cardCount kart: aralıklı tekrar',
             badge: cardCount > 0 ? '$cardCount' : null,
-            onTap: () => openReviewCards(context),
+            onTap: () => openReviewCards(context, newPerDay: newPerDay),
           ),
           _HubTile(
             key: const Key('hub-mistakes'),

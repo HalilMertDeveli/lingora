@@ -8,6 +8,7 @@ import '../../study/review_queue.dart';
 import '../../theme.dart';
 import '../../ui/motion.dart';
 import '../lesson_screen.dart';
+import 'methods_screen.dart';
 
 /// Opens "Tekrar kartları" full screen.
 Future<void> openReviewCards(BuildContext context, {int newPerDay = defaultNewWordsPerDay}) =>
@@ -105,6 +106,13 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tekrar kartları'),
+        actions: [
+          IconButton(
+            tooltip: 'Aralıklı tekrar nedir?',
+            icon: const Icon(Icons.help_outline_rounded),
+            onPressed: () => openMethods(context, focus: 'spacing'),
+          ),
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(6),
           child: LinearProgressIndicator(

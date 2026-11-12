@@ -193,6 +193,8 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
 
   void _finish(int firstTry) {
     final n = widget.story.questions.length;
+    // The reading counter (Bugün › Okuma, weekly report).
+    ref.read(progressProvider.notifier).addReading(widget.story.wordCount);
     final reward = ref
         .read(progressProvider.notifier)
         .completeNode(
