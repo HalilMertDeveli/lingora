@@ -25,10 +25,11 @@ List<File> sectionFiles(String dir) {
     ..sort((a, b) => a.path.compareTo(b.path));
 }
 
-/// Node and unit ids of tr_en.json (section 1).
+/// Section, unit and node ids of tr_en.json (section 1).
 Set<String> baseIds() {
   final j = jsonDecode(File('assets/courses/tr_en.json').readAsStringSync()) as Map<String, dynamic>;
   return {
+    's1',
     for (final u in j['units'] as List) ...[
       (u as Map)['id'] as String,
       for (final n in u['nodes'] as List) (n as Map)['id'] as String,
@@ -65,22 +66,38 @@ List<String> validateSection(String fileName, Object? json, Set<String> seen) {
   void unique(String id) => check(seen.add(id), 'id "$id" kullanılmış');
 
   if (json is! Map<String, dynamic>) return ['$fileName: kök bir JSON nesnesi değil'];
-  final section = json['section'];
-  if (section is! Map<String, dynamic>) return ['$fileName: "section" nesnesi yok'];
+  final extension = json.containsKey('extends');
+  final int index;
+  if (extension) {
+    // NNx_slug.json: {"extends": "sNN", "units": [...]} adds units to the end
+    // of an earlier section (see loadSections). New units bring a guide.
+    final name = RegExp(r'^(\d\d)x_[a-z0-9_]+\.json$').firstMatch(fileName);
+    if (name == null) return ['$fileName: genişletme dosyasının adı NNx_slug.json olmalı'];
+    index = int.parse(name.group(1)!);
+    check(json['extends'] == 's$index', 'extends "s$index" olmalı');
+    check(json.keys.toSet().difference({'extends', 'units'}).isEmpty, 'yalnızca extends ve units olmalı');
+    check(seen.contains('s$index'), 'genişletilen bölüm s$index daha önce gelmeli');
+  } else {
+    final section = json['section'];
+    if (section is! Map<String, dynamic>) return ['$fileName: "section" nesnesi yok'];
 
-  final name = RegExp(r'^(\d\d)_[a-z0-9_]+\.json$').firstMatch(fileName);
-  check(name != null, 'dosya adı NN_slug.json biçiminde değil');
-  final index = section['index'];
-  check(index is int && index >= 2, 'section.index 2 veya büyük bir sayı olmalı');
-  if (name != null && index is int) {
-    check(int.parse(name.group(1)!) == index, 'dosya numarası index ile aynı değil');
+    final name = RegExp(r'^(\d\d)_[a-z0-9_]+\.json$').firstMatch(fileName);
+    check(name != null, 'dosya adı NN_slug.json biçiminde değil');
+    final i = section['index'];
+    check(i is int && i >= 2, 'section.index 2 veya büyük bir sayı olmalı');
+    if (name != null && i is int) {
+      check(int.parse(name.group(1)!) == i, 'dosya numarası index ile aynı değil');
+    }
+    index = i is int ? i : -1;
+    check(section['id'] == 's$index', 'section.id "s$index" olmalı');
+    check(str(section['title']), 'section.title yok');
+    check(cefrLevels.contains(section['cefr']), 'section.cefr A1–C2 olmalı');
+    check(str(section['description']), 'section.description yok');
+    check(strList(section['grammar']) != null, 'section.grammar boş olmayan bir metin listesi olmalı');
+    if (section['id'] is String) unique(section['id'] as String);
   }
-  check(section['id'] == 's$index', 'section.id "s$index" olmalı');
-  check(str(section['title']), 'section.title yok');
-  check(cefrLevels.contains(section['cefr']), 'section.cefr A1–C2 olmalı');
-  check(str(section['description']), 'section.description yok');
-  check(strList(section['grammar']) != null, 'section.grammar boş olmayan bir metin listesi olmalı');
-  if (section['id'] is String) unique(section['id'] as String);
+  // Section 1 (tr_en.json) numbers its units u1, u2, …
+  final unitPrefix = index == 1 ? 'u' : 's${index}u';
 
   final units = json['units'];
   if (units is! List || units.isEmpty) return [...problems, '$fileName: "units" boş'];
@@ -91,7 +108,14 @@ List<String> validateSection(String fileName, Object? json, Set<String> seen) {
     }
     final unitId = u['id'];
     final where = 'ünite ${unitId ?? ui}';
-    check(unitId is String && RegExp('^s${index}u\\d+\$').hasMatch(unitId), '$where: id s${index}uN olmalı');
+    check(
+      unitId is String && RegExp('^$unitPrefix\\d+\$').hasMatch(unitId),
+      '$where: id ${unitPrefix}N olmalı',
+    );
+    if (extension) {
+      check(u['theme'] is String, '$where: theme yok');
+      check(u['guide'] is String && (u['guide'] as String).trim().length > 200, '$where: Türkçe guide yok');
+    }
     if (unitId is String) unique(unitId);
     check(str(u['title']), '$where: title yok');
     check(u['description'] is String, '$where: description yok');
@@ -145,7 +169,13 @@ List<String> validateSection(String fileName, Object? json, Set<String> seen) {
   // The app must be able to read it.
   if (problems.isEmpty) {
     try {
-      Section.fromFile(json);
+      if (extension) {
+        for (final u in units) {
+          Unit.fromJson(u as Map<String, dynamic>);
+        }
+      } else {
+        Section.fromFile(json);
+      }
     } catch (e) {
       problems.add('$fileName: uygulama okuyamıyor: $e');
     }
@@ -554,6 +584,46 @@ void main() {
       expect(broken((j) => (j['section'] as Map).remove('cefr')), anyElement(contains('cefr')));
       expect(broken((_) {}, '3_ornek.json'), anyElement(contains('dosya adı')));
       expect(broken((_) {}, '03_ornek.json'), anyElement(contains('index ile aynı değil')));
+    });
+
+    /// The fixture's unit as an extension of [section] with unit id [unitId].
+    Map<String, dynamic> extension(String section, String unitId) {
+      final text = files.first.readAsStringSync().replaceAll('"s2u1', '"$unitId');
+      final u = (jsonDecode(text)['units'] as List).first as Map<String, dynamic>;
+      return {
+        'extends': section,
+        'units': [
+          {
+            ...u,
+            'theme': 'cay',
+            'guide': '## Rehber\n\n${'Bu ünitede dinleme ve konuşma çalışıyoruz. ' * 6}'.trim(),
+          },
+        ],
+      };
+    }
+
+    test('an extension file passes after its section, also for section 1', () {
+      final seen = baseIds();
+      expect(validateSection('01x_beceri.json', extension('s1', 'u13'), seen), isEmpty);
+      expect(validateSection('02_ornek.json', fixture(), seen), isEmpty);
+      expect(validateSection('02x_beceri.json', extension('s2', 's2u13'), seen), isEmpty);
+    });
+
+    test('catches a misnamed, misplaced or guideless extension', () {
+      List<String> ext(String name, Map<String, dynamic> j) =>
+          validateSection(name, j, baseIds()..addAll(['s2']));
+      expect(ext('02_beceri.json', extension('s2', 's2u13')), anyElement(contains('NNx_slug')));
+      expect(ext('03x_beceri.json', extension('s2', 's2u13')), anyElement(contains('extends "s3"')));
+      expect(ext('03x_beceri.json', extension('s3', 's3u13')), anyElement(contains('daha önce gelmeli')));
+      expect(ext('02x_beceri.json', extension('s2', 'u13')), anyElement(contains('id s2uN')));
+      expect(ext('02x_beceri.json', extension('s2', 'u12')), anyElement(contains('kullanılmış')));
+      final noGuide = extension('s2', 's2u13');
+      ((noGuide['units'] as List).first as Map).remove('guide');
+      expect(ext('02x_beceri.json', noGuide), anyElement(contains('guide yok')));
+      expect(
+        ext('02x_beceri.json', {...extension('s2', 's2u13'), 'section': {}}),
+        anyElement(contains('yalnızca extends')),
+      );
     });
 
     test('token check accepts any order and contractions', () {

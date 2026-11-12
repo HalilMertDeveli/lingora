@@ -56,6 +56,26 @@ Future<Course> _courseWithFixture() => loadCourse(
   'tr_en',
 );
 
+/// An extension file (`{"extends": ..., "units": [...]}`) holding the
+/// fixture's unit under the unit id [unitId].
+String _extension(String fixture, String section, String unitId) =>
+    jsonEncode({'extends': section, 'units': jsonDecode(fixture.replaceAll('"s2u1', '"$unitId'))['units']});
+
+/// Section 1 and the fixture section, each with one unit appended by an
+/// extension file.
+Future<Course> _courseWithExtensions() {
+  final fixture = _read(_fixture);
+  return loadCourse(
+    FakeBundle({
+      'assets/courses/tr_en.json': _read('assets/courses/tr_en.json'),
+      'assets/courses/tr_en/01x_beceri.json': _extension(fixture, 's1', 'u13'),
+      'assets/courses/tr_en/02_gunluk_hayat.json': fixture,
+      'assets/courses/tr_en/02x_beceri.json': _extension(fixture, 's2', 's2u2'),
+    }),
+    'tr_en',
+  );
+}
+
 Progress _done(Iterable<String> ids) => Progress(onboarded: true, completed: {for (final id in ids) id: 1});
 
 void main() {
@@ -109,6 +129,33 @@ void main() {
       expect(course.sections.map((s) => s.id), ['s1', 's2']);
     });
 
+    test('an extension file appends units to its section; the section exam stays put', () async {
+      final course = await _courseWithExtensions();
+      expect(course.sections.map((s) => s.id), ['s1', 's2']);
+      final (s1, s2) = (course.sections[0], course.sections[1]);
+      expect(s1.units.map((u) => u.id).skip(11), ['u12', 'u13']);
+      expect(s2.units.map((u) => u.id), ['s2u1', 's2u2']);
+      expect(course.units.map((u) => u.id).skip(11), ['u12', 'u13', 's2u1', 's2u2']);
+      // Passing the old exam keeps opening the next section.
+      expect((s1.exam?.id, s2.exam?.id), ('u12t', 's2u1t'));
+      expect((s1.title, s1.cefr, s2.index), ('Temeller', 'A1', 2));
+    });
+
+    test('an extension of an unknown section, or with used ids, is skipped', () async {
+      final unit = _read(_fixture);
+      final course = await loadCourse(
+        FakeBundle({
+          'assets/courses/tr_en.json': _read('assets/courses/tr_en.json'),
+          'assets/courses/tr_en/02_gunluk_hayat.json': unit,
+          'assets/courses/tr_en/02x_tekrar.json': _extension(unit, 's2', 's2u1'),
+          'assets/courses/tr_en/07x_yok.json': _extension(unit, 's7', 's7u13'),
+          'assets/courses/tr_en/02y_bozuk.json': '{"extends": "s2", "units": [',
+        }),
+        'tr_en',
+      );
+      expect(course.sections.map((s) => (s.id, s.units.length)), [('s1', 12), ('s2', 1)]);
+    });
+
     test('no asset manifest means no extra sections', () async {
       final course = await loadCourse(_NoManifest(_read('assets/courses/tr_en.json')), 'tr_en');
       expect(course.sections.map((s) => s.id), ['s1']);
@@ -136,6 +183,19 @@ void main() {
       // The chest of section 1 is still to open; the path focuses section 2.
       expect(activeNodes(course, passed).map((k, n) => MapEntry(k, n.id)), {'s1': 'u12c', 's2': 's2u1l1'});
       expect(currentNode(course, passed)?.id, 's2u1l1');
+    });
+
+    test('units added to a passed section do not lock the next one again', () async {
+      final extended = await _courseWithExtensions();
+      final (e1, e2) = (extended.sections[0], extended.sections[1]);
+      // A learner who finished section 1 before the extension shipped.
+      final before = _done([for (final n in s1.nodes) n.id]);
+      expect(sectionOpen(extended, e2, before), isTrue);
+      // The new units wait in section 1, the path still focuses section 2.
+      expect(activeNodes(extended, before)['s1']?.id, 'u13l1');
+      expect(currentNode(extended, before)?.id, 's2u1l1');
+      // Not passed yet: still locked.
+      expect(sectionOpen(extended, e2, _done([for (final n in e1.nodes.take(70)) n.id])), isFalse);
     });
 
     test('"Bölüme atla" or the placement test open a section and those before it', () {

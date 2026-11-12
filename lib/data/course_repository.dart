@@ -14,13 +14,31 @@ import 'progress.dart';
 Future<Course> loadCourse(AssetBundle bundle, String id) async {
   final raw = await bundle.loadString('assets/courses/$id.json');
   final course = Course.fromJson(jsonDecode(raw) as Map<String, dynamic>);
-  return course.withSections(await loadSections(bundle, id, after: course));
+  final sections = await loadSections(bundle, id, after: course);
+  if (listEquals(sections, course.sections)) return course;
+  return Course(
+    id: course.id,
+    title: course.title,
+    fromLang: course.fromLang,
+    learningLang: course.learningLang,
+    sections: sections,
+  );
 }
 
-/// Section files of course [id] found in the asset manifest, sorted by file
-/// name. A missing, unreadable or broken file (bad JSON, wrong shape, an id
-/// already used earlier in the path) is skipped and logged, never fatal.
+/// Every section of course [id]: the sections of [after] (the course file)
+/// followed by the section files found in the asset manifest, sorted by file
+/// name.
+///
+/// A file `NN_slug.json` is a new section. A file `NNx_slug.json` with
+/// `{"extends": "sN", "units": [...]}` appends units to the end of section sN,
+/// which must come earlier (it sorts after `NN_slug.json`); the section exam
+/// stays the last test of sN's own file (see [Section.extendedWith]).
+///
+/// A missing, unreadable or broken file (bad JSON, wrong shape, an id already
+/// used earlier in the path, an unknown section to extend) is skipped and
+/// logged, never fatal.
 Future<List<Section>> loadSections(AssetBundle bundle, String id, {Course? after}) async {
+  final sections = <Section>[...?after?.sections];
   final prefix = 'assets/courses/$id/';
   final List<String> paths;
   try {
@@ -28,31 +46,43 @@ Future<List<Section>> loadSections(AssetBundle bundle, String id, {Course? after
     paths = manifest.listAssets().where((p) => p.startsWith(prefix) && p.endsWith('.json')).toList()..sort();
   } catch (e) {
     debugPrint('Bölümler bulunamadı ($id): $e');
-    return const [];
+    return sections;
   }
   final unitIds = <String>{...?after?.units.map((u) => u.id)};
   final nodeIds = <String>{...?after?.allNodes.map((n) => n.id)};
   final sectionIds = <String>{...?after?.sections.map((s) => s.id)};
-  final sections = <Section>[];
   for (final path in paths) {
     try {
-      final section = Section.fromFile(jsonDecode(await bundle.loadString(path)) as Map<String, dynamic>);
-      final units = section.units.map((u) => u.id);
-      final nodes = section.nodes.map((n) => n.id);
-      final clash = [
-        if (sectionIds.contains(section.id)) section.id,
-        ...units.where(unitIds.contains),
-        ...nodes.where(nodeIds.contains),
-      ];
-      if (section.units.isEmpty) throw const FormatException('ünite yok');
+      final json = jsonDecode(await bundle.loadString(path)) as Map<String, dynamic>;
+      final target = json['extends'] as String?;
+      final List<Unit> fileUnits;
+      Section? section;
+      var at = -1;
+      if (target != null) {
+        at = sections.indexWhere((s) => s.id == target);
+        if (at < 0) throw FormatException('genişletilecek bölüm yok: $target');
+        fileUnits = (json['units'] as List).map((u) => Unit.fromJson(u as Map<String, dynamic>)).toList();
+      } else {
+        section = Section.fromFile(json);
+        if (sectionIds.contains(section.id)) throw FormatException('tekrarlanan id: ${section.id}');
+        fileUnits = section.units;
+      }
+      final units = fileUnits.map((u) => u.id);
+      final nodes = [for (final u in fileUnits) ...u.nodes.map((n) => n.id)];
+      final clash = [...units.where(unitIds.contains), ...nodes.where(nodeIds.contains)];
+      if (fileUnits.isEmpty) throw const FormatException('ünite yok');
       if (clash.isNotEmpty) throw FormatException('tekrarlanan id: ${clash.take(5).join(', ')}');
       if (units.toSet().length != units.length || nodes.toSet().length != nodes.length) {
         throw const FormatException('dosya içinde tekrarlanan id');
       }
-      sectionIds.add(section.id);
       unitIds.addAll(units);
       nodeIds.addAll(nodes);
-      sections.add(section);
+      if (section != null) {
+        sectionIds.add(section.id);
+        sections.add(section);
+      } else {
+        sections[at] = sections[at].extendedWith(fileUnits);
+      }
     } catch (e) {
       debugPrint('Bölüm atlandı ($path): $e');
     }
