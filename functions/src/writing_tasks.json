@@ -1,4 +1,188 @@
 {
+  "s1u13l4w": {
+    "level": "A1",
+    "task": "Yüzme kulübünün formundaki \"About me\" kutusuna kendini tanıtan kısa bir metin yaz: adın, telefonun ve ne zaman yüzmek istediğin olsun.",
+    "minWords": 20,
+    "maxWords": 40,
+    "checklist": [
+      "Adını ve soyadını My name is ile yazdın",
+      "Telefon numaranı yazdın",
+      "Ne zaman yüzmek istediğini yazdın: on Saturdays"
+    ],
+    "focus": [
+      "be",
+      "article"
+    ],
+    "rubric": "Can-do: I can fill in the \"About me\" box of a simple form with my name, phone number and a short wish. At A1 the task is a success if the learner gives their full name, a phone number and when they want to swim, in short complete sentences; simple links like and are enough. Look kindly at be (My name is / I'm, not I'm name is) and the article a before a job (I'm a student); other small slips should not lower the score much."
+  },
+  "s1u14l4w": {
+    "level": "A1",
+    "task": "Kerem'e markete gitmesi için kısa bir alışveriş notu yaz: ne alacağını, ne almayacağını ve parayı yaz.",
+    "minWords": 20,
+    "maxWords": 40,
+    "checklist": [
+      "Please ile kibar bir emir yazdın",
+      "Sayıdan sonra çoğul kullandın: six apples",
+      "a/an ya da some'ı doğru kullandın: some bread, an orange"
+    ],
+    "focus": [
+      "article"
+    ],
+    "rubric": "Can-do: I can write a short shopping note with polite instructions. At A1 the task is a success if the note says what to buy, what not to buy and gives the money, using simple imperatives with please. The main error to watch is articles and quantity words (an apple, some bread, some milk) together with the plural after numbers; be kind about spelling and small slips."
+  },
+  "s1u15l4w": {
+    "level": "A1",
+    "task": "Sam'e pazar günü piknik için kısa bir mesaj yaz: gün, saat ve yer olsun.",
+    "minWords": 20,
+    "maxWords": 40,
+    "checklist": [
+      "Hi ile başladın",
+      "Günü, saati ve yeri yazdın: on Sunday, at two, in the park",
+      "Bir soruyla bitirdin: Can you come to the picnic?"
+    ],
+    "focus": [
+      "word_order"
+    ],
+    "rubric": "Can-do: I can write a short message to a friend to arrange a meeting. At A1 the task is a success if the message greets the friend and gives the day, the time and the place, with one simple question; and is enough to link ideas. The main error to watch is word order in questions (Are you free...?, What time can you come?, not Where we meet?); be kind about prepositions of time and small slips."
+  },
+  "s2u13l4w": {
+    "level": "A1",
+    "task": "Annenin ya da bir yakınının bir gününü anlatan kısa bir paragraf yaz: kalkma saati, işi ve akşamı olsun.",
+    "minWords": 30,
+    "maxWords": 50,
+    "checklist": [
+      "she ile fiile -s ekledin: gets, drinks, works",
+      "always ve usually'yi fiilden önce yazdın",
+      "Saatleri at ile yazdın: at six, at four"
+    ],
+    "focus": [
+      "word_order"
+    ],
+    "rubric": "Can-do: I can write a short paragraph about the daily routine of a family member. At A1 the task is a success if the paragraph tells the day in order (morning, work, evening) with times, linked with and, but or then. The main error to watch is word order with frequency adverbs (She always drinks, not She drinks always); also note the -s with she, but be kind about other small slips."
+  },
+  "s2u14l4w": {
+    "level": "A1",
+    "task": "Deniz'e sinemaya nasıl geleceğini anlatan kısa bir mesaj yaz: otobüs, yön, sinemanın yeri ve buluşma saati olsun.",
+    "minWords": 30,
+    "maxWords": 50,
+    "checklist": [
+      "Her adımı emir cümlesiyle yazdın: Take, Turn, Walk",
+      "Sinemanın yerini opposite ve next to ile anlattın",
+      "Saati yazıp See you ile bitirdin"
+    ],
+    "focus": [
+      "article"
+    ],
+    "rubric": "Can-do: I can write a short message that gives simple directions to a place. At A1 the task is a success if the friend can follow the steps: how to come, where to turn and where the place is, using imperatives and linking with and or then. The main error to watch is articles (the library, a bank, go home without the); be kind about other small slips."
+  },
+  "s2u15l4w": {
+    "level": "A1",
+    "task": "Deniz'i pazar günü pikniğe davet eden kısa bir mesaj yaz: gün, saat, yer ve getirmesi gereken şey olsun.",
+    "minWords": 30,
+    "maxWords": 50,
+    "checklist": [
+      "Hi ile başladın, Love ile bitirdin",
+      "Would you like to come ile davet ettin",
+      "Günü, saati ve yeri yazdın: Sunday, eleven, park"
+    ],
+    "focus": [
+      "be"
+    ],
+    "rubric": "Can-do: I can write a short, friendly invitation message. At A1 the task is a success if the message invites the friend and gives the day, the time, the place and what to bring, with a friendly start and end. The main error to watch is be used before other verbs (I am agree, I am come); also the plain verb after can and would like to; be kind about other small slips."
+  },
+  "s3u13l4w": {
+    "level": "A2",
+    "task": "Büyükannene bir kartpostal yaz: dün nereye gittin, sırayla neler yaptın ve gün nasıldı?",
+    "minWords": 50,
+    "maxWords": 80,
+    "checklist": [
+      "Dear ile başlayıp Love ile bitirdin",
+      "Olayları first, then, after that ile sıraladın",
+      "Fiilleri geçmiş zamanda yazdın (went, took, ate, saw)"
+    ],
+    "focus": [
+      "tense"
+    ],
+    "rubric": "Can-do: write a short postcard of 6–8 sentences about a past day out, telling events in order. Task success at A2 means the learner names where they went and with whom, gives three or four events in order with simple sequencers (first, then, after that, in the end), and adds a greeting and a closing. Errors that matter are past-tense forms, especially irregular verbs (went, took, ate, saw rather than goed or taked); be kind about small slips with he/she or spelling."
+  },
+  "s3u14l4w": {
+    "level": "A2",
+    "task": "Ankara'daki arkadaşın Deniz'e kısa bir mesaj yaz: trenin iptal edildi; yeni planı, varış saatini ve bir ricanı ekle.",
+    "minWords": 50,
+    "maxWords": 80,
+    "checklist": [
+      "Kötü haberi ilk cümlede verdin (our train is cancelled)",
+      "Yeni planı ve varış saatini yazdın",
+      "Arkadaşından kibar bir ricada bulundun (Can you meet us…?)"
+    ],
+    "focus": [
+      "word_order",
+      "tense"
+    ],
+    "rubric": "Can-do: write a short message to a friend about a change of travel plans. Task success at A2 means the learner gives the bad news first, then the new plan with a time, and ends with a simple request or suggestion, linked with so or and. Errors that matter are question word order (Can you meet us…? rather than You can meet us?) and future forms (going to, will); be kind about small article or preposition slips."
+  },
+  "s3u15l4w": {
+    "level": "A2",
+    "task": "Sam'in e-postasına kısa bir cevap yaz: bir şey için teşekkür et, geç yazdığın için özür dile ve nedenini anlat.",
+    "minWords": 50,
+    "maxWords": 80,
+    "checklist": [
+      "Önce bir şey için teşekkür ettin (Thank you for…)",
+      "Geç yazdığın için özür diledin (I'm sorry I didn't…)",
+      "Nedeni because ya da so ile açıkladın"
+    ],
+    "focus": [
+      "tense"
+    ],
+    "rubric": "Can-do: write a short email to a friend to say thank you, apologise and give a reason. Task success at A2 means the learner thanks the friend for something, says sorry for a delay, explains why with because or so, and closes in a friendly way. Errors that matter are past-tense forms for finished events (didn't write, started, was cancelled); be kind about because/so mix-ups and small slips such as thank you for to help."
+  },
+  "s4u13l4w": {
+    "level": "A2",
+    "task": "Patronun Selin'e kısa bir mazeret mesajı yaz: neden işe gelemediğini, ne zamandan beri hasta olduğunu ve işlerin nasıl yürüyeceğini anlat.",
+    "minWords": 60,
+    "maxWords": 90,
+    "checklist": [
+      "Bugün işe gelemediğini ilk cümlede söyledin",
+      "Rahatsızlığını ve ne zamandan beri sürdüğünü yazdın (since Sunday)",
+      "Bir çözüm önerip Thanks ile bitirdin"
+    ],
+    "focus": [
+      "article",
+      "tense"
+    ],
+    "rubric": "Can-do: write a short, clear message to a manager to say you are ill and cannot come to work. Task success at A2 means the learner states the situation first, gives the illness and how long it has lasted, says what the doctor advises and offers a simple solution for the work, with a short polite closing. Errors that matter are articles with illnesses (a headache, a temperature) and present perfect with since/for (I've had … since Sunday); be kind about other small slips."
+  },
+  "s4u14l4w": {
+    "level": "A2",
+    "task": "Bir online mağazaya kısa bir şikâyet e-postası yaz: ne sipariş ettin, sorun ne, daha önce ne denedin ve ne istiyorsun?",
+    "minWords": 60,
+    "maxWords": 90,
+    "checklist": [
+      "Dear Sir or Madam ile başlayıp Best regards ile bitirdin",
+      "Ne sipariş ettiğini ve sorunun ne olduğunu yazdın",
+      "Ne istediğini kibar bir ricayla söyledin (Could you please…?)"
+    ],
+    "focus": [
+      "tense"
+    ],
+    "rubric": "Can-do: write a short, polite complaint email to a company about a faulty product. Task success at A2 means the learner says what they ordered and when, describes the problem, says what they have already tried, and makes one clear polite request, with a formal opening and closing. Errors that matter are tense forms: past simple for the order, present perfect for what they have already done, and doesn't work rather than isn't work; be kind about small article or spelling slips."
+  },
+  "s4u15l4w": {
+    "level": "A2",
+    "task": "Şirket sitesi için kısa bir profil yaz: işin, ne zamandan beri çalıştığın, sorumlulukların, işini neden sevdiğin ve bir hedefin olsun.",
+    "minWords": 60,
+    "maxWords": 90,
+    "checklist": [
+      "Mesleğini a/an ile yazdın (a designer)",
+      "Ne zamandan beri çalıştığını yazdın (for six months)",
+      "Bir hedefi In the future ile ekledin"
+    ],
+    "focus": [
+      "article",
+      "tense"
+    ],
+    "rubric": "Can-do: write a short work profile for a company website. Task success at A2 means the learner says what their job is and where, how long they have worked there, one or two responsibilities, why they like the job and one future goal, linked with and, because and but. Errors that matter are the article before a job (a designer, an engineer) and present perfect with for (I've worked here for six months); be kind about slips such as responsible to design or enjoy to work."
+  },
   "s5u13l4w": {
     "level": "B1",
     "task": "Unutamadığın bir günü yaklaşık 120 kelimeyle anlat: ne oldu, nerede ve kiminleydin, neler hissettin ve bugün o güne nasıl bakıyorsun? Geçmiş zaman ile present perfect'i doğru yerde kullan ve en az üç duygu sözcüğü ekle.",

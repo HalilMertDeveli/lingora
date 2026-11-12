@@ -85,11 +85,14 @@ PathNode? skillsTest(Section section) => section.units.lastOrNull?.nodes
     .lastOrNull;
 
 /// Whether [section] is "tamamlandı" (curriculum §4): its skills test is
-/// passed and, when its last unit has a writing task, that lesson is done
-/// too. Opening the next section does not depend on it.
+/// passed and, from B1 on, the writing task of its last unit is done too.
+/// A1–A2 writing tasks are practice only (curriculum §2 "Faz 3"), so a
+/// section completed before they shipped stays completed. Opening the next
+/// section does not depend on it.
 bool sectionCompleted(Section section, Progress p) {
   final test = skillsTest(section);
   if (test == null || !p.isDone(test.id)) return false;
+  if (section.cefr == 'A1' || section.cefr == 'A2') return true;
   final writing = section.units.last.nodes.where(
     (n) => n.type == NodeType.lesson && n.exercises.any((e) => e.type == ExerciseType.write),
   );

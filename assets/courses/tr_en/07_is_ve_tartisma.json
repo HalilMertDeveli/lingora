@@ -370,6 +370,7 @@
           "title": "Kaçan mülakat",
           "description": "Deniz en iyi adayın neden geç kaldığını anlatıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1183,6 +1184,7 @@
           "title": "Ya Londra'da kalsaydım?",
           "description": "Sam ve Elif hayatlarını değiştiren kararları konuşuyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1956,6 +1958,7 @@
           "title": "Yanlış fatura",
           "description": "Elif'in kafesine yanlış bir fatura gidiyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -2734,6 +2737,7 @@
           "title": "Büyük duyuru",
           "description": "Mia, Deniz'in şirketiyle ilgili haberi televizyonda duyuyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -3518,6 +3522,7 @@
           "title": "Gergin toplantı",
           "description": "Deniz, müşteriyle yaptığı zor toplantıyı Kerem'e anlatıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -4318,6 +4323,7 @@
           "title": "Tutanak",
           "description": "Sam, Deniz'in İngilizce toplantı tutanağını kontrol ediyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -5081,6 +5087,7 @@
           "title": "Yeni şube, yeni dert",
           "description": "Elif Kadıköy'deki ikinci şubeyi yeniletiyor, Kerem akıl veriyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -5804,6 +5811,7 @@
           "title": "Ödül gecesi",
           "description": "Deniz bir ödül töreninde konuşma yapıyor, Mia ve Sam izliyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -6598,6 +6606,7 @@
           "title": "Çıkış tarihi",
           "description": "Deniz'in ekibi yeni uygulamanın çıkışını tartışıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -7368,6 +7377,7 @@
           "title": "Arabasız sokak",
           "description": "Elif, Sam ve Mia sokağın yayalaştırılmasını tartışıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -8145,6 +8155,7 @@
           "title": "Çekirdek pazarlığı",
           "description": "Elif yeni şube için kahve tedarikçisiyle pazarlık ediyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -8922,6 +8933,7 @@
           "title": "Sistem çöktü",
           "description": "Deniz'in şirketinde takip sistemi çöküyor, Kerem yardıma geliyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",

@@ -7,7 +7,7 @@
       "description": "Şikâyetini anlatmak, randevu almak ve ilaç talimatını anlamak",
       "color": "0xFF14A098",
       "theme": "saglik",
-      "guide": "## Bu ünitede yapabileceklerin\n- Telefonla doktordan randevu alabilirsin.\n- Belirtilerini ve ne zamandır sürdüğünü anlatabilirsin.\n- Doktorun ve eczacının talimatlarını (kaç tablet, ne zaman) anlayabilirsin.\n- İşe ya da okula kısa bir mazeret mesajı yazabilirsin.\n\n## Strateji\n- Dinlerken sayılara odaklan: **kaç tablet**, **günde kaç kez**, **saat kaçta**.\n- Prospektüste önce başlıkları oku (What is it for? How should you take it?), sonra aradığın bilgiye git.\n- Belirti anlatırken kalıp kullan: **I have a…**, **I feel…**, **since / for**.\n- Mazeret mesajında üç şey yaz: gelemiyorsun, neden, işler ne olacak.\n\n## Model metin\n> Hi Selin, unfortunately I can't come to work today. I've had a bad headache since Sunday. The doctor says I should stay at home for three days. Mia can send you the meeting notes. Thanks, Elif\n\nKısa ve net: önce durum, sonra sebep, sonra çözüm. Patrona yazarken **Thanks** ya da **Best regards** yeterli.\n\n## Türklerin sık hatası\n- ❌ I have headache. ✅ I have **a** headache. (Ağrılar çoğunlukla **a** ile: a cold, a sore throat.)\n- ❌ I'm ill since two days. ✅ I've **been** ill **for** two days. (Süre **for**, başlangıç noktası **since**; \"should\" sonrası **to** yok: you should rest.)",
+      "guide": "## Bu ünitede yapabileceklerin\n- Telefonla doktordan randevu alabilirsin.\n- Belirtilerini ve ne zamandır sürdüğünü anlatabilirsin.\n- Doktorun ve eczacının talimatlarını (kaç tablet, ne zaman) anlayabilirsin.\n- İşe ya da okula kısa bir mazeret mesajı yazabilirsin.\n\n## Strateji\n- Dinlerken sayılara odaklan: **kaç tablet**, **günde kaç kez**, **saat kaçta**.\n- Prospektüste önce başlıkları oku (What is it for? How should you take it?), sonra aradığın bilgiye git.\n- Belirti anlatırken kalıp kullan: **I have a…**, **I feel…**, **since / for**.\n- Mazeret mesajında üç şey yaz: gelemiyorsun, neden, işler ne olacak.\n\n## Model metin\n> Hi Selin, unfortunately I can't come to work today. I've had a bad headache since Sunday, and now I have a temperature too. I went to the doctor this morning. The doctor says I should stay at home for three days. I'm really sorry about the meeting with Mr Brooks. I hope to be back on Thursday. Mia can send you the meeting notes. Thanks, Elif\n\nKısa ve net: önce durum, sonra sebep, sonra çözüm. Patrona yazarken **Thanks** ya da **Best regards** yeterli.\n\n## Türklerin sık hatası\n- ❌ I have headache. ✅ I have **a** headache. (Ağrılar çoğunlukla **a** ile: a cold, a sore throat.)\n- ❌ I'm ill since two days. ✅ I've **been** ill **for** two days. (Süre **for**, başlangıç noktası **since**; \"should\" sonrası **to** yok: you should rest.)",
       "nodes": [
         {
           "id": "s4u13l1",
@@ -78,17 +78,16 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "The doctor can see you at twenty past three.",
-              "answers": [
-                "The doctor can see you at twenty past three.",
-                "The doctor can see you at 3:20."
-              ]
+              "translation": "Doktor sizi üçü yirmi geçe görebilir.",
+              "rate": 0.85
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "I've had a headache since Monday.",
-              "translation": "Pazartesiden beri başım ağrıyor."
+              "translation": "Pazartesiden beri başım ağrıyor.",
+              "rate": 0.85
             },
             {
               "type": "match",
@@ -278,6 +277,7 @@
           "title": "Kötü bir soğuk algınlığı",
           "description": "Elif hastalanıyor, doktora ve eczaneye gidiyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -471,9 +471,10 @@
           "description": "Randevu al, belirtilerini anlat, doktora soru sor",
           "exercises": [
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Hello, I'd like to see a doctor today, please.",
-              "translation": "Merhaba, bugün bir doktora görünmek istiyorum lütfen."
+              "translation": "Merhaba, bugün bir doktora görünmek istiyorum lütfen.",
+              "rate": 0.85
             },
             {
               "type": "speak",
@@ -789,6 +790,23 @@
                   "come to work"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Patronun Selin'e kısa bir mazeret mesajı yaz: neden işe gelemediğini, ne zamandan beri hasta olduğunu ve işlerin nasıl yürüyeceğini anlat.",
+              "model": "Hi Selin, unfortunately I can't come to work today. I've had a bad headache since Sunday, and now I have a temperature too. I went to the doctor this morning. The doctor says I should stay at home for three days. I'm really sorry about the meeting with Mr Brooks. I hope to be back on Thursday. Mia can send you the meeting notes. Thanks, Elif",
+              "minWords": 60,
+              "maxWords": 90,
+              "checklist": [
+                "Bugün işe gelemediğini ilk cümlede söyledin",
+                "Rahatsızlığını ve ne zamandan beri sürdüğünü yazdın (since Sunday)",
+                "Bir çözüm önerip Thanks ile bitirdin"
+              ],
+              "focus": [
+                "article",
+                "tense"
+              ],
+              "taskId": "s4u13l4w"
             }
           ]
         },
@@ -814,7 +832,7 @@
       "description": "Bozuk bir ürünü ya da kötü bir hizmeti anlatıp kibarca çözüm istemek",
       "color": "0xFFF2994A",
       "theme": "tamir",
-      "guide": "## Bu ünitede yapabileceklerin\n- Bir ürünün ya da hizmetin sorununu açıklayabilirsin.\n- Daha önce ne denediğini söyleyebilirsin (I've already tried…).\n- Kibarca çözüm isteyebilirsin: para iadesi, değişim, teknisyen.\n- Kısa bir şikâyet e-postası yazabilirsin.\n\n## Strateji\n- Müşteri hizmetlerini dinlerken numaraları (sipariş no, gün) not al; görevli genelde bunları tekrar eder.\n- İade politikasında **can / can't / within** kelimelerini ara: neyi, ne zamana kadar iade edebilirsin?\n- Şikâyet ederken sırayla git: sorun → ne denedin → ne istiyorsun.\n- Emir yerine soru kullan: **Could you…?** her zaman daha kibar.\n\n## Model metin\n> Dear Sir or Madam, I ordered an office chair two weeks ago. The chair arrived yesterday, but one leg is broken. I've already called customer service twice, but nobody answered. Could you please send me a new chair? Best regards, Elif\n\nAdını bilmediğin bir şirkete **Dear Sir or Madam** ile başla, **Best regards** ile bitir. Kızgın olsan da kibar kal.\n\n## Türklerin sık hatası\n- ❌ It isn't work. / It not working. ✅ It **doesn't work.** / It **isn't working.**\n- ❌ I already tried it yesterday twice, send me new! ✅ I'**ve already tried** it twice. **Could you** send me a new one?",
+      "guide": "## Bu ünitede yapabileceklerin\n- Bir ürünün ya da hizmetin sorununu açıklayabilirsin.\n- Daha önce ne denediğini söyleyebilirsin (I've already tried…).\n- Kibarca çözüm isteyebilirsin: para iadesi, değişim, teknisyen.\n- Kısa bir şikâyet e-postası yazabilirsin.\n\n## Strateji\n- Müşteri hizmetlerini dinlerken numaraları (sipariş no, gün) not al; görevli genelde bunları tekrar eder.\n- İade politikasında **can / can't / within** kelimelerini ara: neyi, ne zamana kadar iade edebilirsin?\n- Şikâyet ederken sırayla git: sorun → ne denedin → ne istiyorsun.\n- Emir yerine soru kullan: **Could you…?** her zaman daha kibar.\n\n## Model metin\n> Dear Sir or Madam,\n>\n> I ordered an office chair two weeks ago. My order number is 4720. The chair arrived yesterday, but one leg is broken. I work at home, so I really need it. I've already called customer service twice, but nobody answered. I've also sent two emails, but I haven't received an answer yet. Could you please send me a new chair?\n>\n> Best regards, Elif\n\nAdını bilmediğin bir şirkete **Dear Sir or Madam** ile başla, **Best regards** ile bitir. Kızgın olsan da kibar kal.\n\n## Türklerin sık hatası\n- ❌ It isn't work. / It not working. ✅ It **doesn't work.** / It **isn't working.**\n- ❌ I already tried it yesterday twice, send me new! ✅ I'**ve already tried** it twice. **Could you** send me a new one?",
       "nodes": [
         {
           "id": "s4u14l1",
@@ -879,12 +897,10 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "You can return it within thirty days.",
-              "answers": [
-                "You can return it within thirty days.",
-                "You can return it within 30 days."
-              ]
+              "translation": "Otuz gün içinde iade edebilirsiniz.",
+              "rate": 0.85
             },
             {
               "type": "listen",
@@ -894,9 +910,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "I bought it two weeks ago and it doesn't work.",
-              "translation": "İki hafta önce aldım ve çalışmıyor."
+              "translation": "İki hafta önce aldım ve çalışmıyor.",
+              "rate": 0.85
             },
             {
               "type": "match",
@@ -1063,6 +1080,7 @@
           "title": "Sessiz kulaklık",
           "description": "Elif'in yeni kulaklığı çalışmıyor; müşteri hizmetlerini arıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1249,9 +1267,10 @@
           "description": "İnternet şirketini ara, sorunu anlat, kibarca çözüm iste",
           "exercises": [
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "Hello, I'm calling about my internet connection.",
-              "translation": "Merhaba, internet bağlantım hakkında arıyorum."
+              "translation": "Merhaba, internet bağlantım hakkında arıyorum.",
+              "rate": 0.85
             },
             {
               "type": "speak",
@@ -1573,6 +1592,22 @@
                   "order"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Bir online mağazaya kısa bir şikâyet e-postası yaz: ne sipariş ettin, sorun ne, daha önce ne denedin ve ne istiyorsun?",
+              "model": "Dear Sir or Madam,\n\nI ordered an office chair two weeks ago. My order number is 4720. The chair arrived yesterday, but one leg is broken. I work at home, so I really need it. I've already called customer service twice, but nobody answered. I've also sent two emails, but I haven't received an answer yet. Could you please send me a new chair?\n\nBest regards, Elif",
+              "minWords": 60,
+              "maxWords": 90,
+              "checklist": [
+                "Dear Sir or Madam ile başlayıp Best regards ile bitirdin",
+                "Ne sipariş ettiğini ve sorunun ne olduğunu yazdın",
+                "Ne istediğini kibar bir ricayla söyledin (Could you please…?)"
+              ],
+              "focus": [
+                "tense"
+              ],
+              "taskId": "s4u14l4w"
             }
           ]
         },
@@ -1598,7 +1633,7 @@
       "description": "İşini ya da okulunu bir dakikada anlatmak ve kısa bir profil yazmak",
       "color": "0xFF2D9CDB",
       "theme": "is",
-      "guide": "## Bu ünitede yapabileceklerin\n- İşini ya da okulunu bir dakikada anlatabilirsin.\n- Bir iş ilanından görevleri, koşulları ve başvuru tarihini bulabilirsin.\n- Bir iş tanıtım konuşmasında süre, sayı ve görevleri anlayabilirsin.\n- Kendin hakkında 80 kelimelik kısa bir profil yazabilirsin.\n\n## Strateji\n- Bir dakikalık tanıtımı dört parçaya böl: ne iş yapıyorsun, ne zamandır, nelerden sorumlusun, neyi seviyorsun.\n- İş ilanında başlıkları kullan: What will you do? Who are we looking for? To apply…\n- Dinlerken **for + süre** ve **since + başlangıç** ifadelerine dikkat et: kaç yıldır çalışıyor?\n- Profilde sevdiğin şeyleri **enjoy / love / be good at + -ing** ile yaz.\n\n## Model metin\n> Hi! I'm Elif, and I work as a designer at Martı Apps in İzmir. I've worked here for six months. I'm responsible for designing our apps. I love this job because I enjoy working with people from different countries. In my free time, I like cycling and drawing.\n\nBu taslak yaklaşık 50 kelime. 80 kelimeye tamamlamak için bir okul ya da eski iş cümlesi ve bir hedef cümlesi ekle (In the future, I want to…).\n\n## Türklerin sık hatası\n- ❌ I work as designer. ✅ I work as **a** designer. (Meslekten önce **a/an**: an engineer, a nurse.)\n- ❌ I'm responsible to design the screens. / I enjoy to work. ✅ I'm responsible **for designing** the screens. / I enjoy **working**.\n\n## Beceri testi\nBölüm 4 beceri testi 20 sorudur; geçmek için %80 doğru yap.\n\n| Bölüm | Soru | Ölçtüğü hedef |\n|---|---|---|\n| Dinleme | 6 | Randevu, ilaç talimatı, saat (s4u13); sorun ve çözüm (s4u14); iş süresi (s4u15) |\n| Okuma | 6 | Mazeret e-postası (s4u13, s4u10); iş profili (s4u15) |\n| Yazma | 5 | Belirti ve süre (s4u13); şikâyet ve kibar istek (s4u14); işini anlatma (s4u15) |\n| Dil | 3 | first conditional (s4u7), It doesn't work (s4u14), telefon kalıbı ve -ing (s4u11) |",
+      "guide": "## Bu ünitede yapabileceklerin\n- İşini ya da okulunu bir dakikada anlatabilirsin.\n- Bir iş ilanından görevleri, koşulları ve başvuru tarihini bulabilirsin.\n- Bir iş tanıtım konuşmasında süre, sayı ve görevleri anlayabilirsin.\n- Kendin hakkında 80 kelimelik kısa bir profil yazabilirsin.\n\n## Strateji\n- Bir dakikalık tanıtımı dört parçaya böl: ne iş yapıyorsun, ne zamandır, nelerden sorumlusun, neyi seviyorsun.\n- İş ilanında başlıkları kullan: What will you do? Who are we looking for? To apply…\n- Dinlerken **for + süre** ve **since + başlangıç** ifadelerine dikkat et: kaç yıldır çalışıyor?\n- Profilde sevdiğin şeyleri **enjoy / love / be good at + -ing** ile yaz.\n\n## Model metin\n> Hi! I'm Elif, and I work as a designer at Martı Apps in İzmir. I've worked here for six months. Before that, I studied graphic design at university in Ankara. I'm responsible for designing our apps. I also talk to our clients every week. I love this job because I enjoy working with people from different countries. In my free time, I like cycling and drawing. In the future, I want to lead my own design team.\n\nOkul cümlesi (Before that, I studied…), ek bir sorumluluk ve bir hedef cümlesi (In the future, I want to…) metni yaklaşık 80 kelimeye taşıyor.\n\n## Türklerin sık hatası\n- ❌ I work as designer. ✅ I work as **a** designer. (Meslekten önce **a/an**: an engineer, a nurse.)\n- ❌ I'm responsible to design the screens. / I enjoy to work. ✅ I'm responsible **for designing** the screens. / I enjoy **working**.\n\n## Beceri testi\nBölüm 4 beceri testi 20 sorudur; geçmek için %80 doğru yap.\n\n| Bölüm | Soru | Ölçtüğü hedef |\n|---|---|---|\n| Dinleme | 6 | Randevu, ilaç talimatı, saat (s4u13); sorun ve çözüm (s4u14); iş süresi (s4u15) |\n| Okuma | 6 | Mazeret e-postası (s4u13, s4u10); iş profili (s4u15) |\n| Yazma | 5 | Belirti ve süre (s4u13); şikâyet ve kibar istek (s4u14); işini anlatma (s4u15) |\n| Dil | 3 | first conditional (s4u7), It doesn't work (s4u14), telefon kalıbı ve -ing (s4u11) |",
       "nodes": [
         {
           "id": "s4u15l1",
@@ -1617,14 +1652,10 @@
               ]
             },
             {
-              "type": "listen",
+              "type": "shadow",
               "text": "I'm responsible for a team of ten people.",
-              "answers": [
-                "I'm responsible for a team of ten people.",
-                "I'm responsible for a team of 10 people.",
-                "I am responsible for a team of ten people.",
-                "I am responsible for a team of 10 people."
-              ]
+              "translation": "On kişilik bir ekipten sorumluyum.",
+              "rate": 0.85
             },
             {
               "type": "fillBlank",
@@ -1680,9 +1711,10 @@
               ]
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "I've worked as a nurse for six years.",
-              "translation": "Altı yıldır hemşire olarak çalışıyorum."
+              "translation": "Altı yıldır hemşire olarak çalışıyorum.",
+              "rate": 0.85
             },
             {
               "type": "match",
@@ -1849,6 +1881,7 @@
           "title": "Ekibi tanıyın",
           "description": "Martı Apps ekibi iş ilanı için kısa bir video çekiyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -2055,9 +2088,10 @@
               "translation": "Farklı ülkelerden insanlarla tanışmaktan gerçekten hoşlanıyorum."
             },
             {
-              "type": "speak",
+              "type": "shadow",
               "text": "But I don't like working at night.",
-              "translation": "Ama gece çalışmayı sevmiyorum."
+              "translation": "Ama gece çalışmayı sevmiyorum.",
+              "rate": 0.85
             },
             {
               "type": "select",
@@ -2327,17 +2361,6 @@
               ]
             },
             {
-              "type": "fillBlank",
-              "text": "I love my job, ___ the hours are long.",
-              "translation": "İşimi seviyorum ama mesai saatleri uzun.",
-              "answer": "but",
-              "choices": [
-                "but",
-                "so",
-                "because"
-              ]
-            },
-            {
               "type": "select",
               "prompt": "Şirket sitesindeki profilin nasıl başlamalı?",
               "answer": "Hi! I'm Elif, a designer.",
@@ -2384,6 +2407,23 @@
                   "six months"
                 ]
               ]
+            },
+            {
+              "type": "write",
+              "prompt": "Şirket sitesi için kısa bir profil yaz: işin, ne zamandan beri çalıştığın, sorumlulukların, işini neden sevdiğin ve bir hedefin olsun.",
+              "model": "Hi! I'm Elif, and I work as a designer at Martı Apps in İzmir. I've worked here for six months. Before that, I studied graphic design at university in Ankara. I'm responsible for designing our apps. I also talk to our clients every week. I love this job because I enjoy working with people from different countries. In my free time, I like cycling and drawing. In the future, I want to lead my own design team.",
+              "minWords": 60,
+              "maxWords": 90,
+              "checklist": [
+                "Mesleğini a/an ile yazdın (a designer)",
+                "Ne zamandan beri çalıştığını yazdın (for six months)",
+                "Bir hedefi In the future ile ekledin"
+              ],
+              "focus": [
+                "article",
+                "tense"
+              ],
+              "taskId": "s4u15l4w"
             }
           ]
         },

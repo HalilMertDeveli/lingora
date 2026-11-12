@@ -365,6 +365,7 @@
           "title": "Kafede sohbet",
           "description": "Sam, Elif'in kafesine uğruyor; sohbet bir konudan ötekine akıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1187,6 +1188,7 @@
           "title": "Raporu toparlamak",
           "description": "Mia, Deniz'in yönetim kurulu raporunu düzenlemesine yardım ediyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -1974,6 +1976,7 @@
           "title": "Neden Moda?",
           "description": "Elif ikinci şube kararını Kerem'e anlatıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -2737,6 +2740,7 @@
           "title": "Açık ara en iyisi",
           "description": "Mia İstanbul'a geliyor, Sam ona şehri gösteriyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -3512,6 +3516,7 @@
           "title": "Üç günde teslimat",
           "description": "Deniz ve müdürü zor bir müşteri talebini tartışıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -4314,6 +4319,7 @@
           "title": "Bankaya mektup",
           "description": "Elif bankaya kredi e-postası yazıyor, Sam üslubunu düzeltiyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -5104,6 +5110,7 @@
           "title": "Patrona geri bildirim",
           "description": "Deniz patronunun planını kırmadan eleştirmeyi öğreniyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -5881,6 +5888,7 @@
           "title": "Mia'nın yazısı",
           "description": "Mia, Elif'in kafesini yazıyor; Elif kelime seçimine itiraz ediyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -6677,6 +6685,7 @@
           "title": "Geciken sevkiyat",
           "description": "Deniz öfkeli ama profesyonel bir e-posta yazıyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
@@ -7454,6 +7463,7 @@
           "title": "Büyük sunum",
           "description": "Deniz bir konferansta sunum yapıyor, bütün ekip onu izliyor",
           "rewardXp": 15,
+          "listenFirst": true,
           "steps": [
             {
               "kind": "line",
