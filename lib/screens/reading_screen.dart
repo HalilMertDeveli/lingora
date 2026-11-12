@@ -145,7 +145,7 @@ class ReadingLibraryScreen extends ConsumerWidget {
                     children: [
                       Text(s.title, style: Theme.of(context).textTheme.titleMedium),
                       Text(
-                        '${s.titleTr} · ${s.wordCount} kelime',
+                        [?readingSource(s), s.titleTr, '${s.wordCount} kelime'].join(' · '),
                         style: TextStyle(color: Brand.muted, fontSize: 13),
                       ),
                     ],
@@ -165,6 +165,10 @@ class ReadingLibraryScreen extends ConsumerWidget {
 
 /// Reads one story: every word is tappable, glossed words are underlined,
 /// "dinle" reads sentence by sentence, questions come at the end.
+///
+/// "Önce dinle" turns it into a listening text (curriculum §2 "Faz 6"): the
+/// text is hidden, the learner listens sentence by sentence and answers, and
+/// the text opens once the questions are done.
 class StoryReaderScreen extends ConsumerStatefulWidget {
   const StoryReaderScreen({super.key, required this.story});
   final ReadingStory story;
@@ -184,6 +188,12 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
   int _sentence = 0;
   bool _quiz = false;
 
+  /// "Önce dinle": text hidden until the questions are answered.
+  bool _listenFirst = false;
+
+  /// First-try score kept while the text is shown after a listen-first quiz.
+  int? _heardScore;
+
   void _say(int i) {
     setState(() => _sentence = i.clamp(0, _sentences.length - 1));
     _speech.say(_sentences[_sentence], slow: _slow);
@@ -198,6 +208,17 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
       builder: (_) => _WordSheet(token: t, example: _sentences[t.sentence]),
     );
   }
+
+  /// After a listen-first quiz the text opens before the result.
+  void _quizDone(int firstTry) {
+    if (!_listenFirst) return _finish(firstTry);
+    setState(() {
+      _quiz = false;
+      _heardScore = firstTry;
+    });
+  }
+
+  bool get _hidden => _listenFirst && _heardScore == null;
 
   void _finish(int firstTry) {
     final n = widget.story.questions.length;
@@ -243,7 +264,7 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
             ),
         ],
       ),
-      body: _quiz ? _Quiz(story: s, color: color, onDone: _finish) : _reader(color),
+      body: _quiz ? _Quiz(story: s, color: color, onDone: _quizDone) : _reader(color),
       bottomNavigationBar: !_quiz && _listening ? _listenBar(color) : null,
     );
   }
@@ -272,30 +293,74 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
           ],
         ),
         const SizedBox(height: 12),
+        if (_heardScore == null)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: FilterChip(
+              key: const Key('reading-listen-first'),
+              avatar: const Icon(Icons.hearing_rounded, size: 18),
+              label: const Text('Önce dinle'),
+              selected: _listenFirst,
+              onSelected: (on) => setState(() {
+                _listenFirst = on;
+                _listening = on || _listening;
+                _sentence = 0;
+              }),
+            ),
+          ),
+        const SizedBox(height: 8),
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
           child: Text(
-            '${kidEmoji('👆')}Her kelimeye dokunabilirsin. Altı noktalı olanların bu hikâyeye özel Türkçe notu var. '
-            'Hoparlör düğmesiyle cümle cümle dinle.',
+            _hidden
+                ? 'Metin gizli. Alttaki düğmeyle cümle cümle dinle, sonra soruları cevapla; metin sorulardan sonra açılır.'
+                : _heardScore != null
+                ? 'Dinlediğin metin bu. Bilmediğin kelimelere dokun, sonra bitir.'
+                : '${kidEmoji('👆')}Her kelimeye dokunabilirsin. Altı noktalı olanların bu hikâyeye özel Türkçe notu var. '
+                      'Hoparlör düğmesiyle cümle cümle dinle.',
+            key: const Key('reading-hint'),
             style: TextStyle(color: Brand.muted, fontSize: 13),
           ),
         ),
         const SizedBox(height: 16),
-        for (final p in _paragraphs)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 18),
-            child: Wrap(spacing: 5, runSpacing: 4, children: [for (final t in p) _token(t, color)]),
-          ),
+        if (_hidden)
+          Container(
+            key: const Key('reading-hidden-text'),
+            padding: const EdgeInsets.symmetric(vertical: 36),
+            decoration: BoxDecoration(
+              border: Border.all(color: Brand.line, width: 2),
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: Column(
+              children: [
+                Icon(Icons.graphic_eq_rounded, color: color, size: 40),
+                const SizedBox(height: 8),
+                Text(
+                  '${_paragraphs.length} paragraf · ${_sentences.length} cümle',
+                  style: TextStyle(color: Brand.muted),
+                ),
+              ],
+            ),
+          )
+        else
+          for (final p in _paragraphs)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 18),
+              child: Wrap(spacing: 5, runSpacing: 4, children: [for (final t in p) _token(t, color)]),
+            ),
         const SizedBox(height: 8),
-        PressableButton(
-          label: 'SORULARA GEÇ',
-          color: color,
-          onPressed: () => setState(() {
-            _listening = false;
-            _quiz = true;
-          }),
-        ),
+        if (_heardScore case final score?)
+          PressableButton(label: 'BİTİR', color: color, onPressed: () => _finish(score))
+        else
+          PressableButton(
+            label: 'SORULARA GEÇ',
+            color: color,
+            onPressed: () => setState(() {
+              _listening = false;
+              _quiz = true;
+            }),
+          ),
       ],
     );
   }

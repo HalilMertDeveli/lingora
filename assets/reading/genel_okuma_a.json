@@ -1,0 +1,1951 @@
+[
+  {
+    "id": "go_pancake_friday",
+    "level": "A1",
+    "genre": "öykü",
+    "emoji": "🥞",
+    "title": "Pancakes on Friday",
+    "titleTr": "Cuma akşamı pankek",
+    "text": "It is Friday evening. The Arslan family is in the kitchen. Tonight, they make pancakes for dinner.\n\n\"Who wants to help?\" asks their father. \"Me!\" says Zeynep. \"Me too!\" says her little brother Can.\n\nTheir father makes the batter. Then Zeynep cooks the pancakes in a pan. Can puts chocolate on them. Then he puts more chocolate. And more chocolate.\n\n\"Can, that is a lot of chocolate!\" says Zeynep. \"I love chocolate,\" says Can. \"Chocolate is the best.\"\n\nTheir mother laughs. \"Let's put some fruit on them too,\" she says. So Zeynep adds bananas and strawberries. Can does not like bananas. He puts them on his sister's plate.\n\nAfter twenty minutes, the kitchen smells very good. \"Are they ready?\" asks Can. \"Yes, they are ready,\" says their father.\n\nThe family sits at the table. The pancakes are hot and sweet. Can eats four pancakes. \"These are the best pancakes in the world,\" he says.",
+    "glosses": {
+      "pancakes": "pankek, krep",
+      "batter": "krep hamuru",
+      "pan": "tava",
+      "bananas": "muzlar",
+      "strawberries": "çilekler",
+      "plate": "tabak",
+      "smells": "kokuyor",
+      "sweet": "tatlı"
+    },
+    "questions": [
+      {
+        "q": "Bu akşam hangi gün?",
+        "options": [
+          "Monday",
+          "Saturday",
+          "Sunday",
+          "Friday"
+        ],
+        "answer": 3,
+        "explain": "\"Friday\" doğru: metin \"It is Friday evening.\" diye başlıyor."
+      },
+      {
+        "q": "Can muzları ne yapıyor?",
+        "options": [
+          "He eats them all.",
+          "He puts them on his sister's plate.",
+          "He gives them to his father.",
+          "He puts them in the pan."
+        ],
+        "answer": 1,
+        "explain": "\"He puts them on his sister's plate.\" doğru: Can muz sevmiyor ve onları ablasının tabağına koyuyor."
+      },
+      {
+        "q": "Can sonunda pankekler hakkında ne diyor?",
+        "options": [
+          "They are too hot.",
+          "They have too much chocolate.",
+          "They are the best pancakes in the world.",
+          "They are very small."
+        ],
+        "answer": 2,
+        "explain": "\"They are the best pancakes in the world.\" doğru: Can dört pankek yiyip \"These are the best pancakes in the world\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_school_play_tree",
+    "level": "A1",
+    "genre": "öykü",
+    "emoji": "🌳",
+    "title": "The Tree in the School Play",
+    "titleTr": "Okul oyunundaki ağaç",
+    "text": "This is Nina. She is eight. Her class has a play in June. Every child has a part.\n\n\"Who wants to be the queen?\" asks Ms Bell. Everybody puts up their hand. The part of the queen goes to Ella. The king is a boy called Tom. And Nina? She is a tree.\n\n\"A tree?\" says Nina at home. \"Trees do not talk. Trees do not move.\" \"A tree is important too,\" says her mother.\n\nShe goes to every practice. She stands still for a long time. She watches the other children. Soon she knows all their words.\n\nOn the day of the play, Ella is ill. She cannot come. \"What now?\" says Ms Bell. \"Who knows the queen's words?\" \"I do,\" says a small voice at the back. It is the tree!\n\nThat evening, Nina is the queen. She does not forget one word. Her mother claps and claps.\n\n\"Next year, I want to be a tree,\" says Nina. \"Trees learn everything!\"",
+    "glosses": {
+      "play": "oyun (tiyatro)",
+      "part": "rol",
+      "queen": "kraliçe",
+      "king": "kral",
+      "puts up their hand": "elini kaldırır",
+      "practice": "prova",
+      "stands still": "kıpırdamadan durur",
+      "voice": "ses",
+      "claps": "alkışlar"
+    },
+    "questions": [
+      {
+        "q": "Nina oyunda hangi rolü alıyor?",
+        "options": [
+          "The queen",
+          "The king",
+          "A tree",
+          "A teacher"
+        ],
+        "answer": 2,
+        "explain": "\"A tree\" doğru: öğretmen rolleri dağıtıyor ve Nina için \"She is a tree.\" diyor."
+      },
+      {
+        "q": "Oyun günü sorun ne?",
+        "options": [
+          "Nina is ill.",
+          "Ella is ill and cannot come.",
+          "Ms Bell is late.",
+          "Tom forgets his words."
+        ],
+        "answer": 1,
+        "explain": "\"Ella is ill and cannot come.\" doğru: metinde \"Ella is ill. She cannot come.\" diyor."
+      },
+      {
+        "q": "Nina kraliçenin sözlerini neden biliyor?",
+        "options": [
+          "Her mother teaches her.",
+          "She reads a book about queens.",
+          "Ella gives her the words.",
+          "She watches the other children at every practice."
+        ],
+        "answer": 3,
+        "explain": "\"She watches the other children at every practice.\" doğru: Nina her provaya gidip diğer çocukları izliyor; \"Soon she knows all their words.\""
+      }
+    ]
+  },
+  {
+    "id": "go_goldfish_bubbles",
+    "level": "A1",
+    "genre": "öykü",
+    "emoji": "🐠",
+    "title": "A Fish Called Bubbles",
+    "titleTr": "Bubbles adında bir balık",
+    "text": "This is Ayşe. She is seven years old. She has a small goldfish. His name is Bubbles. He lives in a round bowl in the living room.\n\nEvery morning, she gives him a little food. \"Good morning, Bubbles,\" she says. The little fish swims to the top.\n\nOne morning, she looks at the bowl. The water is not clean. It is green. \"Dad!\" she shouts. \"The water is green!\" \"Don't worry,\" says her dad. \"We can clean it together.\"\n\nFirst, he puts Bubbles in a cup of water. She washes the bowl. Then her dad puts in fresh water. \"Can Bubbles go home now?\" asks Ayşe. \"Not yet,\" says her dad. \"This water is too cold. Let's wait one hour.\"\n\nAfter one hour, Bubbles goes back into the bowl. He swims fast. \"He is happy,\" says Ayşe. \"Yes,\" says her dad. \"Clean water every week, OK?\" \"OK, Dad. Every Saturday!\"",
+    "glosses": {
+      "goldfish": "japon balığı",
+      "bowl": "fanus",
+      "dad": "baba",
+      "shouts": "bağırır",
+      "don't worry": "merak etme",
+      "fresh": "temiz, taze",
+      "not yet": "henüz değil"
+    },
+    "questions": [
+      {
+        "q": "Bubbles nerede yaşıyor?",
+        "options": [
+          "In the garden",
+          "In a round bowl",
+          "In Ayşe's school",
+          "In a big lake"
+        ],
+        "answer": 1,
+        "explain": "\"In a round bowl\" doğru: metinde \"He lives in a round bowl in the living room.\" diyor."
+      },
+      {
+        "q": "Bir sabah sorun ne?",
+        "options": [
+          "There is no food.",
+          "Bubbles is not there.",
+          "The bowl is broken.",
+          "The water is green."
+        ],
+        "answer": 3,
+        "explain": "\"The water is green.\" doğru: Ayşe \"The water is green!\" diye bağırıyor."
+      },
+      {
+        "q": "Ayşe fanusu ne zaman temizleyecek?",
+        "options": [
+          "Every day",
+          "Every Monday",
+          "Every Saturday",
+          "Every month"
+        ],
+        "answer": 2,
+        "explain": "\"Every Saturday\" doğru: babası her hafta diyor, Ayşe de \"Every Saturday!\" diye cevap veriyor."
+      }
+    ]
+  },
+  {
+    "id": "go_new_class_email",
+    "level": "A1",
+    "genre": "e-posta",
+    "emoji": "✉️",
+    "title": "My New Class",
+    "titleTr": "Yeni sınıfım",
+    "text": "Hi Grandma,\n\nHow are you? I am fine. I am at my new school now. It is big, and the building is yellow.\n\nMy class has twenty-four students. My teacher is Mrs Yıldız. She is kind, and she speaks slowly. I like her a lot.\n\nI sit next to a girl called Lily. She is from England, but she lives in İzmir now. She speaks English and a little Turkish. I help her with Turkish. She helps me with English.\n\nAt lunch, we eat in a big hall. The food is OK. I like the soup. But I do not like the rice.\n\nOn Wednesdays, I go to the art club after school. We paint pictures of animals. My picture of a horse is on the wall!\n\nPlease visit us soon. I miss you and your cakes.\n\nLove,\nMelis",
+    "glosses": {
+      "kind": "nazik",
+      "slowly": "yavaş",
+      "hall": "salon",
+      "soup": "çorba",
+      "art club": "resim kulübü",
+      "horse": "at",
+      "miss": "özlemek"
+    },
+    "questions": [
+      {
+        "q": "Melis'in sınıfında kaç öğrenci var?",
+        "options": [
+          "Fourteen",
+          "Twenty",
+          "Twenty-four",
+          "Thirty"
+        ],
+        "answer": 2,
+        "explain": "\"Twenty-four\" doğru: metinde \"My class has twenty-four students.\" diyor."
+      },
+      {
+        "q": "Lily nereli?",
+        "options": [
+          "From England",
+          "From İzmir",
+          "From America",
+          "From Ankara"
+        ],
+        "answer": 0,
+        "explain": "\"From England\" doğru: Lily İngiltereli ama şimdi İzmir'de yaşıyor."
+      },
+      {
+        "q": "Melis okulda neyi sevmiyor?",
+        "options": [
+          "The soup",
+          "The rice",
+          "Her teacher",
+          "The art club"
+        ],
+        "answer": 1,
+        "explain": "\"The rice\" doğru: metinde \"I like the soup. But I do not like the rice.\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_puzzle_with_a_cold",
+    "level": "A1",
+    "genre": "anlatı",
+    "emoji": "🧩",
+    "title": "A Puzzle and a Cold",
+    "titleTr": "Yapboz ve nezle",
+    "text": "My name is Emre, and I am ten. On Mondays, I usually go to school by bus. But this Monday, I stay at home. I have a cold.\n\nMy nose is red, and my head hurts. I am in bed with a cup of tea. I am bored.\n\nMy grandfather comes into my room. \"Come, Emre,\" he says. \"Let's do something quiet.\" He brings an old box from his room. In the box, there is a big puzzle. It has one thousand pieces. The picture is a ship on the sea.\n\nWe put the puzzle on the kitchen table. First, we find the edges. Then we do the ship. My mother makes soup for me.\n\nIn the afternoon, my friend Can calls. \"Do you want to play football tomorrow?\" \"No, thanks,\" I say. \"I want to finish my puzzle.\"\n\nAt nine o'clock, it is ready. But one piece is missing!\n\nMaybe a cold is not so bad.",
+    "glosses": {
+      "have a cold": "nezle olmak, soğuk algınlığı geçirmek",
+      "nose": "burun",
+      "hurts": "ağrıyor",
+      "bored": "canı sıkılmış",
+      "puzzle": "yapboz",
+      "pieces": "parça",
+      "edges": "kenarlar",
+      "soup": "çorba",
+      "is missing": "eksik"
+    },
+    "questions": [
+      {
+        "q": "Emre bu pazartesi neden evde?",
+        "options": [
+          "He has no school.",
+          "His bus is late.",
+          "It is a holiday.",
+          "He has a cold."
+        ],
+        "answer": 3,
+        "explain": "\"He has a cold.\" doğru: Emre \"I stay at home. I have a cold.\" diyor."
+      },
+      {
+        "q": "Yapbozun resmi ne?",
+        "options": [
+          "A house",
+          "A ship on the sea",
+          "A dog",
+          "A mountain"
+        ],
+        "answer": 1,
+        "explain": "\"A ship on the sea\" doğru: metinde \"The picture is a ship on the sea.\" diyor."
+      },
+      {
+        "q": "Emre yarın neden futbol oynamak istemiyor?",
+        "options": [
+          "He is tired of football.",
+          "Can is ill.",
+          "He wants to finish his puzzle.",
+          "His grandfather says no."
+        ],
+        "answer": 2,
+        "explain": "\"He wants to finish his puzzle.\" doğru: Emre arkadaşı Can'a \"I want to finish my puzzle.\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_kerem_birthday_cake",
+    "level": "A1",
+    "genre": "öykü",
+    "emoji": "🎂",
+    "title": "A Cake for Kerem",
+    "titleTr": "Kerem için bir pasta",
+    "text": "Today is Kerem's birthday. His sister Elif wants to make a cake for him.\n\n\"What cake does Kerem like?\" she asks their mother on the phone. \"Chocolate, of course,\" says her mother. \"He loves chocolate.\"\n\nElif finds a recipe. She buys eggs, sugar, flour and a lot of chocolate. She works all afternoon. The kitchen is a mess, but the cake looks beautiful.\n\nAt seven, Kerem arrives. \"Surprise!\" says Elif. \"Happy birthday!\" Kerem looks at the cake. He is happy, but he does not eat. \"What's wrong?\" asks Elif. \"I love it, Elif,\" he says. \"But I don't eat sugar this month. My doctor says no.\"\n\nElif is sad for one second. Then she laughs. \"OK. Then I can eat your piece!\" \"No, no,\" says Kerem. \"One small piece. It is my birthday!\"\n\nThey eat the cake together. It is very good.",
+    "glosses": {
+      "recipe": "tarif",
+      "flour": "un",
+      "a mess": "darmadağın",
+      "surprise": "sürpriz",
+      "what's wrong": "ne oldu",
+      "piece": "dilim"
+    },
+    "questions": [
+      {
+        "q": "Kerem hangi pastayı seviyor?",
+        "options": [
+          "Lemon",
+          "Strawberry",
+          "Chocolate",
+          "Carrot"
+        ],
+        "answer": 2,
+        "explain": "\"Chocolate\" doğru: annesi \"Chocolate, of course... He loves chocolate.\" diyor."
+      },
+      {
+        "q": "Kerem önce neden pastayı yemiyor?",
+        "options": [
+          "He is not hungry.",
+          "He doesn't like chocolate.",
+          "The cake is too hot.",
+          "He doesn't eat sugar this month."
+        ],
+        "answer": 3,
+        "explain": "\"He doesn't eat sugar this month.\" doğru: Kerem \"I don't eat sugar this month. My doctor says no.\" diyor."
+      },
+      {
+        "q": "Sonunda Kerem ne yapıyor?",
+        "options": [
+          "He eats one small piece.",
+          "He goes home.",
+          "He makes a new cake.",
+          "He calls his doctor."
+        ],
+        "answer": 0,
+        "explain": "\"He eats one small piece.\" doğru: \"One small piece. It is my birthday!\" diyor ve birlikte yiyorlar."
+      }
+    ]
+  },
+  {
+    "id": "go_bird_notebook",
+    "level": "A1",
+    "genre": "anlatı",
+    "emoji": "🐦",
+    "title": "Birds in My Notebook",
+    "titleTr": "Defterimdeki kuşlar",
+    "text": "I am Hasan, and I am twelve. My hobby is drawing birds.\n\nI started last spring. One morning, a small bird sat on our balcony. It was brown, with a red face. I took my pencil and drew it. The drawing was not very good, but I liked it.\n\nNow I have a special notebook. It is only for birds. After school, I sit on the balcony for twenty minutes. I wait, I watch and I draw.\n\nThere are many birds in my city. I see pigeons every day. They are easy to draw. Seagulls are big and loud. Sparrows are small and fast, so they are difficult.\n\nMy father buys me a book about birds. Now I know their names in English and in Turkish.\n\nMy notebook has forty-one birds now. But I still like the first one most. It is the little brown bird with the red face.",
+    "glosses": {
+      "balcony": "balkon",
+      "brown": "kahverengi",
+      "pencil": "kurşun kalem",
+      "drew": "çizdi",
+      "pigeons": "güvercinler",
+      "seagulls": "martılar",
+      "loud": "gürültücü",
+      "sparrows": "serçeler"
+    },
+    "questions": [
+      {
+        "q": "Hasan'ın hobisi ne?",
+        "options": [
+          "Taking photos of birds",
+          "Feeding cats",
+          "Writing stories",
+          "Drawing birds"
+        ],
+        "answer": 3,
+        "explain": "\"Drawing birds\" doğru: metinde \"My hobby is drawing birds.\" diyor."
+      },
+      {
+        "q": "Hangi kuşları çizmek zor?",
+        "options": [
+          "Pigeons",
+          "Seagulls",
+          "Sparrows",
+          "Chickens"
+        ],
+        "answer": 2,
+        "explain": "\"Sparrows\" doğru: serçeler küçük ve hızlı, bu yüzden çizmesi zor."
+      },
+      {
+        "q": "Hasan en çok hangi kuşu seviyor?",
+        "options": [
+          "The first bird he drew",
+          "A big seagull",
+          "A grey pigeon",
+          "A bird from his book"
+        ],
+        "answer": 0,
+        "explain": "\"The first bird he drew\" doğru: hâlâ en çok ilk çizdiği, kırmızı yüzlü küçük kahverengi kuşu seviyor."
+      }
+    ]
+  },
+  {
+    "id": "go_elif_lemonade",
+    "level": "A1",
+    "genre": "nasıl yapılır",
+    "emoji": "🍋",
+    "title": "Elif's Lemonade",
+    "titleTr": "Elif'in limonatası",
+    "text": "Every summer, Elif makes lemonade for her friends. It is easy and cheap. Here is her recipe.\n\nYou need four lemons and five glasses of cold water. You also need a cup of sugar. Some ice and mint leaves are nice too.\n\nFirst, wash the lemons. Cut them in half. Then squeeze them into a big jug.\n\nNext, add the sugar. Add a little warm water and mix well. Sugar likes warm water!\n\nThen add the cold water. Mix again. Now taste it. Is it too sour? Add more sugar.\n\nPut the jug in the fridge for one hour. Before you drink it, add ice and mint leaves.\n\nThat's it! Your lemonade is ready. Give a glass to your family or friends.",
+    "glosses": {
+      "lemonade": "limonata",
+      "recipe": "tarif",
+      "lemons": "limonlar",
+      "mint leaves": "nane yaprakları",
+      "in half": "ikiye",
+      "squeeze": "sıkmak",
+      "jug": "sürahi",
+      "taste": "tadına bakmak",
+      "sour": "ekşi",
+      "fridge": "buzdolabı"
+    },
+    "questions": [
+      {
+        "q": "Kaç limon gerekiyor?",
+        "options": [
+          "Two",
+          "Four",
+          "Six",
+          "Ten"
+        ],
+        "answer": 1,
+        "explain": "\"Four\" doğru: metinde \"You need four lemons\" diyor."
+      },
+      {
+        "q": "Şekeri neden önce biraz ılık suyla karıştırıyoruz?",
+        "options": [
+          "Sugar mixes well in warm water.",
+          "Lemons like warm water.",
+          "It is cheaper.",
+          "The jug is cold."
+        ],
+        "answer": 0,
+        "explain": "\"Sugar mixes well in warm water.\" doğru: metinde \"Sugar likes warm water!\" diyor."
+      },
+      {
+        "q": "Limonata çok ekşiyse ne yapmalı?",
+        "options": [
+          "Add more water.",
+          "Add more lemons.",
+          "Add more sugar.",
+          "Add more ice."
+        ],
+        "answer": 2,
+        "explain": "\"Add more sugar.\" doğru: metinde \"Is it too sour? Add more sugar.\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_meet_pamuk",
+    "level": "A1",
+    "genre": "röportaj",
+    "emoji": "🐶",
+    "title": "Meet Pamuk",
+    "titleTr": "Pamuk'la tanışın",
+    "text": "This week, our school newspaper talks to Defne. She is in class 5B. She has a dog.\n\nReporter: Hello, Defne. Tell us about your dog.\nDefne: Her name is Pamuk. That means \"cotton\" in English. She is small and white, like cotton. She is four years old.\n\nReporter: Where does Pamuk sleep?\nDefne: In a basket next to my bed. But at night, she often jumps on my bed!\n\nReporter: What does she eat?\nDefne: Dog food, and sometimes carrots or apples. She loves cheese, but I only give her a little.\n\nReporter: Who walks her?\nDefne: My father and I. We walk her twice a day. We go in the morning and in the evening. In the evening, she plays with dogs in the park.\n\nReporter: Is a dog a lot of work?\nDefne: Yes! When it rains, she gets very dirty. Then we wash her.\n\nReporter: Any advice for our readers?\nDefne: A dog is not a toy. It is a friend for many years.",
+    "glosses": {
+      "newspaper": "gazete",
+      "cotton": "pamuk",
+      "basket": "sepet",
+      "jumps on": "üstüne atlar",
+      "carrots": "havuçlar",
+      "dirty": "kirli",
+      "advice": "tavsiye",
+      "readers": "okurlar",
+      "toy": "oyuncak"
+    },
+    "questions": [
+      {
+        "q": "Pamuk genelde nerede uyuyor?",
+        "options": [
+          "In a basket next to Defne's bed",
+          "In the garden",
+          "In the kitchen",
+          "In her father's room"
+        ],
+        "answer": 0,
+        "explain": "\"In a basket next to Defne's bed\" doğru: Defne \"In a basket next to my bed.\" diyor."
+      },
+      {
+        "q": "Pamuk'u ne zaman yürüyüşe çıkarıyorlar?",
+        "options": [
+          "Only on Sundays",
+          "After lunch",
+          "Only at night",
+          "In the morning and in the evening"
+        ],
+        "answer": 3,
+        "explain": "\"In the morning and in the evening\" doğru: Defne \"We go in the morning and in the evening.\" diyor."
+      },
+      {
+        "q": "Defne okurlara ne tavsiye ediyor?",
+        "options": [
+          "Buy a big dog.",
+          "Dogs are easy.",
+          "A dog is a friend, not a toy.",
+          "Wash your dog every day."
+        ],
+        "answer": 2,
+        "explain": "\"A dog is a friend, not a toy.\" doğru: Defne \"A dog is not a toy. It is a friend for many years.\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_sam_washing_machine",
+    "level": "A1",
+    "genre": "öykü",
+    "emoji": "🧺",
+    "title": "Sam's Washing Machine",
+    "titleTr": "Sam'in çamaşır makinesi",
+    "text": "It is Sunday morning. Sam puts his clothes in the washing machine. He presses the button. Nothing happens.\n\nHe presses it again. Nothing. So he calls his friend Kerem. \"Kerem, my washing machine does not work. Can you help me?\" \"Sam, I work with computers. I do not fix washing machines!\" \"Please. You know machines.\" Kerem laughs. \"OK. I can come at eleven.\"\n\nAt eleven, Kerem arrives. He looks at the machine. He opens the door and closes it. He presses the button. Nothing. \"Is it on?\" asks Kerem. \"Of course it is on,\" says Sam. Kerem looks behind the machine. Then he laughs. \"Sam, look. The plug is not in the wall.\"\n\nSam's face goes red. He puts the plug in. The machine starts. \"Thank you, Kerem,\" he says. \"Lunch is on me.\" \"Good,\" says Kerem. \"I want a very big lunch.\"",
+    "glosses": {
+      "clothes": "giysiler",
+      "washing machine": "çamaşır makinesi",
+      "presses": "basar",
+      "button": "düğme",
+      "fix": "tamir etmek",
+      "plug": "fiş",
+      "goes red": "kızarır",
+      "lunch is on me": "öğle yemeği benden"
+    },
+    "questions": [
+      {
+        "q": "Kerem ne iş yapıyor?",
+        "options": [
+          "He is a teacher.",
+          "He works with computers.",
+          "He is a doctor.",
+          "He fixes washing machines."
+        ],
+        "answer": 1,
+        "explain": "\"He works with computers.\" doğru: Kerem \"I work with computers.\" diyor."
+      },
+      {
+        "q": "Makinenin sorunu ne?",
+        "options": [
+          "The door is broken.",
+          "There is no water.",
+          "The button is broken.",
+          "The plug is not in the wall."
+        ],
+        "answer": 3,
+        "explain": "\"The plug is not in the wall.\" doğru: Kerem makinenin arkasına bakıp fişin takılı olmadığını görüyor."
+      },
+      {
+        "q": "Sam Kerem'e nasıl teşekkür ediyor?",
+        "options": [
+          "He buys him lunch.",
+          "He gives him a book.",
+          "He cleans his car.",
+          "He makes him tea."
+        ],
+        "answer": 0,
+        "explain": "\"He buys him lunch.\" doğru: Sam \"Lunch is on me.\" diyor, yani öğle yemeği ondan."
+      }
+    ]
+  },
+  {
+    "id": "go_balcony_nights",
+    "level": "A1",
+    "genre": "anlatı",
+    "emoji": "🍉",
+    "title": "Summer Nights on the Balcony",
+    "titleTr": "Balkonda yaz geceleri",
+    "text": "I live in Adana with my family. In summer, Adana is very hot. In July, it is often near forty degrees. During the day, we stay inside. We close the curtains and turn on the fan.\n\nBut the evenings are wonderful. After dinner, we all go out to the balcony. My mother brings watermelon and cold water. My father plays old songs on his phone. My little brother sleeps there on a mattress.\n\nWe sit and talk. Our neighbours sit outside too. We say \"good evening\" to them. Sometimes they give us figs from their garden.\n\nAt midnight, the air is cooler. I look at the sky and see some stars.\n\nWinter in Adana is short and rainy. It is not bad. But every year, I wait for summer. I love our balcony nights.",
+    "glosses": {
+      "curtains": "perdeler",
+      "fan": "vantilatör",
+      "wonderful": "harika",
+      "balcony": "balkon",
+      "watermelon": "karpuz",
+      "mattress": "yer yatağı",
+      "figs": "incirler",
+      "midnight": "gece yarısı",
+      "cooler": "daha serin",
+      "stars": "yıldızlar"
+    },
+    "questions": [
+      {
+        "q": "Gündüz aile ne yapıyor?",
+        "options": [
+          "They go to the sea.",
+          "They work in the garden.",
+          "They sleep on the balcony.",
+          "They stay inside."
+        ],
+        "answer": 3,
+        "explain": "\"They stay inside.\" doğru: metinde \"During the day, we stay inside.\" diyor."
+      },
+      {
+        "q": "Komşular bazen ne veriyor?",
+        "options": [
+          "Watermelon",
+          "Figs",
+          "Tea",
+          "Bread"
+        ],
+        "answer": 1,
+        "explain": "\"Figs\" doğru: metinde \"Sometimes they give us figs from their garden.\" diyor."
+      },
+      {
+        "q": "Yazar balkon geceleri hakkında ne hissediyor?",
+        "options": [
+          "The writer loves them.",
+          "They are too hot.",
+          "They are boring.",
+          "The neighbours are too loud."
+        ],
+        "answer": 0,
+        "explain": "\"The writer loves them.\" doğru: metin \"I love our balcony nights.\" diye bitiyor."
+      }
+    ]
+  },
+  {
+    "id": "go_notebook_mix_up",
+    "level": "A1",
+    "genre": "öykü",
+    "emoji": "📒",
+    "title": "Two Blue Notebooks",
+    "titleTr": "İki mavi defter",
+    "text": "Two boys, Jack and Ali, are in the same class. They sit next to each other. They have the same blue notebook.\n\nOn Monday morning, the teacher asks for the homework. \"Where is your homework, Jack?\" So Jack opens his notebook. The pages are empty. \"I do not understand,\" he says. \"I did it last night!\" \"Everybody says that,\" says Mr Kaya.\n\nThen Ali looks at his notebook. There is maths homework in it. But it is not his writing. \"Mr Kaya,\" he says. \"I think this is Jack's notebook.\" \"Yes! That is my homework!\" says Jack. \"So where is your homework, Ali?\" asks Mr Kaya. Now Ali looks at the empty notebook. He is quiet for a moment. \"I... I forgot it,\" he says.\n\nEverybody laughs, even Mr Kaya. \"OK, Ali. Bring it tomorrow. And Jack, write your name on your notebook!\"",
+    "glosses": {
+      "each other": "birbiri",
+      "empty": "boş",
+      "writing": "el yazısı",
+      "for a moment": "bir an",
+      "forgot": "unuttum"
+    },
+    "questions": [
+      {
+        "q": "Jack ile Ali'nin neyi aynı?",
+        "options": [
+          "Their bags",
+          "Their notebooks",
+          "Their pens",
+          "Their coats"
+        ],
+        "answer": 1,
+        "explain": "\"Their notebooks\" doğru: metinde \"They have the same blue notebook.\" diyor."
+      },
+      {
+        "q": "Ali'nin elindeki defterde kimin ödevi var?",
+        "options": [
+          "Ali's",
+          "Mr Kaya's",
+          "Jack's",
+          "Nobody's"
+        ],
+        "answer": 2,
+        "explain": "\"Jack's\" doğru: Jack bakıp \"That is my homework!\" diyor."
+      },
+      {
+        "q": "Ali'nin ödevi aslında ne durumda?",
+        "options": [
+          "He did it on the bus.",
+          "He gave it to Mr Kaya.",
+          "His sister has it.",
+          "He forgot it."
+        ],
+        "answer": 3,
+        "explain": "\"He forgot it.\" doğru: Ali \"I... I forgot it.\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_party_invitation",
+    "level": "A1",
+    "genre": "e-posta",
+    "emoji": "🎈",
+    "title": "A Party Invitation",
+    "titleTr": "Bir parti daveti",
+    "text": "Hi Tom,\n\nMy birthday is next Saturday. I am eleven! There is a small party at my house. It starts at three o'clock. Can you come?\n\nThere is cake, music and a lot of games. My father has a karaoke machine. Bring your best song!\n\nPlease tell me by Wednesday.\n\nYour friend,\nNil\n\nHi Nil,\n\nThank you for the invitation! I really want to come. But there is a small problem. On Saturday morning, I have a swimming race. It finishes at two. Then my mother can bring me to your house.\n\nSo I can come, but a little late. Is half past three OK?\n\nAlso, what present do you want? My mother wants to know.\n\nSee you,\nTom\n\nHi Tom,\n\nHalf past three is fine! Good luck in your race.\n\nA present? I love books about space. But you do not need to bring a present. Just come and sing!\n\nSee you on Saturday,\nNil",
+    "glosses": {
+      "karaoke machine": "karaoke makinesi",
+      "by wednesday": "çarşambaya kadar",
+      "invitation": "davet",
+      "race": "yarış",
+      "half past three": "üç buçuk",
+      "present": "hediye",
+      "good luck": "iyi şanslar",
+      "space": "uzay"
+    },
+    "questions": [
+      {
+        "q": "Parti saat kaçta başlıyor?",
+        "options": [
+          "At two",
+          "At three o'clock",
+          "At half past three",
+          "At four"
+        ],
+        "answer": 1,
+        "explain": "\"At three o'clock\" doğru: Nil \"It starts at three o'clock.\" diyor."
+      },
+      {
+        "q": "Tom neden biraz geç gelecek?",
+        "options": [
+          "He has a swimming race.",
+          "He is ill.",
+          "His mother works.",
+          "He has a piano lesson."
+        ],
+        "answer": 0,
+        "explain": "\"He has a swimming race.\" doğru: Tom cumartesi sabahı yüzme yarışı olduğunu yazıyor."
+      },
+      {
+        "q": "Nil hediye olarak neyi seviyor?",
+        "options": [
+          "Football shirts",
+          "Video games",
+          "Toy animals",
+          "Books about space"
+        ],
+        "answer": 3,
+        "explain": "\"Books about space\" doğru: Nil \"I love books about space.\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_balcony_tomatoes",
+    "level": "A1",
+    "genre": "anlatı",
+    "emoji": "🍅",
+    "title": "Tomatoes on My Balcony",
+    "titleTr": "Balkonumdaki domatesler",
+    "text": "My name is Deniz. I live in a flat in İstanbul. I do not have a garden. But I have a small balcony. And on my balcony, I grow tomatoes.\n\nIn March, I buy small tomato plants from the market. They are very small and green. I put them in big pots with good soil.\n\nEvery morning before work, I water them. In April and May, they grow fast. In June, I see the first little flowers. They are yellow.\n\nIn July, the first tomatoes come. At first they are green. Then, day by day, they turn red. I wait and wait.\n\nFinally, in August, I pick the first red tomato. I wash it and eat it with a little salt. It is warm from the sun, and it tastes great. Shop tomatoes are never like this!\n\nNext year, I want to grow peppers too.",
+    "glosses": {
+      "balcony": "balkon",
+      "grow": "yetiştirmek",
+      "plants": "fideler",
+      "pots": "saksılar",
+      "soil": "toprak",
+      "water them": "onları sulamak",
+      "flowers": "çiçekler",
+      "turn red": "kızarır",
+      "pick": "koparmak, toplamak",
+      "tastes": "tadı (… olmak)",
+      "peppers": "biberler"
+    },
+    "questions": [
+      {
+        "q": "Deniz domatesleri nerede yetiştiriyor?",
+        "options": [
+          "On a small balcony",
+          "In a big garden",
+          "In a village",
+          "At work"
+        ],
+        "answer": 0,
+        "explain": "\"On a small balcony\" doğru: metinde \"I have a small balcony. And on my balcony, I grow tomatoes.\" diyor."
+      },
+      {
+        "q": "Çiçekler ne renk?",
+        "options": [
+          "White",
+          "Red",
+          "Yellow",
+          "Blue"
+        ],
+        "answer": 2,
+        "explain": "\"Yellow\" doğru: haziranda ilk çiçekler çıkıyor ve \"They are yellow.\" diyor."
+      },
+      {
+        "q": "Deniz gelecek yıl ne yapmak istiyor?",
+        "options": [
+          "To buy a garden",
+          "To sell tomatoes",
+          "To move house",
+          "To grow peppers too"
+        ],
+        "answer": 3,
+        "explain": "\"To grow peppers too\" doğru: metin \"Next year, I want to grow peppers too.\" diye bitiyor."
+      }
+    ]
+  },
+  {
+    "id": "go_sleepy_tortoise",
+    "level": "A1",
+    "genre": "öykü",
+    "emoji": "🐢",
+    "title": "A Sleepy Tortoise",
+    "titleTr": "Uykucu bir kaplumbağa",
+    "text": "Sam has a pet tortoise. Her name is Lady Grey. She is twenty years old. She is from London, like Sam.\n\nIn summer, his tortoise is very busy. She walks around the small garden. She eats lettuce, flowers and strawberries.\n\nBut in October, the weather gets cold. Now Lady Grey eats less. She does not move much. One day, Sam's sister Mia visits. \"Sam, is your tortoise ill?\" she asks. \"No, she is fine,\" says Sam. \"She is sleepy. Many tortoises sleep in winter.\" \"For how long?\" \"About three months.\" \"Three months! I want that too,\" says Mia.\n\nSam puts Lady Grey in a box with soft paper. He puts the box in a cool, quiet room. \"Good night, Lady Grey,\" he says. \"See you in spring.\"\n\nIn March, the sun is warm again. The tortoise opens her eyes. She walks out of the box. Sam gives her some strawberries. Spring is here!",
+    "glosses": {
+      "tortoise": "kara kaplumbağası",
+      "tortoises": "kaplumbağalar",
+      "lettuce": "marul",
+      "flowers": "çiçekler",
+      "strawberries": "çilekler",
+      "eats less": "daha az yer",
+      "sleepy": "uykulu",
+      "soft": "yumuşak",
+      "cool": "serin"
+    },
+    "questions": [
+      {
+        "q": "Lady Grey nereli?",
+        "options": [
+          "London",
+          "İstanbul",
+          "Paris",
+          "Adana"
+        ],
+        "answer": 0,
+        "explain": "\"London\" doğru: metinde \"She is from London, like Sam.\" diyor."
+      },
+      {
+        "q": "Lady Grey ekimde neden az hareket ediyor?",
+        "options": [
+          "She is ill.",
+          "She is sleepy because winter is coming.",
+          "She is very old.",
+          "She is hungry."
+        ],
+        "answer": 1,
+        "explain": "\"She is sleepy because winter is coming.\" doğru: Sam \"She is sleepy. Many tortoises sleep in winter.\" diyor."
+      },
+      {
+        "q": "Mia üç ayı duyunca ne diyor?",
+        "options": [
+          "She wants a tortoise.",
+          "She is afraid of tortoises.",
+          "She is angry with Sam.",
+          "She wants to sleep three months too."
+        ],
+        "answer": 3,
+        "explain": "\"She wants to sleep three months too.\" doğru: Mia \"Three months! I want that too.\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_library_card",
+    "level": "A2",
+    "genre": "öykü",
+    "emoji": "📚",
+    "title": "A Library Card",
+    "titleTr": "Kütüphane kartı",
+    "text": "Sam wanted to read more in Turkish. On Saturday morning, he went to the city library. The building was old, but the reading room was bright and quiet.\n\nAt the desk, a young woman smiled at him. \"Good morning. Can I help you?\"\n\n\"Yes, please. I'd like a library card,\" Sam said slowly.\n\n\"Of course. Do you have your ID card with you?\"\n\n\"I have my residence permit. Is that OK?\"\n\n\"Yes, that's fine. Please fill in this form.\"\n\nSam wrote his name, address and phone number. Then the woman took his photo with a small camera.\n\n\"How many books can I borrow?\" Sam asked.\n\n\"Five books for three weeks. You can renew them online, too.\"\n\n\"Is the card free?\"\n\n\"Yes, it's free for everyone in the city.\"\n\nSam was happy. He walked between the shelves and found the children's section. \"I think these books are right for my Turkish,\" he said and laughed.\n\nHe chose two picture books and a short novel. At the desk, the woman stamped each book.\n\n\"Don't be late,\" she said. \"We send a message three days before the return date.\"\n\nThat evening, Sam read the first picture book on his balcony. He understood almost every word.",
+    "glosses": {
+      "id card": "kimlik kartı",
+      "residence permit": "oturma izni",
+      "fill in": "doldurmak",
+      "borrow": "ödünç almak",
+      "renew": "süresini uzatmak",
+      "shelves": "raflar",
+      "section": "bölüm",
+      "novel": "roman",
+      "stamped": "damgaladı",
+      "return date": "iade tarihi"
+    },
+    "questions": [
+      {
+        "q": "Sam kütüphaneye neden gitti?",
+        "options": [
+          "Kütüphane kartı almak için",
+          "Bir arkadaşıyla buluşmak için",
+          "Eski kitapları iade etmek için",
+          "İş bulmak için"
+        ],
+        "answer": 0,
+        "explain": "\"Kütüphane kartı almak için\" doğru: Sam görevliye \"I'd like a library card\" diyor."
+      },
+      {
+        "q": "Sam kaç kitap ödünç alabilir?",
+        "options": [
+          "Üç kitap, beş haftalığına",
+          "Beş kitap, üç haftalığına",
+          "İki kitap, bir haftalığına",
+          "İstediği kadar kitap"
+        ],
+        "answer": 1,
+        "explain": "\"Beş kitap, üç haftalığına\" doğru: görevli \"Five books for three weeks\" diyor."
+      },
+      {
+        "q": "Sam neden çocuk kitapları seçti?",
+        "options": [
+          "Çocuğuna hediye etmek için",
+          "Resim yapmayı sevdiği için",
+          "Türkçesine uygun oldukları için",
+          "Başka kitap kalmadığı için"
+        ],
+        "answer": 2,
+        "explain": "\"Türkçesine uygun oldukları için\" doğru: Sam \"these books are right for my Turkish\" diyor; akşam neredeyse her kelimeyi anlıyor."
+      }
+    ]
+  },
+  {
+    "id": "go_pottery_class",
+    "level": "A2",
+    "genre": "öykü",
+    "emoji": "🏺",
+    "title": "Hands in the Clay",
+    "titleTr": "Çamura bulanan eller",
+    "text": "Deniz spent every day at a desk, planning deliveries. In March, Deniz wanted a hobby away from screens. A colleague suggested a pottery class on Tuesday evenings.\n\nThe room was small and warm. There were six students and a teacher called Nermin. There was clay on her hands and her apron.\n\n\"Tonight, we'll make a simple bowl,\" she said. \"Don't worry about mistakes. Clay is patient.\"\n\nFirst, Deniz pressed the clay into a ball. Then Nermin turned on the wheel.\n\n\"Keep your hands wet and your arms still,\" she said.\n\nIt looked easy when Nermin did it. But Deniz's clay moved to one side. Then the bowl fell down completely.\n\n\"Oh no,\" Deniz said. \"It looks like a pancake.\"\n\nThe teacher laughed. \"Everyone makes one in the first lesson. Try again, but slower this time.\"\n\nThe second bowl was small and a bit uneven, but it stood up.\n\nNermin said, \"Now it needs to dry for a week. Then it goes into a very hot oven.\"\n\n\"Can I take it home after that?\" Deniz asked.\n\n\"Of course. It's yours.\"\n\nTwo weeks later, Deniz took the bowl home. It wasn't perfect. But now it sits on the breakfast table every morning, full of olives.",
+    "glosses": {
+      "screens": "ekranlar",
+      "colleague": "iş arkadaşı",
+      "pottery": "çömlekçilik",
+      "apron": "önlük",
+      "clay": "kil, çamur",
+      "bowl": "kase",
+      "wheel": "çömlekçi çarkı",
+      "uneven": "yamuk, düzgün olmayan",
+      "olives": "zeytinler",
+      "deliveries": "teslimatlar",
+      "pancake": "pankek, krep",
+      "patient": "sabırlı"
+    },
+    "questions": [
+      {
+        "q": "Deniz neden yeni bir hobi istedi?",
+        "options": [
+          "Yeni bir iş aradığı için",
+          "Bütün gün masa başında, ekranlarla çalıştığı için",
+          "Nermin'in eski bir arkadaşı olduğu için",
+          "Kase satmak istediği için"
+        ],
+        "answer": 1,
+        "explain": "\"Bütün gün masa başında, ekranlarla çalıştığı için\" doğru: Deniz her gün masada çalışıyor ve \"a hobby away from screens\" istiyor."
+      },
+      {
+        "q": "İlk kaseye ne oldu?",
+        "options": [
+          "Çok büyük oldu",
+          "Fırında çatladı",
+          "Bir yana kaydı ve tamamen çöktü",
+          "Nermin onu başka bir öğrenciye verdi"
+        ],
+        "answer": 2,
+        "explain": "\"Bir yana kaydı ve tamamen çöktü\" doğru: metinde \"Deniz's clay moved to one side. Then the bowl fell down completely.\" diyor."
+      },
+      {
+        "q": "Deniz kaseyi şimdi ne için kullanıyor?",
+        "options": [
+          "Çiçek koymak için",
+          "Kalemlerini koymak için",
+          "Nermin'e hediye etmek için",
+          "Kahvaltıda zeytin koymak için"
+        ],
+        "answer": 3,
+        "explain": "\"Kahvaltıda zeytin koymak için\" doğru: metinde kase her sabah kahvaltı masasında \"full of olives\" duruyor."
+      }
+    ]
+  },
+  {
+    "id": "go_swimming_for_adults",
+    "level": "A2",
+    "genre": "e-posta",
+    "emoji": "🏊",
+    "title": "Swimming Lessons for Adults",
+    "titleTr": "Yetişkinlere yüzme dersi",
+    "text": "Subject: Swimming lessons for adults\n\nDear Sir or Madam,\n\nMy name is Burak Aydın, and I am thirty-four years old. I live near your sports centre. I never learned to swim as a child. I feel a little embarrassed about it. My daughter is seven, and she swims better than me!\n\nI saw a poster about lessons for adult beginners. Could you send me more information? When are the lessons, and how much do they cost? I work until six on weekdays.\n\nBest wishes,\nBurak Aydın\n\nSubject: Swimming lessons for adults\n\nDear Mr Aydın,\n\nThank you for your email. Please don't feel embarrassed. Many adults join our beginner group every year.\n\nThe group meets on Tuesday and Thursday evenings, from seven to eight. There are eight people in each group and two teachers. The course lasts six weeks and costs 1,800 lira.\n\nPlease bring a swimming cap, goggles and a towel. You also need a short health report from your doctor.\n\nThe next course starts on the 3rd of March. You can register at our reception desk or on our website.\n\nSee you in the water!\nLeyla Koç\nSports Centre Office",
+    "glosses": {
+      "embarrassed": "utanmış, mahcup",
+      "beginners": "yeni başlayanlar",
+      "beginner": "yeni başlayan",
+      "lasts": "sürer",
+      "swimming cap": "bone",
+      "goggles": "yüzücü gözlüğü",
+      "towel": "havlu",
+      "health report": "sağlık raporu",
+      "register": "kayıt olmak",
+      "reception desk": "danışma, resepsiyon"
+    },
+    "questions": [
+      {
+        "q": "Burak neden e-posta yazıyor?",
+        "options": [
+          "Kızı için öğretmen aradığı için",
+          "Spor merkezinde çalışmak istediği için",
+          "Yüzme öğrenmek istediği için",
+          "Bir dersi iptal etmek için"
+        ],
+        "answer": 2,
+        "explain": "\"Yüzme öğrenmek istediği için\" doğru: Burak \"I never learned to swim as a child\" diyor ve yetişkin dersleri hakkında bilgi istiyor."
+      },
+      {
+        "q": "Dersler ne zaman?",
+        "options": [
+          "Hafta sonları, sabah",
+          "Her gün öğle arasında",
+          "Pazartesi akşamları, altıda",
+          "Salı ve perşembe akşamları, yedide"
+        ],
+        "answer": 3,
+        "explain": "\"Salı ve perşembe akşamları, yedide\" doğru: cevapta \"on Tuesday and Thursday evenings, from seven to eight\" yazıyor."
+      },
+      {
+        "q": "Burak doktordan ne getirmeli?",
+        "options": [
+          "Kısa bir sağlık raporu",
+          "Bir fotoğraf",
+          "Bir bone",
+          "Bir öneri mektubu"
+        ],
+        "answer": 0,
+        "explain": "\"Kısa bir sağlık raporu\" doğru: Leyla \"You also need a short health report from your doctor\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_animal_shelter",
+    "level": "A2",
+    "genre": "anlatı",
+    "emoji": "🐕",
+    "title": "A Summer at the Animal Shelter",
+    "titleTr": "Hayvan barınağında bir yaz",
+    "text": "Last summer, I was sixteen and I had a lot of free time. My mother said, \"Do something useful.\" So I became a volunteer at the animal shelter near our town.\n\nThe shelter has about sixty dogs and thirty cats. Most of them came from the streets. Some were sick or hurt when they arrived.\n\nI went there every Saturday and Sunday morning. My first job was not exciting. I cleaned the cages and washed the food bowls. It smelled terrible, and I often wanted to go home.\n\nAfter two weeks, the manager, Gül Hanım, gave me a new job. I walked the dogs. Every dog was different. Some pulled hard. Others were afraid of cars and noise.\n\nOne old dog, Karabaş, never came out of his cage. He was afraid of people. So every day I sat next to his cage and read a book aloud. In August, he finally took food from my hand.\n\nIn September, a family adopted Karabaş. I was happy, but I cried a little too.\n\nNow I still go to the shelter every Sunday. One day, I want to be a vet.",
+    "glosses": {
+      "useful": "faydalı",
+      "volunteer": "gönüllü",
+      "shelter": "barınak",
+      "cages": "kafesler",
+      "cage": "kafes",
+      "bowls": "kaplar",
+      "smelled": "kokuyordu",
+      "manager": "müdür",
+      "pulled": "çekiştirdi",
+      "aloud": "sesli",
+      "adopted": "sahiplendi",
+      "vet": "veteriner"
+    },
+    "questions": [
+      {
+        "q": "Anlatıcı barınağa neden gitmeye başladı?",
+        "options": [
+          "Köpek sahiplenmek istediği için",
+          "Okulun ödevi olduğu için",
+          "Barınakta para kazandığı için",
+          "Annesi faydalı bir şey yapmasını istediği için"
+        ],
+        "answer": 3,
+        "explain": "\"Annesi faydalı bir şey yapmasını istediği için\" doğru: annesi \"Do something useful.\" diyor ve anlatıcı gönüllü oluyor."
+      },
+      {
+        "q": "Anlatıcının ilk görevi neydi?",
+        "options": [
+          "Kafesleri ve mama kaplarını temizlemek",
+          "Köpekleri gezdirmek",
+          "Kedileri beslemek",
+          "Telefonlara cevap vermek"
+        ],
+        "answer": 0,
+        "explain": "\"Kafesleri ve mama kaplarını temizlemek\" doğru: metinde \"I cleaned the cages and washed the food bowls\" diyor."
+      },
+      {
+        "q": "Anlatıcı Karabaş'ın güvenini nasıl kazandı?",
+        "options": [
+          "Ona oyuncak alarak",
+          "Her gün kafesinin yanında oturup sesli kitap okuyarak",
+          "Onu her gün gezdirerek",
+          "Onu eve götürerek"
+        ],
+        "answer": 1,
+        "explain": "\"Her gün kafesinin yanında oturup sesli kitap okuyarak\" doğru: anlatıcı \"every day I sat next to his cage and read a book aloud\" diyor; ağustosta Karabaş elinden yemek alıyor."
+      }
+    ]
+  },
+  {
+    "id": "go_bike_chain",
+    "level": "A2",
+    "genre": "öykü",
+    "emoji": "🚲",
+    "title": "The Noisy Bike",
+    "titleTr": "Gürültülü bisiklet",
+    "text": "Zeynep's bike made a bad noise on the way to school. Then the chain came off. After school, she pushed the bike to a small repair shop on Çınar Street.\n\nAn old man looked up from a wheel. \"Good afternoon. What's the problem?\"\n\n\"My chain came off, and the bike makes a funny noise,\" Zeynep said.\n\nThe man turned the pedals slowly. \"Ah, I see. The chain is very dry. When did you last oil it?\"\n\n\"Oil it? Never, I think.\"\n\nHe laughed. \"A chain is like a person. It needs a drink sometimes.\"\n\n\"Can you fix it today? I need it tomorrow.\"\n\n\"Of course. Come back in an hour. The brakes need some work, too.\"\n\n\"How much will it cost?\"\n\n\"Let's say two hundred lira. If I need a new part, I'll call you first.\"\n\nShe sat in the park and did her homework. After an hour, she came back. Her bike was clean and quiet.\n\n\"Here's a small bottle of oil,\" the man said. \"Put a few drops on the chain every month. Then you won't need me so often.\"\n\n\"But I like your shop,\" Zeynep said with a smile.\n\n\"Then come and say hello. Just not with a broken bike!\"",
+    "glosses": {
+      "chain": "zincir",
+      "came off": "çıktı",
+      "repair shop": "tamirci dükkânı",
+      "wheel": "tekerlek",
+      "pedals": "pedallar",
+      "oil": "yağlamak; yağ",
+      "brakes": "frenler",
+      "part": "parça",
+      "drops": "damla"
+    },
+    "questions": [
+      {
+        "q": "Bisikletin asıl sorunu neydi?",
+        "options": [
+          "Zincir kuruydu ve yerinden çıktı",
+          "Tekerlek patlamıştı",
+          "Bisiklet çok eskiydi",
+          "Pedallar kırılmıştı"
+        ],
+        "answer": 0,
+        "explain": "\"Zincir kuruydu ve yerinden çıktı\" doğru: tamirci \"The chain is very dry\" diyor; zincir yolda çıkmıştı."
+      },
+      {
+        "q": "Tamirci para konusunda ne yapacağını söylüyor?",
+        "options": [
+          "Bisikleti bir hafta tutacak",
+          "Yeni parça gerekirse önce Zeynep'i arayacak",
+          "Parayı önceden isteyecek",
+          "Frenlere dokunmayacak"
+        ],
+        "answer": 1,
+        "explain": "\"Yeni parça gerekirse önce Zeynep'i arayacak\" doğru: tamirci \"If I need a new part, I'll call you first\" diyor."
+      },
+      {
+        "q": "Tamirci Zeynep'e neden bir şişe yağ verdi?",
+        "options": [
+          "Bisikleti satsın diye",
+          "Kafede kullansın diye",
+          "Zinciri her ay kendisi yağlasın diye",
+          "Babasına götürsün diye"
+        ],
+        "answer": 2,
+        "explain": "\"Zinciri her ay kendisi yağlasın diye\" doğru: tamirci \"Put a few drops on the chain every month\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_selcuk_train",
+    "level": "A2",
+    "genre": "anlatı",
+    "emoji": "🚆",
+    "title": "A Train to Selçuk",
+    "titleTr": "Trenle Selçuk'a",
+    "text": "Last April, my husband and I wanted a cheap weekend away. We live in İzmir, so we didn't need a car or a plane. We took a train from Basmane station to Selçuk. The journey took about an hour and a half.\n\nThe town of Selçuk is small and quiet. In spring, storks build nests on an old stone aqueduct. From our hotel window, we counted eleven nests!\n\nOn Saturday morning, we walked up to the old castle on the hill above the town. From the top, we could see the whole valley. The castle walls were my favourite part.\n\nIn the afternoon, we took a minibus up into the hills to Şirince. It's a village with white houses and narrow streets. Many shops sell fruit wine and olive oil soap. We bought some soap for my mother.\n\nOn Sunday morning it rained. We stayed in the hotel, drank tea and wrote postcards.\n\nWe came home on the evening train. It was a short trip, but we want to go back in autumn.",
+    "glosses": {
+      "journey": "yolculuk",
+      "storks": "leylekler",
+      "nests": "yuvalar",
+      "minibus": "minibüs, dolmuş",
+      "hills": "tepeler",
+      "narrow": "dar",
+      "soap": "sabun",
+      "postcards": "kartpostallar",
+      "stone aqueduct": "taş su kemeri",
+      "fruit wine": "meyve şarabı",
+      "valley": "vadi",
+      "walls": "surlar, duvarlar"
+    },
+    "questions": [
+      {
+        "q": "Çift Selçuk'a nasıl gitti?",
+        "options": [
+          "Uçakla",
+          "Trenle",
+          "Otobüsle",
+          "Arabayla"
+        ],
+        "answer": 1,
+        "explain": "\"Trenle\" doğru: metinde \"We took a train from Basmane station to Selçuk\" diyor."
+      },
+      {
+        "q": "Anlatıcı Şirince'de ne aldı?",
+        "options": [
+          "Bir şişe meyve şarabı",
+          "Bir kartpostal",
+          "Annesi için sabun",
+          "Beyaz bir tabak"
+        ],
+        "answer": 2,
+        "explain": "\"Annesi için sabun\" doğru: metinde \"We bought some soap for my mother\" diyor."
+      },
+      {
+        "q": "Selçuk'ta anlatıcının en sevdiği şey neydi?",
+        "options": [
+          "Otel penceresi",
+          "Tren istasyonu",
+          "Leylek yuvaları",
+          "Kalenin duvarları"
+        ],
+        "answer": 3,
+        "explain": "\"Kalenin duvarları\" doğru: anlatıcı \"The castle walls were my favourite part\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_ljubljana_postcard",
+    "level": "A2",
+    "genre": "e-posta",
+    "emoji": "🐉",
+    "title": "Greetings from Ljubljana",
+    "titleTr": "Ljubljana'dan selamlar",
+    "text": "Subject: Greetings from Ljubljana!\n\nHi Elif,\n\nI'm writing from a little coffee shop next to the river in Ljubljana. It's the capital of Slovenia, but it feels like a small town. I'm here for three days for work, and today is my free day.\n\nMost of the old town centre has no cars, so it's very quiet. People walk or ride bikes in the streets. This morning I rented a bike for a few euros.\n\nThere are many bridges over the river. My favourite is the Dragon Bridge. It has four big green dragons on it! People told me the dragon is the symbol of the city.\n\nAfter lunch, I took a funicular up the hill to the castle. It's like a small train that climbs. The view from the top was amazing. I could see red roofs and green mountains far away.\n\nThe food is good, too. Yesterday I tried a local sausage with potatoes. It was delicious.\n\nTomorrow I fly back to İstanbul. I'm bringing you a little dragon for your desk!\n\nSee you on Saturday?\nMia",
+    "glosses": {
+      "greetings": "selamlar",
+      "euros": "avro",
+      "capital": "başkent",
+      "rented": "kiraladım",
+      "dragon": "ejderha",
+      "dragons": "ejderhalar",
+      "symbol": "sembol, simge",
+      "funicular": "füniküler",
+      "climbs": "tırmanır",
+      "roofs": "çatılar",
+      "sausage": "sosis, sucuk",
+      "delicious": "çok lezzetli"
+    },
+    "questions": [
+      {
+        "q": "Mia Ljubljana'da neden bulunuyor?",
+        "options": [
+          "Tatil için",
+          "Okumak için",
+          "İş için",
+          "Bir arkadaşının düğünü için"
+        ],
+        "answer": 2,
+        "explain": "\"İş için\" doğru: Mia \"I'm here for three days for work\" diyor."
+      },
+      {
+        "q": "Mia'nın en sevdiği köprüde ne var?",
+        "options": [
+          "Eski bir saat",
+          "Kırmızı çatılar",
+          "Küçük bir tren",
+          "Dört büyük yeşil ejderha"
+        ],
+        "answer": 3,
+        "explain": "\"Dört büyük yeşil ejderha\" doğru: Mia Dragon Bridge için \"It has four big green dragons on it!\" diyor."
+      },
+      {
+        "q": "Mia Elif'e ne getiriyor?",
+        "options": [
+          "Masası için küçük bir ejderha",
+          "Bir paket sosis",
+          "Bir bisiklet",
+          "Bir kale fotoğrafı"
+        ],
+        "answer": 0,
+        "explain": "\"Masası için küçük bir ejderha\" doğru: Mia \"I'm bringing you a little dragon for your desk!\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_chess_champion",
+    "level": "A2",
+    "genre": "röportaj",
+    "emoji": "♟️",
+    "title": "A Young Chess Champion",
+    "titleTr": "Genç bir satranç şampiyonu",
+    "text": "Ece Tunç is twelve years old. Last month she won the town's junior chess tournament. We met her at the community centre, where the chess club meets every Saturday.\n\nReporter: Ece, congratulations! How did you start playing chess?\n\nEce: My grandfather taught me when I was six. We played every evening after dinner.\n\nReporter: Do you still play with him?\n\nEce: Yes, but now I win most games. He isn't very happy about that!\n\nReporter: Why did you join the club?\n\nEce: I wanted new people to play with. At the club, there are children and adults. Everyone plays with everyone.\n\nReporter: How much do you practise?\n\nEce: About an hour a day. I also solve chess puzzles on my tablet.\n\nReporter: What was the hardest moment in the tournament?\n\nEce: The final game. It took two hours. My hands were cold, and I couldn't eat my sandwich.\n\nReporter: What advice do you have for beginners?\n\nEce: Don't be afraid to lose. I lost hundreds of games. Every time, I learned something new.\n\nReporter: And what's next?\n\nEce: The regional tournament in April. I'm a bit nervous, but I'm excited too.",
+    "glosses": {
+      "junior": "küçükler (yaş grubu)",
+      "chess": "satranç",
+      "tournament": "turnuva",
+      "community centre": "halk merkezi",
+      "reporter": "muhabir",
+      "congratulations": "tebrikler",
+      "practise": "çalışmak, antrenman yapmak",
+      "solve": "çözmek",
+      "puzzles": "bulmacalar",
+      "beginners": "yeni başlayanlar",
+      "regional": "bölgesel",
+      "nervous": "gergin, heyecanlı"
+    },
+    "questions": [
+      {
+        "q": "Ece satrancı kimden öğrendi?",
+        "options": [
+          "Okuldaki öğretmeninden",
+          "Kulüpteki çocuklardan",
+          "Tabletindeki bir oyundan",
+          "Dedesinden"
+        ],
+        "answer": 3,
+        "explain": "\"Dedesinden\" doğru: Ece \"My grandfather taught me when I was six\" diyor."
+      },
+      {
+        "q": "Ece kulübe neden katıldı?",
+        "options": [
+          "Yeni insanlarla oynamak için",
+          "Dedesi istediği için",
+          "Kulüp ücretsiz olduğu için",
+          "Satranç öğretmek için"
+        ],
+        "answer": 0,
+        "explain": "\"Yeni insanlarla oynamak için\" doğru: Ece \"I wanted new people to play with.\" diyor."
+      },
+      {
+        "q": "Ece yeni başlayanlara ne öneriyor?",
+        "options": [
+          "Her gün beş saat çalışsınlar",
+          "Kaybetmekten korkmasınlar",
+          "Sadece büyüklerle oynasınlar",
+          "Turnuvalara girmesinler"
+        ],
+        "answer": 1,
+        "explain": "\"Kaybetmekten korkmasınlar\" doğru: Ece \"Don't be afraid to lose\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_thursday_football",
+    "level": "A2",
+    "genre": "öykü",
+    "emoji": "⚽",
+    "title": "One Player Short",
+    "titleTr": "Bir oyuncu eksik",
+    "text": "Every Thursday evening, Kerem plays five-a-side football with people from his office. They rent a small pitch near the metro station for one hour.\n\nThis Thursday, there was a problem. Only nine people came.\n\n\"We need ten,\" said Burcu, the team captain. \"Who can we call?\"\n\n\"My neighbour plays sometimes,\" Kerem said. \"But he is away this week.\"\n\nJust then, a tall man walked past the pitch with a sports bag.\n\n\"Excuse me!\" Burcu shouted. \"Do you want to play with us? We need one more player.\"\n\nThe man stopped. \"Really? I'm waiting for my friends, but they're late. OK, why not?\"\n\nHis name was Ali, and he was very fast. He played on Kerem's team. In twenty minutes, he scored three goals.\n\n\"Who is this guy?\" asked Ozan from the other team. \"Is he a professional?\"\n\nAli laughed. \"No, I'm a dentist. But I played for my university.\"\n\nAt the end, Kerem's team won seven to four. Everyone shook hands.\n\n\"Come again next Thursday,\" Kerem said. \"We need a fast player like you.\"\n\n\"I'll come,\" Ali said. \"But next week I'll play on the other team. Then it's fair.\"\n\n\"Thank you!\" Ozan said. \"Finally, some good news for us!\"",
+    "glosses": {
+      "five-a-side": "beşer kişilik (halı saha)",
+      "rent": "kiralamak",
+      "pitch": "saha",
+      "captain": "kaptan",
+      "scored": "attı",
+      "goals": "gol",
+      "professional": "profesyonel",
+      "dentist": "diş hekimi",
+      "shook hands": "tokalaştı",
+      "fair": "adil"
+    },
+    "questions": [
+      {
+        "q": "Bu perşembe sorun neydi?",
+        "options": [
+          "Bir oyuncu eksikti",
+          "Saha kapalıydı",
+          "Yağmur yağıyordu",
+          "Top kaybolmuştu"
+        ],
+        "answer": 0,
+        "explain": "\"Bir oyuncu eksikti\" doğru: metinde \"Only nine people came\" ve Burcu \"We need ten\" diyor."
+      },
+      {
+        "q": "Ali'nin mesleği ne?",
+        "options": [
+          "Profesyonel futbolcu",
+          "Diş hekimi",
+          "Yazılım mühendisi",
+          "Spor öğretmeni"
+        ],
+        "answer": 1,
+        "explain": "\"Diş hekimi\" doğru: Ali \"No, I'm a dentist\" diyor."
+      },
+      {
+        "q": "Ali gelecek hafta neden diğer takımda oynamak istiyor?",
+        "options": [
+          "Kerem'i sevmediği için",
+          "Ozan onun arkadaşı olduğu için",
+          "Maç adil olsun diye",
+          "Diğer takım daha iyi olduğu için"
+        ],
+        "answer": 2,
+        "explain": "\"Maç adil olsun diye\" doğru: Ali \"next week I'll play on the other team. Then it's fair.\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_game_night_howto",
+    "level": "A2",
+    "genre": "nasıl yapılır",
+    "emoji": "🎲",
+    "title": "How to Plan a Game Night",
+    "titleTr": "Oyun gecesi nasıl düzenlenir?",
+    "text": "A game night is a cheap and fun evening with friends. Here are some simple steps.\n\nFirst, choose a date and invite people. Four to six players is a good number. With more people, the games become too long.\n\nNext, choose the games. Have one easy game and one longer board game. Easy card games are good at the start, because people are still arriving. You can ask your friends to bring their favourite games, too.\n\nRead the rules before the evening. Nothing is more boring than reading a long rule book for thirty minutes. If the rules are difficult, watch a short video.\n\nPrepare simple food. Choose food that people can eat with one hand. Crisps, nuts or small sandwiches are good. Keep drinks on a different table. A glass of juice can ruin a game board in one second!\n\nBe a good host. Explain the rules slowly and help new players. Remember, the aim is to have fun, not to win every game.\n\nFinally, finish on time, because many people work the next day. Before everyone leaves, take a photo with the winner. Then choose a date for the next game night.",
+    "glosses": {
+      "invite": "davet etmek",
+      "board game": "kutu oyunu",
+      "rules": "kurallar",
+      "rule book": "kural kitapçığı",
+      "crisps": "cips",
+      "nuts": "kuruyemiş",
+      "ruin": "mahvetmek",
+      "host": "ev sahibi",
+      "aim": "amaç",
+      "winner": "kazanan"
+    },
+    "questions": [
+      {
+        "q": "Metne göre kaç oyuncu iyi bir sayıdır?",
+        "options": [
+          "İki ile üç arası",
+          "Dört ile altı arası",
+          "On kişiden fazla",
+          "Tam sekiz kişi"
+        ],
+        "answer": 1,
+        "explain": "\"Dört ile altı arası\" doğru: metinde \"Four to six players is a good number\" diyor."
+      },
+      {
+        "q": "Neden içecekleri başka bir masada tutmalıyız?",
+        "options": [
+          "Daha soğuk kalsınlar diye",
+          "Misafirler daha az içsin diye",
+          "Oyun tahtası ıslanıp bozulmasın diye",
+          "Masa küçük olduğu için"
+        ],
+        "answer": 2,
+        "explain": "\"Oyun tahtası ıslanıp bozulmasın diye\" doğru: metinde \"A glass of juice can ruin a game board in one second!\" diyor."
+      },
+      {
+        "q": "Oyun gecesinin asıl amacı nedir?",
+        "options": [
+          "Her oyunu kazanmak",
+          "Yeni oyunlar satın almak",
+          "Kuralları ezberlemek",
+          "Eğlenmek"
+        ],
+        "answer": 3,
+        "explain": "\"Eğlenmek\" doğru: metinde \"the aim is to have fun, not to win every game\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_holiday_savings",
+    "level": "A2",
+    "genre": "nasıl yapılır",
+    "emoji": "🫙",
+    "title": "How to Save for a Summer Holiday",
+    "titleTr": "Yaz tatili için nasıl para biriktirilir?",
+    "text": "Do you want a holiday next summer, but you never have enough money? Try these easy ideas.\n\nFirst, decide where you want to go and find out the cost. Write the number on a piece of paper. For example, \"Kaş, one week: 45,000 lira.\" Put the paper on your fridge.\n\nNext, divide it by the number of months before your holiday. If you have ten months, you need to save 4,500 lira a month. Now the big number looks smaller.\n\nThen open a separate bank account only for the holiday. On payday, move the money into this account first. Don't wait until the end of the month. By then, the money is usually gone.\n\nLook at your small daily costs, too. A café coffee every morning can cost over a thousand lira a month. Make coffee at home three days a week. Then put the difference in a jar.\n\nFinally, check your progress every month. When you reach half of your goal, celebrate a little. But don't spend the holiday money!",
+    "glosses": {
+      "find out": "öğrenmek",
+      "fridge": "buzdolabı",
+      "divide": "bölmek",
+      "separate": "ayrı",
+      "bank account": "banka hesabı",
+      "payday": "maaş günü",
+      "difference": "aradaki fark",
+      "jar": "kavanoz",
+      "progress": "ilerleme",
+      "goal": "hedef",
+      "celebrate": "kutlamak"
+    },
+    "questions": [
+      {
+        "q": "İlk adım nedir?",
+        "options": [
+          "Bir kavanoz satın almak",
+          "Her gün kahve içmeyi bırakmak",
+          "Nereye gideceğine karar verip masrafı öğrenmek",
+          "Maaş gününü beklemek"
+        ],
+        "answer": 2,
+        "explain": "\"Nereye gideceğine karar verip masrafı öğrenmek\" doğru: metinde \"First, decide where you want to go and find out the cost\" diyor."
+      },
+      {
+        "q": "Maaş gününde ne yapılmalı?",
+        "options": [
+          "Tüm parayı harcamak",
+          "Ay sonuna kadar beklemek",
+          "Bir kafeye gitmek",
+          "Tatil parasını hemen ayrı hesaba aktarmak"
+        ],
+        "answer": 3,
+        "explain": "\"Tatil parasını hemen ayrı hesaba aktarmak\" doğru: metinde \"On payday, move the money into this account first\" diyor."
+      },
+      {
+        "q": "Haftada üç gün evde kahve yapınca ne olur?",
+        "options": [
+          "Aradaki farkı kavanozda biriktirirsin",
+          "Kahve daha lezzetli olur",
+          "Tatil daha kısa olur",
+          "Banka hesabı kapanır"
+        ],
+        "answer": 0,
+        "explain": "\"Aradaki farkı kavanozda biriktirirsin\" doğru: metinde \"Then put the difference in a jar\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_green_armchair",
+    "level": "A2",
+    "genre": "öykü",
+    "emoji": "🛋️",
+    "title": "The Green Armchair",
+    "titleTr": "Yeşil koltuk",
+    "text": "Mia needed an armchair for her new flat. New ones were too expensive. So she went to a second-hand furniture shop near her home.\n\nThe shop was full of old tables, lamps and mirrors. In the corner, she saw a green armchair.\n\n\"How much is this armchair?\" she asked.\n\nThe owner, a man with a grey moustache, looked up from his newspaper. \"That one? Three thousand lira.\"\n\n\"Three thousand? But there's a small hole here, on the arm.\"\n\n\"That's not a hole. That's history,\" he said with a smile. \"It's from the 1970s.\"\n\nMia sat in the chair. It was very comfortable. \"I can pay two thousand,\" she said.\n\n\"Two thousand is too little. Two thousand six hundred.\"\n\n\"Two thousand two hundred, and I'll carry it home myself.\"\n\nThe man laughed. \"Do you live near here?\"\n\n\"Yes, two streets away. On the third floor.\"\n\n\"Third floor, without a lift?\"\n\n\"Without a lift,\" Mia said.\n\n\"OK, OK. Two thousand four hundred, and my son carries it for you. Deal?\"\n\n\"Deal!\" Mia said, and she shook his hand.\n\nThat evening, Mia sat in her green armchair with a cup of tea. The small hole was still there. But now it was part of her history, too.",
+    "glosses": {
+      "armchair": "koltuk",
+      "second-hand": "ikinci el",
+      "furniture": "mobilya",
+      "mirrors": "aynalar",
+      "moustache": "bıyık",
+      "hole": "delik",
+      "arm": "kol (koltuğun)",
+      "history": "tarih, geçmiş",
+      "lift": "asansör",
+      "deal": "anlaştık"
+    },
+    "questions": [
+      {
+        "q": "Mia neden ikinci el dükkânına gitti?",
+        "options": [
+          "Eski lambalar topladığı için",
+          "Dükkân sahibini tanıdığı için",
+          "Bir ayna kırdığı için",
+          "Yeni koltuklar çok pahalı olduğu için"
+        ],
+        "answer": 3,
+        "explain": "\"Yeni koltuklar çok pahalı olduğu için\" doğru: metinde \"New ones were too expensive\" diyor."
+      },
+      {
+        "q": "Mia sonunda koltuğa kaç lira ödedi?",
+        "options": [
+          "İki bin dört yüz",
+          "Üç bin",
+          "İki bin",
+          "İki bin altı yüz"
+        ],
+        "answer": 0,
+        "explain": "\"İki bin dört yüz\" doğru: satıcı \"Two thousand four hundred, and my son carries it for you\" diyor, Mia \"Deal!\" diyor."
+      },
+      {
+        "q": "Satıcı neden fiyatı biraz indirdi ve oğlunu gönderdi?",
+        "options": [
+          "Koltuk kırık olduğu için",
+          "Mia asansörsüz üçüncü katta oturduğu için",
+          "Mia gazeteci olduğu için",
+          "Dükkân kapanacağı için"
+        ],
+        "answer": 1,
+        "explain": "\"Mia asansörsüz üçüncü katta oturduğu için\" doğru: Mia \"On the third floor\" ve \"Without a lift\" diyor; satıcı ancak bundan sonra fiyatı indirip oğlunu öneriyor."
+      }
+    ]
+  },
+  {
+    "id": "go_trainers_too_small",
+    "level": "A2",
+    "genre": "öykü",
+    "emoji": "👟",
+    "title": "Half a Size Too Small",
+    "titleTr": "Yarım numara küçük",
+    "text": "Last Saturday, Aylin bought a pair of white trainers. On Monday she wore them to work. By one o'clock, her feet hurt badly. The shoes were half a size too small.\n\nOn Tuesday, she took them back to the shop. She had the box and the receipt in her bag.\n\n\"Hello. I bought these trainers on Saturday, but they're too small,\" she said.\n\nThe shop assistant looked at the shoes. \"Did you wear them outside?\"\n\n\"Only once, for a few hours. I'm sorry.\"\n\n\"I see. The bottoms are a little dirty. We can't give you your money back for worn shoes.\"\n\nShe felt disappointed. \"So I can't return them?\"\n\n\"You can't return them, but you can change them. Would you like a bigger size?\"\n\n\"Yes, please! Size thirty-nine.\"\n\nThe assistant went to the back of the shop. After a few minutes she came back. \"I'm sorry, we don't have thirty-nine in white. We have it in grey.\"\n\nAylin tried on the grey pair. They fitted perfectly.\n\n\"Actually, grey is better,\" Aylin said. \"White shoes get dirty so quickly.\"\n\nThe assistant laughed. \"That's true. Next time, walk around the shop for a few minutes first.\"\n\n\"Good idea,\" Aylin said. \"I learned that lesson the hard way.\"",
+    "glosses": {
+      "trainers": "spor ayakkabı",
+      "size": "numara, beden",
+      "receipt": "fiş",
+      "shop assistant": "satış görevlisi",
+      "feet": "ayaklar",
+      "dirty": "kirli",
+      "grey": "gri",
+      "bottoms": "tabanlar",
+      "worn": "giyilmiş",
+      "disappointed": "hayal kırıklığına uğramış",
+      "fitted": "tam oldu (ayağına)",
+      "the hard way": "zor yoldan, yaşayarak"
+    },
+    "questions": [
+      {
+        "q": "Ayakkabıların sorunu neydi?",
+        "options": [
+          "Yarım numara küçüktü",
+          "Rengi beğenilmedi",
+          "Biri yırtıktı",
+          "Çok pahalıydı"
+        ],
+        "answer": 0,
+        "explain": "\"Yarım numara küçüktü\" doğru: metinde \"The shoes were half a size too small\" diyor."
+      },
+      {
+        "q": "Mağaza neden parayı geri vermedi?",
+        "options": [
+          "Aylin'in fişi yoktu",
+          "Ayakkabılar giyilmiş ve tabanları kirlenmişti",
+          "Mağaza iade almıyordu",
+          "Ayakkabılar indirimliydi"
+        ],
+        "answer": 1,
+        "explain": "\"Ayakkabılar giyilmiş ve tabanları kirlenmişti\" doğru: görevli \"The bottoms are a little dirty. We can't give you your money back for worn shoes.\" diyor."
+      },
+      {
+        "q": "Aylin sonunda ne aldı?",
+        "options": [
+          "Paranın tamamını",
+          "Beyaz renkte aynı numarayı",
+          "Gri renkte bir numara büyüğünü",
+          "Başka bir mağazadan yeni ayakkabı"
+        ],
+        "answer": 2,
+        "explain": "\"Gri renkte bir numara büyüğünü\" doğru: otuz dokuz numara beyazı yok; Aylin gri çifti deniyor ve \"grey is better\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_kite_festival",
+    "level": "A2",
+    "genre": "haber",
+    "emoji": "🪁",
+    "title": "Hundreds of Kites over the Beach",
+    "titleTr": "Sahilde yüzlerce uçurtma",
+    "text": "More than two thousand people came to Yeniköy's first kite festival on Sunday. The festival was on the long beach south of the town.\n\nThe weather was perfect. There was a strong wind and almost no clouds. By twelve o'clock, hundreds of kites in many colours were flying in the sky. Some were very big. One kite looked like a whale and was twelve metres long.\n\nThe town council organised the event with a local school. Before the festival, teachers showed children how to make kites. They used paper, wood and string. More than three hundred children made their own kites.\n\n\"My kite is a fish,\" said nine-year-old Kaan. \"It went up very high, but then it fell into the sea!\"\n\nThere was also food, music and a competition for the most beautiful kite. First prize went to Defne Sarı, eleven, for a red and yellow bird.\n\nThe mayor said the festival was a big success. \"We want to do it every year,\" he said. \"Next year, we hope to invite kite clubs from other countries.\"\n\nAfter the festival, volunteers collected forty bags of rubbish from the beach.",
+    "glosses": {
+      "kite": "uçurtma",
+      "kites": "uçurtmalar",
+      "whale": "balina",
+      "town council": "belediye",
+      "wood": "tahta",
+      "string": "ip",
+      "competition": "yarışma",
+      "prize": "ödül",
+      "mayor": "belediye başkanı",
+      "volunteers": "gönüllüler",
+      "rubbish": "çöp"
+    },
+    "questions": [
+      {
+        "q": "Festival nerede yapıldı?",
+        "options": [
+          "Okul bahçesinde",
+          "Kasabanın güneyindeki uzun sahilde",
+          "Belediye binasının önünde",
+          "Bir parkta"
+        ],
+        "answer": 1,
+        "explain": "\"Kasabanın güneyindeki uzun sahilde\" doğru: haberde \"on the long beach south of the town\" diyor."
+      },
+      {
+        "q": "Kaan'ın uçurtmasına ne oldu?",
+        "options": [
+          "Birincilik ödülü kazandı",
+          "İpi koptu ve kayboldu",
+          "Çok yükseldi, sonra denize düştü",
+          "Rüzgâr olmadığı için uçmadı"
+        ],
+        "answer": 2,
+        "explain": "\"Çok yükseldi, sonra denize düştü\" doğru: Kaan \"It went up very high, but then it fell into the sea!\" diyor."
+      },
+      {
+        "q": "Belediye başkanı gelecek yıl için ne umuyor?",
+        "options": [
+          "Festivali kapatmayı",
+          "Sahili temizlemeyi",
+          "Yeni bir okul açmayı",
+          "Başka ülkelerden uçurtma kulüplerini davet etmeyi"
+        ],
+        "answer": 3,
+        "explain": "\"Başka ülkelerden uçurtma kulüplerini davet etmeyi\" doğru: başkan \"we hope to invite kite clubs from other countries\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_hidirellez_wishes",
+    "level": "A2",
+    "genre": "anlatı",
+    "emoji": "🌹",
+    "title": "Wishes on a Rose Bush",
+    "titleTr": "Gül dalında dilekler",
+    "text": "In my town, Edirne, the night of 5 May is very special. It's Hıdırellez, a spring festival. Old stories say that two holy men meet on earth on this day. Their names are Hızır and İlyas. Many people say summer begins after this night.\n\nWhen I was a child, my grandmother prepared me for the festival. In the afternoon, we wrote our wishes on small pieces of paper. I always wished for a bicycle. My older sister wished for good exam results.\n\nIn the evening, we went to the rose bush in our garden. We tied our wishes to its branches with red ribbon. My grandmother said, \"Don't tell anyone your wish. If you tell, it won't come true.\"\n\nLater, the whole street went to the park by the river. There was music, dancing and a big fire. Young people jumped over the fire, and everyone clapped. I was too small, so I watched from my father's shoulders.\n\nEarly the next morning, we took our wishes from the rose bush. Some families put them in the river.\n\nDid my wishes come true? Well, I got the bicycle when I was nine. So maybe the rose bush listened!",
+    "glosses": {
+      "holy": "kutsal",
+      "earth": "yeryüzü",
+      "wishes": "dilekler",
+      "wished": "diledi",
+      "rose bush": "gül fidanı",
+      "tied": "bağladık",
+      "branches": "dallar",
+      "ribbon": "kurdele",
+      "come true": "gerçekleşmek",
+      "clapped": "alkışladı",
+      "shoulders": "omuzlar"
+    },
+    "questions": [
+      {
+        "q": "Anlatıcı çocukken her yıl ne diledi?",
+        "options": [
+          "İyi sınav sonuçları",
+          "Yeni bir ev",
+          "Bir bisiklet",
+          "Bir köpek"
+        ],
+        "answer": 2,
+        "explain": "\"Bir bisiklet\" doğru: anlatıcı \"I always wished for a bicycle\" diyor; iyi sınav sonuçlarını ablası diliyor."
+      },
+      {
+        "q": "Büyükanne neden dileği kimseye söylememesini istedi?",
+        "options": [
+          "Ablası kıskanmasın diye",
+          "Kâğıt kaybolmasın diye",
+          "Babası kızmasın diye",
+          "Söylerse dilek gerçekleşmez diye"
+        ],
+        "answer": 3,
+        "explain": "\"Söylerse dilek gerçekleşmez diye\" doğru: büyükanne \"Don't tell anyone your wish. If you tell, it won't come true.\" diyor."
+      },
+      {
+        "q": "Anlatıcı ateşin üstünden atlamak yerine ne yaptı?",
+        "options": [
+          "Babasının omuzlarından izledi",
+          "Nehirde yüzdü",
+          "Evde uyudu",
+          "Müzik çaldı"
+        ],
+        "answer": 0,
+        "explain": "\"Babasının omuzlarından izledi\" doğru: anlatıcı \"I was too small, so I watched from my father's shoulders\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_bonfire_night_letter",
+    "level": "A2",
+    "genre": "e-posta",
+    "emoji": "🎆",
+    "title": "Fireworks and Cold Hands",
+    "titleTr": "Havai fişekler ve soğuk eller",
+    "text": "Subject: Fireworks and cold hands\n\nHi Sam,\n\nHow are you, cousin? How is İstanbul? Here in London it's cold and grey, but last night was Bonfire Night!\n\nDo you remember it? Every year on the fifth of November, there are fireworks and big fires. It's about a man called Guy Fawkes. In 1605, he and his friends wanted to blow up the Houses of Parliament. They failed, and people lit fires to celebrate. That was more than four hundred years ago, but we still do it.\n\nThis year I took the kids to the park near my mum's house. It was crowded, and we stood in the mud for an hour. But the fireworks were wonderful. Little Leo held my hand and shouted \"Wow!\" at every one.\n\nWe had toffee apples, like when we were children. Mine was so sticky! And Maya wrote her name in the air with a sparkler.\n\nMy mum says hello. She asks, \"When is Sam coming home for Christmas?\" So, when are you coming?\n\nLove,\nLucy\n\nP.S. Do people in Turkey have a night like this?",
+    "glosses": {
+      "grey": "gri",
+      "bonfire night": "Şenlik Ateşi Gecesi",
+      "fireworks": "havai fişekler",
+      "blow up": "havaya uçurmak",
+      "parliament": "parlamento",
+      "failed": "başaramadılar",
+      "lit": "yaktılar",
+      "crowded": "kalabalık",
+      "mud": "çamur",
+      "toffee apples": "elma şekerleri",
+      "sticky": "yapışkan",
+      "sparkler": "maytap"
+    },
+    "questions": [
+      {
+        "q": "Lucy nerede yaşıyor?",
+        "options": [
+          "İstanbul'da",
+          "Manchester'da",
+          "Edinburgh'da",
+          "Londra'da"
+        ],
+        "answer": 3,
+        "explain": "\"Londra'da\" doğru: Lucy \"Here in London it's cold and grey\" diyor."
+      },
+      {
+        "q": "İnsanlar bu gece neden ateş yakıyor?",
+        "options": [
+          "Guy Fawkes'ın planı başarısız olduğu için",
+          "Kış başladığı için",
+          "Noel yaklaştığı için",
+          "Kralın doğum günü olduğu için"
+        ],
+        "answer": 0,
+        "explain": "\"Guy Fawkes'ın planı başarısız olduğu için\" doğru: Lucy \"They failed, and people lit fires to celebrate\" diyor."
+      },
+      {
+        "q": "Lucy'nin annesi Sam hakkında ne soruyor?",
+        "options": [
+          "Sam'in İstanbul'da ne iş yaptığını",
+          "Sam'in Noel'de eve ne zaman geleceğini",
+          "Sam'in havai fişek görüp görmediğini",
+          "Sam'in Türkçe öğrenip öğrenmediğini"
+        ],
+        "answer": 1,
+        "explain": "\"Sam'in Noel'de eve ne zaman geleceğini\" doğru: Lucy'nin annesi \"When is Sam coming home for Christmas?\" diye soruyor."
+      }
+    ]
+  },
+  {
+    "id": "go_rainy_saturday_bowling",
+    "level": "A2",
+    "genre": "öykü",
+    "emoji": "🎳",
+    "title": "Plan B on a Rainy Saturday",
+    "titleTr": "Yağmurlu cumartesi için B planı",
+    "text": "On Friday evening, Elif called Mia.\n\n\"Hi! Do you have plans for Saturday?\"\n\n\"Not really. I want to get out of the house. Any ideas?\"\n\n\"Let's walk along the coast. Then we can have fish for lunch.\"\n\n\"Perfect. What time?\"\n\n\"Ten o'clock at the ferry station?\"\n\n\"OK, see you there!\"\n\nOn Saturday morning, Mia opened the curtains. It was raining heavily. She checked the weather app. There was rain all day, and a strong wind.\n\nShe called Elif. \"Have you looked outside?\"\n\n\"Yes,\" Elif said sadly. \"Our walk is a bad idea now.\"\n\n\"So what do we do? I don't want to stay at home.\"\n\n\"What about bowling? There's a bowling centre in the new shopping centre.\"\n\n\"Bowling? I haven't played for ten years!\"\n\n\"Neither have I. That's why it'll be fun.\"\n\nThey met at eleven. Their first games were terrible. Again and again, Mia's ball went into the side. Elif laughed so much that she had to sit down.\n\nBut in the third game, Mia knocked down all ten pins. She jumped and shouted. The people next to them clapped.\n\n\"You know,\" Mia said later, \"I'm happy it rained today.\"\n\n\"Me too,\" said Elif. \"But next week, the sea!\"",
+    "glosses": {
+      "coast": "sahil, kıyı",
+      "curtains": "perdeler",
+      "heavily": "şiddetle",
+      "bowling": "bovling",
+      "neither have i": "ben de (oynamadım)",
+      "knocked down": "devirdi",
+      "pins": "lobutlar",
+      "clapped": "alkışladı"
+    },
+    "questions": [
+      {
+        "q": "İlk plan neydi?",
+        "options": [
+          "Sahil boyunca yürüyüp balık yemek",
+          "Bovling oynamak",
+          "Sinemaya gitmek",
+          "Evde film izlemek"
+        ],
+        "answer": 0,
+        "explain": "\"Sahil boyunca yürüyüp balık yemek\" doğru: Elif \"Let's walk along the coast. Then we can have fish for lunch.\" diyor."
+      },
+      {
+        "q": "Planı neden değiştirdiler?",
+        "options": [
+          "Vapur iptal olmuştu",
+          "Bütün gün yağmur ve rüzgâr vardı",
+          "Mia hastaydı",
+          "Restoran kapalıydı"
+        ],
+        "answer": 1,
+        "explain": "\"Bütün gün yağmur ve rüzgâr vardı\" doğru: hava uygulamasında \"rain all day, and a strong wind\" görünüyor."
+      },
+      {
+        "q": "Üçüncü oyunda ne oldu?",
+        "options": [
+          "Elif oyunu bıraktı",
+          "Top kırıldı",
+          "Mia on lobutun hepsini devirdi",
+          "Mia yine kenara attı"
+        ],
+        "answer": 2,
+        "explain": "\"Mia on lobutun hepsini devirdi\" doğru: metinde \"in the third game, Mia knocked down all ten pins\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_bus_line_47",
+    "level": "A2",
+    "genre": "haber",
+    "emoji": "🚌",
+    "title": "New Bus Line to the Hospital",
+    "titleTr": "Hastaneye yeni otobüs hattı",
+    "text": "A new bus line will start next Monday. It will connect the east side of the city with the State Hospital. The number of the new line is 47.\n\nUntil now, people from the east side needed two buses for the hospital. The journey often took more than an hour. With line 47, it will take about twenty-five minutes.\n\nOn weekdays, the buses will run every fifteen minutes. They will start at six in the morning and stop at eleven at night. At weekends, they will run every thirty minutes. Passengers can pay with their city card, as on other lines.\n\nThe new buses are electric and very quiet. They also have more space for wheelchairs and pushchairs.\n\nMany people are happy about the change. \"My mother visits the hospital every week,\" said Hülya Demir, 52. \"Now she can go alone. Before, I always had to drive her.\"\n\nBut some shop owners on Atatürk Street are not happy. The new bus stop is in front of their shops. \"Where will our customers park?\" asked one café owner.\n\nThe city council has an answer. Next year, there will be a car park behind the street.",
+    "glosses": {
+      "connect": "bağlamak",
+      "state hospital": "devlet hastanesi",
+      "journey": "yolculuk",
+      "run": "sefer yapmak, çalışmak",
+      "passengers": "yolcular",
+      "electric": "elektrikli",
+      "wheelchairs": "tekerlekli sandalyeler",
+      "pushchairs": "bebek arabaları",
+      "customers": "müşteriler",
+      "city council": "belediye",
+      "car park": "otopark"
+    },
+    "questions": [
+      {
+        "q": "Yeni hatla hastaneye yolculuk ne kadar sürecek?",
+        "options": [
+          "Bir saatten fazla",
+          "Yaklaşık yirmi beş dakika",
+          "On beş dakika",
+          "Yarım saat"
+        ],
+        "answer": 1,
+        "explain": "\"Yaklaşık yirmi beş dakika\" doğru: haberde \"With line 47, it will take about twenty-five minutes\" diyor."
+      },
+      {
+        "q": "Hülya Demir neden mutlu?",
+        "options": [
+          "Otobüs ücretsiz olacak",
+          "Evinin önüne durak yapılacak",
+          "Annesi artık hastaneye tek başına gidebilecek",
+          "Hastanede iş buldu"
+        ],
+        "answer": 2,
+        "explain": "\"Annesi artık hastaneye tek başına gidebilecek\" doğru: Hülya \"Now she can go alone\" diyor."
+      },
+      {
+        "q": "Bazı dükkân sahipleri neden mutsuz?",
+        "options": [
+          "Otobüsler çok gürültülü",
+          "Dükkânları kapanacak",
+          "Sokak adı değişecek",
+          "Müşterileri park edecek yer bulamayacak"
+        ],
+        "answer": 3,
+        "explain": "\"Müşterileri park edecek yer bulamayacak\" doğru: bir kafe sahibi \"Where will our customers park?\" diye soruyor."
+      }
+    ]
+  },
+  {
+    "id": "go_street_guitarist",
+    "level": "A2",
+    "genre": "röportaj",
+    "emoji": "🎸",
+    "title": "Music on the Street",
+    "titleTr": "Sokakta müzik",
+    "text": "Every evening, a young man plays the guitar near the ferry station. Crowds stop and listen. His name is Emre Kaya, and he is twenty-six. Mia talked to him after his show.\n\nMia: How long have you played in the street?\n\nEmre: For about three years. Before that, I worked in a bank.\n\nMia: Why did you leave the bank?\n\nEmre: I was bored. Music was always my real love. One day I took my guitar to the street, and people listened.\n\nMia: Do you earn enough money?\n\nEmre: Some days, yes. On a good Saturday, I earn more than in a day at the bank. On a rainy day, I earn nothing.\n\nMia: What do people usually ask for?\n\nEmre: Old Turkish songs. Tourists often ask for the Beatles, too!\n\nMia: What's the hardest part?\n\nEmre: The weather, and sometimes the noise. Once a man asked me to stop because his baby was sleeping. So I played very quietly.\n\nMia: What's your best memory?\n\nEmre: Last summer, an old couple danced in front of me. It was their fiftieth wedding anniversary. Everyone clapped.\n\nMia: What are your plans?\n\nEmre: I want to record my own songs. But I'll always play in the street. Here, I meet real people.",
+    "glosses": {
+      "crowds": "kalabalıklar",
+      "bored": "sıkılmış",
+      "earn": "kazanmak",
+      "tourists": "turistler",
+      "quietly": "sessizce",
+      "memory": "anı",
+      "couple": "çift",
+      "wedding anniversary": "evlilik yıl dönümü",
+      "clapped": "alkışladı",
+      "record": "kaydetmek"
+    },
+    "questions": [
+      {
+        "q": "Emre sokakta çalmadan önce ne iş yapıyordu?",
+        "options": [
+          "Vapurda çalışıyordu",
+          "Müzik öğretmeniydi",
+          "Bankada çalışıyordu",
+          "Bir kafede garsondu"
+        ],
+        "answer": 2,
+        "explain": "\"Bankada çalışıyordu\" doğru: Emre \"Before that, I worked in a bank\" diyor."
+      },
+      {
+        "q": "Yağmurlu günlerde ne oluyor?",
+        "options": [
+          "En çok parayı kazanıyor",
+          "Bankaya geri dönüyor",
+          "Turistler için çalıyor",
+          "Hiç para kazanmıyor"
+        ],
+        "answer": 3,
+        "explain": "\"Hiç para kazanmıyor\" doğru: Emre \"On a rainy day, I earn nothing\" diyor."
+      },
+      {
+        "q": "Emre'nin en güzel anısı nedir?",
+        "options": [
+          "Yaşlı bir çiftin onun önünde dans etmesi",
+          "Bir bebeği uyutması",
+          "Kendi şarkısını kaydetmesi",
+          "Bir turistle tanışması"
+        ],
+        "answer": 0,
+        "explain": "\"Yaşlı bir çiftin onun önünde dans etmesi\" doğru: Emre \"an old couple danced in front of me\" diyor; çiftin ellinci evlilik yıl dönümüydü."
+      }
+    ]
+  },
+  {
+    "id": "go_split_the_bill",
+    "level": "A2",
+    "genre": "öykü",
+    "emoji": "🧾",
+    "title": "Who Pays What?",
+    "titleTr": "Kim ne öder?",
+    "text": "Four friends, Can, Damla, Arda and Nehir, had dinner at a restaurant. They wanted to celebrate the end of their exams. At the end of the evening, the waiter brought the bill.\n\n\"Two thousand four hundred lira,\" said Can. \"So it's six hundred each. Easy.\"\n\n\"Wait a minute,\" said Nehir. \"I only had a salad and water. That's about three hundred lira.\"\n\n\"And I had no dessert,\" said Arda.\n\nDamla laughed. \"OK, let's do it properly. Give me the bill.\"\n\nShe looked at the list carefully. \"Can, you had the meat dish, a juice and the chocolate cake. That's seven hundred and fifty.\"\n\n\"Fine,\" Can said. \"I was hungry.\"\n\n\"Then Arda, the fish and two lemonades. That's five hundred and twenty. Then Nehir, salad and water, three hundred and ten. And my sandwich and tea are four hundred and eighty.\"\n\nThen Arda checked on his phone. \"That's two thousand and sixty. What about the rest?\"\n\n\"That's the bread for the table and the service charge,\" Damla said. \"We can split it four ways. That's eighty-five each.\"\n\n\"You're like a bank,\" said Nehir with a smile.\n\n\"My mother is an accountant,\" Damla answered. \"I learned from her.\"\n\nCan paid by card, and everyone sent him their share by phone.",
+    "glosses": {
+      "celebrate": "kutlamak",
+      "waiter": "garson",
+      "bill": "hesap",
+      "dessert": "tatlı",
+      "properly": "düzgünce, doğru dürüst",
+      "lemonades": "limonatalar",
+      "service charge": "servis ücreti",
+      "split": "bölüşmek",
+      "accountant": "muhasebeci",
+      "share": "pay"
+    },
+    "questions": [
+      {
+        "q": "Can önce hesabı nasıl bölmek istedi?",
+        "options": [
+          "Herkes yediğini ödesin",
+          "Hepsini kendisi ödesin",
+          "Damla tek başına ödesin",
+          "Herkes eşit, altı yüzer lira ödesin"
+        ],
+        "answer": 3,
+        "explain": "\"Herkes eşit, altı yüzer lira ödesin\" doğru: Can \"So it's six hundred each. Easy.\" diyor."
+      },
+      {
+        "q": "Nehir neden itiraz etti?",
+        "options": [
+          "Sadece salata yiyip su içtiği için",
+          "Pizzayı beğenmediği için",
+          "Yanında para olmadığı için",
+          "Tatlı istediği için"
+        ],
+        "answer": 0,
+        "explain": "\"Sadece salata yiyip su içtiği için\" doğru: Nehir \"I only had a salad and water\" diyor."
+      },
+      {
+        "q": "Damla hesap yapmayı nereden öğrenmiş?",
+        "options": [
+          "Bankada çalışırken",
+          "Muhasebeci olan annesinden",
+          "Üniversitedeki sınavlardan",
+          "Telefonundaki bir uygulamadan"
+        ],
+        "answer": 1,
+        "explain": "\"Muhasebeci olan annesinden\" doğru: Damla \"My mother is an accountant… I learned from her.\" diyor."
+      }
+    ]
+  }
+]
