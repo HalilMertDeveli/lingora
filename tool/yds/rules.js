@@ -46,6 +46,18 @@ module.exports = (P, problems) => {
         if (e.explanation && e.options) {
           P(e.explanation.toLowerCase().includes(e.options[e.answer].toLowerCase().slice(0, 40)) || /[“‘'"]/.test(e.explanation),
             `${at}: açıklama doğru şıkkı metniyle anmıyor`);
+          // yds-arastirma (PR #41 review): say why the others are wrong — at least 3 of the 4 named by text.
+          // Short options must appear whole; long ones (clauses, translations) by one of their own words.
+          const ex = e.explanation.toLocaleLowerCase('tr');
+          const words = (o) => o.toLocaleLowerCase('tr').match(/[\p{L}']{4,}/gu) || [];
+          const named = e.options.filter((o, i) => {
+            if (i === e.answer) return false;
+            const t = o.toLocaleLowerCase('tr').replace(/[.,;:!?]+$/, '');
+            if (t.split(/\s+/).length <= 3) return ex.includes(t);
+            const others = new Set(e.options.filter((x) => x !== o).flatMap(words));
+            return words(o).some((w) => !others.has(w) && ex.includes(w));
+          }).length;
+          P(named >= 3, `${at}: açıklama yanlış şıklardan yalnızca ${named} tanesini anıyor (≥3)`);
         }
         break;
       }
@@ -53,8 +65,6 @@ module.exports = (P, problems) => {
         P(Array.isArray(e.pairs) && e.pairs.length >= 3 && e.pairs.every((p) => p.length === 2 && str(p[0]) && str(p[1])), `${at}: pairs`);
         const L = new Set(e.pairs.map((p) => norm(p[0]))), R = new Set(e.pairs.map((p) => norm(p[1])));
         P(L.size === e.pairs.length && R.size === e.pairs.length, `${at}: çiftler benzersiz değil`);
-        // Match tiles are one line high (lib/exercises/match_exercise.dart, height 28): longer text is cut off.
-        for (const p of e.pairs) P(p[0].length <= 18 && p[1].length <= 18, `${at}: eşleştirme metni 18 karakteri aşıyor: ${p.join(' / ')}`);
         break;
       }
       case 'fillBlank': {

@@ -23,14 +23,14 @@ if (process.env.NGSL) {
 const isKnown = (w) => known.has(w) || l.lemmas(w).some((x) => known.has(x)) || bankWords.some((b) => !b.includes(' ') && ctx.uses(w, b));
 
 function analyse(text) {
-  const words = text.match(/[A-Za-z]+(?:[-'][A-Za-z]+)*/g) || [];
+  const words = text.match(/\p{L}+(?:[-'’]\p{L}+)*/gu) || [];
   const sentences = text.split(/(?<=[.!?])\s+/).filter((s) => s.trim());
   // Proper nouns: capitalised and not sentence-initial.
-  const initial = new Set(sentences.map((s) => (s.match(/[A-Za-z]+/) || [''])[0]));
+  const initial = new Set(sentences.map((s) => (s.match(/\p{L}+/u) || [''])[0]));
   const unknown = [];
   for (const w of words) {
-    if (/^[A-Z]/.test(w) && !initial.has(w)) continue;
-    const parts = w.toLowerCase().split(/[-']/).filter((p) => p.length > 1);
+    if (/^\p{Lu}/u.test(w) && !initial.has(w)) continue;
+    const parts = w.toLowerCase().split(/[-'’]/).filter((p) => p.length > 1);
     if (parts.some((p) => !isKnown(p))) unknown.push(w.toLowerCase());
   }
   const passive = (text.match(/\b(is|are|was|were|be|been|being)\s+(?:\w+ly\s+)?(\w+ed|known|shown|given|taken|made|found|seen|built|written|done|grown|held|kept|led|paid|sold|told|thought|brought|caught|chosen|drawn|driven|eaten|fallen|forgotten|hidden|spoken|stolen|worn|won|understood|taught|spent|sent|set|put|cut|read|run|begun|broken|born|spread|felt|lost|meant|left)\b/gi) || []).length;
