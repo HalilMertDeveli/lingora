@@ -444,8 +444,8 @@ Kurallar:
 | **2a** | `write`, `shadow`, `listenFirst`; `assessWriting` sunucu fonksiyonu; ünite–senaryo bağı | altyapı oturumu (orkestra şefi atar) ya da genel-icerik | orta | Faz 1a |
 | **2b** | S5–S8 için 12 beceri ünitesi (kalıp §2 "Faz 2b ders kalıbı"); B1–B2 beceri testleri; 12 `write` görevi ve sunucu rubrikleri | genel-icerik | ~460 alıştırma + 12 `write` + 12 rubrik | 2a |
 | **3** (PR #59) | §2 "Faz 3": S1–S4 beceri ünitelerine `shadow` ve `write`; beceri hikâyeleri ve S5–S8 temel hikâyelerine `listenFirst` | genel-icerik | küçük–orta | 2a |
-| **4** (sıradaki) | §2 "Faz 4–5": C1 Bölüm 9 Derinlik (12 ünite, beceri bölüm içinde) | genel-icerik | ~470 alıştırma + 6  | 2a |
-| **5** | C1 Bölüm 10 Ustalık (12 ünite) + C1 beceri testi + 15 C1 kütüphane metni | genel-icerik | ~470 alıştırma + 6  + 15 metin | 4 |
+| **4** (sıradaki) | §2 "Faz 4–5": C1 Bölüm 9 Derinlik (12 ünite, beceri bölüm içinde) | genel-icerik | ~470 alıştırma + 6 `write` | 2a |
+| **5** | C1 Bölüm 10 Ustalık (12 ünite) + C1 beceri testi + 15 C1 kütüphane metni | genel-icerik | ~470 alıştırma + 6 `write` + 15 metin | 4 |
 | **6** (PR #66) | §2 "Faz 6": ortak okuma kütüphanesine 65 metin (A1 15, A2 20, B1 10, B2 20); okuma ekranında "Önce dinle"; NGSL kapsam kontrolü | genel-icerik (altyapı yds-yontem ile) | 65 metin + küçük altyapı | yok |
 
 Faz sonrası toplam (yaklaşık):
