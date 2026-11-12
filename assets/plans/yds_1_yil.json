@@ -589,7 +589,7 @@
       "mocks": [
         {
           "kind": "half",
-          "nodeId": null,
+          "nodeId": "ys8u1h",
           "size": 40,
           "minutes": 90
         }
@@ -640,7 +640,7 @@
       "mocks": [
         {
           "kind": "half",
-          "nodeId": null,
+          "nodeId": "ys8u3h",
           "size": 40,
           "minutes": 90
         }
@@ -719,7 +719,7 @@
       "mocks": [
         {
           "kind": "half",
-          "nodeId": null,
+          "nodeId": "ys8u5h",
           "size": 40,
           "minutes": 90
         }
@@ -920,7 +920,11 @@
         "ys3u1",
         "ys3u2"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys9u1",
+        "ys9u2",
+        "ys10u1"
+      ],
       "grammar": "—",
       "questionWork": "Cloze, cümle tamamlama (strateji)",
       "mock": null,
@@ -939,7 +943,10 @@
         "ys3u3",
         "ys3u4"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys9u3",
+        "ys10u2"
+      ],
       "grammar": "—",
       "questionWork": "Çeviri (iki yön)",
       "mock": "Tam deneme 3 (yeni: yds_m11)",
@@ -965,14 +972,18 @@
         "ys3u5",
         "ys3u6"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys9u4",
+        "ys9u5",
+        "ys10u3"
+      ],
       "grammar": "—",
       "questionWork": "Okuma (strateji)",
       "mock": "Yarım deneme 6",
       "mocks": [
         {
           "kind": "half",
-          "nodeId": null,
+          "nodeId": "ys10u3m",
           "size": 40,
           "minutes": 90
         }
@@ -991,7 +1002,10 @@
         "ys3u7",
         "ys3u8"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys9u6",
+        "ys10u4"
+      ],
       "grammar": "—",
       "questionWork": "Diyalog, restatement",
       "mock": "Tam deneme 4 (yeni: yds_m12)",
@@ -1017,14 +1031,18 @@
         "ys3u9",
         "ys3u10"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys9u7",
+        "ys9u8",
+        "ys10u5"
+      ],
       "grammar": "—",
       "questionWork": "Paragraf tamamlama, anlam bütünlüğü",
       "mock": "Yarım deneme 7",
       "mocks": [
         {
           "kind": "half",
-          "nodeId": null,
+          "nodeId": "ys10u5m",
           "size": 40,
           "minutes": 90
         }
@@ -1043,7 +1061,10 @@
         "ys3u11",
         "ys3u12"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys9u9",
+        "ys10u6"
+      ],
       "grammar": "—",
       "questionWork": "Okuma (zamanlı)",
       "mock": "Tam deneme 5 (yeni: yds_m13) + Bölüm 3 denemesi",
@@ -1075,7 +1096,11 @@
         "ys3u13",
         "ys3u14"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys9u10",
+        "ys9u11",
+        "ys10u7"
+      ],
       "grammar": "—",
       "questionWork": "Okuma (zamanlı)",
       "mock": "Yarım deneme 8 + okuma kampı denemesi",
@@ -1088,7 +1113,7 @@
         },
         {
           "kind": "half",
-          "nodeId": null,
+          "nodeId": "ys10u7m",
           "size": 40,
           "minutes": 90
         }
@@ -1104,7 +1129,10 @@
       "phase": 4,
       "units": "Tekrar haftası: ys3 zayıf soru tipleri",
       "unitIds": [],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys9u12",
+        "ys10u8"
+      ],
       "grammar": "zayıf konular",
       "questionWork": "Karışık set (tüm tipler)",
       "mock": "Tam deneme 6 (yeni: yds_m14)",
