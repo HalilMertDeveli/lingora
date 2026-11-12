@@ -49,7 +49,7 @@ Uygulama `guide`'ı tr_en ünitelerinde göstermiyorsa bu Faz 1a'da eklenir (§3
 
 Her ünite için: can-do (CEFR satırından), görev ve Türk hatası odağı. Kelime kuralı:
 
-- Ünite başına en fazla 25 yeni lemma.
+- Ünite başına yeni lemma: A1–A2 en fazla 25 (hedef kelime grubu olan ünitede, ör. sayılar, aşılabilir); B1+ en fazla 50, bunların en az 20'si l1–l4'te yeniden geçer.
 - Aynı bölümün önceki ünitelerinden en az 15 kelime ve 2 yapı yeniden kullanılır (sarmal).
 - Kadro mevcut: Elif, Kerem, Sam, Mia, Deniz… Bölümün hikâye çizgisi sürdürülür (`side-session-notes` dosyalarındaki dersler-a, dersler-b1 ve dersler-b2 notlarına bakın).
 
@@ -248,7 +248,7 @@ Kurallar:
    - l4'ün `translate` cümleleri birleşince tutarlı bir metin çıkıyor.
    - `answers` doğal varyantları kapsıyor: kısaltmalar, *a/the*, *so/therefore*.
 7. **Türk hatası:** Her derste en az bir alıştırma §2'deki odak hatayı hedefliyor (yanlış şık ya da yanıltıcı token).
-8. **Sarmal kelime:** Ünite başına en fazla 25 yeni lemma; önceki ünitelerden en az 15 kelime yeniden kullanılmış. İçerik ekibi PR açıklamasında sayıyı versin.
+8. **Sarmal kelime:** Yeni lemma sınırı §2'deki gibi (A1–A2 ≤25, B1+ ≤50); önceki ünitelerden en az 15 kelime yeniden kullanılmış. İçerik ekibi PR açıklamasında sayıyı versin.
 9. **Özgünlük:** Ders kitabı, sınav ya da başka uygulama metni kopyalanmamış. Açık lisanslı kaynak kullanıldıysa `docs/kaynaklar.md`'ye yazılmış.
 10. Dil doğruluğu: İngilizce doğal (doğal konuşan kontrolü), Türkçe çeviri doğru. Cevap anahtarı bağımsız bir çözümle doğrulanmış.
 
