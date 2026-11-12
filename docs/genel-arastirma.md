@@ -2,7 +2,7 @@
 
 Oturum: genel-arastirma, Kasım 2026. Bu belge genel kursun (A1–B2, `tr_en`) hedefe ne kadar yakın olduğunu ölçer. Müfredat kararları bu belgeye dayanır: [genel-mufredat.md](genel-mufredat.md).
 
-Öğrenme bilimi (aralıklı tekrar, geri çağırma, karışık çalışma, kelime kapsamı, okuma hacmi) YDS araştırmasında ayrıntılı ele alınıyor. Burada yalnızca genel kursu ilgilendiren sonuçları özetliyorum ve tekrar etmiyorum. Bu belge şu konulara odaklanır:
+Öğrenme bilimi (aralıklı tekrar, geri çağırma, karışık çalışma, kelime kapsamı, okuma hacmi) YDS araştırmasında ayrıntılı ele alınıyor: [sinav/yds-arastirma.md](sinav/yds-arastirma.md) §2 öğrenme bilimi, §1.5 kelime kapsamı, §3 yöntem → özellik tablosu. Burada yalnızca genel kursu ilgilendiren sonuçları özetliyorum ve tekrar etmiyorum. Bu belge şu konulara odaklanır:
 
 - CEFR tanımları,
 - seviye başına süre,
@@ -89,6 +89,8 @@ Notlar:
 | B2 | 3.250–3.750 | Bazı kaynaklar ~4.000 der (Milton 2010 sunumu, Laufer) |
 | C1 | 3.750–4.500 | |
 | C2 | 4.500–5.000 | |
+
+**Birim notu:** Bu tablo **lemma** sayar. YDS planı **kelime ailesi** sayar ve sınav yoğunluğu nedeniyle daha yüksek hedefler koyar. Örnek: B2 için 5.010 aile, yıl sonu için 6.600 aile (akademik okuma). Ayrıntılar [sinav/yds-arastirma.md](sinav/yds-arastirma.md) §1.5'te. İki belge çelişmez; sayılar karşılaştırılırken birim belirtilmelidir.
 
 Kapsam eşikleri (Laufer; Nation; Webb & Rodgers):
 
@@ -276,7 +278,7 @@ Bölüm kilidi son ünite sınavına bağlı. Ünite sınavı, `speak` hariç de
 
 ## 7. Öğrenme bilimi: genel kursa yansıyanlar
 
-Ayrıntılar yds-arastirma belgesinde. Genel kurs için kullanılan kurallar:
+Ayrıntılar [sinav/yds-arastirma.md](sinav/yds-arastirma.md) §2 ve §3. Genel kurs için kullanılan kurallar:
 
 - **Sarmal tekrar:** Her beceri ünitesi, bölümün önceki ünitelerinden en az 15 kelimeyi ve 2 dilbilgisi yapısını yeniden kullanır (karışık / interleaved).
 - **Geri çağırma:** Beceri derslerinde seçme yerine üretim ağırlıklı olmalı (çeviri, dikte, konuşma). Tanıma, hatırlamadan zayıftır.
