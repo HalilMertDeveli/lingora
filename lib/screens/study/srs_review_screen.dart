@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/course_repository.dart';
 import '../../data/practice.dart';
 import '../../data/progress.dart';
+import '../../study/daily_plan.dart' show inMaintenance;
 import '../../study/review_queue.dart';
+import '../../study/year_plan.dart';
 import '../../theme.dart';
 import '../../ui/motion.dart';
 import '../lesson_screen.dart';
@@ -27,7 +29,18 @@ final reviewQueueProvider = Provider.family<ReviewQueue?, int>((ref, newPerDay) 
     today: today,
     newPerDay: newPerDay,
     ydsCards: ref.watch(ydsVocabProvider).value ?? const [],
+    // After the year plan, new cards come from every bank, not only the
+    // units reached.
+    everyUnit: ref.watch(inMaintenanceProvider),
   );
+});
+
+/// Whether the learner's year plan is over and "Bugün" runs maintenance
+/// weeks (yds-faz4-icerik: lessons never run out).
+final inMaintenanceProvider = Provider<bool>((ref) {
+  final plan = ref.watch(progressProvider.select((p) => p.studyPlan));
+  final year = ref.watch(yearPlanProvider).value;
+  return plan != null && year != null && inMaintenance(plan, year);
 });
 
 /// "Tekrar kartları": word cards due today and the day's new words, recalled

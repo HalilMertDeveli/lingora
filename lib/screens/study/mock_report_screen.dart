@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../study/analysis.dart';
+import '../../study/question_types.dart';
 import '../../study/study_state.dart';
 import '../../theme.dart';
 import 'methods_screen.dart';
@@ -35,7 +36,7 @@ class MockReportScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final answers = ref.watch(studyLogProvider).answers.where((a) => a.source == source).toList();
-    final report = MockReport(answers);
+    final report = MockReport(answers, mix: ExamMix.of(mockIdOf(source)));
     final t = Theme.of(context).textTheme;
     final slow = overTwoMinutes(answers);
     return Scaffold(

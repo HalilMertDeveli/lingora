@@ -92,7 +92,7 @@ final todayPlanProvider = Provider<TodayPlan?>((ref) {
   final today = dayKey(now);
   final yesterday = dayKey(now.subtract(const Duration(days: 1)));
   final log = ref.watch(studyLogProvider);
-  final week = data.year.week(plan.week);
+  final week = planWeekOf(plan, data.year);
   final queue = ref.watch(reviewQueueProvider(newWordsPerDay(week, data.year)));
   final next = nextPlanStep(week, data.units, p, year: data.year);
   final kind = dayKind(plan: plan, week: week, now: now, mockYesterday: mockOn(log, yesterday));
@@ -153,7 +153,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
     final p = ref.read(progressProvider);
     final plan = p.studyPlan;
     if (data == null || plan == null || !mounted) return;
-    final week = data.year.week(plan.week);
+    final week = planWeekOf(plan, data.year);
     final queue = ref.read(reviewQueueProvider(newWordsPerDay(week, data.year)));
     final next = settleWeek(
       plan: plan,
@@ -269,8 +269,10 @@ class _TodayBody extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hafta ${today.plan.week} / ${today.year.length}'
-                '${phase == null ? '' : ' · ${phase.title}'}',
+                inMaintenance(today.plan, today.year)
+                    ? 'Program bitti · sürdürme haftası ${today.plan.week - today.year.length}'
+                    : 'Hafta ${today.plan.week} / ${today.year.length}'
+                          '${phase == null ? '' : ' · ${phase.title}'}',
                 style: t.titleMedium,
               ),
               const SizedBox(height: 4),
@@ -278,7 +280,9 @@ class _TodayBody extends ConsumerWidget {
               const SizedBox(height: 10),
               if (today.week.reviewWeek)
                 _WeekRow(
-                  'Tekrar haftası: çalışılan gün',
+                  inMaintenance(today.plan, today.year)
+                      ? 'Sürdürme haftası: çalışılan gün'
+                      : 'Tekrar haftası: çalışılan gün',
                   status.studyDays,
                   today.year.daysPerWeek,
                   key: const Key('week-days'),
@@ -293,8 +297,11 @@ class _TodayBody extends ConsumerWidget {
               if (status.wordsTarget > 0) _WeekRow('Yeni kelime', status.words, status.wordsTarget),
               const SizedBox(height: 6),
               Text(
-                'Hafta, hedefleri bitince ilerler; kaçırdığın gün birikmez. '
-                'Bu hızla planın ${_dateTr(finish)} civarında biter.',
+                inMaintenance(today.plan, today.year)
+                    ? 'Dersler bitmez: her hafta bir tam deneme, kalan kelime bankalarından yeni kartlar, '
+                          'okunmamış ya da yeniden okunacak metinler ve hata defteri.'
+                    : 'Hafta, hedefleri bitince ilerler; kaçırdığın gün birikmez. '
+                          'Bu hızla planın ${_dateTr(finish)} civarında biter.',
                 key: const Key('today-finish'),
                 style: TextStyle(color: Brand.muted, fontSize: 13),
               ),
@@ -366,7 +373,11 @@ class _WeeklyReport extends ConsumerWidget {
                 ? 'Bu hafta soru çözülmedi'
                 : 'Soru doğruluğu: %${(right * 100 / answers.length).round()} (${answers.length} soru)',
           ),
-          if (estimateScore(log.answers, halfMocks: halfMockNodes(ref.watch(yearPlanProvider).value))
+          if (estimateScore(
+                log.answers,
+                halfMocks: halfMockNodes(ref.watch(yearPlanProvider).value),
+                mix: ExamMix.of(progress.studyPlan?.exam),
+              )
               case final score?)
             Text('Tahmini YDS puanı: $score', key: const Key('weekly-score')),
         ],
@@ -492,8 +503,10 @@ Future<void> runBlock(BuildContext context, WidgetRef ref, PlanBlock block) asyn
       await nav.push(MaterialPageRoute<void>(builder: (_) => const ReadingLibraryScreen()));
     case PlanBlock.questions:
       // Interleaving: the last four weeks' units, else the whole open path.
+      // In maintenance: every finished section.
       final recent = {
-        for (var w = today.plan.week; w > today.plan.week - 4 && w > 0; w--) ...today.year.week(w).unitIds,
+        if (!inMaintenance(today.plan, today.year))
+          for (var w = today.plan.week; w > today.plan.week - 4 && w > 0; w--) ...today.year.week(w).unitIds,
       };
       final pool = Course(
         id: 'plan_mix',
@@ -546,9 +559,17 @@ Future<bool> startPlanMock(BuildContext context, WidgetRef ref, PlanMock mock) a
     final exam = await ref.read(examProvider('yds').future);
     if (mock.kind == MockKind.full) {
       final pack = ExamPack.forExam('yds');
-      if (mock.id == null || pack == null || !ref.read(examPackUnlockedProvider('yds'))) return false;
+      if (pack == null || !ref.read(examPackUnlockedProvider('yds'))) return false;
       final content = await ref.read(examPackContentProvider(pack).future);
-      final full = content.mocks.where((m) => m.id == mock.id).firstOrNull;
+      final p = ref.read(progressProvider);
+      final id = pickFullMock(
+        packIds: [for (final m in content.mocks) m.id],
+        exam: p.studyPlan?.exam ?? 'yds',
+        mock: mock,
+        taken: p.examBest.keys.toSet(),
+        week: p.studyPlan?.week ?? 0,
+      );
+      final full = content.mocks.where((m) => m.id == id).firstOrNull;
       if (full == null) return false;
       await nav.push(
         MaterialPageRoute<void>(

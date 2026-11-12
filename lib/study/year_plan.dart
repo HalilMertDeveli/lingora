@@ -84,9 +84,15 @@ enum MockKind { full, half, section, check }
 /// mock node (`half` / `section`, [nodeId]; null when not shipped yet), or
 /// a level `check` (not a mock day).
 class PlanMock {
-  const PlanMock({required this.kind, this.id, this.nodeId, this.size = 0, this.minutes = 0});
+  const PlanMock({required this.kind, this.id, this.nodeId, this.size = 0, this.minutes = 0, this.yokdil});
   final MockKind kind;
+
+  /// Pack mock id (yds_m9); null in a maintenance week: the next one not
+  /// taken yet (see pickFullMock).
   final String? id;
+
+  /// The YÖKDİL mock a YÖKDİL learner takes instead (yokdil_m1).
+  final String? yokdil;
   final String? nodeId;
   final int size;
   final int minutes;
@@ -104,6 +110,7 @@ class PlanMock {
     nodeId: j['nodeId'] as String?,
     size: j['size'] as int? ?? 0,
     minutes: j['minutes'] as int? ?? 0,
+    yokdil: j['yokdil'] as String?,
   );
 
   /// Mocks of a plan file without `mocks`, from the week's text.
