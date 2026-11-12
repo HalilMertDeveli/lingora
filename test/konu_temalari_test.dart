@@ -27,7 +27,11 @@ void main() {
   group('topic themes', () {
     test('every unit names a theme that exists', () {
       final units = _units();
-      expect(units.length, 94 + 24 + 9, reason: '94 general units, 24 skill units and 9 professional ones');
+      expect(
+        units.length,
+        94 + 24 + 12 + 9,
+        reason: '94 general units, 24 skill units, 12 C1 units and 9 professional ones',
+      );
       for (final u in units) {
         expect(topicThemes.keys, contains(u['theme']), reason: '${u['id']} ${u['title']}');
       }
