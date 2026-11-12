@@ -192,12 +192,12 @@ class _PathListState extends ConsumerState<_PathList> {
   /// Brings the active node into view after this frame.
   void _focusSoon({bool force = false}) {
     _focusPending = false;
-    _focusAttempt(force: force, tries: 6);
+    _focusAttempt(force: force, tries: 60);
   }
 
   /// The active node may not be built yet (the list is lazy): jump near its
   /// unit first, then retry until the node exists and can be centred.
-  void _focusAttempt({required bool force, required int tries}) {
+  void _focusAttempt({required bool force, required int tries, bool first = true}) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       final ctx = _activeKey.currentContext;
@@ -206,13 +206,22 @@ class _PathListState extends ConsumerState<_PathList> {
         if (tries > 0 && index >= 0 && _scroll.hasClients && _shownUnits.isNotEmpty) {
           final pos = _scroll.position;
           final visible = _firstVisibleUnit();
-          // Step towards the unit; overshooting is fine, the next try corrects it.
-          final guess = pos.maxScrollExtent * (index / _shownUnits.length);
-          final target = visible < 0 || (visible - index).abs() > 1
-              ? guess
-              : pos.pixels + (index - visible) * 300;
+          final page = pos.viewportDimension * 0.9;
+          // First a rough jump by unit share (the lazy list only estimates its
+          // length), then walk a screen at a time towards the unit until its
+          // node is built; ensureVisible then centres it.
+          final double target;
+          if (first) {
+            target = pos.maxScrollExtent * (index / _shownUnits.length);
+          } else if (visible < 0 || visible < index) {
+            target = pos.pixels + page;
+          } else if (visible > index) {
+            target = pos.pixels - page;
+          } else {
+            target = pos.pixels + page / 3; // its unit is on screen; the node is further down
+          }
           _scroll.jumpTo(target.clamp(0.0, pos.maxScrollExtent));
-          _focusAttempt(force: force, tries: tries - 1);
+          _focusAttempt(force: force, tries: tries - 1, first: false);
         } else if (force && _scroll.hasClients) {
           _animateTo(0);
         }
