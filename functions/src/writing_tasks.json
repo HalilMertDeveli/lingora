@@ -405,5 +405,113 @@
       "word_order"
     ],
     "rubric": "Can-do: presents themselves in detail and flexibly in a job interview, here through a written cover letter. A successful letter names the position applied for, describes relevant experience with its duration, gives at least one concrete achievement with a figure or result, explains why the candidate wants this particular role, and uses a formal opening and closing (Dear Mr/Ms..., Yours sincerely) in short, focused paragraphs without contractions. At B2 we expect present perfect (simple and continuous) with for/since, correct articles before jobs and roles (an operations manager), prepositions such as responsible for and interested in, and at least one emphatic or cleft structure (What I am most proud of is..., It is... that...)."
+  },
+  "s9u2l4w": {
+    "level": "C1",
+    "task": "Okuduğun ya da dinlediğin bir popüler bilim yazısını yaklaşık 250 kelimeyle özetle ve yorumla. Önce ana bulguyu ve açıklamaları kendi cümlelerinle aktar, sonra gerekçeli görüşünü yaz. Adlaştırma kullan (the decision to…, an increase in…).",
+    "minWords": 220,
+    "maxWords": 280,
+    "checklist": [
+      "İlk paragrafta yazının konusunu ve ana bulgusunu kendi cümlelerinle verdin",
+      "Açıklamaları ya da kanıtları sıralı aktardın (The first…, The second…)",
+      "Kendi görüşünü ayrı bir paragrafta gerekçesiyle yazdın (In my view…, However…)",
+      "En az üç adlaştırma kullandın (the role of…, the lack of…, an increase in…)",
+      "Kısaltma ve argo kullanmadın; özet kısmında yazarın sözlerini kopyalamadın"
+    ],
+    "focus": [
+      "article",
+      "preposition"
+    ],
+    "rubric": "Can-do: Can summarise and respond to a popular science article in 220–280 words, reporting its main finding and explanations in their own words and giving a reasoned view. Task success: the first paragraph states the topic and main finding in the writer's own words, without copying sentences from the source; the explanations or evidence are reported in a clear order (The first…, The second…), and a limitation or criticism may be mentioned; the writer's own view is given in a separate paragraph with reasons and at least one hedged evaluation (In my view…, However…), followed by a short conclusion. Register: neutral-formal, with no contractions or slang. Cohesion: sequencing, contrast and reporting verbs (examines, mentions, presents). Target structure: at least three nominalisations used accurately and naturally (the role of X in Y, the lack of, an increase in, the use of). Check articles with defined nouns (the role of music, the lack of research) and noun + preposition patterns (an increase in, the effect of X on Y)."
+  },
+  "s9u4l4w": {
+    "level": "C1",
+    "task": "Okuduğun köşe yazısına (Tobias Reinholt, \"Press Record\") 220–280 kelimelik bir karşı görüş yazısı yaz. Yazarın savını kısaca özetle ve haklı olduğu bir noktayı kabul et; en az iki karşı gerekçe ver; bir alternatif öner ve vurgulu bir cümleyle bitir. En az üç cleft ya da pseudo-cleft cümle (What matters is…, It is… that…) kullan.",
+    "minWords": 220,
+    "maxWords": 280,
+    "checklist": [
+      "Girişte yazarın savını özetleyip haklı olduğu bir noktayı kabul ettin",
+      "En az iki karşı gerekçeyi ayrı paragraflarda verdin",
+      "En az üç cleft ya da pseudo-cleft cümle kullandın (What…is, It is…that/who)",
+      "Somut bir alternatif çözüm önerdin",
+      "Kaba ifadeler yerine ölçülü ve resmî bir üslup kullandın"
+    ],
+    "focus": [
+      "article",
+      "preposition"
+    ],
+    "rubric": "Can-do: Can write a 220–280-word response to an opinion column that fairly acknowledges the columnist's valid point and then argues against the main claim, using cleft sentences for emphasis. Task success: the introduction summarises the columnist's argument accurately and concedes at least one point (He is right about one thing); at least two counter-arguments are developed in separate paragraphs; a concrete alternative is proposed; the text ends with an emphatic closing sentence. Register: measured and formal, with no sarcasm or rude language. Cohesion: a clear paragraph order and linkers such as However, Nor and In short. Target structure: at least three correctly formed cleft or pseudo-cleft sentences (What matters is…, It is… that/who…, What worries me most is…), with no doubled subject (What… is it) and who for people. Check articles (a permanent record, the newest people) and prepositions (convinced by, within an hour, the effect on junior staff)."
+  },
+  "s9u6l4w": {
+    "level": "C1",
+    "task": "Okuduğun Clarke & Vos raporu için 220–260 kelimelik \"6. Recommendations\" bölümünü yaz. Kısa bir girişle bulgulara gönderme yap; en az üç bulguya alt başlıklarla (6.1, 6.2…) birer öneri getir; ekip liderlerinin kaygısına cevap ver ve ilerlemenin nasıl ölçüleceğini belirt. Resmî öneri kalıplarını (recommend that…, it is essential that…) subjunctive ile kullan.",
+    "minWords": 220,
+    "maxWords": 260,
+    "checklist": [
+      "Girişte bulgulara gönderme yaptın",
+      "En az üç öneriyi alt başlıklarla ayrı ayrı verdin",
+      "Her öneriyi rapordaki bir bulguya bağladın",
+      "En az üç kez that + yalın fiil kullandın (be, receive, work…)",
+      "Resmî ve kişisel olmayan bir üslup kullandın"
+    ],
+    "focus": [
+      "article",
+      "preposition"
+    ],
+    "rubric": "Can-do: Can write the 220–260-word recommendations section of an organisational report, basing each recommendation on the report's findings and using formal recommendation language. Task success: a short introduction refers back to the findings (In light of the findings above); at least three recommendations are given under numbered subheadings, each linked to a specific finding (the first week, unclear expectations, isolation, workload); where relevant, the concerns of the people affected are answered and the section says how progress will be measured. Register: impersonal, precise and formal, with no conversational language. Cohesion: a logical order of recommendations connected by linkers such as Finally, Instead and so that. Target structure: the subjunctive used correctly at least three times (recommend/suggest/propose that + base form, it is essential/vital/important that + be, not be in the negative); should + infinitive is also acceptable. Check articles (the first week, a named person) and prepositions (paired with, before the first day, in light of)."
+  },
+  "s9u8l4w": {
+    "level": "C1",
+    "task": "İki çalışma ya da öğrenme yolunu (ör. kütüphanede ve evde çalışmak, kurs ve kendi kendine öğrenmek) karşılaştıran 230–290 kelimelik bir deneme yaz. Başlık, giriş, her seçenek için bir paragraf, ortak nokta ve kendi sonucun olsun. En az dört farklı ileri bağlaç kullan (whereas, given that, insofar as, notwithstanding, by contrast…).",
+    "minWords": 230,
+    "maxWords": 290,
+    "checklist": [
+      "Başlık ve iki seçeneği tanıtan bir giriş yazdın",
+      "Her seçeneği ayrı bir paragrafta, en az bir örnekle anlattın",
+      "En az dört farklı ileri bağlaç kullandın (whereas, given that, insofar as, notwithstanding…)",
+      "Ortak bir noktayı ve kendi gerekçeli sonucunu verdin",
+      "Resmî ama akıcı bir üslup kullandın: kısaltma ve argo yok"
+    ],
+    "focus": [
+      "article",
+      "preposition"
+    ],
+    "rubric": "Can-do: Can write a clear, well-structured comparison essay of 230–290 words that weighs two options, supports each point with examples and reaches a reasoned personal conclusion. Task success: the essay has a title and an introduction naming both options, one developed paragraph per option with at least one concrete example each, a paragraph on what they have in common or how they differ overall, and a conclusion that states and justifies the writer's own view. Register is formal-neutral, with no contractions or slang. Cohesion is the unit's target: at least four different advanced linkers used accurately (whereas or while for contrast with a full clause, given that for a reason, insofar as to limit a claim, notwithstanding followed by a noun phrase, by contrast, that said), not just but and however, and not the same linker repeated. Check articles with institutions and generic nouns (the library, the same freedom, a plan) and prepositions in fixed patterns (from … to, in common, for students, at home, on a par with)."
+  },
+  "s9u10l4w": {
+    "level": "C1",
+    "task": "Seni çok etkileyen bir sergi, konser, oyun ya da sanat eseri hakkında 220–260 kelimelik bir blog yazısı yaz. Ne gördüğünü, neler hissettiğini ve okurlara neden önerdiğini (ya da önermediğini) anlat. En az altı güçlü eşdizim kullan (deeply moved, rave reviews, draw a crowd…).",
+    "minWords": 220,
+    "maxWords": 260,
+    "checklist": [
+      "En az altı güçlü eşdizim kullandın (deeply moved, rave reviews, sold out…)",
+      "Ne gördüğünü, ne hissettiğini ve önerini ayrı paragraflarda anlattın",
+      "Bir olumsuz yönü de dengeli biçimde söyledin (Not everything worked…)",
+      "Okura doğrudan bir öneriyle bitirdin",
+      "Edatlı eşdizimleri doğru kullandın (attention to, a chord with)"
+    ],
+    "focus": [
+      "article",
+      "preposition"
+    ],
+    "rubric": "Can-do: Can write a lively, well-organised blog post about a cultural experience, using strong, natural collocations to express feelings and evaluation precisely. Success: the post describes a specific exhibition, concert, play or work of art, says what the writer saw and felt, gives at least one balanced criticism and ends with a clear recommendation to the reader. Paragraphs move from context to experience to evaluation to recommendation. The register is personal but polished, suitable for a public blog, with no slang or text-speak. The target structure is strong collocations (adverb + adjective such as deeply moved or bitterly disappointed, adjective + noun such as heavy traffic or rave reviews, verb + noun such as draw a crowd or raise concerns, and verb + preposition such as pay attention to or strike a chord with); at least six should be used correctly and naturally, not listed. Check articles (the event, a lasting impression) and prepositions in fixed phrases (attention to, a chord with, in heavy traffic)."
+  },
+  "s9u12l4w": {
+    "level": "C1",
+    "task": "\"Ekip kararları oybirliğiyle mi alınmalı?\" sorusu üzerine 260–300 kelimelik tartışmacı bir deneme yaz. Görüşünü girişte açıkça belirt, en az iki gerekçe ver, karşı görüşü kabul edip yanıtla ve temkinli ifadeler kullan (arguably, admittedly, it could be argued that).",
+    "minWords": 260,
+    "maxWords": 300,
+    "checklist": [
+      "Girişte görüşünü açıkça belirttin (In my view…)",
+      "En az iki gerekçeyi ayrı paragraflarda verdin",
+      "Karşı görüşü kabul edip yanıtladın (Admittedly…, This is a fair point, but…)",
+      "En az üç temkinli ya da ikna ifadesi kullandın (arguably, it could be argued that…)",
+      "Sonuç paragrafında görüşünü yeniden vurguladın (To conclude…)"
+    ],
+    "focus": [
+      "article",
+      "preposition"
+    ],
+    "rubric": "Can-do: Can write a clear, well-structured argumentative essay on a debated issue, stating a position, supporting it with reasons and acknowledging and answering the opposing view. Success: the introduction states a clear position on whether team decisions should be unanimous; at least two body paragraphs give separate reasons with examples; one paragraph acknowledges the strongest opposing argument and then answers it; the conclusion restates the position without simply repeating the introduction. The register is formal and impersonal, with no contractions or slang. Cohesion relies on linkers (Moreover, Admittedly, Nevertheless, To conclude) and clear topic sentences. The target structure is persuasion and hedging: arguably, it could be argued that, to some extent, tends to, admittedly, this is a fair point, but, there is a strong case for; claims should be hedged where they are debatable but the overall position must stay clear. Check articles (the strongest argument, a serious weakness, in a crisis) and prepositions (a case for, agree in advance on, carry it out)."
   }
 }
