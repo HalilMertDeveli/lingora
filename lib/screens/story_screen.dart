@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/progress.dart';
+import '../exercises/common.dart' show stableShuffle;
 import '../models/course.dart';
 import '../services/speech.dart';
 import '../theme.dart';
@@ -325,7 +326,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
               ],
             ),
             const SizedBox(height: 10),
-            for (final c in s.choices)
+            for (final c in stableShuffle(s.choices, s.prompt!))
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: TapCard(
