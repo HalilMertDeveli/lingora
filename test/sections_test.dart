@@ -198,6 +198,47 @@ void main() {
       },
     );
 
+    test(
+      'C1 Section 10: a learner who finished S1–S9 keeps them finished and finds S10 open, not started',
+      () async {
+        final course = await loadCourse(rootBundle, 'tr_en');
+        final s10 = course.sections.firstWhere((s) => s.id == 's10');
+        expect((s10.index, s10.cefr, s10.units.length), (10, 'C1', 12));
+        expect(course.sections.indexOf(s10), 9, reason: 'after S9');
+        final before = course.sections.take(9).toList();
+        final p = _done([for (final s in before) ...s.nodes.map((n) => n.id)]);
+        for (final s in before) {
+          expect(sectionOpen(course, s, p), isTrue, reason: s.id);
+          expect(sectionProgress(s, p), 1, reason: s.id);
+          expect(sectionCompleted(s, p), isTrue, reason: s.id);
+        }
+        expect(sectionOpen(course, s10, p), isTrue);
+        expect(sectionProgress(s10, p), 0);
+        expect(sectionCompleted(s10, p), isFalse);
+        expect(currentNode(course, p)?.id, 's10u1l1');
+        // S10 opens on S9's last test; a learner still inside S9 finds it locked.
+        final s9 = before.last;
+        final s9Test = s9.units.last.nodes.firstWhere((n) => n.type == NodeType.test);
+        final upToS9Test = [
+          ...before.take(8).expand((s) => s.nodes.map((n) => n.id)),
+          for (final n in s9.nodes) n.id,
+        ];
+        expect(sectionOpen(course, s10, _done(upToS9Test)), isTrue);
+        expect(sectionOpen(course, s10, _done(upToS9Test.where((id) => id != s9Test.id).toList())), isFalse);
+        // C1 completion: the skills test and the last writing task.
+        final last = s10.units.last;
+        final test = last.nodes.firstWhere((n) => n.type == NodeType.test);
+        final writing = last.nodes.firstWhere((n) => n.exercises.any((e) => e.type == ExerciseType.write));
+        expect((test.title, test.exercises.length), ('Bölüm 10 beceri testi', 20));
+        expect(sectionCompleted(s10, _done([test.id])), isFalse);
+        expect(sectionCompleted(s10, _done([test.id, writing.id])), isTrue);
+        expect(
+          s10.units.every((u) => u.nodes.firstWhere((n) => n.type == NodeType.story).listenFirst),
+          isTrue,
+        );
+      },
+    );
+
     test('courses without section metadata get one hidden section', () async {
       final course = await loadCourse(rootBundle, 'pro_tourism');
       expect(course.sections, hasLength(1));

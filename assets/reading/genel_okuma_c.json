@@ -1,0 +1,871 @@
+[
+  {
+    "id": "go_c1_rooftop_bees",
+    "level": "C1",
+    "genre": "popüler bilim",
+    "emoji": "🐝",
+    "title": "The Bees Above the Traffic",
+    "titleTr": "Trafiğin üstündeki arılar",
+    "text": "On a flat roof six floors above one of the busiest roads in the city, three wooden boxes stand in a row, humming quietly. Below them, buses move slowly through the lunchtime traffic and delivery riders push their way between the cars. Up here, though, the only traffic that matters is the steady stream of bees setting off across the roofs and returning a few minutes later, their legs heavy with yellow pollen.\n\nKeeping bees in the city has gone from an odd hobby to something close to a fashion. Hotels keep hives on their roofs and serve the honey at breakfast. Office buildings install them to show how green they are, and restaurants proudly print the number of their bees on the menu. In several European capitals, the number of registered hives is said to have doubled in about ten years. The question scientists have started to ask is a slightly awkward one: is all this actually good for nature, or does it mainly make us feel good?\n\nAt first glance, a city seems an unlikely place for bees to do well. Yet beekeepers often report that there is plenty of city honey and that it is surprisingly varied in taste. The reason, some researchers suggest, lies in the mixed character of the urban landscape. Parks, private gardens, old churches, the edges of train lines and the trees along ordinary streets all flower at different times, so a single hive can find food from early spring until well into autumn. Modern farms, by contrast, is often planted with a single crop that flowers for a few weeks and then offers nothing at all. The chemicals used to kill insects also tend to be less common in towns, although this is not true everywhere.\n\nSo far, so encouraging. The problem is that the honeybee is only one species among many. In most countries there are hundreds of kinds of wild bee, most of which live alone rather than in large groups, and many of which are in serious decline. These quieter cousins carry pollen for a huge share of wild plants, and they need exactly the same thing as honeybees: flowers. A single hive can contain tens of thousands of workers, and they are extremely efficient at collecting food. When the number of hives in a district grows faster than the number of flowers, the wild bees may simply lose the competition.\n\nThere is some evidence that this is already happening. A study carried out in one large European city found that, in areas with many hives, wild bees were visiting fewer flowers than before, while the amount of food available per bee had dropped sharply. Some researchers now argue that certain city centres have more honeybees than they can feed. A few experts go further and describe the fashion for hives on roofs as a kind of farming that happens to look like protecting nature. Keeping honeybees, they point out, is closer to keeping chickens than to saving the planet.\n\nThat does not mean the beekeepers on the roofs are doing harm on purpose. Many of them are careful, well informed and genuinely in love with their insects. Selin, who looks after the three hives above the busy road, admits that she started for the honey and stayed for the bees. “When I opened the first box, I was frightened to death,” she says. “Now it's the calmest half hour of my week. You can't check your phone with gloves on.” She has recently started to plant wild flowers in pots around the roof and has persuaded the coffee shop on the ground floor to replace its plastic plants with real lavender.\n\nThis, many scientists believe, is the more useful lesson. If the aim is to help bees in general, the most effective step is not to add more hives but to add more flowers: to leave corners of parks wild, to grow local plants on balconies, to treat the weeds between the stones of the street a little more kindly. Some cities have started to create so-called “bee roads”, chains of small green spaces that allow insects to travel safely across built-up areas. These projects are less exciting to photograph than a beekeeper in a white suit, but they feed every species, not just one.\n\nThere is also a quieter benefit that is harder to measure. People who keep bees, or who simply watch them, tend to start noticing flowers, seasons and weather in a way that city life usually discourages. Selin says her neighbours now tell her when the old trees on their street are in flower. “They think they are doing me a favour,” she laughs. “Actually, they are learning to read the city the way the bees do.”",
+    "glosses": {
+      "hives": "kovanlar",
+      "hive": "kovan",
+      "honey": "bal",
+      "insects": "böcekler",
+      "bee": "arı",
+      "honeybees": "bal arıları",
+      "honeybee": "bal arısı",
+      "pollen": "polen, çiçek tozu",
+      "beekeepers": "arıcılar",
+      "beekeeper": "arıcı",
+      "humming": "vızıldayarak",
+      "gloves": "eldivenler",
+      "lavender": "lavanta",
+      "weeds": "yabani otlar"
+    },
+    "questions": [
+      {
+        "q": "Metnin ana fikri nedir?",
+        "options": [
+          "Şehirde arıcılık doğa için her zaman zararlıdır",
+          "Kent arıcılığı iyi niyetli olsa da arılara yardım etmenin asıl yolu daha fazla çiçektir",
+          "Şehir balı kırsal baldan daha sağlıklıdır",
+          "Yaban arıları bal arılarından daha verimlidir"
+        ],
+        "answer": 1,
+        "explain": "“Kent arıcılığı iyi niyetli olsa da arılara yardım etmenin asıl yolu daha fazla çiçektir” doğru: metin kovanların yaban arılarıyla yiyecek için yarıştığını anlatıyor ve “the most effective step is not to add more hives but to add more flowers” diyor."
+      },
+      {
+        "q": "Bazı uzmanların “closer to keeping chickens than to saving the planet” sözüyle anlatmak istediği nedir?",
+        "options": [
+          "Arıların tavuklarla aynı yemi yediği",
+          "Arıcılığın tavukçuluktan daha kârlı olduğu",
+          "Bal arılarının insanlar için tehlikeli olduğu",
+          "Bal arısı beslemenin doğayı korumaktan çok bir tür hayvancılık olduğu"
+        ],
+        "answer": 3,
+        "explain": "“Bal arısı beslemenin doğayı korumaktan çok bir tür hayvancılık olduğu” doğru: aynı paragrafta çatı kovanları “a kind of farming that happens to look like conservation” diye tanımlanıyor."
+      },
+      {
+        "q": "Yazarın Selin gibi çatı arıcılarına karşı tutumu nasıldır?",
+        "options": [
+          "Anlayışlı; bilerek zarar vermediklerini ve çoğunun özenli olduğunu vurguluyor",
+          "Alaycı; onları modaya uyan kişiler diye küçümsüyor",
+          "Öfkeli; kovanlarını hemen kaldırmalarını istiyor",
+          "İlgisiz; onlardan hiç söz etmiyor"
+        ],
+        "answer": 0,
+        "explain": "“Anlayışlı; bilerek zarar vermediklerini ve çoğunun özenli olduğunu vurguluyor” doğru: yazar “That does not mean the beekeepers on the rooftops are doing harm on purpose” diyor ve onları “careful, well informed and genuinely fond of their insects” diye anlatıyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_night_trains",
+    "level": "C1",
+    "genre": "haber",
+    "emoji": "🚆",
+    "title": "The Night Train Makes a Comeback",
+    "titleTr": "Gece treni geri dönüyor",
+    "text": "When the sleeper service from the capital pulled out of the central station at 21:40 last Friday, it carried something that railway companies had not seen on this route for almost twenty years: a waiting list. Every one of the 240 beds on the train had been booked weeks in advance, and staff on the platform were handing out coffee to passengers who had turned up in the hope of a last-minute cancellation.\n\nThe scene would have been hard to imagine a decade ago. Across much of Europe, night trains were quietly disappearing in the early 2000s, squeezed between cheap flights on one side and high-speed daytime trains on the other. Old carriages were sold off or left to rust, and many operators concluded that sleeping on a train was a romantic idea with no commercial future. “We were told, more or less, that the night train was a museum piece,” says a former conductor who worked on the line until it closed. “People wanted to get there fast, and they wanted to pay as little as possible.”\n\nNow the trend appears to have reversed. Several new routes have opened in the past few years, linking cities that are between eight and fourteen hours apart, and more are planned. Some are run by national railways; others by small private companies that rent carriages and sell tickets mainly online. Industry analysts point to a combination of factors. Growing concern about the climate has made some travellers unwilling to fly short distances, while a night train offers what supporters like to call a “hotel that moves”: you fall asleep in one city and wake up in the centre of another, without the queues and security checks of an airport on the edge of town.\n\nPassengers on Friday's service seemed to agree. “I worked out that by the time I'd got to the airport, waited, flown and got into the city, it would take almost as long,” said Leyla, a designer travelling to a conference. “Here I get dinner, a bed and a view. And I don't have to take my shoes off for anybody.” A retired couple in the next compartment said they had taken the same route on their honeymoon in the 1980s. “The beds are better now,” the husband said. “The bread is worse.”\n\nNot everyone is convinced that the revival will last. Night trains are expensive to run. A sleeping car carries far fewer people than a normal carriage, needs staff throughout the night and can usually make only one journey every twenty-four hours, which makes it hard to earn back the cost of the vehicle. Tickets are often more expensive than a flight on the same route, especially for families. Operators also complain about the complicated rules for crossing borders, where different countries charge different fees for using their tracks, and where a train sometimes has to change engines, and crews, in the middle of the night.\n\nThere have also been early problems. Several of the new services have suffered from long delays, broken air conditioning and, in one widely shared case, a train that arrived nine hours late after a technical fault. Reviews online range from the delighted to the furious, sometimes for the same journey. “It is still a bit of an adventure,” admitted a spokesperson for one operator. “We are rebuilding a whole system that was allowed to fall apart. That takes time, and it takes investment.”\n\nSome governments have started to offer that investment, treating night trains as part of their climate strategy rather than as a purely commercial service. Supporters argue that this is fair, since airlines have long benefited from tax advantages that railways do not enjoy. Critics reply that public money should go first to the everyday commuter trains that millions of people depend on, rather than to what they see as a comfortable option for the better-off.\n\nFor now, demand seems to be running ahead of supply. On Friday, as the train slid past the last lights of the suburbs, a group of students sat in the corridor sharing crisps and comparing tickets. None of them had ever been on a night train before. “My parents think it's old-fashioned,” said one of them. “I think it's the most modern thing I've done all year.”",
+    "glosses": {
+      "carriages": "vagonlar",
+      "carriage": "vagon",
+      "railways": "demiryolları",
+      "railway": "demiryolu",
+      "compartment": "kompartıman",
+      "honeymoon": "balayı",
+      "revival": "yeniden canlanma",
+      "rust": "paslanmak",
+      "conductor": "kondüktör",
+      "suburbs": "banliyöler, kenar mahalleler",
+      "crisps": "cips",
+      "cancellation": "iptal"
+    },
+    "questions": [
+      {
+        "q": "Metne göre gece trenleri neden yeniden ilgi görüyor?",
+        "options": [
+          "Kısa uçuşlar birçok ülkede yasaklandığı için",
+          "Trenler artık uçaklardan daha hızlı olduğu için",
+          "İklim kaygısı ve uyuyarak bir şehir merkezinden ötekine varma kolaylığı yüzünden",
+          "Gece treni biletleri her zaman uçaktan ucuz olduğu için"
+        ],
+        "answer": 2,
+        "explain": "“İklim kaygısı ve uyuyarak bir şehir merkezinden ötekine varma kolaylığı yüzünden” doğru: metin “Growing concern about the climate” ifadesini ve “you fall asleep in one city and wake up in the centre of another” açıklamasını veriyor."
+      },
+      {
+        "q": "Metne göre gece trenlerini işletmeyi pahalı yapan şey nedir?",
+        "options": [
+          "Yataklı vagonların az yolcu taşıması ve genellikle günde tek sefer yapabilmesi",
+          "Yolcuların yemekli vagon istememesi",
+          "Bütün rayların yenilenmesi gerekmesi",
+          "Gençlerin trenlerle hiç ilgilenmemesi"
+        ],
+        "answer": 0,
+        "explain": "“Yataklı vagonların az yolcu taşıması ve genellikle günde tek sefer yapabilmesi” doğru: metin “A sleeping car carries far fewer people” ve “can usually make only one journey every twenty-four hours” diyor."
+      },
+      {
+        "q": "Haberin sonundaki öğrencinin sözlerinin tonu nasıldır?",
+        "options": [
+          "Ailesine karşı öfkeli",
+          "Trenin gecikmesinden şikâyetçi",
+          "Gece trenlerinin geleceği konusunda kötümser",
+          "Eski moda sayılan bir şeyi en modern deneyim olarak gören, hafif ironik"
+        ],
+        "answer": 3,
+        "explain": "“Eski moda sayılan bir şeyi en modern deneyim olarak gören, hafif ironik” doğru: öğrenci “My parents think it's old-fashioned” dedikten sonra “I think it's the most modern thing I've done all year” diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_last_keeper",
+    "level": "C1",
+    "genre": "öykü",
+    "emoji": "🗼",
+    "title": "The Last Season at Gull Point",
+    "titleTr": "Martı Burnu'nda son mevsim",
+    "text": "The engineer arrived on the supply boat in the first week of October, carrying a laptop, two metal cases and an apology.\n\n“I'm sorry,” he said, before he had even stepped onto the jetty. “I know what I'm here for. I just want you to know I didn't choose it.”\n\nRose Mackie, who had kept the light at Gull Point for twenty-six years, took one of his cases without being asked. “Nobody chose it,” she said. “The sea doesn't care who chose what. Mind the third step, it's loose. It's been loose since 1998.”\n\nHis name was Peter, and he had been sent to install the equipment that would allow the lighthouse to run itself. By the end of the month, the lamp would be controlled from an office on the mainland, ninety miles away, and Rose would be the last keeper the island had ever had.\n\nFor the first few days they were polite to each other in the careful way of people who know they are on opposite sides of something. Peter worked in the lamp room, running cables and testing sensors. Rose did what she had always done: she wrote up the weather every three hours, cleaned the great lens until it shone, and cooked enough soup for a small army.\n\n“You don't have to feed me,” Peter said on the third evening.\n\n“I'm not feeding you. I'm feeding the soup. It's been made for one for a long time and it's getting lonely.”\n\nHe laughed, and something between them relaxed.\n\nAfter that, he started asking questions. Why did she still write the weather by hand when there was a station on the roof that recorded everything? What did she do in winter, when the boat couldn't come for weeks? Had she ever actually saved anyone?\n\n“Once, properly,” she said. “A fishing boat in '04. Engine failure, heavy fog. I saw their signal and called it in. But that's not the job, mostly. The job is noticing. The machine will tell them the lamp is on. It won't tell them that the gulls have gone quiet, or that the waves are coming from the wrong direction, or that a boat has been sitting off the rocks for too long with nobody on deck.”\n\n“The sensors can measure the waves,” Peter said.\n\n“Can they worry about them?”\n\nHe didn't have an answer to that, and to his credit he didn't pretend to.\n\nThe storm came in the third week. For two days the wind threw the sea against the rocks so hard that spray reached the lamp room windows, and the new system, which had worked perfectly in the calm, began to send alarms to the mainland every twenty minutes. Something in the power supply didn't like the damp. Peter spent most of a night lying on his back under a panel with a torch in his mouth, while Rose held the screwdriver and, when necessary, the opinions.\n\n“You'd have been fine without me,” he said at four in the morning, when the alarms finally stopped.\n\n“Of course I would. I've got a perfectly good lamp that's worked since 1923. You're the one who'd have been in trouble.”\n\n“That's not what I meant.”\n\n“I know what you meant.” She looked out at the black water, at the beam sweeping across it, steady as a heartbeat. “It's a good system, Peter. It'll work. That's what frightens me a bit. Not that it won't work. That it will, and nobody will remember there was anything else.”\n\nOn her last morning the boat came early. Peter carried her bags down to the jetty, and this time it was Rose who warned him about the third step. She had packed very little: clothes, her books, the weather records going back to the day she arrived.\n\n“Those belong to the service,” Peter said gently. “Technically.”\n\n“Technically,” Rose agreed, and kept walking.\n\nBefore she climbed into the boat, she pressed a small notebook into his hand. On the first page, in her neat capitals, she had written a list. Gulls quiet: weather turning. Waves from the north-east in summer: be careful. Boat with no one on deck: call it in, even if you feel foolish.\n\n“For the office on the mainland,” she said. “Whoever reads the screens. Tell them to read this too.”\n\nThe boat pulled away. Peter stood on the jetty until it was a dot, and then he went back up the stairs, stepping over the loose one, and climbed to the lamp room, where, for no reason that any sensor could have recorded, he sat down and wrote up the weather by hand.",
+    "glosses": {
+      "jetty": "iskele",
+      "mainland": "ana kara",
+      "sensors": "sensörler, algılayıcılar",
+      "sensor": "sensör",
+      "gulls": "martılar",
+      "deck": "güverte",
+      "lens": "mercek",
+      "torch": "el feneri",
+      "screwdriver": "tornavida",
+      "beam": "ışık huzmesi"
+    },
+    "questions": [
+      {
+        "q": "Rose “Can they worry about them?” diye sorarken neyi ima ediyor?",
+        "options": [
+          "Peter'in işini iyi yapmadığını",
+          "Sensörlerin çok pahalı olduğunu",
+          "Fırtınanın yakında geleceğini",
+          "Makinelerin ölçebildiğini ama insan dikkatinin ve sezgisinin yerini tutamayacağını"
+        ],
+        "answer": 3,
+        "explain": "“Makinelerin ölçebildiğini ama insan dikkatinin ve sezgisinin yerini tutamayacağını” doğru: Rose hemen önce “The job is noticing” diyor; sensörler dalgayı ölçer ama endişelenemez, yani bir şeylerin ters gittiğini sezemez."
+      },
+      {
+        "q": "Rose'in Peter'e karşı tavrı hikâye boyunca nasıl değişiyor?",
+        "options": [
+          "Başta sıcak, sonra soğuk ve kırgın oluyor",
+          "Başta mesafeli ve kibar, giderek içten ve şakacı oluyor",
+          "Baştan sona düşmanca kalıyor",
+          "Hiç değişmiyor; onunla neredeyse hiç konuşmuyor"
+        ],
+        "answer": 1,
+        "explain": "“Başta mesafeli ve kibar, giderek içten ve şakacı oluyor” doğru: ilk günler “they were polite to each other in the careful way of people who know they are on opposite sides”; çorba şakasından sonra “something between them relaxed” ve fırtına gecesi birbirleriyle takılıyorlar."
+      },
+      {
+        "q": "Hikâyenin sonunda Peter'in hava durumunu elle yazması neyi gösteriyor?",
+        "options": [
+          "Yeni sistemin tamamen bozulduğunu",
+          "Ana karadaki ofisin bunu ondan istediğini",
+          "Rose'in dikkatli gözlem alışkanlığını benimsemeye başladığını",
+          "Defterleri Rose'e geri göndermek istediğini"
+        ],
+        "answer": 2,
+        "explain": "“Rose'in dikkatli gözlem alışkanlığını benimsemeye başladığını” doğru: metin bunu “for no reason that any sensor could have recorded” diye anlatıyor; Peter, Rose'in yıllardır yaptığı şeyi kendi isteğiyle sürdürüyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_memory_palace",
+    "level": "C1",
+    "genre": "popüler bilim",
+    "emoji": "🧠",
+    "title": "A Walk Through the Memory Palace",
+    "titleTr": "Hafıza sarayında bir yürüyüş",
+    "text": "At a memory championship, the room is surprisingly quiet. There are no crowds, no music and very little to watch: just rows of competitors sitting at desks, many of them wearing ear protectors and some wearing dark glasses with tiny holes, staring at packs of playing cards as if trying to read their minds. After five minutes the cards are taken away, and the competitors have to put a second pack into exactly the same order. The best of them can memorise a full, freshly mixed pack in well under thirty seconds.\n\nIt is tempting to assume that these people were simply born with extraordinary brains. Most of them insist that they were not. Ask a memory athlete how they do it, and they will usually describe a technique that is more than two thousand years old and that almost anyone can learn in an afternoon: the memory palace.\n\nThe idea is simple. You choose a place you know extremely well, such as your flat, your old school or the route you walk to work, and you fix a series of points along it: the front door, the coat hook, the kitchen table, the window above the sink. Then, to remember a list, you turn each item into a strong mental picture and place it at one of those points. To recall the list, you take an imaginary walk through the building and simply look at what you left there.\n\nThe trick is that the pictures have to be strange. A carton of milk sitting quietly on the kitchen table is easily forgotten. A carton of milk doing a noisy dance on the table, splashing the walls, is much harder to lose. Memory athletes talk about making their images funny, rude, violent or ridiculous, because the brain seems to hold on to whatever surprises it. Playing cards are first turned into people or objects, so that the king of hearts might become a particular uncle and the three of clubs a bicycle, and then placed in pairs or groups along a familiar route.\n\nWhy should this work so well? One explanation often given is that the human brain is not especially good at remembering abstract information, such as numbers, names or lists of words. It is, however, remarkably good at remembering places and pictures. For most of human history, knowing where the water was, which path led home and which part of the forest was dangerous was a matter of survival. The memory palace, in this view, borrows a powerful old system and asks it to carry information it was never designed for.\n\nStudies of the brain offer some support for this idea. When researchers compared top memory competitors with ordinary volunteers, they reportedly found no striking differences in the structure of their brains or in general intelligence. What differed was activity: while memorising, the champions relied far more heavily on the areas linked to finding our way around. In one widely discussed experiment, volunteers with no special talent trained with the technique for half an hour a day over six weeks. Their scores on memory tests rose dramatically, and the improvement was still visible months later.\n\nThat said, the method has limits, and memory athletes are often the first to admit them. Being able to memorise a thousand random numbers does not, apparently, make you any better at remembering where you left your keys or what your partner asked you to buy on the way home. The technique works when you deliberately choose to use it; it does not upgrade memory in general. Several champions have admitted, with some amusement, that they regularly forget birthdays.\n\nThere is also a broader question about whether the skill matters in an age when phones remember almost everything for us. Supporters argue that it does, though not for the reasons one might expect. Learning a memory palace, they say, teaches something about attention: that we remember what we take the trouble to notice and connect, and forget what simply passes through us. Teachers who have tried the method in classrooms report that students enjoy it, partly because it turns studying into something closer to a game.\n\nAnd perhaps that is the real secret of memory sport. Its champions are not people with perfect memories. They are people who have found a way to make remembering playful, and who are, in their own words, happy to fill their imaginary homes with dancing milk.",
+    "glosses": {
+      "ear protectors": "kulak koruyucuları",
+      "memorise": "ezberlemek",
+      "imaginary": "hayalî",
+      "carton": "karton kutu",
+      "splashing": "sıçratarak",
+      "ridiculous": "gülünç, saçma",
+      "amusement": "eğlenerek, keyifle",
+      "playful": "oyunbaz, eğlenceli",
+      "abstract": "soyut"
+    },
+    "questions": [
+      {
+        "q": "Metne göre hafıza sporcularını diğer insanlardan ayıran asıl şey nedir?",
+        "options": [
+          "Doğuştan bir yetenek değil, öğrenilebilen bir tekniği ustalıkla kullanmaları",
+          "Beyinlerinin yapısının çok farklı olması",
+          "Genel zekâlarının olağanüstü yüksek olması",
+          "Hiç telefon kullanmamaları"
+        ],
+        "answer": 0,
+        "explain": "“Doğuştan bir yetenek değil, öğrenilebilen bir tekniği ustalıkla kullanmaları” doğru: sporcular olağanüstü beyinle doğduklarını kabul etmiyor ve “almost anyone can learn in an afternoon” denen hafıza sarayını anlatıyor; araştırmacılar da beyin yapısında “no striking differences” bulmuş."
+      },
+      {
+        "q": "Hafıza sarayında zihinsel resimlerin tuhaf olması neden önemlidir?",
+        "options": [
+          "Yarışma kuralları bunu zorunlu kıldığı için",
+          "Tuhaf resimler zihinde daha az yer kapladığı için",
+          "Beyin kendisini şaşırtan şeyleri daha kolay akılda tuttuğu için",
+          "Sıradan resimler başka yarışmacıları rahatsız ettiği için"
+        ],
+        "answer": 2,
+        "explain": "“Beyin kendisini şaşırtan şeyleri daha kolay akılda tuttuğu için” doğru: metin “the brain seems to hold on to whatever surprises it” diyor; dans eden süt kutusu bu yüzden unutulmuyor."
+      },
+      {
+        "q": "Şampiyonların doğum günlerini unuttuklarını “with some amusement” itiraf etmeleri neyi gösteriyor?",
+        "options": [
+          "Tekniğin hiçbir işe yaramadığına inandıklarını",
+          "Kendi sınırlarına mizahla ve rahat bir tavırla baktıklarını",
+          "Bu durumdan derin bir utanç duyduklarını",
+          "Yarışmalardan sıkılıp bırakmak istediklerini"
+        ],
+        "answer": 1,
+        "explain": "“Kendi sınırlarına mizahla ve rahat bir tavırla baktıklarını” doğru: metin sporcuların sınırları “often the first to admit” ettiğini söylüyor; doğum günlerini unutmalarını da eğlenerek anlatıyorlar."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_ferry_swap",
+    "level": "C1",
+    "genre": "öykü",
+    "emoji": "⛴️",
+    "title": "The Ferry Swap",
+    "titleTr": "Vapurda takas",
+    "text": "The 8:10 from Kadıköy was always full, and Zeynep had a system for it. She got on early, took the seat by the third window on the left, opened her book and did not look up until the ferry bumped against the pier on the other side. Twenty minutes of reading, twice a day: it was the only part of her life that nobody else could plan.\n\nSo she was not pleased when, one grey morning in November, an elderly man sat down beside her and said, “That's a terrible book.”\n\nShe looked up. He was perhaps seventy, in a heavy coat, with a paper bag of simit on his knee and a paperback of his own in the other hand.\n\n“I'm sorry?”\n\n“The ending,” he said. “It's a cheat. The whole book is building towards a confession and then the author loses her nerve. I threw it across the room. Well. Across the kitchen.”\n\n“I'm on page forty.”\n\n“Then I apologise. Forget I said anything.” He offered her the bag. “Simit?”\n\nShe took one, mainly out of surprise. He opened his own book, a thick, worn thriller with a gun on the cover, and they crossed the Bosphorus in silence, the gulls hanging beside the windows as if they were also on their way to work.\n\nThe next morning he was there again. And the next. By Friday they had progressed from nodding to arguing.\n\n“You read crime novels,” Zeynep said, as if naming an illness.\n\n“I read stories in which something happens,” said the old man, whose name turned out to be Cemal. “In your books, things happen only inside people's heads. Very slowly. Usually in the rain.”\n\n“That's where the important things happen.”\n\n“That's where the boring things happen. The important things happen in Marseille, at night, with a suitcase full of diamonds.”\n\nOn Monday he held out his thriller. “A proposal,” he said. “You read this. I read yours. Next week we report.”\n\n“And if I hate it?”\n\n“Then you will have the pleasure of telling me so. Nobody enjoys anything as much as being right.”\n\nShe almost said no. Instead she found herself handing over her novel, even though she had not finished it, and putting his, with its ridiculous cover, into her bag, where she hoped no colleague would see it.\n\nThe thriller was absurd. There was a detective who never slept, a villain with a scar and a plot that made no sense at all. She finished it in two days. On the ferry the following Monday she told him so, at length, and he listened with the satisfied expression of a man whose fish has taken the bait.\n\n“And you?” she asked. “The ending?”\n\nHe was quiet for a moment, looking out at the water. “You were right,” he said at last. “It is not a cheat. I read it differently this time. When I first read it, my wife had just died, and I wanted the woman in the book to say everything. To confess. I wanted someone to say everything.” He shrugged. “But she doesn't, and that is the truth of it. Most people don't.”\n\nZeynep did not know what to say, so she said nothing, which was apparently the right answer. He passed her the simit bag.\n\nAfter that the swap became a habit, and then a ritual. Every Monday they exchanged books, and every Friday they argued about them across the Bosphorus. She introduced him to short stories; he introduced her to a Swedish detective whose private life was even worse than the crimes he solved. She discovered that a good plot was nothing to be ashamed of. He admitted, under pressure, that rain could occasionally be meaningful.\n\nIn March he wasn't there. Nor the next day, nor the day after. On the fourth morning a younger man sat down in his seat, holding a paper bag and a parcel wrapped in newspaper.\n\n“Are you the one with the sad books?” he asked. “My father's in hospital. Nothing dramatic, it's his hip. He says he'll be back on the ferry in a month and that you are not to give his seat away.” He handed her the parcel. “He also says it's your turn.”\n\nInside was a novel she had never heard of, with a tired woman on the cover, looking out of a rainy window. A note was tucked into the first page in shaky handwriting: “Nothing happens in this one. I loved it. Don't tell anyone.”",
+    "glosses": {
+      "simit": "simit",
+      "thriller": "gerilim romanı",
+      "cheat": "hile, düzenbazlık",
+      "paperback": "karton kapaklı kitap",
+      "confession": "itiraf",
+      "villain": "kötü adam",
+      "scar": "yara izi",
+      "taken the bait": "oltaya geldi, yemi yuttu",
+      "shrugged": "omuz silkti",
+      "swap": "takas",
+      "tucked": "sıkıştırılmıştı",
+      "gulls": "martılar",
+      "diamonds": "elmaslar",
+      "handwriting": "el yazısı",
+      "ritual": "ritüel",
+      "absurd": "saçma"
+    },
+    "questions": [
+      {
+        "q": "Hikâyenin başında Zeynep, Cemal'in yanına oturup konuşmasından neden hoşnut değildi?",
+        "options": [
+          "Cemal'i daha önce tanıyordu ve sevmiyordu",
+          "Vapurdaki okuma vakti, kimsenin karışmadığı tek kendine ait zamanıydı",
+          "Simitten hoşlanmıyordu",
+          "Polisiye romanlardan nefret ettiğini söylemişti"
+        ],
+        "answer": 1,
+        "explain": "“Vapurdaki okuma vakti, kimsenin karışmadığı tek kendine ait zamanıydı” doğru: metin bu yirmi dakikayı “the only part of her life that nobody else could plan” diye anlatıyor; Cemal tam bu zamana giriyor."
+      },
+      {
+        "q": "Cemal kitabın sonunu ilk okuduğunda neden “a cheat” olarak görmüştü?",
+        "options": [
+          "Yazar sonu başka bir kitaptan kopyaladığı için",
+          "Kitabın son sayfaları eksik olduğu için",
+          "Kitapta hiçbir olay olmadığı için",
+          "Karısını yeni kaybetmişti ve birinin her şeyi açıkça söylemesini istiyordu"
+        ],
+        "answer": 3,
+        "explain": "“Karısını yeni kaybetmişti ve birinin her şeyi açıkça söylemesini istiyordu” doğru: Cemal “When I first read it, my wife had just died” ve “I wanted someone to say everything” diyor."
+      },
+      {
+        "q": "Cemal'in notundaki “Don't tell anyone.” cümlesinin tonu nedir?",
+        "options": [
+          "Şakacı; Zeynep'in sevdiği türden kitapları beğendiğini gülümseyerek itiraf ediyor",
+          "Endişeli; kitabın çalıntı olduğunu saklıyor",
+          "Öfkeli; Zeynep'e kırgın olduğunu belli ediyor",
+          "Resmî; yalnızca bir kural koyuyor"
+        ],
+        "answer": 0,
+        "explain": "“Şakacı; Zeynep'in sevdiği türden kitapları beğendiğini gülümseyerek itiraf ediyor” doğru: “Nothing happens in this one. I loved it.” diyerek eskiden alay ettiği türü sevdiğini kabul ediyor ve bunu bir sır gibi şakayla saklıyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_cable_repair",
+    "level": "C1",
+    "genre": "röportaj",
+    "emoji": "🌊",
+    "title": "Fixing the Internet at the Bottom of the Sea",
+    "titleTr": "İnterneti denizin dibinde onarmak",
+    "text": "Almost everything we do online travels, at some point, through cables lying on the ocean floor. When one of them breaks, a small number of specialist ships are sent to fix it. Mia, host of the podcast Short Version, spoke to Ilse Varga, a repair engineer who has spent nineteen years at sea.\n\nMia: Let's start with something most listeners probably don't know. How does the internet get from one continent to another?\n\nIlse: Mostly under the sea. People imagine satellites, and satellites do matter, but the vast majority of international data travels through cables on the sea floor. There are a few hundred of them, and together they carry almost all of it.\n\nMia: And they're how thick?\n\nIlse: Out in deep water, about the size of a garden hose. People are always disappointed when I tell them that. They expect something you could walk along. Close to the coast they're much thicker, because they need protection against ships' anchors and fishing nets. In the deep ocean there's not much to protect them from.\n\nMia: How often do they break?\n\nIlse: More often than you'd think. Some estimates say there are well over a hundred faults a year worldwide. Most of the damage happens in shallow water and is caused by people: an anchor pulled across the bottom, a fishing boat dragging heavy nets. Further out it's more often nature, things like earthquakes or underwater landslides. Sharks get blamed a lot, but honestly, that's mostly a story.\n\nMia: So the sharks are innocent?\n\nIlse: Mostly. There were cases years ago of sharks biting cables, but modern cables are far better protected.\n\nMia: So what happens when one breaks? Walk me through it.\n\nIlse: First, the operators on land notice that traffic has stopped, and they send pulses of light down the cable to work out roughly where the fault is. Usually users don't even notice, because the traffic is moved onto other cables. Then a repair ship like ours gets the call. We might be in port, or we might be on another job. We load spare cable and whatever equipment we need, and off we go.\n\nMia: And when you get there?\n\nIlse: That's where it gets interesting. In shallow water we can send down a robot to find the cable and cut it. In deep water, sometimes four or five kilometres down, we often use a kind of hook on a long line, which we drag along the bottom until it catches the cable. It sounds old-fashioned, and it is. It also works.\n\nMia: You're fishing for a cable.\n\nIlse: Basically, yes. Very expensive fishing. We bring up one end, seal it, tie it to a float and go back for the other end. Then the two ends are joined on board, with a new section of cable in between, in a special room on the ship.\n\nMia: How long does the joining take?\n\nIlse: Each joint can take a day or more. The glass fibres inside are thinner than a human hair, and every single one has to be lined up perfectly. You do it in a very clean room, while the whole ship is moving with the waves. That's the part that still impresses me after nineteen years.\n\nMia: What's the hardest part of the job? The weather?\n\nIlse: The weather is hard, but you get used to it. The hardest part is probably the time away. A job can last three weeks or three months, and you don't always know which when you leave. I've missed birthdays, weddings and one funeral I really wish I'd been at. My kids grew up thinking that “Mum's at sea” was a normal answer to most questions.\n\nMia: Has the work changed in those nineteen years?\n\nIlse: The ships are better, the robots are better, and the cables carry an amount of data that would have sounded like science fiction when I started. What hasn't changed is how few of us there are. There aren't many repair ships in the world, and a lot of the crew are getting close to retirement. If you're young and you like problems that don't have an obvious answer, I'd honestly recommend it.\n\nMia: Last question. Do you ever think about what's travelling through the cable while you're holding it?\n\nIlse: All the time. Bank transfers, hospital records, someone's grandmother on a video call. And also, I'm sure, a great many photos of cats. When I hold a cut end in my hands, I sometimes think: half a continent is waiting for me to finish my coffee. Then I finish it anyway. A tired engineer makes mistakes.",
+    "glosses": {
+      "continent": "kıta",
+      "satellites": "uydular",
+      "shallow": "sığ",
+      "hose": "hortum",
+      "anchors": "çapalar",
+      "anchor": "çapa",
+      "earthquakes": "depremler",
+      "landslides": "toprak kaymaları",
+      "sharks": "köpekbalıkları",
+      "pulses": "atımlar, darbeler",
+      "fibres": "lifler",
+      "funeral": "cenaze"
+    },
+    "questions": [
+      {
+        "q": "Röportajın ana konusu nedir?",
+        "options": [
+          "Uydu internetinin deniz altı kablolarının yerini alması",
+          "Köpekbalıklarının kablolara verdiği zararlar",
+          "Deniz altı kablolarının nasıl arızalandığı, nasıl onarıldığı ve bu işin insani yanı",
+          "Bir gemi mürettebatının tatil planları"
+        ],
+        "answer": 2,
+        "explain": "“Deniz altı kablolarının nasıl arızalandığı, nasıl onarıldığı ve bu işin insani yanı” doğru: Ilse arızaların nedenlerini, onarım aşamalarını ve “The hardest part is probably the time away” diyerek işin ailesine etkisini anlatıyor."
+      },
+      {
+        "q": "Ilse'nin “Basically, yes. Very expensive fishing.” cevabından ne anlaşılıyor?",
+        "options": [
+          "Derin sudaki yöntemin basit, eski usul göründüğünü ama işe yaradığını esprili bir dille kabul ettiği",
+          "Gemide gerçekten balık tuttukları",
+          "Bu yöntemi gereksiz ve israf bulduğu",
+          "Mia'nın sorusuna kızdığı"
+        ],
+        "answer": 0,
+        "explain": "“Derin sudaki yöntemin basit, eski usul göründüğünü ama işe yaradığını esprili bir dille kabul ettiği” doğru: hemen önce kanca yöntemi için “It sounds old-fashioned, and it is. It also works.” diyor; Mia'nın benzetmesini şakayla onaylıyor."
+      },
+      {
+        "q": "Ilse'nin mesleğine bakışı nasıldır?",
+        "options": [
+          "Yorgun ve pişman; gençlere bu işi kesinlikle önermiyor",
+          "İlgisiz; yalnızca para için çalıştığını söylüyor",
+          "Korkulu; hava yüzünden işi bırakmayı düşünüyor",
+          "Zorluklarının farkında ama işine hâlâ hayran ve gençlere öneriyor"
+        ],
+        "answer": 3,
+        "explain": "“Zorluklarının farkında ama işine hâlâ hayran ve gençlere öneriyor” doğru: kaçırdığı düğün ve cenazelerden söz ediyor ama “still impresses me after nineteen years” ve “I'd honestly recommend it” diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_museum_return",
+    "level": "C1",
+    "genre": "görüş",
+    "emoji": "🏛️",
+    "title": "Whose Treasure Is It?",
+    "titleTr": "Bu hazine kimin?",
+    "text": "Walk through the great halls of almost any major museum in a former imperial capital and you will find yourself surrounded by objects that were made somewhere else: stone gods from temples thousands of kilometres away, carved doors from royal palaces, masks, crowns, old books and pieces of whole buildings. For a long time, most visitors admired them without asking how they got there. That is no longer the case. Whether such objects should be returned to the countries they came from has moved from academic journals to front pages, and it has become one of the most heated debates in the cultural world.\n\nThe case for returning them is, at its strongest, quite simple. Many of these objects were taken by force, during wars, invasions or periods of colonial rule, when the people who owned them had no power to refuse. A bronze statue removed by soldiers from a burning palace was not, in any meaningful sense, sold or given. Supporters of return argue that keeping such an object today continues an old injustice, however politely it is labelled. They also point out that these objects often carry a meaning for the communities that made them which no museum label can capture. A mask that is a work of art in a glass case in Europe may be a sacred object, or a family ancestor, somewhere else.\n\nThere is also a practical argument that has become harder to ignore. For decades, one of the main reasons given for keeping objects was that their countries of origin could not look after them properly. Today, many of those countries have built modern museums, trained experts and invested heavily in their own cultural heritage. The claim that the objects are “safer here” sounds, to many ears, less like a fact and more like an excuse.\n\nThose who are more cautious about return do not usually deny any of this. Their concerns are of a different kind. Some objects, they note, were acquired in ways that are genuinely complicated: bought legally, exchanged as gifts or passed through many hands over several centuries. Deciding who the rightful owner is can be extremely difficult, especially when the original kingdom or community no longer exists, or when modern borders cut across the area where it lived. Two or three countries may claim the same piece.\n\nA second argument is about what large museums are for. Their defenders say that collections which bring together objects from all over the world allow millions of visitors to compare cultures side by side and to see the human story as a whole. A child in London or Paris may see a statue from West Africa or a painted silk from China for the first time, and that experience, they argue, has its own value. Emptying these museums, in their view, would not undo the past; it would simply make the world's cultures less visible to one another.\n\nSome critics also worry about the practical consequences of a sudden wave of returns. Who decides? Which claims come first? What happens if an object is returned and then sold, damaged or locked away? These are not, they insist, excuses for doing nothing, but questions that deserve answers before decisions are made.\n\nIn recent years, a middle path has started to appear. Several museums have returned objects whose history is clearly violent while keeping others on long-term loan, so that they remain on display but legally belong to their country of origin. Others have started joint projects, in which experts from both countries decide together how an object is presented and what story its label tells. Digital copies and detailed 3D scans have also been suggested as a way of sharing objects more widely, although few people believe that a copy can ever fully replace the original.\n\nPerhaps the most significant change is not in the objects themselves but in the conversation around them. The question used to be whether museums should return anything at all. Increasingly, it is how, when and on whose terms. That does not make the debate any easier, but it does make it more honest. A museum that can tell visitors the full story of how an object reached its shelves, including the uncomfortable parts, is arguably doing its job better than one that pretends the question was never asked.",
+    "glosses": {
+      "imperial": "imparatorluk",
+      "carved": "oymalı",
+      "masks": "maskeler",
+      "mask": "maske",
+      "crowns": "taçlar",
+      "invasions": "istilalar",
+      "colonial": "sömürge",
+      "statue": "heykel",
+      "injustice": "adaletsizlik",
+      "sacred": "kutsal",
+      "ancestor": "ata",
+      "heritage": "miras",
+      "rightful": "meşru, hak sahibi",
+      "kingdom": "krallık"
+    },
+    "questions": [
+      {
+        "q": "Yazarın bu yazıdaki genel tutumu nedir?",
+        "options": [
+          "Bütün eserlerin derhâl iade edilmesini savunuyor",
+          "Müzelerin hiçbir eseri iade etmemesi gerektiğini savunuyor",
+          "Konunun önemsiz olduğunu ve abartıldığını düşünüyor",
+          "İki tarafın gerekçelerini dengeli biçimde sunuyor ve daha dürüst, ortak çözümlerin önemini vurguluyor"
+        ],
+        "answer": 3,
+        "explain": "“İki tarafın gerekçelerini dengeli biçimde sunuyor ve daha dürüst, ortak çözümlerin önemini vurguluyor” doğru: yazar önce iadeyi destekleyenlerin, sonra temkinlilerin görüşlerini aktarıyor, “a middle path” örneklerini veriyor ve tartışmanın artık “more honest” olduğunu söylüyor."
+      },
+      {
+        "q": "Yazara göre “safer here” iddiası bugün neden bir bahane gibi görünüyor?",
+        "options": [
+          "Batılı müzelerde hırsızlık çok arttığı için",
+          "Eserlerin geldiği birçok ülke artık modern müzeler kurup uzmanlar yetiştirdiği için",
+          "Eserlerin çoğu zaten kopya olduğu için",
+          "Ziyaretçiler bu eserlerle artık ilgilenmediği için"
+        ],
+        "answer": 1,
+        "explain": "“Eserlerin geldiği birçok ülke artık modern müzeler kurup uzmanlar yetiştirdiği için” doğru: metin “many of those countries have built modern museums, trained experts and invested heavily” diyor; bu yüzden eski gerekçe “less like a fact and more like an excuse” gibi duruyor."
+      },
+      {
+        "q": "Metne göre iadeye temkinli yaklaşanların kaygılarından biri nedir?",
+        "options": [
+          "Bütün eserlerin yasal yollarla satın alınmış olması",
+          "Müzelerin bilet gelirlerini kaybedecek olması",
+          "Bazı eserlerin gerçek sahibini belirlemenin çok zor olması",
+          "Dijital kopyaların orijinallerden daha değerli olması"
+        ],
+        "answer": 2,
+        "explain": "“Bazı eserlerin gerçek sahibini belirlemenin çok zor olması” doğru: metin “Deciding who the rightful owner is can be extremely difficult” diyor ve aynı esere iki üç ülkenin sahip çıkabileceğini ekliyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_contagious_yawn",
+    "level": "C1",
+    "genre": "popüler bilim",
+    "emoji": "🥱",
+    "title": "Why Yawns Are Catching",
+    "titleTr": "Esneme neden bulaşır?",
+    "text": "You may already feel it starting. Somewhere at the back of your throat, your jaw is preparing to open, your eyes are beginning to water and your chest is getting ready for a long, deep breath. Simply reading about yawning, it turns out, is enough to make many people yawn. If you have managed to resist so far, try thinking about it for another paragraph.\n\nYawning is one of the oldest and most widespread behaviours in the animal world. Fish do it, birds do it, snakes do it, and human babies start doing it before they are even born. Yet for something so common, it is remarkably poorly understood. For a long time the most popular explanation was that we yawn to take in more oxygen when we are tired or bored. It sounds reasonable, and many of us were taught it at school. The trouble is that experiments have not supported it. When volunteers were asked to breathe air with extra oxygen, or with less, they yawned about as often as before.\n\nA more recent theory suggests that yawning may help to cool the brain. A deep breath of air, combined with the stretching of the jaw, increases blood flow to the head and may bring the temperature of the brain down slightly. Supporters of this idea point to studies in which people yawned less often when they held something cold to their foreheads, and to research suggesting that people yawn more in mild weather than when it is either very hot or very cold. If this is right, a yawn may be less a sign of boredom than the brain's attempt to stay awake and sharp.\n\nNone of this, however, explains the strangest thing about yawning: the fact that it spreads. Watching someone else yawn, hearing a yawn, or even thinking about one can set us off. This happens mainly in humans and in a few other social animals, including chimpanzees and, according to some studies, dogs, which seem to catch yawns from their owners.\n\nOne popular explanation links this kind of yawning to empathy, our ability to share and understand other people's feelings. Several studies have found that people are more likely to catch a yawn from a family member or a close friend than from a stranger. Children, who develop empathy gradually, do not usually begin to catch yawns until they are around four or five years old. Some researchers have reported that people who score higher on tests of empathy also yawn more in response to others, although this result has not always been repeated.\n\nOther scientists have their doubts. They point out that the link with empathy is not equally strong in every experiment, and that factors such as age and simple attention may matter just as much. If you are not looking at the person who yawns, after all, you can hardly catch it. One alternative view is that catching a yawn is a kind of automatic copying, similar to the way we sometimes find ourselves picking up the accent or the body language of the person we are talking to. In a group, this copying may have helped our ancestors to act together, so that everyone became sleepy, or wide awake, at about the same time.\n\nIt is possible that both views are partly right. A yawn may have started as a simple physical reaction and later taken on a social role, a small and silent signal passing through a group. What seems clear is that it is not a sign of rudeness, whatever your teachers may have suggested. A student who yawns in a lecture may simply be trying, in the most ancient way available, to keep their brain working.\n\nThere is one practical lesson, though, for anyone giving a presentation. If you see one person in the audience yawn, do not panic. If you see a wave of yawns moving across the room from that person outwards, it may not mean that they are bored. It may only mean that they are paying attention to one another. Whether they are paying attention to you is, unfortunately, a different question.\n\nAnd if you have yawned at least once while reading this, you are in good company. Most people do.",
+    "glosses": {
+      "yawn": "esnemek; esneme",
+      "yawning": "esneme",
+      "yawns": "esnemeler; esner",
+      "yawned": "esnedi",
+      "empathy": "empati, duygudaşlık",
+      "jaw": "çene",
+      "oxygen": "oksijen",
+      "awake": "uyanık",
+      "chimpanzees": "şempanzeler",
+      "foreheads": "alınlar",
+      "ancestors": "atalar"
+    },
+    "questions": [
+      {
+        "q": "Metne göre esnemenin oksijen eksikliğinden kaynaklandığı fikri neden zayıf kalıyor?",
+        "options": [
+          "Deneylerde havadaki oksijen artırılıp azaltıldığında insanlar yine aşağı yukarı aynı sıklıkta esnedi",
+          "Balıklar oksijene ihtiyaç duymadığı için",
+          "Bu fikri okullarda hiçbir öğretmen kabul etmediği için",
+          "Bebekler doğmadan önce hiç esnemediği için"
+        ],
+        "answer": 0,
+        "explain": "“Deneylerde havadaki oksijen artırılıp azaltıldığında insanlar yine aşağı yukarı aynı sıklıkta esnedi” doğru: metin gönüllülerin fazla ya da az oksijenli hava soluduğunda “they yawned about as often as before” diyor."
+      },
+      {
+        "q": "Metne göre esnemenin bulaşıcılığı konusunda bilim dünyasının durumu nedir?",
+        "options": [
+          "Empatinin tek açıklama olduğu kesin olarak kanıtlandı",
+          "Bulaşıcı esnemenin yalnızca çocuklarda görüldüğü anlaşıldı",
+          "Empati ve otomatik taklit gibi açıklamalar var ama kesin bir uzlaşma yok",
+          "Esnemenin bir kabalık işareti olduğu ortaya kondu"
+        ],
+        "answer": 2,
+        "explain": "“Empati ve otomatik taklit gibi açıklamalar var ama kesin bir uzlaşma yok” doğru: metin empati görüşünü, şüpheci bilim insanlarının “automatic copying” görüşünü aktarıyor ve “both views are partly right” olabileceğini söylüyor."
+      },
+      {
+        "q": "Sunum yapanlara verilen tavsiyenin son cümlesinin tonu nasıldır?",
+        "options": [
+          "Ciddi ve uyarıcı",
+          "Esprili ve hafif ironik",
+          "Öfkeli ve suçlayıcı",
+          "Kararsız ve endişeli"
+        ],
+        "answer": 1,
+        "explain": "“Esprili ve hafif ironik” doğru: yazar dinleyicilerin birbirine dikkat ettiğini söyledikten sonra “Whether they are paying attention to you is, unfortunately, a different question” diyerek konuşmacıya şakayla takılıyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_recipe_box",
+    "level": "C1",
+    "genre": "öykü",
+    "emoji": "📇",
+    "title": "The Recipe Box",
+    "titleTr": "Tarif kutusu",
+    "text": "My grandmother died in February, and in April my mother and her two sisters met at the flat to divide what was left. I went along because someone had to stop them arguing, and because I was the only one who could carry boxes up and down four floors without complaining about my back.\n\nIn the end, there was not much to argue about. The furniture was old and heavy and nobody wanted it. The jewellery had been given away years ago, quietly, one piece at a time, to whichever granddaughter had needed cheering up. What remained were the things that only matter to the people who knew her: a radio that worked only if you hit it, forty years of television magazines, and a wooden box, about the size of a shoebox, that had always sat on the shelf above the cooker.\n\n“That's yours,” my aunt said, before anyone else could speak. “She said so.”\n\nI had not known that. I had known the box, of course. Every child in the family knew it. It was full of recipes written on cards, on the backs of envelopes and on pages torn from calendars, all in my grandmother's small, sloping handwriting. When we were little, she would let us choose one card from it on Sunday mornings, and that would be lunch. It was the only time I ever saw her follow a recipe. The rest of the time she cooked, as she put it, “with her hands”.\n\nI took the box home and did not open it for two weeks. When I finally did, I discovered almost at once that it was not what I had thought.\n\nThe recipes were there, certainly. Lentil soup. Stuffed peppers. The orange cake that had appeared at every birthday for as long as I could remember. But they had been written over and argued with for decades. Next to the amounts there were notes in different colours of ink. “Too much sugar. 1965.” “Better with less salt, for Father's heart.” “Don't make this for Mrs Kaplan again.” On the back of the card for stuffed peppers, in pencil, someone had written: “Mother never measured anything. I have tried to guess.”\n\nIt took me a while to understand that there were at least three different handwritings. The oldest cards, in faded brown ink with beautiful capital letters, belonged to my grandmother's mother, who had come to the city as a young bride and whom I had only ever seen in one serious photograph. My grandmother had added to them, corrected them, crossed things out. And on a few of the newest cards, in a round, careful hand that I slowly recognised, my mother had written her own notes as a teenager, apparently while she was being taught.\n\nAmong the recipes there were other things that had nothing to do with cooking. A bus ticket from 1971. A pressed flower, brown and thin as paper. A list of names and telephone numbers, some of them crossed out with a single straight line. And, folded inside the card for the orange cake, a short letter from my grandfather, written during his military service, in which he said almost nothing about the army and a great deal about how much he missed her cake.\n\nI called my mother that evening and read it to her. There was a long silence on the line.\n\n“I didn't know that was there,” she said eventually. “She never told us anything. She just made the cake.”\n\n“Maybe that was how she told you.”\n\nShe laughed, a little unsteadily. “That's exactly the kind of thing she would have said.”\n\nI have started cooking from the box. Not every week, and not always successfully. The handwriting is sometimes hard to read, and some of the ingredients are described in ways that belong to another century: “a teacup of flour”, “butter the size of an egg”, “bake until it smells right”. I have learned that the last instruction is surprisingly reliable.\n\nLast month I made the orange cake for my daughter's seventh birthday. It was not quite right. It never is. Afterwards, while she was asleep, I took a new card from the drawer, wrote the recipe out again in my own handwriting and added a note at the bottom: “Less sugar. More orange. She liked it anyway.” Then I put it in the box, behind the others, where someone will find it one day and wonder who I was.",
+    "glosses": {
+      "handwriting": "el yazısı",
+      "peppers": "biberler",
+      "ink": "mürekkep",
+      "jewellery": "mücevherler",
+      "granddaughter": "kız torun",
+      "cheering up": "neşelendirilmek",
+      "shoebox": "ayakkabı kutusu",
+      "torn": "yırtılmış",
+      "lentil": "mercimek",
+      "bride": "gelin",
+      "ingredients": "malzemeler",
+      "teacup": "çay fincanı",
+      "bake": "fırında pişir"
+    },
+    "questions": [
+      {
+        "q": "Anlatıcı kutuyu açınca neyi fark ediyor?",
+        "options": [
+          "Tariflerin hepsinin bir yemek kitabından kopyalandığını",
+          "Kutunun kuşaklar boyunca notlar, anılar ve sevgiyle dolmuş bir aile hafızası olduğunu",
+          "Kutuda değerli mücevherler saklandığını",
+          "Büyükannesinin aslında hiç yemek yapmadığını"
+        ],
+        "answer": 1,
+        "explain": "“Kutunun kuşaklar boyunca notlar, anılar ve sevgiyle dolmuş bir aile hafızası olduğunu” doğru: kartlarda “at least three different handwritings” var; ayrıca bir otobüs bileti, kurutulmuş bir çiçek ve dedesinin mektubu çıkıyor."
+      },
+      {
+        "q": "Anlatıcı “Maybe that was how she told you.” derken neyi kastediyor?",
+        "options": [
+          "Büyükannenin mektubu bilerek sakladığını",
+          "Annesinin büyükanneyi hiç anlamadığını",
+          "Büyükannenin aslında çok konuşkan biri olduğunu",
+          "Büyükannenin duygularını sözle değil, yaptığı kekle ifade ettiğini"
+        ],
+        "answer": 3,
+        "explain": "“Büyükannenin duygularını sözle değil, yaptığı kekle ifade ettiğini” doğru: anne “She never told us anything. She just made the cake.” diyor; anlatıcı da keki bir anlatma biçimi olarak görüyor."
+      },
+      {
+        "q": "Hikâyenin son cümlesinin tonu nasıldır?",
+        "options": [
+          "Hüzünlü ama sıcak; anlatıcı kendini aile zincirinin yeni bir halkası olarak görüyor",
+          "Öfkeli; kekin tutmamasına kızıyor",
+          "Alaycı; aile geleneklerini küçümsüyor",
+          "Kayıtsız; kutuyu bir daha açmayacağını söylüyor"
+        ],
+        "answer": 0,
+        "explain": "“Hüzünlü ama sıcak; anlatıcı kendini aile zincirinin yeni bir halkası olarak görüyor” doğru: kendi kartını kutuya koyuyor ve bir gün birinin onu bulup “wonder who I was” diye düşüneceğini söylüyor; tıpkı kendisinin eski kartlara baktığı gibi."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_village_shop",
+    "level": "C1",
+    "genre": "haber",
+    "emoji": "🏪",
+    "title": "The Village That Bought Its Own Shop",
+    "titleTr": "Kendi dükkânını satın alan köy",
+    "text": "When the owners of the only shop in Little Ashby announced last spring that they were retiring, most of the village assumed that it was the end of something. The nearest supermarket is eleven miles away, the bus runs twice a day, and the post office closed in 2015. “We'd already lost the pub and the school,” says Margaret Ellis, who has lived in the village for fifty-two years. “I thought, well, that's it. We'll be a place people drive through.”\n\nEighteen months later, the shop is still open. It has new shelves, a small coffee corner and a sign above the door that reads: “Owned by all of us.” In a story that is becoming more common across rural Britain, the people of Little Ashby bought the business themselves and now run it together as a cooperative.\n\nThe idea came from a meeting in the village hall. “About sixty people turned up, which in a village of four hundred is basically a riot,” says Bill Hardy, a retired accountant who now looks after the group's money. “Everyone agreed we needed the shop. The question was who was going to pay for it.”\n\nThe answer turned out to be: almost everyone. The group sold shares at £20 each, with a limit on how many any one person could buy, so that no single investor could control the business. Within three months, more than two hundred people had bought shares, some of them former residents who had moved away years ago. “One man sent a cheque from Canada,” says Hardy. “His note said he'd bought his first sweets there in 1958 and he wanted the place to be around for someone else's first sweets.”\n\nWith the money from shares, a small loan and a grant from a rural support fund, the group bought the building and the stock. But money, they soon discovered, was the easy part.\n\n“Nobody tells you how much work a shop is,” says Sophie Lane, who manages the shop and is one of only two paid staff. The rest of the work is done by about forty volunteers working in shifts. “We've got a former head teacher on the till on Tuesdays, and a seventeen-year-old who knows more about stock control than I do. The timetable is a work of art. Occasionally it's a work of fiction.”\n\nNot everything has gone smoothly. In the first winter the freezer broke down twice, and a disagreement about whether to sell lottery tickets divided the committee for weeks. “It was the most passionate debate this village has had in years,” says Lane. Prices are higher than at the supermarket, a fact that some customers still complain about. “I tell them: you're not paying for a tin of beans,” she says. “You're paying for a place where someone notices if you haven't come in for three days.”\n\nThat last point is one that comes up again and again. For many older residents, the shop is the main reason to leave the house. Volunteers deliver shopping to people who cannot get out, and the coffee corner has become an informal meeting place. “My husband died two years ago,” says Ellis. “Some weeks, the shop is where I have my only proper conversation. I come for the bread and stay for an hour.”\n\nResearchers who study rural communities say that this kind of social value is easy to overlook. Some studies suggest that shops owned by their communities are far more likely to survive than private village shops, partly because their owners are also their customers. “People feel responsible for it,” one researcher has said. “If you own a share, you think twice before driving to the supermarket for a pint of milk.”\n\nThe model is not a magic solution. Cooperatives depend heavily on volunteers, and volunteers get tired. Several community shops have closed after the first wave of enthusiasm faded. The manager is realistic about the risk. “The danger isn't the supermarket,” she says. “It's the day everyone assumes someone else will do the Saturday shift.”\n\nFor now, though, the mood in Little Ashby is carefully cheerful. The shop made a small profit in its second year, which the members voted to spend on a bench outside. “It's the first time in my life I've been to an annual general meeting that was actually exciting,” says Hardy. “We spent forty minutes deciding what colour the bench should be.”\n\nIt is green. Not everyone is happy about it.",
+    "glosses": {
+      "cooperative": "kooperatif",
+      "cooperatives": "kooperatifler",
+      "riot": "isyan, ayaklanma",
+      "cheque": "çek",
+      "passionate": "ateşli, tutkulu",
+      "tin": "konserve kutusu",
+      "informal": "gayriresmî",
+      "pint": "yaklaşık yarım litre",
+      "enthusiasm": "heves, coşku",
+      "bench": "bank"
+    },
+    "questions": [
+      {
+        "q": "Haberin ana fikri nedir?",
+        "options": [
+          "Köye en yakın süpermarketin fiyatlarının çok yüksek olduğu",
+          "Köy dükkânlarının artık gereksiz hâle geldiği",
+          "Köylülerin kapanmak üzere olan dükkânı ortaklaşa satın alıp hem ekonomik hem sosyal bir merkez olarak yaşattığı",
+          "Emekli bir muhasebecinin dükkânı tek başına satın aldığı"
+        ],
+        "answer": 2,
+        "explain": "“Köylülerin kapanmak üzere olan dükkânı ortaklaşa satın alıp hem ekonomik hem sosyal bir merkez olarak yaşattığı” doğru: köylüler hisse satarak dükkânı alıyor (“Owned by all of us”), dükkân da özellikle yaşlılar için bir buluşma yeri oluyor."
+      },
+      {
+        "q": "Lane'in “You're paying for a place where someone notices if you haven't come in for three days.” sözü neyi vurguluyor?",
+        "options": [
+          "Dükkânın, özellikle yalnız yaşayanlar için bir ilgi ve dayanışma yeri olduğunu",
+          "Dükkânın müşterilerini gizlice takip ettiğini",
+          "Fasulye konservelerinin aslında çok pahalı olduğunu",
+          "Müşterilerin üç günde bir alışveriş yapmak zorunda olduğunu"
+        ],
+        "answer": 0,
+        "explain": "“Dükkânın, özellikle yalnız yaşayanlar için bir ilgi ve dayanışma yeri olduğunu” doğru: hemen ardından metin dükkânın yaşlılar için evden çıkma nedeni olduğunu söylüyor; Ellis de “the shop is where I have my only proper conversation” diyor."
+      },
+      {
+        "q": "Haberin son cümlesi “It is green. Not everyone is happy about it.” nasıl bir ton taşıyor?",
+        "options": [
+          "Endişeli; kooperatifin yakında dağılacağını ima ediyor",
+          "Öfkeli; seçilen rengi sert biçimde eleştiriyor",
+          "Resmî; toplantının kararını duyuruyor",
+          "Şakacı; küçük köy tartışmalarına sevecen bir gülümsemeyle bakıyor"
+        ],
+        "answer": 3,
+        "explain": "“Şakacı; küçük köy tartışmalarına sevecen bir gülümsemeyle bakıyor” doğru: bank renginin kırk dakika tartışıldığı anlatıldıktan sonra gelen bu kısa cümle, piyango ve dondurucu tartışmaları gibi köy hayatının küçük çekişmelerine tatlı bir gönderme yapıyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_read_contract",
+    "level": "C1",
+    "genre": "nasıl yapılır",
+    "emoji": "📝",
+    "title": "Read Before You Sign",
+    "titleTr": "İmzalamadan önce oku",
+    "text": "Most of us have done it. A long document appears on a screen or slides across a desk, someone says, “It's just the standard terms,” and we sign at the bottom without reading more than the first paragraph. Usually nothing bad happens. Occasionally, though, a single sentence we never read turns out to cost us a great deal of money, time or freedom. Whether it is a rental agreement, a job offer, a phone plan or a contract with a client, reading carefully before you sign is one of the most useful adult skills that nobody actually teaches. Here is a practical way to do it.\n\n1. Never read under pressure.\nThe most dangerous contracts are the ones you are asked to sign immediately. If someone tells you that the offer is only valid today, or that “everyone signs this without reading it”, that is precisely the moment to slow down. A reasonable person will give you time to read; an unreasonable one has just told you something important about the relationship you are about to enter. Ask for a copy to take home, or at least for half an hour alone with it.\n\n2. Start with the big picture.\nBefore getting lost in details, read the whole document once quickly, without stopping. Ask yourself three simple questions. What am I promising to do? What is the other side promising to do? What happens if one of us doesn't? Then write the answers down in a few lines, in your own words. If you can't, you don't understand the contract yet, and you are certainly not ready to sign it.\n\n3. Look for the numbers and the dates.\nMoney and time are where most problems hide. Check every figure: the price, of course, but also deposits, fees, interest, extra charges for paying late, and the cost of leaving early. Then check every date. When does the contract start? When does it end? Does it continue automatically, and if so, how much notice do you have to give to stop it? Many people have paid for an extra year of something simply because they missed a deadline buried on page six.\n\n4. Pay special attention to a few dangerous words.\nCertain words deserve a second look wherever they appear. “Automatically” often means that something will happen unless you take action. “Exclusive” may mean that you cannot work with anyone else. “Liable” tells you who pays when something goes wrong. Phrases such as “at our discretion” or “from time to time” can give the other side the right to change things without asking you. None of these words is necessarily unfair, but you should know exactly what each one is doing in your contract.\n\n5. Find the way out.\nEvery contract should tell you how it can end. Look for the section that explains how either side can cancel the agreement, how much notice is required and whether there is a fee. A contract that is easy to get into and very hard to get out of is a warning sign. As one lawyer likes to put it, the most important page of any agreement is the one about divorce.\n\n6. Check that the promises you heard are actually written down.\nA salesperson may tell you that setting up the equipment is free, or a landlord may promise to repaint the flat before you move in. If it is not in the contract, you may not be able to insist on it later. Politely ask for it to be added. People who meant what they said rarely object; people who didn't often suddenly discover that it is “not possible to change the standard form”.\n\n7. Ask questions, and ask them in writing.\nThere is no such thing as a stupid question about a contract you are about to sign. If something is unclear, ask, and if the answer matters, ask for it by email so that you have a record. Deniz, who runs the Istanbul office of a logistics firm, says he learned this the hard way. “Early in my career, I accepted a phone call as a promise,” he says. “The person who made it left the company a month later. The contract stayed.”\n\n8. Know when to get help.\nFor everyday agreements, careful reading is usually enough. For anything involving large sums, a house, a business partnership or your rights at work, it is worth paying a professional to look at it. A lawyer's fee may seem high, but it is usually far lower than the cost of a mistake you cannot reverse.\n\nFinally, keep a copy of everything you sign, and store it somewhere you can find it. A contract is not just an obstacle to get past on the way to what you want. It is a description of a relationship, and the moment you will most need to read it again is the moment that relationship starts to go wrong.",
+    "glosses": {
+      "rental agreement": "kira sözleşmesi",
+      "deposits": "depozitolar, kaporalar",
+      "deadline": "son tarih",
+      "buried": "gömülü, gizlenmiş",
+      "exclusive": "münhasır, yalnızca bir tarafa ait",
+      "liable": "(hukuken) sorumlu",
+      "at our discretion": "bizim takdirimize bağlı olarak",
+      "salesperson": "satış temsilcisi",
+      "landlord": "ev sahibi",
+      "repaint": "yeniden boyamak",
+      "obstacle": "engel"
+    },
+    "questions": [
+      {
+        "q": "Metnin temel mesajı nedir?",
+        "options": [
+          "Her sözleşme mutlaka bir avukata okutulmalıdır",
+          "Standart sözleşmeler hiçbir zaman değiştirilemez",
+          "Sözleşmeler genellikle zararsızdır, ayrıntılara takılmamak gerekir",
+          "Sözleşme aceleye getirilmeden, rakamları, tarihleri ve çıkış koşullarını kontrol ederek okunmalıdır"
+        ],
+        "answer": 3,
+        "explain": "“Sözleşme aceleye getirilmeden, rakamları, tarihleri ve çıkış koşullarını kontrol ederek okunmalıdır” doğru: yazı “Never read under pressure”, “Look for the numbers and the dates” ve “Find the way out” gibi adımlarla tam olarak bunu öğretiyor."
+      },
+      {
+        "q": "Yazar, hemen imzalamanız için baskı yapan biri hakkında ne ima ediyor?",
+        "options": [
+          "Bu kişinin teklifinin büyük olasılıkla en iyi teklif olduğunu",
+          "Bu davranışın, girmek üzere olduğunuz ilişki hakkında önemli bir uyarı işareti olduğunu",
+          "Böyle kişilerin genellikle avukat olduğunu",
+          "Hemen imzalamanın her zaman daha ucuza geldiğini"
+        ],
+        "answer": 1,
+        "explain": "“Bu davranışın, girmek üzere olduğunuz ilişki hakkında önemli bir uyarı işareti olduğunu” doğru: metin, okumanız için zaman tanımayan kişinin “has just told you something important about the relationship you are about to enter” diyor."
+      },
+      {
+        "q": "Avukatın “the most important page of any agreement is the one about divorce” sözü nasıl anlaşılmalı?",
+        "options": [
+          "Ciddi bir uyarı; avukat yalnızca evlilik sözleşmelerinden söz ediyor",
+          "Bir şikâyet; avukat boşanmaların arttığından yakınıyor",
+          "Esprili bir benzetme; bir sözleşmeden nasıl çıkılacağını anlatan kısmın en önemli kısım olduğunu söylüyor",
+          "Kararsızlık; avukat hangi sayfanın önemli olduğunu bilmiyor"
+        ],
+        "answer": 2,
+        "explain": "“Esprili bir benzetme; bir sözleşmeden nasıl çıkılacağını anlatan kısmın en önemli kısım olduğunu söylüyor” doğru: söz, “Find the way out” başlıklı bölümde, sözleşmenin nasıl sona erdiğini kontrol etme önerisinin hemen ardından geliyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_clever_octopus",
+    "level": "C1",
+    "genre": "popüler bilim",
+    "emoji": "🐙",
+    "title": "The Clever Stranger in the Sea",
+    "titleTr": "Denizdeki zeki yabancı",
+    "text": "In aquariums around the world, keepers tell the same kinds of stories about their octopuses. One animal learned to turn off a light that annoyed it by shooting water at it until the electricity failed. Another escaped from its tank at night, crossed the floor to a neighbouring tank, ate the fish inside and returned home before morning, leaving only a wet trail as evidence. Some octopuses seem to recognise individual people, greeting favourite keepers with curiosity and soaking others with a stream of cold water. Not all of these stories can be checked, and some have certainly grown in the telling. But there are enough of them, and enough careful experiments, to make one thing clear: the octopus is a truly clever animal.\n\nWhat makes this so surprising is where it comes from. When we think of clever animals, we usually think of our relatives: chimpanzees, dolphins, dogs, crows. They all have a backbone, and their brains are built on the same basic plan as ours. The octopus belongs to an entirely different branch of life. Its closest relatives are snails, animals that are not famous for their problem-solving skills. The last common ancestor of humans and octopuses probably lived more than five hundred million years ago and was most likely a simple creature with very little brain at all. In other words, octopus intelligence seems to have developed separately from ours, starting almost from nothing.\n\nIts nervous system reflects that independent history. An octopus is thought to have around five hundred million nerve cells, roughly as many as a dog. But only about a third of them are in its brain. The rest are spread through its eight arms, each of which can taste, touch and react to its surroundings with a surprising degree of independence. An arm that has been cut off will continue for some time to reach for food and pass it in the direction where the mouth would have been. Some scientists describe the octopus as an animal with one central brain and eight smaller, partly independent ones, all working together. What that feels like from the inside, if it feels like anything at all, is one of the most fascinating questions in biology.\n\nWhy should an animal related to snails become so clever? One popular theory points to the octopus's way of life. At some point its ancestors gave up the hard shell that their relatives still carry. That made them fast and flexible, able to squeeze through almost any gap, but it also made them extremely vulnerable. A soft animal with no shell needs to be clever: to find hiding places, to recognise danger, to open other animals' shells and to change colour in a fraction of a second so as to disappear against rocks or sand. Intelligence, in this view, was the price of giving up protection.\n\nWhat is puzzling is that octopuses, unlike most clever animals, live surprisingly short lives. Many species survive for only a year or two, and most live largely alone. In mammals and birds, intelligence is often linked to long lives and complex social groups, where there is time to learn and others to learn from. The octopus seems to break both rules. It must learn almost everything it knows on its own, quickly, and then it dies, usually soon after producing its young, without passing any of its knowledge on.\n\nSome governments have started to take this intelligence seriously in practical ways. In a few countries, octopuses are now included in animal protection laws that were once limited to animals with a backbone, after reviews of the evidence concluded that they are likely to feel pain. Plans to farm octopuses for food on a large scale have led to strong objections, partly because animals this curious and this easily bored may suffer badly in small, empty tanks.\n\nThere is something humbling about the octopus. For a long time, we treated intelligence as a ladder, with ourselves at the top and other animals arranged below us according to how closely they looked like us. The octopus does not fit on that ladder. It suggests instead that a mind can be built in more than one way, from very different materials, to solve very different problems. If we ever meet intelligent life on another planet, some researchers like to say, it may well look less like us and more like an octopus. The good news is that we do not need a spaceship to start practising. We only need to visit an aquarium, and try not to stand too close to the tank.",
+    "glosses": {
+      "aquariums": "akvaryumlar",
+      "aquarium": "akvaryum",
+      "octopuses": "ahtapotlar",
+      "octopus": "ahtapot",
+      "octopus's": "ahtapotun",
+      "soaking": "sırılsıklam ederek",
+      "chimpanzees": "şempanzeler",
+      "crows": "kargalar",
+      "backbone": "omurga",
+      "snails": "salyangozlar",
+      "squeeze": "sıkışarak geçmek",
+      "vulnerable": "savunmasız",
+      "mammals": "memeliler",
+      "puzzling": "kafa karıştırıcı",
+      "ladder": "merdiven",
+      "humbling": "insanı alçakgönüllü kılan"
+    },
+    "questions": [
+      {
+        "q": "Metne göre ahtapot zekâsını özellikle şaşırtıcı kılan nedir?",
+        "options": [
+          "Bizimkinden tamamen ayrı bir yolla, salyangozlarla akraba bir canlıda gelişmiş olması",
+          "Ahtapotların şempanzelerle yakın akraba olması",
+          "Ahtapotların çok uzun yaşayıp büyük gruplar hâlinde öğrenmesi",
+          "Ahtapot beyninin insan beyniyle aynı yapıda olması"
+        ],
+        "answer": 0,
+        "explain": "“Bizimkinden tamamen ayrı bir yolla, salyangozlarla akraba bir canlıda gelişmiş olması” doğru: metin ahtapotun en yakın akrabalarının “snails” olduğunu ve zekâsının “developed separately from ours” olduğunu söylüyor."
+      },
+      {
+        "q": "Metne göre ahtapotların sert kabuğu bırakması zekâlarıyla nasıl ilişkilendiriliyor?",
+        "options": [
+          "Kabuk ağır olduğu için beyinleri büyüyemiyordu",
+          "Kabuksuz kalınca daha yavaş hareket etmeye başladılar",
+          "Yumuşak ve savunmasız kalınca hayatta kalmak için zekâya ihtiyaç duydular",
+          "Kabuklarını başka hayvanlarla paylaşmayı öğrendiler"
+        ],
+        "answer": 2,
+        "explain": "“Yumuşak ve savunmasız kalınca hayatta kalmak için zekâya ihtiyaç duydular” doğru: metin “A soft animal with no shell needs to be clever” diyor ve zekâyı “the price of giving up protection” olarak görüyor."
+      },
+      {
+        "q": "Metnin son cümlesindeki “try not to stand too close to the tank” uyarısının tonu nedir?",
+        "options": [
+          "Korkutucu; ahtapotların insanlar için tehlikeli olduğunu vurguluyor",
+          "Esprili; girişteki, sevmediği kişilere su püskürten ahtapotlara gönderme yapıyor",
+          "Resmî; akvaryumların güvenlik kurallarını aktarıyor",
+          "Hüzünlü; ahtapotların kısa ömrünü hatırlatıyor"
+        ],
+        "answer": 1,
+        "explain": "“Esprili; girişteki, sevmediği kişilere su püskürten ahtapotlara gönderme yapıyor” doğru: ilk paragrafta bazı ahtapotların kimi insanları “soaking others with a stream of cold water” diye ıslattığı anlatılıyor; son cümle bu hikâyeye şakayla dönüyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_concert_signing",
+    "level": "C1",
+    "genre": "röportaj",
+    "emoji": "🤟",
+    "title": "Making Music Visible",
+    "titleTr": "Müziği görünür kılmak",
+    "text": "At more and more festivals and concerts, a person stands at the side of the stage, dressed in black, signing every song as it is performed. For deaf fans, these interpreters can turn a concert from something they watch into something they share. Mia talked to Lotte Jansen, who has interpreted at concerts for twelve years.\n\nMia: Let's start with the obvious question. Why would a deaf person go to a concert?\n\nLotte: I get asked that all the time, and I understand why. But it's a bit like asking why someone goes to a football match instead of watching it on television. It's the atmosphere. You feel the bass in your chest, you see the lights, you're part of a crowd of thousands who all love the same thing. Many deaf people can hear some sound, too. What they often miss are the words and the details, and that's where we come in.\n\nMia: So you translate the words of the songs.\n\nLotte: That's part of it, but if that's all I did, it would be quite a flat experience. Imagine reading the words of your favourite song from a piece of paper while it plays somewhere in the background. My job is to show the whole thing: the words, yes, but also the rhythm, the mood, which instrument is doing what. If the drums go wild, my body shows that. If the singer's voice breaks on a high note, my face shows that.\n\nMia: How do you show an instrument?\n\nLotte: There are different approaches. Sometimes I use the hand shape for the instrument itself, so you'd see guitar strings or a drum. Often it's more about movement. A slow violin line might be one smooth movement across my body. A heavy bass line might be in my shoulders and my knees. Deaf fans have told me they can “see” the song changing before the words change, and that's the biggest compliment I can get.\n\nMia: Do you have a favourite instrument to sign?\n\nLotte: The drums. You can't be shy with drums.\n\nMia: How much do you prepare?\n\nLotte: Far more than people imagine. For a big concert I might have twenty-five songs to learn, and I need to know them almost as well as the band does. I get the list of songs in advance, if I'm lucky, and then I spend weeks listening, translating and practising in front of a mirror. Songs are full of word play, slang and references that don't translate directly. A single line can take me an hour. And then on the night, the band changes the order, or plays a song that wasn't on the list.\n\nMia: What do you do then?\n\nLotte: Panic quietly.\n\nMia: Seriously?\n\nLotte: No. Well, a little. Mostly you improvise. If I don't know the song, I focus on the feeling and the rhythm and catch whatever words I can. I'd rather give an honest version of the energy than pretend I've got every word.\n\nMia: Have you ever had a difficult moment on stage?\n\nLotte: Many. Once I was interpreting a rapper who performed at an incredible speed, with some very rude lyrics. My mother was in the audience.\n\nMia: Oh no.\n\nLotte: Oh yes. She told me afterwards that my signing had been “very clear”. Another time a sudden storm meant I was signing in heavy rain, and the screen showing me to the crowd stopped working, so only the first ten rows could see me. They stayed anyway, and they sang along with their hands. That was one of the best nights of my career.\n\nMia: Do the artists ever interact with you?\n\nLotte: More and more. Some come over and dance with me, which is lovely, though it does make interpreting harder. A few have learned a song in sign language themselves to surprise their deaf fans. And sometimes the crowd starts watching me more than the band. I try very hard not to take attention away from the performer. It's their concert. I'm a window, not a painting.\n\nMia: What would you like hearing audiences to understand?\n\nLotte: That access isn't a favour. Deaf people buy tickets, they have favourite bands, they know the words, sometimes better than anyone. Having an interpreter shouldn't be a special event that people film and put online because it looks unusual. It should just be part of how a concert works, like the lights or the sound system.\n\nMia: And what keeps you doing it after twelve years?\n\nLotte: The faces. At the end of every concert there's a moment when the band plays the big final song and the whole crowd is jumping. If I look down at the deaf section and they're jumping too, at exactly the same moment as everyone else, I know I've done my job. Nobody's waiting for the translation. They're just there, inside the music, like everyone else.",
+    "glosses": {
+      "deaf": "işitme engelli, sağır",
+      "interpreters": "tercümanlar",
+      "bass": "bas (kalın ses)",
+      "rhythm": "ritim",
+      "drums": "davullar, bateri",
+      "drum": "davul",
+      "violin": "keman",
+      "compliment": "iltifat",
+      "slang": "argo",
+      "improvise": "doğaçlama yapmak",
+      "rapper": "rap şarkıcısı",
+      "lyrics": "şarkı sözleri"
+    },
+    "questions": [
+      {
+        "q": "Lotte'ye göre konserdeki işaret dili tercümanının asıl görevi nedir?",
+        "options": [
+          "Yalnızca şarkı sözlerini kelimesi kelimesine çevirmek",
+          "Sözlerle birlikte ritmi, duyguyu ve enstrümanları da görünür kılmak",
+          "Seyircinin dikkatini sanatçıdan kendine çekmek",
+          "Grubun çalacağı şarkıların listesini hazırlamak"
+        ],
+        "answer": 1,
+        "explain": "“Sözlerle birlikte ritmi, duyguyu ve enstrümanları da görünür kılmak” doğru: Lotte “My job is to show the whole thing” diyor ve sözlerin yanında “the rhythm, the mood, which instrument is doing what” göstermesi gerektiğini anlatıyor."
+      },
+      {
+        "q": "Lotte'nin “I'm a window, not a painting.” sözüyle anlatmak istediği nedir?",
+        "options": [
+          "Sahnede resim yapmayı sevdiği",
+          "Konserlerde camlı bir bölmenin arkasında durduğu",
+          "Kendisinin de bir sanatçı olarak öne çıkması gerektiği",
+          "Amacının ilgiyi üzerine çekmek değil, müziği izleyiciye ulaştırmak olduğu"
+        ],
+        "answer": 3,
+        "explain": "“Amacının ilgiyi üzerine çekmek değil, müziği izleyiciye ulaştırmak olduğu” doğru: hemen önce “I try very hard not to take attention away from the performer. It's their concert.” diyor; pencere, içinden başka bir şeyin görüldüğü bir araç."
+      },
+      {
+        "q": "Lotte'nin işitme engelli seyircilerin konser deneyimi konusundaki tutumu nedir?",
+        "options": [
+          "Kararlı; tercümanın bir lütuf değil, konserin olağan bir parçası olması gerektiğini düşünüyor",
+          "Kayıtsız; bu konunun kendisini ilgilendirmediğini söylüyor",
+          "Kötümser; işitme engellilerin konserden zevk alamayacağını düşünüyor",
+          "Alaycı; tercümanlı konserleri gereksiz buluyor"
+        ],
+        "answer": 0,
+        "explain": "“Kararlı; tercümanın bir lütuf değil, konserin olağan bir parçası olması gerektiğini düşünüyor” doğru: Lotte “access isn't a favour” diyor ve tercümanın “just be part of how a concert works, like the lights or the sound system” olması gerektiğini söylüyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_case_for_boredom",
+    "level": "C1",
+    "genre": "görüş",
+    "emoji": "😐",
+    "title": "In Praise of Boredom",
+    "titleTr": "Can sıkıntısına övgü",
+    "text": "When did you last do nothing at all? I don't mean resting, or taking a break with your phone in your hand. I mean sitting on a bus, or in a waiting room, or at a kitchen table, with nothing to look at and nothing to fill the time, until the minutes start to feel long and slightly uncomfortable. For many of us, the honest answer is: years ago. And that, I want to argue, is a small but real loss.\n\nBoredom has a terrible reputation. We treat it as a problem to be solved, a gap to be filled, an enemy to be defeated as quickly as possible. Parents worry when their children say they are bored, as if it were a sign that they have failed to provide enough activities. Adults feel slightly ashamed of it, as though only dull people ever experience it. And an entire industry of apps, streaming services and endless feeds has grown up to make sure that we never have to feel it again. Most of us carry the cure in our pockets, and we reach for it at the first sign of trouble: in queues, in lifts, at red traffic lights and even, I am sorry to admit, during conversations.\n\nBut boredom is not simply an absence of things to do. It is a signal, and like most signals, it is trying to tell us something. Some psychologists describe it as the mind's way of saying that what we are doing is not meaningful or interesting enough, and that we should look for something better. In that sense, it is not unlike hunger. Hunger is unpleasant, but nobody would suggest that we should eat all day so as to avoid ever feeling it. If we never let ourselves feel hungry, we would lose an important piece of information about what our bodies need.\n\nThere is also some evidence that boredom can be useful. In one frequently quoted experiment, volunteers who had first been given a deliberately dull task, such as copying numbers from a telephone directory, later came up with more creative answers to a problem than those who had not. The researchers suggested that the bored mind starts to wander, and that wandering is where many unexpected connections are made. Writers, scientists and artists have described something similar for centuries: the idea that arrived in the bath, on a long walk or while staring out of a train window. It is hard to imagine many of those ideas arriving between two notifications.\n\nChildren may benefit most of all. A child who is bored on a rainy afternoon, with no screen to fill the gap, is eventually forced to invent something: a game, a story, a castle made of chairs and blankets. Those slow, aimless hours are, in a sense, where imagination learns to stand on its own feet. If every empty moment is immediately filled for them, it is not obvious where they will learn to fill it themselves.\n\nI should be careful not to romanticise boredom. There is a difference between the short, restless kind I am defending and the long, heavy boredom of a job that has no meaning, or a life with too few possibilities. Long-term boredom has been linked in some studies to low mood and to risky behaviour, and nobody would wish it on anyone. Nor am I suggesting that we throw our phones into the sea. They are useful, and much of what we do on them is perfectly valuable.\n\nMy argument is a smaller one. It is that we have quietly lost the ability to put up with a few empty minutes, and that we might be better off if we practised it again. Try it the next time you are waiting for the kettle to boil or for a friend to arrive: leave your phone where it is, and notice what your mind does. At first it will complain. Then, if you are lucky, it will start to wander, and you may find it bringing back something you did not know you were looking for.\n\nThat is not a waste of time. It may be the most useful thing you do all day, and it costs nothing at all. The only price is a few minutes of discomfort, which, it turns out, we are perfectly capable of surviving.",
+    "glosses": {
+      "boredom": "can sıkıntısı",
+      "streaming services": "dijital yayın hizmetleri",
+      "cure": "çare, ilaç",
+      "directory": "rehber",
+      "wander": "(zihin) dolaşmak, dağılmak",
+      "notifications": "bildirimler",
+      "aimless": "amaçsız",
+      "romanticise": "romantikleştirmek, idealize etmek",
+      "restless": "huzursuz, kıpır kıpır",
+      "put up with": "katlanmak",
+      "discomfort": "rahatsızlık"
+    },
+    "questions": [
+      {
+        "q": "Yazarın bu yazıdaki temel savı nedir?",
+        "options": [
+          "Telefonlar tamamen bırakılmalıdır",
+          "Can sıkıntısı her zaman tehlikelidir ve önlenmelidir",
+          "Kısa süreli can sıkıntısına katlanmak yaratıcılık ve kendi zihnimizi tanımak için değerlidir",
+          "Çocuklara her an yeni etkinlikler sunulmalıdır"
+        ],
+        "answer": 2,
+        "explain": "“Kısa süreli can sıkıntısına katlanmak yaratıcılık ve kendi zihnimizi tanımak için değerlidir” doğru: yazar sıkılan zihnin “starts to wander” ettiğini ve birkaç boş dakikaya katlanmayı yeniden öğrenmemiz gerektiğini savunuyor."
+      },
+      {
+        "q": "Yazar can sıkıntısını neden açlığa benzetiyor?",
+        "options": [
+          "İkisi de hoş olmasa da bize önemli bir şey söyleyen işaretlerdir",
+          "İkisi de yalnızca çocuklarda görülür",
+          "İkisi de telefonla kolayca giderilebilir",
+          "İkisi de sağlığa her zaman zarar verir"
+        ],
+        "answer": 0,
+        "explain": "“İkisi de hoş olmasa da bize önemli bir şey söyleyen işaretlerdir” doğru: yazar can sıkıntısı için “It is a signal” diyor; açlık da “unpleasant” ama bedenimizin neye ihtiyaç duyduğunu bildiriyor."
+      },
+      {
+        "q": "Yazar “I should be careful not to romanticise boredom.” diye başlayan paragrafta nasıl bir tavır sergiliyor?",
+        "options": [
+          "Kendi görüşünden tamamen vazgeçiyor",
+          "Okurlarını telefonlarını denize atmaya çağırıyor",
+          "Uzun süreli can sıkıntısının da çok yararlı olduğunu iddia ediyor",
+          "Savının sınırlarını çizerek ölçülü ve dengeli davranıyor"
+        ],
+        "answer": 3,
+        "explain": "“Savının sınırlarını çizerek ölçülü ve dengeli davranıyor” doğru: yazar savunduğu kısa can sıkıntısını uzun süreli olandan ayırıyor ve “Nor am I suggesting that we throw our phones into the sea” diyerek aşırıya kaçmıyor."
+      }
+    ]
+  },
+  {
+    "id": "go_c1_thirty_years_letters",
+    "level": "C1",
+    "genre": "e-posta",
+    "emoji": "✉️",
+    "title": "Thirty Years of Letters",
+    "titleTr": "Otuz yıllık mektuplar",
+    "text": "Izmir, 14 March 1994\n\nDear June,\n\nMy English teacher gave me your address. She says you are thirteen like me and you live in a town by the sea, so we have two things in common already. I like music, swimming and drawing horses, although my horses look like dogs. My brother says my English is terrible. Please tell me if he is right.\n\nYour new friend,\nEce\n\nWhitby, 2 April 1994\n\nDear Ece,\n\nYour English is not terrible. It is a lot better than my Turkish, which does not exist. I have two older brothers, so I think I win. I've put in a photo of our street. The sea is at the end, behind the fish shop. You can't see it, but believe me, you can smell it.\n\nLove,\nJune\n\nIzmir, 9 October 1999\n\nJune, I got in! Architecture, in Ankara. My mother cried for an hour, half proud and half furious that I'm leaving. I am going to design a house with a window facing the sea in every room, and you will have to visit, because there will be a guest room especially for you. That is not an invitation. It is an order.\n\nLeeds, 30 October 1999\n\nCongratulations, future famous architect. I'm stuck in a student building where the heating only works on days when it isn't needed, studying law because everyone told me it was sensible. I'm beginning to suspect that “sensible” is the word people use when they want you to be bored for forty years. Tell me everything about Ankara. Tell me about the boys too, but mainly about Ankara.\n\nWhitby, 21 June 2004\n\nI'm so sorry you couldn't come. I know the visa was impossible, and I know you tried. I kept looking at the church door anyway, like an idiot. Your present arrived the day before: a drawing of our street, from that old photo, with the sea finally visible at the end. My husband cried, which I am going to use against him for years.\n\nDate: 3 February 2009\nSubject: So this is how it works now\n\nI've given in. My son says letters are “historical documents” and that I'm the only person in Izmir who still owns stamps. I miss your handwriting already. Your emails will look exactly like everyone else's, and I'll have to imagine the way your letter g leans to the left.\n\nDate: 17 November 2013\nSubject: (no subject)\n\nI know I haven't written in nearly two years. I started a hundred emails and deleted them all. It is hard to explain a divorce in a language that isn't yours, and even harder to explain why you stopped answering the one person who would have understood. I'm not asking you to forgive me. I'm just telling you I'm still here.\n\nDate: 17 November 2013\nSubject: Re: (no subject)\n\nEce. You absolute fool. I've been writing to you every month and keeping the letters in a drawer, because I didn't know whether you wanted to hear from me. There are twenty-two of them. I'm going to post them all tomorrow, in one enormous envelope, and you are going to read every single one, including the boring ones about my kitchen.\n\nDate: 6 April 2020\nSubject: Locked in\n\nEveryone is suddenly discovering what it's like to have a relationship with someone they can't see. Welcome, I want to tell them. We've been doing this for twenty-six years. We're experts.\n\nDate: 11 September 2024\nSubject: Home\n\nI'm writing this on the plane, so it will arrive after you've had time to wash all those cups. Thirty years, June. Thirty years of guessing what your voice sounded like, and then, at the airport, you said my name and I knew you before I turned round. You laugh exactly the way you write. The sea at the end of your street is just as grey as you promised, and it smells exactly as bad.\n\nMy son asked me last night whether it was strange to meet a stranger after all this time. I told him the truth: the only strange thing was how little was strange. We picked up the conversation as if one of us had just gone out of the room to put the kettle on.\n\nThere's a guest room in my flat now. It has a window that faces the sea. It is not an invitation.\n\nEce",
+    "glosses": {
+      "sensible": "mantıklı, akıllıca",
+      "visa": "vize",
+      "idiot": "aptal",
+      "given in": "pes etmek, boyun eğmek",
+      "handwriting": "el yazısı",
+      "fool": "budala",
+      "enormous": "kocaman",
+      "kettle": "çaydanlık, su ısıtıcısı"
+    },
+    "questions": [
+      {
+        "q": "Metin en çok neyi anlatıyor?",
+        "options": [
+          "İki arkadaşın ilk mektuplardan sonra birbirini unutmasını",
+          "Mektupların e-postadan daha iyi olduğunu kanıtlamaya çalışan bir tartışmayı",
+          "Bir mimarlık öğrencisinin Ankara'daki üniversite hayatını",
+          "Ayrılıklara, sessizliklere ve teknolojideki değişime rağmen otuz yıl süren bir dostluğun gelişimini"
+        ],
+        "answer": 3,
+        "explain": "“Ayrılıklara, sessizliklere ve teknolojideki değişime rağmen otuz yıl süren bir dostluğun gelişimini” doğru: metin 1994'teki ilk mektuptan 2024'teki ilk buluşmaya uzanıyor; araya kaçırılan bir düğün, mektuptan e-postaya geçiş ve iki yıllık bir sessizlik giriyor."
+      },
+      {
+        "q": "June'un 2013'teki cevabında her ay yazıp mektupları çekmecede sakladığını söylemesi neyi gösteriyor?",
+        "options": [
+          "Ece'ye çok kızgın olduğunu ve dostluğu bitirmek istediğini",
+          "Ece sessiz kaldığı sürede de dostluktan vazgeçmediğini ve ona saygıyla alan tanıdığını",
+          "Posta ücreti ödemek istemediğini",
+          "Mektup yazmayı sıkıcı bir görev olarak gördüğünü"
+        ],
+        "answer": 1,
+        "explain": "“Ece sessiz kaldığı sürede de dostluktan vazgeçmediğini ve ona saygıyla alan tanıdığını” doğru: June “I've been writing to you every month” diyor ama mektupları göndermemiş, çünkü “I didn't know whether you wanted to hear from me”."
+      },
+      {
+        "q": "Ece'nin son e-postasındaki “It is not an invitation.” cümlesinin tonu nedir?",
+        "options": [
+          "Soğuk; June'u evine çağırmak istemiyor",
+          "Kırgın; June'un evinden memnun kalmamış",
+          "Şakacı ve sıcak; 1999'daki 'bu bir emir' esprisine dönerek June'u ısrarla bekliyor",
+          "Resmî; misafir odasının kurallarını açıklıyor"
+        ],
+        "answer": 2,
+        "explain": "“Şakacı ve sıcak; 1999'daki 'bu bir emir' esprisine dönerek June'u ısrarla bekliyor” doğru: 1999'da Ece denize bakan bir misafir odası için “That is not an invitation. It is an order.” yazmıştı; şimdi o oda gerçekten var ve aynı şakayı tekrarlıyor."
+      }
+    ]
+  }
+]
