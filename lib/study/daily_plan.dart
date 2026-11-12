@@ -124,10 +124,47 @@ StudyPlan settleWeek({
   required DateTime now,
   bool noNewCards = false,
 }) {
-  if (plan.week >= year.length) return plan;
+  final today = dayKey(now);
+  // Maintenance weeks follow the calendar: a new one (and a new weekly
+  // mock) every 7 days.
+  if (inMaintenance(plan, year)) {
+    if (DateTime.parse(today).difference(DateTime.parse(plan.weekStart)).inDays < 7) return plan;
+    return plan.copyWith(week: plan.week + 1, weekStart: today, weekWordsBase: wordsStarted(progress));
+  }
   final status = weekStatus(plan: plan, year: year, units: units, progress: progress, noNewCards: noNewCards);
   if (!status.done) return plan;
-  return plan.copyWith(week: plan.week + 1, weekStart: dayKey(now), weekWordsBase: wordsStarted(progress));
+  // Past the last week the plan does not stop: it goes on in maintenance.
+  return plan.copyWith(week: plan.week + 1, weekStart: today, weekWordsBase: wordsStarted(progress));
+}
+
+/// The year plan is over: "Bugün" runs maintenance weeks, which need no new
+/// content (yds-faz4-icerik: lessons never run out).
+bool inMaintenance(StudyPlan plan, YearPlan year) => plan.week > year.length;
+
+/// New words a day in maintenance, from the banks not learnt yet.
+const maintenanceNewWordsPerDay = 20;
+
+/// Shares of a maintenance day: no new lessons; review, reading and mixed
+/// questions with the notebook.
+const maintenanceShares = {'review': 0.2, 'lesson': 0.0, 'reading': 0.3, 'questions': 0.35, 'mistakes': 0.15};
+
+/// The week [plan] is in: a plan week, or past the plan a maintenance week
+/// built on the last one (its reading and question targets), with one full
+/// mock (the next one not taken, see pickFullMock).
+PlanWeek planWeekOf(StudyPlan plan, YearPlan year) {
+  final last = year.week(min(plan.week, year.length));
+  if (!inMaintenance(plan, year)) return last;
+  return PlanWeek(
+    week: plan.week,
+    phase: last.phase,
+    units: 'Sürdürme haftası ${plan.week - year.length}: tekrar, deneme, okuma ve hata defteri',
+    questionWork: 'Hata defteri + tüm bölümlerden karışık set',
+    newWords: maintenanceNewWordsPerDay * year.daysPerWeek,
+    readingWordsPerDay: last.readingWordsPerDay,
+    intensiveTextsPerDay: last.intensiveTextsPerDay,
+    choicePerDay: last.choicePerDay,
+    mocks: const [PlanMock(kind: MockKind.full, size: 80, minutes: 180)],
+  );
 }
 
 /// The next path step of the week: its main units first, then the side
@@ -163,6 +200,29 @@ PlanMock? todayMock({required StudyPlan plan, required PlanWeek week, required D
   return null;
 }
 
+/// The pack mock to open for [mock]: a YÖKDİL learner's YÖKDİL mock when
+/// the plan names one and the pack has it, else the YDS one. A mock without
+/// an id (maintenance) is the first one of the learner's exam not [taken]
+/// yet, then the YDS ones; when all are taken, the first again (a retake,
+/// which the score estimate leaves out). Null when the pack has none.
+String? pickFullMock({
+  required List<String> packIds,
+  required String exam,
+  PlanMock? mock,
+  Set<String> taken = const {},
+}) {
+  final yokdil = exam.startsWith('yokdil');
+  if (mock?.id case final id?) {
+    final preferred = [if (yokdil && mock!.yokdil != null) mock.yokdil!, id];
+    return preferred.where(packIds.contains).firstOrNull;
+  }
+  final pool = [
+    if (yokdil) ...packIds.where((p) => p.startsWith('yokdil_')),
+    ...packIds.where((p) => p.startsWith('yds_m')),
+  ];
+  return pool.where((p) => !taken.contains(p)).firstOrNull ?? pool.firstOrNull;
+}
+
 DayKind dayKind({
   required StudyPlan plan,
   required PlanWeek week,
@@ -191,9 +251,10 @@ Map<PlanBlock, int> blockMinutes(int daily, Map<String, double> shares) {
   };
   final study = daily - breakMinutes(daily);
   final raw = {for (final e in s.entries) e.key: study * e.value};
-  final result = {for (final e in raw.entries) e.key: max(5, (e.value / 5).floor() * 5)};
+  // A zero share (no lessons in maintenance) gets no block.
+  final result = {for (final e in raw.entries) e.key: e.value == 0 ? 0 : max(5, (e.value / 5).floor() * 5)};
   var left = study - result.values.fold(0, (a, b) => a + b);
-  final byRemainder = raw.keys.toList()
+  final byRemainder = raw.keys.where((k) => raw[k]! > 0).toList()
     ..sort((a, b) => (raw[b]! - result[b]!).compareTo(raw[a]! - result[a]!));
   for (var i = 0; left >= 5 && i < 100; i++) {
     final b = byRemainder[i % byRemainder.length];
@@ -266,7 +327,8 @@ List<DayBlock> dayBlocks({
   String? nextStep,
   PlanMock? mock,
 }) {
-  final minutes = blockMinutes(plan.dailyMinutes, year.shares);
+  final maintenance = inMaintenance(plan, year);
+  final minutes = blockMinutes(plan.dailyMinutes, maintenance ? maintenanceShares : year.shares);
   final reviewTotal = c.cardsDone + c.cardsLeft;
   DayBlock review(int m) => DayBlock(
     block: PlanBlock.review,
@@ -287,6 +349,8 @@ List<DayBlock> dayBlocks({
     minutes: m,
     detail: easy
         ? 'Keyif için kolay okuma'
+        : maintenance
+        ? '${_n(c.readingToday)} / ${_n(week.readingWordsPerDay)} kelime · okunmamış metin ya da hızlı yeniden okuma'
         : '${_n(c.readingToday)} / ${_n(week.readingWordsPerDay)} kelime'
               '${week.intensiveTextsPerDay > 0 ? ' · ${week.intensiveTextsPerDay} yoğun metin' : ''}',
     progress: easy ? (c.readingToday > 0 ? 1 : 0) : _ratio(c.readingToday, week.readingWordsPerDay),
@@ -314,14 +378,15 @@ List<DayBlock> dayBlocks({
       final lessonTarget = nextStep == null ? 0 : lessonsPerDay;
       final blocks = <DayBlock>[
         review(minutes[PlanBlock.review]!),
-        DayBlock(
-          block: PlanBlock.lesson,
-          minutes: minutes[PlanBlock.lesson]!,
-          detail: nextStep == null
-              ? 'Haftanın üniteleri bitti: tekrar ve soruya ağırlık ver'
-              : '${min(c.lessonsToday, lessonsPerDay)} / $lessonsPerDay ders · sıradaki: $nextStep',
-          progress: _ratio(c.lessonsToday, lessonTarget),
-        ),
+        if (!maintenance)
+          DayBlock(
+            block: PlanBlock.lesson,
+            minutes: minutes[PlanBlock.lesson]!,
+            detail: nextStep == null
+                ? 'Haftanın üniteleri bitti: tekrar ve soruya ağırlık ver'
+                : '${min(c.lessonsToday, lessonsPerDay)} / $lessonsPerDay ders · sıradaki: $nextStep',
+            progress: _ratio(c.lessonsToday, lessonTarget),
+          ),
         reading(minutes[PlanBlock.reading]!),
         if (kind == DayKind.afterMock)
           DayBlock(
@@ -360,4 +425,4 @@ List<DayBlock> dayBlocks({
 
 /// Day the plan would end if every week from now takes a calendar week.
 DateTime estimatedFinish(StudyPlan plan, YearPlan year, DateTime now) =>
-    now.add(Duration(days: (year.length - plan.week + 1) * 7));
+    now.add(Duration(days: max(0, year.length - plan.week + 1) * 7));

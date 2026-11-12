@@ -20,6 +20,7 @@ import 'package:lingora/services/notifications.dart';
 import 'package:lingora/services/speech.dart';
 import 'package:lingora/study/daily_plan.dart';
 import 'package:lingora/study/methods.dart';
+import 'package:lingora/study/review_queue.dart';
 import 'package:lingora/study/year_plan.dart';
 import 'package:lingora/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -328,6 +329,50 @@ void main() {
       final (unit, _) = nextPlanStep(later, units, Progress(completed: done), year: year)!;
       expect(unit.id, left);
       expect(nextPlanStep(later, units, Progress(completed: done)), isNull);
+    });
+  });
+
+  group('maintenance after week 52', () {
+    test('the last week ends into maintenance; then a new week every 7 days', () {
+      final last = plan(week: 52, weekStart: dayKey(now.subtract(const Duration(days: 8))));
+      final studied = Progress(
+        xpByDay: {for (var i = 0; i < 6; i++) dayKey(now.subtract(Duration(days: i))): 10},
+      );
+      final m1 = settleWeek(plan: last, year: year, units: units, progress: studied, now: now);
+      expect((m1.week, inMaintenance(m1, year)), (53, true));
+      // Within the week: no change, even with nothing done.
+      expect(settleWeek(plan: m1, year: year, units: units, progress: const Progress(), now: now).week, 53);
+      final later = now.add(const Duration(days: 7));
+      expect(settleWeek(plan: m1, year: year, units: units, progress: const Progress(), now: later).week, 54);
+    });
+
+    test('a maintenance week: one full mock, new words from the banks, no lessons', () {
+      final p = plan(week: 53);
+      final w = planWeekOf(p, year);
+      expect(w.units, contains('Sürdürme haftası 1'));
+      expect(w.unitIds, isEmpty);
+      expect((w.examMocks.single.kind, w.examMocks.single.id), (MockKind.full, null));
+      expect(w.newWords, maintenanceNewWordsPerDay * year.daysPerWeek);
+      final blocks = dayBlocks(kind: DayKind.normal, plan: p, year: year, week: w, c: const DayCounts());
+      expect(blocks.map((b) => b.block), isNot(contains(PlanBlock.lesson)));
+      expect(blocks.fold(0, (s, b) => s + b.minutes), p.dailyMinutes - breakMinutes(p.dailyMinutes));
+      expect(blocks.firstWhere((b) => b.block == PlanBlock.reading).detail, contains('yeniden okuma'));
+      expect(planWeekOf(plan(week: 52), year).week, 52);
+    });
+
+    test('maintenance cards come from every unit, reached or not', () {
+      final yds = readCourse('exam_yds');
+      expect(courseWordCards(yds, const Progress()), isEmpty);
+      expect(courseWordCards(yds, const Progress(), everyUnit: true).length, greaterThan(400));
+    });
+
+    testWidgets('Bugün in maintenance says so and has no lesson block', (tester) async {
+      final p = Progress(onboarded: true, remindersEnabled: false, studyPlan: plan(week: 53));
+      await pumpApp(tester, const TodayScreen(), progress: p);
+      expect(find.text('Program bitti · sürdürme haftası 1'), findsOneWidget);
+      expect(find.byKey(const Key('block-lesson')), findsNothing);
+      expect(find.byKey(const Key('block-review')), findsOneWidget);
+      expect(find.textContaining('Dersler bitmez'), findsOneWidget);
     });
   });
 

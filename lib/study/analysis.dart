@@ -116,7 +116,11 @@ class ScoreRange {
 /// three mocks of 40+ questions (newest counts most); without them, each
 /// type's accuracy over its last [estimateWindow] answers weighted by its
 /// share of the exam. Null with fewer than [minAnswersForEstimate] answers.
-ScoreRange? estimateScore(List<AnswerLog> log, {Set<String> halfMocks = const {}}) {
+ScoreRange? estimateScore(
+  List<AnswerLog> log, {
+  Set<String> halfMocks = const {},
+  ExamMix mix = ExamMix.yds,
+}) {
   // Attempts, oldest first, by their log source; a retake of a mock already
   // seen does not count (its questions are known).
   final attempts = <String, List<AnswerLog>>{};
@@ -170,10 +174,10 @@ ScoreRange? estimateScore(List<AnswerLog> log, {Set<String> halfMocks = const {}
   if (n < minAnswersForEstimate) return null;
   final overall = byType.values.expand((l) => l).where((a) => a.correct).length / n;
   var right = 0.0;
-  for (final t in QType.values.where((t) => t.inExam > 0)) {
+  for (final t in QType.values.where((t) => mix.count(t) > 0)) {
     final l = byType[t];
     final acc = l == null || l.length < 5 ? overall : l.where((a) => a.correct).length / l.length;
-    right += t.inExam * acc;
+    right += mix.count(t) * acc;
   }
   final mid = right * ydsPointsPerQuestion;
   final half = n < 100 ? 8.0 : (n < 400 ? 6.0 : 4.0);
@@ -186,7 +190,7 @@ ScoreRange? estimateScore(List<AnswerLog> log, {Set<String> halfMocks = const {}
 }
 
 /// A pack's full mock id (yds_m9).
-final fullMockId = RegExp(r'^yds_m\d+$');
+final fullMockId = RegExp(r'^(yds|yokdil)_m\d+$');
 
 /// Mock id of a log source (`mock:<id>@<start>`).
 String mockIdOf(String source) {
@@ -210,14 +214,19 @@ class MockRow {
 /// The mock report: per type right/wrong/blank, time against the targets
 /// and the gap to the 72-right plan (scaled to the mock's size).
 class MockReport {
-  MockReport(List<AnswerLog> answers) : stats = typeStats(answers), total = answers.length;
+  MockReport(List<AnswerLog> answers, {this.mix = ExamMix.yds})
+    : stats = typeStats(answers),
+      total = answers.length;
   final Map<QType, TypeStat> stats;
   final int total;
+
+  /// The exam's question mix the targets come from (a YÖKDİL mock: YÖKDİL).
+  final ExamMix mix;
 
   List<MockRow> get rows => [
     for (final t in QType.values)
       if (stats[t] case final s?)
-        MockRow(s, t.inExam == 0 ? s.answered.toDouble() : t.target72 * s.answered / t.inExam),
+        MockRow(s, mix.count(t) == 0 ? s.answered.toDouble() : mix.target(t) * s.answered / mix.count(t)),
   ];
 
   int get correct => stats.values.fold(0, (s, t) => s + t.correct);

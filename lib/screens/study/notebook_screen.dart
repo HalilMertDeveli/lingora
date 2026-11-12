@@ -119,7 +119,11 @@ class _Analysis extends ConsumerWidget {
     final stats = typeStats(log);
     final weak = weakTypes(stats);
     final units = weakUnits(log);
-    final score = estimateScore(log, halfMocks: halfMockNodes(ref.watch(yearPlanProvider).value));
+    final score = estimateScore(
+      log,
+      halfMocks: halfMockNodes(ref.watch(yearPlanProvider).value),
+      mix: ExamMix.of(ref.watch(progressProvider).studyPlan?.exam),
+    );
     final title = {for (final u in course.units) u.id: u.title};
     return TapCard(
       key: const Key('notebook-analysis'),

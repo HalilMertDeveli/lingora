@@ -56,7 +56,14 @@ final ydsVocabProvider = FutureProvider<List<VocabEntry>?>((ref) => loadYdsVocab
 /// On the YDS path, [ydsCards] (yds.json) join once a lesson of their
 /// `topic` unit is done; match pairs of `vocab` lessons fill in the words
 /// those cards do not cover.
-List<WordCard> courseWordCards(Course course, Progress p, {List<VocabEntry> ydsCards = const []}) {
+/// With [everyUnit] (maintenance after the year plan) every unit's cards
+/// are offered, reached or not.
+List<WordCard> courseWordCards(
+  Course course,
+  Progress p, {
+  List<VocabEntry> ydsCards = const [],
+  bool everyUnit = false,
+}) {
   final yds = course.id.startsWith('exam_yds');
   final prefix = yds ? ydsWordPrefix : generalWordPrefix;
   if (!yds && course.id.startsWith('exam_')) return const [];
@@ -69,7 +76,7 @@ List<WordCard> courseWordCards(Course course, Progress p, {List<VocabEntry> ydsC
   }
   final result = <WordCard>[];
   for (final u in course.units) {
-    final started = u.nodes.any((n) => n.type == NodeType.lesson && p.isDone(n.id));
+    final started = everyUnit || u.nodes.any((n) => n.type == NodeType.lesson && p.isDone(n.id));
     if (started) {
       for (final e in byTopic[u.id] ?? const <VocabEntry>[]) {
         if (e.senses.isEmpty || !seen.add(e.word.trim().toLowerCase())) continue;
@@ -84,7 +91,7 @@ List<WordCard> courseWordCards(Course course, Progress p, {List<VocabEntry> ydsC
       }
     }
     for (final n in u.nodes) {
-      if (n.type != NodeType.lesson || (yds && !n.vocab) || !p.isDone(n.id)) continue;
+      if (n.type != NodeType.lesson || (yds && !n.vocab) || !(everyUnit || p.isDone(n.id))) continue;
       for (final ex in n.exercises.where((e) => e.type == ExerciseType.match)) {
         for (final (tr, en) in ex.pairs) {
           if (seen.add(en.trim().toLowerCase())) {
@@ -132,8 +139,9 @@ ReviewQueue reviewQueue(
   required String today,
   int newPerDay = defaultNewWordsPerDay,
   List<VocabEntry> ydsCards = const [],
+  bool everyUnit = false,
 }) {
-  final cards = courseWordCards(course, p, ydsCards: ydsCards);
+  final cards = courseWordCards(course, p, ydsCards: ydsCards, everyUnit: everyUnit);
   final due = [
     for (final c in cards)
       if (p.wordDue[c.id] case final d? when d.compareTo(today) <= 0) c,

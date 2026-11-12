@@ -123,7 +123,9 @@ QType questionType({
   String? section,
   bool vocabLesson = false,
 }) {
-  if (_sectionTypes[section] case final t?) return t;
+  // YÖKDİL pack sections use the same names with a yokdil_ prefix.
+  final key = section != null && section.startsWith('yokdil_') ? 'yds_${section.substring(7)}' : section;
+  if (_sectionTypes[key] case final t?) return t;
   if (_unitTypes[unitId] case final t?) return t;
   if (vocabLesson || (unitId?.startsWith('ys2') ?? false)) return QType.vocabulary;
   final q = question.toLowerCase();
@@ -151,6 +153,35 @@ QType questionType({
   // Single content words: in grammar units it is still a grammar question.
   return (unitId?.startsWith('ys1') ?? false) ? QType.grammar : QType.vocabulary;
 }
+
+/// Exam whose question mix a mock or estimate follows.
+enum ExamMix {
+  yds,
+
+  /// YÖKDİL: no dialogue or restatement, more reading-adjacent types
+  /// (yds-faz4-icerik: 15/14/12/11/10/6/6/6).
+  yokdil;
+
+  /// Exam of a plan (`yds`, `yokdil_fen`...) or of a mock id.
+  static ExamMix of(String? id) => (id ?? '').startsWith('yokdil') ? yokdil : yds;
+
+  /// Questions of [t] in the exam.
+  int count(QType t) => this == yds ? t.inExam : (_yokdilCounts[t] ?? 0);
+
+  /// Right answers of [t] in the 72-of-80 (90 points) plan.
+  double target(QType t) => this == yds ? t.target72.toDouble() : count(t) * 0.9;
+}
+
+const _yokdilCounts = {
+  QType.reading: 15,
+  QType.grammar: 14,
+  QType.translation: 12,
+  QType.sentenceCompletion: 11,
+  QType.cloze: 10,
+  QType.vocabulary: 6,
+  QType.paragraphCompletion: 6,
+  QType.irrelevantSentence: 6,
+};
 
 /// Type of a mock or bank question: its own `qtype` when it has one.
 QType examQuestionType(ExamQuestion q, {String? unitId}) =>
