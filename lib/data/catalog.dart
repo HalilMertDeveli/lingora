@@ -38,7 +38,7 @@ const courseCatalog = [
     id: 'tr_en',
     kind: TrackKind.course,
     title: 'Genel İngilizce',
-    subtitle: 'A1–B2, günlük hayattan iş hayatına',
+    subtitle: 'A1–C1, günlük hayattan iş hayatına',
     emoji: '🇬🇧',
     flag: 'assets/flags/gb.png',
   ),
