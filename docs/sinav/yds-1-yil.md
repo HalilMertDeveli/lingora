@@ -219,14 +219,14 @@ Sütunlar:
 | Uzun metin (≥100 kelime) | 135 | Yoğun okuma, H15–42 |
 | Tam deneme | 8 (`yds_full`, paket) | Plandaki tam deneme 8–11, 12, 14, 16, 18 (H44–51, ys4 üniteleri) |
 | Soru bankası | 91 (`assets/exams/yds.json`) | Pratik ve yarım deneme dolgusu |
-| YDS kelime ve kalıp | 2.630 madde, ama kelime derslerindeki benzersiz kelime **~930** (F2c sayımı) | Toplam 6.600 hedefinin ~%14'ü. 2.630, dilbilgisi ve kalıp cevaplarını da sayıyordu. |
+| YDS kelime ve kalıp | 2.630 madde, ama tam karta dönüşen benzersiz kelime **786** (F2c, PR #61: genel kurs, yd_ kartları ve çekim biçimleri ayıklandıktan sonra) | Toplam 6.600 hedefinin ~%12'si. 2.630, dilbilgisi ve kalıp cevaplarını da sayıyordu. |
 
 ### 5.2 Eksikler
 
 1. **Kelime (en büyük açık).**
-   - Genel kurs (~1.500) + YDS yolunun kelime dersleri (~930) birlikte yaklaşık 2.400 aile eder.
+   - Genel kurs (~1.500) + YDS yolunun kelime kartları (786) birlikte yaklaşık 2.300 aile eder.
    - Not: İlk sürümde YDS yolu 2.630 sayılmıştı. F2c sayımı bunun kelime dersi dışındaki cevapları da içerdiğini gösterdi (2026-11-12 düzeltmesi).
-   - Hedef 6.600. **Yaklaşık 4.200 yeni kelime gerekir.** Kelime bankaları bunu karşılar: ys5 800 + ys7 1.200 (gönderildi) + F3 1.300 + F4 900. Kaynaklar aşağıda.
+   - Hedef 6.600. **Yaklaşık 4.200 yeni kelime gerekir.** Kelime bankaları bunu karşılar: ys5 800 + ys7 1.200 (gönderildi) + F3 1.300 + F4 900 = 4.200; toplam ~6.500 aile (genel kurs s7–s8'in ek kelimeleriyle hedef 6.590'a yaklaşır). Kaynaklar aşağıda.
    - Haftalık hedefler bu kaynaklara göre dengelendi: Evre 2'de haftada 120 (ys5 + genel s5–s6 + ys1), Evre 3'te 125 (ys7 + ys2 + genel s7–s8), Evre 4'te 160 (Kelime bankası 3), Evre 5'te 110 (Kelime bankası 4). Kaynak listesi:
      - NGSL çekirdeğinde eksik kalanlar
      - NAWL/akademik
