@@ -1106,9 +1106,9 @@
           "steps": [
             {"kind":"line","speaker":"Sam","avatar":"🧑","text":"Great news! We booked our tickets!","translation":"Harika haber! Biletlerimizi aldık!"},
             {"kind":"line","speaker":"Elif","avatar":"👩","text":"Yay! When are you going to arrive?","translation":"Yaşasın! Ne zaman geliyorsunuz?"},
-            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"We're going to arrive on the fifth of July.","translation":"Beş temmuzda geleceğiz."},
+            {"kind":"line","speaker":"Sam","avatar":"🧑","text":"We're going to arrive on the fifth of July.","translation":"5 Temmuz'da geleceğiz."},
             {"kind":"line","speaker":"Mia","avatar":"👧","text":"And we're going to stay for two weeks!","translation":"Ve iki hafta kalacağız!"},
-            {"kind":"question","prompt":"Sam ve Mia ne zaman gelecek?","choices":["Beş temmuzda","Beş haziranda","On temmuzda"],"answer":"Beş temmuzda"},
+            {"kind":"question","prompt":"Sam ve Mia ne zaman gelecek?","choices":["5 Temmuz'da","5 Haziran'da","10 Temmuz'da"],"answer":"5 Temmuz'da"},
             {"kind":"line","speaker":"Elif","avatar":"👩","text":"Perfect. What are you going to do first?","translation":"Mükemmel. İlk ne yapacaksınız?"},
             {"kind":"line","speaker":"Mia","avatar":"👧","text":"I'm going to swim in the sea every day!","translation":"Her gün denizde yüzeceğim!"},
             {"kind":"line","speaker":"Sam","avatar":"🧑","text":"I'm going to eat a lot of kebab. And I'm going to practise my Turkish.","translation":"Bol bol kebap yiyeceğim. Bir de Türkçe pratiği yapacağım."},
