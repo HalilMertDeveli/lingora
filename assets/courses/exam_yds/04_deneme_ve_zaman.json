@@ -192,16 +192,16 @@
      "exercises": [
       {
        "type": "choice",
-       "question": "By the time the rescue team arrived, the hikers ---- in the cave for nearly two days.",
+       "question": "By the time the firefighters reached the village, the flames ---- most of the forest on the hillside.",
        "options": [
-        "are trapped",
-        "have been trapped",
-        "had been trapped",
-        "will be trapped",
-        "were being trapped"
+        "destroy",
+        "have destroyed",
+        "had destroyed",
+        "will destroy",
+        "are destroying"
        ],
        "answer": 2,
-       "explanation": "Tip: dilbilgisi (aynı fiilin farklı zamanları). *By the time + geçmiş zaman* ve *for nearly two days*, ekip gelmeden önce süren durumu anlatır → 'had been trapped'. 'Have been trapped' şimdiye bağlıdır, geçmiş zamanlı *arrived* ile uyuşmaz."
+       "explanation": "Tip: dilbilgisi (aynı fiilin farklı zamanları). *By the time + geçmiş zaman*, itfaiye gelmeden önce tamamlanmış bir olayı anlatır → 'had destroyed'. 'Have destroyed' şimdiye bağlıdır, geçmiş zamanlı *reached* ile uyuşmaz; 'destroy', 'are destroying' ve 'will destroy' geçmişteki bir anla uyumsuzdur."
       },
       {
        "type": "choice",
@@ -567,16 +567,16 @@
       },
       {
        "type": "choice",
-       "question": "Unless policymakers address the shortage of qualified teachers in rural areas, ----.",
+       "question": "Unless the government invests in public transport in the coming years, ----.",
        "options": [
-        "educational standards improved remarkably in the last decade",
-        "the gap had narrowed by the end of the century",
-        "more graduates would have chosen teaching",
-        "rural schools have recently received additional funding",
-        "the educational gap between urban and rural regions is likely to widen"
+        "traffic congestion decreased sharply in the last decade",
+        "air pollution had fallen by the end of the century",
+        "more commuters would have taken the bus",
+        "several new metro lines have recently been opened",
+        "traffic congestion in major cities is likely to get worse"
        ],
        "answer": 4,
-       "explanation": "*Unless + geniş zaman* 1. tip koşul gibidir; ana cümle gelecek ya da olasılık bildirmeli → 'the educational gap … is likely to widen'. 'Improved' ve 'had narrowed' geçmişe aittir; 'would have chosen' 3. tip koşulun sonucudur."
+       "explanation": "*Unless + geniş zaman* 1. tip koşul gibidir; ana cümle gelecek ya da olasılık bildirmeli → 'traffic congestion in major cities is likely to get worse'. 'Decreased' ve 'had fallen' geçmişe aittir; 'would have taken' 3. tip koşulun sonucudur; 'have recently been opened' koşulun sonucu olamaz, çünkü yakın geçmişte olmuş bir olayı anlatır."
       },
       {
        "type": "choice",
@@ -1140,16 +1140,16 @@
       },
       {
        "type": "choice",
-       "question": "Unless drinking water is properly treated, it may contain bacteria that cause serious diseases.",
+       "question": "Unless the vaccine is stored at the correct temperature, it may lose its effectiveness within a few hours.",
        "options": [
-        "İçme suyu düzgün şekilde arıtılsa bile ciddi hastalıklara yol açan bakteriler içerebilir.",
-        "İçme suyu düzgün arıtıldığı için ciddi hastalıklara yol açan bakteriler içermez.",
-        "Ciddi hastalıklara yol açan bakteriler yalnızca düzgün arıtılmamış sularda bulunur.",
-        "İçme suyu düzgün şekilde arıtılmazsa ciddi hastalıklara yol açan bakteriler içerebilir.",
-        "İçme suyunu düzgün şekilde arıtmak, ciddi hastalıkları tedavi etmenin en etkili yoludur."
+        "Aşı doğru sıcaklıkta saklansa bile birkaç saat içinde etkisini kaybedebilir.",
+        "Aşı doğru sıcaklıkta saklandığı için birkaç saat içinde etkisini kaybetmez.",
+        "Etkisini kaybeden aşılar yalnızca doğru sıcaklıkta saklanmamış olanlardır.",
+        "Aşı doğru sıcaklıkta saklanmazsa birkaç saat içinde etkisini kaybedebilir.",
+        "Aşıyı doğru sıcaklıkta saklamak, onu daha etkili hâle getirmenin en kolay yoludur."
        ],
        "answer": 3,
-       "explanation": "*Unless* = '-mezse', *may contain* = 'içerebilir' → 'düzgün şekilde arıtılmazsa … içerebilir'. 'Arıtılsa bile' diyen şık *unless*'i 'bile' diye çevirerek anlamı bozar; 'yalnızca düzgün arıtılmamış sularda' diyen şıktaki 'yalnızca' kaynakta olmayan bir genellemedir."
+       "explanation": "*Unless* = '-mezse', *may lose* = 'kaybedebilir' → 'doğru sıcaklıkta saklanmazsa … kaybedebilir'. 'Saklansa bile' diyen çeviri *unless*'i 'bile' diye çevirerek anlamı bozar; 'saklandığı için … kaybetmez' koşulu sebebe çevirir; 'yalnızca … saklanmamış olanlardır' kaynakta olmayan bir genellemedir; 'daha etkili hâle getirmenin en kolay yolu' farklı bir iddia kurar."
       },
       {
        "type": "choice",
@@ -1179,16 +1179,16 @@
       },
       {
        "type": "choice",
-       "question": "It was not until the late twentieth century that the ruins of the ancient harbour were properly excavated. (Anlamca en yakın cümleyi seçiniz.)",
+       "question": "It was not until the early nineteenth century that the ancient manuscript was correctly translated. (Anlamca en yakın cümleyi seçiniz.)",
        "options": [
-        "The ruins of the ancient harbour were not properly excavated before the late twentieth century.",
-        "The ancient harbour was destroyed in the late twentieth century during an excavation.",
-        "Excavations at the ancient harbour stopped in the late twentieth century.",
-        "The ruins of the ancient harbour had been properly excavated long before the twentieth century.",
-        "In the late twentieth century, archaeologists decided not to excavate the ancient harbour."
+        "The ancient manuscript was not correctly translated before the early nineteenth century.",
+        "The ancient manuscript was lost in the early nineteenth century during a translation.",
+        "Work on translating the ancient manuscript stopped in the early nineteenth century.",
+        "The ancient manuscript had been correctly translated long before the nineteenth century.",
+        "In the early nineteenth century, scholars decided not to translate the ancient manuscript."
        ],
        "answer": 0,
-       "explanation": "*It was not until X that …* = 'ancak X'te …' ya da 'X'ten önce … değil' → 'were not properly excavated before the late twentieth century'. 'had been properly excavated long before' diyen şık kazının çok daha önce yapıldığını söyleyerek anlamı tersine çevirir; 'Excavations … stopped' diyen şık 'başlamak' yerine 'durmak' der."
+       "explanation": "*It was not until X that …* = 'ancak X'te …' ya da 'X'ten önce … değil' → 'was not correctly translated before the early nineteenth century'. 'had been correctly translated long before' diyen cümle çevirinin çok daha önce yapıldığını söyleyerek anlamı tersine çevirir; 'Work … stopped' 'başarılmak' yerine 'durmak' der; 'decided not to translate' çevirinin hiç yapılmadığını söyler."
       },
       {
        "type": "choice",
@@ -1262,16 +1262,16 @@
       },
       {
        "type": "choice",
-       "question": "The more carefully a study is designed, the less likely it is that its results will be influenced by chance.",
+       "question": "The more regularly a machine is maintained, the less likely it is that it will break down unexpectedly.",
        "options": [
-        "Bir çalışma ne kadar dikkatli tasarlanırsa, sonuçlarının tesadüften etkilenme olasılığı o kadar azalır.",
-        "Dikkatli tasarlanan çalışmaların sonuçları hiçbir zaman tesadüften etkilenmez.",
-        "Bir çalışmanın sonuçları tesadüften etkilendiğinde, çalışmanın daha dikkatli tasarlanması gerekir.",
-        "Bir çalışma ne kadar dikkatli tasarlanırsa tasarlansın, sonuçları tesadüften etkilenebilir.",
-        "Tesadüf, dikkatli tasarlanmış çalışmaların sonuçlarını daha çok etkiler."
+        "Bir makinenin bakımı ne kadar düzenli yapılırsa, beklenmedik şekilde arızalanma olasılığı o kadar azalır.",
+        "Düzenli bakımı yapılan makineler hiçbir zaman arızalanmaz.",
+        "Bir makine beklenmedik şekilde arızalandığında, bakımının daha düzenli yapılması gerekir.",
+        "Bir makinenin bakımı ne kadar düzenli yapılırsa yapılsın, beklenmedik şekilde arızalanabilir.",
+        "Düzenli bakım, makinelerin daha sık arızalanmasına yol açar."
        ],
        "answer": 0,
-       "explanation": "*The more …, the less …* = 'ne kadar … o kadar az' → 'ne kadar dikkatli tasarlanırsa … o kadar azalır'. 'Hiçbir zaman tesadüften etkilenmez' diyen şık aşırı genelleme yapar; 'ne kadar … tasarlanırsa tasarlansın' diyen şık ise *no matter how* anlamıdır, kaynakta yoktur."
+       "explanation": "*The more …, the less …* = 'ne kadar … o kadar az' → 'ne kadar düzenli yapılırsa … olasılığı o kadar azalır'. 'Hiçbir zaman arızalanmaz' diyen çeviri aşırı genelleme yapar; 'ne kadar … yapılırsa yapılsın' diyen çeviri *no matter how* anlamıdır, kaynakta yoktur; 'daha sık arızalanmasına yol açar' ilişkiyi tersine çevirir."
       },
       {
        "type": "choice",
@@ -2052,29 +2052,29 @@
      "exercises": [
       {
        "type": "choice",
-       "question": "Since 2015, the number of electric cars on the roads ---- more than tenfold.",
+       "question": "Since 2010, the price of solar panels ---- by nearly ninety per cent.",
        "options": [
-        "increased",
-        "was increasing",
-        "is increasing",
-        "will increase",
-        "has increased"
+        "fell",
+        "was falling",
+        "is falling",
+        "will fall",
+        "has fallen"
        ],
        "answer": 4,
-       "explanation": "Kısayol: *Since + yıl* → present perfect. 'Increased', 'was increasing', 'is increasing' ve 'will increase' tek bakışta elenir; cevap 'has increased'. Hedef süre: 15 saniye."
+       "explanation": "Kısayol: *Since + yıl* → present perfect. 'Fell', 'was falling', 'is falling' ve 'will fall' tek bakışta elenir; cevap 'has fallen'. Hedef süre: 15 saniye."
       },
       {
        "type": "choice",
-       "question": "If I ---- about the traffic, I would have left home earlier.",
+       "question": "If she ---- the instructions more carefully, she would have avoided the mistake.",
        "options": [
-        "know",
-        "knew",
-        "have known",
-        "had known",
-        "would know"
+        "reads",
+        "read",
+        "has read",
+        "had read",
+        "would read"
        ],
        "answer": 3,
-       "explanation": "Kısayol: ana cümlede *would have left* → 3. tip koşul → *if* tarafı *had + V3*: 'had known'. 'Knew' 2. tip koşula aittir; zaman uyumundan dört şık hemen elenir."
+       "explanation": "Kısayol: ana cümlede *would have avoided* → 3. tip koşul → *if* tarafı *had + V3*: 'had read'. Geçmiş zamanlı 'read' 2. tip koşula aittir; 'reads', 'has read' ve 'would read' zaman uyumundan hemen elenir."
       },
       {
        "type": "choice",
@@ -2653,16 +2653,16 @@
       },
       {
        "type": "choice",
-       "question": "The exam was so long that ----.",
+       "question": "The lecture was so technical that ----.",
        "options": [
-        "it consisted of only twenty questions",
-        "candidates finished it in less than an hour",
-        "many candidates could not finish it in the time allowed",
-        "it is easier than last year's exam",
-        "which surprised most of the candidates"
+        "every student in the hall understood it easily",
+        "even beginners followed it without any difficulty",
+        "many students in the audience could not follow the main argument",
+        "it is more interesting than last week's lecture",
+        "which confused most of the students"
        ],
        "answer": 2,
-       "explanation": "Kısayol: *so … that* kalıbı sonuç ister ve sonuç 'uzunluğa' uygun olmalı → 'many candidates could not finish it in the time allowed'. 'Only twenty questions' ve 'less than an hour' uzunlukla çelişir; 'which …' *that*'tan sonra yapıyı bozar."
+       "explanation": "Kısayol: *so … that* kalıbı sonuç ister ve sonuç 'çok teknik olmaya' uygun olmalı → 'many students in the audience could not follow the main argument'. 'Understood it easily' ve 'followed it without any difficulty' teknikliğin beklenen sonucuyla çelişir; 'it is more interesting …' geniş zamanla bir sonuç bildirmez; 'which …' *that*'tan sonra yapıyı bozar."
       },
       {
        "type": "choice",
@@ -4122,7 +4122,7 @@
       },
       {
        "type": "choice",
-       "question": "---- the region receives very little rainfall, farmers have developed ingenious irrigation methods.",
+       "question": "---- the old bridge can no longer carry heavy lorries, the council has decided to build a new one.",
        "options": [
         "Seeing that",
         "Even though",
@@ -4131,7 +4131,7 @@
         "As if"
        ],
        "answer": 0,
-       "explanation": "Az yağış, sulama yöntemlerinin nedenidir → sebep bağlacı 'Seeing that' (-diğine göre). Tuzak: 'Even though' zıtlık kurar ama yağış azlığı ile sulama geliştirmek çelişmez; 'Unless' koşulu tersine çevirir."
+       "explanation": "Eski köprünün ağır kamyonları taşıyamaması, yeni köprü kararının nedenidir → sebep bağlacı 'Seeing that' (-diğine göre). Tuzak: 'Even though' zıtlık kurar ama köprünün yetersizliği ile yenisini yapmak çelişmez; 'Unless' koşulu tersine çevirir; 'Lest' olumsuz amaç, 'As if' benzetme bildirir."
       },
       {
        "type": "choice",
@@ -4747,7 +4747,7 @@
       },
       {
        "type": "choice",
-       "question": "Children who grow up in polluted cities are more ---- to respiratory diseases.",
+       "question": "Wooden buildings in humid regions are highly ---- to damage from termites.",
        "options": [
         "susceptible",
         "reluctant",
@@ -4756,7 +4756,7 @@
         "indispensable"
        ],
        "answer": 0,
-       "explanation": "'susceptible to' = -e yatkın: kirli şehirlerde büyüyen çocuklar solunum hastalıklarına daha yatkındır. Tuzak: 'reluctant to' (isteksiz) de *to* alır ama anlam tutmaz; 'eligible' *for*, 'compatible' *with* ister."
+       "explanation": "'susceptible to' = -e yatkın, -e açık: nemli bölgelerdeki ahşap binalar termit hasarına çok açıktır. Tuzak: 'reluctant to' (isteksiz) de *to* alır ama cansız bir bina için anlam tutmaz; 'eligible' *for*, 'compatible' *with* ister; 'indispensable' (vazgeçilmez) anlamca uymaz."
       },
       {
        "type": "choice",
@@ -5792,16 +5792,16 @@
       },
       {
        "type": "choice",
-       "question": "Far from solving the problem, the new law has made it worse.",
+       "question": "Far from reducing traffic, the new motorway has increased congestion in the city centre.",
        "options": [
-        "Yeni yasa sorunu tamamen olmasa da büyük ölçüde çözdü.",
-        "Yeni yasa sorunu çözmek bir yana, onu daha da kötüleştirdi.",
-        "Yeni yasa sorunu çözmekten uzak olsa da onu kötüleştirmedi.",
-        "Sorun kötüleştiği için yeni bir yasa çıkarıldı.",
-        "Yeni yasa, sorunu çözmek için çok geç çıkarıldı."
+        "Yeni otoyol trafiği tamamen olmasa da büyük ölçüde azalttı.",
+        "Yeni otoyol trafiği azaltmak bir yana, şehir merkezindeki sıkışıklığı artırdı.",
+        "Yeni otoyol trafiği azaltmaktan uzak olsa da şehir merkezindeki sıkışıklığı artırmadı.",
+        "Şehir merkezindeki sıkışıklık arttığı için yeni bir otoyol yapıldı.",
+        "Yeni otoyol, trafiği azaltmak için çok geç açıldı."
        ],
        "answer": 1,
-       "explanation": "*Far from solving* = 'çözmek bir yana'; *has made it worse* = 'daha da kötüleştirdi'. Tuzak: 'kötüleştirmedi' diyen şık ikinci yarımı olumsuz yapar; 'kötüleştiği için yasa çıkarıldı' sebep-sonucu tersine çevirir."
+       "explanation": "*Far from reducing* = 'azaltmak bir yana'; *has increased congestion* = 'sıkışıklığı artırdı'. Tuzak: 'artırmadı' diyen çeviri ikinci yarımı olumsuz yapar; 'arttığı için otoyol yapıldı' sebep-sonucu tersine çevirir; 'büyük ölçüde azalttı' anlamı tersine çevirir."
       },
       {
        "type": "choice",
@@ -5818,16 +5818,16 @@
       },
       {
        "type": "choice",
-       "question": "The extent to which diet affects mental health is still unclear.",
+       "question": "The extent to which social media influences voting behaviour is still a matter of debate.",
        "options": [
-        "Beslenmenin ruh sağlığını etkilediği artık kesin olarak bilinmektedir.",
-        "Ruh sağlığının beslenmeyi nasıl etkilediği hâlâ belirsizdir.",
-        "Beslenme, ruh sağlığını büyük ölçüde etkilemektedir.",
-        "Beslenmenin ruh sağlığını ne ölçüde etkilediği hâlâ belirsizdir.",
-        "Beslenmenin ruh sağlığı üzerindeki etkisi hiç araştırılmamıştır."
+        "Sosyal medyanın oy verme davranışını etkilediği artık kesin olarak kanıtlanmıştır.",
+        "Oy verme davranışının sosyal medyayı nasıl etkilediği hâlâ tartışma konusudur.",
+        "Sosyal medya, oy verme davranışını büyük ölçüde etkilemektedir.",
+        "Sosyal medyanın oy verme davranışını ne ölçüde etkilediği hâlâ tartışma konusudur.",
+        "Sosyal medyanın oy verme davranışı üzerindeki etkisi hiç araştırılmamıştır."
        ],
        "answer": 3,
-       "explanation": "*The extent to which* = 'ne ölçüde'; *still unclear* = 'hâlâ belirsiz'. Tuzak: 'kesin olarak bilinmektedir' zıt anlamdır; 'ruh sağlığının beslenmeyi' diyen şık özne ile nesneyi yer değiştirir; 'hiç araştırılmamıştır' kaynakta olmayan bilgi ekler."
+       "explanation": "*The extent to which* = 'ne ölçüde'; *still a matter of debate* = 'hâlâ tartışma konusu'. Tuzak: 'kesin olarak kanıtlanmıştır' zıt anlamdır; 'oy verme davranışının sosyal medyayı' diyen çeviri özne ile nesneyi yer değiştirir; 'büyük ölçüde etkilemektedir' tartışmalı olanı kesinleştirir; 'hiç araştırılmamıştır' kaynakta olmayan bilgi ekler."
       },
       {
        "type": "choice",
@@ -5844,16 +5844,16 @@
       },
       {
        "type": "choice",
-       "question": "Not all the participants were aware that they were being observed.",
+       "question": "Not all the employees knew that their calls were being recorded.",
        "options": [
-        "Katılımcıların hiçbiri gözlemlendiklerinin farkında değildi.",
-        "Katılımcıların hepsi gözlemlendiklerinin farkındaydı.",
-        "Katılımcılar, başkalarını gözlemlediklerinin farkında değildi.",
-        "Katılımcıların bazıları gözlemlendiklerinin farkında değildi.",
-        "Katılımcıların hepsi gözlemlenmek istemiyordu."
+        "Çalışanların hiçbiri görüşmelerinin kaydedildiğini bilmiyordu.",
+        "Çalışanların hepsi görüşmelerinin kaydedildiğini biliyordu.",
+        "Çalışanlar, başkalarının görüşmelerini kaydettiklerini bilmiyordu.",
+        "Çalışanların bazıları görüşmelerinin kaydedildiğini bilmiyordu.",
+        "Çalışanların hepsi görüşmelerinin kaydedilmesini istemiyordu."
        ],
        "answer": 3,
-       "explanation": "*Not all* = 'hepsi değil', yani bazıları değil: katılımcıların bir kısmı farkındaydı, bir kısmı değildi → 'bazıları … farkında değildi'. *were being observed* edilgendir = 'gözlemlendiklerinin'. Tuzak: 'hiçbiri' aşırı genellemedir; 'hepsi … farkındaydı' olumsuzluğu atar; 'başkalarını gözlemlediklerinin' edilgeni etken yapar; 'gözlemlenmek istemiyordu' farklı bir yüklem kurar."
+       "explanation": "*Not all* = 'hepsi değil', yani bazıları değil: çalışanların bir kısmı biliyordu, bir kısmı bilmiyordu → 'bazıları … bilmiyordu'. *were being recorded* edilgendir = 'kaydedildiğini'. Tuzak: 'hiçbiri' aşırı genellemedir; 'hepsi … biliyordu' olumsuzluğu atar; 'başkalarının görüşmelerini kaydettiklerini' edilgeni etken yapar; 'kaydedilmesini istemiyordu' farklı bir yüklem kurar."
       },
       {
        "type": "choice",
@@ -6680,16 +6680,16 @@
       {
        "type": "choice",
        "passage": "In 2019, the fictional district of Lornwick switched its secondary schools to a four-day week, largely to cut transport and heating costs. Early reports from the district were enthusiastic: attendance rose slightly, and teachers said they valued the extra day for planning. A longitudinal study published five years later, however, paints a more complicated picture. Test scores in mathematics fell modestly in the first two years before levelling off, while reading scores showed no significant change. The researchers note that the savings were smaller than expected, at roughly two per cent of the annual budget, partly because many families had to pay for childcare on the fifth day. They also point out that the effects varied widely between schools: those that used the free day for supervised clubs saw almost no decline in results. The authors are careful not to recommend or reject the policy outright. Instead, they argue that its success appears to depend less on the number of school days than on what happens on the day without lessons.",
-       "question": "It can be inferred from the passage that the early reports from the district ----.",
+       "question": "It can be inferred from the passage that the schools which organised supervised clubs on the free day ----.",
        "options": [
-        "were written by the researchers who conducted the study",
-        "presented the change in a more positive light than later evidence justified",
-        "showed that families saved money on childcare",
-        "focused mainly on the decline in mathematics scores",
-        "were based on the longitudinal study that was published five years later by researchers"
+        "saved more money than any other schools in the district",
+        "largely avoided the drop in results seen in other schools",
+        "were the source of the enthusiastic early reports",
+        "had to return to a five-day week after the study",
+        "showed a significant rise in reading scores"
        ],
        "answer": 1,
-       "explanation": "İlk raporlar *enthusiastic* idi; *however* ile gelen uzun süreli çalışma tabloyu karmaşıklaştırır. Demek ki ilk raporlar durumu olduğundan olumlu göstermiştir → 'presented the change in a more positive light than later evidence justified'. 'Were based on the longitudinal study' zaman bakımından imkânsızdır: çalışma beş yıl sonra çıktı."
+       "explanation": "Metin, boş günü gözetimli kulüplerle değerlendiren okullarda sonuçlarda 'almost no decline' olduğunu, etkilerin okuldan okula değiştiğini söyler; demek ki bu okullar diğerlerinde görülen düşüşten büyük ölçüde kaçınmıştır → 'largely avoided the drop in results seen in other schools'. Tasarruf, ilk raporların kaynağı ve beş günlük haftaya dönüş metinde bu okullarla ilişkilendirilmez; okuma puanlarında ise anlamlı bir değişiklik olmamıştır."
       },
       {
        "type": "choice",
@@ -7638,17 +7638,17 @@
       },
       {
        "type": "choice",
-       "passage": "Deniz: Are you going to the revision session on Saturday?\nMert: ----\nDeniz: Neither do I, but missing it might be a mistake. They're going over the irrelevant-sentence questions.\nMert: In that case, I'll come along.",
+       "passage": "Selin: Do you want to watch the documentary about volcanoes tonight?\nOkan: ----\nSelin: Neither do I, but our geography teacher said it would help with the project.\nOkan: Fair enough. Let's watch it together, then.",
        "question": "Diyalogda boş bırakılan yere gelebilecek en uygun ifadeyi seçiniz.",
        "options": [
-        "Did you finish the mock exam yesterday?",
-        "I can't decide whether to go or not.",
-        "I really enjoy those sessions.",
-        "Yes, I've already registered for it.",
-        "I don't really feel like it, to be honest."
+        "Have you finished the geography project yet?",
+        "I can't remember what time it starts.",
+        "I really love documentaries about nature.",
+        "Yes, I've already set a reminder for it.",
+        "I don't really want to, to be honest."
        ],
        "answer": 4,
-       "explanation": "*Neither do I* olumsuz ve geniş zamanlı bir cümleye verilen tepkidir → 'I don't really feel like it, to be honest.' 'I can't decide …' de olumsuzdur ama *Neither can I* gerektirir; 'Yes, I've already registered' olumludur ve *Neither* ile uyuşmaz."
+       "explanation": "*Neither do I* olumsuz ve geniş zamanlı bir cümleye verilen tepkidir → 'I don't really want to, to be honest.' 'I can't remember …' de olumsuzdur ama *Neither can I* gerektirir; 'I really love documentaries' ve 'Yes, I've already set a reminder' olumludur ve *Neither* ile uyuşmaz; soru cümlesine de *Neither do I* ile cevap verilmez."
       },
       {
        "type": "choice",
@@ -7811,16 +7811,16 @@
       },
       {
        "type": "choice",
-       "question": "Had it not been for the scholarship, he could not have afforded to study abroad. (Anlamca en yakın cümleyi seçiniz.)",
+       "question": "Had it not been for the donations from local residents, the library could not have stayed open. (Anlamca en yakın cümleyi seçiniz.)",
        "options": [
-        "He turned down the scholarship because he could afford to study abroad.",
-        "The scholarship was given to him after he had finished studying abroad.",
-        "He would have studied abroad even without the scholarship.",
-        "He was able to study abroad only because he received the scholarship.",
-        "Although he received the scholarship, he could not afford to study abroad."
+        "The library refused the donations because it could stay open without them.",
+        "Local residents started making donations after the library had closed.",
+        "The library would have stayed open even without the donations from local residents.",
+        "The library was able to stay open only because local residents made donations.",
+        "Although local residents made donations, the library could not stay open."
        ],
        "answer": 3,
-       "explanation": "*Had it not been for X* = 'X olmasaydı'; burs olmasaydı gidemezdi, demek ki burs sayesinde gitti → 'He was able to study abroad only because he received the scholarship.' 'He would have studied abroad even without the scholarship' koşulun anlamını tersine çevirir."
+       "explanation": "*Had it not been for X* = 'X olmasaydı'; bağışlar olmasaydı kütüphane açık kalamazdı, demek ki bağışlar sayesinde açık kaldı → 'The library was able to stay open only because local residents made donations.' 'Would have stayed open even without the donations' koşulun anlamını tersine çevirir; 'could not stay open' diyen cümle kütüphanenin kapandığını söyler."
       },
       {
        "type": "choice",

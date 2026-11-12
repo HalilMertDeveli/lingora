@@ -491,16 +491,16 @@
       },
       {
        "type": "choice",
-       "question": "The results of the new survey ---- that most young people in the city prefer the bus to the car.",
+       "question": "The members of the local football club ---- every Saturday morning in the park.",
        "options": [
-        "shows",
-        "showing",
-        "to show",
-        "show",
-        "has shown"
+        "trains",
+        "training",
+        "to train",
+        "train",
+        "has trained"
        ],
        "answer": 3,
-       "explanation": "Doğru cevap 'show'. 'of the new survey' araya giren bir öbektir; asıl özne çoğul 'results' olduğu için fiil de çoğul olur. 'shows' ve 'has shown' tekil özneye göre çekimlidir; 'showing' ve 'to show' ise çekimli fiil değildir, cümleyi yarım bırakır."
+       "explanation": "Doğru cevap 'train'. 'of the local football club' araya giren bir öbektir; asıl özne çoğul 'members' olduğu için fiil de çoğul olur. 'trains' ve 'has trained' tekil özneye göre çekimlidir; 'training' ve 'to train' ise çekimli fiil değildir, cümleyi yarım bırakır."
       },
       {
        "type": "choice",
@@ -517,16 +517,16 @@
       },
       {
        "type": "choice",
-       "question": "‘The students who live in the dormitory near the station usually arrive late.’ cümlesinin ana fiili hangisidir?",
+       "question": "‘The girl who sits next to me in the library often borrows my notes.’ cümlesinin ana fiili hangisidir?",
        "options": [
-        "live",
-        "dormitory",
-        "station",
-        "late",
-        "arrive"
+        "sits",
+        "library",
+        "often",
+        "notes",
+        "borrows"
        ],
        "answer": 4,
-       "explanation": "Doğru cevap 'arrive'. 'who live in the dormitory near the station' öğrencileri tanımlayan bir yan cümledir; asıl özne 'the students' ve ana fiili 'arrive'dır. 'live' yan cümlenin fiilidir, ana fiil değildir."
+       "explanation": "Doğru cevap 'borrows'. 'who sits next to me in the library' kızı tanımlayan bir yan cümledir; asıl özne 'the girl' ve ana fiili 'borrows'dur. 'sits' yan cümlenin fiilidir, ana fiil değildir."
       },
       {
        "type": "choice",
@@ -1893,16 +1893,16 @@
       },
       {
        "type": "choice",
-       "question": "My father usually ---- to work, but today he is taking the bus because it is raining.",
+       "question": "My sister usually ---- her lunch to school, but today she is eating in the canteen because she woke up late.",
        "options": [
-        "walks",
-        "is walking",
-        "walk",
-        "walked",
-        "has walk"
+        "takes",
+        "is taking",
+        "take",
+        "took",
+        "has take"
        ],
        "answer": 0,
-       "explanation": "Doğru cevap 'walks'. 'usually' alışkanlık bildirir ve present simple ister; 'today he is taking' ise o güne özgü geçici durumu gösterir. 'is walking' alışkanlığı anlatamaz; 'walk' tekil özneyle '-s' almadığı için yanlıştır."
+       "explanation": "Doğru cevap 'takes'. 'usually' alışkanlık bildirir ve present simple ister; 'today she is eating' ise o güne özgü geçici durumu gösterir. 'is taking' alışkanlığı anlatamaz; 'take' tekil özneyle '-s' almadığı için yanlıştır."
       },
       {
        "type": "choice",
@@ -2166,16 +2166,16 @@
       },
       {
        "type": "choice",
-       "question": "Every summer, the island ---- thousands of tourists, but at the moment the hotels ---- almost empty because of the storm.",
+       "question": "Most weekends, my cousin ---- football in the park, but at the moment the pitches ---- closed for repairs.",
        "options": [
-        "is attracting / were",
-        "attracted / are",
-        "attract / is",
-        "attracts / are",
-        "will attract / were"
+        "is playing / were",
+        "played / are",
+        "play / is",
+        "plays / are",
+        "will play / were"
        ],
        "answer": 3,
-       "explanation": "Doğru cevap 'attracts / are'. 'Every summer' tekrar eden bir durumu anlatır ve tekil özneyle (the island) present simple ister; 'at the moment' şimdiki durumu gösterir ve çoğul 'hotels' ile 'are' gelir. 'attracted / are' ilk boşlukta alışkanlığı geçmişe taşır; 'attract / is' ise iki yerde de özne-fiil uyumunu bozar."
+       "explanation": "Doğru cevap 'plays / are'. 'Most weekends' tekrar eden bir durumu anlatır ve tekil özneyle (my cousin) present simple ister; 'at the moment' şimdiki durumu gösterir ve çoğul 'pitches' ile 'are' gelir. 'played / are' ilk boşlukta alışkanlığı geçmişe taşır; 'play / is' ise iki yerde de özne-fiil uyumunu bozar."
       },
       {
        "type": "choice",
@@ -3542,8 +3542,8 @@
      "exercises": [
       {
        "type": "fillBlank",
-       "text": "___ the flat is small, the rent is very high.",
-       "translation": "Daire küçük olmasına rağmen kira çok yüksek.",
+       "text": "___ the car is old, it still runs perfectly.",
+       "translation": "Araba eski olmasına rağmen hâlâ kusursuz çalışıyor.",
        "answer": "Although",
        "choices": [
         "Although",
@@ -5600,16 +5600,16 @@
       },
       {
        "type": "choice",
-       "question": "By the time the survey ----, researchers ---- more than 4,000 households.",
+       "question": "By the time the new library ----, volunteers ---- more than 20,000 books.",
        "options": [
-        "ended / have interviewed",
-        "will end / had interviewed",
-        "has ended / interviewed",
-        "ends / will have interviewed",
-        "is ending / were interviewing"
+        "opened / have catalogued",
+        "will open / had catalogued",
+        "has opened / catalogued",
+        "opens / will have catalogued",
+        "is opening / were cataloguing"
        ],
        "answer": 3,
-       "explanation": "Doğru cevap 'ends / will have interviewed'. 'By the time + simple present' gelecekteki bir noktayı gösterir ve ana cümlede future perfect ister. 'will end' zaman bağlacından sonra kullanılamaz; 'ended / have interviewed' zamanları uyumsuzdur."
+       "explanation": "Doğru cevap 'opens / will have catalogued'. 'By the time + simple present' gelecekteki bir noktayı gösterir ve ana cümlede future perfect ister. 'will open' zaman bağlacından sonra kullanılamaz; 'opened / have catalogued' zamanları uyumsuzdur."
       },
       {
        "type": "choice",
@@ -6365,16 +6365,16 @@
       },
       {
        "type": "choice",
-       "question": "She ---- the email herself; she was on a flight with no internet access at the time.",
+       "question": "They ---- the match live on TV; the power was cut in their whole neighbourhood during the game.",
        "options": [
-        "must have sent",
-        "can't have sent",
-        "should have sent",
-        "needn't have sent",
-        "may have sent"
+        "must have watched",
+        "can't have watched",
+        "should have watched",
+        "needn't have watched",
+        "may have watched"
        ],
        "answer": 1,
-       "explanation": "Doğru cevap 'can't have sent'. İnternetsiz bir uçakta olması, e-postayı göndermesini imkânsız kılar. 'must have sent' ve 'may have sent' bu kanıtla çelişir."
+       "explanation": "Doğru cevap 'can't have watched'. Maç boyunca bütün mahallede elektriğin kesik olması, maçı televizyondan canlı izlemelerini imkânsız kılar. 'must have watched' ve 'may have watched' bu kanıtla çelişir."
       },
       {
        "type": "choice",
@@ -6496,7 +6496,7 @@
         "ought to / couldn't"
        ],
        "answer": 1,
-       "explanation": "Doğru cevap 'don't have to / can'. 'Instead' ifadesi bir seçenek sunulduğunu gösterir: şahsen teslim zorunlu değil, posta ile gönderilebilir. 'needn't / mustn't' ikinci seçeneği yasaklayarak anlamı bozar."
+       "explanation": "Doğru cevap 'don't have to / can'. 'Instead' ifadesi bir seçenek sunulduğunu gösterir: şahsen teslim zorunlu değil, posta ile gönderilebilir. 'needn't / mustn't' postayla gönderme yolunu yasaklayarak anlamı bozar."
       },
       {
        "type": "choice",
@@ -7239,16 +7239,16 @@
       },
       {
        "type": "choice",
-       "question": "The ancient city is believed ---- by an earthquake in the fifth century.",
+       "question": "The manuscript is thought ---- by a monk in the twelfth century.",
        "options": [
-        "to destroy",
-        "to be destroyed",
-        "to have destroyed",
-        "to have been destroyed",
-        "being destroyed"
+        "to write",
+        "to be written",
+        "to have written",
+        "to have been written",
+        "being written"
        ],
        "answer": 3,
-       "explanation": "Doğru cevap 'to have been destroyed'. Yıkım inanmadan çok önce olmuştur ve şehir yıkılan şeydir: to have been + V3. 'to be destroyed' aynı zaman ya da gelecek anlatır; 'to have destroyed' etkendir."
+       "explanation": "Doğru cevap 'to have been written'. Yazılma, düşünülmeden çok önce olmuştur ve el yazması yazılan şeydir: to have been + V3. 'to be written' aynı zaman ya da gelecek anlatır; 'to have written' etkendir."
       },
       {
        "type": "choice",
@@ -8068,20 +8068,20 @@
       },
       {
        "type": "choice",
-       "question": "If she had accepted the scholarship last year, she ---- in Canada now.",
+       "question": "If he had taken the job offer in Berlin two years ago, he ---- German fluently now.",
        "options": [
-        "would have studied",
-        "will study",
-        "had studied",
-        "would be studying",
-        "studies"
+        "would have spoken",
+        "will speak",
+        "had spoken",
+        "would speak",
+        "speaks"
        ],
        "answer": 3,
-       "explanation": "Doğru cevap 'would be studying'. Geçmişteki koşul (last year) şimdiki bir sonuca (now) bağlanır: mixed conditional. 'would have studied' sonucu da geçmişe taşır ve 'now' ile çelişir."
+       "explanation": "Doğru cevap 'would speak'. Geçmişteki koşul (two years ago) şimdiki bir sonuca (now) bağlanır: mixed conditional. 'would have spoken' sonucu da geçmişe taşır ve 'now' ile çelişir."
       },
       {
        "type": "choice",
-       "question": "If he ---- so stubborn, he would have listened to his colleagues' advice.",
+       "question": "If she ---- so impatient, she would have waited for the test results before deciding.",
        "options": [
         "isn't",
         "weren't",
@@ -8090,7 +8090,7 @@
         "hasn't been"
        ],
        "answer": 1,
-       "explanation": "Doğru cevap 'weren't'. İnatçılık kalıcı bir özelliktir (şimdi de inatçı); bu yüzden koşul type 2 (past), sonuç geçmişe ait type 3'tür: mixed conditional. 'isn't' ve 'won't be' gerçek koşul bildirir ve 'would have listened' ile uyuşmaz."
+       "explanation": "Doğru cevap 'weren't'. Sabırsızlık kalıcı bir özelliktir (şimdi de sabırsız); bu yüzden koşul type 2 (past), sonuç geçmişe ait type 3'tür: mixed conditional. 'isn't' ve 'won't be' gerçek koşul bildirir ve 'would have waited' ile uyuşmaz."
       },
       {
        "type": "choice",
@@ -8191,7 +8191,7 @@
       },
       {
        "type": "choice",
-       "question": "---- I known about the strike, I would have taken a different route.",
+       "question": "---- we taken a taxi, we would have caught the last train.",
        "options": [
         "If",
         "Were",
@@ -8200,7 +8200,7 @@
         "Did"
        ],
        "answer": 3,
-       "explanation": "Doğru cevap 'Had'. 'Had I known' (= If I had known) devrik type 3 koşuludur. 'If I known' dilbilgisel değildir; 'Were' type 2, 'Should' type 1 devrik yapısıdır."
+       "explanation": "Doğru cevap 'Had'. 'Had we taken' (= If we had taken) devrik type 3 koşuludur. 'If we taken' dilbilgisel değildir; 'Were' type 2, 'Should' type 1 devrik yapısıdır."
       },
       {
        "type": "choice",
@@ -8969,7 +8969,7 @@
       },
       {
        "type": "choice",
-       "question": "The museum ---- we visited last summer has a remarkable collection of fossils.",
+       "question": "The novel ---- my sister recommended to me turned out to be rather disappointing.",
        "options": [
         "where",
         "who",
@@ -8978,7 +8978,7 @@
         "when"
        ],
        "answer": 2,
-       "explanation": "Doğru cevap 'which'. 'Visit' nesne alan bir fiildir ve cümlecikte nesne eksiktir; bu yüzden 'which' gerekir. 'where' yer bildirse de yalnızca tam bir cümleden önce gelir."
+       "explanation": "Doğru cevap 'which'. 'Recommend' nesne alan bir fiildir ve cümlecikte nesne eksiktir; bu yüzden 'which' gerekir. 'who' insanlar için kullanılır; 'where' yer bildirir ve yalnızca tam bir cümleden önce gelir."
       },
       {
        "type": "choice",
@@ -8995,7 +8995,7 @@
       },
       {
        "type": "choice",
-       "question": "The island, ---- population has halved over the past decade, is struggling to keep its schools open.",
+       "question": "The novelist, ---- latest book has been translated into twenty languages, rarely gives interviews.",
        "options": [
         "which",
         "where",
@@ -9004,7 +9004,7 @@
         "that"
        ],
        "answer": 3,
-       "explanation": "Doğru cevap 'whose'. Boşluktan sonra bir isim ('population') geliyor ve adanın nüfusu anlatılıyor: sahiplik. 'which' ve 'where' ardından isim alıp sahiplik bildiremez; 'that' virgülden sonra kullanılmaz."
+       "explanation": "Doğru cevap 'whose'. Boşluktan sonra bir isim ('latest book') geliyor ve romancının kitabı anlatılıyor: sahiplik. 'which', 'who' ve 'where' ardından isim alıp sahiplik bildiremez; 'that' virgülden sonra kullanılmaz."
       },
       {
        "type": "fillBlank",
@@ -9807,16 +9807,16 @@
       },
       {
        "type": "choice",
-       "question": "---- the ancient script can ever be fully deciphered remains an open question.",
+       "question": "---- the new vaccine will protect older patients as well is still uncertain.",
        "options": [
-        "That",
+        "Unless",
         "If",
         "What",
         "Which",
         "Whether"
        ],
        "answer": 4,
-       "explanation": "Cümle 'açık bir soru' dediği için belirsizlik vardır ve özne konumunda yalnızca 'Whether' kullanılabilir; 'If' cümle başında özne cümleciği kuramaz. 'That' kesinlik bildirir, anlamla çelişir."
+       "explanation": "Cümle 'hâlâ belirsiz' dediği için belirsizlik vardır ve özne konumunda yalnızca 'Whether' kullanılabilir; 'If' cümle başında özne cümleciği kuramaz. 'Unless' koşul bağlacıdır, özne cümleciği kuramaz; 'What' ve 'Which' cümlede eksik bir öğe ister, burada eksik öğe yoktur."
       },
       {
        "type": "choice",
@@ -10797,16 +10797,16 @@
       },
       {
        "type": "choice",
-       "question": "The documents appear ---- before the fire, since none of them shows any smoke damage.",
+       "question": "The windows seem ---- recently, since there is not a single spot of dirt on the glass.",
        "options": [
-        "to remove",
-        "to be removing",
-        "to have been removed",
-        "having removed",
-        "to have removed"
+        "to clean",
+        "to be cleaning",
+        "to have been cleaned",
+        "having cleaned",
+        "to have cleaned"
        ],
        "answer": 2,
-       "explanation": "Belgeler kaldırılan şeydir (edilgen) ve bu iş yangından önce olmuştur (perfect): 'to have been removed'. 'to have removed' etken çatıdır; 'to remove' zaman ilişkisini göstermez."
+       "explanation": "Pencereler temizlenen şeydir (edilgen) ve bu iş şimdiden önce olmuştur (perfect): 'to have been cleaned'. 'to have cleaned' etken çatıdır; 'to clean' zaman ilişkisini göstermez."
       },
       {
        "type": "choice",
@@ -11489,7 +11489,7 @@
       },
       {
        "type": "choice",
-       "question": "---- the heavy rain, the excavation continued as planned.",
+       "question": "---- the long delay, the passengers remained calm and patient.",
        "options": [
         "Although",
         "However",
@@ -11498,7 +11498,7 @@
         "Whereas"
        ],
        "answer": 2,
-       "explanation": "Boşluktan sonra isim öbeği (the heavy rain) geliyor ve zıtlık var: 'Despite'. 'Although', 'Even though' ve 'Whereas' ardından cümle ister."
+       "explanation": "Boşluktan sonra isim öbeği (the long delay) geliyor ve zıtlık var: 'Despite'. 'Although', 'Even though' ve 'Whereas' ardından cümle ister; 'However' isim öbeği bağlayamaz."
       },
       {
        "type": "choice",
@@ -11528,7 +11528,7 @@
       },
       {
        "type": "choice",
-       "question": "The data were incomplete; ----, the authors chose not to publish their conclusions.",
+       "question": "The bridge had been seriously damaged by the flood; ----, the authorities closed it to all traffic.",
        "options": [
         "therefore",
         "however",
@@ -11537,7 +11537,7 @@
         "despite"
        ],
        "answer": 0,
-       "explanation": "Verilerin eksik olması yayımlamamanın nedenidir; noktalı virgül ve virgülle sonuç bildiren geçiş ifadesi gelir: 'therefore'. 'however' zıtlık bildirir; 'although' ve 'whereas' bu konumda kullanılamaz."
+       "explanation": "Köprünün selde ağır hasar görmesi kapatılmasının nedenidir; noktalı virgül ve virgülle sonuç bildiren geçiş ifadesi gelir: 'therefore'. 'however' zıtlık bildirir; 'although', 'whereas' ve 'despite' bu konumda kullanılamaz."
       },
       {
        "type": "choice",
@@ -12408,7 +12408,7 @@
       },
       {
        "type": "choice",
-       "question": "The rise in sea temperature has resulted ---- the loss of nearly half of the coral reef.",
+       "question": "Years of heavy fishing have resulted ---- a sharp decline in the number of cod in the region.",
        "options": [
         "from",
         "to",
@@ -12417,7 +12417,7 @@
         "with"
        ],
        "answer": 3,
-       "explanation": "Neden (sıcaklık artışı) + 'result in' + sonuç (resif kaybı). 'from' kullanılsaydı sıcaklık artışının resif kaybından kaynaklandığı söylenmiş olurdu."
+       "explanation": "Neden (yıllarca süren yoğun avlanma) + 'result in' + sonuç (morina sayısındaki düşüş). 'from' kullanılsaydı avlanmanın bu düşüşten kaynaklandığı söylenmiş olurdu."
       },
       {
        "type": "choice",
@@ -12751,7 +12751,7 @@
       },
       {
        "type": "choice",
-       "question": "The director accepted the award ---- the entire research team.",
+       "question": "The lawyer signed the contract ---- her client, who was abroad at the time.",
        "options": [
         "in spite of",
         "in terms of",
@@ -12760,7 +12760,7 @@
         "regardless of"
        ],
        "answer": 3,
-       "explanation": "Müdür ödülü ekibi temsilen aldı: 'on behalf of' (… adına). 'in spite of' zıtlık, 'in terms of' açı bildirir."
+       "explanation": "Avukat sözleşmeyi yurt dışındaki müvekkilini temsilen imzaladı: 'on behalf of' (… adına). 'in spite of' zıtlık, 'in terms of' açı bildirir; 'regardless of' ise 'aldırmadan' anlamı verir ve bağlama uymaz."
       },
       {
        "type": "choice",
@@ -13301,7 +13301,7 @@
       },
       {
        "type": "choice",
-       "question": "---- of the two proposals was accepted, so the committee will meet again next month.",
+       "question": "---- of the two candidates was experienced enough for the role, so the company will advertise the position again.",
        "options": [
         "Neither",
         "Both",
@@ -13310,7 +13310,7 @@
         "All"
        ],
        "answer": 0,
-       "explanation": "İki öneriden hiçbiri kabul edilmemiş, bu yüzden kurul yeniden toplanacak: 'Neither'. 'None' ve 'All' üç ve fazlası için kullanılır; 'Both' çoğul fiil ister; 'Either' mantığı bozar."
+       "explanation": "İki adaydan hiçbiri yeterince deneyimli değil, bu yüzden ilan yeniden verilecek: 'Neither'. 'None' ve 'All' üç ve fazlası için kullanılır; 'Both' çoğul fiil ister; 'Either' mantığı bozar."
       },
       {
        "type": "choice",
@@ -13424,20 +13424,20 @@
       },
       {
        "type": "choice",
-       "question": "The more data we collect, ---- our predictions become.",
+       "question": "The more time children spend reading aloud, ---- they become.",
        "options": [
-        "more accurate",
-        "the more accurate",
-        "the most accurate",
-        "most accurate",
-        "the accurater"
+        "more confident",
+        "the more confident",
+        "the most confident",
+        "most confident",
+        "the confidenter"
        ],
        "answer": 1,
-       "explanation": "Paralel artış 'The more …, the more …' yapısıyla kurulur: 'the more accurate'. 'the most accurate' en üstünlük bildirir; 'accurater' diye bir biçim yoktur."
+       "explanation": "Paralel artış 'The more …, the more …' yapısıyla kurulur: 'the more confident'. 'the most confident' en üstünlük bildirir; 'confidenter' diye bir biçim yoktur."
       },
       {
        "type": "choice",
-       "question": "Solar power is now ---- cheaper than it was ten years ago.",
+       "question": "Smartphones today are ---- faster than the computers of the 1990s.",
        "options": [
         "very",
         "more",
@@ -13446,7 +13446,7 @@
         "much"
        ],
        "answer": 4,
-       "explanation": "Karşılaştırmayı güçlendirmek için 'much' kullanılır: 'much cheaper'. 'very' karşılaştırma sıfatıyla kullanılmaz; 'more cheaper' çift karşılaştırmadır."
+       "explanation": "Karşılaştırmayı güçlendirmek için 'much' kullanılır: 'much faster'. 'very' karşılaştırma sıfatıyla kullanılmaz; 'more faster' çift karşılaştırmadır."
       },
       {
        "type": "choice",

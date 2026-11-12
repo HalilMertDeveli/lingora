@@ -1106,16 +1106,16 @@
       },
       {
        "type": "choice",
-       "question": "Although the drug proved effective in laboratory tests, ----.",
+       "question": "Although the new bridge was designed to withstand strong earthquakes, ----.",
        "options": [
-        "it was approved quickly by health authorities",
-        "it was therefore tested on more animals",
-        "because it was cheap to produce",
-        "so doctors began prescribing it widely to their patients",
-        "it caused serious side effects in human trials"
+        "it was praised by engineers around the world",
+        "it was therefore built with extra steel supports",
+        "because the ground beneath it was unstable",
+        "so the city opened it to traffic ahead of schedule",
+        "it suffered serious cracks during a moderate tremor last year"
        ],
        "answer": 4,
-       "explanation": "*Although* zıtlık ister: laboratuvarda etkili ama insanlarda yan etki yaptı → 'it caused serious side effects in human trials'. 'Approved quickly' ve 'tested on more animals' diyen şıklar laboratuvardaki başarıyla uyumlu bilgiler verir; *because* ve *so* ile başlayanlar ise köke ikinci bir bağlaç ekler."
+       "explanation": "*Although* zıtlık ister: köprü güçlü depremlere dayanacak biçimde tasarlandı ama orta şiddetli bir sarsıntıda ciddi çatlaklar oluştu → 'it suffered serious cracks during a moderate tremor last year'. 'Praised by engineers' ve 'built with extra steel supports' diyen şıklar tasarımla uyumlu bilgiler verir, zıtlık kurmaz; *because* ve *so* ile başlayanlar ise köke ikinci bir bağlaç ekler."
       },
       {
        "type": "choice",
@@ -1852,16 +1852,16 @@
       },
       {
        "type": "choice",
-       "question": "The report prepared by the ministry shows that air quality in the capital has improved.",
+       "question": "The survey conducted by the university shows that the number of young readers has increased.",
        "options": [
-        "Bakanlık, başkentteki hava kalitesini iyileştirmek için bir rapor hazırladı.",
-        "Bakanlığın hazırladığı rapor, başkentteki hava kalitesinin kötüleştiğini gösteriyor.",
-        "Başkentte hazırlanan rapor, bakanlığın hava kalitesini iyileştirdiğini gösteriyor.",
-        "Bakanlığın hazırladığı rapor, başkentteki hava kalitesinin iyileştiğini gösteriyor.",
-        "Bakanlığın hazırlayacağı rapor, başkentteki hava kalitesinin iyileşip iyileşmediğini gösterecek."
+        "Üniversite, genç okurların sayısını artırmak için bir anket yaptı.",
+        "Üniversitenin yaptığı anket, genç okurların sayısının azaldığını gösteriyor.",
+        "Gençler arasında yapılan anket, üniversitenin okur sayısını artırdığını gösteriyor.",
+        "Üniversitenin yaptığı anket, genç okurların sayısının arttığını gösteriyor.",
+        "Üniversitenin yapacağı anket, genç okurların sayısının artıp artmadığını gösterecek."
        ],
        "answer": 3,
-       "explanation": "Ana özne *the report*, yüklem *shows*; *prepared by the ministry* özneyi niteler. Doğru cevap 'Bakanlığın hazırladığı rapor … iyileştiğini gösteriyor'. 'Bakanlık … bir rapor hazırladı' diyen çeviri özneyi bakanlık yapar; bir çeviri 'iyileşti' yerine 'kötüleşti' der; 'hazırlayacağı rapor' diyen çeviri zamanı geleceğe taşır."
+       "explanation": "Ana özne *the survey*, yüklem *shows*; *conducted by the university* özneyi niteler. Doğru cevap 'Üniversitenin yaptığı anket … arttığını gösteriyor'. 'Üniversite … bir anket yaptı' diyen çeviri özneyi üniversite yapar ve *shows* yüklemini atar; bir çeviri 'arttı' yerine 'azaldı' der; 'üniversitenin okur sayısını artırdığını' diyen çeviri özne–nesne ilişkisini bozar; 'yapacağı anket' diyen çeviri zamanı geleceğe taşır."
       },
       {
        "type": "choice",
@@ -1878,16 +1878,16 @@
       },
       {
        "type": "choice",
-       "question": "The scientist whose theory was rejected decades ago has finally been proven right.",
+       "question": "The architect whose design was criticised years ago has finally been awarded a national prize.",
        "options": [
-        "On yıllar önce bir kuramı reddeden bilim insanının sonunda haklı olduğu kanıtlandı.",
-        "Kuramı on yıllar önce reddedilen bilim insanı sonunda haklı olduğunu kanıtlamaya çalışıyor.",
-        "Kuramı on yıllar önce kabul edilen bilim insanının sonunda haksız olduğu kanıtlandı.",
-        "Kuramı geçen yıl reddedilen bilim insanının sonunda haklı olduğu kanıtlandı.",
-        "Kuramı on yıllar önce reddedilen bilim insanının sonunda haklı olduğu kanıtlandı."
+        "Yıllar önce bir tasarımı eleştiren mimara sonunda ulusal bir ödül verildi.",
+        "Tasarımı yıllar önce eleştirilen mimar sonunda ulusal bir ödül kazanmaya çalışıyor.",
+        "Tasarımı yıllar önce övülen mimara sonunda ulusal bir ödül verildi.",
+        "Tasarımı geçen ay eleştirilen mimara sonunda ulusal bir ödül verildi.",
+        "Tasarımı yıllar önce eleştirilen mimara sonunda ulusal bir ödül verildi."
        ],
        "answer": 4,
-       "explanation": "Ana özne *the scientist*, yüklem *has been proven right*; *whose theory was rejected* 'kuramı reddedilen' demektir → 'Kuramı on yıllar önce reddedilen bilim insanının sonunda haklı olduğu kanıtlandı.' 'Bir kuramı reddeden bilim insanı' diyen çeviride bilim insanı reddeden olmuştur (edilgen etkene dönmüş); 'geçen yıl' diyen çeviri zamanı değiştirir."
+       "explanation": "Ana özne *the architect*, yüklem *has been awarded*; *whose design was criticised* 'tasarımı eleştirilen' demektir → 'Tasarımı yıllar önce eleştirilen mimara sonunda ulusal bir ödül verildi.' 'Bir tasarımı eleştiren mimar' diyen çeviride mimar eleştiren olmuştur (edilgen etkene dönmüş); 'kazanmaya çalışıyor' zamanı ve anlamı değiştirir; 'övülen' anlamı tersine çevirir; 'geçen ay' zamanı değiştirir."
       },
       {
        "type": "choice",
@@ -2637,16 +2637,16 @@
      "exercises": [
       {
        "type": "choice",
-       "question": "Şehrin nüfusu son on yılda iki katına çıktı.",
+       "question": "Ülkedeki turist sayısı son beş yılda üç katına çıktı.",
        "options": [
-        "The population of the city will double in the next ten years.",
-        "The population of the city has halved in the last ten years.",
-        "The population of the city has doubled in the last ten years.",
-        "The population of the city doubled ten years ago.",
-        "The population of the city has increased slightly in the last ten years."
+        "The number of tourists in the country will triple in the next five years.",
+        "The number of tourists in the country has fallen by a third in the last five years.",
+        "The number of tourists in the country has tripled in the last five years.",
+        "The number of tourists in the country tripled five years ago.",
+        "The number of tourists in the country has increased slightly in the last five years."
        ],
        "answer": 2,
-       "explanation": "Yüklem 'iki katına çıktı', zaman 'son on yılda' → *has doubled in the last ten years*; doğru cevap bu çeviri. *Doubled ten years ago* diyen çeviri 'son on yılda'yı 'on yıl önce' yapar; *has halved* diyen çeviri 'iki katı'nı 'yarısı' yapar."
+       "explanation": "Yüklem 'üç katına çıktı', zaman 'son beş yılda' → *has tripled in the last five years*; doğru cevap bu çeviri. *Will triple* diyen çeviri zamanı geleceğe taşır; *tripled five years ago* 'son beş yılda'yı 'beş yıl önce' yapar; *fallen by a third* artışı azalışa çevirir; *increased slightly* 'üç katı'nı 'biraz' yapar."
       },
       {
        "type": "choice",
@@ -2676,16 +2676,16 @@
       },
       {
        "type": "choice",
-       "question": "Kasabada yaşayan gençlerin çoğu iş bulmak için büyük şehirlere taşınıyor.",
+       "question": "Köyde yaşayan yaşlıların çoğu sağlık hizmeti almak için yakındaki kasabaya gidiyor.",
        "options": [
-        "Most young people who live in big cities move to the town to find work.",
-        "Most young people who live in the town move to big cities to find work.",
-        "Some young people who live in the town move to big cities to find work.",
-        "Most young people who live in the town moved to big cities because they found work.",
-        "Most young people who live in the town do not want to move to big cities."
+        "Most elderly people who live in the nearby town go to the village to receive health care.",
+        "Most elderly people who live in the village go to the nearby town to receive health care.",
+        "A few elderly people who live in the village go to the nearby town to receive health care.",
+        "Most elderly people who live in the village went to the nearby town because they received health care.",
+        "Most elderly people who live in the village do not want to go to the nearby town."
        ],
        "answer": 1,
-       "explanation": "'Kasabada yaşayan' → *who live in the town*, 'iş bulmak için' → *to find work*. Doğru cevap 'Most young people who live in the town move to big cities to find work'. *Live in big cities* diyen çeviri göçün yönünü tersine çevirir; *Some* diyen çeviri 'çoğu'nu 'bazı' yapar; *because they found work* diyen çeviri amacı sebebe çevirir."
+       "explanation": "'Köyde yaşayan' → *who live in the village*, 'sağlık hizmeti almak için' → *to receive health care*. Doğru cevap 'Most elderly people who live in the village go to the nearby town to receive health care'. *Live in the nearby town* diyen çeviri yönü tersine çevirir; *A few* 'çoğu'nu 'birkaç' yapar; *because they received* amacı sebebe, şimdiki zamanı geçmişe çevirir; *do not want to go* olumsuz ve farklı bir yüklem kurar."
       },
       {
        "type": "choice",
@@ -5233,17 +5233,17 @@
       },
       {
        "type": "choice",
-       "passage": "Kerem: Would you like to join our study group for the statistics exam?\nLeyla: ----\nKerem: No problem. If you change your mind, we meet every Thursday.",
+       "passage": "Ece: We're organising a cycling trip to the lake this weekend. Would you like to come along?\nBaran: ----\nEce: That's a shame. Maybe next time, then; we try to go once a month.",
        "question": "Diyalogdaki boşluğa hangisi getirilmelidir?",
        "options": [
-        "Yes, I'd love to! When do you meet, and could I bring a friend from my class along?",
-        "The exam has been postponed until next month.",
-        "Statistics was my favourite subject at school.",
-        "Thanks for asking, but I prefer studying on my own for that subject.",
-        "I've already joined; see you on Thursday."
+        "Absolutely! What time are we leaving, and should I bring my own bike?",
+        "The lake is about twenty kilometres from the city centre.",
+        "Cycling is one of the best ways to stay fit.",
+        "I'd love to, but I've already promised to help my parents move house on Saturday.",
+        "I've already signed up; see you at the meeting point."
        ],
        "answer": 3,
-       "explanation": "'No problem. If you change your mind' kibar bir rede verilen cevaptır; doğru şık 'Thanks for asking, but I prefer studying on my own'. 'Yes, I'd love to!' daveti kabul eder ve 'fikrini değiştirirsen' ifadesini anlamsız kılar; 'I've already joined' de zaten katıldığını söylediği için aynı nedenle yanlıştır."
+       "explanation": "'That's a shame. Maybe next time' bir rede verilen cevaptır; doğru şık 'I'd love to, but I've already promised to help my parents…'. 'Absolutely!' daveti kabul eder ve 'yazık, belki bir dahaki sefere' tepkisini anlamsız kılar; 'I've already signed up' da katıldığını söylediği için aynı nedenle yanlıştır. Gölün uzaklığı ve bisikletin sağlığa yararı konuyu ilerletmeyen genel bilgilerdir."
       },
       {
        "type": "choice",
@@ -5932,8 +5932,8 @@
       },
       {
        "type": "fillBlank",
-       "text": "___ the heavy rain, the match went ahead as planned.",
-       "translation": "Şiddetli yağmura rağmen maç planlandığı gibi oynandı.",
+       "text": "___ the long delay, the passengers remained calm and patient.",
+       "translation": "Uzun gecikmeye rağmen yolcular sakin ve sabırlı kaldı.",
        "answer": "Despite",
        "choices": [
         "Despite",
@@ -6230,16 +6230,16 @@
       },
       {
        "type": "choice",
-       "question": "Verilen cümleye anlamca en yakın cümle hangisidir?\n\nThe longer patients wait for treatment, the less likely they are to make a full recovery.",
+       "question": "Verilen cümleye anlamca en yakın cümle hangisidir?\n\nThe more hours teenagers spend on their phones at night, the less likely they are to get enough sleep.",
        "options": [
-        "Patients who receive treatment sooner have a better chance of recovering fully.",
-        "Patients recover fully no matter how long they have to wait before receiving treatment.",
-        "The longer the treatment lasts, the better patients recover.",
-        "Patients who recover fully usually wait longer for treatment.",
-        "Waiting for treatment has little effect on whether patients recover."
+        "Teenagers who use their phones less at night have a better chance of getting enough sleep.",
+        "Teenagers get enough sleep no matter how much time they spend on their phones at night.",
+        "The more teenagers sleep, the more time they spend on their phones.",
+        "Teenagers who get enough sleep usually spend more hours on their phones at night.",
+        "Using phones at night has little effect on how much teenagers sleep."
        ],
        "answer": 0,
-       "explanation": "'the longer ..., the less likely' orantısı: bekleme uzadıkça tam iyileşme olasılığı düşer; tersinden söylenince erken tedavi edilenlerin şansı daha yüksektir, doğru cevap 'Patients who receive treatment sooner'. 'The longer the treatment lasts' diyen şık bekleme süresini tedavi süresine çevirir; 'usually wait longer' diyen şık ilişkiyi tersine çevirir; 'no matter how long' ve 'has little effect' diyen şıklar ilişkiyi yok sayar."
+       "explanation": "'the more ..., the less likely' orantısı: gece telefonda geçen süre arttıkça yeterli uyuma olasılığı düşer; tersinden söylenince telefonu daha az kullananların şansı daha yüksektir, doğru cevap 'Teenagers who use their phones less at night…'. 'The more teenagers sleep, the more time…' diyen şık neden ile sonucu yer değiştirip ilişkiyi olumlu yapar; 'usually spend more hours' diyen şık ilişkiyi tersine çevirir; 'no matter how much' ve 'has little effect' diyen şıklar ilişkiyi yok sayar."
       },
       {
        "type": "choice",
@@ -6256,16 +6256,16 @@
       },
       {
        "type": "choice",
-       "question": "Verilen cümleye anlamca en yakın cümle hangisidir?\n\nHad the warning been issued earlier, more residents could have left the area before the flood.",
+       "question": "Verilen cümleye anlamca en yakın cümle hangisidir?\n\nHad the fire alarm worked properly, more guests could have escaped from the hotel before the smoke spread.",
        "options": [
-        "Residents left the area early because the warning was issued in time.",
-        "More residents left the area than expected, although the warning was late.",
-        "The flood happened before the warning was issued, so nobody left the area.",
-        "If more residents had left the area, the warning would have been issued earlier.",
-        "Because the warning was not issued earlier, fewer residents were able to leave the area before the flood."
+        "Guests escaped from the hotel early because the fire alarm worked properly.",
+        "More guests escaped from the hotel than expected, although the fire alarm did not work.",
+        "The smoke spread before the alarm was installed, so no guests escaped from the hotel.",
+        "If more guests had escaped from the hotel, the fire alarm would have worked properly.",
+        "Because the fire alarm did not work properly, fewer guests were able to escape from the hotel before the smoke spread."
        ],
        "answer": 4,
-       "explanation": "'Had the warning been issued earlier' devrik üçüncü tip koşuldur ve gerçeğin tersini anlatır: uyarı geç verildi, bu yüzden daha az kişi ayrılabildi. Doğru cevap 'Because the warning was not issued earlier, fewer residents…'. 'the warning was issued in time' diyen şık uyarının zamanında verildiğini söyler; 'so nobody left the area' diyen şık 'nobody' diyerek abartır; 'If more residents had left…' diye başlayan şık koşul ile sonucu yer değiştirir."
+       "explanation": "'Had the fire alarm worked properly' devrik üçüncü tip koşuldur ve gerçeğin tersini anlatır: alarm düzgün çalışmadı, bu yüzden daha az misafir kaçabildi. Doğru cevap 'Because the fire alarm did not work properly, fewer guests…'. 'the fire alarm worked properly' diyen şık alarmın çalıştığını söyler; 'more guests … than expected' sonucu tersine çevirir; 'so no guests escaped' 'no' diyerek abartır ve alarmın kurulmasıyla ilgili yeni bilgi ekler; 'If more guests had escaped…' diye başlayan şık koşul ile sonucu yer değiştirir."
       },
       {
        "type": "choice",
@@ -6308,16 +6308,16 @@
       },
       {
        "type": "choice",
-       "question": "Verilen cümleye anlamca en yakın cümle hangisidir?\n\nThe new building uses half as much energy as the old one did.",
+       "question": "Verilen cümleye anlamca en yakın cümle hangisidir?\n\nThe new train takes half as long as the old one did to reach the capital.",
        "options": [
-        "The new building uses twice as much energy as the old one did.",
-        "The old building used slightly more energy than the new one does.",
-        "The old building consumed twice as much energy as the new one does.",
-        "Both buildings use the same amount of energy.",
-        "The new building produces half of the energy that was used by the old one."
+        "The new train takes twice as long as the old one did to reach the capital.",
+        "The old train took slightly longer than the new one does to reach the capital.",
+        "The old train took twice as long as the new one does to reach the capital.",
+        "Both trains take the same amount of time to reach the capital.",
+        "The new train travels half the distance that the old one did to reach the capital."
        ],
        "answer": 2,
-       "explanation": "'half as much as' = yarısı kadar; yeni bina eskisinin yarısı kadar enerji kullanıyorsa eskisi yenisinin iki katını kullanıyordu; doğru cevap 'The old building consumed twice as much energy…'. 'The new building uses twice as much' diyen şık oranı ters çevirir; 'slightly more energy' diyen şık farkı küçültür; 'produces half of the energy' diyen şık 'uses' yerine 'produces' diyerek eylemi değiştirir."
+       "explanation": "'half as long as' = yarısı kadar süre; yeni tren eskisinin yarısı kadar sürede gidiyorsa eskisi yenisinin iki katı sürede gidiyordu; doğru cevap 'The old train took twice as long…'. 'The new train takes twice as long' diyen şık oranı ters çevirir; 'slightly longer' diyen şık farkı küçültür; 'the same amount of time' farkı yok sayar; 'half the distance' diyen şık süreyi mesafeye çevirir."
       }
      ]
     },
@@ -6949,17 +6949,17 @@
       },
       {
        "type": "choice",
-       "passage": "Octopuses are known for their remarkable ability to change colour. They can match the shade and texture of rocks, sand or coral within a fraction of a second. ---- Instead, scientists believe they may detect light directly through their skin, which contains some of the same light-sensitive proteins found in the eye. This would allow an octopus to sense its surroundings with its whole body and adjust its appearance accordingly. Researchers are now investigating whether similar abilities exist in squid and cuttlefish.",
+       "passage": "Every autumn, young garden warblers fly thousands of kilometres to Africa, even though they have never made the journey before. For a long time, scientists assumed that the young birds simply followed older, experienced birds along the route. ---- Instead, researchers now think the birds are born with an inner compass that responds to the Earth's magnetic field. In laboratory experiments, young warblers kept indoors turned in the correct direction for migration, although they had never seen the open sky. Scientists are now trying to find out exactly where in the bird's body this magnetic sense is located.",
        "question": "Paragrafta boş bırakılan yere hangisi getirilmelidir?",
        "options": [
-        "Octopuses have three hearts and blue blood.",
-        "This is why they always hunt during the day.",
-        "Their eyes allow them to see colours far more clearly than humans do.",
-        "Surprisingly, however, octopuses appear to be colour-blind, so they cannot simply copy the colours they see.",
-        "Most octopuses live for only one or two years."
+        "Garden warblers usually weigh less than twenty grams.",
+        "This is why they always migrate in large flocks.",
+        "Older warblers are known to guide the young ones along the entire route.",
+        "Tracking studies, however, have shown that young warblers often migrate alone, without any adults nearby.",
+        "Many warblers return to the same garden every spring."
        ],
        "answer": 3,
-       "explanation": "Boşluktan sonraki 'Instead' reddedilen bir olasılık ister: ahtapotlar renk körüyse gördükleri renkleri kopyalayamazlar, bunun yerine ışığı derileriyle algılarlar. Doğru cevap 'octopuses appear to be colour-blind'. 'see colours far more clearly than humans' diyen şık 'Instead' ile çelişir, çünkü gözler renkleri iyi görseydi deriye gerek kalmazdı; 'three hearts and blue blood' ve 'live for only one or two years' diyen şıklar ise konudan sapar."
+       "explanation": "Boşluktan sonraki 'Instead' reddedilen bir varsayım ister: genç kuşlar yalnız göç ediyorsa yaşlı kuşları izleyemezler; bunun yerine doğuştan bir pusulaları olmalıdır. Doğru cevap 'Tracking studies, however, have shown that young warblers often migrate alone'. 'Older warblers are known to guide the young ones' ve 'always migrate in large flocks' diyen şıklar eski varsayımı destekler ve 'Instead' ile çelişir; kuşların ağırlığı ve her bahar aynı bahçeye dönmeleri ise konudan sapar."
       },
       {
        "type": "choice",
@@ -7962,7 +7962,7 @@
       },
       {
        "type": "choice",
-       "passage": "(I) The Brook Street Library was built in 1905 with funds donated by a local merchant. (II) For most of the twentieth century, it served as the town's main source of books and newspapers. (III) In the 1990s, however, visitor numbers fell sharply as people began to find information online. (IV) Many people prefer reading e-books because they can carry hundreds of titles on a single device. (V) Instead of closing the building, the council turned it into a community centre that still lends books but also offers computer classes and meeting rooms.",
+       "passage": "(I) The Royal Palace Cinema opened in 1928 and was one of the first buildings in the city to have electric lighting. (II) For several decades, it was the most popular place for families to spend a weekend evening. (III) By the 1980s, however, audiences had shrunk dramatically as more households bought video recorders. (IV) Modern televisions offer much better picture quality than the screens of the 1980s. (V) Rather than demolishing the building, a local charity restored it and reopened it as an arts centre that shows classic films and hosts live concerts.",
        "question": "Which sentence is irrelevant to the overall meaning of the passage?",
        "options": [
         "I",
@@ -7972,7 +7972,7 @@
         "V"
        ],
        "answer": 3,
-       "explanation": "Paragraf kütüphanenin tarihini geçmiş zamanla anlatır; V'teki 'Instead of closing' III'teki ziyaretçi düşüşüne doğrudan cevap verir. IV. cümle geniş zamanlı genel bir tercih bildirir ve bu bağı keser; doğru cevap IV."
+       "explanation": "Paragraf sinemanın tarihini geçmiş zamanla anlatır; V'teki 'Rather than demolishing the building' III'teki seyirci düşüşüne doğrudan cevap verir. IV. cümle günümüz televizyonlarıyla ilgili geniş zamanlı genel bir bilgi verir ve bu bağı keser; doğru cevap IV."
       },
       {
        "type": "choice",
@@ -8664,16 +8664,16 @@
       {
        "type": "choice",
        "passage": "Concrete is the most widely used building material on Earth, yet it has a serious weakness: tiny cracks. Water enters these cracks, reaches the steel bars inside and causes them to rust, which gradually weakens the whole structure. Engineers at a small materials laboratory in northern Europe have been testing a possible solution. They mix dormant bacteria and a source of calcium into fresh concrete. As long as the concrete stays dry, the bacteria remain inactive. When a crack forms and rainwater seeps in, however, the microbes wake up and produce limestone, which gradually seals the gap. In laboratory tests, cracks up to half a millimetre wide were closed within three weeks. The method is not yet ready for large projects, mainly because the special ingredients make the concrete about forty percent more expensive. Nevertheless, the team argues that the extra cost could be recovered over time, since bridges and tunnels built with the material would need far fewer repairs.",
-       "question": "According to the passage, the bacteria in the concrete become active when ----.",
+       "question": "According to the passage, in laboratory tests ----.",
        "options": [
-        "water enters a crack in the material",
-        "the concrete is first mixed with calcium",
-        "the steel bars inside begin to rust",
-        "the structure remains completely dry",
-        "engineers add a special chemical to the surface"
+        "small cracks were sealed in less than a month",
+        "cracks of any size were sealed within three days",
+        "the concrete became forty percent stronger than ordinary concrete",
+        "the bacteria remained active even while the concrete was dry",
+        "engineers had to fill each crack with limestone by hand"
        ],
        "answer": 0,
-       "explanation": "Metin 'When a crack forms and rainwater seeps in, … the microbes wake up' diyor; doğru cevap 'water enters a crack in the material'. 'Completely dry' zıt anlamdır, çünkü kuruyken bakteriler etkisizdir; kalsiyum karıştırmak ise başlangıç aşamasıdır, uyanma koşulu değildir."
+       "explanation": "Metin 'cracks up to half a millimetre wide were closed within three weeks' diyor; bu, küçük çatlakların bir aydan kısa sürede kapandığı anlamına gelir → 'small cracks were sealed in less than a month'. 'Cracks of any size … within three days' hem boyutu hem süreyi değiştirir; 'forty percent stronger' metindeki 'forty percent' ifadesini maliyetten alıp dayanıklılığa bağlayan bir tuzaktır; kuruyken bakteriler etkisizdir; kireç taşını bakteriler üretir, mühendisler değil."
       },
       {
        "type": "choice",
@@ -8720,16 +8720,16 @@
       {
        "type": "choice",
        "passage": "On hot summer afternoons, city centres are often several degrees warmer than the countryside around them. This effect, known as the urban heat island, is largely caused by dark surfaces such as asphalt roads and tar roofs, which absorb sunlight during the day and release heat at night. In one medium-sized city, local authorities decided to test a simple solution. Over two summers, they painted the roofs of three hundred public buildings with a bright white paint that reflects most of the sunlight. Sensors placed inside the buildings showed that indoor temperatures on the top floors fell by an average of two degrees, and electricity use for air conditioning dropped noticeably. The effect on outdoor air temperatures, however, was much smaller and difficult to measure. Researchers believe that a far larger share of the city's roofs would have to be painted before people in the streets felt any real difference. They also point out that white paint loses some of its brightness as dust and dirt build up on it.",
-       "question": "According to the passage, painting the roofs white ----.",
+       "question": "According to the passage, researchers believe that people in the streets would notice a real difference only if ----.",
        "options": [
-        "made the outdoor air in the city centre about two degrees cooler than before",
-        "lowered temperatures on the top floors of the buildings",
-        "had no effect on the use of electricity",
-        "was carried out on every roof in the city",
-        "prevented dust from collecting on the buildings"
+        "the paint were applied during the winter months",
+        "a much larger proportion of the city's roofs were painted white",
+        "air conditioning were switched off in all public buildings",
+        "dust and dirt were removed from the asphalt roads",
+        "sensors were placed outside the buildings as well"
        ],
        "answer": 1,
-       "explanation": "Metne göre üst katlarda iç sıcaklık ortalama iki derece düştü; doğru cevap 'lowered temperatures on the top floors…'. 'Outdoor air two degrees cooler' şıkkı metindeki 'two degrees' ifadesini tekrar eden bir tuzaktır; dış hava üzerindeki etki çok küçüktü. Elektrik kullanımı da belirgin biçimde azaldı."
+       "explanation": "Metin 'a far larger share of the city's roofs would have to be painted before people in the streets felt any real difference' diyor; doğru cevap 'a much larger proportion of the city's roofs were painted white'. Kış ayları, klimaların kapatılması ve dışarıya sensör konması metinde böyle bir koşul olarak geçmez; toz ve kir ise asfaltla değil, boyanın parlaklığını kaybetmesiyle ilgili olarak anılır."
       },
       {
        "type": "choice",
@@ -8868,16 +8868,16 @@
       {
        "type": "choice",
        "passage": "Thousands of pieces of old satellites and rocket stages now circle the Earth at speeds of several kilometres per second. Even a piece of debris the size of a coin can damage a working satellite, so space agencies keep detailed catalogues of the objects they can follow. Until recently, such tracking depended on a handful of large and expensive radar stations. A university consortium has now proposed a different approach: linking dozens of small, inexpensive radar receivers spread across several continents. Each receiver on its own is too weak to locate small debris accurately, but when their signals are combined by software, the network can detect objects that the large stations sometimes miss. In a six-month test, it identified more than four hundred pieces that did not appear in any public catalogue. Critics note that the system still struggles to calculate the exact paths of these objects, which is what satellite operators actually need in order to avoid collisions. The consortium accepts this limitation but argues that knowing an object exists is the necessary first step. It plans to add more receivers, particularly in the Southern Hemisphere, where coverage has traditionally been poor.",
-       "question": "The word 'which' in the sentence beginning 'Critics note' refers to ----.",
+       "question": "The word 'It' in the last sentence of the passage refers to ----.",
        "options": [
-        "calculating the exact paths of the objects",
+        "the consortium",
         "the network of small radar receivers as a whole",
-        "the public catalogue",
+        "the Southern Hemisphere",
         "the six-month test",
-        "avoiding collisions"
+        "the public catalogue"
        ],
        "answer": 0,
-       "explanation": "'Which is what satellite operators actually need' ifadesi, operatörlerin ihtiyaç duyduğu şeyin kesin yörünge hesabı olduğunu söyler; doğru cevap 'calculating the exact paths of the objects'. 'Avoiding collisions' bu hesabın amacıdır, 'which'in gösterdiği şey değil."
+       "explanation": "Bir önceki cümlenin öznesi 'The consortium'dır ve 'It plans to add more receivers' cümlesinde plan yapan da aynı gruptur; doğru cevap 'the consortium'. Alıcı ağı plan yapamaz, aksine ona yeni alıcılar eklenecektir; 'the Southern Hemisphere' cümlede alıcıların ekleneceği yer olarak geçer, 'It' ile gösterilen şey değildir."
       },
       {
        "type": "choice",
