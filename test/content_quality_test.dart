@@ -75,6 +75,9 @@ bool _articleGiveaway(String prompt, List<String> options) {
   return starts.length > 1;
 }
 
+/// Check and cross marks on a select card tell the learner which option is right.
+final _verdictMark = RegExp('[✅❌✔✖✓✗☑❎]');
+
 /// An explanation that names an option by its position ("ikinci şık", "Birinci seçenek",
 /// "A şıkkı", "C) seçeneği") goes wrong once options are shuffled; options are named by text.
 bool _namesOptionByPosition(String explanation) =>
@@ -154,6 +157,14 @@ void main() {
             case 'select':
               final texts = [for (final c in e['choices'] as List) (c as Map)['text'] as String];
               expect(_dupes(texts, _lower), isEmpty, reason: reason);
+              for (final c in e['choices'] as List) {
+                final card = '${(c as Map)['emoji'] ?? ''} ${c['text']}';
+                expect(
+                  _verdictMark.hasMatch(card),
+                  isFalse,
+                  reason: 'a check or cross mark on a card gives the answer away: $reason $card',
+                );
+              }
             case 'fillBlank':
               expect(_dupes((e['choices'] as List).cast<String>(), _lower), isEmpty, reason: reason);
             case 'match':
