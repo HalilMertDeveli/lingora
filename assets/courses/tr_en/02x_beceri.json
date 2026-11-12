@@ -456,15 +456,15 @@
                 },
                 {
                   "text": "I get up every day.",
-                  "emoji": "📅"
+                  "emoji": "⏰"
                 },
                 {
                   "text": "Yes, I do.",
-                  "emoji": "👍"
+                  "emoji": "⏰"
                 },
                 {
                   "text": "In the kitchen.",
-                  "emoji": "🍳"
+                  "emoji": "⏰"
                 }
               ]
             },
@@ -992,15 +992,15 @@
               "choices": [
                 {
                   "text": "Buraya park etme!",
-                  "emoji": "🚫"
+                  "emoji": "🪧"
                 },
                 {
                   "text": "Burada oyna!",
-                  "emoji": "⚽"
+                  "emoji": "🪧"
                 },
                 {
                   "text": "Parka git!",
-                  "emoji": "🌳"
+                  "emoji": "🪧"
                 }
               ]
             },
@@ -1228,11 +1228,11 @@
               "choices": [
                 {
                   "text": "Go straight on. It's on the left.",
-                  "emoji": "⬆️"
+                  "emoji": "🚉"
                 },
                 {
                   "text": "Yes, it is.",
-                  "emoji": "👍"
+                  "emoji": "🚉"
                 },
                 {
                   "text": "I go to the station.",
@@ -1240,7 +1240,7 @@
                 },
                 {
                   "text": "It's at seven o'clock.",
-                  "emoji": "⏰"
+                  "emoji": "🚉"
                 }
               ]
             },
@@ -1461,15 +1461,15 @@
               "choices": [
                 {
                   "text": "See you soon!",
-                  "emoji": "👋"
+                  "emoji": "📱"
                 },
                 {
                   "text": "Yours faithfully,",
-                  "emoji": "📄"
+                  "emoji": "📱"
                 },
                 {
                   "text": "Dear Sir or Madam,",
-                  "emoji": "🎩"
+                  "emoji": "📱"
                 }
               ]
             },
@@ -1986,11 +1986,11 @@
               "choices": [
                 {
                   "text": "I'm sorry, I can't. I'm busy.",
-                  "emoji": "🙏"
+                  "emoji": "♟️"
                 },
                 {
                   "text": "No. I don't want.",
-                  "emoji": "🙅"
+                  "emoji": "♟️"
                 },
                 {
                   "text": "Yes, I would like.",
@@ -1998,7 +1998,7 @@
                 },
                 {
                   "text": "I am agree.",
-                  "emoji": "🤝"
+                  "emoji": "♟️"
                 }
               ]
             },
@@ -2009,7 +2009,7 @@
               "choices": [
                 {
                   "text": "I am agree. Let's go!",
-                  "emoji": "🙂"
+                  "emoji": "🌳"
                 },
                 {
                   "text": "I agree. Let's go!",
@@ -2017,7 +2017,7 @@
                 },
                 {
                   "text": "I agreeing. Let's go!",
-                  "emoji": "🚶"
+                  "emoji": "🌳"
                 }
               ]
             },
@@ -2531,7 +2531,7 @@
               "choices": [
                 {
                   "text": "Good idea, I am agree!",
-                  "emoji": "🙂"
+                  "emoji": "🍕"
                 },
                 {
                   "text": "Good idea, I agree!",
@@ -2539,7 +2539,7 @@
                 },
                 {
                   "text": "Good idea, I agreeing!",
-                  "emoji": "😀"
+                  "emoji": "🍕"
                 }
               ]
             },

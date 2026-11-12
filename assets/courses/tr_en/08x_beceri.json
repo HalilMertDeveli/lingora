@@ -233,15 +233,15 @@
                 },
                 {
                   "text": "Let's just open later!",
-                  "emoji": "😎"
+                  "emoji": "📄"
                 },
                 {
                   "text": "Open later, guys.",
-                  "emoji": "👋"
+                  "emoji": "📄"
                 },
                 {
                   "text": "Maybe open later? Dunno.",
-                  "emoji": "🤷"
+                  "emoji": "📄"
                 }
               ]
             },
@@ -524,19 +524,19 @@
               "choices": [
                 {
                   "text": "Fair point, let me check that.",
-                  "emoji": "🤔"
+                  "emoji": "📊"
                 },
                 {
                   "text": "No, you're wrong.",
-                  "emoji": "😠"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Whatever you say.",
-                  "emoji": "🙄"
+                  "emoji": "📊"
                 },
                 {
                   "text": "That's not my problem.",
-                  "emoji": "🤷"
+                  "emoji": "📊"
                 }
               ]
             },
@@ -547,19 +547,19 @@
               "choices": [
                 {
                   "text": "Let me turn to the costs.",
-                  "emoji": "➡️"
+                  "emoji": "📊"
                 },
                 {
                   "text": "OK, costs now, yeah?",
-                  "emoji": "😅"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Moving on, whatever.",
-                  "emoji": "🙃"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Costs. Look.",
-                  "emoji": "👀"
+                  "emoji": "📊"
                 }
               ]
             },
@@ -700,15 +700,15 @@
                 },
                 {
                   "text": "Recommendations, aim, findings",
-                  "emoji": "🔀"
+                  "emoji": "📋"
                 },
                 {
                   "text": "Findings, recommendations, aim",
-                  "emoji": "🔁"
+                  "emoji": "📋"
                 },
                 {
                   "text": "Recommendations, findings, aim",
-                  "emoji": "↩️"
+                  "emoji": "📋"
                 }
               ]
             },
@@ -998,19 +998,19 @@
               "choices": [
                 {
                   "text": "In her view, cars should go.",
-                  "emoji": "⚖️"
+                  "emoji": "🚗"
                 },
                 {
                   "text": "She's obviously wrong about cars.",
-                  "emoji": "👎"
+                  "emoji": "🚗"
                 },
                 {
                   "text": "She just hates cars, LOL.",
-                  "emoji": "😂"
+                  "emoji": "🚗"
                 },
                 {
                   "text": "Cars should go. Period.",
-                  "emoji": "✋"
+                  "emoji": "🚗"
                 }
               ]
             },
@@ -1279,19 +1279,19 @@
               "choices": [
                 {
                   "text": "True, but there's more to it.",
-                  "emoji": "🤔"
+                  "emoji": "💬"
                 },
                 {
                   "text": "You're totally wrong.",
-                  "emoji": "😠"
+                  "emoji": "💬"
                 },
                 {
                   "text": "OK, you win, I suppose.",
-                  "emoji": "🏳️"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Whatever. Next question.",
-                  "emoji": "🙄"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -1302,19 +1302,19 @@
               "choices": [
                 {
                   "text": "Sorry, can I just jump in?",
-                  "emoji": "✋"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Stop talking, please.",
-                  "emoji": "🛑"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Be quiet for a second.",
-                  "emoji": "🤫"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Enough of that now.",
-                  "emoji": "😤"
+                  "emoji": "🎙️"
                 }
               ]
             },
@@ -1464,15 +1464,15 @@
                 },
                 {
                   "text": "Mia was totally wrong.",
-                  "emoji": "👎"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Mia moaned about stuff.",
-                  "emoji": "😒"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Kerem obviously won.",
-                  "emoji": "🏆"
+                  "emoji": "📝"
                 }
               ]
             },
@@ -1763,7 +1763,7 @@
               "choices": [
                 {
                   "text": "I'm open to discussing it.",
-                  "emoji": "🤝"
+                  "emoji": "💰"
                 },
                 {
                   "text": "As much as possible!",
@@ -1771,11 +1771,11 @@
                 },
                 {
                   "text": "Why do you ask?",
-                  "emoji": "🤨"
+                  "emoji": "💰"
                 },
                 {
                   "text": "I don't know, you tell me.",
-                  "emoji": "🤷"
+                  "emoji": "💰"
                 }
               ]
             },
@@ -2030,19 +2030,19 @@
               "choices": [
                 {
                   "text": "I sometimes take on too much.",
-                  "emoji": "🙂"
+                  "emoji": "💼"
                 },
                 {
                   "text": "I don't have any weaknesses.",
-                  "emoji": "😎"
+                  "emoji": "💼"
                 },
                 {
                   "text": "I'm often late, to be honest.",
-                  "emoji": "⏰"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Next question, please.",
-                  "emoji": "🙅"
+                  "emoji": "💼"
                 }
               ]
             },
@@ -2053,19 +2053,19 @@
               "choices": [
                 {
                   "text": "What would a typical day be like?",
-                  "emoji": "❓"
+                  "emoji": "💼"
                 },
                 {
                   "text": "No. When can I start?",
-                  "emoji": "⏱️"
+                  "emoji": "💼"
                 },
                 {
                   "text": "How many holidays do I get?",
-                  "emoji": "🏖️"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Not really, I'm good.",
-                  "emoji": "👍"
+                  "emoji": "💼"
                 }
               ]
             },
@@ -2550,19 +2550,19 @@
               "choices": [
                 {
                   "text": "Results seem to suggest a rise.",
-                  "emoji": "🧐"
+                  "emoji": "📈"
                 },
                 {
                   "text": "This proves everything, 100%.",
-                  "emoji": "💯"
+                  "emoji": "📈"
                 },
                 {
                   "text": "Obviously, sales will explode.",
-                  "emoji": "💥"
+                  "emoji": "📈"
                 },
                 {
                   "text": "Trust me, it's a huge rise.",
-                  "emoji": "🙌"
+                  "emoji": "📈"
                 }
               ]
             }

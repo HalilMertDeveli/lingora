@@ -236,19 +236,19 @@
               "choices": [
                 {
                   "text": "How awful! Were you OK?",
-                  "emoji": "😟"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Congratulations!",
-                  "emoji": "🎉"
+                  "emoji": "💬"
                 },
                 {
                   "text": "That's a good idea.",
-                  "emoji": "💡"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Never mind, see you.",
-                  "emoji": "👋"
+                  "emoji": "💬"
                 }
               ]
             }
@@ -485,15 +485,15 @@
               "choices": [
                 {
                   "text": "Yes, I was.",
-                  "emoji": "🙂"
+                  "emoji": "🧳"
                 },
                 {
                   "text": "Honestly, it was a nightmare.",
-                  "emoji": "😩"
+                  "emoji": "🧳"
                 },
                 {
                   "text": "I'm going there by bus.",
-                  "emoji": "🚌"
+                  "emoji": "🧳"
                 },
                 {
                   "text": "It was a trip, thanks.",
@@ -508,19 +508,19 @@
               "choices": [
                 {
                   "text": "Anyway, it doesn't matter.",
-                  "emoji": "🤷"
+                  "emoji": "📖"
                 },
                 {
                   "text": "I don't remember anything.",
-                  "emoji": "😶"
+                  "emoji": "📖"
                 },
                 {
                   "text": "Then something strange happened.",
-                  "emoji": "😮"
+                  "emoji": "📖"
                 },
                 {
                   "text": "The end.",
-                  "emoji": "🔚"
+                  "emoji": "📖"
                 }
               ]
             },
@@ -669,15 +669,15 @@
               "choices": [
                 {
                   "text": "In the end, we went home.",
-                  "emoji": "🏠"
+                  "emoji": "📖"
                 },
                 {
                   "text": "So that's my story.",
-                  "emoji": "📕"
+                  "emoji": "📖"
                 },
                 {
                   "text": "Also, it was raining.",
-                  "emoji": "🌧️"
+                  "emoji": "📖"
                 },
                 {
                   "text": "I'll never forget that day.",
@@ -978,19 +978,19 @@
               "choices": [
                 {
                   "text": "Dear Sir or Madam,",
-                  "emoji": "📄"
+                  "emoji": "💬"
                 },
                 {
                   "text": "I want to complain about it.",
-                  "emoji": "😠"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Did you hear about the ferry app?",
-                  "emoji": "📱"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Thanks for your help!",
-                  "emoji": "🙏"
+                  "emoji": "💬"
                 }
               ]
             }
@@ -1241,19 +1241,19 @@
               "choices": [
                 {
                   "text": "Why are you so late?",
-                  "emoji": "⏰"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Do you like the news?",
-                  "emoji": "📺"
+                  "emoji": "💬"
                 },
                 {
                   "text": "What's your name again?",
-                  "emoji": "🤔"
+                  "emoji": "💬"
                 },
                 {
                   "text": "So what's the main point?",
-                  "emoji": "🎯"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -1268,11 +1268,11 @@
                 },
                 {
                   "text": "It's free, I'm sure.",
-                  "emoji": "😎"
+                  "emoji": "📻"
                 },
                 {
                   "text": "Free? Who cares?",
-                  "emoji": "🙄"
+                  "emoji": "📻"
                 }
               ]
             },
@@ -1443,19 +1443,19 @@
               "choices": [
                 {
                   "text": "Dear Sir or Madam,",
-                  "emoji": "📄"
+                  "emoji": "📱"
                 },
                 {
                   "text": "Hi Sam, good news!",
-                  "emoji": "👋"
+                  "emoji": "📱"
                 },
                 {
                   "text": "To whom it may concern,",
-                  "emoji": "🏛️"
+                  "emoji": "📱"
                 },
                 {
                   "text": "Yours faithfully,",
-                  "emoji": "✍️"
+                  "emoji": "📱"
                 }
               ]
             },
@@ -1748,19 +1748,19 @@
               "choices": [
                 {
                   "text": "Love, Sam xx",
-                  "emoji": "💕"
+                  "emoji": "📧"
                 },
                 {
                   "text": "See you soon!",
-                  "emoji": "👋"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Yours faithfully,",
-                  "emoji": "✍️"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Cheers,",
-                  "emoji": "🍻"
+                  "emoji": "📧"
                 }
               ]
             },
@@ -2022,19 +2022,19 @@
               "choices": [
                 {
                   "text": "This is totally stupid!",
-                  "emoji": "😡"
+                  "emoji": "📞"
                 },
                 {
                   "text": "I'm afraid this isn't acceptable.",
-                  "emoji": "🙂"
+                  "emoji": "📞"
                 },
                 {
                   "text": "Whatever, forget it.",
-                  "emoji": "🙄"
+                  "emoji": "📞"
                 },
                 {
                   "text": "You're the worst company!",
-                  "emoji": "👎"
+                  "emoji": "📞"
                 }
               ]
             },
@@ -2045,15 +2045,15 @@
               "choices": [
                 {
                   "text": "I don't know you.",
-                  "emoji": "🤨"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Help me again!",
-                  "emoji": "😤"
+                  "emoji": "💬"
                 },
                 {
                   "text": "No, that's all. Thank you.",
-                  "emoji": "🙏"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -2214,11 +2214,11 @@
               "choices": [
                 {
                   "text": "Hey guys, guess what happened!",
-                  "emoji": "😜"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Your company is terrible.",
-                  "emoji": "😠"
+                  "emoji": "📧"
                 },
                 {
                   "text": "I am writing to complain about…",
@@ -2226,7 +2226,7 @@
                 },
                 {
                   "text": "Just a quick note, lol.",
-                  "emoji": "😂"
+                  "emoji": "📧"
                 }
               ]
             },
@@ -2564,7 +2564,7 @@
               "choices": [
                 {
                   "text": "She said she is move.",
-                  "emoji": "❌"
+                  "emoji": "🗣️"
                 },
                 {
                   "text": "She told she was moving.",
@@ -2572,11 +2572,11 @@
                 },
                 {
                   "text": "She said she was moving.",
-                  "emoji": "✅"
+                  "emoji": "🗣️"
                 },
                 {
                   "text": "She said me she moved.",
-                  "emoji": "💬"
+                  "emoji": "🗣️"
                 }
               ]
             }

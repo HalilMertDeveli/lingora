@@ -599,7 +599,7 @@
           "title": "always, usually, never",
           "description": "ne sıklıkla",
           "exercises": [
-            {"type":"select","prompt":"her zaman","answer":"always","choices":[{"text":"never","emoji":"🚫"},{"text":"sometimes","emoji":"🤷"},{"text":"always","emoji":"🔁"},{"text":"usually","emoji":"👍"}]},
+            {"type":"select","prompt":"her zaman","answer":"always","choices":[{"text":"never","emoji":"🚫"},{"text":"sometimes","emoji":"🤷"},{"text":"always","emoji":"🔁"},{"text":"usually","emoji":"📆"}]},
             {"type":"translate","text":"Her zaman kahvaltı yaparım.","lang":"tr","answers":["I always have breakfast","I always eat breakfast"],"tokens":["always","I","every","breakfast","have","make"]},
             {"type":"fillBlank","text":"Kerem is ___ late for school. He's never on time!","translation":"Kerem okula hep geç kalır. Asla zamanında gelmez!","answer":"always","choices":["rarely","never","always"]},
             {"type":"fillBlank","text":"She ___ drinks coffee. She doesn't like it.","translation":"Neredeyse hiç kahve içmez. Sevmez.","answer":"hardly ever","choices":["often","usually","hardly ever"]},
@@ -1202,7 +1202,7 @@
           "title": "won't, probably, definitely",
           "description": "emin olmak ve söz vermek",
           "exercises": [
-            {"type":"select","prompt":"kesinlikle","answer":"definitely","choices":[{"text":"perhaps","emoji":"🤷"},{"text":"probably","emoji":"🤔"},{"text":"definitely","emoji":"✅"},{"text":"never","emoji":"🚫"}]},
+            {"type":"select","prompt":"kesinlikle","answer":"definitely","choices":[{"text":"perhaps","emoji":"🤷"},{"text":"probably","emoji":"🤔"},{"text":"definitely","emoji":"💯"},{"text":"never","emoji":"🚫"}]},
             {"type":"fillBlank","text":"I ___ forget your birthday. I promise!","translation":"Doğum gününü unutmayacağım. Söz veriyorum!","answer":"won't","choices":["won't","don't","am not"]},
             {"type":"fillBlank","text":"He'll ___ be late again.","translation":"Muhtemelen yine geç kalacak.","answer":"probably","choices":["probably will","probable","probably"]},
             {"type":"fillBlank","text":"Don't worry. Everything ___ be OK.","translation":"Merak etme. Her şey yoluna girecek.","answer":"will","choices":["will","is","going"]},
@@ -1260,7 +1260,7 @@
           "title": "will mi, going to mı?",
           "description": "plan mı, anlık karar mı",
           "exercises": [
-            {"type":"select","prompt":"belki","answer":"perhaps","choices":[{"text":"definitely","emoji":"✅"},{"text":"always","emoji":"🔁"},{"text":"perhaps","emoji":"🤷"},{"text":"never","emoji":"🚫"}]},
+            {"type":"select","prompt":"belki","answer":"perhaps","choices":[{"text":"definitely","emoji":"💯"},{"text":"always","emoji":"🔁"},{"text":"perhaps","emoji":"🤷"},{"text":"never","emoji":"🚫"}]},
             {"type":"fillBlank","text":"My plan is ready. I ___ going to study medicine.","translation":"Planım hazır. Tıp okuyacağım.","answer":"am","choices":["do","am","will"]},
             {"type":"fillBlank","text":"Oh, there's no milk! ___ go to the shop.","translation":"Aa, süt yok! Markete gideyim.","answer":"I'll","choices":["I'm going","I'll","I going"]},
             {"type":"fillBlank","text":"Look at the sky! It's ___ to rain.","translation":"Gökyüzüne bak! Yağmur yağacak.","answer":"going","choices":["go","will","going"]},

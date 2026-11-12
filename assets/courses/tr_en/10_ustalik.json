@@ -75,19 +75,19 @@
               "choices": [
                 {
                   "text": "Brace yourself, mate. Bad news.",
-                  "emoji": "😬"
+                  "emoji": "💼"
                 },
                 {
                   "text": "I'm afraid I have some bad news.",
-                  "emoji": "🗂️"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Guess what? It's all gone wrong.",
-                  "emoji": "🙃"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Ugh, you won't like this.",
-                  "emoji": "😩"
+                  "emoji": "💼"
                 }
               ]
             },
@@ -213,15 +213,15 @@
               "choices": [
                 {
                   "text": "Keep me posting.",
-                  "emoji": "🔤"
+                  "emoji": "📬"
                 },
                 {
                   "text": "Hold me informed.",
-                  "emoji": "🤔"
+                  "emoji": "📬"
                 },
                 {
                   "text": "Stay me updated.",
-                  "emoji": "💭"
+                  "emoji": "📬"
                 },
                 {
                   "text": "Keep me posted.",
@@ -781,15 +781,15 @@
                 },
                 {
                   "text": "Whatever, you pick a day.",
-                  "emoji": "🙄"
+                  "emoji": "📅"
                 },
                 {
                   "text": "Why did you cancel it?",
-                  "emoji": "😒"
+                  "emoji": "📅"
                 },
                 {
                   "text": "Tuesday. Don't cancel again.",
-                  "emoji": "😤"
+                  "emoji": "📅"
                 }
               ]
             },
@@ -800,19 +800,19 @@
               "choices": [
                 {
                   "text": "I am writing to confirm I am well.",
-                  "emoji": "📄"
+                  "emoji": "📱"
                 },
                 {
                   "text": "Kindly be advised all is well.",
-                  "emoji": "🗂️"
+                  "emoji": "📱"
                 },
                 {
                   "text": "All good, thanks! You?",
-                  "emoji": "😊"
+                  "emoji": "📱"
                 },
                 {
                   "text": "Further to your query, all is well.",
-                  "emoji": "📎"
+                  "emoji": "📱"
                 }
               ]
             },
@@ -929,19 +929,19 @@
               "choices": [
                 {
                   "text": "This is terrible work.",
-                  "emoji": "🔤"
+                  "emoji": "📄"
                 },
                 {
                   "text": "You got it all wrong.",
-                  "emoji": "😤"
+                  "emoji": "📄"
                 },
                 {
                   "text": "Did you even read the brief?",
-                  "emoji": "🙄"
+                  "emoji": "📄"
                 },
                 {
                   "text": "It's not quite what we expected.",
-                  "emoji": "🙂"
+                  "emoji": "📄"
                 }
               ]
             },
@@ -1065,11 +1065,11 @@
               "choices": [
                 {
                   "text": "as a good will sign",
-                  "emoji": "🔤"
+                  "emoji": "🤝"
                 },
                 {
                   "text": "like a goodwill gesture",
-                  "emoji": "🤔"
+                  "emoji": "🤝"
                 },
                 {
                   "text": "as a goodwill gesture",
@@ -1077,7 +1077,7 @@
                 },
                 {
                   "text": "for a goodness gesture",
-                  "emoji": "💭"
+                  "emoji": "🤝"
                 }
               ]
             },
@@ -1594,19 +1594,19 @@
               "choices": [
                 {
                   "text": "That's a stupid deadline.",
-                  "emoji": "😤"
+                  "emoji": "🚚"
                 },
                 {
                   "text": "I'm not sure that's realistic.",
-                  "emoji": "🙂"
+                  "emoji": "🚚"
                 },
                 {
                   "text": "You must be joking.",
-                  "emoji": "🙄"
+                  "emoji": "🚚"
                 },
                 {
                   "text": "No way, forget it.",
-                  "emoji": "🗨️"
+                  "emoji": "🚚"
                 }
               ]
             }
@@ -1741,15 +1741,15 @@
                 },
                 {
                   "text": "Please don't ask again.",
-                  "emoji": "🙅"
+                  "emoji": "✉️"
                 },
                 {
                   "text": "Hope you get it now.",
-                  "emoji": "🙄"
+                  "emoji": "✉️"
                 },
                 {
                   "text": "That's our final answer!",
-                  "emoji": "😤"
+                  "emoji": "✉️"
                 }
               ]
             },
@@ -1880,19 +1880,19 @@
               "choices": [
                 {
                   "text": "Let's bite a bullet.",
-                  "emoji": "📝"
+                  "emoji": "💪"
                 },
                 {
                   "text": "Let's bite the bullets.",
-                  "emoji": "🤔"
+                  "emoji": "💪"
                 },
                 {
                   "text": "Let's bite the bullet.",
-                  "emoji": "🔤"
+                  "emoji": "💪"
                 },
                 {
                   "text": "Let's eat the bullet.",
-                  "emoji": "💭"
+                  "emoji": "💪"
                 }
               ]
             },
@@ -2009,11 +2009,11 @@
               "choices": [
                 {
                   "text": "a piece of thought",
-                  "emoji": "🔤"
+                  "emoji": "🧩"
                 },
                 {
                   "text": "a meal for thinking",
-                  "emoji": "🤔"
+                  "emoji": "🍲"
                 },
                 {
                   "text": "food for thought",
@@ -2021,7 +2021,7 @@
                 },
                 {
                   "text": "fruit of the mind",
-                  "emoji": "💭"
+                  "emoji": "🍎"
                 }
               ]
             },
@@ -2548,19 +2548,19 @@
               "choices": [
                 {
                   "text": "Shall we talk about the budget?",
-                  "emoji": "🙂"
+                  "emoji": "💰"
                 },
                 {
                   "text": "You're all ignoring the problem!",
-                  "emoji": "😤"
+                  "emoji": "💰"
                 },
                 {
                   "text": "Wake up, people, we're broke!",
-                  "emoji": "🚨"
+                  "emoji": "💰"
                 },
                 {
                   "text": "Nobody here can count, clearly.",
-                  "emoji": "🙄"
+                  "emoji": "💰"
                 }
               ]
             },
@@ -2571,7 +2571,7 @@
               "choices": [
                 {
                   "text": "Let me sleep in it.",
-                  "emoji": "🔤"
+                  "emoji": "🛏️"
                 },
                 {
                   "text": "That's the last straw.",
@@ -2686,11 +2686,11 @@
                 },
                 {
                   "text": "I won't know.",
-                  "emoji": "🔤"
+                  "emoji": "🔮"
                 },
                 {
                   "text": "I do now.",
-                  "emoji": "🤔"
+                  "emoji": "💡"
                 },
                 {
                   "text": "I don't know.",
@@ -3331,19 +3331,19 @@
               "choices": [
                 {
                   "text": "The pacing drags in the middle.",
-                  "emoji": "📝"
+                  "emoji": "📺"
                 },
                 {
                   "text": "The middle bit is kinda boring lol",
-                  "emoji": "😴"
+                  "emoji": "📺"
                 },
                 {
                   "text": "Ugh, episodes 4 and 5. Snooze.",
-                  "emoji": "🙄"
+                  "emoji": "📺"
                 },
                 {
                   "text": "The middle? Total mess, mate!",
-                  "emoji": "😬"
+                  "emoji": "📺"
                 }
               ]
             }
@@ -3461,19 +3461,19 @@
               "choices": [
                 {
                   "text": "Gotta watch it, trust me!!",
-                  "emoji": "🔥"
+                  "emoji": "📺"
                 },
                 {
                   "text": "Dunno, kinda good I guess.",
-                  "emoji": "🤷"
+                  "emoji": "📺"
                 },
                 {
                   "text": "It is well worth a watch.",
-                  "emoji": "⭐"
+                  "emoji": "📺"
                 },
                 {
                   "text": "Watch it or whatever.",
-                  "emoji": "😑"
+                  "emoji": "📺"
                 }
               ]
             },
@@ -3604,19 +3604,19 @@
               "choices": [
                 {
                   "text": "7%. Take it or leave it.",
-                  "emoji": "😤"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Could you do 7% if we sign today?",
-                  "emoji": "🤝"
+                  "emoji": "💼"
                 },
                 {
                   "text": "You must give us 7% now.",
-                  "emoji": "👉"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Give us 7% or we leave.",
-                  "emoji": "🚪"
+                  "emoji": "💼"
                 }
               ]
             },
@@ -3750,15 +3750,15 @@
                 },
                 {
                   "text": "Let's meet half.",
-                  "emoji": "🔤"
+                  "emoji": "🤝"
                 },
                 {
                   "text": "Let's go halfway on.",
-                  "emoji": "🤔"
+                  "emoji": "🤝"
                 },
                 {
                   "text": "Let's meet at half.",
-                  "emoji": "💭"
+                  "emoji": "🤝"
                 }
               ]
             },
@@ -4285,19 +4285,19 @@
               "choices": [
                 {
                   "text": "Are you joking? No way.",
-                  "emoji": "😂"
+                  "emoji": "💰"
                 },
                 {
                   "text": "That price is ridiculous.",
-                  "emoji": "🙄"
+                  "emoji": "💰"
                 },
                 {
                   "text": "You must be crazy.",
-                  "emoji": "😤"
+                  "emoji": "💰"
                 },
                 {
                   "text": "That's higher than we expected.",
-                  "emoji": "🤔"
+                  "emoji": "💰"
                 }
               ]
             },
@@ -4308,19 +4308,19 @@
               "choices": [
                 {
                   "text": "I can't decide anything.",
-                  "emoji": "😶"
+                  "emoji": "💼"
                 },
                 {
                   "text": "My boss decides, not me.",
-                  "emoji": "🤷"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Let me run it by my director.",
-                  "emoji": "📞"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Ask my boss, not me.",
-                  "emoji": "⏳"
+                  "emoji": "💼"
                 }
               ]
             },
@@ -4442,15 +4442,15 @@
                 },
                 {
                   "text": "We kinda want to…",
-                  "emoji": "🤷"
+                  "emoji": "📄"
                 },
                 {
                   "text": "Basically, the idea is…",
-                  "emoji": "💬"
+                  "emoji": "📄"
                 },
                 {
                   "text": "So we're gonna try to…",
-                  "emoji": "🙃"
+                  "emoji": "📄"
                 }
               ]
             },
@@ -4582,15 +4582,15 @@
                 },
                 {
                   "text": "money for value",
-                  "emoji": "🔤"
+                  "emoji": "💶"
                 },
                 {
                   "text": "worth of money",
-                  "emoji": "🤔"
+                  "emoji": "💶"
                 },
                 {
                   "text": "cost for value",
-                  "emoji": "💭"
+                  "emoji": "💶"
                 }
               ]
             },
@@ -5140,19 +5140,19 @@
               "choices": [
                 {
                   "text": "Pls send us 36k, thx!",
-                  "emoji": "📱"
+                  "emoji": "💶"
                 },
                 {
                   "text": "Give us money and we'll see.",
-                  "emoji": "🤷"
+                  "emoji": "💶"
                 },
                 {
                   "text": "We request funding of €36,000.",
-                  "emoji": "📄"
+                  "emoji": "💶"
                 },
                 {
                   "text": "We kinda need some cash.",
-                  "emoji": "💸"
+                  "emoji": "💶"
                 }
               ]
             }
@@ -5287,19 +5287,19 @@
               "choices": [
                 {
                   "text": "That worry is just silly.",
-                  "emoji": "🙄"
+                  "emoji": "📄"
                 },
                 {
                   "text": "Nobody should complain.",
-                  "emoji": "🤐"
+                  "emoji": "📄"
                 },
                 {
                   "text": "Managers always worry.",
-                  "emoji": "😒"
+                  "emoji": "📄"
                 },
                 {
                   "text": "We understand this concern, but…",
-                  "emoji": "🤝"
+                  "emoji": "📄"
                 }
               ]
             },
@@ -5430,19 +5430,19 @@
               "choices": [
                 {
                   "text": "Shortly, the project was delayed.",
-                  "emoji": "📝"
+                  "emoji": "⏳"
                 },
                 {
                   "text": "In shortly, the project delayed.",
-                  "emoji": "🤔"
+                  "emoji": "⏳"
                 },
                 {
                   "text": "In short way, project was delayed.",
-                  "emoji": "💭"
+                  "emoji": "⏳"
                 },
                 {
                   "text": "In short, the project was delayed.",
-                  "emoji": "🔤"
+                  "emoji": "⏳"
                 }
               ]
             },
@@ -5566,11 +5566,11 @@
               "choices": [
                 {
                   "text": "make the gist",
-                  "emoji": "🔤"
+                  "emoji": "💡"
                 },
                 {
                   "text": "do the gist",
-                  "emoji": "🤔"
+                  "emoji": "💡"
                 },
                 {
                   "text": "get the gist",
@@ -5578,7 +5578,7 @@
                 },
                 {
                   "text": "take a gist",
-                  "emoji": "💭"
+                  "emoji": "💡"
                 }
               ]
             },
@@ -6083,19 +6083,19 @@
               "choices": [
                 {
                   "text": "Satışlar ve maliyetler düştü.",
-                  "emoji": "📉"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Satışlar yüzde 4 düştü.",
-                  "emoji": "🔤"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Maliyetler sabit kaldı.",
-                  "emoji": "🤔"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Maliyetler satışlardan hızlı arttı.",
-                  "emoji": "📈"
+                  "emoji": "📊"
                 }
               ]
             },
@@ -6106,19 +6106,19 @@
               "choices": [
                 {
                   "text": "Everything. It was chaos.",
-                  "emoji": "😩"
+                  "emoji": "💼"
                 },
                 {
                   "text": "A lot. Want the short version?",
-                  "emoji": "📝"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Don't ask, it was awful.",
-                  "emoji": "🙄"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Read the minutes yourself.",
-                  "emoji": "🗨️"
+                  "emoji": "💼"
                 }
               ]
             },
@@ -6246,11 +6246,11 @@
               "choices": [
                 {
                   "text": "a slightly decline",
-                  "emoji": "🔤"
+                  "emoji": "📉"
                 },
                 {
                   "text": "a little declining",
-                  "emoji": "🤔"
+                  "emoji": "📉"
                 },
                 {
                   "text": "a slight decline",
@@ -6258,7 +6258,7 @@
                 },
                 {
                   "text": "a few decline",
-                  "emoji": "💭"
+                  "emoji": "📉"
                 }
               ]
             },
@@ -6423,15 +6423,15 @@
                 },
                 {
                   "text": "Usage went totally crazy!",
-                  "emoji": "🤪"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Like, twice as many people, lol.",
-                  "emoji": "😂"
+                  "emoji": "📊"
                 },
                 {
                   "text": "The numbers were super big.",
-                  "emoji": "🙄"
+                  "emoji": "📊"
                 }
               ]
             },
@@ -6909,19 +6909,19 @@
               "choices": [
                 {
                   "text": "Use fell sharp, then rose slight.",
-                  "emoji": "📝"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Use fell sharply, then recovered.",
-                  "emoji": "🔤"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Use was falling sharp and rising.",
-                  "emoji": "🤔"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Use sharply fell down and up.",
-                  "emoji": "💭"
+                  "emoji": "📊"
                 }
               ]
             }
@@ -7055,19 +7055,19 @@
               "choices": [
                 {
                   "text": "So growth will 100% be slow.",
-                  "emoji": "💯"
+                  "emoji": "📊"
                 },
                 {
                   "text": "If so, growth is likely to be slow.",
-                  "emoji": "🧐"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Growth is slow, end of story.",
-                  "emoji": "🛑"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Obviously nobody will switch now.",
-                  "emoji": "🙄"
+                  "emoji": "📊"
                 }
               ]
             },
@@ -7198,19 +7198,19 @@
               "choices": [
                 {
                   "text": "I'm happy to take questions.",
-                  "emoji": "🔤"
+                  "emoji": "🙋"
                 },
                 {
                   "text": "I'm happy to answer to questions.",
-                  "emoji": "📝"
+                  "emoji": "🙋"
                 },
                 {
                   "text": "I'm glad for taking questions.",
-                  "emoji": "🤔"
+                  "emoji": "🙋"
                 },
                 {
                   "text": "I'm happy to take your asks.",
-                  "emoji": "💭"
+                  "emoji": "🙋"
                 }
               ]
             },
@@ -7330,15 +7330,15 @@
                 },
                 {
                   "text": "put someone on the place",
-                  "emoji": "🔤"
+                  "emoji": "😳"
                 },
                 {
                   "text": "take someone to the spot",
-                  "emoji": "🤔"
+                  "emoji": "😳"
                 },
                 {
                   "text": "make someone on the spot",
-                  "emoji": "💭"
+                  "emoji": "😳"
                 }
               ]
             },
@@ -7828,19 +7828,19 @@
               "choices": [
                 {
                   "text": "Wait, don't interrupt me.",
-                  "emoji": "✋"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "That's not my problem.",
-                  "emoji": "🙄"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "Good point. I'll come to that.",
-                  "emoji": "💬"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "Not now, I'm talking.",
-                  "emoji": "😤"
+                  "emoji": "🎤"
                 }
               ]
             },
@@ -7851,19 +7851,19 @@
               "choices": [
                 {
                   "text": "That's a stupid question.",
-                  "emoji": "😒"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "Nobody knows that, sorry.",
-                  "emoji": "🤷"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "I'm not sure, but I'll find out.",
-                  "emoji": "🔎"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "Er… next question, please.",
-                  "emoji": "⏭️"
+                  "emoji": "🎤"
                 }
               ]
             },
@@ -7939,15 +7939,15 @@
                 },
                 {
                   "text": "He will sit by the window.",
-                  "emoji": "⏭️"
+                  "emoji": "🪟"
                 },
                 {
                   "text": "He was sit by the window.",
-                  "emoji": "🔤"
+                  "emoji": "🪟"
                 },
                 {
                   "text": "He would sitting by window.",
-                  "emoji": "🌀"
+                  "emoji": "🪟"
                 }
               ]
             },
@@ -8729,11 +8729,11 @@
               "choices": [
                 {
                   "text": "According to me, the ending works.",
-                  "emoji": "🙋"
+                  "emoji": "💬"
                 },
                 {
                   "text": "To my view, the ending works.",
-                  "emoji": "❓"
+                  "emoji": "💬"
                 },
                 {
                   "text": "In my view, the ending works.",
@@ -8741,7 +8741,7 @@
                 },
                 {
                   "text": "On my view, the ending works.",
-                  "emoji": "🌀"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -8809,11 +8809,11 @@
               "choices": [
                 {
                   "text": "What we are knowing is this.",
-                  "emoji": "🔤"
+                  "emoji": "📋"
                 },
                 {
                   "text": "That we know so far is this.",
-                  "emoji": "🌀"
+                  "emoji": "📋"
                 },
                 {
                   "text": "What we know so far is this.",
@@ -8821,7 +8821,7 @@
                 },
                 {
                   "text": "What know we so far is this.",
-                  "emoji": "🔀"
+                  "emoji": "📋"
                 }
               ]
             },
@@ -9508,19 +9508,19 @@
               "choices": [
                 {
                   "text": "That's a stupid question.",
-                  "emoji": "😠"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Yes, it's completely our fault.",
-                  "emoji": "🙈"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Our focus right now is safety.",
-                  "emoji": "🦺"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Whatever. Next question.",
-                  "emoji": "🙄"
+                  "emoji": "🎙️"
                 }
               ]
             },
@@ -9531,19 +9531,19 @@
               "choices": [
                 {
                   "text": "Calm down! I told you already.",
-                  "emoji": "😤"
+                  "emoji": "🚨"
                 },
                 {
                   "text": "Stop asking me that.",
-                  "emoji": "✋"
+                  "emoji": "🚨"
                 },
                 {
                   "text": "Ask someone else.",
-                  "emoji": "🤷"
+                  "emoji": "🚨"
                 },
                 {
                   "text": "I hear you. Here's the plan.",
-                  "emoji": "🤝"
+                  "emoji": "🚨"
                 }
               ]
             },
@@ -9613,7 +9613,7 @@
               "choices": [
                 {
                   "text": "Is not time we listened?",
-                  "emoji": "🔤"
+                  "emoji": "👂"
                 },
                 {
                   "text": "Isn't it time we listened?",
@@ -9621,11 +9621,11 @@
                 },
                 {
                   "text": "Isn't it time to we listened?",
-                  "emoji": "🌀"
+                  "emoji": "👂"
                 },
                 {
                   "text": "Isn't time it we listened?",
-                  "emoji": "🔀"
+                  "emoji": "👂"
                 }
               ]
             },
@@ -9788,11 +9788,11 @@
               "choices": [
                 {
                   "text": "do a stand",
-                  "emoji": "🛠️"
+                  "emoji": "🚩"
                 },
                 {
                   "text": "give a stand",
-                  "emoji": "🎁"
+                  "emoji": "🚩"
                 },
                 {
                   "text": "take a stand",
@@ -9800,7 +9800,7 @@
                 },
                 {
                   "text": "hold a stand up",
-                  "emoji": "🙌"
+                  "emoji": "🚩"
                 }
               ]
             },
@@ -10424,19 +10424,19 @@
               "choices": [
                 {
                   "text": "That is all, thank you for reading.",
-                  "emoji": "👋"
+                  "emoji": "📰"
                 },
                 {
                   "text": "Surely those nights deserve more.",
-                  "emoji": "🌟"
+                  "emoji": "📰"
                 },
                 {
                   "text": "In conclusion, I said many things.",
-                  "emoji": "📝"
+                  "emoji": "📰"
                 },
                 {
                   "text": "The end. Goodbye.",
-                  "emoji": "🔚"
+                  "emoji": "📰"
                 }
               ]
             },
@@ -10769,15 +10769,15 @@
               "choices": [
                 {
                   "text": "Gimme more time, okay?",
-                  "emoji": "😎"
+                  "emoji": "✉️"
                 },
                 {
                   "text": "Could I possibly have more time?",
-                  "emoji": "🙏"
+                  "emoji": "✉️"
                 },
                 {
                   "text": "I want more time now.",
-                  "emoji": "⏱️"
+                  "emoji": "✉️"
                 },
                 {
                   "text": "More time. Thanks.",
