@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/startup_trace.dart';
@@ -109,14 +110,12 @@ class _PathListState extends ConsumerState<_PathList> {
   Timer? _highlightTimer;
 
   /// Direction of the active node when it is off screen ("Bulunduğun yere dön").
-  AxisDirection? _jump;
+  /// Scroll-driven state lives in notifiers so scrolling never rebuilds the path.
+  final _jump = ValueNotifier<AxisDirection?>(null);
 
   /// Unit whose band is pinned to the top (scrolled past its own band).
-  String? _pinnedUnit;
+  final _pinned = ValueNotifier<(String?, double)>((null, 0));
 
-  /// How far the pinned band is pushed up by the next unit's band coming
-  /// from below (0 or negative), so the two never overlap.
-  double _pinnedShift = 0;
   final _pinnedKey = GlobalKey();
 
   _CardInfo? _cardInfo;
@@ -125,6 +124,31 @@ class _PathListState extends ConsumerState<_PathList> {
 
   LayerLink _linkOf(String id) => _links.putIfAbsent(id, LayerLink.new);
   GlobalKey _bandKeyOf(String id) => _bandKeys.putIfAbsent(id, GlobalKey.new);
+
+  /// One key per unit block (band + map). The path list is lazy, so only the
+  /// blocks near the screen exist; these keys tell which ones and where.
+  final _itemKeys = <String, GlobalKey>{};
+  GlobalKey _itemKeyOf(String id) => _itemKeys.putIfAbsent(id, GlobalKey.new);
+
+  /// Units shown on the path, in order, and the unit of the current node.
+  List<String> _shownUnits = const [];
+  String? _currentUnit;
+
+  /// Position of [id] among the shown units, or -1.
+  int _shownIndex(String? id) => id == null ? -1 : _shownUnits.indexOf(id);
+
+  /// Index of the first shown unit whose block is on screen, or -1.
+  int _firstVisibleUnit() {
+    final viewport = _viewport;
+    if (viewport == null || !viewport.hasSize) return -1;
+    for (final (i, id) in _shownUnits.indexed) {
+      final box = _itemKeys[id]?.currentContext?.findRenderObject() as RenderBox?;
+      if (box == null || !box.attached || !box.hasSize) continue;
+      final top = box.localToGlobal(Offset.zero, ancestor: viewport).dy;
+      if (top + box.size.height > 0 && top < viewport.size.height) return i;
+    }
+    return -1;
+  }
 
   @override
   void initState() {
@@ -155,6 +179,8 @@ class _PathListState extends ConsumerState<_PathList> {
     _reselected?.removeListener(_onReselect);
     _highlightTimer?.cancel();
     _scroll.dispose();
+    _jump.dispose();
+    _pinned.dispose();
     super.dispose();
   }
 
@@ -166,10 +192,30 @@ class _PathListState extends ConsumerState<_PathList> {
   /// Brings the active node into view after this frame.
   void _focusSoon({bool force = false}) {
     _focusPending = false;
+    _focusAttempt(force: force, tries: 6);
+  }
+
+  /// The active node may not be built yet (the list is lazy): jump near its
+  /// unit first, then retry until the node exists and can be centred.
+  void _focusAttempt({required bool force, required int tries}) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
       final ctx = _activeKey.currentContext;
-      if (!mounted || ctx == null || !ctx.mounted) {
-        if (force && mounted && _scroll.hasClients) _animateTo(0);
+      if (ctx == null || !ctx.mounted) {
+        final index = _shownIndex(_currentUnit);
+        if (tries > 0 && index >= 0 && _scroll.hasClients && _shownUnits.isNotEmpty) {
+          final pos = _scroll.position;
+          final visible = _firstVisibleUnit();
+          // Step towards the unit; overshooting is fine, the next try corrects it.
+          final guess = pos.maxScrollExtent * (index / _shownUnits.length);
+          final target = visible < 0 || (visible - index).abs() > 1
+              ? guess
+              : pos.pixels + (index - visible) * 300;
+          _scroll.jumpTo(target.clamp(0.0, pos.maxScrollExtent));
+          _focusAttempt(force: force, tries: tries - 1);
+        } else if (force && _scroll.hasClients) {
+          _animateTo(0);
+        }
         return;
       }
       _focusedId = _seenActiveId;
@@ -226,6 +272,21 @@ class _PathListState extends ConsumerState<_PathList> {
     unawaited(precacheTheme(theme));
   }
 
+  bool _afterScrollQueued = false;
+
+  /// Scroll notifications can arrive during layout (the lazy list sizes new
+  /// blocks as they appear), when sizes may not be read yet: measure after
+  /// the frame, once per frame.
+  void _scheduleAfterScroll() {
+    if (_afterScrollQueued) return;
+    _afterScrollQueued = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _afterScrollQueued = false;
+      _afterScroll();
+    });
+    WidgetsBinding.instance.ensureVisualUpdate();
+  }
+
   void _afterScroll() {
     _updateJump();
     _updatePinned();
@@ -243,8 +304,13 @@ class _PathListState extends ConsumerState<_PathList> {
       final bottom = top + tile.size.height;
       if (bottom < 0) next = AxisDirection.up;
       if (top > viewport.size.height) next = AxisDirection.down;
+    } else if (_currentUnit != null) {
+      // Not built: it is off screen; its unit's place tells which way.
+      final index = _shownIndex(_currentUnit);
+      final visible = _firstVisibleUnit();
+      if (index >= 0 && visible >= 0) next = index < visible ? AxisDirection.up : AxisDirection.down;
     }
-    if (next != _jump) setState(() => _jump = next);
+    _jump.value = next;
   }
 
   /// Pins the band of the unit being read: the last one whose own band has
@@ -255,12 +321,12 @@ class _PathListState extends ConsumerState<_PathList> {
     if (viewport == null || !viewport.hasSize) return;
     String? next;
     double? nextBandTop; // top of the first band below the pinned one
-    for (final unit in widget.course.units) {
-      final box = _bandKeys[unit.id]?.currentContext?.findRenderObject() as RenderBox?;
+    for (final id in _shownUnits) {
+      final box = _bandKeys[id]?.currentContext?.findRenderObject() as RenderBox?;
       if (box == null || !box.attached || !box.hasSize) continue;
       final top = box.localToGlobal(Offset.zero, ancestor: viewport).dy;
       if (top < -box.size.height * 0.5) {
-        next = unit.id;
+        next = id;
         nextBandTop = null;
       } else {
         nextBandTop ??= top;
@@ -271,12 +337,8 @@ class _PathListState extends ConsumerState<_PathList> {
     final shift = next == null || nextBandTop == null
         ? 0.0
         : (nextBandTop - pinnedHeight).clamp(-pinnedHeight, 0.0);
-    if (next != _pinnedUnit || shift != _pinnedShift) {
-      setState(() {
-        _pinnedUnit = next;
-        _pinnedShift = shift;
-      });
-    }
+    // The shift is the push-up by the next band (0 or negative), so the two never overlap.
+    _pinned.value = (next, shift);
   }
 
   /// Sections the learner opened by hand ("üniteye göz at").
@@ -585,6 +647,13 @@ class _PathListState extends ConsumerState<_PathList> {
     final current = currentNode(course, p);
     final open = {for (final s in course.sections) s.id: sectionOpen(course, s, p)};
     _track(current?.id, current == null ? -1 : all.indexOf(current));
+    _shownUnits = [
+      for (final s in course.sections)
+        if (_showUnits(s, open[s.id]!, current, p)) ...s.units.map((u) => u.id),
+    ];
+    _currentUnit = current == null
+        ? null
+        : course.units.where((u) => u.nodes.contains(current)).firstOrNull?.id;
     _warmTheme(course, current);
 
     NodeState stateOf(PathNode n) {
@@ -594,7 +663,6 @@ class _PathListState extends ConsumerState<_PathList> {
     }
 
     final unitIndex = {for (final (i, u) in course.units.indexed) u.id: i};
-    final pinned = _pinnedUnit == null ? null : course.units.where((u) => u.id == _pinnedUnit).firstOrNull;
     int numberInSection(Unit u) {
       final s = course.sections.firstWhere((s) => s.units.contains(u), orElse: () => course.sections.first);
       return s.units.indexOf(u) + 1;
@@ -609,132 +677,146 @@ class _PathListState extends ConsumerState<_PathList> {
           NotificationListener<ScrollNotification>(
             onNotification: (n) {
               if (n is ScrollUpdateNotification && n.dragDetails != null) _hideCard();
-              _afterScroll();
+              _scheduleAfterScroll();
               return false;
             },
-            // Not lazy: every node exists, so the active one can always be found.
-            child: SingleChildScrollView(
+            // Lazy: only the blocks near the screen are built, laid out and
+            // painted; focusing and pinning find the rest by unit order.
+            child: ListView(
               controller: _scroll,
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const ReminderPromptCard(),
-                  const _DailyGoalCard(),
-                  if (ref.watch(trackProvider).id == 'pro_tourism') const GuestFlagsCard(),
-                  const SizedBox(height: 20),
-                  for (final section in course.sections) ...[
-                    if (!section.implicit) ...[
-                      SectionHeader(section: section, open: open[section.id]!),
-                      const SizedBox(height: 8),
-                      if (!_autoExpanded(section, open[section.id]!, current, p))
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: TextButton.icon(
-                            key: ValueKey('section-toggle-${section.id}'),
-                            icon: Icon(
-                              _expanded.contains(section.id) ? Icons.expand_less : Icons.expand_more,
-                            ),
-                            label: Text(
-                              _expanded.contains(section.id)
-                                  ? 'Üniteleri gizle'
-                                  : '${section.units.length} üniteye göz at',
-                            ),
-                            onPressed: () => setState(() {
-                              if (!_expanded.remove(section.id)) _expanded.add(section.id);
-                            }),
+              scrollCacheExtent: const ScrollCacheExtent.pixels(800),
+              children: [
+                const ReminderPromptCard(),
+                const _DailyGoalCard(),
+                if (ref.watch(trackProvider).id == 'pro_tourism') const GuestFlagsCard(),
+                const SizedBox(height: 20),
+                for (final section in course.sections) ...[
+                  if (!section.implicit) ...[
+                    SectionHeader(section: section, open: open[section.id]!),
+                    const SizedBox(height: 8),
+                    if (!_autoExpanded(section, open[section.id]!, current, p))
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton.icon(
+                          key: ValueKey('section-toggle-${section.id}'),
+                          icon: Icon(_expanded.contains(section.id) ? Icons.expand_less : Icons.expand_more),
+                          label: Text(
+                            _expanded.contains(section.id)
+                                ? 'Üniteleri gizle'
+                                : '${section.units.length} üniteye göz at',
                           ),
+                          onPressed: () => setState(() {
+                            if (!_expanded.remove(section.id)) _expanded.add(section.id);
+                          }),
                         ),
-                      const SizedBox(height: 8),
-                    ],
-                    if (_showUnits(section, open[section.id]!, current, p))
-                      for (final unit in section.units) ...[
-                        UnitBand(
-                          key: _bandKeyOf(unit.id),
-                          unit: unit,
-                          index: section.units.indexOf(unit) + 1,
-                          onGuide: () => _guide(unit, section.units.indexOf(unit) + 1, stateOf),
-                        ),
-                        const SizedBox(height: 18),
-                        _UnitMap(
-                          unit: unit,
-                          mirror: unitIndex[unit.id]!.isOdd,
-                          stateOf: stateOf,
-                          current: current,
-                          activeKey: _activeKey,
-                          highlightId: _highlightId,
-                          linkOf: _linkOf,
-                          nodeContexts: _nodeContexts,
-                          onNode: (n, st) => _showCard(n, unit, st, open[section.id]!),
-                          onStart: (n, st) => _open(n, unit, st),
-                        ),
-                        const SizedBox(height: 24),
-                      ],
+                      ),
+                    const SizedBox(height: 8),
                   ],
-                  if (current == null)
-                    const Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Column(
+                  if (_showUnits(section, open[section.id]!, current, p))
+                    for (final unit in section.units)
+                      Column(
+                        key: _itemKeyOf(unit.id),
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Mascot(mood: Mood.cheer, size: 120),
-                          SizedBox(height: 8),
-                          Text(
-                            'Tüm üniteleri bitirdin! Yeni üniteler yakında.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                          UnitBand(
+                            key: _bandKeyOf(unit.id),
+                            unit: unit,
+                            index: section.units.indexOf(unit) + 1,
+                            onGuide: () => _guide(unit, section.units.indexOf(unit) + 1, stateOf),
                           ),
+                          const SizedBox(height: 18),
+                          _UnitMap(
+                            unit: unit,
+                            mirror: unitIndex[unit.id]!.isOdd,
+                            stateOf: stateOf,
+                            current: current,
+                            activeKey: _activeKey,
+                            highlightId: _highlightId,
+                            linkOf: _linkOf,
+                            nodeContexts: _nodeContexts,
+                            onNode: (n, st) => _showCard(n, unit, st, open[section.id]!),
+                            onStart: (n, st) => _open(n, unit, st),
+                          ),
+                          const SizedBox(height: 24),
                         ],
                       ),
-                    ),
                 ],
-              ),
+                if (current == null)
+                  const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Mascot(mood: Mood.cheer, size: 120),
+                        SizedBox(height: 8),
+                        Text(
+                          'Tüm üniteleri bitirdin! Yeni üniteler yakında.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
             ),
           ),
           // Sticky unit band: the unit being read stays on top with its guide.
-          Positioned(
-            left: 0,
-            right: 0,
-            top: _pinnedShift,
-            child: KeyedSubtree(
-              key: _pinnedKey,
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 250),
-                child: pinned == null
-                    ? const SizedBox.shrink()
-                    : ColoredBox(
-                        key: ValueKey('pinned-${pinned.id}'),
-                        color: Brand.background,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                          child: UnitBand(
-                            key: const Key('sticky-unit-band'),
-                            unit: pinned,
-                            index: numberInSection(pinned),
-                            compact: true,
-                            onGuide: () => _guide(pinned, numberInSection(pinned), stateOf),
+          ValueListenableBuilder(
+            valueListenable: _pinned,
+            builder: (context, pin, _) {
+              final pinned = pin.$1 == null ? null : course.units.where((u) => u.id == pin.$1).firstOrNull;
+              return Positioned(
+                left: 0,
+                right: 0,
+                top: pin.$2,
+                child: KeyedSubtree(
+                  key: _pinnedKey,
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 250),
+                    child: pinned == null
+                        ? const SizedBox.shrink()
+                        : ColoredBox(
+                            key: ValueKey('pinned-${pinned.id}'),
+                            color: Brand.background,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                              child: UnitBand(
+                                key: const Key('sticky-unit-band'),
+                                unit: pinned,
+                                index: numberInSection(pinned),
+                                compact: true,
+                                onGuide: () => _guide(pinned, numberInSection(pinned), stateOf),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-              ),
-            ),
-          ),
-          if (_jump != null)
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 16,
-              child: Center(
-                child: FloatingActionButton.extended(
-                  key: const Key('back-to-current'),
-                  heroTag: null,
-                  onPressed: () => _focusSoon(force: true),
-                  icon: Icon(
-                    _jump == AxisDirection.up ? Icons.arrow_upward_rounded : Icons.arrow_downward_rounded,
                   ),
-                  label: const Text('Bulunduğun yere dön'),
                 ),
-              ),
-            ),
+              );
+            },
+          ),
+          ValueListenableBuilder(
+            valueListenable: _jump,
+            builder: (context, jump, _) => jump == null
+                ? const SizedBox.shrink()
+                : Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 16,
+                    child: Center(
+                      child: FloatingActionButton.extended(
+                        key: const Key('back-to-current'),
+                        heroTag: null,
+                        onPressed: () => _focusSoon(force: true),
+                        icon: Icon(
+                          jump == AxisDirection.up
+                              ? Icons.arrow_upward_rounded
+                              : Icons.arrow_downward_rounded,
+                        ),
+                        label: const Text('Bulunduğun yere dön'),
+                      ),
+                    ),
+                  ),
+          ),
         ],
       ),
     );
@@ -838,7 +920,9 @@ class _UnitMap extends StatelessWidget {
                     top: max(0, (height - 110) / 2),
                     left: dx > 0 ? 4 : null,
                     right: dx > 0 ? null : 4,
-                    child: PathMascot(mood: unitDone ? Mood.joy : Mood.calm, theme: theme),
+                    child: RepaintBoundary(
+                      child: PathMascot(mood: unitDone ? Mood.joy : Mood.calm, theme: theme),
+                    ),
                   ),
                 // Roadside decorations on the far side of the lane, every other row.
                 if (!theme.tea && i != mascotAt && i.isOdd && dx.abs() > swing * 0.3)

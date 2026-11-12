@@ -46,6 +46,9 @@ int _ms(Stopwatch s) => s.elapsedMilliseconds;
 
 /// Unit bands in the path (not the pinned one on top).
 final _bands = find.byWidgetPredicate((w) => w is UnitBand && !w.compact);
+List<String> _bandUnits(WidgetTester tester) => [
+  for (final e in _bands.evaluate()) (e.widget as UnitBand).unit.id,
+];
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -104,6 +107,11 @@ void main() {
       await tester.pump();
       await tester.pump();
       clock.stop();
+      // Let the path settle on the current unit (the list is lazy, focusing
+      // takes a few frames); looping animations keep pumpAndSettle busy.
+      for (var i = 0; i < 12; i++) {
+        await tester.pump(const Duration(milliseconds: 50));
+      }
       return _ms(clock);
     }
 
@@ -112,7 +120,11 @@ void main() {
       final s1 = outline.sections.first.units.length;
       // ignore: avoid_print
       print('yol ×3, yeni öğrenci: ${_bands.evaluate().length} ünite bandı, $ms ms');
-      expect(_bands, findsNWidgets(s1));
+      // The list is lazy: only bands near the screen exist, and all of them
+      // belong to the open section; folded sections build no units at all.
+      expect(_bandUnits(tester), isNotEmpty);
+      expect(_bandUnits(tester).every(outline.sections.first.units.map((u) => u.id).contains), isTrue);
+      expect(_bands.evaluate().length, lessThanOrEqualTo(s1));
       expect(outline.units.length, greaterThan(s1 * 3));
     });
 
@@ -125,7 +137,9 @@ void main() {
       final s4 = outline.sections[3].units.length;
       // ignore: avoid_print
       print('yol ×3, 4. bölüm: ${_bands.evaluate().length} ünite bandı, $ms ms');
-      expect(_bands, findsNWidgets(s4));
+      expect(_bandUnits(tester), isNotEmpty);
+      expect(_bandUnits(tester).every(outline.sections[3].units.map((u) => u.id).contains), isTrue);
+      expect(_bands.evaluate().length, lessThanOrEqualTo(s4));
     });
   });
 }

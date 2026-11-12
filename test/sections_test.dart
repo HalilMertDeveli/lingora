@@ -494,8 +494,26 @@ void main() {
       final header = find.byKey(const Key('section-s2'));
       await tester.scrollUntilVisible(header, 600, scrollable: find.byType(Scrollable).first);
       expect(find.descendant(of: header, matching: find.text('%0')), findsOneWidget);
-      // Two open sections: two playable steps.
-      expect(find.text(sentenceCaseStart), findsNWidgets(2));
+      // Two open sections: a playable step in each (the list is lazy, so look
+      // for them one at a time).
+      // S2's first lesson ("Sabah rutini") is playable: the invite sits over it.
+      await tester.scrollUntilVisible(
+        find.text('Sabah rutini'),
+        300,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(find.text(sentenceCaseStart), findsWidgets);
+      await tester.scrollUntilVisible(
+        find.text('Bölüm 1 · A1 · Temeller'),
+        -600,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.scrollUntilVisible(
+        find.text(sentenceCaseStart).first,
+        -300,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(find.text(sentenceCaseStart), findsWidgets);
     });
 
     testWidgets('a locked section starts folded and unfolds on request', (tester) async {
@@ -503,14 +521,26 @@ void main() {
       await pump(tester, course!, fresh);
       final toggle = find.byKey(const ValueKey('section-toggle-s2'));
       await tester.scrollUntilVisible(toggle, 600, scrollable: find.byType(Scrollable).first);
+      // Bring it to the middle, clear of the "Bulunduğun yere dön" button.
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, -300));
+      await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('s2u1l1')), findsNothing);
       expect(find.text('1 üniteye göz at'), findsOneWidget);
 
       await tester.tap(toggle);
       await tester.pumpAndSettle();
-      expect(find.byKey(const ValueKey('s2u1l1')), findsOneWidget);
       expect(find.text('Üniteleri gizle'), findsOneWidget);
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('s2u1l1')),
+        300,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(find.byKey(const ValueKey('s2u1l1')), findsOneWidget);
 
+      await tester.scrollUntilVisible(toggle, -300, scrollable: find.byType(Scrollable).first);
+      // Bring it down to the middle, clear of the pinned band at the top.
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, 300));
+      await tester.pumpAndSettle();
       await tester.tap(toggle);
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('s2u1l1')), findsNothing);
@@ -529,6 +559,9 @@ void main() {
       await pump(tester, course!, fresh);
       final toggle = find.byKey(const ValueKey('section-toggle-s2'));
       await tester.scrollUntilVisible(toggle, 600, scrollable: find.byType(Scrollable).first);
+      // Bring it to the middle, clear of the "Bulunduğun yere dön" button.
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, -300));
+      await tester.pumpAndSettle();
       await tester.tap(toggle);
       await tester.pumpAndSettle();
       final lesson = find.descendant(
