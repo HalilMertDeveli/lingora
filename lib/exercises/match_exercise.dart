@@ -80,12 +80,16 @@ class _MatchExerciseState extends ConsumerState<MatchExercise> {
               selected: selected || wrong || matched,
               color: color,
               onTap: matched ? null : () => isLeft ? _tap(left: pair) : _tap(right: pair),
-              child: SizedBox(
-                height: 28,
+              // Long Turkish glosses ("aktarmak, transfer etmek") wrap instead of being cut;
+              // the minimum height keeps short cards the same size as before.
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(minHeight: 28),
                 child: Center(
                   child: Text(
                     text,
                     textAlign: TextAlign.center,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -108,14 +112,18 @@ class _MatchExerciseState extends ConsumerState<MatchExercise> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const ExerciseTitle('Eşleri bul'),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: Column(children: [for (final i in _left) _cell(pairs[i].$1, i, isLeft: true)])),
-            const SizedBox(width: 12),
-            Expanded(child: Column(children: [for (final i in _right) _cell(pairs[i].$2, i, isLeft: false)])),
-          ],
-        ),
+        // One row per line so a two-line card makes its neighbour just as tall.
+        for (var k = 0; k < _left.length; k++)
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(child: _cell(pairs[_left[k]].$1, _left[k], isLeft: true)),
+                const SizedBox(width: 12),
+                Expanded(child: _cell(pairs[_right[k]].$2, _right[k], isLeft: false)),
+              ],
+            ),
+          ),
       ],
     );
   }
