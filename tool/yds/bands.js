@@ -32,3 +32,18 @@ const band = tot.b1000_2000 + tot.b2000_3000;
 console.log('TOPLAM', JSON.stringify(tot));
 console.log(`Tek kelime ${single}: 1000–3000 bandında ${band} (%${((100 * band) / single).toFixed(1)}), ≤1000 ${tot.le1000}, NGSL dışı ${tot.outside}; öbek ${tot.phrase}`);
 console.log('NGSL dışı:', outside.join(', '));
+
+// F2 (NAWL=<NAWL 1.2 csv>): academic share of the whole list — NAWL / NGSL 1001–2809 / other (+ phrases).
+if (process.env.NAWL) {
+  const nawl = new Set(fs.readFileSync(process.env.NAWL, 'utf8').replace(/^﻿/, '').split(/\r?\n/).slice(1)
+    .filter(Boolean).map((x) => x.split(',')[0].toLowerCase()));
+  const inNawl = (w) => am(w).some((x) => nawl.has(x));
+  const all = Object.values(words).flat();
+  const n = all.filter((w) => !w.includes(' ') && inNawl(w));
+  const g = all.filter((w) => !w.includes(' ') && !inNawl(w) && (r(w) ?? 0) > 1000);
+  const p = all.filter((w) => w.includes(' '));
+  const o = all.filter((w) => !w.includes(' ') && !inNawl(w) && !((r(w) ?? 0) > 1000));
+  const pc = (x) => ((100 * x.length) / all.length).toFixed(1);
+  console.log(`F2: ${all.length} öğe — NAWL ${n.length} (%${pc(n)}), NGSL 1001–2809 ${g.length} (%${pc(g)}), diğer ${o.length + p.length} (%${pc([...o, ...p])}: tek kelime ${o.length}, öbek ${p.length})`);
+  console.log('Diğer tek kelimeler:', o.join(', '));
+}
