@@ -96,6 +96,11 @@ telefonda: `--dart-define=LINGORA_EMULATOR_HOST=<bilgisayarın-LAN-IP'si>`. Emü
 http://localhost:4000 adresindedir. Emülatörde e-posta/şifre ile bağlama denenebilir; Google girişi
 gerçek proje ister.
 
+Android'de varsayılan Firebase uygulaması `google-services.json`'dan (gerçek proje) yerel olarak kurulur. Bu yüzden
+emülatör modu ayrı bir uygulama (`lingora-emulator`, bkz. `lingoraFirebaseApp`) kullanır. Debug sürümünde Auth
+emülatörünün düz HTTP'sine izin verilir (`android/app/src/debug/AndroidManifest.xml`). Giriş akışlarının uçtan uca
+testleri ve gerçek projede elle deneme listesi: `docs/giris-testleri.md`.
+
 ## Gerçek projeyi bağlamak (sahibin yapacakları)
 
 1. https://console.firebase.google.com adresinde proje oluştur (ör. `lingora-app`), Blaze planı

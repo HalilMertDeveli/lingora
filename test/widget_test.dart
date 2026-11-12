@@ -55,6 +55,7 @@ Future<void> pumpApp(WidgetTester tester, Map<String, Object> prefs) async {
     ProviderScope(
       overrides: [
         courseProvider.overrideWith((ref) async => course),
+        courseOutlineProvider.overrideWith((ref) async => course),
         prefsProvider.overrideWithValue(p),
         speechProvider.overrideWithValue(FakeSpeech()),
         notificationServiceProvider.overrideWithValue(notifications = FakeNotifications()),

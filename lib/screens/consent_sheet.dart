@@ -97,7 +97,13 @@ class _ConsentGateState extends ConsumerState<ConsentGate> {
   }
 
   @override
-  Widget build(BuildContext context) => widget.child;
+  Widget build(BuildContext context) {
+    // Analytics appears when Firebase is ready, a moment after the first frame.
+    ref.listen(shouldAskAnalyticsConsentProvider, (_, ask) {
+      if (ask) WidgetsBinding.instance.addPostFrameCallback((_) => _maybeAsk());
+    });
+    return widget.child;
+  }
 }
 
 /// Profil > Gizlilik: change the analytics decision at any time.

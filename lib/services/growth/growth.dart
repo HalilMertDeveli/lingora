@@ -3,27 +3,39 @@ import 'package:flutter_riverpod/misc.dart' show Override;
 
 import '../../data/progress.dart';
 import '../billing/premium.dart';
+import '../firebase/firebase_providers.dart';
 import 'analytics.dart';
 import 'remote_flags.dart';
 
 /// Real Analytics and Remote Config, for production Firebase builds only
 /// (`--dart-define=LINGORA_FIREBASE=prod`). The emulator's demo project has
 /// neither, and builds without Firebase keep the no-op defaults.
+/// Firebase starts after the first frame (see `main()`), so both appear once
+/// it is ready.
 List<Override> growthOverrides({required bool enabled}) => enabled
     ? [
-        analyticsSinkProvider.overrideWithValue(FirebaseAnalyticsSink()),
-        remoteConfigSourceProvider.overrideWithValue(FirebaseRemoteConfigSource()),
+        analyticsSinkProvider.overrideWith(
+          (ref) => ref.watch(firebaseReadyProvider) ? FirebaseAnalyticsSink() : null,
+        ),
+        remoteConfigSourceProvider.overrideWith(
+          (ref) => ref.watch(firebaseReadyProvider) ? FirebaseRemoteConfigSource() : null,
+        ),
       ]
     : const [];
 
+/// Progress as saved before this session (read once, never updated).
+final _launchProgressProvider = Provider<Progress>((ref) => ref.read(progressProvider));
+
 /// App-start churn signals and analytics user properties. Listened to from
-/// the app root; does nothing without analytics consent.
+/// the app root; does nothing without analytics consent. Runs again when the
+/// analytics sink appears (Firebase is ready a moment after start-up).
 final growthSignalsProvider = Provider<void>((ref) {
   ref.watch(analyticsConsentSyncProvider);
+  ref.watch(analyticsSinkProvider);
   final analytics = ref.read(analyticsProvider);
 
   // Churn signals, from the progress saved before this session.
-  final p = ref.read(progressProvider);
+  final p = ref.watch(_launchProgressProvider);
   final now = ref.read(clockProvider)();
   if (p.onboarded && p.lastActiveDay != null) {
     final last = DateTime.tryParse(p.lastActiveDay!);

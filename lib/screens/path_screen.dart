@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/startup_trace.dart';
 import '../core/text.dart';
 import '../data/course_repository.dart';
 import '../data/exam_pack_repository.dart';
@@ -41,7 +42,8 @@ class PathScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final course = ref.watch(courseProvider);
+    // Drawn from the outline; steps open from the full course (see _full).
+    final course = ref.watch(courseOutlineProvider);
     return course.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (e, _) => Center(child: Text('Kurs yüklenemedi: $e')),
@@ -118,6 +120,18 @@ class _PathListState extends ConsumerState<_PathList> {
 
   LayerLink _linkOf(String id) => _links.putIfAbsent(id, LayerLink.new);
   GlobalKey _bandKeyOf(String id) => _bandKeys.putIfAbsent(id, GlobalKey.new);
+
+  @override
+  void initState() {
+    super.initState();
+    StartupTrace.mark('path_build');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      StartupTrace.mark('path_drawn');
+      // The path is on screen: now load the lessons (in a background
+      // isolate), so the first tapped step opens without a wait.
+      if (mounted && widget.course.outline) ref.read(courseProvider.future).ignore();
+    });
+  }
 
   @override
   void didChangeDependencies() {
@@ -351,8 +365,44 @@ class _PathListState extends ConsumerState<_PathList> {
 
   // ---- opening a step ----------------------------------------------------
 
-  Future<void> _open(PathNode node, Unit unit, NodeState state) async {
+  /// The course with its lessons: the path may be drawn from the outline
+  /// (see courseOutlineProvider), which has none. Null when it failed to load.
+  Future<Course?> _full() async {
+    if (!widget.course.outline) return widget.course;
+    try {
+      final full = await ref.read(courseProvider.future);
+      return full.id == widget.course.id ? full : null;
+    } catch (e) {
+      debugPrint('Kurs yüklenemedi: $e');
+      return null;
+    }
+  }
+
+  /// [unit] (and [node] in it) with their lessons, from [_full].
+  Future<(Unit, PathNode?)?> _withContent(Unit unit, [PathNode? node]) async {
+    final full = await _full();
+    final u = full?.units.where((u) => u.id == unit.id).firstOrNull;
+    if (u == null || !mounted) return null;
+    if (node == null) return (u, null);
+    final n = u.nodes.where((n) => n.id == node.id).firstOrNull;
+    return n == null ? null : (u, n);
+  }
+
+  /// Path nodes by id, to give nodes of the full course their path state.
+  late Map<String, PathNode> _pathNodes = _nodesOf(widget.course);
+  static Map<String, PathNode> _nodesOf(Course c) => {for (final n in c.allNodes) n.id: n};
+
+  @override
+  void didUpdateWidget(covariant _PathList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.course != widget.course) _pathNodes = _nodesOf(widget.course);
+  }
+
+  Future<void> _open(PathNode pathNode, Unit pathUnit, NodeState state) async {
     if (state == NodeState.locked) return;
+    final resolved = await _withContent(pathUnit, pathNode);
+    if (resolved == null || !mounted) return;
+    final (unit, node!) = resolved;
     final nav = Navigator.of(context);
     final color = Brand.tone(unit.color);
     switch (node.type) {
@@ -396,8 +446,11 @@ class _PathListState extends ConsumerState<_PathList> {
 
   /// Unit number inside its section ("ÜNİTE 3").
   int _numberOf(Unit unit) {
-    final s = widget.course.sections.where((s) => s.units.contains(unit)).firstOrNull;
-    return s == null ? 1 : s.units.indexOf(unit) + 1;
+    for (final s in widget.course.sections) {
+      final i = s.units.indexWhere((u) => u.id == unit.id);
+      if (i >= 0) return i + 1;
+    }
+    return 1;
   }
 
   /// "Önce konuyu oku": before the first lesson of a unit with a topic guide,
@@ -423,7 +476,8 @@ class _PathListState extends ConsumerState<_PathList> {
   /// section's questions, topped up from the exam's question bank.
   Future<void> _openMock(PathNode node) async {
     if (node.packId != null) return _openPackMock(node);
-    final section = sectionOf(widget.course, node);
+    final full = await _full();
+    final section = full == null ? null : sectionOf(full, node);
     if (section == null) return;
     Exam? bank;
     if (node.examId case final id?) {
@@ -492,9 +546,11 @@ class _PathListState extends ConsumerState<_PathList> {
     }
   }
 
-  void _guide(Unit unit, int index, NodeState Function(PathNode) stateOf) {
+  Future<void> _guide(Unit pathUnit, int index, NodeState Function(PathNode) stateOf) async {
+    final unit = (await _withContent(pathUnit))?.$1;
+    if (unit == null || !mounted) return;
     if (unit.hasGuide) ref.read(progressProvider.notifier).markGuideSeen(unit.id);
-    showUnitGuide(context, unit: unit, index: index, stateOf: stateOf);
+    await showUnitGuide(context, unit: unit, index: index, stateOf: (n) => stateOf(_pathNodes[n.id] ?? n));
   }
 
   @override
