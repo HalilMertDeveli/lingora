@@ -17,6 +17,7 @@ import 'onboarding_screen.dart';
 import 'paywall_screen.dart';
 import 'placement_screen.dart';
 import 'reminder_settings.dart';
+import 'study/methods_screen.dart';
 
 const _weekdays = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
 
@@ -161,6 +162,30 @@ class ProfileScreen extends ConsumerWidget {
         const SizedBox(height: 12),
         const AppearanceSettings(),
         const GrowthProfileSection(),
+        const SizedBox(height: 16),
+        TapCard(
+          key: const ValueKey('profile-methods'),
+          onTap: () => openMethods(context),
+          child: Row(
+            children: [
+              const Text('💡', style: TextStyle(fontSize: 28)),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Nasıl öğretiyoruz?', style: t.titleMedium),
+                    Text(
+                      'Aralıklı tekrar, karışık çalışma, bol okuma: hangi yöntem nerede',
+                      style: TextStyle(color: Brand.muted),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.chevron_right_rounded, color: Brand.muted),
+            ],
+          ),
+        ),
         const SizedBox(height: 32),
         OutlinedButton.icon(
           icon: Icon(Icons.restart_alt, color: Brand.error),

@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/tr_errors.dart';
 import '../models/notes.dart';
+import '../models/study_plan.dart';
 import 'catalog.dart';
 import 'league.dart';
 import 'quests.dart';
@@ -60,6 +61,8 @@ class Progress {
     this.mistakeStage = const {},
     this.mistakeDue = const {},
     this.mistakeRun = const {},
+    this.studyPlan,
+    this.readingWords = 0,
   });
 
   /// Selected course or exam (see catalog.dart).
@@ -92,6 +95,12 @@ class Progress {
 
   /// Right answers in a row per notebook question.
   final Map<String, int> mistakeRun;
+
+  /// The daily study plan ("Bugün"); null until it is set up.
+  final StudyPlan? studyPlan;
+
+  /// Words read in reading texts, all time (the reading counter).
+  final int readingWords;
 
   /// Notebook questions due on [day], oldest saved first.
   List<String> mistakesDue(String day) =>
@@ -156,12 +165,29 @@ class Progress {
   /// Reminder time as minutes after midnight.
   final int reminderMinutes;
 
-  /// Streak as shown today: it is lost once a whole day is skipped.
+  /// Streak as shown today: it is lost once a whole day is skipped. With a
+  /// study plan one missed day a week is forgiven (a streak freeze, used
+  /// automatically): a habit is not broken by a single day.
   int streakAt(DateTime now) {
     final today = dayKey(now);
     final yesterday = dayKey(now.subtract(const Duration(days: 1)));
-    return (lastActiveDay == today || lastActiveDay == yesterday) ? streak : 0;
+    if (lastActiveDay == today || lastActiveDay == yesterday) return streak;
+    return freezeCovers(now) ? streak : 0;
   }
+
+  /// Whether a streak freeze bridges yesterday, missed after studying the
+  /// day before (one per week, plan users only).
+  bool freezeCovers(DateTime now) {
+    final plan = studyPlan;
+    if (plan == null) return false;
+    final missed = now.subtract(const Duration(days: 1));
+    if (lastActiveDay != dayKey(now.subtract(const Duration(days: 2)))) return false;
+    final week = dayKey(weekStart(missed));
+    return plan.freezeWeek != week;
+  }
+
+  /// Reading words read on [day].
+  int readingWordsOn(String day) => counters['$day:readingWords'] ?? 0;
 
   int xpOn(DateTime day) => xpByDay[dayKey(day)] ?? 0;
 
@@ -212,6 +238,9 @@ class Progress {
     Map<String, int>? mistakeStage,
     Map<String, String>? mistakeDue,
     Map<String, int>? mistakeRun,
+    StudyPlan? studyPlan,
+    bool clearStudyPlan = false,
+    int? readingWords,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -243,6 +272,8 @@ class Progress {
     mistakeStage: mistakeStage ?? this.mistakeStage,
     mistakeDue: mistakeDue ?? this.mistakeDue,
     mistakeRun: mistakeRun ?? this.mistakeRun,
+    studyPlan: clearStudyPlan ? null : (studyPlan ?? this.studyPlan),
+    readingWords: readingWords ?? this.readingWords,
   );
 
   Map<String, dynamic> toJson() => {
@@ -276,6 +307,8 @@ class Progress {
     'mistakeStage': mistakeStage,
     'mistakeDue': mistakeDue,
     'mistakeRun': mistakeRun,
+    'studyPlan': studyPlan?.toJson(),
+    'readingWords': readingWords,
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -313,6 +346,8 @@ class Progress {
     mistakeStage: (j['mistakeStage'] as Map?)?.cast<String, int>() ?? const {},
     mistakeDue: (j['mistakeDue'] as Map?)?.cast<String, String>() ?? const {},
     mistakeRun: (j['mistakeRun'] as Map?)?.cast<String, int>() ?? const {},
+    studyPlan: j['studyPlan'] == null ? null : StudyPlan.fromJson(j['studyPlan'] as Map<String, dynamic>),
+    readingWords: j['readingWords'] as int? ?? 0,
   );
 }
 
@@ -414,6 +449,10 @@ class ProgressNotifier extends Notifier<Progress> {
     final today = dayKey(now);
     final shownStreak = state.streakAt(now);
     final alreadyToday = state.lastActiveDay == today;
+    // A freeze bridged yesterday: use it up for that week.
+    final freeze = state.freezeCovers(now)
+        ? state.studyPlan!.copyWith(freezeWeek: dayKey(weekStart(now.subtract(const Duration(days: 1)))))
+        : null;
     final newStreak = alreadyToday ? shownStreak : shownStreak + 1;
     final todayXp = (state.xpByDay[today] ?? 0) + xp;
     final isLesson = answered > 0;
@@ -439,6 +478,7 @@ class ProgressNotifier extends Notifier<Progress> {
         xpByDay: {...state.xpByDay, today: todayXp},
         completed: {...state.completed, nodeId: (state.completed[nodeId] ?? 0) + 1},
         lessonsDone: state.lessonsDone + (isLesson ? 1 : 0),
+        studyPlan: freeze,
         correct: state.correct + correct,
         answered: state.answered + answered,
         counters: counters,
@@ -556,6 +596,22 @@ class ProgressNotifier extends Notifier<Progress> {
       keys.isEmpty ? map : ({...map}..removeWhere((k, _) => keys.contains(k)));
 
   void setTrack(String id) => _save(state.copyWith(trackId: id));
+
+  /// Sets up or changes the study plan; null removes it.
+  void setStudyPlan(StudyPlan? plan) =>
+      _save(plan == null ? state.copyWith(clearStudyPlan: true) : state.copyWith(studyPlan: plan));
+
+  /// Counts words read in a reading text (today and all time).
+  void addReading(int words) {
+    if (words <= 0) return;
+    final k = '${dayKey(_now())}:readingWords';
+    _save(
+      state.copyWith(
+        readingWords: state.readingWords + words,
+        counters: {...state.counters, k: (state.counters[k] ?? 0) + words},
+      ),
+    );
+  }
 
   /// Marks nodes as already known (e.g. after the placement test) so the
   /// path starts further on. No XP, streak or lesson counts are given.

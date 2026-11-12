@@ -55,11 +55,17 @@ class LessonScreen extends ConsumerStatefulWidget {
     this.passHeadline,
     this.logSource,
     this.onAnswered,
+    this.readingWords = 0,
   });
 
   /// Lesson for a path node.
-  factory LessonScreen.forNode(PathNode node, Color color) =>
-      LessonScreen(nodeId: node.id, title: node.title, items: lessonItems(node), color: color);
+  factory LessonScreen.forNode(PathNode node, Color color) => LessonScreen(
+    nodeId: node.id,
+    title: node.title,
+    items: lessonItems(node),
+    color: color,
+    readingWords: node.reading?.words ?? 0,
+  );
 
   final String nodeId;
   final String title;
@@ -84,6 +90,10 @@ class LessonScreen extends ConsumerStatefulWidget {
 
   /// Called after each checked answer (spaced review grades its cards).
   final void Function(LessonItem item, bool correct)? onAnswered;
+
+  /// Words of the reading text of a reading lesson (Okuma evi), added to
+  /// the reading counter when it is finished.
+  final int readingWords;
 
   @override
   ConsumerState<LessonScreen> createState() => _LessonScreenState();
@@ -235,6 +245,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       LessonMode.test => widget.rewardXp + (perfect ? perfectBonusXp : 0),
       LessonMode.practice => practiceXp,
     };
+    notifier.addReading(widget.readingWords);
     final reward = notifier.completeNode(
       widget.nodeId,
       xp: xp,
