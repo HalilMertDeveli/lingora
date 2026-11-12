@@ -315,7 +315,7 @@ Her bölümün son beceri ünitesinin `t` düğümü kendi sorularını taşır.
 | S1–S2 (A1) | 20 | 6 | 6 (2 kısa metin × 3) | 5 | 3 |
 | S3–S4 (A2) | 20 | 6 | 6 (2 metin × 3) | 5 | 3 |
 | S5–S8 (B1–B2) | 20 + 1 `write` | 6 | 8 (2 metin × 4) | 1 `write` + 3 | 3 |
-| **6** (sıradaki) | §2 "Faz 6": ortak okuma kütüphanesine 65 metin (A1 15, A2 20, B1 10, B2 20); okuma ekranında "Önce dinle"; NGSL kapsam kontrolü | genel-icerik (altyapı yds-yontem ile) | 65 metin + küçük altyapı | yok |
+
 Kurallar:
 
 - Sorular yeni yazılır; derslerden kopyalanmaz.
@@ -360,7 +360,7 @@ Kurallar:
 | **3** (sıradaki) | §2 "Faz 3": S1–S4 beceri ünitelerine `shadow` ve `write`; beceri hikâyeleri ve S5–S8 temel hikâyelerine `listenFirst` | genel-icerik | küçük–orta | 2a |
 | **4** | C1 Bölüm 9 (12 ünite) | genel-icerik | ~470 alıştırma | 2a |
 | **5** | C1 Bölüm 10 (12 ünite) + C1 beceri testi | genel-icerik | ~470 alıştırma | 4 |
-| **6** | Okuma ve dinleme kütüphanesi: B1, B2 ve C1 için 20'şer metin (`assets/reading/`, dinleme için TTS). Kelime kapsamı denetimi (NGSL, CC BY-SA 4.0; lisans `docs/kaynaklar.md`'ye). | genel-icerik + okuma | ~60 metin | yok |
+| **6** (sıradaki) | §2 "Faz 6": ortak okuma kütüphanesine 65 metin (A1 15, A2 20, B1 10, B2 20); okuma ekranında "Önce dinle"; NGSL kapsam kontrolü | genel-icerik (altyapı yds-yontem ile) | 65 metin + küçük altyapı | yok |
 
 Faz sonrası toplam (yaklaşık):
 
