@@ -11,7 +11,7 @@ Write ONE complete, original 80-question YDS mock for `assets/exam_packs/yds_ful
   right option AND ≥ 3 wrong ones by their text in ‘…’, never by position or letter; no a/an giveaway; no `**`.
 
 ## Output: `tool/yds/work/<id>.json`
-`{"id":"yds_m9","title":"Tam Deneme 9","minutes":180,"questions":[80 items]}`, each item
+`{"id":"yds_mN","title":"Tam Deneme N","minutes":180,"questions":[80 items]}`, each item
 `{"id":"yds_m9_q01","section":"yds_vocab","qtype":"vocabulary","text":"…","options":[5],"answer":0-4,"explanation":"…"}`
 plus `"passage"` for cloze/reading items (identical string within a passage). Order and counts (ids q01…q80):
 vocab 6 (vocabulary) · grammar 10 (grammar) · cloze 10 = 2 texts × 5 (cloze) · completion 10 (sentenceCompletion) ·
@@ -22,6 +22,11 @@ dialogue 6 (dialogue) · restatement 3 (restatement) · paragraph 4 (paragraphCo
 - All texts new: science, health, social science, history, technology, as in YDS. The checker rejects any
   passage whose vocabulary overlaps strongly with a passage already in the app (reading sections, mocks
   m1–m8, extensive reading, the other new mock) — pick fresh topics.
+- Short items (dialogues, paragraph completion, irrelevant sentence, translation) need fresh topics too: before
+  using a topic, grep `assets/` and `tool/yds/work/` for its key words (e.g. "placebo", "microplastic") and
+  pick another if the app already has a text on it. The checker only scans cloze and reading texts; also run
+  `WORDFREQ=C:/Users/clt/AppData/Local/Temp/claude/b7669fb696de5774/ec03ee5e-25ba-4f0f-a1d7-80e637ba6f93/scratchpad/wordfreq/en.tsv node tool/yds/topic_scan.js <id>`
+  (shared rare words with any text in the app) and make it print "temiz".
 - Use the academic word banks (`tool/yds/work/words.json`, `words_ys7.json`) generously.
 - Irrelevant-sentence items: the odd sentence stays on the SAME topic but a different aspect (no topic jump).
 - Grammar items on structure / main verb use verb-like distractors.

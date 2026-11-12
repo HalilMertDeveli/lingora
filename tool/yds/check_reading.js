@@ -6,7 +6,9 @@ const l = require('./lex.js');
 const ctx = require('./context.js');
 const id = process.argv[2];
 const secArg = process.argv.indexOf('--sec');
-const sec = id === '--text' ? (secArg > 0 ? process.argv[secArg + 1] : 'ys6') : id.slice(0, 3);
+// Section of the id; half mocks of the review section ys11 (ys11u1m …) are checked like ys8's (B2).
+const secOf = (x) => { const s = x.match(/^ys\d+/)[0]; return s === 'ys11' ? 'ys8' : s; };
+const sec = id === '--text' ? (secArg > 0 ? process.argv[secArg + 1] : 'ys6') : secOf(id);
 const dir = l.path.join(__dirname, 'work');
 const data = id === '--text' ? {} : JSON.parse(l.fs.readFileSync(l.path.join(dir, `${id}.json`), 'utf8'));
 const problems = [];
@@ -83,7 +85,8 @@ const dist = [0, 0, 0, 0, 0];
 const countAnswers = (ex) => ex.filter((e) => e.type === 'choice').forEach((e) => dist[e.answer]++);
 const report = [];
 
-if (/^ys[68]m$/.test(id)) {
+// Half mocks: the section's own (ys6m, ys8m) and extra ones placed in a unit (ys8u1h …).
+if (/^ys\d+(m|u\d+[hm])$/.test(id)) {
   const ex = data.exercises;
   P(Array.isArray(ex) && ex.length === 40 && ex.every((e) => e.type === 'choice'), 'deneme: 40 choice olmalı');
   ex.forEach((e, k) => exercise(e, `${id}#${k}`));
@@ -96,6 +99,11 @@ if (/^ys[68]m$/.test(id)) {
   const clozeP = [...new Set(ex.filter((e) => e.qtype === 'cloze').map((e) => e.passage))];
   P(clozeP.length === 1 && clozeP[0], `deneme: cloze 1 metin olmalı (${clozeP.length})`);
   readP.filter(Boolean).forEach((p, i) => report.push(['okuma ' + (i + 1), passageRules(p, `${id} okuma ${i + 1}`, CFG.mockRange, false)]));
+  // New texts only: no topic overlap with anything already in the app or another new half mock.
+  const ov = require('./overlap.js');
+  const others = l.fs.readdirSync(dir).filter((f) => /^ys\d+(m|u\d+[hm])\.json$/.test(f) && f !== `${id}.json`)
+    .flatMap((f) => JSON.parse(l.fs.readFileSync(l.path.join(dir, f), 'utf8')).exercises.filter((e) => e.passage).map((e) => [f, e.passage]));
+  problems.push(...ov.overlaps([...readP, ...clozeP].filter(Boolean), [...ov.existingPassages(), ...others]));
   countAnswers(ex);
 } else {
   const unit = data;
