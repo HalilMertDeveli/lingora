@@ -152,14 +152,16 @@ QType questionType({
   return (unitId?.startsWith('ys1') ?? false) ? QType.grammar : QType.vocabulary;
 }
 
-/// Type of a mock or bank question.
-QType examQuestionType(ExamQuestion q, {String? unitId}) => questionType(
-  question: q.text,
-  passage: q.passage,
-  options: q.options,
-  section: q.section,
-  unitId: unitId,
-);
+/// Type of a mock or bank question: its own `qtype` when it has one.
+QType examQuestionType(ExamQuestion q, {String? unitId}) =>
+    QType.byName(q.qtype) ??
+    questionType(
+      question: q.text,
+      passage: q.passage,
+      options: q.options,
+      section: q.section,
+      unitId: unitId,
+    );
 
 /// Type of a path exercise: the content's own `qtype` when it has one; null
 /// for non-`choice` exercises.

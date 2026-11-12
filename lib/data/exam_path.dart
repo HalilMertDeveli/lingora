@@ -17,6 +17,7 @@ ExamQuestion examQuestionOf(LessonItem item) => ExamQuestion(
   options: item.ex.options,
   answer: item.ex.answerIndex ?? 0,
   explanation: item.ex.explanation ?? '',
+  qtype: item.ex.qtype,
 );
 
 /// The section of [course] that holds [node].

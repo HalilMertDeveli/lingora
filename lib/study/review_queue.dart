@@ -74,7 +74,9 @@ List<WordCard> courseWordCards(Course course, Progress p, {List<VocabEntry> ydsC
       for (final e in byTopic[u.id] ?? const <VocabEntry>[]) {
         if (e.senses.isEmpty || !seen.add(e.word.trim().toLowerCase())) continue;
         result.add((
-          id: e.id,
+          // A full card for a bridge word keeps the bridge card's key, so its
+          // progress carries over (yds-faz2-icerik F2c).
+          id: e.id.startsWith(ydsWordPrefix) ? wordCardId(ydsWordPrefix, e.word) : e.id,
           en: e.word,
           tr: e.senses.first.tr,
           example: e.examples.isEmpty ? null : e.examples.first.en,
