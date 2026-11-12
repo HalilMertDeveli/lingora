@@ -231,6 +231,23 @@ for (const file of files) {
   }
   const total = letters.reduce((a, b) => a + b, 0);
   if (total && Math.max(...letters) >= total * 0.4) say(file, `answer positions ${letters}`);
+  // The app shows fillBlank, select and story choices in JSON order: the answer must not sit in
+  // one place (scratchpad order_choices.cjs moves it by a hash of the item).
+  const places = { fillBlank: [0, 0, 0, 0], select: [0, 0, 0, 0], story: [0, 0, 0, 0] };
+  for (const u of j.units ?? []) {
+    for (const n of u.nodes) {
+      for (const e of n.exercises ?? []) {
+        if (e.type === 'fillBlank') places.fillBlank[e.choices.indexOf(e.answer)]++;
+        if (e.type === 'select') places.select[e.choices.findIndex((c) => c.text === e.answer)]++;
+        for (const c of e.type === 'select' ? e.choices : []) if (/^(✅|❌|✔️|✖️)$/u.test(c.emoji ?? '')) say(`${n.id}`, `select choice emoji ${c.emoji} gives the answer away`);
+      }
+      for (const s of n.steps ?? []) if (s.kind === 'question') places.story[s.choices.indexOf(s.answer)]++;
+    }
+  }
+  for (const [k, v] of Object.entries(places)) {
+    const n = v.reduce((a, b) => a + b, 0);
+    if (n >= 10 && Math.max(...v) >= n * 0.6) say(file, `${k} answers bunched at one position ${v}`);
+  }
 }
 console.table(rows);
 console.log(problems.length ? `${problems.length} problem(s):\n${problems.join('\n')}` : 'OK');
