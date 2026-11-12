@@ -523,7 +523,7 @@
         "instead of"
        ],
        "answer": 1,
-       "explanation": "Boşluktan sonra yalın fiil (*create*) var ve kurutmanın amacı anlatılıyor → 'in order to'. 'So that' özne + fiil ister; 'instead of' ise fiilden sonra -ing ister ve anlamı da (yerine) uymaz."
+       "explanation": "Boşluktan sonra yalın fiil (*create*) var ve kurutmanın amacı anlatılıyor → 'in order to'. 'So that' özne + fiil ister; 'instead of' ise arkasından -ing'li fiil ister ve anlamı da (yerine) uymaz."
       },
       {
        "type": "choice",
@@ -1201,7 +1201,7 @@
         "because the results of the experiment were completely different from what they expected"
        ],
        "answer": 0,
-       "explanation": "Kök *What …* ile başlayan bir noun clause, yani cümlenin öznesi; eksik olan yüklemdir → 'was that …'. 'The plants survived without water', 'that they had expected it' ve *because* ile başlayan şık yüklem içermediği için cümleyi tamamlamaz."
+       "explanation": "Kök *What …* ile başlayan bir noun clause, yani cümlenin öznesi; eksik olan yüklemdir → 'was that …'. 'The plants survived without water', 'that they had expected it' ve *because* ile başlayan şık, *What* ile başlayan özneye ana yüklemi (*was*) vermediği için cümleyi tamamlamaz."
       },
       {
        "type": "choice",
@@ -3571,7 +3571,7 @@
         "how coffee was imported into the town from distant ports in the eighteenth century"
        ],
        "answer": 1,
-       "explanation": "Metnin konusu kahvehanelerin kasabanın ticari yaşamındaki rolüdür → 'the role of coffee houses in the commercial life of Ashbury Mere'. 'The leisure activities of eighteenth-century merchants' tarihçilerin eski ve metnin karşı çıktığı görüşüdür; 'the rise of the insurance industry in Europe' aşırı geniştir, metin Avrupa'dan değil tek bir kasabadan söz eder."
+       "explanation": "Metnin konusu kahvehanelerin kasabanın ticari yaşamındaki rolüdür → 'the role of coffee houses in the commercial life of Ashbury Mere'. 'The leisure activities of eighteenth-century merchants' tarihçilerin eski görüşüdür ve metin bu görüşe karşı çıkar; 'the rise of the insurance industry in Europe' aşırı geniştir, metin Avrupa'dan değil tek bir kasabadan söz eder."
       }
      ]
     },
@@ -5285,7 +5285,7 @@
         "I've never had my blood pressure measured before."
        ],
        "answer": 2,
-       "explanation": "Doktor 'Well' diyerek hazır gıdalardaki gizli tuzdan söz ediyor; bu, hastanın tuz eklemediğini ama hazır yemek yediğini söylemesine verilen bir cevaptır. Doğru şık 'Not really, but I eat ready meals most days'. Babasının yüksek tansiyonundan söz eden şık konuyla ilgili ama doktorun hazır yemek uyarısını açıklamaz; 'I've never had my blood pressure measured' ise doktorun ölçüm yaptığı durumla çelişir."
+       "explanation": "Doktor 'Well' diyerek hazır gıdalardaki gizli tuzdan söz ediyor; bu, hastanın tuz eklemediğini ama hazır yemek yediğini söylemesine verilen bir cevaptır. Doğru şık 'Not really, but I eat ready meals most days'. Babasının yüksek tansiyonundan söz eden şık konuyla ilgili ama doktorun hazır yemek uyarısını açıklamaz; 'I've never had my blood pressure measured' ise doktorun tuzla ilgili sorusuna cevap vermez ve hazır gıda uyarısını açıklamaz."
       },
       {
        "type": "choice",
@@ -5511,7 +5511,7 @@
         "Actually, they're open for a full week, and reminders are sent two days before they close."
        ],
        "answer": 4,
-       "explanation": "Profesörün 'In that case, they've had more than enough time' sonucu, asistanın sınavların yeterince uzun süre açık kaldığını söylediğini gösterir; doğru cevap ‘Actually, they're open for a full week…’. ‘let's extend the deadline’ diyen şık süreyi uzatmayı önerir ve 'leave the deadline as it is' kararıyla çelişir; ‘Only a few students have complained’ diyen şık şikâyet sayısından söz eder ama 'yeterli süre' sonucunu desteklemez."
+       "explanation": "Profesörün 'In that case, they've had more than enough time' sonucu, asistanın sınavların yeterince uzun süre açık kaldığını söylediğini gösterir; doğru cevap 'Actually, they're open for a full week…'. 'let's extend the deadline' diyen şık süreyi uzatmayı önerir ve 'leave the deadline as it is' kararıyla çelişir; 'Only a few students have complained' diyen şık şikâyet sayısından söz eder ama 'yeterli süre' sonucunu desteklemez."
       },
       {
        "type": "choice",
@@ -5658,7 +5658,7 @@
         "I booked a table for four people."
        ],
        "answer": 2,
-       "explanation": "Garsonun 'I'll come back shortly' demesi müşterinin biraz daha süre istediğini gösterir; doğru cevap ‘Could we have a few more minutes, please?’. ‘I'll have the soup and a salad’ diyen şık önceki soruya uyar ama sipariş verildiyse garsonun 'sonra gelirim' demesi anlamsız olur."
+       "explanation": "Garsonun 'I'll come back shortly' demesi müşterinin biraz daha süre istediğini gösterir; doğru cevap 'Could we have a few more minutes, please?'. 'I'll have the soup and a salad' diyen şık önceki soruya uyar ama sipariş verildiyse garsonun 'sonra gelirim' demesi anlamsız olur."
       },
       {
        "type": "choice",
@@ -5795,7 +5795,7 @@
         "The kidneys filter waste products from the blood in the human body."
        ],
        "answer": 0,
-       "explanation": "Boşluk, midyelerin neden 'nehrin böbrekleri' sayıldığını açıklamalı ve sonraki filtreleme cümlesine zemin hazırlamalıdır; doğru cevap ‘This is because they clean the water…’. ‘they have little effect on the water’ diyen şık sonraki cümleyle çelişir; böbreklerin kandaki atıkları süzdüğünü söyleyen şık 'kidneys' kelimesini tekrar eden ama konuyu insan vücuduna kaydıran bir tuzaktır."
+       "explanation": "Boşluk, midyelerin neden 'nehrin böbrekleri' sayıldığını açıklamalı ve sonraki filtreleme cümlesine zemin hazırlamalıdır; doğru cevap 'This is because they clean the water…'. 'they have little effect on the water' diyen şık sonraki cümleyle çelişir; böbreklerin kandaki atıkları süzdüğünü söyleyen şık 'kidneys' kelimesini tekrar eden ama konuyu insan vücuduna kaydıran bir tuzaktır."
       },
       {
        "type": "choice",
@@ -6213,7 +6213,7 @@
         "The vaccine was developed after thousands of people had died in the outbreak."
        ],
        "answer": 1,
-       "explanation": "'is believed to have saved' = kurtardığına inanılıyor (geçmişteki bir eylem, şimdiki inanç); 'People believe that the vaccine saved' aynı anlamı etken yapıyla verir ve doğru cevaptır. ‘The vaccine will save’ diyen şık zamanı geleceğe taşır; ‘believed in the vaccine’ diyen şık 'believe in' ile inananları değiştirir; ‘lives were lost despite the vaccine’ diyen şık sonucu tersine çevirir."
+       "explanation": "'is believed to have saved' = kurtardığına inanılıyor (geçmişteki bir eylem, şimdiki inanç); 'People believe that the vaccine saved' aynı anlamı etken yapıyla verir ve doğru cevaptır. 'The vaccine will save' diyen şık zamanı geleceğe taşır; 'believed in the vaccine' diyen şık 'believe in' ile inananları değiştirir; 'lives were lost despite the vaccine' diyen şık sonucu tersine çevirir."
       },
       {
        "type": "choice",
@@ -6265,7 +6265,7 @@
         "Because the warning was not issued earlier, fewer residents were able to leave the area before the flood."
        ],
        "answer": 4,
-       "explanation": "'Had the warning been issued earlier' devrik üçüncü tip koşuldur ve gerçeğin tersini anlatır: uyarı geç verildi, bu yüzden daha az kişi ayrılabildi. Doğru cevap ‘Because the warning was not issued earlier, fewer residents…’. ‘the warning was issued in time’ diyen şık uyarının zamanında verildiğini söyler; ‘so nobody left the area’ diyen şık 'nobody' diyerek abartır; ‘If more residents had left…’ diye başlayan şık koşul ile sonucu yer değiştirir."
+       "explanation": "'Had the warning been issued earlier' devrik üçüncü tip koşuldur ve gerçeğin tersini anlatır: uyarı geç verildi, bu yüzden daha az kişi ayrılabildi. Doğru cevap 'Because the warning was not issued earlier, fewer residents…'. 'the warning was issued in time' diyen şık uyarının zamanında verildiğini söyler; 'so nobody left the area' diyen şık 'nobody' diyerek abartır; 'If more residents had left…' diye başlayan şık koşul ile sonucu yer değiştirir."
       },
       {
        "type": "choice",
@@ -6291,7 +6291,7 @@
         "The trial results were made public, but they did not need to be reviewed."
        ],
        "answer": 3,
-       "explanation": "'should not have been made public' geçmişteki bir hatayı eleştirir: sonuçlar incelenmeden açıklandı ve bu yanlıştı. 'It was a mistake to...' aynı eleştiriyi verir ve doğru cevaptır. ‘reviewed carefully before being made public’ diyen şık sonuçların incelendiğini söyler; ‘will not be made public until…’ diyen şık zamanı geleceğe taşır; ‘they did not need to be reviewed’ diyen şık incelemenin gereksiz olduğunu söyleyerek eleştiriyi yok eder."
+       "explanation": "'should not have been made public' geçmişteki bir hatayı eleştirir: sonuçlar incelenmeden açıklandı ve bu yanlıştı. 'It was a mistake to...' aynı eleştiriyi verir ve doğru cevaptır. 'reviewed carefully before being made public' diyen şık sonuçların incelendiğini söyler; 'will not be made public until…' diyen şık zamanı geleceğe taşır; 'they did not need to be reviewed' diyen şık incelemenin gereksiz olduğunu söyleyerek eleştiriyi yok eder."
       },
       {
        "type": "choice",
@@ -6317,7 +6317,7 @@
         "The new building produces half of the energy that was used by the old one."
        ],
        "answer": 2,
-       "explanation": "'half as much as' = yarısı kadar; yeni bina eskisinin yarısı kadar enerji kullanıyorsa eskisi yenisinin iki katını kullanıyordu; doğru cevap ‘The old building consumed twice as much energy…’. ‘The new building uses twice as much’ diyen şık oranı ters çevirir; ‘slightly more energy’ diyen şık farkı küçültür; ‘produces half of the energy’ diyen şık 'uses' yerine 'produces' diyerek eylemi değiştirir."
+       "explanation": "'half as much as' = yarısı kadar; yeni bina eskisinin yarısı kadar enerji kullanıyorsa eskisi yenisinin iki katını kullanıyordu; doğru cevap 'The old building consumed twice as much energy…'. 'The new building uses twice as much' diyen şık oranı ters çevirir; 'slightly more energy' diyen şık farkı küçültür; 'produces half of the energy' diyen şık 'uses' yerine 'produces' diyerek eylemi değiştirir."
       }
      ]
     },
@@ -6416,7 +6416,7 @@
         "Health officials prepared for a disease that never actually spread."
        ],
        "answer": 3,
-       "explanation": "'So rapidly did ... that' devrik 'so ... that' yapısıdır: hastalık o kadar hızlı yayıldı ki yetkililerin hazırlanmaya çok az vakti oldu. ‘The disease spread so quickly that…’ aynı neden-sonucu düz sırayla verir ve 'little time' = 'hardly any time'. ‘because health officials did not prepare’ diyen şık neden ile sonucu yer değiştirir; ‘plenty of time’ diyen şık sonucu tersine çevirir."
+       "explanation": "'So rapidly did ... that' devrik 'so ... that' yapısıdır: hastalık o kadar hızlı yayıldı ki yetkililerin hazırlanmaya çok az vakti oldu. 'The disease spread so quickly that…' aynı neden-sonucu düz sırayla verir ve 'little time' = 'hardly any time'. 'because health officials did not prepare' diyen şık neden ile sonucu yer değiştirir; 'plenty of time' diyen şık sonucu tersine çevirir."
       },
       {
        "type": "choice",
@@ -6529,7 +6529,7 @@
         "The rain started after thousands of people had left the concert."
        ],
        "answer": 1,
-       "explanation": "'In spite of + isim' karşıtlığı 'Even though + cümle' ile korunur; doğru cevap ‘Even though it was raining, thousands of people went…’. ‘Because it was raining…’ diye başlayan şık karşıtlığı nedene çevirir ve sonucu tersine döndürür; ‘would have attended … if it had not rained’ diyen şık koşul yapısıyla insanların gelmediğini ima eder."
+       "explanation": "'In spite of + isim' karşıtlığı 'Even though + cümle' ile korunur; doğru cevap 'Even though it was raining, thousands of people went…'. 'Because it was raining…' diye başlayan şık karşıtlığı nedene çevirir ve sonucu tersine döndürür; 'would have attended … if it had not rained' diyen şık koşul yapısıyla insanların gelmediğini ima eder."
       },
       {
        "type": "choice",
@@ -6582,7 +6582,7 @@
         "Experts are certain that the city will have twice as many people in twenty years."
        ],
        "answer": 0,
-       "explanation": "'It is estimated that ... will double' = iki katına çıkacağı tahmin ediliyor; 'is expected to be twice its current size' aynı tahmini verir ve doğru cevaptır. ‘doubled over the last twenty years’ diyen şık zamanı geçmişe taşır; ‘fall by half’ diyen şık oranı tersine çevirir; ‘Experts are certain’ diyen şık 'certain' diyerek tahmini kesinliğe dönüştürür."
+       "explanation": "'It is estimated that ... will double' = iki katına çıkacağı tahmin ediliyor; 'is expected to be twice its current size' aynı tahmini verir ve doğru cevaptır. 'doubled over the last twenty years' diyen şık zamanı geçmişe taşır; 'fall by half' diyen şık oranı tersine çevirir; 'Experts are certain' diyen şık 'certain' diyerek tahmini kesinliğe dönüştürür."
       },
       {
        "type": "choice",
@@ -6595,7 +6595,7 @@
         "Careful data collection leads to more reliable conclusions."
        ],
        "answer": 4,
-       "explanation": "'the more ..., the more' orantısı: veri ne kadar dikkatli toplanırsa sonuçlar o kadar güvenilir olur; ‘Careful data collection leads to more reliable conclusions’ bu ilişkiyi korur. ‘Reliable conclusions make data collection easier’ neden ile sonucu yer değiştirir; ‘however the data are collected’ diyen şık ilişkiyi yok sayar; ‘the only reason’ diyen şık aşırı bir genelleme yapar."
+       "explanation": "'the more ..., the more' orantısı: veri ne kadar dikkatli toplanırsa sonuçlar o kadar güvenilir olur; 'Careful data collection leads to more reliable conclusions' bu ilişkiyi korur. 'Reliable conclusions make data collection easier' neden ile sonucu yer değiştirir; 'however the data are collected' diyen şık ilişkiyi yok sayar; 'the only reason' diyen şık aşırı bir genelleme yapar."
       },
       {
        "type": "choice",
@@ -7297,7 +7297,7 @@
         "Crowdfunding, it seems, rewards those who are already well connected and skilled at self-promotion, rather than simply those with good ideas."
        ],
        "answer": 4,
-       "explanation": "Başarılı kampanyaların sahiplerinin zaten geniş sosyal ağlara sahip olması, kitlesel fonlamanın iyi fikirden çok bağlantıları ödüllendirdiği sonucunu doğurur; doğru cevap ‘Crowdfunding, it seems, rewards those who are already well connected…’. ‘most campaigns on FundLane reach their goals easily’ diyen şık kampanyaların yalnızca üçte birinin başarılı olduğu bilgisiyle çelişir; ‘Online video is one of the most popular…’ cümlesi 'video' kelimesini tekrar eden bir tuzaktır."
+       "explanation": "Başarılı kampanyaların sahiplerinin zaten geniş sosyal ağlara sahip olması, kitlesel fonlamanın iyi fikirden çok bağlantıları ödüllendirdiği sonucunu doğurur; doğru cevap 'Crowdfunding, it seems, rewards those who are already well connected…'. 'most campaigns on FundLane reach their goals easily' diyen şık kampanyaların yalnızca üçte birinin başarılı olduğu bilgisiyle çelişir; 'Online video is one of the most popular…' cümlesi 'video' kelimesini tekrar eden bir tuzaktır."
       },
       {
        "type": "choice",
@@ -7443,7 +7443,7 @@
         "Many valleys in the region are used for sheep farming."
        ],
        "answer": 1,
-       "explanation": "Aynaların meydana güneş ışığı yansıtması, karanlık kışlarda insanların evden çıkmaması sorununa çözüm sunar; sonuç olarak meydanın kışın da canlanması mantıklıdır, doğru cevap ‘Since then, the square has become a lively meeting place…’. ‘the village shops closed permanently’ diyen şık projenin amacına ters bir sonuç verir; ‘Mirrors have been used by people since ancient times’ 'mirrors' kelimesini tekrar eden genel bir bilgidir."
+       "explanation": "Aynaların meydana güneş ışığı yansıtması, karanlık kışlarda insanların evden çıkmaması sorununa çözüm sunar; sonuç olarak meydanın kışın da canlanması mantıklıdır, doğru cevap 'Since then, the square has become a lively meeting place…'. 'the village shops closed permanently' diyen şık projenin amacına ters bir sonuç verir; 'Mirrors have been used by people since ancient times' 'mirrors' kelimesini tekrar eden genel bir bilgidir."
       },
       {
        "type": "choice",
@@ -7456,7 +7456,7 @@
         "National television featured the festival because the villagers were famous."
        ],
        "answer": 2,
-       "explanation": "'Hardly anyone ... until' = televizyonda gösterilene kadar neredeyse kimse duymamıştı; yani köylülerin çoğu festivali ancak televizyondan sonra öğrendi. Doğru cevap ‘It was only after the festival appeared on national television…’. ‘Everyone in the village already knew…’ diyen şık anlamı tersine çevirir; ‘found it hard to watch’ diyen şık 'hardly' kelimesini 'hard' ile karıştıran tipik bir tuzaktır."
+       "explanation": "'Hardly anyone ... until' = televizyonda gösterilene kadar neredeyse kimse duymamıştı; yani köylülerin çoğu festivali ancak televizyondan sonra öğrendi. Doğru cevap 'It was only after the festival appeared on national television…'. 'Everyone in the village already knew…' diyen şık anlamı tersine çevirir; 'found it hard to watch' diyen şık 'hardly' kelimesini 'hard' ile karıştıran tipik bir tuzaktır."
       },
       {
        "type": "choice",
@@ -7470,7 +7470,7 @@
         "Sea walls are usually built from concrete or stone."
        ],
        "answer": 0,
-       "explanation": "Önceki cümle köklerin, sonraki cümle dalgaların yavaşlatılmasının anlatıldığı bir koruma işlevini verir; 'meanwhile' ile köklerden gövdelere geçip suyun yavaşladığını söyleyen ‘Their stems, meanwhile, slow down…’ köprü olur. ‘the roots are too weak to hold any soil’ diyen şık önceki cümleyle çelişir; ‘Sea walls are usually built…’ cümlesi 'sea walls' ifadesini tekrar eden bir tuzaktır."
+       "explanation": "Önceki cümle köklerin, sonraki cümle dalgaların yavaşlatılmasının anlatıldığı bir koruma işlevini verir; 'meanwhile' ile köklerden gövdelere geçip suyun yavaşladığını söyleyen 'Their stems, meanwhile, slow down…' köprü olur. 'the roots are too weak to hold any soil' diyen şık önceki cümleyle çelişir; 'Sea walls are usually built…' cümlesi 'sea walls' ifadesini tekrar eden bir tuzaktır."
       },
       {
        "type": "choice",
@@ -7616,7 +7616,7 @@
          "undeterred"
         ],
         [
-         "öncekisi",
+         "(ikisinden) ilki",
          "the former"
         ]
        ]
@@ -7944,7 +7944,7 @@
         "V"
        ],
        "answer": 4,
-       "explanation": "I–IV, 'it' zinciriyle semenderin yaşam döngüsünü (göl, kara, yeniden su) sırayla anlatır. V. cümle 'ponds' kelimesini tekrar etse de öznesi semender değildir ve habitat kaybına geçer; doğru cevap V."
+       "explanation": "I–IV, 'it' zinciriyle semenderin yaşam döngüsünü (gölet, kara, yeniden su) sırayla anlatır. V. cümle 'ponds' kelimesini tekrar etse de öznesi semender değildir ve habitat kaybına geçer; doğru cevap V."
       },
       {
        "type": "choice",
@@ -8221,7 +8221,7 @@
        "options": [
         "contradictory",
         "abundant",
-        "fragile",
+        "affordable",
         "reluctant",
         "punctual"
        ],
@@ -9452,7 +9452,7 @@
         "easy to automate"
        ],
        "answer": 1,
-       "explanation": "Düzinelerce teknisyen gerektiren bir işin 'zahmetli, emek isteyen' olduğu anlaşılır; doğru cevap ‘requiring a lot of time and effort’. ‘Cheap and quick to do’ zıt anlamdır; ‘easy to automate’ ise cümledeki elle yapılan iş vurgusuyla çelişir."
+       "explanation": "Düzinelerce teknisyen gerektiren bir işin 'zahmetli, emek isteyen' olduğu anlaşılır; doğru cevap ‘requiring a lot of time and effort’. ‘cheap, quick and simple to carry out’ zıt anlamdır; ‘easy to automate’ ise cümledeki elle yapılan iş vurgusuyla çelişir."
       },
       {
        "type": "choice",
@@ -10241,7 +10241,7 @@
         "best-selling"
        ],
        "answer": 3,
-       "explanation": "Bir olumsuz (gelir artmadı) ve bir olumlu (acil durumlarla daha iyi baş etme) sonuç, sonuçların 'karışık, iki yönlü' olduğunu gösterir; doğru cevap ‘mixed’. ‘Admirable’ (takdire değer) yalnızca olumlu yönü anlatır; ‘prosperous’ insanlar ve yerler için kullanılır."
+       "explanation": "Bir olumsuz (gelir artmadı) ve bir olumlu (acil durumlarla daha iyi baş etme) sonuç, sonuçların 'olumlu ve olumsuz yanları olan' olduğunu gösterir; doğru cevap ‘mixed’. ‘Admirable’ (takdire değer) yalnızca olumlu yönü anlatır; ‘prosperous’ insanlar ve yerler için kullanılır."
       },
       {
        "type": "choice",
@@ -10613,7 +10613,7 @@
         "praise the organisations for their openness"
        ],
        "answer": 3,
-       "explanation": "Hikâyelerin kredi verenlerce anlatıldığının belirtilmesi, bu anlatımların tarafsız olmayabileceğini ima eder ve sonraki 'more careful evaluations' ifadesiyle karşıtlık kurar. Doğru cevap ‘suggest that these accounts may not have been completely objective’. 'Prove that the organisations were dishonest' fazla güçlü bir iddiadır; yazar yalnızca dolaylı bir kuşku dile getiriyor."
+       "explanation": "Hikâyelerin kredi verenlerce anlatıldığının belirtilmesi, bu anlatımların tarafsız olmayabileceğini ima eder ve sonraki 'more careful evaluations' ifadesiyle karşıtlık kurar. Doğru cevap ‘suggest that these accounts may not have been completely objective’. 'prove that the organisations had deliberately lied to the donors' fazla güçlü bir iddiadır; yazar yalnızca dolaylı bir kuşku dile getiriyor."
       },
       {
        "type": "choice",
@@ -10963,7 +10963,7 @@
    "description": "Gerçek YDS uzunluğunda tarih, kültür ve dilbilim metinleriyle okuma pratiği",
    "color": "0xFF6C4CF1",
    "theme": "gecmis",
-   "guide": "## Strateji\nTarih, kültür ve dil metinleri YDS okuma bölümünde düzenli olarak yer alır. Bu metinlerde iki şey özellikle önemlidir. Birincisi **zaman ve neden-sonuç sırası**: olaylar çoğu zaman *for a long time, until, eventually, more recent research* gibi ifadelerle sıralanır ve sorular 'ne zaman / neden değişti' diye sorar. İkincisi **gönderim ve bağlamda kelime anlamı**: *this, they, these signs, its people* gibi ifadeler ve *established, revealing, defy* gibi çok anlamlı kelimeler bu metinlerde sık sorulur.\n\nTarih metinlerinin tipik iskeleti: **eski görüş (historians long regarded…) → yeni kaynak veya yöntem (records, tree rings, membership lists) → yeni bulgu → eski görüşü reddetmeyen ama düzelten sonuç (does not mean…, rather…)**. Süre yine metin başına **yaklaşık 10 dakika**; uzun metinde özel adları (Holvane, Teravia) ezberleme, yalnızca yerini işaretle.\n\n## Örnekler\n- *Historians have long regarded these rooms as places where new ideas spread.* — Tarihçiler bu odaları uzun zamandır yeni fikirlerin yayıldığı yerler olarak görmüştür. (eski görüş)\n- *A recent study offers a more nuanced view.* — Yeni bir çalışma daha ince ayrımlı bir bakış sunuyor. (düzeltme geliyor)\n- *This, in turn, implies a level of cooperation.* — Bu da sırasıyla bir işbirliği düzeyini ima eder. (*this* bir önceki cümlenin tamamını gösterir)\n- *The new evidence does not mean that war played no part.* — Yeni kanıt savaşın hiç rol oynamadığı anlamına gelmez. (aşırı yorumu engelleyen cümle)\n- *They have learned to read the palace's accounts, not its stories.* — Sarayın hesaplarını okumayı öğrendiler, öykülerini değil. (mecazlı sonuç cümlesi)\n\n## Nasıl çözülür\n1. **Önce soru kökünü oku** ve tipini belirle; gönderim ve bağlamda anlam sorularında kökte geçen kelimenin metindeki yerini hemen bul.\n2. **Anahtar kelimeyi tara**: yüzyıl, sayı, özel ad ya da terim (*growth rings, minute hands, loanword*).\n3. **Paragrafın yapısını çıkar**: eski görüş nerede bitiyor, yeni kanıt nerede başlıyor? *however, more recent research, a recent study* dönüm noktasıdır.\n4. **Gönderim sorularında** zamirin yerine şıkları koy; tekil/çoğul uyumunu ve anlamı kontrol et. *this* çoğu zaman tek bir isim değil, önceki cümlenin fikridir.\n5. **Bağlamda anlam sorularında** kelimenin sözlükteki ilk anlamını değil, cümledeki işlevini düşün; şıkkı kelimenin yerine koyup cümleyi yeniden oku.\n6. **Çeldiricileri ele**: aşırı genelleme, kısmen doğru, metindeki kelimeyi tekrar eden ama anlamı bozan şık, zıt anlam ve **zaman karışıklığı** (eski görüşü yeni bulgu gibi sunan şık).\n\n**Örnek çözüm:** Metin: ağırlıklar daha önce yalnızca doğudaki kara yerleşimlerinde bulunan bir sisteme uyuyor; *This, in turn, implies a level of cooperation…* Soru: *The word 'This' refers to ----.* Adım 4: 'the ship' koyunca anlam bozulur (gemi işbirliğini ima etmez); 'the written source' metinde işbirliğini anlatmayan kaynaktır, zıt anlam. Önceki cümlenin fikri, yani geniş bir bölgedeki tüccarların ortak bir ölçü sistemi kullanması yerine konunca cümle anlamlı olur. Cevap: 'the use of a shared system of measurement across a wide area'.\n\n## Tuzaklar ve sık yapılan hatalar\n- **Eski görüşü yazarın görüşü sanmak:** *Historians long believed…* ile başlayan cümle çoğu zaman metnin düzelttiği görüştür.\n- **Aşırı genelleme:** *war was irrelevant* ya da *the campaign completely failed* gibi şıklar; metin *not wholly without effect, played a part* der.\n- **Kısmen doğru şık:** 'Women were members as owners' widows and as readers' — ilk yarı metinde var, ikinci yarı yok.\n- **Kelime tekrarı:** *seasonal, autumn, harvest* gibi metindeki kelimeleri taşıyan ama soruyla ilgisi olmayan şık.\n- **Türkçe düşünme hatası:** *defy* burada 'meydan okumak' değil 'çözülmeye direnmek'; *established* 'kurulmuş' değil 'yerleşik, kabul görmüş' demektir. *catch on* 'yakalamak' değil 'tutmak, yaygınlaşmak'tır.\n\n## Sınav ipucu\nTarih metinlerinde son cümle sık sık bir **genelleme ya da mecaz** içerir (*a broader shift in historical research*, *accounts, not its stories*). Ana fikir ve amaç soruları bu cümleden gelir. Gönderim sorusunda cevap neredeyse hiçbir zaman zamirden hemen önceki kelime değildir; ÖSYM tam da o kelimeyi çeldirici yapar.",
+   "guide": "## Strateji\nTarih, kültür ve dil metinleri YDS okuma bölümünde düzenli olarak yer alır. Bu metinlerde iki şey özellikle önemlidir. Birincisi **zaman ve neden-sonuç sırası**: olaylar çoğu zaman *for a long time, until, eventually, more recent research* gibi ifadelerle sıralanır ve sorular 'ne zaman / neden değişti' diye sorar. İkincisi **gönderim ve bağlamda kelime anlamı**: *this, they, these signs, its people* gibi ifadeler ve *established, revealing, defy* gibi çok anlamlı kelimeler bu metinlerde sık sorulur.\n\nTarih metinlerinin tipik iskeleti: **eski görüş (historians long regarded…) → yeni kaynak veya yöntem (records, tree rings, membership lists) → yeni bulgu → eski görüşü reddetmeyen ama düzelten sonuç (does not mean…, rather…)**. Süre yine metin başına **yaklaşık 10 dakika**; uzun metinde özel adları (Holvane, Teravia) ezberleme, yalnızca yerini işaretle.\n\n## Örnekler\n- *Historians have long regarded these rooms as places where new ideas spread.* — Tarihçiler bu odaları uzun zamandır yeni fikirlerin yayıldığı yerler olarak görmüştür. (eski görüş)\n- *A recent study offers a more nuanced view.* — Yeni bir çalışma daha ince ayrımlı bir bakış sunuyor. (düzeltme geliyor)\n- *This, in turn, implies a level of cooperation.* — Bu da bunun sonucunda bir işbirliği düzeyini ima eder. (*this* bir önceki cümlenin tamamını gösterir)\n- *The new evidence does not mean that war played no part.* — Yeni kanıt savaşın hiç rol oynamadığı anlamına gelmez. (aşırı yorumu engelleyen cümle)\n- *They have learned to read the palace's accounts, not its stories.* — Sarayın hesaplarını okumayı öğrendiler, öykülerini değil. (mecazlı sonuç cümlesi)\n\n## Nasıl çözülür\n1. **Önce soru kökünü oku** ve tipini belirle; gönderim ve bağlamda anlam sorularında kökte geçen kelimenin metindeki yerini hemen bul.\n2. **Anahtar kelimeyi tara**: yüzyıl, sayı, özel ad ya da terim (*growth rings, minute hands, loanword*).\n3. **Paragrafın yapısını çıkar**: eski görüş nerede bitiyor, yeni kanıt nerede başlıyor? *however, more recent research, a recent study* dönüm noktasıdır.\n4. **Gönderim sorularında** zamirin yerine şıkları koy; tekil/çoğul uyumunu ve anlamı kontrol et. *this* çoğu zaman tek bir isim değil, önceki cümlenin fikridir.\n5. **Bağlamda anlam sorularında** kelimenin sözlükteki ilk anlamını değil, cümledeki işlevini düşün; şıkkı kelimenin yerine koyup cümleyi yeniden oku.\n6. **Çeldiricileri ele**: aşırı genelleme, kısmen doğru, metindeki kelimeyi tekrar eden ama anlamı bozan şık, zıt anlam ve **zaman karışıklığı** (eski görüşü yeni bulgu gibi sunan şık).\n\n**Örnek çözüm:** Metin: ağırlıklar daha önce yalnızca doğudaki kara yerleşimlerinde bulunan bir sisteme uyuyor; *This, in turn, implies a level of cooperation…* Soru: *The word 'This' refers to ----.* Adım 4: 'the ship' koyunca anlam bozulur (gemi işbirliğini ima etmez); 'the written source' metinde işbirliğini anlatmayan kaynaktır, zıt anlam. Önceki cümlenin fikri, yani geniş bir bölgedeki tüccarların ortak bir ölçü sistemi kullanması yerine konunca cümle anlamlı olur. Cevap: 'the use of a shared system of measurement across a wide area'.\n\n## Tuzaklar ve sık yapılan hatalar\n- **Eski görüşü yazarın görüşü sanmak:** *Historians long believed…* ile başlayan cümle çoğu zaman metnin düzelttiği görüştür.\n- **Aşırı genelleme:** *war was irrelevant* ya da *the campaign completely failed* gibi şıklar; metin *not wholly without effect, played a part* der.\n- **Kısmen doğru şık:** 'Women were members as owners' widows and as readers' — ilk yarı metinde var, ikinci yarı yok.\n- **Kelime tekrarı:** *seasonal, autumn, harvest* gibi metindeki kelimeleri taşıyan ama soruyla ilgisi olmayan şık.\n- **Türkçe düşünme hatası:** *defy* burada 'meydan okumak' değil 'çözülmeye direnmek'; *established* 'kurulmuş' değil 'yerleşik, kabul görmüş' demektir. *catch on* 'yakalamak' değil 'tutmak, yaygınlaşmak'tır.\n\n## Sınav ipucu\nTarih metinlerinde son cümle sık sık bir **genelleme ya da mecaz** içerir (*a broader shift in historical research*, *accounts, not its stories*). Ana fikir ve amaç soruları bu cümleden gelir. Gönderim sorusunda cevap neredeyse hiçbir zaman zamirden hemen önceki kelime değildir; ÖSYM tam da o kelimeyi çeldirici yapar.",
    "nodes": [
     {
      "id": "ys3u14l1",

@@ -3484,7 +3484,7 @@
         "don't publish",
         "didn't publish",
         "won't publish",
-        "not publish",
+        "not to publish",
         "hadn't published"
        ],
        "answer": 1,
@@ -3737,7 +3737,7 @@
    "description": "Tam Deneme 4'e hazırlık: hata analizi, 60+ puan hedefi, dilbilgisi ve bağlaçta hızlı çözüm",
    "color": "0xFF5A67D8",
    "theme": "spor",
-   "guide": "## Strateji\nBu hafta **Tam Deneme 4** ile biter; hedef **60+ puan**, yani 80 sorudan **en az 48 doğru**. Haftaya, Tam Deneme 3'ün hata analiziyle başla; odak beceri **dilbilgisi, bağlaç ve cümle tamamlamayı hızlı çözmek**. Bu üç tür sınavın 30 sorusudur ve doğru teknikle soru başına 40–50 saniyede çözülür; kazandığın süre okumaya kalır.\n\n**Önceki denemenin hata analizi (hata defteri):**\n- Tam Deneme 3'teki her yanlışı, boşu ve tahminle doğruyu deftere yaz: soru türü, doğru cevap, seçtiğin şık, hata türü (bilgi, dikkat, çeldirici, süre).\n- Sonra tür bazında doğru sayını madde madde çıkar: *Kelime: 3/6*, *Dilbilgisi: 6/10*, *Cloze: 5/10* gibi. Tablo gerekmez; alt alta yazılmış on satır yeter.\n- Her satırın yanına bu haftanın hedefini yaz ve aradaki farkı hesapla. En büyük fark, haftanın çalışma önceliğidir.\n\n**Tam Deneme 4 için tür bazında hedef doğru sayısı (toplam 48):**\n- Kelime: 4/6\n- Dilbilgisi: 8/10\n- Cloze: 7/10\n- Cümle tamamlama: 7/10\n- Çeviri: 4/6\n- Okuma: 9/20\n- Diyalog: 3/6\n- Restatement: 1/3\n- Paragraf tamamlama: 2/4\n- Anlam bütünlüğü: 3/5\n\nUzun vadeli hedef 72 doğrudur (kelime 5, dilbilgisi 9, cloze 9, cümle tamamlama 9, çeviri 6, okuma 16, diyalog 5, restatement 3, paragraf tamamlama 4, anlam bütünlüğü 5). Bu hafta dilbilgisi ve bağlaçtan gelen puan, o hedefin temelidir.\n\n**Hızlı çözüm stratejisi:** Önce şıklara bak ve soruyu sınıflandır: zaman mı, yapı mı (edilgen, koşul, devrik), bağlaç mı? Bağlaç sorusunda iki yarım arasındaki ilişkiyi tek kelimeyle adlandır: *zıtlık, sebep, sonuç, koşul, amaç, ekleme*. İlişkiyi bulduğunda şıkların çoğu kendiliğinden elenir.\n\n## Örnekler\n- *Notwithstanding the delays, the project was completed on budget.* — Gecikmelere rağmen proje bütçe dahilinde tamamlandı. (zıtlık + isim)\n- *Take notes lest you forget the key points.* — Önemli noktaları unutmayasın diye not al. (olumsuz amaç)\n- *Most pupils could barely read the text, let alone summarise it.* — Öğrencilerin çoğu metni zar zor okuyabildi, özetlemek şöyle dursun.\n- *No sooner had the plan been announced than critics attacked it.* — Plan açıklanır açıklanmaz eleştirmenler ona saldırdı.\n- *The data were incomplete; accordingly, the analysis was postponed.* — Veriler eksikti; bu nedenle analiz ertelendi.\n\n## Nasıl çözülür\n1. Şıkları tara: hepsi fiil biçimi mi, bağlaç mı, edat mı? Türü belirle.\n2. Zaman sorusunda zaman ifadesini (*by the time, since, next year, ago*) bul ve altını çiz.\n3. Bağlaç sorusunda iki yarım arasındaki ilişkiyi Türkçe adlandır; sonra arkadan gelen yapıya bak: tam cümle mi (*although, seeing that*), isim mi (*despite, notwithstanding, on account of*)?\n4. Cümle tamamlamada verilen yarımdaki bağlaç ve zamanı belirle; şıkları önce dilbilgisiyle (zaman uyumu, devrik yapı), sonra anlamla ele.\n5. 60 saniyede bitmeyen soruyu işaretle ve geç; turun sonunda dön.\n\n**Örnek:** *---- the region receives very little rainfall, farmers have developed clever irrigation methods.* Adım 1: şıklar bağlaç. Adım 3: az yağış → sulama yöntemleri geliştirme; bu bir **sebep** ilişkisidir. Arkadan tam cümle geldiği için *seeing that* uygundur; *even though* zıtlık kurduğu için, *lest* olumsuz amaç bildirdiği için elenir.\n\n## Tuzaklar ve sık yapılan hatalar\n- **Edat ile bağlacı karıştırmak:** *despite / notwithstanding / on account of* arkasından tam cümle gelmez; Türkçedeki '-mesine rağmen' yapısı bu hatayı doğurur.\n- **Devrikte yardımcı fiili unutmak:** *No sooner had …, Hardly had …, Not only has …*; Türkçede böyle bir yapı olmadığı için düz sıralı şık cazip gelir.\n- **Kalıp eşini karıştırmak:** *no sooner … than*, ama *hardly / scarcely … when*.\n- **Bağlacı anlama bakmadan seçmek:** *nonetheless* ile *accordingly* aynı yere girer gibi görünür; biri zıtlık, öteki sonuçtur.\n- **Hata defterini sayısız bırakmak:** Tür bazında doğru sayısını yazmayan aday, zayıf noktasını sezgiyle seçer ve yanlış konuya zaman harcar.\n\n## Sınav ipucu\nSınavda ilk 30 soruyu (kelime, dilbilgisi, cloze) 25 dakikada, cümle tamamlamayı 10 dakikada bitirmeyi hedefle. Tam Deneme 4'ü çözerken her bölümün bitiş saatini sayfanın kenarına yaz; deneme bitince bu saatleri hedefle karşılaştır. 48 doğru için mükemmel olman gerekmez: dilbilgisi ve bağlaç sorularında hızlı ve isabetli olursan okumaya yeterli süre kalır.",
+   "guide": "## Strateji\nBu hafta **Tam Deneme 4** ile biter; hedef **60+ puan**, yani 80 sorudan **en az 48 doğru**. Haftaya, Tam Deneme 3'ün hata analiziyle başla; odak beceri **dilbilgisi, bağlaç ve cümle tamamlamayı hızlı çözmek**. Bu üç tür sınavın 30 sorusudur ve doğru teknikle soru başına 40–50 saniyede çözülür; kazandığın süre okumaya kalır.\n\n**Önceki denemenin hata analizi (hata defteri):**\n- Tam Deneme 3'teki her yanlışı, boşu ve tahminle doğruyu deftere yaz: soru türü, doğru cevap, seçtiğin şık, hata türü (bilgi, dikkat, çeldirici, süre).\n- Sonra tür bazında doğru sayını madde madde çıkar: *Kelime: 3/6*, *Dilbilgisi: 6/10*, *Cloze: 5/10* gibi. Tablo gerekmez; alt alta yazılmış on satır yeter.\n- Her satırın yanına bu haftanın hedefini yaz ve aradaki farkı hesapla. En büyük fark, haftanın çalışma önceliğidir.\n\n**Tam Deneme 4 için tür bazında hedef doğru sayısı (toplam 48):**\n- Kelime: 4/6\n- Dilbilgisi: 8/10\n- Cloze: 7/10\n- Cümle tamamlama: 7/10\n- Çeviri: 4/6\n- Okuma: 9/20\n- Diyalog: 3/6\n- Restatement: 1/3\n- Paragraf tamamlama: 2/4\n- Anlam bütünlüğü: 3/5\n\nUzun vadeli hedef 72 doğrudur (kelime 5, dilbilgisi 9, cloze 9, cümle tamamlama 9, çeviri 6, okuma 17, diyalog 5, restatement 3, paragraf tamamlama 4, anlam bütünlüğü 5). Bu hafta dilbilgisi ve bağlaçtan gelen puan, o hedefin temelidir.\n\n**Hızlı çözüm stratejisi:** Önce şıklara bak ve soruyu sınıflandır: zaman mı, yapı mı (edilgen, koşul, devrik), bağlaç mı? Bağlaç sorusunda iki yarım arasındaki ilişkiyi tek kelimeyle adlandır: *zıtlık, sebep, sonuç, koşul, amaç, ekleme*. İlişkiyi bulduğunda şıkların çoğu kendiliğinden elenir.\n\n## Örnekler\n- *Notwithstanding the delays, the project was completed on budget.* — Gecikmelere rağmen proje bütçe dahilinde tamamlandı. (zıtlık + isim)\n- *Take notes lest you forget the key points.* — Önemli noktaları unutmayasın diye not al. (olumsuz amaç)\n- *Most pupils could barely read the text, let alone summarise it.* — Öğrencilerin çoğu metni zar zor okuyabildi, özetlemek şöyle dursun.\n- *No sooner had the plan been announced than critics attacked it.* — Plan açıklanır açıklanmaz eleştirmenler ona saldırdı.\n- *The data were incomplete; accordingly, the analysis was postponed.* — Veriler eksikti; bu nedenle analiz ertelendi.\n\n## Nasıl çözülür\n1. Şıkları tara: hepsi fiil biçimi mi, bağlaç mı, edat mı? Türü belirle.\n2. Zaman sorusunda zaman ifadesini (*by the time, since, next year, ago*) bul ve altını çiz.\n3. Bağlaç sorusunda iki yarım arasındaki ilişkiyi Türkçe adlandır; sonra arkadan gelen yapıya bak: tam cümle mi (*although, seeing that*), isim mi (*despite, notwithstanding, on account of*)?\n4. Cümle tamamlamada verilen yarımdaki bağlaç ve zamanı belirle; şıkları önce dilbilgisiyle (zaman uyumu, devrik yapı), sonra anlamla ele.\n5. 60 saniyede bitmeyen soruyu işaretle ve geç; turun sonunda dön.\n\n**Örnek:** *---- the region receives very little rainfall, farmers have developed clever irrigation methods.* Adım 1: şıklar bağlaç. Adım 3: az yağış → sulama yöntemleri geliştirme; bu bir **sebep** ilişkisidir. Arkadan tam cümle geldiği için *seeing that* uygundur; *even though* zıtlık kurduğu için, *lest* olumsuz amaç bildirdiği için elenir.\n\n## Tuzaklar ve sık yapılan hatalar\n- **Edat ile bağlacı karıştırmak:** *despite / notwithstanding / on account of* arkasından tam cümle gelmez; Türkçedeki '-mesine rağmen' yapısı bu hatayı doğurur.\n- **Devrikte yardımcı fiili unutmak:** *No sooner had …, Hardly had …, Not only has …*; Türkçede böyle bir yapı olmadığı için düz sıralı şık cazip gelir.\n- **Kalıp eşini karıştırmak:** *no sooner … than*, ama *hardly / scarcely … when*.\n- **Bağlacı anlama bakmadan seçmek:** *nonetheless* ile *accordingly* aynı yere girer gibi görünür; biri zıtlık, öteki sonuçtur.\n- **Hata defterini sayısız bırakmak:** Tür bazında doğru sayısını yazmayan aday, zayıf noktasını sezgiyle seçer ve yanlış konuya zaman harcar.\n\n## Sınav ipucu\nSınavda ilk 26 soruyu (kelime, dilbilgisi, cloze) 25 dakikada, cümle tamamlamayı 10 dakikada bitirmeyi hedefle. Tam Deneme 4'ü çözerken her bölümün bitiş saatini sayfanın kenarına yaz; deneme bitince bu saatleri hedefle karşılaştır. 48 doğru için mükemmel olman gerekmez: dilbilgisi ve bağlaç sorularında hızlı ve isabetli olursan okumaya yeterli süre kalır.",
    "nodes": [
     {
      "id": "ys4u5l1",
@@ -4100,7 +4100,7 @@
        "options": [
         "signed",
         "will sign",
-        "has signed",
+        "had signed",
         "signing",
         "sign"
        ],
@@ -4892,7 +4892,7 @@
         "surpass"
        ],
        "answer": 2,
-       "explanation": "Konuşma bir aciliyet duygusunu ‘convey’ (iletmek, aktarmak) etmeyi başaramadı. Tuzak: ‘impede’ (engellemek) nesne alır ama anlamı tersine çevirir; ‘persist’ ve ‘dwindle’ nesne almaz."
+       "explanation": "Konuşma bir aciliyet duygusunu iletmeyi (‘convey’: iletmek, aktarmak) başaramadı. Tuzak: ‘impede’ (engellemek) nesne alır ama anlamı tersine çevirir; ‘persist’ ve ‘dwindle’ nesne almaz."
       },
       {
        "type": "choice",
@@ -4992,7 +4992,7 @@
         "surpass"
        ],
        "answer": 0,
-       "explanation": "Kuraklık çiftçileri geleneksel yöntemlerinin bir kısmını ‘abandon’ (terk etmek) etmeye zorladı; sonraki cümleler yeni ürünlere ve tekniklere geçişi anlatır. Tuzak: ‘attain’ (ulaşmak) ve ‘surpass’ (aşmak) nesne alır ama anlam tutmaz."
+       "explanation": "Kuraklık çiftçileri geleneksel yöntemlerinin bir kısmını terk etmeye (‘abandon’) zorladı; sonraki cümleler yeni ürünlere ve tekniklere geçişi anlatır. Tuzak: ‘attain’ (ulaşmak) ve ‘surpass’ (aşmak) nesne alır ama anlam tutmaz."
       },
       {
        "type": "choice",
@@ -5261,7 +5261,7 @@
         "persist"
        ],
        "answer": 1,
-       "explanation": "Fon ‘allocate’ (tahsis etmek) edilir. Tuzak: ‘dwindle’, ‘subside’, ‘coincide’ ve ‘persist’ geçişsiz fiillerdir; *the necessary funds* nesnesini alamazlar."
+       "explanation": "Fonlar tahsis edilir (‘allocate’). Tuzak: ‘dwindle’, ‘subside’, ‘coincide’ ve ‘persist’ geçişsiz fiillerdir; *the necessary funds* nesnesini alamazlar."
       }
      ]
     },
@@ -5336,7 +5336,7 @@
         "coincide"
        ],
        "answer": 3,
-       "explanation": "Denizciler yıldızlara bakarak konumlarını ‘determine’ (belirlemek) ederdi. Tuzak: ‘deter’ yazılışça benzer ama ‘caydırmak’ demektir; ‘subside’ ve ‘coincide’ nesne almaz."
+       "explanation": "Denizciler yıldızlara bakarak konumlarını belirlerdi (‘determine’). Tuzak: ‘deter’ yazılışça benzer ama ‘caydırmak’ demektir; ‘subside’ ve ‘coincide’ nesne almaz."
       },
       {
        "type": "choice",
@@ -7010,7 +7010,7 @@
         "for"
        ],
        "answer": 0,
-       "explanation": "*depend on* sabit bir kalıptır → 'on'. 'Depend from' ve 'depend with' İngilizcede yoktur; Türkçedeki '-e bağlı' yapısı adayları 'to' ya da 'at' gibi edatlara iter."
+       "explanation": "*depend on* sabit bir kalıptır → 'on'. 'Depend from' ve 'depend with' İngilizcede yoktur; 'At' ve 'for' da *depend* ile kalıp oluşturmaz; Türkçedeki '-e bağlı' yapısı adayı yanlış edat aramaya itebilir."
       },
       {
        "type": "choice",
@@ -7399,7 +7399,7 @@
      "id": "ys4u8m",
      "type": "mock",
      "title": "Tam deneme 7",
-     "description": "Hedef 70+ puan: 80 soru, 180 dakika",
+     "description": "Hedef 70+ doğru (yaklaşık 87,5 puan): 80 soru, 180 dakika",
      "examId": "yds",
      "size": 80,
      "minutes": 180,

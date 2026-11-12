@@ -292,7 +292,7 @@
         "solving"
        ],
        "answer": 3,
-       "explanation": "Doğru cevap ‘solution’ (çözüm). ‘find a ---- to’ kalıbında artikelden sonra isim gerekir. ‘solve’ fiildir, ‘solvable’ sıfattır ve arkasında isim olmadan kullanılamaz."
+       "explanation": "Doğru cevap ‘solution’ (çözüm). ‘find a ---- to’ kalıbında artikelden sonra isim gerekir. ‘solve’ fiildir, ‘solvable’ sıfattır; artikelden sonra isim isteyen bu boşluğu dolduramaz."
       },
       {
        "type": "choice",
@@ -4928,7 +4928,7 @@
         "that was built in 1900"
        ],
        "answer": 3,
-       "explanation": "Doğru cevap ‘will open again next month with a new exhibition’. Kökte özne (the museum) ve virgüller arasında ek bilgi var, ama ana fiil yok; şık bir ana fiil getirmelidir. ‘which many tourists visit’ ve ‘that was built in 1900’ yalnızca yeni bir yan cümle ekler, cümleyi tamamlamaz."
+       "explanation": "Doğru cevap ‘will open again next month with a new exhibition’. Cümlede özne (the museum) ve virgüller arasında ek bilgi var, ama ana fiil yok; şık bir ana fiil getirmelidir. ‘which many tourists visit’ ve ‘that was built in 1900’ yalnızca yeni bir yan cümle ekler, cümleyi tamamlamaz."
       },
       {
        "type": "choice",
@@ -5870,7 +5870,7 @@
       },
       {
        "type": "choice",
-       "question": "By the time the excavation ended, the team had recorded more than two hundred artefacts.",
+       "question": "Verilen cümleye anlamca en yakın Türkçe cümle hangisidir?\nBy the time the excavation ended, the team had recorded more than two hundred artefacts.",
        "options": [
         "Kazı sona erene kadar ekip iki yüzden fazla eseri kayıt altına alacak.",
         "Kazı sürerken ekip iki yüzden fazla eseri kayıt altına alıyordu.",
@@ -5883,7 +5883,7 @@
       },
       {
        "type": "choice",
-       "question": "Bu bölgedeki yağış miktarı son on yılda belirgin biçimde azaldı.",
+       "question": "Verilen Türkçe cümleye anlamca en yakın İngilizce cümle hangisidir?\nBu bölgedeki yağış miktarı son on yılda belirgin biçimde azaldı.",
        "options": [
         "Rainfall in this region has decreased noticeably over the last ten years.",
         "Rainfall in this region decreased noticeably ten years ago.",
@@ -6783,7 +6783,7 @@
       },
       {
        "type": "choice",
-       "question": "The engineers should have warned the residents before closing the road.",
+       "question": "Verilen cümleye anlamca en yakın Türkçe cümle hangisidir?\nThe engineers should have warned the residents before closing the road.",
        "options": [
         "Mühendisler yolu kapatmadan önce sakinleri uyarmış olmalı.",
         "Mühendisler yolu kapattıktan sonra sakinleri uyarmak zorunda kaldı.",
@@ -6796,7 +6796,7 @@
       },
       {
        "type": "choice",
-       "question": "Hastanın ilacı aç karnına alması gerekmez.",
+       "question": "Verilen Türkçe cümleye anlamca en yakın İngilizce cümle hangisidir?\nHastanın ilacı aç karnına alması gerekmez.",
        "options": [
         "The patient doesn't have to take the medicine on an empty stomach.",
         "The patient mustn't take the medicine on an empty stomach.",
@@ -7807,7 +7807,7 @@
    "description": "If clauses, unless, devrik koşul, wish ve as if",
    "color": "0xFFEB5757",
    "theme": "hayaller",
-   "guide": "## Kural\nKoşul cümleleri (if clauses) bir koşulu ve onun sonucunu anlatır. YDS'de önemli olan, koşulun **gerçek mi, hayalî mi** ve **hangi zamana** ait olduğunu görmektir.\n\n- **Type 0** (genel gerçek): *If/When + present, present.* — *If you heat ice, it melts.*\n- **Type 1** (gerçek/olası gelecek): *If + present, will/can/may + V1.* — *If it rains, the match will be cancelled.*\n- **Type 2** (şimdiki/gelecek hayalî durum): *If + past, would/could/might + V1.* — *If I had more time, I would join.* (*be* için tüm şahıslarda *were*.)\n- **Type 3** (geçmişte gerçekleşmemiş durum): *If + past perfect, would/could/might have + V3.* — *If they had checked, the bridge wouldn't have collapsed.*\n- **Mixed**: geçmiş koşul → şimdiki sonuç (*If she had accepted the offer, she would be in Canada now.*) ya da kalıcı özellik → geçmiş sonuç (*If he weren't so stubborn, he would have listened.*).\n\n**Bağlaçlar:** *unless* (= if not), *provided / providing that, as long as, on condition that* (şartıyla), *in case* (ihtimaline karşı), *even if* (-se bile), *otherwise* (aksi hâlde), *but for / without + isim* (olmasaydı).\n\n**Devrik koşul (if düşer):** *Had I known* (= If I had known), *Were it not for* (= If it were not for), *Should you need* (= If you need).\n\n**Wish ve benzerleri:** *wish / if only + past* (şimdiki istek), *wish / if only + past perfect* (geçmişe pişmanlık), *wish + would* (başkasının davranışından şikâyet); *as if / as though + past* (gerçek dışı benzetme); *would rather + kişi + past* ve *It's high time + past*.\n\n## Örnekler\n- *Unless you water the plants, they will die.* — Bitkileri sulamazsan ölürler.\n- *You can borrow it provided that you return it by Friday.* — Cuma'ya kadar geri getirmen şartıyla ödünç alabilirsin.\n- *But for the donation, the museum would have closed.* — Bağış olmasaydı müze kapanırdı.\n- *Had I known about the strike, I would have taken another route.* — Grevi bilseydim başka yoldan giderdim.\n- *I wish I had paid more attention last year.* — Keşke geçen yıl daha dikkatli olsaydım.\n- *I'd rather you didn't send the report yet.* — Raporu henüz göndermemeni tercih ederim.\n\n## Nasıl çözülür\n1. Cümlede zaman ifadesi ara (*now, today, last year, tomorrow*): koşulun ve sonucun hangi zamana ait olduğunu bul.\n2. Koşul gerçekleşebilir mi, yoksa gerçek dışı mı? Gerçek dışıysa bir zaman geri git (present → past, past → past perfect).\n3. Boşluk ana cümledeyse *if* kısmındaki zamana bak; *if* kısmındaysa ana cümledeki *will / would / would have* yapısına bak.\n4. Bağlaç sorularında iki cümlenin mantıksal ilişkisini kur: olumsuz koşul (*unless*), şart (*provided that*), önlem (*in case*), alternatif (*otherwise*).\n5. *if* yoksa ve cümle *Had / Were / Should* ile başlıyorsa devrik koşul vardır; uygun sonucu ona göre seç.\n\n**Örnek çözüm:** *If she had accepted the scholarship last year, she ---- in Canada now.*\n1. Koşulda *last year* ve past perfect var: geçmişte gerçekleşmemiş bir durum. 2. Sonuçta *now* var: sonuç şimdiye ait. 3. Bu bir mixed conditional'dır: **would be studying**. *would have studied* sonucu da geçmişe taşır ve *now* ile çelişir.\n\n## Tuzaklar ve sık yapılan hatalar\n- Türkçede *-se* eki her tipte kullanılır (*gelirse, gelse, gelseydi*); bu yüzden adaylar zamanı kaydırmayı unutur. *Gelseydi* daima past perfect demektir.\n- *if* kısmında *will* kullanmak: *If it will rain* yanlıştır (istisna: rica bildiren *If you will wait here*).\n- *unless* zaten olumsuzdur; *unless you don't study* çift olumsuzluk hatasıdır.\n- *in case* ile *if* karışır: *Take an umbrella in case it rains* (önlem olarak) ≠ *Take an umbrella if it rains* (yağarsa al).\n- *wish* ile gelecek isteği için *will* kullanmak: *I wish it will stop* yanlış; *I hope it stops* ya da *I wish it would stop*.\n- Çeldirici türü: devrik yapıda *If* ile *Had* birlikte verilir (*If had I known*); devrikte *if* düşer.\n\n## Sınav ipucu\n- Ana cümlede *would have + V3* görürsen koşulda past perfect ya da *Had + özne + V3* ara.\n- *otherwise* noktalı virgülden ya da noktadan sonra gelir ve kendinden önceki cümlenin tersini koşul yapar.\n- *but for* ve *without* sonrasında **isim** gelir, cümle gelmez.\n- Cloze metinlerinde *if* boşluğu varsa sonuç cümlesindeki modal (*will / would / would have*) en güçlü ipucudur.",
+   "guide": "## Kural\nKoşul cümleleri (if clauses) bir koşulu ve onun sonucunu anlatır. YDS'de önemli olan, koşulun **gerçek mi, hayalî mi** ve **hangi zamana** ait olduğunu görmektir.\n\n- **Type 0** (genel gerçek): *If/When + present, present.* — *If you heat ice, it melts.*\n- **Type 1** (gerçek/olası gelecek): *If + present, will/can/may + V1.* — *If it rains, the match will be cancelled.*\n- **Type 2** (şimdiki/gelecek hayalî durum): *If + past, would/could/might + V1.* — *If I had more time, I would join.* (*be* için tüm şahıslarda *were*.)\n- **Type 3** (geçmişte gerçekleşmemiş durum): *If + past perfect, would/could/might have + V3.* — *If they had checked, the bridge wouldn't have collapsed.*\n- **Mixed**: geçmiş koşul → şimdiki sonuç (*If she had accepted the offer, she would be in Canada now.*) ya da kalıcı özellik → geçmiş sonuç (*If he weren't so stubborn, he would have listened.*).\n\n**Bağlaçlar:** *unless* (= if not), *provided / providing that, as long as, on condition that* (şartıyla), *in case* (ihtimaline karşı), *even if* (-se bile), *otherwise* (aksi hâlde), *but for / without + isim* (olmasaydı).\n\n**Devrik koşul (if düşer):** *Had I known* (= If I had known), *Were it not for* (= If it were not for), *Should you need* (= If you need).\n\n**Wish ve benzerleri:** *wish / if only + past* (şimdiki istek), *wish / if only + past perfect* (geçmişe pişmanlık), *wish + would* (başkasının davranışından şikâyet); *as if / as though + past* (gerçek dışı benzetme); *would rather + kişi + past* ve *It's high time + past*.\n\n## Örnekler\n- *Unless you water the plants, they will die.* — Bitkileri sulamazsan ölürler.\n- *You can borrow it provided that you return it by Friday.* — Cuma'ya kadar geri getirmen şartıyla ödünç alabilirsin.\n- *But for the donation, the museum would have closed.* — Bağış olmasaydı müze kapanırdı.\n- *Had I known about the strike, I would have taken another route.* — Grevi bilseydim başka yoldan giderdim.\n- *I wish I had paid more attention last year.* — Keşke geçen yıl daha dikkatli olsaydım.\n- *I'd rather you didn't send the report yet.* — Raporu henüz göndermemeni tercih ederim.\n\n## Nasıl çözülür\n1. Cümlede zaman ifadesi ara (*now, today, last year, tomorrow*): koşulun ve sonucun hangi zamana ait olduğunu bul.\n2. Koşul gerçekleşebilir mi, yoksa gerçek dışı mı? Gerçek dışıysa bir zaman geri git (present → past, past → past perfect).\n3. Boşluk ana cümledeyse *if* kısmındaki zamana bak; *if* kısmındaysa ana cümledeki *will / would / would have* yapısına bak.\n4. Bağlaç sorularında iki cümlenin mantıksal ilişkisini kur: olumsuz koşul (*unless*), şart (*provided that*), önlem (*in case*), alternatif (*otherwise*).\n5. *if* yoksa ve cümle *Had / Were / Should* ile başlıyorsa devrik koşul vardır; uygun sonucu ona göre seç.\n\n**Örnek çözüm:** *If she had accepted the scholarship last year, she ---- in Canada now.*\n1. Koşulda *last year* ve past perfect var: geçmişte gerçekleşmemiş bir durum. 2. Sonuçta *now* var: sonuç şimdiye ait. 3. Bu bir mixed conditional'dır: **would be studying**. *would have studied* sonucu da geçmişe taşır ve *now* ile çelişir.\n\n## Tuzaklar ve sık yapılan hatalar\n- Türkçede *-se* eki her tipte kullanılır (*gelirse, gelse, gelseydi*); bu yüzden adaylar zamanı kaydırmayı unutur. *Gelseydi* çoğu zaman past perfect'e karşılık gelir; ama *Param olsaydı alırdım* gibi şimdiki hayalî durumlarda Type 2 (*If I had money, I would buy it*) kullanılır.\n- *if* kısmında *will* kullanmak: *If it will rain* yanlıştır (istisna: rica bildiren *If you will wait here*).\n- *unless* zaten olumsuzdur; *unless you don't study* çift olumsuzluk hatasıdır.\n- *in case* ile *if* karışır: *Take an umbrella in case it rains* (önlem olarak) ≠ *Take an umbrella if it rains* (yağarsa al).\n- *wish* ile gelecek isteği için *will* kullanmak: *I wish it will stop* yanlış; *I hope it stops* ya da *I wish it would stop*.\n- Çeldirici türü: devrik yapıda *If* ile *Had* birlikte verilir (*If had I known*); devrikte *if* düşer.\n\n## Sınav ipucu\n- Ana cümlede *would have + V3* görürsen koşulda past perfect ya da *Had + özne + V3* ara.\n- *otherwise* noktalı virgülden ya da noktadan sonra gelir ve kendinden önceki cümlenin tersini koşul yapar.\n- *but for* ve *without* sonrasında **isim** gelir, cümle gelmez.\n- Cloze metinlerinde *if* boşluğu varsa sonuç cümlesindeki modal (*will / would / would have*) en güçlü ipucudur.",
    "nodes": [
     {
      "id": "ys1u4l1",
@@ -9250,7 +9250,7 @@
         "was collected"
        ],
        "answer": 2,
-       "explanation": "Doğru cevap 'collected'. Veriler toplanan şeydir; 'which were collected' edilgen cümleciği V3 ile kısaltılır. 'which collected' etkendir; 'that' virgülden sonra gelemez; 'was collected' ana yüklemle çakışır."
+       "explanation": "Doğru cevap 'collected'. Veriler toplanan şeydir; 'which was collected' edilgen cümleciği V3 ile kısaltılır. 'which collected' etkendir; 'that' virgülden sonra gelemez; 'was collected' ana yüklemle çakışır."
       },
       {
        "type": "choice",
@@ -10450,7 +10450,7 @@
    "description": "Fiil + -ing / to, anlam değiştiren fiiller, edat + -ing, edilgen ve perfect biçimler",
    "color": "0xFF2D9CDB",
    "theme": "spor",
-   "guide": "## Kural\nİngilizcede bir fiil başka bir fiili nesne olarak aldığında ikinci fiil ya **-ing (gerund)** ya da **to + yalın fiil (infinitive)** biçiminde gelir. Hangisinin geleceğini ilk fiil belirler.\n- **-ing alan fiiller**: avoid, consider, deny, enjoy, finish, postpone, delay, risk, suggest, admit, keep, mind, involve, resist. *The firm avoided paying the fine.*\n- **to alan fiiller**: decide, manage, refuse, agree, promise, fail, afford, hope, plan, decline, expect, tend, seem, appear, intend. *The team managed to recover the data.*\n- **Nesne + to**: allow, enable, encourage, force, persuade, require, warn, ask, advise. *The rules allow researchers to use the archive.* (Nesnesiz kullanımda allow/advise -ing alabilir: *They allow smoking.*)\n- **Anlam değiştirenler**: *stop doing* (bırakmak) / *stop to do* (-mek için durmak); *remember/forget doing* (geçmişte yapılanı hatırlamak) / *remember/forget to do* (yapılması gerekeni hatırlamak); *regret doing* (yaptığına pişman olmak) / *regret to say* (söylemekten üzüntü duymak); *try doing* (deneme amaçlı yapmak) / *try to do* (çabalamak); *go on doing* (aynı işi sürdürmek) / *go on to do* (sonra başka işe geçmek).\n- **Edattan sonra her zaman -ing**: interested in, instead of, without, before, after, by, despite, look forward to, object to, be used to, get used to. Buradaki **to** bir edattır.\n- **Edilgen ve perfect biçimler**: *to be done / being done* (edilgen), *to have done / having done* (önce olmuş), *to have been done / having been done* (önce olmuş ve edilgen). *The files appear to have been deleted.*\n- **it + sıfat + to**: *It is difficult to measure…*; **too/enough + to**: *too frequent to ignore*.\n\n## Örnekler\n- *The council is considering converting the harbour into a park.* — Belediye limanı bir parka dönüştürmeyi düşünüyor.\n- *Please remember to label every sample.* — Lütfen her örneği etiketlemeyi unutma.\n- *I remember labelling the samples.* — Örnekleri etiketlediğimi hatırlıyorum.\n- *Residents are used to living with frequent power cuts.* — Bölge sakinleri sık elektrik kesintileriyle yaşamaya alışkın.\n- *The ruins are believed to have been destroyed by an earthquake.* — Kalıntıların bir depremle yıkıldığına inanılıyor.\n- *He denied having seen the report.* — Raporu gördüğünü inkâr etti.\n\n## Nasıl çözülür\n1. Boşluktan hemen önceki sözcüğe bak: fiil mi, edat mı, sıfat mı?\n2. Edatsa (in, of, without, by, to [be used to, look forward to, object to]) doğrudan -ing biçimini seç.\n3. Fiilse o fiilin kalıbını hatırla: -ing mi, to mu, nesne + to mu?\n4. Anlam değiştiren bir fiilse (stop, remember, try, regret, go on) cümlenin zaman çizgisine bak: eylem önce mi olmuş, sonra mı olacak?\n5. Özne eylemi yapıyor mu, eyleme mi maruz kalıyor? Maruz kalıyorsa edilgen (to be done / being done); eylem ana fiilden önceyse perfect (to have done / having done).\n\n*Örnek:* ‘The documents appear ---- before the fire, since none of them shows any smoke damage.’ (1) Önceki sözcük ‘appear’, to alır. (2) Belgeler kendileri bir şey yapmaz, yerlerinden kaldırılır: edilgen. (3) Kaldırma işi yangından önce olmuştur: perfect. Sonuç: *to have been removed*. ‘to have removed’ etken olduğu için, ‘to remove’ zaman ilişkisini göstermediği için elenir.\n\n## Tuzaklar ve sık yapılan hatalar\n- **to edatını mastar sanmak**: *I look forward to hear from you* yanlış; *to hearing* doğru. Aynı tuzak *be used to, get used to, object to, be committed to, contribute to* için geçerlidir.\n- **used to do / be used to doing karışıklığı**: *used to write* ‘eskiden yazardı’, *be used to writing* ‘yazmaya alışkın’ demektir. Türkçede ikisi de ‘-meye alışkın’ gibi çevrilebildiği için karışır.\n- Türkçede ‘-meyi’ ve ‘-mek için’ ayrımı İngilizcede *stop doing / stop to do* ayrımına karşılık gelir; Türk adaylar ikisini sık karıştırır.\n- *suggest to do* yanlış: *suggest doing* ya da *suggest that someone do*.\n- *allow/enable/prevent* farkı: *enable someone to do*, ama *prevent someone from doing*.\n- Çeldirici türleri: doğru fiil yanlış biçimde (*to having done*), etken/edilgen karışıklığı, perfect gerekirken basit biçim.\n\n## Sınav ipucu\nYDS dilbilgisi sorularında bu konu her yıl birkaç kez gelir; en çok sorulanlar *appear/seem/is said to have been done*, edat + -ing ve *be used to doing* kalıplarıdır. Şıkların hepsi aynı fiilin farklı biçimleriyse bu bir gerund/infinitive sorusudur: önce boşluktan önceki sözcüğü kontrol et, sonra etken/edilgen ve zaman ilişkisini sına. Cloze metinlerinde *too … to*, *enough to*, *it is worth doing* ve *need to be done* kalıplarına dikkat et.",
+   "guide": "## Kural\nİngilizcede bir fiil başka bir fiili nesne olarak aldığında ikinci fiil ya **-ing (gerund)** ya da **to + yalın fiil (infinitive)** biçiminde gelir. Hangisinin geleceğini ilk fiil belirler.\n- **-ing alan fiiller**: avoid, consider, deny, enjoy, finish, postpone, delay, risk, suggest, admit, keep, mind, involve, resist. *The firm avoided paying the fine.*\n- **to alan fiiller**: decide, manage, refuse, agree, promise, fail, afford, hope, plan, decline, expect, tend, seem, appear, intend. *The team managed to recover the data.*\n- **Nesne + to**: allow, enable, encourage, force, persuade, require, warn, ask, advise. *The rules allow researchers to use the archive.* (Nesnesiz kullanımda allow/advise -ing alabilir: *They allow smoking.*)\n- **Anlam değiştirenler**: *stop doing* (bırakmak) / *stop to do* (-mek için durmak); *remember/forget doing* (geçmişte yapılanı hatırlamak) / *remember/forget to do* (yapılması gerekeni hatırlamak); *regret doing* (yaptığına pişman olmak) / *regret to say* (söylemekten üzüntü duymak); *try doing* (deneme amaçlı yapmak) / *try to do* (çabalamak); *go on doing* (aynı işi sürdürmek) / *go on to do* (sonra başka işe geçmek).\n- **Edattan sonra her zaman -ing**: interested in, instead of, without, before, after, by, despite, look forward to, object to, be used to, get used to. Buradaki **to** bir edattır.\n- **Edilgen ve perfect biçimler**: *to be done / being done* (edilgen), *to have done / having done* (önce olmuş), *to have been done / having been done* (önce olmuş ve edilgen). *The files appear to have been deleted.*\n- **it + sıfat + to**: *It is difficult to measure…*; **too/enough + to**: *too frequent to ignore*.\n\n## Örnekler\n- *The council is considering converting the harbour into a park.* — Belediye limanı bir parka dönüştürmeyi düşünüyor.\n- *Please remember to label every sample.* — Lütfen her örneği etiketlemeyi unutma.\n- *I remember labelling the samples.* — Örnekleri etiketlediğimi hatırlıyorum.\n- *Residents are used to living with frequent power cuts.* — Bölge sakinleri sık elektrik kesintileriyle yaşamaya alışkın.\n- *The ruins are believed to have been destroyed by an earthquake.* — Kalıntıların bir depremle yıkıldığına inanılıyor.\n- *He denied having seen the report.* — Raporu gördüğünü inkâr etti.\n\n## Nasıl çözülür\n1. Boşluktan hemen önceki sözcüğe bak: fiil mi, edat mı, sıfat mı?\n2. Edatsa (in, of, without, by, to [be used to, look forward to, object to]) doğrudan -ing biçimini seç.\n3. Fiilse o fiilin kalıbını hatırla: -ing mi, to mu, nesne + to mu?\n4. Anlam değiştiren bir fiilse (stop, remember, try, regret, go on) cümlenin zaman çizgisine bak: eylem önce mi olmuş, sonra mı olacak?\n5. Özne eylemi yapıyor mu, eyleme mi maruz kalıyor? Maruz kalıyorsa edilgen (to be done / being done); eylem ana fiilden önceyse perfect (to have done / having done).\n\n*Örnek:* ‘The documents appear ---- before the fire, since none of them shows any smoke damage.’ (1) Önceki sözcük ‘appear’, to alır. (2) Belgeler kendileri bir şey yapmaz, yerlerinden kaldırılır: edilgen. (3) Kaldırma işi yangından önce olmuştur: perfect. Sonuç: *to have been removed*. ‘to have removed’ etken olduğu için, ‘to remove’ zaman ilişkisini göstermediği için elenir.\n\n## Tuzaklar ve sık yapılan hatalar\n- **to edatını mastar sanmak**: *I look forward to hear from you* yanlış; *to hearing* doğru. Aynı tuzak *be used to, get used to, object to, be committed to, contribute to* için geçerlidir.\n- **used to do / be used to doing karışıklığı**: *used to write* ‘eskiden yazardı’, *be used to writing* ‘yazmaya alışkın’ demektir. İkisi de alışkanlık fikri taşıdığı ve biçimce benzediği için karışır.\n- Türkçede ‘-meyi’ ve ‘-mek için’ ayrımı İngilizcede *stop doing / stop to do* ayrımına karşılık gelir; Türk adaylar ikisini sık karıştırır.\n- *suggest to do* yanlış: *suggest doing* ya da *suggest that someone do*.\n- *allow/enable/prevent* farkı: *enable someone to do*, ama *prevent someone from doing*.\n- Çeldirici türleri: doğru fiil yanlış biçimde (*to having done*), etken/edilgen karışıklığı, perfect gerekirken basit biçim.\n\n## Sınav ipucu\nYDS dilbilgisi sorularında bu konu her yıl birkaç kez gelir; en çok sorulanlar *appear/seem/is said to have been done*, edat + -ing ve *be used to doing* kalıplarıdır. Şıkların hepsi aynı fiilin farklı biçimleriyse bu bir gerund/infinitive sorusudur: önce boşluktan önceki sözcüğü kontrol et, sonra etken/edilgen ve zaman ilişkisini sına. Cloze metinlerinde *too … to*, *enough to*, *it is worth doing* ve *need to be done* kalıplarına dikkat et.",
    "nodes": [
     {
      "id": "ys1u7l1",
@@ -10990,7 +10990,7 @@
       },
       {
        "type": "choice",
-       "question": "The ruins are believed ---- by an earthquake in the ninth century.",
+       "question": "Much of the old harbour is believed ---- by a tsunami in the ninth century.",
        "options": [
         "to destroy",
         "to be destroying",
@@ -10999,7 +10999,7 @@
         "to have destroyed"
        ],
        "answer": 3,
-       "explanation": "Kalıntılar yıkılan şeydir (edilgen) ve bu olay geçmişte olmuştur (perfect): ‘to have been destroyed’. ‘to have destroyed’ etken çatıdır, kalıntıların bir şeyi yıktığını söyler."
+       "explanation": "Liman yıkılan şeydir (edilgen) ve bu olay geçmişte olmuştur (perfect): ‘to have been destroyed’. ‘to have destroyed’ etken çatıdır, limanın bir şeyi yıktığını söyler."
       },
       {
        "type": "choice",
@@ -11773,7 +11773,7 @@
          "in case"
         ],
         [
-         "-ır -mız",
+         "-ır -maz",
          "as soon as"
         ]
        ]
@@ -13185,7 +13185,7 @@
         "deficit",
         "bulk",
         "fraction",
-        "minority"
+        "shortage"
        ],
        "answer": 2,
        "explanation": "‘The bulk of’ (… büyük kısmı) belirli artikelle doğal bir kalıptır. ‘handful’ ve ‘fraction’ ‘a’ ile kullanılır; ‘deficit’ (açık) anlamsızdır."
@@ -13829,7 +13829,7 @@
         "Few of the participants answered all the questions in the survey."
        ],
        "answer": 0,
-       "explanation": "‘hiçbiri’ ‘None of’ ile verilir ve fiil olumlu kalır; ‘None of the participants answered all the questions in the survey’ doğrudur. ‘None … didn't answer’ ve ‘All … didn't answer none’ diyen şıklarda çift olumsuzluk vardır; ‘Neither of’ iki kişi için kullanılır ve anlamı değiştirir; ‘Few of’ ‘birkaçı’ der."
+       "explanation": "‘hiçbiri’ ‘None of’ ile verilir ve fiil olumlu kalır; ‘None of the participants answered all the questions in the survey’ doğrudur. ‘None … didn't answer’ ve ‘All … didn't answer none’ diyen şıklarda çift olumsuzluk vardır; ‘Neither of’ iki kişi için kullanılır ve anlamı değiştirir; ‘Few of’ ‘pek azı’ der."
       },
       {
        "type": "choice",

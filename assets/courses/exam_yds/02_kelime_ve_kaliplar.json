@@ -3374,7 +3374,7 @@
         "It is still too early to draw a firm conclusion from this study."
        ],
        "answer": 4,
-       "explanation": "'Sonuç çıkarmak' = 'draw a conclusion'; 'henüz çok erken' = 'still too early'. ‘has already reached a firm conclusion’ diyen şık sonuca varıldığını söyler; bir başkası 'too late' der; ‘will be drawn … very soon’ diyen şık yakında sonuç çıkacağını söyler; ‘was concluded earlier than expected’ diyen şık çalışmanın bittiğini anlatır."
+       "explanation": "'Sonuç çıkarmak' = 'draw a conclusion'; 'henüz çok erken' = 'still too early'. ‘has already reached a firm conclusion’ diyen şık sonuca varıldığını söyler; 'It was too late' diyen şık geç kalındığını söyler; ‘will be drawn … very soon’ diyen şık yakında sonuç çıkacağını söyler; ‘was concluded earlier than expected’ diyen şık çalışmanın bittiğini anlatır."
       },
       {
        "type": "choice",
@@ -4120,7 +4120,7 @@
       },
       {
        "type": "choice",
-       "passage": "The fictional village of Orvik once had a (1) ---- supply of fresh water from mountain springs. In the 1980s, however, a mining company began to take large amounts of water from the same source, and the springs (2) ---- dried up. Villagers were forced to (3) ---- on expensive deliveries by truck. After years of protests, a court ordered the company to (4) ---- its water use, and the springs have slowly begun to recover.",
+       "passage": "The fictional village of Orvik once had (1) ---- supplies of fresh water from mountain springs. In the 1980s, however, a mining company began to take large amounts of water from the same source, and the springs (2) ---- dried up. Villagers were forced to (3) ---- on expensive deliveries by truck. After years of protests, a court ordered the company to (4) ---- its water use, and the springs have slowly begun to recover.",
        "question": "(1) numaralı boşluğa hangisi getirilmelidir?",
        "options": [
         "scarce",
@@ -4130,11 +4130,11 @@
         "reluctant"
        ],
        "answer": 1,
-       "explanation": "'Once ... however' karşıtlığı, köyün önceden bol suyu olduğunu gösterir; 'abundant supply' (bol kaynak). 'Scarce' (kıt) bu karşıtlığı bozar; 'tentative', 'vague' ve 'reluctant' su kaynağını nitelemez."
+       "explanation": "'Once ... however' karşıtlığı, köyün önceden bol suyu olduğunu gösterir; 'abundant supplies' (bol kaynaklar). 'Scarce' (kıt) bu karşıtlığı bozar; 'tentative', 'vague' ve 'reluctant' su kaynağını nitelemez."
       },
       {
        "type": "choice",
-       "passage": "The fictional village of Orvik once had a (1) ---- supply of fresh water from mountain springs. In the 1980s, however, a mining company began to take large amounts of water from the same source, and the springs (2) ---- dried up. Villagers were forced to (3) ---- on expensive deliveries by truck. After years of protests, a court ordered the company to (4) ---- its water use, and the springs have slowly begun to recover.",
+       "passage": "The fictional village of Orvik once had (1) ---- supplies of fresh water from mountain springs. In the 1980s, however, a mining company began to take large amounts of water from the same source, and the springs (2) ---- dried up. Villagers were forced to (3) ---- on expensive deliveries by truck. After years of protests, a court ordered the company to (4) ---- its water use, and the springs have slowly begun to recover.",
        "question": "(2) numaralı boşluğa hangisi getirilmelidir?",
        "options": [
         "gradually",
@@ -4148,7 +4148,7 @@
       },
       {
        "type": "choice",
-       "passage": "The fictional village of Orvik once had a (1) ---- supply of fresh water from mountain springs. In the 1980s, however, a mining company began to take large amounts of water from the same source, and the springs (2) ---- dried up. Villagers were forced to (3) ---- on expensive deliveries by truck. After years of protests, a court ordered the company to (4) ---- its water use, and the springs have slowly begun to recover.",
+       "passage": "The fictional village of Orvik once had (1) ---- supplies of fresh water from mountain springs. In the 1980s, however, a mining company began to take large amounts of water from the same source, and the springs (2) ---- dried up. Villagers were forced to (3) ---- on expensive deliveries by truck. After years of protests, a court ordered the company to (4) ---- its water use, and the springs have slowly begun to recover.",
        "question": "(3) numaralı boşluğa hangisi getirilmelidir?",
        "options": [
         "deal",
@@ -4162,7 +4162,7 @@
       },
       {
        "type": "choice",
-       "passage": "The fictional village of Orvik once had a (1) ---- supply of fresh water from mountain springs. In the 1980s, however, a mining company began to take large amounts of water from the same source, and the springs (2) ---- dried up. Villagers were forced to (3) ---- on expensive deliveries by truck. After years of protests, a court ordered the company to (4) ---- its water use, and the springs have slowly begun to recover.",
+       "passage": "The fictional village of Orvik once had (1) ---- supplies of fresh water from mountain springs. In the 1980s, however, a mining company began to take large amounts of water from the same source, and the springs (2) ---- dried up. Villagers were forced to (3) ---- on expensive deliveries by truck. After years of protests, a court ordered the company to (4) ---- its water use, and the springs have slowly begun to recover.",
        "question": "(4) numaralı boşluğa hangisi getirilmelidir?",
        "options": [
         "foster",
@@ -4250,7 +4250,7 @@
         "Few people took part in the survey."
        ],
        "answer": 2,
-       "explanation": "'Far from conclusive' (kesin olmaktan çok uzak) = sonuçlar soruyu çözüme kavuşturmadı ('did not settle the question'). Birinci şık tam tersini söyler; dördüncü 'far' kelimesini yanlış yorumlar; ikinci ve beşinci metinde olmayan bilgiler verir."
+       "explanation": "'Far from conclusive' (kesin olmaktan çok uzak) = sonuçlar soruyu çözüme kavuşturmadı ('did not settle the question'). 'Very clear and final results' diyen şık tam tersini söyler; 'published in a distant country' diyen şık 'far' kelimesini yanlış yorumlar; 'never completed' ve 'Few people took part' diyen şıklar metinde olmayan bilgiler verir."
       }
      ]
     },
@@ -4269,7 +4269,7 @@
    "description": "affect/effect, rise/raise, imply/infer gibi birbirine benzeyen kelime çiftleri",
    "color": "0xFFF2A900",
    "theme": "olasilik",
-   "guide": "## Kural\nYDS ve YÖKDİL kelime sorularında çeldiricilerin bir kısmı, doğru cevaba yazılışça ya da sesçe çok benzeyen kelimelerden seçilir. Bu çiftleri ayırmanın yolu, her birinin **sözcük türünü** (isim mi, fiil mi, sıfat mı), **nesne alıp almadığını** ve **hangi edatla** kullanıldığını bilmektir.\n\n**Fiil ve isim çiftleri**\n- **affect** (fiil): etkilemek — **effect** (isim): etki, sonuç (*have an effect on*)\n- **raise** (nesne alır): yükseltmek, artırmak — **rise** (nesne almaz): yükselmek, artmak (rise–rose–risen)\n- **lay** (nesne alır): koymak, sermek (lay–laid–laid) — **lie** (nesne almaz): uzanmak, yatmak (lie–lay–lain)\n- **lose**: kaybetmek — **loose** (sıfat): gevşek, bol\n\n**Sıfat çiftleri**\n- **economic**: ekonomiyle ilgili — **economical**: tutumlu, az tüketen\n- **sensible**: mantıklı, akıllıca — **sensitive**: hassas, duyarlı (*sensitive to*)\n- **principal**: başlıca; okul müdürü — **principle**: ilke (*as a matter of principle*)\n- **historic**: tarihî önemi olan — **historical**: tarihle ilgili, geçmişe ait\n- **continual**: sık sık tekrarlanan — **continuous**: kesintisiz\n\n**İleri düzey çiftler**\n- **adapt (to)**: uyum sağlamak, uyarlamak — **adopt**: benimsemek, evlat edinmek\n- **complement**: tamamlamak — **compliment**: iltifat (etmek)\n- **prescribe**: reçete etmek, öngörmek — **proscribe**: yasaklamak\n- **imply**: ima etmek — **infer (from)**: sonuç çıkarmak\n\n## Örnekler\n- *Stress can affect your memory.* — Stres hafızanızı etkileyebilir.\n- *The policy had a positive effect on exports.* — Politikanın ihracat üzerinde olumlu bir etkisi oldu.\n- *Temperatures rise in summer, so the company raised its prices.* — Yazın sıcaklıklar yükselir, bu yüzden şirket fiyatlarını yükseltti.\n- *She lay on the grass and laid her book beside her.* — Çimlere uzandı ve kitabını yanına koydu.\n- *Plants adapt to dry conditions; the city adopted a new water policy.* — Bitkiler kuru koşullara uyum sağlar; şehir yeni bir su politikası benimsedi.\n- *His tone implied that he was angry; I inferred from his tone that he was angry.* — Ses tonu kızgın olduğunu ima ediyordu; ben tonundan kızgın olduğu sonucunu çıkardım.\n- *The two methods complement each other.* — İki yöntem birbirini tamamlar.\n\n## Nasıl çözülür\n1. Şıklara bakın: aralarında benzer bir çift varsa soru büyük ihtimalle o çifti ölçüyordur; öteki üç şıkkı hızla eleyin.\n2. Boşluğun **sözdizimsel yerini** belirleyin: önünde *a/an/the* ya da iyelik varsa isim, arkasında nesne varsa geçişli fiil (*raise, lay, affect*), nesne yoksa geçişsiz fiil (*rise, lie*) gerekir.\n3. Boşluktan sonra gelen **edatı** kontrol edin: *adapt to, infer from, sensitive to, effect on*.\n4. Cümledeki **anlam ipucunu** arayın: *never stopped* → *continuous*; *criminal offence* → *proscribe*; *uses little fuel* → *economical*.\n5. Kalan iki adayı cümleye koyup kabaca Türkçeye çevirin; anlamsız olanı atın.\n\n**Örnek çözüm:** *Unemployment has ---- steadily over the past year.* (A) raised (B) risen (C) laid (D) affected (E) lain\n- Adım 1: *raised/risen* ve *laid/lain* çiftleri var.\n- Adım 2: Boşluktan sonra nesne yok (*steadily* bir zarftır); geçişli *raised, laid, affected* elenir.\n- Adım 4: İşsizlik ‘uzanmaz’, ‘yükselir’; *lain* elenir. Cevap **(B) risen**.\n\n## Tuzaklar ve sık yapılan hatalar\n- Türkçede ‘yükselmek’ ile ‘yükseltmek’ ayrı fiillerdir; İngilizcede de öyledir. *Prices raised* yanlış, *prices rose* doğrudur.\n- *lie* fiilinin geçmiş hâli **lay**’dir. *lay* gördüğünüzde zamanı kontrol edin: *She lay down yesterday* doğru, *She laid down yesterday* yanlıştır.\n- *imply* konuşan/yazan kişinin işidir, *infer* dinleyen/okuyanın. Cansız özneler (*silence, the report, the data*) **imply** eder, sonuç çıkaramaz.\n- *historical* ile *historic* sık karışır: ‘tarihî bir an’ **historic moment**, ‘tarihsel belgeler’ **historical documents**.\n- *principle* isimdir, sıfat gibi bir ismin önüne gelmez: *the principal reason*.\n- Yazım tuzağı: *lose* (kaybetmek) bir *o* ile yazılır; *loose* (gevşek) iki *o* ile.\n- Çeldirici türü: ÖSYM tarzı sorularda doğru kelimenin ‘ikizi’ çoğu zaman B ya da A şıkkında hemen yanında durur; ilk gördüğünüz tanıdık kelimeye atlamayın.\n\n## Sınav ipucu\nYDS’de kelime bölümündeki 6 sorunun en az biri genellikle bu tür bir çifti ya da yakın anlamlı iki kelimeyi ölçer. YÖKDİL’de ise çiftler çoğunlukla akademik bir bağlamın içine gizlenir (*economic growth, historical records, adapt to environmental change*). Cümleyi baştan sona çevirmeye çalışmayın; önce sözcük türü ve edat ile eleyin, sonra anlamla karar verin. Cloze sorularında da aynı çiftler çıkar: boşluğun önüne ve arkasına iki kelime bakmak çoğu zaman yeterlidir.",
+   "guide": "## Kural\nYDS ve YÖKDİL kelime sorularında çeldiricilerin bir kısmı, doğru cevaba yazılışça ya da sesçe çok benzeyen kelimelerden seçilir. Bu çiftleri ayırmanın yolu, her birinin **sözcük türünü** (isim mi, fiil mi, sıfat mı), **nesne alıp almadığını** ve **hangi edatla** kullanıldığını bilmektir.\n\n**Fiil ve isim çiftleri**\n- **affect** (fiil): etkilemek — **effect** (isim): etki, sonuç (*have an effect on*)\n- **raise** (nesne alır): yükseltmek, artırmak — **rise** (nesne almaz): yükselmek, artmak (rise–rose–risen)\n- **lay** (nesne alır): koymak, sermek (lay–laid–laid) — **lie** (nesne almaz): uzanmak, yatmak (lie–lay–lain)\n- **lose**: kaybetmek — **loose** (sıfat): gevşek, bol\n\n**Sıfat çiftleri**\n- **economic**: ekonomiyle ilgili — **economical**: tutumlu, az tüketen\n- **sensible**: mantıklı, akıllıca — **sensitive**: hassas, duyarlı (*sensitive to*)\n- **principal**: başlıca; okul müdürü — **principle**: ilke (*as a matter of principle*)\n- **historic**: tarihî önemi olan — **historical**: tarihle ilgili, geçmişe ait\n- **continual**: sık sık tekrarlanan — **continuous**: kesintisiz\n\n**İleri düzey çiftler**\n- **adapt (to)**: uyum sağlamak, uyarlamak — **adopt**: benimsemek, evlat edinmek\n- **complement**: tamamlamak — **compliment**: iltifat (etmek)\n- **prescribe**: reçete etmek, öngörmek — **proscribe**: yasaklamak\n- **imply**: ima etmek — **infer (from)**: sonuç çıkarmak\n\n## Örnekler\n- *Stress can affect your memory.* — Stres hafızanızı etkileyebilir.\n- *The policy had a positive effect on exports.* — Politikanın ihracat üzerinde olumlu bir etkisi oldu.\n- *Temperatures rise in summer, so the company raised its prices.* — Yazın sıcaklıklar yükselir, bu yüzden şirket fiyatlarını yükseltti.\n- *She lay on the grass and laid her book beside her.* — Çimlere uzandı ve kitabını yanına koydu.\n- *Plants adapt to dry conditions; the city adopted a new water policy.* — Bitkiler kuru koşullara uyum sağlar; şehir yeni bir su politikası benimsedi.\n- *His tone implied that he was angry; I inferred from his tone that he was angry.* — Ses tonu kızgın olduğunu ima ediyordu; ben tonundan kızgın olduğu sonucunu çıkardım.\n- *The two methods complement each other.* — İki yöntem birbirini tamamlar.\n\n## Nasıl çözülür\n1. Şıklara bakın: aralarında benzer bir çift varsa soru büyük ihtimalle o çifti ölçüyordur; öteki üç şıkkı hızla eleyin.\n2. Boşluğun **sözdizimsel yerini** belirleyin: önünde *a/an/the* ya da iyelik varsa isim, arkasında nesne varsa geçişli fiil (*raise, lay, affect*), nesne yoksa geçişsiz fiil (*rise, lie*) gerekir.\n3. Boşluktan sonra gelen **edatı** kontrol edin: *adapt to, infer from, sensitive to, effect on*.\n4. Cümledeki **anlam ipucunu** arayın: *never stopped* → *continuous*; *criminal offence* → *proscribe*; *uses little fuel* → *economical*.\n5. Kalan iki adayı cümleye koyup kabaca Türkçeye çevirin; anlamsız olanı atın.\n\n**Örnek çözüm:** *Unemployment has ---- steadily over the past year.* (A) raised (B) risen (C) laid (D) affected (E) lain\n- Adım 1: *raised/risen* ve *laid/lain* çiftleri var.\n- Adım 2: Boşluktan sonra nesne yok (*steadily* bir zarftır); geçişli *raised, laid, affected* elenir.\n- Adım 4: İşsizlik ‘uzanmaz’, ‘yükselir’; *lain* elenir. Cevap **(B) risen**.\n\n## Tuzaklar ve sık yapılan hatalar\n- Türkçede ‘yükselmek’ ile ‘yükseltmek’ ayrı fiillerdir; İngilizcede de öyledir. *Prices raised* yanlış, *prices rose* doğrudur.\n- *lie* fiilinin geçmiş hâli **lay**’dir. *lay* gördüğünüzde zamanı kontrol edin: *She lay down yesterday* doğru, *She laid down yesterday* yanlıştır.\n- *imply* konuşan/yazan kişinin işidir, *infer* dinleyen/okuyanın. Cansız özneler (*silence, the report, the data*) **imply** eder, sonuç çıkaramaz.\n- *historical* ile *historic* sık karışır: ‘tarihî bir an’ **historic moment**, ‘tarihsel belgeler’ **historical documents**.\n- *principle* isimdir, sıfat gibi bir ismin önüne gelmez: *the principal reason*.\n- Yazım tuzağı: *lose* (kaybetmek) bir *o* ile yazılır; *loose* (gevşek) iki *o* ile.\n- Çeldirici türü: ÖSYM tarzı sorularda doğru kelimenin ‘ikizi’ çoğu zaman şıklar arasında yer alır; ilk gördüğünüz tanıdık kelimeye atlamayın.\n\n## Sınav ipucu\nYDS’de kelime bölümündeki 6 sorunun en az biri genellikle bu tür bir çifti ya da yakın anlamlı iki kelimeyi ölçer. YÖKDİL’de ise çiftler çoğunlukla akademik bir bağlamın içine gizlenir (*economic growth, historical records, adapt to environmental change*). Cümleyi baştan sona çevirmeye çalışmayın; önce sözcük türü ve edat ile eleyin, sonra anlamla karar verin. Cloze sorularında da aynı çiftler çıkar: boşluğun önüne ve arkasına iki kelime bakmak çoğu zaman yeterlidir.",
    "nodes": [
     {
      "id": "ys2u6l1",
@@ -4750,7 +4750,7 @@
       },
       {
        "type": "choice",
-       "question": "Unemployment has ---- steadily over the past three quarters, prompting calls for government intervention.",
+       "question": "The average age of first-time home buyers has ---- considerably over the past decade, as house prices have grown faster than wages.",
        "options": [
         "risen",
         "raised",
@@ -5524,7 +5524,7 @@
       },
       {
        "type": "choice",
-       "question": "Rubber is often used to cover cables because it does not ---- electricity, protecting users from shocks.",
+       "question": "Ceramic is often used to make the insulators on power lines because it does not ---- electricity well.",
        "options": [
         "emit",
         "compress",
@@ -5533,7 +5533,7 @@
         "decompose"
        ],
        "answer": 3,
-       "explanation": "Kauçuk elektriği ‘iletmediği’ için kullanıcıları korur: 'conduct electricity'. 'Emit' (salmak), 'compress' (sıkıştırmak), 'evaporate' (buharlaşmak) ve 'decompose' (ayrışmak) elektrikle bu anlamı vermez."
+       "explanation": "Seramik elektriği iyi ‘iletmediği’ için elektrik hatlarındaki yalıtkanların yapımında kullanılır: 'conduct electricity'. 'Emit' (salmak), 'compress' (sıkıştırmak), 'evaporate' (buharlaşmak) ve 'decompose' (ayrışmak) elektrikle bu anlamı vermez."
       },
       {
        "type": "match",
@@ -6187,7 +6187,7 @@
       },
       {
        "type": "choice",
-       "question": "Elderly people are more ---- to infections because their immune systems are weaker.",
+       "question": "People who regularly sleep very little are more ---- to infections because lack of sleep weakens the immune system.",
        "options": [
         "immune",
         "resistant",
@@ -6703,7 +6703,7 @@
       },
       {
        "type": "choice",
-       "passage": "In a recent report, health officials in a mountainous province described an (1) ---- of a mosquito-borne fever that affected several villages during the rainy season. Most patients first noticed mild (2) ----, such as headaches and joint pain, before developing a high fever. Although the illness was unpleasant, (3) ---- remained low, since nearly all patients recovered after a few days of rest and fluids. Officials stressed, however, that young children and elderly people were more (4) ---- to complications and should seek medical help immediately.",
+       "passage": "In a recent report, health officials in a mountainous province described a serious (1) ---- of a mosquito-borne fever that affected several villages during the rainy season. Most patients first noticed mild (2) ----, such as headaches and joint pain, before developing a high fever. Although the illness was unpleasant, (3) ---- remained low, since nearly all patients recovered after a few days of rest and fluids. Officials stressed, however, that young children and elderly people were more (4) ---- to complications and should seek medical help immediately.",
        "question": "(1) numaralı boşluğa hangisi gelmelidir?",
        "options": [
         "onset",
@@ -6717,7 +6717,7 @@
       },
       {
        "type": "choice",
-       "passage": "In a recent report, health officials in a mountainous province described an (1) ---- of a mosquito-borne fever that affected several villages during the rainy season. Most patients first noticed mild (2) ----, such as headaches and joint pain, before developing a high fever. Although the illness was unpleasant, (3) ---- remained low, since nearly all patients recovered after a few days of rest and fluids. Officials stressed, however, that young children and elderly people were more (4) ---- to complications and should seek medical help immediately.",
+       "passage": "In a recent report, health officials in a mountainous province described a serious (1) ---- of a mosquito-borne fever that affected several villages during the rainy season. Most patients first noticed mild (2) ----, such as headaches and joint pain, before developing a high fever. Although the illness was unpleasant, (3) ---- remained low, since nearly all patients recovered after a few days of rest and fluids. Officials stressed, however, that young children and elderly people were more (4) ---- to complications and should seek medical help immediately.",
        "question": "(2) numaralı boşluğa hangisi gelmelidir?",
        "options": [
         "vessels",
@@ -6731,7 +6731,7 @@
       },
       {
        "type": "choice",
-       "passage": "In a recent report, health officials in a mountainous province described an (1) ---- of a mosquito-borne fever that affected several villages during the rainy season. Most patients first noticed mild (2) ----, such as headaches and joint pain, before developing a high fever. Although the illness was unpleasant, (3) ---- remained low, since nearly all patients recovered after a few days of rest and fluids. Officials stressed, however, that young children and elderly people were more (4) ---- to complications and should seek medical help immediately.",
+       "passage": "In a recent report, health officials in a mountainous province described a serious (1) ---- of a mosquito-borne fever that affected several villages during the rainy season. Most patients first noticed mild (2) ----, such as headaches and joint pain, before developing a high fever. Although the illness was unpleasant, (3) ---- remained low, since nearly all patients recovered after a few days of rest and fluids. Officials stressed, however, that young children and elderly people were more (4) ---- to complications and should seek medical help immediately.",
        "question": "(3) numaralı boşluğa hangisi gelmelidir?",
        "options": [
         "mortality",
@@ -6745,7 +6745,7 @@
       },
       {
        "type": "choice",
-       "passage": "In a recent report, health officials in a mountainous province described an (1) ---- of a mosquito-borne fever that affected several villages during the rainy season. Most patients first noticed mild (2) ----, such as headaches and joint pain, before developing a high fever. Although the illness was unpleasant, (3) ---- remained low, since nearly all patients recovered after a few days of rest and fluids. Officials stressed, however, that young children and elderly people were more (4) ---- to complications and should seek medical help immediately.",
+       "passage": "In a recent report, health officials in a mountainous province described a serious (1) ---- of a mosquito-borne fever that affected several villages during the rainy season. Most patients first noticed mild (2) ----, such as headaches and joint pain, before developing a high fever. Although the illness was unpleasant, (3) ---- remained low, since nearly all patients recovered after a few days of rest and fluids. Officials stressed, however, that young children and elderly people were more (4) ---- to complications and should seek medical help immediately.",
        "question": "(4) numaralı boşluğa hangisi gelmelidir?",
        "options": [
         "immune",
@@ -7063,7 +7063,7 @@
       },
       {
        "type": "choice",
-       "question": "During the ----, many factories closed and unemployment rose sharply.",
+       "question": "As output fell and thousands of workers lost their jobs, the country slipped into ----.",
        "options": [
         "revenue",
         "legislation",
@@ -7072,7 +7072,7 @@
         "cohesion"
        ],
        "answer": 2,
-       "explanation": "Fabrikaların kapandığı ve işsizliğin arttığı dönem 'recession' (ekonomik durgunluk)tur. 'Revenue' (gelir), 'legislation' (yasa), 'sovereignty' (egemenlik) ve 'cohesion' (bütünlük) bir dönem bildirmez."
+       "explanation": "Üretimin düşmesi ve binlerce kişinin işini kaybetmesi ekonomik daralmayı gösterir: 'slip into recession' (ekonomik durgunluğa girmek). 'Revenue' (gelir), 'legislation' (yasa), 'sovereignty' (egemenlik) ve 'cohesion' (bütünlük) ekonomik daralmayı anlatmaz."
       },
       {
        "type": "choice",
@@ -7725,7 +7725,7 @@
    "description": "YDS/YÖKDİL metinlerinde sık geçen 80 akademik fiil (A–L)",
    "color": "0xFFE0559A",
    "theme": "is",
-   "guide": "## Strateji\nBu set, YDS ve YÖKDİL metinlerinde sık geçen ama yolun önceki ünitelerinde olmayan 80 akademik fiili (A–L) içerir. Kelime sorusunda doğru fiili seçmek için üç şeyi birlikte bilmelisin: **anlam**, **yapı** (nesne alıyor mu, hangi edatla kullanılıyor) ve **eşdizim** (hangi isimlerle birlikte geçiyor).\n\n**Aralıklı tekrar:** Her dersten sonra kelimeleri 1 gün, 3 gün, 7 gün ve 21 gün sonra yeniden gözden geçir. Bildiklerini ayır, bilmediklerini bir sonraki tekrara taşı. Her tekrarda kelimeyi tek başına değil, kısa bir kalıpla söyle: *avert a crisis*, *deplete resources*, *exert pressure*.\n\n**Kelime ailesi:** Fiili öğrenirken isim ve sıfat hâlini de not et; paragraf ve cloze sorularında çoğu zaman bu hâller çıkar: *comprehend – comprehension – comprehensive*, *deter – deterrent*, *derive – derivation*, *eradicate – eradication*, *facilitate – facilitator*, *inhibit – inhibition*.\n\n**Anlam grupları:** Kelimeleri gruplayarak çalış.\n- **Artırmak, güçlendirmek:** *boost, bolster, amplify, intensify, generate*\n- **Azaltmak, azalmak:** *curtail, deplete, abate, dwindle*\n- **Engellemek, önlemek:** *impede, inhibit, deter, avert, jeopardise* (tehlikeye atmak)\n- **Başlamak, girişmek:** *commence, initiate, embark on*\n- **Uymak, uymamak:** *adhere to, conform to, deviate from, circumvent*\n- **Ortadan kaldırmak:** *eradicate*; yerinden etmek: *displace*; dağıtmak: *disperse*\n- **Düşünmek, öngörmek:** *contemplate, envisage, deem, discern, ascertain*\n- **Bağlamak, kaynaklanmak:** *ascribe A to B, derive A from B, coincide with, culminate in*\n\n## Örnekler\n- Quick action **averted** a major crisis. (Hızlı müdahale büyük bir krizi önledi.)\n- The drug **inhibits** the growth of bacteria. (İlaç bakterilerin büyümesini engelliyor.)\n- Overfarming has **depleted** the soil. (Aşırı tarım toprağı tüketti.)\n- The protests **culminated in** the minister's resignation. (Protestolar bakanın istifasıyla sonuçlandı.)\n- The new law will be strictly **enforced**. (Yeni yasa sıkı biçimde uygulanacak.)\n- Long hours **deprive** workers **of** sleep. (Uzun mesailer çalışanları uykudan yoksun bırakıyor.)\n- The scheme aims to **harness** solar energy. (Plan güneş enerjisinden yararlanmayı amaçlıyor.)\n\n## Nasıl çözülür\n1. Boşluktan sonra ne geldiğine bak: nesne mi, edat mı (*to, from, of, in, on, with*), yoksa hiçbir şey mi?\n2. Yapıya uymayan şıkları ele: *abate, dwindle, linger, cease* (çoğunlukla) nesnesiz; *deviate from, adhere to, culminate in, embark on, deprive of* edatlıdır.\n3. Cümlenin yönünü belirle: *although, despite, rather than, warn* gibi ifadeler olumlu mu olumsuz mu fiil istendiğini gösterir.\n4. Kalan şıklardan özne ve nesneyle en doğal eşdizimi kuranı seç.\n\n*Örnek:* 'Long working hours ---- many parents of the time they need with their children.' Şıklar: *compel, confine, deprive, convey, constitute*.\n1. Nesneden sonra *of the time* geliyor. 2. *X'i Y'den yoksun bırakmak* yapısı yalnızca *deprive X of Y* ile kurulur; *compel* ve *confine* 'to' ister. 3. *Convey* ve *constitute* anlamca uymaz. Doğru cevap *deprive*.\n\n## Tuzaklar ve sık yapılan hatalar\n- *Avert* (önlemek) ile *divert* (yönünü değiştirmek) ve *avoid* (kaçınmak) karıştırılır: *avert a disaster* doğru, *avert from doing* yanlıştır.\n- *Deplete* nesneyi doğrudan alır (*deplete reserves*); *deprive* mutlaka *of* ister (*deprive sb of sth*).\n- *Ascribe* ve *attribute* aynı yapıdadır: *ascribe A to B*; Türkçe 'nedeniyle' etkisiyle *for* kullanma.\n- *Adhere to* (uymak) ile *adapt to / adjust to* (alışmak) farklıdır: kurala *adhere* edilir, yeni bir ortama *adjust* edilir.\n- *Comprehend* (kavramak) ile *comprise* (oluşmak) yazımca benzer; *compile* (derlemek) ile *comply* (uymak) da karışır.\n- *Cease* hem nesneli hem nesnesiz olur ama *cease to do / cease doing* yapılarına dikkat et.\n- Çeldirici türleri: zıt anlamlı fiil (*boost / curtail*, *facilitate / impede*), edatı uymayan eş anlamlı (*deviate* yerine *diverge*), Türkçe çeviride uyuyor gibi görünen ama eşdizim kurmayan fiil.\n\n## Sınav ipucu\n- YDS'de ilk 6 soru kelime sorusudur; bu fiillerin en az biri hemen her sınavda şık olarak çıkar. Anlamını bildiğin şıkları hızla eleyip iki şık kalınca yapıya bak.\n- Cloze sorularında fiil boşluğu genellikle edatla birlikte gelir: *culminate in, embark on, compensate for, deviate from*. Edat ipucu çoğu zaman cevabı tek başına verir.\n- Paragraf sorularında *jeopardise, impede, curtail* gibi olumsuz fiiller yazarın tutumunu gösterir; bu fiilleri görünce eleştirel bir ton bekle.",
+   "guide": "## Strateji\nBu set, YDS ve YÖKDİL metinlerinde sık geçen ama yolun önceki ünitelerinde olmayan 80 akademik fiili (A–L) içerir. Kelime sorusunda doğru fiili seçmek için üç şeyi birlikte bilmelisin: **anlam**, **yapı** (nesne alıyor mu, hangi edatla kullanılıyor) ve **eşdizim** (hangi isimlerle birlikte geçiyor).\n\n**Aralıklı tekrar:** Her dersten sonra kelimeleri 1 gün, 3 gün, 7 gün ve 21 gün sonra yeniden gözden geçir. Bildiklerini ayır, bilmediklerini bir sonraki tekrara taşı. Her tekrarda kelimeyi tek başına değil, kısa bir kalıpla söyle: *avert a crisis*, *deplete resources*, *exert pressure*.\n\n**Kelime ailesi:** Fiili öğrenirken isim ve sıfat hâlini de not et; paragraf ve cloze sorularında çoğu zaman bu hâller çıkar: *comprehend – comprehension – comprehensive*, *deter – deterrent*, *derive – derivation*, *eradicate – eradication*, *facilitate – facilitator*, *inhibit – inhibition*.\n\n**Anlam grupları:** Kelimeleri gruplayarak çalış.\n- **Artırmak, güçlendirmek:** *boost, bolster, amplify, intensify, generate*\n- **Azaltmak, azalmak:** *curtail, deplete, abate, dwindle*\n- **Engellemek, önlemek:** *impede, inhibit, deter, avert, jeopardise* (tehlikeye atmak)\n- **Başlamak, girişmek:** *commence, initiate, embark on*\n- **Uymak, uymamak:** *adhere to, conform to, deviate from, circumvent*\n- **Ortadan kaldırmak:** *eradicate*; yerinden etmek: *displace*; dağıtmak: *disperse*\n- **Düşünmek, öngörmek:** *contemplate, envisage, deem, discern, ascertain*\n- **Bağlamak, kaynaklanmak:** *ascribe A to B, derive A from B, coincide with, culminate in*\n\n## Örnekler\n- Quick action **averted** a major crisis. (Hızlı müdahale büyük bir krizi önledi.)\n- The drug **inhibits** the growth of bacteria. (İlaç bakterilerin büyümesini engelliyor.)\n- Overfarming has **depleted** the soil. (Aşırı tarım toprağı tüketti.)\n- The protests **culminated in** the minister's resignation. (Protestolar bakanın istifasıyla sonuçlandı.)\n- The new law will be strictly **enforced**. (Yeni yasa sıkı biçimde uygulanacak.)\n- Long hours **deprive** workers **of** sleep. (Uzun mesailer çalışanları uykudan yoksun bırakıyor.)\n- The scheme aims to **harness** solar energy. (Plan güneş enerjisinden yararlanmayı amaçlıyor.)\n\n## Nasıl çözülür\n1. Boşluktan sonra ne geldiğine bak: nesne mi, edat mı (*to, from, of, in, on, with*), yoksa hiçbir şey mi?\n2. Yapıya uymayan şıkları ele: *abate, dwindle, linger* (çoğunlukla) nesnesiz; *deviate from, adhere to, culminate in, embark on, deprive of* edatlıdır.\n3. Cümlenin yönünü belirle: *although, despite, rather than, warn* gibi ifadeler olumlu mu olumsuz mu fiil istendiğini gösterir.\n4. Kalan şıklardan özne ve nesneyle en doğal eşdizimi kuranı seç.\n\n*Örnek:* 'Long working hours ---- many parents of the time they need with their children.' Şıklar: *compel, confine, deprive, convey, constitute*.\n1. Nesneden sonra *of the time* geliyor. 2. *X'i Y'den yoksun bırakmak* yapısı yalnızca *deprive X of Y* ile kurulur; *compel* ve *confine* 'to' ister. 3. *Convey* ve *constitute* anlamca uymaz. Doğru cevap *deprive*.\n\n## Tuzaklar ve sık yapılan hatalar\n- *Avert* (önlemek) ile *divert* (yönünü değiştirmek) ve *avoid* (kaçınmak) karıştırılır: *avert a disaster* doğru, *avert from doing* yanlıştır.\n- *Deplete* nesneyi doğrudan alır (*deplete reserves*); *deprive* mutlaka *of* ister (*deprive sb of sth*).\n- *Ascribe* ve *attribute* aynı yapıdadır: *ascribe A to B*; Türkçe 'nedeniyle' etkisiyle *for* kullanma.\n- *Adhere to* (uymak) ile *adapt to / adjust to* (alışmak) farklıdır: kurala *adhere* edilir, yeni bir ortama *adjust* edilir.\n- *Comprehend* (kavramak) ile *comprise* (oluşmak) yazımca benzer; *compile* (derlemek) ile *comply* (uymak) da karışır.\n- *Cease* hem nesneli hem nesnesiz olur ama *cease to do / cease doing* yapılarına dikkat et.\n- Çeldirici türleri: zıt anlamlı fiil (*boost / curtail*, *facilitate / impede*), edatı uymayan eş anlamlı (*deviate* yerine *diverge*), Türkçe çeviride uyuyor gibi görünen ama eşdizim kurmayan fiil.\n\n## Sınav ipucu\n- YDS'de ilk 6 soru kelime sorusudur; bu fiillerin en az biri hemen her sınavda şık olarak çıkar. Anlamını bildiğin şıkları hızla eleyip iki şık kalınca yapıya bak.\n- Cloze sorularında fiil boşluğu genellikle edatla birlikte gelir: *culminate in, embark on, compensate for, deviate from*. Edat ipucu çoğu zaman cevabı tek başına verir.\n- Paragraf sorularında *jeopardise, impede, curtail* gibi olumsuz fiiller yazarın tutumunu gösterir; bu fiilleri görünce eleştirel bir ton bekle.",
    "nodes": [
     {
      "id": "ys2u10l1",
@@ -8071,7 +8071,7 @@
       },
       {
        "type": "choice",
-       "question": "Long working hours ---- many young parents of the time they need to spend with their children.",
+       "question": "Strict visa rules ---- many foreign students of the chance to work during their studies.",
        "options": [
         "compel",
         "confine",
@@ -8080,7 +8080,7 @@
         "constitute"
        ],
        "answer": 2,
-       "explanation": "'Deprive sb of sth' (birini bir şeyden yoksun bırakmak) 'of the time' ile tamamlanır. 'Compel' ve 'confine' 'to' ile kullanılır; 'convey' (iletmek) ve 'constitute' (oluşturmak) anlamsızdır."
+       "explanation": "'Deprive sb of sth' (birini bir şeyden yoksun bırakmak) 'of the chance' ile tamamlanır. 'Compel' ve 'confine' 'to' ile kullanılır; 'convey' (iletmek) ve 'constitute' (oluşturmak) anlamsızdır."
       },
       {
        "type": "choice",
@@ -8388,7 +8388,7 @@
          "integrate"
         ],
         [
-         "(yasa, ilke) öne sürmek",
+         "(yasaya, ilkeye) başvurmak, dayanmak",
          "invoke"
         ],
         [
@@ -9261,7 +9261,7 @@
       },
       {
        "type": "choice",
-       "question": "Weakened by months of drought, many of the old trees ---- to a fungal disease last summer.",
+       "question": "After years of poor health, the old composer finally ---- to pneumonia.",
        "options": [
         "succumbed",
         "surpassed",
@@ -9270,7 +9270,7 @@
         "secured"
        ],
        "answer": 0,
-       "explanation": "'Succumb to' (-e yenik düşmek) kuraklıkla zayıflamış ağaçların hastalıktan kurtulamadığını anlatır. 'Surpassed', 'solicited', 'superseded' ve 'secured' doğrudan nesne ister, 'to' ile kullanılmaz."
+       "explanation": "'Succumb to' (-e yenik düşmek) yıllardır sağlığı bozuk olan bestecinin sonunda zatürreye yenik düştüğünü anlatır. 'Surpassed', 'solicited', 'superseded' ve 'secured' doğrudan nesne ister, 'to' ile kullanılmaz."
       },
       {
        "type": "fillBlank",
@@ -10017,7 +10017,7 @@
       },
       {
        "type": "choice",
-       "question": "Inspectors check restaurants regularly to ensure ---- with hygiene regulations.",
+       "question": "The factory was fined after inspectors found a lack of ---- with national safety standards.",
        "options": [
         "coverage",
         "compliance",
@@ -10026,7 +10026,7 @@
         "catastrophe"
        ],
        "answer": 1,
-       "explanation": "'Compliance with' (kurallara uyma) denetimin amacını anlatır. 'Coverage' (kapsam) ve 'conviction' (inanç, mahkûmiyet) 'with' ile bu anlamı vermez; 'counterpart' (muadil) ve 'catastrophe' (felaket) anlamsızdır."
+       "explanation": "'Compliance with' (kurallara uyma) denetçilerin bulduğu eksikliği ve cezanın nedenini anlatır. 'Coverage' (kapsam) ve 'conviction' (inanç, mahkûmiyet) 'with' ile bu anlamı vermez; 'counterpart' (muadil) ve 'catastrophe' (felaket) anlamsızdır."
       },
       {
        "type": "fillBlank",
@@ -11059,8 +11059,8 @@
       },
       {
        "type": "fillBlank",
-       "text": "Basic statistics is a ___ for this advanced course.",
-       "translation": "Temel istatistik bu ileri düzey ders için bir ön koşuldur.",
+       "text": "Basic statistics is an important ___ for this advanced course.",
+       "translation": "Temel istatistik bu ileri düzey ders için önemli bir ön koşuldur.",
        "answer": "prerequisite",
        "choices": [
         "prerequisite",
@@ -11493,8 +11493,8 @@
       },
       {
        "type": "fillBlank",
-       "text": "There is a ___ between speed and accuracy: the faster you work, the more mistakes you make.",
-       "translation": "Hız ve doğruluk arasında bir ödünleşim vardır: ne kadar hızlı çalışırsan o kadar çok hata yaparsın.",
+       "text": "There is an unavoidable ___ between speed and accuracy: the faster you work, the more mistakes you make.",
+       "translation": "Hız ve doğruluk arasında kaçınılmaz bir ödünleşim vardır: ne kadar hızlı çalışırsan o kadar çok hata yaparsın.",
        "answer": "trade-off",
        "choices": [
         "trade-off",
@@ -12358,7 +12358,7 @@
         "rudimentary"
        ],
        "answer": 1,
-       "explanation": "'So rampant that almost every official accepted bribes' (neredeyse her memurun rüşvet alacağı kadar yaygın) 'rampant' (kontrolsüz yayılan) yolsuzluğu anlatır. 'Prolific' (üretken) olumlu bir sıfattır; 'salient', 'mutual' ve 'rudimentary' anlamsızdır."
+       "explanation": "'So rampant that almost every official accepted bribes' (neredeyse her memurun rüşvet aldığı kadar yaygın) 'rampant' (kontrolsüz yayılan) yolsuzluğu anlatır. 'Prolific' (üretken) olumlu bir sıfattır; 'salient', 'mutual' ve 'rudimentary' anlamsızdır."
       },
       {
        "type": "choice",
@@ -12837,7 +12837,7 @@
    "description": "YDS/YÖKDİL'de sık çıkan 52 zarf ve 28 bağlaç benzeri kalıp",
    "color": "0xFF9B51E0",
    "theme": "yazisma",
-   "guide": "## Strateji\nBu set, YDS ve YÖKDİL metinlerinde sık geçen 52 zarf ve 28 kalıptır. Zarf sorularında şıkların hepsi dilbilgisel olarak boşluğa oturur; karar yalnızca anlamla verilir. Bu yüzden zarfları **işlevine göre gruplayarak** öğren: görüş ve kaynak, sıklık ve derece, bağlaç benzeri zarflar, edatlı kalıplar. Dersler de bu sırayı izler.\n- **Aralıklı tekrar:** Günde bir grup çalış; grubu 1., 3., 7. ve 14. günde yeniden gör.\n- **Kelime ailesi:** *allege – allegation – allegedly*, *vast – vastly*, *essence – essentially – in essence*.\n- **Eşdizim:** *rise drastically*, *vote unanimously*, *differ markedly*, *in excess of + sayı*.\n\n## Kelimeler ve anlamları\n- *arguably* tartışmaya açık olsa da · *invariably* her zaman · *admittedly* kabul etmek gerekir ki · *allegedly* iddiaya göre · *reportedly* bildirildiğine göre · *purportedly* güya · *ostensibly* görünüşte · *evidently* belli ki · *undeniably* tartışmasız · *conceivably* belki · *conclusively* kesin olarak · *seldom* nadiren · *occasionally* ara sıra · *intermittently* aralıklı olarak · *persistently* ısrarla · *notoriously* kötü şöhretiyle · *ideally* ideal olarak · *precisely* tam olarak · *explicitly* açıkça · *implicitly* örtük olarak\n- *broadly* genel olarak · *comparatively* görece · *drastically* büyük ölçüde · *markedly* belirgin biçimde · *substantially* önemli ölçüde · *vastly* çok büyük ölçüde · *somewhat* biraz · *moderately* orta derecede · *overwhelmingly* ezici biçimde · *progressively* giderek · *entirely* tamamen · *essentially* esasen · *chiefly* başlıca · *exclusively* yalnızca · *effectively* fiilen · *temporarily* geçici olarak · *concurrently* eş zamanlı olarak · *thereafter* ondan sonra · *hitherto* şimdiye dek · *ultimately* nihayetinde\n- *accordingly* buna göre · *alternatively* alternatif olarak · *correspondingly* buna paralel olarak · *crucially* en önemlisi · *incidentally* bu arada · *indirectly* dolaylı olarak · *likewise* aynı şekilde · *namely* yani · *nonetheless* yine de · *paradoxically* işin garibi · *respectively* sırasıyla · *unanimously* oy birliğiyle · *by and large* genel olarak · *to some extent* bir ölçüde · *in the long run* uzun vadede · *as a rule* genellikle · *at first glance* ilk bakışta · *for the most part* çoğunlukla · *in the short term* kısa vadede · *in retrospect* geriye bakınca\n- *on the whole* genel olarak · *in particular* özellikle · *in principle* ilke olarak · *in practice* uygulamada · *by far* açık ara · *above all* her şeyden önce · *at the outset* en başta · *in the meantime* bu arada · *on balance* her şey tartıldığında · *to a large extent* büyük ölçüde · *in essence* özünde · *as opposed to* -in aksine · *in conjunction with* ile birlikte · *in excess of* -den fazla · *by virtue of* sayesinde · *with respect to* ile ilgili olarak · *irrespective of* -den bağımsız · *on account of* yüzünden · *on the grounds that* gerekçesiyle · *in effect* fiilen\n\n## Örnekler\n- The plan is costly; **nonetheless**, it was approved. (Plan pahalı; yine de onaylandı.)\n- They scored 60 and 80, **respectively**. (Sırasıyla 60 ve 80 puan aldılar.)\n- **In principle** the idea is good, but **in practice** it fails. (Fikir teoride iyi ama uygulamada başarısız.)\n\n## Nasıl çözülür\n1. Boşluğun cümledeki işlevini bul: fiili mi niteliyor (*rose ----*), yoksa iki cümleyi mi bağlıyor (*; ----,*)?\n2. Bağlayıcıysa iki cümle arasındaki ilişkiyi adlandır: zıtlık (*nonetheless*), sonuç (*accordingly*), benzerlik (*likewise*), açıklama (*namely*).\n3. Fiili niteliyorsa sayıya ve yöne bak: büyük değişim *drastically*, küçük değişim *somewhat*, oy birliği *unanimously*.\n4. Edatlı kalıpta arkadan gelen yapıya bak: isim gelirse *on account of*, tam cümle gelirse *on the grounds that*.\n\n*Örnek:* 'The town's population fell ---- after the mine closed, from 9,000 to 2,000.' Şıklar: somewhat / drastically / moderately / likewise / namely.\n1. Boşluk *fell* fiilini niteliyor. 2. Sayılar dörtte üçten fazla bir düşüş gösteriyor. 3. *Somewhat* ve *moderately* çok zayıf kalır; *likewise* ve *namely* fiili nitelemez. Cevap: *drastically*.\n\n## Tuzaklar ve sık yapılan hatalar\n- **allegedly / reportedly / ostensibly:** iddia (kanıtlanmamış) / haber (kaynak belirtilmeden) / görünüşte (gerçek amaç başka).\n- **namely / respectively:** *namely* bir şeyi adlandırıp açar; *respectively* iki listeyi sırayla eşleştirir.\n- **invariably / inevitably:** her zaman / kaçınılmaz olarak.\n- **in principle / in practice** ve **at first glance / in retrospect** zıt çiftlerdir; sınavda birbirinin çeldiricisidir.\n- *Arguably* 'tartışmalı biçimde' değil, 'savunulabilir ki, büyük olasılıkla' demektir: *arguably the best* = belki de en iyisi.\n\n## Sınav ipucu\n- Noktalı virgülden sonraki boşluk bağlaç benzeri zarf ister; önce iki cümlenin ilişkisini Türkçe söyle, sonra şıklara bak.\n- Cloze ve restatement sorularında *by and large = on the whole = for the most part*, *to a large extent = largely* eşleşmeleri sık çıkar.",
+   "guide": "## Strateji\nBu set, YDS ve YÖKDİL metinlerinde sık geçen 52 zarf ve 28 kalıptır. Zarf sorularında şıkların hepsi dilbilgisel olarak boşluğa oturur; karar yalnızca anlamla verilir. Bu yüzden zarfları **işlevine göre gruplayarak** öğren: görüş ve kaynak, sıklık ve derece, bağlaç benzeri zarflar, edatlı kalıplar. Dersler de bu sırayı izler.\n- **Aralıklı tekrar:** Günde bir grup çalış; grubu 1., 3., 7. ve 14. günde yeniden gör.\n- **Kelime ailesi:** *allege – allegation – allegedly*, *vast – vastly*, *essence – essentially – in essence*.\n- **Eşdizim:** *rise drastically*, *vote unanimously*, *differ markedly*, *in excess of + sayı*.\n\n## Kelimeler ve anlamları\n- *arguably* savunulabilir ki, büyük olasılıkla · *invariably* her zaman · *admittedly* kabul etmek gerekir ki · *allegedly* iddiaya göre · *reportedly* bildirildiğine göre · *purportedly* güya · *ostensibly* görünüşte · *evidently* belli ki · *undeniably* tartışmasız · *conceivably* belki · *conclusively* kesin olarak · *seldom* nadiren · *occasionally* ara sıra · *intermittently* aralıklı olarak · *persistently* ısrarla · *notoriously* kötü şöhretiyle · *ideally* ideal olarak · *precisely* tam olarak · *explicitly* açıkça · *implicitly* örtük olarak\n- *broadly* genel olarak · *comparatively* görece · *drastically* büyük ölçüde · *markedly* belirgin biçimde · *substantially* önemli ölçüde · *vastly* çok büyük ölçüde · *somewhat* biraz · *moderately* orta derecede · *overwhelmingly* ezici biçimde · *progressively* giderek · *entirely* tamamen · *essentially* esasen · *chiefly* başlıca · *exclusively* yalnızca · *effectively* fiilen · *temporarily* geçici olarak · *concurrently* eş zamanlı olarak · *thereafter* ondan sonra · *hitherto* şimdiye dek · *ultimately* nihayetinde\n- *accordingly* buna göre · *alternatively* alternatif olarak · *correspondingly* buna paralel olarak · *crucially* en önemlisi · *incidentally* bu arada · *indirectly* dolaylı olarak · *likewise* aynı şekilde · *namely* yani · *nonetheless* yine de · *paradoxically* işin garibi · *respectively* sırasıyla · *unanimously* oy birliğiyle · *by and large* genel olarak · *to some extent* bir ölçüde · *in the long run* uzun vadede · *as a rule* genellikle · *at first glance* ilk bakışta · *for the most part* çoğunlukla · *in the short term* kısa vadede · *in retrospect* geriye bakınca\n- *on the whole* genel olarak · *in particular* özellikle · *in principle* ilke olarak · *in practice* uygulamada · *by far* açık ara · *above all* her şeyden önce · *at the outset* en başta · *in the meantime* bu arada · *on balance* her şey tartıldığında · *to a large extent* büyük ölçüde · *in essence* özünde · *as opposed to* -in aksine · *in conjunction with* ile birlikte · *in excess of* -den fazla · *by virtue of* sayesinde · *with respect to* ile ilgili olarak · *irrespective of* -den bağımsız · *on account of* yüzünden · *on the grounds that* gerekçesiyle · *in effect* fiilen\n\n## Örnekler\n- The plan is costly; **nonetheless**, it was approved. (Plan pahalı; yine de onaylandı.)\n- They scored 60 and 80, **respectively**. (Sırasıyla 60 ve 80 puan aldılar.)\n- **In principle** the idea is good, but **in practice** it fails. (Fikir teoride iyi ama uygulamada başarısız.)\n\n## Nasıl çözülür\n1. Boşluğun cümledeki işlevini bul: fiili mi niteliyor (*rose ----*), yoksa iki cümleyi mi bağlıyor (*; ----,*)?\n2. Bağlayıcıysa iki cümle arasındaki ilişkiyi adlandır: zıtlık (*nonetheless*), sonuç (*accordingly*), benzerlik (*likewise*), açıklama (*namely*).\n3. Fiili niteliyorsa sayıya ve yöne bak: büyük değişim *drastically*, küçük değişim *somewhat*, oy birliği *unanimously*.\n4. Edatlı kalıpta arkadan gelen yapıya bak: isim gelirse *on account of*, tam cümle gelirse *on the grounds that*.\n\n*Örnek:* 'The town's population fell ---- after the mine closed, from 9,000 to 2,000.' Şıklar: somewhat / drastically / moderately / likewise / namely.\n1. Boşluk *fell* fiilini niteliyor. 2. Sayılar dörtte üçten fazla bir düşüş gösteriyor. 3. *Somewhat* ve *moderately* çok zayıf kalır; *likewise* ve *namely* fiili nitelemez. Cevap: *drastically*.\n\n## Tuzaklar ve sık yapılan hatalar\n- **allegedly / reportedly / ostensibly:** iddia (kanıtlanmamış) / haber (kaynak belirtilmeden) / görünüşte (gerçek amaç başka).\n- **namely / respectively:** *namely* bir şeyi adlandırıp açar; *respectively* iki listeyi sırayla eşleştirir.\n- **invariably / inevitably:** her zaman / kaçınılmaz olarak.\n- **in principle / in practice** ve **at first glance / in retrospect** zıt çiftlerdir; sınavda birbirinin çeldiricisidir.\n- *Arguably* 'tartışmalı biçimde' değil, 'savunulabilir ki, büyük olasılıkla' demektir: *arguably the best* = belki de en iyisi.\n\n## Sınav ipucu\n- Noktalı virgülden sonraki boşluk bağlaç benzeri zarf ister; önce iki cümlenin ilişkisini Türkçe söyle, sonra şıklara bak.\n- Cloze ve restatement sorularında *by and large = on the whole = for the most part*, *to a large extent = largely* eşleşmeleri sık çıkar.",
    "nodes": [
     {
      "id": "ys2u15l1",
