@@ -55,13 +55,13 @@ Her ünite için: can-do (CEFR satırından), görev ve Türk hatası odağı. K
 
 ### Faz 1: A1–A2 (S1–S4), 12 ünite
 
-**S1 Temeller (A1)**: ek dosya `tr_en/01x_beceri.json`, `"extends": "s1"`. S1 ünite id'leri `u1..u12` olduğu için yeni id'ler `s1u13..s1u15` (çakışmaz).
+**S1 Temeller (A1)**: ek dosya `tr_en/01x_beceri.json`, `"extends": "s1"`. S1 ünite id'leri `u1..u12` olduğu için yeni id'ler `u13..u15` (altyapı S1 için `u` önekini bekler).
 
 | Ünite | Başlık | Can-do | Dinleme / okuma | Konuşma / yazma | Türk hatası odağı |
 |---|---|---|---|---|---|
-| s1u13 | Adım, numaram | Adını heceler; telefon ve e-posta söyler ve anlar; form doldurur | Harf ve sayı dikte (*thirteen/thirty*, *a/e/i* harf adları), kayıt formu okuma | Kendini tanıtma turu; üyelik formu cümleleri | *I am ~~a~~* atlama; *my name is* / *I'm* |
-| s1u14 | Kafede ve markette | Fiyatı ve miktarı anlar; menüden sipariş verir | Fiyat dinleme (*£3.50*, *fifteen/fifty*), menü ve fiyat etiketi okuma | Sipariş diyaloğu; alışveriş listesi | *a/an*, *some*, çoğul (*two coffee~~s~~*) |
-| s1u15 | Kısa mesajlar | Kısa mesajları okur ve yazar; saat ve yer belirler | Sesli mesaj (saat ve yer), arkadaş mesajları okuma | Buluşma ayarlama; 3–4 cümlelik mesaj yazma | *at 5*, *on Monday*, *in the park*; soru dizilimi |
+| u13 | Adım, numaram | Adını heceler; telefon ve e-posta söyler ve anlar; form doldurur | Harf ve sayı dikte (*thirteen/thirty*, *a/e/i* harf adları), kayıt formu okuma | Kendini tanıtma turu; üyelik formu cümleleri | *I am ~~a~~* atlama; *my name is* / *I'm* |
+| u14 | Kafede ve markette | Fiyatı ve miktarı anlar; menüden sipariş verir | Fiyat dinleme (*£3.50*, *fifteen/fifty*), menü ve fiyat etiketi okuma | Sipariş diyaloğu; alışveriş listesi | *a/an*, *some*, çoğul (*two coffee~~s~~*) |
+| u15 | Kısa mesajlar | Kısa mesajları okur ve yazar; saat ve yer belirler | Sesli mesaj (saat ve yer), arkadaş mesajları okuma | Buluşma ayarlama; 3–4 cümlelik mesaj yazma | *at 5*, *on Monday*, *in the park*; soru dizilimi |
 
 **S2 Günlük hayat (A1)**: `tr_en/02x_beceri.json`, `s2u13..s2u15`.
 
