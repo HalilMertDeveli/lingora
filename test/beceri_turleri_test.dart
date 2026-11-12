@@ -7,11 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/core/tr_errors.dart';
+import 'package:lingora/data/course_repository.dart';
 import 'package:lingora/data/practice.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/data/sections.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/screens/lesson_screen.dart';
+import 'package:lingora/screens/section_header.dart';
 import 'package:lingora/screens/story_screen.dart';
 import 'package:lingora/services/billing/premium.dart';
 import 'package:lingora/services/notifications.dart';
@@ -272,6 +274,48 @@ void main() {
       expect(sectionCompleted(section, _done(['s2u15t'])), isFalse);
       expect(sectionCompleted(section, _done(['s2u15l4'])), isFalse);
       expect(sectionCompleted(section, _done(['s2u15t', 's2u15l4'])), isTrue);
+    });
+
+    testWidgets('the section header marks a completed section, read from the full course', (tester) async {
+      final full = Section(
+        id: 's2',
+        index: 2,
+        title: 'Günlük hayat',
+        units: [
+          _unit('s2u15', [_node('s2u15l4', NodeType.lesson), skillsTestNode]),
+        ],
+      );
+      // What the path draws: the outline, without exercises.
+      final outline = Section(
+        id: 's2',
+        index: 2,
+        title: 'Günlük hayat',
+        units: [
+          _unit('s2u15', [_node('s2u15l4', NodeType.lesson), _node('s2u15t', NodeType.test)]),
+        ],
+      );
+      SharedPreferences.setMockInitialValues({
+        'progress_v1': jsonEncode(_done(['s2u15t']).toJson()),
+      });
+      final prefs = await SharedPreferences.getInstance();
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            prefsProvider.overrideWithValue(prefs),
+            courseProvider.overrideWith(
+              (ref) async =>
+                  Course(id: 'tr_en', title: 'x', fromLang: 'tr', learningLang: 'en', sections: [full]),
+            ),
+          ],
+          child: MaterialApp(
+            theme: buildTheme(),
+            home: Scaffold(body: SectionHeader(section: outline, open: true)),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('section-completed-s2')), findsOneWidget);
+      expect(find.text('Tamamlandı'), findsOneWidget);
     });
 
     test('a section without a skills test is never "completed"', () {

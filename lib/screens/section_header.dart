@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/course_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/sections.dart';
@@ -23,7 +24,10 @@ class SectionHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final progress = ref.watch(progressProvider);
     final ratio = sectionProgress(section, progress);
-    final completed = sectionCompleted(section, progress);
+    // The path draws an outline without exercises; the skills test and the
+    // writing task are found in the full course, loaded in the background.
+    final full = ref.watch(courseProvider).value?.sections.where((s) => s.id == section.id).firstOrNull;
+    final completed = full != null && sectionCompleted(full, progress);
     final percent = (ratio * 100).round();
     final t = Theme.of(context).textTheme;
     return TapCard(
