@@ -6,6 +6,8 @@ const ov = require('./overlap.js');
 const ids = process.argv.slice(2);
 const load = (id) => {
   const d = JSON.parse(l.fs.readFileSync(l.path.join(__dirname, 'work', `${id}.json`), 'utf8'));
+  // Extensive-reading files (bol2_N): an array of stories, each its own item.
+  if (Array.isArray(d)) return d.map((s) => [s.id, s.text]);
   const items = d.questions || d.exercises || (d.nodes || []).flatMap((n) => n.exercises || []);
   return items.map((q, i) => [`${id}#${i + 1}`, [q.passage, q.text, q.question].filter(Boolean).join(' ')]);
 };

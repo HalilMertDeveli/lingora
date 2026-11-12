@@ -1,15 +1,20 @@
 // Checks extensive-reading stories (ReadingStory format, assets/reading/*.json) for YDS Faz 2b:
 // id yb_*, level B1/B1+, 400–700 words, ≤ 2% unknown words once glosses are counted, 2 questions.
 // Usage: node tool/yds/check_bol.js tool/yds/work/bol_1.json [more files…]   (NGSL=<csv> adds its top 1000)
+// Set 2 (Faz 3b, files tool/yds/work/bol2_*.json → yds_bol_okuma_2.json): level B1+ or B2, 500–800 words, and
+// everything taught through ys9 counts as known.
 const l = require('./lex.js');
 const ctx = require('./context.js');
 const problems = [];
 const P = (ok, m) => { if (!ok) problems.push(m); };
 
 const cards = l.J('assets/vocab/yds.json').entries;
-const bank = cards.filter((e) => /^ys[57]u/.test(e.topic)).map((e) => e.word).filter((w) => !w.includes(' '));
-const known = l.seen([...l.GENERAL_ALL, ...l.YDS_OLD, 'assets/courses/exam_yds/05_kelime_bankasi_1.json',
-  'assets/courses/exam_yds/06_okuma_evi_1.json', 'assets/courses/exam_yds/07_kelime_bankasi_2.json']);
+const set2 = process.argv.slice(2).some((f) => /bol2_/.test(f));
+const SET = set2
+  ? { levels: ['B1+', 'B2'], words: [500, 800], banks: /^ys[579]u/, files: ['05_kelime_bankasi_1', '06_okuma_evi_1', '07_kelime_bankasi_2', '08_okuma_evi_2', '09_kelime_bankasi_3'] }
+  : { levels: ['B1', 'B1+'], words: [400, 700], banks: /^ys[57]u/, files: ['05_kelime_bankasi_1', '06_okuma_evi_1', '07_kelime_bankasi_2'] };
+const bank = cards.filter((e) => SET.banks.test(e.topic)).map((e) => e.word).filter((w) => !w.includes(' '));
+const known = l.seen([...l.GENERAL_ALL, ...l.YDS_OLD, ...SET.files.map((f) => `assets/courses/exam_yds/${f}.json`)]);
 l.fs.readFileSync(l.path.join(__dirname, 'function_words.txt'), 'utf8').split(/\s+/).filter(Boolean).forEach((w) => known.add(w));
 if (process.env.NGSL) {
   l.fs.readFileSync(process.env.NGSL, 'utf8').split(/\r?\n/).slice(1, 1001).forEach((r) => known.add(r.split(',')[0].toLowerCase()));
@@ -29,13 +34,13 @@ for (const file of process.argv.slice(2)) {
     P(/^yb_[a-z0-9_]+$/.test(s.id || ''), `${at}: id yb_<slug>`);
     P(!ids.has(s.id), `${at}: id tekrar`);
     ids.add(s.id);
-    P(['B1', 'B1+'].includes(s.level), `${at}: level B1 ya da B1+`);
+    P(SET.levels.includes(s.level), `${at}: level ${SET.levels.join(' ya da ')}`);
     for (const k of ['emoji', 'title', 'titleTr', 'text']) P(clean(s[k]) && s[k].length > 0, `${at}: ${k}`);
     P(TR.test(s.titleTr) || !/[a-z]{3,}/.test(s.titleTr) || s.titleTr !== s.title, `${at}: titleTr Türkçe olmalı`);
     const text = s.text || '';
     P(text.includes('\n\n'), `${at}: paragraflar boş satırla ayrılmalı`);
     const words = text.match(/\p{L}+(?:[-'’]\p{L}+)*/gu) || [];
-    P(words.length >= 400 && words.length <= 700, `${at}: ${words.length} kelime (400–700)`);
+    P(words.length >= SET.words[0] && words.length <= SET.words[1], `${at}: ${words.length} kelime (${SET.words.join('–')})`);
     // Glossed words and phrases count as known.
     const g = s.glosses || {};
     const glossed = new Set();

@@ -20,8 +20,9 @@ const IRR = {
 };
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 function forms(w) {
-  const f = new Set([w, w + 's', w + 'es', w + 'ed', w + 'd', w + 'ing', w + 'ly', w + 'er', w + 'ers']);
-  if (w.endsWith('e')) { f.add(w.slice(0, -1) + 'ing'); f.add(w.slice(0, -1) + 'ed'); }
+  const f = new Set([w, w + 's', w + 'es', w + 'ed', w + 'ing', w + 'ly', w + 'er', w + 'ers']);
+  // "+d" only after a final e (use → used); otherwise kin → kind, ban → band match by mistake.
+  if (w.endsWith('e')) { f.add(w + 'd'); f.add(w.slice(0, -1) + 'ing'); f.add(w.slice(0, -1) + 'ed'); }
   if (w.endsWith('y')) { f.add(w.slice(0, -1) + 'ies'); f.add(w.slice(0, -1) + 'ied'); f.add(w.slice(0, -1) + 'ily'); }
   if (/[^aeiou][aeiou][bdgmnprt]$/.test(w)) { const d = w + w.slice(-1); f.add(d + 'ed'); f.add(d + 'ing'); }
   if (w.endsWith('is')) f.add(w.slice(0, -2) + 'es'); // analysis → analyses
