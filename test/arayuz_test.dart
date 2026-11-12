@@ -179,6 +179,34 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('sticky-unit-band')), findsOneWidget);
     });
+
+    testWidgets('the next unit band pushes the pinned band up instead of sliding under it', (tester) async {
+      await pumpApp(tester, {'progress_v1': _progress()});
+      final sticky = find.byKey(const Key('sticky-unit-band'));
+      var checked = 0;
+      for (var step = 0; step < 40; step++) {
+        await tester.drag(find.byType(Scrollable).first, const Offset(0, -60));
+        await tester.pumpAndSettle();
+        if (sticky.evaluate().isEmpty) continue;
+        final pinnedUnit = tester.widget<UnitBand>(sticky).unit;
+        // Only the part of the pinned band below the top of the path is drawn.
+        final path = tester.getRect(find.byType(Scrollable).first);
+        final p = tester.getRect(sticky);
+        final pinned = Rect.fromLTRB(p.left, p.top < path.top ? path.top : p.top, p.right, p.bottom);
+        if (pinned.height <= 1) continue;
+        for (final band in find.byType(UnitBand).evaluate()) {
+          final w = band.widget as UnitBand;
+          // Its own band scrolling away under it shows the same content.
+          if (w.key == const Key('sticky-unit-band') || w.unit.id == pinnedUnit.id) continue;
+          final r = tester.getRect(find.byWidget(w));
+          if (r.bottom <= path.top) continue;
+          checked++;
+          final overlaps = r.top < pinned.bottom - 1 && r.bottom > pinned.top + 1;
+          expect(overlaps, isFalse, reason: 'pinned $pinned overlaps band $r at step $step');
+        }
+      }
+      expect(checked, greaterThan(0), reason: 'the test must see a pinned band next to a scrolling one');
+    });
   });
 
   group('session', () {

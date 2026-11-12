@@ -114,6 +114,11 @@ class _PathListState extends ConsumerState<_PathList> {
   /// Unit whose band is pinned to the top (scrolled past its own band).
   String? _pinnedUnit;
 
+  /// How far the pinned band is pushed up by the next unit's band coming
+  /// from below (0 or negative), so the two never overlap.
+  double _pinnedShift = 0;
+  final _pinnedKey = GlobalKey();
+
   _CardInfo? _cardInfo;
 
   bool get _visible => TickerMode.valuesOf(context).enabled;
@@ -249,13 +254,29 @@ class _PathListState extends ConsumerState<_PathList> {
     final viewport = _viewport;
     if (viewport == null || !viewport.hasSize) return;
     String? next;
+    double? nextBandTop; // top of the first band below the pinned one
     for (final unit in widget.course.units) {
       final box = _bandKeys[unit.id]?.currentContext?.findRenderObject() as RenderBox?;
       if (box == null || !box.attached || !box.hasSize) continue;
       final top = box.localToGlobal(Offset.zero, ancestor: viewport).dy;
-      if (top < -box.size.height * 0.5) next = unit.id;
+      if (top < -box.size.height * 0.5) {
+        next = unit.id;
+        nextBandTop = null;
+      } else {
+        nextBandTop ??= top;
+      }
     }
-    if (next != _pinnedUnit) setState(() => _pinnedUnit = next);
+    final pinnedBox = _pinnedKey.currentContext?.findRenderObject() as RenderBox?;
+    final pinnedHeight = pinnedBox != null && pinnedBox.hasSize ? pinnedBox.size.height : 0.0;
+    final shift = next == null || nextBandTop == null
+        ? 0.0
+        : (nextBandTop - pinnedHeight).clamp(-pinnedHeight, 0.0);
+    if (next != _pinnedUnit || shift != _pinnedShift) {
+      setState(() {
+        _pinnedUnit = next;
+        _pinnedShift = shift;
+      });
+    }
   }
 
   /// Sections the learner opened by hand ("üniteye göz at").
@@ -673,25 +694,28 @@ class _PathListState extends ConsumerState<_PathList> {
           Positioned(
             left: 0,
             right: 0,
-            top: 0,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 250),
-              child: pinned == null
-                  ? const SizedBox.shrink()
-                  : ColoredBox(
-                      key: ValueKey('pinned-${pinned.id}'),
-                      color: Brand.background,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                        child: UnitBand(
-                          key: const Key('sticky-unit-band'),
-                          unit: pinned,
-                          index: numberInSection(pinned),
-                          compact: true,
-                          onGuide: () => _guide(pinned, numberInSection(pinned), stateOf),
+            top: _pinnedShift,
+            child: KeyedSubtree(
+              key: _pinnedKey,
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 250),
+                child: pinned == null
+                    ? const SizedBox.shrink()
+                    : ColoredBox(
+                        key: ValueKey('pinned-${pinned.id}'),
+                        color: Brand.background,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                          child: UnitBand(
+                            key: const Key('sticky-unit-band'),
+                            unit: pinned,
+                            index: numberInSection(pinned),
+                            compact: true,
+                            onGuide: () => _guide(pinned, numberInSection(pinned), stateOf),
+                          ),
                         ),
                       ),
-                    ),
+              ),
             ),
           ),
           if (_jump != null)
