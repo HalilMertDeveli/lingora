@@ -7,9 +7,13 @@ const id = process.argv[2];
 const dir = l.path.join(__dirname, 'work');
 const unit = JSON.parse(l.fs.readFileSync(l.path.join(dir, `${id}.json`), 'utf8'));
 const cards = JSON.parse(l.fs.readFileSync(l.path.join(dir, `${id}.cards.json`), 'utf8'));
-const words = require('./work/words.json');
+// ys5 (F1) and ys7 (F2) word banks share this checker; the section decides list, level and exclusions.
+const sec = id.slice(0, 3);
+const words = require(sec === 'ys7' ? './work/words_ys7.json' : './work/words.json');
 const mine = words[id];
 const earlier = Object.keys(words).filter((k) => +k.slice(4) < +id.slice(4)).flatMap((k) => words[k]);
+const lastUnit = sec === 'ys7' ? 'ys7u15' : 'ys5u10';
+const [pMin, pMax, pLabel] = sec === 'ys7' ? [110, 170, '120–160'] : [70, 135, '80–120'];
 const problems = [];
 const warn = [];
 const P = (ok, m) => { if (!ok) problems.push(m); };
@@ -24,7 +28,7 @@ P(typeof unit.guide === 'string' && unit.guide.length > 200, 'guide kısa');
 const gw = (unit.guide || '').split(/\s+/).length;
 P(gw <= 330, `guide ${gw} kelime (≤ ~250 hedef)`);
 const types = unit.nodes.map((n) => n.type).join(',');
-const last = id === 'ys5u10';
+const last = id === lastUnit;
 P(types === (last ? 'lesson,lesson,lesson,lesson,test,chest,mock' : 'lesson,lesson,lesson,lesson,test,chest'), `düğüm deseni ${types}`);
 const ids = [`${id}l1`, `${id}l2`, `${id}l3`, `${id}l4`, `${id}t`, `${id}c`, ...(last ? [`${id}m`] : [])];
 P(unit.nodes.map((n) => n.id).join() === ids.join(), `düğüm id'leri ${unit.nodes.map((n) => n.id)}`);
@@ -48,7 +52,7 @@ for (const [i, n] of unit.nodes.entries()) {
     P(passages.size >= 2, `${n.id}: en az 2 cloze paragrafı`);
     for (const p of passages) {
       const w = p.split(/\s+/).length;
-      P(w >= 70 && w <= 135, `${n.id}: paragraf ${w} kelime (80–120)`);
+      P(w >= pMin && w <= pMax, `${n.id}: paragraf ${w} kelime (${pLabel})`);
       const qs = ex.filter((e) => e.passage === p).length;
       P(qs >= 3 && qs <= 4, `${n.id}: paragraf başına 3–4 soru (${qs})`);
       const used = mine.filter((m) => ctx.uses(p, m));
@@ -100,7 +104,10 @@ for (const c of cards) {
 }
 
 // Overlap with taught words.
-const ex = new Set([...l.taught(l.GENERAL), ...l.taught(l.YDS_OLD)]);
+const ex = sec === 'ys7'
+  ? new Set([...l.taught(l.GENERAL_ALL), ...l.taught([...l.YDS_OLD, 'assets/courses/exam_yds/05_kelime_bankasi_1.json']),
+    ...l.J('assets/vocab/yds.json').entries.filter((e) => e.topic.startsWith('ys5u')).map((e) => e.word.toLowerCase())])
+  : new Set([...l.taught(l.GENERAL), ...l.taught(l.YDS_OLD)]);
 const clash = mine.filter((w) => ex.has(w));
 P(!clash.length, `daha önce öğretilmiş: ${clash.join(', ')}`);
 

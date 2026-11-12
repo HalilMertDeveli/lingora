@@ -56,4 +56,7 @@ function lemmas(w) {
   return [...out];
 }
 
-module.exports = { ROOT, J, GENERAL, YDS_OLD, exercises, taught, seen, tokens, lemmas, fs, path };
+// Whole general course (all sections, skill files too) — F2 exclusion set.
+const GENERAL_ALL = ['assets/courses/tr_en.json', ...fs.readdirSync(path.join(ROOT, 'assets/courses/tr_en')).filter((f) => f.endsWith('.json')).sort().map((f) => `assets/courses/tr_en/${f}`)];
+
+module.exports = { GENERAL_ALL, ROOT, J, GENERAL, YDS_OLD, exercises, taught, seen, tokens, lemmas, fs, path };
