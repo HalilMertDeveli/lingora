@@ -268,7 +268,7 @@ void main() {
   });
 
   group('reading', () {
-    test('stories.json plus yds_bol_okuma_* files, in order, without repeats', () async {
+    test('stories.json plus yds_bol_okuma_* and genel_okuma_* files, in order, without repeats', () async {
       TestWidgetsFlutterBinding.ensureInitialized();
       String story(String id, String level) => jsonEncode([
         {
@@ -287,9 +287,20 @@ void main() {
         'assets/reading/yds_bol_okuma_01.json': story('yb_1', 'B1+'),
         'assets/reading/yds_bol_okuma_03.json': 'bozuk',
         'assets/reading/yds_bol_okuma_04.json': story('s1', 'B2'),
+        'assets/reading/genel_okuma_b.json': story('go_b', 'B2'),
+        'assets/reading/genel_okuma_a.json': story('go_a', 'A2'),
+        'assets/reading/notlar.json': story('x', 'A1'),
       });
       final stories = await loadStories(bundle);
-      expect(stories.map((s) => (s.id, s.level)), [('s1', 'A1'), ('yb_1', 'B1+'), ('yb_2', 'B2')]);
+      // File-name order: genel_okuma_* sorts before yds_bol_okuma_*; other files are not reading shelves.
+      expect(stories.map((s) => (s.id, s.level)), [
+        ('s1', 'A1'),
+        ('go_a', 'A2'),
+        ('go_b', 'B2'),
+        ('yb_1', 'B1+'),
+        ('yb_2', 'B2'),
+      ]);
+      expect(stories.map(readingSource), [null, 'Genel', 'Genel', 'YDS', 'YDS']);
     });
 
     test('Okuma evi lists nodes with a reading field', () {

@@ -1,0 +1,1727 @@
+[
+  {
+    "id": "go_difficult_customer",
+    "level": "B1",
+    "genre": "öykü",
+    "emoji": "📱",
+    "title": "The Angry Taxi Driver",
+    "titleTr": "Kızgın taksici",
+    "text": "Burak works at a small phone repair shop near the market in Kadıköy. Most customers are friendly. But on Tuesday morning a tall man walked in and put a phone on the counter very hard.\n\n“This phone is broken,” he said. “You repaired it last week, and now the screen is black again. I want my money back.”\n\nBurak looked at the phone. “Can I check it first? Sometimes the problem is only the battery.”\n\n“I don't have time for this,” the man answered. “I paid you eight hundred lira. Just give it back.”\n\nBurak stayed calm. His boss always said, “An angry customer is a worried customer.” So he smiled and said, “I understand. You need your phone for work, right?”\n\nThe man stopped for a second. “Yes. I'm a taxi driver. Without my phone I can't find customers.”\n\n“Then let me look at it now. It will take ten minutes. If it's our mistake, we will repair it for free.”\n\nThe man sat down on the small chair by the door, but he kept looking at his watch. Burak opened the phone carefully. The new screen was fine. A tiny cable inside was loose, maybe because the phone fell on the floor.\n\n“Good news,” Burak said. “The screen is OK. A cable moved, and I fixed it.” He pressed the button, and the phone came to life.\n\nThe man's face changed. “Did I drop it? Maybe I did, in the taxi on Sunday.” He looked a little embarrassed. “How much do I owe you?”\n\n“Nothing this time,” Burak said. “But please buy a case for it.”\n\nThe next day the taxi driver came back. He did not bring his phone. He brought a box of baklava for everyone in the shop.",
+    "glosses": {
+      "repair shop": "tamirci dükkânı",
+      "counter": "tezgâh",
+      "my money back": "paramı geri",
+      "stayed calm": "sakin kaldı",
+      "worried": "endişeli",
+      "for free": "ücretsiz",
+      "tiny": "minicik",
+      "cable": "kablo",
+      "loose": "gevşek, yerinden oynamış",
+      "came to life": "çalıştı, canlandı",
+      "embarrassed": "utanmış, mahcup",
+      "owe": "borçlu olmak",
+      "case": "kılıf"
+    },
+    "questions": [
+      {
+        "q": "Adam dükkâna neden geldi?",
+        "options": [
+          "He wanted to buy a new phone",
+          "His phone's screen was black again",
+          "He wanted a job at the shop",
+          "He lost his phone in a taxi"
+        ],
+        "answer": 1,
+        "explain": "\"His phone's screen was black again\" doğru: adam “now the screen is black again” diyor ve parasını geri istiyor."
+      },
+      {
+        "q": "Telefondaki asıl sorun neydi?",
+        "options": [
+          "The battery was old",
+          "The screen was broken",
+          "A cable inside was loose",
+          "There was water inside"
+        ],
+        "answer": 2,
+        "explain": "\"A cable inside was loose\" doğru: metinde “The new screen was fine. A tiny cable inside was loose” diyor."
+      },
+      {
+        "q": "Taksici ertesi gün ne yaptı?",
+        "options": [
+          "He brought baklava for the shop",
+          "He asked for his money back",
+          "He bought a new phone",
+          "He brought his phone again"
+        ],
+        "answer": 0,
+        "explain": "\"He brought baklava for the shop\" doğru: metinde “He brought a box of baklava for everyone in the shop” diyor; telefonunu getirmedi."
+      }
+    ]
+  },
+  {
+    "id": "go_first_salary",
+    "level": "B1",
+    "genre": "anlatı",
+    "emoji": "💰",
+    "title": "My First Salary",
+    "titleTr": "İlk maaşım",
+    "text": "I still remember the day my first salary arrived. I was twenty-two, and I had just started work as an assistant in a small accounting office in Eskişehir. On the last Friday of the month, my phone made a little sound. It was a message from the bank. The money was in my account.\n\nIt was not a lot of money. After rent, bills and my bus card, there was not much left. But it was mine. I had earned every lira of it. I answered phones, filed papers and made a hundred cups of tea for my boss.\n\nFor weeks I had made plans. I wanted new headphones, a winter coat and a weekend in İzmir with my friends. But when the money finally came, I did something different.\n\nFirst, I went to the market and bought my mother the blue scarf. She had looked at it many times, but she had never bought it. Then I took my father to his favourite fish restaurant by the river. He ordered the same fish he always orders. When the bill came, he reached for it. “No,” I said, “today it's my turn.” He laughed, but I could see that his eyes were wet.\n\nMy little brother got a football. It was the cheapest present, but he was the happiest person that evening.\n\nAt the end of the night I had almost nothing for myself. I didn't buy the headphones until the next month. Strangely, I didn't mind. Many years later I have had better salaries, but I don't remember what I bought with them. I only remember the scarf, the fish and my father's face.",
+    "glosses": {
+      "salary": "maaş",
+      "salaries": "maaşlar",
+      "accounting office": "muhasebe bürosu",
+      "account": "(banka) hesap",
+      "rent": "kira",
+      "bills": "faturalar",
+      "earned": "kazanmıştım",
+      "filed papers": "evrakları dosyaladım",
+      "headphones": "kulaklık",
+      "scarf": "eşarp, şal",
+      "my turn": "benim sıram",
+      "didn't mind": "aldırmadım, dert etmedim"
+    },
+    "questions": [
+      {
+        "q": "Anlatıcı maaşı gelince annesine ne aldı?",
+        "options": [
+          "New headphones",
+          "A winter coat",
+          "A weekend in İzmir",
+          "A blue scarf"
+        ],
+        "answer": 3,
+        "explain": "\"A blue scarf\" doğru: metinde “bought my mother the blue scarf” diyor; kulaklığı ancak bir sonraki ay aldı."
+      },
+      {
+        "q": "Restoranda babasının gözleri neden doldu?",
+        "options": [
+          "Because the fish was bad",
+          "Because his child paid for dinner",
+          "Because he lost his job",
+          "Because the restaurant was closing"
+        ],
+        "answer": 1,
+        "explain": "\"Because his child paid for dinner\" doğru: hesap gelince anlatıcı “today it's my turn” diyor ve babasının gözleri doluyor."
+      },
+      {
+        "q": "Yıllar sonra anlatıcı ilk maaşı hakkında ne düşünüyor?",
+        "options": [
+          "It was a mistake to spend it all",
+          "It was not enough for the rent",
+          "The family's happy faces matter more than things",
+          "Headphones were the best present"
+        ],
+        "answer": 2,
+        "explain": "\"The family's happy faces matter more than things\" doğru: sonraki maaşlarla aldıklarını hatırlamıyor, yalnızca “the scarf, the fish and my father's face” aklında."
+      }
+    ]
+  },
+  {
+    "id": "go_night_shift",
+    "level": "B1",
+    "genre": "röportaj",
+    "emoji": "🌙",
+    "title": "Working While the City Sleeps",
+    "titleTr": "Şehir uyurken çalışmak",
+    "text": "Mia is writing a series about people who work at night. This week she talked to Hatice Yılmaz, a nurse at a big hospital in Ankara. They talked about long nights, noisy days and a team that feels like a family.\n\nMia: How long have you worked night shifts?\nHatice: For about six years. Before that I worked days in a smaller hospital in my home town. Now I work four nights, and then I have three days off. My shift starts at eight in the evening and ends at eight in the morning.\n\nMia: Twelve hours! What is the hardest part?\nHatice: Not the work. The hardest part is sleeping in the day. The city is so noisy. My neighbours are kind people, but they have their own lives, and they cannot be quiet all day for me. Neighbours drill holes, children play outside, and someone always rings the doorbell. I wear earplugs, and I have very dark curtains.\n\nMia: What happens at the hospital at three in the morning?\nHatice: People think it is quiet, but it is not. Patients can't sleep, and they often feel more afraid at night. Sometimes I just sit with an old man and listen to his stories. That is part of the job too.\n\nMia: How does night work change your family life?\nHatice: It's difficult. When I wake up, my husband is coming home from work. We have dinner together, and that dinner is my breakfast! At weekends I try to live like everyone else, but my body gets confused.\n\nMia: Are there any good things about it?\nHatice: Yes, really. The team is smaller, so we are very close, like a family. We bring food from home and share it at midnight. We also laugh a lot, because at four in the morning everything seems funny. And in the morning I walk out of the hospital as the sun is coming up. Then I feel I have done something useful.\n\nMia: Would you like to change to day shifts one day?\nHatice: Maybe when I'm older. For now, the night is my day.",
+    "glosses": {
+      "nurse": "hemşire",
+      "night shifts": "gece vardiyaları",
+      "shift": "vardiya",
+      "days off": "izin günleri",
+      "drill holes": "delik delmek",
+      "doorbell": "kapı zili",
+      "earplugs": "kulak tıkacı",
+      "curtains": "perdeler",
+      "patients": "hastalar",
+      "confused": "şaşkın, kafası karışmış",
+      "midnight": "gece yarısı",
+      "useful": "faydalı"
+    },
+    "questions": [
+      {
+        "q": "Hatice'ye göre işin en zor yanı ne?",
+        "options": [
+          "The long hours at the hospital",
+          "Sleeping during the day",
+          "Talking to patients",
+          "Driving home in the morning"
+        ],
+        "answer": 1,
+        "explain": "\"Sleeping during the day\" doğru: Hatice “The hardest part is sleeping in the day” diyor; iş değil, gündüz uyumak zor."
+      },
+      {
+        "q": "Hatice akşam yemeğine neden kahvaltı diyor?",
+        "options": [
+          "She doesn't like breakfast",
+          "Her husband cooks breakfast at night",
+          "It is her first meal after she wakes up",
+          "She always eats at the hospital"
+        ],
+        "answer": 2,
+        "explain": "\"It is her first meal after she wakes up\" doğru: o uyandığında eşi işten dönüyor; birlikte yedikleri akşam yemeği onun günün ilk öğünü."
+      },
+      {
+        "q": "Gece çalışmanın iyi bir yanı ne?",
+        "options": [
+          "The pay is very high",
+          "There are no patients at night",
+          "She can sleep at the hospital",
+          "The team is small and close, like a family"
+        ],
+        "answer": 3,
+        "explain": "\"The team is small and close, like a family\" doğru: Hatice “The team is smaller, so we are very close, like a family” diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_office_fridge",
+    "level": "B1",
+    "genre": "e-posta",
+    "emoji": "🥪",
+    "title": "Who Ate Kerem's Lunch?",
+    "titleTr": "Kerem'in yemeğini kim yedi?",
+    "text": "From: Kerem\nTo: Everyone in the office\nSubject: The fridge mystery\n\nHi everyone,\nI'm sorry to write about something so small, but this is the third time this month. This morning I put my lunch in the office fridge. It was a box of my mother's stuffed peppers, with my name on it. At one o'clock the box was back in the fridge, empty. Whoever ate it, I hope you enjoyed it. My mother says she can teach you the recipe. Next time, please ask first!\nKerem\n\nFrom: Aylin, office manager\nSubject: The fridge mystery\n\nHi all,\nKerem is right, and he is not the only one. Two people told me that their yoghurt disappeared last week. From Monday, please write your name and the date on all your food. On Friday afternoon I will clean the fridge and throw away everything without a name. Let's keep our kitchen fair and friendly.\nAylin\n\nFrom: Oliver\nSubject: The fridge mystery\n\nKerem, I think I owe you an apology. I'm new here. On my first day someone told me that the food on the bottom shelf is for everyone. I believed it! I ate the peppers today, and they were the best thing I've eaten since I came to İstanbul. I'm really sorry. Can I buy you lunch tomorrow?\nOliver\n\nFrom: Kerem\nSubject: The fridge mystery\n\nOliver, apology accepted, and lunch tomorrow sounds great. And everyone else: the bottom shelf is not for everyone. Whoever told Oliver that, I know you're laughing right now.\nKerem",
+    "glosses": {
+      "fridge": "buzdolabı",
+      "mystery": "gizem, esrarengiz olay",
+      "stuffed peppers": "biber dolması",
+      "whoever": "her kim",
+      "recipe": "tarif",
+      "yoghurt": "yoğurt",
+      "disappeared": "kayboldu",
+      "throw away": "atmak",
+      "fair": "adil",
+      "owe you an apology": "senden özür dilemem gerek",
+      "shelf": "raf",
+      "apology accepted": "özrün kabul edildi"
+    },
+    "questions": [
+      {
+        "q": "Kerem'in öğle yemeğine ne oldu?",
+        "options": [
+          "Someone ate it",
+          "His mother forgot to make it",
+          "Aylin threw it away",
+          "It went bad in the fridge"
+        ],
+        "answer": 0,
+        "explain": "\"Someone ate it\" doğru: saat birde kutu buzdolabında boş duruyordu; sonra Oliver biberleri yediğini söylüyor."
+      },
+      {
+        "q": "Aylin'in yeni kuralı ne?",
+        "options": [
+          "Nobody can use the fridge",
+          "Write your name and the date on your food",
+          "Everyone must bring their own yoghurt",
+          "Lunch is free on Fridays"
+        ],
+        "answer": 1,
+        "explain": "\"Write your name and the date on your food\" doğru: Aylin “please write your name and the date on all your food” diyor; isimsiz yiyecekleri cuma atacak."
+      },
+      {
+        "q": "Oliver yemeği neden yedi?",
+        "options": [
+          "He was hungry and didn't care",
+          "He wanted to play a joke on Kerem",
+          "Someone said the bottom shelf was for everyone",
+          "Aylin gave him the box"
+        ],
+        "answer": 2,
+        "explain": "\"Someone said the bottom shelf was for everyone\" doğru: Oliver yeni, ilk gün biri ona alt raftaki yiyeceklerin herkese ait olduğunu söylemiş."
+      }
+    ]
+  },
+  {
+    "id": "go_tram_breakdown",
+    "level": "B1",
+    "genre": "haber",
+    "emoji": "🚋",
+    "title": "Three Hours Without Trams",
+    "titleTr": "Tramvaysız üç saat",
+    "text": "Thousands of people were late for work on Monday morning. A power problem stopped the trams on the city's busiest line for nearly three hours.\n\nThe problem started at twenty to eight, the busiest time of the day. Six trams stopped between stations, and passengers had to wait inside them for almost an hour. “It was hot and crowded, and nobody told us anything,” said Emre Kaya, 34, who was on his way to work. “In the end the driver opened the doors, and we walked along the line to the next station.”\n\nThe city transport company said that a cable under the street was damaged during road works. Engineers repaired it, and the trams started running again at half past ten. Extra buses carried passengers between the stations, but many people said the queues were very long.\n\nNot everyone had a bad morning, however. At one stop, a café owner brought out free tea and simit for the people who were waiting. “They were cold and tired. What else could I do?” said Ayşe Demir, who has run the café for twelve years. Photos of her small table quickly spread on social media.\n\nSeveral passengers complained that the company sent information too late. Canan Öz, a fifty-year-old teacher, said she learned about the problem from her daughter, not from the transport app. A spokesperson for the company said they were sorry and promised to improve the warnings in the app.\n\nThe company has asked passengers who missed important appointments to contact its customer service. The road works will continue until the end of the month.",
+    "glosses": {
+      "power problem": "elektrik arızası",
+      "busiest": "en yoğun",
+      "cable": "kablo",
+      "passengers": "yolcular",
+      "crowded": "kalabalık",
+      "damaged": "hasar gördü",
+      "road works": "yol çalışması",
+      "engineers": "mühendisler",
+      "queues": "kuyruklar",
+      "spread": "yayıldı",
+      "complained": "şikâyet etti",
+      "spokesperson": "sözcü",
+      "warnings": "uyarılar",
+      "appointments": "randevular"
+    },
+    "questions": [
+      {
+        "q": "Tramvaylar neden durdu?",
+        "options": [
+          "Heavy snow",
+          "A strike by the drivers",
+          "A damaged cable under the street",
+          "A traffic accident"
+        ],
+        "answer": 2,
+        "explain": "\"A damaged cable under the street\" doğru: şirket, yol çalışması sırasında sokağın altındaki bir kablonun hasar gördüğünü söylüyor."
+      },
+      {
+        "q": "Ayşe Demir ne yaptı?",
+        "options": [
+          "She drove people to work",
+          "She gave free tea and simit to people",
+          "She complained to the company",
+          "She repaired the cable"
+        ],
+        "answer": 1,
+        "explain": "\"She gave free tea and simit to people\" doğru: kafe sahibi bekleyenlere “free tea and simit” çıkardı."
+      },
+      {
+        "q": "Bazı yolcular şirkete neden kızgın?",
+        "options": [
+          "The information came too late",
+          "The tickets were too expensive",
+          "The extra buses were not free",
+          "The drivers were rude"
+        ],
+        "answer": 0,
+        "explain": "\"The information came too late\" doğru: yolcular şirketin bilgiyi geç verdiğinden şikâyet ediyor; Canan Öz arızayı uygulamadan değil kızından öğrenmiş."
+      }
+    ]
+  },
+  {
+    "id": "go_choir_club",
+    "level": "B1",
+    "genre": "anlatı",
+    "emoji": "🎶",
+    "title": "Singing with Strangers",
+    "titleTr": "Yabancılarla şarkı söylemek",
+    "text": "After two years in İstanbul, I noticed something sad. Almost all my friends were other English teachers. I wanted to meet Turkish people outside work. So when I saw a poster for a choir in my neighbourhood, I wrote down the number.\n\nThe first rehearsal was on a Wednesday evening in the basement of a cultural centre. About twenty people were standing in a circle. A small woman with grey hair came over to me.\n\n“Welcome! I'm Nesrin, the conductor,” she said. “And you are?”\n\n“Sam.”\n\n“Can you sing, Sam?”\n\n“Honestly? Only in the shower,” I answered.\n\nShe laughed. “Perfect. Most of us started there. Are you a tenor or a bass?”\n\n“I have no idea.”\n\n“Then sing this note for me.” She played a note on the piano, and I tried. “Bass,” she said. “Stand next to Hakan.”\n\nHakan was a retired bus driver with a very deep voice. “Don't worry,” he whispered. “Just listen to me and do the same.”\n\nThe problem was the songs. They were old folk songs, and I did not understand half of the words. “What does this line mean?” I asked Hakan during the break.\n\n“It's about a bird that flies over the mountains to find its lover,” he said. “Every second song we sing is about a lover far away.”\n\nFor the next two months I practised every evening. I recorded the songs on my phone and listened to them on the ferry. My Turkish got better faster than in any class.\n\nIn June we gave a small concert in the park. I was very nervous, but Hakan stood next to me as always. When we finished, a little boy in the front row shouted, “The foreign man can sing too!” Everyone laughed, and I laughed the loudest.",
+    "glosses": {
+      "choir": "koro",
+      "rehearsal": "prova",
+      "basement": "bodrum kat",
+      "grey hair": "kır saç",
+      "conductor": "koro şefi",
+      "a tenor or a bass": "tenor mu bas mı (erkek ses türleri)",
+      "note": "nota",
+      "retired": "emekli",
+      "deep voice": "kalın, tok ses",
+      "whispered": "fısıldadı",
+      "folk songs": "türküler",
+      "lover": "sevgili",
+      "nervous": "heyecanlı, gergin"
+    },
+    "questions": [
+      {
+        "q": "Sam koroya neden katıldı?",
+        "options": [
+          "He wanted to be a professional singer",
+          "He wanted to meet Turkish people outside work",
+          "His school asked him to join",
+          "Hakan invited him"
+        ],
+        "answer": 1,
+        "explain": "\"He wanted to meet Turkish people outside work\" doğru: arkadaşlarının neredeyse hepsi İngilizce öğretmeniydi, bu yüzden iş dışında Türklerle tanışmak istedi."
+      },
+      {
+        "q": "Hakan Sam'e nasıl yardım etti?",
+        "options": [
+          "He told Sam to listen and do the same",
+          "He gave Sam piano lessons",
+          "He wrote the words in English",
+          "He drove Sam to rehearsals"
+        ],
+        "answer": 0,
+        "explain": "\"He told Sam to listen and do the same\" doğru: Hakan “Just listen to me and do the same” diye fısıldıyor."
+      },
+      {
+        "q": "Sam'in Türkçesi nasıl gelişti?",
+        "options": [
+          "He took a Turkish course",
+          "He watched Turkish TV every night",
+          "He read Turkish newspapers",
+          "He practised the songs and listened to them"
+        ],
+        "answer": 3,
+        "explain": "\"He practised the songs and listened to them\" doğru: her akşam çalıştı, şarkıları vapurda dinledi ve Türkçesi “faster than in any class” gelişti."
+      }
+    ]
+  },
+  {
+    "id": "go_moving_house",
+    "level": "B1",
+    "genre": "nasıl yapılır",
+    "emoji": "📦",
+    "title": "How to Move House Without Stress",
+    "titleTr": "Strese girmeden nasıl taşınılır",
+    "text": "Moving to a new flat is exciting, but for many people it is also a very hard day. With a little planning, it can be much easier. Here are some simple tips.\n\nStart early. About a month before the move, go through every room and decide what you really need. Old clothes, broken chairs and books you will never read again can be sold, given away or recycled. Every box you don't carry saves you time and money.\n\nBook the moving company early. In big cities, the end of the month is very busy because many rental contracts end then. Ask at least three companies for a price, and read online reviews. A cheap company is not cheap if it breaks your furniture.\n\nLabel every box. Write the room and a short list of what is inside on two sides of each box. “Kitchen, plates and glasses” is much more helpful than “Things”. Put heavy things like books in small boxes, and light things in big ones.\n\nPack a bag for the first night. Put in a toothbrush, a phone charger, a towel, some snacks, toilet paper and clean clothes. On the first evening you will be too tired to open twenty boxes.\n\nTell people your new address. Don't forget the bank, your doctor, your workplace and online shops. Also, ask the electricity, water and gas companies to start your service before you arrive.\n\nBe kind to your new neighbours. Moving day is noisy, and the lift may be busy for hours. A short note on their door or a plate of cookies says hello and sorry at the same time.\n\nFinally, remember that it is normal to feel strange in a new home. Give it a few weeks. Soon it will feel like yours.",
+    "glosses": {
+      "recycled": "geri dönüştürülmek",
+      "moving company": "nakliye firması",
+      "rental contracts": "kira sözleşmeleri",
+      "reviews": "yorumlar, değerlendirmeler",
+      "furniture": "mobilya",
+      "label": "etiketlemek, üstüne yazmak",
+      "pack a bag": "çanta hazırlamak",
+      "charger": "şarj aleti",
+      "towel": "havlu",
+      "snacks": "atıştırmalıklar",
+      "lift": "asansör",
+      "cookies": "kurabiyeler"
+    },
+    "questions": [
+      {
+        "q": "Taşınmadan yaklaşık bir ay önce ne yapmalısın?",
+        "options": [
+          "Buy new furniture",
+          "Decide what you really need",
+          "Visit your new neighbours",
+          "Pack all the boxes"
+        ],
+        "answer": 1,
+        "explain": "\"Decide what you really need\" doğru: metin taşınmadan bir ay önce her odayı gezip “decide what you really need” diyor."
+      },
+      {
+        "q": "İlk gece çantasına neler konmalı?",
+        "options": [
+          "Books and plates",
+          "All your winter clothes",
+          "Your most expensive things",
+          "A toothbrush, a charger and a towel"
+        ],
+        "answer": 3,
+        "explain": "\"A toothbrush, a charger and a towel\" doğru: çantaya diş fırçası, şarj aleti, havlu, atıştırmalık ve temiz giysi koymayı öneriyor."
+      },
+      {
+        "q": "Yeni komşular için ne öneriliyor?",
+        "options": [
+          "Leave a note or bring cookies",
+          "Move only at night",
+          "Use the stairs, not the lift",
+          "Ask them to carry your boxes"
+        ],
+        "answer": 0,
+        "explain": "\"Leave a note or bring cookies\" doğru: kapıya kısa bir not ya da bir tabak kurabiye hem merhaba hem özür demenin güzel bir yolu."
+      }
+    ]
+  },
+  {
+    "id": "go_we_need_to_talk",
+    "level": "B1",
+    "genre": "öykü",
+    "emoji": "💬",
+    "title": "We Need to Talk",
+    "titleTr": "Konuşmamız lazım",
+    "text": "At eleven in the morning, Kerem's phone buzzed. It was a message from his sister: “We need to talk. Call me tonight.”\n\nKerem read it three times. Elif never wrote messages like that. Usually her messages were full of hearts and photos of cats. “Is everything OK?” he wrote back. There was no answer.\n\nAll afternoon he could not focus on his work. Was she angry with him? Maybe it was about their mother's birthday. He had promised to buy the present, and he had completely forgotten. Or maybe it was the lamp. He had broken her lamp last month, and he had not told her.\n\nAt lunch he asked his colleague Defne for advice. “My sister says we need to talk. What does that mean?”\n\n“Nothing good,” Defne said seriously. Then she smiled. “I'm joking. Just call her.”\n\nAt seven he finally called. “Elif? What's wrong? Is it about Mum's present? I'm sorry, I'll buy it tomorrow.”\n\n“What present?” Elif said. “Oh no, did you forget it?”\n\n“Wait,” Kerem said. “Then what is it about? The lamp?”\n\n“What lamp?”\n\nThere was a short silence. Kerem closed his eyes. “Forget the lamp. Why did you want to talk?”\n\nElif laughed. “Because I have big news. I'm going to open a second café! I found a small place in Moda, and the new branch needs a website. You're the only engineer I know who works for free.”\n\nKerem laughed too, mostly because he was relieved. “Of course I'll help. But next time, please don't write ‘We need to talk.’ Write ‘I have good news.’”\n\n“Deal,” Elif said. “And now tell me about this lamp.”",
+    "glosses": {
+      "buzzed": "titredi (telefon)",
+      "focus on": "odaklanmak",
+      "promised": "söz vermişti",
+      "completely": "tamamen",
+      "colleague": "iş arkadaşı",
+      "advice": "tavsiye",
+      "seriously": "ciddi ciddi",
+      "silence": "sessizlik",
+      "engineer": "mühendis",
+      "relieved": "rahatlamış",
+      "deal": "anlaştık"
+    },
+    "questions": [
+      {
+        "q": "Kerem bütün öğleden sonra neden endişelendi?",
+        "options": [
+          "Elif's message sounded serious",
+          "He lost his job",
+          "His mother was ill",
+          "He broke his phone"
+        ],
+        "answer": 0,
+        "explain": "\"Elif's message sounded serious\" doğru: Elif normalde emoji ve kedi fotoğrafı yollar; “We need to talk” mesajı Kerem'i korkuttu."
+      },
+      {
+        "q": "Elif aslında neden konuşmak istiyordu?",
+        "options": [
+          "She was angry about the lamp",
+          "She wanted to talk about their mother's present",
+          "She was opening a second café and needed a website",
+          "She wanted to move to a new flat"
+        ],
+        "answer": 2,
+        "explain": "\"She was opening a second café and needed a website\" doğru: Elif “I'm going to open a second café!” diyor ve bir web sitesine ihtiyacı var."
+      },
+      {
+        "q": "Telefon konuşmasının sonunda Kerem nasıl hissetti?",
+        "options": [
+          "Angry",
+          "Relieved",
+          "Bored",
+          "Afraid"
+        ],
+        "answer": 1,
+        "explain": "\"Relieved\" doğru: metinde Kerem'in güldüğünü, “mostly because he was relieved” diyor; haber kötü değil iyiydi."
+      }
+    ]
+  },
+  {
+    "id": "go_family_visit",
+    "level": "B1",
+    "genre": "anlatı",
+    "emoji": "🧳",
+    "title": "Ten Days, Six Guests, One Bathroom",
+    "titleTr": "On gün, altı misafir, tek banyo",
+    "text": "Last month my relatives from Trabzon came to visit me in İstanbul. My aunt called on a Sunday and said, “Deniz, we're coming on Friday for ten days. Don't worry, we won't be any trouble.” I live alone in a small flat in Bakırköy. By Friday evening there were six people in it, and we had one bathroom.\n\nMy aunt brought two suitcases. One was full of clothes. The other was full of food: hazelnuts, butter, corn bread and a big bag of dark green cabbage. “The food in İstanbul isn't real food,” she said, and she took over my kitchen.\n\nThe first days were hard. I work in logistics and start at seven, so I need to sleep early. But my uncle watched football until midnight, and my cousins talked on their phones in the living room. Every morning there was a queue for the bathroom. In the end I started to shower at the gym near my office.\n\nBut slowly something changed. When I came home tired, dinner was ready on the table. My aunt asked about my work, and she really listened. My uncle fixed the kitchen door, which had been broken for a year. At the weekend we all went to the seaside. My youngest cousin, who is nine, held my hand the whole time.\n\nOn their last night, my aunt cooked my grandmother's soup. We sat on the floor because there were not enough chairs, and everyone told stories about my grandmother. I laughed so much that I cried a little.\n\nWhen they left, the flat was quiet and clean again. I had my bed, my bathroom and my sleep back. I should have been happy. Instead, I opened the fridge, saw the last piece of corn bread and missed them already.",
+    "glosses": {
+      "relatives": "akrabalar",
+      "aunt": "teyze, hala",
+      "suitcases": "valizler",
+      "hazelnuts": "fındık",
+      "corn bread": "mısır ekmeği",
+      "cabbage": "lahana",
+      "took over": "ele geçirdi, sahiplendi",
+      "cousins": "kuzenler",
+      "queue": "sıra, kuyruk",
+      "gym": "spor salonu",
+      "seaside": "deniz kenarı",
+      "missed them": "onları özledim"
+    },
+    "questions": [
+      {
+        "q": "İlk günler Deniz için neden zordu?",
+        "options": [
+          "Deniz had to cook every night",
+          "The relatives didn't bring any food",
+          "Deniz was ill",
+          "The flat was crowded and noisy"
+        ],
+        "answer": 3,
+        "explain": "\"The flat was crowded and noisy\" doğru: küçük evde altı kişi ve tek banyo vardı; amca gece yarısına kadar maç izliyor, banyo için sıra oluyordu."
+      },
+      {
+        "q": "Amca evde neyi tamir etti?",
+        "options": [
+          "The kitchen door",
+          "The television",
+          "The shower",
+          "A chair"
+        ],
+        "answer": 0,
+        "explain": "\"The kitchen door\" doğru: metinde “My uncle fixed the kitchen door, which had been broken for a year” diyor."
+      },
+      {
+        "q": "Akrabalar gidince Deniz ne hissetti?",
+        "options": [
+          "Happy to be alone again",
+          "Angry about the mess",
+          "Deniz missed them",
+          "Too tired to think"
+        ],
+        "answer": 2,
+        "explain": "\"Deniz missed them\" doğru: mutlu olması gerekirken son mısır ekmeğini görünce onları şimdiden özledi (“missed them already”)."
+      }
+    ]
+  },
+  {
+    "id": "go_old_photos",
+    "level": "B1",
+    "genre": "öykü",
+    "emoji": "☕",
+    "title": "The Photos Were a Bit Old",
+    "titleTr": "Fotoğraflar biraz eskiydi",
+    "text": "For three weeks, Gizem had been on a dating app. Most conversations ended after two messages, but Can was different. He asked good questions, he was funny, and he didn't just send “hi”. After ten days of messages, they decided to meet for coffee on Saturday.\n\nOn Saturday Gizem arrived early and chose a table near the window. At exactly four o'clock, a man came in and looked around. He had Can's smile, but he had less hair and a few more kilos than in his photos.\n\n“Are you Gizem?” he asked.\n\n“Can?”\n\n“Yes. I know what you're thinking,” he said as he sat down. “The photos are a bit old.”\n\n“How old?”\n\nHe looked at the ceiling. “About six years. A friend took them on holiday. I wanted to change them, but I never liked my new ones.”\n\nFor a moment Gizem was quiet. Then she started to laugh.\n\n“What's funny?” Can asked, a little worried.\n\n“My photos are from my sister's wedding,” she said. “Four years ago. I had long hair then, and a very expensive hairdresser.”\n\n“I noticed the hair,” Can admitted. “I thought you cut it last week.”\n\n“So we're both liars,” said Gizem.\n\n“Or we're both people who hate taking selfies,” Can said. “That sounds better.”\n\nThey ordered two coffees and a piece of cake to share. They talked about their jobs, their families and the worst dates they had ever had. Can told her about a woman who brought her mother to their first meeting. She told him about a man who talked about his old girlfriend for two hours.\n\nWhen the café closed, they were still talking. Outside, Can took out his phone. “Can I take a photo of us? A new one.”\n\n“Only if you put it on your profile,” said Gizem.\n\nHe did, the same night.",
+    "glosses": {
+      "dating app": "tanışma (flört) uygulaması",
+      "conversations": "sohbetler",
+      "ceiling": "tavan",
+      "wedding": "düğün",
+      "hairdresser": "kuaför",
+      "noticed": "fark ettim",
+      "admitted": "itiraf etti",
+      "liars": "yalancılar",
+      "selfies": "özçekimler",
+      "to share": "paylaşmak için",
+      "dates": "buluşmalar (romantik)",
+      "profile": "profil"
+    },
+    "questions": [
+      {
+        "q": "Can geldiğinde Gizem'i ne şaşırttı?",
+        "options": [
+          "He brought his mother",
+          "He looked older than in his photos",
+          "He was very late",
+          "He didn't smile at all"
+        ],
+        "answer": 1,
+        "explain": "\"He looked older than in his photos\" doğru: Can'in saçı daha az, kilosu daha fazlaydı; fotoğrafları altı yıllıktı."
+      },
+      {
+        "q": "Gizem neden gülmeye başladı?",
+        "options": [
+          "Her own photos were old too",
+          "Can told a joke about his hair",
+          "The cake was terrible",
+          "Can arrived too early"
+        ],
+        "answer": 0,
+        "explain": "\"Her own photos were old too\" doğru: Gizem'in fotoğrafları da dört yıl önceki, kız kardeşinin düğününden."
+      },
+      {
+        "q": "Öykünün sonunda Can ne yaptı?",
+        "options": [
+          "He deleted the dating app",
+          "He paid for the cake",
+          "He called his friend",
+          "He put a new photo of them on his profile"
+        ],
+        "answer": 3,
+        "explain": "\"He put a new photo of them on his profile\" doğru: Gizem “Only if you put it on your profile” dedi ve Can bunu aynı gece yaptı."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_screens_sleep",
+    "level": "B2",
+    "genre": "popüler bilim",
+    "emoji": "📱",
+    "title": "Is Your Phone Really Keeping You Awake?",
+    "titleTr": "Telefonunuz gerçekten uykunuzu mu kaçırıyor?",
+    "text": "Almost everyone has heard the warning: put your phone away an hour before bed, or the blue light from the screen will ruin your sleep. It is repeated by doctors, magazines and even by phone companies, which now offer a “night mode” that turns the screen a warm orange colour in the evening. But what does the science actually say? The answer, as so often, is more complicated than the advice.\n\nThe idea starts with a hormone called melatonin. As the light outside fades in the evening, the body produces more of it, and we begin to feel sleepy. Bright light, especially light with a lot of blue in it, can slow this process down. Laboratory studies have shown that people who read on a bright tablet for several hours before bed tend to fall asleep a little later and feel less alert the next morning than people who read a paper book.\n\nSo far, the warning seems reasonable. However, many researchers now believe that the light itself is only a small part of the story. In those laboratory studies, the screens were often very bright and held close to the face for hours. In real life, most of us use our phones at a lower brightness, and the difference in sleep time is usually measured in minutes, not hours. Some reviews have found that night mode makes little or no difference at all.\n\nWhat seems to matter more is what we are doing on the screen. A calm show or a few pages of an e-book is very different from an argument in a group chat or a game that you cannot stop playing. Exciting or stressful content keeps the brain active, and an active brain does not want to sleep. There is also a simpler problem: time. Every “just one more video” pushes bedtime a little later, while the alarm clock stays exactly where it was.\n\nTeenagers may be the group most at risk. Their body clocks naturally move later during adolescence, so they already find it hard to fall asleep early. Add a phone full of messages from friends, and the night can easily become very short. Several studies have linked heavy screen use at night with poorer sleep in young people, although it is not always clear which comes first: the phone or the sleepless nights.\n\nSo what should we do? Sleep experts tend to give practical rather than strict advice. Keep the phone out of the bedroom if you can, or at least out of reach of the bed. Buy a cheap alarm clock, so that the phone is not the last thing you touch at night and the first thing you touch in the morning. If you do read on a screen, turn the brightness down and choose something that relaxes you.\n\nMost importantly, notice how you feel. If you fall asleep easily and wake up rested, your evening routine is probably fine, whatever is on your bedside table.",
+    "glosses": {
+      "melatonin": "melatonin (uyku hormonu)",
+      "fades": "azalır, solar",
+      "alert": "zinde, uyanık",
+      "brightness": "parlaklık",
+      "adolescence": "ergenlik",
+      "at risk": "risk altında",
+      "out of reach": "erişilemeyecek yerde",
+      "bedside table": "komodin",
+      "rested": "dinlenmiş"
+    },
+    "questions": [
+      {
+        "q": "Metnin ana fikri nedir?",
+        "options": [
+          "Gece modu uyku sorunlarını tamamen çözer.",
+          "Telefonlar uykuyu hiç etkilemez.",
+          "Ekran ışığı uykuyu biraz etkiler ama ekranda ne yaptığımız daha önemli olabilir.",
+          "Kâğıt kitap okumak uykuyu geciktirir."
+        ],
+        "answer": 2,
+        "explain": "“Ekran ışığı uykuyu biraz etkiler ama ekranda ne yaptığımız daha önemli olabilir.” doğru: metinde ışığın hikâyenin küçük bir parçası olduğu ve “what seems to matter more is what we are doing on the screen” dendiği söyleniyor."
+      },
+      {
+        "q": "Laboratuvar çalışmalarında ekranlar nasıl kullanılmıştı?",
+        "options": [
+          "Çok parlaktı ve saatlerce yüze yakın tutuldu.",
+          "Gece modunda ve düşük parlaklıktaydı.",
+          "Sadece birkaç dakika kullanıldı.",
+          "Yatak odasının dışında bırakıldı."
+        ],
+        "answer": 0,
+        "explain": "“Çok parlaktı ve saatlerce yüze yakın tutuldu.” doğru: metinde “the screens were often very bright and held close to the face for hours” deniyor."
+      },
+      {
+        "q": "Gençler neden özellikle risk altında?",
+        "options": [
+          "Daha parlak telefonlar kullanıyorlar.",
+          "Hiç kitap okumuyorlar.",
+          "Alarm saatleri yok.",
+          "Ergenlikte vücut saatleri doğal olarak daha geç kayıyor."
+        ],
+        "answer": 3,
+        "explain": "“Ergenlikte vücut saatleri doğal olarak daha geç kayıyor.” doğru: metinde “their body clocks naturally move later during adolescence” deniyor; bir de arkadaşlardan gelen mesajlar ekleniyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_putting_off",
+    "level": "B2",
+    "genre": "röportaj",
+    "emoji": "⏳",
+    "title": "Why We Put Things Off",
+    "titleTr": "İşleri neden erteleriz?",
+    "text": "Mia, a journalist, has been planning an article about procrastination for three weeks. She finally sat down with Dr. Nermin Aksoy, a psychologist who studies why people delay tasks they know are important.\n\nMia: “I have to confess something. This interview was supposed to happen two weeks ago, and I kept moving it.”\n\nNermin: “You are in good company. Almost everyone does it. Some surveys suggest that around one in five adults put things off so often that it causes real problems at work or at home.”\n\nMia: “Most people think it is about being lazy. Is that true?”\n\nNermin: “Not really. Lazy people do not care whether the job gets done. People who procrastinate usually care a great deal. They feel guilty, they worry, and they still do not start. That is why many researchers now describe it as a problem of emotions, not of time.”\n\nMia: “What do you mean by a problem of emotions?”\n\nNermin: “Imagine a task that makes you feel bored, anxious or unsure of yourself. Your brain wants that bad feeling to stop, right now. Checking your phone or tidying your desk makes it stop. So you get a small reward for avoiding the task, and the next time it is even easier to avoid it.”\n\nMia: “So the tidy desk is a kind of escape.”\n\nNermin: “Exactly. Students often clean the whole kitchen when they have an exam. The kitchen has never been cleaner, and the exam is still waiting.”\n\nMia: “Are some people more likely to do this than others?”\n\nNermin: “Perfectionists often struggle with it. If you believe the work has to be perfect, starting is frightening, because the first attempt is never perfect. Tiredness and stress make it worse, too. And of course, our phones are built to be more interesting than almost any task.”\n\nMia: “What actually helps?”\n\nNermin: “The first step is to make starting smaller. Do not tell yourself, ‘I will write the report.’ Tell yourself, ‘I will open the file and write one bad sentence.’ Once people start, they usually continue. The hardest part is the first five minutes.”\n\nMia: “One bad sentence. I like that.”\n\nNermin: “Another thing is to be kind to yourself. One study found that students who forgave themselves for putting off work before one exam put things off less before the next one. Feeling terrible does not make you work harder. It just makes the task feel even worse.”\n\nMia: “And deadlines? I need them.”\n\nNermin: “Deadlines work, but only if they feel real. A deadline in three months feels like it belongs to another person. Break the work into pieces with dates that are close, and tell someone about them. When another person is waiting, we usually find a way.”\n\nMia: “Last question. Have you ever put off something important yourself?”\n\nNermin: “My first book. I promised it for spring and delivered it in winter. So I speak from experience.”",
+    "glosses": {
+      "procrastination": "erteleme alışkanlığı",
+      "procrastinate": "işleri ertelemek",
+      "confess": "itiraf etmek",
+      "put things off": "işleri ertelemek",
+      "anxious": "kaygılı",
+      "perfectionists": "mükemmeliyetçiler",
+      "forgave": "affetti",
+      "deadlines": "son teslim tarihleri",
+      "unsure": "emin olmayan",
+      "tiredness": "yorgunluk",
+      "psychologist": "psikolog"
+    },
+    "questions": [
+      {
+        "q": "Dr. Aksoy'a göre erteleme aslında neyle ilgili bir sorun?",
+        "options": [
+          "Tembellikle",
+          "Duygularla",
+          "Zaman planlamasıyla",
+          "Zekâyla"
+        ],
+        "answer": 1,
+        "explain": "“Duygularla” doğru: Dr. Aksoy “a problem of emotions, not of time” diyor; erteleyenler aslında işi çok önemsiyor."
+      },
+      {
+        "q": "Dr. Aksoy işe başlamak için ne öneriyor?",
+        "options": [
+          "Bütün raporu tek seferde yazmayı",
+          "Önce mutfağı temizlemeyi",
+          "Teslim tarihini üç ay sonraya koymayı",
+          "Başlangıcı çok küçük bir adıma indirmeyi"
+        ],
+        "answer": 3,
+        "explain": "“Başlangıcı çok küçük bir adıma indirmeyi” doğru: “I will open the file and write one bad sentence” örneğini veriyor; en zor kısım ilk beş dakika."
+      },
+      {
+        "q": "Röportajın sonunda Dr. Aksoy kendisi hakkında ne anlatıyor?",
+        "options": [
+          "İlk kitabını söz verdiğinden geç teslim etmişti.",
+          "Hiçbir işi ertelemediğini söylüyor.",
+          "Röportajı iki hafta ertelediğini söylüyor.",
+          "Sınavdan önce hep mutfağı temizlediğini söylüyor."
+        ],
+        "answer": 0,
+        "explain": "“İlk kitabını söz verdiğinden geç teslim etmişti.” doğru: “I promised it for spring and delivered it in winter” diyor. Röportajı erteleyen ise Mia'ydı."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_clothes_swap",
+    "level": "B2",
+    "genre": "haber",
+    "emoji": "👗",
+    "title": "Old Clothes, New Owners",
+    "titleTr": "Eski giysiler, yeni sahipler",
+    "text": "On the first Sunday of every month, a café in Kadıköy closes to normal customers and fills up with rails of clothes, piles of jeans and a surprising amount of laughter. Nobody is selling anything. The rules of the Kadıköy Clothes Swap are simple: bring up to five clean items you no longer wear, and take home up to five items that someone else has brought.\n\nThe event was started two years ago by Elif, the café's owner, who says she was tired of her own wardrobe. “I had a cupboard full of things I had put on only once or twice,” she explains. “Some still had the price tags on. I felt guilty every time I opened the door.” She invited a few friends to her flat to exchange clothes. Twelve people came. Today, more than a hundred people come through the door on a busy swap day.\n\nSecond-hand clothing is growing fast around the world. Online platforms for used fashion have become popular, especially among young people, and some large clothing companies have started to sell used items in their own shops. Part of the reason is price: a good second-hand coat can cost a small part of what a new one costs. But many shoppers also say they are worried about the environment.\n\nThe fashion industry uses huge amounts of water and energy, and much of what it produces is thrown away quickly. One widely quoted estimate suggests that a rubbish truck full of clothes is burned or buried somewhere in the world every second. Experts point out that the most sustainable piece of clothing is usually the one that already exists, so keeping clothes in use for longer is one of the simplest things any of us can do.\n\nNot everyone is convinced that second-hand shopping is always a good thing. Some researchers warn that cheap used clothes can encourage people to buy even more, simply because it feels better for the planet. Others note that large amounts of donated clothing are shipped to poorer countries, where much of it cannot be sold and ends up as waste.\n\nElif is aware of the criticism. “A swap is not a magic answer,” she says. “If people take five things home and then go shopping anyway, we have not changed much.” For that reason, nothing is simply thrown away: clothes that nobody takes at the end of the day go to a local charity that turns them into bags and cleaning cloths.\n\nFor many visitors, though, the main attraction is social. Zeynep Tekin, a retired teacher, comes every month with her granddaughter. “We argue about colours, we try things on, we meet people,” she says. “It is better than any shopping centre.” Last month, she found a warm jacket that, as it turned out, had belonged to a woman who lives two streets away. “Now we say hello at the market,” she laughs. “The jacket introduced us.”",
+    "glosses": {
+      "rails": "askılıklar",
+      "swap": "takas",
+      "wardrobe": "gardırop, giysiler",
+      "estimate": "tahmin",
+      "sustainable": "sürdürülebilir, çevreye zarar vermeyen",
+      "convinced": "ikna olmuş",
+      "donated": "bağışlanmış",
+      "charity": "hayır kurumu",
+      "jeans": "kot pantolonlar"
+    },
+    "questions": [
+      {
+        "q": "Kadıköy'deki takas etkinliğinin kuralı nedir?",
+        "options": [
+          "En fazla beş temiz eşya getirip en fazla beş eşya götürmek",
+          "Giysileri ucuz fiyata satmak",
+          "Sadece yeni giysiler getirmek",
+          "Her ay yalnızca bir eşya almak"
+        ],
+        "answer": 0,
+        "explain": "“En fazla beş temiz eşya getirip en fazla beş eşya götürmek” doğru: metinde “bring up to five clean items … and take home up to five items” deniyor; kimse bir şey satmıyor."
+      },
+      {
+        "q": "Bazı araştırmacılar ikinci el alışveriş hakkında neyi uyarıyor?",
+        "options": [
+          "İkinci el giysiler her zaman kirlidir.",
+          "Büyük şirketler ikinci el satmayı yasaklamıştır.",
+          "Ucuz ikinci el giysiler insanları daha çok almaya itebilir.",
+          "Gençler ikinci el giysiden hoşlanmaz."
+        ],
+        "answer": 2,
+        "explain": "“Ucuz ikinci el giysiler insanları daha çok almaya itebilir.” doğru: metinde “cheap used clothes can encourage people to buy even more” deniyor."
+      },
+      {
+        "q": "Zeynep Tekin'in bulduğu ceket ne sağladı?",
+        "options": [
+          "Torununa doğum günü hediyesi oldu.",
+          "Ceketin eski sahibiyle, yani bir komşusuyla tanıştı.",
+          "Ceketi pazarda sattı.",
+          "Ceketi hayır kurumuna verdi."
+        ],
+        "answer": 1,
+        "explain": "“Ceketin eski sahibiyle, yani bir komşusuyla tanıştı.” doğru: ceket iki sokak ötede oturan bir kadına aitti ve Zeynep “The jacket introduced us” diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_location_apps",
+    "level": "B2",
+    "genre": "görüş",
+    "emoji": "📍",
+    "title": "The Apps That Know Where You Sleep",
+    "titleTr": "Nerede uyuduğunuzu bilen uygulamalar",
+    "text": "Last month I did something I had been avoiding for years. I opened the privacy settings on my phone and looked at which apps were allowed to know my location. There were twenty-three of them. Among them were a torch app, two games I had not opened for years, and a recipe app that apparently needed to know where I was at all times. I have no idea why a recipe for lentil soup depends on my address.\n\nWe usually talk about tracking as if it were something that happens in spy films. In reality, it happens quietly, through small permissions that we give without thinking. A new app asks, “Allow access to your location?” and we press “Allow” because we want to get to the next screen. Multiply that moment by dozens of apps and several years, and you get a detailed diary of your life that you never wrote yourself.\n\nLocation data is especially revealing. A list of places where your phone spends the night shows where you live. Where it spends the day shows where you work. A weekly visit to a hospital, a place of worship or a lawyer's office tells a story that you might not want to share even with close friends. Journalists in several countries have shown that so-called anonymous location data can often be linked back to real people surprisingly easily.\n\nDefenders of the industry say that this information makes our lives better. Maps can warn us about traffic, shops can offer discounts nearby, and free apps can survive thanks to advertising. That is partly true, and I am not suggesting that we all throw our phones into the sea. But there is a big difference between sharing my location with a map while I am driving and sharing it with a company I have never heard of, every hour of every day.\n\nThe usual answer is that users have agreed to it. Technically, we have. But nobody reads the long privacy policies that come with each app; one often-quoted study calculated that reading all of them would take an ordinary person weeks every year. An agreement that nobody can reasonably understand is not much of an agreement.\n\nI believe the responsibility should move from the user to the companies and the law. Apps should collect only the data they really need for the service they offer, and they should keep it for as short a time as possible. Selling location data to other companies should require clear, separate permission, not a sentence hidden on page forty. Some countries have begun to move in this direction, but progress is slow.\n\nIn the meantime, there are things each of us can do. Check your location settings once a month. Choose “only while using the app” instead of “always”. Delete apps you no longer use. It takes ten minutes, and it is one of the few ways of protecting ourselves that costs nothing.\n\nAfter my own check, I switched off location for nineteen of the twenty-three apps. The lentil soup tastes exactly the same.",
+    "glosses": {
+      "privacy settings": "gizlilik ayarları",
+      "torch": "el feneri",
+      "lentil soup": "mercimek çorbası",
+      "tracking": "takip, izleme",
+      "permissions": "izinler",
+      "revealing": "çok şey ele veren",
+      "place of worship": "ibadet yeri",
+      "so-called": "sözde, adı verilen",
+      "anonymous": "isimsiz, kimliği gizli",
+      "privacy policies": "gizlilik politikaları",
+      "in the meantime": "bu arada, o zamana kadar"
+    },
+    "questions": [
+      {
+        "q": "Yazarın temel görüşü nedir?",
+        "options": [
+          "Herkes telefonunu tamamen bırakmalı.",
+          "Konum verisi paylaşmanın hiçbir faydası yok.",
+          "Ücretsiz uygulamalar yasaklanmalı.",
+          "Sorumluluk kullanıcıdan şirketlere ve yasalara geçmeli."
+        ],
+        "answer": 3,
+        "explain": "“Sorumluluk kullanıcıdan şirketlere ve yasalara geçmeli.” doğru: yazar “the responsibility should move from the user to the companies and the law” diyor; telefonları denize atmayı önermediğini de söylüyor."
+      },
+      {
+        "q": "Yazara göre kullanıcıların verdiği onay neden gerçek bir onay sayılmaz?",
+        "options": [
+          "Uygulamalar onay hiç istemiyor.",
+          "Kimse uzun gizlilik politikalarını okumuyor ve anlayamıyor.",
+          "Onay yalnızca harita uygulamaları için geçerli.",
+          "Onay her ay otomatik olarak siliniyor."
+        ],
+        "answer": 1,
+        "explain": "“Kimse uzun gizlilik politikalarını okumuyor ve anlayamıyor.” doğru: metinde “nobody reads the long privacy policies” deniyor ve kimsenin anlayamadığı bir anlaşmanın pek anlaşma olmadığı söyleniyor."
+      },
+      {
+        "q": "Yazar kendi telefonunu kontrol ettikten sonra ne yaptı?",
+        "options": [
+          "Bütün uygulamaları sildi.",
+          "Yeni bir telefon aldı.",
+          "Yirmi üç uygulamanın on dokuzunda konumu kapattı.",
+          "Tarif uygulamasına adresini yazdı."
+        ],
+        "answer": 2,
+        "explain": "“Yirmi üç uygulamanın on dokuzunda konumu kapattı.” doğru: metinde “I switched off location for nineteen of the twenty-three apps” deniyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_adult_learners",
+    "level": "B2",
+    "genre": "röportaj",
+    "emoji": "🗣️",
+    "title": "Too Old to Learn a Language?",
+    "titleTr": "Dil öğrenmek için çok mu yaşlıyız?",
+    "text": "Sam came to İstanbul from London eight years ago to teach English, and started learning Turkish at the age of thirty-four. Mia talked to Sam about adult learners, accents and the famous question of age.\n\nMia: “Many adults tell me they are too old to learn a language. Are they right?”\n\nSam: “No, although I understand why they say it. Children seem to pick up languages without any effort, so adults compare themselves and feel slow. But the research is more interesting than that. Some studies suggest that adults actually make faster progress at the beginning. They can use grammar rules, dictionaries and their own experience of learning.”\n\nMia: “Then where does the idea come from?”\n\nSam: “Mostly from pronunciation. People who start very young are much more likely to end up with an accent that sounds completely native. Adults usually keep some accent, even after many years. But an accent is not a problem as long as people understand you. Half of the world speaks English with an accent.”\n\nMia: “What about your own Turkish? How did it go at the beginning?”\n\nSam: “Badly! In my first month I tried to buy half a kilo of cherries, and I used the wrong word completely. The man at the market laughed so much that he gave me the cherries for free.”\n\nMia: “So mistakes can be useful.”\n\nSam: “They are essential. Adults often hate making mistakes in public, because at work and at home they are used to being good at things. Suddenly they sound like a five-year-old, and it hurts their pride. Children do not worry about that. I think this fear, more than age, is what stops many adult learners.”\n\nMia: “What advice do you give your own students?”\n\nSam: “First, find a reason that matters to you. A job, a partner's family, a favourite singer. Motivation carries you through the boring months. Second, little and often. Twenty minutes every day is far better than three hours on Sunday. The brain needs to meet a word many times, on different days, before it stays.”\n\nMia: “And third?”\n\nSam: “Talk to real people as soon as possible, even if you can only say five sentences. Order your coffee in the language. Ask for directions you do not need. Every small conversation tells your brain that this language is not a school subject. It is part of your life.”\n\nMia: “Do adults have any special advantages?”\n\nSam: “Definitely. They know what they want to say, and they know themselves. An adult can say, ‘I learn best by listening while I walk,’ and organise their learning around that. Adults also have more patience, even if they do not always believe it.”\n\nMia: “Last question. Do people in İstanbul still notice your accent?”\n\nSam: “Immediately. Taxi drivers ask where I am from after two words. But then we talk for twenty minutes about football, so I do not mind at all.”",
+    "glosses": {
+      "accents": "aksanlar",
+      "accent": "aksan",
+      "pick up": "kolayca öğrenmek, kapmak",
+      "pronunciation": "telaffuz",
+      "native": "anadili gibi",
+      "cherries": "kirazlar",
+      "essential": "çok gerekli",
+      "in public": "başkalarının önünde",
+      "pride": "gurur",
+      "motivation": "motivasyon, istek",
+      "patience": "sabır"
+    },
+    "questions": [
+      {
+        "q": "Sam'e göre birçok yetişkini dil öğrenmekten en çok ne alıkoyuyor?",
+        "options": [
+          "Dilbilgisi kurallarını bilmemek",
+          "Sözlük kullanamamak",
+          "Başkalarının önünde hata yapma korkusu",
+          "Yaşlanınca beynin kelime öğrenememesi"
+        ],
+        "answer": 2,
+        "explain": "“Başkalarının önünde hata yapma korkusu” doğru: Sam “this fear, more than age, is what stops many adult learners” diyor."
+      },
+      {
+        "q": "Sam'e göre çok küçük yaşta başlamanın asıl avantajı nedir?",
+        "options": [
+          "Anadili gibi bir aksana sahip olma ihtimali daha yüksek.",
+          "Başlangıçta daha hızlı ilerlemek",
+          "Dilbilgisi kurallarını daha iyi kullanmak",
+          "Daha sabırlı olmak"
+        ],
+        "answer": 0,
+        "explain": "“Anadili gibi bir aksana sahip olma ihtimali daha yüksek.” doğru: Sam fikrin “mostly from pronunciation” geldiğini, küçük yaşta başlayanların daha çok “native” aksanla bitirdiğini söylüyor; başlangıçta hızlı ilerleyenler ise yetişkinler."
+      },
+      {
+        "q": "Sam taksicilerin aksanını fark etmesine neden aldırmıyor?",
+        "options": [
+          "Taksiye hiç binmiyor.",
+          "Aksanı tamamen kayboldu.",
+          "Taksiciler onunla İngilizce konuşuyor.",
+          "Sonra onlarla yirmi dakika futbol konuşuyorlar."
+        ],
+        "answer": 3,
+        "explain": "“Sonra onlarla yirmi dakika futbol konuşuyorlar.” doğru: Sam “then we talk for twenty minutes about football, so I do not mind at all” diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_city_noise",
+    "level": "B2",
+    "genre": "röportaj",
+    "emoji": "🔊",
+    "title": "Can a City Be Too Loud?",
+    "titleTr": "Bir şehir fazla gürültülü olabilir mi?",
+    "text": "On a morning radio show in İzmir, presenter Mehmet Yalın invited two guests to discuss a question that many listeners had written about: is the city becoming too noisy? Dr. Zeynep Ertan studies environmental health at a university. Deniz manages deliveries for a large logistics company.\n\nMehmet: “Zeynep, let us start with you. Is noise really a health problem, or just unpleasant?”\n\nZeynep: “It is both. The World Health Organization has warned for years that long-term exposure to traffic noise is linked to poor sleep, stress and even heart disease. The body reacts to loud sounds even while we are asleep. Our heart rate goes up, although we may not wake up or remember anything in the morning.”\n\nMehmet: “Deniz, your trucks are often blamed. Several listeners complain about deliveries at four in the morning.”\n\nDeniz: “I understand them, and I read every complaint. But there is a reason we deliver early. If our trucks arrive at nine, the streets are full, they block buses, and everyone is angry for a different reason. Night deliveries take traffic off the roads during the day.”\n\nZeynep: “That is a fair point. The problem is not the hour itself. It is how loud the delivery is. A truck engine running for twenty minutes outside a bedroom window, metal doors closing loudly, people shouting: those are the things that wake people up.”\n\nDeniz: “Agreed. We have started to train our drivers to switch off the engine while unloading, and we are testing electric vans in two neighbourhoods. They are almost silent. The difficulty is cost. An electric van is much more expensive, and small companies cannot change all their vehicles at once.”\n\nMehmet: “So what should the city do?”\n\nZeynep: “Several things. Quieter road surfaces exist, and they can reduce traffic noise noticeably. Lower speed limits in residential streets help, because noise rises quickly with speed. Trees help a little, mostly because they make people feel calmer. And we need noise maps, so we know where the problem is worst.”\n\nMehmet: “A listener called Ali has sent a message. He says the worst noise in his street is not trucks but motorbikes with modified exhausts.”\n\nDeniz: “I am very happy to hear that it is not us for once!”\n\nZeynep: “He is not alone. A single very loud bike can wake an entire street. Some cities have started testing cameras that measure noise and identify the vehicle, a bit like speed cameras. It is still early, but the first results look promising.”\n\nMehmet: “Final question for both of you. Will cities ever be quiet?”\n\nDeniz: “Quiet, no. Quieter, yes. Our customers want their goods fast, but they also want to sleep. We have to give them both.”\n\nZeynep: “I agree. Nobody wants a silent city. A city should sound alive. The question is whether people can still hear birds in the morning, and whether children can sleep at night.”",
+    "glosses": {
+      "presenter": "sunucu",
+      "logistics": "lojistik",
+      "exposure": "maruz kalma",
+      "heart rate": "kalp atış hızı",
+      "unloading": "yük boşaltma",
+      "road surfaces": "yol kaplamaları",
+      "noticeably": "fark edilir biçimde",
+      "residential": "konut bölgesindeki",
+      "modified exhausts": "değiştirilmiş egzozlar",
+      "promising": "umut verici",
+      "motorbikes": "motosikletler"
+    },
+    "questions": [
+      {
+        "q": "Deniz'e göre teslimatlar neden sabahın erken saatlerinde yapılıyor?",
+        "options": [
+          "Şoförler gece çalışmayı seviyor.",
+          "Gündüz yollardaki trafiği azaltmak için",
+          "Elektrikli kamyonetler yalnızca gece çalışıyor.",
+          "Müşteriler sabah dörtte uyanık olduğu için"
+        ],
+        "answer": 1,
+        "explain": "“Gündüz yollardaki trafiği azaltmak için” doğru: Deniz “Night deliveries take traffic off the roads during the day” diyor; saat dokuzda gelseler otobüsleri engellerlerdi."
+      },
+      {
+        "q": "Zeynep Ertan'a göre gece teslimatlarındaki asıl sorun nedir?",
+        "options": [
+          "Teslimatların saati",
+          "Kamyonların rengi",
+          "Teslimatların çok az olması",
+          "Teslimatın ne kadar gürültülü yapıldığı"
+        ],
+        "answer": 3,
+        "explain": "“Teslimatın ne kadar gürültülü yapıldığı” doğru: Zeynep Ertan “The problem is not the hour itself. It is how loud the delivery is.” diyor."
+      },
+      {
+        "q": "Dinleyici Ali'nin mesajına göre sokağındaki en kötü gürültü nedir?",
+        "options": [
+          "Egzozu değiştirilmiş motosikletler",
+          "Teslimat kamyonları",
+          "Kuş sesleri",
+          "Komşuların müziği"
+        ],
+        "answer": 0,
+        "explain": "“Egzozu değiştirilmiş motosikletler” doğru: Ali en kötü gürültünün kamyonlar değil “motorbikes with modified exhausts” olduğunu yazıyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_lab_meat",
+    "level": "B2",
+    "genre": "popüler bilim",
+    "emoji": "🧫",
+    "title": "Meat Without the Farm",
+    "titleTr": "Çiftliksiz et",
+    "text": "In 2013, a group of journalists in London watched a chef cook a burger. It looked ordinary, and the people who tasted it said it was a little dry. What made it extraordinary was where it came from. The meat had not come from a cow that had been killed. It had been grown in a laboratory from a small number of cow cells, and producing it reportedly cost more than two hundred and fifty thousand euros.\n\nSince then, the idea of “cultivated meat” has moved from science fiction towards the supermarket, although more slowly than its supporters hoped. The basic method is surprisingly easy to describe. Scientists take a few cells from a living animal, often with a small biopsy that does not harm the animal. Many companies also start from cell lines that are already kept in laboratories. They place the cells in a warm steel tank and feed them a liquid full of sugars, salts, proteins and other nutrients. Under the right conditions, the cells divide again and again, and a few cells can become many kilos of meat.\n\nSupporters say this could solve several problems at once. Raising animals for food uses a large share of the world's farmland and water, and it is responsible for a significant part of greenhouse gas emissions. Cultivated meat, in theory, would need far less land, would not require animals to be killed, and could be produced in clean conditions without antibiotics. In 2020, Singapore became the first country to allow cultivated chicken to be sold, and a few other countries have since followed.\n\nHowever, the challenges are serious. The first is price. Growing cells on a large scale is expensive, partly because the feeding liquid is costly and the tanks must be kept completely free of bacteria. The second is texture. It is relatively easy to grow something like minced meat, but a steak has fat, muscle and blood vessels arranged in a complex structure, and copying that is much harder. The third is energy. Some studies suggest that if the factories run on electricity from fossil fuels, the climate advantage could become much smaller than expected.\n\nThere is also the question of whether people want it. Surveys give mixed results. Many younger consumers say they would try cultivated meat, but fewer say they would eat it regularly. Some people find the idea unnatural, and farmers' organisations in several countries worry about their future. Italy, for example, decided in 2023 to ban its production and sale.\n\nFor now, cultivated meat remains a small and uncertain industry. Some experts think it will become a normal part of our diet within a generation. Others believe it will stay a product for a few, while plant-based alternatives and simply eating less meat will do more for the planet.\n\nPerhaps the most honest answer comes from the scientists themselves. Most of them say that the technology works. Whether it can work cheaply, at a huge scale, and in a way that people actually trust is a question that only the next twenty years can answer.",
+    "glosses": {
+      "reportedly": "söylendiğine göre",
+      "cultivated meat": "laboratuvarda üretilen et",
+      "nutrients": "besinler",
+      "greenhouse gas emissions": "sera gazı salımları",
+      "antibiotics": "antibiyotikler",
+      "texture": "doku",
+      "minced meat": "kıyma",
+      "blood vessels": "kan damarları",
+      "fossil fuels": "fosil yakıtlar",
+      "plant-based": "bitki bazlı",
+      "biopsy": "biyopsi (küçük doku örneği)",
+      "cell lines": "hücre hatları"
+    },
+    "questions": [
+      {
+        "q": "2013'te Londra'da pişirilen burgeri olağanüstü yapan neydi?",
+        "options": [
+          "Laboratuvarda inek hücrelerinden üretilmişti.",
+          "Çok lezzetliydi.",
+          "Bitkilerden yapılmıştı.",
+          "Çok ucuza üretilmişti."
+        ],
+        "answer": 0,
+        "explain": "“Laboratuvarda inek hücrelerinden üretilmişti.” doğru: metinde “It had been grown in a laboratory from a small number of cow cells” deniyor; üstelik çok pahalıydı ve biraz kuruydu."
+      },
+      {
+        "q": "Biftek üretmek kıymaya göre neden daha zor?",
+        "options": [
+          "Biftek için daha çok hücre gerekmez.",
+          "İtalya bifteği yasakladı.",
+          "Yağ, kas ve damarların karmaşık yapısını taklit etmek zor.",
+          "Biftek tanklarda hiç büyümez."
+        ],
+        "answer": 2,
+        "explain": "“Yağ, kas ve damarların karmaşık yapısını taklit etmek zor.” doğru: metinde bifteğin “fat, muscle and blood vessels arranged in a complex structure” içerdiği ve bunu kopyalamanın çok daha zor olduğu söyleniyor."
+      },
+      {
+        "q": "Fabrikalar fosil yakıtlardan gelen elektrikle çalışırsa ne olabilir?",
+        "options": [
+          "Et daha lezzetli olur.",
+          "İklim avantajı beklenenden çok daha küçük olabilir.",
+          "Tanklar bakterisiz kalamaz.",
+          "Fiyat hemen düşer."
+        ],
+        "answer": 1,
+        "explain": "“İklim avantajı beklenenden çok daha küçük olabilir.” doğru: metinde “the climate advantage could become much smaller than expected” deniyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_tipping",
+    "level": "B2",
+    "genre": "röportaj",
+    "emoji": "💶",
+    "title": "To Tip or Not to Tip?",
+    "titleTr": "Bahşiş vermeli mi, vermemeli mi?",
+    "text": "Mia: “Welcome to this week's debate. Today we are talking about something that makes many people nervous at the end of a meal: the tip. My guests are Burcu, who has worked as a waiter in İzmir for nine years, and Sam, an English teacher from London who has lived in İstanbul for eight years. Burcu, let us start with you. How important are tips in your job?”\n\nBurcu: “Very important. On a good weekend, tips can be almost a third of what I earn. My salary pays the rent, but the tips pay for everything else. So when a big table leaves nothing, I really feel it.”\n\nMia: “Sam, you have lived in two very different cultures. What surprised you?”\n\nSam: “In London, many restaurants simply add a service charge to the bill, often around twelve and a half percent. You can ask them to remove it, but most people don't. Here, nothing is added, and at first I had no idea what to leave. I once left far too much in a small café, and the waiter ran after me because he thought I had made a mistake.”\n\nMia: “And in other countries the rules are different again.”\n\nSam: “Completely. In the United States, people usually expect fifteen or twenty percent, because many waiters earn a very low basic wage. In Japan, on the other hand, a tip can be seen as strange, even a little rude, because good service is considered part of the job.”\n\nMia: “So should we tip at all? Some people say the whole system is unfair.”\n\nSam: “I'm one of them. Why should the person who carries my plate depend on my mood, while the cook, who prepared the food, often gets nothing? I would rather pay higher prices and know that everyone earns a proper wage.”\n\nBurcu: “In theory, I agree. But I don't trust that the higher prices would reach me. If owners raised prices and kept the extra money, waiters would lose. Tips go directly into my hand. That is why many of us defend them.”\n\nMia: “Does a tip really depend on good service?”\n\nBurcu: “Less than people think. Some studies suggest that tips depend more on the size of the bill, the weather or whether the customer is in a good mood than on how fast we work. I have had perfect evenings and received nothing, and terrible evenings when a happy family gave me a lot.”\n\nMia: “What about card machines that suggest ten, fifteen or twenty percent?”\n\nSam: “I hate them. The waiter stands next to you, the screen shows three buttons, and you feel watched. It isn't a free choice any more.”\n\nBurcu: “For customers, maybe. But since people stopped carrying cash, those buttons have saved my income.”\n\nMia: “Final question. What would you like customers to remember?”\n\nBurcu: “That a tip is not charity. It is part of how we live. And a kind word costs nothing, too.”\n\nSam: “Learn the local custom before you travel. And if you're not sure, ask. Nobody minds a polite question.”",
+    "glosses": {
+      "tip": "bahşiş",
+      "tips": "bahşişler",
+      "service charge": "servis ücreti",
+      "basic wage": "taban maaş",
+      "rude": "kaba",
+      "unfair": "adaletsiz",
+      "charity": "sadaka, hayır",
+      "custom": "gelenek, âdet",
+      "polite": "kibar"
+    },
+    "questions": [
+      {
+        "q": "Burcu için bahşiş neden önemli?",
+        "options": [
+          "Maaşından daha fazla kazandırıyor.",
+          "Restoran sahibi bahşişleri topluyor.",
+          "Sadece tatillerde bahşiş alıyor.",
+          "Maaşı kirasını karşılıyor, geri kalan her şeyi bahşişler karşılıyor."
+        ],
+        "answer": 3,
+        "explain": "“Maaşı kirasını karşılıyor, geri kalan her şeyi bahşişler karşılıyor.” doğru: Burcu “My salary pays the rent, but the tips pay for everything else” diyor; iyi bir hafta sonunda bahşişler kazancının neredeyse üçte biri."
+      },
+      {
+        "q": "Sam bahşiş sistemine neden karşı?",
+        "options": [
+          "Garsonların hiç bahşiş istemediğini düşünüyor.",
+          "Garsonun kazancı müşterinin ruh haline bağlı oluyor ve aşçı çoğu zaman bir şey almıyor.",
+          "Londra'da bahşiş yasak.",
+          "Kart makinelerini kullanmayı bilmiyor."
+        ],
+        "answer": 1,
+        "explain": "“Garsonun kazancı müşterinin ruh haline bağlı oluyor ve aşçı çoğu zaman bir şey almıyor.” doğru: Sam garsonun “my mood”a bağlı olmasını ve aşçının “often gets nothing” olmasını eleştiriyor; daha yüksek fiyat ve düzgün maaş istiyor."
+      },
+      {
+        "q": "Burcu'ya göre bahşiş miktarı çoğu zaman neye bağlı?",
+        "options": [
+          "Garsonun ne kadar hızlı çalıştığına",
+          "Restoranın şehrine",
+          "Hesabın büyüklüğüne, havaya ve müşterinin keyfine",
+          "Garsonun kaç yıldır çalıştığına"
+        ],
+        "answer": 2,
+        "explain": "“Hesabın büyüklüğüne, havaya ve müşterinin keyfine” doğru: Burcu bahşişin “the size of the bill, the weather” ve müşterinin iyi bir ruh halinde olmasına, garsonun hızından daha çok bağlı olduğunu söylüyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_doorway_effect",
+    "level": "B2",
+    "genre": "popüler bilim",
+    "emoji": "🚪",
+    "title": "Why Do We Forget Things in Doorways?",
+    "titleTr": "Kapıdan geçince neden unutuyoruz?",
+    "text": "You are sitting on the sofa when you remember that you need your glasses. You stand up, walk into the bedroom, and then stop in the middle of the room. Why are you here? You have absolutely no idea. You walk back to the sofa, sit down, and the answer comes back immediately: the glasses.\n\nThis experience is so common that many people joke about it, but psychologists have taken it seriously. In a series of experiments published in 2011, researchers led by Gabriel Radvansky at the University of Notre Dame in the United States asked volunteers to carry objects from one table to another, sometimes in a computer game and sometimes in real rooms. Along the way, the volunteers were asked which object they were carrying. Some of them walked the same distance without leaving the room. Others passed through a door.\n\nThe results were surprising. People who had just walked through a doorway forgot more often than people who had walked the same distance inside one room. The door itself seemed to make a difference.\n\nTo explain this, the researchers suggested that our memory does not record life as one long film. Instead, it divides experience into separate episodes, or “events”, a bit like scenes in a play. Walking into a new room is a strong signal that one scene has ended and a new one has begun. The brain puts away the information from the previous scene, so that it can concentrate on the new situation. Usually, this is very efficient. But if your plan was made in the old scene, it may be put away with it.\n\nThis would also explain why going back helps. When you return to the sofa, you return to the scene where the plan was made, and the details around you help your memory find it again. Students may know a similar effect: sometimes it is easier to remember something in the same classroom where you learned it.\n\nLater studies have shown that the doorway effect is not as simple as it first appeared. Some researchers have found it only when people were trying to remember several things at once, or when their minds were already busy. When the task was easy, a door made little difference. So doors probably do not delete our memories; they make them a little harder to reach when our attention is already stretched.\n\nWhat can we do about it? Psychologists suggest a few simple tricks. Say the goal aloud as you walk: “glasses, glasses”. Create a quick picture in your mind, such as your glasses sitting on top of the bedroom lamp. Or carry something that reminds you of the task.\n\nAnd if none of that works, there is always the oldest method of all: go back to where you started, and wait for the memory to walk in through the door.",
+    "glosses": {
+      "doorway": "kapı ağzı, kapı eşiği",
+      "along the way": "yol boyunca",
+      "episodes": "bölümler, olaylar",
+      "scenes": "sahneler",
+      "scene": "sahne",
+      "efficient": "verimli",
+      "stretched": "zorlanmış, dolu",
+      "aloud": "sesli olarak"
+    },
+    "questions": [
+      {
+        "q": "Radvansky'nin deneylerinde ne bulundu?",
+        "options": [
+          "Kapılar insanların daha iyi hatırlamasını sağladı.",
+          "Oyun ile gerçek odalar arasında hiç fark yoktu.",
+          "Kapıdan geçenler, aynı mesafeyi bir oda içinde yürüyenlerden daha sık unuttu.",
+          "Gönüllüler hiçbir nesneyi unutmadı."
+        ],
+        "answer": 2,
+        "explain": "“Kapıdan geçenler, aynı mesafeyi bir oda içinde yürüyenlerden daha sık unuttu.” doğru: metinde “People who had just walked through a doorway forgot more often” deniyor."
+      },
+      {
+        "q": "Metne göre geri dönmek neden işe yarıyor?",
+        "options": [
+          "Planın yapıldığı sahneye dönülür ve çevredeki ayrıntılar hafızaya yardım eder.",
+          "Geri yürümek beyni dinlendirir.",
+          "Kanepede oturmak dikkati artırır.",
+          "Kapıyı ikinci kez geçmek hafızayı siler."
+        ],
+        "answer": 0,
+        "explain": "“Planın yapıldığı sahneye dönülür ve çevredeki ayrıntılar hafızaya yardım eder.” doğru: metinde “you return to the scene where the plan was made, and the details around you help your memory” deniyor."
+      },
+      {
+        "q": "Sonraki çalışmalar kapı etkisi hakkında ne gösterdi?",
+        "options": [
+          "Etki hiç yokmuş.",
+          "Kapılar anıları tamamen siliyor.",
+          "Etki yalnızca çocuklarda görülüyor.",
+          "Etki çoğunlukla zihin zaten meşgulken ortaya çıkıyor."
+        ],
+        "answer": 3,
+        "explain": "“Etki çoğunlukla zihin zaten meşgulken ortaya çıkıyor.” doğru: metinde etkinin aynı anda birkaç şey hatırlanırken ya da “when their minds were already busy” görüldüğü, kolay görevde kapının pek fark yaratmadığı söyleniyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2a_repair_cafe",
+    "level": "B2",
+    "genre": "haber",
+    "emoji": "🔧",
+    "title": "Bring It Broken, Take It Home Working",
+    "titleTr": "Bozuk getir, çalışır götür",
+    "text": "Every second Saturday, an old school canteen in Eskişehir turns into something between a workshop and a neighbourhood party. People arrive carrying toasters, lamps, torn backpacks and radios that have been silent for years. Volunteers with screwdrivers and sewing machines sit at long tables. The rule is that the owner must stay and watch, and ideally help.\n\n“We are not a free repair service,” explains Murat Demirel, a retired electrician who helped start the repair café three years ago. “We want people to understand their things. If you see how your kettle works, maybe next time you can fix it yourself, or at least you will not throw it away so quickly.”\n\nThe idea is not new. The first repair café opened in Amsterdam in 2009, started by a former journalist called Martine Postma, and the model has since spread to thousands of places around the world.\n\nVolunteers say the most common problems are surprisingly simple: a loose wire, a broken switch, a worn-out belt. “Half of the things people bring could be fixed in fifteen minutes,” says Murat. “The problem is that most people never learned how, and many products are not designed to be opened.”\n\nThat last point has become a political issue. Many modern devices are glued together, use unusual screws or depend on parts that are not sold separately. Campaigners for a “right to repair” argue that this pushes people to buy new products instead of fixing old ones, which creates waste and costs money. The European Union has adopted rules that require manufacturers to make some products easier to repair and to offer spare parts for a number of years, and similar debates are taking place in other countries.\n\nManufacturers have their own arguments. Some say that thin, sealed designs make devices lighter, safer or better at keeping water out, and that repairs by untrained people can be dangerous, especially with batteries. Murat agrees that safety matters. “We do not open microwaves,” he says. “Some things should be left to professionals. But a lamp? A chair? A zip on a coat? Anyone can learn.”\n\nOn the day we visited, about forty people came. Most left happy. A student's headphones worked again after a volunteer joined a broken wire. A grandmother's sewing machine, which had belonged to her own mother, needed only cleaning and oil. Not everything could be saved: a cheap hair dryer was declared “beyond hope” and sent for recycling.\n\nOne visitor, Melis, a nineteen-year-old university student, came with a broken laptop charger and stayed to help at the electronics table. “I came as a customer,” she said, “and now I think I am a volunteer.” She plans to come back next month. “My friends replace their phones every two years. I want to see how long I can keep mine.”\n\nAt the end of the day, the volunteers count the repaired items on a board by the door. This time the number was thirty-one. “Thirty-one things that did not go into the bin,” Murat says, smiling. “That is a good Saturday.”",
+    "glosses": {
+      "canteen": "yemekhane",
+      "screwdrivers": "tornavidalar",
+      "sewing machines": "dikiş makineleri",
+      "kettle": "su ısıtıcısı",
+      "worn-out": "aşınmış, eskimiş",
+      "glued": "yapıştırılmış",
+      "campaigners": "kampanya yürütenler",
+      "manufacturers": "üreticiler",
+      "spare parts": "yedek parçalar",
+      "sealed": "kapalı, açılamayan",
+      "beyond hope": "umutsuz, kurtarılamaz",
+      "charger": "şarj aleti"
+    },
+    "questions": [
+      {
+        "q": "Tamir kafesinin temel kuralı nedir?",
+        "options": [
+          "Eşyalar bırakılır, bir hafta sonra alınır.",
+          "Eşyanın sahibi kalıp izlemeli, mümkünse yardım etmeli.",
+          "Her tamir için küçük bir ücret ödenir.",
+          "Sadece elektronik eşyalar kabul edilir."
+        ],
+        "answer": 1,
+        "explain": "“Eşyanın sahibi kalıp izlemeli, mümkünse yardım etmeli.” doğru: metinde “the owner must stay and watch, and ideally help” deniyor; Murat da ücretsiz bir tamir servisi olmadıklarını söylüyor."
+      },
+      {
+        "q": "Bazı üreticiler kapalı tasarımları nasıl savunuyor?",
+        "options": [
+          "Böylece cihazlar daha ucuza satılıyor.",
+          "Tamir kafeleri bu tasarımları istiyor.",
+          "Yedek parça üretmek yasak.",
+          "İnce, kapalı tasarımlar cihazları daha hafif, güvenli ya da suya karşı daha dayanıklı yapıyor."
+        ],
+        "answer": 3,
+        "explain": "“İnce, kapalı tasarımlar cihazları daha hafif, güvenli ya da suya karşı daha dayanıklı yapıyor.” doğru: metinde “thin, sealed designs make devices lighter, safer or better at keeping water out” deniyor; ayrıca eğitimsiz tamirin tehlikeli olabileceği söyleniyor."
+      },
+      {
+        "q": "Üniversite öğrencisi Melis'e ne oldu?",
+        "options": [
+          "Müşteri olarak geldi ama gönüllü olarak kaldı.",
+          "Telefonunu yenisiyle değiştirdi.",
+          "Şarj aleti tamir edilemedi.",
+          "Saç kurutma makinesini geri dönüşüme gönderdi."
+        ],
+        "answer": 0,
+        "explain": "“Müşteri olarak geldi ama gönüllü olarak kaldı.” doğru: Melis “I came as a customer, and now I think I am a volunteer” diyor ve elektronik masasında yardım ediyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_thursday_coffee",
+    "level": "B2",
+    "genre": "öykü",
+    "emoji": "☕",
+    "title": "The Thursday Coffees",
+    "titleTr": "Perşembe kahveleri",
+    "text": "Elif had been running her first café in Kadıköy for almost three years before she noticed the pattern. Every Thursday, a little after eight, a thin man in a brown coat came in, ordered the cheapest thing on the menu, a small black tea, and sat by the window for exactly forty minutes. He never took out a phone. He never read a newspaper. He just watched the street.\n\nAnd every Thursday, someone paid for coffees in advance. Elif kept a box by the till for the old custom of the suspended coffee: you pay for two, drink one, and the second waits for someone who cannot afford it. On most days the box held one or two receipts. On Thursdays it held ten.\n\n“It's someone rich,” said Bora, her barista, who had a theory about everything. “He pays online, so his name never shows up.”\n\n“Then why is it always cash?” Elif said. “Old notes, carefully folded, in an envelope under the box.”\n\n“Then it's a woman who's in love with you.”\n\n“Wipe the counter, Bora.”\n\nOne rainy Thursday the man in the brown coat stood up after his forty minutes and walked to the counter. Elif expected him to ask for a suspended coffee. Some people did, quietly, and she always gave it without a question. Instead, he put a folded envelope on the counter.\n\n“For the box,” he said.\n\nElif looked at his coat, which had been mended at the elbow, and at his shoes, which had been mended twice. “You don't have to,” she said, and then felt embarrassed, because it sounded like a judgement.\n\nHe smiled. “Twenty years ago there was a café in Beyoğlu with a box like yours. I had lost my job, and I was too proud to tell my wife. Every morning I left the house in a suit and sat in that café all day, pretending I had somewhere to be. The owner never asked me to pay. She just put a tea in front of me, and then another.”\n\n“And did you find a job?”\n\n“I found three, in the end. Now I'm retired. I have a small pension and a lot of time.” He tapped the envelope. “The café in Beyoğlu closed long ago. So I pay my debt here.”\n\n“Why Thursdays?”\n\n“That was the day she first gave me the tea without asking.”\n\nAfter he left, Bora came out of the kitchen, where he had obviously been listening. For once, he had no theory.\n\nThe following Thursday the man did not come. Nor the Thursday after that. Elif worried; she did not even know his name. On the third Thursday a young woman came in with an envelope. “My grandfather asked me to bring this,” she said. “He's moved in with my parents in Bursa. His knees, you know. He said you would understand.”\n\nInside there was money, more than usual, and a note in careful handwriting: “For the next proud man in a suit.”\n\nThat afternoon Elif put a small sign above the box. It said only: “Thursdays.”",
+    "glosses": {
+      "pattern": "tekrar eden düzen",
+      "in advance": "önceden",
+      "till": "kasa",
+      "suspended coffee": "askıda kahve",
+      "afford": "parasını karşılayabilmek",
+      "barista": "barista, kahve ustası",
+      "mended": "yamanmış, onarılmış",
+      "judgement": "yargılama, hüküm verme",
+      "too proud": "(yardım istemeyecek kadar) gururlu",
+      "pretending": "-mış gibi yaparak",
+      "pension": "emekli maaşı",
+      "debt": "borç"
+    },
+    "questions": [
+      {
+        "q": "Perşembe günleri kutuya parayı kim bırakıyordu?",
+        "options": [
+          "Bora, the barista",
+          "A businessman who paid online",
+          "The man in the brown coat",
+          "Elif's mother"
+        ],
+        "answer": 2,
+        "explain": "\"The man in the brown coat\" doğru: kahverengi paltolu adam zarfı tezgâha koyup \"For the box\" diyor."
+      },
+      {
+        "q": "Adam bu iyiliği neden yapıyordu?",
+        "options": [
+          "To pay back a kindness he once received",
+          "Because he wanted to buy the café",
+          "Because Elif asked him to help",
+          "Because he was in love with Elif"
+        ],
+        "answer": 0,
+        "explain": "\"To pay back a kindness he once received\" doğru: işsizken Beyoğlu'ndaki bir kafede kendisine bedava çay verilmiş; \"So I pay my debt here\" diyor."
+      },
+      {
+        "q": "Adam neden kafeye gelmeyi bıraktı?",
+        "options": [
+          "He opened his own café",
+          "He moved to Bursa because of his knees",
+          "He was angry with Bora",
+          "He found a new job"
+        ],
+        "answer": 1,
+        "explain": "\"He moved to Bursa because of his knees\" doğru: torunu \"He's moved in with my parents in Bursa. His knees, you know\" diyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_rent_emails",
+    "level": "B2",
+    "genre": "e-posta",
+    "emoji": "🏠",
+    "title": "Negotiating the Rent",
+    "titleTr": "Kira pazarlığı",
+    "text": "From Nihat Korkmaz to Sam, 2 July\n\nDear Sam,\n\nI hope you and your plants are well. As you know, your contract ends on 31 August. I have kept the rent the same for two years, but everything has become more expensive, including my own bills. From September I would like to increase the rent from 22,000 to 32,000 lira a month. I'm sure you understand.\n\nBest wishes,\nNihat Korkmaz\n\nFrom Sam to Nihat Korkmaz, 3 July\n\nDear Mr Korkmaz,\n\nThank you for letting me know early; I really appreciate it. I understand that costs have gone up for everyone, and I expected some increase. However, a jump to 32,000 is very difficult on a teacher's salary.\n\nI'd like to mention a few things. First, I have paid on the first of every month for two years, without a single delay. Second, when the boiler broke last winter, I found a repairman and handled everything while you were in Antalya. Third, I have looked at similar flats in the neighbourhood. Most two-bedroom flats near the metro are advertised for between 26,000 and 29,000, and several of them have new kitchens.\n\nWould you consider 27,000? In return, I would happily sign a two-year contract, so you would not need to look for a new tenant or leave the flat empty.\n\nKind regards,\nSam\n\nFrom Nihat Korkmaz to Sam, 5 July\n\nDear Sam,\n\nYou are a good tenant, I don't deny it. My wife reminds me of the boiler story every time your name comes up. But 27,000 is too low. Those flats with new kitchens are probably on the noisy side of the street. I can do 30,000, for two years.\n\nRegards,\nNihat\n\nFrom Sam to Nihat Korkmaz, 5 July\n\nDear Mr Korkmaz,\n\nThat's a fair point about the street, although my side has the tram. Let me make one more suggestion. Your wife mentioned last month that your daughter, Defne, is preparing for an English exam. As you know, I'm an English teacher. What if the rent were 28,500, and I gave Defne a lesson every Saturday morning until her exam? A private teacher would cost you far more than the difference.\n\nBest,\nSam\n\nFrom Nihat Korkmaz to Sam, 6 July\n\nDear Sam,\n\nI asked my wife. I asked Defne. Then Defne asked whether you are strict. I told her you are British, so you are polite even when you are strict.\n\nWe agree: 28,500, two years, and Saturday lessons. I will bring the new contract on Sunday. My wife says she will bring börek.\n\nSee you on Sunday,\nNihat\n\nP.S. If Defne passes, maybe we can talk about the kitchen.",
+    "glosses": {
+      "contract": "sözleşme",
+      "appreciate": "takdir etmek, minnettar olmak",
+      "boiler": "kombi",
+      "repairman": "tamirci",
+      "advertised": "ilan edilmiş",
+      "in return": "karşılığında",
+      "tenant": "kiracı",
+      "deny": "inkâr etmek",
+      "fair point": "haklı bir nokta",
+      "strict": "sıkı, disiplinli",
+      "börek": "börek (hamur işi)"
+    },
+    "questions": [
+      {
+        "q": "Sam, ev sahibini ikna etmek için hangi nedeni öne sürüyor?",
+        "options": [
+          "He is planning to leave İstanbul",
+          "He has a new, higher salary",
+          "The flat has a new kitchen",
+          "He has always paid on time"
+        ],
+        "answer": 3,
+        "explain": "\"He has always paid on time\" doğru: Sam \"I have paid on the first of every month for two years, without a single delay\" diyor."
+      },
+      {
+        "q": "Sonunda kira ne kadar oldu?",
+        "options": [
+          "27,000 lira",
+          "28,500 lira",
+          "30,000 lira",
+          "32,000 lira"
+        ],
+        "answer": 1,
+        "explain": "\"28,500 lira\" doğru: Nihat Bey son e-postada \"We agree: 28,500, two years, and Saturday lessons\" diyor."
+      },
+      {
+        "q": "Sam pazarlıkta ek olarak ne teklif etti?",
+        "options": [
+          "To repair the kitchen himself",
+          "To pay six months in advance",
+          "English lessons for Mr Korkmaz's daughter",
+          "To find a new tenant"
+        ],
+        "answer": 2,
+        "explain": "\"English lessons for Mr Korkmaz's daughter\" doğru: Sam, kızı Defne'ye her cumartesi ders vermeyi öneriyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_hard_feedback",
+    "level": "B2",
+    "genre": "öykü",
+    "emoji": "🥯",
+    "title": "Too Many Pillows",
+    "titleTr": "Fazla yastık",
+    "text": "“You look terrible,” Elif said, putting a cup of coffee in front of her brother. “Is it the new app?”\n\n“It's Hakan.” Kerem moved the cup around in a slow circle. “My manager wants me to talk to him. Tomorrow.”\n\n“You mean Hakan who brings simit for the whole office every Monday?”\n\n“That Hakan. He's the kindest person on the team. He's also broken the payment system twice this month. Last Friday a customer was charged for the same order four times. I spent the whole weekend fixing it.”\n\nElif sat down opposite him. “So tell him that.”\n\n“How? He's fifteen years older than me. He taught me half of what I know when I joined. Now I'm his team lead, and I'm supposed to tell him his work isn't good enough?”\n\n“Practise on me,” Elif said. “I'll be Hakan.”\n\nKerem cleared his throat. “Look, Hakan, I just want to say that you're a really valuable member of the team, and everybody loves the simit, and maybe, possibly, there have been one or two small issues with…”\n\n“What issues?” Elif said in a deep voice. “Are you saying the simit is bad?”\n\nKerem laughed despite himself. “You see? I can't do it.”\n\n“Kerem, you're hiding the message under so many pillows that he'll never find it. Say what happened. Say what it caused. Then ask him why. Don't guess. Ask.”\n\nThe next morning Kerem booked a small meeting room and brought two teas. He made himself skip the pillows.\n\n“So, Hakan, the payment bug on Friday came from your change on Thursday. A customer was charged four times, and it took two days to fix. It's the second time this month. I need to understand what's going on.”\n\nThe older man did not get angry. He looked at the table for a long moment. “I know,” he said at last. “I was waiting for someone to say it. I've been sleeping about four hours a night. My mother had a fall in March, and I've been staying with her. I check my code at two in the morning, and I think it's fine.”\n\nKerem had prepared for an argument. He had not prepared for this. “Why didn't you tell anyone?”\n\n“Because I'm the senior one. I'm supposed to be the one who helps.”\n\nThey talked for an hour. In the end they agreed on something simple. For the next two months, nothing Hakan wrote would go live until another developer had reviewed it, and Hakan would start work later, so that he could take his mother to the physiotherapist in the mornings. Kerem would explain the plan to the manager himself. Before they left the room, Kerem admitted, a little embarrassed, that he had practised the whole conversation with his sister the night before.\n\nOn Monday the simit arrived as usual. There was an extra one on Kerem's desk, with a sticky note: “For the pillows you didn't use.”",
+    "glosses": {
+      "charged": "ücret tahsil edildi",
+      "team lead": "takım lideri",
+      "practise": "prova yap, alıştırma yap",
+      "cleared his throat": "boğazını temizledi",
+      "despite himself": "kendini tutamayıp",
+      "pillows": "yastıklar",
+      "bug": "yazılım hatası",
+      "had a fall": "düştü",
+      "go live": "yayına girmek",
+      "physiotherapist": "fizyoterapist",
+      "sticky note": "yapışkan not kâğıdı",
+      "simit": "simit"
+    },
+    "questions": [
+      {
+        "q": "Kerem, Hakan'la konuşmakta neden zorlanıyor?",
+        "options": [
+          "Hakan is older and once taught him a lot",
+          "Hakan is his manager",
+          "Hakan never brings simit",
+          "Hakan is often angry"
+        ],
+        "answer": 0,
+        "explain": "\"Hakan is older and once taught him a lot\" doğru: Kerem \"He's fifteen years older than me. He taught me half of what I know\" diyor."
+      },
+      {
+        "q": "Elif'in tavsiyesi neydi?",
+        "options": [
+          "Send Hakan an email instead",
+          "Say clearly what happened and ask him why",
+          "Talk to the manager first",
+          "Bring him a present"
+        ],
+        "answer": 1,
+        "explain": "\"Say clearly what happened and ask him why\" doğru: Elif \"Say what happened. Say what it caused. Then ask him why\" diyor."
+      },
+      {
+        "q": "Hakan'ın hatalarının asıl nedeni neydi?",
+        "options": [
+          "He didn't like the new system",
+          "He wanted Kerem's job",
+          "He was tired from caring for his mother",
+          "He was working for another company"
+        ],
+        "answer": 2,
+        "explain": "\"He was tired from caring for his mother\" doğru: Hakan annesi düştüğünden beri onunla kaldığını ve gecede dört saat uyuduğunu söylüyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_one_word",
+    "level": "B2",
+    "genre": "anlatı",
+    "emoji": "🔨",
+    "title": "The Word in My Notebook",
+    "titleTr": "Defterimdeki kelime",
+    "text": "When I started in radio, an older producer told me that the most important sentence on any programme is the one nobody wants to say: “Yesterday we got something wrong.” I thought he was being dramatic. Eight years later, I think he was right, and I learned it from a shoemaker.\n\nIt was a small piece for our morning programme, the kind I could prepare in an afternoon. A shoe repair shop in Kurtuluş was closing after fifty-one years. The owner, Mr Garbis, was eighty and still worked with his glasses pushed up on his forehead. We talked for an hour among the smell of leather and glue. He was funny and a little sad, and I went back to the studio feeling I had a good story.\n\nThe title we used, on air and on the station's website, was “Young people don't care any more.” It came from a sentence in my notes. It was a good title. People shared it, and listeners argued about it on the phone-in. My producer was pleased.\n\nThree days later, Mr Garbis's granddaughter called the studio. “Is this Nazlı Sezer, from the morning programme?” she asked. She was polite, which was worse than if she had shouted. “My grandfather never said that. He said young people don't have time any more. He was talking about himself, too. He never had time for his own children when they were small, because of the shop. Now people are saying that he hates young people.”\n\nI found my recording. I listened to it twice, then a third time, hoping. She was right. He had said “time”. In my notes, written fast on my knee, the word looked like “care”. I had built a title, and a small public argument, on my own bad handwriting.\n\nThere is a temptation in that moment that I think everyone who works in the news knows. The difference seemed small. The story was mostly true. Nobody would remember it in a week. But Mr Garbis would remember, and so would I.\n\nWe read a correction on air the next morning, and I asked my producer to change the title on the website. Then I went back to Kurtuluş with a box of pastries, which felt like a ridiculous thing to bring to an apology, but my mother raised me that way.\n\nMr Garbis was packing his tools into a cardboard box. He listened to my apology without interrupting. Then he said, “You young people. No time.” And he laughed, and I understood that I had been forgiven, mostly.\n\nBefore I left, he gave me a small hammer with a worn wooden handle. “For your desk,” he said. “When you write, hit each word once, to make sure it is the right one.”\n\nThe hammer is on my desk now. I don't hit words with it, of course. But I check my recordings every time, even for an afternoon piece. And when I hear a correction on the radio, I listen more carefully than to anything else. Every correction is somebody who called, and somebody who listened.",
+    "glosses": {
+      "producer": "yapımcı",
+      "on air": "yayında, canlı yayında",
+      "phone-in": "dinleyicilerin telefonla bağlandığı bölüm",
+      "correction": "düzeltme (yayındaki bir hatanın düzeltilmesi)",
+      "shoe repair shop": "ayakkabı tamircisi",
+      "forehead": "alın",
+      "leather": "deri",
+      "glue": "tutkal",
+      "granddaughter": "kız torun",
+      "temptation": "(yanlışı geçiştirme) isteği, ayartı",
+      "forgiven": "affedilmiş",
+      "worn": "aşınmış, eskimiş",
+      "handle": "sap"
+    },
+    "questions": [
+      {
+        "q": "Nazlı'nın hatası neydi?",
+        "options": [
+          "She wrote the wrong name of the shop",
+          "She misread one word in her own notes",
+          "She forgot to record the interview",
+          "She told the story too late"
+        ],
+        "answer": 1,
+        "explain": "\"She misread one word in her own notes\" doğru: Bay Garbis \"time\" demiş, ama Nazlı'nın aceleyle yazdığı notta kelime \"care\" gibi görünüyormuş."
+      },
+      {
+        "q": "Bay Garbis aslında ne demek istiyordu?",
+        "options": [
+          "Young people do not respect old shops",
+          "Young people have no money",
+          "He had also had little time for his own children",
+          "Shoes are not made well any more"
+        ],
+        "answer": 2,
+        "explain": "\"He had also had little time for his own children\" doğru: torunu \"He never had time for his own children when they were small, because of the shop\" diyor."
+      },
+      {
+        "q": "Nazlı bu olaydan ne ders çıkardı?",
+        "options": [
+          "Corrections matter, so she must check carefully",
+          "Headlines should always be short",
+          "Small stories are not worth writing",
+          "Presenters should not bring gifts"
+        ],
+        "answer": 0,
+        "explain": "\"Corrections matter, so she must check carefully\" doğru: artık her seferinde kayıtlarını kontrol ediyor ve radyoda bir düzeltme duyunca her şeyden daha dikkatli dinliyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_wrong_school",
+    "level": "B2",
+    "genre": "öykü",
+    "emoji": "🚚",
+    "title": "Six Hundred Books in the Snow",
+    "titleTr": "Karda altı yüz kitap",
+    "text": "At ten to six on a Friday, when most of the office had already left, the phone on Deniz's desk rang.\n\n“Is that Deniz? It's Gülay, from the primary school in Sarıkamış. I'm sorry to call so late. The books haven't arrived.”\n\nDeniz opened the order on the screen. Six hundred and forty reading books, donated by a publisher in İstanbul, for a school that had been waiting since September. The system said: delivered, Wednesday, 14:20.\n\n“Our records say they were delivered on Wednesday.”\n\n“Delivered where? I've been standing at the gate every afternoon.”\n\nIt took Deniz twenty minutes and four phone calls to find out. The pallet had gone to a primary school with almost the same name, in a town near Gaziantep, hundreds of kilometres away. Someone there had signed for it, put it in a storeroom and forgotten about it.\n\n“Can you send them on Monday?” asked Gülay.\n\nDeniz looked at the calendar. “On Monday they'll reach a sorting centre. From there, with snow on the roads in the east, realistically… the week after next.”\n\nThere was a silence on the line. “The children have their reading festival next Friday,” said Gülay quietly. “Each class was going to read a book on stage. We told the families.”\n\nDeniz's manager, Orhan, was putting on his coat. “Write it up as an address error and send them an apology,” he said. “It happens. It's not our fault the names are the same.”\n\n“It is partly our fault. The postcode was right. The driver followed the name.”\n\n“Then it's the driver's fault. Go home, Deniz. It's Friday.”\n\nDeniz did not go home. Instead, Deniz opened the list of trucks going east over the weekend. There was one: a lorry taking fridges from Gaziantep to Erzurum, leaving on Saturday at dawn. The driver was a man called Ramazan, who was famous for being grumpy and for never being late.\n\nDeniz called him.\n\n“You want me to stop at a school,” said Ramazan slowly, “pick up six hundred books, and take them to another school, which is not on my route.”\n\n“From Erzurum to Sarıkamış is about two hours. I'll pay for the extra fuel from my own budget, and I'll move your Monday delivery to the afternoon.”\n\n“Your budget,” said Ramazan. “Is that the company's money, or your money?”\n\nDeniz hesitated. “Some of each.”\n\nThere was a strange sound on the line. It took Deniz a moment to realise that Ramazan was laughing. “My daughter can't read yet,” he said. “She's six. Her teacher says next year. Fine. Send me the addresses. And Deniz? Don't pay for the fuel. Just put my name in the report, so the boss sees that grumpy Ramazan did something nice.”\n\nThe books arrived in Sarıkamış on Sunday evening, in the middle of a snowstorm. That night Gülay sent a photograph: a hallway full of boxes, and a tired truck driver holding a book upside down, while twenty children explained to him which way was up.",
+    "glosses": {
+      "donated": "bağışlanmış",
+      "pallet": "palet (yük paleti)",
+      "signed for it": "teslim aldığını imzaladı",
+      "storeroom": "depo odası",
+      "sorting centre": "aktarma merkezi",
+      "realistically": "gerçekçi olmak gerekirse",
+      "postcode": "posta kodu",
+      "lorry": "kamyon",
+      "at dawn": "şafakta",
+      "grumpy": "huysuz",
+      "hesitated": "tereddüt etti",
+      "snowstorm": "kar fırtınası"
+    },
+    "questions": [
+      {
+        "q": "Kitaplar neden okula ulaşmadı?",
+        "options": [
+          "The truck broke down in the snow",
+          "They went to a school with almost the same name",
+          "The publisher forgot to send them",
+          "The school gave the wrong postcode"
+        ],
+        "answer": 1,
+        "explain": "\"They went to a school with almost the same name\" doğru: palet, Gaziantep yakınında neredeyse aynı adı taşıyan bir okula gitmiş."
+      },
+      {
+        "q": "Yönetici Orhan ne yapılmasını istedi?",
+        "options": [
+          "Send an apology and go home",
+          "Drive the books to the school personally",
+          "Call Ramazan",
+          "Buy new books"
+        ],
+        "answer": 0,
+        "explain": "\"Send an apology and go home\" doğru: Orhan \"send them an apology\" ve \"Go home, Deniz. It's Friday\" diyor."
+      },
+      {
+        "q": "Ramazan yardımına karşılık ne istedi?",
+        "options": [
+          "Extra money for fuel",
+          "A day off on Monday",
+          "Books for his daughter",
+          "His name in the report"
+        ],
+        "answer": 3,
+        "explain": "\"His name in the report\" doğru: Ramazan \"Just put my name in the report\" diyor; yakıt parasını bile istemiyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_pay_rise",
+    "level": "B2",
+    "genre": "nasıl yapılır",
+    "emoji": "💼",
+    "title": "How to Ask for a Pay Rise",
+    "titleTr": "Zam nasıl istenir?",
+    "text": "Asking for a pay rise is uncomfortable for almost everyone. Many people wait for years, hoping their manager will notice their hard work and offer more money without being asked. Sometimes that happens. More often it doesn't, not because managers are cruel, but because they are busy, and a quiet, happy employee does not look like a problem that needs solving. If you think you deserve more, here is how to ask in a way that gives you the best chance.\n\nPrepare evidence, not feelings. “I work very hard” is true of most people, and your manager cannot take it to their own boss. Instead, write down what has changed since your salary was last set. Have you taken on new responsibilities? Trained new colleagues? Saved the company money or time? Numbers are especially useful: “I reduced customer complaints by a third” is much stronger than “customers like me”.\n\nKnow your market. Find out what people with similar jobs and experience earn, through job adverts, salary surveys or trusted friends in the same industry. This gives you a realistic number and protects you from asking for far too little.\n\nChoose the moment. Don't ask in the corridor, and don't ask on the day the company announces bad results. Ask for a short meeting, and tell your manager what it is about in advance, so that they don't feel ambushed. A good time is often a few weeks before next year's budgets are decided, or soon after you have finished a successful project.\n\nIn the meeting, be brief and specific. Explain what you have achieved, mention the market rate, and name a figure. After you have said the number, you will probably want to apologise or fill the silence. Try not to. Silence is not a “no”; it is your manager thinking.\n\nBe ready for “not now”. Budgets are real, and sometimes the honest answer is no. If so, ask a useful question: “What would I need to do for this to be possible in six months?” Agree on clear goals, write them down in an email after the meeting, and put a date in your calendar to return to the conversation. Think about other things that have value, too: more holiday, flexible hours, training or a better job title.\n\nNever threaten to leave unless you are truly prepared to go. It may work once, but it changes the relationship, and the person who threatened to leave is often the first name on the list when the next difficult decision comes.\n\nFinally, remember that asking is not rude. You are not asking for a favour; you are having a business conversation about the value of your work. The worst realistic result is usually a polite no and a clearer idea of where you stand, and that is worth knowing too.",
+    "glosses": {
+      "pay rise": "maaş artışı, zam",
+      "deserve": "hak etmek",
+      "evidence": "kanıt",
+      "responsibilities": "sorumluluklar",
+      "complaints": "şikâyetler",
+      "salary surveys": "maaş araştırmaları",
+      "ambushed": "hazırlıksız yakalanmış",
+      "achieved": "başardın",
+      "figure": "rakam",
+      "threaten": "tehdit etmek",
+      "favour": "iyilik, lütuf",
+      "where you stand": "ne durumda olduğun"
+    },
+    "questions": [
+      {
+        "q": "Metne göre yöneticiler neden çoğu zaman kendiliğinden zam teklif etmez?",
+        "options": [
+          "They are cruel",
+          "They are busy, and a happy worker doesn't look like a problem",
+          "Companies never have money",
+          "Employees never work hard"
+        ],
+        "answer": 1,
+        "explain": "\"They are busy, and a happy worker doesn't look like a problem\" doğru: metin \"not because managers are cruel, but because they are busy\" diyor."
+      },
+      {
+        "q": "Rakamı söyledikten sonra sessizlik olursa ne yapmalısın?",
+        "options": [
+          "Apologise and lower the number",
+          "Leave the room",
+          "Wait, because your manager is thinking",
+          "Threaten to leave"
+        ],
+        "answer": 2,
+        "explain": "\"Wait, because your manager is thinking\" doğru: metin \"Silence is not a no; it is your manager thinking\" diyor."
+      },
+      {
+        "q": "Cevap \"şimdi değil\" olursa ne öneriliyor?",
+        "options": [
+          "Look for a new job immediately",
+          "Never ask again",
+          "Complain to your colleagues",
+          "Ask what you need to do and agree on clear goals"
+        ],
+        "answer": 3,
+        "explain": "\"Ask what you need to do and agree on clear goals\" doğru: metin altı ay içinde ne yapman gerektiğini sormayı ve hedefleri yazıya dökmeyi öneriyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_slow_clock",
+    "level": "B2",
+    "genre": "haber",
+    "emoji": "🕰️",
+    "title": "Town Votes to Keep Its Clock Late",
+    "titleTr": "Kasaba, saatinin geri kalmasına oy verdi",
+    "text": "For nearly forty years, the clock on the old tower in the main square of a small market town in western Turkey has told the wrong time. Not very wrong, just seventeen minutes behind, but always, reliably wrong. Last month a new team at the town hall decided to fix it. They did not expect a protest.\n\nThe repair itself was simple. An engineer from İzmir replaced a worn part, set the hands to the correct time and connected the clock to a radio signal, so that it would never drift again. A short notice on the town hall's website called it “a long-overdue improvement”.\n\nWithin a week, the town hall had received more than three hundred complaints.\n\n“Everybody here knows the clock is slow,” said Fatma Kaya, 71, who has sold cheese at the Tuesday market for most of her life. “When the tower says nine, we know it's nearly twenty past. That's when the market really starts. Now the tower says nine and nobody is ready, and the visitors complain that we're late.”\n\nOthers had more personal reasons. A retired teacher explained that generations of students had used the clock as an excuse. “The tower said I was on time, they would tell us. And we teachers accepted it. It was a kind of town tradition: seventeen minutes of forgiveness.”\n\nOne young couple said they had chosen 17:17 as the time of their wedding, as a joke about the clock, and were sad to think that their children would never understand the story.\n\nNot everyone agreed. The owner of the local bus company said the slow clock had caused “decades of missed buses”, and a pharmacist described the protest as “nostalgia for a mistake”.\n\nIn the end, the mayor's office organised an unusual public vote. Residents could put a paper into one of two boxes outside the tower: “Correct time” or “Our time”. Just over 2,400 people took part, which, according to the town hall, is more than voted in some local elections. “Our time” won with 61 percent.\n\nOn Sunday afternoon the engineer came back from İzmir, this time to make the clock wrong on purpose. He says it was the strangest job of his career. “I have spent thirty years making clocks accurate,” he said. “This is the first time a whole town has paid me to make one late.”\n\nA small sign has now been fixed to the bottom of the tower. In Turkish and English, it says: “This clock is 17 minutes late. So are we.”",
+    "glosses": {
+      "reliably": "güvenilir biçimde, her zaman",
+      "town hall": "belediye",
+      "drift": "(saat) kaymak",
+      "long-overdue": "çoktan yapılması gereken",
+      "excuse": "bahane",
+      "forgiveness": "bağışlama, hoşgörü",
+      "pharmacist": "eczacı",
+      "nostalgia": "geçmişe özlem, nostalji",
+      "residents": "(kasaba) sakinleri",
+      "on purpose": "bilerek, kasten",
+      "accurate": "doğru, hassas",
+      "mayor's office": "belediye başkanlığı"
+    },
+    "questions": [
+      {
+        "q": "Kule saati yıllarca nasıl çalışıyordu?",
+        "options": [
+          "It stopped every winter",
+          "It rang only on Tuesdays",
+          "It was seventeen minutes fast",
+          "It was always seventeen minutes behind"
+        ],
+        "answer": 3,
+        "explain": "\"It was always seventeen minutes behind\" doğru: haber saatin \"just seventeen minutes behind\" olduğunu söylüyor."
+      },
+      {
+        "q": "Peynirci Fatma Kaya saatin onarılmasından neden şikâyetçi?",
+        "options": [
+          "The market's timing no longer matches the clock",
+          "The repair was too expensive",
+          "The clock is now too loud",
+          "She wanted a new clock"
+        ],
+        "answer": 0,
+        "explain": "\"The market's timing no longer matches the clock\" doğru: herkes pazarın saat dokuzu yirmi geçe başladığını biliyormuş; şimdi kule dokuzu gösterince kimse hazır olmuyor."
+      },
+      {
+        "q": "Oylamanın sonucu ne oldu?",
+        "options": [
+          "Most people wanted the correct time",
+          "The vote was cancelled",
+          "Most people voted to keep the clock late",
+          "The engineer refused to come back"
+        ],
+        "answer": 2,
+        "explain": "\"Most people voted to keep the clock late\" doğru: \"Our time\" yüzde 61 ile kazandı ve mühendis saati bilerek geri aldı."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_summer_house",
+    "level": "B2",
+    "genre": "öykü",
+    "emoji": "🍋",
+    "title": "The House by the Sea",
+    "titleTr": "Deniz kenarındaki ev",
+    "text": "The three of them sat at the kitchen table of their father's summer house for the first time without him. Outside, the sea was the same colour it had been every August of their childhood.\n\n“Let's just say it,” Murat said. “We have to decide about the house.”\n\nAyla, the eldest, folded her hands. “We don't have to decide today. Dad's been gone four months.”\n\n“The estate agent called again this morning. He has a buyer from Ankara. A good price, Ayla. Better than we'll get next year.”\n\n“You've already talked to an estate agent?”\n\nMurat rubbed his face. “I have two kids at university and a loan I took out when the workshop flooded. You know that. I'm not proud of it, but I need my share.”\n\n“And I…” Ayla stopped, then started again. “I can't imagine summer without this place. The kids learned to swim off those rocks. Mum's lemon tree is still there.”\n\nThey both turned to their younger sister, Zeynep, who had driven down from İstanbul the night before and had barely spoken. Zeynep, they had always agreed, was the practical one. She worked in finance, she lived in a flat with no plants, and she had once described the summer house as “a lovely place to get bitten by mosquitoes”.\n\n“Zeynep's vote decides it,” Murat said. “Two against one.”\n\nZeynep took a long time to answer. “I don't want to sell it,” she said finally. “I want to buy it.”\n\nSilence.\n\n“I've been thinking about it since the funeral. My company lets us work remotely now. I'm tired of İstanbul, tired of two hours in traffic to sit in an office when I could sit anywhere. I can't buy both of your shares. But I can buy Murat's share now, with my savings and a loan. Ayla, you keep yours. You come every summer, like always. And I live here the rest of the year.”\n\n“You?” Ayla said. “You hate mosquitoes.”\n\n“I've bought a net.”\n\nMurat was staring at her. “You'd really do that? Pay me the full price?”\n\n“A fair price. We'll get the house valued by someone who isn't trying to sell it.” Zeynep smiled for the first time that day. “And you'll come and fix the roof, because you're the only one who knows how.”\n\nAyla got up and went to the window. The lemon tree was heavy with fruit, more than any of them could use.\n\n“Dad always said you were the one who'd leave,” she said, without turning round. “He said, ‘Zeynep will live in a glass tower and visit us at bayram.'”\n\n“I know. He said it to me too.” Zeynep came to stand beside her. “Maybe I wanted to prove him wrong. It's a bit late for that.”\n\n“No,” said Ayla. “I think he'd find it very funny.”\n\nThat evening they called the estate agent together. Murat did the talking. He told him, politely, that the house was not for sale. Then, because it was August, they went down to the rocks and swam until it was dark.",
+    "glosses": {
+      "estate agent": "emlakçı",
+      "loan": "kredi, borç",
+      "flooded": "su bastı",
+      "share": "pay, hisse",
+      "barely": "neredeyse hiç",
+      "practical": "ayakları yere basan, pratik",
+      "finance": "finans",
+      "mosquitoes": "sivrisinekler",
+      "funeral": "cenaze",
+      "remotely": "uzaktan",
+      "net": "cibinlik",
+      "valued": "değeri biçilmiş"
+    },
+    "questions": [
+      {
+        "q": "Murat evin satılmasını neden istiyor?",
+        "options": [
+          "He wants to move to Ankara",
+          "He never liked the house",
+          "His wife asked him to",
+          "He needs money for his children and a loan"
+        ],
+        "answer": 3,
+        "explain": "\"He needs money for his children and a loan\" doğru: Murat'ın üniversitede iki çocuğu ve atölyesi su basınca aldığı bir kredi var."
+      },
+      {
+        "q": "Zeynep'in önerisi neydi?",
+        "options": [
+          "Sell the house to the buyer from Ankara",
+          "Rent the house to tourists",
+          "Buy Murat's share and live in the house",
+          "Give the house to Ayla"
+        ],
+        "answer": 2,
+        "explain": "\"Buy Murat's share and live in the house\" doğru: Zeynep \"I can buy Murat's share now\" ve yılın geri kalanında burada yaşayacağını söylüyor."
+      },
+      {
+        "q": "Kardeşler başta Zeynep hakkında ne düşünüyordu?",
+        "options": [
+          "She was the practical one and would not want the house",
+          "She loved the lemon tree most",
+          "She knew how to fix the roof",
+          "She planned to move abroad"
+        ],
+        "answer": 0,
+        "explain": "\"She was the practical one and would not want the house\" doğru: onu hep \"the practical one\" olarak görmüşler; eve bile sivrisinek yeri demiş."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_blue_glove",
+    "level": "B2",
+    "genre": "öykü",
+    "emoji": "🧤",
+    "title": "The Blue Glove",
+    "titleTr": "Mavi eldiven",
+    "text": "The lost property office at the station was a narrow room with a long counter, a bell nobody rang, and shelves full of things people had once believed they could not live without: umbrellas, mostly, but also a cello, two hundred and six phones and one wooden leg.\n\nJack had worked there for three months when he first noticed Mr Hale.\n\n“Good morning,” the old man said, every Friday at ten. “I'm looking for a glove. Blue. Wool. Left hand. I lost it on the 8:15 from Leeds.”\n\n“When did you lose it, sir?”\n\n“Oh, a while ago.”\n\nEvery Friday, Jack searched the computer, and then, because the computer was not always honest, the shelves. There were black gloves, brown gloves, a pink glove the size of a dinner plate. There was never a blue one.\n\n“I'm afraid it hasn't come in.”\n\n“Never mind,” Mr Hale would say happily. “Next week, perhaps.” And before he left he always asked a strange second question. “What was the oddest thing handed in this week?”\n\nAt first Jack thought he simply had nobody to talk to. His manager, Bev, agreed. “Be nice to him,” she said. “Some people just need somewhere to go.”\n\nSo Jack was nice. He told Mr Hale about the cello, about the wedding ring found inside a sandwich, and about the tortoise in a cardboard box, which had been collected, to everyone's relief, by a crying eight-year-old. Mr Hale listened carefully and asked good questions. How long do you keep things before they go to auction? What do you do with the phones? Do you write down who collects them, and check their ID?\n\n“You ask questions like the police,” Jack said once.\n\n“Worse,” said Mr Hale.\n\nIn February, Jack got tired of saying no. On his lunch break he went to the market and bought a pair of blue wool gloves. He kept the left one, wrote a label for it, “8:15 from Leeds”, and put it on the shelf.\n\nThe next Friday, Mr Hale arrived at ten. Jack went to the shelf and came back, smiling, with the glove.\n\nMr Hale looked at it for a long time. Then he laughed, a big, surprised laugh that filled the narrow room. “Wrong glove,” he said. “There never was a glove.”\n\n“Sorry?”\n\n“I ran this office for thirty-one years, young man. I retired the week before you started. My assistant was Bev.” He looked towards the back room, where Bev was suddenly very busy with a box of umbrellas. “I wanted to know whether the new boy would be careful or lazy. You checked the shelves every week, not only the computer. You remembered every story. And now you've lied to a customer to be kind, which is against the rules, and is exactly what I would have done.”\n\nHe put the blue glove in his pocket. Then he took out an old notebook, its cover soft with use, and pushed it across the counter.\n\n“Thirty-one years of the oddest things,” he said. “Somebody should continue it.”\n\nHe did not come the following Friday. But in the notebook, on the first empty page, in careful handwriting, there was a new line: “One blue glove, left hand. Returned to owner.”",
+    "glosses": {
+      "lost property office": "kayıp eşya bürosu",
+      "cello": "çello",
+      "wool": "yün",
+      "oddest": "en tuhaf",
+      "handed in": "teslim edilen",
+      "tortoise": "kaplumbağa",
+      "relief": "rahatlama",
+      "auction": "açık artırma",
+      "glove": "eldiven",
+      "gloves": "eldivenler",
+      "shelves": "raflar"
+    },
+    "questions": [
+      {
+        "q": "Bay Hale her cuma ne arıyordu?",
+        "options": [
+          "A wedding ring",
+          "A black umbrella",
+          "A phone charger",
+          "A blue glove"
+        ],
+        "answer": 3,
+        "explain": "\"A blue glove\" doğru: her cuma \"I'm looking for a glove. Blue. Wool. Left hand\" diyor."
+      },
+      {
+        "q": "Bay Hale gerçekte kimdi?",
+        "options": [
+          "A policeman",
+          "Bev's father",
+          "The former manager of the office",
+          "A train driver from Leeds"
+        ],
+        "answer": 2,
+        "explain": "\"The former manager of the office\" doğru: \"I ran this office for thirty-one years\" diyor; Jack başlamadan bir hafta önce emekli olmuş."
+      },
+      {
+        "q": "Jack mavi eldivenleri neden satın aldı?",
+        "options": [
+          "He was tired of saying no to Mr Hale",
+          "Bev told him to",
+          "He had lost his own glove",
+          "He wanted to test Mr Hale"
+        ],
+        "answer": 0,
+        "explain": "\"He was tired of saying no to Mr Hale\" doğru: metin \"Jack got tired of saying no\" diyor; bu yüzden eldiven alıp rafa koyuyor."
+      }
+    ]
+  },
+  {
+    "id": "go_b2b_driving_late",
+    "level": "B2",
+    "genre": "anlatı",
+    "emoji": "🚗",
+    "title": "Learning to Drive at Forty-Five",
+    "titleTr": "Kırk beşinde direksiyon başında",
+    "text": "For most of my adult life I had a sentence ready for when people asked why I didn't drive. “I live in the city,” I would say. “I don't need to.” It was a good sentence. It was also not quite true. The truth was that I was afraid, and the fear had grown, quietly, every year I didn't face it.\n\nMy mother never drove. My father drove everywhere, fast, with one hand, shouting at other drivers, and I spent my childhood in the back seat holding my breath. Somewhere in those years I decided that driving was something that happened to other people, like skiing or opera.\n\nThen, last spring, my daughter got her licence at eighteen, and something in me changed. I watched her reverse into a parking space outside our building, a space I would have called impossible, and she climbed out looking bored. Bored! I felt a mix of pride and something less pleasant, which I finally admitted was envy.\n\nI found a driving school two streets away. My instructor, Mr Taner, was in his sixties, with a calm voice and a moustache that seemed to have its own opinions. In our first lesson I did not leave the car park. I learned where everything was. I adjusted the mirrors eleven times. When I finally turned the key, my hands were shaking so badly that I apologised to the car.\n\n“Everybody is afraid at the beginning,” Mr Taner said. “The ones who aren't afraid are the ones I worry about.”\n\nProgress was slow, and it was not a straight line. Some lessons felt like flying; in others I stalled at every traffic light, while the drivers behind me used their horns in ways that reminded me of my father. Once I cried at a roundabout. Mr Taner handed me a tissue from the glove compartment, where he clearly kept a supply, and said, “Take the second exit when you're ready. The roundabout isn't going anywhere.”\n\nWhat surprised me most was not the driving itself but what it showed me about how I learn. As an adult I had become used to being good at things. Without noticing, I had chosen to do only the things I was already good at. Being a beginner again was uncomfortable, a little embarrassing and incredibly useful.\n\nI failed my first test, on a hill start. I passed the second, three weeks later. I drove home alone for the first time on a Tuesday evening, at exactly the speed limit, with both hands on the wheel and the radio off.\n\nMy daughter was waiting outside the building. She watched me park. It took four tries. When I got out, she clapped, and I realised she was not bored at all.",
+    "glosses": {
+      "licence": "ehliyet",
+      "reverse": "geri geri girmek",
+      "envy": "kıskançlık, imrenme",
+      "instructor": "(sürüş) eğitmeni",
+      "moustache": "bıyık",
+      "adjusted the mirrors": "aynaları ayarladım",
+      "stalled": "(motoru) stop ettirdim",
+      "horns": "kornalar",
+      "roundabout": "göbekli kavşak",
+      "glove compartment": "torpido gözü",
+      "hill start": "yokuşta kalkış",
+      "speed limit": "hız sınırı"
+    },
+    "questions": [
+      {
+        "q": "Yazar uzun yıllar neden araba kullanmadı?",
+        "options": [
+          "Sürücü kursu çok uzaktaydı",
+          "Korkuyordu; babasının araba kullanışı da bunda etkiliydi",
+          "Araba almaya parası yetmiyordu",
+          "Annesi izin vermiyordu"
+        ],
+        "answer": 1,
+        "explain": "\"Korkuyordu; babasının araba kullanışı da bunda etkiliydi\" doğru: \"The truth was that I was afraid\" diyor ve çocukken babasının hızlı, bağırarak sürdüğü arabada nefesini tuttuğunu anlatıyor."
+      },
+      {
+        "q": "Yazarı direksiyon öğrenmeye ne yöneltti?",
+        "options": [
+          "Kızının ehliyet alıp rahatça park etmesi",
+          "Yeni bir iş",
+          "Babasının isteği",
+          "Başka bir şehre taşınması"
+        ],
+        "answer": 0,
+        "explain": "\"Kızının ehliyet alıp rahatça park etmesi\" doğru: kızı on sekizinde ehliyet alıp zor bir yere sıkılmış bir yüzle park edince yazarda bir şey değişiyor."
+      },
+      {
+        "q": "Yazar bu deneyimden ne öğrendi?",
+        "options": [
+          "Sınavlar her zaman kolaydır",
+          "Kavşaklar hiç tehlikeli değildir",
+          "Araba kullanmak sıkıcıdır",
+          "Yetişkinken yeniden acemi olmak rahatsız edici ama çok faydalı"
+        ],
+        "answer": 3,
+        "explain": "\"Yetişkinken yeniden acemi olmak rahatsız edici ama çok faydalı\" doğru: \"Being a beginner again was uncomfortable, a little embarrassing and incredibly useful\" diyor."
+      }
+    ]
+  }
+]

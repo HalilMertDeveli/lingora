@@ -13,6 +13,7 @@ import 'package:lingora/data/progress.dart';
 import 'package:lingora/data/sections.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/screens/lesson_screen.dart';
+import 'package:lingora/screens/path_map.dart';
 import 'package:lingora/screens/section_header.dart';
 import 'package:lingora/screens/story_screen.dart';
 import 'package:lingora/services/billing/premium.dart';
@@ -550,6 +551,30 @@ void main() {
       await tester.tap(find.byKey(const Key('story-reveal')));
       await tester.pumpAndSettle();
       expect(find.text('The train leaves at nine.'), findsOneWidget);
+    });
+
+    testWidgets('the path card invites to listen, not to read', (tester) async {
+      Future<void> card(PathNode node) => tester.pumpWidget(
+        MaterialApp(
+          theme: buildTheme(),
+          home: Scaffold(
+            body: LessonCard(
+              node: node,
+              state: NodeState.active,
+              color: Brand.primary,
+              position: 3,
+              count: 7,
+              onStart: () {},
+            ),
+          ),
+        ),
+      );
+      await card(story());
+      expect(find.text('Dinle'), findsOneWidget);
+      expect(find.text('Dinleme hikâyesi'), findsOneWidget);
+      await card(story(listenFirst: false));
+      expect(find.text('Oku'), findsOneWidget);
+      expect(find.text('Hikâye'), findsWidgets);
     });
 
     testWidgets('an ordinary story shows its text and no speed toggle', (tester) async {

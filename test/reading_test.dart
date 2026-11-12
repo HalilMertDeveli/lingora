@@ -26,9 +26,64 @@ class _FakeSpeech implements SpeechService {
 
 final _stories = parseStories(File('assets/reading/stories.json').readAsStringSync());
 
+/// The general course's reading library (docs/genel-mufredat.md §2 "Faz 6").
+final _general = [
+  for (final f in Directory(
+    'assets/reading',
+  ).listSync().whereType<File>().toList()..sort((x, y) => x.path.compareTo(y.path)))
+    if (RegExp(r'genel_okuma_[a-z0-9_]+\.json$').hasMatch(f.path.replaceAll(r'\', '/')))
+      ...parseStories(f.readAsStringSync()),
+];
+
+/// Word range of a general library text by level.
+const _generalLengths = {'A1': (100, 180), 'A2': (150, 250), 'B1': (250, 400), 'B2': (400, 650)};
+
 const _emptyNotes = NotesBundle(words: [], topics: [], diaryPrompts: []);
 
 void main() {
+  group('general reading library (genel_okuma_*)', () {
+    test('65 texts: 15 A1, 20 A2, 10 B1, 20 B2; ids go_, unique across the library', () {
+      final counts = {for (final l in _generalLengths.keys) l: _general.where((s) => s.level == l).length};
+      expect(counts, {'A1': 15, 'A2': 20, 'B1': 10, 'B2': 20});
+      expect(_general.every((s) => s.id.startsWith('go_')), isTrue);
+      final all = [..._stories, ..._general].map((s) => s.id);
+      expect(all.toSet(), hasLength(all.length));
+    });
+
+    test('lengths, 3 questions with 4 options, explanations, balanced answers', () {
+      final positions = [0, 0, 0, 0];
+      for (final s in _general) {
+        final (lo, hi) = _generalLengths[s.level]!;
+        // ReadingStory.wordCount and the checker count slightly differently: allow 5 words.
+        expect(s.wordCount, inInclusiveRange(lo - 5, hi + 5), reason: s.id);
+        expect(s.glosses, isNotEmpty, reason: s.id);
+        expect(s.questions, hasLength(3), reason: s.id);
+        for (final q in s.questions) {
+          expect(q.options, hasLength(4), reason: '${s.id} ${q.q}');
+          expect(q.options.map((o) => o.toLowerCase()).toSet(), hasLength(4), reason: '${s.id} ${q.q}');
+          expect(q.answer, inInclusiveRange(0, 3), reason: '${s.id} ${q.q}');
+          expect(q.explain.trim(), isNotEmpty, reason: '${s.id} ${q.q}');
+          positions[q.answer]++;
+        }
+      }
+      final total = positions.reduce((a, b) => a + b);
+      expect(positions.every((n) => n < total * 0.4), isTrue, reason: '$positions');
+    });
+
+    test('every gloss can be tapped in the text', () {
+      for (final s in _general) {
+        final glossed = {
+          for (final p in tokenizeStory(s))
+            for (final t in p)
+              if (t.gloss != null) t.word,
+        };
+        for (final key in s.glosses.keys) {
+          expect(glossed, contains(key), reason: '${s.id}: "$key"');
+        }
+      }
+    });
+  });
+
   group('reading stories', () {
     test('15 stories, 5 per level, unique ids', () {
       expect(_stories, hasLength(15));
@@ -154,6 +209,38 @@ void main() {
       await tester.pumpAndSettle();
       return c;
     }
+
+    testWidgets('"Önce dinle": text hidden, listen and answer, then the text opens', (tester) async {
+      final story = _stories.first;
+      final c = await pump(tester, StoryReaderScreen(story: story));
+      await tester.tap(find.byKey(const Key('reading-listen-first')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('reading-hidden-text')), findsOneWidget);
+      expect(find.text('seagulls'), findsNothing);
+      // The sentence player is on.
+      await tester.tap(find.textContaining('Cümle 1/'));
+      expect(speech.said, isNotEmpty);
+
+      await tester.scrollUntilVisible(find.text('Sorulara geç'), 200);
+      await tester.tap(find.text('Sorulara geç'));
+      await tester.pumpAndSettle();
+      for (final (i, q) in story.questions.indexed) {
+        await tester.tap(find.text(q.options[q.answer]));
+        await tester.pumpAndSettle();
+        await tester.scrollUntilVisible(find.text(i + 1 == story.questions.length ? 'Bitir' : 'Devam'), 200);
+        await tester.tap(find.text(i + 1 == story.questions.length ? 'Bitir' : 'Devam'));
+        await tester.pumpAndSettle();
+      }
+      // The text opens; nothing is recorded until "Bitir".
+      expect(find.byKey(const Key('reading-hidden-text')), findsNothing);
+      expect(find.byKey(const Key('reading-listen-first')), findsNothing);
+      await tester.scrollUntilVisible(find.text('seagulls'), 200);
+      expect(c.read(progressProvider).isDone(readNodeId(story.id)), isFalse);
+      await tester.scrollUntilVisible(find.text('Bitir'), 200);
+      await tester.tap(find.text('Bitir'));
+      await tester.pumpAndSettle();
+      expect(c.read(progressProvider).isDone(readNodeId(story.id)), isTrue);
+    });
 
     testWidgets('open a story, tap a glossed word, add it, listen and answer', (tester) async {
       final c = await pump(tester, const ReadingLibraryScreen());

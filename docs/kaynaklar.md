@@ -55,6 +55,14 @@ Dilbaz içeriği **özgündür**. Bu dosya üç şeyi kayda geçirir:
 
 Öğrenme bilimi çalışmaları ve sınav analizleri için tam liste: `docs/sinav/yds-arastirma.md` §4. Bu yayınlardan yalnızca **bulgu ve yöntem** alınır. Uygulamadaki "Yöntemlerimiz" metinleri özgün yazılır, yayından cümle aktarılmaz.
 
+## Genel kurs kaynakları
+
+Genel kursun okuma ve dinleme kütüphanesi (`assets/reading/genel_okuma_*.json`, docs/genel-mufredat.md §2 "Faz 6"). Metinlerin hepsi özgün yazıldı.
+
+| Kaynak | Lisans | Nasıl kullanıldı | Atıf |
+|---|---|---|---|
+| **NGSL 1.2** (New General Service List) | CC BY-SA 4.0 | Metinlerin seviyeye uygunluğunu ölçmek için: `tool/content/check_reading.mjs`, seviyeye göre ilk 800 (A1), 1.200 (A2), 2.000 (B1) ya da tüm lemmaları "bilinen" sayar; glossary dışındaki bilinmeyen kelime ≤ %2. Liste uygulamaya ya da depoya **konmaz**; denetim betiğine dosya yolu (`NGSL=`) ile verilir. | Browne, C., Culligan, B. & Phillips, J. (2013). *The New General Service List*. https://www.newgeneralservicelist.com |
+
 ## Kullanılan dış içerik kaydı
 
 İçerik ekipleri, bir metni açık kaynaktan **uyarlayarak** yazdıklarında buraya ekler:
