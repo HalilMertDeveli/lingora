@@ -89,11 +89,25 @@ void main() {
       final s1 = course.sections.first;
       expect((s1.id, s1.index, s1.title, s1.cefr, s1.implicit), ('s1', 1, 'Temeller', 'A1', false));
       expect(s1.grammar, isNotEmpty);
-      expect(s1.units, hasLength(12));
+      // 12 language units, then the skill units of 01x_beceri.json.
+      expect(s1.units.map((u) => u.id), [for (var i = 1; i <= 12; i++) 'u$i', 's1u13', 's1u14', 's1u15']);
       expect(course.units.first.nodes.first.id, 'u1l1');
       expect(s1.exam?.id, 'u12t');
       // The shipped folder holds no fixture.
       expect(course.sections.map((s) => s.title), isNot(contains(contains('örnek'))));
+    });
+
+    test('S1–S4 end with three skill units and a section skills test; the locks stay put', () async {
+      final course = await loadCourse(rootBundle, 'tr_en');
+      for (final s in course.sections.take(4)) {
+        final skill = s.units.skip(s.units.length - 3).toList();
+        expect(skill.map((u) => u.id), ['${s.id}u13', '${s.id}u14', '${s.id}u15'], reason: s.id);
+        expect(skill.every((u) => u.hasGuide), isTrue, reason: s.id);
+        final test = skill.last.nodes.firstWhere((n) => n.type == NodeType.test);
+        expect((test.title, test.exercises.length), ('Bölüm ${s.index} beceri testi', 20));
+        // The next section still opens with the last test of the section's own units.
+        expect(s.exam?.id, s.index == 1 ? 'u12t' : '${s.id}u12t');
+      }
     });
 
     test('courses without section metadata get one hidden section', () async {

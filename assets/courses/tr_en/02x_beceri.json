@@ -1,0 +1,2516 @@
+{
+  "extends": "s2",
+  "units": [
+    {
+      "id": "s2u13",
+      "title": "Bir günüm",
+      "description": "Günlük rutinini anlat, başkasının gününü anla",
+      "color": "0xFF7C5CFC",
+      "theme": "gunluk",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Günlük rutinini 5–6 cümleyle anlatabilirsin.\n- Başka birinin gününü dinleyip saatleri ve etkinlikleri anlayabilirsin.\n- Kısa bir blog yazısında kimin ne zaman ne yaptığını bulabilirsin.\n- Bir aile üyenin günü hakkında 5 cümlelik bir paragraf yazabilirsin.\n\n## Strateji\n\n- Dinlerken saatlere odaklan: half past seven (7.30), a quarter to ten (9.45).\n- he/she duyduğunda fiilin sonundaki -s sesini dinle: gets, goes, plays.\n- Okurken önce kişi adlarını bul, sonra o kişinin ne yaptığını oku.\n- Konuşurken günü sırayla anlat: sabah, okul, akşam, yatma saati. Then ile cümleleri bağla.\n- Yazarken her cümleye bir saat ya da sıklık zarfı (always, usually, never) koy.\n\n## Model metin\n\n> My mother gets up at six every day. She always drinks a cup of tea before breakfast. She works in a hospital and she gets home at four. She usually reads a book in the evening. She goes to bed at ten o'clock.\n\nBeş cümlelik bu paragraf annenin gününü sırayla anlatır. Her cümlede she ile fiile -s eklendiğine dikkat et.\n\n## Türklerin sık hatası\n\n- ❌ My brother get up late. / She doesn't likes tea. ✅ My brother gets up late. / She doesn't like tea. (he/she/it ile fiile -s gelir; doesn't'tan sonra -s yok)\n- ❌ I go always to bed at ten. ✅ I always go to bed at ten. (always, usually, never fiilden önce gelir)",
+      "nodes": [
+        {
+          "id": "s2u13l1",
+          "type": "lesson",
+          "title": "Dinleme: Mia'nın günü",
+          "description": "Bir öğrencinin gününü dinle ve yaz",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "Mia gets up at half past seven.",
+              "answers": [
+                "Mia gets up at half past seven.",
+                "Mia gets up at 7:30."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "She doesn't have breakfast at home.",
+              "answers": [
+                "She doesn't have breakfast at home.",
+                "She does not have breakfast at home."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "She has a sandwich at the bus stop.",
+              "answers": [
+                "She has a sandwich at the bus stop."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Mia ___ breakfast at home.",
+              "translation": "Mia evde kahvaltı yapmaz.",
+              "answer": "doesn't have",
+              "choices": [
+                "doesn't have",
+                "don't have",
+                "doesn't has"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Do you walk to school, Mia?",
+              "answers": [
+                "Do you walk to school, Mia?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "After school, she plays in the park.",
+              "answers": [
+                "After school, she plays in the park."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "What time ___ your lessons start?",
+              "translation": "Derslerin kaçta başlar?",
+              "answer": "do",
+              "choices": [
+                "do",
+                "does",
+                "is"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "She always goes to bed at a quarter to ten.",
+              "answers": [
+                "She always goes to bed at a quarter to ten.",
+                "She always goes to bed at 9:45."
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "She usually has lunch at school.",
+              "translation": "Genellikle okulda öğle yemeği yer."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kalkmak",
+                  "get up"
+                ],
+                [
+                  "eve varmak",
+                  "get home"
+                ],
+                [
+                  "ödev yapmak",
+                  "do homework"
+                ],
+                [
+                  "yatmak",
+                  "go to bed"
+                ],
+                [
+                  "kahvaltı yapmak",
+                  "have breakfast"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u13l2",
+          "type": "lesson",
+          "title": "Okuma: Elif'in blogu",
+          "description": "Kısa bir blog yazısında Elif'in gününü oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "My school day\nHi, I'm Elif and this is my day. I get up at seven and I have a shower. I always have breakfast with Kerem, my brother. We walk to school. Lessons start at half past eight. At lunch I usually eat in the garden with Deniz. School finishes at three. Then I do my homework. After school, Kerem plays video games. Then he does his homework. We have dinner at seven. I sometimes read a book in bed. I go to sleep at ten.",
+              "question": "Elif kaçta kalkar?",
+              "options": [
+                "at seven",
+                "at half past eight",
+                "at three",
+                "at ten"
+              ],
+              "answer": 0,
+              "explanation": "\"at seven\" doğru: metinde \"I get up at seven\" yazıyor. Dersler sekiz buçukta başlar, onda ise uyur."
+            },
+            {
+              "type": "choice",
+              "passage": "My school day\nHi, I'm Elif and this is my day. I get up at seven and I have a shower. I always have breakfast with Kerem, my brother. We walk to school. Lessons start at half past eight. At lunch I usually eat in the garden with Deniz. School finishes at three. Then I do my homework. After school, Kerem plays video games. Then he does his homework. We have dinner at seven. I sometimes read a book in bed. I go to sleep at ten.",
+              "question": "Elif kahvaltıyı kiminle yapar?",
+              "options": [
+                "with Deniz",
+                "with her father",
+                "with Kerem",
+                "with her mother"
+              ],
+              "answer": 2,
+              "explanation": "\"with Kerem\" doğru: metinde \"I always have breakfast with Kerem, my brother\" yazıyor. Deniz'le öğle yemeği yer."
+            },
+            {
+              "type": "choice",
+              "passage": "My school day\nHi, I'm Elif and this is my day. I get up at seven and I have a shower. I always have breakfast with Kerem, my brother. We walk to school. Lessons start at half past eight. At lunch I usually eat in the garden with Deniz. School finishes at three. Then I do my homework. After school, Kerem plays video games. Then he does his homework. We have dinner at seven. I sometimes read a book in bed. I go to sleep at ten.",
+              "question": "Elif öğle yemeğini genellikle nerede yer?",
+              "options": [
+                "at home",
+                "in the garden",
+                "in the classroom",
+                "in a café"
+              ],
+              "answer": 1,
+              "explanation": "\"in the garden\" doğru: metinde \"At lunch I usually eat in the garden with Deniz\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "My school day\nHi, I'm Elif and this is my day. I get up at seven and I have a shower. I always have breakfast with Kerem, my brother. We walk to school. Lessons start at half past eight. At lunch I usually eat in the garden with Deniz. School finishes at three. Then I do my homework. After school, Kerem plays video games. Then he does his homework. We have dinner at seven. I sometimes read a book in bed. I go to sleep at ten.",
+              "question": "Kerem okuldan hemen sonra ne yapar?",
+              "options": [
+                "He has a shower.",
+                "He reads a book.",
+                "He walks to the park.",
+                "He plays video games."
+              ],
+              "answer": 3,
+              "explanation": "\"He plays video games.\" doğru: metinde \"After school, Kerem plays video games. Then he does his homework.\" yazıyor; ödevini oyundan sonra yapar."
+            },
+            {
+              "type": "choice",
+              "passage": "My school day\nHi, I'm Elif and this is my day. I get up at seven and I have a shower. I always have breakfast with Kerem, my brother. We walk to school. Lessons start at half past eight. At lunch I usually eat in the garden with Deniz. School finishes at three. Then I do my homework. After school, Kerem plays video games. Then he does his homework. We have dinner at seven. I sometimes read a book in bed. I go to sleep at ten.",
+              "question": "Hangisi metne göre doğru?",
+              "options": [
+                "Elif goes to sleep at ten.",
+                "Lessons start at seven.",
+                "Elif never reads in bed.",
+                "Kerem never does his homework."
+              ],
+              "answer": 0,
+              "explanation": "\"Elif goes to sleep at ten.\" doğru: metinde \"I go to sleep at ten\" yazıyor. Elif yatakta bazen kitap okur; Kerem ödevini video oyunundan sonra yapar."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "ders",
+                  "lesson"
+                ],
+                [
+                  "bahçe",
+                  "garden"
+                ],
+                [
+                  "ödev",
+                  "homework"
+                ],
+                [
+                  "kahvaltı",
+                  "breakfast"
+                ],
+                [
+                  "akşam yemeği",
+                  "dinner"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Elif ___ a book in bed.",
+              "translation": "Elif yatakta bazen kitap okur.",
+              "answer": "sometimes reads",
+              "choices": [
+                "sometimes reads",
+                "reads sometimes",
+                "sometimes read"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Hangisi doğru bir cümle?",
+              "answer": "I always walk to school.",
+              "choices": [
+                {
+                  "text": "I walk always to school.",
+                  "emoji": "🚶"
+                },
+                {
+                  "text": "I always walk to school.",
+                  "emoji": "🏫"
+                },
+                {
+                  "text": "Always I walk to school.",
+                  "emoji": "🎒"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u13s",
+          "type": "story",
+          "title": "Kerem'in günü",
+          "description": "Elif ödevi için Kerem'e gününü soruyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Kerem, I have homework about your day.",
+              "translation": "Kerem, senin günün hakkında bir ödevim var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "My day? OK! Ask me anything.",
+              "translation": "Benim günüm mü? Tamam! Bana istediğini sor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "What time do you get up?",
+              "translation": "Kaçta kalkarsın?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "I get up at a quarter past seven.",
+              "translation": "Yediyi çeyrek geçe kalkarım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem kaçta kalkar?",
+              "choices": [
+                "Yediye çeyrek kala",
+                "Yediyi çeyrek geçe",
+                "Altıyı çeyrek geçe"
+              ],
+              "answer": "Yediyi çeyrek geçe"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Do you have a shower in the morning?",
+              "translation": "Sabah duş alır mısın?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "No, I don't. I have a shower at night.",
+              "translation": "Hayır, almam. Gece duş alırım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem ne zaman duş alır?",
+              "choices": [
+                "Sabah",
+                "Öğlen",
+                "Gece"
+              ],
+              "answer": "Gece"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "And after school? Do you do your homework?",
+              "translation": "Ya okuldan sonra? Ödevini yapar mısın?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "I usually play football with Deniz first.",
+              "translation": "Önce genellikle Deniz'le futbol oynarım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Then I do my homework at six.",
+              "translation": "Sonra saat altıda ödevimi yaparım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem ödevini kaçta yapar?",
+              "choices": [
+                "Saat beşte",
+                "Saat altıda",
+                "Saat yedide"
+              ],
+              "answer": "Saat altıda"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Really? Dad says you play video games!",
+              "translation": "Gerçekten mi? Babam video oyunu oynadığını söylüyor!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Only on Fridays! He works late on Fridays.",
+              "translation": "Sadece cuma günleri! Cuma günleri geç saate kadar çalışıyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "'He works late on Fridays.' cümlesinde 'he' kim?",
+              "choices": [
+                "Kerem",
+                "Baba",
+                "Deniz"
+              ],
+              "answer": "Baba"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Ha ha! What time do you go to bed?",
+              "translation": "Ha ha! Kaçta yatarsın?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "At half past nine. But I never sleep early!",
+              "translation": "Dokuz buçukta. Ama asla erken uyumam!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Why not?",
+              "translation": "Neden?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "I always read comics in bed.",
+              "translation": "Yatakta her zaman çizgi roman okurum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Thanks, Kerem! My homework is ready.",
+              "translation": "Teşekkürler Kerem! Ödevim hazır."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem neden erken uyumaz?",
+              "choices": [
+                "Yatakta çizgi roman okur.",
+                "Video oyunu oynar.",
+                "Ödevini yapar."
+              ],
+              "answer": "Yatakta çizgi roman okur."
+            }
+          ]
+        },
+        {
+          "id": "s2u13l3",
+          "type": "lesson",
+          "title": "Konuşma: Gününü anlat",
+          "description": "Sam'e gününü 30 saniyede anlat",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "I usually get up at seven.",
+              "translation": "Genellikle yedide kalkarım."
+            },
+            {
+              "type": "speak",
+              "text": "I have breakfast and I walk to school.",
+              "translation": "Kahvaltı yaparım ve okula yürürüm."
+            },
+            {
+              "type": "speak",
+              "text": "School finishes at three. Then I do homework.",
+              "translation": "Okul üçte biter. Sonra ödev yaparım."
+            },
+            {
+              "type": "speak",
+              "text": "In the evening, I sometimes watch TV.",
+              "translation": "Akşamları bazen televizyon izlerim."
+            },
+            {
+              "type": "speak",
+              "text": "I always go to bed at ten.",
+              "translation": "Her zaman onda yatarım."
+            },
+            {
+              "type": "select",
+              "prompt": "Sam: 'What time do you get up?' En uygun cevap hangisi?",
+              "answer": "At seven o'clock.",
+              "choices": [
+                {
+                  "text": "At seven o'clock.",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "I get up every day.",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Yes, I do.",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "In the kitchen.",
+                  "emoji": "🍳"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Sam: 'Does your brother walk to school?' En uygun cevap hangisi?",
+              "answer": "Yes, he does.",
+              "choices": [
+                {
+                  "text": "Yes, he do.",
+                  "emoji": "🚶"
+                },
+                {
+                  "text": "Yes, he does.",
+                  "emoji": "👦"
+                },
+                {
+                  "text": "No, he isn't.",
+                  "emoji": "🚌"
+                },
+                {
+                  "text": "No, he don't.",
+                  "emoji": "🚗"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kardeşim hafta sonu geç kalkar.",
+              "lang": "tr",
+              "answers": [
+                "My brother gets up late at the weekend.",
+                "My brother gets up late at weekends.",
+                "My brother gets up late on the weekend.",
+                "At the weekend my brother gets up late."
+              ],
+              "tokens": [
+                "My",
+                "brother",
+                "gets",
+                "up",
+                "late",
+                "at",
+                "the",
+                "weekend",
+                "get",
+                "on"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Annem sabahları kahve içmez.",
+              "lang": "tr",
+              "answers": [
+                "My mother doesn't drink coffee in the morning.",
+                "My mom doesn't drink coffee in the morning.",
+                "My mother does not drink coffee in the morning.",
+                "My mother doesn't drink coffee in the mornings.",
+                "In the morning my mother doesn't drink coffee.",
+                "In the morning my mom doesn't drink coffee."
+              ],
+              "tokens": [
+                "My",
+                "mother",
+                "doesn't",
+                "drink",
+                "coffee",
+                "in",
+                "the",
+                "morning",
+                "don't",
+                "drinks"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "genellikle",
+                  "usually"
+                ],
+                [
+                  "her zaman",
+                  "always"
+                ],
+                [
+                  "bazen",
+                  "sometimes"
+                ],
+                [
+                  "akşamları",
+                  "in the evening"
+                ],
+                [
+                  "erken",
+                  "early"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u13l4",
+          "type": "lesson",
+          "title": "Yazma: Annemin günü",
+          "description": "Bir aile üyenin günü hakkında 5 cümlelik paragraf yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Annem her gün altıda kalkar.",
+              "lang": "tr",
+              "answers": [
+                "My mother gets up at six every day.",
+                "My mom gets up at six every day.",
+                "My mother gets up at 6 every day.",
+                "Every day my mother gets up at six."
+              ],
+              "tokens": [
+                "My",
+                "mother",
+                "gets",
+                "up",
+                "at",
+                "six",
+                "every",
+                "day",
+                "get",
+                "in"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kahvaltıdan önce her zaman bir fincan çay içer.",
+              "lang": "tr",
+              "answers": [
+                "She always drinks a cup of tea before breakfast.",
+                "Before breakfast she always drinks a cup of tea."
+              ],
+              "tokens": [
+                "She",
+                "always",
+                "drinks",
+                "a",
+                "cup",
+                "of",
+                "tea",
+                "before",
+                "breakfast",
+                "drink",
+                "is"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hastanede çalışır ve dörtte eve gelir.",
+              "lang": "tr",
+              "answers": [
+                "She works in a hospital and she gets home at four.",
+                "She works in a hospital and gets home at four.",
+                "She works at a hospital and she gets home at four.",
+                "She works at a hospital and gets home at four."
+              ],
+              "tokens": [
+                "She",
+                "works",
+                "in",
+                "a",
+                "hospital",
+                "and",
+                "she",
+                "gets",
+                "home",
+                "at",
+                "four",
+                "on",
+                "to"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Akşamları genellikle kitap okur.",
+              "lang": "tr",
+              "answers": [
+                "She usually reads a book in the evening.",
+                "In the evening she usually reads a book.",
+                "She usually reads books in the evening.",
+                "She usually reads a book in the evenings."
+              ],
+              "tokens": [
+                "She",
+                "usually",
+                "reads",
+                "a",
+                "book",
+                "in",
+                "the",
+                "evening",
+                "read",
+                "does"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "First she has a shower, ___ she gets dressed.",
+              "translation": "Önce duş alır, sonra giyinir.",
+              "answer": "then",
+              "choices": [
+                "then",
+                "but",
+                "because"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "My mother is ___ nurse.",
+              "translation": "Annem bir hemşire.",
+              "answer": "a",
+              "choices": [
+                "a",
+                "an",
+                "some"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "She goes to bed ___ ten o'clock.",
+              "translation": "Saat onda yatar.",
+              "answer": "at",
+              "choices": [
+                "at",
+                "on",
+                "in"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Paragrafın başlığı için hangisi uygun?",
+              "answer": "My Mother's Day",
+              "choices": [
+                {
+                  "text": "My Mother's Day",
+                  "emoji": "👩‍⚕️"
+                },
+                {
+                  "text": "Dear Mom,",
+                  "emoji": "✉️"
+                },
+                {
+                  "text": "See you soon!",
+                  "emoji": "👋"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "hemşire",
+                  "nurse"
+                ],
+                [
+                  "hastane",
+                  "hospital"
+                ],
+                [
+                  "yorgun",
+                  "tired"
+                ],
+                [
+                  "yemek pişirmek",
+                  "cook"
+                ],
+                [
+                  "giyinmek",
+                  "get dressed"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u13t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u13c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u14",
+      "title": "Nasıl giderim?",
+      "description": "Yol sor, yol tarif et ve tarifi anla",
+      "color": "0xFF2D9CDB",
+      "theme": "sehir",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir yerin nerede olduğunu kibarca sorabilirsin.\n- Sağ, sol, düz ve sıra sayılarıyla verilen tarifi anlayabilirsin.\n- Şehirdeki tabelaları ve kısa kuralları okuyabilirsin.\n- Bir arkadaşına evine ya da bir yere nasıl gelineceğini mesajla yazabilirsin.\n\n## Strateji\n\n- Tarif dinlerken üç şeyi not et: yön (left/right), sıra (first/second/third) ve yer (opposite, next to).\n- Anlamadığında tekrar sor: Sorry, the second right or the second left?\n- Tabelalarda Don't ve No ile başlayan cümleler yasaktır.\n- Tarif yazarken emir kipi kullan ve adımları sırayla ver: Get off, turn, walk.\n\n## Model metin\n\n> Hi Deniz! Get off the bus at the library. Turn left and walk to the bakery. The cinema is opposite the bakery, next to a bank. See you at six!\n\nKısa bir tarif mesajı: her adım bir emir cümlesidir. Yerleri opposite ve next to ile tarif ediyoruz.\n\n## Türklerin sık hatası\n\n- ❌ I go to the home. / I go to home. ✅ I go home. (home'dan önce to ve the gelmez)\n- ❌ It's next the bank. / You turn left. ✅ It's next to the bank. / Turn left. (next to iki kelimedir; tarifte özne yok, emir kipi var)",
+      "nodes": [
+        {
+          "id": "s2u14l1",
+          "type": "lesson",
+          "title": "Dinleme: Sağdan ikinci sokak",
+          "description": "Yol tariflerini dinle ve yaz",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "Turn left at the bakery.",
+              "answers": [
+                "Turn left at the bakery."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Take the second street on the right.",
+              "answers": [
+                "Take the second street on the right."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It's opposite the park.",
+              "answers": [
+                "It's opposite the park.",
+                "It is opposite the park."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Can you tell me the way ___ the station?",
+              "translation": "Bana istasyonun yolunu söyler misiniz?",
+              "answer": "to",
+              "choices": [
+                "to",
+                "at",
+                "for"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Go straight on for two hundred metres.",
+              "answers": [
+                "Go straight on for two hundred metres.",
+                "Go straight on for 200 metres.",
+                "Go straight on for two hundred meters.",
+                "Go straight on for 200 meters."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Can I walk there from the station?",
+              "answers": [
+                "Can I walk there from the station?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The bus stop is next ___ the school.",
+              "translation": "Otobüs durağı okulun yanında.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "of",
+                "at"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The café is next to the cinema.",
+              "answers": [
+                "The café is next to the cinema.",
+                "The cafe is next to the cinema."
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Excuse me, where's the bus station?",
+              "translation": "Affedersiniz, otogar nerede?"
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "sola dönmek",
+                  "turn left"
+                ],
+                [
+                  "düz gitmek",
+                  "go straight on"
+                ],
+                [
+                  "karşısında",
+                  "opposite"
+                ],
+                [
+                  "yanında",
+                  "next to"
+                ],
+                [
+                  "köşede",
+                  "on the corner"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u14l2",
+          "type": "lesson",
+          "title": "Okuma: Tabelalar",
+          "description": "Şehir merkezi panosunu ve park kurallarını oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "TOWN CENTRE\nLibrary: Go straight on. It's opposite the park.\nSwimming pool: Turn right at the bakery. Open 8 am to 8 pm.\nTrain station: Take the second left. It's next to the bus stop.\nHospital: Turn left at the school. Don't park here!\nMuseum: Go straight on and cross the bridge. Closed on Mondays.\nPARK RULES\nDon't feed the birds.\nBikes: please walk.\nNo dogs on the grass.\nPlease put your rubbish in the bin.",
+              "question": "Kütüphane nerede?",
+              "options": [
+                "next to the bus stop",
+                "opposite the park",
+                "at the school",
+                "near the bridge"
+              ],
+              "answer": 1,
+              "explanation": "\"opposite the park\" doğru: panoda \"Library: Go straight on. It's opposite the park.\" yazıyor. Otobüs durağının yanında olan tren istasyonu."
+            },
+            {
+              "type": "choice",
+              "passage": "TOWN CENTRE\nLibrary: Go straight on. It's opposite the park.\nSwimming pool: Turn right at the bakery. Open 8 am to 8 pm.\nTrain station: Take the second left. It's next to the bus stop.\nHospital: Turn left at the school. Don't park here!\nMuseum: Go straight on and cross the bridge. Closed on Mondays.\nPARK RULES\nDon't feed the birds.\nBikes: please walk.\nNo dogs on the grass.\nPlease put your rubbish in the bin.",
+              "question": "Müze hangi gün kapalı?",
+              "options": [
+                "on Sundays",
+                "on Fridays",
+                "at 8 pm",
+                "on Mondays"
+              ],
+              "answer": 3,
+              "explanation": "\"on Mondays\" doğru: panoda müze için \"Closed on Mondays\" yazıyor. Akşam sekizde kapanan yer yüzme havuzu."
+            },
+            {
+              "type": "choice",
+              "passage": "TOWN CENTRE\nLibrary: Go straight on. It's opposite the park.\nSwimming pool: Turn right at the bakery. Open 8 am to 8 pm.\nTrain station: Take the second left. It's next to the bus stop.\nHospital: Turn left at the school. Don't park here!\nMuseum: Go straight on and cross the bridge. Closed on Mondays.\nPARK RULES\nDon't feed the birds.\nBikes: please walk.\nNo dogs on the grass.\nPlease put your rubbish in the bin.",
+              "question": "Tren istasyonuna nasıl gidersin?",
+              "options": [
+                "Turn right at the bakery.",
+                "Cross the bridge.",
+                "Take the second left.",
+                "Turn left at the school."
+              ],
+              "answer": 2,
+              "explanation": "\"Take the second left.\" doğru: panoda \"Train station: Take the second left.\" yazıyor. Fırında sağa dönmek yüzme havuzunun tarifi."
+            },
+            {
+              "type": "choice",
+              "passage": "TOWN CENTRE\nLibrary: Go straight on. It's opposite the park.\nSwimming pool: Turn right at the bakery. Open 8 am to 8 pm.\nTrain station: Take the second left. It's next to the bus stop.\nHospital: Turn left at the school. Don't park here!\nMuseum: Go straight on and cross the bridge. Closed on Mondays.\nPARK RULES\nDon't feed the birds.\nBikes: please walk.\nNo dogs on the grass.\nPlease put your rubbish in the bin.",
+              "question": "Parkta ne yapmamalısın?",
+              "options": [
+                "feed the birds",
+                "walk in the park",
+                "read a book",
+                "play with friends"
+              ],
+              "answer": 0,
+              "explanation": "\"feed the birds\" doğru: park kurallarında \"Don't feed the birds.\" yazıyor. Diğerleri kurallarda yasak değil."
+            },
+            {
+              "type": "choice",
+              "passage": "TOWN CENTRE\nLibrary: Go straight on. It's opposite the park.\nSwimming pool: Turn right at the bakery. Open 8 am to 8 pm.\nTrain station: Take the second left. It's next to the bus stop.\nHospital: Turn left at the school. Don't park here!\nMuseum: Go straight on and cross the bridge. Closed on Mondays.\nPARK RULES\nDon't feed the birds.\nBikes: please walk.\nNo dogs on the grass.\nPlease put your rubbish in the bin.",
+              "question": "Yüzme havuzu kaçta açılır?",
+              "options": [
+                "at 8 pm",
+                "at 9 am",
+                "at 10 am",
+                "at 8 am"
+              ],
+              "answer": 3,
+              "explanation": "\"at 8 am\" doğru: panoda \"Open 8 am to 8 pm\" yazıyor; havuz sabah sekizde açılır, akşam sekizde kapanır."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kütüphane",
+                  "library"
+                ],
+                [
+                  "müze",
+                  "museum"
+                ],
+                [
+                  "köprü",
+                  "bridge"
+                ],
+                [
+                  "yüzme havuzu",
+                  "swimming pool"
+                ],
+                [
+                  "tren istasyonu",
+                  "train station"
+                ]
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Tabela: 'Don't park here!' Ne demek?",
+              "answer": "Buraya park etme!",
+              "choices": [
+                {
+                  "text": "Buraya park etme!",
+                  "emoji": "🚫"
+                },
+                {
+                  "text": "Burada oyna!",
+                  "emoji": "⚽"
+                },
+                {
+                  "text": "Parka git!",
+                  "emoji": "🌳"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "___ cross the road here!",
+              "translation": "Burada karşıdan karşıya geçme!",
+              "answer": "Don't",
+              "choices": [
+                "Don't",
+                "Not",
+                "No"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u14s",
+          "type": "story",
+          "title": "Deniz yolu kaybetti",
+          "description": "Deniz, Elif'in evini bulmak için onu arıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Hi, Elif! I'm at the station, but I'm lost.",
+              "translation": "Selam Elif! İstasyondayım ama kayboldum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "No problem. Can you see a big bakery?",
+              "translation": "Sorun değil. Büyük bir fırın görüyor musun?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Yes, there's a bakery on the corner.",
+              "translation": "Evet, köşede bir fırın var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Good. Turn right at the bakery.",
+              "translation": "Güzel. Fırında sağa dön."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz fırında hangi yöne dönmeli?",
+              "choices": [
+                "Sola",
+                "Sağa",
+                "Hiç dönmemeli"
+              ],
+              "answer": "Sağa"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "OK. Now I'm in a long street.",
+              "translation": "Tamam. Şimdi uzun bir sokaktayım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Go straight on. Then take the second left.",
+              "translation": "Düz git. Sonra soldan ikinci sokağa gir."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "The first left or the second left?",
+              "translation": "Soldan birinci mi, ikinci mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "The second! It's Lale Street.",
+              "translation": "İkinci! Lale Sokak."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif'in sokağının adı ne?",
+              "choices": [
+                "Gül Street",
+                "Lale Street",
+                "Park Street"
+              ],
+              "answer": "Lale Street"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "OK, I'm in Lale Street. Where's your house?",
+              "translation": "Tamam, Lale Sokak'tayım. Evin nerede?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "It's number 14, opposite the big library.",
+              "translation": "14 numara, büyük kütüphanenin karşısında."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif'in evi kaç numara?",
+              "choices": [
+                "4",
+                "14",
+                "40"
+              ],
+              "answer": "14"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "I can see the library. Is your house blue?",
+              "translation": "Kütüphaneyi görüyorum. Evin mavi mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "No, it's white. It's next to a small café.",
+              "translation": "Hayır, beyaz. Küçük bir kafenin yanında."
+            },
+            {
+              "kind": "question",
+              "prompt": "'It's next to a small café.' cümlesinde 'it' ne?",
+              "choices": [
+                "Elif'in evi",
+                "Kütüphane",
+                "İstasyon"
+              ],
+              "answer": "Elif'in evi"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Is there a red car in front of it?",
+              "translation": "Önünde kırmızı bir araba var mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Yes! That's my dad's car.",
+              "translation": "Evet! O babamın arabası."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Elif! Deniz is at the door!",
+              "translation": "Elif! Deniz kapıda!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Come in, Deniz! Welcome to our home.",
+              "translation": "Gel içeri Deniz! Evimize hoş geldin."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz başta neden Elif'i arıyor?",
+              "choices": [
+                "Elif'in evinin yolunu bilmiyor.",
+                "Kütüphaneye gitmek istiyor.",
+                "Fırından ekmek alıyor."
+              ],
+              "answer": "Elif'in evinin yolunu bilmiyor."
+            }
+          ]
+        },
+        {
+          "id": "s2u14l3",
+          "type": "lesson",
+          "title": "Konuşma: Yol sorma",
+          "description": "Sokakta birine eczanenin yolunu sor",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "Excuse me. Can you help me, please?",
+              "translation": "Affedersiniz. Bana yardım edebilir misiniz lütfen?"
+            },
+            {
+              "type": "speak",
+              "text": "Is there a pharmacy near here?",
+              "translation": "Buralarda bir eczane var mı?"
+            },
+            {
+              "type": "speak",
+              "text": "Sorry, the second right or the second left?",
+              "translation": "Pardon, sağdan ikinci mi, soldan ikinci mi?"
+            },
+            {
+              "type": "speak",
+              "text": "Is it far from here?",
+              "translation": "Buradan uzak mı?"
+            },
+            {
+              "type": "speak",
+              "text": "Thank you very much. Have a nice day!",
+              "translation": "Çok teşekkür ederim. İyi günler!"
+            },
+            {
+              "type": "select",
+              "prompt": "Biri soruyor: 'Where's the station?' En uygun cevap hangisi?",
+              "answer": "Go straight on. It's on the left.",
+              "choices": [
+                {
+                  "text": "Go straight on. It's on the left.",
+                  "emoji": "⬆️"
+                },
+                {
+                  "text": "Yes, it is.",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "I go to the station.",
+                  "emoji": "🚉"
+                },
+                {
+                  "text": "It's at seven o'clock.",
+                  "emoji": "⏰"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Akşam oldu, eve gitmek istiyorsun. Arkadaşına ne dersin?",
+              "answer": "I want to go home.",
+              "choices": [
+                {
+                  "text": "I want to go to home.",
+                  "emoji": "🏠"
+                },
+                {
+                  "text": "I want to go home.",
+                  "emoji": "🏡"
+                },
+                {
+                  "text": "I want to go to the home.",
+                  "emoji": "🏘️"
+                },
+                {
+                  "text": "I want go home.",
+                  "emoji": "🚪"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Affedersiniz, müze nerede?",
+              "lang": "tr",
+              "answers": [
+                "Excuse me, where is the museum?",
+                "Excuse me, where's the museum?"
+              ],
+              "tokens": [
+                "Excuse",
+                "me",
+                "where",
+                "is",
+                "the",
+                "museum",
+                "what",
+                "are"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Okulun yanında, bankanın karşısında.",
+              "lang": "tr",
+              "answers": [
+                "It's next to the school, opposite the bank.",
+                "It is next to the school, opposite the bank.",
+                "It's opposite the bank, next to the school.",
+                "It is opposite the bank, next to the school."
+              ],
+              "tokens": [
+                "It's",
+                "next",
+                "to",
+                "the",
+                "school",
+                "opposite",
+                "the",
+                "bank",
+                "near",
+                "of"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "Affedersiniz",
+                  "Excuse me"
+                ],
+                [
+                  "uzak",
+                  "far"
+                ],
+                [
+                  "yakın",
+                  "near"
+                ],
+                [
+                  "eczane",
+                  "pharmacy"
+                ],
+                [
+                  "banka",
+                  "bank"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u14l4",
+          "type": "lesson",
+          "title": "Yazma: Sinemaya nasıl gelinir?",
+          "description": "Arkadaşına bir yerin yolunu tarif eden mesaj yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Otobüsten kütüphanede in.",
+              "lang": "tr",
+              "answers": [
+                "Get off the bus at the library."
+              ],
+              "tokens": [
+                "Get",
+                "off",
+                "the",
+                "bus",
+                "at",
+                "the",
+                "library",
+                "on",
+                "in"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sola dön ve fırına kadar yürü.",
+              "lang": "tr",
+              "answers": [
+                "Turn left and walk to the bakery."
+              ],
+              "tokens": [
+                "Turn",
+                "left",
+                "and",
+                "walk",
+                "to",
+                "the",
+                "bakery",
+                "right",
+                "you"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sinema fırının karşısında, bir bankanın yanında.",
+              "lang": "tr",
+              "answers": [
+                "The cinema is opposite the bakery, next to a bank.",
+                "The cinema's opposite the bakery, next to a bank.",
+                "The cinema is next to a bank, opposite the bakery."
+              ],
+              "tokens": [
+                "The",
+                "cinema",
+                "is",
+                "opposite",
+                "the",
+                "bakery",
+                "next",
+                "to",
+                "a",
+                "bank",
+                "of",
+                "at"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Altıda görüşürüz!",
+              "lang": "tr",
+              "answers": [
+                "See you at six!",
+                "See you at 6!"
+              ],
+              "tokens": [
+                "See",
+                "you",
+                "at",
+                "six",
+                "on",
+                "in"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Go straight on. ___, turn left at the school.",
+              "translation": "Düz git. Sonra okulda sola dön.",
+              "answer": "Then",
+              "choices": [
+                "Then",
+                "Because",
+                "But"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "It's ___ old building next to the bank.",
+              "translation": "Bankanın yanında eski bir bina.",
+              "answer": "an",
+              "choices": [
+                "an",
+                "a",
+                "some"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "After the film, we can go ___ by bus.",
+              "translation": "Filmden sonra eve otobüsle gidebiliriz.",
+              "answer": "home",
+              "choices": [
+                "home",
+                "to home",
+                "to the home"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşına yazdığın mesajın sonu için hangisi uygun?",
+              "answer": "See you soon!",
+              "choices": [
+                {
+                  "text": "See you soon!",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "Yours faithfully,",
+                  "emoji": "📄"
+                },
+                {
+                  "text": "Dear Sir or Madam,",
+                  "emoji": "🎩"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "otobüsten inmek",
+                  "get off the bus"
+                ],
+                [
+                  "karşıdan karşıya geçmek",
+                  "cross the road"
+                ],
+                [
+                  "yürümek",
+                  "walk"
+                ],
+                [
+                  "bina",
+                  "building"
+                ],
+                [
+                  "sinema",
+                  "cinema"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u14t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s2u14c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s2u15",
+      "title": "Davet",
+      "description": "Davet et, daveti kabul et ya da kibarca reddet",
+      "color": "0xFFF2994A",
+      "theme": "yazisma",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir arkadaşını bir etkinliğe davet edebilirsin.\n- Bir daveti kabul edebilir ya da kibarca reddedebilirsin.\n- Telefondaki bir davette gün, saat ve yeri anlayabilirsin.\n- Bir davetiyeyi okuyup kısa bir davet mesajı yazabilirsin.\n\n## Strateji\n\n- Davet dinlerken üç bilgiyi yakala: ne, ne zaman, nerede.\n- Kabul ederken: I'd love to! / Good idea! Reddederken önce özür dile, sonra sebep söyle: Sorry, I can't. I have a piano lesson.\n- Davetiyede tarih, saat, adres ve cevap için son günü (reply by) ara.\n- Davet mesajında sırayla: selam, davet (Would you like to…?), saat ve yer, rica, kapanış.\n\n## Model metin\n\n> Hi Deniz! Would you like to come to a picnic on Sunday? We can meet at the park at eleven. Please bring some fruit. Let me know by Friday! Love, Elif\n\nKısa ve samimi bir davet mesajı. Would you like to'dan ve can'den sonra fiil yalın gelir: come, meet.\n\n## Türklerin sık hatası\n\n- ❌ Would you like come? / I can to come. ✅ Would you like to come? / I can come. (would like'tan sonra to; can'den sonra yalın fiil)\n- ❌ I am agree. ✅ I agree. (agree bir fiildir, am ile kullanılmaz)\n\n## Beceri testi\n\nBölüm 2 beceri testi 20 sorudur ve bu bölümün hedeflerini ölçer:\n\n- Dinleme (6 soru): rutin cümlelerini, saatleri, yol tarifini ve daveti anlama — s2u13, s2u14, s2u15\n- Okuma (6 soru): Mia'nın günü üzerine kısa yazı ve tarifli davet mesajı — s2u13, s2u14, s2u15\n- Yazma (5 cümle): rutin, yol tarifi ve davete cevap cümleleri kurma — s2u13, s2u14, s2u15\n- Dil (3 soru): 3. tekil -s, would like to + fiil ve I agree — s2u13, s2u15",
+      "nodes": [
+        {
+          "id": "s2u15l1",
+          "type": "lesson",
+          "title": "Dinleme: Telefonda davet",
+          "description": "Telefondaki daveti dinle; gün ve saati yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "Would you like to come to my party?",
+              "answers": [
+                "Would you like to come to my party?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It's on Saturday at half past three.",
+              "answers": [
+                "It's on Saturday at half past three.",
+                "It is on Saturday at half past three.",
+                "It's on Saturday at 3:30.",
+                "It is on Saturday at 3:30."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Would you like ___ come?",
+              "translation": "Gelmek ister misin?",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "at"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'd love to, thanks!",
+              "answers": [
+                "I'd love to, thanks!",
+                "I would love to, thanks!"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Sorry, I can't. I have a piano lesson.",
+              "answers": [
+                "Sorry, I can't. I have a piano lesson.",
+                "Sorry, I cannot. I have a piano lesson."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Can I bring my brother?",
+              "answers": [
+                "Can I bring my brother?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I can ___ at five.",
+              "translation": "Beşte gelebilirim.",
+              "answer": "come",
+              "choices": [
+                "come",
+                "to come",
+                "coming"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "My flat is near the school.",
+              "answers": [
+                "My flat is near the school."
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I'd love to come to your party.",
+              "translation": "Partine gelmeyi çok isterim."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "Çok isterim!",
+                  "I'd love to!"
+                ],
+                [
+                  "Maalesef gelemem.",
+                  "Sorry, I can't."
+                ],
+                [
+                  "İyi fikir!",
+                  "Good idea!"
+                ],
+                [
+                  "Kaçta?",
+                  "What time?"
+                ],
+                [
+                  "Görüşürüz!",
+                  "See you!"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u15l2",
+          "type": "lesson",
+          "title": "Okuma: Davetiye",
+          "description": "Deniz'in doğum günü davetiyesini oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "You're invited!\nCome to Deniz's birthday party!\nDay: Saturday, the third of May\nTime: 3:30 pm to 7 pm\nPlace: Deniz's flat, 8 Okul Street. It's near the school, opposite the sports centre.\nWe can play board games and eat cake. There's a small garden, so bring your football!\nPlease don't bring a present. Bring a song for the karaoke!\nPlease reply by Thursday.",
+              "question": "Parti hangi gün?",
+              "options": [
+                "on Thursday",
+                "on Saturday",
+                "on Sunday",
+                "on Friday"
+              ],
+              "answer": 1,
+              "explanation": "\"on Saturday\" doğru: davetiyede \"Day: Saturday, the third of May\" yazıyor. Perşembe, cevap vermek için son gün."
+            },
+            {
+              "type": "choice",
+              "passage": "You're invited!\nCome to Deniz's birthday party!\nDay: Saturday, the third of May\nTime: 3:30 pm to 7 pm\nPlace: Deniz's flat, 8 Okul Street. It's near the school, opposite the sports centre.\nWe can play board games and eat cake. There's a small garden, so bring your football!\nPlease don't bring a present. Bring a song for the karaoke!\nPlease reply by Thursday.",
+              "question": "Parti kaçta biter?",
+              "options": [
+                "at 3:30 pm",
+                "at 5 pm",
+                "at 7 pm",
+                "at 8 pm"
+              ],
+              "answer": 2,
+              "explanation": "\"at 7 pm\" doğru: davetiyede \"Time: 3:30 pm to 7 pm\" yazıyor; parti üç buçukta başlar, yedide biter."
+            },
+            {
+              "type": "choice",
+              "passage": "You're invited!\nCome to Deniz's birthday party!\nDay: Saturday, the third of May\nTime: 3:30 pm to 7 pm\nPlace: Deniz's flat, 8 Okul Street. It's near the school, opposite the sports centre.\nWe can play board games and eat cake. There's a small garden, so bring your football!\nPlease don't bring a present. Bring a song for the karaoke!\nPlease reply by Thursday.",
+              "question": "Deniz'in evi nerede?",
+              "options": [
+                "opposite the school",
+                "opposite the sports centre",
+                "behind the park",
+                "near the station"
+              ],
+              "answer": 1,
+              "explanation": "\"opposite the sports centre\" doğru: davetiyede \"It's near the school, opposite the sports centre\" yazıyor. Ev okulun karşısında değil, yakınında."
+            },
+            {
+              "type": "choice",
+              "passage": "You're invited!\nCome to Deniz's birthday party!\nDay: Saturday, the third of May\nTime: 3:30 pm to 7 pm\nPlace: Deniz's flat, 8 Okul Street. It's near the school, opposite the sports centre.\nWe can play board games and eat cake. There's a small garden, so bring your football!\nPlease don't bring a present. Bring a song for the karaoke!\nPlease reply by Thursday.",
+              "question": "Misafirler karaoke için ne getirmeli?",
+              "options": [
+                "a present",
+                "a cake",
+                "a song",
+                "a board game"
+              ],
+              "answer": 2,
+              "explanation": "\"a song\" doğru: davetiyede \"Bring a song for the karaoke!\" yazıyor. Hediye getirmemeleri isteniyor."
+            },
+            {
+              "type": "choice",
+              "passage": "You're invited!\nCome to Deniz's birthday party!\nDay: Saturday, the third of May\nTime: 3:30 pm to 7 pm\nPlace: Deniz's flat, 8 Okul Street. It's near the school, opposite the sports centre.\nWe can play board games and eat cake. There's a small garden, so bring your football!\nPlease don't bring a present. Bring a song for the karaoke!\nPlease reply by Thursday.",
+              "question": "Davete ne zamana kadar cevap vermelisin?",
+              "options": [
+                "by Thursday",
+                "by Saturday",
+                "by Friday",
+                "by Monday"
+              ],
+              "answer": 0,
+              "explanation": "\"by Thursday\" doğru: davetiyenin sonunda \"Please reply by Thursday\" yazıyor. Cumartesi partinin günü."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "doğum günü",
+                  "birthday"
+                ],
+                [
+                  "hediye",
+                  "present"
+                ],
+                [
+                  "masa oyunu",
+                  "board game"
+                ],
+                [
+                  "spor merkezi",
+                  "sports centre"
+                ],
+                [
+                  "cevap vermek",
+                  "reply"
+                ]
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Davetiyede 'Please reply by Thursday.' yazıyor. Ne yapmalısın?",
+              "answer": "Perşembeye kadar cevap ver.",
+              "choices": [
+                {
+                  "text": "Perşembeye kadar cevap ver.",
+                  "emoji": "📱"
+                },
+                {
+                  "text": "Perşembe günü partiye git.",
+                  "emoji": "🎉"
+                },
+                {
+                  "text": "Perşembe günü hediye al.",
+                  "emoji": "🎁"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We can ___ board games.",
+              "translation": "Masa oyunları oynayabiliriz.",
+              "answer": "play",
+              "choices": [
+                "play",
+                "playing",
+                "to play"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u15s",
+          "type": "story",
+          "title": "Telefonda davet",
+          "description": "Deniz, Elif'i doğum günü partisine çağırıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Hi, Elif! It's Deniz. Are you free on Saturday?",
+              "translation": "Selam Elif! Ben Deniz. Cumartesi boş musun?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Hi, Deniz! Yes, I think so. Why?",
+              "translation": "Selam Deniz! Evet, sanırım. Neden?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "It's my birthday party. Would you like to come?",
+              "translation": "Doğum günü partim var. Gelmek ister misin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Oh, I'd love to! What time?",
+              "translation": "Ah, çok isterim! Saat kaçta?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "It starts at half past three.",
+              "translation": "Üç buçukta başlıyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Parti kaçta başlıyor?",
+              "choices": [
+                "Üçte",
+                "Üç buçukta",
+                "Dört buçukta"
+              ],
+              "answer": "Üç buçukta"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Great. Can Kerem come, too?",
+              "translation": "Harika. Kerem de gelebilir mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Of course! I want to invite him.",
+              "translation": "Tabii ki! Onu davet etmek istiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Saturday? Oh no, I have a football match.",
+              "translation": "Cumartesi mi? Olamaz, futbol maçım var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Kerem says sorry. He can't come.",
+              "translation": "Kerem özür diliyor. Gelemiyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "'He can't come.' cümlesinde 'he' kim?",
+              "choices": [
+                "Deniz",
+                "Kerem",
+                "Baba"
+              ],
+              "answer": "Kerem"
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem'in cumartesi ne işi var?",
+              "choices": [
+                "Piyano dersi",
+                "Futbol maçı",
+                "Doğum günü partisi"
+              ],
+              "answer": "Futbol maçı"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "That's a pity. Maybe next time.",
+              "translation": "Ne yazık. Belki bir dahaki sefere."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "What can I bring? Some cake?",
+              "translation": "Ne getirebilirim? Biraz pasta?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "No, thanks. My mom makes a big cake.",
+              "translation": "Hayır, teşekkürler. Annem büyük bir pasta yapıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "But please bring a song for karaoke!",
+              "translation": "Ama lütfen karaoke için bir şarkı getir!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Ha ha! OK. I can sing with you.",
+              "translation": "Ha ha! Tamam. Seninle şarkı söyleyebilirim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif partiye ne götürecek?",
+              "choices": [
+                "Bir pasta",
+                "Bir şarkı",
+                "Bir hediye"
+              ],
+              "answer": "Bir şarkı"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Do you know my flat? It's near the school.",
+              "translation": "Evimi biliyor musun? Okulun yakınında."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Yes, I know it. See you on Saturday!",
+              "translation": "Evet, biliyorum. Cumartesi görüşürüz!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz'in evi nerede?",
+              "choices": [
+                "Okulun yakınında",
+                "Parkın karşısında",
+                "İstasyonun yanında"
+              ],
+              "answer": "Okulun yakınında"
+            }
+          ]
+        },
+        {
+          "id": "s2u15l3",
+          "type": "lesson",
+          "title": "Konuşma: Kabul et ya da reddet",
+          "description": "Deniz'in davetine cevap ver ve başka bir gün öner",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "Sorry, I can't. I have a lot of homework.",
+              "translation": "Üzgünüm, gelemem. Çok ödevim var."
+            },
+            {
+              "type": "speak",
+              "text": "Tomorrow is fine. What time does it start?",
+              "translation": "Yarın olur. Kaçta başlıyor?"
+            },
+            {
+              "type": "speak",
+              "text": "Good idea. I agree!",
+              "translation": "İyi fikir. Katılıyorum!"
+            },
+            {
+              "type": "speak",
+              "text": "Can I bring Kerem, too?",
+              "translation": "Kerem'i de getirebilir miyim?"
+            },
+            {
+              "type": "speak",
+              "text": "Great! See you at the café at half past five.",
+              "translation": "Harika! Beş buçukta kafede görüşürüz."
+            },
+            {
+              "type": "select",
+              "prompt": "Deniz: 'Would you like to play chess on Sunday?' Kibarca reddetmek için en uygun cevap hangisi?",
+              "answer": "I'm sorry, I can't. I'm busy.",
+              "choices": [
+                {
+                  "text": "I'm sorry, I can't. I'm busy.",
+                  "emoji": "🙏"
+                },
+                {
+                  "text": "No. I don't want.",
+                  "emoji": "🙅"
+                },
+                {
+                  "text": "Yes, I would like.",
+                  "emoji": "♟️"
+                },
+                {
+                  "text": "I am agree.",
+                  "emoji": "🤝"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın: 'Let's go to the park after school!' Katıldığını nasıl söylersin?",
+              "answer": "I agree. Let's go!",
+              "choices": [
+                {
+                  "text": "I am agree. Let's go!",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "I agree. Let's go!",
+                  "emoji": "🌳"
+                },
+                {
+                  "text": "I agreeing. Let's go!",
+                  "emoji": "🚶"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Cumartesi bizimle yüzmeye gelmek ister misin?",
+              "lang": "tr",
+              "answers": [
+                "Would you like to come swimming with us on Saturday?",
+                "Would you like to go swimming with us on Saturday?"
+              ],
+              "tokens": [
+                "Would",
+                "you",
+                "like",
+                "to",
+                "come",
+                "swimming",
+                "with",
+                "us",
+                "on",
+                "Saturday",
+                "coming",
+                "at"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Teşekkürler ama pazar günü gelemem.",
+              "lang": "tr",
+              "answers": [
+                "Thanks, but I can't come on Sunday.",
+                "Thank you, but I can't come on Sunday.",
+                "Thanks, but I cannot come on Sunday."
+              ],
+              "tokens": [
+                "Thanks",
+                "but",
+                "I",
+                "can't",
+                "come",
+                "on",
+                "Sunday",
+                "to",
+                "coming",
+                "in"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "davet etmek",
+                  "invite"
+                ],
+                [
+                  "meşgul",
+                  "busy"
+                ],
+                [
+                  "Katılıyorum.",
+                  "I agree."
+                ],
+                [
+                  "belki",
+                  "maybe"
+                ],
+                [
+                  "Ne yazık!",
+                  "That's a pity!"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u15l4",
+          "type": "lesson",
+          "title": "Yazma: Davet mesajı",
+          "description": "Arkadaşını pikniğe çağıran kısa bir mesaj yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Pazar günü pikniğe gelmek ister misin?",
+              "lang": "tr",
+              "answers": [
+                "Would you like to come to a picnic on Sunday?",
+                "Would you like to come on a picnic on Sunday?",
+                "Would you like to come to the picnic on Sunday?"
+              ],
+              "tokens": [
+                "Would",
+                "you",
+                "like",
+                "to",
+                "come",
+                "to",
+                "a",
+                "picnic",
+                "on",
+                "Sunday",
+                "coming",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Saat on birde parkta buluşabiliriz.",
+              "lang": "tr",
+              "answers": [
+                "We can meet at the park at eleven.",
+                "We can meet in the park at eleven.",
+                "We can meet at the park at 11.",
+                "We can meet in the park at 11.",
+                "We can meet at eleven at the park.",
+                "We can meet at 11 at the park.",
+                "We can meet at eleven in the park.",
+                "We can meet at 11 in the park."
+              ],
+              "tokens": [
+                "We",
+                "can",
+                "meet",
+                "at",
+                "the",
+                "park",
+                "at",
+                "eleven",
+                "meeting",
+                "to"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Lütfen biraz meyve getir.",
+              "lang": "tr",
+              "answers": [
+                "Please bring some fruit.",
+                "Bring some fruit, please."
+              ],
+              "tokens": [
+                "Please",
+                "bring",
+                "some",
+                "fruit",
+                "any",
+                "a"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Cumaya kadar bana haber ver!",
+              "lang": "tr",
+              "answers": [
+                "Let me know by Friday!"
+              ],
+              "tokens": [
+                "Let",
+                "me",
+                "know",
+                "by",
+                "Friday",
+                "on",
+                "until"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I can't come on Saturday, ___ I'm free on Sunday.",
+              "translation": "Cumartesi gelemem ama pazar boşum.",
+              "answer": "but",
+              "choices": [
+                "but",
+                "so",
+                "because"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The picnic is ___ Sunday.",
+              "translation": "Piknik pazar günü.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "in",
+                "at"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "You can ___ your sister, too.",
+              "translation": "Kız kardeşini de getirebilirsin.",
+              "answer": "bring",
+              "choices": [
+                "bring",
+                "to bring",
+                "brings"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşına davet mesajına nasıl başlarsın?",
+              "answer": "Hi Deniz!",
+              "choices": [
+                {
+                  "text": "Hi Deniz!",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "Dear Sir,",
+                  "emoji": "🎩"
+                },
+                {
+                  "text": "To whom it may concern,",
+                  "emoji": "📄"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "piknik",
+                  "picnic"
+                ],
+                [
+                  "meyve",
+                  "fruit"
+                ],
+                [
+                  "buluşmak",
+                  "meet"
+                ],
+                [
+                  "bana haber ver",
+                  "let me know"
+                ],
+                [
+                  "getirmek",
+                  "bring"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u15t",
+          "type": "test",
+          "title": "Bölüm 2 beceri testi",
+          "description": "Bu bölümün hedeflerini ölçer",
+          "rewardXp": 25,
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "He doesn't get up early at the weekend.",
+              "answers": [
+                "He doesn't get up early at the weekend.",
+                "He does not get up early at the weekend."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Do you have lunch at half past twelve?",
+              "answers": [
+                "Do you have lunch at half past twelve?",
+                "Do you have lunch at 12:30?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Take the third street on the left.",
+              "answers": [
+                "Take the third street on the left."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "There's a bank next to the station.",
+              "answers": [
+                "There's a bank next to the station.",
+                "There is a bank next to the station."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Would you like to come for dinner on Friday?",
+              "answers": [
+                "Would you like to come for dinner on Friday?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I can't. I have a swimming lesson at six.",
+              "answers": [
+                "I can't. I have a swimming lesson at six.",
+                "I cannot. I have a swimming lesson at six.",
+                "I can't. I have a swimming lesson at 6.",
+                "I cannot. I have a swimming lesson at 6."
+              ]
+            },
+            {
+              "type": "choice",
+              "passage": "My name is Mia. I live in London with my family. On weekdays I get up at half past seven. My brother Sam takes me to school by bus. I have lunch at school at twelve. I don't like the food! On Saturdays I have a swimming lesson at ten. I never get up early on Sundays.",
+              "question": "Mia okula nasıl gider?",
+              "options": [
+                "by bus",
+                "on foot",
+                "by car",
+                "by train"
+              ],
+              "answer": 0,
+              "explanation": "\"by bus\" doğru: metinde \"My brother Sam takes me to school by bus\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "My name is Mia. I live in London with my family. On weekdays I get up at half past seven. My brother Sam takes me to school by bus. I have lunch at school at twelve. I don't like the food! On Saturdays I have a swimming lesson at ten. I never get up early on Sundays.",
+              "question": "Mia'nın yüzme dersi ne zaman?",
+              "options": [
+                "on Sundays at ten",
+                "on Saturdays at ten",
+                "on weekdays at seven",
+                "on Saturdays at twelve"
+              ],
+              "answer": 1,
+              "explanation": "\"on Saturdays at ten\" doğru: metinde \"On Saturdays I have a swimming lesson at ten\" yazıyor. Saat on ikide okulda öğle yemeği yer."
+            },
+            {
+              "type": "choice",
+              "passage": "My name is Mia. I live in London with my family. On weekdays I get up at half past seven. My brother Sam takes me to school by bus. I have lunch at school at twelve. I don't like the food! On Saturdays I have a swimming lesson at ten. I never get up early on Sundays.",
+              "question": "Mia'yı okula kim götürür?",
+              "options": [
+                "her mother",
+                "her father",
+                "Sam",
+                "her friend"
+              ],
+              "answer": 2,
+              "explanation": "\"Sam\" doğru: metinde \"My brother Sam takes me to school\" yazıyor; Sam, Mia'nın ağabeyi."
+            },
+            {
+              "type": "choice",
+              "passage": "Hi Elif! Would you like to come to the museum with me on Sunday? It opens at ten. Let's meet at eleven. Get off the bus at the post office. Then turn right and take the second left. The museum is next to a big park. Kerem can come, too! Text me. Deniz",
+              "question": "Deniz ve Elif kaçta buluşacak?",
+              "options": [
+                "at ten",
+                "at eleven",
+                "at twelve",
+                "at one"
+              ],
+              "answer": 1,
+              "explanation": "\"at eleven\" doğru: mesajda \"Let's meet at eleven\" yazıyor. Müze onda açılıyor ama buluşma on birde."
+            },
+            {
+              "type": "choice",
+              "passage": "Hi Elif! Would you like to come to the museum with me on Sunday? It opens at ten. Let's meet at eleven. Get off the bus at the post office. Then turn right and take the second left. The museum is next to a big park. Kerem can come, too! Text me. Deniz",
+              "question": "Elif otobüsten nerede inmeli?",
+              "options": [
+                "at the museum",
+                "at the park",
+                "at the school",
+                "at the post office"
+              ],
+              "answer": 3,
+              "explanation": "\"at the post office\" doğru: mesajda \"Get off the bus at the post office\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Hi Elif! Would you like to come to the museum with me on Sunday? It opens at ten. Let's meet at eleven. Get off the bus at the post office. Then turn right and take the second left. The museum is next to a big park. Kerem can come, too! Text me. Deniz",
+              "question": "Müze nerede?",
+              "options": [
+                "opposite the post office",
+                "behind the school",
+                "on the left of a café",
+                "next to a big park"
+              ],
+              "answer": 3,
+              "explanation": "\"next to a big park\" doğru: mesajda \"The museum is next to a big park\" yazıyor."
+            },
+            {
+              "type": "translate",
+              "text": "Kız kardeşim asla kahve içmez.",
+              "lang": "tr",
+              "answers": [
+                "My sister never drinks coffee."
+              ],
+              "tokens": [
+                "My",
+                "sister",
+                "never",
+                "drinks",
+                "coffee",
+                "drink",
+                "does"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Babam sekizde işe gider.",
+              "lang": "tr",
+              "answers": [
+                "My dad goes to work at eight.",
+                "My father goes to work at eight.",
+                "My dad goes to work at 8.",
+                "My father goes to work at 8."
+              ],
+              "tokens": [
+                "My",
+                "dad",
+                "goes",
+                "to",
+                "work",
+                "at",
+                "eight",
+                "go",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Düz git ve sağa dön.",
+              "lang": "tr",
+              "answers": [
+                "Go straight on and turn right.",
+                "Go straight and turn right."
+              ],
+              "tokens": [
+                "Go",
+                "straight",
+                "on",
+                "and",
+                "turn",
+                "right",
+                "left",
+                "you"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Eczane kütüphanenin yanında.",
+              "lang": "tr",
+              "answers": [
+                "The pharmacy is next to the library.",
+                "The pharmacy's next to the library."
+              ],
+              "tokens": [
+                "The",
+                "pharmacy",
+                "is",
+                "next",
+                "to",
+                "the",
+                "library",
+                "of",
+                "at"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I'd love to, but I can't come on Friday.",
+              "lang": "en",
+              "answers": [
+                "Çok isterim ama cuma günü gelemem",
+                "Çok isterim ama cuma gelemem",
+                "Çok isterdim ama cuma günü gelemem"
+              ],
+              "tokens": [
+                "Çok",
+                "isterim",
+                "ama",
+                "cuma",
+                "günü",
+                "gelemem",
+                "gelirim",
+                "ve"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "My brother ___ to school by bus.",
+              "translation": "Erkek kardeşim okula otobüsle gider.",
+              "answer": "goes",
+              "choices": [
+                "goes",
+                "go",
+                "is go"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Kerem: 'Let's have pizza tonight!' En uygun cevap hangisi?",
+              "answer": "Good idea, I agree!",
+              "choices": [
+                {
+                  "text": "Good idea, I am agree!",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "Good idea, I agree!",
+                  "emoji": "🍕"
+                },
+                {
+                  "text": "Good idea, I agreeing!",
+                  "emoji": "😀"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Would you like ___ dinner with us?",
+              "translation": "Bizimle akşam yemeği yemek ister misin?",
+              "answer": "to have",
+              "choices": [
+                "to have",
+                "have",
+                "having"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2u15c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}

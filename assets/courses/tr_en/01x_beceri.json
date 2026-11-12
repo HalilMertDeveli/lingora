@@ -1,0 +1,2546 @@
+{
+  "extends": "s1",
+  "units": [
+    {
+      "id": "s1u13",
+      "title": "Adım, numaram",
+      "description": "Adını hecele, telefon ve e-posta ver, form doldur",
+      "color": "0xFF6C4CF1",
+      "theme": "spor",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Adını ve soyadını harf harf hecelersin.\n- Telefon numarası ve e-posta adresi söyler, duyunca anlarsın.\n- Basit bir kayıt formunu okur ve doldurursun.\n- Kendini iki üç cümleyle tanıtırsın.\n\n## Strateji\n\n- Dinlerken sayının sonuna dikkat et: **thirteen** sonda vurgulu ve uzun, **thirty** başta vurgulu ve kısa.\n- İngilizce harf adları Türkçeden farklı: **A** \"ey\", **E** \"ii\", **I** \"ay\" diye okunur.\n- Formu okurken önce başlıklara bak: First name, Surname, Phone, Email.\n- Emin değilsen sor: \"Can you repeat that?\" ya da \"Is it E or I?\"\n\n## Model metin\n\nMy name is Elif Erdem. I'm a student in İstanbul. My phone number is 0533 220 4040. I'd like to swim on Saturdays.\n\n> Formdaki \"About me\" kutusuna kısa ve tam cümleler yaz. Her cümle tek bir bilgi versin.\n\n## Türklerin sık hatası\n\n- Meslekten önce **a** düşer: ❌ I'm student. ✅ I'm a student.\n- İki kalıp karışır: ❌ I'm name is Elif. ✅ My name is Elif. / ✅ I'm Elif.",
+      "nodes": [
+        {
+          "id": "s1u13l1",
+          "type": "lesson",
+          "title": "Dinleme: Harfler ve sayılar",
+          "description": "Harf adlarını, telefon numarasını ve thirteen/thirty farkını duy",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "Can I have your phone number, please?",
+              "answers": [
+                "Can I have your phone number, please?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It's thirteen, not thirty.",
+              "answers": [
+                "It's thirteen, not thirty.",
+                "It is thirteen, not thirty.",
+                "It's 13, not 30.",
+                "It is 13, not 30."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Is it A or E?",
+              "answers": [
+                "Is it A or E?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm ___ student from İstanbul.",
+              "translation": "İstanbul'dan bir öğrenciyim.",
+              "answer": "a",
+              "choices": [
+                "a",
+                "an",
+                "am"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'm a student and I'm nineteen.",
+              "answers": [
+                "I'm a student and I'm nineteen.",
+                "I am a student and I am nineteen.",
+                "I'm a student and I'm 19.",
+                "I am a student and I am 19."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "How do you spell your surname?",
+              "answers": [
+                "How do you spell your surname?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "My house number is forty, not fourteen.",
+              "answers": [
+                "My house number is forty, not fourteen.",
+                "My house number is 40, not 14."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Can I have ___ email address?",
+              "translation": "E-posta adresini alabilir miyim?",
+              "answer": "your",
+              "choices": [
+                "your",
+                "you",
+                "you're"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Hi, I'm Elif. I'm a student here.",
+              "translation": "Merhaba, ben Elif. Burada öğrenciyim."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "Nasıl yazılıyor?",
+                  "How do you spell it?"
+                ],
+                [
+                  "telefon numarası",
+                  "phone number"
+                ],
+                [
+                  "e-posta adresi",
+                  "email address"
+                ],
+                [
+                  "soyadı",
+                  "surname"
+                ],
+                [
+                  "Tekrar eder misin?",
+                  "Can you repeat that?"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u13l2",
+          "type": "lesson",
+          "title": "Okuma: Kayıt formu",
+          "description": "Kerem'in futbol kampı formunu oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "SUMMER FOOTBALL CAMP: REGISTRATION FORM\nFirst name: Kerem\nSurname: Erdem\nAge: 10\nPhone: 0533 220 4040 (Elif Erdem, sister)\nEmail: elif.erdem@mail.com\nDays: Monday, Wednesday and Friday\nTime: 9 am to 12 pm\nAbout me: I am a student at Park School. I play football every Sunday. I have football boots, but I don't have a ball. My English teacher is Ayla. She is very nice.",
+              "question": "Formda hangi telefon numarası var?",
+              "options": [
+                "0532 413 3013",
+                "0533 220 4040",
+                "0533 220 4014",
+                "0532 220 4040"
+              ],
+              "answer": 1,
+              "explanation": "\"0533 220 4040\" doğru: formda 'Phone: 0533 220 4040' yazıyor. Bu numara Elif'in."
+            },
+            {
+              "type": "choice",
+              "passage": "SUMMER FOOTBALL CAMP: REGISTRATION FORM\nFirst name: Kerem\nSurname: Erdem\nAge: 10\nPhone: 0533 220 4040 (Elif Erdem, sister)\nEmail: elif.erdem@mail.com\nDays: Monday, Wednesday and Friday\nTime: 9 am to 12 pm\nAbout me: I am a student at Park School. I play football every Sunday. I have football boots, but I don't have a ball. My English teacher is Ayla. She is very nice.",
+              "question": "Kerem'in soyadı nasıl yazılıyor?",
+              "options": [
+                "Erdem",
+                "Erdim",
+                "Ardem",
+                "Irdem"
+              ],
+              "answer": 0,
+              "explanation": "\"Erdem\" doğru: formda 'Surname: Erdem' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "SUMMER FOOTBALL CAMP: REGISTRATION FORM\nFirst name: Kerem\nSurname: Erdem\nAge: 10\nPhone: 0533 220 4040 (Elif Erdem, sister)\nEmail: elif.erdem@mail.com\nDays: Monday, Wednesday and Friday\nTime: 9 am to 12 pm\nAbout me: I am a student at Park School. I play football every Sunday. I have football boots, but I don't have a ball. My English teacher is Ayla. She is very nice.",
+              "question": "Kerem kampa hangi günler gidiyor?",
+              "options": [
+                "Pazartesi ve pazar",
+                "Sadece cuma",
+                "Pazartesi, çarşamba ve cuma",
+                "Her gün"
+              ],
+              "answer": 2,
+              "explanation": "\"Pazartesi, çarşamba ve cuma\" doğru: formda 'Days: Monday, Wednesday and Friday' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "SUMMER FOOTBALL CAMP: REGISTRATION FORM\nFirst name: Kerem\nSurname: Erdem\nAge: 10\nPhone: 0533 220 4040 (Elif Erdem, sister)\nEmail: elif.erdem@mail.com\nDays: Monday, Wednesday and Friday\nTime: 9 am to 12 pm\nAbout me: I am a student at Park School. I play football every Sunday. I have football boots, but I don't have a ball. My English teacher is Ayla. She is very nice.",
+              "question": "What doesn't Kerem have?",
+              "options": [
+                "Football boots",
+                "A teacher",
+                "A school",
+                "A ball"
+              ],
+              "answer": 3,
+              "explanation": "\"A ball\" doğru: Kerem 'I don't have a ball' yazıyor. Kramponu var."
+            },
+            {
+              "type": "choice",
+              "passage": "SUMMER FOOTBALL CAMP: REGISTRATION FORM\nFirst name: Kerem\nSurname: Erdem\nAge: 10\nPhone: 0533 220 4040 (Elif Erdem, sister)\nEmail: elif.erdem@mail.com\nDays: Monday, Wednesday and Friday\nTime: 9 am to 12 pm\nAbout me: I am a student at Park School. I play football every Sunday. I have football boots, but I don't have a ball. My English teacher is Ayla. She is very nice.",
+              "question": "Ayla kim?",
+              "options": [
+                "Kerem'in ablası",
+                "Kerem'in İngilizce öğretmeni",
+                "Kampın antrenörü",
+                "Kerem'in annesi"
+              ],
+              "answer": 1,
+              "explanation": "\"Kerem'in İngilizce öğretmeni\" doğru: Kerem 'My English teacher is Ayla' yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "ad",
+                  "first name"
+                ],
+                [
+                  "yaş",
+                  "age"
+                ],
+                [
+                  "günler",
+                  "days"
+                ],
+                [
+                  "krampon",
+                  "football boots"
+                ],
+                [
+                  "kayıt",
+                  "registration"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Kerem is ___ student at Park School.",
+              "translation": "Kerem, Park Okulu'nda bir öğrenci.",
+              "answer": "a",
+              "choices": [
+                "a",
+                "an",
+                "is"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Formda 'Surname' satırına ne yazılır?",
+              "answer": "Erdem",
+              "choices": [
+                {
+                  "text": "Erdem",
+                  "emoji": "🪪"
+                },
+                {
+                  "text": "Kerem",
+                  "emoji": "👦"
+                },
+                {
+                  "text": "10",
+                  "emoji": "🔟"
+                },
+                {
+                  "text": "Monday",
+                  "emoji": "📅"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u13s",
+          "type": "story",
+          "title": "Kerem'in formu",
+          "description": "Sam, Kerem'e İngilizce formu doldurmakta yardım ediyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Sam, can you help me? This form is in English.",
+              "translation": "Sam, bana yardım eder misin? Bu form İngilizce."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Sure! What's your first name?",
+              "translation": "Tabii! Adın ne?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "You know my name! It's Kerem.",
+              "translation": "Adımı biliyorsun! Kerem."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Ha ha, yes. And how do you spell your surname?",
+              "translation": "Ha ha, evet. Peki soyadın nasıl yazılıyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "E-R-D-E-M.",
+              "translation": "E-R-D-E-M."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "E-R-D-I-M?",
+              "translation": "E-R-D-I-M mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "No, it's E, not I. Erdem.",
+              "translation": "Hayır, I değil, E. Erdem."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem'in soyadı nasıl yazılıyor?",
+              "choices": [
+                "Erdem",
+                "Erdim",
+                "Ardem"
+              ],
+              "answer": "Erdem"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Sorry! How old are you? Thirteen?",
+              "translation": "Pardon! Kaç yaşındasın? On üç mü?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "No, I'm ten!",
+              "translation": "Hayır, on yaşındayım!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem kaç yaşında?",
+              "choices": [
+                "On üç",
+                "On",
+                "Otuz"
+              ],
+              "answer": "On"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Ten, OK. What's your phone number?",
+              "translation": "On, tamam. Telefon numaran ne?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "I don't have a phone. Elif, what's your number?",
+              "translation": "Benim telefonum yok. Elif, senin numaran ne?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "It's 0533 220 4040.",
+              "translation": "0533 220 4040."
+            },
+            {
+              "kind": "question",
+              "prompt": "Formda kimin telefon numarası var?",
+              "choices": [
+                "Kerem'in",
+                "Sam'in",
+                "Elif'in"
+              ],
+              "answer": "Elif'in"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Thanks. And this is my email. Write to me in London!",
+              "translation": "Teşekkürler. Bu da benim e-postam. Bana Londra'ya yaz!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "It's sam.baker@mail.com.",
+              "translation": "sam.baker@mail.com."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Baker? Is that B-A-K-E-R?",
+              "translation": "Baker mı? B-A-K-E-R mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Yes! Very good, Kerem.",
+              "translation": "Evet! Çok iyi, Kerem."
+            },
+            {
+              "kind": "question",
+              "prompt": "Sam'in soyadı ne?",
+              "choices": [
+                "Becker",
+                "Barker",
+                "Baker"
+              ],
+              "answer": "Baker"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Kerem, write to him every week. In English!",
+              "translation": "Kerem, ona her hafta yaz. İngilizce!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "OK! I will.",
+              "translation": "Tamam! Yazacağım."
+            },
+            {
+              "kind": "question",
+              "prompt": "'Write to him' cümlesinde 'him' kim?",
+              "choices": [
+                "Sam",
+                "Kerem",
+                "Elif'in öğretmeni"
+              ],
+              "answer": "Sam"
+            }
+          ]
+        },
+        {
+          "id": "s1u13l3",
+          "type": "lesson",
+          "title": "Konuşma: Kendini tanıt",
+          "description": "Spor kulübünün masasında kendini tanıtma turu",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "Hello! I'd like to join the club, please.",
+              "translation": "Merhaba! Kulübe katılmak istiyorum, lütfen."
+            },
+            {
+              "type": "speak",
+              "text": "My name is Elif Erdem.",
+              "translation": "Benim adım Elif Erdem."
+            },
+            {
+              "type": "speak",
+              "text": "Yes, I'm a student here.",
+              "translation": "Evet, burada öğrenciyim."
+            },
+            {
+              "type": "speak",
+              "text": "My phone number is 0533 220 4040.",
+              "translation": "Telefon numaram 0533 220 4040."
+            },
+            {
+              "type": "speak",
+              "text": "Thank you! See you on Saturday.",
+              "translation": "Teşekkürler! Cumartesi görüşürüz."
+            },
+            {
+              "type": "select",
+              "prompt": "Görevli: 'How do you spell your surname?' En uygun cevap hangisi?",
+              "answer": "E-R-D-E-M.",
+              "choices": [
+                {
+                  "text": "E-R-D-E-M.",
+                  "emoji": "🔤"
+                },
+                {
+                  "text": "I'm Erdem.",
+                  "emoji": "🙋"
+                },
+                {
+                  "text": "Yes, I do.",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "It's Saturday.",
+                  "emoji": "📅"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Görevli: 'Are you a student?' En uygun cevap hangisi?",
+              "answer": "Yes, I am.",
+              "choices": [
+                {
+                  "text": "Yes, I'm student.",
+                  "emoji": "🎒"
+                },
+                {
+                  "text": "Yes, I am.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Yes, I'm a.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "Yes, I do.",
+                  "emoji": "👍"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Adım Elif ve bir öğrenciyim.",
+              "lang": "tr",
+              "answers": [
+                "My name is Elif and I'm a student.",
+                "My name's Elif and I'm a student.",
+                "My name is Elif and I am a student.",
+                "My name's Elif and I am a student.",
+                "I'm Elif and I'm a student.",
+                "I am Elif and I am a student."
+              ],
+              "tokens": [
+                "My",
+                "name",
+                "is",
+                "Elif",
+                "and",
+                "I'm",
+                "a",
+                "student",
+                "am",
+                "an"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Numaranı tekrar eder misin?",
+              "lang": "tr",
+              "answers": [
+                "Can you repeat your number?",
+                "Can you repeat your number, please?",
+                "Could you repeat your number?"
+              ],
+              "tokens": [
+                "Can",
+                "you",
+                "repeat",
+                "your",
+                "number",
+                "you're",
+                "do"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "katılmak",
+                  "join"
+                ],
+                [
+                  "kulüp",
+                  "club"
+                ],
+                [
+                  "üniversite",
+                  "university"
+                ],
+                [
+                  "tekrar etmek",
+                  "repeat"
+                ],
+                [
+                  "görüşürüz",
+                  "see you"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u13l4",
+          "type": "lesson",
+          "title": "Yazma: Üyelik formu",
+          "description": "Kulüp formuna kendini anlatan dört cümle yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Benim adım Elif Erdem.",
+              "lang": "tr",
+              "answers": [
+                "My name is Elif Erdem.",
+                "My name's Elif Erdem.",
+                "I'm Elif Erdem."
+              ],
+              "tokens": [
+                "My",
+                "name",
+                "is",
+                "Elif",
+                "Erdem",
+                "am",
+                "I'm"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İstanbul'da bir öğrenciyim.",
+              "lang": "tr",
+              "answers": [
+                "I'm a student in İstanbul.",
+                "I am a student in İstanbul."
+              ],
+              "tokens": [
+                "I'm",
+                "a",
+                "student",
+                "in",
+                "İstanbul",
+                "an",
+                "at"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Telefon numaram 0533 220 4040.",
+              "lang": "tr",
+              "answers": [
+                "My phone number is 0533 220 4040."
+              ],
+              "tokens": [
+                "My",
+                "phone",
+                "number",
+                "is",
+                "0533",
+                "220",
+                "4040",
+                "am",
+                "your"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Cumartesi günleri yüzmek istiyorum.",
+              "lang": "tr",
+              "answers": [
+                "I'd like to swim on Saturdays.",
+                "I would like to swim on Saturdays.",
+                "I want to swim on Saturdays."
+              ],
+              "tokens": [
+                "I'd",
+                "like",
+                "to",
+                "swim",
+                "on",
+                "Saturdays",
+                "in",
+                "at"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "My surname ___ Erdem.",
+              "translation": "Soyadım Erdem.",
+              "answer": "is",
+              "choices": [
+                "is",
+                "am",
+                "are"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm ___ university student.",
+              "translation": "Ben bir üniversite öğrencisiyim.",
+              "answer": "a",
+              "choices": [
+                "a",
+                "an",
+                "am"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm free ___ Saturday mornings.",
+              "translation": "Cumartesi sabahları boşum.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "in",
+                "at"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Kulübe kısa bir e-posta yazıyorsun. En uygun selamlama hangisi?",
+              "answer": "Hello,",
+              "choices": [
+                {
+                  "text": "Hello,",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "Goodbye,",
+                  "emoji": "🚪"
+                },
+                {
+                  "text": "Hey, mate!",
+                  "emoji": "🤙"
+                },
+                {
+                  "text": "Thank you,",
+                  "emoji": "🙏"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kayıt formu",
+                  "registration form"
+                ],
+                [
+                  "imza",
+                  "signature"
+                ],
+                [
+                  "tarih",
+                  "date"
+                ],
+                [
+                  "adres",
+                  "address"
+                ],
+                [
+                  "yüzmek",
+                  "swim"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u13t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s1u13c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s1u14",
+      "title": "Kafede ve markette",
+      "description": "Fiyatı ve miktarı anla, menüden sipariş ver",
+      "color": "0xFFF2994A",
+      "theme": "yemek",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Fiyatları duyunca anlarsın (£3.50, fifteen/fifty).\n- Menüyü ve fiyat etiketlerini okursun.\n- Kafede baştan sona sipariş verirsin.\n- Kısa bir alışveriş listesi yazarsın.\n\n## Strateji\n\n- Fiyat iki parça okunur: £3.50 = \"three pounds fifty\". Önce pound, sonra pence gelir.\n- **fifteen** ile **fifty** farkı sondadır: fif-TEEN uzun ve vurgulu, FIF-ty kısa.\n- Menüde önce başlığa bak (Drinks, Food), sonra fiyat sütununu tara.\n- Sipariş verirken hep aynı kalıbı kullan: \"Can I have..., please?\"\n\n## Model metin\n\nKerem, please buy some bread at the market. Buy six apples and two bottles of water. Don't buy cheese, we have some. Here is fifty lira. Thank you!\n\n> Alışveriş notunda emir kipi kibarlıkla birlikte kullanılır: please buy...\n\n## Türklerin sık hatası\n\n- Sayıdan sonra çoğul eki unutulur: ❌ two coffee ✅ two coffees\n- Sesli harften önce **an** gelir, sayılamayana **some**: ❌ a apple, a milk ✅ an apple, some milk",
+      "nodes": [
+        {
+          "id": "s1u14l1",
+          "type": "lesson",
+          "title": "Dinleme: Fiyatlar",
+          "description": "Fiyatları duy: £3.50, fifteen ve fifty",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "It's three pounds fifty.",
+              "answers": [
+                "It's three pounds fifty.",
+                "It is three pounds fifty.",
+                "It's £3.50.",
+                "It is £3.50."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Can I have two coffees, please?",
+              "answers": [
+                "Can I have two coffees, please?",
+                "Can I have 2 coffees, please?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It's fifteen, not fifty.",
+              "answers": [
+                "It's fifteen, not fifty.",
+                "It is fifteen, not fifty.",
+                "It's 15, not 50.",
+                "It is 15, not 50."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'd like ___ milk in my coffee.",
+              "translation": "Kahveme biraz süt istiyorum.",
+              "answer": "some",
+              "choices": [
+                "some",
+                "a",
+                "an"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'd like a cup of tea and an apple.",
+              "answers": [
+                "I'd like a cup of tea and an apple.",
+                "I would like a cup of tea and an apple."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Do you want some milk?",
+              "answers": [
+                "Do you want some milk?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "How much are the bananas?",
+              "answers": [
+                "How much are the bananas?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Can I have a glass ___ water?",
+              "translation": "Bir bardak su alabilir miyim?",
+              "answer": "of",
+              "choices": [
+                "of",
+                "for",
+                "to"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Two coffees and an orange juice, please.",
+              "translation": "İki kahve ve bir portakal suyu, lütfen."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "bir fincan çay",
+                  "a cup of tea"
+                ],
+                [
+                  "bir şişe su",
+                  "a bottle of water"
+                ],
+                [
+                  "bir dilim kek",
+                  "a piece of cake"
+                ],
+                [
+                  "Ne kadar?",
+                  "How much is it?"
+                ],
+                [
+                  "Başka bir şey?",
+                  "Anything else?"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u14l2",
+          "type": "lesson",
+          "title": "Okuma: Menü ve fiyatlar",
+          "description": "Londra'daki bir kafenin menüsünü oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "THE GREEN CUP CAFÉ, LONDON\nDrinks: tea £2.00, coffee £2.50, hot chocolate £3.00, orange juice £2.80\nFood: cheese sandwich £4.50, egg sandwich £4.00, chocolate cake £3.50, apple £0.80\nToday only: two coffees for £4.00!\nWe open at 8 am and close at 6 pm. We don't have fish or meat. On Sunday, children under ten eat free. There is a small garden next to the café.",
+              "question": "How much is a chocolate cake?",
+              "options": [
+                "£3.50",
+                "£3.00",
+                "£2.50",
+                "£4.50"
+              ],
+              "answer": 0,
+              "explanation": "\"£3.50\" doğru: menüde 'chocolate cake £3.50' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "THE GREEN CUP CAFÉ, LONDON\nDrinks: tea £2.00, coffee £2.50, hot chocolate £3.00, orange juice £2.80\nFood: cheese sandwich £4.50, egg sandwich £4.00, chocolate cake £3.50, apple £0.80\nToday only: two coffees for £4.00!\nWe open at 8 am and close at 6 pm. We don't have fish or meat. On Sunday, children under ten eat free. There is a small garden next to the café.",
+              "question": "Bugün iki kahve kaç para?",
+              "options": [
+                "£5.00",
+                "£2.50",
+                "£2.00",
+                "£4.00"
+              ],
+              "answer": 3,
+              "explanation": "\"£4.00\" doğru: menüde 'Today only: two coffees for £4.00' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "THE GREEN CUP CAFÉ, LONDON\nDrinks: tea £2.00, coffee £2.50, hot chocolate £3.00, orange juice £2.80\nFood: cheese sandwich £4.50, egg sandwich £4.00, chocolate cake £3.50, apple £0.80\nToday only: two coffees for £4.00!\nWe open at 8 am and close at 6 pm. We don't have fish or meat. On Sunday, children under ten eat free. There is a small garden next to the café.",
+              "question": "Kafe saat kaçta kapanıyor?",
+              "options": [
+                "8 am",
+                "8 pm",
+                "6 pm",
+                "6 am"
+              ],
+              "answer": 2,
+              "explanation": "\"6 pm\" doğru: metinde 'close at 6 pm' yazıyor, yani akşam altıda."
+            },
+            {
+              "type": "choice",
+              "passage": "THE GREEN CUP CAFÉ, LONDON\nDrinks: tea £2.00, coffee £2.50, hot chocolate £3.00, orange juice £2.80\nFood: cheese sandwich £4.50, egg sandwich £4.00, chocolate cake £3.50, apple £0.80\nToday only: two coffees for £4.00!\nWe open at 8 am and close at 6 pm. We don't have fish or meat. On Sunday, children under ten eat free. There is a small garden next to the café.",
+              "question": "Hangisi menüde yok?",
+              "options": [
+                "Elma",
+                "Balık",
+                "Portakal suyu",
+                "Sıcak çikolata"
+              ],
+              "answer": 1,
+              "explanation": "\"Balık\" doğru: metinde 'We don't have fish or meat' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "THE GREEN CUP CAFÉ, LONDON\nDrinks: tea £2.00, coffee £2.50, hot chocolate £3.00, orange juice £2.80\nFood: cheese sandwich £4.50, egg sandwich £4.00, chocolate cake £3.50, apple £0.80\nToday only: two coffees for £4.00!\nWe open at 8 am and close at 6 pm. We don't have fish or meat. On Sunday, children under ten eat free. There is a small garden next to the café.",
+              "question": "Who eats free on Sunday?",
+              "options": [
+                "All customers",
+                "Students",
+                "People with coffee",
+                "Children under ten"
+              ],
+              "answer": 3,
+              "explanation": "\"Children under ten\" doğru: metinde 'On Sunday, children under ten eat free' yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "içecekler",
+                  "drinks"
+                ],
+                [
+                  "sıcak çikolata",
+                  "hot chocolate"
+                ],
+                [
+                  "portakal suyu",
+                  "orange juice"
+                ],
+                [
+                  "bedava",
+                  "free"
+                ],
+                [
+                  "et",
+                  "meat"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Two ___, please.",
+              "translation": "İki kahve, lütfen.",
+              "answer": "coffees",
+              "choices": [
+                "coffees",
+                "coffee",
+                "a coffee"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Menüde 'egg sandwich £4.00' yazıyor. Fiyat ne?",
+              "answer": "four pounds",
+              "choices": [
+                {
+                  "text": "four pounds",
+                  "emoji": "💷"
+                },
+                {
+                  "text": "forty pounds",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "fourteen pounds",
+                  "emoji": "💵"
+                },
+                {
+                  "text": "four pence",
+                  "emoji": "🪙"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u14s",
+          "type": "story",
+          "title": "Piknik alışverişi",
+          "description": "Elif, Kerem ve Sam önce kafeye, sonra markete gidiyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Garson",
+              "avatar": "🧑‍🍳",
+              "text": "Hello! What would you like?",
+              "translation": "Merhaba! Ne alırsınız?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "A tea and an orange juice, please.",
+              "translation": "Bir çay ve bir portakal suyu, lütfen."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "And a chocolate cake for me!",
+              "translation": "Bir de benim için çikolatalı kek!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Kerem loves cake. He has cake every day!",
+              "translation": "Kerem keki çok sever. Her gün kek yer!"
+            },
+            {
+              "kind": "question",
+              "prompt": "'He has cake every day' cümlesinde 'he' kim?",
+              "choices": [
+                "Sam",
+                "Kerem",
+                "Garson"
+              ],
+              "answer": "Kerem"
+            },
+            {
+              "kind": "line",
+              "speaker": "Garson",
+              "avatar": "🧑‍🍳",
+              "text": "Anything else?",
+              "translation": "Başka bir şey?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "A coffee, please. How much is that?",
+              "translation": "Bir kahve, lütfen. Ne kadar tutuyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Garson",
+              "avatar": "🧑‍🍳",
+              "text": "That's fifty lira, please.",
+              "translation": "Elli lira, lütfen."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Fifteen? That's cheap!",
+              "translation": "On beş mi? Bu ucuz!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Garson",
+              "avatar": "🧑‍🍳",
+              "text": "No, fifty. Five, zero.",
+              "translation": "Hayır, elli. Beş, sıfır."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kafede hesap ne kadar?",
+              "choices": [
+                "On beş lira",
+                "Beş lira",
+                "Elli lira"
+              ],
+              "answer": "Elli lira"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Now let's go to the market. We need food for our picnic.",
+              "translation": "Şimdi markete gidelim. Pikniğimiz için yiyecek lazım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Satıcı",
+              "avatar": "🧔",
+              "text": "Good afternoon! These apples are very nice.",
+              "translation": "İyi günler! Bu elmalar çok güzel."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Can I have six apples, please?",
+              "translation": "Altı elma alabilir miyim, lütfen?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "And some bread and some cheese!",
+              "translation": "Bir de biraz ekmek ve biraz peynir!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "And two bottles of water, please.",
+              "translation": "Bir de iki şişe su, lütfen."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif kaç elma istiyor?",
+              "choices": [
+                "Altı",
+                "Yedi",
+                "On altı"
+              ],
+              "answer": "Altı"
+            },
+            {
+              "kind": "line",
+              "speaker": "Satıcı",
+              "avatar": "🧔",
+              "text": "That's seventy lira.",
+              "translation": "Yetmiş lira ediyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Here you are. I love picnics!",
+              "translation": "Buyurun. Piknikleri çok severim!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Me too. Let's go to the park!",
+              "translation": "Ben de. Hadi parka gidelim!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Markette ne kadar ödüyorlar?",
+              "choices": [
+                "Yedi lira",
+                "Yetmiş lira",
+                "On yedi lira"
+              ],
+              "answer": "Yetmiş lira"
+            },
+            {
+              "kind": "question",
+              "prompt": "Neden markete gidiyorlar?",
+              "choices": [
+                "Kahve içmeye",
+                "Sam'e hediye almaya",
+                "Piknik için yiyecek almaya"
+              ],
+              "answer": "Piknik için yiyecek almaya"
+            }
+          ]
+        },
+        {
+          "id": "s1u14l3",
+          "type": "lesson",
+          "title": "Konuşma: Sipariş ver",
+          "description": "Garsonla baştan sona bir sipariş turu",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "Hi! Can I have an egg sandwich, please?",
+              "translation": "Merhaba! Bir yumurtalı sandviç alabilir miyim, lütfen?"
+            },
+            {
+              "type": "speak",
+              "text": "And two teas, please.",
+              "translation": "Bir de iki çay, lütfen."
+            },
+            {
+              "type": "speak",
+              "text": "Yes, some milk, please.",
+              "translation": "Evet, biraz süt, lütfen."
+            },
+            {
+              "type": "speak",
+              "text": "No, thank you. How much is it?",
+              "translation": "Hayır, teşekkürler. Ne kadar?"
+            },
+            {
+              "type": "speak",
+              "text": "Here you are. Thank you!",
+              "translation": "Buyurun. Teşekkür ederim!"
+            },
+            {
+              "type": "select",
+              "prompt": "Garson: 'Is that all?' En uygun cevap hangisi?",
+              "answer": "Yes, that's all, thanks.",
+              "choices": [
+                {
+                  "text": "Yes, that's all, thanks.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Yes, I'm all.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "It's four pounds.",
+                  "emoji": "💷"
+                },
+                {
+                  "text": "Two coffee.",
+                  "emoji": "☕"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Kasiyer: 'That's six pounds fifty.' En uygun cevap hangisi?",
+              "answer": "Here you are.",
+              "choices": [
+                {
+                  "text": "You're welcome.",
+                  "emoji": "😊"
+                },
+                {
+                  "text": "Here you are.",
+                  "emoji": "💷"
+                },
+                {
+                  "text": "Nice to meet you.",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "I'm fine, thanks.",
+                  "emoji": "👍"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İki kahve ve bir su, lütfen.",
+              "lang": "tr",
+              "answers": [
+                "Two coffees and a water, please.",
+                "Two coffees and one water, please.",
+                "Two coffees and a bottle of water, please."
+              ],
+              "tokens": [
+                "Two",
+                "coffees",
+                "and",
+                "a",
+                "water",
+                "please",
+                "coffee",
+                "an"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Biraz şeker alabilir miyim?",
+              "lang": "tr",
+              "answers": [
+                "Can I have some sugar?",
+                "Can I have some sugar, please?",
+                "Could I have some sugar?"
+              ],
+              "tokens": [
+                "Can",
+                "I",
+                "have",
+                "some",
+                "sugar",
+                "a",
+                "an"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "sandviç",
+                  "sandwich"
+                ],
+                [
+                  "şeker",
+                  "sugar"
+                ],
+                [
+                  "süt",
+                  "milk"
+                ],
+                [
+                  "yumurta",
+                  "egg"
+                ],
+                [
+                  "hesap",
+                  "bill"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u14l4",
+          "type": "lesson",
+          "title": "Yazma: Alışveriş listesi",
+          "description": "Kerem'e markete gitmeden önce kısa bir not yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Kerem, lütfen marketten biraz ekmek al.",
+              "lang": "tr",
+              "answers": [
+                "Kerem, please buy some bread at the market.",
+                "Kerem, please buy some bread from the market.",
+                "Kerem, buy some bread at the market, please."
+              ],
+              "tokens": [
+                "Kerem",
+                "please",
+                "buy",
+                "some",
+                "bread",
+                "at",
+                "the",
+                "market",
+                "a",
+                "an"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Altı elma ve iki şişe su al.",
+              "lang": "tr",
+              "answers": [
+                "Buy six apples and two bottles of water.",
+                "Buy 6 apples and 2 bottles of water."
+              ],
+              "tokens": [
+                "Buy",
+                "six",
+                "apples",
+                "and",
+                "two",
+                "bottles",
+                "of",
+                "water",
+                "apple",
+                "bottle"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Peynir alma, biraz var.",
+              "lang": "tr",
+              "answers": [
+                "Don't buy cheese, we have some.",
+                "Don't buy any cheese, we have some.",
+                "Do not buy cheese, we have some."
+              ],
+              "tokens": [
+                "Don't",
+                "buy",
+                "cheese",
+                "we",
+                "have",
+                "some",
+                "any",
+                "a"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İşte elli lira. Teşekkürler!",
+              "lang": "tr",
+              "answers": [
+                "Here is fifty lira. Thank you!",
+                "Here's fifty lira. Thanks!",
+                "Here is 50 lira. Thank you!",
+                "Here is fifty lira. Thanks!",
+                "Here's fifty lira. Thank you!"
+              ],
+              "tokens": [
+                "Here",
+                "is",
+                "fifty",
+                "lira",
+                "Thank",
+                "you",
+                "fifteen",
+                "are"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We need ___ eggs for the cake.",
+              "translation": "Kek için biraz yumurta lazım.",
+              "answer": "some",
+              "choices": [
+                "some",
+                "a",
+                "an"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Please buy ___ apple for Kerem.",
+              "translation": "Lütfen Kerem için bir elma al.",
+              "answer": "an",
+              "choices": [
+                "an",
+                "a",
+                "two"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Buy three ___ of water.",
+              "translation": "Üç şişe su al.",
+              "answer": "bottles",
+              "choices": [
+                "bottles",
+                "bottle",
+                "a bottle"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Kardeşine kısa bir not yazıyorsun. En uygun kapanış hangisi?",
+              "answer": "See you later, Elif",
+              "choices": [
+                {
+                  "text": "See you later, Elif",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "Dear Sir or Madam,",
+                  "emoji": "🎩"
+                },
+                {
+                  "text": "Yours faithfully,",
+                  "emoji": "✒️"
+                },
+                {
+                  "text": "To whom it may concern,",
+                  "emoji": "📜"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "alışveriş listesi",
+                  "shopping list"
+                ],
+                [
+                  "şişe",
+                  "bottle"
+                ],
+                [
+                  "paket",
+                  "packet"
+                ],
+                [
+                  "buzdolabı",
+                  "fridge"
+                ],
+                [
+                  "lazım, gerek",
+                  "need"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u14t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s1u14c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s1u15",
+      "title": "Kısa mesajlar",
+      "description": "Kısa mesaj oku ve yaz, saat ve yer belirle",
+      "color": "0xFF14A098",
+      "theme": "yazisma",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Arkadaşlarının kısa mesajlarını okursun.\n- Sesli mesajda saati ve yeri anlarsın.\n- Telefonda buluşma saati ve yeri ayarlarsın.\n- 3–4 cümlelik kısa bir mesaj yazarsın.\n\n## Strateji\n\n- Sesli mesajda üç şeyi yakala: gün, saat, yer. Gerisi önemli değil.\n- Mesajı okurken soru işaretlerine bak: soru soranın cevabı genelde bir sonraki satırda.\n- Buluşma ayarlarken kalıp kullan: \"Are you free on...?\", \"Let's meet at...\"\n- Kısa mesajda selamla başla, tek bir soruyla bitir.\n\n## Model metin\n\nHi Sam! Are you free on Sunday? Let's have a picnic in the park at two. Kerem wants to come, too. What time can you come?\n\n> Arkadaşa mesajda \"Dear\" gerekmez; \"Hi\" yeterli.\n\n## Türklerin sık hatası\n\n- Edatlar karışır: ❌ in 5, in Monday ✅ at 5, on Monday, in the park\n- Soruda yardımcı fiil unutulur: ❌ Where we meet? ✅ Where do we meet?\n\n## Beceri testi\n\n- Dinleme (6 soru): telefon numarası dikte, fiyat, saat ve yer anlama — s1u13, s1u14, s1u15\n- Okuma (6 soru): üyelik formu ve arkadaş mesajları — s1u13, s1u14, s1u15\n- Yazma (5 soru): kendini tanıtma, sipariş, buluşma cümleleri — s1u13, s1u14, s1u15 ve u1, u2, u4\n- Dil (3 soru): a/an, çoğul, soru dizilimi — s1u13, s1u14, s1u15",
+      "nodes": [
+        {
+          "id": "s1u15l1",
+          "type": "lesson",
+          "title": "Dinleme: Sesli mesaj",
+          "description": "Sesli mesajda saati ve yeri yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "Let's meet in the park at five.",
+              "answers": [
+                "Let's meet in the park at five.",
+                "Let's meet in the park at 5."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "What time do you want to meet?",
+              "answers": [
+                "What time do you want to meet?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "See you on Saturday at half past six.",
+              "answers": [
+                "See you on Saturday at half past six.",
+                "See you on Saturday at 6:30."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Do you want ___ meet on Sunday?",
+              "translation": "Pazar günü buluşmak ister misin?",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "at"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'm at the bus stop now.",
+              "answers": [
+                "I'm at the bus stop now.",
+                "I am at the bus stop now."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Can you call me back, please?",
+              "answers": [
+                "Can you call me back, please?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The film starts at eight fifteen.",
+              "answers": [
+                "The film starts at eight fifteen.",
+                "The film starts at 8:15."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "See you ___ Monday!",
+              "translation": "Pazartesi görüşürüz!",
+              "answer": "on",
+              "choices": [
+                "on",
+                "in",
+                "at"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Let's meet at the cinema at seven.",
+              "translation": "Saat yedide sinemada buluşalım."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "Beni ara.",
+                  "Call me."
+                ],
+                [
+                  "Görüşürüz!",
+                  "See you!"
+                ],
+                [
+                  "Neredesin?",
+                  "Where are you?"
+                ],
+                [
+                  "Geç kaldım.",
+                  "I'm late."
+                ],
+                [
+                  "Sorun değil.",
+                  "No problem."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u15l2",
+          "type": "lesson",
+          "title": "Okuma: Arkadaş mesajları",
+          "description": "Sam ve Elif'in mesajlaşmasını oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Sam: Hi Elif! Are you free on Saturday?\nElif: Hi! Yes, I am. What time?\nSam: Let's meet at 4. We can have a picnic in the park.\nElif: Good idea! Which park?\nSam: Maçka Park. It's near my house.\nElif: OK. Kerem wants to come, too. Is that OK?\nSam: Of course! Can he bring his football?\nElif: Yes. I'll bring a cake.\nSam: Great! Meet me next to the café.\nElif: See you on Saturday!",
+              "question": "Ne zaman buluşuyorlar?",
+              "options": [
+                "Pazar saat 4'te",
+                "Cuma saat 4'te",
+                "Cumartesi saat 4'te",
+                "Cumartesi saat 5'te"
+              ],
+              "answer": 2,
+              "explanation": "\"Cumartesi saat 4'te\" doğru: Sam 'Are you free on Saturday?' ve 'Let's meet at 4' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Sam: Hi Elif! Are you free on Saturday?\nElif: Hi! Yes, I am. What time?\nSam: Let's meet at 4. We can have a picnic in the park.\nElif: Good idea! Which park?\nSam: Maçka Park. It's near my house.\nElif: OK. Kerem wants to come, too. Is that OK?\nSam: Of course! Can he bring his football?\nElif: Yes. I'll bring a cake.\nSam: Great! Meet me next to the café.\nElif: See you on Saturday!",
+              "question": "Where is the park?",
+              "options": [
+                "Near Sam's house",
+                "Near Elif's house",
+                "Next to the school",
+                "Behind the café"
+              ],
+              "answer": 0,
+              "explanation": "\"Near Sam's house\" doğru: Sam 'It's near my house' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Sam: Hi Elif! Are you free on Saturday?\nElif: Hi! Yes, I am. What time?\nSam: Let's meet at 4. We can have a picnic in the park.\nElif: Good idea! Which park?\nSam: Maçka Park. It's near my house.\nElif: OK. Kerem wants to come, too. Is that OK?\nSam: Of course! Can he bring his football?\nElif: Yes. I'll bring a cake.\nSam: Great! Meet me next to the café.\nElif: See you on Saturday!",
+              "question": "'Can he bring his football?' cümlesinde 'he' kim?",
+              "options": [
+                "Sam",
+                "Kerem",
+                "Elif'in babası",
+                "Garson"
+              ],
+              "answer": 1,
+              "explanation": "\"Kerem\" doğru: Elif önce 'Kerem wants to come, too' yazıyor; 'he' Kerem'i gösteriyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Sam: Hi Elif! Are you free on Saturday?\nElif: Hi! Yes, I am. What time?\nSam: Let's meet at 4. We can have a picnic in the park.\nElif: Good idea! Which park?\nSam: Maçka Park. It's near my house.\nElif: OK. Kerem wants to come, too. Is that OK?\nSam: Of course! Can he bring his football?\nElif: Yes. I'll bring a cake.\nSam: Great! Meet me next to the café.\nElif: See you on Saturday!",
+              "question": "Elif pikniğe ne getirecek?",
+              "options": [
+                "Futbol topu",
+                "Su",
+                "Sandviç",
+                "Kek"
+              ],
+              "answer": 3,
+              "explanation": "\"Kek\" doğru: Elif 'I'll bring a cake' yazıyor. Topu Kerem getiriyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Sam: Hi Elif! Are you free on Saturday?\nElif: Hi! Yes, I am. What time?\nSam: Let's meet at 4. We can have a picnic in the park.\nElif: Good idea! Which park?\nSam: Maçka Park. It's near my house.\nElif: OK. Kerem wants to come, too. Is that OK?\nSam: Of course! Can he bring his football?\nElif: Yes. I'll bring a cake.\nSam: Great! Meet me next to the café.\nElif: See you on Saturday!",
+              "question": "Tam olarak nerede buluşacaklar?",
+              "options": [
+                "Sam'in evinde",
+                "Okulun önünde",
+                "Kafenin yanında",
+                "Otobüs durağında"
+              ],
+              "answer": 2,
+              "explanation": "\"Kafenin yanında\" doğru: Sam 'Meet me next to the café' yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "boş, müsait",
+                  "free"
+                ],
+                [
+                  "iyi fikir",
+                  "good idea"
+                ],
+                [
+                  "getirmek",
+                  "bring"
+                ],
+                [
+                  "yakınında",
+                  "near"
+                ],
+                [
+                  "hangi",
+                  "which"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Are you free ___ Saturday?",
+              "translation": "Cumartesi müsait misin?",
+              "answer": "on",
+              "choices": [
+                "on",
+                "in",
+                "at"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Sam'e buluşma saatini sor. Doğru soru hangisi?",
+              "answer": "What time do we meet?",
+              "choices": [
+                {
+                  "text": "What time do we meet?",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "What time we meet?",
+                  "emoji": "❓"
+                },
+                {
+                  "text": "What time meet we?",
+                  "emoji": "🔀"
+                },
+                {
+                  "text": "We meet what time?",
+                  "emoji": "🤔"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u15s",
+          "type": "story",
+          "title": "Sesli mesaj",
+          "description": "Sam'in sesli mesajı ve yeni buluşma saati",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Kerem, I have a voice message from Sam. Listen!",
+              "translation": "Kerem, Sam'den bir sesli mesajım var. Dinle!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Hi Elif, it's Sam.",
+              "translation": "Merhaba Elif, ben Sam."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "It's my last Friday in İstanbul. Let's meet!",
+              "translation": "İstanbul'daki son cumam. Buluşalım!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Can we meet at Galata Tower at three?",
+              "translation": "Saat üçte Galata Kulesi'nde buluşabilir miyiz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Then we can have dinner near the tower.",
+              "translation": "Sonra kulenin yakınında akşam yemeği yiyebiliriz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Please call me back. Bye!",
+              "translation": "Lütfen beni geri ara. Hoşça kal!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Sam nerede buluşmak istiyor?",
+              "choices": [
+                "Parkta",
+                "Galata Kulesi'nde",
+                "Kafede"
+              ],
+              "answer": "Galata Kulesi'nde"
+            },
+            {
+              "kind": "question",
+              "prompt": "Sam mesajda hangi saati söylüyor?",
+              "choices": [
+                "Sekiz",
+                "On üç",
+                "Üç"
+              ],
+              "answer": "Üç"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Three? I have football on Friday at two.",
+              "translation": "Üç mü? Cuma günü saat ikide futbolum var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "It finishes at half past three.",
+              "translation": "Üç buçukta bitiyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "OK, I'll call Sam.",
+              "translation": "Tamam, Sam'i arayacağım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Hi Sam! Can we meet at four, not three?",
+              "translation": "Merhaba Sam! Üçte değil, dörtte buluşabilir miyiz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Sure! Is everything OK?",
+              "translation": "Tabii! Her şey yolunda mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Yes. Kerem is with me. He has football on Friday.",
+              "translation": "Evet. Kerem yanımda. Cuma günü futbolu var."
+            },
+            {
+              "kind": "question",
+              "prompt": "'He has football on Friday' cümlesinde 'he' kim?",
+              "choices": [
+                "Sam",
+                "Elif'in babası",
+                "Kerem"
+              ],
+              "answer": "Kerem"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "No problem. Four o'clock at the tower.",
+              "translation": "Sorun değil. Saat dörtte kulede."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Where do we have dinner?",
+              "translation": "Akşam yemeğini nerede yiyoruz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "There's a nice fish restaurant near the tower.",
+              "translation": "Kulenin yakınında güzel bir balık restoranı var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "I don't like fish! Is there a pizza place?",
+              "translation": "Ben balık sevmem! Pizzacı var mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Yes, there is one next to it.",
+              "translation": "Evet, onun yanında bir tane var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Great! See you on Friday at four!",
+              "translation": "Harika! Cuma günü saat dörtte görüşürüz!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Sonunda saat kaçta buluşuyorlar?",
+              "choices": [
+                "Üçte",
+                "Üç buçukta",
+                "Dörtte"
+              ],
+              "answer": "Dörtte"
+            }
+          ]
+        },
+        {
+          "id": "s1u15l3",
+          "type": "lesson",
+          "title": "Konuşma: Buluşma ayarla",
+          "description": "Sam'i telefonda sinemaya davet et, saat ve yer belirle",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "Hi Sam, it's Elif. Are you free on Friday?",
+              "translation": "Merhaba Sam, ben Elif. Cuma müsait misin?"
+            },
+            {
+              "type": "speak",
+              "text": "Do you want to go to the cinema?",
+              "translation": "Sinemaya gitmek ister misin?"
+            },
+            {
+              "type": "speak",
+              "text": "The film starts at seven.",
+              "translation": "Film yedide başlıyor."
+            },
+            {
+              "type": "speak",
+              "text": "Let's meet at the bus stop at half past six.",
+              "translation": "Altı buçukta otobüs durağında buluşalım."
+            },
+            {
+              "type": "speak",
+              "text": "Great! See you on Friday.",
+              "translation": "Harika! Cuma görüşürüz."
+            },
+            {
+              "type": "select",
+              "prompt": "Sam: 'What time is good for you?' En uygun cevap hangisi?",
+              "answer": "At five o'clock.",
+              "choices": [
+                {
+                  "text": "On five o'clock.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "In the park.",
+                  "emoji": "🌳"
+                },
+                {
+                  "text": "At five o'clock.",
+                  "emoji": "🕔"
+                },
+                {
+                  "text": "Yes, it is good.",
+                  "emoji": "👍"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın: 'Let's meet on Monday.' Sen o gün meşgulsün. En uygun cevap hangisi?",
+              "answer": "Sorry, I'm busy. Tuesday?",
+              "choices": [
+                {
+                  "text": "Yes, see you on Monday!",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "Sorry, I'm busy. Tuesday?",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "In Monday is good.",
+                  "emoji": "❓"
+                },
+                {
+                  "text": "I'm fine, thanks.",
+                  "emoji": "🙂"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Nerede buluşalım?",
+              "lang": "tr",
+              "answers": [
+                "Where do we meet?",
+                "Where should we meet?",
+                "Where shall we meet?"
+              ],
+              "tokens": [
+                "Where",
+                "do",
+                "we",
+                "meet",
+                "are",
+                "is",
+                "shall"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Saat beşte parkta görüşürüz.",
+              "lang": "tr",
+              "answers": [
+                "See you in the park at five.",
+                "See you at five in the park.",
+                "See you in the park at 5.",
+                "See you at 5 in the park."
+              ],
+              "tokens": [
+                "See",
+                "you",
+                "in",
+                "the",
+                "park",
+                "at",
+                "five",
+                "on"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "Müsait misin?",
+                  "Are you free?"
+                ],
+                [
+                  "Meşgulüm.",
+                  "I'm busy."
+                ],
+                [
+                  "sinema",
+                  "cinema"
+                ],
+                [
+                  "otobüs durağı",
+                  "bus stop"
+                ],
+                [
+                  "Harika!",
+                  "Great!"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u15l4",
+          "type": "lesson",
+          "title": "Yazma: Kısa mesaj",
+          "description": "Sam'e pikniği anlatan dört cümlelik bir mesaj yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Merhaba Sam! Pazar günü müsait misin?",
+              "lang": "tr",
+              "answers": [
+                "Hi Sam! Are you free on Sunday?",
+                "Hello Sam! Are you free on Sunday?"
+              ],
+              "tokens": [
+                "Hi",
+                "Sam",
+                "Are",
+                "you",
+                "free",
+                "on",
+                "Sunday",
+                "in",
+                "do"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Saat ikide parkta piknik yapalım.",
+              "lang": "tr",
+              "answers": [
+                "Let's have a picnic in the park at two.",
+                "Let's have a picnic at two in the park.",
+                "Let's have a picnic in the park at 2.",
+                "Let's have a picnic at 2 in the park."
+              ],
+              "tokens": [
+                "Let's",
+                "have",
+                "a",
+                "picnic",
+                "in",
+                "the",
+                "park",
+                "at",
+                "two",
+                "on"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kerem de gelmek istiyor.",
+              "lang": "tr",
+              "answers": [
+                "Kerem wants to come, too.",
+                "Kerem also wants to come."
+              ],
+              "tokens": [
+                "Kerem",
+                "wants",
+                "to",
+                "come",
+                "too",
+                "want",
+                "for"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Saat kaçta gelebilirsin?",
+              "lang": "tr",
+              "answers": [
+                "What time can you come?",
+                "When can you come?"
+              ],
+              "tokens": [
+                "What",
+                "time",
+                "can",
+                "you",
+                "come",
+                "do",
+                "are"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Let's meet ___ half past four.",
+              "translation": "Dört buçukta buluşalım.",
+              "answer": "at",
+              "choices": [
+                "at",
+                "on",
+                "in"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm free ___ the morning.",
+              "translation": "Sabah boşum.",
+              "answer": "in",
+              "choices": [
+                "in",
+                "on",
+                "at"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I can't come on Monday, ___ I'm free on Tuesday.",
+              "translation": "Pazartesi gelemem ama salı boşum.",
+              "answer": "but",
+              "choices": [
+                "but",
+                "and",
+                "so"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Sam'e kısa bir mesaj yazıyorsun. En uygun kapanış hangisi?",
+              "answer": "See you soon!",
+              "choices": [
+                {
+                  "text": "Yours faithfully,",
+                  "emoji": "✒️"
+                },
+                {
+                  "text": "Dear Sir,",
+                  "emoji": "🎩"
+                },
+                {
+                  "text": "See you soon!",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "To whom it may concern,",
+                  "emoji": "📜"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "mesaj",
+                  "message"
+                ],
+                [
+                  "yakında",
+                  "soon"
+                ],
+                [
+                  "sabah",
+                  "morning"
+                ],
+                [
+                  "öğleden sonra",
+                  "afternoon"
+                ],
+                [
+                  "piknik",
+                  "picnic"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u15t",
+          "type": "test",
+          "title": "Bölüm 1 beceri testi",
+          "description": "Bu bölümün hedeflerini ölçer",
+          "rewardXp": 25,
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "Is it thirty or thirteen?",
+              "answers": [
+                "Is it thirty or thirteen?",
+                "Is it 30 or 13?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "My phone number is 0544 316 2020.",
+              "answers": [
+                "My phone number is 0544 316 2020.",
+                "My phone number is 05443162020.",
+                "My phone number is 0544 3162020."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Can I have a bottle of water, please?",
+              "answers": [
+                "Can I have a bottle of water, please?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "That's fifty pounds, not fifteen.",
+              "answers": [
+                "That's fifty pounds, not fifteen.",
+                "That is fifty pounds, not fifteen.",
+                "That's 50 pounds, not 15.",
+                "That is 50 pounds, not 15."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Let's meet on Friday at the station.",
+              "answers": [
+                "Let's meet on Friday at the station."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "What time does the film start?",
+              "answers": [
+                "What time does the film start?"
+              ]
+            },
+            {
+              "type": "choice",
+              "passage": "CITY LIBRARY: NEW MEMBER FORM\nName: Sam Baker\nAge: 20\nAddress: 14 Hill Street, London\nPhone: 07700 900 413\nEmail: sam.baker@mail.com\nAbout me: I am a student. I like history books. I would like to come on Saturdays. Please call me in the morning, not in the evening.",
+              "question": "What is Sam's house number?",
+              "options": [
+                "14",
+                "40",
+                "4",
+                "20"
+              ],
+              "answer": 0,
+              "explanation": "\"14\" doğru: formda 'Address: 14 Hill Street' yazıyor. 20 ise Sam'in yaşı."
+            },
+            {
+              "type": "choice",
+              "passage": "CITY LIBRARY: NEW MEMBER FORM\nName: Sam Baker\nAge: 20\nAddress: 14 Hill Street, London\nPhone: 07700 900 413\nEmail: sam.baker@mail.com\nAbout me: I am a student. I like history books. I would like to come on Saturdays. Please call me in the morning, not in the evening.",
+              "question": "Sam kütüphaneye ne zaman gelmek istiyor?",
+              "options": [
+                "Pazar günleri",
+                "Her akşam",
+                "Pazartesi sabahları",
+                "Cumartesi günleri"
+              ],
+              "answer": 3,
+              "explanation": "\"Cumartesi günleri\" doğru: Sam 'I would like to come on Saturdays' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "CITY LIBRARY: NEW MEMBER FORM\nName: Sam Baker\nAge: 20\nAddress: 14 Hill Street, London\nPhone: 07700 900 413\nEmail: sam.baker@mail.com\nAbout me: I am a student. I like history books. I would like to come on Saturdays. Please call me in the morning, not in the evening.",
+              "question": "When should the library call Sam?",
+              "options": [
+                "In the evening",
+                "In the morning",
+                "On Sunday",
+                "At night"
+              ],
+              "answer": 1,
+              "explanation": "\"In the morning\" doğru: Sam 'Please call me in the morning, not in the evening' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Elif: Hi Kerem! I'm at the market. Do you want anything?\nKerem: Yes! Can you buy some apples and an orange juice?\nElif: OK. Apples are fifteen lira a kilo.\nKerem: Great. Buy two kilos, please.\nElif: I'm home at six. Let's make an apple cake!\nKerem: Yes! See you at six.",
+              "question": "Elmanın kilosu kaç lira?",
+              "options": [
+                "Elli lira",
+                "Beş lira",
+                "On beş lira",
+                "Otuz lira"
+              ],
+              "answer": 2,
+              "explanation": "\"On beş lira\" doğru: Elif 'Apples are fifteen lira a kilo' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Elif: Hi Kerem! I'm at the market. Do you want anything?\nKerem: Yes! Can you buy some apples and an orange juice?\nElif: OK. Apples are fifteen lira a kilo.\nKerem: Great. Buy two kilos, please.\nElif: I'm home at six. Let's make an apple cake!\nKerem: Yes! See you at six.",
+              "question": "How many kilos of apples does Kerem want?",
+              "options": [
+                "Two",
+                "One",
+                "Six",
+                "Fifteen"
+              ],
+              "answer": 0,
+              "explanation": "\"Two\" doğru: Kerem 'Buy two kilos, please' yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Elif: Hi Kerem! I'm at the market. Do you want anything?\nKerem: Yes! Can you buy some apples and an orange juice?\nElif: OK. Apples are fifteen lira a kilo.\nKerem: Great. Buy two kilos, please.\nElif: I'm home at six. Let's make an apple cake!\nKerem: Yes! See you at six.",
+              "question": "Elif saat kaçta evde?",
+              "options": [
+                "Beşte",
+                "Altıda",
+                "Yedide",
+                "Sekizde"
+              ],
+              "answer": 1,
+              "explanation": "\"Altıda\" doğru: Elif 'I'm home at six' yazıyor."
+            },
+            {
+              "type": "translate",
+              "text": "Benim soyadım Baker.",
+              "lang": "tr",
+              "answers": [
+                "My surname is Baker.",
+                "My surname's Baker."
+              ],
+              "tokens": [
+                "My",
+                "surname",
+                "is",
+                "Baker",
+                "am",
+                "name"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İki çay ve bir elma, lütfen.",
+              "lang": "tr",
+              "answers": [
+                "Two teas and an apple, please."
+              ],
+              "tokens": [
+                "Two",
+                "teas",
+                "and",
+                "an",
+                "apple",
+                "please",
+                "tea",
+                "a"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Are you free on Monday at five?",
+              "lang": "en",
+              "answers": [
+                "Pazartesi saat beşte müsait misin?",
+                "Pazartesi beşte müsait misin?",
+                "Pazartesi saat beşte boş musun?"
+              ],
+              "tokens": [
+                "Pazartesi",
+                "saat",
+                "beşte",
+                "müsait",
+                "misin",
+                "salı",
+                "musun"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kafede saat üçte buluşalım.",
+              "lang": "tr",
+              "answers": [
+                "Let's meet at the café at three.",
+                "Let's meet at the cafe at three.",
+                "Let's meet at the café at 3.",
+                "Let's meet at three at the café."
+              ],
+              "tokens": [
+                "Let's",
+                "meet",
+                "at",
+                "the",
+                "café",
+                "at",
+                "three",
+                "on",
+                "in"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "How much is a cup of coffee?",
+              "lang": "en",
+              "answers": [
+                "Bir fincan kahve ne kadar?",
+                "Bir fincan kahve kaç para?",
+                "Bir fincan kahve kaç lira?"
+              ],
+              "tokens": [
+                "Bir",
+                "fincan",
+                "kahve",
+                "ne",
+                "kadar",
+                "çay",
+                "kaç"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Ayla is ___ English teacher.",
+              "translation": "Ayla bir İngilizce öğretmeni.",
+              "answer": "an",
+              "choices": [
+                "an",
+                "a",
+                "am"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Where ___ we meet on Sunday?",
+              "translation": "Pazar günü nerede buluşuyoruz?",
+              "answer": "do",
+              "choices": [
+                "do",
+                "are",
+                "is"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Garson: 'Can I help you?' En uygun cevap hangisi?",
+              "answer": "Yes, two coffees, please.",
+              "choices": [
+                {
+                  "text": "Yes, two coffee, please.",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "Yes, a two coffees.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "Yes, two coffees, please.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Yes, I'm two coffees.",
+                  "emoji": "❓"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s1u15c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}
