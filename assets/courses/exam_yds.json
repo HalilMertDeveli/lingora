@@ -6496,7 +6496,7 @@
         "ought to / couldn't"
        ],
        "answer": 1,
-       "explanation": "Doğru cevap 'don't have to / can'. 'Instead' ifadesi bir seçenek sunulduğunu gösterir: şahsen teslim zorunlu değil, posta ile gönderilebilir. 'needn't / mustn't' ikinci seçeneği yasaklayarak anlamı bozar."
+       "explanation": "Doğru cevap 'don't have to / can'. 'Instead' ifadesi bir seçenek sunulduğunu gösterir: şahsen teslim zorunlu değil, posta ile gönderilebilir. 'needn't / mustn't' postayla gönderme yolunu yasaklayarak anlamı bozar."
       },
       {
        "type": "choice",
