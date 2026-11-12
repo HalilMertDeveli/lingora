@@ -223,6 +223,7 @@ void main() {
         ProviderScope(
           overrides: [
             courseProvider.overrideWith((ref) async => course),
+            courseOutlineProvider.overrideWith((ref) async => course),
             prefsProvider.overrideWithValue(prefs),
             speechProvider.overrideWithValue(FakeSpeech()),
             notificationServiceProvider.overrideWithValue(FakeNotifications()),

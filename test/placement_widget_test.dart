@@ -54,6 +54,7 @@ Future<void> _pump(WidgetTester tester, Map<String, Object> prefs) async {
     ProviderScope(
       overrides: [
         courseProvider.overrideWith((ref) async => _course),
+        courseOutlineProvider.overrideWith((ref) async => _course),
         // No exam study paths: loading the real (large) assets would not finish under fake async.
         examPathProvider.overrideWith((ref, id) async => null),
         placementBankProvider.overrideWith((ref) async => _bank),
