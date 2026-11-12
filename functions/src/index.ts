@@ -8,6 +8,7 @@ import { logger } from "firebase-functions";
 import { CallableRequest, HttpsError, onCall } from "firebase-functions/v2/https";
 import { onSchedule } from "firebase-functions/v2/scheduler";
 
+import * as writing from "./assess_writing.js";
 import * as conversation from "./converse.js";
 import * as family from "./family.js";
 import * as league from "./league.js";
@@ -48,6 +49,13 @@ export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 
   const uid = requireUid(req);
   claude ??= new Anthropic({ apiKey: anthropicApiKey.value() });
   return conversation.converse(getFirestore(), claude, uid, req.data, new Date());
+});
+
+/** { taskId, text } -> { scores, corrections, next_tr, remaining } (general course writing tasks) */
+export const assessWriting = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
+  const uid = requireUid(req);
+  claude ??= new Anthropic({ apiKey: anthropicApiKey.value() });
+  return writing.assessWriting(getFirestore(), claude, uid, req.data, new Date());
 });
 
 /** { productId, purchaseToken } -> { active, productId, expiresAt?, packs } (subscriptions, family plan, exam packs) */

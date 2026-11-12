@@ -11,6 +11,10 @@ import 'lesson_result_screen.dart';
 
 /// A short dialogue revealed line by line, with comprehension questions in
 /// between. Lines are read aloud; tapping a bubble shows its translation.
+///
+/// A listen-first story ([PathNode.listenFirst]) hides the text of its lines:
+/// the learner answers from what they hear (tap a bubble to hear it again,
+/// slower at 0.75×) and sees the text with "Metni gör" at the end.
 class StoryScreen extends ConsumerStatefulWidget {
   const StoryScreen({super.key, required this.node, required this.color});
   final PathNode node;
@@ -36,6 +40,11 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
   int _wrong = 0;
   int _shake = 0;
 
+  /// Listen-first stories: the text was revealed, and the speech rate.
+  bool _revealed = false;
+  double _rate = 1;
+  bool get _hidden => widget.node.listenFirst && !_revealed;
+
   List<StoryStep> get _steps => widget.node.steps;
   StoryStep get _current => _steps[_shown];
   bool get _done => _shown >= _steps.length - 1 && (!_current.isQuestion || _pickedRight == true);
@@ -53,7 +62,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
   }
 
   void _speakCurrent() {
-    if (!_current.isQuestion) _speech.say(_current.text!);
+    if (!_current.isQuestion) _speech.say(_current.text!, rate: _rate);
   }
 
   void _next() {
@@ -134,6 +143,12 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
                   Expanded(
                     child: GlossyProgress(value: (_shown + 1) / _steps.length, color: widget.color),
                   ),
+                  if (widget.node.listenFirst)
+                    TextButton(
+                      key: const Key('story-speed'),
+                      onPressed: () => setState(() => _rate = _rate == 1 ? 0.75 : 1),
+                      child: Text(_rate == 1 ? '1×' : '0.75×'),
+                    ),
                 ],
               ),
             ),
@@ -155,6 +170,18 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
+                  if (widget.node.listenFirst)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 6),
+                      child: Text(
+                        _hidden
+                            ? 'Önce dinle: metin hikâyenin sonunda açılır. Bir satırı tekrar duymak için dokun.'
+                            : 'Metin açık. Bir satıra dokunarak çevirisini görebilirsin.',
+                        key: const Key('story-listen-hint'),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Brand.muted),
+                      ),
+                    ),
                   const SizedBox(height: 20),
                   for (var i = 0; i <= _shown; i++)
                     PopIn(
@@ -170,10 +197,26 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
               decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: Brand.line, width: 2)),
               ),
-              child: PressableButton(
-                label: _done ? 'BİTİR' : 'DEVAM',
-                color: widget.color,
-                onPressed: waitingAnswer ? null : _next,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (_done && _hidden)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: OutlinedButton.icon(
+                        key: const Key('story-reveal'),
+                        icon: const Icon(Icons.visibility_rounded),
+                        label: const Text('Metni gör'),
+                        onPressed: () => setState(() => _revealed = true),
+                      ),
+                    ),
+                  PressableButton(
+                    label: _done ? 'BİTİR' : 'DEVAM',
+                    color: widget.color,
+                    onPressed: waitingAnswer ? null : _next,
+                  ),
+                ],
               ),
             ),
           ],
@@ -199,8 +242,8 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
     final bubble = Flexible(
       child: GestureDetector(
         onTap: () {
-          setState(() => showTr ? _translated.remove(i) : _translated.add(i));
-          _speech.say(s.text!);
+          if (!_hidden) setState(() => showTr ? _translated.remove(i) : _translated.add(i));
+          _speech.say(s.text!, rate: _rate);
         },
         child: Container(
           padding: const EdgeInsets.fromLTRB(14, 10, 14, 12),
@@ -222,7 +265,21 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
                 style: TextStyle(color: widget.color, fontWeight: FontWeight.w800, fontSize: 12),
               ),
               const SizedBox(height: 2),
-              Text(s.text!, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
+              if (_hidden)
+                Row(
+                  key: Key('story-hidden-line-$i'),
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.graphic_eq_rounded, color: widget.color),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Dinle',
+                      style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+                    ),
+                  ],
+                )
+              else
+                Text(s.text!, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
               AnimatedSize(
                 duration: const Duration(milliseconds: 200),
                 child: showTr && s.translation != null

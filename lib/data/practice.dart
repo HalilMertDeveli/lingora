@@ -36,7 +36,7 @@ List<LessonItem> unitTestItems(Unit unit, [Random? random]) {
   if (lessons.isEmpty) return const [];
   final pools = [
     for (final l in lessons)
-      lessonItems(l).where((it) => it.ex.type != ExerciseType.speak).toList()..shuffle(r),
+      lessonItems(l).where((it) => !ungradedTypes.contains(it.ex.type)).toList()..shuffle(r),
   ];
   final picked = <LessonItem>[];
   // Round-robin so every lesson is represented.

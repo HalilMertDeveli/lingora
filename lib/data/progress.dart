@@ -633,8 +633,12 @@ class ProgressNotifier extends Notifier<Progress> {
 
   /// Counts the categories of mistakes the hata dedektörü found, each
   /// category once per check.
-  void recordTrErrors(Iterable<TrError> errors) {
-    final names = errors.map((e) => e.category.name).toSet();
+  void recordTrErrors(Iterable<TrError> errors) => recordErrorCategories(errors.map((e) => e.category));
+
+  /// Counts error categories found elsewhere (AI writing feedback), each
+  /// category once per check, like [recordTrErrors].
+  void recordErrorCategories(Iterable<TrErrorCategory> categories) {
+    final names = categories.map((c) => c.name).toSet();
     if (names.isEmpty) return;
     final stats = {...state.errorStats};
     for (final n in names) {

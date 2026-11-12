@@ -14,8 +14,10 @@ import '../exercises/fill_blank_exercise.dart';
 import '../exercises/listen_exercise.dart';
 import '../exercises/match_exercise.dart';
 import '../exercises/select_exercise.dart';
+import '../exercises/shadow_exercise.dart';
 import '../exercises/speak_exercise.dart';
 import '../exercises/translate_exercise.dart';
+import '../exercises/write_exercise.dart';
 import '../models/course.dart';
 import '../services/growth/analytics.dart';
 import '../services/growth/paywall_trigger.dart';
@@ -178,7 +180,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       if (widget.mode == LessonMode.practice) notifier.answerMistakeRight(_current.key);
     } else {
       SessionFx.wrong();
-      notifier.addMistake(_current.key);
+      // Practised, not graded: nothing for the mistakes notebook.
+      if (!ungradedTypes.contains(_current.ex.type)) notifier.addMistake(_current.key);
     }
   }
 
@@ -316,6 +319,14 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       ExerciseType.match => MatchExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.speak => SpeakExercise(key: key, ex: ex, locked: locked, onReady: onReady, onSkip: _skip),
       ExerciseType.choice => ChoiceExercise(key: key, ex: ex, locked: locked, onReady: onReady),
+      ExerciseType.write => WriteExercise(key: key, ex: ex, locked: locked, onReady: onReady),
+      ExerciseType.shadow => ShadowExercise(
+        key: key,
+        ex: ex,
+        locked: locked,
+        onReady: onReady,
+        onSkip: _skip,
+      ),
     };
   }
 
@@ -331,6 +342,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   Widget? _feedbackDetail(Exercise ex) {
     final explanation = ex.explanation?.trim() ?? '';
     if (ex.type == ExerciseType.choice && explanation.isNotEmpty) return ChoiceExplanation(text: explanation);
+    if (ex.type == ExerciseType.write && (ex.model?.isNotEmpty ?? false)) {
+      return WritingModelText(model: ex.model!);
+    }
     return _lastCorrect! ? null : _why;
   }
 

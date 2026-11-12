@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 
-enum ExerciseType { select, translate, fillBlank, listen, match, speak, choice }
+/// [write] is a short free text (model text, checklist, optional AI feedback);
+/// [shadow] is listen-then-say-along. Neither is graded right or wrong, so
+/// unit tests and the mistakes notebook leave them out.
+enum ExerciseType { select, translate, fillBlank, listen, match, speak, choice, write, shadow }
+
+/// Exercise types that are practised, not graded: unit tests, "Bölüme atla"
+/// and the mistakes notebook skip them.
+const ungradedTypes = {ExerciseType.speak, ExerciseType.write, ExerciseType.shadow};
+
+/// Error types a writing task's feedback may focus on (curriculum §3); the
+/// names match the server's assessWriting and map to TrErrorCategory.
+const writingFocusTypes = {'article', 'tense', 'preposition', 'word_order', 'be'};
 
 class Choice {
   const Choice(this.text, this.emoji);
@@ -30,6 +41,13 @@ class Exercise {
     this.answerIndex,
     this.explanation,
     this.qtype,
+    this.model,
+    this.minWords = 0,
+    this.maxWords = 0,
+    this.checklist = const [],
+    this.focus = const [],
+    this.taskId,
+    this.rate = 1,
   });
 
   final ExerciseType type;
@@ -71,9 +89,24 @@ class Exercise {
   final int? answerIndex;
   final String? explanation;
 
-  /// Exam question type ("vocab", "cloze"...), when the content names it;
+  /// Exam question type ("vocabulary", "cloze"...), when the content names it;
   /// otherwise it is worked out (lib/study/question_types.dart).
   final String? qtype;
+
+  /// Writing task (write): [prompt] is the Turkish task, [model] a model text
+  /// shown after submitting, [minWords]–[maxWords] the target length,
+  /// [checklist] what a good text contains (ticked by the learner), [focus]
+  /// at most three [writingFocusTypes] for AI feedback and [taskId] the
+  /// server's rubric id (the node id + "w").
+  final String? model;
+  final int minWords;
+  final int maxWords;
+  final List<String> checklist;
+  final List<String> focus;
+  final String? taskId;
+
+  /// Speech rate of a shadowing sentence (1 = normal).
+  final double rate;
 
   /// The right option of a choice exercise.
   String get correctOption {
@@ -88,6 +121,8 @@ class Exercise {
     ExerciseType.speak => text ?? '',
     ExerciseType.match => '',
     ExerciseType.choice => correctOption,
+    ExerciseType.write => model ?? '',
+    ExerciseType.shadow => text ?? '',
   };
 
   factory Exercise.fromJson(Map<String, dynamic> j) {
@@ -118,6 +153,13 @@ class Exercise {
       answerIndex: choice ? j['answer'] as int? : null,
       explanation: j['explanation'] as String?,
       qtype: j['qtype'] as String?,
+      model: j['model'] as String?,
+      minWords: (j['minWords'] as int?) ?? 0,
+      maxWords: (j['maxWords'] as int?) ?? 0,
+      checklist: strings('checklist'),
+      focus: strings('focus'),
+      taskId: j['taskId'] as String?,
+      rate: (j['rate'] as num?)?.toDouble() ?? (type == ExerciseType.shadow ? 0.9 : 1),
     );
   }
 }
@@ -194,6 +236,7 @@ class PathNode {
     this.mockId,
     this.vocab = false,
     this.reading,
+    this.listenFirst = false,
   });
 
   final String id;
@@ -224,6 +267,10 @@ class PathNode {
   /// reading library and the reading counter.
   final ReadingMeta? reading;
 
+  /// Story heard first: lines are played with their text hidden until the
+  /// story ends, then "Metni gör" shows them.
+  final bool listenFirst;
+
   factory PathNode.fromJson(Map<String, dynamic> j) => PathNode(
     id: j['id'] as String,
     type: NodeType.values.byName(j['type'] as String),
@@ -243,6 +290,7 @@ class PathNode {
     mockId: j['mockId'] as String?,
     vocab: (j['vocab'] as bool?) ?? false,
     reading: j['reading'] == null ? null : ReadingMeta.fromJson(j['reading'] as Map<String, dynamic>),
+    listenFirst: (j['listenFirst'] as bool?) ?? false,
   );
 }
 

@@ -40,7 +40,8 @@ void recordLessonAnswer(
   required Duration time,
   required String source,
 }) {
-  if (item.ex.type == ExerciseType.speak) return;
+  // Speaking, shadowing and writing are not scored questions.
+  if (const {ExerciseType.speak, ExerciseType.shadow, ExerciseType.write}.contains(item.ex.type)) return;
   final unitId = ref.read(_unitIndexProvider)[nodeOfKey(item.key)];
   ref.read(studyLogProvider.notifier).add([
     AnswerLog(
