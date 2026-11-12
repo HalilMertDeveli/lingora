@@ -66,6 +66,14 @@ class MockReportScreen extends ConsumerWidget {
               'YDS ölçeğinde ${(report.correct * ydsPointsPerQuestion).toStringAsFixed(2).replaceAll('.', ',')} puan',
               style: const TextStyle(fontWeight: FontWeight.w800),
             ),
+          if (report.blank > 0) ...[
+            const SizedBox(height: 8),
+            const Text(
+              'Yanlış doğruyu götürmez: boş bırakma, süre bitmeden işaretle.',
+              key: Key('report-blank'),
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ],
           if (slow > 0) ...[
             const SizedBox(height: 8),
             Text(

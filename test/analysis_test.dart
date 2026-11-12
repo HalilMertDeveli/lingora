@@ -160,16 +160,42 @@ void main() {
         for (var i = 0; i < 80; i++) a(QType.grammar, i < right, src: src),
       ];
       final log = [
-        ...mock('mock:a@1', 20),
-        ...mock('mock:b@2', 48),
-        ...mock('mock:c@3', 56),
-        ...mock('mock:d@4', 64),
+        ...mock('mock:yds_m1@1', 20),
+        ...mock('mock:yds_m2@2', 48),
+        ...mock('mock:yds_m3@3', 56),
+        ...mock('mock:yds_m4@4', 64),
       ];
       final s = estimateScore(log)!;
-      expect(s.fromMocks, isTrue);
+      expect((s.fromMocks, s.halfMocksOnly), (true, false));
       expect(s.basis, 240);
       // Weighted 1:2:3 → (60 + 140 + 240) / 6 = 73.3 %.
       expect((s.low + s.high) / 2, closeTo(73, 1.5));
+    });
+
+    List<AnswerLog> attempt(String src, int size, int right) => [
+      for (var i = 0; i < size; i++) a(QType.grammar, i < right, src: src),
+    ];
+
+    test('a retake of a mock does not count; only its first attempt does', () {
+      final log = [...attempt('mock:yds_m1@1', 80, 40), ...attempt('mock:yds_m1@2', 80, 78)];
+      final s = estimateScore(log)!;
+      expect(s.basis, 80);
+      expect((s.low + s.high) / 2, closeTo(50, 1));
+      expect(mockIdOf('mock:yds_m1@1731000000'), 'yds_m1');
+    });
+
+    test('section mocks never count; half mocks only without a full one, with a wider range', () {
+      final section = attempt('mock:ys3u10m@1', 40, 39);
+      final half = attempt('mock:ys6u6m@2', 40, 24);
+      // A section mock alone: practice accuracy, not mocks.
+      expect(estimateScore(section, halfMocks: {'ys6u6m'})!.fromMocks, isFalse);
+      final h = estimateScore([...section, ...half], halfMocks: {'ys6u6m'})!;
+      expect((h.fromMocks, h.halfMocksOnly, h.basis), (true, true, 40));
+      expect(h.high - h.low, greaterThanOrEqualTo(16));
+      expect((h.low + h.high) / 2, closeTo(60, 1));
+      // With a full mock the half one is left out.
+      final f = estimateScore([...half, ...attempt('mock:yds_m9@3', 80, 48)], halfMocks: {'ys6u6m'})!;
+      expect((f.halfMocksOnly, f.basis), (false, 80));
     });
   });
 
@@ -333,6 +359,7 @@ void main() {
       expect(find.byKey(const Key('report-reading')), findsOneWidget);
       expect(find.byKey(const Key('report-grammar')), findsOneWidget);
       expect(find.byKey(const Key('report-slow')), findsOneWidget);
+      expect(find.byKey(const Key('report-blank')), findsNothing);
       expect(find.textContaining('Okuma: 7 doğru eksik'), findsOneWidget);
     });
   });

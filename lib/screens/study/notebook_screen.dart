@@ -10,6 +10,7 @@ import '../../study/mistake_reasons.dart';
 import '../../study/mixed_review.dart';
 import '../../study/question_types.dart';
 import '../../study/review_queue.dart';
+import '../../study/year_plan.dart';
 import '../../study/study_state.dart';
 import '../../theme.dart';
 import '../lesson_screen.dart';
@@ -118,7 +119,7 @@ class _Analysis extends ConsumerWidget {
     final stats = typeStats(log);
     final weak = weakTypes(stats);
     final units = weakUnits(log);
-    final score = estimateScore(log);
+    final score = estimateScore(log, halfMocks: halfMockNodes(ref.watch(yearPlanProvider).value));
     final title = {for (final u in course.units) u.id: u.title};
     return TapCard(
       key: const Key('notebook-analysis'),
@@ -140,9 +141,11 @@ class _Analysis extends ConsumerWidget {
             ),
           if (score != null)
             Text(
-              score.fromMocks
-                  ? 'Son denemelerine göre (${score.basis} soru). Gerçek sınavda puanı ÖSYM hesaplar.'
-                  : 'Soru tiplerindeki doğru oranına göre (${score.basis} soru); deneme çözdükçe netleşir.',
+              !score.fromMocks
+                  ? 'Alıştırmalara göre (${score.basis} soru); ilk deneme sonrası netleşir.'
+                  : score.halfMocksOnly
+                  ? 'Yarım denemelerine göre (${score.basis} soru); tam deneme çözünce netleşir.'
+                  : 'Tam denemelerine göre (${score.basis} soru). Gerçek sınavda puanı ÖSYM hesaplar.',
               style: TextStyle(color: Brand.muted, fontSize: 12),
             ),
           const SizedBox(height: 8),

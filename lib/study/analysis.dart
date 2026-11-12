@@ -89,7 +89,16 @@ List<(String, int, int)> weakUnits(Iterable<AnswerLog> answers, {int count = 3})
 
 /// A YDS score range, e.g. 62–70.
 class ScoreRange {
-  const ScoreRange(this.low, this.high, {required this.fromMocks, required this.basis});
+  const ScoreRange(
+    this.low,
+    this.high, {
+    required this.fromMocks,
+    required this.basis,
+    this.halfMocksOnly = false,
+  });
+
+  /// Rests on half mocks only (easier than the exam: a wider range).
+  final bool halfMocksOnly;
   final int low;
   final int high;
 
@@ -107,15 +116,30 @@ class ScoreRange {
 /// three mocks of 40+ questions (newest counts most); without them, each
 /// type's accuracy over its last [estimateWindow] answers weighted by its
 /// share of the exam. Null with fewer than [minAnswersForEstimate] answers.
-ScoreRange? estimateScore(List<AnswerLog> log) {
-  // Mocks, oldest first, by their log source.
-  final mocks = <String, List<AnswerLog>>{};
+ScoreRange? estimateScore(List<AnswerLog> log, {Set<String> halfMocks = const {}}) {
+  // Attempts, oldest first, by their log source; a retake of a mock already
+  // seen does not count (its questions are known).
+  final attempts = <String, List<AnswerLog>>{};
   for (final a in log) {
-    if (a.fromMock) mocks.putIfAbsent(a.source, () => []).add(a);
+    if (a.fromMock) attempts.putIfAbsent(a.source, () => []).add(a);
   }
-  final big = mocks.values.where((m) => m.length >= 40).toList();
-  if (big.isNotEmpty) {
-    final last = big.sublist(max(0, big.length - 3));
+  final firsts = <String, List<AnswerLog>>{};
+  for (final e in attempts.entries) {
+    firsts.putIfAbsent(mockIdOf(e.key), () => e.value);
+  }
+  // Full mocks only; without them the plan's half mocks (an easier level, so
+  // a wider range). Section mocks, asked right after their topics, never.
+  final full = [
+    for (final e in firsts.entries)
+      if (fullMockId.hasMatch(e.key) && e.value.length >= 40) e.value,
+  ];
+  final halves = [
+    for (final e in firsts.entries)
+      if (halfMocks.contains(e.key)) e.value,
+  ];
+  final use = full.isNotEmpty ? full : halves;
+  if (use.isNotEmpty) {
+    final last = use.sublist(max(0, use.length - 3));
     var sum = 0.0, weights = 0.0, lo = 100.0, hi = 0.0;
     for (final (i, m) in last.indexed) {
       final pct = m.where((a) => a.correct).length / m.length;
@@ -126,11 +150,12 @@ ScoreRange? estimateScore(List<AnswerLog> log) {
       hi = max(hi, pct);
     }
     final mid = sum / weights * 100;
-    final half = max(4.0, (hi - lo) * 100 / 2);
+    final half = max(full.isNotEmpty ? 4.0 : 8.0, (hi - lo) * 100 / 2);
     return ScoreRange(
       (mid - half).clamp(0, 100).round(),
       (mid + half).clamp(0, 100).round(),
       fromMocks: true,
+      halfMocksOnly: full.isEmpty,
       basis: last.fold(0, (s, m) => s + m.length),
     );
   }
@@ -158,6 +183,16 @@ ScoreRange? estimateScore(List<AnswerLog> log) {
     fromMocks: false,
     basis: n,
   );
+}
+
+/// A pack's full mock id (yds_m9).
+final fullMockId = RegExp(r'^yds_m\d+$');
+
+/// Mock id of a log source (`mock:<id>@<start>`).
+String mockIdOf(String source) {
+  final s = source.startsWith('mock:') ? source.substring(5) : source;
+  final at = s.lastIndexOf('@');
+  return at < 0 ? s : s.substring(0, at);
 }
 
 /// One row of the mock report.

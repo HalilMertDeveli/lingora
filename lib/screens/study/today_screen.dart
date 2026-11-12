@@ -366,7 +366,8 @@ class _WeeklyReport extends ConsumerWidget {
                 ? 'Bu hafta soru çözülmedi'
                 : 'Soru doğruluğu: %${(right * 100 / answers.length).round()} (${answers.length} soru)',
           ),
-          if (estimateScore(log.answers) case final score?)
+          if (estimateScore(log.answers, halfMocks: halfMockNodes(ref.watch(yearPlanProvider).value))
+              case final score?)
             Text('Tahmini YDS puanı: $score', key: const Key('weekly-score')),
         ],
       ),
