@@ -1,0 +1,2581 @@
+{
+  "extends": "s8",
+  "units": [
+    {
+      "id": "s8u11",
+      "title": "Rapor",
+      "description": "Verileri ve bulguları başlıklı, önerili bir rapor hâlinde yaz",
+      "color": "0xFF6C4CF1",
+      "theme": "is",
+      "guide": "## Bu ünitede yapabileceklerin\n- Bir rapordaki rakamları, bulguları ve önerileri bulabilirsin.\n- Toplantıda ve sunumda geçen artış, düşüş ve yüzdeleri dinleyerek anlayabilirsin.\n- Bir çalışmanın sonuçlarını bir dakikada sözlü olarak özetleyebilirsin.\n- Veri ve bulguları başlıklı, önerili 200 kelimelik bir rapor olarak yazabilirsin.\n\n## Strateji\n- Raporu okurken önce başlıklara bak: **Introduction, Findings, Recommendations**. Aradığın bilgi hangi başlığın altında?\n- Rakam duyduğunda yönüne dikkat et: **rise / increase by** mı, **fall / drop by** mı? Karşılaştırmayı da yakala: **compared with**, **twice the figure**.\n- Gölgeleme (shadowing): cümleyi dinle, hemen ardından aynı ritimle tekrarla. **per cent**, **on the whole** gibi kalıplar ağzına yerleşsin.\n- Hikâyeyi önce metni görmeden dinle ve soruları cevapla. Sonra metni açıp kaçırdığın rakamları bul.\n- Raporda her bulguyu bir rakamla destekle, önerileri numaralı yaz ve kişisel duygudan kaçın.\n\n## Model metin\n> Report: Small vans for city deliveries\n>\n> Introduction\n> This report presents the results of a six-month study on delivery vans in Istanbul. Its aim is to decide whether small vans should replace some of our trucks.\n>\n> Method\n> We tracked 200 deliveries in Kadıköy and Beşiktaş. Half were made with trucks and half with small vans.\n>\n> Findings\n> The results were clear. Fuel use fell by 21 per cent, and the cost per delivery dropped from 90 to 74 lira. Customers were also more satisfied, as the vans could park closer to their doors. However, the vans were not suitable for heavy orders, and drivers needed about two weeks to learn the new routes.\n>\n> Limitations\n> The study only covered two districts, so the results may be different in other parts of the city.\n>\n> Recommendations\n> Based on these findings, we recommend the following:\n> 1. Replace ten old trucks with small vans next year.\n> 2. Test the vans in two more districts before making further changes.\n> 3. Keep two trucks for heavy orders.\n>\n> Conclusion\n> On the whole, the evidence suggests that small vans are cheaper and greener. A gradual change is the safest option.\n\nYapı: başlık, amaç (Introduction), yöntem, rakamlı bulgular, sınırlılıklar, numaralı öneriler ve tek cümlelik sonuç. Bulgularda **However**, sonuçta **On the whole** kullanılıyor; öneriler **we recommend** ile resmî kalıyor.\n\n## Türklerin sık hatası\n- ❌ Costs fell with 8 per cent. ✅ Costs fell **by** 8 per cent. (Değişimin miktarı **by** ile verilir: rise by, drop by.)\n- ❌ Aim of this report is to compare the branches. ✅ **The** aim of this report is to compare the branches. (Belirli bir şeyden söz ediyorsan **the**: the results, the study.)",
+      "nodes": [
+        {
+          "id": "s8u11l1",
+          "type": "lesson",
+          "title": "Dinleme: Rakamlar ve bulgular",
+          "description": "Sunumda ve toplantıda geçen rakamları ve eğilimleri yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "The number of deliveries went up by twelve per cent in the first quarter of the year.",
+              "answers": [
+                "The number of deliveries went up by twelve per cent in the first quarter of the year.",
+                "The number of deliveries went up by 12 per cent in the first quarter of the year.",
+                "The number of deliveries went up by 12% in the first quarter of the year.",
+                "The number of deliveries went up by twelve percent in the first quarter of the year.",
+                "The number of deliveries went up by 12 percent in the first quarter of the year."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "Overall, the results are encouraging, but there is still room for improvement.",
+              "translation": "Genel olarak sonuçlar umut verici, ama hâlâ geliştirilecek yer var.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "What I'd like to show you first is how the costs have changed since March.",
+              "answers": [
+                "What I'd like to show you first is how the costs have changed since March.",
+                "What I would like to show you first is how the costs have changed since March."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Costs rose ___ eight per cent compared with last year.",
+              "translation": "Maliyetler geçen yıla göre yüzde sekiz arttı.",
+              "answer": "by",
+              "choices": [
+                "by",
+                "with",
+                "at"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It's worth noting that a lot of customers didn't answer the second part of the survey.",
+              "answers": [
+                "It's worth noting that a lot of customers didn't answer the second part of the survey.",
+                "It is worth noting that a lot of customers didn't answer the second part of the survey.",
+                "It's worth noting that a lot of customers did not answer the second part of the survey.",
+                "It is worth noting that a lot of customers did not answer the second part of the survey."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "The figures clearly show that smaller vans use less fuel in the city.",
+              "translation": "Rakamlar küçük kamyonetlerin şehirde daha az yakıt kullandığını açıkça gösteriyor.",
+              "rate": 0.95
+            },
+            {
+              "type": "listen",
+              "text": "Sales fell slightly in July, but we've seen a strong recovery over the last two months.",
+              "answers": [
+                "Sales fell slightly in July, but we've seen a strong recovery over the last two months.",
+                "Sales fell slightly in July, but we have seen a strong recovery over the last two months."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The survey was carried out ___ a period of six weeks.",
+              "translation": "Anket altı haftalık bir süre boyunca yapıldı.",
+              "answer": "over",
+              "choices": [
+                "over",
+                "since",
+                "until"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "bulgular",
+                  "findings"
+                ],
+                [
+                  "öneriler",
+                  "recommendations"
+                ],
+                [
+                  "anket",
+                  "survey"
+                ],
+                [
+                  "artış",
+                  "increase"
+                ],
+                [
+                  "düşüş",
+                  "decline"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u11l2",
+          "type": "lesson",
+          "title": "Okuma: Moda şubesi raporu",
+          "description": "Rakamlarla dolu bir raporda bulguları ve önerileri bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Report: The Moda branch after three months\nPrepared by Elif, with data from Kerem's ordering app\n\nIntroduction\nThis report looks at the first three months of our second café, which opened in Moda in March. Its aim is to compare the new branch with our first café and to suggest changes for the summer. The data comes from the till, from the ordering app and from a short survey that 240 customers completed.\n\nFindings\nSales: The Moda branch served around 9,000 customers, roughly 70 per cent of the first café's number. However, the average bill was higher: 185 lira compared with 150 lira. In other words, people there come less often but spend more.\nBusy times: What surprised us most was the timing. In the first café, the busiest hours are between eight and ten in the morning. In Moda, almost half of all orders arrive after four in the afternoon, mainly from students and people working on laptops.\nThe app: Around 35 per cent of orders in Moda were placed through the app, which is twice the figure for the first café. Customers who used it waited an average of four minutes, against nine minutes for those who ordered at the counter.\nSurvey: Most customers (82 per cent) rated the coffee as excellent. On the other hand, 41 per cent said the café was too noisy in the evenings, and many complained about the lack of power sockets.\nCosts: Rent remains the biggest problem. It currently takes up 38 per cent of the branch's income, which is clearly too high in the long term.\n\nRecommendations\n1. Open one hour later in the morning and stay open until eleven at night from June to September.\n2. Create a quiet area with extra sockets for people who want to work.\n3. Offer a small discount to customers who order through the app, since this reduces queues.\n4. Try to renegotiate the rent before the contract is renewed in January.\n\nConclusion\nOn the whole, the first three months have been a success. The branch has found its own customers, and they are rather different from those of our first café. If we adapt to them rather than copy the original, Moda could become profitable within a year.",
+              "question": "Moda şubesinde ortalama hesap ne kadar?",
+              "options": [
+                "150 lira",
+                "185 lira",
+                "240 lira",
+                "38 lira"
+              ],
+              "answer": 1,
+              "explanation": "\"185 lira\" doğru: metinde \"the average bill was higher: 185 lira compared with 150 lira\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Report: The Moda branch after three months\nPrepared by Elif, with data from Kerem's ordering app\n\nIntroduction\nThis report looks at the first three months of our second café, which opened in Moda in March. Its aim is to compare the new branch with our first café and to suggest changes for the summer. The data comes from the till, from the ordering app and from a short survey that 240 customers completed.\n\nFindings\nSales: The Moda branch served around 9,000 customers, roughly 70 per cent of the first café's number. However, the average bill was higher: 185 lira compared with 150 lira. In other words, people there come less often but spend more.\nBusy times: What surprised us most was the timing. In the first café, the busiest hours are between eight and ten in the morning. In Moda, almost half of all orders arrive after four in the afternoon, mainly from students and people working on laptops.\nThe app: Around 35 per cent of orders in Moda were placed through the app, which is twice the figure for the first café. Customers who used it waited an average of four minutes, against nine minutes for those who ordered at the counter.\nSurvey: Most customers (82 per cent) rated the coffee as excellent. On the other hand, 41 per cent said the café was too noisy in the evenings, and many complained about the lack of power sockets.\nCosts: Rent remains the biggest problem. It currently takes up 38 per cent of the branch's income, which is clearly too high in the long term.\n\nRecommendations\n1. Open one hour later in the morning and stay open until eleven at night from June to September.\n2. Create a quiet area with extra sockets for people who want to work.\n3. Offer a small discount to customers who order through the app, since this reduces queues.\n4. Try to renegotiate the rent before the contract is renewed in January.\n\nConclusion\nOn the whole, the first three months have been a success. The branch has found its own customers, and they are rather different from those of our first café. If we adapt to them rather than copy the original, Moda could become profitable within a year.",
+              "question": "Moda'da siparişlerin neredeyse yarısı ne zaman geliyor?",
+              "options": [
+                "Between eight and ten in the morning",
+                "At lunchtime",
+                "After four in the afternoon",
+                "After eleven at night"
+              ],
+              "answer": 2,
+              "explanation": "\"After four in the afternoon\" doğru: metinde \"almost half of all orders arrive after four in the afternoon\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Report: The Moda branch after three months\nPrepared by Elif, with data from Kerem's ordering app\n\nIntroduction\nThis report looks at the first three months of our second café, which opened in Moda in March. Its aim is to compare the new branch with our first café and to suggest changes for the summer. The data comes from the till, from the ordering app and from a short survey that 240 customers completed.\n\nFindings\nSales: The Moda branch served around 9,000 customers, roughly 70 per cent of the first café's number. However, the average bill was higher: 185 lira compared with 150 lira. In other words, people there come less often but spend more.\nBusy times: What surprised us most was the timing. In the first café, the busiest hours are between eight and ten in the morning. In Moda, almost half of all orders arrive after four in the afternoon, mainly from students and people working on laptops.\nThe app: Around 35 per cent of orders in Moda were placed through the app, which is twice the figure for the first café. Customers who used it waited an average of four minutes, against nine minutes for those who ordered at the counter.\nSurvey: Most customers (82 per cent) rated the coffee as excellent. On the other hand, 41 per cent said the café was too noisy in the evenings, and many complained about the lack of power sockets.\nCosts: Rent remains the biggest problem. It currently takes up 38 per cent of the branch's income, which is clearly too high in the long term.\n\nRecommendations\n1. Open one hour later in the morning and stay open until eleven at night from June to September.\n2. Create a quiet area with extra sockets for people who want to work.\n3. Offer a small discount to customers who order through the app, since this reduces queues.\n4. Try to renegotiate the rent before the contract is renewed in January.\n\nConclusion\nOn the whole, the first three months have been a success. The branch has found its own customers, and they are rather different from those of our first café. If we adapt to them rather than copy the original, Moda could become profitable within a year.",
+              "question": "Uygulamayla ilgili rakamlardan hangi sonuç çıkarılabilir?",
+              "options": [
+                "Ordering through the app saves customers time",
+                "Most customers in Moda dislike the app",
+                "The app is more popular in the first café",
+                "The app has made the café noisier"
+              ],
+              "answer": 0,
+              "explanation": "\"Ordering through the app saves customers time\" doğru: uygulamayla sipariş verenler ortalama dört dakika, kasada sipariş verenler dokuz dakika bekliyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Report: The Moda branch after three months\nPrepared by Elif, with data from Kerem's ordering app\n\nIntroduction\nThis report looks at the first three months of our second café, which opened in Moda in March. Its aim is to compare the new branch with our first café and to suggest changes for the summer. The data comes from the till, from the ordering app and from a short survey that 240 customers completed.\n\nFindings\nSales: The Moda branch served around 9,000 customers, roughly 70 per cent of the first café's number. However, the average bill was higher: 185 lira compared with 150 lira. In other words, people there come less often but spend more.\nBusy times: What surprised us most was the timing. In the first café, the busiest hours are between eight and ten in the morning. In Moda, almost half of all orders arrive after four in the afternoon, mainly from students and people working on laptops.\nThe app: Around 35 per cent of orders in Moda were placed through the app, which is twice the figure for the first café. Customers who used it waited an average of four minutes, against nine minutes for those who ordered at the counter.\nSurvey: Most customers (82 per cent) rated the coffee as excellent. On the other hand, 41 per cent said the café was too noisy in the evenings, and many complained about the lack of power sockets.\nCosts: Rent remains the biggest problem. It currently takes up 38 per cent of the branch's income, which is clearly too high in the long term.\n\nRecommendations\n1. Open one hour later in the morning and stay open until eleven at night from June to September.\n2. Create a quiet area with extra sockets for people who want to work.\n3. Offer a small discount to customers who order through the app, since this reduces queues.\n4. Try to renegotiate the rent before the contract is renewed in January.\n\nConclusion\nOn the whole, the first three months have been a success. The branch has found its own customers, and they are rather different from those of our first café. If we adapt to them rather than copy the original, Moda could become profitable within a year.",
+              "question": "Elif kira konusunda ne düşünüyor?",
+              "options": [
+                "It is acceptable for a new branch",
+                "It is too high to continue like this for long",
+                "It will fall automatically in January",
+                "It is lower than in the first café"
+              ],
+              "answer": 1,
+              "explanation": "\"It is too high to continue like this for long\" doğru: metinde kiranın gelirin yüzde 38'ini tuttuğu ve bunun \"clearly too high in the long term\" olduğu yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Report: The Moda branch after three months\nPrepared by Elif, with data from Kerem's ordering app\n\nIntroduction\nThis report looks at the first three months of our second café, which opened in Moda in March. Its aim is to compare the new branch with our first café and to suggest changes for the summer. The data comes from the till, from the ordering app and from a short survey that 240 customers completed.\n\nFindings\nSales: The Moda branch served around 9,000 customers, roughly 70 per cent of the first café's number. However, the average bill was higher: 185 lira compared with 150 lira. In other words, people there come less often but spend more.\nBusy times: What surprised us most was the timing. In the first café, the busiest hours are between eight and ten in the morning. In Moda, almost half of all orders arrive after four in the afternoon, mainly from students and people working on laptops.\nThe app: Around 35 per cent of orders in Moda were placed through the app, which is twice the figure for the first café. Customers who used it waited an average of four minutes, against nine minutes for those who ordered at the counter.\nSurvey: Most customers (82 per cent) rated the coffee as excellent. On the other hand, 41 per cent said the café was too noisy in the evenings, and many complained about the lack of power sockets.\nCosts: Rent remains the biggest problem. It currently takes up 38 per cent of the branch's income, which is clearly too high in the long term.\n\nRecommendations\n1. Open one hour later in the morning and stay open until eleven at night from June to September.\n2. Create a quiet area with extra sockets for people who want to work.\n3. Offer a small discount to customers who order through the app, since this reduces queues.\n4. Try to renegotiate the rent before the contract is renewed in January.\n\nConclusion\nOn the whole, the first three months have been a success. The branch has found its own customers, and they are rather different from those of our first café. If we adapt to them rather than copy the original, Moda could become profitable within a year.",
+              "question": "Müşterilerin akşamlarla ilgili şikâyeti ne?",
+              "options": [
+                "The staff are too slow",
+                "The coffee is too expensive",
+                "The music is too quiet",
+                "The café is too noisy"
+              ],
+              "answer": 3,
+              "explanation": "\"The café is too noisy\" doğru: metinde \"41 per cent said the café was too noisy in the evenings\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Report: The Moda branch after three months\nPrepared by Elif, with data from Kerem's ordering app\n\nIntroduction\nThis report looks at the first three months of our second café, which opened in Moda in March. Its aim is to compare the new branch with our first café and to suggest changes for the summer. The data comes from the till, from the ordering app and from a short survey that 240 customers completed.\n\nFindings\nSales: The Moda branch served around 9,000 customers, roughly 70 per cent of the first café's number. However, the average bill was higher: 185 lira compared with 150 lira. In other words, people there come less often but spend more.\nBusy times: What surprised us most was the timing. In the first café, the busiest hours are between eight and ten in the morning. In Moda, almost half of all orders arrive after four in the afternoon, mainly from students and people working on laptops.\nThe app: Around 35 per cent of orders in Moda were placed through the app, which is twice the figure for the first café. Customers who used it waited an average of four minutes, against nine minutes for those who ordered at the counter.\nSurvey: Most customers (82 per cent) rated the coffee as excellent. On the other hand, 41 per cent said the café was too noisy in the evenings, and many complained about the lack of power sockets.\nCosts: Rent remains the biggest problem. It currently takes up 38 per cent of the branch's income, which is clearly too high in the long term.\n\nRecommendations\n1. Open one hour later in the morning and stay open until eleven at night from June to September.\n2. Create a quiet area with extra sockets for people who want to work.\n3. Offer a small discount to customers who order through the app, since this reduces queues.\n4. Try to renegotiate the rent before the contract is renewed in January.\n\nConclusion\nOn the whole, the first three months have been a success. The branch has found its own customers, and they are rather different from those of our first café. If we adapt to them rather than copy the original, Moda could become profitable within a year.",
+              "question": "Raporun sonucuna göre Moda şubesi nasıl kârlı hâle gelebilir?",
+              "options": [
+                "By copying the first café exactly",
+                "By closing earlier in the evening",
+                "By raising coffee prices",
+                "By adapting to its own customers"
+              ],
+              "answer": 3,
+              "explanation": "\"By adapting to its own customers\" doğru: sonuç bölümünde \"If we adapt to them rather than copy the original, Moda could become profitable\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kira",
+                  "rent"
+                ],
+                [
+                  "gelir",
+                  "income"
+                ],
+                [
+                  "kuyruk",
+                  "queue"
+                ],
+                [
+                  "indirim",
+                  "discount"
+                ],
+                [
+                  "sözleşme",
+                  "contract"
+                ]
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Raporda bir öneriyi en resmî şekilde nasıl yazarsın?",
+              "answer": "We recommend opening later.",
+              "choices": [
+                {
+                  "text": "We recommend opening later.",
+                  "emoji": "📄"
+                },
+                {
+                  "text": "Let's just open later!",
+                  "emoji": "😎"
+                },
+                {
+                  "text": "Open later, guys.",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "Maybe open later? Dunno.",
+                  "emoji": "🤷"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Staff costs take ___ almost a third of our budget.",
+              "translation": "Personel giderleri bütçemizin neredeyse üçte birini oluşturuyor.",
+              "answer": "up",
+              "choices": [
+                "up",
+                "over",
+                "in"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u11s",
+          "type": "story",
+          "title": "Rapor için rakamlar",
+          "description": "Müdür, Deniz'den konferanstaki verileri yönetim kurulu için bir rapora dönüştürmesini istiyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "Deniz, everyone is still talking about your conference talk. Well done. Now I need something a little less exciting from you.",
+              "translation": "Deniz, herkes hâlâ konferanstaki konuşmanı konuşuyor. Tebrikler. Şimdi senden biraz daha az heyecan verici bir şey istiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Let me guess. A report?",
+              "translation": "Tahmin edeyim. Bir rapor mu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "Exactly. The board meets on the fifteenth, and they want the van study in writing. No slides, no jokes, just the facts.",
+              "translation": "Aynen öyle. Yönetim kurulu ayın on beşinde toplanıyor ve kamyonet çalışmasını yazılı olarak istiyorlar. Slayt yok, şaka yok, sadece gerçekler."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "That's fine. Most of the data is already in my presentation. I'll just need to organise it properly.",
+              "translation": "Sorun değil. Verilerin çoğu zaten sunumumda var. Sadece onları düzgünce düzenlemem gerekecek."
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "Good. So remind me of the key figures. How many deliveries did you track in the end?",
+              "translation": "Güzel. O zaman bana temel rakamları hatırlat. Sonunda kaç teslimatı takip ettiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Two hundred over six months, all in Kadıköy and Beşiktaş. Half with the big trucks and half with the small vans.",
+              "translation": "Altı ayda iki yüz, hepsi Kadıköy ve Beşiktaş'ta. Yarısı büyük kamyonlarla, yarısı küçük kamyonetlerle."
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "And the fuel saving was twenty per cent?",
+              "translation": "Yakıt tasarrufu da yüzde yirmi miydi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Twenty-one, to be precise. But what the board will care about more is the cost per delivery. It fell from ninety lira to seventy-four.",
+              "translation": "Tam olarak yüzde yirmi bir. Ama yönetim kurulunun daha çok önemseyeceği şey teslimat başına maliyet. Doksan liradan yetmiş dörde düştü."
+            },
+            {
+              "kind": "question",
+              "prompt": "Teslimat başına maliyet kaç liraya düştü?",
+              "choices": [
+                "Doksan",
+                "Yirmi bir",
+                "Yetmiş dört"
+              ],
+              "answer": "Yetmiş dört"
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "Now that's a number they'll remember. Were there any problems?",
+              "translation": "İşte akılda kalacak bir rakam. Hiç sorun çıktı mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "A few. The small vans can't carry heavy furniture, so we still needed two trucks for some orders. And the drivers took a while to learn the new routes.",
+              "translation": "Birkaç tane. Küçük kamyonetler ağır mobilya taşıyamıyor, bu yüzden bazı siparişler için yine iki kamyona ihtiyacımız oldu. Sürücülerin yeni rotaları öğrenmesi de biraz zaman aldı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "Put that in. The board doesn't trust reports that sound too perfect.",
+              "translation": "Bunu da yaz. Yönetim kurulu fazla mükemmel görünen raporlara güvenmez."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Agreed. I was planning a section called Limitations anyway. It was the limitations that the audience asked about most at the conference.",
+              "translation": "Katılıyorum. Zaten Sınırlılıklar diye bir bölüm planlıyordum. Konferansta dinleyicilerin en çok sorduğu şey sınırlılıklardı."
+            },
+            {
+              "kind": "question",
+              "prompt": "Müdür sorunların da rapora yazılmasını neden istiyor?",
+              "choices": [
+                "Rapor çok kısa kalacağı için",
+                "Yönetim kurulu fazla mükemmel görünen raporlara güvenmediği için",
+                "Deniz sunumda sorunlardan hiç bahsetmediği için"
+              ],
+              "answer": "Yönetim kurulu fazla mükemmel görünen raporlara güvenmediği için"
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "How long should it be? Last year somebody sent them forty pages, and nobody read past page three.",
+              "translation": "Ne uzunlukta olmalı? Geçen yıl biri onlara kırk sayfa göndermişti ve kimse üçüncü sayfadan öteye okumadı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Four pages at most. A one-paragraph summary at the top, then the method, the findings, the limitations and my recommendations.",
+              "translation": "En fazla dört sayfa. En üstte bir paragraflık özet, sonra yöntem, bulgular, sınırlılıklar ve önerilerim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "And what exactly are you going to recommend?",
+              "translation": "Peki tam olarak ne önereceksin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Two things. First, we replace ten old trucks with small vans next year. Second, we test the vans in two more districts before we go any further.",
+              "translation": "İki şey. Birincisi, gelecek yıl on eski kamyonun yerine küçük kamyonet alalım. İkincisi, daha ileri gitmeden önce kamyonetleri iki ilçede daha deneyelim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz gelecek yıl kaç eski kamyonun değiştirilmesini öneriyor?",
+              "choices": [
+                "İki",
+                "On",
+                "Hepsinin"
+              ],
+              "answer": "On"
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "Why not replace all of them at once? It would save more money.",
+              "translation": "Neden hepsini birden değiştirmiyoruz? Daha çok para tasarruf ederiz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "It would, but the study only covered two districts. If the results are different in Üsküdar, for example, we'd lose a lot of money very quickly.",
+              "translation": "Ederiz, ama çalışma sadece iki ilçeyi kapsadı. Örneğin Üsküdar'da sonuçlar farklı çıkarsa çok hızlı bir şekilde çok para kaybederiz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "Fair enough. Careful, but not too careful. I like it.",
+              "translation": "Haklısın. Dikkatli ama aşırı dikkatli değil. Hoşuma gitti."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "One more thing. Could I include a chart that shows the monthly costs? It makes the trend much easier to see.",
+              "translation": "Bir şey daha. Aylık maliyetleri gösteren bir grafik ekleyebilir miyim? Eğilimi görmeyi çok kolaylaştırıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "Of course. Just make sure it has a clear title. The chairman hates charts he can't understand.",
+              "translation": "Tabii. Sadece net bir başlığı olduğundan emin ol. Başkan anlayamadığı grafiklerden nefret eder."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"Just make sure it has a clear title\" cümlesindeki 'it' neyi anlatıyor?",
+              "choices": [
+                "Rapor",
+                "Grafik",
+                "Toplantı"
+              ],
+              "answer": "Grafik"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Noted. I'll send you a first draft on Monday, so you've got time to comment before it goes to the board.",
+              "translation": "Not aldım. Pazartesi sana ilk taslağı gönderirim, böylece yönetim kuruluna gitmeden önce yorum yapmaya vaktin olur."
+            },
+            {
+              "kind": "line",
+              "speaker": "Müdür",
+              "avatar": "👔",
+              "text": "Perfect. And Deniz? Write it in plain English. Nobody has ever complained that a report was too easy to read.",
+              "translation": "Mükemmel. Ve Deniz? Sade bir İngilizceyle yaz. Bugüne kadar kimse bir raporun fazla kolay okunduğundan şikâyet etmedi."
+            },
+            {
+              "kind": "question",
+              "prompt": "Bu konuşma esas olarak ne hakkında?",
+              "choices": [
+                "Deniz'in konferans sunumunun eleştirisi",
+                "Yönetim kurulu için hazırlanacak raporun içeriği ve yapısı",
+                "Yeni kamyonetler için fiyat pazarlığı"
+              ],
+              "answer": "Yönetim kurulu için hazırlanacak raporun içeriği ve yapısı"
+            }
+          ]
+        },
+        {
+          "id": "s8u11l3",
+          "type": "lesson",
+          "title": "Konuşma: Bulguları sunmak",
+          "description": "Bir çalışmanın sonuçlarını bir dakikada sözlü olarak özetle",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "Let me start with the most important finding from our study.",
+              "translation": "En önemli bulgumuzla başlayayım.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "On the whole, the results were better than we had expected.",
+              "translation": "Genel olarak sonuçlar beklediğimizden iyiydi.",
+              "rate": 0.95
+            },
+            {
+              "type": "speak",
+              "text": "Our study looked at two hundred deliveries over six months.",
+              "translation": "Çalışmamız altı ay boyunca iki yüz teslimatı inceledi."
+            },
+            {
+              "type": "speak",
+              "text": "The most striking finding was a twenty-one per cent drop in fuel use.",
+              "translation": "En çarpıcı bulgu, yakıt kullanımındaki yüzde yirmi birlik düşüştü."
+            },
+            {
+              "type": "speak",
+              "text": "However, the small vans were not suitable for heavy orders.",
+              "translation": "Ancak küçük kamyonetler ağır siparişlere uygun değildi."
+            },
+            {
+              "type": "speak",
+              "text": "We therefore recommend a gradual change, starting with ten vans.",
+              "translation": "Bu nedenle on kamyonetle başlayan kademeli bir değişim öneriyoruz."
+            },
+            {
+              "type": "select",
+              "prompt": "Toplantıda biri rakamlarına itiraz ediyor. En uygun cevap hangisi?",
+              "answer": "Fair point, let me check that.",
+              "choices": [
+                {
+                  "text": "Fair point, let me check that.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "No, you're wrong.",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "Whatever you say.",
+                  "emoji": "🙄"
+                },
+                {
+                  "text": "That's not my problem.",
+                  "emoji": "🤷"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Yönetim kuruluna sunum yapıyorsun ve maliyetler bölümüne geçmek istiyorsun. En uygun ifade hangisi?",
+              "answer": "Let me turn to the costs.",
+              "choices": [
+                {
+                  "text": "Let me turn to the costs.",
+                  "emoji": "➡️"
+                },
+                {
+                  "text": "OK, costs now, yeah?",
+                  "emoji": "😅"
+                },
+                {
+                  "text": "Moving on, whatever.",
+                  "emoji": "🙃"
+                },
+                {
+                  "text": "Costs. Look.",
+                  "emoji": "👀"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Açıkçası rakamlar beni de şaşırttı.",
+              "lang": "tr",
+              "answers": [
+                "To be honest, the figures surprised me too",
+                "To be honest, the figures surprised me as well",
+                "The figures surprised me too, to be honest",
+                "Honestly, the figures surprised me too"
+              ],
+              "tokens": [
+                "To",
+                "be",
+                "honest",
+                "the",
+                "figures",
+                "surprised",
+                "me",
+                "too",
+                "surprise",
+                "a"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u11l4",
+          "type": "lesson",
+          "title": "Yazma: Kısa bir rapor",
+          "description": "Başlıklar, bulgular ve önerilerle 200 kelimelik bir rapor yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Yakıt kullanımı yüzde 21 düştü.",
+              "lang": "tr",
+              "answers": [
+                "Fuel use fell by 21 per cent",
+                "Fuel use fell by twenty-one per cent",
+                "Fuel use dropped by 21 per cent"
+              ],
+              "tokens": [
+                "Fuel",
+                "use",
+                "fell",
+                "by",
+                "21",
+                "per",
+                "cent",
+                "with",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Çalışma yalnızca iki ilçeyi kapsadı.",
+              "lang": "tr",
+              "answers": [
+                "The study only covered two districts",
+                "The study covered only two districts"
+              ],
+              "tokens": [
+                "The",
+                "study",
+                "only",
+                "covered",
+                "two",
+                "districts",
+                "a",
+                "district",
+                "covers"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu bulgulara dayanarak aşağıdakileri öneriyoruz.",
+              "lang": "tr",
+              "answers": [
+                "Based on these findings, we recommend the following",
+                "We recommend the following based on these findings"
+              ],
+              "tokens": [
+                "Based",
+                "on",
+                "these",
+                "findings",
+                "we",
+                "recommend",
+                "the",
+                "following",
+                "to",
+                "in"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Sales rose in the evenings. ___, morning sales were lower than expected.",
+              "translation": "Akşam satışları arttı. Ancak sabah satışları beklenenden düşüktü.",
+              "answer": "However",
+              "choices": [
+                "However",
+                "Therefore",
+                "Furthermore"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "___ aim of this report is to compare the two branches.",
+              "translation": "Bu raporun amacı iki şubeyi karşılaştırmaktır.",
+              "answer": "The",
+              "choices": [
+                "The",
+                "A",
+                "An"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The results are in line ___ our expectations.",
+              "translation": "Sonuçlar beklentilerimizle uyumlu.",
+              "answer": "with",
+              "choices": [
+                "with",
+                "to",
+                "for"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir raporda bölümlerin en uygun sırası hangisi?",
+              "answer": "Aim, findings, recommendations",
+              "choices": [
+                {
+                  "text": "Aim, findings, recommendations",
+                  "emoji": "📋"
+                },
+                {
+                  "text": "Recommendations, aim, findings",
+                  "emoji": "🔀"
+                },
+                {
+                  "text": "Findings, recommendations, aim",
+                  "emoji": "🔁"
+                },
+                {
+                  "text": "Recommendations, findings, aim",
+                  "emoji": "↩️"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "yöntem",
+                  "method"
+                ],
+                [
+                  "sınırlılıklar",
+                  "limitations"
+                ],
+                [
+                  "bulgular",
+                  "findings"
+                ],
+                [
+                  "teslimat başına maliyet",
+                  "cost per delivery"
+                ],
+                [
+                  "sonuç bölümü",
+                  "conclusion"
+                ]
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Bir proje, anket ya da çalışmanın sonuçlarını yaklaşık 200 kelimelik bir rapor olarak yaz. Başlıklar kullan (Introduction, Findings, Recommendations…), bulguları rakamlarla ver ve en az iki öneri yaz.",
+              "model": "Report: Small vans for city deliveries\n\nIntroduction\nThis report presents the results of a six-month study on delivery vans in Istanbul. Its aim is to decide whether small vans should replace some of our trucks.\n\nMethod\nWe tracked 200 deliveries in Kadıköy and Beşiktaş. Half were made with trucks and half with small vans.\n\nFindings\nThe results were clear. Fuel use fell by 21 per cent, and the cost per delivery dropped from 90 to 74 lira. Customers were also more satisfied, as the vans could park closer to their doors. However, the vans were not suitable for heavy orders, and drivers needed about two weeks to learn the new routes.\n\nLimitations\nThe study only covered two districts, so the results may be different in other parts of the city.\n\nRecommendations\nBased on these findings, we recommend the following:\n1. Replace ten old trucks with small vans next year.\n2. Test the vans in two more districts before making further changes.\n3. Keep two trucks for heavy orders.\n\nConclusion\nOn the whole, the evidence suggests that small vans are cheaper and greener. A gradual change is the safest option.",
+              "minWords": 170,
+              "maxWords": 240,
+              "checklist": [
+                "Başlıklar kullandın (Introduction, Findings, Recommendations…)",
+                "En az üç rakam ya da yüzde verdin (fell by 21 per cent…)",
+                "En az iki numaralı öneri yazdın (We recommend…)",
+                "Bulguları bağlaçlarla bağladın (However, As a result, On the whole)",
+                "Resmî bir dil kullandın: kısaltma ve argo yok"
+              ],
+              "focus": [
+                "article",
+                "tense",
+                "preposition"
+              ],
+              "taskId": "s8u11l4w"
+            }
+          ]
+        },
+        {
+          "id": "s8u11t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s8u11c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s8u12",
+      "title": "Podcast tartışması",
+      "description": "Hızlı ve doğal bir tartışmayı izle, konuşmacıların tutumunu ayırt et",
+      "color": "0xFFF2994A",
+      "theme": "haber",
+      "guide": "## Bu ünitede yapabileceklerin\n- Doğal hızdaki iki kişilik bir tartışmayı izleyip her konuşmacının tutumunu ayırt edebilirsin.\n- Bir tartışma özetinde kimin neyi savunduğunu ve yazarın kendi görüşünü bulabilirsin.\n- Bir tartışmada görüşünü söyleyip karşı görüşün haklı yanını kabul ederek cevap verebilirsin.\n- İki konuşmacının görüşünü 150 kelimelik tarafsız bir özet olarak yazabilirsin.\n\n## Strateji\n- Tutumu ele veren ifadeleri dinle: katılma (**I couldn't agree more**, **fair point**), kısmi kabul (**I'll give you that**, **admittedly**), itiraz (**I'm not convinced**, **come on**).\n- **but**, **though**, **mind you** sonrasına dikkat et: konuşmacının asıl görüşü çoğu zaman bu kelimelerden sonra gelir.\n- Gölgeleme (shadowing): hızlı cümleleri önce 0,85 hızda, sonra normal hızda tekrarla; **I'd**, **you're**, **want to** gibi bağlantılı sesleri taklit et.\n- Hikâyeyi önce metni görmeden dinle. Her konuşmacı için bir cümlelik not al (Kerem: …, Mia: …), sonra soruları cevapla ve metni açıp kontrol et.\n- Özet yazarken kendi görüşünü katma; **argued**, **claimed**, **pointed out**, **stressed** gibi aktarma fiilleri kullan.\n\n## Model metin\n> In this episode of City Talk, the host Mia and Kerem, a software engineer, discussed whether remote work is good for cities.\n>\n> Kerem argued that remote work is mostly positive. In his view, working from home reduces traffic and pollution. He also claimed that the money people used to spend near offices has not disappeared; it is now spent in their own neighbourhoods. He believes that the real problem is management, because managers who measure results instead of hours have no reason not to trust their staff.\n>\n> Mia, on the other hand, was more cautious. She pointed out that many cafés in business districts have closed. She was also worried that young employees learn less when they cannot watch experienced colleagues.\n>\n> Interestingly, both speakers agreed that the traditional nine-to-five model is dying. However, while Kerem emphasised flexibility, Mia stressed that some people still need a desk next to someone.\n\nYapı: girişte konu ve konuşmacılar, her konuşmacıya bir paragraf, sonra anlaştıkları ve ayrıldıkları nokta. Aktarma fiilleri (argued, claimed, pointed out) ve karşıtlık bağlaçları (on the other hand, while) özetin omurgası.\n\n## Türklerin sık hatası\n- ❌ It depends from the job. ✅ It depends **on** the job. (Türkçedeki \"-e bağlı\" İngilizcede **depend on**.)\n- ❌ Mia is agree with Kerem. ✅ Mia **agrees** with Kerem. (**agree** bir fiil; önüne **is** gelmez.)",
+      "nodes": [
+        {
+          "id": "s8u12l1",
+          "type": "lesson",
+          "title": "Dinleme: Hızlı konuşma",
+          "description": "Doğal hızdaki konuşmada bağlantılı sesleri ve tutum ifadelerini yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I'm not saying you're wrong, but I'd look at it from a different angle.",
+              "answers": [
+                "I'm not saying you're wrong, but I'd look at it from a different angle.",
+                "I am not saying you are wrong, but I would look at it from a different angle.",
+                "I'm not saying you're wrong, but I would look at it from a different angle."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "I see where you're coming from, but I'm not entirely convinced.",
+              "translation": "Ne demek istediğini anlıyorum ama tam olarak ikna olmadım.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "To be fair, a lot of people do want to go back to the office.",
+              "answers": [
+                "To be fair, a lot of people do want to go back to the office."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I couldn't agree ___, that's exactly what I think.",
+              "translation": "Sonuna kadar katılıyorum, ben de tam olarak öyle düşünüyorum.",
+              "answer": "more",
+              "choices": [
+                "more",
+                "less",
+                "better"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Do you honestly think that working from home is going to last forever?",
+              "answers": [
+                "Do you honestly think that working from home is going to last forever?"
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "Let's be honest, nobody misses sitting in traffic for two hours.",
+              "translation": "Dürüst olalım, kimse iki saat trafikte oturmayı özlemiyor.",
+              "rate": 0.95
+            },
+            {
+              "type": "listen",
+              "text": "That's exactly my point: it isn't the office that matters, it's the people.",
+              "answers": [
+                "That's exactly my point: it isn't the office that matters, it's the people.",
+                "That is exactly my point: it is not the office that matters, it is the people.",
+                "That's exactly my point: it's not the office that matters, it's the people."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "It depends ___ what kind of job you do.",
+              "translation": "Ne tür bir iş yaptığına bağlı.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "from",
+                "of"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kesinlikle katılıyorum",
+                  "I couldn't agree more"
+                ],
+                [
+                  "bir yere kadar haklısın",
+                  "you have a point"
+                ],
+                [
+                  "ikna olmadım",
+                  "I'm not convinced"
+                ],
+                [
+                  "bence abartıyorsun",
+                  "I think you're exaggerating"
+                ],
+                [
+                  "konuyu dağıtmayalım",
+                  "let's not change the subject"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u12l2",
+          "type": "lesson",
+          "title": "Okuma: Bölüm özeti",
+          "description": "Bir podcast bölümünün yazılı özetinde iki konuğun görüşünü ayırt et",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "City Talk, Episode 14: Should the centre be car-free?\nSummary by Mia, host\n\nThis week's episode was one of our liveliest so far. My two guests, urban planner Aylin Kaya and bookshop owner Murat Demir, disagreed on almost everything, yet they managed to stay friendly throughout.\n\nAylin believes that cars should be banned from the historic centre within five years. In her view, the streets were never designed for heavy traffic, and pedestrians, cyclists and buses should come first. She pointed to cities such as Ghent and Pontevedra, where car-free centres have led to cleaner air and, according to her, more visitors for local shops. \"Once people can walk safely,\" she argued, \"they stay longer and spend more.\"\n\nMurat was far from convinced. He accepts that the air quality is poor, but he is worried about older customers and about deliveries. \"Half of my regular customers are over sixty,\" he said. \"If they can't park nearby, they'll simply order online.\" He also questioned whether examples from small European towns can be applied to a district of half a million people. What he would support is a gradual approach: car-free Sundays first, then a car-free zone around the market, and only later a full ban, depending on the results.\n\nInterestingly, the two guests agreed on more than they expected. Both want better buses, and both think that delivery vans should be allowed in the early morning. The real disagreement was about speed. Aylin sees delay as the main risk, while Murat fears that a sudden ban would hurt small businesses before they could adapt.\n\nListeners were divided too. In our online poll, 54 per cent supported a full ban, 38 per cent preferred Murat's step-by-step plan and the rest were undecided.\n\nPersonally, I left the studio thinking that both of them were partly right. The goal seems clear; the timing is the hard part. Perhaps the most useful result of the discussion is that it moved the debate away from \"cars or no cars\" and towards \"how fast, and with what support for the people most affected\".\n\nNext week: Is remote work good for cities? Kerem, a software engineer, joins me in the studio.",
+              "question": "Aylin araba yasağının ne zamana kadar gelmesini istiyor?",
+              "options": [
+                "On Sundays only",
+                "Within one year",
+                "Within five years",
+                "After the next election"
+              ],
+              "answer": 2,
+              "explanation": "\"Within five years\" doğru: metinde \"cars should be banned from the historic centre within five years\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "City Talk, Episode 14: Should the centre be car-free?\nSummary by Mia, host\n\nThis week's episode was one of our liveliest so far. My two guests, urban planner Aylin Kaya and bookshop owner Murat Demir, disagreed on almost everything, yet they managed to stay friendly throughout.\n\nAylin believes that cars should be banned from the historic centre within five years. In her view, the streets were never designed for heavy traffic, and pedestrians, cyclists and buses should come first. She pointed to cities such as Ghent and Pontevedra, where car-free centres have led to cleaner air and, according to her, more visitors for local shops. \"Once people can walk safely,\" she argued, \"they stay longer and spend more.\"\n\nMurat was far from convinced. He accepts that the air quality is poor, but he is worried about older customers and about deliveries. \"Half of my regular customers are over sixty,\" he said. \"If they can't park nearby, they'll simply order online.\" He also questioned whether examples from small European towns can be applied to a district of half a million people. What he would support is a gradual approach: car-free Sundays first, then a car-free zone around the market, and only later a full ban, depending on the results.\n\nInterestingly, the two guests agreed on more than they expected. Both want better buses, and both think that delivery vans should be allowed in the early morning. The real disagreement was about speed. Aylin sees delay as the main risk, while Murat fears that a sudden ban would hurt small businesses before they could adapt.\n\nListeners were divided too. In our online poll, 54 per cent supported a full ban, 38 per cent preferred Murat's step-by-step plan and the rest were undecided.\n\nPersonally, I left the studio thinking that both of them were partly right. The goal seems clear; the timing is the hard part. Perhaps the most useful result of the discussion is that it moved the debate away from \"cars or no cars\" and towards \"how fast, and with what support for the people most affected\".\n\nNext week: Is remote work good for cities? Kerem, a software engineer, joins me in the studio.",
+              "question": "Murat'ın desteklediği çözüm ne?",
+              "options": [
+                "A gradual, step-by-step approach",
+                "An immediate full ban",
+                "No changes at all",
+                "Moving his shop online"
+              ],
+              "answer": 0,
+              "explanation": "\"A gradual, step-by-step approach\" doğru: metinde \"What he would support is a gradual approach\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "City Talk, Episode 14: Should the centre be car-free?\nSummary by Mia, host\n\nThis week's episode was one of our liveliest so far. My two guests, urban planner Aylin Kaya and bookshop owner Murat Demir, disagreed on almost everything, yet they managed to stay friendly throughout.\n\nAylin believes that cars should be banned from the historic centre within five years. In her view, the streets were never designed for heavy traffic, and pedestrians, cyclists and buses should come first. She pointed to cities such as Ghent and Pontevedra, where car-free centres have led to cleaner air and, according to her, more visitors for local shops. \"Once people can walk safely,\" she argued, \"they stay longer and spend more.\"\n\nMurat was far from convinced. He accepts that the air quality is poor, but he is worried about older customers and about deliveries. \"Half of my regular customers are over sixty,\" he said. \"If they can't park nearby, they'll simply order online.\" He also questioned whether examples from small European towns can be applied to a district of half a million people. What he would support is a gradual approach: car-free Sundays first, then a car-free zone around the market, and only later a full ban, depending on the results.\n\nInterestingly, the two guests agreed on more than they expected. Both want better buses, and both think that delivery vans should be allowed in the early morning. The real disagreement was about speed. Aylin sees delay as the main risk, while Murat fears that a sudden ban would hurt small businesses before they could adapt.\n\nListeners were divided too. In our online poll, 54 per cent supported a full ban, 38 per cent preferred Murat's step-by-step plan and the rest were undecided.\n\nPersonally, I left the studio thinking that both of them were partly right. The goal seems clear; the timing is the hard part. Perhaps the most useful result of the discussion is that it moved the debate away from \"cars or no cars\" and towards \"how fast, and with what support for the people most affected\".\n\nNext week: Is remote work good for cities? Kerem, a software engineer, joins me in the studio.",
+              "question": "Murat'ın yaşlı müşterilerle ilgili sözlerinden ne çıkarılabilir?",
+              "options": [
+                "He thinks older people prefer cycling",
+                "He expects his sales to rise after a ban",
+                "He fears losing customers who depend on cars",
+                "He wants to close his shop on Sundays"
+              ],
+              "answer": 2,
+              "explanation": "\"He fears losing customers who depend on cars\" doğru: müşterilerinin yarısının altmış yaşın üstünde olduğunu ve yakına park edemezlerse internetten sipariş vereceklerini söylüyor."
+            },
+            {
+              "type": "choice",
+              "passage": "City Talk, Episode 14: Should the centre be car-free?\nSummary by Mia, host\n\nThis week's episode was one of our liveliest so far. My two guests, urban planner Aylin Kaya and bookshop owner Murat Demir, disagreed on almost everything, yet they managed to stay friendly throughout.\n\nAylin believes that cars should be banned from the historic centre within five years. In her view, the streets were never designed for heavy traffic, and pedestrians, cyclists and buses should come first. She pointed to cities such as Ghent and Pontevedra, where car-free centres have led to cleaner air and, according to her, more visitors for local shops. \"Once people can walk safely,\" she argued, \"they stay longer and spend more.\"\n\nMurat was far from convinced. He accepts that the air quality is poor, but he is worried about older customers and about deliveries. \"Half of my regular customers are over sixty,\" he said. \"If they can't park nearby, they'll simply order online.\" He also questioned whether examples from small European towns can be applied to a district of half a million people. What he would support is a gradual approach: car-free Sundays first, then a car-free zone around the market, and only later a full ban, depending on the results.\n\nInterestingly, the two guests agreed on more than they expected. Both want better buses, and both think that delivery vans should be allowed in the early morning. The real disagreement was about speed. Aylin sees delay as the main risk, while Murat fears that a sudden ban would hurt small businesses before they could adapt.\n\nListeners were divided too. In our online poll, 54 per cent supported a full ban, 38 per cent preferred Murat's step-by-step plan and the rest were undecided.\n\nPersonally, I left the studio thinking that both of them were partly right. The goal seems clear; the timing is the hard part. Perhaps the most useful result of the discussion is that it moved the debate away from \"cars or no cars\" and towards \"how fast, and with what support for the people most affected\".\n\nNext week: Is remote work good for cities? Kerem, a software engineer, joins me in the studio.",
+              "question": "İki konuk hangi konuda anlaştı?",
+              "options": [
+                "A full ban is needed now",
+                "Delivery vans should be allowed early in the morning",
+                "Air quality is not a real problem",
+                "Small European towns are good models"
+              ],
+              "answer": 1,
+              "explanation": "\"Delivery vans should be allowed early in the morning\" doğru: metinde \"both think that delivery vans should be allowed in the early morning\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "City Talk, Episode 14: Should the centre be car-free?\nSummary by Mia, host\n\nThis week's episode was one of our liveliest so far. My two guests, urban planner Aylin Kaya and bookshop owner Murat Demir, disagreed on almost everything, yet they managed to stay friendly throughout.\n\nAylin believes that cars should be banned from the historic centre within five years. In her view, the streets were never designed for heavy traffic, and pedestrians, cyclists and buses should come first. She pointed to cities such as Ghent and Pontevedra, where car-free centres have led to cleaner air and, according to her, more visitors for local shops. \"Once people can walk safely,\" she argued, \"they stay longer and spend more.\"\n\nMurat was far from convinced. He accepts that the air quality is poor, but he is worried about older customers and about deliveries. \"Half of my regular customers are over sixty,\" he said. \"If they can't park nearby, they'll simply order online.\" He also questioned whether examples from small European towns can be applied to a district of half a million people. What he would support is a gradual approach: car-free Sundays first, then a car-free zone around the market, and only later a full ban, depending on the results.\n\nInterestingly, the two guests agreed on more than they expected. Both want better buses, and both think that delivery vans should be allowed in the early morning. The real disagreement was about speed. Aylin sees delay as the main risk, while Murat fears that a sudden ban would hurt small businesses before they could adapt.\n\nListeners were divided too. In our online poll, 54 per cent supported a full ban, 38 per cent preferred Murat's step-by-step plan and the rest were undecided.\n\nPersonally, I left the studio thinking that both of them were partly right. The goal seems clear; the timing is the hard part. Perhaps the most useful result of the discussion is that it moved the debate away from \"cars or no cars\" and towards \"how fast, and with what support for the people most affected\".\n\nNext week: Is remote work good for cities? Kerem, a software engineer, joins me in the studio.",
+              "question": "Mia tartışma hakkında ne düşünüyor?",
+              "options": [
+                "Murat was completely wrong",
+                "The episode was boring",
+                "Aylin should have been more polite",
+                "Both guests were partly right"
+              ],
+              "answer": 3,
+              "explanation": "\"Both guests were partly right\" doğru: Mia \"I left the studio thinking that both of them were partly right\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "City Talk, Episode 14: Should the centre be car-free?\nSummary by Mia, host\n\nThis week's episode was one of our liveliest so far. My two guests, urban planner Aylin Kaya and bookshop owner Murat Demir, disagreed on almost everything, yet they managed to stay friendly throughout.\n\nAylin believes that cars should be banned from the historic centre within five years. In her view, the streets were never designed for heavy traffic, and pedestrians, cyclists and buses should come first. She pointed to cities such as Ghent and Pontevedra, where car-free centres have led to cleaner air and, according to her, more visitors for local shops. \"Once people can walk safely,\" she argued, \"they stay longer and spend more.\"\n\nMurat was far from convinced. He accepts that the air quality is poor, but he is worried about older customers and about deliveries. \"Half of my regular customers are over sixty,\" he said. \"If they can't park nearby, they'll simply order online.\" He also questioned whether examples from small European towns can be applied to a district of half a million people. What he would support is a gradual approach: car-free Sundays first, then a car-free zone around the market, and only later a full ban, depending on the results.\n\nInterestingly, the two guests agreed on more than they expected. Both want better buses, and both think that delivery vans should be allowed in the early morning. The real disagreement was about speed. Aylin sees delay as the main risk, while Murat fears that a sudden ban would hurt small businesses before they could adapt.\n\nListeners were divided too. In our online poll, 54 per cent supported a full ban, 38 per cent preferred Murat's step-by-step plan and the rest were undecided.\n\nPersonally, I left the studio thinking that both of them were partly right. The goal seems clear; the timing is the hard part. Perhaps the most useful result of the discussion is that it moved the debate away from \"cars or no cars\" and towards \"how fast, and with what support for the people most affected\".\n\nNext week: Is remote work good for cities? Kerem, a software engineer, joins me in the studio.",
+              "question": "Dinleyicilerin yüzde kaçı tam yasağı destekledi?",
+              "options": [
+                "54 per cent",
+                "38 per cent",
+                "8 per cent",
+                "62 per cent"
+              ],
+              "answer": 0,
+              "explanation": "\"54 per cent\" doğru: metinde \"54 per cent supported a full ban\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "tarihi merkez",
+                  "historic centre"
+                ],
+                [
+                  "yaya",
+                  "pedestrian"
+                ],
+                [
+                  "kademeli yaklaşım",
+                  "gradual approach"
+                ],
+                [
+                  "kararsız",
+                  "undecided"
+                ],
+                [
+                  "çevrim içi oylama",
+                  "online poll"
+                ]
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir konuğun görüşünü tarafsız biçimde aktarmak istiyorsun. En uygun ifade hangisi?",
+              "answer": "In her view, cars should go.",
+              "choices": [
+                {
+                  "text": "In her view, cars should go.",
+                  "emoji": "⚖️"
+                },
+                {
+                  "text": "She's obviously wrong about cars.",
+                  "emoji": "👎"
+                },
+                {
+                  "text": "She just hates cars, LOL.",
+                  "emoji": "😂"
+                },
+                {
+                  "text": "Cars should go. Period.",
+                  "emoji": "✋"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Murat was far ___ convinced by the examples from Europe.",
+              "translation": "Murat Avrupa'dan verilen örneklere hiç ikna olmamıştı.",
+              "answer": "from",
+              "choices": [
+                "from",
+                "of",
+                "to"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u12s",
+          "type": "story",
+          "title": "Ofis mi, ev mi?",
+          "description": "Mia'nın podcastinde Kerem'le uzaktan çalışmanın şehirlere etkisini tartışıyorlar",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Welcome back to City Talk. I'm Mia, and today I'm joined by Kerem, a software engineer who hasn't been to an office for, what, three years?",
+              "translation": "City Talk'a tekrar hoş geldiniz. Ben Mia, bugün yanımda üç yıldır, değil mi, ofise adım atmamış bir yazılım mühendisi var: Kerem."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "Three and a half, actually. And honestly, I don't miss it at all.",
+              "translation": "Aslında üç buçuk. Açıkçası hiç de özlemiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Well, that's where we disagree, so let's get straight into it. Is remote work good for cities?",
+              "translation": "İşte orada ayrılıyoruz, o yüzden hemen konuya girelim. Uzaktan çalışma şehirler için iyi mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "For people, definitely. For cities, I'd say mostly yes. Think about traffic. If a million people stay at home two days a week, the roads are emptier and the air is cleaner.",
+              "translation": "İnsanlar için kesinlikle. Şehirler için de bence çoğunlukla evet. Trafiği düşün. Bir milyon kişi haftada iki gün evde kalırsa yollar boşalır, hava temizlenir."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Sure, but look at the business districts. Half the cafés around the big office towers in Levent have closed. Who's going to pay those people's wages?",
+              "translation": "Tamam, ama iş merkezlerine bak. Levent'teki büyük ofis kulelerinin çevresindeki kafelerin yarısı kapandı. O insanların maaşını kim ödeyecek?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "OK, that's a fair point. But the money hasn't disappeared. People are spending it in their own neighbourhoods instead. Elif's café in Moda is full of laptops every afternoon.",
+              "translation": "Tamam, haklı bir nokta. Ama para yok olmadı. İnsanlar onu artık kendi mahallelerinde harcıyor. Elif'in Moda'daki kafesi her öğleden sonra dizüstü bilgisayarlarla dolu."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem'e göre insanlar paralarını artık nerede harcıyor?",
+              "choices": [
+                "Levent'teki ofis kulelerinde",
+                "Kendi mahallelerinde",
+                "İnternetten yurt dışında"
+              ],
+              "answer": "Kendi mahallelerinde"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "I'm not sure that's the whole picture. What worries me more is young people. When I started at the magazine, I learnt everything by listening to the older journalists around me.",
+              "translation": "Bunun tablonun tamamı olduğundan emin değilim. Beni daha çok endişelendiren gençler. Dergide başladığımda her şeyi çevremdeki deneyimli gazetecileri dinleyerek öğrendim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "You can learn online too. Our junior developers have a video call with a mentor every day.",
+              "translation": "İnternetten de öğrenebilirsin. Bizim genç yazılımcılarımız her gün bir mentorla görüntülü görüşme yapıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Every day? Come on. A video call isn't the same as overhearing how an editor talks to an angry writer.",
+              "translation": "Her gün mü? Hadi ama. Görüntülü görüşme, bir editörün kızgın bir yazarla nasıl konuştuğuna kulak misafiri olmakla aynı şey değil."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "Fine, I'll give you that. Some things are easier to learn in a room. But that's an argument for meeting sometimes, not for commuting five days a week.",
+              "translation": "Peki, orada haklısın. Bazı şeyleri aynı odada öğrenmek daha kolay. Ama bu ara sıra buluşmak için bir gerekçe, haftada beş gün işe gidip gelmek için değil."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "So what would you suggest? Because, to be honest, a lot of managers simply don't trust people they can't see.",
+              "translation": "Peki ne önerirsin? Çünkü açıkçası pek çok yönetici göremediği insanlara güvenmiyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "That's a management problem, not a remote work problem. If you measure results instead of hours, trust isn't an issue.",
+              "translation": "Bu bir yönetim sorunu, uzaktan çalışma sorunu değil. Saatleri değil sonuçları ölçersen güven sorun olmaz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Easier said than done. Mind you, I do agree that the old nine-to-five model is dying.",
+              "translation": "Söylemesi kolay. Gerçi eski dokuzdan beşe modelinin ölmekte olduğuna ben de katılıyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "There you go. We agree on something!",
+              "translation": "İşte bak. Bir konuda anlaşıyoruz!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Let me push you a bit, though. Isn't there a risk that cities become lonelier? Lots of people make their friends at work.",
+              "translation": "Yine de seni biraz zorlayayım. Şehirlerin daha yalnız yerler hâline gelme riski yok mu? Pek çok insan arkadaşlarını işte ediniyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "It's a real risk, I admit. Personally, I work from a co-working space two days a week, just to see human faces.",
+              "translation": "Kabul ediyorum, bu gerçek bir risk. Ben kendim haftada iki gün, sırf insan yüzü görmek için ortak bir çalışma alanında çalışıyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"It's a real risk, I admit\" cümlesindeki 'it' neyi anlatıyor?",
+              "choices": [
+                "Ofis kiralarının yükselmesi",
+                "Uzaktan çalışmanın sona ermesi",
+                "Şehirlerin daha yalnız yerler hâline gelmesi"
+              ],
+              "answer": "Şehirlerin daha yalnız yerler hâline gelmesi"
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem haftada kaç gün ortak çalışma alanına gidiyor?",
+              "choices": [
+                "Hiç gitmiyor",
+                "İki gün",
+                "Beş gün"
+              ],
+              "answer": "İki gün"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "So even you need an office. That's the most interesting thing you've said today.",
+              "translation": "Demek sen bile bir ofise ihtiyaç duyuyorsun. Bugün söylediğin en ilginç şey bu."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "A space, not an office. There's a difference.",
+              "translation": "Ofis değil, bir alan. Arada fark var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Is there? Listeners, let us know what you think. Kerem, final thoughts?",
+              "translation": "Var mı? Dinleyiciler, ne düşündüğünüzü bize yazın. Kerem, son sözlerin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "Flexibility. Let people choose, and cities will adapt, just like they always have.",
+              "translation": "Esneklik. İnsanların seçmesine izin verin, şehirler her zaman olduğu gibi uyum sağlar."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "And mine: flexibility, yes, but don't forget the people who need a desk next to someone. That's City Talk for this week.",
+              "translation": "Benimki de şu: esneklik, evet, ama birinin yanında bir masaya ihtiyaç duyan insanları unutmayın. Bu haftalık City Talk'ın sonu."
+            },
+            {
+              "kind": "question",
+              "prompt": "Bu bölümün ana konusu ne?",
+              "choices": [
+                "Levent'teki kafelerin fiyatları",
+                "Genç gazetecilerin maaşları",
+                "Uzaktan çalışmanın şehirlere etkisi"
+              ],
+              "answer": "Uzaktan çalışmanın şehirlere etkisi"
+            },
+            {
+              "kind": "question",
+              "prompt": "Mia'nın genel tutumu hangisi?",
+              "choices": [
+                "Uzaktan çalışmaya tamamen karşı",
+                "Esnekliği destekliyor ama aynı mekânda çalışmanın faydalarını önemsiyor",
+                "Herkesin evden çalışması gerektiğini düşünüyor"
+              ],
+              "answer": "Esnekliği destekliyor ama aynı mekânda çalışmanın faydalarını önemsiyor"
+            }
+          ]
+        },
+        {
+          "id": "s8u12l3",
+          "type": "lesson",
+          "title": "Konuşma: Görüşünü savunmak",
+          "description": "Bir tartışmada görüşünü söyle, karşı görüşü kabul et ve cevap ver",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "That's a fair point, but it doesn't change the bigger picture.",
+              "translation": "Haklı bir nokta ama genel tabloyu değiştirmiyor.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "Let me push back on that a little, if I may.",
+              "translation": "İzin verirsen buna biraz itiraz edeyim.",
+              "rate": 0.95
+            },
+            {
+              "type": "speak",
+              "text": "As far as I'm concerned, flexible working is here to stay.",
+              "translation": "Bana kalırsa esnek çalışma kalıcı."
+            },
+            {
+              "type": "speak",
+              "text": "Admittedly, some things are easier to learn face to face.",
+              "translation": "Kabul etmek gerekir ki bazı şeyleri yüz yüze öğrenmek daha kolay."
+            },
+            {
+              "type": "speak",
+              "text": "Having said that, nobody needs to commute five days a week.",
+              "translation": "Bununla birlikte, kimsenin haftada beş gün işe gidip gelmesi gerekmiyor."
+            },
+            {
+              "type": "speak",
+              "text": "So what I'd suggest is a mix of office days and home days.",
+              "translation": "Bu yüzden önerim, ofis günleriyle ev günlerinin bir karışımı."
+            },
+            {
+              "type": "select",
+              "prompt": "Karşındaki kişi iyi bir noktaya değindi ama sen hâlâ katılmıyorsun. En uygun cevap hangisi?",
+              "answer": "True, but there's more to it.",
+              "choices": [
+                {
+                  "text": "True, but there's more to it.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "You're totally wrong.",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "OK, you win, I suppose.",
+                  "emoji": "🏳️"
+                },
+                {
+                  "text": "Whatever. Next question.",
+                  "emoji": "🙄"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Podcast sunucususun ve konuğun sözünü kibarca kesmen gerekiyor. En uygun ifade hangisi?",
+              "answer": "Sorry, can I just jump in?",
+              "choices": [
+                {
+                  "text": "Sorry, can I just jump in?",
+                  "emoji": "✋"
+                },
+                {
+                  "text": "Stop talking, please.",
+                  "emoji": "🛑"
+                },
+                {
+                  "text": "Be quiet for a second.",
+                  "emoji": "🤫"
+                },
+                {
+                  "text": "Enough of that now.",
+                  "emoji": "😤"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bir yere kadar haklısın ama ben farklı düşünüyorum.",
+              "lang": "tr",
+              "answers": [
+                "You have a point, but I see it differently",
+                "I see it differently, but you have a point",
+                "You've got a point, but I see it differently",
+                "You have a point, but I think differently"
+              ],
+              "tokens": [
+                "You",
+                "have",
+                "a",
+                "point",
+                "but",
+                "I",
+                "see",
+                "it",
+                "differently",
+                "different",
+                "the"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u12l4",
+          "type": "lesson",
+          "title": "Yazma: İki görüşü özetlemek",
+          "description": "Bir tartışmadaki iki konuşmacının görüşünü 150 kelimede tarafsızca özetle",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Kerem uzaktan çalışmanın çoğunlukla olumlu olduğunu savundu.",
+              "lang": "tr",
+              "answers": [
+                "Kerem argued that remote work is mostly positive",
+                "Kerem argued remote work is mostly positive",
+                "Kerem argued that remote work was mostly positive"
+              ],
+              "tokens": [
+                "Kerem",
+                "argued",
+                "that",
+                "remote",
+                "work",
+                "is",
+                "mostly",
+                "positive",
+                "argues",
+                "a",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Mia ise daha temkinliydi.",
+              "lang": "tr",
+              "answers": [
+                "Mia, on the other hand, was more cautious",
+                "On the other hand, Mia was more cautious",
+                "Mia was, on the other hand, more cautious"
+              ],
+              "tokens": [
+                "Mia",
+                "on",
+                "the",
+                "other",
+                "hand",
+                "was",
+                "more",
+                "cautious",
+                "in",
+                "is"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Her iki konuşmacı da geleneksel dokuzdan beşe modelinin ölmekte olduğu konusunda hemfikirdi.",
+              "lang": "tr",
+              "answers": [
+                "Both speakers agreed that the traditional nine-to-five model is dying",
+                "Both speakers agreed the traditional nine-to-five model is dying",
+                "Both speakers agreed that the traditional nine-to-five model was dying"
+              ],
+              "tokens": [
+                "Both",
+                "speakers",
+                "agreed",
+                "that",
+                "the",
+                "traditional",
+                "nine-to-five",
+                "model",
+                "is",
+                "dying",
+                "a",
+                "agree",
+                "with"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Kerem focused on traffic, ___ Mia was more concerned about young employees.",
+              "translation": "Kerem trafiğe odaklandı, Mia ise genç çalışanlar konusunda daha endişeliydi.",
+              "answer": "whereas",
+              "choices": [
+                "whereas",
+                "because",
+                "so that"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Mia works as ___ journalist for a city magazine.",
+              "translation": "Mia bir şehir dergisinde gazeteci olarak çalışıyor.",
+              "answer": "a",
+              "choices": [
+                "a",
+                "the",
+                "one"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Kerem pointed ___ that traffic is lighter on Fridays.",
+              "translation": "Kerem cuma günleri trafiğin daha hafif olduğuna dikkat çekti.",
+              "answer": "out",
+              "choices": [
+                "out",
+                "up",
+                "off"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Tarafsız bir özette hangi cümle en uygun?",
+              "answer": "Mia stressed the risks.",
+              "choices": [
+                {
+                  "text": "Mia stressed the risks.",
+                  "emoji": "📝"
+                },
+                {
+                  "text": "Mia was totally wrong.",
+                  "emoji": "👎"
+                },
+                {
+                  "text": "Mia moaned about stuff.",
+                  "emoji": "😒"
+                },
+                {
+                  "text": "Kerem obviously won.",
+                  "emoji": "🏆"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "savunmak",
+                  "argue"
+                ],
+                [
+                  "vurgulamak",
+                  "stress"
+                ],
+                [
+                  "dikkat çekmek",
+                  "point out"
+                ],
+                [
+                  "kabul etmek",
+                  "admit"
+                ],
+                [
+                  "iddia etmek",
+                  "claim"
+                ]
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Dinlediğin podcast tartışmasını yaklaşık 150 kelimeyle özetle: konuyu ve konuşmacıları tanıt, iki konuşmacının görüşünü ve gerekçelerini ayrı paragraflarda aktar, anlaştıkları noktayı belirt. Kendi görüşünü katma.",
+              "model": "In this episode of City Talk, the host Mia and Kerem, a software engineer, discussed whether remote work is good for cities.\n\nKerem argued that remote work is mostly positive. In his view, working from home reduces traffic and pollution. He also claimed that the money people used to spend near offices has not disappeared; it is now spent in their own neighbourhoods. He believes that the real problem is management, because managers who measure results instead of hours have no reason not to trust their staff.\n\nMia, on the other hand, was more cautious. She pointed out that many cafés in business districts have closed. She was also worried that young employees learn less when they cannot watch experienced colleagues.\n\nInterestingly, both speakers agreed that the traditional nine-to-five model is dying. However, while Kerem emphasised flexibility, Mia stressed that some people still need a desk next to someone.",
+              "minWords": 120,
+              "maxWords": 180,
+              "checklist": [
+                "Girişte tartışmanın konusunu ve konuşmacıları tanıttın",
+                "Her konuşmacıya ayrı bir paragraf ayırdın",
+                "En az üç aktarma fiili kullandın (argued, claimed, pointed out…)",
+                "Karşıtlık bağlacı kullandın (on the other hand, whereas, however)",
+                "Kendi görüşünü katmadan tarafsız yazdın"
+              ],
+              "focus": [
+                "tense",
+                "article"
+              ],
+              "taskId": "s8u12l4w"
+            }
+          ]
+        },
+        {
+          "id": "s8u12t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s8u12c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s8u13",
+      "title": "Mülakat",
+      "description": "İş mülakatında kendini ayrıntılı ve esnek biçimde anlat, ön yazı yaz",
+      "color": "0xFF14A098",
+      "theme": "mulakat",
+      "guide": "## Bu ünitede yapabileceklerin\n- İş mülakatında deneyimini, başarılarını ve hedeflerini ayrıntılı anlatabilirsin.\n- Beklenmedik ya da zor sorulara esnek ve kibar cevap verebilirsin.\n- Ayrıntılı bir iş ilanından görevleri, şartları ve şirketin beklentilerini bulabilirsin.\n- Bir iş ilanına 200 kelimelik resmî bir ön yazı (cover letter) yazabilirsin.\n\n## Strateji\n- \"Tell me about yourself\" cevabını dört parçaya böl: şimdiki görevin, deneyimin (ne zamandır), gurur duyduğun bir sonuç, neden bu iş.\n- Başarıyı rakamla anlat ve vurgulu yapı kullan: **What I am most proud of is…**, **It was… that…**\n- Zor soruda zaman kazan: **That's a great question.** ya da **Let me think about that for a second.** Sonra kısa bir örnek ver.\n- Gölgeleme (shadowing) ile mülakat cümlelerini akıcı hâle getir; hikâyeyi önce metni görmeden dinle, görüşmecinin sorularını not al, sonra metinle kontrol et.\n- Ön yazıda ilandaki şartlara tek tek cevap ver ve resmî kapanış kullan: **Dear Mr…** ile başladıysan **Yours sincerely**.\n\n## Model metin\n> Dear Mr Clarke,\n>\n> I am writing to apply for the position of Head of Urban Logistics in Istanbul, which was advertised on your website.\n>\n> I have worked in logistics for six years, and for the last four years I have been an operations manager at a delivery company in Istanbul. In this role, I am responsible for a team of fourteen people and plan around three thousand deliveries a week.\n>\n> What I am most proud of is a six-month study on small vans. It showed that they reduced fuel use by 21 per cent and cut the cost per delivery by about a sixth. As a result, the board has approved ten new vans for next year.\n>\n> It is the chance to build a new team from the very beginning that attracts me most to this role. I believe that my experience with sustainable transport and my calm approach to problems would be valuable to Clarke & Vos.\n>\n> I have attached my CV, and I would welcome the opportunity to discuss my application in more detail.\n>\n> Yours sincerely,\n> Deniz\n\nYapı: başvurulan pozisyon, deneyim ve şimdiki görev, rakamlı bir başarı, bu işi neden istediğin (vurgulu **It is… that…**), kapanış ve ek. Kısaltma yok; her paragraf tek bir fikir taşıyor.\n\n## Türklerin sık hatası\n- ❌ I am working here since four years. ✅ I **have been working** here **for** four years. (Süren durum: present perfect; süre **for**, başlangıç **since**.)\n- ❌ I am responsible from the budget. / I am operations manager. ✅ I am responsible **for** the budget. / I am **an** operations manager.\n\n## Beceri testi\nBölüm 8 beceri testi 20 sorudur; geçmek için %80 doğru yap. Bölüm, bu test **ve** bu ünitenin yazma görevi (Yazma: Ön yazı) birlikte tamamlandığında bitmiş sayılır.\n\n| Bölüm | Soru | Ölçtüğü hedef |\n|---|---|---|\n| Dinleme | 6 | Rapor rakamları (s8u11), tutum ve itiraz (s8u12), mülakat soruları (s8u13), söylem belirteçleri ve temkinli dil (s8u1, s8u7) |\n| Okuma | 8 | Anket özeti ve temkinli sonuç (s8u11, s8u7); tavsiye yazısında yazarın tutumu ve mülakat stratejisi (s8u12, s8u13) |\n| Yazma | 4 | Rapor cümlesi (s8u11), vurgulu yapı (s8u3), resmî öneri (s8u6, s8u9), deneyim ve süre (s8u13) |\n| Dil | 2 | Cleft sentence (s8u3), hedging (s8u7) |",
+      "nodes": [
+        {
+          "id": "s8u13l1",
+          "type": "lesson",
+          "title": "Dinleme: Mülakat soruları",
+          "description": "Mülakatta sorulan soruları ve verilen cevapları doğal hızda anla",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "Could you tell me a little about what you're doing in your current role?",
+              "answers": [
+                "Could you tell me a little about what you're doing in your current role?",
+                "Could you tell me a little about what you are doing in your current role?"
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "What I enjoy most about my job is solving problems under pressure.",
+              "translation": "İşimde en çok sevdiğim şey baskı altında sorun çözmek.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "What would you say is the biggest challenge you've faced in your career so far?",
+              "answers": [
+                "What would you say is the biggest challenge you've faced in your career so far?",
+                "What would you say is the biggest challenge you have faced in your career so far?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I've been responsible ___ the delivery budget since 2023.",
+              "translation": "2023'ten beri teslimat bütçesinden sorumluyum.",
+              "answer": "for",
+              "choices": [
+                "for",
+                "of",
+                "from"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I've been in charge of a team of twelve drivers for the last two years.",
+              "answers": [
+                "I've been in charge of a team of twelve drivers for the last two years.",
+                "I have been in charge of a team of twelve drivers for the last two years.",
+                "I've been in charge of a team of 12 drivers for the last two years.",
+                "I have been in charge of a team of 12 drivers for the last two years."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "I'm a quick learner, and I work well as part of a team.",
+              "translation": "Hızlı öğrenirim ve bir ekibin parçası olarak iyi çalışırım.",
+              "rate": 0.95
+            },
+            {
+              "type": "listen",
+              "text": "Where do you see yourself in five years, and why do you want to work for us?",
+              "answers": [
+                "Where do you see yourself in five years, and why do you want to work for us?",
+                "Where do you see yourself in 5 years, and why do you want to work for us?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm really interested ___ sustainable logistics.",
+              "translation": "Sürdürülebilir lojistiğe gerçekten ilgi duyuyorum.",
+              "answer": "in",
+              "choices": [
+                "in",
+                "on",
+                "about"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "güçlü yönler",
+                  "strengths"
+                ],
+                [
+                  "şu anki görevim",
+                  "my current role"
+                ],
+                [
+                  "deneyim",
+                  "experience"
+                ],
+                [
+                  "bir işe başvurmak",
+                  "apply for a job"
+                ],
+                [
+                  "maaş beklentisi",
+                  "salary expectations"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u13l2",
+          "type": "lesson",
+          "title": "Okuma: İş ilanı",
+          "description": "Ayrıntılı bir iş ilanında görevleri, şartları ve şirketin beklentilerini bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Head of Urban Logistics, Istanbul\nClarke & Vos Logistics\n\nAbout us\nClarke & Vos is a family-owned logistics company based in Rotterdam. For over forty years, we have moved goods between Europe and Turkey. Next spring, we are opening our first office in Istanbul, and we are looking for someone to lead it.\n\nThe role\nThis is not a desk job. The Head of Urban Logistics will build a team of around 25 people from scratch and design a delivery network for both sides of the city. In the first year, you will:\n- choose and manage a fleet of about 40 small electric vans;\n- negotiate with local suppliers and warehouse owners;\n- reduce our delivery emissions in the city by at least 30 per cent by 2028;\n- report directly to the managing director in Rotterdam.\n\nWhat we are looking for\n- At least five years' experience in logistics, including two years managing people.\n- A proven interest in sustainable transport. Experience with electric vehicles is an advantage but not essential.\n- Fluent Turkish and excellent English. Dutch is not required.\n- The ability to stay calm when things go wrong, because they sometimes will.\n\nTo be honest, we care less about where you studied than about what you have achieved. If you have run a project that changed the way your company works, tell us about it.\n\nWhat we offer\n- A competitive salary and an annual bonus linked to the team's results.\n- Flexible working: two days a week from home once the office is running.\n- A two-week training period at our headquarters in Rotterdam.\n- The chance to shape a new office from the very beginning.\n\nHow to apply\nSend your CV and a cover letter of no more than one page through the careers page of our website by 15 January. In your letter, please explain why you are interested in the role and describe one result you are particularly proud of. Interviews will take place by video call in late January. We will only contact candidates who are invited to an interview.",
+              "question": "Yeni yönetici yaklaşık kaç kişilik bir ekip kuracak?",
+              "options": [
+                "12",
+                "25",
+                "40",
+                "30"
+              ],
+              "answer": 1,
+              "explanation": "\"25\" doğru: metinde \"will build a team of around 25 people from scratch\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Head of Urban Logistics, Istanbul\nClarke & Vos Logistics\n\nAbout us\nClarke & Vos is a family-owned logistics company based in Rotterdam. For over forty years, we have moved goods between Europe and Turkey. Next spring, we are opening our first office in Istanbul, and we are looking for someone to lead it.\n\nThe role\nThis is not a desk job. The Head of Urban Logistics will build a team of around 25 people from scratch and design a delivery network for both sides of the city. In the first year, you will:\n- choose and manage a fleet of about 40 small electric vans;\n- negotiate with local suppliers and warehouse owners;\n- reduce our delivery emissions in the city by at least 30 per cent by 2028;\n- report directly to the managing director in Rotterdam.\n\nWhat we are looking for\n- At least five years' experience in logistics, including two years managing people.\n- A proven interest in sustainable transport. Experience with electric vehicles is an advantage but not essential.\n- Fluent Turkish and excellent English. Dutch is not required.\n- The ability to stay calm when things go wrong, because they sometimes will.\n\nTo be honest, we care less about where you studied than about what you have achieved. If you have run a project that changed the way your company works, tell us about it.\n\nWhat we offer\n- A competitive salary and an annual bonus linked to the team's results.\n- Flexible working: two days a week from home once the office is running.\n- A two-week training period at our headquarters in Rotterdam.\n- The chance to shape a new office from the very beginning.\n\nHow to apply\nSend your CV and a cover letter of no more than one page through the careers page of our website by 15 January. In your letter, please explain why you are interested in the role and describe one result you are particularly proud of. Interviews will take place by video call in late January. We will only contact candidates who are invited to an interview.",
+              "question": "İlan Hollandaca bilmek hakkında ne diyor?",
+              "options": [
+                "It is essential",
+                "It is an advantage",
+                "It is not required",
+                "It will be taught in Rotterdam"
+              ],
+              "answer": 2,
+              "explanation": "\"It is not required\" doğru: metinde \"Dutch is not required\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Head of Urban Logistics, Istanbul\nClarke & Vos Logistics\n\nAbout us\nClarke & Vos is a family-owned logistics company based in Rotterdam. For over forty years, we have moved goods between Europe and Turkey. Next spring, we are opening our first office in Istanbul, and we are looking for someone to lead it.\n\nThe role\nThis is not a desk job. The Head of Urban Logistics will build a team of around 25 people from scratch and design a delivery network for both sides of the city. In the first year, you will:\n- choose and manage a fleet of about 40 small electric vans;\n- negotiate with local suppliers and warehouse owners;\n- reduce our delivery emissions in the city by at least 30 per cent by 2028;\n- report directly to the managing director in Rotterdam.\n\nWhat we are looking for\n- At least five years' experience in logistics, including two years managing people.\n- A proven interest in sustainable transport. Experience with electric vehicles is an advantage but not essential.\n- Fluent Turkish and excellent English. Dutch is not required.\n- The ability to stay calm when things go wrong, because they sometimes will.\n\nTo be honest, we care less about where you studied than about what you have achieved. If you have run a project that changed the way your company works, tell us about it.\n\nWhat we offer\n- A competitive salary and an annual bonus linked to the team's results.\n- Flexible working: two days a week from home once the office is running.\n- A two-week training period at our headquarters in Rotterdam.\n- The chance to shape a new office from the very beginning.\n\nHow to apply\nSend your CV and a cover letter of no more than one page through the careers page of our website by 15 January. In your letter, please explain why you are interested in the role and describe one result you are particularly proud of. Interviews will take place by video call in late January. We will only contact candidates who are invited to an interview.",
+              "question": "\"because they sometimes will\" ifadesinden ne çıkarılabilir?",
+              "options": [
+                "The company expects problems to happen",
+                "The company never has problems",
+                "Candidates will work only at night",
+                "The office will close if things go wrong"
+              ],
+              "answer": 0,
+              "explanation": "\"The company expects problems to happen\" doğru: şirket işlerin bazen ters gideceğini açıkça kabul ediyor, bu yüzden sakin kalabilen birini arıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Head of Urban Logistics, Istanbul\nClarke & Vos Logistics\n\nAbout us\nClarke & Vos is a family-owned logistics company based in Rotterdam. For over forty years, we have moved goods between Europe and Turkey. Next spring, we are opening our first office in Istanbul, and we are looking for someone to lead it.\n\nThe role\nThis is not a desk job. The Head of Urban Logistics will build a team of around 25 people from scratch and design a delivery network for both sides of the city. In the first year, you will:\n- choose and manage a fleet of about 40 small electric vans;\n- negotiate with local suppliers and warehouse owners;\n- reduce our delivery emissions in the city by at least 30 per cent by 2028;\n- report directly to the managing director in Rotterdam.\n\nWhat we are looking for\n- At least five years' experience in logistics, including two years managing people.\n- A proven interest in sustainable transport. Experience with electric vehicles is an advantage but not essential.\n- Fluent Turkish and excellent English. Dutch is not required.\n- The ability to stay calm when things go wrong, because they sometimes will.\n\nTo be honest, we care less about where you studied than about what you have achieved. If you have run a project that changed the way your company works, tell us about it.\n\nWhat we offer\n- A competitive salary and an annual bonus linked to the team's results.\n- Flexible working: two days a week from home once the office is running.\n- A two-week training period at our headquarters in Rotterdam.\n- The chance to shape a new office from the very beginning.\n\nHow to apply\nSend your CV and a cover letter of no more than one page through the careers page of our website by 15 January. In your letter, please explain why you are interested in the role and describe one result you are particularly proud of. Interviews will take place by video call in late January. We will only contact candidates who are invited to an interview.",
+              "question": "Şirketin adayların eğitimine bakışı nasıl?",
+              "options": [
+                "Only graduates of top universities can apply",
+                "Achievements matter more than where you studied",
+                "A master's degree is required",
+                "Education is the most important factor"
+              ],
+              "answer": 1,
+              "explanation": "\"Achievements matter more than where you studied\" doğru: metinde \"we care less about where you studied than about what you have achieved\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Head of Urban Logistics, Istanbul\nClarke & Vos Logistics\n\nAbout us\nClarke & Vos is a family-owned logistics company based in Rotterdam. For over forty years, we have moved goods between Europe and Turkey. Next spring, we are opening our first office in Istanbul, and we are looking for someone to lead it.\n\nThe role\nThis is not a desk job. The Head of Urban Logistics will build a team of around 25 people from scratch and design a delivery network for both sides of the city. In the first year, you will:\n- choose and manage a fleet of about 40 small electric vans;\n- negotiate with local suppliers and warehouse owners;\n- reduce our delivery emissions in the city by at least 30 per cent by 2028;\n- report directly to the managing director in Rotterdam.\n\nWhat we are looking for\n- At least five years' experience in logistics, including two years managing people.\n- A proven interest in sustainable transport. Experience with electric vehicles is an advantage but not essential.\n- Fluent Turkish and excellent English. Dutch is not required.\n- The ability to stay calm when things go wrong, because they sometimes will.\n\nTo be honest, we care less about where you studied than about what you have achieved. If you have run a project that changed the way your company works, tell us about it.\n\nWhat we offer\n- A competitive salary and an annual bonus linked to the team's results.\n- Flexible working: two days a week from home once the office is running.\n- A two-week training period at our headquarters in Rotterdam.\n- The chance to shape a new office from the very beginning.\n\nHow to apply\nSend your CV and a cover letter of no more than one page through the careers page of our website by 15 January. In your letter, please explain why you are interested in the role and describe one result you are particularly proud of. Interviews will take place by video call in late January. We will only contact candidates who are invited to an interview.",
+              "question": "Ön yazıda adaylardan ne anlatmaları isteniyor?",
+              "options": [
+                "Their salary expectations",
+                "Their hobbies",
+                "Why they are leaving their job",
+                "A result they are proud of"
+              ],
+              "answer": 3,
+              "explanation": "\"A result they are proud of\" doğru: metinde \"describe one result you are particularly proud of\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Head of Urban Logistics, Istanbul\nClarke & Vos Logistics\n\nAbout us\nClarke & Vos is a family-owned logistics company based in Rotterdam. For over forty years, we have moved goods between Europe and Turkey. Next spring, we are opening our first office in Istanbul, and we are looking for someone to lead it.\n\nThe role\nThis is not a desk job. The Head of Urban Logistics will build a team of around 25 people from scratch and design a delivery network for both sides of the city. In the first year, you will:\n- choose and manage a fleet of about 40 small electric vans;\n- negotiate with local suppliers and warehouse owners;\n- reduce our delivery emissions in the city by at least 30 per cent by 2028;\n- report directly to the managing director in Rotterdam.\n\nWhat we are looking for\n- At least five years' experience in logistics, including two years managing people.\n- A proven interest in sustainable transport. Experience with electric vehicles is an advantage but not essential.\n- Fluent Turkish and excellent English. Dutch is not required.\n- The ability to stay calm when things go wrong, because they sometimes will.\n\nTo be honest, we care less about where you studied than about what you have achieved. If you have run a project that changed the way your company works, tell us about it.\n\nWhat we offer\n- A competitive salary and an annual bonus linked to the team's results.\n- Flexible working: two days a week from home once the office is running.\n- A two-week training period at our headquarters in Rotterdam.\n- The chance to shape a new office from the very beginning.\n\nHow to apply\nSend your CV and a cover letter of no more than one page through the careers page of our website by 15 January. In your letter, please explain why you are interested in the role and describe one result you are particularly proud of. Interviews will take place by video call in late January. We will only contact candidates who are invited to an interview.",
+              "question": "Ofis açıldıktan sonra çalışanlar haftada kaç gün evden çalışabilir?",
+              "options": [
+                "Two",
+                "None",
+                "One",
+                "Five"
+              ],
+              "answer": 0,
+              "explanation": "\"Two\" doğru: metinde \"two days a week from home once the office is running\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "iş ilanı",
+                  "job advertisement"
+                ],
+                [
+                  "ön yazı",
+                  "cover letter"
+                ],
+                [
+                  "yıllık prim",
+                  "annual bonus"
+                ],
+                [
+                  "genel merkez",
+                  "headquarters"
+                ],
+                [
+                  "şart değil",
+                  "not essential"
+                ]
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Mülakatta maaş beklentin soruluyor. En uygun cevap hangisi?",
+              "answer": "I'm open to discussing it.",
+              "choices": [
+                {
+                  "text": "I'm open to discussing it.",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "As much as possible!",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "Why do you ask?",
+                  "emoji": "🤨"
+                },
+                {
+                  "text": "I don't know, you tell me.",
+                  "emoji": "🤷"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Experience with electric vans is an advantage ___ not essential.",
+              "translation": "Elektrikli kamyonet deneyimi bir artı ama şart değil.",
+              "answer": "but",
+              "choices": [
+                "but",
+                "and",
+                "so"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u13s",
+          "type": "story",
+          "title": "Rotterdam'dan bir arama",
+          "description": "Tom Clarke, Deniz ile görüntülü bir iş mülakatı yapıyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "Good afternoon, Deniz. Thank you for making time for this call. Can you hear me clearly?",
+              "translation": "İyi günler Deniz. Bu görüşmeye vakit ayırdığınız için teşekkürler. Beni net duyabiliyor musunuz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Perfectly, thank you. And thank you for inviting me. It's a nice surprise to talk to you again, and this time not about a late shipment.",
+              "translation": "Gayet net, teşekkürler. Davetiniz için de teşekkür ederim. Sizinle yeniden konuşmak hoş bir sürpriz, üstelik bu kez geciken bir sevkiyat hakkında değil."
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "Ha! That shipment is the reason you're here, actually. Your email was the most polite complaint I've ever received. So, let's begin. Tell me about your current role.",
+              "translation": "Ha! Aslında burada olmanızın sebebi o sevkiyat. E-postanız aldığım en kibar şikâyetti. Evet, başlayalım. Bana şu anki görevinizden bahsedin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "I'm an operations manager at a delivery company in Istanbul. I'm in charge of a team of fourteen people, and I plan around three thousand deliveries a week.",
+              "translation": "İstanbul'da bir teslimat şirketinde operasyon müdürüyüm. On dört kişilik bir ekipten sorumluyum ve haftada yaklaşık üç bin teslimat planlıyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz şu anda kaç kişilik bir ekipten sorumlu?",
+              "choices": [
+                "On iki",
+                "On dört",
+                "Yirmi beş"
+              ],
+              "answer": "On dört"
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "I watched your conference talk online. What made you start the van study?",
+              "translation": "Konferans konuşmanızı internetten izledim. Kamyonet çalışmasına sizi ne başlattı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Frustration, mostly. Our trucks were spending more time in traffic than on the road. What I wanted to find out was whether smaller vehicles could solve that.",
+              "translation": "Çoğunlukla bıkkınlık. Kamyonlarımız yolda olduğundan çok trafikte vakit geçiriyordu. Öğrenmek istediğim şey, daha küçük araçların bunu çözüp çözemeyeceğiydi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "And the results?",
+              "translation": "Peki sonuçlar?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Fuel use fell by twenty-one per cent, and the cost per delivery dropped by about a sixth. The board has just approved ten new vans for next year.",
+              "translation": "Yakıt kullanımı yüzde yirmi bir düştü, teslimat başına maliyet de yaklaşık altıda bir azaldı. Yönetim kurulu gelecek yıl için on yeni kamyoneti az önce onayladı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "Impressive. Now, a harder question. Tell me about a time when something went badly wrong.",
+              "translation": "Etkileyici. Şimdi daha zor bir soru. Bir şeyin çok kötü gittiği bir zamandan bahsedin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "In the first month of the study, two drivers refused to use the new routes. They thought the vans were a way to cut their jobs.",
+              "translation": "Çalışmanın ilk ayında iki sürücü yeni rotaları kullanmayı reddetti. Kamyonetlerin işlerini ellerinden almanın bir yolu olduğunu düşünüyorlardı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "How did you handle it?",
+              "translation": "Bununla nasıl başa çıktınız?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "I didn't push. I sat in the van with them for a whole day and listened. It turned out that their real worry was the heavy orders. Once we kept two trucks for those, they became the study's biggest supporters.",
+              "translation": "Zorlamadım. Bütün bir gün onlarla kamyonette oturdum ve dinledim. Asıl endişelerinin ağır siparişler olduğu ortaya çıktı. Onlar için iki kamyon tutunca çalışmanın en büyük destekçileri oldular."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"Once we kept two trucks for those\" cümlesindeki 'those' neyi anlatıyor?",
+              "choices": [
+                "Yeni rotalar",
+                "Sürücüler",
+                "Ağır siparişler"
+              ],
+              "answer": "Ağır siparişler"
+            },
+            {
+              "kind": "question",
+              "prompt": "Bu olay Deniz hakkında ne gösteriyor?",
+              "choices": [
+                "Çalışmayı yarıda bıraktığını",
+                "Sorunları dinleyerek çözdüğünü",
+                "Sürücülerle hiç konuşmadığını"
+              ],
+              "answer": "Sorunları dinleyerek çözdüğünü"
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "That's exactly the kind of answer I was hoping for. Our advert asks for two years of managing people. You have more than that, I assume?",
+              "translation": "Tam da umduğum türden bir cevap. İlanımız iki yıllık yöneticilik deneyimi istiyor. Sizde bundan fazlası var, sanırım?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Four years. And to be completely honest, managing people is the part I find most rewarding, even on difficult days.",
+              "translation": "Dört yıl. Açık konuşmak gerekirse, zor günlerde bile insan yönetmek işin en tatmin edici bulduğum kısmı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "One last question. Why do you want to leave a company where you're clearly doing well?",
+              "translation": "Son bir soru. Belli ki başarılı olduğunuz bir şirketten neden ayrılmak istiyorsunuz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "I'm not unhappy there. But building a new office from the very beginning is a chance I may never get again. And I'd love to show that green delivery works across the whole city, not just in two districts.",
+              "translation": "Orada mutsuz değilim. Ama sıfırdan yeni bir ofis kurmak bir daha belki hiç yakalayamayacağım bir fırsat. Ayrıca yeşil teslimatın sadece iki ilçede değil, bütün şehirde işe yaradığını göstermeyi çok isterim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "Thank you, Deniz. We'll let you know by Friday. Any questions for me?",
+              "translation": "Teşekkürler Deniz. Cumaya kadar size haber vereceğiz. Bana sormak istediğiniz bir şey var mı?"
+            },
+            {
+              "kind": "question",
+              "prompt": "Tom Clarke kararı ne zamana kadar bildirecek?",
+              "choices": [
+                "Pazartesi",
+                "Gelecek ay",
+                "Cuma"
+              ],
+              "answer": "Cuma"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Just one. What would success look like for this person after the first year?",
+              "translation": "Sadece bir tane. İlk yılın sonunda bu görevdeki kişi için başarı ne anlama gelir?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Tom Clarke",
+              "avatar": "👔",
+              "text": "Good question. A team that trusts each other, and vans that are full, not stuck in traffic.",
+              "translation": "İyi soru. Birbirine güvenen bir ekip ve trafikte sıkışıp kalmayan, dolu kamyonetler."
+            },
+            {
+              "kind": "question",
+              "prompt": "Bu konuşmanın amacı ne?",
+              "choices": [
+                "Bir iş mülakatı yapmak",
+                "Geciken bir sevkiyatı çözmek",
+                "Bir konferans planlamak"
+              ],
+              "answer": "Bir iş mülakatı yapmak"
+            }
+          ]
+        },
+        {
+          "id": "s8u13l3",
+          "type": "lesson",
+          "title": "Konuşma: Kendini tanıtmak",
+          "description": "Mülakatta \"Tell me about yourself\" sorusuna bir dakikalık cevap ver",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "I'd say my greatest strength is staying calm when things go wrong.",
+              "translation": "En büyük güçlü yönümün, işler ters gittiğinde sakin kalmak olduğunu söyleyebilirim.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "That's a great question, and I'm glad you asked it.",
+              "translation": "Bu çok iyi bir soru, sorduğunuza sevindim.",
+              "rate": 0.95
+            },
+            {
+              "type": "speak",
+              "text": "I've worked in logistics for six years, mostly in Istanbul.",
+              "translation": "Altı yıldır lojistikte çalışıyorum, çoğunlukla İstanbul'da."
+            },
+            {
+              "type": "speak",
+              "text": "In my current role, I'm responsible for a team of fourteen people.",
+              "translation": "Şu anki görevimde on dört kişilik bir ekipten sorumluyum."
+            },
+            {
+              "type": "speak",
+              "text": "What I'm most proud of is a project that cut our fuel costs.",
+              "translation": "En çok gurur duyduğum şey, yakıt maliyetlerimizi düşüren bir proje."
+            },
+            {
+              "type": "speak",
+              "text": "Now I'm looking for a role where I can lead a new team.",
+              "translation": "Şimdi yeni bir ekibe liderlik edebileceğim bir görev arıyorum."
+            },
+            {
+              "type": "select",
+              "prompt": "Mülakatta zayıf yönün soruluyor. En uygun cevap hangisi?",
+              "answer": "I sometimes take on too much.",
+              "choices": [
+                {
+                  "text": "I sometimes take on too much.",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "I don't have any weaknesses.",
+                  "emoji": "😎"
+                },
+                {
+                  "text": "I'm often late, to be honest.",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "Next question, please.",
+                  "emoji": "🙅"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Mülakatın sonunda \"Do you have any questions for us?\" deniyor. En uygun cevap hangisi?",
+              "answer": "What would a typical day be like?",
+              "choices": [
+                {
+                  "text": "What would a typical day be like?",
+                  "emoji": "❓"
+                },
+                {
+                  "text": "No. When can I start?",
+                  "emoji": "⏱️"
+                },
+                {
+                  "text": "How many holidays do I get?",
+                  "emoji": "🏖️"
+                },
+                {
+                  "text": "Not really, I'm good.",
+                  "emoji": "👍"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Açıkçası bu pozisyon tam aradığım şey.",
+              "lang": "tr",
+              "answers": [
+                "To be honest, this position is exactly what I'm looking for",
+                "To be honest, this position is exactly what I am looking for",
+                "This position is exactly what I'm looking for, to be honest",
+                "Honestly, this position is exactly what I'm looking for",
+                "To be honest, this role is exactly what I'm looking for"
+              ],
+              "tokens": [
+                "To",
+                "be",
+                "honest",
+                "this",
+                "position",
+                "is",
+                "exactly",
+                "what",
+                "I'm",
+                "looking",
+                "for",
+                "the",
+                "search",
+                "at"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u13l4",
+          "type": "lesson",
+          "title": "Yazma: Ön yazı",
+          "description": "Bir iş ilanına 200 kelimelik bir ön yazı (cover letter) yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Altı yıldır lojistikte çalışıyorum.",
+              "lang": "tr",
+              "answers": [
+                "I have worked in logistics for six years",
+                "I've worked in logistics for six years",
+                "I have been working in logistics for six years",
+                "I've been working in logistics for six years"
+              ],
+              "tokens": [
+                "I",
+                "have",
+                "worked",
+                "in",
+                "logistics",
+                "for",
+                "six",
+                "years",
+                "since",
+                "am",
+                "working"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "En çok gurur duyduğum şey, küçük kamyonetler üzerine altı aylık bir çalışma.",
+              "lang": "tr",
+              "answers": [
+                "What I am most proud of is a six-month study on small vans",
+                "What I'm most proud of is a six-month study on small vans"
+              ],
+              "tokens": [
+                "What",
+                "I",
+                "am",
+                "most",
+                "proud",
+                "of",
+                "is",
+                "a",
+                "six-month",
+                "study",
+                "on",
+                "small",
+                "vans",
+                "the",
+                "with"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Özgeçmişimi ekledim.",
+              "lang": "tr",
+              "answers": [
+                "I have attached my CV",
+                "I've attached my CV"
+              ],
+              "tokens": [
+                "I",
+                "have",
+                "attached",
+                "my",
+                "CV",
+                "the",
+                "attach",
+                "am"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I enjoy my current job. ___, I am ready for a new challenge.",
+              "translation": "Şu anki işimden keyif alıyorum. Yine de yeni bir meydan okumaya hazırım.",
+              "answer": "Nevertheless",
+              "choices": [
+                "Nevertheless",
+                "Therefore",
+                "Moreover"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I have been ___ operations manager for four years.",
+              "translation": "Dört yıldır operasyon müdürüyüm.",
+              "answer": "an",
+              "choices": [
+                "an",
+                "a",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I would welcome the opportunity to discuss my application in more ___.",
+              "translation": "Başvurumu daha ayrıntılı konuşma fırsatını memnuniyetle karşılarım.",
+              "answer": "detail",
+              "choices": [
+                "detail",
+                "details",
+                "deep"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Ön yazıya \"Dear Mr Clarke\" diye başladın. Hangi kapanış uygun?",
+              "answer": "Yours sincerely,",
+              "choices": [
+                {
+                  "text": "Yours sincerely,",
+                  "emoji": "✍️"
+                },
+                {
+                  "text": "Yours faithfully,",
+                  "emoji": "📜"
+                },
+                {
+                  "text": "Cheers,",
+                  "emoji": "🍻"
+                },
+                {
+                  "text": "Love,",
+                  "emoji": "❤️"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "bir pozisyona başvurmak",
+                  "apply for a position"
+                ],
+                [
+                  "ekte",
+                  "attached"
+                ],
+                [
+                  "ilan edilen",
+                  "advertised"
+                ],
+                [
+                  "memnuniyetle karşılarım",
+                  "I would welcome"
+                ],
+                [
+                  "saygılarımla",
+                  "Yours sincerely"
+                ]
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Bir iş ilanına yaklaşık 200 kelimelik bir ön yazı (cover letter) yaz: hangi pozisyona başvurduğunu, deneyimini, gurur duyduğun bir başarıyı ve bu işi neden istediğini anlat. Resmî bir açılış ve kapanış kullan.",
+              "model": "Dear Mr Clarke,\n\nI am writing to apply for the position of Head of Urban Logistics in Istanbul, which was advertised on your website.\n\nI have worked in logistics for six years, and for the last four years I have been an operations manager at a delivery company in Istanbul. In this role, I am responsible for a team of fourteen people and plan around three thousand deliveries a week.\n\nWhat I am most proud of is a six-month study on small vans. It showed that they reduced fuel use by 21 per cent and cut the cost per delivery by about a sixth. As a result, the board has approved ten new vans for next year.\n\nIt is the chance to build a new team from the very beginning that attracts me most to this role. I believe that my experience with sustainable transport and my calm approach to problems would be valuable to Clarke & Vos.\n\nI have attached my CV, and I would welcome the opportunity to discuss my application in more detail.\n\nYours sincerely,\nDeniz",
+              "minWords": 170,
+              "maxWords": 240,
+              "checklist": [
+                "Hangi pozisyona başvurduğunu ilk paragrafta söyledin",
+                "Deneyimini süreyle birlikte verdin (I have worked… for…)",
+                "Bir başarını rakam ya da sonuçla anlattın",
+                "En az bir vurgulu yapı kullandın (What I am most proud of is…, It is… that…)",
+                "Resmî açılış ve kapanış kullandın (Dear Mr…, Yours sincerely)"
+              ],
+              "focus": [
+                "tense",
+                "article",
+                "word_order"
+              ],
+              "taskId": "s8u13l4w"
+            }
+          ]
+        },
+        {
+          "id": "s8u13t",
+          "type": "test",
+          "title": "Bölüm 8 beceri testi",
+          "description": "Bu bölümün hedeflerini ölçer",
+          "rewardXp": 25,
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "It's clear from our figures that the new system has cut waiting times by almost half.",
+              "answers": [
+                "It's clear from our figures that the new system has cut waiting times by almost half.",
+                "It is clear from our figures that the new system has cut waiting times by almost half."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I don't think you're wrong, but I'd want to see a lot more evidence first.",
+              "answers": [
+                "I don't think you're wrong, but I'd want to see a lot more evidence first.",
+                "I do not think you are wrong, but I would want to see a lot more evidence first.",
+                "I don't think you're wrong, but I would want to see a lot more evidence first."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "What I'm looking for is a role where I can make a difference to the city.",
+              "answers": [
+                "What I'm looking for is a role where I can make a difference to the city.",
+                "What I am looking for is a role where I can make a difference to the city."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Could you tell us about a time when you had to manage a difficult team?",
+              "answers": [
+                "Could you tell us about a time when you had to manage a difficult team?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "To be honest, a lot of the survey results were better than we'd expected.",
+              "answers": [
+                "To be honest, a lot of the survey results were better than we'd expected.",
+                "To be honest, a lot of the survey results were better than we had expected."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Generally speaking, people tend to spend more when they don't have to queue.",
+              "answers": [
+                "Generally speaking, people tend to spend more when they don't have to queue.",
+                "Generally speaking, people tend to spend more when they do not have to queue."
+              ]
+            },
+            {
+              "type": "choice",
+              "passage": "Summary: Laptops in local cafés\nIn March, a group of students surveyed 300 customers and 20 café owners in Kadıköy about people who work on laptops in cafés.\nThe results were mixed. Around 60 per cent of customers said they sometimes work in cafés, mostly in the afternoon. Owners, however, were divided. Eleven of the twenty said that laptop users were good for business, because they bring a steady flow of customers on quiet weekdays. The other nine complained that many of them buy one coffee and stay for three hours, which means fewer free tables at busy times.\nSeveral owners have already found a compromise. Some offer laptop-free tables at lunchtime, while others ask customers who stay longer than two hours to order again. Interestingly, very few customers seemed to mind these rules; in fact, 72 per cent said they would accept them.\nIt would be wrong to draw strong conclusions from a survey of this size. Nevertheless, the findings suggest that clear and friendly rules may be the best way to keep both groups happy.",
+              "question": "Kafe sahiplerinin kaçı dizüstü bilgisayar kullanıcılarının işe yaradığını söyledi?",
+              "options": [
+                "Nine",
+                "Twenty",
+                "Eleven",
+                "Sixty"
+              ],
+              "answer": 2,
+              "explanation": "\"Eleven\" doğru: metinde \"Eleven of the twenty said that laptop users were good for business\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Summary: Laptops in local cafés\nIn March, a group of students surveyed 300 customers and 20 café owners in Kadıköy about people who work on laptops in cafés.\nThe results were mixed. Around 60 per cent of customers said they sometimes work in cafés, mostly in the afternoon. Owners, however, were divided. Eleven of the twenty said that laptop users were good for business, because they bring a steady flow of customers on quiet weekdays. The other nine complained that many of them buy one coffee and stay for three hours, which means fewer free tables at busy times.\nSeveral owners have already found a compromise. Some offer laptop-free tables at lunchtime, while others ask customers who stay longer than two hours to order again. Interestingly, very few customers seemed to mind these rules; in fact, 72 per cent said they would accept them.\nIt would be wrong to draw strong conclusions from a survey of this size. Nevertheless, the findings suggest that clear and friendly rules may be the best way to keep both groups happy.",
+              "question": "Metnin ana fikri ne?",
+              "options": [
+                "Laptops should be banned from all cafés",
+                "Customers dislike café rules",
+                "Owners all agree about laptop users",
+                "Clear, friendly rules can satisfy both sides"
+              ],
+              "answer": 3,
+              "explanation": "\"Clear, friendly rules can satisfy both sides\" doğru: son cümlede \"clear and friendly rules may be the best way to keep both groups happy\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Summary: Laptops in local cafés\nIn March, a group of students surveyed 300 customers and 20 café owners in Kadıköy about people who work on laptops in cafés.\nThe results were mixed. Around 60 per cent of customers said they sometimes work in cafés, mostly in the afternoon. Owners, however, were divided. Eleven of the twenty said that laptop users were good for business, because they bring a steady flow of customers on quiet weekdays. The other nine complained that many of them buy one coffee and stay for three hours, which means fewer free tables at busy times.\nSeveral owners have already found a compromise. Some offer laptop-free tables at lunchtime, while others ask customers who stay longer than two hours to order again. Interestingly, very few customers seemed to mind these rules; in fact, 72 per cent said they would accept them.\nIt would be wrong to draw strong conclusions from a survey of this size. Nevertheless, the findings suggest that clear and friendly rules may be the best way to keep both groups happy.",
+              "question": "Yazar anketin sonuçlarına nasıl yaklaşıyor?",
+              "options": [
+                "As final proof",
+                "As unimportant",
+                "Carefully, because the survey was small",
+                "Angrily, because owners lost money"
+              ],
+              "answer": 2,
+              "explanation": "\"Carefully, because the survey was small\" doğru: yazar \"It would be wrong to draw strong conclusions from a survey of this size\" diyerek temkinli davranıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Summary: Laptops in local cafés\nIn March, a group of students surveyed 300 customers and 20 café owners in Kadıköy about people who work on laptops in cafés.\nThe results were mixed. Around 60 per cent of customers said they sometimes work in cafés, mostly in the afternoon. Owners, however, were divided. Eleven of the twenty said that laptop users were good for business, because they bring a steady flow of customers on quiet weekdays. The other nine complained that many of them buy one coffee and stay for three hours, which means fewer free tables at busy times.\nSeveral owners have already found a compromise. Some offer laptop-free tables at lunchtime, while others ask customers who stay longer than two hours to order again. Interestingly, very few customers seemed to mind these rules; in fact, 72 per cent said they would accept them.\nIt would be wrong to draw strong conclusions from a survey of this size. Nevertheless, the findings suggest that clear and friendly rules may be the best way to keep both groups happy.",
+              "question": "Bazı sahipler dizüstü kullanıcılarından neden şikâyet ediyor?",
+              "options": [
+                "They are too noisy",
+                "They use too much electricity",
+                "They never pay",
+                "They stay a long time but spend little"
+              ],
+              "answer": 3,
+              "explanation": "\"They stay a long time but spend little\" doğru: metinde \"many of them buy one coffee and stay for three hours\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Ask Mia: \"Why do you want to leave?\"\nDear Mia, I have a job interview next week. I am happy in my current job, but this new position is a big step up. I am worried that they will ask why I want to leave. What should I say? Burcu\nDear Burcu, this question worries almost everyone, but it is actually a gift. What the interviewer really wants to know is not why you are leaving, but why you are coming. So talk about the new role, not the old one.\nNever criticise your current employer, even if you have good reasons. It rarely sounds professional, and interviewers tend to wonder what you might one day say about them. Instead, explain what the new job offers that your current one cannot: more responsibility, a new market, a chance to build something.\nIt is also perfectly fine to admit that you like your present job. In fact, it can work in your favour. Candidates who are not desperate to escape often seem more confident.\nFinally, prepare a short, honest answer and practise it out loud. Two or three sentences are enough. Good luck! Mia",
+              "question": "Burcu neden endişeli?",
+              "options": [
+                "She may be asked why she wants to leave",
+                "She has lost her job",
+                "She doesn't like her boss",
+                "She has never had an interview"
+              ],
+              "answer": 0,
+              "explanation": "\"She may be asked why she wants to leave\" doğru: Burcu \"I am worried that they will ask why I want to leave\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Ask Mia: \"Why do you want to leave?\"\nDear Mia, I have a job interview next week. I am happy in my current job, but this new position is a big step up. I am worried that they will ask why I want to leave. What should I say? Burcu\nDear Burcu, this question worries almost everyone, but it is actually a gift. What the interviewer really wants to know is not why you are leaving, but why you are coming. So talk about the new role, not the old one.\nNever criticise your current employer, even if you have good reasons. It rarely sounds professional, and interviewers tend to wonder what you might one day say about them. Instead, explain what the new job offers that your current one cannot: more responsibility, a new market, a chance to build something.\nIt is also perfectly fine to admit that you like your present job. In fact, it can work in your favour. Candidates who are not desperate to escape often seem more confident.\nFinally, prepare a short, honest answer and practise it out loud. Two or three sentences are enough. Good luck! Mia",
+              "question": "Mia'ya göre görüşmeci bu soruyla aslında neyi öğrenmek istiyor?",
+              "options": [
+                "How much you earn now",
+                "Why you want the new job",
+                "Who your current manager is",
+                "When you can start"
+              ],
+              "answer": 1,
+              "explanation": "\"Why you want the new job\" doğru: Mia \"What the interviewer really wants to know is not why you are leaving, but why you are coming\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Ask Mia: \"Why do you want to leave?\"\nDear Mia, I have a job interview next week. I am happy in my current job, but this new position is a big step up. I am worried that they will ask why I want to leave. What should I say? Burcu\nDear Burcu, this question worries almost everyone, but it is actually a gift. What the interviewer really wants to know is not why you are leaving, but why you are coming. So talk about the new role, not the old one.\nNever criticise your current employer, even if you have good reasons. It rarely sounds professional, and interviewers tend to wonder what you might one day say about them. Instead, explain what the new job offers that your current one cannot: more responsibility, a new market, a chance to build something.\nIt is also perfectly fine to admit that you like your present job. In fact, it can work in your favour. Candidates who are not desperate to escape often seem more confident.\nFinally, prepare a short, honest answer and practise it out loud. Two or three sentences are enough. Good luck! Mia",
+              "question": "Mia'ya göre şu anki işvereni eleştirmek neden riskli?",
+              "options": [
+                "It takes too long",
+                "It is against the law",
+                "The interviewer may think you will criticise them too",
+                "Your employer may hear about it"
+              ],
+              "answer": 2,
+              "explanation": "\"The interviewer may think you will criticise them too\" doğru: Mia, görüşmecilerin bir gün onlar hakkında ne söyleyeceğinizi merak ettiğini yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Ask Mia: \"Why do you want to leave?\"\nDear Mia, I have a job interview next week. I am happy in my current job, but this new position is a big step up. I am worried that they will ask why I want to leave. What should I say? Burcu\nDear Burcu, this question worries almost everyone, but it is actually a gift. What the interviewer really wants to know is not why you are leaving, but why you are coming. So talk about the new role, not the old one.\nNever criticise your current employer, even if you have good reasons. It rarely sounds professional, and interviewers tend to wonder what you might one day say about them. Instead, explain what the new job offers that your current one cannot: more responsibility, a new market, a chance to build something.\nIt is also perfectly fine to admit that you like your present job. In fact, it can work in your favour. Candidates who are not desperate to escape often seem more confident.\nFinally, prepare a short, honest answer and practise it out loud. Two or three sentences are enough. Good luck! Mia",
+              "question": "Mia, şu anki işini sevdiğini söylemek hakkında ne düşünüyor?",
+              "options": [
+                "It is a mistake",
+                "It shows a lack of ambition",
+                "It should be avoided",
+                "It can make you seem more confident"
+              ],
+              "answer": 3,
+              "explanation": "\"It can make you seem more confident\" doğru: Mia \"Candidates who are not desperate to escape often seem more confident\" diyor."
+            },
+            {
+              "type": "translate",
+              "text": "Bulgularımız yeni sistemin daha ucuz olduğunu gösteriyor.",
+              "lang": "tr",
+              "answers": [
+                "Our findings show that the new system is cheaper",
+                "Our findings show the new system is cheaper",
+                "Our findings suggest that the new system is cheaper"
+              ],
+              "tokens": [
+                "Our",
+                "findings",
+                "show",
+                "that",
+                "the",
+                "new",
+                "system",
+                "is",
+                "cheaper",
+                "more",
+                "a",
+                "shows"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Beni bu işe çeken şey ekip.",
+              "lang": "tr",
+              "answers": [
+                "What attracts me to this job is the team",
+                "It is the team that attracts me to this job",
+                "It's the team that attracts me to this job",
+                "The team is what attracts me to this job"
+              ],
+              "tokens": [
+                "What",
+                "attracts",
+                "me",
+                "to",
+                "this",
+                "job",
+                "is",
+                "the",
+                "team",
+                "for",
+                "a",
+                "attract"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kirayı yeniden müzakere etmenizi öneriyoruz.",
+              "lang": "tr",
+              "answers": [
+                "We recommend that you renegotiate the rent",
+                "We recommend you renegotiate the rent",
+                "We recommend renegotiating the rent"
+              ],
+              "tokens": [
+                "We",
+                "recommend",
+                "that",
+                "you",
+                "renegotiate",
+                "the",
+                "rent",
+                "to",
+                "a",
+                "renegotiating"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Dört yıldır bir ekip yönetiyorum.",
+              "lang": "tr",
+              "answers": [
+                "I have been managing a team for four years",
+                "I've been managing a team for four years",
+                "I have managed a team for four years",
+                "I've managed a team for four years"
+              ],
+              "tokens": [
+                "I",
+                "have",
+                "been",
+                "managing",
+                "a",
+                "team",
+                "for",
+                "four",
+                "years",
+                "since",
+                "am",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "It was Kerem ___ designed the app, not Elif.",
+              "translation": "Uygulamayı tasarlayan Elif değil, Kerem'di.",
+              "answer": "who",
+              "choices": [
+                "who",
+                "what",
+                "which"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir rapor bulgusunu temkinli biçimde (hedging) ifade etmek istiyorsun. En uygun cümle hangisi?",
+              "answer": "Results seem to suggest a rise.",
+              "choices": [
+                {
+                  "text": "Results seem to suggest a rise.",
+                  "emoji": "🧐"
+                },
+                {
+                  "text": "This proves everything, 100%.",
+                  "emoji": "💯"
+                },
+                {
+                  "text": "Obviously, sales will explode.",
+                  "emoji": "💥"
+                },
+                {
+                  "text": "Trust me, it's a huge rise.",
+                  "emoji": "🙌"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8u13c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}

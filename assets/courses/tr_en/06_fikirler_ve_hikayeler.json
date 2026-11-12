@@ -330,6 +330,13 @@
           "steps": [
             {
               "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "Hi Elif! Still happy you swapped app design for coffee? How was your morning?",
+              "translation": "Selam Elif! Uygulama tasarımını bırakıp kahveye geçtiğine hâlâ memnun musun? Sabahın nasıl geçti?"
+            },
+            {
+              "kind": "line",
               "speaker": "Elif",
               "avatar": "👩",
               "text": "Kerem, what a morning! By the time I got to the café, the delivery van had already left.",
