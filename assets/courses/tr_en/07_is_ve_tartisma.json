@@ -1975,7 +1975,7 @@
               "kind": "line",
               "speaker": "Deniz",
               "avatar": "🧑‍💼",
-              "text": "Someone must have typed an extra number. Our accountant can't have double-checked it.",
+              "text": "Someone must have typed an extra digit. Our accountant can't have double-checked it.",
               "translation": "Biri fazladan bir rakam yazmış olmalı. Muhasebecimiz bunu iki kez kontrol etmiş olamaz."
             },
             {
@@ -5108,7 +5108,7 @@
               "speaker": "Elif",
               "avatar": "👩",
               "text": "Yes, I got an electrician to look at everything last week. He found a few problems.",
-              "translation": "Evet, geçen hafta her şeye bir elektrikçiye baktırdım. Birkaç sorun buldu."
+              "translation": "Evet, geçen hafta bir elektrikçiye her şeyi kontrol ettirdim. Birkaç sorun buldu."
             },
             {
               "kind": "question",
@@ -6145,7 +6145,7 @@
               "choices": [
                 "do",
                 "don't",
-                "did"
+                "are"
               ]
             },
             {
@@ -6361,7 +6361,8 @@
               "answers": [
                 "Hatalarının sorumluluğunu üstlenir",
                 "Hatalarının sorumluluğunu alır",
-                "Kendi hatalarının sorumluluğunu üstlenir"
+                "Kendi hatalarının sorumluluğunu üstlenir",
+                "Hatalarının sorumluluğunu üstleniyor"
               ],
               "tokens": [
                 "Hatalarının",
@@ -6458,7 +6459,7 @@
             {
               "type": "fillBlank",
               "text": "We managed to ___ the deadline, but only just.",
-              "translation": "Teslim tarihine yetiştirmeyi başardık ama kıl payı.",
+              "translation": "Teslim tarihine yetişmeyi başardık ama kıl payı.",
               "answer": "meet",
               "choices": [
                 "meet",
@@ -6803,19 +6804,19 @@
             },
             {
               "type": "select",
-              "prompt": "bütçeyi tartışmak",
-              "answer": "discuss the budget",
+              "prompt": "riskleri tartışmak",
+              "answer": "discuss the risks",
               "choices": [
                 {
-                  "text": "discuss the budget",
+                  "text": "discuss the risks",
                   "emoji": "✅"
                 },
                 {
-                  "text": "discuss about the budget",
+                  "text": "discuss about the risks",
                   "emoji": "❌"
                 },
                 {
-                  "text": "discuss on the budget",
+                  "text": "discuss on the risks",
                   "emoji": "🌀"
                 }
               ]
@@ -7048,10 +7049,10 @@
             {
               "type": "select",
               "prompt": "kibarca katılmamak",
-              "answer": "I see your point, but…",
+              "answer": "I take your point, but…",
               "choices": [
                 {
-                  "text": "I see your point, but…",
+                  "text": "I take your point, but…",
                   "emoji": "🙂"
                 },
                 {
@@ -7141,19 +7142,19 @@
             },
             {
               "type": "select",
-              "prompt": "bana göre (fikir belirtirken)",
-              "answer": "In my opinion",
+              "prompt": "'bana kalırsa' (doğru kalıp)",
+              "answer": "As far as I'm concerned",
               "choices": [
                 {
-                  "text": "In my opinion",
+                  "text": "As far as I'm concerned",
                   "emoji": "💭"
                 },
                 {
-                  "text": "According to me",
+                  "text": "As far as I concern",
                   "emoji": "❌"
                 },
                 {
-                  "text": "For my opinion",
+                  "text": "As long as I'm concerned",
                   "emoji": "🌀"
                 }
               ]
@@ -7664,8 +7665,8 @@
             },
             {
               "type": "fillBlank",
-              "text": "___ the rain, the debate went ahead.",
-              "translation": "Yağmura rağmen tartışma yapıldı.",
+              "text": "___ strong objections, the council approved the plan.",
+              "translation": "Güçlü itirazlara rağmen belediye meclisi planı onayladı.",
               "answer": "Despite",
               "choices": [
                 "Despite",

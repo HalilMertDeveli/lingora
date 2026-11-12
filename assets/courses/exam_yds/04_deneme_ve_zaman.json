@@ -3484,7 +3484,7 @@
         "don't publish",
         "didn't publish",
         "won't publish",
-        "not publish",
+        "not to publish",
         "hadn't published"
        ],
        "answer": 1,
@@ -3737,7 +3737,7 @@
    "description": "Tam Deneme 4'e hazırlık: hata analizi, 60+ puan hedefi, dilbilgisi ve bağlaçta hızlı çözüm",
    "color": "0xFF5A67D8",
    "theme": "spor",
-   "guide": "## Strateji\nBu hafta **Tam Deneme 4** ile biter; hedef **60+ puan**, yani 80 sorudan **en az 48 doğru**. Haftaya, Tam Deneme 3'ün hata analiziyle başla; odak beceri **dilbilgisi, bağlaç ve cümle tamamlamayı hızlı çözmek**. Bu üç tür sınavın 30 sorusudur ve doğru teknikle soru başına 40–50 saniyede çözülür; kazandığın süre okumaya kalır.\n\n**Önceki denemenin hata analizi (hata defteri):**\n- Tam Deneme 3'teki her yanlışı, boşu ve tahminle doğruyu deftere yaz: soru türü, doğru cevap, seçtiğin şık, hata türü (bilgi, dikkat, çeldirici, süre).\n- Sonra tür bazında doğru sayını madde madde çıkar: *Kelime: 3/6*, *Dilbilgisi: 6/10*, *Cloze: 5/10* gibi. Tablo gerekmez; alt alta yazılmış on satır yeter.\n- Her satırın yanına bu haftanın hedefini yaz ve aradaki farkı hesapla. En büyük fark, haftanın çalışma önceliğidir.\n\n**Tam Deneme 4 için tür bazında hedef doğru sayısı (toplam 48):**\n- Kelime: 4/6\n- Dilbilgisi: 8/10\n- Cloze: 7/10\n- Cümle tamamlama: 7/10\n- Çeviri: 4/6\n- Okuma: 9/20\n- Diyalog: 3/6\n- Restatement: 1/3\n- Paragraf tamamlama: 2/4\n- Anlam bütünlüğü: 3/5\n\nUzun vadeli hedef 72 doğrudur (kelime 5, dilbilgisi 9, cloze 9, cümle tamamlama 9, çeviri 6, okuma 16, diyalog 5, restatement 3, paragraf tamamlama 4, anlam bütünlüğü 5). Bu hafta dilbilgisi ve bağlaçtan gelen puan, o hedefin temelidir.\n\n**Hızlı çözüm stratejisi:** Önce şıklara bak ve soruyu sınıflandır: zaman mı, yapı mı (edilgen, koşul, devrik), bağlaç mı? Bağlaç sorusunda iki yarım arasındaki ilişkiyi tek kelimeyle adlandır: *zıtlık, sebep, sonuç, koşul, amaç, ekleme*. İlişkiyi bulduğunda şıkların çoğu kendiliğinden elenir.\n\n## Örnekler\n- *Notwithstanding the delays, the project was completed on budget.* — Gecikmelere rağmen proje bütçe dahilinde tamamlandı. (zıtlık + isim)\n- *Take notes lest you forget the key points.* — Önemli noktaları unutmayasın diye not al. (olumsuz amaç)\n- *Most pupils could barely read the text, let alone summarise it.* — Öğrencilerin çoğu metni zar zor okuyabildi, özetlemek şöyle dursun.\n- *No sooner had the plan been announced than critics attacked it.* — Plan açıklanır açıklanmaz eleştirmenler ona saldırdı.\n- *The data were incomplete; accordingly, the analysis was postponed.* — Veriler eksikti; bu nedenle analiz ertelendi.\n\n## Nasıl çözülür\n1. Şıkları tara: hepsi fiil biçimi mi, bağlaç mı, edat mı? Türü belirle.\n2. Zaman sorusunda zaman ifadesini (*by the time, since, next year, ago*) bul ve altını çiz.\n3. Bağlaç sorusunda iki yarım arasındaki ilişkiyi Türkçe adlandır; sonra arkadan gelen yapıya bak: tam cümle mi (*although, seeing that*), isim mi (*despite, notwithstanding, on account of*)?\n4. Cümle tamamlamada verilen yarımdaki bağlaç ve zamanı belirle; şıkları önce dilbilgisiyle (zaman uyumu, devrik yapı), sonra anlamla ele.\n5. 60 saniyede bitmeyen soruyu işaretle ve geç; turun sonunda dön.\n\n**Örnek:** *---- the region receives very little rainfall, farmers have developed clever irrigation methods.* Adım 1: şıklar bağlaç. Adım 3: az yağış → sulama yöntemleri geliştirme; bu bir **sebep** ilişkisidir. Arkadan tam cümle geldiği için *seeing that* uygundur; *even though* zıtlık kurduğu için, *lest* olumsuz amaç bildirdiği için elenir.\n\n## Tuzaklar ve sık yapılan hatalar\n- **Edat ile bağlacı karıştırmak:** *despite / notwithstanding / on account of* arkasından tam cümle gelmez; Türkçedeki '-mesine rağmen' yapısı bu hatayı doğurur.\n- **Devrikte yardımcı fiili unutmak:** *No sooner had …, Hardly had …, Not only has …*; Türkçede böyle bir yapı olmadığı için düz sıralı şık cazip gelir.\n- **Kalıp eşini karıştırmak:** *no sooner … than*, ama *hardly / scarcely … when*.\n- **Bağlacı anlama bakmadan seçmek:** *nonetheless* ile *accordingly* aynı yere girer gibi görünür; biri zıtlık, öteki sonuçtur.\n- **Hata defterini sayısız bırakmak:** Tür bazında doğru sayısını yazmayan aday, zayıf noktasını sezgiyle seçer ve yanlış konuya zaman harcar.\n\n## Sınav ipucu\nSınavda ilk 30 soruyu (kelime, dilbilgisi, cloze) 25 dakikada, cümle tamamlamayı 10 dakikada bitirmeyi hedefle. Tam Deneme 4'ü çözerken her bölümün bitiş saatini sayfanın kenarına yaz; deneme bitince bu saatleri hedefle karşılaştır. 48 doğru için mükemmel olman gerekmez: dilbilgisi ve bağlaç sorularında hızlı ve isabetli olursan okumaya yeterli süre kalır.",
+   "guide": "## Strateji\nBu hafta **Tam Deneme 4** ile biter; hedef **60+ puan**, yani 80 sorudan **en az 48 doğru**. Haftaya, Tam Deneme 3'ün hata analiziyle başla; odak beceri **dilbilgisi, bağlaç ve cümle tamamlamayı hızlı çözmek**. Bu üç tür sınavın 30 sorusudur ve doğru teknikle soru başına 40–50 saniyede çözülür; kazandığın süre okumaya kalır.\n\n**Önceki denemenin hata analizi (hata defteri):**\n- Tam Deneme 3'teki her yanlışı, boşu ve tahminle doğruyu deftere yaz: soru türü, doğru cevap, seçtiğin şık, hata türü (bilgi, dikkat, çeldirici, süre).\n- Sonra tür bazında doğru sayını madde madde çıkar: *Kelime: 3/6*, *Dilbilgisi: 6/10*, *Cloze: 5/10* gibi. Tablo gerekmez; alt alta yazılmış on satır yeter.\n- Her satırın yanına bu haftanın hedefini yaz ve aradaki farkı hesapla. En büyük fark, haftanın çalışma önceliğidir.\n\n**Tam Deneme 4 için tür bazında hedef doğru sayısı (toplam 48):**\n- Kelime: 4/6\n- Dilbilgisi: 8/10\n- Cloze: 7/10\n- Cümle tamamlama: 7/10\n- Çeviri: 4/6\n- Okuma: 9/20\n- Diyalog: 3/6\n- Restatement: 1/3\n- Paragraf tamamlama: 2/4\n- Anlam bütünlüğü: 3/5\n\nUzun vadeli hedef 72 doğrudur (kelime 5, dilbilgisi 9, cloze 9, cümle tamamlama 9, çeviri 6, okuma 17, diyalog 5, restatement 3, paragraf tamamlama 4, anlam bütünlüğü 5). Bu hafta dilbilgisi ve bağlaçtan gelen puan, o hedefin temelidir.\n\n**Hızlı çözüm stratejisi:** Önce şıklara bak ve soruyu sınıflandır: zaman mı, yapı mı (edilgen, koşul, devrik), bağlaç mı? Bağlaç sorusunda iki yarım arasındaki ilişkiyi tek kelimeyle adlandır: *zıtlık, sebep, sonuç, koşul, amaç, ekleme*. İlişkiyi bulduğunda şıkların çoğu kendiliğinden elenir.\n\n## Örnekler\n- *Notwithstanding the delays, the project was completed on budget.* — Gecikmelere rağmen proje bütçe dahilinde tamamlandı. (zıtlık + isim)\n- *Take notes lest you forget the key points.* — Önemli noktaları unutmayasın diye not al. (olumsuz amaç)\n- *Most pupils could barely read the text, let alone summarise it.* — Öğrencilerin çoğu metni zar zor okuyabildi, özetlemek şöyle dursun.\n- *No sooner had the plan been announced than critics attacked it.* — Plan açıklanır açıklanmaz eleştirmenler ona saldırdı.\n- *The data were incomplete; accordingly, the analysis was postponed.* — Veriler eksikti; bu nedenle analiz ertelendi.\n\n## Nasıl çözülür\n1. Şıkları tara: hepsi fiil biçimi mi, bağlaç mı, edat mı? Türü belirle.\n2. Zaman sorusunda zaman ifadesini (*by the time, since, next year, ago*) bul ve altını çiz.\n3. Bağlaç sorusunda iki yarım arasındaki ilişkiyi Türkçe adlandır; sonra arkadan gelen yapıya bak: tam cümle mi (*although, seeing that*), isim mi (*despite, notwithstanding, on account of*)?\n4. Cümle tamamlamada verilen yarımdaki bağlaç ve zamanı belirle; şıkları önce dilbilgisiyle (zaman uyumu, devrik yapı), sonra anlamla ele.\n5. 60 saniyede bitmeyen soruyu işaretle ve geç; turun sonunda dön.\n\n**Örnek:** *---- the region receives very little rainfall, farmers have developed clever irrigation methods.* Adım 1: şıklar bağlaç. Adım 3: az yağış → sulama yöntemleri geliştirme; bu bir **sebep** ilişkisidir. Arkadan tam cümle geldiği için *seeing that* uygundur; *even though* zıtlık kurduğu için, *lest* olumsuz amaç bildirdiği için elenir.\n\n## Tuzaklar ve sık yapılan hatalar\n- **Edat ile bağlacı karıştırmak:** *despite / notwithstanding / on account of* arkasından tam cümle gelmez; Türkçedeki '-mesine rağmen' yapısı bu hatayı doğurur.\n- **Devrikte yardımcı fiili unutmak:** *No sooner had …, Hardly had …, Not only has …*; Türkçede böyle bir yapı olmadığı için düz sıralı şık cazip gelir.\n- **Kalıp eşini karıştırmak:** *no sooner … than*, ama *hardly / scarcely … when*.\n- **Bağlacı anlama bakmadan seçmek:** *nonetheless* ile *accordingly* aynı yere girer gibi görünür; biri zıtlık, öteki sonuçtur.\n- **Hata defterini sayısız bırakmak:** Tür bazında doğru sayısını yazmayan aday, zayıf noktasını sezgiyle seçer ve yanlış konuya zaman harcar.\n\n## Sınav ipucu\nSınavda ilk 26 soruyu (kelime, dilbilgisi, cloze) 25 dakikada, cümle tamamlamayı 10 dakikada bitirmeyi hedefle. Tam Deneme 4'ü çözerken her bölümün bitiş saatini sayfanın kenarına yaz; deneme bitince bu saatleri hedefle karşılaştır. 48 doğru için mükemmel olman gerekmez: dilbilgisi ve bağlaç sorularında hızlı ve isabetli olursan okumaya yeterli süre kalır.",
    "nodes": [
     {
      "id": "ys4u5l1",
@@ -3793,7 +3793,7 @@
         "such as"
        ],
        "answer": 2,
-       "explanation": "Olumsuz bir ifadeden sonra daha zor olanı reddetmek için ‘let alone’ (… şöyle dursun) kullanılır: paragrafı zar zor okuyorlar, deneme yazmak hiç söz konusu değil. Tuzak: ‘as well as’ ekleme yapar, olumsuzluğu güçlendirmez; ‘such as’ örnek verir."
+       "explanation": "Olumsuz bir ifadeden sonra daha zor olanı reddetmek için 'let alone' (… şöyle dursun) kullanılır: paragrafı zar zor okuyorlar, deneme yazmak hiç söz konusu değil. Tuzak: 'as well as' ekleme yapar, olumsuzluğu güçlendirmez; 'such as' örnek verir."
       },
       {
        "type": "choice",
@@ -3806,7 +3806,7 @@
         "as though"
        ],
        "answer": 0,
-       "explanation": "Onay, rakamların denetlenmesi koşuluna bağlıdır → ‘providing that’ (-mesi şartıyla). Tuzak: ‘lest’ olumsuz amaç bildirir (denetlenmesin diye), anlamı tersine çevirir; ‘even though’ zıtlık kurar ama iki yarım arasında zıtlık yoktur."
+       "explanation": "Onay, rakamların denetlenmesi koşuluna bağlıdır → 'providing that' (-mesi şartıyla). Tuzak: 'lest' olumsuz amaç bildirir (denetlenmesin diye), anlamı tersine çevirir; 'even though' zıtlık kurar ama iki yarım arasında zıtlık yoktur."
       },
       {
        "type": "match",
@@ -3844,7 +3844,7 @@
         "Seeing that"
        ],
        "answer": 3,
-       "explanation": "Aleyhteki kanıtlara rağmen beraat → zıtlık; arkadan isim öbeği geldiği için edat gerekir: ‘Notwithstanding’. Tuzak: ‘Owing to’ sebep bildirir (kanıtlar yüzünden beraat mantıksızdır); ‘Seeing that’ bağlaçtır, arkasından tam cümle ister."
+       "explanation": "Aleyhteki kanıtlara rağmen beraat → zıtlık; arkadan isim öbeği geldiği için edat gerekir: 'Notwithstanding'. Tuzak: 'Owing to' sebep bildirir (kanıtlar yüzünden beraat mantıksızdır); 'Seeing that' bağlaçtır, arkasından tam cümle ister."
       },
       {
        "type": "fillBlank",
@@ -3868,7 +3868,7 @@
         "inside"
        ],
        "answer": 1,
-       "explanation": "‘irrespective of’ = -e bakılmaksızın: kurallar pozisyon ve kıdemden bağımsız olarak herkese uygulanır. Tuzak: ‘instead of’ (yerine) ve ‘because of’ (yüzünden) da *of* ile kalıp oluşturur, ama anlam tutmaz."
+       "explanation": "'irrespective of' = -e bakılmaksızın: kurallar pozisyon ve kıdemden bağımsız olarak herkese uygulanır. Tuzak: 'instead of' (yerine) ve 'because of' (yüzünden) da *of* ile kalıp oluşturur, ama anlam tutmaz."
       },
       {
        "type": "choice",
@@ -3881,7 +3881,7 @@
         "accordingly"
        ],
        "answer": 4,
-       "explanation": "Eksik veri → analizin ertelenmesi: sebep-sonuç ilişkisi, yani ‘accordingly’ (bu nedenle). Tuzak: ‘nonetheless’ zıtlık bağlacıdır; ertelemeyi verilerin eksikliğine rağmen yapılmış gibi gösterir. ‘namely’ açıklama/örnek getirir."
+       "explanation": "Eksik veri → analizin ertelenmesi: sebep-sonuç ilişkisi, yani 'accordingly' (bu nedenle). Tuzak: 'nonetheless' zıtlık bağlacıdır; ertelemeyi verilerin eksikliğine rağmen yapılmış gibi gösterir. 'namely' açıklama/örnek getirir."
       },
       {
        "type": "choice",
@@ -3894,7 +3894,7 @@
         "likewise"
        ],
        "answer": 1,
-       "explanation": "Virgülden sonra ‘iki grup’ tek tek açıklanıyor → ‘namely’ (yani, şöyle ki). Tuzak: ‘accordingly’ sonuç bildirir; ‘whereupon’ ardından bir olay ister (bunun üzerine …)."
+       "explanation": "Virgülden sonra 'iki grup' tek tek açıklanıyor → 'namely' (yani, şöyle ki). Tuzak: 'accordingly' sonuç bildirir; 'whereupon' ardından bir olay ister (bunun üzerine …)."
       },
       {
        "type": "choice",
@@ -3907,7 +3907,7 @@
         "deemed"
        ],
        "answer": 4,
-       "explanation": "‘deem + nesne + sıfat’ = bir şeyi … saymak: yetkililer binayı güvensiz saydı → ‘deemed’. Tuzak: ‘complied’ (with), ‘adhered’ (to), ‘relied’ (on) edat isteyen fiillerdir ve nesne + sıfat almazlar."
+       "explanation": "'deem + nesne + sıfat' = bir şeyi … saymak: yetkililer binayı güvensiz saydı → 'deemed'. Tuzak: 'complied' (with), 'adhered' (to), 'relied' (on) edat isteyen fiillerdir ve nesne + sıfat almazlar."
       },
       {
        "type": "choice",
@@ -3920,7 +3920,7 @@
         "insist"
        ],
        "answer": 0,
-       "explanation": "‘comply with’ = -e uymak; standartlara uymayan şirketler ceza alır. Tuzak: ‘insist’ *on* ile kullanılır; ‘oblige’ ve ‘render’ nesne ister, *with* ile kalıp oluşturmaz."
+       "explanation": "'comply with' = -e uymak; standartlara uymayan şirketler ceza alır. Tuzak: 'insist' *on* ile kullanılır; 'oblige' ve 'render' nesne ister, *with* ile kalıp oluşturmaz."
       }
      ]
     },
@@ -3941,7 +3941,7 @@
         "is destroying"
        ],
        "answer": 1,
-       "explanation": "*By the time + geçmiş zaman* olan bir olaydan önce tamamlanmış eylem → ‘had destroyed’. Tuzak: ‘will have destroyed’ doğru yapıdır ama gelecek içindir; *arrived* geçmiş olduğu için elenir."
+       "explanation": "*By the time + geçmiş zaman* olan bir olaydan önce tamamlanmış eylem → 'had destroyed'. Tuzak: 'will have destroyed' doğru yapıdır ama gelecek içindir; *arrived* geçmiş olduğu için elenir."
       },
       {
        "type": "choice",
@@ -3954,7 +3954,7 @@
         "which"
        ],
        "answer": 4,
-       "explanation": "Virgüllü (tanımlamayan) ilgi cümlesinde nesneler için ‘which’ kullanılır. Tuzak: ‘that’ virgülden sonra kullanılamaz; ‘where’ arkasında özne ister (*where cars cross*)."
+       "explanation": "Virgüllü (tanımlamayan) ilgi cümlesinde nesneler için 'which' kullanılır. Tuzak: 'that' virgülden sonra kullanılamaz; 'where' arkasında özne ister (*where cars cross*)."
       },
       {
        "type": "choice",
@@ -3967,7 +3967,7 @@
         "Since"
        ],
        "answer": 0,
-       "explanation": "Yağmura rağmen tören yapıldı → zıtlık; arkadan isim öbeği geldiği için edat: ‘Despite’. Tuzak: ‘Although’ da zıtlık bildirir ama tam cümle ister; ‘Because of’ sebep kurar ve anlamı bozar."
+       "explanation": "Yağmura rağmen tören yapıldı → zıtlık; arkadan isim öbeği geldiği için edat: 'Despite'. Tuzak: 'Although' da zıtlık bildirir ama tam cümle ister; 'Because of' sebep kurar ve anlamı bozar."
       },
       {
        "type": "choice",
@@ -3980,7 +3980,7 @@
         "would"
        ],
        "answer": 3,
-       "explanation": "*Hardly … when* kalıbı geçmişte iki olayın art arda olduğunu anlatır ve devrik geçmiş mükemmel ister: ‘Hardly had the meeting started’. Tuzak: ‘did’ devrik yapıdır ama *started* ile birleşmez (*did … start* olmalıydı)."
+       "explanation": "*Hardly … when* kalıbı geçmişte iki olayın art arda olduğunu anlatır ve devrik geçmiş mükemmel ister: 'Hardly had the meeting started'. Tuzak: 'did' devrik yapıdır ama *started* ile birleşmez (*did … start* olmalıydı)."
       },
       {
        "type": "choice",
@@ -3993,7 +3993,7 @@
         "will be"
        ],
        "answer": 2,
-       "explanation": "Ana cümlede *would have been* var → üçüncü tip koşul, *if* kısmı geçmiş mükemmel: ‘had been’. Tuzak: ‘was’ ikinci tip koşula aittir; şimdiki zamana yönelik varsayım kurar."
+       "explanation": "Ana cümlede *would have been* var → üçüncü tip koşul, *if* kısmı geçmiş mükemmel: 'had been'. Tuzak: 'was' ikinci tip koşula aittir; şimdiki zamana yönelik varsayım kurar."
       },
       {
        "type": "choice",
@@ -4006,7 +4006,7 @@
         "has raised the crisis"
        ],
        "answer": 3,
-       "explanation": "*Not only* cümle başında devrik yapı ister: yardımcı fiil + özne + fiil → ‘has the crisis raised’. Tuzak: ‘the crisis has raised’ düz sıralıdır; ‘did the crisis raised’ yardımcı fiilden sonra fiilin yalın hâlini kullanmaz."
+       "explanation": "*Not only* cümle başında devrik yapı ister: yardımcı fiil + özne + fiil → 'has the crisis raised'. Tuzak: 'the crisis has raised' düz sıralıdır; 'did the crisis raised' yardımcı fiilden sonra fiilin yalın hâlini kullanmaz."
       },
       {
        "type": "choice",
@@ -4019,7 +4019,7 @@
         "in the same way"
        ],
        "answer": 1,
-       "explanation": "Soğuk saklanmazsa etkisini yitirir → ‘otherwise’ (aksi takdirde). Tuzak: ‘likewise’ ve ‘in the same way’ benzerlik kurar; ‘namely’ açıklama getirir."
+       "explanation": "Soğuk saklanmazsa etkisini yitirir → 'otherwise' (aksi takdirde). Tuzak: 'likewise' ve 'in the same way' benzerlik kurar; 'namely' açıklama getirir."
       },
       {
        "type": "choice",
@@ -4032,7 +4032,7 @@
         "to be"
        ],
        "answer": 4,
-       "explanation": "*be expected* arkasından *to*-mastar gelir → ‘to be’. Tuzak: ‘being’ ve ‘having been’ -ing biçimidir; *expect* bunları almaz."
+       "explanation": "*be expected* arkasından *to*-mastar gelir → 'to be'. Tuzak: 'being' ve 'having been' -ing biçimidir; *expect* bunları almaz."
       },
       {
        "type": "choice",
@@ -4045,7 +4045,7 @@
         "what"
        ],
        "answer": 2,
-       "explanation": "Arkadaki cümle eksiksizdir (özne + edilgen fiil + zarf); eksik olan yalnızca neden bilgisidir → ‘why’. Tuzak: ‘what’ ve ‘which’ cümlede eksik bir özne ya da nesne ister; burada eksik öğe yoktur."
+       "explanation": "Arkadaki cümle eksiksizdir (özne + edilgen fiil + zarf); eksik olan yalnızca neden bilgisidir → 'why'. Tuzak: 'what' ve 'which' cümlede eksik bir özne ya da nesne ister; burada eksik öğe yoktur."
       },
       {
        "type": "choice",
@@ -4058,7 +4058,7 @@
         "in order to"
        ],
        "answer": 0,
-       "explanation": "Amaç bildiren ve arkasından özne + fiil alan bağlaç → ‘so that’. Tuzak: ‘so as to’ ve ‘in order to’ da amaç bildirir ama arkalarından yalın fiil gelir, özne gelmez; ‘lest’ olumsuz amaçtır."
+       "explanation": "Amaç bildiren ve arkasından özne + fiil alan bağlaç → 'so that'. Tuzak: 'so as to' ve 'in order to' da amaç bildirir ama arkalarından yalın fiil gelir, özne gelmez; 'lest' olumsuz amaçtır."
       }
      ]
     },
@@ -4079,7 +4079,7 @@
         "had been limited"
        ],
        "answer": 3,
-       "explanation": "*Had … acted* devrik üçüncü tip koşuldur (*If the government had acted*); ana cümle *could/would have + V3* ister → ‘could have been limited’. Tuzak: ‘had been limited’ koşul kısmının yapısını ana cümleye taşır."
+       "explanation": "*Had … acted* devrik üçüncü tip koşuldur (*If the government had acted*); ana cümle *could/would have + V3* ister → 'could have been limited'. Tuzak: 'had been limited' koşul kısmının yapısını ana cümleye taşır."
       },
       {
        "type": "choice",
@@ -4092,7 +4092,7 @@
         "to have destroyed"
        ],
        "answer": 1,
-       "explanation": "Yıkım geçmişte olmuş (*many centuries ago*) ve yıkıntılar yıkılan taraftır → geçmiş edilgen mastar: ‘to have been destroyed’. Tuzak: ‘to have destroyed’ zamanı doğru verir ama etkendir; yıkıntılar bir şeyi yıkmış gibi olur."
+       "explanation": "Yıkım geçmişte olmuş (*many centuries ago*) ve yıkıntılar yıkılan taraftır → geçmiş edilgen mastar: 'to have been destroyed'. Tuzak: 'to have destroyed' zamanı doğru verir ama etkendir; yıkıntılar bir şeyi yıkmış gibi olur."
       },
       {
        "type": "choice",
@@ -4100,12 +4100,12 @@
        "options": [
         "signed",
         "will sign",
-        "has signed",
+        "had signed",
         "signing",
         "sign"
        ],
        "answer": 4,
-       "explanation": "*It is essential that* arkasından fiilin yalın hâli (subjunctive) gelir → ‘sign’. Tuzak: ‘will sign’ Türkçedeki ‘imzalayacak’ düşüncesiyle seçilir, ama bu kalıp gelecek zaman almaz."
+       "explanation": "*It is essential that* arkasından fiilin yalın hâli (subjunctive) gelir → 'sign'. Tuzak: 'will sign' Türkçedeki 'imzalayacak' düşüncesiyle seçilir, ama bu kalıp gelecek zaman almaz."
       },
       {
        "type": "choice",
@@ -4118,7 +4118,7 @@
         "because it was cheap to produce"
        ],
        "answer": 2,
-       "explanation": "*Although* zıtlık ister: hayvanlarda etkili ama insanlarda henüz denenmedi → ‘it has yet to be tested on human patients’. Tuzak: ‘therefore approved’ diyen şık zıtlık değil sonuç kurar; ‘scientists were pleased’ diyen şık ilk yarımı onaylar, karşıtlık yoktur; ‘because …’ ile başlayan şık ana cümle değildir."
+       "explanation": "*Although* zıtlık ister: hayvanlarda etkili ama insanlarda henüz denenmedi → 'it has yet to be tested on human patients'. Tuzak: 'therefore approved' diyen şık zıtlık değil sonuç kurar; 'scientists were pleased' diyen şık ilk yarımı onaylar, karşıtlık yoktur; 'because …' ile başlayan şık ana cümle değildir."
       },
       {
        "type": "choice",
@@ -4131,7 +4131,7 @@
         "As if"
        ],
        "answer": 0,
-       "explanation": "Az yağış, sulama yöntemlerinin nedenidir → sebep bağlacı ‘Seeing that’ (-diğine göre). Tuzak: ‘Even though’ zıtlık kurar ama yağış azlığı ile sulama geliştirmek çelişmez; ‘Unless’ koşulu tersine çevirir."
+       "explanation": "Az yağış, sulama yöntemlerinin nedenidir → sebep bağlacı 'Seeing that' (-diğine göre). Tuzak: 'Even though' zıtlık kurar ama yağış azlığı ile sulama geliştirmek çelişmez; 'Unless' koşulu tersine çevirir."
       },
       {
        "type": "choice",
@@ -4144,7 +4144,7 @@
         "that critics questioned its legality"
        ],
        "answer": 0,
-       "explanation": "*No sooner* kalıbının eşi ‘than’dır: ‘than critics began to question its legality’. Tuzak: ‘when’ ile başlayan şık *hardly / scarcely* kalıbına aittir; bu iki kalıbı karıştırmak en sık hatadır."
+       "explanation": "*No sooner* kalıbının eşi 'than'dır: 'than critics began to question its legality'. Tuzak: 'when' ile başlayan şık *hardly / scarcely* kalıbına aittir; bu iki kalıbı karıştırmak en sık hatadır."
       },
       {
        "type": "choice",
@@ -4157,7 +4157,7 @@
         "the funding will be approved by the council"
        ],
        "answer": 2,
-       "explanation": "*Whether or not* = -se de -mese de: sonuç her iki durumda aynıdır → ‘the team intends to continue its fieldwork next year’. Tuzak: ‘the funding will be approved’ diyen şık konuyu tekrarlar ama kalıbın ‘her iki durumda da’ anlamını karşılamaz; ‘would have continued’ zaman uyumunu bozar."
+       "explanation": "*Whether or not* = -se de -mese de: sonuç her iki durumda aynıdır → 'the team intends to continue its fieldwork next year'. Tuzak: 'the funding will be approved' diyen şık konuyu tekrarlar ama kalıbın 'her iki durumda da' anlamını karşılamaz; 'would have continued' zaman uyumunu bozar."
       },
       {
        "type": "choice",
@@ -4170,7 +4170,7 @@
         "so its predictions became more and more accurate"
        ],
        "answer": 1,
-       "explanation": "*The more …, the more …* (ne kadar … o kadar) kalıbı iki yarımda da *the + karşılaştırma* ister → ‘the more accurate its predictions become’. Tuzak: ‘the most accurate’ üstünlük derecesidir; ‘so … became’ hem kalıbı hem zamanı bozar."
+       "explanation": "*The more …, the more …* (ne kadar … o kadar) kalıbı iki yarımda da *the + karşılaştırma* ister → 'the more accurate its predictions become'. Tuzak: 'the most accurate' üstünlük derecesidir; 'so … became' hem kalıbı hem zamanı bozar."
       },
       {
        "type": "choice",
@@ -4183,7 +4183,7 @@
         "Alarmed"
        ],
        "answer": 4,
-       "explanation": "Şirket düşüşten endişeye kapılan taraftır (edilgen anlam) → geçmiş ortaç ‘Alarmed’. Tuzak: ‘Alarming’ ve ‘Having alarmed’ etken anlam verir; şirketi başkasını endişelendiren taraf yapar."
+       "explanation": "Şirket düşüşten endişeye kapılan taraftır (edilgen anlam) → geçmiş ortaç 'Alarmed'. Tuzak: 'Alarming' ve 'Having alarmed' etken anlam verir; şirketi başkasını endişelendiren taraf yapar."
       },
       {
        "type": "choice",
@@ -4196,7 +4196,7 @@
         "which made it the fastest method ever developed"
        ],
        "answer": 3,
-       "explanation": "*Granted that* (kabul edelim ki) bir şeyi kabul edip karşı görüşe geçer → ‘it remains to be seen whether it is equally accurate’. Tuzak: ‘it is faster than the old method’ ilk yarımı tekrarlar, karşıtlık kurmaz; ‘so …’ ve ‘because …’ ile başlayan şıklar ana cümle değildir."
+       "explanation": "*Granted that* (kabul edelim ki) bir şeyi kabul edip karşı görüşe geçer → 'it remains to be seen whether it is equally accurate'. Tuzak: 'it is faster than the old method' ilk yarımı tekrarlar, karşıtlık kurmaz; 'so …' ve 'because …' ile başlayan şıklar ana cümle değildir."
       }
      ]
     },
@@ -4218,7 +4218,7 @@
         "The beaches had never been properly cleaned."
        ],
        "answer": 0,
-       "explanation": "Metin: soruşturma, bazı katılımcıların para almak için iç kesimlerdeki çöplüklerden atık getirdiğini ortaya koydu → ‘Some participants were bringing in rubbish from inland landfills to be paid.’ Tuzak: ‘The beaches had never been properly cleaned’ diyen şık zıt anlamdır (metin plajların temizlendiğini söyler); ‘Independent estimates … were wrong’ diyen şık metinde geçen ifadeyi tekrarlar ama anlamı değiştirir."
+       "explanation": "Metin: soruşturma, bazı katılımcıların para almak için iç kesimlerdeki çöplüklerden atık getirdiğini ortaya koydu → 'Some participants were bringing in rubbish from inland landfills to be paid.' Tuzak: 'The beaches had never been properly cleaned' diyen şık zıt anlamdır (metin plajların temizlendiğini söyler); 'Independent estimates … were wrong' diyen şık metinde geçen ifadeyi tekrarlar ama anlamı değiştirir."
       },
       {
        "type": "choice",
@@ -4232,7 +4232,7 @@
         "was unaware of the problem until the scheme ended"
        ],
        "answer": 2,
-       "explanation": "*Rather than cancel the scheme, the council changed the rules* → konsey programı kaldırmak yerine düzeltmeyi seçti: ‘preferred to correct the scheme rather than abandon it’. Tuzak: ‘punished all the fishermen’ aşırı genellemedir; ‘stopped paying for any plastic’ zıt anlamdır, çünkü denizden gelen atık için ödeme sürdü."
+       "explanation": "*Rather than cancel the scheme, the council changed the rules* → konsey programı kaldırmak yerine düzeltmeyi seçti: 'preferred to correct the scheme rather than abandon it'. Tuzak: 'punished all the fishermen' aşırı genellemedir; 'stopped paying for any plastic' zıt anlamdır, çünkü denizden gelen atık için ödeme sürdü."
       },
       {
        "type": "choice",
@@ -4246,7 +4246,7 @@
         "How long have you been working for this journal?"
        ],
        "answer": 1,
-       "explanation": "Hasan, editörün kabul ettiğini söyleyerek cevap veriyor; öyleyse boşlukta bir öneri olmalı: ‘Then why not ask the editor for a short extension instead of rushing it?’ Tuzak: ‘You had better submit it as early as possible’ diyen şık da öneridir ama Hasan’ın *she agreed to give me three more days* cevabıyla uyuşmaz; süre uzatma talebiyle ilgili değildir."
+       "explanation": "Hasan, editörün kabul ettiğini söyleyerek cevap veriyor; öyleyse boşlukta bir öneri olmalı: 'Then why not ask the editor for a short extension instead of rushing it?' Tuzak: 'You had better submit it as early as possible' diyen şık da öneridir ama Hasan'ın *she agreed to give me three more days* cevabıyla uyuşmaz; süre uzatma talebiyle ilgili değildir."
       },
       {
        "type": "choice",
@@ -4259,7 +4259,7 @@
         "Users started reporting serious errors almost as soon as the new software had been installed."
        ],
        "answer": 4,
-       "explanation": "*Hardly had … when* = -ir -mez: kurulumdan hemen sonra hatalar bildirilmeye başlandı → ‘almost as soon as the new software had been installed’. Tuzak: ‘hardly ever reported errors’ diyen şık *hardly* kelimesini ‘neredeyse hiç’ anlamıyla okur ve zıt anlam üretir; ‘because users had reported’ diyen şık sırayı tersine çevirir."
+       "explanation": "*Hardly had … when* = -ir -mez: kurulumdan hemen sonra hatalar bildirilmeye başlandı → 'almost as soon as the new software had been installed'. Tuzak: 'hardly ever reported errors' diyen şık *hardly* kelimesini 'neredeyse hiç' anlamıyla okur ve zıt anlam üretir; 'because users had reported' diyen şık sırayı tersine çevirir."
       },
       {
        "type": "choice",
@@ -4273,7 +4273,7 @@
         "For this reason, writing should be avoided during revision."
        ],
        "answer": 3,
-       "explanation": "Boşluktan önce özet yazmanın yararları anlatılıyor, sonra *Only by putting ideas into their own words* diye bir koşul geliyor. Boşluk bu iki kısmı bağlayan sınırlamadır: ‘However, these benefits disappear if the student simply copies the summary from a book.’ Tuzak: ‘summaries are no longer used’ ve ‘writing should be avoided’ diyen şıklar paragrafın ana fikriyle çelişir."
+       "explanation": "Boşluktan önce özet yazmanın yararları anlatılıyor, sonra *Only by putting ideas into their own words* diye bir koşul geliyor. Boşluk bu iki kısmı bağlayan sınırlamadır: 'However, these benefits disappear if the student simply copies the summary from a book.' Tuzak: 'summaries are no longer used' ve 'writing should be avoided' diyen şıklar paragrafın ana fikriyle çelişir."
       },
       {
        "type": "choice",
@@ -4300,7 +4300,7 @@
         "Anket internet üzerinden yapılsaydı, ona çok daha fazla insan katılırdı."
        ],
        "answer": 4,
-       "explanation": "*Had the survey been conducted* devrik üçüncü tip koşuldur: geçmişte gerçekleşmemiş bir durum → ‘yapılsaydı … katılırdı’. Tuzak: ‘yapıldığı için’ diyen şık koşulu gerçek bir neden gibi sunar; ‘yapılırsa … katılacak’ diyen şık zamanı geleceğe taşır."
+       "explanation": "*Had the survey been conducted* devrik üçüncü tip koşuldur: geçmişte gerçekleşmemiş bir durum → 'yapılsaydı … katılırdı'. Tuzak: 'yapıldığı için' diyen şık koşulu gerçek bir neden gibi sunar; 'yapılırsa … katılacak' diyen şık zamanı geleceğe taşır."
       },
       {
        "type": "choice",
@@ -4313,7 +4313,7 @@
         "Only large companies will be affected by the new law, not small businesses."
        ],
        "answer": 3,
-       "explanation": "‘yalnızca … değil, aynı zamanda … de’ = *not only … but also*; zaman gelecek → ‘will affect not only large companies but also small businesses’. Tuzak: ‘rather than’ küçük işletmeleri dışarıda bırakır; ‘Only large companies …’ diyen şık zıt anlamdır."
+       "explanation": "'yalnızca … değil, aynı zamanda … de' = *not only … but also*; zaman gelecek → 'will affect not only large companies but also small businesses'. Tuzak: 'rather than' küçük işletmeleri dışarıda bırakır; 'Only large companies …' diyen şık zıt anlamdır."
       },
       {
        "type": "choice",
@@ -4326,7 +4326,7 @@
         "whereas"
        ],
        "answer": 2,
-       "explanation": "Görüşmelerin çökmesinin nedeni tarafların taviz vermek istememesidir → sebep bildiren ‘as’. Tuzak: ‘so that’ amaç bildirir (çöksün diye); ‘whereas’ iki durumu karşılaştırır, burada karşılaştırma yoktur."
+       "explanation": "Görüşmelerin çökmesinin nedeni tarafların taviz vermek istememesidir → sebep bildiren 'as'. Tuzak: 'so that' amaç bildirir (çöksün diye); 'whereas' iki durumu karşılaştırır, burada karşılaştırma yoktur."
       },
       {
        "type": "choice",
@@ -4339,7 +4339,7 @@
         "been"
        ],
        "answer": 0,
-       "explanation": "*Apart from* bir edattır; arkasından fiil gelecekse -ing biçimi alır → ‘being’. Tuzak: ‘it is’ tam cümle kurar (edattan sonra olmaz); ‘to be’ Türkçedeki ‘olmasının yanı sıra’ yapısını mastarla karşılamaya çalışır."
+       "explanation": "*Apart from* bir edattır; arkasından fiil gelecekse -ing biçimi alır → 'being'. Tuzak: 'it is' tam cümle kurar (edattan sonra olmaz); 'to be' Türkçedeki 'olmasının yanı sıra' yapısını mastarla karşılamaya çalışır."
       }
      ]
     },
@@ -4361,7 +4361,7 @@
         "give rise to"
        ],
        "answer": 3,
-       "explanation": "Karar öncesinde tüm bölümlerin görüşleri ‘take into account’ (dikkate almak) edilecektir. Tuzak: ‘give rise to’ (-e yol açmak) ve ‘make up for’ (telafi etmek) kalıp olarak tanıdıktır ama anlam tutmaz."
+       "explanation": "Karar öncesinde tüm bölümlerin görüşleri 'take into account' (dikkate almak) edilecektir. Tuzak: 'give rise to' (-e yol açmak) ve 'make up for' (telafi etmek) kalıp olarak tanıdıktır ama anlam tutmaz."
       },
       {
        "type": "choice",
@@ -4374,7 +4374,7 @@
         "hostile"
        ],
        "answer": 1,
-       "explanation": "*so … that even students with no background could follow* → açıklama çok anlaşılırdı: ‘lucid’. Tuzak: ‘obscure’ (anlaşılmaz) zıt anlamdır; ‘tedious’ (sıkıcı) olumsuz bir nitelik verir ve sonuçla çelişir."
+       "explanation": "*so … that even students with no background could follow* → açıklama çok anlaşılırdı: 'lucid'. Tuzak: 'obscure' (anlaşılmaz) zıt anlamdır; 'tedious' (sıkıcı) olumsuz bir nitelik verir ve sonuçla çelişir."
       },
       {
        "type": "choice",
@@ -4387,7 +4387,7 @@
         "had lain"
        ],
        "answer": 4,
-       "explanation": "El yazması 2009’dan (geçmiş) önceki bir süre boyunca orada kalmıştı → ‘had lain’ (*lie – lay – lain*). Tuzak: ‘was laying’ hem zaman hem fiil hatasıdır (*lay* nesne alır: bir şeyi yatırmak)."
+       "explanation": "El yazması 2009'dan (geçmiş) önceki bir süre boyunca orada kalmıştı → 'had lain' (*lie – lay – lain*). Tuzak: 'was laying' hem zaman hem fiil hatasıdır (*lay* nesne alır: bir şeyi yatırmak)."
       },
       {
        "type": "choice",
@@ -4400,7 +4400,7 @@
         "agreed the researchers"
        ],
        "answer": 2,
-       "explanation": "*Only after …* cümle başına gelince ana cümle devrik olur: yardımcı fiil + özne + fiil → ‘did the researchers agree’. Tuzak: ‘the researchers agreed’ düz sıralıdır; ‘agreed the researchers’ yardımcı fiilsiz devrik yapıdır ve yanlıştır."
+       "explanation": "*Only after …* cümle başına gelince ana cümle devrik olur: yardımcı fiil + özne + fiil → 'did the researchers agree'. Tuzak: 'the researchers agreed' düz sıralıdır; 'agreed the researchers' yardımcı fiilsiz devrik yapıdır ve yanlıştır."
       },
       {
        "type": "choice",
@@ -4414,7 +4414,7 @@
         "who"
        ],
        "answer": 0,
-       "explanation": "Boşluk *communication skills* ismini niteleyen ve *employers value* cümlesinin nesnesi olan ilgi zamiridir → ‘that’. Tuzak: ‘what’ kendinden önce isim almaz; ‘who’ insanlar içindir."
+       "explanation": "Boşluk *communication skills* ismini niteleyen ve *employers value* cümlesinin nesnesi olan ilgi zamiridir → 'that'. Tuzak: 'what' kendinden önce isim almaz; 'who' insanlar içindir."
       },
       {
        "type": "choice",
@@ -4428,7 +4428,7 @@
         "Likewise"
        ],
        "answer": 0,
-       "explanation": "Destekçilerin görüşünden eleştirmenlerin görüşüne geçiliyor → zıtlık: ‘On the other hand’. Tuzak: ‘Likewise’ benzerlik kurar; ‘As a result’ eleştiriyi destekçilerin görüşünün sonucu gibi gösterir."
+       "explanation": "Destekçilerin görüşünden eleştirmenlerin görüşüne geçiliyor → zıtlık: 'On the other hand'. Tuzak: 'Likewise' benzerlik kurar; 'As a result' eleştiriyi destekçilerin görüşünün sonucu gibi gösterir."
       },
       {
        "type": "choice",
@@ -4442,7 +4442,7 @@
         "until"
        ],
        "answer": 2,
-       "explanation": "Az sayıda üye işin çoğunu yaparken diğerleri az çabayla aynı notu alıyor → iki durumu karşılaştıran ‘while’. Tuzak: ‘because’ ve ‘so that’ sebep/amaç ilişkisi kurar; diğerlerinin not alması, birkaç kişinin çalışmasının amacı değildir."
+       "explanation": "Az sayıda üye işin çoğunu yaparken diğerleri az çabayla aynı notu alıyor → iki durumu karşılaştıran 'while'. Tuzak: 'because' ve 'so that' sebep/amaç ilişkisi kurar; diğerlerinin not alması, birkaç kişinin çalışmasının amacı değildir."
       },
       {
        "type": "choice",
@@ -4455,7 +4455,7 @@
         "the scientists who rejected it were mostly young"
        ],
        "answer": 1,
-       "explanation": "*Even though* zıtlık ister: reddedilmesine rağmen sonradan ilham kaynağı oldu → ‘it later inspired a new generation of researchers’. Tuzak: ‘therefore abandoned’ zıtlık değil sonuç kurar; ‘most scientists … rejected it’ diyen şık ilk yarımı tekrarlar."
+       "explanation": "*Even though* zıtlık ister: reddedilmesine rağmen sonradan ilham kaynağı oldu → 'it later inspired a new generation of researchers'. Tuzak: 'therefore abandoned' zıtlık değil sonuç kurar; 'most scientists … rejected it' diyen şık ilk yarımı tekrarlar."
       },
       {
        "type": "choice",
@@ -4468,7 +4468,7 @@
         "the region will face serious shortages during the summer months"
        ],
        "answer": 4,
-       "explanation": "*Unless* (= if not) + şimdiki zaman → ana cümle gelecek zaman: ‘the region will face serious shortages’. Tuzak: ‘would have faced’ üçüncü tip koşula aittir; ‘faced … last summer’ geçmişe kayar ve koşulla bağlantı kurmaz."
+       "explanation": "*Unless* (= if not) + şimdiki zaman → ana cümle gelecek zaman: 'the region will face serious shortages'. Tuzak: 'would have faced' üçüncü tip koşula aittir; 'faced … last summer' geçmişe kayar ve koşulla bağlantı kurmaz."
       },
       {
        "type": "choice",
@@ -4481,7 +4481,7 @@
         "the data were collected in three different countries"
        ],
        "answer": 3,
-       "explanation": "*Inasmuch as* (-diği için) sebep bildirir: kişilerin kendi beyanına dayanması sonuçların temkinle ele alınmasını gerektirir → ‘its conclusions should be treated with some caution’. Tuzak: ‘it used the most reliable method’ diyen şık ilişkiyi tersine çevirir; ‘although …’ ile başlayan şık ana cümle değildir."
+       "explanation": "*Inasmuch as* (-diği için) sebep bildirir: kişilerin kendi beyanına dayanması sonuçların temkinle ele alınmasını gerektirir → 'its conclusions should be treated with some caution'. Tuzak: 'it used the most reliable method' diyen şık ilişkiyi tersine çevirir; 'although …' ile başlayan şık ana cümle değildir."
       },
       {
        "type": "choice",
@@ -4494,7 +4494,7 @@
         "Bilim insanları, küresel sıcaklıklar artmayı durdurmazsa buzulun on yıllar içinde yok olabileceği konusunda uyardı."
        ],
        "answer": 4,
-       "explanation": "*unless … stop rising* = ‘artmayı durdurmazsa’; *could disappear within decades* = ‘on yıllar içinde yok olabilir’. Tuzak: ‘durdursa bile’ diyen şık *unless* yerine *even if* çevirisidir; ‘yol açabilir’ diyen şık sebep-sonucu tersine çevirir."
+       "explanation": "*unless … stop rising* = 'artmayı durdurmazsa'; *could disappear within decades* = 'on yıllar içinde yok olabilir'. Tuzak: 'durdursa bile' diyen şık *unless* yerine *even if* çevirisidir; 'yol açabilir' diyen şık sebep-sonucu tersine çevirir."
       },
       {
        "type": "choice",
@@ -4507,7 +4507,7 @@
         "The researchers checked the results of the experiment twice, but they never published them."
        ],
        "answer": 3,
-       "explanation": "‘yayımlamadan önce … iki kez kontrol etti’ → ‘checked … twice before publishing them’. Tuzak: ‘after checking them once’ sayıyı değiştirir; ‘never published them’ kaynakta olmayan bir bilgi ekler."
+       "explanation": "'yayımlamadan önce … iki kez kontrol etti' → 'checked … twice before publishing them'. Tuzak: 'after checking them once' sayıyı değiştirir; 'never published them' kaynakta olmayan bir bilgi ekler."
       },
       {
        "type": "choice",
@@ -4521,7 +4521,7 @@
         "stayed longer in the hospital"
        ],
        "answer": 2,
-       "explanation": "Metin: yeşil odalardaki hastalar daha az kaygı bildirdi → ‘felt less anxious than those in the white rooms’. Tuzak: ‘left the hospital earlier’ metinle çelişir (kalış süresi değişmedi); ‘did not need any pain medication’ aşırı genellemedir (*slightly less often*)."
+       "explanation": "Metin: yeşil odalardaki hastalar daha az kaygı bildirdi → 'felt less anxious than those in the white rooms'. Tuzak: 'left the hospital earlier' metinle çelişir (kalış süresi değişmedi); 'did not need any pain medication' aşırı genellemedir (*slightly less often*)."
       },
       {
        "type": "choice",
@@ -4535,7 +4535,7 @@
         "shortens the length of hospital stays"
        ],
        "answer": 0,
-       "explanation": "Yazarlar rengin hastaların hislerini etkileyebileceğini ama tedavinin yerini tutamayacağını söyler → ‘may affect patients’ feelings but cannot replace treatment’. Tuzak: ‘the most important factor’ aşırı genellemedir; ‘has no effect whatsoever’ zıt anlamdır."
+       "explanation": "Yazarlar rengin hastaların hislerini etkileyebileceğini ama tedavinin yerini tutamayacağını söyler → 'may affect patients' feelings but cannot replace treatment'. Tuzak: 'the most important factor' aşırı genellemedir; 'has no effect whatsoever' zıt anlamdır."
       },
       {
        "type": "choice",
@@ -4549,7 +4549,7 @@
         "linguists did not want to study them"
        ],
        "answer": 1,
-       "explanation": "Metin: son eğitimli yaşlı 1912’de ölünce birçok kemer yorumlanamaz hâle geldi → ‘the last person trained to read them died’. Tuzak: ‘traders destroyed many of the belts’ metinde geçen *traders* kelimesini kullanır ama tüccarların kayıtları çözüme yardım etmektedir."
+       "explanation": "Metin: son eğitimli yaşlı 1912'de ölünce birçok kemer yorumlanamaz hâle geldi → 'the last person trained to read them died'. Tuzak: 'traders destroyed many of the belts' metinde geçen *traders* kelimesini kullanır ama tüccarların kayıtları çözüme yardım etmektedir."
       },
       {
        "type": "choice",
@@ -4563,7 +4563,7 @@
         "believe the belts recorded only harvests"
        ],
        "answer": 2,
-       "explanation": "Dilbilimciler desenleri tüccarların kayıtlarıyla karşılaştırarak kodu çözmeye çalışıyor → ‘are using traders’ records to help them decode the belts’. Tuzak: ‘have fully reconstructed’ aşırı genellemedir (*are attempting*); ‘recorded only harvests’ metindeki hasat örneğini tek bilgi gibi sunar."
+       "explanation": "Dilbilimciler desenleri tüccarların kayıtlarıyla karşılaştırarak kodu çözmeye çalışıyor → 'are using traders' records to help them decode the belts'. Tuzak: 'have fully reconstructed' aşırı genellemedir (*are attempting*); 'recorded only harvests' metindeki hasat örneğini tek bilgi gibi sunar."
       },
       {
        "type": "choice",
@@ -4577,7 +4577,7 @@
         "I have already booked my train ticket."
        ],
        "answer": 0,
-       "explanation": "Selin’in *Then I'll ask the organisers about it* cevabı, Mert’in bir koşul öne sürdüğünü gösterir → ‘Not unless the venue can be changed to something closer to the station.’ Tuzak: ‘I have already booked my train ticket’ katılacağını söyler; o zaman Selin’in organizatörlere soru sorması gereksiz olur."
+       "explanation": "Selin'in *Then I'll ask the organisers about it* cevabı, Mert'in bir koşul öne sürdüğünü gösterir → 'Not unless the venue can be changed to something closer to the station.' Tuzak: 'I have already booked my train ticket' katılacağını söyler; o zaman Selin'in organizatörlere soru sorması gereksiz olur."
       },
       {
        "type": "choice",
@@ -4590,7 +4590,7 @@
         "The results were announced again a few weeks after the opposition demanded a recount."
        ],
        "answer": 3,
-       "explanation": "*No sooner … than* = -ir -mez: sonuçlar açıklanır açıklanmaz muhalefet yeniden sayım istedi → ‘immediately after the results were announced’. Tuzak: ‘before the results were announced’ sırayı tersine çevirir; ‘accepted the results’ zıt anlamdır."
+       "explanation": "*No sooner … than* = -ir -mez: sonuçlar açıklanır açıklanmaz muhalefet yeniden sayım istedi → 'immediately after the results were announced'. Tuzak: 'before the results were announced' sırayı tersine çevirir; 'accepted the results' zıt anlamdır."
       },
       {
        "type": "choice",
@@ -4604,7 +4604,7 @@
         "Some farmers cannot afford modern machinery."
        ],
        "answer": 1,
-       "explanation": "Boşluktan önce biyolojik ilaçların yavaş etki ettiği (dezavantaj) söylenir; sonra *This makes them …* ile çevreye uygunluk anlatılır. Boşluk, dezavantajdan avantaja geçen ‘Their main advantage, however, lies in the fact that they leave no harmful residue in the soil.’ cümlesidir. Tuzak: ‘Many insects are … useful’ konuyla ilgili görünür ama *This* zamirinin göndereceği bilgiyi vermez."
+       "explanation": "Boşluktan önce biyolojik ilaçların yavaş etki ettiği (dezavantaj) söylenir; sonra *This makes them …* ile çevreye uygunluk anlatılır. Boşluk, dezavantajdan avantaja geçen 'Their main advantage, however, lies in the fact that they leave no harmful residue in the soil.' cümlesidir. Tuzak: 'Many insects are … useful' konuyla ilgili görünür ama *This* zamirinin göndereceği bilgiyi vermez."
       },
       {
        "type": "choice",
@@ -4705,7 +4705,7 @@
         "surpass"
        ],
        "answer": 1,
-       "explanation": "Sakinlerin evlerine dönebilmesi suyun çekildiğini gösterir → ‘subside’ (yatışmak, çekilmek). Tuzak: ‘soar’ (hızla yükselmek) zıt yöndedir; ‘amplify’ ve ‘surpass’ nesne ister."
+       "explanation": "Sakinlerin evlerine dönebilmesi suyun çekildiğini gösterir → 'subside' (yatışmak, çekilmek). Tuzak: 'soar' (hızla yükselmek) zıt yöndedir; 'amplify' ve 'surpass' nesne ister."
       },
       {
        "type": "choice",
@@ -4718,7 +4718,7 @@
         "plummeted"
        ],
        "answer": 4,
-       "explanation": "Hesaplarda sahtecilik itirafı hisseleri düşürür; *by 40 percent in a single day* sert bir düşüşü anlatır → ‘plummeted’. Tuzak: ‘soared’ yönü tersine çevirir; ‘persisted’ bir oran değişimi bildirmez."
+       "explanation": "Hesaplarda sahtecilik itirafı hisseleri düşürür; *by 40 percent in a single day* sert bir düşüşü anlatır → 'plummeted'. Tuzak: 'soared' yönü tersine çevirir; 'persisted' bir oran değişimi bildirmez."
       },
       {
        "type": "match",
@@ -4756,7 +4756,7 @@
         "indispensable"
        ],
        "answer": 0,
-       "explanation": "‘susceptible to’ = -e yatkın: kirli şehirlerde büyüyen çocuklar solunum hastalıklarına daha yatkındır. Tuzak: ‘reluctant to’ (isteksiz) de *to* alır ama anlam tutmaz; ‘eligible’ *for*, ‘compatible’ *with* ister."
+       "explanation": "'susceptible to' = -e yatkın: kirli şehirlerde büyüyen çocuklar solunum hastalıklarına daha yatkındır. Tuzak: 'reluctant to' (isteksiz) de *to* alır ama anlam tutmaz; 'eligible' *for*, 'compatible' *with* ister."
       },
       {
        "type": "choice",
@@ -4769,7 +4769,7 @@
         "inherent"
        ],
        "answer": 3,
-       "explanation": "‘eligible for’ = -e hak kazanmış, başvurabilir: yalnızca birinci yılı bitirenler programa uygun. Tuzak: ‘susceptible’ ve ‘conducive’ *to* ile kullanılır; ‘resilient’ (dayanıklı) anlam tutmaz."
+       "explanation": "'eligible for' = -e hak kazanmış, başvurabilir: yalnızca birinci yılı bitirenler programa uygun. Tuzak: 'susceptible' ve 'conducive' *to* ile kullanılır; 'resilient' (dayanıklı) anlam tutmaz."
       },
       {
        "type": "fillBlank",
@@ -4793,7 +4793,7 @@
         "signified"
        ],
        "answer": 2,
-       "explanation": "İki olay aynı güne denk geldi → ‘coincided’. İki nokta sonrasındaki açıklama (*on the very day*) ipucudur. Tuzak: ‘persisted’ (sürdü) zaman çakışmasını değil süreyi anlatır; ‘deterred’ nesne ister."
+       "explanation": "İki olay aynı güne denk geldi → 'coincided'. İki nokta sonrasındaki açıklama (*on the very day*) ipucudur. Tuzak: 'persisted' (sürdü) zaman çakışmasını değil süreyi anlatır; 'deterred' nesne ister."
       },
       {
        "type": "choice",
@@ -4806,7 +4806,7 @@
         "adverse"
        ],
        "answer": 3,
-       "explanation": "*Every detail* ve notların hâlâ örnek alınması → ‘meticulous’ (titiz). Tuzak: ‘arbitrary’ (gelişigüzel) zıt anlam verir; ‘spontaneous’ (kendiliğinden) çalışma biçimini anlatmaz."
+       "explanation": "*Every detail* ve notların hâlâ örnek alınması → 'meticulous' (titiz). Tuzak: 'arbitrary' (gelişigüzel) zıt anlam verir; 'spontaneous' (kendiliğinden) çalışma biçimini anlatmaz."
       },
       {
        "type": "choice",
@@ -4819,7 +4819,7 @@
         "dwindle"
        ],
        "answer": 1,
-       "explanation": "Kanıt iddiaları ‘substantiate’ (doğrulamak, kanıtlamak) için yeterli değildi. Tuzak: ‘subside’, ‘coincide’ ve ‘dwindle’ geçişsiz fiillerdir, nesne almaz; ‘deter’ birini bir şeyden caydırmaktır."
+       "explanation": "Kanıt iddiaları 'substantiate' (doğrulamak, kanıtlamak) için yeterli değildi. Tuzak: 'subside', 'coincide' ve 'dwindle' geçişsiz fiillerdir, nesne almaz; 'deter' birini bir şeyden caydırmaktır."
       },
       {
        "type": "choice",
@@ -4832,7 +4832,7 @@
         "deliberate"
        ],
        "answer": 4,
-       "explanation": "*rather than from any intention to deceive* → hatalar nadiren ‘deliberate’ (kasıtlı) olur. Tuzak: ‘viable’ (uygulanabilir) ve ‘ample’ (bol) cümledeki niyet karşıtlığını karşılamaz."
+       "explanation": "*rather than from any intention to deceive* → hatalar nadiren 'deliberate' (kasıtlı) olur. Tuzak: 'viable' (uygulanabilir) ve 'ample' (bol) cümledeki niyet karşıtlığını karşılamaz."
       }
      ]
     },
@@ -4853,7 +4853,7 @@
         "consolidated"
        ],
        "answer": 3,
-       "explanation": "*fewer than 200* ve dilin yok olma korkusu azalışı gösterir → ‘dwindled’ (giderek azaldı). Tuzak: ‘soared’ zıt yöndür; ‘surpassed’ nesne ister (bir şeyi geçmek)."
+       "explanation": "*fewer than 200* ve dilin yok olma korkusu azalışı gösterir → 'dwindled' (giderek azaldı). Tuzak: 'soared' zıt yöndür; 'surpassed' nesne ister (bir şeyi geçmek)."
       },
       {
        "type": "choice",
@@ -4866,7 +4866,7 @@
         "coincide"
        ],
        "answer": 1,
-       "explanation": "İki rakibi satın alarak pazardaki konumunu ‘consolidate’ (sağlamlaştırmak). Tuzak: ‘subside’ ve ‘dwindle’ geçişsizdir ve azalma bildirir; ‘deter’ birini caydırmaktır."
+       "explanation": "İki rakibi satın alarak pazardaki konumunu 'consolidate' (sağlamlaştırmak). Tuzak: 'subside' ve 'dwindle' geçişsizdir ve azalma bildirir; 'deter' birini caydırmaktır."
       },
       {
        "type": "choice",
@@ -4879,7 +4879,7 @@
         "devised"
        ],
        "answer": 4,
-       "explanation": "Yeni bir yöntem ‘devised’ (tasarladı, geliştirdi). Tuzak: ‘outweighed’ karşılaştırma ister (bir şeyden ağır basmak); ‘deterred’ olumsuz bir caydırma anlatır."
+       "explanation": "Yeni bir yöntem 'devised' (tasarladı, geliştirdi). Tuzak: 'outweighed' karşılaştırma ister (bir şeyden ağır basmak); 'deterred' olumsuz bir caydırma anlatır."
       },
       {
        "type": "choice",
@@ -4892,7 +4892,7 @@
         "surpass"
        ],
        "answer": 2,
-       "explanation": "Konuşma bir aciliyet duygusunu ‘convey’ (iletmek, aktarmak) etmeyi başaramadı. Tuzak: ‘impede’ (engellemek) nesne alır ama anlamı tersine çevirir; ‘persist’ ve ‘dwindle’ nesne almaz."
+       "explanation": "Konuşma bir aciliyet duygusunu iletmeyi ('convey': iletmek, aktarmak) başaramadı. Tuzak: 'impede' (engellemek) nesne alır ama anlamı tersine çevirir; 'persist' ve 'dwindle' nesne almaz."
       },
       {
        "type": "choice",
@@ -4905,7 +4905,7 @@
         "envisage"
        ],
        "answer": 0,
-       "explanation": "‘deter somebody from doing’ = birini bir şeyi yapmaktan caydırmak → ‘deter’. Tuzak: ‘envisage’ (öngörmek) ve ‘depict’ (tasvir etmek) *from + -ing* kalıbıyla kullanılmaz."
+       "explanation": "'deter somebody from doing' = birini bir şeyi yapmaktan caydırmak → 'deter'. Tuzak: 'envisage' (öngörmek) ve 'depict' (tasvir etmek) *from + -ing* kalıbıyla kullanılmaz."
       },
       {
        "type": "choice",
@@ -4918,7 +4918,7 @@
         "persists"
        ],
        "answer": 0,
-       "explanation": "*a wide range of topics, from … to …* kapsamı anlatır → ‘encompasses’ (kapsar). Tuzak: ‘coincides’ ve ‘persists’ geçişsizdir; ‘deters’ anlam tutmaz."
+       "explanation": "*a wide range of topics, from … to …* kapsamı anlatır → 'encompasses' (kapsar). Tuzak: 'coincides' ve 'persists' geçişsizdir; 'deters' anlam tutmaz."
       },
       {
        "type": "choice",
@@ -4931,7 +4931,7 @@
         "arbitrary"
        ],
        "answer": 2,
-       "explanation": "‘conducive to’ = -e elverişli: sakin ortam etkili öğrenmeye elverişlidir. Tuzak: ‘accustomed to’ (alışkın) ve ‘reluctant to’ (isteksiz) yalnızca canlı öznelerle anlam taşır, cansız bir ortam için kullanılmaz; ‘eligible’ *for* ister; ‘arbitrary’ (keyfî) anlamca uymaz."
+       "explanation": "'conducive to' = -e elverişli: sakin ortam etkili öğrenmeye elverişlidir. Tuzak: 'accustomed to' (alışkın) ve 'reluctant to' (isteksiz) yalnızca canlı öznelerle anlam taşır, cansız bir ortam için kullanılmaz; 'eligible' *for* ister; 'arbitrary' (keyfî) anlamca uymaz."
       },
       {
        "type": "choice",
@@ -4944,7 +4944,7 @@
         "devised"
        ],
        "answer": 1,
-       "explanation": "*Despite repeated warnings* ve *before action was finally taken* sorunun sürdüğünü gösterir → ‘persisted’. Tuzak: ‘subsided’ (yatıştı) zıt anlamdır; sorun yatışmış olsaydı önlem almaya gerek kalmazdı."
+       "explanation": "*Despite repeated warnings* ve *before action was finally taken* sorunun sürdüğünü gösterir → 'persisted'. Tuzak: 'subsided' (yatıştı) zıt anlamdır; sorun yatışmış olsaydı önlem almaya gerek kalmazdı."
       },
       {
        "type": "choice",
@@ -4957,7 +4957,7 @@
         "depicts"
        ],
        "answer": 4,
-       "explanation": "Resim köydeki günlük hayatı ‘depicts’ (tasvir eder). Tuzak: ‘impedes’ ve ‘deters’ engelleme/caydırma bildirir; ‘subsides’ nesne almaz."
+       "explanation": "Resim köydeki günlük hayatı 'depicts' (tasvir eder). Tuzak: 'impedes' ve 'deters' engelleme/caydırma bildirir; 'subsides' nesne almaz."
       },
       {
        "type": "choice",
@@ -4970,7 +4970,7 @@
         "persists"
        ],
        "answer": 3,
-       "explanation": "Belediye başkanlarının karşı çıkması, yasanın yetkilerini ‘curtails’ (kısıtladığını) gösterir. Tuzak: ‘bolsters’ (güçlendirir) zıt anlamdır; yetkileri artan başkanların karşı çıkması beklenmez. ‘dwindles’ nesne almaz."
+       "explanation": "Belediye başkanlarının karşı çıkması, yasanın yetkilerini 'curtails' (kısıtladığını) gösterir. Tuzak: 'bolsters' (güçlendirir) zıt anlamdır; yetkileri artan başkanların karşı çıkması beklenmez. 'dwindles' nesne almaz."
       }
      ]
     },
@@ -4992,7 +4992,7 @@
         "surpass"
        ],
        "answer": 0,
-       "explanation": "Kuraklık çiftçileri geleneksel yöntemlerinin bir kısmını ‘abandon’ (terk etmek) etmeye zorladı; sonraki cümleler yeni ürünlere ve tekniklere geçişi anlatır. Tuzak: ‘attain’ (ulaşmak) ve ‘surpass’ (aşmak) nesne alır ama anlam tutmaz."
+       "explanation": "Kuraklık çiftçileri geleneksel yöntemlerinin bir kısmını terk etmeye ('abandon') zorladı; sonraki cümleler yeni ürünlere ve tekniklere geçişi anlatır. Tuzak: 'attain' (ulaşmak) ve 'surpass' (aşmak) nesne alır ama anlam tutmaz."
       },
       {
        "type": "choice",
@@ -5006,7 +5006,7 @@
         "compatible"
        ],
        "answer": 2,
-       "explanation": "Kuraklığa daha az ‘susceptible’ (yatkın, savunmasız) ürünler: darı ve süpürge darısı. Tuzak: ‘conducive to drought’ kuraklığa elverişli demektir ve anlamsızdır; ‘compatible’ *with*, ‘eligible’ *for* ister."
+       "explanation": "Kuraklığa daha az 'susceptible' (yatkın, savunmasız) ürünler: darı ve süpürge darısı. Tuzak: 'conducive to drought' kuraklığa elverişli demektir ve anlamsızdır; 'compatible' *with*, 'eligible' *for* ister."
       },
       {
        "type": "choice",
@@ -5020,7 +5020,7 @@
         "put"
        ],
        "answer": 1,
-       "explanation": "‘fall out of use’ = kullanılmaz hâle gelmek → ‘fallen’. Tuzak: ‘run out of’ tükenmek demektir ve *of* ister; ‘put out’ ve ‘brought out’ başka anlamlı deyimlerdir."
+       "explanation": "'fall out of use' = kullanılmaz hâle gelmek → 'fallen'. Tuzak: 'run out of' tükenmek demektir ve *of* ister; 'put out' ve 'brought out' başka anlamlı deyimlerdir."
       },
       {
        "type": "choice",
@@ -5034,7 +5034,7 @@
         "however"
        ],
        "answer": 4,
-       "explanation": "Değişiklikler cesaret verici, ama uzmanlar uyarıyor → zıtlık: ‘however’. Tuzak: ‘therefore’ uyarıyı olumlu gelişmenin sonucu gibi gösterir; ‘in other words’ aynı fikri yeniden ifade eder, oysa ikinci cümle yeni ve karşıt bir fikirdir."
+       "explanation": "Değişiklikler cesaret verici, ama uzmanlar uyarıyor → zıtlık: 'however'. Tuzak: 'therefore' uyarıyı olumlu gelişmenin sonucu gibi gösterir; 'in other words' aynı fikri yeniden ifade eder, oysa ikinci cümle yeni ve karşıt bir fikirdir."
       },
       {
        "type": "choice",
@@ -5048,7 +5048,7 @@
         "by"
        ],
        "answer": 3,
-       "explanation": "‘in search of’ = -i aramak için: aileler iş aramak için vadiyi terk edebilir → ‘in’. Tuzak: Türkçedeki ‘iş için’ düşüncesi ‘for’ şıkkını cazip yapar, ama kalıp *in search of*tur."
+       "explanation": "'in search of' = -i aramak için: aileler iş aramak için vadiyi terk edebilir → 'in'. Tuzak: Türkçedeki 'iş için' düşüncesi 'for' şıkkını cazip yapar, ama kalıp *in search of*tur."
       },
       {
        "type": "choice",
@@ -5062,7 +5062,7 @@
         "get"
        ],
        "answer": 4,
-       "explanation": "*teenagers who use … late at night* öznesinin fiili eksik; genel bir bulgu olduğu için geniş zaman ve çoğul özne → ‘get’. Tuzak: ‘gets’ tekil özneye aittir; *who use* yan cümlesindeki *night* kelimesine bakıp tekil sanan aday bu tuzağa düşer."
+       "explanation": "*teenagers who use … late at night* öznesinin fiili eksik; genel bir bulgu olduğu için geniş zaman ve çoğul özne → 'get'. Tuzak: 'gets' tekil özneye aittir; *who use* yan cümlesindeki *night* kelimesine bakıp tekil sanan aday bu tuzağa düşer."
       },
       {
        "type": "choice",
@@ -5076,7 +5076,7 @@
         "have left"
        ],
        "answer": 3,
-       "explanation": "Cümlenin ana fiili *fell asleep* geçmiş zamandır; araştırma süresinde telefonunu başka odada bırakan öğrenciler → ‘left’. Tuzak: ‘leave’ ve ‘will leave’ zaman uyumunu bozar; ‘have left’ geçmişteki bir araştırma dönemine uymaz."
+       "explanation": "Cümlenin ana fiili *fell asleep* geçmiş zamandır; araştırma süresinde telefonunu başka odada bırakan öğrenciler → 'left'. Tuzak: 'leave' ve 'will leave' zaman uyumunu bozar; 'have left' geçmişteki bir araştırma dönemine uymaz."
       },
       {
        "type": "choice",
@@ -5090,7 +5090,7 @@
         "who"
        ],
        "answer": 2,
-       "explanation": "Boşluktan sonra *sleep patterns* gelir: ‘öğrencilerin uyku düzeni’ → sahiplik bildiren ‘whose’. Tuzak: ‘who’ ve ‘which’ arkasındaki cümlede eksik bir özne/nesne ister; burada eksik öğe yoktur."
+       "explanation": "Boşluktan sonra *sleep patterns* gelir: 'öğrencilerin uyku düzeni' → sahiplik bildiren 'whose'. Tuzak: 'who' ve 'which' arkasındaki cümlede eksik bir özne/nesne ister; burada eksik öğe yoktur."
       },
       {
        "type": "choice",
@@ -5104,7 +5104,7 @@
         "or"
        ],
        "answer": 0,
-       "explanation": "Yazarlar neden-sonuç kanıtlanamadığını kabul ediyor, ama bulguları yeterli buluyor → zıtlık: ‘but’. Tuzak: ‘so’ kabulü önerinin nedeni gibi gösterir; ‘because’ ilişkiyi tersine çevirir."
+       "explanation": "Yazarlar neden-sonuç kanıtlanamadığını kabul ediyor, ama bulguları yeterli buluyor → zıtlık: 'but'. Tuzak: 'so' kabulü önerinin nedeni gibi gösterir; 'because' ilişkiyi tersine çevirir."
       },
       {
        "type": "choice",
@@ -5118,7 +5118,7 @@
         "through"
        ],
        "answer": 1,
-       "explanation": "Cihazları yatmadan bir saat önce kapatmak → ‘an hour before bedtime’. Tuzak: ‘during’ ve ‘through’ bir süre boyunca anlamı verir; *an hour* ile birlikte zaman noktası kuramaz. ‘since’ başlangıç noktası bildirir."
+       "explanation": "Cihazları yatmadan bir saat önce kapatmak → 'an hour before bedtime'. Tuzak: 'during' ve 'through' bir süre boyunca anlamı verir; *an hour* ile birlikte zaman noktası kuramaz. 'since' başlangıç noktası bildirir."
       }
      ]
     },
@@ -5140,7 +5140,7 @@
         "honeybees may be reducing the number of wild bees"
        ],
        "answer": 4,
-       "explanation": "Anket, bal arılarının yabani arılarla çiçekler için yarıştığını ve kovanların yoğun olduğu yerlerde yabani arıların azaldığını gösteriyor → ‘honeybees may be reducing the number of wild bees’. Tuzak: ‘there are no longer enough honeybees’ zıt anlamdır (kovan sayısı 1.200’ü aşmıştır); ‘residents have lost interest’ metinde yoktur."
+       "explanation": "Anket, bal arılarının yabani arılarla çiçekler için yarıştığını ve kovanların yoğun olduğu yerlerde yabani arıların azaldığını gösteriyor → 'honeybees may be reducing the number of wild bees'. Tuzak: 'there are no longer enough honeybees' zıt anlamdır (kovan sayısı 1.200'ü aşmıştır); 'residents have lost interest' metinde yoktur."
       },
       {
        "type": "choice",
@@ -5154,7 +5154,7 @@
         "Residents should stop planting flowers on their roofs."
        ],
        "answer": 3,
-       "explanation": "Ekolojistler yasak istemiyor, bölge başına kovan sayısının sınırlanmasını ve daha çok çiçek ekilmesini öneriyor → ‘should continue, but on a more limited scale’. Tuzak: ‘banned immediately’ metinle doğrudan çelişir (*do not call for a ban*); ‘stop planting flowers’ zıt anlamdır."
+       "explanation": "Ekolojistler yasak istemiyor, bölge başına kovan sayısının sınırlanmasını ve daha çok çiçek ekilmesini öneriyor → 'should continue, but on a more limited scale'. Tuzak: 'banned immediately' metinle doğrudan çelişir (*do not call for a ban*); 'stop planting flowers' zıt anlamdır."
       },
       {
        "type": "choice",
@@ -5168,7 +5168,7 @@
         "No, I prefer to travel by train."
        ],
        "answer": 2,
-       "explanation": "Can’ın *That's encouraging. When will the final report be ready?* cevabı, boşlukta umut veren ama kesinleşmemiş bir bilgi olduğunu gösterir → ‘Not yet, but the early figures suggest that the decline is slowing down.’ Tuzak: ‘The report was written in English’ diyen şık *report* kelimesini tekrarlar ama soruya cevap vermez."
+       "explanation": "Can'ın *That's encouraging. When will the final report be ready?* cevabı, boşlukta umut veren ama kesinleşmemiş bir bilgi olduğunu gösterir → 'Not yet, but the early figures suggest that the decline is slowing down.' Tuzak: 'The report was written in English' diyen şık *report* kelimesini tekrarlar ama soruya cevap vermez."
       },
       {
        "type": "choice",
@@ -5181,7 +5181,7 @@
         "According to most farmers, the benefits and the costs of the new irrigation system are roughly equal."
        ],
        "answer": 0,
-       "explanation": "*far outweigh* = -den çok daha ağır basmak: başlangıç maliyeti olsa da faydaları çok daha büyük → ‘its advantages are much greater’. Tuzak: ‘too expensive to be worth installing’ zıt anlamdır; ‘roughly equal’ *far* kelimesinin gücünü yok sayar."
+       "explanation": "*far outweigh* = -den çok daha ağır basmak: başlangıç maliyeti olsa da faydaları çok daha büyük → 'its advantages are much greater'. Tuzak: 'too expensive to be worth installing' zıt anlamdır; 'roughly equal' *far* kelimesinin gücünü yok sayar."
       },
       {
        "type": "choice",
@@ -5195,7 +5195,7 @@
         "As a result, many farmers have stopped using compost."
        ],
        "answer": 1,
-       "explanation": "Boşluktan önce kompostun toprağı ve kökleri güçlendirdiği söylenir; sonra *Healthy plants, in other words, need fewer chemical treatments* gelir. Boşluk bu iki fikri bağlar: ‘This, in turn, makes the plants less susceptible to disease.’ Tuzak: ‘many farmers have stopped using compost’ paragrafın olumlu yönüyle çelişir."
+       "explanation": "Boşluktan önce kompostun toprağı ve kökleri güçlendirdiği söylenir; sonra *Healthy plants, in other words, need fewer chemical treatments* gelir. Boşluk bu iki fikri bağlar: 'This, in turn, makes the plants less susceptible to disease.' Tuzak: 'many farmers have stopped using compost' paragrafın olumlu yönüyle çelişir."
       },
       {
        "type": "choice",
@@ -5222,7 +5222,7 @@
         "Komite, projenin çevreye hiçbir etkisi olmadığını tespit etti."
        ],
        "answer": 2,
-       "explanation": "*reluctant to approve … until … has been fully ascertained* = ‘tam olarak tespit edilinceye kadar onaylamakta isteksiz’. Tuzak: ‘onaylamaya isteklidir’ diyen şık *reluctant* kelimesini tersine çevirir; ‘onayladıktan sonra’ sırayı bozar."
+       "explanation": "*reluctant to approve … until … has been fully ascertained* = 'tam olarak tespit edilinceye kadar onaylamakta isteksiz'. Tuzak: 'onaylamaya isteklidir' diyen şık *reluctant* kelimesini tersine çevirir; 'onayladıktan sonra' sırayı bozar."
       },
       {
        "type": "choice",
@@ -5235,7 +5235,7 @@
         "Officials envisage that crime rates will rise despite the new measures."
        ],
        "answer": 0,
-       "explanation": "‘öngörüyor’ = *envisage*, ‘azaltacağını’ = *will reduce* → ‘Officials envisage that the new measures will significantly reduce crime rates.’ Tuzak: ‘have significantly reduced’ zamanı geçmişe taşır; ‘crime rates will rise’ zıt anlamdır."
+       "explanation": "'öngörüyor' = *envisage*, 'azaltacağını' = *will reduce* → 'Officials envisage that the new measures will significantly reduce crime rates.' Tuzak: 'have significantly reduced' zamanı geçmişe taşır; 'crime rates will rise' zıt anlamdır."
       },
       {
        "type": "choice",
@@ -5248,7 +5248,7 @@
         "it is therefore in perfect condition"
        ],
        "answer": 3,
-       "explanation": "*Although* zıtlık ister: metin hasarlı, yine de akademisyenler anlamının çoğunu çıkarabildi → ‘scholars have managed to discern most of its meaning’. Tuzak: ‘impossible to read a single word’ hasarla uyumludur, zıtlık kurmaz; ‘therefore in perfect condition’ hem bağlaç hem anlam açısından çelişir."
+       "explanation": "*Although* zıtlık ister: metin hasarlı, yine de akademisyenler anlamının çoğunu çıkarabildi → 'scholars have managed to discern most of its meaning'. Tuzak: 'impossible to read a single word' hasarla uyumludur, zıtlık kurmaz; 'therefore in perfect condition' hem bağlaç hem anlam açısından çelişir."
       },
       {
        "type": "choice",
@@ -5261,7 +5261,7 @@
         "persist"
        ],
        "answer": 1,
-       "explanation": "Fon ‘allocate’ (tahsis etmek) edilir. Tuzak: ‘dwindle’, ‘subside’, ‘coincide’ ve ‘persist’ geçişsiz fiillerdir; *the necessary funds* nesnesini alamazlar."
+       "explanation": "Fonlar tahsis edilir ('allocate'). Tuzak: 'dwindle', 'subside', 'coincide' ve 'persist' geçişsiz fiillerdir; *the necessary funds* nesnesini alamazlar."
       }
      ]
     },
@@ -5283,7 +5283,7 @@
         "deteriorated"
        ],
        "answer": 0,
-       "explanation": "*reaching their highest level in history* hızlı bir yükselişi gösterir → ‘soared’. Tuzak: ‘plummeted’, ‘dwindled’ ve ‘subsided’ azalma bildirir; cümlenin yönünü belirlemeden seçilirse tuzağa düşülür."
+       "explanation": "*reaching their highest level in history* hızlı bir yükselişi gösterir → 'soared'. Tuzak: 'plummeted', 'dwindled' ve 'subsided' azalma bildirir; cümlenin yönünü belirlemeden seçilirse tuzağa düşülür."
       },
       {
        "type": "choice",
@@ -5296,7 +5296,7 @@
         "amplify"
        ],
        "answer": 2,
-       "explanation": "Yangının kesin nedenini ‘ascertain’ (kesin olarak tespit etmek). Tuzak: ‘amplify’ (güçlendirmek) nesne alır ama anlam tutmaz; ‘subside’ ve ‘persist’ geçişsizdir."
+       "explanation": "Yangının kesin nedenini 'ascertain' (kesin olarak tespit etmek). Tuzak: 'amplify' (güçlendirmek) nesne alır ama anlam tutmaz; 'subside' ve 'persist' geçişsizdir."
       },
       {
        "type": "choice",
@@ -5309,7 +5309,7 @@
         "had been closing"
        ],
        "answer": 1,
-       "explanation": "*since last March* ve şimdiki sonuç (*have to use*) → present perfect edilgen: ‘has been closed’. Tuzak: ‘was closed’ geçmişte bitmiş gibi gösterir ve *since* ile uyuşmaz."
+       "explanation": "*since last March* ve şimdiki sonuç (*have to use*) → present perfect edilgen: 'has been closed'. Tuzak: 'was closed' geçmişte bitmiş gibi gösterir ve *since* ile uyuşmaz."
       },
       {
        "type": "choice",
@@ -5322,7 +5322,7 @@
         "on checking"
        ],
        "answer": 4,
-       "explanation": "‘insist on + -ing’ kalıbı → ‘on checking’. Tuzak: Türkçedeki ‘kontrol etmekte ısrar etmek’ düşüncesi ‘to check’ şıkkını cazip yapar; ‘on check’ edattan sonra -ing kullanmaz."
+       "explanation": "'insist on + -ing' kalıbı → 'on checking'. Tuzak: Türkçedeki 'kontrol etmekte ısrar etmek' düşüncesi 'to check' şıkkını cazip yapar; 'on check' edattan sonra -ing kullanmaz."
       },
       {
        "type": "choice",
@@ -5336,7 +5336,7 @@
         "coincide"
        ],
        "answer": 3,
-       "explanation": "Denizciler yıldızlara bakarak konumlarını ‘determine’ (belirlemek) ederdi. Tuzak: ‘deter’ yazılışça benzer ama ‘caydırmak’ demektir; ‘subside’ ve ‘coincide’ nesne almaz."
+       "explanation": "Denizciler yıldızlara bakarak konumlarını belirlerdi ('determine'). Tuzak: 'deter' yazılışça benzer ama 'caydırmak' demektir; 'subside' ve 'coincide' nesne almaz."
       },
       {
        "type": "choice",
@@ -5350,7 +5350,7 @@
         "however"
        ],
        "answer": 4,
-       "explanation": "Açık havada konum doğru hesaplanabiliyordu; bulutlu hava ise ekibi belirsizlikte bırakabiliyordu → zıtlık: ‘however’. Tuzak: ‘as a result’ ve ‘therefore’ bulutlu havayı önceki cümlenin sonucu gibi gösterir."
+       "explanation": "Açık havada konum doğru hesaplanabiliyordu; bulutlu hava ise ekibi belirsizlikte bırakabiliyordu → zıtlık: 'however'. Tuzak: 'as a result' ve 'therefore' bulutlu havayı önceki cümlenin sonucu gibi gösterir."
       },
       {
        "type": "choice",
@@ -5364,7 +5364,7 @@
         "prevailed"
        ],
        "answer": 3,
-       "explanation": "Kronometre boylamı zamanla hesaplamayı sağladı → sorunu ‘solved’ (çözdü). Tuzak: ‘caused’ zıt anlamdır; *since it allowed navigators …* açıklaması sorunu yarattığını değil, ortadan kaldırdığını gösterir."
+       "explanation": "Kronometre boylamı zamanla hesaplamayı sağladı → sorunu 'solved' (çözdü). Tuzak: 'caused' zıt anlamdır; *since it allowed navigators …* açıklaması sorunu yarattığını değil, ortadan kaldırdığını gösterir."
       },
       {
        "type": "choice",
@@ -5377,7 +5377,7 @@
         "so the authorities have taken action"
        ],
        "answer": 2,
-       "explanation": "*Unless* + şimdiki zaman → ana cümle gelecek: ‘will continue to rise’. Tuzak: ‘would have been protected’ üçüncü tip koşula aittir; ‘because …’ ve ‘so …’ ile başlayan şıklar ana cümle değildir."
+       "explanation": "*Unless* + şimdiki zaman → ana cümle gelecek: 'will continue to rise'. Tuzak: 'would have been protected' üçüncü tip koşula aittir; 'because …' ve 'so …' ile başlayan şıklar ana cümle değildir."
       },
       {
        "type": "choice",
@@ -5390,7 +5390,7 @@
         "because it required a great deal of concentration"
        ],
        "answer": 0,
-       "explanation": "*While* burada karşılaştırma bildirir: bazıları zorlandı, diğerleri ise çabucak bitirdi → ‘others completed it in less than ten minutes’. Tuzak: ‘they all failed’ zıtlık kurmaz, ilk yarımı genişletir; ‘because …’ ile başlayan şık ana cümle değildir."
+       "explanation": "*While* burada karşılaştırma bildirir: bazıları zorlandı, diğerleri ise çabucak bitirdi → 'others completed it in less than ten minutes'. Tuzak: 'they all failed' zıtlık kurmaz, ilk yarımı genişletir; 'because …' ile başlayan şık ana cümle değildir."
       },
       {
        "type": "choice",
@@ -5403,7 +5403,7 @@
         "the collection itself has not changed for decades"
        ],
        "answer": 1,
-       "explanation": "*so … that* sonuç bildirir: koleksiyon o kadar hızlı büyüdü ki yeni bina gerekecek → ‘a new building will be needed to display it’. Tuzak: ‘contains only a few paintings’ ve ‘has not changed for decades’ hızlı büyümeyle çelişir."
+       "explanation": "*so … that* sonuç bildirir: koleksiyon o kadar hızlı büyüdü ki yeni bina gerekecek → 'a new building will be needed to display it'. Tuzak: 'contains only a few paintings' ve 'has not changed for decades' hızlı büyümeyle çelişir."
       },
       {
        "type": "choice",
@@ -5416,7 +5416,7 @@
         "Hayvancılıkta antibiyotiklerin dirençli bakterilere karşı kullanılması yaygın olarak kabul görmektedir."
        ],
        "answer": 2,
-       "explanation": "*is widely believed to have contributed* = ‘katkıda bulunduğuna yaygın olarak inanılmaktadır’ (geçmişe dönük). Tuzak: ‘katkıda bulunacağına’ diyen şık zamanı geleceğe taşır; ‘yayılmasını önlemiştir’ zıt anlamdır; ‘antibiyotik kullanımını artırmıştır’ sebep-sonucu tersine çevirir."
+       "explanation": "*is widely believed to have contributed* = 'katkıda bulunduğuna yaygın olarak inanılmaktadır' (geçmişe dönük). Tuzak: 'katkıda bulunacağına' diyen şık zamanı geleceğe taşır; 'yayılmasını önlemiştir' zıt anlamdır; 'antibiyotik kullanımını artırmıştır' sebep-sonucu tersine çevirir."
       },
       {
        "type": "choice",
@@ -5429,7 +5429,7 @@
         "The new drug had fewer side effects in the first trials than in later ones."
        ],
        "answer": 0,
-       "explanation": "‘çok daha az ciddi çıktı’ = *turned out to be far less serious* → ‘far less serious than those observed in the first trials’. Tuzak: ‘far more serious’ zıt anlamdır; ‘No side effects … were observed’ aşırı genellemedir."
+       "explanation": "'çok daha az ciddi çıktı' = *turned out to be far less serious* → 'far less serious than those observed in the first trials'. Tuzak: 'far more serious' zıt anlamdır; 'No side effects … were observed' aşırı genellemedir."
       },
       {
        "type": "choice",
@@ -5443,7 +5443,7 @@
         "early naturalists removed them from the island"
        ],
        "answer": 3,
-       "explanation": "Metin: ada, modern memeli gruplarının çoğu bölgeye ulaşmadan önce anakaradan ayrıldı → ‘the island became separated before most mammals reached the region’. Tuzak: ‘early naturalists removed them’ metinde geçen *naturalists* kelimesini kullanır ama doğa bilimcileri yalnızca bu duruma şaşırmıştır."
+       "explanation": "Metin: ada, modern memeli gruplarının çoğu bölgeye ulaşmadan önce anakaradan ayrıldı → 'the island became separated before most mammals reached the region'. Tuzak: 'early naturalists removed them' metinde geçen *naturalists* kelimesini kullanır ama doğa bilimcileri yalnızca bu duruma şaşırmıştır."
       },
       {
        "type": "choice",
@@ -5457,7 +5457,7 @@
         "describe how reptiles arrived on the island"
        ],
        "answer": 1,
-       "explanation": "Uçamayan ve otlayan kuş, kuşların başka yerlerde memelilerin üstlendiği rolleri doldurduğunu örneklendirir → ‘show how birds on Pereth have taken on roles usually filled by mammals’. Tuzak: ‘all birds … have lost the ability to fly’ aşırı genellemedir; ‘deer once lived on the island’ metindeki karşılaştırmayı gerçek bir bilgi gibi sunar."
+       "explanation": "Uçamayan ve otlayan kuş, kuşların başka yerlerde memelilerin üstlendiği rolleri doldurduğunu örneklendirir → 'show how birds on Pereth have taken on roles usually filled by mammals'. Tuzak: 'all birds … have lost the ability to fly' aşırı genellemedir; 'deer once lived on the island' metindeki karşılaştırmayı gerçek bir bilgi gibi sunar."
       },
       {
        "type": "choice",
@@ -5471,7 +5471,7 @@
         "replaced walking or public transport"
        ],
        "answer": 4,
-       "explanation": "Metin: paylaşımlı bisiklet yolculuklarının çoğu araba yerine yürüyüş ya da toplu taşımanın yerini aldı → ‘replaced walking or public transport’. Tuzak: ‘replaced car journeys’ zıt anlamdır; yalnızca on yolculuktan biri arabanın yerini aldı."
+       "explanation": "Metin: paylaşımlı bisiklet yolculuklarının çoğu araba yerine yürüyüş ya da toplu taşımanın yerini aldı → 'replaced walking or public transport'. Tuzak: 'replaced car journeys' zıt anlamdır; yalnızca on yolculuktan biri arabanın yerini aldı."
       },
       {
        "type": "choice",
@@ -5485,7 +5485,7 @@
         "parking fees should be reduced to encourage cycling"
        ],
        "answer": 1,
-       "explanation": "Yazarlar trafiği azaltmak için bisiklet programlarının araba kullanımını zorlaştıran önlemlerle birleştirilmesini öneriyor → ‘bicycle schemes alone are not enough’. Tuzak: ‘completely useless’ metinle çelişir (*do not argue that the schemes are useless*); ‘parking fees should be reduced’ zıt anlamdır, metin daha yüksek otopark ücreti önerir."
+       "explanation": "Yazarlar trafiği azaltmak için bisiklet programlarının araba kullanımını zorlaştıran önlemlerle birleştirilmesini öneriyor → 'bicycle schemes alone are not enough'. Tuzak: 'completely useless' metinle çelişir (*do not argue that the schemes are useless*); 'parking fees should be reduced' zıt anlamdır, metin daha yüksek otopark ücreti önerir."
       },
       {
        "type": "choice",
@@ -5499,7 +5499,7 @@
         "I'm afraid not. The number of applicants has soared this year."
        ],
        "answer": 4,
-       "explanation": "Zeynep’in *So you'd better apply to a few other programmes as well* cevabı, Ali’nin kabul edilme ihtimalini düşük gördüğünü gösterir → ‘I'm afraid not. The number of applicants has soared this year.’ Tuzak: ‘The scholarship is for students of medicine’ konuyla ilgilidir ama soruya (şansın yüksek mi?) cevap vermez."
+       "explanation": "Zeynep'in *So you'd better apply to a few other programmes as well* cevabı, Ali'nin kabul edilme ihtimalini düşük gördüğünü gösterir → 'I'm afraid not. The number of applicants has soared this year.' Tuzak: 'The scholarship is for students of medicine' konuyla ilgilidir ama soruya (şansın yüksek mi?) cevap vermez."
       },
       {
        "type": "choice",
@@ -5512,7 +5512,7 @@
         "Small business owners have rejected the new policy."
        ],
        "answer": 0,
-       "explanation": "*be liable to do* = -mesi muhtemel olmak → ‘is likely to confuse small business owners’. Tuzak: *liable* ‘sorumlu’ anlamına da gelir ve ‘Small business owners are responsible …’ şıkkı bu anlamı kullanır; ancak *liable to + fiil* olasılık bildirir. ‘made things clearer’ zıt anlamdır."
+       "explanation": "*be liable to do* = -mesi muhtemel olmak → 'is likely to confuse small business owners'. Tuzak: *liable* 'sorumlu' anlamına da gelir ve 'Small business owners are responsible …' şıkkı bu anlamı kullanır; ancak *liable to + fiil* olasılık bildirir. 'made things clearer' zıt anlamdır."
       },
       {
        "type": "choice",
@@ -5526,7 +5526,7 @@
         "Archaeologists have dated the site to around 3000 BC."
        ],
        "answer": 3,
-       "explanation": "Boşluktan önce bazı araştırmacıların yapıyı takvim olarak gördüğü söylenir (*Some researchers*); boşluk bunun karşısındaki görüşü vermelidir: ‘Others, however, believe that it was simply a meeting place …’. Sonraki cümle (*The truth may lie somewhere in between*) iki görüşü birleştirir. Tuzak: ‘The stones were transported …’ yapıyla ilgilidir ama görüş karşılaştırmasına uymaz."
+       "explanation": "Boşluktan önce bazı araştırmacıların yapıyı takvim olarak gördüğü söylenir (*Some researchers*); boşluk bunun karşısındaki görüşü vermelidir: 'Others, however, believe that it was simply a meeting place …'. Sonraki cümle (*The truth may lie somewhere in between*) iki görüşü birleştirir. Tuzak: 'The stones were transported …' yapıyla ilgilidir ama görüş karşılaştırmasına uymaz."
       },
       {
        "type": "choice",
@@ -5627,7 +5627,7 @@
         "ratio"
        ],
        "answer": 3,
-       "explanation": "Yeni antibiyotiğin keşfi dirençli enfeksiyonlarla mücadelede büyük bir ‘breakthrough’ (çığır açan buluş) olarak karşılandı. Tuzak: ‘setback’ (aksilik) zıt anlamdır; *was hailed* (övgüyle karşılandı) olumlu bir değerlendirme ister."
+       "explanation": "Yeni antibiyotiğin keşfi dirençli enfeksiyonlarla mücadelede büyük bir 'breakthrough' (çığır açan buluş) olarak karşılandı. Tuzak: 'setback' (aksilik) zıt anlamdır; *was hailed* (övgüyle karşılandı) olumlu bir değerlendirme ister."
       },
       {
        "type": "choice",
@@ -5640,7 +5640,7 @@
         "counterpart"
        ],
        "answer": 1,
-       "explanation": "İlk fırlatmanın başarısızlığı ciddi bir ‘setback’ (aksilik) idi; *but … succeeded* zıtlığı bunu doğrular. Tuzak: ‘breakthrough’ ve ‘milestone’ olumlu gelişmelerdir ve *failure* ile çelişir."
+       "explanation": "İlk fırlatmanın başarısızlığı ciddi bir 'setback' (aksilik) idi; *but … succeeded* zıtlığı bunu doğrular. Tuzak: 'breakthrough' ve 'milestone' olumlu gelişmelerdir ve *failure* ile çelişir."
       },
       {
        "type": "match",
@@ -5678,7 +5678,7 @@
         "discrepancy"
        ],
        "answer": 4,
-       "explanation": "Rapordaki rakamlarla banka kayıtları arasında bir ‘discrepancy’ (tutarsızlık) bulundu; *between … and …* iki şeyin karşılaştırıldığını gösterir. Tuzak: ‘consensus’ (uzlaşı) insanlar arasındaki görüş birliğidir, rakamlar için kullanılmaz."
+       "explanation": "Rapordaki rakamlarla banka kayıtları arasında bir 'discrepancy' (tutarsızlık) bulundu; *between … and …* iki şeyin karşılaştırıldığını gösterir. Tuzak: 'consensus' (uzlaşı) insanlar arasındaki görüş birliğidir, rakamlar için kullanılmaz."
       },
       {
        "type": "choice",
@@ -5691,7 +5691,7 @@
         "magnitude"
        ],
        "answer": 2,
-       "explanation": "Fransız bakan, Alman ‘counterpart’ı (muadili, yani Alman bakan) ile görüştü. Tuzak: ‘consensus’ bir kişi değildir; ‘premise’ ve ‘ratio’ anlam tutmaz."
+       "explanation": "Fransız bakan, Alman 'counterpart'ı (muadili, yani Alman bakan) ile görüştü. Tuzak: 'consensus' bir kişi değildir; 'premise' ve 'ratio' anlam tutmaz."
       },
       {
        "type": "fillBlank",
@@ -5715,7 +5715,7 @@
         "counterpart"
        ],
        "answer": 0,
-       "explanation": "Felaketin tam ‘magnitude’u (boyutu) uydu görüntüleriyle anlaşıldı. Tuzak: ‘premise’ (öncül) ve ‘prerequisite’ (önkoşul) bir olayın büyüklüğünü anlatmaz."
+       "explanation": "Felaketin tam 'magnitude'u (boyutu) uydu görüntüleriyle anlaşıldı. Tuzak: 'premise' (öncül) ve 'prerequisite' (önkoşul) bir olayın büyüklüğünü anlatmaz."
       },
       {
        "type": "choice",
@@ -5728,7 +5728,7 @@
         "breakthrough"
        ],
        "answer": 0,
-       "explanation": "Şehir ve kırsal arasında gelir ‘disparity’si (eşitsizliği) var; *between … and …* ve *Despite economic growth* zıtlığı bunu destekler. Tuzak: ‘milestone’ ve ‘breakthrough’ olumlu gelişmelerdir, zıtlık kurmaz."
+       "explanation": "Şehir ve kırsal arasında gelir 'disparity'si (eşitsizliği) var; *between … and …* ve *Despite economic growth* zıtlığı bunu destekler. Tuzak: 'milestone' ve 'breakthrough' olumlu gelişmelerdir, zıtlık kurmaz."
       },
       {
        "type": "choice",
@@ -5741,7 +5741,7 @@
         "consensus"
        ],
        "answer": 2,
-       "explanation": "İlk motorlu uçuş ulaşım tarihinde bir ‘milestone’ (dönüm noktası) sayılır. Tuzak: ‘discrepancy’ (tutarsızlık) ve ‘ratio’ (oran) tarihsel bir olayı nitelemez."
+       "explanation": "İlk motorlu uçuş ulaşım tarihinde bir 'milestone' (dönüm noktası) sayılır. Tuzak: 'discrepancy' (tutarsızlık) ve 'ratio' (oran) tarihsel bir olayı nitelemez."
       },
       {
        "type": "choice",
@@ -5754,7 +5754,7 @@
         "ranged"
        ],
        "answer": 1,
-       "explanation": "‘correlate with’ = ile bağıntılı olmak: fiziksel etkinlik arttıkça uyku kalitesi de artıyor → ‘correlated’. Tuzak: ‘resulted’ *in/from* ister; ‘derived’ *from*, ‘consisted’ *of* ile kullanılır."
+       "explanation": "'correlate with' = ile bağıntılı olmak: fiziksel etkinlik arttıkça uyku kalitesi de artıyor → 'correlated'. Tuzak: 'resulted' *in/from* ister; 'derived' *from*, 'consisted' *of* ile kullanılır."
       }
      ]
     },
@@ -5775,7 +5775,7 @@
         "Gelecek yıllarda tıp fakültelerine başvuran öğrencilerin sayısı istikrarlı bir şekilde artacaktır."
        ],
        "answer": 0,
-       "explanation": "*has risen steadily in recent years* = ‘son yıllarda istikrarlı bir şekilde artmıştır’. Tuzak: ‘aniden düşmüştür’ zıt anlamdır; ‘artacaktır’ zamanı geleceğe taşır; ‘kabul etmeye başlamıştır’ özneyi (öğrenciler → fakülteler) değiştirir."
+       "explanation": "*has risen steadily in recent years* = 'son yıllarda istikrarlı bir şekilde artmıştır'. Tuzak: 'aniden düşmüştür' zıt anlamdır; 'artacaktır' zamanı geleceğe taşır; 'kabul etmeye başlamıştır' özneyi (öğrenciler → fakülteler) değiştirir."
       },
       {
        "type": "choice",
@@ -5788,7 +5788,7 @@
         "This problem became more complex after it was first noticed."
        ],
        "answer": 2,
-       "explanation": "‘göründüğünden çok daha karmaşık’ = *far more complex than it appears* → ‘This problem is far more complex than it appears at first sight.’ Tuzak: ‘seemed far more complex than it really was’ ilişkiyi tersine çevirir; ‘not as complex as’ zıt anlamdır."
+       "explanation": "'göründüğünden çok daha karmaşık' = *far more complex than it appears* → 'This problem is far more complex than it appears at first sight.' Tuzak: 'seemed far more complex than it really was' ilişkiyi tersine çevirir; 'not as complex as' zıt anlamdır."
       },
       {
        "type": "choice",
@@ -5801,7 +5801,7 @@
         "Yeni yasa, sorunu çözmek için çok geç çıkarıldı."
        ],
        "answer": 1,
-       "explanation": "*Far from solving* = ‘çözmek bir yana’; *has made it worse* = ‘daha da kötüleştirdi’. Tuzak: ‘kötüleştirmedi’ diyen şık ikinci yarımı olumsuz yapar; ‘kötüleştiği için yasa çıkarıldı’ sebep-sonucu tersine çevirir."
+       "explanation": "*Far from solving* = 'çözmek bir yana'; *has made it worse* = 'daha da kötüleştirdi'. Tuzak: 'kötüleştirmedi' diyen şık ikinci yarımı olumsuz yapar; 'kötüleştiği için yasa çıkarıldı' sebep-sonucu tersine çevirir."
       },
       {
        "type": "choice",
@@ -5814,7 +5814,7 @@
         "The majority of participants preferred the new method to the old one."
        ],
        "answer": 4,
-       "explanation": "‘çoğunluğu’ = *the majority of*; ‘yeniyi eskiye tercih etmek’ = *prefer the new to the old*. Tuzak: ‘Only a few’ miktarı değiştirir; ‘preferred the old method to the new one’ tercihi tersine çevirir."
+       "explanation": "'çoğunluğu' = *the majority of*; 'yeniyi eskiye tercih etmek' = *prefer the new to the old*. Tuzak: 'Only a few' miktarı değiştirir; 'preferred the old method to the new one' tercihi tersine çevirir."
       },
       {
        "type": "choice",
@@ -5827,7 +5827,7 @@
         "Beslenmenin ruh sağlığı üzerindeki etkisi hiç araştırılmamıştır."
        ],
        "answer": 3,
-       "explanation": "*The extent to which* = ‘ne ölçüde’; *still unclear* = ‘hâlâ belirsiz’. Tuzak: ‘kesin olarak bilinmektedir’ zıt anlamdır; ‘ruh sağlığının beslenmeyi’ diyen şık özne ile nesneyi yer değiştirir; ‘hiç araştırılmamıştır’ kaynakta olmayan bilgi ekler."
+       "explanation": "*The extent to which* = 'ne ölçüde'; *still unclear* = 'hâlâ belirsiz'. Tuzak: 'kesin olarak bilinmektedir' zıt anlamdır; 'ruh sağlığının beslenmeyi' diyen şık özne ile nesneyi yer değiştirir; 'hiç araştırılmamıştır' kaynakta olmayan bilgi ekler."
       },
       {
        "type": "choice",
@@ -5840,7 +5840,7 @@
         "This species is in danger of extinction because of the destruction of its habitat."
        ],
        "answer": 4,
-       "explanation": "‘tükenme tehlikesiyle karşı karşıyadır’ = *is in danger of extinction*; ‘yok edilmesi nedeniyle’ = *because of the destruction*. Tuzak: ‘has become extinct’ tehlikeyi gerçekleşmiş sonuca çevirir; ‘destroyed its own habitat’ özneyi değiştirir."
+       "explanation": "'tükenme tehlikesiyle karşı karşıyadır' = *is in danger of extinction*; 'yok edilmesi nedeniyle' = *because of the destruction*. Tuzak: 'has become extinct' tehlikeyi gerçekleşmiş sonuca çevirir; 'destroyed its own habitat' özneyi değiştirir."
       },
       {
        "type": "choice",
@@ -5853,7 +5853,7 @@
         "Katılımcıların hepsi gözlemlenmek istemiyordu."
        ],
        "answer": 3,
-       "explanation": "*Not all* = ‘hepsi değil’, yani bazıları değil: katılımcıların bir kısmı farkındaydı, bir kısmı değildi → ‘bazıları … farkında değildi’. *were being observed* edilgendir = ‘gözlemlendiklerinin’. Tuzak: ‘hiçbiri’ aşırı genellemedir; ‘hepsi … farkındaydı’ olumsuzluğu atar; ‘başkalarını gözlemlediklerinin’ edilgeni etken yapar; ‘gözlemlenmek istemiyordu’ farklı bir yüklem kurar."
+       "explanation": "*Not all* = 'hepsi değil', yani bazıları değil: katılımcıların bir kısmı farkındaydı, bir kısmı değildi → 'bazıları … farkında değildi'. *were being observed* edilgendir = 'gözlemlendiklerinin'. Tuzak: 'hiçbiri' aşırı genellemedir; 'hepsi … farkındaydı' olumsuzluğu atar; 'başkalarını gözlemlediklerinin' edilgeni etken yapar; 'gözlemlenmek istemiyordu' farklı bir yüklem kurar."
       },
       {
        "type": "choice",
@@ -5866,7 +5866,7 @@
         "The findings reveal only a weak relationship between the two variables."
        ],
        "answer": 2,
-       "explanation": "‘güçlü bir ilişki olduğunu ortaya koymaktadır’ = *reveal a strong relationship*. Tuzak: ‘one variable causes the other’ ilişkiyi neden-sonuca çevirir, kaynakta olmayan bir iddia ekler; ‘weak relationship’ sıfatı tersine çevirir."
+       "explanation": "'güçlü bir ilişki olduğunu ortaya koymaktadır' = *reveal a strong relationship*. Tuzak: 'one variable causes the other' ilişkiyi neden-sonuca çevirir, kaynakta olmayan bir iddia ekler; 'weak relationship' sıfatı tersine çevirir."
       },
       {
        "type": "choice",
@@ -5879,7 +5879,7 @@
         "Proje iki yıl yerine on sekiz ay sürecek."
        ],
        "answer": 0,
-       "explanation": "*which was expected to take two years* = ‘iki yıl sürmesi beklenen’; *was completed in just eighteen months* = ‘sadece on sekiz ayda tamamlandı’. Tuzak: ‘iki yıl sürdü’ beklenti ile gerçeği yer değiştirir; ‘gecikmeyle’ diyen şık *just* kelimesinin anlamını tersine çevirir."
+       "explanation": "*which was expected to take two years* = 'iki yıl sürmesi beklenen'; *was completed in just eighteen months* = 'sadece on sekiz ayda tamamlandı'. Tuzak: 'iki yıl sürdü' beklenti ile gerçeği yer değiştirir; 'gecikmeyle' diyen şık *just* kelimesinin anlamını tersine çevirir."
       },
       {
        "type": "choice",
@@ -5892,7 +5892,7 @@
         "However much you study before the exam, you will still worry."
        ],
        "answer": 1,
-       "explanation": "‘ne kadar çok … o kadar az’ = *the more …, the less …* → ‘The more you study before the exam, the less you will worry.’ Tuzak: ‘The more you worry …’ iki eylemi yer değiştirir; ‘you will still worry’ diyen şık ilişkiyi ortadan kaldırır; ‘You should …’ öneri cümlesidir."
+       "explanation": "'ne kadar çok … o kadar az' = *the more …, the less …* → 'The more you study before the exam, the less you will worry.' Tuzak: 'The more you worry …' iki eylemi yer değiştirir; 'you will still worry' diyen şık ilişkiyi ortadan kaldırır; 'You should …' öneri cümlesidir."
       }
      ]
     },
@@ -5913,7 +5913,7 @@
         "its long-term effects on children have yet to be fully investigated"
        ],
        "answer": 4,
-       "explanation": "*Although* zıtlık ister: on yıldır piyasada, ama çocuklardaki uzun vadeli etkileri henüz tam araştırılmadı → ‘its long-term effects on children have yet to be fully investigated’. Tuzak: ‘most widely prescribed’ diyen şık ilk yarımla uyumludur, zıtlık kurmaz; ‘therefore’ sonuç bildirir; ‘because …’ ile başlayan şık ana cümle değildir."
+       "explanation": "*Although* zıtlık ister: on yıldır piyasada, ama çocuklardaki uzun vadeli etkileri henüz tam araştırılmadı → 'its long-term effects on children have yet to be fully investigated'. Tuzak: 'most widely prescribed' diyen şık ilk yarımla uyumludur, zıtlık kurmaz; 'therefore' sonuç bildirir; 'because …' ile başlayan şık ana cümle değildir."
       },
       {
        "type": "choice",
@@ -5926,7 +5926,7 @@
         "the researchers had already published their conclusions"
        ],
        "answer": 3,
-       "explanation": "*Once* + present perfect (gelecekte tamamlanacak eylem) → ana cümle gelecek: ‘the results will be shared’. Tuzak: ‘would have been shared’ üçüncü tip koşula aittir; ‘had already published’ geçmiş zamanla zaman uyumunu bozar; ‘while …’ ile başlayan şık ana cümle değildir."
+       "explanation": "*Once* + present perfect (gelecekte tamamlanacak eylem) → ana cümle gelecek: 'the results will be shared'. Tuzak: 'would have been shared' üçüncü tip koşula aittir; 'had already published' geçmiş zamanla zaman uyumunu bozar; 'while …' ile başlayan şık ana cümle değildir."
       },
       {
        "type": "choice",
@@ -5939,20 +5939,20 @@
         "where is located on the river"
        ],
        "answer": 2,
-       "explanation": "Virgüller arası tanımlamayan ilgi cümlesi ister → ‘which will be the longest in the country when completed’. Tuzak: ‘that’ virgüllü ilgi cümlesinde kullanılmaz; ‘it will be completed …’ ikinci bir ana cümle kurar ve cümleyi bozar; ‘where is located’ öznesizdir."
+       "explanation": "Virgüller arası tanımlamayan ilgi cümlesi ister → 'which will be the longest in the country when completed'. Tuzak: 'that' virgüllü ilgi cümlesinde kullanılmaz; 'it will be completed …' ikinci bir ana cümle kurar ve cümleyi bozar; 'where is located' öznesizdir."
       },
       {
        "type": "choice",
        "question": "It was not until the late nineteenth century ----.",
        "options": [
-        "that scientists understood how many diseases are spread by germs",
-        "scientists understood how many diseases are spread by germs",
+        "that scientists understood that many diseases are spread by germs",
+        "scientists understood that many diseases are spread by germs",
         "since scientists had understood how diseases are spread",
         "which scientists understood how diseases are spread",
         "so that scientists could finally understand how so many diseases are spread"
        ],
        "answer": 0,
-       "explanation": "*It was not until … that …* (ancak … -de) kalıbı ‘that’ ister → ‘that scientists understood …’. Tuzak: ‘that’ olmadan gelen şık dilbilgisel olarak eksiktir; ‘which’ bir isme bağlanır, burada isim yoktur."
+       "explanation": "*It was not until … that …* (ancak … -de) kalıbı 'that' ister → 'that scientists understood …'. Tuzak: 'that' olmadan gelen şık dilbilgisel olarak eksiktir; 'which' bir isme bağlanır, burada isim yoktur."
       },
       {
        "type": "choice",
@@ -5965,7 +5965,7 @@
         "although it had been widely advertised"
        ],
        "answer": 1,
-       "explanation": "*So few … that …* (o kadar az … ki) kalıbı → ‘that the council decided to postpone the vote’. Tuzak: ‘than’ karşılaştırma yapısıdır ve *so* ile kullanılmaz; ‘although …’ anlamca uygun görünür ama *so few* yapısını tamamlamaz."
+       "explanation": "*So few … that …* (o kadar az … ki) kalıbı → 'that the council decided to postpone the vote'. Tuzak: 'than' karşılaştırma yapısıdır ve *so* ile kullanılmaz; 'although …' anlamca uygun görünür ama *so few* yapısını tamamlamaz."
       },
       {
        "type": "choice",
@@ -5978,7 +5978,7 @@
         "In order that the sample was representative"
        ],
        "answer": 2,
-       "explanation": "Kesin sonuç çıkaramamanın nedeni küçük ve temsil gücü düşük örneklemdir → sebep bildiren ‘Since the sample was too small and unrepresentative’. Tuzak: ‘As long as’ ve ‘Provided that’ koşul kurar ve şimdiki zamanla geçmiş ana cümleye uymaz; ‘So that’ amaç bildirir."
+       "explanation": "Kesin sonuç çıkaramamanın nedeni küçük ve temsil gücü düşük örneklemdir → sebep bildiren 'Since the sample was too small and unrepresentative'. Tuzak: 'As long as' ve 'Provided that' koşul kurar ve şimdiki zamanla geçmiş ana cümleye uymaz; 'So that' amaç bildirir."
       },
       {
        "type": "choice",
@@ -5991,7 +5991,7 @@
         "Tüketicilere ulaşan gıdanın yaklaşık üçte birinin israf edileceği tahmin edilmektedir."
        ],
        "answer": 0,
-       "explanation": "*It is estimated that* = ‘tahmin edilmektedir’; *nearly a third* = ‘yaklaşık üçte biri’; *before it reaches consumers* = ‘tüketicilere ulaşmadan’. Tuzak: ‘üçte birinden fazlası … ulaştıktan sonra’ hem miktarı hem zamanı değiştirir; ‘tüketicilerin üçte biri’ özneyi değiştirir."
+       "explanation": "*It is estimated that* = 'tahmin edilmektedir'; *nearly a third* = 'yaklaşık üçte biri'; *before it reaches consumers* = 'tüketicilere ulaşmadan'. Tuzak: 'üçte birinden fazlası … ulaştıktan sonra' hem miktarı hem zamanı değiştirir; 'tüketicilerin üçte biri' özneyi değiştirir."
       },
       {
        "type": "choice",
@@ -6004,7 +6004,7 @@
         "Experts state that the new technology could change healthcare slightly within a few months."
        ],
        "answer": 3,
-       "explanation": "‘kökten değiştirebileceğini’ = *could fundamentally transform*; ‘yıllar gerekebileceğini’ = *this may take years*. Tuzak: ‘has already transformed’ olasılığı gerçekleşmiş olaya çevirir; ‘slightly within a few months’ hem ölçüyü hem süreyi değiştirir."
+       "explanation": "'kökten değiştirebileceğini' = *could fundamentally transform*; 'yıllar gerekebileceğini' = *this may take years*. Tuzak: 'has already transformed' olasılığı gerçekleşmiş olaya çevirir; 'slightly within a few months' hem ölçüyü hem süreyi değiştirir."
       },
       {
        "type": "choice",
@@ -6017,7 +6017,7 @@
         "Sahil güvenlik, balıkçı teknesinin mürettebatının boğulmasını önlemek için geç kaldı."
        ],
        "answer": 1,
-       "explanation": "*Had it not been for* = ‘… olmasaydı’ (gerçekleşmemiş geçmiş koşul): müdahale oldu, mürettebat kurtuldu → ‘zamanında müdahalesi olmasaydı … boğulacaktı’. Tuzak: ‘müdahale etmediği için … boğuldu’ ve ‘geç kaldı’ diyen şıklar gerçekte olanı tersine çevirir."
+       "explanation": "*Had it not been for* = '… olmasaydı' (gerçekleşmemiş geçmiş koşul): müdahale oldu, mürettebat kurtuldu → 'zamanında müdahalesi olmasaydı … boğulacaktı'. Tuzak: 'müdahale etmediği için … boğuldu' ve 'geç kaldı' diyen şıklar gerçekte olanı tersine çevirir."
       },
       {
        "type": "choice",
@@ -6030,7 +6030,7 @@
         "The most striking finding of the research was that children did not learn new languages more easily than adults."
        ],
        "answer": 4,
-       "explanation": "‘daha kolay öğrenmediğiydi’ olumsuzdur = *did not learn … more easily than adults*. Tuzak: ‘learned new languages more easily’ olumsuzluğu atlar; ‘adults could not learn … as easily as children’ aynı yanlış anlamı başka sözcüklerle verir; ‘least surprising’ *striking* kelimesini tersine çevirir."
+       "explanation": "'daha kolay öğrenmediğiydi' olumsuzdur = *did not learn … more easily than adults*. Tuzak: 'learned new languages more easily' olumsuzluğu atlar; 'adults could not learn … as easily as children' aynı yanlış anlamı başka sözcüklerle verir; 'least surprising' *striking* kelimesini tersine çevirir."
       }
      ]
     },
@@ -6052,7 +6052,7 @@
         "the growth of tourism around the lake"
        ],
        "answer": 2,
-       "explanation": "Yeni analize göre ana neden, gölü besleyen nehirlerin suyunun kanallarla pamuk tarlalarına aktarılmasıdır → ‘the diversion of river water to farms’. Tuzak: ‘a long series of droughts’ metinde geçen eski açıklamadır; *However* ile reddedilir. ‘a sharp decline in rainfall’ zıt anlamdır (yağış pek değişmedi)."
+       "explanation": "Yeni analize göre ana neden, gölü besleyen nehirlerin suyunun kanallarla pamuk tarlalarına aktarılmasıdır → 'the diversion of river water to farms'. Tuzak: 'a long series of droughts' metinde geçen eski açıklamadır; *However* ile reddedilir. 'a sharp decline in rainfall' zıt anlamdır (yağış pek değişmedi)."
       },
       {
        "type": "choice",
@@ -6066,7 +6066,7 @@
         "doubt the accuracy of satellite images"
        ],
        "answer": 0,
-       "explanation": "Araştırmacılar, çiftçiler daha az su isteyen ürünlere geçerse gölün kısmen toparlanabileceğini, ama bunun ekonomik olarak zor olacağını söylüyor → ‘believe partial recovery is possible but recognise that it would be difficult’. Tuzak: ‘will never recover’ zıt anlamdır; ‘all farming … should stop’ aşırı genellemedir."
+       "explanation": "Araştırmacılar, çiftçiler daha az su isteyen ürünlere geçerse gölün kısmen toparlanabileceğini, ama bunun ekonomik olarak zor olacağını söylüyor → 'believe partial recovery is possible but recognise that it would be difficult'. Tuzak: 'will never recover' zıt anlamdır; 'all farming … should stop' aşırı genellemedir."
       },
       {
        "type": "choice",
@@ -6080,7 +6080,7 @@
         "measure"
        ],
        "answer": 3,
-       "explanation": "Kanallar nehir suyunu göl yerine tarlalara yönlendirdi → ‘divert’ = ‘redirect’ (başka yöne çevirmek). Tuzak: ‘store’ (depolamak) kanal bağlamında akla gelir ama suyun yönünün değişmesini anlatmaz."
+       "explanation": "Kanallar nehir suyunu göl yerine tarlalara yönlendirdi → 'divert' = 'redirect' (başka yöne çevirmek). Tuzak: 'store' (depolamak) kanal bağlamında akla gelir ama suyun yönünün değişmesini anlatmaz."
       },
       {
        "type": "choice",
@@ -6094,7 +6094,7 @@
         "My dictionary is too old to be useful."
        ],
        "answer": 1,
-       "explanation": "Öğretmenin *Then always check the tense and the negatives in the options …* cevabı, öğrencinin zaman ve anlam hatası yaptığını söylediğini gösterir → ‘I often choose options that use the right words but change the tense or the meaning.’ Tuzak: ‘Translation questions are the easiest part for me’ öğrencinin puan kaybettiği bilgisiyle çelişir."
+       "explanation": "Öğretmenin *Then always check the tense and the negatives in the options …* cevabı, öğrencinin zaman ve anlam hatası yaptığını söylediğini gösterir → 'I often choose options that use the right words but change the tense or the meaning.' Tuzak: 'Translation questions are the easiest part for me' öğrencinin puan kaybettiği bilgisiyle çelişir."
       },
       {
        "type": "choice",
@@ -6107,7 +6107,7 @@
         "Almost none of the original buildings survived the fire."
        ],
        "answer": 4,
-       "explanation": "*Scarcely any* = ‘neredeyse hiç’ → ‘Almost none of the original buildings survived the fire.’ Tuzak: ‘Most … survived’ ve ‘destroyed only a few’ zıt anlamdır; ‘rebuilt soon after the fire’ kaynakta olmayan bilgi ekler."
+       "explanation": "*Scarcely any* = 'neredeyse hiç' → 'Almost none of the original buildings survived the fire.' Tuzak: 'Most … survived' ve 'destroyed only a few' zıt anlamdır; 'rebuilt soon after the fire' kaynakta olmayan bilgi ekler."
       },
       {
        "type": "choice",
@@ -6121,7 +6121,7 @@
         "Repairing cars, however, requires special tools and training that most volunteers do not have."
        ],
        "answer": 1,
-       "explanation": "Boşluktan sonra *electronic waste* geçer; boşluk, getirilen eşyaların elektrikli aletler olduğunu söyleyerek bu ifadeye zemin hazırlar → ‘Most of the items are small electrical appliances …’. Tuzak: ‘the café was closed’ sonraki cümleyle (*Since the café opened two years ago*) çelişir; ‘famous for its old castle’ konu dışıdır."
+       "explanation": "Boşluktan sonra *electronic waste* geçer; boşluk, getirilen eşyaların elektrikli aletler olduğunu söyleyerek bu ifadeye zemin hazırlar → 'Most of the items are small electrical appliances …'. Tuzak: 'the café was closed' sonraki cümleyle (*Since the café opened two years ago*) çelişir; 'famous for its old castle' konu dışıdır."
       },
       {
        "type": "choice",
@@ -6135,7 +6135,7 @@
         "V"
        ],
        "answer": 2,
-       "explanation": "Paragraf, hayalî Harrow Kütüphanesi’nin ‘sessiz saat’ uygulamasını ve sonuçlarını anlatır; III. cümle binanın yapım yılına ve cam çatısına geçer ve uygulama anlatımını böler. Tuzak: aynı kütüphaneden söz ettiği için cümle uyumlu görünür."
+       "explanation": "Paragraf, hayalî Harrow Kütüphanesi'nin 'sessiz saat' uygulamasını ve sonuçlarını anlatır; III. cümle binanın yapım yılına ve cam çatısına geçer ve uygulama anlatımını böler. Tuzak: aynı kütüphaneden söz ettiği için cümle uyumlu görünür."
       },
       {
        "type": "choice",
@@ -6148,7 +6148,7 @@
         "range"
        ],
        "answer": 4,
-       "explanation": "‘a wide range of’ = çok çeşitli: farklı disiplinlerden uzmanlar → ‘range’. Tuzak: ‘ratio’ (oran) ve ‘magnitude’ (büyüklük) *wide* ile kalıp oluşturmaz; ‘consensus’ (uzlaşı) anlam tutmaz."
+       "explanation": "'a wide range of' = çok çeşitli: farklı disiplinlerden uzmanlar → 'range'. Tuzak: 'ratio' (oran) ve 'magnitude' (büyüklük) *wide* ile kalıp oluşturmaz; 'consensus' (uzlaşı) anlam tutmaz."
       },
       {
        "type": "choice",
@@ -6161,7 +6161,7 @@
         "is producing"
        ],
        "answer": 0,
-       "explanation": "*By the end of this year* gelecekte bir noktaya kadar tamamlanmış olacak eylemi anlatır → ‘will have produced’. Tuzak: ‘has produced’ şimdiye kadar olanı anlatır, gelecekteki bitiş noktasıyla uyuşmaz; ‘had produced’ geçmişteki bir noktaya göredir."
+       "explanation": "*By the end of this year* gelecekte bir noktaya kadar tamamlanmış olacak eylemi anlatır → 'will have produced'. Tuzak: 'has produced' şimdiye kadar olanı anlatır, gelecekteki bitiş noktasıyla uyuşmaz; 'had produced' geçmişteki bir noktaya göredir."
       },
       {
        "type": "choice",
@@ -6174,7 +6174,7 @@
         "or to the birds that had migrated"
        ],
        "answer": 3,
-       "explanation": "*not … but …* (… değil, …) kalıbı → ‘but to the loss of nesting sites’. Tuzak: ‘and to climate change as well’ olumsuzlanan nedeni yeniden ekler ve kalıbı bozar; ‘so …’ ve ‘because …’ *attribute … to* yapısını tamamlamaz."
+       "explanation": "*not … but …* (… değil, …) kalıbı → 'but to the loss of nesting sites'. Tuzak: 'and to climate change as well' olumsuzlanan nedeni yeniden ekler ve kalıbı bozar; 'so …' ve 'because …' *attribute … to* yapısını tamamlamaz."
       }
      ]
     },
@@ -6196,7 +6196,7 @@
         "inconsistent"
        ],
        "answer": 4,
-       "explanation": "Zenginlere vergi indirimi eşitsizliği azaltma hedefiyle çelişir → ‘inconsistent with’ (ile tutarsız). Tuzak: ‘compatible with’ (uyumlu) zıt anlamdır; ‘eligible’ *for*, ‘susceptible’ *to* ister."
+       "explanation": "Zenginlere vergi indirimi eşitsizliği azaltma hedefiyle çelişir → 'inconsistent with' (ile tutarsız). Tuzak: 'compatible with' (uyumlu) zıt anlamdır; 'eligible' *for*, 'susceptible' *to* ister."
       },
       {
        "type": "choice",
@@ -6209,7 +6209,7 @@
         "uniform"
        ],
        "answer": 3,
-       "explanation": "Karar vermenin zorlaşması, sonuçların ‘conflicting’ (çelişen) olduğunu gösterir. Tuzak: ‘consistent’, ‘identical’ ve ‘uniform’ uyumlu sonuçlar anlatır; bu durumda karar vermek kolaylaşırdı."
+       "explanation": "Karar vermenin zorlaşması, sonuçların 'conflicting' (çelişen) olduğunu gösterir. Tuzak: 'consistent', 'identical' ve 'uniform' uyumlu sonuçlar anlatır; bu durumda karar vermek kolaylaşırdı."
       },
       {
        "type": "choice",
@@ -6222,7 +6222,7 @@
         "being leaked"
        ],
        "answer": 2,
-       "explanation": "‘deny’ arkasından -ing alır; sızdırma inkârdan önce olduğu için ‘having leaked’. Tuzak: ‘to leak’ ve ‘to have leaked’ mastardır, *deny* mastar almaz; ‘being leaked’ edilgendir, bakanı sızdırılan taraf yapar."
+       "explanation": "'deny' arkasından -ing alır; sızdırma inkârdan önce olduğu için 'having leaked'. Tuzak: 'to leak' ve 'to have leaked' mastardır, *deny* mastar almaz; 'being leaked' edilgendir, bakanı sızdırılan taraf yapar."
       },
       {
        "type": "choice",
@@ -6235,7 +6235,7 @@
         "does the team published"
        ],
        "answer": 0,
-       "explanation": "*Only when …* cümle başında ana cümleyi devrik yapar: yardımcı fiil + özne + fiil → ‘will the team publish’. Tuzak: ‘the team will publish’ düz sıralıdır; ‘does the team published’ yardımcı fiilden sonra çekimli fiil kullanır."
+       "explanation": "*Only when …* cümle başında ana cümleyi devrik yapar: yardımcı fiil + özne + fiil → 'will the team publish'. Tuzak: 'the team will publish' düz sıralıdır; 'does the team published' yardımcı fiilden sonra çekimli fiil kullanır."
       },
       {
        "type": "choice",
@@ -6249,7 +6249,7 @@
         "from"
        ],
        "answer": 1,
-       "explanation": "‘over the last decade’ = son on yıl boyunca: süre içinde gerçekleşen gelişme → ‘over’. Tuzak: ‘by’ bir bitiş noktası bildirir (*by 2020*); ‘until’ bir sona kadar süreyi anlatır ve *has improved* ile uyuşmaz."
+       "explanation": "'over the last decade' = son on yıl boyunca: süre içinde gerçekleşen gelişme → 'over'. Tuzak: 'by' bir bitiş noktası bildirir (*by 2020*); 'until' bir sona kadar süreyi anlatır ve *has improved* ile uyuşmaz."
       },
       {
        "type": "choice",
@@ -6263,7 +6263,7 @@
         "instead"
        ],
        "answer": 2,
-       "explanation": "Kelime kelime çeviri anlamsız cümlelere yol açıyordu → sonuç: ‘consequently’. Tuzak: ‘nevertheless’ zıtlık kurar, ama kelime kelime çeviri ile anlamsız cümle arasında zıtlık değil neden-sonuç vardır."
+       "explanation": "Kelime kelime çeviri anlamsız cümlelere yol açıyordu → sonuç: 'consequently'. Tuzak: 'nevertheless' zıtlık kurar, ama kelime kelime çeviri ile anlamsız cümle arasında zıtlık değil neden-sonuç vardır."
       },
       {
        "type": "choice",
@@ -6277,7 +6277,7 @@
         "it"
        ],
        "answer": 0,
-       "explanation": "Virgülden sonra önceki cümlenin tamamına (milyonlarca belgeyle eğitilmek) gönderme yapan ilgi zamiri → ‘which’. Tuzak: ‘that’ virgülden sonra kullanılmaz; ‘it’ iki cümleyi bağlayamaz."
+       "explanation": "Virgülden sonra önceki cümlenin tamamına (milyonlarca belgeyle eğitilmek) gönderme yapan ilgi zamiri → 'which'. Tuzak: 'that' virgülden sonra kullanılmaz; 'it' iki cümleyi bağlayamaz."
       },
       {
        "type": "choice",
@@ -6290,7 +6290,7 @@
         "so it will never be accepted"
        ],
        "answer": 3,
-       "explanation": "*Even if* + şimdiki zaman → ana cümle gelecek; ‘kabul edilse bile’ bir engel bildirilir → ‘it will take at least a year to put it into practice’. Tuzak: ‘would have been put into practice’ üçüncü tip koşula aittir; ‘accepted it unanimously’ zamanı geçmişe kaydırır."
+       "explanation": "*Even if* + şimdiki zaman → ana cümle gelecek; 'kabul edilse bile' bir engel bildirilir → 'it will take at least a year to put it into practice'. Tuzak: 'would have been put into practice' üçüncü tip koşula aittir; 'accepted it unanimously' zamanı geçmişe kaydırır."
       },
       {
        "type": "choice",
@@ -6303,7 +6303,7 @@
         "which the equipment had not been calibrated"
        ],
        "answer": 1,
-       "explanation": "*The reason why …* özne olduğu için yüklem gerekir: ‘was that …’. Tuzak: *The reason why … because* yapısı çifte neden bildirir ve sınavda yanlış kabul edilir; yüklemsiz şık cümleyi tamamlamaz."
+       "explanation": "*The reason why …* özne olduğu için yüklem gerekir: 'was that …'. Tuzak: *The reason why … because* yapısı çifte neden bildirir ve sınavda yanlış kabul edilir; yüklemsiz şık cümleyi tamamlamaz."
       },
       {
        "type": "choice",
@@ -6316,7 +6316,7 @@
         "Although it had been described in several medieval texts"
        ],
        "answer": 4,
-       "explanation": "Ortaçağ metinlerinde anlatılmasına rağmen şehir ancak 20. yüzyılda yeniden bulundu → zıtlık: ‘Although it had been described in several medieval texts’. Tuzak: ‘Because … famous texts’ ilişkiyi mantıksız bir sebebe çevirir; ‘Since archaeologists had already found it’ *rediscovered only* ifadesiyle çelişir."
+       "explanation": "Ortaçağ metinlerinde anlatılmasına rağmen şehir ancak 20. yüzyılda yeniden bulundu → zıtlık: 'Although it had been described in several medieval texts'. Tuzak: 'Because … famous texts' ilişkiyi mantıksız bir sebebe çevirir; 'Since archaeologists had already found it' *rediscovered only* ifadesiyle çelişir."
       },
       {
        "type": "choice",
@@ -6329,7 +6329,7 @@
         "Bir dil ne kadar yaygın konuşulursa, yok olma ihtimali o kadar yüksek olur."
        ],
        "answer": 1,
-       "explanation": "*The more widely …, the less likely …* = ‘ne kadar yaygın …, o kadar düşük’. Tuzak: ‘ne kadar az konuşulursa’ ve ‘o kadar yüksek olur’ diyen şıklar ilişkinin bir yarısını tersine çevirir; ‘bağlı değildir’ ilişkiyi tamamen inkâr eder."
+       "explanation": "*The more widely …, the less likely …* = 'ne kadar yaygın …, o kadar düşük'. Tuzak: 'ne kadar az konuşulursa' ve 'o kadar yüksek olur' diyen şıklar ilişkinin bir yarısını tersine çevirir; 'bağlı değildir' ilişkiyi tamamen inkâr eder."
       },
       {
        "type": "choice",
@@ -6342,7 +6342,7 @@
         "The government announced that the new law would not come into force until the beginning of next year."
        ],
        "answer": 4,
-       "explanation": "‘ancak gelecek yılın başında’ = *not … until the beginning of next year*. Tuzak: ‘had come into force’ zamanı geçmişe taşır; ‘only part of the new law’ *ancak* kelimesini ‘yalnızca bir kısmı’ diye yanlış okur; ‘has not yet decided’ açıklamanın varlığıyla çelişir."
+       "explanation": "'ancak gelecek yılın başında' = *not … until the beginning of next year*. Tuzak: 'had come into force' zamanı geçmişe taşır; 'only part of the new law' *ancak* kelimesini 'yalnızca bir kısmı' diye yanlış okur; 'has not yet decided' açıklamanın varlığıyla çelişir."
       },
       {
        "type": "choice",
@@ -6356,7 +6356,7 @@
         "never caught up with monolingual children in vocabulary, even after the age of ten"
        ],
        "answer": 0,
-       "explanation": "Metin: görevler arasında hızla geçiş gerektiren testlerde iki dilli çocuklar biraz daha başarılıydı → ‘performed slightly better on tests that involved switching between tasks’. Tuzak: ‘knew fewer words in total’ metinle çelişir (toplamda en az o kadar kelime biliyorlar); ‘scored higher on vocabulary tests’ zıt anlamdır."
+       "explanation": "Metin: görevler arasında hızla geçiş gerektiren testlerde iki dilli çocuklar biraz daha başarılıydı → 'performed slightly better on tests that involved switching between tasks'. Tuzak: 'knew fewer words in total' metinle çelişir (toplamda en az o kadar kelime biliyorlar); 'scored higher on vocabulary tests' zıt anlamdır."
       },
       {
        "type": "choice",
@@ -6370,7 +6370,7 @@
         "monolingual children are generally more intelligent than bilingual children of the same age"
        ],
        "answer": 3,
-       "explanation": "Araştırmacılar farkın genellikle on yaşına kadar kapandığını vurgular → ‘the lower vocabulary scores of bilingual children are usually temporary’. Tuzak: ‘permanently harms’ zıt anlamdır; ‘more intelligent’ metinde hiç geçmeyen bir genellemedir."
+       "explanation": "Araştırmacılar farkın genellikle on yaşına kadar kapandığını vurgular → 'the lower vocabulary scores of bilingual children are usually temporary'. Tuzak: 'permanently harms' zıt anlamdır; 'more intelligent' metinde hiç geçmeyen bir genellemedir."
       },
       {
        "type": "choice",
@@ -6384,7 +6384,7 @@
         "the coins were used to buy water"
        ],
        "answer": 2,
-       "explanation": "Bin kilometreden uzak bölgelerden paralar ve çölde yetişmeyen bitki tohumları, pazarın uzak yerlerle bağlantısı olduğunu gösterir → ‘the market had connections with distant regions’. Tuzak: ‘the desert was once covered with forests’ tohumları yanlış yorumlar; ‘built only recently’ 2.500 yıllık tarihle çelişir."
+       "explanation": "Bin kilometreden uzak bölgelerden paralar ve çölde yetişmeyen bitki tohumları, pazarın uzak yerlerle bağlantısı olduğunu gösterir → 'the market had connections with distant regions'. Tuzak: 'the desert was once covered with forests' tohumları yanlış yorumlar; 'built only recently' 2.500 yıllık tarihle çelişir."
       },
       {
        "type": "choice",
@@ -6398,7 +6398,7 @@
         "shows that the wells dried up 2,500 years ago"
        ],
        "answer": 3,
-       "explanation": "Tarihçiler bölgenin yalnızca küçük göçebe grupları barındırabileceğini varsayıyordu; büyük bir pazarın bulunması bu varsayımı sorgulatır → ‘challenges an earlier assumption about the area’. Tuzak: ‘confirms that only nomads …’ zıt anlamdır; ‘proves … a thousand years’ metinde olmayan kesin bir iddiadır."
+       "explanation": "Tarihçiler bölgenin yalnızca küçük göçebe grupları barındırabileceğini varsayıyordu; büyük bir pazarın bulunması bu varsayımı sorgulatır → 'challenges an earlier assumption about the area'. Tuzak: 'confirms that only nomads …' zıt anlamdır; 'proves … a thousand years' metinde olmayan kesin bir iddiadır."
       },
       {
        "type": "choice",
@@ -6412,7 +6412,7 @@
         "Technical terms are always easy to translate."
        ],
        "answer": 1,
-       "explanation": "Aylin’in *That's a good idea. I'll send her the draft this evening* cevabı, boşlukta birine taslağı göstermeyi içeren bir öneri olduğunu gösterir → ‘Why don't you ask your supervisor to check the terminology …?’ Tuzak: ‘Technical terms are always easy to translate’ hem aşırı genellemedir hem de Aylin’in zorlandığını söylemesiyle çelişir."
+       "explanation": "Aylin'in *That's a good idea. I'll send her the draft this evening* cevabı, boşlukta birine taslağı göstermeyi içeren bir öneri olduğunu gösterir → 'Why don't you ask your supervisor to check the terminology …?' Tuzak: 'Technical terms are always easy to translate' hem aşırı genellemedir hem de Aylin'in zorlandığını söylemesiyle çelişir."
       },
       {
        "type": "choice",
@@ -6425,7 +6425,7 @@
         "The engineers did not realise that the design was flawed until the second test."
        ],
        "answer": 4,
-       "explanation": "*It was only after the second test that* = ‘ancak ikinci testten sonra’ → ‘did not realise … until the second test’. Tuzak: ‘after the first test’ zamanı öne çeker; ‘had no flaws’ zıt anlamdır; ‘the first one was flawed’ kusuru tasarımdan teste taşır."
+       "explanation": "*It was only after the second test that* = 'ancak ikinci testten sonra' → 'did not realise … until the second test'. Tuzak: 'after the first test' zamanı öne çeker; 'had no flaws' zıt anlamdır; 'the first one was flawed' kusuru tasarımdan teste taşır."
       },
       {
        "type": "choice",
@@ -6439,7 +6439,7 @@
         "Many visitors prefer to buy books rather than postcards, especially in the larger national museums and art galleries."
        ],
        "answer": 2,
-       "explanation": "Boşluk, müzelerin fotoğrafı neden yasakladığını açıklamalıdır; sonraki *Today, however* cümlesi bu eski kaygıyla zıtlık kurar → ‘They feared that flash photography would damage paintings …’. Tuzak: ‘Old textiles are particularly sensitive to light’ son cümledeki bilgiyi tekrarlar ama yasağın nedenini açıklamaz; ‘attendance doubled’ metinde dayanağı olmayan bir sonuçtur."
+       "explanation": "Boşluk, müzelerin fotoğrafı neden yasakladığını açıklamalıdır; sonraki *Today, however* cümlesi bu eski kaygıyla zıtlık kurar → 'They feared that flash photography would damage paintings …'. Tuzak: 'Old textiles are particularly sensitive to light' son cümledeki bilgiyi tekrarlar ama yasağın nedenini açıklamaz; 'attendance doubled' metinde dayanağı olmayan bir sonuçtur."
       },
       {
        "type": "choice",
@@ -7010,7 +7010,7 @@
         "for"
        ],
        "answer": 0,
-       "explanation": "*depend on* sabit bir kalıptır → 'on'. 'Depend from' ve 'depend with' İngilizcede yoktur; Türkçedeki '-e bağlı' yapısı adayları 'to' ya da 'at' gibi edatlara iter."
+       "explanation": "*depend on* sabit bir kalıptır → 'on'. 'Depend from' ve 'depend with' İngilizcede yoktur; 'At' ve 'for' da *depend* ile kalıp oluşturmaz; Türkçedeki '-e bağlı' yapısı adayı yanlış edat aramaya itebilir."
       },
       {
        "type": "choice",
@@ -7399,7 +7399,7 @@
      "id": "ys4u8m",
      "type": "mock",
      "title": "Tam deneme 7",
-     "description": "Hedef 70+ puan: 80 soru, 180 dakika",
+     "description": "Hedef 70+ doğru (yaklaşık 87,5 puan): 80 soru, 180 dakika",
      "examId": "yds",
      "size": 80,
      "minutes": 180,
@@ -8238,11 +8238,11 @@
         "indifferent, as they consider the question unimportant",
         "hostile, as they think teachers should stop assigning fiction",
         "dismissive, as they claim to have proved that fiction has no effect at all on readers of any age, culture or background",
-        "cautious, as they found little support for a lasting short-term effect but leave the long-term question open",
+        "cautious, as they found only a modest short-term effect but leave the long-term question open",
         "enthusiastic, as they believe a single story greatly improves empathy"
        ],
        "answer": 3,
-       "explanation": "Araştırmacılar kısa vadeli etkiyi *modest at best* bulur ama uzun vadeli soruyu açık bırakır → 'cautious, as they found little support … but leave the long-term question open'. 'Dismissive … proved that fiction has no effect' aşırı genellemedir; araştırmacılar düzenli okumanın etkisini ölçemediklerini açıkça söyler."
+       "explanation": "Araştırmacılar kısa vadeli etkiyi *modest at best* bulur ama uzun vadeli soruyu açık bırakır → 'cautious, as they found only a modest short-term effect but leave the long-term question open'. 'Dismissive … proved that fiction has no effect' aşırı genellemedir; araştırmacılar düzenli okumanın etkisini ölçemediklerini açıkça söyler."
       },
       {
        "type": "choice",
