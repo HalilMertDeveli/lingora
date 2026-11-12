@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/startup_trace.dart';
 import 'data/app_settings.dart';
 import 'data/progress.dart';
 import 'screens/consent_sheet.dart';
@@ -20,17 +21,24 @@ import 'theme.dart';
 import 'ui/motion.dart';
 
 Future<void> main() async {
+  StartupTrace.start();
   WidgetsFlutterBinding.ensureInitialized();
+  // Firebase is the real project unless built with
+  // --dart-define=LINGORA_FIREBASE=off|emulator. The first frame does not
+  // wait for it: the path is local, and Firebase users (sync, accounts,
+  // analytics, billing) start when firebaseReadyProvider turns true.
+  final mode = FirebaseMode.fromEnvironment;
+  final firebase = initFirebase(mode).whenComplete(() => StartupTrace.mark('firebase'));
   final prefs = await SharedPreferences.getInstance();
-  // Off unless built with --dart-define=LINGORA_FIREBASE=emulator|prod.
-  final firebaseReady = await initFirebase(FirebaseMode.fromEnvironment);
+  StartupTrace.mark('prefs');
+  WidgetsBinding.instance.addPostFrameCallback((_) => StartupTrace.mark('first_frame'));
   runApp(
     ProviderScope(
       overrides: [
         prefsProvider.overrideWithValue(prefs),
-        firebaseReadyProvider.overrideWithValue(firebaseReady),
+        firebaseInitProvider.overrideWith((ref) => firebase),
         // Analytics + Remote Config: production Firebase only (no-op otherwise).
-        ...growthOverrides(enabled: firebaseReady && FirebaseMode.fromEnvironment == FirebaseMode.prod),
+        ...growthOverrides(enabled: mode == FirebaseMode.prod),
         ...firebaseBillingOverrides,
       ],
       child: const LingoraApp(),

@@ -1018,7 +1018,7 @@
       "The region is famous for its agricultural production despite the drought."
      ],
      "answer": 3,
-     "explanation": "'Etkilemiştir' 'has affected' ile, 'ciddi şekilde' 'seriously' ile karşılanır. Neden kuraklık, etkilenen tarımsal üretimdir; A seçeneği bu ilişkiyi ters çevirir, B seçeneği ise zamanı geleceğe taşır ve kesinliği 'may' ile olasılığa çevirir."
+     "explanation": "'Etkilemiştir' 'has affected' ile, 'ciddi şekilde' 'seriously' ile karşılanır. Neden kuraklık, etkilenen tarımsal üretimdir; 'Agricultural production … caused a serious drought' bu ilişkiyi ters çevirir; 'The drought may affect …' ise zamanı geleceğe taşır ve kesinliği 'may' ile olasılığa çevirir."
     },
     {
      "id": "yds_translation_012",
@@ -1094,7 +1094,7 @@
       "Vitamins cannot be produced inside the human body."
      ],
      "answer": 2,
-     "explanation": "Son cümle antibiyotiklerin aşırı kullanımının yararlı bakterileri de öldürdüğünü söyler; buradan antibiyotiklerin dikkatli kullanılması gerektiği çıkarılabilir. Parça bakterilerin uzun süre hastalık nedeni olarak görüldüğünü belirttiği için A seçeneği ('have always considered ... beneficial') yanlıştır; bitkisel beslenme bakteri sayısını azaltmaz, çeşitliliği artırır."
+     "explanation": "Son cümle antibiyotiklerin aşırı kullanımının yararlı bakterileri de öldürdüğünü söyler; buradan antibiyotiklerin dikkatli kullanılması gerektiği çıkarılabilir. Parça bakterilerin uzun süre hastalık nedeni olarak görüldüğünü belirttiği için 'Scientists have always considered gut bacteria beneficial' yanlıştır; bitkisel beslenme bakteri sayısını azaltmaz, çeşitliliği artırır."
     },
     {
      "id": "yds_reading_005",

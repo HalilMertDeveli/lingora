@@ -35,6 +35,7 @@ class AccountService {
 
   /// Creates an e-mail account (keeping the current anonymous progress).
   Future<void> registerWithEmail(String email, String password) => _guard(() async {
+    _checkPassword(password);
     final cred = EmailAuthProvider.credential(email: email.trim(), password: password);
     final user = _user;
     if (user != null && user.isAnonymous) {
@@ -45,6 +46,7 @@ class AccountService {
   });
 
   Future<void> signInWithEmail(String email, String password) => _guard(() async {
+    _checkPassword(password);
     await _auth.signInWithEmailAndPassword(email: email.trim(), password: password);
   });
 
@@ -53,7 +55,13 @@ class AccountService {
   Future<void> sendPasswordResetEmail(String email) => _guard(() async {
     final e = email.trim();
     if (e.isEmpty) throw const AccountException('Önce e-posta adresini yaz.');
-    await _auth.sendPasswordResetEmail(email: e);
+    try {
+      await _auth.sendPasswordResetEmail(email: e);
+    } on FirebaseAuthException catch (x) {
+      // Projects without e-mail enumeration protection (and the emulator)
+      // report unknown addresses; answer the same way as for known ones.
+      if (authErrorCode(x) != 'user-not-found') rethrow;
+    }
   });
 
   /// Google sign-in; links to the anonymous user when possible.
@@ -108,12 +116,12 @@ class AccountService {
         codeAutoRetrievalTimeout: (_) {},
       );
     } on FirebaseAuthException catch (e) {
-      throw AccountException(authErrorTr(e.code));
+      throw AccountException(authErrorTr(authErrorCode(e)));
     }
     try {
       return await done.future;
     } on FirebaseAuthException catch (e) {
-      throw AccountException(authErrorTr(e.code));
+      throw AccountException(authErrorTr(authErrorCode(e)));
     }
   }
 
@@ -150,6 +158,12 @@ class AccountService {
     await _auth.signOut();
   });
 
+  /// The native SDKs reject an empty password with a non-Firebase error
+  /// (shown as "Bir sorun oluştu"); say what is missing instead.
+  static void _checkPassword(String password) {
+    if (password.isEmpty) throw const AccountException('Şifreni yaz.');
+  }
+
   static bool _alreadyInUse(FirebaseAuthException e) =>
       e.code == 'credential-already-in-use' || e.code == 'email-already-in-use';
 
@@ -181,12 +195,33 @@ class AccountService {
     } on AccountException {
       rethrow;
     } on FirebaseAuthException catch (e) {
-      throw AccountException(authErrorTr(e.code));
+      debugPrint('Auth error: ${e.code} ${e.message}');
+      throw AccountException(authErrorTr(authErrorCode(e)));
     } catch (e) {
       debugPrint('Account error: $e');
       throw const AccountException('Bir sorun oluştu. Lütfen tekrar dene.');
     }
   }
+}
+
+/// The error code of [e]. The native SDKs report some failures only as
+/// `unknown`/`internal-error` with the server's text, e.g. "Failed to connect
+/// to …" when the server cannot be reached; those get their real code.
+String authErrorCode(FirebaseAuthException e) {
+  if (e.code != 'unknown' && e.code != 'internal-error') return e.code;
+  final m = (e.message ?? '').toLowerCase();
+  const offline = [
+    'failed to connect',
+    'unable to resolve host',
+    'network',
+    'timeout',
+    'timed out',
+    'connection abort',
+    'connection reset',
+  ];
+  if (offline.any(m.contains)) return 'network-request-failed';
+  if (m.contains('email_not_found') || m.contains('user_not_found')) return 'user-not-found';
+  return e.code;
 }
 
 /// Turkish message for a Firebase Auth error code.

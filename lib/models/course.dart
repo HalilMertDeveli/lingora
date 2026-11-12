@@ -222,6 +222,7 @@ class Unit {
     required this.nodes,
     this.theme,
     this.guide,
+    this._hasGuide,
   });
 
   final String id;
@@ -234,7 +235,10 @@ class Unit {
   /// unit's "Rehber" button and suggested once before its first lesson.
   final String? guide;
 
-  bool get hasGuide => guide?.trim().isNotEmpty ?? false;
+  bool get hasGuide => _hasGuide ?? (guide?.trim().isNotEmpty ?? false);
+
+  /// Set by course outlines, which leave the guide text out.
+  final bool? _hasGuide;
 
   /// Topic theme id (lib/data/topic_themes.dart); null uses the default.
   final String? theme;
@@ -247,6 +251,7 @@ class Unit {
     nodes: (j['nodes'] as List).map((n) => PathNode.fromJson(n as Map<String, dynamic>)).toList(),
     theme: j['theme'] as String?,
     guide: j['guide'] as String?,
+    hasGuide: j['hasGuide'] as bool?,
   );
 }
 
@@ -262,7 +267,11 @@ class Section {
     this.grammar = const [],
     this.units = const [],
     this.implicit = false,
+    this.fixedExam,
   });
+
+  /// Fixed section exam, set when units were appended by an extension file.
+  final PathNode? fixedExam;
 
   /// "s1", "s2", ...
   final String id;
@@ -283,8 +292,12 @@ class Section {
 
   List<PathNode> get nodes => [for (final u in units) ...u.nodes];
 
-  /// The section exam: the last unit test. Passing it opens the next section.
+  /// The section exam: the last unit test of the section's own file. Passing
+  /// it opens the next section. Units added later by an extension file (see
+  /// [extendedWith]) never move it, so a learner who already passed it keeps
+  /// the next section open.
   PathNode? get exam {
+    if (fixedExam case final e?) return e;
     final all = nodes;
     for (var i = all.length - 1; i >= 0; i--) {
       if (all[i].type == NodeType.test) return all[i];
@@ -303,6 +316,22 @@ class Section {
     units: units,
   );
 
+  /// This section with [extra] units appended at its end (an extension file,
+  /// `NNx_slug.json` with `"extends": "sN"`). The section exam stays where it was.
+  Section extendedWith(List<Unit> extra) => extra.isEmpty
+      ? this
+      : Section(
+          id: id,
+          index: index,
+          title: title,
+          cefr: cefr,
+          description: description,
+          grammar: grammar,
+          units: [...units, ...extra],
+          implicit: implicit,
+          fixedExam: exam,
+        );
+
   /// Reads a whole section file: `{"section": {...}, "units": [...]}`.
   factory Section.fromFile(Map<String, dynamic> j) => Section.fromJson(
     j['section'] as Map<String, dynamic>,
@@ -318,6 +347,7 @@ class Course {
     required this.learningLang,
     List<Unit>? units,
     List<Section>? sections,
+    this.outline = false,
   }) : assert(units != null || sections != null),
        sections = sections ?? [Section(id: 'main', index: 1, title: title, units: units!, implicit: true)],
        units = units ?? [for (final s in sections!) ...s.units];
@@ -333,11 +363,17 @@ class Course {
   /// Units of every section, in path order.
   final List<Unit> units;
 
+  /// Read from the course outline (`assets/course_index/`, see
+  /// `loadCourseOutline`): every section, unit and step the path draws, but
+  /// no exercises, dialogues or topic guides. Steps open from the full course.
+  final bool outline;
+
   /// All nodes in path order.
   List<PathNode> get allNodes => [for (final u in units) ...u.nodes];
 
   /// Same course with [extra] sections appended after the existing ones.
-  Course withSections(List<Section> extra) => extra.isEmpty
+  Course withSections(List<Section> extra, {bool? outline}) =>
+      extra.isEmpty && (outline ?? this.outline) == this.outline
       ? this
       : Course(
           id: id,
@@ -345,6 +381,7 @@ class Course {
           fromLang: fromLang,
           learningLang: learningLang,
           sections: [...sections, ...extra],
+          outline: outline ?? this.outline,
         );
 
   /// Reads a course file. An optional `section` object makes the file's units

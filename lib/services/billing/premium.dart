@@ -348,7 +348,16 @@ class PremiumController extends Notifier<PremiumState> {
   void applyServer(ServerEntitlement e) => _onServer(e);
 
   void _onServer(ServerEntitlement? e) {
-    if (e == null) return;
+    if (e == null) {
+      // This account has no entitlement (e.g. after signing out, the new
+      // guest account): Premium granted by the server to the previous
+      // account must not carry over. Store-only grants are kept.
+      if (state.active && state.source == PremiumSource.server) {
+        state = state.copyWith(active: false, source: PremiumSource.none, expiresAt: () => null);
+        _writeCache();
+      }
+      return;
+    }
     if (e.activeAt(_now())) {
       state = state.copyWith(
         active: true,

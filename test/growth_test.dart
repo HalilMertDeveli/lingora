@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -12,6 +13,7 @@ import 'package:lingora/screens/paywall_screen.dart';
 import 'package:lingora/services/billing/billing_service.dart';
 import 'package:lingora/services/billing/iap_billing_service.dart';
 import 'package:lingora/services/billing/premium.dart';
+import 'package:lingora/services/firebase/firebase_providers.dart';
 import 'package:lingora/services/growth/analytics.dart';
 import 'package:lingora/services/growth/growth.dart';
 import 'package:lingora/services/growth/paywall_trigger.dart';
@@ -117,6 +119,7 @@ Future<ProviderContainer> container({
 Future<List<Override>> widgetOverrides(
   WidgetTester tester, {
   AnalyticsSink? sink,
+  Override? sinkOverride,
   Map<String, Object> prefs = const {},
   RemoteConfigSource? remote,
   ReferralService? referral,
@@ -134,7 +137,7 @@ Future<List<Override>> widgetOverrides(
     clockProvider.overrideWithValue(() => now),
     billingServiceProvider.overrideWithValue(FakeBilling()),
     premiumDevOverrideProvider.overrideWithValue(false),
-    analyticsSinkProvider.overrideWithValue(sink),
+    sinkOverride ?? analyticsSinkProvider.overrideWithValue(sink),
     remoteConfigSourceProvider.overrideWithValue(remote),
     referralServiceProvider.overrideWithValue(referral),
     speechProvider.overrideWithValue(FakeSpeech()),
@@ -409,6 +412,28 @@ void main() {
       expect(find.text('Anonim kullanım istatistikleri'), findsNothing);
       final container = ProviderScope.containerOf(tester.element(find.text('home')));
       expect(container.read(analyticsConsentProvider), isFalse);
+    });
+
+    testWidgets('asks once Firebase is ready, after the first frame', (tester) async {
+      // main() does not wait for Firebase: the sink appears a moment later.
+      final firebase = Completer<bool>();
+      final sink = FakeSink();
+      await tester.pumpWidget(
+        app([
+          ...await widgetOverrides(
+            tester,
+            sinkOverride: analyticsSinkProvider.overrideWith(
+              (ref) => ref.watch(firebaseReadyProvider) ? sink : null,
+            ),
+          ),
+          firebaseInitProvider.overrideWith((ref) => firebase.future),
+        ], const ConsentGate(child: Text('home'))),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Anonim kullanım istatistikleri'), findsNothing);
+      firebase.complete(true);
+      await tester.pumpAndSettle();
+      expect(find.text('Anonim kullanım istatistikleri'), findsOneWidget);
     });
 
     testWidgets('never asks when analytics is off', (tester) async {

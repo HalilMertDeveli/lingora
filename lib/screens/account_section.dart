@@ -88,9 +88,13 @@ class AccountSection extends ConsumerWidget {
                 ),
                 icon: const Icon(Icons.login_rounded),
                 label: const Text('Giriş yap / Hesap oluştur'),
-                onPressed: () =>
-                    Navigator.of(context)
-                        .push(MaterialPageRoute<bool>(builder: (_) => AuthScreen(service: service))),
+                // Not before the guest account exists: an anonymous sign-in
+                // still in flight would replace the account signed into here.
+                onPressed: user == null
+                    ? null
+                    : () =>
+                          Navigator.of(context)
+                              .push(MaterialPageRoute<bool>(builder: (_) => AuthScreen(service: service))),
               )
             else
               OutlinedButton.icon(

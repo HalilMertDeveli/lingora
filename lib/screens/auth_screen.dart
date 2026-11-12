@@ -474,6 +474,8 @@ class _PhoneSignInDialogState extends State<PhoneSignInDialog> {
     final p = context.palette;
     return AlertDialog(
       title: const Text('Telefonla giriş'),
+      // Scrolls on small phones, where the keyboard leaves little room.
+      scrollable: true,
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
