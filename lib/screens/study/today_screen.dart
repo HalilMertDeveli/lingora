@@ -280,7 +280,9 @@ class _TodayBody extends ConsumerWidget {
               const SizedBox(height: 10),
               if (today.week.reviewWeek)
                 _WeekRow(
-                  'Tekrar haftası: çalışılan gün',
+                  inMaintenance(today.plan, today.year)
+                      ? 'Bu hafta çalışılan gün'
+                      : 'Tekrar haftası: çalışılan gün',
                   status.studyDays,
                   today.year.daysPerWeek,
                   key: const Key('week-days'),
