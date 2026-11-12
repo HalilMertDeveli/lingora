@@ -632,7 +632,8 @@
               "lang": "tr",
               "answers": [
                 "The landlord is very kind",
-                "The landlord is very nice"
+                "The landlord is very nice",
+                "The landlord is very polite"
               ],
               "tokens": [
                 "The",
@@ -7932,7 +7933,7 @@
                   "leave a message"
                 ],
                 [
-                  "sesini yükseltmek",
+                  "daha yüksek sesle konuşmak",
                   "speak up"
                 ]
               ]
@@ -8958,7 +8959,7 @@
             },
             {
               "type": "select",
-              "prompt": "Bankada \"Sıradaki lütfen!\" ne demek?",
+              "prompt": "Bankada \"Sıradaki lütfen!\" İngilizcede nasıl söylenir?",
               "answer": "Next, please!",
               "choices": [
                 {
@@ -9046,7 +9047,9 @@
                 "The woman who works at the pharmacy is very nice",
                 "The woman who works in the pharmacy is very nice",
                 "The woman that works at the pharmacy is very nice",
-                "The woman that works in the pharmacy is very nice"
+                "The woman that works in the pharmacy is very nice",
+                "The woman who works in the pharmacy is very polite",
+                "The woman who works at the pharmacy is very polite"
               ],
               "tokens": [
                 "The",
