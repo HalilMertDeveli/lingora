@@ -1252,7 +1252,7 @@
           "description": "January, the first of May",
           "exercises": [
             {"type":"select","prompt":"ocak","answer":"January","choices":[{"text":"January","emoji":"❄️"},{"text":"October","emoji":"🍂"},{"text":"March","emoji":"🌱"},{"text":"June","emoji":"☀️"}]},
-            {"type":"select","prompt":"üçüncü","answer":"third","choices":[{"text":"fourth","emoji":"🎗️"},{"text":"first","emoji":"🥇"},{"text":"third","emoji":"🥉"},{"text":"second","emoji":"🥈"}]},
+            {"type":"select","prompt":"üçüncü","answer":"third","choices":[{"text":"fourth","emoji":"4️⃣"},{"text":"first","emoji":"🥇"},{"text":"third","emoji":"🥉"},{"text":"second","emoji":"🥈"}]},
             {"type":"fillBlank","text":"Today is the ___ of March.","translation":"Bugün bir mart.","answer":"first","choices":["once","one","first"]},
             {"type":"fillBlank","text":"My birthday is ___ the fifth of June.","translation":"Doğum günüm beş haziranda.","answer":"on","choices":["at","in","on"]},
             {"type":"fillBlank","text":"December is the ___ month of the year.","translation":"Aralık yılın on ikinci ayı.","answer":"twelfth","choices":["twelfth","twelve","twelveth"]},

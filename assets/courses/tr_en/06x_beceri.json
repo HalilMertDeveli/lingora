@@ -482,19 +482,19 @@
               "choices": [
                 {
                   "text": "Yes, although the ending was weak.",
-                  "emoji": "👍"
+                  "emoji": "📚"
                 },
                 {
                   "text": "Yes, despite the ending was weak.",
-                  "emoji": "🤔"
+                  "emoji": "📚"
                 },
                 {
                   "text": "Yes, however the ending weak.",
-                  "emoji": "😐"
+                  "emoji": "📚"
                 },
                 {
                   "text": "Good book. Bad finish. No.",
-                  "emoji": "🙅"
+                  "emoji": "📚"
                 }
               ]
             },
@@ -505,19 +505,19 @@
               "choices": [
                 {
                   "text": "I see why, but it wasn't for me.",
-                  "emoji": "🙂"
+                  "emoji": "🎬"
                 },
                 {
                   "text": "No, you're totally wrong.",
-                  "emoji": "😠"
+                  "emoji": "🎬"
                 },
                 {
                   "text": "That film was rubbish, sorry.",
-                  "emoji": "🗑️"
+                  "emoji": "🎬"
                 },
                 {
                   "text": "I don't care about films.",
-                  "emoji": "🙄"
+                  "emoji": "🎬"
                 }
               ]
             },
@@ -675,15 +675,15 @@
               "choices": [
                 {
                   "text": "Özet → Görüş → Tavsiye",
-                  "emoji": "✅"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Tavsiye → Puan → Özet",
-                  "emoji": "🔀"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Görüş → Tavsiye → Özet",
-                  "emoji": "↩️"
+                  "emoji": "📝"
                 }
               ]
             },
@@ -985,19 +985,19 @@
               "choices": [
                 {
                   "text": "Sorry, but I can't agree.",
-                  "emoji": "🙂"
+                  "emoji": "💻"
                 },
                 {
                   "text": "You're talking nonsense.",
-                  "emoji": "😤"
+                  "emoji": "💻"
                 },
                 {
                   "text": "Wrong. Read it again.",
-                  "emoji": "❌"
+                  "emoji": "💻"
                 },
                 {
                   "text": "Who asked you?",
-                  "emoji": "🙄"
+                  "emoji": "💻"
                 }
               ]
             }
@@ -1241,19 +1241,19 @@
               "choices": [
                 {
                   "text": "I take your point, but…",
-                  "emoji": "🤝"
+                  "emoji": "👥"
                 },
                 {
                   "text": "That's a stupid idea.",
-                  "emoji": "😠"
+                  "emoji": "👥"
                 },
                 {
                   "text": "Be quiet, please.",
-                  "emoji": "🤫"
+                  "emoji": "👥"
                 },
                 {
                   "text": "You never understand.",
-                  "emoji": "🙄"
+                  "emoji": "👥"
                 }
               ]
             },
@@ -1264,19 +1264,19 @@
               "choices": [
                 {
                   "text": "I can see both sides, really.",
-                  "emoji": "⚖️"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Yes, I am agree.",
-                  "emoji": "🤔"
+                  "emoji": "💬"
                 },
                 {
                   "text": "I am not sure about me.",
-                  "emoji": "😕"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Opinion I don't have.",
-                  "emoji": "🤷"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -1436,19 +1436,19 @@
               "choices": [
                 {
                   "text": "Thanks for starting this thread.",
-                  "emoji": "💬"
+                  "emoji": "💻"
                 },
                 {
                   "text": "Dear Sir or Madam,",
-                  "emoji": "📜"
+                  "emoji": "💻"
                 },
                 {
                   "text": "Yo, listen up!",
-                  "emoji": "📢"
+                  "emoji": "💻"
                 },
                 {
                   "text": "To whom it may concern,",
-                  "emoji": "🏛️"
+                  "emoji": "💻"
                 }
               ]
             },
@@ -1749,19 +1749,19 @@
               "choices": [
                 {
                   "text": "I wish I had studied more.",
-                  "emoji": "✅"
+                  "emoji": "📚"
                 },
                 {
                   "text": "I wish I studied more.",
-                  "emoji": "🤔"
+                  "emoji": "📚"
                 },
                 {
                   "text": "I wish I have studied more.",
-                  "emoji": "❌"
+                  "emoji": "📚"
                 },
                 {
                   "text": "I wish I will study more.",
-                  "emoji": "🙃"
+                  "emoji": "📚"
                 }
               ]
             }
@@ -2012,19 +2012,19 @@
               "choices": [
                 {
                   "text": "Thank you for listening.",
-                  "emoji": "🙏"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "OK, finished, bye.",
-                  "emoji": "👋"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "That's all, go home.",
-                  "emoji": "🚪"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "Questions? No? Good.",
-                  "emoji": "😅"
+                  "emoji": "🎤"
                 }
               ]
             },
@@ -2035,19 +2035,19 @@
               "choices": [
                 {
                   "text": "Let me think for a second.",
-                  "emoji": "🤔"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "Sorry, I am finish.",
-                  "emoji": "😳"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "Wait me, please.",
-                  "emoji": "✋"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "I don't know nothing.",
-                  "emoji": "🤷"
+                  "emoji": "🎤"
                 }
               ]
             },
@@ -2554,19 +2554,19 @@
               "choices": [
                 {
                   "text": "True, although it was worth it.",
-                  "emoji": "👍"
+                  "emoji": "📚"
                 },
                 {
                   "text": "True, despite it was worth it.",
-                  "emoji": "🤔"
+                  "emoji": "📚"
                 },
                 {
                   "text": "True, however worth it was.",
-                  "emoji": "😐"
+                  "emoji": "📚"
                 },
                 {
                   "text": "No, it was too long.",
-                  "emoji": "🙅"
+                  "emoji": "📚"
                 }
               ]
             }

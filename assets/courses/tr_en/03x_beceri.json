@@ -490,15 +490,15 @@
                 },
                 {
                   "text": "After that, we goed home.",
-                  "emoji": "🚶"
+                  "emoji": "🏠"
                 },
                 {
                   "text": "Before, we going home.",
-                  "emoji": "🕒"
+                  "emoji": "🏠"
                 },
                 {
                   "text": "Yes, I did.",
-                  "emoji": "👍"
+                  "emoji": "🏠"
                 }
               ]
             },
@@ -725,19 +725,19 @@
               "choices": [
                 {
                   "text": "Love, Mia",
-                  "emoji": "💌"
+                  "emoji": "📮"
                 },
                 {
                   "text": "Yours faithfully, Mia",
-                  "emoji": "📄"
+                  "emoji": "📮"
                 },
                 {
                   "text": "Dear Mia",
-                  "emoji": "✉️"
+                  "emoji": "📮"
                 },
                 {
                   "text": "See you, sir",
-                  "emoji": "🎩"
+                  "emoji": "📮"
                 }
               ]
             },
@@ -1034,15 +1034,15 @@
                 },
                 {
                   "text": "Where platform four is?",
-                  "emoji": "❓"
+                  "emoji": "🚉"
                 },
                 {
                   "text": "Where does platform four?",
-                  "emoji": "🤔"
+                  "emoji": "🚉"
                 },
                 {
                   "text": "Where is platform forty?",
-                  "emoji": "🔢"
+                  "emoji": "🚉"
                 }
               ]
             }
@@ -1242,19 +1242,19 @@
               "choices": [
                 {
                   "text": "Oh no! When is the next one?",
-                  "emoji": "😟"
+                  "emoji": "🚉"
                 },
                 {
                   "text": "Great! Thank you very much.",
-                  "emoji": "😀"
+                  "emoji": "🚉"
                 },
                 {
                   "text": "Yes, I'm cancelled.",
-                  "emoji": "🙃"
+                  "emoji": "🚉"
                 },
                 {
                   "text": "No, I don't afraid.",
-                  "emoji": "😨"
+                  "emoji": "🚉"
                 }
               ]
             },
@@ -1269,15 +1269,15 @@
                 },
                 {
                   "text": "Could you tell me what time is it?",
-                  "emoji": "⌚"
+                  "emoji": "🕰️"
                 },
                 {
                   "text": "Tell me the time.",
-                  "emoji": "🗣️"
+                  "emoji": "🕰️"
                 },
                 {
                   "text": "What time it is?",
-                  "emoji": "❓"
+                  "emoji": "🕰️"
                 }
               ]
             },
@@ -1484,19 +1484,19 @@
               "choices": [
                 {
                   "text": "Hi Deniz,",
-                  "emoji": "👋"
+                  "emoji": "📱"
                 },
                 {
                   "text": "Dear Sir or Madam,",
-                  "emoji": "📄"
+                  "emoji": "📱"
                 },
                 {
                   "text": "To whom it may concern,",
-                  "emoji": "🏢"
+                  "emoji": "📱"
                 },
                 {
                   "text": "Attention, please.",
-                  "emoji": "📢"
+                  "emoji": "📱"
                 }
               ]
             },
@@ -2012,19 +2012,19 @@
               "choices": [
                 {
                   "text": "Thanks, that's very kind.",
-                  "emoji": "😊"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Yes, it's your fault.",
-                  "emoji": "😠"
+                  "emoji": "💬"
                 },
                 {
                   "text": "No, I don't worry.",
-                  "emoji": "🙃"
+                  "emoji": "💬"
                 },
                 {
                   "text": "You're welcome.",
-                  "emoji": "🙂"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -2039,15 +2039,15 @@
                 },
                 {
                   "text": "Thank you to forget!",
-                  "emoji": "🎁"
+                  "emoji": "🎂"
                 },
                 {
                   "text": "Sorry for I forgot.",
-                  "emoji": "😶"
+                  "emoji": "🎂"
                 },
                 {
                   "text": "Never mind!",
-                  "emoji": "🤷"
+                  "emoji": "🎂"
                 }
               ]
             },
@@ -2265,15 +2265,15 @@
               "choices": [
                 {
                   "text": "Write soon! Love, Elif",
-                  "emoji": "💌"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Yours faithfully, Elif",
-                  "emoji": "📄"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Regards, the Museum",
-                  "emoji": "🏛️"
+                  "emoji": "📧"
                 }
               ]
             },

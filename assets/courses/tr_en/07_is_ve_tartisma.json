@@ -60,15 +60,15 @@
               "choices": [
                 {
                   "text": "If I had known, I'd have come",
-                  "emoji": "✅"
+                  "emoji": "💭"
                 },
                 {
                   "text": "If I would have known, I'd come",
-                  "emoji": "❌"
+                  "emoji": "💭"
                 },
                 {
                   "text": "If I knew, I came",
-                  "emoji": "🚫"
+                  "emoji": "💭"
                 }
               ]
             },
@@ -229,15 +229,15 @@
               "choices": [
                 {
                   "text": "decline the offer",
-                  "emoji": "🙏"
+                  "emoji": "💼"
                 },
                 {
                   "text": "refuse to the offer",
-                  "emoji": "🙅"
+                  "emoji": "💼"
                 },
                 {
                   "text": "reject at the offer",
-                  "emoji": "❌"
+                  "emoji": "💼"
                 }
               ]
             },
@@ -873,11 +873,11 @@
                 },
                 {
                   "text": "I'd have been a lawyer now",
-                  "emoji": "📜"
+                  "emoji": "⚖️"
                 },
                 {
                   "text": "I was a lawyer now",
-                  "emoji": "🙃"
+                  "emoji": "⚖️"
                 }
               ]
             },
@@ -1020,15 +1020,15 @@
               "choices": [
                 {
                   "text": "If I were you",
-                  "emoji": "✅"
+                  "emoji": "💭"
                 },
                 {
                   "text": "If I am you",
-                  "emoji": "🙃"
+                  "emoji": "💭"
                 },
                 {
                   "text": "If I would be you",
-                  "emoji": "🤔"
+                  "emoji": "💭"
                 }
               ]
             },
@@ -1305,11 +1305,11 @@
                 },
                 {
                   "text": "I'd have worked in a bank",
-                  "emoji": "📜"
+                  "emoji": "🏦"
                 },
                 {
                   "text": "I'll be working in a bank",
-                  "emoji": "🔮"
+                  "emoji": "🏦"
                 }
               ]
             },
@@ -1472,7 +1472,7 @@
               "choices": [
                 {
                   "text": "relocate",
-                  "emoji": "🏢"
+                  "emoji": "🚚"
                 },
                 {
                   "text": "move house",
@@ -1664,15 +1664,15 @@
               "choices": [
                 {
                   "text": "You should have known!",
-                  "emoji": "😠"
+                  "emoji": "📧"
                 },
                 {
                   "text": "It might have been better to wait",
-                  "emoji": "🙂"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Why didn't you just wait?",
-                  "emoji": "🙄"
+                  "emoji": "📧"
                 }
               ]
             },
@@ -2075,7 +2075,7 @@
               "choices": [
                 {
                   "text": "You could have called!",
-                  "emoji": "😤"
+                  "emoji": "📞"
                 },
                 {
                   "text": "You might call!",
@@ -2083,7 +2083,7 @@
                 },
                 {
                   "text": "You can have called!",
-                  "emoji": "🤷"
+                  "emoji": "📞"
                 }
               ]
             },
@@ -2235,7 +2235,7 @@
               "choices": [
                 {
                   "text": "double-check",
-                  "emoji": "✅"
+                  "emoji": "🔍"
                 },
                 {
                   "text": "double-click",
@@ -2448,11 +2448,11 @@
                 },
                 {
                   "text": "Guess what, they said",
-                  "emoji": "😮"
+                  "emoji": "📢"
                 },
                 {
                   "text": "Everybody's saying that",
-                  "emoji": "🗣️"
+                  "emoji": "📢"
                 }
               ]
             },
@@ -2609,11 +2609,11 @@
                 },
                 {
                   "text": "Turn your phones off, guys",
-                  "emoji": "🤙"
+                  "emoji": "📵"
                 },
                 {
                   "text": "Phones must switch off",
-                  "emoji": "📱"
+                  "emoji": "📵"
                 }
               ]
             },
@@ -2858,11 +2858,11 @@
                 },
                 {
                   "text": "says to be",
-                  "emoji": "🗣️"
+                  "emoji": "🗞️"
                 },
                 {
                   "text": "is saying to be",
-                  "emoji": "💬"
+                  "emoji": "🗞️"
                 }
               ]
             },
@@ -2877,11 +2877,11 @@
                 },
                 {
                   "text": "According to me",
-                  "emoji": "🙋"
+                  "emoji": "💭"
                 },
                 {
                   "text": "As to me",
-                  "emoji": "🤔"
+                  "emoji": "💭"
                 }
               ]
             },
@@ -3039,11 +3039,11 @@
                 },
                 {
                   "text": "Just letting you know",
-                  "emoji": "👋"
+                  "emoji": "📩"
                 },
                 {
                   "text": "We want to say you",
-                  "emoji": "🗣️"
+                  "emoji": "📩"
                 }
               ]
             },
@@ -3219,15 +3219,15 @@
               "choices": [
                 {
                   "text": "She suggested taking a break",
-                  "emoji": "✅"
+                  "emoji": "☕"
                 },
                 {
                   "text": "She suggested to take a break",
-                  "emoji": "❌"
+                  "emoji": "☕"
                 },
                 {
                   "text": "She suggested me to take a break",
-                  "emoji": "🚫"
+                  "emoji": "☕"
                 }
               ]
             },
@@ -4021,15 +4021,15 @@
               "choices": [
                 {
                   "text": "She asked if I had finished",
-                  "emoji": "✅"
+                  "emoji": "💬"
                 },
                 {
                   "text": "She asked had I finished",
-                  "emoji": "❌"
+                  "emoji": "💬"
                 },
                 {
                   "text": "She asked did I finish",
-                  "emoji": "🚫"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -4164,15 +4164,15 @@
               "choices": [
                 {
                   "text": "He asked when the meeting was",
-                  "emoji": "✅"
+                  "emoji": "📅"
                 },
                 {
                   "text": "He asked when was the meeting",
-                  "emoji": "❌"
+                  "emoji": "📅"
                 },
                 {
                   "text": "He asked when is the meeting",
-                  "emoji": "🚫"
+                  "emoji": "📅"
                 }
               ]
             },
@@ -4613,11 +4613,11 @@
                 },
                 {
                   "text": "I want to chase you about",
-                  "emoji": "🏃"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Just bugging you about",
-                  "emoji": "🐛"
+                  "emoji": "📧"
                 }
               ]
             },
@@ -4628,15 +4628,15 @@
               "choices": [
                 {
                   "text": "We discussed the budget",
-                  "emoji": "✅"
+                  "emoji": "💰"
                 },
                 {
                   "text": "We discussed about the budget",
-                  "emoji": "❌"
+                  "emoji": "💰"
                 },
                 {
                   "text": "We talked the budget",
-                  "emoji": "🚫"
+                  "emoji": "💰"
                 }
               ]
             },
@@ -4793,7 +4793,7 @@
               "choices": [
                 {
                   "text": "I cut my hair.",
-                  "emoji": "✂️"
+                  "emoji": "💇"
                 },
                 {
                   "text": "I had my hair cut.",
@@ -4801,11 +4801,11 @@
                 },
                 {
                   "text": "I had cut my hair.",
-                  "emoji": "⏪"
+                  "emoji": "💇"
                 },
                 {
                   "text": "I made my hair cut.",
-                  "emoji": "🛠️"
+                  "emoji": "💇"
                 }
               ]
             },
@@ -5030,15 +5030,15 @@
               "choices": [
                 {
                   "text": "We will have it repaired.",
-                  "emoji": "📧"
+                  "emoji": "🛠️"
                 },
                 {
                   "text": "We'll get it fixed, no worries!",
-                  "emoji": "😎"
+                  "emoji": "🛠️"
                 },
                 {
                   "text": "We'll fix it up somehow.",
-                  "emoji": "🤷"
+                  "emoji": "🛠️"
                 }
               ]
             },
@@ -5211,11 +5211,11 @@
               "choices": [
                 {
                   "text": "I had the technician check it.",
-                  "emoji": "✅"
+                  "emoji": "🖨️"
                 },
                 {
                   "text": "I had the technician to check it.",
-                  "emoji": "❌"
+                  "emoji": "🖨️"
                 },
                 {
                   "text": "I got the technician check it.",
@@ -5349,15 +5349,15 @@
                 },
                 {
                   "text": "I stole my phone.",
-                  "emoji": "🦹"
+                  "emoji": "📱"
                 },
                 {
                   "text": "My phone stole.",
-                  "emoji": "❓"
+                  "emoji": "📱"
                 },
                 {
                   "text": "I had stolen my phone.",
-                  "emoji": "⏪"
+                  "emoji": "📱"
                 }
               ]
             },
@@ -5536,15 +5536,15 @@
               "choices": [
                 {
                   "text": "Never have I seen this.",
-                  "emoji": "✅"
+                  "emoji": "👀"
                 },
                 {
                   "text": "Never I have seen this.",
-                  "emoji": "❌"
+                  "emoji": "👀"
                 },
                 {
                   "text": "Never did I have seen this.",
-                  "emoji": "🌀"
+                  "emoji": "👀"
                 }
               ]
             },
@@ -5680,15 +5680,15 @@
                 },
                 {
                   "text": "Not only she won",
-                  "emoji": "❌"
+                  "emoji": "🏆"
                 },
                 {
                   "text": "Not only she did win",
-                  "emoji": "🌀"
+                  "emoji": "🏆"
                 },
                 {
                   "text": "Not only won she",
-                  "emoji": "🔀"
+                  "emoji": "🏆"
                 }
               ]
             },
@@ -5778,11 +5778,11 @@
               "choices": [
                 {
                   "text": "Not only is it costly…",
-                  "emoji": "🎤"
+                  "emoji": "💸"
                 },
                 {
                   "text": "It's, like, super costly…",
-                  "emoji": "🙄"
+                  "emoji": "💸"
                 },
                 {
                   "text": "It costs loads, honestly…",
@@ -5945,7 +5945,7 @@
               "choices": [
                 {
                   "text": "than",
-                  "emoji": "✅"
+                  "emoji": "⚖️"
                 },
                 {
                   "text": "then",
@@ -6208,15 +6208,15 @@
               "choices": [
                 {
                   "text": "Don't touch the server, OK?",
-                  "emoji": "💬"
+                  "emoji": "🖥️"
                 },
                 {
                   "text": "Under no circumstances should…",
-                  "emoji": "📜"
+                  "emoji": "🖥️"
                 },
                 {
                   "text": "At no time shall staff…",
-                  "emoji": "⚖️"
+                  "emoji": "🖥️"
                 }
               ]
             },
@@ -6295,15 +6295,15 @@
               "choices": [
                 {
                   "text": "make a decision",
-                  "emoji": "✅"
+                  "emoji": "🗳️"
                 },
                 {
                   "text": "do a decision",
-                  "emoji": "❌"
+                  "emoji": "🗳️"
                 },
                 {
                   "text": "give a decision",
-                  "emoji": "🎁"
+                  "emoji": "🗳️"
                 }
               ]
             },
@@ -6392,11 +6392,11 @@
                 },
                 {
                   "text": "make a meeting",
-                  "emoji": "🛠️"
+                  "emoji": "👥"
                 },
                 {
                   "text": "do a meeting",
-                  "emoji": "❌"
+                  "emoji": "👥"
                 }
               ]
             },
@@ -6456,11 +6456,11 @@
                 },
                 {
                   "text": "catch a deadline",
-                  "emoji": "🏃"
+                  "emoji": "📅"
                 },
                 {
                   "text": "reach a deadline",
-                  "emoji": "🧗"
+                  "emoji": "📅"
                 }
               ]
             },
@@ -6552,11 +6552,11 @@
                 },
                 {
                   "text": "The deadline comes near to.",
-                  "emoji": "❌"
+                  "emoji": "⏰"
                 },
                 {
                   "text": "The last date is getting close.",
-                  "emoji": "🌀"
+                  "emoji": "⏰"
                 }
               ]
             },
@@ -6727,11 +6727,11 @@
                 },
                 {
                   "text": "arrive an agreement",
-                  "emoji": "🛬"
+                  "emoji": "🤝"
                 },
                 {
                   "text": "make an agree",
-                  "emoji": "❌"
+                  "emoji": "🤝"
                 }
               ]
             },
@@ -6818,15 +6818,15 @@
               "choices": [
                 {
                   "text": "discuss the risks",
-                  "emoji": "✅"
+                  "emoji": "⚠️"
                 },
                 {
                   "text": "discuss about the risks",
-                  "emoji": "❌"
+                  "emoji": "⚠️"
                 },
                 {
                   "text": "discuss on the risks",
-                  "emoji": "🌀"
+                  "emoji": "⚠️"
                 }
               ]
             },
@@ -6886,11 +6886,11 @@
                 },
                 {
                   "text": "do progress",
-                  "emoji": "❌"
+                  "emoji": "📈"
                 },
                 {
                   "text": "take progress",
-                  "emoji": "🌀"
+                  "emoji": "📈"
                 }
               ]
             },
@@ -6979,11 +6979,11 @@
                 },
                 {
                   "text": "do a profit",
-                  "emoji": "❌"
+                  "emoji": "💰"
                 },
                 {
                   "text": "win a profit",
-                  "emoji": "🏆"
+                  "emoji": "💰"
                 }
               ]
             },
@@ -7062,15 +7062,15 @@
               "choices": [
                 {
                   "text": "I take your point, but…",
-                  "emoji": "🙂"
+                  "emoji": "💬"
                 },
                 {
                   "text": "You're wrong.",
-                  "emoji": "😠"
+                  "emoji": "💬"
                 },
                 {
                   "text": "That's a stupid idea.",
-                  "emoji": "🙄"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -7160,11 +7160,11 @@
                 },
                 {
                   "text": "As far as I concern",
-                  "emoji": "❌"
+                  "emoji": "💭"
                 },
                 {
                   "text": "As long as I'm concerned",
-                  "emoji": "🌀"
+                  "emoji": "💭"
                 }
               ]
             },
@@ -7221,15 +7221,15 @@
               "choices": [
                 {
                   "text": "highly unlikely",
-                  "emoji": "🤔"
+                  "emoji": "🎲"
                 },
                 {
                   "text": "strongly unlikely",
-                  "emoji": "💪"
+                  "emoji": "🎲"
                 },
                 {
                   "text": "deeply unlikely",
-                  "emoji": "🌊"
+                  "emoji": "🎲"
                 }
               ]
             },
@@ -7323,11 +7323,11 @@
                 },
                 {
                   "text": "We're super worried.",
-                  "emoji": "😬"
+                  "emoji": "📰"
                 },
                 {
                   "text": "We're freaking out.",
-                  "emoji": "😱"
+                  "emoji": "📰"
                 }
               ]
             },
@@ -7498,11 +7498,11 @@
                 },
                 {
                   "text": "a forcing argument",
-                  "emoji": "💪"
+                  "emoji": "🎯"
                 },
                 {
                   "text": "a pushing argument",
-                  "emoji": "👉"
+                  "emoji": "🎯"
                 }
               ]
             },
@@ -7586,15 +7586,15 @@
               "choices": [
                 {
                   "text": "I'd like to raise an objection.",
-                  "emoji": "✋"
+                  "emoji": "👥"
                 },
                 {
                   "text": "No way, that's rubbish.",
-                  "emoji": "🙅"
+                  "emoji": "👥"
                 },
                 {
                   "text": "I object it.",
-                  "emoji": "❌"
+                  "emoji": "👥"
                 }
               ]
             },
@@ -7654,11 +7654,11 @@
                 },
                 {
                   "text": "find same point",
-                  "emoji": "📍"
+                  "emoji": "🤝"
                 },
                 {
                   "text": "find a shared floor",
-                  "emoji": "🏢"
+                  "emoji": "🤝"
                 }
               ]
             },
@@ -7744,15 +7744,15 @@
               "choices": [
                 {
                   "text": "If I could just add something…",
-                  "emoji": "🙋"
+                  "emoji": "👥"
                 },
                 {
                   "text": "Stop, let me talk!",
-                  "emoji": "✋"
+                  "emoji": "👥"
                 },
                 {
                   "text": "Be quiet a second.",
-                  "emoji": "🤫"
+                  "emoji": "👥"
                 }
               ]
             },
@@ -7938,11 +7938,11 @@
                 },
                 {
                   "text": "as long as",
-                  "emoji": "💬"
+                  "emoji": "📜"
                 },
                 {
                   "text": "if, you know,",
-                  "emoji": "🤷"
+                  "emoji": "📜"
                 }
               ]
             },
@@ -7999,15 +7999,15 @@
               "choices": [
                 {
                   "text": "Unless we hurry, we'll miss it.",
-                  "emoji": "✅"
+                  "emoji": "🚆"
                 },
                 {
                   "text": "Unless we don't hurry, we'll miss it.",
-                  "emoji": "❌"
+                  "emoji": "🚆"
                 },
                 {
                   "text": "If we hurry, we'll miss it.",
-                  "emoji": "🌀"
+                  "emoji": "🚆"
                 }
               ]
             },
@@ -8279,15 +8279,15 @@
               "choices": [
                 {
                   "text": "We could offer you 5%.",
-                  "emoji": "🙂"
+                  "emoji": "🏷️"
                 },
                 {
                   "text": "Take 5% or leave it.",
-                  "emoji": "😤"
+                  "emoji": "🏷️"
                 },
                 {
                   "text": "You must accept 5%.",
-                  "emoji": "☝️"
+                  "emoji": "🏷️"
                 }
               ]
             },
@@ -8445,11 +8445,11 @@
                 },
                 {
                   "text": "We agreed us!",
-                  "emoji": "❌"
+                  "emoji": "🤝"
                 },
                 {
                   "text": "We are agree!",
-                  "emoji": "🌀"
+                  "emoji": "🤝"
                 }
               ]
             },
@@ -8535,15 +8535,15 @@
               "choices": [
                 {
                   "text": "I'm afraid that's our final offer.",
-                  "emoji": "🙂"
+                  "emoji": "🏷️"
                 },
                 {
                   "text": "Take it or leave it, mate.",
-                  "emoji": "😤"
+                  "emoji": "🏷️"
                 },
                 {
                   "text": "No more talking!",
-                  "emoji": "🤐"
+                  "emoji": "🏷️"
                 }
               ]
             },
@@ -8622,15 +8622,15 @@
               "choices": [
                 {
                   "text": "We apologise for the delay.",
-                  "emoji": "✅"
+                  "emoji": "⏳"
                 },
                 {
                   "text": "We apologise the delay.",
-                  "emoji": "❌"
+                  "emoji": "⏳"
                 },
                 {
                   "text": "We say sorry from the delay.",
-                  "emoji": "🌀"
+                  "emoji": "⏳"
                 }
               ]
             },
@@ -8718,11 +8718,11 @@
                 },
                 {
                   "text": "Bad news, guys…",
-                  "emoji": "😬"
+                  "emoji": "📧"
                 },
                 {
                   "text": "So, um, something happened…",
-                  "emoji": "🤷"
+                  "emoji": "📧"
                 }
               ]
             },
@@ -8779,15 +8779,15 @@
               "choices": [
                 {
                   "text": "should have been done",
-                  "emoji": "✅"
+                  "emoji": "📋"
                 },
                 {
                   "text": "should be done",
-                  "emoji": "⏭️"
+                  "emoji": "📋"
                 },
                 {
                   "text": "must have done",
-                  "emoji": "🔍"
+                  "emoji": "📋"
                 }
               ]
             },
@@ -8878,11 +8878,11 @@
                 },
                 {
                   "text": "should have forgotten",
-                  "emoji": "❌"
+                  "emoji": "🔍"
                 },
                 {
                   "text": "can have forgotten",
-                  "emoji": "🌀"
+                  "emoji": "🔍"
                 }
               ]
             },
@@ -9050,15 +9050,15 @@
               "choices": [
                 {
                   "text": "The manager told us that…",
-                  "emoji": "✅"
+                  "emoji": "👔"
                 },
                 {
                   "text": "The manager said us that…",
-                  "emoji": "❌"
+                  "emoji": "👔"
                 },
                 {
                   "text": "The manager told that us…",
-                  "emoji": "🌀"
+                  "emoji": "👔"
                 }
               ]
             },
@@ -9145,15 +9145,15 @@
               "choices": [
                 {
                   "text": "She denied the accusation.",
-                  "emoji": "🙅"
+                  "emoji": "⚖️"
                 },
                 {
                   "text": "She refused the accusation.",
-                  "emoji": "❌"
+                  "emoji": "⚖️"
                 },
                 {
                   "text": "She rejected to accuse.",
-                  "emoji": "🌀"
+                  "emoji": "⚖️"
                 }
               ]
             },
@@ -9213,11 +9213,11 @@
                 },
                 {
                   "text": "do measures",
-                  "emoji": "❌"
+                  "emoji": "🛡️"
                 },
                 {
                   "text": "make measures",
-                  "emoji": "📏"
+                  "emoji": "🛡️"
                 }
               ]
             },
@@ -9304,15 +9304,15 @@
               "choices": [
                 {
                   "text": "Rest assured, it won't happen again.",
-                  "emoji": "🛡️"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Whatever, these things happen.",
-                  "emoji": "🤷"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Hopefully, maybe, it won't…",
-                  "emoji": "🤞"
+                  "emoji": "📧"
                 }
               ]
             },

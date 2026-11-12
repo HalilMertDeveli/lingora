@@ -1735,7 +1735,7 @@
                 },
                 {
                   "text": "cancel",
-                  "emoji": "❌"
+                  "emoji": "🗑️"
                 }
               ]
             },
@@ -5217,10 +5217,12 @@
                   "emoji": "🌅"
                 },
                 {
-                  "text": "soon"
+                  "text": "soon",
+                  "emoji": "🔜"
                 },
                 {
-                  "text": "never"
+                  "text": "never",
+                  "emoji": "🚫"
                 }
               ]
             },
@@ -7054,11 +7056,11 @@
               "choices": [
                 {
                   "text": "confirm",
-                  "emoji": "✅"
+                  "emoji": "🤝"
                 },
                 {
                   "text": "cancel",
-                  "emoji": "❌"
+                  "emoji": "🗑️"
                 },
                 {
                   "text": "forward",
@@ -8425,7 +8427,8 @@
                   "emoji": "🖼️"
                 },
                 {
-                  "text": "stamp"
+                  "text": "stamp",
+                  "emoji": "📮"
                 }
               ]
             },

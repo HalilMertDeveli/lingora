@@ -241,19 +241,19 @@
               "choices": [
                 {
                   "text": "Critics, however, argue that…",
-                  "emoji": "✅"
+                  "emoji": "✍️"
                 },
                 {
                   "text": "But some guys say that…",
-                  "emoji": "🙄"
+                  "emoji": "✍️"
                 },
                 {
                   "text": "Everybody knows that…",
-                  "emoji": "🤷"
+                  "emoji": "✍️"
                 },
                 {
                   "text": "I totally hate the idea that…",
-                  "emoji": "😠"
+                  "emoji": "✍️"
                 }
               ]
             }
@@ -511,19 +511,19 @@
               "choices": [
                 {
                   "text": "I see what you mean, but…",
-                  "emoji": "✅"
+                  "emoji": "👥"
                 },
                 {
                   "text": "You're totally wrong.",
-                  "emoji": "😠"
+                  "emoji": "👥"
                 },
                 {
                   "text": "That's a stupid idea.",
-                  "emoji": "🙄"
+                  "emoji": "👥"
                 },
                 {
                   "text": "I'm agree with you.",
-                  "emoji": "❌"
+                  "emoji": "👥"
                 }
               ]
             },
@@ -735,19 +735,19 @@
               "choices": [
                 {
                   "text": "Giriş, lehte, aleyhte, sonuç",
-                  "emoji": "✅"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Sonuç, giriş, lehte, aleyhte",
-                  "emoji": "🔀"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Lehte, sonuç, aleyhte, giriş",
-                  "emoji": "🔄"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Giriş, sonuç, lehte, aleyhte",
-                  "emoji": "↩️"
+                  "emoji": "📝"
                 }
               ]
             },
@@ -1332,15 +1332,15 @@
                 },
                 {
                   "text": "Yes, it was.",
-                  "emoji": "🤷"
+                  "emoji": "🎧"
                 },
                 {
                   "text": "I don't listen to podcasts.",
-                  "emoji": "🙅"
+                  "emoji": "🎧"
                 },
                 {
                   "text": "It's at three o'clock.",
-                  "emoji": "🕒"
+                  "emoji": "🎧"
                 }
               ]
             },
@@ -1351,19 +1351,19 @@
               "choices": [
                 {
                   "text": "Sorry, did you say…?",
-                  "emoji": "🙏"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "What? Say it again!",
-                  "emoji": "😤"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "You're wrong.",
-                  "emoji": "❌"
+                  "emoji": "🎤"
                 },
                 {
                   "text": "Speak slowly!",
-                  "emoji": "🐢"
+                  "emoji": "🎤"
                 }
               ]
             },
@@ -1552,19 +1552,19 @@
               "choices": [
                 {
                   "text": "Deniz explained that…",
-                  "emoji": "✅"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Deniz was like…",
-                  "emoji": "🙄"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Deniz goes, you know…",
-                  "emoji": "💬"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Deniz said me that…",
-                  "emoji": "❌"
+                  "emoji": "📝"
                 }
               ]
             },
@@ -1849,19 +1849,19 @@
               "choices": [
                 {
                   "text": "Thanks, that's a fair question.",
-                  "emoji": "🙂"
+                  "emoji": "👥"
                 },
                 {
                   "text": "You clearly didn't listen.",
-                  "emoji": "😒"
+                  "emoji": "👥"
                 },
                 {
                   "text": "That's not my problem.",
-                  "emoji": "🙅"
+                  "emoji": "👥"
                 },
                 {
                   "text": "Let's not talk about that.",
-                  "emoji": "🤐"
+                  "emoji": "👥"
                 }
               ]
             }
@@ -2119,19 +2119,19 @@
               "choices": [
                 {
                   "text": "What if we limited the risk?",
-                  "emoji": "✅"
+                  "emoji": "👥"
                 },
                 {
                   "text": "No, it isn't.",
-                  "emoji": "🙅"
+                  "emoji": "👥"
                 },
                 {
                   "text": "You always say that.",
-                  "emoji": "😒"
+                  "emoji": "👥"
                 },
                 {
                   "text": "OK, forget it.",
-                  "emoji": "🏳️"
+                  "emoji": "👥"
                 }
               ]
             },
@@ -2146,15 +2146,15 @@
                 },
                 {
                   "text": "Listen, guys, here's the deal.",
-                  "emoji": "😎"
+                  "emoji": "💡"
                 },
                 {
                   "text": "You must do this.",
-                  "emoji": "☝️"
+                  "emoji": "💡"
                 },
                 {
                   "text": "I suggest you to do this.",
-                  "emoji": "❌"
+                  "emoji": "💡"
                 }
               ]
             },
@@ -2334,19 +2334,19 @@
               "choices": [
                 {
                   "text": "Best regards, Deniz",
-                  "emoji": "✅"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Cheers mate, Deniz",
-                  "emoji": "🍻"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Bye bye, Deniz",
-                  "emoji": "👋"
+                  "emoji": "📧"
                 },
                 {
                   "text": "XOXO, Deniz",
-                  "emoji": "💋"
+                  "emoji": "📧"
                 }
               ]
             },
@@ -2660,19 +2660,19 @@
               "choices": [
                 {
                   "text": "I'm not sure that would work.",
-                  "emoji": "🤔"
+                  "emoji": "👥"
                 },
                 {
                   "text": "That's the worst idea ever.",
-                  "emoji": "😠"
+                  "emoji": "👥"
                 },
                 {
                   "text": "No. Next question.",
-                  "emoji": "🙅"
+                  "emoji": "👥"
                 },
                 {
                   "text": "I'm disagree with this.",
-                  "emoji": "❌"
+                  "emoji": "👥"
                 }
               ]
             }

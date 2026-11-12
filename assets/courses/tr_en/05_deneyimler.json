@@ -502,7 +502,8 @@
                   "emoji": "🧹"
                 },
                 {
-                  "text": "household"
+                  "text": "household",
+                  "emoji": "👪"
                 }
               ]
             },
@@ -3374,7 +3375,8 @@
                   "emoji": "🦹"
                 },
                 {
-                  "text": "still"
+                  "text": "still",
+                  "emoji": "🧘"
                 },
                 {
                   "text": "sell",
@@ -3692,10 +3694,12 @@
                   "emoji": "🏙️"
                 },
                 {
-                  "text": "empty"
+                  "text": "empty",
+                  "emoji": "📭"
                 },
                 {
-                  "text": "famous"
+                  "text": "famous",
+                  "emoji": "⭐"
                 }
               ]
             },
@@ -8780,13 +8784,16 @@
                   "emoji": "💪"
                 },
                 {
-                  "text": "weakness"
+                  "text": "weakness",
+                  "emoji": "🐢"
                 },
                 {
-                  "text": "skill"
+                  "text": "skill",
+                  "emoji": "🛠️"
                 },
                 {
-                  "text": "success"
+                  "text": "success",
+                  "emoji": "🏆"
                 }
               ]
             },
@@ -9661,13 +9668,16 @@
                   "emoji": "🎤"
                 },
                 {
-                  "text": "speak"
+                  "text": "speak",
+                  "emoji": "🗣️"
                 },
                 {
-                  "text": "spoken"
+                  "text": "spoken",
+                  "emoji": "💬"
                 },
                 {
-                  "text": "speaker"
+                  "text": "speaker",
+                  "emoji": "🧑‍🏫"
                 }
               ]
             },

@@ -229,7 +229,7 @@
               "choices": [
                 {
                   "text": "Erdem",
-                  "emoji": "🪪"
+                  "emoji": "👦"
                 },
                 {
                   "text": "Kerem",
@@ -472,19 +472,19 @@
               "choices": [
                 {
                   "text": "E-R-D-E-M.",
-                  "emoji": "🔤"
+                  "emoji": "💬"
                 },
                 {
                   "text": "I'm Erdem.",
-                  "emoji": "🙋"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Yes, I do.",
-                  "emoji": "👍"
+                  "emoji": "💬"
                 },
                 {
                   "text": "It's Saturday.",
-                  "emoji": "📅"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -499,15 +499,15 @@
                 },
                 {
                   "text": "Yes, I am.",
-                  "emoji": "✅"
+                  "emoji": "🎒"
                 },
                 {
                   "text": "Yes, I'm a.",
-                  "emoji": "🤔"
+                  "emoji": "🎒"
                 },
                 {
                   "text": "Yes, I do.",
-                  "emoji": "👍"
+                  "emoji": "🎒"
                 }
               ]
             },
@@ -1016,15 +1016,15 @@
                 },
                 {
                   "text": "forty pounds",
-                  "emoji": "💰"
+                  "emoji": "💷"
                 },
                 {
                   "text": "fourteen pounds",
-                  "emoji": "💵"
+                  "emoji": "💷"
                 },
                 {
                   "text": "four pence",
-                  "emoji": "🪙"
+                  "emoji": "💷"
                 }
               ]
             }
@@ -1248,15 +1248,15 @@
               "choices": [
                 {
                   "text": "Yes, that's all, thanks.",
-                  "emoji": "✅"
+                  "emoji": "☕"
                 },
                 {
                   "text": "Yes, I'm all.",
-                  "emoji": "🤔"
+                  "emoji": "☕"
                 },
                 {
                   "text": "It's four pounds.",
-                  "emoji": "💷"
+                  "emoji": "☕"
                 },
                 {
                   "text": "Two coffee.",
@@ -1271,19 +1271,19 @@
               "choices": [
                 {
                   "text": "You're welcome.",
-                  "emoji": "😊"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Here you are.",
-                  "emoji": "💷"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Nice to meet you.",
-                  "emoji": "🤝"
+                  "emoji": "💬"
                 },
                 {
                   "text": "I'm fine, thanks.",
-                  "emoji": "👍"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -1484,19 +1484,19 @@
               "choices": [
                 {
                   "text": "See you later, Elif",
-                  "emoji": "👋"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Dear Sir or Madam,",
-                  "emoji": "🎩"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Yours faithfully,",
-                  "emoji": "✒️"
+                  "emoji": "📝"
                 },
                 {
                   "text": "To whom it may concern,",
-                  "emoji": "📜"
+                  "emoji": "📝"
                 }
               ]
             },
@@ -1786,19 +1786,19 @@
               "choices": [
                 {
                   "text": "What time do we meet?",
-                  "emoji": "✅"
+                  "emoji": "⏰"
                 },
                 {
                   "text": "What time we meet?",
-                  "emoji": "❓"
+                  "emoji": "⏰"
                 },
                 {
                   "text": "What time meet we?",
-                  "emoji": "🔀"
+                  "emoji": "⏰"
                 },
                 {
                   "text": "We meet what time?",
-                  "emoji": "🤔"
+                  "emoji": "⏰"
                 }
               ]
             }
@@ -2019,19 +2019,19 @@
               "choices": [
                 {
                   "text": "On five o'clock.",
-                  "emoji": "❌"
+                  "emoji": "💬"
                 },
                 {
                   "text": "In the park.",
-                  "emoji": "🌳"
+                  "emoji": "💬"
                 },
                 {
                   "text": "At five o'clock.",
-                  "emoji": "🕔"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Yes, it is good.",
-                  "emoji": "👍"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -2042,7 +2042,7 @@
               "choices": [
                 {
                   "text": "Yes, see you on Monday!",
-                  "emoji": "👋"
+                  "emoji": "📅"
                 },
                 {
                   "text": "Sorry, I'm busy. Tuesday?",
@@ -2050,11 +2050,11 @@
                 },
                 {
                   "text": "In Monday is good.",
-                  "emoji": "❓"
+                  "emoji": "📅"
                 },
                 {
                   "text": "I'm fine, thanks.",
-                  "emoji": "🙂"
+                  "emoji": "📅"
                 }
               ]
             },
@@ -2251,19 +2251,19 @@
               "choices": [
                 {
                   "text": "Yours faithfully,",
-                  "emoji": "✒️"
+                  "emoji": "📱"
                 },
                 {
                   "text": "Dear Sir,",
-                  "emoji": "🎩"
+                  "emoji": "📱"
                 },
                 {
                   "text": "See you soon!",
-                  "emoji": "👋"
+                  "emoji": "📱"
                 },
                 {
                   "text": "To whom it may concern,",
-                  "emoji": "📜"
+                  "emoji": "📱"
                 }
               ]
             },
@@ -2574,15 +2574,15 @@
                 },
                 {
                   "text": "Yes, a two coffees.",
-                  "emoji": "🤔"
+                  "emoji": "☕"
                 },
                 {
                   "text": "Yes, two coffees, please.",
-                  "emoji": "✅"
+                  "emoji": "☕"
                 },
                 {
                   "text": "Yes, I'm two coffees.",
-                  "emoji": "❓"
+                  "emoji": "☕"
                 }
               ]
             }

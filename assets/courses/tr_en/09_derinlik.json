@@ -155,7 +155,7 @@
               "choices": [
                 {
                   "text": "Opened the door, I saw a parcel.",
-                  "emoji": "🚪"
+                  "emoji": "📦"
                 },
                 {
                   "text": "Opening the door, a parcel lay.",
@@ -163,11 +163,11 @@
                 },
                 {
                   "text": "Opening the door, I saw a parcel.",
-                  "emoji": "✅"
+                  "emoji": "📦"
                 },
                 {
                   "text": "Having open the door, I saw it.",
-                  "emoji": "🔑"
+                  "emoji": "📦"
                 }
               ]
             },
@@ -363,7 +363,7 @@
               "choices": [
                 {
                   "text": "Nobody's said anything yet, lol.",
-                  "emoji": "😂"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Officials have yet to comment.",
@@ -371,11 +371,11 @@
                 },
                 {
                   "text": "The bosses kept quiet, obviously.",
-                  "emoji": "🙄"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Officials don't wanna talk.",
-                  "emoji": "🤐"
+                  "emoji": "🎙️"
                 }
               ]
             },
@@ -720,19 +720,19 @@
               "choices": [
                 {
                   "text": "Obviously the driver. Idiot.",
-                  "emoji": "😠"
+                  "emoji": "🚗"
                 },
                 {
                   "text": "Who cares whose fault it is?",
-                  "emoji": "🤷"
+                  "emoji": "🚗"
                 },
                 {
                   "text": "It's too early to say, really.",
-                  "emoji": "🤔"
+                  "emoji": "🚗"
                 },
                 {
                   "text": "I'm not telling you that.",
-                  "emoji": "🙊"
+                  "emoji": "🚗"
                 }
               ]
             },
@@ -743,19 +743,19 @@
               "choices": [
                 {
                   "text": "You're exaggerating, as usual.",
-                  "emoji": "🙄"
+                  "emoji": "👥"
                 },
                 {
                   "text": "That's totally wrong.",
-                  "emoji": "❌"
+                  "emoji": "👥"
                 },
                 {
                   "text": "Calm down, it was nothing.",
-                  "emoji": "😒"
+                  "emoji": "👥"
                 },
                 {
                   "text": "I'm not sure it was quite that bad.",
-                  "emoji": "🤝"
+                  "emoji": "👥"
                 }
               ]
             },
@@ -928,15 +928,15 @@
               "choices": [
                 {
                   "text": "Prices went up really fast.",
-                  "emoji": "🚀"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Prices, like, rose quickly.",
-                  "emoji": "🤷"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Prices was rising quick.",
-                  "emoji": "❌"
+                  "emoji": "📊"
                 },
                 {
                   "text": "There was a rapid rise in prices.",
@@ -991,7 +991,7 @@
               "choices": [
                 {
                   "text": "make a research",
-                  "emoji": "❌"
+                  "emoji": "🔬"
                 },
                 {
                   "text": "carry out research",
@@ -999,11 +999,11 @@
                 },
                 {
                   "text": "do a researches",
-                  "emoji": "📚"
+                  "emoji": "🔬"
                 },
                 {
                   "text": "take research",
-                  "emoji": "🤲"
+                  "emoji": "🔬"
                 }
               ]
             },
@@ -1136,7 +1136,7 @@
               "choices": [
                 {
                   "text": "The data proves it 100%.",
-                  "emoji": "💯"
+                  "emoji": "📈"
                 },
                 {
                   "text": "The data suggest a link.",
@@ -1144,11 +1144,11 @@
                 },
                 {
                   "text": "Science says so, period.",
-                  "emoji": "🔚"
+                  "emoji": "📈"
                 },
                 {
                   "text": "It's obviously true, guys.",
-                  "emoji": "🙌"
+                  "emoji": "📈"
                 }
               ]
             },
@@ -1651,11 +1651,11 @@
               "choices": [
                 {
                   "text": "Response, summary, conclusion",
-                  "emoji": "🔀"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Conclusion, summary, response",
-                  "emoji": "🔁"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Summary, response, conclusion",
@@ -1663,7 +1663,7 @@
                 },
                 {
                   "text": "Summary, conclusion, response",
-                  "emoji": "↩️"
+                  "emoji": "📝"
                 }
               ]
             },
@@ -1867,15 +1867,15 @@
                 },
                 {
                   "text": "Not once did he looked at us.",
-                  "emoji": "❌"
+                  "emoji": "👀"
                 },
                 {
                   "text": "Not once did he look at us.",
-                  "emoji": "✅"
+                  "emoji": "👀"
                 },
                 {
                   "text": "Not once looked he at us.",
-                  "emoji": "🔄"
+                  "emoji": "👀"
                 }
               ]
             },
@@ -1926,11 +1926,11 @@
               "choices": [
                 {
                   "text": "scene fear",
-                  "emoji": "😨"
+                  "emoji": "🎭"
                 },
                 {
                   "text": "stage scare",
-                  "emoji": "👻"
+                  "emoji": "🎭"
                 },
                 {
                   "text": "stage fright",
@@ -1938,7 +1938,7 @@
                 },
                 {
                   "text": "platform panic",
-                  "emoji": "😱"
+                  "emoji": "🎭"
                 }
               ]
             },
@@ -2073,19 +2073,19 @@
               "choices": [
                 {
                   "text": "That was painfully boring.",
-                  "emoji": "😴"
+                  "emoji": "🎭"
                 },
                 {
                   "text": "Why did you even do this?",
-                  "emoji": "🤨"
+                  "emoji": "🎭"
                 },
                 {
                   "text": "I slept through act two.",
-                  "emoji": "💤"
+                  "emoji": "🎭"
                 },
                 {
                   "text": "The set design was stunning!",
-                  "emoji": "✨"
+                  "emoji": "🎭"
                 }
               ]
             },
@@ -2421,19 +2421,19 @@
               "choices": [
                 {
                   "text": "You've got no taste at all.",
-                  "emoji": "😤"
+                  "emoji": "🎭"
                 },
                 {
                   "text": "I saw it a bit differently.",
-                  "emoji": "🙂"
+                  "emoji": "🎭"
                 },
                 {
                   "text": "Whatever, you're wrong.",
-                  "emoji": "🙄"
+                  "emoji": "🎭"
                 },
                 {
                   "text": "Fine, it was awful then.",
-                  "emoji": "😑"
+                  "emoji": "🎭"
                 }
               ]
             },
@@ -2444,19 +2444,19 @@
               "choices": [
                 {
                   "text": "It was OK, I suppose.",
-                  "emoji": "😐"
+                  "emoji": "🎵"
                 },
                 {
                   "text": "Never I have seen like it.",
-                  "emoji": "❌"
+                  "emoji": "🎵"
                 },
                 {
                   "text": "Too loud. Went home early.",
-                  "emoji": "🔊"
+                  "emoji": "🎵"
                 },
                 {
                   "text": "Never have I seen anything like it.",
-                  "emoji": "🤩"
+                  "emoji": "🎵"
                 }
               ]
             },
@@ -2556,19 +2556,19 @@
               "choices": [
                 {
                   "text": "What shocked me was the price.",
-                  "emoji": "✅"
+                  "emoji": "🏷️"
                 },
                 {
                   "text": "What shocked me it was the price.",
-                  "emoji": "❌"
+                  "emoji": "🏷️"
                 },
                 {
                   "text": "It shocked me was the price.",
-                  "emoji": "🤔"
+                  "emoji": "🏷️"
                 },
                 {
                   "text": "Which shocked me was the price.",
-                  "emoji": "💭"
+                  "emoji": "🏷️"
                 }
               ]
             },
@@ -2702,11 +2702,11 @@
                 },
                 {
                   "text": "out of record",
-                  "emoji": "❌"
+                  "emoji": "📤"
                 },
                 {
                   "text": "under the record",
-                  "emoji": "🤔"
+                  "emoji": "👇"
                 }
               ]
             },
@@ -3214,19 +3214,19 @@
               "choices": [
                 {
                   "text": "I see the appeal, but…",
-                  "emoji": "🤝"
+                  "emoji": "📰"
                 },
                 {
                   "text": "This is total nonsense.",
-                  "emoji": "😤"
+                  "emoji": "📰"
                 },
                 {
                   "text": "The writer is clearly naive.",
-                  "emoji": "🙄"
+                  "emoji": "📰"
                 },
                 {
                   "text": "Who even reads transcripts?",
-                  "emoji": "🤷"
+                  "emoji": "📰"
                 }
               ]
             }
@@ -3355,19 +3355,19 @@
               "choices": [
                 {
                   "text": "He has a point about deadlines.",
-                  "emoji": "🤝"
+                  "emoji": "📰"
                 },
                 {
                   "text": "He is simply wrong, as usual.",
-                  "emoji": "👎"
+                  "emoji": "📰"
                 },
                 {
                   "text": "Everyone knows this already.",
-                  "emoji": "🙄"
+                  "emoji": "📰"
                 },
                 {
                   "text": "Recording is a stupid idea.",
-                  "emoji": "😤"
+                  "emoji": "📰"
                 }
               ]
             },
@@ -3487,15 +3487,15 @@
               "choices": [
                 {
                   "text": "You must have misunderstood.",
-                  "emoji": "✅"
+                  "emoji": "💭"
                 },
                 {
                   "text": "You must misunderstood.",
-                  "emoji": "❌"
+                  "emoji": "💭"
                 },
                 {
                   "text": "You had to misunderstand.",
-                  "emoji": "🤔"
+                  "emoji": "💭"
                 },
                 {
                   "text": "You should have misunderstood.",
@@ -4154,19 +4154,19 @@
               "choices": [
                 {
                   "text": "Are we sure it was him?",
-                  "emoji": "🤔"
+                  "emoji": "💬"
                 },
                 {
                   "text": "That's a stupid theory.",
-                  "emoji": "🙄"
+                  "emoji": "💬"
                 },
                 {
                   "text": "You're obviously wrong.",
-                  "emoji": "👎"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Him? Don't be ridiculous.",
-                  "emoji": "😤"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -4181,15 +4181,15 @@
                 },
                 {
                   "text": "Someone must've stolen it.",
-                  "emoji": "🕵️"
+                  "emoji": "🗂️"
                 },
                 {
                   "text": "Who lost it this time?",
-                  "emoji": "😒"
+                  "emoji": "🗂️"
                 },
                 {
                   "text": "Clearly it's your fault.",
-                  "emoji": "👉"
+                  "emoji": "🗂️"
                 }
               ]
             },
@@ -4307,19 +4307,19 @@
               "choices": [
                 {
                   "text": "We propose that he be promoted.",
-                  "emoji": "✅"
+                  "emoji": "📄"
                 },
                 {
                   "text": "We propose him to be promoted.",
-                  "emoji": "❌"
+                  "emoji": "📄"
                 },
                 {
                   "text": "We propose that he is promote.",
-                  "emoji": "🤔"
+                  "emoji": "📄"
                 },
                 {
                   "text": "We propose he gets promoting.",
-                  "emoji": "💭"
+                  "emoji": "📄"
                 }
               ]
             },
@@ -4443,15 +4443,15 @@
                 },
                 {
                   "text": "in immediate effect",
-                  "emoji": "❌"
+                  "emoji": "⚡"
                 },
                 {
                   "text": "at once effect",
-                  "emoji": "🤔"
+                  "emoji": "⚡"
                 },
                 {
                   "text": "with instant affect",
-                  "emoji": "💭"
+                  "emoji": "⚡"
                 }
               ]
             },
@@ -4966,15 +4966,15 @@
                 },
                 {
                   "text": "Like, half the people hated it.",
-                  "emoji": "😬"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Honestly, it was a disaster!",
-                  "emoji": "😱"
+                  "emoji": "📊"
                 },
                 {
                   "text": "Nobody liked anything at all.",
-                  "emoji": "👎"
+                  "emoji": "📊"
                 }
               ]
             }
@@ -5108,15 +5108,15 @@
                 },
                 {
                   "text": "You guys should look at this.",
-                  "emoji": "🙋"
+                  "emoji": "📄"
                 },
                 {
                   "text": "Someone really must fix this!",
-                  "emoji": "😤"
+                  "emoji": "📄"
                 },
                 {
                   "text": "Maybe check this, if you want?",
-                  "emoji": "🤷"
+                  "emoji": "📄"
                 }
               ]
             },
@@ -5346,19 +5346,19 @@
               "choices": [
                 {
                   "text": "I hope so.",
-                  "emoji": "🤞"
+                  "emoji": "☀️"
                 },
                 {
                   "text": "I hope it.",
-                  "emoji": "🙃"
+                  "emoji": "☀️"
                 },
                 {
                   "text": "I hope yes.",
-                  "emoji": "😶"
+                  "emoji": "☀️"
                 },
                 {
                   "text": "I hope that.",
-                  "emoji": "🤔"
+                  "emoji": "☀️"
                 }
               ]
             },
@@ -5409,19 +5409,19 @@
               "choices": [
                 {
                   "text": "Tell me about it!",
-                  "emoji": "😩"
+                  "emoji": "🚗"
                 },
                 {
                   "text": "Tell it to me!",
-                  "emoji": "🗣️"
+                  "emoji": "🚗"
                 },
                 {
                   "text": "Say me about it!",
-                  "emoji": "💬"
+                  "emoji": "🚗"
                 },
                 {
                   "text": "I tell you it.",
-                  "emoji": "🙄"
+                  "emoji": "🚗"
                 }
               ]
             },
@@ -5436,15 +5436,15 @@
                 },
                 {
                   "text": "Me too not.",
-                  "emoji": "🚫"
+                  "emoji": "☕"
                 },
                 {
                   "text": "Neither me can.",
-                  "emoji": "🤷"
+                  "emoji": "☕"
                 },
                 {
                   "text": "I neither.",
-                  "emoji": "😐"
+                  "emoji": "☕"
                 }
               ]
             },
@@ -6041,19 +6041,19 @@
               "choices": [
                 {
                   "text": "I'd love to, but I can't tonight.",
-                  "emoji": "🙏"
+                  "emoji": "🏠"
                 },
                 {
                   "text": "No, I won't come.",
-                  "emoji": "🙅"
+                  "emoji": "🏠"
                 },
                 {
                   "text": "I don't want it.",
-                  "emoji": "😒"
+                  "emoji": "🏠"
                 },
                 {
                   "text": "Maybe. Who knows?",
-                  "emoji": "🤷"
+                  "emoji": "🏠"
                 }
               ]
             },
@@ -6068,15 +6068,15 @@
                 },
                 {
                   "text": "Yes, sure, whatever.",
-                  "emoji": "🙄"
+                  "emoji": "📅"
                 },
                 {
                   "text": "I hope it.",
-                  "emoji": "😶"
+                  "emoji": "📅"
                 },
                 {
                   "text": "Don't ask me that.",
-                  "emoji": "😠"
+                  "emoji": "📅"
                 }
               ]
             },
@@ -6356,15 +6356,15 @@
                 },
                 {
                   "text": "On contrary,",
-                  "emoji": "🔄"
+                  "emoji": "⚖️"
                 },
                 {
                   "text": "At contrast,",
-                  "emoji": "📍"
+                  "emoji": "⚖️"
                 },
                 {
                   "text": "For contrast,",
-                  "emoji": "🎯"
+                  "emoji": "⚖️"
                 }
               ]
             },
@@ -6870,7 +6870,7 @@
               "choices": [
                 {
                   "text": "It gives a practical conclusion.",
-                  "emoji": "✅"
+                  "emoji": "💡"
                 },
                 {
                   "text": "It introduces a new study.",
@@ -7016,15 +7016,15 @@
                 },
                 {
                   "text": "View, intro, B, A, common ground",
-                  "emoji": "🔀"
+                  "emoji": "📋"
                 },
                 {
                   "text": "A, view, intro, B, common ground",
-                  "emoji": "🔁"
+                  "emoji": "📋"
                 },
                 {
                   "text": "Common ground, A, view, B, intro",
-                  "emoji": "↩️"
+                  "emoji": "📋"
                 }
               ]
             },
@@ -7260,15 +7260,15 @@
                 },
                 {
                   "text": "She played down it.",
-                  "emoji": "🔀"
+                  "emoji": "🤏"
                 },
                 {
                   "text": "She down played it.",
-                  "emoji": "↕️"
+                  "emoji": "🤏"
                 },
                 {
                   "text": "She played it under.",
-                  "emoji": "⬇️"
+                  "emoji": "🤏"
                 }
               ]
             },
@@ -7325,15 +7325,15 @@
                 },
                 {
                   "text": "In backsight,",
-                  "emoji": "👀"
+                  "emoji": "🔙"
                 },
                 {
                   "text": "On hindsight,",
-                  "emoji": "📍"
+                  "emoji": "🔙"
                 },
                 {
                   "text": "By hindsight,",
-                  "emoji": "🧭"
+                  "emoji": "🔙"
                 }
               ]
             },
@@ -7854,19 +7854,19 @@
               "choices": [
                 {
                   "text": "Good question. Let me think.",
-                  "emoji": "🤔"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Next question, please.",
-                  "emoji": "⏭️"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Why are you asking that?",
-                  "emoji": "😠"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "No idea, sorry.",
-                  "emoji": "🤷"
+                  "emoji": "🎙️"
                 }
               ]
             },
@@ -7877,19 +7877,19 @@
               "choices": [
                 {
                   "text": "Thanks, but it was a team effort.",
-                  "emoji": "🤝"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Yes, I was brilliant.",
-                  "emoji": "😎"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Don't exaggerate.",
-                  "emoji": "🙄"
+                  "emoji": "🎙️"
                 },
                 {
                   "text": "Whatever you say.",
-                  "emoji": "😒"
+                  "emoji": "🎙️"
                 }
               ]
             },
@@ -7963,15 +7963,15 @@
                 },
                 {
                   "text": "heavily disappointed",
-                  "emoji": "🏋️"
+                  "emoji": "😞"
                 },
                 {
                   "text": "hardly disappointed",
-                  "emoji": "🤏"
+                  "emoji": "😞"
                 },
                 {
                   "text": "strongly disappointed",
-                  "emoji": "💪"
+                  "emoji": "😞"
                 }
               ]
             },
@@ -8138,15 +8138,15 @@
                 },
                 {
                   "text": "a standing applause",
-                  "emoji": "🧍"
+                  "emoji": "👏"
                 },
                 {
                   "text": "a stand-up clapping",
-                  "emoji": "🙌"
+                  "emoji": "👏"
                 },
                 {
                   "text": "an upright cheer",
-                  "emoji": "📣"
+                  "emoji": "👏"
                 }
               ]
             },
@@ -8671,19 +8671,19 @@
               "choices": [
                 {
                   "text": "I was deeply moved.",
-                  "emoji": "🥹"
+                  "emoji": "📰"
                 },
                 {
                   "text": "I was very much touched up.",
-                  "emoji": "✋"
+                  "emoji": "📰"
                 },
                 {
                   "text": "It moved me heavy.",
-                  "emoji": "🏋️"
+                  "emoji": "📰"
                 },
                 {
                   "text": "I got deeply moving.",
-                  "emoji": "🚚"
+                  "emoji": "📰"
                 }
               ]
             }
@@ -8830,19 +8830,19 @@
               "choices": [
                 {
                   "text": "Book early and take an umbrella.",
-                  "emoji": "☂️"
+                  "emoji": "✍️"
                 },
                 {
                   "text": "In conclusion, the end.",
-                  "emoji": "🔚"
+                  "emoji": "✍️"
                 },
                 {
                   "text": "Thus the concert is concluded.",
-                  "emoji": "📜"
+                  "emoji": "✍️"
                 },
                 {
                   "text": "Finally, I am finish.",
-                  "emoji": "🏁"
+                  "emoji": "✍️"
                 }
               ]
             },
@@ -8914,15 +8914,15 @@
                 },
                 {
                   "text": "to say it other way",
-                  "emoji": "🌀"
+                  "emoji": "🔁"
                 },
                 {
                   "text": "by another words",
-                  "emoji": "🔤"
+                  "emoji": "🔁"
                 },
                 {
                   "text": "to put it other words",
-                  "emoji": "❓"
+                  "emoji": "🔁"
                 }
               ]
             },
@@ -9080,19 +9080,19 @@
               "choices": [
                 {
                   "text": "give a lecture",
-                  "emoji": "🎤"
+                  "emoji": "🎓"
                 },
                 {
                   "text": "make a lecture",
-                  "emoji": "🛠️"
+                  "emoji": "🎓"
                 },
                 {
                   "text": "take a lecture",
-                  "emoji": "🤲"
+                  "emoji": "🎓"
                 },
                 {
                   "text": "do a lecture talk",
-                  "emoji": "🗣️"
+                  "emoji": "🎓"
                 }
               ]
             },
@@ -9565,19 +9565,19 @@
               "choices": [
                 {
                   "text": "Could you go over that again?",
-                  "emoji": "🙋"
+                  "emoji": "🎓"
                 },
                 {
                   "text": "What? Again, please.",
-                  "emoji": "😐"
+                  "emoji": "🎓"
                 },
                 {
                   "text": "You were unclear. Again.",
-                  "emoji": "😤"
+                  "emoji": "🎓"
                 },
                 {
                   "text": "Repeat it. I missed it.",
-                  "emoji": "📢"
+                  "emoji": "🎓"
                 }
               ]
             },
@@ -9592,15 +9592,15 @@
                 },
                 {
                   "text": "No. Make your own notes.",
-                  "emoji": "🙅"
+                  "emoji": "📒"
                 },
                 {
                   "text": "Here. Good luck reading it.",
-                  "emoji": "😏"
+                  "emoji": "📒"
                 },
                 {
                   "text": "Sure, they're perfect as always.",
-                  "emoji": "😎"
+                  "emoji": "📒"
                 }
               ]
             },
@@ -9673,15 +9673,15 @@
                 },
                 {
                   "text": "arguingly",
-                  "emoji": "🗯️"
+                  "emoji": "⚖️"
                 },
                 {
                   "text": "argumentally",
-                  "emoji": "📢"
+                  "emoji": "⚖️"
                 },
                 {
                   "text": "argued",
-                  "emoji": "📝"
+                  "emoji": "⚖️"
                 }
               ]
             },

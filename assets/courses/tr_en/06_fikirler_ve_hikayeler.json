@@ -38,7 +38,7 @@
               "choices": [
                 {
                   "text": "already",
-                  "emoji": "✅"
+                  "emoji": "🏁"
                 },
                 {
                   "text": "yet",
@@ -2796,11 +2796,11 @@
                 },
                 {
                   "text": "My mum who is 60 …",
-                  "emoji": "👵"
+                  "emoji": "👩"
                 },
                 {
                   "text": "My mum, that is 60, …",
-                  "emoji": "👪"
+                  "emoji": "👩"
                 }
               ]
             },
@@ -3553,15 +3553,15 @@
                 },
                 {
                   "text": "so long day",
-                  "emoji": "⏳"
+                  "emoji": "📅"
                 },
                 {
                   "text": "such long day",
-                  "emoji": "🌙"
+                  "emoji": "📅"
                 },
                 {
                   "text": "a so long day",
-                  "emoji": "🕰️"
+                  "emoji": "📅"
                 }
               ]
             },
@@ -4138,11 +4138,11 @@
                 },
                 {
                   "text": "I wish I am there.",
-                  "emoji": "🌍"
+                  "emoji": "🏖️"
                 },
                 {
                   "text": "I wish I will be there.",
-                  "emoji": "🗺️"
+                  "emoji": "🏖️"
                 }
               ]
             },
@@ -4598,11 +4598,11 @@
                 },
                 {
                   "text": "I wish I would have gone",
-                  "emoji": "🌀"
+                  "emoji": "💭"
                 },
                 {
                   "text": "I wish I have gone",
-                  "emoji": "🔸"
+                  "emoji": "💭"
                 }
               ]
             },
@@ -4991,15 +4991,15 @@
               "choices": [
                 {
                   "text": "I'm so sorry about the mess",
-                  "emoji": "🙏"
+                  "emoji": "🧹"
                 },
                 {
                   "text": "The mess isn't my problem",
-                  "emoji": "🤷"
+                  "emoji": "🧹"
                 },
                 {
                   "text": "Whatever, just clean it",
-                  "emoji": "🙄"
+                  "emoji": "🧹"
                 }
               ]
             },
@@ -5551,11 +5551,11 @@
                 },
                 {
                   "text": "Let's go, don't we?",
-                  "emoji": "🏃"
+                  "emoji": "🚶"
                 },
                 {
                   "text": "Let's go, isn't it?",
-                  "emoji": "🚲"
+                  "emoji": "🚶"
                 }
               ]
             },
@@ -5696,11 +5696,11 @@
                 },
                 {
                   "text": "Do you fantasy a coffee?",
-                  "emoji": "🌀"
+                  "emoji": "☕"
                 },
                 {
                   "text": "Are you fancy coffee?",
-                  "emoji": "🎩"
+                  "emoji": "☕"
                 }
               ]
             },
@@ -6403,11 +6403,11 @@
                 },
                 {
                   "text": "I fell out him",
-                  "emoji": "🌀"
+                  "emoji": "💔"
                 },
                 {
                   "text": "I fell with him out",
-                  "emoji": "🔸"
+                  "emoji": "💔"
                 }
               ]
             },
@@ -7274,7 +7274,7 @@
                 },
                 {
                   "text": "unless",
-                  "emoji": "❓"
+                  "emoji": "🚧"
                 },
                 {
                   "text": "so that",
@@ -7806,7 +7806,7 @@
               "choices": [
                 {
                   "text": "However",
-                  "emoji": "📄"
+                  "emoji": "🔄"
                 },
                 {
                   "text": "But",
@@ -7979,15 +7979,15 @@
                 },
                 {
                   "text": "According to me",
-                  "emoji": "🙊"
+                  "emoji": "💭"
                 },
                 {
                   "text": "To my opinion",
-                  "emoji": "🌀"
+                  "emoji": "💭"
                 },
                 {
                   "text": "For my opinion",
-                  "emoji": "🔸"
+                  "emoji": "💭"
                 }
               ]
             },
@@ -8122,19 +8122,19 @@
               "choices": [
                 {
                   "text": "I see your point, but…",
-                  "emoji": "🤝"
+                  "emoji": "💬"
                 },
                 {
                   "text": "You're totally wrong.",
-                  "emoji": "😠"
+                  "emoji": "💬"
                 },
                 {
                   "text": "That's stupid.",
-                  "emoji": "🙄"
+                  "emoji": "💬"
                 },
                 {
                   "text": "I am not agree.",
-                  "emoji": "🌀"
+                  "emoji": "💬"
                 }
               ]
             },
@@ -8525,11 +8525,11 @@
                 },
                 {
                   "text": "Maybe, I don't know…",
-                  "emoji": "🤷"
+                  "emoji": "✍️"
                 },
                 {
                   "text": "Whatever.",
-                  "emoji": "🙄"
+                  "emoji": "✍️"
                 }
               ]
             },

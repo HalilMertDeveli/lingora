@@ -230,19 +230,19 @@
               "choices": [
                 {
                   "text": "You should see a doctor.",
-                  "emoji": "✅"
+                  "emoji": "🩺"
                 },
                 {
                   "text": "You should to see a doctor.",
-                  "emoji": "❌"
+                  "emoji": "🩺"
                 },
                 {
                   "text": "You should seeing a doctor.",
-                  "emoji": "🚫"
+                  "emoji": "🩺"
                 },
                 {
                   "text": "You should saw a doctor.",
-                  "emoji": "⛔"
+                  "emoji": "🩺"
                 }
               ]
             },
@@ -503,15 +503,15 @@
               "choices": [
                 {
                   "text": "For two days.",
-                  "emoji": "✅"
+                  "emoji": "📅"
                 },
                 {
                   "text": "Since two days.",
-                  "emoji": "❌"
+                  "emoji": "📅"
                 },
                 {
                   "text": "Two days ago I have.",
-                  "emoji": "🚫"
+                  "emoji": "📅"
                 },
                 {
                   "text": "In two days.",
@@ -526,15 +526,15 @@
               "choices": [
                 {
                   "text": "Yes, that's fine. Thank you.",
-                  "emoji": "👍"
+                  "emoji": "🕙"
                 },
                 {
                   "text": "Yes, I'm agree.",
-                  "emoji": "❌"
+                  "emoji": "🕙"
                 },
                 {
                   "text": "No, I'm fine, thanks.",
-                  "emoji": "🙂"
+                  "emoji": "🕙"
                 },
                 {
                   "text": "It's ten o'clock.",
@@ -750,19 +750,19 @@
               "choices": [
                 {
                   "text": "Thanks, Elif",
-                  "emoji": "✅"
+                  "emoji": "📩"
                 },
                 {
                   "text": "Respects, Elif",
-                  "emoji": "🙇"
+                  "emoji": "📩"
                 },
                 {
                   "text": "Kisses, Elif xx",
-                  "emoji": "💋"
+                  "emoji": "📩"
                 },
                 {
                   "text": "Love you, Elif",
-                  "emoji": "❤️"
+                  "emoji": "📩"
                 }
               ]
             },
@@ -1056,19 +1056,19 @@
               "choices": [
                 {
                   "text": "My headphones don't work.",
-                  "emoji": "✅"
+                  "emoji": "🎧"
                 },
                 {
                   "text": "My headphones doesn't work.",
-                  "emoji": "❌"
+                  "emoji": "🎧"
                 },
                 {
                   "text": "My headphones not working.",
-                  "emoji": "🚫"
+                  "emoji": "🎧"
                 },
                 {
                   "text": "My headphones isn't work.",
-                  "emoji": "⛔"
+                  "emoji": "🎧"
                 }
               ]
             }
@@ -1299,19 +1299,19 @@
               "choices": [
                 {
                   "text": "Yes, I've already tried that.",
-                  "emoji": "✅"
+                  "emoji": "🔄"
                 },
                 {
                   "text": "Yes, I already try it.",
-                  "emoji": "❌"
+                  "emoji": "🔄"
                 },
                 {
                   "text": "Yes, I've already try.",
-                  "emoji": "🚫"
+                  "emoji": "🔄"
                 },
                 {
                   "text": "Yes, I'm trying yesterday.",
-                  "emoji": "⛔"
+                  "emoji": "🔄"
                 }
               ]
             },
@@ -1322,19 +1322,19 @@
               "choices": [
                 {
                   "text": "Could you send someone, please?",
-                  "emoji": "🙏"
+                  "emoji": "🛠️"
                 },
                 {
                   "text": "Send someone now!",
-                  "emoji": "😠"
+                  "emoji": "🛠️"
                 },
                 {
                   "text": "You must send someone.",
-                  "emoji": "☝️"
+                  "emoji": "🛠️"
                 },
                 {
                   "text": "I want someone. Now.",
-                  "emoji": "😤"
+                  "emoji": "🛠️"
                 }
               ]
             },
@@ -1552,19 +1552,19 @@
               "choices": [
                 {
                   "text": "Dear Sir or Madam,",
-                  "emoji": "✉️"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Hey guys!",
-                  "emoji": "👋"
+                  "emoji": "📧"
                 },
                 {
                   "text": "Hi darling,",
-                  "emoji": "💕"
+                  "emoji": "📧"
                 },
                 {
                   "text": "To the company:",
-                  "emoji": "🏢"
+                  "emoji": "📧"
                 }
               ]
             },
@@ -1857,19 +1857,19 @@
               "choices": [
                 {
                   "text": "I work as a designer.",
-                  "emoji": "✅"
+                  "emoji": "🎨"
                 },
                 {
                   "text": "I work as designer.",
-                  "emoji": "❌"
+                  "emoji": "🎨"
                 },
                 {
                   "text": "I work like a designer.",
-                  "emoji": "🚫"
+                  "emoji": "🎨"
                 },
                 {
                   "text": "I'm work as a designer.",
-                  "emoji": "⛔"
+                  "emoji": "🎨"
                 }
               ]
             }
@@ -2100,19 +2100,19 @@
               "choices": [
                 {
                   "text": "I'm a sales assistant.",
-                  "emoji": "✅"
+                  "emoji": "💼"
                 },
                 {
                   "text": "I'm doing my homework.",
-                  "emoji": "📚"
+                  "emoji": "💼"
                 },
                 {
                   "text": "I do fine, thanks.",
-                  "emoji": "🙂"
+                  "emoji": "💼"
                 },
                 {
                   "text": "I work as sales assistant.",
-                  "emoji": "❌"
+                  "emoji": "💼"
                 }
               ]
             },
@@ -2123,19 +2123,19 @@
               "choices": [
                 {
                   "text": "I enjoy helping people.",
-                  "emoji": "✅"
+                  "emoji": "💼"
                 },
                 {
                   "text": "I enjoy to help people.",
-                  "emoji": "❌"
+                  "emoji": "💼"
                 },
                 {
                   "text": "Yes, I enjoy it.",
-                  "emoji": "🤷"
+                  "emoji": "💼"
                 },
                 {
                   "text": "I enjoy help people.",
-                  "emoji": "🚫"
+                  "emoji": "💼"
                 }
               ]
             },
@@ -2367,19 +2367,19 @@
               "choices": [
                 {
                   "text": "Hi! I'm Elif, a designer.",
-                  "emoji": "✅"
+                  "emoji": "👤"
                 },
                 {
                   "text": "Dear Sir or Madam, I'm Elif.",
-                  "emoji": "✉️"
+                  "emoji": "👤"
                 },
                 {
                   "text": "Yo! Elif here, lol.",
-                  "emoji": "😜"
+                  "emoji": "👤"
                 },
                 {
                   "text": "Respects, Elif.",
-                  "emoji": "🙇"
+                  "emoji": "👤"
                 }
               ]
             },
@@ -2690,19 +2690,19 @@
               "choices": [
                 {
                   "text": "My laptop doesn't work.",
-                  "emoji": "✅"
+                  "emoji": "💻"
                 },
                 {
                   "text": "My laptop isn't work.",
-                  "emoji": "❌"
+                  "emoji": "💻"
                 },
                 {
                   "text": "My laptop doesn't works.",
-                  "emoji": "🚫"
+                  "emoji": "💻"
                 },
                 {
                   "text": "My laptop not working.",
-                  "emoji": "⛔"
+                  "emoji": "💻"
                 }
               ]
             },
