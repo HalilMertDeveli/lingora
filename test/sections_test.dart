@@ -68,9 +68,13 @@ Future<Course> _courseWithExtensions() {
   return loadCourse(
     FakeBundle({
       'assets/courses/tr_en.json': _read('assets/courses/tr_en.json'),
-      'assets/courses/tr_en/01x_beceri.json': _extension(fixture, 's1', 'u13'),
+      'assets/courses/tr_en/01x_beceri.json': _extension(fixture, 's1', 's1u13'),
       'assets/courses/tr_en/02_gunluk_hayat.json': fixture,
       'assets/courses/tr_en/02x_beceri.json': _extension(fixture, 's2', 's2u2'),
+      'assets/courses/tr_en/03_kendini_anlatmak.json': jsonEncode(
+        (jsonDecode(fixture.replaceAll('"s2u1', '"s3u1')) as Map<String, dynamic>)
+          ..['section'] = {...(jsonDecode(fixture)['section'] as Map), 'id': 's3', 'index': 3},
+      ),
     }),
     'tr_en',
   );
@@ -131,11 +135,11 @@ void main() {
 
     test('an extension file appends units to its section; the section exam stays put', () async {
       final course = await _courseWithExtensions();
-      expect(course.sections.map((s) => s.id), ['s1', 's2']);
+      expect(course.sections.map((s) => s.id), ['s1', 's2', 's3']);
       final (s1, s2) = (course.sections[0], course.sections[1]);
-      expect(s1.units.map((u) => u.id).skip(11), ['u12', 'u13']);
+      expect(s1.units.map((u) => u.id).skip(11), ['u12', 's1u13']);
       expect(s2.units.map((u) => u.id), ['s2u1', 's2u2']);
-      expect(course.units.map((u) => u.id).skip(11), ['u12', 'u13', 's2u1', 's2u2']);
+      expect(course.units.map((u) => u.id).skip(11), ['u12', 's1u13', 's2u1', 's2u2', 's3u1']);
       // Passing the old exam keeps opening the next section.
       expect((s1.exam?.id, s2.exam?.id), ('u12t', 's2u1t'));
       expect((s1.title, s1.cefr, s2.index), ('Temeller', 'A1', 2));
@@ -192,10 +196,30 @@ void main() {
       final before = _done([for (final n in s1.nodes) n.id]);
       expect(sectionOpen(extended, e2, before), isTrue);
       // The new units wait in section 1, the path still focuses section 2.
-      expect(activeNodes(extended, before)['s1']?.id, 'u13l1');
+      expect(activeNodes(extended, before)['s1']?.id, 's1u13l1');
       expect(currentNode(extended, before)?.id, 's2u1l1');
       // Not passed yet: still locked.
       expect(sectionOpen(extended, e2, _done([for (final n in e1.nodes.take(70)) n.id])), isFalse);
+    });
+
+    test('passing S2\'s own exam opens S3 although S2 got skill units after it', () async {
+      final extended = await _courseWithExtensions();
+      final (s2, s3) = (extended.sections[1], extended.sections[2]);
+      expect(s2.exam?.id, 's2u1t', reason: 'the lock stays on the base file');
+      final passed = _done([
+        ...s1.nodes.map((n) => n.id),
+        's2u1l1',
+        's2u1l2',
+        's2u1s',
+        's2u1l3',
+        's2u1l4',
+        's2u1t',
+      ]);
+      expect(passed.isDone('s2u2t'), isFalse);
+      expect(sectionOpen(extended, s3, passed), isTrue);
+      expect(currentNode(extended, passed)?.id, 's3u1l1');
+      expect(activeNodes(extended, passed)['s2']?.id, 's2u1c');
+      expect(sectionOpen(extended, s3, _done(s1.nodes.map((n) => n.id))), isFalse);
     });
 
     test('"Bölüme atla" or the placement test open a section and those before it', () {

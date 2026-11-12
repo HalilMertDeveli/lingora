@@ -16,6 +16,9 @@ const fixtureDir = 'test/fixtures/tr_en';
 /// Node types of every unit, in order.
 const unitPattern = ['lesson', 'lesson', 'story', 'lesson', 'lesson', 'test', 'chest'];
 const cefrLevels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'};
+
+/// Question types a unit test may carry as its own questions.
+const testTypes = {'listen', 'choice', 'translate', 'fillBlank', 'select'};
 const exerciseTypes = {'select', 'translate', 'fillBlank', 'listen', 'match', 'speak', 'choice'};
 
 List<File> sectionFiles(String dir) {
@@ -96,8 +99,7 @@ List<String> validateSection(String fileName, Object? json, Set<String> seen) {
     check(strList(section['grammar']) != null, 'section.grammar boş olmayan bir metin listesi olmalı');
     if (section['id'] is String) unique(section['id'] as String);
   }
-  // Section 1 (tr_en.json) numbers its units u1, u2, …
-  final unitPrefix = index == 1 ? 'u' : 's${index}u';
+  final unitPrefix = 's${index}u';
 
   final units = json['units'];
   if (units is! List || units.isEmpty) return [...problems, '$fileName: "units" boş'];
@@ -160,7 +162,25 @@ List<String> validateSection(String fileName, Object? json, Set<String> seen) {
             }
           }
           check(n['rewardXp'] is int, '$at: rewardXp yok');
-        case 'test' || 'chest':
+        case 'test':
+          check(n['rewardXp'] is int && (n['rewardXp'] as int) > 0, '$at: rewardXp yok');
+          // A test with its own questions (a section skills test): 15–20 of
+          // them, no speaking or matching. Empty: sampled from the lessons.
+          final exercises = (n['exercises'] as List?) ?? const [];
+          if (exercises.isNotEmpty) {
+            check(
+              exercises.length >= 15 && exercises.length <= 20,
+              '$at: ${exercises.length} test sorusu (15–20)',
+            );
+            for (final (i, e) in exercises.indexed) {
+              check(
+                e is Map && testTypes.contains(e['type']),
+                '$at#$i: test sorusu ${testTypes.join('/')} olmalı',
+              );
+              problems.addAll(validateExercise(e, '$fileName: $at#$i'));
+            }
+          }
+        case 'chest':
           check(n['rewardXp'] is int && (n['rewardXp'] as int) > 0, '$at: rewardXp yok');
       }
     }
@@ -604,7 +624,7 @@ void main() {
 
     test('an extension file passes after its section, also for section 1', () {
       final seen = baseIds();
-      expect(validateSection('01x_beceri.json', extension('s1', 'u13'), seen), isEmpty);
+      expect(validateSection('01x_beceri.json', extension('s1', 's1u13'), seen), isEmpty);
       expect(validateSection('02_ornek.json', fixture(), seen), isEmpty);
       expect(validateSection('02x_beceri.json', extension('s2', 's2u13'), seen), isEmpty);
     });
