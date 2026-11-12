@@ -19,7 +19,7 @@
 
 | Hedef | Değer | Gerekçe |
 |---|---|---|
-| Tanıma sözlüğü | **~6.600 kelime ailesi** | YDS metinlerinde ~%96–97 kapsam. %95 asgari, %98 rahat anlama eşiğidir (araştırma §1.5). |
+| Tanıma sözlüğü | **~6.600 kelime ailesi** (planda 6.590) | YDS metinlerinde ~%96–97 kapsam. %95 asgari, %98 rahat anlama eşiğidir (araştırma §1.5). |
 | Okuma | **~420.000 kelime** | Bol okuma + yoğun okuma + hızlı yeniden okuma (§2.5) |
 | Soru | **~9.500 soru çözümü**, ~6.000+ benzersiz soru | Günlük 25–40 soru × ~250 gün. Hata defteri yanlışları tekrar sorar. |
 | Tam deneme | **20** (80 soru / 180 dk) | Son 23 haftaya yayılır. Son 4 haftada haftada 2 deneme. |
@@ -62,10 +62,10 @@ Konuşma ve yazma YDS'de ölçülmez. Yine de Evre 1–2'de genel kursun dinleme
 | Evre | Hafta | Seviye | Ana içerik | Günlük süre | Kelime (toplam) |
 |---|---|---|---|---|---|
 | 1. Sıfır → A2 temel | 1–10 | A0 → A2 | Genel kurs s1–s4 (48 ünite) | H1–4: 2–2,5 sa; H5–10: 3 sa | 1.480 |
-| 2. A2 → B1 ve YDS temeli | 11–20 | A2 → B1 | Genel s5–s6, YDS Temel köprü (ys1u11–16), ys1u1–u4, **Kelime bankası 1**, **Okuma evi 1** | 3,5 sa | 2.980 |
-| 3. B1 → B2 akademik | 21–34 | B1 → B2 | YDS ys1u5–u10, ys2 (15 ünite), genel s7–s8'den seçme üniteler, Kelime bankası 2, Okuma evi 2 | 3,5–4 sa | 5.010 |
-| 4. Sınav stratejisi | 35–42 | B2 | YDS ys3 (14 ünite), Kelime bankası 3, Okuma evi 3 (alan metinleri) | 3,5–4 sa | 6.010 |
-| 5. Deneme kampı | 43–52 | B2+ | YDS ys4 (9 ünite), 14 tam deneme, hata defteri | 4 sa | 6.610 |
+| 2. A2 → B1 ve YDS temeli | 11–20 | A2 → B1 | Genel s5–s6, YDS Temel köprü (ys1u11–16), ys1u1–u4, **Kelime bankası 1**, **Okuma evi 1** | 3,5 sa | 2.680 |
+| 3. B1 → B2 akademik | 21–34 | B1 → B2 | YDS ys1u5–u10, ys2 (15 ünite), genel s7–s8'den seçme üniteler, Kelime bankası 2, Okuma evi 2 | 3,5–4 sa | 4.430 |
+| 4. Sınav stratejisi | 35–42 | B2 | YDS ys3 (14 ünite), Kelime bankası 3, Okuma evi 3 (alan metinleri) | 3,5–4 sa | 5.710 |
+| 5. Deneme kampı | 43–52 | B2+ | YDS ys4 (9 ünite), 14 tam deneme, hata defteri | 4 sa | 6.590 |
 
 **Evre geçiş ölçütleri.** Ölçütü tutmayan aday bir sonraki evreye geçebilir, ama uygulama tekrar haftası önerir ve sınav tarihini kaydırmayı teklif eder.
 
@@ -154,50 +154,50 @@ Sütunlar:
 | 8 | 1 | Genel s4 u5–u8 | should/must/have to, too/enough, first conditional, -ing/to | 160 / 1.160 | 600; 0 | Tadım: 5 şıklı dilbilgisi (A2) (10) |  |
 | 9 | 1 | Genel s4 u9–u12 | who/which/that (giriş), resmî e-posta dili | 160 / 1.320 | 600; 0 | Tadım: kelime ve dilbilgisi (A2) (10) |  |
 | 10 | 1 | Tekrar haftası: s1–s4 ünite testleri | A1–A2 karışık | 160 / 1.480 | 600; 0 | Tadım: kısa paragraf (A2) (10) | Seviye kontrolü (genel kurs s4 sonu) |
-| 11 | 2 | Genel s5 u1–u4 | present perfect continuous, used to, edilgen (giriş) | 150 / 1.630 | 1.000; 0 | Dilbilgisi (B1) (25) |  |
-| 12 | 2 | Genel s5 u5–u8 | edilgen, second conditional, reported speech, phrasal verbs | 150 / 1.780 | 1.000; 0 | Dilbilgisi, kelime (25) |  |
-| 13 | 2 | YDS ys1u11 Cümlenin iskeleti, ys1u12 İsim öbeği ve gönderim | özne–yüklem, isim öbeği, gönderim | 150 / 1.930 | 1.000; 0 | Dilbilgisi, kelime (25) |  |
-| 14 | 2 | YDS ys1u13 Temel zamanlar, Genel s5 u9–u12 | zaman çekirdeği, modal of deduction | 150 / 2.080 | 1.000; 0 | Dilbilgisi, cümle tamamlama (giriş) (25) |  |
-| 15 | 2 | YDS ys1u14 Sözcük türetme, Genel s6 u1–u3 | ek ile türetme, past perfect | 150 / 2.230 | 1.000; 1 | Kelime, cloze (giriş) (25) |  |
-| 16 | 2 | YDS ys1u15 Temel bağlaçlar, ys1u16 Uzun cümle | bağlaç ve edat çekirdeği, sıfat cümleciği | 150 / 2.380 | 1.000; 1 | Cümle tamamlama, çeviri (giriş) (25) |  |
-| 17 | 2 | YDS ys1u1 Zamanlar, Genel s6 u4–u6 | zaman uyumu, so/such…that, wish | 150 / 2.530 | 1.000; 1 | Dilbilgisi, cloze (25) |  |
-| 18 | 2 | YDS ys1u2 Kipler, Genel s6 u7–u9 | kipler, question tags | 150 / 2.680 | 1.000; 1 | Dilbilgisi, cümle tamamlama (25) |  |
-| 19 | 2 | YDS ys1u3 Edilgen ve ettirgen, Genel s6 u10–u12 | edilgen, ettirgen, karşıtlık (yine de) | 150 / 2.830 | 1.000; 1 | Dilbilgisi, çeviri (25) |  |
-| 20 | 2 | YDS ys1u4 Koşul ve wish | koşul türleri, wish/if only | 150 / 2.980 | 1.000; 1 | Karışık set (H11–20) (25) | Yarım deneme 1 (tanı, 40 soru / 90 dk) |
-| 21 | 3 | YDS ys1u5 Sıfat cümlecikleri | relative clause, kısaltma | 145 / 3.125 | 1.500; 1 | Dilbilgisi, çeviri (35) |  |
-| 22 | 3 | YDS ys1u6 İsim cümlecikleri, Genel s7 u1–u2 | noun clause, mixed conditionals | 145 / 3.270 | 1.500; 1 | Dilbilgisi, cümle tamamlama (35) | Yarım deneme 2 |
-| 23 | 3 | YDS ys1u7 Gerund ve infinitive, Genel s7 u3 | gerund/infinitive, should have | 145 / 3.415 | 1.500; 1 | Dilbilgisi, cloze (35) |  |
-| 24 | 3 | YDS ys1u8 Bağlaçlar ve geçişler, Genel s7 u4 | bağlaç ve geçiş ifadeleri, haber dili | 145 / 3.560 | 1.500; 1 | Cümle tamamlama, paragraf tamamlama (giriş) (35) | Yarım deneme 3 |
-| 25 | 3 | YDS ys1u9 Edatlar, Genel s7 u7 | edat + eşdizim, causative | 145 / 3.705 | 1.500; 1 | Kelime, cloze (35) |  |
-| 26 | 3 | YDS ys1u10 Miktar ve karşılaştırma, Genel s7 u8 | quantifier, karşılaştırma, inversion | 145 / 3.850 | 1.500; 1 | Karışık set (ys1) (35) | Bölüm 1 denemesi (ys1 sonu) |
-| 27 | 3 | YDS ys2u1 Akademik fiiller, ys2u2 Sıfatlar ve zarflar | akademik fiil kalıpları | 145 / 3.995 | 1.500; 1 | Kelime, cümle tamamlama (35) | Yarım deneme 4 |
-| 28 | 3 | YDS ys2u3 Phrasal verbs, ys2u4 İsim kalıpları | phrasal verb, eşdizim | 145 / 4.140 | 1.500; 1 | Kelime, cloze (35) |  |
-| 29 | 3 | YDS ys2u5 Eş anlamlılar, ys2u6 Karıştırılanlar, Genel s8 u2 | eş anlam, bağlamdan anlam, yazıda bağlantı | 145 / 4.285 | 1.500; 1 | Kelime, restatement (giriş) (35) |  |
-| 30 | 3 | YDS ys2u7–u9 YÖKDİL alan kelimeleri (hedef alana ağırlık) | alan terimleri | 145 / 4.430 | 1.500; 1 | Okuma (alan metinleri) (35) | Tam deneme 1 (yeni: yds_m9) |
-| 31 | 3 | YDS ys2u10–u11 Kelime setleri 1–2, Genel s8 u8 | ince anlam farkları | 145 / 4.575 | 1.500; 1 | Kelime, cloze (35) |  |
-| 32 | 3 | YDS ys2u12–u13 Kelime setleri 3–4, Genel s8 u10 | akademik ses | 145 / 4.720 | 1.500; 1 | Kelime, okuma (35) | Yarım deneme 5 |
-| 33 | 3 | YDS ys2u14–u15 Kelime setleri 5–6 | zarf ve kalıplar | 145 / 4.865 | 1.500; 1 | Karışık set (ys2) (35) | Bölüm 2 denemesi (ys2 sonu) |
-| 34 | 3 | Tekrar haftası: ys1–ys2 zayıf üniteler (analize göre) | zayıf konular | 145 / 5.010 | 1.500; 1 | Karışık set (ys1–ys2) (35) | Tam deneme 2 (yeni: yds_m10) |
-| 35 | 4 | YDS ys3u1 Cloze, ys3u2 Cümle tamamlama | — | 125 / 5.135 | 1.800; 2 | Cloze, cümle tamamlama (strateji) (40) |  |
-| 36 | 4 | YDS ys3u3 Çeviri İng→Tr, ys3u4 Çeviri Tr→İng | — | 125 / 5.260 | 1.800; 2 | Çeviri (iki yön) (40) | Tam deneme 3 (yeni: yds_m11) |
-| 37 | 4 | YDS ys3u5 Ana fikir, ys3u6 Paragraf soruları | — | 125 / 5.385 | 1.800; 2 | Okuma (strateji) (40) | Yarım deneme 6 |
-| 38 | 4 | YDS ys3u7 Diyalog, ys3u8 Restatement (YÖKDİL: çeviri tekrarı) | — | 125 / 5.510 | 1.800; 2 | Diyalog, restatement (40) | Tam deneme 4 (yeni: yds_m12) |
-| 39 | 4 | YDS ys3u9 Paragraf tamamlama, ys3u10 Anlam bütünlüğü | — | 125 / 5.635 | 1.800; 2 | Paragraf tamamlama, anlam bütünlüğü (40) | Yarım deneme 7 |
-| 40 | 4 | YDS ys3u11 Okuma kampı: fen, ys3u12 sağlık | — | 125 / 5.760 | 1.800; 2 | Okuma (zamanlı) (40) | Tam deneme 5 (yeni: yds_m13) + Bölüm 3 denemesi |
-| 41 | 4 | YDS ys3u13 Okuma kampı: sosyal, ys3u14 tarih/kültür | — | 125 / 5.885 | 1.800; 2 | Okuma (zamanlı) (40) | Yarım deneme 8 + okuma kampı denemesi |
-| 42 | 4 | Tekrar haftası: ys3 zayıf soru tipleri | zayıf konular | 125 / 6.010 | 1.800; 2 | Karışık set (tüm tipler) (40) | Tam deneme 6 (yeni: yds_m14) |
-| 43 | 5 | YDS ys4u1 Karışık set 1 | — | 75 / 6.085 | 2.000; 2 | Karışık (tam dağılım) (40) | Tam deneme 7 (yeni: yds_m15) |
-| 44 | 5 | YDS ys4u2 Karışık set 2 | — | 75 / 6.160 | 2.000; 2 | Karışık (tam dağılım) (40) | Tam deneme 8 (yds_m1, ys4u2) |
-| 45 | 5 | YDS ys4u3 Süre stratejisi | — | 75 / 6.235 | 2.000; 2 | Bölüm süre çalışması (40) | Tam deneme 9 (yds_m2, ys4u3) |
-| 46 | 5 | YDS ys4u4 Hata analizi | — | 75 / 6.310 | 2.000; 2 | Hata defteri yoğun (40) | Tam deneme 10 (yds_m3, ys4u4) |
-| 47 | 5 | YDS ys4u5 Deneme haftası 1: dilbilgisi | — | 75 / 6.385 | 2.000; 2 | Zayıf tip (analize göre) (40) | Tam deneme 11 (yds_m4, ys4u5) |
-| 48 | 5 | YDS ys4u6 Deneme haftası 2: kelime | — | 75 / 6.460 | 2.000; 2 | Zayıf tip (40) | Tam deneme 12 (yds_m5, ys4u6) ve 13 (yeni: yds_m16) |
-| 49 | 5 | YDS ys4u7 Deneme haftası 3: çeviri | — | 75 / 6.535 | 2.000; 2 | Zayıf tip (40) | Tam deneme 14 (yds_m6, ys4u7) ve 15 (yeni: yds_m17) |
-| 50 | 5 | YDS ys4u8 Deneme haftası 4: okuma | — | 75 / 6.610 | 2.000; 2 | Zayıf tip (40) | Tam deneme 16 (yds_m7, ys4u8) ve 17 (yeni: yds_m18) |
-| 51 | 5 | YDS ys4u9 Deneme haftası 5: son prova | — | 0 / 6.610 | 2.000; 2 | Zayıf tip (40) | Tam deneme 18 (yds_m8, ys4u9) ve 19 (yeni: yds_m19) |
-| 52 | 5 | Son hafta: yalnızca tekrar ve hata defteri | — | 0 / 6.610 | 2.000; 2 | Hafif karışık set (40) | Tam deneme 20 (yeni: yds_m20, sınavdan 4–5 gün önce) |
+| 11 | 2 | Genel s5 u1–u4 | present perfect continuous, used to, edilgen (giriş) | 120 / 1.600 | 1.000; 0 | Dilbilgisi (B1) (25) |  |
+| 12 | 2 | Genel s5 u5–u8 | edilgen, second conditional, reported speech, phrasal verbs | 120 / 1.720 | 1.000; 0 | Dilbilgisi, kelime (25) |  |
+| 13 | 2 | YDS ys1u11 Cümlenin iskeleti, ys1u12 İsim öbeği ve gönderim | özne–yüklem, isim öbeği, gönderim | 120 / 1.840 | 1.000; 0 | Dilbilgisi, kelime (25) |  |
+| 14 | 2 | YDS ys1u13 Temel zamanlar, Genel s5 u9–u12 | zaman çekirdeği, modal of deduction | 120 / 1.960 | 1.000; 0 | Dilbilgisi, cümle tamamlama (giriş) (25) |  |
+| 15 | 2 | YDS ys1u14 Sözcük türetme, Genel s6 u1–u3 | ek ile türetme, past perfect | 120 / 2.080 | 1.000; 1 | Kelime, cloze (giriş) (25) |  |
+| 16 | 2 | YDS ys1u15 Temel bağlaçlar, ys1u16 Uzun cümle | bağlaç ve edat çekirdeği, sıfat cümleciği | 120 / 2.200 | 1.000; 1 | Cümle tamamlama, çeviri (giriş) (25) |  |
+| 17 | 2 | YDS ys1u1 Zamanlar, Genel s6 u4–u6 | zaman uyumu, so/such…that, wish | 120 / 2.320 | 1.000; 1 | Dilbilgisi, cloze (25) |  |
+| 18 | 2 | YDS ys1u2 Kipler, Genel s6 u7–u9 | kipler, question tags | 120 / 2.440 | 1.000; 1 | Dilbilgisi, cümle tamamlama (25) |  |
+| 19 | 2 | YDS ys1u3 Edilgen ve ettirgen, Genel s6 u10–u12 | edilgen, ettirgen, karşıtlık (yine de) | 120 / 2.560 | 1.000; 1 | Dilbilgisi, çeviri (25) |  |
+| 20 | 2 | YDS ys1u4 Koşul ve wish | koşul türleri, wish/if only | 120 / 2.680 | 1.000; 1 | Karışık set (H11–20) (25) | Yarım deneme 1 (tanı, 40 soru / 90 dk) |
+| 21 | 3 | YDS ys1u5 Sıfat cümlecikleri | relative clause, kısaltma | 125 / 2.805 | 1.500; 1 | Dilbilgisi, çeviri (35) |  |
+| 22 | 3 | YDS ys1u6 İsim cümlecikleri, Genel s7 u1–u2 | noun clause, mixed conditionals | 125 / 2.930 | 1.500; 1 | Dilbilgisi, cümle tamamlama (35) | Yarım deneme 2 |
+| 23 | 3 | YDS ys1u7 Gerund ve infinitive, Genel s7 u3 | gerund/infinitive, should have | 125 / 3.055 | 1.500; 1 | Dilbilgisi, cloze (35) |  |
+| 24 | 3 | YDS ys1u8 Bağlaçlar ve geçişler, Genel s7 u4 | bağlaç ve geçiş ifadeleri, haber dili | 125 / 3.180 | 1.500; 1 | Cümle tamamlama, paragraf tamamlama (giriş) (35) | Yarım deneme 3 |
+| 25 | 3 | YDS ys1u9 Edatlar, Genel s7 u7 | edat + eşdizim, causative | 125 / 3.305 | 1.500; 1 | Kelime, cloze (35) |  |
+| 26 | 3 | YDS ys1u10 Miktar ve karşılaştırma, Genel s7 u8 | quantifier, karşılaştırma, inversion | 125 / 3.430 | 1.500; 1 | Karışık set (ys1) (35) | Bölüm 1 denemesi (ys1 sonu) |
+| 27 | 3 | YDS ys2u1 Akademik fiiller, ys2u2 Sıfatlar ve zarflar | akademik fiil kalıpları | 125 / 3.555 | 1.500; 1 | Kelime, cümle tamamlama (35) | Yarım deneme 4 |
+| 28 | 3 | YDS ys2u3 Phrasal verbs, ys2u4 İsim kalıpları | phrasal verb, eşdizim | 125 / 3.680 | 1.500; 1 | Kelime, cloze (35) |  |
+| 29 | 3 | YDS ys2u5 Eş anlamlılar, ys2u6 Karıştırılanlar, Genel s8 u2 | eş anlam, bağlamdan anlam, yazıda bağlantı | 125 / 3.805 | 1.500; 1 | Kelime, restatement (giriş) (35) |  |
+| 30 | 3 | YDS ys2u7–u9 YÖKDİL alan kelimeleri (hedef alana ağırlık) | alan terimleri | 125 / 3.930 | 1.500; 1 | Okuma (alan metinleri) (35) | Tam deneme 1 (yeni: yds_m9) |
+| 31 | 3 | YDS ys2u10–u11 Kelime setleri 1–2, Genel s8 u8 | ince anlam farkları | 125 / 4.055 | 1.500; 1 | Kelime, cloze (35) |  |
+| 32 | 3 | YDS ys2u12–u13 Kelime setleri 3–4, Genel s8 u10 | akademik ses | 125 / 4.180 | 1.500; 1 | Kelime, okuma (35) | Yarım deneme 5 |
+| 33 | 3 | YDS ys2u14–u15 Kelime setleri 5–6 | zarf ve kalıplar | 125 / 4.305 | 1.500; 1 | Karışık set (ys2) (35) | Bölüm 2 denemesi (ys2 sonu) |
+| 34 | 3 | Tekrar haftası: ys1–ys2 zayıf üniteler (analize göre) | zayıf konular | 125 / 4.430 | 1.500; 1 | Karışık set (ys1–ys2) (35) | Tam deneme 2 (yeni: yds_m10) |
+| 35 | 4 | YDS ys3u1 Cloze, ys3u2 Cümle tamamlama | — | 160 / 4.590 | 1.800; 2 | Cloze, cümle tamamlama (strateji) (40) |  |
+| 36 | 4 | YDS ys3u3 Çeviri İng→Tr, ys3u4 Çeviri Tr→İng | — | 160 / 4.750 | 1.800; 2 | Çeviri (iki yön) (40) | Tam deneme 3 (yeni: yds_m11) |
+| 37 | 4 | YDS ys3u5 Ana fikir, ys3u6 Paragraf soruları | — | 160 / 4.910 | 1.800; 2 | Okuma (strateji) (40) | Yarım deneme 6 |
+| 38 | 4 | YDS ys3u7 Diyalog, ys3u8 Restatement (YÖKDİL: çeviri tekrarı) | — | 160 / 5.070 | 1.800; 2 | Diyalog, restatement (40) | Tam deneme 4 (yeni: yds_m12) |
+| 39 | 4 | YDS ys3u9 Paragraf tamamlama, ys3u10 Anlam bütünlüğü | — | 160 / 5.230 | 1.800; 2 | Paragraf tamamlama, anlam bütünlüğü (40) | Yarım deneme 7 |
+| 40 | 4 | YDS ys3u11 Okuma kampı: fen, ys3u12 sağlık | — | 160 / 5.390 | 1.800; 2 | Okuma (zamanlı) (40) | Tam deneme 5 (yeni: yds_m13) + Bölüm 3 denemesi |
+| 41 | 4 | YDS ys3u13 Okuma kampı: sosyal, ys3u14 tarih/kültür | — | 160 / 5.550 | 1.800; 2 | Okuma (zamanlı) (40) | Yarım deneme 8 + okuma kampı denemesi |
+| 42 | 4 | Tekrar haftası: ys3 zayıf soru tipleri | zayıf konular | 160 / 5.710 | 1.800; 2 | Karışık set (tüm tipler) (40) | Tam deneme 6 (yeni: yds_m14) |
+| 43 | 5 | YDS ys4u1 Karışık set 1 | — | 110 / 5.820 | 2.000; 2 | Karışık (tam dağılım) (40) | Tam deneme 7 (yeni: yds_m15) |
+| 44 | 5 | YDS ys4u2 Karışık set 2 | — | 110 / 5.930 | 2.000; 2 | Karışık (tam dağılım) (40) | Tam deneme 8 (yds_m1, ys4u2) |
+| 45 | 5 | YDS ys4u3 Süre stratejisi | — | 110 / 6.040 | 2.000; 2 | Bölüm süre çalışması (40) | Tam deneme 9 (yds_m2, ys4u3) |
+| 46 | 5 | YDS ys4u4 Hata analizi | — | 110 / 6.150 | 2.000; 2 | Hata defteri yoğun (40) | Tam deneme 10 (yds_m3, ys4u4) |
+| 47 | 5 | YDS ys4u5 Deneme haftası 1: dilbilgisi | — | 110 / 6.260 | 2.000; 2 | Zayıf tip (analize göre) (40) | Tam deneme 11 (yds_m4, ys4u5) |
+| 48 | 5 | YDS ys4u6 Deneme haftası 2: kelime | — | 110 / 6.370 | 2.000; 2 | Zayıf tip (40) | Tam deneme 12 (yds_m5, ys4u6) ve 13 (yeni: yds_m16) |
+| 49 | 5 | YDS ys4u7 Deneme haftası 3: çeviri | — | 110 / 6.480 | 2.000; 2 | Zayıf tip (40) | Tam deneme 14 (yds_m6, ys4u7) ve 15 (yeni: yds_m17) |
+| 50 | 5 | YDS ys4u8 Deneme haftası 4: okuma | — | 110 / 6.590 | 2.000; 2 | Zayıf tip (40) | Tam deneme 16 (yds_m7, ys4u8) ve 17 (yeni: yds_m18) |
+| 51 | 5 | YDS ys4u9 Deneme haftası 5: son prova | — | 0 / 6.590 | 2.000; 2 | Zayıf tip (40) | Tam deneme 18 (yds_m8, ys4u9) ve 19 (yeni: yds_m19) |
+| 52 | 5 | Son hafta: yalnızca tekrar ve hata defteri | — | 0 / 6.590 | 2.000; 2 | Hafif karışık set (40) | Tam deneme 20 (yeni: yds_m20, sınavdan 4–5 gün önce) |
 
-**Toplam:** 6.610 yeni kelime ailesi (genel kurs + YDS yolu + kelime bankası), yaklaşık 421.200 kelime okuma (haftada 6 gün).
+**Toplam:** 6.590 yeni kelime ailesi (genel kurs + YDS yolu + kelime bankası), yaklaşık 421.200 kelime okuma (haftada 6 gün).
 <!-- TABLO:SON -->
 
 ---
@@ -219,13 +219,15 @@ Sütunlar:
 | Uzun metin (≥100 kelime) | 135 | Yoğun okuma, H15–42 |
 | Tam deneme | 8 (`yds_full`, paket) | Plandaki tam deneme 8–11, 12, 14, 16, 18 (H44–51, ys4 üniteleri) |
 | Soru bankası | 91 (`assets/exams/yds.json`) | Pratik ve yarım deneme dolgusu |
-| YDS kelime ve kalıp | 2.630 | Toplam 6.600 hedefinin ~%40'ı |
+| YDS kelime ve kalıp | 2.630 madde, ama kelime derslerindeki benzersiz kelime **~930** (F2c sayımı) | Toplam 6.600 hedefinin ~%14'ü. 2.630, dilbilgisi ve kalıp cevaplarını da sayıyordu. |
 
 ### 5.2 Eksikler
 
 1. **Kelime (en büyük açık).**
-   - Genel kurs (~1.500) + YDS yolu (2.630) birlikte, örtüşmeyle, yaklaşık 3.500–3.800 aile eder.
-   - Hedef 6.600. **Yaklaşık 3.000–3.600 yeni kelime gerekir:**
+   - Genel kurs (~1.500) + YDS yolunun kelime dersleri (~930) birlikte yaklaşık 2.400 aile eder.
+   - Not: İlk sürümde YDS yolu 2.630 sayılmıştı. F2c sayımı bunun kelime dersi dışındaki cevapları da içerdiğini gösterdi (2026-11-12 düzeltmesi).
+   - Hedef 6.600. **Yaklaşık 4.200 yeni kelime gerekir.** Kelime bankaları bunu karşılar: ys5 800 + ys7 1.200 (gönderildi) + F3 1.300 + F4 900. Kaynaklar aşağıda.
+   - Haftalık hedefler bu kaynaklara göre dengelendi: Evre 2'de haftada 120 (ys5 + genel s5–s6 + ys1), Evre 3'te 125 (ys7 + ys2 + genel s7–s8), Evre 4'te 160 (Kelime bankası 3), Evre 5'te 110 (Kelime bankası 4). Kaynak listesi:
      - NGSL çekirdeğinde eksik kalanlar
      - NAWL/akademik
      - orta sıklık bandı
@@ -248,9 +250,9 @@ Sütunlar:
 |---|---|---|---|---|---|---|---|---|
 | **F1 (bu tur)** | Evre 2 (H11–20) | `exam_yds/05_kelime_bankasi_1.json` (ys5), `exam_yds/06_okuma_evi_1.json` (ys6) | 10 + 6 | ~640 | ~240 | 800 | 36 yoğun (B1, 200–350 kelime) | 1 yarım deneme (40) |
 | F2 | Evre 3 (H21–34) | `07_kelime_bankasi_2`, `08_okuma_evi_2` | 15 + 10 | ~1.000 | ~375 | 1.200 | 60 akademik (250–300) + 60 bol okuma | 4 yarım + 2 tam deneme (m9–m10) |
-| F3 | Evre 4 (H35–42) | `09_kelime_bankasi_3`, `10_okuma_evi_3` | 12 + 8 | ~800 | ~300 | 1.000 | 48 alan metni (fen/sağlık/sosyal) + 80 bol okuma | 3 yarım + 4 tam deneme (m11–m14) |
-| F4 | Evre 5 (H43–52) | `11_kelime_bankasi_4`, `assets/exam_packs/yds_full.json` (yeni mock'lar) | 8 | ~500 | ~200 | 600 | 110 bol okuma | 6 tam deneme (m15–m20) |
-| **Toplam yeni** | | | **69** | **~2.940** | **~1.115** | **3.600** | **~150 yoğun + ~250 bol** | **12 tam + 8 yarım** |
+| F3 | Evre 4 (H35–42) | `09_kelime_bankasi_3`, `10_okuma_evi_3` | 12 + 8 | ~800 | ~300 | 1.300 | 48 alan metni (fen/sağlık/sosyal) + 80 bol okuma | 3 yarım + 4 tam deneme (m11–m14) |
+| F4 | Evre 5 (H43–52) | `11_kelime_bankasi_4`, `assets/exam_packs/yds_full.json` (yeni mock'lar) | 8 | ~500 | ~200 | 900 | 110 bol okuma | 6 tam deneme (m15–m20) |
+| **Toplam yeni** | | | **69** | **~2.940** | **~1.115** | **4.200** | **~150 yoğun + ~250 bol** | **12 tam + 8 yarım** |
 
 Yeni bölüm kimlikleri ys5, ys6 ve sonrasıdır. Mevcut ID'lere dokunulmaz.
 

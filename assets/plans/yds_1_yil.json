@@ -330,8 +330,8 @@
       "questionWork": "Dilbilgisi (B1)",
       "mock": null,
       "mocks": [],
-      "newWords": 150,
-      "wordsTotal": 1630,
+      "newWords": 120,
+      "wordsTotal": 1600,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 0,
       "choicePerDay": 25
@@ -354,8 +354,8 @@
       "questionWork": "Dilbilgisi, kelime",
       "mock": null,
       "mocks": [],
-      "newWords": 150,
-      "wordsTotal": 1780,
+      "newWords": 120,
+      "wordsTotal": 1720,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 0,
       "choicePerDay": 25
@@ -376,8 +376,8 @@
       "questionWork": "Dilbilgisi, kelime",
       "mock": null,
       "mocks": [],
-      "newWords": 150,
-      "wordsTotal": 1930,
+      "newWords": 120,
+      "wordsTotal": 1840,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 0,
       "choicePerDay": 25
@@ -400,8 +400,8 @@
       "questionWork": "Dilbilgisi, cümle tamamlama (giriş)",
       "mock": null,
       "mocks": [],
-      "newWords": 150,
-      "wordsTotal": 2080,
+      "newWords": 120,
+      "wordsTotal": 1960,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 0,
       "choicePerDay": 25
@@ -424,8 +424,8 @@
       "questionWork": "Kelime, cloze (giriş)",
       "mock": null,
       "mocks": [],
-      "newWords": 150,
-      "wordsTotal": 2230,
+      "newWords": 120,
+      "wordsTotal": 2080,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 25
@@ -446,8 +446,8 @@
       "questionWork": "Cümle tamamlama, çeviri (giriş)",
       "mock": null,
       "mocks": [],
-      "newWords": 150,
-      "wordsTotal": 2380,
+      "newWords": 120,
+      "wordsTotal": 2200,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 25
@@ -469,8 +469,8 @@
       "questionWork": "Dilbilgisi, cloze",
       "mock": null,
       "mocks": [],
-      "newWords": 150,
-      "wordsTotal": 2530,
+      "newWords": 120,
+      "wordsTotal": 2320,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 25
@@ -493,8 +493,8 @@
       "questionWork": "Dilbilgisi, cümle tamamlama",
       "mock": null,
       "mocks": [],
-      "newWords": 150,
-      "wordsTotal": 2680,
+      "newWords": 120,
+      "wordsTotal": 2440,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 25
@@ -516,8 +516,8 @@
       "questionWork": "Dilbilgisi, çeviri",
       "mock": null,
       "mocks": [],
-      "newWords": 150,
-      "wordsTotal": 2830,
+      "newWords": 120,
+      "wordsTotal": 2560,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 25
@@ -544,8 +544,8 @@
           "minutes": 90
         }
       ],
-      "newWords": 150,
-      "wordsTotal": 2980,
+      "newWords": 120,
+      "wordsTotal": 2680,
       "readingWordsPerDay": 1000,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 25
@@ -564,8 +564,8 @@
       "questionWork": "Dilbilgisi, çeviri",
       "mock": null,
       "mocks": [],
-      "newWords": 145,
-      "wordsTotal": 3125,
+      "newWords": 125,
+      "wordsTotal": 2805,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -594,8 +594,8 @@
           "minutes": 90
         }
       ],
-      "newWords": 145,
-      "wordsTotal": 3270,
+      "newWords": 125,
+      "wordsTotal": 2930,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -616,8 +616,8 @@
       "questionWork": "Dilbilgisi, cloze",
       "mock": null,
       "mocks": [],
-      "newWords": 145,
-      "wordsTotal": 3415,
+      "newWords": 125,
+      "wordsTotal": 3055,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -645,8 +645,8 @@
           "minutes": 90
         }
       ],
-      "newWords": 145,
-      "wordsTotal": 3560,
+      "newWords": 125,
+      "wordsTotal": 3180,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -666,8 +666,8 @@
       "questionWork": "Kelime, cloze",
       "mock": null,
       "mocks": [],
-      "newWords": 145,
-      "wordsTotal": 3705,
+      "newWords": 125,
+      "wordsTotal": 3305,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -695,8 +695,8 @@
           "minutes": 45
         }
       ],
-      "newWords": 145,
-      "wordsTotal": 3850,
+      "newWords": 125,
+      "wordsTotal": 3430,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -724,8 +724,8 @@
           "minutes": 90
         }
       ],
-      "newWords": 145,
-      "wordsTotal": 3995,
+      "newWords": 125,
+      "wordsTotal": 3555,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -746,8 +746,8 @@
       "questionWork": "Kelime, cloze",
       "mock": null,
       "mocks": [],
-      "newWords": 145,
-      "wordsTotal": 4140,
+      "newWords": 125,
+      "wordsTotal": 3680,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -769,8 +769,8 @@
       "questionWork": "Kelime, restatement (giriş)",
       "mock": null,
       "mocks": [],
-      "newWords": 145,
-      "wordsTotal": 4285,
+      "newWords": 125,
+      "wordsTotal": 3805,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -799,8 +799,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 145,
-      "wordsTotal": 4430,
+      "newWords": 125,
+      "wordsTotal": 3930,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -822,8 +822,8 @@
       "questionWork": "Kelime, cloze",
       "mock": null,
       "mocks": [],
-      "newWords": 145,
-      "wordsTotal": 4575,
+      "newWords": 125,
+      "wordsTotal": 4055,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -852,8 +852,8 @@
           "minutes": 90
         }
       ],
-      "newWords": 145,
-      "wordsTotal": 4720,
+      "newWords": 125,
+      "wordsTotal": 4180,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -880,8 +880,8 @@
           "minutes": 60
         }
       ],
-      "newWords": 145,
-      "wordsTotal": 4865,
+      "newWords": 125,
+      "wordsTotal": 4305,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -906,8 +906,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 145,
-      "wordsTotal": 5010,
+      "newWords": 125,
+      "wordsTotal": 4430,
       "readingWordsPerDay": 1500,
       "intensiveTextsPerDay": 1,
       "choicePerDay": 35
@@ -925,8 +925,8 @@
       "questionWork": "Cloze, cümle tamamlama (strateji)",
       "mock": null,
       "mocks": [],
-      "newWords": 125,
-      "wordsTotal": 5135,
+      "newWords": 160,
+      "wordsTotal": 4590,
       "readingWordsPerDay": 1800,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -951,8 +951,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 125,
-      "wordsTotal": 5260,
+      "newWords": 160,
+      "wordsTotal": 4750,
       "readingWordsPerDay": 1800,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -977,8 +977,8 @@
           "minutes": 90
         }
       ],
-      "newWords": 125,
-      "wordsTotal": 5385,
+      "newWords": 160,
+      "wordsTotal": 4910,
       "readingWordsPerDay": 1800,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1003,8 +1003,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 125,
-      "wordsTotal": 5510,
+      "newWords": 160,
+      "wordsTotal": 5070,
       "readingWordsPerDay": 1800,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1029,8 +1029,8 @@
           "minutes": 90
         }
       ],
-      "newWords": 125,
-      "wordsTotal": 5635,
+      "newWords": 160,
+      "wordsTotal": 5230,
       "readingWordsPerDay": 1800,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1061,8 +1061,8 @@
           "minutes": 90
         }
       ],
-      "newWords": 125,
-      "wordsTotal": 5760,
+      "newWords": 160,
+      "wordsTotal": 5390,
       "readingWordsPerDay": 1800,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1093,8 +1093,8 @@
           "minutes": 90
         }
       ],
-      "newWords": 125,
-      "wordsTotal": 5885,
+      "newWords": 160,
+      "wordsTotal": 5550,
       "readingWordsPerDay": 1800,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1116,8 +1116,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 125,
-      "wordsTotal": 6010,
+      "newWords": 160,
+      "wordsTotal": 5710,
       "readingWordsPerDay": 1800,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1141,8 +1141,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 75,
-      "wordsTotal": 6085,
+      "newWords": 110,
+      "wordsTotal": 5820,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1166,8 +1166,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 75,
-      "wordsTotal": 6160,
+      "newWords": 110,
+      "wordsTotal": 5930,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1191,8 +1191,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 75,
-      "wordsTotal": 6235,
+      "newWords": 110,
+      "wordsTotal": 6040,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1216,8 +1216,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 75,
-      "wordsTotal": 6310,
+      "newWords": 110,
+      "wordsTotal": 6150,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1241,8 +1241,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 75,
-      "wordsTotal": 6385,
+      "newWords": 110,
+      "wordsTotal": 6260,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1272,8 +1272,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 75,
-      "wordsTotal": 6460,
+      "newWords": 110,
+      "wordsTotal": 6370,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1303,8 +1303,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 75,
-      "wordsTotal": 6535,
+      "newWords": 110,
+      "wordsTotal": 6480,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1334,8 +1334,8 @@
           "minutes": 180
         }
       ],
-      "newWords": 75,
-      "wordsTotal": 6610,
+      "newWords": 110,
+      "wordsTotal": 6590,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1366,7 +1366,7 @@
         }
       ],
       "newWords": 0,
-      "wordsTotal": 6610,
+      "wordsTotal": 6590,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
@@ -1389,14 +1389,14 @@
         }
       ],
       "newWords": 0,
-      "wordsTotal": 6610,
+      "wordsTotal": 6590,
       "readingWordsPerDay": 2000,
       "intensiveTextsPerDay": 2,
       "choicePerDay": 40
     }
   ],
   "totals": {
-    "newWords": 6610,
+    "newWords": 6590,
     "readingWords": 421200,
     "fullMocks": 20,
     "halfMocks": 8

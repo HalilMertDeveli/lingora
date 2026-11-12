@@ -20,11 +20,11 @@ function targets(w) {
   if (w <= 4) return { newWords: 160, readPerDay: 300, qPerDay: 0, intensive: 0 };
   if (w <= 7) return { newWords: 160, readPerDay: 600, qPerDay: 0, intensive: 0 };
   if (w <= 10) return { newWords: 160, readPerDay: 600, qPerDay: 10, intensive: 0 };
-  if (w <= 14) return { newWords: 150, readPerDay: 1000, qPerDay: 25, intensive: 0 };
-  if (w <= 20) return { newWords: 150, readPerDay: 1000, qPerDay: 25, intensive: 1 };
-  if (w <= 34) return { newWords: 145, readPerDay: 1500, qPerDay: 35, intensive: 1 };
-  if (w <= 42) return { newWords: 125, readPerDay: 1800, qPerDay: 40, intensive: 2 };
-  if (w <= 50) return { newWords: 75, readPerDay: 2000, qPerDay: 40, intensive: 2 };
+  if (w <= 14) return { newWords: 120, readPerDay: 1000, qPerDay: 25, intensive: 0 };
+  if (w <= 20) return { newWords: 120, readPerDay: 1000, qPerDay: 25, intensive: 1 };
+  if (w <= 34) return { newWords: 125, readPerDay: 1500, qPerDay: 35, intensive: 1 };
+  if (w <= 42) return { newWords: 160, readPerDay: 1800, qPerDay: 40, intensive: 2 };
+  if (w <= 50) return { newWords: 110, readPerDay: 2000, qPerDay: 40, intensive: 2 };
   return { newWords: 0, readPerDay: 2000, qPerDay: 40, intensive: 2 };
 }
 
