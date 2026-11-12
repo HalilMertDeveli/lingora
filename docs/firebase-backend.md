@@ -44,6 +44,13 @@ Hepsi çağrılabilir (callable) fonksiyondur ve giriş yapmış kullanıcı ist
   `expiresAt` gelecekte) yoksa `permission-denied`; günde 60 mesaj kotası dolunca `resource-exhausted`;
   Anthropic hatasında `unavailable` ve o mesaj kotadan düşülmez. API anahtarı Secret Manager'daki
   `ANTHROPIC_API_KEY` gizli değerinden okunur.
+- **`assessWriting {taskId, text}` → `{scores{task,accuracy,range,coherence}, corrections[{from,to,why_tr,type}], next_tr, remaining}`**:
+  Genel kursun `write` alıştırmaları için yapay zekâ geri bildirimi (`functions/src/assess_writing.ts`,
+  docs/genel-mufredat.md §3). Görev ve rubrik sunucuda (`functions/src/writing_tasks.ts`, anahtar
+  `<düğüm id>w`); bilinmeyen görev `not-found`, yarısından kısa metin `failed-precondition`. Puanlar 0–3'e
+  sıkıştırılır; düzeltmeler görevin odak türleri (article, tense, preposition, word_order, be) ve en çok 3 diğer
+  hatayla sınırlanır. Premium ve günde 20 istek (`usageWriting/{uid}`), hata ya da retde istek kotadan
+  düşülmez. Sunucuya ulaşılamazsa uygulama yerel kontrolle (kelime sayısı, kontrol listesi) devam eder.
 - **`verifyPurchase {platform?, productId, purchaseToken}` → `{active, premium, status, productId, expiresAt}`**:
   Ürünler `lingora_premium_monthly` (31 gün) ve `lingora_premium_yearly` (366 gün). Jeton başka hesaba
   bağlıysa `already-exists`. **Yalnızca emülatörde** jetona güvenip `entitlements/{uid}` yazar. Gerçek

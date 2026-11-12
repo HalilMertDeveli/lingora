@@ -23,12 +23,22 @@ class ExerciseTitle extends StatelessWidget {
 
 /// Round button that reads [text] aloud.
 class SpeakerButton extends ConsumerWidget {
-  const SpeakerButton({super.key, required this.text, this.lang = 'en', this.size = 48, this.slow = false});
+  const SpeakerButton({
+    super.key,
+    required this.text,
+    this.lang = 'en',
+    this.size = 48,
+    this.slow = false,
+    this.rate = 1,
+  });
 
   final String text;
   final String lang;
   final double size;
   final bool slow;
+
+  /// Speed factor of normal speech (see [SpeechService.say]).
+  final double rate;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Material(
@@ -36,7 +46,7 @@ class SpeakerButton extends ConsumerWidget {
     shape: const CircleBorder(),
     child: InkWell(
       customBorder: const CircleBorder(),
-      onTap: () => ref.read(speechProvider).say(text, lang: lang, slow: slow),
+      onTap: () => ref.read(speechProvider).say(text, lang: lang, slow: slow, rate: rate),
       child: SizedBox(
         width: size,
         height: size,

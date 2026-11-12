@@ -26,6 +26,7 @@ abstract final class PaywallPlacement {
   static const profile = 'profile';
   static const afterLessons = 'after_lessons';
   static const aiChat = 'ai_chat';
+  static const writingFeedback = 'writing_feedback';
   static const mockExam = 'mock_exam';
   static const errorAnalysis = 'error_analysis';
   static const cloudBackup = 'cloud_backup';

@@ -21,7 +21,9 @@ class SectionHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ratio = sectionProgress(section, ref.watch(progressProvider));
+    final progress = ref.watch(progressProvider);
+    final ratio = sectionProgress(section, progress);
+    final completed = sectionCompleted(section, progress);
     final percent = (ratio * 100).round();
     final t = Theme.of(context).textTheme;
     return TapCard(
@@ -75,8 +77,13 @@ class SectionHeader extends ConsumerWidget {
           Row(
             children: [
               Icon(
-                open ? Icons.flag_circle_rounded : Icons.lock_rounded,
-                color: open ? _color : Brand.muted,
+                completed
+                    ? Icons.verified_rounded
+                    : open
+                    ? Icons.flag_circle_rounded
+                    : Icons.lock_rounded,
+                key: completed ? Key('section-completed-${section.id}') : null,
+                color: completed ? Brand.success : (open ? _color : Brand.muted),
                 size: 34,
               ),
               const SizedBox(width: 12),
@@ -92,7 +99,7 @@ class SectionHeader extends ConsumerWidget {
               ),
               const SizedBox(width: 12),
               Text(
-                open ? '%$percent' : 'Kilitli',
+                completed ? 'Tamamlandı' : (open ? '%$percent' : 'Kilitli'),
                 style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
               ),
             ],

@@ -18,7 +18,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class _FakeSpeech implements SpeechService {
   final said = <String>[];
   @override
-  Future<void> say(String text, {String lang = 'en', bool slow = false}) async => said.add(text);
+  Future<void> say(String text, {String lang = 'en', bool slow = false, double rate = 1}) async =>
+      said.add(text);
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
