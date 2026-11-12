@@ -132,8 +132,14 @@ StudyPlan settleWeek({
 
 /// The next path step of the week: its main units first, then the side
 /// paths (Kelime bankası, Okuma evi).
-(Unit, PathNode)? nextPlanStep(PlanWeek week, Map<String, Unit> units, Progress p) {
-  for (final id in [...week.unitIds, ...week.parallelUnitIds]) {
+/// Side-path units left unfinished in earlier weeks come after the week's
+/// own (oldest first), so a week that moved on early does not drop them.
+(Unit, PathNode)? nextPlanStep(PlanWeek week, Map<String, Unit> units, Progress p, {YearPlan? year}) {
+  final earlier = [
+    if (year != null)
+      for (var w = 1; w < week.week; w++) ...year.week(w).parallelUnitIds,
+  ];
+  for (final id in {...week.unitIds, ...week.parallelUnitIds, ...earlier}) {
     final unit = units[id];
     if (unit == null) continue;
     for (final n in unit.nodes) {
@@ -143,13 +149,27 @@ StudyPlan settleWeek({
   return null;
 }
 
+/// Days after the first mock that a week's second mock comes (§3.3).
+const secondMockAfterDays = 3;
+
+/// The mock of the day: the week's first mock on the mock day, a second one
+/// [secondMockAfterDays] days later. A level check is never a mock day.
+PlanMock? todayMock({required StudyPlan plan, required PlanWeek week, required DateTime now}) {
+  final mocks = week.examMocks;
+  if (mocks.isEmpty) return null;
+  if (now.weekday == plan.mockDay) return mocks.first;
+  final second = (plan.mockDay - 1 + secondMockAfterDays) % 7 + 1;
+  if (mocks.length > 1 && now.weekday == second) return mocks[1];
+  return null;
+}
+
 DayKind dayKind({
   required StudyPlan plan,
   required PlanWeek week,
   required DateTime now,
   bool mockYesterday = false,
 }) {
-  if (week.mock != null && now.weekday == plan.mockDay) return DayKind.mock;
+  if (todayMock(plan: plan, week: week, now: now) != null) return DayKind.mock;
   if (mockYesterday) return DayKind.afterMock;
   if (now.weekday == plan.lightDay) return DayKind.light;
   return DayKind.normal;
@@ -244,6 +264,7 @@ List<DayBlock> dayBlocks({
   required PlanWeek week,
   required DayCounts c,
   String? nextStep,
+  PlanMock? mock,
 }) {
   final minutes = blockMinutes(plan.dailyMinutes, year.shares);
   final reviewTotal = c.cardsDone + c.cardsLeft;
@@ -272,13 +293,14 @@ List<DayBlock> dayBlocks({
   );
   switch (kind) {
     case DayKind.mock:
-      final full = week.fullMock;
+      final m = mock ?? (week.examMocks.isEmpty ? null : week.examMocks.first);
       return [
         review(20),
         DayBlock(
           block: PlanBlock.mock,
-          minutes: full ? 180 : 90,
-          detail: '${week.mock} · tek oturum, gerçek koşul',
+          title: m?.label,
+          minutes: m == null || m.minutes == 0 ? 90 : m.minutes,
+          detail: '${m == null || m.size == 0 ? '' : '${m.size} soru · '}tek oturum, gerçek koşul',
           progress: c.mockToday ? 1 : 0,
         ),
       ];

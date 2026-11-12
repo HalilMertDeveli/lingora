@@ -20,6 +20,10 @@ import '../exam_screen.dart';
 import '../lesson_screen.dart';
 import '../practice_hub_screen.dart';
 import '../reading_screen.dart';
+import '../../data/exam_pack_repository.dart';
+import '../../data/exam_path.dart';
+import '../../services/billing/exam_packs.dart';
+import '../../services/billing/products.dart';
 import '../story_screen.dart';
 import 'methods_screen.dart';
 import 'srs_review_screen.dart';
@@ -58,7 +62,11 @@ class TodayPlan {
     required this.blocks,
     required this.next,
     required this.units,
+    this.mock,
   });
+
+  /// Today's mock on a mock day.
+  final PlanMock? mock;
   final StudyPlan plan;
   final YearPlan year;
   final PlanWeek week;
@@ -84,8 +92,9 @@ final todayPlanProvider = Provider<TodayPlan?>((ref) {
   final log = ref.watch(studyLogProvider);
   final week = data.year.week(plan.week);
   final queue = ref.watch(reviewQueueProvider(newWordsPerDay(week, data.year)));
-  final next = nextPlanStep(week, data.units, p);
+  final next = nextPlanStep(week, data.units, p, year: data.year);
   final kind = dayKind(plan: plan, week: week, now: now, mockYesterday: mockOn(log, yesterday));
+  final mock = todayMock(plan: plan, week: week, now: now);
   final counts = DayCounts(
     cardsLeft: queue?.cards.length ?? 0,
     cardsDone: p.wordLast.values.where((d) => d == today).length,
@@ -109,9 +118,11 @@ final todayPlanProvider = Provider<TodayPlan?>((ref) {
       week: week,
       c: counts,
       nextStep: next?.$2.title,
+      mock: mock,
     ),
     next: next,
     units: data.units,
+    mock: mock,
   );
 });
 
@@ -517,11 +528,67 @@ Future<void> runBlock(BuildContext context, WidgetRef ref, PlanBlock block) asyn
         ),
       );
     case PlanBlock.mock:
+      final mock = today.mock ?? (today.week.examMocks.isEmpty ? null : today.week.examMocks.first);
+      if (mock != null && await startPlanMock(context, ref, mock)) return;
+      if (!context.mounted) return;
       PracticeHubScreen.openPage(
         context,
         'Deneme sınavları',
         const ExamHomeScreen(examId: 'yds', view: ExamHomeView.mocks),
       );
+  }
+}
+
+/// Starts a plan mock directly: a pack mock (`full`, when the pack is
+/// unlocked) or a path mock node (`half` / `section`). Returns false to
+/// fall back to the mocks page.
+Future<bool> startPlanMock(BuildContext context, WidgetRef ref, PlanMock mock) async {
+  final nav = Navigator.of(context);
+  try {
+    final exam = await ref.read(examProvider('yds').future);
+    if (mock.kind == MockKind.full) {
+      final pack = ExamPack.forExam('yds');
+      if (mock.id == null || pack == null || !ref.read(examPackUnlockedProvider('yds'))) return false;
+      final content = await ref.read(examPackContentProvider(pack).future);
+      final full = content.mocks.where((m) => m.id == mock.id).firstOrNull;
+      if (full == null) return false;
+      await nav.push(
+        MaterialPageRoute<void>(
+          fullscreenDialog: true,
+          builder: (_) => ExamSessionScreen(
+            exam: exam,
+            questions: full.questions,
+            mock: true,
+            title: full.title,
+            minutes: full.minutes,
+            pack: content,
+            fullMock: full,
+          ),
+        ),
+      );
+      return true;
+    }
+    final course = await ref.read(examPathProvider('yds').future);
+    final node = course?.allNodes.where((n) => n.id == mock.nodeId).firstOrNull;
+    final section = node == null ? null : sectionOf(course!, node);
+    if (node == null || section == null) return false;
+    final questions = mockQuestions(section, node, bank: exam);
+    await nav.push(
+      MaterialPageRoute<void>(
+        fullscreenDialog: true,
+        builder: (_) => ExamSessionScreen(
+          exam: mockExam(node, exam, questions),
+          questions: questions,
+          mock: true,
+          title: node.title,
+          minutes: node.minutes > 0 ? node.minutes : mock.minutes,
+          nodeId: node.id,
+        ),
+      ),
+    );
+    return true;
+  } catch (_) {
+    return false;
   }
 }
 

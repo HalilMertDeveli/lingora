@@ -22,6 +22,7 @@ class PlanWeek {
     this.readingWordsPerDay = 0,
     this.intensiveTextsPerDay = 0,
     this.choicePerDay = 0,
+    this.mocks = const [],
   });
 
   final int week;
@@ -48,8 +49,15 @@ class PlanWeek {
 
   bool get reviewWeek => unitIds.isEmpty;
 
-  /// A full (80 questions, 180 min) rather than a half mock.
-  bool get fullMock => mock != null && !mock!.toLowerCase().contains('yarım');
+  /// The week's mocks (`mocks` in the plan file; older files: read from
+  /// the [mock] text). A level check is not a mock.
+  final List<PlanMock> mocks;
+
+  /// Mocks that make a mock day (everything but a level check).
+  List<PlanMock> get examMocks => [
+    for (final m in mocks)
+      if (m.kind != MockKind.check) m,
+  ];
 
   factory PlanWeek.fromJson(Map<String, dynamic> j) => PlanWeek(
     week: j['week'] as int,
@@ -64,7 +72,52 @@ class PlanWeek {
     readingWordsPerDay: j['readingWordsPerDay'] as int? ?? 0,
     intensiveTextsPerDay: j['intensiveTextsPerDay'] as int? ?? 0,
     choicePerDay: j['choicePerDay'] as int? ?? 0,
+    mocks: j['mocks'] is List
+        ? [for (final m in j['mocks'] as List) PlanMock.fromJson(m as Map<String, dynamic>)]
+        : PlanMock.fromText(j['mock'] as String?),
   );
+}
+
+enum MockKind { full, half, section, check }
+
+/// One mock of a plan week: a pack mock (`full`, [id] "yds_m9"), a path
+/// mock node (`half` / `section`, [nodeId]; null when not shipped yet), or
+/// a level `check` (not a mock day).
+class PlanMock {
+  const PlanMock({required this.kind, this.id, this.nodeId, this.size = 0, this.minutes = 0});
+  final MockKind kind;
+  final String? id;
+  final String? nodeId;
+  final int size;
+  final int minutes;
+
+  String get label => switch (kind) {
+    MockKind.full => 'Tam deneme',
+    MockKind.half => 'Yarım deneme',
+    MockKind.section => 'Bölüm denemesi',
+    MockKind.check => 'Seviye kontrolü',
+  };
+
+  factory PlanMock.fromJson(Map<String, dynamic> j) => PlanMock(
+    kind: MockKind.values.where((k) => k.name == j['kind']).firstOrNull ?? MockKind.check,
+    id: j['id'] as String?,
+    nodeId: j['nodeId'] as String?,
+    size: j['size'] as int? ?? 0,
+    minutes: j['minutes'] as int? ?? 0,
+  );
+
+  /// Mocks of a plan file without `mocks`, from the week's text.
+  static List<PlanMock> fromText(String? text) {
+    if (text == null || text.trim().isEmpty) return const [];
+    final t = text.toLowerCase();
+    if (t.contains('seviye kontrol')) return const [PlanMock(kind: MockKind.check)];
+    final id =
+        RegExp(r'yeni: (yds_m\d+)').firstMatch(text)?.group(1) ??
+        RegExp(r'yds_m\d+').firstMatch(text)?.group(0);
+    if (t.contains('tam deneme')) return [PlanMock(kind: MockKind.full, id: id, size: 80, minutes: 180)];
+    if (t.contains('yarım')) return const [PlanMock(kind: MockKind.half, size: 40, minutes: 90)];
+    return const [PlanMock(kind: MockKind.section, size: 20, minutes: 45)];
+  }
 }
 
 class PlanPhase {

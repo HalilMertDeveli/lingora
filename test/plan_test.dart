@@ -192,12 +192,59 @@ void main() {
       expect(blocks.fold(0, (a, b) => a + b.minutes), lessThanOrEqualTo(30));
     });
 
+    test(
+      'mocks come from the plan\'s mocks field: a level check is no mock day, a second mock 3 days on',
+      () {
+        final saturday = DateTime(2026, 11, 14);
+        final tuesday = DateTime(2026, 11, 17);
+        // H10: level check only.
+        final h10 = year.week(10);
+        expect(h10.mocks.single.kind, MockKind.check);
+        expect(todayMock(plan: plan(week: 10), week: h10, now: saturday), isNull);
+        expect(dayKind(plan: plan(week: 10), week: h10, now: saturday), isNot(DayKind.mock));
+        // H26: the ys1 section mock, 20 questions / 45 min.
+        final h26 = year.week(26);
+        final section = todayMock(plan: plan(week: 26), week: h26, now: saturday)!;
+        expect((section.kind, section.nodeId, section.minutes), (MockKind.section, 'ys1u10m', 45));
+        final blocks = dayBlocks(
+          kind: DayKind.mock,
+          plan: plan(week: 26),
+          year: year,
+          week: h26,
+          c: const DayCounts(),
+          mock: section,
+        );
+        expect((blocks.last.minutes, blocks.last.name), (45, 'Bölüm denemesi'));
+        // H48: two full mocks, Saturday and three days later (Tuesday).
+        final h48 = year.week(48);
+        expect(h48.examMocks.map((m) => m.id), ['yds_m5', 'yds_m16']);
+        expect(todayMock(plan: plan(week: 48), week: h48, now: saturday)!.id, 'yds_m5');
+        expect(todayMock(plan: plan(week: 48), week: h48, now: tuesday)!.id, 'yds_m16');
+        expect(todayMock(plan: plan(week: 26), week: h26, now: tuesday), isNull);
+      },
+    );
+
+    test('a plan file without mocks falls back to the week\'s text', () {
+      expect(PlanMock.fromText('Seviye kontrolü (genel kurs s4 sonu)').single.kind, MockKind.check);
+      expect(PlanMock.fromText('Tam deneme 3 (yeni: yds_m11)').single.id, 'yds_m11');
+      expect(PlanMock.fromText('Yarım deneme 2').single.minutes, 90);
+      expect(PlanMock.fromText(null), isEmpty);
+    });
+
     test('mock day, the day after and the light day', () {
-      final mockWeek = year.weeks.firstWhere((w) => w.fullMock);
+      final mockWeek = year.weeks.firstWhere((w) => w.examMocks.any((m) => m.kind == MockKind.full));
       final p = plan(week: mockWeek.week);
       final saturday = DateTime(2026, 11, 14);
       expect(dayKind(plan: p, week: mockWeek, now: saturday), DayKind.mock);
-      final mock = dayBlocks(kind: DayKind.mock, plan: p, year: year, week: mockWeek, c: const DayCounts());
+      final m = todayMock(plan: p, week: mockWeek, now: saturday)!;
+      final mock = dayBlocks(
+        kind: DayKind.mock,
+        plan: p,
+        year: year,
+        week: mockWeek,
+        c: const DayCounts(),
+        mock: m,
+      );
       expect(mock.map((b) => (b.block, b.minutes)), [(PlanBlock.review, 20), (PlanBlock.mock, 180)]);
 
       final sunday = DateTime(2026, 11, 15);
@@ -268,6 +315,19 @@ void main() {
       final (unit, node) = nextPlanStep(year.week(1), units, const Progress())!;
       expect((unit.id, node.id), (first, units[first]!.nodes.first.id));
       expect(nextPlanStep(year.week(1), units, Progress(completed: weekDone(1))), isNull);
+    });
+
+    test('a side-path unit left from an earlier week stays in the plan', () {
+      final earlier = year.weeks.firstWhere((w) => w.parallelUnitIds.any(units.containsKey));
+      final later = year.week(earlier.week + 1);
+      final left = earlier.parallelUnitIds.firstWhere(units.containsKey);
+      final done = {
+        for (final id in [...later.unitIds, ...later.parallelUnitIds])
+          for (final n in units[id]?.nodes ?? const <PathNode>[]) n.id: 1,
+      };
+      final (unit, _) = nextPlanStep(later, units, Progress(completed: done), year: year)!;
+      expect(unit.id, left);
+      expect(nextPlanStep(later, units, Progress(completed: done)), isNull);
     });
   });
 

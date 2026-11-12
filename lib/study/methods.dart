@@ -89,7 +89,9 @@ const studyMethods = [
     emoji: '🔂',
     title: 'Tekrar sayısı',
     what: 'Bir kelimeyle farklı yerlerde birçok kez karşılaşmak.',
-    why: 'Bir kelime yaklaşık 10 karşılaşmada yerleşir (Webb 2007).',
+    why:
+        'Bir kelime genellikle 10 civarı karşılaşmadan sonra kalıcılaşır; sayı kelimeye ve kişiye göre '
+        'değişir (Webb 2007; Uchihara vd. 2019).',
     where: 'Kartlar ve okuma metinlerinde aynı kelimelerin yeniden kullanılması.',
   ),
   StudyMethod(
@@ -97,7 +99,9 @@ const studyMethods = [
     emoji: '🔬',
     title: 'Deneme, analiz, hedefli tekrar',
     what: 'Deneme çöz, yanlışlarının nedenini bul, zayıf konuna dön.',
-    why: 'Bilinçli pratik ve kendini sınama birlikte en çok ilerletir (Ericsson 1993; Adesope vd. 2017).',
+    why:
+        'Zayıf noktaya odaklanan pratik ve geri bildirimli sınama ilerlemeyi hızlandırır '
+        '(Ericsson vd. 1993; Adesope vd. 2017).',
     where: 'Deneme günü, ertesi günkü deneme analizi ve hata defteri.',
   ),
   StudyMethod(
