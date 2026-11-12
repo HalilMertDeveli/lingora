@@ -112,18 +112,6 @@ Bunlar `fillBlank` sorularıydı: `s3u2l1#4`, `s3u2l2#1`, `s3u2l2#3`, `s3u3l1#2`
 
 ## Düzeltilemeyen ve kararsız kalanlar
 
-**Karar gerekiyor: rehberdeki çözümlü örnekle aynı alıştırmalar (YDS içerik ekibi)**
-
-Bu ünitelerde rehberin "Örnek çözüm" bölümü bir alıştırmayla birebir ya da neredeyse aynı ve cevabı veriyor:
-
-- `ys1u11l4#1`, `ys1u13l4#1`
-- `ys3u7l2#6`, `ys3u8l3#3`/`#5`/`#9`, `ys3u9l2#6`, `ys3u10l3#3` (rehberdeki diğer örnekler de `ys3u10l3` sorularıyla örtüşüyor), `ys3u11l2#1`/`#5`, `ys3u11l3#7`
-- `ys4u6l1#5`, `ys4u7l2#6`, `ys4u8l2#0`, `ys4u9l2#2`
-
-Bu örnekler kasıtlı da olabilir ("önce çözümlü örnek, sonra aynısını kendin yap"). Kelime ünitelerindeki 7 benzer soruyu yeniden yazdım (yukarıda). Okuma ve soru tipi ünitelerinde ise örnek, stratejinin adım adım gösterimine bağlı olduğundan dokunmadım.
-
-Öneri: Alıştırmanın cümlesini değiştirmek. Rehberin değil, çünkü rehber stratejiyi anlatıyor. Böylece geri çağırma pratiği gerçekten çalışır.
-
 **Sınırda, düzeltme yapılmadı**
 
 - `s2u6l2#2`, `s2u10l2#1`: "Are there some…?" soru cümlesinde teklif ya da olumlu beklenti için mümkün. Çeviri "hiç" dediği için cevap *any*. Ders some/any ayrımını öğretiyor.
@@ -141,8 +129,32 @@ Bu örnekler kasıtlı da olabilir ("önce çözümlü örnek, sonra aynısını
 - `ys1u4t#5` ile `ys1u4l3#6`: aynı şıklar, farklı cümleler.
 - `ys4u9l3#5` (Kerro adası) ile `ys4u6t#12–13` (Pereth adası): içerik çok benzer, soru türleri farklı. Gelecekte biri başka bir konuya taşınabilir.
 
+## İkinci tur (v2)
+
+İlk turdan sonra iki karar alındı ve uygulandı.
+
+**1. Rehber örneğiyle aynı alıştırmalar: alıştırma değişir, rehber kalır**
+
+- Kural: Rehberin öğretici örneği aynen kalır. Onunla birebir ya da neredeyse aynı olan alıştırma, aynı beceri ve zorlukta yeni bir cümle, parça ve şıklarla yeniden yazılır.
+- ID, alıştırma türü, şık sayısı ve doğru şıkkın konumu değişmez.
+- Bütün sınav dosyalarında rehber ile alıştırma arasındaki 5 kelimelik dizi örtüşmesi tarandı.
+  - İlk turda not edilenlerle birlikte 57 kopya bulundu: LGS'de 4, YDS'de 53. Hepsi yeniden yazıldı.
+  - Tarama tekrarlandığında yalnızca hedef kalıbın kendisi ortak kaldı ("Have you ever been to").
+- Okuma parçası ortak olan dört soruda (`ys3u11l2#1`, `ys3u11l2#5`, `ys3u11l3#7`, `ys4u8l2#0`) parçaya dokunulmadı; yalnızca soru değişti.
+- Parçanın kendisi rehber örneği olan dört soruda (`ys3u7l2#6`, `ys3u9l2#6`, `ys3u10l3#3`, `ys4u9l2#2`) yeni parça yazıldı.
+- Yeni 57 soru, cevapları gizlenerek bağımsız bir çözücüye verildi. Hepsinde tek doğru şık bulundu ve sonuç anahtarla aynıydı.
+  - Sınırda kalan tek çeldirici düzeltildi: `ys1u6l2#5`'te "That" yerine "Unless".
+
+**2. Şıkkı konumla anma kuralı genişletildi (`content_quality_test`)**
+
+- Kural tek bir yardımcı işlevde (`_namesOptionByPosition`) toplandı. Artık şu biçimler de yakalanıyor:
+  - "birinci şık", "sonuncu şık"
+  - "seçeneği" gibi ekli biçimler (eski kural "seçenek" yazımını arıyordu, "seçeneği"ni kaçırıyordu)
+  - Büyük harfle "İkinci" (Dart, büyük/küçük harf duyarsız eşleşmede İ harfini i'ye çevirmiyor)
+  - Harfli biçimler: "A şıkkı", "C) seçeneği"
+- Kuralın kendi testi var.
+- Mevcut içerikte yeni kurala takılan üç açıklama şık metniyle yeniden yazıldı: `ys1u8l4#0` ve `assets/exams/yds.json` içinde iki soru.
+
 ## Sonraki adımlar için öneriler
 
-- `content_quality_test` konum yasağı düzenli ifadesi "ilk/ikinci/…/son şık"ı yakalıyor, ama "birinci şık"ı yakalamıyor. Bu yüzden `ys2u5t#17` testten geçmişti. Düzenli ifadeye `birinci` eklenmeli.
-  - Paralel içerik PR'larını bozmamak için bu turda yapmadım.
 - `tr_en.json` (Bölüm 1) ve `pro_*.json` için aynı tur yapılabilir.
