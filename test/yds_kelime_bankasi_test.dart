@@ -109,11 +109,14 @@ void main() {
     expect(entries.map((e) => (e['word'] as String).toLowerCase()).toSet().length, entries.length);
     expect([for (final e in entries) e['rank']], [for (var i = 1; i <= entries.length; i++) i]);
     final topics = [for (final t in vocab['topics'] as List) (t as Map)['name']];
-    expect(topics, [
+    // Bank units first, then (Faz 2c) the old path's units for the ydm_ cards.
+    final bankTopics = [
       for (final (sec, file, units, _, _) in _banks)
         if (File(file).existsSync())
           for (var i = 1; i <= units; i++) '${sec}u$i',
-    ]);
+    ];
+    expect(topics.take(bankTopics.length), bankTopics);
+    expect(topics.skip(bankTopics.length).every((t) => RegExp(r'^ys[1-4]u\d+$').hasMatch('$t')), isTrue);
     // The app reads the cards through VocabBundle (YDS example contexts: genel/akademik/haber).
     final bundle = VocabBundle.fromJson(vocab);
     expect(bundle.entries.length, entries.length);
