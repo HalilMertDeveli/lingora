@@ -1160,7 +1160,9 @@
       "unitIds": [
         "ys4u1"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys12u1"
+      ],
       "grammar": "—",
       "questionWork": "Karışık (tam dağılım)",
       "mock": "Tam deneme 7 (yeni: yds_m15)",
@@ -1185,7 +1187,9 @@
       "unitIds": [
         "ys4u2"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys12u2"
+      ],
       "grammar": "—",
       "questionWork": "Karışık (tam dağılım)",
       "mock": "Tam deneme 8 (yds_m1, ys4u2)",
@@ -1210,7 +1214,9 @@
       "unitIds": [
         "ys4u3"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys12u3"
+      ],
       "grammar": "—",
       "questionWork": "Bölüm süre çalışması",
       "mock": "Tam deneme 9 (yds_m2, ys4u3)",
@@ -1235,7 +1241,9 @@
       "unitIds": [
         "ys4u4"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys12u4"
+      ],
       "grammar": "—",
       "questionWork": "Hata defteri yoğun",
       "mock": "Tam deneme 10 (yds_m3, ys4u4)",
@@ -1260,7 +1268,9 @@
       "unitIds": [
         "ys4u5"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys12u5"
+      ],
       "grammar": "—",
       "questionWork": "Zayıf tip (analize göre)",
       "mock": "Tam deneme 11 (yds_m4, ys4u5)",
@@ -1285,7 +1295,9 @@
       "unitIds": [
         "ys4u6"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys12u6"
+      ],
       "grammar": "—",
       "questionWork": "Zayıf tip",
       "mock": "Tam deneme 12 (yds_m5, ys4u6) ve 13 (yeni: yds_m16)",
@@ -1300,7 +1312,8 @@
           "kind": "full",
           "id": "yds_m16",
           "size": 80,
-          "minutes": 180
+          "minutes": 180,
+          "yokdil": "yokdil_m1"
         }
       ],
       "newWords": 110,
@@ -1316,7 +1329,9 @@
       "unitIds": [
         "ys4u7"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys12u7"
+      ],
       "grammar": "—",
       "questionWork": "Zayıf tip",
       "mock": "Tam deneme 14 (yds_m6, ys4u7) ve 15 (yeni: yds_m17)",
@@ -1347,7 +1362,9 @@
       "unitIds": [
         "ys4u8"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys12u8"
+      ],
       "grammar": "—",
       "questionWork": "Zayıf tip",
       "mock": "Tam deneme 16 (yds_m7, ys4u8) ve 17 (yeni: yds_m18)",
@@ -1362,7 +1379,8 @@
           "kind": "full",
           "id": "yds_m18",
           "size": 80,
-          "minutes": 180
+          "minutes": 180,
+          "yokdil": "yokdil_m2"
         }
       ],
       "newWords": 110,
@@ -1393,7 +1411,8 @@
           "kind": "full",
           "id": "yds_m19",
           "size": 80,
-          "minutes": 180
+          "minutes": 180,
+          "yokdil": "yokdil_m3"
         }
       ],
       "newWords": 0,
