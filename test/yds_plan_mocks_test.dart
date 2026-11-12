@@ -86,4 +86,22 @@ void main() {
     // ys11 is shipped in Faz 3d: its three half mocks (plan weeks 22, 24, 27) must all exist.
     if (shipped.contains('ys11')) expect(ids, containsAll(['ys11u1m', 'ys11u2m', 'ys11u3m']));
   });
+
+  // Faz 4c: a YÖKDİL learner takes a YÖKDİL-format mock in the weeks whose plan mock names one ("yokdil").
+  test('every YÖKDİL mock the plan names is, once shipped, an 80-question 180-minute YÖKDİL mock', () {
+    final named = [
+      for (final (w, m) in planMocks)
+        if (m['yokdil'] != null) (w, m['yokdil'] as String),
+    ];
+    expect(named.map((x) => x.$2), containsAll(['yokdil_m1', 'yokdil_m2', 'yokdil_m3']));
+    for (final (w, id) in named) {
+      final mock = packMocks[id];
+      if (mock == null) continue; // written in a later phase
+      final qs = (mock['questions'] as List).cast<Map<String, dynamic>>();
+      expect([qs.length, mock['minutes']], [80, 180], reason: 'week ${w['week']} $id');
+      // YÖKDİL layout: its own sections, no dialogue or restatement.
+      expect(qs.every((q) => (q['section'] as String).startsWith('yokdil_')), isTrue, reason: id);
+      expect(qs.where((q) => q['qtype'] == 'dialogue' || q['qtype'] == 'restatement'), isEmpty, reason: id);
+    }
+  });
 }

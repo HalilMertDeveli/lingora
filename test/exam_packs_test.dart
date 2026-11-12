@@ -41,6 +41,18 @@ const ydsLayout = {
 };
 const lgsLayout = {'lgs_vocab': 2, 'lgs_dialogue': 2, 'lgs_reading': 4, 'lgs_situation': 2};
 
+/// YÖKDİL-format mocks in the YDS pack (YDS Faz 4c): no dialogue or restatement.
+const yokdilLayout = {
+  'yokdil_vocab': 6,
+  'yokdil_grammar': 14,
+  'yokdil_cloze': 10,
+  'yokdil_completion': 11,
+  'yokdil_translation': 12,
+  'yokdil_reading': 15,
+  'yokdil_paragraph': 6,
+  'yokdil_irrelevant': 6,
+};
+
 ExamPackContent readPack(ExamPack p) =>
     ExamPackContent.fromJson(jsonDecode(File(p.asset).readAsStringSync()) as Map<String, dynamic>);
 
@@ -229,13 +241,18 @@ void main() {
         final layout = pack == ExamPack.yds ? ydsLayout : lgsLayout;
         expect(c.examId, pack.examId);
         expect(c.optionCount, bank.optionCount);
-        expect(c.mocks, hasLength(pack == ExamPack.yds ? 14 : 4));
-        expect(c.sections.map((s) => s.id).toSet(), layout.keys.toSet());
+        // YDS: 20 YDS mocks + 3 YÖKDİL-format mocks (Faz 4c).
+        expect(c.mocks, hasLength(pack == ExamPack.yds ? 23 : 4));
+        expect(
+          c.sections.map((s) => s.id).toSet(),
+          pack == ExamPack.yds ? {...layout.keys, ...yokdilLayout.keys} : layout.keys.toSet(),
+        );
         final bankTexts = {for (final q in bank.allQuestions) q.text};
         final letters = List.filled(c.optionCount, 0);
         for (final m in c.mocks) {
           expect(m.minutes, pack == ExamPack.yds ? 180 : 15);
-          expect(m.questions, hasLength(layout.values.reduce((a, b) => a + b)), reason: m.id);
+          final mockLayout = m.id.startsWith('yokdil_') ? yokdilLayout : layout;
+          expect(m.questions, hasLength(mockLayout.values.reduce((a, b) => a + b)), reason: m.id);
           final perSection = <String, int>{};
           for (final q in m.questions) {
             perSection[q.section!] = (perSection[q.section!] ?? 0) + 1;
@@ -259,7 +276,7 @@ void main() {
             }
             letters[q.answer]++;
           }
-          expect(perSection, layout, reason: '${m.id} section proportions');
+          expect(perSection, mockLayout, reason: '${m.id} section proportions');
         }
         final total = letters.reduce((a, b) => a + b);
         expect(letters.reduce(max), lessThan(total * 0.35), reason: 'answer letters $letters');
