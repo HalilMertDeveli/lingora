@@ -21,6 +21,8 @@ import 'placement_screen.dart';
 import 'pronunciation_screen.dart';
 import 'reading_screen.dart';
 import 'speed_match_screen.dart';
+import 'study/srs_review_screen.dart';
+import '../study/review_queue.dart';
 
 /// "Pratik" tab: every practice tool in one place, whatever track is open.
 ///
@@ -46,9 +48,13 @@ class PracticeHubScreen extends ConsumerWidget {
     final track = ref.watch(trackProvider);
     final course = ref.watch(courseProvider).value;
     final premium = ref.watch(premiumProvider);
-    final mistakes = p.mistakes.length;
-    // Mistakes resolve in the open course (an exam path keeps its own).
-    final mistakeQueue = course == null ? const <LessonItem>[] : mistakeItems(course, p.mistakes);
+    final today = dayKey(ref.watch(clockProvider)());
+    // The error notebook: questions come back after 1, 3, 7 and 21 days.
+    // They resolve in the open course (an exam path keeps its own).
+    final mistakeQueue = course == null ? const <LessonItem>[] : mistakeItems(course, p.mistakesDue(today));
+    final mistakes = mistakeQueue.length;
+    final cards = ref.watch(reviewQueueProvider(defaultNewWordsPerDay));
+    final cardCount = cards == null ? 0 : cards.cards.length;
 
     void fullScreen(Widget screen) =>
         Navigator.of(context).push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => screen));
@@ -91,12 +97,28 @@ class PracticeHubScreen extends ConsumerWidget {
           const SectionLabel('TEKRAR'),
           const SizedBox(height: 8),
           _HubTile(
+            key: const Key('hub-cards'),
+            icon: Icons.style_rounded,
+            emoji: '🔁',
+            color: Brand.success,
+            title: 'Tekrar kartları',
+            subtitle: cardCount == 0
+                ? 'Kelime dersi bitirdikçe kartların gelir'
+                : 'Bugün $cardCount kart: aralıklı tekrar',
+            badge: cardCount > 0 ? '$cardCount' : null,
+            onTap: () => openReviewCards(context),
+          ),
+          _HubTile(
             key: const Key('hub-mistakes'),
             icon: Icons.fitness_center_rounded,
             emoji: '💪',
             color: Brand.primary,
             title: 'Hatalarını çalış',
-            subtitle: mistakes == 0 ? 'Şu an çalışılacak hata yok' : '$mistakes soru seni bekliyor',
+            subtitle: mistakes > 0
+                ? '$mistakes soru bugün tekrar zamanında'
+                : p.mistakes.isEmpty
+                ? 'Şu an çalışılacak hata yok'
+                : 'Hata defterinde ${p.mistakes.length} soru, sırası gelince döner',
             badge: mistakes > 0 ? '$mistakes' : null,
             onTap: mistakeQueue.isEmpty
                 ? null

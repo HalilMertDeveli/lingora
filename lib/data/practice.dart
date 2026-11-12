@@ -58,8 +58,8 @@ List<LessonItem> unitTestItems(Unit unit, [Random? random]) {
 List<LessonItem> testItems(Unit unit, PathNode test, [Random? random]) =>
     test.exercises.isNotEmpty ? lessonItems(test) : unitTestItems(unit, random);
 
-/// Resolves saved mistake keys, most recent first.
-List<LessonItem> mistakeItems(Course course, List<String> keys) {
+/// Resolves saved mistake keys, most recent first, at most [limit].
+List<LessonItem> mistakeItems(Course course, List<String> keys, {int limit = practiceSize}) {
   final byId = {for (final n in course.allNodes) n.id: n};
   final items = <LessonItem>[];
   for (final key in keys.reversed) {
@@ -69,7 +69,7 @@ List<LessonItem> mistakeItems(Course course, List<String> keys) {
     final i = int.tryParse(key.substring(hash + 1));
     if (node == null || i == null || i >= node.exercises.length) continue;
     items.add((key: key, ex: node.exercises[i]));
-    if (items.length == practiceSize) break;
+    if (items.length == limit) break;
   }
   return items;
 }

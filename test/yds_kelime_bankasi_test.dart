@@ -132,18 +132,16 @@ void main() {
       expect(bad, isEmpty, reason: bad.take(10).join('\n'));
     });
 
-    // The app reads the cards through VocabBundle once yds-yontem adds the YDS example contexts
-    // (genel/akademik/haber) to VocabContext; until then nothing loads yds.json.
-    // TODO(yds-icerik): drop the skip once yds-yontem PR-A (VocabContext YDS keys) is merged.
-    test(
-      'cards load through VocabBundle',
-      skip: VocabContext.values.any((c) => c.key == 'genel') ? false : 'VocabContext has no YDS contexts yet',
-      () {
-        final bundle = VocabBundle.fromJson(vocab);
-        expect(bundle.entries.length, (vocab['entries'] as List).length);
-        expect(bundle.topics.map((t) => t.name).toSet(), containsAll(bundle.entries.map((e) => e.topic)));
-      },
-    );
+    // The app reads the cards through VocabBundle (YDS example contexts: genel/akademik/haber).
+    test('cards load through VocabBundle', () {
+      final bundle = VocabBundle.fromJson(vocab);
+      expect(bundle.entries.length, (vocab['entries'] as List).length);
+      // Every card's topic is a listed unit (compared as sets: 800 cards, 10 topics).
+      expect(
+        bundle.topics.map((t) => t.name).toSet(),
+        containsAll(bundle.entries.map((e) => e.topic).toSet()),
+      );
+    });
 
     test('each unit introduces its card words in its vocab lessons', () {
       final bank = _read(_bank);

@@ -8,6 +8,7 @@ import '../core/text.dart';
 import '../data/course_repository.dart';
 import '../data/progress.dart';
 import '../models/exam.dart';
+import '../study/answer_recorder.dart';
 import '../models/exam_pack.dart';
 import '../services/billing/premium.dart';
 import '../services/growth/analytics.dart';
@@ -271,6 +272,15 @@ class ExamSessionScreen extends ConsumerStatefulWidget {
 class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   final ExamAnswers _answers = {};
   final _started = DateTime.now();
+
+  /// Time spent on each question (mocks allow going back and forth).
+  final Map<int, Duration> _times = {};
+  DateTime _shownAt = DateTime.now();
+
+  /// Answer log source of this attempt; unique, so its analysis can find it.
+  late final String logSource = widget.mock
+      ? 'mock:${widget.nodeId ?? widget.fullMock?.id ?? widget.exam.id}@${_started.millisecondsSinceEpoch}'
+      : 'bank';
   int _pos = 0;
   int? _picked;
   bool _revealed = false;
@@ -313,10 +323,18 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   /// Mock exams: move freely between questions; blanks are allowed.
   void _goTo(int pos) {
     if (pos < 0 || pos >= widget.questions.length) return;
+    _leave();
     setState(() {
       _pos = pos;
       _picked = _answers[pos];
     });
+  }
+
+  /// Adds the time on the current question to its total.
+  void _leave() {
+    final now = DateTime.now();
+    _times[_pos] = (_times[_pos] ?? Duration.zero) + now.difference(_shownAt);
+    _shownAt = now;
   }
 
   void _check() {
@@ -338,6 +356,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
       _finish();
       return;
     }
+    _leave();
     setState(() {
       _pos++;
       _picked = null;
@@ -350,6 +369,10 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     _timer?.cancel();
     _timer = null;
     final qs = widget.questions;
+    _leave();
+    // A practice set logs only the questions reached.
+    final reached = widget.mock ? qs : qs.take(_answers.length).toList();
+    recordExamAnswers(ref, questions: reached, answers: _answers, times: _times, source: logSource);
     final correct = [
       for (final e in _answers.entries)
         if (qs[e.key].answer == e.value) e.key,
