@@ -26,6 +26,18 @@
 | Yarım deneme | **8** (40 soru / 90 dk) | Konu evrelerinde ölçme ve tanı |
 | Dilbilgisi | A1 → C1 sınav dilbilgisi | Genel kurs s1–s8 + YDS ys1 |
 
+**Rehberli saat karşılaştırması:** Cambridge'in kümülatif rehberli saat değerleri `docs/genel-arastirma.md` dosyasında. Planın saatleri bunlarla şöyle karşılaşıyor:
+
+| Evre sonu | Planın kümülatif saati | Cambridge değeri |
+|---|---|---|
+| A2 (H10) | ≈ 210 sa | 180–200 |
+| B1 (H20) | ≈ 435 sa | 350–400 |
+| B2 (H34) | ≈ 750 sa | 500–600 |
+
+Fazla saat sınav pratiğinden ve akademik kelimeden gelir.
+
+**Birim notu:** Kelime hedefleri bu belgede **aile** olarak verilir. Genel kurs belgesi **lemma** kullanır. Aile sayısı lemma sayısından küçüktür.
+
 **Saat dağılımı:** Nation'ın dört kolu, sınava uyarlanmış hâliyle:
 
 | Kol | Pay |
