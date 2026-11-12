@@ -41,8 +41,8 @@
               "translation": "Raporu bitirdikten sonra Deniz onu doğrudan Rotterdam'a gönderdi.",
               "answer": "Having finished",
               "choices": [
-                "Having finished",
                 "Finished",
+                "Having finished",
                 "Having been finished"
               ]
             },
@@ -52,8 +52,8 @@
               "translation": "1998'de inşa edilen gemi, filonun en eskilerinden biriydi.",
               "answer": "Built",
               "choices": [
-                "Built",
                 "Building",
+                "Built",
                 "Having built"
               ]
             },
@@ -155,7 +155,7 @@
               "choices": [
                 {
                   "text": "Opened the door, I saw a parcel.",
-                  "emoji": "📦"
+                  "emoji": "🚪"
                 },
                 {
                   "text": "Opening the door, a parcel lay.",
@@ -163,11 +163,11 @@
                 },
                 {
                   "text": "Opening the door, I saw a parcel.",
-                  "emoji": "📦"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Having open the door, I saw it.",
-                  "emoji": "📦"
+                  "emoji": "🔑"
                 }
               ]
             },
@@ -221,12 +221,12 @@
                   "emoji": "🗣️"
                 },
                 {
-                  "text": "break the news",
-                  "emoji": "📰"
-                },
-                {
                   "text": "open the news",
                   "emoji": "📂"
+                },
+                {
+                  "text": "break the news",
+                  "emoji": "📰"
                 },
                 {
                   "text": "crack the news",
@@ -251,8 +251,8 @@
               "translation": "Ayrıntılar hâlâ geliyor, yani tablo değişebilir.",
               "answer": "coming",
               "choices": [
-                "coming",
                 "going",
+                "coming",
                 "getting"
               ]
             },
@@ -262,9 +262,9 @@
               "translation": "Polis şu aşamada bir suç olasılığını dışladı.",
               "answer": "ruled",
               "choices": [
-                "ruled",
                 "put",
-                "taken"
+                "taken",
+                "ruled"
               ]
             },
             {
@@ -362,20 +362,20 @@
               "answer": "Officials have yet to comment.",
               "choices": [
                 {
-                  "text": "Nobody's said anything yet, lol.",
-                  "emoji": "🎙️"
-                },
-                {
                   "text": "Officials have yet to comment.",
                   "emoji": "🎙️"
                 },
                 {
+                  "text": "Nobody's said anything yet, lol.",
+                  "emoji": "😂"
+                },
+                {
                   "text": "The bosses kept quiet, obviously.",
-                  "emoji": "🎙️"
+                  "emoji": "🙄"
                 },
                 {
                   "text": "Officials don't wanna talk.",
-                  "emoji": "🎙️"
+                  "emoji": "🤐"
                 }
               ]
             },
@@ -497,8 +497,8 @@
               "kind": "question",
               "prompt": "Boğaz yeniden açıldığında kaç gemi bekliyordu?",
               "choices": [
-                "Kırktan fazla",
                 "Dokuz kadar",
+                "Kırktan fazla",
                 "Yirmi kadar"
               ],
               "answer": "Kırktan fazla"
@@ -528,9 +528,9 @@
               "kind": "question",
               "prompt": "Mia 'Which is what companies always say' derken ne ima ediyor?",
               "choices": [
-                "Bu cevabın kalıplaşmış bir kaçamak olduğunu",
                 "Şirkete tamamen hak verdiğini",
-                "Kazanın nedenini bildiğini"
+                "Kazanın nedenini bildiğini",
+                "Bu cevabın kalıplaşmış bir kaçamak olduğunu"
               ],
               "answer": "Bu cevabın kalıplaşmış bir kaçamak olduğunu"
             },
@@ -566,8 +566,8 @@
               "kind": "question",
               "prompt": "Bu bölümün ana konusu ne?",
               "choices": [
-                "Boğaz'da arızalanan bir geminin trafiği nasıl durdurduğu ve etkileri",
                 "Deniz'in şirketinin açtığı yeni rotalar",
+                "Boğaz'da arızalanan bir geminin trafiği nasıl durdurduğu ve etkileri",
                 "Gemi kazalarına karşı çıkarılan yeni kurallar"
               ],
               "answer": "Boğaz'da arızalanan bir geminin trafiği nasıl durdurduğu ve etkileri"
@@ -609,9 +609,9 @@
               "translation": "Alarmı duyar duymaz personel binayı sakince terk etti.",
               "answer": "On hearing",
               "choices": [
-                "On hearing",
                 "On heard",
-                "In hearing"
+                "In hearing",
+                "On hearing"
               ]
             },
             {
@@ -720,19 +720,19 @@
               "choices": [
                 {
                   "text": "Obviously the driver. Idiot.",
-                  "emoji": "🚗"
+                  "emoji": "😠"
                 },
                 {
                   "text": "Who cares whose fault it is?",
-                  "emoji": "🚗"
-                },
-                {
-                  "text": "It's too early to say, really.",
-                  "emoji": "🚗"
+                  "emoji": "🤷"
                 },
                 {
                   "text": "I'm not telling you that.",
-                  "emoji": "🚗"
+                  "emoji": "🙊"
+                },
+                {
+                  "text": "It's too early to say, really.",
+                  "emoji": "🤔"
                 }
               ]
             },
@@ -742,20 +742,20 @@
               "answer": "I'm not sure it was quite that bad.",
               "choices": [
                 {
+                  "text": "I'm not sure it was quite that bad.",
+                  "emoji": "🤝"
+                },
+                {
                   "text": "You're exaggerating, as usual.",
-                  "emoji": "👥"
+                  "emoji": "🙄"
                 },
                 {
                   "text": "That's totally wrong.",
-                  "emoji": "👥"
+                  "emoji": "💬"
                 },
                 {
                   "text": "Calm down, it was nothing.",
-                  "emoji": "👥"
-                },
-                {
-                  "text": "I'm not sure it was quite that bad.",
-                  "emoji": "👥"
+                  "emoji": "😒"
                 }
               ]
             },
@@ -832,9 +832,9 @@
               "translation": "Eski kütüphaneyi kapatma kararı herkesi şaşırttı.",
               "answer": "decision",
               "choices": [
-                "decision",
                 "deciding",
-                "decide"
+                "decide",
+                "decision"
               ]
             },
             {
@@ -843,9 +843,9 @@
               "translation": "Çalışma, uyku ile bellek arasında açık bir bağlantı buldu.",
               "answer": "between",
               "choices": [
-                "between",
                 "among",
-                "of"
+                "of",
+                "between"
               ]
             },
             {
@@ -854,8 +854,8 @@
               "translation": "Otopark ücretinin kaldırılması ziyaretçi sayısında düşüşe yol açtı.",
               "answer": "removal",
               "choices": [
-                "removal",
                 "removing",
+                "removal",
                 "remove"
               ]
             },
@@ -927,20 +927,20 @@
               "answer": "There was a rapid rise in prices.",
               "choices": [
                 {
-                  "text": "Prices went up really fast.",
+                  "text": "There was a rapid rise in prices.",
                   "emoji": "📊"
+                },
+                {
+                  "text": "Prices went up really fast.",
+                  "emoji": "🚀"
                 },
                 {
                   "text": "Prices, like, rose quickly.",
-                  "emoji": "📊"
+                  "emoji": "🤷"
                 },
                 {
                   "text": "Prices was rising quick.",
-                  "emoji": "📊"
-                },
-                {
-                  "text": "There was a rapid rise in prices.",
-                  "emoji": "📊"
+                  "emoji": "🗨️"
                 }
               ]
             },
@@ -990,20 +990,20 @@
               "answer": "carry out research",
               "choices": [
                 {
-                  "text": "make a research",
-                  "emoji": "🔬"
-                },
-                {
                   "text": "carry out research",
                   "emoji": "🔬"
                 },
                 {
+                  "text": "make a research",
+                  "emoji": "🔤"
+                },
+                {
                   "text": "do a researches",
-                  "emoji": "🔬"
+                  "emoji": "📚"
                 },
                 {
                   "text": "take research",
-                  "emoji": "🔬"
+                  "emoji": "🤲"
                 }
               ]
             },
@@ -1024,8 +1024,8 @@
               "translation": "Bu kadar küçük bir çalışmadan kesin sonuçlar çıkarmak için çok erken.",
               "answer": "draw",
               "choices": [
-                "draw",
                 "take",
+                "draw",
                 "pull"
               ]
             },
@@ -1136,19 +1136,19 @@
               "choices": [
                 {
                   "text": "The data proves it 100%.",
-                  "emoji": "📈"
+                  "emoji": "💯"
+                },
+                {
+                  "text": "Science says so, period.",
+                  "emoji": "🔚"
                 },
                 {
                   "text": "The data suggest a link.",
                   "emoji": "📈"
                 },
                 {
-                  "text": "Science says so, period.",
-                  "emoji": "📈"
-                },
-                {
                   "text": "It's obviously true, guys.",
-                  "emoji": "📈"
+                  "emoji": "🙌"
                 }
               ]
             },
@@ -1222,8 +1222,8 @@
               "kind": "question",
               "prompt": "Araştırmada yemekhanelerde ne değiştirildi?",
               "choices": [
-                "Daha küçük tabaklar kullanılmaya başlandı",
                 "Yemek fiyatları düşürüldü",
+                "Daha küçük tabaklar kullanılmaya başlandı",
                 "Menüdeki yemek sayısı azaltıldı"
               ],
               "answer": "Daha küçük tabaklar kullanılmaya başlandı"
@@ -1274,8 +1274,8 @@
               "kind": "question",
               "prompt": "Yemek israfı yaklaşık ne kadar azaldı?",
               "choices": [
-                "Yüzde yirmi yedi",
                 "Yüzde on yedi",
+                "Yüzde yirmi yedi",
                 "Yüzde yetmiş iki"
               ],
               "answer": "Yüzde yirmi yedi"
@@ -1617,8 +1617,8 @@
               "translation": "Batı dışındaki ülkelerde çok az araştırma yapıldı.",
               "answer": "in",
               "choices": [
-                "in",
                 "at",
+                "in",
                 "to"
               ]
             },
@@ -1639,9 +1639,9 @@
               "translation": "Çalışma, müziğin kimlikteki rolüne dikkat çekiyor.",
               "answer": "to",
               "choices": [
-                "to",
                 "on",
-                "at"
+                "at",
+                "to"
               ]
             },
             {
@@ -1650,20 +1650,20 @@
               "answer": "Summary, response, conclusion",
               "choices": [
                 {
-                  "text": "Response, summary, conclusion",
-                  "emoji": "📝"
-                },
-                {
-                  "text": "Conclusion, summary, response",
-                  "emoji": "📝"
-                },
-                {
                   "text": "Summary, response, conclusion",
                   "emoji": "📝"
                 },
                 {
+                  "text": "Response, summary, conclusion",
+                  "emoji": "🔀"
+                },
+                {
+                  "text": "Conclusion, summary, response",
+                  "emoji": "🔁"
+                },
+                {
                   "text": "Summary, conclusion, response",
-                  "emoji": "📝"
+                  "emoji": "↩️"
                 }
               ]
             },
@@ -1749,8 +1749,8 @@
               "translation": "Bu kadar küçük bir tiyatroda hiç böyle bir kalabalık görmemiştim.",
               "answer": "have",
               "choices": [
-                "have",
                 "did",
+                "have",
                 "was"
               ]
             },
@@ -1760,8 +1760,8 @@
               "translation": "Oyunu yazmakla kalmadı, aynı zamanda yönetti de.",
               "answer": "did",
               "choices": [
-                "did",
                 "she",
+                "did",
                 "was"
               ]
             },
@@ -1782,8 +1782,8 @@
               "translation": "Seyirci bir gösterinin ortasında nadiren ayağa kalkar.",
               "answer": "does",
               "choices": [
-                "does",
                 "is",
+                "does",
                 "has"
               ]
             },
@@ -1862,20 +1862,20 @@
               "answer": "Not once did he look at us.",
               "choices": [
                 {
+                  "text": "Not once did he look at us.",
+                  "emoji": "🗨️"
+                },
+                {
                   "text": "Not once he looked at us.",
                   "emoji": "👀"
                 },
                 {
                   "text": "Not once did he looked at us.",
-                  "emoji": "👀"
-                },
-                {
-                  "text": "Not once did he look at us.",
-                  "emoji": "👀"
+                  "emoji": "📝"
                 },
                 {
                   "text": "Not once looked he at us.",
-                  "emoji": "👀"
+                  "emoji": "🔄"
                 }
               ]
             },
@@ -1925,20 +1925,20 @@
               "answer": "stage fright",
               "choices": [
                 {
-                  "text": "scene fear",
-                  "emoji": "🎭"
-                },
-                {
-                  "text": "stage scare",
-                  "emoji": "🎭"
-                },
-                {
                   "text": "stage fright",
                   "emoji": "🎭"
                 },
                 {
+                  "text": "scene fear",
+                  "emoji": "😨"
+                },
+                {
+                  "text": "stage scare",
+                  "emoji": "👻"
+                },
+                {
                   "text": "platform panic",
-                  "emoji": "🎭"
+                  "emoji": "😱"
                 }
               ]
             },
@@ -1948,8 +1948,8 @@
               "translation": "Kadronun en genç oyuncusu gösterinin yıldızı oldu.",
               "answer": "stole",
               "choices": [
-                "stole",
                 "took",
+                "stole",
                 "won"
               ]
             },
@@ -1959,9 +1959,9 @@
               "translation": "Son şarkısı salonu coşturdu.",
               "answer": "down",
               "choices": [
-                "down",
                 "up",
-                "out"
+                "out",
+                "down"
               ]
             },
             {
@@ -1970,8 +1970,8 @@
               "translation": "Gecenin sonunda oyuncular ayakta alkışlandı.",
               "answer": "ovation",
               "choices": [
-                "ovation",
                 "applause",
+                "ovation",
                 "clap"
               ]
             },
@@ -2073,19 +2073,19 @@
               "choices": [
                 {
                   "text": "That was painfully boring.",
-                  "emoji": "🎭"
-                },
-                {
-                  "text": "Why did you even do this?",
-                  "emoji": "🎭"
-                },
-                {
-                  "text": "I slept through act two.",
-                  "emoji": "🎭"
+                  "emoji": "😴"
                 },
                 {
                   "text": "The set design was stunning!",
-                  "emoji": "🎭"
+                  "emoji": "✨"
+                },
+                {
+                  "text": "Why did you even do this?",
+                  "emoji": "🤨"
+                },
+                {
+                  "text": "I slept through act two.",
+                  "emoji": "💤"
                 }
               ]
             },
@@ -2138,9 +2138,9 @@
               "kind": "question",
               "prompt": "Işıklar ne zaman söndü?",
               "choices": [
-                "İkinci perdenin onuncu dakikası civarında",
                 "Birinci perdenin sonunda",
-                "Oyun başlamadan hemen önce"
+                "Oyun başlamadan hemen önce",
+                "İkinci perdenin onuncu dakikası civarında"
               ],
               "answer": "İkinci perdenin onuncu dakikası civarında"
             },
@@ -2169,8 +2169,8 @@
               "kind": "question",
               "prompt": "Marta'nın sözlerinden ne anlaşılıyor?",
               "choices": [
-                "Sorunu oyunun bir parçasıymış gibi gösterdi",
                 "Seyirciden özür diledi",
+                "Sorunu oyunun bir parçasıymış gibi gösterdi",
                 "Oyunu bitirmeyi önerdi"
               ],
               "answer": "Sorunu oyunun bir parçasıymış gibi gösterdi"
@@ -2200,9 +2200,9 @@
               "kind": "question",
               "prompt": "Ayağa kalkan kadın mesleğini ne olarak söyledi?",
               "choices": [
-                "Veteriner",
                 "Doktor",
-                "Elektrikçi"
+                "Elektrikçi",
+                "Veteriner"
               ],
               "answer": "Veteriner"
             },
@@ -2252,9 +2252,9 @@
               "kind": "question",
               "prompt": "Callum o geceyi nasıl anlatıyor?",
               "choices": [
-                "Sevgiyle ve hâlâ biraz şaşkınlıkla",
                 "Öfkeyle ve suçlayarak",
-                "Sıkılmış ve ilgisiz bir tonla"
+                "Sıkılmış ve ilgisiz bir tonla",
+                "Sevgiyle ve hâlâ biraz şaşkınlıkla"
               ],
               "answer": "Sevgiyle ve hâlâ biraz şaşkınlıkla"
             },
@@ -2269,8 +2269,8 @@
               "kind": "question",
               "prompt": "Anının ana fikri ne?",
               "choices": [
-                "Elektrik kesintisi seyircinin yardımıyla unutulmaz bir sahneye dönüştü",
                 "Tiyatronun güvenlik kuralları yetersizdi",
+                "Elektrik kesintisi seyircinin yardımıyla unutulmaz bir sahneye dönüştü",
                 "Eleştirmenler oyunun metnini çok beğendi"
               ],
               "answer": "Elektrik kesintisi seyircinin yardımıyla unutulmaz bir sahneye dönüştü"
@@ -2310,9 +2310,9 @@
               "translation": "Gösteri başlar başlamaz bir telefon çalmaya başladı.",
               "answer": "had",
               "choices": [
-                "had",
                 "did",
-                "has"
+                "has",
+                "had"
               ]
             },
             {
@@ -2421,19 +2421,19 @@
               "choices": [
                 {
                   "text": "You've got no taste at all.",
-                  "emoji": "🎭"
-                },
-                {
-                  "text": "I saw it a bit differently.",
-                  "emoji": "🎭"
+                  "emoji": "😤"
                 },
                 {
                   "text": "Whatever, you're wrong.",
-                  "emoji": "🎭"
+                  "emoji": "🙄"
+                },
+                {
+                  "text": "I saw it a bit differently.",
+                  "emoji": "🙂"
                 },
                 {
                   "text": "Fine, it was awful then.",
-                  "emoji": "🎭"
+                  "emoji": "😑"
                 }
               ]
             },
@@ -2444,19 +2444,19 @@
               "choices": [
                 {
                   "text": "It was OK, I suppose.",
-                  "emoji": "🎵"
-                },
-                {
-                  "text": "Never I have seen like it.",
-                  "emoji": "🎵"
-                },
-                {
-                  "text": "Too loud. Went home early.",
-                  "emoji": "🎵"
+                  "emoji": "😐"
                 },
                 {
                   "text": "Never have I seen anything like it.",
-                  "emoji": "🎵"
+                  "emoji": "🤩"
+                },
+                {
+                  "text": "Never I have seen like it.",
+                  "emoji": "📝"
+                },
+                {
+                  "text": "Too loud. Went home early.",
+                  "emoji": "🔊"
                 }
               ]
             },
@@ -2522,8 +2522,8 @@
               "translation": "Şu an ihtiyacım olan şey, düşünmek için sessiz bir saat.",
               "answer": "What",
               "choices": [
-                "What",
                 "That",
+                "What",
                 "Which"
               ]
             },
@@ -2533,8 +2533,8 @@
               "translation": "Bütçedeki hatayı fark eden müdürü değil, Ayla'ydı.",
               "answer": "who",
               "choices": [
-                "who",
                 "which",
+                "who",
                 "what"
               ]
             },
@@ -2544,9 +2544,9 @@
               "translation": "Herkesi şaşırtan, müdürün ne kadar sakin kaldığıydı.",
               "answer": "was",
               "choices": [
-                "was",
                 "it was",
-                "were"
+                "were",
+                "was"
               ]
             },
             {
@@ -2556,19 +2556,19 @@
               "choices": [
                 {
                   "text": "What shocked me was the price.",
-                  "emoji": "🏷️"
+                  "emoji": "💬"
                 },
                 {
                   "text": "What shocked me it was the price.",
-                  "emoji": "🏷️"
+                  "emoji": "🔤"
                 },
                 {
                   "text": "It shocked me was the price.",
-                  "emoji": "🏷️"
+                  "emoji": "🤔"
                 },
                 {
                   "text": "Which shocked me was the price.",
-                  "emoji": "🏷️"
+                  "emoji": "💭"
                 }
               ]
             },
@@ -2693,20 +2693,20 @@
               "answer": "off the record",
               "choices": [
                 {
-                  "text": "off the record",
-                  "emoji": "🤫"
-                },
-                {
                   "text": "on the record",
                   "emoji": "📝"
                 },
                 {
+                  "text": "off the record",
+                  "emoji": "🤫"
+                },
+                {
                   "text": "out of record",
-                  "emoji": "📤"
+                  "emoji": "💬"
                 },
                 {
                   "text": "under the record",
-                  "emoji": "👇"
+                  "emoji": "🤔"
                 }
               ]
             },
@@ -2716,8 +2716,8 @@
               "translation": "Kayıt dışı bir şey söyleyebilir miyim? Tutanağa geçmesin.",
               "answer": "off",
               "choices": [
-                "off",
                 "out",
+                "off",
                 "outside"
               ]
             },
@@ -2727,9 +2727,9 @@
               "translation": "Müdüre bile olsa düşündüğünü açıkça söyleme alışkanlığı var.",
               "answer": "mind",
               "choices": [
-                "mind",
                 "idea",
-                "thought"
+                "thought",
+                "mind"
               ]
             },
             {
@@ -2878,8 +2878,8 @@
               "kind": "question",
               "prompt": "Matbaa kitabın kaç kopyasını teslim etmiş?",
               "choices": [
-                "Beş bin",
                 "Beş yüz",
+                "Beş bin",
                 "Elli bin"
               ],
               "answer": "Beş bin"
@@ -3062,8 +3062,8 @@
               "kind": "question",
               "prompt": "Rhys'in son sözlerinin tonu nasıl?",
               "choices": [
-                "İsteksiz ve alaycı",
                 "Gerçekten heyecanlı",
+                "İsteksiz ve alaycı",
                 "Öfkeli ve kaba"
               ],
               "answer": "İsteksiz ve alaycı"
@@ -3202,8 +3202,8 @@
               "translation": "Çoğu kurumda kararları, kim davet edilmişse o verir.",
               "answer": "to",
               "choices": [
-                "to",
                 "for",
+                "to",
                 "being"
               ]
             },
@@ -3213,20 +3213,20 @@
               "answer": "I see the appeal, but…",
               "choices": [
                 {
-                  "text": "I see the appeal, but…",
-                  "emoji": "📰"
+                  "text": "This is total nonsense.",
+                  "emoji": "😤"
                 },
                 {
-                  "text": "This is total nonsense.",
-                  "emoji": "📰"
+                  "text": "I see the appeal, but…",
+                  "emoji": "🤝"
                 },
                 {
                   "text": "The writer is clearly naive.",
-                  "emoji": "📰"
+                  "emoji": "🙄"
                 },
                 {
                   "text": "Who even reads transcripts?",
-                  "emoji": "📰"
+                  "emoji": "🤷"
                 }
               ]
             }
@@ -3321,9 +3321,9 @@
               "translation": "Özet, toplantıdan sonraki bir saat içinde herkese ulaşmalı.",
               "answer": "within",
               "choices": [
-                "within",
                 "in",
-                "until"
+                "until",
+                "within"
               ]
             },
             {
@@ -3343,9 +3343,9 @@
               "translation": "Kalıcı bir kaydın caydırdığı şey işte bu yarım kalmış düşünme.",
               "answer": "that",
               "choices": [
-                "that",
                 "what",
-                "who"
+                "who",
+                "that"
               ]
             },
             {
@@ -3354,20 +3354,20 @@
               "answer": "He has a point about deadlines.",
               "choices": [
                 {
-                  "text": "He has a point about deadlines.",
-                  "emoji": "📰"
+                  "text": "He is simply wrong, as usual.",
+                  "emoji": "🔤"
                 },
                 {
-                  "text": "He is simply wrong, as usual.",
-                  "emoji": "📰"
+                  "text": "He has a point about deadlines.",
+                  "emoji": "🤝"
                 },
                 {
                   "text": "Everyone knows this already.",
-                  "emoji": "📰"
+                  "emoji": "🙄"
                 },
                 {
                   "text": "Recording is a stupid idea.",
-                  "emoji": "📰"
+                  "emoji": "😤"
                 }
               ]
             },
@@ -3453,8 +3453,8 @@
               "translation": "Dün Ahmet'i görmüş olamazsın; bütün hafta Berlin'deydi.",
               "answer": "can't",
               "choices": [
-                "can't",
                 "mustn't",
+                "can't",
                 "needn't"
               ]
             },
@@ -3475,9 +3475,9 @@
               "translation": "E-posta için endişelenme. Pekâlâ gözünden kaçmış olabilir; günde yüzlercesini alıyor.",
               "answer": "may",
               "choices": [
-                "may",
                 "must",
-                "can"
+                "can",
+                "may"
               ]
             },
             {
@@ -3487,15 +3487,15 @@
               "choices": [
                 {
                   "text": "You must have misunderstood.",
-                  "emoji": "💭"
+                  "emoji": "💬"
                 },
                 {
                   "text": "You must misunderstood.",
-                  "emoji": "💭"
+                  "emoji": "🔤"
                 },
                 {
                   "text": "You had to misunderstand.",
-                  "emoji": "💭"
+                  "emoji": "🤔"
                 },
                 {
                   "text": "You should have misunderstood.",
@@ -3621,12 +3621,12 @@
               "answer": "a red herring",
               "choices": [
                 {
-                  "text": "a red herring",
-                  "emoji": "🐟"
-                },
-                {
                   "text": "a white lie",
                   "emoji": "🤥"
+                },
+                {
+                  "text": "a red herring",
+                  "emoji": "🐟"
                 },
                 {
                   "text": "a dark horse",
@@ -3655,8 +3655,8 @@
               "translation": "Bahçıvanı ihtimal dışı bırakabiliriz; Antalya'da tatildeydi.",
               "answer": "out",
               "choices": [
-                "out",
                 "off",
+                "out",
                 "away"
               ]
             },
@@ -3817,9 +3817,9 @@
               "kind": "question",
               "prompt": "Piyanonun tuşlarının üzerinde ne bulunmuş?",
               "choices": [
-                "Tek bir kırmızı eldiven",
                 "Bir mektup",
-                "Bir nota defteri"
+                "Bir nota defteri",
+                "Tek bir kırmızı eldiven"
               ],
               "answer": "Tek bir kırmızı eldiven"
             },
@@ -3841,8 +3841,8 @@
               "kind": "question",
               "prompt": "Kerem'e göre piyano neden karayoluyla gelmiş olamaz?",
               "choices": [
-                "Kumda lastik izi yoktu ve tek yol dik bir merdivendi",
                 "Yol o gece trafiğe kapalıydı",
+                "Kumda lastik izi yoktu ve tek yol dik bir merdivendi",
                 "Kumsala giden yol kar yüzünden kapanmıştı"
               ],
               "answer": "Kumda lastik izi yoktu ve tek yol dik bir merdivendi"
@@ -3886,8 +3886,8 @@
               "kind": "question",
               "prompt": "Kafe sahibinin ifadesinden ne anlaşılıyor?",
               "choices": [
-                "Piyano akşam altıdan sonra getirilmiş",
                 "Piyano günlerdir oradaymış",
+                "Piyano akşam altıdan sonra getirilmiş",
                 "Piyanoyu kafe sahibi getirmiş"
               ],
               "answer": "Piyano akşam altıdan sonra getirilmiş"
@@ -3959,8 +3959,8 @@
               "kind": "question",
               "prompt": "Elif yönetmenin cevabını nasıl değerlendiriyor?",
               "choices": [
-                "Bunun gerçek bir inkâr olmadığını düşünüyor",
                 "Yönetmene tamamen inanıyor",
+                "Bunun gerçek bir inkâr olmadığını düşünüyor",
                 "Cevabı çok komik buluyor"
               ],
               "answer": "Bunun gerçek bir inkâr olmadığını düşünüyor"
@@ -3997,8 +3997,8 @@
               "kind": "question",
               "prompt": "Bölümün sonunda gizem hakkında ne söylenebilir?",
               "choices": [
-                "Kesin bir açıklama bulunamadı",
                 "Tiyatro topluluğu her şeyi itiraf etti",
+                "Kesin bir açıklama bulunamadı",
                 "Piyanoyu balıkçıların getirdiği kanıtlandı"
               ],
               "answer": "Kesin bir açıklama bulunamadı"
@@ -4051,9 +4051,9 @@
               "translation": "Işıklar bütün akşam kapalıydı, yani evde olmuş olamaz.",
               "answer": "can't",
               "choices": [
-                "can't",
                 "mustn't",
-                "shouldn't"
+                "shouldn't",
+                "can't"
               ]
             },
             {
@@ -4077,8 +4077,8 @@
               "translation": "Paltosundan hâlâ su damlıyor. Yağmurdan az önce içeri girmiş olmalı.",
               "answer": "must",
               "choices": [
-                "must",
                 "can",
+                "must",
                 "should"
               ]
             },
@@ -4153,12 +4153,8 @@
               "answer": "Are we sure it was him?",
               "choices": [
                 {
-                  "text": "Are we sure it was him?",
-                  "emoji": "💬"
-                },
-                {
                   "text": "That's a stupid theory.",
-                  "emoji": "💬"
+                  "emoji": "🙄"
                 },
                 {
                   "text": "You're obviously wrong.",
@@ -4166,7 +4162,11 @@
                 },
                 {
                   "text": "Him? Don't be ridiculous.",
-                  "emoji": "💬"
+                  "emoji": "😤"
+                },
+                {
+                  "text": "Are we sure it was him?",
+                  "emoji": "🤔"
                 }
               ]
             },
@@ -4176,19 +4176,19 @@
               "answer": "It may have been misfiled.",
               "choices": [
                 {
-                  "text": "It may have been misfiled.",
-                  "emoji": "🗂️"
-                },
-                {
                   "text": "Someone must've stolen it.",
-                  "emoji": "🗂️"
+                  "emoji": "🕵️"
                 },
                 {
                   "text": "Who lost it this time?",
-                  "emoji": "🗂️"
+                  "emoji": "😒"
                 },
                 {
                   "text": "Clearly it's your fault.",
+                  "emoji": "👉"
+                },
+                {
+                  "text": "It may have been misfiled.",
                   "emoji": "🗂️"
                 }
               ]
@@ -4262,8 +4262,8 @@
               "translation": "Her yeni çalışana ilk ay için bir rehber arkadaş atanmasını öneririm.",
               "answer": "be",
               "choices": [
-                "be",
                 "is",
+                "be",
                 "will be"
               ]
             },
@@ -4273,9 +4273,9 @@
               "translation": "Sözleşmenin cumadan önce imzalanması şart.",
               "answer": "be",
               "choices": [
-                "be",
                 "to be",
-                "being"
+                "being",
+                "be"
               ]
             },
             {
@@ -4284,9 +4284,9 @@
               "translation": "Kurul müdürün bizzat gelmesini talep etti.",
               "answer": "appear",
               "choices": [
-                "appear",
                 "appearing",
-                "to appear"
+                "to appear",
+                "appear"
               ]
             },
             {
@@ -4295,9 +4295,9 @@
               "translation": "Acil durumlar dışında akşam yediden sonra çalışanlarla iletişime geçilmemesini öneriyoruz.",
               "answer": "not",
               "choices": [
-                "not",
                 "don't",
-                "doesn't"
+                "doesn't",
+                "not"
               ]
             },
             {
@@ -4306,20 +4306,20 @@
               "answer": "We propose that he be promoted.",
               "choices": [
                 {
-                  "text": "We propose that he be promoted.",
-                  "emoji": "📄"
+                  "text": "We propose him to be promoted.",
+                  "emoji": "🔤"
                 },
                 {
-                  "text": "We propose him to be promoted.",
-                  "emoji": "📄"
+                  "text": "We propose that he be promoted.",
+                  "emoji": "💬"
                 },
                 {
                   "text": "We propose that he is promote.",
-                  "emoji": "📄"
+                  "emoji": "🤔"
                 },
                 {
                   "text": "We propose he gets promoting.",
-                  "emoji": "📄"
+                  "emoji": "💭"
                 }
               ]
             },
@@ -4443,15 +4443,15 @@
                 },
                 {
                   "text": "in immediate effect",
-                  "emoji": "⚡"
+                  "emoji": "🔤"
                 },
                 {
                   "text": "at once effect",
-                  "emoji": "⚡"
+                  "emoji": "🤔"
                 },
                 {
                   "text": "with instant affect",
-                  "emoji": "⚡"
+                  "emoji": "💭"
                 }
               ]
             },
@@ -4461,8 +4461,8 @@
               "translation": "Şirket işe alım sürecini baştan sona incelemeye karar verdi.",
               "answer": "out",
               "choices": [
-                "out",
                 "off",
+                "out",
                 "away"
               ]
             },
@@ -4472,9 +4472,9 @@
               "translation": "Bu bulgular ışığında politika gözden geçirilecek.",
               "answer": "In",
               "choices": [
-                "In",
                 "On",
-                "Under"
+                "Under",
+                "In"
               ]
             },
             {
@@ -4483,9 +4483,9 @@
               "translation": "Yönetim, işten ayrılma oranını düşürmek için acil adımlar atmalı.",
               "answer": "to",
               "choices": [
-                "to",
                 "for",
-                "in"
+                "in",
+                "to"
               ]
             },
             {
@@ -4494,8 +4494,8 @@
               "translation": "Yeni vardiya çizelgesi üç ay boyunca deneme amaçlı uygulanacak.",
               "answer": "on",
               "choices": [
-                "on",
                 "in",
+                "on",
                 "at"
               ]
             },
@@ -4654,8 +4654,8 @@
               "kind": "question",
               "prompt": "Deniz'e göre Kadıköy'deki kafenin asıl riski ne?",
               "choices": [
-                "Bütün bilginin Onur'un kafasında olması",
                 "Kiranın çok yüksek olması",
+                "Bütün bilginin Onur'un kafasında olması",
                 "Stokun hiç kontrol edilmemesi"
               ],
               "answer": "Bütün bilginin Onur'un kafasında olması"
@@ -4692,8 +4692,8 @@
               "kind": "question",
               "prompt": "Moda şubesinde cumartesi gecesi kaç kek atılmış?",
               "choices": [
-                "On dört",
                 "Dört",
+                "On dört",
                 "Kırk"
               ],
               "answer": "On dört"
@@ -4827,8 +4827,8 @@
               "kind": "question",
               "prompt": "Deniz'in son cümlesindeki 'those fourteen cakes' neyi kastediyor?",
               "choices": [
-                "Moda'da bir gecede atılan kekleri",
                 "Onur'un Kadıköy'de yaptığı kekleri",
+                "Moda'da bir gecede atılan kekleri",
                 "Üsküdar'daki kafenin keklerini"
               ],
               "answer": "Moda'da bir gecede atılan kekleri"
@@ -4966,15 +4966,15 @@
                 },
                 {
                   "text": "Like, half the people hated it.",
-                  "emoji": "📊"
+                  "emoji": "😬"
                 },
                 {
                   "text": "Honestly, it was a disaster!",
-                  "emoji": "📊"
+                  "emoji": "😱"
                 },
                 {
                   "text": "Nobody liked anything at all.",
-                  "emoji": "📊"
+                  "emoji": "🗨️"
                 }
               ]
             }
@@ -5070,8 +5070,8 @@
               "translation": "İkili, aynı vardiyaların en azından bir kısmında birlikte çalışmalı.",
               "answer": "the",
               "choices": [
-                "the",
                 "a",
+                "the",
                 "one"
               ]
             },
@@ -5081,9 +5081,9 @@
               "translation": "Önlemlerin hepsi mayıstaki bir sonraki işe alım döneminden önce uygulanabilir.",
               "answer": "before",
               "choices": [
-                "before",
                 "until",
-                "since"
+                "since",
+                "before"
               ]
             },
             {
@@ -5092,9 +5092,9 @@
               "translation": "Her yeni başlayan, deneyimli bir meslektaşla eşleştirilmeli.",
               "answer": "with",
               "choices": [
-                "with",
                 "to",
-                "at"
+                "at",
+                "with"
               ]
             },
             {
@@ -5108,15 +5108,15 @@
                 },
                 {
                   "text": "You guys should look at this.",
-                  "emoji": "📄"
+                  "emoji": "🙋"
                 },
                 {
                   "text": "Someone really must fix this!",
-                  "emoji": "📄"
+                  "emoji": "😤"
                 },
                 {
                   "text": "Maybe check this, if you want?",
-                  "emoji": "📄"
+                  "emoji": "🤷"
                 }
               ]
             },
@@ -5213,8 +5213,8 @@
               "translation": "Kerem çayını şekersiz içiyor, Sam de öyle.",
               "answer": "does",
               "choices": [
-                "does",
                 "is",
+                "does",
                 "has"
               ]
             },
@@ -5235,9 +5235,9 @@
               "translation": "Kadıköy'e dönen daha geç bir tekne var mı? Varsa biraz daha kalabiliriz.",
               "answer": "so",
               "choices": [
-                "so",
                 "it",
-                "that"
+                "that",
+                "so"
               ]
             },
             {
@@ -5345,20 +5345,20 @@
               "answer": "I hope so.",
               "choices": [
                 {
-                  "text": "I hope so.",
-                  "emoji": "☀️"
-                },
-                {
                   "text": "I hope it.",
-                  "emoji": "☀️"
+                  "emoji": "🙃"
                 },
                 {
                   "text": "I hope yes.",
-                  "emoji": "☀️"
+                  "emoji": "😶"
                 },
                 {
                   "text": "I hope that.",
-                  "emoji": "☀️"
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "I hope so.",
+                  "emoji": "🤞"
                 }
               ]
             },
@@ -5408,20 +5408,20 @@
               "answer": "Tell me about it!",
               "choices": [
                 {
-                  "text": "Tell me about it!",
-                  "emoji": "🚗"
-                },
-                {
                   "text": "Tell it to me!",
-                  "emoji": "🚗"
+                  "emoji": "🗣️"
                 },
                 {
                   "text": "Say me about it!",
-                  "emoji": "🚗"
+                  "emoji": "💬"
+                },
+                {
+                  "text": "Tell me about it!",
+                  "emoji": "😩"
                 },
                 {
                   "text": "I tell you it.",
-                  "emoji": "🚗"
+                  "emoji": "🙄"
                 }
               ]
             },
@@ -5431,20 +5431,20 @@
               "answer": "Me neither.",
               "choices": [
                 {
+                  "text": "Me too not.",
+                  "emoji": "📝"
+                },
+                {
+                  "text": "Neither me can.",
+                  "emoji": "🤷"
+                },
+                {
                   "text": "Me neither.",
                   "emoji": "☕"
                 },
                 {
-                  "text": "Me too not.",
-                  "emoji": "☕"
-                },
-                {
-                  "text": "Neither me can.",
-                  "emoji": "☕"
-                },
-                {
                   "text": "I neither.",
-                  "emoji": "☕"
+                  "emoji": "😐"
                 }
               ]
             },
@@ -5454,9 +5454,9 @@
               "translation": "Yarın yağmurda yarı maraton koşuyorum. Yerinde olmak istemezdim!",
               "answer": "than",
               "choices": [
-                "than",
                 "then",
-                "that"
+                "that",
+                "than"
               ]
             },
             {
@@ -5476,9 +5476,9 @@
               "translation": "Sonuçlar cuma açıklanıyor. Hepinize bol şans, parmaklarımı çaprazlıyorum!",
               "answer": "crossed",
               "choices": [
-                "crossed",
                 "cross",
-                "crossing"
+                "crossing",
+                "crossed"
               ]
             },
             {
@@ -5635,8 +5635,8 @@
               "kind": "question",
               "prompt": "Deniz'in patronu İstanbul'da kaç gün kalacak?",
               "choices": [
-                "Dört gün",
                 "İki gün",
+                "Dört gün",
                 "Bir hafta"
               ],
               "answer": "Dört gün"
@@ -5764,9 +5764,9 @@
               "kind": "question",
               "prompt": "Sam e-postayı ne zaman yazmaya karar veriyor?",
               "choices": [
-                "Yarın sabah",
                 "Bu gece",
-                "Hafta sonu"
+                "Hafta sonu",
+                "Yarın sabah"
               ],
               "answer": "Yarın sabah"
             },
@@ -5809,9 +5809,9 @@
               "kind": "question",
               "prompt": "Sam 'So have I' derken neyi kastediyor?",
               "choices": [
-                "O da bir bahane arıyordu",
                 "O da grubu daha önce izledi",
-                "O da bas çalmayı öğreniyor"
+                "O da bas çalmayı öğreniyor",
+                "O da bir bahane arıyordu"
               ],
               "answer": "O da bir bahane arıyordu"
             },
@@ -5929,9 +5929,9 @@
               "translation": "İstemiyorsan bizimle gelmek zorunda değilsin.",
               "answer": "to",
               "choices": [
-                "to",
                 "for",
-                "so"
+                "so",
+                "to"
               ]
             },
             {
@@ -5964,8 +5964,8 @@
               "translation": "Toplantı pazartesiye mi alındı? Öyle görünüyor ama bana kimse resmî olarak söylemedi.",
               "answer": "so",
               "choices": [
-                "so",
                 "it",
+                "so",
                 "that"
               ]
             },
@@ -6040,20 +6040,20 @@
               "answer": "I'd love to, but I can't tonight.",
               "choices": [
                 {
-                  "text": "I'd love to, but I can't tonight.",
-                  "emoji": "🏠"
+                  "text": "No, I won't come.",
+                  "emoji": "🙅"
                 },
                 {
-                  "text": "No, I won't come.",
-                  "emoji": "🏠"
+                  "text": "I'd love to, but I can't tonight.",
+                  "emoji": "🙏"
                 },
                 {
                   "text": "I don't want it.",
-                  "emoji": "🏠"
+                  "emoji": "😒"
                 },
                 {
                   "text": "Maybe. Who knows?",
-                  "emoji": "🏠"
+                  "emoji": "🤷"
                 }
               ]
             },
@@ -6068,15 +6068,15 @@
                 },
                 {
                   "text": "Yes, sure, whatever.",
-                  "emoji": "📅"
+                  "emoji": "🙄"
                 },
                 {
                   "text": "I hope it.",
-                  "emoji": "📅"
+                  "emoji": "😶"
                 },
                 {
                   "text": "Don't ask me that.",
-                  "emoji": "📅"
+                  "emoji": "😠"
                 }
               ]
             },
@@ -6143,8 +6143,8 @@
               "translation": "Kız kardeşim her şeyi telefonundan okuyor, oysa ben hâlâ kâğıdı tercih ediyorum.",
               "answer": "whereas",
               "choices": [
-                "whereas",
                 "given that",
+                "whereas",
                 "so that"
               ]
             },
@@ -6154,9 +6154,9 @@
               "translation": "Sert rüzgâra rağmen açık hava okuması planlandığı gibi yapıldı.",
               "answer": "Notwithstanding",
               "choices": [
-                "Notwithstanding",
                 "Although",
-                "Even though"
+                "Even though",
+                "Notwithstanding"
               ]
             },
             {
@@ -6165,8 +6165,8 @@
               "translation": "Okuma salonunun altıda kapandığı düşünülürse oraya erken gitmeliyiz.",
               "answer": "Given",
               "choices": [
-                "Given",
                 "Giving",
+                "Given",
                 "Despite"
               ]
             },
@@ -6176,9 +6176,9 @@
               "translation": "Yeni ücret, her üyenin aynı miktarı ödediği ölçüde adil.",
               "answer": "as",
               "choices": [
-                "as",
                 "that",
-                "so"
+                "so",
+                "as"
               ]
             },
             {
@@ -6351,20 +6351,20 @@
               "answer": "By contrast,",
               "choices": [
                 {
+                  "text": "On contrary,",
+                  "emoji": "🔄"
+                },
+                {
+                  "text": "At contrast,",
+                  "emoji": "📍"
+                },
+                {
                   "text": "By contrast,",
                   "emoji": "⚖️"
                 },
                 {
-                  "text": "On contrary,",
-                  "emoji": "⚖️"
-                },
-                {
-                  "text": "At contrast,",
-                  "emoji": "⚖️"
-                },
-                {
                   "text": "For contrast,",
-                  "emoji": "⚖️"
+                  "emoji": "🎯"
                 }
               ]
             },
@@ -6374,8 +6374,8 @@
               "translation": "Yeni kütüphane uygulaması eski kart kataloğundan çok farklı.",
               "answer": "from",
               "choices": [
-                "from",
                 "to",
+                "from",
                 "of"
               ]
             },
@@ -6385,9 +6385,9 @@
               "translation": "Hizmet açısından küçük kitapçı büyük zincirlerle aynı düzeyde.",
               "answer": "with",
               "choices": [
-                "with",
                 "to",
-                "by"
+                "by",
+                "with"
               ]
             },
             {
@@ -6407,9 +6407,9 @@
               "translation": "E-okuyucuların çocuklara daha çok okutup okutmadığı konusunda henüz kesin bir karar yok.",
               "answer": "out",
               "choices": [
-                "out",
                 "off",
-                "over"
+                "over",
+                "out"
               ]
             },
             {
@@ -6541,8 +6541,8 @@
               "kind": "question",
               "prompt": "Değişiklikten önce kütüphanede durum nasıldı?",
               "choices": [
-                "Ne gerçekten sessizdi ne de canlı",
                 "Tamamen sessizdi",
+                "Ne gerçekten sessizdi ne de canlı",
                 "Yalnızca öğrenciler geliyordu"
               ],
               "answer": "Ne gerçekten sessizdi ne de canlı"
@@ -6645,8 +6645,8 @@
               "kind": "question",
               "prompt": "Piotr'un değişikliğe karşı tutumu nasıl?",
               "choices": [
-                "Kırgın ama biraz esprili",
                 "Tamamen olumlu",
+                "Kırgın ama biraz esprili",
                 "İlgisiz ve sıkılmış"
               ],
               "answer": "Kırgın ama biraz esprili"
@@ -6683,9 +6683,9 @@
               "kind": "question",
               "prompt": "Aoife'nin ödünç almalarla ilgili sözünden ne çıkarılabilir?",
               "choices": [
-                "Yeni gelenlerin hepsi kitap ödünç almıyor",
                 "Ödünç alınan kitap sayısı azaldı",
-                "Gençler kitapları geri getirmiyor"
+                "Gençler kitapları geri getirmiyor",
+                "Yeni gelenlerin hepsi kitap ödünç almıyor"
               ],
               "answer": "Yeni gelenlerin hepsi kitap ödünç almıyor"
             },
@@ -6721,8 +6721,8 @@
               "kind": "question",
               "prompt": "Aoife'ye göre kütüphanenin iki işlevi nasıl bir arada var olabilir?",
               "choices": [
-                "Her işleve ayrı bir alan ayrılarak",
                 "Sessizlik kuralı tamamen kaldırılarak",
+                "Her işleve ayrı bir alan ayrılarak",
                 "Gençlerin girişi sınırlanarak"
               ],
               "answer": "Her işleve ayrı bir alan ayrılarak"
@@ -6858,8 +6858,8 @@
               "translation": "Bu sınırlara rağmen sesin, basılı metnin kolayca yakalayamayacağı avantajları var.",
               "answer": "Notwithstanding",
               "choices": [
-                "Notwithstanding",
                 "Although",
+                "Notwithstanding",
                 "Whereas"
               ]
             },
@@ -6868,10 +6868,6 @@
               "prompt": "Metnin son paragrafı ne işe yarıyor?",
               "answer": "It gives a practical conclusion.",
               "choices": [
-                {
-                  "text": "It gives a practical conclusion.",
-                  "emoji": "💡"
-                },
                 {
                   "text": "It introduces a new study.",
                   "emoji": "🔬"
@@ -6883,6 +6879,10 @@
                 {
                   "text": "It tells a personal story.",
                   "emoji": "📖"
+                },
+                {
+                  "text": "It gives a practical conclusion.",
+                  "emoji": "🗨️"
                 }
               ]
             }
@@ -6978,8 +6978,8 @@
               "translation": "Kütüphane, başvuru kitaplarından ücretsiz çıktıya kadar pek az evde bulunan olanaklar sunar.",
               "answer": "from",
               "choices": [
-                "from",
                 "since",
+                "from",
                 "between"
               ]
             },
@@ -6989,8 +6989,8 @@
               "translation": "Sessiz bir oda, dikkati kolay dağılan öğrenciler için özellikle iyi işe yarar.",
               "answer": "for",
               "choices": [
-                "for",
                 "to",
+                "for",
                 "at"
               ]
             },
@@ -7000,9 +7000,9 @@
               "translation": "Kütüphane, cazibelerin çoğunu ortadan kaldırması bakımından tekrar yapmak için idealdir.",
               "answer": "in that",
               "choices": [
-                "in that",
                 "notwithstanding",
-                "whereas"
+                "whereas",
+                "in that"
               ]
             },
             {
@@ -7011,20 +7011,20 @@
               "answer": "Intro, A, B, common ground, view",
               "choices": [
                 {
+                  "text": "View, intro, B, A, common ground",
+                  "emoji": "🔀"
+                },
+                {
                   "text": "Intro, A, B, common ground, view",
                   "emoji": "📋"
                 },
                 {
-                  "text": "View, intro, B, A, common ground",
-                  "emoji": "📋"
-                },
-                {
                   "text": "A, view, intro, B, common ground",
-                  "emoji": "📋"
+                  "emoji": "🔁"
                 },
                 {
                   "text": "Common ground, A, view, B, intro",
-                  "emoji": "📋"
+                  "emoji": "↩️"
                 }
               ]
             },
@@ -7110,8 +7110,8 @@
               "translation": "Sorunu küçümsemeye çalıştı ama herkes ciddi olduğunu görebiliyordu.",
               "answer": "down",
               "choices": [
-                "down",
                 "off",
+                "down",
                 "out"
               ]
             },
@@ -7132,9 +7132,9 @@
               "translation": "Yeni okul müdürü ilk yılında pek çok değişikliğe yol açtı.",
               "answer": "about",
               "choices": [
-                "about",
                 "off",
-                "over"
+                "over",
+                "about"
               ]
             },
             {
@@ -7143,8 +7143,8 @@
               "translation": "Ne yazık ki otel, web sitesindeki fotoğrafların hakkını vermedi.",
               "answer": "to",
               "choices": [
-                "to",
                 "for",
+                "to",
                 "with"
               ]
             },
@@ -7255,20 +7255,20 @@
               "answer": "She played it down.",
               "choices": [
                 {
+                  "text": "She played down it.",
+                  "emoji": "🔀"
+                },
+                {
                   "text": "She played it down.",
                   "emoji": "🤏"
                 },
                 {
-                  "text": "She played down it.",
-                  "emoji": "🤏"
-                },
-                {
                   "text": "She down played it.",
-                  "emoji": "🤏"
+                  "emoji": "↕️"
                 },
                 {
                   "text": "She played it under.",
-                  "emoji": "🤏"
+                  "emoji": "⬇️"
                 }
               ]
             },
@@ -7320,20 +7320,20 @@
               "answer": "In hindsight,",
               "choices": [
                 {
+                  "text": "In backsight,",
+                  "emoji": "👀"
+                },
+                {
                   "text": "In hindsight,",
                   "emoji": "🔙"
                 },
                 {
-                  "text": "In backsight,",
-                  "emoji": "🔙"
-                },
-                {
                   "text": "On hindsight,",
-                  "emoji": "🔙"
+                  "emoji": "📍"
                 },
                 {
                   "text": "By hindsight,",
-                  "emoji": "🔙"
+                  "emoji": "🧭"
                 }
               ]
             },
@@ -7343,8 +7343,8 @@
               "translation": "Takımın o yenilgiden sonra toparlanması aylar sürdü.",
               "answer": "back",
               "choices": [
-                "back",
                 "up",
+                "back",
                 "over"
               ]
             },
@@ -7354,9 +7354,9 @@
               "translation": "O yıla dönüp baktığımda tek bir şeye bile pişman değilim.",
               "answer": "on",
               "choices": [
-                "on",
                 "to",
-                "for"
+                "for",
+                "on"
               ]
             },
             {
@@ -7365,8 +7365,8 @@
               "translation": "Bütün komite ona karşı çıktığında bile geri adım atmayı reddetti.",
               "answer": "down",
               "choices": [
-                "down",
                 "up",
+                "down",
                 "in"
               ]
             },
@@ -7376,8 +7376,8 @@
               "translation": "O kış olanlar hakkında açılması yıllarını aldı.",
               "answer": "up",
               "choices": [
-                "up",
                 "out",
+                "up",
                 "off"
               ]
             },
@@ -7507,9 +7507,9 @@
               "kind": "question",
               "prompt": "Grup sabah saat kaçta yola çıktı?",
               "choices": [
-                "Saat üçte",
                 "Saat onda",
-                "Saat on buçukta"
+                "Saat on buçukta",
+                "Saat üçte"
               ],
               "answer": "Saat üçte"
             },
@@ -7559,9 +7559,9 @@
               "kind": "question",
               "prompt": "Müşterilerden biri Priya'ya ne dedi?",
               "choices": [
-                "Hayatını mahvettiğini",
                 "Fırtınadan korktuğunu",
-                "Bir yıl daha bekleyeceğini"
+                "Bir yıl daha bekleyeceğini",
+                "Hayatını mahvettiğini"
               ],
               "answer": "Hayatını mahvettiğini"
             },
@@ -7663,9 +7663,9 @@
               "kind": "question",
               "prompt": "Priya bu mektuptan nasıl söz ediyor?",
               "choices": [
-                "Duygulanmış ama ölçülü",
                 "Alaycı ve kızgın",
-                "Umursamaz"
+                "Umursamaz",
+                "Duygulanmış ama ölçülü"
               ],
               "answer": "Duygulanmış ama ölçülü"
             },
@@ -7687,9 +7687,9 @@
               "kind": "question",
               "prompt": "\"It's the plan we all signed up to\" cümlesindeki \"It\" neyi ifade ediyor?",
               "choices": [
-                "Önceden kararlaştırılan dönüş saati",
                 "Zirveye giden rota",
-                "Müşterinin yazdığı mektup"
+                "Müşterinin yazdığı mektup",
+                "Önceden kararlaştırılan dönüş saati"
               ],
               "answer": "Önceden kararlaştırılan dönüş saati"
             },
@@ -7744,8 +7744,8 @@
               "translation": "Fırtına uyarısı yüzünden tırmanışı iptal etmek zorunda kaldık.",
               "answer": "off",
               "choices": [
-                "off",
                 "out",
+                "off",
                 "down"
               ]
             },
@@ -7777,9 +7777,9 @@
               "translation": "Öğlene kadar yağmur dinebilir ama ben buna pek güvenmezdim.",
               "answer": "on",
               "choices": [
-                "on",
                 "to",
-                "for"
+                "for",
+                "on"
               ]
             },
             {
@@ -7854,19 +7854,19 @@
               "choices": [
                 {
                   "text": "Good question. Let me think.",
-                  "emoji": "🎙️"
+                  "emoji": "🤔"
                 },
                 {
                   "text": "Next question, please.",
-                  "emoji": "🎙️"
+                  "emoji": "⏭️"
                 },
                 {
                   "text": "Why are you asking that?",
-                  "emoji": "🎙️"
+                  "emoji": "😠"
                 },
                 {
                   "text": "No idea, sorry.",
-                  "emoji": "🎙️"
+                  "emoji": "🤷"
                 }
               ]
             },
@@ -7876,20 +7876,20 @@
               "answer": "Thanks, but it was a team effort.",
               "choices": [
                 {
-                  "text": "Thanks, but it was a team effort.",
-                  "emoji": "🎙️"
+                  "text": "Yes, I was brilliant.",
+                  "emoji": "😎"
                 },
                 {
-                  "text": "Yes, I was brilliant.",
-                  "emoji": "🎙️"
+                  "text": "Thanks, but it was a team effort.",
+                  "emoji": "🤝"
                 },
                 {
                   "text": "Don't exaggerate.",
-                  "emoji": "🎙️"
+                  "emoji": "🙄"
                 },
                 {
                   "text": "Whatever you say.",
-                  "emoji": "🎙️"
+                  "emoji": "😒"
                 }
               ]
             },
@@ -7958,20 +7958,20 @@
               "answer": "bitterly disappointed",
               "choices": [
                 {
+                  "text": "heavily disappointed",
+                  "emoji": "🏋️"
+                },
+                {
                   "text": "bitterly disappointed",
                   "emoji": "😞"
                 },
                 {
-                  "text": "heavily disappointed",
-                  "emoji": "😞"
-                },
-                {
                   "text": "hardly disappointed",
-                  "emoji": "😞"
+                  "emoji": "🤏"
                 },
                 {
                   "text": "strongly disappointed",
-                  "emoji": "😞"
+                  "emoji": "💪"
                 }
               ]
             },
@@ -8014,8 +8014,8 @@
               "translation": "Tablonun yazdan önce satılması pek olası değil.",
               "answer": "highly",
               "choices": [
-                "highly",
                 "strongly",
+                "highly",
                 "greatly"
               ]
             },
@@ -8133,19 +8133,19 @@
               "answer": "a standing ovation",
               "choices": [
                 {
-                  "text": "a standing ovation",
-                  "emoji": "👏"
-                },
-                {
                   "text": "a standing applause",
-                  "emoji": "👏"
+                  "emoji": "🧍"
                 },
                 {
                   "text": "a stand-up clapping",
-                  "emoji": "👏"
+                  "emoji": "🙌"
                 },
                 {
                   "text": "an upright cheer",
+                  "emoji": "📣"
+                },
+                {
+                  "text": "a standing ovation",
                   "emoji": "👏"
                 }
               ]
@@ -8156,8 +8156,8 @@
               "translation": "Yeni oyun neredeyse her eleştirmenden övgü dolu yorumlar aldı.",
               "answer": "rave",
               "choices": [
-                "rave",
                 "loud",
+                "rave",
                 "high"
               ]
             },
@@ -8178,8 +8178,8 @@
               "translation": "Komedi hiç tutmadı ve salonda kimse gülmedi.",
               "answer": "flat",
               "choices": [
-                "flat",
                 "down",
+                "flat",
                 "off"
               ]
             },
@@ -8335,8 +8335,8 @@
               "kind": "question",
               "prompt": "Elif, Derya hakkında ne söylüyor?",
               "choices": [
-                "Kafenin eski bir çalışanı",
                 "Çok utangaç biri",
+                "Kafenin eski bir çalışanı",
                 "Tanınmış bir ressam"
               ],
               "answer": "Çok utangaç biri"
@@ -8440,8 +8440,8 @@
               "prompt": "Derya'nın ailesi hakkında ne anlıyoruz?",
               "choices": [
                 "Serginin masraflarını onlar karşıladı",
-                "Resim yapmasını pek desteklemediler",
-                "Bu akşam kafede onlar da var"
+                "Bu akşam kafede onlar da var",
+                "Resim yapmasını pek desteklemediler"
               ],
               "answer": "Resim yapmasını pek desteklemediler"
             },
@@ -8498,9 +8498,9 @@
               "kind": "question",
               "prompt": "Deniz sonunda hangi tabloyla ilgileniyor?",
               "choices": [
+                "Köprüdeki balıkçıları gösteren tablo",
                 "Yağmurdaki vapur tablosu",
-                "Mutfakta yapılmış bir portre",
-                "Köprüdeki balıkçıları gösteren tablo"
+                "Mutfakta yapılmış bir portre"
               ],
               "answer": "Köprüdeki balıkçıları gösteren tablo"
             },
@@ -8670,20 +8670,20 @@
               "answer": "I was deeply moved.",
               "choices": [
                 {
-                  "text": "I was deeply moved.",
-                  "emoji": "📰"
+                  "text": "I was very much touched up.",
+                  "emoji": "✋"
                 },
                 {
-                  "text": "I was very much touched up.",
-                  "emoji": "📰"
+                  "text": "I was deeply moved.",
+                  "emoji": "🥹"
                 },
                 {
                   "text": "It moved me heavy.",
-                  "emoji": "📰"
+                  "emoji": "🏋️"
                 },
                 {
                   "text": "I got deeply moving.",
-                  "emoji": "📰"
+                  "emoji": "🚚"
                 }
               ]
             }
@@ -8807,9 +8807,9 @@
               "translation": "Biletlerinizi erken almanızı kesinlikle tavsiye ederim.",
               "answer": "recommend",
               "choices": [
-                "recommend",
                 "advise to",
-                "suggest to"
+                "suggest to",
+                "recommend"
               ]
             },
             {
@@ -8829,20 +8829,20 @@
               "answer": "Book early and take an umbrella.",
               "choices": [
                 {
-                  "text": "Book early and take an umbrella.",
-                  "emoji": "✍️"
-                },
-                {
                   "text": "In conclusion, the end.",
-                  "emoji": "✍️"
+                  "emoji": "🔚"
                 },
                 {
                   "text": "Thus the concert is concluded.",
-                  "emoji": "✍️"
+                  "emoji": "📜"
+                },
+                {
+                  "text": "Book early and take an umbrella.",
+                  "emoji": "☂️"
                 },
                 {
                   "text": "Finally, I am finish.",
-                  "emoji": "✍️"
+                  "emoji": "🏁"
                 }
               ]
             },
@@ -8909,20 +8909,20 @@
               "answer": "to put it another way",
               "choices": [
                 {
+                  "text": "to say it other way",
+                  "emoji": "🌀"
+                },
+                {
                   "text": "to put it another way",
                   "emoji": "🔁"
                 },
                 {
-                  "text": "to say it other way",
-                  "emoji": "🔁"
-                },
-                {
                   "text": "by another words",
-                  "emoji": "🔁"
+                  "emoji": "🔤"
                 },
                 {
                   "text": "to put it other words",
-                  "emoji": "🔁"
+                  "emoji": "❓"
                 }
               ]
             },
@@ -8932,8 +8932,8 @@
               "translation": "Kitap pahalı. Bununla birlikte her kuruşuna değer.",
               "answer": "said",
               "choices": [
-                "said",
                 "told",
+                "said",
                 "spoken"
               ]
             },
@@ -8943,9 +8943,9 @@
               "translation": "Neyse, katalog hakkında söylediğime dönelim.",
               "answer": "going",
               "choices": [
-                "going",
                 "backing",
-                "doing"
+                "doing",
+                "going"
               ]
             },
             {
@@ -8954,9 +8954,9 @@
               "translation": "Mesele şu ki, aslında kimse dipnotları okumuyor.",
               "answer": "point",
               "choices": [
-                "point",
                 "matter",
-                "case"
+                "case",
+                "point"
               ]
             },
             {
@@ -9079,20 +9079,20 @@
               "answer": "give a lecture",
               "choices": [
                 {
-                  "text": "give a lecture",
-                  "emoji": "🎓"
-                },
-                {
                   "text": "make a lecture",
-                  "emoji": "🎓"
+                  "emoji": "🛠️"
                 },
                 {
                   "text": "take a lecture",
-                  "emoji": "🎓"
+                  "emoji": "🤲"
+                },
+                {
+                  "text": "give a lecture",
+                  "emoji": "🎤"
                 },
                 {
                   "text": "do a lecture talk",
-                  "emoji": "🎓"
+                  "emoji": "🗣️"
                 }
               ]
             },
@@ -9102,9 +9102,9 @@
               "translation": "Unutmadan sayfa numaralarını hızlıca not eder misin?",
               "answer": "jot",
               "choices": [
-                "jot",
                 "drop",
-                "pin"
+                "pin",
+                "jot"
               ]
             },
             {
@@ -9291,8 +9291,8 @@
               "prompt": "İlk dizinlerin asıl sorunu neydi?",
               "choices": [
                 "Latince yazılmış olmaları",
-                "Elle yazılmış her kopyada sayfaların farklı olması",
-                "Çok pahalı olmaları"
+                "Çok pahalı olmaları",
+                "Elle yazılmış her kopyada sayfaların farklı olması"
               ],
               "answer": "Elle yazılmış her kopyada sayfaların farklı olması"
             },
@@ -9322,8 +9322,8 @@
               "prompt": "Matbaa dizini neden kullanışlı hâle getirdi?",
               "choices": [
                 "Herkes Latince öğrendiği için",
-                "Kitaplar kısaldığı için",
-                "Her kopyada sayfalar aynı olduğu için"
+                "Her kopyada sayfalar aynı olduğu için",
+                "Kitaplar kısaldığı için"
               ],
               "answer": "Her kopyada sayfalar aynı olduğu için"
             },
@@ -9383,9 +9383,9 @@
               "kind": "question",
               "prompt": "Dr. Brady 'and that's exactly the problem' derken ne demek istiyor?",
               "choices": [
-                "Bütün kelimeleri listelemek iyi bir dizin üretmez",
                 "Bilgisayarlar çok yavaş çalışır",
-                "Dizinciler bilgisayar kullanmayı bilmez"
+                "Dizinciler bilgisayar kullanmayı bilmez",
+                "Bütün kelimeleri listelemek iyi bir dizin üretmez"
               ],
               "answer": "Bütün kelimeleri listelemek iyi bir dizin üretmez"
             },
@@ -9407,8 +9407,8 @@
               "kind": "question",
               "prompt": "Dersin ana fikri nedir?",
               "choices": [
-                "Matbaa okumayla ilgili her şeyi tek başına değiştirdi",
                 "Dizin okuma biçimini değiştirdi ve hazırlanması hâlâ beceri istiyor",
+                "Matbaa okumayla ilgili her şeyi tek başına değiştirdi",
                 "Arama motorları okumayı yok etti"
               ],
               "answer": "Dizin okuma biçimini değiştirdi ve hazırlanması hâlâ beceri istiyor"
@@ -9477,9 +9477,9 @@
               "translation": "Fazla ileri gidiyorum, o yüzden matbaaya geri dönelim.",
               "answer": "ahead",
               "choices": [
-                "ahead",
                 "before",
-                "forward"
+                "forward",
+                "ahead"
               ]
             },
             {
@@ -9488,8 +9488,8 @@
               "translation": "İster inan ister inanma, dizin hazırlama hâlâ çoğunlukla insanlar tarafından yapılıyor.",
               "answer": "or",
               "choices": [
-                "or",
                 "and",
+                "or",
                 "if"
               ]
             },
@@ -9564,20 +9564,20 @@
               "answer": "Could you go over that again?",
               "choices": [
                 {
-                  "text": "Could you go over that again?",
-                  "emoji": "🎓"
-                },
-                {
                   "text": "What? Again, please.",
-                  "emoji": "🎓"
+                  "emoji": "😐"
                 },
                 {
                   "text": "You were unclear. Again.",
-                  "emoji": "🎓"
+                  "emoji": "😤"
+                },
+                {
+                  "text": "Could you go over that again?",
+                  "emoji": "🙋"
                 },
                 {
                   "text": "Repeat it. I missed it.",
-                  "emoji": "🎓"
+                  "emoji": "📢"
                 }
               ]
             },
@@ -9587,19 +9587,19 @@
               "answer": "Sure, though they're a bit messy.",
               "choices": [
                 {
-                  "text": "Sure, though they're a bit messy.",
-                  "emoji": "📒"
-                },
-                {
                   "text": "No. Make your own notes.",
-                  "emoji": "📒"
+                  "emoji": "🙅"
                 },
                 {
                   "text": "Here. Good luck reading it.",
-                  "emoji": "📒"
+                  "emoji": "😏"
                 },
                 {
                   "text": "Sure, they're perfect as always.",
+                  "emoji": "😎"
+                },
+                {
+                  "text": "Sure, though they're a bit messy.",
                   "emoji": "📒"
                 }
               ]
@@ -9673,15 +9673,15 @@
                 },
                 {
                   "text": "arguingly",
-                  "emoji": "⚖️"
+                  "emoji": "🗯️"
                 },
                 {
                   "text": "argumentally",
-                  "emoji": "⚖️"
+                  "emoji": "📢"
                 },
                 {
                   "text": "argued",
-                  "emoji": "⚖️"
+                  "emoji": "📝"
                 }
               ]
             },
@@ -9702,9 +9702,9 @@
               "translation": "Kabul etmek gerekir ki yeni sistem kusursuz değil ama daha ucuz.",
               "answer": "Admittedly",
               "choices": [
-                "Admittedly",
                 "Accordingly",
-                "Consequently"
+                "Consequently",
+                "Admittedly"
               ]
             },
             {
@@ -9848,12 +9848,12 @@
               "answer": "sit on the fence",
               "choices": [
                 {
-                  "text": "sit on the fence",
-                  "emoji": "🚧"
-                },
-                {
                   "text": "stay on the wall",
                   "emoji": "🧱"
+                },
+                {
+                  "text": "sit on the fence",
+                  "emoji": "🚧"
                 },
                 {
                   "text": "sit in the middle",
@@ -9871,8 +9871,8 @@
               "translation": "Tartışma sırasında ortam kızıştı ama yönetim kurulu sonunda bir deneme sürecini kabul etti.",
               "answer": "heated",
               "choices": [
-                "heated",
                 "burnt",
+                "heated",
                 "boiled"
               ]
             },
@@ -9882,9 +9882,9 @@
               "translation": "Arda depoyu Tuzla'ya taşıma önerisini ortaya koydu.",
               "answer": "forward",
               "choices": [
-                "forward",
                 "off",
-                "on"
+                "on",
+                "forward"
               ]
             },
             {
@@ -9904,8 +9904,8 @@
               "translation": "Sonunda bir uzlaşmaya varmayı başardık.",
               "answer": "reach",
               "choices": [
-                "reach",
                 "arrive",
+                "reach",
                 "do"
               ]
             },
@@ -10042,8 +10042,8 @@
               "prompt": "Arda'ya göre Tuzla'nın avantajı nedir?",
               "choices": [
                 "Kirasının yaklaşık yüzde yirmi daha ucuz olması",
-                "Kamyon başına günde yaklaşık kırk dakika kazandırması",
-                "Çalışanların çoğunun orada oturması"
+                "Çalışanların çoğunun orada oturması",
+                "Kamyon başına günde yaklaşık kırk dakika kazandırması"
               ],
               "answer": "Kamyon başına günde yaklaşık kırk dakika kazandırması"
             },
@@ -10072,8 +10072,8 @@
               "kind": "question",
               "prompt": "Arda'nın bir ay daha beklemeye tutumu nedir?",
               "choices": [
-                "Karşı; beklemenin de pahalı bir karar olduğunu düşünüyor",
                 "Kararsız; iki tarafı da haklı buluyor",
+                "Karşı; beklemenin de pahalı bir karar olduğunu düşünüyor",
                 "Destekliyor; gerçek uzlaşma için zaman gerektiğini düşünüyor"
               ],
               "answer": "Karşı; beklemenin de pahalı bir karar olduğunu düşünüyor"
@@ -10104,8 +10104,8 @@
               "prompt": "Hanna 'Probably the second' derken neyi kastediyor?",
               "choices": [
                 "Yeni deponun konumunu",
-                "Kimsenin çalışanları dinlememesini",
-                "Gönderilen ikinci e-postayı"
+                "Gönderilen ikinci e-postayı",
+                "Kimsenin çalışanları dinlememesini"
               ],
               "answer": "Kimsenin çalışanları dinlememesini"
             },
@@ -10156,8 +10156,8 @@
               "prompt": "Deniz cuma günü ne yapacak?",
               "choices": [
                 "Ekibe oy kullandıracak",
-                "Kararı bir ay daha erteleyecek",
-                "Kararı verip nedenini yüz yüze açıklayacak"
+                "Kararı verip nedenini yüz yüze açıklayacak",
+                "Kararı bir ay daha erteleyecek"
               ],
               "answer": "Kararı verip nedenini yüz yüze açıklayacak"
             },
@@ -10179,8 +10179,8 @@
               "kind": "question",
               "prompt": "Hanna'nın servisle ilgili son sözü neyi ima ediyor?",
               "choices": [
-                "Kesinlikle Gebze’yi istediğini",
                 "Servisle birlikte Tuzla’ya itirazının büyük ölçüde azalabileceğini",
+                "Kesinlikle Gebze’yi istediğini",
                 "Servis otobüsüne karşı olduğunu"
               ],
               "answer": "Servisle birlikte Tuzla’ya itirazının büyük ölçüde azalabileceğini"
@@ -10291,9 +10291,9 @@
               "translation": "Herkese konuşmak için adil bir şans verilmeli.",
               "answer": "to",
               "choices": [
-                "to",
                 "for",
-                "of"
+                "of",
+                "to"
               ]
             },
             {
@@ -10448,8 +10448,8 @@
               "translation": "Bir kararın oluşmasına katkıda bulunanlar onu büyük olasılıkla daha istekli uygular.",
               "answer": "out",
               "choices": [
-                "out",
                 "on",
+                "out",
                 "off"
               ]
             },
@@ -10459,9 +10459,9 @@
               "translation": "Ekipler kararların nasıl alınacağı konusunda önceden anlaşmalı.",
               "answer": "in",
               "choices": [
-                "in",
                 "on",
-                "at"
+                "at",
+                "in"
               ]
             },
             {
@@ -10481,10 +10481,6 @@
               "answer": "Admittedly, consensus can be slow.",
               "choices": [
                 {
-                  "text": "Admittedly, consensus can be slow.",
-                  "emoji": "⚖️"
-                },
-                {
                   "text": "To conclude, I agree.",
                   "emoji": "🔚"
                 },
@@ -10495,6 +10491,10 @@
                 {
                   "text": "In the end, nobody cares.",
                   "emoji": "🤷"
+                },
+                {
+                  "text": "Admittedly, consensus can be slow.",
+                  "emoji": "⚖️"
                 }
               ]
             },
@@ -10781,8 +10781,8 @@
               "translation": "Bütçe kesintilerine rağmen ekip projeyi zamanında teslim etti.",
               "answer": "Notwithstanding",
               "choices": [
-                "Notwithstanding",
                 "Whereas",
+                "Notwithstanding",
                 "Insofar as"
               ]
             },

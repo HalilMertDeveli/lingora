@@ -1,6 +1,6 @@
 // Graded reading stories with Turkish glosses (assets/reading/stories.json).
 
-const readingLevels = ['A1', 'A2', 'B1', 'B1+', 'B2'];
+const readingLevels = ['A1', 'A2', 'B1', 'B1+', 'B2', 'C1'];
 
 /// Turkish name of each reading level.
 const readingLevelNames = {
@@ -9,6 +9,7 @@ const readingLevelNames = {
   'B1': 'Orta',
   'B1+': 'Orta üstü',
   'B2': 'İleri orta',
+  'C1': 'İleri',
 };
 
 /// Node id used with `completeNode` when a story is finished.

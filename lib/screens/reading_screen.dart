@@ -23,6 +23,7 @@ Map<String, Color> get _levelColors => {
   'B1': Brand.primary,
   'B1+': Brand.accent,
   'B2': Brand.error,
+  'C1': Color(0xFF475467),
 };
 
 /// Number of stories the user has finished.
