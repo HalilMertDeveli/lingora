@@ -7,13 +7,20 @@ const id = process.argv[2];
 const dir = l.path.join(__dirname, 'work');
 const unit = JSON.parse(l.fs.readFileSync(l.path.join(dir, `${id}.json`), 'utf8'));
 const cards = JSON.parse(l.fs.readFileSync(l.path.join(dir, `${id}.cards.json`), 'utf8'));
-// ys5 (F1) and ys7 (F2) word banks share this checker; the section decides list, level and exclusions.
-const sec = id.slice(0, 3);
-const words = require(sec === 'ys7' ? './work/words_ys7.json' : './work/words.json');
+// ys5 (F1), ys7 (F2) and ys9 (F3, 4 vocab lessons) word banks share this checker; the section decides
+// list, lesson count, level and exclusions.
+const sec = id.match(/^ys\d+/)[0];
+const BANK = {
+  ys5: { words: './work/words.json', last: 'ys5u10', vocabLessons: 3, cloze: [70, 135, '80–120'] },
+  ys7: { words: './work/words_ys7.json', last: 'ys7u15', vocabLessons: 3, cloze: [110, 170, '120–160'] },
+  ys9: { words: './work/words_ys9.json', last: 'ys9u12', vocabLessons: 4, cloze: [130, 190, '140–180'] },
+}[sec];
+const words = require(BANK.words);
 const mine = words[id];
-const earlier = Object.keys(words).filter((k) => +k.slice(4) < +id.slice(4)).flatMap((k) => words[k]);
-const lastUnit = sec === 'ys7' ? 'ys7u15' : 'ys5u10';
-const [pMin, pMax, pLabel] = sec === 'ys7' ? [110, 170, '120–160'] : [70, 135, '80–120'];
+const earlier = Object.keys(words).filter((k) => +k.split('u')[1] < +id.split('u')[1]).flatMap((k) => words[k]);
+const lastUnit = BANK.last;
+const [pMin, pMax, pLabel] = BANK.cloze;
+const V = BANK.vocabLessons;
 const problems = [];
 const warn = [];
 const P = (ok, m) => { if (!ok) problems.push(m); };
@@ -29,8 +36,9 @@ const gw = (unit.guide || '').split(/\s+/).length;
 P(gw <= 330, `guide ${gw} kelime (≤ ~250 hedef)`);
 const types = unit.nodes.map((n) => n.type).join(',');
 const last = id === lastUnit;
-P(types === (last ? 'lesson,lesson,lesson,lesson,test,chest,mock' : 'lesson,lesson,lesson,lesson,test,chest'), `düğüm deseni ${types}`);
-const ids = [`${id}l1`, `${id}l2`, `${id}l3`, `${id}l4`, `${id}t`, `${id}c`, ...(last ? [`${id}m`] : [])];
+const lessons = Array.from({ length: V + 1 }, (_, i) => `${id}l${i + 1}`);
+P(types === [...lessons.map(() => 'lesson'), 'test', 'chest', ...(last ? ['mock'] : [])].join(), `düğüm deseni ${types}`);
+const ids = [...lessons, `${id}t`, `${id}c`, ...(last ? [`${id}m`] : [])];
 P(unit.nodes.map((n) => n.id).join() === ids.join(), `düğüm id'leri ${unit.nodes.map((n) => n.id)}`);
 const answers = [];
 for (const [i, n] of unit.nodes.entries()) {
@@ -39,14 +47,14 @@ for (const [i, n] of unit.nodes.entries()) {
   ex.forEach((e, k) => exercise(e, `${n.id}#${k}`));
   ex.filter((e) => e.type === 'choice').forEach((e) => answers.push(e.answer));
   const count = (t) => ex.filter((e) => e.type === t).length;
-  if (i < 3) {
+  if (i < V) {
     P(n.vocab === true, `${n.id}: vocab:true`);
     P(ex.length >= 10 && ex.length <= 12, `${n.id}: ${ex.length} alıştırma (10–12)`);
     P(count('match') >= 2 && ex.filter((e) => e.type === 'match').every((e) => e.pairs.length === 5), `${n.id}: en az 2 match, 5'er çift`);
     P(count('fillBlank') >= 3, `${n.id}: en az 3 fillBlank`);
     P(count('choice') >= 4, `${n.id}: en az 4 choice`);
     P(count('translate') >= 1 && count('translate') <= 2, `${n.id}: 1–2 translate`);
-  } else if (i === 3) {
+  } else if (i === V) {
     P(ex.length >= 10 && ex.length <= 12, `${n.id}: ${ex.length} alıştırma (10–12)`);
     const passages = new Set(ex.filter((e) => e.passage).map((e) => e.passage));
     P(passages.size >= 2, `${n.id}: en az 2 cloze paragrafı`);
@@ -104,7 +112,12 @@ for (const c of cards) {
 }
 
 // Overlap with taught words.
-const ex = sec === 'ys7'
+const ex = sec === 'ys9'
+  // Faz 3: everything shipped before ys9 — general course, the whole YDS path, every card. No exceptions.
+  ? new Set([...l.taught(l.GENERAL_ALL),
+    ...l.taught([...l.YDS_OLD, ...l.fs.readdirSync(l.path.join(l.ROOT, 'assets/courses/exam_yds')).filter((f) => /^0[5-8]_/.test(f)).map((f) => `assets/courses/exam_yds/${f}`)]),
+    ...l.J('assets/vocab/yds.json').entries.filter((e) => !e.topic.startsWith('ys9u')).map((e) => e.word.toLowerCase())])
+  : sec === 'ys7'
   ? new Set([...l.taught(l.GENERAL_ALL), ...l.taught([...l.YDS_OLD, 'assets/courses/exam_yds/05_kelime_bankasi_1.json']),
     ...l.J('assets/vocab/yds.json').entries.filter((e) => e.topic.startsWith('ys5u')).map((e) => e.word.toLowerCase())])
   : new Set([...l.taught(l.GENERAL), ...l.taught(l.YDS_OLD)]);
