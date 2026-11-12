@@ -101,6 +101,8 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     mistakeStage: {for (final k in newer.mistakes) k: ?newer.mistakeStage[k]},
     mistakeDue: {for (final k in newer.mistakes) k: ?newer.mistakeDue[k]},
     mistakeRun: {for (final k in newer.mistakes) k: ?newer.mistakeRun[k]},
+    mistakeReason: {for (final k in newer.mistakes) k: ?(newer.mistakeReason[k] ?? older.mistakeReason[k])},
+    mistakeNote: {for (final k in newer.mistakes) k: ?(newer.mistakeNote[k] ?? older.mistakeNote[k])},
   );
 }
 

@@ -63,6 +63,8 @@ class Progress {
     this.mistakeRun = const {},
     this.studyPlan,
     this.readingWords = 0,
+    this.mistakeReason = const {},
+    this.mistakeNote = const {},
   });
 
   /// Selected course or exam (see catalog.dart).
@@ -101,6 +103,12 @@ class Progress {
 
   /// Words read in reading texts, all time (the reading counter).
   final int readingWords;
+
+  /// "Neden yanıldın?" per notebook question (a MistakeReason name).
+  final Map<String, String> mistakeReason;
+
+  /// The learner's own note on a notebook question (at most 140 letters).
+  final Map<String, String> mistakeNote;
 
   /// Notebook questions due on [day], oldest saved first.
   List<String> mistakesDue(String day) =>
@@ -241,6 +249,8 @@ class Progress {
     StudyPlan? studyPlan,
     bool clearStudyPlan = false,
     int? readingWords,
+    Map<String, String>? mistakeReason,
+    Map<String, String>? mistakeNote,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -274,6 +284,8 @@ class Progress {
     mistakeRun: mistakeRun ?? this.mistakeRun,
     studyPlan: clearStudyPlan ? null : (studyPlan ?? this.studyPlan),
     readingWords: readingWords ?? this.readingWords,
+    mistakeReason: mistakeReason ?? this.mistakeReason,
+    mistakeNote: mistakeNote ?? this.mistakeNote,
   );
 
   Map<String, dynamic> toJson() => {
@@ -309,6 +321,8 @@ class Progress {
     'mistakeRun': mistakeRun,
     'studyPlan': studyPlan?.toJson(),
     'readingWords': readingWords,
+    'mistakeReason': mistakeReason,
+    'mistakeNote': mistakeNote,
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -348,6 +362,8 @@ class Progress {
     mistakeRun: (j['mistakeRun'] as Map?)?.cast<String, int>() ?? const {},
     studyPlan: j['studyPlan'] == null ? null : StudyPlan.fromJson(j['studyPlan'] as Map<String, dynamic>),
     readingWords: j['readingWords'] as int? ?? 0,
+    mistakeReason: (j['mistakeReason'] as Map?)?.cast<String, String>() ?? const {},
+    mistakeNote: (j['mistakeNote'] as Map?)?.cast<String, String>() ?? const {},
   );
 }
 
@@ -588,8 +604,59 @@ class ProgressNotifier extends Notifier<Progress> {
         mistakeStage: _without(state.mistakeStage, [key]),
         mistakeDue: _without(state.mistakeDue, [key]),
         mistakeRun: _without(state.mistakeRun, [key]),
+        mistakeReason: _without(state.mistakeReason, [key]),
+        mistakeNote: _without(state.mistakeNote, [key]),
       ),
     );
+  }
+
+  /// Tags a notebook question with why it went wrong, and the learner's
+  /// own note (cut to 140 letters; empty removes it).
+  void tagMistake(String key, {String? reason, String? note}) {
+    if (!state.mistakes.contains(key)) return;
+    final notes = {...state.mistakeNote};
+    if (note != null) {
+      final n = note.trim();
+      n.isEmpty ? notes.remove(key) : notes[key] = n.length > 140 ? n.substring(0, 140) : n;
+    }
+    _save(
+      state.copyWith(
+        mistakeReason: reason == null ? null : {...state.mistakeReason, key: reason},
+        mistakeNote: notes,
+      ),
+    );
+  }
+
+  /// Brings a notebook question back after [days] (e.g. "İki şık arasında
+  /// kaldım": see it again in 3 days).
+  void postponeMistake(String key, int days) {
+    if (!state.mistakes.contains(key)) return;
+    _save(
+      state.copyWith(
+        mistakeDue: {
+          ...state.mistakeDue,
+          key: dayKey(_now().add(Duration(days: days))),
+        },
+      ),
+    );
+  }
+
+  /// Puts word cards into today's review (box 0), unless already learning.
+  /// Returns how many were added.
+  int queueWords(Iterable<String> ids) {
+    final add = [
+      for (final id in ids)
+        if (!state.wordBox.containsKey(id)) id,
+    ];
+    if (add.isEmpty) return 0;
+    final today = dayKey(_now());
+    _save(
+      state.copyWith(
+        wordBox: {...state.wordBox, for (final id in add) id: 0},
+        wordDue: {...state.wordDue, for (final id in add) id: today},
+      ),
+    );
+    return add.length;
   }
 
   static Map<String, V> _without<V>(Map<String, V> map, List<String> keys) =>
