@@ -257,8 +257,8 @@
       },
       {
        "type": "fillBlank",
-       "text": "Sorry, I can't. I have ___ visit my grandmother.",
-       "translation": "Üzgünüm, gelemem. Büyükannemi ziyaret etmem gerekiyor.",
+       "text": "Sorry, I can't come to the match. I have ___ finish my homework.",
+       "translation": "Üzgünüm, maça gelemem. Ödevimi bitirmem gerekiyor.",
        "choices": [
         "to",
         "for",

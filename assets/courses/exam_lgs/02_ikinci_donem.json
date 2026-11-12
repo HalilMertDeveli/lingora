@@ -1079,7 +1079,7 @@
       },
       {
        "type": "choice",
-       "question": "Ece: Have you ever been to Mardin?\nMert: ----",
+       "question": "Selin: Have you ever been to Erzurum?\nBurak: ----",
        "options": [
         "Yes, I did. It was great.",
         "No, I don't. I'm busy.",
@@ -2486,8 +2486,8 @@
       },
       {
        "type": "fillBlank",
-       "text": "The telephone was ___ by Alexander Graham Bell in 1876.",
-       "translation": "Telefon 1876'da Alexander Graham Bell tarafından icat edildi.",
+       "text": "The first computer mouse was ___ by Douglas Engelbart in the 1960s.",
+       "translation": "İlk bilgisayar faresi 1960'larda Douglas Engelbart tarafından icat edildi.",
        "choices": [
         "invent",
         "invented",
@@ -3159,8 +3159,8 @@
       },
       {
        "type": "fillBlank",
-       "text": "There was no rain for months, so there was a terrible ___.",
-       "translation": "Aylarca yağmur yağmadı, bu yüzden korkunç bir kuraklık oldu.",
+       "text": "The fields were dry and the crops died because of the long ___.",
+       "translation": "Uzun süren kuraklık yüzünden tarlalar kurudu ve ekinler öldü.",
        "choices": [
         "drought",
         "flood",
