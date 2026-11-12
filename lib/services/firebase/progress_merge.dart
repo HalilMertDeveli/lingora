@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import '../../data/progress.dart';
 import '../../models/notes.dart';
+import '../../models/study_plan.dart';
 
 /// Merges two copies of the user's progress (this device and the cloud) so
 /// that nothing earned is ever lost:
@@ -34,6 +35,7 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
   // Spaced repetition: per word, the copy with the later due day.
   final wordBox = <String, int>{};
   final wordDue = <String, String>{};
+  final wordLast = <String, String>{};
   for (final id in {
     ...local.wordBox.keys,
     ...remote.wordBox.keys,
@@ -47,6 +49,7 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     final due = useRemote ? rd : ld;
     if (src.wordBox[id] case final b?) wordBox[id] = b;
     if (due != null) wordDue[id] = due;
+    if (src.wordLast[id] case final l?) wordLast[id] = l;
   }
 
   // League: the later week wins; same week → the newer copy.
@@ -91,7 +94,26 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     diary: {...older.diary, ...newer.diary},
     errorStats: maxMap(local.errorStats, remote.errorStats),
     customWords: words.values.toList(),
+    wordLast: wordLast,
+    studyPlan: _laterPlan(newer, older),
+    readingWords: maxInt(local.readingWords, remote.readingWords),
+    // The error notebook travels with its list.
+    mistakeStage: {for (final k in newer.mistakes) k: ?newer.mistakeStage[k]},
+    mistakeDue: {for (final k in newer.mistakes) k: ?newer.mistakeDue[k]},
+    mistakeRun: {for (final k in newer.mistakes) k: ?newer.mistakeRun[k]},
+    mistakeReason: {for (final k in newer.mistakes) k: ?(newer.mistakeReason[k] ?? older.mistakeReason[k])},
+    mistakeNote: {for (final k in newer.mistakes) k: ?(newer.mistakeNote[k] ?? older.mistakeNote[k])},
   );
+}
+
+/// The study plan of the newer copy, but never a week behind the other one
+/// (a week reached is not undone by a stale device).
+StudyPlan? _laterPlan(Progress newer, Progress older) {
+  final a = newer.studyPlan, b = older.studyPlan;
+  if (a == null || b == null) return a ?? b;
+  return b.week > a.week
+      ? a.copyWith(week: b.week, weekStart: b.weekStart, weekWordsBase: b.weekWordsBase)
+      : a;
 }
 
 /// Order-independent JSON of [p], used to tell whether two copies differ.

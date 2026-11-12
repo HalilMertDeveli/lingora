@@ -8,12 +8,16 @@ class ExamQuestion {
     required this.explanation,
     this.passage,
     this.section,
+    this.qtype,
   });
 
   final String id;
 
   /// Section id; set in exam pack mocks, where sections are mixed.
   final String? section;
+
+  /// Question type ("cloze", "reading"...), when the content names it.
+  final String? qtype;
 
   /// Optional reading text shown above the question.
   final String? passage;
@@ -30,6 +34,7 @@ class ExamQuestion {
     id: j['id'] as String,
     passage: j['passage'] as String?,
     section: j['section'] as String?,
+    qtype: j['qtype'] as String?,
     text: j['text'] as String,
     options: (j['options'] as List).cast<String>(),
     answer: j['answer'] as int,

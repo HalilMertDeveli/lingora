@@ -8,6 +8,10 @@ import '../core/text.dart';
 import '../data/course_repository.dart';
 import '../data/progress.dart';
 import '../models/exam.dart';
+import '../study/analysis.dart' show markAndSkipSeconds;
+import '../study/answer_recorder.dart';
+import '../study/question_types.dart';
+import 'study/mock_report_screen.dart';
 import '../models/exam_pack.dart';
 import '../services/billing/premium.dart';
 import '../services/growth/analytics.dart';
@@ -271,6 +275,15 @@ class ExamSessionScreen extends ConsumerStatefulWidget {
 class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   final ExamAnswers _answers = {};
   final _started = DateTime.now();
+
+  /// Time spent on each question (mocks allow going back and forth).
+  final Map<int, Duration> _times = {};
+  DateTime _shownAt = DateTime.now();
+
+  /// Answer log source of this attempt; unique, so its analysis can find it.
+  late final String logSource = widget.mock
+      ? 'mock:${widget.nodeId ?? widget.fullMock?.id ?? widget.exam.id}@${_started.millisecondsSinceEpoch}'
+      : 'bank';
   int _pos = 0;
   int? _picked;
   bool _revealed = false;
@@ -313,10 +326,26 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   /// Mock exams: move freely between questions; blanks are allowed.
   void _goTo(int pos) {
     if (pos < 0 || pos >= widget.questions.length) return;
+    _leave();
     setState(() {
       _pos = pos;
       _picked = _answers[pos];
     });
+  }
+
+  /// The "2 minutes" rule in a mock: time to mark and skip (reading has
+  /// its own 12 minutes per text, so no nudge there).
+  bool get _overTwoMinutes {
+    if (!widget.mock) return false;
+    final spent = (_times[_pos] ?? Duration.zero) + DateTime.now().difference(_shownAt);
+    return spent.inSeconds > markAndSkipSeconds && examQuestionType(_q) != QType.reading;
+  }
+
+  /// Adds the time on the current question to its total.
+  void _leave() {
+    final now = DateTime.now();
+    _times[_pos] = (_times[_pos] ?? Duration.zero) + now.difference(_shownAt);
+    _shownAt = now;
   }
 
   void _check() {
@@ -338,6 +367,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
       _finish();
       return;
     }
+    _leave();
     setState(() {
       _pos++;
       _picked = null;
@@ -350,6 +380,19 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     _timer?.cancel();
     _timer = null;
     final qs = widget.questions;
+    _leave();
+    // A practice set logs only the questions reached.
+    final reached = widget.mock ? qs : qs.take(_answers.length).toList();
+    recordExamAnswers(ref, questions: reached, answers: _answers, times: _times, source: logSource);
+    // A path mock's wrong or blank questions go into the error notebook
+    // (pack questions are not path items and stay in the report).
+    if (widget.mock) {
+      for (var i = 0; i < qs.length; i++) {
+        if (qs[i].id.contains('#') && _answers[i] != qs[i].answer) {
+          ref.read(progressProvider.notifier).addMistake(qs[i].id);
+        }
+      }
+    }
     final correct = [
       for (final e in _answers.entries)
         if (qs[e.key].answer == e.value) e.key,
@@ -380,6 +423,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
             answers: _answers,
             xp: reward.xp,
             duration: DateTime.now().difference(_started),
+            reportSource: logSource,
           ),
         ),
       );
@@ -394,6 +438,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
           xp: reward.xp,
           mock: widget.mock,
           duration: DateTime.now().difference(_started),
+          reportSource: widget.mock ? logSource : null,
         ),
       ),
     );
@@ -504,6 +549,17 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
+                      if (_overTwoMinutes)
+                        Container(
+                          key: const Key('mark-and-skip'),
+                          margin: const EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Brand.accentBg,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Text('2 dakikayı geçtin: boş bırakıp geç, sona kalan sürede dön.'),
+                        ),
                       if (q.passage != null)
                         Container(
                           margin: const EdgeInsets.only(bottom: 14),
@@ -645,7 +701,11 @@ class ExamResultScreen extends StatelessWidget {
     required this.xp,
     required this.mock,
     required this.duration,
+    this.reportSource,
   });
+
+  /// Answer log source of the attempt, for its type and time report.
+  final String? reportSource;
 
   final Exam exam;
   final List<ExamQuestion> questions;
@@ -718,6 +778,10 @@ class ExamResultScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
+                    if (reportSource case final s?) ...[
+                      const SizedBox(height: 12),
+                      Center(child: MockReportButton(source: s)),
+                    ],
                     const SizedBox(height: 18),
                     if (mock) ...[
                       Text('Cevap anahtarı', style: Theme.of(context).textTheme.titleLarge),

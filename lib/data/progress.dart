@@ -6,11 +6,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/tr_errors.dart';
 import '../models/notes.dart';
+import '../models/study_plan.dart';
 import 'catalog.dart';
 import 'league.dart';
 import 'quests.dart';
 
-const maxMistakes = 40;
+/// Most questions kept in the error notebook (oldest dropped first).
+const maxMistakes = 300;
+
+/// Days until a notebook question comes back, per stage: 1 → 3 → 7 → 21.
+const mistakeIntervals = [1, 3, 7, 21];
+
+/// Right answers in a row that take a question out of the notebook.
+const mistakeClearRun = 2;
 
 /// Progress key of a unit's topic guide (see [Progress.guideSeen]).
 String guideKey(String unitId) => 'guide_$unitId';
@@ -49,6 +57,14 @@ class Progress {
     this.diary = const {},
     this.errorStats = const {},
     this.customWords = const [],
+    this.wordLast = const {},
+    this.mistakeStage = const {},
+    this.mistakeDue = const {},
+    this.mistakeRun = const {},
+    this.studyPlan,
+    this.readingWords = 0,
+    this.mistakeReason = const {},
+    this.mistakeNote = const {},
   });
 
   /// Selected course or exam (see catalog.dart).
@@ -68,6 +84,35 @@ class Progress {
 
   /// Day key when each word is due again.
   final Map<String, String> wordDue;
+
+  /// Day key each word was last reviewed (kept for a later FSRS scheduler).
+  final Map<String, String> wordLast;
+
+  /// Error notebook: stage (index into [mistakeIntervals]) per question.
+  /// Missing for questions saved before the notebook had stages: stage 0.
+  final Map<String, int> mistakeStage;
+
+  /// Day each notebook question is due; missing means due now.
+  final Map<String, String> mistakeDue;
+
+  /// Right answers in a row per notebook question.
+  final Map<String, int> mistakeRun;
+
+  /// The daily study plan ("Bugün"); null until it is set up.
+  final StudyPlan? studyPlan;
+
+  /// Words read in reading texts, all time (the reading counter).
+  final int readingWords;
+
+  /// "Neden yanıldın?" per notebook question (a MistakeReason name).
+  final Map<String, String> mistakeReason;
+
+  /// The learner's own note on a notebook question (at most 140 letters).
+  final Map<String, String> mistakeNote;
+
+  /// Notebook questions due on [day], oldest saved first.
+  List<String> mistakesDue(String day) =>
+      mistakes.where((k) => (mistakeDue[k] ?? '').compareTo(day) <= 0).toList();
 
   /// English diary: day key → text.
   final Map<String, String> diary;
@@ -128,12 +173,29 @@ class Progress {
   /// Reminder time as minutes after midnight.
   final int reminderMinutes;
 
-  /// Streak as shown today: it is lost once a whole day is skipped.
+  /// Streak as shown today: it is lost once a whole day is skipped. With a
+  /// study plan one missed day a week is forgiven (a streak freeze, used
+  /// automatically): a habit is not broken by a single day.
   int streakAt(DateTime now) {
     final today = dayKey(now);
     final yesterday = dayKey(now.subtract(const Duration(days: 1)));
-    return (lastActiveDay == today || lastActiveDay == yesterday) ? streak : 0;
+    if (lastActiveDay == today || lastActiveDay == yesterday) return streak;
+    return freezeCovers(now) ? streak : 0;
   }
+
+  /// Whether a streak freeze bridges yesterday, missed after studying the
+  /// day before (one per week, plan users only).
+  bool freezeCovers(DateTime now) {
+    final plan = studyPlan;
+    if (plan == null) return false;
+    final missed = now.subtract(const Duration(days: 1));
+    if (lastActiveDay != dayKey(now.subtract(const Duration(days: 2)))) return false;
+    final week = dayKey(weekStart(missed));
+    return plan.freezeWeek != week;
+  }
+
+  /// Reading words read on [day].
+  int readingWordsOn(String day) => counters['$day:readingWords'] ?? 0;
 
   int xpOn(DateTime day) => xpByDay[dayKey(day)] ?? 0;
 
@@ -180,6 +242,15 @@ class Progress {
     Map<String, String>? diary,
     Map<String, int>? errorStats,
     List<NoteWord>? customWords,
+    Map<String, String>? wordLast,
+    Map<String, int>? mistakeStage,
+    Map<String, String>? mistakeDue,
+    Map<String, int>? mistakeRun,
+    StudyPlan? studyPlan,
+    bool clearStudyPlan = false,
+    int? readingWords,
+    Map<String, String>? mistakeReason,
+    Map<String, String>? mistakeNote,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -207,6 +278,14 @@ class Progress {
     diary: diary ?? this.diary,
     errorStats: errorStats ?? this.errorStats,
     customWords: customWords ?? this.customWords,
+    wordLast: wordLast ?? this.wordLast,
+    mistakeStage: mistakeStage ?? this.mistakeStage,
+    mistakeDue: mistakeDue ?? this.mistakeDue,
+    mistakeRun: mistakeRun ?? this.mistakeRun,
+    studyPlan: clearStudyPlan ? null : (studyPlan ?? this.studyPlan),
+    readingWords: readingWords ?? this.readingWords,
+    mistakeReason: mistakeReason ?? this.mistakeReason,
+    mistakeNote: mistakeNote ?? this.mistakeNote,
   );
 
   Map<String, dynamic> toJson() => {
@@ -236,6 +315,14 @@ class Progress {
     'diary': diary,
     'errorStats': errorStats,
     'customWords': [for (final w in customWords) w.toJson()],
+    'wordLast': wordLast,
+    'mistakeStage': mistakeStage,
+    'mistakeDue': mistakeDue,
+    'mistakeRun': mistakeRun,
+    'studyPlan': studyPlan?.toJson(),
+    'readingWords': readingWords,
+    'mistakeReason': mistakeReason,
+    'mistakeNote': mistakeNote,
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -269,6 +356,14 @@ class Progress {
     customWords: [
       for (final w in (j['customWords'] as List?) ?? const []) NoteWord.fromJson(w as Map<String, dynamic>),
     ],
+    wordLast: (j['wordLast'] as Map?)?.cast<String, String>() ?? const {},
+    mistakeStage: (j['mistakeStage'] as Map?)?.cast<String, int>() ?? const {},
+    mistakeDue: (j['mistakeDue'] as Map?)?.cast<String, String>() ?? const {},
+    mistakeRun: (j['mistakeRun'] as Map?)?.cast<String, int>() ?? const {},
+    studyPlan: j['studyPlan'] == null ? null : StudyPlan.fromJson(j['studyPlan'] as Map<String, dynamic>),
+    readingWords: j['readingWords'] as int? ?? 0,
+    mistakeReason: (j['mistakeReason'] as Map?)?.cast<String, String>() ?? const {},
+    mistakeNote: (j['mistakeNote'] as Map?)?.cast<String, String>() ?? const {},
   );
 }
 
@@ -370,6 +465,10 @@ class ProgressNotifier extends Notifier<Progress> {
     final today = dayKey(now);
     final shownStreak = state.streakAt(now);
     final alreadyToday = state.lastActiveDay == today;
+    // A freeze bridged yesterday: use it up for that week.
+    final freeze = state.freezeCovers(now)
+        ? state.studyPlan!.copyWith(freezeWeek: dayKey(weekStart(now.subtract(const Duration(days: 1)))))
+        : null;
     final newStreak = alreadyToday ? shownStreak : shownStreak + 1;
     final todayXp = (state.xpByDay[today] ?? 0) + xp;
     final isLesson = answered > 0;
@@ -395,6 +494,7 @@ class ProgressNotifier extends Notifier<Progress> {
         xpByDay: {...state.xpByDay, today: todayXp},
         completed: {...state.completed, nodeId: (state.completed[nodeId] ?? 0) + 1},
         lessonsDone: state.lessonsDone + (isLesson ? 1 : 0),
+        studyPlan: freeze,
         correct: state.correct + correct,
         answered: state.answered + answered,
         counters: counters,
@@ -454,22 +554,131 @@ class ProgressNotifier extends Notifier<Progress> {
   void setReminders({bool? enabled, int? minutes}) =>
       _save(state.copyWith(remindersEnabled: enabled, reminderMinutes: minutes));
 
-  /// Remembers an exercise the user got wrong, for "Hatalarını çalış".
+  /// Puts a question the user got wrong into the error notebook. It comes
+  /// back after a day; a question already there starts its run of right
+  /// answers again but keeps its stage.
   void addMistake(String key) {
-    final list = [...state.mistakes.where((k) => k != key), key];
+    var list = [...state.mistakes.where((k) => k != key), key];
+    final dropped = list.length > maxMistakes ? list.sublist(0, list.length - maxMistakes) : const <String>[];
+    if (dropped.isNotEmpty) list = list.sublist(dropped.length);
+    final due = dayKey(_now().add(Duration(days: mistakeIntervals.first)));
     _save(
-      state.copyWith(mistakes: list.length > maxMistakes ? list.sublist(list.length - maxMistakes) : list),
+      state.copyWith(
+        mistakes: list,
+        mistakeStage: {..._without(state.mistakeStage, dropped), key: state.mistakeStage[key] ?? 0},
+        mistakeDue: {..._without(state.mistakeDue, dropped), key: due},
+        mistakeRun: {..._without(state.mistakeRun, dropped), key: 0},
+      ),
     );
   }
 
-  /// Forgets a mistake once the user answers it correctly.
-  void clearMistake(String key) {
-    if (state.mistakes.contains(key)) {
-      _save(state.copyWith(mistakes: state.mistakes.where((k) => k != key).toList()));
+  /// A notebook question answered right: the first right answer moves it to
+  /// the next interval (1 → 3 → 7 → 21 days), [mistakeClearRun] in a row
+  /// take it out of the notebook.
+  void answerMistakeRight(String key) {
+    if (!state.mistakes.contains(key)) return;
+    final run = (state.mistakeRun[key] ?? 0) + 1;
+    if (run >= mistakeClearRun) {
+      clearMistake(key);
+      return;
     }
+    final stage = min((state.mistakeStage[key] ?? 0) + 1, mistakeIntervals.length - 1);
+    _save(
+      state.copyWith(
+        mistakeStage: {...state.mistakeStage, key: stage},
+        mistakeDue: {
+          ...state.mistakeDue,
+          key: dayKey(_now().add(Duration(days: mistakeIntervals[stage]))),
+        },
+        mistakeRun: {...state.mistakeRun, key: run},
+      ),
+    );
   }
 
+  /// Takes a question out of the notebook.
+  void clearMistake(String key) {
+    if (!state.mistakes.contains(key)) return;
+    _save(
+      state.copyWith(
+        mistakes: state.mistakes.where((k) => k != key).toList(),
+        mistakeStage: _without(state.mistakeStage, [key]),
+        mistakeDue: _without(state.mistakeDue, [key]),
+        mistakeRun: _without(state.mistakeRun, [key]),
+        mistakeReason: _without(state.mistakeReason, [key]),
+        mistakeNote: _without(state.mistakeNote, [key]),
+      ),
+    );
+  }
+
+  /// Tags a notebook question with why it went wrong, and the learner's
+  /// own note (cut to 140 letters; empty removes it).
+  void tagMistake(String key, {String? reason, String? note}) {
+    if (!state.mistakes.contains(key)) return;
+    final notes = {...state.mistakeNote};
+    if (note != null) {
+      final n = note.trim();
+      n.isEmpty ? notes.remove(key) : notes[key] = n.length > 140 ? n.substring(0, 140) : n;
+    }
+    _save(
+      state.copyWith(
+        mistakeReason: reason == null ? null : {...state.mistakeReason, key: reason},
+        mistakeNote: notes,
+      ),
+    );
+  }
+
+  /// Brings a notebook question back after [days] (e.g. "İki şık arasında
+  /// kaldım": see it again in 3 days).
+  void postponeMistake(String key, int days) {
+    if (!state.mistakes.contains(key)) return;
+    _save(
+      state.copyWith(
+        mistakeDue: {
+          ...state.mistakeDue,
+          key: dayKey(_now().add(Duration(days: days))),
+        },
+      ),
+    );
+  }
+
+  /// Puts word cards into today's review (box 0), unless already learning.
+  /// Returns how many were added.
+  int queueWords(Iterable<String> ids) {
+    final add = [
+      for (final id in ids)
+        if (!state.wordBox.containsKey(id)) id,
+    ];
+    if (add.isEmpty) return 0;
+    final today = dayKey(_now());
+    _save(
+      state.copyWith(
+        wordBox: {...state.wordBox, for (final id in add) id: 0},
+        wordDue: {...state.wordDue, for (final id in add) id: today},
+      ),
+    );
+    return add.length;
+  }
+
+  static Map<String, V> _without<V>(Map<String, V> map, List<String> keys) =>
+      keys.isEmpty ? map : ({...map}..removeWhere((k, _) => keys.contains(k)));
+
   void setTrack(String id) => _save(state.copyWith(trackId: id));
+
+  /// Sets up or changes the study plan; null removes it.
+  void setStudyPlan(StudyPlan? plan) =>
+      _save(plan == null ? state.copyWith(clearStudyPlan: true) : state.copyWith(studyPlan: plan));
+
+  /// Counts words read in a reading text (today and all time).
+  void addReading(int words) {
+    if (words <= 0) return;
+    final k = '${dayKey(_now())}:readingWords';
+    _save(
+      state.copyWith(
+        readingWords: state.readingWords + words,
+        counters: {...state.counters, k: (state.counters[k] ?? 0) + words},
+      ),
+    );
+  }
 
   /// Marks nodes as already known (e.g. after the placement test) so the
   /// path starts further on. No XP, streak or lesson counts are given.
@@ -504,12 +713,30 @@ class ProgressNotifier extends Notifier<Progress> {
     _save(state.copyWith(completed: {...state.completed, guideKey(unitId): 1}));
   }
 
-  /// Moves a word up a box when known, back to box 0 when not.
+  /// Moves a word up a box when known, two boxes down when not (a forgotten
+  /// word does not start from zero). A word in box 0 is due again today.
   void reviewWord(String id, {required bool known}) {
     final now = _now();
-    final box = known ? min((state.wordBox[id] ?? 0) + 1, reviewIntervals.length - 1) : 0;
-    final due = dayKey(now.add(Duration(days: known ? reviewIntervals[box] : 0)));
-    _save(state.copyWith(wordBox: {...state.wordBox, id: box}, wordDue: {...state.wordDue, id: due}));
+    final old = state.wordBox[id] ?? 0;
+    final box = known ? min(old + 1, reviewIntervals.length - 1) : max(0, old - 2);
+    final due = dayKey(now.add(Duration(days: reviewIntervals[box])));
+    _save(
+      state.copyWith(
+        wordBox: {...state.wordBox, id: box},
+        wordDue: {...state.wordDue, id: due},
+        wordLast: {...state.wordLast, id: dayKey(now)},
+      ),
+    );
+  }
+
+  /// Reviews a path word card; a card seen for the first time counts as a
+  /// new word of the day (counter "day:newWords").
+  void learnWord(String id, {required bool known}) {
+    final fresh = !state.wordBox.containsKey(id);
+    reviewWord(id, known: known);
+    if (!fresh) return;
+    final k = '${dayKey(_now())}:newWords';
+    _save(state.copyWith(counters: {...state.counters, k: (state.counters[k] ?? 0) + 1}));
   }
 
   /// Sorts a new word in "Kelime keşfet": a known word skips ahead to the
@@ -561,6 +788,7 @@ class ProgressNotifier extends Notifier<Progress> {
         customWords: state.customWords.where((w) => w.id != id).toList(),
         wordBox: box,
         wordDue: due,
+        wordLast: {...state.wordLast}..remove(id),
       ),
     );
   }
@@ -576,5 +804,6 @@ class ProgressNotifier extends Notifier<Progress> {
 
 final progressProvider = NotifierProvider<ProgressNotifier, Progress>(ProgressNotifier.new);
 
-/// Days until a word comes back, per spaced-repetition box.
-const reviewIntervals = [0, 1, 3, 7, 14, 30];
+/// Days until a word comes back, per spaced-repetition box. A year-long
+/// plan needs boxes past a month, or known words would return every month.
+const reviewIntervals = [0, 1, 3, 7, 14, 30, 60, 120, 240];

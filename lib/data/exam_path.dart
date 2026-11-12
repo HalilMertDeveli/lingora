@@ -17,6 +17,7 @@ ExamQuestion examQuestionOf(LessonItem item) => ExamQuestion(
   options: item.ex.options,
   answer: item.ex.answerIndex ?? 0,
   explanation: item.ex.explanation ?? '',
+  qtype: item.ex.qtype,
 );
 
 /// The section of [course] that holds [node].
@@ -34,6 +35,13 @@ List<Unit> mockUnits(Section section, PathNode mock) {
 /// questions, already in the real format), then their lessons' `choice`
 /// questions, then the question bank [bank].
 List<ExamQuestion> mockQuestions(Section section, PathNode mock, {Exam? bank, Random? random}) {
+  // A mock with its own questions (a fixed half mock) asks them in order.
+  if (mock.exercises.isNotEmpty) {
+    return [
+      for (final item in lessonItems(mock))
+        if (item.ex.type == ExerciseType.choice && item.ex.options.length >= 2) examQuestionOf(item),
+    ];
+  }
   final r = random ?? Random();
   final size = mock.size > 0 ? mock.size : defaultMockSize;
   final units = mockUnits(section, mock);
