@@ -34,9 +34,11 @@
 
 | Kaynak | Pay | Not |
 |---|---|---|
-| NAWL'ın F2'de kullanılmayan kalanı | ≥ %40 | |
-| Orta sıklık bandı (NGSL dışı, ~3k–6k), YDS/YÖKDİL metinlerinde sık geçen genel-akademik kelimeler | ≥ %35 | Ör. undermine, unprecedented, inherent, outweigh |
+| Orta sıklık bandı: NGSL/NAWL dışı, wordfreq Zipf 3,0–4,3 (~3k–15k), YDS/YÖKDİL metinlerinde sık geçen genel-akademik kelimeler | ≥ %65 | Ör. undermine, unprecedented, inherent, outweigh, discrepancy |
 | YÖKDİL alan terimleri ve çok kelimeli kalıplar | ≤ %25 | Kalıplar ≤ 100 |
+| NAWL ve NGSL'nin kullanılabilir kalanı | ~%5–10 | |
+
+> 2026-11-12 güncellemesi: İlk taslak NAWL ≥ %40 istiyordu. Öğretilmemiş NAWL havuzu yalnızca 109 kelime çıktı ve bunların ~30'u kullanılabilir (yds-icerik sayımı). Bu yüzden ağırlık orta sıklık bandına kaydırıldı. Nation'ın %98 kapsamı için gereken de bu 4k–8k bandıdır. wordfreq verisi CC BY-SA 4.0'dır; NGSL ve NAWL gibi yalnızca referans olarak, repo dışından okunur.
 
 Çakışma: genel kurs s1–s8, ys1–ys8 ve tüm `yd_`/`ydm_` kartları ile çakışma 0 olmalı. İstisna listesi yeni bankalarda yoktur.
 
@@ -160,7 +162,7 @@ Düğüm ID'leri bu tabloyla aynı olmalıdır.
 ## Kabul ölçütleri
 
 F1 §5 ve F2 kabul ölçütleri geçerlidir. Bunlara ek olarak:
-1. Bant raporu: NAWL ≥ %40, orta sıklık ≥ %35.
+1. Bant raporu: orta sıklık (Zipf 3,0–4,3) ≥ %65, alan + kalıp ≤ %25.
 2. ys10 zorluk raporu: cümle ortalaması 22–28, terim yoğunluğu.
 3. Yarım ve tam denemelerde düğüm ve deneme ID'lerinin plandaki `mocks` ile eşleştiğini gösteren test.
 4. m11–m14 için konu çakışması 0.
