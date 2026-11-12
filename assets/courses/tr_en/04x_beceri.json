@@ -1,0 +1,2692 @@
+{
+  "extends": "s4",
+  "units": [
+    {
+      "id": "s4u13",
+      "title": "Doktorda ve eczanede",
+      "description": "Şikâyetini anlatmak, randevu almak ve ilaç talimatını anlamak",
+      "color": "0xFF14A098",
+      "theme": "saglik",
+      "guide": "## Bu ünitede yapabileceklerin\n- Telefonla doktordan randevu alabilirsin.\n- Belirtilerini ve ne zamandır sürdüğünü anlatabilirsin.\n- Doktorun ve eczacının talimatlarını (kaç tablet, ne zaman) anlayabilirsin.\n- İşe ya da okula kısa bir mazeret mesajı yazabilirsin.\n\n## Strateji\n- Dinlerken sayılara odaklan: **kaç tablet**, **günde kaç kez**, **saat kaçta**.\n- Prospektüste önce başlıkları oku (What is it for? How should you take it?), sonra aradığın bilgiye git.\n- Belirti anlatırken kalıp kullan: **I have a…**, **I feel…**, **since / for**.\n- Mazeret mesajında üç şey yaz: gelemiyorsun, neden, işler ne olacak.\n\n## Model metin\n> Hi Selin, unfortunately I can't come to work today. I've had a bad headache since Sunday. The doctor says I should stay at home for three days. Mia can send you the meeting notes. Thanks, Elif\n\nKısa ve net: önce durum, sonra sebep, sonra çözüm. Patrona yazarken **Thanks** ya da **Best regards** yeterli.\n\n## Türklerin sık hatası\n- ❌ I have headache. ✅ I have **a** headache. (Ağrılar çoğunlukla **a** ile: a cold, a sore throat.)\n- ❌ I'm ill since two days. ✅ I've **been** ill **for** two days. (Süre **for**, başlangıç noktası **since**; \"should\" sonrası **to** yok: you should rest.)",
+      "nodes": [
+        {
+          "id": "s4u13l1",
+          "type": "lesson",
+          "title": "Dinleme: Doktor ve eczacı",
+          "description": "Belirti, saat ve doz bilgisini dinleyerek yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I've had a headache since Monday.",
+              "answers": [
+                "I've had a headache since Monday.",
+                "I have had a headache since Monday."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Can I have something for a sore throat?",
+              "answers": [
+                "Can I have something for a sore throat?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I've had this cough ___ three days.",
+              "translation": "Üç gündür bu öksürük var.",
+              "answer": "for",
+              "choices": [
+                "for",
+                "since",
+                "from"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Do you have a temperature?",
+              "answers": [
+                "Do you have a temperature?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'd like to make an appointment for Thursday.",
+              "answers": [
+                "I'd like to make an appointment for Thursday.",
+                "I would like to make an appointment for Thursday."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "You should drink a lot ___ water.",
+              "translation": "Bol su içmelisin.",
+              "answer": "of",
+              "choices": [
+                "of",
+                "to",
+                "the"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Don't take more than four tablets in a day.",
+              "answers": [
+                "Don't take more than four tablets in a day.",
+                "Don't take more than 4 tablets in a day.",
+                "Do not take more than four tablets in a day.",
+                "Do not take more than 4 tablets in a day."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The doctor can see you at twenty past three.",
+              "answers": [
+                "The doctor can see you at twenty past three.",
+                "The doctor can see you at 3:20."
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I've had a headache since Monday.",
+              "translation": "Pazartesiden beri başım ağrıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "Ateşim var",
+                  "I have a temperature"
+                ],
+                [
+                  "Boğazım ağrıyor",
+                  "I have a sore throat"
+                ],
+                [
+                  "Günde iki kez",
+                  "twice a day"
+                ],
+                [
+                  "Yemekten sonra",
+                  "after meals"
+                ],
+                [
+                  "Randevu almak",
+                  "make an appointment"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u13l2",
+          "type": "lesson",
+          "title": "Okuma: İlaç prospektüsü",
+          "description": "Basit bir ilaç prospektüsünden doz ve uyarıları bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Coldex 500 mg tablets\nWhat is this medicine for? Coldex is for headaches, fever and a sore throat. It is not for children under 12.\nHow should you take it? Adults should take one or two tablets every six hours. Take the tablets with a glass of water after a meal. You mustn't take more than eight tablets in 24 hours.\nWhat shouldn't you do? Don't drink alcohol with this medicine. Don't drive if you feel sleepy.\nHow long can you take it? You can take it for three days. If you still have a fever after three days, you should see a doctor.\nKeep the medicine in a cool, dry place.",
+              "question": "Coldex'i kim almamalı?",
+              "options": [
+                "Children under 12",
+                "Adults with a fever",
+                "People with a headache",
+                "People who drive"
+              ],
+              "answer": 0,
+              "explanation": "\"Children under 12\" doğru: metinde \"It is not for children under 12\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Coldex 500 mg tablets\nWhat is this medicine for? Coldex is for headaches, fever and a sore throat. It is not for children under 12.\nHow should you take it? Adults should take one or two tablets every six hours. Take the tablets with a glass of water after a meal. You mustn't take more than eight tablets in 24 hours.\nWhat shouldn't you do? Don't drink alcohol with this medicine. Don't drive if you feel sleepy.\nHow long can you take it? You can take it for three days. If you still have a fever after three days, you should see a doctor.\nKeep the medicine in a cool, dry place.",
+              "question": "Bir yetişkin 24 saatte en fazla kaç tablet alabilir?",
+              "options": [
+                "Two",
+                "Six",
+                "Eight",
+                "Twelve"
+              ],
+              "answer": 2,
+              "explanation": "\"Eight\" doğru: metinde \"You mustn't take more than eight tablets in 24 hours\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Coldex 500 mg tablets\nWhat is this medicine for? Coldex is for headaches, fever and a sore throat. It is not for children under 12.\nHow should you take it? Adults should take one or two tablets every six hours. Take the tablets with a glass of water after a meal. You mustn't take more than eight tablets in 24 hours.\nWhat shouldn't you do? Don't drink alcohol with this medicine. Don't drive if you feel sleepy.\nHow long can you take it? You can take it for three days. If you still have a fever after three days, you should see a doctor.\nKeep the medicine in a cool, dry place.",
+              "question": "Tabletler ne zaman alınmalı?",
+              "options": [
+                "Before breakfast",
+                "After a meal",
+                "Before bed",
+                "With a cup of coffee"
+              ],
+              "answer": 1,
+              "explanation": "\"After a meal\" doğru: metinde \"Take the tablets with a glass of water after a meal\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Coldex 500 mg tablets\nWhat is this medicine for? Coldex is for headaches, fever and a sore throat. It is not for children under 12.\nHow should you take it? Adults should take one or two tablets every six hours. Take the tablets with a glass of water after a meal. You mustn't take more than eight tablets in 24 hours.\nWhat shouldn't you do? Don't drink alcohol with this medicine. Don't drive if you feel sleepy.\nHow long can you take it? You can take it for three days. If you still have a fever after three days, you should see a doctor.\nKeep the medicine in a cool, dry place.",
+              "question": "Üç gün sonra hâlâ ateşin varsa ne yapmalısın?",
+              "options": [
+                "Take more tablets",
+                "Drink less water",
+                "Take it for one more week",
+                "See a doctor"
+              ],
+              "answer": 3,
+              "explanation": "\"See a doctor\" doğru: metinde \"If you still have a fever after three days, you should see a doctor\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Coldex 500 mg tablets\nWhat is this medicine for? Coldex is for headaches, fever and a sore throat. It is not for children under 12.\nHow should you take it? Adults should take one or two tablets every six hours. Take the tablets with a glass of water after a meal. You mustn't take more than eight tablets in 24 hours.\nWhat shouldn't you do? Don't drink alcohol with this medicine. Don't drive if you feel sleepy.\nHow long can you take it? You can take it for three days. If you still have a fever after three days, you should see a doctor.\nKeep the medicine in a cool, dry place.",
+              "question": "İlacı nerede saklamalısın?",
+              "options": [
+                "In a warm room",
+                "In a cool, dry place",
+                "In the car",
+                "Next to a window"
+              ],
+              "answer": 1,
+              "explanation": "\"In a cool, dry place\" doğru: metnin son cümlesi \"Keep the medicine in a cool, dry place.\""
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "yetişkin",
+                  "adult"
+                ],
+                [
+                  "ateş",
+                  "fever"
+                ],
+                [
+                  "uykulu",
+                  "sleepy"
+                ],
+                [
+                  "serin",
+                  "cool"
+                ],
+                [
+                  "kuru",
+                  "dry"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "You ___ take more than eight tablets in a day.",
+              "translation": "Bir günde sekizden fazla tablet almamalısın.",
+              "answer": "mustn't",
+              "choices": [
+                "mustn't",
+                "don't have to",
+                "should"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "\"Doktora görünmelisin.\" Hangisi doğru?",
+              "answer": "You should see a doctor.",
+              "choices": [
+                {
+                  "text": "You should see a doctor.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "You should to see a doctor.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "You should seeing a doctor.",
+                  "emoji": "🚫"
+                },
+                {
+                  "text": "You should saw a doctor.",
+                  "emoji": "⛔"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Prospektüste \"Take with food\" yazıyor. Ne yapmalısın?",
+              "answer": "İlacı yemekle birlikte al",
+              "choices": [
+                {
+                  "text": "İlacı yemekle birlikte al",
+                  "emoji": "🍽️"
+                },
+                {
+                  "text": "İlacı aç karnına al",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "İlaçtan sonra yemek yeme",
+                  "emoji": "🚫"
+                },
+                {
+                  "text": "İlacı yemeğe karıştır",
+                  "emoji": "🥣"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u13s",
+          "type": "story",
+          "title": "Kötü bir soğuk algınlığı",
+          "description": "Elif hastalanıyor, doktora ve eczaneye gidiyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Good morning. Can I see a doctor today?",
+              "translation": "Günaydın. Bugün bir doktora görünebilir miyim?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Resepsiyonist",
+              "avatar": "💁",
+              "text": "Yes. What's the problem?",
+              "translation": "Evet. Sorun ne?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "I have a bad headache and a sore throat.",
+              "translation": "Başım çok ağrıyor, boğazım da ağrıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Resepsiyonist",
+              "avatar": "💁",
+              "text": "The doctor can see you at quarter past eleven.",
+              "translation": "Doktor sizi on biri çeyrek geçe görebilir."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif'in randevusu saat kaçta?",
+              "choices": [
+                "10.15",
+                "11.15",
+                "11.45"
+              ],
+              "answer": "11.15"
+            },
+            {
+              "kind": "line",
+              "speaker": "Doktor",
+              "avatar": "👩‍⚕️",
+              "text": "Good morning, Elif. How long have you had the headache?",
+              "translation": "Günaydın Elif. Ne zamandır başın ağrıyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Since Sunday. And I've had a temperature for two days.",
+              "translation": "Pazardan beri. İki gündür de ateşim var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Doktor",
+              "avatar": "👩‍⚕️",
+              "text": "Let me check. It's a bad cold, but it isn't serious.",
+              "translation": "Bir bakayım. Kötü bir soğuk algınlığı ama ciddi değil."
+            },
+            {
+              "kind": "line",
+              "speaker": "Doktor",
+              "avatar": "👩‍⚕️",
+              "text": "You should stay in bed and drink a lot of water.",
+              "translation": "Yatakta kalmalı ve bol su içmelisin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Can I go to work tomorrow? We have a big meeting.",
+              "translation": "Yarın işe gidebilir miyim? Büyük bir toplantımız var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Doktor",
+              "avatar": "👩‍⚕️",
+              "text": "No, you shouldn't. You need to rest for three days.",
+              "translation": "Hayır, gitmemelisin. Üç gün dinlenmen gerekiyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Doktor Elif'e kaç gün dinlenmesini söylüyor?",
+              "choices": [
+                "İki gün",
+                "Üç gün",
+                "Bir hafta"
+              ],
+              "answer": "Üç gün"
+            },
+            {
+              "kind": "line",
+              "speaker": "Eczacı",
+              "avatar": "🧑‍⚕️",
+              "text": "Here's your medicine. Take one tablet twice a day.",
+              "translation": "İşte ilacın. Günde iki kez bir tablet al."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Before or after meals?",
+              "translation": "Yemekten önce mi, sonra mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Eczacı",
+              "avatar": "🧑‍⚕️",
+              "text": "After meals. And don't take it with coffee.",
+              "translation": "Yemekten sonra. Bir de kahveyle alma."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif ilacı nasıl almalı?",
+              "choices": [
+                "Günde bir kez, kahveyle",
+                "Günde iki kez, yemekten sonra",
+                "Günde iki kez, yemekten önce"
+              ],
+              "answer": "Günde iki kez, yemekten sonra"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Selin, I'm sorry. I'm ill and I can't come to work for three days.",
+              "translation": "Selin, üzgünüm. Hastayım ve üç gün işe gelemiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Oh no! Don't worry. Mia can have the meeting with Mr Brooks.",
+              "translation": "Eyvah! Merak etme. Bay Brooks'la toplantıyı Mia yapabilir."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Thank you. She has already seen all the new designs.",
+              "translation": "Teşekkürler. Yeni tasarımların hepsini zaten gördü."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"She has already seen all the new designs\" cümlesinde \"she\" kim?",
+              "choices": [
+                "Selin",
+                "Mia",
+                "Doktor"
+              ],
+              "answer": "Mia"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Great. Get well soon, Elif!",
+              "translation": "Harika. Geçmiş olsun Elif!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Elif, Mum says you're ill. I've just ordered some soup for you!",
+              "translation": "Elif, annem hasta olduğunu söylüyor. Sana az önce çorba sipariş ettim!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kurye",
+              "avatar": "🛵",
+              "text": "Delivery for Elif! Hot chicken soup.",
+              "translation": "Elif'e teslimat! Sıcak tavuk çorbası."
+            },
+            {
+              "kind": "question",
+              "prompt": "Çorbayı Elif'e kim gönderdi?",
+              "choices": [
+                "Selin",
+                "Kerem",
+                "Eczacı"
+              ],
+              "answer": "Kerem"
+            }
+          ]
+        },
+        {
+          "id": "s4u13l3",
+          "type": "lesson",
+          "title": "Konuşma: Randevu ve belirtiler",
+          "description": "Randevu al, belirtilerini anlat, doktora soru sor",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "Hello, I'd like to see a doctor today, please.",
+              "translation": "Merhaba, bugün bir doktora görünmek istiyorum lütfen."
+            },
+            {
+              "type": "speak",
+              "text": "I have a stomach ache and I feel sick.",
+              "translation": "Midem ağrıyor ve midem bulanıyor."
+            },
+            {
+              "type": "speak",
+              "text": "Since yesterday evening.",
+              "translation": "Dün akşamdan beri."
+            },
+            {
+              "type": "speak",
+              "text": "No, I don't have a temperature.",
+              "translation": "Hayır, ateşim yok."
+            },
+            {
+              "type": "speak",
+              "text": "Should I take any medicine?",
+              "translation": "Bir ilaç almalı mıyım?"
+            },
+            {
+              "type": "select",
+              "prompt": "Doktor: \"How long have you had the pain?\" En uygun cevap hangisi?",
+              "answer": "For two days.",
+              "choices": [
+                {
+                  "text": "For two days.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Since two days.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "Two days ago I have.",
+                  "emoji": "🚫"
+                },
+                {
+                  "text": "In two days.",
+                  "emoji": "📅"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Resepsiyonist: \"Is ten o'clock OK for you?\" En uygun cevap hangisi?",
+              "answer": "Yes, that's fine. Thank you.",
+              "choices": [
+                {
+                  "text": "Yes, that's fine. Thank you.",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "Yes, I'm agree.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "No, I'm fine, thanks.",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "It's ten o'clock.",
+                  "emoji": "🕙"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Başım ağrıyor.",
+              "lang": "tr",
+              "answers": [
+                "I have a headache",
+                "I've got a headache",
+                "My head hurts",
+                "My head is hurting"
+              ],
+              "tokens": [
+                "I",
+                "have",
+                "a",
+                "headache",
+                "am",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İki gündür öksürüyorum.",
+              "lang": "tr",
+              "answers": [
+                "I've had a cough for two days",
+                "I have had a cough for two days",
+                "I've been coughing for two days",
+                "I have been coughing for two days"
+              ],
+              "tokens": [
+                "I've",
+                "had",
+                "a",
+                "cough",
+                "for",
+                "two",
+                "days",
+                "since",
+                "ago"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "mide ağrısı",
+                  "stomach ache"
+                ],
+                [
+                  "midem bulanıyor",
+                  "I feel sick"
+                ],
+                [
+                  "öksürük",
+                  "cough"
+                ],
+                [
+                  "dinlenmek",
+                  "rest"
+                ],
+                [
+                  "ilaç almak",
+                  "take medicine"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u13l4",
+          "type": "lesson",
+          "title": "Yazma: İşe mazeret mesajı",
+          "description": "Patronuna gelemeyeceğini bildiren kısa bir mesaj yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Merhaba Selin, maalesef bugün işe gelemiyorum.",
+              "lang": "tr",
+              "answers": [
+                "Hi Selin, unfortunately I can't come to work today",
+                "Hi Selin, unfortunately I cannot come to work today",
+                "Hello Selin, unfortunately I can't come to work today",
+                "Hi Selin, I can't come to work today unfortunately"
+              ],
+              "tokens": [
+                "Hi",
+                "Selin",
+                "unfortunately",
+                "I",
+                "can't",
+                "come",
+                "to",
+                "work",
+                "today",
+                "the",
+                "coming"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Pazardan beri başım çok ağrıyor.",
+              "lang": "tr",
+              "answers": [
+                "I've had a bad headache since Sunday",
+                "I have had a bad headache since Sunday"
+              ],
+              "tokens": [
+                "I've",
+                "had",
+                "a",
+                "bad",
+                "headache",
+                "since",
+                "Sunday",
+                "for",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Doktor üç gün evde kalmam gerektiğini söylüyor.",
+              "lang": "tr",
+              "answers": [
+                "The doctor says I should stay at home for three days",
+                "The doctor says I should stay home for three days",
+                "The doctor says that I should stay at home for three days",
+                "The doctor says I should stay at home for 3 days"
+              ],
+              "tokens": [
+                "The",
+                "doctor",
+                "says",
+                "I",
+                "should",
+                "stay",
+                "at",
+                "home",
+                "for",
+                "three",
+                "days",
+                "to",
+                "since"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Mia sana toplantı notlarını gönderebilir. Teşekkürler, Elif",
+              "lang": "tr",
+              "answers": [
+                "Mia can send you the meeting notes. Thanks, Elif",
+                "Mia can send the meeting notes to you. Thanks, Elif",
+                "Mia can send you the meeting notes. Thank you, Elif",
+                "Mia can send the meeting notes to you. Thank you, Elif"
+              ],
+              "tokens": [
+                "Mia",
+                "can",
+                "send",
+                "you",
+                "the",
+                "meeting",
+                "notes",
+                "Thanks",
+                "Elif",
+                "sends",
+                "to"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I've been ill ___ Sunday, so I can't come in.",
+              "translation": "Pazardan beri hastayım, bu yüzden gelemiyorum.",
+              "answer": "since",
+              "choices": [
+                "since",
+                "for",
+                "from"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I have ___ bad headache, so I'm going home early.",
+              "translation": "Başım çok ağrıyor, bu yüzden eve erken gidiyorum.",
+              "answer": "a",
+              "choices": [
+                "a",
+                "an",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm sorry, ___ I can't come to the meeting today.",
+              "translation": "Üzgünüm ama bugün toplantıya gelemiyorum.",
+              "answer": "but",
+              "choices": [
+                "but",
+                "because",
+                "so"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Patronuna mazeret mesajı yazıyorsun. Hangi kapanış uygun?",
+              "answer": "Thanks, Elif",
+              "choices": [
+                {
+                  "text": "Thanks, Elif",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Respects, Elif",
+                  "emoji": "🙇"
+                },
+                {
+                  "text": "Kisses, Elif xx",
+                  "emoji": "💋"
+                },
+                {
+                  "text": "Love you, Elif",
+                  "emoji": "❤️"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "maalesef",
+                  "unfortunately"
+                ],
+                [
+                  "evde kalmak",
+                  "stay at home"
+                ],
+                [
+                  "geçmiş olsun",
+                  "get well soon"
+                ],
+                [
+                  "toplantı notları",
+                  "meeting notes"
+                ],
+                [
+                  "işe gelmek",
+                  "come to work"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u13t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s4u13c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s4u14",
+      "title": "Bir sorun var",
+      "description": "Bozuk bir ürünü ya da kötü bir hizmeti anlatıp kibarca çözüm istemek",
+      "color": "0xFFF2994A",
+      "theme": "tamir",
+      "guide": "## Bu ünitede yapabileceklerin\n- Bir ürünün ya da hizmetin sorununu açıklayabilirsin.\n- Daha önce ne denediğini söyleyebilirsin (I've already tried…).\n- Kibarca çözüm isteyebilirsin: para iadesi, değişim, teknisyen.\n- Kısa bir şikâyet e-postası yazabilirsin.\n\n## Strateji\n- Müşteri hizmetlerini dinlerken numaraları (sipariş no, gün) not al; görevli genelde bunları tekrar eder.\n- İade politikasında **can / can't / within** kelimelerini ara: neyi, ne zamana kadar iade edebilirsin?\n- Şikâyet ederken sırayla git: sorun → ne denedin → ne istiyorsun.\n- Emir yerine soru kullan: **Could you…?** her zaman daha kibar.\n\n## Model metin\n> Dear Sir or Madam, I ordered an office chair two weeks ago. The chair arrived yesterday, but one leg is broken. I've already called customer service twice, but nobody answered. Could you please send me a new chair? Best regards, Elif\n\nAdını bilmediğin bir şirkete **Dear Sir or Madam** ile başla, **Best regards** ile bitir. Kızgın olsan da kibar kal.\n\n## Türklerin sık hatası\n- ❌ It isn't work. / It not working. ✅ It **doesn't work.** / It **isn't working.**\n- ❌ I already tried it yesterday twice, send me new! ✅ I'**ve already tried** it twice. **Could you** send me a new one?",
+      "nodes": [
+        {
+          "id": "s4u14l1",
+          "type": "lesson",
+          "title": "Dinleme: Müşteri hizmetleri",
+          "description": "Telefondaki sorun, numara ve çözümü anla",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I bought it two weeks ago and it doesn't work.",
+              "answers": [
+                "I bought it two weeks ago and it doesn't work.",
+                "I bought it 2 weeks ago and it doesn't work.",
+                "I bought it two weeks ago and it does not work."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I've already tried that twice.",
+              "answers": [
+                "I've already tried that twice.",
+                "I have already tried that twice."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I've already ___ it twice, but it still doesn't work.",
+              "translation": "Zaten iki kez denedim ama hâlâ çalışmıyor.",
+              "answer": "tried",
+              "choices": [
+                "tried",
+                "try",
+                "trying"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Could you give me your order number, please?",
+              "answers": [
+                "Could you give me your order number, please?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "We'll send you a new one in three days.",
+              "answers": [
+                "We'll send you a new one in three days.",
+                "We'll send you a new one in 3 days.",
+                "We will send you a new one in three days.",
+                "We will send you a new one in 3 days."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'd like ___ speak to someone about my order.",
+              "translation": "Siparişim hakkında biriyle konuşmak istiyorum.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "of"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "You can return it within thirty days.",
+              "answers": [
+                "You can return it within thirty days.",
+                "You can return it within 30 days."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Can I speak to a manager, please?",
+              "answers": [
+                "Can I speak to a manager, please?"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I bought it two weeks ago and it doesn't work.",
+              "translation": "İki hafta önce aldım ve çalışmıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "çalışmıyor",
+                  "it doesn't work"
+                ],
+                [
+                  "sipariş numarası",
+                  "order number"
+                ],
+                [
+                  "hatta kalın",
+                  "hold the line"
+                ],
+                [
+                  "bir yönetici",
+                  "a manager"
+                ],
+                [
+                  "zaten denedim",
+                  "I've already tried"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u14l2",
+          "type": "lesson",
+          "title": "Okuma: İade politikası",
+          "description": "Bir online mağazanın iade kurallarını oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Returns policy: TeknoEv online shop\nNot happy with your order? You can return most products within 30 days. You don't have to give a reason.\nHow do I return a product? Log in to your account, choose the order and click \"Return\". Print the label and put it on the box. A courier will collect the box from your home.\nRefunds: We will send your money back within five working days after we receive the product.\nFaulty products: If a product doesn't work, call us within 14 days. We will repair it or replace it for free.\nYou can't return: headphones that you have opened, food or gift cards.\nQuestions? Call us from Monday to Saturday, 9 am to 6 pm.",
+              "question": "Çoğu ürünü kaç gün içinde iade edebilirsin?",
+              "options": [
+                "5 days",
+                "14 days",
+                "30 days",
+                "60 days"
+              ],
+              "answer": 2,
+              "explanation": "\"30 days\" doğru: metinde \"You can return most products within 30 days\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Returns policy: TeknoEv online shop\nNot happy with your order? You can return most products within 30 days. You don't have to give a reason.\nHow do I return a product? Log in to your account, choose the order and click \"Return\". Print the label and put it on the box. A courier will collect the box from your home.\nRefunds: We will send your money back within five working days after we receive the product.\nFaulty products: If a product doesn't work, call us within 14 days. We will repair it or replace it for free.\nYou can't return: headphones that you have opened, food or gift cards.\nQuestions? Call us from Monday to Saturday, 9 am to 6 pm.",
+              "question": "Kutuyu evinden kim alıyor?",
+              "options": [
+                "You take it to a shop",
+                "A courier",
+                "The shop manager",
+                "The post office"
+              ],
+              "answer": 1,
+              "explanation": "\"A courier\" doğru: metinde \"A courier will collect the box from your home\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Returns policy: TeknoEv online shop\nNot happy with your order? You can return most products within 30 days. You don't have to give a reason.\nHow do I return a product? Log in to your account, choose the order and click \"Return\". Print the label and put it on the box. A courier will collect the box from your home.\nRefunds: We will send your money back within five working days after we receive the product.\nFaulty products: If a product doesn't work, call us within 14 days. We will repair it or replace it for free.\nYou can't return: headphones that you have opened, food or gift cards.\nQuestions? Call us from Monday to Saturday, 9 am to 6 pm.",
+              "question": "Bir ürün çalışmıyorsa ne yapmalısın?",
+              "options": [
+                "Repair it yourself",
+                "Write to the courier",
+                "Call the shop within 14 days",
+                "Buy a new one"
+              ],
+              "answer": 2,
+              "explanation": "\"Call the shop within 14 days\" doğru: metinde \"If a product doesn't work, call us within 14 days\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Returns policy: TeknoEv online shop\nNot happy with your order? You can return most products within 30 days. You don't have to give a reason.\nHow do I return a product? Log in to your account, choose the order and click \"Return\". Print the label and put it on the box. A courier will collect the box from your home.\nRefunds: We will send your money back within five working days after we receive the product.\nFaulty products: If a product doesn't work, call us within 14 days. We will repair it or replace it for free.\nYou can't return: headphones that you have opened, food or gift cards.\nQuestions? Call us from Monday to Saturday, 9 am to 6 pm.",
+              "question": "Hangisini iade edemezsin?",
+              "options": [
+                "A faulty phone",
+                "An unopened book",
+                "A broken lamp",
+                "Opened headphones"
+              ],
+              "answer": 3,
+              "explanation": "\"Opened headphones\" doğru: metinde \"You can't return: headphones that you have opened\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Returns policy: TeknoEv online shop\nNot happy with your order? You can return most products within 30 days. You don't have to give a reason.\nHow do I return a product? Log in to your account, choose the order and click \"Return\". Print the label and put it on the box. A courier will collect the box from your home.\nRefunds: We will send your money back within five working days after we receive the product.\nFaulty products: If a product doesn't work, call us within 14 days. We will repair it or replace it for free.\nYou can't return: headphones that you have opened, food or gift cards.\nQuestions? Call us from Monday to Saturday, 9 am to 6 pm.",
+              "question": "Mağaza paranı ne zaman geri gönderir?",
+              "options": [
+                "Within five working days",
+                "On the same day",
+                "After 30 days",
+                "When the courier arrives"
+              ],
+              "answer": 0,
+              "explanation": "\"Within five working days\" doğru: metinde \"We will send your money back within five working days after we receive the product\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "iade etmek",
+                  "return"
+                ],
+                [
+                  "para iadesi",
+                  "refund"
+                ],
+                [
+                  "arızalı",
+                  "faulty"
+                ],
+                [
+                  "değiştirmek",
+                  "replace"
+                ],
+                [
+                  "tamir etmek",
+                  "repair"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "If a product doesn't work, we ___ replace it for free.",
+              "translation": "Bir ürün çalışmazsa onu ücretsiz değiştiririz.",
+              "answer": "will",
+              "choices": [
+                "will",
+                "would",
+                "are"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Kulaklığın bozuk. Hangisi doğru?",
+              "answer": "My headphones don't work.",
+              "choices": [
+                {
+                  "text": "My headphones don't work.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "My headphones doesn't work.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "My headphones not working.",
+                  "emoji": "🚫"
+                },
+                {
+                  "text": "My headphones isn't work.",
+                  "emoji": "⛔"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u14s",
+          "type": "story",
+          "title": "Sessiz kulaklık",
+          "description": "Elif'in yeni kulaklığı çalışmıyor; müşteri hizmetlerini arıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Mia, my new headphones don't work. I can't hear anything on my calls.",
+              "translation": "Mia, yeni kulaklığım çalışmıyor. Görüşmelerimde hiçbir şey duyamıyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Oh no. When did you buy them?",
+              "translation": "Eyvah. Ne zaman aldın?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Ten days ago, from TeknoEv. They were very expensive!",
+              "translation": "On gün önce, TeknoEv'den. Çok pahalıydı!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Have you tried them with another phone?",
+              "translation": "Başka bir telefonla denedin mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Yes, I've already tried them with my laptop and Deniz's phone.",
+              "translation": "Evet, onları laptopumla ve Deniz'in telefonuyla zaten denedim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif kulaklığı ne zaman aldı?",
+              "choices": [
+                "Üç gün önce",
+                "On gün önce",
+                "Bir ay önce"
+              ],
+              "answer": "On gün önce"
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🧑‍✈️",
+              "text": "TeknoEv customer service. How can I help you?",
+              "translation": "TeknoEv müşteri hizmetleri. Size nasıl yardımcı olabilirim?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Hello. I bought some headphones from you, but they don't work.",
+              "translation": "Merhaba. Sizden bir kulaklık aldım ama çalışmıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🧑‍✈️",
+              "text": "I'm sorry to hear that. Could you give me your order number?",
+              "translation": "Bunu duyduğuma üzüldüm. Sipariş numaranızı verebilir misiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Yes, it's five, eight, three, one.",
+              "translation": "Evet, beş, sekiz, üç, bir."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif'in sipariş numarası ne?",
+              "choices": [
+                "5381",
+                "5831",
+                "8531"
+              ],
+              "answer": "5831"
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🧑‍✈️",
+              "text": "Thank you. Have you charged them?",
+              "translation": "Teşekkürler. Şarj ettiniz mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Yes, twice. The light is on, but there's no sound.",
+              "translation": "Evet, iki kez. Işık yanıyor ama ses yok."
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🧑‍✈️",
+              "text": "Then they're faulty. Would you like a refund or new headphones?",
+              "translation": "O zaman arızalı. Para iadesi mi, yeni kulaklık mı istersiniz?"
+            },
+            {
+              "kind": "question",
+              "prompt": "\"Then they're faulty\" cümlesinde \"they\" ne?",
+              "choices": [
+                "Elif'in kulaklığı",
+                "Elif'in telefonu",
+                "Kuryeler"
+              ],
+              "answer": "Elif'in kulaklığı"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "New ones, please. I need them for work.",
+              "translation": "Yenisini lütfen. İş için ona ihtiyacım var."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif neden para iadesi istemiyor?",
+              "choices": [
+                "İş için kulaklığa ihtiyacı var",
+                "Para iadesi çok yavaş",
+                "Mia öyle söyledi"
+              ],
+              "answer": "İş için kulaklığa ihtiyacı var"
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🧑‍✈️",
+              "text": "No problem. A courier will collect the old ones tomorrow.",
+              "translation": "Sorun değil. Bir kurye eskisini yarın alacak."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Could you send the new ones quickly? I have an important call on Friday.",
+              "translation": "Yenisini hızlı gönderebilir misiniz? Cuma günü önemli bir görüşmem var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🧑‍✈️",
+              "text": "Of course. They'll arrive on Thursday.",
+              "translation": "Elbette. Perşembe günü gelir."
+            },
+            {
+              "kind": "question",
+              "prompt": "Yeni kulaklık hangi gün gelecek?",
+              "choices": [
+                "Çarşamba",
+                "Perşembe",
+                "Cuma"
+              ],
+              "answer": "Perşembe"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kurye",
+              "avatar": "🛵",
+              "text": "Good morning! I'm here to collect a box for TeknoEv.",
+              "translation": "Günaydın! TeknoEv için bir koli almaya geldim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Here you are. Goodbye, silent headphones!",
+              "translation": "Buyurun. Hoşça kal, sessiz kulaklık!"
+            }
+          ]
+        },
+        {
+          "id": "s4u14l3",
+          "type": "lesson",
+          "title": "Konuşma: Şikâyet turu",
+          "description": "İnternet şirketini ara, sorunu anlat, kibarca çözüm iste",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "Hello, I'm calling about my internet connection.",
+              "translation": "Merhaba, internet bağlantım hakkında arıyorum."
+            },
+            {
+              "type": "speak",
+              "text": "It hasn't worked since Monday morning.",
+              "translation": "Pazartesi sabahından beri çalışmıyor."
+            },
+            {
+              "type": "speak",
+              "text": "Yes, I've already restarted the modem three times.",
+              "translation": "Evet, modemi zaten üç kez yeniden başlattım."
+            },
+            {
+              "type": "speak",
+              "text": "Could you send a technician, please?",
+              "translation": "Lütfen bir teknisyen gönderebilir misiniz?"
+            },
+            {
+              "type": "speak",
+              "text": "Thursday afternoon is fine. Thank you for your help.",
+              "translation": "Perşembe öğleden sonra uygun. Yardımınız için teşekkürler."
+            },
+            {
+              "type": "select",
+              "prompt": "Görevli: \"Have you tried restarting it?\" En uygun cevap hangisi?",
+              "answer": "Yes, I've already tried that.",
+              "choices": [
+                {
+                  "text": "Yes, I've already tried that.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Yes, I already try it.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "Yes, I've already try.",
+                  "emoji": "🚫"
+                },
+                {
+                  "text": "Yes, I'm trying yesterday.",
+                  "emoji": "⛔"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir teknisyen istiyorsun. Hangisi en kibar?",
+              "answer": "Could you send someone, please?",
+              "choices": [
+                {
+                  "text": "Could you send someone, please?",
+                  "emoji": "🙏"
+                },
+                {
+                  "text": "Send someone now!",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "You must send someone.",
+                  "emoji": "☝️"
+                },
+                {
+                  "text": "I want someone. Now.",
+                  "emoji": "😤"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu telefon çalışmıyor.",
+              "lang": "tr",
+              "answers": [
+                "This phone doesn't work",
+                "This phone does not work",
+                "This phone isn't working",
+                "This phone is not working"
+              ],
+              "tokens": [
+                "This",
+                "phone",
+                "doesn't",
+                "work",
+                "isn't",
+                "works"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bana yenisini gönderebilir misiniz?",
+              "lang": "tr",
+              "answers": [
+                "Could you send me a new one?",
+                "Can you send me a new one?",
+                "Could you send a new one to me?",
+                "Can you send a new one to me?"
+              ],
+              "tokens": [
+                "Could",
+                "you",
+                "send",
+                "me",
+                "a",
+                "new",
+                "one",
+                "to",
+                "sending"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "teknisyen",
+                  "technician"
+                ],
+                [
+                  "yeniden başlatmak",
+                  "restart"
+                ],
+                [
+                  "bağlantı",
+                  "connection"
+                ],
+                [
+                  "öğleden sonra",
+                  "afternoon"
+                ],
+                [
+                  "yardımınız için teşekkürler",
+                  "thank you for your help"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u14l4",
+          "type": "lesson",
+          "title": "Yazma: Kısa şikâyet e-postası",
+          "description": "Kırık gelen bir ürün için kibar bir e-posta yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Sayın Yetkili, iki hafta önce bir ofis sandalyesi sipariş ettim.",
+              "lang": "tr",
+              "answers": [
+                "Dear Sir or Madam, I ordered an office chair two weeks ago",
+                "Dear Sir or Madam, I ordered an office chair 2 weeks ago",
+                "Dear Sir or Madam, two weeks ago I ordered an office chair"
+              ],
+              "tokens": [
+                "Dear",
+                "Sir",
+                "or",
+                "Madam",
+                "I",
+                "ordered",
+                "an",
+                "office",
+                "chair",
+                "two",
+                "weeks",
+                "ago",
+                "have",
+                "a"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sandalye dün geldi ama bir ayağı kırık.",
+              "lang": "tr",
+              "answers": [
+                "The chair arrived yesterday, but one leg is broken",
+                "The chair arrived yesterday, but one of the legs is broken",
+                "The chair came yesterday, but one leg is broken"
+              ],
+              "tokens": [
+                "The",
+                "chair",
+                "arrived",
+                "yesterday",
+                "but",
+                "one",
+                "leg",
+                "is",
+                "broken",
+                "are",
+                "break"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Müşteri hizmetlerini zaten iki kez aradım ama kimse cevap vermedi.",
+              "lang": "tr",
+              "answers": [
+                "I've already called customer service twice, but nobody answered",
+                "I have already called customer service twice, but nobody answered",
+                "I've already called customer service twice, but no one answered",
+                "I have already called customer service twice, but no one answered"
+              ],
+              "tokens": [
+                "I've",
+                "already",
+                "called",
+                "customer",
+                "service",
+                "twice",
+                "but",
+                "nobody",
+                "answered",
+                "yet",
+                "call"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Lütfen bana yeni bir sandalye gönderebilir misiniz? Saygılarımla, Elif",
+              "lang": "tr",
+              "answers": [
+                "Could you please send me a new chair? Best regards, Elif",
+                "Could you send me a new chair, please? Best regards, Elif",
+                "Could you please send a new chair to me? Best regards, Elif",
+                "Can you please send me a new chair? Best regards, Elif",
+                "Please could you send me a new chair? Best regards, Elif"
+              ],
+              "tokens": [
+                "Could",
+                "you",
+                "please",
+                "send",
+                "me",
+                "a",
+                "new",
+                "chair",
+                "Best",
+                "regards",
+                "Elif",
+                "Respects",
+                "sending"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I am writing ___ complain about my order.",
+              "translation": "Siparişim hakkında şikâyet etmek için yazıyorum.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "about"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I've ___ asked for a refund, but I haven't received it.",
+              "translation": "Zaten para iadesi istedim ama henüz almadım.",
+              "answer": "already",
+              "choices": [
+                "already",
+                "yet",
+                "ever"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The chair is broken, ___ I can't use it.",
+              "translation": "Sandalye kırık, bu yüzden kullanamıyorum.",
+              "answer": "so",
+              "choices": [
+                "so",
+                "because",
+                "but"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Adını bilmediğin bir şirkete şikâyet e-postası yazıyorsun. Nasıl başlarsın?",
+              "answer": "Dear Sir or Madam,",
+              "choices": [
+                {
+                  "text": "Dear Sir or Madam,",
+                  "emoji": "✉️"
+                },
+                {
+                  "text": "Hey guys!",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "Hi darling,",
+                  "emoji": "💕"
+                },
+                {
+                  "text": "To the company:",
+                  "emoji": "🏢"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "Sayın Yetkili",
+                  "Dear Sir or Madam"
+                ],
+                [
+                  "şikâyet etmek",
+                  "complain"
+                ],
+                [
+                  "kırık",
+                  "broken"
+                ],
+                [
+                  "kimse",
+                  "nobody"
+                ],
+                [
+                  "sipariş etmek",
+                  "order"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u14t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s4u14c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s4u15",
+      "title": "İşimi anlatıyorum",
+      "description": "İşini ya da okulunu bir dakikada anlatmak ve kısa bir profil yazmak",
+      "color": "0xFF2D9CDB",
+      "theme": "is",
+      "guide": "## Bu ünitede yapabileceklerin\n- İşini ya da okulunu bir dakikada anlatabilirsin.\n- Bir iş ilanından görevleri, koşulları ve başvuru tarihini bulabilirsin.\n- Bir iş tanıtım konuşmasında süre, sayı ve görevleri anlayabilirsin.\n- Kendin hakkında 80 kelimelik kısa bir profil yazabilirsin.\n\n## Strateji\n- Bir dakikalık tanıtımı dört parçaya böl: ne iş yapıyorsun, ne zamandır, nelerden sorumlusun, neyi seviyorsun.\n- İş ilanında başlıkları kullan: What will you do? Who are we looking for? To apply…\n- Dinlerken **for + süre** ve **since + başlangıç** ifadelerine dikkat et: kaç yıldır çalışıyor?\n- Profilde sevdiğin şeyleri **enjoy / love / be good at + -ing** ile yaz.\n\n## Model metin\n> Hi! I'm Elif, and I work as a designer at Martı Apps in İzmir. I've worked here for six months. I'm responsible for designing our apps. I love this job because I enjoy working with people from different countries. In my free time, I like cycling and drawing.\n\nBu taslak yaklaşık 50 kelime. 80 kelimeye tamamlamak için bir okul ya da eski iş cümlesi ve bir hedef cümlesi ekle (In the future, I want to…).\n\n## Türklerin sık hatası\n- ❌ I work as designer. ✅ I work as **a** designer. (Meslekten önce **a/an**: an engineer, a nurse.)\n- ❌ I'm responsible to design the screens. / I enjoy to work. ✅ I'm responsible **for designing** the screens. / I enjoy **working**.\n\n## Beceri testi\nBölüm 4 beceri testi 20 sorudur; geçmek için %80 doğru yap.\n\n| Bölüm | Soru | Ölçtüğü hedef |\n|---|---|---|\n| Dinleme | 6 | Randevu, ilaç talimatı, saat (s4u13); sorun ve çözüm (s4u14); iş süresi (s4u15) |\n| Okuma | 6 | Mazeret e-postası (s4u13, s4u10); iş profili (s4u15) |\n| Yazma | 5 | Belirti ve süre (s4u13); şikâyet ve kibar istek (s4u14); işini anlatma (s4u15) |\n| Dil | 3 | first conditional (s4u7), It doesn't work (s4u14), telefon kalıbı ve -ing (s4u11) |",
+      "nodes": [
+        {
+          "id": "s4u15l1",
+          "type": "lesson",
+          "title": "Dinleme: İş tanıtım konuşması",
+          "description": "Birinin işini anlattığı konuşmadan süre, saat ve görevleri yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I've worked as a nurse for six years.",
+              "answers": [
+                "I've worked as a nurse for six years.",
+                "I've worked as a nurse for 6 years.",
+                "I have worked as a nurse for six years.",
+                "I have worked as a nurse for 6 years."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'm responsible for a team of ten people.",
+              "answers": [
+                "I'm responsible for a team of ten people.",
+                "I'm responsible for a team of 10 people.",
+                "I am responsible for a team of ten people.",
+                "I am responsible for a team of 10 people."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm interested ___ working in a hotel.",
+              "translation": "Bir otelde çalışmakla ilgileniyorum.",
+              "answer": "in",
+              "choices": [
+                "in",
+                "on",
+                "at"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I have to start work at half past seven.",
+              "answers": [
+                "I have to start work at half past seven.",
+                "I have to start work at 7:30."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "What do you like about your job?",
+              "answers": [
+                "What do you like about your job?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I want ___ become a teacher one day.",
+              "translation": "Bir gün öğretmen olmak istiyorum.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "that"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I enjoy working with children, but it's tiring.",
+              "answers": [
+                "I enjoy working with children, but it's tiring.",
+                "I enjoy working with children, but it is tiring."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I don't have to wear a uniform.",
+              "answers": [
+                "I don't have to wear a uniform.",
+                "I do not have to wear a uniform."
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I've worked as a nurse for six years.",
+              "translation": "Altı yıldır hemşire olarak çalışıyorum."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "... olarak çalışmak",
+                  "work as"
+                ],
+                [
+                  "...den sorumlu",
+                  "responsible for"
+                ],
+                [
+                  "vardiya",
+                  "shift"
+                ],
+                [
+                  "maaş",
+                  "salary"
+                ],
+                [
+                  "iş arkadaşı",
+                  "colleague"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u15l2",
+          "type": "lesson",
+          "title": "Okuma: İş ilanı",
+          "description": "Martı Apps'in iş ilanından görevleri ve koşulları bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Martı Apps is hiring!\nJunior app developer (part-time)\nWe are a small team in İzmir that makes apps for customers in Turkey and the UK. We are looking for a junior developer who can work three days a week.\nWhat will you do? You will work with our senior developer and test our apps. You will also be responsible for fixing small problems in the code.\nWho are we looking for? You should be good at coding and enjoy solving problems. You don't have to have experience, but you must speak English, because many of our customers are in London.\nWhat do we offer? A friendly team, a desk next to the sea and flexible hours. The job starts on 1 June.\nTo apply, send your CV and a short profile to Selin before 15 May.",
+              "question": "İş haftada kaç gün?",
+              "options": [
+                "Two",
+                "Three",
+                "Five",
+                "Six"
+              ],
+              "answer": 1,
+              "explanation": "\"Three\" doğru: metinde \"a junior developer who can work three days a week\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Martı Apps is hiring!\nJunior app developer (part-time)\nWe are a small team in İzmir that makes apps for customers in Turkey and the UK. We are looking for a junior developer who can work three days a week.\nWhat will you do? You will work with our senior developer and test our apps. You will also be responsible for fixing small problems in the code.\nWho are we looking for? You should be good at coding and enjoy solving problems. You don't have to have experience, but you must speak English, because many of our customers are in London.\nWhat do we offer? A friendly team, a desk next to the sea and flexible hours. The job starts on 1 June.\nTo apply, send your CV and a short profile to Selin before 15 May.",
+              "question": "Bu iş için deneyim gerekiyor mu?",
+              "options": [
+                "Yes, at least two years",
+                "Yes, in London",
+                "No, but you must speak English",
+                "No, and you don't need English"
+              ],
+              "answer": 2,
+              "explanation": "\"No, but you must speak English\" doğru: metinde \"You don't have to have experience, but you must speak English\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Martı Apps is hiring!\nJunior app developer (part-time)\nWe are a small team in İzmir that makes apps for customers in Turkey and the UK. We are looking for a junior developer who can work three days a week.\nWhat will you do? You will work with our senior developer and test our apps. You will also be responsible for fixing small problems in the code.\nWho are we looking for? You should be good at coding and enjoy solving problems. You don't have to have experience, but you must speak English, because many of our customers are in London.\nWhat do we offer? A friendly team, a desk next to the sea and flexible hours. The job starts on 1 June.\nTo apply, send your CV and a short profile to Selin before 15 May.",
+              "question": "Bu işte İngilizce neden önemli?",
+              "options": [
+                "The team is in London",
+                "The office is in the UK",
+                "Selin is from the UK",
+                "Many customers are in London"
+              ],
+              "answer": 3,
+              "explanation": "\"Many customers are in London\" doğru: metinde \"because many of our customers are in London\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Martı Apps is hiring!\nJunior app developer (part-time)\nWe are a small team in İzmir that makes apps for customers in Turkey and the UK. We are looking for a junior developer who can work three days a week.\nWhat will you do? You will work with our senior developer and test our apps. You will also be responsible for fixing small problems in the code.\nWho are we looking for? You should be good at coding and enjoy solving problems. You don't have to have experience, but you must speak English, because many of our customers are in London.\nWhat do we offer? A friendly team, a desk next to the sea and flexible hours. The job starts on 1 June.\nTo apply, send your CV and a short profile to Selin before 15 May.",
+              "question": "Selin'e ne göndermelisin?",
+              "options": [
+                "A CV and a short profile",
+                "A photo and a CV",
+                "Only a short profile",
+                "A letter from your teacher"
+              ],
+              "answer": 0,
+              "explanation": "\"A CV and a short profile\" doğru: metinde \"send your CV and a short profile to Selin\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Martı Apps is hiring!\nJunior app developer (part-time)\nWe are a small team in İzmir that makes apps for customers in Turkey and the UK. We are looking for a junior developer who can work three days a week.\nWhat will you do? You will work with our senior developer and test our apps. You will also be responsible for fixing small problems in the code.\nWho are we looking for? You should be good at coding and enjoy solving problems. You don't have to have experience, but you must speak English, because many of our customers are in London.\nWhat do we offer? A friendly team, a desk next to the sea and flexible hours. The job starts on 1 June.\nTo apply, send your CV and a short profile to Selin before 15 May.",
+              "question": "Başvuru için son gün ne zaman?",
+              "options": [
+                "1 June",
+                "5 June",
+                "15 May",
+                "15 June"
+              ],
+              "answer": 2,
+              "explanation": "\"15 May\" doğru: metinde \"send your CV and a short profile to Selin before 15 May\" yazıyor; 1 June işin başlangıç tarihi."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "işe almak",
+                  "hire"
+                ],
+                [
+                  "deneyim",
+                  "experience"
+                ],
+                [
+                  "esnek",
+                  "flexible"
+                ],
+                [
+                  "başvurmak",
+                  "apply"
+                ],
+                [
+                  "sunmak",
+                  "offer"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "You will be responsible ___ testing our apps.",
+              "translation": "Uygulamalarımızı test etmekten sorumlu olacaksın.",
+              "answer": "for",
+              "choices": [
+                "for",
+                "of",
+                "to"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "\"Tasarımcı olarak çalışıyorum.\" Hangisi doğru?",
+              "answer": "I work as a designer.",
+              "choices": [
+                {
+                  "text": "I work as a designer.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "I work as designer.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "I work like a designer.",
+                  "emoji": "🚫"
+                },
+                {
+                  "text": "I'm work as a designer.",
+                  "emoji": "⛔"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u15s",
+          "type": "story",
+          "title": "Ekibi tanıyın",
+          "description": "Martı Apps ekibi iş ilanı için kısa bir video çekiyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Team, we're making a short video for our new job advert.",
+              "translation": "Ekip, yeni iş ilanımız için kısa bir video hazırlıyoruz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Each of you should talk about your job for one minute.",
+              "translation": "Her biriniz bir dakika işinizi anlatmalı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍🦱",
+              "text": "I'll start. I'm Deniz, and I work as a senior developer.",
+              "translation": "Ben başlayayım. Ben Deniz, kıdemli yazılımcı olarak çalışıyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍🦱",
+              "text": "I'm responsible for the code of all our apps. I've worked here for four years.",
+              "translation": "Tüm uygulamalarımızın kodundan sorumluyum. Dört yıldır burada çalışıyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz kaç yıldır Martı Apps'te çalışıyor?",
+              "choices": [
+                "İki yıldır",
+                "Dört yıldır",
+                "On dört yıldır"
+              ],
+              "answer": "Dört yıldır"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍🦱",
+              "text": "I enjoy solving problems, and I love cycling to the office.",
+              "translation": "Problem çözmekten hoşlanıyorum ve ofise bisikletle gelmeye bayılıyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Hi, I'm Mia from Manchester. I work in marketing.",
+              "translation": "Merhaba, ben Manchester'dan Mia. Pazarlamada çalışıyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "I write our social media posts and talk to our customers.",
+              "translation": "Sosyal medya paylaşımlarımızı yazıyorum ve müşterilerimizle konuşuyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "The best part is working with people from different countries.",
+              "translation": "En güzel yanı farklı ülkelerden insanlarla çalışmak."
+            },
+            {
+              "kind": "question",
+              "prompt": "Mia'ya göre işinin en güzel yanı ne?",
+              "choices": [
+                "Ofise bisikletle gelmek",
+                "Farklı ülkelerden insanlarla çalışmak",
+                "Kod yazmak"
+              ],
+              "answer": "Farklı ülkelerden insanlarla çalışmak"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Hello, I'm Elif. I work as a designer, and I joined the team this year.",
+              "translation": "Merhaba, ben Elif. Tasarımcı olarak çalışıyorum ve ekibe bu yıl katıldım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "I design the screens of our apps. I'm good at drawing, so I love my job.",
+              "translation": "Uygulamalarımızın ekranlarını tasarlıyorum. Çizimde iyiyim, bu yüzden işimi seviyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "I also have video calls with clients like Mr Brooks in London.",
+              "translation": "Londra'daki Bay Brooks gibi müşterilerle görüntülü görüşmeler de yapıyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Perfect! For the job advert, we need someone who can work with Deniz.",
+              "translation": "Mükemmel! İş ilanı için Deniz'le çalışabilecek birine ihtiyacımız var."
+            },
+            {
+              "kind": "question",
+              "prompt": "Yeni çalışan kiminle çalışacak?",
+              "choices": [
+                "Mia ile",
+                "Deniz ile",
+                "Bay Brooks ile"
+              ],
+              "answer": "Deniz ile"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Elif, I've just watched your video. You were great!",
+              "translation": "Elif, videonu az önce izledim. Harikaydın!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Thanks! Selin has put it on the website with the job advert.",
+              "translation": "Teşekkürler! Selin onu iş ilanıyla birlikte web sitesine koydu."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"Selin has put it on the website\" cümlesinde \"it\" ne?",
+              "choices": [
+                "Video",
+                "Kerem'in profili",
+                "Bay Brooks'un e-postası"
+              ],
+              "answer": "Video"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "I'm interested in the job. I'm good at coding, and I want to live in İzmir!",
+              "translation": "İşle ilgileniyorum. Kodlamada iyiyim ve İzmir'de yaşamak istiyorum!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "But I'm still a student. Is it a full-time job?",
+              "translation": "Ama hâlâ öğrenciyim. Tam zamanlı bir iş mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "No, it's part-time, three days a week.",
+              "translation": "Hayır, yarı zamanlı, haftada üç gün."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "You should write a short profile and send it to Selin!",
+              "translation": "Kısa bir profil yazıp Selin'e göndermelisin!"
+            },
+            {
+              "kind": "question",
+              "prompt": "İş haftada kaç gün?",
+              "choices": [
+                "İki gün",
+                "Üç gün",
+                "Beş gün"
+              ],
+              "answer": "Üç gün"
+            }
+          ]
+        },
+        {
+          "id": "s4u15l3",
+          "type": "lesson",
+          "title": "Konuşma: Bir dakikalık tanıtım",
+          "description": "Görüşmecinin sorularına cevap vererek işini anlat",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "I work as a receptionist at a hotel in İzmir.",
+              "translation": "İzmir'de bir otelde resepsiyonist olarak çalışıyorum."
+            },
+            {
+              "type": "speak",
+              "text": "I've worked there for three years.",
+              "translation": "Üç yıldır orada çalışıyorum."
+            },
+            {
+              "type": "speak",
+              "text": "I'm responsible for welcoming guests and answering the phone.",
+              "translation": "Misafirleri karşılamaktan ve telefonlara cevap vermekten sorumluyum."
+            },
+            {
+              "type": "speak",
+              "text": "I really enjoy meeting people from different countries.",
+              "translation": "Farklı ülkelerden insanlarla tanışmaktan gerçekten hoşlanıyorum."
+            },
+            {
+              "type": "speak",
+              "text": "But I don't like working at night.",
+              "translation": "Ama gece çalışmayı sevmiyorum."
+            },
+            {
+              "type": "select",
+              "prompt": "Görüşmeci: \"What do you do?\" En uygun cevap hangisi?",
+              "answer": "I'm a sales assistant.",
+              "choices": [
+                {
+                  "text": "I'm a sales assistant.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "I'm doing my homework.",
+                  "emoji": "📚"
+                },
+                {
+                  "text": "I do fine, thanks.",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "I work as sales assistant.",
+                  "emoji": "❌"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Görüşmeci: \"What do you enjoy about your job?\" En uygun cevap hangisi?",
+              "answer": "I enjoy helping people.",
+              "choices": [
+                {
+                  "text": "I enjoy helping people.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "I enjoy to help people.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "Yes, I enjoy it.",
+                  "emoji": "🤷"
+                },
+                {
+                  "text": "I enjoy help people.",
+                  "emoji": "🚫"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bir kafede garson olarak çalışıyorum.",
+              "lang": "tr",
+              "answers": [
+                "I work as a waiter in a café",
+                "I work as a waiter at a café",
+                "I work as a waitress in a café",
+                "I work as a waitress at a café",
+                "I work as a waiter in a cafe"
+              ],
+              "tokens": [
+                "I",
+                "work",
+                "as",
+                "a",
+                "waiter",
+                "in",
+                "a",
+                "café",
+                "am",
+                "like"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Müşterilerle konuşmaktan hoşlanıyorum.",
+              "lang": "tr",
+              "answers": [
+                "I enjoy talking to customers",
+                "I enjoy talking with customers",
+                "I like talking to customers",
+                "I like talking with customers"
+              ],
+              "tokens": [
+                "I",
+                "enjoy",
+                "talking",
+                "to",
+                "customers",
+                "talk",
+                "am"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "resepsiyonist",
+                  "receptionist"
+                ],
+                [
+                  "misafir",
+                  "guest"
+                ],
+                [
+                  "gece çalışmak",
+                  "work at night"
+                ],
+                [
+                  "telefona cevap vermek",
+                  "answer the phone"
+                ],
+                [
+                  "karşılamak",
+                  "welcome"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u15l4",
+          "type": "lesson",
+          "title": "Yazma: Kısa profil",
+          "description": "Şirket sitesi için kendini anlatan kısa bir profil yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Merhaba! Ben Elif, İzmir'de Martı Apps'te tasarımcı olarak çalışıyorum.",
+              "lang": "tr",
+              "answers": [
+                "Hi! I'm Elif, and I work as a designer at Martı Apps in İzmir",
+                "Hi! I am Elif, and I work as a designer at Martı Apps in İzmir",
+                "Hello! I'm Elif, and I work as a designer at Martı Apps in İzmir",
+                "Hi! I'm Elif. I work as a designer at Martı Apps in İzmir"
+              ],
+              "tokens": [
+                "Hi",
+                "I'm",
+                "Elif",
+                "and",
+                "I",
+                "work",
+                "as",
+                "a",
+                "designer",
+                "at",
+                "Martı",
+                "Apps",
+                "in",
+                "İzmir",
+                "like"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Altı aydır burada çalışıyorum.",
+              "lang": "tr",
+              "answers": [
+                "I've worked here for six months",
+                "I have worked here for six months",
+                "I've been working here for six months",
+                "I have been working here for six months"
+              ],
+              "tokens": [
+                "I've",
+                "worked",
+                "here",
+                "for",
+                "six",
+                "months",
+                "since",
+                "work"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Uygulamalarımızı tasarlamaktan sorumluyum.",
+              "lang": "tr",
+              "answers": [
+                "I'm responsible for designing our apps",
+                "I am responsible for designing our apps",
+                "I'm responsible for the design of our apps",
+                "I am responsible for the design of our apps"
+              ],
+              "tokens": [
+                "I'm",
+                "responsible",
+                "for",
+                "designing",
+                "our",
+                "apps",
+                "to",
+                "design"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu işi seviyorum çünkü farklı ülkelerden insanlarla çalışmaktan hoşlanıyorum.",
+              "lang": "tr",
+              "answers": [
+                "I love this job because I enjoy working with people from different countries",
+                "I love this job because I like working with people from different countries",
+                "I love my job because I enjoy working with people from different countries"
+              ],
+              "tokens": [
+                "I",
+                "love",
+                "this",
+                "job",
+                "because",
+                "I",
+                "enjoy",
+                "working",
+                "with",
+                "people",
+                "from",
+                "different",
+                "countries",
+                "to",
+                "work"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Boş zamanımda bisiklete binmeyi ve çizim yapmayı severim.",
+              "lang": "tr",
+              "answers": [
+                "In my free time, I like cycling and drawing",
+                "In my free time, I enjoy cycling and drawing",
+                "In my free time, I love cycling and drawing",
+                "I like cycling and drawing in my free time",
+                "In my free time, I like to cycle and draw"
+              ],
+              "tokens": [
+                "In",
+                "my",
+                "free",
+                "time",
+                "I",
+                "like",
+                "cycling",
+                "and",
+                "drawing",
+                "the",
+                "to"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "My friend works as ___ engineer in Ankara.",
+              "translation": "Arkadaşım Ankara'da mühendis olarak çalışıyor.",
+              "answer": "an",
+              "choices": [
+                "an",
+                "a",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm good at ___ to people, so I like my job.",
+              "translation": "İnsanlarla konuşmakta iyiyim, bu yüzden işimi seviyorum.",
+              "answer": "talking",
+              "choices": [
+                "talking",
+                "talk",
+                "to talk"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I love my job, ___ the hours are long.",
+              "translation": "İşimi seviyorum ama mesai saatleri uzun.",
+              "answer": "but",
+              "choices": [
+                "but",
+                "so",
+                "because"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Şirket sitesindeki profilin nasıl başlamalı?",
+              "answer": "Hi! I'm Elif, a designer.",
+              "choices": [
+                {
+                  "text": "Hi! I'm Elif, a designer.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Dear Sir or Madam, I'm Elif.",
+                  "emoji": "✉️"
+                },
+                {
+                  "text": "Yo! Elif here, lol.",
+                  "emoji": "😜"
+                },
+                {
+                  "text": "Respects, Elif.",
+                  "emoji": "🙇"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "sorumlu",
+                  "responsible"
+                ],
+                [
+                  "boş zaman",
+                  "free time"
+                ],
+                [
+                  "farklı ülkeler",
+                  "different countries"
+                ],
+                [
+                  "tasarımcı",
+                  "designer"
+                ],
+                [
+                  "altı ay",
+                  "six months"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u15t",
+          "type": "test",
+          "title": "Bölüm 4 beceri testi",
+          "description": "Bu bölümün hedeflerini ölçer",
+          "rewardXp": 25,
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I've just made an appointment for Friday.",
+              "answers": [
+                "I've just made an appointment for Friday.",
+                "I have just made an appointment for Friday."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Don't take it with a cup of coffee.",
+              "answers": [
+                "Don't take it with a cup of coffee.",
+                "Do not take it with a cup of coffee."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "My laptop doesn't turn on, and I've already charged it.",
+              "answers": [
+                "My laptop doesn't turn on, and I've already charged it.",
+                "My laptop does not turn on, and I have already charged it.",
+                "My laptop doesn't turn on, and I have already charged it.",
+                "My laptop does not turn on, and I've already charged it."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Could you send me a new one by Thursday?",
+              "answers": [
+                "Could you send me a new one by Thursday?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I've worked as a developer for eight years.",
+              "answers": [
+                "I've worked as a developer for eight years.",
+                "I've worked as a developer for 8 years.",
+                "I have worked as a developer for eight years.",
+                "I have worked as a developer for 8 years."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The meeting starts at a quarter to ten.",
+              "answers": [
+                "The meeting starts at a quarter to ten.",
+                "The meeting starts at quarter to ten.",
+                "The meeting starts at 9:45."
+              ]
+            },
+            {
+              "type": "choice",
+              "passage": "Hi Selin,\nI'm sorry, but I can't come to the office today. I've had a bad stomach ache since last night, and I have an appointment with the doctor at eleven. I don't think it's serious, but I should rest today.\nI've already sent the new posts to Deniz, so Deniz can put them on our website this afternoon. Could you call Mr Brooks at three? I promised to talk to him about the logo. I'll check my emails this evening.\nThanks,\nMia",
+              "question": "Mia'nın doktor randevusu saat kaçta?",
+              "options": [
+                "At three",
+                "At eleven",
+                "This evening",
+                "Last night"
+              ],
+              "answer": 1,
+              "explanation": "\"At eleven\" doğru: metinde \"I have an appointment with the doctor at eleven\" yazıyor; saat üç Bay Brooks'u arama saati."
+            },
+            {
+              "type": "choice",
+              "passage": "Hi Selin,\nI'm sorry, but I can't come to the office today. I've had a bad stomach ache since last night, and I have an appointment with the doctor at eleven. I don't think it's serious, but I should rest today.\nI've already sent the new posts to Deniz, so Deniz can put them on our website this afternoon. Could you call Mr Brooks at three? I promised to talk to him about the logo. I'll check my emails this evening.\nThanks,\nMia",
+              "question": "Mia neyi zaten yapmış?",
+              "options": [
+                "She has called Mr Brooks",
+                "She has seen the doctor",
+                "She has sent the new posts to Deniz",
+                "She has finished the logo"
+              ],
+              "answer": 2,
+              "explanation": "\"She has sent the new posts to Deniz\" doğru: metinde \"I've already sent the new posts to Deniz\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Hi Selin,\nI'm sorry, but I can't come to the office today. I've had a bad stomach ache since last night, and I have an appointment with the doctor at eleven. I don't think it's serious, but I should rest today.\nI've already sent the new posts to Deniz, so Deniz can put them on our website this afternoon. Could you call Mr Brooks at three? I promised to talk to him about the logo. I'll check my emails this evening.\nThanks,\nMia",
+              "question": "Mia, Selin'den ne istiyor?",
+              "options": [
+                "To call Mr Brooks at three",
+                "To send the posts to Deniz",
+                "To go to the doctor with her",
+                "To check her emails"
+              ],
+              "answer": 0,
+              "explanation": "\"To call Mr Brooks at three\" doğru: metinde \"Could you call Mr Brooks at three?\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Meet our team: Burak, delivery manager\nBurak has worked at Hızlı Kargo for five years. He started as a courier, but now he works as a delivery manager in our İzmir office. He is responsible for twelve couriers and more than 500 deliveries every day.\n\"I enjoy solving problems,\" says Burak. \"If a parcel doesn't arrive on time, the customer calls me. I always try to find a solution quickly.\"\nBurak has to start work at seven, so he gets up early. In his free time, he loves swimming and cooking for his friends.",
+              "question": "Burak şirketteki ilk işinde ne olarak çalıştı?",
+              "options": [
+                "Delivery manager",
+                "Driver",
+                "Receptionist",
+                "Courier"
+              ],
+              "answer": 3,
+              "explanation": "\"Courier\" doğru: metinde \"He started as a courier\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Meet our team: Burak, delivery manager\nBurak has worked at Hızlı Kargo for five years. He started as a courier, but now he works as a delivery manager in our İzmir office. He is responsible for twelve couriers and more than 500 deliveries every day.\n\"I enjoy solving problems,\" says Burak. \"If a parcel doesn't arrive on time, the customer calls me. I always try to find a solution quickly.\"\nBurak has to start work at seven, so he gets up early. In his free time, he loves swimming and cooking for his friends.",
+              "question": "Burak kaç kuryeden sorumlu?",
+              "options": [
+                "Five",
+                "Seven",
+                "Five hundred",
+                "Twelve"
+              ],
+              "answer": 3,
+              "explanation": "\"Twelve\" doğru: metinde \"He is responsible for twelve couriers\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Meet our team: Burak, delivery manager\nBurak has worked at Hızlı Kargo for five years. He started as a courier, but now he works as a delivery manager in our İzmir office. He is responsible for twelve couriers and more than 500 deliveries every day.\n\"I enjoy solving problems,\" says Burak. \"If a parcel doesn't arrive on time, the customer calls me. I always try to find a solution quickly.\"\nBurak has to start work at seven, so he gets up early. In his free time, he loves swimming and cooking for his friends.",
+              "question": "Burak neden erken kalkıyor?",
+              "options": [
+                "He has to start work at seven",
+                "He goes swimming",
+                "He cooks for his friends",
+                "He calls customers"
+              ],
+              "answer": 0,
+              "explanation": "\"He has to start work at seven\" doğru: metinde \"Burak has to start work at seven, so he gets up early\" yazıyor."
+            },
+            {
+              "type": "translate",
+              "text": "Dünden beri boğazım ağrıyor.",
+              "lang": "tr",
+              "answers": [
+                "I've had a sore throat since yesterday",
+                "I have had a sore throat since yesterday",
+                "My throat has hurt since yesterday"
+              ],
+              "tokens": [
+                "I've",
+                "had",
+                "a",
+                "sore",
+                "throat",
+                "since",
+                "yesterday",
+                "for",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kulaklığım hâlâ çalışmıyor.",
+              "lang": "tr",
+              "answers": [
+                "My headphones still don't work",
+                "My headphones still do not work",
+                "My headphones still aren't working",
+                "My headphones are still not working"
+              ],
+              "tokens": [
+                "My",
+                "headphones",
+                "still",
+                "don't",
+                "work",
+                "doesn't",
+                "isn't"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Para iadesi alabilir miyim lütfen?",
+              "lang": "tr",
+              "answers": [
+                "Could I have a refund, please?",
+                "Can I have a refund, please?",
+                "Could I get a refund, please?",
+                "Can I get a refund, please?",
+                "Could I please have a refund?"
+              ],
+              "tokens": [
+                "Could",
+                "I",
+                "have",
+                "a",
+                "refund",
+                "please",
+                "the",
+                "want"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ablam bir otelde resepsiyonist olarak çalışıyor.",
+              "lang": "tr",
+              "answers": [
+                "My sister works as a receptionist in a hotel",
+                "My sister works as a receptionist at a hotel",
+                "My older sister works as a receptionist in a hotel",
+                "My older sister works as a receptionist at a hotel"
+              ],
+              "tokens": [
+                "My",
+                "sister",
+                "works",
+                "as",
+                "a",
+                "receptionist",
+                "in",
+                "a",
+                "hotel",
+                "work",
+                "is"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Müşterilerin e-postalarını yanıtlamaktan sorumluyum.",
+              "lang": "tr",
+              "answers": [
+                "I'm responsible for answering customers' emails.",
+                "I am responsible for answering customers' emails.",
+                "I'm responsible for answering customer emails.",
+                "I am responsible for answering customer emails."
+              ],
+              "tokens": [
+                "I'm",
+                "responsible",
+                "for",
+                "answering",
+                "customers'",
+                "emails",
+                "to",
+                "answer"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "If you take this medicine, you ___ feel better tomorrow.",
+              "translation": "Bu ilacı alırsan yarın daha iyi hissedersin.",
+              "answer": "will",
+              "choices": [
+                "will",
+                "would",
+                "are"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Satıcı: \"How can I help you?\" Laptopun bozuk. En uygun cevap hangisi?",
+              "answer": "My laptop doesn't work.",
+              "choices": [
+                {
+                  "text": "My laptop doesn't work.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "My laptop isn't work.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "My laptop doesn't works.",
+                  "emoji": "🚫"
+                },
+                {
+                  "text": "My laptop not working.",
+                  "emoji": "⛔"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Thank you for ___ me back so quickly.",
+              "translation": "Beni bu kadar çabuk geri aradığın için teşekkürler.",
+              "answer": "calling",
+              "choices": [
+                "calling",
+                "call",
+                "to call"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4u15c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}

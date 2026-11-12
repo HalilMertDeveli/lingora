@@ -160,4 +160,24 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(AuthScreen), findsOneWidget);
   });
+
+  testWidgets('sign-in waits for the guest account (no race with the anonymous sign-in)', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          prefsProvider.overrideWithValue(prefs),
+          progressSyncProvider.overrideWith(() => _FixedSync(const SyncStatus(SyncState.signedOut))),
+          authStateProvider.overrideWithValue(const AsyncData(null)),
+          accountServiceProvider.overrideWithValue(AccountService(MockFirebaseAuth())),
+        ],
+        child: const MaterialApp(home: Scaffold(body: AccountSection())),
+      ),
+    );
+    await tester.pump();
+    final button = tester.widget<FilledButton>(find.byKey(const ValueKey('account-sign-in')));
+    expect(button.onPressed, isNull);
+    expect(find.text('Hesap hazırlanıyor…'), findsOneWidget);
+  });
 }

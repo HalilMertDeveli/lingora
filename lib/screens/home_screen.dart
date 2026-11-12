@@ -254,8 +254,8 @@ class _LearnRoot extends ConsumerWidget {
         const OrgAssignmentsCard(),
         Expanded(
           child: switch (track.kind) {
-            TrackKind.exam => switch (ref.watch(examPathProvider(track.id))) {
-              AsyncData(value: null) || AsyncError() => ScrollToTopOnReselect(
+            TrackKind.exam => switch (ref.watch(hasExamPathProvider(track.id))) {
+              AsyncData(value: false) || AsyncError() => ScrollToTopOnReselect(
                 child: ExamHomeScreen(key: ValueKey(track.id), examId: track.id),
               ),
               AsyncData() => PathScreen(key: ValueKey('path-${track.id}')),

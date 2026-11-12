@@ -314,7 +314,8 @@
        "text": "Kamp yapmayı tüplü dalışa tercih ederim.",
        "lang": "tr",
        "answers": [
-        "I prefer camping to scuba diving"
+        "I prefer camping to scuba diving",
+        "I prefer going camping to scuba diving"
        ],
        "tokens": [
         "I",
@@ -768,7 +769,7 @@
    "description": "Turizm: turistik yerler, geçmiş tatiller, gezi önerileri ve yerleri anlatma",
    "color": "0xFF0E9FD8",
    "theme": "seyahat",
-   "guide": "## Bu ünitede ne öğreneceğiz?\nBu ünitede turistik yerleri tanıtmayı, geçmiş tatillerini anlatmayı ve arkadaşlarına gezi önerileri vermeyi öğreneceksin. Kapadokya'dan Kaş'a, Türkiye'nin güzel yerlerini İngilizce anlatacağız. Hazırsan çantanı topla!\n\n## Özet tablo\n| Ne yapmak istiyorsun? | Kalıp | Örnek |\n|---|---|---|\n| Geçmiş tatili anlatmak | **I visited / stayed / saw / tried …** | We stayed in a cave hotel. |\n| Deneyim sormak | **Have you ever been to …?** | Have you ever been to Mardin? |\n| Kısa cevap vermek | **Yes, I have. / No, I haven't.** | No, I haven't. But I'd love to go. |\n| Öneri vermek | **You should visit … / Don't miss …** | Don't miss the Galata Tower. |\n| Bir yeri tanıtmak | **It is famous for …** | Safranbolu is famous for its old houses. |\n| Yerini söylemek | **It is located in …** | Sumela Monastery is located in Trabzon. |\n| Gezi hakkında soru sormak | **What did you do there?** | What did you do in Bodrum? |\n\n## Hedef kalıplar\n- **I visited / stayed / saw / tried …**: Ziyaret ettim / kaldım / gördüm / denedim. Örnek: I tried testi kebabı in Cappadocia.\n- **Did you …? / I didn't …**: Geçmiş zamanda soru ve olumsuz cümle; fiil yalın kalır. Örnek: Did you visit the museum?\n- **Have you ever been to …?**: Hiç … gittin mi? Örnek: Have you ever been to Ephesus?\n- **You should visit …**: … ziyaret etmelisin. Örnek: You should visit Pamukkale.\n- **Don't miss …**: … kaçırma. Örnek: Don't miss the sunrise in Cappadocia.\n- **It is famous for …**: … ile ünlüdür. Örnek: Gaziantep is famous for its baklava.\n- **It is located in …**: … şehrinde bulunur. Örnek: Ephesus is located in İzmir.\n- **What did you do there?**: Orada ne yaptın? Örnek: What did you do in Bodrum?\n\n## Anahtar kelimeler\n- **abroad**: yurt dışı, yurt dışında\n- **accommodation**: konaklama\n- **sightseeing**: gezip görme\n- **landmark**: simge yapı, önemli yer\n- **ruins**: kalıntılar, harabeler\n- **guided tour**: rehberli tur\n- **souvenir**: hediyelik eşya, hatıra\n- **local food**: yerel yemek\n- **luggage**: bagaj, valiz\n- **crowded**: kalabalık\n- **peaceful**: huzurlu, sakin\n- **breathtaking**: nefes kesici\n- **ancient**: antik, çok eski\n- **worth visiting**: görmeye değer\n- **recommend**: tavsiye etmek\n- **trip**: gezi\n\n## Türklerin sık yaptığı hatalar\n- \"I goed to Antalya and buyed a hat.\" → **I went to Antalya and bought a hat.**: Düzensiz fiilleri ezberle: go → went, buy → bought.\n- \"Did you visited the castle?\" → **Did you visit the castle?**: Cümlede did ya da didn't varsa fiil yalın kalır.\n- \"I went to abroad last summer.\" → **I went abroad last summer.**: abroad kelimesinden önce to kullanılmaz.\n\n## Sınav ipuçları\n> **Sınav ipucu 1:** Diyalog tamamlama sorularında boşluktan sonraki cümleye bak. Cevap \"Yes, I have\" ise soru büyük ihtimalle \"Have you ever been to …?\", \"Yes, I did\" ise \"Did you …?\" olur.\n\n> **Sınav ipucu 2:** Öneri isteyen birine \"You should …\" ya da \"Don't miss …\" ile cevap verilir. Geçmiş zamanlı cümleler öneri değildir.\n\n> **Sınav ipucu 3:** Tablo sorularında önce başlığı oku, sonra sayıları tek tek karşılaştır. \"the most\", \"fewer\", \"half\" gibi kelimelere dikkat et.",
+   "guide": "## Bu ünitede ne öğreneceğiz?\nBu ünitede turistik yerleri tanıtmayı, geçmiş tatillerini anlatmayı ve arkadaşlarına gezi önerileri vermeyi öğreneceksin. Kapadokya'dan Kaş'a, Türkiye'nin güzel yerlerini İngilizce anlatacağız. Hazırsan çantanı topla!\n\n## Özet tablo\n| Ne yapmak istiyorsun? | Kalıp | Örnek |\n|---|---|---|\n| Geçmiş tatili anlatmak | **I visited / stayed / saw / tried …** | We stayed in a cave hotel. |\n| Deneyim sormak | **Have you ever been to …?** | Have you ever been to Mardin? |\n| Kısa cevap vermek | **Yes, I have. / No, I haven't.** | No, I haven't. But I'd love to go. |\n| Öneri vermek | **You should visit … / Don't miss …** | Don't miss the Galata Tower. |\n| Bir yeri tanıtmak | **It is famous for …** | Safranbolu is famous for its old houses. |\n| Yerini söylemek | **It is located in …** | Sumela Monastery is located in Trabzon. |\n| Gezi hakkında soru sormak | **What did you do there?** | What did you do in Bodrum? |\n\n## Hedef kalıplar\n- **I visited / stayed / saw / tried …**: Ziyaret ettim / kaldım / gördüm / denedim. Örnek: I tried testi kebabı in Cappadocia.\n- **Did you …? / I didn't …**: Geçmiş zamanda soru ve olumsuz cümle; fiil yalın kalır. Örnek: Did you visit the museum?\n- **Have you ever been to …?**: Hiç … gittin mi? Örnek: Have you ever been to Ephesus?\n- **You should visit …**: … ziyaret etmelisin. Örnek: You should visit Pamukkale.\n- **Don't miss …**: … kaçırma. Örnek: Don't miss the sunrise in Cappadocia.\n- **It is famous for …**: … ile ünlüdür. Örnek: Gaziantep is famous for its baklava.\n- **It is located in …**: …'de/…'da bulunur. Örnek: Ephesus is located in İzmir.\n- **What did you do there?**: Orada ne yaptın? Örnek: What did you do in Bodrum?\n\n## Anahtar kelimeler\n- **abroad**: yurt dışı, yurt dışında\n- **accommodation**: konaklama\n- **sightseeing**: gezip görme\n- **landmark**: simge yapı, önemli yer\n- **ruins**: kalıntılar, harabeler\n- **guided tour**: rehberli tur\n- **souvenir**: hediyelik eşya, hatıra\n- **local food**: yerel yemek\n- **luggage**: bagaj, valiz\n- **crowded**: kalabalık\n- **peaceful**: huzurlu, sakin\n- **breathtaking**: nefes kesici\n- **ancient**: antik, çok eski\n- **worth visiting**: görmeye değer\n- **recommend**: tavsiye etmek\n- **trip**: gezi\n\n## Türklerin sık yaptığı hatalar\n- \"I goed to Antalya and buyed a hat.\" → **I went to Antalya and bought a hat.**: Düzensiz fiilleri ezberle: go → went, buy → bought.\n- \"Did you visited the castle?\" → **Did you visit the castle?**: Cümlede did ya da didn't varsa fiil yalın kalır.\n- \"I went to abroad last summer.\" → **I went abroad last summer.**: abroad kelimesinden önce to kullanılmaz.\n\n## Sınav ipuçları\n> **Sınav ipucu 1:** Diyalog tamamlama sorularında boşluktan sonraki cümleye bak. Cevap \"Yes, I have\" ise soru büyük ihtimalle \"Have you ever been to …?\", \"Yes, I did\" ise \"Did you …?\" olur.\n\n> **Sınav ipucu 2:** Öneri isteyen birine \"You should …\" ya da \"Don't miss …\" ile cevap verilir. Geçmiş zamanlı cümleler öneri değildir.\n\n> **Sınav ipucu 3:** Tablo sorularında önce başlığı oku, sonra sayıları tek tek karşılaştır. \"the most\", \"fewer\", \"half\" gibi kelimelere dikkat et.",
    "nodes": [
     {
      "id": "ls2u2l1",
@@ -1049,7 +1050,8 @@
        "text": "Hiç Kapadokya'ya gittin mi?",
        "lang": "tr",
        "answers": [
-        "Have you ever been to Cappadocia"
+        "Have you ever been to Cappadocia",
+        "Did you ever go to Cappadocia"
        ],
        "tokens": [
         "Have",
@@ -1077,7 +1079,7 @@
       },
       {
        "type": "choice",
-       "question": "Ece: Have you ever been to Mardin?\nMert: ----",
+       "question": "Selin: Have you ever been to Erzurum?\nBurak: ----",
        "options": [
         "Yes, I did. It was great.",
         "No, I don't. I'm busy.",
@@ -1785,7 +1787,8 @@
        "lang": "tr",
        "answers": [
         "Can you help me with the dishes",
-        "Could you help me with the dishes"
+        "Could you help me with the dishes",
+        "Can you help me do the dishes"
        ],
        "tokens": [
         "Can",
@@ -2483,8 +2486,8 @@
       },
       {
        "type": "fillBlank",
-       "text": "The telephone was ___ by Alexander Graham Bell in 1876.",
-       "translation": "Telefon 1876'da Alexander Graham Bell tarafından icat edildi.",
+       "text": "The first computer mouse was ___ by Douglas Engelbart in the 1960s.",
+       "translation": "İlk bilgisayar faresi 1960'larda Douglas Engelbart tarafından icat edildi.",
        "choices": [
         "invent",
         "invented",
@@ -2497,7 +2500,10 @@
        "text": "Teleskop yıldızları gözlemlemek için kullanılır.",
        "lang": "tr",
        "answers": [
-        "A telescope is used to observe stars"
+        "A telescope is used to observe stars",
+        "A telescope is used to observe the stars",
+        "A telescope is used for observing stars",
+        "Telescopes are used to observe stars"
        ],
        "tokens": [
         "A",
@@ -3153,8 +3159,8 @@
       },
       {
        "type": "fillBlank",
-       "text": "There was no rain for months, so there was a terrible ___.",
-       "translation": "Aylarca yağmur yağmadı, bu yüzden korkunç bir kuraklık oldu.",
+       "text": "The fields were dry and the crops died because of the long ___.",
+       "translation": "Uzun süren kuraklık yüzünden tarlalar kurudu ve ekinler öldü.",
        "choices": [
         "drought",
         "flood",
@@ -3575,7 +3581,7 @@
       {
        "type": "choice",
        "passage": "GREEN WEEK: Let's protect the environment together!\n| Day | Activity | Place |\n|---|---|---|\n| Monday | Recycling poster competition | Art room |\n| Tuesday | Tree planting | School garden |\n| Wednesday | Talk: Climate change and our future | Library |\n| Thursday | Save Energy Day: lights off at lunch | Whole school |\n| Friday | Beach cleaning | City beach |\nBring your gloves on Tuesday and Friday!",
-       "question": "Which of the following is TRUE according to the program?",
+       "question": "Which of the following is TRUE according to the programme?",
        "options": [
         "The talk is in the art room.",
         "Students will plant trees in the school garden.",
@@ -3583,7 +3589,7 @@
         "Students need gloves on Monday."
        ],
        "answer": 1,
-       "explanation": "Salı günü 'Tree planting' etkinliği 'School garden' bölümünde yapılıyor. Konuşma kütüphanede (Library), plaj temizliği cuma günü ve eldivenler salı ve cuma günleri için."
+       "explanation": "Salı günü 'Tree planting' etkinliği okul bahçesinde ('School garden') yapılıyor. Konuşma kütüphanede (Library), plaj temizliği cuma günü ve eldivenler salı ve cuma günleri için."
       },
       {
        "type": "choice",
@@ -3601,7 +3607,7 @@
       {
        "type": "choice",
        "passage": "GREEN WEEK: Let's protect the environment together!\n| Day | Activity | Place |\n|---|---|---|\n| Monday | Recycling poster competition | Art room |\n| Tuesday | Tree planting | School garden |\n| Wednesday | Talk: Climate change and our future | Library |\n| Thursday | Save Energy Day: lights off at lunch | Whole school |\n| Friday | Beach cleaning | City beach |\nBring your gloves on Tuesday and Friday!",
-       "question": "Which question is NOT answered in the program?",
+       "question": "Which question is NOT answered in the programme?",
        "options": [
         "What time does the tree planting start?",
         "Where is the talk?",

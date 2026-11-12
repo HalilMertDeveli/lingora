@@ -370,7 +370,7 @@
               "kind": "line",
               "speaker": "Elif",
               "avatar": "👩",
-              "text": "Luckily, Deniz had a spare key. I had given it to her last summer.",
+              "text": "Luckily, Deniz had a spare key. I had given it to him last summer.",
               "translation": "Neyse ki Deniz'de yedek anahtar vardı. Geçen yaz ona vermiştim."
             },
             {
@@ -916,7 +916,7 @@
               "answer": "eventually",
               "choices": [
                 "eventually",
-                "suddenly",
+                "lately",
                 "already"
               ]
             },
@@ -944,7 +944,7 @@
             },
             {
               "type": "translate",
-              "text": "Önce kahve içtik sonra müzeye gittik.",
+              "text": "Önce kahve içtik, sonra müzeye gittik.",
               "lang": "tr",
               "answers": [
                 "First we had coffee and then we went to the museum",
@@ -1359,8 +1359,8 @@
             },
             {
               "type": "fillBlank",
-              "text": "___ I was waiting for the bus, I met an old friend.",
-              "translation": "Otobüs beklerken eski bir arkadaşıma rastladım. (beklerken = while, during değil)",
+              "text": "___ I was waiting for the ferry, I met my old teacher.",
+              "translation": "Vapur beklerken eski öğretmenime rastladım. (beklerken = while, during değil)",
               "answer": "While",
               "choices": [
                 "While",
@@ -1375,7 +1375,7 @@
               "answer": "eventually",
               "choices": [
                 "eventually",
-                "suddenly",
+                "already",
                 "before"
               ]
             },
@@ -2685,7 +2685,7 @@
             },
             {
               "type": "translate",
-              "text": "Mia işini bıraktı bu da herkesi şaşırttı.",
+              "text": "Mia işini bıraktı, bu da herkesi şaşırttı.",
               "lang": "tr",
               "answers": [
                 "Mia quit her job which surprised everyone",
@@ -3795,7 +3795,8 @@
               "answers": [
                 "Keşke cumartesileri çalışmak zorunda olmasam",
                 "Keşke cumartesi günleri çalışmak zorunda olmasam",
-                "Keşke cumartesileri çalışmasam"
+                "Keşke cumartesileri çalışmasam",
+                "Keşke cumartesileri çalışmak zorunda olmasaydım"
               ],
               "tokens": [
                 "Keşke",
@@ -3905,7 +3906,7 @@
               "answer": "spare",
               "choices": [
                 "spare",
-                "free",
+                "spared",
                 "extra time"
               ]
             },
@@ -4071,14 +4072,14 @@
               "kind": "line",
               "speaker": "Sam",
               "avatar": "🧑",
-              "text": "And Deniz wishes her commute were shorter. Two hours every day!",
+              "text": "And Deniz wishes his commute were shorter. Two hours every day!",
               "translation": "Deniz de keşke işe gidip gelmesi daha kısa sürse diyor. Her gün iki saat!"
             },
             {
               "kind": "line",
               "speaker": "Elif",
               "avatar": "👩",
-              "text": "Poor Deniz. I wish the ferry went to her office.",
+              "text": "Poor Deniz. I wish the ferry went to his office.",
               "translation": "Zavallı Deniz. Keşke vapur onun ofisine kadar gitse."
             },
             {
@@ -4344,7 +4345,8 @@
               "answers": [
                 "Keşke misafirler için boş bir odam olsa",
                 "Keşke misafirler için yedek bir odam olsa",
-                "Keşke misafir için boş bir odam olsa"
+                "Keşke misafir için boş bir odam olsa",
+                "Keşke misafirler için boş bir odam olsaydı"
               ],
               "tokens": [
                 "Keşke",
@@ -7281,7 +7283,7 @@
               "answer": "though",
               "choices": [
                 "though",
-                "if",
+                "so",
                 "although"
               ]
             },
@@ -7907,7 +7909,7 @@
                   "whereas"
                 ],
                 [
-                  "-se bile",
+                  "-diği hâlde",
                   "even though"
                 ]
               ]
@@ -8400,7 +8402,7 @@
               "answer": "reading",
               "choices": [
                 "reading",
-                "you to read",
+                "read",
                 "to read"
               ]
             },
