@@ -320,11 +320,14 @@ void main() {
         ],
       );
       expect(readingHouseTexts(c).single.$2.id, 'ys6u1l1');
-      // The shipped Okuma evi sections (ys6, then ys8 from Faz 2b): text lessons with field and length.
+      // The shipped Okuma evi sections (ys6, ys8 from Faz 2b, ys10 from Faz 3b): text lessons with field and length.
       final shipped = readingHouseTexts(yds);
       expect(shipped.where((e) => e.$1.id.startsWith('ys6')), hasLength(18));
       expect(shipped.length, greaterThanOrEqualTo(18));
-      expect(shipped.every((e) => e.$2.reading!.words > 0 && RegExp(r'^ys[68]u').hasMatch(e.$1.id)), isTrue);
+      expect(
+        shipped.every((e) => e.$2.reading!.words > 0 && RegExp(r'^ys(6|8|10)u').hasMatch(e.$1.id)),
+        isTrue,
+      );
     });
   });
 

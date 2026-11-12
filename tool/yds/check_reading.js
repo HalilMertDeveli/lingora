@@ -31,6 +31,13 @@ const CFG = {
     knownFiles: [...l.GENERAL_ALL, ...l.YDS_OLD, BANK1, BANK2], banks: { ys7: 10, ys5: 3 }, range: () => [250, 320],
     avg: [17, 27], passive: 3, relative: 2, nominal: 2, testSentences: 7, mockRange: [250, 330], cefr: 'B2',
   },
+  // Faz 3b: YÖKDİL field texts; ys9 recycled (≥ 10) with ys7 (≥ 5).
+  ys10: {
+    knownFiles: [...l.GENERAL_ALL, ...l.YDS_OLD, BANK1, BANK2, 'assets/courses/exam_yds/06_okuma_evi_1.json',
+      'assets/courses/exam_yds/08_okuma_evi_2.json', 'assets/courses/exam_yds/09_kelime_bankasi_3.json'],
+    banks: { ys9: 10, ys7: 5 }, range: () => [280, 340],
+    avg: [21, 29], passive: 3, relative: 2, nominal: 3, testSentences: 7, mockRange: [250, 340], cefr: 'B2',
+  },
 }[sec];
 const known = l.seen(CFG.knownFiles);
 l.fs.readFileSync(l.path.join(__dirname, 'function_words.txt'), 'utf8').split(/\s+/).filter(Boolean).forEach((w) => known.add(w));
@@ -107,7 +114,7 @@ if (/^ys\d+(m|u\d+[hm])$/.test(id)) {
   countAnswers(ex);
 } else {
   const unit = data;
-  const n = +id.slice(4);
+  const n = +id.split('u')[1];
   const range = CFG.range(n);
   P(unit.id === id, 'unit id');
   P(typeof unit.theme === 'string' && /^0xFF[0-9A-F]{6}$/.test(unit.color || ''), 'theme/color');
@@ -130,9 +137,12 @@ if (/^ys\d+(m|u\d+[hm])$/.test(id)) {
       P(ps.length === 2, `${node.id}: 2 metin olmalı (${ps.length})`);
       let total = 0;
       ps.forEach((p, k) => {
-        const qs = ex.filter((e) => e.passage === p && e.qtype === 'reading');
-        P(qs.length === 4, `${node.id}: metin ${k + 1} için 4 reading sorusu`);
-        if (sec === 'ys8') P(qs.some((q) => deep.test(q.question)), `${node.id}: metin ${k + 1} için çıkarım ya da tutum sorusu yok`);
+        // ys10 (Faz 3b): each text also carries one paragraph-completion or irrelevant-sentence item.
+        const textTypes = sec === 'ys10' ? ['reading', 'paragraphCompletion', 'irrelevantSentence'] : ['reading'];
+        const qs = ex.filter((e) => e.passage === p && textTypes.includes(e.qtype));
+        P(qs.length === 4, `${node.id}: metin ${k + 1} için 4 soru (${textTypes.join('/')})`);
+        if (sec !== 'ys6') P(qs.some((q) => deep.test(q.question)), `${node.id}: metin ${k + 1} için çıkarım ya da tutum sorusu yok`);
+        if (sec === 'ys10') P(qs.some((q) => q.qtype !== 'reading'), `${node.id}: metin ${k + 1} için paragraf tamamlama ya da aykırı cümle sorusu yok`);
         const a = passageRules(p, `${node.id} metin ${k + 1}`, range);
         total += a.words;
         report.push([`${node.id}/${k + 1}`, a]);
@@ -146,7 +156,7 @@ if (/^ys\d+(m|u\d+[hm])$/.test(id)) {
       P(ex.filter((e) => e.qtype === 'translation').length >= 3, `${node.id}: en az 3 çeviri sorusu`);
       // F1 review: main-verb distractors are verb-like forms (relative-clause verb, participle, auxiliary).
       for (const [k, e] of ex.entries()) {
-        if (sec === 'ys8' && /ana fiil/i.test(e.question)) {
+        if (sec !== 'ys6' && /ana fiil/i.test(e.question)) {
           const verbish = e.options.filter((o) => /(ed|ing|en|s)$|^(is|are|was|were|has|have|had|can|could|may|might|must|will|would|should|do|does|did)\b/i.test(o.trim()));
           P(verbish.length >= 4, `${node.id}#${k}: ana fiil sorusunda şıkların en az 4'ü fiil biçimi olmalı (${e.options.join(' / ')})`);
         }
@@ -156,13 +166,26 @@ if (/^ys\d+(m|u\d+[hm])$/.test(id)) {
       const ps = [...new Set(ex.filter((e) => e.qtype === 'reading').map((e) => e.passage))];
       P(ps.length === 2 && ps.every(Boolean), `${node.id}: 2 yeni metin (${ps.length})`);
       ps.filter(Boolean).forEach((p, k) => {
-        P(ex.filter((e) => e.passage === p).length === 4, `${node.id}: metin ${k + 1} için 4 soru`);
+        const qs = ex.filter((e) => e.passage === p);
+        P(qs.length === 4, `${node.id}: metin ${k + 1} için 4 soru`);
+        if (sec === 'ys10') {
+          P(qs.some((q) => deep.test(q.question)), `${node.id}: metin ${k + 1} için çıkarım ya da tutum sorusu yok`);
+          P(qs.some((q) => q.qtype !== 'reading'), `${node.id}: metin ${k + 1} için paragraf tamamlama ya da aykırı cümle sorusu yok`);
+        }
         report.push([`${node.id}/${k + 1}`, passageRules(p, `${node.id} metin ${k + 1}`, range)]);
       });
       P(ex.filter((e) => ['translation', 'sentenceCompletion'].includes(e.qtype)).length === CFG.testSentences, `${node.id}: ${CFG.testSentences} cümle düzeyi soru (translation/sentenceCompletion)`);
     } else if (node.type === 'chest') {
       P(node.rewardXp === 20, `${node.id}: rewardXp 20`);
     }
+  }
+  // Faz 3b: every text on a new topic (vs. every passage in the app and the other ys10 work units).
+  if (sec === 'ys10') {
+    const ov = require('./overlap.js');
+    const mine = [...new Set(unit.nodes.flatMap((x) => (x.exercises || []).map((e) => e.passage)).filter((p) => p && p.split(/\s+/).length > 120))];
+    const others = l.fs.readdirSync(dir).filter((f) => /^ys10u\d+\.json$/.test(f) && f !== `${id}.json`)
+      .flatMap((f) => JSON.parse(l.fs.readFileSync(l.path.join(dir, f), 'utf8')).nodes.flatMap((x) => (x.exercises || []).filter((e) => e.passage).map((e) => [f, e.passage])));
+    problems.push(...ov.overlaps(mine, [...ov.existingPassages((nid) => nid.startsWith('ys10')), ...others]));
   }
 }
 P(Math.max(...dist) <= dist.reduce((a, b) => a + b, 0) * 0.3, `doğru şık dağılımı dengesiz ${dist}`);
