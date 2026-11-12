@@ -735,7 +735,7 @@ class LessonCard extends StatelessWidget {
     final t = theme ?? themeById(null);
     final kind = switch (node.type) {
       NodeType.lesson => 'Ders $position / $count',
-      NodeType.story => 'Hikâye',
+      NodeType.story => node.listenFirst ? 'Dinleme hikâyesi' : 'Hikâye',
       NodeType.test => t.tea ? 'Ünite sınavı · lale rozeti' : 'Ünite sınavı · ${t.badgeName} rozeti',
       NodeType.chest => t.tea ? 'Çaydanlık · şeker ödülü' : '${t.rewardName} · sürpriz ödül',
       NodeType.mock =>
@@ -748,7 +748,8 @@ class LessonCard extends StatelessWidget {
       (NodeState.done, _) => ('TEKRAR ET', true),
       (NodeState.active, NodeType.chest) => ('AÇ', true),
       (NodeState.active, NodeType.test) => ('SINAVA BAŞLA', true),
-      (NodeState.active, NodeType.story) => ('OKU', true),
+      // A listen-first story is heard before its text is shown.
+      (NodeState.active, NodeType.story) => (node.listenFirst ? 'DİNLE' : 'OKU', true),
       (NodeState.active, NodeType.mock) => ('DENEMEYE BAŞLA', true),
       (NodeState.active, NodeType.lesson) => ('BAŞLA +${node.rewardXp > 0 ? node.rewardXp : 10} XP', true),
     };
