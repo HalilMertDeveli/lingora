@@ -80,8 +80,16 @@ for (const f of files) {
     const base = f.startsWith('01') ? '../tr_en.json' : files.find((x) => x.startsWith(f.slice(0, 2) + '_'));
     for (const u of JSON.parse(fs.readFileSync(path.join(dir, base), 'utf8')).units) for (const w of lemmas(english(u))) sectionWords.add(w);
   }
+  // C1 sections (09_, 10_): new lemmas per unit and how many of them come back in the
+  // unit's lessons l1–l4 (curriculum: ≤ 60 new, ≥ 25 of them reused in the lessons).
+  const c1 = j.section?.cefr === 'C1';
   for (const u of j.units) {
     const ws = lemmas(english(u));
+    if (c1) {
+      const fresh = [...ws].filter((w) => !known.has(w));
+      const lessons = lemmas(english({ ...u, nodes: u.nodes.filter((n) => n.type === 'lesson') }));
+      rows.push({ section, unit: u.id, title: u.title, lemmas: ws.size, new: fresh.length, reusedFromSection: fresh.filter((w) => lessons.has(w)).length, sampleNew: fresh.slice(0, process.env.ALL ? 99 : 12).join(' ') });
+    }
     if (ext) {
       const fresh = [...ws].filter((w) => !known.has(w));
       const reused = [...ws].filter((w) => sectionWords.has(w));
