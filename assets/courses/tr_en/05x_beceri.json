@@ -1,0 +1,2595 @@
+{
+  "extends": "s5",
+  "units": [
+    {
+      "id": "s5u13",
+      "title": "Bir anı anlat",
+      "description": "Bir deneyimi ayrıntıları ve duygularıyla anlatmak, 120 kelimelik bir hikâye yazmak",
+      "color": "0xFF6C4CF1",
+      "theme": "gecmis",
+      "guide": "## Bu ünitede yapabileceklerin\n- Başından geçen bir olayı ayrıntılarıyla ve duygularınla anlatabilirsin.\n- Birinin anısını dinlerken ne olduğunu, ne zaman olduğunu ve nasıl hissettiğini anlayabilirsin.\n- Bir blog yazısında olayların sırasını ve yazarın o güne bakışını bulabilirsin.\n- Unutamadığın bir günü 120 kelimelik bir hikâye olarak yazabilirsin.\n\n## Strateji\n- Anıyı dört parçaya böl: ne zaman ve nerede, ne oldu, ne hissettin, bugün nasıl bakıyorsun.\n- Hikâyeyi önce metni görmeden dinle. İlk dinlemede yalnızca \"Ne oldu?\" sorusuna cevap ara, ikinci dinlemede sayı ve süreleri yakala.\n- Gölgelemede (shadow) cümleyi duyar duymaz biraz geriden tekrar et; **I was so nervous that…** gibi duygu cümlelerinin vurgusunu taklit et.\n- Olayları **at first, then, at that moment, in the end** ile sırala; dinleyici nerede olduğunu kaybetmesin.\n- Duyguyu yalnızca adıyla söyleme, bir ayrıntıyla göster: *My hands were shaking.*\n\n## Model metin\n> I'll never forget the day my little brother Kerem graduated from university. At first, I felt nervous. The ceremony was held in a huge hall, and our whole family was there. Then Kerem walked onto the stage. My mother started crying, and I felt incredibly proud. In his speech, he thanked me for my help, and I was so surprised that I couldn't say a word.\n>\n> But that wasn't the only surprise. Earlier that day, my boss called me and told me that I was the new lead designer. I didn't tell anyone until the ceremony was over, because it was Kerem's big day. In the end, I shared the news, everyone cheered, and my grandmother took us all out for dinner. I've never felt so happy. Looking back now, it was a perfect day for both of us.\n\nİlk paragraf olayı sırayla ve duygularla anlatır (**At first**, **Then**, past simple, **so … that**). İkinci paragraf ikinci sürprizi ekler, **In the end** ile toparlar; **I've never felt so happy** (present perfect) ve **Looking back now** ile bugünkü bakışla biter.\n\n## Türklerin sık hatası\n- ❌ I have graduated from university in 2023. ✅ I **graduated** from university in 2023. (Geçmişte belli bir zaman varsa past simple.)\n- ❌ The ceremony was held in huge hall. ✅ The ceremony was held in **a** huge hall. (Tekil sayılabilen isimden önce **a/an** unutulmaz.)",
+      "nodes": [
+        {
+          "id": "s5u13l1",
+          "type": "lesson",
+          "title": "Dinleme: Anı anlatanlar",
+          "description": "Anılarını anlatan insanları dinle, olayları ve duyguları yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I'll never forget the day I lost my suitcase at the airport.",
+              "answers": [
+                "I'll never forget the day I lost my suitcase at the airport.",
+                "I will never forget the day I lost my suitcase at the airport."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I was so nervous that I couldn't say a word at the start.",
+              "answers": [
+                "I was so nervous that I couldn't say a word at the start.",
+                "I was so nervous that I could not say a word at the start."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "My hands were shaking, but I felt really proud of myself.",
+              "translation": "Ellerim titriyordu ama kendimle gerçekten gurur duydum.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "It's one of the best days I've ever had in my whole life.",
+              "answers": [
+                "It's one of the best days I've ever had in my whole life.",
+                "It is one of the best days I've ever had in my whole life.",
+                "It is one of the best days I have ever had in my whole life.",
+                "It's one of the best days I have ever had in my whole life."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I was really proud ___ my little brother that day.",
+              "translation": "O gün küçük kardeşimle gerçekten gurur duydum.",
+              "answer": "of",
+              "choices": [
+                "of",
+                "with",
+                "for"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Did you use to go camping with your family when you were a kid?",
+              "answers": [
+                "Did you use to go camping with your family when you were a kid?"
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "Looking back now, it was the funniest thing that's ever happened to me.",
+              "translation": "Şimdi dönüp bakınca, başıma gelen en komik şeydi.",
+              "rate": 0.85
+            },
+            {
+              "type": "fillBlank",
+              "text": "We were stuck in traffic ___ two hours, so we missed the start.",
+              "translation": "İki saat trafikte kaldık, bu yüzden başlangıcı kaçırdık.",
+              "answer": "for",
+              "choices": [
+                "for",
+                "since",
+                "during"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "gergin",
+                  "nervous"
+                ],
+                [
+                  "rahatlamış",
+                  "relieved"
+                ],
+                [
+                  "utanmış",
+                  "embarrassed"
+                ],
+                [
+                  "gururlu",
+                  "proud"
+                ],
+                [
+                  "şaşırmış",
+                  "surprised"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u13l2",
+          "type": "lesson",
+          "title": "Okuma: Mia'nın blog yazısı",
+          "description": "Mia'nın İzmir'deki ilk gecesini anlattığı blog yazısını oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "The night I got lost in İzmir\n\nI've lived in Turkey for four years now, but I still remember my first night here as if it were yesterday. I was twenty-two, I didn't speak a word of Turkish, and my phone had died on the plane.\n\nMy hostel was in Karşıyaka, so I took the metro from the airport to the city centre and then a ferry across the bay. It was dark and windy, and I was cold and hungry. When the ferry arrived, I realised that I had no idea where the hostel was. I only had the name of the street, written on a piece of paper.\n\nI asked an old man in a tea garden for help. He didn't speak English, but he looked at my paper, smiled and stood up. Then he walked with me for twenty minutes through narrow streets, and he even carried my suitcase. When we finally found the hostel, he refused to take any money. He just said \"Hoş geldin\" and walked away.\n\nAt that moment I felt embarrassed, relieved and very lucky at the same time. I never found out his name, so I've never been able to thank him properly.\n\nThat night taught me something important. Now, when I see a tourist with a map and a worried face, I always stop and ask if they need help. It's the least I can do.",
+              "question": "Yazının ana konusu ne?",
+              "options": [
+                "A stranger who helped Mia on her first night",
+                "Mia's favourite places in İzmir",
+                "Why Mia moved to Turkey",
+                "A problem with the ferry"
+              ],
+              "answer": 0,
+              "explanation": "\"A stranger who helped Mia on her first night\" doğru: metin, ilk gecesinde kaybolan Mia'ya yolu gösteren yaşlı adamı anlatıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "The night I got lost in İzmir\n\nI've lived in Turkey for four years now, but I still remember my first night here as if it were yesterday. I was twenty-two, I didn't speak a word of Turkish, and my phone had died on the plane.\n\nMy hostel was in Karşıyaka, so I took the metro from the airport to the city centre and then a ferry across the bay. It was dark and windy, and I was cold and hungry. When the ferry arrived, I realised that I had no idea where the hostel was. I only had the name of the street, written on a piece of paper.\n\nI asked an old man in a tea garden for help. He didn't speak English, but he looked at my paper, smiled and stood up. Then he walked with me for twenty minutes through narrow streets, and he even carried my suitcase. When we finally found the hostel, he refused to take any money. He just said \"Hoş geldin\" and walked away.\n\nAt that moment I felt embarrassed, relieved and very lucky at the same time. I never found out his name, so I've never been able to thank him properly.\n\nThat night taught me something important. Now, when I see a tourist with a map and a worried face, I always stop and ask if they need help. It's the least I can do.",
+              "question": "Mia neden yolu telefonuyla bulamadı?",
+              "options": [
+                "It was stolen on the metro",
+                "Its battery was dead",
+                "She had no internet",
+                "She left it at the airport"
+              ],
+              "answer": 1,
+              "explanation": "\"Its battery was dead\" doğru: metinde \"my phone had died on the plane\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "The night I got lost in İzmir\n\nI've lived in Turkey for four years now, but I still remember my first night here as if it were yesterday. I was twenty-two, I didn't speak a word of Turkish, and my phone had died on the plane.\n\nMy hostel was in Karşıyaka, so I took the metro from the airport to the city centre and then a ferry across the bay. It was dark and windy, and I was cold and hungry. When the ferry arrived, I realised that I had no idea where the hostel was. I only had the name of the street, written on a piece of paper.\n\nI asked an old man in a tea garden for help. He didn't speak English, but he looked at my paper, smiled and stood up. Then he walked with me for twenty minutes through narrow streets, and he even carried my suitcase. When we finally found the hostel, he refused to take any money. He just said \"Hoş geldin\" and walked away.\n\nAt that moment I felt embarrassed, relieved and very lucky at the same time. I never found out his name, so I've never been able to thank him properly.\n\nThat night taught me something important. Now, when I see a tourist with a map and a worried face, I always stop and ask if they need help. It's the least I can do.",
+              "question": "Adam Mia'ya nasıl yardım etti?",
+              "options": [
+                "He called the hostel for her",
+                "He gave her money for a taxi",
+                "He walked her to the hostel",
+                "He drew her a map"
+              ],
+              "answer": 2,
+              "explanation": "\"He walked her to the hostel\" doğru: metinde \"he walked with me for twenty minutes\" ve \"we finally found the hostel\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "The night I got lost in İzmir\n\nI've lived in Turkey for four years now, but I still remember my first night here as if it were yesterday. I was twenty-two, I didn't speak a word of Turkish, and my phone had died on the plane.\n\nMy hostel was in Karşıyaka, so I took the metro from the airport to the city centre and then a ferry across the bay. It was dark and windy, and I was cold and hungry. When the ferry arrived, I realised that I had no idea where the hostel was. I only had the name of the street, written on a piece of paper.\n\nI asked an old man in a tea garden for help. He didn't speak English, but he looked at my paper, smiled and stood up. Then he walked with me for twenty minutes through narrow streets, and he even carried my suitcase. When we finally found the hostel, he refused to take any money. He just said \"Hoş geldin\" and walked away.\n\nAt that moment I felt embarrassed, relieved and very lucky at the same time. I never found out his name, so I've never been able to thank him properly.\n\nThat night taught me something important. Now, when I see a tourist with a map and a worried face, I always stop and ask if they need help. It's the least I can do.",
+              "question": "Adam para almayınca Mia ne hissetti?",
+              "options": [
+                "Angry and tired",
+                "Bored and cold",
+                "Proud and excited",
+                "Embarrassed, relieved and lucky"
+              ],
+              "answer": 3,
+              "explanation": "\"Embarrassed, relieved and lucky\" doğru: metinde \"I felt embarrassed, relieved and very lucky at the same time\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "The night I got lost in İzmir\n\nI've lived in Turkey for four years now, but I still remember my first night here as if it were yesterday. I was twenty-two, I didn't speak a word of Turkish, and my phone had died on the plane.\n\nMy hostel was in Karşıyaka, so I took the metro from the airport to the city centre and then a ferry across the bay. It was dark and windy, and I was cold and hungry. When the ferry arrived, I realised that I had no idea where the hostel was. I only had the name of the street, written on a piece of paper.\n\nI asked an old man in a tea garden for help. He didn't speak English, but he looked at my paper, smiled and stood up. Then he walked with me for twenty minutes through narrow streets, and he even carried my suitcase. When we finally found the hostel, he refused to take any money. He just said \"Hoş geldin\" and walked away.\n\nAt that moment I felt embarrassed, relieved and very lucky at the same time. I never found out his name, so I've never been able to thank him properly.\n\nThat night taught me something important. Now, when I see a tourist with a map and a worried face, I always stop and ask if they need help. It's the least I can do.",
+              "question": "Mia adama neden hiç teşekkür edemedi?",
+              "options": [
+                "She never learned who he was",
+                "He didn't speak English",
+                "He refused to listen to her",
+                "She forgot to thank him"
+              ],
+              "answer": 0,
+              "explanation": "\"She never learned who he was\" doğru: metinde \"I never found out his name, so I've never been able to thank him properly\" yazıyor; adını bilmediği için onu bulamıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "The night I got lost in İzmir\n\nI've lived in Turkey for four years now, but I still remember my first night here as if it were yesterday. I was twenty-two, I didn't speak a word of Turkish, and my phone had died on the plane.\n\nMy hostel was in Karşıyaka, so I took the metro from the airport to the city centre and then a ferry across the bay. It was dark and windy, and I was cold and hungry. When the ferry arrived, I realised that I had no idea where the hostel was. I only had the name of the street, written on a piece of paper.\n\nI asked an old man in a tea garden for help. He didn't speak English, but he looked at my paper, smiled and stood up. Then he walked with me for twenty minutes through narrow streets, and he even carried my suitcase. When we finally found the hostel, he refused to take any money. He just said \"Hoş geldin\" and walked away.\n\nAt that moment I felt embarrassed, relieved and very lucky at the same time. I never found out his name, so I've never been able to thank him properly.\n\nThat night taught me something important. Now, when I see a tourist with a map and a worried face, I always stop and ask if they need help. It's the least I can do.",
+              "question": "Mia o geceye bugün nasıl bakıyor?",
+              "options": [
+                "As the worst night of her life",
+                "As a lesson that changed her behaviour",
+                "As a reason to avoid ferries",
+                "As a funny story with no meaning"
+              ],
+              "answer": 1,
+              "explanation": "\"As a lesson that changed her behaviour\" doğru: metinde \"That night taught me something important\" yazıyor ve artık turistlere hep yardım ettiğini söylüyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "dar",
+                  "narrow"
+                ],
+                [
+                  "reddetmek",
+                  "refuse"
+                ],
+                [
+                  "fark etmek",
+                  "realise"
+                ],
+                [
+                  "düzgünce",
+                  "properly"
+                ],
+                [
+                  "endişeli",
+                  "worried"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "He didn't speak English, ___ he understood my problem at once.",
+              "translation": "İngilizce bilmiyordu ama sorunumu hemen anladı.",
+              "answer": "but",
+              "choices": [
+                "but",
+                "so",
+                "because"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir arkadaşın başından geçen korkutucu bir olayı anlattı. En uygun tepki hangisi?",
+              "answer": "How awful! Were you OK?",
+              "choices": [
+                {
+                  "text": "How awful! Were you OK?",
+                  "emoji": "😟"
+                },
+                {
+                  "text": "Congratulations!",
+                  "emoji": "🎉"
+                },
+                {
+                  "text": "That's a good idea.",
+                  "emoji": "💡"
+                },
+                {
+                  "text": "Never mind, see you.",
+                  "emoji": "👋"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u13s",
+          "type": "story",
+          "title": "İlk iş günü",
+          "description": "Kerem ilk iş gününü görüntülü aramada Sam'e anlatıyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Kerem! Elif told me you started your first job this week. How did it go?",
+              "translation": "Kerem! Elif bu hafta ilk işine başladığını söyledi. Nasıl geçti?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Honestly, Sam, my first day was a disaster, but now I can laugh about it.",
+              "translation": "Açıkçası Sam, ilk günüm tam bir felaketti ama artık gülüp geçebiliyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Tell him the whole story. It's even funnier the second time.",
+              "translation": "Ona her şeyi anlat. İkinci kez dinleyince daha da komik."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Well, I was so nervous that I woke up at five and couldn't get back to sleep.",
+              "translation": "Şöyle ki, o kadar gergindim ki saat beşte uyandım ve bir daha uyuyamadım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "I left home really early, but the metro broke down between two stations.",
+              "translation": "Evden çok erken çıktım ama metro iki istasyonun arasında bozuldu."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "We were stuck in a dark tunnel for forty minutes, and nobody could use their phones.",
+              "translation": "Karanlık bir tünelde kırk dakika mahsur kaldık ve kimse telefonunu kullanamadı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "There was a woman next to me who looked really worried, so I gave her my bottle of water.",
+              "translation": "Yanımda çok endişeli görünen bir kadın vardı, ben de ona su şişemi verdim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Metro tünelde ne kadar bekledi?",
+              "choices": [
+                "Kırk dakika",
+                "On dört dakika",
+                "Dört saat"
+              ],
+              "answer": "Kırk dakika"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Oh no! So you were late on your very first day?",
+              "translation": "Eyvah! Yani daha ilk gününde geç mi kaldın?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Only ten minutes, but I ran from the station, so I arrived hot and out of breath.",
+              "translation": "Sadece on dakika ama istasyondan koştum, bu yüzden terli ve nefes nefese vardım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Then the receptionist told me that the manager was waiting for me in the meeting room.",
+              "translation": "Sonra resepsiyonist yöneticinin beni toplantı odasında beklediğini söyledi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "I walked in, and I recognised her immediately. She was the woman from the metro!",
+              "translation": "İçeri girdim ve onu hemen tanıdım. Metrodaki kadındı!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "That's brilliant! What did she say?",
+              "translation": "Harika! Ne dedi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "She laughed and said that I'd already passed my first test: helping a colleague.",
+              "translation": "Güldü ve ilk sınavımı çoktan geçtiğimi söyledi: bir iş arkadaşına yardım etmek."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"She laughed and said that I'd already passed my first test\" cümlesindeki \"She\" kimi anlatıyor?",
+              "choices": [
+                "Resepsiyonisti",
+                "Kerem'in yöneticisini",
+                "Elif'i"
+              ],
+              "answer": "Kerem'in yöneticisini"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "So how did you feel at the end of the day?",
+              "translation": "Peki günün sonunda nasıl hissettin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Exhausted, but really proud. I've been working there for five days now, and I love it.",
+              "translation": "Bitkin ama çok gururlu. Beş gündür orada çalışıyorum ve bayılıyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem ne zamandır yeni işinde çalışıyor?",
+              "choices": [
+                "Bir aydır",
+                "On gündür",
+                "Beş gündür"
+              ],
+              "answer": "Beş gündür"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "And he's been leaving home an hour early every morning since then!",
+              "translation": "Ve o günden beri her sabah evden bir saat erken çıkıyor!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Of course. I'm never going to be late again, not even for a minute.",
+              "translation": "Tabii ki. Bir daha asla geç kalmayacağım, bir dakika bile."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Good plan. And next time, take two bottles of water, just in case.",
+              "translation": "İyi plan. Bir dahaki sefere de ne olur ne olmaz iki şişe su al."
+            },
+            {
+              "kind": "question",
+              "prompt": "Hikâyenin ana fikri ne?",
+              "choices": [
+                "Kerem yeni işini hiç sevmedi",
+                "Kötü başlayan ilk gün güzel bitti",
+                "İzmir'de metro her gün bozuluyor"
+              ],
+              "answer": "Kötü başlayan ilk gün güzel bitti"
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem bugün o güne nasıl bakıyor?",
+              "choices": [
+                "Gülerek hatırlıyor",
+                "Hâlâ çok kızgın",
+                "Utanıyor, konuşmak istemiyor"
+              ],
+              "answer": "Gülerek hatırlıyor"
+            }
+          ]
+        },
+        {
+          "id": "s5u13l3",
+          "type": "lesson",
+          "title": "Konuşma: Bir dakikalık anı",
+          "description": "Unutamadığın bir günü bir dakikada, duygularınla anlat",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "I still remember how nervous I felt when I opened the door.",
+              "translation": "Kapıyı açtığımda ne kadar gergin hissettiğimi hâlâ hatırlıyorum.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "Everyone was clapping, and I couldn't stop smiling for the rest of the day.",
+              "translation": "Herkes alkışlıyordu ve günün geri kalanında gülümsemeyi bırakamadım.",
+              "rate": 0.85
+            },
+            {
+              "type": "speak",
+              "text": "I'd like to tell you about the day I gave my first presentation at work.",
+              "translation": "Size işteki ilk sunumumu yaptığım günü anlatmak istiyorum."
+            },
+            {
+              "type": "speak",
+              "text": "I practised for a whole week, but my hands were still shaking that morning.",
+              "translation": "Koca bir hafta prova yaptım ama o sabah ellerim yine de titriyordu."
+            },
+            {
+              "type": "speak",
+              "text": "When I started speaking, the projector stopped working, and everyone looked at me.",
+              "translation": "Konuşmaya başladığımda projektör çalışmayı bıraktı ve herkes bana baktı."
+            },
+            {
+              "type": "speak",
+              "text": "In the end, I told the story without slides, and it was the best talk I've ever given.",
+              "translation": "Sonunda hikâyeyi slaytsız anlattım ve şimdiye kadar yaptığım en iyi konuşma oldu."
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın \"How was your trip?\" diye sordu. Yolculuk çok kötü geçti. En uygun cevap hangisi?",
+              "answer": "Honestly, it was a nightmare.",
+              "choices": [
+                {
+                  "text": "Yes, I was.",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "Honestly, it was a nightmare.",
+                  "emoji": "😩"
+                },
+                {
+                  "text": "I'm going there by bus.",
+                  "emoji": "🚌"
+                },
+                {
+                  "text": "It was a trip, thanks.",
+                  "emoji": "🧳"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Anını anlatırken dinleyicinin merakını artırmak istiyorsun. Hangisi en uygun?",
+              "answer": "Then something strange happened.",
+              "choices": [
+                {
+                  "text": "Anyway, it doesn't matter.",
+                  "emoji": "🤷"
+                },
+                {
+                  "text": "I don't remember anything.",
+                  "emoji": "😶"
+                },
+                {
+                  "text": "Then something strange happened.",
+                  "emoji": "😮"
+                },
+                {
+                  "text": "The end.",
+                  "emoji": "🔚"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hayatımda hiç bu kadar utanmamıştım.",
+              "lang": "tr",
+              "answers": [
+                "I've never been so embarrassed in my life",
+                "I have never been so embarrassed in my life",
+                "I've never felt so embarrassed in my life",
+                "I have never felt so embarrassed in my life"
+              ],
+              "tokens": [
+                "I've",
+                "never",
+                "been",
+                "so",
+                "embarrassed",
+                "in",
+                "my",
+                "life",
+                "was",
+                "on",
+                "embarrassing"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u13l4",
+          "type": "lesson",
+          "title": "Yazma: Unutulmaz bir gün",
+          "description": "Unutamadığın bir günü 120 kelimelik bir hikâye olarak yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Tören kocaman bir salonda yapıldı.",
+              "lang": "tr",
+              "answers": [
+                "The ceremony was held in a huge hall",
+                "The ceremony took place in a huge hall"
+              ],
+              "tokens": [
+                "The",
+                "ceremony",
+                "was",
+                "held",
+                "in",
+                "a",
+                "huge",
+                "hall",
+                "the",
+                "on",
+                "is"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "When Kerem walked onto ___ stage in the hall, everyone started clapping.",
+              "translation": "Kerem salondaki sahneye çıktığında herkes alkışlamaya başladı.",
+              "answer": "the",
+              "choices": [
+                "the",
+                "a",
+                "an"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "O kadar şaşırdım ki tek kelime edemedim.",
+              "lang": "tr",
+              "answers": [
+                "I was so surprised that I couldn't say a word",
+                "I was so surprised that I could not say a word",
+                "I was so surprised I couldn't say a word"
+              ],
+              "tokens": [
+                "I",
+                "was",
+                "so",
+                "surprised",
+                "that",
+                "I",
+                "couldn't",
+                "say",
+                "a",
+                "word",
+                "am",
+                "surprising",
+                "can't"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I didn't tell my parents ___ the evening, because it was a secret.",
+              "translation": "Akşama kadar aileme söylemedim, çünkü bu bir sırdı.",
+              "answer": "until",
+              "choices": [
+                "until",
+                "by",
+                "since"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Şimdi dönüp bakınca, ikimiz için de mükemmel bir gündü.",
+              "lang": "tr",
+              "answers": [
+                "Looking back now, it was a perfect day for both of us",
+                "Looking back, it was a perfect day for both of us"
+              ],
+              "tokens": [
+                "Looking",
+                "back",
+                "now",
+                "it",
+                "was",
+                "a",
+                "perfect",
+                "day",
+                "for",
+                "both",
+                "of",
+                "us",
+                "is",
+                "to",
+                "perfectly"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "___ back now, it was the best day of the whole year.",
+              "translation": "Şimdi dönüp bakınca, bütün yılın en güzel günüydü.",
+              "answer": "Looking",
+              "choices": [
+                "Looking",
+                "Seeing",
+                "Watching"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir anı hikâyesinin ilk cümlesi hangisi olmalı?",
+              "answer": "I'll never forget that day.",
+              "choices": [
+                {
+                  "text": "In the end, we went home.",
+                  "emoji": "🏠"
+                },
+                {
+                  "text": "So that's my story.",
+                  "emoji": "📕"
+                },
+                {
+                  "text": "Also, it was raining.",
+                  "emoji": "🌧️"
+                },
+                {
+                  "text": "I'll never forget that day.",
+                  "emoji": "📖"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "ilk başta",
+                  "at first"
+                ],
+                [
+                  "ondan sonra",
+                  "after that"
+                ],
+                [
+                  "sonunda",
+                  "in the end"
+                ],
+                [
+                  "o anda",
+                  "at that moment"
+                ],
+                [
+                  "şimdi dönüp bakınca",
+                  "looking back"
+                ]
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Unutamadığın bir günü yaklaşık 120 kelimeyle anlat: ne oldu, nerede ve kiminleydin, neler hissettin ve bugün o güne nasıl bakıyorsun? Geçmiş zaman ile present perfect'i doğru yerde kullan ve en az üç duygu sözcüğü ekle.",
+              "model": "I'll never forget the day my little brother Kerem graduated from university. At first, I felt nervous. The ceremony was held in a huge hall, and our whole family was there. Then Kerem walked onto the stage. My mother started crying, and I felt incredibly proud. In his speech, he thanked me for my help, and I was so surprised that I couldn't say a word.\n\nBut that wasn't the only surprise. Earlier that day, my boss called me and told me that I was the new lead designer. I didn't tell anyone until the ceremony was over, because it was Kerem's big day. In the end, I shared the news, everyone cheered, and my grandmother took us all out for dinner. I've never felt so happy. Looking back now, it was a perfect day for both of us.",
+              "minWords": 100,
+              "maxWords": 140,
+              "checklist": [
+                "Olayın ne zaman ve nerede olduğunu söyledin",
+                "Olayları sırayla anlattın (at first, then, in the end…)",
+                "En az üç duygu sözcüğü kullandın (proud, nervous, surprised…)",
+                "Bitmiş olaylar için past simple kullandın",
+                "Son cümlede bugün o güne nasıl baktığını yazdın (Looking back now…)"
+              ],
+              "focus": [
+                "tense",
+                "article"
+              ],
+              "taskId": "s5u13l4w"
+            }
+          ]
+        },
+        {
+          "id": "s5u13t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s5u13c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s5u14",
+      "title": "Haberi aktar",
+      "description": "Kısa bir haberin ana noktalarını anlamak ve başkasına aktarmak",
+      "color": "0xFFF2994A",
+      "theme": "haber",
+      "guide": "## Bu ünitede yapabileceklerin\n- Kısa bir radyo haberinden ana bilgiyi ve önemli ayrıntıları anlayabilirsin.\n- Bir haberin ana noktalarını başka birine kısaca aktarabilirsin (**aracılık**).\n- İngilizce bir haber yazısında ana fikri, ayrıntıları ve yazarın tutumunu bulabilirsin.\n- Türkçe bir haberi ya da notu, Türkçe bilmeyen bir arkadaşın için İngilizce özetleyebilirsin.\n\n## Strateji\n- Haberi önce metni görmeden dinle ve kendine sor: **Ne oldu? Nerede? Kimi etkiliyor? Ne yapmak gerekiyor?**\n- Özetlerken her şeyi çevirme. Karşındaki kişi için önemli olan 3 noktayı seç, gerisini bırak.\n- Kaynağı söyle: **According to the radio…, They said that…, The news says…**\n- Haberlerde edilgen yapı çok kullanılır: *was cancelled, will be held, has been delayed*. Gölgelemede bu kalıpları ritmiyle tekrar et.\n- Aktarırken zamanı kaydır: *\"The ferries are cancelled.\"* → *They said the ferries were cancelled.*\n\n## Model metin\n> Hi Sam,\n>\n> Good news! I've just read about the olive harvest festival in Ayvalık. This year it will be held from 20 to 22 October. During the festival, visitors can take part in the olive picking in the villages for free, so you could try it with Dede! There will also be a concert at the harbour on Saturday evening. However, if it rains, the concert will be moved to the culture centre. Shall I book us a room in a small hotel?\n>\n> Elif\n\nMesaj selamla başlar, ilk cümle konuyu verir. Sonra haberin üç ana noktası (tarih, ücretsiz etkinlik, konser ve yağmur durumu) **also** ve **however** ile sıralanır. Son soru Sam'i harekete geçirir.\n\n## Türklerin sık hatası\n- ❌ The festival will held in October. ✅ The festival will **be held** in October. (Gelecekteki edilgen: **will be + V3**.)\n- ❌ The concert will be moved at the culture centre. / in 20 October ✅ moved **to** the culture centre / **on** 20 October (yön için **to**, tarih için **on**).",
+      "nodes": [
+        {
+          "id": "s5u14l1",
+          "type": "lesson",
+          "title": "Dinleme: Radyo haberleri",
+          "description": "Kısa radyo haberlerinden ana bilgiyi ve ayrıntıları yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "The new tram line will be opened by the mayor at the weekend.",
+              "answers": [
+                "The new tram line will be opened by the mayor at the weekend."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Police say that a lot of roads near the harbour are closed today.",
+              "answers": [
+                "Police say that a lot of roads near the harbour are closed today."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "Here's the main news: the ferries won't run tomorrow because of the wind.",
+              "translation": "Asıl haber şu: rüzgâr yüzünden yarın vapurlar çalışmayacak.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "If you're going to the airport tomorrow, you should leave an hour early.",
+              "answers": [
+                "If you're going to the airport tomorrow, you should leave an hour early.",
+                "If you are going to the airport tomorrow, you should leave an hour early."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "___ to the news, the bridge will be closed for two weeks.",
+              "translation": "Habere göre köprü iki hafta kapalı olacak.",
+              "answer": "According",
+              "choices": [
+                "According",
+                "Thanks",
+                "Due"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Experts think the storm might reach the coast before midnight tonight.",
+              "answers": [
+                "Experts think the storm might reach the coast before midnight tonight."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "According to the radio, about two thousand people took part in the race.",
+              "translation": "Radyoya göre yaklaşık iki bin kişi yarışa katıldı.",
+              "rate": 0.95
+            },
+            {
+              "type": "fillBlank",
+              "text": "The open-air concert was cancelled because ___ the bad weather.",
+              "translation": "Açık hava konseri kötü hava yüzünden iptal edildi.",
+              "answer": "of",
+              "choices": [
+                "of",
+                "to",
+                "for"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "iptal edildi",
+                  "was cancelled"
+                ],
+                [
+                  "ertelendi",
+                  "was postponed"
+                ],
+                [
+                  "açıldı",
+                  "was opened"
+                ],
+                [
+                  "kapatılacak",
+                  "will be closed"
+                ],
+                [
+                  "yaralandı",
+                  "was injured"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u14l2",
+          "type": "lesson",
+          "title": "Okuma: Yerel haber",
+          "description": "Vapur uygulaması hakkındaki haberin ana noktalarını bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Ferry passengers get a smarter journey\n\nİZMİR – Ferry passengers in İzmir can now see exactly when their boat will arrive, thanks to a new free app called İskele. The app was launched on Monday, and it has already been downloaded more than 40,000 times.\n\nThe app was designed by Martı Apps, a small technology company in the city. It shows a live map of every ferry in the bay, and it sends a message to passengers if a boat is late or cancelled. Users can also see how crowded each ferry is before they get on.\n\n\"We used to wait at the pier without any information,\" said Ayşe Demir, a teacher who takes the ferry from Karşıyaka every day. \"Now I check the app before I leave home, and I haven't missed a boat since Monday.\"\n\nElif Erdem, the company's lead designer, said that the team had tested the app with hundreds of passengers. \"Older passengers asked us to make the buttons bigger, so we did,\" she explained.\n\nNot everyone is happy, however. Some passengers have complained that the app doesn't work well at metro stations near the piers. The company says this problem will be fixed in the next update.\n\nThe city council hopes the app will persuade more people to leave their cars at home. \"If more people took the ferry, the roads would be much less crowded,\" a spokesperson said.",
+              "question": "Haberin ana konusu ne?",
+              "options": [
+                "A new ferry line in İzmir",
+                "Problems at metro stations",
+                "A new app for ferry passengers",
+                "A teacher who missed her ferry"
+              ],
+              "answer": 2,
+              "explanation": "\"A new app for ferry passengers\" doğru: haber, vapur yolcularına gemilerin ne zaman geleceğini gösteren İskele uygulamasını anlatıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Ferry passengers get a smarter journey\n\nİZMİR – Ferry passengers in İzmir can now see exactly when their boat will arrive, thanks to a new free app called İskele. The app was launched on Monday, and it has already been downloaded more than 40,000 times.\n\nThe app was designed by Martı Apps, a small technology company in the city. It shows a live map of every ferry in the bay, and it sends a message to passengers if a boat is late or cancelled. Users can also see how crowded each ferry is before they get on.\n\n\"We used to wait at the pier without any information,\" said Ayşe Demir, a teacher who takes the ferry from Karşıyaka every day. \"Now I check the app before I leave home, and I haven't missed a boat since Monday.\"\n\nElif Erdem, the company's lead designer, said that the team had tested the app with hundreds of passengers. \"Older passengers asked us to make the buttons bigger, so we did,\" she explained.\n\nNot everyone is happy, however. Some passengers have complained that the app doesn't work well at metro stations near the piers. The company says this problem will be fixed in the next update.\n\nThe city council hopes the app will persuade more people to leave their cars at home. \"If more people took the ferry, the roads would be much less crowded,\" a spokesperson said.",
+              "question": "Uygulama yolculara ne zaman mesaj gönderiyor?",
+              "options": [
+                "Every morning before work",
+                "When the weather is bad",
+                "When they arrive at the pier",
+                "When a ferry is late or cancelled"
+              ],
+              "answer": 3,
+              "explanation": "\"When a ferry is late or cancelled\" doğru: metinde \"it sends a message to passengers if a boat is late or cancelled\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Ferry passengers get a smarter journey\n\nİZMİR – Ferry passengers in İzmir can now see exactly when their boat will arrive, thanks to a new free app called İskele. The app was launched on Monday, and it has already been downloaded more than 40,000 times.\n\nThe app was designed by Martı Apps, a small technology company in the city. It shows a live map of every ferry in the bay, and it sends a message to passengers if a boat is late or cancelled. Users can also see how crowded each ferry is before they get on.\n\n\"We used to wait at the pier without any information,\" said Ayşe Demir, a teacher who takes the ferry from Karşıyaka every day. \"Now I check the app before I leave home, and I haven't missed a boat since Monday.\"\n\nElif Erdem, the company's lead designer, said that the team had tested the app with hundreds of passengers. \"Older passengers asked us to make the buttons bigger, so we did,\" she explained.\n\nNot everyone is happy, however. Some passengers have complained that the app doesn't work well at metro stations near the piers. The company says this problem will be fixed in the next update.\n\nThe city council hopes the app will persuade more people to leave their cars at home. \"If more people took the ferry, the roads would be much less crowded,\" a spokesperson said.",
+              "question": "Yaşlı yolcuların isteği üzerine ne değişti?",
+              "options": [
+                "The buttons were made bigger",
+                "The map became bigger",
+                "The app became free",
+                "More ferries were added"
+              ],
+              "answer": 0,
+              "explanation": "\"The buttons were made bigger\" doğru: metinde \"Older passengers asked us to make the buttons bigger, so we did\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Ferry passengers get a smarter journey\n\nİZMİR – Ferry passengers in İzmir can now see exactly when their boat will arrive, thanks to a new free app called İskele. The app was launched on Monday, and it has already been downloaded more than 40,000 times.\n\nThe app was designed by Martı Apps, a small technology company in the city. It shows a live map of every ferry in the bay, and it sends a message to passengers if a boat is late or cancelled. Users can also see how crowded each ferry is before they get on.\n\n\"We used to wait at the pier without any information,\" said Ayşe Demir, a teacher who takes the ferry from Karşıyaka every day. \"Now I check the app before I leave home, and I haven't missed a boat since Monday.\"\n\nElif Erdem, the company's lead designer, said that the team had tested the app with hundreds of passengers. \"Older passengers asked us to make the buttons bigger, so we did,\" she explained.\n\nNot everyone is happy, however. Some passengers have complained that the app doesn't work well at metro stations near the piers. The company says this problem will be fixed in the next update.\n\nThe city council hopes the app will persuade more people to leave their cars at home. \"If more people took the ferry, the roads would be much less crowded,\" a spokesperson said.",
+              "question": "Ayşe Demir hakkında metinden ne çıkarılabilir?",
+              "options": [
+                "She works for the city council",
+                "She sometimes missed boats before the app",
+                "She has stopped taking the ferry",
+                "She helped design the app"
+              ],
+              "answer": 1,
+              "explanation": "\"She sometimes missed boats before the app\" doğru: metinde \"We used to wait at the pier without any information\" ve \"I haven't missed a boat since Monday\" yazıyor; yani önceden bazen vapuru kaçırıyordu."
+            },
+            {
+              "type": "choice",
+              "passage": "Ferry passengers get a smarter journey\n\nİZMİR – Ferry passengers in İzmir can now see exactly when their boat will arrive, thanks to a new free app called İskele. The app was launched on Monday, and it has already been downloaded more than 40,000 times.\n\nThe app was designed by Martı Apps, a small technology company in the city. It shows a live map of every ferry in the bay, and it sends a message to passengers if a boat is late or cancelled. Users can also see how crowded each ferry is before they get on.\n\n\"We used to wait at the pier without any information,\" said Ayşe Demir, a teacher who takes the ferry from Karşıyaka every day. \"Now I check the app before I leave home, and I haven't missed a boat since Monday.\"\n\nElif Erdem, the company's lead designer, said that the team had tested the app with hundreds of passengers. \"Older passengers asked us to make the buttons bigger, so we did,\" she explained.\n\nNot everyone is happy, however. Some passengers have complained that the app doesn't work well at metro stations near the piers. The company says this problem will be fixed in the next update.\n\nThe city council hopes the app will persuade more people to leave their cars at home. \"If more people took the ferry, the roads would be much less crowded,\" a spokesperson said.",
+              "question": "Haber uygulamayı genel olarak nasıl sunuyor?",
+              "options": [
+                "Only negatively",
+                "As a complete failure",
+                "Mostly positively, with one problem",
+                "As too expensive for most people"
+              ],
+              "answer": 2,
+              "explanation": "\"Mostly positively, with one problem\" doğru: haber kullanıcıların memnuniyetini anlatıyor ama \"Not everyone is happy, however\" diyerek metro istasyonlarındaki sorunu da ekliyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Ferry passengers get a smarter journey\n\nİZMİR – Ferry passengers in İzmir can now see exactly when their boat will arrive, thanks to a new free app called İskele. The app was launched on Monday, and it has already been downloaded more than 40,000 times.\n\nThe app was designed by Martı Apps, a small technology company in the city. It shows a live map of every ferry in the bay, and it sends a message to passengers if a boat is late or cancelled. Users can also see how crowded each ferry is before they get on.\n\n\"We used to wait at the pier without any information,\" said Ayşe Demir, a teacher who takes the ferry from Karşıyaka every day. \"Now I check the app before I leave home, and I haven't missed a boat since Monday.\"\n\nElif Erdem, the company's lead designer, said that the team had tested the app with hundreds of passengers. \"Older passengers asked us to make the buttons bigger, so we did,\" she explained.\n\nNot everyone is happy, however. Some passengers have complained that the app doesn't work well at metro stations near the piers. The company says this problem will be fixed in the next update.\n\nThe city council hopes the app will persuade more people to leave their cars at home. \"If more people took the ferry, the roads would be much less crowded,\" a spokesperson said.",
+              "question": "Belediye ne umuyor?",
+              "options": [
+                "That ferries will be cheaper",
+                "That the app will be sold abroad",
+                "That the metro will close",
+                "That fewer people will drive"
+              ],
+              "answer": 3,
+              "explanation": "\"That fewer people will drive\" doğru: metinde \"the app will persuade more people to leave their cars at home\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "indirmek",
+                  "download"
+                ],
+                [
+                  "kalabalık",
+                  "crowded"
+                ],
+                [
+                  "iskele",
+                  "pier"
+                ],
+                [
+                  "şikâyet etmek",
+                  "complain"
+                ],
+                [
+                  "güncelleme",
+                  "update"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The app ___ downloaded more than 40,000 times so far.",
+              "translation": "Uygulama şimdiye kadar 40.000'den fazla kez indirildi.",
+              "answer": "has been",
+              "choices": [
+                "has been",
+                "was being",
+                "have been"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bu haberi bir arkadaşına anlatmaya başlıyorsun. Hangisi en uygun başlangıç?",
+              "answer": "Did you hear about the ferry app?",
+              "choices": [
+                {
+                  "text": "Dear Sir or Madam,",
+                  "emoji": "📄"
+                },
+                {
+                  "text": "I want to complain about it.",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "Did you hear about the ferry app?",
+                  "emoji": "📱"
+                },
+                {
+                  "text": "Thanks for your help!",
+                  "emoji": "🙏"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u14s",
+          "type": "story",
+          "title": "Rüzgârlı bir sabah",
+          "description": "Elif radyoda haberleri dinliyor ve önemli noktaları Sam'e aktarıyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Spiker",
+              "avatar": "📻",
+              "text": "Good morning. This is İzmir FM, and here's the news at eight o'clock.",
+              "translation": "Günaydın. Burası İzmir FM, saat sekiz haberleri."
+            },
+            {
+              "kind": "line",
+              "speaker": "Spiker",
+              "avatar": "📻",
+              "text": "Very strong winds are expected across the city today, with speeds of up to eighty kilometres an hour.",
+              "translation": "Bugün şehir genelinde saatte seksen kilometreye varan çok kuvvetli rüzgâr bekleniyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Spiker",
+              "avatar": "📻",
+              "text": "Because of the weather, all ferries in the bay have been cancelled until tomorrow morning.",
+              "translation": "Hava nedeniyle körfezdeki tüm vapur seferleri yarın sabaha kadar iptal edildi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Spiker",
+              "avatar": "📻",
+              "text": "Passengers are advised to use the metro or the trains instead, which will run every ten minutes.",
+              "translation": "Yolculara bunun yerine her on dakikada bir çalışacak olan metroyu ya da trenleri kullanmaları öneriliyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Spiker",
+              "avatar": "📻",
+              "text": "At the airport, some flights from Europe have been delayed, but no flights have been cancelled so far.",
+              "translation": "Havalimanında Avrupa'dan gelen bazı uçuşlar gecikti ama şimdiye kadar hiçbir uçuş iptal edilmedi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Spiker",
+              "avatar": "📻",
+              "text": "In other news, the new tram line in Çiğli was opened yesterday by the mayor.",
+              "translation": "Diğer haberlerde, Çiğli'deki yeni tramvay hattı dün belediye başkanı tarafından açıldı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Spiker",
+              "avatar": "📻",
+              "text": "Rides on the new line will be free for the first week. And now, back to the music.",
+              "translation": "Yeni hatta yolculuk ilk hafta ücretsiz olacak. Şimdi müziğe dönüyoruz."
+            },
+            {
+              "kind": "question",
+              "prompt": "Vapur seferleri ne zamana kadar iptal edildi?",
+              "choices": [
+                "Yarın sabaha kadar",
+                "Bu akşama kadar",
+                "Hafta sonuna kadar"
+              ],
+              "answer": "Yarın sabaha kadar"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Oh no. Sam's flight lands at eleven, and he was planning to take the ferry to his hotel.",
+              "translation": "Eyvah. Sam'in uçağı on birde iniyor ve otele vapurla gitmeyi planlıyordu."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "You'd better call him before he gets on the plane.",
+              "translation": "Uçağa binmeden onu arasan iyi olur."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Sam, it's me. Have you heard the news about the weather in İzmir?",
+              "translation": "Sam, benim. İzmir'deki havayla ilgili haberleri duydun mu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "No, I'm at the gate. What's going on?",
+              "translation": "Hayır, kapıdayım. Ne oluyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "It's really windy today, so all the ferries have been cancelled. You can't take one to your hotel.",
+              "translation": "Bugün çok rüzgârlı, bu yüzden bütün vapurlar iptal edildi. Oteline vapurla gidemezsin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Really? Then how should I get there from the airport?",
+              "translation": "Gerçekten mi? O zaman havalimanından oraya nasıl gideyim?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "The radio said the metro and the trains were running every ten minutes. Take the train instead.",
+              "translation": "Radyo metro ve trenlerin her on dakikada bir çalıştığını söyledi. Onun yerine trene bin."
+            },
+            {
+              "kind": "question",
+              "prompt": "Radyoya göre trenler ne sıklıkla çalışacak?",
+              "choices": [
+                "Her beş dakikada bir",
+                "Her on dakikada bir",
+                "Saat başı"
+              ],
+              "answer": "Her on dakikada bir"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Got it. Did they say anything about flights from London?",
+              "translation": "Anladım. Londra'dan gelen uçuşlar hakkında bir şey söylediler mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "They said some flights from Europe were delayed, but nothing was cancelled.",
+              "translation": "Avrupa'dan gelen bazı uçuşların geciktiğini ama hiçbirinin iptal edilmediğini söylediler."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "And the tram you told me about last month? Is it open yet?",
+              "translation": "Peki geçen ay bahsettiğin tramvay? Açıldı mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Yes! It was opened yesterday, and it's free this week.",
+              "translation": "Evet! Dün açıldı ve bu hafta ücretsiz."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"It was opened yesterday\" cümlesindeki \"It\" neyi anlatıyor?",
+              "choices": [
+                "Havalimanını",
+                "Metroyu",
+                "Yeni tramvay hattını"
+              ],
+              "answer": "Yeni tramvay hattını"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Thanks, Elif. You're better than the radio!",
+              "translation": "Teşekkürler Elif. Radyodan bile iyisin!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "That's because she only told you the important parts.",
+              "translation": "Çünkü sana yalnızca önemli kısımları anlattı."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif Sam'i neden arıyor?",
+              "choices": [
+                "Uçuşunu iptal ettirmek için",
+                "Hava ve ulaşım haberlerini aktarmak için",
+                "Onu konsere davet etmek için"
+              ],
+              "answer": "Hava ve ulaşım haberlerini aktarmak için"
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem'in son cümlesinden ne anlaşılıyor?",
+              "choices": [
+                "Elif haberleri iyi özetledi",
+                "Radyo yanlış haber verdi",
+                "Sam radyoyu kendisi dinlemişti"
+              ],
+              "answer": "Elif haberleri iyi özetledi"
+            }
+          ]
+        },
+        {
+          "id": "s5u14l3",
+          "type": "lesson",
+          "title": "Konuşma: Haberi özetle",
+          "description": "Duyduğun bir haberi bir arkadaşına kısaca ve kaynağıyla aktar",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "Did you hear what happened at the harbour this morning?",
+              "translation": "Bu sabah limanda ne olduğunu duydun mu?",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "Basically, the main point is that the road will be closed all week.",
+              "translation": "Kısacası asıl mesele, yolun bütün hafta kapalı olacağı.",
+              "rate": 0.9
+            },
+            {
+              "type": "speak",
+              "text": "I just heard something on the radio that might be important for you.",
+              "translation": "Radyoda senin için önemli olabilecek bir şey duydum."
+            },
+            {
+              "type": "speak",
+              "text": "Apparently, the city marathon will be held on Sunday, so a lot of roads will be closed.",
+              "translation": "Görünüşe göre şehir maratonu pazar günü yapılacak, bu yüzden birçok yol kapalı olacak."
+            },
+            {
+              "type": "speak",
+              "text": "They said that the buses would take different routes until the evening.",
+              "translation": "Otobüslerin akşama kadar farklı güzergâhlardan gideceğini söylediler."
+            },
+            {
+              "type": "speak",
+              "text": "If I were you, I'd take the metro to the airport instead of a taxi.",
+              "translation": "Senin yerinde olsam havalimanına taksi yerine metroyla giderdim."
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın uzun bir haberi anlatıyor, sen sadece sonucu merak ediyorsun. En uygun soru hangisi?",
+              "answer": "So what's the main point?",
+              "choices": [
+                {
+                  "text": "Why are you so late?",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "Do you like the news?",
+                  "emoji": "📺"
+                },
+                {
+                  "text": "What's your name again?",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "So what's the main point?",
+                  "emoji": "🎯"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bilgiyi kaynağını belirterek aktarmak istiyorsun. Hangisi en uygun?",
+              "answer": "According to the radio, it's free.",
+              "choices": [
+                {
+                  "text": "According to the radio, it's free.",
+                  "emoji": "📻"
+                },
+                {
+                  "text": "It's free, I'm sure.",
+                  "emoji": "😎"
+                },
+                {
+                  "text": "Free? Who cares?",
+                  "emoji": "🙄"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Haberlerde yarın metronun ücretsiz olacağını söylediler.",
+              "lang": "tr",
+              "answers": [
+                "They said on the news that the metro would be free tomorrow",
+                "They said on the news that the metro will be free tomorrow",
+                "They said on the news that tomorrow the metro would be free",
+                "They said on the news the metro would be free tomorrow",
+                "On the news they said that the metro would be free tomorrow",
+                "They said that the metro would be free tomorrow on the news",
+                "On the news they said the metro would be free tomorrow",
+                "They said the metro would be free tomorrow on the news",
+                "On the news they said that tomorrow the metro would be free",
+                "On the news they said tomorrow the metro would be free",
+                "They said on the news tomorrow the metro would be free"
+              ],
+              "tokens": [
+                "They",
+                "said",
+                "on",
+                "the",
+                "news",
+                "that",
+                "the",
+                "metro",
+                "would",
+                "be",
+                "free",
+                "tomorrow",
+                "at",
+                "told",
+                "a"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u14l4",
+          "type": "lesson",
+          "title": "Yazma: Sam için özet",
+          "description": "Türkçe bir haberi Sam için İngilizce özetle",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Bu yıl 20–22 Ekim tarihleri arasında yapılacak.",
+              "lang": "tr",
+              "answers": [
+                "This year it will be held from 20 to 22 October",
+                "It will be held from 20 to 22 October this year",
+                "This year it will take place from 20 to 22 October",
+                "It will be held this year from 20 to 22 October"
+              ],
+              "tokens": [
+                "This",
+                "year",
+                "it",
+                "will",
+                "be",
+                "held",
+                "from",
+                "20",
+                "to",
+                "22",
+                "October",
+                "is",
+                "on",
+                "in"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "There will be a concert on Saturday. ___, if it rains, it will be moved indoors.",
+              "translation": "Cumartesi bir konser olacak. Ancak yağmur yağarsa kapalı bir yere taşınacak.",
+              "answer": "However",
+              "choices": [
+                "However",
+                "Because",
+                "So"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Cumartesi akşamı limanda bir konser de olacak.",
+              "lang": "tr",
+              "answers": [
+                "There will also be a concert at the harbour on Saturday evening",
+                "There will also be a concert on Saturday evening at the harbour",
+                "On Saturday evening there will also be a concert at the harbour",
+                "At the harbour there will also be a concert on Saturday evening"
+              ],
+              "tokens": [
+                "There",
+                "will",
+                "also",
+                "be",
+                "a",
+                "concert",
+                "at",
+                "the",
+                "harbour",
+                "on",
+                "Saturday",
+                "evening",
+                "to",
+                "the",
+                "at"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Visitors can take part in the olive picking in ___ village of Küçükköy.",
+              "translation": "Ziyaretçiler Küçükköy köyünde zeytin toplamaya katılabilir.",
+              "answer": "the",
+              "choices": [
+                "the",
+                "a",
+                "some"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ancak yağmur yağarsa konser kültür merkezine taşınacak.",
+              "lang": "tr",
+              "answers": [
+                "However, if it rains, the concert will be moved to the culture centre",
+                "However, the concert will be moved to the culture centre if it rains",
+                "But if it rains, the concert will be moved to the culture centre",
+                "If it rains, however, the concert will be moved to the culture centre"
+              ],
+              "tokens": [
+                "However",
+                "if",
+                "it",
+                "rains",
+                "the",
+                "concert",
+                "will",
+                "be",
+                "moved",
+                "to",
+                "the",
+                "culture",
+                "centre",
+                "will",
+                "at",
+                "a"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I've just read ___ the festival in the local paper.",
+              "translation": "Az önce yerel gazetede festival hakkında bir şey okudum.",
+              "answer": "about",
+              "choices": [
+                "about",
+                "for",
+                "on"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Sam'e yazdığın özet mesaja en uygun başlangıç hangisi?",
+              "answer": "Hi Sam, good news!",
+              "choices": [
+                {
+                  "text": "Dear Sir or Madam,",
+                  "emoji": "📄"
+                },
+                {
+                  "text": "Hi Sam, good news!",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "To whom it may concern,",
+                  "emoji": "🏛️"
+                },
+                {
+                  "text": "Yours faithfully,",
+                  "emoji": "✍️"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "yapılacak",
+                  "will be held"
+                ],
+                [
+                  "ücretsiz",
+                  "for free"
+                ],
+                [
+                  "taşınacak",
+                  "will be moved"
+                ],
+                [
+                  "boyunca",
+                  "during"
+                ],
+                [
+                  "ziyaretçi",
+                  "visitor"
+                ]
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Sam Ayvalık'taki zeytin hasadı festivaline gelmek istiyor ama Türkçe bilmiyor. Yerel gazetedeki şu haberi ona İngilizce, yaklaşık 80 kelimelik bir mesajla özetle: \"Ayvalık Zeytin Hasadı Festivali bu yıl 20–22 Ekim tarihlerinde yapılacak. Festival boyunca ziyaretçiler köylerdeki zeytin toplama etkinliklerine ücretsiz katılabilecek. Cumartesi akşamı limanda bir konser verilecek; yağmur yağarsa konser kültür merkezine taşınacak.\" Ana noktaları kendi cümlelerinle aktar, gereksiz ayrıntı ekleme.",
+              "model": "Hi Sam,\n\nGood news! I've just read about the olive harvest festival in Ayvalık. This year it will be held from 20 to 22 October. During the festival, visitors can take part in the olive picking in the villages for free, so you could try it with Dede! There will also be a concert at the harbour on Saturday evening. However, if it rains, the concert will be moved to the culture centre. Shall I book us a room in a small hotel?\n\nElif",
+              "minWords": 65,
+              "maxWords": 100,
+              "checklist": [
+                "Festivalin tarihini ve yerini doğru aktardın",
+                "Haberdeki üç ana noktanın hepsini yazdın",
+                "En az bir edilgen yapı kullandın (will be held, will be moved)",
+                "Ana noktaları bağlaçlarla bağladın (also, however, so)",
+                "Arkadaşa uygun samimi bir giriş ve kapanış yazdın"
+              ],
+              "focus": [
+                "tense",
+                "preposition"
+              ],
+              "taskId": "s5u14l4w"
+            }
+          ]
+        },
+        {
+          "id": "s5u14t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s5u14c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s5u15",
+      "title": "Bir sorunu çözelim",
+      "description": "Bir şirkete ya da belediyeye resmî bir şikâyet veya talep yazmak",
+      "color": "0xFF14A098",
+      "theme": "yazisma",
+      "guide": "## Bu ünitede yapabileceklerin\n- Bir şirkete ya da belediyeye resmî bir şikâyet veya talep e-postası yazabilirsin.\n- Telefonda bir sorunu kibarca ama net anlatıp çözüm isteyebilirsin.\n- Resmî bir şikâyet e-postasında sorunu, yazarın isteğini ve tutumunu bulabilirsin.\n- Müşteri hizmetleri konuşmasından tarih, saat ve verilen sözleri anlayabilirsin.\n\n## Strateji\n- E-postayı paragraflara böl: neden yazıyorsun, ne oldu (tarih ve ayrıntılar), ne istiyorsun.\n- Size söyleneni aktar: **I was told that…, An agent promised that…** Bu, şikâyetini güçlendirir.\n- Kızgın olsan da kibar kalıplar kullan: **I would be grateful if you could…, Could you please…?**\n- Hikâyeyi önce metni görmeden dinle; görevlinin verdiği saat ve sözleri not et, sonra soruları cevapla.\n- Gölgelemede **I'm afraid…** ve **Would you mind…?** gibi kalıpların düşen tonunu taklit et: kibarlık seste de duyulur.\n\n## Model metin\n> Subject: Complaint about our office move on 3 March\n>\n> Dear Sir or Madam,\n>\n> I am writing to complain about the service we received from your company during our office move on 3 March.\n>\n> First, your team arrived three hours late, so we lost most of the working day. When I called your office, I was told that the van was stuck in traffic, but nobody contacted us before that.\n>\n> Second, two of our computer screens were damaged during the move. They were packed carefully by our staff, so we believe they were broken in your van. I have attached photos of the damaged screens and a copy of the invoice.\n>\n> I would be grateful if you could pay for the repairs. Could you please reply by the end of next week?\n>\n> Yours faithfully,\n> Elif Erdem\n> Lead Designer, Martı Apps\n\nKonu satırı sorunu özetler. İlk paragraf yazma nedenini verir; **First** ve **Second** ile iki sorun ayrı paragraflarda anlatılır (edilgen ve aktarılan söz). Son paragraf kibar bir istek ve son tarih içerir; **Dear Sir or Madam** ile başlayan e-posta **Yours faithfully** ile biter.\n\n## Türklerin sık hatası\n- ❌ I have called you last Friday. ✅ I **called** you last Friday. / I **have called** you four times. (Belli bir geçmiş zaman → past simple; zaman belirtmeden toplam deneyim → present perfect.)\n- ❌ I am writing to complain for the service. ✅ I am writing to complain **about the** service. (Fiille birlikte gelen edat ve belirli artikel.)\n\n## Beceri testi\nBölüm 5 beceri testi 20 sorudur; geçmek için %80 doğru yap. Bölüm 5, bu test **ve** bu ünitenin yazma görevi (l4, resmî şikâyet e-postası) bitince **tamamlandı** sayılır.\n\n| Bölüm | Soru | Ölçtüğü hedef |\n|---|---|---|\n| Dinleme | 6 | Anı ve duygular (s5u13, s5u12); haber (s5u14); resmî talep (s5u15); used to (s5u3); aktarılan söz (s5u7) |\n| Okuma | 8 | Bir anı yazısında olaylar, çıkarım ve tutum (s5u13); bir haberin ana noktaları (s5u14) |\n| Yazma | 4 | Ne zamandır (s5u1–s5u2); haberi aktarma ve edilgen (s5u14, s5u4); şikâyet (s5u15); tahmin (s5u9) |\n| Dil | 2 | used to (s5u3); reported speech (s5u7) |",
+      "nodes": [
+        {
+          "id": "s5u15l1",
+          "type": "lesson",
+          "title": "Dinleme: Müşteri hizmetleri",
+          "description": "Telefondaki şikâyet ve çözüm konuşmalarından ayrıntıları yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I'm calling because my order hasn't arrived, and it's been two weeks.",
+              "answers": [
+                "I'm calling because my order hasn't arrived, and it's been two weeks.",
+                "I am calling because my order has not arrived, and it has been two weeks.",
+                "I'm calling because my order has not arrived, and it has been two weeks.",
+                "I am calling because my order hasn't arrived, and it's been two weeks.",
+                "I am calling because my order hasn't arrived, and it has been two weeks.",
+                "I'm calling because my order hasn't arrived, and it has been two weeks.",
+                "I'm calling because my order has not arrived, and it's been two weeks.",
+                "I am calling because my order has not arrived, and it's been two weeks."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Could you tell me when the technician is going to arrive?",
+              "answers": [
+                "Could you tell me when the technician is going to arrive?"
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "I'm sorry to hear that. Let me check your order for you.",
+              "translation": "Bunu duyduğuma üzüldüm. Siparişinizi sizin için kontrol edeyim.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "We were told that the broken heater would be replaced by Friday.",
+              "answers": [
+                "We were told that the broken heater would be replaced by Friday."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm writing to complain ___ the service I received last week.",
+              "translation": "Geçen hafta aldığım hizmetten şikâyet etmek için yazıyorum.",
+              "answer": "about",
+              "choices": [
+                "about",
+                "for",
+                "from"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'd like to make a complaint about the noise in the street.",
+              "answers": [
+                "I'd like to make a complaint about the noise in the street.",
+                "I would like to make a complaint about the noise in the street."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "Could you possibly send someone to look at it this week?",
+              "translation": "Bu hafta bakması için birini göndermeniz mümkün mü acaba?",
+              "rate": 0.85
+            },
+            {
+              "type": "fillBlank",
+              "text": "We're still waiting ___ a reply to our email.",
+              "translation": "E-postamıza hâlâ cevap bekliyoruz.",
+              "answer": "for",
+              "choices": [
+                "for",
+                "to",
+                "at"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "şikâyet",
+                  "complaint"
+                ],
+                [
+                  "para iadesi",
+                  "refund"
+                ],
+                [
+                  "hasarlı",
+                  "damaged"
+                ],
+                [
+                  "teslimat",
+                  "delivery"
+                ],
+                [
+                  "fatura",
+                  "invoice"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u15l2",
+          "type": "lesson",
+          "title": "Okuma: Sam'in şikâyet e-postası",
+          "description": "Sam'in havayolu şirketine yazdığı resmî şikâyeti oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Subject: Lost suitcase – flight from London, 14 March\n\nDear Sir or Madam,\n\nI am writing to complain about the way my case has been handled since my flight from London to İzmir on 14 March.\n\nWhen I arrived in İzmir, my suitcase was not on the belt. I reported the problem at your desk in the airport immediately, and I was told that the suitcase would be delivered to my hotel within two days.\n\nHowever, it has now been eleven days, and I still have not received it. I have called your customer service line four times. Each time I was asked to wait, and twice the call was cut off. Last Friday, an agent promised that someone would call me back the same day, but nobody did.\n\nThe suitcase contains the charger for my work laptop and several gifts for friends, so this situation has caused me serious problems. I have had to buy a new charger and some clothes, and I have kept all the receipts.\n\nI would be grateful if you could find my suitcase and deliver it as soon as possible. I would also like you to pay for the items I have had to buy. I have attached copies of my receipts and my boarding pass.\n\nI look forward to hearing from you.\n\nYours faithfully,\nSam Baker",
+              "question": "Sam bu e-postayı neden yazıyor?",
+              "options": [
+                "His flight was cancelled",
+                "His suitcase has not been returned",
+                "He wants a cheaper ticket",
+                "His laptop was damaged"
+              ],
+              "answer": 1,
+              "explanation": "\"His suitcase has not been returned\" doğru: metinde \"it has now been eleven days, and I still have not received it\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Lost suitcase – flight from London, 14 March\n\nDear Sir or Madam,\n\nI am writing to complain about the way my case has been handled since my flight from London to İzmir on 14 March.\n\nWhen I arrived in İzmir, my suitcase was not on the belt. I reported the problem at your desk in the airport immediately, and I was told that the suitcase would be delivered to my hotel within two days.\n\nHowever, it has now been eleven days, and I still have not received it. I have called your customer service line four times. Each time I was asked to wait, and twice the call was cut off. Last Friday, an agent promised that someone would call me back the same day, but nobody did.\n\nThe suitcase contains the charger for my work laptop and several gifts for friends, so this situation has caused me serious problems. I have had to buy a new charger and some clothes, and I have kept all the receipts.\n\nI would be grateful if you could find my suitcase and deliver it as soon as possible. I would also like you to pay for the items I have had to buy. I have attached copies of my receipts and my boarding pass.\n\nI look forward to hearing from you.\n\nYours faithfully,\nSam Baker",
+              "question": "Havalimanında Sam'e ne söylendi?",
+              "options": [
+                "The suitcase was still in London",
+                "He should call again the next day",
+                "The suitcase would arrive within two days",
+                "He had to pay for the delivery"
+              ],
+              "answer": 2,
+              "explanation": "\"The suitcase would arrive within two days\" doğru: metinde \"I was told that the suitcase would be delivered to my hotel within two days\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Lost suitcase – flight from London, 14 March\n\nDear Sir or Madam,\n\nI am writing to complain about the way my case has been handled since my flight from London to İzmir on 14 March.\n\nWhen I arrived in İzmir, my suitcase was not on the belt. I reported the problem at your desk in the airport immediately, and I was told that the suitcase would be delivered to my hotel within two days.\n\nHowever, it has now been eleven days, and I still have not received it. I have called your customer service line four times. Each time I was asked to wait, and twice the call was cut off. Last Friday, an agent promised that someone would call me back the same day, but nobody did.\n\nThe suitcase contains the charger for my work laptop and several gifts for friends, so this situation has caused me serious problems. I have had to buy a new charger and some clothes, and I have kept all the receipts.\n\nI would be grateful if you could find my suitcase and deliver it as soon as possible. I would also like you to pay for the items I have had to buy. I have attached copies of my receipts and my boarding pass.\n\nI look forward to hearing from you.\n\nYours faithfully,\nSam Baker",
+              "question": "Sam müşteri hizmetlerini kaç kez aradı?",
+              "options": [
+                "Twice",
+                "Eleven times",
+                "Once",
+                "Four times"
+              ],
+              "answer": 3,
+              "explanation": "\"Four times\" doğru: metinde \"I have called your customer service line four times\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Lost suitcase – flight from London, 14 March\n\nDear Sir or Madam,\n\nI am writing to complain about the way my case has been handled since my flight from London to İzmir on 14 March.\n\nWhen I arrived in İzmir, my suitcase was not on the belt. I reported the problem at your desk in the airport immediately, and I was told that the suitcase would be delivered to my hotel within two days.\n\nHowever, it has now been eleven days, and I still have not received it. I have called your customer service line four times. Each time I was asked to wait, and twice the call was cut off. Last Friday, an agent promised that someone would call me back the same day, but nobody did.\n\nThe suitcase contains the charger for my work laptop and several gifts for friends, so this situation has caused me serious problems. I have had to buy a new charger and some clothes, and I have kept all the receipts.\n\nI would be grateful if you could find my suitcase and deliver it as soon as possible. I would also like you to pay for the items I have had to buy. I have attached copies of my receipts and my boarding pass.\n\nI look forward to hearing from you.\n\nYours faithfully,\nSam Baker",
+              "question": "Sam neden yeni bir şarj aleti almak zorunda kaldı?",
+              "options": [
+                "His charger was in the lost suitcase",
+                "The airline broke his charger",
+                "He forgot it in London",
+                "His laptop was new"
+              ],
+              "answer": 0,
+              "explanation": "\"His charger was in the lost suitcase\" doğru: metinde bavulun \"the charger for my work laptop\" içerdiği yazıyor; bavul gelmediği için yenisini almış."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Lost suitcase – flight from London, 14 March\n\nDear Sir or Madam,\n\nI am writing to complain about the way my case has been handled since my flight from London to İzmir on 14 March.\n\nWhen I arrived in İzmir, my suitcase was not on the belt. I reported the problem at your desk in the airport immediately, and I was told that the suitcase would be delivered to my hotel within two days.\n\nHowever, it has now been eleven days, and I still have not received it. I have called your customer service line four times. Each time I was asked to wait, and twice the call was cut off. Last Friday, an agent promised that someone would call me back the same day, but nobody did.\n\nThe suitcase contains the charger for my work laptop and several gifts for friends, so this situation has caused me serious problems. I have had to buy a new charger and some clothes, and I have kept all the receipts.\n\nI would be grateful if you could find my suitcase and deliver it as soon as possible. I would also like you to pay for the items I have had to buy. I have attached copies of my receipts and my boarding pass.\n\nI look forward to hearing from you.\n\nYours faithfully,\nSam Baker",
+              "question": "Sam'in e-postadaki tutumu nasıl?",
+              "options": [
+                "Happy and grateful",
+                "Unhappy but still polite",
+                "Rude and aggressive",
+                "Calm and not interested"
+              ],
+              "answer": 1,
+              "explanation": "\"Unhappy but still polite\" doğru: Sam sorunları açıkça anlatıyor ama \"I would be grateful if you could…\" gibi kibar kalıplar kullanıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Lost suitcase – flight from London, 14 March\n\nDear Sir or Madam,\n\nI am writing to complain about the way my case has been handled since my flight from London to İzmir on 14 March.\n\nWhen I arrived in İzmir, my suitcase was not on the belt. I reported the problem at your desk in the airport immediately, and I was told that the suitcase would be delivered to my hotel within two days.\n\nHowever, it has now been eleven days, and I still have not received it. I have called your customer service line four times. Each time I was asked to wait, and twice the call was cut off. Last Friday, an agent promised that someone would call me back the same day, but nobody did.\n\nThe suitcase contains the charger for my work laptop and several gifts for friends, so this situation has caused me serious problems. I have had to buy a new charger and some clothes, and I have kept all the receipts.\n\nI would be grateful if you could find my suitcase and deliver it as soon as possible. I would also like you to pay for the items I have had to buy. I have attached copies of my receipts and my boarding pass.\n\nI look forward to hearing from you.\n\nYours faithfully,\nSam Baker",
+              "question": "Sam şirketten hangi iki şeyi istiyor?",
+              "options": [
+                "A free flight and an apology",
+                "A new suitcase and a ticket refund",
+                "To find the case and pay for his purchases",
+                "A phone call and a gift"
+              ],
+              "answer": 2,
+              "explanation": "\"To find the case and pay for his purchases\" doğru: metinde \"find my suitcase and deliver it\" ve \"pay for the items I have had to buy\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "teslim etmek",
+                  "deliver"
+                ],
+                [
+                  "makbuz",
+                  "receipt"
+                ],
+                [
+                  "ekte göndermek",
+                  "attach"
+                ],
+                [
+                  "minnettar",
+                  "grateful"
+                ],
+                [
+                  "biniş kartı",
+                  "boarding pass"
+                ]
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Resmî e-postaya \"Dear Sir or Madam\" ile başladın. Hangi kapanış uygun?",
+              "answer": "Yours faithfully,",
+              "choices": [
+                {
+                  "text": "Love, Sam xx",
+                  "emoji": "💕"
+                },
+                {
+                  "text": "See you soon!",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "Yours faithfully,",
+                  "emoji": "✍️"
+                },
+                {
+                  "text": "Cheers,",
+                  "emoji": "🍻"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I would be grateful if you ___ reply as soon as possible.",
+              "translation": "En kısa sürede cevap verebilirseniz minnettar olurum.",
+              "answer": "could",
+              "choices": [
+                "could",
+                "must",
+                "did"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u15s",
+          "type": "story",
+          "title": "Yeni ofiste sorun",
+          "description": "Martı Apps'in yeni ofisinde internet yok; Elif şirketi arıyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Welcome to our new office, everyone! Isn't the sea view wonderful?",
+              "translation": "Yeni ofisimize hoş geldiniz! Deniz manzarası harika değil mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "It's beautiful. I can even see the ferries from my desk!",
+              "translation": "Çok güzel. Masamdan vapurları bile görebiliyorum!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍🦱",
+              "text": "The view is great, Selin, but there's one small problem. The internet isn't working.",
+              "translation": "Manzara güzel Selin ama küçük bir sorun var. İnternet çalışmıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "It can't be the cables. The technician checked them yesterday.",
+              "translation": "Kablolar olamaz. Teknisyen dün onları kontrol etti."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"The technician checked them yesterday\" cümlesindeki \"them\" neyi anlatıyor?",
+              "choices": [
+                "Bilgisayarları",
+                "Kabloları",
+                "Pencereleri"
+              ],
+              "answer": "Kabloları"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍🦱",
+              "text": "Then it must be the internet company. They promised to connect us before Monday.",
+              "translation": "O zaman internet şirketi olmalı. Bizi pazartesiden önce bağlayacaklarına söz vermişlerdi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Elif, could you call them? You're the calmest person in this office.",
+              "translation": "Elif, onları arayabilir misin? Bu ofisteki en sakin kişi sensin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Hello, I'm calling from Martı Apps. Our new office still hasn't been connected.",
+              "translation": "Merhaba, Martı Apps'ten arıyorum. Yeni ofisimiz hâlâ bağlanmadı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🎧",
+              "text": "I'm sorry to hear that. Could you give me your customer number, please?",
+              "translation": "Bunu duyduğuma üzüldüm. Müşteri numaranızı verebilir misiniz lütfen?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Of course. We were told that everything would be ready by last Friday.",
+              "translation": "Tabii. Bize her şeyin geçen cumaya kadar hazır olacağı söylenmişti."
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🎧",
+              "text": "Let me check. I'm afraid the connection was planned for next Friday, not last Friday.",
+              "translation": "Kontrol edeyim. Korkarım bağlantı geçen cuma değil, gelecek cuma için planlanmış."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Next Friday? We can't wait a whole week. Six people can't do their jobs without the internet.",
+              "translation": "Gelecek cuma mı? Koca bir hafta bekleyemeyiz. Altı kişi internetsiz işini yapamaz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🎧",
+              "text": "I understand. I can send a technician tomorrow morning, between nine and twelve.",
+              "translation": "Anlıyorum. Yarın sabah dokuzla on iki arasında bir teknisyen gönderebilirim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Teknisyen ne zaman gelecek?",
+              "choices": [
+                "Yarın sabah",
+                "Gelecek cuma",
+                "Bu akşam"
+              ],
+              "answer": "Yarın sabah"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Thank you. Could you also send me an email to confirm that, please?",
+              "translation": "Teşekkürler. Bunu onaylayan bir e-posta da gönderebilir misiniz lütfen?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🎧",
+              "text": "Of course. And as an apology, your first month will be free.",
+              "translation": "Elbette. Ayrıca özür olarak ilk ayınız ücretsiz olacak."
+            },
+            {
+              "kind": "question",
+              "prompt": "Şirket özür olarak ne teklif etti?",
+              "choices": [
+                "Yeni bir modem",
+                "İlk ayın ücretsiz olmasını",
+                "Ucuz bir telefon hattı"
+              ],
+              "answer": "İlk ayın ücretsiz olmasını"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Good news, everyone. A technician is coming tomorrow, and they said the first month would be free.",
+              "translation": "Herkese iyi haber. Yarın bir teknisyen geliyor ve ilk ayın ücretsiz olacağını söylediler."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍🦱",
+              "text": "A free month! Elif, you should make all our phone calls from now on.",
+              "translation": "Bir ay bedava! Elif, bundan sonra bütün telefonlarımızı sen yapmalısın."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "So what do we do today without the internet?",
+              "translation": "Peki bugün internetsiz ne yapacağız?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Kerem said his office had the same problem last month. They worked from a café for two days.",
+              "translation": "Kerem geçen ay kendi ofislerinde de aynı sorunun olduğunu söyledi. İki gün bir kafeden çalışmışlar."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "We could have our first meeting on the balcony. It's too nice to stay inside.",
+              "translation": "İlk toplantımızı balkonda yapabiliriz. İçeride kalmak için hava fazla güzel."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍🦱",
+              "text": "A meeting with a sea view and no emails? This is the best office ever.",
+              "translation": "Deniz manzaralı ve e-postasız bir toplantı mı? Bu gelmiş geçmiş en iyi ofis."
+            },
+            {
+              "kind": "question",
+              "prompt": "Hikâyenin ana konusu ne?",
+              "choices": [
+                "Selin'in ofisi satması",
+                "Deniz'in yeni bisikleti",
+                "Yeni ofisteki internet sorunu ve Elif'in şirketle görüşmesi"
+              ],
+              "answer": "Yeni ofisteki internet sorunu ve Elif'in şirketle görüşmesi"
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz'in \"you should make all our phone calls\" sözünden ne anlaşılıyor?",
+              "choices": [
+                "Elif'in görüşmesini başarılı buldu",
+                "Elif'e kızdı",
+                "Ofisteki telefonlar bozuk"
+              ],
+              "answer": "Elif'in görüşmesini başarılı buldu"
+            }
+          ]
+        },
+        {
+          "id": "s5u15l3",
+          "type": "lesson",
+          "title": "Konuşma: Telefonla şikâyet",
+          "description": "Bir şirketi arayıp sorununu kibarca ama net anlat",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "I'm afraid this is the third time I've called about the same problem.",
+              "translation": "Korkarım aynı sorun için üçüncü kez arıyorum.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "Would you mind sending me a confirmation by email, please?",
+              "translation": "Bana e-postayla bir onay gönderebilir misiniz lütfen?",
+              "rate": 0.9
+            },
+            {
+              "type": "speak",
+              "text": "Good morning. I'm calling about a problem with my new washing machine.",
+              "translation": "Günaydın. Yeni çamaşır makinemle ilgili bir sorun için arıyorum."
+            },
+            {
+              "type": "speak",
+              "text": "It was delivered last Tuesday, but it's already stopped working.",
+              "translation": "Geçen salı teslim edildi ama şimdiden çalışmaz oldu."
+            },
+            {
+              "type": "speak",
+              "text": "When I called on Friday, I was told that someone would contact me.",
+              "translation": "Cuma günü aradığımda benimle iletişime geçileceği söylendi."
+            },
+            {
+              "type": "speak",
+              "text": "Could you send a technician this week, or should I ask for a refund?",
+              "translation": "Bu hafta bir teknisyen gönderebilir misiniz, yoksa para iadesi mi istemeliyim?"
+            },
+            {
+              "type": "select",
+              "prompt": "Müşteri hizmetlerine kızgınsın ama kibar kalmak istiyorsun. Hangisi en uygun?",
+              "answer": "I'm afraid this isn't acceptable.",
+              "choices": [
+                {
+                  "text": "This is totally stupid!",
+                  "emoji": "😡"
+                },
+                {
+                  "text": "I'm afraid this isn't acceptable.",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "Whatever, forget it.",
+                  "emoji": "🙄"
+                },
+                {
+                  "text": "You're the worst company!",
+                  "emoji": "👎"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Görevli \"Is there anything else I can help you with?\" dedi. İşin bitti. En uygun cevap hangisi?",
+              "answer": "No, that's all. Thank you.",
+              "choices": [
+                {
+                  "text": "I don't know you.",
+                  "emoji": "🤨"
+                },
+                {
+                  "text": "Help me again!",
+                  "emoji": "😤"
+                },
+                {
+                  "text": "No, that's all. Thank you.",
+                  "emoji": "🙏"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bize faturanın bu hafta gönderileceği söylendi.",
+              "lang": "tr",
+              "answers": [
+                "We were told that the invoice would be sent this week",
+                "We were told the invoice would be sent this week"
+              ],
+              "tokens": [
+                "We",
+                "were",
+                "told",
+                "that",
+                "the",
+                "invoice",
+                "would",
+                "be",
+                "sent",
+                "this",
+                "week",
+                "said",
+                "to",
+                "is"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u15l4",
+          "type": "lesson",
+          "title": "Yazma: Resmî şikâyet e-postası",
+          "description": "Taşıma şirketine 120–150 kelimelik resmî bir şikâyet e-postası yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Ekibiniz üç saat geç geldi, bu yüzden iş gününün çoğunu kaybettik.",
+              "lang": "tr",
+              "answers": [
+                "Your team arrived three hours late, so we lost most of the working day",
+                "First, your team arrived three hours late, so we lost most of the working day"
+              ],
+              "tokens": [
+                "Your",
+                "team",
+                "arrived",
+                "three",
+                "hours",
+                "late",
+                "so",
+                "we",
+                "lost",
+                "most",
+                "of",
+                "the",
+                "working",
+                "day",
+                "has",
+                "at",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I am writing to complain about ___ service we received last month.",
+              "translation": "Geçen ay aldığımız hizmetten şikâyet etmek için yazıyorum.",
+              "answer": "the",
+              "choices": [
+                "the",
+                "a",
+                "an"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ofisinizi aradığımda bana kamyonetin trafikte sıkışıp kaldığı söylendi.",
+              "lang": "tr",
+              "answers": [
+                "When I called your office, I was told that the van was stuck in traffic",
+                "When I called your office, I was told the van was stuck in traffic",
+                "I was told that the van was stuck in traffic when I called your office",
+                "I was told the van was stuck in traffic when I called your office"
+              ],
+              "tokens": [
+                "When",
+                "I",
+                "called",
+                "your",
+                "office",
+                "I",
+                "was",
+                "told",
+                "that",
+                "the",
+                "van",
+                "was",
+                "stuck",
+                "in",
+                "traffic",
+                "said",
+                "at",
+                "is"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The van arrived late. On top of ___, two screens were broken.",
+              "translation": "Minibüs geç geldi. Üstüne üstlük iki ekran kırıldı.",
+              "answer": "that",
+              "choices": [
+                "that",
+                "what",
+                "this one"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Onarımların parasını öderseniz minnettar olurum.",
+              "lang": "tr",
+              "answers": [
+                "I would be grateful if you could pay for the repairs",
+                "I'd be grateful if you could pay for the repairs"
+              ],
+              "tokens": [
+                "I",
+                "would",
+                "be",
+                "grateful",
+                "if",
+                "you",
+                "could",
+                "pay",
+                "for",
+                "the",
+                "repairs",
+                "to",
+                "are",
+                "pays"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Could you please reply ___ the end of next week?",
+              "translation": "Lütfen gelecek haftanın sonuna kadar cevap verebilir misiniz?",
+              "answer": "by",
+              "choices": [
+                "by",
+                "until",
+                "in"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Resmî bir şikâyet e-postasına en uygun ilk cümle hangisi?",
+              "answer": "I am writing to complain about…",
+              "choices": [
+                {
+                  "text": "Hey guys, guess what happened!",
+                  "emoji": "😜"
+                },
+                {
+                  "text": "Your company is terrible.",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "I am writing to complain about…",
+                  "emoji": "📧"
+                },
+                {
+                  "text": "Just a quick note, lol.",
+                  "emoji": "😂"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "şikâyet etmek",
+                  "to complain about"
+                ],
+                [
+                  "hasar görmek",
+                  "to be damaged"
+                ],
+                [
+                  "ekte",
+                  "attached"
+                ],
+                [
+                  "onarım",
+                  "repair"
+                ],
+                [
+                  "taşınma",
+                  "move"
+                ]
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Martı Apps yeni ofisine taşındı, ama taşıma şirketi üç saat geç geldi ve iki bilgisayar ekranı hasar gördü. Elif olarak şirkete 120–150 kelimelik resmî bir şikâyet e-postası yaz: sorunu tarih ve ayrıntılarıyla anlat, telefonda sana ne söylendiğini aktar ve kibarca ne istediğini belirt.",
+              "model": "Subject: Complaint about our office move on 3 March\n\nDear Sir or Madam,\n\nI am writing to complain about the service we received from your company during our office move on 3 March.\n\nFirst, your team arrived three hours late, so we lost most of the working day. When I called your office, I was told that the van was stuck in traffic, but nobody contacted us before that.\n\nSecond, two of our computer screens were damaged during the move. They were packed carefully by our staff, so we believe they were broken in your van. I have attached photos of the damaged screens and a copy of the invoice.\n\nI would be grateful if you could pay for the repairs. Could you please reply by the end of next week?\n\nYours faithfully,\nElif Erdem\nLead Designer, Martı Apps",
+              "minWords": 100,
+              "maxWords": 160,
+              "checklist": [
+                "Resmî bir selamlama ve kapanış kullandın (Dear Sir or Madam, Yours faithfully)",
+                "İlk cümlede yazma nedenini söyledin (I am writing to complain about…)",
+                "Sorunu tarih ve ayrıntılarla, ayrı paragraflarda anlattın",
+                "Sana söyleneni aktardın (I was told that…)",
+                "İsteğini kibar bir kalıpla yazdın (I would be grateful if you could…)"
+              ],
+              "focus": [
+                "tense",
+                "article",
+                "preposition"
+              ],
+              "taskId": "s5u15l4w"
+            }
+          ]
+        },
+        {
+          "id": "s5u15t",
+          "type": "test",
+          "title": "Bölüm 5 beceri testi",
+          "description": "Bu bölümün hedeflerini ölçer",
+          "rewardXp": 25,
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I'd been looking forward to this trip for months, and it was even better than I expected.",
+              "answers": [
+                "I'd been looking forward to this trip for months, and it was even better than I expected.",
+                "I had been looking forward to this trip for months, and it was even better than I expected."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Did you hear that the old cinema is going to become a library?",
+              "answers": [
+                "Did you hear that the old cinema is going to become a library?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The bridge was closed for a few hours because of the strong wind.",
+              "answers": [
+                "The bridge was closed for a few hours because of the strong wind."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'm writing to ask if you could send someone to repair the lift.",
+              "answers": [
+                "I'm writing to ask if you could send someone to repair the lift.",
+                "I am writing to ask if you could send someone to repair the lift."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "We used to spend every summer at the beach with our grandparents.",
+              "answers": [
+                "We used to spend every summer at the beach with our grandparents."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "She told me that she'd been offered a job in another city.",
+              "answers": [
+                "She told me that she'd been offered a job in another city.",
+                "She told me that she had been offered a job in another city."
+              ]
+            },
+            {
+              "type": "choice",
+              "passage": "Three days in the olive groves\nby Sam\n\nLast October, I spent three days in Ayvalık with my friend Elif and her grandparents. I went for the olive harvest festival, but I came home with much more than photos.\n\nOn the first morning, Elif's grandfather woke us up at six. I was tired and a bit grumpy, but when we arrived at the grove, the view of the sea made me forget about sleep. We spread nets under the trees and shook the branches for hours. By lunchtime, my arms were aching, and I was covered in leaves.\n\nOn Saturday evening, the concert was moved to the culture centre because of the rain, but we were too tired to go. So we stayed at home and listened to Dede's stories instead. He used to work in the same groves when he was a boy, and he still knows every tree.\n\nHonestly, I didn't expect a festival to be so tiring. But it's one of the best trips I've ever had, and I've already booked my flight for next year.",
+              "question": "Bu yazı en çok neyi anlatıyor?",
+              "options": [
+                "Sam's tiring but wonderful festival trip",
+                "How olive oil is made",
+                "Why Sam missed his flight",
+                "Dede's old job"
+              ],
+              "answer": 0,
+              "explanation": "\"Sam's tiring but wonderful festival trip\" doğru: Sam festivaldeki yorucu ama çok güzel üç gününü anlatıyor: \"one of the best trips I've ever had\"."
+            },
+            {
+              "type": "choice",
+              "passage": "Three days in the olive groves\nby Sam\n\nLast October, I spent three days in Ayvalık with my friend Elif and her grandparents. I went for the olive harvest festival, but I came home with much more than photos.\n\nOn the first morning, Elif's grandfather woke us up at six. I was tired and a bit grumpy, but when we arrived at the grove, the view of the sea made me forget about sleep. We spread nets under the trees and shook the branches for hours. By lunchtime, my arms were aching, and I was covered in leaves.\n\nOn Saturday evening, the concert was moved to the culture centre because of the rain, but we were too tired to go. So we stayed at home and listened to Dede's stories instead. He used to work in the same groves when he was a boy, and he still knows every tree.\n\nHonestly, I didn't expect a festival to be so tiring. But it's one of the best trips I've ever had, and I've already booked my flight for next year.",
+              "question": "Sam bahçeye vardığında uykusunu neden unuttu?",
+              "options": [
+                "A cup of strong coffee",
+                "Dede's funny stories",
+                "The loud music",
+                "The view of the sea"
+              ],
+              "answer": 3,
+              "explanation": "\"The view of the sea\" doğru: metinde \"the view of the sea made me forget about sleep\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Three days in the olive groves\nby Sam\n\nLast October, I spent three days in Ayvalık with my friend Elif and her grandparents. I went for the olive harvest festival, but I came home with much more than photos.\n\nOn the first morning, Elif's grandfather woke us up at six. I was tired and a bit grumpy, but when we arrived at the grove, the view of the sea made me forget about sleep. We spread nets under the trees and shook the branches for hours. By lunchtime, my arms were aching, and I was covered in leaves.\n\nOn Saturday evening, the concert was moved to the culture centre because of the rain, but we were too tired to go. So we stayed at home and listened to Dede's stories instead. He used to work in the same groves when he was a boy, and he still knows every tree.\n\nHonestly, I didn't expect a festival to be so tiring. But it's one of the best trips I've ever had, and I've already booked my flight for next year.",
+              "question": "Sam festivalden önce ne düşünüyordu?",
+              "options": [
+                "It would be boring",
+                "It would be easier",
+                "It would be cancelled",
+                "He would work alone"
+              ],
+              "answer": 1,
+              "explanation": "\"It would be easier\" doğru: metinde \"I didn't expect a festival to be so tiring\" yazıyor; yani daha kolay olacağını sanıyordu."
+            },
+            {
+              "type": "choice",
+              "passage": "Three days in the olive groves\nby Sam\n\nLast October, I spent three days in Ayvalık with my friend Elif and her grandparents. I went for the olive harvest festival, but I came home with much more than photos.\n\nOn the first morning, Elif's grandfather woke us up at six. I was tired and a bit grumpy, but when we arrived at the grove, the view of the sea made me forget about sleep. We spread nets under the trees and shook the branches for hours. By lunchtime, my arms were aching, and I was covered in leaves.\n\nOn Saturday evening, the concert was moved to the culture centre because of the rain, but we were too tired to go. So we stayed at home and listened to Dede's stories instead. He used to work in the same groves when he was a boy, and he still knows every tree.\n\nHonestly, I didn't expect a festival to be so tiring. But it's one of the best trips I've ever had, and I've already booked my flight for next year.",
+              "question": "Sam bu yolculuğu genel olarak nasıl değerlendiriyor?",
+              "options": [
+                "As a waste of time",
+                "As too expensive",
+                "Very positively; he'll go again",
+                "With mixed feelings"
+              ],
+              "answer": 2,
+              "explanation": "\"Very positively; he'll go again\" doğru: metinde \"one of the best trips I've ever had\" ve \"I've already booked my flight for next year\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Young designers get a free start\n\nİZMİR – Children in İzmir will soon be able to learn app design for free. Martı Apps, the local company behind the popular ferry app İskele, has announced that it will open free design workshops for children aged 10 to 14.\n\nThe workshops will be held every Saturday morning at the company's new office by the sea, starting in May. Each group will have twelve children, and laptops will be provided by the company.\n\nThe idea came from Elif Erdem, the company's lead designer, who said that she had always dreamed of a design school for children. \"When I was young, I used to draw apps on paper because we didn't have a computer at home,\" she explained.\n\nPlaces are limited, and parents can apply on the company's website until 20 April. Several local schools have already shown interest, so the company expects the first groups to fill up quickly.",
+              "question": "Haberin ana noktası ne?",
+              "options": [
+                "A school is opening a new office",
+                "Children have designed a ferry app",
+                "Laptops will be sold cheaply",
+                "A company will offer free workshops for children"
+              ],
+              "answer": 3,
+              "explanation": "\"A company will offer free workshops for children\" doğru: metinde Martı Apps'in \"will open free design workshops for children aged 10 to 14\" diye duyurduğu yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Young designers get a free start\n\nİZMİR – Children in İzmir will soon be able to learn app design for free. Martı Apps, the local company behind the popular ferry app İskele, has announced that it will open free design workshops for children aged 10 to 14.\n\nThe workshops will be held every Saturday morning at the company's new office by the sea, starting in May. Each group will have twelve children, and laptops will be provided by the company.\n\nThe idea came from Elif Erdem, the company's lead designer, who said that she had always dreamed of a design school for children. \"When I was young, I used to draw apps on paper because we didn't have a computer at home,\" she explained.\n\nPlaces are limited, and parents can apply on the company's website until 20 April. Several local schools have already shown interest, so the company expects the first groups to fill up quickly.",
+              "question": "Atölyeler ne zaman yapılacak?",
+              "options": [
+                "Every Saturday morning",
+                "Every weekday evening",
+                "Only in April",
+                "Every Sunday afternoon"
+              ],
+              "answer": 0,
+              "explanation": "\"Every Saturday morning\" doğru: metinde \"The workshops will be held every Saturday morning\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Young designers get a free start\n\nİZMİR – Children in İzmir will soon be able to learn app design for free. Martı Apps, the local company behind the popular ferry app İskele, has announced that it will open free design workshops for children aged 10 to 14.\n\nThe workshops will be held every Saturday morning at the company's new office by the sea, starting in May. Each group will have twelve children, and laptops will be provided by the company.\n\nThe idea came from Elif Erdem, the company's lead designer, who said that she had always dreamed of a design school for children. \"When I was young, I used to draw apps on paper because we didn't have a computer at home,\" she explained.\n\nPlaces are limited, and parents can apply on the company's website until 20 April. Several local schools have already shown interest, so the company expects the first groups to fill up quickly.",
+              "question": "Veliler başvurmak için ne yapmalı?",
+              "options": [
+                "Call the lead designer",
+                "Apply on the website by 20 April",
+                "Visit the office in May",
+                "Ask their child's school"
+              ],
+              "answer": 1,
+              "explanation": "\"Apply on the website by 20 April\" doğru: metinde \"parents can apply on the company's website until 20 April\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Young designers get a free start\n\nİZMİR – Children in İzmir will soon be able to learn app design for free. Martı Apps, the local company behind the popular ferry app İskele, has announced that it will open free design workshops for children aged 10 to 14.\n\nThe workshops will be held every Saturday morning at the company's new office by the sea, starting in May. Each group will have twelve children, and laptops will be provided by the company.\n\nThe idea came from Elif Erdem, the company's lead designer, who said that she had always dreamed of a design school for children. \"When I was young, I used to draw apps on paper because we didn't have a computer at home,\" she explained.\n\nPlaces are limited, and parents can apply on the company's website until 20 April. Several local schools have already shown interest, so the company expects the first groups to fill up quickly.",
+              "question": "Şirket grupların neden hızlı dolacağını düşünüyor?",
+              "options": [
+                "The workshops are very cheap",
+                "There are only two groups",
+                "Local schools are already interested",
+                "Each group is very large"
+              ],
+              "answer": 2,
+              "explanation": "\"Local schools are already interested\" doğru: metinde \"Several local schools have already shown interest, so the company expects the first groups to fill up quickly\" yazıyor."
+            },
+            {
+              "type": "translate",
+              "text": "İki yıldır bu şehirde yaşıyorum ve hâlâ yeni yerler keşfediyorum.",
+              "lang": "tr",
+              "answers": [
+                "I've been living in this city for two years, and I'm still discovering new places",
+                "I have been living in this city for two years, and I'm still discovering new places",
+                "I've lived in this city for two years, and I'm still discovering new places",
+                "I have lived in this city for two years, and I am still discovering new places"
+              ],
+              "tokens": [
+                "I've",
+                "been",
+                "living",
+                "in",
+                "this",
+                "city",
+                "for",
+                "two",
+                "years",
+                "and",
+                "I'm",
+                "still",
+                "discovering",
+                "new",
+                "places",
+                "since",
+                "am",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Haberlere göre yeni köprü gelecek yıl açılacak.",
+              "lang": "tr",
+              "answers": [
+                "According to the news, the new bridge will be opened next year",
+                "The new bridge will be opened next year, according to the news",
+                "According to the news, the new bridge will open next year"
+              ],
+              "tokens": [
+                "According",
+                "to",
+                "the",
+                "news",
+                "the",
+                "new",
+                "bridge",
+                "will",
+                "be",
+                "opened",
+                "next",
+                "year",
+                "in",
+                "is",
+                "at"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Asansör iki haftadır çalışmıyor ve kimse onu tamir etmedi.",
+              "lang": "tr",
+              "answers": [
+                "The lift hasn't been working for two weeks, and nobody has repaired it",
+                "The lift has not been working for two weeks, and nobody has repaired it",
+                "The lift hasn't worked for two weeks, and nobody has repaired it",
+                "The elevator hasn't been working for two weeks, and nobody has repaired it"
+              ],
+              "tokens": [
+                "The",
+                "lift",
+                "hasn't",
+                "been",
+                "working",
+                "for",
+                "two",
+                "weeks",
+                "and",
+                "nobody",
+                "has",
+                "repaired",
+                "it",
+                "since",
+                "didn't",
+                "repair"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Işıklar kapalı, bu yüzden evde olmayabilirler.",
+              "lang": "tr",
+              "answers": [
+                "The lights are off, so they might not be at home",
+                "The lights are off, so they may not be at home",
+                "The lights are off, so they might not be home"
+              ],
+              "tokens": [
+                "The",
+                "lights",
+                "are",
+                "off",
+                "so",
+                "they",
+                "might",
+                "not",
+                "be",
+                "at",
+                "home",
+                "can't",
+                "in",
+                "must"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "When I was a child, I ___ to walk to school with my grandfather.",
+              "translation": "Çocukken dedemle okula yürüyerek giderdim.",
+              "answer": "used",
+              "choices": [
+                "used",
+                "use",
+                "was used"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Mia: \"I'm moving to London.\" Bu sözü aktarırken hangisi doğru?",
+              "answer": "She said she was moving.",
+              "choices": [
+                {
+                  "text": "She said she is move.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "She told she was moving.",
+                  "emoji": "🗣️"
+                },
+                {
+                  "text": "She said she was moving.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "She said me she moved.",
+                  "emoji": "💬"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s5u15c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}

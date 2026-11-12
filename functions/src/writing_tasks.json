@@ -1,1 +1,225 @@
-{}
+{
+  "s5u13l4w": {
+    "level": "B1",
+    "task": "Unutamadığın bir günü yaklaşık 120 kelimeyle anlat: ne oldu, nerede ve kiminleydin, neler hissettin ve bugün o güne nasıl bakıyorsun? Geçmiş zaman ile present perfect'i doğru yerde kullan ve en az üç duygu sözcüğü ekle.",
+    "minWords": 100,
+    "maxWords": 140,
+    "checklist": [
+      "Olayın ne zaman ve nerede olduğunu söyledin",
+      "Olayları sırayla anlattın (at first, then, in the end…)",
+      "En az üç duygu sözcüğü kullandın (proud, nervous, surprised…)",
+      "Bitmiş olaylar için past simple kullandın",
+      "Son cümlede bugün o güne nasıl baktığını yazdın (Looking back now…)"
+    ],
+    "focus": [
+      "tense",
+      "article"
+    ],
+    "rubric": "Can-do: describes an experience in detail and with feelings. A successful story says when and where the event happened, tells what happened in a clear order (at first, then, in the end), names at least three feelings and ends with a short reflection on how the writer sees the day now; one or two paragraphs in a personal, informal register. Expected B1 structures: past simple for finished events, present perfect for life experience (I've never…), so … that, time clauses with when, and correct a/an/the with singular nouns."
+  },
+  "s5u14l4w": {
+    "level": "B1",
+    "task": "Sam Ayvalık'taki zeytin hasadı festivaline gelmek istiyor ama Türkçe bilmiyor. Yerel gazetedeki şu haberi ona İngilizce, yaklaşık 80 kelimelik bir mesajla özetle: \"Ayvalık Zeytin Hasadı Festivali bu yıl 20–22 Ekim tarihlerinde yapılacak. Festival boyunca ziyaretçiler köylerdeki zeytin toplama etkinliklerine ücretsiz katılabilecek. Cumartesi akşamı limanda bir konser verilecek; yağmur yağarsa konser kültür merkezine taşınacak.\" Ana noktaları kendi cümlelerinle aktar, gereksiz ayrıntı ekleme.",
+    "minWords": 65,
+    "maxWords": 100,
+    "checklist": [
+      "Festivalin tarihini ve yerini doğru aktardın",
+      "Haberdeki üç ana noktanın hepsini yazdın",
+      "En az bir edilgen yapı kullandın (will be held, will be moved)",
+      "Ana noktaları bağlaçlarla bağladın (also, however, so)",
+      "Arkadaşa uygun samimi bir giriş ve kapanış yazdın"
+    ],
+    "focus": [
+      "tense",
+      "preposition"
+    ],
+    "rubric": "Can-do: passes on the main points of a short news item to someone else (mediation). Task success means the English message to Sam gives all three main points of the Turkish news (the dates 20–22 October, free olive picking in the villages, the Saturday concert at the harbour that moves to the culture centre if it rains) in the writer's own words, without translating word for word or adding unneeded detail, in a friendly short message with a greeting and sign-off. Expected B1 structures: future passive (will be held, will be moved), first conditional (if it rains), linkers such as also, however and so, and correct prepositions of time and place (on Saturday, at the harbour, from 20 to 22 October)."
+  },
+  "s5u15l4w": {
+    "level": "B1",
+    "task": "Martı Apps yeni ofisine taşındı, ama taşıma şirketi üç saat geç geldi ve iki bilgisayar ekranı hasar gördü. Elif olarak şirkete 120–150 kelimelik resmî bir şikâyet e-postası yaz: sorunu tarih ve ayrıntılarıyla anlat, telefonda sana ne söylendiğini aktar ve kibarca ne istediğini belirt.",
+    "minWords": 100,
+    "maxWords": 160,
+    "checklist": [
+      "Resmî bir selamlama ve kapanış kullandın (Dear Sir or Madam, Yours faithfully)",
+      "İlk cümlede yazma nedenini söyledin (I am writing to complain about…)",
+      "Sorunu tarih ve ayrıntılarla, ayrı paragraflarda anlattın",
+      "Sana söyleneni aktardın (I was told that…)",
+      "İsteğini kibar bir kalıpla yazdın (I would be grateful if you could…)"
+    ],
+    "focus": [
+      "tense",
+      "article",
+      "preposition"
+    ],
+    "rubric": "Can-do: writes a formal complaint or request. A successful email has a subject line, a formal greeting and closing (Dear Sir or Madam … Yours faithfully), states the reason for writing in the first sentence, describes both problems (the late arrival and the damaged screens) with the date in separate paragraphs, reports what the writer was told on the phone and ends with a clear, polite request. Expected B1 structures: past simple vs present perfect (arrived / have attached), past passive (were damaged), reported speech (I was told that…), polite requests (I would be grateful if you could…, Could you please…?), and accurate articles and prepositions (complain about the service, by the end of next week)."
+  },
+  "s6u13l4w": {
+    "level": "B1",
+    "task": "Son okuduğun bir kitap ya da izlediğin bir film hakkında yaklaşık 150 kelimelik bir yorum yaz. Konuyu kısaca özetle, beğendiğin ve beğenmediğin birer şeyi gerekçesiyle söyle, sonunda puan verip kime tavsiye ettiğini yaz.",
+    "minWords": 120,
+    "maxWords": 180,
+    "checklist": [
+      "Konuyu iki üç cümlede özetledin",
+      "Beğendiğin bir şeyi ve beğenmediğin bir şeyi gerekçesiyle yazdın",
+      "En az iki karşıtlık bağlacı kullandın (however, although, despite)",
+      "En az bir ilgi cümlesi kurdun (who, which, that, whose)",
+      "Sonunda puan verip kime tavsiye ettiğini yazdın"
+    ],
+    "focus": [
+      "tense",
+      "article",
+      "word_order"
+    ],
+    "rubric": "Can-do: writes an opinion about a film or book and gives reasons. A successful review of about 150 words briefly summarises the plot, gives at least one strength and one weakness with a reason or example, and ends with a rating and a recommendation, in three clear paragraphs and a neutral, magazine-like register. Expect B1 structures: past perfect for background events (had hidden), defining and non-defining relative clauses (who, which, whose) with correct word order and no repeated pronoun, so/such … that, and contrast with however, although and despite; check articles before singular countable nouns (a novel, a girl)."
+  },
+  "s6u14l4w": {
+    "level": "B1",
+    "task": "Forumdaki \"Laptops in cafés: yes or no?\" tartışmasına yaklaşık 100 kelimelik bir yanıt yaz. Görüşünü açıkça söyle, iki gerekçe ver ve karşı görüşteki birine kibarca cevap ver.",
+    "minWords": 80,
+    "maxWords": 120,
+    "checklist": [
+      "Görüşünü ilk iki cümlede açıkça söyledin",
+      "En az iki gerekçe verdin (First of all, Secondly…)",
+      "Karşı görüşü anıp kibarca yanıtladın (I see his point. However…)",
+      "En az bir ilgi cümlesi kullandın (who, that, where)",
+      "Bir öneri ya da soruyla bitirdin"
+    ],
+    "focus": [
+      "article",
+      "preposition",
+      "word_order"
+    ],
+    "rubric": "Can-do: gives an opinion on a forum and replies to an opposing view. A successful reply of about 100 words states a clear position early, supports it with two reasons (First of all, Secondly), names an opposing view, accepts part of it politely and answers it (I see his point. However…), and ends with a suggestion or question, in a friendly but not slangy forum register with two short paragraphs. Expect B1 structures: defining relative clauses (who, that, where) with correct word order, although/however/despite for contrast, opinion phrases (In my opinion, I see your point), agree with and in favour of with correct prepositions, and no article with general plural nouns (Cafés are…, families need…)."
+  },
+  "s6u15l4w": {
+    "level": "B1",
+    "task": "Hayatındaki bir dönüm noktasını anlatan yaklaşık 150 kelimelik bir blog yazısı yaz. Değişimden önceki durumunu, değişimin olduğu anı ve bugün nasıl hissettiğini anlat.",
+    "minWords": 120,
+    "maxWords": 180,
+    "checklist": [
+      "Yazına ilgi çekici bir başlık koydun",
+      "Değişimden önceki durumu anlatırken en az bir past perfect kullandın (had + V3)",
+      "Olayları sırayla anlattın ve zaman ifadeleri kullandın (Four years ago, a month later…)",
+      "Bugünkü duygunu wish ya da regret ile anlattın",
+      "Yazını üç paragrafa böldün"
+    ],
+    "focus": [
+      "tense",
+      "article",
+      "word_order"
+    ],
+    "rubric": "Can-do: presents a turning point in their life. A successful blog post of about 150 words has a title and three paragraphs: the situation before the change, the moment of change in clear time order (Four years ago, a month later), and how the writer feels about it today, in a personal, engaging blog register. Expect B1 structures: past perfect for earlier events (had planned, the most … I had ever made), wish + past perfect for regret (I wish I had changed…), so … that, although/however, and relative clauses (who, where) with correct word order; check articles in narration (an accountant, a small company)."
+  },
+  "s7u13l4w": {
+    "level": "B2",
+    "task": "Çalışanların evden çalışmasına izin verilmeli mi? Bu konuda 180–220 kelimelik bir lehte-aleyhte denemesi yaz: bir giriş paragrafı, lehte görüşler, aleyhte görüşler ve kendi görüşünü veren bir sonuç paragrafı.",
+    "minWords": 160,
+    "maxWords": 240,
+    "checklist": [
+      "Giriş paragrafında konuyu ve tartışmanın iki tarafı olduğunu belirttin",
+      "Lehte ve aleyhte görüşleri ayrı paragraflarda, en az ikişer gerekçeyle yazdın",
+      "En az üç bağlayıcı ifade kullandın (on the one hand, moreover, however…)",
+      "Sonuç paragrafında kendi görüşünü açıkça yazdın (In conclusion, I believe…)",
+      "Genel ifadelerde gereksiz the kullanmadın (Technology…, People…)"
+    ],
+    "focus": [
+      "article",
+      "preposition"
+    ],
+    "rubric": "Can-do: writes for and against a topic. Task success means a four-paragraph essay of about 200 words: an introduction that presents the question, one paragraph with at least two arguments for working from home, one with at least two arguments against, and a conclusion that gives the writer's own reasoned view without adding new arguments. Expect a neutral, semi-formal register and B2 cohesion (on the one hand / on the other hand, moreover, however, in conclusion), plus range such as conditionals, passives (cannot be done remotely) and collocations (arguments on both sides, effect on); penalise generic \"the\" (the technology) and wrong prepositions in collocations."
+  },
+  "s7u14l4w": {
+    "level": "B2",
+    "task": "Deniz'in podcast konuşmasını dinlerken aldığın notlardan yararlanarak yaklaşık 120 kelimelik bir özet yaz. Konuşmanın konusunu, üç dersi ve ana mesajı kendi cümlelerinle aktar.",
+    "minWords": 100,
+    "maxWords": 140,
+    "checklist": [
+      "İlk cümlede konuşmacıyı, programı ve konuyu verdin",
+      "Ana mesajı ve en az üç ana noktayı aktardın",
+      "En az iki aktarma fiili kullandın (explained, said, argued…)",
+      "Aktarılan geçmiş olaylarda zamanı geriye kaydırdın (had not been tested…)",
+      "Konuşmayı kelimesi kelimesine kopyalamadın, notlarından kendi cümlelerini kurdun"
+    ],
+    "focus": [
+      "tense",
+      "article"
+    ],
+    "rubric": "Can-do: takes notes from a 3–4 minute talk or podcast and writes a ~120-word summary of it from those notes. Task success means a summary of about 120 words, written from notes, that names the speaker, the podcast and the topic, then reports the system crash, the three lessons (speed vs safety, honest communication, outside testing) and the main message, in the writer's own words rather than copied lines. Expect a neutral register, clear paragraphing and B2 reporting structures: reporting verbs (explained, argued), correct backshift and past perfect passive (had not been tested), and accurate articles with specific nouns (the company, the main message)."
+  },
+  "s7u15l4w": {
+    "level": "B2",
+    "task": "Deniz olarak Elif'e yaklaşık 150 kelimelik resmî bir teklif e-postası yaz: kafelerini üç aylık bir pilotla teslim noktasına dönüştürmeyi öner, iki tarafın kazancını açıkla ve olası bir itirazı yanıtla.",
+    "minWords": 120,
+    "maxWords": 180,
+    "checklist": [
+      "Konu satırı ve resmî bir selamlama yazdın (Dear…)",
+      "Öneriyi ilk paragrafta açıkça belirttin (I am writing to propose…)",
+      "Karşı tarafın kazancını en az bir somut gerekçeyle açıkladın",
+      "Olası bir itirazı öngörüp yanıtladın (I understand that…, For this reason…)",
+      "Resmî bir kapanış kullandın (I would be happy to…, Best regards)"
+    ],
+    "focus": [
+      "preposition",
+      "article",
+      "tense"
+    ],
+    "rubric": "Can-do: makes a proposal and handles objections in writing, in a formal ~150-word proposal email that answers an objection. Task success means a formal email of about 150 words with a subject line and greeting, a clear proposal of a three-month pick-up point pilot in the first paragraph, concrete benefits for both sides, an anticipated objection (such as space or lost parcels) answered with a specific solution, and a polite formal closing. Expect a consistently formal register and B2 structures: second and first conditionals (If customers could…, If the pilot does not work…), would for proposals, passives (could be tracked) and correct prepositions in set phrases (at your convenience, discuss the details without \"about\")."
+  },
+  "s8u11l4w": {
+    "level": "B2",
+    "task": "Bir proje, anket ya da çalışmanın sonuçlarını yaklaşık 200 kelimelik bir rapor olarak yaz. Başlıklar kullan (Introduction, Findings, Recommendations…), bulguları rakamlarla ver ve en az iki öneri yaz.",
+    "minWords": 170,
+    "maxWords": 240,
+    "checklist": [
+      "Başlıklar kullandın (Introduction, Findings, Recommendations…)",
+      "En az üç rakam ya da yüzde verdin (fell by 21 per cent…)",
+      "En az iki numaralı öneri yazdın (We recommend…)",
+      "Bulguları bağlaçlarla bağladın (However, As a result, On the whole)",
+      "Resmî bir dil kullandın: kısaltma ve argo yok"
+    ],
+    "focus": [
+      "article",
+      "tense",
+      "preposition"
+    ],
+    "rubric": "Can-do: writes data and findings in the form of a report. A successful answer has a title and clear headings (introduction/aim, findings, recommendations, ideally a conclusion), supports each finding with at least one figure, and gives two or more concrete, numbered recommendations that follow from the data, in a neutral, formal register without contractions or slang. At B2 we expect accurate past simple and present perfect for results, change verbs with \"by\" (rose by, fell by), correct articles with defined nouns (the aim, the results), linking such as however, as a result and on the whole, and some hedging (the evidence suggests, may be different)."
+  },
+  "s8u12l4w": {
+    "level": "B2",
+    "task": "Dinlediğin podcast tartışmasını yaklaşık 150 kelimeyle özetle: konuyu ve konuşmacıları tanıt, iki konuşmacının görüşünü ve gerekçelerini ayrı paragraflarda aktar, anlaştıkları noktayı belirt. Kendi görüşünü katma.",
+    "minWords": 120,
+    "maxWords": 180,
+    "checklist": [
+      "Girişte tartışmanın konusunu ve konuşmacıları tanıttın",
+      "Her konuşmacıya ayrı bir paragraf ayırdın",
+      "En az üç aktarma fiili kullandın (argued, claimed, pointed out…)",
+      "Karşıtlık bağlacı kullandın (on the other hand, whereas, however)",
+      "Kendi görüşünü katmadan tarafsız yazdın"
+    ],
+    "focus": [
+      "tense",
+      "article"
+    ],
+    "rubric": "Can-do: follows a fast, natural discussion and distinguishes the speakers' stances. A successful summary introduces the topic and both speakers, gives each speaker's main position with at least one supporting reason in a separate paragraph, and states where they agree or differ, in a neutral register without the writer's own opinion. At B2 we expect reporting verbs (argued, claimed, pointed out, stressed) with that-clauses and appropriate tense choice, third-person -s and agree as a verb (not \"is agree\"), correct articles, and contrast linkers such as on the other hand, whereas and while."
+  },
+  "s8u13l4w": {
+    "level": "B2",
+    "task": "Bir iş ilanına yaklaşık 200 kelimelik bir ön yazı (cover letter) yaz: hangi pozisyona başvurduğunu, deneyimini, gurur duyduğun bir başarıyı ve bu işi neden istediğini anlat. Resmî bir açılış ve kapanış kullan.",
+    "minWords": 170,
+    "maxWords": 240,
+    "checklist": [
+      "Hangi pozisyona başvurduğunu ilk paragrafta söyledin",
+      "Deneyimini süreyle birlikte verdin (I have worked… for…)",
+      "Bir başarını rakam ya da sonuçla anlattın",
+      "En az bir vurgulu yapı kullandın (What I am most proud of is…, It is… that…)",
+      "Resmî açılış ve kapanış kullandın (Dear Mr…, Yours sincerely)"
+    ],
+    "focus": [
+      "tense",
+      "article",
+      "word_order"
+    ],
+    "rubric": "Can-do: presents themselves in detail and flexibly in a job interview, here through a written cover letter. A successful letter names the position applied for, describes relevant experience with its duration, gives at least one concrete achievement with a figure or result, explains why the candidate wants this particular role, and uses a formal opening and closing (Dear Mr/Ms..., Yours sincerely) in short, focused paragraphs without contractions. At B2 we expect present perfect (simple and continuous) with for/since, correct articles before jobs and roles (an operations manager), prepositions such as responsible for and interested in, and at least one emphatic or cleft structure (What I am most proud of is..., It is... that...)."
+  }
+}

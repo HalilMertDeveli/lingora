@@ -97,16 +97,39 @@ void main() {
       expect(course.sections.map((s) => s.title), isNot(contains(contains('örnek'))));
     });
 
-    test('S1–S4 end with three skill units and a section skills test; the locks stay put', () async {
+    test('S1–S8 end with three skill units and a section skills test; the locks stay put', () async {
       final course = await loadCourse(rootBundle, 'tr_en');
-      for (final s in course.sections.take(4)) {
+      for (final s in course.sections.take(8)) {
+        // S8 has 10 units of its own, the others 12.
+        final own = s.index == 8 ? 10 : 12;
         final skill = s.units.skip(s.units.length - 3).toList();
-        expect(skill.map((u) => u.id), ['${s.id}u13', '${s.id}u14', '${s.id}u15'], reason: s.id);
+        expect(skill.map((u) => u.id), [for (var i = 1; i <= 3; i++) '${s.id}u${own + i}'], reason: s.id);
         expect(skill.every((u) => u.hasGuide), isTrue, reason: s.id);
         final test = skill.last.nodes.firstWhere((n) => n.type == NodeType.test);
         expect((test.title, test.exercises.length), ('Bölüm ${s.index} beceri testi', 20));
         // The next section still opens with the last test of the section's own units.
-        expect(s.exam?.id, s.index == 1 ? 'u12t' : '${s.id}u12t');
+        expect(s.exam?.id, s.index == 1 ? 'u12t' : '${s.id}u${own}t');
+        // B1–B2: every skill unit writes, shadows and listens first; the
+        // section is completed with the skills test and the last writing task.
+        if (s.index >= 5) {
+          for (final u in skill) {
+            final ex = [for (final n in u.nodes) ...n.exercises];
+            expect(ex.where((e) => e.type == ExerciseType.write), hasLength(1), reason: u.id);
+            expect(
+              ex.where((e) => e.type == ExerciseType.shadow).length,
+              greaterThanOrEqualTo(4),
+              reason: u.id,
+            );
+            expect(u.nodes.firstWhere((n) => n.type == NodeType.story).listenFirst, isTrue, reason: u.id);
+          }
+          final writing = skill.last.nodes.firstWhere(
+            (n) => n.exercises.any((e) => e.type == ExerciseType.write),
+          );
+          expect(sectionCompleted(s, _done([test.id])), isFalse, reason: s.id);
+          expect(sectionCompleted(s, _done([test.id, writing.id])), isTrue, reason: s.id);
+        } else {
+          expect(sectionCompleted(s, _done([test.id])), isTrue, reason: s.id);
+        }
       }
     });
 

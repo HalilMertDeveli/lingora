@@ -1,0 +1,2585 @@
+{
+  "extends": "s6",
+  "units": [
+    {
+      "id": "s6u13",
+      "title": "Film ve kitap yorumu",
+      "description": "Bir film ya da kitap hakkında gerekçeli yorumları okumak, dinlemek ve yazmak",
+      "color": "0xFF6C4CF1",
+      "theme": "sanat",
+      "guide": "## Bu ünitede yapabileceklerin\n- Bir film ya da kitap hakkındaki görüşünü gerekçeleriyle yazabilirsin.\n- Aynı eser hakkındaki iki yorumu karşılaştırıp yazarların tutumunu ayırt edebilirsin.\n- Bir kitap kulübü sohbetinde kimin neyi beğenip neyi beğenmediğini anlayabilirsin.\n- Bir filmi bir dakikada anlatıp tavsiye edebilirsin.\n\n## Strateji\n- Yorum okurken önce puana ve son cümleye bak: yazarın genel tutumu çoğu zaman oradadır.\n- **However, although, despite** gördüğünde dur: görüş tam orada döner.\n- Gölgeleme (shadow) yaparken cümleyi bir kez dinle, sonra konuşmacıyla aynı anda, aynı vurguyla söyle. *I'd*, *kind of* gibi zayıf biçimleri yutmaya çalış.\n- Hikâyeyi önce metni görmeden dinle. Soruları cevapla, sonra metni açıp kaçırdığın yerleri bul.\n- Yorum yazarken üç paragraf kullan: özet, görüş ve gerekçe, puan ve tavsiye.\n\n## Model metin\n> Last month I read The Blue Door, a novel by a young writer from Sinop. It tells the story of a girl whose father has kept a lighthouse on a small island for thirty years. After her mother dies, she finds a box of letters that her mother had hidden. These letters explain why her father never left the island.\n>\n> In my opinion, the best thing about the book is the writing. The sea is described so well that you can almost hear it. However, the first hundred pages are quite slow, and I nearly gave up. The ending, which is open, may also disappoint some readers. Personally, I liked it because it lets you decide for yourself.\n>\n> Overall, I would give The Blue Door four stars. Although it starts slowly, it is a moving story about family and secrets. I would recommend it to anyone who enjoys quiet, thoughtful books.\n\nYapı: 1. paragraf eseri tanıtır ve konuyu özetler (past perfect: *had hidden*). 2. paragraf bir artı ve bir eksiyi gerekçesiyle verir (*so … that*, *however*, *which*). 3. paragraf puan verir ve kime uygun olduğunu söyler (*although*, *who*).\n\n## Türklerin sık hatası\n- ❌ Despite of the slow start, I liked it. ✅ **Despite** the slow start, I liked it. / **Although** it starts slowly, I liked it. (despite + isim, although + cümle)\n- ❌ It tells the story of girl who her father keeps a lighthouse. ✅ It tells the story of **a** girl **whose** father keeps a lighthouse. (artikel ve whose; zamiri tekrar etme)",
+      "nodes": [
+        {
+          "id": "s6u13l1",
+          "type": "lesson",
+          "title": "Dinleme: Film sohbeti",
+          "description": "Bir film ve kitap sohbetinde görüşleri ve gerekçeleri yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I'd seen the trailer twice, so I knew what kind of film it was.",
+              "answers": [
+                "I'd seen the trailer twice, so I knew what kind of film it was.",
+                "I had seen the trailer twice, so I knew what kind of film it was."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Do you want to come to the cinema with us on Friday night?",
+              "answers": [
+                "Do you want to come to the cinema with us on Friday night?"
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "In my opinion, the book is much darker than the film.",
+              "translation": "Bence kitap filmden çok daha karanlık.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "It's a book that I've read three times, and I still love it.",
+              "answers": [
+                "It's a book that I've read three times, and I still love it.",
+                "It is a book that I have read three times, and I still love it.",
+                "It's a book that I have read three times, and I still love it.",
+                "It is a book that I've read three times, and I still love it.",
+                "It's a book that I've read 3 times, and I still love it."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "It's not the kind ___ film I usually watch, but I enjoyed it.",
+              "translation": "Genelde izlediğim türden bir film değil ama beğendim.",
+              "answer": "of",
+              "choices": [
+                "of",
+                "to",
+                "for"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The acting was so good that I didn't notice the film was three hours long.",
+              "answers": [
+                "The acting was so good that I didn't notice the film was three hours long.",
+                "The acting was so good that I did not notice the film was three hours long.",
+                "The acting was so good that I didn't notice the film was 3 hours long."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "What I liked most was the music, which was written by a young composer.",
+              "translation": "En çok sevdiğim şey, genç bir bestecinin yazdığı müzikti.",
+              "rate": 0.85
+            },
+            {
+              "type": "fillBlank",
+              "text": "The story is based ___ a true event from the 1970s.",
+              "translation": "Hikâye 1970'lerden gerçek bir olaya dayanıyor.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "in",
+                "from"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "olay örgüsü",
+                  "plot"
+                ],
+                [
+                  "oyunculuk",
+                  "acting"
+                ],
+                [
+                  "fragman",
+                  "trailer"
+                ],
+                [
+                  "son, final",
+                  "ending"
+                ],
+                [
+                  "başyapıt",
+                  "masterpiece"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u13l2",
+          "type": "lesson",
+          "title": "Okuma: İki eleştirmen, bir film",
+          "description": "Son Ağ hakkındaki iki yorumu karşılaştır",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Two views on Son Ağ (The Last Net)\n\nMia, City Weekly: three stars\nSon Ağ tells the story of Yusuf, an old fisherman who hasn't spoken to his son for forty years. The film looks wonderful. The Black Sea, which is almost a character itself, has never been filmed so beautifully. However, the plot moves so slowly that I checked my watch twice. My biggest problem is the ending. After four decades of silence, father and son make up in a single scene. Although the actors do their best, I simply didn't believe it. Despite its beauty, this is a film that I admired more than I enjoyed.\n\nCan Aydın, film blogger: five stars\nI had read several cautious reviews before I went, so I wasn't expecting much. I was wrong. Son Ağ is the most moving Turkish film I've seen this year. Yes, it's slow, but the slowness is the point: we feel the weight of every year that Yusuf has lost. Mehmet Arı, who plays Yusuf, hardly speaks, yet his face tells us everything. Some critics say the ending is too sudden. I disagree. The silence had lasted forty years because both men were proud, and pride can disappear in a moment. If you're looking for action, choose another film. If you want a story that stays with you, don't miss this one.",
+              "question": "Mia filmin en güçlü yanı olarak neyi görüyor?",
+              "options": [
+                "The way it shows the Black Sea",
+                "The ending",
+                "The fast plot",
+                "The music"
+              ],
+              "answer": 0,
+              "explanation": "\"The way it shows the Black Sea\" doğru: Mia \"The Black Sea … has never been filmed so beautifully\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Two views on Son Ağ (The Last Net)\n\nMia, City Weekly: three stars\nSon Ağ tells the story of Yusuf, an old fisherman who hasn't spoken to his son for forty years. The film looks wonderful. The Black Sea, which is almost a character itself, has never been filmed so beautifully. However, the plot moves so slowly that I checked my watch twice. My biggest problem is the ending. After four decades of silence, father and son make up in a single scene. Although the actors do their best, I simply didn't believe it. Despite its beauty, this is a film that I admired more than I enjoyed.\n\nCan Aydın, film blogger: five stars\nI had read several cautious reviews before I went, so I wasn't expecting much. I was wrong. Son Ağ is the most moving Turkish film I've seen this year. Yes, it's slow, but the slowness is the point: we feel the weight of every year that Yusuf has lost. Mehmet Arı, who plays Yusuf, hardly speaks, yet his face tells us everything. Some critics say the ending is too sudden. I disagree. The silence had lasted forty years because both men were proud, and pride can disappear in a moment. If you're looking for action, choose another film. If you want a story that stays with you, don't miss this one.",
+              "question": "Mia'nın filme genel tutumu nedir?",
+              "options": [
+                "She hated every part of it",
+                "She respected it but didn't really enjoy it",
+                "She thinks it is the best film of the year",
+                "She hasn't decided yet"
+              ],
+              "answer": 1,
+              "explanation": "\"She respected it but didn't really enjoy it\" doğru: Mia \"a film that I admired more than I enjoyed\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Two views on Son Ağ (The Last Net)\n\nMia, City Weekly: three stars\nSon Ağ tells the story of Yusuf, an old fisherman who hasn't spoken to his son for forty years. The film looks wonderful. The Black Sea, which is almost a character itself, has never been filmed so beautifully. However, the plot moves so slowly that I checked my watch twice. My biggest problem is the ending. After four decades of silence, father and son make up in a single scene. Although the actors do their best, I simply didn't believe it. Despite its beauty, this is a film that I admired more than I enjoyed.\n\nCan Aydın, film blogger: five stars\nI had read several cautious reviews before I went, so I wasn't expecting much. I was wrong. Son Ağ is the most moving Turkish film I've seen this year. Yes, it's slow, but the slowness is the point: we feel the weight of every year that Yusuf has lost. Mehmet Arı, who plays Yusuf, hardly speaks, yet his face tells us everything. Some critics say the ending is too sudden. I disagree. The silence had lasted forty years because both men were proud, and pride can disappear in a moment. If you're looking for action, choose another film. If you want a story that stays with you, don't miss this one.",
+              "question": "Can sinemaya gitmeden önce ne bekliyordu?",
+              "options": [
+                "An action film",
+                "A comedy",
+                "Not very much",
+                "A masterpiece"
+              ],
+              "answer": 2,
+              "explanation": "\"Not very much\" doğru: Can \"I wasn't expecting much\" diyor, çünkü temkinli yorumlar okumuştu."
+            },
+            {
+              "type": "choice",
+              "passage": "Two views on Son Ağ (The Last Net)\n\nMia, City Weekly: three stars\nSon Ağ tells the story of Yusuf, an old fisherman who hasn't spoken to his son for forty years. The film looks wonderful. The Black Sea, which is almost a character itself, has never been filmed so beautifully. However, the plot moves so slowly that I checked my watch twice. My biggest problem is the ending. After four decades of silence, father and son make up in a single scene. Although the actors do their best, I simply didn't believe it. Despite its beauty, this is a film that I admired more than I enjoyed.\n\nCan Aydın, film blogger: five stars\nI had read several cautious reviews before I went, so I wasn't expecting much. I was wrong. Son Ağ is the most moving Turkish film I've seen this year. Yes, it's slow, but the slowness is the point: we feel the weight of every year that Yusuf has lost. Mehmet Arı, who plays Yusuf, hardly speaks, yet his face tells us everything. Some critics say the ending is too sudden. I disagree. The silence had lasted forty years because both men were proud, and pride can disappear in a moment. If you're looking for action, choose another film. If you want a story that stays with you, don't miss this one.",
+              "question": "Can'e göre filmin yavaş olması neden bir sorun değil?",
+              "options": [
+                "The actors talk a lot",
+                "The ending is quick",
+                "The film is short",
+                "It helps us feel the years Yusuf lost"
+              ],
+              "answer": 3,
+              "explanation": "\"It helps us feel the years Yusuf lost\" doğru: Can \"the slowness is the point: we feel the weight of every year that Yusuf has lost\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Two views on Son Ağ (The Last Net)\n\nMia, City Weekly: three stars\nSon Ağ tells the story of Yusuf, an old fisherman who hasn't spoken to his son for forty years. The film looks wonderful. The Black Sea, which is almost a character itself, has never been filmed so beautifully. However, the plot moves so slowly that I checked my watch twice. My biggest problem is the ending. After four decades of silence, father and son make up in a single scene. Although the actors do their best, I simply didn't believe it. Despite its beauty, this is a film that I admired more than I enjoyed.\n\nCan Aydın, film blogger: five stars\nI had read several cautious reviews before I went, so I wasn't expecting much. I was wrong. Son Ağ is the most moving Turkish film I've seen this year. Yes, it's slow, but the slowness is the point: we feel the weight of every year that Yusuf has lost. Mehmet Arı, who plays Yusuf, hardly speaks, yet his face tells us everything. Some critics say the ending is too sudden. I disagree. The silence had lasted forty years because both men were proud, and pride can disappear in a moment. If you're looking for action, choose another film. If you want a story that stays with you, don't miss this one.",
+              "question": "İki yazar en çok hangi konuda ayrılıyor?",
+              "options": [
+                "Whether the ending is believable",
+                "Where the story takes place",
+                "Who plays Yusuf",
+                "How long the silence lasted"
+              ],
+              "answer": 0,
+              "explanation": "\"Whether the ending is believable\" doğru: Mia sonu inandırıcı bulmuyor (\"I simply didn't believe it\"), Can ise \"I disagree\" diyerek sonu savunuyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Two views on Son Ağ (The Last Net)\n\nMia, City Weekly: three stars\nSon Ağ tells the story of Yusuf, an old fisherman who hasn't spoken to his son for forty years. The film looks wonderful. The Black Sea, which is almost a character itself, has never been filmed so beautifully. However, the plot moves so slowly that I checked my watch twice. My biggest problem is the ending. After four decades of silence, father and son make up in a single scene. Although the actors do their best, I simply didn't believe it. Despite its beauty, this is a film that I admired more than I enjoyed.\n\nCan Aydın, film blogger: five stars\nI had read several cautious reviews before I went, so I wasn't expecting much. I was wrong. Son Ağ is the most moving Turkish film I've seen this year. Yes, it's slow, but the slowness is the point: we feel the weight of every year that Yusuf has lost. Mehmet Arı, who plays Yusuf, hardly speaks, yet his face tells us everything. Some critics say the ending is too sudden. I disagree. The silence had lasted forty years because both men were proud, and pride can disappear in a moment. If you're looking for action, choose another film. If you want a story that stays with you, don't miss this one.",
+              "question": "Can'in son cümlesindeki \"this one\" neyi anlatıyor?",
+              "options": [
+                "Another film",
+                "Son Ağ",
+                "An action film",
+                "Mia's review"
+              ],
+              "answer": 1,
+              "explanation": "\"Son Ağ\" doğru: \"this one\" Can'in tavsiye ettiği filmi, yani Son Ağ'ı anlatıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "temkinli",
+                  "cautious"
+                ],
+                [
+                  "dokunaklı",
+                  "moving"
+                ],
+                [
+                  "gurur",
+                  "pride"
+                ],
+                [
+                  "ani",
+                  "sudden"
+                ],
+                [
+                  "hayran olmak",
+                  "admire"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Mia admired the film ___ than she enjoyed it.",
+              "translation": "Mia filme keyif aldığından çok hayran kaldı.",
+              "answer": "more",
+              "choices": [
+                "more",
+                "most",
+                "much"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "___ its beauty, the film didn't convince Mia.",
+              "translation": "Güzelliğine rağmen film Mia'yı ikna etmedi.",
+              "answer": "Despite",
+              "choices": [
+                "Despite",
+                "Although",
+                "However"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u13s",
+          "type": "story",
+          "title": "Kitap kulübü",
+          "description": "Elif'in kafesindeki ilk kitap kulübünde bir roman tartışılıyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Welcome to the first book club at the café! I'm so glad you've all come.",
+              "translation": "Kafedeki ilk kitap kulübüne hoş geldiniz! Hepinizin gelmesine çok sevindim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Thanks for the cake, Elif. So, who wants to start with The Blue Door?",
+              "translation": "Pasta için teşekkürler Elif. Peki, The Blue Door ile kim başlamak ister?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "I will. I'd never read a novel that was set in a lighthouse before.",
+              "translation": "Ben başlayayım. Daha önce bir deniz fenerinde geçen bir roman hiç okumamıştım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "The writer, who grew up in Sinop, describes the sea so well that I could almost smell it.",
+              "translation": "Sinop'ta büyüyen yazar denizi o kadar iyi anlatıyor ki neredeyse kokusunu alabildim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "I agree. But I found the first hundred pages quite boring, to be honest.",
+              "translation": "Katılıyorum. Ama açıkçası ilk yüz sayfayı epey sıkıcı buldum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Really? I thought the beginning was the best part. Nothing happens, but you feel the tension.",
+              "translation": "Gerçekten mi? Bence başlangıç en iyi kısımdı. Hiçbir şey olmuyor ama gerilimi hissediyorsun."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif kitabın başlangıcı hakkında ne düşünüyor?",
+              "choices": [
+                "Sıkıcı buluyor",
+                "En iyi bölüm olarak görüyor",
+                "Çok kısa buluyor"
+              ],
+              "answer": "Sıkıcı buluyor"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Maybe. I had almost given up when the letters appeared. After that, I couldn't put it down.",
+              "translation": "Olabilir. Mektuplar ortaya çıktığında neredeyse bırakmıştım. Ondan sonra elimden bırakamadım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "The letters were brilliant. The daughter finds them in a box that her mother had hidden.",
+              "translation": "Mektuplar harikaydı. Kız onları annesinin sakladığı bir kutuda buluyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kızın bulduğu mektuplar neredeydi?",
+              "choices": [
+                "Annesinin sakladığı bir kutuda",
+                "Deniz fenerinin kapısında",
+                "Babasının cebinde"
+              ],
+              "answer": "Annesinin sakladığı bir kutuda"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "And they change everything, don't they? Suddenly we understand why the father never left the island.",
+              "translation": "Ve her şeyi değiştiriyorlar, değil mi? Birden babanın adadan neden hiç ayrılmadığını anlıyoruz."
+            },
+            {
+              "kind": "question",
+              "prompt": "Sam'in \"And they change everything\" cümlesindeki \"they\" neyi anlatıyor?",
+              "choices": [
+                "Mektupları",
+                "Okurları",
+                "Deniz fenerlerini"
+              ],
+              "answer": "Mektupları"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "What did you think of the ending? I wish the writer had explained more.",
+              "translation": "Sonu hakkında ne düşündünüz? Keşke yazar daha fazla açıklasaydı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "I liked it. Although it's open, it gives readers the freedom to decide for themselves.",
+              "translation": "Ben beğendim. Açık uçlu olsa da okura kendi kararını verme özgürlüğü tanıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "I'm with Deniz. If everything is explained, a story is so easy to forget.",
+              "translation": "Deniz'e katılıyorum. Her şey açıklanırsa bir hikâyeyi unutmak çok kolay oluyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Fair enough. So, out of five stars, what would you give it?",
+              "translation": "Haklısınız. Peki, beş yıldız üzerinden kaç verirdiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Four. I'd take one star away because of the slow start.",
+              "translation": "Dört. Yavaş başlangıç yüzünden bir yıldız kırardım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz kitaba kaç yıldız veriyor?",
+              "choices": [
+                "Üç buçuk",
+                "Dört",
+                "Beş"
+              ],
+              "answer": "Dört"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Five for me. It's the kind of book you want to read again straight away.",
+              "translation": "Benden beş. Hemen yeniden okumak isteyeceğin türden bir kitap."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "I'll say three and a half. The writing is beautiful, but the plot didn't grab me until page one hundred.",
+              "translation": "Ben üç buçuk diyeceğim. Dili çok güzel ama olay örgüsü yüzüncü sayfaya kadar beni sarmadı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Then you have to read it again, Elif. It's always better the second time.",
+              "translation": "O zaman tekrar okumalısın Elif. İkinci seferde hep daha iyi oluyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Maybe after I open the second café! Right, next month it's my choice. Any ideas?",
+              "translation": "Belki ikinci kafeyi açtıktan sonra! Tamam, gelecek ay seçim benim. Fikri olan var mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Something shorter, please. I read this one on the ferry, and it took me three weeks.",
+              "translation": "Daha kısa bir şey lütfen. Bunu vapurda okudum ve üç haftamı aldı."
+            },
+            {
+              "kind": "question",
+              "prompt": "Bu konuşma en çok ne hakkında?",
+              "choices": [
+                "Bir romanın güçlü ve zayıf yanları",
+                "Elif'in yeni kafesi",
+                "Sinop'a bir gezi"
+              ],
+              "answer": "Bir romanın güçlü ve zayıf yanları"
+            }
+          ]
+        },
+        {
+          "id": "s6u13l3",
+          "type": "lesson",
+          "title": "Konuşma: Bir filmi tavsiye et",
+          "description": "Bir dakikada bir filmi anlat, görüşünü söyle ve tavsiye et",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "I'd definitely recommend it, although it's a bit too long.",
+              "translation": "Kesinlikle tavsiye ederim ama biraz fazla uzun.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "The ending surprised me so much that I sat in silence for a minute.",
+              "translation": "Sonu beni o kadar şaşırttı ki bir dakika sessizce oturdum.",
+              "rate": 0.85
+            },
+            {
+              "type": "speak",
+              "text": "Last weekend I watched a Turkish film called Son Ağ, which I really enjoyed.",
+              "translation": "Geçen hafta sonu Son Ağ adında bir Türk filmi izledim ve çok beğendim."
+            },
+            {
+              "type": "speak",
+              "text": "It's about an old fisherman who hasn't spoken to his son for forty years.",
+              "translation": "Kırk yıldır oğluyla konuşmayan yaşlı bir balıkçıyı anlatıyor."
+            },
+            {
+              "type": "speak",
+              "text": "The acting was brilliant, but the story moved quite slowly in the middle.",
+              "translation": "Oyunculuk harikaydı ama hikâye ortalarda epey yavaş ilerledi."
+            },
+            {
+              "type": "speak",
+              "text": "Overall, I'd give it four stars, and I think you'd love it too.",
+              "translation": "Genel olarak dört yıldız veririm ve bence sen de çok seversin."
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın soruyor: \"Was the book any good?\" Kitabı beğendin ama sonunu sevmedin. En uygun cevap hangisi?",
+              "answer": "Yes, although the ending was weak.",
+              "choices": [
+                {
+                  "text": "Yes, although the ending was weak.",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "Yes, despite the ending was weak.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "Yes, however the ending weak.",
+                  "emoji": "😐"
+                },
+                {
+                  "text": "Good book. Bad finish. No.",
+                  "emoji": "🙅"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın filmi çok sevmiş, sen sevmedin. Kibarca katılmadığını söylemek için en uygun cevap hangisi?",
+              "answer": "I see why, but it wasn't for me.",
+              "choices": [
+                {
+                  "text": "I see why, but it wasn't for me.",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "No, you're totally wrong.",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "That film was rubbish, sorry.",
+                  "emoji": "🗑️"
+                },
+                {
+                  "text": "I don't care about films.",
+                  "emoji": "🙄"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Açıkçası kitabı filmden daha çok sevdim.",
+              "lang": "tr",
+              "answers": [
+                "To be honest, I liked the book more than the film",
+                "Honestly, I liked the book more than the film"
+              ],
+              "tokens": [
+                "To",
+                "be",
+                "honest",
+                "I",
+                "liked",
+                "the",
+                "book",
+                "more",
+                "than",
+                "the",
+                "film",
+                "most",
+                "a",
+                "like"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u13l4",
+          "type": "lesson",
+          "title": "Yazma: 150 kelimelik yorum",
+          "description": "Bir kitap ya da film için özet, görüş ve tavsiyeden oluşan bir yorum yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Bence kitabın en iyi yanı anlatımı.",
+              "lang": "tr",
+              "answers": [
+                "In my opinion, the best thing about the book is the writing",
+                "I think the best thing about the book is the writing",
+                "In my opinion, the writing is the best thing about the book"
+              ],
+              "tokens": [
+                "In",
+                "my",
+                "opinion",
+                "the",
+                "best",
+                "thing",
+                "about",
+                "the",
+                "book",
+                "is",
+                "the",
+                "writing",
+                "a",
+                "most",
+                "of"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Annesinin sakladığı bir kutu mektup buluyor.",
+              "lang": "tr",
+              "answers": [
+                "She finds a box of letters that her mother had hidden",
+                "She finds a box of letters which her mother had hidden",
+                "She finds a box of letters her mother had hidden"
+              ],
+              "tokens": [
+                "She",
+                "finds",
+                "a",
+                "box",
+                "of",
+                "letters",
+                "that",
+                "her",
+                "mother",
+                "had",
+                "hidden",
+                "the",
+                "has",
+                "is"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Yavaş başlasa da aile ve sırlar üzerine dokunaklı bir hikâye.",
+              "lang": "tr",
+              "answers": [
+                "Although it starts slowly, it is a moving story about family and secrets",
+                "Although it starts slowly, it's a moving story about family and secrets",
+                "It is a moving story about family and secrets, although it starts slowly"
+              ],
+              "tokens": [
+                "Although",
+                "it",
+                "starts",
+                "slowly",
+                "it",
+                "is",
+                "a",
+                "moving",
+                "story",
+                "about",
+                "family",
+                "and",
+                "secrets",
+                "despite",
+                "the",
+                "of"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The acting is excellent. ___, the story is hard to follow.",
+              "translation": "Oyunculuk mükemmel. Ancak hikâyeyi takip etmek zor.",
+              "answer": "However",
+              "choices": [
+                "However",
+                "Although",
+                "Despite"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Yusuf works as ___ fisherman in a small town.",
+              "translation": "Yusuf küçük bir kasabada balıkçı olarak çalışıyor.",
+              "answer": "a",
+              "choices": [
+                "a",
+                "the",
+                "an"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "It's definitely worth ___ if you like crime novels.",
+              "translation": "Polisiye romanları seviyorsan kesinlikle okumaya değer.",
+              "answer": "reading",
+              "choices": [
+                "reading",
+                "to read",
+                "read"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir kitap yorumunda paragraflar en uygun hangi sırayla gelir?",
+              "answer": "Özet → Görüş → Tavsiye",
+              "choices": [
+                {
+                  "text": "Özet → Görüş → Tavsiye",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Tavsiye → Puan → Özet",
+                  "emoji": "🔀"
+                },
+                {
+                  "text": "Görüş → Tavsiye → Özet",
+                  "emoji": "↩️"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "Genel olarak",
+                  "Overall"
+                ],
+                [
+                  "Kişisel olarak",
+                  "Personally"
+                ],
+                [
+                  "…tavsiye ederim",
+                  "I would recommend…"
+                ],
+                [
+                  "…hikâyesini anlatıyor",
+                  "It tells the story of…"
+                ],
+                [
+                  "yavaş başlıyor",
+                  "It starts slowly"
+                ]
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Son okuduğun bir kitap ya da izlediğin bir film hakkında yaklaşık 150 kelimelik bir yorum yaz. Konuyu kısaca özetle, beğendiğin ve beğenmediğin birer şeyi gerekçesiyle söyle, sonunda puan verip kime tavsiye ettiğini yaz.",
+              "model": "Last month I read The Blue Door, a novel by a young writer from Sinop. It tells the story of a girl whose father has kept a lighthouse on a small island for thirty years. After her mother dies, she finds a box of letters that her mother had hidden. These letters explain why her father never left the island.\n\nIn my opinion, the best thing about the book is the writing. The sea is described so well that you can almost hear it. However, the first hundred pages are quite slow, and I nearly gave up. The ending, which is open, may also disappoint some readers. Personally, I liked it because it lets you decide for yourself.\n\nOverall, I would give The Blue Door four stars. Although it starts slowly, it is a moving story about family and secrets. I would recommend it to anyone who enjoys quiet, thoughtful books.",
+              "minWords": 120,
+              "maxWords": 180,
+              "checklist": [
+                "Konuyu iki üç cümlede özetledin",
+                "Beğendiğin bir şeyi ve beğenmediğin bir şeyi gerekçesiyle yazdın",
+                "En az iki karşıtlık bağlacı kullandın (however, although, despite)",
+                "En az bir ilgi cümlesi kurdun (who, which, that, whose)",
+                "Sonunda puan verip kime tavsiye ettiğini yazdın"
+              ],
+              "focus": [
+                "tense",
+                "article",
+                "word_order"
+              ],
+              "taskId": "s6u13l4w"
+            }
+          ]
+        },
+        {
+          "id": "s6u13t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s6u13c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s6u14",
+      "title": "Bence… çünkü…",
+      "description": "Forumda görüş bildirmek, gerekçe vermek ve karşı görüşe kibarca yanıt vermek",
+      "color": "0xFFF2994A",
+      "theme": "yazisma",
+      "guide": "## Bu ünitede yapabileceklerin\n- Bir forum zincirinde kimin hangi görüşü savunduğunu ve neden savunduğunu bulabilirsin.\n- Bir tartışmada görüşünü iki gerekçeyle söyleyebilirsin.\n- Karşı görüşü kabul edip kibarca yanıt verebilirsin (I see your point. However…).\n- Bir foruma 100 kelimelik düzenli bir yanıt yazabilirsin.\n\n## Strateji\n- Forum okurken her kullanıcının adının yanına tek kelimelik bir not al: lehte, aleyhte, ortada.\n- Fikir değişimini gösteren sözcükleri yakala: *I see both sides*, *fair enough*, *I suppose*, *I'm not convinced*.\n- Gölgeleme (shadow) ile kibar katılmama kalıplarını ezberle; tonunu da taklit et, çünkü kibarlık tonda da duyulur.\n- Hikâyeyi önce metinsiz dinle ve her konuşmacının fikrini tek cümleyle yaz. Sonra metni açıp kontrol et.\n- Konuşma turunu dört adımda kur: görüş, gerekçe, karşı görüş, cevap.\n\n## Model metin\n> Thanks for starting this thread, Elif. In my opinion, a weekend rule is a good idea, but a complete ban would be a mistake. First of all, many students and freelancers have nowhere quiet to work. A café that welcomes them will have loyal customers. Secondly, people who work on laptops usually come on weekdays, when cafés are quiet anyway.\n>\n> KeremCodes says that a ban sends the wrong message. I see his point. However, families also need a place where they can relax at weekends. If both groups have their own time, everyone wins. Why not try it for a month?\n\nYapı: 1. paragraf görüşü söyler ve iki gerekçe verir (*First of all*, *Secondly*). 2. paragraf karşı görüşü anar, kabul eder ve yanıtlar (*I see his point. However…*), sonra bir öneriyle biter.\n\n## Türklerin sık hatası\n- ❌ I am agree with you. ✅ I agree **with** you. (agree bir fiil; be gerekmez. Edat **with**, to değil.)\n- ❌ The cafés are important for the students. ✅ Cafés are important for students. (Genel anlamda konuşurken **the** kullanma.)",
+      "nodes": [
+        {
+          "id": "s6u14l1",
+          "type": "lesson",
+          "title": "Dinleme: Fikir ve gerekçe",
+          "description": "Bir tartışmada görüşleri, gerekçeleri ve itirazları duy",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I don't think it's fair, because students have nowhere else to work.",
+              "answers": [
+                "I don't think it's fair, because students have nowhere else to work.",
+                "I do not think it is fair, because students have nowhere else to work.",
+                "I don't think it is fair, because students have nowhere else to work.",
+                "I do not think it's fair, because students have nowhere else to work."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "I'm afraid I don't agree with you on this one.",
+              "translation": "Korkarım bu konuda sana katılmıyorum.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "What do you think about people working on laptops in cafés all day?",
+              "answers": [
+                "What do you think about people working on laptops in cafés all day?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I see your point, but a lot of them only buy one coffee.",
+              "answers": [
+                "I see your point, but a lot of them only buy one coffee.",
+                "I see your point, but a lot of them only buy 1 coffee."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I completely agree ___ you about the noise.",
+              "translation": "Gürültü konusunda sana tamamen katılıyorum.",
+              "answer": "with",
+              "choices": [
+                "with",
+                "to",
+                "on"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Could you tell me why you'd rather have a quiet café?",
+              "answers": [
+                "Could you tell me why you'd rather have a quiet café?",
+                "Could you tell me why you would rather have a quiet café?"
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "That's a fair point, but there's another side to the story.",
+              "translation": "Haklı bir nokta ama işin bir de öbür yüzü var.",
+              "rate": 0.9
+            },
+            {
+              "type": "fillBlank",
+              "text": "It depends ___ the time of day.",
+              "translation": "Günün saatine bağlı.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "from",
+                "of"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "katılıyorum",
+                  "I agree"
+                ],
+                [
+                  "katılmıyorum",
+                  "I disagree"
+                ],
+                [
+                  "haklı bir noktan var",
+                  "You've got a point"
+                ],
+                [
+                  "bana sorarsan",
+                  "If you ask me"
+                ],
+                [
+                  "öte yandan",
+                  "On the other hand"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u14l2",
+          "type": "lesson",
+          "title": "Okuma: Forum zinciri",
+          "description": "Kafede dizüstü bilgisayar tartışmasında kimin ne düşündüğünü bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Kadıköy Neighbours Forum > Food and drink\nLaptops in cafés: yes or no?\n\nElifCafe: I'm opening a second café in Moda soon, and I need your honest opinions. At weekends, should I ban laptops? Last Saturday, every table was taken by people who had been there since the morning, and families who came for breakfast had to leave.\n\nKeremCodes: Please don't! I'm a software engineer, and some of my best ideas came to me in cafés. Besides, people with laptops are regular customers. They come back every week.\n\nModaMum: Sorry, Kerem, but I can't agree. One coffee in four hours isn't being a regular, it's renting a desk. I'd love a café where I can actually talk to my friends without whispering.\n\nSamInIstanbul: I see both sides. As a teacher, I often mark homework in cafés, so I'd be sad if laptops disappeared completely. However, Elif has a point. What about a compromise? Laptops are welcome on weekdays, but at weekends the big tables are for groups.\n\nKeremCodes: That's fair enough, I suppose. Although I still think a ban sends the wrong message, a weekend rule sounds reasonable.\n\nModaMum: Sam's idea is good, but who will check it? The staff are already so busy that they can hardly take orders.\n\nElifCafe: Thanks, everyone! I've decided to try Sam's idea for a month. If it doesn't work, I'll think again. And Kerem, you're still welcome on Tuesdays!",
+              "question": "Elif geçen cumartesi hangi sorunu yaşadı?",
+              "options": [
+                "The café ran out of coffee",
+                "Some laptops were stolen",
+                "Families couldn't find a table",
+                "Students were too noisy"
+              ],
+              "answer": 2,
+              "explanation": "\"Families couldn't find a table\" doğru: Elif \"families who came for breakfast had to leave\" diyor, çünkü bütün masalar doluydu."
+            },
+            {
+              "type": "choice",
+              "passage": "Kadıköy Neighbours Forum > Food and drink\nLaptops in cafés: yes or no?\n\nElifCafe: I'm opening a second café in Moda soon, and I need your honest opinions. At weekends, should I ban laptops? Last Saturday, every table was taken by people who had been there since the morning, and families who came for breakfast had to leave.\n\nKeremCodes: Please don't! I'm a software engineer, and some of my best ideas came to me in cafés. Besides, people with laptops are regular customers. They come back every week.\n\nModaMum: Sorry, Kerem, but I can't agree. One coffee in four hours isn't being a regular, it's renting a desk. I'd love a café where I can actually talk to my friends without whispering.\n\nSamInIstanbul: I see both sides. As a teacher, I often mark homework in cafés, so I'd be sad if laptops disappeared completely. However, Elif has a point. What about a compromise? Laptops are welcome on weekdays, but at weekends the big tables are for groups.\n\nKeremCodes: That's fair enough, I suppose. Although I still think a ban sends the wrong message, a weekend rule sounds reasonable.\n\nModaMum: Sam's idea is good, but who will check it? The staff are already so busy that they can hardly take orders.\n\nElifCafe: Thanks, everyone! I've decided to try Sam's idea for a month. If it doesn't work, I'll think again. And Kerem, you're still welcome on Tuesdays!",
+              "question": "ModaMum dizüstü bilgisayarla saatlerce oturanlar hakkında ne düşünüyor?",
+              "options": [
+                "They are the café's best customers",
+                "They should come only on Tuesdays",
+                "They have great ideas",
+                "They use the café like an office"
+              ],
+              "answer": 3,
+              "explanation": "\"They use the café like an office\" doğru: ModaMum \"it's renting a desk\" diyor; yani kafeyi ofis gibi kullanıyorlar."
+            },
+            {
+              "type": "choice",
+              "passage": "Kadıköy Neighbours Forum > Food and drink\nLaptops in cafés: yes or no?\n\nElifCafe: I'm opening a second café in Moda soon, and I need your honest opinions. At weekends, should I ban laptops? Last Saturday, every table was taken by people who had been there since the morning, and families who came for breakfast had to leave.\n\nKeremCodes: Please don't! I'm a software engineer, and some of my best ideas came to me in cafés. Besides, people with laptops are regular customers. They come back every week.\n\nModaMum: Sorry, Kerem, but I can't agree. One coffee in four hours isn't being a regular, it's renting a desk. I'd love a café where I can actually talk to my friends without whispering.\n\nSamInIstanbul: I see both sides. As a teacher, I often mark homework in cafés, so I'd be sad if laptops disappeared completely. However, Elif has a point. What about a compromise? Laptops are welcome on weekdays, but at weekends the big tables are for groups.\n\nKeremCodes: That's fair enough, I suppose. Although I still think a ban sends the wrong message, a weekend rule sounds reasonable.\n\nModaMum: Sam's idea is good, but who will check it? The staff are already so busy that they can hardly take orders.\n\nElifCafe: Thanks, everyone! I've decided to try Sam's idea for a month. If it doesn't work, I'll think again. And Kerem, you're still welcome on Tuesdays!",
+              "question": "Sam'in önerisi nedir?",
+              "options": [
+                "Laptops on weekdays, groups at weekends",
+                "A complete ban on laptops",
+                "A separate room for workers",
+                "Higher prices for laptop users"
+              ],
+              "answer": 0,
+              "explanation": "\"Laptops on weekdays, groups at weekends\" doğru: Sam \"Laptops are welcome on weekdays, but at weekends the big tables are for groups\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Kadıköy Neighbours Forum > Food and drink\nLaptops in cafés: yes or no?\n\nElifCafe: I'm opening a second café in Moda soon, and I need your honest opinions. At weekends, should I ban laptops? Last Saturday, every table was taken by people who had been there since the morning, and families who came for breakfast had to leave.\n\nKeremCodes: Please don't! I'm a software engineer, and some of my best ideas came to me in cafés. Besides, people with laptops are regular customers. They come back every week.\n\nModaMum: Sorry, Kerem, but I can't agree. One coffee in four hours isn't being a regular, it's renting a desk. I'd love a café where I can actually talk to my friends without whispering.\n\nSamInIstanbul: I see both sides. As a teacher, I often mark homework in cafés, so I'd be sad if laptops disappeared completely. However, Elif has a point. What about a compromise? Laptops are welcome on weekdays, but at weekends the big tables are for groups.\n\nKeremCodes: That's fair enough, I suppose. Although I still think a ban sends the wrong message, a weekend rule sounds reasonable.\n\nModaMum: Sam's idea is good, but who will check it? The staff are already so busy that they can hardly take orders.\n\nElifCafe: Thanks, everyone! I've decided to try Sam's idea for a month. If it doesn't work, I'll think again. And Kerem, you're still welcome on Tuesdays!",
+              "question": "Kerem'in ikinci mesajından ne anlıyoruz?",
+              "options": [
+                "He has stopped going to cafés",
+                "He accepts the compromise, but not happily",
+                "He agrees with ModaMum completely",
+                "He wants to open his own café"
+              ],
+              "answer": 1,
+              "explanation": "\"He accepts the compromise, but not happily\" doğru: Kerem \"That's fair enough, I suppose\" diyor ama \"I still think a ban sends the wrong message\" diye ekliyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Kadıköy Neighbours Forum > Food and drink\nLaptops in cafés: yes or no?\n\nElifCafe: I'm opening a second café in Moda soon, and I need your honest opinions. At weekends, should I ban laptops? Last Saturday, every table was taken by people who had been there since the morning, and families who came for breakfast had to leave.\n\nKeremCodes: Please don't! I'm a software engineer, and some of my best ideas came to me in cafés. Besides, people with laptops are regular customers. They come back every week.\n\nModaMum: Sorry, Kerem, but I can't agree. One coffee in four hours isn't being a regular, it's renting a desk. I'd love a café where I can actually talk to my friends without whispering.\n\nSamInIstanbul: I see both sides. As a teacher, I often mark homework in cafés, so I'd be sad if laptops disappeared completely. However, Elif has a point. What about a compromise? Laptops are welcome on weekdays, but at weekends the big tables are for groups.\n\nKeremCodes: That's fair enough, I suppose. Although I still think a ban sends the wrong message, a weekend rule sounds reasonable.\n\nModaMum: Sam's idea is good, but who will check it? The staff are already so busy that they can hardly take orders.\n\nElifCafe: Thanks, everyone! I've decided to try Sam's idea for a month. If it doesn't work, I'll think again. And Kerem, you're still welcome on Tuesdays!",
+              "question": "ModaMum, Sam'in fikrinde hangi sorunu görüyor?",
+              "options": [
+                "It is too expensive",
+                "Families won't like it",
+                "Busy staff may not be able to check it",
+                "Kerem will be angry"
+              ],
+              "answer": 2,
+              "explanation": "\"Busy staff may not be able to check it\" doğru: ModaMum \"who will check it? The staff are already so busy\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Kadıköy Neighbours Forum > Food and drink\nLaptops in cafés: yes or no?\n\nElifCafe: I'm opening a second café in Moda soon, and I need your honest opinions. At weekends, should I ban laptops? Last Saturday, every table was taken by people who had been there since the morning, and families who came for breakfast had to leave.\n\nKeremCodes: Please don't! I'm a software engineer, and some of my best ideas came to me in cafés. Besides, people with laptops are regular customers. They come back every week.\n\nModaMum: Sorry, Kerem, but I can't agree. One coffee in four hours isn't being a regular, it's renting a desk. I'd love a café where I can actually talk to my friends without whispering.\n\nSamInIstanbul: I see both sides. As a teacher, I often mark homework in cafés, so I'd be sad if laptops disappeared completely. However, Elif has a point. What about a compromise? Laptops are welcome on weekdays, but at weekends the big tables are for groups.\n\nKeremCodes: That's fair enough, I suppose. Although I still think a ban sends the wrong message, a weekend rule sounds reasonable.\n\nModaMum: Sam's idea is good, but who will check it? The staff are already so busy that they can hardly take orders.\n\nElifCafe: Thanks, everyone! I've decided to try Sam's idea for a month. If it doesn't work, I'll think again. And Kerem, you're still welcome on Tuesdays!",
+              "question": "Elif'in son mesajındaki \"If it doesn't work\" ifadesinde \"it\" neyi anlatıyor?",
+              "options": [
+                "Her new café",
+                "The coffee machine",
+                "The forum",
+                "Sam's idea"
+              ],
+              "answer": 3,
+              "explanation": "\"Sam's idea\" doğru: Elif bir önceki cümlede \"I've decided to try Sam's idea for a month\" diyor; \"it\" bu fikir."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "yasaklamak",
+                  "ban"
+                ],
+                [
+                  "uzlaşma",
+                  "compromise"
+                ],
+                [
+                  "makul",
+                  "reasonable"
+                ],
+                [
+                  "düzenli müşteri",
+                  "regular customer"
+                ],
+                [
+                  "fısıldamak",
+                  "whisper"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "It was ___ a busy morning that nobody could find a seat.",
+              "translation": "O kadar yoğun bir sabahtı ki kimse oturacak yer bulamadı.",
+              "answer": "such",
+              "choices": [
+                "such",
+                "so",
+                "very"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Forumda birine kibarca katılmadığını söylemek istiyorsun. Hangisi en uygun?",
+              "answer": "Sorry, but I can't agree.",
+              "choices": [
+                {
+                  "text": "Sorry, but I can't agree.",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "You're talking nonsense.",
+                  "emoji": "😤"
+                },
+                {
+                  "text": "Wrong. Read it again.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "Who asked you?",
+                  "emoji": "🙄"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u14s",
+          "type": "story",
+          "title": "Ofise dönüş",
+          "description": "Mia, evden çalışma üzerine yazdığı makale için Deniz ve Kerem'le konuşuyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Deniz, I'm writing an article about working from home. Can I ask you a few questions?",
+              "translation": "Deniz, evden çalışma üzerine bir makale yazıyorum. Sana birkaç soru sorabilir miyim?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Sure. Actually, it's a hot topic at work. Our boss wants everyone back in the office.",
+              "translation": "Tabii. Aslında bu, iş yerinde çok tartışılan bir konu. Patronumuz herkesi ofise geri istiyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Five days a week? How do people feel about that?",
+              "translation": "Haftada beş gün mü? İnsanlar bu konuda ne hissediyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Most of the team are against it. Before the start-up grew, we had always worked from home on Fridays.",
+              "translation": "Ekibin çoğu buna karşı. Şirket büyümeden önce cumaları hep evden çalışırdık."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "I think your boss is right, to be honest. I miss talking to people face to face.",
+              "translation": "Açıkçası bence patronun haklı. İnsanlarla yüz yüze konuşmayı özlüyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Really, Kerem? You're the one who told me you'd never go back to an office!",
+              "translation": "Gerçekten mi Kerem? Bir daha asla ofise dönmeyeceğini bana söyleyen sendin!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "I know, but I've changed my mind. At home, I sometimes don't speak to anyone all day.",
+              "translation": "Biliyorum ama fikrimi değiştirdim. Evde bazen bütün gün kimseyle konuşmuyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem'in evden çalışma hakkındaki görüşü nasıl değişti?",
+              "choices": [
+                "Artık ofisi özlüyor",
+                "Artık hiç ofise gitmek istemiyor",
+                "Hiç değişmedi"
+              ],
+              "answer": "Artık ofisi özlüyor"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "That's a fair point. Loneliness is a real problem for people who work alone.",
+              "translation": "Haklı bir nokta. Yalnızlık, tek başına çalışan insanlar için gerçek bir sorun."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Maybe, but our office is an hour and a half from my flat. That's three hours on the road every day.",
+              "translation": "Olabilir ama ofisimiz evime bir buçuk saat uzaklıkta. Bu her gün üç saat yol demek."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz'in evi ile ofis arası tek yön ne kadar sürüyor?",
+              "choices": [
+                "Yarım saat",
+                "Bir buçuk saat",
+                "Üç saat"
+              ],
+              "answer": "Bir buçuk saat"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "So what would you suggest?",
+              "translation": "Peki sen ne önerirsin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Three days in the office and two at home. Meetings on office days, quiet work at home.",
+              "translation": "Üç gün ofiste, iki gün evde. Toplantılar ofis günlerinde, sessiz işler evde."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz ekip için ne öneriyor?",
+              "choices": [
+                "Haftada üç gün ofis, iki gün ev",
+                "Her gün evden çalışma",
+                "Haftada beş gün ofis"
+              ],
+              "answer": "Haftada üç gün ofis, iki gün ev"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "That sounds sensible. Although I like the office, I wouldn't want to commute that far.",
+              "translation": "Mantıklı görünüyor. Ofisi sevsem de o kadar uzağa gidip gelmek istemezdim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Has anyone suggested this to your boss?",
+              "translation": "Bunu patronuna öneren oldu mu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Not yet. Everyone complains in the kitchen, but nobody says anything in meetings.",
+              "translation": "Henüz değil. Herkes mutfakta şikâyet ediyor ama toplantılarda kimse bir şey söylemiyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Then you should write it down. A clear proposal with reasons is hard to ignore.",
+              "translation": "O zaman bunu yazıya dökmelisin. Gerekçeli, net bir öneriyi görmezden gelmek zordur."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "And include numbers. How many hours does the team spend commuting each week?",
+              "translation": "Bir de rakam ekle. Ekip her hafta yolda kaç saat geçiriyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Good idea. I'll collect them on Monday and send the proposal by Friday.",
+              "translation": "İyi fikir. Pazartesi bunları toplarım ve öneriyi cumaya kadar gönderirim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Perfect. Can I quote you in my article? I won't use your real name.",
+              "translation": "Harika. Makalemde senden alıntı yapabilir miyim? Gerçek adını kullanmayacağım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Only if you send it to me before it's published!",
+              "translation": "Ancak yayımlanmadan önce bana gönderirsen!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz'in son cümlesindeki \"it\" neyi anlatıyor?",
+              "choices": [
+                "Mia'nın makalesini",
+                "Deniz'in önerisini",
+                "Ofis mutfağını"
+              ],
+              "answer": "Mia'nın makalesini"
+            },
+            {
+              "kind": "question",
+              "prompt": "Bu konuşmanın ana konusu ne?",
+              "choices": [
+                "Ofise dönüş ve evden çalışma",
+                "Mia'nın yeni işi",
+                "Kerem'in yazılım projesi"
+              ],
+              "answer": "Ofise dönüş ve evden çalışma"
+            }
+          ]
+        },
+        {
+          "id": "s6u14l3",
+          "type": "lesson",
+          "title": "Konuşma: Görüş turu",
+          "description": "Evden çalışma hakkında görüşünü gerekçesiyle söyle ve karşı görüşe yanıt ver",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "Some people say offices are boring, but I don't think that's true.",
+              "translation": "Bazıları ofislerin sıkıcı olduğunu söylüyor ama bence bu doğru değil.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "Although I understand your point, I still see it differently.",
+              "translation": "Ne demek istediğini anlasam da hâlâ farklı düşünüyorum.",
+              "rate": 0.9
+            },
+            {
+              "type": "speak",
+              "text": "In my view, people should be able to work from home two days a week.",
+              "translation": "Bence insanlar haftada iki gün evden çalışabilmeli."
+            },
+            {
+              "type": "speak",
+              "text": "The main reason is that long commutes make people tired and stressed.",
+              "translation": "Asıl neden, uzun yolculukların insanları yorgun ve stresli yapması."
+            },
+            {
+              "type": "speak",
+              "text": "Some people argue that teams need to meet every day, and I understand that.",
+              "translation": "Bazıları ekiplerin her gün bir araya gelmesi gerektiğini savunuyor ve bunu anlıyorum."
+            },
+            {
+              "type": "speak",
+              "text": "However, a few good meetings a week are much better than five tiring days.",
+              "translation": "Ancak haftada birkaç iyi toplantı, beş yorucu günden çok daha iyidir."
+            },
+            {
+              "type": "select",
+              "prompt": "Toplantıda biri fikrine itiraz etti. Saygılı bir şekilde cevap vermek için hangisi en uygun?",
+              "answer": "I take your point, but…",
+              "choices": [
+                {
+                  "text": "I take your point, but…",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "That's a stupid idea.",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "Be quiet, please.",
+                  "emoji": "🤫"
+                },
+                {
+                  "text": "You never understand.",
+                  "emoji": "🙄"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın fikrini soruyor ama sen kararsızsın. En uygun cevap hangisi?",
+              "answer": "I can see both sides, really.",
+              "choices": [
+                {
+                  "text": "I can see both sides, really.",
+                  "emoji": "⚖️"
+                },
+                {
+                  "text": "Yes, I am agree.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "I am not sure about me.",
+                  "emoji": "😕"
+                },
+                {
+                  "text": "Opinion I don't have.",
+                  "emoji": "🤷"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Haklı olabilirsin ama ben farklı düşünüyorum.",
+              "lang": "tr",
+              "answers": [
+                "You might be right, but I see it differently",
+                "You may be right, but I see it differently",
+                "You might be right, but I think differently",
+                "You may be right, but I think differently"
+              ],
+              "tokens": [
+                "You",
+                "might",
+                "be",
+                "right",
+                "but",
+                "I",
+                "see",
+                "it",
+                "differently",
+                "am",
+                "agree",
+                "different"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u14l4",
+          "type": "lesson",
+          "title": "Yazma: Foruma yanıt",
+          "description": "Bir forum tartışmasına görüş, gerekçe ve karşı görüşe yanıt içeren 100 kelimelik bir mesaj yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Bence hafta sonu kuralı iyi bir fikir ama tamamen yasaklamak bir hata olur.",
+              "lang": "tr",
+              "answers": [
+                "In my opinion, a weekend rule is a good idea, but a complete ban would be a mistake",
+                "I think a weekend rule is a good idea, but a complete ban would be a mistake"
+              ],
+              "tokens": [
+                "In",
+                "my",
+                "opinion",
+                "a",
+                "weekend",
+                "rule",
+                "is",
+                "a",
+                "good",
+                "idea",
+                "but",
+                "a",
+                "complete",
+                "ban",
+                "would",
+                "be",
+                "a",
+                "mistake",
+                "the",
+                "an",
+                "was"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Onları kabul eden bir kafenin sadık müşterileri olur.",
+              "lang": "tr",
+              "answers": [
+                "A café that welcomes them will have loyal customers",
+                "A café which welcomes them will have loyal customers"
+              ],
+              "tokens": [
+                "A",
+                "café",
+                "that",
+                "welcomes",
+                "them",
+                "will",
+                "have",
+                "loyal",
+                "customers",
+                "the",
+                "who",
+                "having"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ancak aileler de hafta sonları dinlenebilecekleri bir yere ihtiyaç duyuyor.",
+              "lang": "tr",
+              "answers": [
+                "However, families also need a place where they can relax at weekends",
+                "However, families also need a place where they can relax on weekends",
+                "However, families also need a place to relax at weekends",
+                "However, at weekends families also need a place where they can relax"
+              ],
+              "tokens": [
+                "However",
+                "families",
+                "also",
+                "need",
+                "a",
+                "place",
+                "where",
+                "they",
+                "can",
+                "relax",
+                "at",
+                "weekends",
+                "the",
+                "in",
+                "which"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "___ I understand your worry, I still think a ban is unfair.",
+              "translation": "Endişeni anlasam da hâlâ yasağın haksız olduğunu düşünüyorum.",
+              "answer": "Although",
+              "choices": [
+                "Although",
+                "However",
+                "Despite"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Cafés are ___ important part of city life.",
+              "translation": "Kafeler şehir hayatının önemli bir parçası.",
+              "answer": "an",
+              "choices": [
+                "an",
+                "a",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm ___ favour of a weekend rule.",
+              "translation": "Hafta sonu kuralından yanayım.",
+              "answer": "in",
+              "choices": [
+                "in",
+                "on",
+                "for"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir forum mesajına yanıt verirken en uygun açılış hangisi?",
+              "answer": "Thanks for starting this thread.",
+              "choices": [
+                {
+                  "text": "Thanks for starting this thread.",
+                  "emoji": "💬"
+                },
+                {
+                  "text": "Dear Sir or Madam,",
+                  "emoji": "📜"
+                },
+                {
+                  "text": "Yo, listen up!",
+                  "emoji": "📢"
+                },
+                {
+                  "text": "To whom it may concern,",
+                  "emoji": "🏛️"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "Her şeyden önce",
+                  "First of all"
+                ],
+                [
+                  "İkinci olarak",
+                  "Secondly"
+                ],
+                [
+                  "Ne demek istediğini anlıyorum",
+                  "I see what you mean"
+                ],
+                [
+                  "Neden … denemiyoruz?",
+                  "Why not try…?"
+                ],
+                [
+                  "zaten",
+                  "anyway"
+                ]
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Forumdaki \"Laptops in cafés: yes or no?\" tartışmasına yaklaşık 100 kelimelik bir yanıt yaz. Görüşünü açıkça söyle, iki gerekçe ver ve karşı görüşteki birine kibarca cevap ver.",
+              "model": "Thanks for starting this thread, Elif. In my opinion, a weekend rule is a good idea, but a complete ban would be a mistake. First of all, many students and freelancers have nowhere quiet to work. A café that welcomes them will have loyal customers. Secondly, people who work on laptops usually come on weekdays, when cafés are quiet anyway.\n\nKeremCodes says that a ban sends the wrong message. I see his point. However, families also need a place where they can relax at weekends. If both groups have their own time, everyone wins. Why not try it for a month?",
+              "minWords": 80,
+              "maxWords": 120,
+              "checklist": [
+                "Görüşünü ilk iki cümlede açıkça söyledin",
+                "En az iki gerekçe verdin (First of all, Secondly…)",
+                "Karşı görüşü anıp kibarca yanıtladın (I see his point. However…)",
+                "En az bir ilgi cümlesi kullandın (who, that, where)",
+                "Bir öneri ya da soruyla bitirdin"
+              ],
+              "focus": [
+                "article",
+                "preposition",
+                "word_order"
+              ],
+              "taskId": "s6u14l4w"
+            }
+          ]
+        },
+        {
+          "id": "s6u14t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s6u14c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s6u15",
+      "title": "Dönüm noktası",
+      "description": "Hayatındaki bir dönüm noktasını anlatmak, sunmak ve blog yazısına dökmek",
+      "color": "0xFF14A098",
+      "theme": "gecmis",
+      "guide": "## Bu ünitede yapabileceklerin\n- Hayatından bir dönüm noktasını iki dakikalık bir konuşmayla sunabilirsin.\n- Bir blog yazısında olayların sırasını, yazarın duygularını ve pişmanlıklarını anlayabilirsin.\n- Birinin dönüm noktası hikâyesini dinleyip ana fikri ve ayrıntıları yakalayabilirsin.\n- Dönüm noktanı anlatan 150 kelimelik bir blog yazısı yazabilirsin.\n\n## Strateji\n- **4/3/2 tekniği:** Sunumunu önce 4 dakikada, sonra aynı içeriği 3 dakikada, en son 2 dakikada anlat. Her turda daha akıcı ve daha kısa olursun.\n- Sunumu üç parçaya böl: önce (*Three years ago, I had just…*), o an (*Then…*), bugün (*Looking back, I wish…*).\n- Gölgeleme (shadow) ile *I'd*, *had* gibi kısalmış biçimleri çalış; hızlı konuşmada *I had* çoğu zaman *I'd* olur.\n- Hikâyeyi önce metni görmeden dinle: kim, ne zaman, ne değişti? Sonra metni aç ve past perfect cümlelerini bul.\n- Blogda bir başlıkla başla, sonra aynı üç parçalı yapıyı paragraflara dök.\n\n## Model metin\n> The day I missed my flight\n>\n> Four years ago, I was working as an accountant in Ankara. I had planned a holiday in Spain for months, but on the day of the flight, the traffic was so bad that I missed the plane. I was furious. I sat in the airport café, where I started talking to a woman who ran a small travel company.\n>\n> She told me that she needed someone who could manage her accounts and speak English. Although the salary was lower, I said yes a month later. It was the most frightening decision I had ever made.\n>\n> Today I organise tours all over Turkey, and I love my job. Sometimes I wish I had changed careers earlier. However, I don't regret my old job, because it taught me how to work hard. Missing that flight was the luckiest thing that has ever happened to me.\n\nYapı: Başlık merak uyandırır. 1. paragraf önceki durumu ve olayı anlatır (*had planned*, *so … that*). 2. paragraf kararı anlatır (*although*, *the most … I had ever made*). 3. paragraf bugünü ve duyguları anlatır (*I wish I had…*, *However*).\n\n## Türklerin sık hatası\n- ❌ I wish I changed my job earlier. ✅ I wish I **had changed** my job earlier. (Geçmişle ilgili pişmanlıkta **wish + had + V3**.)\n- ❌ It was the most frightening decision I have ever made. ✅ It was the most frightening decision I **had** ever made. (Geçmişte anlatırken o ana kadar olanı **had** ile söyle.)\n\n## Beceri testi\nBölüm 6 beceri testi 20 sorudur; geçmek için %80 doğru yap. Bölüm, bu test **ve** bu ünitenin yazma görevi (s6u15l4, blog yazısı) bittiğinde tamamlanmış sayılır.\n\n| Bölüm | Soru | Ölçtüğü hedef |\n|---|---|---|\n| Dinleme | 6 | Past perfect ile anlatı (s6u1, s6u15); ilgi cümleleri (s6u3); wish (s6u6); question tags (s6u8); so … that (s6u5); although (s6u11) |\n| Okuma | 8 | Bir oyun yorumunda yazarın görüşü ve gerekçesi (s6u13); dönüm noktası blogu ve yoruma yanıt (s6u15, s6u14) |\n| Yazma | 4 | Past perfect ile gerekçe (s6u13); despite ile görüş (s6u13); gerekçeli görüş (s6u14); ilgi cümlesiyle dönüm noktası (s6u15) |\n| Dil | 2 | Question tags (s6u8); although ile katılıp ekleme (s6u11, s6u14) |",
+      "nodes": [
+        {
+          "id": "s6u15l1",
+          "type": "lesson",
+          "title": "Dinleme: Hayatımı değiştiren gün",
+          "description": "İnsanların dönüm noktası hikâyelerinde olayların sırasını ve pişmanlıkları duy",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "I'd worked at the same bank for six years when everything changed.",
+              "answers": [
+                "I'd worked at the same bank for six years when everything changed.",
+                "I had worked at the same bank for six years when everything changed.",
+                "I'd worked at the same bank for 6 years when everything changed."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "That was the moment when I realised I had to change something.",
+              "translation": "O an, bir şeyleri değiştirmem gerektiğini fark ettiğim andı.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "Looking back, it was the best decision I've ever made in my life.",
+              "answers": [
+                "Looking back, it was the best decision I've ever made in my life.",
+                "Looking back, it was the best decision I have ever made in my life."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I wish I'd taken that step a lot earlier, to be honest.",
+              "answers": [
+                "I wish I'd taken that step a lot earlier, to be honest.",
+                "I wish I had taken that step a lot earlier, to be honest."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "By the time I turned thirty, I had ___ my mind about my career.",
+              "translation": "Otuz yaşıma geldiğimde kariyerim hakkındaki fikrimi değiştirmiştim.",
+              "answer": "changed",
+              "choices": [
+                "changed",
+                "change",
+                "changing"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Did you know what you wanted to do before you left school?",
+              "answers": [
+                "Did you know what you wanted to do before you left school?"
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "If only I'd listened to my grandmother's advice sooner!",
+              "translation": "Keşke büyükannemin tavsiyesini daha önce dinleseydim!",
+              "rate": 0.9
+            },
+            {
+              "type": "fillBlank",
+              "text": "It turned ___ to be the best year of my life.",
+              "translation": "Hayatımın en iyi yılı olduğu ortaya çıktı.",
+              "answer": "out",
+              "choices": [
+                "out",
+                "up",
+                "off"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "dönüm noktası",
+                  "turning point"
+                ],
+                [
+                  "geriye dönüp bakınca",
+                  "looking back"
+                ],
+                [
+                  "karar vermek",
+                  "make a decision"
+                ],
+                [
+                  "cesaret",
+                  "courage"
+                ],
+                [
+                  "risk almak",
+                  "take a risk"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u15l2",
+          "type": "lesson",
+          "title": "Okuma: Bir blog yazısı",
+          "description": "Ayşe'nin öğretmenlikten pastacılığa geçiş hikâyesini oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "From history teacher to baker\nby Ayşe\n\nPeople often ask me how I became a baker. The honest answer is: by accident.\n\nTen years ago, I was teaching history at a high school in Bursa. I loved my students, but I had started to feel that every year was the same. One evening, the company that was making the cakes for our school's charity day cancelled at the last minute. Two hundred cakes were needed by the morning, and I had only ever baked for my family.\n\nI stayed up all night. By the time the sun came up, I had made every single cake. I was exhausted, but I hadn't felt so excited for years. That night was my turning point.\n\nFor the next two years, I taught during the week and took baking classes at weekends. It wasn't easy. Although my friends thought I was crazy, my parents supported me. Two banks turned down my loan application, which was painful. The third one, however, said yes.\n\nDo I wish I had started earlier? Sometimes. But I don't regret my years as a teacher. They taught me patience and how to explain things simply, which helps me every day in my baking classes.\n\nIf you're thinking about a big change, my advice is simple: you don't need to know everything at the start. You just need to start.",
+              "question": "Ayşe neden bir gecede pasta yapmak zorunda kaldı?",
+              "options": [
+                "The cake company had cancelled",
+                "She was a famous baker",
+                "The head teacher asked for bread",
+                "She had lost a bet"
+              ],
+              "answer": 0,
+              "explanation": "\"The cake company had cancelled\" doğru: metinde \"the company that was making the cakes … cancelled at the last minute\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "From history teacher to baker\nby Ayşe\n\nPeople often ask me how I became a baker. The honest answer is: by accident.\n\nTen years ago, I was teaching history at a high school in Bursa. I loved my students, but I had started to feel that every year was the same. One evening, the company that was making the cakes for our school's charity day cancelled at the last minute. Two hundred cakes were needed by the morning, and I had only ever baked for my family.\n\nI stayed up all night. By the time the sun came up, I had made every single cake. I was exhausted, but I hadn't felt so excited for years. That night was my turning point.\n\nFor the next two years, I taught during the week and took baking classes at weekends. It wasn't easy. Although my friends thought I was crazy, my parents supported me. Two banks turned down my loan application, which was painful. The third one, however, said yes.\n\nDo I wish I had started earlier? Sometimes. But I don't regret my years as a teacher. They taught me patience and how to explain things simply, which helps me every day in my baking classes.\n\nIf you're thinking about a big change, my advice is simple: you don't need to know everything at the start. You just need to start.",
+              "question": "Ayşe pastacılığı nasıl öğrendi?",
+              "options": [
+                "At university in Bursa",
+                "In weekend classes while still teaching",
+                "From her students",
+                "At a bank"
+              ],
+              "answer": 1,
+              "explanation": "\"In weekend classes while still teaching\" doğru: Ayşe \"I taught during the week and took baking classes at weekends\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "From history teacher to baker\nby Ayşe\n\nPeople often ask me how I became a baker. The honest answer is: by accident.\n\nTen years ago, I was teaching history at a high school in Bursa. I loved my students, but I had started to feel that every year was the same. One evening, the company that was making the cakes for our school's charity day cancelled at the last minute. Two hundred cakes were needed by the morning, and I had only ever baked for my family.\n\nI stayed up all night. By the time the sun came up, I had made every single cake. I was exhausted, but I hadn't felt so excited for years. That night was my turning point.\n\nFor the next two years, I taught during the week and took baking classes at weekends. It wasn't easy. Although my friends thought I was crazy, my parents supported me. Two banks turned down my loan application, which was painful. The third one, however, said yes.\n\nDo I wish I had started earlier? Sometimes. But I don't regret my years as a teacher. They taught me patience and how to explain things simply, which helps me every day in my baking classes.\n\nIf you're thinking about a big change, my advice is simple: you don't need to know everything at the start. You just need to start.",
+              "question": "Pasta yaptığı o gece Ayşe için neden önemliydi?",
+              "options": [
+                "She earned a lot of money",
+                "She met her future business partner",
+                "It showed her what she really enjoyed",
+                "She won a competition"
+              ],
+              "answer": 2,
+              "explanation": "\"It showed her what she really enjoyed\" doğru: Ayşe yorgun olsa da \"I hadn't felt so excited for years\" diyor ve o geceye dönüm noktası diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "From history teacher to baker\nby Ayşe\n\nPeople often ask me how I became a baker. The honest answer is: by accident.\n\nTen years ago, I was teaching history at a high school in Bursa. I loved my students, but I had started to feel that every year was the same. One evening, the company that was making the cakes for our school's charity day cancelled at the last minute. Two hundred cakes were needed by the morning, and I had only ever baked for my family.\n\nI stayed up all night. By the time the sun came up, I had made every single cake. I was exhausted, but I hadn't felt so excited for years. That night was my turning point.\n\nFor the next two years, I taught during the week and took baking classes at weekends. It wasn't easy. Although my friends thought I was crazy, my parents supported me. Two banks turned down my loan application, which was painful. The third one, however, said yes.\n\nDo I wish I had started earlier? Sometimes. But I don't regret my years as a teacher. They taught me patience and how to explain things simply, which helps me every day in my baking classes.\n\nIf you're thinking about a big change, my advice is simple: you don't need to know everything at the start. You just need to start.",
+              "question": "Ayşe öğretmenlik yıllarına nasıl bakıyor?",
+              "options": [
+                "She regrets them deeply",
+                "She has forgotten them",
+                "She thinks they were a waste of time",
+                "She values what they taught her"
+              ],
+              "answer": 3,
+              "explanation": "\"She values what they taught her\" doğru: Ayşe \"I don't regret my years as a teacher. They taught me patience\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "From history teacher to baker\nby Ayşe\n\nPeople often ask me how I became a baker. The honest answer is: by accident.\n\nTen years ago, I was teaching history at a high school in Bursa. I loved my students, but I had started to feel that every year was the same. One evening, the company that was making the cakes for our school's charity day cancelled at the last minute. Two hundred cakes were needed by the morning, and I had only ever baked for my family.\n\nI stayed up all night. By the time the sun came up, I had made every single cake. I was exhausted, but I hadn't felt so excited for years. That night was my turning point.\n\nFor the next two years, I taught during the week and took baking classes at weekends. It wasn't easy. Although my friends thought I was crazy, my parents supported me. Two banks turned down my loan application, which was painful. The third one, however, said yes.\n\nDo I wish I had started earlier? Sometimes. But I don't regret my years as a teacher. They taught me patience and how to explain things simply, which helps me every day in my baking classes.\n\nIf you're thinking about a big change, my advice is simple: you don't need to know everything at the start. You just need to start.",
+              "question": "İlk iki banka ne yaptı?",
+              "options": [
+                "They gave her a loan",
+                "They rejected her application",
+                "They offered her a job",
+                "They bought her cakes"
+              ],
+              "answer": 1,
+              "explanation": "\"They rejected her application\" doğru: metinde \"Two banks turned down my loan application\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "From history teacher to baker\nby Ayşe\n\nPeople often ask me how I became a baker. The honest answer is: by accident.\n\nTen years ago, I was teaching history at a high school in Bursa. I loved my students, but I had started to feel that every year was the same. One evening, the company that was making the cakes for our school's charity day cancelled at the last minute. Two hundred cakes were needed by the morning, and I had only ever baked for my family.\n\nI stayed up all night. By the time the sun came up, I had made every single cake. I was exhausted, but I hadn't felt so excited for years. That night was my turning point.\n\nFor the next two years, I taught during the week and took baking classes at weekends. It wasn't easy. Although my friends thought I was crazy, my parents supported me. Two banks turned down my loan application, which was painful. The third one, however, said yes.\n\nDo I wish I had started earlier? Sometimes. But I don't regret my years as a teacher. They taught me patience and how to explain things simply, which helps me every day in my baking classes.\n\nIf you're thinking about a big change, my advice is simple: you don't need to know everything at the start. You just need to start.",
+              "question": "\"They taught me patience\" cümlesindeki \"They\" neyi anlatıyor?",
+              "options": [
+                "Her students",
+                "Her parents",
+                "Her years as a teacher",
+                "The banks"
+              ],
+              "answer": 2,
+              "explanation": "\"Her years as a teacher\" doğru: bir önceki cümle \"I don't regret my years as a teacher\"; \"They\" bu yılları anlatıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kazara",
+                  "by accident"
+                ],
+                [
+                  "son dakikada",
+                  "at the last minute"
+                ],
+                [
+                  "sabaha kadar uyumamak",
+                  "stay up all night"
+                ],
+                [
+                  "sabır",
+                  "patience"
+                ],
+                [
+                  "reddetmek",
+                  "turn down"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I wish I ___ started baking when I was younger.",
+              "translation": "Keşke pasta yapmaya daha gençken başlasaydım.",
+              "answer": "had",
+              "choices": [
+                "had",
+                "have",
+                "would"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Geçmişteki bir şeyden pişmanlık duyduğunu söylemek istiyorsun. Hangisi doğru?",
+              "answer": "I wish I had studied more.",
+              "choices": [
+                {
+                  "text": "I wish I had studied more.",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "I wish I studied more.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "I wish I have studied more.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "I wish I will study more.",
+                  "emoji": "🙃"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u15s",
+          "type": "story",
+          "title": "Hikâye gecesi",
+          "description": "Elif'in kafesindeki hikâye gecesinde Sam hayatının dönüm noktasını anlatıyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Good evening, everyone, and welcome to our first story night! Tonight's theme is turning points.",
+              "translation": "Herkese iyi akşamlar, ilk hikâye gecemize hoş geldiniz! Bu akşamın teması dönüm noktaları."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Our first storyteller is someone you all know. Sam, the stage is yours.",
+              "translation": "İlk anlatıcımızı hepiniz tanıyorsunuz. Sam, sahne senin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Thanks, Elif. Five years ago, I had just finished university, and I was working in an office in London.",
+              "translation": "Teşekkürler Elif. Beş yıl önce üniversiteyi yeni bitirmiştim ve Londra'da bir ofiste çalışıyordum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "I had studied economics because my dad thought it was a safe choice. I was miserable.",
+              "translation": "Ekonomi okumuştum, çünkü babam bunun güvenli bir seçim olduğunu düşünüyordu. Çok mutsuzdum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Sam üniversitede ne okumuştu?",
+              "choices": [
+                "Ekonomi",
+                "Tarih",
+                "Öğretmenlik"
+              ],
+              "answer": "Ekonomi"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Then, one rainy Monday, my manager told me that my job no longer existed.",
+              "translation": "Sonra yağmurlu bir pazartesi müdürüm işimin artık olmadığını söyledi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Oh no! What did you do?",
+              "translation": "Eyvah! Ne yaptın?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "I went home, sat on the floor and cried. Then I booked a cheap flight to Istanbul.",
+              "translation": "Eve gittim, yere oturdum ve ağladım. Sonra İstanbul'a ucuz bir uçak bileti aldım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "A friend who lived in Kadıköy had invited me many times, but I'd always been too busy.",
+              "translation": "Kadıköy'de yaşayan bir arkadaşım beni defalarca davet etmişti ama hep çok meşguldüm."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "On my third day, I got lost and asked an old man for directions.",
+              "translation": "Üçüncü günümde kayboldum ve yaşlı bir adama yol sordum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "His English was terrible, and my Turkish didn't exist, but we talked for two hours over tea.",
+              "translation": "Onun İngilizcesi berbattı, benim Türkçem ise yoktu ama çay içerek iki saat konuştuk."
+            },
+            {
+              "kind": "question",
+              "prompt": "Sam yaşlı adamla ne kadar konuştu?",
+              "choices": [
+                "Yarım saat",
+                "İki saat",
+                "Bütün gün"
+              ],
+              "answer": "İki saat"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "He told me he had always wanted to learn English but had never found a teacher.",
+              "translation": "Bana hep İngilizce öğrenmek istediğini ama hiç öğretmen bulamadığını söyledi."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"He told me he had always wanted to learn English\" cümlesindeki \"He\" kim?",
+              "choices": [
+                "Yaşlı adam",
+                "Sam'in babası",
+                "Sam'in müdürü"
+              ],
+              "answer": "Yaşlı adam"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "That was the moment. I thought: I could be that teacher.",
+              "translation": "İşte o an. Şöyle düşündüm: O öğretmen ben olabilirim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "So did you stay in Istanbul after that?",
+              "translation": "Peki ondan sonra İstanbul'da kaldın mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Not immediately. I went back to London and did a teaching course for four months.",
+              "translation": "Hemen değil. Londra'ya döndüm ve dört ay öğretmenlik kursuna gittim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Although my dad was worried, he came to my graduation and was surprisingly proud.",
+              "translation": "Babam endişeli olsa da mezuniyetime geldi ve şaşırtıcı derecede gururluydu."
+            },
+            {
+              "kind": "question",
+              "prompt": "Sam'in babası sonunda Sam'in kararına nasıl baktı?",
+              "choices": [
+                "Gurur duydu",
+                "Hâlâ çok kızgındı",
+                "Hiç ilgilenmedi"
+              ],
+              "answer": "Gurur duydu"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "That was four years ago, and I'm still here, and I still drink too much tea.",
+              "translation": "Bu dört yıl önceydi; hâlâ buradayım ve hâlâ çok fazla çay içiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Do you ever wish you'd stayed in London?",
+              "translation": "Hiç Londra'da kalmış olmayı dilediğin oluyor mu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Honestly? Only when I see the rent prices there. Otherwise, never.",
+              "translation": "Dürüst olmak gerekirse mi? Yalnızca oradaki kiraları görünce. Onun dışında asla."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Thank you, Sam! That's such a lovely story that I nearly cried too.",
+              "translation": "Teşekkürler Sam! O kadar güzel bir hikâye ki neredeyse ben de ağlıyordum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Who's next? Deniz, you promised me a story about a broken bicycle!",
+              "translation": "Sırada kim var? Deniz, bana bozuk bir bisiklet hikâyesi sözü vermiştin!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Sam'in hikâyesinin ana fikri ne?",
+              "choices": [
+                "İşini kaybetmesi yeni bir hayatın başlangıcı oldu",
+                "Londra'da kiralar çok pahalı",
+                "İstanbul'da kaybolmak tehlikeli"
+              ],
+              "answer": "İşini kaybetmesi yeni bir hayatın başlangıcı oldu"
+            }
+          ]
+        },
+        {
+          "id": "s6u15l3",
+          "type": "lesson",
+          "title": "Konuşma: İki dakikalık sunum",
+          "description": "Hayatındaki bir dönüm noktasını önce, o an ve bugün diye sırayla sun",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "It wasn't an easy decision, but it was the right one.",
+              "translation": "Kolay bir karar değildi ama doğru karardı.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "Before that day, I had never thought about living abroad.",
+              "translation": "O günden önce yurt dışında yaşamayı hiç düşünmemiştim.",
+              "rate": 0.9
+            },
+            {
+              "type": "speak",
+              "text": "Today I'd like to talk about a turning point in my life.",
+              "translation": "Bugün size hayatımdaki bir dönüm noktasından bahsetmek istiyorum."
+            },
+            {
+              "type": "speak",
+              "text": "Three years ago, I had just finished university, and I had no idea what to do.",
+              "translation": "Üç yıl önce üniversiteyi yeni bitirmiştim ve ne yapacağım hakkında hiçbir fikrim yoktu."
+            },
+            {
+              "type": "speak",
+              "text": "Then a friend offered me a summer job in Bodrum, and that changed everything.",
+              "translation": "Sonra bir arkadaşım bana Bodrum'da bir yaz işi teklif etti ve bu her şeyi değiştirdi."
+            },
+            {
+              "type": "speak",
+              "text": "Looking back, I only wish I had taken more risks like that.",
+              "translation": "Geriye dönüp bakınca tek dileğim, bunun gibi daha çok risk almış olmak."
+            },
+            {
+              "type": "select",
+              "prompt": "Sunumunu bitiriyorsun. En uygun kapanış cümlesi hangisi?",
+              "answer": "Thank you for listening.",
+              "choices": [
+                {
+                  "text": "Thank you for listening.",
+                  "emoji": "🙏"
+                },
+                {
+                  "text": "OK, finished, bye.",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "That's all, go home.",
+                  "emoji": "🚪"
+                },
+                {
+                  "text": "Questions? No? Good.",
+                  "emoji": "😅"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Sunum sırasında ne diyeceğini unuttun. Doğal bir şekilde zaman kazanmak için ne dersin?",
+              "answer": "Let me think for a second.",
+              "choices": [
+                {
+                  "text": "Let me think for a second.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "Sorry, I am finish.",
+                  "emoji": "😳"
+                },
+                {
+                  "text": "Wait me, please.",
+                  "emoji": "✋"
+                },
+                {
+                  "text": "I don't know nothing.",
+                  "emoji": "🤷"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Keşke o yaz daha cesur olsaydım.",
+              "lang": "tr",
+              "answers": [
+                "I wish I had been braver that summer",
+                "I wish I'd been braver that summer",
+                "If only I had been braver that summer",
+                "If only I'd been braver that summer"
+              ],
+              "tokens": [
+                "I",
+                "wish",
+                "I",
+                "had",
+                "been",
+                "braver",
+                "that",
+                "summer",
+                "was",
+                "more",
+                "have"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u15l4",
+          "type": "lesson",
+          "title": "Yazma: Dönüm noktası blog yazısı",
+          "description": "Hayatını değiştiren bir anı anlatan 150 kelimelik bir blog yazısı yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Uçuş günü trafik o kadar kötüydü ki uçağı kaçırdım.",
+              "lang": "tr",
+              "answers": [
+                "On the day of the flight, the traffic was so bad that I missed the plane",
+                "The traffic was so bad on the day of the flight that I missed the plane",
+                "On the day of the flight, the traffic was so bad I missed the plane"
+              ],
+              "tokens": [
+                "On",
+                "the",
+                "day",
+                "of",
+                "the",
+                "flight",
+                "the",
+                "traffic",
+                "was",
+                "so",
+                "bad",
+                "that",
+                "I",
+                "missed",
+                "the",
+                "plane",
+                "such",
+                "in",
+                "lost"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu, o güne kadar verdiğim en korkutucu karardı.",
+              "lang": "tr",
+              "answers": [
+                "It was the most frightening decision I had ever made",
+                "It was the most frightening decision I'd ever made",
+                "It was the most frightening decision that I had ever made",
+                "That was the most frightening decision I had ever made"
+              ],
+              "tokens": [
+                "It",
+                "was",
+                "the",
+                "most",
+                "frightening",
+                "decision",
+                "I",
+                "had",
+                "ever",
+                "made",
+                "did",
+                "more",
+                "a"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bazen keşke mesleğimi daha erken değiştirseydim diyorum.",
+              "lang": "tr",
+              "answers": [
+                "Sometimes I wish I had changed careers earlier",
+                "Sometimes I wish I'd changed careers earlier",
+                "I sometimes wish I had changed careers earlier",
+                "Sometimes I wish I had changed my career earlier",
+                "Sometimes I wish I had changed jobs earlier"
+              ],
+              "tokens": [
+                "Sometimes",
+                "I",
+                "wish",
+                "I",
+                "had",
+                "changed",
+                "careers",
+                "earlier",
+                "my",
+                "change",
+                "would"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I was furious at first. ___, it turned out to be good luck.",
+              "translation": "İlk başta çok sinirlendim. Sonunda bunun bir şans olduğu ortaya çıktı.",
+              "answer": "In the end",
+              "choices": [
+                "In the end",
+                "At the end",
+                "End of all"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "She ran ___ small travel company in Ankara.",
+              "translation": "Ankara'da küçük bir seyahat şirketi işletiyordu.",
+              "answer": "a",
+              "choices": [
+                "a",
+                "the",
+                "an"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "It was the luckiest thing that has ever happened ___ me.",
+              "translation": "Başıma gelen en şanslı şeydi.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "with"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Dönüm noktası blog yazına en uygun başlık hangisi?",
+              "answer": "The day I missed my flight",
+              "choices": [
+                {
+                  "text": "The day I missed my flight",
+                  "emoji": "✈️"
+                },
+                {
+                  "text": "Report on flight delays",
+                  "emoji": "📊"
+                },
+                {
+                  "text": "Information about my life",
+                  "emoji": "📄"
+                },
+                {
+                  "text": "Dear readers, hello",
+                  "emoji": "👋"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "muhasebeci",
+                  "accountant"
+                ],
+                [
+                  "öfkeli",
+                  "furious"
+                ],
+                [
+                  "korkutucu",
+                  "frightening"
+                ],
+                [
+                  "meslek değiştirmek",
+                  "change careers"
+                ],
+                [
+                  "pişman değilim",
+                  "I don't regret it"
+                ]
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Hayatındaki bir dönüm noktasını anlatan yaklaşık 150 kelimelik bir blog yazısı yaz. Değişimden önceki durumunu, değişimin olduğu anı ve bugün nasıl hissettiğini anlat.",
+              "model": "The day I missed my flight\n\nFour years ago, I was working as an accountant in Ankara. I had planned a holiday in Spain for months, but on the day of the flight, the traffic was so bad that I missed the plane. I was furious. I sat in the airport café, where I started talking to a woman who ran a small travel company.\n\nShe told me that she needed someone who could manage her accounts and speak English. Although the salary was lower, I said yes a month later. It was the most frightening decision I had ever made.\n\nToday I organise tours all over Turkey, and I love my job. Sometimes I wish I had changed careers earlier. However, I don't regret my old job, because it taught me how to work hard. Missing that flight was the luckiest thing that has ever happened to me.",
+              "minWords": 120,
+              "maxWords": 180,
+              "checklist": [
+                "Yazına ilgi çekici bir başlık koydun",
+                "Değişimden önceki durumu anlatırken en az bir past perfect kullandın (had + V3)",
+                "Olayları sırayla anlattın ve zaman ifadeleri kullandın (Four years ago, a month later…)",
+                "Bugünkü duygunu wish ya da regret ile anlattın",
+                "Yazını üç paragrafa böldün"
+              ],
+              "focus": [
+                "tense",
+                "article",
+                "word_order"
+              ],
+              "taskId": "s6u15l4w"
+            }
+          ]
+        },
+        {
+          "id": "s6u15t",
+          "type": "test",
+          "title": "Bölüm 6 beceri testi",
+          "description": "Bu bölümün hedeflerini ölçer",
+          "rewardXp": 25,
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "By the time we got to the cinema, the film had already started.",
+              "answers": [
+                "By the time we got to the cinema, the film had already started."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Mia's the journalist who wrote that review of the new café in Moda.",
+              "answers": [
+                "Mia's the journalist who wrote that review of the new café in Moda.",
+                "Mia is the journalist who wrote that review of the new café in Moda."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I wish I could come with you, but I've got to work tonight.",
+              "answers": [
+                "I wish I could come with you, but I've got to work tonight.",
+                "I wish I could come with you, but I have got to work tonight."
+              ]
+            },
+            {
+              "type": "choice",
+              "passage": "Theatre review: The Night Visitor\n\nThis month, the small Moda Stage is showing The Night Visitor, a play that was first written for radio in the 1980s. It has only two actors: a lighthouse keeper and a young woman who arrives during a storm.\n\nFor the first half an hour, I was not sure about it. The set is very simple, and very little happens. However, the dialogue is so sharp that you soon forget there is no action. Zeynep Ak, who plays the young woman, is outstanding. She can make the audience laugh and, a moment later, cry.\n\nMy only real complaint is the length. At two and a half hours without a break, the play is far too long, and several people around me were checking their phones. Twenty minutes less would make it a much stronger show.\n\nDespite this, I left the theatre with a smile. If you enjoy clever, quiet stories, buy a ticket before the end of the month. If you need car chases, stay at home.",
+              "question": "Yazar oyunun en çok hangi yönünü eleştiriyor?",
+              "options": [
+                "The actors",
+                "The simple set",
+                "The dialogue",
+                "Its length"
+              ],
+              "answer": 3,
+              "explanation": "\"Its length\" doğru: yazar \"My only real complaint is the length\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Theatre review: The Night Visitor\n\nThis month, the small Moda Stage is showing The Night Visitor, a play that was first written for radio in the 1980s. It has only two actors: a lighthouse keeper and a young woman who arrives during a storm.\n\nFor the first half an hour, I was not sure about it. The set is very simple, and very little happens. However, the dialogue is so sharp that you soon forget there is no action. Zeynep Ak, who plays the young woman, is outstanding. She can make the audience laugh and, a moment later, cry.\n\nMy only real complaint is the length. At two and a half hours without a break, the play is far too long, and several people around me were checking their phones. Twenty minutes less would make it a much stronger show.\n\nDespite this, I left the theatre with a smile. If you enjoy clever, quiet stories, buy a ticket before the end of the month. If you need car chases, stay at home.",
+              "question": "Yazarın oyun hakkındaki genel görüşü nedir?",
+              "options": [
+                "Positive, with one clear problem",
+                "Completely negative",
+                "Confused and uncertain",
+                "Interested only in the set"
+              ],
+              "answer": 0,
+              "explanation": "\"Positive, with one clear problem\" doğru: yazar oyunun uzunluğunu eleştiriyor ama \"I left the theatre with a smile\" diyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Theatre review: The Night Visitor\n\nThis month, the small Moda Stage is showing The Night Visitor, a play that was first written for radio in the 1980s. It has only two actors: a lighthouse keeper and a young woman who arrives during a storm.\n\nFor the first half an hour, I was not sure about it. The set is very simple, and very little happens. However, the dialogue is so sharp that you soon forget there is no action. Zeynep Ak, who plays the young woman, is outstanding. She can make the audience laugh and, a moment later, cry.\n\nMy only real complaint is the length. At two and a half hours without a break, the play is far too long, and several people around me were checking their phones. Twenty minutes less would make it a much stronger show.\n\nDespite this, I left the theatre with a smile. If you enjoy clever, quiet stories, buy a ticket before the end of the month. If you need car chases, stay at home.",
+              "question": "Oyunda kaç oyuncu var?",
+              "options": [
+                "One",
+                "Two",
+                "Three",
+                "Twenty"
+              ],
+              "answer": 1,
+              "explanation": "\"Two\" doğru: metinde \"It has only two actors\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Theatre review: The Night Visitor\n\nThis month, the small Moda Stage is showing The Night Visitor, a play that was first written for radio in the 1980s. It has only two actors: a lighthouse keeper and a young woman who arrives during a storm.\n\nFor the first half an hour, I was not sure about it. The set is very simple, and very little happens. However, the dialogue is so sharp that you soon forget there is no action. Zeynep Ak, who plays the young woman, is outstanding. She can make the audience laugh and, a moment later, cry.\n\nMy only real complaint is the length. At two and a half hours without a break, the play is far too long, and several people around me were checking their phones. Twenty minutes less would make it a much stronger show.\n\nDespite this, I left the theatre with a smile. If you enjoy clever, quiet stories, buy a ticket before the end of the month. If you need car chases, stay at home.",
+              "question": "Yazar oyunu en çok kime tavsiye ederdi?",
+              "options": [
+                "People who want car chases",
+                "Children under ten",
+                "Someone who enjoys sharp dialogue",
+                "Anyone who hates theatre"
+              ],
+              "answer": 2,
+              "explanation": "\"Someone who enjoys sharp dialogue\" doğru: yazar diyalogu övüyor (\"the dialogue is so sharp\") ve oyunu \"clever, quiet stories\" sevenlere öneriyor."
+            },
+            {
+              "type": "listen",
+              "text": "You've read the book, haven't you? What did you think of the ending?",
+              "answers": [
+                "You've read the book, haven't you? What did you think of the ending?",
+                "You have read the book, haven't you? What did you think of the ending?"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kitabı okumuş olduğum için filmin sonunu zaten biliyordum.",
+              "lang": "tr",
+              "answers": [
+                "I already knew the ending of the film because I had read the book",
+                "I already knew the ending of the film because I'd read the book",
+                "I knew the ending of the film already because I had read the book",
+                "Because I had read the book, I already knew the ending of the film",
+                "Because I'd read the book, I already knew the ending of the film"
+              ],
+              "tokens": [
+                "I",
+                "already",
+                "knew",
+                "the",
+                "ending",
+                "of",
+                "the",
+                "film",
+                "because",
+                "I",
+                "had",
+                "read",
+                "the",
+                "book",
+                "have",
+                "an",
+                "readed"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İyi oyunculuğa rağmen hikâye beni ikna etmedi.",
+              "lang": "tr",
+              "answers": [
+                "Despite the good acting, the story didn't convince me",
+                "Despite the good acting, the story did not convince me",
+                "The story didn't convince me despite the good acting",
+                "The story did not convince me despite the good acting"
+              ],
+              "tokens": [
+                "Despite",
+                "the",
+                "good",
+                "acting",
+                "the",
+                "story",
+                "didn't",
+                "convince",
+                "me",
+                "of",
+                "although",
+                "does"
+              ]
+            },
+            {
+              "type": "choice",
+              "passage": "Why I said no to a promotion\nby Deniz\n\nLast spring, my manager offered me a promotion. It came with a bigger salary, a new title and a lot more travel. Everyone expected me to say yes. I had worked hard for three years, and this was the reward.\n\nI said no. It was the hardest decision I had ever made, and my colleagues thought I had lost my mind. But the new job would mean three nights a week in hotels, and I had just started volunteering at an animal shelter on weekday evenings. That work, which pays nothing, makes me happier than any title.\n\nDo I wish I had more money? Of course. But I don't wish I had taken the job.\n\nComment from TaylanY: Interesting post, but I'm not convinced. Chances like this don't come often. In my opinion, it was a mistake. You could easily volunteer at weekends instead.\n\nReply from Deniz: Fair point, Taylan. However, weekends are when I see my family. For now, I'm happy with my choice.",
+              "question": "Deniz terfiyi neden kabul etmedi?",
+              "options": [
+                "The salary was too low",
+                "Deniz's manager was unfair",
+                "Deniz wanted to change company",
+                "It would take time from the shelter work"
+              ],
+              "answer": 3,
+              "explanation": "\"It would take time from the shelter work\" doğru: yeni iş \"three nights a week in hotels\" demekti ve Deniz hafta içi akşamları barınakta gönüllü çalışıyordu."
+            },
+            {
+              "type": "choice",
+              "passage": "Why I said no to a promotion\nby Deniz\n\nLast spring, my manager offered me a promotion. It came with a bigger salary, a new title and a lot more travel. Everyone expected me to say yes. I had worked hard for three years, and this was the reward.\n\nI said no. It was the hardest decision I had ever made, and my colleagues thought I had lost my mind. But the new job would mean three nights a week in hotels, and I had just started volunteering at an animal shelter on weekday evenings. That work, which pays nothing, makes me happier than any title.\n\nDo I wish I had more money? Of course. But I don't wish I had taken the job.\n\nComment from TaylanY: Interesting post, but I'm not convinced. Chances like this don't come often. In my opinion, it was a mistake. You could easily volunteer at weekends instead.\n\nReply from Deniz: Fair point, Taylan. However, weekends are when I see my family. For now, I'm happy with my choice.",
+              "question": "Deniz'in iş arkadaşları bu karar hakkında ne düşündü?",
+              "options": [
+                "They thought it was crazy",
+                "They were proud",
+                "They did the same",
+                "They didn't notice"
+              ],
+              "answer": 0,
+              "explanation": "\"They thought it was crazy\" doğru: metinde \"my colleagues thought I had lost my mind\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Why I said no to a promotion\nby Deniz\n\nLast spring, my manager offered me a promotion. It came with a bigger salary, a new title and a lot more travel. Everyone expected me to say yes. I had worked hard for three years, and this was the reward.\n\nI said no. It was the hardest decision I had ever made, and my colleagues thought I had lost my mind. But the new job would mean three nights a week in hotels, and I had just started volunteering at an animal shelter on weekday evenings. That work, which pays nothing, makes me happier than any title.\n\nDo I wish I had more money? Of course. But I don't wish I had taken the job.\n\nComment from TaylanY: Interesting post, but I'm not convinced. Chances like this don't come often. In my opinion, it was a mistake. You could easily volunteer at weekends instead.\n\nReply from Deniz: Fair point, Taylan. However, weekends are when I see my family. For now, I'm happy with my choice.",
+              "question": "TaylanY'nin Deniz'in kararına tutumu nedir?",
+              "options": [
+                "Fully supportive",
+                "Critical but polite",
+                "Angry and rude",
+                "Not interested"
+              ],
+              "answer": 1,
+              "explanation": "\"Critical but polite\" doğru: TaylanY \"Interesting post, but I'm not convinced\" diyerek kibarca karşı çıkıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Why I said no to a promotion\nby Deniz\n\nLast spring, my manager offered me a promotion. It came with a bigger salary, a new title and a lot more travel. Everyone expected me to say yes. I had worked hard for three years, and this was the reward.\n\nI said no. It was the hardest decision I had ever made, and my colleagues thought I had lost my mind. But the new job would mean three nights a week in hotels, and I had just started volunteering at an animal shelter on weekday evenings. That work, which pays nothing, makes me happier than any title.\n\nDo I wish I had more money? Of course. But I don't wish I had taken the job.\n\nComment from TaylanY: Interesting post, but I'm not convinced. Chances like this don't come often. In my opinion, it was a mistake. You could easily volunteer at weekends instead.\n\nReply from Deniz: Fair point, Taylan. However, weekends are when I see my family. For now, I'm happy with my choice.",
+              "question": "\"That work, which pays nothing\" ifadesindeki \"That work\" neyi anlatıyor?",
+              "options": [
+                "The new job",
+                "The hotel work",
+                "Volunteering at the shelter",
+                "Writing the blog"
+              ],
+              "answer": 2,
+              "explanation": "\"Volunteering at the shelter\" doğru: bir önceki cümlede \"volunteering at an animal shelter\" anlatılıyor."
+            },
+            {
+              "type": "listen",
+              "text": "The talk was so interesting that nobody wanted to leave at the end.",
+              "answers": [
+                "The talk was so interesting that nobody wanted to leave at the end."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Although it was raining, a lot of people came to the story night.",
+              "answers": [
+                "Although it was raining, a lot of people came to the story night."
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bence şehirdeki kafeler daha sessiz olmalı, çünkü insanlar konuşmak istiyor.",
+              "lang": "tr",
+              "answers": [
+                "I think cafés in the city should be quieter, because people want to talk",
+                "In my opinion, cafés in the city should be quieter, because people want to talk",
+                "I think the cafés in the city should be quieter, because people want to talk"
+              ],
+              "tokens": [
+                "I",
+                "think",
+                "cafés",
+                "in",
+                "the",
+                "city",
+                "should",
+                "be",
+                "quieter",
+                "because",
+                "people",
+                "want",
+                "to",
+                "talk",
+                "more",
+                "quiet",
+                "for"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hayatımı değiştiren kişi ilk İngilizce öğretmenimdi.",
+              "lang": "tr",
+              "answers": [
+                "The person who changed my life was my first English teacher",
+                "The person that changed my life was my first English teacher",
+                "My first English teacher was the person who changed my life",
+                "My first English teacher was the person that changed my life"
+              ],
+              "tokens": [
+                "The",
+                "person",
+                "who",
+                "changed",
+                "my",
+                "life",
+                "was",
+                "my",
+                "first",
+                "English",
+                "teacher",
+                "which",
+                "a",
+                "has"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "You haven't seen the film yet, ___ you?",
+              "translation": "Filmi henüz görmedin, değil mi?",
+              "answer": "have",
+              "choices": [
+                "have",
+                "haven't",
+                "did"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın \"Kitap çok uzundu\" diyor. Katılıyorsun ama okumaya değdiğini de eklemek istiyorsun. En uygun cevap hangisi?",
+              "answer": "True, although it was worth it.",
+              "choices": [
+                {
+                  "text": "True, although it was worth it.",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "True, despite it was worth it.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "True, however worth it was.",
+                  "emoji": "😐"
+                },
+                {
+                  "text": "No, it was too long.",
+                  "emoji": "🙅"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s6u15c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2685 @@
+{
+  "extends": "s7",
+  "units": [
+    {
+      "id": "s7u13",
+      "title": "Artılar ve eksiler",
+      "description": "Bir konunun lehine ve aleyhine gerekçeli bir deneme yazmak",
+      "color": "0xFF6C4CF1",
+      "theme": "is",
+      "guide": "## Bu ünitede yapabileceklerin\n- Bir tartışmada iki tarafın gerekçelerini dinleyerek ayırt edebilirsin.\n- Bir köşe yazısında yazarın tutumunu ve gerekçelerini bulabilirsin.\n- Bir konunun artılarını ve eksilerini bir dakikada dengeli biçimde anlatabilirsin.\n- Giriş, iki görüş ve sonuçtan oluşan 180–220 kelimelik bir deneme yazabilirsin.\n\n## Strateji\n- Gölgeleme (shadowing) yaparken **on the one hand / on the other hand** gibi geçiş ifadelerini vurgulayarak tekrar et; konuşurken de aynı ritmi kullan.\n- Önce-dinle hikâyesinde metni açmadan iki sütun not al: **lehte** ve **aleyhte**. Her konuşmacının hangi tarafta olduğunu yaz, sonra metni açıp kontrol et.\n- Köşe yazısında yazarın görüşü genellikle son paragraflarda gelir: **I have come to…**, **In my view…** gibi ifadeleri ara.\n- Denemeden önce plan yap: her görüş için iki gerekçe ve bir örnek. Sonuçta yeni bir gerekçe ekleme, kendi görüşünü söyle.\n\n## Model metin\n> Should employees be allowed to work from home? Since the pandemic, more and more companies have had to answer this question, and there are strong arguments on both sides.\n>\n> On the one hand, working from home saves time and money. Employees who do not have to commute for hours are often more relaxed and productive. Many people also say that they can concentrate better in a quiet room than in a busy open-plan office. In addition, companies that offer flexible arrangements find it easier to keep their best staff.\n>\n> On the other hand, there are serious disadvantages. New employees learn a great deal by watching experienced colleagues, and this is difficult on a video call. Moreover, not every job can be done remotely. Drivers, nurses and shop assistants have to be at work, so a home-working policy may seem unfair to them. Some people also feel lonely when they rarely see their team.\n>\n> In conclusion, I believe that a hybrid model is the best solution. If employees spend two or three days in the office, they can learn from each other and still enjoy the benefits of working from home. However, each company should test the idea before making it permanent.\n\nDört paragraf: soru ile açılan giriş, **On the one hand** ile lehte görüşler, **On the other hand** ile aleyhte görüşler ve **In conclusion** ile kendi görüşün. Paragraf içinde **In addition**, **Moreover** gibi bağlayıcılarla gerekçe ekle.\n\n## Türklerin sık hatası\n- ❌ The technology changed the working life. ✅ **Technology** has changed **working life**. (Genel bir şeyden söz ederken **the** kullanma.)\n- ❌ It has a positive effect to productivity. / We discussed about it. ✅ It has a positive effect **on** productivity. / We **discussed** it. (Eşdizimleri kalıp olarak öğren: effect on, arguments on both sides, discuss + nesne.)",
+      "nodes": [
+        {
+          "id": "s7u13l1",
+          "type": "lesson",
+          "title": "Dinleme: Lehte ve aleyhte",
+          "description": "Bir tartışmada iki tarafın gerekçelerini dinleyerek ayır",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "If we'd let people work from home, we wouldn't have lost a lot of good staff.",
+              "answers": [
+                "If we'd let people work from home, we wouldn't have lost a lot of good staff.",
+                "If we had let people work from home, we would not have lost a lot of good staff.",
+                "If we had let people work from home, we wouldn't have lost a lot of good staff.",
+                "If we'd let people work from home, we would not have lost a lot of good staff."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "There are strong arguments on both sides of this debate.",
+              "translation": "Bu tartışmanın iki tarafında da güçlü argümanlar var.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "On the one hand, the office is too far away; on the other hand, it's where ideas happen.",
+              "answers": [
+                "On the one hand, the office is too far away; on the other hand, it's where ideas happen.",
+                "On the one hand, the office is too far away; on the other hand, it is where ideas happen."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We need to weigh ___ the advantages and disadvantages before we decide.",
+              "translation": "Karar vermeden önce avantajları ve dezavantajları tartmamız gerekiyor.",
+              "answer": "up",
+              "choices": [
+                "up",
+                "on",
+                "out"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Do you think people work harder at home, or are they just better at looking busy?",
+              "answers": [
+                "Do you think people work harder at home, or are they just better at looking busy?"
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "Supporters claim it saves time, whereas critics argue it weakens the team.",
+              "translation": "Destekçiler zaman kazandırdığını iddia ediyor, eleştirenler ise ekibi zayıflattığını savunuyor.",
+              "rate": 0.85
+            },
+            {
+              "type": "listen",
+              "text": "I'd rather have a quiet day at home than spend three hours on the motorway.",
+              "answers": [
+                "I'd rather have a quiet day at home than spend three hours on the motorway.",
+                "I would rather have a quiet day at home than spend three hours on the motorway.",
+                "I'd rather have a quiet day at home than spend 3 hours on the motorway.",
+                "I would rather have a quiet day at home than spend 3 hours on the motorway."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "According to the survey, working from home has a positive effect ___ productivity.",
+              "translation": "Ankete göre evden çalışmanın verimlilik üzerinde olumlu bir etkisi var.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "to",
+                "at"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "lehte ve aleyhte",
+                  "for and against"
+                ],
+                [
+                  "bir yandan",
+                  "on the one hand"
+                ],
+                [
+                  "öte yandan",
+                  "on the other hand"
+                ],
+                [
+                  "özetlemek gerekirse",
+                  "to sum up"
+                ],
+                [
+                  "işe gidip gelmek",
+                  "commute"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u13l2",
+          "type": "lesson",
+          "title": "Okuma: Dört günlük hafta",
+          "description": "Bir köşe yazısında iki tarafın gerekçelerini ve yazarın görüşünü bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Four Days, Full Pay: Too Good to Be True?\n\nLast month, a small design agency in Kadıköy announced that its staff would work four days a week for the same salary. Within a week, the agency had received more than two hundred job applications. Unsurprisingly, other employers have started asking whether they should follow its example.\n\nSupporters of the four-day week make a persuasive case. They argue that people who are well rested make fewer mistakes and are less likely to quit. In a trial carried out in several British companies, most managers reported that productivity stayed the same, while sick days fell sharply. Supporters also point out that a shorter week could reduce traffic, which is no small advantage in a city like Istanbul.\n\nCritics, however, are not convinced. Not every job can be squeezed into four days, they say. A café cannot serve customers on a day it is closed, and a logistics firm cannot tell its clients that parcels will only be delivered from Monday to Thursday. In such businesses, the fifth day would have to be covered by extra staff, and somebody would have to pay for them. Critics also warn that longer working days may simply leave employees more exhausted than before.\n\nHaving spoken to people on both sides, I have come to a cautious conclusion. The four-day week is not a magic solution, but it should not be dismissed as a fantasy either. Had the Kadıköy agency introduced the change without consulting its team, it might well have failed. Instead, its managers spent three months testing different schedules and asking staff for feedback. That, rather than the number of days, may be the real lesson.\n\nPerhaps the question we should be asking is not \"four days or five?\" but \"how do we measure good work?\" If companies judged their staff by results rather than by hours spent at a desk, the debate might look very different. Until then, I suspect most of us will keep checking our emails on Fridays.",
+              "question": "Ajans dört günlük haftayı duyurduktan sonra ne oldu?",
+              "options": [
+                "It lost several of its designers",
+                "It moved to a bigger office",
+                "It received over two hundred job applications",
+                "Its clients complained about delays"
+              ],
+              "answer": 2,
+              "explanation": "\"It received over two hundred job applications\" doğru: metinde \"Within a week, the agency had received more than two hundred job applications\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Four Days, Full Pay: Too Good to Be True?\n\nLast month, a small design agency in Kadıköy announced that its staff would work four days a week for the same salary. Within a week, the agency had received more than two hundred job applications. Unsurprisingly, other employers have started asking whether they should follow its example.\n\nSupporters of the four-day week make a persuasive case. They argue that people who are well rested make fewer mistakes and are less likely to quit. In a trial carried out in several British companies, most managers reported that productivity stayed the same, while sick days fell sharply. Supporters also point out that a shorter week could reduce traffic, which is no small advantage in a city like Istanbul.\n\nCritics, however, are not convinced. Not every job can be squeezed into four days, they say. A café cannot serve customers on a day it is closed, and a logistics firm cannot tell its clients that parcels will only be delivered from Monday to Thursday. In such businesses, the fifth day would have to be covered by extra staff, and somebody would have to pay for them. Critics also warn that longer working days may simply leave employees more exhausted than before.\n\nHaving spoken to people on both sides, I have come to a cautious conclusion. The four-day week is not a magic solution, but it should not be dismissed as a fantasy either. Had the Kadıköy agency introduced the change without consulting its team, it might well have failed. Instead, its managers spent three months testing different schedules and asking staff for feedback. That, rather than the number of days, may be the real lesson.\n\nPerhaps the question we should be asking is not \"four days or five?\" but \"how do we measure good work?\" If companies judged their staff by results rather than by hours spent at a desk, the debate might look very different. Until then, I suspect most of us will keep checking our emails on Fridays.",
+              "question": "İngiliz şirketlerindeki denemede ne oldu?",
+              "options": [
+                "Productivity stayed the same and sick days fell",
+                "Productivity rose and salaries fell",
+                "Most employees asked to return to five days",
+                "Traffic in the city fell sharply"
+              ],
+              "answer": 0,
+              "explanation": "\"Productivity stayed the same and sick days fell\" doğru: metinde \"productivity stayed the same, while sick days fell sharply\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Four Days, Full Pay: Too Good to Be True?\n\nLast month, a small design agency in Kadıköy announced that its staff would work four days a week for the same salary. Within a week, the agency had received more than two hundred job applications. Unsurprisingly, other employers have started asking whether they should follow its example.\n\nSupporters of the four-day week make a persuasive case. They argue that people who are well rested make fewer mistakes and are less likely to quit. In a trial carried out in several British companies, most managers reported that productivity stayed the same, while sick days fell sharply. Supporters also point out that a shorter week could reduce traffic, which is no small advantage in a city like Istanbul.\n\nCritics, however, are not convinced. Not every job can be squeezed into four days, they say. A café cannot serve customers on a day it is closed, and a logistics firm cannot tell its clients that parcels will only be delivered from Monday to Thursday. In such businesses, the fifth day would have to be covered by extra staff, and somebody would have to pay for them. Critics also warn that longer working days may simply leave employees more exhausted than before.\n\nHaving spoken to people on both sides, I have come to a cautious conclusion. The four-day week is not a magic solution, but it should not be dismissed as a fantasy either. Had the Kadıköy agency introduced the change without consulting its team, it might well have failed. Instead, its managers spent three months testing different schedules and asking staff for feedback. That, rather than the number of days, may be the real lesson.\n\nPerhaps the question we should be asking is not \"four days or five?\" but \"how do we measure good work?\" If companies judged their staff by results rather than by hours spent at a desk, the debate might look very different. Until then, I suspect most of us will keep checking our emails on Fridays.",
+              "question": "\"somebody would have to pay for them\" cümlesindeki \"them\" neyi anlatıyor?",
+              "options": [
+                "The clients",
+                "The parcels",
+                "The critics",
+                "The extra staff"
+              ],
+              "answer": 3,
+              "explanation": "\"The extra staff\" doğru: beşinci gün için gereken ek çalışanlar (\"extra staff\") için birinin ödeme yapması gerekir."
+            },
+            {
+              "type": "choice",
+              "passage": "Four Days, Full Pay: Too Good to Be True?\n\nLast month, a small design agency in Kadıköy announced that its staff would work four days a week for the same salary. Within a week, the agency had received more than two hundred job applications. Unsurprisingly, other employers have started asking whether they should follow its example.\n\nSupporters of the four-day week make a persuasive case. They argue that people who are well rested make fewer mistakes and are less likely to quit. In a trial carried out in several British companies, most managers reported that productivity stayed the same, while sick days fell sharply. Supporters also point out that a shorter week could reduce traffic, which is no small advantage in a city like Istanbul.\n\nCritics, however, are not convinced. Not every job can be squeezed into four days, they say. A café cannot serve customers on a day it is closed, and a logistics firm cannot tell its clients that parcels will only be delivered from Monday to Thursday. In such businesses, the fifth day would have to be covered by extra staff, and somebody would have to pay for them. Critics also warn that longer working days may simply leave employees more exhausted than before.\n\nHaving spoken to people on both sides, I have come to a cautious conclusion. The four-day week is not a magic solution, but it should not be dismissed as a fantasy either. Had the Kadıköy agency introduced the change without consulting its team, it might well have failed. Instead, its managers spent three months testing different schedules and asking staff for feedback. That, rather than the number of days, may be the real lesson.\n\nPerhaps the question we should be asking is not \"four days or five?\" but \"how do we measure good work?\" If companies judged their staff by results rather than by hours spent at a desk, the debate might look very different. Until then, I suspect most of us will keep checking our emails on Fridays.",
+              "question": "Kadıköy'deki ajansın başarısı hakkında metinden ne çıkarılabilir?",
+              "options": [
+                "It succeeded only because salaries were high",
+                "Careful testing with the team helped it succeed",
+                "Its staff had never been asked for feedback",
+                "It copied a plan from a British company"
+              ],
+              "answer": 1,
+              "explanation": "\"Careful testing with the team helped it succeed\" doğru: yazar, ajansın üç ay farklı programları denediğini ve çalışanlardan geri bildirim aldığını, asıl dersin de bu olduğunu söylüyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Four Days, Full Pay: Too Good to Be True?\n\nLast month, a small design agency in Kadıköy announced that its staff would work four days a week for the same salary. Within a week, the agency had received more than two hundred job applications. Unsurprisingly, other employers have started asking whether they should follow its example.\n\nSupporters of the four-day week make a persuasive case. They argue that people who are well rested make fewer mistakes and are less likely to quit. In a trial carried out in several British companies, most managers reported that productivity stayed the same, while sick days fell sharply. Supporters also point out that a shorter week could reduce traffic, which is no small advantage in a city like Istanbul.\n\nCritics, however, are not convinced. Not every job can be squeezed into four days, they say. A café cannot serve customers on a day it is closed, and a logistics firm cannot tell its clients that parcels will only be delivered from Monday to Thursday. In such businesses, the fifth day would have to be covered by extra staff, and somebody would have to pay for them. Critics also warn that longer working days may simply leave employees more exhausted than before.\n\nHaving spoken to people on both sides, I have come to a cautious conclusion. The four-day week is not a magic solution, but it should not be dismissed as a fantasy either. Had the Kadıköy agency introduced the change without consulting its team, it might well have failed. Instead, its managers spent three months testing different schedules and asking staff for feedback. That, rather than the number of days, may be the real lesson.\n\nPerhaps the question we should be asking is not \"four days or five?\" but \"how do we measure good work?\" If companies judged their staff by results rather than by hours spent at a desk, the debate might look very different. Until then, I suspect most of us will keep checking our emails on Fridays.",
+              "question": "Yazarın dört günlük hafta hakkındaki tutumu nedir?",
+              "options": [
+                "Strongly against it",
+                "Completely enthusiastic about it",
+                "Cautiously open to the idea",
+                "Not interested in the debate"
+              ],
+              "answer": 2,
+              "explanation": "\"Cautiously open to the idea\" doğru: yazar \"I have come to a cautious conclusion\" diyor; fikrin sihirli bir çözüm olmadığını ama hayal diye de reddedilmemesi gerektiğini savunuyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Four Days, Full Pay: Too Good to Be True?\n\nLast month, a small design agency in Kadıköy announced that its staff would work four days a week for the same salary. Within a week, the agency had received more than two hundred job applications. Unsurprisingly, other employers have started asking whether they should follow its example.\n\nSupporters of the four-day week make a persuasive case. They argue that people who are well rested make fewer mistakes and are less likely to quit. In a trial carried out in several British companies, most managers reported that productivity stayed the same, while sick days fell sharply. Supporters also point out that a shorter week could reduce traffic, which is no small advantage in a city like Istanbul.\n\nCritics, however, are not convinced. Not every job can be squeezed into four days, they say. A café cannot serve customers on a day it is closed, and a logistics firm cannot tell its clients that parcels will only be delivered from Monday to Thursday. In such businesses, the fifth day would have to be covered by extra staff, and somebody would have to pay for them. Critics also warn that longer working days may simply leave employees more exhausted than before.\n\nHaving spoken to people on both sides, I have come to a cautious conclusion. The four-day week is not a magic solution, but it should not be dismissed as a fantasy either. Had the Kadıköy agency introduced the change without consulting its team, it might well have failed. Instead, its managers spent three months testing different schedules and asking staff for feedback. That, rather than the number of days, may be the real lesson.\n\nPerhaps the question we should be asking is not \"four days or five?\" but \"how do we measure good work?\" If companies judged their staff by results rather than by hours spent at a desk, the debate might look very different. Until then, I suspect most of us will keep checking our emails on Fridays.",
+              "question": "Yazar son paragrafta ne öneriyor?",
+              "options": [
+                "Closing all offices on Fridays",
+                "Paying staff for extra hours",
+                "Banning emails at the weekend",
+                "Judging work by results instead of hours"
+              ],
+              "answer": 3,
+              "explanation": "\"Judging work by results instead of hours\" doğru: metinde \"If companies judged their staff by results rather than by hours spent at a desk\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "ikna edici",
+                  "persuasive"
+                ],
+                [
+                  "deneme (uygulama)",
+                  "trial"
+                ],
+                [
+                  "işi bırakmak",
+                  "quit"
+                ],
+                [
+                  "göz ardı etmek",
+                  "dismiss"
+                ],
+                [
+                  "temkinli",
+                  "cautious"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Had the agency ___ the change without asking its staff, it might have failed.",
+              "translation": "Ajans değişikliği çalışanlarına sormadan uygulamış olsaydı, başarısız olabilirdi.",
+              "answer": "introduced",
+              "choices": [
+                "introduced",
+                "introduce",
+                "introducing"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Denemende karşı görüşü tanıtacaksın. En uygun ifade hangisi?",
+              "answer": "Critics, however, argue that…",
+              "choices": [
+                {
+                  "text": "Critics, however, argue that…",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "But some guys say that…",
+                  "emoji": "🙄"
+                },
+                {
+                  "text": "Everybody knows that…",
+                  "emoji": "🤷"
+                },
+                {
+                  "text": "I totally hate the idea that…",
+                  "emoji": "😠"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u13s",
+          "type": "story",
+          "title": "Ofis mi, ev mi?",
+          "description": "Merkez Maslak'a taşınınca Deniz'in ekibi evden çalışmayı tartışıyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Thanks for staying, everyone. Since we moved to Maslak, I've had a lot of complaints about the commute.",
+              "translation": "Kaldığınız için teşekkürler. Maslak'a taşındığımızdan beri yol konusunda çok şikâyet aldım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Not surprising. Some people now spend three hours a day in traffic. That's fifteen hours a week.",
+              "translation": "Şaşırtıcı değil. Bazıları artık günde üç saat trafikte geçiriyor. Bu da haftada on beş saat demek."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "My team has a suggestion. Let people work from home two days a week, say Tuesdays and Thursdays.",
+              "translation": "Ekibimin bir önerisi var. İnsanlar haftada iki gün evden çalışsın, mesela salı ve perşembe."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem'in ekibi haftada kaç gün evden çalışmayı öneriyor?",
+              "choices": [
+                "Bir gün",
+                "İki gün",
+                "Üç gün"
+              ],
+              "answer": "İki gün"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Before we decide, let's look at both sides. Kerem, what are the main advantages?",
+              "translation": "Karar vermeden önce iki tarafa da bakalım. Kerem, başlıca avantajlar neler?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "First, people would get those hours back. Second, developers need quiet time to write good code.",
+              "translation": "Birincisi, insanlar o saatleri geri kazanır. İkincisi, yazılımcıların iyi kod yazmak için sessiz zamana ihtiyacı var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "If we had had a quieter office last month, that update might have been tested properly.",
+              "translation": "Geçen ay daha sessiz bir ofisimiz olsaydı, o güncelleme düzgünce test edilmiş olabilirdi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Hmm, I'm not sure the office was the problem. But go on.",
+              "translation": "Hımm, sorunun ofis olduğundan emin değilim. Ama devam et."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "And third, we'd keep our people. Two engineers have already been offered jobs closer to home.",
+              "translation": "Üçüncüsü de insanlarımızı elde tutarız. İki mühendise evlerine daha yakın işler çoktan teklif edildi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "That's a serious point. Losing them would cost us far more than a few empty desks.",
+              "translation": "Bu ciddi bir nokta. Onları kaybetmek bize birkaç boş masadan çok daha pahalıya patlar."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Maybe, but empty desks aren't the only cost. Teams that never meet tend to stop talking to each other.",
+              "translation": "Olabilir ama tek maliyet boş masalar değil. Hiç bir araya gelmeyen ekipler birbiriyle konuşmayı bırakma eğiliminde."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Selin, you look unconvinced. What are the disadvantages?",
+              "translation": "Selin, ikna olmamış görünüyorsun. Dezavantajlar neler?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "My biggest worry is the new staff. Since the merger, we've hired twelve people, and most of them are juniors.",
+              "translation": "En büyük endişem yeni çalışanlar. Birleşmeden beri on iki kişi işe aldık ve çoğu yeni başlayan."
+            },
+            {
+              "kind": "question",
+              "prompt": "Birleşmeden beri kaç kişi işe alındı?",
+              "choices": [
+                "On iki",
+                "On beş",
+                "Yirmi"
+              ],
+              "answer": "On iki"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "They learn by listening to experienced colleagues. You can't pick that up on a video call.",
+              "translation": "Deneyimli meslektaşlarını dinleyerek öğreniyorlar. Bunu görüntülü bir görüşmede kapamazsın."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "And our drivers and warehouse staff can't work from home at all. It might seem unfair to them.",
+              "translation": "Ayrıca sürücülerimiz ve depo çalışanlarımız hiç evden çalışamaz. Bu onlara haksızlık gibi görünebilir."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "That's a valid point. I hadn't thought about the warehouse team.",
+              "translation": "Haklı bir nokta. Depo ekibini düşünmemiştim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem, Selin'in depo çalışanlarıyla ilgili görüşüne nasıl tepki veriyor?",
+              "choices": [
+                "Haklı buluyor",
+                "Alay ediyor",
+                "Görmezden geliyor"
+              ],
+              "answer": "Haklı buluyor"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "So, on the one hand, we'd save time and keep our engineers. On the other hand, juniors and drivers might lose out.",
+              "translation": "Yani bir yandan zaman kazanır ve mühendislerimizi tutarız. Öte yandan yeni başlayanlar ve sürücüler kayıplı çıkabilir."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "What if we tried it for three months? New staff would come in every day during their first month.",
+              "translation": "Peki üç ay denesek? Yeni çalışanlar ilk aylarında her gün gelir."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "And the warehouse could get something too, like flexible start times. Would that work, Selin?",
+              "translation": "Depo da bir şey kazanabilir, esnek başlama saatleri gibi. Bu işe yarar mı Selin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "It might. I'd want to see the numbers first: delays, mistakes and how many people leave.",
+              "translation": "Yarayabilir. Önce rakamları görmek isterim: gecikmeler, hatalar ve kaç kişinin ayrıldığı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Fair enough. Kerem, could you have your team put together a short proposal by Friday?",
+              "translation": "Makul. Kerem, ekibine cumaya kadar kısa bir öneri hazırlatabilir misin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "Sure. And I'll ask Mia whether she'd write about it. Her readers love this topic.",
+              "translation": "Tabii. Mia'ya da bu konuda yazıp yazmayacağını sorarım. Okurları bu konuya bayılıyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"Her readers love this topic\" cümlesindeki \"her\" kimi anlatıyor?",
+              "choices": [
+                "Selin",
+                "Mia",
+                "Elif"
+              ],
+              "answer": "Mia"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Let's not go public yet. We had enough headlines after the system crashed!",
+              "translation": "Henüz kamuoyuna açıklamayalım. Sistem çöktükten sonra yeterince manşet olduk!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "Agreed. A three-month trial, a proposal by Friday, and no articles until we see results.",
+              "translation": "Anlaştık. Üç aylık bir deneme, cumaya kadar bir öneri ve sonuçları görene kadar makale yok."
+            },
+            {
+              "kind": "question",
+              "prompt": "Toplantının sonunda ne karar veriliyor?",
+              "choices": [
+                "Herkes hemen evden çalışacak",
+                "Üç aylık bir deneme için öneri hazırlanacak",
+                "Ofis yeniden Kadıköy'e taşınacak"
+              ],
+              "answer": "Üç aylık bir deneme için öneri hazırlanacak"
+            }
+          ]
+        },
+        {
+          "id": "s7u13l3",
+          "type": "lesson",
+          "title": "Konuşma: İki tarafı da anlat",
+          "description": "Bir konunun artılarını ve eksilerini bir dakikada dengeli anlat",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "I can see why people like the idea, but it has a downside.",
+              "translation": "İnsanların bu fikri neden sevdiğini anlıyorum ama bir dezavantajı var.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "All things considered, I'd support a trial rather than a permanent change.",
+              "translation": "Her şey göz önüne alındığında, kalıcı bir değişiklik yerine bir denemeyi desteklerim.",
+              "rate": 0.85
+            },
+            {
+              "type": "speak",
+              "text": "Let me start with the advantages of working from home.",
+              "translation": "Evden çalışmanın avantajlarıyla başlayayım."
+            },
+            {
+              "type": "speak",
+              "text": "Without a long commute, people have more time and energy for their work.",
+              "translation": "Uzun bir yol olmadan insanların işleri için daha çok zamanı ve enerjisi olur."
+            },
+            {
+              "type": "speak",
+              "text": "On the other hand, new employees learn much faster when they sit with experienced colleagues.",
+              "translation": "Öte yandan yeni çalışanlar deneyimli meslektaşlarının yanında oturduklarında çok daha hızlı öğrenir."
+            },
+            {
+              "type": "speak",
+              "text": "So, in my view, a mix of office and home days is the fairest solution.",
+              "translation": "Bu yüzden bence ofis ve ev günlerinin bir karışımı en adil çözüm."
+            },
+            {
+              "type": "select",
+              "prompt": "Toplantıda biri \"Remote work kills team spirit.\" diyor. Kibarca karşı çıkmak için en uygun cevap hangisi?",
+              "answer": "I see what you mean, but…",
+              "choices": [
+                {
+                  "text": "I see what you mean, but…",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "You're totally wrong.",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "That's a stupid idea.",
+                  "emoji": "🙄"
+                },
+                {
+                  "text": "I'm agree with you.",
+                  "emoji": "❌"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir dakikalık konuşmanı bitiriyorsun. En uygun ifade hangisi?",
+              "answer": "So, overall, I'd say…",
+              "choices": [
+                {
+                  "text": "So, overall, I'd say…",
+                  "emoji": "🏁"
+                },
+                {
+                  "text": "Firstly, I'd say…",
+                  "emoji": "1️⃣"
+                },
+                {
+                  "text": "For example, I'd say…",
+                  "emoji": "💡"
+                },
+                {
+                  "text": "Next, I'd say…",
+                  "emoji": "➡️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bence ikisinin de artıları ve eksileri var.",
+              "lang": "tr",
+              "answers": [
+                "I think both have pros and cons",
+                "I think they both have pros and cons",
+                "I think both of them have pros and cons",
+                "In my opinion both have pros and cons",
+                "In my view both have pros and cons",
+                "I think there are pros and cons to both"
+              ],
+              "tokens": [
+                "I",
+                "think",
+                "both",
+                "have",
+                "pros",
+                "and",
+                "cons",
+                "the",
+                "has"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u13l4",
+          "type": "lesson",
+          "title": "Yazma: Lehte-aleyhte denemesi",
+          "description": "Giriş, iki görüş ve sonuçtan oluşan bir deneme yaz",
+          "exercises": [
+            {
+              "type": "write",
+              "prompt": "Çalışanların evden çalışmasına izin verilmeli mi? Bu konuda 180–220 kelimelik bir lehte-aleyhte denemesi yaz: bir giriş paragrafı, lehte görüşler, aleyhte görüşler ve kendi görüşünü veren bir sonuç paragrafı.",
+              "model": "Should employees be allowed to work from home? Since the pandemic, more and more companies have had to answer this question, and there are strong arguments on both sides.\n\nOn the one hand, working from home saves time and money. Employees who do not have to commute for hours are often more relaxed and productive. Many people also say that they can concentrate better in a quiet room than in a busy open-plan office. In addition, companies that offer flexible arrangements find it easier to keep their best staff.\n\nOn the other hand, there are serious disadvantages. New employees learn a great deal by watching experienced colleagues, and this is difficult on a video call. Moreover, not every job can be done remotely. Drivers, nurses and shop assistants have to be at work, so a home-working policy may seem unfair to them. Some people also feel lonely when they rarely see their team.\n\nIn conclusion, I believe that a hybrid model is the best solution. If employees spend two or three days in the office, they can learn from each other and still enjoy the benefits of working from home. However, each company should test the idea before making it permanent.",
+              "minWords": 160,
+              "maxWords": 240,
+              "checklist": [
+                "Giriş paragrafında konuyu ve tartışmanın iki tarafı olduğunu belirttin",
+                "Lehte ve aleyhte görüşleri ayrı paragraflarda, en az ikişer gerekçeyle yazdın",
+                "En az üç bağlayıcı ifade kullandın (on the one hand, moreover, however…)",
+                "Sonuç paragrafında kendi görüşünü açıkça yazdın (In conclusion, I believe…)",
+                "Genel ifadelerde gereksiz the kullanmadın (Technology…, People…)"
+              ],
+              "focus": [
+                "article",
+                "preposition"
+              ],
+              "taskId": "s7u13l4w"
+            },
+            {
+              "type": "translate",
+              "text": "Üstelik her iş uzaktan yapılamaz.",
+              "lang": "tr",
+              "answers": [
+                "Moreover, not every job can be done remotely."
+              ],
+              "tokens": [
+                "Moreover",
+                "not",
+                "every",
+                "job",
+                "can",
+                "be",
+                "done",
+                "remotely",
+                "is",
+                "doing"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sonuç olarak, hibrit bir modelin en iyi çözüm olduğuna inanıyorum.",
+              "lang": "tr",
+              "answers": [
+                "In conclusion, I believe that a hybrid model is the best solution.",
+                "In conclusion, I believe a hybrid model is the best solution."
+              ],
+              "tokens": [
+                "In",
+                "conclusion",
+                "I",
+                "believe",
+                "that",
+                "a",
+                "hybrid",
+                "model",
+                "is",
+                "the",
+                "best",
+                "solution",
+                "am",
+                "most"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Birçok kişi ayrıca sessiz bir odada, kalabalık bir açık ofise göre daha iyi odaklanabildiğini söylüyor.",
+              "lang": "tr",
+              "answers": [
+                "Many people also say that they can concentrate better in a quiet room than in a busy open-plan office.",
+                "Many people also say they can concentrate better in a quiet room than in a busy open-plan office."
+              ],
+              "tokens": [
+                "Many",
+                "people",
+                "also",
+                "say",
+                "that",
+                "they",
+                "can",
+                "concentrate",
+                "better",
+                "in",
+                "a",
+                "quiet",
+                "room",
+                "than",
+                "in",
+                "a",
+                "busy",
+                "open-plan",
+                "office",
+                "the",
+                "on"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Working from home saves time. ___, it can make people feel isolated.",
+              "translation": "Evden çalışmak zaman kazandırır. Ancak insanları yalnız hissettirebilir.",
+              "answer": "However",
+              "choices": [
+                "However",
+                "Moreover",
+                "Therefore"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "In my opinion, a hybrid model is ___ best solution for most companies.",
+              "translation": "Bence hibrit model çoğu şirket için en iyi çözüm.",
+              "answer": "the",
+              "choices": [
+                "the",
+                "a",
+                "an"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "There are strong arguments ___ both sides of the question.",
+              "translation": "Sorunun her iki tarafında da güçlü argümanlar var.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "in",
+                "at"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir lehte-aleyhte denemesinin doğru paragraf sırası hangisi?",
+              "answer": "Giriş, lehte, aleyhte, sonuç",
+              "choices": [
+                {
+                  "text": "Giriş, lehte, aleyhte, sonuç",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Sonuç, giriş, lehte, aleyhte",
+                  "emoji": "🔀"
+                },
+                {
+                  "text": "Lehte, sonuç, aleyhte, giriş",
+                  "emoji": "🔄"
+                },
+                {
+                  "text": "Giriş, sonuç, lehte, aleyhte",
+                  "emoji": "↩️"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "dezavantaj",
+                  "disadvantage"
+                ],
+                [
+                  "uzaktan",
+                  "remotely"
+                ],
+                [
+                  "esnek",
+                  "flexible"
+                ],
+                [
+                  "kalıcı",
+                  "permanent"
+                ],
+                [
+                  "yalnız hissetmek",
+                  "feel lonely"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u13t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s7u13c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s7u14",
+      "title": "Bir konuşmayı izle",
+      "description": "Bir sunum ya da podcastten not alıp ana noktaları özetlemek",
+      "color": "0xFFF2994A",
+      "theme": "haber",
+      "guide": "## Bu ünitede yapabileceklerin\n- 3–4 dakikalık bir podcast ya da sunumdan ana fikri ve ana noktaları not alabilirsin.\n- Konuşmacının konu değiştirdiğini haber veren ifadeleri (that brings me to…, to sum up…) yakalayabilirsin.\n- Bir konuşmanın yazılı özetinde yazarın tutumunu ve çıkarımlarını bulabilirsin.\n- Notlarından yaklaşık 120 kelimelik bir özet yazabilir ve konuşmayı bir arkadaşına aktarabilirsin.\n\n## Strateji\n- Önce-dinle hikâyesinde metni açmadan sadece anahtar kelimeleri yaz: sayılar, saatler, **first / second / finally** sonrası gelen fikirler. Tam cümle yazmaya çalışma.\n- Konuşmacı **The main point…**, **That brings me to…**, **If there's one thing…** dediğinde kulak kabart: önemli bilgi hemen arkadan gelir.\n- Gölgeleme (shadowing) ile aktarma kalıplarını (**The speaker argued that…**) ağzına yerleştir; özetlerken bu kalıplar hazır olsun.\n- Dictogloss: dinle, not al, notlardan metni yeniden kur, sonra orijinalle karşılaştır. Amaç birebir kopya değil, aynı bilgiyi doğru dille vermek.\n\n## Model metin\n> In a recent episode of the podcast Istanbul at Work, Deniz from RotaLojistik talked about the day the company's tracking system crashed. The problem started at six in the morning, and more than two thousand deliveries were delayed. Deniz explained that the cause was a software update which had not been tested properly.\n>\n> Deniz argued that the company had learned three lessons. First, speed should never become more important than safety. Second, it is better to tell clients the truth immediately than to stay silent. The company issued a statement before noon and lost only one client. Finally, every system should be checked by people who did not build it.\n>\n> The main message was that mistakes are unavoidable, but companies must admit them quickly and learn from them.\n\nÜç paragraf: konuşma ve olay, üç ders (**First, Second, Finally**) ve tek cümlelik ana mesaj. Geçmiş olaylar aktarılırken zaman geriye kayar: **was not tested → had not been tested**.\n\n## Türklerin sık hatası\n- ❌ Deniz said me that the update didn't test. ✅ Deniz **told me** / **said** that the update **had not been tested**. (say + that, tell + kişi; edilgen ve zaman kaydırma.)\n- ❌ Number of delayed deliveries was over two thousand. ✅ **The** number of delayed deliveries was over two thousand. (Belirli bir şeyden söz ederken **the**; \"a number of\" ise \"birçok\" demektir.)",
+      "nodes": [
+        {
+          "id": "s7u14l1",
+          "type": "lesson",
+          "title": "Dinleme: Konuşmanın işaretleri",
+          "description": "Sunum ve podcastlerde ana fikri ve geçişleri haber veren ifadeleri yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "The main point I'd like to make today is that most delays are caused by poor planning.",
+              "answers": [
+                "The main point I'd like to make today is that most delays are caused by poor planning.",
+                "The main point I would like to make today is that most delays are caused by poor planning."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "So, to sum up, there are three lessons we can learn from this.",
+              "translation": "Özetlemek gerekirse, bundan çıkarabileceğimiz üç ders var.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "Let me give you an example of what can happen when a system isn't tested.",
+              "answers": [
+                "Let me give you an example of what can happen when a system isn't tested.",
+                "Let me give you an example of what can happen when a system is not tested."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'd like to draw your attention ___ the figures on this slide.",
+              "translation": "Dikkatinizi bu slayttaki rakamlara çekmek istiyorum.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "on",
+                "at"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "That brings me to my second point: it's all about the cost of saying nothing.",
+              "answers": [
+                "That brings me to my second point: it's all about the cost of saying nothing.",
+                "That brings me to my second point: it is all about the cost of saying nothing."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "As I mentioned earlier, the problem wasn't the software itself.",
+              "translation": "Daha önce de belirttiğim gibi, sorun yazılımın kendisi değildi.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "If there's one thing I want you to take away from this talk, it's this.",
+              "answers": [
+                "If there's one thing I want you to take away from this talk, it's this.",
+                "If there is one thing I want you to take away from this talk, it is this.",
+                "If there is one thing I want you to take away from this talk, it's this.",
+                "If there's one thing I want you to take away from this talk, it is this."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "After the break, the speaker went on ___ explain why the project had failed.",
+              "translation": "Aradan sonra konuşmacı, projenin neden başarısız olduğunu açıklamaya geçti.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "with"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "ilk olarak",
+                  "to begin with"
+                ],
+                [
+                  "örneğin",
+                  "for instance"
+                ],
+                [
+                  "başka bir deyişle",
+                  "in other words"
+                ],
+                [
+                  "bu beni … getiriyor",
+                  "that brings me to"
+                ],
+                [
+                  "kısacası",
+                  "in short"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u14l2",
+          "type": "lesson",
+          "title": "Okuma: Bir konuşmanın notları",
+          "description": "Bir konferans konuşmasının yazılı özetinde ana fikri ve yazarın tutumunu bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Notes from the Istanbul Logistics Summit\nby Selin, RotaLojistik\n\nThe talk that everybody was discussing at lunch on Thursday was not given by a famous CEO. It was given by Dr Aylin Erdem, a researcher who has spent ten years studying how companies behave during a crisis.\n\nHer message was surprisingly simple: customers forgive mistakes far more easily than they forgive silence. To prove it, she described an experiment in which two groups of online shoppers were told that their parcels would arrive three days late. The first group received a short, honest explanation and an apology within an hour. The second group heard nothing until the parcels finally arrived. A month later, the first group were twice as likely to order again.\n\nDr Erdem then went on to explain why so many companies still choose to stay quiet. According to her research, managers are usually afraid of two things: admitting that something has gone wrong before they know the cause, and promising a solution they cannot deliver. \"Both fears are understandable,\" she said, \"but customers do not expect you to have every answer. They expect you to tell them what you know and when they will hear from you again.\"\n\nThe most practical part of the talk came at the end. She recommended that every company prepare a \"first-hour message\" in advance: a short statement that can be sent the moment a problem is noticed. It should say what has happened, who is affected and when the next update will be given, and nothing more.\n\nI have to admit that I was sceptical at first. Some of her figures came from small studies, and logistics is not the same as online fashion. Still, I left the room convinced that we had been lucky last month. Had we waited until the afternoon to speak to our clients, we might have lost far more than one contract. I will be suggesting a first-hour message at our next team meeting.",
+              "question": "Deneyde birinci gruba ne yapıldı?",
+              "options": [
+                "They received their parcels three days early",
+                "They got an honest explanation and an apology within an hour",
+                "They were offered a discount on their next order",
+                "They heard nothing until the parcels arrived"
+              ],
+              "answer": 1,
+              "explanation": "\"They got an honest explanation and an apology within an hour\" doğru: metinde \"The first group received a short, honest explanation and an apology within an hour\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Notes from the Istanbul Logistics Summit\nby Selin, RotaLojistik\n\nThe talk that everybody was discussing at lunch on Thursday was not given by a famous CEO. It was given by Dr Aylin Erdem, a researcher who has spent ten years studying how companies behave during a crisis.\n\nHer message was surprisingly simple: customers forgive mistakes far more easily than they forgive silence. To prove it, she described an experiment in which two groups of online shoppers were told that their parcels would arrive three days late. The first group received a short, honest explanation and an apology within an hour. The second group heard nothing until the parcels finally arrived. A month later, the first group were twice as likely to order again.\n\nDr Erdem then went on to explain why so many companies still choose to stay quiet. According to her research, managers are usually afraid of two things: admitting that something has gone wrong before they know the cause, and promising a solution they cannot deliver. \"Both fears are understandable,\" she said, \"but customers do not expect you to have every answer. They expect you to tell them what you know and when they will hear from you again.\"\n\nThe most practical part of the talk came at the end. She recommended that every company prepare a \"first-hour message\" in advance: a short statement that can be sent the moment a problem is noticed. It should say what has happened, who is affected and when the next update will be given, and nothing more.\n\nI have to admit that I was sceptical at first. Some of her figures came from small studies, and logistics is not the same as online fashion. Still, I left the room convinced that we had been lucky last month. Had we waited until the afternoon to speak to our clients, we might have lost far more than one contract. I will be suggesting a first-hour message at our next team meeting.",
+              "question": "Konuşmanın ana mesajı nedir?",
+              "options": [
+                "Customers forgive mistakes more easily than silence",
+                "Online shops should never make mistakes",
+                "Managers must always know the cause of a problem",
+                "Logistics firms should copy online fashion brands"
+              ],
+              "answer": 0,
+              "explanation": "\"Customers forgive mistakes more easily than silence\" doğru: metinde \"customers forgive mistakes far more easily than they forgive silence\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Notes from the Istanbul Logistics Summit\nby Selin, RotaLojistik\n\nThe talk that everybody was discussing at lunch on Thursday was not given by a famous CEO. It was given by Dr Aylin Erdem, a researcher who has spent ten years studying how companies behave during a crisis.\n\nHer message was surprisingly simple: customers forgive mistakes far more easily than they forgive silence. To prove it, she described an experiment in which two groups of online shoppers were told that their parcels would arrive three days late. The first group received a short, honest explanation and an apology within an hour. The second group heard nothing until the parcels finally arrived. A month later, the first group were twice as likely to order again.\n\nDr Erdem then went on to explain why so many companies still choose to stay quiet. According to her research, managers are usually afraid of two things: admitting that something has gone wrong before they know the cause, and promising a solution they cannot deliver. \"Both fears are understandable,\" she said, \"but customers do not expect you to have every answer. They expect you to tell them what you know and when they will hear from you again.\"\n\nThe most practical part of the talk came at the end. She recommended that every company prepare a \"first-hour message\" in advance: a short statement that can be sent the moment a problem is noticed. It should say what has happened, who is affected and when the next update will be given, and nothing more.\n\nI have to admit that I was sceptical at first. Some of her figures came from small studies, and logistics is not the same as online fashion. Still, I left the room convinced that we had been lucky last month. Had we waited until the afternoon to speak to our clients, we might have lost far more than one contract. I will be suggesting a first-hour message at our next team meeting.",
+              "question": "\"first-hour message\" neleri içermeli?",
+              "options": [
+                "A full explanation of the cause and a solution",
+                "An apology and a discount code",
+                "The names of the managers responsible",
+                "What happened, who is affected and when the next update comes"
+              ],
+              "answer": 3,
+              "explanation": "\"What happened, who is affected and when the next update comes\" doğru: metinde \"It should say what has happened, who is affected and when the next update will be given\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Notes from the Istanbul Logistics Summit\nby Selin, RotaLojistik\n\nThe talk that everybody was discussing at lunch on Thursday was not given by a famous CEO. It was given by Dr Aylin Erdem, a researcher who has spent ten years studying how companies behave during a crisis.\n\nHer message was surprisingly simple: customers forgive mistakes far more easily than they forgive silence. To prove it, she described an experiment in which two groups of online shoppers were told that their parcels would arrive three days late. The first group received a short, honest explanation and an apology within an hour. The second group heard nothing until the parcels finally arrived. A month later, the first group were twice as likely to order again.\n\nDr Erdem then went on to explain why so many companies still choose to stay quiet. According to her research, managers are usually afraid of two things: admitting that something has gone wrong before they know the cause, and promising a solution they cannot deliver. \"Both fears are understandable,\" she said, \"but customers do not expect you to have every answer. They expect you to tell them what you know and when they will hear from you again.\"\n\nThe most practical part of the talk came at the end. She recommended that every company prepare a \"first-hour message\" in advance: a short statement that can be sent the moment a problem is noticed. It should say what has happened, who is affected and when the next update will be given, and nothing more.\n\nI have to admit that I was sceptical at first. Some of her figures came from small studies, and logistics is not the same as online fashion. Still, I left the room convinced that we had been lucky last month. Had we waited until the afternoon to speak to our clients, we might have lost far more than one contract. I will be suggesting a first-hour message at our next team meeting.",
+              "question": "Selin'in konuşma hakkındaki tutumu nedir?",
+              "options": [
+                "Doubtful at first, but finally persuaded",
+                "Impressed from the very beginning",
+                "Bored and unconvinced",
+                "Angry about the speaker's figures"
+              ],
+              "answer": 0,
+              "explanation": "\"Doubtful at first, but finally persuaded\" doğru: Selin \"I was sceptical at first\" diyor ama sonunda \"I left the room convinced\" yazıyor ve fikri ekibine önerecek."
+            },
+            {
+              "type": "choice",
+              "passage": "Notes from the Istanbul Logistics Summit\nby Selin, RotaLojistik\n\nThe talk that everybody was discussing at lunch on Thursday was not given by a famous CEO. It was given by Dr Aylin Erdem, a researcher who has spent ten years studying how companies behave during a crisis.\n\nHer message was surprisingly simple: customers forgive mistakes far more easily than they forgive silence. To prove it, she described an experiment in which two groups of online shoppers were told that their parcels would arrive three days late. The first group received a short, honest explanation and an apology within an hour. The second group heard nothing until the parcels finally arrived. A month later, the first group were twice as likely to order again.\n\nDr Erdem then went on to explain why so many companies still choose to stay quiet. According to her research, managers are usually afraid of two things: admitting that something has gone wrong before they know the cause, and promising a solution they cannot deliver. \"Both fears are understandable,\" she said, \"but customers do not expect you to have every answer. They expect you to tell them what you know and when they will hear from you again.\"\n\nThe most practical part of the talk came at the end. She recommended that every company prepare a \"first-hour message\" in advance: a short statement that can be sent the moment a problem is noticed. It should say what has happened, who is affected and when the next update will be given, and nothing more.\n\nI have to admit that I was sceptical at first. Some of her figures came from small studies, and logistics is not the same as online fashion. Still, I left the room convinced that we had been lucky last month. Had we waited until the afternoon to speak to our clients, we might have lost far more than one contract. I will be suggesting a first-hour message at our next team meeting.",
+              "question": "Metinden RotaLojistik hakkında ne çıkarılabilir?",
+              "options": [
+                "It has never had a crisis",
+                "It already uses a first-hour message",
+                "It lost a contract during a recent problem",
+                "It sells clothes online"
+              ],
+              "answer": 2,
+              "explanation": "\"It lost a contract during a recent problem\" doğru: Selin \"we might have lost far more than one contract\" diyor; yani son sorunda bir sözleşme kaybedilmiş."
+            },
+            {
+              "type": "choice",
+              "passage": "Notes from the Istanbul Logistics Summit\nby Selin, RotaLojistik\n\nThe talk that everybody was discussing at lunch on Thursday was not given by a famous CEO. It was given by Dr Aylin Erdem, a researcher who has spent ten years studying how companies behave during a crisis.\n\nHer message was surprisingly simple: customers forgive mistakes far more easily than they forgive silence. To prove it, she described an experiment in which two groups of online shoppers were told that their parcels would arrive three days late. The first group received a short, honest explanation and an apology within an hour. The second group heard nothing until the parcels finally arrived. A month later, the first group were twice as likely to order again.\n\nDr Erdem then went on to explain why so many companies still choose to stay quiet. According to her research, managers are usually afraid of two things: admitting that something has gone wrong before they know the cause, and promising a solution they cannot deliver. \"Both fears are understandable,\" she said, \"but customers do not expect you to have every answer. They expect you to tell them what you know and when they will hear from you again.\"\n\nThe most practical part of the talk came at the end. She recommended that every company prepare a \"first-hour message\" in advance: a short statement that can be sent the moment a problem is noticed. It should say what has happened, who is affected and when the next update will be given, and nothing more.\n\nI have to admit that I was sceptical at first. Some of her figures came from small studies, and logistics is not the same as online fashion. Still, I left the room convinced that we had been lucky last month. Had we waited until the afternoon to speak to our clients, we might have lost far more than one contract. I will be suggesting a first-hour message at our next team meeting.",
+              "question": "Araştırmaya göre yöneticiler neden sessiz kalmayı seçiyor?",
+              "options": [
+                "They think customers never read emails",
+                "They fear admitting a problem before knowing its cause",
+                "They are told to by their lawyers",
+                "They want to save money on phone calls"
+              ],
+              "answer": 1,
+              "explanation": "\"They fear admitting a problem before knowing its cause\" doğru: metinde yöneticilerin \"admitting that something has gone wrong before they know the cause\" konusundan korktuğu yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "araştırmacı",
+                  "researcher"
+                ],
+                [
+                  "özür",
+                  "apology"
+                ],
+                [
+                  "şüpheci",
+                  "sceptical"
+                ],
+                [
+                  "önceden",
+                  "in advance"
+                ],
+                [
+                  "etkilenen",
+                  "affected"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The speaker was asked ___ her figures came from large studies.",
+              "translation": "Konuşmacıya rakamlarının büyük çalışmalardan gelip gelmediği soruldu.",
+              "answer": "whether",
+              "choices": [
+                "whether",
+                "that",
+                "what"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Aşağıdakilerden hangisi konuşmanın ana fikri için iyi bir not?",
+              "answer": "Silence > mistakes: speak early",
+              "choices": [
+                {
+                  "text": "Silence > mistakes: speak early",
+                  "emoji": "📝"
+                },
+                {
+                  "text": "Talk given before lunch",
+                  "emoji": "🍽️"
+                },
+                {
+                  "text": "Speaker wore a blue jacket",
+                  "emoji": "🧥"
+                },
+                {
+                  "text": "The room was very crowded",
+                  "emoji": "👥"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u14s",
+          "type": "story",
+          "title": "Bir sabah, üç ders",
+          "description": "Mia'nın podcastinde Deniz sistem çöküşünden çıkan dersleri anlatıyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Welcome back to Istanbul at Work, the podcast about the people behind the city's businesses. I'm Mia.",
+              "translation": "Istanbul at Work'e tekrar hoş geldiniz; şehrin işletmelerinin arkasındaki insanları anlatan podcast. Ben Mia."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "My guest today runs operations at RotaLojistik, whose tracking system crashed last month. Deniz, welcome.",
+              "translation": "Bugünkü konuğum, takip sistemi geçen ay çöken RotaLojistik'in operasyonlarını yönetiyor. Deniz, hoş geldin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Thanks, Mia. I'm happy to talk about it now. A month ago, I'd have said no!",
+              "translation": "Teşekkürler Mia. Artık bunu konuşmaktan memnunum. Bir ay önce hayır derdim!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Let's start with the day itself. What actually happened?",
+              "translation": "O günün kendisiyle başlayalım. Aslında ne oldu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "At six in the morning, our tracking system went down. Drivers couldn't see their routes, and customers couldn't see their parcels.",
+              "translation": "Sabah altıda takip sistemimiz çöktü. Sürücüler rotalarını, müşteriler de kolilerini göremiyordu."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "By eight o'clock, more than two thousand deliveries had been delayed, and our phones didn't stop ringing.",
+              "translation": "Saat sekize kadar iki binden fazla teslimat gecikmişti ve telefonlarımız susmak bilmedi."
+            },
+            {
+              "kind": "question",
+              "prompt": "Sistem saat kaçta çöktü?",
+              "choices": [
+                "Sabah altıda",
+                "Sabah sekizde",
+                "Öğlen"
+              ],
+              "answer": "Sabah altıda"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "And the cause was a software update, wasn't it?",
+              "translation": "Sebebi de bir yazılım güncellemesiydi, değil mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Yes. It had been installed the night before, and it hadn't been tested properly. That was our mistake, not the software's.",
+              "translation": "Evet. Bir önceki gece kurulmuştu ve düzgünce test edilmemişti. Bu yazılımın değil, bizim hatamızdı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "So the first lesson I'd like to share is simple: never let speed become more important than safety.",
+              "translation": "Paylaşmak istediğim ilk ders basit: hızın güvenlikten daha önemli hâle gelmesine asla izin verme."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "That's easy to say, but hard to do in a start-up, isn't it?",
+              "translation": "Söylemesi kolay ama bir girişimde yapması zor, değil mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Absolutely. Start-ups are always in a hurry. But had we waited one more day, we would have saved a fortune.",
+              "translation": "Kesinlikle. Girişimler hep acele eder. Ama bir gün daha bekleseydik, bir servet kurtarmış olurduk."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "What was the second lesson?",
+              "translation": "İkinci ders neydi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Communication. Our instinct was to stay quiet until everything was fixed. Luckily, a colleague persuaded us to do the opposite.",
+              "translation": "İletişim. İçgüdümüz her şey düzelene kadar sessiz kalmaktı. Neyse ki bir meslektaşımız bizi tam tersini yapmaya ikna etti."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Why was staying quiet such a bad idea?",
+              "translation": "Sessiz kalmak neden bu kadar kötü bir fikirdi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Because clients imagine the worst when you say nothing. Silence looks like you're hiding something.",
+              "translation": "Çünkü hiçbir şey söylemezsen müşteriler en kötüsünü düşünür. Sessizlik bir şey saklıyormuşsun gibi görünür."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "We issued a statement before noon, apologised, and promised compensation. Most clients told us they appreciated the honesty.",
+              "translation": "Öğleden önce bir açıklama yaptık, özür diledik ve tazminat sözü verdik. Müşterilerin çoğu dürüstlüğü takdir ettiklerini söyledi."
+            },
+            {
+              "kind": "question",
+              "prompt": "Şirket açıklamayı ne zaman yaptı?",
+              "choices": [
+                "Öğleden önce",
+                "Akşam",
+                "Ertesi gün"
+              ],
+              "answer": "Öğleden önce"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Did you lose any clients?",
+              "translation": "Hiç müşteri kaybettiniz mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Only one, and frankly, it had been unhappy with us for a while. Two others actually increased their orders.",
+              "translation": "Sadece bir tane; açıkçası o da bir süredir bizden memnun değildi. Diğer iki müşteri ise siparişlerini artırdı."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"it had been unhappy with us for a while\" cümlesindeki \"it\" neyi anlatıyor?",
+              "choices": [
+                "Kaybedilen müşteri",
+                "Takip sistemi",
+                "Yazılım güncellemesi"
+              ],
+              "answer": "Kaybedilen müşteri"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Interesting. And the third lesson?",
+              "translation": "İlginç. Peki üçüncü ders?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Have your systems checked by people who didn't build them. Now every update is tested twice, once by an outside team.",
+              "translation": "Sistemlerini, onları yapmamış kişilere kontrol ettir. Artık her güncelleme iki kez test ediliyor, bir kez de dışarıdan bir ekip tarafından."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Some listeners might say that sounds expensive.",
+              "translation": "Bazı dinleyiciler bunun pahalı göründüğünü söyleyebilir."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "It is expensive. But it's far cheaper than another morning like that one. I'd make the same decision again tomorrow.",
+              "translation": "Pahalı. Ama öyle bir sabahı yeniden yaşamaktan çok daha ucuz. Yarın yine aynı kararı verirdim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz, dışarıdan test ettirmenin maliyeti hakkında ne düşünüyor?",
+              "choices": [
+                "Pahalı ama buna değer",
+                "Gereksiz bir harcama",
+                "Ucuz ve kolay"
+              ],
+              "answer": "Pahalı ama buna değer"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Finally, what would you say to other managers listening today?",
+              "translation": "Son olarak, bugün bizi dinleyen diğer yöneticilere ne söylersin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Mistakes will happen. What matters is how quickly you admit them and what you change afterwards.",
+              "translation": "Hatalar olacak. Önemli olan onları ne kadar çabuk kabul ettiğin ve sonrasında neyi değiştirdiğin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👱‍♀️",
+              "text": "Deniz from RotaLojistik, thank you. After the break: why so many cafés in Kadıköy are hiring delivery riders.",
+              "translation": "RotaLojistik'ten Deniz, teşekkürler. Aradan sonra: Kadıköy'deki pek çok kafe neden kurye işe alıyor?"
+            },
+            {
+              "kind": "question",
+              "prompt": "Bu podcast bölümünün ana konusu ne?",
+              "choices": [
+                "Bir sistem çöküşünden çıkarılan dersler",
+                "Yeni bir uygulamanın tanıtımı",
+                "Kadıköy'deki kafelerin sorunları"
+              ],
+              "answer": "Bir sistem çöküşünden çıkarılan dersler"
+            }
+          ]
+        },
+        {
+          "id": "s7u14l3",
+          "type": "lesson",
+          "title": "Konuşma: Dinlediğini aktar",
+          "description": "Notlarından yararlanarak bir konuşmayı bir arkadaşına özetle",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "The speaker argued that silence does more damage than the mistake itself.",
+              "translation": "Konuşmacı, sessizliğin hatanın kendisinden daha çok zarar verdiğini savundu.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "What really struck me was how simple her advice was.",
+              "translation": "Beni asıl etkileyen, tavsiyesinin ne kadar basit olduğuydu.",
+              "rate": 0.95
+            },
+            {
+              "type": "speak",
+              "text": "I listened to a really interesting podcast about a system crash yesterday.",
+              "translation": "Dün bir sistem çöküşüyle ilgili çok ilginç bir podcast dinledim."
+            },
+            {
+              "type": "speak",
+              "text": "The guest explained that the update hadn't been tested before it went live.",
+              "translation": "Konuk, güncellemenin yayına girmeden önce test edilmediğini açıkladı."
+            },
+            {
+              "type": "speak",
+              "text": "According to the guest, being honest with clients had saved most of the contracts.",
+              "translation": "Konuğa göre müşterilere dürüst olmak sözleşmelerin çoğunu kurtarmıştı."
+            },
+            {
+              "type": "speak",
+              "text": "The main message was that you should admit mistakes quickly and learn from them.",
+              "translation": "Ana mesaj, hataları çabuk kabul etmen ve onlardan ders çıkarman gerektiğiydi."
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın soruyor: \"So what was the podcast about?\" En uygun cevap hangisi?",
+              "answer": "Basically, it was about…",
+              "choices": [
+                {
+                  "text": "Basically, it was about…",
+                  "emoji": "🎧"
+                },
+                {
+                  "text": "Yes, it was.",
+                  "emoji": "🤷"
+                },
+                {
+                  "text": "I don't listen to podcasts.",
+                  "emoji": "🙅"
+                },
+                {
+                  "text": "It's at three o'clock.",
+                  "emoji": "🕒"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Konuşmacının bir sözünü tam duyamadın. Kibarca nasıl sorarsın?",
+              "answer": "Sorry, did you say…?",
+              "choices": [
+                {
+                  "text": "Sorry, did you say…?",
+                  "emoji": "🙏"
+                },
+                {
+                  "text": "What? Say it again!",
+                  "emoji": "😤"
+                },
+                {
+                  "text": "You're wrong.",
+                  "emoji": "❌"
+                },
+                {
+                  "text": "Speak slowly!",
+                  "emoji": "🐢"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Konuşmacı, müşterilerin sessizliği affetmediğini söyledi.",
+              "lang": "tr",
+              "answers": [
+                "The speaker said that customers didn't forgive silence",
+                "The speaker said customers didn't forgive silence",
+                "The speaker said that customers did not forgive silence",
+                "The speaker said customers did not forgive silence",
+                "The speaker said that customers don't forgive silence",
+                "The speaker said customers don't forgive silence",
+                "The speaker said that customers do not forgive silence",
+                "The speaker said customers do not forgive silence"
+              ],
+              "tokens": [
+                "The",
+                "speaker",
+                "said",
+                "that",
+                "customers",
+                "didn't",
+                "forgive",
+                "silence",
+                "told",
+                "forgives"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u14l4",
+          "type": "lesson",
+          "title": "Yazma: Notlardan özet",
+          "description": "Bir podcastten aldığın notlarla kısa bir özet yaz",
+          "exercises": [
+            {
+              "type": "write",
+              "prompt": "Deniz'in podcast konuşmasını dinlerken aldığın notlardan yararlanarak yaklaşık 120 kelimelik bir özet yaz. Konuşmanın konusunu, üç dersi ve ana mesajı kendi cümlelerinle aktar.",
+              "model": "In a recent episode of the podcast Istanbul at Work, Deniz from RotaLojistik talked about the day the company's tracking system crashed. The problem started at six in the morning, and more than two thousand deliveries were delayed. Deniz explained that the cause was a software update which had not been tested properly.\n\nDeniz argued that the company had learned three lessons. First, speed should never become more important than safety. Second, it is better to tell clients the truth immediately than to stay silent. The company issued a statement before noon and lost only one client. Finally, every system should be checked by people who did not build it.\n\nThe main message was that mistakes are unavoidable, but companies must admit them quickly and learn from them.",
+              "minWords": 100,
+              "maxWords": 140,
+              "checklist": [
+                "İlk cümlede konuşmacıyı, programı ve konuyu verdin",
+                "Ana mesajı ve en az üç ana noktayı aktardın",
+                "En az iki aktarma fiili kullandın (explained, said, argued…)",
+                "Aktarılan geçmiş olaylarda zamanı geriye kaydırdın (had not been tested…)",
+                "Konuşmayı kelimesi kelimesine kopyalamadın, notlarından kendi cümlelerini kurdun"
+              ],
+              "focus": [
+                "tense",
+                "article"
+              ],
+              "taskId": "s7u14l4w"
+            },
+            {
+              "type": "translate",
+              "text": "Deniz, sorunun nedeninin düzgün test edilmemiş bir yazılım güncellemesi olduğunu açıkladı.",
+              "lang": "tr",
+              "answers": [
+                "Deniz explained that the cause was a software update which had not been tested properly.",
+                "Deniz explained that the cause was a software update which had not been properly tested.",
+                "Deniz explained the cause was a software update that had not been tested properly.",
+                "Deniz explained the cause was a software update that had not been properly tested.",
+                "Deniz explained the cause was a software update which had not been tested properly.",
+                "Deniz explained the cause was a software update which had not been properly tested."
+              ],
+              "tokens": [
+                "Deniz",
+                "explained",
+                "that",
+                "the",
+                "cause",
+                "was",
+                "a",
+                "software",
+                "update",
+                "which",
+                "had",
+                "not",
+                "been",
+                "tested",
+                "properly",
+                "were",
+                "did"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İkinci olarak, susmaktansa müşterilere gerçeği hemen söylemek daha iyidir.",
+              "lang": "tr",
+              "answers": [
+                "Second, it is better to tell clients the truth immediately than to stay silent.",
+                "Second, it is better to immediately tell clients the truth than to stay silent.",
+                "Second, it is better to tell clients the truth immediately than stay silent."
+              ],
+              "tokens": [
+                "Second",
+                "it",
+                "is",
+                "better",
+                "to",
+                "tell",
+                "clients",
+                "the",
+                "truth",
+                "immediately",
+                "than",
+                "to",
+                "stay",
+                "silent",
+                "more",
+                "say"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ana mesaj şuydu: hatalar kaçınılmazdır ama şirketler onları hızla kabul etmeli ve onlardan ders çıkarmalıdır.",
+              "lang": "tr",
+              "answers": [
+                "The main message was that mistakes are unavoidable, but companies must admit them quickly and learn from them.",
+                "The main message was that mistakes are unavoidable, but companies must quickly admit them and learn from them."
+              ],
+              "tokens": [
+                "The",
+                "main",
+                "message",
+                "was",
+                "that",
+                "mistakes",
+                "are",
+                "unavoidable",
+                "but",
+                "companies",
+                "must",
+                "admit",
+                "them",
+                "quickly",
+                "and",
+                "learn",
+                "from",
+                "them",
+                "the",
+                "admits"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The update had not been tested; ___, the whole system crashed.",
+              "translation": "Güncelleme test edilmemişti; bunun sonucunda bütün sistem çöktü.",
+              "answer": "as a result",
+              "choices": [
+                "as a result",
+                "however",
+                "in contrast"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "___ number of delayed deliveries was over two thousand.",
+              "translation": "Geciken teslimatların sayısı iki binin üzerindeydi.",
+              "answer": "The",
+              "choices": [
+                "The",
+                "A",
+                "An"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "In the podcast, Deniz ___ responsibility for the mistake.",
+              "translation": "Podcastte Deniz hatanın sorumluluğunu üstlendi.",
+              "answer": "took",
+              "choices": [
+                "took",
+                "made",
+                "did"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Özette konuşmacının sözünü aktarmak için hangisi en uygun?",
+              "answer": "Deniz explained that…",
+              "choices": [
+                {
+                  "text": "Deniz explained that…",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Deniz was like…",
+                  "emoji": "🙄"
+                },
+                {
+                  "text": "Deniz goes, you know…",
+                  "emoji": "💬"
+                },
+                {
+                  "text": "Deniz said me that…",
+                  "emoji": "❌"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "açıklamak",
+                  "explain"
+                ],
+                [
+                  "vurgulamak",
+                  "emphasise"
+                ],
+                [
+                  "(hatayı) kabul etmek",
+                  "admit"
+                ],
+                [
+                  "tavsiye etmek",
+                  "recommend"
+                ],
+                [
+                  "uyarmak",
+                  "warn"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u14t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s7u14c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s7u15",
+      "title": "Toplantıda ikna",
+      "description": "Bir öneri sunmak, itirazları karşılamak ve teklif e-postası yazmak",
+      "color": "0xFF14A098",
+      "theme": "toplanti",
+      "guide": "## Bu ünitede yapabileceklerin\n- Toplantıda bir öneriyi gerekçeleriyle sunabilirsin.\n- Bir itirazı kabul edip sakin ve somut bir yanıtla karşılayabilirsin.\n- Bir makalede itirazlarla ilgili tavsiyeleri ve yazarın tutumunu bulabilirsin.\n- Yaklaşık 150 kelimelik resmî bir teklif e-postası yazabilirsin.\n\n## Strateji\n- Gölgeleme (shadowing) yaparken **I completely understand your concern** gibi kalıpları sakin ve yavaş bir tonla tekrar et; toplantıda ses tonun da ikna eder.\n- Önce-dinle hikâyesinde her itirazı ve Deniz'in ona verdiği yanıtı eşleştirerek not al: maliyet → pilot, kayıp koli → tarama, çıkar çatışması → herkese aynı koşullar.\n- Önerini üç adımda sun: sorun (rakamla), çözüm, karşı tarafın kazancı. İtiraz gelince önce teşekkür et, sonra asıl endişeyi yanıtla.\n- Teklif e-postasında bir paragraf, bir iş: öneri, faydalar, itiraza yanıt ve kibar kapanış.\n\n## Model metin\n> Subject: Proposal: pick-up points at your cafés\n>\n> Dear Elif,\n>\n> Thank you for meeting me last week. As promised, I am writing to propose a three-month pilot scheme in which your two cafés would become RotaLojistik pick-up points.\n>\n> At the moment, almost one in five of our parcels cannot be delivered on the first attempt. If customers could collect them from your cafés, we would save time and money, and you would gain new visitors, many of whom are likely to order a coffee. We would also pay you a fee of ten lira for every parcel.\n>\n> I understand that space behind the counter is limited. For this reason, we would provide a small shelf and a scanner, so every parcel could be tracked at all times. If the pilot does not work for you, you can end it with two weeks' notice.\n>\n> I would be happy to discuss the details at your convenience.\n>\n> Best regards,\n> Deniz\n\nKonu satırı öneriyi söylüyor. İlk paragraf öneriyi, ikincisi iki tarafın kazancını, üçüncüsü olası itirazı (yer sorunu) ve çözümünü veriyor. Kapanış resmî ve kısa.\n\n## Türklerin sık hatası\n- ❌ I would be happy to discuss about the details. ✅ I would be happy to **discuss the details**. (discuss doğrudan nesne alır; ama talk **about**.)\n- ❌ I suggest you to start a pilot. ✅ I suggest **starting** a pilot. / I suggest **that we start** a pilot. (suggest + kişi + to kullanılmaz.)\n\n## Beceri testi\nBölüm 7 beceri testi 20 sorudur; geçmek için %80 doğru yap. Bölümün **tamamlandı** sayılması için bu testi ve bu ünitenin yazma görevini (teklif e-postası, l4) birlikte bitirmen gerekir.\n\n| Bölüm | Soru | Ölçtüğü hedef |\n|---|---|---|\n| Dinleme | 6 | Geçmişi değerlendirme: third conditional (s7u1), perfect modals (s7u3); haber dili (s7u4); yaptırmak (s7u7); inversion (s7u8); toplantıda soru sorma (s7u15) |\n| Okuma | 8 | Lehte-aleyhte köşe yazısı ve yazarın görüşü (s7u13, s7u10); toplantı sonrası güncelleme e-postası: aktarılan sözler ve kararlar (s7u14, s7u5, s7u15) |\n| Yazma | 4 | Kriz değerlendirme (s7u12, s7u1); tutanakta aktarılan soru (s7u6); yaptırmak (s7u7); itirazı karşılayan öneri (s7u15) |\n| Dil | 2 | Eşdizim: insist on (s7u9); kibar itiraz (s7u10, s7u15) |",
+      "nodes": [
+        {
+          "id": "s7u15l1",
+          "type": "lesson",
+          "title": "Dinleme: Öneri ve itiraz",
+          "description": "Toplantıda öneri sunan ve itiraz eden ifadeleri dinleyerek ayırt et",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "What I'd like to propose is a three-month pilot in two of our busiest areas.",
+              "answers": [
+                "What I'd like to propose is a three-month pilot in two of our busiest areas.",
+                "What I would like to propose is a three-month pilot in two of our busiest areas.",
+                "What I'd like to propose is a three month pilot in two of our busiest areas.",
+                "What I would like to propose is a three month pilot in two of our busiest areas."
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "Let me address that concern before we go any further.",
+              "translation": "Daha ileri gitmeden önce bu endişeye değineyim.",
+              "rate": 0.9
+            },
+            {
+              "type": "listen",
+              "text": "I take your point, but do you know how much it's going to cost us?",
+              "answers": [
+                "I take your point, but do you know how much it's going to cost us?",
+                "I take your point, but do you know how much it is going to cost us?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We need to come ___ a decision by the end of the month.",
+              "translation": "Ay sonuna kadar bir karara varmamız gerekiyor.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "on",
+                "at"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Could you tell me what would happen if a parcel went missing at the café?",
+              "answers": [
+                "Could you tell me what would happen if a parcel went missing at the café?",
+                "Could you tell me what would happen if a parcel went missing at the cafe?"
+              ]
+            },
+            {
+              "type": "shadow",
+              "text": "With respect, I don't think the numbers support that view.",
+              "translation": "Saygısızlık etmek istemem ama rakamların bu görüşü desteklediğini sanmıyorum.",
+              "rate": 0.85
+            },
+            {
+              "type": "listen",
+              "text": "If we don't try it now, someone else will, and we'll have lost our chance.",
+              "answers": [
+                "If we don't try it now, someone else will, and we'll have lost our chance.",
+                "If we do not try it now, someone else will, and we will have lost our chance.",
+                "If we don't try it now, someone else will, and we will have lost our chance.",
+                "If we do not try it now, someone else will, and we'll have lost our chance."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'd like to put ___ a proposal that could save us a lot of money.",
+              "translation": "Bize çok para kazandırabilecek bir öneri sunmak istiyorum.",
+              "answer": "forward",
+              "choices": [
+                "forward",
+                "away",
+                "off"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "öneride bulunmak",
+                  "make a proposal"
+                ],
+                [
+                  "itiraz",
+                  "objection"
+                ],
+                [
+                  "bir endişeyi ele almak",
+                  "address a concern"
+                ],
+                [
+                  "pilot uygulama",
+                  "pilot scheme"
+                ],
+                [
+                  "uzlaşmaya varmak",
+                  "reach a compromise"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u15l2",
+          "type": "lesson",
+          "title": "Okuma: İtirazlarla başa çıkmak",
+          "description": "Bir makalede itirazları karşılama tavsiyelerini ve yazarın tutumunu bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Why Good Ideas Die in Meetings\n\nMost proposals are not rejected because they are bad. They are rejected because the person presenting them treats every objection as an attack. In my twenty years of training managers, I have watched brilliant ideas disappear within minutes simply because someone became defensive.\n\nThe first rule is to welcome objections rather than fear them. A colleague who raises a concern is, in fact, telling you what you need to fix before the idea can succeed. Thanking that person, and meaning it, changes the atmosphere in the room immediately. Silence is far more dangerous: people who say nothing in a meeting often say a great deal in the corridor afterwards.\n\nThe second rule is to separate the concern from the conclusion. When a finance director says, \"This is too expensive,\" the real question is usually \"What happens if it fails?\" Answer that question, not the first one. Offering a small pilot with clear limits on time and money often reassures people far more than any number of optimistic forecasts.\n\nThird, never claim more than your evidence allows. Nothing destroys trust faster than a figure that turns out to be wrong. If you are not sure, say so, and promise to come back with the data. Rarely will anyone criticise you for being honest about what you do not know.\n\nFinally, know what you are willing to give up. A proposal that cannot be changed is not a proposal; it is a demand. Before the meeting, decide which parts of your plan are essential and which can be negotiated. That way, you can make concessions without losing the heart of the idea.\n\nNone of this is complicated, yet I still see experienced professionals ignore it. Perhaps that is because handling objections well requires something harder than technique: the humility to accept that other people may see what you have missed.",
+              "question": "Yazara göre öneriler çoğunlukla neden reddedilir?",
+              "options": [
+                "The ideas are usually too expensive",
+                "Managers do not read the proposals",
+                "There is not enough time in meetings",
+                "The presenter reacts defensively to objections"
+              ],
+              "answer": 3,
+              "explanation": "\"The presenter reacts defensively to objections\" doğru: metinde \"They are rejected because the person presenting them treats every objection as an attack\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Why Good Ideas Die in Meetings\n\nMost proposals are not rejected because they are bad. They are rejected because the person presenting them treats every objection as an attack. In my twenty years of training managers, I have watched brilliant ideas disappear within minutes simply because someone became defensive.\n\nThe first rule is to welcome objections rather than fear them. A colleague who raises a concern is, in fact, telling you what you need to fix before the idea can succeed. Thanking that person, and meaning it, changes the atmosphere in the room immediately. Silence is far more dangerous: people who say nothing in a meeting often say a great deal in the corridor afterwards.\n\nThe second rule is to separate the concern from the conclusion. When a finance director says, \"This is too expensive,\" the real question is usually \"What happens if it fails?\" Answer that question, not the first one. Offering a small pilot with clear limits on time and money often reassures people far more than any number of optimistic forecasts.\n\nThird, never claim more than your evidence allows. Nothing destroys trust faster than a figure that turns out to be wrong. If you are not sure, say so, and promise to come back with the data. Rarely will anyone criticise you for being honest about what you do not know.\n\nFinally, know what you are willing to give up. A proposal that cannot be changed is not a proposal; it is a demand. Before the meeting, decide which parts of your plan are essential and which can be negotiated. That way, you can make concessions without losing the heart of the idea.\n\nNone of this is complicated, yet I still see experienced professionals ignore it. Perhaps that is because handling objections well requires something harder than technique: the humility to accept that other people may see what you have missed.",
+              "question": "Yazara göre toplantıda hiç konuşmayan meslektaşlar neden tehlikelidir?",
+              "options": [
+                "They usually vote against every proposal",
+                "They may criticise the idea later, outside the meeting",
+                "They have not prepared for the meeting",
+                "They tell the finance director everything"
+              ],
+              "answer": 1,
+              "explanation": "\"They may criticise the idea later, outside the meeting\" doğru: metinde \"people who say nothing in a meeting often say a great deal in the corridor afterwards\" yazıyor; yani eleştiri toplantıdan sonra gelir."
+            },
+            {
+              "type": "choice",
+              "passage": "Why Good Ideas Die in Meetings\n\nMost proposals are not rejected because they are bad. They are rejected because the person presenting them treats every objection as an attack. In my twenty years of training managers, I have watched brilliant ideas disappear within minutes simply because someone became defensive.\n\nThe first rule is to welcome objections rather than fear them. A colleague who raises a concern is, in fact, telling you what you need to fix before the idea can succeed. Thanking that person, and meaning it, changes the atmosphere in the room immediately. Silence is far more dangerous: people who say nothing in a meeting often say a great deal in the corridor afterwards.\n\nThe second rule is to separate the concern from the conclusion. When a finance director says, \"This is too expensive,\" the real question is usually \"What happens if it fails?\" Answer that question, not the first one. Offering a small pilot with clear limits on time and money often reassures people far more than any number of optimistic forecasts.\n\nThird, never claim more than your evidence allows. Nothing destroys trust faster than a figure that turns out to be wrong. If you are not sure, say so, and promise to come back with the data. Rarely will anyone criticise you for being honest about what you do not know.\n\nFinally, know what you are willing to give up. A proposal that cannot be changed is not a proposal; it is a demand. Before the meeting, decide which parts of your plan are essential and which can be negotiated. That way, you can make concessions without losing the heart of the idea.\n\nNone of this is complicated, yet I still see experienced professionals ignore it. Perhaps that is because handling objections well requires something harder than technique: the humility to accept that other people may see what you have missed.",
+              "question": "Finans direktörü \"Bu çok pahalı\" dediğinde asıl soru genellikle nedir?",
+              "options": [
+                "What happens if it fails?",
+                "Who will pay for it?",
+                "Can it be done faster?",
+                "Why was it not proposed earlier?"
+              ],
+              "answer": 0,
+              "explanation": "\"What happens if it fails?\" doğru: metinde \"the real question is usually 'What happens if it fails?'\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Why Good Ideas Die in Meetings\n\nMost proposals are not rejected because they are bad. They are rejected because the person presenting them treats every objection as an attack. In my twenty years of training managers, I have watched brilliant ideas disappear within minutes simply because someone became defensive.\n\nThe first rule is to welcome objections rather than fear them. A colleague who raises a concern is, in fact, telling you what you need to fix before the idea can succeed. Thanking that person, and meaning it, changes the atmosphere in the room immediately. Silence is far more dangerous: people who say nothing in a meeting often say a great deal in the corridor afterwards.\n\nThe second rule is to separate the concern from the conclusion. When a finance director says, \"This is too expensive,\" the real question is usually \"What happens if it fails?\" Answer that question, not the first one. Offering a small pilot with clear limits on time and money often reassures people far more than any number of optimistic forecasts.\n\nThird, never claim more than your evidence allows. Nothing destroys trust faster than a figure that turns out to be wrong. If you are not sure, say so, and promise to come back with the data. Rarely will anyone criticise you for being honest about what you do not know.\n\nFinally, know what you are willing to give up. A proposal that cannot be changed is not a proposal; it is a demand. Before the meeting, decide which parts of your plan are essential and which can be negotiated. That way, you can make concessions without losing the heart of the idea.\n\nNone of this is complicated, yet I still see experienced professionals ignore it. Perhaps that is because handling objections well requires something harder than technique: the humility to accept that other people may see what you have missed.",
+              "question": "Emin olmadığın bir rakam sorulursa ne yapmalısın?",
+              "options": [
+                "Give an optimistic estimate",
+                "Change the subject politely",
+                "Admit it and come back with the data",
+                "Ask a colleague to answer instead"
+              ],
+              "answer": 2,
+              "explanation": "\"Admit it and come back with the data\" doğru: metinde \"If you are not sure, say so, and promise to come back with the data\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Why Good Ideas Die in Meetings\n\nMost proposals are not rejected because they are bad. They are rejected because the person presenting them treats every objection as an attack. In my twenty years of training managers, I have watched brilliant ideas disappear within minutes simply because someone became defensive.\n\nThe first rule is to welcome objections rather than fear them. A colleague who raises a concern is, in fact, telling you what you need to fix before the idea can succeed. Thanking that person, and meaning it, changes the atmosphere in the room immediately. Silence is far more dangerous: people who say nothing in a meeting often say a great deal in the corridor afterwards.\n\nThe second rule is to separate the concern from the conclusion. When a finance director says, \"This is too expensive,\" the real question is usually \"What happens if it fails?\" Answer that question, not the first one. Offering a small pilot with clear limits on time and money often reassures people far more than any number of optimistic forecasts.\n\nThird, never claim more than your evidence allows. Nothing destroys trust faster than a figure that turns out to be wrong. If you are not sure, say so, and promise to come back with the data. Rarely will anyone criticise you for being honest about what you do not know.\n\nFinally, know what you are willing to give up. A proposal that cannot be changed is not a proposal; it is a demand. Before the meeting, decide which parts of your plan are essential and which can be negotiated. That way, you can make concessions without losing the heart of the idea.\n\nNone of this is complicated, yet I still see experienced professionals ignore it. Perhaps that is because handling objections well requires something harder than technique: the humility to accept that other people may see what you have missed.",
+              "question": "\"it is a demand\" ifadesindeki \"it\" neyi anlatıyor?",
+              "options": [
+                "A proposal that cannot be changed",
+                "The meeting",
+                "The heart of the idea",
+                "A small pilot"
+              ],
+              "answer": 0,
+              "explanation": "\"A proposal that cannot be changed\" doğru: cümle \"A proposal that cannot be changed is not a proposal; it is a demand\" ve \"it\" bu değiştirilemeyen öneriyi anlatıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Why Good Ideas Die in Meetings\n\nMost proposals are not rejected because they are bad. They are rejected because the person presenting them treats every objection as an attack. In my twenty years of training managers, I have watched brilliant ideas disappear within minutes simply because someone became defensive.\n\nThe first rule is to welcome objections rather than fear them. A colleague who raises a concern is, in fact, telling you what you need to fix before the idea can succeed. Thanking that person, and meaning it, changes the atmosphere in the room immediately. Silence is far more dangerous: people who say nothing in a meeting often say a great deal in the corridor afterwards.\n\nThe second rule is to separate the concern from the conclusion. When a finance director says, \"This is too expensive,\" the real question is usually \"What happens if it fails?\" Answer that question, not the first one. Offering a small pilot with clear limits on time and money often reassures people far more than any number of optimistic forecasts.\n\nThird, never claim more than your evidence allows. Nothing destroys trust faster than a figure that turns out to be wrong. If you are not sure, say so, and promise to come back with the data. Rarely will anyone criticise you for being honest about what you do not know.\n\nFinally, know what you are willing to give up. A proposal that cannot be changed is not a proposal; it is a demand. Before the meeting, decide which parts of your plan are essential and which can be negotiated. That way, you can make concessions without losing the heart of the idea.\n\nNone of this is complicated, yet I still see experienced professionals ignore it. Perhaps that is because handling objections well requires something harder than technique: the humility to accept that other people may see what you have missed.",
+              "question": "Yazar son paragrafta deneyimli profesyoneller hakkında ne hissediyor?",
+              "options": [
+                "Impressed by their technique",
+                "Sure that they need longer meetings",
+                "Happy with how they handle objections",
+                "Disappointed that they ignore simple advice"
+              ],
+              "answer": 3,
+              "explanation": "\"Disappointed that they ignore simple advice\" doğru: yazar \"None of this is complicated, yet I still see experienced professionals ignore it\" diyerek hayal kırıklığını gösteriyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "savunmaya geçmek",
+                  "become defensive"
+                ],
+                [
+                  "güven vermek",
+                  "reassure"
+                ],
+                [
+                  "taviz vermek",
+                  "make concessions"
+                ],
+                [
+                  "kanıt",
+                  "evidence"
+                ],
+                [
+                  "alçakgönüllülük",
+                  "humility"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Seldom ___ a proposal survive a meeting without any changes.",
+              "translation": "Bir öneri bir toplantıdan nadiren hiç değişmeden çıkar.",
+              "answer": "does",
+              "choices": [
+                "does",
+                "is",
+                "has"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Bir meslektaşın önerine itiraz etti. En uygun ilk tepki hangisi?",
+              "answer": "Thanks, that's a fair question.",
+              "choices": [
+                {
+                  "text": "Thanks, that's a fair question.",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "You clearly didn't listen.",
+                  "emoji": "😒"
+                },
+                {
+                  "text": "That's not my problem.",
+                  "emoji": "🙅"
+                },
+                {
+                  "text": "Let's not talk about that.",
+                  "emoji": "🤐"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u15s",
+          "type": "story",
+          "title": "Kafede teslim noktası",
+          "description": "Deniz kafeleri teslim noktasına dönüştürmeyi öneriyor, Selin ve Kerem itiraz ediyor",
+          "rewardXp": 15,
+          "listenFirst": true,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Thanks for coming. I'd like to propose something that could cut our failed deliveries in half.",
+              "translation": "Geldiğiniz için teşekkürler. Başarısız teslimatlarımızı yarıya indirebilecek bir şey önermek istiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "In half? That's a bold claim. Go on, we're listening.",
+              "translation": "Yarıya mı? İddialı bir söz. Devam et, dinliyoruz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Right now, almost one in five parcels can't be delivered because nobody's at home. Every redelivery costs us money.",
+              "translation": "Şu anda kolilerin neredeyse beşte biri evde kimse olmadığı için teslim edilemiyor. Her yeniden teslimat bize para kaybettiriyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz'e göre şu an kolilerin ne kadarı teslim edilemiyor?",
+              "choices": [
+                "Neredeyse beşte biri",
+                "Neredeyse onda biri",
+                "Neredeyse yarısı"
+              ],
+              "answer": "Neredeyse beşte biri"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "My proposal is to turn local cafés into pick-up points. Customers would collect their parcels whenever it suits them.",
+              "translation": "Önerim, yerel kafeleri teslim noktalarına dönüştürmek. Müşteriler kolilerini kendilerine uygun olduğu zaman alırlar."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "Cafés? Why would a café owner want boxes piled up behind the counter?",
+              "translation": "Kafeler mi? Bir kafe sahibi neden tezgâhın arkasında kutuların yığılmasını istesin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Because every customer who collects a parcel is likely to buy a coffee. We'd also pay a small fee per parcel.",
+              "translation": "Çünkü koli almaya gelen her müşteri büyük ihtimalle bir kahve alır. Ayrıca koli başına küçük bir ücret öderiz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "I'm not convinced. What if a parcel goes missing? Our brand would be damaged, not the café's.",
+              "translation": "İkna olmadım. Ya bir koli kaybolursa? Zarar gören kafenin değil, bizim markamız olur."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "That's a fair concern. Every parcel would be scanned on arrival and again when it's collected, so we'd always know where it is.",
+              "translation": "Haklı bir endişe. Her koli gelişte ve teslim alınırken yeniden taranır; böylece nerede olduğunu her zaman biliriz."
+            },
+            {
+              "kind": "question",
+              "prompt": "\"so we'd always know where it is\" cümlesindeki \"it\" neyi anlatıyor?",
+              "choices": [
+                "Koli",
+                "Kafe",
+                "Marka"
+              ],
+              "answer": "Koli"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "That means new scanners and changes to the app. My team is already busy with the new testing process.",
+              "translation": "Bu, yeni tarayıcılar ve uygulamada değişiklik demek. Ekibim zaten yeni test süreciyle meşgul."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "I understand. That's why I'm suggesting a small pilot first: two cafés, three months and a simple scanner.",
+              "translation": "Anlıyorum. Bu yüzden önce küçük bir pilot öneriyorum: iki kafe, üç ay ve basit bir tarayıcı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "If it doesn't work, we'll have lost very little. If it does, we'll have a model we can copy across the city.",
+              "translation": "İşe yaramazsa çok az şey kaybetmiş oluruz. Yararsa, şehrin her yerinde kopyalayabileceğimiz bir modelimiz olur."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "And which two cafés did you have in mind?",
+              "translation": "Peki aklında hangi iki kafe var?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Elif's two cafés, the original one and the new Kadıköy branch. Both are on busy streets, and Elif has already shown interest.",
+              "translation": "Elif'in iki kafesi: ilki ve yeni Kadıköy şubesi. İkisi de işlek caddelerde ve Elif zaten ilgi gösterdi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "Hold on, isn't that a conflict of interest? Elif is a client and a friend.",
+              "translation": "Bir dakika, bu bir çıkar çatışması değil mi? Elif hem müşteri hem arkadaş."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Fair point. That's exactly why the terms would be the same for any café that joins later. Everything will be in writing.",
+              "translation": "Haklısın. Tam da bu yüzden koşullar sonradan katılacak her kafe için aynı olur. Her şey yazılı olacak."
+            },
+            {
+              "kind": "question",
+              "prompt": "Deniz, Kerem'in çıkar çatışması itirazına nasıl yanıt veriyor?",
+              "choices": [
+                "Haklı bulup bir çözüm sunuyor",
+                "Kızıp konuyu değiştiriyor",
+                "Öneriden vazgeçiyor"
+              ],
+              "answer": "Haklı bulup bir çözüm sunuyor"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "What would success look like after three months?",
+              "translation": "Üç ay sonra başarı neye benzer?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Fewer second attempts, at least two hundred parcels collected a month, and no lost items. I'll report the figures every month.",
+              "translation": "Daha az ikinci deneme, ayda en az iki yüz koli teslimi ve hiç kayıp yok. Rakamları her ay raporlarım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Başarı için ayda en az kaç kolinin teslim alınması gerekiyor?",
+              "choices": [
+                "İki yüz",
+                "Üç yüz",
+                "Bin"
+              ],
+              "answer": "İki yüz"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "All right. I still have doubts about the brand, but a pilot is a reasonable risk.",
+              "translation": "Peki. Marka konusunda hâlâ şüphelerim var ama pilot makul bir risk."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "But if a single parcel goes missing in the first month, I want to hear about it the same day.",
+              "translation": "Ama ilk ay tek bir koli bile kaybolursa, bunu aynı gün duymak istiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "If you can have the scanners delivered by next month, my team can update the app.",
+              "translation": "Tarayıcıları gelecek aya kadar getirtebilirsen ekibim uygulamayı güncelleyebilir."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Great. I'll write to Elif today with a formal proposal. Thank you both for pushing back. It's made the plan stronger.",
+              "translation": "Harika. Bugün Elif'e resmî bir teklif yazacağım. İtiraz ettiğiniz için ikinize de teşekkürler. Bu, planı güçlendirdi."
+            },
+            {
+              "kind": "question",
+              "prompt": "Toplantının sonucu ne oluyor?",
+              "choices": [
+                "Pilot uygulama kabul ediliyor",
+                "Öneri reddediliyor",
+                "Karar bir yıl erteleniyor"
+              ],
+              "answer": "Pilot uygulama kabul ediliyor"
+            }
+          ]
+        },
+        {
+          "id": "s7u15l3",
+          "type": "lesson",
+          "title": "Konuşma: Önerini savun",
+          "description": "Toplantıda önerini sun, itirazları sakin ve gerekçeli karşıla",
+          "exercises": [
+            {
+              "type": "shadow",
+              "text": "I completely understand your concern, and I'd like to answer it directly.",
+              "translation": "Endişeni tamamen anlıyorum ve doğrudan yanıt vermek istiyorum.",
+              "rate": 0.9
+            },
+            {
+              "type": "shadow",
+              "text": "Suppose we tried it for three months and then reviewed the results.",
+              "translation": "Diyelim ki üç ay denesek ve sonra sonuçları gözden geçirsek.",
+              "rate": 0.9
+            },
+            {
+              "type": "speak",
+              "text": "I'd like to propose that we open pick-up points in local cafés.",
+              "translation": "Yerel kafelerde teslim noktaları açmamızı önermek istiyorum."
+            },
+            {
+              "type": "speak",
+              "text": "At the moment, too many parcels have to be delivered twice.",
+              "translation": "Şu anda çok fazla kolinin iki kez teslim edilmesi gerekiyor."
+            },
+            {
+              "type": "speak",
+              "text": "I know some of you are worried about the cost, so I'm suggesting a small pilot first.",
+              "translation": "Bazılarınızın maliyet konusunda endişeli olduğunu biliyorum, bu yüzden önce küçük bir pilot öneriyorum."
+            },
+            {
+              "type": "speak",
+              "text": "If the results aren't good enough after three months, we'll simply stop.",
+              "translation": "Üç ay sonra sonuçlar yeterince iyi değilse, dururuz, o kadar."
+            },
+            {
+              "type": "select",
+              "prompt": "Selin: \"It's too risky.\" İtirazı karşılamak için en uygun cevap hangisi?",
+              "answer": "What if we limited the risk?",
+              "choices": [
+                {
+                  "text": "What if we limited the risk?",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "No, it isn't.",
+                  "emoji": "🙅"
+                },
+                {
+                  "text": "You always say that.",
+                  "emoji": "😒"
+                },
+                {
+                  "text": "OK, forget it.",
+                  "emoji": "🏳️"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Yöneticine resmî bir toplantıda öneri sunuyorsun. En uygun başlangıç hangisi?",
+              "answer": "I'd like to suggest an idea.",
+              "choices": [
+                {
+                  "text": "I'd like to suggest an idea.",
+                  "emoji": "💡"
+                },
+                {
+                  "text": "Listen, guys, here's the deal.",
+                  "emoji": "😎"
+                },
+                {
+                  "text": "You must do this.",
+                  "emoji": "☝️"
+                },
+                {
+                  "text": "I suggest you to do this.",
+                  "emoji": "❌"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Neden önce küçük bir pilotla başlamıyoruz?",
+              "lang": "tr",
+              "answers": [
+                "Why don't we start with a small pilot first?",
+                "Why don't we first start with a small pilot?",
+                "Why do we not start with a small pilot first?",
+                "Why don't we start first with a small pilot?",
+                "Why not start with a small pilot first?"
+              ],
+              "tokens": [
+                "Why",
+                "don't",
+                "we",
+                "start",
+                "with",
+                "a",
+                "small",
+                "pilot",
+                "first",
+                "the",
+                "from"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u15l4",
+          "type": "lesson",
+          "title": "Yazma: Teklif e-postası",
+          "description": "Bir iş ortağına resmî bir teklif e-postası yaz",
+          "exercises": [
+            {
+              "type": "write",
+              "prompt": "Deniz olarak Elif'e yaklaşık 150 kelimelik resmî bir teklif e-postası yaz: kafelerini üç aylık bir pilotla teslim noktasına dönüştürmeyi öner, iki tarafın kazancını açıkla ve olası bir itirazı yanıtla.",
+              "model": "Subject: Proposal: pick-up points at your cafés\n\nDear Elif,\n\nThank you for meeting me last week. As promised, I am writing to propose a three-month pilot scheme in which your two cafés would become RotaLojistik pick-up points.\n\nAt the moment, almost one in five of our parcels cannot be delivered on the first attempt. If customers could collect them from your cafés, we would save time and money, and you would gain new visitors, many of whom are likely to order a coffee. We would also pay you a fee of ten lira for every parcel.\n\nI understand that space behind the counter is limited. For this reason, we would provide a small shelf and a scanner, so every parcel could be tracked at all times. If the pilot does not work for you, you can end it with two weeks' notice.\n\nI would be happy to discuss the details at your convenience.\n\nBest regards,\nDeniz",
+              "minWords": 120,
+              "maxWords": 180,
+              "checklist": [
+                "Konu satırı ve resmî bir selamlama yazdın (Dear…)",
+                "Öneriyi ilk paragrafta açıkça belirttin (I am writing to propose…)",
+                "Karşı tarafın kazancını en az bir somut gerekçeyle açıkladın",
+                "Olası bir itirazı öngörüp yanıtladın (I understand that…, For this reason…)",
+                "Resmî bir kapanış kullandın (I would be happy to…, Best regards)"
+              ],
+              "focus": [
+                "preposition",
+                "article",
+                "tense"
+              ],
+              "taskId": "s7u15l4w"
+            },
+            {
+              "type": "translate",
+              "text": "Şu anda kolilerimizin neredeyse beşte biri ilk denemede teslim edilemiyor.",
+              "lang": "tr",
+              "answers": [
+                "At the moment, almost one in five of our parcels cannot be delivered on the first attempt.",
+                "Almost one in five of our parcels cannot be delivered on the first attempt at the moment."
+              ],
+              "tokens": [
+                "At",
+                "the",
+                "moment",
+                "almost",
+                "one",
+                "in",
+                "five",
+                "of",
+                "our",
+                "parcels",
+                "cannot",
+                "be",
+                "delivered",
+                "on",
+                "the",
+                "first",
+                "attempt",
+                "in",
+                "is"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Pilot sizin için işe yaramazsa, iki hafta önceden haber vererek sona erdirebilirsiniz.",
+              "lang": "tr",
+              "answers": [
+                "If the pilot does not work for you, you can end it with two weeks' notice.",
+                "You can end it with two weeks' notice if the pilot does not work for you.",
+                "If the pilot doesn't work for you, you can end it with two weeks' notice."
+              ],
+              "tokens": [
+                "If",
+                "the",
+                "pilot",
+                "does",
+                "not",
+                "work",
+                "for",
+                "you",
+                "you",
+                "can",
+                "end",
+                "it",
+                "with",
+                "two",
+                "weeks'",
+                "notice",
+                "will",
+                "before"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ayrıntıları size uygun bir zamanda konuşmaktan memnuniyet duyarım.",
+              "lang": "tr",
+              "answers": [
+                "I would be happy to discuss the details at your convenience."
+              ],
+              "tokens": [
+                "I",
+                "would",
+                "be",
+                "happy",
+                "to",
+                "discuss",
+                "the",
+                "details",
+                "at",
+                "your",
+                "convenience",
+                "about",
+                "on"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The pilot is short and cheap; ___, the risk for both of us is low.",
+              "translation": "Pilot kısa ve ucuz; bu nedenle ikimiz için de risk düşük.",
+              "answer": "therefore",
+              "choices": [
+                "therefore",
+                "although",
+                "whereas"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We would like to start the pilot in ___ second week of March.",
+              "translation": "Pilotu mart ayının ikinci haftasında başlatmak istiyoruz.",
+              "answer": "the",
+              "choices": [
+                "the",
+                "a",
+                "on"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We look forward ___ working with you on this pilot.",
+              "translation": "Bu pilotta sizinle çalışmayı dört gözle bekliyoruz.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "with"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Resmî bir teklif e-postasını nasıl bitirirsin?",
+              "answer": "Best regards, Deniz",
+              "choices": [
+                {
+                  "text": "Best regards, Deniz",
+                  "emoji": "✅"
+                },
+                {
+                  "text": "Cheers mate, Deniz",
+                  "emoji": "🍻"
+                },
+                {
+                  "text": "Bye bye, Deniz",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "XOXO, Deniz",
+                  "emoji": "💋"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "teklif",
+                  "proposal"
+                ],
+                [
+                  "teslim almak",
+                  "collect"
+                ],
+                [
+                  "ücret",
+                  "fee"
+                ],
+                [
+                  "ihbar süresi",
+                  "notice period"
+                ],
+                [
+                  "size uygun bir zamanda",
+                  "at your convenience"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u15t",
+          "type": "test",
+          "title": "Bölüm 7 beceri testi",
+          "description": "Bu bölümün hedeflerini ölçer",
+          "rewardXp": 25,
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "If the ferry hadn't broken down, she'd have got the job without any problem.",
+              "answers": [
+                "If the ferry hadn't broken down, she'd have got the job without any problem.",
+                "If the ferry had not broken down, she would have got the job without any problem.",
+                "If the ferry hadn't broken down, she would have got the job without any problem.",
+                "If the ferry had not broken down, she'd have got the job without any problem."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Someone must have forgotten to attach the delivery details to the invoice.",
+              "answers": [
+                "Someone must have forgotten to attach the delivery details to the invoice."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It's been reported that the two companies are going to merge early next year.",
+              "answers": [
+                "It's been reported that the two companies are going to merge early next year.",
+                "It has been reported that the two companies are going to merge early next year."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Elif's having the menu translated, and Sam's offered to check it for free.",
+              "answers": [
+                "Elif's having the menu translated, and Sam's offered to check it for free.",
+                "Elif is having the menu translated, and Sam has offered to check it for free.",
+                "Elif is having the menu translated, and Sam's offered to check it for free.",
+                "Elif's having the menu translated, and Sam has offered to check it for free."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Not only did we miss the deadline, but we also lost one of our biggest clients.",
+              "answers": [
+                "Not only did we miss the deadline, but we also lost one of our biggest clients."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Could you tell me whether the pilot's going to start before the end of March?",
+              "answers": [
+                "Could you tell me whether the pilot's going to start before the end of March?",
+                "Could you tell me whether the pilot is going to start before the end of March?"
+              ]
+            },
+            {
+              "type": "choice",
+              "passage": "Should Delivery Robots Be Allowed on Our Pavements?\n\nSmall delivery robots have been tested in several European cities, and a trial is now being planned in Istanbul. Supporters argue that the robots could reduce traffic, because fewer vans would be needed for short trips. They also point out that robots can work at night, when roads are quiet, and that they produce no exhaust fumes.\n\nOpponents are less enthusiastic. Pavements in many neighbourhoods are already narrow and crowded, and they worry that robots would make life even harder for wheelchair users and parents with pushchairs. Some shopkeepers also fear that their own delivery riders would lose their jobs.\n\nIn my view, both sides make valid points, but the debate is happening too early. Not a single robot has yet been tested on a steep, busy street like the ones in Beyoğlu. Until such a test has been carried out, any decision would be based on guesses rather than evidence. The city should therefore allow a limited trial in one district, publish the results, and only then decide whether the robots deserve a place on our pavements.",
+              "question": "Destekçilere göre robotlar trafiği nasıl azaltır?",
+              "options": [
+                "Robots would only work at night",
+                "Fewer vans would be needed for short trips",
+                "Cars would be banned from the pavements",
+                "Riders would deliver more parcels"
+              ],
+              "answer": 1,
+              "explanation": "\"Fewer vans would be needed for short trips\" doğru: metinde \"the robots could reduce traffic, because fewer vans would be needed for short trips\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Should Delivery Robots Be Allowed on Our Pavements?\n\nSmall delivery robots have been tested in several European cities, and a trial is now being planned in Istanbul. Supporters argue that the robots could reduce traffic, because fewer vans would be needed for short trips. They also point out that robots can work at night, when roads are quiet, and that they produce no exhaust fumes.\n\nOpponents are less enthusiastic. Pavements in many neighbourhoods are already narrow and crowded, and they worry that robots would make life even harder for wheelchair users and parents with pushchairs. Some shopkeepers also fear that their own delivery riders would lose their jobs.\n\nIn my view, both sides make valid points, but the debate is happening too early. Not a single robot has yet been tested on a steep, busy street like the ones in Beyoğlu. Until such a test has been carried out, any decision would be based on guesses rather than evidence. The city should therefore allow a limited trial in one district, publish the results, and only then decide whether the robots deserve a place on our pavements.",
+              "question": "Karşı çıkanlar kimin için endişeleniyor?",
+              "options": [
+                "Van drivers and mechanics",
+                "Tourists in Beyoğlu",
+                "European city councils",
+                "Wheelchair users and parents with pushchairs"
+              ],
+              "answer": 3,
+              "explanation": "\"Wheelchair users and parents with pushchairs\" doğru: metinde robotların \"life even harder for wheelchair users and parents with pushchairs\" yapacağı endişesi yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Should Delivery Robots Be Allowed on Our Pavements?\n\nSmall delivery robots have been tested in several European cities, and a trial is now being planned in Istanbul. Supporters argue that the robots could reduce traffic, because fewer vans would be needed for short trips. They also point out that robots can work at night, when roads are quiet, and that they produce no exhaust fumes.\n\nOpponents are less enthusiastic. Pavements in many neighbourhoods are already narrow and crowded, and they worry that robots would make life even harder for wheelchair users and parents with pushchairs. Some shopkeepers also fear that their own delivery riders would lose their jobs.\n\nIn my view, both sides make valid points, but the debate is happening too early. Not a single robot has yet been tested on a steep, busy street like the ones in Beyoğlu. Until such a test has been carried out, any decision would be based on guesses rather than evidence. The city should therefore allow a limited trial in one district, publish the results, and only then decide whether the robots deserve a place on our pavements.",
+              "question": "Yazarın tartışma hakkındaki görüşü nedir?",
+              "options": [
+                "Robots should be banned at once",
+                "Robots should be allowed everywhere now",
+                "A decision should wait for a local trial",
+                "The debate is not important"
+              ],
+              "answer": 2,
+              "explanation": "\"A decision should wait for a local trial\" doğru: yazar \"the debate is happening too early\" diyor ve önce tek bir ilçede sınırlı bir deneme yapılmasını öneriyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Should Delivery Robots Be Allowed on Our Pavements?\n\nSmall delivery robots have been tested in several European cities, and a trial is now being planned in Istanbul. Supporters argue that the robots could reduce traffic, because fewer vans would be needed for short trips. They also point out that robots can work at night, when roads are quiet, and that they produce no exhaust fumes.\n\nOpponents are less enthusiastic. Pavements in many neighbourhoods are already narrow and crowded, and they worry that robots would make life even harder for wheelchair users and parents with pushchairs. Some shopkeepers also fear that their own delivery riders would lose their jobs.\n\nIn my view, both sides make valid points, but the debate is happening too early. Not a single robot has yet been tested on a steep, busy street like the ones in Beyoğlu. Until such a test has been carried out, any decision would be based on guesses rather than evidence. The city should therefore allow a limited trial in one district, publish the results, and only then decide whether the robots deserve a place on our pavements.",
+              "question": "\"they worry that robots would…\" cümlesindeki \"they\" kimi anlatıyor?",
+              "options": [
+                "The opponents",
+                "The supporters",
+                "The robots",
+                "The shopkeepers' riders"
+              ],
+              "answer": 0,
+              "explanation": "\"The opponents\" doğru: paragraf \"Opponents are less enthusiastic\" diye başlıyor; endişelenenler karşı çıkanlar."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Café pick-up pilot: update\n\nHi everyone,\n\nHere is a quick update on Deniz's proposal to turn local cafés into pick-up points.\n\nAt Monday's meeting, I said that I was worried about our brand, and Kerem was worried about the new scanners and the extra work for his team. Both concerns have now been answered. The scanners will be paid for from the marketing budget, since the pilot is partly an advertising campaign, and every parcel will be tracked from the moment it arrives at a café.\n\nElif has agreed to take part, but only on one condition: the shelf must not block the window. She told Deniz that she had already lost customers once when building work hid the café from the street, and she did not want it to happen again. Deniz has had a narrower shelf designed, so this should not be a problem.\n\nThe pilot will start in the second week of March and last three months. If fewer than two hundred parcels are collected in a month, we will review the scheme.\n\nI have to admit I was against this idea at first. I am still cautious, but I think it deserves a fair chance.\n\nBest,\nSelin",
+              "question": "Tarayıcıların parası nereden ödenecek?",
+              "options": [
+                "From Elif's café",
+                "From Kerem's team budget",
+                "From the marketing budget",
+                "From the customers' fees"
+              ],
+              "answer": 2,
+              "explanation": "\"From the marketing budget\" doğru: metinde \"The scanners will be paid for from the marketing budget\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Café pick-up pilot: update\n\nHi everyone,\n\nHere is a quick update on Deniz's proposal to turn local cafés into pick-up points.\n\nAt Monday's meeting, I said that I was worried about our brand, and Kerem was worried about the new scanners and the extra work for his team. Both concerns have now been answered. The scanners will be paid for from the marketing budget, since the pilot is partly an advertising campaign, and every parcel will be tracked from the moment it arrives at a café.\n\nElif has agreed to take part, but only on one condition: the shelf must not block the window. She told Deniz that she had already lost customers once when building work hid the café from the street, and she did not want it to happen again. Deniz has had a narrower shelf designed, so this should not be a problem.\n\nThe pilot will start in the second week of March and last three months. If fewer than two hundred parcels are collected in a month, we will review the scheme.\n\nI have to admit I was against this idea at first. I am still cautious, but I think it deserves a fair chance.\n\nBest,\nSelin",
+              "question": "Elif rafın pencereyi kapatmasını neden istemiyor?",
+              "options": [
+                "She once lost customers when her café was hidden",
+                "Her café gets too dark in winter",
+                "The window is used for advertising",
+                "The landlord does not allow it"
+              ],
+              "answer": 0,
+              "explanation": "\"She once lost customers when her café was hidden\" doğru: metinde Elif'in \"she had already lost customers once when building work hid the café from the street\" dediği yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Café pick-up pilot: update\n\nHi everyone,\n\nHere is a quick update on Deniz's proposal to turn local cafés into pick-up points.\n\nAt Monday's meeting, I said that I was worried about our brand, and Kerem was worried about the new scanners and the extra work for his team. Both concerns have now been answered. The scanners will be paid for from the marketing budget, since the pilot is partly an advertising campaign, and every parcel will be tracked from the moment it arrives at a café.\n\nElif has agreed to take part, but only on one condition: the shelf must not block the window. She told Deniz that she had already lost customers once when building work hid the café from the street, and she did not want it to happen again. Deniz has had a narrower shelf designed, so this should not be a problem.\n\nThe pilot will start in the second week of March and last three months. If fewer than two hundred parcels are collected in a month, we will review the scheme.\n\nI have to admit I was against this idea at first. I am still cautious, but I think it deserves a fair chance.\n\nBest,\nSelin",
+              "question": "Proje hangi durumda gözden geçirilecek?",
+              "options": [
+                "If a single parcel goes missing",
+                "If under two hundred parcels are collected a month",
+                "If Elif changes her mind in March",
+                "If the scanners are delivered late"
+              ],
+              "answer": 1,
+              "explanation": "\"If under two hundred parcels are collected a month\" doğru: metinde \"If fewer than two hundred parcels are collected in a month, we will review the scheme\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Café pick-up pilot: update\n\nHi everyone,\n\nHere is a quick update on Deniz's proposal to turn local cafés into pick-up points.\n\nAt Monday's meeting, I said that I was worried about our brand, and Kerem was worried about the new scanners and the extra work for his team. Both concerns have now been answered. The scanners will be paid for from the marketing budget, since the pilot is partly an advertising campaign, and every parcel will be tracked from the moment it arrives at a café.\n\nElif has agreed to take part, but only on one condition: the shelf must not block the window. She told Deniz that she had already lost customers once when building work hid the café from the street, and she did not want it to happen again. Deniz has had a narrower shelf designed, so this should not be a problem.\n\nThe pilot will start in the second week of March and last three months. If fewer than two hundred parcels are collected in a month, we will review the scheme.\n\nI have to admit I was against this idea at first. I am still cautious, but I think it deserves a fair chance.\n\nBest,\nSelin",
+              "question": "Selin'in projeye bakışı şimdi nasıl?",
+              "options": [
+                "Completely against it",
+                "Fully enthusiastic",
+                "Not interested any more",
+                "Still careful, but willing to give it a chance"
+              ],
+              "answer": 3,
+              "explanation": "\"Still careful, but willing to give it a chance\" doğru: Selin \"I am still cautious, but I think it deserves a fair chance\" yazıyor."
+            },
+            {
+              "type": "translate",
+              "text": "Güncelleme düzgün test edilseydi, sistem çökmezdi.",
+              "lang": "tr",
+              "answers": [
+                "If the update had been tested properly, the system wouldn't have crashed.",
+                "If the update had been properly tested, the system wouldn't have crashed.",
+                "The system wouldn't have crashed if the update had been tested properly.",
+                "The system wouldn't have crashed if the update had been properly tested.",
+                "Had the update been tested properly, the system wouldn't have crashed.",
+                "Had the update been properly tested, the system wouldn't have crashed.",
+                "If the update had been tested properly, the system would not have crashed."
+              ],
+              "tokens": [
+                "If",
+                "the",
+                "update",
+                "had",
+                "been",
+                "tested",
+                "properly",
+                "the",
+                "system",
+                "wouldn't",
+                "have",
+                "crashed",
+                "didn't",
+                "was"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Müdür bütçenin neden bu kadar yüksek olduğunu sordu.",
+              "lang": "tr",
+              "answers": [
+                "The manager asked why the budget was so high."
+              ],
+              "tokens": [
+                "The",
+                "manager",
+                "asked",
+                "why",
+                "the",
+                "budget",
+                "was",
+                "so",
+                "high",
+                "were",
+                "did"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Yeni şube için menüyü İngilizceye çevirtiyorum.",
+              "lang": "tr",
+              "answers": [
+                "I'm having the menu translated into English for the new branch.",
+                "For the new branch, I'm having the menu translated into English.",
+                "I'm having the menu for the new branch translated into English.",
+                "I am having the menu translated into English for the new branch.",
+                "I'm getting the menu translated into English for the new branch."
+              ],
+              "tokens": [
+                "I'm",
+                "having",
+                "the",
+                "menu",
+                "translated",
+                "into",
+                "English",
+                "for",
+                "the",
+                "new",
+                "branch",
+                "translating",
+                "do"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Endişenizi anlıyorum, bu yüzden önce küçük bir pilot öneriyorum.",
+              "lang": "tr",
+              "answers": [
+                "I understand your concern, so I'm suggesting a small pilot first.",
+                "I understand your concern, so first I'm suggesting a small pilot.",
+                "I understand your concern, so I am suggesting a small pilot first.",
+                "I understand your concern, so I suggest a small pilot first."
+              ],
+              "tokens": [
+                "I",
+                "understand",
+                "your",
+                "concern",
+                "so",
+                "I'm",
+                "suggesting",
+                "a",
+                "small",
+                "pilot",
+                "first",
+                "to",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "In the meeting, the client insisted ___ seeing the contract again.",
+              "translation": "Toplantıda müşteri sözleşmeyi yeniden görmekte ısrar etti.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "to",
+                "for"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Toplantıda bir öneriye kibarca itiraz etmek istiyorsun. Hangisi en uygun?",
+              "answer": "I'm not sure that would work.",
+              "choices": [
+                {
+                  "text": "I'm not sure that would work.",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "That's the worst idea ever.",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "No. Next question.",
+                  "emoji": "🙅"
+                },
+                {
+                  "text": "I'm disagree with this.",
+                  "emoji": "❌"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7u15c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}
