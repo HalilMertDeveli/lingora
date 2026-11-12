@@ -249,6 +249,36 @@ void main() {
       expect(c.read(prefsProvider).getString('premium.cache'), isNull);
     });
 
+    test('an account without an entitlement does not inherit server Premium (sign-out)', () async {
+      final backend = FakeBackend(const ServerEntitlement(premium: false, status: 'none'));
+      final c = await makeContainer(billing: FakeBilling(), backend: backend);
+      backend.server.add(
+        ServerEntitlement(premium: true, status: 'active', expiresAt: now.add(const Duration(days: 30))),
+      );
+      await pumpEventQueue();
+      expect(c.read(premiumProvider), isTrue);
+
+      // New guest account after sign-out: entitlements/{newUid} does not exist.
+      backend.server.add(null);
+      await pumpEventQueue();
+      expect(c.read(premiumProvider), isFalse);
+      expect(c.read(prefsProvider).getString('premium.cache'), isNull);
+    });
+
+    test('a missing entitlement keeps a store purchase', () async {
+      final billing = FakeBilling();
+      // Server unreachable while buying: the store purchase is trusted.
+      final backend = FakeBackend(const ServerEntitlement(premium: false, status: 'none'))
+        ..error = StateError('offline');
+      final c = await makeContainer(billing: billing, backend: backend);
+      billing.emit(PremiumPlan.yearly.id, StorePurchaseStatus.purchased);
+      await pumpEventQueue();
+      expect(c.read(premiumControllerProvider).source, PremiumSource.store);
+      backend.server.add(null);
+      await pumpEventQueue();
+      expect(c.read(premiumProvider), isTrue);
+    });
+
     test('parses the verifyPurchase output', () {
       final e = ServerEntitlement.fromJson({
         'active': true,

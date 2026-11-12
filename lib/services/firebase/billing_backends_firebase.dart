@@ -38,7 +38,11 @@ class FirebaseEntitlementBackend implements EntitlementBackend {
   Stream<ServerEntitlement?> watch() {
     final db = firestore, id = uid;
     if (db == null || id == null) return const Stream.empty();
-    return db.doc('entitlements/$id').snapshots().map((snap) {
+    // "Not in the offline cache" is not "no entitlement": skip those so a
+    // cached Premium keeps working offline until the server answers.
+    return db.doc('entitlements/$id').snapshots().where((s) => s.exists || !s.metadata.isFromCache).map((
+      snap,
+    ) {
       final data = snap.data();
       if (data == null) return null;
       return ServerEntitlement.fromDoc({

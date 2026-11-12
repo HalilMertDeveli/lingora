@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/services/firebase/account_service.dart';
 
@@ -36,5 +37,18 @@ void main() {
     ]) {
       expect(authErrorTr(code), isNot(contains(code)), reason: code);
     }
+  });
+
+  test('connection failures reported as "unknown" get the offline message', () {
+    FirebaseAuthException e(String code, String msg) => FirebaseAuthException(code: code, message: msg);
+    expect(
+      authErrorCode(e('unknown', 'An internal error has occurred. [ Failed to connect to /10.0.2.2:9099 ]')),
+      'network-request-failed',
+    );
+    expect(authErrorCode(e('internal-error', 'Unable to resolve host "x"')), 'network-request-failed');
+    expect(authErrorCode(e('unknown', 'EMAIL_NOT_FOUND')), 'user-not-found');
+    expect(authErrorCode(e('unknown', 'something else')), 'unknown');
+    expect(authErrorCode(e('wrong-password', 'network')), 'wrong-password');
+    expect(authErrorTr('network-request-failed'), 'İnternet bağlantısı yok. Bağlanınca tekrar dene.');
   });
 }
