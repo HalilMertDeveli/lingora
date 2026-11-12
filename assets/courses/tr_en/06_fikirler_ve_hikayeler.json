@@ -330,6 +330,13 @@
           "steps": [
             {
               "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "You left your design job and opened this café. Any regrets?",
+              "translation": "Tasarım işini bırakıp bu kafeyi açtın. Hiç pişman oldun mu?"
+            },
+            {
+              "kind": "line",
               "speaker": "Elif",
               "avatar": "👩",
               "text": "Kerem, what a morning! By the time I got to the café, the delivery van had already left.",
