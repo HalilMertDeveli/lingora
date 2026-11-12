@@ -828,10 +828,11 @@
             },
             {
               "type": "listen",
-              "text": "Flight 680 to London is delayed by forty minutes.",
+              "text": "Flight 68 to London is delayed by forty minutes.",
               "answers": [
-                "Flight 680 to London is delayed by forty minutes.",
-                "Flight 680 to London is delayed by 40 minutes."
+                "Flight 68 to London is delayed by forty minutes.",
+                "Flight 68 to London is delayed by 40 minutes.",
+                "Flight sixty-eight to London is delayed by forty minutes."
               ]
             },
             {
@@ -2435,22 +2436,24 @@
             },
             {
               "type": "translate",
-              "text": "After that, she lost her phone on the beach.",
-              "lang": "en",
+              "text": "Ondan sonra Mia plajda telefonunu kaybetti.",
+              "lang": "tr",
               "answers": [
-                "Ondan sonra telefonunu plajda kaybetti",
-                "Ondan sonra plajda telefonunu kaybetti",
-                "Sonra telefonunu plajda kaybetti",
-                "Sonra plajda telefonunu kaybetti"
+                "After that, Mia lost her phone on the beach.",
+                "Mia lost her phone on the beach after that."
               ],
               "tokens": [
-                "Ondan",
-                "sonra",
-                "telefonunu",
-                "plajda",
-                "kaybetti",
-                "buldu",
-                "denizde"
+                "After",
+                "that",
+                "Mia",
+                "lost",
+                "her",
+                "phone",
+                "on",
+                "the",
+                "beach",
+                "losed",
+                "his"
               ]
             },
             {

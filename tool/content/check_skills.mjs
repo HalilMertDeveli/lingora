@@ -204,6 +204,8 @@ for (const f of extFiles) {
       if (tp.size !== 2) say(t.id, 'skills test reading: 2 texts × 3');
       for (const p of tp) if (p && !between(words(p), textRange[0] - 20, textRange[1])) say(t.id, `test passage ${words(p)} words`);
       te.forEach((e, i) => checkExercise(e, `${t.id}#${i}`, level));
+      // The writing part measures production: Turkish → English.
+      te.forEach((e, i) => e.type === 'translate' && e.lang !== 'tr' && say(`${t.id}#${i}`, 'skills test translate must be tr→en'));
       if (!(u.guide ?? '').includes('Beceri testi')) say(W, 'guide should map the skills test to can-do (a "Beceri testi" part)');
     } else if (te.length) say(t.id, 'only the last unit test carries questions');
     report.push(row);

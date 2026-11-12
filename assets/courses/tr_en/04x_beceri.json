@@ -2613,21 +2613,23 @@
             },
             {
               "type": "translate",
-              "text": "I'm responsible for answering customers' emails.",
-              "lang": "en",
+              "text": "Müşterilerin e-postalarını yanıtlamaktan sorumluyum.",
+              "lang": "tr",
               "answers": [
-                "Müşterilerin e-postalarını yanıtlamaktan sorumluyum",
-                "Müşterilerin e-postalarına cevap vermekten sorumluyum",
-                "Müşteri e-postalarını yanıtlamaktan sorumluyum",
-                "Müşteri e-postalarına cevap vermekten sorumluyum"
+                "I'm responsible for answering customers' emails.",
+                "I am responsible for answering customers' emails.",
+                "I'm responsible for answering customer emails.",
+                "I am responsible for answering customer emails."
               ],
               "tokens": [
-                "Müşterilerin",
-                "e-postalarını",
-                "yanıtlamaktan",
-                "sorumluyum",
-                "yanıtlamak",
-                "sorumlu"
+                "I'm",
+                "responsible",
+                "for",
+                "answering",
+                "customers'",
+                "emails",
+                "to",
+                "answer"
               ]
             },
             {

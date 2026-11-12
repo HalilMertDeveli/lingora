@@ -2275,11 +2275,12 @@
             },
             {
               "type": "listen",
-              "text": "My phone number is 0544 316 2020.",
+              "text": "My phone number is 0 5 4 4, 3 1 6, 2 0 2 0.",
               "answers": [
                 "My phone number is 0544 316 2020.",
                 "My phone number is 05443162020.",
-                "My phone number is 0544 3162020."
+                "My phone number is 0544 3162020.",
+                "My phone number is 0 5 4 4 3 1 6 2 0 2 0."
               ]
             },
             {
@@ -2428,21 +2429,23 @@
             },
             {
               "type": "translate",
-              "text": "Are you free on Monday at five?",
-              "lang": "en",
+              "text": "Pazartesi saat beşte müsait misin?",
+              "lang": "tr",
               "answers": [
-                "Pazartesi saat beşte müsait misin?",
-                "Pazartesi beşte müsait misin?",
-                "Pazartesi saat beşte boş musun?"
+                "Are you free on Monday at five?",
+                "Are you free at five on Monday?",
+                "Are you free on Monday at 5?"
               ],
               "tokens": [
-                "Pazartesi",
-                "saat",
-                "beşte",
-                "müsait",
-                "misin",
-                "salı",
-                "musun"
+                "Are",
+                "you",
+                "free",
+                "on",
+                "Monday",
+                "at",
+                "five",
+                "in",
+                "is"
               ]
             },
             {
@@ -2469,21 +2472,21 @@
             },
             {
               "type": "translate",
-              "text": "How much is a cup of coffee?",
-              "lang": "en",
+              "text": "Bir fincan kahve ne kadar?",
+              "lang": "tr",
               "answers": [
-                "Bir fincan kahve ne kadar?",
-                "Bir fincan kahve kaç para?",
-                "Bir fincan kahve kaç lira?"
+                "How much is a cup of coffee?"
               ],
               "tokens": [
-                "Bir",
-                "fincan",
-                "kahve",
-                "ne",
-                "kadar",
-                "çay",
-                "kaç"
+                "How",
+                "much",
+                "is",
+                "a",
+                "cup",
+                "of",
+                "coffee",
+                "many",
+                "an"
               ]
             },
             {

@@ -2442,22 +2442,25 @@
             },
             {
               "type": "translate",
-              "text": "I'd love to, but I can't come on Friday.",
-              "lang": "en",
+              "text": "Çok isterim ama cuma günü gelemem.",
+              "lang": "tr",
               "answers": [
-                "Çok isterim ama cuma günü gelemem",
-                "Çok isterim ama cuma gelemem",
-                "Çok isterdim ama cuma günü gelemem"
+                "I'd love to, but I can't come on Friday.",
+                "I would love to, but I can't come on Friday.",
+                "I'd love to, but I cannot come on Friday."
               ],
               "tokens": [
-                "Çok",
-                "isterim",
-                "ama",
-                "cuma",
-                "günü",
-                "gelemem",
-                "gelirim",
-                "ve"
+                "I'd",
+                "love",
+                "to",
+                "but",
+                "I",
+                "can't",
+                "come",
+                "on",
+                "Friday",
+                "coming",
+                "in"
               ]
             },
             {
