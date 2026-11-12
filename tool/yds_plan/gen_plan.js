@@ -107,10 +107,17 @@ const sectionMocks = {
     { kind: 'half', nodeId: 'ys10u7m', size: 40, minutes: 90 },
   ],
 };
+// F4 (docs/sinav/yds-faz4-icerik.md F4c): a YÖKDİL learner takes these YÖKDİL-format mocks in place of
+// the YDS ones (m1 science-weighted, m2 health, m3 social).
+const yokdilAlt = { yds_m16: 'yokdil_m1', yds_m18: 'yokdil_m2', yds_m19: 'yokdil_m3' };
 function mocksFor(week, text) {
   if (!text) return [];
   const out = [];
-  for (const m of text.matchAll(/yds_m(\d+)/g)) out.push({ kind: 'full', id: `yds_m${m[1]}`, size: 80, minutes: 180 });
+  for (const m of text.matchAll(/yds_m(\d+)/g)) {
+    const mock = { kind: 'full', id: `yds_m${m[1]}`, size: 80, minutes: 180 };
+    if (yokdilAlt[mock.id]) mock.yokdil = yokdilAlt[mock.id];
+    out.push(mock);
+  }
   const listed = sectionMocks[week] ?? [];
   out.push(...listed);
   if (/Yarım deneme/.test(text) && !listed.some((m) => m.kind === 'half')) {
@@ -147,6 +154,8 @@ parallel[34].push('ys7u15');
 // F3: ys9 Kelime bankası 3 (12 units) and ys10 Okuma evi 3 (8 units) over weeks 35–42.
 const ys9 = { 35: [1, 2], 36: [3], 37: [4, 5], 38: [6], 39: [7, 8], 40: [9], 41: [10, 11], 42: [12] };
 for (let w = 35; w <= 42; w++) parallel[w] = [...ys9[w].map((u) => `ys9u${u}`), `ys10u${w - 34}`];
+// F4: ys12 Kelime bankası 4 (8 units) over weeks 43–50.
+for (let w = 43; w <= 50; w++) parallel[w] = [`ys12u${w - 42}`];
 let total = 0;
 let readTotal = 0;
 const weeks = W.map(([week, units, grammar, qtype, mock]) => {
