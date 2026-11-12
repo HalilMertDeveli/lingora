@@ -1,6 +1,6 @@
 // The 1-year YDS plan (assets/plans/yds_1_yil.json) names its mocks by id: half and section mocks by path
 // node id, full mocks by pack mock id. Every id the plan names that is already shipped must exist with
-// the size and time the plan gives (YDS Faz 3 acceptance 3); every extra half-mock node must be in the plan.
+// the size and time the plan gives (YDS Faz 3 acceptance 3); every half-mock node of ys10/ys11 must be in the plan.
 import 'dart:convert';
 import 'dart:io';
 
@@ -71,12 +71,19 @@ void main() {
     }
   });
 
-  test('every extra half-mock node (…h, …u3m/u5m/u7m) is placed in the plan once the plan names it', () {
-    final named = {for (final (_, m) in planMocks) m['nodeId']};
-    final unnamedHalfWeeks = planMocks.where((x) => x.$2['kind'] == 'half' && x.$2['nodeId'] == null).length;
-    for (final id in nodes.keys.where((k) => RegExp(r'^ys\d+u\d+h$').hasMatch(k))) {
-      // Until the plan PR lands the weeks still say null; then the ids must match exactly.
-      if (unnamedHalfWeeks == 0) expect(named, contains(id), reason: '$id is not in the plan');
+  // Faz 3d: half mocks inside a section (ys10u3m/u5m/u7m) and the Ara denemeler side path (ys11u1m–u3m)
+  // must each be scheduled in the plan as a half mock of the same size.
+  test('every half-mock node of ys10 and ys11 is in the plan as a half mock', () {
+    final half = {
+      for (final (_, m) in planMocks)
+        if (m['kind'] == 'half') m['nodeId']: m,
+    };
+    final ids = nodes.keys.where((k) => RegExp(r'^ys1[01]u\d+m$').hasMatch(k) && nodes[k]!['size'] == 40);
+    for (final id in ids) {
+      expect(half, contains(id), reason: '$id is not a half mock in the plan');
+      expect([half[id]!['size'], half[id]!['minutes']], [40, 90], reason: id);
     }
+    // ys11 is shipped in Faz 3d: its three half mocks (plan weeks 22, 24, 27) must all exist.
+    if (shipped.contains('ys11')) expect(ids, containsAll(['ys11u1m', 'ys11u2m', 'ys11u3m']));
   });
 }
