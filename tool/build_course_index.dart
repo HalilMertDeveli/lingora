@@ -32,7 +32,8 @@ void main(List<String> args) {
   for (final id in ids) {
     final text = '${const JsonEncoder.withIndent(null).convert(buildIndex(id, readFile))}\n';
     final out = File('$indexDir/$id.json');
-    if (out.existsSync() && out.readAsStringSync() == text) continue;
+    // Line endings may differ on a Windows checkout (core.autocrlf).
+    if (out.existsSync() && out.readAsStringSync().replaceAll('\r\n', '\n') == text) continue;
     stale.add(id);
     if (!check) {
       out

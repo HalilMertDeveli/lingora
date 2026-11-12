@@ -3,7 +3,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -77,7 +76,7 @@ void main() {
       final file = File('assets/course_index/$id.json');
       expect(file.existsSync(), isTrue, reason: 'assets/course_index/$id.json yok');
       expect(
-        file.readAsStringSync() == built,
+        file.readAsStringSync().replaceAll('\r\n', '\n') == built,
         isTrue,
         reason: '$id özeti eski: dart run tool/build_course_index.dart',
       );
