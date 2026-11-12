@@ -113,21 +113,21 @@
   },
   "s7u13l4w": {
     "level": "B2",
-    "task": "Çalışanların evden çalışmasına izin verilmeli mi? Bu konuda 180–220 kelimelik bir lehte-aleyhte denemesi yaz: bir giriş paragrafı, lehte görüşler, aleyhte görüşler ve kendi görüşünü veren bir sonuç paragrafı.",
+    "task": "Şirketler dört günlük çalışma haftasına geçmeli mi? Bu konuda 180–220 kelimelik bir lehte-aleyhte denemesi yaz: bir giriş paragrafı, lehte görüşler, aleyhte görüşler ve kendi görüşünü veren bir sonuç paragrafı.",
     "minWords": 160,
     "maxWords": 240,
     "checklist": [
       "Giriş paragrafında konuyu ve tartışmanın iki tarafı olduğunu belirttin",
       "Lehte ve aleyhte görüşleri ayrı paragraflarda, en az ikişer gerekçeyle yazdın",
-      "En az üç bağlayıcı ifade kullandın (on the one hand, moreover, however…)",
+      "En az üç bağlayıcı ifade kullandın (on the one hand, in addition, moreover…)",
       "Sonuç paragrafında kendi görüşünü açıkça yazdın (In conclusion, I believe…)",
-      "Genel ifadelerde gereksiz the kullanmadın (Technology…, People…)"
+      "Genel ifadelerde gereksiz the kullanmadın (companies, employees, people…)"
     ],
     "focus": [
       "article",
       "preposition"
     ],
-    "rubric": "Can-do: writes for and against a topic. Task success means a four-paragraph essay of about 200 words: an introduction that presents the question, one paragraph with at least two arguments for working from home, one with at least two arguments against, and a conclusion that gives the writer's own reasoned view without adding new arguments. Expect a neutral, semi-formal register and B2 cohesion (on the one hand / on the other hand, moreover, however, in conclusion), plus range such as conditionals, passives (cannot be done remotely) and collocations (arguments on both sides, effect on); penalise generic \"the\" (the technology) and wrong prepositions in collocations."
+    "rubric": "Can-do: writes for and against a topic. Task success means a four-paragraph essay of about 200 words on the four-day working week: an introduction that presents the question, one paragraph with at least two arguments for it (for example health, productivity, recruitment), one with at least two arguments against it (for example businesses that must open every day, longer and more tiring days, extra staff costs), and a conclusion that gives the writer's own reasoned view without adding new arguments. Expect a neutral, semi-formal register and B2 cohesion (on the one hand / on the other hand, in addition, moreover, in conclusion), plus range such as conditionals, passives (is squeezed into four days) and collocations (fall ill, drop in output, impact on); penalise \"the\" with generic plurals (the companies, the employees) and wrong prepositions in collocations."
   },
   "s7u14l4w": {
     "level": "B2",

@@ -4,10 +4,10 @@
     {
       "id": "s7u13",
       "title": "Artılar ve eksiler",
-      "description": "Bir konunun lehine ve aleyhine gerekçeli bir deneme yazmak",
+      "description": "Dört günlük çalışma haftasının lehine ve aleyhine gerekçeli bir deneme yazmak",
       "color": "0xFF6C4CF1",
       "theme": "is",
-      "guide": "## Bu ünitede yapabileceklerin\n- Bir tartışmada iki tarafın gerekçelerini dinleyerek ayırt edebilirsin.\n- Bir köşe yazısında yazarın tutumunu ve gerekçelerini bulabilirsin.\n- Bir konunun artılarını ve eksilerini bir dakikada dengeli biçimde anlatabilirsin.\n- Giriş, iki görüş ve sonuçtan oluşan 180–220 kelimelik bir deneme yazabilirsin.\n\n## Strateji\n- Gölgeleme (shadowing) yaparken **on the one hand / on the other hand** gibi geçiş ifadelerini vurgulayarak tekrar et; konuşurken de aynı ritmi kullan.\n- Önce-dinle hikâyesinde metni açmadan iki sütun not al: **lehte** ve **aleyhte**. Her konuşmacının hangi tarafta olduğunu yaz, sonra metni açıp kontrol et.\n- Köşe yazısında yazarın görüşü genellikle son paragraflarda gelir: **I have come to…**, **In my view…** gibi ifadeleri ara.\n- Denemeden önce plan yap: her görüş için iki gerekçe ve bir örnek. Sonuçta yeni bir gerekçe ekleme, kendi görüşünü söyle.\n\n## Model metin\n> Should employees be allowed to work from home? Since the pandemic, more and more companies have had to answer this question, and there are strong arguments on both sides.\n>\n> On the one hand, working from home saves time and money. Employees who do not have to commute for hours are often more relaxed and productive. Many people also say that they can concentrate better in a quiet room than in a busy open-plan office. In addition, companies that offer flexible arrangements find it easier to keep their best staff.\n>\n> On the other hand, there are serious disadvantages. New employees learn a great deal by watching experienced colleagues, and this is difficult on a video call. Moreover, not every job can be done remotely. Drivers, nurses and shop assistants have to be at work, so a home-working policy may seem unfair to them. Some people also feel lonely when they rarely see their team.\n>\n> In conclusion, I believe that a hybrid model is the best solution. If employees spend two or three days in the office, they can learn from each other and still enjoy the benefits of working from home. However, each company should test the idea before making it permanent.\n\nDört paragraf: soru ile açılan giriş, **On the one hand** ile lehte görüşler, **On the other hand** ile aleyhte görüşler ve **In conclusion** ile kendi görüşün. Paragraf içinde **In addition**, **Moreover** gibi bağlayıcılarla gerekçe ekle.\n\n## Türklerin sık hatası\n- ❌ The technology changed the working life. ✅ **Technology** has changed **working life**. (Genel bir şeyden söz ederken **the** kullanma.)\n- ❌ It has a positive effect to productivity. / We discussed about it. ✅ It has a positive effect **on** productivity. / We **discussed** it. (Eşdizimleri kalıp olarak öğren: effect on, arguments on both sides, discuss + nesne.)",
+      "guide": "## Bu ünitede yapabileceklerin\n- Dört günlük hafta tartışmasında iki tarafın gerekçelerini dinleyerek ayırt edebilirsin.\n- Bir köşe yazısında yazarın tutumunu ve gerekçelerini bulabilirsin.\n- Bir konunun artılarını ve eksilerini bir dakikada dengeli biçimde anlatabilirsin.\n- Giriş, iki görüş ve sonuçtan oluşan 180–220 kelimelik bir lehte-aleyhte denemesi yazabilirsin.\n\n## Strateji\n- Gölgeleme (shadowing) yaparken **on the one hand / on the other hand** gibi geçiş ifadelerini vurgulayarak tekrar et; konuşurken de aynı ritmi kullan.\n- Önce-dinle hikâyesinde metni açmadan iki sütun not al: **lehte** ve **aleyhte**. Deniz, Selin ve Kerem'in hangi gerekçeyi verdiğini yaz, sonra metni açıp kontrol et.\n- Köşe yazısında yazarın görüşü genellikle son paragraflarda gelir: **I have come to…**, **In my view…** gibi ifadeleri ara.\n- Denemeden önce plan yap: her görüş için iki gerekçe ve bir örnek (sağlık, maliyet, sektör). Sonuçta yeni bir gerekçe ekleme, kendi görüşünü söyle.\n\n## Model metin\n> Should companies introduce a four-day working week? Several firms have already tried it, and the idea has both enthusiastic supporters and serious critics.\n>\n> On the one hand, a shorter week can make employees healthier and more productive. People who have three days to rest are less likely to make mistakes or fall ill. In many trials, companies have reported fewer sick days without any drop in output. In addition, a four-day week is attractive to job seekers, so employers who offer it find it easier to recruit and keep good staff.\n>\n> On the other hand, the idea does not suit every business. Hospitals, shops and delivery companies have to serve customers five or even seven days a week. Moreover, if the same work is squeezed into four days, each working day becomes longer and more tiring. For drivers or nurses, this could even be dangerous. Some employers also worry about the cost of hiring extra staff to cover the missing day.\n>\n> In conclusion, I believe that a four-day week can work well in offices, but it is not a solution for everyone. Companies should start with a trial, measure the results carefully and adapt the plan to their own sector.\n\nDört paragraf: soru ile açılan giriş, **On the one hand** ile lehte görüşler, **On the other hand** ile aleyhte görüşler ve **In conclusion** ile kendi görüşün. Paragraf içinde **In addition**, **Moreover** gibi bağlayıcılarla gerekçe ekle.\n\n## Türklerin sık hatası\n- ❌ The companies should try the four-day week. ✅ **Companies** should try **a** four-day week. (Genel olarak şirketlerden söz ederken **the** kullanma; tekil sayılabilir isimden önce **a**.)\n- ❌ It has a positive impact to health. / Most staff were in favour for it. ✅ It has a positive impact **on** health. / Most staff were in favour **of** it. (Eşdizimleri kalıp olarak öğren: impact on, in favour of, arguments on both sides.)",
       "nodes": [
         {
           "id": "s7u13l1",
@@ -17,12 +17,14 @@
           "exercises": [
             {
               "type": "listen",
-              "text": "If we'd let people work from home, we wouldn't have lost a lot of good staff.",
+              "text": "If we'd tried a four-day week last year, we wouldn't have lost a lot of good people.",
               "answers": [
-                "If we'd let people work from home, we wouldn't have lost a lot of good staff.",
-                "If we had let people work from home, we would not have lost a lot of good staff.",
-                "If we had let people work from home, we wouldn't have lost a lot of good staff.",
-                "If we'd let people work from home, we would not have lost a lot of good staff."
+                "If we'd tried a four-day week last year, we wouldn't have lost a lot of good people.",
+                "If we had tried a four-day week last year, we would not have lost a lot of good people.",
+                "If we had tried a four-day week last year, we wouldn't have lost a lot of good people.",
+                "If we'd tried a four-day week last year, we would not have lost a lot of good people.",
+                "If we'd tried a four day week last year, we wouldn't have lost a lot of good people.",
+                "If we had tried a four day week last year, we wouldn't have lost a lot of good people."
               ]
             },
             {
@@ -33,10 +35,10 @@
             },
             {
               "type": "listen",
-              "text": "On the one hand, the office is too far away; on the other hand, it's where ideas happen.",
+              "text": "On the one hand, it's a great perk; on the other hand, someone has to answer the phones on Fridays.",
               "answers": [
-                "On the one hand, the office is too far away; on the other hand, it's where ideas happen.",
-                "On the one hand, the office is too far away; on the other hand, it is where ideas happen."
+                "On the one hand, it's a great perk; on the other hand, someone has to answer the phones on Fridays.",
+                "On the one hand, it is a great perk; on the other hand, someone has to answer the phones on Fridays."
               ]
             },
             {
@@ -52,36 +54,37 @@
             },
             {
               "type": "listen",
-              "text": "Do you think people work harder at home, or are they just better at looking busy?",
+              "text": "Do you think people really get more done in four days, or do they just work faster?",
               "answers": [
-                "Do you think people work harder at home, or are they just better at looking busy?"
+                "Do you think people really get more done in four days, or do they just work faster?",
+                "Do you think people really get more done in 4 days, or do they just work faster?"
               ]
             },
             {
               "type": "shadow",
-              "text": "Supporters claim it saves time, whereas critics argue it weakens the team.",
-              "translation": "Destekçiler zaman kazandırdığını iddia ediyor, eleştirenler ise ekibi zayıflattığını savunuyor.",
+              "text": "Supporters say it reduces stress, whereas critics worry about longer working days.",
+              "translation": "Destekçiler stresi azalttığını söylüyor, eleştirenler ise daha uzun iş günlerinden endişe ediyor.",
               "rate": 0.85
             },
             {
               "type": "listen",
-              "text": "I'd rather have a quiet day at home than spend three hours on the motorway.",
+              "text": "I'd rather work ten hours a day than come into the office on a Friday.",
               "answers": [
-                "I'd rather have a quiet day at home than spend three hours on the motorway.",
-                "I would rather have a quiet day at home than spend three hours on the motorway.",
-                "I'd rather have a quiet day at home than spend 3 hours on the motorway.",
-                "I would rather have a quiet day at home than spend 3 hours on the motorway."
+                "I'd rather work ten hours a day than come into the office on a Friday.",
+                "I would rather work ten hours a day than come into the office on a Friday.",
+                "I'd rather work 10 hours a day than come into the office on a Friday.",
+                "I would rather work 10 hours a day than come into the office on a Friday."
               ]
             },
             {
               "type": "fillBlank",
-              "text": "According to the survey, working from home has a positive effect ___ productivity.",
-              "translation": "Ankete göre evden çalışmanın verimlilik üzerinde olumlu bir etkisi var.",
-              "answer": "on",
+              "text": "According to the survey, most employees were in favour ___ the change.",
+              "translation": "Ankete göre çalışanların çoğu değişiklikten yanaydı.",
+              "answer": "of",
               "choices": [
-                "on",
-                "to",
-                "at"
+                "of",
+                "for",
+                "to"
               ]
             },
             {
@@ -104,8 +107,8 @@
                   "to sum up"
                 ],
                 [
-                  "işe gidip gelmek",
-                  "commute"
+                  "üç günlük hafta sonu",
+                  "three-day weekend"
                 ]
               ]
             }
@@ -259,8 +262,8 @@
         {
           "id": "s7u13s",
           "type": "story",
-          "title": "Ofis mi, ev mi?",
-          "description": "Merkez Maslak'a taşınınca Deniz'in ekibi evden çalışmayı tartışıyor",
+          "title": "Dört gün mü, beş gün mü?",
+          "description": "Deniz'in ekibi RotaLojistik'te dört günlük hafta denemesini tartışıyor",
           "rewardXp": 15,
           "listenFirst": true,
           "steps": [
@@ -268,134 +271,110 @@
               "kind": "line",
               "speaker": "Deniz",
               "avatar": "🧑‍💼",
-              "text": "Thanks for staying, everyone. Since we moved to Maslak, I've had a lot of complaints about the commute.",
-              "translation": "Kaldığınız için teşekkürler. Maslak'a taşındığımızdan beri yol konusunda çok şikâyet aldım."
+              "text": "Thanks for staying, everyone. The board has asked us whether we'd like to trial a four-day week next year.",
+              "translation": "Kaldığınız için teşekkürler. Yönetim kurulu gelecek yıl dört günlük haftayı denemek isteyip istemediğimizi sordu."
             },
             {
               "kind": "line",
               "speaker": "Selin",
               "avatar": "👩‍💼",
-              "text": "Not surprising. Some people now spend three hours a day in traffic. That's fifteen hours a week.",
-              "translation": "Şaşırtıcı değil. Bazıları artık günde üç saat trafikte geçiriyor. Bu da haftada on beş saat demek."
+              "text": "I saw the email. Same salary, thirty-two hours instead of forty. It sounds almost too generous.",
+              "translation": "E-postayı gördüm. Aynı maaş, kırk yerine otuz iki saat. Neredeyse fazla cömert geliyor."
             },
             {
               "kind": "line",
               "speaker": "Kerem",
               "avatar": "👨",
-              "text": "My team has a suggestion. Let people work from home two days a week, say Tuesdays and Thursdays.",
-              "translation": "Ekibimin bir önerisi var. İnsanlar haftada iki gün evden çalışsın, mesela salı ve perşembe."
+              "text": "My team voted on it yesterday. Eleven out of twelve developers said they'd like to take part.",
+              "translation": "Ekibim dün oylama yaptı. On iki yazılımcıdan on biri katılmak istediğini söyledi."
             },
             {
               "kind": "question",
-              "prompt": "Kerem'in ekibi haftada kaç gün evden çalışmayı öneriyor?",
+              "prompt": "Kerem'in ekibinde kaç yazılımcı denemeye katılmak istiyor?",
               "choices": [
-                "Bir gün",
-                "İki gün",
-                "Üç gün"
+                "On iki kişiden on biri",
+                "On iki kişiden sekizi",
+                "Ekibin tamamı"
               ],
-              "answer": "İki gün"
+              "answer": "On iki kişiden on biri"
             },
             {
               "kind": "line",
               "speaker": "Deniz",
               "avatar": "🧑‍💼",
-              "text": "Before we decide, let's look at both sides. Kerem, what are the main advantages?",
-              "translation": "Karar vermeden önce iki tarafa da bakalım. Kerem, başlıca avantajlar neler?"
+              "text": "Before anyone gets excited, let's look at the arguments. Kerem, why does your team want it?",
+              "translation": "Kimse heyecanlanmadan önce argümanlara bakalım. Kerem, ekibin bunu neden istiyor?"
             },
             {
               "kind": "line",
               "speaker": "Kerem",
               "avatar": "👨",
-              "text": "First, people would get those hours back. Second, developers need quiet time to write good code.",
-              "translation": "Birincisi, insanlar o saatleri geri kazanır. İkincisi, yazılımcıların iyi kod yazmak için sessiz zamana ihtiyacı var."
+              "text": "Mainly because tired people make mistakes. Most of the bugs we fixed last year were written late in the week.",
+              "translation": "Asıl olarak yorgun insanlar hata yaptığı için. Geçen yıl düzelttiğimiz hataların çoğu haftanın sonlarına doğru yazılmıştı."
             },
             {
               "kind": "line",
               "speaker": "Kerem",
               "avatar": "👨",
-              "text": "If we had had a quieter office last month, that update might have been tested properly.",
-              "translation": "Geçen ay daha sessiz bir ofisimiz olsaydı, o güncelleme düzgünce test edilmiş olabilirdi."
+              "text": "With a three-day weekend, people would come back rested. I'm convinced the code would be better, not worse.",
+              "translation": "Üç günlük bir hafta sonuyla insanlar dinlenmiş dönerdi. Kodun daha kötü değil, daha iyi olacağına eminim."
             },
             {
               "kind": "line",
               "speaker": "Selin",
               "avatar": "👩‍💼",
-              "text": "Hmm, I'm not sure the office was the problem. But go on.",
-              "translation": "Hımm, sorunun ofis olduğundan emin değilim. Ama devam et."
+              "text": "Maybe for developers. But our clients don't stop sending parcels on Fridays, and nor do their customers.",
+              "translation": "Yazılımcılar için belki. Ama müşterilerimiz cuma günleri koli göndermeyi bırakmıyor, onların müşterileri de."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "If the whole company took Friday off, our phones would ring all day with nobody to answer them.",
+              "translation": "Bütün şirket cuma izin yapsa, telefonlarımız bütün gün çalar ve açacak kimse olmaz."
             },
             {
               "kind": "line",
               "speaker": "Kerem",
               "avatar": "👨",
-              "text": "And third, we'd keep our people. Two engineers have already been offered jobs closer to home.",
-              "translation": "Üçüncüsü de insanlarımızı elde tutarız. İki mühendise evlerine daha yakın işler çoktan teklif edildi."
+              "text": "Nobody's suggesting that. We could split the team, so half take Monday off and the other half take Friday.",
+              "translation": "Kimse bunu önermiyor. Ekibi bölebiliriz; yarısı pazartesi, diğer yarısı cuma izin yapar."
             },
             {
               "kind": "line",
               "speaker": "Deniz",
               "avatar": "🧑‍💼",
-              "text": "That's a serious point. Losing them would cost us far more than a few empty desks.",
-              "translation": "Bu ciddi bir nokta. Onları kaybetmek bize birkaç boş masadan çok daha pahalıya patlar."
+              "text": "That would keep the office open five days a week. Selin, does that solve your problem?",
+              "translation": "Böylece ofis haftada beş gün açık kalır. Selin, bu senin sorununu çözüyor mu?"
             },
             {
               "kind": "line",
               "speaker": "Selin",
               "avatar": "👩‍💼",
-              "text": "Maybe, but empty desks aren't the only cost. Teams that never meet tend to stop talking to each other.",
-              "translation": "Olabilir ama tek maliyet boş masalar değil. Hiç bir araya gelmeyen ekipler birbiriyle konuşmayı bırakma eğiliminde."
-            },
-            {
-              "kind": "line",
-              "speaker": "Deniz",
-              "avatar": "🧑‍💼",
-              "text": "Selin, you look unconvinced. What are the disadvantages?",
-              "translation": "Selin, ikna olmamış görünüyorsun. Dezavantajlar neler?"
+              "text": "Partly. But it's not only about phones. The drivers can't do a week's deliveries in four days without very long shifts.",
+              "translation": "Kısmen. Ama mesele sadece telefonlar değil. Sürücüler çok uzun vardiyalar olmadan bir haftalık teslimatı dört günde yapamaz."
             },
             {
               "kind": "line",
               "speaker": "Selin",
               "avatar": "👩‍💼",
-              "text": "My biggest worry is the new staff. Since the merger, we've hired twelve people, and most of them are juniors.",
-              "translation": "En büyük endişem yeni çalışanlar. Birleşmeden beri on iki kişi işe aldık ve çoğu yeni başlayan."
+              "text": "Ten-hour days behind the wheel aren't just tiring; they're dangerous. I wouldn't sign anything that put drivers at risk.",
+              "translation": "Direksiyon başında on saatlik günler sadece yorucu değil, tehlikeli de. Sürücüleri riske atan hiçbir şeyi imzalamam."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "That's a fair point. I was only thinking about the office.",
+              "translation": "Haklı bir nokta. Ben sadece ofisi düşünüyordum."
             },
             {
               "kind": "question",
-              "prompt": "Birleşmeden beri kaç kişi işe alındı?",
-              "choices": [
-                "On iki",
-                "On beş",
-                "Yirmi"
-              ],
-              "answer": "On iki"
-            },
-            {
-              "kind": "line",
-              "speaker": "Selin",
-              "avatar": "👩‍💼",
-              "text": "They learn by listening to experienced colleagues. You can't pick that up on a video call.",
-              "translation": "Deneyimli meslektaşlarını dinleyerek öğreniyorlar. Bunu görüntülü bir görüşmede kapamazsın."
-            },
-            {
-              "kind": "line",
-              "speaker": "Selin",
-              "avatar": "👩‍💼",
-              "text": "And our drivers and warehouse staff can't work from home at all. It might seem unfair to them.",
-              "translation": "Ayrıca sürücülerimiz ve depo çalışanlarımız hiç evden çalışamaz. Bu onlara haksızlık gibi görünebilir."
-            },
-            {
-              "kind": "line",
-              "speaker": "Kerem",
-              "avatar": "👨",
-              "text": "That's a valid point. I hadn't thought about the warehouse team.",
-              "translation": "Haklı bir nokta. Depo ekibini düşünmemiştim."
-            },
-            {
-              "kind": "question",
-              "prompt": "Kerem, Selin'in depo çalışanlarıyla ilgili görüşüne nasıl tepki veriyor?",
+              "prompt": "Kerem, Selin'in sürücülerle ilgili itirazına nasıl tepki veriyor?",
               "choices": [
                 "Haklı buluyor",
-                "Alay ediyor",
-                "Görmezden geliyor"
+                "Karşı çıkıyor",
+                "Konuyu değiştiriyor"
               ],
               "answer": "Haklı buluyor"
             },
@@ -403,47 +382,64 @@
               "kind": "line",
               "speaker": "Deniz",
               "avatar": "🧑‍💼",
-              "text": "So, on the one hand, we'd save time and keep our engineers. On the other hand, juniors and drivers might lose out.",
-              "translation": "Yani bir yandan zaman kazanır ve mühendislerimizi tutarız. Öte yandan yeni başlayanlar ve sürücüler kayıplı çıkabilir."
-            },
-            {
-              "kind": "line",
-              "speaker": "Selin",
-              "avatar": "👩‍💼",
-              "text": "What if we tried it for three months? New staff would come in every day during their first month.",
-              "translation": "Peki üç ay denesek? Yeni çalışanlar ilk aylarında her gün gelir."
-            },
-            {
-              "kind": "line",
-              "speaker": "Kerem",
-              "avatar": "👨",
-              "text": "And the warehouse could get something too, like flexible start times. Would that work, Selin?",
-              "translation": "Depo da bir şey kazanabilir, esnek başlama saatleri gibi. Bu işe yarar mı Selin?"
-            },
-            {
-              "kind": "line",
-              "speaker": "Selin",
-              "avatar": "👩‍💼",
-              "text": "It might. I'd want to see the numbers first: delays, mistakes and how many people leave.",
-              "translation": "Yarayabilir. Önce rakamları görmek isterim: gecikmeler, hatalar ve kaç kişinin ayrıldığı."
+              "text": "So, on the one hand, rested staff and fewer mistakes. On the other hand, safety and service can't suffer.",
+              "translation": "Yani bir yandan dinlenmiş çalışanlar ve daha az hata. Öte yandan güvenlik ve hizmet zarar göremez."
             },
             {
               "kind": "line",
               "speaker": "Deniz",
               "avatar": "🧑‍💼",
-              "text": "Fair enough. Kerem, could you have your team put together a short proposal by Friday?",
-              "translation": "Makul. Kerem, ekibine cumaya kadar kısa bir öneri hazırlatabilir misin?"
+              "text": "What if we started with the office teams only and kept the drivers on their current schedule for now?",
+              "translation": "Peki yalnızca ofis ekipleriyle başlasak ve sürücüleri şimdilik mevcut programlarında tutsak?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "That might work, but it has to be fair. The drivers would need something too, perhaps an extra paid day off each month.",
+              "translation": "Bu işe yarayabilir ama adil olmalı. Sürücülerin de bir şeye ihtiyacı olur, belki her ay fazladan bir ücretli izin günü."
+            },
+            {
+              "kind": "question",
+              "prompt": "Selin sürücüler için ne öneriyor?",
+              "choices": [
+                "Her ay fazladan bir ücretli izin günü",
+                "Daha yüksek bir maaş",
+                "Daha kısa rotalar"
+              ],
+              "answer": "Her ay fazladan bir ücretli izin günü"
             },
             {
               "kind": "line",
               "speaker": "Kerem",
               "avatar": "👨",
-              "text": "Sure. And I'll ask Mia whether she'd write about it. Her readers love this topic.",
-              "translation": "Tabii. Mia'ya da bu konuda yazıp yazmayacağını sorarım. Okurları bu konuya bayılıyor."
+              "text": "I'd support that. And we should measure everything: bugs, delays, sick days and customer complaints.",
+              "translation": "Bunu desteklerim. Her şeyi de ölçmeliyiz: yazılım hataları, gecikmeler, hastalık izinleri ve müşteri şikâyetleri."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧑‍💼",
+              "text": "Agreed. Six months, office teams only, and the results go to the board in June.",
+              "translation": "Anlaştık. Altı ay, yalnızca ofis ekipleri ve sonuçlar haziranda yönetim kuruluna gidiyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Selin",
+              "avatar": "👩‍💼",
+              "text": "And if complaints rise by more than ten percent, we stop. I'd like that written into the plan.",
+              "translation": "Şikâyetler yüzde ondan fazla artarsa da dururuz. Bunun plana yazılmasını istiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👨",
+              "text": "Fine by me. Should I tell Mia? She wrote a column about the four-day week last month.",
+              "translation": "Bana uyar. Mia'ya söyleyeyim mi? Geçen ay dört günlük hafta hakkında bir köşe yazısı yazdı."
             },
             {
               "kind": "question",
-              "prompt": "\"Her readers love this topic\" cümlesindeki \"her\" kimi anlatıyor?",
+              "prompt": "\"She wrote a column about the four-day week\" cümlesindeki \"she\" kimi anlatıyor?",
               "choices": [
                 "Selin",
                 "Mia",
@@ -455,25 +451,18 @@
               "kind": "line",
               "speaker": "Deniz",
               "avatar": "🧑‍💼",
-              "text": "Let's not go public yet. We had enough headlines after the system crashed!",
-              "translation": "Henüz kamuoyuna açıklamayalım. Sistem çöktükten sonra yeterince manşet olduk!"
-            },
-            {
-              "kind": "line",
-              "speaker": "Selin",
-              "avatar": "👩‍💼",
-              "text": "Agreed. A three-month trial, a proposal by Friday, and no articles until we see results.",
-              "translation": "Anlaştık. Üç aylık bir deneme, cumaya kadar bir öneri ve sonuçları görene kadar makale yok."
+              "text": "Not yet. Let's see whether it actually works before it ends up in the newspaper.",
+              "translation": "Henüz değil. Gazeteye çıkmadan önce gerçekten işe yarayıp yaramadığını görelim."
             },
             {
               "kind": "question",
               "prompt": "Toplantının sonunda ne karar veriliyor?",
               "choices": [
-                "Herkes hemen evden çalışacak",
-                "Üç aylık bir deneme için öneri hazırlanacak",
-                "Ofis yeniden Kadıköy'e taşınacak"
+                "Ofis ekipleri için altı aylık bir deneme yapılacak",
+                "Bütün şirket cuma günleri kapanacak",
+                "Dört günlük hafta tamamen reddedilecek"
               ],
-              "answer": "Üç aylık bir deneme için öneri hazırlanacak"
+              "answer": "Ofis ekipleri için altı aylık bir deneme yapılacak"
             }
           ]
         },
@@ -497,27 +486,27 @@
             },
             {
               "type": "speak",
-              "text": "Let me start with the advantages of working from home.",
-              "translation": "Evden çalışmanın avantajlarıyla başlayayım."
+              "text": "Let me start with the advantages of a four-day week.",
+              "translation": "Dört günlük haftanın avantajlarıyla başlayayım."
             },
             {
               "type": "speak",
-              "text": "Without a long commute, people have more time and energy for their work.",
-              "translation": "Uzun bir yol olmadan insanların işleri için daha çok zamanı ve enerjisi olur."
+              "text": "With a three-day weekend, people come back to work rested and focused.",
+              "translation": "Üç günlük bir hafta sonuyla insanlar işe dinlenmiş ve odaklanmış döner."
             },
             {
               "type": "speak",
-              "text": "On the other hand, new employees learn much faster when they sit with experienced colleagues.",
-              "translation": "Öte yandan yeni çalışanlar deneyimli meslektaşlarının yanında oturduklarında çok daha hızlı öğrenir."
+              "text": "On the other hand, businesses like cafés and hospitals need staff every single day.",
+              "translation": "Öte yandan kafeler ve hastaneler gibi işletmelerin her gün çalışana ihtiyacı var."
             },
             {
               "type": "speak",
-              "text": "So, in my view, a mix of office and home days is the fairest solution.",
-              "translation": "Bu yüzden bence ofis ve ev günlerinin bir karışımı en adil çözüm."
+              "text": "So, in my view, it works best in offices that measure results rather than hours.",
+              "translation": "Bu yüzden bence en iyi, saatleri değil sonuçları ölçen ofislerde işe yarar."
             },
             {
               "type": "select",
-              "prompt": "Toplantıda biri \"Remote work kills team spirit.\" diyor. Kibarca karşı çıkmak için en uygun cevap hangisi?",
+              "prompt": "Toplantıda biri \"A four-day week will kill productivity.\" diyor. Kibarca karşı çıkmak için en uygun cevap hangisi?",
               "answer": "I see what you mean, but…",
               "choices": [
                 {
@@ -595,16 +584,16 @@
           "exercises": [
             {
               "type": "write",
-              "prompt": "Çalışanların evden çalışmasına izin verilmeli mi? Bu konuda 180–220 kelimelik bir lehte-aleyhte denemesi yaz: bir giriş paragrafı, lehte görüşler, aleyhte görüşler ve kendi görüşünü veren bir sonuç paragrafı.",
-              "model": "Should employees be allowed to work from home? Since the pandemic, more and more companies have had to answer this question, and there are strong arguments on both sides.\n\nOn the one hand, working from home saves time and money. Employees who do not have to commute for hours are often more relaxed and productive. Many people also say that they can concentrate better in a quiet room than in a busy open-plan office. In addition, companies that offer flexible arrangements find it easier to keep their best staff.\n\nOn the other hand, there are serious disadvantages. New employees learn a great deal by watching experienced colleagues, and this is difficult on a video call. Moreover, not every job can be done remotely. Drivers, nurses and shop assistants have to be at work, so a home-working policy may seem unfair to them. Some people also feel lonely when they rarely see their team.\n\nIn conclusion, I believe that a hybrid model is the best solution. If employees spend two or three days in the office, they can learn from each other and still enjoy the benefits of working from home. However, each company should test the idea before making it permanent.",
+              "prompt": "Şirketler dört günlük çalışma haftasına geçmeli mi? Bu konuda 180–220 kelimelik bir lehte-aleyhte denemesi yaz: bir giriş paragrafı, lehte görüşler, aleyhte görüşler ve kendi görüşünü veren bir sonuç paragrafı.",
+              "model": "Should companies introduce a four-day working week? Several firms have already tried it, and the idea has both enthusiastic supporters and serious critics.\n\nOn the one hand, a shorter week can make employees healthier and more productive. People who have three days to rest are less likely to make mistakes or fall ill. In many trials, companies have reported fewer sick days without any drop in output. In addition, a four-day week is attractive to job seekers, so employers who offer it find it easier to recruit and keep good staff.\n\nOn the other hand, the idea does not suit every business. Hospitals, shops and delivery companies have to serve customers five or even seven days a week. Moreover, if the same work is squeezed into four days, each working day becomes longer and more tiring. For drivers or nurses, this could even be dangerous. Some employers also worry about the cost of hiring extra staff to cover the missing day.\n\nIn conclusion, I believe that a four-day week can work well in offices, but it is not a solution for everyone. Companies should start with a trial, measure the results carefully and adapt the plan to their own sector.",
               "minWords": 160,
               "maxWords": 240,
               "checklist": [
                 "Giriş paragrafında konuyu ve tartışmanın iki tarafı olduğunu belirttin",
                 "Lehte ve aleyhte görüşleri ayrı paragraflarda, en az ikişer gerekçeyle yazdın",
-                "En az üç bağlayıcı ifade kullandın (on the one hand, moreover, however…)",
+                "En az üç bağlayıcı ifade kullandın (on the one hand, in addition, moreover…)",
                 "Sonuç paragrafında kendi görüşünü açıkça yazdın (In conclusion, I believe…)",
-                "Genel ifadelerde gereksiz the kullanmadın (Technology…, People…)"
+                "Genel ifadelerde gereksiz the kullanmadın (companies, employees, people…)"
               ],
               "focus": [
                 "article",
@@ -614,31 +603,71 @@
             },
             {
               "type": "translate",
-              "text": "Üstelik her iş uzaktan yapılamaz.",
+              "text": "Üstelik aynı iş dört güne sıkıştırılırsa her iş günü daha uzun ve daha yorucu hâle gelir.",
               "lang": "tr",
               "answers": [
-                "Moreover, not every job can be done remotely."
+                "Moreover, if the same work is squeezed into four days, each working day becomes longer and more tiring.",
+                "Moreover, each working day becomes longer and more tiring if the same work is squeezed into four days."
               ],
               "tokens": [
                 "Moreover",
-                "not",
-                "every",
-                "job",
-                "can",
-                "be",
-                "done",
-                "remotely",
+                "if",
+                "the",
+                "same",
+                "work",
                 "is",
-                "doing"
+                "squeezed",
+                "into",
+                "four",
+                "days",
+                "each",
+                "working",
+                "day",
+                "becomes",
+                "longer",
+                "and",
+                "more",
+                "tiring",
+                "on",
+                "become"
               ]
             },
             {
               "type": "translate",
-              "text": "Sonuç olarak, hibrit bir modelin en iyi çözüm olduğuna inanıyorum.",
+              "text": "Birçok denemede şirketler, üretimde hiçbir düşüş olmadan daha az hastalık izni bildirdi.",
               "lang": "tr",
               "answers": [
-                "In conclusion, I believe that a hybrid model is the best solution.",
-                "In conclusion, I believe a hybrid model is the best solution."
+                "In many trials, companies have reported fewer sick days without any drop in output.",
+                "In many trials, companies reported fewer sick days without any drop in output.",
+                "Companies have reported fewer sick days without any drop in output in many trials.",
+                "Companies reported fewer sick days without any drop in output in many trials."
+              ],
+              "tokens": [
+                "In",
+                "many",
+                "trials",
+                "companies",
+                "have",
+                "reported",
+                "fewer",
+                "sick",
+                "days",
+                "without",
+                "any",
+                "drop",
+                "in",
+                "output",
+                "less",
+                "on"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sonuç olarak, dört günlük haftanın ofislerde iyi işleyebileceğine ama herkes için bir çözüm olmadığına inanıyorum.",
+              "lang": "tr",
+              "answers": [
+                "In conclusion, I believe that a four-day week can work well in offices, but it is not a solution for everyone.",
+                "In conclusion, I believe a four-day week can work well in offices, but it is not a solution for everyone."
               ],
               "tokens": [
                 "In",
@@ -647,52 +676,29 @@
                 "believe",
                 "that",
                 "a",
-                "hybrid",
-                "model",
-                "is",
-                "the",
-                "best",
-                "solution",
-                "am",
-                "most"
-              ]
-            },
-            {
-              "type": "translate",
-              "text": "Birçok kişi ayrıca sessiz bir odada, kalabalık bir açık ofise göre daha iyi odaklanabildiğini söylüyor.",
-              "lang": "tr",
-              "answers": [
-                "Many people also say that they can concentrate better in a quiet room than in a busy open-plan office.",
-                "Many people also say they can concentrate better in a quiet room than in a busy open-plan office."
-              ],
-              "tokens": [
-                "Many",
-                "people",
-                "also",
-                "say",
-                "that",
-                "they",
+                "four-day",
+                "week",
                 "can",
-                "concentrate",
-                "better",
+                "work",
+                "well",
                 "in",
+                "offices",
+                "but",
+                "it",
+                "is",
+                "not",
                 "a",
-                "quiet",
-                "room",
-                "than",
-                "in",
-                "a",
-                "busy",
-                "open-plan",
-                "office",
-                "the",
-                "on"
+                "solution",
+                "for",
+                "everyone",
+                "an",
+                "at"
               ]
             },
             {
               "type": "fillBlank",
-              "text": "Working from home saves time. ___, it can make people feel isolated.",
-              "translation": "Evden çalışmak zaman kazandırır. Ancak insanları yalnız hissettirebilir.",
+              "text": "A shorter week can reduce stress. ___, it may be difficult for small businesses.",
+              "translation": "Daha kısa bir hafta stresi azaltabilir. Ancak küçük işletmeler için zor olabilir.",
               "answer": "However",
               "choices": [
                 "However",
@@ -702,8 +708,8 @@
             },
             {
               "type": "fillBlank",
-              "text": "In my opinion, a hybrid model is ___ best solution for most companies.",
-              "translation": "Bence hibrit model çoğu şirket için en iyi çözüm.",
+              "text": "In my opinion, a four-day week is ___ fairest option for office workers.",
+              "translation": "Bence dört günlük hafta, ofis çalışanları için en adil seçenek.",
               "answer": "the",
               "choices": [
                 "the",
@@ -713,13 +719,13 @@
             },
             {
               "type": "fillBlank",
-              "text": "There are strong arguments ___ both sides of the question.",
-              "translation": "Sorunun her iki tarafında da güçlü argümanlar var.",
+              "text": "A four-day week could have a positive impact ___ employees' health.",
+              "translation": "Dört günlük hafta, çalışanların sağlığı üzerinde olumlu bir etki yaratabilir.",
               "answer": "on",
               "choices": [
                 "on",
-                "in",
-                "at"
+                "to",
+                "for"
               ]
             },
             {
@@ -753,20 +759,20 @@
                   "disadvantage"
                 ],
                 [
-                  "uzaktan",
-                  "remotely"
+                  "üretim",
+                  "output"
                 ],
                 [
-                  "esnek",
-                  "flexible"
+                  "işe almak",
+                  "recruit"
                 ],
                 [
-                  "kalıcı",
-                  "permanent"
+                  "uyarlamak",
+                  "adapt"
                 ],
                 [
-                  "yalnız hissetmek",
-                  "feel lonely"
+                  "yorucu",
+                  "tiring"
                 ]
               ]
             }
