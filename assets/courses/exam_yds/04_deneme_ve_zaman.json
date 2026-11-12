@@ -5945,8 +5945,8 @@
        "type": "choice",
        "question": "It was not until the late nineteenth century ----.",
        "options": [
-        "that scientists understood how many diseases are spread by germs",
-        "scientists understood how many diseases are spread by germs",
+        "that scientists understood that many diseases are spread by germs",
+        "scientists understood that many diseases are spread by germs",
         "since scientists had understood how diseases are spread",
         "which scientists understood how diseases are spread",
         "so that scientists could finally understand how so many diseases are spread"
@@ -8238,11 +8238,11 @@
         "indifferent, as they consider the question unimportant",
         "hostile, as they think teachers should stop assigning fiction",
         "dismissive, as they claim to have proved that fiction has no effect at all on readers of any age, culture or background",
-        "cautious, as they found little support for a lasting short-term effect but leave the long-term question open",
+        "cautious, as they found only a modest short-term effect but leave the long-term question open",
         "enthusiastic, as they believe a single story greatly improves empathy"
        ],
        "answer": 3,
-       "explanation": "Araştırmacılar kısa vadeli etkiyi *modest at best* bulur ama uzun vadeli soruyu açık bırakır → 'cautious, as they found little support … but leave the long-term question open'. 'Dismissive … proved that fiction has no effect' aşırı genellemedir; araştırmacılar düzenli okumanın etkisini ölçemediklerini açıkça söyler."
+       "explanation": "Araştırmacılar kısa vadeli etkiyi *modest at best* bulur ama uzun vadeli soruyu açık bırakır → 'cautious, as they found only a modest short-term effect but leave the long-term question open'. 'Dismissive … proved that fiction has no effect' aşırı genellemedir; araştırmacılar düzenli okumanın etkisini ölçemediklerini açıkça söyler."
       },
       {
        "type": "choice",

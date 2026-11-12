@@ -7770,7 +7770,7 @@
         "coincide"
        ],
        "answer": 0,
-       "explanation": "'Amend' (yasada değişiklik yapmak) yasayı küçük çiftlikleri de kapsayacak biçimde değiştirmeyi anlatır. 'Abate' (dinmek), 'accrue' (birikmek) ve 'coincide' (denk gelmek) nesne almaz; 'avert' (önlemek) yasayla anlamsızdır."
+       "explanation": "'Amend' (yasada değişiklik yapmak) yasayı küçük çiftlikleri de kapsayacak biçimde değiştirmeyi anlatır. 'Abate' (dinmek, azaltmak), 'accrue' (birikmek) ve 'coincide' (denk gelmek) bir yasada değişiklik yapmayı anlatmaz; 'avert' (önlemek) yasayla anlamsızdır."
       },
       {
        "type": "choice",
