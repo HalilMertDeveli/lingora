@@ -120,6 +120,57 @@ Faz 2 altyapısı (§3) birleştikten sonra yazılır. Her ünitede en az bir `w
 
 S8'de 10 ünite olduğu için id'ler `s8u11..s8u13`.
 
+### Faz 3: yeni türler A1–A2'ye ve eski hikâyelere
+
+Sıra kararı (orkestra şefi): önce Faz 3, sonra Faz 6, en son Faz 4–5. Faz 3 yeni ünite eklemez; var olan düğümlerin alıştırmalarını değiştirir. Düğüm id'leri aynı kalır. Kullanıcının ilerlemesi düğüm bazında tutulduğu için tamamlanmış ders tamamlanmış kalır.
+
+**A. S1–S4 beceri üniteleri (12 ünite, `01x`–`04x`)**
+
+| Düğüm | Değişiklik | Sonuç |
+|---|---|---|
+| `l1` Dinleme | 1 `listen` ve 1 `speak` yerine 2 `shadow` (`rate`: A1 0.8, A2 0.85) | listen 5, shadow 2, fillBlank 2, match 1 |
+| `l3` Konuşma | 1 `speak` yerine 1 `shadow` | shadow 1, speak 4, select 2, translate 2, match 1 |
+| `l4` Yazma | 1 `write` eklenir. Ders 10'u aşarsa 1 `fillBlank` çıkar. | translate 4, fillBlank 2–3, select 1, match 1, write 1 |
+
+`write` uzunlukları:
+
+| Bölüm | Kelime | Örnek görev |
+|---|---|---|
+| S1 | 20–40 | kısa mesaj, form cümleleri |
+| S2 | 30–50 | rutin paragrafı, davet mesajı |
+| S3 | 50–80 | kartpostal, özür e-postası |
+| S4 | 60–90 | şikâyet e-postası, iş profili |
+
+- `model` metin l4'ün `translate` cümlelerinden kurulur. Bu cümleler zaten model metni oluşturuyor; Faz 1 tasarımı buna hazır.
+- `focus` en fazla 2 tür. A1–A2'de öncelik `be`, `article`, `word_order`; S3–S4'te `tense` de olabilir.
+- `checklist` 3 madde, çok somut olmalı: "Merhaba ile başladın", "saat ve yeri yazdın".
+- Her görevin `writing_tasks.json` kaydı olur (level A1/A2). Eşleşme testi zaten var.
+- **Tamamlama kuralı:** S1–S4'te `write` alıştırma amaçlıdır. `sectionCompleted` A1–A2 bölümlerinde yalnızca beceri testine bakmaya devam eder (ör. `section.cefr` A1/A2 ise write şartı yok). Faz 1'den beri "tamamlandı" görünen bölüm geri düşmemeli. Bunun için bir test yazılmalı.
+
+**B. `listenFirst` bayrağı**
+
+| Hikâyeler | Karar |
+|---|---|
+| S1–S4 beceri ünitelerinin hikâyeleri (12) | `listenFirst: true`. Zaten dinleme için yazıldılar. |
+| S5–S8 temel hikâyeleri (`05_`–`08_`, 46) | `listenFirst: true`, ama her hikâye kontrol edildikten sonra (aşağıda) |
+| S1–S4 temel hikâyeleri | Değişmez. Başlangıçta metin okuma desteği gerekli. |
+
+Kontrol listesi (S5–S8 temel hikâyeleri):
+
+1. Her soru **duyarak** cevaplanabilmeli. Yazımı, noktalamayı ya da "metinde hangi kelime geçiyor" bilgisini soran sorular yeniden yazılır.
+2. Ses ile anlaşılmayan öğeler (yalnızca yazıda belli olan kısaltma, e-posta adresi, uzun rakam dizisi) ya düzeltilir ya da soru dışında bırakılır.
+3. Değişiklik yalnızca bayrak satırı ve gereken soru düzeltmeleridir. **kalite-turu oturumu** (`local_4dfa23d5-81b3-4c0c-8be2-db2302ed1932`) aynı dosyalarda çalışıyor. Başlamadan önce ona hangi hikâye düğümlerine dokunacağını bildir ve çakışmayı önle.
+
+**C. Kelime kuralı (tüm yeni genel içerik):** YDS kelime bankasının (ys5/ys7) kelimeleri genel kursta **hedef kelime** olarak öğretilmez (match ve kelime `select` maddeleri). Metinde geçebilirler. Bunu denetleyen test var.
+
+**Kabul ölçütleri:**
+
+- Testler geçer: course_content, writing_tasks eşleşmesi, sectionCompleted (A1–A2 yalnızca test), YDS çakışması.
+- PR açıklamasında şunlar olmalı:
+  - hikâye başına "listenFirst uygun mu" tablosu (soru düzeltmeleri dahil),
+  - 12 yeni `write` görevi ve rubrikleri,
+  - emülatörde bir A1 önce-dinle hikâyesinin ekran görüntüsü.
+
 ### Faz 4–5: C1 (S9–S10)
 
 Yeni bölüm dosyaları `tr_en/09_derinlik.json` ve `tr_en/10_ustalik.json`. Bunlar ek dosya değil, normal bölüm dosyası. S9, S8'in son sınavıyla açılır; mevcut mantık ilerlemeyi bozmaz. Her biri 12 ünitedir. C1'de beceri dersleri bölümün içinde: dört dersten ikisi dil, ikisi beceri dersi (dinleme/konuşma ya da okuma/yazma, sırayla).
@@ -261,7 +312,7 @@ Kurallar:
 | **1** (bu tur) | 1a altyapı: ek dosya, kilit sabitleme, test, tr_en `choice`, test soruları, `guide`. 1b içerik: S1–S4 için 12 beceri ünitesi ve 4 bölüm beceri testi. | genel-icerik | ~460 alıştırma + 80 test sorusu + küçük Dart değişikliği | yok |
 | **2a** | `write`, `shadow`, `listenFirst`; `assessWriting` sunucu fonksiyonu; ünite–senaryo bağı | altyapı oturumu (orkestra şefi atar) ya da genel-icerik | orta | Faz 1a |
 | **2b** | S5–S8 için 12 beceri ünitesi; B1–B2 beceri testleri (`write` ile) | genel-icerik | ~460 alıştırma + 12 `write` + 12 senaryo metni | 2a |
-| **3** | Mevcut B1–B2 hikâyelerine `listenFirst`; S1–S4 beceri ünitelerindeki l3/l4'e `shadow` ve `write` eklenmesi (yeni ders değil, alıştırma değişimi ya da ek ders) | genel-icerik | küçük–orta | 2a |
+| **3** (sıradaki) | §2 "Faz 3": S1–S4 beceri ünitelerine `shadow` ve `write`; beceri hikâyeleri ve S5–S8 temel hikâyelerine `listenFirst` | genel-icerik | küçük–orta | 2a |
 | **4** | C1 Bölüm 9 (12 ünite) | genel-icerik | ~470 alıştırma | 2a |
 | **5** | C1 Bölüm 10 (12 ünite) + C1 beceri testi | genel-icerik | ~470 alıştırma | 4 |
 | **6** | Okuma ve dinleme kütüphanesi: B1, B2 ve C1 için 20'şer metin (`assets/reading/`, dinleme için TTS). Kelime kapsamı denetimi (NGSL, CC BY-SA 4.0; lisans `docs/kaynaklar.md`'ye). | genel-icerik + okuma | ~60 metin | yok |
