@@ -6,9 +6,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'firebase_bootstrap.dart';
 import 'firebase_config.dart';
 
-/// True once Firebase was initialised (see `initFirebase`). Overridden in
-/// `main()`; false by default so tests and local builds never touch Firebase.
-final firebaseReadyProvider = Provider<bool>((ref) => false);
+/// Firebase start-up (`initFirebase`), overridden in `main()`: resolves to
+/// whether Firebase is ready. The app does not wait for it; everything that
+/// needs Firebase watches [firebaseReadyProvider] and starts once it is true.
+final firebaseInitProvider = FutureProvider<bool>((ref) async => false);
+
+/// True once Firebase was initialised; false until then, and by default so
+/// tests and local builds never touch Firebase.
+final firebaseReadyProvider = Provider<bool>((ref) => ref.watch(firebaseInitProvider).value ?? false);
 
 /// Firebase Auth, or null when Firebase is off.
 final firebaseAuthProvider = Provider<FirebaseAuth?>(

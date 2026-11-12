@@ -43,6 +43,7 @@ Future<ProviderContainer> _pumpShell(WidgetTester tester, [Progress? progress]) 
   final container = ProviderContainer(
     overrides: [
       courseProvider.overrideWith((ref) async => _course),
+      courseOutlineProvider.overrideWith((ref) async => _course),
       vocabProvider.overrideWith((ref) async => _vocab),
       prefsProvider.overrideWithValue(prefs),
       clockProvider.overrideWithValue(() => _now),

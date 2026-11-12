@@ -222,6 +222,7 @@ class Unit {
     required this.nodes,
     this.theme,
     this.guide,
+    this._hasGuide,
   });
 
   final String id;
@@ -234,7 +235,10 @@ class Unit {
   /// unit's "Rehber" button and suggested once before its first lesson.
   final String? guide;
 
-  bool get hasGuide => guide?.trim().isNotEmpty ?? false;
+  bool get hasGuide => _hasGuide ?? (guide?.trim().isNotEmpty ?? false);
+
+  /// Set by course outlines, which leave the guide text out.
+  final bool? _hasGuide;
 
   /// Topic theme id (lib/data/topic_themes.dart); null uses the default.
   final String? theme;
@@ -247,6 +251,7 @@ class Unit {
     nodes: (j['nodes'] as List).map((n) => PathNode.fromJson(n as Map<String, dynamic>)).toList(),
     theme: j['theme'] as String?,
     guide: j['guide'] as String?,
+    hasGuide: j['hasGuide'] as bool?,
   );
 }
 
@@ -342,6 +347,7 @@ class Course {
     required this.learningLang,
     List<Unit>? units,
     List<Section>? sections,
+    this.outline = false,
   }) : assert(units != null || sections != null),
        sections = sections ?? [Section(id: 'main', index: 1, title: title, units: units!, implicit: true)],
        units = units ?? [for (final s in sections!) ...s.units];
@@ -357,11 +363,17 @@ class Course {
   /// Units of every section, in path order.
   final List<Unit> units;
 
+  /// Read from the course outline (`assets/course_index/`, see
+  /// `loadCourseOutline`): every section, unit and step the path draws, but
+  /// no exercises, dialogues or topic guides. Steps open from the full course.
+  final bool outline;
+
   /// All nodes in path order.
   List<PathNode> get allNodes => [for (final u in units) ...u.nodes];
 
   /// Same course with [extra] sections appended after the existing ones.
-  Course withSections(List<Section> extra) => extra.isEmpty
+  Course withSections(List<Section> extra, {bool? outline}) =>
+      extra.isEmpty && (outline ?? this.outline) == this.outline
       ? this
       : Course(
           id: id,
@@ -369,6 +381,7 @@ class Course {
           fromLang: fromLang,
           learningLang: learningLang,
           sections: [...sections, ...extra],
+          outline: outline ?? this.outline,
         );
 
   /// Reads a course file. An optional `section` object makes the file's units
