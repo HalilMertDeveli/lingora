@@ -239,37 +239,97 @@ Toplam 65 yeni metin.
 
 ### Faz 4–5: C1 (S9–S10)
 
-Yeni bölüm dosyaları `tr_en/09_derinlik.json` ve `tr_en/10_ustalik.json`. Bunlar ek dosya değil, normal bölüm dosyası. S9, S8'in son sınavıyla açılır; mevcut mantık ilerlemeyi bozmaz. Her biri 12 ünitedir. C1'de beceri dersleri bölümün içinde: dört dersten ikisi dil, ikisi beceri dersi (dinleme/konuşma ya da okuma/yazma, sırayla).
+İki normal bölüm dosyası:
 
-**S9 Derinlik (C1).** Dilbilgisi:
+| Faz | Dosya | Bölüm |
+|---|---|---|
+| 4 | `tr_en/09_derinlik.json` | `{"id":"s9","index":9,"title":"Derinlik","cefr":"C1"}` |
+| 5 | `tr_en/10_ustalik.json` | `{"id":"s10","index":10,"title":"Ustalık","cefr":"C1"}` |
 
-- katılımcı ve kısaltılmış cümleler (*Having finished…*),
-- adlaştırma (nominalisation),
-- ileri devrik yapı (*Not only… / Rarely…*),
-- vurgu (*What I need is…*, *It was… that*),
-- ileri çıkarım kipleri (*might have been*),
-- subjunctive (*I suggest he be*),
-- eksiltme ve yerine koyma (*so do I*, *I hope so*),
-- ileri bağlaçlar,
-- ileri phrasal verbs ve eşdizimler.
+Ek dosya değiller. Ünite id'leri `s9u1..s9u12` ve `s10u1..s10u12`.
 
-Beceri: akademik dersten not alma, uzun makale, ikna edici konuşma, tartışmalı deneme.
+**İlerleme güvenliği:**
 
-**S10 Ustalık (C1).** Üslup ve aracılık:
+- S9, S8'in temel sınavı (`s8u10t`) geçilince açılır. S10, S9'un son testi geçilince açılır.
+- Yeni bölüm eklemek önceki bölümlerin kilidini, "tamamlandı" durumunu ya da düğüm durumunu değiştirmez. Kursu bitirmiş kullanıcı için S9 "yeni bölüm" olarak açılır; bitmiş bir bölüm yeniden açık hâle gelmez.
+- Test: "S1–S8'i bitirmiş bir ilerleme, S9 eklendikten sonra S1–S8'i bitmiş, S9'u açık ve başlanmamış görür."
 
-- resmî / samimi yazışma geçişleri,
-- dolaylı eleştiri ve diplomasi,
-- deyim ve mecaz,
-- dizi ve film dili (konuşma dili, argo farkındalığı),
-- müzakere,
-- rapor ve teklif,
-- özetleme ve aktarma (aracılık),
-- sunum ve soru-cevap,
-- edebi metin.
+#### Ünite deseni (C1)
 
-Bölüm sonu: C1 beceri testi.
+Desen aynı: `lesson, lesson, story, lesson, lesson, test, chest`. C1'de beceri bölümün içinde; ayrıca ek dosya yok.
 
-Süre: iki bölüm ~25–30 saat ders ve 20+ saat açık uçlu görev.
+| Düğüm | Tek numaralı ünite (u1, u3…) | Çift numaralı ünite (u2, u4…, u12) |
+|---|---|---|
+| `l1` | Dil: yapı (dilbilgisi) | Dil: yapı |
+| `l2` | Dil: kelime ve eşdizim | Dil: kelime ve eşdizim |
+| `s` | `listenFirst` hikâye/podcast, 450–650 kelime, 5 soru (en az 1 örtük anlam, 1 tutum veya ton) | aynı |
+| `l3` | **Dinleme:** 4 `listen` (15–25 kelime, hızlı ve bağlantılı), 2 `shadow` (`rate` 1.0), 2 `fillBlank`, 1 `match` | **Okuma:** tek metin (500–800 kelime) üzerine 6 `choice`: ana fikir, çıkarım, tutum, gönderim, kelimenin bağlamdaki anlamı, metin düzeni |
+| `l4` | **Konuşma:** 2 `shadow`, 4 `speak` (bir uzun tur: 90 saniyelik görüş ya da sunum, cümle cümle), 2 `select` (üslup, diplomasi), 1 `translate` | **Yazma:** 1 `write` (220–300 kelime), 3 `translate` (model metinden), 3 `fillBlank`, 1 `select`, 1 `match` |
+| `t` | Ünite sınavı (derslerden örneklenir) | u12: **C1 beceri testi** (kendi 20 sorusu: 6 listen, 8 choice, 4 translate tr→en, 2 dil) |
+
+- `write` focus adları aynı (article, tense, preposition, word_order, be). C1'de ağırlık `article` ve `preposition` (Türklerin C1'de bile süren hataları). Ayrıca rubrik notunda üslup ve bağlantı.
+- `sectionCompleted`: B1+ kuralı geçerli, yani u12 testi ve u12 l4 `write` birlikte.
+- Ünite `guide`'ı zorunlu (Türkçe, en az 200 karakter): yapının Türkçe açıklaması, can-do, strateji, Türklerin sık hatası.
+
+#### S9 Derinlik (Faz 4)
+
+| Ünite | Başlık | Dil odağı (l1/l2) | Beceri (l3/l4) ve görev | Tema |
+|---|---|---|---|---|
+| s9u1 | Az önce olanlar | katılımcı cümleler (*Having finished…, Written in…*) | Dinleme/Konuşma: bir haber özetini dinle; olayı 90 sn anlat | `haber` |
+| s9u2 | Bilimin dili | adlaştırma (*The decision to… / an increase in*) | Okuma/Yazma: popüler bilim makalesi; 250 kelimelik özet ve yorum | `kutuphane` |
+| s9u3 | Asla böylesini görmedim | devrik yapı (*Never have I…, Not only…, Rarely…*) | Dinleme/Konuşma: etkileyici bir anı; vurgulu anlatım | `sahne` |
+| s9u4 | Asıl önemli olan | cleft ve pseudo-cleft (*What matters is…, It was… who*) | Okuma/Yazma: görüş yazısı; karşı görüş yazısı (250) | `toplanti` |
+| s9u5 | Olmuş olabilir | ileri çıkarım kipleri (*must have been, can't have, might well*) | Dinleme/Konuşma: gizemli olay podcast'i; olasılıkları tartış | `dedektif` |
+| s9u6 | Öneririm ki | subjunctive ve resmî öneri (*I recommend that he be…, It is essential that*) | Okuma/Yazma: kurum raporu; öneri bölümü yazma (230) | `is` |
+| s9u7 | Ben de öyle | eksiltme ve yerine koyma (*so do I, I hope so, if so, if not*) | Dinleme/Konuşma: doğal hızlı sohbet; kısa ve doğal tepkiler | `cay` |
+| s9u8 | Bununla birlikte | ileri bağlaçlar (*whereas, notwithstanding, given that, insofar as*) | Okuma/Yazma: karşılaştırmalı makale; karşılaştırma denemesi (260) | `kutuphane` |
+| s9u9 | Ortaya çıkmak | ileri phrasal verbs (*come across as, bring about, play down*) | Dinleme/Konuşma: röportaj; kendi deneyimini anlat | `mulakat` |
+| s9u10 | Güçlü eşdizimler | eşdizimler (*heavy traffic, bitterly disappointed, raise concerns*) | Okuma/Yazma: dergi yazısı; eşdizim yoğun blog yazısı (230) | `sanat` |
+| s9u11 | Ders notları | konuşmada söylem belirteçleri (*to put it another way, the point is*) | Dinleme/Konuşma: 5 dakikalık ders; not al, 90 sn özetle | `kutuphane` |
+| s9u12 | Tartışmalı konu | ikna dili ve hedging (*arguably, it could be argued*) | Okuma/Yazma: tartışmalı makale; **tartışmacı deneme (280–300)** ve **C1 beceri testi** | `toplanti` |
+
+#### S10 Ustalık (Faz 5)
+
+| Ünite | Başlık | Dil odağı | Beceri ve görev | Tema |
+|---|---|---|---|---|
+| s10u1 | Aynı şey, iki ses | resmî ↔ samimi üslup geçişi | Dinleme/Konuşma: aynı haber iki üslupta; arkadaşa ve yöneticiye anlat | `yazisma` |
+| s10u2 | Kibarca hayır | dolaylı eleştiri ve diplomasi (*I'm not sure that's quite…*) | Okuma/Yazma: müşteri yazışması; kibar ret e-postası (220) | `is` |
+| s10u3 | Mecazen | deyim ve mecaz (*the elephant in the room*) | Dinleme/Konuşma: sohbet programı; deyimleri doğal kullan | `sahne` |
+| s10u4 | Dizi dili | konuşma dili, kısaltmalar, argo farkındalığı (öğretilmez, tanınır) | Okuma/Yazma: dizi incelemesi; eleştiri yazısı (250) | `sanat` |
+| s10u5 | Pazarlık masası | müzakere dili (*meet halfway, that's a deal-breaker*) | Dinleme/Konuşma: iş müzakeresi; teklif ve karşı teklif | `toplanti` |
+| s10u6 | Teklif | teklif ve rapor yapısı | Okuma/Yazma: örnek teklif; proje teklifi (280) | `is` |
+| s10u7 | Kısaca şöyle | özetleme ve aktarma (**aracılık**) | Dinleme/Konuşma: Türkçe toplantı notunu İngilizce anlat; İngilizce sunumu Türkçe özetle | `haber` |
+| s10u8 | Grafikten metne | veri betimleme (*rose sharply, a slight decline*) | Okuma/Yazma: rapor; grafik betimleme ve yorum (230) | `teknoloji` |
+| s10u9 | Söz sizde | sunum ve soru-cevap (*That's a good question; let me come back to it*) | Dinleme/Konuşma: konferans sunumu; 2 dakikalık sunum ve soru-cevap | `toplanti` |
+| s10u10 | Edebi bir sayfa | edebi dil, anlatıcı sesi, ima | Okuma/Yazma: kısa öykü (özgün); öykü yorumu (250) | `kutuphane` |
+| s10u11 | Kriz anı | baskı altında açık iletişim | Dinleme/Konuşma: kriz toplantısı; durumu açıkla ve çözüm öner | `haber` |
+| s10u12 | Ustalık | tümü: üslup, bağlantı, ikna | Okuma/Yazma: köşe yazısı; **köşe yazısı (280–300)** ve **C1 beceri testi** | `sahne` |
+
+#### Kurallar (C1)
+
+- **Uzunluklar:**
+  - okuma 500–800 kelime;
+  - hikâye ya da podcast 450–650 kelime;
+  - `listen` 15–25 kelime;
+  - `write` 220–300 kelime, model metin aralıkta.
+- **Kelime:**
+  - Ünite başına en fazla 60 yeni lemma; en az 25'i l1–l4'te yeniden geçer.
+  - **YDS ys7 ve sonrası bankasının kelimeleri hedef kelime (match, kelime `select`) olamaz.** Metinde geçebilir; mevcut test bunu denetliyor.
+  - C1 genel kursun ağırlığı akademik kelime değil. Eşdizim, deyim, söylem ve üslup ön planda. Akademik kelime YDS yolunda öğretiliyor.
+- **Kadro:** Elif, Kerem, Sam, Mia ve Deniz yetişkin hâlleriyle. Kalite turunun kararıyla Deniz erkektir (he/his). Ünitelerin yarısında bağımsız konuşmacılar olsun ki C1 dinlemede ses ve aksan çeşitliliği artsın; TTS ses seçimi değişebiliyorsa farklı sesler kullanılmalı.
+- **Konu çakışması yok:** YDS okuma evi ve bol okuma konuları, genel kütüphane (`go_`) ve S5–S8 beceri üniteleri.
+- **Okuma kütüphanesi (Faz 5'in sonunda):**
+  - `readingLevels`'a `C1` eklenir.
+  - `genel_okuma_c.json` dosyasına 15 C1 metin girer (600–900 kelime, 3 soru, glossary sonrası bilinmeyen kelime ≤ %2).
+
+**Kabul ölçütleri:**
+
+- Testler geçer: course_content, konu temaları, writing_tasks eşleşmesi, sectionCompleted, YDS çakışması, ilerleme güvenliği testi.
+- PR açıklamasında şunlar olmalı:
+  - ünite başına uzunluk, yeni lemma ve bağlantılı konuşma tablosu;
+  - 6 `write` görevinin rubriği (bölüm başına);
+  - bir C1 önce-dinle hikâyesi ile bir C1 okuma dersinin ekran görüntüsü.
+- Süre tahmini: bölüm başına ~13–15 saat ders ve ~6 saat açık uçlu görev.
 
 ---
 
@@ -384,9 +444,9 @@ Kurallar:
 | **2a** | `write`, `shadow`, `listenFirst`; `assessWriting` sunucu fonksiyonu; ünite–senaryo bağı | altyapı oturumu (orkestra şefi atar) ya da genel-icerik | orta | Faz 1a |
 | **2b** | S5–S8 için 12 beceri ünitesi (kalıp §2 "Faz 2b ders kalıbı"); B1–B2 beceri testleri; 12 `write` görevi ve sunucu rubrikleri | genel-icerik | ~460 alıştırma + 12 `write` + 12 rubrik | 2a |
 | **3** (PR #59) | §2 "Faz 3": S1–S4 beceri ünitelerine `shadow` ve `write`; beceri hikâyeleri ve S5–S8 temel hikâyelerine `listenFirst` | genel-icerik | küçük–orta | 2a |
-| **4** | C1 Bölüm 9 (12 ünite) | genel-icerik | ~470 alıştırma | 2a |
-| **5** | C1 Bölüm 10 (12 ünite) + C1 beceri testi | genel-icerik | ~470 alıştırma | 4 |
-| **6** (sıradaki) | §2 "Faz 6": ortak okuma kütüphanesine 65 metin (A1 15, A2 20, B1 10, B2 20); okuma ekranında "Önce dinle"; NGSL kapsam kontrolü | genel-icerik (altyapı yds-yontem ile) | 65 metin + küçük altyapı | yok |
+| **4** (sıradaki) | §2 "Faz 4–5": C1 Bölüm 9 Derinlik (12 ünite, beceri bölüm içinde) | genel-icerik | ~470 alıştırma + 6 `write` | 2a |
+| **5** | C1 Bölüm 10 Ustalık (12 ünite) + C1 beceri testi + 15 C1 kütüphane metni | genel-icerik | ~470 alıştırma + 6 `write` + 15 metin | 4 |
+| **6** (PR #66) | §2 "Faz 6": ortak okuma kütüphanesine 65 metin (A1 15, A2 20, B1 10, B2 20); okuma ekranında "Önce dinle"; NGSL kapsam kontrolü | genel-icerik (altyapı yds-yontem ile) | 65 metin + küçük altyapı | yok |
 
 Faz sonrası toplam (yaklaşık):
 
