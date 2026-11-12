@@ -100,10 +100,12 @@ void main() {
           problems.add('$w: example');
         }
         final col = (e['collocations'] as List).cast<Map>();
-        if (col.isEmpty || col.any((c) => !'${c['phrase']}'.contains('${c['answer']}') || '${c['tr']}'.isEmpty)) {
+        if (col.isEmpty ||
+            col.any((c) => !'${c['phrase']}'.contains('${c['answer']}') || '${c['tr']}'.isEmpty)) {
           problems.add('$w: collocation');
         }
-        if (RegExp('verb|noun').hasMatch(e['pos'] as String) && e['family'] is! List) problems.add('$w: family');
+        if (RegExp('verb|noun').hasMatch(e['pos'] as String) && e['family'] is! List)
+          problems.add('$w: family');
       }
       expect(problems, isEmpty, reason: problems.take(20).join('\n'));
     });
