@@ -14,7 +14,7 @@ const section = {
     cefr: 'A2–B1',
     parallel: true,
     description: 'Sıfırdan başlayan için YDS kelime temeli: 10 temada 800 yeni kelime, her kelime kart, eşdizim ve bağlam cümlesiyle',
-    grammar: units.map((u) => u.title.toLowerCase()),
+    grammar: units.map((u) => u.title.toLocaleLowerCase('tr')),
   },
   units,
 };
