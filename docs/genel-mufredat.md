@@ -120,6 +120,27 @@ Faz 2 altyapısı (§3) birleştikten sonra yazılır. Her ünitede en az bir `w
 
 S8'de 10 ünite olduğu için id'ler `s8u11..s8u13`.
 
+#### Faz 2b ders kalıbı (B1–B2 beceri ünitesi)
+
+Faz 2a'da yds-yontem ile kesinleşen veri modeline göre (§3) yazılır. Desen aynı: `lesson, lesson, story, lesson, lesson, test, chest`.
+
+| Düğüm | İçerik (8–10 alıştırma) |
+|---|---|
+| `l1` Dinleme | `listen` ×4 (B1 10–16, B2 12–20 kelime; bağlantılı konuşma), `shadow` ×2 (aynı konudan doğal cümleler), `fillBlank` ×2 (zayıf biçim / eşdizim), `match` ×1 |
+| `l2` Okuma | Tek metin üzerine `choice` ×5–6 (B1 200–300, B2 300–450 kelime; en az 1 çıkarım ve 1 yazarın tutumu sorusu), `match` ×1, `fillBlank` / `select` ×2 |
+| `s` Dinleme hikâyesi | `"listenFirst": true`; B1 250–350, B2 350–500 kelime; 5 soru (2 ayrıntı, 1 ana fikir, 1 tutum veya çıkarım, 1 zamir veya gönderim) |
+| `l3` Konuşma | `shadow` ×2, `speak` ×4 (bir uzun konuşma turu, ör. 1 dakikalık anlatım cümle cümle), `select` ×2 (pragmatik, üslup), `translate` ×1 |
+| `l4` Yazma | **`write` ×1** (Ana görev tablosundaki metin), hazırlık olarak `translate` ×3 (model metnin anahtar cümleleri), `fillBlank` ×3 (bağlaç, artikel, kalıp), `select` ×1 (üslup / paragraf düzeni), `match` ×1 |
+
+`write` kuralları:
+
+- `taskId` = `<düğümId>w` (ör. `s5u13l4w`). Sunucu rubriği bu id ile tutulur. İçerik PR'ı her görev için rubrik metnini de vermeli: görev başarısı ölçütü ve beklenen yapılar.
+- `focus` en fazla 3 tür ve yalnızca şu adlar: `article`, `tense`, `preposition`, `word_order`, `be`. Ünitenin dilbilgisi hedefi ve bölümün Türk hatası odağıyla eşleşmeli.
+- `minWords` / `maxWords` ana görev tablosundaki uzunluk; aralık ±%20.
+- `checklist` 3–5 madde, Türkçe, gözlemlenebilir: "en az 2 bağlaç kullandın", "görüşünü bir örnekle destekledin".
+- `model` metin `maxWords` sınırını aşmaz. l4'teki `translate` cümleleri model metinden alınır.
+- `write` ve `shadow` ünite sınavına ve hata defterine girmez (speak gibi). Bu yüzden yazma becerisi bölüm sonunda l4 `write` ile ölçülür (§4).
+
 ### Faz 3: yeni türler A1–A2'ye ve eski hikâyelere
 
 Sıra kararı (orkestra şefi): önce Faz 3, sonra Faz 6, en son Faz 4–5. Faz 3 yeni ünite eklemez; var olan düğümlerin alıştırmalarını değiştirir. Düğüm id'leri aynı kalır. Kullanıcının ilerlemesi düğüm bazında tutulduğu için tamamlanmış ders tamamlanmış kalır.
@@ -170,6 +191,51 @@ Kontrol listesi (S5–S8 temel hikâyeleri):
   - hikâye başına "listenFirst uygun mu" tablosu (soru düzeltmeleri dahil),
   - 12 yeni `write` görevi ve rubrikleri,
   - emülatörde bir A1 önce-dinle hikâyesinin ekran görüntüsü.
+
+### Faz 6: okuma ve dinleme kütüphanesi (ortak kütüphane)
+
+**İkinci kütüphane kurulmaz.** Uygulamada tek bir okuma kütüphanesi var:
+
+- `assets/reading/stories.json` ve ek dosyalar, `ReadingStory` şeması.
+- Okuma ekranında TTS ile cümle cümle "Dinle" ve yavaş okuma var. Yani her metin aynı zamanda bir dinleme metni.
+- YDS ekibi bu kütüphaneye `yds_bol_okuma_*.json` ile 60 B1/B1+ bol okuma metni ekliyor (400–700 kelime; PR #56). Bu metinler genel kullanıcıya da görünür.
+
+Genel kursun işi, kütüphanenin geri kalan seviyelerini doldurmak.
+
+**Mevcut durum ve hedef:**
+
+| Seviye | Şu an | YDS ekliyor | Faz 6 ekler | Uzunluk | Soru |
+|---|---|---|---|---|---|
+| A1 | 5 | – | **15** | 100–180 | 3 |
+| A2 | 5 | – | **20** | 150–250 | 3 |
+| B1 | 5 | 40 | **10** (gündelik konular: iş, şehir, ilişkiler; YDS metinleri biyografi ve bilim ağırlıklı) | 250–400 | 3 |
+| B1+ | 0 | 20 | – | | |
+| B2 | 0 | – | **20** | 400–650 | 3 |
+| C1 | 0 | – | Faz 4–5 ile birlikte (seviye eklenince) | | |
+
+Toplam 65 yeni metin.
+
+**İlkeler (bol okuma; ayrıntılar sinav/yds-arastirma.md §2.5):**
+
+- Metin okurun seviyesinin **bir tık altında** olmalı. Glossary'den sonra bilinmeyen kelime **≤ %2**. Kontrol, YDS'nin NGSL tabanlı betiğiyle yapılır (`tool/yds/check_bol.js` ya da genelleştirilmiş kopyası).
+- Sorular anlamayı kontrol eder, sınav sorusu değildir. 4 şık, Türkçe `explain`, cevabı metniyle anar.
+- Türler karışık olmalı: kısa öykü, kişisel anlatı, mektup/e-posta zinciri, röportaj, haber, nasıl yapılır. B2'de görüş yazısı ve popüler bilim de olur.
+- En az ⅓'ü **diyalog ağırlıklı** olmalı. Bunlar TTS ile dinleme için uygun.
+- Kadro (Elif, Kerem, Sam, Mia, Deniz) metinlerin yarısında kullanılabilir. Diğer yarısı bağımsız olsun ki kütüphane kurstan bağımsız da okunabilsin.
+- **Konu çakışması yok:** YDS bol okuma ve okuma evi konularıyla (BRIEF_bol.md listesi) ve genel kurs hikâyeleriyle aynı konu seçilmez.
+- **Kelime kuralı:** YDS ys5/ys7 bankası kelimeleri gloss'ta geçebilir. Metin onları hedef kelime gibi tekrar tekrar öğretmez.
+
+**Altyapı (küçük, yds-yontem ile kararlaştırılır):**
+
+1. **Ek dosya öneki.** `loadStories` şu an yalnızca `yds_bol_okuma_` önekini okuyor. Bunu `assets/reading/*_okuma_*.json` biçimindeki tüm dosyaları okuyacak şekilde genelleştirin, ya da bir önek listesi tutun. Genel dosyalar: `genel_okuma_a.json` (A1–A2) ve `genel_okuma_b.json` (B1–B2). Id öneki `go_`.
+2. **"Önce dinle" düğmesi** okuma ekranında: metin gizli, TTS baştan sona okur, sorular cevaplanınca metin açılır. Böylece kütüphane dinleme kütüphanesi olarak da çalışır. Hikâyedeki `listenFirst` ile aynı davranış.
+3. Okunan kelime sayacı yds-yontem'de var (Faz 1/C). Genel metinler de sayılır; ek iş yok.
+
+**Kabul ölçütleri:**
+
+- Test: id benzersiz, seviye geçerli, uzunluk aralıkta, glossary anahtarları metinde birebir geçiyor, ≤ %2 kontrolü geçiyor, cevap konumları dengeli.
+- `docs/kaynaklar.md`'ye NGSL satırı eklenir; YDS'nin açtığı yapıda "## Genel kurs kaynakları" altına.
+- PR açıklamasında şunlar olmalı: seviye başına metin sayısı ve kelime toplamı, tür dağılımı, konu listesi (çakışma kontrolü için), "Önce dinle" ekran görüntüsü.
 
 ### Faz 4–5: C1 (S9–S10)
 
@@ -239,7 +305,7 @@ Süre: iki bölüm ~25–30 saat ders ve 20+ saat açık uçlu görev.
  "model": "Hi Sam, …",                                            // model metin (gönderimden sonra gösterilir)
  "minWords": 60, "maxWords": 100,
  "checklist": ["Selamlama ve kapanış var", "En az 3 geçmiş zaman fiili", "first / then / after that"],
- "focus": ["past_simple", "article"],                             // geri bildirimin odak türleri (en fazla 3)
+ "focus": ["tense", "article"],                                   // en fazla 3: article, tense, preposition, word_order, be
  "taskId": "s5u13l4w"}
 // Tamamlama: kelime sayısı ≥ minWords + kontrol listesi işaretlendi (ücretsiz).
 // Premium: sunucu fonksiyonu assessWriting({taskId, text}) → {scores:{task,accuracy,range,coherence} 0–3,
@@ -248,7 +314,10 @@ Süre: iki bölüm ~25–30 saat ders ve 20+ saat açık uçlu görev.
 
 // Gölgeleme
 {"type": "shadow", "text": "…", "translation": "…", "rate": 0.9}
-// Akış: dinle (metin gizli) → metinle dinle → birlikte söyle (kayıt + ASR) → kendi kaydını dinle.
+// Akış: dinle (metin gizli) → metinle dinle → birlikte söyle (ASR).
+// Kendi kaydını dinleme Faz 2a'da yok (ses servisi yalnızca tanıma yapıyor); sonra eklenebilir.
+// write ve shadow ünite sınavından ve hata defterinden hariç. assessWriting düzeltme türleri errorStats'e yazılır.
+// Kesin model yds-yontem ile kararlaştırıldı (side-session-notes/genel-icerik.md).
 // Geçme: kelime eşleşmesi ≥ 0.6 (speak 0.7). Mikrofon yoksa "atla" serbest, ceza yok.
 
 // Metni gizli dinleme hikâyesi
@@ -257,7 +326,7 @@ Süre: iki bölüm ~25–30 saat ders ve 20+ saat açık uçlu görev.
 // Hız düğmesi 0.75× / 1×.
 ```
 
-Ayrıca her B1+ beceri ünitesine bağlı bir **Konuş senaryosu**. `scenarios.ts` ve `scenarios.dart`'a eklenir; ünitede `"scenarioId"` alanı olur. Bitişte 3 maddelik geri bildirim verilir. Yapay zekâ kısmı premium; ücretsiz kullanıcı ünitenin geri kalanını tamamen bitirebilir.
+Sonraki adım (kesinleşen Faz 2a kapsamında değil, ayrıca kararlaştırılacak): her B1+ beceri ünitesine bağlı bir **Konuş senaryosu**. `scenarios.ts` ve `scenarios.dart`'a eklenir; ünitede `"scenarioId"` alanı olur. Bitişte 3 maddelik geri bildirim verilir. Yapay zekâ kısmı premium; ücretsiz kullanıcı ünitenin geri kalanını tamamen bitirebilir.
 
 ---
 
@@ -269,7 +338,9 @@ Her bölümün son beceri ünitesinin `t` düğümü kendi sorularını taşır.
 |---|---|---|---|---|---|
 | S1–S2 (A1) | 20 | 6 | 6 (2 kısa metin × 3) | 5 | 3 |
 | S3–S4 (A2) | 20 | 6 | 6 (2 metin × 3) | 5 | 3 |
-| S5–S8 (B1–B2) | 20 + 1 `write` | 6 | 8 (2 metin × 4) | 1 `write` + 3 | 3 |
+| S5–S8 (B1–B2) | 20 | 6 | 8 (2 metin × 4) | 4 (`translate` tr→en, B1+ uzunlukta) | 2 |
+
+`write` sınava giremediği için B1–B2'de bölümün yazma ölçütü, son beceri ünitesindeki l4 `write` görevidir. Bölümün "tamamlandı" sayılması için beceri testi ve bu görevin ikisi de bitmiş olmalı.
 
 Kurallar:
 
@@ -311,11 +382,11 @@ Kurallar:
 |---|---|---|---|---|
 | **1** (bu tur) | 1a altyapı: ek dosya, kilit sabitleme, test, tr_en `choice`, test soruları, `guide`. 1b içerik: S1–S4 için 12 beceri ünitesi ve 4 bölüm beceri testi. | genel-icerik | ~460 alıştırma + 80 test sorusu + küçük Dart değişikliği | yok |
 | **2a** | `write`, `shadow`, `listenFirst`; `assessWriting` sunucu fonksiyonu; ünite–senaryo bağı | altyapı oturumu (orkestra şefi atar) ya da genel-icerik | orta | Faz 1a |
-| **2b** | S5–S8 için 12 beceri ünitesi; B1–B2 beceri testleri (`write` ile) | genel-icerik | ~460 alıştırma + 12 `write` + 12 senaryo metni | 2a |
-| **3** (sıradaki) | §2 "Faz 3": S1–S4 beceri ünitelerine `shadow` ve `write`; beceri hikâyeleri ve S5–S8 temel hikâyelerine `listenFirst` | genel-icerik | küçük–orta | 2a |
+| **2b** | S5–S8 için 12 beceri ünitesi (kalıp §2 "Faz 2b ders kalıbı"); B1–B2 beceri testleri; 12 `write` görevi ve sunucu rubrikleri | genel-icerik | ~460 alıştırma + 12 `write` + 12 rubrik | 2a |
+| **3** (PR #59) | §2 "Faz 3": S1–S4 beceri ünitelerine `shadow` ve `write`; beceri hikâyeleri ve S5–S8 temel hikâyelerine `listenFirst` | genel-icerik | küçük–orta | 2a |
 | **4** | C1 Bölüm 9 (12 ünite) | genel-icerik | ~470 alıştırma | 2a |
 | **5** | C1 Bölüm 10 (12 ünite) + C1 beceri testi | genel-icerik | ~470 alıştırma | 4 |
-| **6** | Okuma ve dinleme kütüphanesi: B1, B2 ve C1 için 20'şer metin (`assets/reading/`, dinleme için TTS). Kelime kapsamı denetimi (NGSL, CC BY-SA 4.0; lisans `docs/kaynaklar.md`'ye). | genel-icerik + okuma | ~60 metin | yok |
+| **6** (sıradaki) | §2 "Faz 6": ortak okuma kütüphanesine 65 metin (A1 15, A2 20, B1 10, B2 20); okuma ekranında "Önce dinle"; NGSL kapsam kontrolü | genel-icerik (altyapı yds-yontem ile) | 65 metin + küçük altyapı | yok |
 
 Faz sonrası toplam (yaklaşık):
 
