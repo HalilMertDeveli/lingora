@@ -1,5 +1,5 @@
-// YDS word banks and their cards in assets/vocab/yds.json: ys5 (Faz 1, docs/sinav/yds-faz1-icerik.md)
-// and ys7 (Faz 2a, docs/sinav/yds-faz2-icerik.md).
+// YDS word banks and their cards in assets/vocab/yds.json: ys5 (Faz 1, docs/sinav/yds-faz1-icerik.md),
+// ys7 (Faz 2a), ys9 (Faz 3a) and ys12 (Faz 4a, appended after every earlier card).
 // - every card word is new: not taught before its bank (0 overlap)
 // - cards are complete (example with Turkish, collocation, family for verbs and nouns)
 // - the cards and the ys5 vocab lessons describe the same words.
@@ -60,7 +60,31 @@ final _banks = <(String, String, int, List<String> Function(), List<String>)>[
     ],
     ['ys5', 'ys7', 'ys1', 'ys2', 'ys3', 'ys4'],
   ),
+  // Faz 4a: everything shipped before ys12 (sections 05–11, every earlier card). No exceptions.
+  (
+    'ys12',
+    'assets/courses/exam_yds/12_kelime_bankasi_4.json',
+    8,
+    () => [
+      ..._generalAll(),
+      ..._oldYds,
+      for (final n in [
+        '05_kelime_bankasi_1',
+        '06_okuma_evi_1',
+        '07_kelime_bankasi_2',
+        '08_okuma_evi_2',
+        '09_kelime_bankasi_3',
+        '10_okuma_evi_3',
+        '11_ara_denemeler',
+      ])
+        'assets/courses/exam_yds/$n.json',
+    ],
+    ['ys5', 'ys7', 'ys9', 'ys1', 'ys2', 'ys3', 'ys4'],
+  ),
 ];
+
+/// Banks appended after the ydm_ cards (Faz 4+): earlier ranks never change.
+const _appendBanks = {'ys12'};
 
 Map<String, dynamic> _read(String path) =>
     jsonDecode(File(path).readAsStringSync().replaceFirst('﻿', '')) as Map<String, dynamic>;
@@ -122,14 +146,23 @@ void main() {
     expect(entries.map((e) => (e['word'] as String).toLowerCase()).toSet().length, entries.length);
     expect([for (final e in entries) e['rank']], [for (var i = 1; i <= entries.length; i++) i]);
     final topics = [for (final t in vocab['topics'] as List) (t as Map)['name']];
-    // Bank units first, then (Faz 2c) the old path's units for the ydm_ cards.
-    final bankTopics = [
+    // F1–F3 bank units first, then (Faz 2c) the old path's units for the ydm_ cards, then (Faz 4+) appended banks.
+    List<String> unitsOf(bool appended) => [
       for (final (sec, file, units, _, _) in _banks)
-        if (File(file).existsSync())
+        if (File(file).existsSync() && _appendBanks.contains(sec) == appended)
           for (var i = 1; i <= units; i++) '${sec}u$i',
     ];
+    final bankTopics = unitsOf(false), appended = unitsOf(true);
     expect(topics.take(bankTopics.length), bankTopics);
-    expect(topics.skip(bankTopics.length).every((t) => RegExp(r'^ys[1-4]u\d+$').hasMatch('$t')), isTrue);
+    expect(topics.skip(topics.length - appended.length), appended);
+    final middle = topics.skip(bankTopics.length).take(topics.length - bankTopics.length - appended.length);
+    expect(middle.every((t) => RegExp(r'^ys[1-4]u\d+$').hasMatch('$t')), isTrue);
+    // Appended banks keep every earlier card's rank: the 4,086 cards of F1–F3 stay at ranks 1–4086.
+    if (appended.isNotEmpty) {
+      final first = entries.indexWhere((e) => appended.contains(e['topic']));
+      expect(first, 4086);
+      expect(entries.skip(first).every((e) => appended.contains(e['topic'])), isTrue);
+    }
     // The app reads the cards through VocabBundle (YDS example contexts: genel/akademik/haber).
     final bundle = VocabBundle.fromJson(vocab);
     expect(bundle.entries.length, entries.length);
@@ -145,8 +178,8 @@ void main() {
           if (((e as Map)['topic'] as String).startsWith('${sec}u')) e as Map<String, dynamic>,
       ];
 
-      // ys5 and ys7: 80 words a unit; ys9 (Faz 3a): 1,300 words over 12 units (108–109 each).
-      final total = const {'ys5': 800, 'ys7': 1200, 'ys9': 1300}[sec]!;
+      // ys5/ys7: 80 a unit; ys9 (Faz 3a): 1,300 over 12 units (108–109); ys12 (Faz 4a): 900 over 8 (112–113).
+      final total = const {'ys5': 800, 'ys7': 1200, 'ys9': 1300, 'ys12': 900}[sec]!;
       test('$total cards, about ${total ~/ units} per unit', () {
         expect(bankCards.length, total);
         for (var i = 1; i <= units; i++) {

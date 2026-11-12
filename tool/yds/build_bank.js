@@ -19,10 +19,16 @@ const BANKS = {
     description: 'Orta sıklık bandı ve YÖKDİL alan terimleri: 12 temada 1.300 yeni kelime, her biri kart, eşdizim ve B2 bağlam cümlesiyle',
     emoji: ['🔬', '🧬', '⚗️', '💊', '🥗', '👪', '🌐', '🏦', '📰', '🎭', '🧵', '🔀'],
   },
+  // Faz 4a: appended after every existing card (ranks 4087–4986); earlier ranks never change.
+  ys12: {
+    file: '12_kelime_bankasi_4.json', index: 12, units: 8, title: 'Kelime bankası 4', cefr: 'B2–C1', append: true,
+    description: 'Deneme kampı kelimesi: 8 temada 900 yeni orta–ileri sıklık kelime, sınavda karışan aileler ve ileri eşdizimler; her biri kart ve bağlam cümlesiyle',
+    emoji: ['⚡', '🧐', '📉', '🛰️', '🫀', '⚖️', '🧩', '🪞'],
+  },
 };
 const sec = process.argv[2];
 const b = BANKS[sec];
-if (!b) throw new Error('kullanım: build_bank.js ys5|ys7');
+if (!b) throw new Error('kullanım: build_bank.js ys5|ys7|ys9|ys12');
 const ids = Array.from({ length: b.units }, (_, i) => `${sec}u${i + 1}`);
 const units = ids.map((id) => JSON.parse(l.fs.readFileSync(l.path.join(work, `${id}.json`), 'utf8')));
 const section = {
@@ -43,18 +49,27 @@ for (const id of ids) {
     mine.push({ id: cid, word, pos, rank: 0, topic: id, ...Object.fromEntries(Object.entries(rest).filter(([k]) => k !== 'topic' && k !== 'rank')) });
   }
 }
-// Banks first (ys5, ys7), then the old path's ydm_ cards (topics ys1–ys4) in path order; stable within a topic.
-const order = (t) => {
-  const b = Object.keys(BANKS).indexOf(t.slice(0, 3));
-  return (b >= 0 ? b : 10 + +t[2]) * 1000 + +t.split('u')[1];
-};
 const kept = vocab.entries.filter((e) => !e.topic.startsWith(`${sec}u`));
-const entries = [...kept.filter((e) => e.id.startsWith('yd_')), ...mine].sort((x, y) => order(x.topic) - order(y.topic) || 0)
-  .concat(kept.filter((e) => !e.id.startsWith('yd_')));
-entries.forEach((e, i) => { e.rank = i + 1; });
-const topics = [
-  ...vocab.topics.filter((t) => !t.name.startsWith(`${sec}u`)),
-  ...units.map((u, i) => ({ name: u.id, emoji: b.emoji[i], description: `${u.title}: ${u.description}` })),
-].sort((x, y) => order(x.name) - order(y.name));
+const myTopics = units.map((u, i) => ({ name: u.id, emoji: b.emoji[i], description: `${u.title}: ${u.description}` }));
+let entries, topics;
+if (b.append) {
+  // Append mode (F4+): existing cards keep their order and ranks; this bank follows them.
+  entries = [...kept.sort((x, y) => x.rank - y.rank), ...mine];
+  entries.forEach((e, i) => { e.rank = i + 1; });
+  topics = [...vocab.topics.filter((t) => !t.name.startsWith(`${sec}u`)), ...myTopics];
+} else {
+  // F1–F3 banks first (ys5, ys7, ys9), then the old path's ydm_ cards (topics ys1–ys4) in path order; stable within a topic.
+  const order = (t) => {
+    const s = t.match(/^ys\d+/)[0];
+    const b = Object.keys(BANKS).indexOf(s);
+    // Append-mode banks (ys12 …) stay after the ydm_ topics.
+    return (BANKS[s]?.append ? 90 + b : b >= 0 ? b : 10 + +t[2]) * 1000 + +t.split('u')[1];
+  };
+  entries = [...kept.filter((e) => e.id.startsWith('yd_') && !BANKS[e.topic.match(/^ys\d+/)[0]]?.append), ...mine]
+    .sort((x, y) => order(x.topic) - order(y.topic) || 0)
+    .concat(kept.filter((e) => !e.id.startsWith('yd_')), kept.filter((e) => BANKS[e.topic.match(/^ys\d+/)[0]]?.append));
+  entries.forEach((e, i) => { e.rank = i + 1; });
+  topics = [...vocab.topics.filter((t) => !t.name.startsWith(`${sec}u`)), ...myTopics].sort((x, y) => order(x.name) - order(y.name));
+}
 l.fs.writeFileSync(vocabPath, JSON.stringify({ version: 1, topics, entries }, null, 2) + '\n');
 console.log(`${sec}: ${units.length} ünite, ${mine.length} kart; yds.json toplam ${entries.length}`);

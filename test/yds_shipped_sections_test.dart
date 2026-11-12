@@ -1,7 +1,7 @@
 // Shipped YDS sections never change shape (YDS Faz 3, conductor's condition on PR #64): new content goes into
-// new sections only. A learner who finished ys1–ys10 keeps every section at 100 %, every section open and
-// every node done after new sections (ys11 …) are added.
-// test/fixtures/yds_shipped_nodes.json freezes the node ids of ys1–ys8 (end of Faz 2) and ys9–ys10 (Faz 3a/3b).
+// new sections only. A learner who finished ys1–ys11 keeps every section at 100 %, every section open and
+// every node done after new sections (ys12 …) are added.
+// test/fixtures/yds_shipped_nodes.json freezes the node ids of ys1–ys8 (Faz 2), ys9–ys10 (Faz 3a/3b), ys11 (Faz 3d).
 import 'dart:convert';
 import 'dart:io';
 
@@ -18,7 +18,7 @@ void main() {
   final course = readCourse('exam_yds');
   final byId = {for (final s in course.sections) s.id: s};
 
-  test('ys1–ys10 keep exactly their shipped nodes: none added, removed or reordered', () {
+  test('ys1–ys11 keep exactly their shipped nodes: none added, removed or reordered', () {
     for (final MapEntry(key: id, value: ids) in frozen.entries) {
       final section = byId[id];
       expect(section, isNotNull, reason: id);
@@ -26,7 +26,7 @@ void main() {
     }
   });
 
-  test('a learner who finished ys1–ys10 stays at 100 %, with every section open', () {
+  test('a learner who finished ys1–ys11 stays at 100 %, with every section open', () {
     final done = Progress(
       completed: {
         for (final ids in frozen.values)
