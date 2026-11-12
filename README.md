@@ -32,8 +32,9 @@ kullanılır: seyahatte bavul ve uçak, yemekte simit ve tabak, teknolojide term
 
 | Parça | İçerik |
 |---|---|
-| **Genel İngilizce (A1 → B2)** | 8 bölüm · 94 ünite · 364 ders · 3.504 alıştırma |
-| **YDS / YÖKDİL** | 54 ünite · 216 ders · 3.252 soru · 8 tam deneme (80 soru / 180 dk) · 12 haftalık plan |
+| **Genel İngilizce (A1 → C1)** | 10 bölüm · 142 ünite · 556 ders · 5.504 alıştırma · her bölümde dinleme, okuma, konuşma (gölgeleme) ve yazma üniteleri + bölüm beceri testi |
+| **YDS / YÖKDİL — 1 yıllık program** | 52 hafta, günde 3–4 saat · 126 ünite · 524 ders · 8.113 soru · 4 kelime bankası (4.986 kart) · 3 okuma evi · 20 YDS + 3 YÖKDİL tam deneme, 8 yarım deneme · 52. haftadan sonra sürdürme modu |
+| **Okuma ve dinleme kütüphanesi** | 345 metin, A1'den C1'e; "Önce dinle" modu, kelimeye dokununca anlam |
 | **LGS İngilizce (8. sınıf)** | MEB'in 10 ünitesi · 40 ders · 510 soru · gerçek formatta 2 bölüm denemesi |
 | **Yazılımcı İngilizcesi** | 604 kelime · bilgi haritası · aralıklı tekrar · 8 iş senaryosu |
 | **Meslek paketleri** | Turizm (5 ünite) · İş görüşmesi (4 ünite) |
@@ -54,7 +55,7 @@ içerikleri kullanılmamıştır.
 <img src="docs/onizleme/04_seyahat.jpg" width="200" alt="Seyahat ünitesi">
 </p>
 
-Yol sekiz bölümden oluşur (Mahalle, Çarşı, Vapur, Ofis, Yolculuk, Kütüphane, Toplantı, Sahne).
+Yol on bölümden oluşur. A1'den B2'ye uzanan ilk sekiz bölüm Mahalle, Çarşı, Vapur, Ofis, Yolculuk, Kütüphane, Toplantı ve Sahne'dir. Ardından iki C1 bölümü gelir: Derinlik ve Ustalık.
 Her bölüm bir CEFR seviyesine karşılık gelir. Bölüm başında "Bölüme atla" sınavı vardır ve cezası yoktur.
 Seviye testine göre uygun bölümden başlarsın. Kilitli bölümler katlanmış gelir, bu yüzden uygulama hızlı açılır.
 
@@ -93,6 +94,50 @@ Eski soru bankası ve tam paket denemeler Pratik sekmesinde durur. Planlar ayrı
 [LGS planı](docs/sinav/lgs-plan.md) · [YDS/YÖKDİL planı ve 12 haftalık takvim](docs/sinav/yds-plan.md)
 
 > ALES'te İngilizce bölümü yoktur. Yetişkin akademik sınavlar için YDS, e-YDS ve YÖKDİL hedeflenir.
+
+### YDS'ye bir yılda hazırlık: bilimsel yöntemlerle
+
+<p>
+<img src="docs/onizleme/21_yds_bugun.jpg" width="200" alt="Bugün planı">
+<img src="docs/onizleme/23_tekrar_karti.jpg" width="200" alt="Tekrar kartı">
+<img src="docs/onizleme/25_hata_defteri.jpg" width="200" alt="Hata defteri">
+<img src="docs/onizleme/26_deneme_raporu.jpg" width="200" alt="Deneme raporu">
+</p>
+<p>
+<img src="docs/onizleme/22_nasil_ogretiyoruz.jpg" width="200" alt="Nasıl öğretiyoruz">
+<img src="docs/onizleme/24_hatirladin_mi.jpg" width="200" alt="Hatırladın mı">
+<img src="docs/onizleme/27_okuma_evi.jpg" width="200" alt="Okuma evi">
+<img src="docs/onizleme/28_surdurme_modu.jpg" width="200" alt="Sürdürme modu">
+</p>
+
+Program, sıfırdan başlayan biri için 52 haftalık bir yol olarak tasarlandı. Toplam süre yaklaşık 1.170 saat. Yol üzerinde uygulanan yöntemler şunlar:
+
+- **Bugün:** O günün çalışmasını seçtiğin süreye göre bloklara ayırır. Bloklar sırasıyla tekrar kartları, yeni ders, okuma, soru ve hata defteri.
+- **Aralıklı tekrar:** 9 kutulu Leitner sistemi kullanılır. Kart önce "hatırladın mı?" diye sorar.
+- **Hata defteri:** Yanlışın nedenini sorar. Soru 1, 3, 7 ve 21 gün sonra yeniden gelir.
+- **Deneme raporu:** Soru tipine ve süreye göre analiz yapar, tahmini puanı gösterir.
+- **YÖKDİL:** YÖKDİL'e hazırlananlar kendi alanının denemelerini çözer.
+
+Bu yöntemlerin her biri uygulama içindeki **"Nasıl öğretiyoruz?"** ekranında kaynaklarıyla anlatılır. Araştırma ve plan belgeleri:
+- [YDS araştırması](docs/sinav/yds-arastirma.md)
+- [1 yıllık plan](docs/sinav/yds-1-yil.md)
+
+### Genel kurs: dört beceri, C1'e kadar
+
+<p>
+<img src="docs/onizleme/29_beceri_unitesi.jpg" width="200" alt="Beceri ünitesi">
+<img src="docs/onizleme/30_once_dinle.jpg" width="200" alt="Önce dinle">
+<img src="docs/onizleme/31_okuma_kutuphanesi.jpg" width="200" alt="Okuma kütüphanesi">
+<img src="docs/onizleme/32_c1_ustalik.jpg" width="200" alt="C1 Ustalık">
+</p>
+
+Her bölümde dört becerinin dersleri var:
+- **Dinleme:** Hikâyeler önce dinlenir, metin sonra açılır ("Önce dinle").
+- **Konuşma:** Gölgeleme (shadowing) alıştırmaları.
+- **Yazma:** Ölçütlü yazma görevleri. Premium'da yapay zekâ geri bildirim verir; ücretsiz sürümde yerel kontrol ve öz değerlendirme var.
+- **Okuma:** Okuma dersleri.
+
+Her bölüm bir beceri testiyle biter. Son iki bölüm (Derinlik ve Ustalık) C1 seviyesindedir ve eşdizim, üslup ve söylem üzerine yoğunlaşır. Müfredat: [docs/genel-mufredat.md](docs/genel-mufredat.md)
 
 ### Pratik, lig, görevler, profil
 

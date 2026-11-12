@@ -1,6 +1,6 @@
 # Yapılacaklar
 
-Son güncelleme: 12 Kasım 2026, `main` = PR #31 sonrası.
+Son güncelleme: 12 Kasım 2026, main = PR #81 sonrası.
 
 İşler iki gruba ayrıldı:
 - **Ekip tarafı:** Claude ve geliştirme oturumları kendi başına yapabilir.
@@ -61,9 +61,9 @@ Bir maddeyi bitirdiğinde `[x]` ile işaretle.
 
 - [x] README ve ekran önizlemeleri.
 - [x] Kurs seçicideki "A1–A2" yazısını "A1–B2" yap.
-- [ ] **Bağımsız içerik kalite turu.** Bölüm 2–8, LGS ve YDS'de dilbilgisi, doğal İngilizce ve Türkçe açıklama kontrolü; hataları toplu düzelt.
-- [ ] **Açılış hızı.** Kurs dosyalarını arka planda (isolate) ayrıştır. Yayın sürümünde açılış süresini ölç ve hedefi < 1 sn yap.
-- [ ] **Uçtan uca test.** Gerçek projede misafir → e-posta / Google / telefon bağlama; ilerlemenin kaybolmadığını doğrula.
+- [x] **Bağımsız içerik kalite turu** (PR #36, #38, #54, #57, #80). Bölüm 2–8, LGS ve YDS'de dilbilgisi, doğal İngilizce ve Türkçe açıklama kontrolü; hataları toplu düzelt.
+- [x] **Açılış hızı** (PR #40; gerçek telefonda ölçülmeli). Kurs dosyalarını arka planda (isolate) ayrıştır. Yayın sürümünde açılış süresini ölç ve hedefi < 1 sn yap.
+- [x] **Uçtan uca test** (PR #37, emülatör projesiyle; gerçek projede elle deneme: docs/giris-testleri.md). Gerçek projede misafir → e-posta / Google / telefon bağlama; ilerlemenin kaybolmadığını doğrula.
 
 ### Senin adımın gelince
 
@@ -71,6 +71,17 @@ Bir maddeyi bitirdiğinde `[x]` ile işaretle.
 - [ ] **Blaze ve Anthropic anahtarı gelince:** Functions'ı dağıt (lig, yapay zekâ sohbeti, satın alma doğrulama); güvenlik kurallarını denetle (security-rules auditor).
 - [ ] **Play ürünleri gelince:** gerçek satın alma akışını kapalı test kanalında dene.
 - [ ] **Firestore bölgesi değişirse:** kuralları ve indeksleri yeniden yükle.
+
+### Tamamlanan büyük işler
+
+- [x] YDS 1 yıllık program (52 hafta) ve öğrenme yöntemleri (Bugün, aralıklı tekrar, hata defteri, deneme raporu, sürdürme modu).
+- [x] Genel kurs A1–C1: beceri üniteleri, yazma/gölgeleme/önce dinle, okuma–dinleme kütüphanesi, C1 bölümleri.
+- [x] Şıkların karışık sırada gösterilmesi (PR #74).
+
+### Sıradaki
+
+- [ ] **YDS puan tahmini kalibrasyonu:** gerçek sınav sonuçları toplandıkça tahmin ayarlanmalı.
+- [ ] **YÖKDİL dağılımı:** ÖSYM belgesiyle teyit (şu an hazırlık kaynaklarına dayanıyor).
 
 ### Geliştirme
 
