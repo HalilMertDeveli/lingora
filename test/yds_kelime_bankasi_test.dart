@@ -67,7 +67,7 @@ Set<String> _taught(List<String> files) {
   final out = <String>{};
   void add(Object? w) {
     final s = '$w'.trim().toLowerCase();
-    if (RegExp(r"^[a-z][a-z' -]*$").hasMatch(s) && s.split(' ').length <= 3) out.add(s);
+    if (RegExp(r"^[a-z][a-z' -]*$").hasMatch(s) && s.split(' ').length <= 6) out.add(s);
   }
 
   for (final f in files) {
@@ -86,6 +86,17 @@ Set<String> _taught(List<String> files) {
   }
   return out;
 }
+
+/// Phrases of 4+ words that the old YDS path already teaches as match pairs. The overlap check counted
+/// only 1–3-word items until after #51, so these shipped as bank cards. They stay on purpose
+/// (yds-arastirma): removing them would orphan learners' card progress, and meeting them again is
+/// recycling. New banks (F3+) must have no exceptions.
+const _shippedOverlaps = {
+  'on the other hand', 'in the long run', // ys5u10
+  'to a large extent', 'for the most part', // ys7u14
+  'in the absence of', 'with the exception of', 'in the wake of', // ys7u15
+  'at the expense of', 'on the basis of', 'on the grounds that', // ys7u15
+};
 
 void main() {
   final vocabShipped = File(_cards).existsSync();
@@ -159,7 +170,9 @@ void main() {
         };
         final clash = [
           for (final e in bankCards)
-            if (taught.contains((e['word'] as String).toLowerCase())) e['word'],
+            if (taught.contains((e['word'] as String).toLowerCase()) &&
+                !_shippedOverlaps.contains((e['word'] as String).toLowerCase()))
+              e['word'],
         ];
         expect(
           clash,

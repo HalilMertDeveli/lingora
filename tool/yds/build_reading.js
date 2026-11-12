@@ -13,7 +13,7 @@ const SECTIONS = {
   ys8: {
     file: '08_okuma_evi_2.json', index: 8, units: 10, title: 'Okuma evi 2', cefr: 'B2',
     description: 'Akademik okuma: gerçek YDS uzunluğunda 80 özgün metin, her ünitede bir soru türü ya da metin yapısı stratejisi; sonunda 40 soruluk yarım deneme',
-    mock: { title: 'Yarım deneme 2', description: 'YDS dağılımında 40 soru, 90 dakika, gerçek sınav düzeyinde (B2). Sonucunu Yarım deneme 1 ile karşılaştır.' },
+    mock: { title: 'Yarım deneme 5', description: 'YDS dağılımında 40 soru, 90 dakika, gerçek sınav düzeyinde (B2). Sonucunu önceki yarım denemelerle karşılaştır.' },
   },
 };
 const sec = process.argv[2];

@@ -16,7 +16,7 @@ function* exercises(file) {
 /// single-word correct choice options (lowercase, as written).
 function taught(files) {
   const s = new Set();
-  const add = (w) => { w = w.trim().toLowerCase(); if (/^[a-z][a-z' -]*$/.test(w) && w.split(' ').length <= 3) s.add(w); };
+  const add = (w) => { w = w.trim().toLowerCase(); if (/^[a-z][a-z' -]*$/.test(w) && w.split(' ').length <= 6) s.add(w); };
   for (const f of files) for (const [, , e] of exercises(f)) {
     if (e.type === 'match') e.pairs.forEach((p) => add(p[1]));
     if (e.type === 'fillBlank') add(e.answer);
