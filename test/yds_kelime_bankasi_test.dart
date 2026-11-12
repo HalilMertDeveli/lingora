@@ -104,8 +104,9 @@ void main() {
             col.any((c) => !'${c['phrase']}'.contains('${c['answer']}') || '${c['tr']}'.isEmpty)) {
           problems.add('$w: collocation');
         }
-        if (RegExp('verb|noun').hasMatch(e['pos'] as String) && e['family'] is! List)
+        if (RegExp('verb|noun').hasMatch(e['pos'] as String) && e['family'] is! List) {
           problems.add('$w: family');
+        }
       }
       expect(problems, isEmpty, reason: problems.take(20).join('\n'));
     });
