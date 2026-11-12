@@ -73,6 +73,14 @@ Faz 2 için not: FSRS'ye geçiş, MIT lisanslı bir uygulamanın Dart portuyla y
 - `newWords`, `wordsTotal`
 - `readingWordsPerDay`, `intensiveTextsPerDay`, `choicePerDay`
 - `mock`
+- `unitIds`: ana yolda o hafta bitirilecek ünite id'leri. Genel kurs (`u1`, `s2u3`…) ve YDS (`ys1u11`…).
+- `parallelUnitIds`: o haftanın paralel bölüm üniteleri (ys5/ys6).
+
+Üst düzeyde iki alan daha var:
+- `blocks`: blok oranları
+- `targetSeconds`: soru tipi başına hedef saniye
+
+Tekrar haftaları (10, 34, 42, 52) boş `unitIds` taşır. Bu haftalarda plan, zayıf üniteleri hata analizine göre önerir.
 
 Dosyayı `pubspec.yaml`'a siz ekleyin.
 

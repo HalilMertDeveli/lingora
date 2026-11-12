@@ -85,6 +85,25 @@ const W = [
 ];
 
 const phaseOf = (w) => phases.find((p) => w >= p.weeks[0] && w <= p.weeks[1]);
+
+// Path unit ids named in a week's text: "Genel s2 u1–u6" → s2u1..s2u6 (section 1 ids are u1..u12),
+// "ys2u7–u9" → ys2u7..ys2u9, "ys1u11" → ys1u11. Review weeks name no units.
+function unitIds(text) {
+  const ids = [];
+  const range = (prefix, a, b) => {
+    for (let i = +a; i <= +(b ?? a); i++) ids.push(`${prefix}${i}`);
+  };
+  for (const m of text.matchAll(/Genel s(\d+) u(\d+)(?:–u(\d+))?/g)) range(m[1] === '1' ? 'u' : `s${m[1]}u`, m[2], m[3]);
+  for (const m of text.matchAll(/ys(\d+)u(\d+)(?:–u(\d+))?/g)) range(`ys${m[1]}u`, m[2], m[3]);
+  return ids;
+}
+
+// Parallel tracks (sections with "parallel": true): Kelime bankası / Okuma evi units per week.
+// F1 covers weeks 11–20; later phases extend this map when their sections ship.
+const parallel = {};
+for (let w = 11; w <= 20; w++) parallel[w] = [`ys5u${w - 10}`];
+const okuma = { 12: 'ys6u1', 13: 'ys6u2', 15: 'ys6u3', 16: 'ys6u4', 18: 'ys6u5', 20: 'ys6u6' };
+for (const [w, id] of Object.entries(okuma)) parallel[w].push(id);
 let total = 0;
 let readTotal = 0;
 const weeks = W.map(([week, units, grammar, qtype, mock]) => {
@@ -95,6 +114,8 @@ const weeks = W.map(([week, units, grammar, qtype, mock]) => {
     week,
     phase: phaseOf(week).id,
     units,
+    unitIds: unitIds(units),
+    parallelUnitIds: parallel[week] ?? [],
     grammar,
     questionWork: qtype,
     mock: mock || null,
@@ -119,6 +140,28 @@ const json = {
   title: 'YDS 1 yıllık program',
   doc: 'docs/sinav/yds-1-yil.md',
   daysPerWeek: 6,
+  // Standard day (210 min incl. a 10 min break): share of study time per block. docs/sinav/yds-1-yil.md §3.
+  blocks: [
+    { id: 'review', title: 'Tekrar kartları', share: 0.15 },
+    { id: 'lesson', title: 'Yeni ders', share: 0.3 },
+    { id: 'reading', title: 'Okuma', share: 0.225 },
+    { id: 'questions', title: 'Soru', share: 0.225 },
+    { id: 'mistakes', title: 'Hata defteri', share: 0.1 },
+  ],
+  // Target seconds per question in a real YDS (180 min / 80 questions, ~15 min spare).
+  // Reading includes reading the passage. docs/sinav/yds-arastirma.md §2.8.
+  targetSeconds: {
+    vocabulary: 45,
+    grammar: 45,
+    cloze: 70,
+    sentenceCompletion: 90,
+    translation: 120,
+    reading: 180,
+    dialogue: 100,
+    restatement: 100,
+    paragraphCompletion: 135,
+    irrelevantSentence: 135,
+  },
   phases,
   weeks,
   totals: { newWords: total, readingWords: readTotal, fullMocks: 20, halfMocks: 8 },
