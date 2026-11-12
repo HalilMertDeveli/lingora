@@ -49,7 +49,7 @@ class _FillBlankExerciseState extends State<FillBlankExercise> {
           Text(ex.translation!, style: TextStyle(color: Brand.muted, fontSize: 16)),
         ],
         const SizedBox(height: 32),
-        for (final w in ex.wordChoices)
+        for (final w in stableShuffle(ex.wordChoices, ex.text!))
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: TapCard(

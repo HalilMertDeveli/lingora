@@ -40,7 +40,7 @@ class _SelectExerciseState extends ConsumerState<SelectExercise> {
           crossAxisSpacing: 12,
           childAspectRatio: 0.95,
           children: [
-            for (final c in widget.ex.choices)
+            for (final c in stableShuffle(widget.ex.choices, widget.ex.prompt ?? widget.ex.answer ?? ''))
               _ChoiceCard(choice: c, selected: _picked == c.text, onTap: () => _pick(c)),
           ],
         ),

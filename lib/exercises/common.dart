@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,6 +11,20 @@ import '../theme.dart';
 /// answer is correct.
 typedef Grader = bool Function();
 typedef ReadyCallback = void Function(Grader? grader);
+
+/// [items] in an order that depends only on [seed] (e.g. the question text).
+///
+/// Content files usually list the correct option first; showing options in a
+/// shuffled but stable order keeps "always pick the first one" from working,
+/// while the same question always looks the same (screenshots, retries, tests).
+List<T> stableShuffle<T>(List<T> items, String seed) {
+  // FNV-1a: String.hashCode is not guaranteed to be stable between runs.
+  var hash = 0x811c9dc5;
+  for (final unit in seed.codeUnits) {
+    hash = ((hash ^ unit) * 0x01000193) & 0xffffffff;
+  }
+  return List<T>.of(items)..shuffle(Random(hash));
+}
 
 class ExerciseTitle extends StatelessWidget {
   const ExerciseTitle(this.text, {super.key});
