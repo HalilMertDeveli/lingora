@@ -12,6 +12,7 @@ import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import 'exam_screen.dart';
 import 'paywall_screen.dart';
+import 'study/mock_report_screen.dart';
 
 const _letters = ['A', 'B', 'C', 'D', 'E'];
 
@@ -252,7 +253,11 @@ class FullMockResultScreen extends StatefulWidget {
     required this.answers,
     required this.xp,
     required this.duration,
+    this.reportSource,
   });
+
+  /// Answer log source of the attempt, for its type and time report.
+  final String? reportSource;
 
   final ExamPackContent pack;
   final FullMock mock;
@@ -328,6 +333,10 @@ class _FullMockResultScreenState extends State<FullMockResultScreen> {
                   ),
                   SizedBox(height: 8),
                   Text(note, style: TextStyle(color: Brand.muted, fontSize: 12, height: 1.35)),
+                  if (widget.reportSource case final s?) ...[
+                    SizedBox(height: 8),
+                    Center(child: MockReportButton(source: s)),
+                  ],
                   SizedBox(height: 18),
                   Text('Konu dökümü', style: Theme.of(context).textTheme.titleLarge),
                   SizedBox(height: 8),

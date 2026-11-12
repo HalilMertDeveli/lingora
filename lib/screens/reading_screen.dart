@@ -13,10 +13,17 @@ import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import 'lesson_result_screen.dart';
+import 'study/reading_house.dart';
 
 Color get _readColor => Brand.tone(const Color(0xFF0E9F8E));
 
-Map<String, Color> get _levelColors => {'A1': Brand.success, 'A2': Color(0xFF2F80ED), 'B1': Brand.primary};
+Map<String, Color> get _levelColors => {
+  'A1': Brand.success,
+  'A2': Color(0xFF2F80ED),
+  'B1': Brand.primary,
+  'B1+': Brand.accent,
+  'B2': Brand.error,
+};
 
 /// Number of stories the user has finished.
 int readStoryCount(Progress p) => p.completed.keys.where((k) => k.startsWith('read_')).length;
@@ -87,6 +94,7 @@ class ReadingLibraryScreen extends ConsumerWidget {
               style: TextStyle(color: Brand.muted),
             ),
             for (final level in readingLevels) ..._level(context, level, all, p),
+            const ReadingHouseSection(),
           ],
         ),
       ),

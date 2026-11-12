@@ -24,7 +24,9 @@ import '../../data/exam_pack_repository.dart';
 import '../../data/exam_path.dart';
 import '../../services/billing/exam_packs.dart';
 import '../../services/billing/products.dart';
+import '../../study/analysis.dart';
 import '../story_screen.dart';
+import 'notebook_screen.dart';
 import 'methods_screen.dart';
 import 'srs_review_screen.dart';
 
@@ -364,6 +366,9 @@ class _WeeklyReport extends ConsumerWidget {
                 ? 'Bu hafta soru çözülmedi'
                 : 'Soru doğruluğu: %${(right * 100 / answers.length).round()} (${answers.length} soru)',
           ),
+          if (estimateScore(log.answers, halfMocks: halfMockNodes(ref.watch(yearPlanProvider).value))
+              case final score?)
+            Text('Tahmini YDS puanı: $score', key: const Key('weekly-score')),
         ],
       ),
     );
@@ -514,19 +519,12 @@ Future<void> runBlock(BuildContext context, WidgetRef ref, PlanBlock block) asyn
         ),
       );
     case PlanBlock.mistakes || PlanBlock.mockReview:
-      if (mistakes.isEmpty) {
-        snack('Vadesi gelen hata sorun yok.');
+      // The notebook: tag today's mistakes, solve the due ones, analysis.
+      if (mistakes.isEmpty && p.mistakes.isEmpty) {
+        snack('Hata defterin boş.');
         return;
       }
-      await full(
-        LessonScreen(
-          nodeId: 'practice',
-          title: 'Hata defteri',
-          items: mistakes,
-          color: Brand.error,
-          mode: LessonMode.practice,
-        ),
-      );
+      await nav.push(MaterialPageRoute<void>(builder: (_) => const NotebookScreen()));
     case PlanBlock.mock:
       final mock = today.mock ?? (today.week.examMocks.isEmpty ? null : today.week.examMocks.first);
       if (mock != null && await startPlanMock(context, ref, mock)) return;

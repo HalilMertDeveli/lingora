@@ -21,6 +21,7 @@ import 'placement_screen.dart';
 import 'pronunciation_screen.dart';
 import 'reading_screen.dart';
 import 'speed_match_screen.dart';
+import 'study/notebook_screen.dart';
 import 'study/srs_review_screen.dart';
 import 'study/today_screen.dart';
 import '../study/review_queue.dart';
@@ -137,6 +138,15 @@ class PracticeHubScreen extends ConsumerWidget {
                       mode: LessonMode.practice,
                     ),
                   ),
+          ),
+          _HubTile(
+            key: const Key('hub-notebook'),
+            icon: Icons.menu_book_rounded,
+            emoji: '🔎',
+            color: Brand.error,
+            title: 'Hata defteri ve analiz',
+            subtitle: 'Neden yanıldın, zayıf soru tiplerin ve tahmini puanın',
+            onTap: () => openNotebook(context),
           ),
           _HubTile(
             key: const Key('hub-speed'),

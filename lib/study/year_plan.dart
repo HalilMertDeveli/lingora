@@ -174,6 +174,13 @@ class YearPlan {
   );
 }
 
+/// Path mock nodes the plan uses as half mocks (score estimate).
+Set<String> halfMockNodes(YearPlan? plan) => {
+  for (final w in plan?.weeks ?? const <PlanWeek>[])
+    for (final m in w.mocks)
+      if (m.kind == MockKind.half && m.nodeId != null) m.nodeId!,
+};
+
 Future<YearPlan?> loadYearPlan(AssetBundle bundle) async {
   try {
     return YearPlan.fromJson(jsonDecode(await bundle.loadString(yearPlanAsset)) as Map<String, dynamic>);

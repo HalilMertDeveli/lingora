@@ -33,7 +33,7 @@ void main() {
     test('15 stories, 5 per level, unique ids', () {
       expect(_stories, hasLength(15));
       expect(_stories.map((s) => s.id).toSet(), hasLength(15));
-      for (final level in readingLevels) {
+      for (final level in ['A1', 'A2', 'B1']) {
         expect(_stories.where((s) => s.level == level), hasLength(5), reason: level);
       }
       expect(_stories.every((s) => readingLevels.contains(s.level)), isTrue);
