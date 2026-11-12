@@ -250,9 +250,10 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
                 ),
               ),
             ),
-          Positioned.fill(child: art),
+          // Own layer: the breathing node repaints alone, not the whole path.
+          Positioned.fill(child: RepaintBoundary(child: art)),
           if (!themed && _active && (widget.type == NodeType.lesson || widget.type == NodeType.story))
-            const Positioned(left: 13, top: -30, child: Steam(width: 40, height: 32)),
+            const Positioned(left: 13, top: -30, child: RepaintBoundary(child: Steam(width: 40, height: 32))),
           if (done && widget.type != NodeType.chest)
             Positioned(right: -2, top: 2, child: badge(Icons.check_rounded, p.success, onColor(p.success))),
           if (locked)
@@ -471,13 +472,16 @@ class _TeaInviteState extends State<TeaInvite> with SingleTickerProviderStateMix
         ],
       ),
     );
-    return AnimatedBuilder(
-      animation: _c,
-      builder: (_, child) => Transform.translate(
-        offset: Offset(0, -TeaInvite.amplitude * Curves.easeInOut.transform(_c.value)),
-        child: child,
+    // Own layer: the bobbing invite repaints alone.
+    return RepaintBoundary(
+      child: AnimatedBuilder(
+        animation: _c,
+        builder: (_, child) => Transform.translate(
+          offset: Offset(0, -TeaInvite.amplitude * Curves.easeInOut.transform(_c.value)),
+          child: child,
+        ),
+        child: bubble,
       ),
-      child: bubble,
     );
   }
 }
@@ -868,10 +872,7 @@ class RoadsideDecor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ExcludeSemantics(
-    child: Opacity(
-      opacity: context.palette.isDark ? 0.7 : 0.85,
-      child: ThemeObject(theme: theme, object: object, size: 34),
-    ),
+    child: ThemeObject(theme: theme, object: object, size: 34, opacity: context.palette.isDark ? 0.7 : 0.85),
   );
 }
 

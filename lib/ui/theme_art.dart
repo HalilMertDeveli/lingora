@@ -18,6 +18,14 @@ const greyscale = ColorFilter.matrix([
   0, 0, 0, 1, 0,
 ]);
 
+/// [greyscale] with its alpha scaled by [opacity], in a single filter.
+ColorFilter fadedGreyscale(double opacity) => ColorFilter.matrix([
+  0.2126, 0.7152, 0.0722, 0, 0, //
+  0.2126, 0.7152, 0.0722, 0, 0,
+  0.2126, 0.7152, 0.0722, 0, 0,
+  0, 0, 0, opacity, 0,
+]);
+
 /// One theme object. [grey] draws it as a faded silhouette; [tint] paints it
 /// in one colour (band patterns). Pictures are parsed once and cached by
 /// flutter_svg, so a theme costs one load per object.
@@ -30,6 +38,7 @@ class ThemeObject extends StatelessWidget {
     this.grey = false,
     this.tint,
     this.semanticLabel,
+    this.opacity = 1,
   });
 
   final TopicTheme theme;
@@ -39,23 +48,29 @@ class ThemeObject extends StatelessWidget {
   final Color? tint;
   final String? semanticLabel;
 
+  /// Fades the picture through its colour filter (no offscreen layer).
+  final double opacity;
+
   @override
   Widget build(BuildContext context) {
-    Widget art = SvgPicture.asset(
+    // Grey is one colour matrix on the picture itself (greyscale + fade):
+    // Opacity + ColorFiltered would each need an offscreen layer per node.
+    final filter = tint != null
+        ? ColorFilter.mode(tint!, BlendMode.srcIn)
+        : grey
+        ? fadedGreyscale((context.palette.isDark ? 0.45 : 0.55) * opacity)
+        : opacity < 1
+        ? ColorFilter.matrix([1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, opacity, 0])
+        : null;
+    final art = SvgPicture.asset(
       theme.asset(object),
       width: size,
       height: size,
       semanticsLabel: semanticLabel,
       excludeFromSemantics: semanticLabel == null,
-      colorFilter: tint == null ? null : ColorFilter.mode(tint!, BlendMode.srcIn),
+      colorFilter: filter,
       placeholderBuilder: (_) => SizedBox(width: size, height: size),
     );
-    if (grey) {
-      art = Opacity(
-        opacity: context.palette.isDark ? 0.45 : 0.55,
-        child: ColorFiltered(colorFilter: greyscale, child: art),
-      );
-    }
     return KeyedSubtree(key: ValueKey('theme-object-${theme.id}-$object'), child: art);
   }
 }
