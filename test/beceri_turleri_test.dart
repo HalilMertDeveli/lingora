@@ -390,7 +390,8 @@ void main() {
       expect(find.textContaining('artikellere dikkat'), findsOneWidget);
       // "other" is not a category of the error analysis.
       expect(container.read(progressProvider).errorStats, {'article': 1, 'tense': 1});
-      expect(find.text('Yeniden yazdım, tekrar bak'), findsOneWidget);
+      expect(find.text('Düzelttim, tekrar bak'), findsOneWidget);
+      expect(find.byKey(const Key('write-rewrite-hint')), findsOneWidget);
     });
   });
 
@@ -405,6 +406,10 @@ void main() {
       expect(speech.said.last, ('Would you like to come with us?', 0.9));
       await tester.tap(find.byKey(const Key('shadow-next')));
       await tester.pump();
+      expect(find.text('3. Hemen ardından söyle'), findsOneWidget);
+      final heard = speech.said.length;
+      await tester.tap(find.byKey(const Key('shadow-replay')));
+      expect(speech.said.length, heard + 1);
       await tester.tap(find.byKey(const Key('shadow-mic')));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Kontrol et'));

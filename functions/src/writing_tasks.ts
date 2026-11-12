@@ -2,6 +2,7 @@
 // exercises). Keyed by the exercise's taskId ("<node id>w"). Kept on the
 // server so the app cannot change the rubric the model is given; each task
 // must match its exercise in assets/courses/tr_en/*.json.
+import tasks from "./writing_tasks.json";
 
 /** Error types feedback may focus on; same names as lib/models/course.dart. */
 export const FOCUS_TYPES = ["article", "tense", "preposition", "word_order", "be"] as const;
@@ -21,5 +22,9 @@ export interface WritingTask {
   rubric: string;
 }
 
-/** Filled by the content phases (Faz 2b: S5–S8 skill units). */
-export const WRITING_TASKS: Record<string, WritingTask> = {};
+/**
+ * The tasks, from writing_tasks.json (filled by the content phases, Faz 2b:
+ * S5–S8 skill units). A JSON file so the app's content test can check that
+ * every `write` exercise has a task with the same length and focus.
+ */
+export const WRITING_TASKS: Record<string, WritingTask> = tasks as Record<string, WritingTask>;

@@ -13,7 +13,7 @@ import {
   writingPrompt,
 } from "../src/assess_writing.js";
 import { ClaudeClient, MODEL } from "../src/converse.js";
-import { WRITING_TASKS, WritingTask } from "../src/writing_tasks.js";
+import { FOCUS_TYPES, WRITING_TASKS, WritingTask } from "../src/writing_tasks.js";
 import { adminDb, clearFirestore, rejectsWith } from "./helpers.js";
 
 const db = adminDb();
@@ -80,6 +80,8 @@ test("the shipped tasks are well-formed", () => {
     assert.match(id, /^s\d+u\d+l\dw$/, id);
     assert.ok(t.minWords > 0 && t.maxWords >= t.minWords, id);
     assert.ok(t.checklist.length > 0 && t.focus.length <= 3 && t.rubric.length > 0, id);
+    assert.ok(t.focus.every((f) => (FOCUS_TYPES as readonly string[]).includes(f)), id);
+    assert.ok(["A1", "A2", "B1", "B2", "C1"].includes(t.level), id);
   }
 });
 

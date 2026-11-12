@@ -172,7 +172,7 @@ class _WriteExerciseState extends ConsumerState<WriteExercise> {
       icon: _busy
           ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
           : const Icon(Icons.auto_awesome_rounded),
-      label: Text(_feedback == null ? 'Yapay zekâ geri bildirimi al' : 'Yeniden yazdım, tekrar bak'),
+      label: Text(_feedback == null ? 'Yapay zekâ geri bildirimi al' : 'Düzelttim, tekrar bak'),
       onPressed: ready && !_busy ? () => _askFeedback(service) : null,
     );
   }
@@ -238,8 +238,9 @@ class WritingFeedbackCard extends StatelessWidget {
           ],
           const SizedBox(height: 6),
           Text(
-            'Düzeltmelere bakarak metnini yeniden yaz, sonra "Kontrol et".',
-            style: TextStyle(color: Brand.muted),
+            'Düzeltmeleri uygula ve metnini yeniden yaz. Bitince "Düzelttim, tekrar bak" ya da "Kontrol et".',
+            key: const Key('write-rewrite-hint'),
+            style: const TextStyle(fontWeight: FontWeight.w700),
           ),
         ],
       ),

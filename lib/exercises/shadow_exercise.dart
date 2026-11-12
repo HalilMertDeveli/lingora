@@ -12,7 +12,8 @@ import 'common.dart';
 const shadowPassRatio = 0.6;
 
 /// Shadowing (curriculum §3, `shadow`): listen with the text hidden, listen
-/// with the text, then say it along at the same pace. Without a microphone
+/// with the text, then say it right after the audio (delayed repetition), at
+/// the same pace and stress. Without a microphone
 /// the learner can skip it, with no penalty.
 class ShadowExercise extends ConsumerStatefulWidget {
   const ShadowExercise({
@@ -77,7 +78,7 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
   Widget build(BuildContext context) {
     final ex = widget.ex;
     final t = Theme.of(context).textTheme;
-    const steps = ['1. Dinle', '2. Metinle dinle', '3. Birlikte söyle'];
+    const steps = ['1. Dinle', '2. Metinle dinle', '3. Hemen ardından söyle'];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -140,15 +141,23 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
                     setState(() => _step++);
                     _play();
                   },
-            child: Text(_step == 0 ? 'Metni göster ve tekrar dinle' : 'Şimdi birlikte söyle'),
+            child: Text(_step == 0 ? 'Metni göster ve tekrar dinle' : 'Şimdi sıra sende'),
           )
         else ...[
           Text(
-            'Sesi dinle, sonra mikrofona dokun ve aynı hızla, aynı vurguyla söyle.',
+            'Sesi dinle, biter bitmez mikrofona dokun ve aynı hızla, aynı vurguyla söyle.',
             textAlign: TextAlign.center,
             style: TextStyle(color: Brand.muted),
           ),
-          const SizedBox(height: 12),
+          Center(
+            child: TextButton.icon(
+              key: const Key('shadow-replay'),
+              icon: const Icon(Icons.replay_rounded),
+              label: const Text('Bir daha dinle'),
+              onPressed: widget.locked || _listening ? null : _play,
+            ),
+          ),
+          const SizedBox(height: 4),
           Center(
             child: Material(
               color: _listening ? Brand.error : Brand.primary,

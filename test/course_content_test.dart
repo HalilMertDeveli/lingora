@@ -469,6 +469,42 @@ void main() {
     expect(problems, isEmpty, reason: problems.take(30).join('\n'));
   });
 
+  test('every writing task has its rubric on the server, with the same length and focus', () {
+    // functions/src/writing_tasks.json feeds assessWriting (functions/src/assess_writing.ts).
+    final tasks =
+        jsonDecode(File('functions/src/writing_tasks.json').readAsStringSync()) as Map<String, dynamic>;
+    final used = <String>{};
+    final problems = <String>[];
+    for (final f in [File('assets/courses/tr_en.json'), ...sectionFiles(sectionDir)]) {
+      final units = (jsonDecode(f.readAsStringSync()) as Map)['units'] as List;
+      for (final u in units) {
+        for (final n in (u as Map)['nodes'] as List) {
+          for (final e in ((n as Map)['exercises'] as List?) ?? const []) {
+            if ((e as Map)['type'] != 'write') continue;
+            final id = e['taskId'] as String;
+            used.add(id);
+            final t = tasks[id] as Map?;
+            if (t == null) {
+              problems.add('$id: functions/src/writing_tasks.json içinde yok');
+              continue;
+            }
+            if (t['minWords'] != e['minWords'] || t['maxWords'] != e['maxWords']) {
+              problems.add('$id: kelime aralığı sunucuyla aynı değil');
+            }
+            String focus(Map m) => ([...((m['focus'] as List?) ?? const [])]..sort()).join(',');
+            if (focus(e) != focus(t)) {
+              problems.add('$id: focus sunucuyla aynı değil');
+            }
+          }
+        }
+      }
+    }
+    for (final id in tasks.keys.where((k) => !used.contains(k))) {
+      problems.add('$id: sunucuda var ama hiçbir write alıştırması kullanmıyor');
+    }
+    expect(problems, isEmpty, reason: problems.join(r' | '));
+  });
+
   test('section folder is declared in pubspec.yaml and keeps no fixture', () {
     expect(File('pubspec.yaml').readAsStringSync(), contains('- assets/courses/tr_en/'));
     for (final f in sectionFiles(sectionDir)) {
