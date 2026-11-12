@@ -52,8 +52,9 @@ if (has(READ)) {
   for (const u of l.J(READ).units) for (const n of u.nodes) for (const e of n.exercises || []) {
     if (!e.passage || seenP.has(e.passage) || /\(\d\)----/.test(e.passage)) continue;
     seenP.add(e.passage);
-    const raw = e.passage.match(/[A-Za-z]+(?:'[a-z]+)?/g) || [];
-    const toks = raw.filter((w, i) => !(/^[A-Z]/.test(w) && i > 0 && !/[.!?]\s*$/.test(e.passage.split(w)[0].slice(-3)))).map((w) => w.toLowerCase());
+    if (e.qtype && e.qtype !== 'reading') continue; // dialogues, paragraph items: not reading texts
+    const raw = e.passage.match(/\p{L}+(?:'\p{L}+)?/gu) || [];
+    const toks = raw.filter((w, i) => !(/^\p{Lu}/u.test(w) &&i > 0 && !/[.!?]\s*$/.test(e.passage.split(w)[0].slice(-3)))).map((w) => w.toLowerCase());
     const unk = [...new Set(toks.filter((w) => !func.has(w) && !l.lemmas(w).some((x) => known.has(x) || func.has(x)) && !bankRe.some((b) => ctx.uses(w, b))))];
     const unkCount = toks.filter((w) => unk.includes(w)).length;
     const pct = (100 * unkCount) / raw.length;
