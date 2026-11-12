@@ -55,7 +55,8 @@ fromSection('assets/courses/exam_yds/06_okuma_evi_1.json');
 fromSection('assets/courses/exam_yds/08_okuma_evi_2.json');
 for (const m of l.J('assets/exam_packs/yds_full.json').mocks) if (m.id !== id) for (const q of m.questions) if (q.passage) existing.push([m.id, q.passage]);
 for (const f of l.fs.readdirSync(l.path.join(l.ROOT, 'assets/reading'))) for (const s of l.J(`assets/reading/${f}`)) existing.push([s.id, s.text]);
-for (const other of ['yds_m9', 'yds_m10'].filter((x) => x !== id)) {
+// Other new full mocks being written alongside this one.
+for (const other of l.fs.readdirSync(l.path.join(__dirname, 'work')).filter((f) => /^yds_m\d+\.json$/.test(f)).map((f) => f.slice(0, -5)).filter((x) => x !== id && !l.J('assets/exam_packs/yds_full.json').mocks.some((m) => m.id === x))) {
   const f = l.path.join(__dirname, 'work', `${other}.json`);
   if (l.fs.existsSync(f)) for (const q of JSON.parse(l.fs.readFileSync(f, 'utf8')).questions || []) if (q.passage) existing.push([other, q.passage]);
 }
