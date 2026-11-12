@@ -38,8 +38,14 @@ for (const id of ids) {
     mine.push({ id: cid, word, pos, rank: 0, topic: id, ...Object.fromEntries(Object.entries(rest).filter(([k]) => k !== 'topic' && k !== 'rank')) });
   }
 }
-const order = (t) => Object.keys(BANKS).indexOf(t.slice(0, 3)) * 100 + +t.split('u')[1];
-const entries = [...vocab.entries.filter((e) => !e.topic.startsWith(`${sec}u`)), ...mine].sort((x, y) => order(x.topic) - order(y.topic) || 0);
+// Banks first (ys5, ys7), then the old path's ydm_ cards (topics ys1–ys4) in path order; stable within a topic.
+const order = (t) => {
+  const b = Object.keys(BANKS).indexOf(t.slice(0, 3));
+  return (b >= 0 ? b : 10 + +t[2]) * 1000 + +t.split('u')[1];
+};
+const kept = vocab.entries.filter((e) => !e.topic.startsWith(`${sec}u`));
+const entries = [...kept.filter((e) => e.id.startsWith('yd_')), ...mine].sort((x, y) => order(x.topic) - order(y.topic) || 0)
+  .concat(kept.filter((e) => !e.id.startsWith('yd_')));
 entries.forEach((e, i) => { e.rank = i + 1; });
 const topics = [
   ...vocab.topics.filter((t) => !t.name.startsWith(`${sec}u`)),
