@@ -37,7 +37,13 @@ void main() {
     const any = PlanMock(kind: MockKind.full);
     expect(pickFullMock(packIds: pack, exam: 'yds', mock: any, taken: {'yds_m1'}), 'yds_m2');
     expect(pickFullMock(packIds: pack, exam: 'yokdil_fen', mock: any, taken: {'yokdil_m1'}), 'yokdil_m2');
-    expect(pickFullMock(packIds: pack, exam: 'yds', mock: any, taken: pack.toSet()), 'yds_m1');
+    // All taken: the retake rotates week by week.
+    final retakes = {
+      for (var w = 53; w < 56; w++)
+        pickFullMock(packIds: pack, exam: 'yds', mock: any, taken: pack.toSet(), week: w),
+    };
+    expect(retakes, hasLength(3));
+    expect(retakes.every((id) => id!.startsWith('yds_m')), isTrue);
   });
 
   test('YÖKDİL sections read like YDS ones', () {

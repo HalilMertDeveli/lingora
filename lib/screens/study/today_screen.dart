@@ -281,7 +281,7 @@ class _TodayBody extends ConsumerWidget {
               if (today.week.reviewWeek)
                 _WeekRow(
                   inMaintenance(today.plan, today.year)
-                      ? 'Bu hafta çalışılan gün'
+                      ? 'Sürdürme haftası: çalışılan gün'
                       : 'Tekrar haftası: çalışılan gün',
                   status.studyDays,
                   today.year.daysPerWeek,
@@ -567,6 +567,7 @@ Future<bool> startPlanMock(BuildContext context, WidgetRef ref, PlanMock mock) a
         exam: p.studyPlan?.exam ?? 'yds',
         mock: mock,
         taken: p.examBest.keys.toSet(),
+        week: p.studyPlan?.week ?? 0,
       );
       final full = content.mocks.where((m) => m.id == id).firstOrNull;
       if (full == null) return false;

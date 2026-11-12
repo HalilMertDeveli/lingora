@@ -203,13 +203,15 @@ PlanMock? todayMock({required StudyPlan plan, required PlanWeek week, required D
 /// The pack mock to open for [mock]: a YÖKDİL learner's YÖKDİL mock when
 /// the plan names one and the pack has it, else the YDS one. A mock without
 /// an id (maintenance) is the first one of the learner's exam not [taken]
-/// yet, then the YDS ones; when all are taken, the first again (a retake,
-/// which the score estimate leaves out). Null when the pack has none.
+/// yet, then the YDS ones; when all are taken, a retake that rotates with
+/// [week] (the score estimate leaves retakes out). Null when the pack has
+/// none.
 String? pickFullMock({
   required List<String> packIds,
   required String exam,
   PlanMock? mock,
   Set<String> taken = const {},
+  int week = 0,
 }) {
   final yokdil = exam.startsWith('yokdil');
   if (mock?.id case final id?) {
@@ -220,7 +222,8 @@ String? pickFullMock({
     if (yokdil) ...packIds.where((p) => p.startsWith('yokdil_')),
     ...packIds.where((p) => p.startsWith('yds_m')),
   ];
-  return pool.where((p) => !taken.contains(p)).firstOrNull ?? pool.firstOrNull;
+  if (pool.isEmpty) return null;
+  return pool.where((p) => !taken.contains(p)).firstOrNull ?? pool[week % pool.length];
 }
 
 DayKind dayKind({
