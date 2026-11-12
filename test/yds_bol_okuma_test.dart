@@ -1,6 +1,6 @@
 // YDS extensive reading in the app's ReadingStory format, assets/reading/yds_bol_okuma_*.json (a JSON array,
-// like stories.json): set 1 (Faz 2b, 40 B1 + 20 B1+, 400–700 words) and set 2 (Faz 3b, 40 B1+ + 40 B2,
-// 500–800 words).
+// like stories.json): set 1 (Faz 2b, 40 B1 + 20 B1+, 400–700 words), set 2 (Faz 3b, 40 B1+ + 40 B2,
+// 500–800 words) and set 3 (Faz 4b, 110 B2, 600–900 words).
 import 'dart:convert';
 import 'dart:io';
 
@@ -11,6 +11,7 @@ import 'package:lingora/models/reading.dart';
 const _sets = [
   ('assets/reading/yds_bol_okuma_1.json', {'B1': 40, 'B1+': 20}, (400, 700)),
   ('assets/reading/yds_bol_okuma_2.json', {'B1+': 40, 'B2': 40}, (500, 800)),
+  ('assets/reading/yds_bol_okuma_3.json', {'B2': 110}, (600, 900)),
 ];
 
 void main() {

@@ -8,12 +8,26 @@ const ctx = require('./context.js');
 const problems = [];
 const P = (ok, m) => { if (!ok) problems.push(m); };
 
+// Set 3 (Faz 4b, files tool/yds/work/bol3_*.json → yds_bol_okuma_3.json): level B2, 600–900 words, everything
+// taught through ys12 counts as known (ys12 from tool/yds/work/words_ys12.json until its cards ship), and each
+// text recycles ≥ 8 ys9 + ys12 words.
 const cards = l.J('assets/vocab/yds.json').entries;
-const set2 = process.argv.slice(2).some((f) => /bol2_/.test(f));
-const SET = set2
-  ? { levels: ['B1+', 'B2'], words: [500, 800], banks: /^ys[579]u/, files: ['05_kelime_bankasi_1', '06_okuma_evi_1', '07_kelime_bankasi_2', '08_okuma_evi_2', '09_kelime_bankasi_3'] }
-  : { levels: ['B1', 'B1+'], words: [400, 700], banks: /^ys[57]u/, files: ['05_kelime_bankasi_1', '06_okuma_evi_1', '07_kelime_bankasi_2'] };
-const bank = cards.filter((e) => SET.banks.test(e.topic)).map((e) => e.word).filter((w) => !w.includes(' '));
+const args = process.argv.slice(2);
+const set = args.some((f) => /bol3_/.test(f)) ? 3 : args.some((f) => /bol2_/.test(f)) ? 2 : 1;
+const ys12List = () => {
+  const f = l.path.join(__dirname, 'work', 'words_ys12.json');
+  return l.fs.existsSync(f) ? Object.values(JSON.parse(l.fs.readFileSync(f, 'utf8'))).flat() : cards.filter((e) => /^ys12u/.test(e.topic)).map((e) => e.word);
+};
+const SET = {
+  1: { levels: ['B1', 'B1+'], words: [400, 700], banks: /^ys[57]u/, files: ['05_kelime_bankasi_1', '06_okuma_evi_1', '07_kelime_bankasi_2'] },
+  2: { levels: ['B1+', 'B2'], words: [500, 800], banks: /^ys[579]u/, files: ['05_kelime_bankasi_1', '06_okuma_evi_1', '07_kelime_bankasi_2', '08_okuma_evi_2', '09_kelime_bankasi_3'] },
+  3: { levels: ['B2'], words: [600, 900], banks: /^ys(5|7|9|12)u/, recycle: 8,
+    files: ['05_kelime_bankasi_1', '06_okuma_evi_1', '07_kelime_bankasi_2', '08_okuma_evi_2', '09_kelime_bankasi_3', '10_okuma_evi_3', '11_ara_denemeler'] },
+}[set];
+const bank = [...cards.filter((e) => SET.banks.test(e.topic)).map((e) => e.word), ...(set === 3 ? ys12List() : [])]
+  .filter((w) => !w.includes(' '));
+// Recycling list for set 3: ys9 cards and the ys12 list (single words and phrases).
+const recycleWords = set === 3 ? [...cards.filter((e) => /^ys9u/.test(e.topic)).map((e) => e.word), ...ys12List()] : [];
 const known = l.seen([...l.GENERAL_ALL, ...l.YDS_OLD, ...SET.files.map((f) => `assets/courses/exam_yds/${f}.json`)]);
 l.fs.readFileSync(l.path.join(__dirname, 'function_words.txt'), 'utf8').split(/\s+/).filter(Boolean).forEach((w) => known.add(w));
 if (process.env.NGSL) {
@@ -70,10 +84,16 @@ for (const file of process.argv.slice(2)) {
       P(!/(ilk|birinci|ikinci|üçüncü|dördüncü|beşinci|son) (seçene|şık)|\b[A-E] şık/i.test((q.explain || '').replace(/İ/g, 'i')), `${at}#q${i}: açıklama şıkkı konumla anıyor`);
       if (Number.isInteger(q.answer)) answers[q.answer]++;
     }
-    rows.push([s.id, s.level, words.length, pct, Object.keys(g).length]);
+    let recycled = '';
+    if (SET.recycle) {
+      const used = recycleWords.filter((w) => ctx.uses(text, w));
+      P(used.length >= SET.recycle, `${at}: ys9 + ys12 kelimesi ${used.length} (≥ ${SET.recycle})`);
+      recycled = `, ys9+ys12 ${used.length}`;
+    }
+    rows.push([s.id, s.level, words.length, pct, Object.keys(g).length, recycled]);
   }
 }
 console.log(`${problems.length ? 'HATA ' + problems.length : 'TAMAM'}: ${rows.length} metin, doğru şık ${answers}`);
-for (const [id, lv, w, pct, g] of rows) console.log(`  ${id} ${lv}: ${w} kelime, bilinmeyen %${pct.toFixed(1)}, ${g} gloss`);
+for (const [id, lv, w, pct, g, r] of rows) console.log(`  ${id} ${lv}: ${w} kelime, bilinmeyen %${pct.toFixed(1)}, ${g} gloss${r}`);
 problems.slice(0, 60).forEach((p) => console.log('  ✗ ' + p));
 process.exitCode = problems.length ? 1 : 0;
