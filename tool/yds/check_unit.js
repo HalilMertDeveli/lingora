@@ -7,13 +7,14 @@ const id = process.argv[2];
 const dir = l.path.join(__dirname, 'work');
 const unit = JSON.parse(l.fs.readFileSync(l.path.join(dir, `${id}.json`), 'utf8'));
 const cards = JSON.parse(l.fs.readFileSync(l.path.join(dir, `${id}.cards.json`), 'utf8'));
-// ys5 (F1), ys7 (F2) and ys9 (F3, 4 vocab lessons) word banks share this checker; the section decides
+// ys5 (F1), ys7 (F2), ys9 (F3) and ys12 (F4; 4 vocab lessons from ys9 on) word banks share this checker; the section decides
 // list, lesson count, level and exclusions.
 const sec = id.match(/^ys\d+/)[0];
 const BANK = {
   ys5: { words: './work/words.json', last: 'ys5u10', vocabLessons: 3, cloze: [70, 135, '80–120'] },
   ys7: { words: './work/words_ys7.json', last: 'ys7u15', vocabLessons: 3, cloze: [110, 170, '120–160'] },
   ys9: { words: './work/words_ys9.json', last: 'ys9u12', vocabLessons: 4, cloze: [130, 190, '140–180'] },
+  ys12: { words: './work/words_ys12.json', last: 'ys12u8', vocabLessons: 4, cloze: [140, 200, '150–190'] },
 }[sec];
 const words = require(BANK.words);
 const mine = words[id];
@@ -87,6 +88,19 @@ const dist = [0, 0, 0, 0, 0];
 answers.forEach((a) => dist[a]++);
 P(Math.max(...dist) <= answers.length * 0.3, `doğru şık dağılımı dengesiz ${dist}`);
 
+// Faz 4a spelling (orchestrator's decision): Oxford spelling — -ize as on the word list, everything else British
+// (colour, centre, analyse, travelled, lacklustre). The American form may appear only in parentheses on a card.
+if (sec === 'ys12') {
+  const AMERICAN = /\b(colors?|colored|colorful|behaviors?|behavioral|favors?|favored|favorable|favorite|honors?|honored|labors?|labored|neighbors?|neighborhoods?|humors?|rumors?|vigor|odors?|tumors?|harbors?|endeavors?|rigor|savior|armor|flavors?|centers?|centered|theaters?|fibers?|liters?|meager|somber|caliber|analyz\w*|paralyz\w*|catalyz\w*|defense|offense|gray|aluminum|traveled|traveling|traveler|canceled|modeled|labeled|fueled|signaled|leveled|counseled|counselor|skeptic\w*|maneuver\w*|esophag\w*|anemi\w*|hemorrhag\w*|hemoglobin|edema|pediatric\w*|fetus|fetal|estrogen|lackluster|sulfur|plow\w*|aging|catalog|jewelry)\b/i;
+  const english = [
+    ...JSON.stringify(unit.nodes.map((n) => (n.exercises || []).map((e) => [e.question, e.passage, e.sentence, e.answer, e.options, e.pairs && e.pairs.map((p) => p[1])]))).split('","'),
+    ...cards.flatMap((c) => [c.word, ...(c.examples || []).map((x) => x.en), ...(c.collocations || []).map((x) => x.phrase)]),
+  ].filter((t) => typeof t === 'string');
+  const found = new Set();
+  for (const t of english) for (const m of t.replace(/\([^)]*\)/g, '').matchAll(new RegExp(AMERICAN, 'gi'))) found.add(m[0].toLowerCase());
+  P(!found.size, `Amerikan yazımı (İngiliz yazımı kullan, -ize hariç): ${[...found].join(', ')}`);
+}
+
 // Word coverage: each unit word in context (sentences/passages, not options) at least twice in the unit.
 const texts = ctx.unitContexts(unit);
 const thin = mine.filter((w) => texts.filter((t) => ctx.uses(t, w)).length < 2);
@@ -112,11 +126,13 @@ for (const c of cards) {
 }
 
 // Overlap with taught words.
-const ex = sec === 'ys9'
-  // Faz 3: everything shipped before ys9 — general course, the whole YDS path, every card. No exceptions.
+// Faz 3–4: everything shipped before the bank — general course, the whole YDS path up to it, every other
+// card. No exceptions.
+const before = { ys9: /^0[5-8]_/, ys12: /^(0[5-9]|1[01])_/ }[sec];
+const ex = before
   ? new Set([...l.taught(l.GENERAL_ALL),
-    ...l.taught([...l.YDS_OLD, ...l.fs.readdirSync(l.path.join(l.ROOT, 'assets/courses/exam_yds')).filter((f) => /^0[5-8]_/.test(f)).map((f) => `assets/courses/exam_yds/${f}`)]),
-    ...l.J('assets/vocab/yds.json').entries.filter((e) => !e.topic.startsWith('ys9u')).map((e) => e.word.toLowerCase())])
+    ...l.taught([...l.YDS_OLD, ...l.fs.readdirSync(l.path.join(l.ROOT, 'assets/courses/exam_yds')).filter((f) => before.test(f)).map((f) => `assets/courses/exam_yds/${f}`)]),
+    ...l.J('assets/vocab/yds.json').entries.filter((e) => !e.topic.startsWith(`${sec}u`)).map((e) => e.word.toLowerCase())])
   : sec === 'ys7'
   ? new Set([...l.taught(l.GENERAL_ALL), ...l.taught([...l.YDS_OLD, 'assets/courses/exam_yds/05_kelime_bankasi_1.json']),
     ...l.J('assets/vocab/yds.json').entries.filter((e) => e.topic.startsWith('ys5u')).map((e) => e.word.toLowerCase())])

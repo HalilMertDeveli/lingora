@@ -742,5 +742,28 @@
   "ys10u8t",
   "ys10u8c",
   "ys10u8m"
+ ],
+ "ys11": [
+  "ys11u1l1",
+  "ys11u1l2",
+  "ys11u1l3",
+  "ys11u1l4",
+  "ys11u1t",
+  "ys11u1c",
+  "ys11u1m",
+  "ys11u2l1",
+  "ys11u2l2",
+  "ys11u2l3",
+  "ys11u2l4",
+  "ys11u2t",
+  "ys11u2c",
+  "ys11u2m",
+  "ys11u3l1",
+  "ys11u3l2",
+  "ys11u3l3",
+  "ys11u3l4",
+  "ys11u3t",
+  "ys11u3c",
+  "ys11u3m"
  ]
 }
