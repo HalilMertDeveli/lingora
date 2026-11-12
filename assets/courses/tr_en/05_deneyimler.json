@@ -959,7 +959,7 @@
             {
               "type": "speak",
               "text": "I've been painting my flat all weekend.",
-              "translation": "Bütün hafta sonu dairemi boyadım."
+              "translation": "Bütün hafta sonu dairemi boyuyordum."
             }
           ]
         },
@@ -2525,7 +2525,8 @@
               "lang": "en",
               "answers": [
                 "Kahve çekirdekleri satılmadan önce kavrulur",
-                "Kahve çekirdekleri satılmadan önce kavruluyor"
+                "Kahve çekirdekleri satılmadan önce kavruluyor",
+                "Kahve çekirdekleri satılmadan önce kavrulurlar"
               ],
               "tokens": [
                 "Kahve",
@@ -2955,7 +2956,8 @@
                 "Süt işlenir ve sonra mağazalara gönderilir",
                 "Süt işlenir ve ardından mağazalara gönderilir",
                 "Süt işlenir ve sonra marketlere gönderilir",
-                "Süt işleniyor ve sonra mağazalara gönderiliyor"
+                "Süt işleniyor ve sonra mağazalara gönderiliyor",
+                "Süt işlenir ve daha sonra mağazalara gönderilir"
               ],
               "tokens": [
                 "Süt",
@@ -3076,7 +3078,8 @@
                 "Many hazelnuts are grown in Turkey",
                 "A lot of hazelnuts are grown in Türkiye",
                 "Lots of hazelnuts are grown in Türkiye",
-                "Many hazelnuts are grown in Türkiye"
+                "Many hazelnuts are grown in Türkiye",
+                "In Turkey a lot of hazelnuts are grown"
               ],
               "tokens": [
                 "A",
@@ -3529,7 +3532,7 @@
               "speaker": "Rehber",
               "avatar": "🧭",
               "text": "Welcome! This city was founded almost three thousand years ago.",
-              "translation": "Hoş geldiniz! Bu şehir yaklaşık üç bin yıl önce kuruldu."
+              "translation": "Hoş geldiniz! Bu şehir neredeyse üç bin yıl önce kuruldu."
             },
             {
               "kind": "line",
@@ -4924,17 +4927,17 @@
             },
             {
               "type": "translate",
-              "text": "Bana doğruyu söyledi.",
+              "text": "Ona doğruyu söyledim.",
               "lang": "tr",
               "answers": [
-                "She told me the truth",
-                "He told me the truth"
+                "I told him the truth",
+                "I told her the truth"
               ],
               "tokens": [
-                "She",
-                "He",
+                "I",
                 "told",
-                "me",
+                "him",
+                "her",
                 "the",
                 "truth",
                 "said",
@@ -5113,7 +5116,8 @@
               "answers": [
                 "Deniz cuma günü kek getireceğini söyledi",
                 "Deniz cuma kek getireceğini söyledi",
-                "Deniz cuma günü bir kek getireceğini söyledi"
+                "Deniz cuma günü bir kek getireceğini söyledi",
+                "Deniz cuma günü pasta getireceğini söyledi"
               ],
               "tokens": [
                 "Deniz",
@@ -5522,7 +5526,7 @@
               "answer": "admitted",
               "choices": [
                 "admitted",
-                "accepted",
+                "promised",
                 "complained"
               ]
             },
@@ -5612,7 +5616,8 @@
               "text": "Deniz explained why the app had crashed.",
               "lang": "en",
               "answers": [
-                "Deniz uygulamanın neden çöktüğünü açıkladı"
+                "Deniz uygulamanın neden çöktüğünü açıkladı",
+                "Deniz uygulamanın niye çöktüğünü açıkladı"
               ],
               "tokens": [
                 "Deniz",
@@ -5970,7 +5975,8 @@
               "lang": "tr",
               "answers": [
                 "Deniz didn't give up learning Spanish",
-                "Deniz did not give up learning Spanish"
+                "Deniz did not give up learning Spanish",
+                "Deniz didn't give up on learning Spanish"
               ],
               "tokens": [
                 "Deniz",
@@ -8492,14 +8498,14 @@
             },
             {
               "type": "translate",
-              "text": "The app was designed by Elif and tested by Mia.",
+              "text": "The game was designed by Elif and tested by Mia.",
               "lang": "en",
               "answers": [
-                "Uygulama Elif tarafından tasarlandı ve Mia tarafından test edildi",
-                "Uygulamayı Elif tasarladı ve Mia test etti"
+                "Oyun Elif tarafından tasarlandı ve Mia tarafından test edildi",
+                "Oyunu Elif tasarladı ve Mia test etti"
               ],
               "tokens": [
-                "Uygulama",
+                "Oyun",
                 "Elif",
                 "tarafından",
                 "tasarlandı",
@@ -9370,7 +9376,8 @@
                 "If I had money I'd buy everyone a present",
                 "If I had money I would buy a present for everyone",
                 "If I had money I would buy everyone a gift",
-                "If I had the money I would buy everyone a present"
+                "If I had the money I would buy everyone a present",
+                "If I had had money I would have bought everyone a present"
               ],
               "tokens": [
                 "If",
@@ -9703,7 +9710,8 @@
               "answers": [
                 "Takım elbiseli olan Kerem olamaz. Asla takım elbise giymez!",
                 "Takım elbiseli kişi Kerem olamaz. Hiç takım elbise giymez!",
-                "Takım elbiseli olan Kerem olamaz. O hiç takım elbise giymez!"
+                "Takım elbiseli olan Kerem olamaz. O hiç takım elbise giymez!",
+                "Takım elbiseli olan Kerem olamaz. Hiç takım elbise giymez!"
               ],
               "tokens": [
                 "Takım",

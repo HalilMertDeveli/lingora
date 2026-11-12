@@ -101,7 +101,7 @@
             {
               "type": "fillBlank",
               "text": "___, I didn't enjoy the film at all.",
-              "translation": "Açıkçası filmden hiç hoşlanmadım. ('dürüst söylemek gerekirse' birebir çevrilmez)",
+              "translation": "Açıkçası filmden hiç hoşlanmadım. ('Honestly saying' ya da 'To say honest' denmez)",
               "answer": "To be honest",
               "choices": [
                 "To be honest",
@@ -567,7 +567,8 @@
               "answers": [
                 "Mind you it's very expensive",
                 "Mind you it is very expensive",
-                "Mind you it's really expensive"
+                "Mind you it's really expensive",
+                "Mind you it's too expensive"
               ],
               "tokens": [
                 "Mind",
@@ -705,7 +706,7 @@
             {
               "type": "fillBlank",
               "text": "I don't hate the plan. ___, I just think it's too early.",
-              "translation": "Plandan nefret etmiyorum. Yani, sadece biraz erken olduğunu düşünüyorum.",
+              "translation": "Plandan nefret etmiyorum. Yani, sadece fazla erken olduğunu düşünüyorum.",
               "answer": "I mean",
               "choices": [
                 "I mean",
@@ -750,7 +751,7 @@
             },
             {
               "type": "translate",
-              "text": "Speaking of Deniz, is she coming tonight?",
+              "text": "Speaking of Deniz, is he coming tonight?",
               "lang": "en",
               "answers": [
                 "Deniz demişken bu akşam geliyor mu",
@@ -936,7 +937,8 @@
                 "Furthermore the project did not exceed the budget",
                 "Furthermore the project didn't exceed the budget",
                 "Moreover the project did not exceed the budget",
-                "In addition the project did not exceed the budget"
+                "In addition the project did not exceed the budget",
+                "Also the project did not exceed the budget"
               ],
               "tokens": [
                 "Furthermore",
@@ -1736,8 +1738,8 @@
               "answer": "point",
               "choices": [
                 "point",
-                "focus",
-                "priority"
+                "spot",
+                "edge"
               ]
             },
             {
@@ -2293,7 +2295,7 @@
               "answer": "priority",
               "choices": [
                 "priority",
-                "issue",
+                "prize",
                 "point"
               ]
             },
@@ -2660,7 +2662,9 @@
                 "I have no doubt whatsoever about this",
                 "I have no doubt at all about this",
                 "I have no doubts whatsoever about this",
-                "I've no doubt whatsoever about this"
+                "I've no doubt whatsoever about this",
+                "I don't have any doubt about this",
+                "I have no doubt about this"
               ],
               "tokens": [
                 "I",
@@ -4468,7 +4472,7 @@
               "choices": [
                 "investigating",
                 "looking",
-                "checking"
+                "searching"
               ]
             },
             {
@@ -5182,7 +5186,7 @@
               "speaker": "Deniz",
               "avatar": "🧑‍💼",
               "text": "Kerem! He liked my feedback. He said I was arguably the most helpful person in the meeting.",
-              "translation": "Kerem! Geri bildirimimi beğendi. Belki de toplantıdaki en yardımsever kişinin ben olduğumu söyledi."
+              "translation": "Kerem! Geri bildirimimi beğendi. Belki de toplantıdaki en yararlı kişinin ben olduğumu söyledi."
             },
             {
               "kind": "line",
@@ -5623,7 +5627,8 @@
               "answers": [
                 "My sister is very slim and sporty",
                 "My sister is very slim and athletic",
-                "My sister's very slim and sporty"
+                "My sister's very slim and sporty",
+                "My sister is very slim and fit"
               ],
               "tokens": [
                 "My",
@@ -6229,7 +6234,7 @@
             },
             {
               "type": "fillBlank",
-              "text": "He finally ___ that he had made a mistake.",
+              "text": "He finally ___ making a mistake.",
               "translation": "Sonunda hata yaptığını kabul etti.",
               "answer": "admitted",
               "choices": [
@@ -6972,13 +6977,13 @@
             },
             {
               "type": "fillBlank",
-              "text": "I look forward to ___ from you.",
-              "translation": "Sizden haber almayı dört gözle bekliyorum.",
-              "answer": "hearing",
+              "text": "We look forward to ___ with you again.",
+              "translation": "Sizinle yeniden çalışmayı dört gözle bekliyoruz.",
+              "answer": "working",
               "choices": [
-                "hearing",
-                "hear",
-                "heard"
+                "working",
+                "work",
+                "worked"
               ]
             },
             {

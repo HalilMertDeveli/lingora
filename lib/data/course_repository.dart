@@ -25,8 +25,8 @@ Future<Course> loadCourse(AssetBundle bundle, String id) async {
   return course;
 }
 
-/// Section files of course [id], checked against [after]'s ids (see
-/// [assembleSections]). Parsed in a background isolate.
+/// Every section of course [id]: [after]'s sections followed by the section
+/// files (see [assembleSections]). Parsed in a background isolate.
 Future<List<Section>> loadSections(AssetBundle bundle, String id, {Course? after}) async {
   final paths = await sectionPaths(bundle, id);
   final files = await Future.wait(paths.map((p) => _loadOrNull(bundle, p)));
@@ -56,7 +56,8 @@ Future<Course?> loadCourseOutline(AssetBundle bundle, String id) async {
     }
     final course = Course.fromJson(index['course'] as Map<String, dynamic>);
     final sections = index['sections'] as List;
-    return course.withSections(
+    return _withSections(
+      course,
       assembleSections([
         for (final (i, path) in paths.indexed)
           (path: path, json: () => sections[i] ?? (throw const FormatException('okunamadı'))),
@@ -110,39 +111,73 @@ Iterable<({String path, Object? Function() json})> _sectionFiles(List<String> pa
 
 Course _parseCourse(({ByteData main, List<String> paths, List<ByteData?> files}) a) {
   final course = Course.fromJson(_decode(a.main) as Map<String, dynamic>);
-  return course.withSections(assembleSections(_sectionFiles(a.paths, a.files), after: course));
+  return _withSections(course, assembleSections(_sectionFiles(a.paths, a.files), after: course));
 }
 
 List<Section> _parseSections(({List<String> paths, List<ByteData?> files, Course? after}) a) =>
     assembleSections(_sectionFiles(a.paths, a.files), after: a.after);
 
-/// Section files in path order. A missing, unreadable or broken file (bad
-/// JSON, wrong shape, an id already used earlier in the path) is skipped and
+/// [course] with [sections] (all of them, see [assembleSections]).
+Course _withSections(Course course, List<Section> sections, {bool outline = false}) =>
+    listEquals(sections, course.sections) && outline == course.outline
+    ? course
+    : Course(
+        id: course.id,
+        title: course.title,
+        fromLang: course.fromLang,
+        learningLang: course.learningLang,
+        sections: sections,
+        outline: outline,
+      );
+
+/// Every section of the course: the sections of [after] (the course file)
+/// followed by [files], the section files in file-name order.
+///
+/// A file `NN_slug.json` is a new section. A file `NNx_slug.json` with
+/// `{"extends": "sN", "units": [...]}` appends units to the end of section sN,
+/// which must come earlier (it sorts after `NN_slug.json`); the section exam
+/// stays the last test of sN's own file (see [Section.extendedWith]).
+///
+/// A missing, unreadable or broken file (bad JSON, wrong shape, an id already
+/// used earlier in the path, an unknown section to extend) is skipped and
 /// logged, never fatal. [json] throws for a file that could not be read.
 List<Section> assembleSections(Iterable<({String path, Object? Function() json})> files, {Course? after}) {
+  final sections = <Section>[...?after?.sections];
   final unitIds = <String>{...?after?.units.map((u) => u.id)};
   final nodeIds = <String>{...?after?.allNodes.map((n) => n.id)};
   final sectionIds = <String>{...?after?.sections.map((s) => s.id)};
-  final sections = <Section>[];
   for (final file in files) {
     try {
-      final section = Section.fromFile(file.json() as Map<String, dynamic>);
-      final units = section.units.map((u) => u.id);
-      final nodes = section.nodes.map((n) => n.id);
-      final clash = [
-        if (sectionIds.contains(section.id)) section.id,
-        ...units.where(unitIds.contains),
-        ...nodes.where(nodeIds.contains),
-      ];
-      if (section.units.isEmpty) throw const FormatException('ünite yok');
+      final json = file.json() as Map<String, dynamic>;
+      final target = json['extends'] as String?;
+      final List<Unit> fileUnits;
+      Section? section;
+      var at = -1;
+      if (target != null) {
+        at = sections.indexWhere((s) => s.id == target);
+        if (at < 0) throw FormatException('genişletilecek bölüm yok: $target');
+        fileUnits = (json['units'] as List).map((u) => Unit.fromJson(u as Map<String, dynamic>)).toList();
+      } else {
+        section = Section.fromFile(json);
+        if (sectionIds.contains(section.id)) throw FormatException('tekrarlanan id: ${section.id}');
+        fileUnits = section.units;
+      }
+      final units = fileUnits.map((u) => u.id);
+      final nodes = [for (final u in fileUnits) ...u.nodes.map((n) => n.id)];
+      final clash = [...units.where(unitIds.contains), ...nodes.where(nodeIds.contains)];
+      if (fileUnits.isEmpty) throw const FormatException('ünite yok');
       if (clash.isNotEmpty) throw FormatException('tekrarlanan id: ${clash.take(5).join(', ')}');
       if (units.toSet().length != units.length || nodes.toSet().length != nodes.length) {
         throw const FormatException('dosya içinde tekrarlanan id');
       }
-      sectionIds.add(section.id);
       unitIds.addAll(units);
       nodeIds.addAll(nodes);
-      sections.add(section);
+      if (section != null) {
+        sectionIds.add(section.id);
+        sections.add(section);
+      } else {
+        sections[at] = sections[at].extendedWith(fileUnits);
+      }
     } catch (e) {
       debugPrint('Bölüm atlandı (${file.path}): $e');
     }

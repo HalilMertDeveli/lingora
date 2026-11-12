@@ -1,0 +1,2587 @@
+{
+  "extends": "s3",
+  "units": [
+    {
+      "id": "s3u13",
+      "title": "Geçen yaz",
+      "description": "Geçmiş bir olayı sırayla anlat: önce, sonra, ondan sonra",
+      "color": "0xFF7C5CFC",
+      "theme": "gecmis",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir arkadaşının tatil anlatısını dinleyip olayların sırasını takip edebilirsin.\n- Bir blog yazısında ya da kartpostalda kimin ne yaptığını bulabilirsin.\n- Bir anını 45 saniyede, sırayla anlatabilirsin.\n- 6–8 cümlelik bir kartpostal yazabilirsin.\n\n## Strateji\n\n- Dinlerken **first**, **then**, **after that** ve **in the end** sözcüklerine kulak ver: her biri yeni bir adım başlatır.\n- Okurken **he**, **she**, **it** ve **them** zamirlerinin kimi gösterdiğini bul; bir önceki cümleye bak.\n- Anlatmaya zaman ve yerle başla (Last summer, in July…), sonra olayları sırayla ver.\n- Düzensiz fiillerin geçmiş hâlini önceden hazırla: go → went, take → took, eat → ate, see → saw.\n- Kartpostalı sıcak bir selamla aç (Dear…) ve kısa bir kapanışla bitir (Love, …).\n\n## Model metin\n\nDear Grandma,\n\nYesterday we went to Galata Tower with Elif. First, we took photos of the city. Then we ate ice cream by the sea. After that, Sam saw a cat and played with it. It was very hot, but it was a great day.\n\nLove, Mia\n\n> Mia'nın İstanbul'dan kartpostalı. Olaylar **first → then → after that** sırasıyla akıyor ve bütün fiiller geçmiş zamanda: went, took, ate, saw.\n\n## Türklerin sık hatası\n\n- ❌ We goed to the island. ✅ We **went** to the island. Düzensiz fiiller -ed almaz.\n- ❌ Mia lost his hat. ✅ Mia lost **her** hat. Türkçedeki \"o\" İngilizcede he ya da she olur; kimden söz ettiğini takip et.",
+      "nodes": [
+        {
+          "id": "s3u13l1",
+          "type": "lesson",
+          "title": "Dinleme: Bir tatil anlatısı",
+          "description": "Sam İstanbul tatilini anlatıyor",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "We stayed in İstanbul for two weeks in July.",
+              "answers": [
+                "We stayed in İstanbul for two weeks in July.",
+                "We stayed in İstanbul for 2 weeks in July."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "First, we went to the top of Galata Tower.",
+              "answers": [
+                "First, we went to the top of Galata Tower."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Then we had a lot of fish by the sea.",
+              "answers": [
+                "Then we had a lot of fish by the sea."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "After that, we took the ferry at half past ten.",
+              "answers": [
+                "After that, we took the ferry at half past ten.",
+                "After that, we took the ferry at 10:30."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Did you go to the beach on Sunday?",
+              "answers": [
+                "Did you go to the beach on Sunday?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I didn't want to go home.",
+              "answers": [
+                "I didn't want to go home.",
+                "I did not want to go home."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "What did you ___ in İstanbul?",
+              "translation": "İstanbul'da ne yaptınız?",
+              "answer": "do",
+              "choices": [
+                "do",
+                "did",
+                "done"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We had a lot ___ fun on the ferry.",
+              "translation": "Vapurda çok eğlendik.",
+              "answer": "of",
+              "choices": [
+                "of",
+                "to",
+                "for"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "First we went to the tower, then we had lunch.",
+              "translation": "Önce kuleye gittik, sonra öğle yemeği yedik."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "önce",
+                  "first"
+                ],
+                [
+                  "sonra",
+                  "then"
+                ],
+                [
+                  "ondan sonra",
+                  "after that"
+                ],
+                [
+                  "sonunda",
+                  "in the end"
+                ],
+                [
+                  "vapura binmek",
+                  "take the ferry"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u13l2",
+          "type": "lesson",
+          "title": "Okuma: Bir tatil blogu",
+          "description": "Sam'in blogunda olayların sırasını bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Two weeks in İstanbul\nLast July, my sister Mia and I visited our friend Elif in İstanbul. We arrived on the fifth of July. On the first day, we were very tired, so we stayed at home and ate Elif's mum's food. It was delicious!\nThe next morning, we went to Galata Tower. Then we walked down the hill to the sea. After that, we took a ferry to an island. Mia saw a dolphin, but I didn't see it. I was buying tea at the time!\nOn Saturday, Elif's grandmother taught us a Turkish card game. Mia won every game. She was very happy, but I wasn't!\nOn our last day, we bought presents for our mum. I miss İstanbul already. We are going to visit again next year.",
+              "question": "Sam ve Mia İstanbul'a hangi tarihte vardı?",
+              "options": [
+                "1 Temmuz",
+                "15 Temmuz",
+                "5 Temmuz",
+                "5 Haziran"
+              ],
+              "answer": 2,
+              "explanation": "\"5 Temmuz\" doğru: metinde \"We arrived on the fifth of July\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Two weeks in İstanbul\nLast July, my sister Mia and I visited our friend Elif in İstanbul. We arrived on the fifth of July. On the first day, we were very tired, so we stayed at home and ate Elif's mum's food. It was delicious!\nThe next morning, we went to Galata Tower. Then we walked down the hill to the sea. After that, we took a ferry to an island. Mia saw a dolphin, but I didn't see it. I was buying tea at the time!\nOn Saturday, Elif's grandmother taught us a Turkish card game. Mia won every game. She was very happy, but I wasn't!\nOn our last day, we bought presents for our mum. I miss İstanbul already. We are going to visit again next year.",
+              "question": "Sam ve Mia ilk gün neden evde kaldı?",
+              "options": [
+                "Çok yorgun oldukları için",
+                "Yağmur yağdığı için",
+                "Mia hasta olduğu için",
+                "Müzeler kapalı olduğu için"
+              ],
+              "answer": 0,
+              "explanation": "\"Çok yorgun oldukları için\" doğru: metinde \"we were very tired, so we stayed at home\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Two weeks in İstanbul\nLast July, my sister Mia and I visited our friend Elif in İstanbul. We arrived on the fifth of July. On the first day, we were very tired, so we stayed at home and ate Elif's mum's food. It was delicious!\nThe next morning, we went to Galata Tower. Then we walked down the hill to the sea. After that, we took a ferry to an island. Mia saw a dolphin, but I didn't see it. I was buying tea at the time!\nOn Saturday, Elif's grandmother taught us a Turkish card game. Mia won every game. She was very happy, but I wasn't!\nOn our last day, we bought presents for our mum. I miss İstanbul already. We are going to visit again next year.",
+              "question": "Galata Kulesi'nden sonra ne yaptılar?",
+              "options": [
+                "Adaya uçakla gittiler",
+                "Kart oyunu oynadılar",
+                "Hediye aldılar",
+                "Tepeden denize yürüdüler"
+              ],
+              "answer": 3,
+              "explanation": "\"Tepeden denize yürüdüler\" doğru: metinde \"Then we walked down the hill to the sea\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Two weeks in İstanbul\nLast July, my sister Mia and I visited our friend Elif in İstanbul. We arrived on the fifth of July. On the first day, we were very tired, so we stayed at home and ate Elif's mum's food. It was delicious!\nThe next morning, we went to Galata Tower. Then we walked down the hill to the sea. After that, we took a ferry to an island. Mia saw a dolphin, but I didn't see it. I was buying tea at the time!\nOn Saturday, Elif's grandmother taught us a Turkish card game. Mia won every game. She was very happy, but I wasn't!\nOn our last day, we bought presents for our mum. I miss İstanbul already. We are going to visit again next year.",
+              "question": "Mia yunusu gördüğünde Sam ne yapıyordu?",
+              "options": [
+                "Fotoğraf çekiyordu",
+                "Çay alıyordu",
+                "Yüzüyordu",
+                "Uyuyordu"
+              ],
+              "answer": 1,
+              "explanation": "\"Çay alıyordu\" doğru: metinde \"I was buying tea at the time\" yazıyor; \"I\" burada Sam."
+            },
+            {
+              "type": "choice",
+              "passage": "Two weeks in İstanbul\nLast July, my sister Mia and I visited our friend Elif in İstanbul. We arrived on the fifth of July. On the first day, we were very tired, so we stayed at home and ate Elif's mum's food. It was delicious!\nThe next morning, we went to Galata Tower. Then we walked down the hill to the sea. After that, we took a ferry to an island. Mia saw a dolphin, but I didn't see it. I was buying tea at the time!\nOn Saturday, Elif's grandmother taught us a Turkish card game. Mia won every game. She was very happy, but I wasn't!\nOn our last day, we bought presents for our mum. I miss İstanbul already. We are going to visit again next year.",
+              "question": "Blog yazısına göre kart oyunlarını kim kazandı?",
+              "options": [
+                "Sam",
+                "Elif'in ninesi",
+                "Mia",
+                "Elif"
+              ],
+              "answer": 2,
+              "explanation": "\"Mia\" doğru: metinde \"Mia won every game. She was very happy\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "vardık",
+                  "arrived"
+                ],
+                [
+                  "öğretti",
+                  "taught"
+                ],
+                [
+                  "kazandı",
+                  "won"
+                ],
+                [
+                  "hediyeler",
+                  "presents"
+                ],
+                [
+                  "tepe",
+                  "hill"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Last Saturday, Mia ___ every card game.",
+              "translation": "Geçen cumartesi Mia bütün kart oyunlarını kazandı.",
+              "answer": "won",
+              "choices": [
+                "won",
+                "winned",
+                "wins"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Blogda \"Mia saw a dolphin, but I didn't see it.\" cümlesindeki \"it\" neyi anlatıyor?",
+              "answer": "the dolphin",
+              "choices": [
+                {
+                  "text": "the dolphin",
+                  "emoji": "🐬"
+                },
+                {
+                  "text": "the ferry",
+                  "emoji": "⛴️"
+                },
+                {
+                  "text": "the island",
+                  "emoji": "🏝️"
+                },
+                {
+                  "text": "the tea",
+                  "emoji": "🍵"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u13s",
+          "type": "story",
+          "title": "Kerem'in yaz anısı",
+          "description": "Kerem, Sam ve Mia'yla geçen yazı anlatıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Hi, Kerem! How was your summer?",
+              "translation": "Merhaba Kerem! Yazın nasıldı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "It was the best summer ever! Sam and Mia stayed with us in July.",
+              "translation": "Şimdiye kadarki en güzel yazdı! Sam ve Mia temmuzda bizde kaldı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "I know! What did you do first?",
+              "translation": "Biliyorum! İlk önce ne yaptınız?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "First, we went to Galata Tower. We climbed to the top.",
+              "translation": "Önce Galata Kulesi'ne gittik. Tepesine çıktık."
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "Then we had lunch near the sea. Mia ordered fish, but she didn't eat it.",
+              "translation": "Sonra deniz kenarında öğle yemeği yedik. Mia balık sipariş etti ama yemedi."
+            },
+            {
+              "kind": "question",
+              "prompt": "İlk önce nereye gittiler?",
+              "choices": [
+                "Adaya",
+                "Galata Kulesi'ne",
+                "Plaja"
+              ],
+              "answer": "Galata Kulesi'ne"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Why not?",
+              "translation": "Neden yemedi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "A cat was sitting under the table. She gave it all her fish!",
+              "translation": "Masanın altında bir kedi oturuyordu. Bütün balığını ona verdi!"
+            },
+            {
+              "kind": "question",
+              "prompt": "\"She gave it all her fish\" cümlesinde \"she\" kim?",
+              "choices": [
+                "Kedi",
+                "Elif",
+                "Mia"
+              ],
+              "answer": "Mia"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Ha! That's so nice. And after that?",
+              "translation": "Ha! Çok tatlı. Peki ondan sonra?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "After that, we took the ferry to the island. It took ninety minutes.",
+              "translation": "Ondan sonra vapurla adaya gittik. Yolculuk doksan dakika sürdü."
+            },
+            {
+              "kind": "question",
+              "prompt": "Vapur yolculuğu ne kadar sürdü?",
+              "choices": [
+                "On dokuz dakika",
+                "Doksan dakika",
+                "Dokuz dakika"
+              ],
+              "answer": "Doksan dakika"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Did Sam swim in the sea?",
+              "translation": "Sam denizde yüzdü mü?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "No, he didn't. The water was too cold for him!",
+              "translation": "Hayır, yüzmedi. Su ona göre fazla soğuktu!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "But Mia swam for an hour. Dad bought her an ice cream.",
+              "translation": "Ama Mia bir saat yüzdü. Babam ona dondurma aldı."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kerem'e göre deniz suyu kim için fazla soğuktu?",
+              "choices": [
+                "Mia",
+                "Sam",
+                "Kerem'in babası"
+              ],
+              "answer": "Sam"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "And what happened on the last day?",
+              "translation": "Peki son gün ne oldu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "We were waiting at the airport when Mia started to cry.",
+              "translation": "Havalimanında bekliyorduk, o sırada Mia ağlamaya başladı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "Oh no! Was she ill?",
+              "translation": "Eyvah! Hasta mıydı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Kerem",
+              "avatar": "👦",
+              "text": "No, she was sad. She didn't want to go home!",
+              "translation": "Hayır, üzgündü. Eve dönmek istemiyordu!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "🧒",
+              "text": "I'm sure they'll come back next summer.",
+              "translation": "Eminim gelecek yaz yine gelecekler."
+            },
+            {
+              "kind": "question",
+              "prompt": "Mia havalimanında neden ağladı?",
+              "choices": [
+                "Hasta olduğu için",
+                "Uçağı kaçırdığı için",
+                "Eve dönmek istemediği için"
+              ],
+              "answer": "Eve dönmek istemediği için"
+            }
+          ]
+        },
+        {
+          "id": "s3u13l3",
+          "type": "lesson",
+          "title": "Konuşma: Bir anını anlat",
+          "description": "45 saniyede bir yaz anını sırayla anlat",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "My best memory is from last summer.",
+              "translation": "En güzel anım geçen yazdan."
+            },
+            {
+              "type": "speak",
+              "text": "We went to the island with our friends from London.",
+              "translation": "Londra'dan gelen arkadaşlarımızla adaya gittik."
+            },
+            {
+              "type": "speak",
+              "text": "First we rented bikes, and then we had a picnic.",
+              "translation": "Önce bisiklet kiraladık, sonra piknik yaptık."
+            },
+            {
+              "type": "speak",
+              "text": "After that, it started to rain, so we ran to a café.",
+              "translation": "Ondan sonra yağmur başladı, biz de bir kafeye koştuk."
+            },
+            {
+              "type": "speak",
+              "text": "In the end, we came home late, but we were very happy.",
+              "translation": "Sonunda eve geç geldik ama çok mutluyduk."
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın: \"What did you do last summer?\" En uygun cevap hangisi?",
+              "answer": "I went to Bodrum with my family.",
+              "choices": [
+                {
+                  "text": "I went to Bodrum with my family.",
+                  "emoji": "🏖️"
+                },
+                {
+                  "text": "I go to Bodrum with my family.",
+                  "emoji": "🚗"
+                },
+                {
+                  "text": "I was go to Bodrum.",
+                  "emoji": "🧳"
+                },
+                {
+                  "text": "I'm going to Bodrum.",
+                  "emoji": "✈️"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Anlatırken arkadaşın \"And then?\" diye soruyor. En uygun devam hangisi?",
+              "answer": "After that, we went home.",
+              "choices": [
+                {
+                  "text": "After that, we went home.",
+                  "emoji": "🏠"
+                },
+                {
+                  "text": "After that, we goed home.",
+                  "emoji": "🚶"
+                },
+                {
+                  "text": "Before, we going home.",
+                  "emoji": "🕒"
+                },
+                {
+                  "text": "Yes, I did.",
+                  "emoji": "👍"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Önce müzeye gittik, sonra balık yedik.",
+              "lang": "tr",
+              "answers": [
+                "First we went to the museum, then we ate fish",
+                "First we went to the museum and then we ate fish",
+                "First we went to the museum, then we had fish",
+                "We went to the museum first, then we ate fish",
+                "We went to the museum first and then we ate fish"
+              ],
+              "tokens": [
+                "First",
+                "we",
+                "went",
+                "to",
+                "the",
+                "museum",
+                "then",
+                "we",
+                "ate",
+                "fish",
+                "goed",
+                "eat"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kız kardeşim çantasını kaybetti ama bir garson onu buldu.",
+              "lang": "tr",
+              "answers": [
+                "My sister lost her bag, but a waiter found it"
+              ],
+              "tokens": [
+                "My",
+                "sister",
+                "lost",
+                "her",
+                "bag",
+                "but",
+                "a",
+                "waiter",
+                "found",
+                "it",
+                "his",
+                "him",
+                "losed"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "anı",
+                  "memory"
+                ],
+                [
+                  "kiralamak",
+                  "rent"
+                ],
+                [
+                  "geç",
+                  "late"
+                ],
+                [
+                  "koşmak",
+                  "run"
+                ],
+                [
+                  "piknik yapmak",
+                  "have a picnic"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u13l4",
+          "type": "lesson",
+          "title": "Yazma: Kartpostal",
+          "description": "Mia'nın İstanbul'dan kartpostalını yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Dün Elif'le Galata Kulesi'ne gittik.",
+              "lang": "tr",
+              "answers": [
+                "Yesterday we went to Galata Tower with Elif",
+                "We went to Galata Tower with Elif yesterday",
+                "We went to Galata Tower yesterday with Elif"
+              ],
+              "tokens": [
+                "Yesterday",
+                "we",
+                "went",
+                "to",
+                "Galata",
+                "Tower",
+                "with",
+                "Elif",
+                "goed",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Önce şehrin fotoğraflarını çektik.",
+              "lang": "tr",
+              "answers": [
+                "First, we took photos of the city",
+                "First, we took pictures of the city",
+                "We took photos of the city first",
+                "We took pictures of the city first"
+              ],
+              "tokens": [
+                "First",
+                "we",
+                "took",
+                "photos",
+                "of",
+                "the",
+                "city",
+                "taked",
+                "made"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sonra deniz kenarında dondurma yedik.",
+              "lang": "tr",
+              "answers": [
+                "Then we ate ice cream by the sea",
+                "Then we had ice cream by the sea",
+                "Then we ate ice cream near the sea"
+              ],
+              "tokens": [
+                "Then",
+                "we",
+                "ate",
+                "ice",
+                "cream",
+                "by",
+                "the",
+                "sea",
+                "eated",
+                "in"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ondan sonra Sam bir kedi gördü ve onunla oynadı.",
+              "lang": "tr",
+              "answers": [
+                "After that, Sam saw a cat and played with it",
+                "After that Sam saw a cat and he played with it"
+              ],
+              "tokens": [
+                "After",
+                "that",
+                "Sam",
+                "saw",
+                "a",
+                "cat",
+                "and",
+                "played",
+                "with",
+                "it",
+                "its",
+                "seed"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hava çok sıcaktı ama harika bir gündü.",
+              "lang": "tr",
+              "answers": [
+                "It was very hot, but it was a great day",
+                "It was very hot, but it was a wonderful day"
+              ],
+              "tokens": [
+                "It",
+                "was",
+                "very",
+                "hot",
+                "but",
+                "it",
+                "was",
+                "a",
+                "great",
+                "day",
+                "is",
+                "were"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We visited the museum. ___ that, we had lunch.",
+              "translation": "Müzeyi gezdik. Ondan sonra öğle yemeği yedik.",
+              "answer": "After",
+              "choices": [
+                "After",
+                "Then",
+                "First"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Mia ___ a beautiful shell on the beach.",
+              "translation": "Mia plajda güzel bir deniz kabuğu buldu.",
+              "answer": "found",
+              "choices": [
+                "found",
+                "finded",
+                "find"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We arrived ___ İstanbul on Monday.",
+              "translation": "Pazartesi İstanbul'a vardık.",
+              "answer": "in",
+              "choices": [
+                "in",
+                "to",
+                "at"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Mia kartpostalı büyükannesine yazıyor. En uygun kapanış hangisi?",
+              "answer": "Love, Mia",
+              "choices": [
+                {
+                  "text": "Love, Mia",
+                  "emoji": "💌"
+                },
+                {
+                  "text": "Yours faithfully, Mia",
+                  "emoji": "📄"
+                },
+                {
+                  "text": "Dear Mia",
+                  "emoji": "✉️"
+                },
+                {
+                  "text": "See you, sir",
+                  "emoji": "🎩"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kartpostal",
+                  "postcard"
+                ],
+                [
+                  "deniz kabuğu",
+                  "shell"
+                ],
+                [
+                  "fotoğraf çekmek",
+                  "take photos"
+                ],
+                [
+                  "sevgiler",
+                  "love"
+                ],
+                [
+                  "dün",
+                  "yesterday"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u13t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u13c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u14",
+      "title": "Anons var",
+      "description": "Anonslardaki saat, peron ve değişikliği yakala; danışmaya sor",
+      "color": "0xFF2D9CDB",
+      "theme": "seyahat",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Tren, havalimanı ve market anonslarındaki saat, peron ve kapı numarasını anlayabilirsin.\n- Bir tarifede hangi trenin ne zaman kalktığını ve hangisinin iptal olduğunu bulabilirsin.\n- Danışmada kibarca bilgi sorabilirsin.\n- Bir arkadaşına plan değişikliğini kısa bir mesajla bildirebilirsin.\n\n## Strateji\n\n- Anonsu dinlemeden önce neyi aradığını bil: saat mi, peron mu, kapı mı?\n- **delayed** (gecikmeli) ve **cancelled** (iptal) sözcüklerine dikkat et; anonsun en önemli bilgisi çoğu zaman budur.\n- Sayıları ayırt et: **thirteen** /θɜːˈtiːn/ sonda vurgulu, **thirty** /ˈθɜːti/ başta vurgulu. Emin değilsen \"Did you say thirteen or thirty?\" diye sor.\n- Kibar soru için kalıbı kullan: **Could you tell me** + soru sözcüğü + özne + fiil.\n- Değişiklik mesajında önce haberi ver, sonra yeni planı ve saati yaz.\n\n## Model metin\n\nHi Deniz, bad news: our train is cancelled. We're going to take the next train. It arrives at ten past four, so we'll miss lunch. Can you meet us at the station?\n\n> Elif'in Ankara'daki Deniz'e mesajı. Önce kötü haber, sonra yeni plan, en sonda bir rica var.\n\n## Türklerin sık hatası\n\n- ❌ Could you tell me when does the train leave? ✅ Could you tell me when **the train leaves**? Kalıptan sonra soru dizilimi kullanılmaz.\n- ❌ The train is late, it is cancelled. ✅ The train is **delayed**. / The train is **cancelled**. Gecikmeli tren gelir, iptal edilen tren hiç gelmez.",
+      "nodes": [
+        {
+          "id": "s3u14l1",
+          "type": "lesson",
+          "title": "Dinleme: Anonslar",
+          "description": "Tren, havalimanı ve market anonslarını dinle",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "The Ankara train is late. It's at platform fourteen now.",
+              "answers": [
+                "The Ankara train is late. It's at platform fourteen now.",
+                "The Ankara train is late. It's at platform 14 now.",
+                "The Ankara train is late. It is at platform fourteen now.",
+                "The Ankara train is late. It is at platform 14 now."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The eight fifteen train to İzmir is cancelled.",
+              "answers": [
+                "The eight fifteen train to İzmir is cancelled.",
+                "The 8:15 train to İzmir is cancelled."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Flight 68 to London is delayed by forty minutes.",
+              "answers": [
+                "Flight 68 to London is delayed by forty minutes.",
+                "Flight 68 to London is delayed by 40 minutes.",
+                "Flight sixty-eight to London is delayed by forty minutes."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Please go to the information desk on the first floor.",
+              "answers": [
+                "Please go to the information desk on the first floor."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "There's a lot of fresh fruit on sale today.",
+              "answers": [
+                "There's a lot of fresh fruit on sale today.",
+                "There is a lot of fresh fruit on sale today."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Do you want to change your ticket?",
+              "answers": [
+                "Do you want to change your ticket?"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Could you tell me ___ the train leaves?",
+              "translation": "Trenin ne zaman kalktığını söyler misiniz?",
+              "answer": "when",
+              "choices": [
+                "when",
+                "when does",
+                "what"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The bus to the airport is ___. There's no bus today.",
+              "translation": "Havalimanı otobüsü iptal edildi. Bugün otobüs yok.",
+              "answer": "cancelled",
+              "choices": [
+                "cancelled",
+                "delayed",
+                "late"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Excuse me, could you tell me where platform four is?",
+              "translation": "Affedersiniz, dört numaralı peronun nerede olduğunu söyler misiniz?"
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "iptal edildi",
+                  "cancelled"
+                ],
+                [
+                  "gecikmeli",
+                  "delayed"
+                ],
+                [
+                  "peron",
+                  "platform"
+                ],
+                [
+                  "kapı (havalimanı)",
+                  "gate"
+                ],
+                [
+                  "indirimde",
+                  "on sale"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u14l2",
+          "type": "lesson",
+          "title": "Okuma: Tren tarifesi",
+          "description": "Tarifede saat, peron ve değişikliği bul",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Trains from İstanbul to Ankara, Saturday 12 July\nTrain 1: leaves at 06:15, arrives at 10:45. Platform 2.\nTrain 2: leaves at 08:30, arrives at 13:00. Platform 4. Cancelled today.\nTrain 3: leaves at 11:40, arrives at 16:10. Platform 4.\nTrain 4: leaves at 14:50, arrives at 19:20. Platform 3. Delayed by 30 minutes.\nTrain 5: leaves at 18:00, arrives at 22:30. Platform 1.\nNotes:\nTickets for children under 12 are half price.\nThere is a café on every train, but it is closed on Train 1.\nYou can't take bikes on trains in the morning. Please bring your bike after 12:00.\nFor more information, ask at the information desk next to Platform 1.",
+              "question": "Tarifeye göre bugün hangi tren gitmiyor?",
+              "options": [
+                "Tren 4",
+                "Tren 2",
+                "Tren 3",
+                "Tren 5"
+              ],
+              "answer": 1,
+              "explanation": "\"Tren 2\" doğru: metinde Train 2 için \"Cancelled today\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Trains from İstanbul to Ankara, Saturday 12 July\nTrain 1: leaves at 06:15, arrives at 10:45. Platform 2.\nTrain 2: leaves at 08:30, arrives at 13:00. Platform 4. Cancelled today.\nTrain 3: leaves at 11:40, arrives at 16:10. Platform 4.\nTrain 4: leaves at 14:50, arrives at 19:20. Platform 3. Delayed by 30 minutes.\nTrain 5: leaves at 18:00, arrives at 22:30. Platform 1.\nNotes:\nTickets for children under 12 are half price.\nThere is a café on every train, but it is closed on Train 1.\nYou can't take bikes on trains in the morning. Please bring your bike after 12:00.\nFor more information, ask at the information desk next to Platform 1.",
+              "question": "Tren 4 bugün saat kaçta kalkacak?",
+              "options": [
+                "14.50",
+                "15.50",
+                "14.20",
+                "15.20"
+              ],
+              "answer": 3,
+              "explanation": "\"15.20\" doğru: Train 4 normalde 14.50'de kalkıyor ama \"Delayed by 30 minutes\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Trains from İstanbul to Ankara, Saturday 12 July\nTrain 1: leaves at 06:15, arrives at 10:45. Platform 2.\nTrain 2: leaves at 08:30, arrives at 13:00. Platform 4. Cancelled today.\nTrain 3: leaves at 11:40, arrives at 16:10. Platform 4.\nTrain 4: leaves at 14:50, arrives at 19:20. Platform 3. Delayed by 30 minutes.\nTrain 5: leaves at 18:00, arrives at 22:30. Platform 1.\nNotes:\nTickets for children under 12 are half price.\nThere is a café on every train, but it is closed on Train 1.\nYou can't take bikes on trains in the morning. Please bring your bike after 12:00.\nFor more information, ask at the information desk next to Platform 1.",
+              "question": "Tarifeye göre 10 yaşındaki bir çocuğun bileti nasıl?",
+              "options": [
+                "Yarı fiyatına",
+                "Ücretsiz",
+                "Tam fiyat",
+                "İki katı fiyat"
+              ],
+              "answer": 0,
+              "explanation": "\"Yarı fiyatına\" doğru: metinde \"Tickets for children under 12 are half price\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Trains from İstanbul to Ankara, Saturday 12 July\nTrain 1: leaves at 06:15, arrives at 10:45. Platform 2.\nTrain 2: leaves at 08:30, arrives at 13:00. Platform 4. Cancelled today.\nTrain 3: leaves at 11:40, arrives at 16:10. Platform 4.\nTrain 4: leaves at 14:50, arrives at 19:20. Platform 3. Delayed by 30 minutes.\nTrain 5: leaves at 18:00, arrives at 22:30. Platform 1.\nNotes:\nTickets for children under 12 are half price.\nThere is a café on every train, but it is closed on Train 1.\nYou can't take bikes on trains in the morning. Please bring your bike after 12:00.\nFor more information, ask at the information desk next to Platform 1.",
+              "question": "Bisikletinle seyahat etmek istiyorsun. Hangi treni seçebilirsin?",
+              "options": [
+                "Tren 1",
+                "Tren 3",
+                "Tren 5",
+                "Tren 2"
+              ],
+              "answer": 2,
+              "explanation": "\"Tren 5\" doğru: metinde \"Please bring your bike after 12:00\" yazıyor; Train 5 18.00'de kalkıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Trains from İstanbul to Ankara, Saturday 12 July\nTrain 1: leaves at 06:15, arrives at 10:45. Platform 2.\nTrain 2: leaves at 08:30, arrives at 13:00. Platform 4. Cancelled today.\nTrain 3: leaves at 11:40, arrives at 16:10. Platform 4.\nTrain 4: leaves at 14:50, arrives at 19:20. Platform 3. Delayed by 30 minutes.\nTrain 5: leaves at 18:00, arrives at 22:30. Platform 1.\nNotes:\nTickets for children under 12 are half price.\nThere is a café on every train, but it is closed on Train 1.\nYou can't take bikes on trains in the morning. Please bring your bike after 12:00.\nFor more information, ask at the information desk next to Platform 1.",
+              "question": "Tarifeye göre danışma masası nerede?",
+              "options": [
+                "2. peronda",
+                "Trenin içinde",
+                "Kafenin yanında",
+                "1. peronun yanında"
+              ],
+              "answer": 3,
+              "explanation": "\"1. peronun yanında\" doğru: metinde \"the information desk next to Platform 1\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kalkmak",
+                  "leave"
+                ],
+                [
+                  "varmak",
+                  "arrive"
+                ],
+                [
+                  "yarı fiyatına",
+                  "half price"
+                ],
+                [
+                  "kapalı",
+                  "closed"
+                ],
+                [
+                  "tarife",
+                  "timetable"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Train 4 is ___ by thirty minutes today.",
+              "translation": "4 numaralı tren bugün otuz dakika gecikmeli.",
+              "answer": "delayed",
+              "choices": [
+                "delayed",
+                "cancelled",
+                "closed"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Tarifede \"Platform 4\" yazıyor ama peronu bulamıyorsun. Görevliye nasıl sorarsın?",
+              "answer": "Where is platform four?",
+              "choices": [
+                {
+                  "text": "Where is platform four?",
+                  "emoji": "🚉"
+                },
+                {
+                  "text": "Where platform four is?",
+                  "emoji": "❓"
+                },
+                {
+                  "text": "Where does platform four?",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "Where is platform forty?",
+                  "emoji": "🔢"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u14s",
+          "type": "story",
+          "title": "Uçuş gecikti",
+          "description": "Sam ve Mia Londra'ya dönerken havalimanında",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Anons",
+              "avatar": "📢",
+              "text": "Attention, please. Flight 1985 to London is delayed.",
+              "translation": "Dikkat lütfen. Londra'ya giden 1985 sefer sayılı uçuş gecikmeli."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Oh no! That's our flight.",
+              "translation": "Eyvah! Bu bizim uçuşumuz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Don't worry. Let's ask at the information desk.",
+              "translation": "Merak etme. Danışmaya soralım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Excuse me. Could you tell me when the flight to London leaves?",
+              "translation": "Affedersiniz. Londra uçağının ne zaman kalkacağını söyler misiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🧑‍✈️",
+              "text": "It's going to leave at ten past nine, not at seven.",
+              "translation": "Yedide değil, dokuzu on geçe kalkacak."
+            },
+            {
+              "kind": "question",
+              "prompt": "Londra uçağı saat kaçta kalkacak?",
+              "choices": [
+                "Yedide",
+                "Dokuzu on geçe",
+                "Dokuza on kala"
+              ],
+              "answer": "Dokuzu on geçe"
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "Two hours late! Mia will be so tired.",
+              "translation": "İki saat gecikme! Mia çok yorulacak."
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🧑‍✈️",
+              "text": "I'm sorry. And please note, the gate changed. It's gate twelve now.",
+              "translation": "Üzgünüm. Ayrıca kapı değişti. Artık on iki numaralı kapı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Sorry, gate twelve or twenty?",
+              "translation": "Pardon, on iki mi, yirmi mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Görevli",
+              "avatar": "🧑‍✈️",
+              "text": "Twelve. One, two.",
+              "translation": "On iki. Bir, iki."
+            },
+            {
+              "kind": "question",
+              "prompt": "Yeni kapı numarası kaç?",
+              "choices": [
+                "20",
+                "2",
+                "12"
+              ],
+              "answer": "12"
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👧",
+              "text": "I'm hungry. Can we eat something?",
+              "translation": "Acıktım. Bir şey yiyebilir miyiz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Sure. There's a restaurant on the second floor.",
+              "translation": "Tabii. İkinci katta bir restoran var."
+            },
+            {
+              "kind": "question",
+              "prompt": "Restoran nerede?",
+              "choices": [
+                "İkinci katta",
+                "Birinci katta",
+                "On ikinci kapının yanında"
+              ],
+              "answer": "İkinci katta"
+            },
+            {
+              "kind": "line",
+              "speaker": "Anons",
+              "avatar": "📢",
+              "text": "Passengers on flight 1985 to London, please go to gate twelve.",
+              "translation": "Londra'ya giden 1985 sefer sayılı uçuşun yolcuları, lütfen on iki numaralı kapıya gidin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Sam",
+              "avatar": "🧑",
+              "text": "That's us! Mia, finish your sandwich.",
+              "translation": "Bu bizim! Mia, sandviçini bitir."
+            },
+            {
+              "kind": "line",
+              "speaker": "Mia",
+              "avatar": "👧",
+              "text": "Goodbye, Elif! Thank you for everything.",
+              "translation": "Hoşça kal, Elif! Her şey için teşekkürler."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Goodbye! Send me a message when you arrive.",
+              "translation": "Güle güle! Varınca bana mesaj at."
+            },
+            {
+              "kind": "question",
+              "prompt": "Sam \"That's us!\" derken ne demek istiyor?",
+              "choices": [
+                "Uçuş iptal oldu",
+                "Anons onların uçuşu için",
+                "Kapıda arkadaşlarını gördü"
+              ],
+              "answer": "Anons onların uçuşu için"
+            }
+          ]
+        },
+        {
+          "id": "s3u14l3",
+          "type": "lesson",
+          "title": "Konuşma: Danışmada",
+          "description": "İstasyonda danışmaya kibarca bilgi sor",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "Excuse me, could you help me, please?",
+              "translation": "Affedersiniz, bana yardım edebilir misiniz?"
+            },
+            {
+              "type": "speak",
+              "text": "Could you tell me when the next train to Ankara leaves?",
+              "translation": "Ankara'ya giden bir sonraki trenin ne zaman kalktığını söyler misiniz?"
+            },
+            {
+              "type": "speak",
+              "text": "Sorry, did you say platform thirteen or thirty?",
+              "translation": "Pardon, on üç numaralı peron mu dediniz, otuz mu?"
+            },
+            {
+              "type": "speak",
+              "text": "And how much is a ticket for a child?",
+              "translation": "Bir de çocuk bileti ne kadar?"
+            },
+            {
+              "type": "speak",
+              "text": "Great, thank you. Where can I buy it?",
+              "translation": "Harika, teşekkürler. Onu nereden alabilirim?"
+            },
+            {
+              "type": "select",
+              "prompt": "Görevli: \"The train is cancelled, I'm afraid.\" En uygun cevap hangisi?",
+              "answer": "Oh no! When is the next one?",
+              "choices": [
+                {
+                  "text": "Oh no! When is the next one?",
+                  "emoji": "😟"
+                },
+                {
+                  "text": "Great! Thank you very much.",
+                  "emoji": "😀"
+                },
+                {
+                  "text": "Yes, I'm cancelled.",
+                  "emoji": "🙃"
+                },
+                {
+                  "text": "No, I don't afraid.",
+                  "emoji": "😨"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Danışmada saati kibarca sormak istiyorsun. En uygun soru hangisi?",
+              "answer": "Could you tell me what time it is?",
+              "choices": [
+                {
+                  "text": "Could you tell me what time it is?",
+                  "emoji": "🕰️"
+                },
+                {
+                  "text": "Could you tell me what time is it?",
+                  "emoji": "⌚"
+                },
+                {
+                  "text": "Tell me the time.",
+                  "emoji": "🗣️"
+                },
+                {
+                  "text": "What time it is?",
+                  "emoji": "❓"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Pardon, uçağımız gecikmeli mi?",
+              "lang": "tr",
+              "answers": [
+                "Excuse me, is our flight delayed?",
+                "Sorry, is our flight delayed?",
+                "Excuse me, is our plane delayed?"
+              ],
+              "tokens": [
+                "Excuse",
+                "me",
+                "is",
+                "our",
+                "flight",
+                "delayed",
+                "cancel",
+                "does"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bir sonraki trenin nereden kalktığını söyler misiniz?",
+              "lang": "tr",
+              "answers": [
+                "Could you tell me where the next train leaves from?",
+                "Can you tell me where the next train leaves from?"
+              ],
+              "tokens": [
+                "Could",
+                "you",
+                "tell",
+                "me",
+                "where",
+                "the",
+                "next",
+                "train",
+                "leaves",
+                "from",
+                "does",
+                "leave"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "danışma",
+                  "information desk"
+                ],
+                [
+                  "bir sonraki tren",
+                  "the next train"
+                ],
+                [
+                  "tekrar eder misiniz?",
+                  "could you repeat that?"
+                ],
+                [
+                  "korkarım ki",
+                  "I'm afraid"
+                ],
+                [
+                  "yardım etmek",
+                  "help"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u14l4",
+          "type": "lesson",
+          "title": "Yazma: Değişiklik mesajı",
+          "description": "Arkadaşına plan değişikliğini yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "Selam Deniz, kötü haber: trenimiz iptal edildi.",
+              "lang": "tr",
+              "answers": [
+                "Hi Deniz, bad news: our train is cancelled",
+                "Hi Deniz, bad news: our train was cancelled"
+              ],
+              "tokens": [
+                "Hi",
+                "Deniz",
+                "bad",
+                "news",
+                "our",
+                "train",
+                "is",
+                "cancelled",
+                "delayed",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bir sonraki trene bineceğiz.",
+              "lang": "tr",
+              "answers": [
+                "We're going to take the next train",
+                "We are going to take the next train",
+                "We'll take the next train",
+                "We will take the next train"
+              ],
+              "tokens": [
+                "We're",
+                "going",
+                "to",
+                "take",
+                "the",
+                "next",
+                "train",
+                "will",
+                "at"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Dördü on geçe varıyor, yani öğle yemeğini kaçıracağız.",
+              "lang": "tr",
+              "answers": [
+                "It arrives at ten past four, so we'll miss lunch",
+                "It arrives at ten past four, so we will miss lunch",
+                "It arrives at ten past four, so we're going to miss lunch"
+              ],
+              "tokens": [
+                "It",
+                "arrives",
+                "at",
+                "ten",
+                "past",
+                "four",
+                "so",
+                "we'll",
+                "miss",
+                "lunch",
+                "to",
+                "because"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bizi istasyonda karşılayabilir misin?",
+              "lang": "tr",
+              "answers": [
+                "Can you meet us at the station?",
+                "Could you meet us at the station?"
+              ],
+              "tokens": [
+                "Can",
+                "you",
+                "meet",
+                "us",
+                "at",
+                "the",
+                "station",
+                "we",
+                "in"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The train is late, ___ we'll miss the start of the film.",
+              "translation": "Tren gecikti, bu yüzden filmin başını kaçıracağız.",
+              "answer": "so",
+              "choices": [
+                "so",
+                "because",
+                "but"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Let's meet at ___ information desk.",
+              "translation": "Danışma masasında buluşalım.",
+              "answer": "the",
+              "choices": [
+                "the",
+                "a",
+                "on"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "My flight now leaves ___ ten past nine.",
+              "translation": "Uçağım artık dokuzu on geçe kalkıyor.",
+              "answer": "at",
+              "choices": [
+                "at",
+                "on",
+                "in"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşına kısa bir mesaj yazıyorsun. En uygun başlangıç hangisi?",
+              "answer": "Hi Deniz,",
+              "choices": [
+                {
+                  "text": "Hi Deniz,",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "Dear Sir or Madam,",
+                  "emoji": "📄"
+                },
+                {
+                  "text": "To whom it may concern,",
+                  "emoji": "🏢"
+                },
+                {
+                  "text": "Attention, please.",
+                  "emoji": "📢"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kötü haber",
+                  "bad news"
+                ],
+                [
+                  "geç kalmak",
+                  "be late"
+                ],
+                [
+                  "karşılamak",
+                  "meet"
+                ],
+                [
+                  "kaçırmak",
+                  "miss"
+                ],
+                [
+                  "istasyon",
+                  "station"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u14t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "s3u14c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "s3u15",
+      "title": "Teşekkürler, özür dilerim",
+      "description": "Teşekkür, özür ve açıklama içeren kısa bir e-posta yaz",
+      "color": "0xFF14A098",
+      "theme": "yazisma",
+      "guide": "## Bu ünitede yapabileceklerin\n\n- Bir sesli mesajda kimin neden aradığını ve ne istediğini anlayabilirsin.\n- Kişisel bir e-postada teşekkürü, özrü ve nedenini bulabilirsin.\n- Bir arkadaşından özür dileyip nedenini açıklayabilirsin.\n- Teşekkür, özür ve açıklama içeren 60–80 kelimelik bir e-posta yazabilirsin.\n\n## Strateji\n\n- Sesli mesajda üç şeyi yakala: kim arıyor, neden arıyor, senden ne istiyor (Can you call me back…?).\n- E-postayı okurken **Thank you for**, **I'm sorry** ve **because / so** kalıplarını işaretle; bilginin çoğu oradadır.\n- Özür dilerken önce özür, sonra kısa bir neden, en sonda bir teklif söyle: I'm sorry… because… Can I…?\n- E-postayı üç parçaya böl: teşekkür, özür ve açıklama, kapanış. Arkadaşa **Hi** ile başla, **Love** ya da **Write soon** ile bitir.\n\n## Model metin\n\nHi Sam,\n\nThank you for your email and the lovely photos. I'm sorry I didn't write sooner. I was very busy because I started my new job at the museum. On my first day the ferry was cancelled, so I was late! Please say hello to Mia.\n\nWrite soon! Love, Elif\n\n> Elif'in Sam'e cevabı. Teşekkür (Thank you for…), özür (I'm sorry…) ve neden (because / so) sırayla geliyor.\n\n## Türklerin sık hatası\n\n- ❌ Thank you for to help me. ✅ Thank you for **helping** me. **for**'dan sonra fiil -ing alır.\n- ❌ I was late so the ferry was cancelled. ✅ I was late **because** the ferry was cancelled. **because** nedeni, **so** sonucu verir.\n\n## Beceri testi\n\n- Dinleme (6 soru): geçmiş olayı ve sırayı anlama (s3u13), anonsta saat, kapı ve gecikme (s3u14), teşekkür ve özür cümleleri (s3u15).\n- Okuma (6 soru): Kerem'in yaz yazısında sıra, süre ve zamir takibi (s3u13); Ozan'ın e-postasında saat değişikliği, neden ve iptal (s3u14, s3u15).\n- Yazma (5 soru): geçmiş zamanla olay anlatma (s3u13, s3u3), kibar dolaylı soru ve iptal bildirme (s3u14), teşekkür cümlesi (s3u15).\n- Dil (3 soru): düzensiz geçmiş (s3u13), cancelled anonsu (s3u14), so / because (s3u15).",
+      "nodes": [
+        {
+          "id": "s3u15l1",
+          "type": "lesson",
+          "title": "Dinleme: Sesli mesajlar",
+          "description": "Sesli mesajlarda teşekkür ve özrü yakala",
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "Hi Elif, it's Sam. Thanks for a lovely holiday.",
+              "answers": [
+                "Hi Elif, it's Sam. Thanks for a lovely holiday.",
+                "Hi Elif, it is Sam. Thanks for a lovely holiday."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'm sorry I didn't call you yesterday.",
+              "answers": [
+                "I'm sorry I didn't call you yesterday.",
+                "I'm sorry I did not call you yesterday.",
+                "I am sorry I didn't call you yesterday."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Mia's going to send your mum a card.",
+              "answers": [
+                "Mia's going to send your mum a card.",
+                "Mia is going to send your mum a card."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Can you call me back at half past six?",
+              "answers": [
+                "Can you call me back at half past six?",
+                "Can you call me back at 6:30?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Our plane landed at eleven thirty at night.",
+              "answers": [
+                "Our plane landed at eleven thirty at night.",
+                "Our plane landed at 11:30 at night."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Sorry, I couldn't come because I was ill.",
+              "answers": [
+                "Sorry, I couldn't come because I was ill.",
+                "Sorry, I could not come because I was ill."
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Thank you ___ helping me with my bag.",
+              "translation": "Çantama yardım ettiğin için teşekkürler.",
+              "answer": "for",
+              "choices": [
+                "for",
+                "to",
+                "of"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm sorry, I ___ hear the phone.",
+              "translation": "Üzgünüm, telefonu duymadım.",
+              "answer": "didn't",
+              "choices": [
+                "didn't",
+                "don't",
+                "wasn't"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Thanks for calling. I'll call you back later.",
+              "translation": "Aradığın için teşekkürler. Seni sonra geri arayacağım."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "geri aramak",
+                  "call back"
+                ],
+                [
+                  "sesli mesaj",
+                  "voicemail"
+                ],
+                [
+                  "... için teşekkürler",
+                  "thanks for ..."
+                ],
+                [
+                  "kusura bakma",
+                  "I'm sorry"
+                ],
+                [
+                  "haber ver",
+                  "let me know"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u15l2",
+          "type": "lesson",
+          "title": "Okuma: Kişisel bir e-posta",
+          "description": "Sam'in teşekkür e-postasını oku",
+          "exercises": [
+            {
+              "type": "choice",
+              "passage": "Subject: Thank you!\nHi Elif,\nWe arrived in London on Saturday night. Our flight was two hours late, so we were very tired, but we got home safely.\nThank you for everything! Thank you for showing us İstanbul and for helping Mia with her Turkish. Please say thanks to your mum and dad, too. Your mum's food was the best food of our holiday.\nI'm sorry about the broken glass on our last night. I was carrying too many plates. I'm going to buy your mum a new one and send it next week.\nMia has a new hobby now. She draws cats every day because she misses the cats in İstanbul!\nWrite soon and tell me about your new job at the museum.\nLove,\nSam",
+              "question": "Sam ve Mia Londra'ya ne zaman vardı?",
+              "options": [
+                "Cumartesi gecesi",
+                "Pazar sabahı",
+                "Cuma gecesi",
+                "Cumartesi sabahı"
+              ],
+              "answer": 0,
+              "explanation": "\"Cumartesi gecesi\" doğru: metinde \"We arrived in London on Saturday night\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Thank you!\nHi Elif,\nWe arrived in London on Saturday night. Our flight was two hours late, so we were very tired, but we got home safely.\nThank you for everything! Thank you for showing us İstanbul and for helping Mia with her Turkish. Please say thanks to your mum and dad, too. Your mum's food was the best food of our holiday.\nI'm sorry about the broken glass on our last night. I was carrying too many plates. I'm going to buy your mum a new one and send it next week.\nMia has a new hobby now. She draws cats every day because she misses the cats in İstanbul!\nWrite soon and tell me about your new job at the museum.\nLove,\nSam",
+              "question": "Sam'e göre neden çok yorgundular?",
+              "options": [
+                "Çok yürüdükleri için",
+                "Bavulları kaybolduğu için",
+                "Uçuşları iki saat geciktiği için",
+                "Gece hiç uyumadıkları için"
+              ],
+              "answer": 2,
+              "explanation": "\"Uçuşları iki saat geciktiği için\" doğru: metinde \"Our flight was two hours late, so we were very tired\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Thank you!\nHi Elif,\nWe arrived in London on Saturday night. Our flight was two hours late, so we were very tired, but we got home safely.\nThank you for everything! Thank you for showing us İstanbul and for helping Mia with her Turkish. Please say thanks to your mum and dad, too. Your mum's food was the best food of our holiday.\nI'm sorry about the broken glass on our last night. I was carrying too many plates. I'm going to buy your mum a new one and send it next week.\nMia has a new hobby now. She draws cats every day because she misses the cats in İstanbul!\nWrite soon and tell me about your new job at the museum.\nLove,\nSam",
+              "question": "Sam e-postada ne için özür diliyor?",
+              "options": [
+                "Mia'nın Türkçesi için",
+                "Kırılan bardak için",
+                "Geç yazdığı için",
+                "Uçuşun gecikmesi için"
+              ],
+              "answer": 1,
+              "explanation": "\"Kırılan bardak için\" doğru: metinde \"I'm sorry about the broken glass\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Thank you!\nHi Elif,\nWe arrived in London on Saturday night. Our flight was two hours late, so we were very tired, but we got home safely.\nThank you for everything! Thank you for showing us İstanbul and for helping Mia with her Turkish. Please say thanks to your mum and dad, too. Your mum's food was the best food of our holiday.\nI'm sorry about the broken glass on our last night. I was carrying too many plates. I'm going to buy your mum a new one and send it next week.\nMia has a new hobby now. She draws cats every day because she misses the cats in İstanbul!\nWrite soon and tell me about your new job at the museum.\nLove,\nSam",
+              "question": "Sam, Elif'in annesi için ne yapacak?",
+              "options": [
+                "Ona bir kart yazacak",
+                "Ona tabak gönderecek",
+                "Onu Londra'ya davet edecek",
+                "Ona yeni bir bardak alacak"
+              ],
+              "answer": 3,
+              "explanation": "\"Ona yeni bir bardak alacak\" doğru: metinde \"I'm going to buy your mum a new one\" yazıyor; \"one\" burada bardak demek."
+            },
+            {
+              "type": "choice",
+              "passage": "Subject: Thank you!\nHi Elif,\nWe arrived in London on Saturday night. Our flight was two hours late, so we were very tired, but we got home safely.\nThank you for everything! Thank you for showing us İstanbul and for helping Mia with her Turkish. Please say thanks to your mum and dad, too. Your mum's food was the best food of our holiday.\nI'm sorry about the broken glass on our last night. I was carrying too many plates. I'm going to buy your mum a new one and send it next week.\nMia has a new hobby now. She draws cats every day because she misses the cats in İstanbul!\nWrite soon and tell me about your new job at the museum.\nLove,\nSam",
+              "question": "Mia neden her gün kedi çiziyor?",
+              "options": [
+                "İstanbul'daki kedileri özlediği için",
+                "Okulda ödevi olduğu için",
+                "Yeni bir kedisi olduğu için",
+                "Sam istediği için"
+              ],
+              "answer": 0,
+              "explanation": "\"İstanbul'daki kedileri özlediği için\" doğru: metinde \"she misses the cats in İstanbul\" yazıyor."
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "güvenle",
+                  "safely"
+                ],
+                [
+                  "kırık",
+                  "broken"
+                ],
+                [
+                  "taşımak",
+                  "carry"
+                ],
+                [
+                  "özlemek",
+                  "miss"
+                ],
+                [
+                  "yakında",
+                  "soon"
+                ]
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Our plane was late, ___ we got home after midnight.",
+              "translation": "Uçağımız gecikti, bu yüzden eve gece yarısından sonra vardık.",
+              "answer": "so",
+              "choices": [
+                "so",
+                "because",
+                "or"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "E-postada \"She draws cats every day\" cümlesindeki \"She\" kim?",
+              "answer": "Mia",
+              "choices": [
+                {
+                  "text": "Mia",
+                  "emoji": "👧"
+                },
+                {
+                  "text": "Elif's mum",
+                  "emoji": "👩‍🦱"
+                },
+                {
+                  "text": "Elif",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "Sam's mum",
+                  "emoji": "👵"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u15s",
+          "type": "story",
+          "title": "İlk gün geç kaldım",
+          "description": "Elif rehberliğin ilk gününde geç kalıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Hello, Ozan? It's Elif. I'm really sorry.",
+              "translation": "Alo, Ozan? Ben Elif. Gerçekten çok özür dilerim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨‍💼",
+              "text": "Elif! The tour starts at ten. Where are you?",
+              "translation": "Elif! Tur saat onda başlıyor. Neredesin?"
+            },
+            {
+              "kind": "question",
+              "prompt": "Tur saat kaçta başlıyor?",
+              "choices": [
+                "Dokuzda",
+                "Onda",
+                "On ikide"
+              ],
+              "answer": "Onda"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "I'm on the bus. The ferry was cancelled because of the wind.",
+              "translation": "Otobüsteyim. Rüzgâr yüzünden vapur iptal edildi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨‍💼",
+              "text": "Oh, I see. When will you arrive?",
+              "translation": "Anlıyorum. Ne zaman varırsın?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "In twenty minutes, I think. The traffic is terrible.",
+              "translation": "Sanırım yirmi dakika içinde. Trafik berbat."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif neden geç kaldı?",
+              "choices": [
+                "Uyuyakaldığı için",
+                "Otobüsü kaçırdığı için",
+                "Vapur iptal edildiği için"
+              ],
+              "answer": "Vapur iptal edildiği için"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨‍💼",
+              "text": "It's OK. There's a family from Canada here. I'll start the tour with them.",
+              "translation": "Sorun değil. Burada Kanadalı bir aile var. Turu onlarla ben başlatırım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Thank you for understanding.",
+              "translation": "Anlayışın için teşekkürler."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨‍💼",
+              "text": "Ah, here she is! Everyone, this is Elif.",
+              "translation": "Ah, işte geldi! Herkes, bu Elif."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Hello, everyone! Sorry I'm late.",
+              "translation": "Herkese merhaba! Geç kaldığım için özür dilerim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨‍💼",
+              "text": "Elif, can you tell them about the old ships?",
+              "translation": "Elif, onlara eski gemileri anlatır mısın?"
+            },
+            {
+              "kind": "question",
+              "prompt": "\"Can you tell them about the old ships?\" cümlesinde \"them\" kim?",
+              "choices": [
+                "Kanadalı aile",
+                "Ozan ve Elif",
+                "Eski gemiler"
+              ],
+              "answer": "Kanadalı aile"
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Of course. This ship is more than two hundred years old.",
+              "translation": "Tabii. Bu gemi iki yüz yıldan daha eski."
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif'e göre gemi kaç yaşında?",
+              "choices": [
+                "Yirmi yaşında",
+                "İki yüz yıldan daha eski",
+                "İki bin yıldan daha eski"
+              ],
+              "answer": "İki yüz yıldan daha eski"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨‍💼",
+              "text": "You were great today, Elif. The family loved you.",
+              "translation": "Bugün harikaydın, Elif. Aile sana bayıldı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "Thank you for giving me a chance. Next time I'll take an earlier bus.",
+              "translation": "Bana şans verdiğin için teşekkürler. Bir dahaki sefere daha erken bir otobüse bineceğim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨‍💼",
+              "text": "Good idea! And please send me a message next time.",
+              "translation": "İyi fikir! Bir dahaki sefere lütfen bana mesaj at."
+            },
+            {
+              "kind": "line",
+              "speaker": "Elif",
+              "avatar": "👩",
+              "text": "I will. I promise!",
+              "translation": "Atacağım. Söz!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Elif bir dahaki sefere ne yapacak?",
+              "choices": [
+                "Vapura binecek",
+                "Daha erken bir otobüse binecek",
+                "Taksiye binecek"
+              ],
+              "answer": "Daha erken bir otobüse binecek"
+            }
+          ]
+        },
+        {
+          "id": "s3u15l3",
+          "type": "lesson",
+          "title": "Konuşma: Özür dile",
+          "description": "Arkadaşından özür dile ve nedenini açıkla",
+          "exercises": [
+            {
+              "type": "speak",
+              "text": "Hi Deniz, I'm really sorry about yesterday.",
+              "translation": "Selam Deniz, dün için gerçekten çok üzgünüm."
+            },
+            {
+              "type": "speak",
+              "text": "I missed the film because my bus was cancelled.",
+              "translation": "Otobüsüm iptal edildiği için filmi kaçırdım."
+            },
+            {
+              "type": "speak",
+              "text": "My phone was dead, so I couldn't send you a message.",
+              "translation": "Telefonumun şarjı bitmişti, bu yüzden sana mesaj atamadım."
+            },
+            {
+              "type": "speak",
+              "text": "Thank you for waiting for me.",
+              "translation": "Beni beklediğin için teşekkür ederim."
+            },
+            {
+              "type": "speak",
+              "text": "Can I buy you a coffee this weekend?",
+              "translation": "Bu hafta sonu sana bir kahve ısmarlayabilir miyim?"
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşın: \"Don't worry, it's OK.\" En uygun cevap hangisi?",
+              "answer": "Thanks, that's very kind.",
+              "choices": [
+                {
+                  "text": "Thanks, that's very kind.",
+                  "emoji": "😊"
+                },
+                {
+                  "text": "Yes, it's your fault.",
+                  "emoji": "😠"
+                },
+                {
+                  "text": "No, I don't worry.",
+                  "emoji": "🙃"
+                },
+                {
+                  "text": "You're welcome.",
+                  "emoji": "🙂"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Arkadaşının doğum gününü unuttun. Ne dersin?",
+              "answer": "I'm so sorry I forgot!",
+              "choices": [
+                {
+                  "text": "I'm so sorry I forgot!",
+                  "emoji": "🎂"
+                },
+                {
+                  "text": "Thank you to forget!",
+                  "emoji": "🎁"
+                },
+                {
+                  "text": "Sorry for I forgot.",
+                  "emoji": "😶"
+                },
+                {
+                  "text": "Never mind!",
+                  "emoji": "🤷"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Geç kaldığım için özür dilerim.",
+              "lang": "tr",
+              "answers": [
+                "I'm sorry for being late",
+                "I am sorry for being late",
+                "Sorry for being late",
+                "I'm sorry I'm late",
+                "Sorry I'm late",
+                "I'm sorry I was late",
+                "I am sorry I am late"
+              ],
+              "tokens": [
+                "I'm",
+                "sorry",
+                "for",
+                "being",
+                "late",
+                "to",
+                "be",
+                "because"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Beni aradığın için teşekkürler.",
+              "lang": "tr",
+              "answers": [
+                "Thank you for calling me",
+                "Thanks for calling me"
+              ],
+              "tokens": [
+                "Thank",
+                "you",
+                "for",
+                "calling",
+                "me",
+                "to",
+                "call"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "özür dilerim",
+                  "I'm sorry"
+                ],
+                [
+                  "dert etme",
+                  "don't worry"
+                ],
+                [
+                  "çok naziksin",
+                  "that's very kind"
+                ],
+                [
+                  "unutmak",
+                  "forget"
+                ],
+                [
+                  "beklemek",
+                  "wait"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u15l4",
+          "type": "lesson",
+          "title": "Yazma: Kısa bir e-posta",
+          "description": "Teşekkür, özür ve açıklama içeren e-posta yaz",
+          "exercises": [
+            {
+              "type": "translate",
+              "text": "E-postan ve güzel fotoğraflar için teşekkürler.",
+              "lang": "tr",
+              "answers": [
+                "Thank you for your email and the lovely photos",
+                "Thanks for your email and the lovely photos",
+                "Thank you for your email and the beautiful photos",
+                "Thank you for your email and the nice photos"
+              ],
+              "tokens": [
+                "Thank",
+                "you",
+                "for",
+                "your",
+                "email",
+                "and",
+                "the",
+                "lovely",
+                "photos",
+                "to",
+                "a"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Daha erken yazmadığım için özür dilerim.",
+              "lang": "tr",
+              "answers": [
+                "I'm sorry I didn't write sooner",
+                "I am sorry I didn't write sooner",
+                "Sorry I didn't write sooner",
+                "I'm sorry I did not write sooner",
+                "I'm sorry I didn't write earlier"
+              ],
+              "tokens": [
+                "I'm",
+                "sorry",
+                "I",
+                "didn't",
+                "write",
+                "sooner",
+                "wrote",
+                "don't"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Çok meşguldüm çünkü müzedeki yeni işime başladım.",
+              "lang": "tr",
+              "answers": [
+                "I was very busy because I started my new job at the museum",
+                "I was really busy because I started my new job at the museum"
+              ],
+              "tokens": [
+                "I",
+                "was",
+                "very",
+                "busy",
+                "because",
+                "I",
+                "started",
+                "my",
+                "new",
+                "job",
+                "at",
+                "the",
+                "museum",
+                "so",
+                "starting"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İlk günümde vapur iptal edildi, bu yüzden geç kaldım!",
+              "lang": "tr",
+              "answers": [
+                "On my first day the ferry was cancelled, so I was late",
+                "The ferry was cancelled on my first day, so I was late",
+                "I was late on my first day because the ferry was cancelled",
+                "On my first day I was late because the ferry was cancelled"
+              ],
+              "tokens": [
+                "On",
+                "my",
+                "first",
+                "day",
+                "the",
+                "ferry",
+                "was",
+                "cancelled",
+                "so",
+                "I",
+                "was",
+                "late",
+                "because",
+                "delayed"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I was late ___ the ferry was cancelled.",
+              "translation": "Vapur iptal edildiği için geç kaldım.",
+              "answer": "because",
+              "choices": [
+                "because",
+                "so",
+                "then"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Thank you for ___ me the photos.",
+              "translation": "Bana fotoğrafları gönderdiğin için teşekkürler.",
+              "answer": "sending",
+              "choices": [
+                "sending",
+                "send",
+                "to send"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I started ___ new job at the museum last week.",
+              "translation": "Geçen hafta müzede yeni bir işe başladım.",
+              "answer": "a",
+              "choices": [
+                "a",
+                "an",
+                "some"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Yakın arkadaşına yazdığın e-postayı nasıl bitirirsin?",
+              "answer": "Write soon! Love, Elif",
+              "choices": [
+                {
+                  "text": "Write soon! Love, Elif",
+                  "emoji": "💌"
+                },
+                {
+                  "text": "Yours faithfully, Elif",
+                  "emoji": "📄"
+                },
+                {
+                  "text": "Regards, the Museum",
+                  "emoji": "🏛️"
+                }
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "e-posta",
+                  "email"
+                ],
+                [
+                  "meşgul",
+                  "busy"
+                ],
+                [
+                  "daha erken",
+                  "sooner"
+                ],
+                [
+                  "selam söyle",
+                  "say hello"
+                ],
+                [
+                  "iş",
+                  "job"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u15t",
+          "type": "test",
+          "title": "Bölüm 3 beceri testi",
+          "description": "Bu bölümün hedeflerini ölçer",
+          "rewardXp": 25,
+          "exercises": [
+            {
+              "type": "listen",
+              "text": "First we went to the palace, and then we had a picnic.",
+              "answers": [
+                "First we went to the palace, and then we had a picnic."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Did you take a lot of photos on holiday?",
+              "answers": [
+                "Did you take a lot of photos on holiday?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The train to Bursa is delayed by twenty minutes.",
+              "answers": [
+                "The train to Bursa is delayed by twenty minutes.",
+                "The train to Bursa is delayed by 20 minutes."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Could you tell me where gate thirteen is?",
+              "answers": [
+                "Could you tell me where gate thirteen is?",
+                "Could you tell me where gate 13 is?"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Thanks for helping me. I'll call you tomorrow.",
+              "answers": [
+                "Thanks for helping me. I'll call you tomorrow.",
+                "Thanks for helping me. I will call you tomorrow."
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'm sorry I didn't answer the phone.",
+              "answers": [
+                "I'm sorry I didn't answer the phone.",
+                "I'm sorry I did not answer the phone.",
+                "I am sorry I didn't answer the phone."
+              ]
+            },
+            {
+              "type": "choice",
+              "passage": "My summer, by Kerem\nIn August, I went to my uncle's farm near Bursa with my sister Elif. First, we helped my uncle with the animals. Then we picked tomatoes every morning.\nOne day, my uncle's dog ran away. We looked for him for three hours. In the end, Elif found him near the river. He was sleeping under a tree!\nAfter that, my uncle made a big dinner for us. It was the best part of my summer. Next year, I'm going to stay there for a month.",
+              "question": "Kerem ve Elif çiftlikte her sabah ne yaptı?",
+              "options": [
+                "Nehirde yüzdüler",
+                "Domates topladılar",
+                "Köpeği yıkadılar",
+                "Bursa'ya gittiler"
+              ],
+              "answer": 1,
+              "explanation": "\"Domates topladılar\" doğru: metinde \"we picked tomatoes every morning\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "My summer, by Kerem\nIn August, I went to my uncle's farm near Bursa with my sister Elif. First, we helped my uncle with the animals. Then we picked tomatoes every morning.\nOne day, my uncle's dog ran away. We looked for him for three hours. In the end, Elif found him near the river. He was sleeping under a tree!\nAfter that, my uncle made a big dinner for us. It was the best part of my summer. Next year, I'm going to stay there for a month.",
+              "question": "Metinde \"He was sleeping under a tree!\" cümlesindeki \"He\" kim?",
+              "options": [
+                "Kerem",
+                "Amca",
+                "Elif'in babası",
+                "Amcanın köpeği"
+              ],
+              "answer": 3,
+              "explanation": "\"Amcanın köpeği\" doğru: metinde \"my uncle's dog ran away\" yazıyor; Elif onu nehrin yanında buluyor ve \"He\" köpek oluyor."
+            },
+            {
+              "type": "choice",
+              "passage": "My summer, by Kerem\nIn August, I went to my uncle's farm near Bursa with my sister Elif. First, we helped my uncle with the animals. Then we picked tomatoes every morning.\nOne day, my uncle's dog ran away. We looked for him for three hours. In the end, Elif found him near the river. He was sleeping under a tree!\nAfter that, my uncle made a big dinner for us. It was the best part of my summer. Next year, I'm going to stay there for a month.",
+              "question": "Kerem ve Elif kaybolan köpeği ne kadar aradı?",
+              "options": [
+                "Üç saat",
+                "On üç saat",
+                "Üç gün",
+                "Otuz dakika"
+              ],
+              "answer": 0,
+              "explanation": "\"Üç saat\" doğru: metinde \"We looked for him for three hours\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Hi everyone,\nThank you for coming to the museum last Sunday. The visitors loved your tours!\nI'm sorry, but there is a change for next Saturday. The museum is going to open at 11:00, not at 9:30, because workers are going to clean the old ships. So please come at 10:30, not at 9:00.\nThe meeting after the tours is cancelled. We'll have it on Monday at 5 pm in the café.\nElif, thank you for helping the family from Canada. They wrote a lovely message about you!\nBest wishes,\nOzan",
+              "question": "Gelecek cumartesi ekip müzeye saat kaçta gelmeli?",
+              "options": [
+                "9.00'da",
+                "9.30'da",
+                "10.30'da",
+                "11.00'de"
+              ],
+              "answer": 2,
+              "explanation": "\"10.30'da\" doğru: metinde \"please come at 10:30, not at 9:00\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Hi everyone,\nThank you for coming to the museum last Sunday. The visitors loved your tours!\nI'm sorry, but there is a change for next Saturday. The museum is going to open at 11:00, not at 9:30, because workers are going to clean the old ships. So please come at 10:30, not at 9:00.\nThe meeting after the tours is cancelled. We'll have it on Monday at 5 pm in the café.\nElif, thank you for helping the family from Canada. They wrote a lovely message about you!\nBest wishes,\nOzan",
+              "question": "Müze gelecek cumartesi neden geç açılacak?",
+              "options": [
+                "Gönüllüler toplantı yapacağı için",
+                "Çalışanlar eski gemileri temizleyeceği için",
+                "Kafe kapalı olduğu için",
+                "Ozan hasta olduğu için"
+              ],
+              "answer": 1,
+              "explanation": "\"Çalışanlar eski gemileri temizleyeceği için\" doğru: metinde \"workers are going to clean the old ships\" yazıyor."
+            },
+            {
+              "type": "choice",
+              "passage": "Hi everyone,\nThank you for coming to the museum last Sunday. The visitors loved your tours!\nI'm sorry, but there is a change for next Saturday. The museum is going to open at 11:00, not at 9:30, because workers are going to clean the old ships. So please come at 10:30, not at 9:00.\nThe meeting after the tours is cancelled. We'll have it on Monday at 5 pm in the café.\nElif, thank you for helping the family from Canada. They wrote a lovely message about you!\nBest wishes,\nOzan",
+              "question": "Ozan'ın e-postasına göre toplantı ne zaman yapılacak?",
+              "options": [
+                "Cumartesi turlardan sonra",
+                "Pazar sabahı",
+                "Cumartesi 11.00'de",
+                "Pazartesi 17.00'de"
+              ],
+              "answer": 3,
+              "explanation": "\"Pazartesi 17.00'de\" doğru: metinde \"We'll have it on Monday at 5 pm\" yazıyor."
+            },
+            {
+              "type": "translate",
+              "text": "Geçen yaz ailemle Antalya'ya gittik.",
+              "lang": "tr",
+              "answers": [
+                "Last summer we went to Antalya with my family",
+                "We went to Antalya with my family last summer",
+                "Last summer my family and I went to Antalya"
+              ],
+              "tokens": [
+                "Last",
+                "summer",
+                "we",
+                "went",
+                "to",
+                "Antalya",
+                "with",
+                "my",
+                "family",
+                "goed",
+                "the"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ondan sonra Mia plajda telefonunu kaybetti.",
+              "lang": "tr",
+              "answers": [
+                "After that, Mia lost her phone on the beach.",
+                "Mia lost her phone on the beach after that."
+              ],
+              "tokens": [
+                "After",
+                "that",
+                "Mia",
+                "lost",
+                "her",
+                "phone",
+                "on",
+                "the",
+                "beach",
+                "losed",
+                "his"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Affedersiniz, Londra uçağının hangi kapıdan kalktığını söyler misiniz?",
+              "lang": "tr",
+              "answers": [
+                "Excuse me, could you tell me which gate the London flight leaves from?",
+                "Excuse me, can you tell me which gate the London flight leaves from?",
+                "Excuse me, could you tell me which gate the flight to London leaves from?"
+              ],
+              "tokens": [
+                "Excuse",
+                "me",
+                "could",
+                "you",
+                "tell",
+                "me",
+                "which",
+                "gate",
+                "the",
+                "London",
+                "flight",
+                "leaves",
+                "from",
+                "does",
+                "leave"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "İzmir treni iptal edildi.",
+              "lang": "tr",
+              "answers": [
+                "The İzmir train is cancelled",
+                "The İzmir train was cancelled",
+                "The train to İzmir is cancelled",
+                "The train to İzmir was cancelled"
+              ],
+              "tokens": [
+                "The",
+                "İzmir",
+                "train",
+                "is",
+                "cancelled",
+                "delayed",
+                "cancel"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hediye için teşekkür ederim. Çok güzel.",
+              "lang": "tr",
+              "answers": [
+                "Thank you for the gift. It's very beautiful",
+                "Thanks for the gift. It's very beautiful",
+                "Thank you for the gift. It is very beautiful",
+                "Thank you for the present. It's very beautiful",
+                "Thank you for the gift. It's very nice"
+              ],
+              "tokens": [
+                "Thank",
+                "you",
+                "for",
+                "the",
+                "gift",
+                "It's",
+                "very",
+                "beautiful",
+                "to",
+                "a"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Yesterday we ___ the bus to the old town.",
+              "translation": "Dün eski şehre otobüsle gittik.",
+              "answer": "took",
+              "choices": [
+                "took",
+                "taked",
+                "take"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "Anons: \"The seven forty train is cancelled.\" Bu ne demek?",
+              "answer": "7.40 treni bugün gitmeyecek",
+              "choices": [
+                {
+                  "text": "7.40 treni bugün gitmeyecek",
+                  "emoji": "🚫"
+                },
+                {
+                  "text": "7.40 treni geç kalkacak",
+                  "emoji": "⏳"
+                },
+                {
+                  "text": "7.40 treni erken kalkacak",
+                  "emoji": "⏩"
+                },
+                {
+                  "text": "Tren 7.40'ta varacak",
+                  "emoji": "🚉"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "My grandma was ill, ___ I stayed at home with her.",
+              "translation": "Ninem hastaydı, bu yüzden evde onunla kaldım.",
+              "answer": "so",
+              "choices": [
+                "so",
+                "because",
+                "but"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3u15c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}
