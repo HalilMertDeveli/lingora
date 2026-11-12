@@ -1,5 +1,6 @@
-// YDS Faz 1 (docs/sinav/yds-faz1-icerik.md): the ys5 word bank and its cards in assets/vocab/yds.json.
-// - every card word is new: not taught in the general course s1–s6 nor in the old YDS path (0 overlap)
+// YDS word banks and their cards in assets/vocab/yds.json: ys5 (Faz 1, docs/sinav/yds-faz1-icerik.md)
+// and ys7 (Faz 2a, docs/sinav/yds-faz2-icerik.md).
+// - every card word is new: not taught before its bank (0 overlap)
 // - cards are complete (example with Turkish, collocation, family for verbs and nouns)
 // - the cards and the ys5 vocab lessons describe the same words.
 import 'dart:convert';
@@ -22,8 +23,31 @@ const _oldYds = [
   'assets/courses/exam_yds/03_soru_tipleri.json',
   'assets/courses/exam_yds/04_deneme_ve_zaman.json',
 ];
-const _bank = 'assets/courses/exam_yds/05_kelime_bankasi_1.json';
 const _cards = 'assets/vocab/yds.json';
+
+/// The general course, all sections and skill files (Faz 2 exclusion set).
+List<String> _generalAll() => [
+  'assets/courses/tr_en.json',
+  ...(Directory('assets/courses/tr_en')
+      .listSync()
+      .whereType<File>()
+      .map((f) => f.path.replaceAll(r'\', '/'))
+      .where((p) => p.endsWith('.json'))
+      .toList()
+    ..sort()),
+];
+
+/// (section, file, units, taught-before files, earlier banks whose cards also count as taught)
+final _banks = <(String, String, int, List<String> Function(), List<String>)>[
+  ('ys5', 'assets/courses/exam_yds/05_kelime_bankasi_1.json', 10, () => [..._general, ..._oldYds], []),
+  (
+    'ys7',
+    'assets/courses/exam_yds/07_kelime_bankasi_2.json',
+    15,
+    () => [..._generalAll(), ..._oldYds, 'assets/courses/exam_yds/05_kelime_bankasi_1.json'],
+    ['ys5'],
+  ),
+];
 
 Map<String, dynamic> _read(String path) =>
     jsonDecode(File(path).readAsStringSync().replaceFirst('﻿', '')) as Map<String, dynamic>;
@@ -64,96 +88,116 @@ Set<String> _taught(List<String> files) {
 }
 
 void main() {
-  final shipped = File(_cards).existsSync() && File(_bank).existsSync();
+  final vocabShipped = File(_cards).existsSync();
 
-  group('YDS kelime bankası 1', skip: shipped ? false : 'not shipped yet', () {
-    late final Map<String, dynamic> vocab = _read(_cards);
-    late final List<Map<String, dynamic>> bankCards = [
-      for (final e in vocab['entries'] as List)
-        if (((e as Map)['topic'] as String).startsWith('ys5u')) e as Map<String, dynamic>,
-    ];
-
-    test('800 cards, unique ids and words, ranks 1..N, topics are the 10 ys5 units', () {
-      final entries = (vocab['entries'] as List).cast<Map<String, dynamic>>();
-      expect(bankCards.length, 800);
-      expect(entries.map((e) => e['id']).toSet().length, entries.length);
-      expect(entries.map((e) => (e['word'] as String).toLowerCase()).toSet().length, entries.length);
-      expect([for (final e in entries) e['rank']], [for (var i = 1; i <= entries.length; i++) i]);
-      final topics = [for (final t in vocab['topics'] as List) (t as Map)['name']];
-      expect(topics, [for (var i = 1; i <= 10; i++) 'ys5u$i']);
-      for (final t in topics) {
-        expect(bankCards.where((e) => e['topic'] == t), hasLength(80), reason: '$t');
-      }
-    });
-
-    test('every card has a Turkish sense, an example with translation, a collocation and a family', () {
-      final problems = <String>[];
-      for (final e in bankCards) {
-        final w = e['word'] as String;
-        if (e['id'] != 'yd_${w.replaceAll(' ', '_')}') problems.add('$w: id');
-        final senses = (e['senses'] as List).cast<Map>();
-        if (senses.isEmpty || senses.any((s) => '${s['tr']}'.isEmpty || '${s['def']}'.isEmpty)) {
-          problems.add('$w: senses');
-        }
-        final ex = (e['examples'] as List).cast<Map>();
-        if (ex.isEmpty || ex.any((x) => '${x['tr']}'.isEmpty || !'${x['en']}'.contains('${x['target']}'))) {
-          problems.add('$w: example');
-        }
-        final col = (e['collocations'] as List).cast<Map>();
-        if (col.isEmpty ||
-            col.any((c) => !'${c['phrase']}'.contains('${c['answer']}') || '${c['tr']}'.isEmpty)) {
-          problems.add('$w: collocation');
-        }
-        if (RegExp('verb|noun').hasMatch(e['pos'] as String) && e['family'] is! List) {
-          problems.add('$w: family');
-        }
-      }
-      expect(problems, isEmpty, reason: problems.take(20).join('\n'));
-    });
-
-    test('no card word was taught before (general course s1–s6, YDS path ys1–ys4)', () {
-      final taught = _taught([..._general, ..._oldYds]);
-      final clash = [
-        for (final e in bankCards)
-          if (taught.contains((e['word'] as String).toLowerCase())) e['word'],
-      ];
-      expect(clash, isEmpty, reason: '800 kelime, ${clash.length} çakışma: ${clash.take(20).join(', ')}');
-    });
-
-    test('every choice question names its YDS question type (qtype)', () {
-      const qtypes = {
-        'vocabulary', 'grammar', 'cloze', 'sentenceCompletion', 'translation', 'reading', 'dialogue', //
-        'restatement', 'paragraphCompletion', 'irrelevantSentence',
-      };
-      final bad = [
-        for (final e in _exercises(_bank))
-          if (e['type'] == 'choice' && !qtypes.contains(e['qtype'])) e['question'],
-      ];
-      expect(bad, isEmpty, reason: bad.take(10).join('\n'));
-    });
-
+  test('yds.json: unique ids and words, ranks 1..N, topics are the shipped bank units, loads through VocabBundle', () {
+    if (!vocabShipped) return;
+    final vocab = _read(_cards);
+    final entries = (vocab['entries'] as List).cast<Map<String, dynamic>>();
+    expect(entries.map((e) => e['id']).toSet().length, entries.length);
+    expect(entries.map((e) => (e['word'] as String).toLowerCase()).toSet().length, entries.length);
+    expect([for (final e in entries) e['rank']], [for (var i = 1; i <= entries.length; i++) i]);
+    final topics = [for (final t in vocab['topics'] as List) (t as Map)['name']];
+    expect(topics, [
+      for (final (sec, file, units, _, _) in _banks)
+        if (File(file).existsSync())
+          for (var i = 1; i <= units; i++) '${sec}u$i',
+    ]);
     // The app reads the cards through VocabBundle (YDS example contexts: genel/akademik/haber).
-    test('cards load through VocabBundle', () {
-      final bundle = VocabBundle.fromJson(vocab);
-      expect(bundle.entries.length, (vocab['entries'] as List).length);
-      // Every card's topic is a listed unit (compared as sets: 800 cards, 10 topics).
-      expect(
-        bundle.topics.map((t) => t.name).toSet(),
-        containsAll(bundle.entries.map((e) => e.topic).toSet()),
-      );
-    });
-
-    test('each unit introduces its card words in its vocab lessons', () {
-      final bank = _read(_bank);
-      for (final u in bank['units'] as List) {
-        final id = (u as Map)['id'] as String;
-        final text = jsonEncode(u).toLowerCase();
-        final missing = [
-          for (final e in bankCards)
-            if (e['topic'] == id && !text.contains((e['word'] as String).toLowerCase())) e['word'],
-        ];
-        expect(missing, isEmpty, reason: '$id: $missing');
-      }
-    });
+    final bundle = VocabBundle.fromJson(vocab);
+    expect(bundle.entries.length, entries.length);
+    expect(bundle.topics.map((t) => t.name).toSet(), containsAll(bundle.entries.map((e) => e.topic).toSet()));
   });
+
+  for (final (sec, file, units, before, earlierBanks) in _banks) {
+    final shipped = vocabShipped && File(file).existsSync();
+    group('YDS kelime bankası $sec', skip: shipped ? false : 'not shipped yet', () {
+      late final Map<String, dynamic> vocab = _read(_cards);
+      late final List<Map<String, dynamic>> bankCards = [
+        for (final e in vocab['entries'] as List)
+          if (((e as Map)['topic'] as String).startsWith('${sec}u')) e as Map<String, dynamic>,
+      ];
+
+      test('${units * 80} cards, 80 per unit, ids yd_<word>', () {
+        expect(bankCards.length, units * 80);
+        for (var i = 1; i <= units; i++) {
+          expect(bankCards.where((e) => e['topic'] == '${sec}u$i'), hasLength(80), reason: '${sec}u$i');
+        }
+      });
+
+      test('every card has a Turkish sense, an example with translation, a collocation and a family', () {
+        final problems = <String>[];
+        for (final e in bankCards) {
+          final w = e['word'] as String;
+          if (e['id'] != 'yd_${w.replaceAll(' ', '_')}') problems.add('$w: id');
+          final senses = (e['senses'] as List).cast<Map>();
+          if (senses.isEmpty || senses.any((s) => '${s['tr']}'.isEmpty || '${s['def']}'.isEmpty)) {
+            problems.add('$w: senses');
+          }
+          final ex = (e['examples'] as List).cast<Map>();
+          if (ex.isEmpty || ex.any((x) => '${x['tr']}'.isEmpty || !'${x['en']}'.contains('${x['target']}'))) {
+            problems.add('$w: example');
+          }
+          final col = (e['collocations'] as List).cast<Map>();
+          if (col.isEmpty ||
+              col.any((c) => !'${c['phrase']}'.contains('${c['answer']}') || '${c['tr']}'.isEmpty)) {
+            problems.add('$w: collocation');
+          }
+          if (RegExp('verb|noun').hasMatch(e['pos'] as String) && e['family'] is! List) {
+            problems.add('$w: family');
+          }
+        }
+        expect(problems, isEmpty, reason: problems.take(20).join('\n'));
+      });
+
+      test('no card word was taught before this bank', () {
+        final taught = {
+          ..._taught(before()),
+          for (final e in vocab['entries'] as List)
+            if (earlierBanks.any((b) => ((e as Map)['topic'] as String).startsWith('${b}u')))
+              ((e as Map)['word'] as String).toLowerCase(),
+        };
+        final clash = [
+          for (final e in bankCards)
+            if (taught.contains((e['word'] as String).toLowerCase())) e['word'],
+        ];
+        expect(
+          clash,
+          isEmpty,
+          reason: '${bankCards.length} kelime, ${clash.length} çakışma: ${clash.take(20).join(', ')}',
+        );
+      });
+
+      test('every choice question names its YDS question type (qtype)', () {
+        const qtypes = {
+          'vocabulary', 'grammar', 'cloze', 'sentenceCompletion', 'translation', 'reading', 'dialogue', //
+          'restatement', 'paragraphCompletion', 'irrelevantSentence',
+        };
+        final bad = [
+          for (final e in _exercises(file))
+            if (e['type'] == 'choice' && !qtypes.contains(e['qtype'])) e['question'],
+        ];
+        expect(bad, isEmpty, reason: bad.take(10).join('\n'));
+      });
+
+      test('each unit introduces its card words in its vocab lessons', () {
+        for (final u in _read(file)['units'] as List) {
+          final id = (u as Map)['id'] as String;
+          final text = jsonEncode(u).toLowerCase();
+          // Phrasal verbs may be inflected ("drew on" for "draw on"): their particles must appear.
+          bool used(String w) {
+            final parts = w.toLowerCase().split(' ');
+            return text.contains(w.toLowerCase()) ||
+                (parts.length > 1 && text.contains(' ${parts.skip(1).join(' ')}'));
+          }
+
+          final missing = [
+            for (final e in bankCards)
+              if (e['topic'] == id && !used(e['word'] as String)) e['word'],
+          ];
+          expect(missing, isEmpty, reason: '$id: $missing');
+        }
+      });
+    });
+  }
 }
