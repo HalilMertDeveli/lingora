@@ -524,7 +524,9 @@
       "unitIds": [
         "ys1u5"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u1"
+      ],
       "grammar": "relative clause, kısaltma",
       "questionWork": "Dilbilgisi, çeviri",
       "mock": null,
@@ -543,7 +545,10 @@
         "s7u2",
         "ys1u6"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u2",
+        "ys8u1"
+      ],
       "grammar": "noun clause, mixed conditionals",
       "questionWork": "Dilbilgisi, cümle tamamlama",
       "mock": "Yarım deneme 2",
@@ -561,7 +566,10 @@
         "s7u3",
         "ys1u7"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u3",
+        "ys8u2"
+      ],
       "grammar": "gerund/infinitive, should have",
       "questionWork": "Dilbilgisi, cloze",
       "mock": null,
@@ -579,7 +587,10 @@
         "s7u4",
         "ys1u8"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u4",
+        "ys8u3"
+      ],
       "grammar": "bağlaç ve geçiş ifadeleri, haber dili",
       "questionWork": "Cümle tamamlama, paragraf tamamlama (giriş)",
       "mock": "Yarım deneme 3",
@@ -597,7 +608,9 @@
         "s7u7",
         "ys1u9"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u5"
+      ],
       "grammar": "edat + eşdizim, causative",
       "questionWork": "Kelime, cloze",
       "mock": null,
@@ -615,7 +628,10 @@
         "s7u8",
         "ys1u10"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u6",
+        "ys8u4"
+      ],
       "grammar": "quantifier, karşılaştırma, inversion",
       "questionWork": "Karışık set (ys1)",
       "mock": "Bölüm 1 denemesi (ys1 sonu)",
@@ -633,7 +649,10 @@
         "ys2u1",
         "ys2u2"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u7",
+        "ys8u5"
+      ],
       "grammar": "akademik fiil kalıpları",
       "questionWork": "Kelime, cümle tamamlama",
       "mock": "Yarım deneme 4",
@@ -651,7 +670,10 @@
         "ys2u3",
         "ys2u4"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u8",
+        "ys8u6"
+      ],
       "grammar": "phrasal verb, eşdizim",
       "questionWork": "Kelime, cloze",
       "mock": null,
@@ -670,7 +692,9 @@
         "ys2u5",
         "ys2u6"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u9"
+      ],
       "grammar": "eş anlam, bağlamdan anlam, yazıda bağlantı",
       "questionWork": "Kelime, restatement (giriş)",
       "mock": null,
@@ -689,7 +713,10 @@
         "ys2u8",
         "ys2u9"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u10",
+        "ys8u7"
+      ],
       "grammar": "alan terimleri",
       "questionWork": "Okuma (alan metinleri)",
       "mock": "Tam deneme 1 (yeni: yds_m9)",
@@ -708,7 +735,10 @@
         "ys2u10",
         "ys2u11"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u11",
+        "ys8u8"
+      ],
       "grammar": "ince anlam farkları",
       "questionWork": "Kelime, cloze",
       "mock": null,
@@ -727,7 +757,10 @@
         "ys2u12",
         "ys2u13"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u12",
+        "ys8u9"
+      ],
       "grammar": "akademik ses",
       "questionWork": "Kelime, okuma",
       "mock": "Yarım deneme 5",
@@ -745,7 +778,9 @@
         "ys2u14",
         "ys2u15"
       ],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u13"
+      ],
       "grammar": "zarf ve kalıplar",
       "questionWork": "Karışık set (ys2)",
       "mock": "Bölüm 2 denemesi (ys2 sonu)",
@@ -760,7 +795,11 @@
       "phase": 3,
       "units": "Tekrar haftası: ys1–ys2 zayıf üniteler (analize göre)",
       "unitIds": [],
-      "parallelUnitIds": [],
+      "parallelUnitIds": [
+        "ys7u14",
+        "ys7u15",
+        "ys8u10"
+      ],
       "grammar": "zayıf konular",
       "questionWork": "Karışık set (ys1–ys2)",
       "mock": "Tam deneme 2 (yeni: yds_m10)",

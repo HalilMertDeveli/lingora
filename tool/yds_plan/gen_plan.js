@@ -104,6 +104,10 @@ const parallel = {};
 for (let w = 11; w <= 20; w++) parallel[w] = [`ys5u${w - 10}`];
 const okuma = { 12: 'ys6u1', 13: 'ys6u2', 15: 'ys6u3', 16: 'ys6u4', 18: 'ys6u5', 20: 'ys6u6' };
 for (const [w, id] of Object.entries(okuma)) parallel[w].push(id);
+// F2 (docs/sinav/yds-faz2-icerik.md): ys7 one unit a week (two in week 34), ys8 in 10 of weeks 22–34.
+for (let w = 21; w <= 34; w++) parallel[w] = [`ys7u${w - 20}`];
+parallel[34].push('ys7u15');
+[22, 23, 24, 26, 27, 28, 30, 31, 32, 34].forEach((w, i) => parallel[w].push(`ys8u${i + 1}`));
 let total = 0;
 let readTotal = 0;
 const weeks = W.map(([week, units, grammar, qtype, mock]) => {
