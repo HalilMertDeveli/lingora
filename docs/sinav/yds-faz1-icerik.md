@@ -211,6 +211,22 @@ Bu ders, Türk adayların SOV → SVO zorluğunu hedefler (araştırma §1.6).
 
 - **Düzey:** B1–B1+. Bu bir tanı denemesidir; gerçek YDS'den bir basamak kolaydır. Açıklamada bunu söyleyin.
 
+## 4.1 Soru tipi alanı (`qtype`)
+
+Her yeni `choice` alıştırması bir `qtype` alanı taşır. Değerler:
+- `vocabulary`
+- `grammar`
+- `cloze`
+- `sentenceCompletion`
+- `translation`
+- `reading`
+- `dialogue`
+- `restatement`
+- `paragraphCompletion`
+- `irrelevantSentence`
+
+Bu değerler `assets/plans/yds_1_yil.json` içindeki `targetSeconds` anahtarlarıyla aynıdır. Hata defteri ve deneme raporu soru tipini bu alandan okur.
+
 ## 5. Kabul ölçütleri (inceleme listem)
 
 PR'ınızı şu listeyle inceleyeceğim:
