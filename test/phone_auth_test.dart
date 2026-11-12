@@ -46,6 +46,10 @@ void main() {
       'network-request-failed',
     );
     expect(authErrorCode(e('internal-error', 'Unable to resolve host "x"')), 'network-request-failed');
+    expect(
+      authErrorCode(e('unknown', 'An internal error has occurred. [ Software caused connection abort ]')),
+      'network-request-failed',
+    );
     expect(authErrorCode(e('unknown', 'EMAIL_NOT_FOUND')), 'user-not-found');
     expect(authErrorCode(e('unknown', 'something else')), 'unknown');
     expect(authErrorCode(e('wrong-password', 'network')), 'wrong-password');

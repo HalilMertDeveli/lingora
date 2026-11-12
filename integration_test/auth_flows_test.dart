@@ -35,15 +35,32 @@ void main() {
     );
   }
 
+  /// An e-mail account with Premium whose cloud copy holds [lessons], made
+  /// through the app's own flow (guest → lessons → register).
+  Future<void> seedPremiumAccount(String email, List<String> lessons) async {
+    final d = await start();
+    final uid = await d.guest();
+    await emu.grantPremium(uid);
+    await until(() => d.premium, 'seed: premium');
+    lessons.forEach(d.finishLesson);
+    await untilAsync(
+      () async => (await emu.cloudCompleted(uid)).containsAll(lessons),
+      'seed: lessons in the cloud',
+    );
+    await d.account.registerWithEmail(email, 'secret123');
+    await until(() => d.user?.email == email, 'seed: account');
+    await device?.close();
+    device = null;
+  }
+
   setUpAll(() async {
-    if (!await emu.reachable()) {
-      fail(
-        'Firebase emülatörleri ${emu.host} adresinde yok. Önce: '
-        'firebase emulators:start --only auth,firestore --project demo-lingora',
-      );
-    }
-    await emu.reset();
+    debugPrint('Firebase emulators: ${emu.host} (auth $authEmulatorPort, firestore $firestoreEmulatorPort)');
+    await emu.waitReady();
   });
+
+  // Every group starts from an empty emulator and seeds what it needs, so
+  // groups do not depend on each other and can run (or fail) alone.
+  setUp(() => expect(device, isNull, reason: 'previous device closed'));
 
   tearDown(() async {
     await device?.close();
@@ -62,6 +79,8 @@ void main() {
   });
 
   group('1. guest → e-mail account', () {
+    setUpAll(emu.reset);
+
     test('free: uid kept, progress kept on the device', () async {
       final d = await start();
       final guestUid = await d.guest();
@@ -108,8 +127,14 @@ void main() {
   });
 
   group('2. sign in on another device (clean storage)', () {
+    setUpAll(() async {
+      await emu.reset();
+      await seedPremiumAccount('prem1@example.com', ['u1_n1', 'u1_n2', 'u1_n3']);
+      await emu.createEmailUser('free1@example.com', 'secret123');
+    });
+
     test('premium account: device and cloud progress merge', () async {
-      // Device A: prem1@example.com has u1_n1..3 in the cloud (group 1).
+      // Device A: prem1@example.com has u1_n1..3 in the cloud (seeded above).
       final a = await start();
       await a.guest(); // the sign-in button waits for the guest account
       await a.account.signInWithEmail('prem1@example.com', 'secret123');
@@ -138,7 +163,7 @@ void main() {
     });
 
     test('free account: no cloud copy, device progress is kept', () async {
-      // free1@example.com from group 1: no entitlement.
+      // free1@example.com (seeded above): no entitlement.
       final b = await start();
       await b.guest();
       b.finishLesson('u3_n1');
@@ -151,6 +176,7 @@ void main() {
   });
 
   group('3. phone', () {
+    setUpAll(emu.reset);
     const raw = '0532 111 22 33';
     const e164 = '+905321112233';
 
@@ -198,6 +224,7 @@ void main() {
   });
 
   group('4. Google (fake id_token)', () {
+    setUpAll(emu.reset);
     Future<AuthCredential?> google() async => fakeGoogleCredential('g-1001', 'ayse@example.com');
 
     test('links the guest account', () async {
@@ -241,6 +268,11 @@ void main() {
   });
 
   group('5. sign out', () {
+    setUpAll(() async {
+      await emu.reset();
+      await seedPremiumAccount('prem1@example.com', ['u1_n1']);
+    });
+
     test('new guest account; progress stays on the device; no Premium carried over', () async {
       final d = await start();
       await d.guest();
@@ -264,6 +296,8 @@ void main() {
   });
 
   group('6. no connection', () {
+    setUpAll(emu.reset);
+
     test('auth emulator down: nothing crashes, progress stays local', () async {
       // Port 1 is closed: every Auth/Firestore call fails like "no network".
       final d = await start(authPort: 1, fsPort: 1);
@@ -308,7 +342,17 @@ void main() {
   });
 
   group('7. Turkish messages', () {
+    setUpAll(() async {
+      await emu.reset();
+      await emu.createEmailUser('prem1@example.com', 'secret123');
+    });
+
     Future<void> pumpAuth(WidgetTester tester, AccountService service) async {
+      // A tall phone (432×960 dp). CI emulators have small screens where the
+      // keyboard pushes the lower fields out of the lazy ListView.
+      tester.view.physicalSize = const Size(1080, 2400);
+      tester.view.devicePixelRatio = 2.5;
+      addTearDown(tester.view.reset);
       await tester.pumpWidget(
         MaterialApp(
           theme: buildTheme(brightness: Brightness.light),
@@ -320,19 +364,46 @@ void main() {
       await tester.pump();
     }
 
-    Future<void> waitFor(WidgetTester tester, Finder f) async {
+    Finder authList() => find
+        .descendant(of: find.byKey(const ValueKey('auth-screen')), matching: find.byType(Scrollable))
+        .first;
+
+    /// Scrolls the sign-in form until [f] is built and on screen.
+    Future<void> reveal(WidgetTester tester, Finder f) async {
+      if (f.evaluate().isEmpty) {
+        await tester.scrollUntilVisible(f, 120, scrollable: authList());
+      } else {
+        await tester.ensureVisible(f);
+      }
+      await tester.pump();
+    }
+
+    Future<void> tapKey(WidgetTester tester, String key) async {
+      final f = find.byKey(ValueKey(key));
+      await reveal(tester, f);
+      await tester.tap(f);
+      await tester.pump();
+    }
+
+    Future<void> waitFor(WidgetTester tester, Finder f, {bool inForm = false}) async {
       for (var i = 0; i < 150 && f.evaluate().isEmpty; i++) {
         await tester.pump(const Duration(milliseconds: 100));
+        if (inForm && i % 10 == 9 && f.evaluate().isEmpty) {
+          // The message may sit below the visible part of the form.
+          await tester.drag(authList(), const Offset(0, -150));
+        }
       }
       expect(f, findsOneWidget);
     }
 
     String error(WidgetTester tester) => tester.widget<Text>(find.byKey(const ValueKey('auth-error'))).data!;
 
-    Future<void> fill(WidgetTester tester, String key, String text) => tester.enterText(
-      find.descendant(of: find.byKey(ValueKey(key)), matching: find.byType(TextField)),
-      text,
-    );
+    Future<void> fill(WidgetTester tester, String key, String text) async {
+      final f = find.descendant(of: find.byKey(ValueKey(key)), matching: find.byType(TextField));
+      await reveal(tester, f);
+      await tester.enterText(f, text);
+      await tester.pump();
+    }
 
     testWidgets('wrong password', (tester) async {
       final d = await start();
@@ -340,8 +411,8 @@ void main() {
       await pumpAuth(tester, d.account);
       await fill(tester, 'auth-email', 'prem1@example.com');
       await fill(tester, 'auth-password', 'yanlis-sifre');
-      await tester.tap(find.byKey(const ValueKey('auth-submit')));
-      await waitFor(tester, find.byKey(const ValueKey('auth-error')));
+      await tapKey(tester, 'auth-submit');
+      await waitFor(tester, find.byKey(const ValueKey('auth-error')), inForm: true);
       expect(error(tester), 'E-posta ya da şifre hatalı.');
     });
 
@@ -351,8 +422,8 @@ void main() {
       await pumpAuth(tester, d.account);
       await fill(tester, 'auth-email', 'kimse@example.com');
       await fill(tester, 'auth-password', 'secret123');
-      await tester.tap(find.byKey(const ValueKey('auth-submit')));
-      await waitFor(tester, find.byKey(const ValueKey('auth-error')));
+      await tapKey(tester, 'auth-submit');
+      await waitFor(tester, find.byKey(const ValueKey('auth-error')), inForm: true);
       expect(error(tester), 'E-posta ya da şifre hatalı.');
     });
 
@@ -361,8 +432,8 @@ void main() {
       await d.guest();
       await pumpAuth(tester, d.account);
       await fill(tester, 'auth-email', 'prem1@example.com');
-      await tester.tap(find.byKey(const ValueKey('auth-submit')));
-      await waitFor(tester, find.byKey(const ValueKey('auth-error')));
+      await tapKey(tester, 'auth-submit');
+      await waitFor(tester, find.byKey(const ValueKey('auth-error')), inForm: true);
       expect(error(tester), 'Şifreni yaz.');
     });
 
@@ -370,13 +441,12 @@ void main() {
       final d = await start();
       await d.guest();
       await pumpAuth(tester, d.account);
-      await tester.tap(find.byKey(const ValueKey('auth-mode-register')));
-      await tester.pump();
+      await tapKey(tester, 'auth-mode-register');
       await fill(tester, 'auth-email', 'zayif@example.com');
       await fill(tester, 'auth-password', '123');
       await fill(tester, 'auth-password2', '123');
-      await tester.tap(find.byKey(const ValueKey('auth-submit')));
-      await waitFor(tester, find.byKey(const ValueKey('auth-error')));
+      await tapKey(tester, 'auth-submit');
+      await waitFor(tester, find.byKey(const ValueKey('auth-error')), inForm: true);
       expect(error(tester), 'Şifre en az 6 karakter olmalı.');
       expect(d.user!.isAnonymous, isTrue);
     });
@@ -385,13 +455,12 @@ void main() {
       final d = await start();
       await d.guest();
       await pumpAuth(tester, d.account);
-      await tester.tap(find.byKey(const ValueKey('auth-mode-register')));
-      await tester.pump();
+      await tapKey(tester, 'auth-mode-register');
       await fill(tester, 'auth-email', 'prem1@example.com');
       await fill(tester, 'auth-password', 'secret123');
       await fill(tester, 'auth-password2', 'secret123');
-      await tester.tap(find.byKey(const ValueKey('auth-submit')));
-      await waitFor(tester, find.byKey(const ValueKey('auth-error')));
+      await tapKey(tester, 'auth-submit');
+      await waitFor(tester, find.byKey(const ValueKey('auth-error')), inForm: true);
       expect(error(tester), 'Bu e-posta ile zaten bir hesap var. "Giriş yap"ı dene.');
     });
 
@@ -401,7 +470,7 @@ void main() {
         await d.guest();
         await pumpAuth(tester, d.account);
         await fill(tester, 'auth-email', email);
-        await tester.tap(find.byKey(const ValueKey('auth-forgot')));
+        await tapKey(tester, 'auth-forgot');
         await waitFor(tester, find.text('Şifre sıfırlama bağlantısı $email adresine gönderildi.'));
         expect(find.byKey(const ValueKey('auth-error')), findsNothing);
       });
@@ -411,8 +480,8 @@ void main() {
       final d = await start();
       await d.guest();
       await pumpAuth(tester, d.account);
-      await tester.tap(find.byKey(const ValueKey('auth-forgot')));
-      await waitFor(tester, find.byKey(const ValueKey('auth-error')));
+      await tapKey(tester, 'auth-forgot');
+      await waitFor(tester, find.byKey(const ValueKey('auth-error')), inForm: true);
       expect(error(tester), 'Önce e-posta adresini yaz.');
     });
 
@@ -421,7 +490,7 @@ void main() {
       await d.guest();
       await pumpAuth(tester, d.account);
       for (final bad in ['123', '0532 12', 'abc']) {
-        await tester.tap(find.byKey(const ValueKey('auth-phone')));
+        await tapKey(tester, 'auth-phone');
         await tester.pumpAndSettle();
         await tester.enterText(find.byKey(const ValueKey('phone-number')), bad);
         await tester.tap(find.text('Kod gönder'));
@@ -435,7 +504,7 @@ void main() {
       final d = await start();
       await d.guest();
       await pumpAuth(tester, d.account);
-      await tester.tap(find.byKey(const ValueKey('auth-phone')));
+      await tapKey(tester, 'auth-phone');
       await tester.pumpAndSettle();
       await tester.enterText(find.byKey(const ValueKey('phone-number')), '0533 444 55 66');
       await tester.tap(find.text('Kod gönder'));

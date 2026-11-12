@@ -67,6 +67,33 @@ class Emulators {
     }
   }
 
+  /// Waits until both emulators answer (CI starts them right before the
+  /// tests). Throws with the host and ports when they never do.
+  Future<void> waitReady({Duration timeout = const Duration(seconds: 90)}) async {
+    final end = DateTime.now().add(timeout);
+    while (!await reachable()) {
+      if (DateTime.now().isAfter(end)) {
+        throw StateError(
+          'Firebase emulators not reachable at $host (auth $authEmulatorPort, firestore '
+          '$firestoreEmulatorPort). Start them first: '
+          'firebase emulators:start --only auth,firestore --project $_project',
+        );
+      }
+      await Future<void>.delayed(const Duration(seconds: 1));
+    }
+  }
+
+  /// Creates an e-mail/password account directly in the Auth emulator and
+  /// returns its uid (for tests that only need the account to exist).
+  Future<String> createEmailUser(String email, String password) async {
+    final res = await _send(
+      'POST',
+      _auth('/identitytoolkit.googleapis.com/v1/accounts:signUp?key=demo-api-key'),
+      {'email': email, 'password': password, 'returnSecureToken': true},
+    ) as Map;
+    return res['localId'] as String;
+  }
+
   /// Deletes every account and document.
   Future<void> reset() async {
     await _send('DELETE', _auth('/emulator/v1/projects/$_project/accounts'));
@@ -186,7 +213,9 @@ class TestDevice {
             uid: uid,
           );
         }),
-        accountServiceProvider.overrideWithValue(AccountService(auth, googleCredential: google)),
+        accountServiceProvider.overrideWithValue(
+          _RetryingAccountService(auth, google: google, retry: authPort == authEmulatorPort),
+        ),
         syncDebounceProvider.overrideWithValue(const Duration(milliseconds: 300)),
         syncRetryProvider.overrideWithValue(const Duration(seconds: 2)),
       ],
@@ -251,4 +280,47 @@ Future<void> untilAsync(
 
 void expectTrue(bool v, String what) {
   if (!v) throw StateError('Expected: $what');
+}
+
+/// The app's AccountService, retrying a call once when the connection to the
+/// emulator dropped. Android reuses keep-alive connections that the Auth
+/// emulator has already closed (e.g. after [Emulators.reset]), which fails
+/// one request with "Software caused connection abort". Real users see the
+/// "no internet" message and tap again; the tests do the same.
+class _RetryingAccountService extends AccountService {
+  _RetryingAccountService(super.auth, {Future<AuthCredential?> Function()? google, required this.retry})
+    : super(googleCredential: google);
+
+  /// False for the deliberately offline device.
+  final bool retry;
+
+  Future<T> _again<T>(Future<T> Function() run) async {
+    try {
+      return await run();
+    } on AccountException catch (e) {
+      if (!retry || !e.message.startsWith('İnternet bağlantısı yok')) rethrow;
+      await Future<void>.delayed(const Duration(milliseconds: 300));
+      return run();
+    }
+  }
+
+  @override
+  Future<void> signInAnonymously() => _again(super.signInAnonymously);
+  @override
+  Future<void> registerWithEmail(String email, String password) =>
+      _again(() => super.registerWithEmail(email, password));
+  @override
+  Future<void> signInWithEmail(String email, String password) =>
+      _again(() => super.signInWithEmail(email, password));
+  @override
+  Future<void> sendPasswordResetEmail(String email) => _again(() => super.sendPasswordResetEmail(email));
+  @override
+  Future<void> signInWithGoogle() => _again(super.signInWithGoogle);
+  @override
+  Future<String?> startPhoneSignIn(String rawPhone) => _again(() => super.startPhoneSignIn(rawPhone));
+  @override
+  Future<void> confirmPhoneCode(String verificationId, String code) =>
+      _again(() => super.confirmPhoneCode(verificationId, code));
+  @override
+  Future<void> signOut() => _again(super.signOut);
 }

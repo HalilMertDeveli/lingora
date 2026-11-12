@@ -210,7 +210,15 @@ class AccountService {
 String authErrorCode(FirebaseAuthException e) {
   if (e.code != 'unknown' && e.code != 'internal-error') return e.code;
   final m = (e.message ?? '').toLowerCase();
-  const offline = ['failed to connect', 'unable to resolve host', 'network', 'timeout', 'timed out'];
+  const offline = [
+    'failed to connect',
+    'unable to resolve host',
+    'network',
+    'timeout',
+    'timed out',
+    'connection abort',
+    'connection reset',
+  ];
   if (offline.any(m.contains)) return 'network-request-failed';
   if (m.contains('email_not_found') || m.contains('user_not_found')) return 'user-not-found';
   return e.code;

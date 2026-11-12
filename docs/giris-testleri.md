@@ -29,7 +29,11 @@ firebase emulators:exec --only auth,firestore --project demo-lingora "flutter te
 
 - Android emülatörü bilgisayardaki emülatörlere `10.0.2.2` ile ulaşır. Gerçek telefonda
   `--dart-define=LINGORA_EMULATOR_HOST=<bilgisayarın LAN IP'si>` ver ve emülatörleri `0.0.0.0`'da başlat.
-- Testler başlarken emülatördeki tüm hesapları ve belgeleri siler.
+- Test önce emülatörlerin cihazdan erişilebilir olmasını bekler (90 sn). Her senaryo grubu emülatördeki tüm
+  hesapları ve belgeleri silerek başlar ve ihtiyaç duyduğu hesapları kendisi açar. Gruplar birbirine bağlı değildir;
+  `--plain-name "5. sign out"` ile tek başına da koşar.
+- Giriş ekranı testleri büyük bir ekran boyutu kullanır ve alanları görünene kadar kaydırır. 320 dp genişlikte de
+  geçer; küçük ekranlı CI emülatörlerinde de böyle çalışır.
 - Her "cihaz" ayrı bir `FirebaseApp` (kendi oturumu ve Firestore önbelleği) ve boş depolama ile başlar. Böylece
   "başka telefondan giriş" aynı test içinde denenir.
 - Premium, emülatörün yönetici REST ucu ile `entitlements/{uid}` yazılarak verilir (verifyPurchase'ın yaptığı gibi).
