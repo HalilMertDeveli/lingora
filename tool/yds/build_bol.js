@@ -1,12 +1,15 @@
 // Builds the YDS extensive-reading files (ReadingStory arrays) from tool/yds/work/:
 //   node tool/yds/build_bol.js      → assets/reading/yds_bol_okuma_1.json from bol_*.json  (B1 first, then B1+)
 //   node tool/yds/build_bol.js 2    → assets/reading/yds_bol_okuma_2.json from bol2_*.json (B1+ first, then B2)
+//   node tool/yds/build_bol.js 3    → assets/reading/yds_bol_okuma_3.json from bol3_*.json (B2, Faz 4b)
 // Each level group keeps the writers' order.
 const l = require('./lex.js');
 const work = l.path.join(__dirname, 'work');
-const set = process.argv[2] === '2'
-  ? { pattern: /^bol2_(\d+)\.json$/, levels: ['B1+', 'B2'], out: 'yds_bol_okuma_2' }
-  : { pattern: /^bol_(\d+)\.json$/, levels: ['B1', 'B1+'], out: 'yds_bol_okuma_1' };
+const set = {
+  1: { pattern: /^bol_(\d+)\.json$/, levels: ['B1', 'B1+'], out: 'yds_bol_okuma_1' },
+  2: { pattern: /^bol2_(\d+)\.json$/, levels: ['B1+', 'B2'], out: 'yds_bol_okuma_2' },
+  3: { pattern: /^bol3_(\d+)\.json$/, levels: ['B2'], out: 'yds_bol_okuma_3' },
+}[process.argv[2] ?? '1'];
 const files = l.fs.readdirSync(work).filter((f) => set.pattern.test(f))
   .sort((a, b) => +a.match(set.pattern)[1] - +b.match(set.pattern)[1]);
 const all = files.flatMap((f) => JSON.parse(l.fs.readFileSync(l.path.join(work, f), 'utf8')));
