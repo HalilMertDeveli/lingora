@@ -171,6 +171,51 @@ Kontrol listesi (S5–S8 temel hikâyeleri):
   - 12 yeni `write` görevi ve rubrikleri,
   - emülatörde bir A1 önce-dinle hikâyesinin ekran görüntüsü.
 
+### Faz 6: okuma ve dinleme kütüphanesi (ortak kütüphane)
+
+**İkinci kütüphane kurulmaz.** Uygulamada tek bir okuma kütüphanesi var:
+
+- `assets/reading/stories.json` ve ek dosyalar, `ReadingStory` şeması.
+- Okuma ekranında TTS ile cümle cümle "Dinle" ve yavaş okuma var. Yani her metin aynı zamanda bir dinleme metni.
+- YDS ekibi bu kütüphaneye `yds_bol_okuma_*.json` ile 60 B1/B1+ bol okuma metni ekliyor (400–700 kelime; PR #56). Bu metinler genel kullanıcıya da görünür.
+
+Genel kursun işi, kütüphanenin geri kalan seviyelerini doldurmak.
+
+**Mevcut durum ve hedef:**
+
+| Seviye | Şu an | YDS ekliyor | Faz 6 ekler | Uzunluk | Soru |
+|---|---|---|---|---|---|
+| A1 | 5 | – | **15** | 100–180 | 3 |
+| A2 | 5 | – | **20** | 150–250 | 3 |
+| B1 | 5 | 40 | **10** (gündelik konular: iş, şehir, ilişkiler; YDS metinleri biyografi ve bilim ağırlıklı) | 250–400 | 3 |
+| B1+ | 0 | 20 | – | | |
+| B2 | 0 | – | **20** | 400–650 | 3 |
+| C1 | 0 | – | Faz 4–5 ile birlikte (seviye eklenince) | | |
+
+Toplam 65 yeni metin.
+
+**İlkeler (bol okuma; ayrıntılar sinav/yds-arastirma.md §2.5):**
+
+- Metin okurun seviyesinin **bir tık altında** olmalı. Glossary'den sonra bilinmeyen kelime **≤ %2**. Kontrol, YDS'nin NGSL tabanlı betiğiyle yapılır (`tool/yds/check_bol.js` ya da genelleştirilmiş kopyası).
+- Sorular anlamayı kontrol eder, sınav sorusu değildir. 4 şık, Türkçe `explain`, cevabı metniyle anar.
+- Türler karışık olmalı: kısa öykü, kişisel anlatı, mektup/e-posta zinciri, röportaj, haber, nasıl yapılır. B2'de görüş yazısı ve popüler bilim de olur.
+- En az ⅓'ü **diyalog ağırlıklı** olmalı. Bunlar TTS ile dinleme için uygun.
+- Kadro (Elif, Kerem, Sam, Mia, Deniz) metinlerin yarısında kullanılabilir. Diğer yarısı bağımsız olsun ki kütüphane kurstan bağımsız da okunabilsin.
+- **Konu çakışması yok:** YDS bol okuma ve okuma evi konularıyla (BRIEF_bol.md listesi) ve genel kurs hikâyeleriyle aynı konu seçilmez.
+- **Kelime kuralı:** YDS ys5/ys7 bankası kelimeleri gloss'ta geçebilir. Metin onları hedef kelime gibi tekrar tekrar öğretmez.
+
+**Altyapı (küçük, yds-yontem ile kararlaştırılır):**
+
+1. **Ek dosya öneki.** `loadStories` şu an yalnızca `yds_bol_okuma_` önekini okuyor. Bunu `assets/reading/*_okuma_*.json` biçimindeki tüm dosyaları okuyacak şekilde genelleştirin, ya da bir önek listesi tutun. Genel dosyalar: `genel_okuma_a.json` (A1–A2) ve `genel_okuma_b.json` (B1–B2). Id öneki `go_`.
+2. **"Önce dinle" düğmesi** okuma ekranında: metin gizli, TTS baştan sona okur, sorular cevaplanınca metin açılır. Böylece kütüphane dinleme kütüphanesi olarak da çalışır. Hikâyedeki `listenFirst` ile aynı davranış.
+3. Okunan kelime sayacı yds-yontem'de var (Faz 1/C). Genel metinler de sayılır; ek iş yok.
+
+**Kabul ölçütleri:**
+
+- Test: id benzersiz, seviye geçerli, uzunluk aralıkta, glossary anahtarları metinde birebir geçiyor, ≤ %2 kontrolü geçiyor, cevap konumları dengeli.
+- `docs/kaynaklar.md`'ye NGSL satırı eklenir; YDS'nin açtığı yapıda "## Genel kurs kaynakları" altına.
+- PR açıklamasında şunlar olmalı: seviye başına metin sayısı ve kelime toplamı, tür dağılımı, konu listesi (çakışma kontrolü için), "Önce dinle" ekran görüntüsü.
+
 ### Faz 4–5: C1 (S9–S10)
 
 Yeni bölüm dosyaları `tr_en/09_derinlik.json` ve `tr_en/10_ustalik.json`. Bunlar ek dosya değil, normal bölüm dosyası. S9, S8'in son sınavıyla açılır; mevcut mantık ilerlemeyi bozmaz. Her biri 12 ünitedir. C1'de beceri dersleri bölümün içinde: dört dersten ikisi dil, ikisi beceri dersi (dinleme/konuşma ya da okuma/yazma, sırayla).
@@ -270,7 +315,7 @@ Her bölümün son beceri ünitesinin `t` düğümü kendi sorularını taşır.
 | S1–S2 (A1) | 20 | 6 | 6 (2 kısa metin × 3) | 5 | 3 |
 | S3–S4 (A2) | 20 | 6 | 6 (2 metin × 3) | 5 | 3 |
 | S5–S8 (B1–B2) | 20 + 1 `write` | 6 | 8 (2 metin × 4) | 1 `write` + 3 | 3 |
-
+| **6** (sıradaki) | §2 "Faz 6": ortak okuma kütüphanesine 65 metin (A1 15, A2 20, B1 10, B2 20); okuma ekranında "Önce dinle"; NGSL kapsam kontrolü | genel-icerik (altyapı yds-yontem ile) | 65 metin + küçük altyapı | yok |
 Kurallar:
 
 - Sorular yeni yazılır; derslerden kopyalanmaz.
