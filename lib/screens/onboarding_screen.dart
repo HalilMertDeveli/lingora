@@ -4,10 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/app_settings.dart';
 import '../data/placement.dart';
 import '../data/progress.dart';
+import '../services/firebase/account_service.dart';
+import '../services/firebase/firebase_providers.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/flag.dart';
 import '../ui/mascot.dart';
+import 'auth_screen.dart';
 import 'placement_screen.dart';
 
 const dailyGoals = [
@@ -138,9 +141,43 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 const SizedBox(height: 8),
                 OutlinedButton(onPressed: _fromScratch, child: const Text('Sıfırdan başla')),
               ],
+              if (_page == 0) const _SignInLink(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// "Zaten hesabın var mı? Giriş yap" on the welcome page. Signing in pulls the
+/// account's progress; if that account already finished onboarding the app
+/// goes straight to the path (main.dart watches `onboarded`).
+class _SignInLink extends ConsumerWidget {
+  const _SignInLink();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final service = ref.watch(accountServiceProvider);
+    final user = ref.watch(authStateProvider).value;
+    // Hidden without Firebase, and while the guest account is still being
+    // created (an anonymous sign-in in flight would replace this one).
+    if (service == null || user == null || !user.isAnonymous) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: TextButton(
+        key: const ValueKey('onboarding-sign-in'),
+        onPressed: () async {
+          final messenger = ScaffoldMessenger.of(context);
+          final ok = await Navigator.of(context)
+              .push(MaterialPageRoute<bool>(builder: (_) => AuthScreen(service: service)));
+          if (ok == true) {
+            messenger.showSnackBar(
+              const SnackBar(content: Text('Giriş yapıldı. İlerlemen bu hesaba bağlı.')),
+            );
+          }
+        },
+        child: const Text('Zaten hesabın var mı? Giriş yap'),
       ),
     );
   }

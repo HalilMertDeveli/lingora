@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
@@ -10,6 +11,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/models/notes.dart';
 import 'package:lingora/screens/account_section.dart';
+import 'package:lingora/screens/auth_screen.dart';
+import 'package:lingora/screens/onboarding_screen.dart';
 import 'package:lingora/services/billing/premium.dart';
 import 'package:lingora/services/firebase/account_service.dart';
 import 'package:lingora/services/firebase/firebase_config.dart';
@@ -197,7 +200,7 @@ void main() {
 
     setUp(() {
       db = FakeFirebaseFirestore();
-      auth = MockFirebaseAuth(signedIn: true, mockUser: MockUser(uid: 'u1', isAnonymous: true));
+      auth = MockFirebaseAuth(signedIn: true, mockUser: MockUser(uid: 'u1', isAnonymous: false));
     });
 
     test('first sign-in uploads the local progress', () async {
@@ -262,29 +265,42 @@ void main() {
     });
   });
 
-  group('Premium gating', () {
+  group('account gating (no Premium needed)', () {
     late FakeFirebaseFirestore db;
-    late MockFirebaseAuth auth;
+    late StreamController<AppUser?> users;
     final remoteProgress = const Progress(
       onboarded: true,
       totalXp: 300,
       completed: {'cloud': 1},
       dailyGoal: 50,
     ).toJson();
+    const guest = AppUser(uid: 'u1');
+    const account = AppUser(uid: 'u1', isAnonymous: false, providers: ['google.com']);
 
-    Future<ProviderContainer> start(Progress local, {required bool premium}) async {
+    Future<ProviderContainer> start(Progress local, AppUser user) async {
       SharedPreferences.setMockInitialValues({'progress_v1': jsonEncode(local.toJson())});
       final prefs = await SharedPreferences.getInstance();
+      users = StreamController<AppUser?>.broadcast();
+      addTearDown(users.close);
       final c = ProviderContainer(
         overrides: [
           prefsProvider.overrideWithValue(prefs),
           clockProvider.overrideWithValue(() => DateTime(2026, 11, 10, 12)),
           firebaseReadyProvider.overrideWithValue(true),
           firestoreProvider.overrideWithValue(db),
-          firebaseAuthProvider.overrideWithValue(auth),
+          firebaseAuthProvider.overrideWithValue(
+            MockFirebaseAuth(
+              signedIn: true,
+              mockUser: MockUser(uid: 'u1', isAnonymous: user.isAnonymous),
+            ),
+          ),
+          authStateProvider.overrideWith((ref) async* {
+            yield user;
+            yield* users.stream;
+          }),
           syncDebounceProvider.overrideWithValue(Duration.zero),
-          _premium.overrideWith(() => _Toggle(premium)),
-          premiumProvider.overrideWith((ref) => ref.watch(_premium)),
+          // Premium is off throughout: progress sync must not depend on it.
+          premiumProvider.overrideWithValue(false),
         ],
       );
       addTearDown(c.dispose);
@@ -293,35 +309,28 @@ void main() {
       return c;
     }
 
-    setUp(() {
-      db = FakeFirebaseFirestore();
-      auth = MockFirebaseAuth(signedIn: true, mockUser: MockUser(uid: 'u1', isAnonymous: true));
-    });
+    setUp(() => db = FakeFirebaseFirestore());
 
-    test('free user: signed in, but nothing is read or written', () async {
+    test('guest: nothing is read or written, progress stays on the phone', () async {
       await db.doc('users/u1').set({'clientUpdatedAt': 1, 'progress': remoteProgress});
-      final c = await start(const Progress(onboarded: true, totalXp: 5), premium: false);
-      expect(c.read(currentUidProvider), 'u1'); // sign-in stays free (leagues)
-      expect(c.read(progressSyncProvider).state, SyncState.premiumOnly);
+      final c = await start(const Progress(onboarded: true, totalXp: 5), guest);
+      expect(c.read(progressSyncProvider).state, SyncState.guest);
       expect(c.read(progressProvider).totalXp, 5); // cloud copy not pulled
       c.read(progressProvider.notifier).completeNode('n1', xp: 10, answered: 1, correct: 1);
       await settle();
-      expect(c.read(progressSyncProvider).state, SyncState.premiumOnly);
+      expect(c.read(progressSyncProvider).state, SyncState.guest);
       final doc = (await db.doc('users/u1').get()).data()!;
       expect(doc['progress'], remoteProgress); // untouched
       expect(c.read(progressProvider).completed, {'n1': 1}); // kept on device
     });
 
-    test('becoming Premium syncs at once: pull + merge, then push', () async {
+    test('signing in with an account syncs at once: pull + merge, then push (free)', () async {
       await db.doc('users/u1').set({'clientUpdatedAt': 1, 'progress': remoteProgress});
-      final c = await start(
-        const Progress(onboarded: true, totalXp: 20, completed: {'local': 2}),
-        premium: false,
-      );
-      // A setting changed while free still counts as the newest edit.
+      final c = await start(const Progress(onboarded: true, totalXp: 20, completed: {'local': 2}), guest);
+      // A setting changed as a guest still counts as the newest edit.
       c.read(progressProvider.notifier).setDailyGoal(10);
       await settle();
-      c.read(_premium.notifier).set(true);
+      users.add(account);
       await settle();
       final p = c.read(progressProvider);
       expect(p.totalXp, 300);
@@ -333,30 +342,25 @@ void main() {
       expect(c.read(progressSyncProvider).state, SyncState.synced);
     });
 
-    test('Premium lapsing stops syncing and keeps local data', () async {
-      final c = await start(const Progress(onboarded: true, totalXp: 7), premium: true);
+    test('a free account on a new phone gets its progress back', () async {
+      await db.doc('users/u1').set({'clientUpdatedAt': 1, 'progress': remoteProgress});
+      final c = await start(const Progress(onboarded: true), account);
       expect(c.read(progressSyncProvider).state, SyncState.synced);
-      c.read(_premium.notifier).set(false);
+      expect(c.read(progressProvider).completed, {'cloud': 1});
+      expect(c.read(progressProvider).totalXp, 300);
+    });
+
+    test('signing out stops syncing and keeps the phone data', () async {
+      final c = await start(const Progress(onboarded: true, totalXp: 7), account);
+      expect(c.read(progressSyncProvider).state, SyncState.synced);
+      users.add(guest);
       await settle();
-      expect(c.read(progressSyncProvider).state, SyncState.premiumOnly);
+      expect(c.read(progressSyncProvider).state, SyncState.guest);
       c.read(progressProvider.notifier).completeNode('after', xp: 30, answered: 1, correct: 1);
       await settle();
       expect(c.read(progressProvider).totalXp, 37);
       final doc = (await db.doc('users/u1').get()).data()!;
-      expect(doc['totalXp'], 7);
-      expect((doc['progress'] as Map)['completed'], isEmpty);
-      // Changes made by another device while lapsed are not pulled either.
-      await db.doc('users/u1').set({'clientUpdatedAt': 1, 'progress': remoteProgress});
-      await settle();
-      expect(c.read(progressProvider).completed, {'after': 1});
-      // Renewing brings both together.
-      c.read(_premium.notifier).set(true);
-      await settle();
-      expect(c.read(progressProvider).completed, {'after': 1, 'cloud': 1});
-      expect(((await db.doc('users/u1').get()).data()!['progress'] as Map)['completed'], {
-        'after': 1,
-        'cloud': 1,
-      });
+      expect(doc['totalXp'], 7); // the account's copy is untouched
     });
   });
 
@@ -423,23 +427,21 @@ void main() {
         authStateProvider.overrideWithValue(const AsyncData(AppUser(uid: 'u1'))),
         accountServiceProvider.overrideWithValue(AccountService(MockFirebaseAuth())),
       ]);
-      expect(find.text('İlerlemem buluta yedeklendi'), findsOneWidget);
+      expect(find.text('İlerlemen hesabına kaydedildi'), findsOneWidget);
       expect(find.text('Misafir hesabı'), findsOneWidget);
       expect(find.text('Giriş yap / Hesap oluştur'), findsOneWidget);
     });
 
-    testWidgets('free user: backup is Premium-only with a paywall button', (tester) async {
+    testWidgets('guest: says progress is only on this phone and offers sign-in', (tester) async {
       await pump(tester, [
-        progressSyncProvider.overrideWith(() => _FixedSync(const SyncStatus(SyncState.premiumOnly))),
-        authStateProvider.overrideWithValue(
-          const AsyncData(AppUser(uid: 'u1', isAnonymous: false, email: 'a@b.co')),
-        ),
+        progressSyncProvider.overrideWith(() => _FixedSync(const SyncStatus(SyncState.guest))),
+        authStateProvider.overrideWithValue(const AsyncData(AppUser(uid: 'u1'))),
         accountServiceProvider.overrideWithValue(AccountService(MockFirebaseAuth())),
       ]);
-      expect(find.text("Buluta yedekleme Premium'a özel"), findsOneWidget);
-      expect(find.text('İlerlemem buluta yedeklendi'), findsNothing);
-      expect(find.byKey(const ValueKey('account-premium-backup')), findsOneWidget);
-      expect(find.text('Çıkış yap'), findsOneWidget); // sign-in stays free
+      expect(find.text('İlerlemen yalnızca bu telefonda'), findsOneWidget);
+      expect(find.text('Misafir hesabı'), findsOneWidget);
+      expect(find.text('Giriş yap / Hesap oluştur'), findsOneWidget);
+      expect(find.byKey(const ValueKey('account-premium-backup')), findsNothing); // no paywall for sync
     });
 
     testWidgets('signed in: shows e-mail and sign-out', (tester) async {
@@ -451,8 +453,48 @@ void main() {
         accountServiceProvider.overrideWithValue(AccountService(MockFirebaseAuth())),
       ]);
       expect(find.text('a@b.co'), findsOneWidget);
-      expect(find.text('İnternet gelince buluta yedeklenecek'), findsOneWidget);
+      expect(find.text('İnternet gelince hesabına kaydedilecek'), findsOneWidget);
       expect(find.text('Çıkış yap'), findsOneWidget);
+    });
+  });
+
+  group('onboarding sign-in', () {
+    Future<void> pump(WidgetTester tester, List<Override> overrides) async {
+      SharedPreferences.setMockInitialValues({});
+      final prefs = await SharedPreferences.getInstance();
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [prefsProvider.overrideWithValue(prefs), ...overrides],
+          child: const MaterialApp(home: OnboardingScreen()),
+        ),
+      );
+      await tester.pump();
+    }
+
+    testWidgets('welcome page offers "Giriş yap" to a guest and opens the sign-in screen', (tester) async {
+      await pump(tester, [
+        authStateProvider.overrideWithValue(const AsyncData(AppUser(uid: 'u1'))),
+        accountServiceProvider.overrideWithValue(AccountService(MockFirebaseAuth())),
+      ]);
+      final link = find.byKey(const ValueKey('onboarding-sign-in'));
+      expect(link, findsOneWidget);
+      expect(find.text('Zaten hesabın var mı? Giriş yap'), findsOneWidget);
+      await tester.tap(link);
+      await tester.pumpAndSettle();
+      expect(find.byType(AuthScreen), findsOneWidget);
+    });
+
+    testWidgets('no link without Firebase', (tester) async {
+      await pump(tester, []);
+      expect(find.byKey(const ValueKey('onboarding-sign-in')), findsNothing);
+    });
+
+    testWidgets('no link once signed in', (tester) async {
+      await pump(tester, [
+        authStateProvider.overrideWithValue(const AsyncData(AppUser(uid: 'u1', isAnonymous: false))),
+        accountServiceProvider.overrideWithValue(AccountService(MockFirebaseAuth())),
+      ]);
+      expect(find.byKey(const ValueKey('onboarding-sign-in')), findsNothing);
     });
   });
 }

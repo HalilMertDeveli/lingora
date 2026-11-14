@@ -47,8 +47,8 @@ Firebase veya Android dosyaları değişince ve elle tetiklenince).
 
 | # | Senaryo | Beklenen |
 |---|---|---|
-| 1 | Misafir 2 ders bitirir, e-postayla hesap açar | uid aynı, dersler cihazda; Premium'da bulut kopyası aynı uid'de |
-| 2 | Aynı hesaba temiz bir cihazdan giriş | Premium: cihaz + bulut birleşir. Ücretsiz: bulut kopyası yok, cihazdaki ilerleme kalır |
+| 1 | Misafir 2 ders bitirir, e-postayla hesap açar | uid aynı, dersler cihazda ve hesapta (aynı uid) |
+| 2 | Aynı hesaba temiz bir cihazdan giriş | cihaz + hesap birleşir (Premium gerekmez) |
 | 3 | Telefonla giriş | Misafir bağlanır (uid aynı). Numara başka hesaptaysa o hesaba geçilir, ilerleme birleşir |
 | 4 | Google ile giriş | Misafir bağlanır; hesap varsa (`credential-already-in-use`) ona geçilir, ilerleme birleşir |
 | 5 | Çıkış | Yeni misafir hesabı; cihazdaki ilerleme kalır; önceki hesabın Premium'u yeni misafire geçmez |
@@ -86,14 +86,12 @@ silebilirsin.
 6. [ ] Konsolda aynı uid artık e-posta sağlayıcılı olmalı (yeni kullanıcı açılmamalı).
 7. [ ] İki ders hâlâ tamamlanmış görünmeli.
 
-### B. Başka cihazdan giriş (Premium yedekleme)
+### B. Başka cihazdan giriş
 
-Bulut yedekleme Premium'a özel. Ücretsiz hesapta B adımı yalnızca girişin çalıştığını gösterir; ilerleme
-birleşmez (beklenen davranış).
+İlerleme hesaba bağlı, Premium gerekmez.
 
-1. [ ] A'daki hesapla Premium al (ya da test için konsoldan `entitlements/<uid>` belgesine `active: true`,
-       `expiresAt: <ileri tarih (timestamp)>` ekle).
-2. [ ] Hesap kartında "İlerlemem buluta yedeklendi" görünmeli; Firestore'da `users/<uid>` oluşmalı.
+1. [ ] A'daki hesapla giriş yapılmış olsun.
+2. [ ] Hesap kartında "İlerlemen hesabına kaydedildi" görünmeli; Firestore'da `users/<uid>` oluşmalı.
 3. [ ] İkinci bir cihaza (ya da uygulamayı silip yeniden kurduğun aynı cihaza) kur, misafir olarak 1 ders bitir.
 4. [ ] "Giriş yap" ile A'daki e-posta ve şifreyle gir.
 5. [ ] Birkaç saniye içinde A'daki dersler ve yeni ders birlikte görünmeli. Firestore'daki `progress.completed`
@@ -106,7 +104,7 @@ birleşmez (beklenen davranış).
 3. [ ] SMS gelmeli (ya da Android numarayı kendisi doğrulayıp pencereyi kapatmalı).
 4. [ ] Kodu gir > "Onayla". Konsolda aynı uid'ye telefon sağlayıcısı eklenmeli.
 5. [ ] Uygulamayı sil, yeniden kur, misafir olarak 1 ders bitir, aynı numarayla gir.
-6. [ ] Hata çıkmadan o hesaba geçmeli (uid C.4'teki ile aynı). Premium varsa dersler birleşmeli.
+6. [ ] Hata çıkmadan o hesaba geçmeli (uid C.4'teki ile aynı). Dersler birleşmeli.
 7. [ ] Yanlış kod gir: "Kod hatalı. SMS ile gelen 6 haneli kodu gir." görünmeli.
 
 ### D. Google
@@ -114,7 +112,7 @@ birleşmez (beklenen davranış).
 1. [ ] Temiz kurulum, misafir, 1 ders. Giriş ekranı > Google > hesabını seç.
 2. [ ] Hesap kartında Gmail adresin görünmeli; konsolda aynı uid'ye `google.com` eklenmeli.
 3. [ ] Uygulamayı sil, yeniden kur, misafir olarak 1 ders bitir, yine Google ile gir.
-4. [ ] Hata çıkmadan aynı hesaba geçmeli; Premium varsa dersler birleşmeli.
+4. [ ] Hata çıkmadan aynı hesaba geçmeli; Dersler birleşmeli.
 5. [ ] Google penceresini "geri" ile kapat: hata mesajı çıkmamalı, misafir kalmalı.
 6. [ ] Mağaza (release) sürümünde de dene. "Bir sorun oluştu" çıkarsa yayın anahtarının SHA'sı eksiktir.
 
@@ -123,14 +121,14 @@ birleşmez (beklenen davranış).
 1. [ ] Giriş yapılmış hesapta Profil > Hesap > "Çıkış yap".
 2. [ ] Kart "Misafir hesabı" olmalı; konsolda yeni bir anonim kullanıcı açılmalı.
 3. [ ] Cihazdaki dersler yerinde durmalı.
-4. [ ] Önceki hesap Premium idiyse yeni misafirde "Buluta yedekleme Premium'a özel" yazmalı.
+4. [ ] Yeni misafirde "İlerlemen yalnızca bu telefonda" yazmalı.
 
 ### F. Bağlantı yok
 
 1. [ ] Uçak modunu aç, uygulamayı kapatıp aç: çökmemeli, dersler açılmalı.
-2. [ ] Bir ders bitir. Premium hesapta kart "İnternet gelince buluta yedeklenecek" demeli.
+2. [ ] Bir ders bitir. Giriş yapılmış hesapta kart "İnternet gelince hesabına kaydedilecek" demeli.
 3. [ ] Giriş ekranında e-postayla girmeyi dene: "İnternet bağlantısı yok. Bağlanınca tekrar dene."
-4. [ ] Uçak modunu kapat: kısa süre sonra "İlerlemem buluta yedeklendi" olmalı, Firestore'da yeni ders görünmeli.
+4. [ ] Uçak modunu kapat: kısa süre sonra "İlerlemen hesabına kaydedildi" olmalı, Firestore'da yeni ders görünmeli.
 
 ### G. Mesajlar
 

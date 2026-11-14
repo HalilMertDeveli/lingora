@@ -8,7 +8,7 @@ yoktur. Para, gerçek maliyeti olan ya da ileri seviye değer üreten şeylerden
 
 | # | Kalem | Kime | Model | Neden işe yarar |
 |---|---|---|---|---|
-| 1 | **Dilbaz Premium** | Bireysel | Aylık / yıllık abonelik | AI konuşma partneri, bulut yedekleme ve cihazlar arası senkron, sınırsız deneme, ayrıntılı hata analizi |
+| 1 | **Dilbaz Premium** | Bireysel | Aylık / yıllık abonelik | AI konuşma partneri, sınırsız deneme, ayrıntılı hata analizi |
 | 2 | **Aile planı** | Aileler | Yıllık, 5 kişiye kadar | Özellikle LGS çocuğu olan aileler; tek ödeme, çok hesap |
 | 3 | **Sınav paketleri** | YDS/YÖKDİL ve LGS adayları | Tek seferlik satın alma | Tam deneme setleri, ayrıntılı çözümler. Sınav dönemlerinde satış patlaması yapar, abonelik istemeyen kullanıcıyı da kazanır |
 | 4 | **Kurumsal (otel, turizm, şirket)** | İşletmeler | Kişi başı yıllık lisans | Personel eğitimi için ödeme yapan kurum, bireysel abonelikten çok daha büyük ve düzenli gelir getirir |
@@ -28,7 +28,7 @@ Reklam kullanılmaz: uygulamanın "sakin, premium" hissini bozar ve Türkiye'de 
 ## Geliştirme aşamaları
 
 ### Aşama 1: Bireysel gelir (şimdi)
-- Bulut yedekleme ve senkronu Premium'a bağla (ücretsiz kullanıcı cihazda devam eder; giriş ve lig ücretsiz).
+- Hesapla ilerleme eşitleme ücretsiz kalır (giriş yapan herkes telefon değiştirince ilerlemesini korur); Premium yapay zekâ ve denemelerle değer katar.
 - Sınav paketleri: tek seferlik ürünler, tam deneme setleri, satın alma ve kilit açma.
 - Aile planı: üyelik daveti ve paylaşılan hak.
 - Ölçüm: Firebase Analytics olayları (paywall görüldü, deneme başladı, satın alma), Remote Config ile fiyat/paywall deneyleri.

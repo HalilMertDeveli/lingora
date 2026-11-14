@@ -12,7 +12,7 @@ Bu belge: satış teklifi, kurulum adımları, KVKK notları, faturalama ve tekn
 
 ### Otel / turizm / şirket ne alır?
 
-- **Her çalışana Dilbaz Premium** (plan bitişine kadar): yapay zekâ konuşma partneri, bulut yedekleme,
+- **Her çalışana Dilbaz Premium** (plan bitişine kadar): yapay zekâ konuşma partneri,
   sınırsız deneme, ayrıntılı hata analizi.
 - **Mesleğe özel içerik:** Turizm İngilizcesi (resepsiyon, restoran, rehberlik) ve İş Görüşmesi İngilizcesi
   paketleri; genel İngilizce A1–A2 yolu ve A1–C1 gramer yolu.

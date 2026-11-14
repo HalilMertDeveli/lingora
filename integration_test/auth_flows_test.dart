@@ -81,12 +81,13 @@ void main() {
   group('1. guest → e-mail account', () {
     setUpAll(emu.reset);
 
-    test('free: uid kept, progress kept on the device', () async {
+    test('free: uid kept, progress now follows the account', () async {
       final d = await start();
       final guestUid = await d.guest();
       d.finishLesson('u1_n1');
       d.finishLesson('u1_n2');
-      await until(() => d.sync == SyncState.premiumOnly, 'premium-only state');
+      await until(() => d.sync == SyncState.guest, 'guest: device only');
+      expect(await emu.userDoc(guestUid), isNull, reason: 'guests have no cloud copy');
 
       await d.account.registerWithEmail('free1@example.com', 'secret123');
       await until(() => d.user?.isAnonymous == false, 'linked user');
@@ -96,8 +97,12 @@ void main() {
       expect(d.user!.providers, contains('password'));
       expect(d.progress.completed.keys, containsAll(['u1_n1', 'u1_n2']));
       expect(d.progress.lessonsDone, 2);
-      expect(d.sync, SyncState.premiumOnly);
-      expect(await emu.userDoc(guestUid), isNull, reason: 'free users have no cloud copy');
+      // A free account (no Premium) keeps its progress in the account too.
+      await until(() => d.sync == SyncState.synced, 'free account synced');
+      await untilAsync(
+        () async => (await emu.cloudCompleted(guestUid)).toSet().containsAll(['u1_n1', 'u1_n2']),
+        'progress in the account',
+      );
     });
 
     test('premium: the cloud copy stays on the same uid', () async {
@@ -162,16 +167,27 @@ void main() {
       );
     });
 
-    test('free account: no cloud copy, device progress is kept', () async {
+    test('free account: progress comes back on another phone', () async {
       // free1@example.com (seeded above): no entitlement.
+      final a = await start();
+      await a.guest();
+      await a.account.signInWithEmail('free1@example.com', 'secret123');
+      await until(() => a.user?.email == 'free1@example.com', 'device A signed in');
+      final uid = a.user!.uid;
+      a.finishLesson('u2_n1');
+      await untilAsync(() async => (await emu.cloudCompleted(uid)).contains('u2_n1'), 'saved to the account');
+
+      // Device B: clean storage, a lesson as a guest, then the same account.
       final b = await start();
       await b.guest();
       b.finishLesson('u3_n1');
       await b.account.signInWithEmail('free1@example.com', 'secret123');
-      await until(() => b.user?.email == 'free1@example.com', 'signed in');
-      await until(() => b.sync == SyncState.premiumOnly, 'premium-only');
+      await until(() => b.user?.uid == uid, 'device B signed in');
       expect(b.premium, isFalse);
-      expect(b.progress.completed.keys, contains('u3_n1'));
+      await until(
+        () => b.sync == SyncState.synced && b.progress.completed.keys.toSet().containsAll(['u2_n1', 'u3_n1']),
+        'account progress + this phone merged',
+      );
     });
   });
 
@@ -289,7 +305,7 @@ void main() {
       expect(d.progress.completed.length, before);
       // The entitlement belongs to prem1, not to the new guest.
       await until(() => !d.premium, 'premium not carried to the guest');
-      await until(() => d.sync == SyncState.premiumOnly, 'premium-only');
+      await until(() => d.sync == SyncState.guest, 'guest again: device only');
       // The account's cloud copy is untouched.
       expect((await emu.cloudCompleted(uid)).length, before);
     });
