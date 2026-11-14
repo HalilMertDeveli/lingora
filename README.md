@@ -307,7 +307,7 @@ flowchart TB
 **Temel ilke: yerel önce.** Bütün öğrenme cihazda çalışır. İlerleme `shared_preferences` içindeki tek bir `progress_v1`
 kaydında tutulur, internet gerekmez. Firebase şu işler için var:
 
-- hesap ve cihazlar arası eşitleme (bulut yedek Premium'a özel)
+- hesap ve cihazlar arası eşitleme (giriş yapan herkese ücretsiz: Google, e-posta ya da telefon)
 - lig
 - yapay zekâ özellikleri
 - satın alma doğrulama
@@ -472,8 +472,8 @@ Proje: `dilbaz-3392e`. Cloud Functions TypeScript ile yazıldı, `functions/` kl
 ## 11. Gelir modeli
 
 - **Ücretsiz:** Bütün dersler, sınav yolları, bölüm denemeleri, tekrar kartları ve hata defteri. Reklam yok.
-- **Dilbaz Premium (aylık/yıllık):** yapay zekâ sohbeti, yapay zekâ yazma geri bildirimi, detaylı hata analizi, bulut
-  yedekleme, sınırsız deneme.
+- **Dilbaz Premium (aylık/yıllık):** yapay zekâ sohbeti, yapay zekâ yazma geri bildirimi, detaylı hata analizi,
+  sınırsız deneme. (Hesapla ilerleme eşitleme Premium değildir, giriş yapan herkese ücretsizdir.)
 - **Aile planı** ve **sınav paketleri:** YDS paketi 23 tam deneme içerir, LGS paketi de var.
 - **Dilbaz Kurumsal:** okul ve şirketler için koltuk, sınıf ve ödev; web yönetim paneli.
 - **Ayrıntılar:** [docs/gelir-plani.md](docs/gelir-plani.md) · [docs/abonelik.md](docs/abonelik.md) ·

@@ -32,20 +32,17 @@ service cloud.firestore {
           || (d.displayName is string && d.displayName.size() <= 40));
     }
 
-    // Cloud backup is a Premium feature: the same check as the converse
-    // function (active or premium flag, expiresAt still in the future).
-    function hasPremium(uid) {
-      let path = /databases/$(database)/documents/entitlements/$(uid);
-      let e = get(path).data;
-      return exists(path)
-        && (e.get('active', false) == true || e.get('premium', false) == true)
-        && e.get('expiresAt', null) is timestamp
-        && e.expiresAt > request.time;
+    // Progress follows the account to other phones for every learner who
+    // signed in with Google, e-mail or phone. Guests (anonymous sign-in) keep
+    // it on the device: their uid is lost with the phone, so a copy would only
+    // cost storage.
+    function hasAccount() {
+      return request.auth.token.get('firebase', {}).get('sign_in_provider', '') != 'anonymous';
     }
 
     match /users/{uid} {
       allow read: if isOwner(uid);
-      allow create, update: if isOwner(uid) && validUserDoc() && hasPremium(uid);
+      allow create, update: if isOwner(uid) && validUserDoc() && hasAccount();
       allow delete: if false;
     }
 

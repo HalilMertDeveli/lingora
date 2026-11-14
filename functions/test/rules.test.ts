@@ -57,11 +57,15 @@ const premium = (uid: string) =>
 
 beforeEach(async () => {
   await env.clearFirestore();
-  // Backup is Premium-only; most user tests run as a Premium user.
-  await premium("alice");
 });
 
-const db = (uid?: string) => (uid ? env.authenticatedContext(uid).firestore() : env.unauthenticatedContext().firestore());
+// Signed in with a real account (Google here); guests sign in anonymously.
+const db = (uid?: string) =>
+  uid
+    ? env.authenticatedContext(uid, { firebase: { sign_in_provider: "google.com" } }).firestore()
+    : env.unauthenticatedContext().firestore();
+const guestDb = (uid: string) =>
+  env.authenticatedContext(uid, { firebase: { sign_in_provider: "anonymous" } }).firestore();
 
 // Same fields as lib/services/firebase/progress_sync.dart writes.
 const progressDoc = () => ({
@@ -81,28 +85,24 @@ test("users: owner can write a valid snapshot and read it back", async () => {
   );
 });
 
-test("users: backup needs an active entitlement", async () => {
-  const write = (uid: string) => setDoc(doc(db(uid), `users/${uid}`), progressDoc());
-  // No entitlement at all.
-  await assertFails(write("bob"));
-  // Turned off.
-  await setEntitlement("bob", { active: false, premium: false, expiresAt: Timestamp.fromMillis(Date.now() + DAY) });
-  await assertFails(write("bob"));
-  // Expired.
-  await setEntitlement("bob", { active: true, expiresAt: Timestamp.fromMillis(Date.now() - DAY) });
-  await assertFails(write("bob"));
-  // No expiry date.
-  await setEntitlement("bob", { active: true });
-  await assertFails(write("bob"));
-  // The app's shape (premium + status) works too.
-  await setEntitlement("bob", { premium: true, status: "grace", expiresAt: Timestamp.fromMillis(Date.now() + DAY) });
-  await assertSucceeds(write("bob"));
-  // Lapsed Premium: the old backup stays readable but cannot be updated.
-  await setEntitlement("bob", { active: true, expiresAt: Timestamp.fromMillis(Date.now() - DAY) });
-  await assertFails(write("bob"));
-  await assertSucceeds(getDoc(doc(db("bob"), "users/bob")));
-  // Someone else's Premium does not help.
-  await assertFails(setDoc(doc(db("bob"), "users/alice"), progressDoc()));
+test("users: every signed-in account keeps its progress, no Premium needed", async () => {
+  // No entitlement at all: a free account with Google, e-mail or phone.
+  for (const provider of ["google.com", "password", "phone"] as const) {
+    const ctx = env.authenticatedContext("bob", { firebase: { sign_in_provider: provider } }).firestore();
+    await assertSucceeds(setDoc(doc(ctx, "users/bob"), progressDoc()));
+    await assertSucceeds(getDoc(doc(ctx, "users/bob")));
+  }
+  // An expired Premium changes nothing either.
+  await premium("carol");
+  await setEntitlement("carol", { active: true, expiresAt: Timestamp.fromMillis(Date.now() - DAY) });
+  await assertSucceeds(setDoc(doc(db("carol"), "users/carol"), progressDoc()));
+});
+
+test("users: guests (anonymous) cannot store a copy", async () => {
+  await assertFails(setDoc(doc(guestDb("dave"), "users/dave"), progressDoc()));
+  // Not even with Premium: a guest uid dies with the phone.
+  await premium("dave");
+  await assertFails(setDoc(doc(guestDb("dave"), "users/dave"), progressDoc()));
 });
 
 test("users: others and guests are locked out", async () => {

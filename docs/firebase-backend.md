@@ -14,7 +14,7 @@ emülatöre bağlanma) için bkz. [firebase.md](firebase.md).
 
 | Yol | Kim okur | Kim yazar | İçerik |
 | --- | --- | --- | --- |
-| `users/{uid}` | sahibi | sahibi, yalnızca etkin Premium varken (bulut yedek Premium özelliği; şekil ve boyut doğrulamalı) | `schemaVersion, progress, totalXp, displayName, clientUpdatedAt, updatedAt` — `updatedAt` sunucu saati olmak zorunda, `progress` en çok 60 anahtar, başka alan yok, silme yok. |
+| `users/{uid}` | sahibi | sahibi, gerçek bir hesapla (Google, e-posta, telefon; anonim misafir değil; şekil ve boyut doğrulamalı) | `schemaVersion, progress, totalXp, displayName, clientUpdatedAt, updatedAt` — `updatedAt` sunucu saati olmak zorunda, `progress` en çok 60 anahtar, başka alan yok, silme yok. |
 | `leagueState/{uid}` | sahibi | yalnızca fonksiyonlar | `tier, weekKey, groupId, name, avatar, lastResult{weekKey, oldTier, newTier, rank}` ve XP hız sınırı sayaçları. |
 | `leagues/{hafta}_{lig}_{grup}` ve `.../members/{uid}` | yalnızca o grubun üyeleri | yalnızca fonksiyonlar | Grup: `weekKey, tier, group, size, settled`. Üye: `name, avatar, xp, rank`. |
 | `entitlements/{uid}` | sahibi | yalnızca fonksiyonlar | `active, premium, status, productId, platform, expiresAt, source, updatedAt`. |
@@ -127,8 +127,8 @@ HTTP istemcisi (`LINGORA_AI_URL` / `LINGORA_AI_KEY`) yerine `converse` çağrıl
 - `lib/services/conversation.dart`: Firebase hazır ve giriş yapılmışsa `converse` fonksiyonunu çağırır,
   değilse çevrimdışı demo çalışır. Hata kodları Türkçe mesajlara çevrilir.
 
-## Bulut yedek Premium'a özel
+## İlerleme hesaba bağlı, herkese ücretsiz
 
-`users/{uid}` yazmak için `entitlements/{uid}` belgesinde `active` ya da `premium` alanı `true` olmalı
-ve `expiresAt` gelecekte olmalı (`converse` ile aynı kontrol). Premium biten kullanıcı eski yedeğini
-okuyabilir ama güncelleyemez. Giriş ve lig ücretsiz kalır; `leagueState` ve `leagues` bu kontrolden etkilenmez.
+`users/{uid}` yazmak için giriş sağlayıcısı anonim olmamalı (`hasAccount()`: `request.auth.token.firebase.sign_in_provider
+!= 'anonymous'`). Google, e-posta ya da telefonla giren herkes ilerlemesini hesabına yazar; Premium gerekmez.
+Misafir (anonim) yazamaz, ilerlemesi cihazda kalır. Giriş yapınca aynı uid korunur ve cihazdaki ilerleme hesaba geçer.

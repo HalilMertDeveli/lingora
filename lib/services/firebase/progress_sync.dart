@@ -7,7 +7,6 @@ import 'package:flutter/widgets.dart' show StringCharacters;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/progress.dart';
-import '../billing/premium.dart';
 import 'account_service.dart';
 import 'firebase_providers.dart';
 import 'progress_merge.dart';
@@ -27,9 +26,10 @@ enum SyncState {
   /// Waiting for a (possibly anonymous) user.
   signedOut,
 
-  /// Signed in without Premium: cloud backup is Premium-only, progress stays
-  /// on this device.
-  premiumOnly,
+  /// A guest (anonymous sign-in): progress stays on this device until the
+  /// learner signs in with Google, e-mail or phone. Then it is tied to the
+  /// account and comes back on any phone they sign in on (free, no Premium).
+  guest,
 
   /// Reading the cloud copy.
   syncing,
@@ -86,10 +86,11 @@ class ProgressSync extends Notifier<SyncStatus> {
     ref.listen(progressProvider, (_, next) => _onLocal(next));
     final uid = ref.watch(currentUidProvider);
     if (uid == null) return const SyncStatus(SyncState.signedOut);
-    // Cloud backup is a Premium feature; free users keep everything on the
-    // device. Becoming Premium rebuilds this and syncs at once (pull, merge,
-    // push); lapsing disposes the listeners and keeps the local data.
-    if (!ref.watch(premiumProvider)) return const SyncStatus(SyncState.premiumOnly);
+    // Progress follows every real account (Google, e-mail, phone); guests keep
+    // it on the device. Signing in rebuilds this and syncs at once (pull,
+    // merge, push): nothing on this phone or in the account is lost.
+    final guest = ref.watch(authStateProvider.select((u) => u.value?.isAnonymous ?? true));
+    if (guest) return const SyncStatus(SyncState.guest);
 
     _doc = db.collection('users').doc(uid);
     _sub = _doc!.snapshots().listen(_onRemote, onError: _onError);

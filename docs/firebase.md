@@ -46,21 +46,17 @@ alanlar ekleyebilir. `leagues/*` ve `entitlements/*` istemci tarafından yazılm
 
 ## Eşitleme ve birleştirme kuralı
 
-**Bulut yedekleme Premium'a özeldir.** Giriş (anonim, Google, e-posta) herkes için ücretsizdir, çünkü ligler
-ona ihtiyaç duyar. `progressSyncProvider` ise yalnızca `premiumProvider` doğruyken okur ve yazar.
-Ücretsiz kullanıcıda durum `SyncState.premiumOnly` olur ve her şey cihazda kalır. Hesap kartında
-"Buluta yedekleme Premium'a özel" yazısı ve paywall'u açan bir düğme görünür.
+**İlerleme hesaba bağlıdır ve ücretsizdir.** Google, e-posta ya da telefonla giriş yapan herkesin ilerlemesi
+hesabına kaydedilir; başka bir telefonda aynı hesapla girince geri gelir. `progressSyncProvider` yalnızca
+misafir (anonim) kullanıcıda durur: durum `SyncState.guest` olur, her şey cihazda kalır ve hesap kartı
+"İlerlemen yalnızca bu telefonda" der. Karşılama ekranında ve Profil > Hesap'ta "Giriş yap" vardır.
 
-- Premium başlayınca (ya da yenilenince) hemen eşitlenir: önce bulut kopyası çekilip birleştirilir,
-  sonra buluta yazılır. Ücretsizken yapılan düzenlemelerin zamanı da tutulur; bu sayede o dönemde
+- Giriş yapılınca hemen eşitlenir: önce hesaptaki kopya çekilip birleştirilir,
+  sonra hesaba yazılır. Misafirken yapılan düzenlemelerin zamanı da tutulur; bu sayede o dönemde
   değişen ayarlar birleştirmede "en yeni" sayılır.
-- Premium bitince eşitleme durur. Cihazdaki veriler silinmez; bulut kopyası olduğu gibi kalır.
-- Sunucu tarafında da `users/{uid}` yazmaları etkin bir `entitlements/{uid}` ister (Firestore kuralları).
-  Bir yazma reddedilirse (ör. satın alma doğrulanmadan önce) istemci 30 sn sonra tekrar dener.
-  Kural PR #10'da: `active == true` (ya da `premium == true`) ve gelecekte bir `expiresAt` (timestamp) ister;
-  `expiresAt` yoksa yazma reddedilir. Premium'u biten kullanıcı eski yedeğini okuyabilir ama güncelleyemez.
-  Emülatörde denemek için Emulator UI'dan `entitlements/<uid>` belgesine `{active: true, expiresAt: <ileri bir
-  tarih (timestamp)>}` ekle.
+- Çıkış yapılınca eşitleme durur. Cihazdaki veriler silinmez; hesaptaki kopya olduğu gibi kalır.
+- Sunucu tarafında da `users/{uid}` yazmaları gerçek bir hesap ister (Firestore kuralı `hasAccount()`:
+  giriş sağlayıcısı `anonymous` olmamalı). Bir yazma reddedilirse istemci 30 sn sonra tekrar dener.
 
 - Kullanıcı Firebase açıkken otomatik olarak **anonim** giriş yapar; Profil > Hesap'tan Google ya da
   e-posta ile hesabını bağlayabilir (`linkWithCredential` — uid değişmez, ilerleme korunur). Hesap zaten
