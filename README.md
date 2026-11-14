@@ -37,7 +37,6 @@ bir öğrenme yolu. Sıfırdan başlayan biri için YDS/YÖKDİL'e 52 haftalık 
 12. [Kalite: testler, CI, içerik denetimi](#12-kalite)
 13. [Geliştirme: çalıştırma, derleme, yapılandırma](#13-geliştirme)
 14. [Proje haritası ve belgeler](#14-proje-haritası-ve-belgeler)
-15. [Yapılacaklar ve bilinen sınırlar](#15-yapılacaklar-ve-bilinen-sınırlar)
 
 ---
 
@@ -604,25 +603,6 @@ docs/                  araştırma, müfredat, planlar, tasarım, mağaza ve Fir
 | Mağaza ve gizlilik | [magaza/](docs/magaza/) |
 | İçerik kalitesi ve kaynaklar | [kalite-turu.md](docs/kalite-turu.md) · [kaynaklar.md](docs/kaynaklar.md) |
 | Görsellerin kaynağı | [assets.md](docs/assets.md) |
-
----
-
-## 15. Yapılacaklar ve bilinen sınırlar
-
-**Mağazaya çıkış için gerekenler** (uygulama sahibinin adımları):
-1. Google Play Console hesabı ve abonelik ürünleri.
-2. Yayın imza anahtarı ve SHA değerlerinin Firebase'e eklenmesi.
-3. Firebase Blaze planı ve Anthropic API anahtarı. Bunlar olmadan sohbet, yazma geri bildirimi, lig ve satın alma
-   doğrulaması gerçek ortamda çalışmaz.
-4. Gizlilik politikasının bir web adresinde yayınlanması.
-
-**Bilinen sınırlar:**
-- Performans emülatörde ölçüldü; gerçek telefonda ayrıca ölçülmeli.
-- YDS tahmini puanı henüz gerçek sınav sonuçlarıyla karşılaştırılmadı.
-- YÖKDİL soru dağılımı resmî ÖSYM belgesine değil, hazırlık kaynaklarına dayanıyor.
-- Firestore veritabanı ABD bölgesinde (`nam5`).
-
-Güncel liste: [docs/yapilacaklar.md](docs/yapilacaklar.md)
 
 ---
 
