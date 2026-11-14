@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'dart:math';
 import 'dart:ui' as ui;
 
@@ -523,11 +524,28 @@ class LanePainter extends CustomPainter {
       ..strokeWidth = 3
       ..strokeCap = StrokeCap.round
       ..color = dash;
-    for (final m in path.computeMetrics()) {
-      for (var d = 0.0; d < m.length; d += 16) {
-        canvas.drawPath(m.extractPath(d, min(d + 8, m.length)), stroke);
+    // All dashes in one draw call: each dash is a short straight line, and
+    // the endpoints are measured once per lane shape (not on every frame).
+    canvas.drawRawPoints(ui.PointMode.lines, _dashes(points, path), stroke);
+  }
+
+  static final _dashCache = <String, Float32List>{};
+
+  static Float32List _dashes(List<Offset> pts, Path path) {
+    final key = pts.map((o) => '${o.dx.toStringAsFixed(1)},${o.dy.toStringAsFixed(1)}').join(';');
+    return _dashCache[key] ??= () {
+      if (_dashCache.length > 400) _dashCache.clear();
+      final out = <double>[];
+      for (final m in path.computeMetrics()) {
+        for (var d = 0.0; d < m.length; d += 16) {
+          final a = m.getTangentForOffset(d)?.position;
+          final b = m.getTangentForOffset(min(d + 8, m.length))?.position;
+          if (a == null || b == null) continue;
+          out.addAll([a.dx, a.dy, b.dx, b.dy]);
+        }
       }
-    }
+      return Float32List.fromList(out);
+    }();
   }
 
   @override

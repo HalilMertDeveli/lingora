@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/topic_themes.dart';
 import 'package:lingora/models/course.dart';
@@ -161,9 +160,11 @@ void main() {
       expect(find.byKey(const ValueKey('theme-object-seyahat-ucak')), findsNWidgets(3));
       // Only the locked one is a grey silhouette; no steam on themed nodes.
       // The grey is a colour filter on the picture itself (no offscreen layer).
-      bool filtered(Finder f) =>
-          tester.widget<SvgPicture>(find.descendant(of: f, matching: find.byType(SvgPicture))).colorFilter !=
-          null;
+      bool filtered(Finder f) {
+        final obj = tester.widget<ThemeObject>(find.descendant(of: f, matching: find.byType(ThemeObject)));
+        return obj.grey || obj.tint != null;
+      }
+
       expect(filtered(find.byKey(const Key('n-locked'))), isTrue);
       expect(filtered(find.byKey(const Key('n-done'))), isFalse);
       expect(filtered(find.byKey(const Key('n-active'))), isFalse);
