@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,9 +28,13 @@ ColorFilter fadedGreyscale(double opacity) => ColorFilter.matrix([
 ]);
 
 /// One theme object. [grey] draws it as a faded silhouette; [tint] paints it
-/// in one colour (band patterns). Pictures are parsed once and cached by
-/// flutter_svg, so a theme costs one load per object.
-class ThemeObject extends StatelessWidget {
+/// in one colour (band patterns).
+///
+/// The SVG is turned into a bitmap once per (object, size, look) and drawn as
+/// an image afterwards: vector pictures are re-tessellated on every frame,
+/// and the path shows dozens of them (nodes, band patterns, roadside decor)
+/// while its animations run. Until the bitmap is ready the SVG itself shows.
+class ThemeObject extends StatefulWidget {
   const ThemeObject({
     super.key,
     required this.theme,
@@ -52,26 +57,129 @@ class ThemeObject extends StatelessWidget {
   final double opacity;
 
   @override
+  State<ThemeObject> createState() => _ThemeObjectState();
+}
+
+class _ThemeObjectState extends State<ThemeObject> {
+  ui.Image? _image;
+  String? _key;
+
+  ColorFilter? _filter(BuildContext context) {
+    final w = widget;
+    if (w.tint != null) return ColorFilter.mode(w.tint!, BlendMode.srcIn);
+    if (w.grey) return fadedGreyscale((context.palette.isDark ? 0.45 : 0.55) * w.opacity);
+    if (w.opacity < 1) {
+      return ColorFilter.matrix([1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, w.opacity, 0]);
+    }
+    return null;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _load();
+  }
+
+  @override
+  void didUpdateWidget(ThemeObject old) {
+    super.didUpdateWidget(old);
+    _load();
+  }
+
+  void _load() {
+    final w = widget;
+    final dpr = MediaQuery.maybeDevicePixelRatioOf(context) ?? 2;
+    final look = w.tint != null
+        ? 't${w.tint!.toARGB32()}'
+        : w.grey
+        ? 'g${context.palette.isDark}${w.opacity}'
+        : 'o${w.opacity}';
+    final key = '${w.theme.asset(w.object)}|${w.size}|${dpr.toStringAsFixed(2)}|$look';
+    if (key == _key) return;
+    _key = key;
+    _image = ThemeRaster.cached(key);
+    if (_image != null) return;
+    final asset = w.theme.asset(w.object);
+    final filter = _filter(context);
+    ThemeRaster.load(key, asset, w.size, dpr, filter).then((img) {
+      if (mounted && _key == key && img != null) setState(() => _image = img);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // Grey is one colour matrix on the picture itself (greyscale + fade):
-    // Opacity + ColorFiltered would each need an offscreen layer per node.
-    final filter = tint != null
-        ? ColorFilter.mode(tint!, BlendMode.srcIn)
-        : grey
-        ? fadedGreyscale((context.palette.isDark ? 0.45 : 0.55) * opacity)
-        : opacity < 1
-        ? ColorFilter.matrix([1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, opacity, 0])
-        : null;
-    final art = SvgPicture.asset(
-      theme.asset(object),
-      width: size,
-      height: size,
-      semanticsLabel: semanticLabel,
-      excludeFromSemantics: semanticLabel == null,
-      colorFilter: filter,
-      placeholderBuilder: (_) => SizedBox(width: size, height: size),
-    );
-    return KeyedSubtree(key: ValueKey('theme-object-${theme.id}-$object'), child: art);
+    final w = widget;
+    final Widget art;
+    if (_image != null) {
+      art = Semantics(
+        label: w.semanticLabel,
+        excludeSemantics: w.semanticLabel == null,
+        image: w.semanticLabel != null,
+        child: RawImage(image: _image, width: w.size, height: w.size, filterQuality: FilterQuality.medium),
+      );
+    } else {
+      art = SvgPicture.asset(
+        w.theme.asset(w.object),
+        width: w.size,
+        height: w.size,
+        semanticsLabel: w.semanticLabel,
+        excludeFromSemantics: w.semanticLabel == null,
+        colorFilter: _filter(context),
+        placeholderBuilder: (_) => SizedBox(width: w.size, height: w.size),
+      );
+    }
+    return KeyedSubtree(key: ValueKey('theme-object-${w.theme.id}-${w.object}'), child: art);
+  }
+}
+
+/// Bitmaps of theme objects, keyed by asset, size, pixel ratio and look.
+class ThemeRaster {
+  static final _images = <String, ui.Image>{};
+  static final _pending = <String, Future<ui.Image?>>{};
+
+  /// Upper bound on cached bitmaps (each is at most ~150 KB at 3x).
+  static const limit = 300;
+
+  static ui.Image? cached(String key) => _images[key];
+
+  static Future<ui.Image?> load(String key, String asset, double size, double dpr, ColorFilter? filter) =>
+      _pending[key] ??= _render(asset, size, dpr, filter).then((img) {
+        _pending.remove(key);
+        if (img != null) {
+          if (_images.length >= limit) {
+            final oldest = _images.keys.first;
+            _images.remove(oldest)?.dispose();
+          }
+          _images[key] = img;
+        }
+        return img;
+      });
+
+  static Future<ui.Image?> _render(String asset, double size, double dpr, ColorFilter? filter) async {
+    try {
+      final info = await vg.loadPicture(SvgAssetLoader(asset), null);
+      final px = max(1, (size * dpr).ceil());
+      final recorder = ui.PictureRecorder();
+      final canvas = Canvas(recorder);
+      final w = info.size.width, h = info.size.height;
+      if (w > 0 && h > 0) {
+        // BoxFit.contain, centred, like SvgPicture.
+        final scale = min(px / w, px / h);
+        canvas.translate((px - w * scale) / 2, (px - h * scale) / 2);
+        canvas.scale(scale);
+        if (filter != null) canvas.saveLayer(Offset.zero & info.size, Paint()..colorFilter = filter);
+        canvas.drawPicture(info.picture);
+        if (filter != null) canvas.restore();
+      }
+      info.picture.dispose();
+      final picture = recorder.endRecording();
+      final image = await picture.toImage(px, px);
+      picture.dispose();
+      return image;
+    } catch (e) {
+      debugPrint('Tema görseli çizilemedi ($asset): $e');
+      return null;
+    }
   }
 }
 
