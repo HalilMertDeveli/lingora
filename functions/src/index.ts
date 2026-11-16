@@ -1,4 +1,4 @@
-// Dilbaz Cloud Functions (2nd gen). Deploy steps: docs/firebase-backend.md.
+// Dilmaç Cloud Functions (2nd gen). Deploy steps: docs/firebase-backend.md.
 import Anthropic from "@anthropic-ai/sdk";
 import { initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
@@ -67,7 +67,7 @@ export const verifyPurchase = onCall((req) =>
   }),
 );
 
-// Dilbaz Kurumsal (orgs, seats, classes, assignments): orgs_api.ts, docs/kurumsal.md.
+// Dilmaç Kurumsal (orgs, seats, classes, assignments): orgs_api.ts, docs/kurumsal.md.
 export * from "./orgs_api.js";
 
 // Invite programme: getInviteCode, redeemInvite (functions/src/referral_api.ts).

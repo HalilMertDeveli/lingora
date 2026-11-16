@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 /// * Other pages use the platform's usual transition.
 /// * With reduced motion (phone setting or "Animasyonları azalt") pages
 ///   appear without movement.
-class DilbazPageTransitionsBuilder extends PageTransitionsBuilder {
-  const DilbazPageTransitionsBuilder({this.fallback = const ZoomPageTransitionsBuilder()});
+class DilmacPageTransitionsBuilder extends PageTransitionsBuilder {
+  const DilmacPageTransitionsBuilder({this.fallback = const ZoomPageTransitionsBuilder()});
 
   /// Transition for ordinary pages.
   final PageTransitionsBuilder fallback;

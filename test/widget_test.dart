@@ -69,7 +69,7 @@ Future<void> pumpApp(WidgetTester tester, Map<String, Object> prefs) async {
 void main() {
   testWidgets('onboarding leads to the learning path', (tester) async {
     await pumpApp(tester, {});
-    expect(find.text('Dilbaz'), findsOneWidget);
+    expect(find.text('Dilmaç'), findsOneWidget);
     await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
     expect(find.text('Kimin için?'), findsOneWidget);

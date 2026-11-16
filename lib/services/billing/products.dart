@@ -1,4 +1,4 @@
-/// Dilbaz Premium subscription products.
+/// Dilmaç Premium subscription products.
 ///
 /// The ids must match the subscription product ids created in Google Play
 /// Console (Monetize > Products > Subscriptions); each one has a single,

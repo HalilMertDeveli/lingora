@@ -1,6 +1,6 @@
 # Kaynaklar ve lisanslar
 
-Dilbaz içeriği **özgündür**. Bu dosya üç şeyi kayda geçirir:
+Dilmaç içeriği **özgündür**. Bu dosya üç şeyi kayda geçirir:
 - hangi açık kaynağın hangi lisansla kullanıldığı
 - telifli kaynaklardan yalnızca hangi kavram ya da yöntemin alındığı
 - hangi kaynakların **kullanılmayacağı**

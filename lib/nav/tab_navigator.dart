@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-/// Dilbaz's navigation rules, in one place.
+/// Dilmaç's navigation rules, in one place.
 ///
 /// * Every bottom tab owns a [TabNavigator]. Pages pushed inside a tab keep
 ///   the bottom bar visible and survive switching tabs.

@@ -484,7 +484,7 @@ void main() {
     testWidgets('needs an account when Firebase is off', (tester) async {
       await tester.pumpWidget(app(await widgetOverrides(tester), const InviteScreen()));
       await tester.pumpAndSettle();
-      expect(find.textContaining('Dilbaz hesabı gerekir'), findsOneWidget);
+      expect(find.textContaining('Dilmaç hesabı gerekir'), findsOneWidget);
     });
   });
 }

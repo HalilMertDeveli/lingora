@@ -1,6 +1,6 @@
 rules_version = '2';
 
-// Dilbaz Firestore rules. The server-side data (leagues, entitlements,
+// Dilmaç Firestore rules. The server-side data (leagues, entitlements,
 // quotas) is written only by Cloud Functions through the Admin SDK, which
 // bypasses these rules. Clients may write only their own users/{uid} doc.
 service cloud.firestore {
@@ -77,7 +77,7 @@ service cloud.firestore {
       }
     }
 
-    // ---- Dilbaz Kurumsal (functions/src/orgs.ts, docs/kurumsal.md) ----
+    // ---- Dilmaç Kurumsal (functions/src/orgs.ts, docs/kurumsal.md) ----
     // Org data is read and written only through the org* callables, which
     // filter the progress report (KVKK: no diary, notes or chats). A user may
     // read which org they belong to.
@@ -93,7 +93,7 @@ service cloud.firestore {
     match /orgCodes/{code} {
       allow read, write: if false;
     }
-    // ---- end Dilbaz Kurumsal ----
+    // ---- end Dilmaç Kurumsal ----
 
     // ---- Friends (lib/services/friends.dart, docs/firebase-backend.md) ----
     // Works without Cloud Functions. Knowing a friend's code is the consent

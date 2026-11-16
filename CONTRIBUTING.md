@@ -1,6 +1,6 @@
 # Katkı rehberi
 
-Dilbaz'a katkı için kısa çalışma düzeni.
+Dilmaç'a katkı için kısa çalışma düzeni.
 
 ## Dal (branch) akışı
 

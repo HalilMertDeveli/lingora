@@ -118,7 +118,7 @@ const maxXpPerCall = 500;
 /// Name shown to other league members.
 String leagueDisplayName(String? displayName) {
   final first = displayName?.trim().split(RegExp(r'\s+')).first ?? '';
-  return first.isEmpty ? 'Dilbaz öğrencisi' : first.substring(0, min(first.length, 24));
+  return first.isEmpty ? 'Dilmaç öğrencisi' : first.substring(0, min(first.length, 24));
 }
 
 /// This week's real league, or null when it is not available (the screen

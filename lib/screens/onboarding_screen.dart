@@ -183,7 +183,7 @@ class _SignInLink extends ConsumerWidget {
   }
 }
 
-/// Dilbaz brand mark: Çaycı Dayı on his orange tile, the same art as the
+/// Dilmaç brand mark: Çaycı Dayı on his orange tile, the same art as the
 /// app icon.
 class LingoraLogo extends StatelessWidget {
   const LingoraLogo({super.key, this.size = 96});
@@ -195,7 +195,7 @@ class LingoraLogo extends StatelessWidget {
     key: const ValueKey('dilbaz-logo'),
     width: size,
     height: size,
-    semanticLabel: 'Dilbaz',
+    semanticLabel: 'Dilmaç',
     errorBuilder: (_, _, _) => SizedBox(width: size, height: size),
   );
 }
@@ -224,7 +224,7 @@ class _Welcome extends StatelessWidget {
             ],
           ),
         const SizedBox(height: 28),
-        Text('Dilbaz', style: t.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
+        Text('Dilmaç', style: t.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
         const SizedBox(height: 10),
         Text(
           context.isKid

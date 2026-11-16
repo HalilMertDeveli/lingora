@@ -44,7 +44,7 @@ class Mascot extends StatelessWidget {
   }
 }
 
-/// Çaycı Dayı, the Dilbaz mascot: a tea seller on an orange tile. The tile
+/// Çaycı Dayı, the Dilmaç mascot: a tea seller on an orange tile. The tile
 /// carries its own background, so it reads on light and dark themes alike.
 class Dayi extends StatefulWidget {
   const Dayi({super.key, this.mood = Mood.idle, this.size = 120, this.animate = true, this.loop = true});

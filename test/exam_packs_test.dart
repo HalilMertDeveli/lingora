@@ -353,7 +353,7 @@ void main() {
       await c.read(examPackControllerProvider.notifier).buy(ExamPack.yds);
       await settle();
       expect(c.read(examPackUnlockedProvider('yds')), isFalse);
-      expect(c.read(examPackControllerProvider).error, contains('başka bir Dilbaz hesabına'));
+      expect(c.read(examPackControllerProvider).error, contains('başka bir Dilmaç hesabına'));
 
       backend.error = StateError('offline');
       await c.read(examPackControllerProvider.notifier).buy(ExamPack.yds);

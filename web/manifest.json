@@ -1,11 +1,11 @@
 {
-    "name": "Dilbaz",
-    "short_name": "Dilbaz",
+    "name": "Dilmaç",
+    "short_name": "Dilmaç",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#F17F04",
     "theme_color": "#F17F04",
-    "description": "Dilbaz kurumsal yönetim paneli",
+    "description": "Dilmaç kurumsal yönetim paneli",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

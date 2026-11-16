@@ -74,7 +74,7 @@ class NotificationService {
   String? _applied;
 
   /// Android fixes a channel's sound when the channel is first created, so
-  /// Dilbaz's own reminder sound needs a new channel id; the old one is
+  /// Dilmaç's own reminder sound needs a new channel id; the old one is
   /// deleted on start.
   static const reminderChannelId = 'reminders_v2';
   static const _oldChannelIds = ['reminders'];
@@ -133,7 +133,7 @@ class NotificationService {
     }
   }
 
-  /// Replaces Dilbaz's scheduled notifications with [plan] (no-op if
+  /// Replaces Dilmaç's scheduled notifications with [plan] (no-op if
   /// nothing changed since the last call).
   Future<void> apply(List<PlannedNotification> plan) async {
     final signature = plan.join(';');

@@ -152,7 +152,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           icon: const Icon(Icons.close_rounded),
           onPressed: () => Navigator.of(context).maybePop(),
         ),
-        title: const Text('Dilbaz Premium'),
+        title: const Text('Dilmaç Premium'),
       ),
       body: SafeArea(
         child: ListView(

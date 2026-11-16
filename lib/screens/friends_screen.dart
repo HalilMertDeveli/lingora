@@ -14,7 +14,7 @@ import 'auth_screen.dart';
 
 /// Text shared with a friend: the code and where to type it.
 String friendShareText(String code) =>
-    "Dilbaz'da birlikte İngilizce çalışalım! Uygulamada Lig > Arkadaşlar'a gir ve kodumu yaz: $code";
+    "Dilmaç'ta birlikte İngilizce çalışalım! Uygulamada Lig > Arkadaşlar'a gir ve kodumu yaz: $code";
 
 /// "Arkadaşlar": the user's code, adding a friend by code, the friend list
 /// with the shared streak and preset cheers. Free; no penalties, no ads.
@@ -184,7 +184,7 @@ class _FriendsScreenState extends ConsumerState<FriendsScreen> {
                   TextButton.icon(
                     key: const ValueKey('friend-share'),
                     onPressed: () => SharePlus.instance.share(
-                      ShareParams(text: friendShareText(code), subject: 'Dilbaz arkadaşlık daveti'),
+                      ShareParams(text: friendShareText(code), subject: 'Dilmaç arkadaşlık daveti'),
                     ),
                     icon: const Icon(Icons.share_rounded, size: 18),
                     label: const Text('Paylaş'),
@@ -212,7 +212,7 @@ class _NoAccount extends ConsumerWidget {
         const _Box(
           icon: Icons.group_rounded,
           text:
-              'Arkadaş eklemek için ücretsiz bir Dilbaz hesabı gerekir (Google, e-posta ya da telefon). '
+              'Arkadaş eklemek için ücretsiz bir Dilmaç hesabı gerekir (Google, e-posta ya da telefon). '
               'Misafir kullanımda arkadaş listen telefonla birlikte kaybolurdu.',
         ),
         if (service != null && user != null) ...[
