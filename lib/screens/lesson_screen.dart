@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/tr_errors.dart';
+import '../data/app_settings.dart';
 import '../data/break_reminder.dart';
 import '../data/course_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
 import '../data/resume.dart';
+import '../data/stoic.dart';
 import '../exercises/choice_exercise.dart';
 import '../exercises/common.dart';
 import '../exercises/fill_blank_exercise.dart';
@@ -27,6 +29,7 @@ import '../study/answer_recorder.dart';
 import '../theme.dart';
 import '../ui/motion.dart';
 import '../ui/session.dart';
+import '../ui/stoic_card.dart';
 import '../ui/why_wrong.dart';
 import '../nav/flow.dart';
 import 'lesson_result_screen.dart';
@@ -140,6 +143,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   late final ResumeStore _resumeStore = ref.read(resumeStoreProvider);
   AppLifecycleListener? _lifecycle;
 
+  /// The one Stoic card of this session was shown (or was already behind a
+  /// restored session).
+  bool _interludeShown = false;
+
   @override
   void initState() {
     super.initState();
@@ -158,6 +165,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         if (metric != null) _questStats[metric] = e.value;
       }
     }
+    final interludeAt = stoicInterludeAt(_total);
+    _interludeShown = saved != null && interludeAt != null && saved.answered >= interludeAt;
+    ref.read(stoicQuotesProvider); // starts loading the quotes
     if (_canResume()) {
       _resumeTrack = ref.read(trackProvider).id;
       _lifecycle = AppLifecycleListener(onInactive: _persist, onPause: _persist, onHide: _persist);
@@ -300,6 +310,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       _finish();
       return;
     }
+    final wasWrong = _lastCorrect == false;
     setState(() {
       _pos++;
       _shownAt = DateTime.now();
@@ -309,6 +320,75 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       _why = null;
     });
     _persist();
+    _maybeInterlude(wasWrong: wasWrong);
+  }
+
+  /// A quote when Stoic sayings are on and loaded; kid-friendly ones only in
+  /// Çocuk modu, mistake-fitting ones after a mistake.
+  StoicQuote? _pickQuote({bool mistake = false}) {
+    final settings = ref.read(appSettingsProvider);
+    final quotes = ref.read(stoicQuotesProvider).value;
+    if (!settings.stoicQuotes || quotes == null) return null;
+    return pickStoicQuote(ref.read(prefsProvider), quotes, kid: settings.isKid, mistake: mistake);
+  }
+
+  /// Answer count when this session's last Stoic card was shown.
+  int? _lastCardAnswered;
+  bool _mistakeCardShown = false;
+
+  /// What the learner did and a Stoic quote, in a sheet over the next
+  /// question: once about halfway, and once after a few mistakes (rarely, see
+  /// [stoicMistakeDue]). Neither changes a counter, XP or the saved session.
+  void _maybeInterlude({required bool wasWrong}) {
+    if (widget.mode == LessonMode.test) return;
+    final enabled = ref.read(appSettingsProvider).stoicQuotes;
+    final hasNext = _pos < _queue.length;
+    final prefs = ref.read(prefsProvider);
+    final now = ref.read(clockProvider)();
+    final mistake = stoicMistakeDue(
+      enabled: enabled,
+      lastWrong: wasWrong,
+      alreadyShown: _mistakeCardShown,
+      mistakes: _mistakes,
+      answered: _answered,
+      lastCardAnswered: _lastCardAnswered,
+      hasNext: hasNext,
+      now: now,
+      lastShownMs: prefs.getInt(stoicMistakeAtKey) ?? 0,
+    );
+    final mid =
+        !mistake &&
+        stoicInterludeDue(
+          enabled: enabled,
+          alreadyShown: _interludeShown,
+          answered: _answered,
+          total: _total,
+          hasNext: hasNext,
+        ) &&
+        (_lastCardAnswered == null || _answered - _lastCardAnswered! >= stoicCardGap);
+    if (!mistake && !mid) return;
+    final quote = _pickQuote(mistake: mistake);
+    if (quote == null) return;
+    _lastCardAnswered = _answered;
+    if (mistake) {
+      _mistakeCardShown = true;
+      prefs.setInt(stoicMistakeAtKey, now.millisecondsSinceEpoch);
+    } else {
+      _interludeShown = true;
+    }
+    final stats = StoicStats.of(
+      ref.read(progressProvider),
+      now,
+      sessionCorrect: _answered - _mistakes,
+      sessionAnswered: _answered,
+    );
+    showStoicInterlude(
+      context,
+      stats: stats,
+      quote: quote,
+      title: mistake ? 'Yanılmak da öğrenmenin parçası' : 'Kısa bir mola',
+      note: mistake ? (_requeues ? 'Yanlışların dersin sonunda yeniden gelecek; acele etme.' : null) : null,
+    );
   }
 
   int get _accuracy => _answered == 0 ? 100 : ((_answered - _mistakes) * 100 / _answered).round();
@@ -364,6 +444,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         widget.mode == LessonMode.lesson && ref.read(paywallTriggerProvider).takeAfterLesson();
     final duration = DateTime.now().difference(_started);
     final takeBreak = ref.read(breakTrackerProvider).recordLesson(duration);
+    final resultQuote = widget.mode == LessonMode.test ? null : _pickQuote();
     // Result, then streak, then daily goal and quests, then (after a run of lessons) a break reminder,
     // then (sometimes) a closable paywall; the last
     // "Devam" goes straight back to the path.
@@ -374,6 +455,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         duration: duration,
         perfect: perfect,
         bestCombo: _bestCombo,
+        quote: resultQuote,
         showStreak: !reward.streakExtended,
         showQuests: !hasQuestStep(reward),
         onContinue: next,

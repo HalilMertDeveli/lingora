@@ -57,6 +57,7 @@ flutter:
     - assets/notes/
     - assets/pronunciation/
     - assets/reading/
+    - assets/quotes/
     - assets/placement/
     # The 52-week YDS plan read by "Bugün" (lib/study/year_plan.dart).
     - assets/plans/

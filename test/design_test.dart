@@ -78,6 +78,7 @@ void main() {
         'reduceMotion': false,
         'accent': 'us',
         'guests': <String>[],
+        'stoicQuotes': true,
       });
       // Learning progress is stored separately and untouched.
       expect(prefs.getString('progress_v1'), isNull);
@@ -239,11 +240,11 @@ void main() {
       await tester.tap(toggle);
       await tester.pumpAndSettle();
       expect(Brand.isKid, isTrue);
-      expect(find.text('Görünüm'), findsOneWidget, reason: 'still on the Profil tab');
+      expect(find.text('Görünüm', skipOffstage: false), findsOneWidget, reason: 'still on the Profil tab');
 
       await tester.tap(find.text('Koyu'));
       await tester.pumpAndSettle();
-      expect(Theme.of(tester.element(find.text('Görünüm'))).brightness, Brightness.dark);
+      expect(Theme.of(tester.element(find.text('Görünüm', skipOffstage: false))).brightness, Brightness.dark);
       expect(Brand.palette, Palette.kidDark);
       expect(tester.takeException(), isNull);
     });

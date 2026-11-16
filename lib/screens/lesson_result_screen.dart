@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 import '../data/practice.dart';
 import '../data/progress.dart';
+import '../data/stoic.dart';
 import '../nav/flow.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../ui/stoic_card.dart';
 
 /// Accuracy from which the end screen cheers (big hop) instead of a wave.
 const successAccuracy = 90;
@@ -37,9 +39,13 @@ class LessonResultScreen extends StatefulWidget {
     this.onContinue,
     this.showStreak = true,
     this.showQuests = true,
+    this.quote,
   });
 
   final LessonReward reward;
+
+  /// Stoic saying under the results (Profil > Stoacı sözler); none when null.
+  final StoicQuote? quote;
   final int accuracy;
   final Duration duration;
   final bool perfect;
@@ -171,6 +177,29 @@ class _LessonResultScreenState extends State<LessonResultScreen> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
+                if (widget.quote case final quote?) ...[
+                  const SizedBox(height: 16),
+                  Flexible(
+                    flex: 3,
+                    child: PopIn(
+                      delay: next(),
+                      from: 0.9,
+                      child: SingleChildScrollView(
+                        child: Container(
+                          key: const ValueKey('result-stoic'),
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                            color: Brand.card,
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(color: Brand.line),
+                          ),
+                          child: StoicQuoteBlock(quote: quote, compact: true),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
                 const Spacer(),
                 PressableButton(
                   label: 'DEVAM',
