@@ -5,6 +5,7 @@ import '../data/league.dart';
 import '../data/progress.dart';
 import '../services/league_remote.dart';
 import '../theme.dart';
+import 'friends_screen.dart';
 import 'quests_screen.dart' show formatLeft;
 
 class LeagueScreen extends ConsumerWidget {
@@ -50,6 +51,31 @@ class LeagueScreen extends ConsumerWidget {
             ],
           ),
         ),
+        // Friends and the shared streak (not in Çocuk modu: no social features for kids).
+        if (!Brand.isKid) ...[
+          const SizedBox(height: 12),
+          TapCard(
+            key: const ValueKey('league-friends'),
+            onTap: () =>
+                Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const FriendsScreen())),
+            child: Row(
+              children: [
+                const Text('🤝', style: TextStyle(fontSize: 26)),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Arkadaşlar', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
+                      Text('Birbirinize destek olun, ortak seri yapın', style: TextStyle(color: Brand.muted)),
+                    ],
+                  ),
+                ),
+                Icon(Icons.chevron_right_rounded, color: Brand.muted),
+              ],
+            ),
+          ),
+        ],
         const SizedBox(height: 12),
         _TierStrip(current: tier),
         const SizedBox(height: 12),

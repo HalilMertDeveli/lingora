@@ -95,6 +95,157 @@ service cloud.firestore {
     }
     // ---- end Dilbaz Kurumsal ----
 
+    // ---- Friends (lib/services/friends.dart, docs/firebase-backend.md) ----
+    // Works without Cloud Functions. Knowing a friend's code is the consent
+    // to become friends; either side can remove the friendship.
+
+    // Turkish day number (UTC+3, no daylight saving) of the request.
+    function trDay() {
+      return int(math.floor((request.time.toMillis() + 10800000) / 86400000));
+    }
+
+    function validName(s) {
+      return s is string && s.size() >= 1 && s.size() <= 24;
+    }
+
+    function validAvatar(s) {
+      return s is string && s.size() >= 1 && s.size() <= 8;
+    }
+
+    match /friendCodes/{code} {
+      function validCode() {
+        let d = request.resource.data;
+        return code.matches('^[A-HJ-NP-Z2-9]{8}$')
+          && d.keys().hasOnly(['uid', 'name', 'avatar', 'createdAt'])
+          && d.keys().hasAll(['uid', 'name', 'avatar', 'createdAt'])
+          && d.uid == request.auth.uid
+          && validName(d.name)
+          && validAvatar(d.avatar)
+          && d.createdAt == request.time;
+      }
+
+      allow get: if signedIn() && hasAccount();
+      allow list: if signedIn() && resource.data.uid == request.auth.uid;
+      allow create: if signedIn() && hasAccount() && validCode();
+      allow update: if signedIn() && hasAccount() && resource.data.uid == request.auth.uid && validCode();
+      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+
+    // friendships/{a}_{b} with a < b: names, avatars, the Turkish day each
+    // member last reached the daily goal (done) and the shared streak.
+    match /friendships/{pairId} {
+      function otherOf(members) {
+        return members[0] == request.auth.uid ? members[1] : members[0];
+      }
+
+      function validPeople(d) {
+        let m = d.members;
+        return d.names is map && d.avatars is map
+          && d.names.keys().hasOnly(m) && d.names.keys().hasAll(m)
+          && d.avatars.keys().hasOnly(m) && d.avatars.keys().hasAll(m)
+          && validName(d.names[m[0]]) && validName(d.names[m[1]])
+          && validAvatar(d.avatars[m[0]]) && validAvatar(d.avatars[m[1]]);
+      }
+
+      function validNew() {
+        let d = request.resource.data;
+        let m = d.members;
+        return d.keys().hasOnly(['members', 'code', 'names', 'avatars', 'done', 'streak', 'best', 'streakDay', 'createdAt'])
+          && d.keys().hasAll(['members', 'code', 'names', 'avatars', 'done', 'streak', 'best', 'streakDay', 'createdAt'])
+          && m is list && m.size() == 2
+          && m[0] is string && m[1] is string && m[0] < m[1]
+          && pairId == m[0] + '_' + m[1]
+          && request.auth.uid in m
+          && d.code is string
+          && validPeople(d)
+          && d.done == {}
+          && d.streak == 0 && d.best == 0 && d.streakDay == 0
+          && d.createdAt == request.time;
+      }
+
+      // The friend's code must exist, belong to the friend and carry the
+      // name and avatar written for them.
+      function codeMatches() {
+        let d = request.resource.data;
+        let other = otherOf(d.members);
+        let path = /databases/$(database)/documents/friendCodes/$(d.code);
+        return exists(path)
+          && get(path).data.uid == other
+          && d.names[other] == get(path).data.name
+          && d.avatars[other] == get(path).data.avatar;
+      }
+
+      // Only the caller's own entries in names, avatars and done change;
+      // done may only move forward to today.
+      function validOwnChange() {
+        let me = request.auth.uid;
+        let d = request.resource.data;
+        let old = resource.data;
+        let oldDone = old.done.get(me, 0);
+        let newDone = d.done.get(me, 0);
+        return d.diff(old).affectedKeys().hasOnly(['done', 'names', 'avatars', 'streak', 'best', 'streakDay'])
+          && d.names.diff(old.names).affectedKeys().hasOnly([me])
+          && d.avatars.diff(old.avatars).affectedKeys().hasOnly([me])
+          && d.done.diff(old.done).affectedKeys().hasOnly([me])
+          && validPeople(d)
+          && (newDone == oldDone || (newDone == trDay() && newDone > oldDone));
+      }
+
+      // The shared streak grows once on the first day both reached the goal;
+      // a missed day restarts it at 1. Nothing else may change it.
+      function validStreak() {
+        let me = request.auth.uid;
+        let d = request.resource.data;
+        let old = resource.data;
+        let t = trDay();
+        let bump = d.done.get(me, 0) == t
+          && old.done.get(otherOf(old.members), 0) == t
+          && old.streakDay != t;
+        let next = old.streakDay == t - 1 ? old.streak + 1 : 1;
+        return bump
+          ? d.streak == next && d.streakDay == t && d.best == (next > old.best ? next : old.best)
+          : d.streak == old.streak && d.streakDay == old.streakDay && d.best == old.best;
+      }
+
+      allow read: if signedIn() && request.auth.uid in resource.data.members;
+      allow create: if signedIn() && hasAccount() && validNew() && codeMatches();
+      allow update: if signedIn() && hasAccount()
+        && request.auth.uid in resource.data.members
+        && validOwnChange() && validStreak();
+      allow delete: if signedIn() && request.auth.uid in resource.data.members;
+
+      // Preset cheers (no free text), at most one per kind per day.
+      match /cheers/{cheerId} {
+        function parent() {
+          return get(/databases/$(database)/documents/friendships/$(pairId)).data;
+        }
+
+        function isMember() {
+          return signedIn()
+            && exists(/databases/$(database)/documents/friendships/$(pairId))
+            && request.auth.uid in parent().members;
+        }
+
+        function validCheer() {
+          let d = request.resource.data;
+          return d.keys().hasOnly(['from', 'to', 'kind', 'day', 'createdAt'])
+            && d.keys().hasAll(['from', 'to', 'kind', 'day', 'createdAt'])
+            && d.from == request.auth.uid
+            && d.to == otherOf(parent().members)
+            && d.kind in ['tebrik', 'destek', 'hadi', 'harika']
+            && d.day == trDay()
+            && d.createdAt == request.time
+            && cheerId == d.from + '_' + string(d.day) + '_' + d.kind;
+        }
+
+        allow read: if isMember();
+        allow create: if hasAccount() && isMember() && validCheer();
+        allow update: if false;
+        allow delete: if isMember();
+      }
+    }
+    // ---- end Friends ----
+
     // Everything else (quotas, purchase tokens, counters) is server-only.
     match /{document=**} {
       allow read, write: if false;

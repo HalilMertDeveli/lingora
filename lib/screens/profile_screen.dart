@@ -13,6 +13,7 @@ import 'account_section.dart';
 import 'error_analysis_screen.dart';
 import 'growth_profile_section.dart';
 import 'family_screen.dart';
+import 'friends_screen.dart';
 import 'onboarding_screen.dart';
 import 'paywall_screen.dart';
 import 'placement_screen.dart';
@@ -122,6 +123,18 @@ class ProfileScreen extends ConsumerWidget {
                 Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const FamilyScreen())),
             icon: const Icon(Icons.family_restroom_rounded, size: 18),
             label: const Text('Aile planı'),
+          ),
+        ),
+        // Always shown (the screen itself is closed in Çocuk modu), so the
+        // layout does not jump when the mode is switched below.
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextButton.icon(
+            key: const ValueKey('profile-friends'),
+            onPressed: () =>
+                Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const FriendsScreen())),
+            icon: const Icon(Icons.group_rounded, size: 18),
+            label: const Text('Arkadaşlar ve ortak seri'),
           ),
         ),
         const SizedBox(height: 12),

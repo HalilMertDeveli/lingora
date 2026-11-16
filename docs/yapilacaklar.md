@@ -32,6 +32,8 @@ Bir maddeyi bitirdiğinde `[x]` ile işaretle.
 ### Firebase ve sunucu
 
 - [ ] **Firebase projesini Blaze (kullandıkça öde) planına geçir.** Cloud Functions için şart. Bir bütçe uyarısı koy, ör. aylık 10 $.
+  - Bu yapılmadan gerçek lig çalışmaz: uygulama ligi bu cihazda simüle rakiplerle gösterir. (16.11.2026: Cloud Functions API kapalı, hiç fonksiyon yüklü değil.)
+- [ ] **Arkadaşlık kurallarını gerçek projeye yüklemem için onay ver.** Komut: `firebase deploy --only firestore:rules --project dilbaz-3392e`. Blaze gerekmez. Yüklenmeden Arkadaşlar ekranı gerçek projede "bağlanılamadı" der.
 - [ ] **Anthropic API anahtarı al ve bana haber ver.** Anahtarı Firebase secret olarak ben eklerim, sonra Functions'ı dağıtırım. Bu yapılmadan yapay zekâ sohbeti demo modunda kalır.
 - [ ] **Firestore bölgesine karar ver.**
   - Veritabanı şu an ABD'de (`nam5`).
