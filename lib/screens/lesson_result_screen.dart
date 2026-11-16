@@ -594,6 +594,66 @@ class TestFailedScreen extends StatelessWidget {
   );
 }
 
+/// Shown when a skip exam ("Atlama sınavı") runs out of hearts. Nothing on
+/// the path changes; the tone stays friendly.
+class SkipFailedScreen extends StatelessWidget {
+  const SkipFailedScreen({
+    super.key,
+    required this.correct,
+    required this.answered,
+    required this.unit,
+    this.onRetry,
+  });
+
+  final int correct;
+  final int answered;
+
+  /// A unit skip exam (else a section one).
+  final bool unit;
+  final VoidCallback? onRetry;
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    key: const Key('skip-failed'),
+    body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const Spacer(),
+            const Mascot(mood: Mood.calm, size: 150, react: true),
+            const SizedBox(height: 12),
+            Text(
+              'Canların bitti, hiç sorun değil',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              '$answered sorunun $correct tanesini doğru yaptın. '
+              '${unit ? 'Bu ünite' : 'Bu bölüm'} yerinde duruyor: derslerle devam edebilir '
+              'ya da sınavı istediğin zaman yeniden deneyebilirsin.',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
+            ),
+            const Spacer(),
+            if (onRetry != null) ...[
+              PressableButton(key: const Key('skip-retry'), label: 'YENİDEN DENE', onPressed: onRetry),
+              const SizedBox(height: 12),
+            ],
+            PressableButton(
+              key: const Key('skip-back'),
+              label: 'YOLA DÖN',
+              outlined: true,
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
 class _Banner extends StatelessWidget {
   const _Banner({
     required this.delay,

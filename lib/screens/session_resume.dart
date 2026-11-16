@@ -32,6 +32,7 @@ Widget? restoredScreen(ResumeRecord record, Course course) {
       passHeadline: lesson.passHeadline,
       logSource: lesson.logSource,
       readingWords: lesson.readingWords,
+      hearts: lesson.hearts,
       resume: resume,
       // A failed test starts over with the same questions, reshuffled.
       retry: lesson.mode == LessonMode.test ? () => build(fresh: [...items]..shuffle(Random())) : null,

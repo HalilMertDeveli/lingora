@@ -11,6 +11,7 @@ import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
 import '../data/resume.dart';
+import '../data/skip_exam.dart';
 import '../data/stoic.dart';
 import '../exercises/choice_exercise.dart';
 import '../exercises/common.dart';
@@ -28,6 +29,7 @@ import '../services/growth/paywall_trigger.dart';
 import '../study/answer_recorder.dart';
 import '../theme.dart';
 import '../ui/motion.dart';
+import '../ui/hearts.dart';
 import '../ui/session.dart';
 import '../ui/why_wrong.dart';
 import '../nav/flow.dart';
@@ -60,6 +62,7 @@ class LessonScreen extends ConsumerStatefulWidget {
     this.logSource,
     this.onAnswered,
     this.readingWords = 0,
+    this.hearts,
     this.resume,
   });
 
@@ -100,6 +103,12 @@ class LessonScreen extends ConsumerStatefulWidget {
   /// the reading counter when it is finished.
   final int readingWords;
 
+  /// Hearts of a skip exam ("Atlama sınavı", lib/data/skip_exam.dart): each
+  /// wrong answer takes one and the exam ends when none are left; passing
+  /// means reaching the end with at least one. Null everywhere else: normal
+  /// lessons have no hearts.
+  final int? hearts;
+
   /// A session saved before the app was killed, opened at the same question
   /// (see lib/data/resume.dart).
   final LessonResume? resume;
@@ -125,6 +134,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   int _combo = 0;
   int _bestCombo = 0;
   int _shake = 0;
+  late int _heartsLeft = widget.resume?.snapshot.heartsLeft ?? widget.hearts ?? 0;
   final Map<QuestMetric, int> _questStats = {};
   Grader? _grader;
 
@@ -167,7 +177,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       _persist();
     }
     // Killed right after the last answer: only the result was left.
-    if (saved != null && _pos >= _queue.length) {
+    // Or a skip exam was killed right after its last heart went.
+    if (saved != null && (_pos >= _queue.length || _outOfHearts)) {
       WidgetsBinding.instance.addPostFrameCallback((_) => mounted ? _finish() : null);
     }
   }
@@ -218,6 +229,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         bestCombo: _bestCombo,
         questStats: {for (final e in _questStats.entries) e.key.name: e.value},
         elapsedSeconds: DateTime.now().difference(_started).inSeconds,
+        hearts: widget.hearts,
+        heartsLeft: widget.hearts == null ? null : _heartsLeft,
       ),
     );
   }
@@ -229,6 +242,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
 
   LessonItem get _current => _queue[_pos];
   bool get _requeues => widget.mode != LessonMode.test;
+  bool get _hasHearts => widget.hearts != null;
+  bool get _outOfHearts => _hasHearts && _heartsLeft <= 0;
 
   /// Runs the Türk hata dedektörü on a wrong English answer.
   WhyWrongSection? _explain(Exercise ex) {
@@ -273,6 +288,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         _mistakes++;
         _combo = 0;
         _shake++;
+        if (_hasHearts && _heartsLeft > 0) _heartsLeft--;
         if (_requeues) {
           _queue.add(_current);
         } else {
@@ -299,7 +315,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   void _continue() => _advance();
 
   void _advance() {
-    if (_pos + 1 >= _queue.length) {
+    // Out of hearts: the skip exam ends here.
+    if (_pos + 1 >= _queue.length || _outOfHearts) {
       _finish();
       return;
     }
@@ -331,17 +348,37 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final nav = Navigator.of(context);
     final perfect = _mistakes == 0;
 
-    if (widget.mode == LessonMode.test && _accuracy < testPassPercent) {
+    void retry() =>
+        nav.pushReplacement(MaterialPageRoute<void>(builder: (_) => widget.retry!(), fullscreenDialog: true));
+    if (_hasHearts && _outOfHearts) {
+      logEvent(
+        ref,
+        AnalyticsEvent.lessonFinish(
+          widget.nodeId,
+          mode: 'skip_failed',
+          accuracy: _accuracy,
+          xp: 0,
+          durationSec: DateTime.now().difference(_started).inSeconds,
+        ),
+      );
       nav.pushReplacement(
         MaterialPageRoute<void>(
-          builder: (_) => TestFailedScreen(
-            accuracy: _accuracy,
-            onRetry: widget.retry == null
-                ? null
-                : () => nav.pushReplacement(
-                    MaterialPageRoute<void>(builder: (_) => widget.retry!(), fullscreenDialog: true),
-                  ),
+          builder: (_) => SkipFailedScreen(
+            correct: _answered - _mistakes,
+            answered: _answered,
+            unit: isUnitSkipId(widget.nodeId),
+            onRetry: widget.retry == null ? null : retry,
           ),
+        ),
+      );
+      return;
+    }
+
+    // Skip exams are passed by their hearts, other tests by the pass mark.
+    if (widget.mode == LessonMode.test && !_hasHearts && _accuracy < testPassPercent) {
+      nav.pushReplacement(
+        MaterialPageRoute<void>(
+          builder: (_) => TestFailedScreen(accuracy: _accuracy, onRetry: widget.retry == null ? null : retry),
         ),
       );
       return;
@@ -361,6 +398,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       perfect: perfect,
       stats: _questStats,
     );
+    // A passed skip exam counts the unit's (or section's) steps as done.
+    final course = _hasHearts ? ref.read(courseProvider).value : null;
+    if (course != null) applySkipPass(notifier, course, widget.nodeId);
     logEvent(
       ref,
       AnalyticsEvent.lessonFinish(
@@ -480,6 +520,11 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         '${min(_solved, _total)}/$_total',
         style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800, fontSize: 15),
       ),
+      LessonMode.test when _hasHearts => HeartsBar(
+        key: const Key('skip-hearts'),
+        left: _heartsLeft,
+        total: widget.hearts!,
+      ),
       LessonMode.test => Icon(Icons.workspace_premium_rounded, color: Brand.accent, size: 28),
       LessonMode.practice => Icon(Icons.fitness_center_rounded, color: Brand.primary, size: 26),
     };
@@ -500,7 +545,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   @override
   Widget build(BuildContext context) {
     // A restored session with nothing left: the result opens next frame.
-    if (_pos >= _queue.length) return const Scaffold();
+    if (_pos >= _queue.length || (_outOfHearts && _lastCorrect == null)) return const Scaffold();
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
