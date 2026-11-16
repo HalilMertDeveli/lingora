@@ -260,7 +260,7 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
     return AnswerFeedbackPanel(
       correct: ok,
       continueKey: const Key('vocabNext'),
-      title: ok ? (_combo >= comboThreshold ? comboPraise(_combo) : null) : 'Doğru cevap:',
+      title: ok ? (comboMilestone(_combo) ? comboPraise(_combo) : null) : 'Doğru cevap:',
       answer: ok || card.answer == e.word || card.answer == e.tr
           ? '${e.word} = ${e.tr}'
           : '${card.answer}  ·  ${e.word} = ${e.tr}',

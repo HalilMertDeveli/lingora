@@ -68,4 +68,14 @@ void main() {
     expect(praiseFor(1, kid: false), banterPraises.first);
     expect(praiseFor(1, kid: true), kidBanterPraises.first);
   });
+
+  test('the run message comes at 3 and every 5th, leaving room for banter', () {
+    expect(
+      [
+        for (var c = 0; c <= 15; c++)
+          if (comboMilestone(c)) c,
+      ],
+      [3, 5, 10, 15],
+    );
+  });
 }

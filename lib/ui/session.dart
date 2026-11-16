@@ -45,6 +45,11 @@ const teaPraises = [
   'Bu iş sende!',
 ];
 
+/// Runs whose answer gets [comboPraise] instead of a praise line: the first
+/// one ([comboThreshold]) and every fifth. In between the header keeps the
+/// count, and the panel leaves room for praise, banter and proverbs.
+bool comboMilestone(int combo) => combo == comboThreshold || (combo >= 5 && combo % 5 == 0);
+
 /// Cheer for a run of [n] right answers in a row ([comboThreshold]+).
 /// Çocuk modu gets its own, simpler lines ([kid] defaults to the active mode).
 String comboPraise(int n, {bool? kid}) => (kid ?? Brand.isKid)
