@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/formula_colors.dart';
 import '../data/notes_practice.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
@@ -474,7 +475,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
         ),
         if (f.example != null) ...[
           const SizedBox(height: 22),
-          _ExampleLine(en: f.example!, onSpeak: () => _speech.say(f.example!)),
+          _ExampleLine(formula: f, onSpeak: () => _speech.say(f.example!)),
         ],
         const SizedBox(height: 20),
         Wrap(
@@ -482,17 +483,23 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
           runSpacing: 6,
           children: [
             for (final r in {for (final p in f.parts) p.role}.where((r) => r != PartRole.other))
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(color: roleColors[r], shape: BoxShape.circle),
-                  ),
-                  const SizedBox(width: 4),
-                  Text(roleNames[r]!, style: TextStyle(color: Brand.muted, fontSize: 12)),
-                ],
+              // Text.rich (not a Row) so a long name wraps with large text.
+              Text.rich(
+                TextSpan(
+                  children: [
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: Container(
+                        width: 10,
+                        height: 10,
+                        margin: const EdgeInsets.only(right: 4),
+                        decoration: BoxDecoration(color: roleColors[r], shape: BoxShape.circle),
+                      ),
+                    ),
+                    TextSpan(text: roleNames[r]),
+                  ],
+                ),
+                style: TextStyle(color: Brand.muted, fontSize: 12),
               ),
           ],
         ),
@@ -516,18 +523,27 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       _title('TÜRKÇE İLE KARŞILAŞTIR', 'Biz nasıl söylüyoruz?'),
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const _Lang('🇹🇷', 'TR'),
-          const SizedBox(width: 6),
-          Icon(Icons.compare_arrows_rounded, color: Brand.muted),
-          const SizedBox(width: 6),
-          const _Lang('🇬🇧', 'EN'),
-          const SizedBox(width: 12),
-          Expanded(child: Text(l.compare, style: const TextStyle(fontSize: 17, height: 1.5))),
-        ],
+      // The TR ⇄ EN badges sit above the text so the text keeps the full
+      // width on narrow screens and with large text; the badges only shrink
+      // (never overflow) when even they do not fit.
+      Align(
+        alignment: Alignment.centerLeft,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const _Lang('🇹🇷', 'TR'),
+              const SizedBox(width: 6),
+              Icon(Icons.compare_arrows_rounded, color: Brand.muted),
+              const SizedBox(width: 6),
+              const _Lang('🇬🇧', 'EN'),
+            ],
+          ),
+        ),
       ),
+      const SizedBox(height: 10),
+      Text(l.compare, style: const TextStyle(fontSize: 17, height: 1.5)),
     ],
   );
 
@@ -784,9 +800,11 @@ class _Chip extends StatelessWidget {
   }
 }
 
+/// The formula's example sentence, each part painted with the same colour as
+/// its chip above (subject blue, verb green…).
 class _ExampleLine extends StatelessWidget {
-  const _ExampleLine({required this.en, required this.onSpeak});
-  final String en;
+  const _ExampleLine({required this.formula, required this.onSpeak});
+  final Formula formula;
   final VoidCallback onSpeak;
 
   @override
@@ -795,7 +813,21 @@ class _ExampleLine extends StatelessWidget {
       IconButton.filledTonal(onPressed: onSpeak, icon: const Icon(Icons.volume_up_rounded)),
       const SizedBox(width: 8),
       Expanded(
-        child: Text(en, style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic)),
+        child: Text.rich(
+          key: const ValueKey('formula-example'),
+          TextSpan(
+            children: [
+              for (final s in colorExample(formula))
+                TextSpan(
+                  text: s.text,
+                  style: s.role == null
+                      ? null
+                      : TextStyle(color: roleColors[s.role], fontWeight: FontWeight.w800),
+                ),
+            ],
+          ),
+          style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+        ),
       ),
     ],
   );
