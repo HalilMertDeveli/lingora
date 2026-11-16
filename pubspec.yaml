@@ -45,6 +45,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/sfx/
+    - assets/voice/
     - assets/courses/
     - assets/courses/tr_en/
     # Path outlines of the courses (tool/build_course_index.dart).

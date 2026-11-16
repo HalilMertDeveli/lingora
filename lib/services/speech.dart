@@ -10,6 +10,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
+import 'voice_pack.dart';
+
 /// The last speech problem worth telling the learner about (no English voice,
 /// no microphone permission, nothing heard…), or null. Screens show it next
 /// to the speaker / microphone buttons.
@@ -42,6 +44,7 @@ class SpeechService {
 
   final _tts = FlutterTts();
   final _stt = SpeechToText();
+  final _pack = VoicePack();
   bool _sttReady = false;
   AudioPlayer? _player;
   Directory? _cacheDir;
@@ -58,6 +61,18 @@ class SpeechService {
     final speed = (slow ? 0.22 : 0.45) * rate;
     try {
       await _stopVoice();
+      // A studio recording of this sentence, when there is one.
+      if (lang != 'tr' && !kIsWeb) {
+        final asset = await _pack.assetFor(text);
+        if (id != _request) return;
+        if (asset != null) {
+          final p = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
+          await p.setSource(AssetSource(asset));
+          await p.setPlaybackRate(slow ? 0.7 : rate.clamp(0.5, 1.5));
+          await p.resume();
+          return;
+        }
+      }
       if (!await _hasVoice(locale)) return;
       if (_android) {
         final path = await _synthesize(text, locale, speed);
