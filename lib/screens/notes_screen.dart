@@ -20,12 +20,14 @@ import '../ui/why_wrong.dart';
 import 'lesson_result_screen.dart';
 import 'grammar_path_screen.dart';
 import 'lesson_screen.dart';
+import 'my_notes_screen.dart';
 import 'reading_screen.dart';
 import 'vocab/word_list_screen.dart';
 
 Color get _notesColor => Brand.tone(const Color(0xFF2F80ED));
 
-/// Home of the "Notlarım" track: the user's own Notion notes as study tools.
+/// Home of the "Notlarım" track: the shared course notes (grammar, dictionary)
+/// and the learner's own notes and words.
 class NotesHomeScreen extends ConsumerWidget {
   const NotesHomeScreen({super.key});
 
@@ -55,6 +57,9 @@ class _NotesHome extends ConsumerWidget {
     final due = dueWordCount(words, p, now);
     final learned = learnedWordCount(p);
     final wroteToday = p.diary.containsKey(dayKey(now));
+    final own = words.where(isOwnWord).toList();
+    final ownDue = dueWordCount(own, p, now);
+    final myNotes = p.visibleNotes.length;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
@@ -74,8 +79,8 @@ class _NotesHome extends ConsumerWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Notion\'da yazdığın ${notes.words.length} kelime ve ${notes.topics.where((t) => !t.addedByApp).length} gramer konusu, '
-                      'artık çalışılabilir hâlde.',
+                      'Hazır ders notları: ${notes.topics.length} gramer konusu ve ${notes.words.length} kelime. '
+                      'Kendi notlarını ve kelimelerini de ekle, tekrar et.',
                       style: TextStyle(color: Colors.white.withValues(alpha: 0.9)),
                     ),
                     const SizedBox(height: 10),
@@ -112,22 +117,43 @@ class _NotesHome extends ConsumerWidget {
           badge: wroteToday ? '✓' : null,
           onTap: () => _push(context, DiaryScreen(prompts: notes.diaryPrompts)),
         ),
-        const _NotesSection('GRAMER'),
+        const _NotesSection('KENDİ NOTLARIM'),
+        _BigAction(
+          key: const ValueKey('my-notes'),
+          icon: Icons.sticky_note_2_outlined,
+          color: _notesColor,
+          title: 'Notlarım',
+          subtitle: myNotes == 0
+              ? 'İlk notunu yaz: bir kural, bir kalıp, aklında kalsın istediğin her şey'
+              : '$myNotes not · ekle, düzenle, ara',
+          onTap: () => _push(context, const MyNotesScreen()),
+        ),
+        _BigAction(
+          key: const ValueKey('my-words'),
+          icon: Icons.bookmark_add_outlined,
+          color: Brand.success,
+          title: 'Kelimelerim',
+          subtitle: own.isEmpty
+              ? 'Kendi kelimelerini ekle; tekrar sırasına girsinler'
+              : '${own.length} kelime · ${ownDue > 0 ? '$ownDue tanesi tekrar bekliyor' : 'ekle, düzenle, tekrar et'}',
+          badge: ownDue > 0 ? '$ownDue' : null,
+          onTap: () => _push(context, WordListScreen(notes: notes, initialTopic: customTopic)),
+        ),
+        const _NotesSection('DERS NOTLARI'),
         _GrammarPathCard(notes: notes),
         const SizedBox(height: 10),
         _BigAction(
           icon: Icons.menu_book_rounded,
           color: Brand.primary,
-          title: 'Gramer notlarım',
+          title: 'Gramer konuları',
           subtitle:
               '${notes.topics.length} konu, ${grammarSections(notes.topics).length} bölümde, aranabilir',
           onTap: () => _push(context, GrammarListScreen(notes: notes)),
         ),
-        const _NotesSection('KELİMELER'),
         _BigAction(
           icon: Icons.translate_rounded,
           color: Brand.success,
-          title: 'Sözlüğüm',
+          title: 'Sözlük',
           subtitle: '${words.length} kelime, ${wordTopics(words).length} konuda, A-Z sıralı',
           onTap: () => _push(context, WordListScreen(notes: notes)),
         ),
@@ -135,7 +161,7 @@ class _NotesHome extends ConsumerWidget {
           icon: Icons.quiz_rounded,
           color: Brand.accent,
           title: 'Kelime testi',
-          subtitle: 'Kendi sözlüğünden eşleştirme ve seçmeli sorular',
+          subtitle: 'Sözlükten eşleştirme ve seçmeli sorular',
           onTap: () => _push(
             context,
             LessonScreen(
@@ -151,7 +177,7 @@ class _NotesHome extends ConsumerWidget {
         _BigAction(
           icon: Icons.code_rounded,
           color: const Color(0xFF0F766E),
-          title: 'Notlarındaki yazılım kelimeleri',
+          title: 'Yazılım kelimeleri',
           subtitle: 'Yazılımcı İngilizcesi kartlarıyla: örnek commit, PR ve stand-up cümleleri',
           onTap: () => _push(context, const NotesSoftwareWordsScreen()),
         ),
@@ -201,6 +227,7 @@ class _NotesSearchBar extends StatelessWidget {
 
 class _BigAction extends StatelessWidget {
   const _BigAction({
+    super.key,
     required this.icon,
     required this.color,
     required this.title,
@@ -491,6 +518,7 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
     final p = ref.watch(progressProvider);
     final words = dictionaryWords(widget.notes, p);
     final topics = wordTopics(words);
+    if (_topic == customTopic && !topics.contains(customTopic)) topics.insert(0, customTopic);
     final counts = <String, int>{};
     for (final w in words) {
       counts[w.topic] = (counts[w.topic] ?? 0) + 1;
@@ -502,7 +530,7 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
       for (final s in sections) ...[s, ...s.items],
     ];
     return Scaffold(
-      appBar: AppBar(title: Text('Sözlüğüm (${words.length})')),
+      appBar: AppBar(title: Text('Sözlük (${words.length})')),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => showAddWordDialog(context),
         icon: const Icon(Icons.add_rounded),
@@ -551,7 +579,14 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
             ),
           Expanded(
             child: rows.isEmpty
-                ? const Center(child: EmptyState(message: 'Bu aramayla eşleşen kelime yok.'))
+                ? Center(
+                    child: EmptyState(
+                      message: _topic == customTopic && _query.trim().isEmpty
+                          ? 'Henüz kelime eklemedin. "Kelime ekle" ile başla; eklediğin kelimeler '
+                                'tekrar sırasına girer.'
+                          : 'Bu aramayla eşleşen kelime yok.',
+                    ),
+                  )
                 : ListView.builder(
                     padding: const EdgeInsets.fromLTRB(16, 4, 16, 88),
                     itemCount: rows.length,
@@ -615,17 +650,32 @@ void showNoteWordSheet(BuildContext context, WidgetRef ref, NoteWord w) => showM
           ],
           if (w.story != null) ...[
             const SizedBox(height: 12),
-            Text('${kidEmoji('🧠')}Hafıza hikâyen: ${w.story}'),
+            Text('${kidEmoji('🧠')}Hafıza ipucu: ${w.story}'),
           ],
-          if (w.topic == customTopic) ...[
+          if (isOwnWord(w)) ...[
             const SizedBox(height: 12),
-            TextButton.icon(
-              onPressed: () {
-                ref.read(progressProvider.notifier).removeCustomWord(w.id);
-                Navigator.pop(sheet);
-              },
-              icon: Icon(Icons.delete_outline_rounded, color: Brand.error),
-              label: Text('Sözlüğümden çıkar', style: TextStyle(color: Brand.error)),
+            Wrap(
+              spacing: 8,
+              children: [
+                TextButton.icon(
+                  key: const ValueKey('edit-word'),
+                  onPressed: () {
+                    Navigator.pop(sheet);
+                    showAddWordDialog(context, edit: w);
+                  },
+                  icon: const Icon(Icons.edit_outlined),
+                  label: const Text('Düzenle'),
+                ),
+                TextButton.icon(
+                  key: const ValueKey('delete-word'),
+                  onPressed: () {
+                    ref.read(progressProvider.notifier).removeCustomWord(w.id);
+                    Navigator.pop(sheet);
+                  },
+                  icon: Icon(Icons.delete_outline_rounded, color: Brand.error),
+                  label: Text('Sil', style: TextStyle(color: Brand.error)),
+                ),
+              ],
             ),
           ],
         ],
@@ -732,7 +782,7 @@ class _TopicCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = topic;
     final details = [
-      '${t.addedByApp ? kidEmoji('✨') : ''}${t.source}',
+      if (number == null) t.category,
       if (t.rules.isNotEmpty) '${t.rules.length} kural',
       '${t.examples.length} örnek',
     ];
@@ -818,7 +868,7 @@ class _GrammarListScreenState extends State<GrammarListScreen> {
         for (var i = 0; i < c.items.length; i++) c.items[i].id: '${chapterNo[c.title]}.${i + 1}',
     };
     return Scaffold(
-      appBar: AppBar(title: Text('Gramer notlarım (${widget.notes.topics.length})')),
+      appBar: AppBar(title: Text('Gramer konuları (${widget.notes.topics.length})')),
       body: Column(
         children: [
           Padding(
@@ -919,7 +969,26 @@ class _AllNotesScreenState extends ConsumerState<AllNotesScreen> {
     final chapters = grammarSections(notes.topics);
     final days = diaryDays(diary);
     return [
-      _SectionHeader(title: 'Gramer notları', count: notes.topics.length),
+      _SectionHeader(title: 'Notlarım', count: ref.read(progressProvider).visibleNotes.length),
+      TapCard(
+        onTap: () => _push(context, const MyNotesScreen()),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                ref.read(progressProvider).visibleNotes.isEmpty
+                    ? 'Henüz notun yok. Kendi notlarını buraya ekleyebilirsin.'
+                    : ref.read(progressProvider).visibleNotes.take(3).map(noteTitle).join(' · '),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(color: Brand.muted),
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, color: Brand.muted),
+          ],
+        ),
+      ),
+      _SectionHeader(title: 'Gramer konuları', count: notes.topics.length),
       _IndexCard(
         rows: [
           for (var i = 0; i < chapters.length; i++)
@@ -971,11 +1040,9 @@ class _AllNotesScreenState extends ConsumerState<AllNotesScreen> {
     final topics = notes.topics.where((t) => topicMatches(t, _query)).toList();
     final found = wordSections(words, query: _query).expand((s) => s.items).toList();
     final days = diaryDays(diary, query: _query);
-    if (topics.isEmpty && found.isEmpty && days.isEmpty) {
-      return const [
-        SizedBox(height: 40),
-        EmptyState(message: 'Notlarında bununla eşleşen bir şey bulamadım.'),
-      ];
+    final mine = ref.read(progressProvider).visibleNotes.where((n) => userNoteMatches(n, _query)).toList();
+    if (topics.isEmpty && found.isEmpty && days.isEmpty && mine.isEmpty) {
+      return const [SizedBox(height: 40), EmptyState(message: 'Notlarda bununla eşleşen bir şey bulamadım.')];
     }
     Widget more(int n, VoidCallback onTap) => n <= _preview
         ? const SizedBox.shrink()
@@ -984,6 +1051,11 @@ class _AllNotesScreenState extends ConsumerState<AllNotesScreen> {
             child: TextButton(onPressed: onTap, child: Text('Tümünü gör ($n)')),
           );
     return [
+      if (mine.isNotEmpty) ...[
+        _SectionHeader(title: 'Notlarım', count: mine.length),
+        for (final n in mine.take(_preview)) UserNoteCard(note: n),
+        more(mine.length, () => _push(context, const MyNotesScreen())),
+      ],
       if (topics.isNotEmpty) ...[
         _SectionHeader(title: 'Gramer', count: topics.length),
         for (final t in topics.take(_preview)) _TopicCard(topic: t, all: notes.topics),
@@ -1073,29 +1145,10 @@ class TopicScreen extends ConsumerWidget {
               child: ListView(
                 padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
                 children: [
-                  Wrap(
-                    spacing: 8,
-                    children: [
-                      Chip(label: Text(topic.category)),
-                      Chip(
-                        avatar: Icon(
-                          topic.addedByApp ? Icons.auto_awesome_rounded : Icons.description_outlined,
-                          size: 16,
-                        ),
-                        label: Text(topic.source),
-                      ),
-                    ],
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Chip(label: Text(topic.category)),
                   ),
-                  if (topic.addedByApp)
-                    Container(
-                      margin: const EdgeInsets.only(top: 6, bottom: 4),
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Brand.accentBg,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Text('Bu konu notlarında yoktu; eksik kalmasın diye Dilmaç ekledi.'),
-                    ),
                   const SizedBox(height: 8),
                   for (final para in topic.body.split('\n\n').where((s) => s.trim().isNotEmpty))
                     Padding(
@@ -1137,7 +1190,7 @@ class TopicScreen extends ConsumerWidget {
                   ],
                   if (topic.examples.isNotEmpty) ...[
                     const SizedBox(height: 18),
-                    Text('Örneklerin', style: Theme.of(context).textTheme.titleMedium),
+                    Text('Örnekler', style: Theme.of(context).textTheme.titleMedium),
                     const SizedBox(height: 6),
                     for (final e in topic.examples)
                       ListTile(
@@ -1374,7 +1427,7 @@ class _GrammarPathCard extends ConsumerWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'Notlarından hazırlanan adım adım dersler: formül, zaman çizelgesi, '
+            'Ders notlarından hazırlanan adım adım dersler: formül, zaman çizelgesi, '
             'Türkçe karşılaştırma, yaygın hatalar ve mini test.',
             style: TextStyle(color: Brand.muted, fontSize: 13),
           ),

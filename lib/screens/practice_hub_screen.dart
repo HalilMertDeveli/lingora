@@ -194,7 +194,7 @@ class PracticeHubScreen extends ConsumerWidget {
               emoji: '📝',
               color: const Color(0xFF2F80ED),
               title: 'Notlarım',
-              subtitle: 'Kendi kelimelerin, gramer notların ve günlüğün',
+              subtitle: 'Ders notları, kendi notların, kelimelerin ve günlüğün',
               onTap: () => openPage(context, 'Notlarım', const NotesHomeScreen()),
             ),
           const SizedBox(height: 8),

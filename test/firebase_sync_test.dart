@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lingora/data/notes_practice.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/models/notes.dart';
 import 'package:lingora/screens/account_section.dart';
@@ -249,6 +250,50 @@ void main() {
       expect((doc['progress'] as Map)['completed'], {'n1': 1});
       expect(doc['clientUpdatedAt'], DateTime(2026, 11, 10, 12).millisecondsSinceEpoch);
       expect(c.read(progressSyncProvider).state, SyncState.synced);
+    });
+
+    test('own notes and words follow the account to a new phone', () async {
+      final c = await start(const Progress(onboarded: true));
+      final n = c.read(progressProvider.notifier);
+      n.saveUserNote(title: 'Since / for', body: 'since + başlangıç, for + süre');
+      n.addCustomWord(customWord('deadline', 'son teslim tarihi'));
+      await settle();
+      final doc = (await db.doc('users/u1').get()).data()!;
+      final progress = doc['progress'] as Map;
+      expect((progress['userNotes'] as List).single['title'], 'Since / for');
+      expect((progress['customWords'] as List).single['en'], 'deadline');
+
+      // A second phone signs in to the same account.
+      c.dispose();
+      auth = MockFirebaseAuth(signedIn: true, mockUser: MockUser(uid: 'u1', isAnonymous: false));
+      final phone2 = await start(const Progress());
+      final p = phone2.read(progressProvider);
+      expect(p.visibleNotes.single.body, 'since + başlangıç, for + süre');
+      expect(p.customWords.single.tr, 'son teslim tarihi');
+    });
+
+    test('a deleted note or word is not brought back by the cloud copy', () async {
+      const note = UserNote(id: 'n1', title: 'Eski', body: 'x', createdAt: 1, updatedAt: 1);
+      final cloud = Progress(
+        onboarded: true,
+        userNotes: const [note],
+        customWords: [customWord('ferry', 'vapur').copyWith(at: 1)],
+      );
+      await db.doc('users/u1').set({'clientUpdatedAt': 1, 'progress': cloud.toJson()});
+      final c = await start(const Progress(onboarded: true));
+      expect(c.read(progressProvider).visibleNotes, hasLength(1));
+      final n = c.read(progressProvider.notifier);
+      n.deleteUserNote('n1');
+      n.removeCustomWord(c.read(progressProvider).customWords.single.id);
+      await settle();
+      // Another phone still has the old copy and syncs it again.
+      await db.doc('users/u1').set({
+        'clientUpdatedAt': DateTime(2026, 11, 10, 13).millisecondsSinceEpoch,
+        'progress': cloud.toJson(),
+      });
+      await settle();
+      expect(c.read(progressProvider).visibleNotes, isEmpty);
+      expect(c.read(progressProvider).customWords, isEmpty);
     });
 
     test('changes from another device are merged in', () async {

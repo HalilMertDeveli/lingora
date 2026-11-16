@@ -97,9 +97,9 @@ const notesTrack = Track(
   id: 'notes',
   kind: TrackKind.notes,
   title: 'Notlarım',
-  subtitle: "Notion'daki kendi notların: sözlük, gramer, günlük",
+  subtitle: 'Hazır gramer ve kelime notları; kendi notların ve kelimelerin',
   emoji: '📒',
-  badge: 'KİŞİSEL',
+  badge: 'NOTLAR',
 );
 
 const allTracks = [...courseCatalog, ...vocabCatalog, ...examCatalog, notesTrack];

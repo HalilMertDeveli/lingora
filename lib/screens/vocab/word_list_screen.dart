@@ -107,7 +107,7 @@ class VocabEntryDetails extends StatelessWidget {
           ],
         ),
         Text(
-          '${e.posTr} · ${e.topic} · #${e.rank}${e.fromNotes ? ' · 📒 notlarında' : ''}',
+          '${e.posTr} · ${e.topic} · #${e.rank}${e.fromNotes ? ' · 📒 ders notlarında' : ''}',
           style: TextStyle(color: Brand.muted),
         ),
         section('ANLAMLAR'),
@@ -180,10 +180,10 @@ class NotesSoftwareWordsScreen extends ConsumerWidget {
         loading: () => const Scaffold(body: Center(child: CircularProgressIndicator())),
         error: (e, _) => Scaffold(body: Center(child: Text('Kelimeler yüklenemedi: $e'))),
         data: (v) => VocabWordListScreen(
-          title: 'Notlarındaki yazılım kelimeleri',
+          title: 'Ders notlarındaki yazılım kelimeleri',
           entries: v.entries.where((e) => e.fromNotes).toList(),
           header: Text(
-            'Notion sözlüğündeki yazılım kelimelerin, Yazılımcı İngilizcesi kartlarıyla: anlamlar, '
+            'Ders sözlüğündeki yazılım kelimeleri, Yazılımcı İngilizcesi kartlarıyla: anlamlar, '
             'commit/PR örnekleri, eşdizimler ve ipuçları.',
             style: TextStyle(color: Brand.muted),
           ),
