@@ -179,15 +179,16 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
             ),
           ),
           const SizedBox(height: 12),
-          Text(
-            _unavailable
-                ? 'Bu cihazda ses tanıma kullanılamıyor.'
-                : _listening
-                ? 'Dinliyorum…'
-                : _heard.isEmpty
-                ? ''
-                : '“$_heard”',
-            textAlign: TextAlign.center,
+          ValueListenableBuilder<String?>(
+            valueListenable: speechIssue,
+            builder: (context, issue, _) => Text(
+              _listening
+                  ? 'Dinliyorum…'
+                  : _heard.isNotEmpty
+                  ? '“$_heard”'
+                  : issue ?? (_unavailable ? SpeechIssues.noRecognizer : ''),
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
         const SizedBox(height: 8),
