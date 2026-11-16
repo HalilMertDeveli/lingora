@@ -68,9 +68,6 @@
     {"id": "ma-8-22", "author": "marcus", "work": "meditations", "ref": "8.22", "kid": true,
      "en": "Attend to the matter which is before you.",
      "tr": "Önündeki işe odaklan."},
-    {"id": "ma-12-1", "author": "marcus", "work": "meditations", "ref": "12.1", "kid": false,
-     "en": "It is not death that a person should fear, but never beginning to live.",
-     "tr": "İnsanın korkması gereken ölüm değil, yaşamaya hiç başlamamaktır."},
 
     {"id": "se-1-2", "author": "seneca", "work": "letters", "ref": "1.2", "kid": false,
      "en": "Hold every hour in your grasp. Lay hold of today's task, and you will not need to depend so much upon tomorrow's.",

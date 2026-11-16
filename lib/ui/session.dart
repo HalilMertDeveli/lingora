@@ -45,6 +45,11 @@ const teaPraises = [
   'Bu iş sende!',
 ];
 
+/// Runs whose answer gets [comboPraise] instead of a praise line: the first
+/// one ([comboThreshold]) and every fifth. In between the header keeps the
+/// count, and the panel leaves room for praise, banter and proverbs.
+bool comboMilestone(int combo) => combo == comboThreshold || (combo >= 5 && combo % 5 == 0);
+
 /// Cheer for a run of [n] right answers in a row ([comboThreshold]+).
 /// Çocuk modu gets its own, simpler lines ([kid] defaults to the active mode).
 String comboPraise(int n, {bool? kid}) => (kid ?? Brand.isKid)
@@ -71,6 +76,8 @@ const softRetries = [
   'Hata yapmayan öğrenmez.',
   'Boş ver, bir sonrakinde olur.',
   'Yanlış da yoldan sayılır.',
+  'Kimse görmedi, devam!',
+  'Londra kaçmıyor, sakin!',
 ];
 
 /// Çocuk modu praise: warm, simple, a little playful; no slang.
@@ -112,17 +119,49 @@ const kidProverbPraises = [
   'Ağaç yaşken eğilir!',
 ];
 
-/// Every [proverbEvery]th right answer gets a proverb instead of a praise.
+/// Short Turkish banter ("makara") for a right answer: a wink, not a joke
+/// to read twice.
+const banterPraises = [
+  'Bu gidişle dizi altyazısız!',
+  'Annen görse gurur duyar!',
+  'Turistler artık sana soracak!',
+  'Komşular duymasın, çok iyisin!',
+  'Hocam, bu ne hız?',
+  'Londra seni bekliyor!',
+  'Çay demlendi, sen de demlendin!',
+  'Mahallenin İngilizcecisi sensin!',
+  'Bunu dayına anlat, inanmaz!',
+  'Yavaş, klavye yanacak!',
+  'Shakespeare kıskandı!',
+  'Bu İngilizceyle vize kapıda!',
+];
+
+/// Çocuk modu banter: playful, nothing grown-up.
+const kidBanterPraises = [
+  'Pofuduk kıskandı!',
+  'Öğretmenin duysa sevinir!',
+  'Süper kahraman mısın?',
+  'Beynin roket gibi!',
+  'Pofuduk dans etmeye başladı!',
+  'Bu hızla uçacaksın!',
+];
+
+/// Every [proverbEvery]th right answer gets a proverb instead of a praise,
+/// and one in between gets a banter line.
 const proverbEvery = 4;
 
 /// The [n]th praise line: [teaPraises] for adults, [kidPraises] in Çocuk
-/// modu ([kid] defaults to the active mode), a proverb every
-/// [proverbEvery]th time.
+/// modu ([kid] defaults to the active mode); a banter line and a proverb
+/// once every [proverbEvery] answers each.
 String praiseFor(int n, {bool? kid}) {
   final k = kid ?? Brand.isKid;
   if (n % proverbEvery == proverbEvery - 1) {
     final proverbs = k ? kidProverbPraises : proverbPraises;
     return proverbs[(n ~/ proverbEvery) % proverbs.length];
+  }
+  if (n % proverbEvery == 1) {
+    final banter = k ? kidBanterPraises : banterPraises;
+    return banter[(n ~/ proverbEvery) % banter.length];
   }
   final lines = k ? kidPraises : teaPraises;
   return lines[n % lines.length];

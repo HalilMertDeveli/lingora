@@ -544,7 +544,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                         key: ValueKey('fb$_answered'),
                         correct: _lastCorrect!,
                         title: _lastCorrect!
-                            ? (_combo >= comboThreshold ? comboPraise(_combo) : praiseFor(_answered))
+                            ? (comboMilestone(_combo) ? comboPraise(_combo) : praiseFor(_answered))
                             : 'Doğru cevap:',
                         answer: _lastCorrect! ? null : _shownAnswer(_current.ex),
                         detail: _feedbackDetail(_current.ex),

@@ -17,7 +17,7 @@ void main() {
     expect(kidPraises.toSet().intersection(teaPraises.toSet()), isEmpty);
     for (var n = 0; n < 40; n++) {
       final p = praiseFor(n, kid: true);
-      expect([...kidPraises, ...kidProverbPraises], contains(p));
+      expect([...kidPraises, ...kidProverbPraises, ...kidBanterPraises], contains(p));
       expect(p, isNot(contains('koç')));
       expect(comboPraise(n + comboThreshold, kid: true), contains('${n + comboThreshold}'));
     }
@@ -31,7 +31,9 @@ void main() {
     final adult = [for (var n = 0; n < 40; n++) praiseFor(n, kid: false)];
     final proverbs = adult.where(proverbPraises.contains).length;
     expect(proverbs, 40 ~/ proverbEvery);
-    expect(adult.where(teaPraises.contains).length, 40 - proverbs);
+    final banter = adult.where(banterPraises.contains).length;
+    expect(banter, 40 ~/ proverbEvery);
+    expect(adult.where(teaPraises.contains).length, 40 - proverbs - banter);
   });
 
   test('consecutive answers never get the same praise', () {
@@ -53,5 +55,27 @@ void main() {
   test('soft lines after a wrong answer stay calm and unique', () {
     expect(softRetries.length, greaterThanOrEqualTo(8));
     expect(softRetries.toSet().length, softRetries.length);
+  });
+
+  test('short Turkish banter, separate and plain for kids', () {
+    expect(banterPraises.length, greaterThanOrEqualTo(10));
+    expect(kidBanterPraises.length, greaterThanOrEqualTo(5));
+    for (final b in [...banterPraises, ...kidBanterPraises]) {
+      expect(b.length, lessThanOrEqualTo(34), reason: '$b is too long');
+    }
+    expect(kidBanterPraises.toSet().intersection(banterPraises.toSet()), isEmpty);
+    expect(banterPraises.toSet().length, banterPraises.length);
+    expect(praiseFor(1, kid: false), banterPraises.first);
+    expect(praiseFor(1, kid: true), kidBanterPraises.first);
+  });
+
+  test('the run message comes at 3 and every 5th, leaving room for banter', () {
+    expect(
+      [
+        for (var c = 0; c <= 15; c++)
+          if (comboMilestone(c)) c,
+      ],
+      [3, 5, 10, 15],
+    );
   });
 }
