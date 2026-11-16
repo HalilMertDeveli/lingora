@@ -415,7 +415,7 @@ void main() {
       await fill(tester, 'auth-password', 'yanlis-sifre');
       await tapKey(tester, 'auth-submit');
       await waitFor(tester, find.byKey(const ValueKey('auth-error')), inForm: true);
-      expect(error(tester), 'E-posta ya da şifre hatalı.');
+      expect(error(tester), 'E-posta ya da şifre hatalı. Hesabın yoksa üstten "Hesap oluştur"a geç.');
     });
 
     testWidgets('unknown e-mail on sign-in', (tester) async {
@@ -426,7 +426,7 @@ void main() {
       await fill(tester, 'auth-password', 'secret123');
       await tapKey(tester, 'auth-submit');
       await waitFor(tester, find.byKey(const ValueKey('auth-error')), inForm: true);
-      expect(error(tester), 'E-posta ya da şifre hatalı.');
+      expect(error(tester), 'E-posta ya da şifre hatalı. Hesabın yoksa üstten "Hesap oluştur"a geç.');
     });
 
     testWidgets('empty password', (tester) async {

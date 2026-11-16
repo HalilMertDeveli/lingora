@@ -184,8 +184,12 @@ class AccountService {
       if (idToken == null) throw const AccountException('Google kimlik bilgisi alınamadı.');
       return GoogleAuthProvider.credential(idToken: idToken);
     } on GoogleSignInException catch (e) {
-      if (e.code == GoogleSignInExceptionCode.canceled) return null;
-      rethrow;
+      debugPrint('Google sign-in error: ${e.code} ${e.description}');
+      // Credential Manager also reports a setup problem ("[16] Account reauth
+      // failed": SHA-1 / OAuth client mismatch) as "canceled"; only a real
+      // tap on "back" stays silent.
+      if (e.code == GoogleSignInExceptionCode.canceled && !googleSetupProblem(e.description)) return null;
+      throw AccountException(googleErrorTr(e.code.name, e.description));
     }
   }
 
@@ -199,9 +203,37 @@ class AccountService {
       throw AccountException(authErrorTr(authErrorCode(e)));
     } catch (e) {
       debugPrint('Account error: $e');
-      throw const AccountException('Bir sorun oluştu. Lütfen tekrar dene.');
+      // Keep a short reason on screen so a failure on a real phone can be
+      // reported; the generic text alone hid every cause.
+      final why = e.toString().split('\n').first;
+      throw AccountException(
+        'Bir sorun oluştu. Lütfen tekrar dene.\n(${why.length > 120 ? '${why.substring(0, 120)}…' : why})',
+      );
     }
   }
+}
+
+/// True when Google's "canceled" is really a configuration failure.
+bool googleSetupProblem(String? description) {
+  final d = (description ?? '').toLowerCase();
+  return d.contains('[16]') || d.contains('reauth') || d.contains('developer_error') || d.contains('[10]');
+}
+
+/// Turkish message for a Google Sign-In failure; the code stays visible.
+String googleErrorTr(String code, String? description) {
+  final d = (description ?? '').trim();
+  final reason = googleSetupProblem(d)
+      ? 'Google girişi bu uygulama sürümü için ayarlı değil'
+      : switch (code) {
+          'interrupted' => 'Google girişi yarıda kaldı',
+          'uiUnavailable' => 'Google hesap seçici açılamadı',
+          'clientConfigurationError' ||
+          'providerConfigurationError' => 'Google girişi bu uygulama sürümü için ayarlı değil',
+          'userMismatch' => 'Seçilen Google hesabı eşleşmedi',
+          _ => 'Google ile giriş yapılamadı',
+        };
+  final detail = d.isEmpty ? code : '$code: ${d.length > 100 ? '${d.substring(0, 100)}…' : d}';
+  return '$reason. Lütfen tekrar dene.\n($detail)';
 }
 
 /// The error code of [e]. The native SDKs report some failures only as

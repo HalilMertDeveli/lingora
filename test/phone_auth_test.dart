@@ -55,4 +55,14 @@ void main() {
     expect(authErrorCode(e('wrong-password', 'network')), 'wrong-password');
     expect(authErrorTr('network-request-failed'), 'İnternet bağlantısı yok. Bağlanınca tekrar dene.');
   });
+
+  test('Google failures say why and keep the code visible', () {
+    expect(googleSetupProblem('[16] Account reauth failed.'), isTrue);
+    expect(googleSetupProblem('User canceled'), isFalse);
+    final setup = googleErrorTr('canceled', '[16] Account reauth failed.');
+    expect(setup, startsWith('Google girişi bu uygulama sürümü için ayarlı değil'));
+    expect(setup, contains('[16]'));
+    expect(googleErrorTr('uiUnavailable', null), contains('(uiUnavailable)'));
+    expect(googleErrorTr('unknownError', 'x' * 300).length, lessThan(220));
+  });
 }

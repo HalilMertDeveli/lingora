@@ -116,7 +116,7 @@ class AnalyticsConsentTile extends ConsumerWidget {
       return TapCard(
         child: Text(
           'Bu sürümde kullanım istatistiği toplanmıyor. İlerlemen ve notların yalnızca bu cihazda '
-          '(ve açtıysan kendi hesabının bulut yedeğinde) tutulur.',
+          '(ve giriş yaptıysan kendi hesabında) tutulur.',
           style: TextStyle(color: Brand.muted),
         ),
       );
