@@ -58,6 +58,7 @@ class AppSettings {
     this.reduceMotion = false,
     this.accent = Accent.us,
     this.guests = const [],
+    this.stoicQuotes = true,
   });
 
   final AppMode mode;
@@ -76,6 +77,9 @@ class AppSettings {
   /// Guest countries ticked on the tourism path (keys of [guestCountries]).
   final List<String> guests;
 
+  /// Stoic sayings and a short progress note between exercises and after a lesson.
+  final bool stoicQuotes;
+
   bool get isKid => mode == AppMode.kid;
 
   AppSettings copyWith({
@@ -85,6 +89,7 @@ class AppSettings {
     bool? reduceMotion,
     Accent? accent,
     List<String>? guests,
+    bool? stoicQuotes,
   }) => AppSettings(
     mode: mode ?? this.mode,
     theme: theme ?? this.theme,
@@ -92,6 +97,7 @@ class AppSettings {
     reduceMotion: reduceMotion ?? this.reduceMotion,
     accent: accent ?? this.accent,
     guests: guests ?? this.guests,
+    stoicQuotes: stoicQuotes ?? this.stoicQuotes,
   );
 
   Map<String, Object?> toJson() => {
@@ -101,6 +107,7 @@ class AppSettings {
     'reduceMotion': reduceMotion,
     'accent': accent.name,
     'guests': guests,
+    'stoicQuotes': stoicQuotes,
   };
 
   factory AppSettings.fromJson(Map<String, dynamic> j) => AppSettings(
@@ -114,6 +121,7 @@ class AppSettings {
         for (final c in g)
           if (c is String && guestCountries.containsKey(c)) c,
     ],
+    stoicQuotes: j['stoicQuotes'] is bool ? j['stoicQuotes'] as bool : true,
   );
 
   @override
@@ -124,13 +132,15 @@ class AppSettings {
       other.sound == sound &&
       other.reduceMotion == reduceMotion &&
       other.accent == accent &&
+      other.stoicQuotes == stoicQuotes &&
       _sameList(other.guests, guests);
 
   static bool _sameList(List<String> a, List<String> b) =>
       a.length == b.length && [for (var i = 0; i < a.length; i++) a[i] == b[i]].every((x) => x);
 
   @override
-  int get hashCode => Object.hash(mode, theme, sound, reduceMotion, accent, Object.hashAll(guests));
+  int get hashCode =>
+      Object.hash(mode, theme, sound, reduceMotion, accent, stoicQuotes, Object.hashAll(guests));
 }
 
 /// Display settings, stored apart from learning progress under `settings_v1`
@@ -159,6 +169,7 @@ class AppSettingsNotifier extends Notifier<AppSettings> {
   void setSound(bool on) => _save(state.copyWith(sound: on));
   void setReduceMotion(bool on) => _save(state.copyWith(reduceMotion: on));
   void setAccent(Accent a) => _save(state.copyWith(accent: a));
+  void setStoicQuotes(bool on) => _save(state.copyWith(stoicQuotes: on));
 
   /// Ticks or unticks a guest country on the tourism path.
   void toggleGuest(String country) {

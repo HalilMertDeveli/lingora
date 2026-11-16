@@ -67,6 +67,18 @@ class AppearanceSettings extends ConsumerWidget {
             value: s.reduceMotion,
             onChanged: n.setReduceMotion,
           ),
+          SwitchListTile(
+            key: const ValueKey('stoic-switch'),
+            contentPadding: EdgeInsets.zero,
+            title: Text('Stoacı sözler', style: t.titleMedium),
+            subtitle: Text(
+              "Ders arasında ve sonunda Marcus Aurelius, Seneca ya da Epiktetos'tan kısa bir söz ve "
+              'bugün yaptıkların.',
+              style: t.bodySmall,
+            ),
+            value: s.stoicQuotes,
+            onChanged: n.setStoicQuotes,
+          ),
         ],
       ),
     );
