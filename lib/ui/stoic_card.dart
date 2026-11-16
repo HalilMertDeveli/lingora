@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../data/stoic.dart';
 import '../theme.dart';
-import 'motion.dart';
 
 /// A Stoic quote: the English text (part of the lesson too), our Turkish and
 /// the source.
@@ -46,69 +45,44 @@ class StoicQuoteBlock extends StatelessWidget {
   }
 }
 
-/// The mid-session card: what the learner did today, then a quote. Any tap
-/// closes it; the lesson waits underneath unchanged.
-class StoicInterlude extends StatelessWidget {
-  const StoicInterlude({
-    super.key,
-    required this.stats,
-    required this.quote,
-    required this.onContinue,
-    this.title = 'Kısa bir mola',
-    this.note,
-  });
+/// Lesson result card: what the learner has done so far, then a quote.
+class StoicResultCard extends StatelessWidget {
+  const StoicResultCard({super.key, required this.quote, this.stats});
 
-  final StoicStats stats;
   final StoicQuote quote;
-  final VoidCallback onContinue;
-  final String title;
-
-  /// One line under the title (after a mistake: they come back later).
-  final String? note;
+  final StoicStats? stats;
 
   @override
   Widget build(BuildContext context) {
-    final t = Theme.of(context).textTheme;
-    return GestureDetector(
-      key: const ValueKey('stoic-interlude'),
-      behavior: HitTestBehavior.opaque,
-      onTap: onContinue,
-      child: SafeArea(
-        top: false,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(title, style: t.titleLarge),
-              if (note != null) ...[
-                const SizedBox(height: 4),
-                Text(note!, style: TextStyle(color: Brand.muted)),
+    final st = stats;
+    return Container(
+      key: const ValueKey('result-stoic'),
+      width: double.infinity,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Brand.card,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Brand.line),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (st != null) ...[
+            Wrap(
+              key: const ValueKey('result-stoic-stats'),
+              spacing: 6,
+              runSpacing: 6,
+              children: [
+                if (st.lessonsToday > 0)
+                  _Stat(Icons.menu_book_rounded, Brand.info, 'Bugün ${st.lessonsToday} ders'),
+                _Stat(Icons.emoji_events_rounded, Brand.xp, 'Toplam ${st.correctTotal} doğru'),
               ],
-              const SizedBox(height: 12),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  _Stat(
-                    Icons.check_circle_rounded,
-                    Brand.success,
-                    'Bu derste ${stats.sessionCorrect}/${stats.sessionAnswered} doğru',
-                  ),
-                  _Stat(Icons.menu_book_rounded, Brand.info, 'Bugün ${stats.lessonsToday} ders'),
-                  if (stats.streak > 0)
-                    _Stat(Icons.local_fire_department, Brand.streak, '${stats.streak} günlük seri'),
-                  _Stat(Icons.emoji_events_rounded, Brand.xp, 'Toplam ${stats.correctTotal} doğru cevap'),
-                ],
-              ),
-              const SizedBox(height: 18),
-              StoicQuoteBlock(quote: quote),
-              const SizedBox(height: 20),
-              PressableButton(key: const ValueKey('stoic-continue'), label: 'DEVAM', onPressed: onContinue),
-            ],
-          ),
-        ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          StoicQuoteBlock(quote: quote, compact: true),
+        ],
       ),
     );
   }
@@ -123,7 +97,7 @@ class _Stat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(20),
@@ -131,37 +105,14 @@ class _Stat extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 18, color: color),
+          Icon(icon, size: 16, color: color),
           const SizedBox(width: 6),
           Text(
             text,
-            style: TextStyle(fontWeight: FontWeight.w700, color: Brand.ink),
+            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Brand.ink),
           ),
         ],
       ),
     );
   }
-}
-
-/// Shows [StoicInterlude] as a bottom sheet; closes on any tap, the
-/// barrier or the back button.
-Future<void> showStoicInterlude(
-  BuildContext context, {
-  required StoicStats stats,
-  required StoicQuote quote,
-  String title = 'Kısa bir mola',
-  String? note,
-}) {
-  return showModalBottomSheet<void>(
-    context: context,
-    isScrollControlled: true,
-    showDragHandle: true,
-    builder: (sheet) => StoicInterlude(
-      stats: stats,
-      quote: quote,
-      title: title,
-      note: note,
-      onContinue: () => Navigator.of(sheet).pop(),
-    ),
-  );
 }

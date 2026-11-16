@@ -40,12 +40,16 @@ class LessonResultScreen extends StatefulWidget {
     this.showStreak = true,
     this.showQuests = true,
     this.quote,
+    this.stoicStats,
   });
 
   final LessonReward reward;
 
   /// Stoic saying under the results (Profil > Stoacı sözler); none when null.
   final StoicQuote? quote;
+
+  /// Lessons today and right answers so far, shown with [quote].
+  final StoicStats? stoicStats;
   final int accuracy;
   final Duration duration;
   final bool perfect;
@@ -185,17 +189,7 @@ class _LessonResultScreenState extends State<LessonResultScreen> {
                       delay: next(),
                       from: 0.9,
                       child: SingleChildScrollView(
-                        child: Container(
-                          key: const ValueKey('result-stoic'),
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(14),
-                          decoration: BoxDecoration(
-                            color: Brand.card,
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: Brand.line),
-                          ),
-                          child: StoicQuoteBlock(quote: quote, compact: true),
-                        ),
+                        child: StoicResultCard(quote: quote, stats: widget.stoicStats),
                       ),
                     ),
                   ),
