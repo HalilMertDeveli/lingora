@@ -141,6 +141,27 @@ gizli). Kural testleri: `functions/test/friends_rules.test.ts`.
 - **Bilinen sınır:** Günlük hedefe ulaşıldığını telefon bildirir (XP sunucuda doğrulanmıyor). Para ya da ödül
   bağlı olmadığı için kabul edilebilir. Bildirim (push) yok; mesajlar uygulama açılınca görünür.
 
+## Profil fotoğrafı ve görünen ad (Storage gerekmez)
+
+Kod: `lib/services/profile.dart`, başlık `lib/screens/profile_header.dart`. Kural testleri:
+`functions/test/profile_rules.test.ts`.
+
+- **Fotoğraf:** Galeriden ya da kameradan seçilir (`image_picker`), ortadan kare kırpılır, 256 px JPEG'e
+  küçültülür ve en fazla 60 KiB olur (`image` paketi). Cloud Storage varsayılan bucket'ı Blaze ister; bu yüzden
+  görsel `profiles/{uid}` belgesinde `photo` (bytes) alanında durur.
+- **Misafir:** Fotoğraf ve ad yalnızca cihazda (SharedPreferences, `profile_v1`). Hesaba girince yüklenir.
+- **Hesap:** Her değişiklik `profiles/{uid}` belgesine yazılır: `{name, photo, clientUpdatedAt, updatedAt}`.
+  Girişte cihazdaki kopya ile buluttaki karşılaştırılır, yenisi kazanır; bu telefonda başka bir hesaptan kalan
+  kopya yüklenmez.
+- **Kurallar:** Yalnızca sahibi yazar (misafir yazamaz). Okuyabilenler: sahibi ve arkadaşları
+  (`friendships/{a}_{b}` belgesi olanlar). `photo` JPEG imzasıyla (FF D8 FF) başlamalı, 100 bayt ile 60 KiB
+  arasında olmalı; `name` 1-24 karakter. Başka alan kabul edilmez.
+- **Nerede görünür:** Profil başlığı, Arkadaşlar listesi ve Lig (kendi satırın; gerçek ligde arkadaşın olan
+  üyeler). Fotoğrafı olmayan için maskot ya da hayvan simgesi kalır.
+- **Çocuk modu:** Fotoğraf yükleme kapalı, avatar Pofuduk.
+- **Android:** İzin gerekmez. Galeri sistem Fotoğraf Seçici'yi kullanır; kamera için manifestte yalnızca
+  `IMAGE_CAPTURE` sorgusu var (CAMERA izni bilerek eklenmedi).
+
 ## Uygulamadaki bağlantı
 
 - `lib/services/league_remote.dart`: Firebase hazır ve kullanıcı giriş yapmışsa `joinLeague` çağırır,

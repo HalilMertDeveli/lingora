@@ -8,6 +8,10 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Dilbaz</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Profil fotoğrafı çekmek için kamera kullanılır.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Profil fotoğrafını galeriden seçmek için kullanılır.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Konuşma alıştırmalarında telaffuzunu dinlemek için mikrofon kullanılır.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>

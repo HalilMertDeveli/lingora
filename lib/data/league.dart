@@ -33,11 +33,14 @@ DateTime weekStart(DateTime d) {
 Duration untilWeekEnd(DateTime now) => weekStart(now).add(const Duration(days: 7)).difference(now);
 
 class LeagueEntry {
-  const LeagueEntry(this.name, this.avatar, this.xp, {this.isUser = false});
+  const LeagueEntry(this.name, this.avatar, this.xp, {this.isUser = false, this.uid});
   final String name;
   final String avatar;
   final int xp;
   final bool isUser;
+
+  /// Server uid of a real league member; null for simulated rivals.
+  final String? uid;
 }
 
 const _names = [

@@ -8,7 +8,6 @@ import '../services/billing/premium.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/appearance.dart';
-import '../ui/mascot.dart';
 import 'account_section.dart';
 import 'error_analysis_screen.dart';
 import 'growth_profile_section.dart';
@@ -16,6 +15,7 @@ import 'family_screen.dart';
 import 'friends_screen.dart';
 import 'onboarding_screen.dart';
 import 'paywall_screen.dart';
+import 'profile_header.dart';
 import 'placement_screen.dart';
 import 'reminder_settings.dart';
 import 'study/methods_screen.dart';
@@ -36,28 +36,7 @@ class ProfileScreen extends ConsumerWidget {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        Row(
-          children: [
-            // Çocuk modu: Pofuduk's square face is the avatar.
-            if (Brand.isKid)
-              ClipRRect(
-                borderRadius: BorderRadius.circular(18),
-                child: Image.asset(pofudukAvatar, key: const Key('kid-avatar'), width: 64, height: 64),
-              )
-            else
-              const LingoraLogo(size: 64),
-            SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Öğrenci', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900)),
-                  Text('İngilizce öğreniyor', style: TextStyle(color: Brand.muted)),
-                ],
-              ),
-            ),
-          ],
-        ),
+        const ProfileHeader(),
         // Account first: signing in is how progress survives a new phone, so
         // it must not hide below the settings.
         const SizedBox(height: 24),

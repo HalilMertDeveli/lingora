@@ -7,7 +7,9 @@ import '../data/progress.dart';
 import '../services/firebase/account_service.dart';
 import '../services/firebase/firebase_providers.dart';
 import '../services/friends.dart';
+import '../services/profile.dart';
 import '../theme.dart';
+import '../ui/avatar.dart';
 import 'auth_screen.dart';
 
 /// Text shared with a friend: the code and where to type it.
@@ -282,6 +284,7 @@ class _FriendCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final api = ref.watch(friendsApiProvider);
     final cheers = ref.watch(cheersProvider(friend.pairId)).value ?? const <Cheer>[];
+    final profile = ref.watch(friendProfileProvider(friend.friendUid)).value;
     final me = api?.uid;
     final received = [
       for (final c in cheers)
@@ -303,17 +306,26 @@ class _FriendCard extends ConsumerWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(
-                  radius: 22,
-                  backgroundColor: Brand.surface,
-                  child: Text(friend.avatar, style: const TextStyle(fontSize: 24)),
+                // The friend's own photo and name (profiles/{uid}); the
+                // animal and the name saved with the friendship otherwise.
+                PhotoAvatar(
+                  photo: profile?.photo,
+                  size: 44,
+                  fallback: CircleAvatar(
+                    radius: 22,
+                    backgroundColor: Brand.surface,
+                    child: Text(friend.avatar, style: const TextStyle(fontSize: 24)),
+                  ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(friend.name, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800)),
+                      Text(
+                        profile?.name ?? friend.name,
+                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
+                      ),
                       Text(
                         friend.best > 0
                             ? 'En iyi ortak seri: ${friend.best} gün'

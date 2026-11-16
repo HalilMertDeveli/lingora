@@ -3,8 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/league.dart';
 import '../data/progress.dart';
+import '../services/friends.dart';
 import '../services/league_remote.dart';
+import '../services/profile.dart';
 import '../theme.dart';
+import '../ui/avatar.dart';
 import 'friends_screen.dart';
 import 'quests_screen.dart' show formatLeft;
 
@@ -157,14 +160,29 @@ class _ZoneLine extends StatelessWidget {
   );
 }
 
-class _Row extends StatelessWidget {
+class _Row extends ConsumerWidget {
   const _Row({required this.rank, required this.entry, required this.tier});
   final int rank;
   final LeagueEntry entry;
   final int tier;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // The user's own photo and chosen name; a friend's photo when a real
+    // league member is also a friend (only friends may read profiles/{uid}).
+    final ProfileData? profile;
+    if (Brand.isKid) {
+      profile = null;
+    } else if (entry.isUser) {
+      profile = ref.watch(profileProvider);
+    } else if (entry.uid case final uid?
+        when ref.watch(friendshipsProvider).value?.any((f) => f.friendUid == uid) ?? false) {
+      profile = ref.watch(friendProfileProvider(uid)).value;
+    } else {
+      profile = null;
+    }
+    final chosen = profile?.name;
+    final name = entry.isUser ? (chosen != null ? '$chosen (Sen)' : entry.name) : (chosen ?? entry.name);
     final rankColor = inPromotionZone(tier, rank)
         ? Brand.success
         : inDemotionZone(tier, rank)
@@ -187,15 +205,20 @@ class _Row extends StatelessWidget {
               style: TextStyle(color: rankColor, fontWeight: FontWeight.w900, fontSize: 16),
             ),
           ),
-          CircleAvatar(
-            radius: 20,
-            backgroundColor: Brand.surface,
-            child: Text(entry.avatar, style: const TextStyle(fontSize: 22)),
+          PhotoAvatar(
+            key: entry.isUser ? const ValueKey('league-my-avatar') : null,
+            photo: profile?.photo,
+            size: 40,
+            fallback: CircleAvatar(
+              radius: 20,
+              backgroundColor: Brand.surface,
+              child: Text(entry.avatar, style: const TextStyle(fontSize: 22)),
+            ),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
-              entry.name,
+              name,
               style: TextStyle(fontSize: 16, fontWeight: entry.isUser ? FontWeight.w900 : FontWeight.w600),
             ),
           ),
