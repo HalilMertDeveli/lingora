@@ -18,6 +18,9 @@ emülatöre bağlanma) için bkz. [firebase.md](firebase.md).
 | `leagueState/{uid}` | sahibi | yalnızca fonksiyonlar | `tier, weekKey, groupId, name, avatar, lastResult{weekKey, oldTier, newTier, rank}` ve XP hız sınırı sayaçları. |
 | `leagues/{hafta}_{lig}_{grup}` ve `.../members/{uid}` | yalnızca o grubun üyeleri | yalnızca fonksiyonlar | Grup: `weekKey, tier, group, size, settled`. Üye: `name, avatar, xp, rank`. |
 | `entitlements/{uid}` | sahibi | yalnızca fonksiyonlar | `active, premium, status, productId, platform, expiresAt, source, updatedAt`. |
+| `friendCodes/{kod}` | hesabı olan herkes tek tek (`get`); listeleme yalnızca kendi kodu | sahibi, gerçek bir hesapla | `uid, name, avatar, createdAt`. Kod 8 karakter, karışmayan harf ve rakamlar (`0/O`, `1/I` yok). |
+| `friendships/{a}_{b}` (`a < b`) | yalnızca iki üye | üyeler, gerçek bir hesapla; fonksiyon gerekmez | `members, code, names, avatars, done{uid: gün}, streak, best, streakDay, createdAt`. Ayrıntı aşağıda. |
+| `friendships/{a}_{b}/cheers/{gönderen}_{gün}_{tür}` | iki üye | gönderen üye | `from, to, kind (tebrik, destek, hadi, harika), day, createdAt`. Serbest metin yok; her türden günde bir. |
 | `usage/*`, `purchases/*`, `leagueWeeks/*` | kimse | yalnızca fonksiyonlar | Günlük mesaj kotası, satın alma jetonu → kullanıcı bağı, grup doluluk sayacı. |
 
 Fonksiyonlar Admin SDK kullandığı için kurallardan etkilenmez. Diğer her yol istemciye kapalıdır.
@@ -118,6 +121,25 @@ ucuz bir modele geçmeden önce gerçek sohbetlerde kaliteyi ölç.
 Firebase'e taşındı. Senaryo komutları ve doğrulama mantığı aynen `functions/src/` içine taşındı, uygulamadaki
 HTTP istemcisi (`LINGORA_AI_URL` / `LINGORA_AI_KEY`) yerine `converse` çağrılabilir fonksiyonu kullanılıyor.
 İki ayrı arka ucu bakımda tutmanın faydası olmadığı için kod kaldırıldı; gerekirse git geçmişinde duruyor.
+
+## Arkadaşlar ve ortak seri (Cloud Functions gerekmez)
+
+Arkadaşlık yalnızca Firestore kurallarıyla çalışır, bu yüzden Spark (ücretsiz) planda da açıktır. Kod:
+`lib/services/friends.dart`, ekran `lib/screens/friends_screen.dart` (Lig ve Profil'den açılır, Çocuk modunda
+gizli). Kural testleri: `functions/test/friends_rules.test.ts`.
+
+- **Arkadaş ekleme:** Herkesin bir kodu var. Arkadaşının kodunu bilen, onunla arkadaşlık belgesini açabilir;
+  kural, kodun gerçekten o kişiye ait olduğunu ve yazılan ad ile simgenin koddakiyle aynı olduğunu denetler.
+  İki taraf da arkadaşlığı silebilir. Misafir (anonim) hesaplar katılamaz.
+- **Gün:** Türkiye günü, `floor((ms + 3 saat) / 1 gün)`. Kurallarda `trDay()`, uygulamada `friendDay()`;
+  kural `request.time` kullanır, yani telefonun saatine güvenilmez.
+- **Ortak seri:** Günlük hedefe ulaşan üye `done.{uid}` alanına bugünü yazar. Arkadaşı da bugün yazmışsa aynı
+  yazmada seri bir artar (dün de artmışsa `streak + 1`, değilse `1`) ve `best` güncellenir. Kural geçişi
+  birebir denetler; seriyi uydurmak ya da günde iki kez artırmak reddedilir. Bir gün kaçarsa ekranda seri 0
+  görünür ve bir sonraki ortak günde 1'den başlar. Ceza yok.
+- **Destek ve tebrik:** Dört hazır mesaj; her türden günde bir tane.
+- **Bilinen sınır:** Günlük hedefe ulaşıldığını telefon bildirir (XP sunucuda doğrulanmıyor). Para ya da ödül
+  bağlı olmadığı için kabul edilebilir. Bildirim (push) yok; mesajlar uygulama açılınca görünür.
 
 ## Uygulamadaki bağlantı
 

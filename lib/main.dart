@@ -16,6 +16,7 @@ import 'services/firebase/firebase_providers.dart';
 import 'services/firebase/progress_sync.dart';
 import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
+import 'services/friends.dart';
 import 'services/growth/growth.dart';
 import 'services/speech.dart';
 import 'theme.dart';
@@ -55,6 +56,8 @@ class LingoraApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // Keeps the cloud sync alive (does nothing when Firebase is off).
     ref.listen(progressSyncProvider, (_, _) {});
+    // Marks the daily goal in friendships for the shared streak.
+    ref.listen(friendGoalSyncProvider, (_, _) {});
     final onboarded = ref.watch(progressProvider.select((p) => p.onboarded));
     // Start listening to the store at launch: Google Play re-delivers
     // unacknowledged or pending purchases right after start-up.
