@@ -114,16 +114,18 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
           ),
         ),
         const SizedBox(height: 16),
-        Text(
-          _unavailable
-              ? 'Bu cihazda ses tanıma kullanılamıyor.'
-              : _listening
-              ? 'Dinliyorum…'
-              : _heard.isEmpty
-              ? 'Mikrofona dokun ve konuş'
-              : '“$_heard”',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: _heard.isEmpty ? Brand.muted : Brand.ink, fontSize: 16),
+        ValueListenableBuilder<String?>(
+          valueListenable: speechIssue,
+          builder: (context, issue, _) => Text(
+            key: const ValueKey('speak-status'),
+            _listening
+                ? 'Dinliyorum…'
+                : _heard.isNotEmpty
+                ? '“$_heard”'
+                : issue ?? (_unavailable ? SpeechIssues.noRecognizer : 'Mikrofona dokun ve konuş'),
+            textAlign: TextAlign.center,
+            style: TextStyle(color: _heard.isEmpty ? Brand.muted : Brand.ink, fontSize: 16),
+          ),
         ),
         const SizedBox(height: 16),
         if (!widget.locked) TextButton(onPressed: widget.onSkip, child: const Text('Şu an konuşamıyorum')),

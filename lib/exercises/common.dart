@@ -62,7 +62,17 @@ class SpeakerButton extends ConsumerWidget {
     shape: const CircleBorder(),
     child: InkWell(
       customBorder: const CircleBorder(),
-      onTap: () => ref.read(speechProvider).say(text, lang: lang, slow: slow, rate: rate),
+      onTap: () async {
+        final messenger = ScaffoldMessenger.maybeOf(context);
+        await ref.read(speechProvider).say(text, lang: lang, slow: slow, rate: rate);
+        // Silence with no explanation was the worst case: say why.
+        final issue = speechIssue.value;
+        if (issue == SpeechIssues.noEngine || issue == SpeechIssues.noEnglishVoice) {
+          messenger
+            ?..hideCurrentSnackBar()
+            ..showSnackBar(SnackBar(content: Text(issue!), duration: const Duration(seconds: 6)));
+        }
+      },
       child: SizedBox(
         width: size,
         height: size,
