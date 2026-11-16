@@ -46,13 +46,20 @@ const teaPraises = [
 ];
 
 /// Cheer for a run of [n] right answers in a row ([comboThreshold]+).
-String comboPraise(int n) => switch (n % 5) {
-  0 => '$n doğru üst üste!',
-  1 => '$n tane üst üste, helal!',
-  2 => 'Seri $n oldu, durmak yok!',
-  3 => '$n doğru, coştun!',
-  _ => '$n üst üste, kim tutar seni!',
-};
+/// Çocuk modu gets its own, simpler lines ([kid] defaults to the active mode).
+String comboPraise(int n, {bool? kid}) => (kid ?? Brand.isKid)
+    ? switch (n % 3) {
+        0 => '$n doğru üst üste, oley!',
+        1 => '$n yıldız topladın!',
+        _ => '$n tane bildin, süpersin!',
+      }
+    : switch (n % 5) {
+        0 => '$n doğru üst üste!',
+        1 => '$n tane üst üste, helal!',
+        2 => 'Seri $n oldu, durmak yok!',
+        3 => '$n doğru, coştun!',
+        _ => '$n üst üste, kim tutar seni!',
+      };
 
 /// Gentle words after a wrong answer: no penalty, no alarm.
 const softRetries = [
@@ -66,8 +73,60 @@ const softRetries = [
   'Yanlış da yoldan sayılır.',
 ];
 
-/// The [n]th praise line.
-String praiseFor(int n) => teaPraises[n % teaPraises.length];
+/// Çocuk modu praise: warm, simple, a little playful; no slang.
+const kidPraises = [
+  'Aferin sana!',
+  'Süpersin!',
+  'Oley, bildin!',
+  'Şampiyon sensin!',
+  'Kocaman bir alkış!',
+  'Pofuduk bayıldı!',
+  'Bal gibi oldu!',
+  'Yıldızı kaptın!',
+  'Çok akıllısın!',
+  'Harikasın!',
+  'Mis gibi!',
+  'Yaşasın!',
+  'Tebrikler, minik dahi!',
+  'Bir harika daha!',
+];
+
+/// Short Turkish proverbs that praise effort, mixed in now and then.
+const proverbPraises = [
+  'Damlaya damlaya göl olur!',
+  'İşleyen demir ışıldar!',
+  'Azimle sıçan duvarı deler!',
+  'Bir lisan bir insan!',
+  'Emek olmadan yemek olmaz!',
+  'Tane tane ambar dolar!',
+  'Sabreden derviş muradına ermiş!',
+  'Öğrenmenin yaşı olmaz!',
+];
+
+/// The proverbs plain enough for Çocuk modu.
+const kidProverbPraises = [
+  'Damlaya damlaya göl olur!',
+  'İşleyen demir ışıldar!',
+  'Azimle sıçan duvarı deler!',
+  'Tane tane ambar dolar!',
+  'Ağaç yaşken eğilir!',
+];
+
+/// Every [proverbEvery]th right answer gets a proverb instead of a praise.
+const proverbEvery = 4;
+
+/// The [n]th praise line: [teaPraises] for adults, [kidPraises] in Çocuk
+/// modu ([kid] defaults to the active mode), a proverb every
+/// [proverbEvery]th time.
+String praiseFor(int n, {bool? kid}) {
+  final k = kid ?? Brand.isKid;
+  if (n % proverbEvery == proverbEvery - 1) {
+    final proverbs = k ? kidProverbPraises : proverbPraises;
+    return proverbs[(n ~/ proverbEvery) % proverbs.length];
+  }
+  final lines = k ? kidPraises : teaPraises;
+  return lines[n % lines.length];
+}
 
 /// Top of a session: close X, a thick progress bar and a trailing badge.
 /// A run of [comboThreshold]+ correct answers lights the bar up and shows a
