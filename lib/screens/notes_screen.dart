@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/text.dart';
 import '../core/tr_errors.dart';
+import '../data/notes_index.dart';
 import '../data/notes_practice.dart';
 import '../data/notes_repository.dart';
 import '../data/practice.dart';
@@ -89,11 +90,9 @@ class _NotesHome extends ConsumerWidget {
             ],
           ),
         ),
-        const SizedBox(height: 16),
-        _GrammarPathCard(notes: notes),
-        const SizedBox(height: 10),
-        const ReadingEntryCard(),
-        const SizedBox(height: 10),
+        const SizedBox(height: 14),
+        _NotesSearchBar(onTap: () => _push(context, AllNotesScreen(notes: notes))),
+        const _NotesSection('BUGÜN'),
         _BigAction(
           icon: Icons.style_rounded,
           color: _notesColor,
@@ -104,6 +103,33 @@ class _NotesHome extends ConsumerWidget {
             final list = wordsToReview(words, ref.read(progressProvider), now);
             _push(context, FlashcardScreen(words: list), dialog: true);
           },
+        ),
+        _BigAction(
+          icon: Icons.edit_note_rounded,
+          color: Brand.streak,
+          title: 'Günlüğüm',
+          subtitle: wroteToday ? 'Bugünkü günlüğünü yazdın' : 'Bugün İngilizce birkaç cümle yaz',
+          badge: wroteToday ? '✓' : null,
+          onTap: () => _push(context, DiaryScreen(prompts: notes.diaryPrompts)),
+        ),
+        const _NotesSection('GRAMER'),
+        _GrammarPathCard(notes: notes),
+        const SizedBox(height: 10),
+        _BigAction(
+          icon: Icons.menu_book_rounded,
+          color: Brand.primary,
+          title: 'Gramer notlarım',
+          subtitle:
+              '${notes.topics.length} konu, ${grammarSections(notes.topics).length} bölümde, aranabilir',
+          onTap: () => _push(context, GrammarListScreen(notes: notes)),
+        ),
+        const _NotesSection('KELİMELER'),
+        _BigAction(
+          icon: Icons.translate_rounded,
+          color: Brand.success,
+          title: 'Sözlüğüm',
+          subtitle: '${words.length} kelime, ${wordTopics(words).length} konuda, A-Z sıralı',
+          onTap: () => _push(context, WordListScreen(notes: notes)),
         ),
         _BigAction(
           icon: Icons.quiz_rounded,
@@ -123,36 +149,54 @@ class _NotesHome extends ConsumerWidget {
           ),
         ),
         _BigAction(
-          icon: Icons.menu_book_rounded,
-          color: Brand.primary,
-          title: 'Tüm gramer notlarım',
-          subtitle: '${notes.topics.length} konu, Notion\'daki hâliyle, aranabilir',
-          onTap: () => _push(context, GrammarListScreen(notes: notes)),
-        ),
-        _BigAction(
-          icon: Icons.translate_rounded,
-          color: Brand.success,
-          title: 'Sözlüğüm',
-          subtitle: '${words.length} kelime, konulara göre, hafıza hikâyelerinle',
-          onTap: () => _push(context, WordListScreen(notes: notes)),
-        ),
-        _BigAction(
           icon: Icons.code_rounded,
           color: const Color(0xFF0F766E),
           title: 'Notlarındaki yazılım kelimeleri',
           subtitle: 'Yazılımcı İngilizcesi kartlarıyla: örnek commit, PR ve stand-up cümleleri',
           onTap: () => _push(context, const NotesSoftwareWordsScreen()),
         ),
-        _BigAction(
-          icon: Icons.edit_note_rounded,
-          color: Brand.streak,
-          title: 'Günlüğüm',
-          subtitle: wroteToday ? 'Bugünkü günlüğünü yazdın' : 'Bugün İngilizce birkaç cümle yaz',
-          onTap: () => _push(context, DiaryScreen(prompts: notes.diaryPrompts)),
-        ),
+        const _NotesSection('OKUMA'),
+        const ReadingEntryCard(),
       ],
     );
   }
+}
+
+/// Section heading on the notes home ("BUGÜN", "GRAMER"…).
+class _NotesSection extends StatelessWidget {
+  const _NotesSection(this.title);
+  final String title;
+
+  @override
+  Widget build(BuildContext context) =>
+      Padding(padding: const EdgeInsets.fromLTRB(4, 18, 4, 8), child: SectionLabel(title));
+}
+
+/// Looks like a search box; opens the overview of all notes.
+class _NotesSearchBar extends StatelessWidget {
+  const _NotesSearchBar({required this.onTap});
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => TapCard(
+    key: const ValueKey('notes-overview'),
+    onTap: onTap,
+    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+    child: Row(
+      children: [
+        Icon(Icons.search_rounded, color: Brand.muted),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text('Tüm notlarımda ara', style: TextStyle(color: Brand.muted, fontSize: 15)),
+        ),
+        Text(
+          'İçindekiler',
+          style: TextStyle(color: _notesColor, fontWeight: FontWeight.w800, fontSize: 13),
+        ),
+        Icon(Icons.chevron_right_rounded, color: _notesColor),
+      ],
+    ),
+  );
 }
 
 class _BigAction extends StatelessWidget {
@@ -419,29 +463,44 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
   );
 }
 
-/// The personal dictionary, searchable and filterable by topic.
+/// The personal dictionary: topics as chapters (own words first, then A-Z),
+/// words A-Z inside each topic, searchable in English and Turkish.
 class WordListScreen extends ConsumerStatefulWidget {
-  const WordListScreen({super.key, required this.notes});
+  const WordListScreen({super.key, required this.notes, this.initialTopic, this.initialQuery = ''});
   final NotesBundle notes;
+  final String? initialTopic;
+  final String initialQuery;
 
   @override
   ConsumerState<WordListScreen> createState() => _WordListScreenState();
 }
 
 class _WordListScreenState extends ConsumerState<WordListScreen> {
-  String _query = '';
-  String? _topic;
+  late String _query = widget.initialQuery;
+  late String? _topic = widget.initialTopic;
+  late final _search = TextEditingController(text: widget.initialQuery);
+
+  @override
+  void dispose() {
+    _search.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final p = ref.watch(progressProvider);
     final words = dictionaryWords(widget.notes, p);
-    final topics = {for (final w in words) w.topic}.toList()..sort();
-    final q = _query.toLowerCase();
-    final shown = words
-        .where((w) => _topic == null || w.topic == _topic)
-        .where((w) => q.isEmpty || w.en.toLowerCase().contains(q) || w.tr.toLowerCase().contains(q))
-        .toList();
+    final topics = wordTopics(words);
+    final counts = <String, int>{};
+    for (final w in words) {
+      counts[w.topic] = (counts[w.topic] ?? 0) + 1;
+    }
+    final sections = wordSections(words, topic: _topic, query: _query);
+    final total = sections.fold(0, (n, s) => n + s.items.length);
+    // Flattened rows: a heading per topic, then its words.
+    final rows = <Object>[
+      for (final s in sections) ...[s, ...s.items],
+    ];
     return Scaffold(
       appBar: AppBar(title: Text('Sözlüğüm (${words.length})')),
       floatingActionButton: FloatingActionButton.extended(
@@ -454,6 +513,7 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
             child: TextField(
+              controller: _search,
               onChanged: (v) => setState(() => _query = v),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.search),
@@ -461,31 +521,12 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
               ),
             ),
           ),
-          SizedBox(
-            height: 44,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: ChoiceChip(
-                    label: const Text('Tümü'),
-                    selected: _topic == null,
-                    onSelected: (_) => setState(() => _topic = null),
-                  ),
-                ),
-                for (final t in topics)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: ChoiceChip(
-                      label: Text(t),
-                      selected: _topic == t,
-                      onSelected: (_) => setState(() => _topic = t),
-                    ),
-                  ),
-              ],
-            ),
+          _ChipBar(
+            labels: [for (final t in topics) '$t (${counts[t]})'],
+            values: topics,
+            allLabel: 'Tümü (${words.length})',
+            selected: _topic,
+            onSelected: (t) => setState(() => _topic = t),
           ),
           if (_topic != null)
             Padding(
@@ -500,151 +541,517 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
                 ),
               ),
             ),
-          Expanded(
-            child: ListView.separated(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 88),
-              itemCount: shown.length,
-              separatorBuilder: (_, _) => Divider(height: 1, color: Brand.line),
-              itemBuilder: (_, i) {
-                final w = shown[i];
-                final box = p.wordBox[w.id];
-                return ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(w.en, style: const TextStyle(fontWeight: FontWeight.w800)),
-                  subtitle: Text(w.tr),
-                  trailing: box == null
-                      ? null
-                      : Icon(
-                          box >= 3 ? Icons.verified_rounded : Icons.timelapse_rounded,
-                          color: box >= 3 ? Brand.success : Brand.accent,
-                        ),
-                  onTap: () => _showWord(context, w),
-                );
-              },
+          if (_query.trim().isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text('$total sonuç', style: TextStyle(color: Brand.muted)),
+              ),
             ),
+          Expanded(
+            child: rows.isEmpty
+                ? const Center(child: EmptyState(message: 'Bu aramayla eşleşen kelime yok.'))
+                : ListView.builder(
+                    padding: const EdgeInsets.fromLTRB(16, 4, 16, 88),
+                    itemCount: rows.length,
+                    itemBuilder: (_, i) {
+                      final row = rows[i];
+                      if (row is NoteSection<NoteWord>) {
+                        return _SectionHeader(title: row.title, count: row.items.length);
+                      }
+                      final w = row as NoteWord;
+                      final box = p.wordBox[w.id];
+                      return ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(w.en, style: const TextStyle(fontWeight: FontWeight.w800)),
+                        subtitle: Text(w.tr),
+                        trailing: box == null
+                            ? null
+                            : Icon(
+                                box >= 3 ? Icons.verified_rounded : Icons.timelapse_rounded,
+                                color: box >= 3 ? Brand.success : Brand.accent,
+                              ),
+                        onTap: () => showNoteWordSheet(context, ref, w),
+                      );
+                    },
+                  ),
           ),
         ],
       ),
     );
   }
+}
 
-  void _showWord(BuildContext context, NoteWord w) => showModalBottomSheet<void>(
-    context: context,
-    showDragHandle: true,
-    builder: (_) => SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(child: Text(w.en, style: Theme.of(context).textTheme.headlineSmall)),
-                IconButton.filledTonal(
-                  onPressed: () => ref.read(speechProvider).say(w.en),
-                  icon: const Icon(Icons.volume_up_rounded),
-                ),
-              ],
-            ),
-            Text(
-              w.tr,
-              style: TextStyle(fontSize: 18, color: _notesColor, fontWeight: FontWeight.w700),
-            ),
-            const SizedBox(height: 4),
-            Text(w.topic, style: TextStyle(color: Brand.muted)),
-            if (w.example != null) ...[
-              const SizedBox(height: 12),
-              Text('“${w.example}”', style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 16)),
-            ],
-            if (w.story != null) ...[
-              const SizedBox(height: 12),
-              Text('${kidEmoji('🧠')}Hafıza hikâyen: ${w.story}'),
-            ],
-            if (w.topic == customTopic) ...[
-              const SizedBox(height: 12),
-              TextButton.icon(
-                onPressed: () {
-                  ref.read(progressProvider.notifier).removeCustomWord(w.id);
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.delete_outline_rounded, color: Brand.error),
-                label: Text('Sözlüğümden çıkar', style: TextStyle(color: Brand.error)),
+/// Details of one dictionary word in a bottom sheet.
+void showNoteWordSheet(BuildContext context, WidgetRef ref, NoteWord w) => showModalBottomSheet<void>(
+  context: context,
+  showDragHandle: true,
+  builder: (sheet) => SafeArea(
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(child: Text(w.en, style: Theme.of(sheet).textTheme.headlineSmall)),
+              IconButton.filledTonal(
+                onPressed: () => ref.read(speechProvider).say(w.en),
+                icon: const Icon(Icons.volume_up_rounded),
               ),
             ],
+          ),
+          Text(
+            w.tr,
+            style: TextStyle(fontSize: 18, color: _notesColor, fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(height: 4),
+          Text(w.topic, style: TextStyle(color: Brand.muted)),
+          if (w.example != null) ...[
+            const SizedBox(height: 12),
+            Text('“${w.example}”', style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 16)),
           ],
-        ),
+          if (w.story != null) ...[
+            const SizedBox(height: 12),
+            Text('${kidEmoji('🧠')}Hafıza hikâyen: ${w.story}'),
+          ],
+          if (w.topic == customTopic) ...[
+            const SizedBox(height: 12),
+            TextButton.icon(
+              onPressed: () {
+                ref.read(progressProvider.notifier).removeCustomWord(w.id);
+                Navigator.pop(sheet);
+              },
+              icon: Icon(Icons.delete_outline_rounded, color: Brand.error),
+              label: Text('Sözlüğümden çıkar', style: TextStyle(color: Brand.error)),
+            ),
+          ],
+        ],
+      ),
+    ),
+  ),
+);
+
+/// Horizontal row of chips: an optional first chip, then one per value.
+class _ChipBar extends StatelessWidget {
+  const _ChipBar({
+    required this.labels,
+    required this.values,
+    required this.allLabel,
+    required this.selected,
+    required this.onSelected,
+  });
+  final List<String> labels;
+  final List<String> values;
+  final String allLabel;
+  final String? selected;
+  final ValueChanged<String?> onSelected;
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    height: 44,
+    child: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: ChoiceChip(
+              label: Text(allLabel),
+              selected: selected == null,
+              onSelected: (_) => onSelected(null),
+            ),
+          ),
+          for (var i = 0; i < values.length; i++)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: ChoiceChip(
+                label: Text(labels[i]),
+                selected: selected == values[i],
+                onSelected: (_) => onSelected(values[i]),
+              ),
+            ),
+        ],
       ),
     ),
   );
 }
 
-/// Grammar topics grouped by category.
+/// Chapter heading inside a notes list: title and how many notes it holds.
+class _SectionHeader extends StatelessWidget {
+  const _SectionHeader({super.key, required this.title, required this.count, this.number});
+  final String title;
+  final int count;
+  final int? number;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.fromLTRB(4, 16, 4, 6),
+    child: Row(
+      children: [
+        if (number != null) ...[
+          Text('$number.', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: _notesColor)),
+          const SizedBox(width: 6),
+        ],
+        Expanded(child: Text(title, style: Theme.of(context).textTheme.titleLarge)),
+        _CountPill(count),
+      ],
+    ),
+  );
+}
+
+class _CountPill extends StatelessWidget {
+  const _CountPill(this.count);
+  final int count;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+    decoration: BoxDecoration(
+      color: _notesColor.withValues(alpha: 0.12),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Text(
+      '$count',
+      style: TextStyle(color: _notesColor, fontWeight: FontWeight.w800, fontSize: 13),
+    ),
+  );
+}
+
+/// One grammar topic as a list card: its number in the notebook, title, source.
+class _TopicCard extends StatelessWidget {
+  const _TopicCard({required this.topic, required this.all, this.number});
+  final GrammarTopic topic;
+  final List<GrammarTopic> all;
+  final String? number;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = topic;
+    final details = [
+      '${t.addedByApp ? kidEmoji('✨') : ''}${t.source}',
+      if (t.rules.isNotEmpty) '${t.rules.length} kural',
+      '${t.examples.length} örnek',
+    ];
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: TapCard(
+        onTap: () => _push(context, TopicScreen(topic: t, all: all)),
+        child: Row(
+          children: [
+            if (number != null)
+              SizedBox(
+                width: 40,
+                child: Text(
+                  number!,
+                  style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800, fontSize: 13),
+                ),
+              ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(t.title, style: Theme.of(context).textTheme.titleMedium),
+                  Text(details.join(' · '), style: TextStyle(color: Brand.muted, fontSize: 13)),
+                ],
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, color: Brand.muted),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Grammar notes as a numbered notebook: chapters in curriculum order
+/// (1. Temeller, 2. To be…), topics numbered inside (1.1, 1.2…), with a
+/// table of contents that jumps to a chapter.
 class GrammarListScreen extends StatefulWidget {
-  const GrammarListScreen({super.key, required this.notes});
+  const GrammarListScreen({super.key, required this.notes, this.initialCategory, this.initialQuery = ''});
   final NotesBundle notes;
+  final String? initialCategory;
+  final String initialQuery;
 
   @override
   State<GrammarListScreen> createState() => _GrammarListScreenState();
 }
 
 class _GrammarListScreenState extends State<GrammarListScreen> {
-  String _query = '';
+  late String _query = widget.initialQuery;
+  late final _search = TextEditingController(text: widget.initialQuery);
+  final _keys = <String, GlobalKey>{};
+
+  /// Numbers come from the whole notebook so they stay put while searching.
+  late final _chapters = grammarSections(widget.notes.topics);
+
+  @override
+  void initState() {
+    super.initState();
+    final c = widget.initialCategory;
+    if (c != null) WidgetsBinding.instance.addPostFrameCallback((_) => _jump(c, animate: false));
+  }
+
+  @override
+  void dispose() {
+    _search.dispose();
+    super.dispose();
+  }
+
+  GlobalKey _key(String category) => _keys.putIfAbsent(category, GlobalKey.new);
+
+  void _jump(String category, {bool animate = true}) {
+    final ctx = _keys[category]?.currentContext;
+    if (ctx == null) return;
+    Scrollable.ensureVisible(ctx, duration: animate ? const Duration(milliseconds: 300) : Duration.zero);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final q = _query.toLowerCase();
-    final topics = widget.notes.topics
-        .where((t) => q.isEmpty || t.title.toLowerCase().contains(q) || t.body.toLowerCase().contains(q))
-        .toList();
-    final categories = {for (final t in topics) t.category}.toList();
+    final sections = grammarSections(widget.notes.topics, query: _query);
+    final chapterNo = {for (var i = 0; i < _chapters.length; i++) _chapters[i].title: i + 1};
+    final topicNo = {
+      for (final c in _chapters)
+        for (var i = 0; i < c.items.length; i++) c.items[i].id: '${chapterNo[c.title]}.${i + 1}',
+    };
     return Scaffold(
-      appBar: AppBar(title: const Text('Gramer notlarım')),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+      appBar: AppBar(title: Text('Gramer notlarım (${widget.notes.topics.length})')),
+      body: Column(
         children: [
-          TextField(
-            onChanged: (v) => setState(() => _query = v),
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.search),
-              hintText: 'Konu ara (ör. unless, wish)',
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+            child: TextField(
+              controller: _search,
+              onChanged: (v) => setState(() => _query = v),
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                hintText: 'Konu ara (ör. unless, wish)',
+              ),
             ),
           ),
-          const SizedBox(height: 8),
-          for (final c in categories) ...[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(4, 14, 4, 6),
-              child: Text(c, style: Theme.of(context).textTheme.titleLarge),
+          if (sections.length > 1)
+            _ChipBar(
+              labels: [for (final s in sections) '${chapterNo[s.title]}. ${s.title}'],
+              values: [for (final s in sections) s.title],
+              allLabel: 'Başa dön',
+              selected: null,
+              onSelected: (c) => _jump(c ?? sections.first.title),
             ),
-            for (final t in topics.where((t) => t.category == c))
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: TapCard(
-                  onTap: () => _push(context, TopicScreen(topic: t, all: widget.notes.topics)),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(t.title, style: Theme.of(context).textTheme.titleMedium),
-                            Text(
-                              '${t.addedByApp ? kidEmoji('✨') : ''}${t.source} · ${t.examples.length} örnek',
-                              style: TextStyle(color: Brand.muted, fontSize: 13),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Icon(Icons.chevron_right_rounded, color: Brand.muted),
-                    ],
+          Expanded(
+            child: sections.isEmpty
+                ? const Center(child: EmptyState(message: 'Bu aramayla eşleşen konu yok.'))
+                : SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        for (final s in sections) ...[
+                          _SectionHeader(
+                            key: _key(s.title),
+                            title: s.title,
+                            count: s.items.length,
+                            number: chapterNo[s.title],
+                          ),
+                          for (final t in s.items)
+                            _TopicCard(topic: t, all: widget.notes.topics, number: topicNo[t.id]),
+                        ],
+                      ],
+                    ),
                   ),
-                ),
-              ),
-          ],
+          ),
         ],
       ),
     );
   }
+}
+
+/// "Tüm notlarım": the whole notebook in one place. Without a search it is a
+/// table of contents (grammar chapters, dictionary topics, diary); with a
+/// search it shows matching grammar topics, words and diary days together.
+class AllNotesScreen extends ConsumerStatefulWidget {
+  const AllNotesScreen({super.key, required this.notes});
+  final NotesBundle notes;
+
+  @override
+  ConsumerState<AllNotesScreen> createState() => _AllNotesScreenState();
+}
+
+class _AllNotesScreenState extends ConsumerState<AllNotesScreen> {
+  static const _preview = 5;
+  String _query = '';
+
+  @override
+  Widget build(BuildContext context) {
+    final notes = widget.notes;
+    final p = ref.watch(progressProvider);
+    final words = dictionaryWords(notes, p);
+    return Scaffold(
+      appBar: AppBar(title: const Text('Tüm notlarım')),
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
+        children: [
+          TextField(
+            key: const ValueKey('all-notes-search'),
+            onChanged: (v) => setState(() => _query = v),
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.search),
+              hintText: 'Gramer, kelime veya günlükte ara',
+            ),
+          ),
+          if (_query.trim().isNotEmpty)
+            ..._results(context, notes, words, p.diary)
+          else
+            ..._contents(context, notes, words, p.diary),
+        ],
+      ),
+    );
+  }
+
+  List<Widget> _contents(
+    BuildContext context,
+    NotesBundle notes,
+    List<NoteWord> words,
+    Map<String, String> diary,
+  ) {
+    final chapters = grammarSections(notes.topics);
+    final days = diaryDays(diary);
+    return [
+      _SectionHeader(title: 'Gramer notları', count: notes.topics.length),
+      _IndexCard(
+        rows: [
+          for (var i = 0; i < chapters.length; i++)
+            _IndexRow(
+              label: '${i + 1}. ${chapters[i].title}',
+              count: chapters[i].items.length,
+              onTap: () =>
+                  _push(context, GrammarListScreen(notes: notes, initialCategory: chapters[i].title)),
+            ),
+        ],
+      ),
+      _SectionHeader(title: 'Sözlük', count: words.length),
+      _IndexCard(
+        rows: [
+          for (final s in wordSections(words))
+            _IndexRow(
+              label: s.title,
+              count: s.items.length,
+              onTap: () => _push(context, WordListScreen(notes: notes, initialTopic: s.title)),
+            ),
+        ],
+      ),
+      _SectionHeader(title: 'Günlük', count: days.length),
+      TapCard(
+        onTap: () => _push(context, DiaryScreen(prompts: notes.diaryPrompts)),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                days.isEmpty
+                    ? 'Henüz günlük yazmadın. İlk sayfanı bugün yaz!'
+                    : 'Son yazdığın gün: ${days.first}',
+                style: TextStyle(color: Brand.muted),
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, color: Brand.muted),
+          ],
+        ),
+      ),
+    ];
+  }
+
+  List<Widget> _results(
+    BuildContext context,
+    NotesBundle notes,
+    List<NoteWord> words,
+    Map<String, String> diary,
+  ) {
+    final topics = notes.topics.where((t) => topicMatches(t, _query)).toList();
+    final found = wordSections(words, query: _query).expand((s) => s.items).toList();
+    final days = diaryDays(diary, query: _query);
+    if (topics.isEmpty && found.isEmpty && days.isEmpty) {
+      return const [
+        SizedBox(height: 40),
+        EmptyState(message: 'Notlarında bununla eşleşen bir şey bulamadım.'),
+      ];
+    }
+    Widget more(int n, VoidCallback onTap) => n <= _preview
+        ? const SizedBox.shrink()
+        : Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(onPressed: onTap, child: Text('Tümünü gör ($n)')),
+          );
+    return [
+      if (topics.isNotEmpty) ...[
+        _SectionHeader(title: 'Gramer', count: topics.length),
+        for (final t in topics.take(_preview)) _TopicCard(topic: t, all: notes.topics),
+        more(topics.length, () => _push(context, GrammarListScreen(notes: notes, initialQuery: _query))),
+      ],
+      if (found.isNotEmpty) ...[
+        _SectionHeader(title: 'Kelimeler', count: found.length),
+        for (final w in found.take(_preview))
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            title: Text(w.en, style: const TextStyle(fontWeight: FontWeight.w800)),
+            subtitle: Text('${w.tr} · ${w.topic}'),
+            onTap: () => showNoteWordSheet(context, ref, w),
+          ),
+        more(found.length, () => _push(context, WordListScreen(notes: notes, initialQuery: _query))),
+      ],
+      if (days.isNotEmpty) ...[
+        _SectionHeader(title: 'Günlük', count: days.length),
+        for (final d in days.take(_preview))
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            title: Text(d, style: const TextStyle(fontWeight: FontWeight.w800)),
+            subtitle: Text(diary[d]!, maxLines: 2, overflow: TextOverflow.ellipsis),
+            onTap: () => _push(context, DiaryScreen(prompts: notes.diaryPrompts)),
+          ),
+      ],
+    ];
+  }
+}
+
+/// A card listing the chapters of the notebook, each with its note count.
+class _IndexCard extends StatelessWidget {
+  const _IndexCard({required this.rows});
+  final List<_IndexRow> rows;
+
+  @override
+  Widget build(BuildContext context) => TapCard(
+    padding: const EdgeInsets.symmetric(vertical: 4),
+    child: Column(
+      children: [
+        for (var i = 0; i < rows.length; i++) ...[
+          if (i > 0) Divider(height: 1, indent: 14, endIndent: 14, color: Brand.line),
+          rows[i],
+        ],
+      ],
+    ),
+  );
+}
+
+class _IndexRow extends StatelessWidget {
+  const _IndexRow({required this.label, required this.count, required this.onTap});
+  final String label;
+  final int count;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => ListTile(
+    dense: true,
+    title: Text(label, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
+    trailing: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _CountPill(count),
+        Icon(Icons.chevron_right_rounded, color: Brand.muted),
+      ],
+    ),
+    onTap: onTap,
+  );
 }
 
 /// One grammar topic: the user's explanation, rules and examples, plus
