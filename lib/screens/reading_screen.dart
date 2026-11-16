@@ -658,21 +658,25 @@ class _QuizState extends State<_Quiz> {
   }
 }
 
-/// Lets the user add their own word to the personal dictionary.
-Future<void> showAddWordDialog(BuildContext context) =>
-    showDialog<void>(context: context, builder: (_) => const _AddWordDialog());
+/// Lets the learner add a word to "Kelimelerim", or edit one of theirs
+/// ([edit]). Own words join the word review.
+Future<void> showAddWordDialog(BuildContext context, {NoteWord? edit}) => showDialog<void>(
+  context: context,
+  builder: (_) => _AddWordDialog(edit: edit),
+);
 
 class _AddWordDialog extends ConsumerStatefulWidget {
-  const _AddWordDialog();
+  const _AddWordDialog({this.edit});
+  final NoteWord? edit;
 
   @override
   ConsumerState<_AddWordDialog> createState() => _AddWordDialogState();
 }
 
 class _AddWordDialogState extends ConsumerState<_AddWordDialog> {
-  final _en = TextEditingController();
-  final _tr = TextEditingController();
-  final _example = TextEditingController();
+  late final _en = TextEditingController(text: widget.edit?.en ?? '');
+  late final _tr = TextEditingController(text: widget.edit?.tr ?? '');
+  late final _example = TextEditingController(text: widget.edit?.example ?? '');
   String? _error;
 
   @override
@@ -693,17 +697,23 @@ class _AddWordDialogState extends ConsumerState<_AddWordDialog> {
     final notes = ref.read(notesProvider).value;
     final p = ref.read(progressProvider);
     final List<NoteWord> dict = notes == null ? p.customWords : dictionaryWords(notes, p);
-    if (findWord(dict, en) != null) {
-      setState(() => _error = '“$en” zaten sözlüğünde.');
+    final same = findWord(dict, en);
+    if (same != null && same.id != widget.edit?.id) {
+      setState(() => _error = '“$en” zaten sözlükte.');
       return;
     }
-    ref.read(progressProvider.notifier).addCustomWord(customWord(en, tr, example: _example.text));
+    final notifier = ref.read(progressProvider.notifier);
+    if (widget.edit case final w?) {
+      notifier.updateCustomWord(w.id, en: en, tr: tr, example: _example.text);
+    } else {
+      notifier.addCustomWord(customWord(en, tr, example: _example.text));
+    }
     Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) => AlertDialog(
-    title: const Text('Kelime ekle'),
+    title: Text(widget.edit == null ? 'Kelime ekle' : 'Kelimeyi düzenle'),
     content: SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -735,7 +745,7 @@ class _AddWordDialogState extends ConsumerState<_AddWordDialog> {
       FilledButton(
         style: FilledButton.styleFrom(minimumSize: const Size(0, 44)),
         onPressed: _save,
-        child: const Text('Ekle'),
+        child: Text(widget.edit == null ? 'Ekle' : 'Kaydet'),
       ),
     ],
   );

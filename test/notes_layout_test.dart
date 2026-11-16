@@ -120,10 +120,10 @@ void main() {
 
     testWidgets('home is split into sections and opens the overview', (tester) async {
       await pump(tester, const Scaffold(body: NotesHomeScreen()));
-      for (final s in ['BUGÜN', 'GRAMER', 'KELİMELER', 'OKUMA']) {
+      for (final s in ['BUGÜN', 'KENDİ NOTLARIM', 'DERS NOTLARI', 'OKUMA']) {
         expect(find.text(s), findsOneWidget, reason: s);
       }
-      expect(find.text('Sözlüğüm'), findsOneWidget);
+      expect(find.text('Sözlük'), findsOneWidget);
       expect(find.textContaining('4 kelime, 3 konuda'), findsOneWidget);
 
       await tester.tap(find.byKey(const ValueKey('notes-overview')));
@@ -152,7 +152,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('1. Temeller'));
       await tester.pumpAndSettle();
-      expect(find.text('Gramer notlarım (4)'), findsOneWidget);
+      expect(find.text('Gramer konuları (4)'), findsOneWidget);
     });
 
     testWidgets('grammar notes are numbered chapters', (tester) async {

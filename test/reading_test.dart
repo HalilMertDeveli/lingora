@@ -323,7 +323,7 @@ void main() {
       expect(c.read(progressProvider).customWords.single.tr, 'son teslim tarihi');
       expect(find.text('deadline'), findsOneWidget);
       expect(find.text(customTopic), findsOneWidget);
-      expect(find.text('Sözlüğüm (1)'), findsOneWidget);
+      expect(find.text('Sözlük (1)'), findsOneWidget);
     });
   });
 }

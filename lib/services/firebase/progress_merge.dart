@@ -9,8 +9,10 @@ import '../../models/study_plan.dart';
 ///
 /// * counters and achievements (XP, completed nodes, lesson/answer counts,
 ///   quest counters, exam bests, error stats) take the maximum per key;
-/// * collections the user builds up (claimed quests, diary days, own words)
-///   are united;
+/// * collections the user builds up (claimed quests, diary days) are
+///   united;
+/// * own words and own notes are united per item, the later edit winning;
+///   a deletion on one device (a tombstone) wins over an older copy;
 /// * the streak comes from whichever copy was active more recently (the
 ///   longer one on the same day);
 /// * settings and lists the user edits (daily goal, reminders, track,
@@ -57,10 +59,25 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
   final rw = remote.leagueWeek ?? '';
   final leagueFrom = lw.compareTo(rw) > 0 ? local : (lw.compareTo(rw) < 0 ? remote : newer);
 
-  // Words: union by English word, newer copy first.
+  // Own words: union by English word; the later edit wins (newer copy on a
+  // tie); a later deletion removes the word.
+  final removedWords = <String, int>{...local.removedWords};
+  for (final e in remote.removedWords.entries) {
+    if ((removedWords[e.key] ?? -1) < e.value) removedWords[e.key] = e.value;
+  }
   final words = <String, NoteWord>{};
   for (final w in [...newer.customWords, ...older.customWords]) {
-    words.putIfAbsent(w.en.trim().toLowerCase(), () => w);
+    final key = w.en.trim().toLowerCase();
+    final have = words[key];
+    if (have == null || (w.at ?? 0) > (have.at ?? 0)) words[key] = w;
+  }
+  words.removeWhere((key, w) => (removedWords[key] ?? -1) >= (w.at ?? 0));
+
+  // Own notes: per id, the later edit (or deletion) wins.
+  final notes = <String, UserNote>{};
+  for (final n in [...newer.userNotes, ...older.userNotes]) {
+    final have = notes[n.id];
+    if (have == null || n.updatedAt > have.updatedAt) notes[n.id] = n;
   }
 
   return Progress(
@@ -94,6 +111,8 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     diary: {...older.diary, ...newer.diary},
     errorStats: maxMap(local.errorStats, remote.errorStats),
     customWords: words.values.toList(),
+    removedWords: removedWords,
+    userNotes: notes.values.toList(),
     wordLast: wordLast,
     studyPlan: _laterPlan(newer, older),
     readingWords: maxInt(local.readingWords, remote.readingWords),

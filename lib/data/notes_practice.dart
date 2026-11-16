@@ -64,8 +64,14 @@ List<LessonItem> topicItems(GrammarTopic topic, List<GrammarTopic> all, [Random?
   return items;
 }
 
-/// Topic of the words the user adds to the dictionary themselves.
-const customTopic = 'Eklediklerim';
+/// Topic of the words the learner adds to the dictionary themselves.
+const customTopic = 'Kelimelerim';
+
+/// Topic name used before own words were called "Kelimelerim".
+const _oldCustomTopic = 'Eklediklerim';
+
+/// Whether [w] is one of the learner's own words.
+bool isOwnWord(NoteWord w) => w.topic == customTopic || w.topic == _oldCustomTopic;
 
 /// Stable id for a user-added word.
 String customWordId(String en) => 'u_${en.trim().toLowerCase().replaceAll(RegExp(r'[^a-z0-9ğüşöçı]+'), '_')}';
@@ -79,8 +85,15 @@ NoteWord customWord(String en, String tr, {String? example}) => NoteWord(
   example: (example == null || example.trim().isEmpty) ? null : example.trim(),
 );
 
-/// The whole personal dictionary: imported notes plus the user's own words.
-List<NoteWord> dictionaryWords(NotesBundle notes, Progress p) => [...notes.words, ...p.customWords];
+/// The whole dictionary: the shared course words plus the learner's own
+/// words (shown under [customTopic]).
+List<NoteWord> dictionaryWords(NotesBundle notes, Progress p) => [
+  ...notes.words,
+  for (final w in p.customWords)
+    w.topic == customTopic
+        ? w
+        : NoteWord(id: w.id, en: w.en, tr: w.tr, topic: customTopic, example: w.example, at: w.at),
+];
 
 /// Looks up [word] (case-insensitive) in [words].
 NoteWord? findWord(List<NoteWord> words, String word) {
@@ -91,13 +104,15 @@ NoteWord? findWord(List<NoteWord> words, String word) {
   return null;
 }
 
-/// Words to review now: due ones first (oldest box first), then new ones.
+/// Words to review now: due ones first (oldest box first), then new ones,
+/// the learner's own new words before the course's.
 List<NoteWord> wordsToReview(List<NoteWord> words, Progress p, DateTime now, {String? topic}) {
   final today = dayKey(now);
   final scoped = topic == null ? words : words.where((w) => w.topic == topic).toList();
   final due = scoped.where((w) => p.wordDue[w.id] != null && p.wordDue[w.id]!.compareTo(today) <= 0).toList()
     ..sort((a, b) => (p.wordBox[a.id] ?? 0).compareTo(p.wordBox[b.id] ?? 0));
-  final fresh = scoped.where((w) => !p.wordBox.containsKey(w.id)).take(wordSessionNew);
+  final unseen = scoped.where((w) => !p.wordBox.containsKey(w.id));
+  final fresh = [...unseen.where(isOwnWord), ...unseen.where((w) => !isOwnWord(w))].take(wordSessionNew);
   return [...due, ...fresh].take(wordSessionMax).toList();
 }
 

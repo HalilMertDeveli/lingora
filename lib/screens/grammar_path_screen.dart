@@ -99,7 +99,7 @@ class GrammarPathScreen extends ConsumerWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          'Notlarından hazırlanan, A1\'den C1\'e sıralı dersler.',
+                          'Ders notlarından hazırlanan, A1\'den C1\'e sıralı dersler.',
                           style: TextStyle(color: Brand.muted, fontSize: 13),
                         ),
                       ],
@@ -550,7 +550,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
   Widget _notes() => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      _title('SENİN NOTUNDAN', 'Notion\'da böyle yazmıştın'),
+      _title('DERS NOTLARINDAN', 'Bu konunun anlatımı'),
       for (final t in _topics)
         Padding(
           padding: const EdgeInsets.only(bottom: 12),
@@ -565,15 +565,11 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
               children: [
                 Row(
                   children: [
-                    Icon(
-                      t.addedByApp ? Icons.auto_awesome_rounded : Icons.description_outlined,
-                      size: 16,
-                      color: Brand.muted,
-                    ),
+                    Icon(Icons.description_outlined, size: 16, color: Brand.muted),
                     const SizedBox(width: 6),
                     Expanded(
                       child: Text(
-                        '${t.source} · ${t.title}',
+                        '${t.category} · ${t.title}',
                         style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700, fontSize: 13),
                       ),
                     ),
@@ -753,7 +749,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
           const SizedBox(height: 12),
           OutlinedButton.icon(
             icon: const Icon(Icons.fitness_center_rounded),
-            label: const Text('Notlarımdan ekstra alıştırma'),
+            label: const Text('Ders notlarından ekstra alıştırma'),
             onPressed: () {
               final items = <LessonItem>[for (final t in _topics) ...topicItems(t, widget.notes.topics)]
                 ..shuffle(Random());

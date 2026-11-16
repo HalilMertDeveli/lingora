@@ -65,6 +65,8 @@ class Progress {
     this.readingWords = 0,
     this.mistakeReason = const {},
     this.mistakeNote = const {},
+    this.userNotes = const [],
+    this.removedWords = const {},
   });
 
   /// Selected course or exam (see catalog.dart).
@@ -109,6 +111,17 @@ class Progress {
 
   /// The learner's own note on a notebook question (at most 140 letters).
   final Map<String, String> mistakeNote;
+
+  /// The learner's own notes in "Notlarım", deleted ones as tombstones.
+  final List<UserNote> userNotes;
+
+  /// Notes to show: not deleted, last edited first.
+  List<UserNote> get visibleNotes =>
+      userNotes.where((n) => !n.deleted).toList()..sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
+
+  /// Own words the learner deleted: lowercase English word → when (ms), so a
+  /// deletion is not undone by an older copy on another device.
+  final Map<String, int> removedWords;
 
   /// Notebook questions due on [day], oldest saved first.
   List<String> mistakesDue(String day) =>
@@ -251,6 +264,8 @@ class Progress {
     int? readingWords,
     Map<String, String>? mistakeReason,
     Map<String, String>? mistakeNote,
+    List<UserNote>? userNotes,
+    Map<String, int>? removedWords,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -286,6 +301,8 @@ class Progress {
     readingWords: readingWords ?? this.readingWords,
     mistakeReason: mistakeReason ?? this.mistakeReason,
     mistakeNote: mistakeNote ?? this.mistakeNote,
+    userNotes: userNotes ?? this.userNotes,
+    removedWords: removedWords ?? this.removedWords,
   );
 
   Map<String, dynamic> toJson() => {
@@ -323,6 +340,8 @@ class Progress {
     'readingWords': readingWords,
     'mistakeReason': mistakeReason,
     'mistakeNote': mistakeNote,
+    'userNotes': [for (final n in userNotes) n.toJson()],
+    'removedWords': removedWords,
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -364,6 +383,13 @@ class Progress {
     readingWords: j['readingWords'] as int? ?? 0,
     mistakeReason: (j['mistakeReason'] as Map?)?.cast<String, String>() ?? const {},
     mistakeNote: (j['mistakeNote'] as Map?)?.cast<String, String>() ?? const {},
+    userNotes: [
+      for (final n in (j['userNotes'] as List?) ?? const []) UserNote.fromJson(n as Map<String, dynamic>),
+    ],
+    removedWords: {
+      for (final e in ((j['removedWords'] as Map?) ?? const {}).entries)
+        e.key as String: (e.value as num).toInt(),
+    },
   );
 }
 
@@ -771,11 +797,42 @@ class ProgressNotifier extends Notifier<Progress> {
   }
 
   /// Adds a word to the personal dictionary. Returns false if the user has
-  /// already added the same English word.
+  /// already added the same English word. The word joins the next review.
   bool addCustomWord(NoteWord word) {
     final key = word.en.trim().toLowerCase();
     if (key.isEmpty || state.customWords.any((w) => w.en.toLowerCase() == key)) return false;
-    _save(state.copyWith(customWords: [...state.customWords, word]));
+    final at = _now().millisecondsSinceEpoch;
+    _save(
+      state.copyWith(
+        customWords: [
+          ...state.customWords,
+          word.copyWith(at: at),
+        ],
+        removedWords: {...state.removedWords}..remove(key),
+      ),
+    );
+    return true;
+  }
+
+  /// Edits one of the learner's own words. The id (and so the review
+  /// history) stays. Returns false if [en] is empty or another own word
+  /// already has it.
+  bool updateCustomWord(String id, {required String en, required String tr, String? example}) {
+    final key = en.trim().toLowerCase();
+    if (key.isEmpty || tr.trim().isEmpty) return false;
+    if (state.customWords.any((w) => w.id != id && w.en.toLowerCase() == key)) return false;
+    final at = _now().millisecondsSinceEpoch;
+    final ex = example?.trim() ?? '';
+    _save(
+      state.copyWith(
+        customWords: [
+          for (final w in state.customWords)
+            w.id == id
+                ? w.copyWith(en: en.trim(), tr: tr.trim(), example: ex, clearExample: ex.isEmpty, at: at)
+                : w,
+        ],
+      ),
+    );
     return true;
   }
 
@@ -783,12 +840,46 @@ class ProgressNotifier extends Notifier<Progress> {
   void removeCustomWord(String id) {
     final box = {...state.wordBox}..remove(id);
     final due = {...state.wordDue}..remove(id);
+    final removed = state.customWords.where((w) => w.id == id);
     _save(
       state.copyWith(
         customWords: state.customWords.where((w) => w.id != id).toList(),
         wordBox: box,
         wordDue: due,
         wordLast: {...state.wordLast}..remove(id),
+        removedWords: {
+          ...state.removedWords,
+          for (final w in removed) w.en.trim().toLowerCase(): _now().millisecondsSinceEpoch,
+        },
+      ),
+    );
+  }
+
+  /// Saves a new or edited note in "Notlarım" (by [UserNote.id]).
+  void saveUserNote({String? id, required String title, required String body}) {
+    final now = _now().millisecondsSinceEpoch;
+    final existing = state.userNotes.where((n) => n.id == id).firstOrNull;
+    final note = existing == null
+        ? UserNote(
+            id: id ?? 'n_${now.toRadixString(36)}',
+            title: title.trim(),
+            body: body.trim(),
+            createdAt: now,
+            updatedAt: now,
+          )
+        : existing.copyWith(title: title.trim(), body: body.trim(), updatedAt: now, deleted: false);
+    _save(state.copyWith(userNotes: [...state.userNotes.where((n) => n.id != note.id), note]));
+  }
+
+  /// Deletes a note (keeps an empty tombstone for sync).
+  void deleteUserNote(String id) {
+    final now = _now().millisecondsSinceEpoch;
+    _save(
+      state.copyWith(
+        userNotes: [
+          for (final n in state.userNotes)
+            n.id == id ? n.copyWith(title: '', body: '', updatedAt: now, deleted: true) : n,
+        ],
       ),
     );
   }

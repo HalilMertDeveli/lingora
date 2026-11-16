@@ -116,6 +116,31 @@ test("users: others and guests are locked out", async () => {
   await assertFails(deleteDoc(doc(db("alice"), "users/alice")));
 });
 
+test("users: own notes and words travel inside progress, only for the owner", async () => {
+  // Progress.toJson() keys used by "Notlarım" (lib/models/notes.dart).
+  const withNotes = () => ({
+    ...progressDoc(),
+    progress: {
+      totalXp: 10,
+      userNotes: [
+        { id: "n_1", title: "Since / for", body: "since + başlangıç", createdAt: 1, updatedAt: 2 },
+        { id: "n_2", title: "", body: "", createdAt: 1, updatedAt: 3, deleted: true },
+      ],
+      customWords: [{ id: "u_deadline", en: "deadline", tr: "son teslim tarihi", topic: "Kelimelerim", at: 2 }],
+      removedWords: { ferry: 3 },
+      wordBox: { u_deadline: 1 },
+      wordDue: { u_deadline: "2026-11-17" },
+    },
+  });
+  await assertSucceeds(setDoc(doc(db("alice"), "users/alice"), withNotes()));
+  const snap = await getDoc(doc(db("alice"), "users/alice"));
+  if (snap.data()?.progress?.userNotes?.[0]?.title !== "Since / for") throw new Error("note not stored");
+  // Nobody else can read or overwrite them; guests keep them on the phone.
+  await assertFails(getDoc(doc(db("bob"), "users/alice")));
+  await assertFails(setDoc(doc(db("bob"), "users/alice"), withNotes()));
+  await assertFails(setDoc(doc(guestDb("dave"), "users/dave"), withNotes()));
+});
+
 test("users: shape and size are validated", async () => {
   const ref = doc(db("alice"), "users/alice");
   await assertFails(setDoc(ref, { ...progressDoc(), isAdmin: true }));

@@ -1,4 +1,5 @@
-// The user's own study notes, imported from Notion (assets/notes/).
+// Notes: the shared course notes (assets/notes/: grammar topics and a
+// dictionary, the same for every learner) and each learner's own notes.
 
 /// One word from the personal dictionary.
 class NoteWord {
@@ -9,6 +10,7 @@ class NoteWord {
     required this.topic,
     this.example,
     this.story,
+    this.at,
   });
 
   final String id;
@@ -19,8 +21,23 @@ class NoteWord {
   final String topic;
   final String? example;
 
-  /// Memory-trick story the user wrote for this word.
+  /// Memory trick: a short story that links the sound to the meaning.
   final String? story;
+
+  /// For a learner's own word: when it was added or last edited (ms since
+  /// epoch). Lets two devices agree on the newer copy.
+  final int? at;
+
+  NoteWord copyWith({String? en, String? tr, String? example, bool clearExample = false, int? at}) =>
+      NoteWord(
+        id: id,
+        en: en ?? this.en,
+        tr: tr ?? this.tr,
+        topic: topic,
+        example: clearExample ? null : (example ?? this.example),
+        story: story,
+        at: at ?? this.at,
+      );
 
   factory NoteWord.fromJson(Map<String, dynamic> j) => NoteWord(
     id: j['id'] as String,
@@ -29,6 +46,7 @@ class NoteWord {
     topic: (j['topic'] as String?) ?? 'Genel',
     example: j['example'] as String?,
     story: j['story'] as String?,
+    at: (j['at'] as num?)?.toInt(),
   );
 
   Map<String, dynamic> toJson() => {
@@ -38,6 +56,7 @@ class NoteWord {
     'topic': topic,
     if (example != null) 'example': example,
     if (story != null) 'story': story,
+    if (at != null) 'at': at,
   };
 }
 
@@ -102,4 +121,54 @@ class NotesBundle {
   final List<String> diaryPrompts;
 
   List<String> get categories => {for (final t in topics) t.category}.toList();
+}
+
+/// A note the learner writes in "Notlarım". Deleting keeps a tombstone
+/// ([deleted], empty text) so the deletion also reaches the learner's other
+/// devices.
+class UserNote {
+  const UserNote({
+    required this.id,
+    required this.title,
+    required this.body,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deleted = false,
+  });
+
+  final String id;
+  final String title;
+  final String body;
+
+  /// Milliseconds since epoch.
+  final int createdAt;
+  final int updatedAt;
+  final bool deleted;
+
+  UserNote copyWith({String? title, String? body, int? updatedAt, bool? deleted}) => UserNote(
+    id: id,
+    title: title ?? this.title,
+    body: body ?? this.body,
+    createdAt: createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deleted: deleted ?? this.deleted,
+  );
+
+  factory UserNote.fromJson(Map<String, dynamic> j) => UserNote(
+    id: j['id'] as String,
+    title: (j['title'] as String?) ?? '',
+    body: (j['body'] as String?) ?? '',
+    createdAt: (j['createdAt'] as num?)?.toInt() ?? 0,
+    updatedAt: (j['updatedAt'] as num?)?.toInt() ?? 0,
+    deleted: (j['deleted'] as bool?) ?? false,
+  );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'title': title,
+    'body': body,
+    'createdAt': createdAt,
+    'updatedAt': updatedAt,
+    if (deleted) 'deleted': true,
+  };
 }
