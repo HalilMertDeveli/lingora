@@ -14,7 +14,9 @@ FirebaseOptions demoFirebaseOptions({TargetPlatform? platform}) {
     _ => '1:000000000000:web:0000000000000000000000',
   };
   return FirebaseOptions(
-    apiKey: 'demo-api-key',
+    // Fake, but shaped like a real key ("A" + 38 characters): Firebase
+    // Installations on Android refuses other shapes, which breaks callables.
+    apiKey: 'AIzaDemoKeyForLocalEmulatorOnly00000000',
     appId: appId,
     messagingSenderId: '000000000000',
     projectId: demoProjectId,

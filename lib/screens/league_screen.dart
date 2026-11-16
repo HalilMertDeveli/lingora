@@ -74,7 +74,8 @@ class _LeagueScreenState extends ConsumerState<LeagueScreen> {
         userCountry: country,
       ),
     };
-    if (table != null) _scrollToMe(view);
+    // A guest first needs the sign-in card at the top, so no jump to the row.
+    if (table != null && view is! WorldGuest) _scrollToMe(view);
     final size = table?.length ?? leagueSize;
     final zones = leagueZones(tier, size);
 
@@ -392,7 +393,8 @@ class _JoinCardState extends ConsumerState<_JoinCard> {
     try {
       await joinWorldLeague(ref.read);
       // leagueState changes on the server; the screen follows it.
-    } catch (_) {
+    } catch (e) {
+      debugPrint('League join failed: $e');
       if (mounted) setState(() => _error = 'Bağlantı kurulamadı. Biraz sonra yeniden dene.');
     } finally {
       if (mounted) setState(() => _busy = false);
