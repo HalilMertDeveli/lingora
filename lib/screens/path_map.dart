@@ -529,11 +529,15 @@ class UnitBand extends StatelessWidget {
     required this.index,
     required this.onGuide,
     this.compact = false,
+    this.onSkip,
   });
   final Unit unit;
   final int index;
   final VoidCallback onGuide;
   final bool compact;
+
+  /// Opens "Bu üniteyi atla"; null when the unit offers no skip exam.
+  final VoidCallback? onSkip;
 
   @override
   Widget build(BuildContext context) {
@@ -612,7 +616,20 @@ class UnitBand extends StatelessWidget {
         ),
       ],
       const SizedBox(width: 8),
-      _GuideButton(key: Key('unit-guide-${unit.id}${compact ? '-pinned' : ''}'), onTap: onGuide),
+      if (onSkip != null && !compact)
+        IntrinsicWidth(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _GuideButton(key: Key('unit-guide-${unit.id}'), onTap: onGuide),
+              const SizedBox(height: 6),
+              _SkipButton(key: Key('unit-skip-${unit.id}'), color: Brand.tone(unit.color), onTap: onSkip!),
+            ],
+          ),
+        )
+      else
+        _GuideButton(key: Key('unit-guide-${unit.id}${compact ? '-pinned' : ''}'), onTap: onGuide),
     ],
   );
 }
@@ -651,6 +668,40 @@ class _BandPattern extends StatelessWidget {
         child: Stack(key: Key('band-pattern-${theme.id}'), clipBehavior: Clip.hardEdge, children: stamps),
       );
     },
+  );
+}
+
+/// "Bu üniteyi atla" on a unit band: the skip exam with five hearts.
+class _SkipButton extends StatelessWidget {
+  const _SkipButton({super.key, required this.color, required this.onTap});
+  final Color color;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => Tooltip(
+    message: 'Bu üniteyi atla',
+    child: Material(
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.fast_forward_rounded, color: color, size: 20),
+              const SizedBox(width: 4),
+              Text(
+                'Atla',
+                style: TextStyle(color: color, fontWeight: FontWeight.w800),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
   );
 }
 

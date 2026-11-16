@@ -49,6 +49,8 @@ class LessonSnapshot {
     this.bestCombo = 0,
     this.questStats = const {},
     this.elapsedSeconds = 0,
+    this.hearts,
+    this.heartsLeft,
   });
 
   final String nodeId;
@@ -71,6 +73,12 @@ class LessonSnapshot {
   final Map<String, int> questStats;
   final int elapsedSeconds;
 
+  /// Hearts of a skip exam (see lib/data/skip_exam.dart); null elsewhere.
+  final int? hearts;
+
+  /// Hearts the skip exam still had when it was saved.
+  final int? heartsLeft;
+
   Map<String, Object?> toJson() => {
     'nodeId': nodeId,
     'title': title,
@@ -91,6 +99,8 @@ class LessonSnapshot {
     'bestCombo': bestCombo,
     'questStats': questStats,
     'elapsedSeconds': elapsedSeconds,
+    'hearts': ?hearts,
+    'heartsLeft': ?heartsLeft,
   };
 
   /// Throws on a malformed record (the caller drops it).
@@ -100,6 +110,11 @@ class LessonSnapshot {
     final pos = j['pos'] as int;
     if (total <= 0 || total > queue.length || pos < 0 || pos > queue.length) {
       throw const FormatException('resume: bad queue');
+    }
+    final hearts = j['hearts'] as int?;
+    final heartsLeft = j['heartsLeft'] as int?;
+    if (hearts != null && (hearts <= 0 || heartsLeft == null || heartsLeft < 0 || heartsLeft > hearts)) {
+      throw const FormatException('resume: bad hearts');
     }
     return LessonSnapshot(
       nodeId: j['nodeId'] as String,
@@ -123,6 +138,8 @@ class LessonSnapshot {
         for (final e in ((j['questStats'] as Map?) ?? const {}).entries) e.key as String: e.value as int,
       },
       elapsedSeconds: j['elapsedSeconds'] as int? ?? 0,
+      hearts: hearts,
+      heartsLeft: hearts == null ? null : heartsLeft,
     );
   }
 }

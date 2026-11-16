@@ -5,11 +5,14 @@ import '../data/course_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/sections.dart';
+import '../data/skip_exam.dart';
 import '../models/course.dart';
 import '../theme.dart';
+import '../ui/hearts.dart';
 import '../ui/motion.dart';
 import '../ui/tea_art.dart';
 import 'lesson_screen.dart';
+import 'skip_exam_card.dart';
 
 /// "Bölüm 2 · A1 · Günlük hayat" with the share of finished steps. Tapping
 /// it opens the section summary.
@@ -106,6 +109,34 @@ class SectionHeader extends ConsumerWidget {
                 completed ? 'Tamamlandı' : (open ? '%$percent' : 'Kilitli'),
                 style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
               ),
+              // "Bölümü atla": the summary explains the exam and starts it.
+              if (!section.parallel && !sectionSkipFinished(section, progress)) ...[
+                const SizedBox(width: 8),
+                Material(
+                  color: _color,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  child: InkWell(
+                    key: Key('section-skip-quick-${section.id}'),
+                    borderRadius: BorderRadius.circular(12),
+                    onTap: () => showSectionSummary(context, section, open: open),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.fast_forward_rounded, color: Colors.white, size: 18),
+                          const SizedBox(width: 2),
+                          Text(
+                            'Atla',
+                            semanticsLabel: open ? 'Bu bölümü sınavla atla' : 'Sınavla bu bölüme atla',
+                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ),
         ],
@@ -117,8 +148,8 @@ class SectionHeader extends ConsumerWidget {
 /// "Bölüm 2 · A1 · Günlük hayat".
 String sectionLabel(Section s) => ['Bölüm ${s.index}', if (s.cefr.isNotEmpty) s.cefr, s.title].join(' · ');
 
-/// Section summary: description, grammar topics, unit count and, while the
-/// section is locked, the "Bölüme atla" exam.
+/// Section summary: description, grammar topics, unit count and, until every
+/// step is done, the "Bölüme atla" skip exam (five hearts).
 Future<void> showSectionSummary(BuildContext context, Section section, {required bool open}) =>
     showModalBottomSheet<void>(
       context: context,
@@ -138,7 +169,12 @@ class _SectionSummary extends ConsumerWidget {
     final p = ref.watch(progressProvider);
     final lessons = section.nodes.where((n) => n.type == NodeType.lesson);
     final doneLessons = lessons.where((n) => p.isDone(n.id)).length;
-    final canSkip = !open && sectionSkipItems(section).length >= sectionSkipSize ~/ 2;
+    // The path is drawn from an outline without exercises: the exam's
+    // questions come from the full course.
+    final full =
+        ref.watch(courseProvider).value?.sections.where((s) => s.id == section.id).firstOrNull ?? section;
+    final finished = sectionSkipFinished(full, p);
+    final canSkip = !section.parallel && !finished && sectionSkipItems(full).length >= sectionSkipSize ~/ 2;
     return SafeArea(
       child: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
@@ -168,18 +204,25 @@ class _SectionSummary extends ConsumerWidget {
             ],
             if (canSkip) ...[
               const SizedBox(height: 20),
+              const HeartsBar(left: skipHearts, total: skipHearts),
+              const SizedBox(height: 8),
               Text(
-                'Bu konuları biliyorsan $sectionSkipSize soruluk sınavla bölümü hemen aç. '
-                '%$testPassPercent doğru yeterli; geçemezsen hiçbir şey kaybetmezsin.',
+                'Bu konuları biliyorsan $sectionSkipSize soruluk karışık bir sınavla '
+                '${open ? 'bölümü bitir' : 'bu bölüme atla'}. ${skipRules(unit: false)}',
                 style: t.bodyMedium,
               ),
               const SizedBox(height: 12),
               PressableButton(
                 key: const Key('section-skip'),
-                label: Brand.isKid ? 'BÖLÜME ATLA' : 'Bölüme atla',
+                label: switch ((open, Brand.isKid)) {
+                  (true, true) => 'BU BÖLÜMÜ ATLA',
+                  (true, false) => 'Bu bölümü atla',
+                  (false, true) => 'BÖLÜME ATLA',
+                  (false, false) => 'Bölüme atla',
+                },
                 onPressed: () {
                   final nav = Navigator.of(context)..pop();
-                  startSectionSkip(nav, section);
+                  startSectionSkip(nav, full);
                 },
               ),
             ] else if (!open) ...[
@@ -193,8 +236,11 @@ class _SectionSummary extends ConsumerWidget {
   }
 }
 
-/// "Bölüme atla": a mixed test over the whole section. Passing it records
-/// [sectionPassKey], which opens the section; failing changes nothing.
+/// "Bölüme atla": a mixed test over the whole section with [skipHearts]
+/// hearts. Passing it records [sectionPassKey] (which opens the section and
+/// those before it) and counts every step of the section as done, so the
+/// next section opens too; running out of hearts changes nothing.
+/// [section] must come from the full course (with exercises).
 Future<void> startSectionSkip(NavigatorState nav, Section section) {
   final color = Brand.tone(section.units.first.color);
   LessonScreen build() => LessonScreen(
@@ -203,9 +249,11 @@ Future<void> startSectionSkip(NavigatorState nav, Section section) {
     items: sectionSkipItems(section),
     color: color,
     mode: LessonMode.test,
+    rewardXp: sectionSkipXp,
+    hearts: skipHearts,
     retry: build,
     badge: 'BÖLÜME ATLA',
-    passHeadline: 'Bölüm ${section.index} açıldı!',
+    passHeadline: 'Bölüm ${section.index} geçildi!',
   );
   return nav.push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => build()));
 }

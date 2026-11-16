@@ -14,6 +14,7 @@ import '../data/exam_path.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/sections.dart';
+import '../data/skip_exam.dart';
 import '../models/course.dart';
 import '../models/exam.dart';
 import '../nav/tab_navigator.dart';
@@ -23,6 +24,7 @@ import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/flag.dart';
+import '../ui/hearts.dart';
 import '../ui/tea_art.dart';
 import '../ui/theme_art.dart';
 import '../data/topic_themes.dart';
@@ -31,6 +33,7 @@ import 'path_map.dart';
 import 'account_nudge.dart';
 import 'reminder_settings.dart';
 import 'section_header.dart';
+import 'skip_exam_card.dart';
 import 'exam_screen.dart';
 import 'story_screen.dart';
 import 'topic_guide.dart';
@@ -537,6 +540,59 @@ class _PathListState extends ConsumerState<_PathList> {
     }
   }
 
+  /// "Bu üniteyi atla": the rules first, then the skip exam.
+  Future<void> _skipUnit(Unit pathUnit) async {
+    _hideCard();
+    final resolved = await _withContent(pathUnit);
+    if (resolved == null || !mounted) return;
+    final screen = unitSkipScreen(resolved.$1);
+    final messenger = ScaffoldMessenger.of(context);
+    if (screen == null) {
+      messenger.showSnackBar(const SnackBar(content: Text('Bu ünite için henüz atlama sınavı yok.')));
+      return;
+    }
+    final start = await showModalBottomSheet<bool>(
+      context: context,
+      showDragHandle: true,
+      builder: (sheet) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          child: Column(
+            key: const Key('unit-skip-sheet'),
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text('Bu üniteyi atla', style: Theme.of(sheet).textTheme.titleLarge),
+              const SizedBox(height: 4),
+              Text(
+                pathUnit.title,
+                style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 12),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: HeartsBar(left: skipHearts, total: skipHearts),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                '${screen.items.length} soruluk karışık bir sınav. ${skipRules(unit: true)}',
+                style: Theme.of(sheet).textTheme.bodyMedium,
+              ),
+              const SizedBox(height: 16),
+              PressableButton(
+                key: const Key('unit-skip-start'),
+                label: 'SINAVA BAŞLA',
+                onPressed: () => Navigator.of(sheet).pop(true),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    if (start != true || !mounted) return;
+    await Navigator.of(context).push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => screen));
+  }
+
   /// Unit number inside its section ("ÜNİTE 3").
   int _numberOf(Unit unit) {
     for (final s in widget.course.sections) {
@@ -735,6 +791,10 @@ class _PathListState extends ConsumerState<_PathList> {
                             unit: unit,
                             index: section.units.indexOf(unit) + 1,
                             onGuide: () => _guide(unit, section.units.indexOf(unit) + 1, stateOf),
+                            // "Bu üniteyi atla", right on the band.
+                            onSkip: open[section.id]! && unitSkipOffered(unit, p)
+                                ? () => _skipUnit(unit)
+                                : null,
                           ),
                           const SizedBox(height: 18),
                           _UnitMap(
