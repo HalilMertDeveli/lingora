@@ -267,9 +267,9 @@ void main() {
   });
 
   testWidgets('path: next node is scrolled to and highlighted; "Bulunduğun yere dön"', (tester) async {
-    final c = await _pumpShell(tester, _withDone(12));
-    final active = _course.allNodes[12];
-    final next = _course.allNodes[13];
+    final c = await _pumpShell(tester, _withDone(14));
+    final active = _course.allNodes[14];
+    final next = _course.allNodes[15];
     expect(find.text(active.title).hitTestable(), findsOneWidget, reason: 'opens at the current node');
     final jump = find.byKey(const Key('back-to-current'));
     expect(jump, findsNothing);

@@ -35,6 +35,7 @@ import 'reminder_settings.dart';
 import 'section_header.dart';
 import 'skip_exam_card.dart';
 import 'exam_screen.dart';
+import 'listening_screen.dart';
 import 'story_screen.dart';
 import 'topic_guide.dart';
 
@@ -532,6 +533,13 @@ class _PathListState extends ConsumerState<_PathList> {
         await nav.push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => build()));
       case NodeType.mock:
         await _openMock(node);
+      case NodeType.listening:
+        await nav.push(
+          MaterialPageRoute<void>(
+            fullscreenDialog: true,
+            builder: (_) => ListeningScreen(node: node, color: color),
+          ),
+        );
       case NodeType.lesson:
         if (!await _guideFirst(node, unit)) return;
         await nav.push(

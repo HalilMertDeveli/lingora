@@ -732,6 +732,34 @@
           ]
         },
         {
+          "id": "s5u13d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Asansörde kırk dakika",
+          "description": "Nil, iş yerinde asansörde mahsur kaldığı sabahı Omar'a anlatıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Nil", "gender": "female", "avatar": "👩"},
+            {"name": "Omar", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Omar", "text": "You look pale, Nil. Are you okay?", "translation": "Solgun görünüyorsun Nil. İyi misin?"},
+            {"speaker": "Nil", "text": "I've just had the strangest morning. I got stuck in the lift at work for forty minutes!", "translation": "Az önce hayatımın en tuhaf sabahını yaşadım. İş yerinde kırk dakika asansörde mahsur kaldım!"},
+            {"speaker": "Omar", "text": "Forty minutes? That must have been terrible. Were you alone?", "translation": "Kırk dakika mı? Berbat olmalı. Yalnız mıydın?"},
+            {"speaker": "Nil", "text": "No, I was with our new manager. At first I was really nervous, because I'd never talked to him before.", "translation": "Hayır, yeni müdürümüzle birlikteydim. İlk başta çok gergindim çünkü onunla daha önce hiç konuşmamıştım."},
+            {"speaker": "Omar", "text": "Awkward! What did you talk about?", "translation": "Ne garip! Neler konuştunuz?"},
+            {"speaker": "Nil", "text": "Everything! Football, his kids, his terrible cooking. By the end, we were both laughing.", "translation": "Her şeyi! Futbolu, çocuklarını, berbat yemeklerini. Sonunda ikimiz de gülüyorduk."},
+            {"speaker": "Omar", "text": "So in the end it turned into a good experience?", "translation": "Yani sonunda güzel bir deneyime mi dönüştü?"},
+            {"speaker": "Nil", "text": "Kind of. But tomorrow I'm taking the stairs. All six floors!", "translation": "Sayılır. Ama yarın merdivenden çıkacağım. Altı katın hepsini!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Nil asansörde ne kadar kaldı?", "choices": ["On dakika", "Kırk dakika", "Bir saat"], "answer": "Kırk dakika", "line": 1, "key": "forty minutes", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Nil asansörde yalnızdı.", "answer": false, "line": 3, "key": "I was with our new manager", "skill": "detail"},
+            {"kind": "who", "quote": "What did you talk about?", "answer": "Omar"},
+            {"kind": "choice", "prompt": "Nil yarın ne yapacak?", "choices": ["Merdiveni kullanacak", "Evden çalışacak", "Müdürüyle yemek yiyecek"], "answer": "Merdiveni kullanacak", "line": 7, "key": "taking the stairs", "skill": "detail"}
+          ]
+        },
+        {
           "id": "s5u13t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1506,6 +1534,34 @@
           ]
         },
         {
+          "id": "s5u14d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Köprü kapanıyor",
+          "description": "Burak telefonda okuduğu yerel bir haberi Emma'ya aktarıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Emma", "gender": "female", "avatar": "👩"},
+            {"name": "Burak", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Burak", "text": "Emma, did you hear the news? The bridge on Park Road is going to be closed.", "translation": "Emma, haberi duydun mu? Park Yolu'ndaki köprü kapatılacak."},
+            {"speaker": "Emma", "text": "Really? For how long? I cross it every day.", "translation": "Gerçekten mi? Ne kadar süreliğine? Ben her gün oradan geçiyorum."},
+            {"speaker": "Burak", "text": "The article says it'll be closed for two weeks from Monday. It's being repaired after the storm.", "translation": "Habere göre pazartesiden itibaren iki hafta kapalı kalacak. Fırtınadan sonra onarılıyor."},
+            {"speaker": "Emma", "text": "Oh no. How am I supposed to get to work?", "translation": "Eyvah. Ben işe nasıl gideceğim?"},
+            {"speaker": "Burak", "text": "They said extra buses would run every ten minutes. And the ferry will be free for local people.", "translation": "On dakikada bir ek otobüs çalışacağını söylediler. Bir de vapur yerel halk için ücretsiz olacak."},
+            {"speaker": "Emma", "text": "A free ferry? That actually sounds nice. Does it say anything else?", "translation": "Ücretsiz vapur mu? Aslında kulağa hoş geliyor. Başka bir şey yazıyor mu?"},
+            {"speaker": "Burak", "text": "The mayor said the work might finish early if the weather is good.", "translation": "Belediye başkanı, hava iyi giderse çalışmanın erken bitebileceğini söylemiş."},
+            {"speaker": "Emma", "text": "Let's hope so. Can you send me the link? I'll tell my sister. She lives across the river.", "translation": "Umalım. Bana linki gönderir misin? Kız kardeşime söyleyeceğim. O nehrin karşı yakasında oturuyor."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Köprü ne kadar süre kapalı kalacak?", "choices": ["İki gün", "İki hafta", "Bir ay"], "answer": "İki hafta", "line": 2, "key": "two weeks", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Vapur yerel halk için ücretsiz olacak.", "answer": true, "line": 4, "key": "the ferry will be free", "skill": "detail"},
+            {"kind": "choice", "prompt": "Ek otobüsler kaç dakikada bir çalışacak?", "choices": ["Beş", "On", "On beş"], "answer": "On", "line": 4, "key": "every ten minutes", "skill": "detail"},
+            {"kind": "who", "quote": "She lives across the river.", "answer": "Emma"}
+          ]
+        },
+        {
           "id": "s5u14t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -2275,6 +2331,34 @@
               ],
               "taskId": "s5u15l4w"
             }
+          ]
+        },
+        {
+          "id": "s5u15d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Bozuk sokak lambası",
+          "description": "Aylin bozuk sokak lambasını şikâyet etmek için belediyeyi arıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Aylin", "gender": "female", "avatar": "👵"},
+            {"name": "Serkan", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Serkan", "text": "Good morning, City Council. How can I help you?", "translation": "Günaydın, belediye. Size nasıl yardımcı olabilirim?"},
+            {"speaker": "Aylin", "text": "Hello. I'm calling to complain about the street light outside my building. It's been broken for three weeks.", "translation": "Merhaba. Binamın önündeki sokak lambasını şikâyet etmek için arıyorum. Üç haftadır bozuk."},
+            {"speaker": "Serkan", "text": "I'm sorry to hear that. Could you tell me the address, please?", "translation": "Bunu duyduğuma üzüldüm. Adresi söyler misiniz lütfen?"},
+            {"speaker": "Aylin", "text": "It's 14 Lale Street. I reported it two weeks ago, but nobody has come yet.", "translation": "Lale Sokak, numara 14. İki hafta önce bildirdim ama hâlâ kimse gelmedi."},
+            {"speaker": "Serkan", "text": "I see. Unfortunately, our repair team has been very busy since the storm. I'll mark it as urgent.", "translation": "Anlıyorum. Maalesef onarım ekibimiz fırtınadan beri çok yoğun. Bunu acil olarak işaretleyeceğim."},
+            {"speaker": "Aylin", "text": "Thank you. The street is completely dark at night. My neighbour fell over last week.", "translation": "Teşekkürler. Sokak geceleri zifiri karanlık. Komşum geçen hafta düştü."},
+            {"speaker": "Serkan", "text": "That's terrible. Someone will be sent by Friday at the latest. I'll text you a reference number.", "translation": "Çok kötü. En geç cumaya kadar birisi gönderilecek. Size mesajla bir başvuru numarası göndereceğim."},
+            {"speaker": "Aylin", "text": "That would be great. I'd appreciate it if you could call me when it's fixed.", "translation": "Çok iyi olur. Tamir edildiğinde beni ararsanız minnettar olurum."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Sokak lambası ne zamandır bozuk?", "choices": ["Bir haftadır", "İki haftadır", "Üç haftadır"], "answer": "Üç haftadır", "line": 1, "key": "three weeks", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Aylin sorunu daha önce hiç bildirmemiş.", "answer": false, "line": 3, "key": "I reported it two weeks ago", "skill": "detail"},
+            {"kind": "choice", "prompt": "Ekip en geç ne zaman gönderilecek?", "choices": ["Pazartesi", "Cuma", "Gelecek ay"], "answer": "Cuma", "line": 6, "key": "by Friday", "skill": "detail"},
+            {"kind": "who", "quote": "I'll mark it as urgent.", "answer": "Serkan"}
           ]
         },
         {

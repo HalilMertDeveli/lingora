@@ -25,6 +25,7 @@ import '../../data/exam_path.dart';
 import '../../services/billing/exam_packs.dart';
 import '../../services/billing/products.dart';
 import '../../study/analysis.dart';
+import '../listening_screen.dart';
 import '../story_screen.dart';
 import 'notebook_screen.dart';
 import 'methods_screen.dart';
@@ -492,6 +493,8 @@ Future<void> runBlock(BuildContext context, WidgetRef ref, PlanBlock block) asyn
           await full(build());
         case NodeType.story:
           await full(StoryScreen(node: node, color: color));
+        case NodeType.listening:
+          await full(ListeningScreen(node: node, color: color));
         case NodeType.chest:
           ref.read(progressProvider.notifier).completeNode(node.id, xp: node.rewardXp);
           snack('${unit.title}: sandık açıldı, +${node.rewardXp} XP');

@@ -760,6 +760,39 @@
           ]
         },
         {
+          "id": "s8u11d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Spor salonu raporu",
+          "description": "Hande, spor salonu zincirinin yıllık rakamlarını Victor’dan alıp yönetim kurulu raporu için öneriler belirliyor",
+          "cefr": "B2",
+          "speakers": [
+            {"name": "Hande", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Victor", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Hande", "text": "Victor, I need the key figures for the board report by tomorrow. What did the survey find?", "translation": "Victor, yönetim kurulu raporu için yarına kadar temel rakamlara ihtiyacım var. Anket ne ortaya koydu?"},
+            {"speaker": "Victor", "text": "Membership rose by twelve percent this year, mostly thanks to the new branch in Bornova.", "translation": "Üyelik bu yıl yüzde on iki arttı, çoğunlukla Bornova’daki yeni şube sayesinde."},
+            {"speaker": "Hande", "text": "That's good news. And cancellations?", "translation": "Bu iyi haber. Ya üyelik iptalleri?"},
+            {"speaker": "Victor", "text": "They fell slightly, from nine to seven percent. But the morning classes are half empty.", "translation": "Hafifçe düştü, yüzde dokuzdan yediye. Ama sabah dersleri yarı yarıya boş."},
+            {"speaker": "Hande", "text": "Half empty? Do we know why?", "translation": "Yarı yarıya boş mu? Nedenini biliyor muyuz?"},
+            {"speaker": "Victor", "text": "Sixty percent of members say they prefer evenings. And I suspect that's just the tip of the iceberg.", "translation": "Üyelerin yüzde altmışı akşamları tercih ettiğini söylüyor. Bence bu da buzdağının sadece görünen kısmı."},
+            {"speaker": "Hande", "text": "What do you mean?", "translation": "Ne demek istiyorsun?"},
+            {"speaker": "Victor", "text": "Members also complained about the showers. If we don't fix them, cancellations might go up again.", "translation": "Üyeler duşlardan da şikâyet etti. Onları düzeltmezsek iptaller yine artabilir."},
+            {"speaker": "Hande", "text": "Okay. What would renovating the showers cost? Just a ballpark figure.", "translation": "Tamam. Duşları yenilemek ne kadar tutar? Kabaca bir rakam yeter."},
+            {"speaker": "Victor", "text": "Around two hundred thousand lira for all three branches.", "translation": "Üç şubenin hepsi için yaklaşık iki yüz bin lira."},
+            {"speaker": "Hande", "text": "Then my recommendation will be: move two morning classes to the evening and renovate the showers first.", "translation": "O zaman önerim şu olacak: iki sabah dersini akşama al ve önce duşları yenile."},
+            {"speaker": "Victor", "text": "I'll put that under 'Recommendations' and send you a draft tonight.", "translation": "Bunu 'Öneriler' başlığı altına koyar, bu akşam sana bir taslak gönderirim."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Üyelik bu yıl ne kadar arttı?", "choices": ["Yüzde yedi", "Yüzde dokuz", "Yüzde on iki", "Yüzde altmış"], "answer": "Yüzde on iki", "line": 1, "key": "twelve percent", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Üyelik iptalleri bu yıl arttı.", "answer": false, "line": 3, "key": "They fell slightly", "skill": "detail"},
+            {"kind": "choice", "prompt": "Victor “the tip of the iceberg” derken ne demek istiyor?", "choices": ["Görünen sorunun altında daha büyük sorunlar olabilir", "Sabah dersleri çok başarılı", "Rakamlar kesin değil", "Havuz suyu çok soğuk"], "answer": "Görünen sorunun altında daha büyük sorunlar olabilir", "line": 5, "key": "the tip of the iceberg", "skill": "inference"},
+            {"kind": "who", "quote": "send you a draft tonight", "answer": "Victor"}
+          ],
+          "idioms": ["the tip of the iceberg", "a ballpark figure"]
+        },
+        {
           "id": "s8u11t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1523,6 +1556,38 @@
           ]
         },
         {
+          "id": "s8u12d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Masada telefon",
+          "description": "Podcast sunucuları Rana ile Will, restoranlarda telefonun yasaklanıp yasaklanmaması gerektiğini tartışıyor",
+          "cefr": "B2",
+          "speakers": [
+            {"name": "Rana", "gender": "female", "avatar": "👩"},
+            {"name": "Will", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Rana", "text": "Welcome back to Table Talk. Today's question: should restaurants ban phones at the table? Will, you're against it, right?", "translation": "Table Talk’a tekrar hoş geldiniz. Bugünün sorusu: restoranlar masada telefonu yasaklamalı mı? Will, sen karşısın, değil mi?"},
+            {"speaker": "Will", "text": "Totally. I'm paying for the meal; I'll decide what I hold. A ban is just a bit much, isn't it?", "translation": "Kesinlikle. Yemeğin parasını ben ödüyorum; elimde ne tutacağıma ben karar veririm. Yasak biraz fazla, değil mi?"},
+            {"speaker": "Rana", "text": "But you have to admit, half the diners are scrolling instead of talking. It's kind of sad.", "translation": "Ama kabul etmelisin, yemek yiyenlerin yarısı konuşmak yerine ekranda geziniyor. Biraz üzücü."},
+            {"speaker": "Will", "text": "Sure, I see that. But maybe they're checking on their kids, or the babysitter's texting.", "translation": "Tamam, onu görüyorum. Ama belki çocuklarını kontrol ediyorlardır ya da bebek bakıcısı mesaj atıyordur."},
+            {"speaker": "Rana", "text": "Fair point. Let me play devil's advocate, though: some restaurants that tried it say tips went up.", "translation": "Haklısın. Ama bir de şeytanın avukatlığını yapayım: bunu deneyen bazı restoranlar bahşişlerin arttığını söylüyor."},
+            {"speaker": "Will", "text": "Really? Why would that be?", "translation": "Sahi mi? Neden ki?"},
+            {"speaker": "Rana", "text": "People felt relaxed, stayed longer, ordered dessert. Happier customers, more money.", "translation": "İnsanlar rahatlamış, daha uzun kalmış, tatlı sipariş etmiş. Daha mutlu müşteri, daha çok para."},
+            {"speaker": "Will", "text": "Hmm, I'm not totally convinced. Couldn't that just be because the food was better?", "translation": "Hmm, tam ikna olmadım. Bu sadece yemeklerin daha iyi olmasından kaynaklanıyor olamaz mı?"},
+            {"speaker": "Rana", "text": "Possibly. Then again, good food and good conversation are two sides of the same coin.", "translation": "Olabilir. Öte yandan iyi yemek ve iyi sohbet aynı madalyonun iki yüzü."},
+            {"speaker": "Will", "text": "Okay, I'll give you that. Maybe a phone-free night once a week, not a total ban.", "translation": "Tamam, bunu sana veriyorum. Belki tam yasak değil ama haftada bir telefonsuz akşam."},
+            {"speaker": "Rana", "text": "Ooh, a compromise on air! Listeners, tell us what you think.", "translation": "Vay, canlı yayında uzlaşma! Dinleyiciler, siz ne düşünüyorsunuz, bize yazın."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Telefon yasağını deneyen bazı restoranlarda ne olmuş?", "choices": ["Bahşişler artmış", "Müşteriler azalmış", "Fiyatlar düşmüş", "Garsonlar şikâyet etmiş"], "answer": "Bahşişler artmış", "line": 4, "key": "tips went up", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Will sonunda tam bir yasağı destekliyor.", "answer": false, "line": 9, "key": "not a total ban", "skill": "attitude"},
+            {"kind": "choice", "prompt": "Will, bahşişlerin arttığı haberine nasıl tepki veriyor?", "choices": ["Şüpheyle", "Büyük bir sevinçle", "Öfkeyle", "İlgisizce"], "answer": "Şüpheyle", "line": 7, "key": "I'm not totally convinced", "skill": "attitude"},
+            {"kind": "who", "quote": "It's kind of sad.", "answer": "Rana"}
+          ],
+          "idioms": ["play devil's advocate", "two sides of the same coin"]
+        },
+        {
           "id": "s8u12t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -2276,6 +2341,37 @@
               "taskId": "s8u13l4w"
             }
           ]
+        },
+        {
+          "id": "s8u13d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Oyun stüdyosunda mülakat",
+          "description": "Julia, proje yöneticisi pozisyonu için Batu ile görüntülü bir iş mülakatı yapıyor",
+          "cefr": "B2",
+          "speakers": [
+            {"name": "Julia", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Batu", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Julia", "text": "Thanks for joining us, Batu. To start with, tell me a little about yourself.", "translation": "Bize katıldığın için teşekkürler Batu. Başlangıç olarak bana biraz kendinden bahset."},
+            {"speaker": "Batu", "text": "Of course. I studied computer engineering in Ankara, and for the last three years I've worked as a coordinator at a mobile game studio.", "translation": "Tabii. Ankara’da bilgisayar mühendisliği okudum ve son üç yıldır bir mobil oyun stüdyosunda koordinatör olarak çalışıyorum."},
+            {"speaker": "Julia", "text": "And why do you want to move into project management?", "translation": "Peki neden proje yönetimine geçmek istiyorsun?"},
+            {"speaker": "Batu", "text": "I enjoy the bigger picture. I've noticed that I'm the one who keeps teams talking to each other.", "translation": "Büyük resmi görmeyi seviyorum. Ekiplerin birbiriyle konuşmasını sağlayan kişinin hep ben olduğumu fark ettim."},
+            {"speaker": "Julia", "text": "Can you give me an example of a problem you solved?", "translation": "Çözdüğün bir soruna örnek verebilir misin?"},
+            {"speaker": "Batu", "text": "Last year our launch was delayed by a bug. I had to think outside the box, so I invited players to test it with us for free. We found it in two days.", "translation": "Geçen yıl lansmanımız bir hata yüzünden ertelendi. Alışılmışın dışında düşünmem gerekti, ben de oyuncuları bizimle ücretsiz test etmeye davet ettim. Hatayı iki günde bulduk."},
+            {"speaker": "Julia", "text": "Impressive. What would you say is your main weakness?", "translation": "Etkileyici. Sence en büyük zayıf yönün nedir?"},
+            {"speaker": "Batu", "text": "I sometimes say yes to too many tasks. I've started using a strict weekly plan, and it really helps.", "translation": "Bazen çok fazla işe evet diyorum. Sıkı bir haftalık plan kullanmaya başladım ve gerçekten işe yarıyor."},
+            {"speaker": "Julia", "text": "Good. This role needs someone who can hit the ground running. When could you start?", "translation": "Güzel. Bu pozisyon işe hemen hızlı başlayabilecek birini gerektiriyor. Ne zaman başlayabilirsin?"},
+            {"speaker": "Batu", "text": "My notice period is one month, so the first of March at the latest.", "translation": "İhbar sürem bir ay, yani en geç bir mart."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Batu hatayı nasıl buldu?", "choices": ["Oyuncuları ücretsiz test etmeye davet ederek", "Yeni bir yazılımcı işe alarak", "Lansmanı iptal ederek", "Hafta sonu tek başına çalışarak"], "answer": "Oyuncuları ücretsiz test etmeye davet ederek", "line": 5, "key": "invited players to test it", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Batu’nun ihbar süresi iki ay.", "answer": false, "line": 9, "key": "one month", "skill": "detail"},
+            {"kind": "choice", "prompt": "Julia “hit the ground running” ifadesiyle ne bekliyor?", "choices": ["İşe başlar başlamaz hızla verimli olmak", "Ofise koşarak gelmek", "Uzun bir eğitimden geçmek", "Düzenli spor yapmak"], "answer": "İşe başlar başlamaz hızla verimli olmak", "line": 8, "key": "hit the ground running", "skill": "inference"},
+            {"kind": "who", "quote": "I enjoy the bigger picture", "answer": "Batu"}
+          ],
+          "idioms": ["think outside the box", "hit the ground running"]
         },
         {
           "id": "s8u13t",

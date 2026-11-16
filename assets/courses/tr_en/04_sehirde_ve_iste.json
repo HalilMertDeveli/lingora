@@ -714,6 +714,31 @@
           ]
         },
         {
+          "id": "s4u1d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "İzmir'deki yeni ev",
+          "description": "Ada, İzmir'e yeni taşınmış ve arkadaşı Sam onu telefonla arıyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Ada", "gender": "female", "avatar": "👩"},
+            {"name": "Sam", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Sam", "text": "Hi Ada! How is life in Izmir? Have you found a flat?", "translation": "Selam Ada! İzmir'de hayat nasıl? Daire buldun mu?"},
+            {"speaker": "Ada", "text": "Yes, I have! I've moved into a small flat in Karsiyaka.", "translation": "Evet, buldum! Karşıyaka'da küçük bir daireye taşındım."},
+            {"speaker": "Sam", "text": "Great! Have you met your neighbours?", "translation": "Harika! Komşularınla tanıştın mı?"},
+            {"speaker": "Ada", "text": "Yes. An old lady has brought me a plate of dolma. She's very sweet.", "translation": "Evet. Yaşlı bir hanım bana bir tabak dolma getirdi. Çok tatlı biri."},
+            {"speaker": "Sam", "text": "Lucky you! Have you bought a bed?", "translation": "Ne şanslısın! Yatak aldın mı?"},
+            {"speaker": "Ada", "text": "Not yet. I've slept on the sofa for three nights!", "translation": "Henüz değil. Üç gecedir kanepede uyuyorum!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Ada'nın yeni dairesi nerede?", "choices": ["Bornova'da", "Karşıyaka'da", "Alsancak'ta"], "answer": "Karşıyaka'da", "line": 1, "key": "in Karsiyaka", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Ada yeni bir yatak aldı.", "answer": false, "line": 5, "key": "Not yet", "skill": "detail"},
+            {"kind": "who", "quote": "Have you met your neighbours?", "answer": "Sam"}
+          ]
+        },
+        {
           "id": "s4u1t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1468,6 +1493,31 @@
           ]
         },
         {
+          "id": "s4u2d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Hiç denedin mi?",
+          "description": "Zeynep ve Tom bir restoranda daha önce yaptıkları şeyleri konuşuyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Zeynep", "gender": "female", "avatar": "👩"},
+            {"name": "Tom", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Zeynep", "text": "Tom, have you ever eaten kokorec?", "translation": "Tom, hiç kokoreç yedin mi?"},
+            {"speaker": "Tom", "text": "No, I've never tried it. Is it good?", "translation": "Hayır, hiç denemedim. Güzel mi?"},
+            {"speaker": "Zeynep", "text": "It's delicious! Have you ever been to Cappadocia?", "translation": "Çok lezzetli! Hiç Kapadokya'ya gittin mi?"},
+            {"speaker": "Tom", "text": "Yes, I've been there once. I went in 2022 with my parents.", "translation": "Evet, bir kez gittim. 2022'de ailemle gittim."},
+            {"speaker": "Zeynep", "text": "Did you fly in a balloon?", "translation": "Balona bindin mi?"},
+            {"speaker": "Tom", "text": "No. My mother was scared, so we watched them from a hotel roof. It was beautiful.", "translation": "Hayır. Annem korktu, o yüzden onları bir otelin çatısından izledik. Çok güzeldi."}
+          ],
+          "questions": [
+            {"kind": "trueFalse", "statement": "Tom daha önce kokoreç yemiş.", "answer": false, "line": 1, "key": "I've never tried it", "skill": "detail"},
+            {"kind": "choice", "prompt": "Tom Kapadokya'ya ne zaman gitti?", "choices": ["2020'de", "2022'de", "Geçen ay"], "answer": "2022'de", "line": 3, "key": "in 2022", "skill": "detail"},
+            {"kind": "who", "quote": "Did you fly in a balloon?", "answer": "Zeynep"}
+          ]
+        },
+        {
           "id": "s4u2t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -2206,6 +2256,31 @@
               "text": "Have you finished your to-do list yet?",
               "translation": "Yapılacaklar listeni bitirdin mi?"
             }
+          ]
+        },
+        {
+          "id": "s4u3d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Parti hazırlığı",
+          "description": "Elif ve Kerem akşamki parti için yapılacaklar listesine bakıyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Elif", "gender": "female", "avatar": "👩"},
+            {"name": "Kerem", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Elif", "text": "The party starts at eight. Have you bought the drinks yet?", "translation": "Parti sekizde başlıyor. İçecekleri aldın mı?"},
+            {"speaker": "Kerem", "text": "Yes, I've already bought them. They're in the fridge.", "translation": "Evet, onları zaten aldım. Buzdolabındalar."},
+            {"speaker": "Elif", "text": "Great. I've just finished the salad.", "translation": "Harika. Salatayı az önce bitirdim."},
+            {"speaker": "Kerem", "text": "And the music? Have you made a playlist?", "translation": "Ya müzik? Çalma listesi yaptın mı?"},
+            {"speaker": "Elif", "text": "No, I haven't made it yet. Can you do it?", "translation": "Hayır, henüz yapmadım. Sen yapabilir misin?"},
+            {"speaker": "Kerem", "text": "Sure. Oh, someone has just rung the bell. It's only seven! Who is it?", "translation": "Tabii. Aa, biri az önce zili çaldı. Saat daha yedi! Kim o?"}
+          ],
+          "questions": [
+            {"kind": "trueFalse", "statement": "Kerem içecekleri henüz almadı.", "answer": false, "line": 1, "key": "I've already bought them", "skill": "detail"},
+            {"kind": "choice", "prompt": "Elif az önce ne bitirdi?", "choices": ["Salatayı", "Pastayı", "Çalma listesini"], "answer": "Salatayı", "line": 2, "key": "just finished the salad", "skill": "detail"},
+            {"kind": "who", "quote": "Can you do it?", "answer": "Elif"}
           ]
         },
         {
@@ -3012,6 +3087,31 @@
                 "is"
               ]
             }
+          ]
+        },
+        {
+          "id": "s4u4d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Ofiste ilk gün",
+          "description": "Yöneticisi Selin, yeni çalışan Can'a görevlerini anlatıyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Selin", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Can", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Selin", "text": "Welcome, Can! This is your desk. You have to start at nine every day.", "translation": "Hoş geldin Can! Bu senin masan. Her gün dokuzda başlaman gerekiyor."},
+            {"speaker": "Can", "text": "Okay. Do I have to wear a suit?", "translation": "Tamam. Takım elbise giymem gerekiyor mu?"},
+            {"speaker": "Selin", "text": "No, you don't have to. Jeans are fine.", "translation": "Hayır, gerekmiyor. Kot pantolon olur."},
+            {"speaker": "Can", "text": "Good! What do I have to do today?", "translation": "Güzel! Bugün ne yapmam gerekiyor?"},
+            {"speaker": "Selin", "text": "You have to answer customer emails. Our boss, Ali, has to check them on Friday.", "translation": "Müşteri e-postalarını yanıtlaman gerekiyor. Patronumuz Ali'nin cuma günü onları kontrol etmesi gerekiyor."},
+            {"speaker": "Can", "text": "No problem. And who makes the tea here?", "translation": "Sorun değil. Peki burada çayı kim demliyor?"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Can her gün saat kaçta başlamalı?", "choices": ["Sekizde", "Dokuzda", "Onda"], "answer": "Dokuzda", "line": 0, "key": "start at nine", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Can'ın takım elbise giymesi gerekiyor.", "answer": false, "line": 2, "key": "you don't have to", "skill": "detail"},
+            {"kind": "who", "quote": "who makes the tea here?", "answer": "Can"}
           ]
         },
         {
@@ -3834,6 +3934,31 @@
           ]
         },
         {
+          "id": "s4u5d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Yüzme havuzu kuralları",
+          "description": "Cankurtaran Burak, havuza ilk kez gelen Lucy'ye kuralları anlatıyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Lucy", "gender": "female", "avatar": "👱‍♀️"},
+            {"name": "Burak", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Lucy", "text": "Hi! It's my first time here. Are there any rules?", "translation": "Merhaba! Buraya ilk gelişim. Kurallar var mı?"},
+            {"speaker": "Burak", "text": "Yes. You must wear a swimming cap. And you mustn't run near the pool.", "translation": "Evet. Bone takmak zorundasın. Bir de havuzun yanında koşmamalısın."},
+            {"speaker": "Lucy", "text": "Okay. Do I have to bring a towel?", "translation": "Tamam. Havlu getirmem gerekiyor mu?"},
+            {"speaker": "Burak", "text": "No, you don't have to. We have towels. But you should bring your own shampoo.", "translation": "Hayır, gerekmiyor. Bizde havlu var. Ama kendi şampuanını getirmelisin."},
+            {"speaker": "Lucy", "text": "Can I eat a sandwich here?", "translation": "Burada sandviç yiyebilir miyim?"},
+            {"speaker": "Burak", "text": "You shouldn't eat before you swim. And you mustn't eat in the water, of course!", "translation": "Yüzmeden önce yememelisin. Ve tabii ki suyun içinde kesinlikle yemek yememelisin!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Havuzda ne takmak zorunlu?", "choices": ["Gözlük", "Bone", "Saat"], "answer": "Bone", "line": 1, "key": "wear a swimming cap", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Lucy havlu getirmek zorunda.", "answer": false, "line": 3, "key": "We have towels", "skill": "detail"},
+            {"kind": "who", "quote": "Can I eat a sandwich here?", "answer": "Lucy"}
+          ]
+        },
+        {
           "id": "s4u5t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -4542,6 +4667,31 @@
               "text": "This room is bright and spacious.",
               "translation": "Bu oda aydınlık ve ferah."
             }
+          ]
+        },
+        {
+          "id": "s4u6d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Ev bakmaya gittik",
+          "description": "Deniz ve Jack kiralık bir daireyi gezip değerlendiriyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Deniz", "gender": "female", "avatar": "👩"},
+            {"name": "Jack", "gender": "male", "avatar": "🧔"}
+          ],
+          "lines": [
+            {"speaker": "Jack", "text": "So, what do you think of the flat?", "translation": "Eee, daire hakkında ne düşünüyorsun?"},
+            {"speaker": "Deniz", "text": "The living room is nice, but the kitchen is too small.", "translation": "Salon güzel ama mutfak çok küçük."},
+            {"speaker": "Jack", "text": "I agree. And there isn't enough light in the bedroom.", "translation": "Katılıyorum. Bir de yatak odasında yeterince ışık yok."},
+            {"speaker": "Deniz", "text": "The rent is too high, too. We don't have enough money.", "translation": "Kira da çok yüksek. Yeterince paramız yok."},
+            {"speaker": "Jack", "text": "And there are too many stairs. It's on the sixth floor, with no lift!", "translation": "Bir de çok fazla merdiven var. Altıncı katta ve asansör yok!"},
+            {"speaker": "Deniz", "text": "Okay, let's see the next one. I hope it's big enough for my plants.", "translation": "Tamam, bir sonrakine bakalım. Umarım bitkilerim için yeterince büyüktür."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Daire kaçıncı katta?", "choices": ["İkinci", "Dördüncü", "Altıncı"], "answer": "Altıncı", "line": 4, "key": "sixth floor", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Deniz'e göre mutfak çok büyük.", "answer": false, "line": 1, "key": "the kitchen is too small", "skill": "detail"},
+            {"kind": "who", "quote": "there isn't enough light in the bedroom", "answer": "Jack"}
           ]
         },
         {
@@ -5366,6 +5516,31 @@
           ]
         },
         {
+          "id": "s4u7d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Hafta sonu piknik",
+          "description": "Mia ve Emre hafta sonu planını hava durumuna göre konuşuyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Mia", "gender": "female", "avatar": "👧"},
+            {"name": "Emre", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Mia", "text": "Are we going to the picnic on Saturday?", "translation": "Cumartesi pikniğe gidiyor muyuz?"},
+            {"speaker": "Emre", "text": "If it's sunny, we'll go to Belgrad Forest.", "translation": "Hava güneşli olursa Belgrad Ormanı'na gideriz."},
+            {"speaker": "Mia", "text": "And if it rains?", "translation": "Ya yağmur yağarsa?"},
+            {"speaker": "Emre", "text": "If it rains, we'll watch a film at my place. I'll make popcorn.", "translation": "Yağmur yağarsa benim evde film izleriz. Patlamış mısır yaparım."},
+            {"speaker": "Mia", "text": "Good plan. But we won't go unless Selin comes. She has the car.", "translation": "İyi plan. Ama Selin gelmezse gitmeyiz. Araba onda."},
+            {"speaker": "Emre", "text": "True. I'll call her tonight. If she says no, we'll take the bus.", "translation": "Doğru. Bu akşam onu ararım. Hayır derse otobüse bineriz."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Yağmur yağarsa ne yapacaklar?", "choices": ["Ormana gidecekler", "Film izleyecekler", "Alışverişe gidecekler"], "answer": "Film izleyecekler", "line": 3, "key": "we'll watch a film", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Araba Selin'de.", "answer": true, "line": 4, "key": "She has the car", "skill": "detail"},
+            {"kind": "who", "quote": "And if it rains?", "answer": "Mia"}
+          ]
+        },
+        {
           "id": "s4u7t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -6119,6 +6294,31 @@
           ]
         },
         {
+          "id": "s4u8d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Yeni hobiler",
+          "description": "Nora ve Kerem sevdikleri ve yapmaya karar verdikleri şeyleri konuşuyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Nora", "gender": "female", "avatar": "👩"},
+            {"name": "Kerem", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Kerem", "text": "What do you enjoy doing after work, Nora?", "translation": "İşten sonra ne yapmaktan hoşlanırsın Nora?"},
+            {"speaker": "Nora", "text": "I love painting. And I've decided to learn the guitar this year.", "translation": "Resim yapmayı çok severim. Bu yıl da gitar öğrenmeye karar verdim."},
+            {"speaker": "Kerem", "text": "Cool! I want to start swimming, but I hate getting up early.", "translation": "Süper! Ben yüzmeye başlamak istiyorum ama erken kalkmaktan nefret ediyorum."},
+            {"speaker": "Nora", "text": "The pool is open in the evening too. You don't need to go in the morning.", "translation": "Havuz akşam da açık. Sabah gitmene gerek yok."},
+            {"speaker": "Kerem", "text": "Really? Then I'll stop making excuses!", "translation": "Gerçekten mi? O zaman bahane uydurmayı bırakacağım!"},
+            {"speaker": "Nora", "text": "Good. I hope to see you there. I'm thinking of joining you.", "translation": "Güzel. Seni orada görmeyi umuyorum. Ben de sana katılmayı düşünüyorum."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Nora bu yıl ne öğrenmeye karar verdi?", "choices": ["Yüzmeyi", "Gitarı", "Resim yapmayı"], "answer": "Gitarı", "line": 1, "key": "learn the guitar", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Kerem erken kalkmayı seviyor.", "answer": false, "line": 2, "key": "I hate getting up early", "skill": "detail"},
+            {"kind": "who", "quote": "I'll stop making excuses", "answer": "Kerem"}
+          ]
+        },
+        {
           "id": "s4u8t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -6859,6 +7059,31 @@
               "text": "I have a neighbour who plays the piano.",
               "translation": "Piyano çalan bir komşum var."
             }
+          ]
+        },
+        {
+          "id": "s4u9d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Hangi kafe?",
+          "description": "Ece ve Ali buluşacakları kafeyi ve tanışacakları kişiyi konuşuyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Ece", "gender": "female", "avatar": "👩"},
+            {"name": "Ali", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Ali", "text": "Where are we meeting your friend tomorrow?", "translation": "Yarın arkadaşınla nerede buluşuyoruz?"},
+            {"speaker": "Ece", "text": "At the cafe which is next to the bookshop. It has a blue door.", "translation": "Kitapçının yanındaki kafede. Mavi bir kapısı var."},
+            {"speaker": "Ali", "text": "Oh, the one that sells great cheesecake?", "translation": "Aa, harika cheesecake satan yer mi?"},
+            {"speaker": "Ece", "text": "Yes! And my friend is the girl who works at the art museum.", "translation": "Evet! Arkadaşım da sanat müzesinde çalışan kız."},
+            {"speaker": "Ali", "text": "How will I know her?", "translation": "Onu nasıl tanıyacağım?"},
+            {"speaker": "Ece", "text": "She's the person who always wears a red scarf. Even in summer!", "translation": "Her zaman kırmızı atkı takan kişi o. Yazın bile!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Kafe neyin yanında?", "choices": ["Müzenin", "Kitapçının", "Bankanın"], "answer": "Kitapçının", "line": 1, "key": "next to the bookshop", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Ece'nin arkadaşı bir müzede çalışıyor.", "answer": true, "line": 3, "key": "works at the art museum", "skill": "detail"},
+            {"kind": "who", "quote": "How will I know her?", "answer": "Ali"}
           ]
         },
         {
@@ -7624,6 +7849,31 @@
           ]
         },
         {
+          "id": "s4u10d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "İlk iş e-postam",
+          "description": "Yeni stajyer Mert, ilk iş e-postasını yazarken Lucy'den yardım istiyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Lucy", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Mert", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Mert", "text": "Lucy, can you check my email? It's for Mr Green.", "translation": "Lucy, e-postama bakabilir misin? Bay Green'e gidecek."},
+            {"speaker": "Lucy", "text": "Sure. Oh, you wrote \"Hey Green\". You should write \"Dear Mr Green\".", "translation": "Tabii. Aa, \"Hey Green\" yazmışsın. \"Dear Mr Green\" yazmalısın."},
+            {"speaker": "Mert", "text": "Oops! Then: I'm writing to ask about the meeting on Monday.", "translation": "Hay aksi! Sonra da: Pazartesi günkü toplantıyı sormak için yazıyorum."},
+            {"speaker": "Lucy", "text": "Perfect. How do you finish it?", "translation": "Mükemmel. Nasıl bitiriyorsun?"},
+            {"speaker": "Mert", "text": "I wrote \"See you, bro\".", "translation": "\"Görüşürüz kanka\" yazdım."},
+            {"speaker": "Lucy", "text": "No, no! Write \"Best regards\" and then your full name.", "translation": "Yok, yok! \"Best regards\" yaz, sonra da tam adını."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Mert e-postada ne hakkında soruyor?", "choices": ["Maaşı", "Pazartesi toplantısını", "Tatil günlerini"], "answer": "Pazartesi toplantısını", "line": 2, "key": "the meeting on Monday", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Lucy, e-postanın sonuna \"Best regards\" yazmayı öneriyor.", "answer": true, "line": 5, "key": "Write \"Best regards\"", "skill": "detail"},
+            {"kind": "who", "quote": "can you check my email?", "answer": "Mert"}
+          ]
+        },
+        {
           "id": "s4u10t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -8381,6 +8631,31 @@
           ]
         },
         {
+          "id": "s4u11d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Telefonda mesaj",
+          "description": "Jack bir şirketi arıyor ve resepsiyondaki Zeynep mesajını alıyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Zeynep", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Jack", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Zeynep", "text": "Good morning, Star Travel. Zeynep speaking. How can I help you?", "translation": "Günaydın, Star Travel. Ben Zeynep. Size nasıl yardımcı olabilirim?"},
+            {"speaker": "Jack", "text": "Hello, this is Jack Brown. Can I speak to Ms Yilmaz, please?", "translation": "Merhaba, ben Jack Brown. Yılmaz Hanım'la görüşebilir miyim lütfen?"},
+            {"speaker": "Zeynep", "text": "One moment, please. Hold on... I'm sorry, she's in a meeting.", "translation": "Bir dakika lütfen. Hatta kalın... Üzgünüm, kendisi toplantıda."},
+            {"speaker": "Jack", "text": "Can I leave a message? Please ask her to call me back after three.", "translation": "Mesaj bırakabilir miyim? Lütfen saat üçten sonra beni geri aramasını söyleyin."},
+            {"speaker": "Zeynep", "text": "Of course. What's your number?", "translation": "Tabii. Numaranız nedir?"},
+            {"speaker": "Jack", "text": "It's 0532 418 77 90. Thank you very much!", "translation": "0532 418 77 90. Çok teşekkür ederim!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Yılmaz Hanım neden telefona gelemiyor?", "choices": ["Öğle yemeğinde", "Toplantıda", "Tatilde"], "answer": "Toplantıda", "line": 2, "key": "she's in a meeting", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Jack, saat üçten önce aranmak istiyor.", "answer": false, "line": 3, "key": "call me back after three", "skill": "detail"},
+            {"kind": "who", "quote": "What's your number?", "answer": "Zeynep"}
+          ]
+        },
+        {
           "id": "s4u11t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -9129,6 +9404,31 @@
               "text": "If it doesn't rain, I'll walk to the post office.",
               "translation": "Yağmur yağmazsa postaneye yürüyerek gideceğim."
             }
+          ]
+        },
+        {
+          "id": "s4u12d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Postanede",
+          "description": "Ada postaneye bir paket göndermeye gidiyor ve memur Burak ona yardım ediyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Ada", "gender": "female", "avatar": "👩"},
+            {"name": "Burak", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Ada", "text": "Hello, I'd like to send this parcel to London, please.", "translation": "Merhaba, bu paketi Londra'ya göndermek istiyorum lütfen."},
+            {"speaker": "Burak", "text": "Sure. What's inside? You can't send food.", "translation": "Tabii. İçinde ne var? Yiyecek gönderemezsiniz."},
+            {"speaker": "Ada", "text": "Oh no. There's a scarf and a box of Turkish delight.", "translation": "Eyvah. İçinde bir atkı ve bir kutu lokum var."},
+            {"speaker": "Burak", "text": "I'm sorry, you have to take out the Turkish delight.", "translation": "Üzgünüm, lokumu çıkarmanız gerekiyor."},
+            {"speaker": "Ada", "text": "Fine, I'll eat it myself! How long does it take?", "translation": "Peki, kendim yerim! Ne kadar sürüyor?"},
+            {"speaker": "Burak", "text": "About one week. It costs four hundred lira. You can pay by card.", "translation": "Yaklaşık bir hafta. Dört yüz lira tutuyor. Kartla ödeyebilirsiniz."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Paket ne kadar sürede varacak?", "choices": ["Üç gün", "Yaklaşık bir hafta", "İki hafta"], "answer": "Yaklaşık bir hafta", "line": 5, "key": "About one week", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Ada lokumu pakette gönderebiliyor.", "answer": false, "line": 3, "key": "take out the Turkish delight", "skill": "detail"},
+            {"kind": "who", "quote": "I'll eat it myself!", "answer": "Ada"}
           ]
         },
         {

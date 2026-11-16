@@ -765,6 +765,31 @@
           ]
         },
         {
+          "id": "s1u13d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Spor kulübü kaydı",
+          "description": "Yusuf spor kulübüne kaydolurken adını heceliyor ve numarasını veriyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Emma", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Yusuf", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Emma", "text": "Hello! Welcome to the sports club. What is your name, please?", "translation": "Merhaba! Spor kulübüne hoş geldin. Adın ne, lütfen?"},
+            {"speaker": "Yusuf", "text": "My name is Yusuf. Y, U, S, U, F.", "translation": "Adım Yusuf. Y, U, S, U, F."},
+            {"speaker": "Emma", "text": "Thank you. How old are you, Yusuf?", "translation": "Teşekkürler. Kaç yaşındasın Yusuf?"},
+            {"speaker": "Yusuf", "text": "I am thirteen. Not thirty, thirteen!", "translation": "On üç yaşındayım. Otuz değil, on üç!"},
+            {"speaker": "Emma", "text": "Ha ha, OK. And what is your phone number?", "translation": "Ha ha, tamam. Peki telefon numaran ne?"},
+            {"speaker": "Yusuf", "text": "It is five five five, two four six, eight one.", "translation": "Beş beş beş, iki dört altı, sekiz bir."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Yusuf kaç yaşında?", "choices": ["On üç", "Otuz", "On beş"], "answer": "On üç", "line": 3, "key": "I am thirteen", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Yusuf adını harf harf söylüyor.", "answer": true, "line": 1, "key": "Y, U, S, U, F", "skill": "detail"},
+            {"kind": "who", "quote": "what is your phone number?", "answer": "Emma"}
+          ]
+        },
+        {
           "id": "s1u13t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1544,6 +1569,31 @@
           ]
         },
         {
+          "id": "s1u14d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Londra'da bir kafe",
+          "description": "Efe bir kafede fiyatları soruyor ve sipariş veriyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Grace", "gender": "female", "avatar": "👩‍🍳"},
+            {"name": "Efe", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Grace", "text": "Hi! What can I get you?", "translation": "Merhaba! Size ne getireyim?"},
+            {"speaker": "Efe", "text": "Two teas and a chocolate cake, please. How much is the cake?", "translation": "İki çay ve bir çikolatalı kek, lütfen. Kek ne kadar?"},
+            {"speaker": "Grace", "text": "The cake is three pounds fifty. The teas are two pounds each.", "translation": "Kek üç pound elli. Çayların her biri iki pound."},
+            {"speaker": "Efe", "text": "OK. And how much are the sandwiches?", "translation": "Tamam. Peki sandviçler ne kadar?"},
+            {"speaker": "Grace", "text": "They are fifteen pounds.", "translation": "On beş pound."},
+            {"speaker": "Efe", "text": "Fifteen? Hmm. Just the cake and the teas, then. Thank you!", "translation": "On beş mi? Hmm. O zaman sadece kek ve çaylar. Teşekkürler!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Kek kaç pound?", "choices": ["Üç pound elli", "İki pound", "On beş pound"], "answer": "Üç pound elli", "line": 2, "key": "three pounds fifty", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Efe sandviç de alıyor.", "answer": false, "line": 5, "key": "Just the cake and the teas", "skill": "detail"},
+            {"kind": "who", "quote": "What can I get you?", "answer": "Grace"}
+          ]
+        },
+        {
           "id": "s1u14t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -2308,6 +2358,31 @@
               ],
               "taskId": "s1u15l4w"
             }
+          ]
+        },
+        {
+          "id": "s1u15d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Sinema buluşması",
+          "description": "Lara ve Ben telefonda sinema için saat ve yer belirliyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Lara", "gender": "female", "avatar": "👩"},
+            {"name": "Ben", "gender": "male", "avatar": "🧔"}
+          ],
+          "lines": [
+            {"speaker": "Ben", "text": "Hi Lara! The film is at seven, right?", "translation": "Selam Lara! Film yedide, değil mi?"},
+            {"speaker": "Lara", "text": "No, Ben. It is at eight. We meet at seven thirty, OK?", "translation": "Hayır Ben. Sekizde. Yedi buçukta buluşuyoruz, tamam mı?"},
+            {"speaker": "Ben", "text": "OK. Where? At the cinema?", "translation": "Tamam. Nerede? Sinemada mı?"},
+            {"speaker": "Lara", "text": "No, at the cafe next to the cinema. I want a coffee first.", "translation": "Hayır, sinemanın yanındaki kafede. Önce bir kahve istiyorum."},
+            {"speaker": "Ben", "text": "Good idea. See you at seven thirty at the cafe!", "translation": "İyi fikir. Yedi buçukta kafede görüşürüz!"},
+            {"speaker": "Lara", "text": "See you! And Ben, please don't be late this time!", "translation": "Görüşürüz! Ve Ben, lütfen bu sefer geç kalma!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Film saat kaçta?", "choices": ["Yedide", "Yedi buçukta", "Sekizde"], "answer": "Sekizde", "line": 1, "key": "It is at eight", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Sinemanın içinde buluşuyorlar.", "answer": false, "line": 3, "key": "the cafe next to the cinema", "skill": "detail"},
+            {"kind": "who", "quote": "don't be late", "answer": "Lara"}
           ]
         },
         {

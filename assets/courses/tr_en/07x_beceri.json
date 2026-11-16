@@ -779,6 +779,37 @@
           ]
         },
         {
+          "id": "s7u13d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Cuma tatil mi?",
+          "description": "Gizem şirketinin deneyeceği dört günlük çalışma haftasını anlatıyor, hemşire Ryan artılarını ve eksilerini sorguluyor",
+          "cefr": "B2",
+          "speakers": [
+            {"name": "Gizem", "gender": "female", "avatar": "👩"},
+            {"name": "Ryan", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Gizem", "text": "Guess what? My company is trying a four-day week from next month. Fridays off!", "translation": "Bil bakalım ne oldu? Şirketim gelecek aydan itibaren dört günlük haftayı deniyor. Cumalar tatil!"},
+            {"speaker": "Ryan", "text": "Lucky you. But do you still have to do five days of work in four?", "translation": "Şanslısın. Ama yine de beş günlük işi dört günde yapman gerekiyor mu?"},
+            {"speaker": "Gizem", "text": "That's the idea. Fewer meetings, more focus. On the one hand, I get a long weekend every week.", "translation": "Fikir bu. Daha az toplantı, daha fazla odak. Bir yandan, her hafta uzun bir hafta sonum oluyor."},
+            {"speaker": "Ryan", "text": "And on the other hand, you'll be working ten-hour days and burning the candle at both ends.", "translation": "Öte yandan, günde on saat çalışıp kendini tüketeceksin."},
+            {"speaker": "Gizem", "text": "Maybe at first. But studies suggest people are actually more productive when they're rested.", "translation": "Başta belki. Ama araştırmalar insanların dinlenmişken aslında daha verimli olduğunu gösteriyor."},
+            {"speaker": "Ryan", "text": "In an office, perhaps. In my hospital, patients don't stop being sick on Fridays.", "translation": "Ofiste belki. Benim hastanemde hastalar cuma günleri hasta olmayı bırakmıyor."},
+            {"speaker": "Gizem", "text": "True, it wouldn't work everywhere. Hospitals would need more staff, not fewer hours.", "translation": "Doğru, her yerde işe yaramaz. Hastanelerin daha az saate değil, daha fazla personele ihtiyacı olur."},
+            {"speaker": "Ryan", "text": "Exactly. And customers might get annoyed if nobody answers the phone on Friday.", "translation": "Aynen. Hem cuma günü kimse telefona çıkmazsa müşteriler sinirlenebilir."},
+            {"speaker": "Gizem", "text": "They're using a rota, so someone is always on duty. Three-day weekends and happy clients: the best of both worlds.", "translation": "Nöbet listesi kullanıyorlar, yani her zaman biri görevde. Üç günlük hafta sonları ve mutlu müşteriler: iki dünyanın da en iyisi."},
+            {"speaker": "Ryan", "text": "If it works, I'll be jealous. If it doesn't, I'll say I told you so.", "translation": "İşe yararsa kıskanacağım. Yaramazsa da 'ben demiştim' diyeceğim."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Gizem’in şirketi cuma günleri müşterilere nasıl ulaşacak?", "choices": ["Nöbet listesiyle, her zaman biri görevde olacak", "Telefonlar kapalı olacak", "Yalnızca e-postayla", "Cumartesi çalışarak"], "answer": "Nöbet listesiyle, her zaman biri görevde olacak", "line": 8, "key": "someone is always on duty", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Ryan bir hastanede çalışıyor.", "answer": true, "line": 5, "key": "In my hospital", "skill": "detail"},
+            {"kind": "choice", "prompt": "Ryan dört günlük hafta konusunda nasıl bir tutum içinde?", "choices": ["Şüpheci ama biraz da kıskanç", "Tamamen hevesli", "Hiç ilgilenmiyor", "Öfkeli"], "answer": "Şüpheci ama biraz da kıskanç", "line": 9, "key": "I'll be jealous", "skill": "attitude"},
+            {"kind": "who", "quote": "more productive when they're rested", "answer": "Gizem"}
+          ],
+          "idioms": ["burning the candle at both ends", "the best of both worlds"]
+        },
+        {
           "id": "s7u13t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1596,6 +1627,38 @@
           ]
         },
         {
+          "id": "s7u14d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Uyku hakkında konuşma",
+          "description": "Leo konferansta uyuyakalınca Naz notlarından konuşmanın ana noktalarını özetliyor",
+          "cefr": "B2",
+          "speakers": [
+            {"name": "Naz", "gender": "female", "avatar": "👧"},
+            {"name": "Leo", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Leo", "text": "Naz, I fell asleep in the talk about sleep. Ironic, I know. What was the main point?", "translation": "Naz, uyku hakkındaki konuşmada uyuyakaldım. İronik, biliyorum. Ana fikir neydi?"},
+            {"speaker": "Naz", "text": "In a nutshell, the speaker argued that teenagers aren't lazy; their body clocks are simply later.", "translation": "Özetle, konuşmacı gençlerin tembel olmadığını, biyolojik saatlerinin sadece daha geç işlediğini savundu."},
+            {"speaker": "Leo", "text": "I knew it! So it's science, not me. What else?", "translation": "Biliyordum! Yani suç bende değil, bilimde. Başka?"},
+            {"speaker": "Naz", "text": "She made three points. First, schools start too early. Second, phones make it worse. And third, weekend lie-ins don't really help.", "translation": "Üç nokta öne sürdü. Birincisi, okullar çok erken başlıyor. İkincisi, telefonlar durumu kötüleştiriyor. Üçüncüsü, hafta sonu geç kalkmak pek işe yaramıyor."},
+            {"speaker": "Leo", "text": "Wait, they don't? I sleep until noon on Saturdays to catch up.", "translation": "Dur, yaramıyor mu? Ben açığı kapatmak için cumartesileri öğlene kadar uyuyorum."},
+            {"speaker": "Naz", "text": "That's exactly what she said doesn't work. It confuses your body clock, like flying to another country.", "translation": "İşte onun işe yaramadığını söyledi. Başka bir ülkeye uçmak gibi biyolojik saatini şaşırtıyor."},
+            {"speaker": "Leo", "text": "Did she have any evidence, or was it just her opinion?", "translation": "Bir kanıtı var mıydı, yoksa sadece kendi fikri miydi?"},
+            {"speaker": "Naz", "text": "A study of two thousand students. When one school started an hour later, grades went up by ten percent.", "translation": "İki bin öğrenciyle yapılan bir araştırma. Bir okul bir saat geç başlayınca notlar yüzde on arttı."},
+            {"speaker": "Leo", "text": "Ten percent? I'm sending that to our head teacher tonight.", "translation": "Yüzde on mu? Bunu bu akşam müdürümüze gönderiyorum."},
+            {"speaker": "Naz", "text": "Good luck. The bottom line was: put your phone away an hour before bed.", "translation": "Bol şans. Sonuç olarak şuydu: yatmadan bir saat önce telefonunu bırak."},
+            {"speaker": "Leo", "text": "Ah. Then I'll just send the part about schools.", "translation": "Ha. O zaman sadece okullarla ilgili kısmı gönderirim."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Okul bir saat geç başlayınca notlar ne kadar arttı?", "choices": ["Yüzde beş", "Yüzde on", "Yüzde yirmi", "Hiç artmadı"], "answer": "Yüzde on", "line": 7, "key": "ten percent", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Konuşmacıya göre hafta sonu geç kalkmak uyku açığını kapatır.", "answer": false, "line": 3, "key": "weekend lie-ins don't really help", "skill": "detail"},
+            {"kind": "choice", "prompt": "Leo neden sonunda yalnızca okullarla ilgili kısmı göndereceğini söylüyor?", "choices": ["Telefonunu bırakmak istemiyor", "Müdür telefonlarla ilgilenmiyor", "O kısmı anlamadı", "Mesaj çok uzun olur"], "answer": "Telefonunu bırakmak istemiyor", "line": 10, "key": "I'll just send the part about schools", "skill": "inference"},
+            {"kind": "who", "quote": "Ironic, I know.", "answer": "Leo"}
+          ],
+          "idioms": ["In a nutshell", "The bottom line"]
+        },
+        {
           "id": "s7u14t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -2376,6 +2439,37 @@
               ]
             }
           ]
+        },
+        {
+          "id": "s7u15d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Gece kütüphanesi",
+          "description": "Elena kütüphanenin akşamları geç saate kadar açık kalmasını öneriyor, Hakan itirazlarını dile getiriyor",
+          "cefr": "B2",
+          "speakers": [
+            {"name": "Elena", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Hakan", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Elena", "text": "My proposal is simple: we open the library until ten on weeknights, starting in October.", "translation": "Önerim basit: ekimden itibaren hafta içi akşamları kütüphaneyi saat ona kadar açık tutalım."},
+            {"speaker": "Hakan", "text": "I understand the idea, but who's going to staff it? We're already short of people.", "translation": "Fikri anlıyorum ama orada kim çalışacak? Zaten personelimiz az."},
+            {"speaker": "Elena", "text": "That's a fair concern. We'd use two university students, paid from the events budget.", "translation": "Haklı bir endişe. Etkinlik bütçesinden ücret alacak iki üniversite öğrencisi çalıştırırız."},
+            {"speaker": "Hakan", "text": "The events budget? That pays for the summer reading festival.", "translation": "Etkinlik bütçesi mi? Yaz okuma festivali o bütçeyle yapılıyor."},
+            {"speaker": "Elena", "text": "Only half of it. And the festival brought in forty people last year, while students ask for evening hours every week.", "translation": "Sadece yarısı. Hem festival geçen yıl kırk kişi getirdi, öğrenciler ise her hafta akşam saatleri istiyor."},
+            {"speaker": "Hakan", "text": "Still, safety worries me. The car park is dark after eight.", "translation": "Yine de güvenlik beni endişelendiriyor. Otopark sekizden sonra karanlık."},
+            {"speaker": "Elena", "text": "I've thought about that. The council has agreed to install new lights if we commit to the plan.", "translation": "Bunu düşündüm. Plana bağlı kalırsak belediye yeni lambalar takmayı kabul etti."},
+            {"speaker": "Hakan", "text": "You've clearly done your homework. What if nobody comes after a month?", "translation": "Belli ki iyi hazırlanmışsın. Peki bir ay sonra kimse gelmezse?"},
+            {"speaker": "Elena", "text": "Then we run it as a three-month trial and stop if numbers are low. Nothing is lost.", "translation": "O zaman üç aylık bir deneme olarak yürütür, sayılar düşükse durdururuz. Kaybedecek bir şey yok."},
+            {"speaker": "Hakan", "text": "That's certainly food for thought. Let me sleep on it, and I'll give you an answer on Monday.", "translation": "Bu kesinlikle üzerinde düşünmeye değer. Bir gece düşüneyim, pazartesi sana cevap veririm."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Akşam saatlerinde kütüphanede kim çalışacak?", "choices": ["İki üniversite öğrencisi", "Hakan", "Gönüllüler", "Belediye çalışanları"], "answer": "İki üniversite öğrencisi", "line": 2, "key": "two university students", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Belediye otoparka yeni lamba takmayı kabul etti.", "answer": true, "line": 6, "key": "agreed to install new lights", "skill": "detail"},
+            {"kind": "choice", "prompt": "Konuşmanın sonunda Hakan’ın tutumu nedir?", "choices": ["İkna olmaya yakın ama düşünmek için zaman istiyor", "Öneriyi kesinlikle reddediyor", "Öneriyi hemen kabul ediyor", "Konuyla hiç ilgilenmiyor"], "answer": "İkna olmaya yakın ama düşünmek için zaman istiyor", "line": 9, "key": "Let me sleep on it", "skill": "attitude"},
+            {"kind": "who", "quote": "short of people", "answer": "Hakan"}
+          ],
+          "idioms": ["done your homework", "food for thought", "sleep on it"]
         },
         {
           "id": "s7u15t",

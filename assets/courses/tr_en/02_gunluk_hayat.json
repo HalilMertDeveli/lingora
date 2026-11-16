@@ -104,6 +104,31 @@
           ]
         },
         {
+          "id": "s2u1d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Erkenci ve geç kalkan",
+          "description": "Melis ve Onur günlük rutinlerini karşılaştırıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Melis", "gender": "female", "avatar": "👩"},
+            {"name": "Onur", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Melis", "text": "Onur, you look tired. What time do you get up?", "translation": "Onur, yorgun görünüyorsun. Saat kaçta kalkıyorsun?"},
+            {"speaker": "Onur", "text": "I get up at six every day. I have a shower and I go to work.", "translation": "Her gün altıda kalkıyorum. Duş alıyorum ve işe gidiyorum."},
+            {"speaker": "Melis", "text": "Six? That is early! I get up at nine.", "translation": "Altı mı? Çok erken! Ben dokuzda kalkıyorum."},
+            {"speaker": "Onur", "text": "Nine? When do you start work?", "translation": "Dokuz mu? İşe ne zaman başlıyorsun?"},
+            {"speaker": "Melis", "text": "I start at ten. I work at home. I finish late, at seven.", "translation": "Onda başlıyorum. Evde çalışıyorum. Geç bitiriyorum, yedide."},
+            {"speaker": "Onur", "text": "Lucky you! I come back at six and go to bed at ten.", "translation": "Ne şanslısın! Ben altıda dönüyorum ve onda yatıyorum."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Onur her gün saat kaçta kalkıyor?", "choices": ["Altıda", "Dokuzda", "Onda"], "answer": "Altıda", "line": 1, "key": "at six every day", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Melis evde çalışıyor.", "answer": true, "line": 4, "key": "I work at home", "skill": "detail"},
+            {"kind": "who", "quote": "That is early!", "answer": "Melis"}
+          ]
+        },
+        {
           "id": "s2u1t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -219,6 +244,31 @@
             {"type":"match","pairs":[["açılır","opens"],["kapanır","closes"],["uçar","flies"],["yakalar","catches"],["durur","stops"]]},
             {"type":"translate","text":"Kerem futbol oynar.","lang":"tr","answers":["Kerem plays football","Kerem plays soccer"],"tokens":["plays","play","football","Kerem","the","is"]},
             {"type":"speak","text":"The shop closes at eight","translation":"Dükkân sekizde kapanır."}
+          ]
+        },
+        {
+          "id": "s2u2d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Ailemizin işleri",
+          "description": "Damla ve Berk anne babalarının mesleklerini anlatıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Damla", "gender": "female", "avatar": "👧"},
+            {"name": "Berk", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Berk", "text": "Damla, your mother is a doctor, right?", "translation": "Damla, annen doktor, değil mi?"},
+            {"speaker": "Damla", "text": "No, she is a police officer. She works at night.", "translation": "Hayır, polis memuru. Geceleri çalışıyor."},
+            {"speaker": "Berk", "text": "Wow! My father is a pilot. He flies to London every week.", "translation": "Vay! Benim babam pilot. Her hafta Londra'ya uçuyor."},
+            {"speaker": "Damla", "text": "Cool! And your mother?", "translation": "Süper! Peki annen?"},
+            {"speaker": "Berk", "text": "She teaches maths at a school. She studies a lot at home too.", "translation": "Bir okulda matematik öğretiyor. Evde de çok çalışıyor."},
+            {"speaker": "Damla", "text": "My brother studies a lot too. Well, he watches TV with a book in his hand!", "translation": "Abim de çok ders çalışıyor. Yani, elinde bir kitapla televizyon izliyor!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Damla'nın annesi ne iş yapıyor?", "choices": ["Doktor", "Polis memuru", "Öğretmen"], "answer": "Polis memuru", "line": 1, "key": "police officer", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Berk'in babası her hafta Londra'ya uçuyor.", "answer": true, "line": 2, "key": "flies to London every week", "skill": "detail"},
+            {"kind": "who", "quote": "And your mother?", "answer": "Damla"}
           ]
         },
         {
@@ -340,6 +390,31 @@
           ]
         },
         {
+          "id": "s2u3d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Röportaj ödevi",
+          "description": "Ceren sınıf ödevi için Tolga'ya sorular soruyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Ceren", "gender": "female", "avatar": "👧"},
+            {"name": "Tolga", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Ceren", "text": "OK, Tolga, first question. Do you like school?", "translation": "Tamam Tolga, ilk soru. Okulu seviyor musun?"},
+            {"speaker": "Tolga", "text": "Yes, I do. But I don't like Mondays.", "translation": "Evet, seviyorum. Ama pazartesileri sevmiyorum."},
+            {"speaker": "Ceren", "text": "Ha! Me too. Where do you live?", "translation": "Ha! Ben de. Nerede yaşıyorsun?"},
+            {"speaker": "Tolga", "text": "I live in Bursa, near my school. I walk to school every day.", "translation": "Bursa'da, okulumun yakınında yaşıyorum. Her gün okula yürüyorum."},
+            {"speaker": "Ceren", "text": "Does your sister go to your school?", "translation": "Kız kardeşin senin okuluna mı gidiyor?"},
+            {"speaker": "Tolga", "text": "No, she doesn't. She is at university. She doesn't get up before eleven!", "translation": "Hayır, gitmiyor. O üniversitede. On birden önce kalkmıyor!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Tolga nerede yaşıyor?", "choices": ["Bursa", "Ankara", "İzmir"], "answer": "Bursa", "line": 3, "key": "in Bursa", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Tolga'nın kız kardeşi onunla aynı okula gidiyor.", "answer": false, "line": 5, "key": "No, she doesn't", "skill": "detail"},
+            {"kind": "who", "quote": "I don't like Mondays", "answer": "Tolga"}
+          ]
+        },
+        {
           "id": "s2u3t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -457,6 +532,31 @@
           ]
         },
         {
+          "id": "s2u4d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Cumartesi planı",
+          "description": "Duru ve Ozan ikisinin de seveceği bir plan arıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Duru", "gender": "female", "avatar": "👩"},
+            {"name": "Ozan", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Ozan", "text": "What do you want to do on Saturday? Do you like swimming?", "translation": "Cumartesi ne yapmak istersin? Yüzmeyi sever misin?"},
+            {"speaker": "Duru", "text": "No, I hate swimming. The water is always cold! I love drawing.", "translation": "Hayır, yüzmekten nefret ederim. Su hep soğuk! Resim yapmaya bayılırım."},
+            {"speaker": "Ozan", "text": "Drawing? I don't mind drawing, but I really enjoy reading.", "translation": "Resim mi? Resim yapmak bana uyar ama ben okumaktan gerçekten keyif alırım."},
+            {"speaker": "Duru", "text": "OK. Do you like cafes?", "translation": "Tamam. Kafeleri sever misin?"},
+            {"speaker": "Ozan", "text": "Yes, a lot! I love the cafe near the park.", "translation": "Evet, çok! Parkın yanındaki kafeye bayılırım."},
+            {"speaker": "Duru", "text": "Perfect! You read, I draw, and we both drink hot chocolate.", "translation": "Mükemmel! Sen okursun, ben çizerim ve ikimiz de sıcak çikolata içeriz."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Duru neyi sevmiyor?", "choices": ["Yüzmeyi", "Resim yapmayı", "Okumayı"], "answer": "Yüzmeyi", "line": 1, "key": "I hate swimming", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Ozan okumaktan çok keyif alıyor.", "answer": true, "line": 2, "key": "really enjoy reading", "skill": "detail"},
+            {"kind": "who", "quote": "Do you like cafes?", "answer": "Duru"}
+          ]
+        },
+        {
           "id": "s2u4t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -571,6 +671,31 @@
             {"type":"match","pairs":[["onların","their"],["bizim","our"],["onun (eşya)","its"],["çocuklar","children"],["şişe","bottle"]]},
             {"type":"translate","text":"Kedimiz kutusunu çok sever.","lang":"tr","answers":["Our cat loves its box","Our cat really likes its box"],"tokens":["its","box","his","loves","Our","it's","cat"]},
             {"type":"speak","text":"Their grandmother is very kind","translation":"Onların büyükannesi çok nazik."}
+          ]
+        },
+        {
+          "id": "s2u5d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Bu kimin?",
+          "description": "Ada ve Bora evde karışan eşyaların sahibini buluyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Ada", "gender": "female", "avatar": "👧"},
+            {"name": "Bora", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Ada", "text": "Bora, whose phone is this? Is it yours?", "translation": "Bora, bu telefon kimin? Senin mi?"},
+            {"speaker": "Bora", "text": "No, it isn't mine. My phone is blue. That is Dad's phone.", "translation": "Hayır, benim değil. Benim telefonum mavi. O babamın telefonu."},
+            {"speaker": "Ada", "text": "And this black charger? It is my charger, right?", "translation": "Peki bu siyah şarj aleti? Benim şarj aletim, değil mi?"},
+            {"speaker": "Bora", "text": "No, that is mine! Your charger is in your bag.", "translation": "Hayır, o benim! Senin şarj aletin çantanda."},
+            {"speaker": "Ada", "text": "Oh, yes. And whose is this pink sock?", "translation": "Ah, evet. Peki bu pembe çorap kimin?"},
+            {"speaker": "Bora", "text": "Ha! That is our cat's. She sleeps on it every night!", "translation": "Ha! O kedimizin. Her gece üstünde uyuyor!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Bora'nın telefonu ne renk?", "choices": ["Mavi", "Siyah", "Pembe"], "answer": "Mavi", "line": 1, "key": "My phone is blue", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Siyah şarj aleti Ada'nın.", "answer": false, "line": 3, "key": "that is mine", "skill": "detail"},
+            {"kind": "who", "quote": "whose phone is this?", "answer": "Ada"}
           ]
         },
         {
@@ -692,6 +817,31 @@
           ]
         },
         {
+          "id": "s2u6d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Kemal'in mahallesi",
+          "description": "Lucy, Kemal'in mahallesinde neler olduğunu soruyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Lucy", "gender": "female", "avatar": "👱‍♀️"},
+            {"name": "Kemal", "gender": "male", "avatar": "🧔"}
+          ],
+          "lines": [
+            {"speaker": "Lucy", "text": "Kemal, I like your neighbourhood. Is there a supermarket here?", "translation": "Kemal, mahalleni sevdim. Burada süpermarket var mı?"},
+            {"speaker": "Kemal", "text": "Yes, there is. It is on this street. There are two bakeries too.", "translation": "Evet, var. Bu sokakta. İki fırın da var."},
+            {"speaker": "Lucy", "text": "Great! Are there any parks?", "translation": "Harika! Hiç park var mı?"},
+            {"speaker": "Kemal", "text": "There is one small park, but there aren't any cinemas.", "translation": "Küçük bir park var ama hiç sinema yok."},
+            {"speaker": "Lucy", "text": "Is it a quiet street?", "translation": "Sessiz bir sokak mı?"},
+            {"speaker": "Kemal", "text": "In the day, yes. But at night it is busy. There are five cafes!", "translation": "Gündüz evet. Ama gece kalabalık. Beş kafe var!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Sokakta kaç fırın var?", "choices": ["Bir", "İki", "Beş"], "answer": "İki", "line": 1, "key": "two bakeries", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Mahallede sinema var.", "answer": false, "line": 3, "key": "there aren't any cinemas", "skill": "detail"},
+            {"kind": "who", "quote": "Is it a quiet street?", "answer": "Lucy"}
+          ]
+        },
+        {
           "id": "s2u6t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -807,6 +957,31 @@
             {"type":"match","pairs":[["yastık","pillow"],["battaniye","blanket"],["halı","carpet"],["dolap","cupboard"],["buzdolabı","fridge"]]},
             {"type":"translate","text":"Bitkiler pencerenin önünde.","lang":"tr","answers":["The plants are in front of the window"],"tokens":["plants","are","plant","is","window","front","the","in","The","of"]},
             {"type":"speak","text":"Where are my keys?","translation":"Anahtarlarım nerede?"}
+          ]
+        },
+        {
+          "id": "s2u7d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Gözlük nerede?",
+          "description": "Eren, ninesinin kayıp gözlüğünü arıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Nur", "gender": "female", "avatar": "👵"},
+            {"name": "Eren", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Nur", "text": "Eren, where are my glasses? They aren't on the table.", "translation": "Eren, gözlüğüm nerede? Masanın üstünde değil."},
+            {"speaker": "Eren", "text": "Are they in your bag, Grandma?", "translation": "Çantanda mı nine?"},
+            {"speaker": "Nur", "text": "No, they aren't in my bag. Look under the sofa, please.", "translation": "Hayır, çantamda değil. Kanepenin altına bak lütfen."},
+            {"speaker": "Eren", "text": "They aren't under the sofa. Are they next to the TV?", "translation": "Kanepenin altında değil. Televizyonun yanında mı?"},
+            {"speaker": "Nur", "text": "No... Oh dear. Where are they?", "translation": "Hayır... Eyvah. Nerede bu gözlük?"},
+            {"speaker": "Eren", "text": "Grandma, they are on your head!", "translation": "Nine, gözlüğün başının üstünde!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Gözlük sonunda nerede çıkıyor?", "choices": ["Kanepenin altında", "Ninenin başının üstünde", "Çantanın içinde"], "answer": "Ninenin başının üstünde", "line": 5, "key": "on your head", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Gözlük masanın üstünde.", "answer": false, "line": 0, "key": "aren't on the table", "skill": "detail"},
+            {"kind": "who", "quote": "Look under the sofa", "answer": "Nur"}
           ]
         },
         {
@@ -928,6 +1103,31 @@
           ]
         },
         {
+          "id": "s2u8d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Kek zamanı",
+          "description": "Ayla oğlu Umut'a adım adım kek yapmayı anlatıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Ayla", "gender": "female", "avatar": "👩‍🍳"},
+            {"name": "Umut", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Ayla", "text": "OK, Umut. First, wash your hands.", "translation": "Tamam Umut. Önce ellerini yıka."},
+            {"speaker": "Umut", "text": "Done! Now what?", "translation": "Tamam! Şimdi ne yapıyoruz?"},
+            {"speaker": "Ayla", "text": "Put two eggs, some flour and some sugar in the bowl. Then mix them well.", "translation": "Kaseye iki yumurta, biraz un ve biraz şeker koy. Sonra iyice karıştır."},
+            {"speaker": "Umut", "text": "Let's put it in the oven!", "translation": "Hadi fırına koyalım!"},
+            {"speaker": "Ayla", "text": "Wait! Don't touch the oven, it is very hot. Be careful!", "translation": "Bekle! Fırına dokunma, çok sıcak. Dikkatli ol!"},
+            {"speaker": "Umut", "text": "OK. Then let's wait thirty minutes and eat it together!", "translation": "Tamam. O zaman otuz dakika bekleyelim ve birlikte yiyelim!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Kaseye kaç yumurta koyuyorlar?", "choices": ["Bir", "İki", "Üç"], "answer": "İki", "line": 2, "key": "two eggs", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Fırın çok sıcak.", "answer": true, "line": 4, "key": "very hot", "skill": "detail"},
+            {"kind": "who", "quote": "wash your hands", "answer": "Ayla"}
+          ]
+        },
+        {
           "id": "s2u8t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1043,6 +1243,31 @@
             {"type":"match","pairs":[["iyi","well"],["hızlı","fast"],["biraz","a little"],["hiç","at all"],["ağır","heavy"]]},
             {"type":"translate","text":"Bu kutuyu kaldıramam. Çok ağır.","lang":"tr","answers":["I can't lift this box. It's very heavy","I can't lift this box. It is very heavy","I cannot lift this box. It's very heavy"],"tokens":["not","very","can't","I","lift","box","too","It's","heavy","this"]},
             {"type":"speak","text":"I can cook a little","translation":"Biraz yemek yapabilirim."}
+          ]
+        },
+        {
+          "id": "s2u9d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Yetenek gösterisi",
+          "description": "Mia ve Kaan cuma günkü yetenek gösterisi için plan yapıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Mia", "gender": "female", "avatar": "👧"},
+            {"name": "Kaan", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Mia", "text": "Kaan, the talent show is on Friday. What can you do?", "translation": "Kaan, yetenek gösterisi cuma günü. Sen ne yapabilirsin?"},
+            {"speaker": "Kaan", "text": "I can play the guitar a little. Can you sing?", "translation": "Biraz gitar çalabilirim. Sen şarkı söyleyebilir misin?"},
+            {"speaker": "Mia", "text": "Yes, I can sing well. But I can't dance at all!", "translation": "Evet, iyi şarkı söylerim. Ama hiç dans edemem!"},
+            {"speaker": "Kaan", "text": "No problem. You sing and I play the guitar.", "translation": "Sorun değil. Sen şarkı söyle, ben gitar çalayım."},
+            {"speaker": "Mia", "text": "Good idea! Can I come to your house on Wednesday? We can practise.", "translation": "İyi fikir! Çarşamba evine gelebilir miyim? Prova yapabiliriz."},
+            {"speaker": "Kaan", "text": "Yes, of course. But my dog can sing too. He loves music!", "translation": "Evet, tabii. Ama köpeğim de şarkı söyleyebiliyor. Müziğe bayılıyor!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Yetenek gösterisi hangi gün?", "choices": ["Çarşamba", "Cuma", "Cumartesi"], "answer": "Cuma", "line": 0, "key": "on Friday", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Mia çok iyi dans edebiliyor.", "answer": false, "line": 2, "key": "can't dance at all", "skill": "detail"},
+            {"kind": "who", "quote": "I can play the guitar a little.", "answer": "Kaan"}
           ]
         },
         {
@@ -1164,6 +1389,31 @@
           ]
         },
         {
+          "id": "s2u10d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Alışveriş listesi",
+          "description": "Elif ve babası Hakan mutfakta eksikleri listeye yazıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Elif", "gender": "female", "avatar": "👧"},
+            {"name": "Hakan", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Hakan", "text": "Elif, let's write the shopping list. Are there any eggs?", "translation": "Elif, hadi alışveriş listesini yazalım. Hiç yumurta var mı?"},
+            {"speaker": "Elif", "text": "Yes, there are some eggs. But there isn't any milk.", "translation": "Evet, biraz yumurta var. Ama hiç süt yok."},
+            {"speaker": "Hakan", "text": "OK. A bottle of milk. Do we have any bread?", "translation": "Tamam. Bir şişe süt. Hiç ekmeğimiz var mı?"},
+            {"speaker": "Elif", "text": "No. We need a loaf of bread. And some cheese too.", "translation": "Hayır. Bir somun ekmek lazım. Biraz da peynir."},
+            {"speaker": "Hakan", "text": "Bread and cheese. Anything else?", "translation": "Ekmek ve peynir. Başka bir şey?"},
+            {"speaker": "Elif", "text": "Yes! A big box of chocolates, please. For me!", "translation": "Evet! Büyük bir kutu çikolata, lütfen. Benim için!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Evde ne var?", "choices": ["Yumurta", "Süt", "Ekmek"], "answer": "Yumurta", "line": 1, "key": "there are some eggs", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Bir somun ekmek almaları gerekiyor.", "answer": true, "line": 3, "key": "a loaf of bread", "skill": "detail"},
+            {"kind": "who", "quote": "Anything else?", "answer": "Hakan"}
+          ]
+        },
+        {
           "id": "s2u10t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1282,6 +1532,31 @@
           ]
         },
         {
+          "id": "s2u11d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Sürpriz parti",
+          "description": "Yasemin ve Cem annelerinin doğum günü için sürpriz planlıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Yasemin", "gender": "female", "avatar": "👩"},
+            {"name": "Cem", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Yasemin", "text": "Cem, Mum's birthday is on the fifth of May. That is a Saturday.", "translation": "Cem, annemin doğum günü beş mayısta. O gün cumartesi."},
+            {"speaker": "Cem", "text": "Great! Let's have a surprise party. What time?", "translation": "Harika! Sürpriz parti yapalım. Saat kaçta?"},
+            {"speaker": "Yasemin", "text": "At half past seven in the evening. She comes home at seven.", "translation": "Akşam yedi buçukta. Annem yedide eve geliyor."},
+            {"speaker": "Cem", "text": "OK. Are you free on Friday? We can buy a cake.", "translation": "Tamam. Cuma günü boş musun? Bir pasta alabiliriz."},
+            {"speaker": "Yasemin", "text": "Yes, I am free after school, at quarter to four.", "translation": "Evet, okuldan sonra boşum, dörde çeyrek kala."},
+            {"speaker": "Cem", "text": "Perfect. And remember, it is a secret!", "translation": "Mükemmel. Ve unutma, bu bir sır!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Annenin doğum günü ne zaman?", "choices": ["4 Mayıs", "5 Mayıs", "5 Mart"], "answer": "5 Mayıs", "line": 0, "key": "the fifth of May", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Parti akşam yedi buçukta.", "answer": true, "line": 2, "key": "half past seven", "skill": "detail"},
+            {"kind": "who", "quote": "it is a secret!", "answer": "Cem"}
+          ]
+        },
+        {
           "id": "s2u11t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1396,6 +1671,31 @@
             {"type":"listen","text":"The island is beautiful in summer","answers":["The island is beautiful in summer"]},
             {"type":"match","pairs":[["tatil","holiday"],["manzara","view"],["güneş gözlüğü","sunglasses"],["tepe","hill"],["mühendis","engineer"]]},
             {"type":"speak","text":"We love the sea and the sun","translation":"Denizi ve güneşi çok severiz."}
+          ]
+        },
+        {
+          "id": "s2u12d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Adada tatil",
+          "description": "Eda tatilden Londra'daki arkadaşı Sam'i arıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Eda", "gender": "female", "avatar": "👩"},
+            {"name": "Sam", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Sam", "text": "Hi Eda! Where are you?", "translation": "Selam Eda! Neredesin?"},
+            {"speaker": "Eda", "text": "I am on an island near Fethiye! The sea is blue and the sun is hot.", "translation": "Fethiye yakınlarında bir adadayım! Deniz masmavi, güneş sıcak."},
+            {"speaker": "Sam", "text": "Lucky you! Is there a museum?", "translation": "Ne şanslısın! Müze var mı?"},
+            {"speaker": "Eda", "text": "Yes, there is an old museum. And there is a small hotel. I love it.", "translation": "Evet, eski bir müze var. Bir de küçük bir otel var. Bayılıyorum."},
+            {"speaker": "Sam", "text": "Do you have a map?", "translation": "Haritan var mı?"},
+            {"speaker": "Eda", "text": "Yes, but I don't need the map. The island is very small!", "translation": "Evet, ama haritaya ihtiyacım yok. Ada çok küçük!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Eda nerede?", "choices": ["Bir adada", "Bir müzede", "Londra'da"], "answer": "Bir adada", "line": 1, "key": "on an island", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Ada çok büyük.", "answer": false, "line": 5, "key": "very small", "skill": "detail"},
+            {"kind": "who", "quote": "Do you have a map?", "answer": "Sam"}
           ]
         },
         {

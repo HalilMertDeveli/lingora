@@ -356,6 +356,7 @@ void main() {
         's2u1s',
         's2u1l3',
         's2u1l4',
+        's2u1d',
         's2u1t',
       ]);
       expect(passed.isDone('s2u2t'), isFalse);
@@ -376,7 +377,7 @@ void main() {
 
     test('progress share per section', () {
       expect(sectionProgress(s2, const Progress()), 0);
-      expect(sectionProgress(s2, _done(['s2u1l1'])), closeTo(1 / 7, 1e-9));
+      expect(sectionProgress(s2, _done(['s2u1l1'])), closeTo(1 / 8, 1e-9));
       expect(sectionProgress(s2, _done(s2.nodes.map((n) => n.id))), 1);
     });
 
@@ -470,6 +471,9 @@ void main() {
 
       final header = find.byKey(const Key('section-s2'));
       await tester.scrollUntilVisible(header, 600, scrollable: find.byType(Scrollable).first);
+      // Longer units (listening pieces) can leave it under the bottom bar: centre it.
+      await tester.runAsync(() => Scrollable.ensureVisible(tester.element(header), alignment: 0.5));
+      await tester.pumpAndSettle();
       expect(find.text('Bölüm 2 · A1 · Günlük hayat'), findsOneWidget);
       expect(find.descendant(of: header, matching: find.text('Kilitli')), findsOneWidget);
 

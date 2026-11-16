@@ -125,10 +125,14 @@ Object? outlineUnit(Object? unit) {
   };
 }
 
+/// Content an outline leaves out: exercises, story steps and the dialogue
+/// and questions of a listening piece.
+const _heavy = {'exercises', 'steps', 'speakers', 'lines', 'questions', 'idioms'};
+
 Object? outlineNode(Object? node) {
   if (node is! Map<String, dynamic>) return node;
   return {
     for (final e in node.entries)
-      if (e.key != 'exercises' && e.key != 'steps') e.key: e.value,
+      if (!_heavy.contains(e.key)) e.key: e.value,
   };
 }

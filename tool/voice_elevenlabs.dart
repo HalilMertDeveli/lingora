@@ -3,6 +3,9 @@
 //   dart run tool/voice_elevenlabs.dart u1            # one unit
 //   dart run tool/voice_elevenlabs.dart u1 u2 --dry   # count only
 //   dart run tool/voice_elevenlabs.dart --all
+//   dart run tool/voice_elevenlabs.dart --all --listening --dry  # listening pieces only
+//
+// Listening lines are read by their speaker: women Matilda, men Eric.
 //
 // The API key is read from ELEVENLABS_API_KEY or from
 // %USERPROFILE%/.dilbaz/elevenlabs_key.txt; it is never printed or stored in
@@ -85,8 +88,28 @@ Map<String, Voice> spokenIn(Map<String, dynamic> unit) {
       add(s['text'] as String?, speakerVoice[who]);
     }
   }
+  for (final (text, voice) in listeningLines(unit)) {
+    add(text, voice);
+  }
   return out;
 }
+
+/// Lines of the unit's listening pieces with their speaker's voice: women
+/// Matilda, men Eric (the `gender` of the speaker).
+List<(String, Voice)> listeningLines(Map<String, dynamic> unit) => [
+  for (final node in (unit['nodes'] as List).cast<Map<String, dynamic>>())
+    if (node['type'] == 'listening')
+      for (final l in ((node['lines'] as List?) ?? const []).cast<Map<String, dynamic>>())
+        (
+          l['text'] as String,
+          ((node['speakers'] as List).cast<Map<String, dynamic>>().firstWhere(
+                    (s) => s['name'] == l['speaker'],
+                  )['gender'] ==
+                  'male')
+              ? Voice.eric
+              : Voice.matilda,
+        ),
+];
 
 Future<void> main(List<String> args) async {
   final dry = args.contains('--dry');
@@ -102,11 +125,23 @@ Future<void> main(List<String> args) async {
   final index = indexFile.existsSync()
       ? (jsonDecode(indexFile.readAsStringSync()) as Map<String, dynamic>).cast<String, String>()
       : <String, String>{};
+  // --listening: only the lines of the listening pieces.
+  final onlyListening = args.contains('--listening');
   final todo = <String, Voice>{};
   for (final u in units) {
-    for (final MapEntry(:key, :value) in spokenIn(u).entries) {
+    final spoken = onlyListening
+        ? <String, Voice>{
+            for (final (t, v) in listeningLines(u))
+              if (_english(t)) normalizeSpoken(t): v,
+          }
+        : spokenIn(u);
+    for (final MapEntry(:key, :value) in spoken.entries) {
       if (!index.containsKey(voiceKey(key))) todo[key] = value;
     }
+  }
+  if (onlyListening) {
+    final m = todo.values.where((v) => v == Voice.matilda).length;
+    stdout.writeln('Dinleme satırları: $m Matilda, ${todo.length - m} Eric.');
   }
   final chars = todo.keys.fold<int>(0, (n, t) => n + t.length);
   stdout.writeln('${units.length} ünite, ${todo.length} yeni metin, $chars karakter.');

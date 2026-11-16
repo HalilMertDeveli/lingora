@@ -785,6 +785,31 @@
           ]
         },
         {
+          "id": "s3u13d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Kamp macerası",
+          "description": "Lucy geçen yaz yaptığı kampı sırasıyla Emre'ye anlatıyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Lucy", "gender": "female", "avatar": "👱‍♀️"},
+            {"name": "Emre", "gender": "male", "avatar": "🧔"}
+          ],
+          "lines": [
+            {"speaker": "Emre", "text": "So, how was your camping trip last summer?", "translation": "Eee, geçen yazki kamp gezin nasıldı?"},
+            {"speaker": "Lucy", "text": "Funny! First, we drove to a lake near Bolu. Then we put up our tent.", "translation": "Komikti! Önce Bolu yakınındaki bir göle gittik. Sonra çadırımızı kurduk."},
+            {"speaker": "Emre", "text": "And after that?", "translation": "Ya ondan sonra?"},
+            {"speaker": "Lucy", "text": "After that, we made a fire and cooked sausages. Before bed, we told stories.", "translation": "Ondan sonra ateş yaktık ve sosis pişirdik. Yatmadan önce hikâyeler anlattık."},
+            {"speaker": "Emre", "text": "Sounds lovely. Did you sleep well?", "translation": "Çok hoş. İyi uyudun mu?"},
+            {"speaker": "Lucy", "text": "Not really. A cow walked past our tent at three in the morning!", "translation": "Pek değil. Sabahın üçünde çadırımızın yanından bir inek geçti!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Göle vardıktan sonra ilk ne yaptılar?", "choices": ["Çadır kurdular", "Ateş yaktılar", "Yüzdüler"], "answer": "Çadır kurdular", "line": 1, "key": "Then we put up our tent", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Lucy kampta çok iyi uyudu.", "answer": false, "line": 5, "key": "Not really", "skill": "detail"},
+            {"kind": "who", "quote": "And after that?", "answer": "Emre"}
+          ]
+        },
+        {
           "id": "s3u13t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1542,6 +1567,31 @@
               ],
               "taskId": "s3u14l4w"
             }
+          ]
+        },
+        {
+          "id": "s3u14d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Peron değişti",
+          "description": "Nora istasyonda anonsu kaçırıyor ve danışmadaki görevliye soruyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Nora", "gender": "female", "avatar": "👩"},
+            {"name": "Ali", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Nora", "text": "Excuse me, I didn't hear the announcement. Is the train to Eskisehir late?", "translation": "Affedersiniz, anonsu duymadım. Eskişehir treni gecikiyor mu?"},
+            {"speaker": "Ali", "text": "Yes, it is. It leaves at ten forty now, not ten fifteen.", "translation": "Evet. Artık on beşte değil, onu kırk geçe kalkıyor."},
+            {"speaker": "Nora", "text": "Thank you. Which platform is it?", "translation": "Teşekkürler. Hangi peron?"},
+            {"speaker": "Ali", "text": "There is a change. It's platform six, not platform two.", "translation": "Bir değişiklik var. İki numaralı değil, altı numaralı peron."},
+            {"speaker": "Nora", "text": "Platform six. Is there time for a coffee?", "translation": "Altı numaralı peron. Kahve için vakit var mı?"},
+            {"speaker": "Ali", "text": "Yes, about twenty minutes. The cafe is next to platform one.", "translation": "Evet, yaklaşık yirmi dakika. Kafe bir numaralı peronun yanında."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Tren şimdi saat kaçta kalkıyor?", "choices": ["10.15", "10.40", "10.20"], "answer": "10.40", "line": 1, "key": "ten forty", "skill": "detail"},
+            {"kind": "choice", "prompt": "Tren hangi perondan kalkıyor?", "choices": ["Bir", "İki", "Altı"], "answer": "Altı", "line": 3, "key": "It's platform six", "skill": "detail"},
+            {"kind": "who", "quote": "Is there time for a coffee?", "answer": "Nora"}
           ]
         },
         {
@@ -2318,6 +2368,31 @@
               ],
               "taskId": "s3u15l4w"
             }
+          ]
+        },
+        {
+          "id": "s3u15d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Özür e-postası",
+          "description": "Selin ve Mert, Selin'in arkadaşına yazacağı teşekkür ve özür e-postasını konuşuyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Selin", "gender": "female", "avatar": "👩"},
+            {"name": "Mert", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Mert", "text": "What are you writing, Selin?", "translation": "Ne yazıyorsun Selin?"},
+            {"speaker": "Selin", "text": "An email to Deniz. She lent me her car last week. I want to thank her.", "translation": "Deniz'e bir e-posta. Geçen hafta bana arabasını ödünç verdi. Ona teşekkür etmek istiyorum."},
+            {"speaker": "Mert", "text": "That's nice. Read it to me.", "translation": "Ne güzel. Bana oku."},
+            {"speaker": "Selin", "text": "Dear Deniz, thank you so much for the car. I'm sorry I was late on Sunday. There was a lot of traffic.", "translation": "Sevgili Deniz, araba için çok teşekkürler. Pazar günü geciktiğim için özür dilerim. Çok trafik vardı."},
+            {"speaker": "Mert", "text": "Good. Did you tell her about the small scratch?", "translation": "Güzel. Küçük çizikten bahsettin mi?"},
+            {"speaker": "Selin", "text": "Not yet. That's the next sentence. It's the hardest one!", "translation": "Henüz değil. O bir sonraki cümle. En zoru o!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Selin neden Deniz'e teşekkür ediyor?", "choices": ["Ona araba ödünç verdiği için", "Ona kitap verdiği için", "Onu yemeğe davet ettiği için"], "answer": "Ona araba ödünç verdiği için", "line": 1, "key": "She lent me her car", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Selin pazar günü trafik yüzünden geç kaldı.", "answer": true, "line": 3, "key": "There was a lot of traffic", "skill": "detail"},
+            {"kind": "who", "quote": "Did you tell her about the small scratch?", "answer": "Mert"}
           ]
         },
         {

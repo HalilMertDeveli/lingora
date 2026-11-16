@@ -720,6 +720,34 @@
           ]
         },
         {
+          "id": "s6u1d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Geç kalınan konser",
+          "description": "Leo konsere geç yetişiyor ve İpek ona kaçırdıklarını anlatıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Ipek", "gender": "female", "avatar": "👩"},
+            {"name": "Leo", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Leo", "text": "Ipek! Sorry I'm late. Did I miss anything?", "translation": "İpek! Geciktiğim için özür dilerim. Bir şey kaçırdım mı?"},
+            {"speaker": "Ipek", "text": "Leo, the concert finished ten minutes ago! By the time you arrived, the band had already played their last song.", "translation": "Leo, konser on dakika önce bitti! Sen geldiğinde grup son şarkısını çoktan çalmıştı."},
+            {"speaker": "Leo", "text": "Oh no. My train had stopped for an hour before I even reached the city.", "translation": "Eyvah. Daha şehre varmadan trenim bir saat durmuştu."},
+            {"speaker": "Ipek", "text": "Why didn't you call me? I had saved you a seat in the front row.", "translation": "Neden beni aramadın? Sana ön sırada yer ayırmıştım."},
+            {"speaker": "Leo", "text": "My phone had died. I'd forgotten to charge it last night.", "translation": "Telefonumun şarjı bitmişti. Dün gece şarj etmeyi unutmuşum."},
+            {"speaker": "Ipek", "text": "Typical! Well, I'd bought you a T-shirt before the show started.", "translation": "Tam senlik! Neyse, gösteri başlamadan önce sana bir tişört almıştım."},
+            {"speaker": "Leo", "text": "Really? That's so kind. Was the show good?", "translation": "Gerçekten mi? Çok naziksin. Gösteri güzel miydi?"},
+            {"speaker": "Ipek", "text": "Amazing. The singer had never played in Turkey before, so the crowd went crazy.", "translation": "Muhteşemdi. Şarkıcı daha önce hiç Türkiye'de çalmamıştı, o yüzden kalabalık çıldırdı."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Leo'nun treni ne kadar durmuş?", "choices": ["On dakika", "Yarım saat", "Bir saat"], "answer": "Bir saat", "line": 2, "key": "for an hour", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Leo telefonunu dün gece şarj etmeyi unutmuştu.", "answer": true, "line": 4, "key": "forgotten to charge it", "skill": "detail"},
+            {"kind": "who", "quote": "I had saved you a seat in the front row.", "answer": "Ipek"},
+            {"kind": "choice", "prompt": "İpek, Leo için ne almıştı?", "choices": ["Bir tişört", "Bir bilet", "Bir poster"], "answer": "Bir tişört", "line": 5, "key": "T-shirt", "skill": "detail"}
+          ]
+        },
+        {
           "id": "s6u1t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1471,6 +1499,34 @@
           ]
         },
         {
+          "id": "s6u2d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Yağmurlu bir akşam",
+          "description": "Nermin torunu Deniz'e dedesiyle nasıl tanıştığını anlatıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Nermin", "gender": "female", "avatar": "👵"},
+            {"name": "Deniz", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Deniz", "text": "Grandma, how did you meet Grandpa? You've never told me.", "translation": "Babaanne, dedemle nasıl tanıştınız? Bana hiç anlatmadın."},
+            {"speaker": "Nermin", "text": "Well, it was a rainy evening in 1975. I was waiting for the bus, and I had forgotten my umbrella.", "translation": "Şöyle, 1975'te yağmurlu bir akşamdı. Otobüs bekliyordum ve şemsiyemi unutmuştum."},
+            {"speaker": "Deniz", "text": "And Grandpa had an umbrella?", "translation": "Dedemin de şemsiyesi mi vardı?"},
+            {"speaker": "Nermin", "text": "No! He was running past, and he slipped and fell right into a puddle in front of me.", "translation": "Hayır! Koşarak yanımdan geçiyordu, kaydı ve tam önümdeki bir su birikintisine düştü."},
+            {"speaker": "Deniz", "text": "No way! What did you do?", "translation": "Olamaz! Sen ne yaptın?"},
+            {"speaker": "Nermin", "text": "I laughed so much that I missed my bus. Then he asked me to have tea with him while I was waiting for the next one.", "translation": "O kadar güldüm ki otobüsü kaçırdım. Sonra ben bir sonrakini beklerken benimle çay içmeyi teklif etti."},
+            {"speaker": "Deniz", "text": "So a puddle brought you together!", "translation": "Yani sizi bir su birikintisi bir araya getirdi!"},
+            {"speaker": "Nermin", "text": "Exactly. We were married a year later. And he still hates rain.", "translation": "Aynen öyle. Bir yıl sonra evlendik. Ve o hâlâ yağmurdan nefret eder."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Nermin dedeyle hangi yıl tanıştı?", "choices": ["1965", "1975", "1985"], "answer": "1975", "line": 1, "key": "1975", "skill": "detail"},
+            {"kind": "choice", "prompt": "Dede nereye düştü?", "choices": ["Bir su birikintisine", "Otobüsün içine", "Merdivenlerden aşağı"], "answer": "Bir su birikintisine", "line": 3, "key": "into a puddle", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Nermin gülerken otobüsünü kaçırdı.", "answer": true, "line": 5, "key": "I missed my bus", "skill": "detail"},
+            {"kind": "who", "quote": "So a puddle brought you together!", "answer": "Deniz"}
+          ]
+        },
+        {
           "id": "s6u2t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -2195,6 +2251,34 @@
               "text": "Is this the book you wanted?",
               "translation": "İstediğin kitap bu mu?"
             }
+          ]
+        },
+        {
+          "id": "s6u3d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Partide kim kimdir?",
+          "description": "Ben bir partide tanımadığı insanları Maya'ya soruyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Maya", "gender": "female", "avatar": "👩"},
+            {"name": "Ben", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Ben", "text": "Maya, do you know everyone here? I'm looking for the woman who organised this party.", "translation": "Maya, buradaki herkesi tanıyor musun? Bu partiyi düzenleyen kadını arıyorum."},
+            {"speaker": "Maya", "text": "Lale? She's the one who's wearing the green dress, next to the window.", "translation": "Lale mi? Pencerenin yanında, yeşil elbiseli olan o."},
+            {"speaker": "Ben", "text": "Ah, thanks. And who's the guy that's playing the guitar?", "translation": "Ah, teşekkürler. Peki gitar çalan adam kim?"},
+            {"speaker": "Maya", "text": "That's her brother. He's the man whose band played at our office party last year.", "translation": "O onun kardeşi. Geçen yıl ofis partimizde grubu çalan adam o."},
+            {"speaker": "Ben", "text": "Oh, right! I loved them. Is this the flat where they practise?", "translation": "Ha, doğru! Onlara bayılmıştım. Prova yaptıkları daire burası mı?"},
+            {"speaker": "Maya", "text": "No, they use a garage that belongs to their uncle. It's the place where all the neighbours complain!", "translation": "Hayır, amcalarına ait bir garajı kullanıyorlar. Bütün komşuların şikâyet ettiği yer orası!"},
+            {"speaker": "Ben", "text": "Ha! And the cake which is on the table, did Lale make it?", "translation": "Ha! Peki masadaki pastayı Lale mi yaptı?"},
+            {"speaker": "Maya", "text": "No, that's the cake that I brought. So please say it's delicious.", "translation": "Hayır, o benim getirdiğim pasta. O yüzden lütfen çok lezzetli olduğunu söyle."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Lale ne giyiyor?", "choices": ["Yeşil bir elbise", "Kırmızı bir ceket", "Mavi bir gömlek"], "answer": "Yeşil bir elbise", "line": 1, "key": "green dress", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Grup, Lale'nin dairesinde prova yapıyor.", "answer": false, "line": 5, "key": "a garage that belongs to their uncle", "skill": "detail"},
+            {"kind": "who", "quote": "Is this the flat where they practise?", "answer": "Ben"},
+            {"kind": "choice", "prompt": "Masadaki pastayı kim getirdi?", "choices": ["Lale", "Maya", "Lale'nin kardeşi"], "answer": "Maya", "line": 7, "key": "the cake that I brought", "skill": "detail"}
           ]
         },
         {
@@ -2931,6 +3015,34 @@
               "text": "My brother, who lives in Izmir, is a chef.",
               "translation": "İzmir'de yaşayan ağabeyim aşçı."
             }
+          ]
+        },
+        {
+          "id": "s6u4d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Memleket turu",
+          "description": "Duru, arkadaşı Tom'a doğduğu kasabayı gezdiriyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Duru", "gender": "female", "avatar": "👩"},
+            {"name": "Tom", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Duru", "text": "This is my hometown, Tom. That building, which was built in 1890, used to be a school.", "translation": "Burası benim memleketim Tom. 1890'da yapılan o bina eskiden okuldu."},
+            {"speaker": "Tom", "text": "It's beautiful. And who's that man waving at us?", "translation": "Çok güzel. Peki bize el sallayan o adam kim?"},
+            {"speaker": "Duru", "text": "That's Mr Yilmaz, who has run the bakery here for forty years. His bread is famous.", "translation": "O, kırk yıldır buradaki fırını işleten Yılmaz Bey. Ekmeği meşhurdur."},
+            {"speaker": "Tom", "text": "Can we buy some? I skipped breakfast, which was a big mistake.", "translation": "Biraz alabilir miyiz? Kahvaltıyı atladım, ki bu büyük bir hataydı."},
+            {"speaker": "Duru", "text": "Of course. By the way, his daughter, whose cakes are even better, works there on weekends.", "translation": "Tabii. Bu arada, pastaları daha da güzel olan kızı hafta sonları orada çalışıyor."},
+            {"speaker": "Tom", "text": "Today is Saturday, which means we're lucky!", "translation": "Bugün cumartesi, bu da şanslıyız demek!"},
+            {"speaker": "Duru", "text": "Exactly. Then we'll walk to the harbour, where my grandfather used to fish.", "translation": "Aynen. Sonra dedemin eskiden balık tuttuğu limana yürüyeceğiz."},
+            {"speaker": "Tom", "text": "Sounds perfect. I'll carry the cakes, which is the least I can do.", "translation": "Harika. Pastaları ben taşırım, bu yapabileceğim en küçük şey."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Okul binası hangi yıl yapılmış?", "choices": ["1890", "1909", "1980"], "answer": "1890", "line": 0, "key": "1890", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Yılmaz Bey fırını yirmi yıldır işletiyor.", "answer": false, "line": 2, "key": "forty years", "skill": "detail"},
+            {"kind": "who", "quote": "I skipped breakfast, which was a big mistake.", "answer": "Tom"},
+            {"kind": "choice", "prompt": "Duru'nun dedesi limanda ne yapardı?", "choices": ["Balık tutardı", "Tekne yapardı", "Ekmek satardı"], "answer": "Balık tutardı", "line": 6, "key": "used to fish", "skill": "detail"}
           ]
         },
         {
@@ -3690,6 +3802,34 @@
           ]
         },
         {
+          "id": "s6u5d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Balon turu",
+          "description": "Elif, Kapadokya'daki balon turunu Sam'e anlatıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Elif", "gender": "female", "avatar": "👩"},
+            {"name": "Sam", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Sam", "text": "So, how was the balloon ride in Cappadocia?", "translation": "Eee, Kapadokya'daki balon turu nasıldı?"},
+            {"speaker": "Elif", "text": "It was so beautiful that I almost cried. There were such amazing colours in the sky.", "translation": "O kadar güzeldi ki neredeyse ağlıyordum. Gökyüzünde öyle muhteşem renkler vardı ki."},
+            {"speaker": "Sam", "text": "Lucky you! Weren't you scared?", "translation": "Ne şanslısın! Korkmadın mı?"},
+            {"speaker": "Elif", "text": "A little. I was so nervous that I couldn't eat breakfast. But the pilot was such a calm person that I relaxed quickly.", "translation": "Biraz. O kadar gergindim ki kahvaltı yapamadım. Ama pilot öyle sakin biriydi ki çabucak rahatladım."},
+            {"speaker": "Sam", "text": "How early did you have to get up?", "translation": "Ne kadar erken kalkman gerekti?"},
+            {"speaker": "Elif", "text": "At four! It was so cold that I wore two jackets.", "translation": "Dörtte! O kadar soğuktu ki iki mont giydim."},
+            {"speaker": "Sam", "text": "Four in the morning? That's such an early start that I'd stay in bed.", "translation": "Sabahın dördü mü? Bu o kadar erken ki ben yataktan çıkmazdım."},
+            {"speaker": "Elif", "text": "Trust me, it was worth it. I took so many photos that my phone is full now.", "translation": "İnan bana, değdi. O kadar çok fotoğraf çektim ki telefonum artık dolu."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Elif saat kaçta kalkmak zorunda kaldı?", "choices": ["Dörtte", "Beşte", "Altıda"], "answer": "Dörtte", "line": 5, "key": "At four", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Elif tur sabahı güzel bir kahvaltı yaptı.", "answer": false, "line": 3, "key": "couldn't eat breakfast", "skill": "detail"},
+            {"kind": "who", "quote": "That's such an early start that I'd stay in bed.", "answer": "Sam"},
+            {"kind": "choice", "prompt": "Elif'in telefonu neden dolu?", "choices": ["Çok fazla fotoğraf çekti", "Çok video izledi", "Yeni uygulamalar indirdi"], "answer": "Çok fazla fotoğraf çekti", "line": 7, "key": "so many photos", "skill": "detail"}
+          ]
+        },
+        {
           "id": "s6u5t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -4414,6 +4554,34 @@
           ]
         },
         {
+          "id": "s6u6d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Güneşli bir cuma",
+          "description": "Lara ve Kemal güneşli bir cuma günü ofiste otururken dileklerini sıralıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Lara", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Kemal", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Lara", "text": "Look at that sunshine, Kemal. I wish I were on a beach right now.", "translation": "Şu güneşe bak Kemal. Keşke şu an bir plajda olsam."},
+            {"speaker": "Kemal", "text": "Me too. If only we didn't have this report to finish.", "translation": "Ben de. Keşke bitirmemiz gereken bu rapor olmasa."},
+            {"speaker": "Lara", "text": "And I wish my chair was more comfortable. My back hurts.", "translation": "Bir de keşke sandalyem daha rahat olsa. Sırtım ağrıyor."},
+            {"speaker": "Kemal", "text": "I wish I could speak better French. Then I'd move to Paris and open a cafe.", "translation": "Keşke daha iyi Fransızca konuşabilsem. O zaman Paris'e taşınıp bir kafe açardım."},
+            {"speaker": "Lara", "text": "You? A cafe? You can't even make tea, Kemal!", "translation": "Sen mi? Kafe mi? Sen çay bile demleyemiyorsun Kemal!"},
+            {"speaker": "Kemal", "text": "That's true. I wish I knew how to cook, too. My dinner is always toast.", "translation": "Doğru. Keşke yemek yapmayı da bilsem. Akşam yemeğim hep tost."},
+            {"speaker": "Lara", "text": "Well, I wish I had more free time. I'd teach you.", "translation": "Keşke daha çok boş vaktim olsa. Sana öğretirdim."},
+            {"speaker": "Kemal", "text": "Deal. But first, let's finish this report. If only it would write itself!", "translation": "Anlaştık. Ama önce şu raporu bitirelim. Keşke kendi kendini yazsa!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Kemal Paris'te ne açmak istiyor?", "choices": ["Bir kafe", "Bir restoran", "Bir dil okulu"], "answer": "Bir kafe", "line": 3, "key": "open a cafe", "skill": "detail"},
+            {"kind": "choice", "prompt": "Lara'nın nesi ağrıyor?", "choices": ["Başı", "Sırtı", "Dizi"], "answer": "Sırtı", "line": 2, "key": "My back hurts", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Kemal iyi yemek yapmayı biliyor.", "answer": false, "line": 5, "key": "I wish I knew how to cook", "skill": "detail"},
+            {"kind": "who", "quote": "My dinner is always toast.", "answer": "Kemal"}
+          ]
+        },
+        {
           "id": "s6u6t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -5120,6 +5288,34 @@
           ]
         },
         {
+          "id": "s6u7d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Ehliyet sınavı",
+          "description": "Bahar ehliyet sınavından kaldıktan sonra Onur'a pişmanlıklarını anlatıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Bahar", "gender": "female", "avatar": "👩"},
+            {"name": "Onur", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Onur", "text": "So, how did your driving test go?", "translation": "Eee, direksiyon sınavın nasıl geçti?"},
+            {"speaker": "Bahar", "text": "Terrible. I failed. I wish I had practised parking more.", "translation": "Berbat. Kaldım. Keşke park etmeye daha çok çalışsaydım."},
+            {"speaker": "Onur", "text": "Oh no. What happened?", "translation": "Eyvah. Ne oldu?"},
+            {"speaker": "Bahar", "text": "I hit a rubbish bin. I wish I hadn't been so nervous. And I wish the examiner would stop writing notes all the time!", "translation": "Bir çöp kutusuna çarptım. Keşke o kadar gergin olmasaydım. Bir de keşke sınav görevlisi sürekli not almayı bıraksa!"},
+            {"speaker": "Onur", "text": "I know that feeling. I wish I hadn't eaten so much before my test. I felt sick the whole time.", "translation": "O duyguyu bilirim. Keşke kendi sınavımdan önce o kadar çok yemeseydim. Sınav boyunca midem bulandı."},
+            {"speaker": "Bahar", "text": "And my brother keeps laughing at me. I wish he would stop sending me videos of bad drivers.", "translation": "Bir de kardeşim bana gülüp duruyor. Keşke bana kötü sürücülerin videolarını göndermeyi bıraksa."},
+            {"speaker": "Onur", "text": "Ignore him. You can try again next month, can't you?", "translation": "Boş ver onu. Gelecek ay tekrar girebilirsin, değil mi?"},
+            {"speaker": "Bahar", "text": "Yes. This time, I'll practise every day. Will you come with me?", "translation": "Evet. Bu sefer her gün pratik yapacağım. Benimle gelir misin?"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Bahar sınavda neye çarptı?", "choices": ["Bir çöp kutusuna", "Bir arabaya", "Bir ağaca"], "answer": "Bir çöp kutusuna", "line": 3, "key": "rubbish bin", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Onur kendi sınavından önce çok yemek yemişti.", "answer": true, "line": 4, "key": "eaten so much before my test", "skill": "detail"},
+            {"kind": "who", "quote": "I wish I had practised parking more.", "answer": "Bahar"},
+            {"kind": "choice", "prompt": "Bahar sınava ne zaman tekrar girebilir?", "choices": ["Gelecek hafta", "Gelecek ay", "Gelecek yıl"], "answer": "Gelecek ay", "line": 6, "key": "next month", "skill": "detail"}
+          ]
+        },
+        {
           "id": "s6u7t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -5817,6 +6013,34 @@
               "text": "Lovely weather, isn't it?",
               "translation": "Hava çok güzel, değil mi?"
             }
+          ]
+        },
+        {
+          "id": "s6u8d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Düğünde eski tanıdık",
+          "description": "Murat ve Hande bir düğünde karşılaşıyor ve birbirlerini hatırlamaya çalışıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Hande", "gender": "female", "avatar": "👩"},
+            {"name": "Murat", "gender": "male", "avatar": "🧔"}
+          ],
+          "lines": [
+            {"speaker": "Murat", "text": "Excuse me, you're Hande, aren't you? We were at university together.", "translation": "Affedersin, sen Hande'sin, değil mi? Üniversitede beraberdik."},
+            {"speaker": "Hande", "text": "Yes! Murat, isn't it? You studied history, didn't you?", "translation": "Evet! Murat, değil mi? Sen tarih okumuştun, değil mi?"},
+            {"speaker": "Murat", "text": "That's right. You haven't changed at all. You live in Ankara now, don't you?", "translation": "Doğru. Hiç değişmemişsin. Şimdi Ankara'da yaşıyorsun, değil mi?"},
+            {"speaker": "Hande", "text": "No, I moved back to Istanbul last year. This is a lovely wedding, isn't it?", "translation": "Hayır, geçen yıl İstanbul'a geri taşındım. Çok güzel bir düğün, değil mi?"},
+            {"speaker": "Murat", "text": "It really is. The bride is your cousin, isn't she?", "translation": "Gerçekten öyle. Gelin senin kuzenin, değil mi?"},
+            {"speaker": "Hande", "text": "Actually, she's my best friend. I introduced them, so I'm a bit of a hero tonight, aren't I?", "translation": "Aslında en yakın arkadaşım. Onları ben tanıştırdım, yani bu akşam biraz kahramanım, değil mi?"},
+            {"speaker": "Murat", "text": "You definitely are! The music is starting. Let's dance, shall we?", "translation": "Kesinlikle öylesin! Müzik başlıyor. Dans edelim mi?"},
+            {"speaker": "Hande", "text": "Why not? But you won't step on my feet, will you?", "translation": "Neden olmasın? Ama ayaklarıma basmayacaksın, değil mi?"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Murat üniversitede ne okudu?", "choices": ["Tarih", "Hukuk", "Mimarlık"], "answer": "Tarih", "line": 1, "key": "history", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Hande hâlâ Ankara'da yaşıyor.", "answer": false, "line": 3, "key": "moved back to Istanbul", "skill": "detail"},
+            {"kind": "choice", "prompt": "Gelin, Hande'nin nesi?", "choices": ["Kuzeni", "En yakın arkadaşı", "Kız kardeşi"], "answer": "En yakın arkadaşı", "line": 5, "key": "my best friend", "skill": "detail"},
+            {"kind": "who", "quote": "Let's dance, shall we?", "answer": "Murat"}
           ]
         },
         {
@@ -6525,6 +6749,34 @@
           ]
         },
         {
+          "id": "s6u9d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Yeni ev arkadaşı",
+          "description": "Cansu ve kardeşi Yusuf ev arkadaşları ve dostlukları hakkında konuşuyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Cansu", "gender": "female", "avatar": "👩"},
+            {"name": "Yusuf", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Yusuf", "text": "How are you getting on with your new flatmate, Cansu?", "translation": "Yeni ev arkadaşınla nasıl anlaşıyorsun Cansu?"},
+            {"speaker": "Cansu", "text": "Really well, actually. We get on with each other much better than I expected.", "translation": "Aslında çok iyi. Birbirimizle beklediğimden çok daha iyi anlaşıyoruz."},
+            {"speaker": "Yusuf", "text": "That's good. You fell out with the last one, didn't you?", "translation": "Bu iyi. Bir öncekiyle aranız bozulmuştu, değil mi?"},
+            {"speaker": "Cansu", "text": "Yes, we argued about the dishes every day. I couldn't put up with her anymore.", "translation": "Evet, her gün bulaşık yüzünden tartışıyorduk. Ona artık katlanamıyordum."},
+            {"speaker": "Yusuf", "text": "Have you made up since then?", "translation": "O zamandan beri barıştınız mı?"},
+            {"speaker": "Cansu", "text": "Sort of. We bumped into each other last week and had coffee. What about you and Ali?", "translation": "Sayılır. Geçen hafta karşılaştık ve kahve içtik. Peki sen ve Ali?"},
+            {"speaker": "Yusuf", "text": "We're fine. I've always looked up to him. He's like an older brother to me.", "translation": "İyiyiz. Ona hep hayranlık duymuşumdur. Benim için ağabey gibi."},
+            {"speaker": "Cansu", "text": "That's sweet. Just don't let him down. He's helping you move house on Sunday, isn't he?", "translation": "Ne tatlı. Sakın onu hayal kırıklığına uğratma. Pazar günü taşınmana yardım edecek, değil mi?"}
+          ],
+          "questions": [
+            {"kind": "trueFalse", "statement": "Cansu yeni ev arkadaşıyla iyi anlaşıyor.", "answer": true, "line": 1, "key": "We get on with each other much better than I expected", "skill": "detail"},
+            {"kind": "choice", "prompt": "Cansu eski ev arkadaşıyla neden tartışırdı?", "choices": ["Bulaşıklar yüzünden", "Gürültü yüzünden", "Kira yüzünden"], "answer": "Bulaşıklar yüzünden", "line": 3, "key": "the dishes", "skill": "detail"},
+            {"kind": "choice", "prompt": "Ali pazar günü ne yapacak?", "choices": ["Yusuf'un taşınmasına yardım edecek", "Cansu ile kahve içecek", "Tatile gidecek"], "answer": "Yusuf'un taşınmasına yardım edecek", "line": 7, "key": "helping you move house on Sunday", "skill": "detail"},
+            {"kind": "who", "quote": "I've always looked up to him.", "answer": "Yusuf"}
+          ]
+        },
+        {
           "id": "s6u9t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -7228,6 +7480,34 @@
               "text": "Let's figure it out together.",
               "translation": "Hadi bunu birlikte çözelim."
             }
+          ]
+        },
+        {
+          "id": "s6u10d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Kütüphane için fikir",
+          "description": "Pelin ve Volkan okulun yeni kütüphanesi için para toplamanın yolunu arıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Pelin", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Volkan", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Pelin", "text": "Volkan, we need money for the new library. Have you come up with any ideas?", "translation": "Volkan, yeni kütüphane için paraya ihtiyacımız var. Aklına bir fikir geldi mi?"},
+            {"speaker": "Volkan", "text": "I thought about a concert, but the town hall turned us down. They said the hall was busy.", "translation": "Bir konser düşündüm ama belediye bizi geri çevirdi. Salonun dolu olduğunu söylediler."},
+            {"speaker": "Pelin", "text": "That's a shame. We can't put off the project again. The kids have waited since last year.", "translation": "Yazık. Projeyi yine erteleyemeyiz. Çocuklar geçen yıldan beri bekliyor."},
+            {"speaker": "Volkan", "text": "What about a book sale? People could bring in their old books and we could sell them cheaply.", "translation": "Bir kitap satışına ne dersin? İnsanlar eski kitaplarını getirir, biz de onları ucuza satarız."},
+            {"speaker": "Pelin", "text": "I love that! Let's hold it in the school garden next Saturday.", "translation": "Bayıldım! Gelecek cumartesi okul bahçesinde yapalım."},
+            {"speaker": "Volkan", "text": "Great. I'll set up a website tonight and send the link round.", "translation": "Harika. Bu akşam bir web sitesi kurup linki herkese gönderirim."},
+            {"speaker": "Pelin", "text": "Perfect. I'll ask my aunt too. She's got hundreds of old books.", "translation": "Mükemmel. Ben de teyzeme soracağım. Yüzlerce eski kitabı var."},
+            {"speaker": "Volkan", "text": "Then we'd better pick them up before she changes her mind!", "translation": "O zaman fikrini değiştirmeden onları alsak iyi olur!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Belediye neyi reddetti?", "choices": ["Konser fikrini", "Kitap satışını", "Web sitesini"], "answer": "Konser fikrini", "line": 1, "key": "turned us down", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Kitap satışı okul bahçesinde yapılacak.", "answer": true, "line": 4, "key": "school garden", "skill": "detail"},
+            {"kind": "choice", "prompt": "Volkan bu akşam ne yapacak?", "choices": ["Bir web sitesi kuracak", "Kitapları toplayacak", "Belediyeyi arayacak"], "answer": "Bir web sitesi kuracak", "line": 5, "key": "set up a website tonight", "skill": "detail"},
+            {"kind": "who", "quote": "She's got hundreds of old books.", "answer": "Pelin"}
           ]
         },
         {
@@ -7940,6 +8220,34 @@
           ]
         },
         {
+          "id": "s6u11d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Hangi daire?",
+          "description": "Sevda iki daire arasında kararsız kalıyor ve ağabeyi Alp'le artılarını eksilerini tartıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Sevda", "gender": "female", "avatar": "👩"},
+            {"name": "Alp", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Alp", "text": "So, which flat did you prefer, Sevda? The one in Kadikoy or the one in Besiktas?", "translation": "Eee, hangi daireyi daha çok beğendin Sevda? Kadıköy'dekini mi, Beşiktaş'takini mi?"},
+            {"speaker": "Sevda", "text": "Although the Kadikoy flat is smaller, I really liked it. It has a lovely balcony.", "translation": "Kadıköy'deki daha küçük olsa da çok beğendim. Çok güzel bir balkonu var."},
+            {"speaker": "Alp", "text": "But it's on the fifth floor, and there's no lift. Despite the balcony, I wouldn't carry shopping up there every day.", "translation": "Ama beşinci katta ve asansör yok. Balkonuna rağmen ben her gün oraya alışveriş taşımazdım."},
+            {"speaker": "Sevda", "text": "True. The Besiktas one is bigger, whereas the other one is cheaper.", "translation": "Doğru. Beşiktaş'taki daha büyük, diğeri ise daha ucuz."},
+            {"speaker": "Alp", "text": "How much cheaper?", "translation": "Ne kadar daha ucuz?"},
+            {"speaker": "Sevda", "text": "About two thousand lira a month. However, the Besiktas flat is closer to my office.", "translation": "Ayda yaklaşık iki bin lira. Ancak Beşiktaş'taki daire ofisime daha yakın."},
+            {"speaker": "Alp", "text": "Even though it's more expensive, you'd save time and money on transport.", "translation": "Daha pahalı olsa da ulaşımdan hem zaman hem para kazanırsın."},
+            {"speaker": "Sevda", "text": "That makes sense. Still, I keep thinking about that balcony. I'll sleep on it.", "translation": "Mantıklı. Yine de o balkonu düşünüp duruyorum. Bir gece düşüneyim."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Kadıköy'deki daire kaçıncı katta?", "choices": ["Üçüncü", "Dördüncü", "Beşinci"], "answer": "Beşinci", "line": 2, "key": "fifth floor", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Beşiktaş'taki daire Sevda'nın ofisine daha yakın.", "answer": true, "line": 5, "key": "closer to my office", "skill": "detail"},
+            {"kind": "choice", "prompt": "İki daire arasındaki kira farkı ne kadar?", "choices": ["Ayda yaklaşık bin lira", "Ayda yaklaşık iki bin lira", "Ayda yaklaşık beş bin lira"], "answer": "Ayda yaklaşık iki bin lira", "line": 5, "key": "two thousand lira a month", "skill": "detail"},
+            {"kind": "who", "quote": "I'll sleep on it.", "answer": "Sevda"}
+          ]
+        },
+        {
           "id": "s6u11t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -8649,6 +8957,34 @@
               "text": "Overall, it's worth reading.",
               "translation": "Genel olarak okumaya değer."
             }
+          ]
+        },
+        {
+          "id": "s6u12d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Sinema çıkışı",
+          "description": "Zehra ve Nick sinemadan çıkarken izledikleri film hakkında tartışıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Zehra", "gender": "female", "avatar": "👩"},
+            {"name": "Nick", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Nick", "text": "So, what did you think of the film?", "translation": "Eee, filmi nasıl buldun?"},
+            {"speaker": "Zehra", "text": "In my opinion, it was too long. The first hour was really slow.", "translation": "Bence çok uzundu. İlk bir saat gerçekten yavaştı."},
+            {"speaker": "Nick", "text": "I see your point, but I think the slow start made the ending more powerful.", "translation": "Ne demek istediğini anlıyorum ama bence yavaş başlangıç sonu daha etkileyici yaptı."},
+            {"speaker": "Zehra", "text": "Maybe. I'll admit the ending was great. I didn't expect the sister to be the thief.", "translation": "Belki. Sonunun harika olduğunu kabul ediyorum. Hırsızın kız kardeş olacağını hiç beklemiyordum."},
+            {"speaker": "Nick", "text": "Exactly! And the actor who played the detective was brilliant, wasn't he?", "translation": "Aynen! Bir de dedektifi oynayan aktör harikaydı, değil mi?"},
+            {"speaker": "Zehra", "text": "I totally agree. But honestly, I preferred the book. It explained the characters much better.", "translation": "Kesinlikle katılıyorum. Ama açıkçası kitabı daha çok sevdim. Karakterleri çok daha iyi anlatıyordu."},
+            {"speaker": "Nick", "text": "That's true for most films, isn't it? Books always win.", "translation": "Bu çoğu film için geçerli, değil mi? Kitaplar hep kazanır."},
+            {"speaker": "Zehra", "text": "Fair enough. Next time, you choose the snacks and I'll choose the film.", "translation": "Haklısın. Bir dahaki sefere sen atıştırmalıkları seç, filmi ben seçeyim."}
+          ],
+          "questions": [
+            {"kind": "trueFalse", "statement": "Zehra filmi çok kısa buldu.", "answer": false, "line": 1, "key": "too long", "skill": "detail"},
+            {"kind": "choice", "prompt": "Filmde hırsız kim çıktı?", "choices": ["Dedektif", "Kız kardeş", "Baba"], "answer": "Kız kardeş", "line": 3, "key": "the sister to be the thief", "skill": "detail"},
+            {"kind": "who", "quote": "I see your point", "answer": "Nick"},
+            {"kind": "choice", "prompt": "Zehra hangisini daha çok beğendi?", "choices": ["Kitabı", "Filmi", "İkisini eşit"], "answer": "Kitabı", "line": 5, "key": "I preferred the book", "skill": "detail"}
           ]
         },
         {

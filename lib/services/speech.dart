@@ -71,7 +71,20 @@ class SpeechService {
 
   /// Reads [text] aloud. [rate] scales the normal speed (0.75 for the
   /// slower listening of stories and shadowing).
-  Future<void> say(String text, {String lang = 'en', bool slow = false, double rate = 1}) async {
+  Future<void> say(String text, {String lang = 'en', bool slow = false, double rate = 1}) =>
+      _speak(text, lang: lang, slow: slow, rate: rate);
+
+  /// [pitch] only changes the phone's engine (recordings keep their voice);
+  /// with [wait] the future completes when the sentence has been heard or
+  /// was cut off by another one.
+  Future<void> _speak(
+    String text, {
+    String lang = 'en',
+    bool slow = false,
+    double rate = 1,
+    double pitch = 1,
+    bool wait = false,
+  }) async {
     final id = ++_request;
     final locale = lang == 'tr' ? 'tr-TR' : englishLocale;
     final speed = (slow ? 0.22 : 0.45) * rate;
@@ -85,27 +98,39 @@ class SpeechService {
           final p = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
           await p.setSource(AssetSource(asset));
           await p.setPlaybackRate(slow ? 0.7 : rate.clamp(0.5, 1.5));
+          final heard = wait ? _ended(p) : null;
           await p.resume();
+          await heard;
           return;
         }
       }
       if (!await _hasVoice(locale)) return;
       if (_android) {
-        final path = await _synthesize(text, locale, speed);
+        final path = await _synthesize(text, locale, speed, pitch);
         if (id != _request) return; // a newer sentence was asked for meanwhile
         if (path != null) {
           final p = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
+          final heard = wait ? _ended(p) : null;
           await p.play(DeviceFileSource(path));
+          await heard;
           return;
         }
       }
       await _tts.setLanguage(locale);
       await _tts.setSpeechRate(speed);
+      await _tts.setPitch(pitch);
+      await _tts.awaitSpeakCompletion(wait);
       await _tts.speak(text);
     } catch (e) {
       debugPrint('TTS failed: $e');
     }
   }
+
+  /// Completes when [p] finishes or is stopped (at most a minute later).
+  Future<void> _ended(AudioPlayer p) => p.onPlayerStateChanged
+      .firstWhere((s) => s == PlayerState.completed || s == PlayerState.stopped)
+      .timeout(const Duration(minutes: 1), onTimeout: () => PlayerState.stopped)
+      .then((_) {}, onError: (Object _) {});
 
   Future<void> _stopVoice() async {
     try {
@@ -146,15 +171,19 @@ class SpeechService {
 
   /// Writes the sentence to a cached WAV file and returns its path, or null
   /// when the engine cannot write files.
-  Future<String?> _synthesize(String text, String locale, double speed) async {
+  Future<String?> _synthesize(String text, String locale, double speed, double pitch) async {
     try {
       final dir = _cacheDir ??= Directory('${(await getTemporaryDirectory()).path}/tts')
         ..createSync(recursive: true);
-      final key = base64Url.encode(utf8.encode('$locale|${speed.toStringAsFixed(3)}|$text')).hashCode;
+      // The pitch is part of the key only when it differs from the default,
+      // so files cached by earlier versions are still found.
+      final tone = pitch == 1 ? '' : '|p${pitch.toStringAsFixed(2)}';
+      final key = base64Url.encode(utf8.encode('$locale|${speed.toStringAsFixed(3)}$tone|$text')).hashCode;
       final file = File('${dir.path}/${key.toUnsigned(32).toRadixString(16)}_${text.length}.wav');
       if (file.existsSync() && file.lengthSync() > 1000) return file.path;
       await _tts.setLanguage(locale);
       await _tts.setSpeechRate(speed);
+      await _tts.setPitch(pitch);
       await _tts.awaitSynthCompletion(true);
       final result = await _tts.synthesizeToFile(text, file.path, true);
       if (result != 1) return null;
@@ -257,3 +286,43 @@ class SpeechService {
 }
 
 final speechProvider = Provider<SpeechService>((ref) => SpeechService());
+
+/// Plays the lines of a listening dialogue one after another: each call
+/// completes when the line has been heard.
+abstract interface class LinePlayer {
+  Future<void> sayLine(String text, {double rate = 1, double pitch = 1});
+  Future<void> stopLine();
+}
+
+/// Engine pitch of a dialogue speaker, so two voices differ even without
+/// recordings.
+double pitchFor({required bool female}) => female ? 1.18 : 0.82;
+
+/// Plays lines with the app's speech service; a stand-in speech service
+/// (tests) reads them with [SpeechService.say].
+final linePlayerProvider = Provider<LinePlayer>((ref) {
+  final speech = ref.watch(speechProvider);
+  return speech.runtimeType == SpeechService ? _SpeechLines(speech) : _SayLines(speech);
+});
+
+class _SpeechLines implements LinePlayer {
+  _SpeechLines(this._speech);
+  final SpeechService _speech;
+  @override
+  Future<void> sayLine(String text, {double rate = 1, double pitch = 1}) =>
+      _speech._speak(text, rate: rate, pitch: pitch, wait: true);
+  @override
+  Future<void> stopLine() async {
+    _speech._request++;
+    await _speech._stopVoice();
+  }
+}
+
+class _SayLines implements LinePlayer {
+  _SayLines(this._speech);
+  final SpeechService _speech;
+  @override
+  Future<void> sayLine(String text, {double rate = 1, double pitch = 1}) => _speech.say(text, rate: rate);
+  @override
+  Future<void> stopLine() async {}
+}
