@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 
 import '../theme.dart';
 
+/// Hearts are a warm red (the app's "wrong" colour is a calm blue).
+const heartColor = Color(0xFFE5484D);
+
 /// The hearts of a skip exam ("Atlama sınavı"). Only skip exams have
 /// hearts; normal lessons never do. A heart that is lost pops off with a
 /// small wobble and turns into an outline.
@@ -66,7 +69,7 @@ class _HeartState extends State<_Heart> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final base = Icon(
       widget.full ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-      color: widget.full ? Brand.heart : Brand.muted,
+      color: widget.full ? heartColor : Brand.muted,
       size: widget.size,
     );
     return AnimatedBuilder(
@@ -87,7 +90,7 @@ class _HeartState extends State<_Heart> with SingleTickerProviderStateMixin {
                 opacity: (1 - t).clamp(0.0, 1.0),
                 child: Transform.scale(
                   scale: 1 + 0.6 * t,
-                  child: Icon(Icons.favorite_rounded, color: Brand.heart, size: widget.size),
+                  child: Icon(Icons.favorite_rounded, color: heartColor, size: widget.size),
                 ),
               ),
             ),
