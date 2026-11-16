@@ -69,7 +69,7 @@ class _OrgDashboardState extends ConsumerState<OrgDashboard> {
     final wide = MediaQuery.sizeOf(context).width >= 1000;
     return Scaffold(
       appBar: AppBar(
-        title: Text(r == null ? 'Dilbaz Kurumsal' : '${r.org.name} · ${r.isAdmin ? 'Yönetici' : 'Öğretmen'}'),
+        title: Text(r == null ? 'Dilmaç Kurumsal' : '${r.org.name} · ${r.isAdmin ? 'Yönetici' : 'Öğretmen'}'),
         actions: [
           IconButton(
             tooltip: 'Yenile',
@@ -225,7 +225,7 @@ class OverviewSection extends ConsumerWidget {
         ),
         const SizedBox(height: 24),
         Text(
-          'Gizlilik: Dilbaz yalnızca ders, XP, seri ve ödev durumunu paylaşır. Günlükler, kişisel notlar, '
+          'Gizlilik: Dilmaç yalnızca ders, XP, seri ve ödev durumunu paylaşır. Günlükler, kişisel notlar, '
           'kelime listeleri ve yapay zekâ sohbetleri kurumla paylaşılmaz.',
           style: TextStyle(color: Brand.muted, fontSize: 12),
         ),

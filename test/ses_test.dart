@@ -116,7 +116,7 @@ void main() {
   });
 
   group('reminder notification sound', () {
-    test('Dilbaz has its own reminder sound, kept in release builds', () {
+    test('Dilmaç has its own reminder sound, kept in release builds', () {
       final name = NotificationService.reminderSound;
       expect(name, matches(RegExp(r'^[a-z0-9_]+$')), reason: 'Android raw resource names');
       final f = File('android/app/src/main/res/raw/$name.wav');

@@ -421,7 +421,7 @@ void main() {
     });
 
     testWidgets('full-screen flows rise from the bottom unless motion is reduced', (tester) async {
-      const builder = DilbazPageTransitionsBuilder();
+      const builder = DilmacPageTransitionsBuilder();
       final route = MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => const SizedBox());
       late BuildContext ctx;
       await tester.pumpWidget(

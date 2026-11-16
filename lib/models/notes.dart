@@ -49,7 +49,7 @@ class NoteExample {
   factory NoteExample.fromJson(Map<String, dynamic> j) => NoteExample(j['en'] as String, j['tr'] as String);
 }
 
-const addedSource = 'Dilbaz ekledi';
+const addedSource = 'Dilmaç ekledi';
 
 /// One grammar topic from the user's notebooks.
 class GrammarTopic {

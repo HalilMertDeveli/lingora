@@ -1,6 +1,6 @@
 # LGS İngilizce çalışma yolu — araştırma ve plan
 
-Bu belge, Dilbaz'daki LGS yolunun (`assets/courses/exam_lgs*`) neye göre yazıldığını anlatır. İçerik bu plana göre üretilir ve `test/course_content_test.dart` planın ölçülebilir kurallarını denetler.
+Bu belge, Dilmaç'taki LGS yolunun (`assets/courses/exam_lgs*`) neye göre yazıldığını anlatır. İçerik bu plana göre üretilir ve `test/course_content_test.dart` planın ölçülebilir kurallarını denetler.
 
 Tüm sorular **özgündür**. Geçmiş yılların soruları yalnızca **soru tipi ve konu dağılımı** için incelendi; hiçbir soru, metin ya da görsel kopyalanmadı.
 

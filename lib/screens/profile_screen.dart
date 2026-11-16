@@ -80,7 +80,7 @@ class ProfileScreen extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 12),
-        Text('Dilbaz Premium', style: t.titleLarge),
+        Text('Dilmaç Premium', style: t.titleLarge),
         const SizedBox(height: 12),
         TapCard(
           key: const ValueKey('profile-premium'),

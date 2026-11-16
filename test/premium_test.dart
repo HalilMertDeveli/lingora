@@ -299,7 +299,7 @@ void main() {
       await c.read(premiumControllerProvider.notifier).buy(PremiumPlan.monthly);
       await pumpEventQueue();
       expect(c.read(premiumProvider), isFalse);
-      expect(c.read(premiumControllerProvider).error, contains('başka bir Dilbaz hesabına'));
+      expect(c.read(premiumControllerProvider).error, contains('başka bir Dilmaç hesabına'));
     });
 
     test('server unreachable or not ready: the store is trusted for now', () async {

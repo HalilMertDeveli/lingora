@@ -11,7 +11,7 @@ import 'nav_target.dart';
 
 /// Top bar of every tab root: the track button on the left (opens the track
 /// drawer), streak and XP on the right (each opens its own panel). There are
-/// no hearts: mistakes are never punished in Dilbaz.
+/// no hearts: mistakes are never punished in Dilmaç.
 class LingoraTopBar extends StatelessWidget implements PreferredSizeWidget {
   const LingoraTopBar({super.key});
 

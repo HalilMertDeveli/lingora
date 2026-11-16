@@ -442,11 +442,11 @@ ThemeData buildTheme({AppMode mode = AppMode.adult, Brightness brightness = Brig
     listTileTheme: ListTileThemeData(iconColor: p.muted, textColor: p.ink),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
-        TargetPlatform.android: DilbazPageTransitionsBuilder(),
-        TargetPlatform.iOS: DilbazPageTransitionsBuilder(fallback: CupertinoPageTransitionsBuilder()),
-        TargetPlatform.windows: DilbazPageTransitionsBuilder(),
-        TargetPlatform.macOS: DilbazPageTransitionsBuilder(fallback: CupertinoPageTransitionsBuilder()),
-        TargetPlatform.linux: DilbazPageTransitionsBuilder(),
+        TargetPlatform.android: DilmacPageTransitionsBuilder(),
+        TargetPlatform.iOS: DilmacPageTransitionsBuilder(fallback: CupertinoPageTransitionsBuilder()),
+        TargetPlatform.windows: DilmacPageTransitionsBuilder(),
+        TargetPlatform.macOS: DilmacPageTransitionsBuilder(fallback: CupertinoPageTransitionsBuilder()),
+        TargetPlatform.linux: DilmacPageTransitionsBuilder(),
       },
     ),
     progressIndicatorTheme: ProgressIndicatorThemeData(color: p.primary, linearTrackColor: p.line),
@@ -495,7 +495,7 @@ ThemeData buildTheme({AppMode mode = AppMode.adult, Brightness brightness = Brig
   );
 }
 
-/// Dilbaz's press effect, "jelibon": the child squashes softly while held
+/// Dilmaç's press effect, "jelibon": the child squashes softly while held
 /// and springs back with a small wobble when released. Nothing moves when
 /// animations are reduced. [amount] scales the squash (cards use less).
 class JellyPress extends StatefulWidget {

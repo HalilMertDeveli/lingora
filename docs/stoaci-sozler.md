@@ -12,7 +12,7 @@ Ders ve pratik bitince sonuç ekranında gösterilen kısa sözler. Ders sıras�
 
 - Üç çeviri de kamu malıdır. Modern ve telifli çevirilerden (Hays, Robin Hard vb.) ve internetteki "motivasyon sözü" derlemelerinden hiçbir şey alınmadı.
 - İngilizce metinler kısaltıldı. A2–B1 düzeyine uysun diye *thou/thy/thee* gibi eski zamirler *you/your* yapıldı. Birkaç cümlede eski sözcükler sadeleştirildi; örneğin Marcus 4.49'da *promontory* yerine *rock* kullanıldı. Anlam korundu.
-- Türkçe çeviriler Dilbaz için yazıldı. Hiçbir Türkçe yayından alınmadı.
+- Türkçe çeviriler Dilmaç için yazıldı. Hiçbir Türkçe yayından alınmadı.
 - Her sözün kaynağı eser ve bölüm numarasıyla yazılır, örneğin "Marcus Aurelius, Kendime Düşünceler 5.1".
 
 ## Alanlar

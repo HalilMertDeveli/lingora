@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Dilbaz</string>
+	<string>Dilmaç</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Profil fotoğrafı çekmek için kamera kullanılır.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -23,7 +23,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Dilbaz</string>
+	<string>Dilmaç</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

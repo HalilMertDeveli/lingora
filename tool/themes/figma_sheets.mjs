@@ -8,7 +8,7 @@ const font = 'font-family="Inter, Arial, sans-serif"';
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 // Style guide.
 let g = `<rect width="1000" height="360" rx="24" fill="#FFF8EE"/>`;
-g += `<text x="32" y="56" ${font} font-size="32" font-weight="700" fill="${PALETTE.ink}">Dilbaz konu temaları · stil rehberi</text>`;
+g += `<text x="32" y="56" ${font} font-size="32" font-weight="700" fill="${PALETTE.ink}">Dilmaç konu temaları · stil rehberi</text>`;
 g += `<text x="32" y="92" ${font} font-size="16" fill="${PALETTE.ink}">64×64 ızgara · tek mürekkep çizgisi 2.5 px, yuvarlak uçlar · düz dolgu, gradyan yok · tek beyaz parlama · zeminde %12 gölge</text>`;
 Object.entries(PALETTE).forEach(([n, c], i) => {
   const x = 32 + (i % 9) * 106, y = 120 + Math.floor(i / 9) * 104;

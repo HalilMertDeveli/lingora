@@ -38,7 +38,7 @@ Bayraklar 3:2 ortadan kırpılıp 120×80 yapıldı.
 **Kullanılmayanlar ve nedenleri:**
 - `bayraklar/14`: İspanya bayrağı, `21` ile aynı; daha yüksek çözünürlüklü `21` kullanıldı.
 - `ikonlar/22`: Google "G", `yuvarlak-gorseller/09` ile aynı logo; giriş butonunda tek logo yeterli.
-- `ikonlar/24` (YouTube): Dilbaz'ın YouTube kanalı yok; boş bir bağlantı yanıltıcı olur.
+- `ikonlar/24` (YouTube): Dilmaç'ın YouTube kanalı yok; boş bir bağlantı yanıltıcı olur.
 - `ikonlar/25` (App Store): uygulama şimdilik yalnızca Google Play'de ve abonelik Google Play üzerinden.
 - `yuvarlak-gorseller/10–12` (X, GitHub, Apple): bu girişler desteklenmiyor; yalnızca Google var.
 - `maskot/26`, `27`: giriş/şifre ekranı tasarım referansı; görsel olarak değil, düzen olarak kullanıldı (giriş ekranı bu düzende, renkler yeni paletten).

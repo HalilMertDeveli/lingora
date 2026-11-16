@@ -1,4 +1,4 @@
-# Dilbaz Gizlilik Politikası ve KVKK Aydınlatma Metni (TASLAK)
+# Dilmaç Gizlilik Politikası ve KVKK Aydınlatma Metni (TASLAK)
 
 > **Taslak.** Yayından önce köşeli parantezli alanları doldur ve bir hukukçuya
 > kontrol ettir. Metin uygulamanın bugünkü davranışına göre yazıldı
@@ -11,9 +11,9 @@ Son güncelleme: [GG.AA.YYYY]
 
 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında veri sorumlusu:
 **[Ad Soyad / Şirket unvanı]**, [adres], e-posta: **[destek@alanadi]**
-("Dilbaz", "biz").
+("Dilmaç", "biz").
 
-Dilbaz, Türkçe konuşanlara İngilizce öğreten bir mobil uygulamadır. Bu metin
+Dilmaç, Türkçe konuşanlara İngilizce öğreten bir mobil uygulamadır. Bu metin
 uygulamayı kullanırken hangi verilerin işlendiğini, neden işlendiğini ve
 haklarını açıklar.
 
@@ -38,7 +38,7 @@ Bu veriler telefonunun uygulama alanında saklanır; uygulamayı silince silinir
 
 Konuşma ve telaffuz alıştırmalarında mikrofon yalnızca sen düğmeye bastığında
 açılır. Ses, telefonundaki konuşma tanıma hizmetine (Android'de genellikle
-Google) iletilir ve metne çevrilir; Dilbaz ses kaydı saklamaz ve sunucularına
+Google) iletilir ve metne çevrilir; Dilmaç ses kaydı saklamaz ve sunucularına
 göndermez. Sesli okuma (metinden sese) cihazda yapılır. İzni Android
 ayarlarından istediğin zaman geri alabilirsin.
 
@@ -61,7 +61,7 @@ kullanmak zorunda değilsin.
 
 Canlı sohbette yazdığın mesajlar ve seçtiğin senaryo, cevap üretmek için
 sunucumuz (Google Cloud Functions, Avrupa bölgesi) üzerinden Anthropic PBC'nin
-Claude yapay zekâ hizmetine gönderilir. Mesajlar Dilbaz tarafından
+Claude yapay zekâ hizmetine gönderilir. Mesajlar Dilmaç tarafından
 saklanmaz; yalnızca günlük kullanım sayısı (kota için) tutulur. Anthropic,
 API üzerinden gelen verileri kendi politikası gereği model eğitiminde
 kullanmaz ve sınırlı bir süre güvenlik amacıyla saklayabilir. Sohbete kişisel
@@ -136,7 +136,7 @@ standart sözleşmeler ve/veya aktarım anındaki açık rızan ile yapılır.
 
 ## 7. Çocuklar
 
-Dilbaz 13 yaş ve üzeri kullanıcılar içindir. 13 yaş altındaki çocukların
+Dilmaç 13 yaş ve üzeri kullanıcılar içindir. 13 yaş altındaki çocukların
 uygulamayı bir ebeveyn gözetiminde, hesap bağlamadan kullanmasını öneririz.
 Ebeveynsen ve çocuğuna ait veri işlendiğini düşünüyorsan bize yaz; sileriz.
 

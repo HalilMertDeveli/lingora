@@ -77,7 +77,7 @@ class LingoraApp extends ConsumerWidget {
     SpeechService.englishLocale = settings.accent.locale;
     ref.listen(examPackControllerProvider, (_, _) {});
     return MaterialApp(
-      title: 'Dilbaz',
+      title: 'Dilmaç',
       debugShowCheckedModeBanner: false,
       theme: buildTheme(mode: settings.mode, brightness: brightness),
       builder: (context, child) => PaletteScope(
