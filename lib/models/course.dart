@@ -165,8 +165,148 @@ class Exercise {
 }
 
 /// Steps of a path. [mock] is a section's timed practice exam (exam paths):
-/// it opens the exam engine with the section's questions.
-enum NodeType { lesson, chest, story, test, mock }
+/// it opens the exam engine with the section's questions. [listening] is a
+/// longer dialogue heard with its text hidden, then questions, then the text.
+enum NodeType { lesson, chest, story, test, mock, listening }
+
+/// A speaker of a listening piece. [female] picks the recorded voice
+/// (Matilda or Eric) and, on the phone's engine, a higher or lower pitch.
+class ListeningSpeaker {
+  const ListeningSpeaker({required this.name, required this.female, required this.avatar});
+  final String name;
+  final bool female;
+  final String avatar;
+
+  factory ListeningSpeaker.fromJson(Map<String, dynamic> j) => ListeningSpeaker(
+    name: j['name'] as String,
+    female: switch (j['gender']) {
+      'female' => true,
+      'male' => false,
+      final g => throw FormatException('gender: $g'),
+    },
+    avatar: (j['avatar'] as String?) ?? '🙂',
+  );
+}
+
+/// One line of a listening dialogue.
+class ListeningLine {
+  const ListeningLine({required this.speaker, required this.text, this.translation});
+  final String speaker;
+  final String text;
+  final String? translation;
+
+  factory ListeningLine.fromJson(Map<String, dynamic> j) => ListeningLine(
+    speaker: j['speaker'] as String,
+    text: j['text'] as String,
+    translation: j['translation'] as String?,
+  );
+}
+
+/// Multiple choice, true/false, or "who said it?".
+enum ListeningQuestionKind { choice, trueFalse, who }
+
+/// A question after a listening piece. Choices and the answer are strings for
+/// every kind: true/false shows "Doğru" / "Yanlış", "who" the speakers' names.
+/// [line] and [key] point at the words of the dialogue the answer rests on
+/// (checked by the content tests); [skill] is detail, inference or attitude.
+class ListeningQuestion {
+  const ListeningQuestion({
+    required this.kind,
+    required this.prompt,
+    required this.choices,
+    required this.answer,
+    this.quote,
+    this.line,
+    this.key,
+    this.skill = 'detail',
+  });
+
+  static const trueLabel = 'Doğru';
+  static const falseLabel = 'Yanlış';
+
+  final ListeningQuestionKind kind;
+  final String prompt;
+  final List<String> choices;
+  final String answer;
+
+  /// The words asked about in a "who" question.
+  final String? quote;
+  final int? line;
+  final String? key;
+  final String skill;
+
+  factory ListeningQuestion.fromJson(Map<String, dynamic> j, List<ListeningSpeaker> speakers) {
+    final kind = ListeningQuestionKind.values.byName(j['kind'] as String);
+    final skill = (j['skill'] as String?) ?? 'detail';
+    return switch (kind) {
+      ListeningQuestionKind.choice => ListeningQuestion(
+        kind: kind,
+        prompt: j['prompt'] as String,
+        choices: (j['choices'] as List).cast<String>(),
+        answer: j['answer'] as String,
+        line: j['line'] as int?,
+        key: j['key'] as String?,
+        skill: skill,
+      ),
+      ListeningQuestionKind.trueFalse => ListeningQuestion(
+        kind: kind,
+        prompt: j['statement'] as String,
+        choices: const [trueLabel, falseLabel],
+        answer: j['answer'] as bool ? trueLabel : falseLabel,
+        line: j['line'] as int?,
+        key: j['key'] as String?,
+        skill: skill,
+      ),
+      ListeningQuestionKind.who => ListeningQuestion(
+        kind: kind,
+        prompt: 'Bunu kim söyledi?',
+        quote: j['quote'] as String,
+        choices: [for (final s in speakers) s.name],
+        answer: j['answer'] as String,
+        skill: skill,
+      ),
+    };
+  }
+}
+
+/// The dialogue and questions of a [NodeType.listening] node.
+class ListeningPiece {
+  const ListeningPiece({
+    required this.cefr,
+    required this.speakers,
+    required this.lines,
+    required this.questions,
+    this.idioms = const [],
+  });
+
+  final String cefr;
+  final List<ListeningSpeaker> speakers;
+  final List<ListeningLine> lines;
+  final List<ListeningQuestion> questions;
+
+  /// Idioms and fixed expressions used in the lines (B2–C1).
+  final List<String> idioms;
+
+  ListeningSpeaker? speaker(String name) => speakers.where((s) => s.name == name).firstOrNull;
+
+  /// Reads the listening fields of a node; null when it has no lines (a
+  /// course outline leaves them out).
+  static ListeningPiece? fromNode(Map<String, dynamic> j) {
+    if (j['lines'] == null) return null;
+    final speakers = ((j['speakers'] as List?) ?? const [])
+        .map((s) => ListeningSpeaker.fromJson(s as Map<String, dynamic>))
+        .toList();
+    return ListeningPiece(
+      cefr: (j['cefr'] as String?) ?? '',
+      speakers: speakers,
+      lines: (j['lines'] as List).map((l) => ListeningLine.fromJson(l as Map<String, dynamic>)).toList(),
+      questions: ((j['questions'] as List?) ?? const [])
+          .map((q) => ListeningQuestion.fromJson(q as Map<String, dynamic>, speakers))
+          .toList(),
+      idioms: ((j['idioms'] as List?) ?? const []).cast<String>(),
+    );
+  }
+}
 
 /// One step of a story node: a line of dialogue or a comprehension question.
 class StoryStep {
@@ -237,6 +377,8 @@ class PathNode {
     this.vocab = false,
     this.reading,
     this.listenFirst = false,
+    this.listening,
+    this.cefr,
   });
 
   final String id;
@@ -271,6 +413,13 @@ class PathNode {
   /// story ends, then "Metni gör" shows them.
   final bool listenFirst;
 
+  /// Dialogue and questions of a listening node (null in a course outline).
+  final ListeningPiece? listening;
+
+  /// Level of a listening node ("A1"…"C1"), kept in the course outline so the
+  /// path can tell its length.
+  final String? cefr;
+
   factory PathNode.fromJson(Map<String, dynamic> j) => PathNode(
     id: j['id'] as String,
     type: NodeType.values.byName(j['type'] as String),
@@ -291,6 +440,8 @@ class PathNode {
     vocab: (j['vocab'] as bool?) ?? false,
     reading: j['reading'] == null ? null : ReadingMeta.fromJson(j['reading'] as Map<String, dynamic>),
     listenFirst: (j['listenFirst'] as bool?) ?? false,
+    listening: j['type'] == 'listening' ? ListeningPiece.fromNode(j) : null,
+    cefr: j['cefr'] as String?,
   );
 }
 

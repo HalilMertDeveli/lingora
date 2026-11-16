@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../data/listening.dart';
 import '../data/topic_themes.dart';
 import '../models/course.dart';
 import '../theme.dart';
@@ -46,6 +47,7 @@ IconData nodeIcon(NodeType type) => switch (type) {
   NodeType.test => Icons.local_florist_rounded,
   NodeType.lesson => Icons.local_cafe_rounded,
   NodeType.mock => Icons.timer_rounded,
+  NodeType.listening => Icons.headphones_rounded,
 };
 
 /// The host's invite over the current node, in the unit's topic.
@@ -57,6 +59,7 @@ String nodeInvite(NodeType type, [TopicTheme? theme]) {
     NodeType.test => t.testInvite,
     NodeType.lesson => t.lessonInvite,
     NodeType.mock => 'Deneme zamanı, hazırsın!',
+    NodeType.listening => 'Kulaklar bende, dinleme zamanı!',
   };
 }
 
@@ -84,6 +87,7 @@ String nodeCta(NodeType type) {
     NodeType.test => 'SINAV',
     NodeType.lesson => 'BAŞLA',
     NodeType.mock => 'DENEME',
+    NodeType.listening => 'DİNLE',
   };
   return Brand.isKid ? s : sentenceCase(s);
 }
@@ -252,7 +256,11 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
             ),
           // Own layer: the breathing node repaints alone, not the whole path.
           Positioned.fill(child: RepaintBoundary(child: art)),
-          if (!themed && _active && (widget.type == NodeType.lesson || widget.type == NodeType.story))
+          if (!themed &&
+              _active &&
+              (widget.type == NodeType.lesson ||
+                  widget.type == NodeType.story ||
+                  widget.type == NodeType.listening))
             const Positioned(left: 13, top: -30, child: RepaintBoundary(child: Steam(width: 40, height: 32))),
           if (done && widget.type != NodeType.chest)
             Positioned(right: -2, top: 2, child: badge(Icons.check_rounded, p.success, onColor(p.success))),
@@ -267,6 +275,15 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
               left: -2,
               top: 2,
               child: badge(Icons.auto_stories_rounded, widget.color, onColor(widget.color)),
+            ),
+          if (widget.type == NodeType.listening)
+            Positioned(
+              key: const Key('listening-badge'),
+              left: -2,
+              top: 2,
+              child: locked
+                  ? badge(Icons.headphones_rounded, p.isDark ? p.surface : p.line, p.muted)
+                  : badge(Icons.headphones_rounded, widget.color, onColor(widget.color)),
             ),
           if (widget.type == NodeType.mock && !locked)
             Positioned(
@@ -793,6 +810,7 @@ class LessonCard extends StatelessWidget {
       NodeType.story => node.listenFirst ? 'Dinleme hikâyesi' : 'Hikâye',
       NodeType.test => t.tea ? 'Ünite sınavı · lale rozeti' : 'Ünite sınavı · ${t.badgeName} rozeti',
       NodeType.chest => t.tea ? 'Çaydanlık · şeker ödülü' : '${t.rewardName} · sürpriz ödül',
+      NodeType.listening => 'Dinleme parçası · ${listeningLength(node)}',
       NodeType.mock =>
         'Bölüm denemesi · ${node.size > 0 ? '${node.size} soru' : 'karışık sorular'}'
             '${node.minutes > 0 ? ' · ${node.minutes} dk' : ''}',
@@ -806,6 +824,7 @@ class LessonCard extends StatelessWidget {
       // A listen-first story is heard before its text is shown.
       (NodeState.active, NodeType.story) => (node.listenFirst ? 'DİNLE' : 'OKU', true),
       (NodeState.active, NodeType.mock) => ('DENEMEYE BAŞLA', true),
+      (NodeState.active, NodeType.listening) => ('DİNLE +${node.rewardXp > 0 ? node.rewardXp : 15} XP', true),
       (NodeState.active, NodeType.lesson) => ('BAŞLA +${node.rewardXp > 0 ? node.rewardXp : 10} XP', true),
     };
     final pointer = CustomPaint(

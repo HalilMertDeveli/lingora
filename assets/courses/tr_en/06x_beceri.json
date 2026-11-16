@@ -735,6 +735,34 @@
           ]
         },
         {
+          "id": "s6u13d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Kitapçıda tavsiye",
+          "description": "Harun torununa kitap ararken kitapçı Gizem ona bir roman öneriyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Gizem", "gender": "female", "avatar": "👩"},
+            {"name": "Harun", "gender": "male", "avatar": "👴"}
+          ],
+          "lines": [
+            {"speaker": "Harun", "text": "Excuse me, I'm looking for a book for my granddaughter. She's fifteen and she loves mysteries.", "translation": "Affedersiniz, torunum için bir kitap arıyorum. On beş yaşında ve gizem hikâyelerine bayılıyor."},
+            {"speaker": "Gizem", "text": "Then I'd recommend this one, The Silent Garden. It's my favourite this year.", "translation": "O zaman size bunu, Sessiz Bahçe'yi öneririm. Bu yılın favorim."},
+            {"speaker": "Harun", "text": "What's it about?", "translation": "Ne anlatıyor?"},
+            {"speaker": "Gizem", "text": "A girl finds an old letter in her grandmother's garden and tries to solve a secret from 1960. The plot is so clever that I read it in two days.", "translation": "Bir kız büyükannesinin bahçesinde eski bir mektup buluyor ve 1960'tan kalma bir sırrı çözmeye çalışıyor. Konusu o kadar zekice ki iki günde okudum."},
+            {"speaker": "Harun", "text": "Sounds good. Is it difficult to read?", "translation": "Kulağa hoş geliyor. Okuması zor mu?"},
+            {"speaker": "Gizem", "text": "Not at all. The language is simple, although some chapters are a bit sad. The characters feel very real.", "translation": "Hiç değil. Bazı bölümleri biraz hüzünlü olsa da dili sade. Karakterler çok gerçekçi."},
+            {"speaker": "Harun", "text": "And how does it end? No, wait, don't tell me. I might read it first myself!", "translation": "Peki nasıl bitiyor? Hayır, durun, söylemeyin. Belki önce ben okurum!"},
+            {"speaker": "Gizem", "text": "Good idea. If you enjoy it, come back and tell me what you think.", "translation": "İyi fikir. Beğenirseniz gelin, ne düşündüğünüzü bana da anlatın."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Harun'un torunu kaç yaşında?", "choices": ["On iki", "On beş", "On sekiz"], "answer": "On beş", "line": 0, "key": "fifteen", "skill": "detail"},
+            {"kind": "choice", "prompt": "Kitaptaki kız bahçede ne buluyor?", "choices": ["Eski bir mektup", "Bir anahtar", "Bir fotoğraf"], "answer": "Eski bir mektup", "line": 3, "key": "an old letter", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Gizem kitabı bir haftada okudu.", "answer": false, "line": 3, "key": "I read it in two days", "skill": "detail"},
+            {"kind": "who", "quote": "I might read it first myself!", "answer": "Harun"}
+          ]
+        },
+        {
           "id": "s6u13t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1497,6 +1525,34 @@
               ],
               "taskId": "s6u14l4w"
             }
+          ]
+        },
+        {
+          "id": "s6u14d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Bahçe mi otopark mı?",
+          "description": "Komşular Oya ve Cem, apartman bahçesinin otopark yapılması konusunda fikirlerini tartışıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Oya", "gender": "female", "avatar": "👩"},
+            {"name": "Cem", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Oya", "text": "Cem, I heard you want to turn the garden into a car park. Is that true?", "translation": "Cem, bahçeyi otoparka çevirmek istediğini duydum. Doğru mu?"},
+            {"speaker": "Cem", "text": "Well, I think we need it, because there's never anywhere to park after seven.", "translation": "Şey, bence buna ihtiyacımız var çünkü saat yediden sonra park edecek hiç yer olmuyor."},
+            {"speaker": "Oya", "text": "I understand, but I don't agree. The children play there every afternoon, and it's the only green space we have.", "translation": "Anlıyorum ama katılmıyorum. Çocuklar her öğleden sonra orada oynuyor ve sahip olduğumuz tek yeşil alan orası."},
+            {"speaker": "Cem", "text": "That's a fair point. However, the garden is empty most of the winter.", "translation": "Haklı bir nokta. Ancak bahçe kışın çoğunda boş."},
+            {"speaker": "Oya", "text": "Maybe, but in my view, trees are more important than cars. They keep the building cool in summer.", "translation": "Olabilir ama bence ağaçlar arabalardan daha önemli. Yazın binayı serin tutuyorlar."},
+            {"speaker": "Cem", "text": "Hmm. What if we only used the area by the gate? It's just gravel anyway.", "translation": "Hmm. Peki sadece kapının yanındaki alanı kullansak? Orası zaten sadece çakıl."},
+            {"speaker": "Oya", "text": "That sounds more reasonable. Let's suggest that at the meeting on Thursday.", "translation": "Bu daha makul görünüyor. Bunu perşembe günkü toplantıda önerelim."},
+            {"speaker": "Cem", "text": "Agreed. See? We can disagree and still find a solution.", "translation": "Anlaştık. Gördün mü? Aynı fikirde olmasak da bir çözüm bulabiliyoruz."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Cem'e göre saat kaçtan sonra park yeri bulunmuyor?", "choices": ["Altı", "Yedi", "Sekiz"], "answer": "Yedi", "line": 1, "key": "after seven", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Oya'ya göre ağaçlar binayı yazın serin tutuyor.", "answer": true, "line": 4, "key": "keep the building cool in summer", "skill": "detail"},
+            {"kind": "choice", "prompt": "Toplantı hangi gün?", "choices": ["Salı", "Perşembe", "Cumartesi"], "answer": "Perşembe", "line": 6, "key": "Thursday", "skill": "detail"},
+            {"kind": "who", "quote": "That's a fair point.", "answer": "Cem"}
           ]
         },
         {
@@ -2266,6 +2322,34 @@
               ],
               "taskId": "s6u15l4w"
             }
+          ]
+        },
+        {
+          "id": "s6u15d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Doktor olmayan aşçı",
+          "description": "Aşçı Batu, hayatını değiştiren dönüm noktasını Sibel'e anlatıyor",
+          "cefr": "B1",
+          "speakers": [
+            {"name": "Sibel", "gender": "female", "avatar": "👩"},
+            {"name": "Batu", "gender": "male", "avatar": "👨‍🍳"}
+          ],
+          "lines": [
+            {"speaker": "Sibel", "text": "Batu, this soup is incredible. Have you always wanted to be a chef?", "translation": "Batu, bu çorba inanılmaz. Hep aşçı olmak mı istedin?"},
+            {"speaker": "Batu", "text": "Not at all! I'd planned to be a doctor. But I failed the university exam twice.", "translation": "Hiç de değil! Doktor olmayı planlamıştım. Ama üniversite sınavını iki kez kazanamadım."},
+            {"speaker": "Sibel", "text": "Oh no. That must have been hard.", "translation": "Eyvah. Zor olmuş olmalı."},
+            {"speaker": "Batu", "text": "It was. I felt like a failure. Then my uncle, who had a small restaurant, asked me to help him for a summer.", "translation": "Zordu. Kendimi başarısız hissediyordum. Sonra küçük bir lokantası olan amcam, bir yaz ona yardım etmemi istedi."},
+            {"speaker": "Sibel", "text": "And that changed everything?", "translation": "Ve bu her şeyi değiştirdi mi?"},
+            {"speaker": "Batu", "text": "Completely. Although I was only washing dishes at first, I loved the kitchen. By the end of the summer, I'd learned to cook twenty dishes.", "translation": "Tamamen. İlk başta sadece bulaşık yıkasam da mutfağa bayıldım. Yazın sonunda yirmi yemek yapmayı öğrenmiştim."},
+            {"speaker": "Sibel", "text": "So failing that exam was actually a turning point.", "translation": "Yani o sınavı kazanamamak aslında bir dönüm noktasıymış."},
+            {"speaker": "Batu", "text": "Exactly. Looking back, I'm glad I failed. Now I'm a happy chef, just a very tired one!", "translation": "Aynen. Geriye dönüp bakınca iyi ki kazanamamışım. Artık mutlu bir aşçıyım, sadece çok yorgun bir aşçı!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Batu başlangıçta ne olmayı planlamıştı?", "choices": ["Doktor", "Öğretmen", "Mühendis"], "answer": "Doktor", "line": 1, "key": "to be a doctor", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Batu üniversite sınavını bir kez kazanamadı.", "answer": false, "line": 1, "key": "failed the university exam twice", "skill": "detail"},
+            {"kind": "choice", "prompt": "Batu yazın sonunda kaç yemek yapmayı öğrenmişti?", "choices": ["On", "Yirmi", "Otuz"], "answer": "Yirmi", "line": 5, "key": "twenty dishes", "skill": "detail"},
+            {"kind": "who", "quote": "That must have been hard.", "answer": "Sibel"}
           ]
         },
         {

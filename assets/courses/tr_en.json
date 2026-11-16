@@ -114,6 +114,31 @@
             {"type": "speak", "text": "She is a doctor", "translation": "O bir doktor."}
           ]
         },
+        {
+          "id": "u1d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "İlk ders",
+          "description": "Jack, İngilizce kursunun ilk gününde Selin ile tanışıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Selin", "gender": "female", "avatar": "👩"},
+            {"name": "Jack", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Jack", "text": "Hello! Good morning. Is this the English class?", "translation": "Merhaba! Günaydın. İngilizce sınıfı burası mı?"},
+            {"speaker": "Selin", "text": "Yes, it is. Good morning! My name is Selin. What is your name?", "translation": "Evet, burası. Günaydın! Benim adım Selin. Senin adın ne?"},
+            {"speaker": "Jack", "text": "I am Jack. Nice to meet you, Selin. Are you the teacher?", "translation": "Ben Jack. Tanıştığımıza memnun oldum Selin. Öğretmen sen misin?"},
+            {"speaker": "Selin", "text": "No, I am a student. The teacher is Mrs Green. She is very nice.", "translation": "Hayır, ben öğrenciyim. Öğretmen Bayan Green. O çok iyi biri."},
+            {"speaker": "Jack", "text": "And who is he? Is he a student?", "translation": "Peki o kim? O öğrenci mi?"},
+            {"speaker": "Selin", "text": "That is Mert. He is my brother. He is a student, and he is late again!", "translation": "O Mert. Benim kardeşim. O bir öğrenci ve yine geç kaldı!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Öğretmenin adı ne?", "choices": ["Mrs Green", "Mrs Brown", "Selin"], "answer": "Mrs Green", "line": 3, "key": "Mrs Green", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Mert, Selin'in kardeşi.", "answer": true, "line": 5, "key": "my brother", "skill": "detail"},
+            {"kind": "who", "quote": "Are you the teacher?", "answer": "Jack"}
+          ]
+        },
         {"id": "u1t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
         {"id": "u1c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
       ]
@@ -218,6 +243,31 @@
             {"type": "match", "pairs": [["istemek", "want"], ["lütfen", "please"], ["hesap", "bill"],
               ["menü", "menu"], ["teşekkürler", "thanks"]]},
             {"type": "speak", "text": "The bill, please", "translation": "Hesap, lütfen."}
+          ]
+        },
+        {
+          "id": "u2d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Kafede sipariş",
+          "description": "Lucy bir kafede kahve ve sandviç sipariş ediyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Lucy", "gender": "female", "avatar": "👱‍♀️"},
+            {"name": "Burak", "gender": "male", "avatar": "👨‍🍳"}
+          ],
+          "lines": [
+            {"speaker": "Burak", "text": "Hello and welcome! Tea or coffee?", "translation": "Merhaba, hoş geldiniz! Çay mı, kahve mi?"},
+            {"speaker": "Lucy", "text": "A coffee with milk, please. And I want a cheese sandwich.", "translation": "Sütlü bir kahve, lütfen. Bir de peynirli sandviç istiyorum."},
+            {"speaker": "Burak", "text": "Sorry, we have no cheese today. We have egg sandwiches.", "translation": "Üzgünüm, bugün peynirimiz yok. Yumurtalı sandviçimiz var."},
+            {"speaker": "Lucy", "text": "OK, an egg sandwich, please. And a glass of water.", "translation": "Tamam, bir yumurtalı sandviç lütfen. Bir de bir bardak su."},
+            {"speaker": "Burak", "text": "Here you are. One coffee, one egg sandwich and water.", "translation": "Buyurun. Bir kahve, bir yumurtalı sandviç ve su."},
+            {"speaker": "Lucy", "text": "Thank you! Mmm, very good. The bill, please.", "translation": "Teşekkürler! Mmm, çok güzel. Hesap, lütfen."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Lucy kahvesini nasıl istiyor?", "choices": ["Sütlü", "Şekerli", "Sade"], "answer": "Sütlü", "line": 1, "key": "with milk", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Kafede bugün peynir var.", "answer": false, "line": 2, "key": "no cheese today", "skill": "detail"},
+            {"kind": "who", "quote": "The bill, please.", "answer": "Lucy"}
           ]
         },
         {"id": "u2t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
@@ -328,6 +378,31 @@
             {"type": "speak", "text": "How old are you", "translation": "Kaç yaşındasın?"}
           ]
         },
+        {
+          "id": "u3d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Aile fotoğrafı",
+          "description": "Ece okulda Ali'ye ailesinin fotoğrafını gösteriyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Ece", "gender": "female", "avatar": "👧"},
+            {"name": "Ali", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Ali", "text": "Ece, is this your family in the photo?", "translation": "Ece, fotoğraftaki senin ailen mi?"},
+            {"speaker": "Ece", "text": "Yes! This is my mother, and this is my father. And this is my brother, Kaan.", "translation": "Evet! Bu annem, bu da babam. Bu da kardeşim Kaan."},
+            {"speaker": "Ali", "text": "How old is he?", "translation": "O kaç yaşında?"},
+            {"speaker": "Ece", "text": "He is six years old. I am ten. Do you have a sister?", "translation": "Altı yaşında. Ben onum. Senin kız kardeşin var mı?"},
+            {"speaker": "Ali", "text": "No, I have two brothers. And we have a cat. She is very old, fifteen!", "translation": "Hayır, iki erkek kardeşim var. Bir de kedimiz var. Çok yaşlı, on beş yaşında!"},
+            {"speaker": "Ece", "text": "Wow! Your cat is a grandmother!", "translation": "Vay! Kediniz büyükanne olmuş!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Kaan kaç yaşında?", "choices": ["Altı", "On", "On beş"], "answer": "Altı", "line": 3, "key": "six years old", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Ali'nin bir kız kardeşi var.", "answer": false, "line": 4, "key": "two brothers", "skill": "detail"},
+            {"kind": "who", "quote": "How old is he?", "answer": "Ali"}
+          ]
+        },
         {"id": "u3t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
         {"id": "u3c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
       ]
@@ -434,6 +509,31 @@
             {"type": "speak", "text": "Today is Monday", "translation": "Bugün pazartesi."}
           ]
         },
+        {
+          "id": "u4d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Maç bugün mü?",
+          "description": "Emre futbol maçının gününü karıştırıyor, Zeynep düzeltiyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Zeynep", "gender": "female", "avatar": "👩"},
+            {"name": "Emre", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Emre", "text": "Zeynep, what time is it?", "translation": "Zeynep, saat kaç?"},
+            {"speaker": "Zeynep", "text": "It is nine o'clock at night. Why?", "translation": "Akşam saat dokuz. Neden?"},
+            {"speaker": "Emre", "text": "My football match is today! It is at ten in the morning.", "translation": "Futbol maçım bugün! Sabah saat onda."},
+            {"speaker": "Zeynep", "text": "Today? Emre, today is Friday. Your match is on Saturday.", "translation": "Bugün mü? Emre, bugün cuma. Maçın cumartesi."},
+            {"speaker": "Emre", "text": "Oh, it is tomorrow! Then good night, Zeynep. See you in the morning!", "translation": "Aa, yarınmış! O zaman iyi geceler Zeynep. Sabah görüşürüz!"},
+            {"speaker": "Zeynep", "text": "Good night! Ten o'clock tomorrow, not today!", "translation": "İyi geceler! Yarın saat onda, bugün değil!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Maç hangi gün?", "choices": ["Cuma", "Cumartesi", "Pazar"], "answer": "Cumartesi", "line": 3, "key": "on Saturday", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Maç sabah saat onda.", "answer": true, "line": 2, "key": "at ten in the morning", "skill": "detail"},
+            {"kind": "who", "quote": "what time is it?", "answer": "Emre"}
+          ]
+        },
         {"id": "u4t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
         {"id": "u4c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
       ]
@@ -538,6 +638,31 @@
             {"type": "translate", "text": "This jacket is too small.", "lang": "en", "answers": ["Bu ceket çok küçük", "Bu ceket fazla küçük"],
               "tokens": ["Bu", "ceket", "çok", "küçük", "büyük", "şapka"]},
             {"type": "speak", "text": "How much is this", "translation": "Bu ne kadar?"}
+          ]
+        },
+        {
+          "id": "u5d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Mavi ceket",
+          "description": "Can bir mağazada ceket fiyatlarını soruyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Nora", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Can", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Can", "text": "Excuse me, how much is this blue jacket?", "translation": "Afedersiniz, bu mavi ceket ne kadar?"},
+            {"speaker": "Nora", "text": "It is ninety pounds.", "translation": "Doksan pound."},
+            {"speaker": "Can", "text": "Ninety? That is very expensive. Do you have a cheap jacket?", "translation": "Doksan mı? Bu çok pahalı. Ucuz bir ceketiniz var mı?"},
+            {"speaker": "Nora", "text": "Yes. This green jacket is cheap. It is twenty pounds.", "translation": "Evet. Bu yeşil ceket ucuz. Yirmi pound."},
+            {"speaker": "Can", "text": "Green? Hmm. Do you have it in black?", "translation": "Yeşil mi? Hmm. Siyahı var mı?"},
+            {"speaker": "Nora", "text": "Sorry, no. But this yellow hat is only five pounds. It is very nice!", "translation": "Üzgünüm, yok. Ama bu sarı şapka sadece beş pound. Çok güzel!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Mavi ceket kaç pound?", "choices": ["Yirmi", "Doksan", "Beş"], "answer": "Doksan", "line": 1, "key": "ninety pounds", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Yeşil ceket pahalı.", "answer": false, "line": 3, "key": "is cheap", "skill": "detail"},
+            {"kind": "who", "quote": "Do you have it in black?", "answer": "Can"}
           ]
         },
         {"id": "u5t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
@@ -647,6 +772,31 @@
             {"type": "speak", "text": "Where is the station", "translation": "İstasyon nerede?"}
           ]
         },
+        {
+          "id": "u6d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Pazar sabahı",
+          "description": "Ada ve Mert pazar sabahlarını ve havuzun yolunu konuşuyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Ada", "gender": "female", "avatar": "👧"},
+            {"name": "Mert", "gender": "male", "avatar": "🧔"}
+          ],
+          "lines": [
+            {"speaker": "Mert", "text": "Ada, what do you do on Sunday morning?", "translation": "Ada, pazar sabahı ne yaparsın?"},
+            {"speaker": "Ada", "text": "I wake up at eight and I have breakfast. Then I swim.", "translation": "Sekizde uyanırım ve kahvaltı yaparım. Sonra yüzerim."},
+            {"speaker": "Mert", "text": "You swim? Where is the pool?", "translation": "Yüzüyor musun? Havuz nerede?"},
+            {"speaker": "Ada", "text": "It is near the park. Go right at the bank. It is on the left.", "translation": "Parkın yakınında. Bankadan sağa dön. Solda."},
+            {"speaker": "Mert", "text": "Nice! I don't swim, but I play music in the park.", "translation": "Güzel! Ben yüzmem ama parkta müzik çalarım."},
+            {"speaker": "Ada", "text": "Great! Then we meet at the park after my swim.", "translation": "Harika! O zaman yüzmeden sonra parkta buluşuruz."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Ada pazar sabahı saat kaçta uyanıyor?", "choices": ["Yedide", "Sekizde", "Dokuzda"], "answer": "Sekizde", "line": 1, "key": "at eight", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Havuz parkın yakınında.", "answer": true, "line": 3, "key": "near the park", "skill": "detail"},
+            {"kind": "who", "quote": "I play music in the park", "answer": "Mert"}
+          ]
+        },
         {"id": "u6t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
         {"id": "u6c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 30}
       ]
@@ -732,6 +882,31 @@
             {"type": "match", "pairs": [["şehir", "city"], ["sokak", "street"], ["köprü", "bridge"], ["müze", "museum"], ["kütüphane", "library"]]},
             {"type": "translate", "text": "Kütüphane müzenin karşısında.", "lang": "tr", "answers": ["The library is opposite the museum", "The library is across from the museum"], "tokens": ["The", "library", "is", "opposite", "the", "museum", "next", "bridge", "are"]},
             {"type": "speak", "text": "Is there a bank near here?", "translation": "Buralarda banka var mı?"}
+          ]
+        },
+        {
+          "id": "u7d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Yeni ev",
+          "description": "Leyla, arkadaşı Baran'a yeni evini gösteriyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Leyla", "gender": "female", "avatar": "👩"},
+            {"name": "Baran", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Leyla", "text": "Welcome to my new flat, Baran! This is the kitchen.", "translation": "Yeni daireme hoş geldin Baran! Burası mutfak."},
+            {"speaker": "Baran", "text": "It is nice! Is there a table?", "translation": "Çok güzel! Masa var mı?"},
+            {"speaker": "Leyla", "text": "Yes, there is. It is next to the window. And there are two bedrooms.", "translation": "Evet, var. Pencerenin yanında. Bir de iki yatak odası var."},
+            {"speaker": "Baran", "text": "Where is your cat?", "translation": "Kedin nerede?"},
+            {"speaker": "Leyla", "text": "She is under the bed. She is shy!", "translation": "Yatağın altında. Çok utangaç!"},
+            {"speaker": "Baran", "text": "And the street is great. There is a library and a museum near here.", "translation": "Sokak da harika. Buraya yakın bir kütüphane ve bir müze var."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Masa nerede?", "choices": ["Pencerenin yanında", "Yatağın altında", "Kapının arkasında"], "answer": "Pencerenin yanında", "line": 2, "key": "next to the window", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Kedi yatağın altında.", "answer": true, "line": 4, "key": "under the bed", "skill": "detail"},
+            {"kind": "who", "quote": "Is there a table?", "answer": "Baran"}
           ]
         },
         {"id": "u7t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
@@ -821,6 +996,31 @@
             {"type": "speak", "text": "How do I get to the station?", "translation": "İstasyona nasıl giderim?"}
           ]
         },
+        {
+          "id": "u8d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "İzmir yolculuğu",
+          "description": "Kerem, Ela'ya İzmir'e nasıl gideceğini anlatıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Ela", "gender": "female", "avatar": "👩"},
+            {"name": "Kerem", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Kerem", "text": "Ela, I am going to visit Izmir next week!", "translation": "Ela, gelecek hafta İzmir'e gideceğim!"},
+            {"speaker": "Ela", "text": "Great! Are you going to go by plane?", "translation": "Harika! Uçakla mı gideceksin?"},
+            {"speaker": "Kerem", "text": "No, by bus. The plane ticket is very expensive.", "translation": "Hayır, otobüsle. Uçak bileti çok pahalı."},
+            {"speaker": "Ela", "text": "The bus? That is eight hours, Kerem!", "translation": "Otobüs mü? O sekiz saat sürer Kerem!"},
+            {"speaker": "Kerem", "text": "I know. But I have a big suitcase and a lot of snacks.", "translation": "Biliyorum. Ama büyük bir bavulum ve bir sürü atıştırmalığım var."},
+            {"speaker": "Ela", "text": "Ha! Then it is a good trip. Have fun!", "translation": "Ha! O zaman güzel bir yolculuk olur. İyi eğlenceler!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Kerem İzmir'e neyle gidiyor?", "choices": ["Uçakla", "Otobüsle", "Trenle"], "answer": "Otobüsle", "line": 2, "key": "by bus", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Uçak bileti ucuz.", "answer": false, "line": 2, "key": "very expensive", "skill": "detail"},
+            {"kind": "who", "quote": "Have fun!", "answer": "Ela"}
+          ]
+        },
         {"id": "u8t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
         {"id": "u8c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
       ]
@@ -905,6 +1105,31 @@
             {"type": "match", "pairs": [["gitti", "went"], ["yedi", "ate"], ["gördü", "saw"], ["aldı", "bought"], ["içti", "drank"]]},
             {"type": "translate", "text": "Geçen yaz İzmir'e gittik.", "lang": "tr", "answers": ["We went to İzmir last summer", "Last summer we went to İzmir"], "tokens": ["We", "went", "to", "İzmir", "last", "summer", "go", "winter", "are"]},
             {"type": "speak", "text": "I went to the market", "translation": "Pazara gittim."}
+          ]
+        },
+        {
+          "id": "u9d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Hafta sonu nasıldı?",
+          "description": "Mia ve Emir pazartesi günü hafta sonlarını anlatıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Mia", "gender": "female", "avatar": "👱‍♀️"},
+            {"name": "Emir", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Mia", "text": "Hi Emir! How was your weekend?", "translation": "Selam Emir! Hafta sonun nasıldı?"},
+            {"speaker": "Emir", "text": "It was great! On Saturday I went to the beach with my family.", "translation": "Harikaydı! Cumartesi ailemle plaja gittim."},
+            {"speaker": "Mia", "text": "Lucky you! I was at home. I cooked pasta and watched a film.", "translation": "Ne şanslısın! Ben evdeydim. Makarna pişirdim ve film izledim."},
+            {"speaker": "Emir", "text": "That is nice too. We ate fish, and my dad bought ice cream for everyone.", "translation": "O da güzel. Biz balık yedik, babam da herkese dondurma aldı."},
+            {"speaker": "Mia", "text": "And on Sunday?", "translation": "Ya pazar?"},
+            {"speaker": "Emir", "text": "On Sunday I was very tired. I slept all day!", "translation": "Pazar günü çok yorgundum. Bütün gün uyudum!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Emir cumartesi nereye gitti?", "choices": ["Plaja", "Sinemaya", "Parka"], "answer": "Plaja", "line": 1, "key": "went to the beach", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Mia hafta sonu evdeydi.", "answer": true, "line": 2, "key": "I was at home", "skill": "detail"},
+            {"kind": "who", "quote": "We ate fish", "answer": "Emir"}
           ]
         },
         {"id": "u9t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
@@ -994,6 +1219,31 @@
             {"type": "speak", "text": "You should see a doctor", "translation": "Bir doktora görünmelisin."}
           ]
         },
+        {
+          "id": "u10d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Doktorda",
+          "description": "Tom hasta ve doktora gidiyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Dr Kaya", "gender": "female", "avatar": "👩‍⚕️"},
+            {"name": "Tom", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Dr Kaya", "text": "Good morning, Tom. What is the problem?", "translation": "Günaydın Tom. Sorun ne?"},
+            {"speaker": "Tom", "text": "I feel sick. I have a headache and a fever.", "translation": "Kendimi hasta hissediyorum. Başım ağrıyor ve ateşim var."},
+            {"speaker": "Dr Kaya", "text": "Open your mouth, please. Hmm, you have a cold.", "translation": "Ağzını aç lütfen. Hmm, soğuk algınlığın var."},
+            {"speaker": "Tom", "text": "Is it bad? I have a football match tomorrow.", "translation": "Kötü mü? Yarın futbol maçım var."},
+            {"speaker": "Dr Kaya", "text": "You should stay in bed for two days. Take this medicine after meals.", "translation": "İki gün yatakta kalmalısın. Bu ilacı yemeklerden sonra al."},
+            {"speaker": "Tom", "text": "Two days in bed? OK, doctor. No football, but a lot of TV!", "translation": "İki gün yatakta mı? Tamam doktor. Futbol yok ama bol bol televizyon var!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Tom kaç gün yatakta kalmalı?", "choices": ["Bir gün", "İki gün", "Bir hafta"], "answer": "İki gün", "line": 4, "key": "two days", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Tom'un başı ağrıyor.", "answer": true, "line": 1, "key": "headache", "skill": "detail"},
+            {"kind": "who", "quote": "Open your mouth, please.", "answer": "Dr Kaya"}
+          ]
+        },
         {"id": "u10t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
         {"id": "u10c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
       ]
@@ -1080,6 +1330,31 @@
             {"type": "speak", "text": "Spring is warmer than winter", "translation": "İlkbahar kıştan daha sıcaktır."}
           ]
         },
+        {
+          "id": "u11d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Antalya mı, Erzurum mu?",
+          "description": "Sena ve Kaan telefonda iki şehrin havasını karşılaştırıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Sena", "gender": "female", "avatar": "👩"},
+            {"name": "Kaan", "gender": "male", "avatar": "🧔"}
+          ],
+          "lines": [
+            {"speaker": "Kaan", "text": "Hi Sena! How is the weather in Antalya?", "translation": "Selam Sena! Antalya'da hava nasıl?"},
+            {"speaker": "Sena", "text": "It is sunny and warm. I am in the park! And in Erzurum?", "translation": "Güneşli ve ılık. Parktayım! Ya Erzurum'da?"},
+            {"speaker": "Kaan", "text": "It is windy and very cold. Spring is late here.", "translation": "Rüzgârlı ve çok soğuk. Burada bahar geç geliyor."},
+            {"speaker": "Sena", "text": "Brr! Antalya is warmer than Erzurum. Come here!", "translation": "Brr! Antalya, Erzurum'dan daha sıcak. Buraya gel!"},
+            {"speaker": "Kaan", "text": "No, thanks. I love cold weather. Winter is my favourite season.", "translation": "Hayır, teşekkürler. Soğuk havayı severim. Kış en sevdiğim mevsim."},
+            {"speaker": "Sena", "text": "Really? Then you have the cold, and I have the sun!", "translation": "Gerçekten mi? O zaman soğuk senin, güneş benim!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Erzurum'da hava nasıl?", "choices": ["Güneşli ve ılık", "Rüzgârlı ve çok soğuk", "Yağmurlu ve sıcak"], "answer": "Rüzgârlı ve çok soğuk", "line": 2, "key": "windy and very cold", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Kaan'ın en sevdiği mevsim kış.", "answer": true, "line": 4, "key": "Winter is my favourite season", "skill": "detail"},
+            {"kind": "who", "quote": "Come here!", "answer": "Sena"}
+          ]
+        },
         {"id": "u11t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},
         {"id": "u11c", "type": "chest", "title": "Ünite ödülü", "description": "Üniteyi bitir, bonus XP kazan", "rewardXp": 20}
       ]
@@ -1164,6 +1439,31 @@
             {"type": "match", "pairs": [["hayal", "dream"], ["gelecek", "future"], ["dünya", "world"], ["iş", "job"], ["mutlu", "happy"]]},
             {"type": "translate", "text": "Gelecekte ne olmak istiyorsun?", "lang": "tr", "answers": ["What do you want to be in the future", "What would you like to be in the future"], "tokens": ["What", "do", "you", "want", "to", "be", "in", "the", "future", "are", "will", "past"]},
             {"type": "speak", "text": "My dream is to travel", "translation": "Hayalim seyahat etmek."}
+          ]
+        },
+        {
+          "id": "u12d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Gelecekte ne olacağız?",
+          "description": "Defne ve Arda gelecekteki hayallerini anlatıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Defne", "gender": "female", "avatar": "👧"},
+            {"name": "Arda", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Arda", "text": "Defne, what do you want to do in the future?", "translation": "Defne, gelecekte ne yapmak istiyorsun?"},
+            {"speaker": "Defne", "text": "I want to be a vet. I love animals. And you?", "translation": "Veteriner olmak istiyorum. Hayvanları çok seviyorum. Ya sen?"},
+            {"speaker": "Arda", "text": "I would like to be a chef. One day I will open a small restaurant.", "translation": "Aşçı olmak isterim. Bir gün küçük bir restoran açacağım."},
+            {"speaker": "Defne", "text": "Great! I will come to your restaurant every week.", "translation": "Harika! Her hafta restoranına geleceğim."},
+            {"speaker": "Arda", "text": "And I will bring my dog to your clinic. I promise!", "translation": "Ben de köpeğimi senin kliniğine getireceğim. Söz!"},
+            {"speaker": "Defne", "text": "It is a deal, chef!", "translation": "Anlaştık, şef!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Defne ne olmak istiyor?", "choices": ["Veteriner", "Aşçı", "Öğretmen"], "answer": "Veteriner", "line": 1, "key": "a vet", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Arda bir gün büyük bir otel açacak.", "answer": false, "line": 2, "key": "small restaurant", "skill": "detail"},
+            {"kind": "who", "quote": "I promise!", "answer": "Arda"}
           ]
         },
         {"id": "u12t", "type": "test", "title": "Ünite sınavı", "description": "Üniteyi geçmek için %80 doğru yap", "rewardXp": 25},

@@ -14,7 +14,7 @@ const sectionDir = 'assets/courses/tr_en';
 const fixtureDir = 'test/fixtures/tr_en';
 
 /// Node types of every unit, in order.
-const unitPattern = ['lesson', 'lesson', 'story', 'lesson', 'lesson', 'test', 'chest'];
+const unitPattern = ['lesson', 'lesson', 'story', 'lesson', 'lesson', 'listening', 'test', 'chest'];
 const cefrLevels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'};
 
 /// Question types a unit test may carry as its own questions.
@@ -390,7 +390,7 @@ List<String> validateExamPath(String id, String prefix, int options, {(int, int)
       check(
         types.length > tail.length &&
             types.skip(types.length - tail.length).join(',') == tail.join(',') &&
-            head.every((t) => t == 'lesson' || t == 'story') &&
+            head.every((t) => t == 'lesson' || t == 'story' || t == 'listening') &&
             head.where((t) => t == 'lesson').length >= 4 &&
             (mock || ui < units.length - 1),
         '$where: düğüm deseni ${types.join(',')} (ders×4+, test, chest, [mock]; bölüm sonunda mock)',

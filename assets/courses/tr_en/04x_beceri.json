@@ -811,6 +811,31 @@
           ]
         },
         {
+          "id": "s4u13d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Eczanede",
+          "description": "Sam boğaz ağrısı için eczaneye gidiyor ve eczacı Selin ona ilacı anlatıyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Selin", "gender": "female", "avatar": "👩"},
+            {"name": "Sam", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Selin", "text": "Hello. What's the problem?", "translation": "Merhaba. Sorun nedir?"},
+            {"speaker": "Sam", "text": "I have a sore throat and a headache. It started two days ago.", "translation": "Boğazım ağrıyor ve başım ağrıyor. İki gün önce başladı."},
+            {"speaker": "Selin", "text": "Do you have a fever?", "translation": "Ateşiniz var mı?"},
+            {"speaker": "Sam", "text": "No, I don't. But I can't sleep well.", "translation": "Hayır, yok. Ama iyi uyuyamıyorum."},
+            {"speaker": "Selin", "text": "Take this medicine twice a day, after meals. Drink a lot of water and hot tea with honey.", "translation": "Bu ilacı günde iki kez, yemeklerden sonra alın. Bol su ve ballı sıcak çay için."},
+            {"speaker": "Sam", "text": "Thank you. If I don't feel better in three days, I'll make an appointment with a doctor.", "translation": "Teşekkürler. Üç gün içinde iyileşmezsem doktordan randevu alırım."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Sam ilacı günde kaç kez almalı?", "choices": ["Bir kez", "İki kez", "Üç kez"], "answer": "İki kez", "line": 4, "key": "twice a day", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Sam'in ateşi var.", "answer": false, "line": 3, "key": "No, I don't", "skill": "detail"},
+            {"kind": "who", "quote": "It started two days ago.", "answer": "Sam"}
+          ]
+        },
+        {
           "id": "s4u13t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1609,6 +1634,31 @@
               ],
               "taskId": "s4u14l4w"
             }
+          ]
+        },
+        {
+          "id": "s4u14d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Bozuk kulaklık",
+          "description": "Mia yeni aldığı kulaklığı mağazaya geri götürüp kibarca çözüm istiyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Mia", "gender": "female", "avatar": "👱‍♀️"},
+            {"name": "Kerem", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Kerem", "text": "Good afternoon. Can I help you?", "translation": "İyi günler. Yardımcı olabilir miyim?"},
+            {"speaker": "Mia", "text": "Yes, please. I bought these headphones here last week, but the left side doesn't work.", "translation": "Evet, lütfen. Bu kulaklığı geçen hafta buradan aldım ama sol tarafı çalışmıyor."},
+            {"speaker": "Kerem", "text": "I'm sorry about that. Do you have the receipt?", "translation": "Bunun için üzgünüm. Fişiniz var mı?"},
+            {"speaker": "Mia", "text": "Yes, here it is. Could I have a new pair, please?", "translation": "Evet, işte burada. Yeni bir tane alabilir miyim lütfen?"},
+            {"speaker": "Kerem", "text": "Of course. Or would you like your money back?", "translation": "Tabii. Yoksa paranızı geri mi istersiniz?"},
+            {"speaker": "Mia", "text": "A new pair is fine. I listen to music every day, so I can't wait!", "translation": "Yeni bir tane olur. Her gün müzik dinliyorum, bekleyemem!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Kulaklığın sorunu ne?", "choices": ["Sol tarafı çalışmıyor", "Kablosu kırık", "Çok sessiz"], "answer": "Sol tarafı çalışmıyor", "line": 1, "key": "the left side doesn't work", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Mia parasını geri istiyor.", "answer": false, "line": 5, "key": "A new pair is fine", "skill": "detail"},
+            {"kind": "who", "quote": "Do you have the receipt?", "answer": "Kerem"}
           ]
         },
         {
@@ -2425,6 +2475,31 @@
               ],
               "taskId": "s4u15l4w"
             }
+          ]
+        },
+        {
+          "id": "s4u15d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "İşimi anlatıyorum",
+          "description": "Bir kariyer gününde Nora ve Emre işlerini birbirine anlatıyor",
+          "cefr": "A2",
+          "speakers": [
+            {"name": "Nora", "gender": "female", "avatar": "👩‍🍳"},
+            {"name": "Emre", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Emre", "text": "So, Nora, what do you do?", "translation": "Eee Nora, ne iş yapıyorsun?"},
+            {"speaker": "Nora", "text": "I'm a chef in a small restaurant in Izmir. I've worked there for four years.", "translation": "İzmir'de küçük bir restoranda aşçıyım. Dört yıldır orada çalışıyorum."},
+            {"speaker": "Emre", "text": "Do you like it?", "translation": "Seviyor musun?"},
+            {"speaker": "Nora", "text": "I love it, but I have to work at weekends. What about you?", "translation": "Bayılıyorum ama hafta sonları çalışmam gerekiyor. Ya sen?"},
+            {"speaker": "Emre", "text": "I'm a web designer. I work from home, so I don't have to wear shoes!", "translation": "Web tasarımcısıyım. Evden çalışıyorum, o yüzden ayakkabı giymem gerekmiyor!"},
+            {"speaker": "Nora", "text": "Lucky you! Can you make a website for my restaurant?", "translation": "Ne şanslısın! Restoranım için bir web sitesi yapabilir misin?"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Nora kaç yıldır restoranda çalışıyor?", "choices": ["İki", "Dört", "Altı"], "answer": "Dört", "line": 1, "key": "for four years", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Emre evden çalışıyor.", "answer": true, "line": 4, "key": "I work from home", "skill": "detail"},
+            {"kind": "who", "quote": "Do you like it?", "answer": "Emre"}
           ]
         },
         {

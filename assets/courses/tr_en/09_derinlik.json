@@ -786,6 +786,37 @@
           ]
         },
         {
+          "id": "s9u1d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Akşam bülteni",
+          "description": "Bir radyo editörü, köprü kapanması haberini yayından önce muhabiriyle birlikte yeniden yazıyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Nadia", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Owen", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Nadia", "text": "Owen, the bridge story needs rewriting before six. Having read your draft twice, I still can't tell what happened.", "translation": "Owen, köprü haberinin saat altıdan önce yeniden yazılması lazım. Taslağını iki kez okudum, hâlâ ne olduğunu anlayamıyorum."},
+            {"speaker": "Owen", "text": "Fair enough. Built in the eighteen-nineties, the bridge was closed this morning after an engineer spotted a crack.", "translation": "Haklısın. 1890'larda inşa edilen köprü, bir mühendisin çatlak fark etmesi üzerine bu sabah kapatıldı."},
+            {"speaker": "Nadia", "text": "Better. But who closed it? Reading your version, you'd think the crack did it all by itself.", "translation": "Daha iyi. Ama kim kapattı? Senin versiyonunu okuyan, çatlağın bunu kendi kendine yaptığını sanır."},
+            {"speaker": "Owen", "text": "The council did, acting on the engineer's advice. Shall I add that commuters, faced with a long detour, are furious?", "translation": "Belediye kapattı, mühendisin tavsiyesine uyarak. Uzun bir dolambaçlı yolla karşı karşıya kalan işe gidip gelenlerin öfkeli olduğunu da ekleyeyim mi?"},
+            {"speaker": "Nadia", "text": "Only if we can quote someone. Otherwise we're just adding fuel to the fire.", "translation": "Ancak birinden alıntı yapabilirsek. Yoksa sadece yangına körükle gitmiş oluruz."},
+            {"speaker": "Owen", "text": "I spoke to a cyclist earlier. Stopped at the barrier, she told me she'd crossed that bridge every day for thirty years.", "translation": "Az önce bir bisikletliyle konuştum. Bariyerde durdurulunca, otuz yıldır o köprüden her gün geçtiğini söyledi."},
+            {"speaker": "Nadia", "text": "Perfect, that's our human angle. Just check the reopening date before we announce anything.", "translation": "Mükemmel, işte insani yönümüz bu. Yalnız bir şey duyurmadan önce yeniden açılış tarihini kontrol et."},
+            {"speaker": "Owen", "text": "Any particular reason? The council press office seemed fairly confident.", "translation": "Özel bir sebebi var mı? Belediyenin basın bürosu epey emin görünüyordu."},
+            {"speaker": "Nadia", "text": "They always do. Last time we gave a date, they quietly moved it, and we were left with egg on our face.", "translation": "Hep öyle görünürler. Geçen sefer bir tarih verdik, sessizce değiştirdiler ve biz rezil olduk."},
+            {"speaker": "Owen", "text": "Then I'll say no date has been confirmed and leave it at that.", "translation": "O zaman henüz bir tarih kesinleşmedi derim, o kadar."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Köprüyü kim kapattı?", "choices": ["Mühendis", "Belediye", "Polis"], "answer": "Belediye", "line": 3, "key": "The council did", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Bisikletli kadın otuz yıldır o köprüden geçiyor.", "answer": true, "line": 5, "key": "thirty years", "skill": "detail"},
+            {"kind": "choice", "prompt": "Nadia neden açılış tarihinin kontrol edilmesini istiyor?", "choices": ["Daha önce belediye tarihi değiştirdi ve radyo zor durumda kaldı", "Haber çok kısa kaldığı için", "Owen'ın yazım hatası yaptığını düşündüğü için"], "answer": "Daha önce belediye tarihi değiştirdi ve radyo zor durumda kaldı", "line": 8, "key": "egg on our face", "skill": "inference"},
+            {"kind": "who", "quote": "who closed it?", "answer": "Nadia"}
+          ],
+          "idioms": ["adding fuel to the fire", "egg on our face"]
+        },
+        {
           "id": "s9u1t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1714,6 +1745,37 @@
           ]
         },
         {
+          "id": "s9u2d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Abartılı başlık",
+          "description": "Bir bilim gazetecisi, uyku araştırmasının basın bülteninde nasıl abartıldığını araştırmacıya soruyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Clara", "gender": "female", "avatar": "👱‍♀️"},
+            {"name": "Marcus", "gender": "male", "avatar": "👨‍🔬"}
+          ],
+          "lines": [
+            {"speaker": "Clara", "text": "Marcus, your university's press release claims your study proves that phones ruin sleep. Is that fair?", "translation": "Marcus, üniversitenin basın bülteni, çalışmanızın telefonların uykuyu mahvettiğini kanıtladığını iddia ediyor. Bu doğru mu?"},
+            {"speaker": "Marcus", "text": "Not remotely. What we found was a modest reduction in sleep quality among teenagers using screens after midnight.", "translation": "Hiç de değil. Bulduğumuz şey, gece yarısından sonra ekran kullanan gençlerde uyku kalitesinde ılımlı bir düşüştü."},
+            {"speaker": "Clara", "text": "A modest reduction. That doesn't quite sell newspapers, does it?", "translation": "Ilımlı bir düşüş. Bu pek gazete sattırmaz, değil mi?"},
+            {"speaker": "Marcus", "text": "Hence the headline. The decision to say proves was made by the press office, and I raised an objection at the time.", "translation": "Başlık da bu yüzden. \"Kanıtlıyor\" deme kararını basın bürosu verdi; ben de o zaman itiraz ettim."},
+            {"speaker": "Clara", "text": "So what did the data actually show?", "translation": "Peki veriler gerçekte ne gösterdi?"},
+            {"speaker": "Marcus", "text": "An increase in the time it took to fall asleep, roughly twelve minutes on average. Real, but hardly the end of civilisation.", "translation": "Uykuya dalma süresinde bir artış; ortalama on iki dakika kadar. Gerçek ama medeniyetin sonu sayılmaz."},
+            {"speaker": "Clara", "text": "And the cause? Is it the light, or what they're actually looking at?", "translation": "Peki sebebi? Işık mı, yoksa baktıkları içerik mi?"},
+            {"speaker": "Marcus", "text": "That's the million-dollar question. Our design can't separate the two, so any claim about causation would be jumping the gun.", "translation": "İşte asıl can alıcı soru bu. Araştırma tasarımımız ikisini ayıramıyor; bu yüzden nedensellik iddiası aceleci olur."},
+            {"speaker": "Clara", "text": "I appreciate the honesty. Most researchers I interview are perfectly happy to let the hype run.", "translation": "Dürüstlüğünüz için teşekkürler. Görüştüğüm araştırmacıların çoğu abartının sürüp gitmesinden gayet memnun."},
+            {"speaker": "Marcus", "text": "Well, the hype comes back to bite you eventually. Our next grant application will be read by people who saw that headline.", "translation": "Eh, abartı er geç insanın başına dert olur. Bir sonraki hibe başvurumuzu o başlığı görmüş kişiler okuyacak."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Gençler uykuya ortalama ne kadar geç dalıyor?", "choices": ["Yaklaşık iki dakika", "Yaklaşık on iki dakika", "Yaklaşık bir saat"], "answer": "Yaklaşık on iki dakika", "line": 5, "key": "twelve minutes", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "\"Kanıtlıyor\" ifadesini araştırma ekibi seçti.", "answer": false, "line": 3, "key": "made by the press office", "skill": "detail"},
+            {"kind": "choice", "prompt": "Marcus basın bültenindeki başlığa karşı nasıl bir tutum içinde?", "choices": ["Rahatsız ve eleştirel", "Gururlu ve memnun", "Tamamen kayıtsız"], "answer": "Rahatsız ve eleştirel", "line": 3, "key": "I raised an objection", "skill": "attitude"},
+            {"kind": "who", "quote": "That doesn't quite sell newspapers", "answer": "Clara"}
+          ],
+          "idioms": ["the million-dollar question", "jumping the gun", "comes back to bite you"]
+        },
+        {
           "id": "s9u2t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -2485,6 +2547,37 @@
               ]
             }
           ]
+        },
+        {
+          "id": "s9u3d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Duvarı tutan oyuncu",
+          "description": "Leo, son dakika başrole çıktığı ilk gösterisinde yaşadığı inanılmaz anı bir arkadaşına anlatıyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Hannah", "gender": "female", "avatar": "👩"},
+            {"name": "Leo", "gender": "male", "avatar": "🧔"}
+          ],
+          "lines": [
+            {"speaker": "Hannah", "text": "So, how was your debut? I heard you went on for the lead actor at the last minute.", "translation": "Eee, ilk sahnen nasıldı? Son dakikada başrol oyuncusunun yerine çıktığını duydum."},
+            {"speaker": "Leo", "text": "Never have I been so terrified in my life. I had about two hours to learn the whole second act.", "translation": "Hayatımda hiç bu kadar korkmamıştım. Bütün ikinci perdeyi öğrenmek için yaklaşık iki saatim vardı."},
+            {"speaker": "Hannah", "text": "Two hours? I'd have been a nervous wreck. Did it at least go smoothly?", "translation": "İki saat mi? Ben olsam sinirden darmadağın olurdum. Bari sorunsuz geçti mi?"},
+            {"speaker": "Leo", "text": "Smoothly isn't the word. No sooner had I walked on stage than part of the set started to wobble.", "translation": "Sorunsuz pek doğru kelime değil. Sahneye adımımı atar atmaz dekorun bir kısmı sallanmaya başladı."},
+            {"speaker": "Hannah", "text": "You're joking. What on earth did you do?", "translation": "Şaka yapıyorsun. Ne yaptın peki?"},
+            {"speaker": "Leo", "text": "I improvised. I leaned against the wall as if my character were exhausted, and held it up for an entire scene.", "translation": "Doğaçlama yaptım. Karakterim çok yorgunmuş gibi duvara yaslandım ve koca bir sahne boyunca onu ayakta tuttum."},
+            {"speaker": "Hannah", "text": "That's brilliant. Surely somebody noticed, though?", "translation": "Harika. Ama mutlaka biri fark etmiştir, değil mi?"},
+            {"speaker": "Leo", "text": "Not only did the audience not notice, but a critic praised my remarkably physical performance.", "translation": "Seyirci fark etmemekle kalmadı, bir eleştirmen \"dikkat çekici derecede fiziksel\" oyunumu övdü bile."},
+            {"speaker": "Hannah", "text": "So a collapsing wall made your reputation. Talk about landing on your feet.", "translation": "Yani çöken bir duvar seni ünlü yaptı. İşte buna dört ayak üstüne düşmek denir."},
+            {"speaker": "Leo", "text": "Little did I know that holding up scenery would be my big break. Only afterwards did my hands stop shaking.", "translation": "Dekor tutmanın büyük şansım olacağını nereden bilebilirdim. Ellerimin titremesi ancak sonradan geçti."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Leo ikinci perdeyi öğrenmek için ne kadar zamana sahipti?", "choices": ["İki gün", "Yaklaşık iki saat", "Bir hafta"], "answer": "Yaklaşık iki saat", "line": 1, "key": "two hours", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Seyirciler dekorun sallandığını fark etti.", "answer": false, "line": 7, "key": "the audience not notice", "skill": "detail"},
+            {"kind": "choice", "prompt": "Leo neden duvara yaslandı?", "choices": ["Dekorun devrilmesini önlemek için", "Gerçekten çok yorulduğu için", "Repliklerini unuttuğu için"], "answer": "Dekorun devrilmesini önlemek için", "line": 5, "key": "held it up for an entire scene", "skill": "inference"},
+            {"kind": "who", "quote": "What on earth did you do?", "answer": "Hannah"}
+          ],
+          "idioms": ["a nervous wreck", "landing on your feet"]
         },
         {
           "id": "s9u3t",
@@ -3418,6 +3511,37 @@
           ]
         },
         {
+          "id": "s9u4d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Sırrı kim kaçırdı?",
+          "description": "Sofia ve Daniel, terfi haberinin aileye yanlış kişiden ulaşmasının suçunu birbirine atıyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Sofia", "gender": "female", "avatar": "👩"},
+            {"name": "Daniel", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Sofia", "text": "What I don't understand is why Michael knew about my promotion before I'd even told my parents.", "translation": "Anlamadığım şey, ben daha aileme söylemeden Michael'ın terfimi nasıl öğrendiği."},
+            {"speaker": "Daniel", "text": "It wasn't me who told him. It was your sister, at dinner, after her third glass of wine.", "translation": "Ona söyleyen ben değildim. Kız kardeşindi; akşam yemeğinde, üçüncü kadeh şaraptan sonra."},
+            {"speaker": "Sofia", "text": "Fine, but it was you who invited her, knowing perfectly well she can't keep a secret to save her life.", "translation": "Peki, ama onu davet eden sendin; dünyada sır tutamayacağını çok iyi bildiğin halde."},
+            {"speaker": "Daniel", "text": "All I did was ask her to bring dessert. What else she brought along was beyond my control.", "translation": "Tek yaptığım ondan tatlı getirmesini istemekti. Yanında başka ne getirdiği benim elimde değildi."},
+            {"speaker": "Sofia", "text": "Very funny. What really hurt is that my parents found out from Michael's mother.", "translation": "Çok komik. Asıl canımı yakan, ailemin bunu Michael'ın annesinden öğrenmesi."},
+            {"speaker": "Daniel", "text": "I get that. But what matters now isn't who said what. It's how you explain to them that you weren't hiding anything.", "translation": "Anlıyorum. Ama şu an önemli olan kimin ne dediği değil. Onlara hiçbir şey saklamadığını nasıl anlatacağın."},
+            {"speaker": "Sofia", "text": "Maybe. The thing is, my mother keeps score. She'll bring this up every Christmas for years.", "translation": "Belki. Mesele şu ki annem hiçbir kırgınlığı unutmaz. Bunu yıllarca her Noel'de önüme sürecek."},
+            {"speaker": "Daniel", "text": "Then call her tonight. I'll even eat humble pie and apologise to your sister for refilling her glass.", "translation": "O zaman bu akşam onu ara. Ben de gururumu bir kenara bırakıp kadehini doldurduğum için kardeşinden özür dilerim."},
+            {"speaker": "Sofia", "text": "That's big of you. Although, strictly speaking, it was me who opened the second bottle.", "translation": "Bu büyüklük. Gerçi tam olarak söylemek gerekirse, ikinci şişeyi açan bendim."},
+            {"speaker": "Daniel", "text": "There we go. Mystery solved: we're all equally guilty.", "translation": "İşte oldu. Gizem çözüldü: hepimiz eşit derecede suçluyuz."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Michael terfi haberini kimden öğrendi?", "choices": ["Daniel'dan", "Sofia'nın kız kardeşinden", "Sofia'nın annesinden"], "answer": "Sofia'nın kız kardeşinden", "line": 1, "key": "It was your sister", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Sofia'nın ailesi haberi doğrudan Sofia'dan öğrendi.", "answer": false, "line": 4, "key": "found out from Michael's mother", "skill": "detail"},
+            {"kind": "choice", "prompt": "Sofia \"my mother keeps score\" derken ne demek istiyor?", "choices": ["Annesi kırgınlıkları unutmaz ve yıllarca hatırlatır", "Annesi kart oyunlarında puan tutmayı sever", "Annesi evin bütçesini yönetir"], "answer": "Annesi kırgınlıkları unutmaz ve yıllarca hatırlatır", "line": 6, "key": "keeps score", "skill": "inference"},
+            {"kind": "who", "quote": "we're all equally guilty", "answer": "Daniel"}
+          ],
+          "idioms": ["to save her life", "eat humble pie"]
+        },
+        {
           "id": "s9u4t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -4225,6 +4349,37 @@
               ]
             }
           ]
+        },
+        {
+          "id": "s9u5d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Kayıp pasta",
+          "description": "Lena ve Victor, ofisteki veda pastasını kimin yediğini ipuçlarından çıkarmaya çalışıyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Lena", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Victor", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Lena", "text": "Victor, the farewell cake has gone. The box is still in the fridge, but it's completely empty.", "translation": "Victor, veda pastası yok olmuş. Kutusu hâlâ buzdolabında ama bomboş."},
+            {"speaker": "Victor", "text": "It can't have been the cleaners. They finished at six, and I saw the cake at seven.", "translation": "Temizlikçiler olamaz. Altıda işi bitirdiler, ben pastayı yedide gördüm."},
+            {"speaker": "Lena", "text": "Then it must have been someone working late. Who was still here after seven?", "translation": "O zaman geç saate kadar çalışan biri olmalı. Yediden sonra kim buradaydı?"},
+            {"speaker": "Victor", "text": "Only the IT team, and they might well have been tempted. They were fixing the server until midnight.", "translation": "Sadece bilgi işlem ekibi; gayet de dayanamamış olabilirler. Gece yarısına kadar sunucuyu tamir ediyorlardı."},
+            {"speaker": "Lena", "text": "Surely three people can't have eaten a whole cake. Could they?", "translation": "Üç kişi koca bir pastayı yemiş olamaz herhalde. Olabilir mi?"},
+            {"speaker": "Victor", "text": "You'd be surprised. There's also chocolate on the badge reader by the door. Someone must have touched it on their way out.", "translation": "Şaşırırsın. Üstelik kapıdaki kart okuyucuda çikolata var. Biri çıkarken ona dokunmuş olmalı."},
+            {"speaker": "Lena", "text": "Whoever it was must have been in a hurry, or they'd have washed their hands.", "translation": "Her kimse aceleyle çıkmış olmalı, yoksa ellerini yıkardı."},
+            {"speaker": "Victor", "text": "Exactly. I don't want to point the finger, but the badge log will tell us who left last.", "translation": "Aynen. Kimseyi suçlamak istemem ama kart kayıtları en son kimin çıktığını gösterecek."},
+            {"speaker": "Lena", "text": "Hang on. Before you play detective, shouldn't we just buy another cake? The party's at ten.", "translation": "Dur bir dakika. Dedektifliğe soyunmadan önce başka bir pasta alsak olmaz mı? Parti saat onda."},
+            {"speaker": "Victor", "text": "Fine. But I'm checking that log afterwards. It's not about the cake, it's the principle of the thing.", "translation": "Peki. Ama sonra o kayıtlara bakacağım. Mesele pasta değil, mesele prensip."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Victor pastayı en son saat kaçta gördü?", "choices": ["Altıda", "Yedide", "Gece yarısı"], "answer": "Yedide", "line": 1, "key": "I saw the cake at seven", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Victor'a göre pastayı temizlikçiler yemiş olabilir.", "answer": false, "line": 1, "key": "can't have been the cleaners", "skill": "detail"},
+            {"kind": "choice", "prompt": "Victor'ın son sözlerindeki tutumu nedir?", "choices": ["Konunun peşini bırakmaya niyeti yok", "Pastayı kendisi yediği için suçlu hissediyor", "Partiye gitmek istemiyor"], "answer": "Konunun peşini bırakmaya niyeti yok", "line": 9, "key": "the principle of the thing", "skill": "attitude"},
+            {"kind": "who", "quote": "shouldn't we just buy another cake?", "answer": "Lena"}
+          ],
+          "idioms": ["point the finger", "the principle of the thing"]
         },
         {
           "id": "s9u5t",
@@ -5167,6 +5322,37 @@
           ]
         },
         {
+          "id": "s9u6d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Tatbikat raporu",
+          "description": "Kütüphane yönetiminden iki kişi, başarısız yangın tatbikatının ardından raporun öneriler bölümünü yazıyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Margaret", "gender": "female", "avatar": "👵"},
+            {"name": "Samuel", "gender": "male", "avatar": "👴"}
+          ],
+          "lines": [
+            {"speaker": "Margaret", "text": "Right, Samuel, the recommendations. After yesterday's fire drill, I'd suggest we not sugar-coat anything.", "translation": "Evet Samuel, öneriler kısmı. Dünkü yangın tatbikatından sonra hiçbir şeyi güzelleştirmemeyi öneririm."},
+            {"speaker": "Samuel", "text": "Agreed. It took eleven minutes to empty the building, and the target is four. I propose that every floor be assigned a trained warden.", "translation": "Katılıyorum. Binanın boşaltılması on bir dakika sürdü, hedef ise dört. Her kata eğitimli bir sorumlu atanmasını öneriyorum."},
+            {"speaker": "Margaret", "text": "Good. It is also essential that the side exit be kept clear. Someone had stacked boxes in front of it.", "translation": "Güzel. Yan çıkışın boş tutulması da şart. Biri önüne kolileri yığmıştı."},
+            {"speaker": "Samuel", "text": "I'll word that carefully. The facilities manager is already feeling rather defensive.", "translation": "Bunu dikkatli ifade edeyim. Tesis müdürü zaten epey savunmaya geçmiş durumda."},
+            {"speaker": "Margaret", "text": "Understandably, but safety isn't up for negotiation. I'd also recommend that future drills be held without warning.", "translation": "Anlaşılır bir durum ama güvenlik pazarlık konusu değil. Bundan sonraki tatbikatların habersiz yapılmasını da öneririm."},
+            {"speaker": "Samuel", "text": "Staff won't love that. Last time, half of them knew the date and conveniently went out for coffee.", "translation": "Çalışanlar buna pek sevinmez. Geçen sefer yarısı tarihi biliyordu ve tam zamanında kahve içmeye çıktı."},
+            {"speaker": "Margaret", "text": "Which rather proves my point. If people know it's coming, it isn't a drill, it's a rehearsal.", "translation": "Bu da benim tezimi kanıtlıyor. İnsanlar geleceğini biliyorsa bu tatbikat değil, provadır."},
+            {"speaker": "Samuel", "text": "Fair. Shall we insist that the report be reviewed by the board before it's circulated?", "translation": "Doğru. Raporun dağıtılmadan önce yönetim kurulunca incelenmesini şart koşalım mı?"},
+            {"speaker": "Margaret", "text": "Yes, otherwise it'll leak by Friday and we'll be fighting fires of a different kind.", "translation": "Evet, yoksa cumaya kadar sızar ve bambaşka türden yangınları söndürmekle uğraşırız."},
+            {"speaker": "Samuel", "text": "Very droll. I'll have a draft on your desk by tomorrow morning.", "translation": "Çok esprili. Yarın sabaha kadar taslak masanda olur."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Bina tatbikatta kaç dakikada boşaltıldı?", "choices": ["Dört", "On bir", "On dört"], "answer": "On bir", "line": 1, "key": "eleven minutes", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Margaret tatbikatların önceden duyurulmasını öneriyor.", "answer": false, "line": 4, "key": "without warning", "skill": "detail"},
+            {"kind": "choice", "prompt": "Margaret \"fighting fires of a different kind\" derken neyi kastediyor?", "choices": ["Rapor sızarsa çıkacak krizlerle uğraşmayı", "Binada çıkabilecek gerçek bir yangını", "Yeni bir tatbikat düzenlemeyi"], "answer": "Rapor sızarsa çıkacak krizlerle uğraşmayı", "line": 8, "key": "fighting fires of a different kind", "skill": "inference"},
+            {"kind": "who", "quote": "already feeling rather defensive", "answer": "Samuel"}
+          ],
+          "idioms": ["sugar-coat", "up for negotiation", "fighting fires"]
+        },
+        {
           "id": "s9u6t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -6106,6 +6292,39 @@
               ]
             }
           ]
+        },
+        {
+          "id": "s9u7d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Rötarlı uçuş",
+          "description": "Havalimanında rötar yapan Lizbon uçuşunu bekleyen iki yabancı kısa ve doğal tepkilerle sohbet ediyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Rachel", "gender": "female", "avatar": "👧"},
+            {"name": "Tariq", "gender": "male", "avatar": "🧔"}
+          ],
+          "lines": [
+            {"speaker": "Tariq", "text": "Excuse me, is this the gate for Lisbon? The screen keeps changing its mind.", "translation": "Affedersiniz, Lizbon kapısı burası mı? Ekran sürekli fikir değiştiriyor."},
+            {"speaker": "Rachel", "text": "I believe so, although it's been delayed twice already. I'm hoping it won't be again.", "translation": "Sanırım öyle, gerçi şimdiden iki kez ertelendi. Bir daha ertelenmez umarım."},
+            {"speaker": "Tariq", "text": "So am I. I've got a connection in Lisbon at nine. Have you heard any announcements?", "translation": "Ben de öyle umuyorum. Lizbon'da saat dokuzda aktarmam var. Herhangi bir anons duydunuz mu?"},
+            {"speaker": "Rachel", "text": "No, and neither has anyone else, as far as I can tell. The staff seem to have vanished.", "translation": "Hayır, anladığım kadarıyla kimse duymadı. Görevliler sanki buharlaşmış."},
+            {"speaker": "Tariq", "text": "Typical. If we leave after eight, I'll miss it. If not, I might make it by the skin of my teeth.", "translation": "Tipik. Sekizden sonra kalkarsak kaçırırım. Kalkmazsak belki kıl payı yetişirim."},
+            {"speaker": "Rachel", "text": "And if you do miss it? Is there a later one?", "translation": "Ya kaçırırsanız? Daha geç bir uçuş var mı?"},
+            {"speaker": "Tariq", "text": "I think so, but I'd rather not find out. I promised my daughter I'd be at her graduation.", "translation": "Sanırım var ama öğrenmek istemem. Kızıma mezuniyetinde orada olacağıma söz verdim."},
+            {"speaker": "Rachel", "text": "Then let's hope the airline pulls its socks up. Oh, look, the screen's changed again.", "translation": "O zaman umalım da havayolu kendine çeki düzen versin. Aa, bakın, ekran yine değişti."},
+            {"speaker": "Tariq", "text": "Please tell me it says boarding.", "translation": "Lütfen biniş yazıyor deyin."},
+            {"speaker": "Rachel", "text": "Sort of. It says boarding soon, which in airport language could mean anything.", "translation": "Bir bakıma. \"Biniş yakında\" yazıyor; havalimanı dilinde bu her anlama gelebilir."},
+            {"speaker": "Tariq", "text": "I'll take it. Things can only get better from here, can't they?", "translation": "Buna da razıyım. Bundan sonra ancak daha iyi olabilir, değil mi?"},
+            {"speaker": "Rachel", "text": "I wouldn't count on it, but I hope so, for your daughter's sake.", "translation": "Pek güvenmezdim ama kızınızın hatırı için umarım öyledir."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Tariq'in Lizbon'daki aktarma uçuşu saat kaçta?", "choices": ["Sekizde", "Dokuzda", "On birde"], "answer": "Dokuzda", "line": 2, "key": "at nine", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Tariq kızının mezuniyet törenine yetişmek istiyor.", "answer": true, "line": 6, "key": "my daughter", "skill": "detail"},
+            {"kind": "choice", "prompt": "Rachel \"in airport language could mean anything\" derken nasıl bir tavır sergiliyor?", "choices": ["Alaycı ve şüpheci", "Heyecanlı ve iyimser", "Öfkeli ve saldırgan"], "answer": "Alaycı ve şüpheci", "line": 9, "key": "could mean anything", "skill": "attitude"},
+            {"kind": "who", "quote": "So am I.", "answer": "Tariq"}
+          ],
+          "idioms": ["by the skin of my teeth", "pulls its socks up"]
         },
         {
           "id": "s9u7t",
@@ -7075,6 +7294,37 @@
           ]
         },
         {
+          "id": "s9u8d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Banka mı, girişim mi?",
+          "description": "Amira, iki iş teklifi arasında kalan Jonas'la seçeneklerin artısını eksisini karşılaştırıyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Amira", "gender": "female", "avatar": "🧕"},
+            {"name": "Jonas", "gender": "male", "avatar": "👨"}
+          ],
+          "lines": [
+            {"speaker": "Amira", "text": "So, the startup or the bank? You've been agonising over it for a week.", "translation": "Eee, girişim mi banka mı? Bir haftadır bunu dert ediniyorsun."},
+            {"speaker": "Jonas", "text": "I know. The bank offers stability, whereas the startup offers shares that may or may not be worth anything.", "translation": "Biliyorum. Banka istikrar sunuyor; girişim ise değeri olup olmayacağı belli olmayan hisseler."},
+            {"speaker": "Amira", "text": "Given that you've just taken out a mortgage, stability doesn't sound like the worst thing in the world.", "translation": "Daha yeni konut kredisi çektiğini düşünürsek, istikrar dünyanın en kötü şeyi gibi durmuyor."},
+            {"speaker": "Jonas", "text": "True. Notwithstanding the salary, though, the bank job sounds mind-numbing. I'd be approving loans all day.", "translation": "Doğru. Ama maaşa rağmen banka işi insanı uyuşturacak kadar sıkıcı görünüyor. Bütün gün kredi onaylayacağım."},
+            {"speaker": "Amira", "text": "And the startup? Insofar as I understand it, they haven't made a profit yet.", "translation": "Ya girişim? Anladığım kadarıyla henüz kâr etmediler."},
+            {"speaker": "Jonas", "text": "Not yet, no. They have a hundred thousand users, albeit mostly people who signed up for the free trial.", "translation": "Henüz değil. Yüz bin kullanıcıları var, gerçi çoğu ücretsiz denemeye kaydolanlar."},
+            {"speaker": "Amira", "text": "So, in other words, a leap in the dark with a mortgage on your back.", "translation": "Yani başka bir deyişle, sırtında bir kredi yüküyle karanlığa atlamak."},
+            {"speaker": "Jonas", "text": "When you put it like that, it sounds reckless. Nonetheless, I'm thirty-four. If not now, when?", "translation": "Öyle deyince pervasızca geliyor. Yine de otuz dört yaşındayım. Şimdi değilse ne zaman?"},
+            {"speaker": "Amira", "text": "Next year, when the mortgage is smaller? I'm not trying to rain on your parade, I just want you to see the whole picture.", "translation": "Seneye, kredi azalınca? Hevesini kırmaya çalışmıyorum, sadece resmin tamamını görmeni istiyorum."},
+            {"speaker": "Jonas", "text": "I know. Maybe I'll ask the startup to match the bank's salary and see how badly they want me.", "translation": "Biliyorum. Belki girişimden bankanın maaşını eşitlemesini isterim, bakalım beni ne kadar istiyorlar."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Girişimin kullanıcılarının çoğu kimlerden oluşuyor?", "choices": ["Ücretsiz denemeye kaydolanlar", "Büyük şirketler", "Yatırımcılar"], "answer": "Ücretsiz denemeye kaydolanlar", "line": 5, "key": "free trial", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Jonas yakın zamanda konut kredisi çekti.", "answer": true, "line": 2, "key": "taken out a mortgage", "skill": "detail"},
+            {"kind": "choice", "prompt": "Amira girişim fikrine karşı nasıl bir tutum içinde?", "choices": ["Temkinli ve endişeli", "Coşkulu ve destekleyici", "Tamamen ilgisiz"], "answer": "Temkinli ve endişeli", "line": 6, "key": "a leap in the dark", "skill": "attitude"},
+            {"kind": "who", "quote": "If not now, when?", "answer": "Jonas"}
+          ],
+          "idioms": ["a leap in the dark", "rain on your parade"]
+        },
+        {
           "id": "s9u8t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -7921,6 +8171,37 @@
               ]
             }
           ]
+        },
+        {
+          "id": "s9u9d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Balıkçıllar sayesinde",
+          "description": "Felix, ilk buluşmasının beklenmedik biçimde nasıl düzeldiğini iş arkadaşı Grace'e anlatıyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Grace", "gender": "female", "avatar": "👩"},
+            {"name": "Felix", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Grace", "text": "So? How did the date go? You've been suspiciously quiet all morning.", "translation": "Eee? Buluşma nasıl geçti? Bütün sabah şüphe uyandıracak kadar sessizsin."},
+            {"speaker": "Felix", "text": "It turned out to be nothing like I expected. She came across as quite cold at first, almost bored.", "translation": "Hiç beklediğim gibi çıkmadı. İlk başta oldukça soğuk, hatta sıkılmış biri gibi göründü."},
+            {"speaker": "Grace", "text": "Oh no. Please tell me you didn't try to win her over with your famous bird facts.", "translation": "Eyvah. Lütfen onu meşhur kuş bilgilerinle etkilemeye çalışmadığını söyle."},
+            {"speaker": "Felix", "text": "I played them down, actually. I've learned my lesson. But then she brought up birdwatching herself.", "translation": "Aslında onları geri planda tuttum. Dersimi aldım. Ama sonra kuş gözlemciliği konusunu kendisi açtı."},
+            {"speaker": "Grace", "text": "You're kidding. So pigeons broke the ice?", "translation": "Şaka yapıyorsun. Yani buzları güvercinler mi kırdı?"},
+            {"speaker": "Felix", "text": "Herons, technically. It turns out she volunteers at a nature reserve, and that's what she'd been playing down.", "translation": "Teknik olarak balıkçıllar. Meğer bir doğa koruma alanında gönüllüymüş; geri planda tuttuğu şey de buymuş."},
+            {"speaker": "Grace", "text": "So you were both hiding your nerdy side. That's either a match made in heaven or a disaster waiting to happen.", "translation": "Yani ikiniz de inek tarafınızı saklıyordunuz. Bu ya cennette kesilmiş bir nikah ya da kapıdaki bir felaket."},
+            {"speaker": "Felix", "text": "We'll see. She suggested a walk on Sunday, which, I gather, is how birdwatchers say they're interested.", "translation": "Göreceğiz. Pazar günü yürüyüş önerdi; anladığım kadarıyla kuş gözlemcileri ilgilerini böyle belli ediyor."},
+            {"speaker": "Grace", "text": "Just don't put her off by bringing binoculars to the first coffee.", "translation": "Yalnız ilk kahveye dürbün getirip onu soğutma."},
+            {"speaker": "Felix", "text": "Too late. I've already bought a second pair, so we won't have to share.", "translation": "Çok geç. Paylaşmak zorunda kalmayalım diye ikinci bir dürbün bile aldım."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Kadın nerede gönüllü olarak çalışıyor?", "choices": ["Bir hayvanat bahçesinde", "Bir doğa koruma alanında", "Bir kütüphanede"], "answer": "Bir doğa koruma alanında", "line": 5, "key": "nature reserve", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Felix buluşmada kuşlarla ilgili bilgilerini hemen öne çıkardı.", "answer": false, "line": 3, "key": "I played them down", "skill": "detail"},
+            {"kind": "choice", "prompt": "Felix pazar yürüyüşü önerisini nasıl yorumluyor?", "choices": ["Kadının ondan hoşlandığının bir işareti olarak", "Kibar bir veda olarak", "Sadece bir spor önerisi olarak"], "answer": "Kadının ondan hoşlandığının bir işareti olarak", "line": 7, "key": "how birdwatchers say they're interested", "skill": "inference"},
+            {"kind": "who", "quote": "suspiciously quiet all morning", "answer": "Grace"}
+          ],
+          "idioms": ["broke the ice", "a match made in heaven"]
         },
         {
           "id": "s9u9t",
@@ -8874,6 +9155,38 @@
           ]
         },
         {
+          "id": "s9u10d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Otoparka bakan oda",
+          "description": "Hayal kırıklığı yaratan bir otel konaklamasının ardından Olivia otel müdürüyle telefonda görüşüyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Olivia", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Bruno", "gender": "male", "avatar": "🤵"}
+          ],
+          "lines": [
+            {"speaker": "Bruno", "text": "Good afternoon, Ms Grant. I understand you'd like to discuss your stay with us.", "translation": "İyi günler Bayan Grant. Bizdeki konaklamanızı konuşmak istediğinizi anlıyorum."},
+            {"speaker": "Olivia", "text": "I would. I'll be frank: we were bitterly disappointed. The sea view turned out to be a view of the car park.", "translation": "Evet. Açık konuşacağım: büyük bir hayal kırıklığı yaşadık. Deniz manzarası, otopark manzarası çıktı."},
+            {"speaker": "Bruno", "text": "I'm fully aware of the problem, and please accept my sincere apologies. That room should never have been advertised that way.", "translation": "Sorunun tamamen farkındayım, lütfen içten özürlerimi kabul edin. O oda asla öyle tanıtılmamalıydı."},
+            {"speaker": "Olivia", "text": "Then there was the noise. Heavy traffic until two in the morning, and building work from seven.", "translation": "Bir de gürültü vardı. Gece ikiye kadar yoğun trafik, sabah yediden itibaren de inşaat."},
+            {"speaker": "Bruno", "text": "The construction next door has raised serious concerns among our guests, and we've taken it up with the council.", "translation": "Yandaki inşaat misafirlerimiz arasında ciddi kaygılara yol açtı; konuyu belediyeye ilettik."},
+            {"speaker": "Olivia", "text": "That's all very well, but it doesn't give me back my sleep. I'd hardly call it a relaxing break.", "translation": "Hepsi güzel de, kaybettiğim uykuyu geri getirmiyor. Buna pek dinlendirici bir tatil denemez."},
+            {"speaker": "Bruno", "text": "Quite. What I can offer is a full refund for two nights and a complimentary stay later in the year.", "translation": "Kesinlikle. Size iki gecenin ücretinin tamamını iade etmeyi ve yıl içinde ücretsiz bir konaklama sunabilirim."},
+            {"speaker": "Olivia", "text": "A complimentary stay. In the same room?", "translation": "Ücretsiz konaklama. Aynı odada mı?"},
+            {"speaker": "Bruno", "text": "Highly unlikely, I promise. We'd put you in a suite on the top floor, well away from the building site.", "translation": "Hiç sanmam, söz veriyorum. Sizi en üst kattaki bir süite, inşaat alanından epey uzağa yerleştiririz."},
+            {"speaker": "Olivia", "text": "I'll think it over. I must say, you've taken the wind out of my sails. I'd prepared a much angrier speech.", "translation": "Düşüneceğim. Söylemeliyim ki beni epey yumuşattınız. Çok daha öfkeli bir konuşma hazırlamıştım."},
+            {"speaker": "Bruno", "text": "Then I deeply regret that it's gone to waste.", "translation": "O halde boşa gittiği için derin bir üzüntü duyuyorum."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "\"Deniz manzaralı\" oda aslında neye bakıyordu?", "choices": ["Otoparka", "Bir parka", "Otelin bahçesine"], "answer": "Otoparka", "line": 1, "key": "a view of the car park", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Otel, iki gecenin ücretinin tamamını iade etmeyi teklif ediyor.", "answer": true, "line": 6, "key": "a full refund for two nights", "skill": "detail"},
+            {"kind": "choice", "prompt": "Görüşmenin sonunda Olivia'nın ruh hali nasıl değişti?", "choices": ["Öfkesi yatıştı", "Daha da sinirlendi", "Hiç değişmedi"], "answer": "Öfkesi yatıştı", "line": 9, "key": "taken the wind out of my sails", "skill": "attitude"},
+            {"kind": "who", "quote": "Highly unlikely, I promise.", "answer": "Bruno"}
+          ],
+          "idioms": ["taken the wind out of my sails", "that's all very well"]
+        },
+        {
           "id": "s9u10t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -9631,6 +9944,37 @@
               ]
             }
           ]
+        },
+        {
+          "id": "s9u11d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Patlamış mısır örneği",
+          "description": "Dersten sonra iki öğrenci, hocanın anlattığı tuzak etkisini notlarını karşılaştırarak özetliyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Priya", "gender": "female", "avatar": "👧"},
+            {"name": "Ethan", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Priya", "text": "Did you get the bit about the decoy effect? I zoned out halfway through, and my notes just say popcorn.", "translation": "Tuzak etkisi kısmını anladın mı? Yarısında dalıp gitmişim, notlarımda sadece \"patlamış mısır\" yazıyor."},
+            {"speaker": "Ethan", "text": "Right, the popcorn example. Basically, a cinema sells small for three pounds and large for seven, and most people buy small.", "translation": "Haa, patlamış mısır örneği. Kısacası, bir sinema küçüğü üç, büyüğü yedi pounda satıyor; çoğu insan küçüğü alıyor."},
+            {"speaker": "Priya", "text": "Fair enough. Seven pounds for popcorn is daylight robbery.", "translation": "Normal. Patlamış mısıra yedi pound düpedüz soygun."},
+            {"speaker": "Ethan", "text": "Exactly. But then they add a medium for six fifty. Suddenly the large looks like a bargain, and sales of large go up.", "translation": "Aynen. Ama sonra altı elliye bir orta boy ekliyorlar. Birden büyük boy kelepir gibi görünüyor ve büyük boy satışları artıyor."},
+            {"speaker": "Priya", "text": "So the medium isn't really there to be sold. To put it another way, it's bait.", "translation": "Yani orta boy aslında satılmak için orada değil. Başka bir deyişle, yem."},
+            {"speaker": "Ethan", "text": "That was her point, yes. Mind you, she also said it doesn't always work, especially when people know the trick.", "translation": "Hocanın vurgusu buydu, evet. Gerçi bunun her zaman işe yaramadığını da söyledi, özellikle insanlar numarayı biliyorsa."},
+            {"speaker": "Priya", "text": "Which, after this lecture, we now do. So I suppose we're immune.", "translation": "Bu dersten sonra artık biliyoruz. Yani sanırım bağışıklığımız var."},
+            {"speaker": "Ethan", "text": "Having said that, I bought a large coffee this morning for exactly that reason, so I wouldn't bank on it.", "translation": "Öyle demişken, bu sabah tam da bu yüzden büyük boy kahve aldım; o yüzden buna pek güvenmezdim."},
+            {"speaker": "Priya", "text": "In short, then: the middle option exists to make the expensive one look reasonable.", "translation": "Kısacası: ortadaki seçenek, pahalı olanı makul göstermek için var."},
+            {"speaker": "Ethan", "text": "Spot on. Write that down instead of popcorn and you'll be fine in the exam.", "translation": "Tam isabet. \"Patlamış mısır\" yerine bunu yaz, sınavda sorun yaşamazsın."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Örnekteki orta boy patlamış mısır kaç pound?", "choices": ["Üç", "Altı elli", "Yedi"], "answer": "Altı elli", "line": 3, "key": "six fifty", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Hocaya göre bu etki her zaman işe yarar.", "answer": false, "line": 5, "key": "it doesn't always work", "skill": "detail"},
+            {"kind": "choice", "prompt": "Ethan sabah aldığı kahveden neden söz ediyor?", "choices": ["Etkiyi bilmesine rağmen ondan etkilendiğini göstermek için", "Kahveyi çok sevdiğini anlatmak için", "Priya'ya kahve ısmarlamayı teklif etmek için"], "answer": "Etkiyi bilmesine rağmen ondan etkilendiğini göstermek için", "line": 7, "key": "for exactly that reason", "skill": "inference"},
+            {"kind": "who", "quote": "it's bait", "answer": "Priya"}
+          ],
+          "idioms": ["daylight robbery", "bank on it"]
         },
         {
           "id": "s9u11t",
@@ -10524,6 +10868,37 @@
               ]
             }
           ]
+        },
+        {
+          "id": "s9u12d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Araçsız hafta sonları",
+          "description": "İki belediye meclis üyesi, tarihi çarşıyı hafta sonları trafiğe kapatma önerisini tartışıyor.",
+          "cefr": "C1",
+          "speakers": [
+            {"name": "Helena", "gender": "female", "avatar": "👩‍💼"},
+            {"name": "Arthur", "gender": "male", "avatar": "👨‍💼"}
+          ],
+          "lines": [
+            {"speaker": "Helena", "text": "Arthur, I know you're against car-free weekends, but hear me out. Arguably, the old town is where pedestrians should come first.", "translation": "Arthur, araçsız hafta sonlarına karşı olduğunu biliyorum ama bir dinle. Tartışmaya açık olsa da eski şehir, yayaların öncelikli olması gereken yer."},
+            {"speaker": "Arthur", "text": "I'd be inclined to agree, in principle. It could be argued, though, that shop owners will pay the price.", "translation": "İlke olarak katılmaya meyilliyim. Yine de bunun bedelini esnafın ödeyeceği söylenebilir."},
+            {"speaker": "Helena", "text": "Admittedly, some will lose passing trade. But evidence from other towns suggests that footfall tends to rise.", "translation": "Kabul, bazıları yoldan geçen müşteriyi kaybedecek. Ama başka şehirlerden gelen veriler yaya trafiğinin artma eğiliminde olduğunu gösteriyor."},
+            {"speaker": "Arthur", "text": "Tends to. That phrase is doing a lot of heavy lifting.", "translation": "\"Eğiliminde.\" O ifade bütün yükü sırtlanmış durumda."},
+            {"speaker": "Helena", "text": "Fair. Nothing's guaranteed. Then again, the current situation is hardly a success story. Half the shops on the high street are empty.", "translation": "Haklısın, hiçbir şeyin garantisi yok. Öte yandan mevcut durum da pek başarı hikâyesi sayılmaz. Ana caddedeki dükkânların yarısı boş."},
+            {"speaker": "Arthur", "text": "True, but I'm wary of throwing the baby out with the bathwater. Elderly residents rely on being dropped at the door.", "translation": "Doğru, ama işin iyisini de kötüsüyle birlikte çöpe atmaktan çekiniyorum. Yaşlı sakinler kapıya kadar arabayla bırakılmaya muhtaç."},
+            {"speaker": "Helena", "text": "That's a reasonable concern, and to some extent we've addressed it. There'd be a free electric shuttle from the car park.", "translation": "Haklı bir kaygı ve bir ölçüde bunu ele aldık. Otoparktan ücretsiz bir elektrikli servis olacak."},
+            {"speaker": "Arthur", "text": "Hmm. It sounds lovely on paper. Who's paying for it?", "translation": "Hımm. Kâğıt üzerinde hoş görünüyor. Parasını kim ödeyecek?"},
+            {"speaker": "Helena", "text": "A small parking surcharge. Look, why don't we try it for one summer and let the figures speak for themselves?", "translation": "Otoparka küçük bir ek ücret. Bak, neden bir yaz deneyip rakamların kendi adına konuşmasına izin vermiyoruz?"},
+            {"speaker": "Arthur", "text": "A trial I could live with. But if trade drops, I'll be the first to say I told you so.", "translation": "Bir denemeye razı olabilirim. Ama satışlar düşerse \"ben demiştim\" diyen ilk kişi ben olurum."}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Yaşlı sakinler için ne öneriliyor?", "choices": ["Ücretsiz elektrikli servis", "İndirimli taksi", "Özel park yerleri"], "answer": "Ücretsiz elektrikli servis", "line": 6, "key": "free electric shuttle", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Helena'ya göre ana caddedeki dükkânların yarısı boş.", "answer": true, "line": 4, "key": "Half the shops", "skill": "detail"},
+            {"kind": "choice", "prompt": "Arthur \"That phrase is doing a lot of heavy lifting\" derken nasıl bir tavır içinde?", "choices": ["Kanıtlara şüpheyle yaklaşıyor", "Helena'yı tamamen destekliyor", "Konuyla hiç ilgilenmiyor"], "answer": "Kanıtlara şüpheyle yaklaşıyor", "line": 3, "key": "doing a lot of heavy lifting", "skill": "attitude"},
+            {"kind": "who", "quote": "let the figures speak for themselves", "answer": "Helena"}
+          ],
+          "idioms": ["doing a lot of heavy lifting", "throwing the baby out with the bathwater"]
         },
         {
           "id": "s9u12t",

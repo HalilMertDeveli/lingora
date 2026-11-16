@@ -762,6 +762,31 @@
           ]
         },
         {
+          "id": "s2u13d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Aras'ın günü",
+          "description": "Nehir ödevi için Aras'a gününü soruyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Nehir", "gender": "female", "avatar": "👧"},
+            {"name": "Aras", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Nehir", "text": "Aras, it is for my homework. Tell me about your day.", "translation": "Aras, ödevim için. Bana gününü anlat."},
+            {"speaker": "Aras", "text": "OK. I get up at seven and I have breakfast with my dad.", "translation": "Tamam. Yedide kalkarım ve babamla kahvaltı yaparım."},
+            {"speaker": "Nehir", "text": "What time does school start?", "translation": "Okul saat kaçta başlıyor?"},
+            {"speaker": "Aras", "text": "It starts at eight thirty and finishes at three.", "translation": "Sekiz buçukta başlıyor ve üçte bitiyor."},
+            {"speaker": "Nehir", "text": "And after school?", "translation": "Peki okuldan sonra?"},
+            {"speaker": "Aras", "text": "I play football, I do my homework and I go to bed at ten. Well, ten thirty!", "translation": "Futbol oynarım, ödevimi yaparım ve onda yatarım. Yani, on buçukta!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Okul saat kaçta başlıyor?", "choices": ["Yedide", "Sekiz buçukta", "Üçte"], "answer": "Sekiz buçukta", "line": 3, "key": "starts at eight thirty", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Aras kahvaltıyı babasıyla yapıyor.", "answer": true, "line": 1, "key": "with my dad", "skill": "detail"},
+            {"kind": "who", "quote": "And after school?", "answer": "Nehir"}
+          ]
+        },
+        {
           "id": "s2u13t",
           "type": "test",
           "title": "Ünite sınavı",
@@ -1514,6 +1539,31 @@
               ],
               "taskId": "s2u14l4w"
             }
+          ]
+        },
+        {
+          "id": "s2u14d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Eczane nerede?",
+          "description": "Anna sokakta Hasan'a eczanenin yolunu soruyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Anna", "gender": "female", "avatar": "👱‍♀️"},
+            {"name": "Hasan", "gender": "male", "avatar": "👴"}
+          ],
+          "lines": [
+            {"speaker": "Anna", "text": "Excuse me, where is the pharmacy, please?", "translation": "Afedersiniz, eczane nerede acaba?"},
+            {"speaker": "Hasan", "text": "Go straight on. Then take the second street on the right.", "translation": "Düz gidin. Sonra sağdaki ikinci sokağa girin."},
+            {"speaker": "Anna", "text": "The second street on the right. OK. Is it far?", "translation": "Sağdaki ikinci sokak. Tamam. Uzak mı?"},
+            {"speaker": "Hasan", "text": "No, it is near. The pharmacy is next to the bank, opposite the park.", "translation": "Hayır, yakın. Eczane bankanın yanında, parkın karşısında."},
+            {"speaker": "Anna", "text": "Thank you very much!", "translation": "Çok teşekkür ederim!"},
+            {"speaker": "Hasan", "text": "You're welcome. But hurry, it closes at six!", "translation": "Rica ederim. Ama acele edin, altıda kapanıyor!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Anna hangi sokağa girmeli?", "choices": ["Soldaki ikinci sokak", "Sağdaki ikinci sokak", "Sağdaki ilk sokak"], "answer": "Sağdaki ikinci sokak", "line": 1, "key": "second street on the right", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Eczane parkın karşısında.", "answer": true, "line": 3, "key": "opposite the park", "skill": "detail"},
+            {"kind": "who", "quote": "Is it far?", "answer": "Anna"}
           ]
         },
         {
@@ -2277,6 +2327,31 @@
               ],
               "taskId": "s2u15l4w"
             }
+          ]
+        },
+        {
+          "id": "s2u15d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Doğum günü daveti",
+          "description": "Ege, Naz'ı telefonda doğum günü partisine çağırıyor",
+          "cefr": "A1",
+          "speakers": [
+            {"name": "Naz", "gender": "female", "avatar": "👧"},
+            {"name": "Ege", "gender": "male", "avatar": "👦"}
+          ],
+          "lines": [
+            {"speaker": "Ege", "text": "Hi Naz! It is my birthday party on Saturday. Can you come?", "translation": "Selam Naz! Cumartesi doğum günü partim var. Gelebilir misin?"},
+            {"speaker": "Naz", "text": "Oh, thank you! What time is it?", "translation": "Aa, teşekkürler! Saat kaçta?"},
+            {"speaker": "Ege", "text": "At four o'clock, at my house.", "translation": "Saat dörtte, bizim evde."},
+            {"speaker": "Naz", "text": "I'm sorry, I can't. I have a piano lesson on Saturday.", "translation": "Üzgünüm, gelemem. Cumartesi piyano dersim var."},
+            {"speaker": "Ege", "text": "Oh, that is a pity.", "translation": "Ah, ne yazık."},
+            {"speaker": "Naz", "text": "But are you free on Sunday? Let's go for pizza. My treat!", "translation": "Ama pazar günü boş musun? Hadi pizza yemeye gidelim. Benden!"}
+          ],
+          "questions": [
+            {"kind": "choice", "prompt": "Parti saat kaçta?", "choices": ["Üçte", "Dörtte", "Beşte"], "answer": "Dörtte", "line": 2, "key": "four o'clock", "skill": "detail"},
+            {"kind": "trueFalse", "statement": "Naz partiye gidebiliyor.", "answer": false, "line": 3, "key": "I can't", "skill": "detail"},
+            {"kind": "who", "quote": "that is a pity", "answer": "Ege"}
           ]
         },
         {
