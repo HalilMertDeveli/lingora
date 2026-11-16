@@ -89,11 +89,6 @@ Future<void> _answerRight(WidgetTester tester) => _answer(tester, 'cat');
 
 Future<void> _answerWrong(WidgetTester tester) => _answer(tester, 'dog');
 
-Future<void> _closeCard(WidgetTester tester) async {
-  await tester.tap(find.byKey(const ValueKey('stoic-continue')));
-  await tester.pumpAndSettle();
-}
-
 Future<void> _answer(WidgetTester tester, String word) async {
   await tester.tap(find.text(word).last);
   await tester.pump();
@@ -159,32 +154,8 @@ void main() {
     });
   });
 
-  group('frequency', () {
-    test('one card about halfway, between the 4th and 8th answer', () {
-      expect(stoicInterludeAt(5), isNull);
-      expect(stoicInterludeAt(6), 4);
-      expect(stoicInterludeAt(10), 5);
-      expect(stoicInterludeAt(14), 7);
-      expect(stoicInterludeAt(40), 8);
-    });
-
-    test('due only once, only with a question left, only when on', () {
-      bool due({bool enabled = true, bool shown = false, int answered = 4, bool hasNext = true}) =>
-          stoicInterludeDue(
-            enabled: enabled,
-            alreadyShown: shown,
-            answered: answered,
-            total: 6,
-            hasNext: hasNext,
-          );
-      expect(due(), isTrue);
-      expect(due(answered: 3), isFalse);
-      expect(due(shown: true), isFalse);
-      expect(due(enabled: false), isFalse);
-      expect(due(hasNext: false), isFalse);
-    });
-
-    test('the setting is on by default and survives a restart', () {
+  group('setting', () {
+    test('on by default and survives a restart', () {
       expect(const AppSettings().stoicQuotes, isTrue);
       expect(AppSettings.fromJson(const {}).stoicQuotes, isTrue);
       final off = const AppSettings().copyWith(stoicQuotes: false);
@@ -193,38 +164,26 @@ void main() {
   });
 
   group('lesson', () {
-    testWidgets('the card shows once mid-lesson, closes with one tap and the quote is on the result', (
-      tester,
-    ) async {
+    testWidgets('no quote card during the lesson; quote and progress only on the result', (tester) async {
       final prefs = await _pump(tester, _lesson());
-      for (var i = 0; i < 3; i++) {
+      await _answerWrong(tester);
+      await _answerWrong(tester);
+      for (var i = 0; i < 8; i++) {
+        if (find.byKey(const Key('lesson-result')).evaluate().isNotEmpty) break;
+        expect(find.byType(BottomSheet), findsNothing, reason: 'nothing opens over the lesson');
+        expect(prefs.getStringList(stoicRecentKey), isNull, reason: 'no quote picked mid-lesson');
         await _answerRight(tester);
       }
-      expect(find.byKey(const ValueKey('stoic-interlude')), findsNothing);
-
-      await _answerRight(tester); // 4th answer
-      expect(find.byKey(const ValueKey('stoic-interlude')), findsOneWidget);
-      expect(find.text('Bu derste 4/4 doğru'), findsOneWidget);
-      expect(find.textContaining('— '), findsOneWidget);
-      final shownId = prefs.getStringList(stoicRecentKey)!.single;
-
-      await tester.tap(find.byKey(const ValueKey('stoic-continue')));
-      await tester.pumpAndSettle();
-      expect(find.byKey(const ValueKey('stoic-interlude')), findsNothing);
-      expect(find.text('4/6'), findsOneWidget, reason: 'the lesson goes on where it was');
-
-      await _answerRight(tester);
-      expect(find.byKey(const ValueKey('stoic-interlude')), findsNothing, reason: 'once per lesson');
-      await _answerRight(tester);
-
       expect(find.byKey(const Key('lesson-result')), findsOneWidget);
       expect(find.byKey(const ValueKey('result-stoic')), findsOneWidget);
-      final recent = prefs.getStringList(stoicRecentKey)!;
-      expect(recent, hasLength(2));
-      expect(recent.last, isNot(shownId), reason: 'the result quote is a different one');
+      expect(find.byKey(const ValueKey('result-stoic-stats')), findsOneWidget);
+      expect(find.text('Bugün 1 ders'), findsOneWidget);
+      expect(find.text('Toplam 6 doğru'), findsOneWidget);
+      expect(find.textContaining('— '), findsOneWidget);
+      expect(prefs.getStringList(stoicRecentKey), hasLength(1));
     });
 
-    testWidgets('turned off in Profil: no card, no quote on the result', (tester) async {
+    testWidgets('turned off in Profil: no quote on the result', (tester) async {
       await _pump(
         tester,
         _lesson(),
@@ -232,7 +191,6 @@ void main() {
       );
       for (var i = 0; i < 6; i++) {
         await _answerRight(tester);
-        expect(find.byKey(const ValueKey('stoic-interlude')), findsNothing);
       }
       expect(find.byKey(const Key('lesson-result')), findsOneWidget);
       expect(find.byKey(const ValueKey('result-stoic')), findsNothing);
@@ -249,83 +207,6 @@ void main() {
       await tester.pumpAndSettle();
       final saved = jsonDecode(prefs.getString(AppSettingsNotifier.key)!) as Map<String, dynamic>;
       expect(saved['stoicQuotes'], isFalse);
-    });
-  });
-
-  group('after a mistake', () {
-    final now = DateTime(2026, 11, 16, 12);
-    bool due({
-      bool wrong = true,
-      bool shown = false,
-      int mistakes = 2,
-      int answered = 5,
-      int? lastCard,
-      int lastMs = 0,
-    }) => stoicMistakeDue(
-      enabled: true,
-      lastWrong: wrong,
-      alreadyShown: shown,
-      mistakes: mistakes,
-      answered: answered,
-      lastCardAnswered: lastCard,
-      hasNext: true,
-      now: now,
-      lastShownMs: lastMs,
-    );
-
-    test('from the second mistake, right after a wrong answer, once per session', () {
-      expect(due(), isTrue);
-      expect(due(mistakes: 1), isFalse, reason: 'one slip needs no comfort');
-      expect(due(wrong: false), isFalse);
-      expect(due(shown: true), isFalse);
-    });
-
-    test('kept apart from the other card and rare across sessions', () {
-      expect(due(lastCard: 4), isFalse);
-      expect(due(lastCard: 2), isTrue);
-      final recent = now.subtract(const Duration(minutes: 10)).millisecondsSinceEpoch;
-      final old = now.subtract(const Duration(minutes: 31)).millisecondsSinceEpoch;
-      expect(due(lastMs: recent), isFalse);
-      expect(due(lastMs: old), isTrue);
-    });
-
-    test('mistake quotes exist for adults and kids', () {
-      expect(_shipped.where((q) => q.mistake).length, greaterThanOrEqualTo(10));
-      expect(_shipped.where((q) => q.mistake && q.kid).length, greaterThanOrEqualTo(5));
-    });
-
-    testWidgets('two mistakes bring a card once; the halfway card waits a few answers', (tester) async {
-      final prefs = await _pump(tester, _lesson());
-      await _answerWrong(tester);
-      expect(find.byKey(const ValueKey('stoic-interlude')), findsNothing, reason: 'one slip');
-      await _answerWrong(tester);
-      expect(find.text('Yanılmak da öğrenmenin parçası'), findsOneWidget);
-      final shown = _shipped.firstWhere((q) => q.id == prefs.getStringList(stoicRecentKey)!.single);
-      expect(shown.mistake, isTrue);
-      expect(prefs.getInt(stoicMistakeAtKey), isNotNull);
-      await _closeCard(tester);
-
-      await _answerWrong(tester);
-      expect(find.byKey(const ValueKey('stoic-interlude')), findsNothing, reason: 'once per session');
-      await _answerRight(tester); // 4 answered: halfway, but only 2 after the last card
-      expect(find.byKey(const ValueKey('stoic-interlude')), findsNothing);
-      await _answerRight(tester); // 5 answered
-      expect(find.text('Kısa bir mola'), findsOneWidget);
-      await _closeCard(tester);
-    });
-
-    testWidgets('within half an hour of the last one, mistakes bring no card', (tester) async {
-      await _pump(
-        tester,
-        _lesson(),
-        prefs: {
-          stoicMistakeAtKey: DateTime.now().subtract(const Duration(minutes: 5)).millisecondsSinceEpoch,
-        },
-      );
-      await _answerWrong(tester);
-      await _answerWrong(tester);
-      await _answerWrong(tester);
-      expect(find.text('Yanılmak da öğrenmenin parçası'), findsNothing);
     });
   });
 }

@@ -72,8 +72,7 @@ class AppearanceSettings extends ConsumerWidget {
             contentPadding: EdgeInsets.zero,
             title: Text('Stoacı sözler', style: t.titleMedium),
             subtitle: Text(
-              "Ders arasında ve sonunda Marcus Aurelius, Seneca ya da Epiktetos'tan kısa bir söz ve "
-              'bugün yaptıkların.',
+              "Ders bitince Marcus Aurelius, Seneca ya da Epiktetos'tan kısa bir söz ve bugün yaptıkların.",
               style: t.bodySmall,
             ),
             value: s.stoicQuotes,

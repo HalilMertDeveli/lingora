@@ -1,6 +1,6 @@
 # Stoacı sözler
 
-Ders ve pratik sırasında, ders sonunda ve bazen hatadan sonra gösterilen kısa sözler. Veri dosyası `assets/quotes/stoic.json`, kod `lib/data/stoic.dart` ve `lib/ui/stoic_card.dart`.
+Ders ve pratik bitince sonuç ekranında gösterilen kısa sözler. Ders sırasında söz kartı çıkmaz; kullanıcı dersin bölünmesini istemedi. Veri dosyası `assets/quotes/stoic.json`, kod `lib/data/stoic.dart` ve `lib/ui/stoic_card.dart`.
 
 ## Kaynaklar (telif hakkı serbest)
 
@@ -19,16 +19,15 @@ Ders ve pratik sırasında, ders sonunda ve bazen hatadan sonra gösterilen kıs
 
 - `id`, `author` (`marcus` / `seneca` / `epictetus`), `work` (`meditations` / `letters` / `enchiridion` / `discourses`), `ref`, `en`, `tr`.
 - `kid: true`: Çocuk modunda yalnızca bu sade sözler çıkar.
-- `mistake: true`: hatadan sonraki kartta yalnızca bunlar çıkar. Bu sözler yargı, sabır ve öğrenme üzerinedir.
 
 ## Ne zaman çıkar
 
-- **Ara kart:** Her ders ya da pratikte bir kez, yaklaşık yarıda çıkar; 4. ile 8. cevap arasında, `stoicInterludeAt`. 6 sorudan kısa oturumlarda ve ünite sınavlarında çıkmaz.
-- **Hatadan sonra:** Oturumdaki 2. yanlıştan itibaren, yanlış cevabın hemen ardından çıkar. Oturumda en fazla bir kez gelir. Diğer karttan en az 3 cevap uzakta durur. İki oturum arasında en az 30 dakika bekler (`stoic_mistake_at_v1`). Tek bir yanlış kart getirmez.
-- **Ders sonu:** Sonuç ekranında, sayaçların altında küçük bir söz kartı çıkar.
-- Kart bir dokunuşla, "Devam" düğmesiyle, boşluğa dokununca ya da geri tuşuyla kapanır. XP'yi, sayaçları ve "kaldığın yerden devam" kaydını değiştirmez.
+- **Ders sonu:** Sonuç ekranında, sayaçların altında bir kart çıkar. Kartın üstünde bugün kaç ders yapıldığı ve toplam doğru sayısı, altında söz var.
+- Ünite sınavlarının sonunda söz çıkmaz.
 - Son gösterilen 20 söz tekrar gelmez (`stoic_recent_v1`).
-- Profil > Görünüm > "Stoacı sözler" anahtarıyla hepsi kapanır.
+- Çocuk modunda yalnızca sade sözler (`kid`) seçilir.
+- Profil > Görünüm > "Stoacı sözler" anahtarıyla kapanır.
+- Ders içindeki kısa övgüler ve atasözleri ayrı bir özelliktir; `lib/ui/session.dart` dosyasında, `teaPraises` ve `proverbPraises` listelerinde.
 
 ## Yeni söz eklemek
 
