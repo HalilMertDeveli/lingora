@@ -57,6 +57,12 @@ class ProfileScreen extends ConsumerWidget {
             ),
           ],
         ),
+        // Account first: signing in is how progress survives a new phone, so
+        // it must not hide below the settings.
+        const SizedBox(height: 24),
+        Text('Hesap', style: t.titleLarge),
+        const SizedBox(height: 12),
+        const AccountSection(),
         const SizedBox(height: 24),
         Text('İstatistikler', style: t.titleLarge),
         const SizedBox(height: 12),
@@ -154,10 +160,6 @@ class ProfileScreen extends ConsumerWidget {
         const ReminderSettings(),
         const SizedBox(height: 24),
         const OrgSection(),
-        Text('Hesap', style: t.titleLarge),
-        const SizedBox(height: 12),
-        const AccountSection(),
-        const SizedBox(height: 24),
         Text('Görünüm', style: t.titleLarge),
         const SizedBox(height: 12),
         const AppearanceSettings(),

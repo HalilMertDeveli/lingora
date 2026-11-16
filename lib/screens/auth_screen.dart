@@ -46,7 +46,12 @@ class _AuthScreenState extends State<AuthScreen> {
       if (done != null) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(done)));
       if (close) Navigator.of(context).pop(true);
     } on AccountException catch (e) {
-      if (mounted) setState(() => _error = e.message);
+      // On "Giriş yap" a wrong password and a missing account look the same;
+      // newcomers usually just need the other tab.
+      final hint = !_register && e.message == authErrorTr('invalid-credential')
+          ? '${e.message} Hesabın yoksa üstten "Hesap oluştur"a geç.'
+          : e.message;
+      if (mounted) setState(() => _error = hint);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
