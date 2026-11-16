@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/progress.dart';
+import '../data/resume.dart';
 import '../nav/nav_target.dart';
 import '../nav/tab_navigator.dart';
 import '../nav/top_bar.dart';
@@ -18,6 +19,7 @@ import 'path_screen.dart';
 import 'practice_hub_screen.dart';
 import 'profile_screen.dart';
 import 'quests_screen.dart';
+import 'session_resume.dart';
 import 'vocab/dev_scenario_screen.dart';
 import 'vocab/vocab_home_screen.dart';
 
@@ -58,7 +60,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void initState() {
     super.initState();
     _reset(ref.read(trackProvider));
+    _restoreTab();
     WidgetsBinding.instance.addPostFrameCallback((_) => _settleLeague());
+    // A lesson the system closed in the background opens again; a
+    // notification tap (pending target) wins over it.
+    if (ref.read(resumeStoreProvider).hasRecord && ref.read(pendingNavTargetProvider) == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) resumeSavedSession(context, ref);
+      });
+    }
     // Keep scheduled reminders in sync with progress (e.g. skip today's
     // reminder once a lesson is done).
     ref.listenManual<Progress>(
@@ -68,7 +78,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       fireImmediately: true,
     );
     ref.listenManual<Track>(trackProvider, (_, next) {
-      if (next.id != _trackId) setState(() => _reset(next));
+      if (next.id != _trackId) {
+        setState(() => _reset(next));
+        _saveTab();
+      }
     });
     ref.listenManual<NavTarget?>(pendingNavTargetProvider, (_, target) {
       if (target != null) WidgetsBinding.instance.addPostFrameCallback((_) => _open(target));
@@ -93,6 +106,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ..clear()
       ..add(_tabs.first);
   }
+
+  /// Opens the tab that was selected before the app was closed (Android
+  /// may kill it in the background), when the track still has it.
+  void _restoreTab() {
+    final name = ref.read(prefsProvider).getString(homeTabKey);
+    final i = _tabs.indexWhere((t) => t.name == name);
+    if (i <= 0) return;
+    _index = i;
+    _opened.add(_tabs[i]);
+  }
+
+  void _saveTab() => ref.read(prefsProvider).setString(homeTabKey, _tabs[_index].name);
 
   GlobalKey<TabNavigatorState> _keyOf(AppTab tab) => _navigators.putIfAbsent(
     tab,
@@ -126,6 +151,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       _index = i;
       _opened.add(_tabs[i]);
     });
+    _saveTab();
   }
 
   /// Android back, rule 4.
@@ -135,6 +161,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       nav.maybePop();
     } else if (_index != 0) {
       setState(() => _index = 0);
+      _saveTab();
     } else {
       SystemNavigator.pop();
     }
@@ -153,6 +180,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       _index = index;
       _opened.add(_tabs[index]);
     });
+    _saveTab();
   }
 
   Widget _root(AppTab tab) => switch (tab) {
