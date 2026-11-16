@@ -75,4 +75,29 @@ void main() {
     File('${dir.path}/$key').writeAsBytesSync(wav(value));
     stdout.writeln('assets/sfx/$key ${value.length * 2 ~/ 1024} KB');
   }
+
+  // Reminder notification: three light, overlapping bell notes, like a
+  // spoon on a tea glass. Android plays it from res/raw.
+  final raw = Directory('android/app/src/main/res/raw')..createSync(recursive: true);
+  final bell = mix([
+    (0, note(1318.5, 700, gain: 0.45)),
+    (140, note(1568.0, 700, gain: 0.4)),
+    (280, note(2093.0, 900, gain: 0.35)),
+  ]);
+  File('${raw.path}/dilbaz_bildirim.wav').writeAsBytesSync(wav(bell));
+  stdout.writeln('${raw.path}/dilbaz_bildirim.wav ${bell.length * 2 ~/ 1024} KB');
+}
+
+/// Overlays [parts], each starting [ms] after the beginning.
+List<double> mix(List<(int ms, List<double> samples)> parts) {
+  final length = parts.map((p) => rate * p.$1 ~/ 1000 + p.$2.length).reduce(max);
+  final out = List<double>.filled(length, 0);
+  for (final (ms, s) in parts) {
+    final start = rate * ms ~/ 1000;
+    for (var i = 0; i < s.length; i++) {
+      out[start + i] += s[i];
+    }
+  }
+  final peak = out.map((v) => v.abs()).reduce(max);
+  return peak > 0.9 ? [for (final v in out) v * 0.9 / peak] : out;
 }

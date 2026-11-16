@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/exercises/speak_exercise.dart';
 import 'package:lingora/models/course.dart';
+import 'package:lingora/services/notifications.dart';
 import 'package:lingora/services/speech.dart';
 import 'package:lingora/theme.dart';
 import 'package:lingora/ui/motion.dart';
@@ -111,6 +112,24 @@ void main() {
     testWidgets('idle: invites to speak', (tester) async {
       await _pump(tester, _SilentSpeech());
       expect(find.text('Mikrofona dokun ve konuş'), findsOneWidget);
+    });
+  });
+
+  group('reminder notification sound', () {
+    test('Dilbaz has its own reminder sound, kept in release builds', () {
+      final name = NotificationService.reminderSound;
+      expect(name, matches(RegExp(r'^[a-z0-9_]+$')), reason: 'Android raw resource names');
+      final f = File('android/app/src/main/res/raw/$name.wav');
+      expect(f.existsSync(), isTrue);
+      final bytes = f.readAsBytesSync();
+      expect(String.fromCharCodes(bytes.sublist(0, 4)), 'RIFF');
+      expect(bytes.length, inInclusiveRange(10000, 120000));
+      final keep = File('android/app/src/main/res/raw/keep.xml').readAsStringSync();
+      expect(keep, contains('@raw/$name'));
+    });
+
+    test('a new channel carries the sound (Android fixes a channel sound once created)', () {
+      expect(NotificationService.reminderChannelId, isNot('reminders'));
     });
   });
 }

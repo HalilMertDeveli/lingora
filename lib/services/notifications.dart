@@ -73,13 +73,25 @@ class NotificationService {
   Future<void>? _ready;
   String? _applied;
 
+  /// Android fixes a channel's sound when the channel is first created, so
+  /// Dilbaz's own reminder sound needs a new channel id; the old one is
+  /// deleted on start.
+  static const reminderChannelId = 'reminders_v2';
+  static const _oldChannelIds = ['reminders'];
+
+  /// `android/app/src/main/res/raw/dilbaz_bildirim.wav`, made by
+  /// `tool/make_sfx.dart`.
+  static const reminderSound = 'dilbaz_bildirim';
+
   static const _details = NotificationDetails(
     android: AndroidNotificationDetails(
-      'reminders',
+      reminderChannelId,
       'Hatırlatmalar',
       channelDescription: 'Günlük ders hatırlatmaları',
       importance: Importance.high,
       priority: Priority.high,
+      sound: RawResourceAndroidNotificationSound(reminderSound),
+      playSound: true,
     ),
     iOS: DarwinNotificationDetails(),
   );
@@ -96,6 +108,12 @@ class NotificationService {
       ),
       onDidReceiveNotificationResponse: (r) => onTap?.call(r.payload),
     );
+    final android = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    for (final id in _oldChannelIds) {
+      try {
+        await android?.deleteNotificationChannel(channelId: id);
+      } catch (_) {}
+    }
     final launch = await _plugin.getNotificationAppLaunchDetails();
     if (launch?.didNotificationLaunchApp ?? false) onTap?.call(launch!.notificationResponse?.payload);
   }
