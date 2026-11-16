@@ -28,6 +28,7 @@ import '../ui/theme_art.dart';
 import '../data/topic_themes.dart';
 import 'lesson_screen.dart';
 import 'path_map.dart';
+import 'account_nudge.dart';
 import 'reminder_settings.dart';
 import 'section_header.dart';
 import 'exam_screen.dart';
@@ -696,7 +697,8 @@ class _PathListState extends ConsumerState<_PathList> {
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
               scrollCacheExtent: const ScrollCacheExtent.pixels(800),
               children: [
-                const ReminderPromptCard(),
+                const AccountNudgeCard(),
+                if (!AccountNudgeCard.visible(ref)) const ReminderPromptCard(),
                 const _DailyGoalCard(),
                 if (ref.watch(trackProvider).id == 'pro_tourism') const GuestFlagsCard(),
                 const SizedBox(height: 20),
