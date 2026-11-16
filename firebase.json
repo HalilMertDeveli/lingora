@@ -12,6 +12,7 @@
         ".git",
         "test",
         "lib/test",
+        "scripts",
         "*.local",
         "firebase-debug.log"
       ],

@@ -28,10 +28,11 @@ const demoProjectId = 'demo-lingora';
 /// Region of the callable Cloud Functions (see functions/ in the repo).
 const functionsRegion = String.fromEnvironment('LINGORA_FUNCTIONS_REGION', defaultValue: 'europe-west1');
 
-/// Emulator ports (firebase.json defaults).
-const authEmulatorPort = 9099;
-const firestoreEmulatorPort = 8080;
-const functionsEmulatorPort = 5001;
+/// Emulator ports (firebase.json defaults; override with --dart-define=LINGORA_AUTH_PORT=… etc.
+/// when another emulator suite already uses them).
+const authEmulatorPort = int.fromEnvironment('LINGORA_AUTH_PORT', defaultValue: 9099);
+const firestoreEmulatorPort = int.fromEnvironment('LINGORA_FIRESTORE_PORT', defaultValue: 8080);
+const functionsEmulatorPort = int.fromEnvironment('LINGORA_FUNCTIONS_PORT', defaultValue: 5001);
 
 /// Host of the emulators as seen from the app. Android emulators reach the
 /// development machine at 10.0.2.2; override with

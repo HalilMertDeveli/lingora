@@ -10,6 +10,7 @@ import '../nav/nav_target.dart';
 import '../nav/tab_navigator.dart';
 import '../nav/top_bar.dart';
 import '../org/org_widgets.dart';
+import '../services/league_remote.dart';
 import '../services/notifications.dart';
 import '../ui/first_tour.dart';
 import '../ui/transitions.dart';
@@ -150,7 +151,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   /// Closes last week's league (if a new week started) and shows the result.
   Future<void> _settleLeague() async {
-    final notifier = ref.read(progressProvider.notifier)..settleLeague();
+    // A Dünya Ligi member's tier comes from the server (pendingWorldResultProvider).
+    final world = ref.read(prefsProvider).getBool(worldMemberKey) ?? false;
+    final notifier = ref.read(progressProvider.notifier)..settleLeague(quiet: world);
     final result = ref.read(progressProvider).leagueResult;
     if (result == null || !mounted) return;
     await showLeagueResult(context, result);
@@ -217,6 +220,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // A finished Dünya Ligi week: show the result once.
+    ref.listen(pendingWorldResultProvider, (_, result) async {
+      if (result == null || !mounted) return;
+      markWorldResultSeen(ref.read);
+      await showLeagueResult(context, result);
+    });
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {

@@ -15,6 +15,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  updateDoc,
   serverTimestamp,
   setDoc,
   setLogLevel,
@@ -183,6 +184,12 @@ test("leagues: only group members can read, nobody writes", async () => {
   await assertFails(getDoc(doc(db(), `leagues/${g}/members/alice`)));
   await assertFails(setDoc(doc(db("alice"), `leagues/${g}/members/alice`), { name: "Alice", xp: 9999 }));
   await assertFails(setDoc(doc(db("carol"), `leagues/${g}/members/carol`), { name: "Carol", xp: 0 }));
+  // A member can neither raise their own XP nor touch anyone else's row.
+  await assertFails(updateDoc(doc(db("alice"), `leagues/${g}/members/alice`), { xp: 9999 }));
+  await assertFails(updateDoc(doc(db("alice"), `leagues/${g}/members/bob`), { xp: 0, name: "x" }));
+  await assertFails(deleteDoc(doc(db("alice"), `leagues/${g}/members/bob`)));
+  await assertFails(updateDoc(doc(db("alice"), `leagues/${g}`), { settled: true }));
+  await assertFails(setDoc(doc(db("alice"), "leagueState/alice"), { tier: 9 }));
 });
 
 test("server-only collections are closed", async () => {

@@ -18,6 +18,7 @@ import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
 import 'services/friends.dart';
 import 'services/growth/growth.dart';
+import 'services/league_remote.dart';
 import 'services/speech.dart';
 import 'theme.dart';
 import 'ui/motion.dart';
@@ -58,6 +59,8 @@ class LingoraApp extends ConsumerWidget {
     ref.listen(progressSyncProvider, (_, _) {});
     // Marks the daily goal in friendships for the shared streak.
     ref.listen(friendGoalSyncProvider, (_, _) {});
+    // Reports the week's XP to the Dünya Ligi (does nothing for guests).
+    ref.listen(leagueXpSyncProvider, (_, _) {});
     final onboarded = ref.watch(progressProvider.select((p) => p.onboarded));
     // Start listening to the store at launch: Google Play re-delivers
     // unacknowledged or pending purchases right after start-up.

@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 
@@ -12,17 +13,38 @@ class LeagueTier {
   final Color color;
 }
 
+/// The ten Dünya Ligi tiers, lowest first (functions/src/league.ts uses the
+/// same order).
 const leagueTiers = [
   LeagueTier('Bronz', '🥉', Color(0xFFB0703C)),
   LeagueTier('Gümüş', '🥈', Color(0xFF8A94A6)),
   LeagueTier('Altın', '🥇', Color(0xFFE0A100)),
+  LeagueTier('Safir', '🔷', Color(0xFF2F6FDB)),
+  LeagueTier('Yakut', '♦️', Color(0xFFD12E4A)),
   LeagueTier('Zümrüt', '💚', Color(0xFF1FA971)),
+  LeagueTier('Ametist', '🔮', Color(0xFF8E5BD8)),
+  LeagueTier('İnci', '🦪', Color(0xFFB79C8A)),
+  LeagueTier('Obsidyen', '🖤', Color(0xFF3B3F4A)),
   LeagueTier('Elmas', '💎', Color(0xFF2D9CDB)),
 ];
 
-const leagueSize = 15;
-const promoteCount = 5;
-const demoteCount = 5;
+/// Learners per group.
+const leagueSize = 100;
+
+/// How many move up and down at the end of the week in a group of [size]
+/// (the same rule as `zones` in functions/src/league.ts). A full group:
+/// 15 up in Bronz–Altın, 10 above; nobody leaves Bronz downwards, 5 move
+/// down from Gümüş–Yakut, 10 from Zümrüt up; Elmas is the top. Smaller
+/// groups scale down.
+({int promote, int demote}) leagueZones(int tier, [int size = leagueSize]) {
+  final top = leagueTiers.length - 1;
+  final promoteFull = tier >= top ? 0 : (tier <= 2 ? 15 : 10);
+  final demoteFull = tier == 0 ? 0 : (tier <= 4 ? 5 : 10);
+  final n = size.clamp(0, leagueSize);
+  final promote = (n * promoteFull / leagueSize).ceil();
+  final demote = min((n * demoteFull / leagueSize).floor(), n - promote);
+  return (promote: promote, demote: max(0, demote));
+}
 
 /// Monday 00:00 of the week containing [d] (local time).
 DateTime weekStart(DateTime d) {
@@ -32,8 +54,48 @@ DateTime weekStart(DateTime d) {
 
 Duration untilWeekEnd(DateTime now) => weekStart(now).add(const Duration(days: 7)).difference(now);
 
+/// The Dünya Ligi week runs Monday 00:00 to Monday 00:00 Turkish time
+/// (UTC+3), the same for every country (functions/src/week.ts).
+const _trOffset = Duration(hours: 3);
+
+/// Monday 00:00 Turkish time of the league week containing [now], as a
+/// UTC instant.
+DateTime trWeekStart(DateTime now) {
+  final tr = now.toUtc().add(_trOffset);
+  final monday = DateTime.utc(
+    tr.year,
+    tr.month,
+    tr.day,
+  ).subtract(Duration(days: tr.weekday - DateTime.monday));
+  return monday.subtract(_trOffset);
+}
+
+/// "yyyy-mm-dd" of the Turkish Monday that starts the league week.
+String trWeekKey(DateTime now) {
+  final m = trWeekStart(now).add(_trOffset);
+  String two(int n) => n.toString().padLeft(2, '0');
+  return '${m.year}-${two(m.month)}-${two(m.day)}';
+}
+
+Duration untilTrWeekEnd(DateTime now) =>
+    trWeekStart(now).add(const Duration(days: 7)).difference(now.toUtc());
+
+/// Flag emoji for an ISO 3166 alpha-2 code ("TR" -> 🇹🇷); empty when invalid.
+String flagEmoji(String? code) {
+  if (code == null || !RegExp(r'^[A-Z]{2}$').hasMatch(code)) return '';
+  return String.fromCharCodes([for (final c in code.codeUnits) 0x1F1E6 + c - 0x41]);
+}
+
 class LeagueEntry {
-  const LeagueEntry(this.name, this.avatar, this.xp, {this.isUser = false, this.uid});
+  const LeagueEntry(
+    this.name,
+    this.avatar,
+    this.xp, {
+    this.isUser = false,
+    this.uid,
+    this.country,
+    this.photo,
+  });
   final String name;
   final String avatar;
   final int xp;
@@ -41,72 +103,48 @@ class LeagueEntry {
 
   /// Server uid of a real league member; null for simulated rivals.
   final String? uid;
+
+  /// ISO 3166 alpha-2 country code, shown as a flag.
+  final String? country;
+
+  /// Small JPEG the member chose to show in the league.
+  final Uint8List? photo;
 }
 
-const _names = [
-  'Ayşe K.',
-  'Mehmet Y.',
-  'Elif D.',
-  'Can B.',
-  'Zeynep A.',
-  'Emre T.',
-  'Deniz S.',
-  'Selin Ö.',
-  'Burak E.',
-  'Ece Ç.',
-  'Kerem G.',
-  'Duru M.',
-  'Mert A.',
-  'İrem B.',
-  'Ali R.',
-  'Sena K.',
-  'Arda U.',
-  'Nehir P.',
-  'Kaan F.',
-  'Defne İ.',
+const _firstNames = [
+  'Ayşe', 'Mehmet', 'Elif', 'Can', 'Zeynep', 'Emre', 'Deniz', 'Selin', 'Burak', 'Ece', //
+  'Kerem', 'Duru', 'Mert', 'İrem', 'Ali', 'Sena', 'Arda', 'Nehir', 'Kaan', 'Defne', //
+  'Leyla', 'Murat', 'Aylin', 'Orhan', 'Nil', 'Tolga', 'Esra', 'Barış', 'Gizem', 'Onur', //
+  'Lena', 'Jonas', 'Sofia', 'Lucas', 'Amira', 'Omar', 'Nora', 'Eldar', 'Aysel', 'Rauf', //
 ];
+const _countries = ['TR', 'TR', 'TR', 'TR', 'DE', 'AZ', 'NL', 'GB', 'US', 'FR', 'AT', 'BE', 'KZ', 'CY', 'BG'];
 const _avatars = [
-  '🦊',
-  '🐼',
-  '🐨',
-  '🐯',
-  '🦁',
-  '🐸',
-  '🐵',
-  '🐧',
-  '🦉',
-  '🐙',
-  '🦄',
-  '🐢',
-  '🐳',
-  '🐝',
-  '🦋',
-  '🐞',
-  '🐬',
-  '🦔',
-  '🐿️',
-  '🦜',
+  '🦊', '🐼', '🐨', '🐯', '🦁', '🐸', '🐵', '🐧', '🦉', '🐙', //
+  '🦄', '🐢', '🐳', '🐝', '🦋', '🐞', '🐬', '🦔', '🐿️', '🦜', //
 ];
 
-/// The 14 rivals of a league week. They are simulated on the device (there
-/// is no server yet): each gets a weekly XP total that grows over the week.
-/// The same week and tier always produce the same rivals.
+/// The 99 rivals of an offline league week. They are simulated on the
+/// device (preview for guests, fallback without a connection): each gets a
+/// weekly XP total that grows over the week. The same week and tier always
+/// produce the same rivals.
 List<LeagueEntry> rivals({required int tier, required DateTime weekStart, required DateTime now}) {
   final rnd = Random(stableHash('${dayKey(weekStart)}#$tier'));
-  final names = [..._names]..shuffle(rnd);
-  final avatars = [..._avatars]..shuffle(rnd);
   final elapsed = now.difference(weekStart).inMinutes / const Duration(days: 7).inMinutes;
   final frac = elapsed.clamp(0.0, 1.0);
-  final scale = 1 + 0.5 * tier;
+  final scale = 1 + 0.35 * tier;
 
   return [
     for (var i = 0; i < leagueSize - 1; i++)
       () {
-        // About one in five rivals barely plays.
-        final active = rnd.nextDouble() > 0.2;
-        final weekTotal = active ? (40 + rnd.nextInt(320)) * scale : rnd.nextInt(30).toDouble();
+        final name =
+            '${_firstNames[rnd.nextInt(_firstNames.length)]} ${String.fromCharCode(65 + rnd.nextInt(26))}.';
+        final avatar = _avatars[rnd.nextInt(_avatars.length)];
+        final country = _countries[rnd.nextInt(_countries.length)];
+        // About one in four rivals barely plays.
+        final active = rnd.nextDouble() > 0.25;
+        final weekTotal = active ? (40 + rnd.nextInt(420)) * scale : rnd.nextInt(30).toDouble();
         final pace = 0.7 + rnd.nextDouble() * 0.7; // early birds vs. last-minute grinders
-        return LeagueEntry(names[i], avatars[i], (weekTotal * pow(frac, pace)).round());
+        return LeagueEntry(name, avatar, (weekTotal * pow(frac, pace)).round(), country: country);
       }(),
   ];
 }
@@ -117,10 +155,11 @@ List<LeagueEntry> standings({
   required DateTime weekStart,
   required DateTime now,
   required int userXp,
+  String? userCountry,
 }) {
   final all = [
     ...rivals(tier: tier, weekStart: weekStart, now: now),
-    LeagueEntry('Sen', '⭐', userXp, isUser: true),
+    LeagueEntry('Sen', '⭐', userXp, isUser: true, country: userCountry),
   ];
   all.sort((a, b) {
     final byXp = b.xp.compareTo(a.xp);
@@ -130,21 +169,31 @@ List<LeagueEntry> standings({
   return all;
 }
 
-bool inPromotionZone(int tier, int rank) => tier < leagueTiers.length - 1 && rank <= promoteCount;
-bool inDemotionZone(int tier, int rank) => tier > 0 && rank > leagueSize - demoteCount;
+bool inPromotionZone(int tier, int rank, [int size = leagueSize]) => rank <= leagueZones(tier, size).promote;
+bool inDemotionZone(int tier, int rank, [int size = leagueSize]) =>
+    rank > size - leagueZones(tier, size).demote;
 
 class LeagueResult {
-  const LeagueResult({required this.oldTier, required this.newTier, required this.rank});
+  const LeagueResult({required this.oldTier, required this.newTier, required this.rank, this.size, this.xp});
   final int oldTier;
   final int newTier;
   final int rank;
+
+  /// Group size and weekly XP (Dünya Ligi results only).
+  final int? size;
+  final int? xp;
 
   bool get promoted => newTier > oldTier;
   bool get demoted => newTier < oldTier;
 
   Map<String, dynamic> toJson() => {'oldTier': oldTier, 'newTier': newTier, 'rank': rank};
-  factory LeagueResult.fromJson(Map<String, dynamic> j) =>
-      LeagueResult(oldTier: j['oldTier'] as int, newTier: j['newTier'] as int, rank: j['rank'] as int);
+  factory LeagueResult.fromJson(Map<String, dynamic> j) => LeagueResult(
+    oldTier: (j['oldTier'] as int).clamp(0, leagueTiers.length - 1),
+    newTier: (j['newTier'] as int).clamp(0, leagueTiers.length - 1),
+    rank: j['rank'] as int,
+    size: (j['size'] as num?)?.toInt(),
+    xp: (j['xp'] as num?)?.toInt(),
+  );
 }
 
 /// Final ranking of a finished week and the tier for next week.
@@ -156,5 +205,5 @@ LeagueResult finishWeek({required int tier, required DateTime weekStart, require
   var next = tier;
   if (userXp > 0 && inPromotionZone(tier, rank)) next = tier + 1;
   if (inDemotionZone(tier, rank)) next = tier - 1;
-  return LeagueResult(oldTier: tier, newTier: next, rank: rank);
+  return LeagueResult(oldTier: tier, newTier: next, rank: rank, size: table.length, xp: userXp);
 }

@@ -60,7 +60,7 @@ service cloud.firestore {
       allow write: if false;
     }
 
-    // One league group of up to 15 people: leagues/{weekKey}_{tier}_{group}.
+    // One Dünya Ligi group of up to 100 people: leagues/{weekKey}_{tier}_{group}.
     // Only its members may see it; XP changes go through addLeagueXp.
     match /leagues/{groupId} {
       function isMember() {

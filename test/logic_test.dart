@@ -350,7 +350,7 @@ void main() {
       // A week with no XP finishes last and demotes.
       now = now.add(const Duration(days: 7));
       n().settleLeague();
-      expect(p().leagueResult!.rank, leagueSize);
+      expect(inDemotionZone(1, p().leagueResult!.rank), isTrue);
       expect(p().leagueTier, 0);
 
       // In the lowest league, a zero week never promotes or demotes.
