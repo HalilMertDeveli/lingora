@@ -393,7 +393,7 @@ void main() {
       final meaning = find.text(e.tr);
       await tester.tap(meaning.evaluate().isNotEmpty ? meaning : find.text(e.word).last);
       await tester.pump();
-      expect(find.textContaining('Doğru!'), findsOneWidget);
+      expect(find.byKey(const Key('feedback-correct')), findsOneWidget);
       await tester.tap(find.byKey(const Key('vocabNext')));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 500));

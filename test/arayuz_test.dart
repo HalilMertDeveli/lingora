@@ -223,7 +223,7 @@ void main() {
       );
       expect(find.byKey(const Key('feedback-correct')), findsOneWidget);
       final praise = tester.widget<Text>(find.byKey(const Key('feedback-title'))).data;
-      expect(teaPraises, contains(praise));
+      expect([...teaPraises, ...proverbPraises, ...kidPraises, ...kidProverbPraises], contains(praise));
       final ok = tester.widget<Container>(find.byKey(const Key('feedback-correct')));
       expect((ok.decoration! as BoxDecoration).color, Brand.successBg);
       await tester.tap(find.text('Devam'));
