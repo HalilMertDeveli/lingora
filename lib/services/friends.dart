@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/progress.dart';
 import 'firebase/firebase_providers.dart';
-import 'league_remote.dart' show leagueDisplayName;
+import 'profile.dart' show myDisplayNameProvider;
 
 /// Friends and the shared daily streak. Everything goes straight to
 /// Firestore; firestore.rules check every write, so this works without Cloud
@@ -326,7 +326,7 @@ final friendsApiProvider = Provider<FriendsApi?>((ref) {
   final db = ref.watch(firestoreProvider);
   final user = ref.watch(authStateProvider).value;
   if (db == null || user == null || user.isAnonymous) return null;
-  return FirestoreFriendsApi(db, uid: user.uid, name: leagueDisplayName(user.displayName));
+  return FirestoreFriendsApi(db, uid: user.uid, name: ref.watch(myDisplayNameProvider));
 });
 
 /// The user's friendships, live. Null when friends are not available.

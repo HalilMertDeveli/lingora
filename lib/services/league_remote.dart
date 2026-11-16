@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/league.dart';
 import '../data/progress.dart';
 import 'firebase/firebase_providers.dart';
+import 'profile.dart' show myDisplayNameProvider;
 
 /// Real leagues on the server (functions/src/league.ts). When Firebase is
 /// off, offline or the user is signed out, [remoteLeagueProvider] is null and
@@ -44,7 +45,9 @@ class RemoteLeague {
     final sorted = [...members]..sort((a, b) => b.xp.compareTo(a.xp));
     return [
       for (final m in sorted)
-        m.uid == uid ? LeagueEntry('Sen', m.avatar, m.xp, isUser: true) : LeagueEntry(m.name, m.avatar, m.xp),
+        m.uid == uid
+            ? LeagueEntry('Sen', m.avatar, m.xp, isUser: true, uid: m.uid)
+            : LeagueEntry(m.name, m.avatar, m.xp, uid: m.uid),
     ];
   }
 }
@@ -131,7 +134,7 @@ final remoteLeagueProvider = StreamProvider<RemoteLeague?>((ref) async* {
   // Re-runs when the user earns XP while the league is open.
   final start = weekStart(ref.read(clockProvider)());
   final localWeekXp = ref.watch(progressProvider.select((p) => p.weekXp(start)));
-  final name = leagueDisplayName(ref.read(authStateProvider).value?.displayName);
+  final name = ref.read(myDisplayNameProvider);
 
   final LeagueSeat seat;
   try {
