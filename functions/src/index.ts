@@ -25,15 +25,26 @@ function requireUid(req: CallableRequest): string {
   return req.auth.uid;
 }
 
-/** { name?, avatar?, tier? } -> { groupId, weekKey, tier } */
+/** Signed in with Google, e-mail or phone (not a guest). */
+function requireAccount(req: CallableRequest): string {
+  const uid = requireUid(req);
+  const provider = (req.auth?.token.firebase as { sign_in_provider?: string } | undefined)?.sign_in_provider;
+  if (provider === "anonymous") throw new HttpsError("permission-denied", "account_required");
+  return uid;
+}
+
+/** { name?, avatar?, country?, photo? (base64 JPEG) } -> { groupId, weekKey, tier } */
 export const joinLeague = onCall((req) =>
-  league.joinLeague(getFirestore(), requireUid(req), league.parseJoinInput(req.data), new Date()),
+  league.joinLeague(getFirestore(), requireAccount(req), league.parseJoinInput(req.data), new Date()),
 );
 
-/** { xp } -> { xp: weekly total, accepted } */
+/** { weekXp, weekKey? } -> { xp: weekly total on the server, accepted, pending } */
 export const addLeagueXp = onCall((req) =>
-  league.addLeagueXp(getFirestore(), requireUid(req), req.data, new Date()),
+  league.addLeagueXp(getFirestore(), requireAccount(req), req.data, new Date()),
 );
+
+/** {} -> { left } */
+export const leaveLeague = onCall((req) => league.leaveLeague(getFirestore(), requireUid(req)));
 
 /** Closes last week's groups every Monday just after midnight (Turkish time). */
 export const settleLeagues = onSchedule(

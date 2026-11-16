@@ -313,7 +313,13 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(find.byKey(const ValueKey('league-my-avatar')), 200);
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('league-my-avatar')),
+      200,
+      scrollable: find
+          .byWidgetPredicate((w) => w is Scrollable && w.axisDirection == AxisDirection.down)
+          .first,
+    );
     expect(
       find.descendant(
         of: find.byKey(const ValueKey('league-my-avatar')),

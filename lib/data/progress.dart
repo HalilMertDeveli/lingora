@@ -563,12 +563,15 @@ class ProgressNotifier extends Notifier<Progress> {
 
   /// Closes a finished league week: moves the user up or down a tier and
   /// stores the result to show. Safe to call any time.
-  void settleLeague() {
+  ///
+  /// With [quiet] (the learner plays in the Dünya Ligi, whose server decides
+  /// the tier) only the week moves on; no simulated result is made.
+  void settleLeague({bool quiet = false}) {
     final now = _now();
     final current = dayKey(weekStart(now));
     final week = state.leagueWeek;
     if (week == current) return;
-    if (week == null) {
+    if (week == null || quiet) {
       _save(state.copyWith(leagueWeek: current));
       return;
     }
@@ -885,6 +888,13 @@ class ProgressNotifier extends Notifier<Progress> {
   }
 
   void dismissLeagueResult() => _save(state.copyWith(clearLeagueResult: true));
+
+  /// Keeps the on-device tier in step with the Dünya Ligi server, so the
+  /// offline preview shows the same league.
+  void adoptLeagueTier(int tier) {
+    final t = tier.clamp(0, leagueTiers.length - 1);
+    if (t != state.leagueTier) _save(state.copyWith(leagueTier: t));
+  }
 
   /// Replaces the progress with a copy merged with the cloud (see
   /// lib/services/firebase/progress_sync.dart).

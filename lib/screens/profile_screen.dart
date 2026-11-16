@@ -8,6 +8,7 @@ import '../services/billing/premium.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/appearance.dart';
+import '../ui/country_picker.dart';
 import 'account_section.dart';
 import 'error_analysis_screen.dart';
 import 'growth_profile_section.dart';
@@ -122,6 +123,8 @@ class ProfileScreen extends ConsumerWidget {
             label: const Text('Arkadaşlar ve ortak seri'),
           ),
         ),
+        // The Dünya Ligi flag (not in Çocuk modu: no world league for kids).
+        if (!Brand.isKid) const Align(alignment: Alignment.centerRight, child: CountryButton()),
         const SizedBox(height: 12),
         Text('Son 7 gün', style: t.titleLarge),
         const SizedBox(height: 12),

@@ -15,8 +15,8 @@ emülatöre bağlanma) için bkz. [firebase.md](firebase.md).
 | Yol | Kim okur | Kim yazar | İçerik |
 | --- | --- | --- | --- |
 | `users/{uid}` | sahibi | sahibi, gerçek bir hesapla (Google, e-posta, telefon; anonim misafir değil; şekil ve boyut doğrulamalı) | `schemaVersion, progress, totalXp, displayName, clientUpdatedAt, updatedAt` — `updatedAt` sunucu saati olmak zorunda, `progress` en çok 60 anahtar, başka alan yok, silme yok. |
-| `leagueState/{uid}` | sahibi | yalnızca fonksiyonlar | `tier, weekKey, groupId, name, avatar, lastResult{weekKey, oldTier, newTier, rank}` ve XP hız sınırı sayaçları. |
-| `leagues/{hafta}_{lig}_{grup}` ve `.../members/{uid}` | yalnızca o grubun üyeleri | yalnızca fonksiyonlar | Grup: `weekKey, tier, group, size, settled`. Üye: `name, avatar, xp, rank`. |
+| `leagueState/{uid}` | sahibi | yalnızca fonksiyonlar | `tier, weekKey, groupId, optedOut, lastResult{weekKey, oldTier, newTier, rank, size, xp}` ve XP sınır sayaçları (`xpDay/xpDayTotal`, `xpMinute/xpMinuteTotal`, `lastXpAt`). |
+| `leagues/{hafta}_{lig}_{grup}` ve `.../members/{uid}` | yalnızca o grubun üyeleri | yalnızca fonksiyonlar | Dünya Ligi grubu (en çok 100 kişi). Grup: `weekKey, tier, group, size, settled`. Üye: `name, avatar, country, photo (≤ 8 KiB JPEG), xp, joinedAt, updatedAt, rank`. |
 | `entitlements/{uid}` | sahibi | yalnızca fonksiyonlar | `active, premium, status, productId, platform, expiresAt, source, updatedAt`. |
 | `friendCodes/{kod}` | hesabı olan herkes tek tek (`get`); listeleme yalnızca kendi kodu | sahibi, gerçek bir hesapla | `uid, name, avatar, createdAt`. Kod 8 karakter, karışmayan harf ve rakamlar (`0/O`, `1/I` yok). |
 | `friendships/{a}_{b}` (`a < b`) | yalnızca iki üye | üyeler, gerçek bir hesapla; fonksiyon gerekmez | `members, code, names, avatars, done{uid: gün}, streak, best, streakDay, createdAt`. Ayrıntı aşağıda. |
@@ -29,17 +29,23 @@ Fonksiyonlar Admin SDK kullandığı için kurallardan etkilenmez. Diğer her yo
 
 Hepsi çağrılabilir (callable) fonksiyondur ve giriş yapmış kullanıcı ister (`unauthenticated`).
 
-- **`joinLeague {name?, avatar?, tier?}` → `{groupId, weekKey, tier}`**: Kullanıcıyı bu haftanın, kendi
-  ligindeki 15 kişilik bir gruba yerleştirir (dolunca yeni grup açılır). Tekrar çağrılabilir. `tier` yalnızca
-  ilk kez katılan kullanıcı için dikkate alınır (cihazdaki çevrimdışı lig seviyesi). Önceki haftası henüz
-  kapanmamışsa önce onu kapatır.
-- **`addLeagueXp {xp}` → `{xp, accepted}`**: Haftalık XP'ye ekler. Çağrı başına 1–500 XP, iki çağrı
-  arasında en az 3 saniye (`resource-exhausted`), Türkiye saatiyle günde en çok 3000 XP (fazlası kabul
-  edilmez, `accepted` daha küçük döner). Önce `joinLeague` gerekir (`failed-precondition`).
+- **`joinLeague {name?, avatar?, country?, photo?}` → `{groupId, weekKey, tier}`**: Yalnızca hesabı olanlar
+  (misafir `permission-denied`). Kullanıcıyı bu haftanın, kendi ligindeki 100 kişilik bir Dünya Ligi grubuna
+  yerleştirir (ülke fark etmez; dolunca yeni grup açılır). Tekrar çağrılabilir; her çağrıda satırdaki ad, ülke
+  (ISO 3166 iki harf) ve küçük fotoğraf (base64 JPEG, ≤ 8 KiB) güncellenir. Herkes Bronz'dan başlar: cihazdaki
+  çevrimdışı lig seviyesine güvenilmez. Önceki haftası henüz kapanmamışsa önce onu kapatır.
+- **`addLeagueXp {weekXp, weekKey?}` → `{xp, accepted, pending}`**: Uygulama bu haftaki **toplam** XP'sini
+  bildirir; sunucu kendinde olanla farkı ekler. Aynı çağrı tekrarlanırsa XP iki kez sayılmaz. Sınırlar:
+  dakikada 300, Türkiye saatiyle günde 3000 XP; iki çağrı arasında en az 2 sn (`resource-exhausted`).
+  Sınıra takılan kısım `pending` olarak döner, uygulama bir dakika sonra yeniden dener. `weekKey` sunucunun
+  haftası değilse (başka saat diliminde hafta dönümü) `failed-precondition`.
+- **`leaveLeague {}` → `{left}`**: Satırı bu haftanın grubundan siler, `optedOut` yapar. Lig seviyesi
+  korunur; yeniden katılınca `joinLeague` bayrağı kaldırır.
 - **`settleLeagues`** (zamanlanmış, her pazartesi 00:05, `Europe/Istanbul`): Biten haftaların gruplarını
-  kapatır. Kurallar uygulamadaki yerel ligle aynıdır: XP'si olan ilk 5 üst lige çıkar, 11–15. sıralar alt
-  lige düşer (Bronz düşmez, Elmas çıkmaz). Beraberlikte gruba önce katılan önde. Sonuç
-  `leagueState/{uid}.lastResult` alanına yazılır.
+  kapatır. 100 kişilik grupta XP'si olan ilk 15 (Bronz–Altın) ya da 10 (Safir–Obsidyen) kişi üst lige çıkar;
+  son 5 (Gümüş–Yakut) ya da 10 (Zümrüt–Elmas) kişi alt lige geçer. Bronz'da alt lige geçiş, Elmas'ta yükselme
+  yok. Küçük gruplarda sayılar orantılı küçülür (yükselme yukarı, iniş aşağı yuvarlanır). Beraberlikte o
+  XP'ye önce ulaşan önde. Sonuç `leagueState/{uid}.lastResult` alanına yazılır.
 - **`converse {scenarioId, messages}` → `{reply, correction, tip_tr, done, remaining}`**: Eski Supabase
   proxy'sinin aynısı: senaryo komutları sunucuda (`functions/src/scenarios.ts`), model `claude-opus-5-5`,
   düşük effort, JSON şemalı yanıt, güvenlik reddinde sahneye dönen sabit yanıt, sunucu tarafı yedek model
@@ -164,9 +170,10 @@ Kod: `lib/services/profile.dart`, başlık `lib/screens/profile_header.dart`. Ku
 
 ## Uygulamadaki bağlantı
 
-- `lib/services/league_remote.dart`: Firebase hazır ve kullanıcı giriş yapmışsa `joinLeague` çağırır,
-  cihazdaki bu haftanın XP'sinden sunucuda eksik olanı `addLeagueXp` ile yükler ve grubu Firestore'dan
-  canlı dinler. Firebase kapalıysa, çevrimdışıysa ya da hata olursa lig ekranı simüle rakiplerle çalışır.
+- `lib/services/league_remote.dart` (Dünya Ligi, ayrıntı aşağıda): hesabı olan kullanıcı ilk kez lig ekranında
+  ne paylaşılacağını görüp **Lige katıl**'a basar; sonra her hafta otomatik yerleşir. Haftanın XP'si
+  `leagueXpSyncProvider` ile her ders sonrası bildirilir. Firebase kapalıysa, çevrimdışıysa ya da hata olursa
+  lig ekranı simüle rakiplerle çalışır.
 - `lib/services/conversation.dart`: Firebase hazır ve giriş yapılmışsa `converse` fonksiyonunu çağırır,
   değilse çevrimdışı demo çalışır. Hata kodları Türkçe mesajlara çevrilir.
 
@@ -175,3 +182,45 @@ Kod: `lib/services/profile.dart`, başlık `lib/screens/profile_header.dart`. Ku
 `users/{uid}` yazmak için giriş sağlayıcısı anonim olmamalı (`hasAccount()`: `request.auth.token.firebase.sign_in_provider
 != 'anonymous'`). Google, e-posta ya da telefonla giren herkes ilerlemesini hesabına yazar; Premium gerekmez.
 Misafir (anonim) yazamaz, ilerlemesi cihazda kalır. Giriş yapınca aynı uid korunur ve cihazdaki ilerleme hesaba geçer.
+
+## Dünya Ligi
+
+Arkadaş tablosundan ayrı, haftalık, ülke fark etmeksizin 100 kişilik gruplar. Ligler (alttan üste): Bronz,
+Gümüş, Altın, Safir, Yakut, Zümrüt, Ametist, İnci, Obsidyen, Elmas. Hafta pazartesi 00:00 Türkiye saatinde
+başlar ve biter (her ülke için aynı an).
+
+- **Kim katılır:** Google, e-posta ya da telefonla giriş yapmış kullanıcılar. Misafir tabloyu örnek olarak
+  görür ve giriş yapmaya davet edilir. Çocuk modunda Dünya Ligi yoktur (yalnızca cihazdaki simüle lig).
+- **Gizlilik:** İlk katılımda kart, gruptaki herkesin adını, profil fotoğrafını ve ülke bayrağını göreceğini
+  söyler. Fotoğraf `profiles/{uid}` kuralları değiştirilmeden, katılırken 64 px'lik küçük bir kopyası olarak
+  üye satırına yazılır (yalnızca o grubun üyeleri okuyabilir). **Ligden ayrıl** satırı hemen siler.
+- **Ülke:** Telefonun bölgesinden gelir, Profil > "Ligde ülkem" ile değişir (cihazda `league_country_v1`).
+- **Ekran:** Kendi satırın vurgulu, açılınca oraya kaydırılır; yükselme (yeşil) ve alt lig (kehribar) çizgileri,
+  dakikada bir yenilenen geri sayım. Hafta bitince tam ekran sonuç sayfası çıkar (bir kez, `league_result_seen_v1`).
+  Metinler yarış dilindedir: ceza, can ya da "düştün" yok.
+- **Hile koruması:** Satırlara ve `leagueState`'e yalnızca fonksiyonlar yazar (kurallar istemciye kapalı,
+  `functions/test/rules.test.ts`). XP dakikalık ve günlük sınırla kırpılır; sunucu haftalık toplamı alır, tekrar
+  sayılmaz. Herkes Bronz'dan başlar.
+
+### Blaze olmadan (yalnızca kurallarla) olur mu?
+
+Değerlendirildi, **seçilmedi**. Grup atama, sayaç ve XP hız sınırı kurallarla (`getAfter`, `request.time`)
+kısmen kurulabilir; ama hafta kapanışında sıralamayı ve yeni ligi hesaplayacak güvenilir bir taraf kalmaz.
+Rakamları istemci hesaplarsa herkes kendini terfi ettirebilir, kurallar 100 satırı sayıp sırayı doğrulayamaz.
+Bu yüzden lig Cloud Functions ile tamamlandı; Spark'ta uygulama "Çevrimdışı mod" (simüle rakipler) ile çalışmaya
+devam eder.
+
+### Gerçek projede (`dilbaz-3392e`) açmak için
+
+1. Konsolda **Blaze** planına geç ve **bütçe uyarısı** kur (ör. aylık 5 USD; %50/%90/%100 e-posta).
+2. Cloud Functions, Cloud Build, Artifact Registry ve Cloud Scheduler API'leri ilk deploy'da açılır (onay ister).
+3. Kuralları ve fonksiyonları yayınla:
+   ```bash
+   firebase deploy --only firestore:rules,functions:joinLeague,functions:addLeagueXp,functions:leaveLeague,functions:settleLeagues --project dilbaz-3392e
+   ```
+   (`converse`/`assessWriting` `ANTHROPIC_API_KEY` gizli değerini ister; onları ayrıca yayınla.)
+
+**Tahmini maliyet** (Firestore europe-west1, Functions ücretsiz kotası ayda 2 milyon çağrı):
+lig ekranı her açılışta en çok 100 belge okur; günde 3 açılış × 1000 aktif kullanıcı ≈ 300 bin okuma/gün.
+Ücretsiz kota 50 bin okuma/gün, üstü 100 binde ~0,06 USD → ayda ~4–5 USD. XP bildirimi ders başına bir çağrı
+(ücretsiz kotada kalır). 100 kullanıcıya kadar fiilen ücretsiz; Cloud Scheduler 3 işe kadar ücretsiz.
