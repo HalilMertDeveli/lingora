@@ -733,6 +733,7 @@ class _PathListState extends ConsumerState<_PathList> {
     NodeState stateOf(PathNode n) {
       if (p.isDone(n.id)) return NodeState.done;
       if (n.type == NodeType.mock) return mockOpen(course, n, p) ? NodeState.active : NodeState.locked;
+      if (listeningCatchUp(course, n, p)) return NodeState.active;
       return active.contains(n.id) ? NodeState.active : NodeState.locked;
     }
 

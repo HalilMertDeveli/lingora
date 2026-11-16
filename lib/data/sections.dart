@@ -107,12 +107,29 @@ double sectionProgress(Section section, Progress p) {
 }
 
 /// Next node to play in each open section, by section id. Mock exams never
-/// hold the path up (see [mockOpen]).
+/// hold the path up (see [mockOpen]), nor do listening pieces a learner
+/// skipped past (see [listeningCatchUp]).
 Map<String, PathNode> activeNodes(Course course, Progress p) => {
   for (final s in course.sections)
     if (sectionOpen(course, s, p))
-      s.id: ?s.nodes.where((n) => n.type != NodeType.mock && !p.isDone(n.id)).firstOrNull,
+      s.id: ?s.nodes
+          .where((n) => n.type != NodeType.mock && !p.isDone(n.id) && !_lateListening(s, n, p))
+          .firstOrNull,
 };
+
+/// A listening piece added to a unit the learner had already passed (a later
+/// step of its section is done): it does not hold the path up and stays open
+/// to play whenever they like.
+bool listeningCatchUp(Course course, PathNode node, Progress p) {
+  if (node.type != NodeType.listening || p.isDone(node.id)) return false;
+  for (final s in course.sections) {
+    if (s.nodes.contains(node)) return sectionOpen(course, s, p) && _lateListening(s, node, p);
+  }
+  return false;
+}
+
+bool _lateListening(Section s, PathNode n, Progress p) =>
+    n.type == NodeType.listening && s.nodes.skip(s.nodes.indexOf(n) + 1).any((m) => p.isDone(m.id));
 
 /// Whether mock exam [mock] can be taken: its section is open and every step
 /// before it in the section is finished. Mocks are extra practice, so the

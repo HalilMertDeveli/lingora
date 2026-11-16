@@ -10,6 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/core/voice_key.dart';
 import 'package:lingora/data/listening.dart';
 import 'package:lingora/data/progress.dart';
+import 'package:lingora/data/sections.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/screens/listening_screen.dart';
 import 'package:lingora/screens/path_map.dart';
@@ -176,6 +177,36 @@ void main() {
     expect(outline.type, NodeType.listening);
     expect(outline.listening, isNull);
     expect(listeningLength(outline), '≈45 sn');
+  });
+
+  test('a piece added to a unit already passed does not hold the path up', () {
+    PathNode n(String id, NodeType type) => PathNode(id: id, type: type, title: id, description: '');
+    final course = Course(
+      id: 'c',
+      title: 'C',
+      fromLang: 'tr',
+      learningLang: 'en',
+      units: [
+        Unit(
+          id: 'u1',
+          title: 'U1',
+          description: '',
+          color: Colors.blue,
+          nodes: [n('u1l1', NodeType.lesson), n('u1d', NodeType.listening), n('u1t', NodeType.test)],
+        ),
+        Unit(id: 'u2', title: 'U2', description: '', color: Colors.blue, nodes: [n('u2l1', NodeType.lesson)]),
+      ],
+    );
+    Progress done(List<String> ids) => Progress(onboarded: true, completed: {for (final id in ids) id: 1});
+    final listening = course.allNodes[1];
+    // A new learner meets it in order.
+    expect(currentNode(course, done(['u1l1']))?.id, 'u1d');
+    expect(listeningCatchUp(course, listening, done(['u1l1'])), isFalse);
+    // Someone who had passed the unit before it existed goes on; it stays open.
+    final old = done(['u1l1', 'u1t']);
+    expect(currentNode(course, old)?.id, 'u2l1');
+    expect(listeningCatchUp(course, listening, old), isTrue);
+    expect(listeningCatchUp(course, listening, done(['u1l1', 'u1t', 'u1d'])), isFalse);
   });
 
   test('levels get longer dialogues', () {
