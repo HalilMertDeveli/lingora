@@ -29,6 +29,22 @@ abstract final class SpeechIssues {
   static const noRecognizer = 'Bu cihazda ses tanıma kullanılamıyor.';
   static const notHeard = 'Seni duyamadım. Mikrofona dokunup biraz daha yüksek sesle tekrar dene.';
   static const network = 'Ses tanıma için internet bağlantısı gerekiyor.';
+  static const noEnglishRecognizer =
+      'Telefonunda İngilizce ses tanıma yok. Ayarlar > Sistem > Diller > Konuşma tanıma bölümünden '
+      'İngilizceyi indir ya da Google uygulamasını güncelle.';
+  static const busy = 'Ses tanıma şu an meşgul. Birkaç saniye sonra tekrar dene.';
+
+  /// Turkish text for a speech_to_text error code; unknown codes stay
+  /// visible so a failure on a real phone can be reported.
+  static String forError(String code, {required bool heardSomething}) => switch (code) {
+    'error_no_match' || 'error_speech_timeout' => heardSomething ? notHeardClearly : notHeard,
+    'error_network' || 'error_network_timeout' || 'error_server_disconnected' => network,
+    'error_permission' || 'error_insufficient_permissions' => noMicPermission,
+    'error_language_not_supported' || 'error_language_unavailable' => noEnglishRecognizer,
+    'error_busy' || 'error_recognizer_busy' || 'error_too_many_requests' => busy,
+    _ => 'Ses tanıma çalışmadı ($code). Tekrar dene.',
+  };
+  static const notHeardClearly = 'Tam anlayamadım. Biraz daha yavaş ve net söyleyip tekrar dene.';
 }
 
 /// Text-to-speech for prompts and speech recognition for speaking exercises.
@@ -184,14 +200,7 @@ class SpeechService {
 
   void _error(SpeechRecognitionError e) {
     debugPrint('Speech recognition error: ${e.errorMsg}');
-    final msg = e.errorMsg;
-    if (msg.contains('network')) {
-      speechIssue.value = SpeechIssues.network;
-    } else if (msg.contains('permission') || msg.contains('insufficient')) {
-      speechIssue.value = SpeechIssues.noMicPermission;
-    } else if (!_heardSomething) {
-      speechIssue.value = SpeechIssues.notHeard;
-    }
+    speechIssue.value = SpeechIssues.forError(e.errorMsg, heardSomething: _heardSomething);
     _finish();
   }
 

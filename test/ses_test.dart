@@ -132,4 +132,14 @@ void main() {
       expect(NotificationService.reminderChannelId, isNot('reminders'));
     });
   });
+
+  test('speech recognition errors say what to do, unknown codes stay visible', () {
+    String f(String c) => SpeechIssues.forError(c, heardSomething: false);
+    expect(f('error_speech_timeout'), SpeechIssues.notHeard);
+    expect(f('error_network'), SpeechIssues.network);
+    expect(f('error_language_unavailable'), SpeechIssues.noEnglishRecognizer);
+    expect(f('error_recognizer_busy'), SpeechIssues.busy);
+    expect(f('error_client'), contains('(error_client)'));
+    expect(SpeechIssues.forError('error_no_match', heardSomething: true), SpeechIssues.notHeardClearly);
+  });
 }
