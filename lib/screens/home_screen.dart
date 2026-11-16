@@ -11,6 +11,7 @@ import '../nav/tab_navigator.dart';
 import '../nav/top_bar.dart';
 import '../org/org_widgets.dart';
 import '../services/notifications.dart';
+import '../ui/first_tour.dart';
 import '../ui/transitions.dart';
 import 'exam_screen.dart';
 import 'league_screen.dart';
@@ -64,7 +65,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _settleLeague());
     // A lesson the system closed in the background opens again; a
     // notification tap (pending target) wins over it.
-    if (ref.read(resumeStoreProvider).hasRecord && ref.read(pendingNavTargetProvider) == null) {
+    final resuming = ref.read(resumeStoreProvider).hasRecord;
+    if (!resuming && ref.read(pendingNavTargetProvider) == null) _maybeTour();
+    if (resuming && ref.read(pendingNavTargetProvider) == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) resumeSavedSession(context, ref);
       });
@@ -86,6 +89,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     ref.listenManual<NavTarget?>(pendingNavTargetProvider, (_, target) {
       if (target != null) WidgetsBinding.instance.addPostFrameCallback((_) => _open(target));
     }, fireImmediately: true);
+  }
+
+  final _barKey = GlobalKey(debugLabel: 'bottom-nav-bar');
+
+  /// The short first-run tour, once, for new learners only: someone who
+  /// already finished a lesson knows the way around.
+  void _maybeTour() {
+    final prefs = ref.read(prefsProvider);
+    if (!FirstTour.enabled || prefs.getBool(tourDoneKey) == true) return;
+    if (ref.read(progressProvider).lessonsDone > 0) {
+      prefs.setBool(tourDoneKey, true);
+      return;
+    }
+    Future<void>.delayed(const Duration(milliseconds: 700), () {
+      if (!mounted || prefs.getBool(tourDoneKey) == true) return;
+      FirstTour.show(context, barKey: _barKey, tabs: _tabs, onDone: () => prefs.setBool(tourDoneKey, true));
+    });
   }
 
   @override
@@ -225,11 +245,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 const SizedBox.shrink(),
           ],
         ),
-        bottomNavigationBar: NavigationBar(
-          key: const Key('bottom-nav'),
-          selectedIndex: _index,
-          onDestinationSelected: _select,
-          destinations: [for (final tab in _tabs) _destination(tab)],
+        bottomNavigationBar: KeyedSubtree(
+          key: _barKey,
+          child: NavigationBar(
+            key: const Key('bottom-nav'),
+            selectedIndex: _index,
+            onDestinationSelected: _select,
+            destinations: [for (final tab in _tabs) _destination(tab)],
+          ),
         ),
       ),
     );
