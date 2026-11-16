@@ -13,16 +13,46 @@ import 'motion.dart';
 /// Answers in a row from which the progress bar and header celebrate.
 const comboThreshold = 3;
 
-/// Turkish tea-house praise for a right answer ("tavşan kanı" is the deep red
-/// of perfectly brewed tea). Rotated so the same line does not come twice.
+/// Turkish praise for a right answer: tea-house lines ("tavşan kanı" is the
+/// deep red of perfectly brewed tea) and the way friends cheer each other on
+/// ("helal koçuma"). Rotated so the same line does not come twice in a row.
 const teaPraises = [
   'Şıkır şıkır!',
+  'Helal olsun!',
   'Tavşan kanı gibi!',
+  'Helal koçuma!',
   'Demi tam oturdu!',
+  'Eline sağlık!',
   'Tıkır tıkır!',
+  'Yürü be!',
   'Aferin, çayı hak ettin!',
+  'On ikiden vurdun!',
   'Maşallah!',
+  'Döktürdün!',
+  'Su gibi!',
+  'Bravo sana!',
+  'Kafa çalışıyor!',
+  'Helal be!',
+  'Tam isabet!',
+  'Gözünü seveyim!',
+  'Bir çay da benden!',
+  'Kaptın işi!',
+  'Vay canına!',
+  'Aslanım benim!',
+  'İşte bu!',
+  'Ağzına sağlık!',
+  'Kraldan bir tane daha!',
+  'Bu iş sende!',
 ];
+
+/// Cheer for a run of [n] right answers in a row ([comboThreshold]+).
+String comboPraise(int n) => switch (n % 5) {
+  0 => '$n doğru üst üste!',
+  1 => '$n tane üst üste, helal!',
+  2 => 'Seri $n oldu, durmak yok!',
+  3 => '$n doğru, coştun!',
+  _ => '$n üst üste, kim tutar seni!',
+};
 
 /// Gentle words after a wrong answer: no penalty, no alarm.
 const softRetries = [
@@ -30,6 +60,10 @@ const softRetries = [
   'Dert etme, çay daha sıcak.',
   'Az kaldı, sıradakinde.',
   'Olur böyle şeyler, devam!',
+  'Canın sağ olsun, sıradakine!',
+  'Hata yapmayan öğrenmez.',
+  'Boş ver, bir sonrakinde olur.',
+  'Yanlış da yoldan sayılır.',
 ];
 
 /// The [n]th praise line.
