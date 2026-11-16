@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/course_repository.dart';
 import '../data/progress.dart';
+import '../data/resume.dart';
 import '../exercises/common.dart' show stableShuffle;
 import '../models/course.dart';
 import '../services/speech.dart';
@@ -17,9 +19,12 @@ import 'lesson_result_screen.dart';
 /// the learner answers from what they hear (tap a bubble to hear it again,
 /// slower at 0.75×) and sees the text with "Metni gör" at the end.
 class StoryScreen extends ConsumerStatefulWidget {
-  const StoryScreen({super.key, required this.node, required this.color});
+  const StoryScreen({super.key, required this.node, required this.color, this.resume});
   final PathNode node;
   final Color color;
+
+  /// A story saved before the app was killed, shown at the same step.
+  final StorySnapshot? resume;
 
   @override
   ConsumerState<StoryScreen> createState() => _StoryScreenState();
@@ -27,7 +32,9 @@ class StoryScreen extends ConsumerStatefulWidget {
 
 class _StoryScreenState extends ConsumerState<StoryScreen> {
   final _scroll = ScrollController();
-  final _started = DateTime.now();
+  late final DateTime _started = DateTime.now().subtract(
+    Duration(seconds: widget.resume?.elapsedSeconds ?? 0),
+  );
   final Set<int> _translated = {};
   late final SpeechService _speech = ref.read(speechProvider);
 
@@ -50,16 +57,75 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
   StoryStep get _current => _steps[_shown];
   bool get _done => _shown >= _steps.length - 1 && (!_current.isQuestion || _pickedRight == true);
 
+  /// Track the story belongs to; null when it cannot be resumed.
+  String? _resumeTrack;
+  late final ResumeStore _resumeStore = ref.read(resumeStoreProvider);
+  AppLifecycleListener? _lifecycle;
+
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _speakCurrent());
+    final saved = widget.resume;
+    if (saved != null) {
+      _shown = saved.shown.clamp(0, _steps.length - 1);
+      _picked = saved.picked;
+      _pickedRight = saved.pickedRight;
+      _questions = saved.questions;
+      _wrong = saved.wrong;
+      _revealed = saved.revealed;
+      _rate = saved.rate;
+    }
+    if (_canResume()) {
+      _resumeTrack = ref.read(trackProvider).id;
+      _lifecycle = AppLifecycleListener(onInactive: _persist, onPause: _persist, onHide: _persist);
+      _persist();
+    }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _speakCurrent();
+      // A restored story opens at its last step: show it.
+      if (saved != null && _scroll.hasClients) _scroll.jumpTo(_scroll.position.maxScrollExtent);
+    });
   }
 
   @override
   void dispose() {
+    _lifecycle?.dispose();
+    if (_resumeTrack != null && closedInForeground()) _resumeStore.clearIfOwner(this);
     _scroll.dispose();
     super.dispose();
+  }
+
+  /// Only stories of the loaded course can be found again by id.
+  bool _canResume() {
+    if (_steps.isEmpty || !ref.read(courseProvider.exists)) return false;
+    final course = ref.read(courseProvider).value;
+    return course != null && course.allNodes.any((n) => identical(n, widget.node));
+  }
+
+  void _persist() {
+    final track = _resumeTrack;
+    if (track == null || !mounted) return;
+    _resumeStore.save(
+      owner: this,
+      trackId: track,
+      story: StorySnapshot(
+        nodeId: widget.node.id,
+        color: widget.color.toARGB32(),
+        shown: _shown,
+        picked: _picked,
+        pickedRight: _pickedRight,
+        questions: _questions,
+        wrong: _wrong,
+        revealed: _revealed,
+        rate: _rate,
+        elapsedSeconds: DateTime.now().difference(_started).inSeconds,
+      ),
+    );
+  }
+
+  void _clearResume() {
+    if (_resumeTrack != null) _resumeStore.clear();
+    _resumeTrack = null;
   }
 
   void _speakCurrent() {
@@ -76,6 +142,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
       _picked = null;
       _pickedRight = null;
     });
+    _persist();
     _speakCurrent();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scroll.hasClients) {
@@ -100,10 +167,12 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
         _shake++;
       }
     });
+    _persist();
     right ? Haptics.success() : Haptics.error();
   }
 
   void _finish() {
+    _clearResume();
     final reward = ref
         .read(progressProvider.notifier)
         .completeNode(
@@ -139,7 +208,10 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
                 children: [
                   IconButton(
                     icon: Icon(Icons.close, color: Brand.muted),
-                    onPressed: () => Navigator.of(context).pop(),
+                    onPressed: () {
+                      _clearResume();
+                      Navigator.of(context).pop();
+                    },
                   ),
                   Expanded(
                     child: GlossyProgress(value: (_shown + 1) / _steps.length, color: widget.color),

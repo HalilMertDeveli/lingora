@@ -19,8 +19,11 @@ class MatchExercise extends ConsumerStatefulWidget {
 }
 
 class _MatchExerciseState extends ConsumerState<MatchExercise> {
-  late final List<int> _left = List.generate(widget.ex.pairs.length, (i) => i)..shuffle();
-  late final List<int> _right = List.generate(widget.ex.pairs.length, (i) => i)..shuffle();
+  // Stable (different seeds per column), so a lesson reopened after the app
+  // was killed looks the same.
+  late final String _seed = [for (final p in widget.ex.pairs) '${p.$1}=${p.$2}'].join('|');
+  late final List<int> _left = stableShuffle(List.generate(widget.ex.pairs.length, (i) => i), 'L$_seed');
+  late final List<int> _right = stableShuffle(List.generate(widget.ex.pairs.length, (i) => i), 'R$_seed');
   final Set<int> _matched = {};
   int? _selLeft;
   int? _selRight;

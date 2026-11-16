@@ -5,9 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/tr_errors.dart';
 import '../data/break_reminder.dart';
+import '../data/course_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
+import '../data/resume.dart';
 import '../exercises/choice_exercise.dart';
 import '../exercises/common.dart';
 import '../exercises/fill_blank_exercise.dart';
@@ -56,6 +58,7 @@ class LessonScreen extends ConsumerStatefulWidget {
     this.logSource,
     this.onAnswered,
     this.readingWords = 0,
+    this.resume,
   });
 
   /// Lesson for a path node.
@@ -95,14 +98,20 @@ class LessonScreen extends ConsumerStatefulWidget {
   /// the reading counter when it is finished.
   final int readingWords;
 
+  /// A session saved before the app was killed, opened at the same question
+  /// (see lib/data/resume.dart).
+  final LessonResume? resume;
+
   @override
   ConsumerState<LessonScreen> createState() => _LessonScreenState();
 }
 
 class _LessonScreenState extends ConsumerState<LessonScreen> {
-  late final List<LessonItem> _queue = [...widget.items];
-  late final int _total = _queue.length;
-  final _started = DateTime.now();
+  late final List<LessonItem> _queue = [...widget.items, ...?widget.resume?.requeued];
+  late final int _total = widget.items.length;
+  late final DateTime _started = DateTime.now().subtract(
+    Duration(seconds: widget.resume?.snapshot.elapsedSeconds ?? 0),
+  );
 
   /// When the current question was shown (time per question).
   DateTime _shownAt = DateTime.now();
@@ -126,10 +135,93 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   /// "Neden yanlış?" content after a wrong English answer.
   WhyWrongSection? _why;
 
+  /// Track the session belongs to; null when it cannot be resumed.
+  String? _resumeTrack;
+  late final ResumeStore _resumeStore = ref.read(resumeStoreProvider);
+  AppLifecycleListener? _lifecycle;
+
   @override
   void initState() {
     super.initState();
-    logEvent(ref, AnalyticsEvent.lessonStart(widget.nodeId, mode: widget.mode.name));
+    final saved = widget.resume?.snapshot;
+    if (saved == null) {
+      logEvent(ref, AnalyticsEvent.lessonStart(widget.nodeId, mode: widget.mode.name));
+    } else {
+      _pos = saved.pos;
+      _solved = saved.solved;
+      _answered = saved.answered;
+      _mistakes = saved.mistakes;
+      _combo = saved.combo;
+      _bestCombo = saved.bestCombo;
+      for (final e in saved.questStats.entries) {
+        final metric = QuestMetric.values.where((m) => m.name == e.key).firstOrNull;
+        if (metric != null) _questStats[metric] = e.value;
+      }
+    }
+    if (_canResume()) {
+      _resumeTrack = ref.read(trackProvider).id;
+      _lifecycle = AppLifecycleListener(onInactive: _persist, onPause: _persist, onHide: _persist);
+      _persist();
+    }
+    // Killed right after the last answer: only the result was left.
+    if (saved != null && _pos >= _queue.length) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => mounted ? _finish() : null);
+    }
+  }
+
+  @override
+  void dispose() {
+    _lifecycle?.dispose();
+    if (_resumeTrack != null && closedInForeground()) _resumeStore.clearIfOwner(this);
+    super.dispose();
+  }
+
+  /// Sessions are kept only when they can be rebuilt as they are: every item
+  /// is an exercise of the loaded course (so its key finds it again), and no
+  /// caller hook ([LessonScreen.onAnswered]) would be lost.
+  bool _canResume() {
+    if (widget.onAnswered != null || widget.items.isEmpty || !ref.read(courseProvider.exists)) return false;
+    final course = ref.read(courseProvider).value;
+    if (course == null) return false;
+    final nodes = {for (final n in course.allNodes) n.id: n};
+    return _queue.every((it) => identical(exerciseForKey(nodes, it.key), it.ex));
+  }
+
+  /// Saves where the session is. After an answer the next question counts
+  /// as the current one, so a restored session never grades it twice.
+  void _persist() {
+    final track = _resumeTrack;
+    if (track == null || !mounted) return;
+    _resumeStore.save(
+      owner: this,
+      trackId: track,
+      lesson: LessonSnapshot(
+        nodeId: widget.nodeId,
+        title: widget.title,
+        color: widget.color.toARGB32(),
+        mode: widget.mode,
+        queue: [for (final it in _queue) it.key],
+        total: _total,
+        pos: _lastCorrect == null ? _pos : _pos + 1,
+        rewardXp: widget.rewardXp,
+        badge: widget.badge,
+        passHeadline: widget.passHeadline,
+        logSource: widget.logSource,
+        readingWords: widget.readingWords,
+        solved: _solved,
+        answered: _answered,
+        mistakes: _mistakes,
+        combo: _combo,
+        bestCombo: _bestCombo,
+        questStats: {for (final e in _questStats.entries) e.key.name: e.value},
+        elapsedSeconds: DateTime.now().difference(_started).inSeconds,
+      ),
+    );
+  }
+
+  void _clearResume() {
+    if (_resumeTrack != null) _resumeStore.clear();
+    _resumeTrack = null;
   }
 
   LessonItem get _current => _queue[_pos];
@@ -185,6 +277,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         }
       }
     });
+    _persist();
     if (correct) {
       SessionFx.correct();
       if (widget.mode == LessonMode.practice) notifier.answerMistakeRight(_current.key);
@@ -215,11 +308,13 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       _answerText = '';
       _why = null;
     });
+    _persist();
   }
 
   int get _accuracy => _answered == 0 ? 100 : ((_answered - _mistakes) * 100 / _answered).round();
 
   void _finish() {
+    _clearResume();
     final notifier = ref.read(progressProvider.notifier);
     final nav = Navigator.of(context);
     final perfect = _mistakes == 0;
@@ -300,7 +395,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       title: widget.mode == LessonMode.test ? 'Sınavdan çıkılsın mı?' : 'Dersten çıkılsın mı?',
       detail: 'Bu dersteki ilerleme kaydedilmez; istediğin zaman baştan başlayabilirsin.',
     );
-    if (quit && mounted) Navigator.of(context).pop();
+    if (quit && mounted) {
+      _clearResume();
+      Navigator.of(context).pop();
+    }
   }
 
   Widget _exercise() {
@@ -384,6 +482,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // A restored session with nothing left: the result opens next frame.
+    if (_pos >= _queue.length) return const Scaffold();
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {

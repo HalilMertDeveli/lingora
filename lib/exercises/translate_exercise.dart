@@ -27,7 +27,11 @@ class TranslateExercise extends StatefulWidget {
 }
 
 class _TranslateExerciseState extends State<TranslateExercise> {
-  late final List<String> _bank = [...widget.ex.tokens]..shuffle();
+  // Stable, so a lesson reopened after the app was killed looks the same.
+  late final List<String> _bank = stableShuffle(
+    widget.ex.tokens,
+    'bank:${widget.ex.text ?? ''}:${widget.ex.tokens.join(' ')}',
+  );
   final List<int> _chosen = [];
 
   void _update(VoidCallback change) {
