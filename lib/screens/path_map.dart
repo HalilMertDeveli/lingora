@@ -256,7 +256,11 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
             ),
           // Own layer: the breathing node repaints alone, not the whole path.
           Positioned.fill(child: RepaintBoundary(child: art)),
-          if (!themed && _active && (widget.type == NodeType.lesson || widget.type == NodeType.story))
+          if (!themed &&
+              _active &&
+              (widget.type == NodeType.lesson ||
+                  widget.type == NodeType.story ||
+                  widget.type == NodeType.listening))
             const Positioned(left: 13, top: -30, child: RepaintBoundary(child: Steam(width: 40, height: 32))),
           if (done && widget.type != NodeType.chest)
             Positioned(right: -2, top: 2, child: badge(Icons.check_rounded, p.success, onColor(p.success))),
@@ -271,6 +275,15 @@ class _TeaNodeState extends State<TeaNode> with SingleTickerProviderStateMixin {
               left: -2,
               top: 2,
               child: badge(Icons.auto_stories_rounded, widget.color, onColor(widget.color)),
+            ),
+          if (widget.type == NodeType.listening)
+            Positioned(
+              key: const Key('listening-badge'),
+              left: -2,
+              top: 2,
+              child: locked
+                  ? badge(Icons.headphones_rounded, p.isDark ? p.surface : p.line, p.muted)
+                  : badge(Icons.headphones_rounded, widget.color, onColor(widget.color)),
             ),
           if (widget.type == NodeType.mock && !locked)
             Positioned(
