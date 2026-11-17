@@ -65,6 +65,13 @@ class FakeFriendsApi implements FriendsApi {
   @override
   Future<void> markGoal(int day) async => marked.add(day);
 
+  @override
+  String myName = 'Ben';
+  final nameSyncs = <bool>[];
+
+  @override
+  Future<void> syncMyName({bool friendships = true}) async => nameSyncs.add(friendships);
+
   // ---- Requests and phone discovery ----
   List<FriendRequest> incoming = [];
   List<FriendRequest> outgoing = [];

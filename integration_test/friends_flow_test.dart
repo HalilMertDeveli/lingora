@@ -21,6 +21,7 @@ import 'package:lingora/services/firebase/account_service.dart';
 import 'package:lingora/services/firebase/demo_firebase_options.dart';
 import 'package:lingora/services/firebase/firebase_config.dart';
 import 'package:lingora/services/friends.dart';
+import 'package:lingora/services/profile.dart' show FirestoreProfileApi, ProfileData;
 
 import 'support/emulator.dart';
 
@@ -295,6 +296,43 @@ void main() {
       final again = (await ali.pair(zeynep))!;
       expect(again.streak, 0);
       await ali.api.sendCheer(again, CheerKind.hadi, t);
+    });
+
+    // Reported from a real phone: a friend added by code showed the generic
+    // name, not the one they chose. The friendship and the code keep the
+    // name from the moment they were written.
+    test('a nameless friend renames: code, friendship and the live profile follow', () async {
+      final ali = await track(Person.email(emu, 'ali@test.dev', 'Ali'));
+      final zeynep = await track(Person.email(emu, 'zeynep@test.dev', defaultFriendName));
+      final code = await zeynep.api.myCode();
+      await ali.api.addFriend(code);
+      expect((await ali.pair(zeynep))!.name, defaultFriendName, reason: 'reproduced: generic name');
+
+      // Zeynep picks a name in Profil (what ProfileNotifier.setName uploads).
+      await FirestoreProfileApi(zeynep.db).save(zeynep.uid, const ProfileData(name: 'Zeynep', updatedAt: 1));
+      // Ali reads it live, as a friend (profiles rule: friends only).
+      expect((await FirestoreProfileApi(ali.db).fetch(zeynep.uid))?.name, 'Zeynep');
+      // The stored copies are still old until the app syncs them...
+      expect((await ali.pair(zeynep))!.name, defaultFriendName);
+      // ...which friendNameSyncProvider does with the new name.
+      final renamed = FirestoreFriendsApi(zeynep.db, uid: zeynep.uid, name: 'Zeynep');
+      await renamed.syncMyName();
+      expect((await ali.pair(zeynep))!.name, 'Zeynep');
+      final codeDoc = await ali.db
+          .collection('friendCodes')
+          .doc(code)
+          .get(const GetOptions(source: Source.server));
+      expect(codeDoc.data()!['name'], 'Zeynep');
+      // A later friend gets the new name straight from the code.
+      final mert = await track(Person.email(emu, 'mert@test.dev', 'Mert'));
+      expect(await mert.api.addFriend(code), 'Zeynep');
+      // Nobody can rename someone else in a friendship.
+      await denied(
+        ali.db.collection('friendships').doc(pairIdOf(ali.uid, zeynep.uid)).update({
+          'names.${zeynep.uid}': 'X',
+        }),
+        "rename the friend",
+      );
     });
 
     test('security: outsiders cannot write, read or scan', () async {

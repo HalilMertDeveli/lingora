@@ -12,6 +12,7 @@ import '../theme.dart';
 import '../ui/shop_visuals.dart';
 import 'auth_screen.dart';
 import 'contacts_friends_screen.dart';
+import 'friend_name_prompt.dart';
 import 'friend_profile_screen.dart';
 
 /// Text shared with a friend: the code and where to type it.
@@ -41,8 +42,12 @@ class _FriendsScreenState extends ConsumerState<FriendsScreen> {
     super.dispose();
   }
 
-  Future<void> _add(FriendsApi api) async {
+  Future<void> _add() async {
     if (_code.text.trim().isEmpty) return;
+    // Friends see the name written now: ask for one if there is none yet.
+    if (!await ensureFriendName(context, ref)) return;
+    final api = ref.read(friendsApiProvider);
+    if (api == null || !mounted) return;
     setState(() {
       _busy = true;
       _error = null;
@@ -66,7 +71,8 @@ class _FriendsScreenState extends ConsumerState<FriendsScreen> {
     final api = ref.watch(friendsApiProvider);
     if (api != _codeFor) {
       _codeFor = api;
-      _myCode = api?.myCode();
+      // No code with the generic name: the card asks for a name first.
+      _myCode = api == null || isDefaultFriendName(api.myName) ? null : api.myCode();
     }
     final t = Theme.of(context).textTheme;
     return Scaffold(
@@ -117,12 +123,12 @@ class _FriendsScreenState extends ConsumerState<FriendsScreen> {
                   errorMaxLines: 3,
                   border: const OutlineInputBorder(),
                 ),
-                onSubmitted: (_) => _add(api),
+                onSubmitted: (_) => _add(),
               ),
               const SizedBox(height: 10),
               FilledButton.icon(
                 key: const ValueKey('friend-add'),
-                onPressed: _busy ? null : () => _add(api),
+                onPressed: _busy ? null : _add,
                 icon: const Icon(Icons.person_add_alt_1_rounded),
                 label: Text(_busy ? 'Ekleniyor…' : 'Ekle'),
               ),
@@ -175,7 +181,20 @@ class _FriendsScreenState extends ConsumerState<FriendsScreen> {
                 key: const ValueKey('friend-my-code'),
                 style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w900, letterSpacing: 4),
               )
-            else if (snap.hasError)
+            else if (_myCode == null) ...[
+              const Text(
+                'Kodunu paylaşmadan önce arkadaşlarının seni hangi adla göreceğini seç.',
+                key: ValueKey('friend-code-needs-name'),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              FilledButton(
+                key: const ValueKey('friend-set-name'),
+                style: compactButton,
+                onPressed: () => ensureFriendName(context, ref),
+                child: const Text('Adını belirle'),
+              ),
+            ] else if (snap.hasError)
               Text('Kod alınamadı. İnternetini kontrol et.', style: TextStyle(color: Brand.error))
             else
               const Padding(padding: EdgeInsets.all(8), child: CircularProgressIndicator()),
@@ -293,7 +312,7 @@ class _RequestList extends ConsumerWidget {
                   FilledButton(
                     key: ValueKey('request-accept-${r.from}'),
                     style: compactButton,
-                    onPressed: () => acceptFriendRequest(context, api, r),
+                    onPressed: () => acceptFriendRequest(context, ref, r),
                     child: const Text('Kabul et'),
                   ),
                 ],
@@ -308,8 +327,12 @@ class _RequestList extends ConsumerWidget {
 /// Accepts [r] and offers to start the shared streak: a "Hadi, bugün sen
 /// de!" to the new friend. The streak itself grows on the first day both
 /// reach their goal.
-Future<void> acceptFriendRequest(BuildContext context, FriendsApi api, FriendRequest r) async {
+Future<void> acceptFriendRequest(BuildContext context, WidgetRef ref, FriendRequest r) async {
   final messenger = ScaffoldMessenger.of(context);
+  // The new friend sees the name written into the friendship.
+  if (!await ensureFriendName(context, ref)) return;
+  final api = ref.read(friendsApiProvider);
+  if (api == null || !context.mounted) return;
   final String pairId;
   try {
     pairId = await api.acceptRequest(r);
@@ -407,12 +430,12 @@ class _FriendCard extends ConsumerWidget {
   final Friendship friend;
   final int today;
 
-  Future<void> _remove(BuildContext context, FriendsApi api) async {
+  Future<void> _remove(BuildContext context, FriendsApi api, String name) async {
     final ok = await showDialog<bool>(
       context: context,
       builder: (c) => AlertDialog(
         title: const Text('Arkadaşlıktan çıkar'),
-        content: Text('${friend.name} listenden çıkarılsın mı? Ortak seriniz silinir.'),
+        content: Text('$name listenden çıkarılsın mı? Ortak seriniz silinir.'),
         actions: [
           TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Vazgeç')),
           FilledButton(onPressed: () => Navigator.pop(c, true), child: const Text('Çıkar')),
@@ -427,6 +450,9 @@ class _FriendCard extends ConsumerWidget {
     final api = ref.watch(friendsApiProvider);
     final cheers = ref.watch(cheersProvider(friend.pairId)).value ?? const <Cheer>[];
     final profile = ref.watch(friendProfileProvider(friend.friendUid)).value;
+    // The friend's current name (profiles/{uid}); the one saved in the
+    // friendship only while the profile is loading or missing.
+    final name = profile?.name ?? friend.name;
     final me = api?.uid;
     final received = [
       for (final c in cheers)
@@ -472,10 +498,7 @@ class _FriendCard extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        profile?.name ?? friend.name,
-                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
-                      ),
+                      Text(name, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800)),
                       Text(
                         friend.best > 0
                             ? 'En iyi ortak seri: ${friend.best} gün'
@@ -502,7 +525,7 @@ class _FriendCard extends ConsumerWidget {
                 if (api != null)
                   PopupMenuButton<String>(
                     tooltip: 'Seçenekler',
-                    onSelected: (_) => _remove(context, api),
+                    onSelected: (_) => _remove(context, api, name),
                     itemBuilder: (_) => const [
                       PopupMenuItem(value: 'remove', child: Text('Arkadaşlıktan çıkar')),
                     ],
@@ -515,7 +538,7 @@ class _FriendCard extends ConsumerWidget {
               runSpacing: 6,
               children: [
                 _GoalChip(label: 'Sen', done: friend.meDone(today)),
-                _GoalChip(label: friend.name, done: friend.friendDone(today)),
+                _GoalChip(label: name, done: friend.friendDone(today)),
               ],
             ),
             const SizedBox(height: 6),
@@ -523,9 +546,9 @@ class _FriendCard extends ConsumerWidget {
               both
                   ? 'Bugün ikiniz de hedefinizi tamamladınız. Seri güvende!'
                   : friend.friendDone(today)
-                  ? '${friend.name} bugünkü hedefini tamamladı. Sıra sende!'
+                  ? '$name bugünkü hedefini tamamladı. Sıra sende!'
                   : friend.meDone(today)
-                  ? 'Sen hazırsın. ${friend.name} hedefini tamamlayınca seri artar.'
+                  ? 'Sen hazırsın. $name hedefini tamamlayınca seri artar.'
                   : 'İkiniz de bugünkü hedefi tamamlayınca seri bir artar.',
               style: TextStyle(color: Brand.muted, height: 1.3),
             ),
@@ -533,7 +556,7 @@ class _FriendCard extends ConsumerWidget {
               const SizedBox(height: 8),
               for (final k in received)
                 Text(
-                  '${k.emoji} ${friend.name}: ${k.label}',
+                  '${k.emoji} $name: ${k.label}',
                   key: ValueKey('cheer-in-${k.name}'),
                   style: const TextStyle(fontWeight: FontWeight.w700),
                 ),

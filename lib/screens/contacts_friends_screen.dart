@@ -9,6 +9,7 @@ import '../services/contacts/contacts_source.dart';
 import '../services/friends.dart';
 import '../services/growth/referral.dart';
 import '../theme.dart';
+import 'friend_name_prompt.dart';
 import 'friends_screen.dart';
 
 /// Play link shared with phone-book contacts who do not use Dilmaç.
@@ -63,7 +64,11 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
     }
   }
 
-  Future<void> _request(FriendsApi api, ContactOnApp c) async {
+  Future<void> _request(ContactOnApp c) async {
+    // The request carries the sender's name: ask for one if there is none.
+    if (!await ensureFriendName(context, ref)) return;
+    final api = ref.read(friendsApiProvider);
+    if (api == null || !mounted) return;
     setState(() => _busy.add(c.uid));
     try {
       final result = await api.sendRequest(c.uid);
@@ -87,7 +92,11 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
     }
   }
 
-  Future<void> _invite(FriendsApi api) async {
+  Future<void> _invite() async {
+    // The invitation may carry the friend code, which shows the name.
+    if (!await ensureFriendName(context, ref)) return;
+    final api = ref.read(friendsApiProvider);
+    if (api == null) return;
     String text;
     try {
       // The referral code (both get Premium days) when Cloud Functions
@@ -227,7 +236,7 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
               ? FilledButton(
                   key: ValueKey('contact-accept-${c.uid}'),
                   style: compactButton,
-                  onPressed: () => acceptFriendRequest(context, api, incoming[c.uid]!),
+                  onPressed: () => acceptFriendRequest(context, ref, incoming[c.uid]!),
                   child: const Text('Kabul et'),
                 )
               : outgoing.contains(c.uid)
@@ -242,7 +251,7 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
               : FilledButton.icon(
                   key: ValueKey('contact-request-${c.uid}'),
                   style: compactButton,
-                  onPressed: _busy.contains(c.uid) ? null : () => _request(api, c),
+                  onPressed: _busy.contains(c.uid) ? null : () => _request(c),
                   icon: const Icon(Icons.person_add_alt_1_rounded, size: 18),
                   label: const Text('İstek gönder'),
                 ),
@@ -270,7 +279,7 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
           action: TextButton.icon(
             key: ValueKey('contact-invite-${c.name}'),
             style: compactButton,
-            onPressed: () => _invite(api),
+            onPressed: _invite,
             icon: const Icon(Icons.share_rounded, size: 18),
             label: const Text('Davet et'),
           ),

@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/progress.dart';
 import 'contacts/phone_numbers.dart';
 import 'firebase/firebase_providers.dart';
+import 'league_remote.dart' show leagueDisplayName;
 import 'profile.dart' show myDisplayNameProvider;
 
 /// Friends and the shared daily streak. Everything goes straight to
@@ -83,6 +84,7 @@ class Friendship {
     required this.streak,
     required this.best,
     required this.streakDay,
+    this.myName,
   });
 
   /// Null when the document is not a friendship of [me].
@@ -104,6 +106,7 @@ class Friendship {
       streak: n(d['streak']),
       best: n(d['best']),
       streakDay: n(d['streakDay']),
+      myName: names[me] as String?,
     );
   }
 
@@ -120,6 +123,9 @@ class Friendship {
   final int streak;
   final int best;
   final int streakDay;
+
+  /// The user's own name as stored in this friendship (shown to the friend).
+  final String? myName;
 
   bool meDone(int today) => myDay == today;
   bool friendDone(int today) => friendDay == today;
@@ -203,6 +209,9 @@ class FriendException implements Exception {
 abstract class FriendsApi {
   String get uid;
 
+  /// The name friends see (Profil > ad, or the account's first name).
+  String get myName;
+
   /// The user's code, created on first use.
   Future<String> myCode();
 
@@ -220,6 +229,10 @@ abstract class FriendsApi {
 
   /// Marks today's daily goal in every friendship that does not have it yet.
   Future<void> markGoal(int day);
+
+  /// Writes [myName] into the user's code and, with [friendships], into
+  /// every friendship that still shows an older name.
+  Future<void> syncMyName({bool friendships = true});
 
   // ---- Friend requests (phone book) ----
 
@@ -266,7 +279,28 @@ class FirestoreFriendsApi implements FriendsApi {
   @override
   final String? verifiedPhone;
 
+  @override
+  String get myName => name;
+
   CollectionReference<Map<String, dynamic>> get _codes => _db.collection('friendCodes');
+
+  @override
+  Future<void> syncMyName({bool friendships = true}) async {
+    final mine = await _codes.where('uid', isEqualTo: uid).get();
+    for (final d in mine.docs) {
+      if (d.data()['name'] != name || d.data()['avatar'] != avatar) await d.reference.set(_codeDoc());
+    }
+    if (!friendships) return;
+    final pairs = await _pairs.where('members', arrayContains: uid).get();
+    for (final p in pairs.docs) {
+      final names = p.data()['names'];
+      if (names is Map && names[uid] != name) {
+        // Only the user's own entry; firestore.rules (validOwnChange) allow it.
+        await p.reference.update({'names.$uid': name});
+      }
+    }
+  }
+
   CollectionReference<Map<String, dynamic>> get _pairs => _db.collection('friendships');
   CollectionReference<Map<String, dynamic>> get _requests => _db.collection('friendRequests');
   CollectionReference<Map<String, dynamic>> get _phones => _db.collection('phoneIndex');
@@ -563,6 +597,28 @@ final friendGoalSyncProvider = Provider<void>((ref) {
   // Best effort: a failure (offline, a clock off near midnight) is retried
   // the next time progress or the friend list changes.
   unawaited(api.markGoal(today).catchError((_) {}));
+});
+
+/// The fallback name of an account without a chosen or Google name.
+final defaultFriendName = leagueDisplayName(null);
+
+/// True when friends would see only the generic name: ask for a name first.
+bool isDefaultFriendName(String name) => name == defaultFriendName || name == 'Arkadaş';
+
+/// Keeps the name friends see up to date: after the user renames
+/// themselves in Profil, their code and every friendship get the new name
+/// (friends also read it live from profiles/{uid}). Kept alive from the app
+/// root; does nothing without friends or a code.
+final friendNameSyncProvider = Provider<void>((ref) {
+  final api = ref.watch(friendsApiProvider);
+  if (api == null) return;
+  final stale = ref.watch(
+    friendshipsProvider.select(
+      (a) => a.value?.any((f) => f.myName != null && f.myName != api.myName) ?? false,
+    ),
+  );
+  // Best effort: retried when the name or the friend list changes.
+  unawaited(api.syncMyName(friendships: stale).catchError((_) {}));
 });
 
 /// Friend requests waiting for the user's answer, live. Requests from
