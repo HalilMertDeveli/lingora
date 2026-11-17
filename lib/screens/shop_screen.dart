@@ -706,19 +706,12 @@ class _ItemCard extends ConsumerWidget {
       );
     }
     if (item.premiumOnly) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.workspace_premium_rounded, size: 14, color: Rarity.premium.color),
-          const SizedBox(width: 3),
-          Flexible(
-            child: Text(
-              "Premium'a özel",
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Rarity.premium.color, fontWeight: FontWeight.w800, fontSize: 12),
-            ),
-          ),
-        ],
+      return FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          "Premium'a özel",
+          style: TextStyle(color: Rarity.premium.color, fontWeight: FontWeight.w800, fontSize: 12),
+        ),
       );
     }
     return Center(
