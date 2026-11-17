@@ -9,6 +9,7 @@ import '../data/app_settings.dart';
 import '../data/break_reminder.dart';
 import '../data/course_repository.dart';
 import '../data/mistake_nudge.dart';
+import '../data/option_glosses.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
@@ -534,7 +535,13 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       ),
       ExerciseType.match => MatchExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.speak => SpeakExercise(key: key, ex: ex, locked: locked, onReady: onReady, onSkip: _skip),
-      ExerciseType.choice => ChoiceExercise(key: key, ex: ex, locked: locked, onReady: onReady),
+      ExerciseType.choice => ChoiceExercise(
+        key: key,
+        ex: ex,
+        locked: locked,
+        onReady: onReady,
+        gloss: ref.watch(optionGlossesProvider).value?.of(_current.key, ex.options.length),
+      ),
       ExerciseType.write => WriteExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.shadow => ShadowExercise(
         key: key,

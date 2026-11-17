@@ -57,6 +57,7 @@ flutter:
     - assets/courses/exam_yds/
     - assets/exams/
     - assets/exam_packs/
+    - assets/option_glosses/
     - assets/notes/
     - assets/pronunciation/
     - assets/reading/
