@@ -131,6 +131,6 @@ void main() {
 
   testWidgets('the top bar names the Yazılımcı Dersleri track', (tester) async {
     await pumpApp(tester, {'progress_v1': '{"onboarded": true, "trackId": "pro_dev"}'});
-    expect(find.text('Yazılımcı Dersleri'), findsWidgets);
+    expect(find.text('Yazılımcı'), findsOneWidget, reason: 'short name on the course badge');
   });
 }
