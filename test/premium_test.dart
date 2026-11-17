@@ -23,8 +23,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Store double: [owned] products are re-delivered on restore; [autoResult]
 /// is what a purchase sheet "returns".
 class FakeBilling implements BillingService {
-  FakeBilling({this.available = true});
+  FakeBilling({this.available = true, this.products = defaultProducts});
   bool available;
+
+  /// What the store returns (monthly ₺100, yearly ₺600, no trial).
+  final List<StoreProduct> products;
+  static const defaultProducts = [
+    StoreProduct(id: 'lingora_premium_monthly', title: 'Aylık', price: '₺100,00', rawPrice: 100),
+    StoreProduct(id: 'lingora_premium_yearly', title: 'Yıllık', price: '₺600,00', rawPrice: 600),
+  ];
   StorePurchaseStatus autoResult = StorePurchaseStatus.purchased;
   final owned = <String>{};
   final bought = <String>[];
@@ -39,10 +46,8 @@ class FakeBilling implements BillingService {
   Future<bool> isAvailable() async => available;
 
   @override
-  Future<List<StoreProduct>> loadProducts(Set<String> ids) async => [
-    const StoreProduct(id: 'lingora_premium_monthly', title: 'Aylık', price: '₺100,00', rawPrice: 100),
-    const StoreProduct(id: 'lingora_premium_yearly', title: 'Yıllık', price: '₺600,00', rawPrice: 600),
-  ].where((p) => ids.contains(p.id)).toList();
+  Future<List<StoreProduct>> loadProducts(Set<String> ids) async =>
+      products.where((p) => ids.contains(p.id)).toList();
 
   @override
   Future<void> buy(String productId) async {
@@ -447,6 +452,105 @@ void main() {
       expect(find.text('Premium aktif'), findsOneWidget);
       expect(find.textContaining('aboneliğin aktif'), findsOneWidget);
       expect(find.byKey(const ValueKey('paywall-buy')), findsNothing);
+    });
+
+    testWidgets('yearly is first, preselected and marked as the best value', (tester) async {
+      final billing = FakeBilling();
+      await tester.pumpWidget(app(await widgetOverrides(tester, billing), const PaywallScreen()));
+      await tester.pumpAndSettle();
+      final yearly = tester.getTopLeft(find.byKey(const ValueKey('plan-yearly'))).dy;
+      final monthly = tester.getTopLeft(find.byKey(const ValueKey('plan-monthly'))).dy;
+      expect(yearly, lessThan(monthly));
+      expect(find.text('En avantajlı'), findsOneWidget);
+      expect(
+        find.descendant(of: find.byKey(const ValueKey('plan-yearly')), matching: find.text('En avantajlı')),
+        findsOneWidget,
+      );
+      expect(find.text('%50 tasarruf'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('paywall-buy')));
+      await tester.pumpAndSettle();
+      expect(billing.bought, ['lingora_premium_yearly']);
+    });
+
+    testWidgets('no monthly price from Play: no saving or best-value badge', (tester) async {
+      final billing = FakeBilling(products: [FakeBilling.defaultProducts.last]);
+      await tester.pumpWidget(app(await widgetOverrides(tester, billing), const PaywallScreen()));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('plan-yearly')), findsOneWidget);
+      expect(find.byKey(const ValueKey('plan-monthly')), findsNothing);
+      expect(find.text('En avantajlı'), findsNothing);
+      expect(find.textContaining('tasarruf'), findsNothing);
+      expect(find.text('Yıllık · ₺600,00'), findsOneWidget);
+    });
+
+    testWidgets('only monthly from Play: it gets selected instead', (tester) async {
+      final billing = FakeBilling(products: [FakeBilling.defaultProducts.first]);
+      await tester.pumpWidget(app(await widgetOverrides(tester, billing), const PaywallScreen()));
+      await tester.pumpAndSettle();
+      expect(find.text('Aylık · ₺100,00'), findsOneWidget);
+    });
+
+    testWidgets('no Play trial offer: no trial copy at all (trial_days is 7)', (tester) async {
+      await tester.pumpWidget(app(await widgetOverrides(tester, FakeBilling()), const PaywallScreen()));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('ücretsiz deneme'), findsNothing);
+      expect(find.textContaining('ücretsiz dene'), findsNothing);
+      expect(find.textContaining('Deneme bitince'), findsNothing);
+    });
+
+    testWidgets('a Play trial offer shows the trial with Play\'s length', (tester) async {
+      final trial = FakeBilling(
+        products: [
+          FakeBilling.defaultProducts.first,
+          const StoreProduct(
+            id: 'lingora_premium_yearly',
+            title: 'Yıllık',
+            price: '₺600,00',
+            rawPrice: 600,
+            freeTrialDays: 7,
+          ),
+        ],
+      );
+      await tester.pumpWidget(app(await widgetOverrides(tester, trial), const PaywallScreen()));
+      await tester.pumpAndSettle();
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey('plan-yearly')),
+          matching: find.text('7 gün ücretsiz deneme'),
+        ),
+        findsOneWidget,
+      );
+      expect(find.text('7 gün ücretsiz dene'), findsOneWidget);
+      expect(find.textContaining('Deneme bitince ₺600,00 / yıl'), findsOneWidget);
+      // The monthly product has no trial offer: choosing it drops the trial copy.
+      await tester.tap(find.byKey(const ValueKey('plan-monthly')));
+      await tester.pumpAndSettle();
+      expect(find.text('Aylık · ₺100,00'), findsOneWidget);
+      expect(find.text('7 gün ücretsiz dene'), findsNothing);
+      expect(find.textContaining('Deneme bitince'), findsNothing);
+    });
+
+    test('yearly saving uses real store prices only', () {
+      const monthly = StoreProduct(id: 'm', title: 'm', price: '₺100,00', rawPrice: 100);
+      const yearly = StoreProduct(id: 'y', title: 'y', price: '₺600,00', rawPrice: 600);
+      expect(yearlySavingPercent(yearly, monthly), 50);
+      expect(yearlySavingPercent(yearly, null), 0);
+      expect(yearlySavingPercent(yearly, const StoreProduct(id: 'm', title: 'm', price: '', rawPrice: 0)), 0);
+      const pricey = StoreProduct(id: 'y', title: 'y', price: '₺1.500,00', rawPrice: 1500);
+      expect(yearlySavingPercent(pricey, monthly), 0);
+    });
+
+    test('cloud backup is free, not Premium', () {
+      expect(PremiumFeature.values.map((f) => f.name), isNot(contains('cloudBackup')));
+      expect(PremiumFeature.values.map((f) => f.title.toLowerCase()), everyElement(isNot(contains('bulut'))));
+      expect(freeItems, contains('Hesapla bulut yedekleme ve cihazlar arası devam'));
+    });
+
+    testWidgets('the paywall lists cloud backup under free', (tester) async {
+      await tester.pumpWidget(app(await widgetOverrides(tester, FakeBilling()), const PaywallScreen()));
+      await tester.pumpAndSettle();
+      expect(find.text('Hesapla bulut yedekleme ve cihazlar arası devam'), findsOneWidget);
+      expect(find.textContaining('Bulut yedekleme ve cihazlar arası senkron'), findsNothing);
     });
   });
 

@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// changes them. Keys and meanings: docs/analitik.md.
 const remoteDefaults = <String, Object>{
   'paywall_variant': 'a',
-  'trial_days': 0,
+  'trial_days': 7,
   'price_copy': 'savings',
   'paywall_after_lessons': 5,
   'paywall_cooldown_days': 7,
@@ -20,7 +20,7 @@ const remoteDefaults = <String, Object>{
 class RemoteFlags {
   const RemoteFlags({
     this.paywallVariant = 'a',
-    this.trialDays = 0,
+    this.trialDays = 7,
     this.priceCopy = PriceCopy.savings,
     this.paywallAfterLessons = 5,
     this.paywallCooldownDays = 7,
@@ -62,8 +62,9 @@ class RemoteFlags {
   /// `a`: feature list first (control). `b`: plans first, short header.
   final String paywallVariant;
 
-  /// Free trial length the Play offer gives (0 = no trial). The paywall
-  /// mentions a trial only when the store also reports one.
+  /// Free trial length the Play offer gives (0 = never mention a trial). The
+  /// paywall mentions a trial only when Google Play also returns a free-trial
+  /// offer for the product; the length shown always comes from Play.
   final int trialDays;
 
   /// How the yearly price is explained (always computed from real prices).
