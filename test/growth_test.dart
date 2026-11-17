@@ -269,7 +269,8 @@ void main() {
       final asStrings = {for (final e in remoteDefaults.entries) e.key: '${e.value}'};
       expect(RemoteFlags.fromValues(asStrings), RemoteFlags.defaults);
       expect(RemoteFlags.fromValues(const {}), RemoteFlags.defaults);
-      expect(RemoteFlags.defaults.trialDays, 0);
+      expect(RemoteFlags.defaults.trialDays, 7);
+      expect(remoteDefaults['trial_days'], 7);
       expect(RemoteFlags.defaults.paywallAfterLessons, 5);
     });
 

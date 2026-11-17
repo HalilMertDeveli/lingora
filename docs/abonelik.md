@@ -17,6 +17,7 @@ ekstraları açar.
 | | 🎯 **Tüm tam deneme paketleri** (paketler tek tek de satın alınabilir, bölüm 7) |
 | Sohbet senaryolarının **demo modu** (hazır senaryo + kural tabanlı düzeltme) | |
 | Türk hata dedektörü ve profilde **en sık 3 hata** | |
+| Hesapla **bulut yedekleme** ve cihazlar arası devam (giriş yapan herkes) | |
 
 Neden bu ayrım?
 
@@ -54,10 +55,19 @@ Notlar:
   avantajlı tutmak dönüşümü artırır. Enflasyon nedeniyle fiyatları 6 ayda bir
   gözden geçir (Play Console'da mevcut aboneler için fiyat değişikliği ayrı
   bir onay akışıdır).
+- **Paywall düzeni**: gelirin ana kaynağı abonelik. Paywall'da **Yıllık** plan
+  ilk sırada ve **varsayılan seçili** gelir, "En avantajlı" rozeti ve aylığa göre
+  "%N tasarruf" rozeti taşır; **Aylık** ikinci sıradadır. Yüzde, Play'den gelen
+  gerçek fiyatlarla hesaplanır (`12 × aylık` ile yıllık karşılaştırılır); aylık
+  fiyat gelmezse ya da yıllık daha ucuz değilse rozet hiç gösterilmez.
+  Remote Config `price_copy=plain` iken rozet de gizlenir.
 - **Ücretsiz deneme**: Play Console'da bir plana ücretsiz deneme teklifi (offer)
   eklersen uygulama, Play'in o kullanıcıya döndürdüğü deneme teklifini seçer ve
-  satın almayı onunla başlatır; paywall bunu Remote Config `trial_days` > 0 iken
-  duyurur (bkz. `docs/analitik.md`). Gösterilen fiyat her zaman temel planın fiyatıdır.
+  satın almayı onunla başlatır. Remote Config `trial_days` varsayılanı **7**'dir,
+  ama paywall denemeyi **yalnızca Play bu ürün için bir deneme teklifi döndürürse**
+  duyurur ve süreyi her zaman Play'den okur; teklif yoksa (ya da kullanıcı uygun
+  değilse) hiçbir deneme metni görünmez. Kurulum: §3.1. Gösterilen fiyat her zaman
+  temel planın fiyatıdır.
 - KDV dahil fiyat girilir (Play Console Türkiye için vergiyi fiyata dahil eder).
 
 ## 3. Play Console'da yapılacaklar
@@ -102,6 +112,31 @@ Henüz Google Play geliştirici hesabı yok; sırasıyla:
    her açılışta aboneliği sessizce yeniden doğrular.
 9. Mağaza kaydında ve gizlilik politikasında abonelik koşullarını yaz (fiyat,
    otomatik yenileme, iptal yolu). Paywall bu metni zaten gösteriyor.
+
+### 3.1. Yıllık plana 7 günlük ücretsiz deneme teklifi
+
+Deneme, temel planın üstüne eklenen bir **teklif** (offer) olarak kurulur;
+uygulamada ayrıca kod değişikliği gerekmez.
+
+1. Para kazanma > Ürünler > Abonelikler > `lingora_premium_yearly` aboneliğini aç.
+2. Yıllık temel planın (otomatik yenilenen, 1 yıl) yanında **Teklif ekle**'ye bas.
+3. **Teklif kimliği**: ör. `yearly-trial-7d` (küçük harf, rakam, tire). Uygulama
+   kimliğe bakmaz; ilk aşaması ücretsiz olan teklifi kendisi bulur.
+4. **Uygunluk**: **Yeni müşteri edinme** → "Bu aboneliği hiç almamış olanlar"
+   (önerilen). Böylece aynı hesap denemeyi ikinci kez alamaz; Play uygun olmayan
+   kullanıcılara teklifi hiç döndürmez ve paywall'da deneme metni görünmez.
+5. **Aşama ekle** > **Ücretsiz deneme** > süre **7 gün** (`P7D`). Başka aşama
+   ekleme: deneme bitince temel planın normal yıllık fiyatı başlar.
+6. Bölgeler: temel planla aynı (en az Türkiye). Kaydet ve teklifi **Etkinleştir**.
+7. Remote Config `trial_days` zaten 7 (varsayılan); değiştirme. Denemeyi
+   duyurmayı kapatmak için `trial_days=0`, denemeyi tamamen kapatmak için teklifi
+   Play Console'da **Devre dışı bırak**.
+8. Test: lisans test hesabıyla Play Store'dan yüklenmiş sürümde paywall'ı aç;
+   yıllık kartta "7 gün ücretsiz deneme" ve butonda "7 GÜN ÜCRETSİZ DENE"
+   görünmeli. Lisans testinde deneme birkaç dakikada biter.
+
+İstersen aynı adımlarla aylık plana da deneme ekleyebilirsin; paywall her ürün
+için yalnızca Play'in döndürdüğü teklife bakar.
 
 ## 4. Yetki (entitlement) Firebase'den nasıl akar?
 
