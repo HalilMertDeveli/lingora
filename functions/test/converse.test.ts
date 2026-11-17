@@ -98,7 +98,7 @@ test("returns the structured reply and sends the expected request", async () => 
   });
   const p = calls[0];
   assert.equal(p.model, MODEL);
-  assert.equal(MODEL, "claude-opus-5-5");
+  assert.equal(MODEL, "claude-sonnet-5-5");
   assert.deepEqual(p.betas, ["server-side-fallback-2026-07-01"]);
   assert.equal(p.fallbacks, "default");
   const out = p.output_config as { effort: string; format: { type: string } };

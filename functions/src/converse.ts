@@ -11,7 +11,8 @@ import { HttpsError } from "firebase-functions/v2/https";
 import { SCENARIOS, systemPrompt } from "./scenarios.js";
 import { dayKey } from "./week.js";
 
-export const MODEL = "claude-opus-5-5";
+// Sonnet: good enough for a chat partner and much cheaper per learner than Opus.
+export const MODEL = "claude-sonnet-5-5";
 export const MAX_MESSAGES = 20;
 export const MAX_CHARS = 400;
 /** Learner messages per user per Turkish day. */
