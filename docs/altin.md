@@ -63,3 +63,24 @@ doğrulanır (ürün kimliği kalıbı, avatar `av_`, çerçeve `fr_`, en fazla 
 Cloud Functions olmadığı için ürünün gerçekten alındığı sunucuda doğrulanamaz;
 en kötü durumda biri sahip olmadığı bir ürünü yalnızca arkadaşlarına gösterebilir.
 Testler: `functions/test/profile_rules.test.ts`.
+
+## Mağaza v2 (görünürlük ve vitrin)
+
+- **Fotoğraf / Avatar:** Profil başlığında ve Mağaza'daki "Vitrinin" kartında seçim var.
+  Bir avatarı "Kullan" ile seçmek onu fotoğrafın yerine geçirir (`equipped.face = avatar`);
+  yeni fotoğraf yüklemek fotoğrafa döndürür. Seçim `profiles/{uid}.showcase.useAvatar`
+  ile arkadaşlara ve lig satırına da gider.
+- **Her yerde görünür:** kendi yüzün `MyAvatar` (`lib/ui/my_avatar.dart`) ile üst barda
+  (profil kısayolu), profil başlığında, ders sonu ekranında (altının yanında), lig
+  satırında ve Mağaza'da; arkadaşlarınki arkadaş listesinde, arkadaş profilinde ve ligde.
+  Tema bütün uygulamada; Çaycı Dayı aksesuarı yetişkin modunda Dayı'nın göründüğü her
+  yerde; Pofuduk kıyafetleri yalnızca Çocuk modunda (Çaycı Dayı çocuklara hiç görünmez).
+- **Mağaza:** her kategoride "Nerede görünür?" satırı ve canlı önizleme (ürüne dokun: profil
+  başlığın ve lig satırın o ürünle nasıl duracak), "Haftanın ürünleri" (herkes için aynı,
+  pazartesi yenilenir, %20 indirim, `featuredItems`), nadirlik (Sıradan / Nadir / Efsane,
+  renkli kenar), "Sahip olduklarım" filtresi, satın alma kutlaması ve "Hemen kullan".
+  Satın almak artık ürünü otomatik kuşandırmaz; kutlamadaki "Hemen kullan" ya da kartın
+  "Kullan" butonu kuşandırır.
+- **Yeni ürünler:** dönen ve parlayan animasyonlu çerçeveler (Dönen gökkuşağı, Ateş
+  halkası, Dalgalı deniz; "Animasyonları azalt" açıksa durur), 6 yeni avatar, Çocuk
+  moduna özel 5 Pofuduk kıyafeti (`px_`). Altın yine yalnızca çalışarak kazanılır.

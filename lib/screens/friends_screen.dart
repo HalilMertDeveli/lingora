@@ -460,6 +460,7 @@ class _FriendCard extends ConsumerWidget {
                   size: 44,
                   avatarId: profile?.showcase?.avatar,
                   frameId: profile?.showcase?.frame,
+                  preferAvatar: profile?.showcase?.useAvatar ?? false,
                   fallback: CircleAvatar(
                     radius: 22,
                     backgroundColor: Brand.surface,

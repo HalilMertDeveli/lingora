@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'progress.dart';
 import 'shop_catalog.dart';
+import 'shop_catalog.dart' as catalog show priceOf;
 import 'wallet.dart';
 
 export 'wallet.dart';
@@ -48,23 +49,28 @@ class GoldWallet {
     return true;
   }
 
-  /// Buys [item] with gold. Wearable items are worn at once.
+  /// The price of [item] today (featured items are cheaper this week).
+  int priceOf(ShopItem item) => catalog.priceOf(item, _ref.read(clockProvider)());
+
+  /// Buys [item] with gold. It is not worn yet: the Mağaza offers
+  /// "Hemen kullan" after the purchase.
   BuyResult buy(ShopItem item) {
+    final price = priceOf(item);
     final w = _wallet;
     if (item.consumable) {
       if (w.freezes >= maxFreezes) return BuyResult.stockFull;
     } else if (ownsItem(w, item)) {
       return BuyResult.owned;
     }
-    if (w.balance < item.price) return BuyResult.insufficient;
+    if (w.balance < price) return BuyResult.insufficient;
     _progress.updateWallet((w, device) {
-      final paid = w.debit(device, item.price);
+      final paid = w.debit(device, price);
       if (item.consumable) {
         return paid.copyWith(
           freezeBought: {...paid.freezeBought, device: (paid.freezeBought[device] ?? 0) + 1},
         );
       }
-      return _wear(paid.copyWith(owned: [...paid.owned, item.id]), item);
+      return paid.copyWith(owned: [...paid.owned, item.id]);
     });
     return BuyResult.bought;
   }
@@ -72,7 +78,16 @@ class GoldWallet {
   Wallet _wear(Wallet w, ShopItem item) {
     final slot = item.category.slot;
     if (slot == null) return w;
-    return w.copyWith(equipped: {...w.equipped, slot: item.id}, styledAt: _nowMs());
+    // Choosing an avatar shows it instead of the photo (until the learner
+    // picks the photo again).
+    return w.copyWith(
+      equipped: {
+        ...w.equipped,
+        slot: item.id,
+        if (slot == WalletSlot.avatar) WalletSlot.face: WalletSlot.faceAvatar,
+      },
+      styledAt: _nowMs(),
+    );
   }
 
   /// Wears an owned [item] ("Kullan"). Returns false when it is not owned.
@@ -80,6 +95,20 @@ class GoldWallet {
     if (item.category.slot == null || !ownsItem(_wallet, item)) return false;
     _progress.updateWallet((w, _) => _wear(w, item));
     return true;
+  }
+
+  /// Shows the Mağaza avatar ([avatar] true) or the photo everywhere.
+  void useAvatarFace(bool avatar) {
+    final w = _wallet;
+    if ((w.equipped[WalletSlot.face] == WalletSlot.faceAvatar) == avatar) return;
+    _progress.updateWallet(
+      (w, _) => w.copyWith(
+        equipped: avatar
+            ? {...w.equipped, WalletSlot.face: WalletSlot.faceAvatar}
+            : ({...w.equipped}..remove(WalletSlot.face)),
+        styledAt: _nowMs(),
+      ),
+    );
   }
 
   /// Takes off what is worn in [slot] (back to the default look).

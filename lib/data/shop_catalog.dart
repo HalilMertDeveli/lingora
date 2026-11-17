@@ -7,22 +7,47 @@ enum ShopCategory {
   avatar('Avatarlar', WalletSlot.avatar),
   frame('Çerçeveler', WalletSlot.frame),
   mascot('Çaycı Dayı', WalletSlot.mascot),
+  pofuduk('Pofuduk', WalletSlot.pofuduk),
   theme('Temalar', WalletSlot.theme),
   freeze('Seri dondurma', null);
 
   const ShopCategory(this.label, this.slot);
 
-  /// Tabs shown in the Mağaza. Çocuk modu has no Çaycı Dayı tab: kids only
-  /// ever see Pofuduk.
+  /// Tabs shown in the Mağaza. Çocuk modu has no Çaycı Dayı tab (kids only
+  /// ever see Pofuduk) and adults no Pofuduk tab.
   static List<ShopCategory> tabs({required bool kid}) => [
     for (final c in values)
-      if (!kid || c != mascot) c,
+      if (kid ? c != mascot : c != pofuduk) c,
   ];
   final String label;
 
   /// Where the item is worn; null for consumables.
   final String? slot;
+
+  /// "Nerede görünür?": where a worn item of this kind shows.
+  String get where => switch (this) {
+    avatar => 'Profilin, üst bar, ders sonu, lig satırın ve arkadaşlarının listesi',
+    frame => 'Avatarının ya da fotoğrafının çevresinde: profil, üst bar, ders sonu, lig ve arkadaşlar',
+    mascot => 'Çaycı Dayı\'nın göründüğü her yer (yetişkin modu)',
+    pofuduk => 'Pofuduk\'un göründüğü her yer (Çocuk modu)',
+    theme => 'Bütün uygulama: butonlar, seçimler ve vurgular',
+    freeze => 'Bir gün çalışamazsan serini otomatik korur',
+  };
 }
+
+/// How rare an item is: a coloured edge and a label in the Mağaza.
+enum Rarity {
+  common('Sıradan', Color(0xFF8A94A6)),
+  rare('Nadir', Color(0xFF2F6FDB)),
+  epic('Efsane', Color(0xFFB0459E));
+
+  const Rarity(this.label, this.color);
+  final String label;
+  final Color color;
+}
+
+/// How a frame moves (off when the phone asks for less motion).
+enum FrameMotion { none, spin, pulse }
 
 /// Where a mascot accessory sits on the Çaycı Dayı tile (fractions of its
 /// side) and how big it is.
@@ -43,8 +68,9 @@ class ThemeAccent {
 
 /// A ring drawn around avatars: a sweep of [colors].
 class FrameStyle {
-  const FrameStyle(this.colors, {this.width = 0.09});
+  const FrameStyle(this.colors, {this.width = 0.09, this.motion = FrameMotion.none});
   final List<Color> colors;
+  final FrameMotion motion;
 
   /// Ring width as a fraction of the avatar side.
   final double width;
@@ -62,7 +88,21 @@ class ShopItem {
     this.frame,
     this.accessory,
     this.accent,
-  });
+    Rarity? rarity,
+    // Named parameters cannot be private.
+    // ignore: prefer_initializing_formals
+  }) : _rarity = rarity;
+
+  final Rarity? _rarity;
+
+  /// Set by hand for special items, else by price.
+  Rarity get rarity =>
+      _rarity ??
+      (price >= 400
+          ? Rarity.epic
+          : price >= 250
+          ? Rarity.rare
+          : Rarity.common);
 
   final String id;
   final ShopCategory category;
@@ -109,6 +149,12 @@ const shopItems = <ShopItem>[
   ShopItem(id: 'av_ahtapot', category: ShopCategory.avatar, name: 'Ahtapot', price: 250, emoji: '🐙'),
   ShopItem(id: 'av_aslan', category: ShopCategory.avatar, name: 'Aslan', price: 250, emoji: '🦁'),
   ShopItem(id: 'av_roket', category: ShopCategory.avatar, name: 'Roket', price: 300, emoji: '🚀'),
+  ShopItem(id: 'av_kirpi', category: ShopCategory.avatar, name: 'Kirpi', price: 160, emoji: '🦔'),
+  ShopItem(id: 'av_flamingo', category: ShopCategory.avatar, name: 'Flamingo', price: 220, emoji: '🦩'),
+  ShopItem(id: 'av_karpuz', category: ShopCategory.avatar, name: 'Karpuz', price: 180, emoji: '🍉'),
+  ShopItem(id: 'av_balina', category: ShopCategory.avatar, name: 'Balina', price: 280, emoji: '🐳'),
+  ShopItem(id: 'av_ejderha', category: ShopCategory.avatar, name: 'Ejderha', price: 450, emoji: '🐉'),
+  ShopItem(id: 'av_unicorn', category: ShopCategory.avatar, name: 'Tek boynuzlu at', price: 450, emoji: '🦄'),
   // Frames: rings drawn in code.
   ShopItem(
     id: 'fr_bakir',
@@ -193,6 +239,80 @@ const shopItems = <ShopItem>[
     price: 450,
     accessory: MascotAccessory('👑', 0.48, 0.13, 0.24),
   ),
+  // Animated frames: the ring turns or glows (still with reduced motion).
+  ShopItem(
+    id: 'fr_gokkusagi',
+    category: ShopCategory.frame,
+    name: 'Dönen gökkuşağı',
+    price: 500,
+    frame: FrameStyle([
+      Color(0xFFE53935),
+      Color(0xFFFFB300),
+      Color(0xFF43A047),
+      Color(0xFF1E88E5),
+      Color(0xFF8E24AA),
+      Color(0xFFE53935),
+    ], motion: FrameMotion.spin),
+  ),
+  ShopItem(
+    id: 'fr_ates',
+    category: ShopCategory.frame,
+    name: 'Ateş halkası',
+    price: 450,
+    frame: FrameStyle(
+      [Color(0xFFFF6F00), Color(0xFFFFD54F), Color(0xFFD84315), Color(0xFFFF6F00)],
+      width: 0.11,
+      motion: FrameMotion.pulse,
+    ),
+  ),
+  ShopItem(
+    id: 'fr_deniz',
+    category: ShopCategory.frame,
+    name: 'Dalgalı deniz',
+    price: 400,
+    frame: FrameStyle([
+      Color(0xFF006064),
+      Color(0xFF4DD0E1),
+      Color(0xFFE0F7FA),
+      Color(0xFF006064),
+    ], motion: FrameMotion.spin),
+  ),
+  // Pofuduk outfits (Çocuk modu only, drawn on the Pofuduk artwork).
+  ShopItem(
+    id: 'px_sapka',
+    category: ShopCategory.pofuduk,
+    name: 'Silindir şapka',
+    price: 200,
+    accessory: MascotAccessory('🎩', 0.5, 0.06, 0.3),
+  ),
+  ShopItem(
+    id: 'px_kurdele',
+    category: ShopCategory.pofuduk,
+    name: 'Kurdele',
+    price: 180,
+    accessory: MascotAccessory('🎀', 0.8, 0.1, 0.22),
+  ),
+  ShopItem(
+    id: 'px_kep',
+    category: ShopCategory.pofuduk,
+    name: 'Kep',
+    price: 250,
+    accessory: MascotAccessory('🧢', 0.5, 0.07, 0.3),
+  ),
+  ShopItem(
+    id: 'px_cicek',
+    category: ShopCategory.pofuduk,
+    name: 'Papatya',
+    price: 160,
+    accessory: MascotAccessory('🌼', 0.2, 0.12, 0.2),
+  ),
+  ShopItem(
+    id: 'px_tac',
+    category: ShopCategory.pofuduk,
+    name: 'Prens tacı',
+    price: 400,
+    accessory: MascotAccessory('👑', 0.5, 0.04, 0.26),
+  ),
   // App accent colours. Çay kırmızısı is the default look.
   ShopItem(
     id: 'th_cay',
@@ -249,3 +369,41 @@ ShopItem? equippedIn(Wallet w, String slot) {
   final item = shopItem(w.equipped[slot]);
   return item != null && item.category.slot == slot && ownsItem(w, item) ? item : null;
 }
+
+/// Off the price of the week's featured items ("Haftanın ürünleri").
+const featuredDiscount = 0.2;
+
+/// Three items featured this week, the same for everyone and all week
+/// (Monday to Monday): one avatar, one frame and one other. Free items and
+/// the streak freeze are never featured. [kid] swaps Çaycı Dayı for Pofuduk.
+List<ShopItem> featuredItems(DateTime now, {bool kid = false}) {
+  final d = DateTime(now.year, now.month, now.day);
+  final monday = d.subtract(Duration(days: d.weekday - DateTime.monday));
+  final week = monday.difference(DateTime(2026)).inDays ~/ 7;
+  List<ShopItem> pool(bool Function(ShopItem) test) => [
+    for (final i in shopItems)
+      if (!i.free && !i.consumable && test(i)) i,
+  ];
+  final avatars = pool((i) => i.category == ShopCategory.avatar);
+  final frames = pool((i) => i.category == ShopCategory.frame);
+  final others = pool(
+    (i) =>
+        i.category == ShopCategory.theme || i.category == (kid ? ShopCategory.pofuduk : ShopCategory.mascot),
+  );
+  ShopItem pick(List<ShopItem> list, int salt) =>
+      list[((week * 7 + salt) % list.length + list.length) % list.length];
+  return [pick(avatars, 1), pick(frames, 3), pick(others, 5)];
+}
+
+/// Whether [item] is featured this week (in either mode).
+bool isFeatured(ShopItem item, DateTime now) =>
+    featuredItems(now).any((f) => f.id == item.id) ||
+    featuredItems(now, kid: true).any((f) => f.id == item.id);
+
+/// Price today: featured items cost [featuredDiscount] less.
+int priceOf(ShopItem item, DateTime now) =>
+    isFeatured(item, now) ? (item.price * (1 - featuredDiscount)).round() : item.price;
+
+/// Whether the learner shows their Mağaza avatar instead of their photo.
+bool prefersAvatar(Wallet w) =>
+    w.equipped[WalletSlot.face] == WalletSlot.faceAvatar && equippedIn(w, WalletSlot.avatar) != null;

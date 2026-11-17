@@ -328,18 +328,19 @@ service cloud.firestore {
     // {name, photo, clientUpdatedAt, updatedAt}: the learner's chosen name
     // and a 256 px JPEG avatar kept in the document (no Cloud Storage on the
     // Spark plan). Guests keep both on the device. Friends may read it.
-    // `showcase` {avatar, frame, items ≤ 3} holds Mağaza item ids the learner
+    // `showcase` {avatar, frame, items ≤ 3, useAvatar} holds Mağaza item ids the learner
     // shows friends (lib/services/showcase.dart). Without Cloud Functions the
     // rules cannot check that the items were bought, only their shape: a
     // learner could at most show an item they do not own, to their friends.
     match /profiles/{uid} {
       function validItemId(v) {
-        return v is string && v.matches('^(av|fr|mx|th)_[a-z0-9_]{1,20}$');
+        return v is string && v.matches('^(av|fr|mx|th|px)_[a-z0-9_]{1,20}$');
       }
 
       function validShowcase(s) {
         return s is map
-          && s.keys().hasOnly(['avatar', 'frame', 'items'])
+          && s.keys().hasOnly(['avatar', 'frame', 'items', 'useAvatar'])
+          && (!('useAvatar' in s) || s.useAvatar is bool)
           && s.keys().hasAll(['avatar', 'frame', 'items'])
           && (s.avatar == null || (validItemId(s.avatar) && s.avatar.matches('^av_.*')))
           && (s.frame == null || (validItemId(s.frame) && s.frame.matches('^fr_.*')))

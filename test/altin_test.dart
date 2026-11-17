@@ -20,10 +20,13 @@ import 'package:lingora/services/friends.dart' show friendsApiProvider;
 import 'package:lingora/services/profile.dart';
 import 'package:lingora/services/showcase.dart';
 import 'package:lingora/ui/gold_coin.dart';
+import 'package:lingora/ui/mascot.dart';
+import 'package:lingora/ui/my_avatar.dart';
+import 'package:lingora/ui/shop_visuals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'friends_test.dart' show FakeFriendsApi, friend;
-import 'profile_test.dart' show FakeProfileApi;
+import 'profile_test.dart' show FakeProfileApi, photoA;
 
 /// Tuesday noon.
 final _now = DateTime(2026, 11, 17, 12);
@@ -63,7 +66,9 @@ Wallet rich(int gold) => Wallet(earned: {'dtest': gold});
 void main() {
   test('Çocuk modu Mağazası: Çaycı Dayı sekmesi yok, yalnızca Pofuduk', () {
     expect(ShopCategory.tabs(kid: true), isNot(contains(ShopCategory.mascot)));
-    expect(ShopCategory.tabs(kid: false), ShopCategory.values);
+    expect(ShopCategory.tabs(kid: true), contains(ShopCategory.pofuduk));
+    expect(ShopCategory.tabs(kid: false), isNot(contains(ShopCategory.pofuduk)));
+    expect(ShopCategory.tabs(kid: false), contains(ShopCategory.mascot));
   });
 
   group('earning', () {
@@ -173,12 +178,15 @@ void main() {
       expect(c.read(walletProvider).owns(item.id), isFalse);
     });
 
-    test('buying takes the gold, owns and wears the item', () async {
+    test('buying takes the gold and owns the item; wearing is a choice', () async {
       final c = await _container(progress: Progress(wallet: rich(400)));
       final item = shopItem('av_tilki')!;
       final w = c.read(goldWalletProvider);
       expect(w.buy(item), BuyResult.bought);
-      expect(c.read(goldBalanceProvider), 400 - item.price);
+      expect(c.read(goldBalanceProvider), 400 - priceOf(item, _now));
+      expect(c.read(walletProvider).owns(item.id), isTrue);
+      expect(equippedIn(c.read(walletProvider), WalletSlot.avatar), isNull);
+      expect(w.equip(item), isTrue);
       expect(equippedIn(c.read(walletProvider), WalletSlot.avatar)?.id, 'av_tilki');
       expect(w.buy(item), BuyResult.owned);
       expect(w.buy(shopItem('av_cay')!), BuyResult.owned, reason: 'free items are owned');
@@ -238,6 +246,7 @@ void main() {
       final w = c.read(goldWalletProvider);
       expect(w.equip(shopItem('fr_altin')!), isFalse);
       w.buy(shopItem('fr_altin')!);
+      w.equip(shopItem('fr_altin')!);
       w.equip(shopItem('av_kedi')!);
       final wallet = c.read(walletProvider);
       expect(equippedIn(wallet, WalletSlot.frame)?.id, 'fr_altin');
@@ -253,6 +262,7 @@ void main() {
       expect(w.toggleShowcase(shopItem('av_cay')!), isFalse, reason: 'free items are not shown off');
       for (final id in ['mx_tac', 'th_iznik', 'fr_nazar', 'av_roket']) {
         w.buy(shopItem(id)!);
+        w.equip(shopItem(id)!);
       }
       expect(w.toggleShowcase(shopItem('mx_tac')!), isTrue);
       expect(w.toggleShowcase(shopItem('th_iznik')!), isTrue);
@@ -261,7 +271,7 @@ void main() {
       expect(w.toggleShowcase(shopItem('th_iznik')!), isTrue, reason: 'taken out');
       final s = c.read(myShowcaseProvider);
       expect(s.items, ['mx_tac', 'fr_nazar']);
-      expect(s.avatar, 'av_roket', reason: 'the last bought avatar is worn');
+      expect(s.avatar, 'av_roket', reason: 'the last worn avatar');
       expect(s.frame, 'fr_nazar');
     });
 
@@ -330,7 +340,9 @@ void main() {
         ],
       );
       c.listen(showcaseSyncProvider, (_, _) {});
-      c.read(goldWalletProvider).buy(shopItem('av_tilki')!);
+      c.read(goldWalletProvider)
+        ..buy(shopItem('av_tilki')!)
+        ..equip(shopItem('av_tilki')!);
       await pumpEventQueue();
       await Future<void>.delayed(const Duration(milliseconds: 10));
       expect(api.saved.last.$1, 'ali');
@@ -355,6 +367,64 @@ void main() {
     });
   });
 
+  group('Mağaza v2', () {
+    test('the week\'s featured items are the same all week and change weekly', () {
+      final mon = DateTime(2026, 11, 16, 8);
+      final sun = DateTime(2026, 11, 22, 23);
+      final next = DateTime(2026, 11, 23, 8);
+      List<String> ids(DateTime d) => [for (final i in featuredItems(d)) i.id];
+      expect(ids(mon), ids(sun));
+      expect(ids(mon), hasLength(3));
+      expect(ids(mon), isNot(ids(next)));
+      for (final i in featuredItems(mon)) {
+        expect(i.free || i.consumable, isFalse);
+        expect(priceOf(i, mon), (i.price * (1 - featuredDiscount)).round());
+      }
+      expect([
+        for (final i in featuredItems(mon, kid: true)) i.category,
+      ], isNot(contains(ShopCategory.mascot)));
+    });
+
+    test('a featured item is bought at the discounted price', () async {
+      final item = featuredItems(_now).first;
+      final c = await _container(progress: Progress(wallet: rich(1000)));
+      expect(c.read(goldWalletProvider).buy(item), BuyResult.bought);
+      expect(c.read(goldBalanceProvider), 1000 - priceOf(item, _now));
+      expect(priceOf(item, _now), lessThan(item.price));
+    });
+
+    test('rarity follows price unless set; every item id passes the rules pattern', () {
+      expect(shopItem('av_tilki')!.rarity, Rarity.common);
+      expect(shopItem('fr_iznik')!.rarity, Rarity.rare);
+      expect(shopItem('fr_gokkusagi')!.rarity, Rarity.epic);
+      final pattern = RegExp(r'^(av|fr|mx|th|px|fz)_[a-z0-9_]{1,20}$');
+      for (final i in shopItems) {
+        expect(pattern.hasMatch(i.id), isTrue, reason: i.id);
+      }
+      expect({for (final i in shopItems) i.id}.length, shopItems.length, reason: 'unique ids');
+      expect(itemsIn(ShopCategory.pofuduk), isNotEmpty);
+      expect([for (final i in itemsIn(ShopCategory.frame)) i.frame!.motion], contains(FrameMotion.spin));
+    });
+
+    test('choosing an avatar shows it instead of the photo; the learner can go back', () async {
+      final c = await _container(progress: Progress(wallet: rich(500)));
+      final w = c.read(goldWalletProvider);
+      expect(prefersAvatar(c.read(walletProvider)), isFalse);
+      w.equip(shopItem('av_kedi')!);
+      expect(prefersAvatar(c.read(walletProvider)), isTrue);
+      expect(c.read(myShowcaseProvider).useAvatar, isTrue);
+      w.useAvatarFace(false);
+      expect(prefersAvatar(c.read(walletProvider)), isFalse);
+      expect(c.read(myShowcaseProvider).useAvatar, isFalse);
+      // A frame does not change the choice.
+      w.useAvatarFace(true);
+      w.buy(shopItem('fr_bakir')!);
+      w.equip(shopItem('fr_bakir')!);
+      expect(prefersAvatar(c.read(walletProvider)), isTrue);
+      expect(Showcase.fromMap(c.read(myShowcaseProvider).toMap())!.useAvatar, isTrue);
+    });
+  });
+
   group('screens', () {
     Future<List<Override>> base(Progress p, {AppUser? user, List<Override> extra = const []}) async {
       SharedPreferences.setMockInitialValues({
@@ -376,12 +446,19 @@ void main() {
       addTearDown(tester.view.reset);
     }
 
-    testWidgets('the Mağaza: locked, buy, use', (tester) async {
+    /// No looping animations (animated frames), so pumpAndSettle settles.
+    Widget still(Widget home) => MaterialApp(
+      builder: (c, child) =>
+          MediaQuery(data: MediaQuery.of(c).copyWith(disableAnimations: true), child: child!),
+      home: home,
+    );
+
+    testWidgets('the Mağaza: locked, buy, celebrate, use now', (tester) async {
       tall(tester);
       await tester.pumpWidget(
         ProviderScope(
           overrides: await base(Progress(wallet: rich(200))),
-          child: const MaterialApp(home: ShopScreen()),
+          child: still(const ShopScreen()),
         ),
       );
       await tester.pumpAndSettle();
@@ -389,20 +466,44 @@ void main() {
         find.descendant(of: find.byKey(const ValueKey('shop-balance')), matching: find.text('200')),
         findsOne,
       );
-      // Too expensive: the button says how much is missing.
+      expect(find.byKey(const ValueKey('shop-featured')), findsOne);
+      expect(find.byKey(const ValueKey('shop-where-avatar')), findsOne);
+      // Too expensive: the button cannot be pressed.
       final lion = find.byKey(const ValueKey('shop-buy-av_aslan'));
       await tester.scrollUntilVisible(lion, 200, scrollable: find.byType(Scrollable).last);
       expect(tester.widget<FilledButton>(lion).onPressed, isNull);
-      expect(find.text('50 eksik'), findsWidgets);
-      // Buy the fox.
-      await tester.drag(find.byType(Scrollable).last, const Offset(0, 2000));
+      // Trying the lion on shows it in the live preview.
+      await tester.tap(find.byKey(const ValueKey('shop-item-av_aslan')));
       await tester.pumpAndSettle();
+      await tester.drag(find.byType(Scrollable).last, const Offset(0, 3000));
+      await tester.pumpAndSettle();
+      expect(find.text('Önizleme: Aslan'), findsOne);
+      // Buy the fox: a celebration, then "Hemen kullan".
+      final fox = shopItem('av_tilki')!;
       await tester.tap(find.byKey(const ValueKey('shop-buy-av_tilki')));
       await tester.pumpAndSettle();
       await tester.tap(find.byKey(const ValueKey('shop-confirm')));
       await tester.pumpAndSettle();
-      expect(find.text('50'), findsWidgets);
+      expect(find.byKey(const ValueKey('shop-celebrate')), findsOne);
+      await tester.tap(find.byKey(const ValueKey('shop-use-now')));
+      await tester.pumpAndSettle();
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey('shop-balance')),
+          matching: find.text('${200 - priceOf(fox, _now)}'),
+        ),
+        findsOne,
+      );
       expect(find.byKey(const ValueKey('shop-unequip-av_tilki')), findsOne);
+      expect(
+        find.descendant(of: find.byKey(const ValueKey('shop-my-avatar')), matching: find.text('🦊')),
+        findsOne,
+      );
+      // "Sahip olduklarım" hides what is not owned.
+      await tester.tap(find.byKey(const ValueKey('shop-owned-filter')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('shop-item-av_aslan')), findsNothing);
+      expect(find.byKey(const ValueKey('shop-item-av_tilki')), findsOne);
       // Wear a free one instead.
       await tester.tap(find.byKey(const ValueKey('shop-use-av_kedi')));
       await tester.pumpAndSettle();
@@ -504,10 +605,117 @@ void main() {
       expect(find.descendant(of: mine, matching: find.text('🚀')), findsOne);
       expect(find.byKey(const ValueKey('showcase-item-mx_tac')), findsOne);
     });
+
+    testWidgets('MyAvatar: photo by default, the avatar once chosen', (tester) async {
+      Future<void> pump(Wallet w) async {
+        await tester.pumpWidget(
+          ProviderScope(
+            key: UniqueKey(),
+            overrides: await base(
+              Progress(wallet: w),
+              extra: [profileProvider.overrideWith(() => _FixedProfile(ProfileData(photo: photoA)))],
+            ),
+            child: still(const Scaffold(body: MyAvatar(size: 64))),
+          ),
+        );
+        await tester.pumpAndSettle();
+      }
+
+      await pump(const Wallet(equipped: {'avatar': 'av_kedi'}));
+      expect(find.byKey(const ValueKey('avatar-photo')), findsOne);
+      await pump(const Wallet(equipped: {'avatar': 'av_kedi', 'face': 'avatar'}));
+      expect(find.byKey(const ValueKey('avatar-photo')), findsNothing);
+      expect(find.text('🐈'), findsOne);
+    });
+
+    testWidgets('a friend who chose the avatar shows it instead of the photo', (tester) async {
+      tall(tester);
+      final api = FakeProfileApi(
+        docs: {
+          'zeynep': ProfileData(
+            name: 'Zeyno',
+            photo: photoA,
+            owner: 'zeynep',
+            showcase: const Showcase(avatar: 'av_ejderha', useAvatar: true),
+          ),
+        },
+      );
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: await base(
+            const Progress(),
+            user: const AppUser(uid: 'me', isAnonymous: false),
+            extra: [
+              profileApiProvider.overrideWithValue(api),
+              friendsApiProvider.overrideWithValue(FakeFriendsApi(friends: [friend()])),
+            ],
+          ),
+          child: still(const FriendsScreen()),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final card = find.byKey(const ValueKey('friend-zeynep'));
+      expect(find.descendant(of: card, matching: find.text('🐉')), findsOne);
+      expect(find.descendant(of: card, matching: find.byKey(const ValueKey('avatar-photo'))), findsNothing);
+    });
+
+    testWidgets('Pofuduk wears the bought outfit', (tester) async {
+      await tester.pumpWidget(
+        still(
+          const MascotOutfitScope(
+            accessory: null,
+            pofuduk: MascotAccessory('👑', 0.5, 0.04, 0.26),
+            child: Center(child: Pofuduk(size: 160)),
+          ),
+        ),
+      );
+      await tester.pump();
+      expect(find.text('👑'), findsOne);
+    });
+
+    testWidgets('the lesson result shows the learner\'s avatar next to the gold', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: await base(
+            const Progress(wallet: Wallet(equipped: {'avatar': 'av_kedi', 'face': 'avatar'})),
+          ),
+          child: still(
+            const LessonResultScreen(
+              reward: LessonReward(
+                xp: 10,
+                streak: 1,
+                streakExtended: false,
+                todayXp: 10,
+                dailyGoal: 20,
+                gold: [(GoldReason.lesson, 5)],
+              ),
+              accuracy: 90,
+              duration: Duration(minutes: 2),
+              perfect: false,
+            ),
+          ),
+        ),
+      );
+      for (var i = 0; i < 20; i++) {
+        await tester.pump(const Duration(milliseconds: 100));
+      }
+      expect(
+        find.descendant(of: find.byKey(const ValueKey('result-avatar')), matching: find.text('🐈')),
+        findsOne,
+      );
+    });
   });
 }
 
 DateTime weekStartOf(DateTime d) {
   final day = DateTime(d.year, d.month, d.day);
   return day.subtract(Duration(days: day.weekday - DateTime.monday));
+}
+
+class _FixedProfile extends ProfileNotifier {
+  _FixedProfile(this.value);
+  final ProfileData value;
+
+  @override
+  ProfileData build() => value;
 }

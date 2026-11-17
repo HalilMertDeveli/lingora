@@ -566,6 +566,7 @@ class _Row extends ConsumerWidget {
             size: 40,
             avatarId: showcase?.avatar,
             frameId: showcase?.frame,
+            preferAvatar: Brand.isKid || (showcase?.useAvatar ?? false),
             fallback: CircleAvatar(
               radius: 20,
               backgroundColor: Brand.surface,

@@ -64,6 +64,7 @@ class FriendProfileScreen extends ConsumerWidget {
               photo: profile?.photo,
               avatarId: showcase?.avatar,
               frameId: showcase?.frame,
+              preferAvatar: showcase?.useAvatar ?? false,
               fallback: AvatarFace(emoji: friend.avatar, size: 100),
             ),
           ),

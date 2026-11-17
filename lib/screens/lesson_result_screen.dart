@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/practice.dart';
 import '../data/progress.dart';
@@ -9,6 +10,7 @@ import '../nav/flow.dart';
 import '../theme.dart';
 import '../data/wallet.dart' show GoldReason;
 import '../ui/gold_coin.dart';
+import '../ui/my_avatar.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/stoic_card.dart';
@@ -150,7 +152,20 @@ class _LessonResultScreenState extends State<LessonResultScreen> {
                 const SizedBox(height: 16),
                 // Altın earned with this lesson: "+N altın" pops in and counts up.
                 if (reward.goldTotal > 0) ...[
-                  GoldGain(amount: reward.goldTotal, delay: next(), label: goldBreakdown(reward)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // The learner's own avatar and frame cheer the gold in.
+                      const _ResultAvatar(),
+                      Flexible(
+                        child: GoldGain(
+                          amount: reward.goldTotal,
+                          delay: next(),
+                          label: goldBreakdown(reward),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 12),
                 ],
                 if (reward.freezesUsed > 0)
@@ -803,3 +818,22 @@ String goldBreakdown(LessonReward r) => [
       GoldReason.other => 'Ödül',
     }} $amount',
 ].join(' · ');
+
+/// The learner's avatar and frame next to the gold. Nothing outside a
+/// ProviderScope (widget tests that build the screen alone).
+class _ResultAvatar extends StatelessWidget {
+  const _ResultAvatar();
+
+  @override
+  Widget build(BuildContext context) {
+    try {
+      ProviderScope.containerOf(context, listen: false);
+    } on StateError {
+      return const SizedBox.shrink();
+    }
+    return const Padding(
+      padding: EdgeInsets.only(right: 10),
+      child: MyAvatar(key: ValueKey('result-avatar'), size: 48),
+    );
+  }
+}

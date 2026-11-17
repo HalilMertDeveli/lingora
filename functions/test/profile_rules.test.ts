@@ -187,3 +187,21 @@ test("a malformed showcase is refused", async () => {
   // updatedAt must still be the server time.
   await assertFails(setDoc(doc(db("ali"), "profiles/ali"), { showcase: showcase(), updatedAt: 5 }));
 });
+
+test("the showcase can say avatar-instead-of-photo and hold Pofuduk outfits", async () => {
+  await assertSucceeds(
+    setDoc(doc(db("ali"), "profiles/ali"), {
+      showcase: showcase({ useAvatar: true, items: ["px_tac", "fr_gokkusagi"] }),
+      updatedAt: serverTimestamp(),
+    }),
+  );
+  await makeFriends();
+  const snap = await assertSucceeds(getDoc(doc(db("zeynep"), "profiles/ali")));
+  if (snap.data()?.showcase?.useAvatar !== true) throw new Error("useAvatar not stored");
+  await assertFails(
+    setDoc(doc(db("ali"), "profiles/ali"), {
+      showcase: showcase({ useAvatar: "yes" }),
+      updatedAt: serverTimestamp(),
+    }),
+  );
+});
