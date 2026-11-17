@@ -6,6 +6,7 @@ import 'core/frame_stats.dart';
 import 'core/startup_trace.dart';
 import 'data/app_settings.dart';
 import 'data/progress.dart';
+import 'kurum/kurum.dart';
 import 'screens/consent_sheet.dart';
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
@@ -61,6 +62,8 @@ class LingoraApp extends ConsumerWidget {
     ref.listen(friendGoalSyncProvider, (_, _) {});
     // Reports the week's XP to the Dünya Ligi (does nothing for guests).
     ref.listen(leagueXpSyncProvider, (_, _) {});
+    // Shares the progress summary with the student's classes (Firebase only).
+    ref.listen(classReportSyncProvider, (_, _) {});
     final onboarded = ref.watch(progressProvider.select((p) => p.onboarded));
     // Start listening to the store at launch: Google Play re-delivers
     // unacknowledged or pending purchases right after start-up.

@@ -1,5 +1,8 @@
 # Dilmaç Kurumsal
 
+> **Spark planında (Cloud Functions yok) bugün çalışan okul/kurum akışı için `docs/kurumlar.md`.** Bu belgedeki
+> callable tabanlı model (web paneli, ödev) Blaze planı ve deploy edilmiş fonksiyonlar ister.
+
 Oteller, turizm şirketleri, işletmeler ve okullar için Dilmaç. Kurum, çalışanları ya da öğrencileri
 için koltuk (lisans) satın alır; kişiler uygulamada **kurum kodu** ile katılır ve plan süresince Premium
 kullanır. Yönetici ve öğretmenler web panelinden ilerlemeyi izler, sınıf kurar ve ödev verir.
