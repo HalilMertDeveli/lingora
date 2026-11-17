@@ -9,6 +9,7 @@ import '../data/app_settings.dart';
 import '../data/break_reminder.dart';
 import '../data/course_repository.dart';
 import '../data/mistake_nudge.dart';
+import '../data/option_glosses.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
@@ -28,11 +29,13 @@ import '../exercises/translate_exercise.dart';
 import '../exercises/write_exercise.dart';
 import '../models/course.dart';
 import '../services/growth/analytics.dart';
+import '../services/billing/premium_perks.dart';
 import '../services/growth/paywall_trigger.dart';
 import '../study/answer_recorder.dart';
 import '../theme.dart';
 import '../ui/motion.dart';
 import '../ui/hearts.dart';
+import '../ui/premium_offer.dart';
 import '../ui/session.dart';
 import '../ui/why_wrong.dart';
 import '../nav/flow.dart';
@@ -144,6 +147,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
 
   /// null while answering; true/false after "Kontrol et".
   bool? _lastCorrect;
+
+  /// The current wrong answer's "Neden yanlış?" is past today's free ones.
+  bool _glossLocked = false;
 
   /// English sentence the user built or typed (translate, listen).
   String _answerText = '';
@@ -289,7 +295,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       source: widget.logSource ?? widget.mode.name,
     );
     widget.onAnswered?.call(_current, correct);
+    // "Neden yanlış?": free a few times a day, unlimited with Premium.
+    final glossLocked = !correct && !_claimGloss();
     setState(() {
+      _glossLocked = glossLocked;
       _why = why;
       _spelling = spelling;
       _answered++;
@@ -330,6 +339,25 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     }
   }
 
+  /// The option glosses of the current (wrongly answered) question, if any.
+  OptionGloss? _gloss() {
+    final ex = _current.ex;
+    if (ex.type != ExerciseType.choice) return null;
+    return ref.read(optionGlossesProvider).value?.of(_current.key, ex.options.length);
+  }
+
+  /// Uses one of today's free "Neden yanlış?" explanations for the current
+  /// question. False when they are used up: the question shows the locked
+  /// card, and the paywall may open by itself (paced, see PaywallPacer).
+  bool _claimGloss() {
+    if (_gloss() == null) return true;
+    if (ref.read(whyWrongQuotaProvider.notifier).claim(_current.key)) return true;
+    Future<void>.delayed(const Duration(milliseconds: 1200), () {
+      if (mounted) maybeAutoPaywall(context, ref, PaywallPlacement.whyWrong);
+    });
+    return false;
+  }
+
   void _skip() {
     setState(() => _solved++);
     _advance();
@@ -348,6 +376,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       _shownAt = DateTime.now();
       _grader = null;
       _lastCorrect = null;
+      _glossLocked = false;
       _answerText = '';
       _why = null;
       _spelling = null;
@@ -436,8 +465,13 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       ),
     );
     // Remote Config: a closable paywall after every N lessons (never blocks learning).
+    // At most one paywall a day, none for a few days after one was closed.
+    final pacer = ref.read(paywallPacerProvider);
     final autoPaywall =
-        widget.mode == LessonMode.lesson && ref.read(paywallTriggerProvider).takeAfterLesson();
+        widget.mode == LessonMode.lesson &&
+        pacer.canAutoShow &&
+        ref.read(paywallTriggerProvider).takeAfterLesson();
+    if (autoPaywall) pacer.recordAutoShown();
     final duration = DateTime.now().difference(_started);
     final takeBreak = ref.read(breakTrackerProvider).recordLesson(duration);
     final resultQuote = widget.mode == LessonMode.test ? null : _pickQuote();
@@ -534,7 +568,14 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       ),
       ExerciseType.match => MatchExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.speak => SpeakExercise(key: key, ex: ex, locked: locked, onReady: onReady, onSkip: _skip),
-      ExerciseType.choice => ChoiceExercise(key: key, ex: ex, locked: locked, onReady: onReady),
+      ExerciseType.choice => ChoiceExercise(
+        key: key,
+        ex: ex,
+        locked: locked,
+        onReady: onReady,
+        gloss: ref.watch(optionGlossesProvider).value?.of(_current.key, ex.options.length),
+        glossLocked: _glossLocked,
+      ),
       ExerciseType.write => WriteExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.shadow => ShadowExercise(
         key: key,

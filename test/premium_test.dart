@@ -147,7 +147,7 @@ Future<List<Override>> widgetOverrides(
   Map<String, Object> prefs = const {},
   bool dev = false,
 }) async {
-  await tester.binding.setSurfaceSize(const Size(420, 2000));
+  await tester.binding.setSurfaceSize(const Size(420, 2800));
   addTearDown(() => tester.binding.setSurfaceSize(null));
   tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
     disableAnimations: true,
@@ -362,6 +362,7 @@ void main() {
       expect(find.text('₺600,00 / yıl'), findsOneWidget);
       expect(find.text('%50 tasarruf'), findsOneWidget);
       expect(find.text('Yıllık · ₺600,00'), findsOneWidget);
+      await tester.scrollUntilVisible(find.textContaining('iptal edebilirsin'), 300);
       expect(find.text('Satın alımları geri yükle'), findsOneWidget);
       expect(find.textContaining('iptal edebilirsin'), findsOneWidget);
     });
@@ -371,8 +372,10 @@ void main() {
         app(await widgetOverrides(tester, FakeBilling(available: false)), const PaywallScreen()),
       );
       await tester.pumpAndSettle();
-      expect(find.textContaining('şu an kullanılamıyor'), findsOneWidget);
+      expect(find.textContaining("Google Play'e şu an ulaşılamadı"), findsOneWidget);
+      expect(find.byKey(const ValueKey('paywall-retry')), findsOneWidget);
       expect(find.text('₺100,00 / ay'), findsNothing);
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('paywall-buy')), 300);
       await tester.tap(find.byKey(const ValueKey('paywall-buy')));
       await tester.pumpAndSettle();
       expect(find.text("Premium'a geç"), findsOneWidget);
@@ -400,7 +403,10 @@ void main() {
       await tester.tap(find.text('open'));
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsOneWidget);
-      expect(find.textContaining('“Detaylı hata analizi” Premium ile açılır'), findsOneWidget);
+      expect(
+        find.textContaining('“Detaylı hata analizi ve tahmini puan” Premium ile açılır'),
+        findsOneWidget,
+      );
       await tester.tap(find.byKey(const ValueKey('plan-monthly')));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Aylık · ₺100,00'));
@@ -516,10 +522,12 @@ void main() {
       expect(
         find.descendant(
           of: find.byKey(const ValueKey('plan-yearly')),
-          matching: find.text('7 gün ücretsiz deneme'),
+          matching: find.text('7 gün ücretsiz, sonra ₺600,00 / yıl'),
         ),
         findsOneWidget,
       );
+      expect(find.byKey(const ValueKey('paywall-trial')), findsOneWidget);
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('paywall-buy')), 300);
       expect(find.text('7 gün ücretsiz dene'), findsOneWidget);
       expect(find.textContaining('Deneme bitince ₺600,00 / yıl'), findsOneWidget);
       // The monthly product has no trial offer: choosing it drops the trial copy.

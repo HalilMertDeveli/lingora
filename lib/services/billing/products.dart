@@ -132,16 +132,32 @@ enum PremiumFeature {
     'Gerçek bir yapay zekâyla, her senaryoda sınırsız ve serbest konuşma; anında Türkçe düzeltme.',
     '🤖',
   ),
+  whyWrong(
+    '"Neden yanlış?" açıklamaları',
+    'Her yanlış cevabın açıklaması: şıkların Türkçesi ve neden olmadıkları. Ücretsiz sürümde günde 3.',
+    '💡',
+  ),
   unlimitedMockExams(
-    'Sınırsız deneme sınavı',
+    'Sınırsız deneme',
     'Sınırsız mini deneme ve tüm tam deneme paketleri (YDS/YÖKDİL 8×80, LGS 4×10 soru).',
     '📝',
   ),
   errorAnalytics(
-    'Detaylı hata analizi',
+    'Detaylı hata analizi ve tahmini puan',
     'Zayıf konuların ve soru tiplerin, haftalık gidişatın, kendi cümlelerinle Türk hata kalıpların, '
         'ısı haritası, tahmini sınav puanı ve tek dokunuşla hedefli alıştırmalı çalışma planı.',
     '📊',
+  ),
+  streakFreezes(
+    'Ayda 2 seri dondurma',
+    'Her ay cüzdanına kendiliğinden 2 seri dondurma eklenir; bir gün çalışamazsan serin korunur.',
+    '🧊',
+  ),
+  doubleGold('2 kat altın', 'Ders, görev, lig ve seri ödüllerinde kazandığın her altın iki katı.', '🪙'),
+  premiumAvatars(
+    'Premium avatarlar',
+    "Mağaza'da yalnızca Premium'a özel avatar ve hareketli çerçeveler.",
+    '🦅',
   );
 
   const PremiumFeature(this.title, this.description, this.emoji);

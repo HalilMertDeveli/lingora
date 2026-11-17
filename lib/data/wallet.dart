@@ -38,7 +38,19 @@ const maxFreezes = 2;
 
 /// Why gold was earned (shown in tests and analytics; the ad session adds
 /// [rewardedAd]).
-enum GoldReason { lesson, perfect, dailyGoal, quest, streak, league, rewardedAd, other }
+enum GoldReason {
+  lesson,
+  perfect,
+  dailyGoal,
+  quest,
+  streak,
+  league,
+  rewardedAd,
+  other,
+
+  /// Premium's second helping (Premium earns twice the gold).
+  premium,
+}
 
 /// Days one-off reward keys are kept (see [Wallet.once]).
 const _onceKeepDays = 60;

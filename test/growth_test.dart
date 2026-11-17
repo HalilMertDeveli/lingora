@@ -124,7 +124,7 @@ Future<List<Override>> widgetOverrides(
   RemoteConfigSource? remote,
   ReferralService? referral,
 }) async {
-  await tester.binding.setSurfaceSize(const Size(420, 2000));
+  await tester.binding.setSurfaceSize(const Size(420, 2800));
   addTearDown(() => tester.binding.setSurfaceSize(null));
   // The mascot animates forever otherwise.
   tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
@@ -232,6 +232,7 @@ void main() {
         AnalyticsEvent.trackChosen('yds', source: 'home'),
         for (final f in AppFeature.values) AnalyticsEvent.featureUse(f),
         AnalyticsEvent.paywallView(placement: PaywallPlacement.aiChat, variant: 'a'),
+        AnalyticsEvent.premiumOfferView(placement: PaywallPlacement.whyWrong),
         AnalyticsEvent.paywallClose(placement: PaywallPlacement.profile, variant: 'b'),
         AnalyticsEvent.purchaseStart(plan: 'yearly', placement: 'profile'),
         AnalyticsEvent.trialStart(plan: 'yearly', trialDays: 7),

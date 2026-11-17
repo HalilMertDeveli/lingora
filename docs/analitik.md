@@ -80,8 +80,13 @@ Huni: `onboarding_step(0)` → `onboarding_step(4)` → `onboarding_complete` �
 
 | Olay | Parametreler | Ne zaman |
 | --- | --- | --- |
-| `paywall_view` | `placement` (profile, after_lessons, ai_chat, mock_exam, error_analysis, writing_feedback), `variant` (a, b) | Paywall Premium olmayan kullanıcıya göründü |
+| `paywall_view` | `placement` (profile, after_lessons, ai_chat, mock_exam, error_analysis, writing_feedback, why_wrong, streak_milestone, shop), `variant` (a, b) | Paywall Premium olmayan kullanıcıya göründü |
+| `premium_offer_view` | `placement` (why_wrong, streak_milestone, mock_exam) | Ekran içi küçük Premium kartı göründü (kilitli "Neden yanlış?", seri kutlaması, deneme hakkı bitti) |
 | `paywall_close` | `placement`, `variant` | Paywall satın almadan kapandı |
+
+Kendiliğinden açılan tam ekran paywall (ders serisi sonrası, mini deneme ya da "Neden yanlış?" hakkı bitince)
+günde en fazla bir kez gösterilir; satın almadan kapatılan bir paywall'dan sonra 3 gün kendiliğinden açılmaz
+(`PaywallPacer`, lib/services/billing/premium_perks.dart). Kullanıcının kendi açtıkları sınırlanmaz.
 | `purchase_start` | `plan` (monthly, yearly), `placement` | Satın al düğmesine basıldı |
 | `trial_start` | `plan`, `trial_days` | Ücretsiz denemeyle yeni abonelik başladı (Play deneme teklifi) |
 | `purchase` | `plan`, `item_id` (Play ürün kimliği) | Denemesiz yeni ücretli abonelik |

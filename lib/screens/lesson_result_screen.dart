@@ -9,6 +9,10 @@ import '../data/stoic.dart';
 import '../nav/flow.dart';
 import '../theme.dart';
 import '../data/wallet.dart' show GoldReason;
+import '../services/billing/premium.dart' show premiumProvider;
+import '../services/billing/premium_perks.dart' show paywallPacerProvider;
+import '../services/growth/analytics.dart' show PaywallPlacement;
+import '../ui/premium_offer.dart';
 import '../ui/gold_coin.dart';
 import '../ui/my_avatar.dart';
 import '../ui/mascot.dart';
@@ -309,12 +313,21 @@ class _StreakCelebrationScreenState extends State<StreakCelebrationScreen> {
               ),
               const SizedBox(height: 14),
               Text(
-                streak == 1
-                    ? 'Yarın da kısa bir ders yaparsan serin büyür.'
-                    : 'Her gün biraz: en etkili öğrenme yolu bu.',
+                switch (streak) {
+                  1 => 'Yarın da kısa bir ders yaparsan serin büyür.',
+                  7 => 'Tam bir hafta! Alışkanlık oturmaya başladı.',
+                  30 => 'Bir ay boyunca her gün. Bu gerçek bir başarı!',
+                  100 => '100 gün! Çok az kişi buraya kadar geliyor.',
+                  _ => 'Her gün biraz: en etkili öğrenme yolu bu.',
+                },
+                key: const Key('streak-message'),
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
               ),
+              if (streakOfferMilestones.contains(streak)) ...[
+                const SizedBox(height: 16),
+                _MilestoneOffer(streak: streak),
+              ],
               const Spacer(),
               PressableButton(
                 label: 'DEVAM',
@@ -816,11 +829,44 @@ String goldBreakdown(LessonReward r) => [
       GoldReason.league => 'Lig',
       GoldReason.rewardedAd => 'Bonus',
       GoldReason.other => 'Ödül',
+      GoldReason.premium => 'Premium ×2',
     }} $amount',
 ].join(' · ');
 
 /// The learner's avatar and frame next to the gold. Nothing outside a
 /// ProviderScope (widget tests that build the screen alone).
+/// Streak lengths whose celebration carries a soft Premium offer.
+const streakOfferMilestones = {7, 30, 100};
+
+/// Under a 7 / 30 / 100-day streak: a gentle Premium card (the streak
+/// freezes keep such a streak safe). Not for Premium, Çocuk modu, or a few
+/// days after the paywall was closed; nothing outside a ProviderScope.
+class _MilestoneOffer extends StatelessWidget {
+  const _MilestoneOffer({required this.streak});
+  final int streak;
+
+  @override
+  Widget build(BuildContext context) {
+    try {
+      ProviderScope.containerOf(context, listen: false);
+    } on StateError {
+      return const SizedBox.shrink();
+    }
+    return Consumer(
+      builder: (context, ref, _) {
+        ref.watch(premiumProvider);
+        if (!ref.read(paywallPacerProvider).canOffer) return const SizedBox.shrink();
+        return PremiumOfferCard(
+          placement: PaywallPlacement.streakMilestone,
+          icon: Icons.ac_unit_rounded,
+          title: '$streak günlük serini Premium ile koru',
+          body: 'Her ay 2 seri dondurma, 2 kat altın ve her yanlışın açıklaması.',
+        );
+      },
+    );
+  }
+}
+
 class _ResultAvatar extends StatelessWidget {
   const _ResultAvatar();
 

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/text.dart';
 import '../services/billing/family.dart';
 import '../services/billing/premium.dart';
+import '../services/billing/premium_perks.dart';
 import '../services/growth/analytics.dart';
 import '../services/growth/remote_flags.dart';
 import '../theme.dart';
@@ -48,6 +49,7 @@ const freeItems = [
   'Tüm dersler, gramer yolu ve notlar',
   'Okuma, telaffuz ve kelime tekrarı',
   'Sınav konu pratiği + günde $freeMockExamsPerDay mini deneme',
+  'Günde $freeWhyWrongPerDay "Neden yanlış?" açıklaması',
   'Sohbet senaryoları (demo modu)',
   'Hata dedektörü ve en sık 3 hatan',
   'Hesapla bulut yedekleme ve cihazlar arası devam',
@@ -78,7 +80,9 @@ class PaywallScreen extends ConsumerStatefulWidget {
         PremiumFeature.aiConversation => PaywallPlacement.aiChat,
         PremiumFeature.unlimitedMockExams => PaywallPlacement.mockExam,
         PremiumFeature.errorAnalytics => PaywallPlacement.errorAnalysis,
-        null => PaywallPlacement.profile,
+        PremiumFeature.whyWrong => PaywallPlacement.whyWrong,
+        PremiumFeature.premiumAvatars => PaywallPlacement.shop,
+        PremiumFeature.streakFreezes || PremiumFeature.doubleGold || null => PaywallPlacement.profile,
       };
 
   /// Preselects the family plan (opened from the family screen).
@@ -91,6 +95,7 @@ class PaywallScreen extends ConsumerStatefulWidget {
 class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   late PremiumPlan _plan = widget.showFamily ? PremiumPlan.familyYearly : PremiumPlan.recommended;
   late final AnalyticsService _analytics;
+  late final PaywallPacer _pacer;
   late final String _variant;
   bool _wasPremium = false;
 
@@ -98,6 +103,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   void initState() {
     super.initState();
     _analytics = ref.read(analyticsProvider);
+    _pacer = ref.read(paywallPacerProvider);
     _variant = ref.read(remoteFlagsProvider).paywallVariant;
     _wasPremium = ref.read(premiumProvider);
     if (!_wasPremium) {
@@ -110,6 +116,8 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   void dispose() {
     if (!_wasPremium && !_purchased) {
       _analytics.log(AnalyticsEvent.paywallClose(placement: widget.resolvedPlacement, variant: _variant));
+      // Closed without buying: it does not open by itself for a few days.
+      _pacer.recordClosed();
     }
     super.dispose();
   }
@@ -159,6 +167,15 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
           children: [
             _header(context, premium),
+            if (!premium)
+              if (personalLine(whyWrongWeek(ref.watch(whyWrongQuotaProvider))) case final line?) ...[
+                const SizedBox(height: 12),
+                _Personal(line),
+              ],
+            if (!premium && _trialFromPlay(s, flags) > 0) ...[
+              const SizedBox(height: 12),
+              _TrialBanner(days: _trialFromPlay(s, flags)),
+            ],
             const SizedBox(height: 18),
             if (plansFirst) ...[
               ...buy,
@@ -202,6 +219,13 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       ),
     ],
   );
+
+  /// Free trial days of the yearly plan as Google Play returns them (0 when
+  /// Play offers none, or Remote Config turns trials off).
+  static int _trialFromPlay(PremiumState s, RemoteFlags flags) {
+    if (flags.trialDays <= 0) return 0;
+    return s.product(PremiumPlan.yearly)?.freeTrialDays ?? 0;
+  }
 
   void _openFamily(BuildContext context) =>
       Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const FamilyScreen()));
@@ -273,12 +297,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           child: Padding(padding: EdgeInsets.all(16), child: CircularProgressIndicator()),
         )
       else if (!available)
-        const _Notice(
-          icon: Icons.storefront_rounded,
-          text:
-              'Satın alma bu cihazda şu an kullanılamıyor. Google Play yüklü ve hesabın açık olduğundan '
-              'emin ol; Premium satın alındıysa aşağıdan geri yükleyebilirsin.',
-        )
+        _Unavailable(onRetry: s.busy ? null : ctrl.loadProducts)
       else
         for (final p in offered)
           Padding(
@@ -362,6 +381,125 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       ),
     ];
   }
+}
+
+/// "Bu hafta 12 yanlışın var; 9 tanesinin açıklaması Premium'da." from the
+/// learner's own week ([WhyWrongQuota.week]); null when there is nothing to say.
+String? personalLine(({int wrong, int locked}) week) {
+  if (week.locked > 0) {
+    return "Bu hafta ${week.wrong} yanlışın var; ${week.locked} tanesinin açıklaması Premium'da.";
+  }
+  if (week.wrong >= freeWhyWrongPerDay) {
+    return "Bu hafta ${week.wrong} yanlışının açıklamasını gördün. Premium'da günlük sınır yok.";
+  }
+  return null;
+}
+
+class _Personal extends StatelessWidget {
+  const _Personal(this.text);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    key: const ValueKey('paywall-personal'),
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: Brand.errorBg.withValues(alpha: 0.6),
+      borderRadius: BorderRadius.circular(14),
+    ),
+    child: Row(
+      children: [
+        Icon(Icons.lightbulb_rounded, color: Brand.error),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, height: 1.3)),
+        ),
+      ],
+    ),
+  );
+}
+
+class _TrialBanner extends StatelessWidget {
+  const _TrialBanner({required this.days});
+  final int days;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    key: const ValueKey('paywall-trial'),
+    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+    decoration: BoxDecoration(color: Brand.successBg, borderRadius: BorderRadius.circular(14)),
+    child: Row(
+      children: [
+        Icon(Icons.card_giftcard_rounded, color: Brand.success),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text(
+            'Yıllık planda ilk $days gün ücretsiz. Deneme bitmeden iptal edersen hiç ücret ödemezsin.',
+            style: const TextStyle(fontWeight: FontWeight.w700, height: 1.3),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+/// Shown when Google Play gives no products: why, and what to try.
+class _Unavailable extends StatelessWidget {
+  const _Unavailable({this.onRetry});
+  final VoidCallback? onRetry;
+
+  static const _tips = [
+    'İnternet bağlantını kontrol et.',
+    "Play Store'u aç ve Google hesabınla oturum açık olduğundan emin ol.",
+    "Dilmaç'ı Play Store'dan yükle; başka yerden kurulan sürümlerde satın alma çalışmaz.",
+    'Play Store güncel değilse güncelle, sonra tekrar dene.',
+  ];
+
+  @override
+  Widget build(BuildContext context) => Container(
+    key: const ValueKey('paywall-unavailable'),
+    margin: const EdgeInsets.only(bottom: 10),
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(color: Brand.accentBg, borderRadius: BorderRadius.circular(14)),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Icon(Icons.storefront_rounded, color: Brand.ink),
+            const SizedBox(width: 10),
+            const Expanded(
+              child: Text(
+                "Google Play'e şu an ulaşılamadı, bu yüzden fiyatlar gösterilemiyor.",
+                style: TextStyle(fontWeight: FontWeight.w800, height: 1.3),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
+        for (final t in _tips)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 3),
+            child: Text('•  $t', style: const TextStyle(fontSize: 13, height: 1.3)),
+          ),
+        const SizedBox(height: 4),
+        Text(
+          'Premium\'u daha önce aldıysan aşağıdaki "Satın alımları geri yükle" ile açabilirsin. '
+          'Hiçbir ücret alınmadı.',
+          style: TextStyle(fontSize: 12.5, color: Brand.muted, height: 1.3),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextButton.icon(
+            key: const ValueKey('paywall-retry'),
+            onPressed: onRetry,
+            icon: const Icon(Icons.refresh_rounded),
+            label: const Text('Tekrar dene'),
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 class _FeatureRow extends StatelessWidget {
@@ -471,6 +609,15 @@ class _PlanCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(plan.label, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                    if (!best && plan == PremiumPlan.recommended) ...[
+                      const SizedBox(width: 8),
+                      _Badge(
+                        key: const ValueKey('plan-recommended'),
+                        text: 'Önerilen',
+                        color: Brand.primary,
+                        foreground: Colors.white,
+                      ),
+                    ],
                     if (best) ...[
                       const SizedBox(width: 8),
                       Flexible(
@@ -503,8 +650,9 @@ class _PlanCard extends StatelessWidget {
                     Text('Aylık yalnızca $perMonth', style: const TextStyle(fontWeight: FontWeight.w700)),
                 if (showTrial && product.freeTrialDays > 0)
                   Text(
-                    '${product.freeTrialDays} gün ücretsiz deneme',
-                    style: TextStyle(color: Brand.success, fontWeight: FontWeight.w700),
+                    '${product.freeTrialDays} gün ücretsiz, sonra ${product.price} / ${plan.period}',
+                    key: ValueKey('plan-trial-${plan.name}'),
+                    style: TextStyle(color: Brand.success, fontWeight: FontWeight.w800),
                   ),
               ],
             ),

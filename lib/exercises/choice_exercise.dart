@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../data/option_glosses.dart';
 import '../models/course.dart';
 import '../theme.dart';
 import '../ui/markdown_text.dart';
+import '../ui/premium_offer.dart';
 import 'common.dart';
+import 'option_gloss.dart';
 
 /// Option letters of exam-style questions (A–E).
 const choiceLetters = ['A', 'B', 'C', 'D', 'E'];
@@ -12,9 +15,26 @@ const choiceLetters = ['A', 'B', 'C', 'D', 'E'];
 /// scrolls in its own box so the question and options stay in reach. After
 /// "Kontrol et" the right option turns green and a wrong pick red; the
 /// Turkish explanation is shown in the feedback panel ([ChoiceExplanation]).
+/// With a [gloss], after a wrong answer only, every option gets its Turkish
+/// under it ("Neden yanlış?", open; can be folded). A right answer shows none.
 class ChoiceExercise extends StatefulWidget {
-  const ChoiceExercise({super.key, required this.ex, required this.locked, required this.onReady});
+  const ChoiceExercise({
+    super.key,
+    required this.ex,
+    required this.locked,
+    required this.onReady,
+    this.gloss,
+    this.glossLocked = false,
+  });
   final Exercise ex;
+
+  /// Turkish of the options, shown once answered (see [OptionGloss]).
+  final OptionGloss? gloss;
+
+  /// The day's free "Neden yanlış?" explanations are used up (WhyWrongQuota):
+  /// after a wrong answer a blurred preview and the Premium card show
+  /// instead of the [gloss].
+  final bool glossLocked;
   final bool locked;
   final ReadyCallback onReady;
 
@@ -24,6 +44,9 @@ class ChoiceExercise extends StatefulWidget {
 
 class _ChoiceExerciseState extends State<ChoiceExercise> {
   int? _picked;
+
+  /// The learner's choice of showing the glosses; null = the default.
+  bool? _glossOpen;
   final _passageScroll = ScrollController();
 
   @override
@@ -45,6 +68,9 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
     final kid = context.isKid;
     final passage = ex.passage?.trim() ?? '';
     final screen = MediaQuery.sizeOf(context).height;
+    final wrongWithGloss = widget.locked && widget.gloss != null && _picked != ex.answerIndex;
+    final showGloss = wrongWithGloss && !widget.glossLocked;
+    final glossOpen = _glossOpen ?? true;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -75,6 +101,13 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
           style: TextStyle(fontSize: kid ? 20 : 18, fontWeight: FontWeight.w700, height: 1.4, color: p.ink),
         ),
         const SizedBox(height: 18),
+        if (showGloss) ...[
+          OptionGlossToggle(open: glossOpen, onChanged: (v) => setState(() => _glossOpen = v)),
+          const SizedBox(height: 10),
+        ] else if (wrongWithGloss) ...[
+          const LockedWhyWrong(),
+          const SizedBox(height: 12),
+        ],
         for (final (i, option) in ex.options.indexed)
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
@@ -83,6 +116,9 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
               letter: choiceLetters[i % choiceLetters.length],
               text: option,
               state: _stateOf(i),
+              gloss: showGloss && glossOpen
+                  ? optionGlossFor(widget.gloss, i, answer: ex.answerIndex ?? -1, picked: _picked)
+                  : null,
               onTap: widget.locked ? null : () => _pick(i),
             ),
           ),
@@ -101,9 +137,19 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
 enum _OptionState { idle, picked, right, wrong }
 
 class _Option extends StatelessWidget {
-  const _Option({super.key, required this.letter, required this.text, required this.state, this.onTap});
+  const _Option({
+    super.key,
+    required this.letter,
+    required this.text,
+    required this.state,
+    this.onTap,
+    this.gloss,
+  });
   final String letter;
   final String text;
+
+  /// Turkish of the option, under its text.
+  final Widget? gloss;
   final _OptionState state;
   final VoidCallback? onTap;
 
@@ -144,9 +190,19 @@ class _Option extends StatelessWidget {
           ),
           const SizedBox(width: 12),
           Expanded(
-            child: Text(
-              text,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, height: 1.3, color: p.ink),
+            child: AnimatedSize(
+              duration: const Duration(milliseconds: 180),
+              alignment: Alignment.topLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    text,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, height: 1.3, color: p.ink),
+                  ),
+                  ?gloss,
+                ],
+              ),
             ),
           ),
         ],

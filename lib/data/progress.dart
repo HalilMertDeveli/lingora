@@ -8,6 +8,7 @@ import '../core/tr_errors.dart';
 import '../study/tr_error_log.dart';
 import '../models/notes.dart';
 import '../models/study_plan.dart';
+import '../services/billing/premium_perks.dart' show goldMultiplierProvider;
 
 import 'catalog.dart';
 import 'league.dart';
@@ -604,7 +605,11 @@ class ProgressNotifier extends Notifier<Progress> {
       final start = dayKey(now.subtract(Duration(days: newStreak - 1)));
       give(GoldReason.streak, goldStreakMilestones[newStreak]!, 'streak:$newStreak:$start');
     }
-    wallet = wallet.copyWith(once: once).credit(device, gold.fold(0, (a, g) => a + g.$2));
+    // Premium: the same again (one entry, so the result screen can say so).
+    final base = gold.fold(0, (a, g) => a + g.$2);
+    final bonus = base * (ref.read(goldMultiplierProvider) - 1);
+    if (bonus > 0) gold.add((GoldReason.premium, bonus));
+    wallet = wallet.copyWith(once: once).credit(device, base + bonus);
 
     final before = state;
     final counters = {...state.counters};
@@ -666,7 +671,7 @@ class ProgressNotifier extends Notifier<Progress> {
         totalXp: state.totalXp + quest.rewardXp,
         xpByDay: {...state.xpByDay, today: (state.xpByDay[today] ?? 0) + quest.rewardXp},
         claimed: [...state.claimed, '$today:${quest.id}'],
-        wallet: state.wallet.credit(device, quest.rewardGold),
+        wallet: state.wallet.credit(device, quest.rewardGold * ref.read(goldMultiplierProvider)),
       ),
     );
     return true;
@@ -697,7 +702,9 @@ class ProgressNotifier extends Notifier<Progress> {
     );
     final key = 'league:$week';
     final wallet = gold > 0 && !state.wallet.once.containsKey(key)
-        ? state.wallet.copyWith(once: {...state.wallet.once, key: dayKey(now)}).credit(device, gold)
+        ? state.wallet
+              .copyWith(once: {...state.wallet.once, key: dayKey(now)})
+              .credit(device, gold * ref.read(goldMultiplierProvider))
         : state.wallet;
     _save(
       state.copyWith(leagueTier: result.newTier, leagueWeek: current, leagueResult: result, wallet: wallet),

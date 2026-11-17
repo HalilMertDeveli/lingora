@@ -39,7 +39,10 @@ enum ShopCategory {
 enum Rarity {
   common('Sıradan', Color(0xFF8A94A6)),
   rare('Nadir', Color(0xFF2F6FDB)),
-  epic('Efsane', Color(0xFFB0459E));
+  epic('Efsane', Color(0xFFB0459E)),
+
+  /// Premium-only items ([ShopItem.premiumOnly]).
+  premium('Premium', Color(0xFFC88A00));
 
   const Rarity(this.label, this.color);
   final String label;
@@ -88,6 +91,7 @@ class ShopItem {
     this.frame,
     this.accessory,
     this.accent,
+    this.premiumOnly = false,
     Rarity? rarity,
     // Named parameters cannot be private.
     // ignore: prefer_initializing_formals
@@ -95,9 +99,14 @@ class ShopItem {
 
   final Rarity? _rarity;
 
+  /// Only Premium learners can take it (for no gold); everyone can try it
+  /// on. Once taken it stays theirs.
+  final bool premiumOnly;
+
   /// Set by hand for special items, else by price.
   Rarity get rarity =>
       _rarity ??
+      (premiumOnly ? Rarity.premium : null) ??
       (price >= 400
           ? Rarity.epic
           : price >= 250
@@ -117,7 +126,7 @@ class ShopItem {
   final MascotAccessory? accessory;
   final ThemeAccent? accent;
 
-  bool get free => price == 0;
+  bool get free => price == 0 && !premiumOnly;
   bool get consumable => category == ShopCategory.freeze;
 
   /// Can be put in the friends' showcase.
@@ -155,6 +164,39 @@ const shopItems = <ShopItem>[
   ShopItem(id: 'av_balina', category: ShopCategory.avatar, name: 'Balina', price: 280, emoji: '🐳'),
   ShopItem(id: 'av_ejderha', category: ShopCategory.avatar, name: 'Ejderha', price: 450, emoji: '🐉'),
   ShopItem(id: 'av_unicorn', category: ShopCategory.avatar, name: 'Tek boynuzlu at', price: 450, emoji: '🦄'),
+  // Premium-only avatars (taken for no gold while Premium is active).
+  ShopItem(
+    id: 'av_p_kartal',
+    category: ShopCategory.avatar,
+    name: 'Kartal',
+    price: 0,
+    emoji: '🦅',
+    premiumOnly: true,
+  ),
+  ShopItem(
+    id: 'av_p_tavus',
+    category: ShopCategory.avatar,
+    name: 'Tavus kuşu',
+    price: 0,
+    emoji: '🦚',
+    premiumOnly: true,
+  ),
+  ShopItem(
+    id: 'av_p_elmas',
+    category: ShopCategory.avatar,
+    name: 'Elmas',
+    price: 0,
+    emoji: '💎',
+    premiumOnly: true,
+  ),
+  ShopItem(
+    id: 'av_p_yildiz',
+    category: ShopCategory.avatar,
+    name: 'Kayan yıldız',
+    price: 0,
+    emoji: '🌠',
+    premiumOnly: true,
+  ),
   // Frames: rings drawn in code.
   ShopItem(
     id: 'fr_bakir',
@@ -202,6 +244,31 @@ const shopItems = <ShopItem>[
       Color(0xFF4FA3E0),
       Color(0xFF0D3B8C),
     ], width: 0.11),
+  ),
+  // Premium-only frames.
+  ShopItem(
+    id: 'fr_p_kraliyet',
+    category: ShopCategory.frame,
+    name: 'Kraliyet',
+    price: 0,
+    premiumOnly: true,
+    frame: FrameStyle(
+      [Color(0xFF4A148C), Color(0xFFFFD54F), Color(0xFF7B1FA2), Color(0xFFFFD54F), Color(0xFF4A148C)],
+      width: 0.11,
+      motion: FrameMotion.spin,
+    ),
+  ),
+  ShopItem(
+    id: 'fr_p_kutup',
+    category: ShopCategory.frame,
+    name: 'Kutup ışığı',
+    price: 0,
+    premiumOnly: true,
+    frame: FrameStyle(
+      [Color(0xFF00BFA5), Color(0xFF64FFDA), Color(0xFF7C4DFF), Color(0xFF00BFA5)],
+      width: 0.1,
+      motion: FrameMotion.pulse,
+    ),
   ),
   // Çaycı Dayı accessories (placed on the mascot tile).
   ShopItem(
@@ -382,7 +449,7 @@ List<ShopItem> featuredItems(DateTime now, {bool kid = false}) {
   final week = monday.difference(DateTime(2026)).inDays ~/ 7;
   List<ShopItem> pool(bool Function(ShopItem) test) => [
     for (final i in shopItems)
-      if (!i.free && !i.consumable && test(i)) i,
+      if (!i.free && !i.consumable && !i.premiumOnly && test(i)) i,
   ];
   final avatars = pool((i) => i.category == ShopCategory.avatar);
   final frames = pool((i) => i.category == ShopCategory.frame);

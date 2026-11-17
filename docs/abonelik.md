@@ -12,8 +12,12 @@ ekstraları açar.
 | Ücretsiz (her zaman) | Premium |
 | --- | --- |
 | Tüm dersler, gramer yolu, notlar, kelime tekrarı | 🤖 **Yapay zekâ sohbet partneri** (Konuş sekmesi, sunucu bağlıyken) |
+| **Günde 3 "Neden yanlış?" açıklaması** | 💡 **Her yanlışın "Neden yanlış?" açıklaması** (sınırsız) |
 | Okuma, telaffuz | 📝 **Sınırsız mini deneme** (YDS/YÖKDİL, LGS) |
-| Sınav **konu pratiği** (sınırsız) + **günde 1 mini deneme** | 📊 **Detaylı hata analizi** (tüm kategoriler, oranlar, her biri için ipucu) |
+| Sınav **konu pratiği** (sınırsız) + **günde 1 mini deneme** | 📊 **Detaylı hata analizi ve tahmini puan** (tüm kategoriler, tahmini sınav puanı, kişisel çalışma planı) |
+| | 🧊 **Ayda 2 seri dondurma** (cüzdana kendiliğinden eklenir) |
+| | 🪙 **2 kat altın** (ders, görev, lig, seri ödülleri) |
+| | 🦅 **Premium avatar ve çerçeveler** (Mağaza'da "Premium" rozetli) |
 | | 🎯 **Tüm tam deneme paketleri** (paketler tek tek de satın alınabilir, bölüm 7) |
 | Sohbet senaryolarının **demo modu** (hazır senaryo + kural tabanlı düzeltme) | |
 | Türk hata dedektörü ve profilde **en sık 3 hata** | |
@@ -132,8 +136,9 @@ uygulamada ayrıca kod değişikliği gerekmez.
    duyurmayı kapatmak için `trial_days=0`, denemeyi tamamen kapatmak için teklifi
    Play Console'da **Devre dışı bırak**.
 8. Test: lisans test hesabıyla Play Store'dan yüklenmiş sürümde paywall'ı aç;
-   yıllık kartta "7 gün ücretsiz deneme" ve butonda "7 GÜN ÜCRETSİZ DENE"
-   görünmeli. Lisans testinde deneme birkaç dakikada biter.
+   en üstte "Yıllık planda ilk 7 gün ücretsiz" şeridi, yıllık kartta "7 gün
+   ücretsiz, sonra … / yıl" ve butonda "7 GÜN ÜCRETSİZ DENE" görünmeli. Lisans
+   testinde deneme birkaç dakikada biter. Ayrıntı: §10.
 
 İstersen aynı adımlarla aylık plana da deneme ekleyebilirsin; paywall her ürün
 için yalnızca Play'in döndürdüğü teklife bakar.
@@ -211,8 +216,12 @@ override eder.
 - **Gerçek satın alma akışı**: lisans test hesabıyla, Dahili test kanalından
   Play Store'dan kurulan sürümde dene. Test kartlarıyla "her zaman onayla",
   "her zaman reddet", "yavaş kart (pending)" senaryolarını dene.
-- Masaüstü/web/testlerde mağaza yoktur (`UnavailableBillingService`): paywall
-  "Satın alma bu cihazda şu an kullanılamıyor" der.
+- Masaüstü/web/testlerde ve Play Store'dan kurulmamış sürümlerde mağaza yoktur
+  (`UnavailableBillingService` ya da Play ürün döndürmez): paywall "Google Play'e
+  şu an ulaşılamadı" der, ne yapılacağını madde madde yazar (internet, Play
+  hesabı, Play Store'dan kurulum, Play Store güncellemesi) ve "Tekrar dene"
+  düğmesi gösterir. Ücret alınmadığını da söyler.
+- Gerçek satın almayı ücretsiz test etmek için: §9.
 - iOS (App Store) daha sonra: aynı ürün kimlikleriyle App Store Connect'te
   abonelik grubu açılır, sunucuya App Store doğrulaması eklenir.
 
@@ -310,3 +319,112 @@ kapatır.
 | `lib/screens/family_screen.dart` | Aile planı ekranı (Profil > Aile planı) |
 | `functions/src/purchase.ts`, `functions/src/family.ts` | Sunucu |
 | `test/exam_packs_test.dart`, `functions/test/family.test.ts` | Testler |
+
+## 9. Gerçek satın almayı ücretsiz test etmek (dahili test + lisans testi)
+
+Amaç: Google Play'in gerçek satın alma ekranını, gerçek ürünlerle ama **hiç para
+ödemeden** denemek. Gereken: Play Console'da uygulama ve abonelikler kurulu (§3).
+
+1. **Lisans test kullanıcısı ekle**: Play Console ana sayfası (uygulama değil,
+   hesap düzeyi) > **Ayarlar > Lisans testi**. Test edecek Gmail adreslerini
+   ekle (ya da bir e-posta listesi oluştur), **Lisans yanıtı**:
+   `RESPOND_NORMALLY`. Kaydet. Bu hesaplar satın alma ekranında gerçek kart
+   yerine **test ödeme yöntemleri** görür; hiçbir ücret alınmaz.
+2. **Dahili test kanalı**: Uygulama > **Test ve yayınla > Test > Dahili test**.
+   - **Test kullanıcıları** sekmesinde bir e-posta listesi oluştur, aynı Gmail
+     adreslerini ekle, kaydet.
+   - **Yeni sürüm oluştur** ve imzalı AAB'yi yükle:
+     `flutter build appbundle --release` (çıktı
+     `build/app/outputs/bundle/release/app-release.aab`). `versionCode`
+     (pubspec'teki `+N`) her yüklemede artmalı.
+   - Sürümü **dahili teste yayınla**. İnceleme gerekmez; birkaç dakikada hazır.
+3. **Katılım bağlantısı**: Test kullanıcıları sekmesindeki "Testçilerin nasıl
+   katılacağı" bağlantısını (opt-in URL) test hesabıyla telefonda aç ve
+   **Test kullanıcısı ol**'a bas.
+4. **Play Store'dan kur**: Aynı bağlantıdaki "Google Play'den indir" ile
+   uygulamayı kur. Telefonda Play Store'da **o test hesabı** açık olmalı.
+   Önceden `flutter run`/APK ile kurulu bir sürüm varsa önce kaldır: imza farklı
+   olduğu için Play güncelleyemez ve **sideload edilmiş sürümde satın alma
+   çalışmaz** (paywall "Google Play'e şu an ulaşılamadı" der).
+5. **Satın al**: Uygulamada Premium'u aç. Play ekranında ödeme yöntemi olarak
+   şunlar çıkar:
+   - "Test kartı, her zaman onaylanır" → satın alma başarılı.
+   - "Test kartı, her zaman reddedilir" → hata mesajını dene.
+   - "Yavaş test kartı, birkaç dakika sonra onaylanır/reddedilir" → "Ödemen
+     onay bekliyor" (pending) durumunu dene.
+6. **Kısaltılmış süreler**: Lisans testinde abonelik dönemleri kısalır
+   (1 ay ≈ 5 dk, 1 yıl ≈ 30 dk, 7 günlük deneme ≈ 3 dk) ve abonelik en fazla
+   6 kez yenilenip kendiliğinden biter. Böylece yenileme, deneme bitişi ve
+   iptal akışlarını aynı gün görebilirsin.
+7. **İptal / iade testi**: Play Store > Profil > Ödemeler ve abonelikler >
+   Abonelikler'den iptal et; ya da Play Console > **Siparişler**'den test
+   siparişini iade et. Uygulamayı yeniden açınca (ya da RTDN kuruluysa hemen)
+   Premium kapanmalı.
+8. **Geri yükleme testi**: Uygulamayı kaldırıp yeniden kur, paywall'da
+   "Satın alımları geri yükle"ye bas: aktif abonelik geri gelmeli.
+
+Sık karşılaşılan sorunlar:
+
+- "Bu öğe satın alınamıyor" / ürünler gelmiyor: abonelik ya da temel plan
+  **etkin değil**, ürün kimliği koddakiyle aynı değil, ya da uygulama Play'den
+  kurulmamış.
+- Test kartları görünmüyor: Play Store'da açık hesap lisans test listesinde
+  değil. Telefonda birden çok Google hesabı varsa Play Store'da doğru hesaba
+  geç.
+- Değişiklikler hemen görünmüyor: Play Store önbelleği için Play Store'un
+  verilerini temizle ya da birkaç dakika bekle.
+
+## 10. 7 günlük ücretsiz deneme teklifi
+
+**Kurulum** (Play Console): §3.1. Kısaca: `lingora_premium_yearly` > yıllık
+temel plan > **Teklif ekle** > uygunluk "Yeni müşteri edinme" > tek aşama
+**Ücretsiz deneme 7 gün** > Etkinleştir.
+
+**Uygulamada nasıl görünür?**
+
+- Kullanıcının açık isteği: Premium önerilen **her yerde** 7 günlük ücretsiz
+  deneme öne çıkar. Öneri kartlarının ("Neden yanlış?" kilidi, mini deneme
+  hakkı bitti, seri kutlaması) çağrı düğmesi **"7 GÜN ÜCRETSİZ DENE"**,
+  "Neden yanlış?" kartının başlığı "Premium ile her yanlışın açıklamasını gör ·
+  7 gün ücretsiz dene"dir.
+- Kurallar korunur: kartlardaki gün sayısı Remote Config `trial_days`'ten gelir
+  (0 → deneme hiç anılmaz, düğme "PREMIUM'U İNCELE" olur). Play'in teklifleri bu
+  oturumda yüklendiyse ve yıllık plan için deneme dönmediyse (ör. kullanıcı
+  denemeyi daha önce kullandı) kartlar da denemeden söz etmez
+  (`trialOfferDaysProvider`, lib/services/billing/premium_perks.dart).
+- Paywall'daki deneme metinleri (üstteki "Yıllık planda ilk 7 gün ücretsiz"
+  şeridi, yıllık kartta "7 gün ücretsiz, sonra … / yıl", "7 GÜN ÜCRETSİZ DENE"
+  düğmesi ve altındaki "Deneme bitince …" satırı) **yalnızca Play o ürün için bir
+  deneme teklifi döndürdüğünde** görünür; süre her zaman Play'den okunur.
+- Yıllık plan ilk sırada ve seçili gelir; fiyatlar gelmeden de "Önerilen"
+  rozetini taşır, gerçek fiyatlarla tasarruf hesaplanabiliyorsa "En avantajlı"
+  ve "%N tasarruf" rozetleri çıkar.
+- Analitik: deneme başlarsa `trial_start` (plan, trial_days), denemesiz alımda
+  `purchase` gönderilir.
+
+**Test**: §9'daki lisans test hesabıyla. Deneme ≈ 3 dakikada biter ve abonelik
+ücretli döneme (yine test kartıyla) geçer. Aynı hesap denemeyi bir kez alabilir;
+yeniden denemek için Play Console > Siparişler'den iade et ya da başka bir
+lisans test hesabı kullan.
+
+## 11. Premium ayrıcalıkları ve paywall'ın çıktığı anlar
+
+| Ayrıcalık | Nasıl çalışır | Kod |
+| --- | --- | --- |
+| "Neden yanlış?" | Ücretsiz: günde 3 farklı soru (aynı soru tekrar hak harcamaz). Sonrakilerde bulanık önizleme + Premium kartı. Premium: sınırsız. | `WhyWrongQuota` |
+| 2 kat altın | Ders/hatasız/günlük hedef/seri ödülleri, görevler, lig ve `GoldWallet.earn`. Bir kez verilen ödüller (onceKey) iki katıyla birlikte yine bir kez verilir. Ders sonunda "Premium ×2" satırı görünür. | `goldMultiplierProvider` |
+| Ayda 2 seri dondurma | Premium aktifken her takvim ayında bir kez cüzdana eklenir (`pfz:YYYY-AA` anahtarı, ilerlemeyle senkronlanır). Stok Premium'da en fazla 4. | `grantMonthlyFreezes` |
+| Premium avatar/çerçeve | Mağaza'da "Premium" rozetli; herkes üstünde deneyebilir, yalnızca Premium altınsız alır. Alınan ürün Premium bitse de kalır. | `ShopItem.premiumOnly` |
+
+Paywall'ın kendiliğinden açıldığı anlar: günlük mini deneme hakkı bitince,
+"Neden yanlış?" günlük hakkı bitince (yanlış cevaptan kısa süre sonra) ve
+ders serisinden sonra (`paywall_after_lessons`). 7, 30 ve 100 günlük seride
+kutlama ekranının altında yumuşak bir öneri kartı çıkar (tam ekran paywall değil).
+
+Rahatsız etmeme kuralları (`PaywallPacer`): kendiliğinden açılan tam ekran
+paywall **günde en fazla 1**; satın almadan kapatılırsa **3 gün** kendiliğinden
+açılmaz ve öneri kartları da gizlenir. Premium kullanıcıya ve Çocuk modunda hiç
+gösterilmez. Kullanıcının kendi açtığı paywall (düğme, kart) sınırlanmaz. Sınır
+dolunca mini deneme için tam ekran yerine küçük bir alt sayfa çıkar. Gösterimler
+`paywall_view` / `premium_offer_view` olaylarıyla `placement` kırılımında
+kaydedilir (docs/analitik.md).

@@ -418,7 +418,10 @@ void main() {
       await tester.tap(find.byKey(const Key('analysis-unlock')));
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsOneWidget);
-      expect(find.textContaining('“Detaylı hata analizi” Premium ile açılır'), findsOneWidget);
+      expect(
+        find.textContaining('“Detaylı hata analizi ve tahmini puan” Premium ile açılır'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('Premium: every card, unblurred, and a plan item starts a drill', (tester) async {

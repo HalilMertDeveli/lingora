@@ -29,6 +29,15 @@ abstract final class PaywallPlacement {
   static const writingFeedback = 'writing_feedback';
   static const mockExam = 'mock_exam';
   static const errorAnalysis = 'error_analysis';
+
+  /// The day's free "Neden yanlış?" explanations were used up.
+  static const whyWrong = 'why_wrong';
+
+  /// The soft offer under a 7 / 30 / 100-day streak celebration.
+  static const streakMilestone = 'streak_milestone';
+
+  /// A Premium-only Mağaza item.
+  static const shop = 'shop';
 }
 
 class AnalyticsEvent {
@@ -86,6 +95,11 @@ class AnalyticsEvent {
   factory AnalyticsEvent.paywallView({required String placement, required String variant}) =>
       AnalyticsEvent._('paywall_view', {'placement': placement, 'variant': variant});
 
+  /// A small in-screen Premium card (not the full paywall) was shown, e.g.
+  /// the locked "Neden yanlış?" or the streak milestone offer.
+  factory AnalyticsEvent.premiumOfferView({required String placement}) =>
+      AnalyticsEvent._('premium_offer_view', {'placement': placement});
+
   factory AnalyticsEvent.paywallClose({required String placement, required String variant}) =>
       AnalyticsEvent._('paywall_close', {'placement': placement, 'variant': variant});
 
@@ -136,6 +150,7 @@ class AnalyticsEvent {
     'track_chosen',
     'feature_use',
     'paywall_view',
+    'premium_offer_view',
     'paywall_close',
     'purchase_start',
     'trial_start',

@@ -6,12 +6,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/gold_wallet.dart';
 import '../data/progress.dart';
 import '../data/shop_catalog.dart';
+import '../services/billing/premium.dart' show premiumProvider;
+import '../services/growth/analytics.dart' show PaywallPlacement;
 import '../services/profile.dart';
 import '../theme.dart';
 import '../ui/gold_coin.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/my_avatar.dart';
+import '../ui/premium_offer.dart';
 import '../ui/shop_visuals.dart';
 
 /// Opens the Mağaza.
@@ -585,7 +588,7 @@ class _ItemCard extends ConsumerWidget {
     final slot = item.category.slot;
     final worn = slot != null && (equippedIn(w, slot)?.id ?? _defaultOf(slot)) == item.id;
     final price = priceOf(item, now);
-    final locked = !owned && w.balance < price;
+    final locked = !owned && !item.premiumOnly && w.balance < price;
     final inShowcase = w.showcase.contains(item.id);
     final featured = price != item.price;
     final p = context.palette;
@@ -702,6 +705,15 @@ class _ItemCard extends ConsumerWidget {
         style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w600, fontSize: 12),
       );
     }
+    if (item.premiumOnly) {
+      return FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          "Premium'a özel",
+          style: TextStyle(color: Rarity.premium.color, fontWeight: FontWeight.w800, fontSize: 12),
+        ),
+      );
+    }
     return Center(
       child: _Price(item: item, now: now, locked: locked),
     );
@@ -718,6 +730,36 @@ class _ItemCard extends ConsumerWidget {
   ) {
     final wallet = ref.read(goldWalletProvider);
     const pad = EdgeInsets.symmetric(horizontal: 6);
+    if (item.premiumOnly && !owned) {
+      final premium = ref.watch(premiumProvider);
+      if (!premium) {
+        // Free learners can try it on (tap the card) but not take it.
+        return OutlinedButton.icon(
+          key: ValueKey('shop-premium-${item.id}'),
+          style: OutlinedButton.styleFrom(
+            padding: pad,
+            foregroundColor: Rarity.premium.color,
+            side: BorderSide(color: Rarity.premium.color),
+          ),
+          onPressed: () => openPaywall(context, PaywallPlacement.shop),
+          icon: const Icon(Icons.lock_rounded, size: 14),
+          label: const FittedBox(child: Text('Premium')),
+        );
+      }
+      return FilledButton(
+        key: ValueKey('shop-claim-${item.id}'),
+        style: FilledButton.styleFrom(padding: pad, backgroundColor: Rarity.premium.color),
+        onPressed: () async {
+          if (wallet.claimPremium(item, premium: true) != BuyResult.bought) return;
+          final use = await showPurchaseCelebration(context, item);
+          if (use == true) {
+            wallet.equip(item);
+            onTry(item);
+          }
+        },
+        child: const FittedBox(child: Text('Al')),
+      );
+    }
     if (item.consumable || !owned) {
       final full = item.consumable && w.freezes >= maxFreezes;
       return FilledButton(
@@ -791,6 +833,7 @@ class _ItemCard extends ConsumerWidget {
         BuyResult.insufficient => 'Yeterli altının yok. Ders bitirerek altın kazanabilirsin.',
         BuyResult.owned => 'Bu ürün zaten sende.',
         BuyResult.stockFull => 'En fazla $maxFreezes seri dondurma saklayabilirsin.',
+        BuyResult.needsPremium => "Bu ürün Premium'a özel.",
         BuyResult.bought => '',
       });
       return;
