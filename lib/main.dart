@@ -83,6 +83,7 @@ class LingoraApp extends ConsumerWidget {
     // The Mağaza look: brand colour and Çaycı Dayı's accessory.
     final themeItem = ref.watch(walletProvider.select((w) => equippedIn(w, WalletSlot.theme)));
     final outfit = ref.watch(walletProvider.select((w) => equippedIn(w, WalletSlot.mascot)?.accessory));
+    final kidOutfit = ref.watch(walletProvider.select((w) => equippedIn(w, WalletSlot.pofuduk)?.accessory));
     final palette = appPalette(settings.mode, brightness, themeItem);
     // Puts the worn Mağaza look into profiles/{uid} for friends.
     ref.listen(showcaseSyncProvider, (_, _) {});
@@ -99,6 +100,7 @@ class LingoraApp extends ConsumerWidget {
         palette: palette,
         child: MascotOutfitScope(
           accessory: outfit,
+          pofuduk: kidOutfit,
           child: settings.reduceMotion
               ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
               : child!,

@@ -26,6 +26,8 @@ Mağazadaki bütün ürünler özgündür (`lib/data/shop_catalog.dart`):
 - **Avatarlar:** sistem emojileri (🦊, 🦉, 🌷, 🧿 …) yuvarlak bir zemin üstünde.
   Emoji telefonun kendi yazı tipiyle çizilir; dosya olarak dağıtılmaz.
 - **Çerçeveler:** kodda çizilen renk halkaları (`FramedAvatar`, SweepGradient).
+- **Animasyonlu çerçeveler:** kodda çizilen dönen / parlayan halkalar.
+- **Pofuduk kıyafetleri (Çocuk modu):** Pofuduk görselinin (sahibin çizimi) üstüne konan emoji (🎩, 🎀, 🧢, 🌼, 👑).
 - **Çaycı Dayı aksesuarları:** mevcut maskot görseli (`assets/mascot/cayci_dayi.png`,
   sahibin kendi çizimi) üstüne konan emoji (🕶️, 🧣, 🏅, 🌷, 👑).
 - **Temalar:** uygulamanın ana rengini değiştiren renk çiftleri (açık/koyu).

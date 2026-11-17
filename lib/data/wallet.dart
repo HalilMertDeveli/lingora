@@ -49,7 +49,15 @@ abstract final class WalletSlot {
   static const frame = 'frame';
   static const mascot = 'mascot';
   static const theme = 'theme';
-  static const all = [avatar, frame, mascot, theme];
+
+  /// Pofuduk's outfit (Çocuk modu only).
+  static const pofuduk = 'pofuduk';
+  static const all = [avatar, frame, mascot, theme, pofuduk];
+
+  /// Not an item slot: [faceAvatar] when the learner shows their Mağaza
+  /// avatar instead of their photo.
+  static const face = 'face';
+  static const faceAvatar = 'avatar';
 }
 
 /// Most showcase items shown to friends.

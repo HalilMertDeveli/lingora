@@ -9,6 +9,7 @@ import '../theme.dart';
 import '../screens/shop_screen.dart';
 import '../ui/flag.dart';
 import '../ui/gold_coin.dart';
+import '../ui/my_avatar.dart';
 import 'nav_target.dart';
 
 /// Top bar of every tab root: the track button on the left (opens the track
@@ -98,6 +99,16 @@ class StatsBar extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
               child: GoldAmount(p.wallet.balance, size: 16),
             ),
+          ),
+        ),
+        // Profile shortcut: the learner's photo or Mağaza avatar in their frame.
+        Tooltip(
+          message: 'Profil',
+          child: InkWell(
+            key: const Key('topbar-profile'),
+            customBorder: const CircleBorder(),
+            onTap: () => ref.read(pendingNavTargetProvider.notifier).open(const NavTarget(AppTab.profile)),
+            child: const Padding(padding: EdgeInsets.all(4), child: MyAvatar(size: 32)),
           ),
         ),
       ],

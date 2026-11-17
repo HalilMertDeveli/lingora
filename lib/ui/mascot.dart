@@ -250,7 +250,8 @@ class _PofudukState extends State<Pofuduk> with SingleTickerProviderStateMixin {
     );
     final body = AnimatedBuilder(
       animation: _loop,
-      child: image,
+      // The Pofuduk outfit bought in the Mağaza (Çocuk modu).
+      child: dressedMascot(image, s, MascotOutfitScope.pofudukOf(context)),
       builder: (_, child) {
         if (!_loop.isAnimating) return child!;
         final t = _loop.value;

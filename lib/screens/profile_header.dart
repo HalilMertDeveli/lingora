@@ -9,8 +9,7 @@ import '../data/shop_catalog.dart';
 import '../services/firebase/firebase_providers.dart';
 import '../services/profile.dart';
 import '../theme.dart';
-import '../ui/mascot.dart';
-import '../ui/shop_visuals.dart';
+import '../ui/my_avatar.dart';
 import 'onboarding_screen.dart' show LingoraLogo;
 
 /// Opens the gallery or the camera and returns the chosen image's bytes;
@@ -49,11 +48,9 @@ class ProfileHeader extends ConsumerWidget {
     final name = profile.name ?? cleanDisplayName(account) ?? 'Öğrenci';
     // Çocuk modu: Pofuduk's square face is the avatar and photos are off.
     final kid = Brand.isKid;
+    final avatarItem = equippedIn(wallet, WalletSlot.avatar);
     final Widget avatar = kid
-        ? ClipRRect(
-            borderRadius: BorderRadius.circular(18),
-            child: Image.asset(pofudukAvatar, key: const Key('kid-avatar'), width: size, height: size),
-          )
+        ? const MyAvatar(size: size, kidKey: Key('kid-avatar'))
         : Semantics(
             button: true,
             label: 'Profil fotoğrafını değiştir',
@@ -64,14 +61,10 @@ class ProfileHeader extends ConsumerWidget {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  // The Mağaza avatar stands in for a missing photo; the
-                  // frame goes around either.
-                  StyledAvatar(
-                    photo: profile.photo,
+                  // Photo or Mağaza avatar (the choice below), in the frame.
+                  const MyAvatar(
                     size: size,
-                    avatarId: equippedIn(wallet, WalletSlot.avatar)?.id,
-                    frameId: equippedIn(wallet, WalletSlot.frame)?.id,
-                    fallback: const LingoraLogo(size: size),
+                    fallback: LingoraLogo(size: size),
                   ),
                   Positioned(
                     right: -2,
@@ -107,6 +100,25 @@ class ProfileHeader extends ConsumerWidget {
                 style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
               ),
               Text('İngilizce öğreniyor', style: TextStyle(color: Brand.muted)),
+              if (!kid && avatarItem != null) ...[
+                const SizedBox(height: 6),
+                SegmentedButton<bool>(
+                  key: const ValueKey('profile-face'),
+                  showSelectedIcon: false,
+                  style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                  segments: [
+                    ButtonSegment(
+                      value: false,
+                      enabled: profile.photo != null,
+                      icon: const Icon(Icons.photo_camera_rounded, size: 16),
+                      label: const Text('Fotoğraf'),
+                    ),
+                    ButtonSegment(value: true, label: Text('${avatarItem.emoji} Avatar')),
+                  ],
+                  selected: {prefersAvatar(wallet) || profile.photo == null},
+                  onSelectionChanged: (s) => ref.read(goldWalletProvider).useAvatarFace(s.first),
+                ),
+              ],
             ],
           ),
         ),
@@ -176,6 +188,8 @@ class ProfileHeader extends ConsumerWidget {
       if (raw == null) return;
       final jpeg = await ref.read(avatarProcessorProvider)(raw);
       await notifier.setPhoto(jpeg);
+      // A new photo is meant to be seen: show it instead of the avatar.
+      ref.read(goldWalletProvider).useAvatarFace(false);
     } on AvatarException catch (e) {
       messenger?.showSnackBar(SnackBar(content: Text(e.message)));
     } catch (_) {

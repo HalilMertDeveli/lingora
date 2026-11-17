@@ -17,7 +17,10 @@ import 'profile.dart' show accountUidProvider;
 /// only the owner may write it, and firestore.rules check its shape.
 @immutable
 class Showcase {
-  const Showcase({this.avatar, this.frame, this.items = const []});
+  const Showcase({this.avatar, this.frame, this.items = const [], this.useAvatar = false});
+
+  /// Show [avatar] instead of the photo (Profil > Fotoğraf / Avatar).
+  final bool useAvatar;
 
   final String? avatar;
   final String? frame;
@@ -29,13 +32,14 @@ class Showcase {
   factory Showcase.of(Wallet w) => Showcase(
     avatar: equippedIn(w, WalletSlot.avatar)?.id,
     frame: equippedIn(w, WalletSlot.frame)?.id,
+    useAvatar: prefersAvatar(w),
     items: [
       for (final id in w.showcase)
         if (shopItem(id) case final item? when item.showcasable && ownsItem(w, item)) id,
     ].take(maxShowcase).toList(),
   );
 
-  Map<String, Object?> toMap() => {'avatar': avatar, 'frame': frame, 'items': items};
+  Map<String, Object?> toMap() => {'avatar': avatar, 'frame': frame, 'items': items, 'useAvatar': useAvatar};
 
   /// From Firestore; unknown items (a newer app version) are skipped.
   static Showcase? fromMap(Object? raw) {
@@ -45,6 +49,7 @@ class Showcase {
     return Showcase(
       avatar: known(raw['avatar']),
       frame: known(raw['frame']),
+      useAvatar: raw['useAvatar'] == true,
       items: [
         if (items is List)
           for (final id in items.take(maxShowcase)) ?known(id),
@@ -54,10 +59,14 @@ class Showcase {
 
   @override
   bool operator ==(Object other) =>
-      other is Showcase && other.avatar == avatar && other.frame == frame && listEquals(other.items, items);
+      other is Showcase &&
+      other.avatar == avatar &&
+      other.frame == frame &&
+      other.useAvatar == useAvatar &&
+      listEquals(other.items, items);
 
   @override
-  int get hashCode => Object.hash(avatar, frame, Object.hashAll(items));
+  int get hashCode => Object.hash(avatar, frame, useAvatar, Object.hashAll(items));
 }
 
 /// Writes the showcase into `profiles/{uid}` (mockable in tests).
