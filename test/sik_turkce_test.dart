@@ -109,7 +109,7 @@ void main() {
       expect(OptionGlosses.decode('{"items": {"a#0": {}}}').keys, ['a#0']);
     });
 
-    test('the YDS file fits its questions: one unit and one half mock, every option', () {
+    test('the YDS file fits its questions: two units and one half mock, every option', () {
       final file =
           jsonDecode(File('assets/option_glosses/yds.json').readAsStringSync()) as Map<String, dynamic>;
       final glosses = OptionGlosses(file['items'] as Map<String, dynamic>);
@@ -128,8 +128,8 @@ void main() {
 
       read('assets/courses/exam_yds.json');
       read('assets/courses/exam_yds/06_okuma_evi_1.json');
-      final wanted = questions.keys.where((k) => RegExp(r'^ys1u1[lt]\d*#|^ys6u6m#').hasMatch(k)).toList();
-      expect(wanted.length, greaterThanOrEqualTo(90));
+      final wanted = questions.keys.where((k) => RegExp(r'^ys1u11?[lt]\d*#|^ys6u6m#').hasMatch(k)).toList();
+      expect(wanted.length, greaterThanOrEqualTo(150));
       expect(glosses.length, wanted.length);
       for (final k in wanted) {
         final ex = questions[k]!;

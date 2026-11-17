@@ -1552,6 +1552,854 @@
     "Olmaz: Avrupa'daki elle üretimi anlatarak kronolojiyi sürdürür.",
     "Olmaz: makinelerle ucuzlamayı anlatıp akışı tamamlar."
    ]
+  },
+  "ys1u11l1#1": {
+   "tr": [
+    "köprü",
+    "fırtına",
+    "kütüphane",
+    "komşu",
+    "hava durumu"
+   ],
+   "why": [
+    "Doğru: nehrin üstünde olan ve arabaların geçtiği yapı köprüdür.",
+    "Olmaz: fırtına nehrin üstünde duran ve kapatılan bir yapı değildir.",
+    "Olmaz: kütüphane nehrin üstünde olmaz, arabalar da içinden geçmez.",
+    "Olmaz: komşu bir kişidir; arabalara kapatılamaz.",
+    "Olmaz: hava durumu 'old' ile nitelenip kapatılabilecek bir yer değildir."
+   ]
+  },
+  "ys1u11l1#2": {
+   "tr": [
+    "ziyaretçiler",
+    "müzeler",
+    "çiftçiler",
+    "adalar",
+    "fırtınalar"
+   ],
+   "why": [
+    "Olmaz: ziyaretçiler köyde buğday ekip inek beslemez.",
+    "Olmaz: müzeler canlı değildir; buğday yetiştiremez.",
+    "Doğru: buğday yetiştirip inek besleyen kişiler çiftçilerdir.",
+    "Olmaz: adalar köyün içinde bulunmaz ve tarım yapmaz.",
+    "Olmaz: fırtına bir kişi değildir; inek besleyemez."
+   ]
+  },
+  "ys1u11l1#4": {
+   "tr": [
+    "kütüphane",
+    "ekipman",
+    "komşu",
+    "köy",
+    "fırtına"
+   ],
+   "why": [
+    "Olmaz: kütüphane denizden gelen bir tehlike değildir.",
+    "Olmaz: ekipman 'strong' ile nitelenip denizden gelmez.",
+    "Olmaz: komşunun gelmesi balıkçıları evde tutacak bir neden değil.",
+    "Olmaz: köy bir yerdir; denizden 'gelmez'.",
+    "Doğru: denizden gelen güçlü fırtına balıkçıları evde tutar."
+   ]
+  },
+  "ys1u11l1#5": {
+   "tr": [
+    "yararlı",
+    "tehlikeli",
+    "ucuz",
+    "sağlıklı",
+    "birlikte (zarf)"
+   ],
+   "why": [
+    "Olmaz: suyun yararlı olması yüzmeyi yasaklamak için neden olmaz.",
+    "Doğru: kayalıkların yanındaki su tehlikeli olduğu için yüzülmez.",
+    "Olmaz: 'ucuz' su için anlamsızdır, yasağı da açıklamaz.",
+    "Olmaz: sağlıklı su yüzmeye engel değildir.",
+    "Olmaz: 'together' zarftır; 'is' sonrası suyu nitelemez."
+   ]
+  },
+  "ys1u11l1#6": {
+   "tr": [
+    "ödünç aldı",
+    "tırmandı",
+    "büyüdü / yetiştirdi",
+    "açıkladı",
+    "korudu"
+   ],
+   "why": [
+    "Olmaz: kuralları öğrencilere ödünç almak anlamsızdır.",
+    "Olmaz: kurallara tırmanılmaz; 'to the students' ile uyuşmaz.",
+    "Olmaz: 'grew the rules' anlamsızdır; bitki için kullanılır.",
+    "Doğru: herkes anlasın diye öğretmen kuralları öğrencilere açıkladı.",
+    "Olmaz: kuralları korumak 'herkes anlasın diye' ile bağdaşmaz."
+   ]
+  },
+  "ys1u11l1#7": {
+   "tr": [
+    "ödünç almak",
+    "ödünç vermek",
+    "inşa etmek",
+    "tamir etmek",
+    "toplamak"
+   ],
+   "why": [
+    "Doğru: konuşan sözlüğü alıp yarın geri verecek; ödünç almak.",
+    "Olmaz: 'lend' ödünç vermektir; burada yön ters olur.",
+    "Olmaz: sözlük inşa edilmez; 'geri vereceğim' ile uyuşmaz.",
+    "Olmaz: tamir etmek için istemek bağlama uymuyor; amaç kullanmak.",
+    "Olmaz: 'toplamak' tek bir sözlük ve geri verme ile uyuşmaz."
+   ]
+  },
+  "ys1u11l1#8": {
+   "tr": [
+    "sessiz",
+    "sağlıklı",
+    "kalabalık",
+    "dikkatli",
+    "yavaş"
+   ],
+   "why": [
+    "Olmaz: sessiz kafede masa bulmak zor olmaz; tam tersi.",
+    "Olmaz: 'sağlıklı kafe' masa bulmanın zorluğunu açıklamaz.",
+    "Doğru: öğlen kalabalık olduğu için masa bulmak zordur.",
+    "Olmaz: 'careful' kişiler için kullanılır, bir yer için değil.",
+    "Olmaz: kafenin yavaş olması masa bulamamayı açıklamaz."
+   ]
+  },
+  "ys1u11l1#9": {
+   "tr": [
+    "ödünç aldı",
+    "karar verdi",
+    "açıkladı",
+    "yetiştirdi",
+    "onardı"
+   ],
+   "why": [
+    "Olmaz: çatı ödünç alınmaz.",
+    "Olmaz: 'decide' doğrudan 'the roof' nesnesini almaz.",
+    "Olmaz: çatı açıklanmaz; fırtına hasarıyla anlam kurmaz.",
+    "Olmaz: 'grew' bitkiler için kullanılır, çatı için değil.",
+    "Doğru: fırtınanın zarar verdiği çatıyı işçiler onardı."
+   ]
+  },
+  "ys1u11l2#1": {
+   "tr": [
+    "çiftçiler (isim)",
+    "yetiştirmek (fiil)",
+    "sebzeler (isim)",
+    "yakınında (edat)",
+    "nehir (isim)"
+   ],
+   "why": [
+    "Olmaz: 'farmers' isimdir; cümlenin öznesidir.",
+    "Doğru: işi anlatan fiildir; öznenin hemen ardından gelir.",
+    "Olmaz: 'vegetables' isimdir; yetiştirilen şey, yani nesnedir.",
+    "Olmaz: 'near' yer bildiren bir edattır, fiil değildir.",
+    "Olmaz: 'river' isimdir; yeri bildirir."
+   ]
+  },
+  "ys1u11l2#2": {
+   "tr": [
+    "kullanmak (fiil)",
+    "yararlı şekilde (zarf)",
+    "kullanım (isim)",
+    "yararlı (sıfat)",
+    "kullanır (fiil)"
+   ],
+   "why": [
+    "Olmaz: 'use' fiildir; 'is very' sonrası sıfat gerekir.",
+    "Olmaz: 'usefully' zarftır; 'is' ile yüklem olmaz.",
+    "Olmaz: 'usage' isimdir; 'very' ile nitelenemez.",
+    "Doğru: 'is very' sonrası sıfat gerekir; '-ful' sıfat yapar.",
+    "Olmaz: 'uses' çekimli fiildir; 'is very' ardına gelemez."
+   ]
+  },
+  "ys1u11l2#3": {
+   "tr": [
+    "dikkatlice (zarf)",
+    "dikkatli (sıfat)",
+    "özen; bakmak (isim/fiil)",
+    "dikkatsiz (sıfat)",
+    "dikkatsizlik (isim)"
+   ],
+   "why": [
+    "Doğru: 'drives' fiilini niteleyen zarf gerekir.",
+    "Olmaz: 'careful' sıfattır; fiili nitelemez.",
+    "Olmaz: 'care' isim/fiildir; nasıl sürdüğünü anlatmaz.",
+    "Olmaz: sıfattır ve 'endişelenmeyiz' ile anlamca çelişir.",
+    "Olmaz: 'carelessness' isimdir; fiili nitelemez, anlam da ters."
+   ]
+  },
+  "ys1u11l2#4": {
+   "tr": [
+    "inşa etmek (fiil)",
+    "yapıcı (sıfat)",
+    "inşa edildi (fiil, V3)",
+    "yapıcı biçimde (zarf)",
+    "inşa, yapım (isim)"
+   ],
+   "why": [
+    "Olmaz: 'construct' fiildir; 'The ... of' arası isim ister.",
+    "Olmaz: 'constructive' sıfattır; arkasında isim yok.",
+    "Olmaz: 'constructed' fiil hâlidir; 'The' ardından isim gerekir.",
+    "Olmaz: 'constructively' zarftır; isim yerine kullanılamaz.",
+    "Doğru: 'The' ile 'of' arası isim ister; '-tion' isim yapar."
+   ]
+  },
+  "ys1u11l2#5": {
+   "tr": [
+    "hızlıca (zarf)",
+    "karar (isim)",
+    "tehlikeli (sıfat)",
+    "korumak (fiil)",
+    "yavaşça (zarf)"
+   ],
+   "why": [
+    "Olmaz: '-ly' ile biten 'quickly' bir zarftır.",
+    "Olmaz: 'decision' '-sion' ekli bir isimdir.",
+    "Doğru: '-ous' eki sıfat yapar; 'a dangerous road' gibi ismi niteler.",
+    "Olmaz: 'protect' bir fiildir.",
+    "Olmaz: '-ly' ile biten 'slowly' bir zarftır."
+   ]
+  },
+  "ys1u11l2#6": {
+   "tr": [
+    "gürültülü (sıfat)",
+    "gürültü (isim)",
+    "gürültülü biçimde (zarf)",
+    "gürültü yapmaya (to + isim)",
+    "gürültüler (isim)"
+   ],
+   "why": [
+    "Doğru: 'become' gibi durum fiillerinden sonra sıfat gelir.",
+    "Olmaz: 'noise' isimdir; köyün nasıl olduğunu anlatmaz.",
+    "Olmaz: 'noisily' zarftır; 'became' sonrası sıfat gerekir.",
+    "Olmaz: 'to noise' dilbilgisel değildir; 'became' ile kurulmaz.",
+    "Olmaz: 'noises' çoğul isimdir; köyün durumunu nitelemez."
+   ]
+  },
+  "ys1u11l2#7": {
+   "tr": [
+    "çözmek (fiil)",
+    "çözüldü (fiil, V2/V3)",
+    "çözülebilir (sıfat)",
+    "çözüm (isim)",
+    "çözme (-ing)"
+   ],
+   "why": [
+    "Olmaz: 'solve' fiildir; 'a' artikelinden sonra isim gerekir.",
+    "Olmaz: 'solved' fiil hâlidir; artikel ardından gelemez.",
+    "Olmaz: 'solvable' sıfattır; arkasında nitelenecek isim yok.",
+    "Doğru: 'find a ---- to' kalıbında artikelden sonra isim gerekir.",
+    "Olmaz: 'a solving to' kalıbı kurulmaz; 'solution to' doğrudur."
+   ]
+  },
+  "ys1u11l2#8": {
+   "tr": [
+    "ani (sıfat)",
+    "aniden (zarf)",
+    "anilik (isim)",
+    "ani olan (the + sıfat)",
+    "en ani (üstünlük sıfatı)"
+   ],
+   "why": [
+    "Olmaz: 'sudden' sıfattır; isim önünde kullanılır.",
+    "Doğru: 'increased' fiilini niteleyen zarf gerekir.",
+    "Olmaz: 'suddenness' isimdir; fiili nitelemez.",
+    "Olmaz: 'the sudden' isim öbeği gibi durur; fiili nitelemez.",
+    "Olmaz: 'most sudden' üstünlük sıfatıdır; zarf görevi görmez."
+   ]
+  },
+  "ys1u11l2#9": {
+   "tr": [
+    "yardım (isim/fiil)",
+    "yardım eder (fiil)",
+    "yardımcı biçimde (zarf)",
+    "yardımcı kişi (isim)",
+    "faydalı (sıfat)"
+   ],
+   "why": [
+    "Olmaz: 'help advice' iki isim yan yana olur; sıfat gerekir.",
+    "Olmaz: 'helps' çekimli fiildir; isimden önce gelmez.",
+    "Olmaz: 'helpfully' zarftır; 'advice' ismini nitelemez.",
+    "Olmaz: 'helper' isimdir; 'helper advice' anlamsızdır.",
+    "Doğru: 'some' ile 'advice' arasına ismi niteleyen sıfat gelir."
+   ]
+  },
+  "ys1u11l3#1": {
+   "tr": [
+    "Her sabah ekmek annem alır. (bozuk dizim)",
+    "Annem her sabah ekmek alır. (bozuk dizim)",
+    "Annem her sabah ekmek alır.",
+    "Alır annem ekmek her sabah. (bozuk dizim)",
+    "Annem ekmek alır her sabah. (bozuk dizim)"
+   ],
+   "why": [
+    "Olmaz: nesne özneden önce, fiil sonda; İngilizce dizime aykırı.",
+    "Olmaz: fiil sona atılmış; Türkçe sıralama taşınmış.",
+    "Doğru: özne + fiil + nesne + zaman sırası doğrudur.",
+    "Olmaz: düz cümle fiille başlamaz; özne önce gelmelidir.",
+    "Olmaz: nesne fiilden önce gelmiş; Türkçe dizim taşınmış."
+   ]
+  },
+  "ys1u11l3#2": {
+   "tr": [
+    "Öğrenciler kütüphanede kitap okudu.",
+    "Öğrenciler kitap okudu kütüphanede. (bozuk dizim)",
+    "Kütüphanede okudu öğrenciler kitap. (bozuk dizim)",
+    "Öğrenciler kütüphanede kitap okudu. (bozuk dizim)",
+    "Okudu öğrenciler kitap kütüphanede. (bozuk dizim)"
+   ],
+   "why": [
+    "Doğru: özne + fiil + nesne + yer sırası doğrudur.",
+    "Olmaz: nesne fiilden önce; fiil Türkçedeki gibi sona yakın.",
+    "Olmaz: fiil öznenin önüne geçmiş; düz cümlede olmaz.",
+    "Olmaz: yer ve nesne fiilden önce; fiil sona atılmış.",
+    "Olmaz: düz cümle fiille başlamaz; özne önce gelmeli."
+   ]
+  },
+  "ys1u11l3#3": {
+   "tr": [
+    "-mısın (be, geniş/şimdiki)",
+    "-miydin (be, geçmiş)",
+    "-r mısın (do, geniş zaman)",
+    "-dın mı (have, perfect)",
+    "-dın mı (did, geçmiş zaman)"
+   ],
+   "why": [
+    "Olmaz: 'Are' yalın 'like' ile soru kurmaz; zaman da geçmiş.",
+    "Olmaz: 'Were' yalın 'like' fiiliyle kullanılmaz.",
+    "Olmaz: 'Do' geniş zamandır; 'last night' geçmiş ister.",
+    "Olmaz: 'Have' ile V3 ('liked') gerekir; 'last night' de uymaz.",
+    "Doğru: 'last night' geçmiş; yalın fiille soru 'Did' ile kurulur."
+   ]
+  },
+  "ys1u11l3#4": {
+   "tr": [
+    "-dır (be, tekil)",
+    "sahip (has, tekil)",
+    "yapar (does, tekil)",
+    "sahip (have, çoğul/I-you)",
+    "sahip olma (-ing)"
+   ],
+   "why": [
+    "Olmaz: 'is a new bicycle' kız kardeşin bisiklet olduğunu söyler.",
+    "Doğru: tekil özne 'my sister' ile sahiplik 'has' ile verilir.",
+    "Olmaz: 'does a bicycle' anlamsızdır; sahiplik bildirmez.",
+    "Olmaz: 'have' çoğul ya da I/you özneyle kullanılır.",
+    "Olmaz: 'having' çekimli fiil değildir; cümle yarım kalır."
+   ]
+  },
+  "ys1u11l3#5": {
+   "tr": [
+    "yardımcı fiil (do, çoğul)",
+    "yardımcı fiil (does, tekil)",
+    "has (perfect, tekil)",
+    "-dır (be, çoğul)",
+    "-dır (be, tekil)"
+   ],
+   "why": [
+    "Olmaz: 'do not allowed' yanlış; do + V3 kurulmaz.",
+    "Olmaz: 'does' hem tekil hem 'allowed' ile kurulmaz.",
+    "Olmaz: 'has not allowed' tekildir ve edilgen anlamı vermez.",
+    "Doğru: edilgen 'be allowed to' kalıbı; çoğul özneyle 'are'.",
+    "Olmaz: 'is' tekil özne ister; 'visitors' çoğuldur."
+   ]
+  },
+  "ys1u11l3#6": {
+   "tr": [
+    "does (geniş zaman, tekil)",
+    "are (be, çoğul)",
+    "do (geniş zaman, çoğul)",
+    "is (be, tekil)",
+    "did (geçmiş zaman)"
+   ],
+   "why": [
+    "Olmaz: 'does' tekil özne ister; 'your parents' çoğuldur.",
+    "Olmaz: 'are' yalın 'live' ile soru kurmaz.",
+    "Doğru: çoğul özne ve yalın 'live' ile geniş zaman sorusu 'do'.",
+    "Olmaz: 'is' tekildir ve yalın fiille soru kurmaz.",
+    "Olmaz: 'did' geçmiş zamandır; 'now' ile çelişir."
+   ]
+  },
+  "ys1u11l3#7": {
+   "tr": [
+    "çiftçi (özne)",
+    "sattı (fiil)",
+    "geçen hafta (zaman)",
+    "eski (sıfat)",
+    "onun eski traktörü (nesne)"
+   ],
+   "why": [
+    "Olmaz: 'The farmer' işi yapan öznedir.",
+    "Olmaz: 'sold' cümlenin fiilidir.",
+    "Olmaz: 'last week' zaman bildiren bir zarf öbeğidir.",
+    "Olmaz: 'old' tek başına sıfattır; nesnenin bir parçasıdır.",
+    "Doğru: satılan şey, fiilden etkilenen öğe olan nesnedir."
+   ]
+  },
+  "ys1u11l3#8": {
+   "tr": [
+    "did (geçmiş zaman yardımcısı)",
+    "were (be, geçmiş)",
+    "have (present perfect)",
+    "does (geniş zaman, tekil)",
+    "are (be, şimdiki)"
+   ],
+   "why": [
+    "Doğru: 'yesterday' geçmiş; yalın fiille olumsuz 'did not' kurulur.",
+    "Olmaz: 'were not finish' dilbilgisel değildir.",
+    "Olmaz: 'have' ile V3 'finished' gerekir; 'yesterday' de uymaz.",
+    "Olmaz: 'does' geniş zaman ve tekildir; 'we' ve 'yesterday' ile uymaz.",
+    "Olmaz: 'are' şimdiki zamandır; yalın 'finish' ile kurulmaz."
+   ]
+  },
+  "ys1u11l3#9": {
+   "tr": [
+    "Çocuklar her gün köy okuluna yürür.",
+    "Köydeki çocuklar her gün okula yürür.",
+    "Köy çocukları her gün okula yürür. (bozuk dizim)",
+    "Köydeki çocuklar bugün okula yürüyor.",
+    "Köy her gün çocukları okula yürütür."
+   ],
+   "why": [
+    "Olmaz: köyde olanı okul yapar; çocukların köyde olduğu kaybolur.",
+    "Doğru: 'köydeki çocuklar' özne, 'walk' fiil, 'every day' alışkanlık.",
+    "Olmaz: fiil sona atılmış; Türkçe dizim taşınmış.",
+    "Olmaz: 'are walking today' alışkanlık değil bugünü anlatır.",
+    "Olmaz: özne köy olmuş; anlam tamamen değişmiş."
+   ]
+  },
+  "ys1u11l4#1": {
+   "tr": [
+    "antrenman yapar (tekil, present simple)",
+    "antrenman yapma (-ing)",
+    "antrenman yapmak (to + V1)",
+    "antrenman yapar (çoğul, present simple)",
+    "antrenman yaptı (present perfect, tekil)"
+   ],
+   "why": [
+    "Olmaz: '-s' tekil özne ister; asıl özne çoğul 'members'.",
+    "Olmaz: 'training' çekimli fiil değil; cümle yarım kalır.",
+    "Olmaz: 'to train' çekimli fiil değil; yüklem olamaz.",
+    "Doğru: asıl özne çoğul 'members'; fiil çoğul 'train' olur.",
+    "Olmaz: 'has' tekildir; 'every Saturday' alışkanlık için geniş zaman ister."
+   ]
+  },
+  "ys1u11l4#2": {
+   "tr": [
+    "-di (be, geçmiş, çoğul)",
+    "-di (be, geçmiş, tekil)",
+    "-dir (be, geniş zaman, tekil)",
+    "-miş (has, present perfect yardımcısı)",
+    "olarak / olmakta (-ing hâli)"
+   ],
+   "why": [
+    "Olmaz: çoğul 'villages' tuzağı; asıl özne tekil 'the bridge'.",
+    "Doğru: tekil özne 'the bridge' ve 'last summer' geçmiş zaman ister.",
+    "Olmaz: geniş zamandır; 'last summer' geçmişi gösterir.",
+    "Olmaz: 'has repaired' etken olur ve 'last summer' ile kullanılmaz.",
+    "Olmaz: 'being' çekimli fiil değildir, cümle ana fiilsiz kalır."
+   ]
+  },
+  "ys1u11l4#3": {
+   "tr": [
+    "oturur (yan cümle fiili)",
+    "kütüphane (isim)",
+    "sık sık (zarf)",
+    "notlar (isim)",
+    "ödünç alır (ana fiil)"
+   ],
+   "why": [
+    "Olmaz: 'who sits…' yan cümlesinin fiilidir, ana fiil değil.",
+    "Olmaz: yer bildiren bir isimdir, fiil değildir.",
+    "Olmaz: sıklık zarfıdır, fiili niteler ama fiil değildir.",
+    "Olmaz: 'borrows' fiilinin nesnesidir.",
+    "Doğru: asıl özne 'the girl'in ana fiilidir."
+   ]
+  },
+  "ys1u11l4#4": {
+   "tr": [
+    "-dir (be, geniş zaman, tekil)",
+    "-dir (be, geniş zaman, çoğul)",
+    "-di (be, geçmiş, çoğul)",
+    "olmuştur (present perfect, çoğul)",
+    "olarak (-ing hâli)"
+   ],
+   "why": [
+    "Doğru: 'One of the reasons' yapısında özne tekil 'one'dır.",
+    "Olmaz: çoğul 'reasons' tuzağı; özne tekil 'one'.",
+    "Olmaz: hem çoğul hem geçmiş; tekil özneyle uyuşmaz.",
+    "Olmaz: 'have' çoğul özne ister; özne tekil 'one'.",
+    "Olmaz: çekimli fiil değildir, cümle kurmaz."
+   ]
+  },
+  "ys1u11l4#5": {
+   "tr": [
+    "yardım eder (yalın, çoğul özneyle)",
+    "yardım ederek (-ing hâli)",
+    "yardım eder (geniş zaman, tekil)",
+    "yardım etmiştir (present perfect, çoğul)",
+    "yardım ediyor (present continuous, çoğul)"
+   ],
+   "why": [
+    "Olmaz: '-s' almamış; -ing'li özne tekil sayılır.",
+    "Olmaz: çekimli fiil değildir, cümle ana fiilsiz kalır.",
+    "Doğru: 'Collecting rainwater' tek bir eylemdir, tekil fiil alır.",
+    "Olmaz: 'have' çoğul özne ister; 'tanks' özne değildir.",
+    "Olmaz: 'are' çoğul özneye göre; asıl özne tekil -ing yapısı."
+   ]
+  },
+  "ys1u11l4#6": {
+   "tr": [
+    "-maz (do, geniş zaman yardımcısı)",
+    "-di (be, geçmiş, çoğul)",
+    "-dir (be, geniş zaman, çoğul)",
+    "-madı (did, geçmiş yardımcısı)",
+    "-miş (have, present perfect yardımcısı)"
+   ],
+   "why": [
+    "Olmaz: geniş zamandır ve tekil 'equipment' ile uyuşmaz; 'brought' geçmiş.",
+    "Olmaz: 'were not work' dilbilgisel değildir, özne de tekil.",
+    "Olmaz: 'are not work' yanlış yapı; 'be' yalın fiille gelmez.",
+    "Doğru: tekil özne, geçmiş bağlam; 'did not' + yalın 'work'.",
+    "Olmaz: 'have not work' yanlış; 'have' fiilin üçüncü hâlini ister."
+   ]
+  },
+  "ys1u11l4#7": {
+   "tr": [
+    "balıkçılık hâlâ ailelerin başlıca geçim yoludur",
+    "çünkü balıkçılar avlarını kasabada satar",
+    "ki çoğu aile denize bağımlıdır",
+    "yerel pazarda avlarını satan balıkçılar",
+    "hava sık sık hızla değişse de"
+   ],
+   "why": [
+    "Doğru: özne ve çekimli fiil içeren tam bir ana cümledir.",
+    "Olmaz: 'because' yan cümlesidir, ana cümle olmadan kalamaz.",
+    "Olmaz: 'which' yan cümlesidir ve nitelediği bir isim yoktur.",
+    "Olmaz: 'selling' çekimli değil, cümle ana fiilsiz kalır.",
+    "Olmaz: 'although' yan cümlesidir, ana cümle eksik kalır."
+   ]
+  },
+  "ys1u11l4#8": {
+   "tr": [
+    "ki sınav döneminde birçok öğrenciyi çeker",
+    "öğrencilerin sessizce çalışabildiği",
+    "çünkü gece yarısına kadar açıktır",
+    "şehrin her yerinden öğrencileri çekerek",
+    "sınav döneminde öğrencilerin gözde mekânı oldu"
+   ],
+   "why": [
+    "Olmaz: 'which' yan cümlesidir, 'the new library' için ana fiil vermez.",
+    "Olmaz: 'where' yan cümlesidir, özne ana fiilsiz kalır.",
+    "Olmaz: 'because' yan cümlesidir, ana fiil eksik kalır.",
+    "Olmaz: 'attracting' çekimli değildir, cümle yarım kalır.",
+    "Doğru: 'has become' özne 'the new library'nin ana fiilidir."
+   ]
+  },
+  "ys1u11l4#9": {
+   "tr": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "why": [
+    "Olmaz: özne 'the number' (sayı); 'daha fazla müze gezdi' anlamı yok.",
+    "Doğru: 'the number… was higher than expected' birebir karşılanmış.",
+    "Olmaz: gerçekleşmiş durumu beklentiye çevirmiş; 'artış' da yok.",
+    "Olmaz: müzelerin açılmasından söz eder, kaynakta böyle bir şey yok.",
+    "Olmaz: beklentiyi ziyaretçilere yüklemiş; özne 'the number' değil."
+   ]
+  },
+  "ys1u11t#0": {
+   "tr": [
+    "gürültülü (sıfat)",
+    "ucuz (sıfat)",
+    "dikkatli (sıfat)",
+    "kalabalık (sıfat)",
+    "yararlı (sıfat)"
+   ],
+   "why": [
+    "Olmaz: karşıdan karşıya geçerken nasıl olunması gerektiğini anlatmaz.",
+    "Olmaz: 'ucuz' bir kişinin davranışı için anlamsızdır.",
+    "Doğru: hızlı arabaların olduğu yolda dikkatli olmak gerekir.",
+    "Olmaz: 'kalabalık' yer için kullanılır, tek kişiyi nitelemez.",
+    "Olmaz: 'yararlı ol' yol güvenliği bağlamına uymaz."
+   ]
+  },
+  "ys1u11t#1": {
+   "tr": [
+    "toplamak",
+    "ödünç vermek",
+    "açıklamak",
+    "tırmanmak",
+    "karar vermek"
+   ],
+   "why": [
+    "Doğru: elmalar ekimde toplanıp pazarda satılır.",
+    "Olmaz: elmaları ödünç vermek satışla anlamlı bir akış kurmaz.",
+    "Olmaz: elmaları 'açıklamak' anlamsızdır.",
+    "Olmaz: 'climb' ağaç ya da dağ gibi bir nesne alır, elma değil.",
+    "Olmaz: 'decide' doğrudan 'the apples' nesnesini almaz."
+   ]
+  },
+  "ys1u11t#2": {
+   "tr": [
+    "-dir (be, geniş zaman, tekil)",
+    "-dir (be, geniş zaman, çoğul)",
+    "-di (be, geçmiş, tekil)",
+    "olmak (yalın hâl)",
+    "-di (be, geçmiş, çoğul)"
+   ],
+   "why": [
+    "Olmaz: tekil ve şimdiki zaman; özne çoğul, 'saw' geçmiş.",
+    "Olmaz: şimdiki zamandır, 'saw this morning' ile uyuşmaz.",
+    "Olmaz: tekil özneye aittir; 'the children' çoğul.",
+    "Olmaz: yalın 'be' çekimli fiil yerine kullanılamaz.",
+    "Doğru: çoğul özne 'the children' ve geçmiş zaman 'saw'."
+   ]
+  },
+  "ys1u11t#3": {
+   "tr": [
+    "yaşar (yalın, çoğul özneyle)",
+    "yaşar (geniş zaman, tekil)",
+    "yaşayarak (-ing hâli)",
+    "hatalı yapı (be + yalın fiil)",
+    "yaşamak (to-infinitive)"
+   ],
+   "why": [
+    "Olmaz: tekil özneyle geniş zamanda fiil '-s' almalı.",
+    "Doğru: tekil 'my grandfather' ile geniş zamanda '-s' eklenir.",
+    "Olmaz: çekimli değildir; 'is living' olmadan cümle kurmaz.",
+    "Olmaz: 'be' ile yalın fiil birleşmez.",
+    "Olmaz: mastar çekimli fiil olamaz, cümle ana fiilsiz kalır."
+   ]
+  },
+  "ys1u11t#4": {
+   "tr": [
+    "mi (be, tekil soru)",
+    "mi (has, present perfect sorusu)",
+    "mi (do, çoğul geniş zaman sorusu)",
+    "mi (does, tekil geniş zaman sorusu)",
+    "mi (be, çoğul soru)"
+   ],
+   "why": [
+    "Olmaz: 'Is' yalın 'speak' ile soru kuramaz.",
+    "Olmaz: 'Has' fiilin üçüncü hâlini ister, 'speak' yalın.",
+    "Olmaz: 'Do' çoğul özne ister; 'your brother' tekil.",
+    "Doğru: tekil özne + yalın 'speak' geniş zaman sorusu ister.",
+    "Olmaz: hem çoğul hem de yalın fiille soru kurmaz."
+   ]
+  },
+  "ys1u11t#5": {
+   "tr": [
+    "-medi (have, present perfect, çoğul)",
+    "-medi (did, geçmiş yardımcısı)",
+    "-dir (be, çoğul)",
+    "-medi (has, present perfect, tekil)",
+    "-di (be, geçmiş, çoğul)"
+   ],
+   "why": [
+    "Doğru: 'yet' + 'finished' present perfect ister; özne çoğul.",
+    "Olmaz: 'did' ile fiil yalın kalır; 'did not finished' yanlış.",
+    "Olmaz: 'are not finished' etken anlam vermez; 'yet' perfect ister.",
+    "Olmaz: 'has' tekil özneye aittir; 'the workers' çoğul.",
+    "Olmaz: 'were not finished' edilgen olur, nesne 'the bridge' var."
+   ]
+  },
+  "ys1u11t#6": {
+   "tr": [
+    "yapar (yalın, çoğul özneyle)",
+    "yaparak (-ing hâli)",
+    "yaptı (simple past)",
+    "yapmıştır (present perfect, çoğul)",
+    "yapar (geniş zaman, tekil)"
+   ],
+   "why": [
+    "Olmaz: hem çoğul özneye göre hem de geniş zamandır.",
+    "Olmaz: çekimli değildir, cümle ana fiilsiz kalır.",
+    "Doğru: tekil özne 'the decision' ve 'last year' geçmiş ister.",
+    "Olmaz: 'have' çoğul ister; 'last year' ile perfect kullanılmaz.",
+    "Olmaz: geniş zamandır; 'last year' geçmişi gösterir."
+   ]
+  },
+  "ys1u11t#7": {
+   "tr": [
+    "zarar gördü (edilgen, tekil)",
+    "zarar verdi (etken, simple past)",
+    "zarar görür (edilgen, geniş zaman)",
+    "zarar vermiştir (present perfect)",
+    "zarar gördü (edilgen, çoğul)"
+   ],
+   "why": [
+    "Olmaz: tekil 'school' tuzağı; asıl özne çoğul 'houses'.",
+    "Olmaz: etkendir; evleri zarar veren yapar, 'by a storm' edilgen ister.",
+    "Olmaz: geniş zaman ve tekil; '2019' geçmiş, özne çoğul.",
+    "Olmaz: etkendir ve '2019' gibi bitmiş zamanla kullanılmaz.",
+    "Doğru: çoğul 'houses' için edilgen geçmiş 'were damaged'."
+   ]
+  },
+  "ys1u11t#8": {
+   "tr": [
+    "yaşar (geniş zaman, tekil)",
+    "yaşar (geniş zaman, çoğul)",
+    "yaşayarak (-ing hâli)",
+    "yaşamak (to-infinitive)",
+    "yaşıyor (present continuous, tekil)"
+   ],
+   "why": [
+    "Olmaz: tekil özneye göredir; 'Most of its people' çoğul.",
+    "Doğru: çoğul özne ve genel durum geniş zaman ister.",
+    "Olmaz: çekimli fiil değildir, cümle kurmaz.",
+    "Olmaz: mastar çekimli fiil yerine geçemez.",
+    "Olmaz: 'is' tekil özne ister; genel durum da geniş zamandır."
+   ]
+  },
+  "ys1u11t#9": {
+   "tr": [
+    "ayrılır (geniş zaman, tekil)",
+    "ayrılarak (-ing hâli)",
+    "ayrılmıştır (present perfect, tekil)",
+    "ayrılır (geniş zaman, çoğul)",
+    "ayrılmak (to-infinitive)"
+   ],
+   "why": [
+    "Olmaz: tekil özneye göredir; 'the fishermen' çoğul.",
+    "Olmaz: çekimli değildir, 'return' ile paralellik bozulur.",
+    "Olmaz: 'has' tekil ister; 'Every morning' alışkanlık bildirir.",
+    "Doğru: alışkanlık + çoğul özne; 'return' ile paralel yalın fiil.",
+    "Olmaz: mastar çekimli fiil olamaz."
+   ]
+  },
+  "ys1u11t#10": {
+   "tr": [
+    "yoktur (geniş zaman, tekil)",
+    "yoktur (geniş zaman, çoğul)",
+    "sahip olmuyor (present continuous)",
+    "hatalı yapı (yardımcısız olumsuz)",
+    "değildir (be, çoğul)"
+   ],
+   "why": [
+    "Doğru: tekil 'it' (the village) için 'does not' + yalın 'have'.",
+    "Olmaz: 'do not' çoğul özne ister; 'it' tekil.",
+    "Olmaz: sahiplik bildiren 'have' durum fiilidir, -ing almaz.",
+    "Olmaz: olumsuzluk yardımcı fiil olmadan 'not has' ile kurulmaz.",
+    "Olmaz: 'are' çoğuldur ve 'are not a hospital' anlamsızdır."
+   ]
+  },
+  "ys1u11t#11": {
+   "tr": [
+    "karar verir (yalın)",
+    "karar vererek (-ing hâli)",
+    "karar verdi (simple past)",
+    "karar verir (geniş zaman, tekil)",
+    "hatalı yapı (has + yalın fiil)"
+   ],
+   "why": [
+    "Olmaz: geniş zamandır; 'Last year' geçmiş ister.",
+    "Olmaz: çekimli değildir, cümle ana fiilsiz kalır.",
+    "Doğru: 'Last year' ve 'started' geçmiş zaman ister.",
+    "Olmaz: geniş zamandır; geçmişte bitmiş olayla uyuşmaz.",
+    "Olmaz: 'has' fiilin üçüncü hâlini ister ('has decided')."
+   ]
+  },
+  "ys1u11t#12": {
+   "tr": [
+    "heyecanlandırmak (fiil)",
+    "heyecan (isim)",
+    "heyecanla (zarf)",
+    "heyecanlandırır (fiil, tekil)",
+    "heyecanlı (sıfat)"
+   ],
+   "why": [
+    "Olmaz: fiildir; 'are very' sonrası sıfat gerekir.",
+    "Olmaz: isimdir; 'very' ile nitelenemez.",
+    "Olmaz: zarftır; 'are' sonrası yüklem olarak kullanılmaz.",
+    "Olmaz: çekimli fiildir; 'are very' ardından gelemez.",
+    "Doğru: 'are very' + kişilerin duygusunu anlatan sıfat."
+   ]
+  },
+  "ys1u11t#13": {
+   "tr": [
+    "çünkü çok az ziyaretçisi var",
+    "çoğu ziyaretçi için pek ilginç değil",
+    "ve her yaz birçok turist onu ziyaret eder",
+    "her yıl binlerce ziyaretçi çeker",
+    "ki eski limanın yakınındadır"
+   ],
+   "why": [
+    "Olmaz: 'because' yan cümlesidir, ana cümle eksik kalır.",
+    "Olmaz: küçük olmakla zıtlık kurmaz, aksine uyumludur.",
+    "Olmaz: 'and' ile 'although' birlikte ana cümle kurmaz.",
+    "Doğru: küçük olmasına rağmen çok ziyaretçi; 'although' zıtlığı kurulur.",
+    "Olmaz: 'which' yan cümlesidir, ana cümle değildir."
+   ]
+  },
+  "ys1u11t#14": {
+   "tr": [
+    "çünkü yeterince çalışmadılar",
+    "gelecek ay ikinci bir sınava girecek",
+    "ki tekrar denemek istiyorlar",
+    "her akşam kütüphanede çalışarak",
+    "sorular kolay olsa da"
+   ],
+   "why": [
+    "Olmaz: 'because' yan cümlesidir, ana fiil vermez.",
+    "Doğru: 'the students' öznesine ana fiil 'will take' verir.",
+    "Olmaz: ikinci bir 'who' yan cümlesidir, ana fiil yine yoktur.",
+    "Olmaz: 'studying' çekimli değildir, cümle yarım kalır.",
+    "Olmaz: 'although' yan cümlesidir, ana fiil vermez."
+   ]
+  },
+  "ys1u11t#15": {
+   "tr": [
+    "birçok aile evini terk edip daha güvenli yerlere taşındı",
+    "çünkü rüzgâr çok kuvvetliydi",
+    "hâlâ denizde olan balıkçılar",
+    "yollar kapanırken",
+    "böylece birçok ağaç yollara düşerek"
+   ],
+   "why": [
+    "Doğru: özne ve geçmiş zaman fiiliyle 'When' cümlesini tamamlar.",
+    "Olmaz: 'because' yan cümlesidir, ana cümle yine eksik kalır.",
+    "Olmaz: yalnızca isim öbeğidir, ana fiili yoktur.",
+    "Olmaz: yan cümledir ve şimdiki zaman geçmişle uyuşmaz.",
+    "Olmaz: 'falling' çekimli değildir, tam cümle kurmaz."
+   ]
+  },
+  "ys1u11t#16": {
+   "tr": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "why": [
+    "Olmaz: 'instead of' yerine 'hem… hem de' anlamı vermiş.",
+    "Olmaz: buğday yetiştirenlerin sebzeyi tercih ettiğini söyler, anlam bozuk.",
+    "Doğru: 'most of the farmers… grow wheat instead of vegetables' karşılanmış.",
+    "Olmaz: 'instead of' yapısını ters çevirmiş; buğday ile sebze yer değiştirmiş.",
+    "Olmaz: kolaylık karşılaştırması kaynakta yoktur."
+   ]
+  },
+  "ys1u11t#17": {
+   "tr": [
+    "İşçiler dün gece köydeki köprüyü onardı.",
+    "Köye dönen işçiler dün gece köprüyü onardı.",
+    "İşçilerin onardığı köprü dün gece köye döndü.",
+    "İşçiler köprüyü onardıktan sonra köye dönecek.",
+    "Köprüyü onaran işçiler dün akşam köye döndü."
+   ],
+   "why": [
+    "Olmaz: 'döndü' eylemi yok; köy köprünün yeri olmuş.",
+    "Olmaz: ana fiil ile yan cümle yer değiştirmiş.",
+    "Olmaz: özne köprü olmuş; köprünün köye dönmesi anlamsızdır.",
+    "Olmaz: 'will return' gelecek zamandır, 'döndü' geçmiştir.",
+    "Doğru: 'who repaired the bridge' özneyi tanımlar, ana fiil 'returned'."
+   ]
   }
  }
 }
