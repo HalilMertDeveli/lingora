@@ -87,7 +87,7 @@ class SpeechService {
   }) async {
     final id = ++_request;
     final locale = lang == 'tr' ? 'tr-TR' : englishLocale;
-    final speed = (slow ? 0.22 : 0.45) * rate;
+    final speed = (slow ? slowSpeechRate : 0.45) * rate;
     try {
       await _stopVoice();
       // A studio recording of this sentence, when there is one.
@@ -97,7 +97,7 @@ class SpeechService {
         if (asset != null) {
           final p = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
           await p.setSource(AssetSource(asset));
-          await p.setPlaybackRate(slow ? 0.7 : rate.clamp(0.5, 1.5));
+          await p.setPlaybackRate(slow ? slowRecordingRate : rate.clamp(0.5, 1.5));
           final heard = wait ? _ended(p) : null;
           await p.resume();
           await heard;
@@ -293,6 +293,14 @@ abstract interface class LinePlayer {
   Future<void> sayLine(String text, {double rate = 1, double pitch = 1});
   Future<void> stopLine();
 }
+
+/// Slow reading (the turtle button) on the phone's speech engine: about a
+/// third of normal speed, so each word can be heard on its own.
+const slowSpeechRate = 0.15;
+
+/// Slow playback of a studio recording. Lower than this the voice starts to
+/// smear, so recordings slow down less than the speech engine.
+const slowRecordingRate = 0.6;
 
 /// Engine pitch of a dialogue speaker, so two voices differ even without
 /// recordings.
