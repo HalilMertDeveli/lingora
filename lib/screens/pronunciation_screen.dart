@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/spoken_match.dart';
 import '../core/text.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
 import '../exercises/common.dart' show SpeakerButton;
-import '../exercises/speak_exercise.dart' show speakPassRatio;
+import '../exercises/speak_mic.dart';
 import '../models/pronunciation.dart';
 import '../services/speech.dart';
 import '../services/growth/analytics.dart';
@@ -166,19 +167,23 @@ class _Step {
   final String targetTr;
 }
 
+/// The coach listens for the very sound it teaches, so "tree" is not
+/// "three" here; case, punctuation, contractions and numbers still are.
+SpokenMatch coachMatch(String target, String heard) => matchSpoken(target, [heard], lenient: false);
+
 /// Friendly Turkish feedback for a speaking attempt. [pair] lets us say
 /// which word it sounded like when the user hit the partner instead.
 String speakFeedback({required String target, required String heard, MinimalPair? pair}) {
-  if (heard.trim().isEmpty) return 'Seni duyamadım. Biraz daha yüksek ve yavaş söyleyip tekrar dene.';
-  final score = spokenSimilarity(target, heard);
-  if (score >= 1) return 'Harika! Çok net anlaşıldı.';
+  if (heard.trim().isEmpty) return 'Seni duyamadım. Telefonu biraz daha yakına al, yüksek ve yavaş söyle.';
+  final match = coachMatch(target, heard);
+  if (match.perfect) return 'Harika! Çok net anlaşıldı.';
   if (pair != null) {
     final other = normalizeAnswer(target) == normalizeAnswer(pair.a) ? pair.b : pair.a;
-    if (spokenSimilarity(other, heard) >= 1) {
+    if (coachMatch(other, heard).perfect) {
       return 'Bunu “$other” gibi duydum. Açıklamadaki ağız konumunu hatırla ve bir daha dene.';
     }
   }
-  if (score >= speakPassRatio) {
+  if (match.passed) {
     return 'Güzel, neredeyse tamam! Kaçan kelimeyi bir kez dinle, sonra tekrar söyle.';
   }
   return 'Ben “$heard” duydum. Yavaş dinle ve tekrar dene; acele yok.';
@@ -274,13 +279,14 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
       _listening = true;
       _heard = '';
     });
-    await _speech.listen(
+    await _speech.listenTo(
+      _step.target,
       onWords: (w) {
         if (mounted) setState(() => _heard = w);
       },
       onDone: () {
         if (!mounted) return;
-        final passed = _heard.isNotEmpty && spokenSimilarity(_step.target, _heard) >= speakPassRatio;
+        final passed = coachMatch(_step.target, _heard).passed;
         setState(() {
           _listening = false;
           _attempted = true;
@@ -610,8 +616,11 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
   }
 
   Widget _speak(_Step s) {
-    final feedback = _attempted ? speakFeedback(target: s.target, heard: _heard, pair: s.pair) : null;
-    final good = _attempted && _heard.isNotEmpty && spokenSimilarity(s.target, _heard) >= speakPassRatio;
+    final feedback = _attempted && !_listening
+        ? speakFeedback(target: s.target, heard: _heard, pair: s.pair)
+        : null;
+    final match = _attempted ? coachMatch(s.target, _heard) : null;
+    final good = match?.passed ?? false;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -645,31 +654,13 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
           )
         else ...[
           Center(
-            child: Pulse(
-              enabled: _listening,
-              child: Material(
-                color: _listening ? Brand.error : _coachColor,
-                shape: const CircleBorder(),
-                child: InkWell(
-                  customBorder: const CircleBorder(),
-                  onTap: _toggleMic,
-                  child: SizedBox(
-                    width: 96,
-                    height: 96,
-                    child: Icon(
-                      _listening ? Icons.stop_rounded : Icons.mic_rounded,
-                      color: onColor(_listening ? Brand.error : _coachColor),
-                      size: 48,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            child: MicButton(listening: _listening, color: _coachColor, onTap: _toggleMic),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 6),
+          if (!_listening && match != null && match.heard.isNotEmpty) SpokenWordsView(match: match),
           Text(
             _listening
-                ? 'Dinliyorum…'
+                ? (_heard.isEmpty ? 'Dinliyorum… Şimdi söyle.' : '“$_heard”')
                 : _attempted
                 ? (_heard.isEmpty ? '' : '“$_heard”')
                 : 'Mikrofona dokun ve söyle',

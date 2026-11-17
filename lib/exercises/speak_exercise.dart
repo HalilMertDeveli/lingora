@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../core/text.dart';
+import '../core/spoken_match.dart';
 import '../models/course.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 import 'common.dart';
+import 'speak_mic.dart';
 
-/// Minimum share of the sentence's words that must be recognized.
+/// Minimum share of the sentence's words that must be recognized, for
+/// callers that still score with a plain ratio. Speaking exercises use
+/// [SpokenMatch.passed] (about 80%, one slip in short sentences).
 const speakPassRatio = 0.7;
 
 class SpeakExercise extends ConsumerStatefulWidget {
@@ -31,6 +34,8 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
   bool _listening = false;
   bool _unavailable = false;
   String _heard = '';
+  SpokenMatch? _match;
+  int _failures = 0;
   late final SpeechService _speech;
 
   @override
@@ -46,21 +51,31 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
       return;
     }
     if (!await speech.canListen) {
-      setState(() => _unavailable = true);
+      setState(() {
+        _unavailable = true;
+        _failures++;
+      });
       return;
     }
     setState(() {
       _listening = true;
       _heard = '';
+      _match = null;
     });
-    await speech.listen(
-      onWords: (w) => setState(() => _heard = w),
+    await speech.listenTo(
+      widget.ex.text!,
+      onWords: (w) {
+        if (mounted) setState(() => _heard = w);
+      },
       onDone: () {
         if (!mounted) return;
-        setState(() => _listening = false);
-        widget.onReady(
-          _heard.isEmpty ? null : () => spokenSimilarity(widget.ex.text!, _heard) >= speakPassRatio,
-        );
+        final match = matchSpoken(widget.ex.text!, [_heard]);
+        setState(() {
+          _listening = false;
+          _match = match;
+          if (!match.passed) _failures++;
+        });
+        widget.onReady(match.heard.isEmpty ? null : () => match.passed);
       },
     );
   }
@@ -74,6 +89,7 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
   @override
   Widget build(BuildContext context) {
     final ex = widget.ex;
+    final match = _match;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -93,42 +109,32 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
             ),
           ],
         ),
-        const SizedBox(height: 40),
+        const SizedBox(height: 24),
         Center(
-          child: Material(
-            color: _listening ? Brand.error : Brand.primary,
-            shape: const CircleBorder(),
-            child: InkWell(
-              customBorder: const CircleBorder(),
-              onTap: widget.locked ? null : _toggle,
-              child: SizedBox(
-                width: 96,
-                height: 96,
-                child: Icon(
-                  _listening ? Icons.stop_rounded : Icons.mic_rounded,
-                  color: Brand.onPrimary,
-                  size: 48,
-                ),
-              ),
-            ),
-          ),
+          child: MicButton(listening: _listening, onTap: widget.locked ? null : _toggle),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
+        if (!_listening && match != null && match.heard.isNotEmpty) ...[
+          SpokenWordsView(match: match),
+          const SizedBox(height: 6),
+        ],
         ValueListenableBuilder<String?>(
           valueListenable: speechIssue,
           builder: (context, issue, _) => Text(
             key: const ValueKey('speak-status'),
-            _listening
-                ? 'Dinliyorum…'
-                : _heard.isNotEmpty
-                ? '“$_heard”'
-                : issue ?? (_unavailable ? SpeechIssues.noRecognizer : 'Mikrofona dokun ve konuş'),
+            spokenStatus(
+              listening: _listening,
+              heard: _heard,
+              match: match,
+              issue: issue ?? (_unavailable ? SpeechIssues.noRecognizer : null),
+              idle: 'Mikrofona dokun ve konuş',
+            ),
             textAlign: TextAlign.center,
-            style: TextStyle(color: _heard.isEmpty ? Brand.muted : Brand.ink, fontSize: 16),
+            style: TextStyle(color: _listening && _heard.isNotEmpty ? Brand.ink : Brand.muted, fontSize: 16),
           ),
         ),
         const SizedBox(height: 16),
-        if (!widget.locked) TextButton(onPressed: widget.onSkip, child: const Text('Şu an konuşamıyorum')),
+        if (!widget.locked) SpeakSkipButton(failures: _failures, onSkip: widget.onSkip),
       ],
     );
   }

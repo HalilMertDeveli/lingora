@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../core/text.dart';
+import '../core/spoken_match.dart';
 import '../models/course.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 import 'common.dart';
+import 'speak_mic.dart';
 
 /// Share of the sentence's words that must be recognized when shadowing
 /// (lower than speak's 0.7: the learner keeps pace with the audio).
@@ -40,6 +41,8 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
   bool _listening = false;
   bool _unavailable = false;
   String _heard = '';
+  SpokenMatch? _match;
+  int _failures = 0;
 
   void _play() => _speech.say(widget.ex.text!, rate: widget.ex.rate);
 
@@ -49,21 +52,32 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
       return;
     }
     if (!await _speech.canListen) {
-      setState(() => _unavailable = true);
+      setState(() {
+        _unavailable = true;
+        _failures++;
+      });
       return;
     }
     setState(() {
       _listening = true;
       _heard = '';
+      _match = null;
     });
-    await _speech.listen(
-      onWords: (w) => setState(() => _heard = w),
+    await _speech.listenTo(
+      widget.ex.text!,
+      onWords: (w) {
+        if (mounted) setState(() => _heard = w);
+      },
       onDone: () {
         if (!mounted) return;
-        setState(() => _listening = false);
-        widget.onReady(
-          _heard.isEmpty ? null : () => spokenSimilarity(widget.ex.text!, _heard) >= shadowPassRatio,
-        );
+        final match = matchSpoken(widget.ex.text!, [_heard]);
+        final good = match.heard.isNotEmpty && (match.passed || match.score >= shadowPassRatio);
+        setState(() {
+          _listening = false;
+          _match = match;
+          if (!good) _failures++;
+        });
+        widget.onReady(match.heard.isEmpty ? null : () => good);
       },
     );
   }
@@ -159,40 +173,31 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
           ),
           const SizedBox(height: 4),
           Center(
-            child: Material(
-              color: _listening ? Brand.error : Brand.primary,
-              shape: const CircleBorder(),
-              child: InkWell(
-                key: const Key('shadow-mic'),
-                customBorder: const CircleBorder(),
-                onTap: widget.locked ? null : _record,
-                child: SizedBox(
-                  width: 84,
-                  height: 84,
-                  child: Icon(
-                    _listening ? Icons.stop_rounded : Icons.mic_rounded,
-                    color: Brand.onPrimary,
-                    size: 42,
-                  ),
-                ),
-              ),
+            child: MicButton(
+              listening: _listening,
+              size: 84,
+              inkKey: const Key('shadow-mic'),
+              onTap: widget.locked ? null : _record,
             ),
           ),
-          const SizedBox(height: 12),
+          if (!_listening && (_match?.heard.isNotEmpty ?? false)) SpokenWordsView(match: _match!),
+          const SizedBox(height: 8),
           ValueListenableBuilder<String?>(
             valueListenable: speechIssue,
             builder: (context, issue, _) => Text(
-              _listening
-                  ? 'Dinliyorum…'
-                  : _heard.isNotEmpty
-                  ? '“$_heard”'
-                  : issue ?? (_unavailable ? SpeechIssues.noRecognizer : ''),
+              spokenStatus(
+                listening: _listening,
+                heard: _heard,
+                match: _match,
+                issue: issue ?? (_unavailable ? SpeechIssues.noRecognizer : null),
+                idle: '',
+              ),
               textAlign: TextAlign.center,
             ),
           ),
         ],
         const SizedBox(height: 8),
-        if (!widget.locked) TextButton(onPressed: widget.onSkip, child: const Text('Şu an konuşamıyorum')),
+        if (!widget.locked) SpeakSkipButton(failures: _failures, onSkip: widget.onSkip),
       ],
     );
   }
