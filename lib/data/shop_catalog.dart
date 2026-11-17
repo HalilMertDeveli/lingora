@@ -80,7 +80,7 @@ class FrameStyle {
 }
 
 /// One Mağaza item. Everything is our own: emoji, colours and drawings made
-/// in code (docs/varliklar.md). Ids match `validItemId` in firestore.rules.
+/// in code (docs/varliklar.md). Ids are listed in `knownItemId` in firestore.rules.
 class ShopItem {
   const ShopItem({
     required this.id,

@@ -11,9 +11,11 @@ import 'package:image/image.dart' as img;
 
 import '../data/league.dart';
 import '../data/progress.dart';
+import '../data/showcase_data.dart';
 import '../theme.dart' show Brand;
 import 'firebase/firebase_providers.dart';
 import 'profile.dart' show accountUidProvider, myDisplayNameProvider, profileProvider;
+import 'showcase.dart' show myShowcaseProvider;
 
 /// Dünya Ligi: weekly groups of up to 100 signed-in learners from every
 /// country (functions/src/league.ts, docs/firebase-backend.md).
@@ -33,6 +35,7 @@ class RemoteMember {
     required this.xp,
     this.country,
     this.photo,
+    this.look,
     this.reachedAt = 0,
   });
   final String uid;
@@ -41,6 +44,9 @@ class RemoteMember {
   final int xp;
   final String? country;
   final Uint8List? photo;
+
+  /// Worn Mağaza items (avatar, frame, theme, outfits), known ids only.
+  final Showcase? look;
 
   /// Milliseconds when the member last gained XP; the earlier wins a tie.
   final int reachedAt;
@@ -115,6 +121,7 @@ class RemoteLeague {
           uid: m.uid,
           country: m.country,
           photo: m.photo,
+          look: m.look,
         ),
     ];
   }
@@ -133,8 +140,14 @@ class XpReport {
 /// The server calls the league needs (mockable in tests).
 abstract class LeagueApi {
   /// Joins (or returns) this week's group and refreshes the row's name,
-  /// avatar, country and photo (a small base64 JPEG).
-  Future<LeagueSeat> join({required String name, required String avatar, String? country, String? photo});
+  /// avatar, country, photo (a small base64 JPEG) and worn Mağaza [look].
+  Future<LeagueSeat> join({
+    required String name,
+    required String avatar,
+    String? country,
+    String? photo,
+    Showcase? look,
+  });
 
   /// Reports this week's XP total; the server adds what it has not seen.
   Future<XpReport> reportXp({required int weekXp, required String weekKey});
@@ -164,8 +177,15 @@ class FirebaseLeagueApi implements LeagueApi {
     required String avatar,
     String? country,
     String? photo,
+    Showcase? look,
   }) async {
-    final r = await _call('joinLeague', {'name': name, 'avatar': avatar, 'country': country, 'photo': photo});
+    final r = await _call('joinLeague', {
+      'name': name,
+      'avatar': avatar,
+      'country': country,
+      'photo': photo,
+      'look': ?_lookMap(look),
+    });
     return LeagueSeat(
       groupId: r['groupId'] as String,
       weekKey: r['weekKey'] as String,
@@ -199,6 +219,7 @@ class FirebaseLeagueApi implements LeagueApi {
                 final Blob b => b.bytes,
                 _ => null,
               },
+              look: Showcase.fromMap(d.data()['look']),
               reachedAt: (d.data()['updatedAt'] as Timestamp?)?.millisecondsSinceEpoch ?? 0,
             ),
         ],
@@ -319,6 +340,7 @@ Future<LeagueSeat?> joinWorldLeague(ProviderReader read) async {
     avatar: '⭐',
     country: read(leagueCountryProvider),
     photo: photo == null ? null : await compute<Uint8List?, String?>(leagueThumbnail, photo),
+    look: read(myShowcaseProvider),
   );
 }
 
@@ -438,4 +460,18 @@ void markWorldResultSeen(ProviderReader read) {
   if (week == null) return;
   read(_resultSeenProvider.notifier).mark(week);
   read(progressProvider.notifier).adoptLeagueTier(state!.lastResult!.newTier);
+}
+
+/// What the league row shows of the worn Mağaza items (the chosen showcase
+/// items stay for friends). All nulls clear a look worn before.
+Map<String, Object?>? _lookMap(Showcase? look) {
+  if (look == null) return null;
+  return {
+    'avatar': look.avatar,
+    'frame': look.frame,
+    'theme': look.theme,
+    'mascot': look.mascot,
+    'pofuduk': look.pofuduk,
+    'useAvatar': look.useAvatar,
+  };
 }

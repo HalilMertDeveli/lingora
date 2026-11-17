@@ -13,6 +13,7 @@ import 'package:lingora/screens/league_screen.dart';
 import 'package:lingora/services/conversation.dart';
 import 'package:lingora/services/firebase/firebase_providers.dart';
 import 'package:lingora/services/league_remote.dart';
+import 'package:lingora/services/showcase.dart';
 import 'package:lingora/ui/country_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,6 +24,7 @@ class FakeLeagueApi implements LeagueApi {
   final _states = StreamController<WorldLeagueState?>.broadcast();
   WorldLeagueState? _last;
   final joins = <({String name, String? country, String? photo})>[];
+  final looks = <Showcase?>[];
   final reports = <({int weekXp, String weekKey})>[];
   var left = 0;
 
@@ -37,8 +39,10 @@ class FakeLeagueApi implements LeagueApi {
     required String avatar,
     String? country,
     String? photo,
+    Showcase? look,
   }) async {
     joins.add((name: name, country: country, photo: photo));
+    looks.add(look);
     if (failJoin) throw Exception('offline');
     emit(joined);
     return const LeagueSeat(groupId: '2026-11-09_2_0', weekKey: '2026-11-09', tier: 2);
@@ -286,6 +290,31 @@ void main() {
     expect(find.text('↓ ALT LİG BÖLGESİ'), findsOneWidget);
     await tester.scrollUntilVisible(find.text('↑ YÜKSELME BÖLGESİ'), -400, scrollable: vertical);
     expect(find.text('↑ YÜKSELME BÖLGESİ'), findsOneWidget);
+  });
+
+  testWidgets('a member\'s worn Mağaza look shows on their row; the join sends mine', (tester) async {
+    final api = FakeLeagueApi([
+      RemoteMember(
+        uid: 'a',
+        name: 'Ayşe',
+        avatar: '🦊',
+        xp: 120,
+        look: Showcase.fromMap({
+          'avatar': 'av_kedi',
+          'frame': 'av_yok',
+          'theme': 'th_iznik',
+          'useAvatar': true,
+        }),
+      ),
+      const RemoteMember(uid: 'me', name: 'Mert', avatar: '⭐', xp: 40),
+    ])..emit(joined);
+    SharedPreferences.setMockInitialValues({'league_country_v1': 'TR'});
+    final prefs = await SharedPreferences.getInstance();
+    await pumpLeague(tester, overrides(prefs, api: api));
+    expect(find.text('🐈'), findsOneWidget);
+    expect(find.byKey(const ValueKey('look-theme-th_iznik')), findsOneWidget);
+    expect(api.looks.last, isNotNull);
+    expect(api.looks.last!.theme, isNull, reason: 'nothing worn yet');
   });
 
   testWidgets('the join card says what others see and joins', (tester) async {

@@ -11,6 +11,7 @@ import {
   MAX_XP_PER_MINUTE,
   nextTier,
   parseJoinInput,
+  parseLook,
   rankMembers,
   settleFinishedWeeks,
   TIER_COUNT,
@@ -22,7 +23,7 @@ const db = adminDb();
 const WEEK1 = new Date("2026-11-10T09:00:00Z"); // week 2026-11-09
 const WEEK2 = new Date("2026-11-17T09:00:00Z"); // week 2026-11-16
 const later = (d: Date, s: number) => new Date(d.getTime() + s * 1000);
-const input = (name: string, country: string | null = "TR") => ({ name, avatar: "🦊", country, photo: null });
+const input = (name: string, country: string | null = "TR") => ({ name, avatar: "🦊", country, photo: null, look: null });
 /** A tiny valid-looking JPEG: FF D8 FF and padding. */
 const jpeg = (n = 200) => Buffer.concat([Buffer.from([0xff, 0xd8, 0xff, 0xe0]), Buffer.alloc(n - 4, 1)]);
 
@@ -34,6 +35,7 @@ test("parseJoinInput cleans names and checks country and photo", () => {
     avatar: "⭐",
     country: "DE",
     photo: null,
+    look: null,
   });
   assert.equal(parseJoinInput({}).name, "Dilmaç öğrencisi");
   assert.equal(parseJoinInput({}).country, null);
@@ -102,13 +104,13 @@ test("joinLeague is idempotent, starts in Bronz and fills groups of 100", async 
 test("joinLeague keeps the profile row up to date", async () => {
   const r = await joinLeague(db, "u", input("Old"), WEEK1);
   const photo = jpeg();
-  await joinLeague(db, "u", { name: "New", avatar: "🐼", country: "DE", photo }, WEEK1);
+  await joinLeague(db, "u", { name: "New", avatar: "🐼", country: "DE", photo, look: null }, WEEK1);
   const m = await db.doc(`leagues/${r.groupId}/members/u`).get();
   assert.equal(m.get("name"), "New");
   assert.equal(m.get("avatar"), "🐼");
   assert.equal(m.get("country"), "DE");
   assert.deepEqual(Buffer.from(m.get("photo")), photo);
-  await joinLeague(db, "u", { name: "New", avatar: "🐼", country: "DE", photo: null }, WEEK1);
+  await joinLeague(db, "u", { name: "New", avatar: "🐼", country: "DE", photo: null, look: null }, WEEK1);
   assert.equal((await db.doc(`leagues/${r.groupId}/members/u`).get()).get("photo"), null);
 });
 
@@ -218,4 +220,35 @@ test("leaveLeague removes the row and stops XP until the learner joins again", a
   const again = await joinLeague(db, "a", input("A"), later(WEEK1, 60));
   assert.equal(again.groupId, groupId);
   assert.equal((await db.doc("leagueState/a").get()).get("optedOut"), false);
+});
+
+test("parseLook keeps known catalog ids in their slots and drops the rest", () => {
+  assert.deepEqual(
+    parseLook({ avatar: "av_kedi", frame: "fr_altin", theme: "th_iznik", mascot: "mx_tac", pofuduk: "px_kep", useAvatar: true }),
+    { avatar: "av_kedi", frame: "fr_altin", theme: "th_iznik", mascot: "mx_tac", pofuduk: "px_kep", useAvatar: true },
+  );
+  // Unknown ids, wrong slots and junk are dropped, not refused.
+  assert.deepEqual(parseLook({ avatar: "av_bilinmeyen", frame: "av_kedi", theme: 42, mascot: "mx_tac" }), {
+    avatar: null,
+    frame: null,
+    theme: null,
+    mascot: "mx_tac",
+    pofuduk: null,
+    useAvatar: false,
+  });
+  assert.equal(parseLook("th_iznik"), null);
+  assert.equal(parseJoinInput({ look: { theme: "th_lokum" } }).look?.theme, "th_lokum");
+});
+
+test("joinLeague stores the worn look on the row and refreshes it", async () => {
+  const look = parseLook({ avatar: "av_kedi", theme: "th_iznik", frame: "fr_yok" });
+  const seat = await joinLeague(db, "u", { ...input("Ayşe"), look }, WEEK1);
+  const row = (await db.doc(`leagues/${seat.groupId}/members/u`).get()).data();
+  assert.equal(row?.look?.avatar, "av_kedi");
+  assert.equal(row?.look?.theme, "th_iznik");
+  assert.equal(row?.look?.frame, null);
+  await joinLeague(db, "u", { ...input("Ayşe"), look: parseLook({ theme: "th_lokum" }) }, WEEK1);
+  const after = (await db.doc(`leagues/${seat.groupId}/members/u`).get()).data();
+  assert.equal(after?.look?.theme, "th_lokum");
+  assert.equal(after?.look?.avatar, null);
 });

@@ -7,67 +7,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/gold_wallet.dart';
 import '../data/progress.dart';
-import '../data/shop_catalog.dart';
+import '../data/showcase_data.dart';
 import 'firebase/firebase_providers.dart';
 import 'profile.dart' show accountUidProvider;
 
-/// What friends see of the learner's Mağaza items (the "vitrin"): the worn
-/// avatar and frame and up to [maxShowcase] chosen items. Stored in the
-/// `showcase` map of `profiles/{uid}` (docs/altin.md); friends may read it,
-/// only the owner may write it, and firestore.rules check its shape.
-@immutable
-class Showcase {
-  const Showcase({this.avatar, this.frame, this.items = const [], this.useAvatar = false});
-
-  /// Show [avatar] instead of the photo (Profil > Fotoğraf / Avatar).
-  final bool useAvatar;
-
-  final String? avatar;
-  final String? frame;
-  final List<String> items;
-
-  bool get isEmpty => avatar == null && frame == null && items.isEmpty;
-
-  /// The learner's own showcase, from their wallet.
-  factory Showcase.of(Wallet w) => Showcase(
-    avatar: equippedIn(w, WalletSlot.avatar)?.id,
-    frame: equippedIn(w, WalletSlot.frame)?.id,
-    useAvatar: prefersAvatar(w),
-    items: [
-      for (final id in w.showcase)
-        if (shopItem(id) case final item? when item.showcasable && ownsItem(w, item)) id,
-    ].take(maxShowcase).toList(),
-  );
-
-  Map<String, Object?> toMap() => {'avatar': avatar, 'frame': frame, 'items': items, 'useAvatar': useAvatar};
-
-  /// From Firestore; unknown items (a newer app version) are skipped.
-  static Showcase? fromMap(Object? raw) {
-    if (raw is! Map) return null;
-    String? known(Object? id) => id is String && shopItem(id) != null ? id : null;
-    final items = raw['items'];
-    return Showcase(
-      avatar: known(raw['avatar']),
-      frame: known(raw['frame']),
-      useAvatar: raw['useAvatar'] == true,
-      items: [
-        if (items is List)
-          for (final id in items.take(maxShowcase)) ?known(id),
-      ],
-    );
-  }
-
-  @override
-  bool operator ==(Object other) =>
-      other is Showcase &&
-      other.avatar == avatar &&
-      other.frame == frame &&
-      other.useAvatar == useAvatar &&
-      listEquals(other.items, items);
-
-  @override
-  int get hashCode => Object.hash(avatar, frame, useAvatar, Object.hashAll(items));
-}
+export '../data/showcase_data.dart';
 
 /// Writes the showcase into `profiles/{uid}` (mockable in tests).
 abstract class ShowcaseApi {

@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 
 import 'progress.dart';
+import 'showcase_data.dart';
 import 'quests.dart' show stableHash;
 
 class LeagueTier {
@@ -95,6 +96,7 @@ class LeagueEntry {
     this.uid,
     this.country,
     this.photo,
+    this.look,
   });
   final String name;
   final String avatar;
@@ -109,6 +111,9 @@ class LeagueEntry {
 
   /// Small JPEG the member chose to show in the league.
   final Uint8List? photo;
+
+  /// Worn Mağaza items (Dünya Ligi members); null for simulated rivals.
+  final Showcase? look;
 }
 
 const _firstNames = [
