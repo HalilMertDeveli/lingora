@@ -139,7 +139,8 @@ enum PremiumFeature {
   ),
   errorAnalytics(
     'Detaylı hata analizi',
-    'Türk hata dedektörünün tüm kategorileri: oranlar, sayılar ve her biri için çalışma ipucu.',
+    'Zayıf konuların ve soru tiplerin, haftalık gidişatın, kendi cümlelerinle Türk hata kalıpların, '
+        'ısı haritası, tahmini sınav puanı ve tek dokunuşla hedefli alıştırmalı çalışma planı.',
     '📊',
   );
 

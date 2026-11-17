@@ -5,7 +5,6 @@ import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../kurum/kurum_widgets.dart';
 import '../services/billing/premium.dart';
-import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/appearance.dart';
 import '../ui/country_picker.dart';
@@ -99,14 +98,11 @@ class ProfileScreen extends ConsumerWidget {
         Align(
           alignment: Alignment.centerRight,
           child: TextButton.icon(
-            onPressed: () async {
-              final gate = await requirePremium(context, ref, PremiumFeature.errorAnalytics);
-              if (gate == GateResult.premium && context.mounted) {
-                logEventFrom(context, AnalyticsEvent.featureUse(AppFeature.errorAnalysis));
-                await Navigator.of(context)
-                    .push(MaterialPageRoute<void>(builder: (_) => const ErrorAnalysisScreen()));
-              }
-            },
+            key: const Key('profile-error-analysis'),
+            // Opens for everyone; the screen keeps the Premium part locked.
+            onPressed: () =>
+                Navigator.of(context)
+                    .push(MaterialPageRoute<void>(builder: (_) => const ErrorAnalysisScreen())),
             icon: Icon(premium ? Icons.insights_rounded : Icons.lock_rounded, size: 18),
             label: const Text('Detaylı hata analizi'),
           ),

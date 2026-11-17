@@ -106,7 +106,7 @@ class _DevScenarioScreenState extends ConsumerState<DevScenarioScreen> {
     final text = _text.text.trim();
     if (text.isEmpty) return;
     final errors = detectTrErrors(text);
-    final notifier = ref.read(progressProvider.notifier)..recordTrErrors(errors);
+    final notifier = ref.read(progressProvider.notifier)..recordTrErrors(errors, text: text);
     final first = _errors == null;
     setState(() {
       _errors = errors;
