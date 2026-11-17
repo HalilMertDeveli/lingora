@@ -288,6 +288,28 @@ void main() {
       );
       expect(Showcase.fromMap('x'), isNull);
     });
+
+    test('worn theme and outfits round trip; unknown or misplaced ids are ignored', () {
+      const s = Showcase(avatar: 'av_kedi', theme: 'th_iznik', mascot: 'mx_tac', pofuduk: 'px_kep');
+      expect(Showcase.fromMap(s.toMap()), s);
+      expect(
+        Showcase.fromMap({
+          'avatar': 'av_bilinmeyen',
+          'frame': 'av_kedi',
+          'theme': 'th_yok',
+          'mascot': 'px_kep',
+          'pofuduk': 42,
+          'items': ['mx_yok'],
+        }),
+        const Showcase(),
+      );
+    });
+
+    test('free worn items are not published', () {
+      final s = Showcase.of(const Wallet(equipped: {'theme': 'th_cay', 'avatar': 'av_cay'}));
+      expect(s.theme, isNull, reason: 'the default theme');
+      expect(s.avatar, 'av_cay');
+    });
   });
 
   group('sync', () {
@@ -332,7 +354,7 @@ void main() {
     test('an account pushes its showcase to profiles; a guest does not', () async {
       final api = FakeShowcaseApi();
       final c = await _container(
-        progress: Progress(wallet: rich(500)),
+        progress: Progress(wallet: rich(2000)),
         extra: [
           showcaseApiProvider.overrideWithValue(api),
           showcaseDebounceProvider.overrideWithValue(Duration.zero),
@@ -352,6 +374,17 @@ void main() {
       c.read(goldWalletProvider).earn(5, GoldReason.other);
       await Future<void>.delayed(const Duration(milliseconds: 10));
       expect(api.saved.length, count);
+
+      // A worn theme and Çaycı Dayı outfit go to the public profile too.
+      c.read(goldWalletProvider)
+        ..buy(shopItem('th_iznik')!)
+        ..equip(shopItem('th_iznik')!)
+        ..buy(shopItem('mx_tac')!)
+        ..equip(shopItem('mx_tac')!);
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+      expect(api.saved.last.$2.theme, 'th_iznik');
+      expect(api.saved.last.$2.mascot, 'mx_tac');
+      expect(api.saved.last.$2.toMap(), containsPair('theme', 'th_iznik'));
 
       final guestApi = FakeShowcaseApi();
       final g = await _container(
@@ -657,6 +690,54 @@ void main() {
       final card = find.byKey(const ValueKey('friend-zeynep'));
       expect(find.descendant(of: card, matching: find.text('🐉')), findsOne);
       expect(find.descendant(of: card, matching: find.byKey(const ValueKey('avatar-photo'))), findsNothing);
+    });
+
+    testWidgets('a friend\'s worn theme and outfit show on the card and the profile', (tester) async {
+      tall(tester);
+      // As read from Firestore: an unknown avatar and a misplaced frame are dropped.
+      final look = Showcase.fromMap({
+        'avatar': 'av_bilinmeyen',
+        'frame': 'th_lokum',
+        'theme': 'th_iznik',
+        'mascot': 'mx_tac',
+        'items': <String>[],
+      });
+      final api = FakeProfileApi(
+        docs: {'zeynep': ProfileData(name: 'Zeyno', owner: 'zeynep', showcase: look)},
+      );
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: await base(
+            const Progress(),
+            user: const AppUser(uid: 'me', isAnonymous: false),
+            extra: [
+              profileApiProvider.overrideWithValue(api),
+              friendsApiProvider.overrideWithValue(FakeFriendsApi(friends: [friend()])),
+            ],
+          ),
+          child: still(const FriendsScreen()),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final card = find.byKey(const ValueKey('friend-zeynep'));
+      expect(
+        find.descendant(of: card, matching: find.byKey(const ValueKey('look-theme-th_iznik'))),
+        findsOne,
+      );
+      expect(find.descendant(of: card, matching: find.byKey(const ValueKey('look-outfit-mx_tac'))), findsOne);
+
+      await tester.tap(find.text('Zeyno'));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('friend-worn-th_iznik')), findsOne);
+      expect(find.byKey(const ValueKey('friend-worn-mx_tac')), findsOne);
+      expect(find.byKey(const ValueKey('friend-worn-av_bilinmeyen')), findsNothing);
+      expect(find.byKey(const ValueKey('friend-worn-th_lokum')), findsNothing);
+      // The profile is drawn in the friend's theme colour.
+      final iznik = shopItem('th_iznik')!.accent!.light;
+      final header = tester.widget<Container>(find.byKey(const ValueKey('friend-profile-header')));
+      expect((header.decoration! as BoxDecoration).color, iznik.withValues(alpha: 0.14));
+      final ctx = tester.element(find.byKey(const ValueKey('friend-profile-header')));
+      expect(Theme.of(ctx).colorScheme.primary, iznik);
     });
 
     testWidgets('Pofuduk wears the bought outfit', (tester) async {

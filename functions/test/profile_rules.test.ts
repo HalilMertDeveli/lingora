@@ -205,3 +205,44 @@ test("the showcase can say avatar-instead-of-photo and hold Pofuduk outfits", as
     }),
   );
 });
+
+test("the showcase holds the worn theme and mascot outfits, and friends read them", async () => {
+  await assertSucceeds(
+    setDoc(doc(db("ali"), "profiles/ali"), {
+      showcase: showcase({ theme: "th_iznik", mascot: "mx_tac", pofuduk: "px_kep" }),
+      updatedAt: serverTimestamp(),
+    }),
+  );
+  await makeFriends();
+  const snap = await assertSucceeds(getDoc(doc(db("zeynep"), "profiles/ali")));
+  const s = snap.data()?.showcase;
+  if (s?.theme !== "th_iznik" || s?.mascot !== "mx_tac" || s?.pofuduk !== "px_kep") {
+    throw new Error("worn items not stored");
+  }
+  // The worn slots may be cleared.
+  await assertSucceeds(
+    setDoc(doc(db("ali"), "profiles/ali"), {
+      showcase: showcase({ theme: null, mascot: null, pofuduk: null }),
+      updatedAt: serverTimestamp(),
+    }),
+  );
+});
+
+test("only known catalog ids are accepted, each in its own slot", async () => {
+  const bad: unknown[] = [
+    showcase({ avatar: "av_bilinmeyen" }), // matches the id shape, not in the catalog
+    showcase({ frame: "fr_yok" }),
+    showcase({ items: ["th_yok"] }),
+    showcase({ items: ["mx_tac", "av_bilinmeyen"] }),
+    showcase({ theme: "th_yok" }),
+    showcase({ mascot: "mx_yok" }),
+    showcase({ pofuduk: "px_yok" }),
+    showcase({ theme: "av_kedi" }), // a known avatar as the theme
+    showcase({ mascot: "px_kep" }), // a Pofuduk outfit on Dilbaz
+    showcase({ pofuduk: "mx_tac" }), // a Dilbaz outfit on Pofuduk
+    showcase({ theme: 42 }),
+  ];
+  for (const s of bad) {
+    await assertFails(setDoc(doc(db("ali"), "profiles/ali"), { showcase: s, updatedAt: serverTimestamp() }));
+  }
+});

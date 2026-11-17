@@ -53,16 +53,24 @@ kazançla kapanır.
 
 ## Arkadaş vitrini
 
-Kuşanılan avatar ve çerçeve ile seçilen en fazla 3 ürün
-`profiles/{uid}.showcase = {avatar, frame, items}` alanına yazılır
-(`lib/services/showcase.dart`, yalnızca hesabı olanlar). Görünür: arkadaş
-listesi, arkadaş profili (karta dokun) ve lig satırı (kendin ve arkadaşların).
+Kuşanılan avatar, çerçeve, tema, Çaycı Dayı ve Pofuduk kıyafeti ile seçilen en
+fazla 3 ürün `profiles/{uid}.showcase = {avatar, frame, theme, mascot, pofuduk,
+items, useAvatar}` alanına yazılır (`lib/data/showcase_data.dart`,
+`lib/services/showcase.dart`, yalnızca hesabı olanlar; ücretsiz tema yazılmaz).
+Görünür: arkadaş listesi ve lig satırı (tema noktası, maskot kıyafeti, vitrin),
+arkadaş profili (arkadaşın tema rengiyle, "Kuşandıkları" ve "Vitrin" bölümleri).
 
-`firestore.rules`: yalnızca sahibi yazar, yalnızca arkadaşlar okur; şekil
-doğrulanır (ürün kimliği kalıbı, avatar `av_`, çerçeve `fr_`, en fazla 3 ürün).
-Cloud Functions olmadığı için ürünün gerçekten alındığı sunucuda doğrulanamaz;
-en kötü durumda biri sahip olmadığı bir ürünü yalnızca arkadaşlarına gösterebilir.
-Testler: `functions/test/profile_rules.test.ts`.
+Dünya Ligi'nde arkadaş olmayanlar da kuşanılanları görür: uygulama
+`joinLeague` çağrısında `look` gönderir, fonksiyon bilinen kimlikleri
+(`functions/src/shop_ids.ts`) üye belgesine yazar, bilinmeyenleri atar.
+
+`firestore.rules`: yalnızca sahibi yazar, yalnızca arkadaşlar okur; yalnızca
+katalogdaki kimlikler (`knownItemId`) ve doğru yuvadakiler (`av_`, `fr_`, `th_`,
+`mx_`, `px_`) kabul edilir, en fazla 3 ürün. Uygulama da okurken bilinmeyen
+kimlikleri yok sayar. Katalog değişince üç liste birlikte güncellenmeli;
+`test/showcase_test.dart` bunu denetler. Cloud Functions olmadığı için ürünün
+gerçekten alındığı doğrulanamaz; en kötü durumda biri sahip olmadığı bir ürünü
+yalnızca arkadaşlarına gösterebilir. Testler: `functions/test/profile_rules.test.ts`.
 
 ## Mağaza v2 (görünürlük ve vitrin)
 

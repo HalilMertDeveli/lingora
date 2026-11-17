@@ -7,6 +7,7 @@
 import { FieldValue, Firestore, Timestamp } from "firebase-admin/firestore";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { KNOWN_ITEM_IDS } from "./shop_ids.js";
 import { dayKey, weekKey } from "./week.js";
 
 export const TIER_COUNT = 10;
@@ -56,6 +57,48 @@ export interface JoinInput {
   avatar: string;
   country: string | null;
   photo: Buffer | null;
+  look: Look | null;
+}
+
+/** Worn Mağaza items shown on the row (lib/data/showcase_data.dart). */
+export interface Look {
+  avatar: string | null;
+  frame: string | null;
+  theme: string | null;
+  mascot: string | null;
+  pofuduk: string | null;
+  useAvatar: boolean;
+}
+
+const LOOK_SLOTS = { avatar: "av_", frame: "fr_", theme: "th_", mascot: "mx_", pofuduk: "px_" } as const;
+type LookSlot = keyof typeof LOOK_SLOTS;
+
+/**
+ * The worn look the app sends. Unknown ids (not in the catalog, or in the
+ * wrong slot) are dropped rather than refused, so an older server keeps
+ * working with a newer app.
+ */
+export function parseLook(raw: unknown): Look | null {
+  if (typeof raw !== "object" || raw === null || Array.isArray(raw)) return null;
+  const r = raw as Record<string, unknown>;
+  const slot = (key: LookSlot): string | null => {
+    const v = r[key];
+    return typeof v === "string" && v.startsWith(LOOK_SLOTS[key]) && KNOWN_ITEM_IDS.has(v) ? v : null;
+  };
+  return {
+    avatar: slot("avatar"),
+    frame: slot("frame"),
+    theme: slot("theme"),
+    mascot: slot("mascot"),
+    pofuduk: slot("pofuduk"),
+    useAvatar: r.useAvatar === true,
+  };
+}
+
+function sameLook(stored: unknown, look: Look | null): boolean {
+  const old = parseLook(stored);
+  if (old === null || look === null) return old === look;
+  return (Object.keys(LOOK_SLOTS) as LookSlot[]).every((k) => old[k] === look[k]) && old.useAvatar === look.useAvatar;
 }
 
 export interface JoinResult {
@@ -117,11 +160,11 @@ export function parseJoinInput(data: unknown): JoinInput {
       throw new HttpsError("invalid-argument", "photo must be a small JPEG");
     }
   }
-  return { name: name || DEFAULT_NAME, avatar: avatar || DEFAULT_AVATAR, country, photo };
+  return { name: name || DEFAULT_NAME, avatar: avatar || DEFAULT_AVATAR, country, photo, look: parseLook(d.look) };
 }
 
 function memberProfile(input: JoinInput): Record<string, unknown> {
-  return { name: input.name, avatar: input.avatar, country: input.country, photo: input.photo };
+  return { name: input.name, avatar: input.avatar, country: input.country, photo: input.photo, look: input.look };
 }
 
 function sameProfile(m: FirebaseFirestore.DocumentData | undefined, input: JoinInput): boolean {
@@ -130,7 +173,13 @@ function sameProfile(m: FirebaseFirestore.DocumentData | undefined, input: JoinI
   const samePhoto =
     (photo == null && input.photo == null) ||
     (photo != null && input.photo != null && Buffer.compare(Buffer.from(photo), input.photo) === 0);
-  return m.name === input.name && m.avatar === input.avatar && (m.country ?? null) === input.country && samePhoto;
+  return (
+    m.name === input.name &&
+    m.avatar === input.avatar &&
+    (m.country ?? null) === input.country &&
+    samePhoto &&
+    sameLook(m.look, input.look)
+  );
 }
 
 /**

@@ -505,7 +505,7 @@ class _FriendCard extends ConsumerWidget {
                             : 'Ortak seriniz bugün başlayabilir',
                         style: TextStyle(color: Brand.muted, fontSize: 12),
                       ),
-                      if (profile?.showcase?.items.isNotEmpty ?? false) ...[
+                      if (hasStrip(profile?.showcase, kid: context.isKid)) ...[
                         const SizedBox(height: 4),
                         ShowcaseStrip(showcase: profile!.showcase, size: 22),
                       ],

@@ -14,7 +14,7 @@ import '../services/showcase.dart';
 import '../ui/avatar.dart';
 import '../ui/shop_visuals.dart';
 import 'auth_screen.dart';
-import 'friend_profile_screen.dart' show ShowcaseStrip;
+import 'friend_profile_screen.dart' show ShowcaseStrip, hasStrip;
 import 'friends_screen.dart';
 import 'quests_screen.dart' show formatLeft;
 
@@ -527,7 +527,8 @@ class _Row extends ConsumerWidget {
     final name = entry.isUser ? (chosen != null ? '$chosen (Sen)' : entry.name) : entry.name;
     final flag = Brand.isKid ? '' : flagEmoji(entry.country);
     // Mağaza showcase: the user's own, and friends' (profiles/{uid} is
-    // readable by friends only, so other members keep their plain avatar).
+    // readable by friends only). Other Dünya Ligi members show the worn
+    // look saved in their member document.
     final uid = entry.uid;
     final isFriend =
         !entry.isUser &&
@@ -536,8 +537,8 @@ class _Row extends ConsumerWidget {
     final showcase = entry.isUser
         ? ref.watch(myShowcaseProvider)
         : isFriend
-        ? ref.watch(friendProfileProvider(uid)).value?.showcase
-        : null;
+        ? ref.watch(friendProfileProvider(uid)).value?.showcase ?? entry.look
+        : entry.look;
     final rankColor = inPromotionZone(tier, rank, size)
         ? Brand.success
         : inDemotionZone(tier, rank, size)
@@ -586,7 +587,7 @@ class _Row extends ConsumerWidget {
               style: TextStyle(fontSize: 16, fontWeight: entry.isUser ? FontWeight.w900 : FontWeight.w600),
             ),
           ),
-          if (showcase != null && showcase.items.isNotEmpty) ...[
+          if (hasStrip(showcase, kid: Brand.isKid)) ...[
             ShowcaseStrip(showcase: showcase, size: 18),
             const SizedBox(width: 4),
           ],
