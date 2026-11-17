@@ -112,6 +112,11 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     wordDue: wordDue,
     diary: {...older.diary, ...newer.diary},
     errorStats: maxMap(local.errorStats, remote.errorStats),
+    // Wrong-answer counts only grow until the question is saved.
+    mistakeMisses: {
+      for (final e in maxMap(local.mistakeMisses, remote.mistakeMisses).entries)
+        if (!newer.mistakes.contains(e.key)) e.key: e.value,
+    },
     customWords: words.values.toList(),
     removedWords: removedWords,
     userNotes: notes.values.toList(),

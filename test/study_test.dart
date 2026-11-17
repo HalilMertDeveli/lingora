@@ -508,7 +508,7 @@ void main() {
   });
 
   group('screens', () {
-    testWidgets('a lesson answer is logged with type, topic and time; a wrong one joins the notebook', (
+    testWidgets('a lesson answer is logged with type, topic and time; a third miss joins the notebook', (
       tester,
     ) async {
       final unit = yds.units.firstWhere((u) => u.id == 'ys3u7');
@@ -522,6 +522,12 @@ void main() {
           title: 'T',
           items: [(key: itemKey(lesson.id, i), ex: ex)],
           color: Brand.primary,
+        ),
+        // Missed twice before: this wrong answer is the one that saves it.
+        progress: Progress(
+          onboarded: true,
+          remindersEnabled: false,
+          mistakeMisses: {itemKey(lesson.id, i): mistakeSaveMisses - 1},
         ),
       );
       final wrong = List.generate(ex.options.length, (k) => k).firstWhere((k) => k != ex.answerIndex);
