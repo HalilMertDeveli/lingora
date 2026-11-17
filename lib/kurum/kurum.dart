@@ -25,6 +25,7 @@ import '../data/league.dart' show weekStart;
 import '../data/progress.dart';
 import '../models/course.dart';
 import '../services/firebase/firebase_providers.dart';
+import '../services/profile.dart' show profileProvider;
 
 /// Letters and digits that cannot be mixed up (no 0/O, 1/I); the same set
 /// as friend codes and `[A-HJ-NP-Z2-9]` in firestore.rules.
@@ -594,3 +595,9 @@ final classReportSyncProvider = Provider<void>((ref) {
   ref.listen(classStatsProvider, (_, s) => schedule(s), fireImmediately: true);
   ref.onDispose(() => timer?.cancel());
 });
+
+/// The name the user chose in Profil, or empty: pre-fills the name fields.
+/// Never the generic fallback ("Dilmaç öğrencisi") or a Google account name.
+final kurumNameHintProvider = Provider<String>(
+  (ref) => (ref.watch(profileProvider.select((p) => p.name)) ?? '').trim(),
+);

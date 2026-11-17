@@ -5,7 +5,6 @@ import 'package:share_plus/share_plus.dart';
 
 import '../core/tr_errors.dart';
 import '../data/progress.dart';
-import '../services/profile.dart' show myDisplayNameProvider;
 import '../theme.dart';
 import 'kurum.dart';
 
@@ -35,7 +34,7 @@ class TeacherScreen extends ConsumerWidget {
     if (license == null || api == null) return;
     final result = await showDialog<(String, String)>(
       context: context,
-      builder: (_) => _NewClassDialog(teacherName: ref.read(myDisplayNameProvider)),
+      builder: (_) => _NewClassDialog(teacherName: ref.read(kurumNameHintProvider)),
     );
     if (result == null) return;
     try {

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/progress.dart';
-import '../services/profile.dart' show myDisplayNameProvider;
 import '../theme.dart';
 import 'kurum.dart';
 import 'teacher_screen.dart';
@@ -301,7 +300,7 @@ class JoinClassDialog extends ConsumerWidget {
     codeLabel: 'Sınıf kodu',
     submitLabel: 'Katıl',
     nameLabel: 'Öğretmeninin göreceği adın',
-    initialName: ref.read(myDisplayNameProvider).split(' ').first,
+    initialName: ref.read(kurumNameHintProvider).split(' ').first,
     onSubmit: (code, name) async {
       final api = ref.read(kurumApiProvider);
       if (api == null) throw const KurumException('offline');

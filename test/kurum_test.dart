@@ -11,7 +11,6 @@ import 'package:lingora/kurum/kurum_widgets.dart';
 import 'package:lingora/kurum/teacher_screen.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/services/billing/premium.dart';
-import 'package:lingora/services/profile.dart' show myDisplayNameProvider;
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Wednesday 2026-11-18, 12:00.
@@ -252,7 +251,7 @@ void main() {
             prefsProvider.overrideWithValue(prefs),
             kurumApiProvider.overrideWithValue(api),
             clockProvider.overrideWithValue(() => now),
-            myDisplayNameProvider.overrideWithValue('Elif Yılmaz'),
+            kurumNameHintProvider.overrideWithValue('Elif Yılmaz'),
             classStatsProvider.overrideWithValue(stats),
           ],
           child: MaterialApp(
