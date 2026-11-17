@@ -1,0 +1,4994 @@
+{
+  "id": "pro_dev",
+  "title": "Yazılımcı Dersleri",
+  "fromLang": "tr",
+  "learningLang": "en",
+  "units": [
+    {
+      "id": "y1",
+      "title": "Daily standup",
+      "description": "A2 · Dün ne yaptın, bugün ne yapacaksın, engelin var mı?",
+      "color": "0xFF0F766E",
+      "theme": "toplanti",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nStandup’ta üç soruya cevap verirsin: dün ne yaptın, bugün ne yapacaksın, engelin var mı? Bu notta her biri için kısa ve hazır kalıplar var.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Dün | **Yesterday I fixed the login bug.** |\n| Bugün | **Today I am going to work on the profile page.** |\n| Engel | **I'm blocked by the API.** |\n\n## Biz nasıl söylüyoruz?\nTürkçede \"Pazartesiden beri bunun üzerinde çalışıyorum\" deriz ve fiil şimdiki zamandadır. Bu yüzden Türk yazılımcılar sık sık \"I am working on it since Monday\" der. İngilizcede since ile geçmişten bugüne süren iş için present perfect continuous gerekir: \"I've been working on it since Monday.\" Dün için mutlaka geçmiş zaman (fixed, finished), bugün için going to kullan. \"Engel\" için de \"I have an obstacle\" değil, kısaca \"I'm blocked by…\" ya da \"No blockers.\" denir. Standup kısa olmalı: her soruya bir iki cümle yeter.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| I am working on it since Monday. | **I've been working on it since Monday.** | since ile geçmişten bugüne süren iş için have been + V-ing kullanılır. |\n| Yesterday I fix the bug. | **Yesterday I fixed the bug.** | Dün olan iş için geçmiş zaman gerekir. |\n| I am blocking by the API. | **I'm blocked by the API.** | Engellenen sensin; edilgen yapı (be + V3) kullanılır. |\n| Today I will going to test it. | **Today I'm going to test it.** | will ile going to bir arada kullanılmaz; birini seç. |\n\n## İpucu\nStandup’tan önce üç satır not al: \"Yesterday I…\", \"Today I'm going to…\", \"Blockers: …\". Toplantıda sadece okursun.",
+      "nodes": [
+        {
+          "id": "y1l1",
+          "type": "lesson",
+          "title": "Dün ne yaptım?",
+          "description": "yesterday I, I fixed, I finished, I worked on",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "hata (yazılımda)",
+              "answer": "bug",
+              "choices": [
+                {
+                  "text": "bug",
+                  "emoji": "🐛"
+                },
+                {
+                  "text": "meeting",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "laptop",
+                  "emoji": "💻"
+                },
+                {
+                  "text": "coffee",
+                  "emoji": "☕"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Dün giriş hatasını düzelttim.",
+              "lang": "tr",
+              "answers": [
+                "Yesterday I fixed the login bug",
+                "I fixed the login bug yesterday"
+              ],
+              "tokens": [
+                "Yesterday",
+                "I",
+                "fixed",
+                "the",
+                "login",
+                "bug",
+                "fix",
+                "today",
+                "a"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Yesterday I ___ the tests for the payment page.",
+              "translation": "Dün ödeme sayfasının testlerini yazdım.",
+              "answer": "wrote",
+              "choices": [
+                "wrote",
+                "write",
+                "writing"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Yesterday I worked on the search page.",
+              "answers": [
+                "Yesterday I worked on the search page."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "dün",
+                  "yesterday"
+                ],
+                [
+                  "bugün",
+                  "today"
+                ],
+                [
+                  "yarın",
+                  "tomorrow"
+                ],
+                [
+                  "hata",
+                  "bug"
+                ],
+                [
+                  "toplantı",
+                  "meeting"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I finished the new sign-up form.",
+              "lang": "en",
+              "answers": [
+                "Yeni kayıt formunu bitirdim",
+                "Yeni üyelik formunu bitirdim",
+                "Yeni kayıt formunu tamamladım"
+              ],
+              "tokens": [
+                "Yeni",
+                "kayıt",
+                "formunu",
+                "bitirdim",
+                "eski",
+                "başladım"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "toplantı",
+              "answer": "meeting",
+              "choices": [
+                {
+                  "text": "meeting",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "bug",
+                  "emoji": "🐛"
+                },
+                {
+                  "text": "server",
+                  "emoji": "🖥️"
+                },
+                {
+                  "text": "keyboard",
+                  "emoji": "⌨️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I ___ on the dashboard all day yesterday.",
+              "translation": "Dün bütün gün panel üzerinde çalıştım.",
+              "answer": "worked",
+              "choices": [
+                "worked",
+                "finished",
+                "fixed"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Yesterday I fixed two small bugs.",
+              "translation": "Dün iki küçük hata düzelttim."
+            }
+          ]
+        },
+        {
+          "id": "y1l2",
+          "type": "lesson",
+          "title": "Bugün ne yapacağım?",
+          "description": "today I'm going to, I'm working on, I'm still",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "görev",
+              "answer": "task",
+              "choices": [
+                {
+                  "text": "task",
+                  "emoji": "📝"
+                },
+                {
+                  "text": "server",
+                  "emoji": "🖥️"
+                },
+                {
+                  "text": "bug",
+                  "emoji": "🐛"
+                },
+                {
+                  "text": "coffee",
+                  "emoji": "☕"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bugün profil sayfası üzerinde çalışacağım.",
+              "lang": "tr",
+              "answers": [
+                "Today I'm going to work on the profile page",
+                "Today I am going to work on the profile page",
+                "I'm going to work on the profile page today",
+                "I am going to work on the profile page today",
+                "Today I'll work on the profile page",
+                "Today I will work on the profile page",
+                "I'll work on the profile page today",
+                "I will work on the profile page today"
+              ],
+              "tokens": [
+                "Today",
+                "I'm",
+                "going",
+                "to",
+                "work",
+                "on",
+                "the",
+                "profile",
+                "page",
+                "yesterday",
+                "worked"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Today I'm going ___ review Zeynep's code.",
+              "translation": "Bugün Zeynep'in kodunu inceleyeceğim.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "at"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Today I'm going to test the new feature.",
+              "answers": [
+                "Today I'm going to test the new feature."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "görev",
+                  "task"
+                ],
+                [
+                  "özellik",
+                  "feature"
+                ],
+                [
+                  "test etmek",
+                  "test"
+                ],
+                [
+                  "incelemek",
+                  "review"
+                ],
+                [
+                  "bitirmek",
+                  "finish"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I'm still working on the API.",
+              "lang": "en",
+              "answers": [
+                "Hâlâ API üzerinde çalışıyorum",
+                "Hala API üzerinde çalışıyorum",
+                "Hâlâ API'yle uğraşıyorum",
+                "Hâlâ API'de çalışıyorum"
+              ],
+              "tokens": [
+                "Hâlâ",
+                "API",
+                "üzerinde",
+                "çalışıyorum",
+                "bitirdim",
+                "yarın"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm still ___ on the checkout bug.",
+              "translation": "Hâlâ ödeme hatası üzerinde çalışıyorum.",
+              "answer": "working",
+              "choices": [
+                "working",
+                "work",
+                "worked"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "özellik (yazılımda)",
+              "answer": "feature",
+              "choices": [
+                {
+                  "text": "feature",
+                  "emoji": "✨"
+                },
+                {
+                  "text": "task",
+                  "emoji": "📝"
+                },
+                {
+                  "text": "meeting",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "screen",
+                  "emoji": "📺"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Today I'm going to finish the settings page.",
+              "translation": "Bugün ayarlar sayfasını bitireceğim."
+            }
+          ]
+        },
+        {
+          "id": "y1s",
+          "type": "story",
+          "title": "Pazartesi standup’ı",
+          "description": "Jake sabah toplantısını yönetiyor; Emre ve Zeynep dünü, bugünü ve engellerini anlatıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "Good morning, everyone. Let's start the standup. Emre, you go first.",
+              "translation": "Herkese günaydın. Standup’a başlayalım. Emre, ilk sen başla."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Sure. Yesterday I fixed the login bug in the mobile app.",
+              "translation": "Tabii. Dün mobil uygulamadaki giriş hatasını düzelttim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Today I'm going to work on the password reset email.",
+              "translation": "Bugün şifre sıfırlama e-postası üzerinde çalışacağım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre dün ne yaptı?",
+              "choices": [
+                "Giriş hatasını düzeltti",
+                "Yeni bir sayfa tasarladı",
+                "Testleri yazdı"
+              ],
+              "answer": "Giriş hatasını düzeltti"
+            },
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "Great. Any blockers?",
+              "translation": "Harika. Engel var mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Yes, one. I'm blocked by the email service. I don't have the API key.",
+              "translation": "Evet, bir tane. E-posta servisi yüzünden ilerleyemiyorum. API anahtarım yok."
+            },
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "OK, I'll send it to you after the meeting.",
+              "translation": "Tamam, toplantıdan sonra sana gönderirim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre’nin engeli ne?",
+              "choices": [
+                "Bilgisayarı bozuk",
+                "API anahtarı yok",
+                "Tasarım hazır değil"
+              ],
+              "answer": "API anahtarı yok"
+            },
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "Zeynep, how about you?",
+              "translation": "Zeynep, sende durum ne?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Yesterday I finished the new settings page.",
+              "translation": "Dün yeni ayarlar sayfasını bitirdim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Today I'm going to test it on different phones.",
+              "translation": "Bugün onu farklı telefonlarda test edeceğim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "No blockers for me.",
+              "translation": "Benim bir engelim yok."
+            },
+            {
+              "kind": "question",
+              "prompt": "Zeynep bugün ne yapacak?",
+              "choices": [
+                "Giriş hatasını düzeltecek",
+                "İzne çıkacak",
+                "Ayarlar sayfasını farklı telefonlarda test edecek"
+              ],
+              "answer": "Ayarlar sayfasını farklı telefonlarda test edecek"
+            },
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "Perfect. Thanks, everyone. Have a good day!",
+              "translation": "Mükemmel. Herkese teşekkürler. İyi günler!"
+            }
+          ]
+        },
+        {
+          "id": "y1l3",
+          "type": "lesson",
+          "title": "Engelim var",
+          "description": "I'm blocked by, I'm waiting for, I need help with, no blockers",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "engel",
+              "answer": "blocker",
+              "choices": [
+                {
+                  "text": "blocker",
+                  "emoji": "🚧"
+                },
+                {
+                  "text": "feature",
+                  "emoji": "✨"
+                },
+                {
+                  "text": "task",
+                  "emoji": "📝"
+                },
+                {
+                  "text": "deadline",
+                  "emoji": "⏰"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Tasarım ekibini bekliyorum.",
+              "lang": "tr",
+              "answers": [
+                "I'm waiting for the design team",
+                "I am waiting for the design team",
+                "I'm waiting on the design team",
+                "I am waiting on the design team"
+              ],
+              "tokens": [
+                "I'm",
+                "waiting",
+                "for",
+                "the",
+                "design",
+                "team",
+                "to",
+                "at"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm blocked ___ a problem with the database.",
+              "translation": "Veritabanındaki bir sorun yüzünden ilerleyemiyorum.",
+              "answer": "by",
+              "choices": [
+                "by",
+                "from",
+                "with"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "No blockers today. Everything is fine.",
+              "answers": [
+                "No blockers today. Everything is fine."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "engel",
+                  "blocker"
+                ],
+                [
+                  "veritabanı",
+                  "database"
+                ],
+                [
+                  "yardım",
+                  "help"
+                ],
+                [
+                  "beklemek",
+                  "wait"
+                ],
+                [
+                  "sorun",
+                  "issue"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I need help with the login page.",
+              "lang": "en",
+              "answers": [
+                "Giriş sayfası için yardıma ihtiyacım var",
+                "Giriş sayfasıyla ilgili yardıma ihtiyacım var",
+                "Giriş sayfasında yardıma ihtiyacım var",
+                "Giriş sayfası konusunda yardıma ihtiyacım var"
+              ],
+              "tokens": [
+                "Giriş",
+                "sayfası",
+                "için",
+                "yardıma",
+                "ihtiyacım",
+                "var",
+                "yok",
+                "kayıt"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I don't have ___ blockers.",
+              "translation": "Herhangi bir engelim yok.",
+              "answer": "any",
+              "choices": [
+                "any",
+                "a",
+                "much"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "son tarih",
+              "answer": "deadline",
+              "choices": [
+                {
+                  "text": "deadline",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "blocker",
+                  "emoji": "🚧"
+                },
+                {
+                  "text": "database",
+                  "emoji": "🗄️"
+                },
+                {
+                  "text": "help",
+                  "emoji": "🆘"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I'm blocked by the API. Can someone help me?",
+              "translation": "API yüzünden ilerleyemiyorum. Biri bana yardım edebilir mi?"
+            }
+          ]
+        },
+        {
+          "id": "y1d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Kaçırılan standup",
+          "description": "Maya, sabah toplantısını kaçıran Leo’dan kısa bir durum özeti istiyor",
+          "cefr": "A2",
+          "speakers": [
+            {
+              "name": "Maya",
+              "gender": "female",
+              "avatar": "👩‍💼"
+            },
+            {
+              "name": "Leo",
+              "gender": "male",
+              "avatar": "👨"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Maya",
+              "text": "Hi Leo, you missed the standup this morning. Can you give me a quick update?",
+              "translation": "Selam Leo, bu sabahki standup’ı kaçırdın. Bana kısa bir özet verebilir misin?"
+            },
+            {
+              "speaker": "Leo",
+              "text": "Sure, sorry. Yesterday I tested the new checkout page and found three bugs.",
+              "translation": "Tabii, kusura bakma. Dün yeni ödeme sayfasını test ettim ve üç hata buldum."
+            },
+            {
+              "speaker": "Maya",
+              "text": "Three bugs? Are they serious?",
+              "translation": "Üç hata mı? Ciddiler mi?"
+            },
+            {
+              "speaker": "Leo",
+              "text": "One is serious. The app crashes when you pay by card. Today I'm going to write the bug reports.",
+              "translation": "Biri ciddi. Kartla ödeme yapınca uygulama çöküyor. Bugün hata raporlarını yazacağım."
+            },
+            {
+              "speaker": "Maya",
+              "text": "OK. Any blockers?",
+              "translation": "Tamam. Engel var mı?"
+            },
+            {
+              "speaker": "Leo",
+              "text": "Yes. I'm waiting for a test phone from the office.",
+              "translation": "Evet. Ofisten bir test telefonu bekliyorum."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Leo dün ne yaptı?",
+              "choices": [
+                "Toplantıyı yönetti",
+                "Yeni ödeme sayfasını test etti",
+                "Yeni bir telefon aldı"
+              ],
+              "answer": "Yeni ödeme sayfasını test etti",
+              "line": 1,
+              "key": "tested the new checkout page",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Leo’nun bulduğu hataların üçü de ciddi.",
+              "answer": false,
+              "line": 3,
+              "key": "One is serious",
+              "skill": "detail"
+            },
+            {
+              "kind": "who",
+              "quote": "Are they serious?",
+              "answer": "Maya"
+            }
+          ]
+        },
+        {
+          "id": "y1t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "y1c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "y2",
+      "title": "Bug raporu",
+      "description": "A2 · Adımlar, beklenen ve gerçekleşen sonuç, cihaz ve sürüm",
+      "color": "0xFFE5484D",
+      "theme": "tamir",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nİyi bir bug raporunda hata ne zaman oluyor, nasıl tekrar edilir, ne bekleniyordu ve ne oldu yazar. Bu notta bu dört parçanın kalıpları var.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Ne zaman oluyor | **The app crashes when I tap the button.** |\n| Adım (emir kipi) | **Then tap the save button.** |\n| Beklenen sonuç | **Expected result: the photo is saved.** |\n\n## Biz nasıl söylüyoruz?\nTürkçede \"Fotoğraf yükleyince patlıyor\" ya da \"Hata veriyor\" deriz. Birebir çevirince \"It gives error\" veya \"it explodes\" gibi garip cümleler çıkar; İngilizcede \"It crashes\" ya da \"It shows an error\" denir. \"Dokunduğumda\" gibi zaman bağlaçlarından sonra Türkçe düşünüp \"when I will tap\" demek de sık yapılan bir hata: when’den sonra geniş zaman (present simple) gelir. Raporda özneyi atlama: \"Crashes when open camera\" yerine \"The app crashes when I open the camera.\" yaz. Adımları emir kipiyle sırala: \"Open…, Then tap…\".\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| It gives error when I log in. | **It shows an error when I log in.** | \"Hata veriyor\" İngilizcede show an error ile söylenir; error’ün önüne an de gerekir. |\n| The app crashes when I will tap save. | **The app crashes when I tap save.** | when’den sonra will kullanılmaz, geniş zaman gelir. |\n| Crashes when open camera. | **The app crashes when I open the camera.** | İngilizcede özne atlanmaz; the de unutulmamalı. |\n| Expected result: user see home page. | **Expected result: the user sees the home page.** | Tekil özneyle fiil -s alır; the kullanımı da gerekir. |\n\n## İpucu\nRaporu dört başlıkla yaz: Steps to reproduce, Expected result, Actual result, Device and version. Bir ekran görüntüsü eklemek çok zaman kazandırır.",
+      "nodes": [
+        {
+          "id": "y2l1",
+          "type": "lesson",
+          "title": "Ne oluyor?",
+          "description": "it crashes when, it doesn't work, error message",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "çökmek",
+              "answer": "crash",
+              "choices": [
+                {
+                  "text": "crash",
+                  "emoji": "💥"
+                },
+                {
+                  "text": "click",
+                  "emoji": "🖱️"
+                },
+                {
+                  "text": "load",
+                  "emoji": "⏳"
+                },
+                {
+                  "text": "save",
+                  "emoji": "💾"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Fotoğraf yüklediğimde uygulama çöküyor.",
+              "lang": "tr",
+              "answers": [
+                "The app crashes when I upload a photo",
+                "The app crashes when I upload a picture",
+                "The app crashes if I upload a photo",
+                "When I upload a photo the app crashes"
+              ],
+              "tokens": [
+                "The",
+                "app",
+                "crashes",
+                "when",
+                "I",
+                "upload",
+                "a",
+                "photo",
+                "crashed",
+                "if"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The app ___ when I tap the save button.",
+              "translation": "Kaydet düğmesine dokunduğumda uygulama çöküyor.",
+              "answer": "crashes",
+              "choices": [
+                "crashes",
+                "crash",
+                "crashing"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The page doesn't load on my phone.",
+              "answers": [
+                "The page doesn't load on my phone."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "çökmek",
+                  "crash"
+                ],
+                [
+                  "hata mesajı",
+                  "error message"
+                ],
+                [
+                  "düğme",
+                  "button"
+                ],
+                [
+                  "yüklemek",
+                  "upload"
+                ],
+                [
+                  "kaydetmek",
+                  "save"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I see an error message.",
+              "lang": "en",
+              "answers": [
+                "Bir hata mesajı görüyorum",
+                "Hata mesajı görüyorum",
+                "Bir hata mesajı çıkıyor"
+              ],
+              "tokens": [
+                "Bir",
+                "hata",
+                "mesajı",
+                "görüyorum",
+                "düğme",
+                "gördüm"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The search button doesn't ___.",
+              "translation": "Arama düğmesi çalışmıyor.",
+              "answer": "work",
+              "choices": [
+                "work",
+                "works",
+                "working"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "düğme",
+              "answer": "button",
+              "choices": [
+                {
+                  "text": "button",
+                  "emoji": "🔘"
+                },
+                {
+                  "text": "screen",
+                  "emoji": "📺"
+                },
+                {
+                  "text": "phone",
+                  "emoji": "📱"
+                },
+                {
+                  "text": "keyboard",
+                  "emoji": "⌨️"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "It crashes when I open the camera.",
+              "translation": "Kamerayı açtığımda çöküyor."
+            }
+          ]
+        },
+        {
+          "id": "y2l2",
+          "type": "lesson",
+          "title": "Adım adım",
+          "description": "steps to reproduce, first, then, tap, go to",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "dokunmak (ekrana)",
+              "answer": "tap",
+              "choices": [
+                {
+                  "text": "tap",
+                  "emoji": "👆"
+                },
+                {
+                  "text": "type",
+                  "emoji": "⌨️"
+                },
+                {
+                  "text": "scroll",
+                  "emoji": "📜"
+                },
+                {
+                  "text": "print",
+                  "emoji": "🖨️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Önce uygulamayı aç.",
+              "lang": "tr",
+              "answers": [
+                "First open the app",
+                "Open the app first",
+                "First of all open the app"
+              ],
+              "tokens": [
+                "First",
+                "open",
+                "the",
+                "app",
+                "close",
+                "then"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "___ tap the profile icon.",
+              "translation": "Sonra profil simgesine dokun.",
+              "answer": "Then",
+              "choices": [
+                "Then",
+                "Before",
+                "Since"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Steps to reproduce: open the app and log in.",
+              "answers": [
+                "Steps to reproduce: open the app and log in."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "adımlar",
+                  "steps"
+                ],
+                [
+                  "yeniden üretmek",
+                  "reproduce"
+                ],
+                [
+                  "giriş yapmak",
+                  "log in"
+                ],
+                [
+                  "kaydırmak",
+                  "scroll"
+                ],
+                [
+                  "simge",
+                  "icon"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Go to the settings page.",
+              "lang": "en",
+              "answers": [
+                "Ayarlar sayfasına git",
+                "Ayarlar sayfasına gidin",
+                "Ayarlar sayfasını aç"
+              ],
+              "tokens": [
+                "Ayarlar",
+                "sayfasına",
+                "git",
+                "gel",
+                "profil"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Scroll down ___ the bottom of the page.",
+              "translation": "Sayfanın en altına kaydır.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "at",
+                "on"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "kaydırmak",
+              "answer": "scroll",
+              "choices": [
+                {
+                  "text": "scroll",
+                  "emoji": "📜"
+                },
+                {
+                  "text": "tap",
+                  "emoji": "👆"
+                },
+                {
+                  "text": "crash",
+                  "emoji": "💥"
+                },
+                {
+                  "text": "save",
+                  "emoji": "💾"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Then tap the blue button.",
+              "translation": "Sonra mavi düğmeye dokun."
+            }
+          ]
+        },
+        {
+          "id": "y2s",
+          "type": "story",
+          "title": "Profil fotoğrafı hatası",
+          "description": "Leo yeni sürümde bulduğu bir hatayı Emre’ye adım adım anlatıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Leo",
+              "avatar": "👨",
+              "text": "Hi Emre, do you have a minute? I found a bug in the new version of the Brightloop app.",
+              "translation": "Selam Emre, bir dakikan var mı? Brightloop uygulamasının yeni sürümünde bir hata buldum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Sure. What happens?",
+              "translation": "Tabii. Ne oluyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Leo",
+              "avatar": "👨",
+              "text": "The app crashes when I change my profile photo.",
+              "translation": "Profil fotoğrafımı değiştirdiğimde uygulama çöküyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Uygulama ne zaman çöküyor?",
+              "choices": [
+                "Profil fotoğrafı değiştirilince",
+                "Şifre girilince",
+                "Uygulama açılınca"
+              ],
+              "answer": "Profil fotoğrafı değiştirilince"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Hmm. What are the steps to reproduce?",
+              "translation": "Hmm. Hatayı yeniden üretme adımları neler?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Leo",
+              "avatar": "👨",
+              "text": "First, log in. Then go to your profile and tap the camera icon.",
+              "translation": "Önce giriş yap. Sonra profiline git ve kamera simgesine dokun."
+            },
+            {
+              "kind": "line",
+              "speaker": "Leo",
+              "avatar": "👨",
+              "text": "Choose a big photo, and the app closes.",
+              "translation": "Büyük bir fotoğraf seç, uygulama kapanıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "What's the expected result?",
+              "translation": "Beklenen sonuç ne?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Leo",
+              "avatar": "👨",
+              "text": "The new photo appears on the profile. But the actual result is a crash.",
+              "translation": "Yeni fotoğraf profilde görünür. Ama gerçekleşen sonuç bir çökme."
+            },
+            {
+              "kind": "question",
+              "prompt": "Beklenen sonuç ne?",
+              "choices": [
+                "Uygulamanın kapanması",
+                "Yeni fotoğrafın profilde görünmesi",
+                "Bir hata mesajı çıkması"
+              ],
+              "answer": "Yeni fotoğrafın profilde görünmesi"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Which device did you use?",
+              "translation": "Hangi cihazı kullandın?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Leo",
+              "avatar": "👨",
+              "text": "An old phone with the latest version of the app. I added a screenshot to the report.",
+              "translation": "Uygulamanın son sürümünün yüklü olduğu eski bir telefon. Rapora bir ekran görüntüsü ekledim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Thanks, Leo. Maybe the photo is too big. I'll check it today.",
+              "translation": "Sağ ol Leo. Belki fotoğraf çok büyüktür. Bugün kontrol ederim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre’ye göre sorunun sebebi ne olabilir?",
+              "choices": [
+                "Telefonun şarjının bitmesi",
+                "İnternetin yavaş olması",
+                "Fotoğrafın çok büyük olması"
+              ],
+              "answer": "Fotoğrafın çok büyük olması"
+            }
+          ]
+        },
+        {
+          "id": "y2l3",
+          "type": "lesson",
+          "title": "Beklenen ve gerçekleşen",
+          "description": "expected result, actual result, screenshot, device, version",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "ekran görüntüsü",
+              "answer": "screenshot",
+              "choices": [
+                {
+                  "text": "screenshot",
+                  "emoji": "📸"
+                },
+                {
+                  "text": "password",
+                  "emoji": "🔑"
+                },
+                {
+                  "text": "battery",
+                  "emoji": "🔋"
+                },
+                {
+                  "text": "cable",
+                  "emoji": "🔌"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ekran görüntüsünü ekledim.",
+              "lang": "tr",
+              "answers": [
+                "I attached the screenshot",
+                "I added the screenshot",
+                "I've attached the screenshot",
+                "I have attached the screenshot"
+              ],
+              "tokens": [
+                "I",
+                "attached",
+                "the",
+                "screenshot",
+                "a",
+                "sent"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Expected result: the user ___ the home page.",
+              "translation": "Beklenen sonuç: kullanıcı ana sayfayı görür.",
+              "answer": "sees",
+              "choices": [
+                "sees",
+                "see",
+                "seeing"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Actual result: the screen goes white.",
+              "answers": [
+                "Actual result: the screen goes white."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "beklenen sonuç",
+                  "expected result"
+                ],
+                [
+                  "gerçekleşen sonuç",
+                  "actual result"
+                ],
+                [
+                  "cihaz",
+                  "device"
+                ],
+                [
+                  "sürüm",
+                  "version"
+                ],
+                [
+                  "ekran görüntüsü",
+                  "screenshot"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "This only happens on older phones.",
+              "lang": "en",
+              "answers": [
+                "Bu sadece eski telefonlarda oluyor",
+                "Bu yalnızca eski telefonlarda oluyor",
+                "Bu sadece eski telefonlarda yaşanıyor",
+                "Bu sadece daha eski telefonlarda oluyor"
+              ],
+              "tokens": [
+                "Bu",
+                "sadece",
+                "eski",
+                "telefonlarda",
+                "oluyor",
+                "yeni",
+                "bilgisayarlarda"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I tested it ___ two different devices.",
+              "translation": "İki farklı cihazda test ettim.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "at",
+                "to"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "cihaz",
+              "answer": "device",
+              "choices": [
+                {
+                  "text": "device",
+                  "emoji": "📱"
+                },
+                {
+                  "text": "browser",
+                  "emoji": "🌐"
+                },
+                {
+                  "text": "battery",
+                  "emoji": "🔋"
+                },
+                {
+                  "text": "cable",
+                  "emoji": "🔌"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Expected result: the photo is saved.",
+              "translation": "Beklenen sonuç: fotoğraf kaydedilir."
+            }
+          ]
+        },
+        {
+          "id": "y2d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Arama çalışmıyor",
+          "description": "Leo, Zeynep’in bildirdiği arama hatasının ayrıntılarını soruyor",
+          "cefr": "A2",
+          "speakers": [
+            {
+              "name": "Leo",
+              "gender": "male",
+              "avatar": "👨"
+            },
+            {
+              "name": "Zeynep",
+              "gender": "female",
+              "avatar": "👩‍💻"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Leo",
+              "text": "Hi Zeynep, I read your bug report. The search doesn't work?",
+              "translation": "Selam Zeynep, hata raporunu okudum. Arama çalışmıyor mu?"
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "Not on small screens. When I type a word, nothing happens.",
+              "translation": "Küçük ekranlarda çalışmıyor. Bir kelime yazınca hiçbir şey olmuyor."
+            },
+            {
+              "speaker": "Leo",
+              "text": "Which browser did you use?",
+              "translation": "Hangi tarayıcıyı kullandın?"
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "I used two different browsers on my phone. Same problem.",
+              "translation": "Telefonumda iki farklı tarayıcı kullandım. Aynı sorun."
+            },
+            {
+              "speaker": "Leo",
+              "text": "OK. Can you add a screenshot to the report?",
+              "translation": "Tamam. Rapora bir ekran görüntüsü ekleyebilir misin?"
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "Sure, I'll add one after lunch.",
+              "translation": "Tabii, öğle yemeğinden sonra eklerim."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Arama nerede çalışmıyor?",
+              "choices": [
+                "Büyük ekranlarda",
+                "Küçük ekranlarda",
+                "Sadece bilgisayarda"
+              ],
+              "answer": "Küçük ekranlarda",
+              "line": 1,
+              "key": "Not on small screens",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Zeynep sorunu yalnızca bir tarayıcıda denedi.",
+              "answer": false,
+              "line": 3,
+              "key": "two different browsers",
+              "skill": "detail"
+            },
+            {
+              "kind": "who",
+              "quote": "Which browser did you use?",
+              "answer": "Leo"
+            }
+          ]
+        },
+        {
+          "id": "y2t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "y2c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "y3",
+      "title": "Mesaj ve e-posta",
+      "description": "B1 · Kısa mesaj, kibar rica, takip ve gecikme bildirme",
+      "color": "0xFF2F80ED",
+      "theme": "yazisma",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nTakım sohbetinde ve e-postada kısa ama kibar yazmanın kalıpları: rica etmek, haber vermek, takip etmek ve gecikme bildirmek.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Kibar rica | **Could you take a look at my code?** |\n| Takip | **I'm following up on my last email.** |\n| Gecikme | **I'm afraid the feature won't be ready by Friday.** |\n\n## Biz nasıl söylüyoruz?\nTürkçede takım arkadaşına \"Abi bi bakabilir misin?\" yazmak samimi ve normaldir. İngilizcede \"abi\" gibi bir hitap yok; samimiyet, kısa ama kibar bir kalıpla verilir: \"Hey Jake, could you take a look when you have a moment?\" Türk yazılımcıların sık yaptığı hatalar \"Can you look to my code?\" (doğrusu look at) ve \"I have a question to you\" (doğrusu a question for you). \"Kolay gelsin\"in birebir karşılığı yok; doğrudan konuya girmek kaba sayılmaz. Gecikmeyi saklamak yerine erken haber ver: \"Just a heads-up…\" ya da \"I'm afraid…\" ile başlamak kötü haberi yumuşatır.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| I have a question to you. | **I have a question for you.** | Soru birine \"for\" ile yöneltilir. |\n| Can you look to my code? | **Can you look at my code?** | Bakmak anlamında look at kullanılır. |\n| I'm writing for follow up my email. | **I'm following up on my email.** | Takip için hazır kalıp follow up on’dır. |\n| Sorry for the late. | **Sorry for the late reply.** | late bir sıfat; arkasından reply, response gibi bir isim gelmeli. |\n\n## İpucu\nİstek mesajında üç şey olsun: ne istiyorsun, ne zamana kadar, neden. \"Could you review this by Thursday? The release depends on it.\"",
+      "nodes": [
+        {
+          "id": "y3l1",
+          "type": "lesson",
+          "title": "Kısa ve kibar rica",
+          "description": "could you take a look, when you have a moment, would you mind",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "göz atmak",
+              "answer": "take a look",
+              "choices": [
+                {
+                  "text": "take a look",
+                  "emoji": "👀"
+                },
+                {
+                  "text": "take a break",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "take a seat",
+                  "emoji": "🪑"
+                },
+                {
+                  "text": "take notes",
+                  "emoji": "📝"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Vaktin olduğunda koduma bir göz atabilir misin?",
+              "lang": "tr",
+              "answers": [
+                "Could you take a look at my code when you have a moment",
+                "Could you take a look at my code when you have time",
+                "Can you take a look at my code when you have a moment",
+                "Can you take a look at my code when you have time",
+                "Could you have a look at my code when you have time",
+                "When you have a moment could you take a look at my code"
+              ],
+              "tokens": [
+                "Could",
+                "you",
+                "take",
+                "a",
+                "look",
+                "at",
+                "my",
+                "code",
+                "when",
+                "you",
+                "have",
+                "a",
+                "moment",
+                "to",
+                "your"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Could you take a look ___ this when you have a moment?",
+              "translation": "Vaktin olduğunda buna bir göz atabilir misin?",
+              "answer": "at",
+              "choices": [
+                "at",
+                "to",
+                "for"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Would you mind checking the test results?",
+              "answers": [
+                "Would you mind checking the test results?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "müsait",
+                  "available"
+                ],
+                [
+                  "acil",
+                  "urgent"
+                ],
+                [
+                  "ek (dosya)",
+                  "attachment"
+                ],
+                [
+                  "kanal",
+                  "channel"
+                ],
+                [
+                  "yanıtlamak",
+                  "reply"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Would you mind checking this before lunch?",
+              "lang": "en",
+              "answers": [
+                "Öğle yemeğinden önce buna bakabilir misin",
+                "Öğle yemeğinden önce bunu kontrol edebilir misin",
+                "Öğle yemeğinden önce buna bakar mısın",
+                "Öğle yemeğinden önce bunu kontrol eder misin",
+                "Öğleden önce buna bakabilir misin",
+                "Öğle yemeğinden önce buna bakabilir misiniz"
+              ],
+              "tokens": [
+                "Öğle",
+                "yemeğinden",
+                "önce",
+                "buna",
+                "bakabilir",
+                "misin",
+                "sonra",
+                "kontrol"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Would you mind ___ me the link?",
+              "translation": "Bana linki gönderir misin?",
+              "answer": "sending",
+              "choices": [
+                "sending",
+                "to send",
+                "send"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "acil",
+              "answer": "urgent",
+              "choices": [
+                {
+                  "text": "urgent",
+                  "emoji": "🚨"
+                },
+                {
+                  "text": "quiet",
+                  "emoji": "🤫"
+                },
+                {
+                  "text": "finished",
+                  "emoji": "🏁"
+                },
+                {
+                  "text": "expensive",
+                  "emoji": "💰"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "No rush, but could you review this today?",
+              "translation": "Acelesi yok ama bunu bugün inceleyebilir misin?"
+            }
+          ]
+        },
+        {
+          "id": "y3l2",
+          "type": "lesson",
+          "title": "Haber verme ve takip",
+          "description": "just a heads-up, following up on, any update on, keep you posted",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "(bir konuyu) takip etmek",
+              "answer": "follow up",
+              "choices": [
+                {
+                  "text": "follow up",
+                  "emoji": "🔁"
+                },
+                {
+                  "text": "give up",
+                  "emoji": "🙅"
+                },
+                {
+                  "text": "set up",
+                  "emoji": "🛠️"
+                },
+                {
+                  "text": "log in",
+                  "emoji": "🔐"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Dünkü e-postamla ilgili tekrar yazıyorum.",
+              "lang": "tr",
+              "answers": [
+                "I'm following up on my email from yesterday",
+                "I am following up on my email from yesterday",
+                "I'm following up on yesterday's email",
+                "I am following up on yesterday's email",
+                "Following up on my email from yesterday"
+              ],
+              "tokens": [
+                "I'm",
+                "following",
+                "up",
+                "on",
+                "my",
+                "email",
+                "from",
+                "yesterday",
+                "to",
+                "your"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Just a ___: the server will be down tonight.",
+              "translation": "Haberin olsun: sunucu bu gece kapalı olacak.",
+              "answer": "heads-up",
+              "choices": [
+                "heads-up",
+                "look",
+                "setup"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Just a heads-up, I'm out of the office on Friday.",
+              "answers": [
+                "Just a heads-up, I'm out of the office on Friday."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "haberin olsun",
+                  "just a heads-up"
+                ],
+                [
+                  "güncel durum",
+                  "update"
+                ],
+                [
+                  "izinli",
+                  "out of office"
+                ],
+                [
+                  "hatırlatma",
+                  "reminder"
+                ],
+                [
+                  "takip mesajı",
+                  "follow-up"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Any update on the release?",
+              "lang": "en",
+              "answers": [
+                "Sürümle ilgili bir gelişme var mı",
+                "Sürüm hakkında bir gelişme var mı",
+                "Sürümle ilgili yeni bir şey var mı",
+                "Sürümle ilgili bir haber var mı"
+              ],
+              "tokens": [
+                "Sürümle",
+                "ilgili",
+                "bir",
+                "gelişme",
+                "var",
+                "mı",
+                "yok",
+                "toplantı"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm following up ___ the bug I reported last week.",
+              "translation": "Geçen hafta bildirdiğim hatayla ilgili tekrar yazıyorum.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "at",
+                "in"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "hatırlatma",
+              "answer": "reminder",
+              "choices": [
+                {
+                  "text": "reminder",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "invoice",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "vacation",
+                  "emoji": "🏖️"
+                },
+                {
+                  "text": "password",
+                  "emoji": "🔑"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Thanks for the update. I'll keep you posted.",
+              "translation": "Bilgi için teşekkürler. Seni haberdar edeceğim."
+            }
+          ]
+        },
+        {
+          "id": "y3s",
+          "type": "story",
+          "title": "Gecikme haberi",
+          "description": "Emre, ödeme özelliğinin gecikeceğini takım sohbetinde önce Jake’e, sonra Maya’ya bildiriyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Hi Jake, just a heads-up: the payment feature is going to be a little late.",
+              "translation": "Selam Jake, haberin olsun: ödeme özelliği biraz gecikecek."
+            },
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "Thanks for letting me know. What's the problem?",
+              "translation": "Haber verdiğin için sağ ol. Sorun ne?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "The bank's test server was down for two days, so I couldn't test anything.",
+              "translation": "Bankanın test sunucusu iki gün kapalıydı, bu yüzden hiçbir şeyi test edemedim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Ödeme özelliği neden gecikiyor?",
+              "choices": [
+                "Emre hastaydı",
+                "Test sunucusu kapalıydı",
+                "Tasarım değişti"
+              ],
+              "answer": "Test sunucusu kapalıydı"
+            },
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "I see. When do you think it'll be ready?",
+              "translation": "Anlıyorum. Sence ne zaman hazır olur?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "I'm afraid not before Wednesday. I'd like to push the deadline to Wednesday, if that's OK.",
+              "translation": "Korkarım çarşambadan önce olmaz. Uygunsa son tarihi çarşambaya ertelemek istiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "That should be fine. Could you also let Maya know? She's planning the release.",
+              "translation": "Sorun olmaz. Maya’ya da haber verebilir misin? Sürümü o planlıyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre yeni son tarih olarak hangi günü öneriyor?",
+              "choices": [
+                "Pazartesi",
+                "Cuma",
+                "Çarşamba"
+              ],
+              "answer": "Çarşamba"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Sure. Hi Maya, I'm following up on the payment feature.",
+              "translation": "Tabii. Selam Maya, ödeme özelliğiyle ilgili yazıyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Maya",
+              "avatar": "👩‍💼",
+              "text": "Hi Emre! Any update?",
+              "translation": "Selam Emre! Bir gelişme var mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "It's going to be ready on Wednesday, not Monday. Sorry for the delay.",
+              "translation": "Pazartesi değil, çarşamba hazır olacak. Gecikme için kusura bakma."
+            },
+            {
+              "kind": "line",
+              "speaker": "Maya",
+              "avatar": "👩‍💼",
+              "text": "No problem. Thanks for telling me early. I'll update the release plan.",
+              "translation": "Sorun değil. Erkenden söylediğin için teşekkürler. Sürüm planını güncellerim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Maya ne yapacak?",
+              "choices": [
+                "Sürüm planını güncelleyecek",
+                "Jake’e şikâyet edecek",
+                "Test sunucusunu onaracak"
+              ],
+              "answer": "Sürüm planını güncelleyecek"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Thanks, Maya. I'll keep you posted.",
+              "translation": "Teşekkürler Maya. Seni haberdar ederim."
+            }
+          ]
+        },
+        {
+          "id": "y3l3",
+          "type": "lesson",
+          "title": "Gecikme bildirme",
+          "description": "I'm afraid, behind schedule, sorry for the delay, push the deadline",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "gecikme",
+              "answer": "delay",
+              "choices": [
+                {
+                  "text": "delay",
+                  "emoji": "⏳"
+                },
+                {
+                  "text": "budget",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "holiday",
+                  "emoji": "🎉"
+                },
+                {
+                  "text": "reward",
+                  "emoji": "🏆"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Korkarım bu özellik cumaya kadar hazır olmayacak.",
+              "lang": "tr",
+              "answers": [
+                "I'm afraid this feature won't be ready by Friday",
+                "I am afraid this feature won't be ready by Friday",
+                "I'm afraid this feature will not be ready by Friday",
+                "I am afraid this feature will not be ready by Friday",
+                "I'm afraid this feature isn't going to be ready by Friday"
+              ],
+              "tokens": [
+                "I'm",
+                "afraid",
+                "this",
+                "feature",
+                "won't",
+                "be",
+                "ready",
+                "by",
+                "Friday",
+                "until",
+                "on"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We're a bit ___ schedule this week.",
+              "translation": "Bu hafta takvimin biraz gerisindeyiz.",
+              "answer": "behind",
+              "choices": [
+                "behind",
+                "after",
+                "under"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Sorry for the delay. I'll send it by tomorrow morning.",
+              "answers": [
+                "Sorry for the delay. I'll send it by tomorrow morning."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "gecikme",
+                  "delay"
+                ],
+                [
+                  "takvim",
+                  "schedule"
+                ],
+                [
+                  "son tarih",
+                  "deadline"
+                ],
+                [
+                  "öncelik",
+                  "priority"
+                ],
+                [
+                  "tahmin",
+                  "estimate"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sorry for the late reply.",
+              "lang": "en",
+              "answers": [
+                "Geç cevap için kusura bakma",
+                "Geç cevap verdiğim için kusura bakma",
+                "Geç cevap için özür dilerim",
+                "Geç yanıt için kusura bakma",
+                "Geç cevap için kusura bakmayın",
+                "Geç yanıt için özür dilerim"
+              ],
+              "tokens": [
+                "Geç",
+                "cevap",
+                "için",
+                "kusura",
+                "bakma",
+                "erken",
+                "teşekkürler"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Can we push the deadline ___ Monday?",
+              "translation": "Son tarihi pazartesiye erteleyebilir miyiz?",
+              "answer": "to",
+              "choices": [
+                "to",
+                "at",
+                "in"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "öncelik",
+              "answer": "priority",
+              "choices": [
+                {
+                  "text": "priority",
+                  "emoji": "🥇"
+                },
+                {
+                  "text": "estimate",
+                  "emoji": "📏"
+                },
+                {
+                  "text": "schedule",
+                  "emoji": "🗓️"
+                },
+                {
+                  "text": "deadline",
+                  "emoji": "⏰"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "The fix took longer than expected.",
+              "translation": "Düzeltme beklenenden uzun sürdü."
+            }
+          ]
+        },
+        {
+          "id": "y3d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Cevapsız e-posta",
+          "description": "Zeynep cevap gelmeyen bir e-postayı nasıl takip edeceğini Jake’e danışıyor",
+          "cefr": "B1",
+          "speakers": [
+            {
+              "name": "Zeynep",
+              "gender": "female",
+              "avatar": "👩‍💻"
+            },
+            {
+              "name": "Jake",
+              "gender": "male",
+              "avatar": "🧔"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Zeynep",
+              "text": "Jake, can I ask you something? I sent an email to the design team on Monday, and nobody has answered.",
+              "translation": "Jake, sana bir şey sorabilir miyim? Pazartesi tasarım ekibine bir e-posta gönderdim ve kimse cevap vermedi."
+            },
+            {
+              "speaker": "Jake",
+              "text": "Did you ask for the new icons? Maybe they're just busy this week.",
+              "translation": "Yeni simgeleri mi istedin? Belki bu hafta sadece yoğunlardır."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "Yes, and I need them by Thursday. Should I write again, or is that rude?",
+              "translation": "Evet, ve onlara perşembeye kadar ihtiyacım var. Tekrar yazmalı mıyım, yoksa bu kabalık mı olur?"
+            },
+            {
+              "speaker": "Jake",
+              "text": "It's not rude at all. Just keep it short and friendly. Start with 'Following up on my email from Monday.'",
+              "translation": "Hiç kabalık değil. Sadece kısa ve samimi tut. \"Pazartesi gönderdiğim e-postayla ilgili tekrar yazıyorum\" diye başla."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "OK. And then I say that I need the icons by Thursday?",
+              "translation": "Tamam. Sonra da simgelere perşembeye kadar ihtiyacım olduğunu mu söyleyeyim?"
+            },
+            {
+              "speaker": "Jake",
+              "text": "Yes, and explain why. People answer faster when they understand the reason.",
+              "translation": "Evet, nedenini de açıkla. İnsanlar sebebi anlayınca daha hızlı cevap verir."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "That makes sense. I'll also add a screenshot of the page, so they can see where the icons go.",
+              "translation": "Mantıklı. Sayfanın ekran görüntüsünü de eklerim, böylece simgelerin nereye gideceğini görürler."
+            },
+            {
+              "speaker": "Jake",
+              "text": "Great idea. And if there's no reply by tomorrow, just call them.",
+              "translation": "Harika fikir. Yarına kadar cevap gelmezse onları ara gitsin."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Zeynep tasarım ekibinden ne bekliyor?",
+              "choices": [
+                "Bir toplantı daveti",
+                "Yeni simgeler",
+                "Bir fatura"
+              ],
+              "answer": "Yeni simgeler",
+              "line": 1,
+              "key": "the new icons",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Jake’e göre ikinci bir e-posta göndermek kabalık olur.",
+              "answer": false,
+              "line": 3,
+              "key": "It's not rude at all",
+              "skill": "detail"
+            },
+            {
+              "kind": "choice",
+              "prompt": "Jake neden sebebi açıklamayı öneriyor?",
+              "choices": [
+                "E-posta daha uzun görünsün diye",
+                "Müdür bunu istediği için",
+                "İnsanlar sebebi anlayınca daha hızlı cevap verdiği için"
+              ],
+              "answer": "İnsanlar sebebi anlayınca daha hızlı cevap verdiği için",
+              "line": 5,
+              "key": "answer faster when they understand the reason",
+              "skill": "detail"
+            },
+            {
+              "kind": "who",
+              "quote": "just call them",
+              "answer": "Jake"
+            }
+          ]
+        },
+        {
+          "id": "y3t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "y3c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "y4",
+      "title": "Code review",
+      "description": "B1 · Pull request açıklaması, nazik öneri, onay ve değişiklik isteme",
+      "color": "0xFF6C4CF1",
+      "theme": "kod",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nPull request açıklamasında değişiklikleri özetlemeyi ve code review’da öneriyi emir gibi değil soru gibi yazmayı öğren. Onay ve değişiklik isteme kalıpları da burada.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Pull request özeti | **This pull request adds a search filter.** |\n| Nazik öneri | **Could we rename this variable?** |\n| Fikir sorma | **What do you think about moving this?** |\n\n## Biz nasıl söylüyoruz?\nTürkçe review yorumlarında \"Bu yanlış, düzelt\" ya da \"Burayı değiştir\" demek çoğu ekipte normaldir. İngilizcede aynı cümle sert ve kişisel durur; bunun yerine soru ya da öneri kullanılır: \"Could we…?\", \"What do you think about…?\". Küçük, önemsiz şeyler için yorumun başına \"nit:\" yazılır. Türk yazılımcıların sık hataları: \"Can you look to my PR?\" (doğrusu take a look at), \"Let's discuss about this\" (discuss edat almaz) ve \"What do you think to move this?\" (doğrusu about moving). Pull request açıklamasında geniş zaman kullanılır: \"This pull request adds…, fixes…\".\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| Can you look to my PR? | **Can you take a look at my pull request?** | look to değil look at; take a look at daha kibar. |\n| Let's discuss about this function. | **Let's discuss this function.** | discuss doğrudan nesne alır, about gerekmez. |\n| This is wrong. Change it. | **Could we handle this case differently?** | İngilizcede emir yerine soru biçiminde öneri daha naziktir. |\n| What do you think to move this? | **What do you think about moving this?** | think about’tan sonra V-ing gelir. |\n\n## İpucu\nYorumu yazmadan önce kendine sor: Bu bir emir mi, bir soru mu? Emir gibiyse başına \"Could we\" ekle ya da \"What do you think about\" ile başla.",
+      "nodes": [
+        {
+          "id": "y4l1",
+          "type": "lesson",
+          "title": "Pull request açıklaması",
+          "description": "this pull request adds, fixes, updates, removes",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "eklemek",
+              "answer": "add",
+              "choices": [
+                {
+                  "text": "add",
+                  "emoji": "➕"
+                },
+                {
+                  "text": "remove",
+                  "emoji": "➖"
+                },
+                {
+                  "text": "fix",
+                  "emoji": "🔧"
+                },
+                {
+                  "text": "rename",
+                  "emoji": "🏷️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu pull request yeni bir arama filtresi ekliyor.",
+              "lang": "tr",
+              "answers": [
+                "This pull request adds a new search filter",
+                "This pull request adds a new filter to the search"
+              ],
+              "tokens": [
+                "This",
+                "pull",
+                "request",
+                "adds",
+                "a",
+                "new",
+                "search",
+                "filter",
+                "add",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "This pull request ___ the crash on the login screen.",
+              "translation": "Bu pull request giriş ekranındaki çökmeyi düzeltiyor.",
+              "answer": "fixes",
+              "choices": [
+                "fixes",
+                "fix",
+                "fixing"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "This change removes some old code that we don't use.",
+              "answers": [
+                "This change removes some old code that we don't use."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "eklemek",
+                  "add"
+                ],
+                [
+                  "kaldırmak",
+                  "remove"
+                ],
+                [
+                  "düzeltmek",
+                  "fix"
+                ],
+                [
+                  "güncellemek",
+                  "update"
+                ],
+                [
+                  "yeniden adlandırmak",
+                  "rename"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "It also updates the tests.",
+              "lang": "en",
+              "answers": [
+                "Testleri de güncelliyor",
+                "Ayrıca testleri de güncelliyor",
+                "Ayrıca testleri güncelliyor",
+                "Testleri de güncellemiş"
+              ],
+              "tokens": [
+                "Testleri",
+                "de",
+                "güncelliyor",
+                "siliyor",
+                "kodu"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I renamed the function ___ make it clearer.",
+              "translation": "Daha anlaşılır olsun diye fonksiyonun adını değiştirdim.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "so"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "kaldırmak",
+              "answer": "remove",
+              "choices": [
+                {
+                  "text": "remove",
+                  "emoji": "➖"
+                },
+                {
+                  "text": "rename",
+                  "emoji": "🏷️"
+                },
+                {
+                  "text": "review",
+                  "emoji": "🔍"
+                },
+                {
+                  "text": "deploy",
+                  "emoji": "🚀"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "This pull request fixes two bugs and updates the documentation.",
+              "translation": "Bu pull request iki hatayı düzeltiyor ve dokümantasyonu güncelliyor."
+            }
+          ]
+        },
+        {
+          "id": "y4l2",
+          "type": "lesson",
+          "title": "Nazik öneri",
+          "description": "could we, what do you think about, nit, maybe we should",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "öneri",
+              "answer": "suggestion",
+              "choices": [
+                {
+                  "text": "suggestion",
+                  "emoji": "💡"
+                },
+                {
+                  "text": "approval",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "conflict",
+                  "emoji": "⚔️"
+                },
+                {
+                  "text": "branch",
+                  "emoji": "🌿"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Burada daha açık bir değişken adı kullanabilir miyiz?",
+              "lang": "tr",
+              "answers": [
+                "Could we use a clearer variable name here",
+                "Can we use a clearer variable name here",
+                "Could we use a more descriptive variable name here",
+                "Could we use a clearer name for the variable here"
+              ],
+              "tokens": [
+                "Could",
+                "we",
+                "use",
+                "a",
+                "clearer",
+                "variable",
+                "name",
+                "here",
+                "more",
+                "you"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "What do you think ___ moving this into a separate function?",
+              "translation": "Bunu ayrı bir fonksiyona taşımaya ne dersin?",
+              "answer": "about",
+              "choices": [
+                "about",
+                "to",
+                "with"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Small nit: there's an extra space on line twelve.",
+              "answers": [
+                "Small nit: there's an extra space on line twelve."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "öneri",
+                  "suggestion"
+                ],
+                [
+                  "değişken",
+                  "variable"
+                ],
+                [
+                  "fonksiyon",
+                  "function"
+                ],
+                [
+                  "satır",
+                  "line"
+                ],
+                [
+                  "döngü",
+                  "loop"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Maybe we should add a comment here.",
+              "lang": "en",
+              "answers": [
+                "Belki buraya bir yorum eklemeliyiz",
+                "Belki buraya bir açıklama eklemeliyiz",
+                "Belki de buraya bir yorum eklemeliyiz",
+                "Buraya bir yorum eklesek iyi olabilir"
+              ],
+              "tokens": [
+                "Belki",
+                "buraya",
+                "bir",
+                "yorum",
+                "eklemeliyiz",
+                "silmeliyiz",
+                "orada"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Could we ___ this loop a bit simpler?",
+              "translation": "Bu döngüyü biraz daha basit yapabilir miyiz?",
+              "answer": "make",
+              "choices": [
+                "make",
+                "do",
+                "take"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "değişken",
+              "answer": "variable",
+              "choices": [
+                {
+                  "text": "variable",
+                  "emoji": "🔤"
+                },
+                {
+                  "text": "loop",
+                  "emoji": "🔁"
+                },
+                {
+                  "text": "comment",
+                  "emoji": "💬"
+                },
+                {
+                  "text": "bug",
+                  "emoji": "🐛"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Nice work! Just one small suggestion.",
+              "translation": "Güzel iş! Sadece küçük bir önerim var."
+            }
+          ]
+        },
+        {
+          "id": "y4s",
+          "type": "story",
+          "title": "Arama filtresi incelemesi",
+          "description": "Zeynep, Emre’nin açtığı pull request’i inceliyor ve nazikçe değişiklik öneriyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Hi Zeynep, I opened a pull request for the new search filter. Could you review it?",
+              "translation": "Selam Zeynep, yeni arama filtresi için bir pull request açtım. İnceleyebilir misin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Sure. What does it change?",
+              "translation": "Tabii. Neleri değiştiriyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "It adds the filter, fixes a small bug in the search results, and updates the tests.",
+              "translation": "Filtreyi ekliyor, arama sonuçlarındaki küçük bir hatayı düzeltiyor ve testleri güncelliyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Pull request neyi güncelliyor?",
+              "choices": [
+                "Testleri",
+                "Tasarımı",
+                "Veritabanını"
+              ],
+              "answer": "Testleri"
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "OK, I'm looking at it now. Overall, it looks great.",
+              "translation": "Tamam, şimdi bakıyorum. Genel olarak harika görünüyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "One question: what do you think about moving the filter logic into a separate file?",
+              "translation": "Bir sorum var: filtre mantığını ayrı bir dosyaya taşımaya ne dersin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Good idea. The main file is getting too long anyway.",
+              "translation": "İyi fikir. Ana dosya zaten fazla uzuyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Also, a small nit: the variable name 'x' isn't very clear.",
+              "translation": "Bir de küçük bir ayrıntı: \"x\" değişken adı pek açık değil."
+            },
+            {
+              "kind": "question",
+              "prompt": "Zeynep değişken adı hakkında ne düşünüyor?",
+              "choices": [
+                "Çok uzun",
+                "Yeterince açık değil",
+                "Mükemmel"
+              ],
+              "answer": "Yeterince açık değil"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "You're right. I'll give it a clearer name.",
+              "translation": "Haklısın. Ona daha açık bir ad vereceğim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Great. I'll request changes for now, but it's almost ready.",
+              "translation": "Harika. Şimdilik değişiklik isteyeceğim ama neredeyse hazır."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "No problem. I'll push the changes in an hour.",
+              "translation": "Sorun değil. Değişiklikleri bir saat içinde gönderirim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre değişiklikleri ne zaman gönderecek?",
+              "choices": [
+                "Yarın",
+                "Cuma günü",
+                "Bir saat içinde"
+              ],
+              "answer": "Bir saat içinde"
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Perfect. Let me know when it's done, and I'll approve it.",
+              "translation": "Mükemmel. Bitince bana haber ver, onaylarım."
+            }
+          ]
+        },
+        {
+          "id": "y4l3",
+          "type": "lesson",
+          "title": "Onay ve değişiklik isteme",
+          "description": "looks good to me, approve, request changes, address comments",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "onaylamak",
+              "answer": "approve",
+              "choices": [
+                {
+                  "text": "approve",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "reject",
+                  "emoji": "👎"
+                },
+                {
+                  "text": "merge",
+                  "emoji": "🔀"
+                },
+                {
+                  "text": "comment",
+                  "emoji": "💬"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bence iyi görünüyor, birleştirebilirsin.",
+              "lang": "tr",
+              "answers": [
+                "Looks good to me you can merge it",
+                "Looks good to me you can merge",
+                "It looks good to me you can merge it",
+                "It looks good to me you can merge"
+              ],
+              "tokens": [
+                "Looks",
+                "good",
+                "to",
+                "me",
+                "you",
+                "can",
+                "merge",
+                "it",
+                "should",
+                "for"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I left a few comments, but nothing ___.",
+              "translation": "Birkaç yorum bıraktım ama hiçbiri engelleyici değil.",
+              "answer": "blocking",
+              "choices": [
+                "blocking",
+                "blockage",
+                "blocker"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Please update the tests before we merge this.",
+              "answers": [
+                "Please update the tests before we merge this."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "onaylamak",
+                  "approve"
+                ],
+                [
+                  "birleştirmek",
+                  "merge"
+                ],
+                [
+                  "değişiklik istemek",
+                  "request changes"
+                ],
+                [
+                  "yorum",
+                  "comment"
+                ],
+                [
+                  "dal",
+                  "branch"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I requested a few changes.",
+              "lang": "en",
+              "answers": [
+                "Birkaç değişiklik istedim",
+                "Birkaç değişiklik talep ettim",
+                "Birkaç tane değişiklik istedim"
+              ],
+              "tokens": [
+                "Birkaç",
+                "değişiklik",
+                "istedim",
+                "onayladım",
+                "yorum"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Thanks for the review! I've ___ all your comments.",
+              "translation": "İnceleme için teşekkürler! Bütün yorumlarını ele aldım.",
+              "answer": "addressed",
+              "choices": [
+                "addressed",
+                "said",
+                "told"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "birleştirmek",
+              "answer": "merge",
+              "choices": [
+                {
+                  "text": "merge",
+                  "emoji": "🔀"
+                },
+                {
+                  "text": "approve",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "branch",
+                  "emoji": "🌿"
+                },
+                {
+                  "text": "deploy",
+                  "emoji": "🚀"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Good catch! I'll fix it right away.",
+              "translation": "İyi yakaladın! Hemen düzeltiyorum."
+            }
+          ]
+        },
+        {
+          "id": "y4d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Sert yorumlar",
+          "description": "Jake, Zeynep’e code review yorumlarını daha nazik yazması için tavsiye veriyor",
+          "cefr": "B1",
+          "speakers": [
+            {
+              "name": "Jake",
+              "gender": "male",
+              "avatar": "🧔"
+            },
+            {
+              "name": "Zeynep",
+              "gender": "female",
+              "avatar": "👩‍💻"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Jake",
+              "text": "Zeynep, do you have a minute? I want to talk about your comments on Leo's pull request.",
+              "translation": "Zeynep, bir dakikan var mı? Leo’nun pull request’ine yazdığın yorumlar hakkında konuşmak istiyorum."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "Sure. Was something wrong? I only found a few small problems.",
+              "translation": "Tabii. Bir sorun mu vardı? Sadece birkaç küçük sorun bulmuştum."
+            },
+            {
+              "speaker": "Jake",
+              "text": "Your points were correct, but some comments sounded a bit harsh. For example, you wrote 'This is wrong. Change it.'",
+              "translation": "Söylediklerin doğruydu ama bazı yorumlar biraz sert duruyordu. Mesela \"Bu yanlış. Değiştir.\" yazmışsın."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "Oh, I didn't mean it that way. In Turkish, it sounds normal to me.",
+              "translation": "Ah, öyle demek istemedim. Türkçede bana normal geliyor."
+            },
+            {
+              "speaker": "Jake",
+              "text": "I understand. In English, it's better to ask a question, like 'Could we handle this case here?'",
+              "translation": "Anlıyorum. İngilizcede soru sormak daha iyi, mesela \"Bu durumu burada ele alabilir miyiz?\" gibi."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "So I should make it sound like a suggestion, not an order.",
+              "translation": "Yani emir gibi değil, öneri gibi duyulmasını sağlamalıyım."
+            },
+            {
+              "speaker": "Jake",
+              "text": "Exactly. And for tiny things, start with 'nit', so people know it's not important.",
+              "translation": "Aynen. Çok küçük şeyler için de \"nit\" ile başla, böylece önemli olmadığını anlarlar."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "Got it. I'll edit my comments this afternoon.",
+              "translation": "Anladım. Yorumlarımı bu öğleden sonra düzenlerim."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Jake neden Zeynep’le konuşmak istiyor?",
+              "choices": [
+                "Yorumları biraz sert durduğu için",
+                "Kodda çok hata olduğu için",
+                "Toplantıyı kaçırdığı için"
+              ],
+              "answer": "Yorumları biraz sert durduğu için",
+              "line": 2,
+              "key": "sounded a bit harsh",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Zeynep’in bulduğu sorunlar yanlıştı.",
+              "answer": false,
+              "line": 2,
+              "key": "Your points were correct",
+              "skill": "detail"
+            },
+            {
+              "kind": "choice",
+              "prompt": "Çok küçük ayrıntılar için Jake ne öneriyor?",
+              "choices": [
+                "Hiç yorum yazmamayı",
+                "Yorumun başına \"nit\" yazmayı",
+                "Leo’ya telefon etmeyi"
+              ],
+              "answer": "Yorumun başına \"nit\" yazmayı",
+              "line": 6,
+              "key": "start with 'nit'",
+              "skill": "detail"
+            },
+            {
+              "kind": "who",
+              "quote": "I didn't mean it that way",
+              "answer": "Zeynep"
+            }
+          ]
+        },
+        {
+          "id": "y4t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "y4c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "y5",
+      "title": "Dokümantasyon okuma",
+      "description": "B1 · Kurulum adımları, zorunlu ve isteğe bağlı ayarlar, uyarılar ve edilgen yapı",
+      "color": "0xFF475467",
+      "theme": "kutuphane",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nDokümanlar emir kipi ve edilgen yapıyla yazılır. Bu notta kurulum adımlarını, required / optional / default / deprecated gibi kelimeleri ve \"must be set\", \"is called\" gibi edilgen kalıpları bulacaksın.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Emir kipi | **Make sure the server is running.** |\n| Zorunluluk (edilgen) | **The API key must be set before you start.** |\n| Edilgen | **This function is called when the page loads.** |\n\n## Biz nasıl söylüyoruz?\nTürkçe dokümanlarda da \"ayarlanmalıdır\", \"çağrılır\" gibi edilgen yapılar çok yaygındır, bu yüzden mantık tanıdık gelir. Asıl tuzak biçimde: Türk öğrenciler \"must set\" ya da \"is calling\" yazıp edilgeni kaçırır; doğrusu \"must be set\", \"is called\". \"Deprecated\" kelimesi \"silindi\" demek değildir; \"hâlâ çalışıyor ama artık önerilmiyor, ileride kaldırılacak\" demektir. \"Returns\" da \"geri döner\" değil, \"döndürür\" diye okunmalı. \"Make sure\" bir emirdir: \"kontrol et, emin ol\" anlamına gelir.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| The API key must set. | **The API key must be set.** | Anahtar kendini ayarlamaz; edilgen için must be + V3 gerekir. |\n| This function is calling when the page loads. | **This function is called when the page loads.** | Fonksiyon çağrılan şeydir; is + V3 (edilgen) kullanılır. |\n| Make sure to the server is running. | **Make sure the server is running.** | Make sure’dan sonra doğrudan cümle gelir, to gerekmez. |\n| The function return a list. | **The function returns a list.** | Tekil özneyle geniş zamanda fiil -s alır. |\n\n## İpucu\nBir dokümanda önce \"Warning\", \"Note\", \"Required\" ve \"deprecated\" kelimelerini tara; çoğu sorun bu satırlarda saklıdır.",
+      "nodes": [
+        {
+          "id": "y5l1",
+          "type": "lesson",
+          "title": "Kurulum adımları",
+          "description": "install, run the command, make sure, before you start",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "kurmak (yazılım)",
+              "answer": "install",
+              "choices": [
+                {
+                  "text": "install",
+                  "emoji": "📦"
+                },
+                {
+                  "text": "delete",
+                  "emoji": "🗑️"
+                },
+                {
+                  "text": "print",
+                  "emoji": "🖨️"
+                },
+                {
+                  "text": "share",
+                  "emoji": "🔗"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Başlamadan önce Git’in kurulu olduğundan emin ol.",
+              "lang": "tr",
+              "answers": [
+                "Make sure Git is installed before you start",
+                "Before you start make sure Git is installed",
+                "Make sure that Git is installed before you start",
+                "Before you start make sure that Git is installed",
+                "Make sure Git is installed before you begin"
+              ],
+              "tokens": [
+                "Make",
+                "sure",
+                "Git",
+                "is",
+                "installed",
+                "before",
+                "you",
+                "start",
+                "after",
+                "install"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Run the following command ___ install the dependencies.",
+              "translation": "Bağımlılıkları kurmak için şu komutu çalıştır.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "so"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Clone the repository and open the project folder.",
+              "answers": [
+                "Clone the repository and open the project folder."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kurmak",
+                  "install"
+                ],
+                [
+                  "çalıştırmak",
+                  "run"
+                ],
+                [
+                  "komut",
+                  "command"
+                ],
+                [
+                  "bağımlılık",
+                  "dependency"
+                ],
+                [
+                  "klasör",
+                  "folder"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Make sure you have the latest version.",
+              "lang": "en",
+              "answers": [
+                "En son sürüme sahip olduğundan emin ol",
+                "En son sürümün olduğundan emin ol",
+                "En güncel sürüme sahip olduğundan emin ol",
+                "Son sürüme sahip olduğundan emin ol",
+                "En son sürüme sahip olduğunuzdan emin olun"
+              ],
+              "tokens": [
+                "En",
+                "son",
+                "sürüme",
+                "sahip",
+                "olduğundan",
+                "emin",
+                "ol",
+                "eski",
+                "değil"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Make ___ the server is running.",
+              "translation": "Sunucunun çalıştığından emin ol.",
+              "answer": "sure",
+              "choices": [
+                "sure",
+                "right",
+                "safe"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "komut",
+              "answer": "command",
+              "choices": [
+                {
+                  "text": "command",
+                  "emoji": "⌨️"
+                },
+                {
+                  "text": "folder",
+                  "emoji": "📁"
+                },
+                {
+                  "text": "file",
+                  "emoji": "📄"
+                },
+                {
+                  "text": "link",
+                  "emoji": "🔗"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Before you start, read the setup guide.",
+              "translation": "Başlamadan önce kurulum kılavuzunu oku."
+            }
+          ]
+        },
+        {
+          "id": "y5l2",
+          "type": "lesson",
+          "title": "Zorunlu mu, isteğe bağlı mı?",
+          "description": "required, optional, default, returns, deprecated",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "zorunlu",
+              "answer": "required",
+              "choices": [
+                {
+                  "text": "required",
+                  "emoji": "📌"
+                },
+                {
+                  "text": "optional",
+                  "emoji": "🎈"
+                },
+                {
+                  "text": "default",
+                  "emoji": "⚙️"
+                },
+                {
+                  "text": "deprecated",
+                  "emoji": "🕸️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu parametre isteğe bağlı.",
+              "lang": "tr",
+              "answers": [
+                "This parameter is optional",
+                "This parameter is not required",
+                "This parameter isn't required"
+              ],
+              "tokens": [
+                "This",
+                "parameter",
+                "is",
+                "optional",
+                "required",
+                "are"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The function ___ a list of users.",
+              "translation": "Fonksiyon bir kullanıcı listesi döndürür.",
+              "answer": "returns",
+              "choices": [
+                "returns",
+                "return",
+                "returning"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "This method is deprecated. Use the new one instead.",
+              "answers": [
+                "This method is deprecated. Use the new one instead."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "zorunlu",
+                  "required"
+                ],
+                [
+                  "isteğe bağlı",
+                  "optional"
+                ],
+                [
+                  "varsayılan",
+                  "default"
+                ],
+                [
+                  "kullanımdan kalkmış",
+                  "deprecated"
+                ],
+                [
+                  "döndürmek",
+                  "return"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "The default value is ten.",
+              "lang": "en",
+              "answers": [
+                "Varsayılan değer on",
+                "Varsayılan değer ondur",
+                "Varsayılan değer 10",
+                "Varsayılan değer 10’dur"
+              ],
+              "tokens": [
+                "Varsayılan",
+                "değer",
+                "on",
+                "yüz",
+                "zorunlu"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "If the timeout is not set, the ___ value is used.",
+              "translation": "Zaman aşımı ayarlanmazsa varsayılan değer kullanılır.",
+              "answer": "default",
+              "choices": [
+                "default",
+                "required",
+                "deprecated"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "kullanımdan kalkmış",
+              "answer": "deprecated",
+              "choices": [
+                {
+                  "text": "deprecated",
+                  "emoji": "🕸️"
+                },
+                {
+                  "text": "optional",
+                  "emoji": "🎈"
+                },
+                {
+                  "text": "updated",
+                  "emoji": "🆕"
+                },
+                {
+                  "text": "required",
+                  "emoji": "📌"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "This field is required, but the second one is optional.",
+              "translation": "Bu alan zorunlu ama ikincisi isteğe bağlı."
+            }
+          ]
+        },
+        {
+          "id": "y5s",
+          "type": "story",
+          "title": "Sunucu başlamıyor",
+          "description": "Zeynep projeyi kendi bilgisayarında çalıştıramıyor; Emre kurulum kılavuzunu birlikte okumasına yardım ediyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Emre, I'm trying to run the backend on my laptop, but it doesn't start.",
+              "translation": "Emre, backend’i dizüstü bilgisayarımda çalıştırmaya çalışıyorum ama başlamıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Did you follow the steps in the setup guide?",
+              "translation": "Kurulum kılavuzundaki adımları izledin mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Yes. I installed everything and ran the start command.",
+              "translation": "Evet. Her şeyi kurdum ve başlatma komutunu çalıştırdım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "What does the error message say?",
+              "translation": "Hata mesajı ne diyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "It says: 'Database password must be set.'",
+              "translation": "Şöyle diyor: \"Veritabanı şifresi ayarlanmalıdır.\""
+            },
+            {
+              "kind": "question",
+              "prompt": "Hata mesajı neyle ilgili?",
+              "choices": [
+                "Veritabanı şifresi",
+                "İnternet bağlantısı",
+                "Eski bir sürüm"
+              ],
+              "answer": "Veritabanı şifresi"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Ah, that's in the configuration section. The password is required, but the port is optional.",
+              "translation": "Ha, o yapılandırma bölümünde. Şifre zorunlu ama port isteğe bağlı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Where do I set it?",
+              "translation": "Onu nerede ayarlıyorum?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Copy the example file and add the password there. It's read when the server starts.",
+              "translation": "Örnek dosyayı kopyala ve şifreyi oraya ekle. Sunucu başlarken okunuyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Hangi ayar isteğe bağlı?",
+              "choices": [
+                "Şifre",
+                "Port",
+                "Kullanıcı adı"
+              ],
+              "answer": "Port"
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "OK, done. Now it works! But I see a warning about an old library.",
+              "translation": "Tamam, oldu. Şimdi çalışıyor! Ama eski bir kütüphaneyle ilgili bir uyarı görüyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Yes, that function is deprecated. We're going to replace it next month.",
+              "translation": "Evet, o fonksiyon kullanımdan kalktı. Gelecek ay değiştireceğiz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Zeynep",
+              "avatar": "👩‍💻",
+              "text": "Good to know. Maybe we should add the password step to the guide.",
+              "translation": "Bunu bilmek iyi oldu. Belki şifre adımını kılavuza eklemeliyiz."
+            },
+            {
+              "kind": "question",
+              "prompt": "Zeynep ne öneriyor?",
+              "choices": [
+                "Kütüphaneyi hemen silmeyi",
+                "Yeni bir bilgisayar almayı",
+                "Şifre adımını kılavuza eklemeyi"
+              ],
+              "answer": "Şifre adımını kılavuza eklemeyi"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Great idea. Could you open a pull request for that?",
+              "translation": "Harika fikir. Bunun için bir pull request açabilir misin?"
+            }
+          ]
+        },
+        {
+          "id": "y5l3",
+          "type": "lesson",
+          "title": "Edilgen ve uyarılar",
+          "description": "is called, must be set, is not supported, cannot be undone, warning",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "uyarı",
+              "answer": "warning",
+              "choices": [
+                {
+                  "text": "warning",
+                  "emoji": "⚠️"
+                },
+                {
+                  "text": "setting",
+                  "emoji": "⚙️"
+                },
+                {
+                  "text": "example",
+                  "emoji": "📋"
+                },
+                {
+                  "text": "summary",
+                  "emoji": "📄"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "API anahtarı ayarlanmalıdır.",
+              "lang": "tr",
+              "answers": [
+                "The API key must be set",
+                "The API key has to be set",
+                "The API key needs to be set"
+              ],
+              "tokens": [
+                "The",
+                "API",
+                "key",
+                "must",
+                "be",
+                "set",
+                "is",
+                "sets"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "This function is ___ when the page loads.",
+              "translation": "Bu fonksiyon sayfa yüklendiğinde çağrılır.",
+              "answer": "called",
+              "choices": [
+                "called",
+                "calls",
+                "calling"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "This feature is not supported on older browsers.",
+              "answers": [
+                "This feature is not supported on older browsers."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "çağrılmak",
+                  "be called"
+                ],
+                [
+                  "desteklenmek",
+                  "be supported"
+                ],
+                [
+                  "ayarlanmak",
+                  "be set"
+                ],
+                [
+                  "saklanmak",
+                  "be stored"
+                ],
+                [
+                  "silinmek",
+                  "be deleted"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "User data is never stored on the device.",
+              "lang": "en",
+              "answers": [
+                "Kullanıcı verileri asla cihazda saklanmaz",
+                "Kullanıcı verisi asla cihazda saklanmaz",
+                "Kullanıcı verileri hiçbir zaman cihazda saklanmaz",
+                "Kullanıcı verileri cihazda asla saklanmaz"
+              ],
+              "tokens": [
+                "Kullanıcı",
+                "verileri",
+                "asla",
+                "cihazda",
+                "saklanmaz",
+                "sunucuda",
+                "saklanır"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Warning: this action ___ be undone.",
+              "translation": "Uyarı: bu işlem geri alınamaz.",
+              "answer": "cannot",
+              "choices": [
+                "cannot",
+                "isn't",
+                "doesn't"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "saklamak",
+              "answer": "store",
+              "choices": [
+                {
+                  "text": "store",
+                  "emoji": "🗄️"
+                },
+                {
+                  "text": "call",
+                  "emoji": "📞"
+                },
+                {
+                  "text": "warn",
+                  "emoji": "📢"
+                },
+                {
+                  "text": "delete",
+                  "emoji": "🗑️"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Note: the token must be renewed every thirty days.",
+              "translation": "Not: token her otuz günde bir yenilenmelidir."
+            }
+          ]
+        },
+        {
+          "id": "y5d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Harita servisinin dokümanı",
+          "description": "Leo yeni bir harita servisinin dokümantasyonunu okuyup Maya’ya önemli noktaları anlatıyor",
+          "cefr": "B1",
+          "speakers": [
+            {
+              "name": "Maya",
+              "gender": "female",
+              "avatar": "👩‍💼"
+            },
+            {
+              "name": "Leo",
+              "gender": "male",
+              "avatar": "👨"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Maya",
+              "text": "Leo, you read the documentation for the new map service, right? Can we use it in our app?",
+              "translation": "Leo, yeni harita servisinin dokümantasyonunu okudun, değil mi? Onu uygulamamızda kullanabilir miyiz?"
+            },
+            {
+              "speaker": "Leo",
+              "text": "I think so. The basic plan is free, but an API key is required for every request.",
+              "translation": "Sanırım evet. Temel plan ücretsiz ama her istek için bir API anahtarı gerekiyor."
+            },
+            {
+              "speaker": "Maya",
+              "text": "That sounds fine. Is there a limit?",
+              "translation": "Kulağa iyi geliyor. Bir sınır var mı?"
+            },
+            {
+              "speaker": "Leo",
+              "text": "Yes. Requests are limited to one thousand per day. After that, an error is returned.",
+              "translation": "Evet. İstekler günde binle sınırlı. Sonrasında bir hata döndürülüyor."
+            },
+            {
+              "speaker": "Maya",
+              "text": "Hmm, that might be enough for testing. What about older phones?",
+              "translation": "Hmm, test için bu yeterli olabilir. Eski telefonlar ne olacak?"
+            },
+            {
+              "speaker": "Leo",
+              "text": "There's a warning about that. Offline maps are not supported on older versions.",
+              "translation": "Bununla ilgili bir uyarı var. Çevrimdışı haritalar eski sürümlerde desteklenmiyor."
+            },
+            {
+              "speaker": "Maya",
+              "text": "OK. Anything else we should know before we decide?",
+              "translation": "Tamam. Karar vermeden önce bilmemiz gereken başka bir şey var mı?"
+            },
+            {
+              "speaker": "Leo",
+              "text": "One thing: the old search method is deprecated, so we must use the new one.",
+              "translation": "Bir şey var: eski arama metodu kullanımdan kalkmış, o yüzden yenisini kullanmalıyız."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Her istek için ne gerekiyor?",
+              "choices": [
+                "Ücretli bir plan",
+                "Bir API anahtarı",
+                "Yeni bir telefon"
+              ],
+              "answer": "Bir API anahtarı",
+              "line": 1,
+              "key": "an API key is required",
+              "skill": "detail"
+            },
+            {
+              "kind": "choice",
+              "prompt": "Günlük istek sınırı kaç?",
+              "choices": [
+                "Yüz",
+                "On bin",
+                "Bin"
+              ],
+              "answer": "Bin",
+              "line": 3,
+              "key": "one thousand per day",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Çevrimdışı haritalar eski sürümlerde de çalışıyor.",
+              "answer": false,
+              "line": 5,
+              "key": "not supported on older versions",
+              "skill": "detail"
+            },
+            {
+              "kind": "who",
+              "quote": "that might be enough for testing",
+              "answer": "Maya"
+            }
+          ]
+        },
+        {
+          "id": "y5t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "y5c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "y6",
+      "title": "Fikrini savunmak",
+      "description": "B2 · Görüş bildirme, gerekçelendirme, kibarca itiraz, trade-off ve uzlaşma",
+      "color": "0xFFFF7A1A",
+      "theme": "toplanti",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nToplantıda görüşünü gerekçesiyle söylemeyi, kırmadan itiraz etmeyi, trade-off’u açıklamayı ve uzlaşmayı öneren kalıplar.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Kibar itiraz | **I see your point, but this could be too risky.** |\n| Öneri | **What if we release a smaller version first?** |\n| Trade-off | **The trade-off is speed now versus stability later.** |\n| Uzlaşma | **Let's agree to try it for two weeks.** |\n\n## Biz nasıl söylüyoruz?\nTürkçe toplantılarda \"Yok, olmaz öyle\" ya da \"Ben katılmıyorum\" demek oldukça doğrudan ama çoğu zaman normaldir. İngilizcede itirazdan önce karşı tarafı duyduğunu gösterirsin: \"I see your point, but…\", \"That's fair, but…\". Türk yazılımcıların sık yaptığı hatalar: \"I am agree\" (doğrusu I agree), \"make a meeting\" (doğrusu set up / schedule a meeting), \"discuss about\" (discuss edat almaz) ve \"according to me\" (doğrusu in my opinion). Fikrini sadece söylemek yetmez; \"The main reason is…\" ya da \"Based on the data…\" ile gerekçe ekle. Uzlaşırken \"What if we…?\" ve \"Let's agree to…\" çok işe yarar.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| I am agree with you. | **I agree with you.** | agree bir fiildir; önüne am gelmez. |\n| Let's make a meeting tomorrow. | **Let's set up a meeting tomorrow.** | Toplantı ayarlamak set up ya da schedule a meeting ile söylenir. |\n| We should discuss about the trade-offs. | **We should discuss the trade-offs.** | discuss doğrudan nesne alır. |\n| According to me, this is wrong. | **In my opinion, this won't work well.** | Kendi görüşün için in my opinion kullanılır; according to başkasının görüşü içindir. |\n\n## İpucu\nİtirazı üç adımda yap: önce duyduğunu göster (I see your point), sonra endişeni söyle (but…), en son bir alternatif sun (What if we…?).",
+      "nodes": [
+        {
+          "id": "y6l1",
+          "type": "lesson",
+          "title": "Görüş ve gerekçe",
+          "description": "in my opinion, the main reason is, based on, I'd suggest",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "gerekçe",
+              "answer": "reason",
+              "choices": [
+                {
+                  "text": "reason",
+                  "emoji": "💭"
+                },
+                {
+                  "text": "result",
+                  "emoji": "📊"
+                },
+                {
+                  "text": "risk",
+                  "emoji": "🎲"
+                },
+                {
+                  "text": "budget",
+                  "emoji": "💰"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bence önce performans sorununu çözmeliyiz.",
+              "lang": "tr",
+              "answers": [
+                "In my opinion we should fix the performance issue first",
+                "I think we should fix the performance issue first",
+                "In my opinion we should solve the performance issue first",
+                "I think we should solve the performance issue first",
+                "I think we should fix the performance problem first",
+                "In my view we should fix the performance issue first"
+              ],
+              "tokens": [
+                "In",
+                "my",
+                "opinion",
+                "we",
+                "should",
+                "fix",
+                "the",
+                "performance",
+                "issue",
+                "first",
+                "last",
+                "could"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The main reason is ___ our users are on slow connections.",
+              "translation": "Asıl sebep, kullanıcılarımızın yavaş bağlantı kullanması.",
+              "answer": "that",
+              "choices": [
+                "that",
+                "which",
+                "what"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "From my experience, this kind of change takes at least two weeks.",
+              "answers": [
+                "From my experience, this kind of change takes at least two weeks."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "gerekçe",
+                  "reason"
+                ],
+                [
+                  "kanıt",
+                  "evidence"
+                ],
+                [
+                  "deneyim",
+                  "experience"
+                ],
+                [
+                  "öncelik vermek",
+                  "prioritize"
+                ],
+                [
+                  "etki",
+                  "impact"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I'd suggest we start with a small test.",
+              "lang": "en",
+              "answers": [
+                "Küçük bir testle başlamamızı öneririm",
+                "Küçük bir denemeyle başlamamızı öneririm",
+                "Küçük bir testle başlamayı öneririm",
+                "Bence küçük bir testle başlayalım"
+              ],
+              "tokens": [
+                "Küçük",
+                "bir",
+                "testle",
+                "başlamamızı",
+                "öneririm",
+                "büyük",
+                "bitirmemizi"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Based ___ the data, most users never open this screen.",
+              "translation": "Verilere bakılırsa çoğu kullanıcı bu ekranı hiç açmıyor.",
+              "answer": "on",
+              "choices": [
+                "on",
+                "at",
+                "from"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "kanıt",
+              "answer": "evidence",
+              "choices": [
+                {
+                  "text": "evidence",
+                  "emoji": "🔎"
+                },
+                {
+                  "text": "opinion",
+                  "emoji": "💬"
+                },
+                {
+                  "text": "deadline",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "budget",
+                  "emoji": "💰"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Let me explain why I think this matters.",
+              "translation": "Bunun neden önemli olduğunu düşündüğümü açıklayayım."
+            }
+          ]
+        },
+        {
+          "id": "y6l2",
+          "type": "lesson",
+          "title": "Kibarca itiraz",
+          "description": "I see your point, but; to be honest; I'm not sure that's; I'd push back on",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "katılmamak",
+              "answer": "disagree",
+              "choices": [
+                {
+                  "text": "disagree",
+                  "emoji": "🙅"
+                },
+                {
+                  "text": "agree",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "decide",
+                  "emoji": "⚖️"
+                },
+                {
+                  "text": "delay",
+                  "emoji": "⏳"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Ne demek istediğini anlıyorum ama bu çok riskli olabilir.",
+              "lang": "tr",
+              "answers": [
+                "I see your point but this could be too risky",
+                "I see your point but this could be very risky",
+                "I understand your point but this could be too risky",
+                "I see what you mean but this could be too risky",
+                "I see your point but this might be too risky",
+                "I see your point but it could be too risky"
+              ],
+              "tokens": [
+                "I",
+                "see",
+                "your",
+                "point",
+                "but",
+                "this",
+                "could",
+                "be",
+                "too",
+                "risky",
+                "safe",
+                "my"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm not sure that's the best ___ forward.",
+              "translation": "Bunun ilerlemek için en iyi yol olduğundan emin değilim.",
+              "answer": "way",
+              "choices": [
+                "way",
+                "method",
+                "idea"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "To be honest, I have some concerns about the timeline.",
+              "answers": [
+                "To be honest, I have some concerns about the timeline."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "endişe",
+                  "concern"
+                ],
+                [
+                  "katılmamak",
+                  "disagree"
+                ],
+                [
+                  "varsayım",
+                  "assumption"
+                ],
+                [
+                  "zaman çizelgesi",
+                  "timeline"
+                ],
+                [
+                  "alternatif",
+                  "alternative"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I'd push back a little on that.",
+              "lang": "en",
+              "answers": [
+                "Buna biraz itiraz ederim",
+                "Buna biraz karşı çıkarım",
+                "Bu konuda biraz itiraz ederim",
+                "Bu konuda biraz karşı çıkarım"
+              ],
+              "tokens": [
+                "Buna",
+                "biraz",
+                "itiraz",
+                "ederim",
+                "katılırım",
+                "çok"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I see your point, ___ I think we need more data.",
+              "translation": "Ne demek istediğini anlıyorum ama bence daha fazla veriye ihtiyacımız var.",
+              "answer": "but",
+              "choices": [
+                "but",
+                "despite",
+                "during"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "varsayım",
+              "answer": "assumption",
+              "choices": [
+                {
+                  "text": "assumption",
+                  "emoji": "🤔"
+                },
+                {
+                  "text": "agreement",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "invoice",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "schedule",
+                  "emoji": "🗓️"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "That's a fair point, but have we considered the cost?",
+              "translation": "Haklı bir nokta ama maliyeti düşündük mü?"
+            }
+          ]
+        },
+        {
+          "id": "y6s",
+          "type": "story",
+          "title": "Baştan yazalım mı?",
+          "description": "Mimari toplantısında Emre eski ödeme servisini yeniden yazmayı öneriyor; Maya itiraz ediyor, Jake ortayı buluyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "OK, let's talk about the payment service. Emre, you wanted to share an idea?",
+              "translation": "Tamam, ödeme servisini konuşalım. Emre, bir fikir paylaşmak istiyordun?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Yes. In my opinion, we should rewrite it from scratch. The code is ten years old, and every small change breaks something.",
+              "translation": "Evet. Bence onu sıfırdan yeniden yazmalıyız. Kod on yaşında ve her küçük değişiklik bir şeyleri bozuyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Maya",
+              "avatar": "👩‍💼",
+              "text": "I see your point, but a full rewrite sounds like months of work. We have a big release in March.",
+              "translation": "Ne demek istediğini anlıyorum ama baştan yazmak aylarca iş gibi duruyor. Martta büyük bir sürümümüz var."
+            },
+            {
+              "kind": "question",
+              "prompt": "Maya’nın endişesi ne?",
+              "choices": [
+                "Marttaki büyük sürüm",
+                "Ekibin küçük olması",
+                "Kodun güvenliği"
+              ],
+              "answer": "Marttaki büyük sürüm"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "That's fair. But from my experience, patching old code takes longer in the long run.",
+              "translation": "Haklısın. Ama tecrübeme göre eski kodu yamamak uzun vadede daha çok zaman alıyor."
+            },
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "So the trade-off is speed now versus stability later.",
+              "translation": "Yani seçim, şimdi hız ile ileride sağlamlık arasında."
+            },
+            {
+              "kind": "line",
+              "speaker": "Maya",
+              "avatar": "👩‍💼",
+              "text": "Exactly. And I'd push back on stopping new features for a whole quarter.",
+              "translation": "Aynen. Ayrıca yeni özellikleri koca bir çeyrek boyunca durdurmaya da karşı çıkarım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Jake’e göre neyle neyi tartıyorlar?",
+              "choices": [
+                "Maliyet ile tasarımı",
+                "Şimdi hız ile ileride sağlamlığı",
+                "Güvenlik ile hızı"
+              ],
+              "answer": "Şimdi hız ile ileride sağlamlığı"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "What if we rewrite it step by step? We could start with the refund module, which causes the most bugs.",
+              "translation": "Peki ya adım adım yeniden yazarsak? En çok hataya yol açan iade modülüyle başlayabiliriz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Maya",
+              "avatar": "👩‍💼",
+              "text": "That sounds more realistic. How long would the refund part take?",
+              "translation": "Bu daha gerçekçi geliyor. İade kısmı ne kadar sürer?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "About three weeks, including tests.",
+              "translation": "Testler dahil yaklaşık üç hafta."
+            },
+            {
+              "kind": "line",
+              "speaker": "Jake",
+              "avatar": "🧔",
+              "text": "Then let's agree to start with the refund module and review the results after the release.",
+              "translation": "O zaman iade modülüyle başlamakta anlaşalım ve sürümden sonra sonuçlara bakalım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Ekip neye karar veriyor?",
+              "choices": [
+                "Hiçbir şeyi değiştirmemeye",
+                "Bütün servisi hemen yeniden yazmaya",
+                "Önce iade modülünü yeniden yazmaya"
+              ],
+              "answer": "Önce iade modülünü yeniden yazmaya"
+            },
+            {
+              "kind": "line",
+              "speaker": "Maya",
+              "avatar": "👩‍💼",
+              "text": "Works for me.",
+              "translation": "Bana uyar."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Deal. I'll write a short plan by Friday.",
+              "translation": "Anlaştık. Cumaya kadar kısa bir plan yazarım."
+            }
+          ]
+        },
+        {
+          "id": "y6l3",
+          "type": "lesson",
+          "title": "Trade-off ve uzlaşma",
+          "description": "the trade-off is, what if we, let's agree to, meet halfway",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "uzlaşma",
+              "answer": "compromise",
+              "choices": [
+                {
+                  "text": "compromise",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "argument",
+                  "emoji": "🗯️"
+                },
+                {
+                  "text": "deadline",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "holiday",
+                  "emoji": "🏖️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Peki ya önce daha küçük bir sürüm yayınlasak?",
+              "lang": "tr",
+              "answers": [
+                "What if we release a smaller version first",
+                "What if we ship a smaller version first",
+                "What if we released a smaller version first",
+                "How about releasing a smaller version first"
+              ],
+              "tokens": [
+                "What",
+                "if",
+                "we",
+                "release",
+                "a",
+                "smaller",
+                "version",
+                "first",
+                "why",
+                "bigger"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "There's always a trade-off ___ speed and quality.",
+              "translation": "Hız ile kalite arasında her zaman bir denge kurmak gerekir.",
+              "answer": "between",
+              "choices": [
+                "between",
+                "among",
+                "with"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Let's agree to try it for two weeks and then review the results.",
+              "answers": [
+                "Let's agree to try it for two weeks and then review the results."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "uzlaşma",
+                  "compromise"
+                ],
+                [
+                  "ödünleşim",
+                  "trade-off"
+                ],
+                [
+                  "orta yolu bulmak",
+                  "meet halfway"
+                ],
+                [
+                  "denemek",
+                  "try out"
+                ],
+                [
+                  "karar",
+                  "decision"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Can we meet halfway on this?",
+              "lang": "en",
+              "answers": [
+                "Bu konuda orta yolu bulabilir miyiz",
+                "Bu konuda bir orta yol bulabilir miyiz",
+                "Bunda orta yolu bulabilir miyiz",
+                "Bu konuda ortada buluşabilir miyiz"
+              ],
+              "tokens": [
+                "Bu",
+                "konuda",
+                "orta",
+                "yolu",
+                "bulabilir",
+                "miyiz",
+                "uzun",
+                "bulamaz"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Let's agree ___ disagree and move on.",
+              "translation": "Bu konuda anlaşamadığımızı kabul edip devam edelim.",
+              "answer": "to",
+              "choices": [
+                "to",
+                "for",
+                "with"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "karar",
+              "answer": "decision",
+              "choices": [
+                {
+                  "text": "decision",
+                  "emoji": "⚖️"
+                },
+                {
+                  "text": "opinion",
+                  "emoji": "💬"
+                },
+                {
+                  "text": "invitation",
+                  "emoji": "✉️"
+                },
+                {
+                  "text": "mistake",
+                  "emoji": "🙈"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Fair enough. Let's go with your idea and see how it works.",
+              "translation": "Makul. Senin fikrinle devam edelim ve nasıl işlediğine bakalım."
+            }
+          ]
+        },
+        {
+          "id": "y6d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Karanlık mod tartışması",
+          "description": "Leo bulduğu bir hata yüzünden sürümü ertelemek istiyor; Zeynep başka bir çözüm öneriyor ve ortada buluşuyorlar",
+          "cefr": "B2",
+          "speakers": [
+            {
+              "name": "Leo",
+              "gender": "male",
+              "avatar": "👨"
+            },
+            {
+              "name": "Zeynep",
+              "gender": "female",
+              "avatar": "👩‍💻"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Leo",
+              "text": "Zeynep, I know you want to ship tomorrow, but I found a bug in the dark mode settings.",
+              "translation": "Zeynep, yarın yayınlamak istediğini biliyorum ama karanlık mod ayarlarında bir hata buldum."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "I saw your report. To be honest, it's a small visual issue. Is it really worth delaying the whole release?",
+              "translation": "Raporunu gördüm. Açıkçası küçük bir görsel sorun. Bütün sürümü ertelemeye gerçekten değer mi?"
+            },
+            {
+              "speaker": "Leo",
+              "text": "I see your point, but it affects every user who switches themes. Some text becomes almost unreadable.",
+              "translation": "Ne demek istediğini anlıyorum ama tema değiştiren her kullanıcıyı etkiliyor. Bazı yazılar neredeyse okunmaz hale geliyor."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "Fair enough, but the release also includes the new checkout flow, and sales are waiting for it.",
+              "translation": "Haklısın ama sürümde yeni ödeme akışı da var ve satış ekibi onu bekliyor."
+            },
+            {
+              "speaker": "Leo",
+              "text": "I'm not saying we should cut corners on checkout. I'm saying we shouldn't ship something that looks broken.",
+              "translation": "Ödeme akışında işi baştan savma yapalım demiyorum. Bozuk görünen bir şeyi yayınlamayalım diyorum."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "What if we hide the dark mode switch for now and fix it in the next update?",
+              "translation": "Peki ya karanlık mod düğmesini şimdilik gizleyip bir sonraki güncellemede düzeltirsek?"
+            },
+            {
+              "speaker": "Leo",
+              "text": "Hmm. The trade-off is that some users will lose a feature they already use.",
+              "translation": "Hmm. Bunun bedeli, bazı kullanıcıların zaten kullandıkları bir özelliği kaybetmesi."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "True, but only for a week. And we could show a short message explaining why.",
+              "translation": "Doğru ama sadece bir haftalığına. Nedenini açıklayan kısa bir mesaj da gösterebiliriz."
+            },
+            {
+              "speaker": "Leo",
+              "text": "OK, I can live with that, as long as the fix is ready by next Friday.",
+              "translation": "Tamam, düzeltme gelecek cumaya kadar hazır olduğu sürece buna razıyım."
+            },
+            {
+              "speaker": "Zeynep",
+              "text": "Deal. Let's tell Jake now so we're all on the same page.",
+              "translation": "Anlaştık. Hepimiz aynı şeyi bilelim diye Jake’e şimdi söyleyelim."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Leo’nun bulduğu hata neyle ilgili?",
+              "choices": [
+                "Ödeme akışı",
+                "Karanlık mod ayarları",
+                "Giriş ekranı"
+              ],
+              "answer": "Karanlık mod ayarları",
+              "line": 0,
+              "key": "dark mode settings",
+              "skill": "detail"
+            },
+            {
+              "kind": "choice",
+              "prompt": "Zeynep ne öneriyor?",
+              "choices": [
+                "Sürümü bir ay ertelemeyi",
+                "Ödeme akışını kaldırmayı",
+                "Karanlık mod düğmesini şimdilik gizlemeyi"
+              ],
+              "answer": "Karanlık mod düğmesini şimdilik gizlemeyi",
+              "line": 5,
+              "key": "hide the dark mode switch",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Leo sonunda Zeynep’in önerisini bir şartla kabul ediyor.",
+              "answer": true,
+              "line": 8,
+              "key": "as long as the fix is ready",
+              "skill": "inference"
+            },
+            {
+              "kind": "who",
+              "quote": "sales are waiting for it",
+              "answer": "Zeynep"
+            }
+          ],
+          "idioms": [
+            "cut corners",
+            "on the same page"
+          ]
+        },
+        {
+          "id": "y6t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "y6c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "y7",
+      "title": "Teknik mülakat",
+      "description": "B2 · Sesli düşünme, netleştirici soru, karmaşıklık ve dürüst cevap",
+      "color": "0xFF1FA971",
+      "theme": "mulakat",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nTeknik mülakatta sadece doğru kodu değil, düşünce sürecini de anlatırsın. Bu notta netleştirici soru, sesli düşünme, karmaşıklık anlatma ve bilmediğini dürüstçe söyleme kalıpları var.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Netleştirme | **Just to clarify, is the input always sorted?** |\n| Yaklaşım | **One approach would be to sort the array first.** |\n| Karmaşıklık | **This solution runs in linear time.** |\n| Dürüst cevap | **I'm not a hundred percent sure, but I'd start here.** |\n\n## Biz nasıl söylüyoruz?\nTürkiye’de birçok aday soruyu duyunca sessizce düşünür, cevabı bulunca konuşur. İngilizce mülakatlarda uzun sessizlik \"takıldı\" diye okunur; bu yüzden \"Let me think out loud\" deyip adımları anlatmak beklenir. Bilmediğin bir konuda sadece \"I don't know\" deyip susmak yerine \"I'm not a hundred percent sure, but…\" ile bir yol önermek çok daha iyi izlenim bırakır. Türk adayların sık hataları: \"Can you explain me…?\" (doğrusu explain to me), \"I have a question to you\" (doğrusu for you) ve \"think loudly\" (doğrusu think out loud). Kodlamaya başlamadan önce \"Just to clarify…\" ile girdiyi ve uç durumları sormak da artı puandır.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| Can you explain me the problem again? | **Could you explain the problem to me again?** | explain iki nesneyi doğrudan almaz; kişi to ile gelir. |\n| I have a question to you. | **I have a question for you.** | Soru birine for ile yöneltilir. |\n| Let me think loudly. | **Let me think out loud.** | Kalıp think out loud’dur; loudly \"yüksek sesle bağırarak\" gibi anlaşılır. |\n| I don't know. | **I'm not sure, but I'd start by checking the input size.** | Bilmediğini söylemek iyi ama bir fikir eklemek düşünce sürecini gösterir. |\n\n## İpucu\nHer soruda aynı sırayı izle: netleştir (Just to clarify…), basit çözümü söyle, karmaşıklığını belirt, sonra iyileştir (Can we do better?).",
+      "nodes": [
+        {
+          "id": "y7l1",
+          "type": "lesson",
+          "title": "Netleştirici soru",
+          "description": "just to clarify, can I assume, what should happen if, constraints",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "uç durum",
+              "answer": "edge case",
+              "choices": [
+                {
+                  "text": "edge case",
+                  "emoji": "🧩"
+                },
+                {
+                  "text": "test case",
+                  "emoji": "🧪"
+                },
+                {
+                  "text": "bookcase",
+                  "emoji": "📚"
+                },
+                {
+                  "text": "use case",
+                  "emoji": "👤"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Netleştirmek için soruyorum: girdi her zaman sıralı mı?",
+              "lang": "tr",
+              "answers": [
+                "Just to clarify is the input always sorted",
+                "Just to be clear is the input always sorted",
+                "To clarify is the input always sorted",
+                "Just to clarify will the input always be sorted"
+              ],
+              "tokens": [
+                "Just",
+                "to",
+                "clarify",
+                "is",
+                "the",
+                "input",
+                "always",
+                "sorted",
+                "are",
+                "output"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Can I ___ that the list is not empty?",
+              "translation": "Listenin boş olmadığını varsayabilir miyim?",
+              "answer": "assume",
+              "choices": [
+                "assume",
+                "wonder",
+                "depend"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "What should happen if the input is empty?",
+              "answers": [
+                "What should happen if the input is empty?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "uç durum",
+                  "edge case"
+                ],
+                [
+                  "girdi",
+                  "input"
+                ],
+                [
+                  "çıktı",
+                  "output"
+                ],
+                [
+                  "varsaymak",
+                  "assume"
+                ],
+                [
+                  "kısıt",
+                  "constraint"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Are there any constraints on memory?",
+              "lang": "en",
+              "answers": [
+                "Bellek konusunda herhangi bir kısıt var mı",
+                "Bellekle ilgili herhangi bir kısıt var mı",
+                "Bellek konusunda bir kısıt var mı",
+                "Bellek konusunda herhangi bir kısıtlama var mı",
+                "Bellekle ilgili bir kısıtlama var mı"
+              ],
+              "tokens": [
+                "Bellek",
+                "konusunda",
+                "herhangi",
+                "bir",
+                "kısıt",
+                "var",
+                "mı",
+                "yok",
+                "zaman"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Should the function ___ null or throw an error?",
+              "translation": "Fonksiyon null mı döndürmeli yoksa hata mı fırlatmalı?",
+              "answer": "return",
+              "choices": [
+                "return",
+                "returns",
+                "returned"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "kısıt",
+              "answer": "constraint",
+              "choices": [
+                {
+                  "text": "constraint",
+                  "emoji": "📏"
+                },
+                {
+                  "text": "input",
+                  "emoji": "📥"
+                },
+                {
+                  "text": "output",
+                  "emoji": "📤"
+                },
+                {
+                  "text": "request",
+                  "emoji": "📨"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Before I start coding, can I ask a few questions?",
+              "translation": "Kodlamaya başlamadan önce birkaç soru sorabilir miyim?"
+            }
+          ]
+        },
+        {
+          "id": "y7l2",
+          "type": "lesson",
+          "title": "Sesli düşünme",
+          "description": "let me think out loud, one approach would be, my first idea is, I'd loop through",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "yaklaşım",
+              "answer": "approach",
+              "choices": [
+                {
+                  "text": "approach",
+                  "emoji": "🧭"
+                },
+                {
+                  "text": "answer",
+                  "emoji": "💬"
+                },
+                {
+                  "text": "interview",
+                  "emoji": "🎤"
+                },
+                {
+                  "text": "salary",
+                  "emoji": "💵"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sesli düşüneyim.",
+              "lang": "tr",
+              "answers": [
+                "Let me think out loud",
+                "Let me think aloud",
+                "I'll think out loud"
+              ],
+              "tokens": [
+                "Let",
+                "me",
+                "think",
+                "out",
+                "loud",
+                "you",
+                "speak"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "One approach ___ be to sort the array first.",
+              "translation": "Bir yaklaşım, önce diziyi sıralamak olabilir.",
+              "answer": "would",
+              "choices": [
+                "would",
+                "is",
+                "has"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "My first idea is to use a hash map to count the words.",
+              "answers": [
+                "My first idea is to use a hash map to count the words."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "yaklaşım",
+                  "approach"
+                ],
+                [
+                  "dizi",
+                  "array"
+                ],
+                [
+                  "döngü",
+                  "loop"
+                ],
+                [
+                  "sıralamak",
+                  "sort"
+                ],
+                [
+                  "kaba kuvvet çözümü",
+                  "brute force solution"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Let me start with a simple solution and then improve it.",
+              "lang": "en",
+              "answers": [
+                "Basit bir çözümle başlayıp sonra onu geliştireyim",
+                "Basit bir çözümle başlayayım ve sonra onu geliştireyim",
+                "Basit bir çözümle başlayıp sonra geliştireyim",
+                "Basit bir çözümle başlayayım sonra da onu geliştireyim"
+              ],
+              "tokens": [
+                "Basit",
+                "bir",
+                "çözümle",
+                "başlayıp",
+                "sonra",
+                "onu",
+                "geliştireyim",
+                "zor",
+                "bitireyim"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'd loop ___ the list and check each item.",
+              "translation": "Listeyi döngüyle baştan sona dolaşıp her öğeyi kontrol ederdim.",
+              "answer": "through",
+              "choices": [
+                "through",
+                "across",
+                "between"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "sıralamak",
+              "answer": "sort",
+              "choices": [
+                {
+                  "text": "sort",
+                  "emoji": "🔢"
+                },
+                {
+                  "text": "loop",
+                  "emoji": "🔁"
+                },
+                {
+                  "text": "search",
+                  "emoji": "🔍"
+                },
+                {
+                  "text": "print",
+                  "emoji": "🖨️"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "This works, but I think we can do better.",
+              "translation": "Bu çalışıyor ama bence daha iyisini yapabiliriz."
+            }
+          ]
+        },
+        {
+          "id": "y7s",
+          "type": "story",
+          "title": "İki sayının toplamı",
+          "description": "Nina, Emre ile teknik mülakat yapıyor; Emre soru soruyor, sesli düşünüyor ve bilmediği yerde dürüst davranıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Nina",
+              "avatar": "👩",
+              "text": "Thanks for joining, Emre. This is the coding part of your interview for the senior role at Brightloop. Here's the problem: given a list of numbers, find two that add up to a target.",
+              "translation": "Katıldığın için teşekkürler Emre. Bu, Brightloop’taki kıdemli pozisyon mülakatının kodlama kısmı. Problem şu: bir sayı listesi veriliyor, toplamı hedef sayıyı veren iki sayıyı bul."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "OK. Just to clarify, can the list contain negative numbers?",
+              "translation": "Tamam. Netleştirmek için soruyorum: listede negatif sayılar olabilir mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Nina",
+              "avatar": "👩",
+              "text": "Yes, it can. And you can assume there's exactly one answer.",
+              "translation": "Evet, olabilir. Bir de tam olarak tek bir cevap olduğunu varsayabilirsin."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre ilk olarak ne soruyor?",
+              "choices": [
+                "Ne kadar süresi olduğunu",
+                "Listede negatif sayı olup olamayacağını",
+                "Hangi dili kullanacağını"
+              ],
+              "answer": "Listede negatif sayı olup olamayacağını"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Great. Let me think out loud. The simplest approach would be to check every pair.",
+              "translation": "Harika. Sesli düşüneyim. En basit yaklaşım her ikiliyi kontrol etmek olur."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "But that's quadratic time, so it gets slow with a big list.",
+              "translation": "Ama bu karesel zaman, yani büyük bir listede yavaşlar."
+            },
+            {
+              "kind": "line",
+              "speaker": "Nina",
+              "avatar": "👩",
+              "text": "Right. Can you do better?",
+              "translation": "Doğru. Daha iyisini yapabilir misin?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "I think so. I'd go through the list once and store each number in a hash map.",
+              "translation": "Sanırım evet. Listeyi bir kez dolaşır ve her sayıyı bir hash map’te saklardım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre’nin ikinci çözümü ne kullanıyor?",
+              "choices": [
+                "Bir hash map",
+                "İç içe iki döngü",
+                "Sıralanmış bir dizi"
+              ],
+              "answer": "Bir hash map"
+            },
+            {
+              "kind": "line",
+              "speaker": "Nina",
+              "avatar": "👩",
+              "text": "And what's the complexity of that?",
+              "translation": "Peki bunun karmaşıklığı ne?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Linear time, but it uses extra memory. That's the trade-off.",
+              "translation": "Doğrusal zaman ama ek bellek kullanıyor. Bedeli bu."
+            },
+            {
+              "kind": "line",
+              "speaker": "Nina",
+              "avatar": "👩",
+              "text": "Good. One last question: how would this work in a distributed system?",
+              "translation": "Güzel. Son bir soru: bu dağıtık bir sistemde nasıl çalışırdı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "👨‍💻",
+              "text": "Honestly, I'm not a hundred percent sure. I haven't worked much with distributed systems, but I'd start by splitting the data.",
+              "translation": "Açıkçası tam emin değilim. Dağıtık sistemlerle pek çalışmadım ama işe veriyi bölerek başlardım."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre son soruya nasıl yaklaşıyor?",
+              "choices": [
+                "Cevabı biliyormuş gibi yapıyor",
+                "Soruyu cevaplamayı reddediyor",
+                "Emin olmadığını dürüstçe söyleyip bir fikir sunuyor"
+              ],
+              "answer": "Emin olmadığını dürüstçe söyleyip bir fikir sunuyor"
+            },
+            {
+              "kind": "line",
+              "speaker": "Nina",
+              "avatar": "👩",
+              "text": "I appreciate the honesty. That's exactly what we like to hear.",
+              "translation": "Dürüstlüğün için teşekkürler. Tam da duymak istediğimiz şey bu."
+            }
+          ]
+        },
+        {
+          "id": "y7l3",
+          "type": "lesson",
+          "title": "Karmaşıklık ve dürüstlük",
+          "description": "it runs in linear time, the trade-off is, I'm not a hundred percent sure, I haven't used",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "karmaşıklık",
+              "answer": "complexity",
+              "choices": [
+                {
+                  "text": "complexity",
+                  "emoji": "📈"
+                },
+                {
+                  "text": "simplicity",
+                  "emoji": "🪶"
+                },
+                {
+                  "text": "security",
+                  "emoji": "🔐"
+                },
+                {
+                  "text": "quality",
+                  "emoji": "🏅"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Tam emin değilim ama bence bu doğrusal zamanda çalışır.",
+              "lang": "tr",
+              "answers": [
+                "I'm not a hundred percent sure but I think this runs in linear time",
+                "I am not a hundred percent sure but I think this runs in linear time",
+                "I'm not completely sure but I think this runs in linear time",
+                "I'm not totally sure but I think this runs in linear time",
+                "I'm not one hundred percent sure but I think this runs in linear time",
+                "I'm not completely sure but I think it runs in linear time"
+              ],
+              "tokens": [
+                "I'm",
+                "not",
+                "a",
+                "hundred",
+                "percent",
+                "sure",
+                "but",
+                "I",
+                "think",
+                "this",
+                "runs",
+                "in",
+                "linear",
+                "time",
+                "on",
+                "constant"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "This solution uses more memory, but it's much ___.",
+              "translation": "Bu çözüm daha fazla bellek kullanıyor ama çok daha hızlı.",
+              "answer": "faster",
+              "choices": [
+                "faster",
+                "fast",
+                "fastest"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I haven't used that library before, but I'd be happy to learn it.",
+              "answers": [
+                "I haven't used that library before, but I'd be happy to learn it."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "bellek",
+                  "memory"
+                ],
+                [
+                  "doğrusal",
+                  "linear"
+                ],
+                [
+                  "sabit",
+                  "constant"
+                ],
+                [
+                  "en kötü durum",
+                  "worst case"
+                ],
+                [
+                  "verimli",
+                  "efficient"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Honestly, I don't know the answer, but here's how I'd find out.",
+              "lang": "en",
+              "answers": [
+                "Açıkçası cevabı bilmiyorum ama nasıl öğreneceğimi anlatayım",
+                "Dürüst olmak gerekirse cevabı bilmiyorum ama nasıl öğreneceğimi anlatayım",
+                "Açıkçası cevabı bilmiyorum ama nasıl bulacağımı anlatayım",
+                "Açıkçası cevabı bilmiyorum ama nasıl öğreneceğimi söyleyeyim"
+              ],
+              "tokens": [
+                "Açıkçası",
+                "cevabı",
+                "bilmiyorum",
+                "ama",
+                "nasıl",
+                "öğreneceğimi",
+                "anlatayım",
+                "biliyorum",
+                "soracağımı"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "In the worst ___, the algorithm checks every element.",
+              "translation": "En kötü durumda algoritma her öğeyi kontrol eder.",
+              "answer": "case",
+              "choices": [
+                "case",
+                "point",
+                "step"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "verimli",
+              "answer": "efficient",
+              "choices": [
+                {
+                  "text": "efficient",
+                  "emoji": "⚡"
+                },
+                {
+                  "text": "expensive",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "broken",
+                  "emoji": "💔"
+                },
+                {
+                  "text": "outdated",
+                  "emoji": "🕰️"
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "The time complexity is linear, and the space complexity is constant.",
+              "translation": "Zaman karmaşıklığı doğrusal, alan karmaşıklığı ise sabit."
+            }
+          ]
+        },
+        {
+          "id": "y7d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Mülakat sonrası",
+          "description": "Nina, bir backend adayıyla yaptığı mülakatı Jake’le değerlendiriyor",
+          "cefr": "B2",
+          "speakers": [
+            {
+              "name": "Jake",
+              "gender": "male",
+              "avatar": "🧔"
+            },
+            {
+              "name": "Nina",
+              "gender": "female",
+              "avatar": "👩"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Jake",
+              "text": "So, Nina, how did the interview with the backend candidate go?",
+              "translation": "Evet Nina, backend adayıyla mülakat nasıl geçti?"
+            },
+            {
+              "speaker": "Nina",
+              "text": "Better than I expected. He didn't solve the problem perfectly, but he could really think on his feet.",
+              "translation": "Beklediğimden iyi. Problemi kusursuz çözemedi ama gerçekten hızlı düşünüp toparlayabiliyordu."
+            },
+            {
+              "speaker": "Jake",
+              "text": "What do you mean? Did he get stuck?",
+              "translation": "Ne demek istiyorsun? Takıldı mı?"
+            },
+            {
+              "speaker": "Nina",
+              "text": "At first, yes. But instead of staying quiet, he thought out loud and explained every step.",
+              "translation": "Başta evet. Ama sessiz kalmak yerine sesli düşündü ve her adımı açıkladı."
+            },
+            {
+              "speaker": "Jake",
+              "text": "That is a good sign. Did he ask clarifying questions before he started coding?",
+              "translation": "Bu iyi bir işaret. Kodlamaya başlamadan önce netleştirici sorular sordu mu?"
+            },
+            {
+              "speaker": "Nina",
+              "text": "Two or three. He asked about empty input and memory limits, which most candidates forget.",
+              "translation": "İki üç tane. Boş girdiyi ve bellek sınırlarını sordu; çoğu aday bunları unutur."
+            },
+            {
+              "speaker": "Jake",
+              "text": "And what happened when he didn't know something?",
+              "translation": "Peki bir şeyi bilmediğinde ne oldu?"
+            },
+            {
+              "speaker": "Nina",
+              "text": "He just said so. He told me he'd never used message queues, but he described how he would learn them.",
+              "translation": "Bunu açıkça söyledi. Mesaj kuyruklarını hiç kullanmadığını söyledi ama onları nasıl öğreneceğini anlattı."
+            },
+            {
+              "speaker": "Jake",
+              "text": "Honestly, I'd take that over someone who pretends to know everything. That's a real red flag for me.",
+              "translation": "Açıkçası bunu, her şeyi biliyormuş gibi yapan birine tercih ederim. O benim için ciddi bir uyarı işareti."
+            },
+            {
+              "speaker": "Nina",
+              "text": "Same here. I'd like to invite him for the final round with the team.",
+              "translation": "Ben de öyle düşünüyorum. Onu ekiple son görüşmeye çağırmak istiyorum."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Nina’ya göre aday nasıl bir performans gösterdi?",
+              "choices": [
+                "Çok kötü",
+                "Beklediğinden iyi",
+                "Beklediği gibi sıradan"
+              ],
+              "answer": "Beklediğinden iyi",
+              "line": 1,
+              "key": "Better than I expected",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Aday takıldığında sessiz kaldı.",
+              "answer": false,
+              "line": 3,
+              "key": "instead of staying quiet",
+              "skill": "detail"
+            },
+            {
+              "kind": "choice",
+              "prompt": "Jake, her şeyi biliyormuş gibi yapan adaylar hakkında ne düşünüyor?",
+              "choices": [
+                "Onları daha çok tercih ediyor",
+                "Bunu önemsemiyor",
+                "Bunu ciddi bir uyarı işareti olarak görüyor"
+              ],
+              "answer": "Bunu ciddi bir uyarı işareti olarak görüyor",
+              "line": 8,
+              "key": "red flag",
+              "skill": "attitude"
+            },
+            {
+              "kind": "who",
+              "quote": "invite him for the final round",
+              "answer": "Nina"
+            }
+          ],
+          "idioms": [
+            "think on his feet",
+            "red flag"
+          ]
+        },
+        {
+          "id": "y7t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "y7c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    }
+  ]
+}

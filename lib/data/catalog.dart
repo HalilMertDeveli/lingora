@@ -58,6 +58,14 @@ const courseCatalog = [
     emoji: '💼',
     badge: 'MESLEK',
   ),
+  Track(
+    id: 'pro_dev',
+    kind: TrackKind.course,
+    title: 'Yazılımcı Dersleri',
+    subtitle: 'Standup, code review, teknik mülakat',
+    emoji: '⌨️',
+    badge: 'MESLEK',
+  ),
 ];
 
 /// Vocabulary tracks: knowledge map, triage and spaced review

@@ -3282,6 +3282,4610 @@
           "rewardXp": 20
         }
       ]
+    },
+    {
+      "id": "t6",
+      "title": "Havalimanında",
+      "description": "A2 · Check-in, bagaj, kapı, rötar, pasaport kontrolü ve şehre ulaşım",
+      "color": "0xFF0288D1",
+      "theme": "seyahat",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nCheck-in masasında, kapıda ve pasaport kontrolünde en çok duyacağın kalıplar bu notta. Kibarca koltuk istemeyi, rötarı anlatmayı ve şehre nasıl gideceğini sormayı göreceksin.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Kibar istek | **Could I have a window seat, please?** |\n| Rötar | **My flight is delayed by two hours.** |\n| Süre sorma | **How long does it take to the city center?** |\n\n## Biz nasıl söylüyoruz?\nTürkçede \"Cam kenarı istiyorum\" gayet kibar duyulur, ama \"I want a window seat\" İngilizcede emir gibi kaçar; \"Could I have a window seat, please?\" ya da \"I'd like a window seat\" demek gerekir. \"Rötar\" kelimesinin İngilizcede karşılığı yok: uçuş \"delayed\" olur, \"My flight did delay\" gibi bir yapı kurulmaz. Pasaportu uzatırken söylediğimiz \"Buyrun\"un karşılığı \"Take it\" değil, \"Here you are\"dır. Süre sorarken de \"How many time\" değil \"How long does it take?\" kullanılır; \"bagaj vermek\" ise \"check in a bag\"tir.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| I want window seat. | **Could I have a window seat, please?** | \"want\" ile istek kaba duyulur; ayrıca tekil sayılabilir isimden önce \"a\" unutulmaz. |\n| My flight did delay. | **My flight is delayed.** | Rötar bir durum olarak \"is delayed\" ile anlatılır. |\n| How many time does it take? | **How long does it take?** | Süre \"how long\" ile sorulur; \"time\" burada sayılmaz. |\n| Take it. (pasaportu verirken) | **Here you are.** | \"Buyrun\" diye bir şey uzatırken İngilizcede \"Here you are\" denir. |\n\n## İpucu\nHavalimanında üç kalıp çoğu işini görür: \"Could I have…?\", \"Where is gate…?\" ve \"How long does it take to…?\". Panolarda \"delayed\" ve \"canceled\" kelimelerini gözünle yakalamaya alış.",
+      "nodes": [
+        {
+          "id": "t6l1",
+          "type": "lesson",
+          "title": "Check-in ve bagaj",
+          "description": "check in, boarding pass, suitcase, window seat, carry-on",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "bavul",
+              "answer": "suitcase",
+              "choices": [
+                {
+                  "text": "suitcase",
+                  "emoji": "🧳"
+                },
+                {
+                  "text": "ticket",
+                  "emoji": "🎟️"
+                },
+                {
+                  "text": "passport",
+                  "emoji": "🛂"
+                },
+                {
+                  "text": "seat",
+                  "emoji": "💺"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kaç bavul vereceksiniz?",
+              "lang": "tr",
+              "answers": [
+                "How many bags are you checking in",
+                "How many suitcases are you checking in",
+                "How many bags will you check in",
+                "How many suitcases will you check in"
+              ],
+              "tokens": [
+                "How",
+                "many",
+                "bags",
+                "are",
+                "you",
+                "checking",
+                "in",
+                "much",
+                "out",
+                "is"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Here is your boarding ___.",
+              "translation": "Biniş kartınız burada.",
+              "answer": "pass",
+              "choices": [
+                "pass",
+                "suitcase",
+                "window"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Would you like a window or an aisle seat?",
+              "answers": [
+                "Would you like a window or an aisle seat?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "biniş kartı",
+                  "boarding pass"
+                ],
+                [
+                  "koltuk",
+                  "seat"
+                ],
+                [
+                  "kabin çantası",
+                  "carry-on bag"
+                ],
+                [
+                  "cam kenarı",
+                  "window seat"
+                ],
+                [
+                  "koridor tarafı",
+                  "aisle seat"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Please put your suitcase on the scale.",
+              "lang": "en",
+              "answers": [
+                "Lütfen bavulunuzu teraziye koyun",
+                "Bavulunuzu teraziye koyun lütfen",
+                "Lütfen bavulunuzu tartıya koyun",
+                "Bavulunuzu tartıya koyun lütfen"
+              ],
+              "tokens": [
+                "Lütfen",
+                "bavulunuzu",
+                "teraziye",
+                "koyun",
+                "çantanızı",
+                "alın",
+                "kapıya"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "kabin çantası",
+              "answer": "carry-on bag",
+              "choices": [
+                {
+                  "text": "carry-on bag",
+                  "emoji": "👜"
+                },
+                {
+                  "text": "boarding pass",
+                  "emoji": "🎫"
+                },
+                {
+                  "text": "window seat",
+                  "emoji": "🪟"
+                },
+                {
+                  "text": "passport",
+                  "emoji": "🛂"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Your bag is too ___. It's twenty-five kilos.",
+              "translation": "Çantanız çok ağır. Yirmi beş kilo.",
+              "answer": "heavy",
+              "choices": [
+                "heavy",
+                "light",
+                "small"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Cam kenarı bir koltuk istiyorum, lütfen.",
+              "lang": "tr",
+              "answers": [
+                "I'd like a window seat please",
+                "I would like a window seat please",
+                "Could I have a window seat please",
+                "Can I have a window seat please"
+              ],
+              "tokens": [
+                "I'd",
+                "like",
+                "a",
+                "window",
+                "seat",
+                "please",
+                "aisle",
+                "want",
+                "an"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Can we sit together, please?",
+              "translation": "Yan yana oturabilir miyiz, lütfen?"
+            }
+          ]
+        },
+        {
+          "id": "t6l2",
+          "type": "lesson",
+          "title": "Kapı, rötar ve pasaport kontrolü",
+          "description": "gate, boarding, delayed, canceled, passport control, purpose of your visit",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "kapı (havalimanında)",
+              "answer": "gate",
+              "choices": [
+                {
+                  "text": "gate",
+                  "emoji": "🚪"
+                },
+                {
+                  "text": "runway",
+                  "emoji": "🛫"
+                },
+                {
+                  "text": "luggage",
+                  "emoji": "🧳"
+                },
+                {
+                  "text": "ticket",
+                  "emoji": "🎟️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Uçuşum bir saat rötarlı.",
+              "lang": "tr",
+              "answers": [
+                "My flight is delayed by one hour",
+                "My flight is delayed by an hour",
+                "My flight is delayed one hour",
+                "My flight is one hour late",
+                "My flight is an hour late"
+              ],
+              "tokens": [
+                "My",
+                "flight",
+                "is",
+                "delayed",
+                "by",
+                "one",
+                "hour",
+                "gate",
+                "early",
+                "are"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "What is the purpose of your ___?",
+              "translation": "Ziyaretinizin amacı nedir?",
+              "answer": "visit",
+              "choices": [
+                "visit",
+                "seat",
+                "bag"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Your flight is now boarding at gate twelve.",
+              "answers": [
+                "Your flight is now boarding at gate twelve."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "kapı",
+                  "gate"
+                ],
+                [
+                  "rötarlı",
+                  "delayed"
+                ],
+                [
+                  "iptal edildi",
+                  "canceled"
+                ],
+                [
+                  "biniş",
+                  "boarding"
+                ],
+                [
+                  "kalkış",
+                  "departure"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I'm here on vacation for one week.",
+              "lang": "en",
+              "answers": [
+                "Bir haftalığına tatil için buradayım",
+                "Bir hafta tatil için buradayım",
+                "Tatil için bir haftalığına buradayım",
+                "Bir haftalık tatil için buradayım"
+              ],
+              "tokens": [
+                "Bir",
+                "haftalığına",
+                "tatil",
+                "için",
+                "buradayım",
+                "iş",
+                "aylığına",
+                "gidiyorum"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "pasaport kontrolü",
+              "answer": "passport control",
+              "choices": [
+                {
+                  "text": "passport control",
+                  "emoji": "🛂"
+                },
+                {
+                  "text": "baggage claim",
+                  "emoji": "🧳"
+                },
+                {
+                  "text": "duty free",
+                  "emoji": "🛍️"
+                },
+                {
+                  "text": "gate",
+                  "emoji": "🚪"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The flight to Rome is ___. Please go to the airline desk.",
+              "translation": "Roma uçuşu iptal edildi. Lütfen havayolu masasına gidin.",
+              "answer": "canceled",
+              "choices": [
+                "canceled",
+                "on time",
+                "boarding"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Biniş saat on birde başlıyor.",
+              "lang": "tr",
+              "answers": [
+                "Boarding starts at eleven",
+                "Boarding starts at 11",
+                "Boarding begins at eleven",
+                "Boarding begins at 11",
+                "Boarding starts at eleven o'clock"
+              ],
+              "tokens": [
+                "Boarding",
+                "starts",
+                "at",
+                "eleven",
+                "ends",
+                "in",
+                "gate"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "How long will you stay here?",
+              "translation": "Burada ne kadar kalacaksınız?"
+            }
+          ]
+        },
+        {
+          "id": "t6s",
+          "type": "story",
+          "title": "Check-in masasında",
+          "description": "Ece, New York’a uçacak Laura ile Daniel’in check-in işlemini yapıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Ece",
+              "avatar": "👩‍💼",
+              "text": "Good morning. Can I see your passports, please?",
+              "translation": "Günaydın. Pasaportlarınızı görebilir miyim, lütfen?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Sure. Here you are. We're flying to New York.",
+              "translation": "Tabii. Buyurun. New York’a uçuyoruz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ece",
+              "avatar": "👩‍💼",
+              "text": "Thank you. How many bags are you checking in?",
+              "translation": "Teşekkürler. Kaç bavul vereceksiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "Two suitcases. And this small bag is my carry-on.",
+              "translation": "İki bavul. Bu küçük çanta da kabin çantam."
+            },
+            {
+              "kind": "question",
+              "prompt": "Daniel kabine ne alıyor?",
+              "choices": [
+                "Küçük bir çanta",
+                "İki bavul",
+                "Büyük bir kutu"
+              ],
+              "answer": "Küçük bir çanta"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ece",
+              "avatar": "👩‍💼",
+              "text": "Please put the first suitcase on the scale.",
+              "translation": "Lütfen ilk bavulu teraziye koyun."
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Can we sit together? I'd like a window seat.",
+              "translation": "Yan yana oturabilir miyiz? Cam kenarı istiyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ece",
+              "avatar": "👩‍💼",
+              "text": "Yes, no problem. You have seats 24A and 24B.",
+              "translation": "Evet, sorun değil. 24A ve 24B koltukları sizin."
+            },
+            {
+              "kind": "question",
+              "prompt": "Laura nasıl bir koltuk istiyor?",
+              "choices": [
+                "Koridor tarafı",
+                "Cam kenarı",
+                "En ön sıra"
+              ],
+              "answer": "Cam kenarı"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ece",
+              "avatar": "👩‍💼",
+              "text": "Here are your boarding passes. Your gate is B12.",
+              "translation": "Biniş kartlarınız burada. Kapınız B12."
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "Thanks. What time is boarding?",
+              "translation": "Teşekkürler. Biniş saat kaçta?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ece",
+              "avatar": "👩‍💼",
+              "text": "The flight is delayed by thirty minutes, so boarding now starts at eleven ten.",
+              "translation": "Uçuş otuz dakika rötarlı, bu yüzden biniş artık on bir onda başlıyor."
+            },
+            {
+              "kind": "question",
+              "prompt": "Uçuş ne kadar rötarlı?",
+              "choices": [
+                "On beş dakika",
+                "Otuz dakika",
+                "Bir saat"
+              ],
+              "answer": "Otuz dakika"
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Oh no. Is there a coffee shop near the gate?",
+              "translation": "Eyvah. Kapının yakınında bir kafe var mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ece",
+              "avatar": "👩‍💼",
+              "text": "Yes, after passport control, on your left. Have a nice flight!",
+              "translation": "Evet, pasaport kontrolünden sonra, solunuzda. İyi uçuşlar!"
+            }
+          ]
+        },
+        {
+          "id": "t6l3",
+          "type": "lesson",
+          "title": "Şehre ulaşım",
+          "description": "How can I get to, How long does it take, shuttle bus, taxi stand, fare",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "taksi durağı",
+              "answer": "taxi stand",
+              "choices": [
+                {
+                  "text": "taxi stand",
+                  "emoji": "🚕"
+                },
+                {
+                  "text": "bus stop",
+                  "emoji": "🚏"
+                },
+                {
+                  "text": "metro station",
+                  "emoji": "🚇"
+                },
+                {
+                  "text": "parking lot",
+                  "emoji": "🅿️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Şehir merkezine nasıl gidebilirim?",
+              "lang": "tr",
+              "answers": [
+                "How can I get to the city center",
+                "How do I get to the city center",
+                "How can I go to the city center"
+              ],
+              "tokens": [
+                "How",
+                "can",
+                "I",
+                "get",
+                "to",
+                "the",
+                "city",
+                "center",
+                "from",
+                "take"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "How long does it ___ to the hotel?",
+              "translation": "Otele ne kadar sürer?",
+              "answer": "take",
+              "choices": [
+                "take",
+                "cost",
+                "go"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The shuttle bus leaves every thirty minutes.",
+              "answers": [
+                "The shuttle bus leaves every thirty minutes."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "şehir merkezi",
+                  "city center"
+                ],
+                [
+                  "servis otobüsü",
+                  "shuttle bus"
+                ],
+                [
+                  "yol ücreti",
+                  "fare"
+                ],
+                [
+                  "durak",
+                  "stop"
+                ],
+                [
+                  "bilet makinesi",
+                  "ticket machine"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "How much is a taxi to the city center?",
+              "lang": "en",
+              "answers": [
+                "Şehir merkezine taksi ne kadar",
+                "Şehir merkezine taksi kaç para",
+                "Şehir merkezine bir taksi ne kadar"
+              ],
+              "tokens": [
+                "Şehir",
+                "merkezine",
+                "taksi",
+                "ne",
+                "kadar",
+                "otele",
+                "nerede"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "yol ücreti",
+              "answer": "fare",
+              "choices": [
+                {
+                  "text": "fare",
+                  "emoji": "💵"
+                },
+                {
+                  "text": "ticket",
+                  "emoji": "🎟️"
+                },
+                {
+                  "text": "receipt",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "map",
+                  "emoji": "🗺️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "You can pay ___ card in the taxi.",
+              "translation": "Takside kartla ödeyebilirsiniz.",
+              "answer": "by",
+              "choices": [
+                "by",
+                "on",
+                "at"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sizi otele götürebilirim.",
+              "lang": "tr",
+              "answers": [
+                "I can take you to the hotel",
+                "I can drive you to the hotel"
+              ],
+              "tokens": [
+                "I",
+                "can",
+                "take",
+                "you",
+                "to",
+                "the",
+                "hotel",
+                "bring",
+                "at"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Please follow me to the car.",
+              "translation": "Lütfen beni arabaya kadar takip edin."
+            }
+          ]
+        },
+        {
+          "id": "t6d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Gelen yolcu",
+          "description": "Transfer görevlisi Ece, uçuşu rötar yapan Ben’i havalimanında karşılıyor",
+          "cefr": "A2",
+          "speakers": [
+            {
+              "name": "Ece",
+              "gender": "female",
+              "avatar": "👩‍💼"
+            },
+            {
+              "name": "Ben",
+              "gender": "male",
+              "avatar": "👨"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Ece",
+              "text": "Hi, are you Ben Carter? I'm Ece, from your hotel's transfer service.",
+              "translation": "Merhaba, Ben Carter siz misiniz? Ben Ece, otelinizin transfer servisinden."
+            },
+            {
+              "speaker": "Ben",
+              "text": "Yes, that's me. Sorry, my flight was delayed by two hours.",
+              "translation": "Evet, benim. Kusura bakmayın, uçuşum iki saat rötar yaptı."
+            },
+            {
+              "speaker": "Ece",
+              "text": "No problem. We checked your flight online. Do you have all your bags?",
+              "translation": "Sorun değil. Uçuşunuzu internetten takip ettik. Bütün çantalarınız yanınızda mı?"
+            },
+            {
+              "speaker": "Ben",
+              "text": "Yes, just this suitcase. How long is the drive to the hotel?",
+              "translation": "Evet, sadece bu bavul. Otele araba ile ne kadar sürüyor?"
+            },
+            {
+              "speaker": "Ece",
+              "text": "About forty-five minutes. The car is in the parking lot, on level two.",
+              "translation": "Yaklaşık kırk beş dakika. Araba otoparkta, ikinci katta."
+            },
+            {
+              "speaker": "Ben",
+              "text": "Great. Let's go!",
+              "translation": "Harika. Hadi gidelim!"
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Ben’in uçuşu ne kadar rötar yaptı?",
+              "choices": [
+                "Otuz dakika",
+                "Bir saat",
+                "İki saat"
+              ],
+              "answer": "İki saat",
+              "line": 1,
+              "key": "two hours",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Otele yolculuk yaklaşık bir saat sürüyor.",
+              "answer": false,
+              "line": 4,
+              "key": "forty-five minutes",
+              "skill": "detail"
+            },
+            {
+              "kind": "who",
+              "quote": "just this suitcase",
+              "answer": "Ben"
+            }
+          ]
+        },
+        {
+          "id": "t6t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t6c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "t7",
+      "title": "Alışveriş ve çarşı",
+      "description": "A2 · Fiyat sor, beden ve renk seç, pazarlık et, kartla öde, iade et",
+      "color": "0xFFC2185B",
+      "theme": "alisveris",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nFiyat sormanın iki doğru yolu, beden ve renk istemek, pazarlık ve iade kalıpları bu notta. Hem müşteri hem satıcı tarafından kibar cümleler var.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Fiyat (is) | **How much is this scarf?** |\n| Fiyat (cost) | **How much does this carpet cost?** |\n| Deneme | **Can I try this on?** |\n| Değişim | **I'd like to exchange this for a smaller size.** |\n\n## Biz nasıl söylüyoruz?\nTürk öğrencinin en sık hatası iki kalıbı karıştırmak: \"How much is it cost?\" yanlıştır; ya \"How much is it?\" ya da \"How much does it cost?\" denir. Çarşıda \"Bana indirim yap\" diye düşünüp \"Give me a discount\" demek İngilizcede emir gibi duyulur; \"Can you do a better price?\" ya da \"Is there a discount if I buy two?\" çok daha doğal. Satıcının dükkân önünde söylediği \"Buyrun\"un tek bir karşılığı yok: duruma göre \"Come in, have a look\" ya da \"Can I help you?\" denir. \"Kolay gelsin\"in de İngilizcede birebir karşılığı yoktur; satıcıya \"Hi, how are you?\" demek yeterli.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| How much is it cost? | **How much is it? / How much does it cost?** | \"is\" ve \"cost\" aynı cümlede fiil olarak kullanılmaz; birini seç. |\n| Give me a discount. | **Can you do a better price?** | \"Give me…\" emir gibi duyulur; pazarlıkta soru kalıbı kullan. |\n| Can I try this? | **Can I try this on?** | Kıyafet denemek \"try on\" ile söylenir; \"try\" tek başına tatmak ya da denemek anlamına da gelir. |\n| Buyrun! → Buy run! | **Come in, have a look. / Can I help you?** | \"Buyrun\"un birebir çevirisi yok; satıcı davet ya da yardım cümlesi kurar. |\n\n## İpucu\nPazarlıkta gülümse ve soru sor: \"What's your best price?\", \"What about six hundred?\". Satıcıysan son sözün \"That's my last price\" olsun.",
+      "nodes": [
+        {
+          "id": "t7l1",
+          "type": "lesson",
+          "title": "Fiyat sormak",
+          "description": "How much is it?, How much does it cost?, expensive, cheap, I'm just looking",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "pahalı",
+              "answer": "expensive",
+              "choices": [
+                {
+                  "text": "expensive",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "cheap",
+                  "emoji": "🪙"
+                },
+                {
+                  "text": "free",
+                  "emoji": "🎁"
+                },
+                {
+                  "text": "small",
+                  "emoji": "🤏"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu halı ne kadar?",
+              "lang": "tr",
+              "answers": [
+                "How much is this carpet",
+                "How much does this carpet cost",
+                "How much is this rug",
+                "How much does this rug cost"
+              ],
+              "tokens": [
+                "How",
+                "much",
+                "is",
+                "this",
+                "carpet",
+                "many",
+                "are",
+                "lamp"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "How much does this lamp ___?",
+              "translation": "Bu lamba ne kadar?",
+              "answer": "cost",
+              "choices": [
+                "cost",
+                "pay",
+                "buy"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It's a bit expensive for me.",
+              "answers": [
+                "It's a bit expensive for me."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "halı",
+                  "carpet"
+                ],
+                [
+                  "lamba",
+                  "lamp"
+                ],
+                [
+                  "baharat",
+                  "spices"
+                ],
+                [
+                  "eşarp",
+                  "scarf"
+                ],
+                [
+                  "mücevher",
+                  "jewelry"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Do you take credit cards?",
+              "lang": "en",
+              "answers": [
+                "Kredi kartı alıyor musunuz",
+                "Kredi kartı kabul ediyor musunuz",
+                "Kredi kartıyla ödeme alıyor musunuz"
+              ],
+              "tokens": [
+                "Kredi",
+                "kartı",
+                "alıyor",
+                "musunuz",
+                "nakit",
+                "istiyor"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "ucuz",
+              "answer": "cheap",
+              "choices": [
+                {
+                  "text": "cheap",
+                  "emoji": "🪙"
+                },
+                {
+                  "text": "expensive",
+                  "emoji": "💎"
+                },
+                {
+                  "text": "new",
+                  "emoji": "✨"
+                },
+                {
+                  "text": "old",
+                  "emoji": "🏺"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Can I pay in ___?",
+              "translation": "Nakit ödeyebilir miyim?",
+              "answer": "cash",
+              "choices": [
+                "cash",
+                "receipt",
+                "bag"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Sadece bakıyorum, teşekkürler.",
+              "lang": "tr",
+              "answers": [
+                "I'm just looking thanks",
+                "I am just looking thanks",
+                "I'm just looking thank you",
+                "I am just looking thank you",
+                "Just looking thanks"
+              ],
+              "tokens": [
+                "I'm",
+                "just",
+                "looking",
+                "thanks",
+                "buying",
+                "very"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "How much is this scarf?",
+              "translation": "Bu eşarp ne kadar?"
+            }
+          ]
+        },
+        {
+          "id": "t7l2",
+          "type": "lesson",
+          "title": "Beden ve renk",
+          "description": "size, color, try on, fitting room, bigger, too small",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "beden",
+              "answer": "size",
+              "choices": [
+                {
+                  "text": "size",
+                  "emoji": "📏"
+                },
+                {
+                  "text": "color",
+                  "emoji": "🎨"
+                },
+                {
+                  "text": "price",
+                  "emoji": "🏷️"
+                },
+                {
+                  "text": "shoe",
+                  "emoji": "👟"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bunu deneyebilir miyim?",
+              "lang": "tr",
+              "answers": [
+                "Can I try this on",
+                "Could I try this on",
+                "May I try this on",
+                "Can I try it on",
+                "Could I try it on"
+              ],
+              "tokens": [
+                "Can",
+                "I",
+                "try",
+                "this",
+                "on",
+                "off",
+                "wear"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Do you have this in a ___ size?",
+              "translation": "Bunun daha büyük bedeni var mı?",
+              "answer": "bigger",
+              "choices": [
+                "bigger",
+                "heavier",
+                "cheaper"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "The fitting room is over there.",
+              "answers": [
+                "The fitting room is over there."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "beden",
+                  "size"
+                ],
+                [
+                  "renk",
+                  "color"
+                ],
+                [
+                  "kırmızı",
+                  "red"
+                ],
+                [
+                  "mavi",
+                  "blue"
+                ],
+                [
+                  "deneme kabini",
+                  "fitting room"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "It's too small for me.",
+              "lang": "en",
+              "answers": [
+                "Bana çok küçük",
+                "Benim için çok küçük",
+                "Bu bana çok küçük",
+                "Bana fazla küçük"
+              ],
+              "tokens": [
+                "Bana",
+                "çok",
+                "küçük",
+                "büyük",
+                "uzun"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "deneme kabini",
+              "answer": "fitting room",
+              "choices": [
+                {
+                  "text": "fitting room",
+                  "emoji": "🚪"
+                },
+                {
+                  "text": "checkout",
+                  "emoji": "🛒"
+                },
+                {
+                  "text": "mirror",
+                  "emoji": "🪞"
+                },
+                {
+                  "text": "shelf",
+                  "emoji": "🗄️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Do you have it in ___?",
+              "translation": "Bunun mavisi var mı?",
+              "answer": "blue",
+              "choices": [
+                "blue",
+                "cheap",
+                "fitting"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hangi bedeni giyiyorsunuz?",
+              "lang": "tr",
+              "answers": [
+                "What size are you",
+                "What size do you wear",
+                "What's your size",
+                "What is your size"
+              ],
+              "tokens": [
+                "What",
+                "size",
+                "are",
+                "you",
+                "color",
+                "have"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Would you like to try it on?",
+              "translation": "Denemek ister misiniz?"
+            }
+          ]
+        },
+        {
+          "id": "t7s",
+          "type": "story",
+          "title": "Çarşıda pazarlık",
+          "description": "Laura ile Daniel, Kapalıçarşı’da Hakan’ın dükkânında seramik kase alıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Hakan",
+              "avatar": "👨‍🦳",
+              "text": "Welcome! Please come in and have a look.",
+              "translation": "Hoş geldiniz! Buyurun, içeri girin, bir bakın."
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Thank you. These bowls are beautiful. How much is this blue one?",
+              "translation": "Teşekkürler. Bu kaseler çok güzel. Şu mavi olan ne kadar?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Hakan",
+              "avatar": "👨‍🦳",
+              "text": "That one is handmade. It's eight hundred lira.",
+              "translation": "O el yapımı. Sekiz yüz lira."
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "Eight hundred? That's a bit expensive.",
+              "translation": "Sekiz yüz mü? Biraz pahalı."
+            },
+            {
+              "kind": "question",
+              "prompt": "Mavi kase kaç lira?",
+              "choices": [
+                "Beş yüz",
+                "Altı yüz",
+                "Sekiz yüz"
+              ],
+              "answer": "Sekiz yüz"
+            },
+            {
+              "kind": "line",
+              "speaker": "Hakan",
+              "avatar": "👨‍🦳",
+              "text": "For you, seven hundred. It's a good price.",
+              "translation": "Size yedi yüz. İyi bir fiyat."
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "What about six hundred each if we buy two?",
+              "translation": "İki tane alırsak tanesi altı yüze ne dersiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Hakan",
+              "avatar": "👨‍🦳",
+              "text": "Two bowls for thirteen hundred. That's my last price.",
+              "translation": "İki kase bin üç yüz. Son fiyatım bu."
+            },
+            {
+              "kind": "question",
+              "prompt": "Hakan’ın son fiyatı nedir?",
+              "choices": [
+                "İki kase 1200 lira",
+                "İki kase 1300 lira",
+                "Bir kase 600 lira"
+              ],
+              "answer": "İki kase 1300 lira"
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "Deal! Do you take credit cards?",
+              "translation": "Anlaştık! Kredi kartı alıyor musunuz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Hakan",
+              "avatar": "👨‍🦳",
+              "text": "Yes, of course. Shall I wrap them for you?",
+              "translation": "Evet, tabii. Sizin için paketleyeyim mi?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Yes, please. We're flying home on Sunday.",
+              "translation": "Evet, lütfen. Pazar günü eve uçuyoruz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Hakan",
+              "avatar": "👨‍🦳",
+              "text": "Then I'll wrap them very carefully. Have a nice trip!",
+              "translation": "O zaman çok dikkatli paketlerim. İyi yolculuklar!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Nasıl ödüyorlar?",
+              "choices": [
+                "Nakit",
+                "Kredi kartıyla",
+                "Euro ile"
+              ],
+              "answer": "Kredi kartıyla"
+            }
+          ]
+        },
+        {
+          "id": "t7l3",
+          "type": "lesson",
+          "title": "Pazarlık ve iade",
+          "description": "discount, last price, receipt, refund, exchange, change",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "fiş",
+              "answer": "receipt",
+              "choices": [
+                {
+                  "text": "receipt",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "bag",
+                  "emoji": "🛍️"
+                },
+                {
+                  "text": "wallet",
+                  "emoji": "👛"
+                },
+                {
+                  "text": "coin",
+                  "emoji": "🪙"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bunu iade edebilir miyim?",
+              "lang": "tr",
+              "answers": [
+                "Can I return this",
+                "Could I return this",
+                "May I return this",
+                "Can I return it",
+                "Could I return it"
+              ],
+              "tokens": [
+                "Can",
+                "I",
+                "return",
+                "this",
+                "buy",
+                "back"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Can I see your ___, please?",
+              "translation": "Fişinizi görebilir miyim, lütfen?",
+              "answer": "receipt",
+              "choices": [
+                "receipt",
+                "refund",
+                "exchange"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Is there a discount if I buy two?",
+              "answers": [
+                "Is there a discount if I buy two?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "fiş",
+                  "receipt"
+                ],
+                [
+                  "para iadesi",
+                  "refund"
+                ],
+                [
+                  "değiştirmek",
+                  "exchange"
+                ],
+                [
+                  "son fiyat",
+                  "last price"
+                ],
+                [
+                  "para üstü",
+                  "change"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I'd like to exchange this for a smaller size.",
+              "lang": "en",
+              "answers": [
+                "Bunu daha küçük bir bedenle değiştirmek istiyorum",
+                "Bunu daha küçük bedenle değiştirmek istiyorum",
+                "Bunu bir küçük bedenle değiştirmek istiyorum"
+              ],
+              "tokens": [
+                "Bunu",
+                "daha",
+                "küçük",
+                "bir",
+                "bedenle",
+                "değiştirmek",
+                "istiyorum",
+                "büyük",
+                "iade"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "para üstü",
+              "answer": "change",
+              "choices": [
+                {
+                  "text": "change",
+                  "emoji": "🪙"
+                },
+                {
+                  "text": "receipt",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "price",
+                  "emoji": "🏷️"
+                },
+                {
+                  "text": "wallet",
+                  "emoji": "👛"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Sorry, we don't give refunds, but you can ___ it.",
+              "translation": "Üzgünüm, para iadesi yapmıyoruz ama değiştirebilirsiniz.",
+              "answer": "exchange",
+              "choices": [
+                "exchange",
+                "receipt",
+                "discount"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu benim son fiyatım.",
+              "lang": "tr",
+              "answers": [
+                "This is my last price",
+                "That's my last price",
+                "That is my last price",
+                "This is my final price",
+                "That's my final price"
+              ],
+              "tokens": [
+                "This",
+                "is",
+                "my",
+                "last",
+                "price",
+                "your",
+                "first"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Here is your change and your receipt.",
+              "translation": "Buyurun, para üstünüz ve fişiniz."
+            }
+          ]
+        },
+        {
+          "id": "t7d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Eşarp değişimi",
+          "description": "Laura, dün aldığı eşarbı Hakan’ın dükkânında başka bir renkle değiştiriyor",
+          "cefr": "A2",
+          "speakers": [
+            {
+              "name": "Laura",
+              "gender": "female",
+              "avatar": "👩"
+            },
+            {
+              "name": "Hakan",
+              "gender": "male",
+              "avatar": "👨‍🦳"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Laura",
+              "text": "Hi, I bought this scarf here yesterday. Can I exchange it?",
+              "translation": "Merhaba, bu eşarbı dün buradan aldım. Değiştirebilir miyim?"
+            },
+            {
+              "speaker": "Hakan",
+              "text": "Of course. Is there a problem with it?",
+              "translation": "Tabii. Bir sorun mu var?"
+            },
+            {
+              "speaker": "Laura",
+              "text": "The color is too dark. Do you have it in light blue?",
+              "translation": "Rengi çok koyu. Açık mavisi var mı?"
+            },
+            {
+              "speaker": "Hakan",
+              "text": "Yes, we do. Here you are. Do you have your receipt?",
+              "translation": "Evet, var. Buyurun. Fişiniz yanınızda mı?"
+            },
+            {
+              "speaker": "Laura",
+              "text": "Yes, here it is. Is the price the same?",
+              "translation": "Evet, işte burada. Fiyatı aynı mı?"
+            },
+            {
+              "speaker": "Hakan",
+              "text": "The light blue one is a little cheaper. Here is fifty lira back.",
+              "translation": "Açık mavi olan biraz daha ucuz. Buyurun, elli lira geri."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Laura eşarbı ne zaman aldı?",
+              "choices": [
+                "Dün",
+                "Bu sabah",
+                "Geçen hafta"
+              ],
+              "answer": "Dün",
+              "line": 0,
+              "key": "yesterday",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Açık mavi eşarp daha pahalı.",
+              "answer": false,
+              "line": 5,
+              "key": "a little cheaper",
+              "skill": "detail"
+            },
+            {
+              "kind": "who",
+              "quote": "The color is too dark",
+              "answer": "Laura"
+            }
+          ]
+        },
+        {
+          "id": "t7t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t7c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "t8",
+      "title": "Garson ve misafir",
+      "description": "B1 · Alerji ve diyet istekleri, yemek önerme, Türk mutfağı, hesap ve bahşiş",
+      "color": "0xFFEF6C00",
+      "theme": "yemek",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nAlerji ve diyet isteklerini sormak ve anlatmak, Türk yemeklerini tarif etmek, hesap ve bahşiş konuşmak bu notta. Hem garsonun hem misafirin kullanacağı kalıplar var.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Alerji | **I am allergic to nuts.** |\n| Tarif | **It is made with rice and herbs.** |\n| Öneri | **I'd recommend the lentil soup.** |\n| Hesap | **Could we have the check, please?** |\n\n## Biz nasıl söylüyoruz?\nTürkçede garsona \"Bir çay istiyorum\" demek normaldir, ama \"I want a tea\" İngilizcede sert duyulur; \"Could I have a tea, please?\" ya da \"I'll have the soup\" denir. \"Hesabı getirin\" de \"Give me the bill\" olarak çevrilince kabalaşır; \"Could we have the check, please?\" doğru kalıptır. Amerika'da \"check\", İngiltere'de \"bill\" denir; ikisi de anlaşılır. Alerjide \"I have allergy to nuts\" değil \"I'm allergic to nuts\" ya da \"I have a nut allergy\" denir. Garson olarak \"Buyrun, menü\" derken \"Here is the menu\" ya da \"Here you go\" yeterli; \"Afiyet olsun\" için de en yakın karşılık \"Enjoy your meal\".\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| I want a lentil soup. | **Could I have the lentil soup, please?** | \"I want\" siparişte kaba duyulur; \"Could I have…?\" ya da \"I'll have…\" kullan. |\n| Give me the bill. | **Could we have the check, please?** | Emir kipi garsona karşı kaba kaçar; rica kalıbı kullan. |\n| I have allergy to nuts. | **I'm allergic to nuts.** | Doğru kalıp \"be allergic to\" ya da \"have a nut allergy\". |\n| It is making with rice. | **It is made with rice.** | Yemek tarifinde edilgen yapı kullanılır: is made with. |\n\n## İpucu\nMisafir alerjiden bahsederse önce tekrar et, sonra mutfağa sor: \"So, no nuts at all. I'll check with the chef.\" Bu cümle güven verir.",
+      "nodes": [
+        {
+          "id": "t8l1",
+          "type": "lesson",
+          "title": "Alerji ve diyet istekleri",
+          "description": "I'm allergic to, gluten-free, vegan, Does it contain, without",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "glütensiz",
+              "answer": "gluten-free",
+              "choices": [
+                {
+                  "text": "gluten-free",
+                  "emoji": "🌾"
+                },
+                {
+                  "text": "sugar-free",
+                  "emoji": "🍬"
+                },
+                {
+                  "text": "dairy-free",
+                  "emoji": "🥛"
+                },
+                {
+                  "text": "spicy",
+                  "emoji": "🌶️"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Fındığa alerjim var.",
+              "lang": "tr",
+              "answers": [
+                "I'm allergic to hazelnuts",
+                "I am allergic to hazelnuts",
+                "I have a hazelnut allergy"
+              ],
+              "tokens": [
+                "I'm",
+                "allergic",
+                "to",
+                "hazelnuts",
+                "of",
+                "peanuts"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Does this dish ___ any dairy?",
+              "translation": "Bu yemekte hiç süt ürünü var mı?",
+              "answer": "contain",
+              "choices": [
+                "contain",
+                "prefer",
+                "order"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'm vegan, so no meat, eggs or dairy, please.",
+              "answers": [
+                "I'm vegan, so no meat, eggs or dairy, please."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "süt ürünleri",
+                  "dairy"
+                ],
+                [
+                  "yumurta",
+                  "egg"
+                ],
+                [
+                  "et",
+                  "meat"
+                ],
+                [
+                  "buğday",
+                  "wheat"
+                ],
+                [
+                  "kabuklu deniz ürünleri",
+                  "shellfish"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Could you make it without butter?",
+              "lang": "en",
+              "answers": [
+                "Tereyağı olmadan yapabilir misiniz",
+                "Tereyağsız yapabilir misiniz",
+                "Bunu tereyağı olmadan yapabilir misiniz",
+                "Bunu tereyağsız yapabilir misiniz"
+              ],
+              "tokens": [
+                "Tereyağı",
+                "olmadan",
+                "yapabilir",
+                "misiniz",
+                "ile",
+                "yağlı"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "süt ürünü",
+              "answer": "dairy",
+              "choices": [
+                {
+                  "text": "dairy",
+                  "emoji": "🥛"
+                },
+                {
+                  "text": "meat",
+                  "emoji": "🥩"
+                },
+                {
+                  "text": "wheat",
+                  "emoji": "🌾"
+                },
+                {
+                  "text": "egg",
+                  "emoji": "🥚"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'll check with the ___ and come right back.",
+              "translation": "Şefe sorup hemen geri geleceğim.",
+              "answer": "chef",
+              "choices": [
+                "chef",
+                "plate",
+                "ice"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu çorba vegan mı?",
+              "lang": "tr",
+              "answers": [
+                "Is this soup vegan"
+              ],
+              "tokens": [
+                "Is",
+                "this",
+                "soup",
+                "vegan",
+                "spicy",
+                "are"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "We take allergies very seriously.",
+              "translation": "Alerjileri çok ciddiye alıyoruz."
+            }
+          ]
+        },
+        {
+          "id": "t8l2",
+          "type": "lesson",
+          "title": "Türk mutfağını anlatmak",
+          "description": "It's made with, It's a kind of, I'd recommend, served with, You should try",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "fırında",
+              "answer": "baked",
+              "choices": [
+                {
+                  "text": "baked",
+                  "emoji": "🥧"
+                },
+                {
+                  "text": "fried",
+                  "emoji": "🍳"
+                },
+                {
+                  "text": "grilled",
+                  "emoji": "🔥"
+                },
+                {
+                  "text": "raw",
+                  "emoji": "🍣"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kıyma, soğan ve maydanozla yapılır.",
+              "lang": "tr",
+              "answers": [
+                "It's made with ground meat onions and parsley",
+                "It is made with ground meat onions and parsley",
+                "It's made with minced meat onions and parsley",
+                "It is made with minced meat onions and parsley"
+              ],
+              "tokens": [
+                "It's",
+                "made",
+                "with",
+                "ground",
+                "meat",
+                "onions",
+                "and",
+                "parsley",
+                "from",
+                "cheese"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Lahmacun is a thin, crispy ___ with spicy meat on top.",
+              "translation": "Lahmacun, üstünde baharatlı kıyma olan ince ve çıtır bir yassı ekmektir.",
+              "answer": "flatbread",
+              "choices": [
+                "flatbread",
+                "soup",
+                "drink"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It's usually served with yogurt and fresh herbs.",
+              "answers": [
+                "It's usually served with yogurt and fresh herbs."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "fırında",
+                  "baked"
+                ],
+                [
+                  "ızgara",
+                  "grilled"
+                ],
+                [
+                  "kızarmış",
+                  "fried"
+                ],
+                [
+                  "doldurulmuş",
+                  "stuffed"
+                ],
+                [
+                  "tatlı",
+                  "sweet"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "You should try the lentil soup.",
+              "lang": "en",
+              "answers": [
+                "Mercimek çorbasını denemelisiniz",
+                "Mercimek çorbasını mutlaka deneyin",
+                "Mercimek çorbasını tatmalısınız"
+              ],
+              "tokens": [
+                "Mercimek",
+                "çorbasını",
+                "denemelisiniz",
+                "tavuk",
+                "istersiniz"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "mercimek",
+              "answer": "lentils",
+              "choices": [
+                {
+                  "text": "lentils",
+                  "emoji": "🫘"
+                },
+                {
+                  "text": "rice",
+                  "emoji": "🍚"
+                },
+                {
+                  "text": "eggplant",
+                  "emoji": "🍆"
+                },
+                {
+                  "text": "pepper",
+                  "emoji": "🫑"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Menemen is a kind ___ scrambled eggs with tomatoes and peppers.",
+              "translation": "Menemen, domatesli ve biberli bir tür yumurta yemeğidir.",
+              "answer": "of",
+              "choices": [
+                "of",
+                "for",
+                "with"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Acılı mı istersiniz, acısız mı?",
+              "lang": "tr",
+              "answers": [
+                "Would you like it spicy or mild",
+                "Do you want it spicy or mild",
+                "Would you like it hot or mild"
+              ],
+              "tokens": [
+                "Would",
+                "you",
+                "like",
+                "it",
+                "spicy",
+                "or",
+                "mild",
+                "sweet",
+                "are"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I'd recommend the eggplant kebab. It's our specialty.",
+              "translation": "Patlıcan kebabını öneririm. Bizim en meşhur yemeğimiz."
+            }
+          ]
+        },
+        {
+          "id": "t8s",
+          "type": "story",
+          "title": "Özel istekler",
+          "description": "Garson Emre, glüten yiyemeyen Laura’ya ve vegan Daniel’e uygun yemekler öneriyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "Good evening! Have you had a chance to look at the menu?",
+              "translation": "İyi akşamlar! Menüye bakma fırsatınız oldu mu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Yes, but I have a question. I can't eat gluten. What would you recommend?",
+              "translation": "Evet ama bir sorum var. Glüten yiyemiyorum. Ne önerirsiniz?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "The grilled chicken with rice is gluten-free. I'll also ask the kitchen to keep it away from the bread.",
+              "translation": "Pilavlı ızgara tavuk glütensiz. Mutfaktan ekmekten uzak tutmalarını da rica edeceğim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "And I'm vegan. Is there anything traditional without meat or dairy?",
+              "translation": "Ben de veganım. Etsiz ve süt ürünsüz geleneksel bir şey var mı?"
+            },
+            {
+              "kind": "question",
+              "prompt": "Laura neyi yiyemiyor?",
+              "choices": [
+                "Glüteni",
+                "Süt ürünlerini",
+                "Eti"
+              ],
+              "answer": "Glüteni"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "You should try our stuffed peppers. They're filled with rice, herbs and pine nuts.",
+              "translation": "Biber dolmamızı denemelisiniz. İçi pirinç, yeşillik ve çam fıstığıyla dolu."
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "That sounds great. Are they cooked in butter?",
+              "translation": "Kulağa harika geliyor. Tereyağıyla mı pişiriliyor?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "No, only olive oil. In fact, most of our cold dishes are vegan.",
+              "translation": "Hayır, sadece zeytinyağıyla. Hatta soğuk yemeklerimizin çoğu vegan."
+            },
+            {
+              "kind": "question",
+              "prompt": "Biber dolması neyle pişiriliyor?",
+              "choices": [
+                "Tereyağıyla",
+                "Zeytinyağıyla",
+                "Ayçiçek yağıyla"
+              ],
+              "answer": "Zeytinyağıyla"
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Perfect. And what about dessert?",
+              "translation": "Mükemmel. Peki tatlı olarak ne var?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "Baklava has wheat flour and butter, so I'd suggest the fresh fruit plate for both of you.",
+              "translation": "Baklavada buğday unu ve tereyağı var, bu yüzden ikiniz için de taze meyve tabağını öneririm."
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "Good idea. We'll have that, thanks.",
+              "translation": "İyi fikir. Onu alalım, teşekkürler."
+            },
+            {
+              "kind": "line",
+              "speaker": "Emre",
+              "avatar": "🤵",
+              "text": "Great choice. I'll bring you some water while you wait.",
+              "translation": "Harika seçim. Beklerken size biraz su getireyim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Emre tatlı olarak ne öneriyor?",
+              "choices": [
+                "Baklava",
+                "Meyve tabağı",
+                "Dondurma"
+              ],
+              "answer": "Meyve tabağı"
+            }
+          ]
+        },
+        {
+          "id": "t8l3",
+          "type": "lesson",
+          "title": "Hesap ve bahşiş",
+          "description": "the check, Is service included?, pay separately, keep the change, tip",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "hesap (restoranda)",
+              "answer": "check",
+              "choices": [
+                {
+                  "text": "check",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "tip",
+                  "emoji": "💵"
+                },
+                {
+                  "text": "menu",
+                  "emoji": "📋"
+                },
+                {
+                  "text": "change",
+                  "emoji": "🪙"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hesabı alabilir miyiz, lütfen?",
+              "lang": "tr",
+              "answers": [
+                "Could we have the check please",
+                "Can we have the check please",
+                "Could we have the bill please",
+                "Can we have the bill please",
+                "Could we get the check please",
+                "Can we get the check please"
+              ],
+              "tokens": [
+                "Could",
+                "we",
+                "have",
+                "the",
+                "check",
+                "please",
+                "I",
+                "give"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Is service ___?",
+              "translation": "Servis dahil mi?",
+              "answer": "included",
+              "choices": [
+                "included",
+                "cooked",
+                "spicy"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Can we pay separately, please?",
+              "answers": [
+                "Can we pay separately, please?"
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "bahşiş",
+                  "tip"
+                ],
+                [
+                  "hesabı bölmek",
+                  "split the check"
+                ],
+                [
+                  "ayrı ayrı",
+                  "separately"
+                ],
+                [
+                  "servis ücreti",
+                  "service charge"
+                ],
+                [
+                  "toplam",
+                  "total"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Keep the change.",
+              "lang": "en",
+              "answers": [
+                "Üstü kalsın",
+                "Para üstü kalsın",
+                "Üstü sizde kalsın"
+              ],
+              "tokens": [
+                "Üstü",
+                "kalsın",
+                "hesap",
+                "getirin"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "servis ücreti",
+              "answer": "service charge",
+              "choices": [
+                {
+                  "text": "service charge",
+                  "emoji": "🛎️"
+                },
+                {
+                  "text": "total",
+                  "emoji": "➕"
+                },
+                {
+                  "text": "receipt",
+                  "emoji": "🧾"
+                },
+                {
+                  "text": "tip",
+                  "emoji": "💵"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "In Turkey, people often leave a ___ of five to ten percent.",
+              "translation": "Türkiye’de insanlar genellikle yüzde beş ile on arasında bahşiş bırakır.",
+              "answer": "tip",
+              "choices": [
+                "tip",
+                "check",
+                "change"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Kartla ayrı ayrı ödeyebilir miyiz?",
+              "lang": "tr",
+              "answers": [
+                "Can we pay separately by card",
+                "Could we pay separately by card",
+                "Can we pay by card separately",
+                "Could we pay by card separately",
+                "Can we pay separately with a card"
+              ],
+              "tokens": [
+                "Can",
+                "we",
+                "pay",
+                "separately",
+                "by",
+                "card",
+                "together",
+                "cash"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I hope you enjoyed your meal.",
+              "translation": "Umarım yemeğinizden keyif almışsınızdır."
+            }
+          ]
+        },
+        {
+          "id": "t8d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Yemek sonrası",
+          "description": "Emre, Laura’ya lahmacunu anlatıyor ve hesap ile bahşiş hakkındaki sorularını yanıtlıyor",
+          "cefr": "B1",
+          "speakers": [
+            {
+              "name": "Emre",
+              "gender": "male",
+              "avatar": "🤵"
+            },
+            {
+              "name": "Laura",
+              "gender": "female",
+              "avatar": "👩"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Emre",
+              "text": "How was everything? Did you enjoy the lahmacun?",
+              "translation": "Her şey nasıldı? Lahmacunu beğendiniz mi?"
+            },
+            {
+              "speaker": "Laura",
+              "text": "It was delicious! I've never had anything like it. What exactly is on top?",
+              "translation": "Çok lezzetliydi! Hiç böyle bir şey yememiştim. Üstünde tam olarak ne var?"
+            },
+            {
+              "speaker": "Emre",
+              "text": "Spicy ground meat with onions and tomatoes. You squeeze lemon on it and roll it up with parsley.",
+              "translation": "Soğan ve domatesle hazırlanmış baharatlı kıyma. Üstüne limon sıkıp maydanozla rulo yapıyorsunuz."
+            },
+            {
+              "speaker": "Laura",
+              "text": "That explains the fresh taste. Could we have the check, please? And is service included?",
+              "translation": "Taze tadı buradan geliyormuş. Hesabı alabilir miyiz, lütfen? Bir de servis dahil mi?"
+            },
+            {
+              "speaker": "Emre",
+              "text": "Service isn't included, but there's no pressure. Most people leave around five to ten percent.",
+              "translation": "Servis dahil değil ama hiçbir zorunluluk yok. Çoğu kişi yüzde beş ile on civarında bırakıyor."
+            },
+            {
+              "speaker": "Laura",
+              "text": "Good to know. Can I pay by card and leave the tip in cash?",
+              "translation": "İyi ki söylediniz. Kartla ödeyip bahşişi nakit bırakabilir miyim?"
+            },
+            {
+              "speaker": "Emre",
+              "text": "Of course. Many guests do that. I'll bring the card machine right away.",
+              "translation": "Tabii ki. Birçok misafir öyle yapıyor. Kart makinesini hemen getiriyorum."
+            },
+            {
+              "speaker": "Laura",
+              "text": "Thank you, Emre. We'll definitely come back before we fly home.",
+              "translation": "Teşekkürler, Emre. Eve dönmeden önce kesinlikle tekrar geleceğiz."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Lahmacunun üstüne ne sıkılıyor?",
+              "choices": [
+                "Limon",
+                "Nar ekşisi",
+                "Yoğurt"
+              ],
+              "answer": "Limon",
+              "line": 2,
+              "key": "squeeze lemon",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Servis ücreti hesaba dahil.",
+              "answer": false,
+              "line": 4,
+              "key": "Service isn't included",
+              "skill": "detail"
+            },
+            {
+              "kind": "choice",
+              "prompt": "Laura bahşişi nasıl bırakmak istiyor?",
+              "choices": [
+                "Nakit olarak",
+                "Kartla",
+                "Hiç bırakmak istemiyor"
+              ],
+              "answer": "Nakit olarak",
+              "line": 5,
+              "key": "tip in cash",
+              "skill": "detail"
+            },
+            {
+              "kind": "who",
+              "quote": "Many guests do that",
+              "answer": "Emre"
+            }
+          ]
+        },
+        {
+          "id": "t8t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t8c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "t9",
+      "title": "Sağlık ve acil durum",
+      "description": "B1 · Eczane, doktor, belirtiler, kayıp pasaport, çalınan cüzdan ve polis",
+      "color": "0xFFD32F2F",
+      "theme": "saglik",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nEczanede derdini anlatmak, doktora belirtileri söylemek ve kayıp ya da çalıntı eşyayı bildirmek için gereken kalıplar bu notta. Otel çalışanının misafire yardım ederken kullandığı cümleler de var.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Belirti | **I have a headache.** |\n| İhtiyaç | **I need a doctor.** |\n| Çalıntı (edilgen) | **My wallet was stolen.** |\n| Kullanım | **Take one tablet twice a day.** |\n\n## Biz nasıl söylüyoruz?\nTürkçede \"Başım ağrıyor\" deriz; İngilizcede en doğal karşılık \"I have a headache\". \"My head is aching very\" gibi birebir çeviriler kulağa tuhaf gelir. Kaybetmekle çalınmayı da ayırmak gerekir: \"I lost my passport\" senin kaybettiğini, \"My passport was stolen\" birinin çaldığını anlatır; sigorta ve polis için bu fark önemlidir. Eczane Türkiye'de \"pharmacy\"dir; Amerika'da kozmetik de satan büyük mağazalara \"drugstore\" denir. \"Geçmiş olsun\"un birebir karşılığı yok; \"I hope you feel better soon\" ya da \"Get well soon\" denir.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| My head is aching very. | **I have a bad headache.** | Ağrılar çoğunlukla \"have a … ache\" kalıbıyla anlatılır. |\n| My wallet stole. | **My wallet was stolen.** | Cüzdan çalmaz, çalınır: edilgen yapı (was stolen) gerekir. |\n| I lost my passport. (biri çaldıysa) | **My passport was stolen.** | Polis ve sigorta için kaybolmakla çalınmak farklı durumlardır. |\n| Past be! (Geçmiş olsun) | **I hope you feel better soon.** | \"Geçmiş olsun\"un birebir çevirisi yok; iyi dilek cümlesi kurulur. |\n\n## İpucu\nAcil durumda kısa ve net ol: önce \"I need a doctor\" ya da \"Please call an ambulance\", sonra belirtiyi söyle. Uzun cümleyi sonra kurarsın.",
+      "nodes": [
+        {
+          "id": "t9l1",
+          "type": "lesson",
+          "title": "Eczanede",
+          "description": "pharmacy, painkiller, I have a headache, prescription, twice a day",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "ağrı kesici",
+              "answer": "painkiller",
+              "choices": [
+                {
+                  "text": "painkiller",
+                  "emoji": "💊"
+                },
+                {
+                  "text": "bandage",
+                  "emoji": "🩹"
+                },
+                {
+                  "text": "thermometer",
+                  "emoji": "🌡️"
+                },
+                {
+                  "text": "syringe",
+                  "emoji": "💉"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Başım çok ağrıyor.",
+              "lang": "tr",
+              "answers": [
+                "I have a bad headache",
+                "I've got a bad headache",
+                "I have a terrible headache",
+                "My head hurts a lot",
+                "My head really hurts"
+              ],
+              "tokens": [
+                "I",
+                "have",
+                "a",
+                "bad",
+                "headache",
+                "stomachache",
+                "am"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Do you need a ___ for this medicine?",
+              "translation": "Bu ilaç için reçete gerekiyor mu?",
+              "answer": "prescription",
+              "choices": [
+                "prescription",
+                "fever",
+                "headache"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Take one tablet three times a day.",
+              "answers": [
+                "Take one tablet three times a day."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "ağrı kesici",
+                  "painkiller"
+                ],
+                [
+                  "reçete",
+                  "prescription"
+                ],
+                [
+                  "ilaç",
+                  "medicine"
+                ],
+                [
+                  "öksürük şurubu",
+                  "cough syrup"
+                ],
+                [
+                  "yara bandı",
+                  "bandage"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Is there a pharmacy open at night?",
+              "lang": "en",
+              "answers": [
+                "Gece açık bir eczane var mı",
+                "Geceleri açık bir eczane var mı",
+                "Gece açık eczane var mı",
+                "Gece açık olan bir eczane var mı"
+              ],
+              "tokens": [
+                "Gece",
+                "açık",
+                "bir",
+                "eczane",
+                "var",
+                "mı",
+                "kapalı",
+                "doktor"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "öksürük",
+              "answer": "cough",
+              "choices": [
+                {
+                  "text": "cough",
+                  "emoji": "😷"
+                },
+                {
+                  "text": "fever",
+                  "emoji": "🤒"
+                },
+                {
+                  "text": "headache",
+                  "emoji": "🤕"
+                },
+                {
+                  "text": "sneeze",
+                  "emoji": "🤧"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Take it twice a day ___ meals.",
+              "translation": "Günde iki kez, yemeklerden sonra alın.",
+              "answer": "after",
+              "choices": [
+                "after",
+                "ago",
+                "since"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu ilaç uyku yapar mı?",
+              "lang": "tr",
+              "answers": [
+                "Does this medicine make you sleepy",
+                "Does this medicine make you drowsy",
+                "Will this medicine make me sleepy",
+                "Will this medicine make me drowsy"
+              ],
+              "tokens": [
+                "Does",
+                "this",
+                "medicine",
+                "make",
+                "you",
+                "sleepy",
+                "me",
+                "take"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Excuse me, do you have something for a sore throat?",
+              "translation": "Affedersiniz, boğaz ağrısı için bir şeyiniz var mı?"
+            }
+          ]
+        },
+        {
+          "id": "t9l2",
+          "type": "lesson",
+          "title": "Doktorda ve acil durumda",
+          "description": "I need a doctor, symptoms, fever, Call an ambulance, How long have you had",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "ambulans",
+              "answer": "ambulance",
+              "choices": [
+                {
+                  "text": "ambulance",
+                  "emoji": "🚑"
+                },
+                {
+                  "text": "police car",
+                  "emoji": "🚓"
+                },
+                {
+                  "text": "fire truck",
+                  "emoji": "🚒"
+                },
+                {
+                  "text": "taxi",
+                  "emoji": "🚕"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Doktora ihtiyacım var.",
+              "lang": "tr",
+              "answers": [
+                "I need a doctor",
+                "I need to see a doctor"
+              ],
+              "tokens": [
+                "I",
+                "need",
+                "a",
+                "doctor",
+                "want",
+                "the"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "How long have you ___ this pain?",
+              "translation": "Bu ağrı ne zamandır var?",
+              "answer": "had",
+              "choices": [
+                "had",
+                "made",
+                "given"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Please call an ambulance. It's an emergency.",
+              "answers": [
+                "Please call an ambulance. It's an emergency."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "ateş",
+                  "fever"
+                ],
+                [
+                  "belirti",
+                  "symptom"
+                ],
+                [
+                  "acil durum",
+                  "emergency"
+                ],
+                [
+                  "sigorta",
+                  "insurance"
+                ],
+                [
+                  "hastane",
+                  "hospital"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I feel dizzy and I can't breathe well.",
+              "lang": "en",
+              "answers": [
+                "Başım dönüyor ve iyi nefes alamıyorum",
+                "Başım dönüyor ve rahat nefes alamıyorum",
+                "Başım dönüyor ve düzgün nefes alamıyorum"
+              ],
+              "tokens": [
+                "Başım",
+                "dönüyor",
+                "ve",
+                "iyi",
+                "nefes",
+                "alamıyorum",
+                "ağrıyor",
+                "uyuyamıyorum"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "mide ağrısı",
+              "answer": "stomachache",
+              "choices": [
+                {
+                  "text": "stomachache",
+                  "emoji": "🤢"
+                },
+                {
+                  "text": "toothache",
+                  "emoji": "🦷"
+                },
+                {
+                  "text": "earache",
+                  "emoji": "👂"
+                },
+                {
+                  "text": "backache",
+                  "emoji": "🦴"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Do you have travel ___?",
+              "translation": "Seyahat sigortanız var mı?",
+              "answer": "insurance",
+              "choices": [
+                "insurance",
+                "pharmacy",
+                "fever"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "En yakın hastane nerede?",
+              "lang": "tr",
+              "answers": [
+                "Where is the nearest hospital",
+                "Where's the nearest hospital"
+              ],
+              "tokens": [
+                "Where",
+                "is",
+                "the",
+                "nearest",
+                "hospital",
+                "pharmacy",
+                "a"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "My son has a high fever.",
+              "translation": "Oğlumun ateşi çok yüksek."
+            }
+          ]
+        },
+        {
+          "id": "t9s",
+          "type": "story",
+          "title": "Gece yarısı doktor",
+          "description": "Ben gece hastalanıyor; resepsiyondaki Deniz, otelin doktoru Dr. Aksoy’u çağırıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Ben",
+              "avatar": "👨",
+              "text": "Hello, reception? I'm sorry to call so late, but I feel really sick.",
+              "translation": "Alo, resepsiyon mu? Bu kadar geç aradığım için kusura bakmayın ama kendimi çok kötü hissediyorum."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Don't worry, Mr. Carter. What are your symptoms?",
+              "translation": "Merak etmeyin, Bay Carter. Belirtileriniz neler?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ben",
+              "avatar": "👨",
+              "text": "I have a high fever and a bad stomachache. I've been throwing up since dinner.",
+              "translation": "Ateşim çok yüksek ve midem çok ağrıyor. Akşam yemeğinden beri kusuyorum."
+            },
+            {
+              "kind": "question",
+              "prompt": "Ben’in belirtileri neler?",
+              "choices": [
+                "Ateş ve mide ağrısı",
+                "Baş ağrısı ve öksürük",
+                "Diş ağrısı"
+              ],
+              "answer": "Ateş ve mide ağrısı"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "I'm sorry to hear that. We have a doctor on call. I can ask her to come to your room.",
+              "translation": "Bunu duyduğuma üzüldüm. Nöbetçi bir doktorumuz var. Odanıza gelmesini isteyebilirim."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ben",
+              "avatar": "👨",
+              "text": "Yes, please. I need a doctor. Will it be expensive?",
+              "translation": "Evet, lütfen. Doktora ihtiyacım var. Pahalı olur mu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "It's a fixed fee, and you can claim it back from your travel insurance.",
+              "translation": "Sabit bir ücret ve bunu seyahat sigortanızdan geri alabilirsiniz."
+            },
+            {
+              "kind": "question",
+              "prompt": "Ben doktor ücretini nereden geri alabilir?",
+              "choices": [
+                "Otelden",
+                "Seyahat sigortasından",
+                "Havayolundan"
+              ],
+              "answer": "Seyahat sigortasından"
+            },
+            {
+              "kind": "line",
+              "speaker": "Dr. Aksoy",
+              "avatar": "👩‍⚕️",
+              "text": "Good evening, Mr. Carter. I'm Dr. Aksoy. When did the pain start?",
+              "translation": "İyi akşamlar, Bay Carter. Ben Dr. Aksoy. Ağrı ne zaman başladı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ben",
+              "avatar": "👨",
+              "text": "About three hours ago, right after I ate some seafood.",
+              "translation": "Yaklaşık üç saat önce, deniz ürünü yedikten hemen sonra."
+            },
+            {
+              "kind": "line",
+              "speaker": "Dr. Aksoy",
+              "avatar": "👩‍⚕️",
+              "text": "It looks like mild food poisoning. Drink plenty of water and get some rest.",
+              "translation": "Hafif bir gıda zehirlenmesine benziyor. Bol su için ve biraz dinlenin."
+            },
+            {
+              "kind": "line",
+              "speaker": "Dr. Aksoy",
+              "avatar": "👩‍⚕️",
+              "text": "Take this medicine twice a day, after meals.",
+              "translation": "Bu ilacı günde iki kez, yemeklerden sonra alın."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ben",
+              "avatar": "👨",
+              "text": "Thank you, Doctor. Can I get it at a pharmacy now?",
+              "translation": "Teşekkürler, doktor. Şimdi eczaneden alabilir miyim?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "There's a pharmacy open all night next to the hotel. I'll send someone to get it for you.",
+              "translation": "Otelin yanında bütün gece açık bir eczane var. İlacı almak için birini göndereceğim."
+            },
+            {
+              "kind": "question",
+              "prompt": "Ben ilacı nasıl kullanmalı?",
+              "choices": [
+                "Günde bir kez, aç karnına",
+                "Günde iki kez, yemeklerden sonra",
+                "Sadece ağrı olunca"
+              ],
+              "answer": "Günde iki kez, yemeklerden sonra"
+            }
+          ]
+        },
+        {
+          "id": "t9l3",
+          "type": "lesson",
+          "title": "Kayıp ve çalıntı",
+          "description": "I lost my passport, My wallet was stolen, police report, consulate, lost and found",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "cüzdan",
+              "answer": "wallet",
+              "choices": [
+                {
+                  "text": "wallet",
+                  "emoji": "👛"
+                },
+                {
+                  "text": "passport",
+                  "emoji": "🛂"
+                },
+                {
+                  "text": "phone",
+                  "emoji": "📱"
+                },
+                {
+                  "text": "keys",
+                  "emoji": "🔑"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Cüzdanım çalındı.",
+              "lang": "tr",
+              "answers": [
+                "My wallet was stolen",
+                "My wallet has been stolen",
+                "Someone stole my wallet"
+              ],
+              "tokens": [
+                "My",
+                "wallet",
+                "was",
+                "stolen",
+                "lost",
+                "is"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I ___ my passport. I can't find it anywhere.",
+              "translation": "Pasaportumu kaybettim. Hiçbir yerde bulamıyorum.",
+              "answer": "lost",
+              "choices": [
+                "lost",
+                "stolen",
+                "losing"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "You need a police report for your insurance.",
+              "answers": [
+                "You need a police report for your insurance."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "polis karakolu",
+                  "police station"
+                ],
+                [
+                  "konsolosluk",
+                  "consulate"
+                ],
+                [
+                  "kayıp eşya bürosu",
+                  "lost and found"
+                ],
+                [
+                  "polis tutanağı",
+                  "police report"
+                ],
+                [
+                  "hırsız",
+                  "thief"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "When did you last see your bag?",
+              "lang": "en",
+              "answers": [
+                "Çantanızı en son ne zaman gördünüz",
+                "Çantanızı son olarak ne zaman gördünüz"
+              ],
+              "tokens": [
+                "Çantanızı",
+                "en",
+                "son",
+                "ne",
+                "zaman",
+                "gördünüz",
+                "nerede",
+                "kaybettiniz"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "konsolosluk",
+              "answer": "consulate",
+              "choices": [
+                {
+                  "text": "consulate",
+                  "emoji": "🏛️"
+                },
+                {
+                  "text": "police station",
+                  "emoji": "🚓"
+                },
+                {
+                  "text": "hospital",
+                  "emoji": "🏥"
+                },
+                {
+                  "text": "bank",
+                  "emoji": "🏦"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "My phone was ___ on the tram.",
+              "translation": "Telefonum tramvayda çalındı.",
+              "answer": "stolen",
+              "choices": [
+                "stolen",
+                "stole",
+                "steal"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Polis karakolu nerede?",
+              "lang": "tr",
+              "answers": [
+                "Where is the police station",
+                "Where's the police station"
+              ],
+              "tokens": [
+                "Where",
+                "is",
+                "the",
+                "police",
+                "station",
+                "hospital",
+                "a"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I'll call the police for you right now.",
+              "translation": "Sizin için hemen polisi arayacağım."
+            }
+          ]
+        },
+        {
+          "id": "t9d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Tramvayda kaybolan cüzdan",
+          "description": "Daniel’in cüzdanı tramvayda çalınıyor; Deniz ona ne yapması gerektiğini anlatıyor",
+          "cefr": "B1",
+          "speakers": [
+            {
+              "name": "Deniz",
+              "gender": "female",
+              "avatar": "👩‍💼"
+            },
+            {
+              "name": "Daniel",
+              "gender": "male",
+              "avatar": "🧔"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Daniel",
+              "text": "Deniz, I think someone took my wallet on the tram. My credit cards and some cash were in it.",
+              "translation": "Deniz, sanırım tramvayda biri cüzdanımı aldı. İçinde kredi kartlarım ve biraz nakit vardı."
+            },
+            {
+              "speaker": "Deniz",
+              "text": "Oh no, I'm so sorry. First, call your bank and cancel the cards. Is your passport safe?",
+              "translation": "Eyvah, çok üzüldüm. Önce bankanızı arayıp kartları iptal ettirin. Pasaportunuz güvende mi?"
+            },
+            {
+              "speaker": "Daniel",
+              "text": "Luckily, yes. It was in the hotel safe. Do I need to go to the police?",
+              "translation": "Neyse ki evet. Otelin kasasındaydı. Polise gitmem gerekiyor mu?"
+            },
+            {
+              "speaker": "Deniz",
+              "text": "Yes, you'll need a police report for your travel insurance. The station is a ten-minute walk from here.",
+              "translation": "Evet, seyahat sigortanız için polis tutanağına ihtiyacınız olacak. Karakol buradan on dakikalık yürüme mesafesinde."
+            },
+            {
+              "speaker": "Daniel",
+              "text": "Will they speak English? I'm a little worried about that.",
+              "translation": "İngilizce konuşuyorlar mı? Bu konuda biraz endişeliyim."
+            },
+            {
+              "speaker": "Deniz",
+              "text": "There is also a tourist police office in the old town, and their officers speak English.",
+              "translation": "Eski şehirde bir de turizm polisi var ve oradaki memurlar İngilizce konuşuyor."
+            },
+            {
+              "speaker": "Daniel",
+              "text": "That's a relief. Could you write the address down for me?",
+              "translation": "İçim rahatladı. Adresi benim için yazabilir misiniz?"
+            },
+            {
+              "speaker": "Deniz",
+              "text": "Of course. And if you need cash today, the hotel can help you.",
+              "translation": "Tabii ki. Bugün nakde ihtiyacınız olursa otel de size yardımcı olabilir."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Deniz, Daniel’e önce ne yapmasını söylüyor?",
+              "choices": [
+                "Bankayı arayıp kartları iptal ettirmesini",
+                "Konsolosluğa gitmesini",
+                "Tramvaya geri dönmesini"
+              ],
+              "answer": "Bankayı arayıp kartları iptal ettirmesini",
+              "line": 1,
+              "key": "cancel the cards",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Daniel’in pasaportu da çalındı.",
+              "answer": false,
+              "line": 2,
+              "key": "It was in the hotel safe",
+              "skill": "detail"
+            },
+            {
+              "kind": "choice",
+              "prompt": "Daniel neden polis tutanağına ihtiyaç duyuyor?",
+              "choices": [
+                "Seyahat sigortası için",
+                "Konsolosluk için",
+                "Otelin kasası için"
+              ],
+              "answer": "Seyahat sigortası için",
+              "line": 3,
+              "key": "for your travel insurance",
+              "skill": "detail"
+            },
+            {
+              "kind": "who",
+              "quote": "That's a relief",
+              "answer": "Daniel"
+            }
+          ]
+        },
+        {
+          "id": "t9t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t9c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "t10",
+      "title": "Rehber: tarihi yerler",
+      "description": "B2 · Tarihi yeri anlat, grubu yönet, soruları karşıla, zamanı ayarla",
+      "color": "0xFF8E24AA",
+      "theme": "sanat",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nTarihi bir yapıyı edilgen yapılarla anlatmak, \"It is said that…\" ile rivayet aktarmak ve grubu yönetmek için gereken kalıplar bu notta. Zor soruları zarifçe karşılamanın yolları da var.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Edilgen geçmiş | **The cistern was built in the sixth century.** |\n| Rivayet | **It is said that the dome seems to float.** |\n| Tarihlenme | **The walls date back to the fifth century.** |\n| Dönüşüm | **The church was converted into a mosque.** |\n\n## Biz nasıl söylüyoruz?\nTürkçede \"Ayasofya 537'de yapıldı\" derken edilgen eki fiile ekleriz; İngilizcede \"was\" unutulursa cümle \"Hagia Sophia built in 537\" gibi eksik kalır. \"Yaptırıldı\" anlamında da \"was built under Emperor Justinian\" demek yeterli. Rivayet için \"It is told that\" değil, \"It is said that\" ya da \"Legend has it that\" kullanılır. Yüzyıl ve yıllarda \"at\" değil \"in\" gelir: in 1453, in the sixth century. Gruba \"Arkadaşlar!\" diye seslenmenin karşılığı \"Friends!\" değil, \"Okay, everyone\" ya da \"Folks\"tur; \"Buyrun, bu taraftan\" da \"This way, please\" olur.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| Hagia Sophia built in 537. | **Hagia Sophia was built in 537.** | Edilgen yapıda \"was\" yardımcı fiili şarttır. |\n| It was build in 1616. | **It was built in 1616.** | Edilgende fiilin üçüncü hâli (built) kullanılır. |\n| It is told that the dome floats. | **It is said that the dome seems to float.** | Rivayet kalıbı \"It is said that…\" şeklindedir. |\n| at the fifteenth century | **in the fifteenth century** | Yüzyıl ve yıllardan önce \"in\" gelir. |\n\n## İpucu\nBilmediğin bir soru gelirse uydurma: \"That's a great question. I'm not entirely sure, but I'll find out for you.\" Bu cümle güvenini artırır, azaltmaz.",
+      "nodes": [
+        {
+          "id": "t10l1",
+          "type": "lesson",
+          "title": "Tarihi yeri anlatmak",
+          "description": "was built in, was designed by, It is said that, dates back to, was converted into",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "kubbe",
+              "answer": "dome",
+              "choices": [
+                {
+                  "text": "dome",
+                  "emoji": "🕌"
+                },
+                {
+                  "text": "column",
+                  "emoji": "🏛️"
+                },
+                {
+                  "text": "wall",
+                  "emoji": "🧱"
+                },
+                {
+                  "text": "tower",
+                  "emoji": "🗼"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Saray on beşinci yüzyılda inşa edildi.",
+              "lang": "tr",
+              "answers": [
+                "The palace was built in the fifteenth century",
+                "The palace was built in the 15th century",
+                "The palace was constructed in the fifteenth century",
+                "The palace was constructed in the 15th century"
+              ],
+              "tokens": [
+                "The",
+                "palace",
+                "was",
+                "built",
+                "in",
+                "the",
+                "fifteenth",
+                "century",
+                "is",
+                "by",
+                "on"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The mosque was designed ___ a famous architect.",
+              "translation": "Cami ünlü bir mimar tarafından tasarlandı.",
+              "answer": "by",
+              "choices": [
+                "by",
+                "at",
+                "of"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "It is said that the tower was once used as a lighthouse.",
+              "answers": [
+                "It is said that the tower was once used as a lighthouse."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "sütun",
+                  "column"
+                ],
+                [
+                  "imparator",
+                  "emperor"
+                ],
+                [
+                  "yüzyıl",
+                  "century"
+                ],
+                [
+                  "mimar",
+                  "architect"
+                ],
+                [
+                  "kalıntılar",
+                  "ruins"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "The city walls date back to the fifth century.",
+              "lang": "en",
+              "answers": [
+                "Şehir surları beşinci yüzyıldan kalma",
+                "Şehir surları beşinci yüzyıldan kalmadır",
+                "Şehir surları beşinci yüzyıla dayanıyor",
+                "Şehir surları beşinci yüzyıla uzanıyor"
+              ],
+              "tokens": [
+                "Şehir",
+                "surları",
+                "beşinci",
+                "yüzyıldan",
+                "kalma",
+                "altıncı",
+                "yapıldı"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "çeşme",
+              "answer": "fountain",
+              "choices": [
+                {
+                  "text": "fountain",
+                  "emoji": "⛲"
+                },
+                {
+                  "text": "bridge",
+                  "emoji": "🌉"
+                },
+                {
+                  "text": "castle",
+                  "emoji": "🏰"
+                },
+                {
+                  "text": "tower",
+                  "emoji": "🗼"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "The church was converted ___ a mosque in 1453.",
+              "translation": "Kilise 1453’te camiye dönüştürüldü.",
+              "answer": "into",
+              "choices": [
+                "into",
+                "onto",
+                "over"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu yapının bir zamanlar saray olduğu söylenir.",
+              "lang": "tr",
+              "answers": [
+                "It is said that this building was once a palace",
+                "It's said that this building was once a palace",
+                "This building is said to have once been a palace",
+                "They say this building was once a palace"
+              ],
+              "tokens": [
+                "It",
+                "is",
+                "said",
+                "that",
+                "this",
+                "building",
+                "was",
+                "once",
+                "a",
+                "palace",
+                "were",
+                "says"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "The cistern was built to store water for the city.",
+              "translation": "Sarnıç, şehrin suyunu depolamak için inşa edildi."
+            }
+          ]
+        },
+        {
+          "id": "t10l2",
+          "type": "lesson",
+          "title": "Grubu yönetmek",
+          "description": "gather around, stay together, we're running behind, make sure, head over to",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "kalabalık",
+              "answer": "crowd",
+              "choices": [
+                {
+                  "text": "crowd",
+                  "emoji": "👥"
+                },
+                {
+                  "text": "entrance",
+                  "emoji": "🚪"
+                },
+                {
+                  "text": "exit",
+                  "emoji": "🏃"
+                },
+                {
+                  "text": "ticket",
+                  "emoji": "🎫"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Lütfen birbirinizden ayrılmayın.",
+              "lang": "tr",
+              "answers": [
+                "Please stay together",
+                "Please stay close together",
+                "Please don't get separated",
+                "Please do not get separated"
+              ],
+              "tokens": [
+                "Please",
+                "stay",
+                "together",
+                "apart",
+                "go"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We're running a little ___ schedule, so let's keep moving.",
+              "translation": "Programın biraz gerisindeyiz, o yüzden ilerlemeye devam edelim.",
+              "answer": "behind",
+              "choices": [
+                "behind",
+                "after",
+                "late"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Please make sure you have your ticket with you.",
+              "answers": [
+                "Please make sure you have your ticket with you."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "mola",
+                  "break"
+                ],
+                [
+                  "kuyruk",
+                  "line"
+                ],
+                [
+                  "zamanında",
+                  "on time"
+                ],
+                [
+                  "tuvalet",
+                  "restroom"
+                ],
+                [
+                  "programın gerisinde",
+                  "behind schedule"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Let's take a fifteen-minute break here.",
+              "lang": "en",
+              "answers": [
+                "Burada on beş dakikalık bir mola verelim",
+                "Burada on beş dakika mola verelim",
+                "Burada on beş dakikalık mola verelim"
+              ],
+              "tokens": [
+                "Burada",
+                "on",
+                "beş",
+                "dakikalık",
+                "bir",
+                "mola",
+                "verelim",
+                "saatlik",
+                "yemek"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "tuvalet",
+              "answer": "restroom",
+              "choices": [
+                {
+                  "text": "restroom",
+                  "emoji": "🚻"
+                },
+                {
+                  "text": "coffee shop",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "gift shop",
+                  "emoji": "🎁"
+                },
+                {
+                  "text": "ticket office",
+                  "emoji": "🎟️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "If anyone gets lost, ___ over to the main gate.",
+              "translation": "Kaybolan olursa ana kapıya gidin.",
+              "answer": "head",
+              "choices": [
+                "head",
+                "take",
+                "make"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bir kişi eksik.",
+              "lang": "tr",
+              "answers": [
+                "One person is missing",
+                "Someone is missing",
+                "We're missing one person",
+                "We are missing one person"
+              ],
+              "tokens": [
+                "One",
+                "person",
+                "is",
+                "missing",
+                "are",
+                "lost"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Please stay close, as it gets very crowded inside.",
+              "translation": "Lütfen yakın durun, çünkü içerisi çok kalabalık oluyor."
+            }
+          ]
+        },
+        {
+          "id": "t10s",
+          "type": "story",
+          "title": "Ayasofya önünde",
+          "description": "Rehber Ozan, Laura ve Daniel’in de bulunduğu gruba Ayasofya’yı anlatıyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨",
+              "text": "Okay, everyone, gather around, please. Can the people at the back hear me?",
+              "translation": "Pekâlâ, herkes etrafıma toplansın lütfen. Arkadakiler beni duyabiliyor mu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "Loud and clear!",
+              "translation": "Gayet net!"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨",
+              "text": "Great. Hagia Sophia was built under Emperor Justinian, and it was completed in just five years, in 537.",
+              "translation": "Harika. Ayasofya İmparator Justinianus döneminde inşa edildi ve sadece beş yılda, 537’de tamamlandı."
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Five years? That's incredible for a building this size.",
+              "translation": "Beş yıl mı? Bu büyüklükte bir yapı için inanılmaz."
+            },
+            {
+              "kind": "question",
+              "prompt": "Ayasofya kaç yılda tamamlandı?",
+              "choices": [
+                "Beş yılda",
+                "On yılda",
+                "Yirmi yılda"
+              ],
+              "answer": "Beş yılda"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨",
+              "text": "It really is. After the Ottomans took the city in 1453, it was converted into a mosque, and the minarets were added later.",
+              "translation": "Gerçekten öyle. Osmanlılar şehri 1453’te aldıktan sonra camiye dönüştürüldü, minareler de sonradan eklendi."
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "Is it true that it was a museum for a while?",
+              "translation": "Bir süre müze olduğu doğru mu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨",
+              "text": "That's right. It served as a museum for most of the twentieth century, and it became a mosque again in 2020.",
+              "translation": "Doğru. Yirminci yüzyılın büyük bölümünde müze olarak kullanıldı ve 2020’de yeniden cami oldu."
+            },
+            {
+              "kind": "question",
+              "prompt": "Ayasofya ne zaman yeniden cami oldu?",
+              "choices": [
+                "1934’te",
+                "1453’te",
+                "2020’de"
+              ],
+              "answer": "2020’de"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨",
+              "text": "It is said that the dome seems to float above the windows. You'll see what I mean once we're inside.",
+              "translation": "Kubbenin pencerelerin üzerinde süzülüyormuş gibi göründüğü söylenir. İçeri girince ne demek istediğimi anlayacaksınız."
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Do we need to cover our heads?",
+              "translation": "Başımızı örtmemiz gerekiyor mu?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨",
+              "text": "Women should cover their hair, and everyone takes off their shoes. I have spare scarves if anyone needs one.",
+              "translation": "Kadınların saçlarını örtmesi gerekiyor, herkes de ayakkabılarını çıkarıyor. İhtiyacı olan olursa yedek eşarplarım var."
+            },
+            {
+              "kind": "line",
+              "speaker": "Ozan",
+              "avatar": "👨",
+              "text": "We'll have forty minutes inside. Let's meet back here by the fountain at eleven sharp.",
+              "translation": "İçeride kırk dakikamız olacak. Saat tam on birde burada, çeşmenin yanında tekrar buluşalım."
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "Eleven sharp, got it. We won't keep you waiting this time!",
+              "translation": "Tam on bir, anlaşıldı. Bu sefer sizi bekletmeyeceğiz!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Grup nerede ve ne zaman buluşacak?",
+              "choices": [
+                "Saat on birde çeşmenin yanında",
+                "Saat on ikide girişte",
+                "Saat on birde otobüste"
+              ],
+              "answer": "Saat on birde çeşmenin yanında"
+            }
+          ]
+        },
+        {
+          "id": "t10l3",
+          "type": "lesson",
+          "title": "Sorular ve zamanlama",
+          "description": "That's a great question, I'm not entirely sure, as far as I know, plenty of time, feel free to",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "rehberli tur",
+              "answer": "guided tour",
+              "choices": [
+                {
+                  "text": "guided tour",
+                  "emoji": "🚩"
+                },
+                {
+                  "text": "audio guide",
+                  "emoji": "🎧"
+                },
+                {
+                  "text": "souvenir",
+                  "emoji": "🧸"
+                },
+                {
+                  "text": "brochure",
+                  "emoji": "📄"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Çok güzel bir soru.",
+              "lang": "tr",
+              "answers": [
+                "That's a great question",
+                "That is a great question",
+                "That's a very good question",
+                "That is a very good question",
+                "That's a good question"
+              ],
+              "tokens": [
+                "That's",
+                "a",
+                "great",
+                "question",
+                "answer",
+                "an"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "As far as I ___, the mosaics were covered for a long time.",
+              "translation": "Bildiğim kadarıyla mozaikler uzun süre örtülüydü.",
+              "answer": "know",
+              "choices": [
+                "know",
+                "think",
+                "mean"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I'm not entirely sure, but I'll find out for you.",
+              "answers": [
+                "I'm not entirely sure, but I'll find out for you."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "mozaik",
+                  "mosaic"
+                ],
+                [
+                  "fresk",
+                  "fresco"
+                ],
+                [
+                  "hediyelik eşya",
+                  "souvenir"
+                ],
+                [
+                  "sesli rehber",
+                  "audio guide"
+                ],
+                [
+                  "fotoğraf çekmek",
+                  "take photos"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Feel free to take photos, but no flash, please.",
+              "lang": "en",
+              "answers": [
+                "Fotoğraf çekmekten çekinmeyin ama flaş kullanmayın lütfen",
+                "Rahatça fotoğraf çekebilirsiniz ama lütfen flaş kullanmayın",
+                "Fotoğraf çekebilirsiniz ama lütfen flaş kullanmayın",
+                "Fotoğraf çekebilirsiniz ama flaş kullanmayın lütfen"
+              ],
+              "tokens": [
+                "Fotoğraf",
+                "çekmekten",
+                "çekinmeyin",
+                "ama",
+                "flaş",
+                "kullanmayın",
+                "lütfen",
+                "kullanın",
+                "video"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "program (gün planı)",
+              "answer": "schedule",
+              "choices": [
+                {
+                  "text": "schedule",
+                  "emoji": "🗓️"
+                },
+                {
+                  "text": "map",
+                  "emoji": "🗺️"
+                },
+                {
+                  "text": "ticket",
+                  "emoji": "🎫"
+                },
+                {
+                  "text": "guidebook",
+                  "emoji": "📘"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "Don't worry, we've got ___ of time.",
+              "translation": "Merak etmeyin, bolca vaktimiz var.",
+              "answer": "plenty",
+              "choices": [
+                "plenty",
+                "much",
+                "many"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Yirmi dakika sonra burada buluşalım.",
+              "lang": "tr",
+              "answers": [
+                "Let's meet here in twenty minutes",
+                "Let's meet back here in twenty minutes",
+                "Let's meet here in 20 minutes",
+                "Let's meet back here in 20 minutes",
+                "Let us meet here in twenty minutes"
+              ],
+              "tokens": [
+                "Let's",
+                "meet",
+                "here",
+                "in",
+                "twenty",
+                "minutes",
+                "after",
+                "hours"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "We have about an hour left before the palace closes.",
+              "translation": "Saray kapanmadan önce yaklaşık bir saatimiz kaldı."
+            }
+          ]
+        },
+        {
+          "id": "t10d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Yerebatan Sarnıcı",
+          "description": "Ozan, Yerebatan Sarnıcı’nda Laura’nın sütunlar ve Medusa başları hakkındaki sorularını yanıtlıyor",
+          "cefr": "B2",
+          "speakers": [
+            {
+              "name": "Ozan",
+              "gender": "male",
+              "avatar": "👨"
+            },
+            {
+              "name": "Laura",
+              "gender": "female",
+              "avatar": "👩"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Ozan",
+              "text": "Watch your step, everyone, it's a bit slippery down here. This is the Basilica Cistern, built in the sixth century to store water for the Great Palace.",
+              "translation": "Herkes adımına dikkat etsin, burası biraz kaygan. Burası Yerebatan Sarnıcı; altıncı yüzyılda Büyük Saray’a su depolamak için inşa edildi."
+            },
+            {
+              "speaker": "Laura",
+              "text": "It's so much bigger than I expected. How many columns are there?",
+              "translation": "Beklediğimden çok daha büyük. Kaç sütun var?"
+            },
+            {
+              "speaker": "Ozan",
+              "text": "Three hundred and thirty-six, and many of them were taken from older buildings. That's why they don't all match.",
+              "translation": "Üç yüz otuz altı ve birçoğu daha eski yapılardan getirildi. Bu yüzden hepsi birbirine benzemiyor."
+            },
+            {
+              "speaker": "Laura",
+              "text": "And what about the two Medusa heads? Why is one of them upside down?",
+              "translation": "Peki ya iki Medusa başı? Neden biri baş aşağı?"
+            },
+            {
+              "speaker": "Ozan",
+              "text": "Good question, and honestly, nobody knows for sure. It is said that it was done to cancel out her power, but some historians think the builders simply needed a block of the right size.",
+              "translation": "Güzel soru ve açıkçası kimse kesin olarak bilmiyor. Gücünü etkisiz kılmak için böyle yapıldığı söylenir ama bazı tarihçiler, ustaların sadece doğru boyutta bir taşa ihtiyaç duyduğunu düşünüyor."
+            },
+            {
+              "speaker": "Laura",
+              "text": "I like the first story better. It is much more fun.",
+              "translation": "İlk hikâyeyi daha çok sevdim. Çok daha eğlenceli."
+            },
+            {
+              "speaker": "Ozan",
+              "text": "Me too, but I try to stick to the facts. Now, the next group is right behind us, so please keep moving.",
+              "translation": "Ben de, ama gerçeklere bağlı kalmaya çalışıyorum. Şimdi, arkamızdan bir sonraki grup geliyor, o yüzden lütfen ilerlemeye devam edin."
+            },
+            {
+              "speaker": "Laura",
+              "text": "Is there time for a coffee after this? My feet are killing me.",
+              "translation": "Bundan sonra kahveye vakit var mı? Ayaklarım koptu."
+            },
+            {
+              "speaker": "Ozan",
+              "text": "Absolutely. There's a nice spot around the corner, and we've got plenty of time before lunch.",
+              "translation": "Kesinlikle. Köşede güzel bir yer var ve öğle yemeğinden önce bolca vaktimiz var."
+            },
+            {
+              "speaker": "Laura",
+              "text": "Perfect. Lead the way!",
+              "translation": "Harika. Yolu siz gösterin!"
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Sarnıç neden inşa edildi?",
+              "choices": [
+                "Büyük Saray’a su depolamak için",
+                "Bir tapınak olarak kullanılmak için",
+                "Askerî depo olarak"
+              ],
+              "answer": "Büyük Saray’a su depolamak için",
+              "line": 0,
+              "key": "to store water",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Sütunların hepsi sarnıç için özel olarak yapıldı.",
+              "answer": false,
+              "line": 2,
+              "key": "taken from older buildings",
+              "skill": "detail"
+            },
+            {
+              "kind": "choice",
+              "prompt": "Ozan neden \"I try to stick to the facts\" diyor?",
+              "choices": [
+                "Efsaneyi eğlenceli bulsa da kanıtlanmış bilgiyi önemsediği için",
+                "Laura’nın sorusundan hoşlanmadığı için",
+                "Sarnıcın tarihini bilmediği için"
+              ],
+              "answer": "Efsaneyi eğlenceli bulsa da kanıtlanmış bilgiyi önemsediği için",
+              "line": 6,
+              "key": "stick to the facts",
+              "skill": "inference"
+            },
+            {
+              "kind": "who",
+              "quote": "My feet are killing me",
+              "answer": "Laura"
+            }
+          ],
+          "idioms": [
+            "stick to the facts",
+            "my feet are killing me",
+            "lead the way"
+          ]
+        },
+        {
+          "id": "t10t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t10c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
+    },
+    {
+      "id": "t11",
+      "title": "Resepsiyon: zor durumlar",
+      "description": "B2 · Overbooking, upgrade, fatura itirazı, geç check-out, kibar ret ve telafi",
+      "color": "0xFF1E88E5",
+      "theme": "otel",
+      "guide": "## Bu ünitede ne öğreneceğiz?\nFazla rezervasyon, fatura itirazı ve geç çıkış gibi gergin anlarda kibarca \"hayır\" demenin ve telafi sunmanın kalıpları bu notta. Amaç misafiri haklı çıkarmadan da memnun göndermek.\n\n## Kalıplar\n| Ne için? | Kalıp |\n|---|---|\n| Kibar ret | **I'm afraid we are fully booked.** |\n| Telafi | **What I can do is upgrade your room.** |\n| Empati | **I completely understand your frustration.** |\n| En iyi teklif | **The best I can offer is a late check-out until two.** |\n\n## Biz nasıl söylüyoruz?\nTürkçede \"Maalesef olmaz\" ya da \"Yapacak bir şey yok\" demek resepsiyonda sıradan sayılabilir, ama İngilizcede çıplak bir \"No\" ya da \"It's impossible\" misafiri kızdırır. Reddi \"I'm afraid…\" ile yumuşatıp hemen ardından \"What I can do is…\" ile bir seçenek sunmak gerekir; buradaki \"afraid\" korkmak değil, kibar bir üzüntü bildirir. \"Kusura bakmayın\" için \"Sorry\" yeterli olsa da resmî durumda \"I sincerely apologize for…\" daha güçlü durur. \"Haklısınız ama…\" diye başlamak yerine \"I completely understand\" demek tartışmayı kapatır. \"Kolay gelsin\"in karşılığı olmadığı gibi, misafir de sana böyle bir şey demez; işini bitirince \"Thank you for your patience\" demek hoş bir kapanıştır.\n\n## Sık yapılan hatalar\n| Yanlış | Doğru | Neden? |\n|---|---|---|\n| No, it is impossible. | **I'm afraid that's not possible, but what I can do is…** | Çıplak ret kaba duyulur; yumuşat ve seçenek sun. |\n| I am afraid from the overbooking. | **I'm afraid we're overbooked tonight.** | \"I'm afraid\" burada korku değil, kibar bir üzüntü kalıbıdır; \"from\" almaz. |\n| You are right but there is nothing to do. | **I completely understand. Here is what I can do.** | Empati kurup hemen çözüme geç. |\n| We will cut the charge from your bill. | **I'll remove the charge from your bill.** | Faturadan ücret \"remove\" ya da \"take off\" ile çıkarılır. |\n\n## İpucu\nÜç adımı ezberle: empati (\"I completely understand\"), kibar ret (\"I'm afraid…\"), telafi (\"What I can do is…\"). Bu sırayı bozmazsan en zor misafir bile sakinleşir.",
+      "nodes": [
+        {
+          "id": "t11l1",
+          "type": "lesson",
+          "title": "Overbooking ve upgrade",
+          "description": "I'm afraid, fully booked, upgrade, at no extra cost, I completely understand",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "tamamen dolu (otel)",
+              "answer": "fully booked",
+              "choices": [
+                {
+                  "text": "fully booked",
+                  "emoji": "🏨"
+                },
+                {
+                  "text": "upgrade",
+                  "emoji": "⬆️"
+                },
+                {
+                  "text": "suite",
+                  "emoji": "🛋️"
+                },
+                {
+                  "text": "refund",
+                  "emoji": "💸"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Korkarım bu gece otelimiz tamamen dolu.",
+              "lang": "tr",
+              "answers": [
+                "I'm afraid we're fully booked tonight",
+                "I am afraid we are fully booked tonight",
+                "I'm afraid we are fully booked tonight",
+                "I'm afraid our hotel is fully booked tonight",
+                "I'm afraid the hotel is fully booked tonight"
+              ],
+              "tokens": [
+                "I'm",
+                "afraid",
+                "we're",
+                "fully",
+                "booked",
+                "tonight",
+                "empty",
+                "tomorrow"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "We'd like to offer you an upgrade at no extra ___.",
+              "translation": "Size ek ücret olmadan bir üst kategori oda teklif etmek isteriz.",
+              "answer": "cost",
+              "choices": [
+                "cost",
+                "pay",
+                "worth"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I completely understand your frustration.",
+              "answers": [
+                "I completely understand your frustration."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "üst kategori oda",
+                  "upgrade"
+                ],
+                [
+                  "süit",
+                  "suite"
+                ],
+                [
+                  "deniz manzarası",
+                  "sea view"
+                ],
+                [
+                  "ek ücret",
+                  "extra charge"
+                ],
+                [
+                  "telafi",
+                  "compensation"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "What I can do is book you a room at our sister hotel.",
+              "lang": "en",
+              "answers": [
+                "Yapabileceğim şey size kardeş otelimizde bir oda ayırmak",
+                "Size kardeş otelimizde bir oda ayırabilirim",
+                "Sizin için kardeş otelimizde bir oda ayırabilirim"
+              ],
+              "tokens": [
+                "Yapabileceğim",
+                "şey",
+                "size",
+                "kardeş",
+                "otelimizde",
+                "bir",
+                "oda",
+                "ayırmak",
+                "iptal",
+                "sizin"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "deniz manzarası",
+              "answer": "sea view",
+              "choices": [
+                {
+                  "text": "sea view",
+                  "emoji": "🌊"
+                },
+                {
+                  "text": "garden view",
+                  "emoji": "🌳"
+                },
+                {
+                  "text": "city view",
+                  "emoji": "🏙️"
+                },
+                {
+                  "text": "pool view",
+                  "emoji": "🏊"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm ___ there has been a mistake with your booking.",
+              "translation": "Korkarım rezervasyonunuzla ilgili bir hata olmuş.",
+              "answer": "afraid",
+              "choices": [
+                "afraid",
+                "fear",
+                "afford"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bunun için içtenlikle özür dileriz.",
+              "lang": "tr",
+              "answers": [
+                "We sincerely apologize for this",
+                "We truly apologize for this",
+                "We sincerely apologize for that"
+              ],
+              "tokens": [
+                "We",
+                "sincerely",
+                "apologize",
+                "for",
+                "this",
+                "about",
+                "sorry"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "We'll cover the taxi fare to the other hotel.",
+              "translation": "Diğer otele taksi ücretini biz karşılayacağız."
+            }
+          ]
+        },
+        {
+          "id": "t11l2",
+          "type": "lesson",
+          "title": "Fatura itirazı",
+          "description": "There seems to be, I'll look into it, charge, remove it from your bill, deposit",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "minibar",
+              "answer": "minibar",
+              "choices": [
+                {
+                  "text": "minibar",
+                  "emoji": "🍫"
+                },
+                {
+                  "text": "room service",
+                  "emoji": "🛎️"
+                },
+                {
+                  "text": "parking",
+                  "emoji": "🅿️"
+                },
+                {
+                  "text": "spa",
+                  "emoji": "💆"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Hemen ilgileneceğim.",
+              "lang": "tr",
+              "answers": [
+                "I'll look into it right away",
+                "I will look into it right away",
+                "I'll look into it immediately",
+                "I will look into it immediately"
+              ],
+              "tokens": [
+                "I'll",
+                "look",
+                "into",
+                "it",
+                "right",
+                "away",
+                "out",
+                "after"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "There seems to ___ a mistake on my bill.",
+              "translation": "Faturamda bir hata var gibi görünüyor.",
+              "answer": "be",
+              "choices": [
+                "be",
+                "have",
+                "is"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "I've removed the charge from your bill.",
+              "answers": [
+                "I've removed the charge from your bill."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "ücret",
+                  "charge"
+                ],
+                [
+                  "itiraz etmek",
+                  "dispute"
+                ],
+                [
+                  "para iadesi",
+                  "refund"
+                ],
+                [
+                  "otopark",
+                  "parking"
+                ],
+                [
+                  "depozito",
+                  "deposit"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "You were charged twice for the same dinner.",
+              "lang": "en",
+              "answers": [
+                "Aynı akşam yemeği için iki kez ücret alınmış",
+                "Aynı akşam yemeği için sizden iki kez ücret alınmış",
+                "Aynı yemek için sizden iki kez ücret alınmış"
+              ],
+              "tokens": [
+                "Aynı",
+                "akşam",
+                "yemeği",
+                "için",
+                "iki",
+                "kez",
+                "ücret",
+                "alınmış",
+                "bir",
+                "öğle"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "depozito",
+              "answer": "deposit",
+              "choices": [
+                {
+                  "text": "deposit",
+                  "emoji": "💰"
+                },
+                {
+                  "text": "refund",
+                  "emoji": "💸"
+                },
+                {
+                  "text": "tip",
+                  "emoji": "💵"
+                },
+                {
+                  "text": "discount",
+                  "emoji": "🏷️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I didn't ___ anything from the minibar.",
+              "translation": "Minibardan hiçbir şey almadım.",
+              "answer": "take",
+              "choices": [
+                "take",
+                "took",
+                "taken"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bu ücreti faturanızdan çıkaracağım.",
+              "lang": "tr",
+              "answers": [
+                "I'll remove this charge from your bill",
+                "I will remove this charge from your bill",
+                "I'll take this charge off your bill",
+                "I will take this charge off your bill"
+              ],
+              "tokens": [
+                "I'll",
+                "remove",
+                "this",
+                "charge",
+                "from",
+                "your",
+                "bill",
+                "to",
+                "my"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "Let me go through the bill with you line by line.",
+              "translation": "Faturayı sizinle satır satır gözden geçireyim."
+            }
+          ]
+        },
+        {
+          "id": "t11s",
+          "type": "story",
+          "title": "Fazla rezervasyon",
+          "description": "Deniz, odası verilemeyen Laura ile Daniel’e kibarca durumu açıklayıp telafi teklif ediyor",
+          "rewardXp": 15,
+          "steps": [
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Good evening, and welcome. May I have the name on the reservation, please?",
+              "translation": "İyi akşamlar, hoş geldiniz. Rezervasyondaki ismi alabilir miyim, lütfen?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "It's Daniel Hayes. We booked a double room with a sea view for four nights.",
+              "translation": "Daniel Hayes. Dört gece için deniz manzaralı çift kişilik oda ayırttık."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Thank you, Mr. Hayes. I'm afraid there's been a problem. Because of a system error, the hotel is overbooked tonight.",
+              "translation": "Teşekkürler, Bay Hayes. Korkarım bir sorun çıktı. Bir sistem hatası yüzünden otel bu gece kapasitesinden fazla rezervasyon almış."
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "You're kidding. We've been traveling all day, and we confirmed the booking last week!",
+              "translation": "Şaka yapıyorsunuz. Bütün gün yoldaydık ve rezervasyonu geçen hafta teyit ettik!"
+            },
+            {
+              "kind": "question",
+              "prompt": "Sorun ne?",
+              "choices": [
+                "Otel fazla rezervasyon almış",
+                "Odanın kliması bozuk",
+                "Rezervasyon hiç yapılmamış"
+              ],
+              "answer": "Otel fazla rezervasyon almış"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "I completely understand, and I sincerely apologize. Here's what I can do for tonight.",
+              "translation": "Sizi çok iyi anlıyorum ve içtenlikle özür dilerim. Bu gece için yapabileceğim şu."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Our sister hotel is just five minutes away, and we'll cover the taxi. Tomorrow we'll bring you back to a suite at no extra cost.",
+              "translation": "Kardeş otelimiz sadece beş dakika uzakta ve taksiyi biz karşılayacağız. Yarın sizi ek ücret olmadan bir süite geri getireceğiz."
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "A suite? With a sea view?",
+              "translation": "Süit mi? Deniz manzaralı mı?"
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Yes, on the top floor, for the remaining three nights. Dinner at the sister hotel tonight is also on us.",
+              "translation": "Evet, en üst katta, kalan üç gece için. Bu akşam kardeş oteldeki akşam yemeği de bizden."
+            },
+            {
+              "kind": "question",
+              "prompt": "Kalan geceler için onlara ne teklif ediliyor?",
+              "choices": [
+                "Ek ücret olmadan deniz manzaralı süit",
+                "Yarı fiyatına standart oda",
+                "Ücretsiz havalimanı transferi"
+              ],
+              "answer": "Ek ücret olmadan deniz manzaralı süit"
+            },
+            {
+              "kind": "line",
+              "speaker": "Laura",
+              "avatar": "👩",
+              "text": "Well, that's a fair offer. But please make sure it's in writing.",
+              "translation": "Eh, bu adil bir teklif. Ama lütfen yazılı olduğundan emin olun."
+            },
+            {
+              "kind": "line",
+              "speaker": "Deniz",
+              "avatar": "👩‍💼",
+              "text": "Of course. I'll email you the confirmation right now, and here's my direct number in case anything else comes up.",
+              "translation": "Tabii ki. Onayı size hemen e-postayla gönderiyorum; başka bir şey olursa diye doğrudan numaram da burada."
+            },
+            {
+              "kind": "line",
+              "speaker": "Daniel",
+              "avatar": "🧔",
+              "text": "Thanks, Deniz. You've handled this really well.",
+              "translation": "Teşekkürler, Deniz. Bu durumu gerçekten iyi idare ettiniz."
+            },
+            {
+              "kind": "question",
+              "prompt": "Laura neden teklifin yazılı olmasını istiyor?",
+              "choices": [
+                "Verilen sözün sonra unutulmasından çekindiği için",
+                "Faturayı kendisi ödemek istediği için",
+                "Arkadaşlarına göstermek için"
+              ],
+              "answer": "Verilen sözün sonra unutulmasından çekindiği için"
+            }
+          ]
+        },
+        {
+          "id": "t11l3",
+          "type": "lesson",
+          "title": "Geç check-out ve kibar ret",
+          "description": "Unfortunately, The best I can offer, I'd be happy to, in the meantime, complimentary",
+          "exercises": [
+            {
+              "type": "select",
+              "prompt": "geç çıkış",
+              "answer": "late check-out",
+              "choices": [
+                {
+                  "text": "late check-out",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "early check-in",
+                  "emoji": "🌅"
+                },
+                {
+                  "text": "wake-up call",
+                  "emoji": "📞"
+                },
+                {
+                  "text": "luggage room",
+                  "emoji": "🧳"
+                }
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Size en fazla saat ikiye kadar geç çıkış verebilirim.",
+              "lang": "tr",
+              "answers": [
+                "The best I can offer is a late check-out until two",
+                "The best I can offer is a late check-out until 2",
+                "The best I can do is a late check-out until two",
+                "I can offer you a late check-out until two at the latest"
+              ],
+              "tokens": [
+                "The",
+                "best",
+                "I",
+                "can",
+                "offer",
+                "is",
+                "a",
+                "late",
+                "check-out",
+                "until",
+                "two",
+                "early",
+                "from"
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "In the ___, you're welcome to use the spa.",
+              "translation": "Bu arada spayı kullanabilirsiniz.",
+              "answer": "meantime",
+              "choices": [
+                "meantime",
+                "between",
+                "while"
+              ]
+            },
+            {
+              "type": "listen",
+              "text": "Unfortunately, we can't extend your stay, but we can keep your bags.",
+              "answers": [
+                "Unfortunately, we can't extend your stay, but we can keep your bags."
+              ]
+            },
+            {
+              "type": "match",
+              "pairs": [
+                [
+                  "geç çıkış",
+                  "late check-out"
+                ],
+                [
+                  "erken giriş",
+                  "early check-in"
+                ],
+                [
+                  "bagaj odası",
+                  "luggage room"
+                ],
+                [
+                  "konaklamayı uzatmak",
+                  "extend your stay"
+                ],
+                [
+                  "ikram (ücretsiz)",
+                  "complimentary"
+                ]
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "I'd be happy to arrange that for you.",
+              "lang": "en",
+              "answers": [
+                "Bunu sizin için memnuniyetle ayarlarım",
+                "Bunu sizin için seve seve ayarlarım",
+                "Sizin için bunu memnuniyetle ayarlarım"
+              ],
+              "tokens": [
+                "Bunu",
+                "sizin",
+                "için",
+                "memnuniyetle",
+                "ayarlarım",
+                "iptal",
+                "ederim"
+              ]
+            },
+            {
+              "type": "select",
+              "prompt": "ikram (ücretsiz)",
+              "answer": "complimentary",
+              "choices": [
+                {
+                  "text": "complimentary",
+                  "emoji": "🎁"
+                },
+                {
+                  "text": "expensive",
+                  "emoji": "💎"
+                },
+                {
+                  "text": "extra charge",
+                  "emoji": "💳"
+                },
+                {
+                  "text": "discounted",
+                  "emoji": "🏷️"
+                }
+              ]
+            },
+            {
+              "type": "fillBlank",
+              "text": "I'm afraid that's not ___ today, as we're fully booked.",
+              "translation": "Korkarım bugün bu mümkün değil, çünkü tamamen doluyuz.",
+              "answer": "possible",
+              "choices": [
+                "possible",
+                "possibly",
+                "possibility"
+              ]
+            },
+            {
+              "type": "translate",
+              "text": "Bagajlarınızı akşama kadar saklayabiliriz.",
+              "lang": "tr",
+              "answers": [
+                "We can keep your luggage until the evening",
+                "We can store your luggage until the evening",
+                "We can keep your bags until the evening",
+                "We can store your bags until the evening",
+                "We can keep your luggage until this evening"
+              ],
+              "tokens": [
+                "We",
+                "can",
+                "keep",
+                "your",
+                "luggage",
+                "until",
+                "the",
+                "evening",
+                "from",
+                "morning"
+              ]
+            },
+            {
+              "type": "speak",
+              "text": "I completely understand, and I'll do my best to help.",
+              "translation": "Sizi çok iyi anlıyorum ve yardımcı olmak için elimden geleni yapacağım."
+            }
+          ]
+        },
+        {
+          "id": "t11d",
+          "type": "listening",
+          "rewardXp": 15,
+          "title": "Çıkışta fatura",
+          "description": "Ben çıkış yaparken faturadaki bir ücrete itiraz ediyor ve geç çıkış istiyor; Deniz çözüm buluyor",
+          "cefr": "B2",
+          "speakers": [
+            {
+              "name": "Deniz",
+              "gender": "female",
+              "avatar": "👩‍💼"
+            },
+            {
+              "name": "Ben",
+              "gender": "male",
+              "avatar": "👨"
+            }
+          ],
+          "lines": [
+            {
+              "speaker": "Ben",
+              "text": "Morning, Deniz. Before I check out, could you go through the bill with me? Something doesn't add up.",
+              "translation": "Günaydın, Deniz. Çıkış yapmadan önce faturayı benimle gözden geçirebilir misiniz? Bir şeyler tutmuyor."
+            },
+            {
+              "speaker": "Deniz",
+              "text": "Of course, Mr. Carter. Which charge seems to be the problem?",
+              "translation": "Tabii ki, Bay Carter. Sorun hangi ücrette görünüyor?"
+            },
+            {
+              "speaker": "Ben",
+              "text": "There's a minibar charge of four hundred lira, but I didn't touch the minibar. I don't even drink soda.",
+              "translation": "Dört yüz liralık bir minibar ücreti var ama minibara hiç dokunmadım. Gazlı içecek bile içmem."
+            },
+            {
+              "speaker": "Deniz",
+              "text": "Let me look into it. It seems the charge was added to the wrong room. I've taken it off your bill.",
+              "translation": "Hemen bakayım. Görünüşe göre ücret yanlış odaya eklenmiş. Faturanızdan çıkardım."
+            },
+            {
+              "speaker": "Ben",
+              "text": "Great, thanks. One more thing: my flight isn't until nine tonight. Is a late check-out possible?",
+              "translation": "Harika, teşekkürler. Bir şey daha: uçuşum bu akşam dokuzda. Geç çıkış mümkün mü?"
+            },
+            {
+              "speaker": "Deniz",
+              "text": "I'm afraid we're fully booked, so the best I can offer is two o'clock.",
+              "translation": "Korkarım tamamen doluyuz, bu yüzden size en fazla saat ikiyi teklif edebilirim."
+            },
+            {
+              "speaker": "Ben",
+              "text": "Two o'clock still leaves me with a lot of time to kill.",
+              "translation": "Saat iki olsa bile geçirmem gereken epey boş vaktim kalıyor."
+            },
+            {
+              "speaker": "Deniz",
+              "text": "I completely understand. What I can do is keep your luggage, and you are welcome to use the spa and the showers until you leave.",
+              "translation": "Sizi çok iyi anlıyorum. Yapabileceğim şey bagajınızı saklamak; ayrıca ayrılana kadar spayı ve duşları kullanabilirsiniz."
+            },
+            {
+              "speaker": "Ben",
+              "text": "That's very kind. I might take you up on that.",
+              "translation": "Çok naziksiniz. Bu teklifinizi değerlendirebilirim."
+            },
+            {
+              "speaker": "Deniz",
+              "text": "My pleasure. And again, sorry for the mix-up with the minibar.",
+              "translation": "Rica ederim. Minibardaki karışıklık için de tekrar özür dilerim."
+            }
+          ],
+          "questions": [
+            {
+              "kind": "choice",
+              "prompt": "Minibar ücretinin sebebi neydi?",
+              "choices": [
+                "Ücret yanlış odaya eklenmişti",
+                "Ben minibardan gazlı içecek almıştı",
+                "Minibar fiyatları değişmişti"
+              ],
+              "answer": "Ücret yanlış odaya eklenmişti",
+              "line": 3,
+              "key": "added to the wrong room",
+              "skill": "detail"
+            },
+            {
+              "kind": "trueFalse",
+              "statement": "Ben akşam dokuza kadar odada kalabilecek.",
+              "answer": false,
+              "line": 5,
+              "key": "the best I can offer is two o'clock",
+              "skill": "detail"
+            },
+            {
+              "kind": "choice",
+              "prompt": "Ben, Deniz’in son teklifine nasıl yaklaşıyor?",
+              "choices": [
+                "Teklifi olumlu karşılıyor ve kabul etmeyi düşünüyor",
+                "Teklife sinirleniyor",
+                "Teklifi kesinlikle reddediyor"
+              ],
+              "answer": "Teklifi olumlu karşılıyor ve kabul etmeyi düşünüyor",
+              "line": 8,
+              "key": "I might take you up on that",
+              "skill": "attitude"
+            },
+            {
+              "kind": "who",
+              "quote": "What I can do is keep your luggage",
+              "answer": "Deniz"
+            }
+          ],
+          "idioms": [
+            "doesn't add up",
+            "time to kill",
+            "take you up on that"
+          ]
+        },
+        {
+          "id": "t11t",
+          "type": "test",
+          "title": "Ünite sınavı",
+          "description": "Üniteyi geçmek için %80 doğru yap",
+          "rewardXp": 25
+        },
+        {
+          "id": "t11c",
+          "type": "chest",
+          "title": "Ünite ödülü",
+          "description": "Üniteyi bitir, bonus XP kazan",
+          "rewardXp": 20
+        }
+      ]
     }
   ]
 }

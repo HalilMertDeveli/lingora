@@ -29,8 +29,8 @@ void main() {
       final units = _units();
       expect(
         units.length,
-        94 + 24 + 12 + 12 + 9,
-        reason: '94 general units, 24 skill units, 24 C1 units (S9, S10) and 9 professional ones',
+        94 + 24 + 12 + 12 + 9 + 19,
+        reason: '94 general units, 24 skill units, 24 C1 units (S9, S10), 9 professional ones and 19 leveled ones',
       );
       for (final u in units) {
         expect(topicThemes.keys, contains(u['theme']), reason: '${u['id']} ${u['title']}');
