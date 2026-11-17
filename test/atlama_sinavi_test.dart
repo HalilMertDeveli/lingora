@@ -1,7 +1,9 @@
-// "Atlama sınavı": unit and section skip exams with five hearts.
+// "Atlama sınavı": unit and section skip exams with three hearts.
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
@@ -129,6 +131,8 @@ Future<void> _answer(WidgetTester tester, {required bool right}) async {
 int _heartsLeft(WidgetTester tester) => tester.widget<HeartsBar>(find.byKey(const Key('skip-hearts'))).left;
 
 void main() {
+  _coverageTests();
+
   group('skip exam data', () {
     test('a unit skip marks the unit and the units before it in its section', () {
       final ids = skipExamNodes(_course, unitSkipId(_u('b')));
@@ -218,15 +222,15 @@ void main() {
     testWidgets('every wrong answer takes a heart; none left ends the exam kindly', (tester) async {
       final container = await _pumpScreen(tester, unitSkipScreen(_u('a'))!);
       expect(find.text('ÜNİTEYİ ATLA'), findsOneWidget);
-      expect(_heartsLeft(tester), 5);
-      for (var lost = 1; lost <= 4; lost++) {
+      expect(_heartsLeft(tester), 3);
+      for (var lost = 1; lost <= 2; lost++) {
         await _answer(tester, right: false);
-        expect(_heartsLeft(tester), 5 - lost);
+        expect(_heartsLeft(tester), 3 - lost);
       }
       await _answer(tester, right: false);
       expect(find.byType(SkipFailedScreen), findsOneWidget);
       expect(find.text('Canların bitti, hiç sorun değil'), findsOneWidget);
-      expect(find.textContaining('5 sorunun 0 tanesini'), findsOneWidget);
+      expect(find.textContaining('3 sorunun 0 tanesini'), findsOneWidget);
       // The path is as it was.
       final p = container.read(progressProvider);
       expect(_u('a').nodes.where((n) => p.isDone(n.id)), isEmpty);
@@ -234,16 +238,23 @@ void main() {
 
       await tester.tap(find.byKey(const Key('skip-retry')));
       await tester.pumpAndSettle();
-      expect(_heartsLeft(tester), 5);
+      expect(_heartsLeft(tester), 3);
     });
 
-    testWidgets('reaching the end with hearts left passes and opens the next unit', (tester) async {
+    testWidgets('a wrong question comes back; passing needs every question right', (tester) async {
       final container = await _pumpScreen(tester, unitSkipScreen(_u('a'))!);
       final total = unitSkipItems(_u('a')).length;
-      for (var i = 0; i < total; i++) {
-        await _answer(tester, right: i >= 4); // four mistakes, one heart left
+      // Two mistakes (one heart left): both questions are asked again.
+      await _answer(tester, right: false);
+      await _answer(tester, right: false);
+      var answers = 2;
+      while (find.text('Üniteyi atladın!').evaluate().isEmpty) {
+        expect(find.byType(SkipFailedScreen), findsNothing);
+        await _answer(tester, right: true);
+        answers++;
+        expect(answers, lessThanOrEqualTo(total + 2), reason: 'two re-asked questions at most');
       }
-      expect(find.text('Üniteyi atladın!'), findsOneWidget);
+      expect(answers, total + 2);
       final p = container.read(progressProvider);
       expect(_u('a').nodes.every((n) => p.isDone(n.id)), isTrue);
       expect(activeNodes(_course, p)['s1']!.id, 'bl1');
@@ -263,7 +274,9 @@ void main() {
       await _answer(tester, right: false);
       final record = container.read(resumeStoreProvider).load()!;
       expect(record.lesson!.hearts, skipHearts);
-      expect(record.lesson!.heartsLeft, 3);
+      expect(record.lesson!.heartsLeft, 1);
+      // The two wrong questions wait at the end of the saved queue.
+      expect(record.lesson!.queue, hasLength(record.lesson!.total + 2));
 
       await tester.pumpWidget(
         UncontrolledProviderScope(
@@ -272,7 +285,7 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(_heartsLeft(tester), 3);
+      expect(_heartsLeft(tester), 1);
       expect(find.text('ÜNİTEYİ ATLA'), findsOneWidget);
     });
 
@@ -354,6 +367,75 @@ void main() {
       await pumpApp(tester, _fresh.copyWith(completed: {for (final n in _u('a').nodes) n.id: 1}));
       expect(find.byKey(const Key('unit-skip-a')), findsNothing);
       expect(find.byKey(const Key('unit-skip-b')), findsOneWidget);
+    });
+  });
+}
+
+/// Graded questions of [lessons] (what a skip exam can ask).
+int _gradedCount(List<PathNode> lessons) =>
+    lessons.expand(lessonItems).where((it) => !ungradedTypes.contains(it.ex.type)).length;
+
+void _coverageTests() {
+  group('coverage on the shipped course', () {
+    late Course general;
+    setUpAll(() async => general = await loadCourse(rootBundle, 'tr_en'));
+
+    test('key words come from lesson descriptions and are found in the questions', () {
+      final u1 = general.units.firstWhere((u) => u.id == 'u1');
+      final ids = skipObjectives(skipLessons(u1)).map((o) => o.id).toSet();
+      expect(
+        ids,
+        containsAll(['lesson:u1l1', 'word:u1l1:hello', 'word:u1l1:good morning', 'word:u1l1:thank you']),
+      );
+      // Whole words only.
+      expect(lessonKeywords(u1.nodes.first), ['hello', 'good morning', 'thank you']);
+    });
+
+    test('every unit skip exam asks every learning goal, and more than a lesson', () {
+      var units = 0;
+      var words = 0;
+      for (final unit in general.units) {
+        final lessons = skipLessons(unit);
+        if (lessons.isEmpty) continue;
+        units++;
+        final goals = skipObjectives(lessons);
+        words += goals.where((g) => g.id.startsWith('word:')).length;
+        final graded = _gradedCount(lessons);
+        final biggestLesson = lessons.map((l) => l.exercises.length).reduce(max);
+        for (var seed = 0; seed < 3; seed++) {
+          final items = unitSkipItems(unit, Random(seed));
+          for (final g in goals) {
+            expect(items.any(g.coveredBy), isTrue, reason: '${unit.id}: ${g.id} not asked (seed $seed)');
+          }
+          expect(items.map((i) => i.key).toSet(), hasLength(items.length), reason: 'no question twice');
+          expect(items.length, greaterThanOrEqualTo(min(graded, unitSkipTarget)), reason: unit.id);
+          if (graded > biggestLesson) {
+            expect(items.length, greaterThan(biggestLesson), reason: '${unit.id}: more than a lesson');
+          }
+        }
+      }
+      expect(units, greaterThan(50));
+      expect(words, greaterThan(units), reason: 'key words are real goals');
+    });
+
+    test('a section skip exam covers every unit, at least five questions each', () {
+      for (final section in general.sections.where((s) => !s.parallel)) {
+        final items = sectionSkipQuestions(section, Random(1));
+        expect(items.map((i) => i.key).toSet(), hasLength(items.length));
+        for (final unit in section.units) {
+          final lessons = skipLessons(unit);
+          if (lessons.isEmpty) continue;
+          final mine = items.where((it) => lessons.any((l) => it.key.startsWith('${l.id}#'))).toList();
+          expect(
+            mine.length,
+            greaterThanOrEqualTo(min(sectionSkipPerUnit, _gradedCount(lessons))),
+            reason: unit.id,
+          );
+          for (final g in skipObjectives(lessons)) {
+            expect(mine.any(g.coveredBy), isTrue, reason: '${section.id}/${unit.id}: ${g.id}');
+          }
+        }
+      }
     });
   });
 }

@@ -149,7 +149,7 @@ class SectionHeader extends ConsumerWidget {
 String sectionLabel(Section s) => ['Bölüm ${s.index}', if (s.cefr.isNotEmpty) s.cefr, s.title].join(' · ');
 
 /// Section summary: description, grammar topics, unit count and, until every
-/// step is done, the "Bölüme atla" skip exam (five hearts).
+/// step is done, the "Bölüme atla" skip exam (three hearts).
 Future<void> showSectionSummary(BuildContext context, Section section, {required bool open}) =>
     showModalBottomSheet<void>(
       context: context,
@@ -174,7 +174,8 @@ class _SectionSummary extends ConsumerWidget {
     final full =
         ref.watch(courseProvider).value?.sections.where((s) => s.id == section.id).firstOrNull ?? section;
     final finished = sectionSkipFinished(full, p);
-    final canSkip = !section.parallel && !finished && sectionSkipItems(full).length >= sectionSkipSize ~/ 2;
+    final questions = sectionSkipQuestions(full);
+    final canSkip = !section.parallel && !finished && questions.length >= skipMinQuestions;
     return SafeArea(
       child: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
@@ -207,7 +208,7 @@ class _SectionSummary extends ConsumerWidget {
               const HeartsBar(left: skipHearts, total: skipHearts),
               const SizedBox(height: 8),
               Text(
-                'Bu konuları biliyorsan $sectionSkipSize soruluk karışık bir sınavla '
+                'Bu konuları biliyorsan her üniteden soruların olduğu ${questions.length} soruluk bir sınavla '
                 '${open ? 'bölümü bitir' : 'bu bölüme atla'}. ${skipRules(unit: false)}',
                 style: t.bodyMedium,
               ),
@@ -236,7 +237,7 @@ class _SectionSummary extends ConsumerWidget {
   }
 }
 
-/// "Bölüme atla": a mixed test over the whole section with [skipHearts]
+/// "Bölüme atla": every unit's learning goals ([sectionSkipQuestions]), [skipHearts]
 /// hearts. Passing it records [sectionPassKey] (which opens the section and
 /// those before it) and counts every step of the section as done, so the
 /// next section opens too; running out of hearts changes nothing.
@@ -246,7 +247,7 @@ Future<void> startSectionSkip(NavigatorState nav, Section section) {
   LessonScreen build() => LessonScreen(
     nodeId: sectionPassKey(section),
     title: 'Bölüm ${section.index}',
-    items: sectionSkipItems(section),
+    items: sectionSkipQuestions(section),
     color: color,
     mode: LessonMode.test,
     rewardXp: sectionSkipXp,
