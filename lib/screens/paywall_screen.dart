@@ -50,6 +50,7 @@ const freeItems = [
   'Sınav konu pratiği + günde $freeMockExamsPerDay mini deneme',
   'Sohbet senaryoları (demo modu)',
   'Hata dedektörü ve en sık 3 hatan',
+  'Hesapla bulut yedekleme ve cihazlar arası devam',
 ];
 
 class PaywallScreen extends ConsumerStatefulWidget {
@@ -77,7 +78,6 @@ class PaywallScreen extends ConsumerStatefulWidget {
         PremiumFeature.aiConversation => PaywallPlacement.aiChat,
         PremiumFeature.unlimitedMockExams => PaywallPlacement.mockExam,
         PremiumFeature.errorAnalytics => PaywallPlacement.errorAnalysis,
-        PremiumFeature.cloudBackup => PaywallPlacement.cloudBackup,
         null => PaywallPlacement.profile,
       };
 
@@ -89,7 +89,7 @@ class PaywallScreen extends ConsumerStatefulWidget {
 }
 
 class _PaywallScreenState extends ConsumerState<PaywallScreen> {
-  late PremiumPlan _plan = widget.showFamily ? PremiumPlan.familyYearly : PremiumPlan.yearly;
+  late PremiumPlan _plan = widget.showFamily ? PremiumPlan.familyYearly : PremiumPlan.recommended;
   late final AnalyticsService _analytics;
   late final String _variant;
   bool _wasPremium = false;
@@ -116,9 +116,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
   bool _purchased = false;
 
-  void _buy() {
-    _analytics.log(AnalyticsEvent.purchaseStart(plan: _plan.name, placement: widget.resolvedPlacement));
-    ref.read(premiumControllerProvider.notifier).buy(_plan);
+  void _buy(PremiumPlan plan) {
+    _analytics.log(AnalyticsEvent.purchaseStart(plan: plan.name, placement: widget.resolvedPlacement));
+    ref.read(premiumControllerProvider.notifier).buy(plan);
   }
 
   @override
@@ -256,9 +256,16 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     final ctrl = ref.read(premiumControllerProvider.notifier);
     final available = s.storeAvailable;
     final familyReady = ref.watch(familyBackendProvider) != null;
-    final selected = s.product(_plan);
+    final offered = [
+      for (final p in [...PremiumPlan.personal, if (familyReady) PremiumPlan.familyYearly])
+        if (s.product(p) != null) p,
+    ];
+    // Yearly stays preselected; if Play did not return it, the first plan it did.
+    final plan = offered.contains(_plan) ? _plan : offered.firstOrNull ?? _plan;
+    final selected = s.product(plan);
     // A trial is mentioned only when Remote Config allows it and Google Play
-    // really offers one to this user; the length always comes from Play.
+    // really returns a free-trial offer for this product to this user; the
+    // length always comes from Play, never from this app.
     final trialDays = flags.trialDays > 0 ? (selected?.freeTrialDays ?? 0) : 0;
     return [
       if (available == null)
@@ -273,20 +280,19 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               'emin ol; Premium satın alındıysa aşağıdan geri yükleyebilirsin.',
         )
       else
-        for (final plan in [...PremiumPlan.personal, if (familyReady) PremiumPlan.familyYearly])
-          if (s.product(plan) case final product?)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: _PlanCard(
-                plan: plan,
-                product: product,
-                monthly: s.product(PremiumPlan.monthly),
-                priceCopy: flags.priceCopy,
-                showTrial: flags.trialDays > 0,
-                selected: plan == _plan,
-                onTap: () => setState(() => _plan = plan),
-              ),
+        for (final p in offered)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: _PlanCard(
+              plan: p,
+              product: s.product(p)!,
+              monthly: s.product(PremiumPlan.monthly),
+              priceCopy: flags.priceCopy,
+              showTrial: flags.trialDays > 0,
+              selected: p == plan,
+              onTap: () => setState(() => _plan = p),
             ),
+          ),
       if (s.pending)
         const _Notice(
           icon: Icons.hourglass_top_rounded,
@@ -303,15 +309,15 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
             ? 'PREMIUM\'A GEÇ'
             : trialDays > 0
             ? '$trialDays GÜN ÜCRETSİZ DENE'
-            : '${trUpper(_plan.label)} · ${selected.price}',
+            : '${trUpper(plan.label)} · ${selected.price}',
         color: Brand.primary,
-        onPressed: available == true && selected != null && !s.busy && !s.pending ? _buy : null,
+        onPressed: available == true && selected != null && !s.busy && !s.pending ? () => _buy(plan) : null,
       ),
       if (trialDays > 0 && selected != null)
         Padding(
           padding: const EdgeInsets.only(top: 6),
           child: Text(
-            'Deneme bitince ${selected.price} / ${_plan.period}. Deneme süresince iptal edersen ücret alınmaz.',
+            'Deneme bitince ${selected.price} / ${plan.period}. Deneme süresince iptal edersen ücret alınmaz.',
             style: TextStyle(color: Brand.muted, fontSize: 12),
             textAlign: TextAlign.center,
           ),
@@ -443,14 +449,10 @@ class _PlanCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Savings are computed from the store's real prices, never made up.
-    final saving =
-        priceCopy == PriceCopy.savings &&
-            plan == PremiumPlan.yearly &&
-            monthly != null &&
-            monthly!.rawPrice > 0
-        ? (100 - product.rawPrice * 100 / (monthly!.rawPrice * 12)).round()
-        : 0;
+    // Savings are computed from the store's real prices, never made up: with
+    // no monthly price from Play there is no badge at all.
+    final saving = plan == PremiumPlan.yearly ? yearlySavingPercent(product, monthly) : 0;
+    final best = saving > 0 && priceCopy != PriceCopy.plain;
     return TapCard(
       key: ValueKey('plan-${plan.name}'),
       selected: selected,
@@ -469,17 +471,22 @@ class _PlanCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(plan.label, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-                    if (saving > 0) ...[
+                    if (best) ...[
                       const SizedBox(width: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: Brand.accent,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text(
-                          '%$saving tasarruf',
-                          style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w900),
+                      Flexible(
+                        child: Wrap(
+                          spacing: 6,
+                          runSpacing: 4,
+                          children: [
+                            _Badge(
+                              key: const ValueKey('plan-best'),
+                              text: 'En avantajlı',
+                              color: Brand.primary,
+                              foreground: Colors.white,
+                            ),
+                            if (priceCopy == PriceCopy.savings)
+                              _Badge(text: '%$saving tasarruf', color: Brand.accent),
+                          ],
                         ),
                       ),
                     ],
@@ -506,6 +513,32 @@ class _PlanCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class _Badge extends StatelessWidget {
+  const _Badge({super.key, required this.text, required this.color, this.foreground});
+  final String text;
+  final Color color;
+  final Color? foreground;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+    decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(6)),
+    child: Text(
+      text,
+      style: TextStyle(fontSize: 11, fontWeight: FontWeight.w900, color: foreground),
+    ),
+  );
+}
+
+/// Whole percent the yearly plan saves against twelve months of the monthly
+/// plan, both from Google Play's real prices. 0 when a price is missing or
+/// yearly is not cheaper (then no badge is shown).
+int yearlySavingPercent(StoreProduct yearly, StoreProduct? monthly) {
+  if (monthly == null || monthly.rawPrice <= 0 || yearly.rawPrice <= 0) return 0;
+  final p = (100 - yearly.rawPrice * 100 / (monthly.rawPrice * 12)).round();
+  return p > 0 ? p : 0;
 }
 
 class _Notice extends StatelessWidget {

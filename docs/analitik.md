@@ -80,7 +80,7 @@ Huni: `onboarding_step(0)` → `onboarding_step(4)` → `onboarding_complete` �
 
 | Olay | Parametreler | Ne zaman |
 | --- | --- | --- |
-| `paywall_view` | `placement` (profile, after_lessons, ai_chat, mock_exam, error_analysis, cloud_backup), `variant` (a, b) | Paywall Premium olmayan kullanıcıya göründü |
+| `paywall_view` | `placement` (profile, after_lessons, ai_chat, mock_exam, error_analysis, writing_feedback), `variant` (a, b) | Paywall Premium olmayan kullanıcıya göründü |
 | `paywall_close` | `placement`, `variant` | Paywall satın almadan kapandı |
 | `purchase_start` | `plan` (monthly, yearly), `placement` | Satın al düğmesine basıldı |
 | `trial_start` | `plan`, `trial_days` | Ücretsiz denemeyle yeni abonelik başladı (Play deneme teklifi) |
@@ -129,7 +129,7 @@ ve **bir sonraki açılışta** etkinleşir; paywall kullanıcının gözü ön�
 | Parametre | Tür | Varsayılan | Anlamı |
 | --- | --- | --- | --- |
 | `paywall_variant` | metin | `a` | `a`: özellik listesi önce (kontrol). `b`: planlar önce, kısa başlık |
-| `trial_days` | sayı 0–31 | `0` | 0: deneme hiç duyurulmaz. >0: Play bu kullanıcıya deneme teklifi döndürürse paywall "N gün ücretsiz dene" der. Gösterilen süre **her zaman Play'den** gelir |
+| `trial_days` | sayı 0–31 | `7` | 0: deneme hiç duyurulmaz. >0: Play bu kullanıcıya deneme teklifi döndürürse paywall "N gün ücretsiz dene" der. Gösterilen süre **her zaman Play'den** gelir |
 | `price_copy` | metin | `savings` | Yıllık planın açıklaması: `savings` (%N tasarruf), `monthly_equivalent` (Aylık yalnızca ₺X), `plain`. Hepsi gerçek mağaza fiyatından hesaplanır |
 | `paywall_after_lessons` | sayı 0–1000 | `5` | Premium olmayan kullanıcıya, her N bitmiş dersten sonra bir kez paywall göster. 0 = hiç |
 | `paywall_cooldown_days` | sayı 1–365 | `7` | İki otomatik paywall arasında en az kaç gün |
@@ -207,8 +207,8 @@ otomatik doldurmak (`play_install_referrer` paketi).
    sinyallerini ve reklam kişiselleştirmeyi **kapalı** bırak.
 2. **Remote Config**'te bölüm 4'teki parametreleri aynı varsayılanlarla oluştur
    (tablo birebir). Koşul eklemeden yayınla.
-3. Play Console'da yıllık plana 7 günlük ücretsiz deneme teklifi açtıysan
-   `trial_days=7` yap.
+3. `trial_days` varsayılanı 7; Play Console'da yıllık plana 7 günlük ücretsiz
+   deneme teklifi açılmadıkça paywall deneme duyurmaz (bkz. `docs/abonelik.md` §3.1).
 4. A/B testini bölüm 5'teki gibi kur.
 5. Functions'ı dağıt (`firebase deploy --only functions`); `getInviteCode` ve
    `redeemInvite` yeni callable'lardır. Firestore kuralları değişmedi (yeni
