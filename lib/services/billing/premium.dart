@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/progress.dart';
+import '../../kurum/kurum.dart' show licensePremiumProvider;
 import '../growth/analytics.dart';
 import 'billing_service.dart';
 import 'entitlement_backend.dart';
@@ -381,6 +382,8 @@ final premiumControllerProvider = NotifierProvider<PremiumController, PremiumSta
 /// True when the user may use Premium features right now.
 final premiumProvider = Provider<bool>((ref) {
   if (ref.watch(premiumDevOverrideProvider)) return true;
+  // A school or company seat (lib/kurum/, docs/kurumlar.md).
+  if (ref.watch(licensePremiumProvider)) return true;
   final s = ref.watch(premiumControllerProvider);
   if (!s.active) return false;
   return s.expiresAt == null || s.expiresAt!.isAfter(ref.read(clockProvider)());
