@@ -10,12 +10,45 @@ import 'package:path_provider/path_provider.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
+import '../core/spoken_match.dart';
 import 'voice_pack.dart';
 
 /// The last speech problem worth telling the learner about (no English voice,
 /// no microphone permission, nothing heard…), or null. Screens show it next
 /// to the speaker / microphone buttons.
 final speechIssue = ValueNotifier<String?>(null);
+
+/// Microphone loudness while listening, from 0 (silence) to 1 (loud), so the
+/// learner sees that they are being heard.
+final speechLevel = ValueNotifier<double>(0);
+
+/// How long to wait for a sentence of [words] words: the silence after which
+/// listening stops, and the longest a whole try may take. Learners pause
+/// mid-sentence, so long sentences get more time.
+({Duration pause, Duration total}) listenTimes(int words) => (
+  pause: Duration(milliseconds: (3500 + 250 * words).clamp(4000, 7000)),
+  total: Duration(seconds: (8 + words).clamp(12, 30)),
+);
+
+/// Turns a recognizer sound level (Android rmsdB, about -2..10) into 0..1.
+double normalizeSoundLevel(double db) => ((db + 2) / 12).clamp(0.0, 1.0);
+
+/// Picks the recognizer locale for [wanted] ("en-US") among [available]
+/// locale ids: the wanted one, then US or British English, then any English.
+/// Null when the list names languages but no English at all.
+String? pickEnglishLocale(String wanted, List<String> available) {
+  String id(String s) => s.replaceAll('-', '_').toLowerCase();
+  final byId = {for (final a in available) id(a): a};
+  if (byId.isEmpty) return wanted.replaceAll('-', '_');
+  for (final c in [wanted, 'en_US', 'en_GB']) {
+    final hit = byId[id(c)];
+    if (hit != null) return hit;
+  }
+  for (final e in byId.entries) {
+    if (e.key == 'en' || e.key.startsWith('en_')) return e.value;
+  }
+  return null;
+}
 
 /// Turkish texts for [speechIssue].
 abstract final class SpeechIssues {
@@ -27,11 +60,11 @@ abstract final class SpeechIssues {
   static const noMicPermission =
       'Mikrofon izni verilmedi. Ayarlar > Uygulamalar > Dilmaç > İzinler bölümünden mikrofonu aç.';
   static const noRecognizer = 'Bu cihazda ses tanıma kullanılamıyor.';
-  static const notHeard = 'Seni duyamadım. Mikrofona dokunup biraz daha yüksek sesle tekrar dene.';
+  static const notHeard = 'Seni duyamadım. Telefonu biraz daha yakına al ve daha yüksek sesle söyle.';
   static const network = 'Ses tanıma için internet bağlantısı gerekiyor.';
   static const noEnglishRecognizer =
-      'Telefonunda İngilizce ses tanıma yok. Ayarlar > Sistem > Diller > Konuşma tanıma bölümünden '
-      'İngilizceyi indir ya da Google uygulamasını güncelle.';
+      'Telefonunda İngilizce ses tanıma paketi yok gibi görünüyor. Google uygulamasını aç: profil resmin > '
+      'Ayarlar > Google Asistan ya da Ses > Çevrimdışı konuşma tanıma bölümünden "English (US)" paketini indir.';
   static const busy = 'Ses tanıma şu an meşgul. Birkaç saniye sonra tekrar dene.';
 
   /// Turkish text for a speech_to_text error code; unknown codes stay
@@ -202,6 +235,12 @@ class SpeechService {
 
   void Function()? _onDone;
   bool _heardSomething = false;
+  Timer? _doneFallback;
+  String? _localeId;
+
+  /// The sentence the next [listen] expects (see [SpeakingTarget.listenTo]):
+  /// sets how long to listen and picks the best of the recognizer's guesses.
+  static String? _target;
 
   Future<bool> get canListen async {
     if (_sttReady) return true;
@@ -223,19 +262,52 @@ class SpeechService {
     return _sttReady;
   }
 
+  /// The English locale the phone's recognizer offers, looked up once: a
+  /// Turkish phone may only have en-GB, or "en" alone.
+  Future<String> _englishLocaleId() async {
+    final known = _localeId;
+    if (known != null) return known;
+    var pick = englishLocale.replaceAll('-', '_');
+    try {
+      final locales = await _stt.locales().timeout(const Duration(seconds: 3));
+      final found = pickEnglishLocale(englishLocale, [for (final l in locales) l.localeId]);
+      if (found == null) {
+        // Languages are listed but no English: tell where to get it, then try anyway.
+        speechIssue.value = SpeechIssues.noEnglishRecognizer;
+      } else {
+        pick = found;
+      }
+      debugPrint('Speech locale $pick of ${locales.length}');
+    } catch (_) {}
+    return _localeId = pick;
+  }
+
   void _status(String status) {
-    if (status == SpeechToText.doneStatus || status == SpeechToText.notListeningStatus) _finish();
+    if (status == SpeechToText.doneStatus) {
+      _finish();
+    } else if (status == SpeechToText.notListeningStatus && _onDone != null) {
+      // The microphone closed; the final result (with all the recognizer's
+      // guesses) usually follows a moment later with "done". Finishing here
+      // would judge a half-heard partial result.
+      _doneFallback?.cancel();
+      _doneFallback = Timer(const Duration(milliseconds: 1500), _finish);
+    }
   }
 
   void _error(SpeechRecognitionError e) {
     debugPrint('Speech recognition error: ${e.errorMsg}');
-    speechIssue.value = SpeechIssues.forError(e.errorMsg, heardSomething: _heardSomething);
+    final issue = SpeechIssues.forError(e.errorMsg, heardSomething: _heardSomething);
+    // Words were heard before the error: judge them instead of hiding them.
+    if (!(_heardSomething && e.errorMsg == 'error_no_match')) speechIssue.value = issue;
     _finish();
   }
 
   /// Calls the pending onDone exactly once, however recognition ended
   /// (final result, silence timeout, error or the stop button).
   void _finish() {
+    _doneFallback?.cancel();
+    _doneFallback = null;
+    speechLevel.value = 0;
     final done = _onDone;
     _onDone = null;
     done?.call();
@@ -244,6 +316,8 @@ class SpeechService {
   /// Listens in English, reporting partial text, and calls [onDone] when
   /// recognition stops, also after an error or when nothing was heard.
   Future<void> listen({required void Function(String words) onWords, required void Function() onDone}) async {
+    final target = _target;
+    _target = null;
     if (!await canListen) {
       onDone();
       return;
@@ -253,17 +327,24 @@ class SpeechService {
     _heardSomething = false;
     _finish(); // a previous session that never reported back
     _onDone = onDone;
+    final times = target == null
+        ? (pause: const Duration(seconds: 4), total: const Duration(seconds: 20))
+        : listenTimes(target.split(RegExp(r'\s+')).length);
     try {
+      final locale = await _englishLocaleId();
       await _stt.listen(
         onResult: (r) {
-          if (r.recognizedWords.isNotEmpty) _heardSomething = true;
-          onWords(r.recognizedWords);
+          final guesses = [for (final a in r.alternates) a.recognizedWords];
+          final words = bestTranscription(target, guesses.isEmpty ? [r.recognizedWords] : guesses);
+          if (words.isNotEmpty) _heardSomething = true;
+          onWords(words);
           if (r.finalResult) _finish();
         },
+        onSoundLevelChange: (db) => speechLevel.value = normalizeSoundLevel(db),
         listenOptions: SpeechListenOptions(
-          localeId: englishLocale.replaceAll('-', '_'),
-          listenFor: const Duration(seconds: 10),
-          pauseFor: const Duration(seconds: 3),
+          localeId: locale,
+          listenFor: times.total,
+          pauseFor: times.pause,
           partialResults: true,
           cancelOnError: true,
           listenMode: ListenMode.dictation,
@@ -281,7 +362,22 @@ class SpeechService {
       await _stt.stop();
     } catch (_) {}
     // Some recognizers never send "done" after a manual stop.
-    Future<void>.delayed(const Duration(milliseconds: 600), _finish);
+    Future<void>.delayed(const Duration(milliseconds: 1000), _finish);
+  }
+}
+
+/// Listening for a known sentence.
+extension SpeakingTarget on SpeechService {
+  /// [SpeechService.listen] for the learner saying [target]: longer
+  /// sentences get more time, and of the recognizer's guesses the one
+  /// closest to [target] is reported.
+  Future<void> listenTo(
+    String target, {
+    required void Function(String words) onWords,
+    required void Function() onDone,
+  }) {
+    SpeechService._target = target;
+    return listen(onWords: onWords, onDone: onDone);
   }
 }
 
