@@ -96,8 +96,9 @@ service cloud.firestore {
     // ---- end Dilmaç Kurumsal ----
 
     // ---- Friends (lib/services/friends.dart, docs/firebase-backend.md) ----
-    // Works without Cloud Functions. Knowing a friend's code is the consent
-    // to become friends; either side can remove the friendship.
+    // Works without Cloud Functions. Knowing a friend's code, or accepting
+    // their friend request, is the consent to become friends; either side
+    // can remove the friendship.
 
     // Turkish day number (UTC+3, no daylight saving) of the request.
     function trDay() {
@@ -207,8 +208,22 @@ service cloud.firestore {
           : d.streak == old.streak && d.streakDay == old.streakDay && d.best == old.best;
       }
 
+      // Or: the friend asked first (friendRequests/{friend}_{me}) and the
+      // names and avatars are theirs. The accepting app writes this and
+      // deletes the request in one batch; get() sees the state before it.
+      function requestMatches() {
+        let d = request.resource.data;
+        let other = otherOf(d.members);
+        let path = /databases/$(database)/documents/friendRequests/$(other + '_' + request.auth.uid);
+        return exists(path)
+          && d.names[other] == get(path).data.name
+          && d.avatars[other] == get(path).data.avatar;
+      }
+
       allow read: if signedIn() && request.auth.uid in resource.data.members;
-      allow create: if signedIn() && hasAccount() && validNew() && codeMatches();
+      // A ternary, so codeMatches() never looks up an empty code.
+      allow create: if signedIn() && hasAccount() && validNew()
+        && (request.resource.data.code == '' ? requestMatches() : codeMatches());
       allow update: if signedIn() && hasAccount()
         && request.auth.uid in resource.data.members
         && validOwnChange() && validStreak();
@@ -243,6 +258,69 @@ service cloud.firestore {
         allow update: if false;
         allow delete: if isMember();
       }
+    }
+
+    // friendRequests/{from}_{to}: a request sent from the phone book
+    // ("Rehberden bul"), with the sender's name and avatar. Only the two
+    // people can see it; the receiver accepts (friendships create above)
+    // or declines (delete), the sender may withdraw it (delete).
+    match /friendRequests/{reqId} {
+      function validRequest() {
+        let d = request.resource.data;
+        let pair = d.from < d.to ? d.from + '_' + d.to : d.to + '_' + d.from;
+        return d.keys().hasOnly(['from', 'to', 'name', 'avatar', 'createdAt'])
+          && d.keys().hasAll(['from', 'to', 'name', 'avatar', 'createdAt'])
+          && d.from == request.auth.uid
+          && d.to is string && d.to.size() >= 1 && d.to.size() <= 128
+          && d.to != d.from
+          && reqId == d.from + '_' + d.to
+          && validName(d.name)
+          && validAvatar(d.avatar)
+          && d.createdAt == request.time
+          && !exists(/databases/$(database)/documents/friendships/$(pair));
+      }
+
+      function isParty() {
+        return signedIn()
+          && (resource.data.from == request.auth.uid || resource.data.to == request.auth.uid);
+      }
+
+      // Queries must filter on from == me or to == me.
+      allow read: if isParty();
+      allow create: if signedIn() && hasAccount() && validRequest();
+      allow update: if false;
+      allow delete: if isParty();
+    }
+
+    // phoneIndex/{hash} → {uid, createdAt}: opt-in "find me by my number"
+    // (docs/arkadaslar.md). hash = hex SHA-256 of the salt and the E.164
+    // number, as phoneHash() in lib/services/contacts/phone_numbers.dart.
+    // Only the number verified by Firebase phone sign-in (the token's
+    // phone_number) can be published, and only as this hash. Lookups are
+    // single gets; the index can never be listed.
+    match /phoneIndex/{hash} {
+      function hasPhone() {
+        return request.auth.token.get('phone_number', null) is string;
+      }
+
+      function myHash() {
+        return hashing.sha256('dilmac-rehber-v1:' + request.auth.token.phone_number).toHexString().lower();
+      }
+
+      function validEntry() {
+        let d = request.resource.data;
+        return d.keys().hasOnly(['uid', 'createdAt'])
+          && d.keys().hasAll(['uid', 'createdAt'])
+          && d.uid == request.auth.uid
+          && d.createdAt == request.time;
+      }
+
+      allow get: if signedIn() && hasAccount();
+      allow list: if false;
+      // update: the verified owner of a number takes over a stale entry.
+      allow create, update: if signedIn() && hasAccount() && hasPhone() && hash == myHash() && validEntry();
+      allow delete: if signedIn()
+        && (resource.data.uid == request.auth.uid || (hasPhone() && hash == myHash()));
     }
     // ---- end Friends ----
 

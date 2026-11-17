@@ -1,5 +1,6 @@
 // Friends rules (friendCodes, friendships, cheers) against the Firestore emulator.
 // The feature has no Cloud Functions: these rules are the whole server side.
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { after, before, beforeEach, test } from "node:test";
@@ -22,6 +23,7 @@ import {
   setDoc,
   setLogLevel,
   updateDoc,
+  writeBatch,
   where,
 } from "firebase/firestore";
 
@@ -261,4 +263,134 @@ test("cheers: forged, free-text or outsider cheers are refused", async () => {
   await assertFails(
     setDoc(doc(db("ali"), `friendships/ali_mert/cheers/ali_${t}_destek`), cheer("destek", { to: "mert" })),
   );
+});
+
+// ---- Friend requests ("Rehberden bul") ----
+
+const request = (over: Record<string, unknown> = {}) => ({
+  from: "ali",
+  to: "zeynep",
+  name: "Ali",
+  avatar: "⭐",
+  createdAt: serverTimestamp(),
+  ...over,
+});
+const reqRef = (f: Db, id = "ali_zeynep") => doc(f, `friendRequests/${id}`);
+
+/** The friendship Zeynep writes when she accepts Ali's request. */
+const accepted = (over: Record<string, unknown> = {}) =>
+  newFriendship({ code: "", names: { ali: "Ali", zeynep: "Zeynep" }, avatars: { ali: "⭐", zeynep: "🦊" }, ...over });
+
+test("friendRequests: an account asks someone, only the two can see it", async () => {
+  await assertSucceeds(setDoc(reqRef(db("ali")), request()));
+  await assertSucceeds(getDoc(reqRef(db("ali"))));
+  await assertSucceeds(getDoc(reqRef(db("zeynep"))));
+  await assertFails(getDoc(reqRef(db("mallory"))));
+  // Inbox and outbox queries; nobody lists all requests or someone else's.
+  await assertSucceeds(getDocs(query(collection(db("zeynep"), "friendRequests"), where("to", "==", "zeynep"))));
+  await assertSucceeds(getDocs(query(collection(db("ali"), "friendRequests"), where("from", "==", "ali"))));
+  await assertFails(getDocs(collection(db("ali"), "friendRequests")));
+  await assertFails(getDocs(query(collection(db("mallory"), "friendRequests"), where("to", "==", "zeynep"))));
+  // Not changeable; the sender withdraws, the receiver declines.
+  await assertFails(updateDoc(reqRef(db("ali")), { name: "Ali2" }));
+  await assertFails(deleteDoc(reqRef(db("mallory"))));
+  await assertSucceeds(deleteDoc(reqRef(db("zeynep"))));
+});
+
+test("friendRequests: forged, self, guest or existing-friend requests are refused", async () => {
+  await assertFails(setDoc(reqRef(guestDb("ali")), request()));
+  await assertFails(setDoc(reqRef(db("mallory")), request())); // in Ali's name
+  await assertFails(setDoc(reqRef(db("ali"), "ali_ali"), request({ to: "ali" })));
+  await assertFails(setDoc(reqRef(db("ali"), "ali_mert"), request())); // id does not match
+  await assertFails(setDoc(reqRef(db("ali")), request({ name: "" })));
+  await assertFails(setDoc(reqRef(db("ali")), request({ text: "merhaba" })));
+  await assertFails(setDoc(reqRef(db("ali")), request({ createdAt: new Date(0) })));
+  await seed();
+  await assertFails(setDoc(reqRef(db("ali")), request()));
+});
+
+test("friendships: accepting a request makes friends (batch with the delete)", async () => {
+  await assertSucceeds(setDoc(reqRef(db("ali")), request()));
+  // Ali cannot accept his own request, nor forge his name in it.
+  await assertFails(setDoc(pairRef(db("ali")), accepted()));
+  await assertFails(setDoc(pairRef(db("zeynep")), accepted({ names: { ali: "Ali Bey", zeynep: "Zeynep" } })));
+  const zdb = db("zeynep");
+  const batch = writeBatch(zdb);
+  batch.set(pairRef(zdb), accepted());
+  batch.delete(reqRef(zdb));
+  await assertSucceeds(batch.commit());
+  await assertSucceeds(getDoc(pairRef(db("ali"))));
+});
+
+test("friendships: no request, no friendship without a code", async () => {
+  await assertFails(setDoc(pairRef(db("zeynep")), accepted()));
+  // A request from someone else does not count for Ali.
+  await assertSucceeds(setDoc(reqRef(db("mert"), "mert_zeynep"), request({ from: "mert", name: "Mert" })));
+  await assertFails(setDoc(pairRef(db("zeynep")), accepted()));
+});
+
+test("friendships: removed with its cheers, the same two can start again", async () => {
+  await seed();
+  await assertSucceeds(setDoc(cheerRef(db("ali"), "hadi"), cheer("hadi")));
+  // What the app's remove() does: cheers first, then the pair.
+  await assertSucceeds(deleteDoc(cheerRef(db("zeynep"), "hadi")));
+  await assertSucceeds(deleteDoc(pairRef(db("zeynep"))));
+  await zeynepCode();
+  await assertSucceeds(setDoc(pairRef(db("ali")), newFriendship()));
+  await assertSucceeds(setDoc(cheerRef(db("ali"), "hadi"), cheer("hadi")));
+});
+
+// ---- phoneIndex (opt-in: findable by number) ----
+
+const ALI_PHONE = "+905321234567";
+const phoneHash = (e164: string) => createHash("sha256").update(`dilmac-rehber-v1:${e164}`).digest("hex");
+const phoneDb = (uid: string, phone: string | null, provider = "phone") =>
+  env
+    .authenticatedContext(uid, {
+      ...(phone ? { phone_number: phone } : {}),
+      firebase: { sign_in_provider: provider as "phone" },
+    })
+    .firestore();
+const phoneRef = (f: Db, hash = phoneHash(ALI_PHONE)) => doc(f, `phoneIndex/${hash}`);
+const entry = (uid = "ali") => ({ uid, createdAt: serverTimestamp() });
+
+test("phoneIndex: only the verified number, only as its hash", async () => {
+  // No verified number (Google or e-mail account), a guest, someone else's number.
+  await assertFails(setDoc(phoneRef(db("ali")), entry()));
+  await assertFails(setDoc(phoneRef(phoneDb("ali", ALI_PHONE, "anonymous")), entry()));
+  await assertFails(setDoc(phoneRef(phoneDb("ali", "+905329999999")), entry()));
+  // The raw number or an unsalted hash as the id.
+  await assertFails(setDoc(doc(phoneDb("ali", ALI_PHONE), `phoneIndex/${ALI_PHONE}`), entry()));
+  const unsalted = createHash("sha256").update(ALI_PHONE).digest("hex");
+  await assertFails(setDoc(phoneRef(phoneDb("ali", ALI_PHONE), unsalted), entry()));
+  // Pointing at another account or carrying more data.
+  await assertFails(setDoc(phoneRef(phoneDb("ali", ALI_PHONE)), entry("zeynep")));
+  await assertFails(setDoc(phoneRef(phoneDb("ali", ALI_PHONE)), { ...entry(), phone: ALI_PHONE }));
+  await assertSucceeds(setDoc(phoneRef(phoneDb("ali", ALI_PHONE)), entry()));
+  // A Google account that later verified its number by phone also may.
+  await assertSucceeds(setDoc(phoneRef(phoneDb("ali", ALI_PHONE, "google.com")), entry()));
+});
+
+test("phoneIndex: single lookups only, never a list", async () => {
+  await assertSucceeds(setDoc(phoneRef(phoneDb("ali", ALI_PHONE)), entry()));
+  const found = await assertSucceeds(getDoc(phoneRef(db("zeynep"))));
+  if (found.data()?.uid !== "ali") throw new Error("lookup should find ali");
+  // A number nobody published: an empty answer, not an error.
+  const none = await assertSucceeds(getDoc(phoneRef(db("zeynep"), phoneHash("+905320000000"))));
+  if (none.exists()) throw new Error("unexpected entry");
+  await assertFails(getDoc(phoneRef(guestDb("g"))));
+  await assertFails(getDocs(collection(db("zeynep"), "phoneIndex")));
+  await assertFails(getDocs(query(collection(db("zeynep"), "phoneIndex"), where("uid", "==", "ali"))));
+  await assertFails(getDocs(query(collection(phoneDb("ali", ALI_PHONE), "phoneIndex"), where("uid", "==", "ali"))));
+});
+
+test("phoneIndex: the owner turns it off; the number's new owner takes over", async () => {
+  await assertSucceeds(setDoc(phoneRef(phoneDb("ali", ALI_PHONE)), entry()));
+  await assertFails(deleteDoc(phoneRef(db("zeynep"))));
+  await assertFails(setDoc(phoneRef(phoneDb("zeynep", "+905329999999")), entry("zeynep")));
+  // The number moved to a new account (verified by SMS): it may replace the entry.
+  await assertSucceeds(setDoc(phoneRef(phoneDb("yeni", ALI_PHONE)), entry("yeni")));
+  await assertSucceeds(deleteDoc(phoneRef(phoneDb("yeni", ALI_PHONE))));
+  await assertSucceeds(setDoc(phoneRef(phoneDb("ali", ALI_PHONE)), entry()));
+  await assertSucceeds(deleteDoc(phoneRef(db("ali")))); // uid alone is enough to remove
 });

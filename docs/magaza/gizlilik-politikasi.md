@@ -105,6 +105,31 @@ Uygulama, ayarları (ör. hangi Premium ekranı düzeninin gösterileceği)
 Firebase Remote Config'ten okur. Bunun için Firebase kurulum kimliği
 işlenir; kişisel veri gönderilmez. **Hukuki sebep:** meşru menfaat (m. 5/2-f).
 
+### 3.10 Arkadaşlar ve rehberden arkadaş bulma (isteğe bağlı)
+
+Hesabın varsa arkadaş ekleyebilirsin: 8 haneli arkadaş kodunla ya da rehberinden.
+Arkadaş olduğun kişi görünen adını, simgeni, profil fotoğrafını, günlük hedefini
+tamamlayıp tamamlamadığını ve ortak serinizi görür.
+
+**Rehberden bul** yalnızca sen düğmeye bastığında ve rehber (Kişiler) iznini
+verdiğinde çalışır; izni vermezsen kodla eklemeye devam edersin. Rehberin
+**telefonunda kalır**: kişilerin adları ve numaraları Dilmaç'a ya da başka bir
+yere yüklenmez. Numaralar telefonunda E.164 biçimine çevrilip uygulamaya özgü
+bir önekle tek yönlü özetlenir (SHA-256); yalnızca bu özetler, numarasıyla
+bulunmayı seçen Dilmaç kullanıcılarının özetleriyle tek tek karşılaştırılır.
+Eşleşen kişilerin adını yine rehberindeki hâliyle görürsün. Telefon numarası çok
+kısa bir sayı olduğundan bu özet gizli bir şifre sayılmaz; koruma, listenin
+kimseye açılmaması ve yalnızca tek tek sorgulanabilmesiyle sağlanır.
+
+**Telefon numaramla bulunabilirim** seçeneği varsayılan olarak kapalıdır. Açarsan
+yalnızca telefonla girişte doğrulanmış numaranın özeti ve kullanıcı kimliğin
+(uid) saklanır (`phoneIndex`); numaran açık hâliyle saklanmaz. Kapatınca kayıt
+silinir. Numaranı rehberinde kayıtlı tutan bir Dilmaç kullanıcısı seni bulup
+arkadaşlık isteği gönderebilir; istekte gönderenin görünen adı ve simgesi
+bulunur, kabul edersen arkadaş olursunuz, reddedersen istek silinir.
+**Hukuki sebep:** açık rıza (m. 5/1; düğmeye basman ve seçeneği açman) ve
+sözleşmenin ifası (m. 5/2-c).
+
 ## 4. Kimlerle paylaşıyoruz?
 
 Yalnızca hizmeti sunmak için gerekli hizmet sağlayıcılarla (veri işleyen):

@@ -2,6 +2,8 @@
     <!-- Speaking exercises: microphone + speech recognition. -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Rehberden bul: read only, asked when the user taps the button (docs/arkadaslar.md). -->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <!-- Reminders: re-schedule after reboot. Inexact alarms, so no exact-alarm permission. -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <application
