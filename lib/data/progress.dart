@@ -846,11 +846,15 @@ class ProgressNotifier extends Notifier<Progress> {
 
   /// Moves a word up a box when known, two boxes down when not (a forgotten
   /// word does not start from zero). A word in box 0 is due again today.
-  void reviewWord(String id, {required bool known}) {
+  /// [weakSpelling]: known, but typed with a small spelling slip. The word
+  /// stays in its box and comes back tomorrow to practise the spelling.
+  void reviewWord(String id, {required bool known, bool weakSpelling = false}) {
     final now = _now();
     final old = state.wordBox[id] ?? 0;
-    final box = known ? min(old + 1, reviewIntervals.length - 1) : max(0, old - 2);
-    final due = dayKey(now.add(Duration(days: reviewIntervals[box])));
+    final box = known ? (weakSpelling ? old : min(old + 1, reviewIntervals.length - 1)) : max(0, old - 2);
+    final due = dayKey(
+      now.add(Duration(days: weakSpelling && known ? reviewIntervals[1] : reviewIntervals[box])),
+    );
     _save(
       state.copyWith(
         wordBox: {...state.wordBox, id: box},

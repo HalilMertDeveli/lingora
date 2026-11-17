@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/spelling.dart';
 import '../core/tr_errors.dart';
 import '../data/app_settings.dart';
 import '../data/break_reminder.dart';
@@ -21,6 +22,7 @@ import '../exercises/match_exercise.dart';
 import '../exercises/select_exercise.dart';
 import '../exercises/shadow_exercise.dart';
 import '../exercises/speak_exercise.dart';
+import '../exercises/spelling_note.dart';
 import '../exercises/translate_exercise.dart';
 import '../exercises/write_exercise.dart';
 import '../models/course.dart';
@@ -147,6 +149,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   /// "Neden yanlış?" content after a wrong English answer.
   WhyWrongSection? _why;
 
+  /// A small spelling slip in a correct typed answer ("Küçük bir yazım hatası").
+  AnswerMatch? _spelling;
+
   /// Track the session belongs to; null when it cannot be resumed.
   String? _resumeTrack;
   late final ResumeStore _resumeStore = ref.read(resumeStoreProvider);
@@ -257,10 +262,21 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     return why.isEmpty ? null : why;
   }
 
+  /// A forgiven spelling slip in a correct dinle-yaz answer. It costs no XP
+  /// and no accuracy, but the hata dedektörü counts it under "Yazım".
+  AnswerMatch? _spellingSlip(Exercise ex) {
+    if (ex.type != ExerciseType.listen || _answerText.trim().isEmpty) return null;
+    final match = listenMatch(ref, ex, _answerText);
+    if (!match.hasTypo) return null;
+    ref.read(progressProvider.notifier).recordErrorCategories(const [TrErrorCategory.spelling]);
+    return match;
+  }
+
   void _check() {
     final correct = _grader!.call();
     final notifier = ref.read(progressProvider.notifier);
     final why = correct ? null : _explain(_current.ex);
+    final spelling = correct ? _spellingSlip(_current.ex) : null;
     recordLessonAnswer(
       ref,
       item: _current,
@@ -271,6 +287,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     widget.onAnswered?.call(_current, correct);
     setState(() {
       _why = why;
+      _spelling = spelling;
       _answered++;
       _lastCorrect = correct;
       if (correct) {
@@ -327,6 +344,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       _lastCorrect = null;
       _answerText = '';
       _why = null;
+      _spelling = null;
     });
     _persist();
   }
@@ -511,6 +529,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     if (ex.type == ExerciseType.write && (ex.model?.isNotEmpty ?? false)) {
       return WritingModelText(model: ex.model!);
     }
+    if (_lastCorrect! && _spelling != null) return SpellingNote(match: _spelling!);
     return _lastCorrect! ? null : _why;
   }
 
