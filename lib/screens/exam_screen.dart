@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/text.dart';
 import '../data/course_repository.dart';
+import '../data/option_glosses.dart';
 import '../data/progress.dart';
 import '../models/exam.dart';
 import '../study/analysis.dart' show markAndSkipSeconds;
@@ -20,6 +21,7 @@ import '../ui/markdown_text.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../nav/flow.dart';
+import '../exercises/option_gloss.dart';
 import 'exam_pack_screen.dart';
 import 'paywall_screen.dart';
 
@@ -287,6 +289,10 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   int _pos = 0;
   int? _picked;
   bool _revealed = false;
+
+  /// The learner's choice of showing the options' Turkish; null = default
+  /// (open after a mistake).
+  bool? _glossOpen;
   int _shake = 0;
   Timer? _timer;
   late int _secondsLeft = (widget.minutes ?? widget.exam.mockMinutes) * 60;
@@ -372,6 +378,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
       _pos++;
       _picked = null;
       _revealed = false;
+      _glossOpen = null;
     });
   }
 
@@ -490,6 +497,8 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     final mm = (_secondsLeft ~/ 60).toString().padLeft(2, '0');
     final ss = (_secondsLeft % 60).toString().padLeft(2, '0');
     final right = _picked == q.answer;
+    final gloss = _revealed ? ref.watch(optionGlossesProvider).value?.of(q.id, q.options.length) : null;
+    final glossOpen = _glossOpen ?? !right;
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
@@ -575,6 +584,10 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, height: 1.4),
                       ),
                       const SizedBox(height: 16),
+                      if (gloss != null) ...[
+                        OptionGlossToggle(open: glossOpen, onChanged: (v) => setState(() => _glossOpen = v)),
+                        const SizedBox(height: 10),
+                      ],
                       Shake(
                         trigger: _shake,
                         child: Column(
@@ -604,9 +617,19 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                                       ),
                                       const SizedBox(width: 12),
                                       Expanded(
-                                        child: Text(
-                                          q.options[i],
-                                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              q.options[i],
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            if (glossOpen)
+                                              ?optionGlossFor(gloss, i, answer: q.answer, picked: _picked),
+                                          ],
                                         ),
                                       ),
                                     ],
@@ -804,15 +827,16 @@ class ExamResultScreen extends StatelessWidget {
   }
 }
 
-class _ReviewTile extends StatelessWidget {
+class _ReviewTile extends ConsumerWidget {
   const _ReviewTile({required this.index, required this.q, required this.picked});
   final int index;
   final ExamQuestion q;
   final int? picked;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final ok = picked == q.answer;
+    final gloss = ref.watch(optionGlossesProvider).value?.of(q.id, q.options.length);
     final color = picked == null ? Brand.muted : (ok ? Brand.success : Brand.error);
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
@@ -845,6 +869,21 @@ class _ReviewTile extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(q.explanation, style: const TextStyle(height: 1.4)),
+            if (gloss != null) ...[
+              const SizedBox(height: 12),
+              Text(
+                'Şıkların Türkçesi',
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13, color: Brand.primary),
+              ),
+              const SizedBox(height: 6),
+              OptionGlossList(
+                options: q.options,
+                gloss: gloss,
+                answer: q.answer,
+                picked: picked,
+                letters: _letters,
+              ),
+            ],
           ],
         ),
       ),
