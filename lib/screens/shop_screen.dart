@@ -22,9 +22,11 @@ class ShopScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final balance = ref.watch(goldBalanceProvider);
+    final tabs = ShopCategory.tabs(kid: context.isKid);
+    final start = tabs.indexOf(initial);
     return DefaultTabController(
-      length: ShopCategory.values.length,
-      initialIndex: initial.index,
+      length: tabs.length,
+      initialIndex: start < 0 ? 0 : start,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Mağaza'),
@@ -50,14 +52,11 @@ class ShopScreen extends ConsumerWidget {
               child: TabBar(
                 isScrollable: true,
                 tabAlignment: TabAlignment.start,
-                tabs: [
-                  for (final c in ShopCategory.values)
-                    Tab(key: ValueKey('shop-tab-${c.name}'), text: c.label),
-                ],
+                tabs: [for (final c in tabs) Tab(key: ValueKey('shop-tab-${c.name}'), text: c.label)],
               ),
             ),
           ],
-          body: TabBarView(children: [for (final c in ShopCategory.values) _Grid(category: c)]),
+          body: TabBarView(children: [for (final c in tabs) _Grid(category: c)]),
         ),
       ),
     );

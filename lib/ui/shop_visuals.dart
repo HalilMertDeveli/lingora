@@ -165,7 +165,8 @@ class ShopItemPreview extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(size * 0.18),
-            child: Image.asset(mascotAsset, width: size, height: size),
+            // Çocuk modu shows only Pofuduk, never Çaycı Dayı.
+            child: Image.asset(context.isKid ? pofudukAvatar : mascotAsset, width: size, height: size),
           ),
           if (item.accessory != null) MascotAccessoryLayer(accessory: item.accessory!, size: size),
         ],

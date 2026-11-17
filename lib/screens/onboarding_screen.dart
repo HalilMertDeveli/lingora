@@ -228,7 +228,7 @@ class _Welcome extends StatelessWidget {
         const SizedBox(height: 10),
         Text(
           context.isKid
-              ? 'Hoş geldin, ben Pofuduk!\nÇaycı Dayı çayı demledi; her gün birkaç dakika birlikte öğrenelim.'
+              ? 'Hoş geldin, ben Pofuduk!\nHer gün birkaç dakika birlikte öğrenelim.'
               : 'Her gün birkaç dakika,\nadım adım yeni bir dil.',
           textAlign: TextAlign.center,
           style: t.titleMedium?.copyWith(color: Brand.muted, fontWeight: FontWeight.w500),

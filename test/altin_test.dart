@@ -61,6 +61,11 @@ Future<ProviderContainer> _container({
 Wallet rich(int gold) => Wallet(earned: {'dtest': gold});
 
 void main() {
+  test('Çocuk modu Mağazası: Çaycı Dayı sekmesi yok, yalnızca Pofuduk', () {
+    expect(ShopCategory.tabs(kid: true), isNot(contains(ShopCategory.mascot)));
+    expect(ShopCategory.tabs(kid: false), ShopCategory.values);
+  });
+
   group('earning', () {
     test('a lesson earns gold; a perfect one more; chests nothing', () async {
       final c = await _container();
