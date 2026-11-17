@@ -169,7 +169,7 @@ test("strangers and guests cannot read or write a showcase", async () => {
 });
 
 test("a malformed showcase is refused", async () => {
-  const bad: Record<string, unknown>[] = [
+  const bad: unknown[] = [
     showcase({ items: ["av_a", "av_b", "av_c", "av_d"] }), // more than 3
     showcase({ items: ["<script>"] }), // not an item id
     showcase({ items: ["xx_tilki"] }), // unknown category
