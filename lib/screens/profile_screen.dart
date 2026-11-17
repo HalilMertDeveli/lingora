@@ -9,6 +9,7 @@ import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/appearance.dart';
 import '../ui/country_picker.dart';
+import '../ui/gold_coin.dart';
 import 'account_section.dart';
 import 'error_analysis_screen.dart';
 import 'growth_profile_section.dart';
@@ -20,6 +21,7 @@ import 'paywall_screen.dart';
 import 'profile_header.dart';
 import 'placement_screen.dart';
 import 'reminder_settings.dart';
+import 'shop_screen.dart';
 import 'study/methods_screen.dart';
 
 const _weekdays = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
@@ -61,6 +63,34 @@ class ProfileScreen extends ConsumerWidget {
             _StatCard(Icons.menu_book_rounded, Brand.primary, '${p.lessonsDone}', 'Bitirilen ders'),
             _StatCard(Icons.track_changes, Brand.success, '%$accuracy', 'Doğruluk'),
           ],
+        ),
+        const SizedBox(height: 12),
+        // The Mağaza: Altın balance and what it buys.
+        TapCard(
+          key: const ValueKey('profile-shop'),
+          onTap: () => openShop(context),
+          child: Row(
+            children: [
+              const GoldCoin(size: 32),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Mağaza · ${p.wallet.balance} altın',
+                      style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                    ),
+                    Text(
+                      'Avatar, çerçeve, tema ve seri dondurma. Altın çalışarak kazanılır.',
+                      style: TextStyle(color: Brand.muted, fontSize: 13),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.chevron_right_rounded, color: Brand.muted),
+            ],
+          ),
         ),
         const SizedBox(height: 24),
         Text('Sık yaptığın hatalar', style: t.titleLarge),

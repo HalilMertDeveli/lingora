@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../data/gold_wallet.dart';
+import '../data/shop_catalog.dart';
 import '../services/firebase/firebase_providers.dart';
 import '../services/profile.dart';
 import '../theme.dart';
-import '../ui/avatar.dart';
 import '../ui/mascot.dart';
+import '../ui/shop_visuals.dart';
 import 'onboarding_screen.dart' show LingoraLogo;
 
 /// Opens the gallery or the camera and returns the chosen image's bytes;
@@ -42,6 +44,7 @@ class ProfileHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(profileProvider);
+    final wallet = ref.watch(walletProvider);
     final account = ref.watch(authStateProvider).value?.displayName?.trim().split(RegExp(r'\s+')).first;
     final name = profile.name ?? cleanDisplayName(account) ?? 'Öğrenci';
     // Çocuk modu: Pofuduk's square face is the avatar and photos are off.
@@ -61,9 +64,13 @@ class ProfileHeader extends ConsumerWidget {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  PhotoAvatar(
+                  // The Mağaza avatar stands in for a missing photo; the
+                  // frame goes around either.
+                  StyledAvatar(
                     photo: profile.photo,
                     size: size,
+                    avatarId: equippedIn(wallet, WalletSlot.avatar)?.id,
+                    frameId: equippedIn(wallet, WalletSlot.frame)?.id,
                     fallback: const LingoraLogo(size: size),
                   ),
                   Positioned(

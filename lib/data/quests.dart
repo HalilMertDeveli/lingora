@@ -15,6 +15,9 @@ class QuestDef {
 
   int progressOf(Progress p, DateTime day) => min(target, p.counter(day, metric));
   bool isComplete(Progress p, DateTime day) => p.counter(day, metric) >= target;
+
+  /// Altın for claiming the quest: as much as its XP (5–15).
+  int get rewardGold => rewardXp;
 }
 
 const _xpQuests = [

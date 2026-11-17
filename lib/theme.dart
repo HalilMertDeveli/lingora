@@ -95,6 +95,34 @@ class Palette {
 
   bool get isDark => brightness == Brightness.dark;
 
+  /// The same palette with another brand colour (a Mağaza theme). The
+  /// text on it follows the colour's lightness.
+  Palette withPrimary(Color c) => Palette(
+    kid: kid,
+    brightness: brightness,
+    primary: c,
+    onPrimary: onColor(c),
+    accent: accent,
+    accentBg: accentBg,
+    success: success,
+    successBg: successBg,
+    error: error,
+    errorBg: errorBg,
+    streak: streak,
+    xp: xp,
+    info: info,
+    ink: ink,
+    muted: muted,
+    line: line,
+    surface: surface,
+    card: card,
+    background: background,
+    edge: edge,
+    mascot: mascot,
+    onMascot: onMascot,
+    mascotBg: mascotBg,
+  );
+
   /// Softer version of a bright content colour (unit, level, track colours)
   /// for adult mode. Kid palettes return it unchanged.
   Color tone(Color c) {
@@ -331,8 +359,12 @@ abstract final class Brand {
 const _adultFont = 'LingoraSans';
 const _kidFont = 'Inter';
 
-ThemeData buildTheme({AppMode mode = AppMode.adult, Brightness brightness = Brightness.light}) {
-  final p = Palette.of(mode, brightness);
+ThemeData buildTheme({
+  AppMode mode = AppMode.adult,
+  Brightness brightness = Brightness.light,
+  Palette? palette,
+}) {
+  final p = palette ?? Palette.of(mode, brightness);
   final kid = mode == AppMode.kid;
   final r = kid ? Radii.lg : Radii.md;
   final scheme = ColorScheme.fromSeed(

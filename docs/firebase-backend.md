@@ -159,7 +159,7 @@ Kod: `lib/services/profile.dart`, başlık `lib/screens/profile_header.dart`. Ku
   küçültülür ve en fazla 60 KiB olur (`image` paketi). Cloud Storage varsayılan bucket'ı Blaze ister; bu yüzden
   görsel `profiles/{uid}` belgesinde `photo` (bytes) alanında durur.
 - **Misafir:** Fotoğraf ve ad yalnızca cihazda (SharedPreferences, `profile_v1`). Hesaba girince yüklenir.
-- **Hesap:** Her değişiklik `profiles/{uid}` belgesine yazılır: `{name, photo, clientUpdatedAt, updatedAt}`.
+- **Hesap:** Her değişiklik `profiles/{uid}` belgesine yazılır: `{name, photo, clientUpdatedAt, updatedAt}` (birleştirerek yazılır; yanında Mağaza vitrini `showcase` durur, bkz. `docs/altin.md`).
   Girişte cihazdaki kopya ile buluttaki karşılaştırılır, yenisi kazanır; bu telefonda başka bir hesaptan kalan
   kopya yüklenmez.
 - **Kurallar:** Yalnızca sahibi yazar (misafir yazamaz). Okuyabilenler: sahibi ve arkadaşları
