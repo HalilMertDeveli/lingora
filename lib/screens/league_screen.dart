@@ -9,8 +9,12 @@ import '../services/firebase/account_service.dart';
 import '../services/league_remote.dart';
 import '../services/profile.dart';
 import '../theme.dart';
+import '../services/friends.dart' show friendshipsProvider;
+import '../services/showcase.dart';
 import '../ui/avatar.dart';
+import '../ui/shop_visuals.dart';
 import 'auth_screen.dart';
+import 'friend_profile_screen.dart' show ShowcaseStrip;
 import 'friends_screen.dart';
 import 'quests_screen.dart' show formatLeft;
 
@@ -522,6 +526,18 @@ class _Row extends ConsumerWidget {
     final chosen = mine?.name;
     final name = entry.isUser ? (chosen != null ? '$chosen (Sen)' : entry.name) : entry.name;
     final flag = Brand.isKid ? '' : flagEmoji(entry.country);
+    // Mağaza showcase: the user's own, and friends' (profiles/{uid} is
+    // readable by friends only, so other members keep their plain avatar).
+    final uid = entry.uid;
+    final isFriend =
+        !entry.isUser &&
+        uid != null &&
+        (ref.watch(friendshipsProvider).value?.any((f) => f.friendUid == uid) ?? false);
+    final showcase = entry.isUser
+        ? ref.watch(myShowcaseProvider)
+        : isFriend
+        ? ref.watch(friendProfileProvider(uid)).value?.showcase
+        : null;
     final rankColor = inPromotionZone(tier, rank, size)
         ? Brand.success
         : inDemotionZone(tier, rank, size)
@@ -544,10 +560,12 @@ class _Row extends ConsumerWidget {
               style: TextStyle(color: rankColor, fontWeight: FontWeight.w900, fontSize: 16),
             ),
           ),
-          PhotoAvatar(
+          StyledAvatar(
             key: entry.isUser ? const ValueKey('league-my-avatar') : null,
             photo: photo,
             size: 40,
+            avatarId: showcase?.avatar,
+            frameId: showcase?.frame,
             fallback: CircleAvatar(
               radius: 20,
               backgroundColor: Brand.surface,
@@ -567,6 +585,10 @@ class _Row extends ConsumerWidget {
               style: TextStyle(fontSize: 16, fontWeight: entry.isUser ? FontWeight.w900 : FontWeight.w600),
             ),
           ),
+          if (showcase != null && showcase.items.isNotEmpty) ...[
+            ShowcaseStrip(showcase: showcase, size: 18),
+            const SizedBox(width: 4),
+          ],
           Text(
             '${entry.xp} XP',
             style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700),

@@ -5,7 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/frame_stats.dart';
 import 'core/startup_trace.dart';
 import 'data/app_settings.dart';
+import 'data/gold_wallet.dart';
 import 'data/progress.dart';
+import 'data/shop_catalog.dart';
 import 'screens/consent_sheet.dart';
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
@@ -19,9 +21,11 @@ import 'services/billing/premium.dart';
 import 'services/friends.dart';
 import 'services/growth/growth.dart';
 import 'services/league_remote.dart';
+import 'services/showcase.dart';
 import 'services/speech.dart';
 import 'theme.dart';
 import 'ui/motion.dart';
+import 'ui/shop_visuals.dart';
 
 Future<void> main() async {
   StartupTrace.start();
@@ -73,7 +77,12 @@ class LingoraApp extends ConsumerWidget {
       ThemePref.dark => Brightness.dark,
       ThemePref.system => MediaQuery.maybePlatformBrightnessOf(context) ?? Brightness.light,
     };
-    final palette = Palette.of(settings.mode, brightness);
+    // The Mağaza look: brand colour and Çaycı Dayı's accessory.
+    final themeItem = ref.watch(walletProvider.select((w) => equippedIn(w, WalletSlot.theme)));
+    final outfit = ref.watch(walletProvider.select((w) => equippedIn(w, WalletSlot.mascot)?.accessory));
+    final palette = appPalette(settings.mode, brightness, themeItem);
+    // Puts the worn Mağaza look into profiles/{uid} for friends.
+    ref.listen(showcaseSyncProvider, (_, _) {});
     // Set before building so the first frame already uses the right colours.
     Brand.apply(palette);
     SessionFx.sound = settings.sound;
@@ -82,14 +91,32 @@ class LingoraApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Dilmaç',
       debugShowCheckedModeBanner: false,
-      theme: buildTheme(mode: settings.mode, brightness: brightness),
+      theme: buildTheme(mode: settings.mode, brightness: brightness, palette: palette),
       builder: (context, child) => PaletteScope(
         palette: palette,
-        child: settings.reduceMotion
-            ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
-            : child!,
+        child: MascotOutfitScope(
+          accessory: outfit,
+          child: settings.reduceMotion
+              ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
+              : child!,
+        ),
       ),
       home: ConsentGate(child: onboarded ? const HomeScreen() : const OnboardingScreen()),
     );
   }
+}
+
+final _palettes = <(AppMode, Brightness, String?), Palette>{};
+
+/// The palette for [mode] and [brightness] with the Mağaza [theme]'s brand
+/// colour. The same object comes back for the same inputs, so PaletteScope
+/// only rebuilds everything when the look really changes.
+Palette appPalette(AppMode mode, Brightness brightness, ShopItem? theme) {
+  final accent = theme?.accent;
+  final id = accent == null || theme!.free ? null : theme.id;
+  return _palettes.putIfAbsent((mode, brightness, id), () {
+    final base = Palette.of(mode, brightness);
+    if (accent == null || id == null) return base;
+    return base.withPrimary(brightness == Brightness.dark ? accent.dark : accent.light);
+  });
 }

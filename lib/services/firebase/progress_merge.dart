@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import '../../data/progress.dart';
 import '../../models/notes.dart';
+import '../../data/wallet.dart';
 import '../../models/study_plan.dart';
 
 /// Merges two copies of the user's progress (this device and the cloud) so
@@ -16,7 +17,8 @@ import '../../models/study_plan.dart';
 /// * the streak comes from whichever copy was active more recently (the
 ///   longer one on the same day);
 /// * settings and lists the user edits (daily goal, reminders, track,
-///   mistakes, league state) come from the copy changed last ([localNewer]).
+///   mistakes, league state) come from the copy changed last ([localNewer]);
+/// * the Altın wallet is merged by [mergeWallets] (no gold is lost).
 Progress mergeProgress(Progress local, Progress remote, {required bool localNewer}) {
   final newer = localNewer ? local : remote;
   final older = localNewer ? remote : local;
@@ -122,6 +124,8 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     mistakeRun: {for (final k in newer.mistakes) k: ?newer.mistakeRun[k]},
     mistakeReason: {for (final k in newer.mistakes) k: ?(newer.mistakeReason[k] ?? older.mistakeReason[k])},
     mistakeNote: {for (final k in newer.mistakes) k: ?(newer.mistakeNote[k] ?? older.mistakeNote[k])},
+    // Altın: grow-only counters per device, owned items united (wallet.dart).
+    wallet: mergeWallets(local.wallet, remote.wallet),
   );
 }
 

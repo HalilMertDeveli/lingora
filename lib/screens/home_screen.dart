@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
+import '../data/gold_wallet.dart';
+import '../data/league.dart' show trWeekKey;
 import '../data/progress.dart';
 import '../data/resume.dart';
 import '../nav/nav_target.dart';
@@ -224,6 +226,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     ref.listen(pendingWorldResultProvider, (_, result) async {
       if (result == null || !mounted) return;
       markWorldResultSeen(ref.read);
+      // Altın for last week (once per week).
+      ref
+          .read(goldWalletProvider)
+          .earnLeague(
+            weekKey: trWeekKey(ref.read(clockProvider)().subtract(const Duration(days: 7))),
+            promoted: result.promoted,
+            demoted: result.demoted,
+            rank: result.rank,
+            xp: result.xp ?? 1,
+          );
       await showLeagueResult(context, result);
     });
     return PopScope(

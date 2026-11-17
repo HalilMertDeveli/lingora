@@ -6,7 +6,9 @@ import '../data/course_repository.dart';
 import '../data/progress.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
+import '../screens/shop_screen.dart';
 import '../ui/flag.dart';
+import '../ui/gold_coin.dart';
 import 'nav_target.dart';
 
 /// Top bar of every tab root: the track button on the left (opens the track
@@ -84,6 +86,19 @@ class StatsBar extends ConsumerWidget {
           value: p.totalXp,
           tooltip: 'XP',
           onTap: () => showTopPanel(context, const XpPanel()),
+        ),
+        // Altın balance: opens the Mağaza.
+        Tooltip(
+          message: 'Altın · Mağaza',
+          child: InkWell(
+            key: const Key('topbar-gold'),
+            borderRadius: BorderRadius.circular(12),
+            onTap: () => openShop(context),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+              child: GoldAmount(p.wallet.balance, size: 16),
+            ),
+          ),
         ),
       ],
     );

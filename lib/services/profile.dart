@@ -10,6 +10,7 @@ import 'package:image/image.dart' as img;
 import '../data/progress.dart';
 import 'firebase/firebase_providers.dart';
 import 'league_remote.dart' show leagueDisplayName;
+import 'showcase.dart';
 
 /// The learner's own photo and display name (docs/firebase-backend.md,
 /// "Profil").
@@ -79,7 +80,11 @@ bool looksLikeJpeg(Uint8List b) => b.length > 3 && b[0] == 0xFF && b[1] == 0xD8 
 
 @immutable
 class ProfileData {
-  const ProfileData({this.name, this.photo, this.updatedAt = 0, this.owner});
+  const ProfileData({this.name, this.photo, this.updatedAt = 0, this.owner, this.showcase});
+
+  /// A friend's Mağaza showcase (read from Firestore only; the own one
+  /// comes from the wallet, see lib/services/showcase.dart).
+  final Showcase? showcase;
 
   /// Chosen display name; null uses the account's name.
   final String? name;
@@ -107,6 +112,7 @@ class ProfileData {
     photo: clearPhoto ? null : (photo ?? this.photo),
     updatedAt: updatedAt ?? this.updatedAt,
     owner: owner ?? this.owner,
+    showcase: showcase,
   );
 
   Map<String, Object?> toJson() => {
@@ -135,6 +141,7 @@ class ProfileData {
       photo: photo is Blob ? photo.bytes : null,
       updatedAt: (d['clientUpdatedAt'] as num?)?.toInt() ?? 0,
       owner: uid,
+      showcase: Showcase.fromMap(d['showcase']),
     );
   }
 
@@ -167,7 +174,8 @@ class FirestoreProfileApi implements ProfileApi {
       ProfileData.fromFirestore((await _doc(uid).get()).data(), uid);
 
   @override
-  Future<void> save(String uid, ProfileData profile) => _doc(uid).set(profile.toFirestore());
+  Future<void> save(String uid, ProfileData profile) =>
+      _doc(uid).set(profile.toFirestore(), SetOptions(merge: true));
 
   @override
   Stream<ProfileData?> watch(String uid) =>

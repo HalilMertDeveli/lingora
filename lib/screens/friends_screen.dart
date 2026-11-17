@@ -9,8 +9,9 @@ import '../services/firebase/firebase_providers.dart';
 import '../services/friends.dart';
 import '../services/profile.dart';
 import '../theme.dart';
-import '../ui/avatar.dart';
+import '../ui/shop_visuals.dart';
 import 'auth_screen.dart';
+import 'friend_profile_screen.dart';
 
 /// Text shared with a friend: the code and where to type it.
 String friendShareText(String code) =>
@@ -301,16 +302,23 @@ class _FriendCard extends ConsumerWidget {
       padding: const EdgeInsets.only(bottom: 10),
       child: TapCard(
         key: ValueKey('friend-${friend.friendUid}'),
+        onTap: () =>
+            Navigator.of(context)
+                .push(MaterialPageRoute<void>(builder: (_) => FriendProfileScreen(friend: friend))),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                // The friend's own photo and name (profiles/{uid}); the
+                // The friend's own photo and name (profiles/{uid}) in their
+                // Mağaza frame, their Mağaza avatar without a photo; the
                 // animal and the name saved with the friendship otherwise.
-                PhotoAvatar(
+                StyledAvatar(
+                  key: ValueKey('friend-avatar-${friend.friendUid}'),
                   photo: profile?.photo,
                   size: 44,
+                  avatarId: profile?.showcase?.avatar,
+                  frameId: profile?.showcase?.frame,
                   fallback: CircleAvatar(
                     radius: 22,
                     backgroundColor: Brand.surface,
@@ -332,6 +340,10 @@ class _FriendCard extends ConsumerWidget {
                             : 'Ortak seriniz bugün başlayabilir',
                         style: TextStyle(color: Brand.muted, fontSize: 12),
                       ),
+                      if (profile?.showcase?.items.isNotEmpty ?? false) ...[
+                        const SizedBox(height: 4),
+                        ShowcaseStrip(showcase: profile!.showcase, size: 22),
+                      ],
                     ],
                   ),
                 ),

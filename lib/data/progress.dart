@@ -10,6 +10,7 @@ import '../models/study_plan.dart';
 import 'catalog.dart';
 import 'league.dart';
 import 'quests.dart';
+import 'wallet.dart';
 
 /// Most questions kept in the error notebook (oldest dropped first).
 const maxMistakes = 300;
@@ -67,7 +68,11 @@ class Progress {
     this.mistakeNote = const {},
     this.userNotes = const [],
     this.removedWords = const {},
+    this.wallet = const Wallet(),
   });
+
+  /// Altın and Mağaza items (lib/data/wallet.dart).
+  final Wallet wallet;
 
   /// Selected course or exam (see catalog.dart).
   final String trackId;
@@ -189,11 +194,43 @@ class Progress {
   /// Streak as shown today: it is lost once a whole day is skipped. With a
   /// study plan one missed day a week is forgiven (a streak freeze, used
   /// automatically): a habit is not broken by a single day.
+  ///
+  /// Streak freezes bought in the Mağaza bridge further missed days, one
+  /// each (see [streakCover]).
   int streakAt(DateTime now) {
     final today = dayKey(now);
     final yesterday = dayKey(now.subtract(const Duration(days: 1)));
     if (lastActiveDay == today || lastActiveDay == yesterday) return streak;
-    return freezeCovers(now) ? streak : 0;
+    return streakCover(now) != null ? streak : 0;
+  }
+
+  /// Days missed since [lastActiveDay] (0 when active today or yesterday);
+  /// null before the first lesson.
+  int? missedDays(DateTime now) {
+    final last = lastActiveDay;
+    if (last == null) return null;
+    final l = DateTime.parse(last);
+    final days = DateTime.utc(
+      now.year,
+      now.month,
+      now.day,
+    ).difference(DateTime.utc(l.year, l.month, l.day)).inDays;
+    return max(0, days - 1);
+  }
+
+  /// How the missed days are bridged: the study plan's weekly freeze (one
+  /// day) and bought freezes (one day each). Null when they are not enough
+  /// (the streak is lost) or there was never a streak.
+  ({bool plan, int bought})? streakCover(DateTime now) {
+    final missed = missedDays(now);
+    if (missed == null || streak <= 0) return null;
+    if (missed == 0) return (plan: false, bought: 0);
+    final plan = studyPlan;
+    final planFree =
+        plan != null && plan.freezeWeek != dayKey(weekStart(now.subtract(const Duration(days: 1))));
+    final need = missed - (planFree ? 1 : 0);
+    if (need > wallet.freezes) return null;
+    return (plan: planFree, bought: need);
   }
 
   /// Whether a streak freeze bridges yesterday, missed after studying the
@@ -266,6 +303,7 @@ class Progress {
     Map<String, String>? mistakeNote,
     List<UserNote>? userNotes,
     Map<String, int>? removedWords,
+    Wallet? wallet,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -303,6 +341,7 @@ class Progress {
     mistakeNote: mistakeNote ?? this.mistakeNote,
     userNotes: userNotes ?? this.userNotes,
     removedWords: removedWords ?? this.removedWords,
+    wallet: wallet ?? this.wallet,
   );
 
   Map<String, dynamic> toJson() => {
@@ -342,6 +381,7 @@ class Progress {
     'mistakeNote': mistakeNote,
     'userNotes': [for (final n in userNotes) n.toJson()],
     'removedWords': removedWords,
+    'wallet': wallet.toJson(),
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -390,6 +430,9 @@ class Progress {
       for (final e in ((j['removedWords'] as Map?) ?? const {}).entries)
         e.key as String: (e.value as num).toInt(),
     },
+    wallet: j['wallet'] is Map
+        ? Wallet.fromJson(Map<String, dynamic>.from(j['wallet'] as Map))
+        : const Wallet(),
   );
 }
 
@@ -403,8 +446,20 @@ class LessonReward {
     required this.dailyGoal,
     this.questsCompleted = const [],
     this.questProgress = const [],
+    this.gold = const [],
+    this.freezesUsed = 0,
   });
   final int xp;
+
+  /// Gold earned with this lesson, by reason (lesson, perfect, daily goal,
+  /// streak milestone), in that order.
+  final List<(GoldReason, int)> gold;
+
+  /// Total of [gold].
+  int get goldTotal => gold.fold(0, (a, g) => a + g.$2);
+
+  /// Bought streak freezes used up to keep the streak.
+  final int freezesUsed;
   final int streak;
   final bool streakExtended;
   final int todayXp;
@@ -443,6 +498,9 @@ class ProgressNotifier extends Notifier<Progress> {
 
   SharedPreferences get _prefs => ref.read(prefsProvider);
   DateTime _now() => ref.read(clockProvider)();
+
+  /// This install's id in the wallet counters.
+  String get device => walletDevice(_prefs);
 
   @override
   Progress build() {
@@ -491,13 +549,40 @@ class ProgressNotifier extends Notifier<Progress> {
     final today = dayKey(now);
     final shownStreak = state.streakAt(now);
     final alreadyToday = state.lastActiveDay == today;
-    // A freeze bridged yesterday: use it up for that week.
-    final freeze = state.freezeCovers(now)
+    // Freezes bridged missed days: use them up (the plan's for that week).
+    final cover = alreadyToday ? null : state.streakCover(now);
+    final freeze = cover != null && cover.plan
         ? state.studyPlan!.copyWith(freezeWeek: dayKey(weekStart(now.subtract(const Duration(days: 1)))))
         : null;
+    final freezesUsed = cover?.bought ?? 0;
     final newStreak = alreadyToday ? shownStreak : shownStreak + 1;
     final todayXp = (state.xpByDay[today] ?? 0) + xp;
     final isLesson = answered > 0;
+
+    // Altın: the lesson, a perfect run, the daily goal, a streak milestone.
+    var wallet = state.wallet.pruned(today).useFreezes(device, freezesUsed);
+    final gold = <(GoldReason, int)>[];
+    final once = {...wallet.once};
+    void give(GoldReason reason, int amount, [String? onceKey]) {
+      if (amount <= 0) return;
+      if (onceKey != null) {
+        if (once.containsKey(onceKey)) return;
+        once[onceKey] = today;
+      }
+      gold.add((reason, amount));
+    }
+
+    if (isLesson) give(GoldReason.lesson, goldPerLesson);
+    if (isLesson && perfect) give(GoldReason.perfect, goldPerfectBonus);
+    final goalBefore = state.xpByDay[today] ?? 0;
+    if (goalBefore < state.dailyGoal && todayXp >= state.dailyGoal) {
+      give(GoldReason.dailyGoal, goldDailyGoal, 'goal:$today');
+    }
+    if (!alreadyToday && goldStreakMilestones[newStreak] != null) {
+      final start = dayKey(now.subtract(Duration(days: newStreak - 1)));
+      give(GoldReason.streak, goldStreakMilestones[newStreak]!, 'streak:$newStreak:$start');
+    }
+    wallet = wallet.copyWith(once: once).credit(device, gold.fold(0, (a, g) => a + g.$2));
 
     final before = state;
     final counters = {...state.counters};
@@ -524,6 +609,7 @@ class ProgressNotifier extends Notifier<Progress> {
         correct: state.correct + correct,
         answered: state.answered + answered,
         counters: counters,
+        wallet: wallet,
       ),
     );
 
@@ -534,6 +620,8 @@ class ProgressNotifier extends Notifier<Progress> {
       streakExtended: !alreadyToday,
       todayXp: todayXp,
       dailyGoal: state.dailyGoal,
+      gold: gold,
+      freezesUsed: freezesUsed,
       questsCompleted: [
         for (final q in quests)
           if (!q.isComplete(before, now) && q.isComplete(state, now)) q,
@@ -556,6 +644,7 @@ class ProgressNotifier extends Notifier<Progress> {
         totalXp: state.totalXp + quest.rewardXp,
         xpByDay: {...state.xpByDay, today: (state.xpByDay[today] ?? 0) + quest.rewardXp},
         claimed: [...state.claimed, '$today:${quest.id}'],
+        wallet: state.wallet.credit(device, quest.rewardGold),
       ),
     );
     return true;
@@ -576,8 +665,21 @@ class ProgressNotifier extends Notifier<Progress> {
       return;
     }
     final start = DateTime.parse(week);
-    final result = finishWeek(tier: state.leagueTier, weekStart: start, userXp: state.weekXp(start));
-    _save(state.copyWith(leagueTier: result.newTier, leagueWeek: current, leagueResult: result));
+    final userXp = state.weekXp(start);
+    final result = finishWeek(tier: state.leagueTier, weekStart: start, userXp: userXp);
+    final gold = goldForLeague(
+      promoted: result.promoted,
+      demoted: result.demoted,
+      rank: result.rank,
+      xp: userXp,
+    );
+    final key = 'league:$week';
+    final wallet = gold > 0 && !state.wallet.once.containsKey(key)
+        ? state.wallet.copyWith(once: {...state.wallet.once, key: dayKey(now)}).credit(device, gold)
+        : state.wallet;
+    _save(
+      state.copyWith(leagueTier: result.newTier, leagueWeek: current, leagueResult: result, wallet: wallet),
+    );
   }
 
   void setReminders({bool? enabled, int? minutes}) =>
@@ -886,6 +988,10 @@ class ProgressNotifier extends Notifier<Progress> {
       ),
     );
   }
+
+  /// Changes the wallet (see GoldWallet in lib/data/gold_wallet.dart).
+  void updateWallet(Wallet Function(Wallet w, String device) change) =>
+      _save(state.copyWith(wallet: change(state.wallet, device)));
 
   void dismissLeagueResult() => _save(state.copyWith(clearLeagueResult: true));
 

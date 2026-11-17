@@ -64,6 +64,8 @@ flutter:
     - assets/plans/
     - assets/vocab/
     - assets/mascot/
+    # The Altın coin (original, docs/varliklar.md).
+    - assets/gold/
     - assets/flags/
     - assets/brand/
     # Topic themes (tool/themes/gen_theme_svgs.mjs, docs/tasarim/temalar.md).

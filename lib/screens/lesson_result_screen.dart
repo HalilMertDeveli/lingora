@@ -7,6 +7,8 @@ import '../data/progress.dart';
 import '../data/stoic.dart';
 import '../nav/flow.dart';
 import '../theme.dart';
+import '../data/wallet.dart' show GoldReason;
+import '../ui/gold_coin.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/stoic_card.dart';
@@ -146,6 +148,20 @@ class _LessonResultScreenState extends State<LessonResultScreen> {
                   ],
                 ),
                 const SizedBox(height: 16),
+                // Altın earned with this lesson: "+N altın" pops in and counts up.
+                if (reward.goldTotal > 0) ...[
+                  GoldGain(amount: reward.goldTotal, delay: next(), label: goldBreakdown(reward)),
+                  const SizedBox(height: 12),
+                ],
+                if (reward.freezesUsed > 0)
+                  _Banner(
+                    delay: next(),
+                    color: Brand.info,
+                    icon: Icons.ac_unit_rounded,
+                    text: reward.freezesUsed == 1
+                        ? 'Seri dondurma serini korudu.'
+                        : '${reward.freezesUsed} seri dondurma serini korudu.',
+                  ),
                 if (widget.bestCombo >= 3)
                   _Banner(
                     delay: next(),
@@ -772,3 +788,18 @@ class _Tile extends StatelessWidget {
     ),
   );
 }
+
+/// "Ders 5 · Hatasız 3 · Günlük hedef 10" under the gold gain.
+String goldBreakdown(LessonReward r) => [
+  for (final (reason, amount) in r.gold)
+    '${switch (reason) {
+      GoldReason.lesson => 'Ders',
+      GoldReason.perfect => 'Hatasız',
+      GoldReason.dailyGoal => 'Günlük hedef',
+      GoldReason.streak => 'Seri ödülü',
+      GoldReason.quest => 'Görev',
+      GoldReason.league => 'Lig',
+      GoldReason.rewardedAd => 'Bonus',
+      GoldReason.other => 'Ödül',
+    }} $amount',
+].join(' · ');
