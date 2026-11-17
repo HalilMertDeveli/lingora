@@ -291,6 +291,7 @@ class _RequestList extends ConsumerWidget {
                   ),
                   FilledButton(
                     key: ValueKey('request-accept-${r.from}'),
+                    style: compactButton,
                     onPressed: () => acceptFriendRequest(context, api, r),
                     child: const Text('Kabul et'),
                   ),

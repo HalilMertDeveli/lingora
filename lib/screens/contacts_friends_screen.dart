@@ -216,29 +216,32 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
           text: 'Rehberinde, numarasıyla bulunmayı açmış bir Dilmaç kullanıcısı yok. Aşağıdan davet edebilirsin.',
         ),
       for (final c in book.onApp)
-        ListTile(
+        _ContactRow(
           key: ValueKey('contact-on-app-${c.uid}'),
-          contentPadding: EdgeInsets.zero,
-          leading: _Initial(name: c.name, color: Brand.primary),
-          title: Text(c.name, style: const TextStyle(fontWeight: FontWeight.w700)),
-          trailing: friends.contains(c.uid)
+          name: c.name,
+          color: Brand.primary,
+          subtitle: outgoing.contains(c.uid) && !friends.contains(c.uid) ? 'İstek gönderildi' : null,
+          action: friends.contains(c.uid)
               ? const Chip(label: Text('Arkadaşsınız'))
               : incoming[c.uid] != null
               ? FilledButton(
                   key: ValueKey('contact-accept-${c.uid}'),
+                  style: compactButton,
                   onPressed: () => acceptFriendRequest(context, api, incoming[c.uid]!),
                   child: const Text('Kabul et'),
                 )
               : outgoing.contains(c.uid)
               ? OutlinedButton(
                   key: ValueKey('contact-pending-${c.uid}'),
+                  style: compactButton,
                   onPressed: () => api
                       .deleteRequest(FriendRequest(from: api.uid, to: c.uid, name: '', avatar: ''))
                       .catchError((_) {}),
-                  child: const Text('İstek gönderildi · Geri al'),
+                  child: const Text('Geri al'),
                 )
               : FilledButton.icon(
                   key: ValueKey('contact-request-${c.uid}'),
+                  style: compactButton,
                   onPressed: _busy.contains(c.uid) ? null : () => _request(api, c),
                   icon: const Icon(Icons.person_add_alt_1_rounded, size: 18),
                   label: const Text('İstek gönder'),
@@ -261,12 +264,12 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
       ),
       const SizedBox(height: 8),
       for (final c in book.others.take(300))
-        ListTile(
-          contentPadding: EdgeInsets.zero,
-          leading: _Initial(name: c.name, color: Brand.muted),
-          title: Text(c.name),
-          trailing: TextButton.icon(
+        _ContactRow(
+          name: c.name,
+          color: Brand.muted,
+          action: TextButton.icon(
             key: ValueKey('contact-invite-${c.name}'),
+            style: compactButton,
             onPressed: () => _invite(api),
             icon: const Icon(Icons.share_rounded, size: 18),
             label: const Text('Davet et'),
@@ -274,6 +277,55 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
         ),
     ];
   }
+}
+
+/// Buttons sized to their label (the app theme makes buttons full width).
+const compactButton = ButtonStyle(
+  minimumSize: WidgetStatePropertyAll(Size(0, 40)),
+  padding: WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 14)),
+  textStyle: WidgetStatePropertyAll(TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
+);
+
+/// One phone-book entry: initial, name (and a note), an action on the right.
+class _ContactRow extends StatelessWidget {
+  const _ContactRow({
+    super.key,
+    required this.name,
+    required this.color,
+    required this.action,
+    this.subtitle,
+  });
+  final String name;
+  final Color color;
+  final Widget action;
+  final String? subtitle;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: 6),
+    child: Row(
+      children: [
+        _Initial(name: name, color: color),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontWeight: FontWeight.w700),
+              ),
+              if (subtitle != null) Text(subtitle!, style: TextStyle(color: Brand.muted, fontSize: 12)),
+            ],
+          ),
+        ),
+        const SizedBox(width: 8),
+        action,
+      ],
+    ),
+  );
 }
 
 class _Initial extends StatelessWidget {

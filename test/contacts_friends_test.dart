@@ -8,6 +8,7 @@ import 'package:lingora/services/contacts/contact_matching.dart';
 import 'package:lingora/services/contacts/contacts_source.dart';
 import 'package:lingora/services/contacts/phone_numbers.dart';
 import 'package:lingora/services/friends.dart';
+import 'package:lingora/theme.dart';
 
 import 'friends_test.dart' show FakeFriendsApi, overrides;
 
@@ -48,7 +49,7 @@ Future<void> pump(
   FakeContacts? contacts,
 }) async {
   tester.view.physicalSize = const Size(1080, 2400);
-  tester.view.devicePixelRatio = 1;
+  tester.view.devicePixelRatio = 2.625; // a phone: 411 dp wide
   addTearDown(tester.view.reset);
   await tester.pumpWidget(
     ProviderScope(
@@ -56,7 +57,8 @@ Future<void> pump(
         ...await overrides(api: api),
         contactsSourceProvider.overrideWithValue(contacts ?? FakeContacts(ContactsAccess.granted, book)),
       ],
-      child: MaterialApp(home: home),
+      // The app's theme: its full-width buttons break rows that were fine without it.
+      child: MaterialApp(theme: buildTheme(), home: home),
     ),
   );
   await tester.pumpAndSettle();

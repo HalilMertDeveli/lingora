@@ -83,13 +83,18 @@ class Person {
   }
 
   /// The friendship as stored on the server (not the local cache).
+  /// Read through the members query, as the app does: a single get of a
+  /// pair that does not exist is refused by the rules (no resource to check).
   Future<Friendship?> pair(Person other) async {
-    final snap = await db
+    final s = await db
         .collection('friendships')
-        .doc(pairIdOf(uid, other.uid))
+        .where('members', arrayContains: uid)
         .get(const GetOptions(source: Source.server));
-    final data = snap.data();
-    return data == null ? null : Friendship.fromMap(snap.id, data, uid);
+    final id = pairIdOf(uid, other.uid);
+    for (final d in s.docs) {
+      if (d.id == id) return Friendship.fromMap(d.id, d.data(), uid);
+    }
+    return null;
   }
 
   /// Today's cheers in [pairId], from the server.
