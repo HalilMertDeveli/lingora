@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../theme.dart';
 import 'motion.dart';
+import 'shop_visuals.dart';
 
 /// The mascot's mood decides how it moves.
 enum Mood { idle, happy, cheer, sad, think, calm, joy, wave }
@@ -115,11 +116,26 @@ class _DayiState extends State<Dayi> with TickerProviderStateMixin {
       semanticLabel: 'Çaycı Dayı',
       errorBuilder: (_, _, _) => SizedBox(width: s, height: s),
     );
-    final body = !widget.animate
+    // The Çaycı Dayı accessory bought in the Mağaza, if one is worn.
+    final accessory = MascotOutfitScope.of(context);
+    final dressed = accessory == null
         ? image
+        : SizedBox(
+            width: s,
+            height: s,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                image,
+                MascotAccessoryLayer(accessory: accessory, size: s),
+              ],
+            ),
+          );
+    final body = !widget.animate
+        ? dressed
         : AnimatedBuilder(
             animation: Listenable.merge([_loop, _react]),
-            child: image,
+            child: dressed,
             builder: (_, child) {
               final t = _loop.value;
               final r = Curves.easeOut.transform(_react.value);

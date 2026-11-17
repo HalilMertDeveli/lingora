@@ -122,3 +122,68 @@ test("the shape is checked", async () => {
   // Only the name, without a photo.
   await assertSucceeds(setDoc(ref, { name: "Ali", updatedAt: serverTimestamp() }));
 });
+
+// ---- Mağaza showcase (lib/services/showcase.dart) ----
+
+const showcase = (over: Record<string, unknown> = {}) => ({
+  avatar: "av_tilki",
+  frame: "fr_altin",
+  items: ["mx_tac", "th_iznik", "av_lale"],
+  ...over,
+});
+
+test("the owner writes a showcase next to the profile (merge) and friends read it", async () => {
+  await assertSucceeds(setDoc(doc(db("ali"), "profiles/ali"), profile()));
+  await assertSucceeds(
+    setDoc(doc(db("ali"), "profiles/ali"), { showcase: showcase(), updatedAt: serverTimestamp() }, { merge: true }),
+  );
+  // A later profile write (merge) keeps it.
+  await assertSucceeds(setDoc(doc(db("ali"), "profiles/ali"), profile({ name: "Ali K" }), { merge: true }));
+  await makeFriends();
+  const snap = await assertSucceeds(getDoc(doc(db("zeynep"), "profiles/ali")));
+  const s = snap.data()?.showcase;
+  if (s?.avatar !== "av_tilki" || s?.items?.length !== 3) throw new Error("showcase not stored");
+  // Empty showcase.
+  await assertSucceeds(
+    setDoc(
+      doc(db("ali"), "profiles/ali"),
+      { showcase: showcase({ avatar: null, frame: null, items: [] }), updatedAt: serverTimestamp() },
+      { merge: true },
+    ),
+  );
+});
+
+test("a showcase alone creates the profile document", async () => {
+  await assertSucceeds(setDoc(doc(db("ali"), "profiles/ali"), { showcase: showcase(), updatedAt: serverTimestamp() }));
+});
+
+test("strangers and guests cannot read or write a showcase", async () => {
+  await assertSucceeds(setDoc(doc(db("ali"), "profiles/ali"), { showcase: showcase(), updatedAt: serverTimestamp() }));
+  await assertFails(getDoc(doc(db("zeynep"), "profiles/ali")));
+  await assertFails(
+    setDoc(doc(db("zeynep"), "profiles/ali"), { showcase: showcase(), updatedAt: serverTimestamp() }, { merge: true }),
+  );
+  await assertFails(
+    setDoc(doc(guestDb("misafir"), "profiles/misafir"), { showcase: showcase(), updatedAt: serverTimestamp() }),
+  );
+});
+
+test("a malformed showcase is refused", async () => {
+  const bad: unknown[] = [
+    showcase({ items: ["av_a", "av_b", "av_c", "av_d"] }), // more than 3
+    showcase({ items: ["<script>"] }), // not an item id
+    showcase({ items: ["xx_tilki"] }), // unknown category
+    showcase({ avatar: "fr_altin" }), // a frame as the avatar
+    showcase({ frame: "av_tilki" }), // an avatar as the frame
+    showcase({ avatar: "av_" + "x".repeat(30) }), // too long
+    showcase({ items: "mx_tac" }), // not a list
+    { ...showcase(), extra: true }, // unknown key
+    { avatar: "av_tilki", frame: null }, // items missing
+    "av_tilki", // not a map
+  ];
+  for (const s of bad) {
+    await assertFails(setDoc(doc(db("ali"), "profiles/ali"), { showcase: s, updatedAt: serverTimestamp() }));
+  }
+  // updatedAt must still be the server time.
+  await assertFails(setDoc(doc(db("ali"), "profiles/ali"), { showcase: showcase(), updatedAt: 5 }));
+});

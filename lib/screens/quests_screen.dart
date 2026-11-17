@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
 import '../theme.dart';
+import '../ui/gold_coin.dart';
 
 String formatLeft(Duration d) {
   if (d.inDays >= 1) return '${d.inDays} gün ${d.inHours % 24} sa';
@@ -138,7 +139,11 @@ class _QuestCard extends ConsumerWidget {
                 if (ref.read(progressProvider.notifier).claimQuest(quest)) {
                   ScaffoldMessenger.of(context)
                     ..hideCurrentSnackBar()
-                    ..showSnackBar(SnackBar(content: Text('+${quest.rewardXp} XP kazandın!')));
+                    ..showSnackBar(
+                      SnackBar(
+                        content: Text('+${quest.rewardXp} XP ve +${quest.rewardGold} altın kazandın!'),
+                      ),
+                    );
                 }
               },
               child: Text('+${quest.rewardXp}'),
@@ -151,6 +156,8 @@ class _QuestCard extends ConsumerWidget {
                   '${quest.rewardXp}',
                   style: TextStyle(color: Brand.xp, fontWeight: FontWeight.w800),
                 ),
+                const SizedBox(width: 6),
+                GoldAmount(quest.rewardGold, size: 14),
               ],
             ),
         ],

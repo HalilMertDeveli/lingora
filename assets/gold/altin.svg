@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Dilmaç Altın coin. Original artwork drawn for this app (docs/varliklar.md). -->
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFC93C"/>
+      <stop offset="1" stop-color="#C47F00"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFE48A"/>
+      <stop offset="1" stop-color="#F2B01E"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#rim)" stroke="#9A6200" stroke-width="2"/>
+  <circle cx="32" cy="32" r="22" fill="url(#face)" stroke="#D99400" stroke-width="2"/>
+  <!-- A tea glass (ince belli bardak) pressed into the face. -->
+  <path d="M25 20 H39 L36.2 30 Q35 32 36.2 34 L38 43 Q38 45 36 45 H28 Q26 45 26 43 L27.8 34 Q29 32 27.8 30 Z" fill="#C98200"/>
+  <path d="M27 21.8 H37 L35 28.5 H29 Z" fill="#E9A514"/>
+  <path d="M14 26 A19 19 0 0 1 26 13" fill="none" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="3" stroke-linecap="round"/>
+</svg>
