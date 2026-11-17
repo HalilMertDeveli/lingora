@@ -11,6 +11,13 @@ enum ShopCategory {
   freeze('Seri dondurma', null);
 
   const ShopCategory(this.label, this.slot);
+
+  /// Tabs shown in the Mağaza. Çocuk modu has no Çaycı Dayı tab: kids only
+  /// ever see Pofuduk.
+  static List<ShopCategory> tabs({required bool kid}) => [
+    for (final c in values)
+      if (!kid || c != mascot) c,
+  ];
   final String label;
 
   /// Where the item is worn; null for consumables.
