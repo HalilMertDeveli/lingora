@@ -497,8 +497,11 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     final mm = (_secondsLeft ~/ 60).toString().padLeft(2, '0');
     final ss = (_secondsLeft % 60).toString().padLeft(2, '0');
     final right = _picked == q.answer;
-    final gloss = _revealed ? ref.watch(optionGlossesProvider).value?.of(q.id, q.options.length) : null;
-    final glossOpen = _glossOpen ?? !right;
+    // The options' Turkish only after a mistake.
+    final gloss = _revealed && !right
+        ? ref.watch(optionGlossesProvider).value?.of(q.id, q.options.length)
+        : null;
+    final glossOpen = _glossOpen ?? true;
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
@@ -836,7 +839,10 @@ class _ReviewTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ok = picked == q.answer;
-    final gloss = ref.watch(optionGlossesProvider).value?.of(q.id, q.options.length);
+    // The options' Turkish only for a wrong answer.
+    final gloss = picked != null && !ok
+        ? ref.watch(optionGlossesProvider).value?.of(q.id, q.options.length)
+        : null;
     final color = picked == null ? Brand.muted : (ok ? Brand.success : Brand.error);
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
@@ -872,7 +878,7 @@ class _ReviewTile extends ConsumerWidget {
             if (gloss != null) ...[
               const SizedBox(height: 12),
               Text(
-                'Şıkların Türkçesi',
+                'Neden yanlış?',
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13, color: Brand.primary),
               ),
               const SizedBox(height: 6),

@@ -14,8 +14,8 @@ const choiceLetters = ['A', 'B', 'C', 'D', 'E'];
 /// scrolls in its own box so the question and options stay in reach. After
 /// "Kontrol et" the right option turns green and a wrong pick red; the
 /// Turkish explanation is shown in the feedback panel ([ChoiceExplanation]).
-/// With a [gloss] every option then gets its Turkish under it (open after a
-/// mistake, behind "Şıkların Türkçesi" after a right answer).
+/// With a [gloss], after a wrong answer only, every option gets its Turkish
+/// under it ("Neden yanlış?", open; can be folded). A right answer shows none.
 class ChoiceExercise extends StatefulWidget {
   const ChoiceExercise({
     super.key,
@@ -61,8 +61,8 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
     final kid = context.isKid;
     final passage = ex.passage?.trim() ?? '';
     final screen = MediaQuery.sizeOf(context).height;
-    final showGloss = widget.locked && widget.gloss != null;
-    final glossOpen = _glossOpen ?? _picked != ex.answerIndex;
+    final showGloss = widget.locked && widget.gloss != null && _picked != ex.answerIndex;
+    final glossOpen = _glossOpen ?? true;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../data/option_glosses.dart';
 import '../theme.dart';
 
-/// "Şıkların Türkçesi" switch shown above an answered question's options
-/// when it has glosses. Open on a mistake, closed after a right answer.
+/// "Neden yanlış?" switch shown above a wrongly answered question's options
+/// when it has glosses: folds the options' Turkish away and back. Starts open.
 class OptionGlossToggle extends StatelessWidget {
   const OptionGlossToggle({super.key, required this.open, required this.onChanged});
   final bool open;
@@ -37,7 +37,7 @@ class OptionGlossToggle extends StatelessWidget {
                 const SizedBox(width: 6),
                 Flexible(
                   child: Text(
-                    open ? 'Şıkların Türkçesini gizle' : 'Şıkların Türkçesi',
+                    'Neden yanlış?',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: kid ? 14 : 13, fontWeight: FontWeight.w800, color: p.primary),

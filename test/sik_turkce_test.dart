@@ -1,6 +1,6 @@
-// "Şıkların Türkçesi" (deneme): Turkish glosses of exam options, read from
-// assets/option_glosses/ beside the content, shown under each option once a
-// question is answered.
+// "Neden yanlış?" (deneme): Turkish glosses of exam options, read from
+// assets/option_glosses/ beside the content, shown under each option only
+// after a wrong answer.
 import 'dart:convert';
 import 'dart:io';
 
@@ -153,6 +153,7 @@ void main() {
       expect(find.byKey(const Key('option-gloss-toggle')), findsNothing);
       await _answer(tester, 0);
       expect(find.byKey(const Key('option-gloss-toggle')), findsOneWidget);
+      expect(find.text('Neden yanlış?'), findsOneWidget);
       for (final tr in _gloss['tr']!) {
         expect(find.text(tr), findsOneWidget);
       }
@@ -169,15 +170,19 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('a right pick keeps them behind "Şıkların Türkçesi"', (tester) async {
+    testWidgets('a right pick renders no gloss at all: no Turkish, no reason, no toggle', (tester) async {
       await _pump(tester, _lesson(_choice), glosses: {'ys1u1l1#0': _gloss});
       await _answer(tester, 2);
-      expect(find.text('Şıkların Türkçesi'), findsOneWidget);
-      expect(find.text('sulama'), findsNothing);
-      await tester.tap(find.byKey(const Key('option-gloss-toggle')));
-      await tester.pumpAndSettle();
-      expect(find.text('sulama'), findsOneWidget);
-      expect(find.byKey(const Key('option-gloss-why')), findsOneWidget);
+      expect(find.byKey(const Key('feedback-correct')), findsOneWidget);
+      expect(find.byKey(const Key('option-gloss-toggle')), findsNothing);
+      expect(find.text('Neden yanlış?'), findsNothing);
+      expect(find.byKey(const Key('option-gloss-tr')), findsNothing);
+      expect(find.byKey(const Key('option-gloss-why')), findsNothing);
+      for (final tr in _gloss['tr']!) {
+        expect(find.text(tr), findsNothing);
+      }
+      // The content's own explanation is still there.
+      expect(find.text(_choice.explanation!), findsOneWidget);
     });
 
     testWidgets('no gloss: nothing extra, nothing breaks', (tester) async {
@@ -282,6 +287,25 @@ void main() {
       expect(find.text('Olmaz: çekmek ters anlam.'), findsOneWidget);
       expect(find.byKey(const Key('option-gloss-why')), findsNWidgets(2));
       expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('a right answer in practice shows no gloss', (tester) async {
+      await _pump(
+        tester,
+        const ExamSessionScreen(exam: exam, questions: [q], mock: false, title: 'Konu pratiği'),
+        glosses: {
+          'ys6u6m#0': {
+            'tr': ['çekmek', 'bölmek', 'kaldırmak', 'korumak', 'aşmak'],
+          },
+        },
+      );
+      await tester.tap(find.byKey(const Key('exam-option-2')));
+      await tester.pump();
+      await tester.tap(find.text('Kontrol et'));
+      await tester.pumpAndSettle();
+      expect(find.text('Doğru!'), findsOneWidget);
+      expect(find.byKey(const Key('option-gloss-toggle')), findsNothing);
+      expect(find.text('kaldırmak'), findsNothing);
     });
   });
 }
