@@ -64,6 +64,7 @@ class LingoraApp extends ConsumerWidget {
     ref.listen(progressSyncProvider, (_, _) {});
     // Marks the daily goal in friendships for the shared streak.
     ref.listen(friendGoalSyncProvider, (_, _) {});
+    ref.listen(friendNameSyncProvider, (_, _) {});
     // Reports the week's XP to the Dünya Ligi (does nothing for guests).
     ref.listen(leagueXpSyncProvider, (_, _) {});
     // Shares the progress summary with the student's classes (Firebase only).

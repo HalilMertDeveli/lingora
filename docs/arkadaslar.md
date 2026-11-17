@@ -81,3 +81,13 @@ de aynı gün hedefini tamamlayınca 1 olur.
   sahibi kaydı devralır.
 - **Rehber verisi.** Ekran rehberi bellekte tutar, diske yazmaz. Analitik olaylarına rehber bilgisi girmez.
 - **Çocuk modu.** Arkadaşlar ekranı ve bulunabilirlik seçeneği Çocuk modunda kapalıdır.
+
+## Arkadaşın adı
+
+- Ekranlar arkadaşın adını canlı olarak `profiles/{uid}.name`'den okur (kart, ortak seri metinleri, destek mesajları,
+  arkadaş profili, çıkarma onayı). Arkadaşlık belgesindeki `names` yalnızca profil yokken ya da yüklenirken yedektir.
+  Bekleyen istekte gönderen henüz arkadaş olmadığı için profili okunamaz; istekteki ad gösterilir.
+- Kullanıcı Profil'de adını değiştirince `friendNameSyncProvider` arkadaş kodunu ve üyesi olduğu her arkadaşlıktaki
+  `names.{uid}` alanını günceller (kurallar yalnızca kendi girdisine izin verir; kural değişikliği gerekmedi).
+- Ad hâlâ varsayılansa ("Dilmaç öğrencisi") kod oluşturmadan, kodla eklemeden, istek göndermeden, istek kabul
+  etmeden ve davet paylaşmadan önce "Arkadaşların seni hangi adla görsün?" diye sorulur; ad Profil adına kaydedilir.
