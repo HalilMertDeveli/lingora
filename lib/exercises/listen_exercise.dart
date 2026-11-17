@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../core/text.dart';
+import '../core/spelling.dart';
+import '../data/spelling_lexicon.dart';
 import '../models/course.dart';
 import '../services/speech.dart';
 import 'common.dart';
@@ -68,10 +69,15 @@ class _ListenExerciseState extends ConsumerState<ListenExercise> {
           decoration: const InputDecoration(hintText: 'İngilizce yaz'),
           onChanged: (text) {
             widget.onText?.call(text);
-            widget.onReady(text.trim().isEmpty ? null : () => matchesAny(_input.text, ex.answers));
+            widget.onReady(text.trim().isEmpty ? null : () => listenMatch(ref, ex, _input.text).correct);
           },
         ),
       ],
     );
   }
 }
+
+/// How a dinle-yaz answer compares to the accepted ones; the lesson screen
+/// uses the same call for its "Küçük bir yazım hatası" note.
+AnswerMatch listenMatch(WidgetRef ref, Exercise ex, String input) =>
+    matchAnswer(input, ex.answers, lexicon: ref.read(spellingLexiconProvider));

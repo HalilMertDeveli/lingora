@@ -94,7 +94,8 @@ enum TrErrorCategory {
   spelling(
     'Yazım',
     'Türkçeden farklı olarak İngilizcede dil, millet, gün ve ay adları ile "I" zamiri '
-        'her zaman büyük harfle yazılır.',
+        'her zaman büyük harfle yazılır. Harfleri karışan kelimeleri (receive, beautiful) '
+        'yazarak tekrar et; İngilizcede kelime okunduğu gibi yazılmaz.',
   );
 
   const TrErrorCategory(this.label, this.tip);
