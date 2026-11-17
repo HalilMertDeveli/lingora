@@ -3,7 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/spelling.dart';
+import '../../core/tr_errors.dart';
 import '../../data/practice.dart';
+import '../../data/spelling_lexicon.dart';
+import '../../exercises/spelling_note.dart';
 import '../../data/progress.dart';
 import '../../data/vocab_practice.dart';
 import '../../exercises/common.dart';
@@ -51,6 +55,9 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
   String? _picked;
   bool? _correct;
 
+  /// A forgiven spelling slip in the last typed answer.
+  AnswerMatch? _spelling;
+
   VocabCard get _card => _cards[_pos];
 
   @override
@@ -61,13 +68,18 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
 
   void _check(String answer) {
     if (_correct != null || answer.trim().isEmpty) return;
-    final ok = _card.check(answer);
+    final match = _card.match(answer, lexicon: ref.read(spellingLexiconProvider));
+    final ok = match.correct;
     final e = _card.entry;
+    final notifier = ref.read(progressProvider.notifier);
+    // A small slip counts as correct, but the spelling needs practice.
+    if (match.hasTypo) notifier.recordErrorCategories(const [TrErrorCategory.spelling]);
     if (_graded.add(e.id)) {
-      ref.read(progressProvider.notifier).reviewWord(e.id, known: ok);
+      notifier.reviewWord(e.id, known: ok, weakSpelling: match.hasTypo);
       if (ok) _firstTryCorrect++;
     }
     setState(() {
+      _spelling = match.hasTypo ? match : null;
       _picked = answer;
       _correct = ok;
       _combo = ok ? _combo + 1 : 0;
@@ -86,6 +98,7 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
       _pos++;
       _picked = null;
       _correct = null;
+      _spelling = null;
       _input.clear();
     });
   }
@@ -264,7 +277,9 @@ class _VocabReviewScreenState extends ConsumerState<VocabReviewScreen> {
       answer: ok || card.answer == e.word || card.answer == e.tr
           ? '${e.word} = ${e.tr}'
           : '${card.answer}  ·  ${e.word} = ${e.tr}',
-      detail: e.tip != null && !ok
+      detail: _spelling != null
+          ? SpellingNote(match: _spelling!)
+          : e.tip != null && !ok
           ? Text('${kidEmoji('💡')}${e.tip}', style: TextStyle(fontSize: 13, color: Brand.ink))
           : null,
       secondary: TextButton(onPressed: () => showVocabEntry(context, e), child: const Text('Kelimeye bak')),

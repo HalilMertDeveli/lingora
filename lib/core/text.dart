@@ -1,3 +1,5 @@
+import 'spelling.dart';
+
 /// Lowercases, removes punctuation and collapses whitespace so that
 /// "Good morning, thanks!" and "good morning thanks" compare equal.
 /// Turkish dotted capital İ becomes plain i ("İzmir" == "izmir"); Dart's toLowerCase would
@@ -10,10 +12,10 @@ String normalizeAnswer(String s) => s
     .replaceAll(RegExp(r'\s+'), ' ')
     .trim();
 
-bool matchesAny(String input, List<String> accepted) {
-  final n = normalizeAnswer(input);
-  return n.isNotEmpty && accepted.any((a) => normalizeAnswer(a) == n);
-}
+/// Exact match after the silent normalisation of [matchAnswer] (case,
+/// punctuation, apostrophes, contractions); no spelling slips. For typed
+/// answers use [matchAnswer], which also forgives small typos.
+bool matchesAny(String input, List<String> accepted) => matchAnswer(input, accepted, typos: false).correct;
 
 /// Share of the target's words that appear in what was heard (0..1).
 double spokenSimilarity(String target, String heard) {

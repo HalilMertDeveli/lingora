@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../core/text.dart';
+import '../core/spelling.dart';
 import '../models/vocab.dart';
 import 'progress.dart';
 
@@ -175,7 +175,14 @@ class VocabCard {
 
   bool get isTyping => options.isEmpty;
 
-  bool check(String input) => isTyping ? normalizeAnswer(input) == normalizeAnswer(answer) : input == answer;
+  bool check(String input, {Set<String> lexicon = const {}}) => match(input, lexicon: lexicon).correct;
+
+  /// Typed cards forgive small spelling slips (see [matchAnswer]); choices
+  /// must be the exact option.
+  AnswerMatch match(String input, {Set<String> lexicon = const {}}) {
+    if (isTyping) return matchAnswer(input, [answer], lexicon: lexicon);
+    return input == answer ? matchAnswer(answer, [answer]) : AnswerMatch.wrong;
+  }
 }
 
 /// Card types an entry has content for.
