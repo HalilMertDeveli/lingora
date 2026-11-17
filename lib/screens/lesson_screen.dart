@@ -260,7 +260,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     if (!english || _answerText.trim().isEmpty || ex.answers.isEmpty) return null;
     final expected = closestAnswer(_answerText, ex.answers);
     final errors = detectTrErrors(_answerText, expected: expected);
-    ref.read(progressProvider.notifier).recordTrErrors(errors);
+    ref.read(progressProvider.notifier).recordTrErrors(errors, text: _answerText);
     final diff = answerWordDiff(_answerText, expected);
     final why = WhyWrongSection(errors: errors, missing: diff.missing, extra: diff.extra);
     return why.isEmpty ? null : why;

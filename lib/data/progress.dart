@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/tr_errors.dart';
+import '../study/tr_error_log.dart';
 import '../models/notes.dart';
 import '../models/study_plan.dart';
 
@@ -955,8 +956,12 @@ class ProgressNotifier extends Notifier<Progress> {
   }
 
   /// Counts the categories of mistakes the hata dedektörü found, each
-  /// category once per check.
-  void recordTrErrors(Iterable<TrError> errors) => recordErrorCategories(errors.map((e) => e.category));
+  /// category once per check, and keeps the check (with the learner's [text])
+  /// in the on-device history the detailed error analysis reads.
+  void recordTrErrors(Iterable<TrError> errors, {String? text}) {
+    ref.read(trErrorLogProvider.notifier).record(errors, text: text);
+    recordErrorCategories(errors.map((e) => e.category));
+  }
 
   /// Counts error categories found elsewhere (AI writing feedback), each
   /// category once per check, like [recordTrErrors].

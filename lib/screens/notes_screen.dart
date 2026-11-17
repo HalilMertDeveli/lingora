@@ -1171,7 +1171,7 @@ class _DiaryScreenState extends ConsumerState<DiaryScreen> {
 
   void _runCheck() {
     final errors = detectTrErrors(_text.text);
-    ref.read(progressProvider.notifier).recordTrErrors(errors);
+    ref.read(progressProvider.notifier).recordTrErrors(errors, text: _text.text);
     setState(() {
       _errors = errors;
       _checked = true;
