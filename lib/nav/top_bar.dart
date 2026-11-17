@@ -474,6 +474,7 @@ IconData trackIcon(Track t) => switch (t.id) {
   'pro_tourism' => Icons.hotel_outlined,
   'pro_interview' => Icons.work_outline_rounded,
   'pro_software' => Icons.code_rounded,
+  'pro_dev' => Icons.terminal_rounded,
   'yds' => Icons.school_outlined,
   'lgs' => Icons.edit_note_rounded,
   'notes' => Icons.sticky_note_2_outlined,

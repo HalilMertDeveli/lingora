@@ -268,5 +268,86 @@
       { "en": "Her hair is very red.", "tr": "Saçı çok kızıl." },
       { "en": "He is singing a long song.", "tr": "Uzun bir şarkı söylüyor." }
     ]
+  },
+  {
+    "id": "pro_dev_terms",
+    "emoji": "⌨️",
+    "title": "Yazılımcı terimleri",
+    "sound": "cache · queue · width · deploy",
+    "summary": "Her gün yazdığın ama yanlış okunan terimler: cache, queue, width, deploy, commit.",
+    "how": [
+      "cache tek hecedir ve 'cash' (nakit) ile aynı okunur: 'keş'. 'kaçe' ya da 'keyş' değil. catch ise sonunda ç ile biter: 'keç'.",
+      "queue yazılışı uzun ama sesi kısadır: 'kyuu'. Sondaki ue harfleri okunmaz. deploy'da vurgu ikinci hecededir: di-PLOY.",
+      "width'in sonunda d ile th yan yana gelir: 'widθ'. Dili dişlerin arasında bitir; 'with' ile karışmasın. GitHub'ı da 'git-hab' diye oku: içinde th sesi yok.",
+      "bug'daki u, Türkçe a'ya yakın kısa bir sestir: 'bag' değil, ağzı daha az açarak 'bʌg'. commit'te vurgu sondadır: kı-MİT."
+    ],
+    "turkish": "Türkçede kelimeyi yazıldığı gibi okuruz; yazılım terimlerini de ekranda gördüğümüz gibi okuma alışkanlığı buradan gelir. İngilizcede cache, queue, height gibi kelimelerin harfleri sesle birebir örtüşmez. Ekipte 'kaçe' ya da 'kuyu' dersen karşı taraf bir an durur; doğru söyleyişi bir kez kulağa yerleştirmek yeter.",
+    "mistake": "cache → 'kaçe', queue → 'kuyu', width → 'wit', deploy → 'DEploy', commit → 'KOmit'.",
+    "pairs": [
+      { "a": "cache", "aTr": "önbellek (keş)", "b": "catch", "bTr": "yakalamak (keç)" },
+      { "a": "width", "aTr": "genişlik", "b": "with", "bTr": "ile" },
+      { "a": "bug", "aTr": "hata", "b": "bag", "bTr": "çanta" },
+      { "a": "test", "aTr": "test", "b": "taste", "bTr": "tat" },
+      { "a": "commit", "aTr": "kaydetmek (-MIT)", "b": "comet", "bTr": "kuyruklu yıldız (CO-)" }
+    ],
+    "sentences": [
+      { "en": "We deploy the new version on Wednesday.", "tr": "Yeni sürümü çarşamba günü yayına alıyoruz." },
+      { "en": "Clear the cache and check the queue.", "tr": "Önbelleği temizle ve kuyruğu kontrol et." },
+      { "en": "The width of the image is wrong.", "tr": "Görselin genişliği yanlış." }
+    ]
+  },
+  {
+    "id": "pro_interview_stress",
+    "emoji": "🎤",
+    "title": "Mülakatta vurgu ve tonlama",
+    "sound": "↘ ↗ · caREER · thirTEEN",
+    "summary": "Doğru vurgu ve düşen tonlama seni daha net ve kendinden emin gösterir.",
+    "how": [
+      "Bilgi veren cümlenin sonunda sesin düşer: 'I have five years of experience ↘'. Cümleyi yükselerek bitirirsen soru soruyormuşsun ya da emin değilmişsin gibi duyulur.",
+      "Wh- soruları da düşerek biter: 'What does the team work on ↘?'. Evet/hayır soruları yükselir: 'Is the role remote ↗?'.",
+      "Önemli kelimeyi vurgula: 'I LED the project' derken led'i biraz uzun ve güçlü söyle. Rakamlarda thirTEEN (13) ile THIRty (30) farkı vurgudadır; maaş konuşurken bu fark önemlidir.",
+      "career'da vurgu sondadır: kı-RİİR. 'KARiyer' dersen Korea'ya benzer. salary 'SEL-ı-ri' değil 'SAL-ı-ri': ilk hece geniş a ile söylenir."
+    ],
+    "turkish": "Türkçede cümle sonu genellikle düz kalır ve vurgu kelimenin sonuna yakındır. Heyecanlanınca İngilizce cümleleri yükselerek bitirme eğilimi de olur. Mülakatta bu, kararsızlık gibi algılanır. Cümleyi net bir düşüşle bitirmek, ne söylediğinden emin olduğunu gösterir.",
+    "mistake": "career → 'KARiyer', thirty ile thirteen'i aynı söylemek, her cümleyi soru gibi yükselerek bitirmek.",
+    "pairs": [
+      { "a": "thirteen", "aTr": "on üç (-TEEN)", "b": "thirty", "bTr": "otuz (THIR-)" },
+      { "a": "fifteen", "aTr": "on beş (-TEEN)", "b": "fifty", "bTr": "elli (FIF-)" },
+      { "a": "career", "aTr": "kariyer (-REER)", "b": "Korea", "bTr": "Kore (-RE-a)" },
+      { "a": "work", "aTr": "çalışmak", "b": "walk", "bTr": "yürümek" },
+      { "a": "salary", "aTr": "maaş", "b": "celery", "bTr": "kereviz" }
+    ],
+    "sentences": [
+      { "en": "Tell me about yourself.", "tr": "Bana kendinden bahset." },
+      { "en": "I have five years of experience in marketing.", "tr": "Pazarlamada beş yıllık deneyimim var." },
+      { "en": "I'm looking for a salary of around sixty thousand.", "tr": "Altmış bin civarında bir maaş arıyorum." }
+    ]
+  },
+  {
+    "id": "pro_tourism_words",
+    "emoji": "🧳",
+    "title": "Turizm kelimeleri",
+    "sound": "receipt · Wednesday · reservation",
+    "summary": "Otelde, restoranda ve çarşıda her gün geçen, yazıldığı gibi okunmayan kelimeler.",
+    "how": [
+      "receipt'te p okunmaz: 'ri-SİİT'. recipe ise üç hecedir ve 'RE-sı-pi' diye okunur; biri fiş, biri yemek tarifi.",
+      "Wednesday iki hecedir: 'WENZ-dey'. Ortadaki d ve e okunmaz. suite (otel süiti) 'sweet' diye okunur, 'suit' değil.",
+      "reservation'da vurgu üçüncü hecededir: re-zır-VEY-şın. Uzun kelimede vurgulu heceyi güçlü söyle, ötekileri hafiflet.",
+      "full ile fool, pull ile pool arasındaki fark ünlünün uzunluğudur: full ve pull kısa, fool ve pool uzun 'uu'. towel 'tavıl' diye okunur, sonda r yok."
+    ],
+    "turkish": "Türkçede her harf okunduğu için receipt'teki p'yi, Wednesday'deki d'yi söylemek doğal gelir. Turizmde bu kelimeler misafirle her gün geçer; resepsiyonda 'reseipt' ya da 'Wed-nes-day' demek, misafirin seni anlamasını zorlaştırır.",
+    "mistake": "receipt → 'risipt', Wednesday → 'wed-nes-dey', suite → 'suit', towel → 'tower'.",
+    "pairs": [
+      { "a": "receipt", "aTr": "fiş", "b": "recipe", "bTr": "tarif" },
+      { "a": "full", "aTr": "dolu", "b": "fool", "bTr": "aptal" },
+      { "a": "pull", "aTr": "çekmek", "b": "pool", "bTr": "havuz" },
+      { "a": "towel", "aTr": "havlu", "b": "tower", "bTr": "kule" },
+      { "a": "bill", "aTr": "hesap, fatura", "b": "bell", "bTr": "zil" }
+    ],
+    "sentences": [
+      { "en": "Could I have a receipt, please?", "tr": "Fiş alabilir miyim, lütfen?" },
+      { "en": "Your reservation is for Wednesday night.", "tr": "Rezervasyonunuz çarşamba gecesi için." },
+      { "en": "The pool is open until nine.", "tr": "Havuz dokuza kadar açık." }
+    ]
   }
 ]
