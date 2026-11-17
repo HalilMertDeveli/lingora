@@ -312,12 +312,23 @@ void main() {
     Future<void> pick(String title) async {
       await tester.tap(find.byKey(const Key('topbar-track')));
       await tester.pumpAndSettle();
-      expect(find.byKey(const Key('track-drawer')), findsOneWidget);
-      final tile = find.descendant(of: find.byKey(const Key('track-drawer')), matching: find.text(title));
-      await tester.ensureVisible(tile);
-      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('courses-screen')), findsOneWidget);
+      final tile = find.descendant(of: find.byKey(const Key('courses-screen')), matching: find.text(title));
+      await tester.scrollUntilVisible(
+        tile,
+        200,
+        scrollable: find.descendant(
+          of: find.byKey(const Key('courses-screen')),
+          matching: find.byType(Scrollable),
+        ),
+      );
       await tester.tap(tile);
       await tester.pumpAndSettle();
+      // A course not on the shelf yet opens its preview first.
+      if (find.byKey(const Key('course-start')).evaluate().isNotEmpty) {
+        await tester.tap(find.byKey(const Key('course-start')));
+        await tester.pumpAndSettle();
+      }
     }
 
     await pick('Yazılımcı İngilizcesi');

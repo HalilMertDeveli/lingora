@@ -4,16 +4,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/progress.dart';
-import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../screens/shop_screen.dart';
-import '../ui/flag.dart';
 import '../ui/gold_coin.dart';
 import '../ui/my_avatar.dart';
+import 'course_badge.dart';
 import 'nav_target.dart';
 
-/// Top bar of every tab root: the track button on the left (opens the track
-/// drawer), streak and XP on the right (each opens its own panel). There are
+/// Top bar of every tab root: the course badge on the left (opens Kurslarım,
+/// see course_badge.dart), streak and XP on the right (each opens its own panel). There are
 /// no hearts: mistakes are never punished in Dilmaç.
 class LingoraTopBar extends StatelessWidget implements PreferredSizeWidget {
   const LingoraTopBar({super.key});
@@ -40,37 +39,9 @@ class StatsBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final p = ref.watch(progressProvider);
     final now = ref.watch(clockProvider)();
-    final track = ref.watch(trackProvider);
     return Row(
       children: [
-        Flexible(
-          child: InkWell(
-            key: const Key('topbar-track'),
-            borderRadius: BorderRadius.circular(12),
-            onTap: () => showTrackPicker(context),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (track.flag != null)
-                    FlagIcon(track.flag!, width: 26)
-                  else
-                    Glyph(emoji: track.emoji, icon: trackIcon(track), size: 24),
-                  const SizedBox(width: 6),
-                  Flexible(
-                    child: Text(
-                      track.title,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
-                    ),
-                  ),
-                  Icon(Icons.expand_more_rounded, color: Brand.muted),
-                ],
-              ),
-            ),
-          ),
-        ),
+        const Flexible(child: CourseBadge()),
         const SizedBox(width: 4),
         _Stat(
           key: const Key('topbar-streak'),
@@ -190,82 +161,6 @@ Future<void> showTopPanel(BuildContext context, Widget panel) {
       );
     },
   );
-}
-
-/// The track drawer: pick what to study. Progress is kept per track.
-Future<void> showTrackPicker(BuildContext context) => showTopPanel(context, const TrackDrawer());
-
-class TrackDrawer extends ConsumerWidget {
-  const TrackDrawer({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final current = ref.watch(trackProvider).id;
-    Widget tile(Track t) => Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: TapCard(
-        selected: t.id == current,
-        onTap: () {
-          if (t.id != current) {
-            ref.read(progressProvider.notifier).setTrack(t.id);
-            logEvent(ref, AnalyticsEvent.trackChosen(t.id, source: 'home'));
-          }
-          Navigator.pop(context);
-        },
-        child: Row(
-          children: [
-            if (t.flag != null)
-              SizedBox(width: 40, height: 40, child: Center(child: FlagIcon(t.flag!, width: 36)))
-            else
-              IconBadge(icon: trackIcon(t), emoji: t.emoji, size: 40),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(t.title, style: Theme.of(context).textTheme.titleMedium),
-                  Text(t.subtitle, style: TextStyle(color: Brand.muted, fontSize: 13)),
-                ],
-              ),
-            ),
-            if (t.badge != null)
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                decoration: BoxDecoration(
-                  color: Brand.primary.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text(
-                  t.badge!,
-                  style: TextStyle(color: Brand.primary, fontSize: 10, fontWeight: FontWeight.w900),
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
-
-    return Column(
-      key: const Key('track-drawer'),
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text('Ne çalışmak istersin?', style: Theme.of(context).textTheme.titleLarge),
-        const SizedBox(height: 4),
-        Text('İlerlemen her kursta ayrı saklanır.', style: TextStyle(color: Brand.muted)),
-        const SizedBox(height: 14),
-        const _SectionLabel('KURSLAR'),
-        for (final t in courseCatalog) tile(t),
-        for (final t in vocabCatalog) tile(t),
-        const AccentPicker(),
-        const SizedBox(height: 8),
-        const _SectionLabel('SINAVLARA HAZIRLIK'),
-        for (final t in examCatalog) tile(t),
-        const SizedBox(height: 8),
-        const _SectionLabel('KENDİ NOTLARIN'),
-        tile(notesTrack),
-      ],
-    );
-  }
 }
 
 const _weekdayInitials = ['Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct', 'Pz'];
@@ -469,15 +364,6 @@ class XpPanel extends ConsumerWidget {
       ],
     );
   }
-}
-
-class _SectionLabel extends StatelessWidget {
-  const _SectionLabel(this.text);
-  final String text;
-
-  @override
-  Widget build(BuildContext context) =>
-      Padding(padding: const EdgeInsets.only(bottom: 8), child: SectionLabel(text));
 }
 
 /// Material icon for a track, used instead of its emoji in adult mode.

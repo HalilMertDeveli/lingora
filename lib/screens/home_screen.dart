@@ -10,6 +10,7 @@ import '../data/progress.dart';
 import '../data/resume.dart';
 import '../nav/nav_target.dart';
 import '../nav/tab_navigator.dart';
+import '../nav/course_badge.dart' show showCourseHintIfArmed;
 import '../nav/top_bar.dart';
 import '../org/org_widgets.dart';
 import '../services/league_remote.dart';
@@ -27,7 +28,7 @@ import 'session_resume.dart';
 import 'vocab/dev_scenario_screen.dart';
 import 'vocab/vocab_home_screen.dart';
 
-export '../nav/top_bar.dart' show StatsBar, showTrackPicker, trackIcon;
+export '../nav/top_bar.dart' show StatsBar, trackIcon;
 
 /// The tab shell. Rules (see also [TabNavigator]):
 ///
@@ -103,11 +104,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     if (!FirstTour.enabled || prefs.getBool(tourDoneKey) == true) return;
     if (ref.read(progressProvider).lessonsDone > 0) {
       prefs.setBool(tourDoneKey, true);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) showCourseHintIfArmed(ref);
+      });
       return;
     }
     Future<void>.delayed(const Duration(milliseconds: 700), () {
       if (!mounted || prefs.getBool(tourDoneKey) == true) return;
-      FirstTour.show(context, barKey: _barKey, tabs: _tabs, onDone: () => prefs.setBool(tourDoneKey, true));
+      FirstTour.show(
+        context,
+        barKey: _barKey,
+        tabs: _tabs,
+        onDone: () {
+          prefs.setBool(tourDoneKey, true);
+          // Then the course badge points out where courses are changed.
+          if (mounted) showCourseHintIfArmed(ref);
+        },
+      );
     });
   }
 
