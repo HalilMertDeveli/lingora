@@ -122,23 +122,24 @@ void main() {
       expect(ex.explanation, 'Çünkü c.');
     });
 
-    testWidgets(
-      'a wrong pick shows the right option and the Turkish explanation, and is saved as a mistake',
-      (tester) async {
-        final (_, c) = await _pump(tester, _lesson([_choice]));
-        expect(find.byKey(const Key('choice-passage')), findsOneWidget);
-        expect(find.byKey(const Key('choice-option-3')), findsOneWidget);
-        await tester.tap(find.byKey(const Key('choice-option-0')));
-        await tester.pump();
-        await tester.tap(find.text('Kontrol et'));
-        await tester.pumpAndSettle();
-        expect(find.byKey(const Key('feedback-wrong')), findsOneWidget);
-        expect(find.text("B) Sorry, I can't make it"), findsOneWidget);
-        expect(find.byKey(const Key('choice-explanation')), findsOneWidget);
-        expect(find.text(_choice.explanation!), findsOneWidget);
-        expect(c.read(progressProvider).mistakes, ['ls1u1l1#0']);
-      },
-    );
+    testWidgets('a wrong pick shows the right option and the Turkish explanation, and is counted as a miss', (
+      tester,
+    ) async {
+      final (_, c) = await _pump(tester, _lesson([_choice]));
+      expect(find.byKey(const Key('choice-passage')), findsOneWidget);
+      expect(find.byKey(const Key('choice-option-3')), findsOneWidget);
+      await tester.tap(find.byKey(const Key('choice-option-0')));
+      await tester.pump();
+      await tester.tap(find.text('Kontrol et'));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('feedback-wrong')), findsOneWidget);
+      expect(find.text("B) Sorry, I can't make it"), findsOneWidget);
+      expect(find.byKey(const Key('choice-explanation')), findsOneWidget);
+      expect(find.text(_choice.explanation!), findsOneWidget);
+      // One wrong answer is asked again later; the notebook waits for more.
+      expect(c.read(progressProvider).mistakes, isEmpty);
+      expect(c.read(progressProvider).mistakeMisses, {'ls1u1l1#0': 1});
+    });
 
     testWidgets('a right pick also explains why', (tester) async {
       await _pump(tester, _lesson([_choice]));

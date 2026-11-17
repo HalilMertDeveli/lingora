@@ -21,6 +21,14 @@ const mistakeIntervals = [1, 3, 7, 21];
 /// Right answers in a row that take a question out of the notebook.
 const mistakeClearRun = 2;
 
+/// Wrong answers to the same question ("nodeId#index") that save it in the
+/// error notebook ("Hatalarını çalış", Hata defteri). One slip is only asked again later in the
+/// lesson; a question missed this often is kept for spaced review.
+const mistakeSaveMisses = 3;
+
+/// Most questions whose wrong answers are counted (oldest dropped first).
+const maxMissCounts = 500;
+
 /// Progress key of a unit's topic guide (see [Progress.guideSeen]).
 String guideKey(String unitId) => 'guide_$unitId';
 
@@ -62,6 +70,7 @@ class Progress {
     this.mistakeStage = const {},
     this.mistakeDue = const {},
     this.mistakeRun = const {},
+    this.mistakeMisses = const {},
     this.studyPlan,
     this.readingWords = 0,
     this.mistakeReason = const {},
@@ -104,6 +113,10 @@ class Progress {
 
   /// Right answers in a row per notebook question.
   final Map<String, int> mistakeRun;
+
+  /// Wrong answers per question not (yet) in the notebook; at
+  /// [mistakeSaveMisses] the question is saved and its count dropped.
+  final Map<String, int> mistakeMisses;
 
   /// The daily study plan ("Bugün"); null until it is set up.
   final StudyPlan? studyPlan;
@@ -296,6 +309,7 @@ class Progress {
     Map<String, int>? mistakeStage,
     Map<String, String>? mistakeDue,
     Map<String, int>? mistakeRun,
+    Map<String, int>? mistakeMisses,
     StudyPlan? studyPlan,
     bool clearStudyPlan = false,
     int? readingWords,
@@ -335,6 +349,7 @@ class Progress {
     mistakeStage: mistakeStage ?? this.mistakeStage,
     mistakeDue: mistakeDue ?? this.mistakeDue,
     mistakeRun: mistakeRun ?? this.mistakeRun,
+    mistakeMisses: mistakeMisses ?? this.mistakeMisses,
     studyPlan: clearStudyPlan ? null : (studyPlan ?? this.studyPlan),
     readingWords: readingWords ?? this.readingWords,
     mistakeReason: mistakeReason ?? this.mistakeReason,
@@ -375,6 +390,7 @@ class Progress {
     'mistakeStage': mistakeStage,
     'mistakeDue': mistakeDue,
     'mistakeRun': mistakeRun,
+    'mistakeMisses': mistakeMisses,
     'studyPlan': studyPlan?.toJson(),
     'readingWords': readingWords,
     'mistakeReason': mistakeReason,
@@ -419,6 +435,7 @@ class Progress {
     mistakeStage: (j['mistakeStage'] as Map?)?.cast<String, int>() ?? const {},
     mistakeDue: (j['mistakeDue'] as Map?)?.cast<String, String>() ?? const {},
     mistakeRun: (j['mistakeRun'] as Map?)?.cast<String, int>() ?? const {},
+    mistakeMisses: (j['mistakeMisses'] as Map?)?.cast<String, int>() ?? const {},
     studyPlan: j['studyPlan'] == null ? null : StudyPlan.fromJson(j['studyPlan'] as Map<String, dynamic>),
     readingWords: j['readingWords'] as int? ?? 0,
     mistakeReason: (j['mistakeReason'] as Map?)?.cast<String, String>() ?? const {},
@@ -701,6 +718,33 @@ class ProgressNotifier extends Notifier<Progress> {
         mistakeRun: {..._without(state.mistakeRun, dropped), key: 0},
       ),
     );
+  }
+
+  /// A question answered wrong in a lesson or review. A question already in
+  /// the notebook goes back to its start ([addMistake]); any other one is
+  /// counted and saved at its [mistakeSaveMisses]th wrong answer, so a single
+  /// slip does not fill the notebook. Returns whether it is in the notebook.
+  bool recordWrong(String key) {
+    if (state.mistakes.contains(key)) {
+      addMistake(key);
+      return true;
+    }
+    final misses = (state.mistakeMisses[key] ?? 0) + 1;
+    if (misses >= mistakeSaveMisses) {
+      _save(state.copyWith(mistakeMisses: _without(state.mistakeMisses, [key])));
+      addMistake(key);
+      return true;
+    }
+    // Re-inserted last, so the oldest counts are the ones dropped.
+    var counts = {
+      ..._without(state.mistakeMisses, [key]),
+      key: misses,
+    };
+    if (counts.length > maxMissCounts) {
+      counts = Map.fromEntries(counts.entries.skip(counts.length - maxMissCounts));
+    }
+    _save(state.copyWith(mistakeMisses: counts));
+    return false;
   }
 
   /// A notebook question answered right: the first right answer moves it to

@@ -589,7 +589,7 @@ class TestFailedScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               '%$accuracy doğru yaptın. Geçmek için %$testPassPercent gerekiyor.\n'
-              'Yanlışların "Hatalarını çalış" listesine eklendi.',
+              'Sık takıldığın sorular "Hatalarını çalış" listesine eklenir.',
               textAlign: TextAlign.center,
               style: TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
             ),

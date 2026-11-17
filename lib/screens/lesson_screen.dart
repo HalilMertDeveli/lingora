@@ -8,6 +8,7 @@ import '../core/tr_errors.dart';
 import '../data/app_settings.dart';
 import '../data/break_reminder.dart';
 import '../data/course_repository.dart';
+import '../data/mistake_nudge.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
@@ -36,6 +37,7 @@ import '../ui/session.dart';
 import '../ui/why_wrong.dart';
 import '../nav/flow.dart';
 import 'lesson_result_screen.dart';
+import 'mistake_nudge_screen.dart';
 import 'paywall_screen.dart';
 
 const baseLessonXp = 10;
@@ -319,8 +321,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       if (widget.mode == LessonMode.practice) notifier.answerMistakeRight(_current.key);
     } else {
       SessionFx.wrong();
-      // Practised, not graded: nothing for the mistakes notebook.
-      if (!ungradedTypes.contains(_current.ex.type)) notifier.addMistake(_current.key);
+      // Practised, not graded: nothing for the mistakes notebook. Others are
+      // saved there after [mistakeSaveMisses] wrong answers (the lesson
+      // already asks them again at the end).
+      if (!ungradedTypes.contains(_current.ex.type)) notifier.recordWrong(_current.key);
     }
   }
 
@@ -435,6 +439,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final duration = DateTime.now().difference(_started);
     final takeBreak = ref.read(breakTrackerProvider).recordLesson(duration);
     final resultQuote = widget.mode == LessonMode.test ? null : _pickQuote();
+    // Never on the same day as the closable paywall: one extra screen at most.
+    final dueMistakes = widget.mode == LessonMode.lesson && !autoPaywall
+        ? _dueMistakes()
+        : const <LessonItem>[];
     // Result, then streak, then daily goal and quests, then (after a run of lessons) a break reminder,
     // then (sometimes) a closable paywall; the last
     // "Devam" goes straight back to the path.
@@ -460,8 +468,30 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       ),
       ...celebrationSteps(reward),
       if (takeBreak) (next) => BreakReminderScreen(onContinue: next),
+      if (dueMistakes.isNotEmpty)
+        (next) => MistakeNudgeScreen(
+          items: dueMistakes,
+          onLater: next,
+          onSolve: () => nav.pushReplacement(
+            MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => mistakeReviewScreen(dueMistakes)),
+          ),
+        ),
       if (autoPaywall) (_) => const PaywallScreen(placement: PaywallPlacement.afterLessons),
     ]);
+  }
+
+  /// Due notebook questions for the "Bunlar senin hataların" reminder, or
+  /// none when it already showed today. Marks today when it returns some.
+  List<LessonItem> _dueMistakes() {
+    final course = ref.read(courseProvider).value;
+    if (course == null) return const [];
+    final prefs = ref.read(prefsProvider);
+    final today = dayKey(ref.read(clockProvider)());
+    final keys = ref.read(progressProvider).mistakesDue(today);
+    if (!mistakeNudgeDue(prefs, today: today, due: keys.length)) return const [];
+    final items = mistakeItems(course, keys, limit: mistakeNudgeSize);
+    if (items.isNotEmpty) markMistakeNudge(prefs, today);
+    return items;
   }
 
   Future<void> _confirmQuit() async {
