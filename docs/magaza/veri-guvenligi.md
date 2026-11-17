@@ -19,8 +19,21 @@ Genel:
 | Uygulama etkinliği > Uygulama etkileşimleri | Evet (izinle) | Hayır | İsteğe bağlı | Analiz |
 | Uygulama bilgileri ve performansı > Kilitlenme günlükleri | Hayır (Crashlytics yok) | – | – | – |
 | Cihaz veya diğer kimlikler | Evet (Firebase kurulum/analiz kimliği, rastgele kurulum kimliği özeti) | Hayır | Analiz isteğe bağlı | Analiz, sahtekârlığı önleme, uygulama işlevselliği |
+| Kişiler (rehber) | Evet, **yalnızca geçici işleme** ("processed ephemerally"): numaraların tuzlu SHA-256 özetleri tek tek sorgu için gönderilir, saklanmaz; adlar ve ham numaralar gönderilmez | Hayır | İsteğe bağlı | Uygulama işlevselliği (arkadaş bulma) |
+| Kişisel bilgiler > Telefon numarası | Evet, yalnızca "Telefon numaramla bulunabilirim" açıksa ve yalnızca tuzlu SHA-256 özeti | Hayır | İsteğe bağlı | Uygulama işlevselliği (arkadaş bulma) |
 | Konum | Hayır | – | – | – |
 
 \* Play'in tanımına göre veriyi sizin adınıza işleyen hizmet sağlayıcıya aktarmak
 "paylaşım" sayılmaz; Anthropic'i hizmet sağlayıcı olarak bildirip "Paylaşılıyor: Hayır"
 seçmek de doğrudur. Emin değilsen "Evet" seçmek daha güvenli.
+
+## Rehber izni (READ_CONTACTS) ve Play Kullanıcı Verileri politikası
+
+- İzin yalnızca Arkadaşlar > **Rehberden bul** düğmesine basınca istenir (çalışma anında); öncesinde uygulama
+  içinde ne yapılacağı açıklanır (belirgin açıklama, "prominent disclosure"). Reddedilirse kodla ekleme çalışır.
+- Rehber verisi cihazdan çıkmaz; adlar ve ham numaralar hiçbir sunucuya gönderilmez. Sunucuya yalnızca numaraların
+  uygulamaya özgü önekli SHA-256 özetleri, tek tek belge okuması olarak gider; eşleşmeyenler saklanmaz.
+- Gizlilik politikasında 3.10 bölümü bu akışı anlatır. Play Console'da izin beyanı istenirse amaç: "Kullanıcının
+  rehberindeki, uygulamayı kullanan ve bulunmayı kabul etmiş kişileri arkadaş olarak bulmak."
+- Telefon numarası (özet) yalnızca kullanıcı "Telefon numaramla bulunabilirim" seçeneğini açarsa yazılır; numara
+  telefonla girişte doğrulanmış olmalıdır (kurallar bunu denetler).

@@ -112,6 +112,37 @@ class Emulators {
         },
       });
 
+  /// Overwrites the fields of the document at [path] (admin rights, rules
+  /// off), e.g. a friendship in the middle of a streak. Values: int, String,
+  /// bool, null, List and Map.
+  Future<void> patchDoc(String path, Map<String, Object?> fields) => _send(
+    'PATCH',
+    _fs(
+      '$_docs/$path?${[for (final k in fields.keys) 'updateMask.fieldPaths=${Uri.encodeQueryComponent(k)}'].join('&')}',
+    ),
+    {'fields': _encodeFields(fields)},
+  );
+
+  static Map<String, Object?> _encodeFields(Map<String, Object?> f) => {
+    for (final e in f.entries) e.key: _encode(e.value),
+  };
+
+  static Map<String, Object?> _encode(Object? v) => switch (v) {
+    null => {'nullValue': null},
+    final int i => {'integerValue': '$i'},
+    final bool b => {'booleanValue': b},
+    final String s => {'stringValue': s},
+    final List<Object?> l => {
+      'arrayValue': {
+        'values': [for (final x in l) _encode(x)],
+      },
+    },
+    final Map<String, Object?> m => {
+      'mapValue': {'fields': _encodeFields(m)},
+    },
+    _ => throw ArgumentError('unsupported value $v'),
+  };
+
   /// `users/{uid}` as plain JSON, or null when it does not exist.
   Future<Map<String, Object?>?> userDoc(String uid) async {
     final raw = await _send('GET', _fs('$_docs/users/$uid'));

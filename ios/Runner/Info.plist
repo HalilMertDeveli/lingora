@@ -8,6 +8,8 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Dilmaç</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Rehberindeki Dilmaç kullanan arkadaşlarını bulmak için kullanılır. Rehberin telefonunda kalır; yalnızca numaraların tek yönlü şifresi (hash) karşılaştırılır.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Profil fotoğrafı çekmek için kamera kullanılır.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

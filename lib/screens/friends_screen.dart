@@ -11,6 +11,7 @@ import '../services/profile.dart';
 import '../theme.dart';
 import '../ui/avatar.dart';
 import 'auth_screen.dart';
+import 'contacts_friends_screen.dart';
 
 /// Text shared with a friend: the code and where to type it.
 String friendShareText(String code) =>
@@ -87,7 +88,7 @@ class _FriendsScreenState extends ConsumerState<FriendsScreen> {
             ),
             const SizedBox(height: 20),
             if (Brand.isKid)
-              const _Box(
+              const FriendsBox(
                 key: ValueKey('friends-kid'),
                 icon: Icons.child_care_rounded,
                 text:
@@ -126,12 +127,24 @@ class _FriendsScreenState extends ConsumerState<FriendsScreen> {
               ),
               if (_added != null) ...[
                 const SizedBox(height: 10),
-                _Box(
+                FriendsBox(
                   icon: Icons.celebration_rounded,
                   color: Brand.successBg,
                   text: '$_added ile artık arkadaşsınız!',
                 ),
               ],
+              const SizedBox(height: 8),
+              // The phone book is read only after this tap (and the
+              // system permission); the code above works without it.
+              OutlinedButton.icon(
+                key: const ValueKey('friends-contacts'),
+                onPressed: () =>
+                    Navigator.of(context)
+                        .push(MaterialPageRoute<void>(builder: (_) => const ContactsFriendsScreen())),
+                icon: const Icon(Icons.contacts_rounded),
+                label: const Text('Rehberden bul'),
+              ),
+              const _RequestList(),
               const SizedBox(height: 24),
               Text('Arkadaşların', style: t.titleMedium),
               const SizedBox(height: 8),
@@ -209,7 +222,7 @@ class _NoAccount extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const _Box(
+        const FriendsBox(
           icon: Icons.group_rounded,
           text:
               'Arkadaş eklemek için ücretsiz bir Dilmaç hesabı gerekir (Google, e-posta ya da telefon). '
@@ -231,6 +244,133 @@ class _NoAccount extends ConsumerWidget {
   }
 }
 
+/// Incoming friend requests (from the phone book) with accept / decline.
+class _RequestList extends ConsumerWidget {
+  const _RequestList();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final api = ref.watch(friendsApiProvider);
+    final friends = {...?ref.watch(friendshipsProvider).value?.map((f) => f.friendUid)};
+    final requests = [
+      for (final r in ref.watch(incomingRequestsProvider).value ?? const <FriendRequest>[])
+        if (!friends.contains(r.from)) r,
+    ];
+    if (api == null || requests.isEmpty) return const SizedBox.shrink();
+    final t = Theme.of(context).textTheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SizedBox(height: 24),
+        Text('Arkadaşlık istekleri', style: t.titleMedium),
+        const SizedBox(height: 8),
+        for (final r in requests)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: TapCard(
+              key: ValueKey('request-${r.from}'),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Brand.surface,
+                    child: Text(r.avatar, style: const TextStyle(fontSize: 22)),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      '${r.name} seninle arkadaş olmak istiyor',
+                      style: const TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  IconButton(
+                    key: ValueKey('request-decline-${r.from}'),
+                    tooltip: 'Reddet',
+                    icon: const Icon(Icons.close_rounded),
+                    onPressed: () => api.deleteRequest(r).catchError((_) {}),
+                  ),
+                  FilledButton(
+                    key: ValueKey('request-accept-${r.from}'),
+                    onPressed: () => acceptFriendRequest(context, api, r),
+                    child: const Text('Kabul et'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+/// Accepts [r] and offers to start the shared streak: a "Hadi, bugün sen
+/// de!" to the new friend. The streak itself grows on the first day both
+/// reach their goal.
+Future<void> acceptFriendRequest(BuildContext context, FriendsApi api, FriendRequest r) async {
+  final messenger = ScaffoldMessenger.of(context);
+  final String pairId;
+  try {
+    pairId = await api.acceptRequest(r);
+  } on Object {
+    messenger.showSnackBar(const SnackBar(content: Text('Kabul edilemedi, yeniden dene.')));
+    return;
+  }
+  if (!context.mounted) return;
+  await offerSharedStreak(context, api, pairId: pairId, friendUid: r.from, name: r.name);
+}
+
+/// "Ortak seri başlat": shown right after two people become friends.
+Future<void> offerSharedStreak(
+  BuildContext context,
+  FriendsApi api, {
+  required String pairId,
+  required String friendUid,
+  required String name,
+}) async {
+  final start = await showDialog<bool>(
+    context: context,
+    builder: (c) => AlertDialog(
+      key: const ValueKey('shared-streak-dialog'),
+      title: Text('$name ile artık arkadaşsınız!'),
+      content: const Text(
+        'İkiniz de aynı gün günlük hedefinizi tamamlayınca ortak seriniz bir artar. '
+        'Seriyi başlatmak için arkadaşına bugün çalışma çağrısı gönder.',
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Sonra')),
+        FilledButton.icon(
+          key: const ValueKey('shared-streak-start'),
+          onPressed: () => Navigator.pop(c, true),
+          icon: const Icon(Icons.local_fire_department),
+          label: const Text('Ortak seri başlat'),
+        ),
+      ],
+    ),
+  );
+  if (start != true) return;
+  final f = Friendship(
+    pairId: pairId,
+    friendUid: friendUid,
+    name: name,
+    avatar: '',
+    myDay: 0,
+    friendDay: 0,
+    streak: 0,
+    best: 0,
+    streakDay: 0,
+  );
+  try {
+    await api.sendCheer(f, CheerKind.hadi, friendDay(DateTime.now()));
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Gönderildi: "${CheerKind.hadi.label}". Bugün ikiniz de hedefi tamamlayın!')),
+      );
+    }
+  } on Object {
+    // Already sent today: nothing to do.
+  }
+}
+
 class _FriendList extends ConsumerWidget {
   const _FriendList();
 
@@ -241,10 +381,10 @@ class _FriendList extends ConsumerWidget {
       loading: () => const Center(
         child: Padding(padding: EdgeInsets.all(16), child: CircularProgressIndicator()),
       ),
-      error: (_, _) => const _Box(icon: Icons.cloud_off_rounded, text: 'Arkadaş listesi yüklenemedi.'),
+      error: (_, _) => const FriendsBox(icon: Icons.cloud_off_rounded, text: 'Arkadaş listesi yüklenemedi.'),
       data: (list) {
         if (list == null || list.isEmpty) {
-          return const _Box(
+          return const FriendsBox(
             key: ValueKey('friends-empty'),
             icon: Icons.waving_hand_rounded,
             text: 'Henüz arkadaşın yok. Kodunu paylaş ya da bir arkadaşının kodunu yaz.',
@@ -435,8 +575,8 @@ class _GoalChip extends StatelessWidget {
   );
 }
 
-class _Box extends StatelessWidget {
-  const _Box({super.key, required this.icon, required this.text, this.color});
+class FriendsBox extends StatelessWidget {
+  const FriendsBox({super.key, required this.icon, required this.text, this.color});
   final IconData icon;
   final String text;
   final Color? color;

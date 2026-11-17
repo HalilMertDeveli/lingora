@@ -14,6 +14,7 @@ import 'error_analysis_screen.dart';
 import 'growth_profile_section.dart';
 import 'family_screen.dart';
 import 'friends_screen.dart';
+import 'contacts_friends_screen.dart';
 import 'onboarding_screen.dart';
 import 'paywall_screen.dart';
 import 'profile_header.dart';
@@ -123,6 +124,8 @@ class ProfileScreen extends ConsumerWidget {
             label: const Text('Arkadaşlar ve ortak seri'),
           ),
         ),
+        // Opt-in: off by default, needs a number verified by phone sign-in.
+        const DiscoverableTile(),
         // The Dünya Ligi flag (not in Çocuk modu: no world league for kids).
         if (!Brand.isKid) const Align(alignment: Alignment.centerRight, child: CountryButton()),
         const SizedBox(height: 12),

@@ -146,6 +146,9 @@ gizli). Kural testleri: `functions/test/friends_rules.test.ts`.
 - **Destek ve tebrik:** Dört hazır mesaj; her türden günde bir tane.
 - **Bilinen sınır:** Günlük hedefe ulaşıldığını telefon bildirir (XP sunucuda doğrulanmıyor). Para ya da ödül
   bağlı olmadığı için kabul edilebilir. Bildirim (push) yok; mesajlar uygulama açılınca görünür.
+- **Rehberden bulma ve arkadaşlık istekleri** (`phoneIndex`, `friendRequests`): `docs/arkadaslar.md`.
+- **Arkadaşlıktan çıkarma** önce destek mesajlarını (`cheers`) siler; aynı iki kişi aynı gün yeniden arkadaş
+  olursa mesajlar baştan gönderilebilir.
 
 ## Profil fotoğrafı ve görünen ad (Storage gerekmez)
 

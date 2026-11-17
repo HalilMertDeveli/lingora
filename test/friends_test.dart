@@ -54,13 +54,63 @@ class FakeFriendsApi implements FriendsApi {
   Stream<List<Cheer>> cheers(String pairId, int day) => Stream.value(cheerList);
 
   @override
-  Future<void> sendCheer(Friendship f, CheerKind kind, int day) async => sent.add(kind);
+  Future<void> sendCheer(Friendship f, CheerKind kind, int day) async {
+    sent.add(kind);
+    cheered.add((f.friendUid, kind));
+  }
 
   @override
   Future<void> remove(String pairId) async => removed.add(pairId);
 
   @override
   Future<void> markGoal(int day) async => marked.add(day);
+
+  // ---- Requests and phone discovery ----
+  List<FriendRequest> incoming = [];
+  List<FriendRequest> outgoing = [];
+  final requested = <String>[];
+  final accepted = <String>[];
+  final deleted = <String>[];
+  final cheered = <(String, CheerKind)>[];
+  Map<String, String> phoneOwners = {};
+  final looked = <String>[];
+  @override
+  String? verifiedPhone;
+  bool discoverableNow = false;
+
+  @override
+  Future<RequestResult> sendRequest(String toUid) async {
+    requested.add(toUid);
+    outgoing = [...outgoing, FriendRequest(from: uid, to: toUid, name: 'Ben', avatar: '⭐')];
+    return RequestResult.sent;
+  }
+
+  @override
+  Stream<List<FriendRequest>> incomingRequests() => Stream.value(incoming);
+
+  @override
+  Stream<List<FriendRequest>> outgoingRequests() => Stream.value(outgoing);
+
+  @override
+  Future<String> acceptRequest(FriendRequest r) async {
+    accepted.add(r.from);
+    return pairIdOf(r.from, r.to);
+  }
+
+  @override
+  Future<void> deleteRequest(FriendRequest r) async => deleted.add(r.id);
+
+  @override
+  Future<bool?> discoverable() async => verifiedPhone == null ? null : discoverableNow;
+
+  @override
+  Future<void> setDiscoverable(bool on) async => discoverableNow = on;
+
+  @override
+  Future<Map<String, String>> lookupPhones(Iterable<String> hashes) async {
+    looked.addAll(hashes);
+    return {for (final h in hashes) h: ?phoneOwners[h]};
+  }
 }
 
 Friendship friend({int myDay = 0, int friendDay = 0, int streak = 0, int best = 0, int streakDay = 0}) =>

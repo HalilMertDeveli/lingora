@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/progress.dart';
+import 'contacts/phone_numbers.dart';
 import 'firebase/firebase_providers.dart';
 import 'profile.dart' show myDisplayNameProvider;
 
@@ -146,6 +147,40 @@ Map<String, Object>? goalUpdate(Map<String, dynamic> d, String me, int day) {
   return update;
 }
 
+/// A friend request (`friendRequests/{from}_{to}`), sent from the phone
+/// book. [name] and [avatar] are the sender's, copied into the friendship
+/// when the receiver accepts.
+class FriendRequest {
+  const FriendRequest({required this.from, required this.to, required this.name, required this.avatar});
+
+  static FriendRequest? fromMap(Map<String, dynamic> d) {
+    final from = d['from'], to = d['to'];
+    if (from is! String || to is! String) return null;
+    return FriendRequest(
+      from: from,
+      to: to,
+      name: d['name'] as String? ?? 'Arkadaş',
+      avatar: d['avatar'] as String? ?? '⭐',
+    );
+  }
+
+  final String from;
+  final String to;
+  final String name;
+  final String avatar;
+
+  String get id => '${from}_$to';
+}
+
+/// What sending a request did.
+enum RequestResult {
+  /// Waiting for the other person.
+  sent,
+
+  /// They had already asked us: accepted, you are friends now.
+  friends,
+}
+
 /// Why adding a friend failed, with the Turkish message for the screen.
 class FriendException implements Exception {
   const FriendException(this.reason);
@@ -156,6 +191,7 @@ class FriendException implements Exception {
     'notFound' => 'Bu kodla bir arkadaş bulunamadı. Kodu kontrol et.',
     'self' => 'Bu senin kendi kodun.',
     'already' => 'Bu kişiyle zaten arkadaşsınız.',
+    'noPhone' => 'Bu seçenek için telefon numaranla giriş yapmış olman gerekir.',
     _ => 'Şu an bağlanılamadı. İnternetini kontrol edip yeniden dene.',
   };
 
@@ -184,19 +220,56 @@ abstract class FriendsApi {
 
   /// Marks today's daily goal in every friendship that does not have it yet.
   Future<void> markGoal(int day);
+
+  // ---- Friend requests (phone book) ----
+
+  /// Asks [toUid] to be friends. When they already asked us, accepts theirs.
+  Future<RequestResult> sendRequest(String toUid);
+
+  /// Requests waiting for the user's answer.
+  Stream<List<FriendRequest>> incomingRequests();
+
+  /// Requests the user sent that are not answered yet.
+  Stream<List<FriendRequest>> outgoingRequests();
+
+  /// Makes the sender a friend and removes the request; returns the pair id.
+  Future<String> acceptRequest(FriendRequest r);
+
+  /// Declines an incoming or withdraws an outgoing request.
+  Future<void> deleteRequest(FriendRequest r);
+
+  // ---- Discoverability by phone number (opt-in) ----
+
+  /// The verified number of the account (Firebase phone sign-in), or null.
+  String? get verifiedPhone;
+
+  /// Whether others can find the user by their number; null without a
+  /// verified number.
+  Future<bool?> discoverable();
+
+  /// Publishes or removes the user's phone hash.
+  Future<void> setDiscoverable(bool on);
+
+  /// The uids behind those phone hashes that are discoverable, by hash.
+  /// One `get` per hash: the index cannot be listed.
+  Future<Map<String, String>> lookupPhones(Iterable<String> hashes);
 }
 
 class FirestoreFriendsApi implements FriendsApi {
-  FirestoreFriendsApi(this._db, {required this.uid, required this.name, String? avatar})
+  FirestoreFriendsApi(this._db, {required this.uid, required this.name, String? avatar, this.verifiedPhone})
     : avatar = avatar ?? friendAvatar(uid);
   final FirebaseFirestore _db;
   @override
   final String uid;
   final String name;
   final String avatar;
+  @override
+  final String? verifiedPhone;
 
   CollectionReference<Map<String, dynamic>> get _codes => _db.collection('friendCodes');
   CollectionReference<Map<String, dynamic>> get _pairs => _db.collection('friendships');
+  CollectionReference<Map<String, dynamic>> get _requests => _db.collection('friendRequests');
+  CollectionReference<Map<String, dynamic>> get _phones => _db.collection('phoneIndex');
 
   @override
   Future<String> myCode() async {
@@ -242,26 +315,146 @@ class FirestoreFriendsApi implements FriendsApi {
     if (owner == null) throw const FriendException('notFound');
     final other = owner['uid'] as String;
     if (other == uid) throw const FriendException('self');
-    final pairId = pairIdOf(uid, other);
-    final existing = await _pairs.where('members', arrayContains: uid).get();
-    if (existing.docs.any((d) => d.id == pairId)) throw const FriendException('already');
-    final members = [uid, other]..sort();
     try {
-      await _pairs.doc(pairId).set({
-        'members': members,
-        'code': code,
-        'names': {uid: name, other: owner['name']},
-        'avatars': {uid: avatar, other: owner['avatar']},
-        'done': <String, Object>{},
-        'streak': 0,
-        'best': 0,
-        'streakDay': 0,
-        'createdAt': FieldValue.serverTimestamp(),
-      });
+      if (await _isFriend(other)) throw const FriendException('already');
+      await _pairs
+          .doc(pairIdOf(uid, other))
+          .set(_pairDoc(other, code, owner['name'] as String? ?? '', owner['avatar'] as String? ?? ''));
     } on FirebaseException {
       throw const FriendException('offline');
     }
+    await _dropRequestsWith(other);
     return owner['name'] as String? ?? 'Arkadaşın';
+  }
+
+  /// Pending requests between the user and [other], in either direction.
+  Future<List<DocumentReference<Map<String, dynamic>>>> _requestsWith(String other) async {
+    final res = await Future.wait([
+      _requests.where('to', isEqualTo: uid).where('from', isEqualTo: other).get(),
+      _requests.where('from', isEqualTo: uid).where('to', isEqualTo: other).get(),
+    ]);
+    return [for (final s in res) ...s.docs.map((d) => d.reference)];
+  }
+
+  /// Best effort: once friends, requests between the two are moot.
+  Future<void> _dropRequestsWith(String other) async {
+    try {
+      for (final r in await _requestsWith(other)) {
+        await r.delete();
+      }
+    } on FirebaseException {
+      // Left for the friends screen, which hides requests from friends.
+    }
+  }
+
+  Map<String, Object> _pairDoc(String other, String code, String otherName, String otherAvatar) => {
+    'members': [uid, other]..sort(),
+    'code': code,
+    'names': {uid: name, other: otherName},
+    'avatars': {uid: avatar, other: otherAvatar},
+    'done': <String, Object>{},
+    'streak': 0,
+    'best': 0,
+    'streakDay': 0,
+    'createdAt': FieldValue.serverTimestamp(),
+  };
+
+  Future<bool> _isFriend(String other) async =>
+      (await _pairs.where('members', arrayContains: uid).get()).docs.any((d) => d.id == pairIdOf(uid, other));
+
+  @override
+  Future<RequestResult> sendRequest(String toUid) async {
+    if (toUid == uid) throw const FriendException('self');
+    try {
+      if (await _isFriend(toUid)) throw const FriendException('already');
+      final theirs = await _requests.where('to', isEqualTo: uid).where('from', isEqualTo: toUid).get();
+      if (theirs.docs.isNotEmpty) {
+        final r = FriendRequest.fromMap(theirs.docs.first.data());
+        if (r != null) {
+          await acceptRequest(r);
+          return RequestResult.friends;
+        }
+      }
+      await _requests.doc('${uid}_$toUid').set({
+        'from': uid,
+        'to': toUid,
+        'name': name,
+        'avatar': avatar,
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+      return RequestResult.sent;
+    } on FirebaseException {
+      throw const FriendException('offline');
+    }
+  }
+
+  Stream<List<FriendRequest>> _requestQuery(String field) => _requests
+      .where(field, isEqualTo: uid)
+      .snapshots()
+      .map((s) => [for (final d in s.docs) ?FriendRequest.fromMap(d.data())]);
+
+  @override
+  Stream<List<FriendRequest>> incomingRequests() => _requestQuery('to');
+
+  @override
+  Stream<List<FriendRequest>> outgoingRequests() => _requestQuery('from');
+
+  @override
+  Future<String> acceptRequest(FriendRequest r) async {
+    final pairId = pairIdOf(r.from, r.to);
+    try {
+      final batch = _db.batch()
+        ..set(_pairs.doc(pairId), _pairDoc(r.from, '', r.name, r.avatar))
+        ..delete(_requests.doc(r.id));
+      await batch.commit();
+    } on FirebaseException {
+      // Already friends (e.g. they added our code meanwhile): just tidy up.
+      if (!await _isFriend(r.from)) throw const FriendException('offline');
+      await _requests.doc(r.id).delete();
+    }
+    await _dropRequestsWith(r.from);
+    return pairId;
+  }
+
+  @override
+  Future<void> deleteRequest(FriendRequest r) => _requests.doc(r.id).delete();
+
+  String? get _myPhoneHash => verifiedPhone == null ? null : phoneHash(verifiedPhone!);
+
+  @override
+  Future<bool?> discoverable() async {
+    final h = _myPhoneHash;
+    if (h == null) return null;
+    final d = await _phones.doc(h).get();
+    return d.data()?['uid'] == uid;
+  }
+
+  @override
+  Future<void> setDiscoverable(bool on) async {
+    final h = _myPhoneHash;
+    if (h == null) throw const FriendException('noPhone');
+    if (on) {
+      await _phones.doc(h).set({'uid': uid, 'createdAt': FieldValue.serverTimestamp()});
+    } else {
+      final d = await _phones.doc(h).get();
+      if (d.exists) await d.reference.delete();
+    }
+  }
+
+  @override
+  Future<Map<String, String>> lookupPhones(Iterable<String> hashes) async {
+    final out = <String, String>{};
+    final list = hashes.toSet().toList();
+    // A few gets at a time: each is one document read.
+    for (var i = 0; i < list.length; i += 20) {
+      final chunk = list.sublist(i, min(i + 20, list.length));
+      final snaps = await Future.wait(chunk.map((h) => _phones.doc(h).get()));
+      for (final s in snaps) {
+        final owner = s.data()?['uid'];
+        if (owner is String && owner != uid) out[s.id] = owner;
+      }
+    }
+    return out;
   }
 
   @override
@@ -299,8 +492,16 @@ class FirestoreFriendsApi implements FriendsApi {
         'createdAt': FieldValue.serverTimestamp(),
       });
 
+  /// Removes the friendship and its cheers, so a later friendship of the
+  /// same two people starts clean (a cheer cannot be overwritten).
   @override
-  Future<void> remove(String pairId) => _pairs.doc(pairId).delete();
+  Future<void> remove(String pairId) async {
+    final cheers = await _pairs.doc(pairId).collection('cheers').get();
+    for (final c in cheers.docs) {
+      await c.reference.delete();
+    }
+    await _pairs.doc(pairId).delete();
+  }
 
   @override
   Future<void> markGoal(int day) async {
@@ -326,7 +527,12 @@ final friendsApiProvider = Provider<FriendsApi?>((ref) {
   final db = ref.watch(firestoreProvider);
   final user = ref.watch(authStateProvider).value;
   if (db == null || user == null || user.isAnonymous) return null;
-  return FirestoreFriendsApi(db, uid: user.uid, name: ref.watch(myDisplayNameProvider));
+  return FirestoreFriendsApi(
+    db,
+    uid: user.uid,
+    name: ref.watch(myDisplayNameProvider),
+    verifiedPhone: user.phoneNumber,
+  );
 });
 
 /// The user's friendships, live. Null when friends are not available.
@@ -357,4 +563,19 @@ final friendGoalSyncProvider = Provider<void>((ref) {
   // Best effort: a failure (offline, a clock off near midnight) is retried
   // the next time progress or the friend list changes.
   unawaited(api.markGoal(today).catchError((_) {}));
+});
+
+/// Friend requests waiting for the user's answer, live. Requests from
+/// people who are already friends are hidden.
+final incomingRequestsProvider = StreamProvider<List<FriendRequest>>((ref) {
+  final api = ref.watch(friendsApiProvider);
+  if (api == null) return Stream.value(const []);
+  return api.incomingRequests();
+});
+
+/// Requests the user sent that are still open, live.
+final outgoingRequestsProvider = StreamProvider<List<FriendRequest>>((ref) {
+  final api = ref.watch(friendsApiProvider);
+  if (api == null) return Stream.value(const []);
+  return api.outgoingRequests();
 });
