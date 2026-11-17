@@ -51,9 +51,13 @@ enum PremiumPlan {
 
   static Set<String> get ids => {for (final p in values) p.id};
 
-  /// Personal plans shown as choices on the paywall (the family plan has its
-  /// own card).
-  static const personal = [monthly, yearly];
+  /// Personal plans shown as choices on the paywall, in order (the family
+  /// plan has its own card). Yearly comes first and is preselected: the
+  /// subscription is Dilmaç's main revenue and yearly is the best value.
+  static const personal = [yearly, monthly];
+
+  /// Preselected on the paywall.
+  static const recommended = yearly;
 
   bool get isFamily => this == familyYearly;
 }
@@ -120,7 +124,8 @@ enum ExamPack {
   static Set<String> get ids => {for (final p in values) p.id};
 }
 
-/// What Premium unlocks. Everything else in the app is free.
+/// What Premium unlocks. Everything else in the app is free (cloud backup
+/// included: every signed-in user's progress is synced, see `freeItems`).
 enum PremiumFeature {
   aiConversation(
     'Yapay zekâ sohbet partneri',
@@ -136,11 +141,6 @@ enum PremiumFeature {
     'Detaylı hata analizi',
     'Türk hata dedektörünün tüm kategorileri: oranlar, sayılar ve her biri için çalışma ipucu.',
     '📊',
-  ),
-  cloudBackup(
-    'Bulut yedekleme ve cihazlar arası senkron',
-    'İlerlemen buluta yedeklenir; telefon değiştirsen de aynı hesapla kaldığın yerden devam edersin.',
-    '☁️',
   );
 
   const PremiumFeature(this.title, this.description, this.emoji);
