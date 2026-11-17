@@ -248,7 +248,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   }
 
   LessonItem get _current => _queue[_pos];
-  bool get _requeues => widget.mode != LessonMode.test;
+  // A skip exam asks a wrong question again too: it is passed only when every
+  // question was answered right (each mistake still costs a heart).
+  bool get _requeues => widget.mode != LessonMode.test || widget.hearts != null;
   bool get _hasHearts => widget.hearts != null;
   bool get _outOfHearts => _hasHearts && _heartsLeft <= 0;
 

@@ -562,8 +562,9 @@ class _PathListState extends ConsumerState<_PathList> {
     final start = await showModalBottomSheet<bool>(
       context: context,
       showDragHandle: true,
+      isScrollControlled: true,
       builder: (sheet) => SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Column(
             key: const Key('unit-skip-sheet'),
@@ -583,7 +584,7 @@ class _PathListState extends ConsumerState<_PathList> {
               ),
               const SizedBox(height: 12),
               Text(
-                '${screen.items.length} soruluk karışık bir sınav. ${skipRules(unit: true)}',
+                'Ünitenin bütün kelime ve kalıplarını soran ${screen.items.length} soruluk bir sınav. ${skipRules(unit: true)}',
                 style: Theme.of(sheet).textTheme.bodyMedium,
               ),
               const SizedBox(height: 16),
