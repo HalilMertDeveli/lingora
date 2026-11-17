@@ -3,19 +3,20 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../core/text.dart';
 import '../core/tr_errors.dart';
 import '../data/notes_index.dart';
 import '../data/notes_practice.dart';
 import '../data/notes_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
+import '../data/review_grade.dart';
 import '../models/grammar_lesson.dart';
 import '../models/notes.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../ui/review_card.dart';
 import '../ui/why_wrong.dart';
 import 'lesson_result_screen.dart';
 import 'grammar_path_screen.dart';
@@ -290,30 +291,20 @@ class FlashcardScreen extends ConsumerStatefulWidget {
   ConsumerState<FlashcardScreen> createState() => _FlashcardScreenState();
 }
 
-class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTickerProviderStateMixin {
-  late final _flip = AnimationController(vsync: this, duration: const Duration(milliseconds: 350));
-  late final SpeechService _speech = ref.read(speechProvider);
+class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
   final _started = DateTime.now();
   int _pos = 0;
   int _known = 0;
 
-  @override
-  void dispose() {
-    _flip.dispose();
-    super.dispose();
-  }
-
   NoteWord get _w => widget.words[_pos];
 
-  void _answer(bool known) {
-    ref.read(progressProvider.notifier).reviewWord(_w.id, known: known);
-    known ? Haptics.success() : Haptics.tap();
-    if (known) _known++;
+  void _answer(ReviewGrade grade) {
+    ref.read(progressProvider.notifier).gradeWord(_w.id, grade);
+    if (grade.known) _known++;
     if (_pos + 1 >= widget.words.length) {
       _finish();
       return;
     }
-    _flip.value = 0;
     setState(() => _pos++);
   }
 
@@ -374,50 +365,17 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
               ),
             ),
             Expanded(
-              child: GestureDetector(
-                onTap: () => _flip.value < 0.5 ? _flip.forward() : _flip.reverse(),
-                child: AnimatedBuilder(
-                  animation: _flip,
-                  builder: (_, _) {
-                    final angle = _flip.value * pi;
-                    final back = angle > pi / 2;
-                    return Center(
-                      child: Transform(
-                        alignment: Alignment.center,
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.001)
-                          ..rotateY(angle),
-                        child: Transform(
-                          alignment: Alignment.center,
-                          transform: Matrix4.identity()..rotateY(back ? pi : 0),
-                          child: _card(w, back),
-                        ),
-                      ),
-                    );
-                  },
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
+                child: ReviewDeck(
+                  key: ValueKey('note-card-$_pos'),
+                  card: ReviewCardData.fromNoteWord(w),
+                  behind: widget.words.length - _pos - 1,
+                  color: _notesColor,
+                  intervalOf: (g) =>
+                      intervalLabel(scheduleReview(ref.read(progressProvider).wordBox[w.id], g).days),
+                  onGrade: _answer,
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: PressableButton(
-                      label: 'BİLMİYORUM',
-                      color: Brand.error,
-                      onPressed: () => _answer(false),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: PressableButton(
-                      label: 'BİLİYORUM',
-                      color: Brand.success,
-                      onPressed: () => _answer(true),
-                    ),
-                  ),
-                ],
               ),
             ),
           ],
@@ -425,69 +383,6 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
       ),
     );
   }
-
-  Widget _card(NoteWord w, bool back) => Container(
-    key: ValueKey('${w.id}-$back'),
-    width: MediaQuery.sizeOf(context).width - 48,
-    constraints: const BoxConstraints(minHeight: 320),
-    padding: const EdgeInsets.all(24),
-    decoration: BoxDecoration(
-      color: back ? Color.alphaBlend(_notesColor.withValues(alpha: 0.1), Brand.card) : Brand.card,
-      borderRadius: BorderRadius.circular(24),
-      border: Border.all(color: back ? _notesColor : Brand.line, width: 2),
-      boxShadow: [
-        if (Brand.isKid)
-          BoxShadow(color: edgeOf(back ? _notesColor : Brand.line), offset: const Offset(0, 6)),
-      ],
-    ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          trUpper(w.topic),
-          style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800, fontSize: 12, letterSpacing: 1),
-        ),
-        const SizedBox(height: 14),
-        if (!back) ...[
-          Text(
-            w.en,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 32, fontWeight: FontWeight.w900),
-          ),
-          const SizedBox(height: 16),
-          IconButton.filledTonal(
-            onPressed: () => _speech.say(w.en),
-            icon: const Icon(Icons.volume_up_rounded),
-          ),
-          const SizedBox(height: 16),
-          Text('Anlamını düşün, sonra karta dokun', style: TextStyle(color: Brand.muted)),
-        ] else ...[
-          Text(
-            w.tr,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: _notesColor),
-          ),
-          if (w.example != null) ...[
-            const SizedBox(height: 14),
-            Text(
-              '“${w.example}”',
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
-            ),
-          ],
-          if (w.story != null) ...[
-            const SizedBox(height: 14),
-            Text(
-              '${kidEmoji('🧠')}${w.story}',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Brand.muted),
-            ),
-          ],
-        ],
-      ],
-    ),
-  );
 }
 
 /// The personal dictionary: topics as chapters (own words first, then A-Z),

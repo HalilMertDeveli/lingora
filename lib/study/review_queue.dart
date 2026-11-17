@@ -32,8 +32,9 @@ const reviewBudgetCards = 150;
 String wordCardId(String prefix, String en) =>
     '$prefix${en.trim().toLowerCase().replaceAll(RegExp(r'\s+'), '_')}';
 
-/// A word card: id, English, Turkish and an example sentence if any.
-typedef WordCard = ({String id, String en, String tr, String? example});
+/// A word card: id, English, Turkish, an example sentence if any and the
+/// title of the unit it comes from.
+typedef WordCard = ({String id, String en, String tr, String? example, String? unit});
 
 /// YDS word cards (`assets/vocab/yds.json`, ids `yd_`), null until shipped.
 Future<List<VocabEntry>?> loadYdsVocab(AssetBundle bundle) async {
@@ -87,6 +88,7 @@ List<WordCard> courseWordCards(
           en: e.word,
           tr: e.senses.first.tr,
           example: e.examples.isEmpty ? null : e.examples.first.en,
+          unit: u.title,
         ));
       }
     }
@@ -95,7 +97,7 @@ List<WordCard> courseWordCards(
       for (final ex in n.exercises.where((e) => e.type == ExerciseType.match)) {
         for (final (tr, en) in ex.pairs) {
           if (seen.add(en.trim().toLowerCase())) {
-            result.add((id: wordCardId(prefix, en), en: en, tr: tr, example: null));
+            result.add((id: wordCardId(prefix, en), en: en, tr: tr, example: null, unit: u.title));
           }
         }
       }

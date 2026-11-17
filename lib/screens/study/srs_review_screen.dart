@@ -1,14 +1,22 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/course_repository.dart';
 import '../../data/practice.dart';
+import '../../data/gold_wallet.dart';
+import '../../data/notes_repository.dart';
 import '../../data/progress.dart';
+import '../../data/review_grade.dart';
 import '../../study/daily_plan.dart' show inMaintenance;
+import '../../study/review_card_data.dart';
 import '../../study/review_queue.dart';
 import '../../study/year_plan.dart';
 import '../../theme.dart';
+import '../../ui/mascot.dart';
 import '../../ui/motion.dart';
+import '../../ui/review_card.dart';
 import '../lesson_screen.dart';
 import 'methods_screen.dart';
 
@@ -54,16 +62,23 @@ class SrsReviewScreen extends ConsumerStatefulWidget {
   ConsumerState<SrsReviewScreen> createState() => _SrsReviewScreenState();
 }
 
+/// Gold for a finished review session: a little more for more known cards.
+/// Paid once a day (wallet key `review:<day>`).
+int reviewGold(int known) => min(15, 3 + known ~/ 3);
+
 class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
   /// Fixed when the screen opens, so cards do not move under the learner.
   ReviewQueue? _queue;
   late List<WordCard> _cards;
   final _fresh = <String>{};
   int _pos = 0;
-  bool _shown = false;
   int _reviewed = 0;
 
-  /// Cards answered "Hatırlamadım" come back once at the end.
+  /// The first grade of each card: what the summary counts.
+  final _first = <String, ReviewGrade>{};
+  int _gold = 0;
+
+  /// Cards answered "Bilmiyordum" come back once at the end.
   final _again = <String>{};
 
   void _take(ReviewQueue q) {
@@ -72,24 +87,29 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
     _fresh.addAll(q.fresh.map((c) => c.id));
   }
 
-  String _next(String id, bool known) {
-    final box = ref.read(progressProvider).wordBox[id] ?? 0;
-    final next = known ? (box + 1).clamp(0, reviewIntervals.length - 1) : (box - 2).clamp(0, box);
-    final days = reviewIntervals[next];
-    if (days == 0) return 'bugün';
-    if (days < 30) return '$days gün';
-    return '${days ~/ 30} ay';
-  }
+  String _interval(String id, ReviewGrade g) =>
+      intervalLabel(scheduleReview(ref.read(progressProvider).wordBox[id], g).days);
 
-  void _grade(bool known) {
+  void _grade(ReviewGrade g) {
     final c = _cards[_pos];
-    ref.read(progressProvider.notifier).learnWord(c.id, known: known);
+    ref.read(progressProvider.notifier).gradeWord(c.id, g, countNew: true);
+    _first.putIfAbsent(c.id, () => g);
     setState(() {
       _reviewed++;
-      if (!known && _again.add(c.id)) _cards.add(c);
+      if (g == ReviewGrade.again && _again.add(c.id)) _cards.add(c);
       _pos++;
-      _shown = false;
     });
+    if (_pos >= _cards.length) _payGold();
+  }
+
+  void _payGold() {
+    if (_first.isEmpty) return;
+    final known = _first.values.where((g) => g.known).length;
+    final amount = reviewGold(known);
+    final today = dayKey(ref.read(clockProvider)());
+    final paid = ref.read(goldWalletProvider).earn(amount, GoldReason.other, onceKey: 'review:$today');
+    setState(() => _gold = paid ? amount : 0);
+    if (paid) SessionFx.celebrate();
   }
 
   void _solveMistakes() {
@@ -114,8 +134,8 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
       if (q == null) return const Scaffold(body: Center(child: CircularProgressIndicator()));
       _take(q);
     }
-    final t = Theme.of(context).textTheme;
     final finished = _pos >= _cards.length;
+    final progress = _cards.isEmpty ? 1.0 : (_pos / _cards.length).clamp(0.0, 1.0);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tekrar kartları'),
@@ -126,20 +146,30 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
             onPressed: () => openMethods(context, focus: 'spacing'),
           ),
         ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(6),
-          child: LinearProgressIndicator(
-            value: _cards.isEmpty ? 1 : (_pos / _cards.length).clamp(0, 1).toDouble(),
-            color: Brand.success,
-          ),
-        ),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.fromLTRB(20, 4, 20, 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: GlossyProgress(
+                      key: const Key('srs-progress'),
+                      value: progress,
+                      color: Brand.success,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    '${min(_pos + 1, _cards.length)} / ${_cards.length}',
+                    style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
               if (_queue!.reviewDay)
                 Container(
                   key: const Key('srs-review-day'),
@@ -148,7 +178,7 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
                   decoration: BoxDecoration(color: Brand.accentBg, borderRadius: BorderRadius.circular(12)),
                   child: const Text('Bugün tekrar günü: yeni kelime azaltıldı'),
                 ),
-              Expanded(child: finished ? _done(t) : _card(_cards[_pos], t)),
+              Expanded(child: finished ? _done() : _deck()),
             ],
           ),
         ),
@@ -156,175 +186,61 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
     );
   }
 
-  Widget _done(TextTheme t) {
+  Widget _deck() {
+    final c = _cards[_pos];
+    final entries = entryIndex(ref.watch(ydsVocabProvider).value ?? const []);
+    final notes = ref.watch(notesProvider).value;
+    final fresh = _fresh.contains(c.id) && !_again.contains(c.id);
+    return ReviewDeck(
+      key: ValueKey('card-$_pos'),
+      card: reviewCardFor(c, entries: entries, notes: notes),
+      behind: _cards.length - _pos - 1,
+      color: Brand.primary,
+      badge: (label: fresh ? 'YENİ' : 'TEKRAR', color: fresh ? Brand.accent : Brand.primary),
+      intervalOf: (g) => _interval(c.id, g),
+      onGrade: _grade,
+    );
+  }
+
+  Widget _done() {
     final mistakes = _queue!.mistakes.length;
-    final nothing = _reviewed == 0 && mistakes == 0;
-    return Column(
+    final nothing = _reviewed == 0;
+    return SingleChildScrollView(
       key: const Key('srs-done'),
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Text('✅', textAlign: TextAlign.center, style: TextStyle(fontSize: 56)),
-        const SizedBox(height: 12),
-        Text(
-          nothing ? 'Bugünlük kart yok' : 'Kelime kartları bitti',
-          textAlign: TextAlign.center,
-          style: t.headlineSmall,
-        ),
-        const SizedBox(height: 8),
-        Text(
-          nothing
-              ? 'Kelime dersi bitirdikçe yeni kartlar gelir.'
-              : '$_reviewed kart tekrarlandı. Bildiğin kart daha geç, bilmediğin daha erken geri gelecek.',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Brand.muted),
-        ),
-        const SizedBox(height: 24),
-        if (mistakes > 0) ...[
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SizedBox(height: 12),
+          if (nothing)
+            EmptyState(
+              message: mistakes == 0
+                  ? 'Bugünlük kart yok. Kelime dersi bitirdikçe yeni kartlar gelir.'
+                  : 'Bugünlük kelime kartı yok; hata defterinde soruların seni bekliyor.',
+            )
+          else
+            ReviewSummary(
+              total: _first.length,
+              known: _first.values.where((g) => g.known).length,
+              gold: _gold,
+              color: Brand.primary,
+              message: 'Bildiğin kart daha geç, bilmediğin daha erken geri gelecek.',
+            ),
+          const SizedBox(height: 24),
+          if (mistakes > 0) ...[
+            PressableButton(
+              key: const Key('srs-mistakes'),
+              label: 'HATA DEFTERİ ($mistakes SORU)',
+              onPressed: _solveMistakes,
+            ),
+            const SizedBox(height: 10),
+          ],
           PressableButton(
-            key: const Key('srs-mistakes'),
-            label: 'HATA DEFTERİ ($mistakes SORU)',
-            onPressed: _solveMistakes,
+            label: 'BİTİR',
+            outlined: mistakes > 0,
+            onPressed: () => Navigator.of(context).pop(),
           ),
-          const SizedBox(height: 10),
         ],
-        PressableButton(label: 'BİTİR', outlined: mistakes > 0, onPressed: () => Navigator.of(context).pop()),
-      ],
+      ),
     );
   }
-
-  Widget _card(WordCard c, TextTheme t) => Column(
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: [
-      Row(
-        children: [
-          _Chip(
-            label: _fresh.contains(c.id) && !_again.contains(c.id) ? 'YENİ' : 'TEKRAR',
-            color: _fresh.contains(c.id) ? Brand.accent : Brand.primary,
-          ),
-          const Spacer(),
-          Text('${_pos + 1} / ${_cards.length}', style: TextStyle(color: Brand.muted)),
-        ],
-      ),
-      Expanded(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                c.en,
-                key: const Key('srs-front'),
-                textAlign: TextAlign.center,
-                style: t.displaySmall?.copyWith(fontWeight: FontWeight.w900, color: Brand.ink),
-              ),
-              const SizedBox(height: 16),
-              _shown
-                  ? Column(
-                      children: [
-                        Text(
-                          c.tr,
-                          key: const Key('srs-back'),
-                          textAlign: TextAlign.center,
-                          style: t.headlineSmall?.copyWith(color: Brand.tone(Brand.primary)),
-                        ),
-                        if (c.example case final ex?) ...[
-                          const SizedBox(height: 12),
-                          Text(
-                            ex,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Brand.muted, fontStyle: FontStyle.italic),
-                          ),
-                        ],
-                      ],
-                    )
-                  : Text(
-                      'Önce anlamını aklından söyle, sonra kartı çevir.',
-                      key: const Key('srs-hint'),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Brand.muted),
-                    ),
-            ],
-          ),
-        ),
-      ),
-      if (!_shown)
-        PressableButton(
-          key: const Key('srs-show'),
-          label: 'CEVABI GÖSTER',
-          onPressed: () => setState(() => _shown = true),
-        )
-      else ...[
-        Text('Hatırladın mı?', textAlign: TextAlign.center, style: t.titleMedium),
-        const SizedBox(height: 8),
-        Row(
-          children: [
-            Expanded(
-              child: _GradeButton(
-                key: const Key('srs-again'),
-                label: 'Hatırlamadım',
-                interval: _next(c.id, false),
-                color: Brand.error,
-                onTap: () => _grade(false),
-              ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: _GradeButton(
-                key: const Key('srs-good'),
-                label: 'Hatırladım',
-                interval: _next(c.id, true),
-                color: Brand.success,
-                onTap: () => _grade(true),
-              ),
-            ),
-          ],
-        ),
-      ],
-    ],
-  );
-}
-
-class _Chip extends StatelessWidget {
-  const _Chip({required this.label, required this.color});
-  final String label;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-    decoration: BoxDecoration(color: Brand.tone(color), borderRadius: BorderRadius.circular(10)),
-    child: Text(
-      label,
-      style: TextStyle(color: onColor(Brand.tone(color)), fontWeight: FontWeight.w900, fontSize: 12),
-    ),
-  );
-}
-
-class _GradeButton extends StatelessWidget {
-  const _GradeButton({
-    super.key,
-    required this.label,
-    required this.interval,
-    required this.color,
-    required this.onTap,
-  });
-  final String label;
-  final String interval;
-  final Color color;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) => TapCard(
-    onTap: onTap,
-    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 6),
-    child: Column(
-      children: [
-        Text(
-          label,
-          style: TextStyle(fontWeight: FontWeight.w900, color: Brand.tone(color)),
-        ),
-        Text('sonraki: $interval', style: TextStyle(color: Brand.muted, fontSize: 12)),
-      ],
-    ),
-  );
 }
