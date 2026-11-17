@@ -554,8 +554,8 @@ void main() {
       await tester.tap(find.byKey(const Key('srs-show')));
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('srs-back')), findsOneWidget);
-      expect(find.text('Hatırladın mı?'), findsOneWidget);
-      await tester.tap(find.byKey(const Key('srs-good')));
+      expect(find.text('Ne kadar hatırladın?'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('grade-good')));
       await tester.pumpAndSettle();
       final id = wordCardId(ydsWordPrefix, first);
       expect(c.read(progressProvider).wordBox[id], 1);
@@ -563,13 +563,13 @@ void main() {
 
       await tester.tap(find.byKey(const Key('srs-show')));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('srs-again')));
+      await tester.tap(find.byKey(const Key('grade-again')));
       await tester.pumpAndSettle();
       // A forgotten card comes back once at the end.
       expect(find.byKey(const Key('srs-front')), findsOneWidget);
       await tester.tap(find.byKey(const Key('srs-show')));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('srs-good')));
+      await tester.tap(find.byKey(const Key('grade-good')));
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('srs-done')), findsOneWidget);
       expect(find.byKey(const Key('srs-mistakes')), findsOneWidget);

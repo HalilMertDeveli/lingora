@@ -7,10 +7,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../core/tr_errors.dart';
 import '../models/notes.dart';
 import '../models/study_plan.dart';
+
 import 'catalog.dart';
 import 'league.dart';
 import 'quests.dart';
+import 'review_grade.dart';
 import 'wallet.dart';
+
+export 'review_grade.dart' show ReviewGrade;
 
 /// Most questions kept in the error notebook (oldest dropped first).
 const maxMistakes = 300;
@@ -910,10 +914,27 @@ class ProgressNotifier extends Notifier<Progress> {
 
   /// Reviews a path word card; a card seen for the first time counts as a
   /// new word of the day (counter "day:newWords").
-  void learnWord(String id, {required bool known}) {
+  void learnWord(String id, {required bool known}) =>
+      gradeWord(id, known ? ReviewGrade.good : ReviewGrade.again, countNew: true);
+
+  /// Grades a flipped review card ("Bilmiyordum / Zor / Bildim / Kolay",
+  /// see [scheduleReview]). With [countNew], a card seen for the first time
+  /// counts as a new word of the day.
+  void gradeWord(String id, ReviewGrade grade, {bool countNew = false}) {
     final fresh = !state.wordBox.containsKey(id);
-    reviewWord(id, known: known);
-    if (!fresh) return;
+    final now = _now();
+    final next = scheduleReview(state.wordBox[id], grade);
+    _save(
+      state.copyWith(
+        wordBox: {...state.wordBox, id: next.box},
+        wordDue: {
+          ...state.wordDue,
+          id: dayKey(now.add(Duration(days: next.days))),
+        },
+        wordLast: {...state.wordLast, id: dayKey(now)},
+      ),
+    );
+    if (!fresh || !countNew) return;
     final k = '${dayKey(_now())}:newWords';
     _save(state.copyWith(counters: {...state.counters, k: (state.counters[k] ?? 0) + 1}));
   }

@@ -238,7 +238,9 @@ void main() {
       await tester.tap(find.text('Bu konuyu çalış'));
       await tester.pumpAndSettle();
       expect(find.text('deadline'), findsOneWidget);
-      await tester.tap(find.text('Biliyorum'));
+      await tester.tap(find.byKey(const Key('review-card')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('grade-good')));
       await tester.pump(const Duration(seconds: 5));
       final id = c.read(progressProvider).customWords.single.id;
       expect(c.read(progressProvider).wordBox[id], isNotNull);
