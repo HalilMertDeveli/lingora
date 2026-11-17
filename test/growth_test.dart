@@ -232,6 +232,7 @@ void main() {
         AnalyticsEvent.trackChosen('yds', source: 'home'),
         for (final f in AppFeature.values) AnalyticsEvent.featureUse(f),
         AnalyticsEvent.paywallView(placement: PaywallPlacement.aiChat, variant: 'a'),
+        AnalyticsEvent.premiumOfferView(placement: PaywallPlacement.whyWrong),
         AnalyticsEvent.paywallClose(placement: PaywallPlacement.profile, variant: 'b'),
         AnalyticsEvent.purchaseStart(plan: 'yearly', placement: 'profile'),
         AnalyticsEvent.trialStart(plan: 'yearly', trialDays: 7),

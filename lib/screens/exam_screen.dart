@@ -15,9 +15,11 @@ import '../study/question_types.dart';
 import 'study/mock_report_screen.dart';
 import '../models/exam_pack.dart';
 import '../services/billing/premium.dart';
+import '../services/billing/premium_perks.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/markdown_text.dart';
+import '../ui/premium_offer.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../nav/flow.dart';
@@ -68,8 +70,15 @@ class _ExamHome extends ConsumerWidget {
   /// Premium. Topic practice is always free.
   Future<void> _startMock(BuildContext context, WidgetRef ref) async {
     if (!canStartMockExam(ref)) {
-      final gate = await requirePremium(context, ref, PremiumFeature.unlimitedMockExams);
-      if (gate != GateResult.premium || !context.mounted) return;
+      // The full paywall at most once a day (PaywallPacer); otherwise a
+      // small sheet that says why and offers the trial.
+      if (ref.read(paywallPacerProvider).takeAuto()) {
+        final gate = await requirePremium(context, ref, PremiumFeature.unlimitedMockExams);
+        if (gate != GateResult.premium || !context.mounted) return;
+      } else {
+        await showMockLimitSheet(context);
+        if (!context.mounted || !ref.read(premiumProvider)) return;
+      }
     }
     if (!ref.read(premiumProvider)) ref.read(mockExamQuotaProvider.notifier).recordStart();
     _open(context, _mockQuestions(), mock: true, title: 'Mini deneme');
@@ -293,6 +302,9 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   /// The learner's choice of showing the options' Turkish; null = default
   /// (open after a mistake).
   bool? _glossOpen;
+
+  /// This wrong answer's "Neden yanlış?" is past today's free ones.
+  bool _glossLocked = false;
   int _shake = 0;
   Timer? _timer;
   late int _secondsLeft = (widget.minutes ?? widget.exam.mockMinutes) * 60;
@@ -357,8 +369,19 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   void _check() {
     final right = _picked == _q.answer;
     _answers[_pos] = _picked!;
+    // "Neden yanlış?": free a few times a day, unlimited with Premium.
+    var locked = false;
+    if (!right && ref.read(optionGlossesProvider).value?.of(_q.id, _q.options.length) != null) {
+      locked = !ref.read(whyWrongQuotaProvider.notifier).claim(_q.id);
+      if (locked) {
+        Future<void>.delayed(const Duration(milliseconds: 1200), () {
+          if (mounted) maybeAutoPaywall(context, ref, PaywallPlacement.whyWrong);
+        });
+      }
+    }
     setState(() {
       _revealed = true;
+      _glossLocked = locked;
       if (!right) _shake++;
     });
     right ? Haptics.success() : Haptics.error();
@@ -379,6 +402,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
       _picked = null;
       _revealed = false;
       _glossOpen = null;
+      _glossLocked = false;
     });
   }
 
@@ -498,7 +522,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     final ss = (_secondsLeft % 60).toString().padLeft(2, '0');
     final right = _picked == q.answer;
     // The options' Turkish only after a mistake.
-    final gloss = _revealed && !right
+    final gloss = _revealed && !right && !_glossLocked
         ? ref.watch(optionGlossesProvider).value?.of(q.id, q.options.length)
         : null;
     final glossOpen = _glossOpen ?? true;
@@ -590,6 +614,9 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                       if (gloss != null) ...[
                         OptionGlossToggle(open: glossOpen, onChanged: (v) => setState(() => _glossOpen = v)),
                         const SizedBox(height: 10),
+                      ] else if (_revealed && !right && _glossLocked) ...[
+                        const LockedWhyWrong(),
+                        const SizedBox(height: 12),
                       ],
                       Shake(
                         trigger: _shake,
@@ -830,6 +857,73 @@ class ExamResultScreen extends StatelessWidget {
   }
 }
 
+/// The day's free mini mock exam is used: a bottom sheet with the Premium
+/// card (the full paywall already showed today or was closed lately).
+Future<void> showMockLimitSheet(BuildContext context) => showModalBottomSheet<void>(
+  context: context,
+  showDragHandle: true,
+  builder: (c) => SafeArea(
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+      child: Column(
+        key: const Key('mock-limit-sheet'),
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text('Bugünkü ücretsiz mini denemeni çözdün', style: Theme.of(c).textTheme.titleMedium),
+          const SizedBox(height: 4),
+          Text(
+            'Yarın yeni bir hakkın olacak. Konu pratiği her zaman ücretsiz.',
+            style: TextStyle(color: Brand.muted),
+          ),
+          const SizedBox(height: 14),
+          const PremiumOfferCard(
+            placement: PaywallPlacement.mockExam,
+            title: 'Premium ile sınırsız deneme çöz',
+            body: 'Tüm tam deneme paketleri, her yanlışın açıklaması ve tahmini sınav puanın.',
+          ),
+        ],
+      ),
+    ),
+  ),
+);
+
+/// A reviewed wrong answer's "Neden yanlış?": built only when its tile is
+/// opened, so only opened ones use the day's free explanations.
+class _ReviewGloss extends ConsumerStatefulWidget {
+  const _ReviewGloss({required this.id, required this.child});
+  final String id;
+  final Widget child;
+
+  @override
+  ConsumerState<_ReviewGloss> createState() => _ReviewGlossState();
+}
+
+class _ReviewGlossState extends ConsumerState<_ReviewGloss> {
+  bool? _allowed;
+
+  @override
+  void initState() {
+    super.initState();
+    final quota = ref.read(whyWrongQuotaProvider.notifier);
+    if (quota.isUnlocked(widget.id)) {
+      _allowed = true;
+    } else {
+      // Not during the build: claiming changes a provider.
+      Future.microtask(() {
+        if (mounted) setState(() => _allowed = quota.claim(widget.id));
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => switch (_allowed) {
+    true => widget.child,
+    false => const LockedWhyWrong(),
+    null => const SizedBox.shrink(),
+  };
+}
+
 class _ReviewTile extends ConsumerWidget {
   const _ReviewTile({required this.index, required this.q, required this.picked});
   final int index;
@@ -882,12 +976,15 @@ class _ReviewTile extends ConsumerWidget {
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13, color: Brand.primary),
               ),
               const SizedBox(height: 6),
-              OptionGlossList(
-                options: q.options,
-                gloss: gloss,
-                answer: q.answer,
-                picked: picked,
-                letters: _letters,
+              _ReviewGloss(
+                id: q.id,
+                child: OptionGlossList(
+                  options: q.options,
+                  gloss: gloss,
+                  answer: q.answer,
+                  picked: picked,
+                  letters: _letters,
+                ),
               ),
             ],
           ],

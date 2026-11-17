@@ -4,6 +4,7 @@ import '../data/option_glosses.dart';
 import '../models/course.dart';
 import '../theme.dart';
 import '../ui/markdown_text.dart';
+import '../ui/premium_offer.dart';
 import 'common.dart';
 import 'option_gloss.dart';
 
@@ -23,11 +24,17 @@ class ChoiceExercise extends StatefulWidget {
     required this.locked,
     required this.onReady,
     this.gloss,
+    this.glossLocked = false,
   });
   final Exercise ex;
 
   /// Turkish of the options, shown once answered (see [OptionGloss]).
   final OptionGloss? gloss;
+
+  /// The day's free "Neden yanlış?" explanations are used up (WhyWrongQuota):
+  /// after a wrong answer a blurred preview and the Premium card show
+  /// instead of the [gloss].
+  final bool glossLocked;
   final bool locked;
   final ReadyCallback onReady;
 
@@ -61,7 +68,8 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
     final kid = context.isKid;
     final passage = ex.passage?.trim() ?? '';
     final screen = MediaQuery.sizeOf(context).height;
-    final showGloss = widget.locked && widget.gloss != null && _picked != ex.answerIndex;
+    final wrongWithGloss = widget.locked && widget.gloss != null && _picked != ex.answerIndex;
+    final showGloss = wrongWithGloss && !widget.glossLocked;
     final glossOpen = _glossOpen ?? true;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -96,6 +104,9 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
         if (showGloss) ...[
           OptionGlossToggle(open: glossOpen, onChanged: (v) => setState(() => _glossOpen = v)),
           const SizedBox(height: 10),
+        ] else if (wrongWithGloss) ...[
+          const LockedWhyWrong(),
+          const SizedBox(height: 12),
         ],
         for (final (i, option) in ex.options.indexed)
           Padding(

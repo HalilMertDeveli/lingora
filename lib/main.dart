@@ -19,6 +19,7 @@ import 'services/firebase/firebase_providers.dart';
 import 'services/firebase/progress_sync.dart';
 import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
+import 'services/billing/premium_perks.dart';
 import 'services/friends.dart';
 import 'services/growth/growth.dart';
 import 'services/league_remote.dart';
@@ -73,6 +74,8 @@ class LingoraApp extends ConsumerWidget {
     // Start listening to the store at launch: Google Play re-delivers
     // unacknowledged or pending purchases right after start-up.
     ref.listen(premiumControllerProvider, (_, _) {});
+    // Premium's monthly streak freezes go into the wallet by themselves.
+    ref.listen(premiumPerksSyncProvider, (_, _) {});
     // Analytics consent sync + churn signals (no-op without analytics).
     ref.listen(growthSignalsProvider, (_, _) {});
     final settings = ref.watch(appSettingsProvider);
