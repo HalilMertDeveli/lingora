@@ -9,14 +9,12 @@ import '../models/course.dart';
 import '../nav/tab_navigator.dart';
 import '../nav/top_bar.dart';
 import '../services/billing/premium.dart';
-import '../services/growth/analytics.dart';
 import '../theme.dart';
 import 'conversation_screen.dart';
 import 'error_analysis_screen.dart';
 import 'exam_screen.dart';
 import 'lesson_screen.dart';
 import 'notes_screen.dart';
-import 'paywall_screen.dart';
 import 'placement_screen.dart';
 import 'pronunciation_screen.dart';
 import 'reading_screen.dart';
@@ -163,15 +161,12 @@ class PracticeHubScreen extends ConsumerWidget {
             emoji: '🔎',
             color: Brand.error,
             title: 'Hata analizi',
-            subtitle: 'Türklerin sık yaptığı hatalardan hangileri sende var',
-            onTap: () async {
-              final gate = await requirePremium(context, ref, PremiumFeature.errorAnalytics);
-              if (gate == GateResult.premium && context.mounted) {
-                logEventFrom(context, AnalyticsEvent.featureUse(AppFeature.errorAnalysis));
-                await Navigator.of(context)
-                    .push(MaterialPageRoute<void>(builder: (_) => const ErrorAnalysisScreen()));
-              }
-            },
+            subtitle: 'Zayıf konuların, gidişatın ve sana özel çalışma planı',
+            // Opens for everyone: the screen shows the free summary and
+            // keeps the rest behind its own "Premium ile aç".
+            onTap: () =>
+                Navigator.of(context)
+                    .push(MaterialPageRoute<void>(builder: (_) => const ErrorAnalysisScreen())),
           ),
           const SizedBox(height: 8),
           const SectionLabel('OKU VE YAZ'),

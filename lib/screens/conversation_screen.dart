@@ -229,7 +229,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
         _waiting = false;
       });
       turn.correction == null ? Haptics.success() : Haptics.tap();
-      ref.read(progressProvider.notifier).recordTrErrors(detectTrErrors(text));
+      ref.read(progressProvider.notifier).recordTrErrors(detectTrErrors(text), text: text);
       _speech.say(turn.reply);
     } on ConversationException catch (e) {
       if (!mounted) return;

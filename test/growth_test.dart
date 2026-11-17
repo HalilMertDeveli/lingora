@@ -124,7 +124,7 @@ Future<List<Override>> widgetOverrides(
   RemoteConfigSource? remote,
   ReferralService? referral,
 }) async {
-  await tester.binding.setSurfaceSize(const Size(420, 2000));
+  await tester.binding.setSurfaceSize(const Size(420, 2800));
   addTearDown(() => tester.binding.setSurfaceSize(null));
   // The mascot animates forever otherwise.
   tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(

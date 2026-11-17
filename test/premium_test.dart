@@ -147,7 +147,7 @@ Future<List<Override>> widgetOverrides(
   Map<String, Object> prefs = const {},
   bool dev = false,
 }) async {
-  await tester.binding.setSurfaceSize(const Size(420, 2000));
+  await tester.binding.setSurfaceSize(const Size(420, 2800));
   addTearDown(() => tester.binding.setSurfaceSize(null));
   tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
     disableAnimations: true,

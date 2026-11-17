@@ -144,7 +144,8 @@ enum PremiumFeature {
   ),
   errorAnalytics(
     'Detaylı hata analizi ve tahmini puan',
-    'Türk hata dedektörünün tüm kategorileri, tahmini sınav puanın ve sana özel çalışma planı.',
+    'Zayıf konuların ve soru tiplerin, haftalık gidişatın, kendi cümlelerinle Türk hata kalıpların, '
+        'ısı haritası, tahmini sınav puanı ve tek dokunuşla hedefli alıştırmalı çalışma planı.',
     '📊',
   ),
   streakFreezes(
