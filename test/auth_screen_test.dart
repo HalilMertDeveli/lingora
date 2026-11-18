@@ -46,13 +46,6 @@ Future<void> _pumpAuth(
   await tester.pump();
 }
 
-/// The submit button inside the scrolling form (where it sits while the
-/// keyboard is open) rather than pinned under it.
-final _submitInForm = find.descendant(
-  of: find.byType(ListView),
-  matching: find.byKey(const ValueKey('auth-submit')),
-);
-
 void main() {
   group('AuthScreen', () {
     testWidgets('"İleri" on the keyboard: e-mail → password → password again', (tester) async {
@@ -86,33 +79,31 @@ void main() {
       expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
       tester.view.viewInsets = const FakeViewPadding(bottom: 260 * 1.5);
       await tester.pump();
-      // Not pinned over the fields: at the end of the form, reached by scrolling.
-      await tester.scrollUntilVisible(_submitInForm, 200, scrollable: find.byType(Scrollable).first);
-      expect(_submitInForm, findsOneWidget);
-      // The keyboard closes: the button is pinned again.
+      expect(find.byKey(const ValueKey('auth-submit')), findsNothing);
+      // The keyboard closes: the button is back.
       tester.view.viewInsets = FakeViewPadding.zero;
       await tester.pump();
       expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
-      expect(_submitInForm, findsNothing);
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('taller phone, keyboard open: the button still steps aside (Galaxy M22)', (tester) async {
-      // 720x1600 at 300 dpi = 384x853 dp; the keyboard about 330 dp. Above it
-      // the pinned button still hid the password field on the real phone.
+    testWidgets('taller phone, keyboard open: button stays pinned, the focused field shows above it', (
+      tester,
+    ) async {
+      // 720x1600 at 300 dpi = 384x853 dp (Galaxy M22); the keyboard about 330 dp.
+      // The button does not move under the finger, and the field being typed in
+      // is scrolled into view above it.
       tester.view.devicePixelRatio = 720 / 384;
       tester.view.physicalSize = const Size(720, 1600);
       addTearDown(tester.view.reset);
       await _pumpAuth(tester, AccountService(MockFirebaseAuth()), register: true);
-      expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
+      final password2 = find.byKey(const ValueKey('auth-password2'));
+      await tester.showKeyboard(find.descendant(of: password2, matching: find.byType(EditableText)));
       tester.view.viewInsets = const FakeViewPadding(bottom: 330 * 720 / 384);
-      await tester.pump();
-      // Not pinned over the fields any more: it is reached by scrolling the form.
-      expect(find.byKey(const ValueKey('auth-submit')), findsNothing);
-      await tester.scrollUntilVisible(_submitInForm, 200, scrollable: find.byType(Scrollable).first);
-      expect(_submitInForm, findsOneWidget);
-      // The fields above it stay in the form, nothing covers the password.
-      expect(find.byKey(const ValueKey('auth-password')), findsOneWidget);
+      await tester.pumpAndSettle();
+      final submit = find.byKey(const ValueKey('auth-submit'));
+      expect(submit, findsOneWidget);
+      expect(tester.getRect(password2).bottom, lessThanOrEqualTo(tester.getRect(submit).top));
       expect(tester.takeException(), isNull);
     });
 

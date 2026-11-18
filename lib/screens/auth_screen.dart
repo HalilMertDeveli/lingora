@@ -95,7 +95,8 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     final p = context.palette;
     final t = Theme.of(context).textTheme;
-    final keyboard = MediaQuery.viewInsetsOf(context).bottom > 0;
+    final keyboard = MediaQuery.viewInsetsOf(context).bottom;
+    final cramped = keyboard > 0 && MediaQuery.sizeOf(context).height - keyboard < 420;
     return Scaffold(
       key: const ValueKey('auth-screen'),
       backgroundColor: p.card,
@@ -271,16 +272,16 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                       ],
                     ),
-                    if (keyboard) Padding(padding: const EdgeInsets.only(top: 20), child: _submitButton(p)),
                   ],
                 ),
               ),
             ),
-            // Keyboard open: the pinned button covered the password field (QA:
-            // 480x800 emulator and a real Galaxy M22). It then sits at the end of
-            // the scrolling form instead and is back here once the keyboard closes.
-            if (!keyboard)
-              Padding(padding: const EdgeInsets.fromLTRB(24, 8, 24, 16), child: _submitButton(p)),
+            // The button stays pinned: moving it with the keyboard made it jump
+            // under the finger. The focused field scrolls into view above it
+            // (keyboard "İleri" verified on a Galaxy M22). Only when the keyboard
+            // leaves less than 420 dp (480x800 phone: about 200 px for the form)
+            // does it step aside; the keyboard action submits meanwhile.
+            if (!cramped) Padding(padding: const EdgeInsets.fromLTRB(24, 8, 24, 16), child: _submitButton(p)),
           ],
         ),
       ),
