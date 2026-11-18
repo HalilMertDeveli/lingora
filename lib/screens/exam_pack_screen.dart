@@ -7,6 +7,9 @@ import '../models/exam.dart';
 import '../models/exam_pack.dart';
 import '../services/billing/exam_packs.dart';
 import '../services/billing/premium.dart';
+import '../goals/countdown_screen.dart' show openCountdown;
+import '../goals/exam_countdown_plan.dart' show estimatedYdsScore, formatScore;
+import '../study/analysis.dart' show fullMockId;
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
@@ -100,7 +103,12 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
           // would keep widget tests from settling.
           loading: () => SizedBox(height: 48),
           error: (e, _) => Text('Deneme paketi yüklenemedi: $e'),
-          data: (c) => unlocked ? _mockList(c) : _locked(c),
+          data: (c) => unlocked
+              ? _mockList(c)
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [if (_firstFree(c) case final m?) _freeFirst(c, m), _locked(c)],
+                ),
         ),
       ],
     );
@@ -141,6 +149,42 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
       ],
     );
   }
+
+  /// The first full mock is free: offered until one full mock was finished
+  /// (a finished mock has a best score; best scores sync across devices).
+  FullMock? _firstFree(ExamPackContent c) {
+    if (c.mocks.isEmpty || c.scoring != ExamScoring.yds) return null;
+    final best = ref.watch(progressProvider.select((p) => p.examBest));
+    return best.keys.any(fullMockId.hasMatch) ? null : c.mocks.first;
+  }
+
+  Widget _freeFirst(ExamPackContent c, FullMock m) => Padding(
+    padding: EdgeInsets.only(bottom: 12),
+    child: TapCard(
+      key: ValueKey('free-first-mock'),
+      selected: true,
+      onTap: () => _start(c, m),
+      child: Row(
+        children: [
+          Icon(Icons.card_giftcard_rounded, color: Brand.success),
+          SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('İlk tam denemen ücretsiz', style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  '${m.title} · ${m.questions.length} soru · ${m.minutes} dk · sonunda tahmini puan',
+                  style: TextStyle(color: Brand.muted, fontSize: 13),
+                ),
+              ],
+            ),
+          ),
+          Icon(Icons.play_arrow_rounded, color: Brand.primary),
+        ],
+      ),
+    ),
+  );
 
   Widget _locked(ExamPackContent c) {
     final s = ref.watch(examPackControllerProvider);
@@ -279,13 +323,15 @@ class _FullMockResultScreenState extends State<FullMockResultScreen> {
     final good = r.correct >= qs.length * 0.7;
     final minutes = widget.duration.inMinutes;
     final headline = switch (widget.pack.scoring) {
-      ExamScoring.yds => 'Tahmini puan: ${_fmtNet(double.parse(r.score!.toStringAsFixed(2)))}',
+      ExamScoring.yds =>
+        'Tahmini puan: ${formatScore(estimatedYdsScore(correct: r.correct, total: qs.length))}',
       ExamScoring.lgs => 'İngilizce neti: ${_fmtNet(r.net)} / ${qs.length}',
     };
     final note = switch (widget.pack.scoring) {
       ExamScoring.yds =>
-        'YDS/YÖKDİL\'de her doğru 1,25 puandır, yanlışlar doğruları götürmez. Tahmin bu denemeye göredir; '
-            'gerçek sınavda puan ÖSYM tarafından hesaplanır.',
+        'Bu bir tahmindir: her soru eşit ağırlıkta, toplam 100 puan (80 soruda her doğru 1,25 puan); '
+            'yanlışlar doğruları götürmez. Tahmin yalnızca bu denemedeki doğrularına göredir; gerçek '
+            'sınavda puanı ÖSYM hesaplar.',
       ExamScoring.lgs =>
         'LGS\'de 3 yanlış 1 doğruyu götürür. LGS puanı tüm derslerin netleriyle hesaplandığı için yalnızca '
             'İngilizce netini gösteriyoruz.',
@@ -337,6 +383,15 @@ class _FullMockResultScreenState extends State<FullMockResultScreen> {
                     SizedBox(height: 8),
                     Center(child: MockReportButton(source: s)),
                   ],
+                  if (widget.pack.scoring == ExamScoring.yds)
+                    Center(
+                      child: TextButton.icon(
+                        key: ValueKey('mock-countdown'),
+                        onPressed: () => openCountdown(context),
+                        icon: Icon(Icons.event_note_rounded),
+                        label: Text('Sınava kadar çalışma planım'),
+                      ),
+                    ),
                   SizedBox(height: 18),
                   Text('Konu dökümü', style: Theme.of(context).textTheme.titleLarge),
                   SizedBox(height: 8),

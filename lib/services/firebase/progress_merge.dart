@@ -4,6 +4,7 @@ import '../../data/level_report.dart';
 import '../../data/progress.dart';
 import '../../models/notes.dart';
 import '../../data/wallet.dart';
+import '../../goals/learn_goal.dart';
 import '../../models/study_plan.dart';
 
 /// Merges two copies of the user's progress (this device and the cloud) so
@@ -133,9 +134,17 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     mistakeNote: {for (final k in newer.mistakes) k: ?(newer.mistakeNote[k] ?? older.mistakeNote[k])},
     // Altın: grow-only counters per device, owned items united (wallet.dart).
     wallet: mergeWallets(local.wallet, remote.wallet),
+    // The goal: the later choice wins (either copy may not have one yet).
+    learnGoal: _laterGoal(local.learnGoal, remote.learnGoal),
     // Seviye Karnesi: one report per day, united.
     levelReports: mergeLevelReports(local.levelReports, remote.levelReports),
   );
+}
+
+LearnGoal? _laterGoal(LearnGoal? a, LearnGoal? b) {
+  if (a == null) return b;
+  if (b == null) return a;
+  return b.at > a.at ? b : a;
 }
 
 /// The study plan of the newer copy, but never a week behind the other one
