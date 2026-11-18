@@ -83,6 +83,11 @@ class NotificationService {
   /// `tool/make_sfx.dart`.
   static const reminderSound = 'dilbaz_bildirim';
 
+  /// Status bar icon: `res/drawable/ic_stat_dilmac.xml`, a white tea glass.
+  /// The launcher icon (full-bleed Çaycı Dayı) showed as a white square, and
+  /// kid mode never shows Çaycı Dayı.
+  static const smallIcon = 'ic_stat_dilmac';
+
   static const _details = NotificationDetails(
     android: AndroidNotificationDetails(
       reminderChannelId,
@@ -92,6 +97,7 @@ class NotificationService {
       priority: Priority.high,
       sound: RawResourceAndroidNotificationSound(reminderSound),
       playSound: true,
+      icon: smallIcon,
     ),
     iOS: DarwinNotificationDetails(),
   );
@@ -99,7 +105,7 @@ class NotificationService {
   Future<void> _init() async {
     await _plugin.initialize(
       settings: const InitializationSettings(
-        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        android: AndroidInitializationSettings(smallIcon),
         iOS: DarwinInitializationSettings(
           requestAlertPermission: false,
           requestBadgePermission: false,

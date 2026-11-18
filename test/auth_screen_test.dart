@@ -30,12 +30,17 @@ class _FixedSync extends ProgressSync {
   SyncStatus build() => status;
 }
 
-Future<void> _pumpAuth(WidgetTester tester, AccountService service, {Brightness b = Brightness.light}) async {
+Future<void> _pumpAuth(
+  WidgetTester tester,
+  AccountService service, {
+  Brightness b = Brightness.light,
+  bool register = false,
+}) async {
   await tester.pumpWidget(
     MaterialApp(
       theme: buildTheme(brightness: b),
       builder: (_, child) => PaletteScope(palette: Palette.of(AppMode.adult, b), child: child!),
-      home: AuthScreen(service: service),
+      home: AuthScreen(service: service, register: register),
     ),
   );
   await tester.pump();
@@ -79,6 +84,26 @@ void main() {
       tester.view.viewInsets = FakeViewPadding.zero;
       await tester.pump();
       expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('taller phone, keyboard open: button stays pinned, the focused field shows above it', (
+      tester,
+    ) async {
+      // 720x1600 at 300 dpi = 384x853 dp (Galaxy M22); the keyboard about 330 dp.
+      // The button does not move under the finger, and the field being typed in
+      // is scrolled into view above it.
+      tester.view.devicePixelRatio = 720 / 384;
+      tester.view.physicalSize = const Size(720, 1600);
+      addTearDown(tester.view.reset);
+      await _pumpAuth(tester, AccountService(MockFirebaseAuth()), register: true);
+      final password2 = find.byKey(const ValueKey('auth-password2'));
+      await tester.showKeyboard(find.descendant(of: password2, matching: find.byType(EditableText)));
+      tester.view.viewInsets = const FakeViewPadding(bottom: 330 * 720 / 384);
+      await tester.pumpAndSettle();
+      final submit = find.byKey(const ValueKey('auth-submit'));
+      expect(submit, findsOneWidget);
+      expect(tester.getRect(password2).bottom, lessThanOrEqualTo(tester.getRect(submit).top));
       expect(tester.takeException(), isNull);
     });
 

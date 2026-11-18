@@ -10,6 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
 import 'package:lingora/data/progress.dart';
+import 'package:lingora/data/wallet.dart';
 import 'package:lingora/screens/friends_screen.dart';
 import 'package:lingora/screens/league_screen.dart';
 import 'package:lingora/screens/profile_header.dart';
@@ -200,6 +201,32 @@ void main() {
       );
       await tester.pumpAndSettle();
     }
+
+    testWidgets('narrow phone: "Fotoğraf" in the face toggle stays on one line', (tester) async {
+      // QA: on a 480x800 phone "Fotoğraf" wrapped into three lines.
+      await tester.binding.setSurfaceSize(const Size(256, 600));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      const progress = Progress(
+        onboarded: true,
+        wallet: Wallet(owned: ['av_cay'], equipped: {WalletSlot.avatar: 'av_cay'}),
+      );
+      final local = ProfileData(name: 'Ali', photo: photoA, updatedAt: 1);
+      await pump(
+        tester,
+        await overrides(
+          prefs: {
+            'progress_v1': jsonEncode(progress.toJson()),
+            ProfileNotifier.key: jsonEncode(local.toJson()),
+          },
+          user: guest,
+        ),
+      );
+      expect(find.byKey(const ValueKey('profile-face')), findsOneWidget);
+      final photo = tester.getSize(find.text('Fotoğraf')).height;
+      final avatar = tester.getSize(find.textContaining('Avatar')).height;
+      expect(photo, avatar);
+      expect(tester.takeException(), isNull);
+    });
 
     testWidgets('picks, shows and removes a photo', (tester) async {
       final raw = png(500, 300);

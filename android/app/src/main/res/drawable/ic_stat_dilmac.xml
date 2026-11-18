@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Notification small icon: a tea glass on a saucer, white on transparent
+     (Android tints it). The launcher icon is a full-bleed picture and showed
+     as a white square in the status bar. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M7.5,3h9c-0.3,2.6 -1.2,4.6 -2.6,6.1c1.6,1.5 2.3,4 1.8,8.4h-7.4c-0.5,-4.4 0.2,-6.9 1.8,-8.4c-1.4,-1.5 -2.3,-3.5 -2.6,-6.1z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M4,19h16c0,1.1 -0.9,2 -2,2h-12c-1.1,0 -2,-0.9 -2,-2z" />
+</vector>

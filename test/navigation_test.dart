@@ -104,6 +104,29 @@ void main() {
       expect(MediaQuery.textScalerOf(tester.element(label)).scale(10), 10);
     });
 
+    testWidgets('256 dp wide phone (480x800 at 300 dpi): the path fits', (tester) async {
+      // QA (qa-premium): the daily goal card and the section header overflowed.
+      tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      await _pumpShell(tester, null, const Size(256, 560));
+      expect(tester.takeException(), isNull);
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, -300));
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('section title keeps its words whole: large text makes the header compact', (tester) async {
+      // QA on a Galaxy M22 at font 1.3: "Bölüm 1 · A1 · Temeller" broke as "Temelle/r".
+      final atla = find.descendant(of: find.byKey(const Key('section-s1')), matching: find.text('Atla'));
+      await _pumpShell(tester);
+      expect(atla, findsOneWidget); // normal text, room for the label
+      tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      await _pumpShell(tester, null, const Size(360, 760));
+      expect(atla, findsNothing); // icon-only, the title gets the room
+      expect(tester.takeException(), isNull);
+    });
+
     testWidgets('largest font on a normal phone: tab labels still grow', (tester) async {
       tester.platformDispatcher.textScaleFactorTestValue = 1.3;
       addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
@@ -151,6 +174,21 @@ void main() {
       await _tapTab(tester, AppTab.scenarios);
       expect(find.text('Günlük stand-up'), findsOneWidget);
     });
+  });
+
+  testWidgets('idle: the path stops animating after 20 s, a touch wakes it', (tester) async {
+    // QA on a Galaxy M22: the Öğren screen redrew about 50 times a second
+    // while nobody touched the phone (tea steam, active node, invite bubble).
+    await _pumpShell(tester);
+    final glass = find.byKey(const Key('daily-glass'));
+    expect(TickerMode.valuesOf(tester.element(glass)).enabled, isTrue);
+    await tester.pump(const Duration(seconds: 21));
+    expect(TickerMode.valuesOf(tester.element(glass)).enabled, isFalse);
+    final g = await tester.startGesture(tester.getCenter(_bar) - const Offset(0, 200));
+    await tester.pump();
+    expect(TickerMode.valuesOf(tester.element(glass)).enabled, isTrue);
+    await g.cancel();
+    // Inner pages are not paused: only the tab roots are.
   });
 
   testWidgets('inner pages keep the bottom bar and survive tab switches', (tester) async {
