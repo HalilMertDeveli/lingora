@@ -288,10 +288,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             maxScaleFactor: 1.15,
             child: NavigationBar(
               key: const Key('bottom-nav'),
-              // Under 68dp a tab (largest display size on a small phone) a
-              // label cannot fit on one line: icons only (they keep their
+              // When a tab is narrower than its longest label ("Görevler",
+              // ~56dp at normal text; largest display size on a small
+              // phone) the labels would wrap: icons only (they keep their
               // names for TalkBack).
-              labelBehavior: MediaQuery.sizeOf(context).width / _tabs.length < 68
+              labelBehavior:
+                  MediaQuery.sizeOf(context).width / _tabs.length <
+                      MediaQuery.textScalerOf(context).clamp(maxScaleFactor: 1.15).scale(navLabelWidth)
                   ? NavigationDestinationLabelBehavior.alwaysHide
                   : null,
               selectedIndex: _index,
@@ -335,6 +338,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 }
+
+/// Room the longest bottom-bar label needs at normal text size, in dp.
+const navLabelWidth = 58.0;
 
 /// "Öğren" tab root: the track's home (path, exam, notes) under the
 /// Dilmaç Kurumsal assignments card. An exam track shows its study path

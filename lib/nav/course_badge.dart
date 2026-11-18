@@ -167,7 +167,7 @@ class _CourseBadgeState extends ConsumerState<CourseBadge> with SingleTickerProv
 }
 
 /// Below this width the badge shows only the course tile.
-const compactCourseBadgeWidth = 96.0;
+const compactCourseBadgeWidth = 64.0;
 
 /// Whether the badge hint is up right now (not stored: the stored part is
 /// [CourseShelf.hintArmed]).

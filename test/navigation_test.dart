@@ -417,4 +417,15 @@ void main() {
     expect(l.okButtonLabel.toUpperCase(), 'TAMAM');
     expect(l.backButtonTooltip, 'Geri');
   });
+
+  testWidgets('a 320dp phone at normal text keeps the tab labels', (tester) async {
+    await _pumpShell(tester);
+    tester.view.physicalSize = const Size(960, 1600);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+    await tester.binding.setSurfaceSize(null);
+    await tester.pumpAndSettle();
+    expect(_navBar(tester).labelBehavior, isNull);
+    expect(tester.takeException(), isNull);
+  });
 }
