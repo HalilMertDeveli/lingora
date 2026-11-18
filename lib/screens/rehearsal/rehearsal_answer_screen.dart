@@ -27,6 +27,10 @@ String newRehearsalId(DateTime now) => 'r${now.millisecondsSinceEpoch.toRadixStr
 /// (recorded to a local file, with the phone's speech recognition writing
 /// the transcript) or by typing. No options to pick from. At the end the
 /// answers are analysed and the analysis opens.
+/// Set when this phone recorded only silence next to speech recognition:
+/// later answers are not recorded, so the recognizer hears all of them.
+const recordingOffKey = 'prova_recording_off_v1';
+
 /// Pause before the recognizer is started again while recording.
 const listenRestartDelay = Duration(milliseconds: 400);
 
@@ -132,7 +136,9 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
       return;
     }
     if (_audio != null || _text.text.trim().isNotEmpty) _retake();
-    final recorded = await ref.read(voiceRecorderProvider).start('${_id}_$_index');
+    final recorded =
+        !(ref.read(prefsProvider).getBool(recordingOffKey) ?? false) &&
+        await ref.read(voiceRecorderProvider).start('${_id}_$_index');
     if (!mounted) return;
     setState(() {
       _recording = true;
@@ -170,11 +176,24 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   }
 
   Future<void> _stop() async {
+    final started = _audio != null; // the recorder said it was recording
     setState(() => _recording = false);
     await ref.read(speechProvider).stopListening();
     final path = await ref.read(voiceRecorderProvider).stop();
     if (!mounted) return;
     setState(() => _audio = path);
+    if (started && path == null && !ref.read(prefsProvider).containsKey(recordingOffKey)) {
+      // This phone gives the microphone to speech recognition only: record
+      // no more, so the recognizer always hears the whole answer.
+      ref.read(prefsProvider).setBool(recordingOffKey, true);
+      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Bu telefon konuşma tanıma sırasında ses kaydına izin vermiyor; cevapların yazıya dökülerek saklanacak.',
+          ),
+        ),
+      );
+    }
   }
 
   /// Throws the current answer away: counts as help (not unaided).

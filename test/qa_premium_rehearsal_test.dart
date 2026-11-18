@@ -181,4 +181,77 @@ void main() {
     expect(speech.listens, maxSilentRestarts + 1);
     expect(find.text('Soru 1 / 2 · Motivasyon'), findsOneWidget, reason: 'still on the first question');
   });
+
+  test('a recording with a few frames for many seconds counts as empty', () {
+    expect(recordingLooksEmpty(3174, const Duration(seconds: 12)), isTrue); // Galaxy M22
+    expect(recordingLooksEmpty(96000, const Duration(seconds: 12)), isFalse);
+    expect(
+      recordingLooksEmpty(900, const Duration(milliseconds: 800)),
+      isFalse,
+      reason: 'too short to judge',
+    );
+  });
+
+  testWidgets('a phone that records only silence stops recording, the recognizer keeps the mic', (
+    tester,
+  ) async {
+    final recorder = _StarvedRecorder();
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 2.6;
+    addTearDown(tester.view.reset);
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    final c = ProviderContainer(
+      overrides: [
+        prefsProvider.overrideWithValue(prefs),
+        clockProvider.overrideWithValue(() => _now),
+        speechProvider.overrideWithValue(
+          VoiceSpeech(heard: [(words: 'I am a backend developer in Ankara', confidence: 0.9)]),
+        ),
+        voiceRecorderProvider.overrideWithValue(recorder),
+        rehearsalServiceProvider.overrideWithValue(CountingRehearsal()),
+        billingServiceProvider.overrideWithValue(FakeBilling()),
+        premiumDevOverrideProvider.overrideWithValue(true),
+      ],
+    );
+    addTearDown(c.dispose);
+    await tester.pumpWidget(
+      UncontrolledProviderScope(
+        container: c,
+        child: MaterialApp(theme: buildTheme(), home: const RehearsalHomeScreen()),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('prova-start')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('prova-mic'))); // start
+    await tester.pump(const Duration(milliseconds: 100));
+    await tester.tap(find.byKey(const Key('prova-mic'))); // stop: silence came back
+    await tester.pumpAndSettle();
+    expect(prefs.getBool(recordingOffKey), isTrue);
+    expect(find.textContaining('ses kaydına izin vermiyor'), findsOneWidget);
+
+    await tester.tap(find.byKey(const Key('prova-next')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('prova-mic')));
+    await tester.pump(const Duration(milliseconds: 100));
+    expect(recorder.starts, 1, reason: 'the second answer is not recorded');
+    await tester.tap(find.byKey(const Key('prova-mic')));
+    await tester.pumpAndSettle();
+  });
+}
+
+class _StarvedRecorder implements VoiceRecorder {
+  int starts = 0;
+  @override
+  Future<bool> start(String name) async {
+    starts++;
+    return true;
+  }
+
+  @override
+  Future<String?> stop() async => null; // only silence was captured
+
+  @override
+  Future<void> cancel() async {}
 }
