@@ -143,18 +143,18 @@ class _DeleteAccountButtonState extends ConsumerState<DeleteAccountButton> {
     );
     if (ok != true || !mounted) return;
     setState(() => _busy = true);
+    // The sign-out after a successful deletion removes this button, so the
+    // messenger is taken now (QA, Galaxy M22: the confirmation never showed).
+    final messenger = ScaffoldMessenger.of(context);
     // Keep the sync from writing users/{uid} back while it is deleted.
     final sync = ref.read(progressSyncProvider.notifier);
     sync.pause();
     try {
       await widget.service.deleteAccount();
-      if (mounted) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('Hesabın ve bulut verilerin silindi.')));
-      }
+      messenger.showSnackBar(const SnackBar(content: Text('Hesabın ve bulut verilerin silindi.')));
     } on AccountException catch (e) {
-      ref.invalidate(progressSyncProvider); // not deleted: sync again
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
+      if (mounted) ref.invalidate(progressSyncProvider); // not deleted: sync again
+      messenger.showSnackBar(SnackBar(content: Text(e.message)));
     } finally {
       if (mounted) setState(() => _busy = false);
     }

@@ -97,4 +97,43 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Hesabın ve bulut verilerin silindi.'), findsOneWidget);
   });
+
+  testWidgets('the confirmation shows although the button is gone after sign-out', (tester) async {
+    final auth = _signedIn();
+    final service = AccountService(auth, deleteServerData: () async {});
+    await _pumpLikeProfile(tester, auth, service);
+    await tester.tap(find.byKey(const ValueKey('account-delete')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('delete-account-confirm')));
+    await tester.pumpAndSettle();
+    expect(find.text('Misafir hesabı'), findsOneWidget);
+    expect(find.text('Hesabın ve bulut verilerin silindi.'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+}
+
+/// The real Profil drops the button once signed out; the confirmation must
+/// still show (QA on a Galaxy M22: it never did).
+Future<void> _pumpLikeProfile(WidgetTester tester, MockFirebaseAuth auth, AccountService service) async {
+  SharedPreferences.setMockInitialValues({});
+  final prefs = await SharedPreferences.getInstance();
+  await tester.pumpWidget(
+    ProviderScope(
+      overrides: [prefsProvider.overrideWithValue(prefs)],
+      child: MaterialApp(
+        theme: buildTheme(brightness: Brightness.light),
+        builder: (_, child) =>
+            PaletteScope(palette: Palette.of(AppMode.adult, Brightness.light), child: child!),
+        home: Scaffold(
+          body: StreamBuilder(
+            stream: auth.authStateChanges(),
+            initialData: auth.currentUser,
+            builder: (_, snap) => snap.data == null
+                ? const Text('Misafir hesabı')
+                : Center(child: DeleteAccountButton(service: service)),
+          ),
+        ),
+      ),
+    ),
+  );
 }
