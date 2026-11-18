@@ -16,13 +16,19 @@ class AppResume extends Notifier<int> {
   void bump() => state++;
 }
 
+/// How far ahead [recheckAt] keeps a timer.
+const recheckHorizon = Duration(hours: 24);
+
 /// Re-evaluates the provider of [ref] when [deadline] passes (while the app
 /// runs) and on every resume. Call it from a provider body.
 void recheckAt(Ref ref, DateTime? deadline, DateTime now) {
   ref.watch(appResumeProvider);
   if (deadline == null || !deadline.isAfter(now)) return;
+  final left = deadline.difference(now);
+  // Far deadlines are caught by a later resume, which arms the timer then.
+  if (left > recheckHorizon) return;
   // A little after the deadline, so the re-check sees it as passed.
-  final timer = Timer(deadline.difference(now) + const Duration(seconds: 1), ref.invalidateSelf);
+  final timer = Timer(left + const Duration(seconds: 1), ref.invalidateSelf);
   ref.onDispose(timer.cancel);
 }
 

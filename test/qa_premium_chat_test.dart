@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/data/scenarios.dart';
 import 'package:lingora/screens/conversation_screen.dart';
+import 'package:lingora/services/billing/family.dart';
 import 'package:lingora/services/conversation.dart';
 import 'package:lingora/services/speech.dart';
 
@@ -95,5 +96,12 @@ void main() {
       startsWith('Bugünlük konuşma hakkın doldu'),
     );
     expect(await messageFor('permission-denied', 'premium_required'), contains('Premium'));
+  });
+
+  test('every family reason the server sends has its own message', () {
+    const generic = 'İşlem tamamlanamadı. Biraz sonra tekrar dene.';
+    for (final r in ['invalid_member', 'cannot_remove_owner', 'not_a_member', 'family_full']) {
+      expect(FamilyException('invalid-argument', r).message, isNot(generic), reason: r);
+    }
   });
 }

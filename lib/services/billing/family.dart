@@ -89,6 +89,8 @@ class FamilyException implements Exception {
     'no_family_plan' => 'Davet kodu için etkin bir aile planı gerekiyor.',
     'not_a_member' => 'Bu kişi artık ailende değil.',
     'not_in_family' => 'Bir aile planında değilsin.',
+    'invalid_member' => 'Bu kişi bulunamadı. Listeyi yenileyip tekrar dene.',
+    'cannot_remove_owner' => 'Aile yöneticisi aileden çıkarılamaz.',
     _ => switch (code) {
       'unauthenticated' => 'Önce Profil > Hesap bölümünden giriş yapmalısın.',
       'unavailable' || 'deadline-exceeded' || 'internal' => 'Sunucuya ulaşılamadı. İnternetini kontrol et.',
