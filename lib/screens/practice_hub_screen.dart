@@ -18,6 +18,7 @@ import 'notes_screen.dart';
 import 'placement_screen.dart';
 import 'pronunciation_screen.dart';
 import 'reading_screen.dart';
+import 'rehearsal/rehearsal_screen.dart';
 import 'speed_match_screen.dart';
 import 'study/notebook_screen.dart';
 import 'study/srs_review_screen.dart';
@@ -75,6 +76,8 @@ class PracticeHubScreen extends ConsumerWidget {
           const SizedBox(height: 16),
           // The YDS daily plan; other tracks see it once a plan exists.
           if (track.id == 'yds' || p.studyPlan != null) ...[const TodayCard(), const SizedBox(height: 16)],
+          // Mülakat Provası: the day's study from the learner's own answer.
+          const RehearsalTodayCard(),
           const SectionLabel('KONUŞ VE DİNLE'),
           const SizedBox(height: 8),
           _HubTile(
@@ -87,6 +90,16 @@ class PracticeHubScreen extends ConsumerWidget {
             subtitle: 'Gerçek sahnelerde sohbet et, hataların Türkçe açıklansın',
             onTap: () => openPage(context, 'Konuşma', const ConversationHomeScreen()),
           ),
+          if (!context.isKid)
+            _HubTile(
+              key: const Key('hub-rehearsal'),
+              icon: Icons.work_outline_rounded,
+              emoji: '💼',
+              color: Brand.info,
+              title: 'Mülakat provası',
+              subtitle: 'Kendini ve projeni İngilizce anlat, takıldığın yerden çalış',
+              onTap: () => openRehearsal(context),
+            ),
           _HubTile(
             key: const Key('hub-pronunciation'),
             icon: Icons.record_voice_over_outlined,
