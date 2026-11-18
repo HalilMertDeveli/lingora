@@ -79,7 +79,7 @@ class GoalPicker extends StatelessWidget {
                             selected: goal?.exam == e,
                             onSelected: (_) => onChanged(_with(exam: e)),
                           ),
-                        ActionChip(
+                        InputChip(
                           key: const ValueKey('goal-exam-date'),
                           avatar: const Icon(Icons.event_rounded, size: 18),
                           label: Text(switch (goal?.examDay) {
@@ -87,13 +87,9 @@ class GoalPicker extends StatelessWidget {
                             null => 'Sınav tarihi ekle (isteğe bağlı)',
                           }),
                           onPressed: () => _pickDate(context),
+                          deleteButtonTooltipMessage: 'Tarihi kaldır',
+                          onDeleted: goal?.examDate == null ? null : () => onChanged(_with(clearDate: true)),
                         ),
-                        if (goal?.examDate != null)
-                          IconButton(
-                            tooltip: 'Tarihi kaldır',
-                            icon: const Icon(Icons.close_rounded, size: 18),
-                            onPressed: () => onChanged(_with(clearDate: true)),
-                          ),
                       ],
                     ),
                     if (goal?.daysLeft(now) case final left? when left > 0)
