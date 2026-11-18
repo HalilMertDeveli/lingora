@@ -10,6 +10,7 @@ import { onSchedule } from "firebase-functions/v2/scheduler";
 
 import * as writing from "./assess_writing.js";
 import * as conversation from "./converse.js";
+import * as karne from "./conversation_report.js";
 import * as family from "./family.js";
 import * as league from "./league.js";
 import * as purchase from "./purchase.js";
@@ -56,11 +57,18 @@ export const settleLeagues = onSchedule(
   },
 );
 
-/** { scenarioId, messages } -> { reply, correction, tip_tr, done, remaining } */
+/** { scenarioId, messages } -> { reply, correction, tip_tr, done, remaining, free } */
 export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
   const uid = requireUid(req);
   claude ??= new Anthropic({ apiKey: anthropicApiKey.value() });
   return conversation.converse(getFirestore(), claude, uid, req.data, new Date());
+});
+
+/** { scenarioId, messages, pronunciation } -> { mistakes, summary_tr, weak_words, remaining } (voice coach karne) */
+export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
+  const uid = requireUid(req);
+  claude ??= new Anthropic({ apiKey: anthropicApiKey.value() });
+  return karne.conversationReport(getFirestore(), claude, uid, req.data, new Date());
 });
 
 /** { taskId, text } -> { scores, corrections, next_tr, remaining } (general course writing tasks) */
