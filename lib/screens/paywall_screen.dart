@@ -67,7 +67,11 @@ const freeItems = [
 /// Premium bullets that are not a [PremiumFeature] (no gate of their own),
 /// drawn after the feature rows: (emoji, title, description).
 const extraPremiumBullets = <(String, String, String)>[
-  ('🎙️', 'Sesli konuşma koçu + konuşma karnesi', 'Sesli konuş, telaffuz ve akıcılık geri bildirimi al.'),
+  (
+    '🎙️',
+    'Sesli konuşma koçu + konuşma karnesi',
+    'Garson, mülakatçı, resepsiyon: sesli konuş, cevabı sesli duy. Sonunda hatalı cümlelerin ve telefonun zor anladığı kelimelerle karnen hazır.',
+  ),
 ];
 
 class PaywallScreen extends ConsumerStatefulWidget {
