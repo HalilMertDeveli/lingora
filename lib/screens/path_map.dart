@@ -6,7 +6,7 @@ import '../data/listening.dart';
 import '../data/topic_themes.dart';
 import '../models/course.dart';
 import '../theme.dart';
-import '../ui/markdown_text.dart';
+import '../ui/guide_view.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/tea_art.dart';
@@ -1010,9 +1010,12 @@ Future<void> showUnitGuide(
           const SizedBox(height: 18),
           if (unit.hasGuide) ...[
             Text('Konu anlatımı', style: t.titleMedium),
+            const SizedBox(height: 8),
+            KeyedSubtree(
+              key: const Key('unit-guide-text'),
+              child: GuideView(unit.guide!, color: color),
+            ),
             const SizedBox(height: 4),
-            KeyedSubtree(key: const Key('unit-guide-text'), child: MarkdownText(unit.guide!)),
-            const SizedBox(height: 18),
           ],
           if (phrases.isNotEmpty) ...[
             Text('Anahtar ifadeler', style: t.titleMedium),
