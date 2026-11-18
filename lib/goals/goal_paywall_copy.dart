@@ -60,7 +60,7 @@ GoalPaywallCopy goalPaywallCopy(LearnGoal? goal, DateTime now, {bool variantB = 
       return const GoalPaywallCopy(
         title: 'Mülakatına hazır gir: gerçek prova + kişisel geri bildirim',
         subtitle: 'Gerçek mülakat sorularıyla prova yap, cevapların için kişisel geri bildirim al.',
-        focus: [PremiumFeature.aiConversation, PremiumFeature.whyWrong],
+        focus: [PremiumFeature.interviewRehearsal, PremiumFeature.aiConversation, PremiumFeature.whyWrong],
         outcomes: [
           'İlk provan ücretsiz, sonra istediğin kadar prova',
           'Her cevabın için ne iyi, ne eksik: kişisel geri bildirim',

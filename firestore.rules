@@ -563,6 +563,15 @@ service cloud.firestore {
     }
     // ---- end Kurum lisansı ----
 
+    // Mülakat Provası history (functions/src/rehearsal.ts): transcripts and
+    // the analysis, written only by analyzeRehearsal (audio stays on the
+    // phone). The learner may read and delete their own; usageRehearsal/{uid}
+    // (the free-try counter) is server-only via the catch-all below.
+    match /rehearsals/{uid}/items/{rehearsalId} {
+      allow read, delete: if isOwner(uid);
+      allow create, update: if false;
+    }
+
     // Everything else (quotas, purchase tokens, counters) is server-only.
     match /{document=**} {
       allow read, write: if false;

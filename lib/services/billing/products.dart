@@ -132,6 +132,11 @@ enum PremiumFeature {
     'Gerçek bir yapay zekâyla, her senaryoda sınırsız ve serbest konuşma; anında Türkçe düzeltme.',
     '🤖',
   ),
+  interviewRehearsal(
+    'Mülakat provası',
+    'Kendi cevabından günlük çalışma, hiç sorulmamış sorularla yeni mülakatlar ve ilk ↔ son kaydını yan yana dinleme. İlk provan ücretsiz.',
+    '💼',
+  ),
   whyWrong(
     '"Neden yanlış?" açıklamaları',
     'Her yanlış cevabın açıklaması: şıkların Türkçesi ve neden olmadıkları. Ücretsiz sürümde günde 3.',

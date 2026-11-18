@@ -15,6 +15,7 @@ import * as karne from "./conversation_report.js";
 import * as family from "./family.js";
 import * as league from "./league.js";
 import * as purchase from "./purchase.js";
+import * as rehearsal from "./rehearsal.js";
 
 initializeApp();
 setGlobalOptions({ region: "europe-west1", maxInstances: 10 });
@@ -79,6 +80,13 @@ export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSe
 export const assessWriting = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
   const uid = requireUid(req);
   return writing.assessWriting(getFirestore(), claudeClient(), uid, req.data, new Date());
+});
+
+/** { rehearsalId, kind, items: [{ question, answer }], previousTags?, previousGaps? } -> analysis (Mülakat Provası) */
+export const analyzeRehearsal = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 120 }, (req) => {
+  const uid = requireUid(req);
+  claude ??= new Anthropic({ apiKey: anthropicApiKey.value() });
+  return rehearsal.analyzeRehearsal(getFirestore(), claude, uid, req.data, new Date());
 });
 
 /** { productId, purchaseToken } -> { active, productId, expiresAt?, packs } (subscriptions, family plan, exam packs) */
