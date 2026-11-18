@@ -1,4 +1,5 @@
 // QA Premium regressions in the live chat / voice coach.
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -67,5 +68,32 @@ void main() {
     expect(find.byKey(const Key('chat-input')), findsOneWidget);
     expect(find.byKey(const Key('mic-settings')), findsOneWidget);
     expect(find.textContaining('Mikrofon izni kapalı'), findsOneWidget);
+  });
+
+  test('no connection is not reported as a busy server', () async {
+    Future<String> messageFor(String code, String reason) async {
+      final service = CallableConversationService(
+        (name, data) async => throw FirebaseFunctionsException(code: code, message: reason),
+      );
+      try {
+        await service.send(scenarioById('cafe'), const [ChatMessage(fromUser: true, text: 'Hi')]);
+      } on ConversationException catch (e) {
+        return e.message;
+      }
+      fail('expected an error');
+    }
+
+    expect(await messageFor('unavailable', 'upstream_busy'), 'Sunucu şu an yoğun. Biraz sonra tekrar dene.');
+    expect(await messageFor('unavailable', 'upstream_error'), 'Sunucu şu an yoğun. Biraz sonra tekrar dene.');
+    expect(
+      await messageFor('unavailable', 'Unable to resolve host'),
+      CallableConversationService.offlineMessage,
+    );
+    expect(await messageFor('internal', 'internal_error'), 'Sunucu hatası. Biraz sonra tekrar dene.');
+    expect(
+      await messageFor('resource-exhausted', 'daily_quota'),
+      startsWith('Bugünlük konuşma hakkın doldu'),
+    );
+    expect(await messageFor('permission-denied', 'premium_required'), contains('Premium'));
   });
 }
