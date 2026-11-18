@@ -55,6 +55,7 @@ test("deletes every document of the learner and keeps other people's", async () 
   assert.equal(await exists("friendCodes/HGFEDCBA"), true);
   // Anti-abuse record stays.
   assert.equal(await exists("referralRedemptions/me"), true);
+  assert.equal(await exists("deletedAccounts/me"), true);
 
   // The purchase token is released: a new account can restore it.
   const restored = await verifyPurchase(db, "newMe", { productId: "lingora_premium_yearly", purchaseToken: "purchase-token-me-0001" }, {

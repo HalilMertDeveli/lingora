@@ -1,10 +1,11 @@
 // Account deletion (Google Play "account deletion" policy): removes everything
 // the server keeps about a learner, then the caller deletes the Auth user.
 //
-// Kept on purpose (abuse prevention, no personal content):
+// Kept on purpose (no personal content):
+//   deletedAccounts/{uid}: tombstone, see firestore.rules match /users.
 //   referralRedemptions/{uid}, referralDevices/{hash}: stop the same device
 //   from collecting invite rewards again with a fresh account.
-import { DocumentReference, Firestore } from "firebase-admin/firestore";
+import { DocumentReference, FieldValue, Firestore } from "firebase-admin/firestore";
 
 import * as family from "./family.js";
 import * as league from "./league.js";
@@ -45,6 +46,10 @@ export interface DeleteResult {
 /** Deletes all server data of [uid]. Safe to call again after a partial failure. */
 export async function deleteUserData(db: Firestore, uid: string): Promise<DeleteResult> {
   let docs = 0;
+
+  // Tombstone first: the rules then refuse users/{uid} writes from phones
+  // still signed in to this account. No personal data; uids are never reused.
+  await db.doc(`deletedAccounts/${uid}`).set({ at: FieldValue.serverTimestamp() });
 
   // Leave shared groups first so other people's views stay consistent.
   await ignoreErrors(() => league.leaveLeague(db, uid));
