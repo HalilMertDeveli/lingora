@@ -23,6 +23,39 @@
   ],
   "hosting": [
     {
+      "target": "yasal",
+      "public": "build/hosting",
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "predeploy": [
+        "node \"$PROJECT_DIR/hosting/build.mjs\""
+      ],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=300"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "target": "admin",
       "public": "build/admin",
       "ignore": [
