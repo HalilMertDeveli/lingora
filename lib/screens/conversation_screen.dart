@@ -392,10 +392,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Sohbetten çıkılsın mı?'),
-        content: const Text(
-          'Çıkarsan bu sohbetin XP'
-          'si ve karnesi kaydedilmez.',
-        ),
+        content: const Text("Çıkarsan bu sohbetin XP'si ve karnesi kaydedilmez."),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context, 'stay'), child: const Text('Devam et')),
           TextButton(

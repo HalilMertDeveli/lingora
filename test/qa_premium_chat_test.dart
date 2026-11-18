@@ -135,6 +135,7 @@ void main() {
     await nav.maybePop();
     await tester.pumpAndSettle();
     expect(find.text('Sohbetten çıkılsın mı?'), findsOneWidget);
+    expect(find.text("Çıkarsan bu sohbetin XP'si ve karnesi kaydedilmez."), findsOneWidget);
     await tester.tap(find.text('Devam et'));
     await tester.pumpAndSettle();
     expect(find.byType(ConversationScreen), findsOneWidget);
