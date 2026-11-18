@@ -162,7 +162,7 @@ class _MdBlockView extends StatelessWidget {
       MdKind.numbered => _StepList(items: [b], style: s, labelled: false),
       MdKind.tip => _Callout(block: b, style: s),
       MdKind.quote => _Quote(block: b, style: s),
-      MdKind.example => _Example(en: b.text, tr: b.translation, style: s),
+      MdKind.example => ExampleBox(en: b.text, tr: b.translation, style: s),
       MdKind.mistake => _Mistake(block: b, style: s),
       MdKind.pattern => Padding(
         padding: const EdgeInsets.symmetric(vertical: 6),
@@ -227,7 +227,7 @@ class _Bullet extends StatelessWidget {
                 if (b.example.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
-                    child: _Example(en: b.example, tr: '', style: s, compact: true),
+                    child: ExampleBox(en: b.example, tr: '', style: s, compact: true),
                   ),
               ],
             ),
@@ -404,16 +404,28 @@ class _Quote extends StatelessWidget {
 }
 
 /// An English example with its Turkish meaning, highlighted.
-class _Example extends StatelessWidget {
-  const _Example({required this.en, required this.tr, required this.style, this.compact = false});
+class ExampleBox extends StatelessWidget {
+  const ExampleBox({
+    super.key,
+    required this.en,
+    required this.tr,
+    this.style,
+    this.compact = false,
+    this.onSpeak,
+  });
   final String en;
   final String tr;
-  final MdStyle style;
+
+  /// Section style; the default body style when null.
+  final MdStyle? style;
   final bool compact;
+
+  /// Shows a speaker button that reads the sentence aloud.
+  final VoidCallback? onSpeak;
 
   @override
   Widget build(BuildContext context) {
-    final s = style;
+    final s = style ?? MdStyle.of(context, context.palette.success, null);
     final green = s.p.success;
     final ink = readableOn(green, dark: s.p.isDark);
     return Container(
@@ -428,10 +440,24 @@ class _Example extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 2, right: 8),
-            child: Icon(Icons.record_voice_over_rounded, size: compact ? 16 : 18, color: ink),
-          ),
+          if (onSpeak != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 4),
+              child: IconButton(
+                key: const Key('md-example-speak'),
+                visualDensity: VisualDensity.compact,
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
+                tooltip: 'Dinle',
+                onPressed: onSpeak,
+                icon: Icon(Icons.volume_up_rounded, size: 22, color: ink),
+              ),
+            )
+          else
+            Padding(
+              padding: const EdgeInsets.only(top: 2, right: 8),
+              child: Icon(Icons.record_voice_over_rounded, size: compact ? 16 : 18, color: ink),
+            ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

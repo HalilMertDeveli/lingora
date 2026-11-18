@@ -3,6 +3,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lingora/models/course.dart';
+import 'package:lingora/models/notes.dart';
+import 'package:lingora/screens/notes_screen.dart';
+import 'package:lingora/screens/unit_guide_parts.dart';
 import 'package:lingora/theme.dart';
 import 'package:lingora/ui/guide_view.dart';
 import 'package:lingora/ui/markdown_text.dart';
@@ -254,6 +258,70 @@ void main() {
         await _pump(tester, GuideView(guides[i].$2), mode: AppMode.kid, b: Brightness.dark, width: 320);
         expect(tester.takeException(), isNull, reason: guides[i].$1);
       }
+    });
+  });
+
+  group('other guide-like pages', () {
+    const topic = GrammarTopic(
+      id: 't1',
+      title: 'Present simple',
+      category: 'Zamanlar',
+      source: 'Notion',
+      body: 'Alışkanlıkları anlatır.\n\nDikkat: he/she/it ile fiile -s gelir.',
+      rules: ['Özne + fiil(-s)', 'Soru: Do/Does + özne + fiil?'],
+      examples: [NoteExample('She works here.', 'Burada çalışır.')],
+    );
+
+    for (final mode in AppMode.values) {
+      for (final b in Brightness.values) {
+        testWidgets('a grammar note is drawn as guide cards (${mode.name}, ${b.name})', (tester) async {
+          final spoken = <String>[];
+          await _pump(
+            tester,
+            Builder(
+              builder: (c) => Column(children: topicGuideCards(c, topic, onSpeak: spoken.add)),
+            ),
+            mode: mode,
+            b: b,
+          );
+          expect(tester.takeException(), isNull);
+          expect(find.byKey(const Key('note-explain')), findsOneWidget);
+          expect(find.byKey(const Key('note-rules')), findsOneWidget);
+          expect(find.byKey(const Key('note-examples')), findsOneWidget);
+          expect(find.byKey(const Key('md-callout-warning')), findsOneWidget);
+          expect(find.byKey(const Key('md-pattern')), findsWidgets);
+          await tester.tap(find.byKey(const Key('md-example-speak')));
+          expect(spoken, ['She works here.']);
+        });
+      }
+    }
+
+    testWidgets('unit steps: done ticked, open numbered, locked with a lock', (tester) async {
+      PathNode node(String id) =>
+          PathNode.fromJson({'id': id, 'type': 'lesson', 'title': 'Ders $id', 'lessons': <Object>[]});
+      final nodes = [node('a'), node('b'), node('c')];
+      await _pump(
+        tester,
+        Column(
+          children: [
+            const PhraseList(phrases: [('Good morning', 'Günaydın'), ('Thanks', 'Teşekkürler')]),
+            NodeSteps(
+              nodes: nodes,
+              stateOf: (n) => [2, 1, 0][nodes.indexOf(n)],
+              iconOf: (_) => Icons.school_rounded,
+            ),
+          ],
+        ),
+        mode: AppMode.kid,
+        b: Brightness.dark,
+      );
+      expect(tester.takeException(), isNull);
+      expect(find.text('Günaydın'), findsOneWidget);
+      Finder inStep(String id, Finder f) =>
+          find.descendant(of: find.byKey(Key('unit-step-$id')), matching: f);
+      expect(inStep('a', find.byIcon(Icons.check_rounded)), findsOneWidget);
+      expect(inStep('b', find.text('2')), findsOneWidget);
+      expect(inStep('c', find.byIcon(Icons.lock_outline_rounded)), findsOneWidget);
     });
   });
 }

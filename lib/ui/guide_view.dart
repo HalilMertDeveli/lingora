@@ -116,25 +116,66 @@ class GuideSectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final topic = section.topic;
+    final look = guideLook(topic, context.palette, index: index, unit: unitColor);
+    return GuideCard(
+      key: Key('guide-section-$index'),
+      title: section.title,
+      color: look.color,
+      icon: look.icon,
+      child: MdBlocksView(blocks: section.blocks, color: look.color, steps: topic == GuideTopic.steps),
+    );
+  }
+}
+
+/// The card every guide-like page uses: an icon in a soft square, the
+/// title, a thin line and the content. Use [GuideCard.topic] to take the
+/// colour and icon of a [GuideTopic].
+class GuideCard extends StatelessWidget {
+  const GuideCard({
+    super.key,
+    required this.title,
+    required this.color,
+    required this.icon,
+    required this.child,
+  });
+
+  GuideCard.topic(
+    BuildContext context, {
+    Key? key,
+    required String title,
+    required GuideTopic topic,
+    required Widget child,
+    Color? unit,
+  }) : this(
+         key: key,
+         title: title,
+         color: guideLook(topic, context.palette, unit: unit).color,
+         icon: guideLook(topic, context.palette, unit: unit).icon,
+         child: child,
+       );
+
+  final String title;
+  final Color color;
+  final IconData icon;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
     final p = context.palette;
     final kid = context.isKid;
-    final topic = section.topic;
-    final look = guideLook(topic, p, index: index, unit: unitColor);
-    final ink = readableOn(look.color, dark: p.isDark);
-    final radius = context.lingora.cardRadius;
-    final title = section.title;
+    final ink = readableOn(color, dark: p.isDark);
     return Container(
-      key: Key('guide-section-$index'),
       decoration: BoxDecoration(
         color: p.card,
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius: BorderRadius.circular(context.lingora.cardRadius),
         border: Border.all(color: p.line),
       ),
       clipBehavior: Clip.antiAlias,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (title.isNotEmpty)
+          if (title.isNotEmpty) ...[
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 14, 16, 0),
               child: Row(
@@ -143,43 +184,34 @@ class GuideSectionCard extends StatelessWidget {
                     width: kid ? 34 : 30,
                     height: kid ? 34 : 30,
                     decoration: BoxDecoration(
-                      color: Color.alphaBlend(look.color.withValues(alpha: p.isDark ? 0.24 : 0.14), p.card),
+                      color: Color.alphaBlend(color.withValues(alpha: p.isDark ? 0.24 : 0.14), p.card),
                       borderRadius: BorderRadius.circular(Radii.sm),
                     ),
-                    child: Icon(look.icon, size: kid ? 20 : 18, color: ink),
+                    child: Icon(icon, size: kid ? 20 : 18, color: ink),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Text.rich(
-                      inlineSpan(
-                        title,
-                        TextStyle(
-                          fontSize: kid ? 19 : 17,
-                          fontWeight: FontWeight.w800,
-                          height: 1.25,
-                          color: p.ink,
-                        ),
-                      ),
-                      key: const Key('md-h2'),
-                    ),
+                    child: title.contains('*')
+                        ? Text.rich(inlineSpan(title, _titleStyle(p, kid)), key: const Key('md-h2'))
+                        : Text(title, style: _titleStyle(p, kid), key: const Key('md-h2')),
                   ),
                 ],
               ),
             ),
-          if (title.isNotEmpty)
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
               child: Divider(height: 1, thickness: 1, color: p.line),
             ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 14, 16, 8),
-            child: MdBlocksView(blocks: section.blocks, color: look.color, steps: topic == GuideTopic.steps),
-          ),
+          ],
+          Padding(padding: const EdgeInsets.fromLTRB(16, 14, 16, 8), child: child),
         ],
       ),
     );
   }
 }
+
+TextStyle _titleStyle(Palette p, bool kid) =>
+    TextStyle(fontSize: kid ? 19 : 17, fontWeight: FontWeight.w800, height: 1.25, color: p.ink);
 
 /// About how many minutes the guide takes to read (180 words a minute).
 int guideMinutes(String source) {
