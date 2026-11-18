@@ -251,35 +251,46 @@ class _AuthScreenState extends State<AuthScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
-              child: SizedBox(
-                width: double.infinity,
-                height: 54,
-                child: FilledButton(
-                  key: const ValueKey('auth-submit'),
-                  style: FilledButton.styleFrom(
-                    backgroundColor: p.mascot,
-                    foregroundColor: p.onMascot,
-                    shape: const StadiumBorder(),
-                    textStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
+            // Small phone with the keyboard open: the pinned button left
+            // about 200 px for the form and covered the password field (QA,
+            // 480x800). The keyboard's own action submits meanwhile; the
+            // button is back as soon as the keyboard closes.
+            if (!_keyboardCramped(context))
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 54,
+                  child: FilledButton(
+                    key: const ValueKey('auth-submit'),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: p.mascot,
+                      foregroundColor: p.onMascot,
+                      shape: const StadiumBorder(),
+                      textStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
+                    ),
+                    onPressed: _busy ? null : _submit,
+                    child: _busy
+                        ? SizedBox(
+                            width: 22,
+                            height: 22,
+                            child: CircularProgressIndicator(strokeWidth: 2.5, color: p.onMascot),
+                          )
+                        : Text(_register ? 'Hesap oluştur' : 'Giriş yap'),
                   ),
-                  onPressed: _busy ? null : _submit,
-                  child: _busy
-                      ? SizedBox(
-                          width: 22,
-                          height: 22,
-                          child: CircularProgressIndicator(strokeWidth: 2.5, color: p.onMascot),
-                        )
-                      : Text(_register ? 'Hesap oluştur' : 'Giriş yap'),
                 ),
               ),
-            ),
           ],
         ),
       ),
     );
   }
+}
+
+/// True when the open keyboard leaves less than 420 dp of the screen.
+bool _keyboardCramped(BuildContext context) {
+  final keyboard = MediaQuery.viewInsetsOf(context).bottom;
+  return keyboard > 0 && MediaQuery.sizeOf(context).height - keyboard < 420;
 }
 
 class _ModeSwitch extends StatelessWidget {
