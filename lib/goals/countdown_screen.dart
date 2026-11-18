@@ -32,7 +32,10 @@ const goalPlanPlacement = 'goal_plan';
     if (a.fromMock && fullMockId.hasMatch(mockIdOf(a.source))) source = a.source;
   }
   if (source == null) return null;
-  final answers = [for (final a in log) if (a.source == source) a];
+  final answers = [
+    for (final a in log)
+      if (a.source == source) a,
+  ];
   return answers.length < 40 ? null : (source: source, answers: answers);
 }
 
@@ -140,14 +143,14 @@ class CountdownScreen extends ConsumerWidget {
           ] else if (plan != null && !plan.isEmpty) ...[
             _Summary(plan: plan),
             const SizedBox(height: 12),
-            for (final d in premium ? plan.days : plan.days.take(1)) _DayCard(day: d, lastSource: last?.source),
+            for (final d in premium ? plan.days : plan.days.take(1))
+              _DayCard(day: d, lastSource: last?.source),
             if (!premium && plan.days.length > 1)
-              _LockedRest(days: plan.days.length - 1, onUnlock: () => requirePremium(
-                context,
-                ref,
-                PremiumFeature.errorAnalytics,
-                placement: goalPlanPlacement,
-              )),
+              _LockedRest(
+                days: plan.days.length - 1,
+                onUnlock: () =>
+                    requirePremium(context, ref, PremiumFeature.errorAnalytics, placement: goalPlanPlacement),
+              ),
             if (plan.daysLeft > maxCountdownDays)
               Padding(
                 padding: const EdgeInsets.only(top: 8),
@@ -305,7 +308,10 @@ Future<void> openPlanLink(BuildContext context, WidgetRef ref, PlanLink item, {S
       final p = ref.read(progressProvider);
       final node = lessons.where((n) => !p.isDone(n.id)).firstOrNull ?? lessons.first;
       await nav.push(
-        MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => LessonScreen.forNode(node, Brand.tone(unit.color))),
+        MaterialPageRoute<void>(
+          fullscreenDialog: true,
+          builder: (_) => LessonScreen.forNode(node, Brand.tone(unit.color)),
+        ),
       );
     case PlanItemKind.practice:
       final exam = await ref.read(examProvider('yds').future);

@@ -329,8 +329,8 @@ class Progress {
     List<UserNote>? userNotes,
     Map<String, int>? removedWords,
     Wallet? wallet,
-      LearnGoal? learnGoal,
-}) => Progress(
+    LearnGoal? learnGoal,
+  }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
     totalXp: totalXp ?? this.totalXp,
@@ -464,7 +464,9 @@ class Progress {
     wallet: j['wallet'] is Map
         ? Wallet.fromJson(Map<String, dynamic>.from(j['wallet'] as Map))
         : const Wallet(),
-    learnGoal: j['learnGoal'] is Map ? LearnGoal.fromJson(Map<String, dynamic>.from(j['learnGoal'] as Map)) : null,
+    learnGoal: j['learnGoal'] is Map
+        ? LearnGoal.fromJson(Map<String, dynamic>.from(j['learnGoal'] as Map))
+        : null,
   );
 }
 

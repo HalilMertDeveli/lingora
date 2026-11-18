@@ -40,7 +40,8 @@ class PlanLink {
   final String? ref;
 
   @override
-  bool operator ==(Object other) => other is PlanLink && other.kind == kind && other.title == title && other.ref == ref;
+  bool operator ==(Object other) =>
+      other is PlanLink && other.kind == kind && other.title == title && other.ref == ref;
 
   @override
   int get hashCode => Object.hash(kind, title, ref);
@@ -50,7 +51,13 @@ class PlanLink {
 }
 
 class CountdownDay {
-  const CountdownDay({required this.index, required this.date, required this.kind, required this.items, this.focus});
+  const CountdownDay({
+    required this.index,
+    required this.date,
+    required this.kind,
+    required this.items,
+    this.focus,
+  });
 
   /// 0 = today.
   final int index;
@@ -152,10 +159,7 @@ CountdownPlan buildCountdownPlan({
           index: i,
           date: date,
           kind: CountdownDayKind.eve,
-          items: const [
-            review,
-            PlanLink(PlanItemKind.notebook, 'Hata defterinden son tekrar'),
-          ],
+          items: const [review, PlanLink(PlanItemKind.notebook, 'Hata defterinden son tekrar')],
         ),
       );
       continue;
@@ -211,6 +215,8 @@ double estimatedYdsScore({required int correct, required int total}) =>
 /// "72,5" (Turkish decimal comma, at most two decimals).
 String formatScore(double score) {
   final r = (score * 100).round() / 100;
-  final s = r == r.roundToDouble() ? r.toStringAsFixed(0) : (r * 10 == (r * 10).roundToDouble() ? r.toStringAsFixed(1) : r.toStringAsFixed(2));
+  final s = r == r.roundToDouble()
+      ? r.toStringAsFixed(0)
+      : (r * 10 == (r * 10).roundToDouble() ? r.toStringAsFixed(1) : r.toStringAsFixed(2));
   return s.replaceAll('.', ',');
 }

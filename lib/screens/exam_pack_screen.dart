@@ -103,13 +103,12 @@ class _ExamPackSectionState extends ConsumerState<ExamPackSection> {
           // would keep widget tests from settling.
           loading: () => SizedBox(height: 48),
           error: (e, _) => Text('Deneme paketi yüklenemedi: $e'),
-          data: (c) => unlocked ? _mockList(c) : Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (_firstFree(c) case final m?) _freeFirst(c, m),
-              _locked(c),
-            ],
-          ),
+          data: (c) => unlocked
+              ? _mockList(c)
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [if (_firstFree(c) case final m?) _freeFirst(c, m), _locked(c)],
+                ),
         ),
       ],
     );
@@ -324,7 +323,8 @@ class _FullMockResultScreenState extends State<FullMockResultScreen> {
     final good = r.correct >= qs.length * 0.7;
     final minutes = widget.duration.inMinutes;
     final headline = switch (widget.pack.scoring) {
-      ExamScoring.yds => 'Tahmini puan: ${formatScore(estimatedYdsScore(correct: r.correct, total: qs.length))}',
+      ExamScoring.yds =>
+        'Tahmini puan: ${formatScore(estimatedYdsScore(correct: r.correct, total: qs.length))}',
       ExamScoring.lgs => 'İngilizce neti: ${_fmtNet(r.net)} / ${qs.length}',
     };
     final note = switch (widget.pack.scoring) {

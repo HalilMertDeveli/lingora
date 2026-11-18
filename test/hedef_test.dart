@@ -99,7 +99,10 @@ void main() {
 
     test('a full mock every week, none in the last two days', () {
       final p = buildCountdownPlan(today: today, daysLeft: 30, weak: const [(QType.reading, 5)]);
-      final mocks = [for (final d in p.days) if (d.kind == CountdownDayKind.mock) d.index];
+      final mocks = [
+        for (final d in p.days)
+          if (d.kind == CountdownDayKind.mock) d.index,
+      ];
       expect(mocks, [7, 14, 21]);
       for (final m in mocks) {
         expect(p.days[m + 1].kind, CountdownDayKind.analysis);
@@ -167,7 +170,9 @@ void main() {
     });
 
     test('speaking and general', () {
-      expect(goalPaywallCopy(const LearnGoal(kind: GoalKind.speaking), at).focus, [PremiumFeature.aiConversation]);
+      expect(goalPaywallCopy(const LearnGoal(kind: GoalKind.speaking), at).focus, [
+        PremiumFeature.aiConversation,
+      ]);
       expect(goalPaywallCopy(null, at).title, 'Daha fazla konuş, daha çok deneme çöz');
       expect(goalPaywallCopy(null, at, variantB: true).title, 'Konuşarak öğren, sınırsız deneme çöz');
       expect(goalPaywallCopy(const LearnGoal(kind: GoalKind.general), at).focus, isEmpty);
@@ -181,7 +186,10 @@ void main() {
       expect(const LearnGoal(kind: GoalKind.interview).daysLeft(DateTime(2026)), isNull);
       expect(LearnGoal.fromJson(g.toJson()), g);
       // The date is dropped for non-exam goals.
-      expect(const LearnGoal(kind: GoalKind.speaking, examDate: '2027-01-01').toJson().containsKey('examDate'), isFalse);
+      expect(
+        const LearnGoal(kind: GoalKind.speaking, examDate: '2027-01-01').toJson().containsKey('examDate'),
+        isFalse,
+      );
       final p = Progress.fromJson(jsonDecode(jsonEncode(const Progress().copyWith(learnGoal: g).toJson())));
       expect(p.learnGoal, g);
       expect(Progress.fromJson(const {}).learnGoal, isNull);
@@ -201,7 +209,8 @@ void main() {
   group('paywall screen', () {
     Future<void> pumpWith(WidgetTester tester, LearnGoal? goal, {FakeBilling? billing}) async {
       final prefs = <String, Object>{
-        if (goal != null) 'progress_v1': jsonEncode(const Progress(onboarded: true).copyWith(learnGoal: goal).toJson()),
+        if (goal != null)
+          'progress_v1': jsonEncode(const Progress(onboarded: true).copyWith(learnGoal: goal).toJson()),
       };
       await tester.pumpWidget(
         app(await widgetOverrides(tester, billing ?? FakeBilling(), prefs: prefs), const PaywallScreen()),

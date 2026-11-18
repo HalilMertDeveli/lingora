@@ -79,7 +79,11 @@ class LearnGoal {
 
   @override
   bool operator ==(Object other) =>
-      other is LearnGoal && other.kind == kind && other.exam == exam && other.examDate == examDate && other.at == at;
+      other is LearnGoal &&
+      other.kind == kind &&
+      other.exam == exam &&
+      other.examDate == examDate &&
+      other.at == at;
 
   @override
   int get hashCode => Object.hash(kind, exam, examDate, at);
@@ -90,4 +94,6 @@ String goalDayKey(DateTime d) =>
     '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
 
 /// The learner's goal; null until one was chosen.
-final learnGoalProvider = Provider<LearnGoal?>((ref) => ref.watch(progressProvider.select((p) => p.learnGoal)));
+final learnGoalProvider = Provider<LearnGoal?>(
+  (ref) => ref.watch(progressProvider.select((p) => p.learnGoal)),
+);

@@ -40,8 +40,12 @@ Future<GateResult> requirePremium(
   final choseFree = await Navigator.of(context).push<bool>(
     MaterialPageRoute<bool>(
       fullscreenDialog: true,
-      builder: (_) =>
-          PaywallScreen(feature: feature, freeAlternative: freeAlternative, placement: placement, pitch: pitch),
+      builder: (_) => PaywallScreen(
+        feature: feature,
+        freeAlternative: freeAlternative,
+        placement: placement,
+        pitch: pitch,
+      ),
     ),
   );
   if (!context.mounted) return GateResult.closed;
@@ -160,12 +164,19 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     final flags = ref.watch(remoteFlagsProvider);
     // Variant "b" (Remote Config A/B test): plans before the feature list.
     final plansFirst = _variant == 'b' && !premium;
-    final copy = goalPaywallCopy(ref.watch(learnGoalProvider), ref.read(clockProvider)(), variantB: _variant == 'b');
+    final copy = goalPaywallCopy(
+      ref.watch(learnGoalProvider),
+      ref.read(clockProvider)(),
+      variantB: _variant == 'b',
+    );
     final features = [
       Text('Premium ile', style: Theme.of(context).textTheme.titleMedium),
       const SizedBox(height: 8),
       for (final f in [...copy.focus, ...PremiumFeature.values.where((f) => !copy.focus.contains(f))])
-        _FeatureRow(f, highlighted: f == widget.feature || (widget.feature == null && copy.focus.contains(f))),
+        _FeatureRow(
+          f,
+          highlighted: f == widget.feature || (widget.feature == null && copy.focus.contains(f)),
+        ),
       for (final (emoji, title, description) in extraPremiumBullets)
         _BulletRow(emoji: emoji, title: title, description: description),
       const SizedBox(height: 14),
@@ -437,7 +448,9 @@ class _Outcome extends StatelessWidget {
       children: [
         Icon(Icons.check_circle_rounded, size: 18, color: Brand.success),
         const SizedBox(width: 8),
-        Expanded(child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, height: 1.3))),
+        Expanded(
+          child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, height: 1.3)),
+        ),
       ],
     ),
   );
@@ -456,7 +469,9 @@ class _Pitch extends StatelessWidget {
       children: [
         Icon(Icons.record_voice_over_rounded, color: Brand.ink),
         const SizedBox(width: 10),
-        Expanded(child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, height: 1.3))),
+        Expanded(
+          child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, height: 1.3)),
+        ),
       ],
     ),
   );

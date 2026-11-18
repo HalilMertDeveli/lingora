@@ -38,14 +38,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   /// Pages in order; Çocuk modu skips "Hedefin ne?" (exam and interview
   /// goals are for adults).
-  List<String> _steps(bool kid) => [
-    'welcome',
-    'audience',
-    'course',
-    'goal',
-    if (!kid) 'target',
-    'level',
-  ];
+  List<String> _steps(bool kid) => ['welcome', 'audience', 'course', 'goal', if (!kid) 'target', 'level'];
 
   void _next() => _pages.nextPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut);
 

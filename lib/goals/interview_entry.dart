@@ -14,5 +14,6 @@ import '../screens/conversation_screen.dart';
 /// on main, replace the body with `return openRehearsal(context);`.
 Future<void> openInterviewRehearsal(BuildContext context) {
   final scenario = scenarios.firstWhere((s) => s.id == 'interview', orElse: () => scenarios.first);
-  return Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => ConversationScreen(scenario: scenario)));
+  return Navigator.of(context)
+      .push(MaterialPageRoute<void>(builder: (_) => ConversationScreen(scenario: scenario)));
 }
