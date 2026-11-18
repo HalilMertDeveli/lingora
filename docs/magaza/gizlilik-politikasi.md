@@ -10,8 +10,7 @@ yapılacakları ve son sürümde nelerin değiştiğini izler.
 
 ## Yayından önce
 
-- [ ] İletişim e-postasını ver: `hosting/site.json` > `iletisimEposta` ya da `ILETISIM_EPOSTA`
-      ortam değişkeni (tek yer tutucu: `{{ILETISIM_EPOSTA}}`). Kişisel adres yerine destek adresi.
+- [x] İletişim e-postası: **dilmac.destek@gmail.com** (sayfalara yazıldı).
 - [ ] Hukukçu kontrolü: özellikle yurt dışına aktarım (KVKK m. 9, standart sözleşmenin imzalanıp
       Kurum'a bildirilmesi) ve Çocuk modu / hedef kitle kararı (`docs/play-store-hazirlik.md` §3).
 - [ ] `firebase deploy --project prod --only hosting:yasal`, sonra iki adresi Play Console'a gir.

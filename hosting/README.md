@@ -12,32 +12,23 @@ Varsayılan Firebase Hosting sitesinde (`dilbaz-3392e.web.app`) yayınlanır:
 Uygulama bu adreslere `lib/core/legal_links.dart` üzerinden bağlanır.
 Play Console'a girilecekler: gizlilik politikası URL'si `…/gizlilik`, hesap silme URL'si `…/hesap-silme`.
 
-## İletişim e-postası (tek yer tutucu)
-
-Sayfalardaki tek değişken iletişim adresidir. HTML'de `{{ILETISIM_EPOSTA}}` olarak geçer; değeri
-**tek bir yerden** gelir:
-
-1. `ILETISIM_EPOSTA` ortam değişkeni (doluysa öncelikli), yoksa
-2. `hosting/site.json` içindeki `iletisimEposta`.
-
-`build.mjs` değer hâlâ `{{ILETISIM_EPOSTA}}` ise **derlemeyi durdurur**; böylece yer tutucu yanlışlıkla
-yayınlanmaz. Kişisel bir adres yerine yayına uygun bir destek adresi kullan.
+İletişim adresi (sayfalarda doğrudan yazılı): **dilmac.destek@gmail.com**. Değişirse
+`sayfalar/*.html` içinde hepsini birlikte değiştir.
 
 ## Derleme ve yayın
 
 ```bash
-ILETISIM_EPOSTA=destek@ornek.com node hosting/build.mjs   # build/hosting'e yazar
-firebase deploy --project prod --only hosting:yasal       # predeploy aynı derlemeyi çalıştırır
+node hosting/build.mjs                               # build/hosting'e kopyalar ve denetler
+firebase deploy --project prod --only hosting:yasal  # predeploy aynı derlemeyi çalıştırır
 ```
 
-PowerShell'de: `$env:ILETISIM_EPOSTA='destek@ornek.com'; firebase deploy --project prod --only hosting:yasal`.
+`build.mjs` sayfalarda `{{…}}` biçiminde bir yer tutucu kalırsa ya da bir iç bağlantı kırıksa durur.
 
 `yasal` hedefi `.firebaserc`'te varsayılan siteye (`dilbaz-3392e`) bağlıdır. `firebase deploy`'u
 `--only` olmadan çalıştırma: yönetim paneli hedefi (`admin`) ayrı bir siteye bağlanır
 (bkz. `docs/kurumsal.md`).
 
-CI, sayfaların derlendiğini ve iç bağlantıların çalıştığını `node hosting/build.mjs --allow-placeholder`
-ile denetler (yer tutucuyu olduğu gibi bırakır).
+CI aynı `node hosting/build.mjs` denetimini çalıştırır.
 
 ## Metni güncellerken
 

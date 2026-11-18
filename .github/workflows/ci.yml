@@ -22,7 +22,7 @@ jobs:
 
       # Yasal sayfalar (gizlilik, hesap silme): derlenir ve iç bağlantılar denetlenir.
       - name: Legal pages build
-        run: node hosting/build.mjs --allow-placeholder
+        run: node hosting/build.mjs
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2.23.0
