@@ -576,39 +576,20 @@ void main() {
       expect(find.byType(ConversationScreen), findsOneWidget);
     });
 
-    testWidgets('live AI conversation opens the paywall; demo is offered', (tester) async {
+    testWidgets('free users get the live AI as a daily taste (no paywall up front)', (tester) async {
       final overrides = [
         ...await widgetOverrides(tester, FakeBilling()),
         conversationServiceProvider.overrideWithValue(LiveFake()),
       ];
       await tester.pumpWidget(app(overrides, const ConversationHomeScreen()));
       await tester.pumpAndSettle();
-      expect(find.text('PREMIUM'), findsWidgets);
+      expect(find.byKey(const Key('free-taste-banner')), findsOneWidget);
+      expect(find.text('PREMIUM'), findsNothing);
       await tester.tap(find.text(scenario.title));
-      await tester.pumpAndSettle();
-      expect(find.byType(PaywallScreen), findsOneWidget);
-      expect(find.text(PremiumFeature.aiConversation.title), findsOneWidget);
-
-      await tester.tap(find.text('Ücretsiz demo ile dene'));
-      await tester.pumpAndSettle();
-      expect(find.byType(ConversationScreen), findsOneWidget);
-      final container = ProviderScope.containerOf(tester.element(find.byType(ConversationScreen)));
-      expect(container.read(conversationServiceProvider), isA<DemoConversationService>());
-    });
-
-    testWidgets('closing the paywall opens nothing', (tester) async {
-      final overrides = [
-        ...await widgetOverrides(tester, FakeBilling()),
-        conversationServiceProvider.overrideWithValue(LiveFake()),
-      ];
-      await tester.pumpWidget(app(overrides, const ConversationHomeScreen()));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text(scenario.title));
-      await tester.pumpAndSettle();
-      await tester.tap(find.byTooltip('Kapat'));
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsNothing);
-      expect(find.byType(ConversationScreen), findsNothing);
+      final container = ProviderScope.containerOf(tester.element(find.byType(ConversationScreen)));
+      expect(container.read(conversationServiceProvider), isA<LiveFake>());
     });
 
     testWidgets('Premium users talk to the live AI directly', (tester) async {
@@ -618,7 +599,7 @@ void main() {
       ];
       await tester.pumpWidget(app(overrides, const ConversationHomeScreen()));
       await tester.pumpAndSettle();
-      expect(find.text('PREMIUM'), findsNothing);
+      expect(find.byKey(const Key('free-taste-banner')), findsNothing);
       await tester.tap(find.text(scenario.title));
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsNothing);

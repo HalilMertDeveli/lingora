@@ -1,12 +1,20 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/speech_evidence.dart';
 import '../core/tr_errors.dart';
 import '../data/scenarios.dart';
 import 'firebase/firebase_providers.dart';
 
 class ChatMessage {
-  const ChatMessage({required this.fromUser, required this.text, this.correction, this.tipTr});
+  const ChatMessage({
+    required this.fromUser,
+    required this.text,
+    this.correction,
+    this.tipTr,
+    this.spoken = false,
+    this.evidence = const [],
+  });
   final bool fromUser;
   final String text;
 
@@ -16,23 +24,57 @@ class ChatMessage {
   /// Short Turkish explanation of the mistake.
   final String? tipTr;
 
+  /// The learner said it (speech recognition) rather than typed it.
+  final bool spoken;
+
+  /// What the recognizer struggled with in this message (lib/core/speech_evidence.dart).
+  final List<WeakWordEvidence> evidence;
+
+  ChatMessage withFeedback({String? correction, String? tipTr}) => ChatMessage(
+    fromUser: fromUser,
+    text: text,
+    correction: correction,
+    tipTr: tipTr,
+    spoken: spoken,
+    evidence: evidence,
+  );
+
   Map<String, String> toApi() => {'role': fromUser ? 'user' : 'assistant', 'content': text};
 }
 
 /// The partner's answer plus feedback on the learner's last message.
 class ChatTurn {
-  const ChatTurn({required this.reply, this.correction, this.tipTr, this.done = false});
+  const ChatTurn({
+    required this.reply,
+    this.correction,
+    this.tipTr,
+    this.done = false,
+    this.remaining,
+    this.free = false,
+  });
   final String reply;
   final String? correction;
   final String? tipTr;
 
   /// The scenario goal has been reached.
   final bool done;
+
+  /// Learner messages left today, when the server says.
+  final int? remaining;
+
+  /// The turn came out of the free daily taste (no Premium).
+  final bool free;
 }
 
 class ConversationException implements Exception {
-  const ConversationException(this.message);
+  const ConversationException(this.message, {this.code});
   final String message;
+
+  /// [freeQuotaCode] when the free daily taste is used up.
+  final String? code;
+
+  static const freeQuotaCode = 'free_quota';
+  bool get freeQuotaUsed => code == freeQuotaCode;
   @override
   String toString() => message;
 }
@@ -74,6 +116,9 @@ class CallableConversationService implements ConversationService {
         'messages': [for (final m in recent) m.toApi()],
       }).timeout(const Duration(seconds: 90));
     } on FirebaseFunctionsException catch (e) {
+      if (e.code == 'resource-exhausted' && e.message == ConversationException.freeQuotaCode) {
+        throw const ConversationException(freeQuotaMessage, code: ConversationException.freeQuotaCode);
+      }
       throw ConversationException(messageForCode(e.code));
     } on Exception {
       throw const ConversationException('Bağlantı kurulamadı. İnternetini kontrol et.');
@@ -84,8 +129,12 @@ class CallableConversationService implements ConversationService {
       correction: _nonEmpty(j['correction']),
       tipTr: _nonEmpty(j['tip_tr']),
       done: j['done'] as bool? ?? false,
+      remaining: (j['remaining'] as num?)?.toInt(),
+      free: j['free'] as bool? ?? false,
     );
   }
+
+  static const freeQuotaMessage = 'Bugünkü 3 ücretsiz mesajını kullandın.';
 
   /// Turkish message for a callable error code.
   static String messageForCode(String code) => switch (code) {
@@ -116,6 +165,11 @@ class DemoConversationService implements ConversationService {
       'Here you are. Is breakfast included in my booking?',
       'Lovely. And what time is check-out?',
       'Thank you so much, you\'ve been very helpful!',
+    ],
+    'hotel_reception': [
+      'Lovely. And how many nights will you be staying with us?',
+      'Perfect. Your room is 214. Do you have any questions?',
+      'Breakfast is from 7 to 10, and the Wi-Fi password is on your key card. Enjoy your stay!',
     ],
     'restaurant_guest': [
       'That sounds good. Does it contain nuts? My son is allergic.',
@@ -223,4 +277,119 @@ final conversationServiceProvider = Provider<ConversationService>((ref) {
   final functions = ref.watch(functionsProvider);
   if (functions == null || ref.watch(currentUidProvider) == null) return DemoConversationService();
   return CallableConversationService.firebase(functions);
+});
+
+// ------------------------------------------------------------------ karne
+
+/// One of the learner's sentences with a real mistake.
+class ReportMistake {
+  const ReportMistake({required this.original, required this.corrected, required this.explanationTr});
+  final String original;
+  final String corrected;
+  final String explanationTr;
+}
+
+/// The end-of-conversation karne of the voice coach.
+class ConversationReport {
+  const ConversationReport({required this.mistakes, required this.summaryTr, required this.weakWords});
+  final List<ReportMistake> mistakes;
+  final String summaryTr;
+
+  /// Words the phone's recognizer struggled with, weakest first. Comes only
+  /// from on-device evidence ([speechEvidence]), never from the AI.
+  final List<WeakWordEvidence> weakWords;
+
+  static ConversationReport fromJson(Map<String, Object?> j) => ConversationReport(
+    mistakes: [
+      for (final m in (j['mistakes'] as List? ?? const []).cast<Map<Object?, Object?>>())
+        ReportMistake(
+          original: m['original'] as String? ?? '',
+          corrected: m['corrected'] as String? ?? '',
+          explanationTr: m['explanation_tr'] as String? ?? '',
+        ),
+    ],
+    summaryTr: j['summary_tr'] as String? ?? '',
+    weakWords: [
+      for (final w in (j['weak_words'] as List? ?? const []).cast<Map<Object?, Object?>>())
+        WeakWordEvidence.fromJson(Map<String, Object?>.from(w)),
+    ],
+  );
+}
+
+/// All the pronunciation evidence of a conversation: one entry per word (the
+/// least confident; misheard before merely unsure), at most [max].
+List<WeakWordEvidence> collectEvidence(List<ChatMessage> history, {int max = 8}) {
+  double rank(WeakWordEvidence w) => (w.heard.isEmpty ? 1 : 0) + (w.confidence ?? 0.5);
+  final byWord = <String, WeakWordEvidence>{};
+  for (final m in history) {
+    if (!m.fromUser) continue;
+    for (final e in m.evidence) {
+      final old = byWord[e.word];
+      if (old == null || rank(e) < rank(old)) byWord[e.word] = e;
+    }
+  }
+  return (byWord.values.toList()..sort((a, b) => rank(a).compareTo(rank(b)))).take(max).toList();
+}
+
+abstract class ConversationReportService {
+  Future<ConversationReport> report(Scenario scenario, List<ChatMessage> history);
+}
+
+/// The `conversationReport` Cloud Function (functions/src/conversation_report.ts).
+class CallableConversationReportService implements ConversationReportService {
+  CallableConversationReportService(this._invoke);
+  final CallableInvoker _invoke;
+
+  @override
+  Future<ConversationReport> report(Scenario scenario, List<ChatMessage> history) async {
+    final recent = history.length > 40 ? history.sublist(history.length - 40) : history;
+    final Object? raw;
+    try {
+      raw = await _invoke('conversationReport', {
+        'scenarioId': scenario.id,
+        'messages': [for (final m in recent) m.toApi()],
+        'pronunciation': [for (final e in collectEvidence(history, max: 30)) e.toJson()],
+      }).timeout(const Duration(seconds: 90));
+    } on FirebaseFunctionsException catch (e) {
+      throw ConversationException(
+        e.code == 'resource-exhausted'
+            ? 'Bugünkü karne hakkın doldu. Yarın yeni bir sohbetle tekrar dene.'
+            : CallableConversationService.messageForCode(e.code),
+      );
+    } on Exception {
+      throw const ConversationException('Bağlantı kurulamadı. İnternetini kontrol et.');
+    }
+    return ConversationReport.fromJson(Map<String, Object?>.from(raw as Map));
+  }
+}
+
+/// Offline karne for the demo: the rule-based corrections already shown in
+/// the chat plus the on-device pronunciation evidence.
+class DemoConversationReportService implements ConversationReportService {
+  @override
+  Future<ConversationReport> report(Scenario scenario, List<ChatMessage> history) async {
+    final mistakes = [
+      for (final m in history)
+        if (m.fromUser && m.correction != null)
+          ReportMistake(original: m.text, corrected: m.correction!, explanationTr: m.tipTr ?? ''),
+    ];
+    return ConversationReport(
+      mistakes: mistakes,
+      summaryTr: mistakes.isEmpty
+          ? 'Cümlelerinde belirgin bir hata görmedim. Bir sonraki sahnede daha uzun cevaplar dene.'
+          : 'Sahneyi tamamladın. Aşağıdaki cümleleri bir kez de doğru hâliyle yüksek sesle söyle.',
+      weakWords: collectEvidence(history),
+    );
+  }
+}
+
+/// Live karne when the chat is live, the offline one for the demo.
+final conversationReportServiceProvider = Provider<ConversationReportService>((ref) {
+  final functions = ref.watch(functionsProvider);
+  if (!ref.watch(conversationServiceProvider).isLive || functions == null) {
+    return DemoConversationReportService();
+  }
+  return CallableConversationReportService(
+    (name, data) async => (await functions.httpsCallable(name).call<Object?>(data)).data,
+  );
 });

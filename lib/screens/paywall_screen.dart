@@ -31,12 +31,18 @@ Future<GateResult> requirePremium(
   PremiumFeature feature, {
   String? freeAlternative,
   String? placement,
+  String? pitch,
 }) async {
   if (ref.read(premiumProvider)) return GateResult.premium;
   final choseFree = await Navigator.of(context).push<bool>(
     MaterialPageRoute<bool>(
       fullscreenDialog: true,
-      builder: (_) => PaywallScreen(feature: feature, freeAlternative: freeAlternative, placement: placement),
+      builder: (_) => PaywallScreen(
+        feature: feature,
+        freeAlternative: freeAlternative,
+        placement: placement,
+        pitch: pitch,
+      ),
     ),
   );
   if (!context.mounted) return GateResult.closed;
@@ -62,7 +68,12 @@ class PaywallScreen extends ConsumerStatefulWidget {
     this.freeAlternative,
     this.placement,
     this.showFamily = false,
+    this.pitch,
   });
+
+  /// One line under the header saying why now (e.g. the voice coach's
+  /// private-tutor comparison once the free daily taste is used up).
+  final String? pitch;
 
   /// The feature the user tried to open (highlighted), if any.
   final PremiumFeature? feature;
@@ -148,6 +159,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       Text('Premium ile', style: Theme.of(context).textTheme.titleMedium),
       const SizedBox(height: 8),
       for (final f in PremiumFeature.values) _FeatureRow(f, highlighted: f == widget.feature),
+      for (final b in extraPremiumBullets) _ExtraBulletRow(b),
       const SizedBox(height: 14),
       _FreeBox(),
       const SizedBox(height: 18),
@@ -167,6 +179,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
           children: [
             _header(context, premium),
+            if (!premium && widget.pitch != null) ...[const SizedBox(height: 12), _Pitch(widget.pitch!)],
             if (!premium)
               if (personalLine(whyWrongWeek(ref.watch(whyWrongQuotaProvider))) case final line?) ...[
                 const SizedBox(height: 12),
@@ -393,6 +406,71 @@ String? personalLine(({int wrong, int locked}) week) {
     return "Bu hafta ${week.wrong} yanlışının açıklamasını gördün. Premium'da günlük sınır yok.";
   }
   return null;
+}
+
+/// Extra Premium bullets drawn right after the [PremiumFeature] rows
+/// (emoji, title, description). Shared with the hedef-paketleri branch.
+const extraPremiumBullets = <(String emoji, String title, String description)>[
+  (
+    '🎙️',
+    'Sesli konuşma koçu + konuşma karnesi',
+    'Garson, mülakatçı, resepsiyon: sesli konuş, cevabı sesli duy. Sonunda hatalı cümlelerin ve '
+        'telefonun zor anladığı kelimelerle karnen hazır.',
+  ),
+];
+
+class _ExtraBulletRow extends StatelessWidget {
+  const _ExtraBulletRow(this.bullet);
+  final (String emoji, String title, String description) bullet;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    margin: const EdgeInsets.only(bottom: 8),
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: Brand.card,
+      border: Border.all(color: Brand.line, width: 2),
+      borderRadius: BorderRadius.circular(14),
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Glyph(emoji: bullet.$1, icon: Icons.check_circle_outline_rounded, size: 26),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(bullet.$2, style: const TextStyle(fontWeight: FontWeight.w800)),
+              const SizedBox(height: 2),
+              Text(bullet.$3, style: TextStyle(color: Brand.muted, fontSize: 13)),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+class _Pitch extends StatelessWidget {
+  const _Pitch(this.text);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    key: const ValueKey('paywall-pitch'),
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(color: Brand.accentBg, borderRadius: BorderRadius.circular(14)),
+    child: Row(
+      children: [
+        Icon(Icons.record_voice_over_rounded, color: Brand.accent),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, height: 1.3)),
+        ),
+      ],
+    ),
+  );
 }
 
 class _Personal extends StatelessWidget {
