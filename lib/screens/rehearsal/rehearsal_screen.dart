@@ -25,7 +25,7 @@ Future<void> openRehearsal(BuildContext context) => Navigator.of(context).push(
 
 /// Lets Premium users through; others see the paywall.
 Future<bool> _premium(BuildContext context, WidgetRef ref) async =>
-    await requirePremium(context, ref, PremiumFeature.aiConversation, placement: rehearsalPlacement) ==
+    await requirePremium(context, ref, PremiumFeature.interviewRehearsal, placement: rehearsalPlacement) ==
     GateResult.premium;
 
 Future<void> _startFirst(BuildContext context) => Navigator.of(context).push(

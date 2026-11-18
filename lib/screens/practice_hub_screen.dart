@@ -90,16 +90,6 @@ class PracticeHubScreen extends ConsumerWidget {
             subtitle: 'Gerçek sahnelerde sohbet et, hataların Türkçe açıklansın',
             onTap: () => openPage(context, 'Konuşma', const ConversationHomeScreen()),
           ),
-          if (!context.isKid)
-            _HubTile(
-              key: const Key('hub-rehearsal'),
-              icon: Icons.work_outline_rounded,
-              emoji: '💼',
-              color: Brand.info,
-              title: 'Mülakat provası',
-              subtitle: 'Kendini ve projeni İngilizce anlat, takıldığın yerden çalış',
-              onTap: () => openRehearsal(context),
-            ),
           _HubTile(
             key: const Key('hub-pronunciation'),
             icon: Icons.record_voice_over_outlined,
@@ -262,6 +252,20 @@ class PracticeHubScreen extends ConsumerWidget {
             subtitle: 'Seviyeni ölç, sana uygun yerden başla',
             onTap: () => fullScreen(const PlacementIntroScreen()),
           ),
+          if (!context.isKid) ...[
+            const SizedBox(height: 8),
+            const SectionLabel('İŞ VE KARİYER'),
+            const SizedBox(height: 8),
+            _HubTile(
+              key: const Key('hub-rehearsal'),
+              icon: Icons.work_outline_rounded,
+              emoji: '💼',
+              color: Brand.info,
+              title: 'Mülakat provası',
+              subtitle: 'Kendini ve projeni İngilizce anlat, takıldığın yerden çalış',
+              onTap: () => openRehearsal(context),
+            ),
+          ],
         ],
       ),
     );

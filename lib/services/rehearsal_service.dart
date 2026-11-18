@@ -134,8 +134,9 @@ class DemoRehearsalService implements RehearsalService {
   Future<RehearsalAnalysis> analyze(RehearsalRequest request) async {
     await Future<void>.delayed(delay);
     final all = request.answers.map((a) => a.answer).join(' ');
-    if (countWords(all) < 5)
+    if (countWords(all) < 5) {
       throw const RehearsalException('Cevabın çok kısa. Biraz daha anlat: en az birkaç cümle.');
+    }
     final sentences = [for (final a in request.answers) ..._sentences(a.answer)];
 
     final past = <GrammarExample>[];

@@ -9,12 +9,13 @@ import '../../services/rehearsal_service.dart';
 import '../../services/speech.dart';
 import '../../services/voice_recorder.dart';
 import '../../theme.dart';
+import '../../services/growth/analytics_events.dart' show PaywallPlacement;
 import '../paywall_screen.dart';
 import '../../services/billing/products.dart';
 import 'rehearsal_analysis_screen.dart';
 
 /// Paywall placement (analytics) for every Mülakat Provası gate.
-const rehearsalPlacement = 'interview_rehearsal';
+const rehearsalPlacement = PaywallPlacement.interviewRehearsal;
 
 /// Minimum words per answer before moving on (the server needs a few
 /// sentences to say anything useful).
@@ -274,7 +275,7 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
                             final gate = await requirePremium(
                               context,
                               ref,
-                              PremiumFeature.aiConversation,
+                              PremiumFeature.interviewRehearsal,
                               placement: rehearsalPlacement,
                             );
                             if (gate == GateResult.premium) await _analyse();
