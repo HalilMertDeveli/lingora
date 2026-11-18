@@ -282,11 +282,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         bottomNavigationBar: KeyedSubtree(
           key: _barKey,
-          child: NavigationBar(
-            key: const Key('bottom-nav'),
-            selectedIndex: _index,
-            onDestinationSelected: _select,
-            destinations: [for (final tab in _tabs) _destination(tab)],
+          // One-line labels: with the largest system text "Görevler" broke
+          // into two clipped lines on small phones.
+          child: MediaQuery.withClampedTextScaling(
+            maxScaleFactor: 1.15,
+            child: NavigationBar(
+              key: const Key('bottom-nav'),
+              selectedIndex: _index,
+              onDestinationSelected: _select,
+              destinations: [for (final tab in _tabs) _destination(tab)],
+            ),
           ),
         ),
       ),
