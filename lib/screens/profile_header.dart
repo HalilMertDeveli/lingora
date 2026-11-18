@@ -102,21 +102,30 @@ class ProfileHeader extends ConsumerWidget {
               Text('İngilizce öğreniyor', style: TextStyle(color: Brand.muted)),
               if (!kid && avatarItem != null) ...[
                 const SizedBox(height: 6),
-                SegmentedButton<bool>(
-                  key: const ValueKey('profile-face'),
-                  showSelectedIcon: false,
-                  style: const ButtonStyle(visualDensity: VisualDensity.compact),
-                  segments: [
-                    ButtonSegment(
-                      value: false,
-                      enabled: profile.photo != null,
-                      icon: const Icon(Icons.photo_camera_rounded, size: 16),
-                      label: const Text('Fotoğraf'),
-                    ),
-                    ButtonSegment(value: true, label: Text('${avatarItem.emoji} Avatar')),
-                  ],
-                  selected: {prefersAvatar(wallet) || profile.photo == null},
-                  onSelectionChanged: (s) => ref.read(goldWalletProvider).useAvatarFace(s.first),
+                // Scales down instead of wrapping "Fotoğraf" into three lines
+                // on a 480x800 phone (QA).
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: SegmentedButton<bool>(
+                    key: const ValueKey('profile-face'),
+                    showSelectedIcon: false,
+                    style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                    segments: [
+                      ButtonSegment(
+                        value: false,
+                        enabled: profile.photo != null,
+                        icon: const Icon(Icons.photo_camera_rounded, size: 16),
+                        label: const Text('Fotoğraf', maxLines: 1, softWrap: false),
+                      ),
+                      ButtonSegment(
+                        value: true,
+                        label: Text('${avatarItem.emoji} Avatar', maxLines: 1, softWrap: false),
+                      ),
+                    ],
+                    selected: {prefersAvatar(wallet) || profile.photo == null},
+                    onSelectionChanged: (s) => ref.read(goldWalletProvider).useAvatarFace(s.first),
+                  ),
                 ),
               ],
             ],

@@ -1167,9 +1167,16 @@ class _DailyGoalCard extends ConsumerWidget {
             ),
           ),
           const SizedBox(width: 12),
-          Text(
-            '$today / ${p.dailyGoal} XP',
-            style: TextStyle(fontWeight: FontWeight.w700, color: Brand.muted),
+          // Capped and scaled down: on a 256 dp wide screen it overflowed (QA).
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 88),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                '$today / ${p.dailyGoal} XP',
+                style: TextStyle(fontWeight: FontWeight.w700, color: Brand.muted),
+              ),
+            ),
           ),
         ],
       ),

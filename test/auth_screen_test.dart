@@ -30,12 +30,17 @@ class _FixedSync extends ProgressSync {
   SyncStatus build() => status;
 }
 
-Future<void> _pumpAuth(WidgetTester tester, AccountService service, {Brightness b = Brightness.light}) async {
+Future<void> _pumpAuth(
+  WidgetTester tester,
+  AccountService service, {
+  Brightness b = Brightness.light,
+  bool register = false,
+}) async {
   await tester.pumpWidget(
     MaterialApp(
       theme: buildTheme(brightness: b),
       builder: (_, child) => PaletteScope(palette: Palette.of(AppMode.adult, b), child: child!),
-      home: AuthScreen(service: service),
+      home: AuthScreen(service: service, register: register),
     ),
   );
   await tester.pump();
@@ -79,6 +84,20 @@ void main() {
       tester.view.viewInsets = FakeViewPadding.zero;
       await tester.pump();
       expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('taller phone, keyboard open: the button still steps aside (Galaxy M22)', (tester) async {
+      // 720x1600 at 300 dpi = 384x853 dp; the keyboard about 330 dp. Above it
+      // the pinned button still hid the password field on the real phone.
+      tester.view.devicePixelRatio = 720 / 384;
+      tester.view.physicalSize = const Size(720, 1600);
+      addTearDown(tester.view.reset);
+      await _pumpAuth(tester, AccountService(MockFirebaseAuth()), register: true);
+      expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
+      tester.view.viewInsets = const FakeViewPadding(bottom: 330 * 720 / 384);
+      await tester.pump();
+      expect(find.byKey(const ValueKey('auth-submit')), findsNothing);
       expect(tester.takeException(), isNull);
     });
 

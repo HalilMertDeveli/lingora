@@ -81,68 +81,118 @@ class SectionHeader extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Row(
-            children: [
-              Icon(
-                completed
-                    ? Icons.verified_rounded
-                    : open
-                    ? Icons.flag_circle_rounded
-                    : Icons.lock_rounded,
-                key: completed ? Key('section-completed-${section.id}') : null,
-                color: completed ? Brand.success : (open ? _color : Brand.muted),
-                size: 34,
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(sectionLabel(section), style: t.titleMedium),
-                    const SizedBox(height: 8),
-                    GlossyProgress(value: ratio, height: 10, color: _color),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 12),
-              Text(
-                completed ? 'Tamamlandı' : (open ? '%$percent' : 'Kilitli'),
-                style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
-              ),
-              // "Bölümü atla": the summary explains the exam and starts it.
-              if (!section.parallel && !sectionSkipFinished(section, progress)) ...[
-                const SizedBox(width: 8),
-                Material(
-                  color: _color,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  child: InkWell(
-                    key: Key('section-skip-quick-${section.id}'),
-                    borderRadius: BorderRadius.circular(12),
-                    onTap: () => showSectionSummary(context, section, open: open),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.fast_forward_rounded, color: Colors.white, size: 18),
-                          const SizedBox(width: 2),
-                          Text(
-                            'Atla',
-                            semanticsLabel: open ? 'Bu bölümü sınavla atla' : 'Sınavla bu bölüme atla',
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
-                          ),
-                        ],
-                      ),
+          // Narrow screens or large text: smaller icon and an icon-only "Atla".
+          // Otherwise the row overflowed (256 dp) or the title broke inside a
+          // word ("Temelle/r" at font 1.3 on a Galaxy M22, QA).
+          LayoutBuilder(
+            builder: (context, box) {
+              final status = completed ? 'Tamamlandı' : (open ? '%$percent' : 'Kilitli');
+              final skip = !section.parallel && !sectionSkipFinished(section, progress);
+              final narrow =
+                  box.maxWidth < 260 ||
+                  _titleRoom(context, box.maxWidth, status: status, skip: skip) <
+                      _longestWord(context, sectionLabel(section), t.titleMedium);
+              return Row(
+                children: [
+                  Icon(
+                    completed
+                        ? Icons.verified_rounded
+                        : open
+                        ? Icons.flag_circle_rounded
+                        : Icons.lock_rounded,
+                    key: completed ? Key('section-completed-${section.id}') : null,
+                    color: completed ? Brand.success : (open ? _color : Brand.muted),
+                    size: narrow ? 26 : 34,
+                  ),
+                  SizedBox(width: narrow ? 8 : 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(sectionLabel(section), style: t.titleMedium),
+                        const SizedBox(height: 8),
+                        GlossyProgress(value: ratio, height: 10, color: _color),
+                      ],
                     ),
                   ),
-                ),
-              ],
-            ],
+                  SizedBox(width: narrow ? 8 : 12),
+                  Text(
+                    status,
+                    style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
+                  ),
+                  // "Bölümü atla": the summary explains the exam and starts it.
+                  if (skip) ...[
+                    const SizedBox(width: 8),
+                    Material(
+                      color: _color,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      child: InkWell(
+                        key: Key('section-skip-quick-${section.id}'),
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () => showSectionSummary(context, section, open: open),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: narrow ? 6 : 10, vertical: 6),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              narrow
+                                  ? Icon(
+                                      Icons.fast_forward_rounded,
+                                      color: Colors.white,
+                                      size: 18,
+                                      semanticLabel: open
+                                          ? 'Bu bölümü sınavla atla'
+                                          : 'Sınavla bu bölüme atla',
+                                    )
+                                  : const Icon(Icons.fast_forward_rounded, color: Colors.white, size: 18),
+                              if (!narrow) ...[
+                                const SizedBox(width: 2),
+                                Text(
+                                  'Atla',
+                                  semanticsLabel: open ? 'Bu bölümü sınavla atla' : 'Sınavla bu bölüme atla',
+                                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
+              );
+            },
           ),
         ],
       ),
     );
   }
+}
+
+double _textWidth(BuildContext context, String text, TextStyle? style) {
+  final painter = TextPainter(
+    text: TextSpan(text: text, style: DefaultTextStyle.of(context).style.merge(style)),
+    textScaler: MediaQuery.textScalerOf(context),
+    textDirection: TextDirection.ltr,
+    maxLines: 1,
+  )..layout();
+  final w = painter.width;
+  painter.dispose();
+  return w;
+}
+
+/// Width of the longest word of [text]: the title must fit it on a line.
+double _longestWord(BuildContext context, String text, TextStyle? style) =>
+    text.split(' ').map((w) => _textWidth(context, w, style)).fold(0.0, (a, b) => a > b ? a : b);
+
+/// Room left for the title in the full layout (34 dp icon, the status text
+/// and the "Atla" button with its label).
+double _titleRoom(BuildContext context, double width, {required String status, required bool skip}) {
+  final statusWidth = _textWidth(context, status, const TextStyle(fontWeight: FontWeight.w800));
+  final skipWidth = skip
+      ? 8 + 20 + 18 + 2 + _textWidth(context, 'Atla', const TextStyle(fontWeight: FontWeight.w800))
+      : 0.0;
+  return width - 34 - 12 - 12 - statusWidth - skipWidth;
 }
 
 /// "Bölüm 2 · A1 · Günlük hayat".
