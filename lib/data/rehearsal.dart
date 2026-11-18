@@ -811,6 +811,53 @@ class RehearsalStore extends Notifier<RehearsalState> {
     _save(RehearsalState(sessions: list, tasks: state.tasks));
   }
 
+  /// Adds analysed rehearsals kept in the account (another phone, a
+  /// reinstall) that this phone does not have. Local copies win: they hold
+  /// the recordings. Returns how many were added.
+  int mergeFromCloud(List<RehearsalSession> cloud) {
+    final have = {for (final s in state.sessions) s.id};
+    final add = [
+      for (final s in cloud)
+        if (!have.contains(s.id)) s,
+    ];
+    if (add.isEmpty) return 0;
+    _save(
+      RehearsalState(
+        sessions: [...state.sessions, ...add]..sort((a, b) => a.at.compareTo(b.at)),
+        tasks: state.tasks,
+      ),
+    );
+    return add.length;
+  }
+
+  /// A rehearsal as the server keeps it in rehearsals/{uid}/items/{id}
+  /// ({kind, items: [{question, answer}], analysis, createdAt}); null when
+  /// it cannot be read. Recordings never leave the phone that made them.
+  static RehearsalSession? fromCloud(String id, Map<String, Object?> d, {DateTime? createdAt}) {
+    final kind = RehearsalKind.values.where((k) => k.name == d['kind']).firstOrNull;
+    final analysis = d['analysis'];
+    if (kind == null || analysis is! Map || createdAt == null) return null;
+    final byText = {
+      for (final q in [...firstRehearsalQuestions, ...interviewQuestionBank]) q.text: q.id,
+    };
+    return RehearsalSession(
+      id: id,
+      kind: kind,
+      at: createdAt,
+      answers: [
+        for (final i in (d['items'] as List?) ?? const [])
+          if (i is Map)
+            RehearsalAnswer(
+              questionId: byText['${i['question']}'] ?? '',
+              question: '${i['question'] ?? ''}',
+              answer: '${i['answer'] ?? ''}',
+              typed: true,
+            ),
+      ],
+      analysis: RehearsalAnalysis.fromJson(analysis),
+    );
+  }
+
   /// Records a finished task once; a later attempt does not overwrite it.
   void completeTask(String id, String title, TaskAttempt attempt) {
     if (state.isDone(id)) return;

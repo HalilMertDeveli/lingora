@@ -24,6 +24,7 @@ import 'services/billing/premium_perks.dart';
 import 'services/friends.dart';
 import 'services/growth/growth.dart';
 import 'services/league_remote.dart';
+import 'services/rehearsal_cloud.dart';
 import 'services/showcase.dart';
 import 'services/speech.dart';
 import 'theme.dart';
@@ -77,6 +78,8 @@ class LingoraApp extends ConsumerWidget {
     ref.listen(premiumControllerProvider, (_, _) {});
     // Premium's monthly streak freezes go into the wallet by themselves.
     ref.listen(premiumPerksSyncProvider, (_, _) {});
+    // Mülakat Provası history comes back from the account on a new phone.
+    ref.listen(rehearsalCloudSyncProvider, (_, _) {});
     // Analytics consent sync + churn signals (no-op without analytics).
     ref.listen(growthSignalsProvider, (_, _) {});
     final settings = ref.watch(appSettingsProvider);

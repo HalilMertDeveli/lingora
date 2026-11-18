@@ -1,4 +1,6 @@
 // QA Premium regressions in Mülakat Provası: leaving halfway and double taps.
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,6 +8,8 @@ import 'package:lingora/data/progress.dart';
 import 'package:lingora/data/rehearsal.dart';
 import 'package:lingora/screens/rehearsal/rehearsal_screen.dart';
 import 'package:lingora/services/billing/premium.dart';
+import 'package:lingora/services/firebase/firebase_providers.dart';
+import 'package:lingora/services/rehearsal_cloud.dart';
 import 'package:lingora/services/rehearsal_service.dart';
 import 'package:lingora/services/speech.dart';
 import 'package:lingora/services/voice_recorder.dart';
@@ -102,5 +106,39 @@ void main() {
 
     expect(service.calls, 1);
     expect(c.read(rehearsalProvider).sessions.single.answers, hasLength(2));
+  });
+
+  test('rehearsal history comes back from the account on a new phone', () async {
+    final db = FakeFirebaseFirestore();
+    await db.doc('rehearsals/u1/items/r1').set({
+      'kind': 'first',
+      'items': [
+        {'question': firstRehearsalQuestions.first.text, 'answer': 'I am Mert, a backend developer.'},
+      ],
+      'analysis': {'summary_tr': 'Özet', 'content_gaps': [], 'grammar_errors': [], 'exercises': []},
+      'createdAt': Timestamp.fromDate(DateTime(2026, 11, 17, 9)),
+    });
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    final c = ProviderContainer(
+      overrides: [
+        prefsProvider.overrideWithValue(prefs),
+        firestoreProvider.overrideWithValue(db),
+        authStateProvider.overrideWith(
+          (ref) => Stream.value(const AppUser(uid: 'u1', isAnonymous: false, providers: ['password'])),
+        ),
+      ],
+    );
+    addTearDown(c.dispose);
+    c.listen(rehearsalCloudSyncProvider, (_, _) {});
+    await Future<void>.delayed(const Duration(milliseconds: 50));
+    expect(await c.read(rehearsalCloudSyncProvider.future), 1);
+    final s = c.read(rehearsalProvider).sessions.single;
+    expect(s.id, 'r1');
+    expect(s.answers.single.questionId, firstRehearsalQuestions.first.id);
+    expect(s.answers.single.audioPath, isNull);
+    expect(s.analysis!.summaryTr, 'Özet');
+    // A second run adds nothing.
+    expect(c.read(rehearsalProvider.notifier).mergeFromCloud([s]), 0);
   });
 }
