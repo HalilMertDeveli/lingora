@@ -8,6 +8,7 @@ import '../data/gold_wallet.dart';
 import '../data/league.dart' show trWeekKey;
 import '../data/progress.dart';
 import '../data/resume.dart';
+import '../goals/goal_card.dart';
 import '../nav/nav_target.dart';
 import '../nav/tab_navigator.dart';
 import '../nav/course_badge.dart' show showCourseHintIfArmed;
@@ -337,6 +338,8 @@ class _LearnRoot extends ConsumerWidget {
       children: [
         // Dilmaç Kurumsal: shrinks to nothing without assignments.
         const OrgAssignmentsCard(),
+        // "Hedefin ne?": exam countdown or interview rehearsal entry.
+        const GoalHomeCard(),
         Expanded(
           child: switch (track.kind) {
             TrackKind.exam => switch (ref.watch(hasExamPathProvider(track.id))) {

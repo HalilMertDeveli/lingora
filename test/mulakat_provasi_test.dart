@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/progress.dart';
+import 'package:lingora/goals/goal_paywall_copy.dart';
+import 'package:lingora/goals/learn_goal.dart';
 import 'package:lingora/data/rehearsal.dart';
 import 'package:lingora/screens/paywall_screen.dart';
 import 'package:lingora/screens/rehearsal/rehearsal_screen.dart';
@@ -55,6 +57,11 @@ RehearsalSession session(String id, DateTime at, RehearsalAnalysis a, {String an
     );
 
 void main() {
+  test('the interview goal sells the rehearsal first', () {
+    final c = goalPaywallCopy(const LearnGoal(kind: GoalKind.interview), now);
+    expect(c.focus.first, PremiumFeature.interviewRehearsal);
+  });
+
   group('grammar tags → existing grammar-path lessons', () {
     final lessonIds = {
       for (final l in jsonDecode(File('assets/notes/lessons.json').readAsStringSync()) as List)
