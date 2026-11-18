@@ -1078,6 +1078,14 @@ class TopicScreen extends ConsumerWidget {
   }
 }
 
+/// "Olumlu: I do" → "**Olumlu:** I do": a short label before a colon reads
+/// as the rule's title. Rules that already use markdown stay as they are.
+String _boldLead(String rule) {
+  if (rule.contains('*')) return rule;
+  final m = RegExp(r'^([^:]{1,24}):\s+(.+)$').firstMatch(rule);
+  return m == null ? rule : '**${m[1]}:** ${m[2]}';
+}
+
 /// A grammar note as guide cards: the explanation, its rules (coloured
 /// bullets, formulas as chips) and its examples (with a speaker button).
 List<Widget> topicGuideCards(
@@ -1088,7 +1096,8 @@ List<Widget> topicGuideCards(
   final body = topic.body.trim();
   final rules = [
     for (final r in topic.rules)
-      if (r.trim().isNotEmpty) parseMarkdown('- ${r.replaceAll('\n', ' ').trim()}', guide: true).first,
+      if (r.trim().isNotEmpty)
+        parseMarkdown('- ${_boldLead(r.replaceAll('\n', ' ').trim())}', guide: true).first,
   ];
   Widget gap(Widget w) => Padding(padding: const EdgeInsets.only(bottom: 16), child: w);
   return [
