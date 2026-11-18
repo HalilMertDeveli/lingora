@@ -173,7 +173,7 @@ class _MdBlockView extends StatelessWidget {
         child: _Table(rows: b.rows, style: s),
       ),
       MdKind.paragraph => Padding(
-        padding: const EdgeInsets.only(bottom: 8),
+        padding: const EdgeInsets.only(bottom: 10),
         child: Text.rich(inlineSpan(b.text, s.body, s.accentText)),
       ),
     };
@@ -207,7 +207,7 @@ class _Bullet extends StatelessWidget {
     }
     return Padding(
       key: const Key('md-bullet'),
-      padding: const EdgeInsets.only(bottom: 8, left: 2),
+      padding: const EdgeInsets.only(bottom: 10, left: 2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -343,12 +343,11 @@ class _Callout extends StatelessWidget {
     final title = block.label.isEmpty ? look.title : block.label;
     return Container(
       key: Key('md-callout-${block.tone.name}'),
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.fromLTRB(14, 12, 14, 14),
       decoration: BoxDecoration(
         color: s.tint(look.color, 0.12, 0.16),
         borderRadius: BorderRadius.circular(s.radius),
-        border: Border.all(color: look.color.withValues(alpha: 0.45)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -632,7 +631,7 @@ TextSpan inlineSpan(String text, TextStyle style, [Color? strong, bool italic = 
       m.group(1) != null
           ? TextSpan(
               text: m.group(1),
-              style: TextStyle(fontWeight: FontWeight.w800, color: strong),
+              style: const TextStyle(fontWeight: FontWeight.w800),
             )
           : TextSpan(
               text: m.group(2),

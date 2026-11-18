@@ -100,7 +100,7 @@ class GuideView extends StatelessWidget {
       children: [
         for (final (i, s) in sections.indexed)
           Padding(
-            padding: const EdgeInsets.only(bottom: 14),
+            padding: const EdgeInsets.only(bottom: 16),
             child: GuideSectionCard(section: s, index: i, unitColor: color),
           ),
       ],
@@ -135,43 +135,44 @@ class GuideSectionCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (title.isNotEmpty)
-            Container(
-              padding: const EdgeInsets.fromLTRB(12, 10, 14, 10),
-              decoration: BoxDecoration(
-                color: Color.alphaBlend(look.color.withValues(alpha: p.isDark ? 0.20 : 0.12), p.card),
-                border: Border(bottom: BorderSide(color: look.color.withValues(alpha: 0.35))),
-              ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 14, 16, 0),
               child: Row(
                 children: [
                   Container(
-                    width: kid ? 36 : 32,
-                    height: kid ? 36 : 32,
-                    decoration: BoxDecoration(color: look.color, shape: BoxShape.circle),
-                    child: Icon(look.icon, size: kid ? 20 : 18, color: onColor(look.color)),
+                    width: kid ? 34 : 30,
+                    height: kid ? 34 : 30,
+                    decoration: BoxDecoration(
+                      color: Color.alphaBlend(look.color.withValues(alpha: p.isDark ? 0.24 : 0.14), p.card),
+                      borderRadius: BorderRadius.circular(Radii.sm),
+                    ),
+                    child: Icon(look.icon, size: kid ? 20 : 18, color: ink),
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: Text.rich(
                       inlineSpan(
                         title,
                         TextStyle(
                           fontSize: kid ? 19 : 17,
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w800,
                           height: 1.25,
-                          color: ink,
+                          color: p.ink,
                         ),
-                        ink,
                       ),
                       key: const Key('md-h2'),
                     ),
                   ),
                 ],
               ),
-            )
-          else
-            Container(height: 4, color: look.color),
+            ),
+          if (title.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+              child: Divider(height: 1, thickness: 1, color: p.line),
+            ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(14, 12, 14, 6),
+            padding: const EdgeInsets.fromLTRB(16, 14, 16, 8),
             child: MdBlocksView(blocks: section.blocks, color: look.color, steps: topic == GuideTopic.steps),
           ),
         ],
