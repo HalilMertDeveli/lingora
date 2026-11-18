@@ -93,6 +93,7 @@ class PaywallScreen extends ConsumerStatefulWidget {
         PremiumFeature.errorAnalytics => PaywallPlacement.errorAnalysis,
         PremiumFeature.whyWrong => PaywallPlacement.whyWrong,
         PremiumFeature.premiumAvatars => PaywallPlacement.shop,
+        PremiumFeature.levelReport => PaywallPlacement.levelReport,
         PremiumFeature.streakFreezes || PremiumFeature.doubleGold || null => PaywallPlacement.profile,
       };
 
