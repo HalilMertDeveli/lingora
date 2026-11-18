@@ -288,6 +288,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             maxScaleFactor: 1.15,
             child: NavigationBar(
               key: const Key('bottom-nav'),
+              // Under 68dp a tab (largest display size on a small phone) a
+              // label cannot fit on one line: icons only (they keep their
+              // names for TalkBack).
+              labelBehavior: MediaQuery.sizeOf(context).width / _tabs.length < 68
+                  ? NavigationDestinationLabelBehavior.alwaysHide
+                  : null,
               selectedIndex: _index,
               onDestinationSelected: _select,
               destinations: [for (final tab in _tabs) _destination(tab)],
