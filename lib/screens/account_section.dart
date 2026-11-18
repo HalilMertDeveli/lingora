@@ -83,6 +83,10 @@ class AccountSection extends ConsumerWidget {
                 label: const Text('Çıkış yap'),
                 onPressed: () => _run(context, service.signOut),
               ),
+            if (signedIn) ...[
+              const SizedBox(height: 4),
+              DeleteAccountButton(service: service),
+            ],
           ],
         ],
       ),
@@ -98,6 +102,71 @@ Future<void> _run(BuildContext context, Future<void> Function() action) async {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
     }
   }
+}
+
+/// "Hesabımı sil": asks once, then deletes the account and its cloud data
+/// (Google Play account deletion policy). Ignores taps while it runs.
+class DeleteAccountButton extends StatefulWidget {
+  const DeleteAccountButton({super.key, required this.service});
+  final AccountService service;
+
+  @override
+  State<DeleteAccountButton> createState() => _DeleteAccountButtonState();
+}
+
+class _DeleteAccountButtonState extends State<DeleteAccountButton> {
+  bool _busy = false;
+
+  Future<void> _delete() async {
+    if (_busy) return;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Hesabın silinsin mi?'),
+        content: const Text(
+          'Hesabın ve bulutta tuttuğumuz her şey kalıcı olarak silinir: ilerleme yedeği, profil, '
+          'arkadaşlıklar, lig kaydı ve satın alım kayıtları. Bu geri alınamaz.\n\n'
+          'Google Play aboneliğin varsa silme işlemi onu iptal etmez; Google Play > Ödemeler ve '
+          'abonelikler bölümünden iptal et.\n\n'
+          'Bu telefondaki ilerlemen silinmez; onu da silmek için uygulamayı kaldırabilirsin.',
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.of(ctx).pop(false), child: const Text('Vazgeç')),
+          FilledButton(
+            key: const ValueKey('delete-account-confirm'),
+            style: FilledButton.styleFrom(backgroundColor: Brand.error, foregroundColor: Colors.white),
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: const Text('Kalıcı olarak sil'),
+          ),
+        ],
+      ),
+    );
+    if (ok != true || !mounted) return;
+    setState(() => _busy = true);
+    try {
+      await widget.service.deleteAccount();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Hesabın ve bulut verilerin silindi.')),
+        );
+      }
+    } on AccountException catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => TextButton.icon(
+    key: const ValueKey('account-delete'),
+    style: TextButton.styleFrom(foregroundColor: Brand.error),
+    onPressed: _busy ? null : _delete,
+    icon: _busy
+        ? const SizedBox.square(dimension: 18, child: CircularProgressIndicator(strokeWidth: 2))
+        : const Icon(Icons.delete_forever_outlined),
+    label: Text(_busy ? 'Siliniyor…' : 'Hesabımı sil'),
+  );
 }
 
 class _Line extends StatelessWidget {

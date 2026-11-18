@@ -1,6 +1,7 @@
 // Dilmaç Cloud Functions (2nd gen). Deploy steps: docs/firebase-backend.md.
 import Anthropic from "@anthropic-ai/sdk";
 import { initializeApp } from "firebase-admin/app";
+import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { setGlobalOptions } from "firebase-functions/v2";
 import { defineSecret } from "firebase-functions/params";
@@ -8,6 +9,7 @@ import { logger } from "firebase-functions";
 import { CallableRequest, HttpsError, onCall } from "firebase-functions/v2/https";
 import { onSchedule } from "firebase-functions/v2/scheduler";
 
+import * as account from "./account.js";
 import * as writing from "./assess_writing.js";
 import * as conversation from "./converse.js";
 import * as karne from "./conversation_report.js";
@@ -106,3 +108,16 @@ export const removeFamilyMember = onCall((req) =>
 export const leaveFamily = onCall((req) => family.leaveFamily(getFirestore(), requireUid(req)));
 /** {} -> { role: 'none' | 'member' | 'owner', ... } */
 export const getFamily = onCall((req) => family.getFamily(getFirestore(), requireUid(req), new Date()));
+
+// Account deletion (Profil > Hesap > Hesabımı sil): functions/src/account.ts.
+/** {} -> { deleted, docs }: all server data, then the Auth user. */
+export const deleteAccount = onCall({ timeoutSeconds: 120 }, async (req) => {
+  const uid = requireUid(req);
+  const result = await account.deleteUserData(getFirestore(), uid);
+  try {
+    await getAuth().deleteUser(uid);
+  } catch (e) {
+    if ((e as { code?: string }).code !== "auth/user-not-found") throw e;
+  }
+  return result;
+});
