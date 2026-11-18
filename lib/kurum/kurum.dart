@@ -20,6 +20,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/app_resume.dart';
 import '../data/course_repository.dart';
 import '../data/league.dart' show weekStart;
 import '../data/progress.dart';
@@ -527,7 +528,10 @@ final orgLicenseProvider = StreamProvider<OrgLicense?>((ref) {
 /// Premium from an org seat (see premiumProvider).
 final licensePremiumProvider = Provider<bool>((ref) {
   final l = ref.watch(orgLicenseProvider).value;
-  return l != null && l.activeAt(ref.read(clockProvider)());
+  if (l == null) return false;
+  final now = ref.read(clockProvider)();
+  recheckAt(ref, l.expiresAt, now);
+  return l.activeAt(now);
 });
 
 /// The teacher's classes (only with an active teacher license).

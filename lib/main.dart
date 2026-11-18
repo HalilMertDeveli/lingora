@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/app_resume.dart';
 import 'core/frame_stats.dart';
 import 'core/startup_trace.dart';
 import 'data/app_settings.dart';
@@ -100,14 +101,16 @@ class LingoraApp extends ConsumerWidget {
       title: 'Dilmaç',
       debugShowCheckedModeBanner: false,
       theme: buildTheme(mode: settings.mode, brightness: brightness, palette: palette),
-      builder: (context, child) => PaletteScope(
-        palette: palette,
-        child: MascotOutfitScope(
-          accessory: outfit,
-          pofuduk: kidOutfit,
-          child: settings.reduceMotion
-              ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
-              : child!,
+      builder: (context, child) => AppResumeWatcher(
+        child: PaletteScope(
+          palette: palette,
+          child: MascotOutfitScope(
+            accessory: outfit,
+            pofuduk: kidOutfit,
+            child: settings.reduceMotion
+                ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
+                : child!,
+          ),
         ),
       ),
       home: ConsentGate(child: onboarded ? const HomeScreen() : const OnboardingScreen()),

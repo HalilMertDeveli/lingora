@@ -8,6 +8,7 @@ import { logger } from "firebase-functions";
 import { CallableRequest, HttpsError, onCall } from "firebase-functions/v2/https";
 import { onSchedule } from "firebase-functions/v2/scheduler";
 
+import { stubClaude, stubClaudeEnabled } from "./ai_stub.js";
 import * as writing from "./assess_writing.js";
 import * as conversation from "./converse.js";
 import * as karne from "./conversation_report.js";
@@ -19,7 +20,13 @@ initializeApp();
 setGlobalOptions({ region: "europe-west1", maxInstances: 10 });
 
 const anthropicApiKey = defineSecret("ANTHROPIC_API_KEY");
-let claude: Anthropic | undefined;
+let claude: conversation.ClaudeClient | undefined;
+
+/** The Claude client: the real one, or the QA fake inside the emulator only (see ai_stub.ts). */
+function claudeClient(): conversation.ClaudeClient {
+  claude ??= stubClaudeEnabled() ? stubClaude() : new Anthropic({ apiKey: anthropicApiKey.value() });
+  return claude;
+}
 
 function requireUid(req: CallableRequest): string {
   if (!req.auth) throw new HttpsError("unauthenticated", "sign_in_required");
@@ -59,22 +66,19 @@ export const settleLeagues = onSchedule(
 /** { scenarioId, messages } -> { reply, correction, tip_tr, done, remaining, free } */
 export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
   const uid = requireUid(req);
-  claude ??= new Anthropic({ apiKey: anthropicApiKey.value() });
-  return conversation.converse(getFirestore(), claude, uid, req.data, new Date());
+  return conversation.converse(getFirestore(), claudeClient(), uid, req.data, new Date());
 });
 
 /** { scenarioId, messages, pronunciation } -> { mistakes, summary_tr, weak_words, remaining } (voice coach karne) */
 export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
   const uid = requireUid(req);
-  claude ??= new Anthropic({ apiKey: anthropicApiKey.value() });
-  return karne.conversationReport(getFirestore(), claude, uid, req.data, new Date());
+  return karne.conversationReport(getFirestore(), claudeClient(), uid, req.data, new Date());
 });
 
 /** { taskId, text } -> { scores, corrections, next_tr, remaining } (general course writing tasks) */
 export const assessWriting = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
   const uid = requireUid(req);
-  claude ??= new Anthropic({ apiKey: anthropicApiKey.value() });
-  return writing.assessWriting(getFirestore(), claude, uid, req.data, new Date());
+  return writing.assessWriting(getFirestore(), claudeClient(), uid, req.data, new Date());
 });
 
 /** { productId, purchaseToken } -> { active, productId, expiresAt?, packs } (subscriptions, family plan, exam packs) */
