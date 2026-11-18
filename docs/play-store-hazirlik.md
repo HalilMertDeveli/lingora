@@ -69,4 +69,5 @@ Ayrıntılı senaryolar ve ekran görüntüleri: `_cikti/qa-ucretsiz/rapor.md` (
 - Çevrimdışı giriş/kayıt/silme: açık Türkçe mesaj, veri kaybı yok.
 - En büyük yazı + ekran boyutu (720×1280): üst çubuk taşması ve sekme etiketi bu dalda düzeltildi.
 - Koyu mod canlı geçiş. Çocuk modunda Çaycı Dayı yok (Pofuduk).
+- Gerçek cihaz (Samsung Galaxy M22, Android 13): soğuk açılış ~2 sn, ders boyunca %0.5 takılan kare. Gerçek mikrofon/STT dinlemeye başlıyor; sessizlik ve çevrimdışı mesajları Türkçe. Samsung klavyesiyle kayıt ve geri hareketi çalışıyor. Samsung en büyük yazıda düzen bozulmuyor. Uçak modunda yapılan ders bağlanınca hesaba eşitleniyor. Gerçek sesle tanıma doğruluğunu elle dene.
 - ⚠️ Android 7–9: içerikteki Emoji 12+ karakterleri (ör. 🩺 🧊 🪑 🪙, ~50 farklı) "NO GLYPH" kutusu olarak görünüyor. Rapor bölüm "Açık kararlar"a bak.
