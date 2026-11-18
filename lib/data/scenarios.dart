@@ -50,6 +50,15 @@ const scenarios = [
     openingTr: 'İyi akşamlar. Miller adına bir rezervasyonum var.',
   ),
   Scenario(
+    id: 'hotel_reception',
+    title: 'Otel resepsiyonu',
+    emoji: '🛎️',
+    goal: 'Misafir sensin: adını ver, kaç gece kalacağını söyle, kahvaltı saatini ve Wi-Fi şifresini sor.',
+    partner: 'Resepsiyon görevlisi Selin',
+    opening: 'Good afternoon, and welcome to the hotel! Do you have a reservation with us?',
+    openingTr: 'İyi günler, otelimize hoş geldiniz! Bizde bir rezervasyonunuz var mı?',
+  ),
+  Scenario(
     id: 'restaurant_guest',
     title: 'Restoranda misafir',
     emoji: '🍽️',

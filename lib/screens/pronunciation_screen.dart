@@ -694,3 +694,179 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
     );
   }
 }
+
+// ------------------------------------------------- words from the voice coach
+
+const _voicedTh = {
+  'the',
+  'this',
+  'that',
+  'these',
+  'those',
+  'they',
+  'them',
+  'their',
+  'there',
+  'then',
+  'than',
+  'with',
+};
+
+/// The coach unit that best fits [word]: one whose minimal pairs use it,
+/// the th unit for a "th" word, one whose sentences use it, else the unit for
+/// its hardest-looking spelling (w/v, -ed, ng), or null.
+PronUnit? unitForWord(String word, List<PronUnit> units) {
+  final w = word.toLowerCase();
+  PronUnit? byId(String id) => units.where((u) => u.id == id).firstOrNull;
+  for (final u in units) {
+    if (u.pairs.any((p) => p.a.toLowerCase() == w || p.b.toLowerCase() == w)) return u;
+  }
+  if (w.contains('th')) return byId(_voicedTh.contains(w) ? 'th_voiced' : 'th_voiceless');
+  for (final u in units) {
+    if (u.sentences.any((s) => RegExp('\b${RegExp.escape(w)}\b', caseSensitive: false).hasMatch(s.en)))
+      return u;
+  }
+  if (w.startsWith('w') || w.contains('v')) return byId('w_v');
+  if (w.endsWith('ed')) return byId('ed_endings');
+  if (w.contains('ng')) return byId('r_h_ng');
+  return null;
+}
+
+/// Practise the words the voice coach's karne flagged: listen, say, and open
+/// the matching coach unit.
+class PronunciationWordsScreen extends ConsumerStatefulWidget {
+  const PronunciationWordsScreen({super.key, required this.words, this.initial = 0});
+  final List<String> words;
+  final int initial;
+
+  @override
+  ConsumerState<PronunciationWordsScreen> createState() => _PronunciationWordsScreenState();
+}
+
+class _PronunciationWordsScreenState extends ConsumerState<PronunciationWordsScreen> {
+  late final SpeechService _speech = ref.read(speechProvider);
+  late int _i = widget.initial.clamp(0, widget.words.length - 1);
+  bool _listening = false;
+  bool _micUnavailable = false;
+  String _heard = '';
+  SpokenMatch? _match;
+
+  String get _word => widget.words[_i];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _speech.say(_word));
+  }
+
+  @override
+  void dispose() {
+    if (_listening) _speech.stopListening();
+    super.dispose();
+  }
+
+  void _go(int i) {
+    if (_listening) _speech.stopListening();
+    setState(() {
+      _i = i;
+      _listening = false;
+      _heard = '';
+      _match = null;
+    });
+    _speech.say(_word);
+  }
+
+  Future<void> _mic() async {
+    if (_listening) {
+      await _speech.stopListening();
+      return;
+    }
+    if (!await _speech.canListen) {
+      if (mounted) setState(() => _micUnavailable = true);
+      return;
+    }
+    setState(() {
+      _listening = true;
+      _heard = '';
+      _match = null;
+    });
+    await _speech.listenTo(
+      _word,
+      onWords: (w) {
+        if (mounted) setState(() => _heard = w);
+      },
+      onDone: () {
+        if (!mounted) return;
+        final m = coachMatch(_word, _heard);
+        setState(() {
+          _listening = false;
+          _match = m;
+        });
+        m.passed ? Haptics.success() : Haptics.tap();
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final units = ref.watch(pronUnitsProvider).value ?? const <PronUnit>[];
+    final unit = unitForWord(_word, units);
+    final last = _i == widget.words.length - 1;
+    return Scaffold(
+      appBar: AppBar(title: Text('Telaffuz: ${_i + 1}/${widget.words.length}')),
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+          children: [
+            Text(
+              'Konuşurken telefon bu kelimeyi zor anladı. Dinle, sonra net söyle.',
+              style: TextStyle(color: Brand.muted),
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: Text(
+                _word,
+                key: const Key('drill-word'),
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Center(child: SpeakerButton(text: _word)),
+            const SizedBox(height: 20),
+            Center(
+              child: MicButton(listening: _listening, onTap: _mic, inkKey: const Key('drill-mic')),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              _micUnavailable
+                  ? 'Mikrofon kullanılamıyor. Kelimeyi dinleyip sesli tekrar edebilirsin.'
+                  : _match == null && !_listening
+                  ? 'Mikrofona dokun ve kelimeyi söyle.'
+                  : _listening
+                  ? spokenStatus(listening: true, heard: _heard, match: null, issue: null, idle: '')
+                  : speakFeedback(target: _word, heard: _heard),
+              key: const Key('drill-feedback'),
+              textAlign: TextAlign.center,
+            ),
+            if (unit != null) ...[
+              const SizedBox(height: 24),
+              OutlinedButton.icon(
+                key: const Key('drill-unit'),
+                icon: const Icon(Icons.record_voice_over_rounded),
+                label: Text('Koçta çalış: ${unit.title}'),
+                onPressed: () =>
+                    Navigator.of(context)
+                        .push(MaterialPageRoute<void>(builder: (_) => PronunciationUnitScreen(unit: unit))),
+              ),
+            ],
+            const SizedBox(height: 16),
+            PressableButton(
+              label: last ? 'BİTİR' : 'SONRAKİ KELİME',
+              onPressed: last ? () => Navigator.of(context).pop() : () => _go(_i + 1),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

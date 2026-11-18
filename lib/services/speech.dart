@@ -22,6 +22,15 @@ final speechIssue = ValueNotifier<String?>(null);
 /// learner sees that they are being heard.
 final speechLevel = ValueNotifier<double>(0);
 
+/// One recognizer guess and how sure it was (0..1; null when not reported).
+typedef SpeechGuess = ({String words, double? confidence});
+
+/// The recognizer's guesses for the last finished utterance, its favourite
+/// first (empty while listening). The voice coach turns them into
+/// pronunciation evidence (lib/core/speech_evidence.dart). Fake speech
+/// services in tests may set it themselves.
+final lastRecognition = ValueNotifier<List<SpeechGuess>>(const []);
+
 /// How long to wait for a sentence of [words] words: the silence after which
 /// listening stops, and the longest a whole try may take. Learners pause
 /// mid-sentence, so long sentences get more time.
@@ -325,6 +334,7 @@ class SpeechService {
     await _stopVoice(); // the microphone must not hear the app's own voice
     speechIssue.value = null;
     _heardSomething = false;
+    lastRecognition.value = const [];
     _finish(); // a previous session that never reported back
     _onDone = onDone;
     final times = target == null
@@ -338,7 +348,15 @@ class SpeechService {
           final words = bestTranscription(target, guesses.isEmpty ? [r.recognizedWords] : guesses);
           if (words.isNotEmpty) _heardSomething = true;
           onWords(words);
-          if (r.finalResult) _finish();
+          if (r.finalResult) {
+            lastRecognition.value = r.alternates.isEmpty
+                ? [(words: r.recognizedWords, confidence: r.hasConfidenceRating ? r.confidence : null)]
+                : [
+                    for (final a in r.alternates)
+                      (words: a.recognizedWords, confidence: a.hasConfidenceRating ? a.confidence : null),
+                  ];
+            _finish();
+          }
         },
         onSoundLevelChange: (db) => speechLevel.value = normalizeSoundLevel(db),
         listenOptions: SpeechListenOptions(

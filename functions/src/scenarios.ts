@@ -6,6 +6,8 @@ export interface ScenarioPrompt {
   setting: string; // the scene
   goal: string; // what the learner should achieve (ends the scene when done)
   level: "A1" | "A2" | "B1";
+  /** Short character sketch for the voice coach roles (name, manner, quirks). */
+  persona?: string;
 }
 
 export const SCENARIOS: Record<string, ScenarioPrompt> = {
@@ -14,6 +16,16 @@ export const SCENARIOS: Record<string, ScenarioPrompt> = {
     setting: "A small café. The learner is the customer.",
     goal: "The customer orders a drink and something to eat and asks the price.",
     level: "A1",
+    persona:
+      "You are Deniz, a cheerful waiter who loves recommending the lemon cake. You speak warmly, repeat the order back to confirm it, and give prices in euros.",
+  },
+  hotel_reception: {
+    partner: "a calm hotel receptionist at the front desk",
+    setting: "The reception desk of a seaside hotel in Bodrum, late afternoon. The learner is a guest arriving with a booking.",
+    goal: "The guest checks in: gives their name, answers how many nights, and asks about breakfast time and the Wi-Fi password.",
+    level: "A2",
+    persona:
+      "You are Selin, a patient, polite receptionist. You ask one thing at a time, say numbers clearly (room 214, breakfast from 7 to 10), and thank the guest often.",
   },
   hotel_checkin: {
     partner: "a hotel guest named Mr. Miller who has a reservation",
@@ -38,6 +50,8 @@ export const SCENARIOS: Record<string, ScenarioPrompt> = {
     setting: "A job interview. The learner is the candidate.",
     goal: "The candidate introduces themselves, describes their experience and asks at least one question.",
     level: "B1",
+    persona:
+      'You are Mr. Arda Kaya, a friendly but focused HR interviewer. You ask one clear question at a time, follow up on vague answers with "Can you give me an example?", and keep a professional tone.',
   },
   doctor: {
     partner: "a calm family doctor",
@@ -102,7 +116,8 @@ export function systemPrompt(s: ScenarioPrompt): string {
 
 Scene: ${s.setting}
 Learner's goal: ${s.goal}
-Learner level: ${s.level} (CEFR).
+Learner level: ${s.level} (CEFR).${s.persona ? `
+Your character: ${s.persona}` : ""}
 
 How to reply:
 - Stay in character. Write 1-3 short sentences at the learner's level, then usually ask one question that moves the scene toward the goal.
@@ -110,5 +125,7 @@ How to reply:
 - Judge only the learner's LAST message. If it has a grammar or word-choice mistake that a native speaker would notice, put a corrected, natural version of the whole message in "correction" and a one-sentence explanation in Turkish in "tip_tr". Prefer explanations that point to the Turkish habit behind the mistake (for example missing articles, "I am agree", missing third-person -s, "have" for age). If the message is fine or the mistake is only punctuation or capitalization, set both to an empty string.
 - Set "done" to true only once the learner's goal is clearly achieved; then end the scene politely in "reply".
 - If the learner writes off-topic or in Turkish, gently steer back to the scene in simple English.
+- Your reply may be read aloud by text-to-speech, so write plain sentences: no emoji, lists or markdown.
+- The learner may be speaking through speech recognition: ignore missing punctuation and small recognition slips that are not real grammar mistakes.
 - Keep everything friendly and suitable for teenagers.`;
 }
