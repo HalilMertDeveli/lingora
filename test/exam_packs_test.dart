@@ -582,6 +582,8 @@ void main() {
       await tester.pumpWidget(app(overrides, const PaywallScreen()));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('plan-familyYearly')), findsNothing);
+      // Below the feature list on a phone-sized test screen.
+      await tester.scrollUntilVisible(find.textContaining('bu sürümde satın alınamaz'), 300);
       expect(find.textContaining('bu sürümde satın alınamaz'), findsOneWidget);
     });
 
@@ -594,6 +596,7 @@ void main() {
       );
       await tester.pumpWidget(app(overrides, const PaywallScreen(showFamily: true)));
       await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(find.text('₺900,00 / yıl · 5 kişiye kadar'), 300);
       expect(find.text('₺900,00 / yıl · 5 kişiye kadar'), findsOneWidget);
       await tester.tap(find.text('Aile · ₺900,00'));
       await tester.pumpAndSettle();
