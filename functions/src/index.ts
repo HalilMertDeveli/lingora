@@ -85,8 +85,7 @@ export const assessWriting = onCall({ secrets: [anthropicApiKey], timeoutSeconds
 /** { rehearsalId, kind, items: [{ question, answer }], previousTags?, previousGaps? } -> analysis (Mülakat Provası) */
 export const analyzeRehearsal = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 120 }, (req) => {
   const uid = requireUid(req);
-  claude ??= new Anthropic({ apiKey: anthropicApiKey.value() });
-  return rehearsal.analyzeRehearsal(getFirestore(), claude, uid, req.data, new Date());
+  return rehearsal.analyzeRehearsal(getFirestore(), claudeClient(), uid, req.data, new Date());
 });
 
 /** { productId, purchaseToken } -> { active, productId, expiresAt?, packs } (subscriptions, family plan, exam packs) */

@@ -66,18 +66,26 @@ class CallableRehearsalService implements RehearsalService {
     try {
       raw = await _invoke('analyzeRehearsal', request.toApi()).timeout(const Duration(seconds: 120));
     } on FirebaseFunctionsException catch (e) {
-      throw RehearsalException(messageForCode(e.code), premiumRequired: e.code == 'permission-denied');
+      throw RehearsalException(
+        messageForCode(e.code, reason: e.message),
+        premiumRequired: e.code == 'permission-denied',
+      );
     } on Exception {
       throw const RehearsalException('Bağlantı kurulamadı. Cevabın kaydedildi, sonra tekrar dene.');
     }
-    return RehearsalAnalysis.fromJson(Map<String, Object?>.from(raw as Map));
+    try {
+      return RehearsalAnalysis.fromJson(Map<String, Object?>.from(raw as Map));
+    } on Object {
+      // A malformed answer: an error the screen shows, not a stuck spinner.
+      throw RehearsalException(CallableConversationService.messageForCode('internal'));
+    }
   }
 
-  static String messageForCode(String code) => switch (code) {
+  static String messageForCode(String code, {String? reason}) => switch (code) {
     'permission-denied' => 'Ücretsiz ilk provanı kullandın. Yeni provalar Premium\'a açık.',
     'failed-precondition' => 'Cevabın çok kısa. Biraz daha anlat: en az birkaç cümle.',
     'resource-exhausted' => 'Bugünlük prova analizi hakkın doldu. Yarın tekrar dene.',
-    _ => CallableConversationService.messageForCode(code),
+    _ => CallableConversationService.messageForCode(code, reason: reason),
   };
 }
 
