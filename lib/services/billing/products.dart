@@ -158,6 +158,11 @@ enum PremiumFeature {
     'Premium avatarlar',
     "Mağaza'da yalnızca Premium'a özel avatar ve hareketli çerçeveler.",
     '🦅',
+  ),
+  levelReport(
+    'Aylık seviye karnesi',
+    'Ay ay seviye grafiğin, beceri gidişatın ve sonraki ay için mevcut derslerden çalışma önerileri.',
+    '📈',
   );
 
   const PremiumFeature(this.title, this.description, this.emoji);

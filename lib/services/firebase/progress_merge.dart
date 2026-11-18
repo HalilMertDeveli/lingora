@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import '../../data/level_report.dart';
 import '../../data/progress.dart';
 import '../../models/notes.dart';
 import '../../data/wallet.dart';
@@ -18,7 +19,8 @@ import '../../models/study_plan.dart';
 ///   longer one on the same day);
 /// * settings and lists the user edits (daily goal, reminders, track,
 ///   mistakes, league state) come from the copy changed last ([localNewer]);
-/// * the Altın wallet is merged by [mergeWallets] (no gold is lost).
+/// * the Altın wallet is merged by [mergeWallets] (no gold is lost);
+/// * Seviye Karnesi reports are united per day ([mergeLevelReports]).
 Progress mergeProgress(Progress local, Progress remote, {required bool localNewer}) {
   final newer = localNewer ? local : remote;
   final older = localNewer ? remote : local;
@@ -131,6 +133,8 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     mistakeNote: {for (final k in newer.mistakes) k: ?(newer.mistakeNote[k] ?? older.mistakeNote[k])},
     // Altın: grow-only counters per device, owned items united (wallet.dart).
     wallet: mergeWallets(local.wallet, remote.wallet),
+    // Seviye Karnesi: one report per day, united.
+    levelReports: mergeLevelReports(local.levelReports, remote.levelReports),
   );
 }
 
