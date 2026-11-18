@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingora/data/progress.dart';
 import 'package:lingora/exercises/translate_exercise.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/theme.dart';
