@@ -160,3 +160,22 @@ Yetişkin (açık yol, doğru, yanlış, koyu yol) ve Çocuk modu (yol, doğru, 
 
 ![Yetişkin](tasarim/ozgun-yetiskin.png)
 ![Çocuk modu](tasarim/ozgun-cocuk.png)
+
+## Rehber (konu anlatımı) görünümü
+
+Ünite rehberleri (`unit.guide`) `GuideView` ile çizilir (`lib/ui/guide_view.dart`); okuma parçaları eski düz
+`MarkdownText` görünümünde kalır. İçerik metni değişmez: görünüm tamamen işaretlemeden çıkarılır.
+
+| Markdown | Görünüm |
+|---|---|
+| `## Başlık` | Ayrı bölüm kartı; renk ve ikon başlıktan seçilir (Kural/Yapı/Kalıp mor, Örnek yeşil, Nasıl/Strateji turkuaz + "ADIM n", Hata/Tuzak kırmızı, İpucu amber, Kelime çivit, Hedef mavi) |
+| `- madde` | Bölüm renginde nokta; `**a + b**: anlam` → kalıp çipleri, sondaki `Örnek: …` → küçük örnek kutusu |
+| `1. …` / `**1. Başlık:** …` | Numaralı adım dizisi |
+| `*English.* — Türkçe.` | Yeşil örnek kutusu (EN + TR) |
+| `❌ yanlış ✅ doğru` / `"yanlış" → **doğru**: neden` | Yanlış (üstü çizili) / doğru kartı |
+| `İpucu:`, `Dikkat:`, `Kural:`, `Yapı:`, `Not:`, `Örnek:` (ya da `> **Sınav ipucu 1:**`) | Renkli uyarı kutusu, etiket başlık olur |
+| `> …` (etiketsiz) | Model metin kutusu, satır sonları korunur |
+| `Özne + am/is/are + fiil-ing` satırı, `*a → b → c*` | Kalıp çipleri |
+| `\| tablo \|` | Başlığı bölüm renginde; "Yanlış"/"Doğru" sütunları kırmızı/yeşil |
+
+Testler: `test/rehber_duzen_test.dart` (ayrıştırıcı, her modda çizim, gönderilen hiçbir rehberde kelime kaybı yok).

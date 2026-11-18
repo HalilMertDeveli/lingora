@@ -14,6 +14,8 @@ import '../models/grammar_lesson.dart';
 import '../models/notes.dart';
 import '../services/speech.dart';
 import '../theme.dart';
+import '../ui/guide_view.dart';
+import '../ui/markdown_text.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/review_card.dart';
@@ -1044,60 +1046,8 @@ class TopicScreen extends ConsumerWidget {
                     alignment: Alignment.centerLeft,
                     child: Chip(label: Text(topic.category)),
                   ),
-                  const SizedBox(height: 8),
-                  for (final para in topic.body.split('\n\n').where((s) => s.trim().isNotEmpty))
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(para.trim(), style: const TextStyle(fontSize: 16, height: 1.45)),
-                    ),
-                  if (topic.rules.isNotEmpty) ...[
-                    const SizedBox(height: 4),
-                    Container(
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        color: Brand.primary.withValues(alpha: 0.07),
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'KURALLAR',
-                            style: TextStyle(
-                              color: Brand.primary,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 12,
-                              letterSpacing: 1,
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          for (final r in topic.rules)
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 4),
-                              child: Text(
-                                '• $r',
-                                style: const TextStyle(fontWeight: FontWeight.w600, height: 1.4),
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ],
-                  if (topic.examples.isNotEmpty) ...[
-                    const SizedBox(height: 18),
-                    Text('Örnekler', style: Theme.of(context).textTheme.titleMedium),
-                    const SizedBox(height: 6),
-                    for (final e in topic.examples)
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        leading: IconButton(
-                          icon: Icon(Icons.volume_up_rounded, color: Brand.primary),
-                          onPressed: () => ref.read(speechProvider).say(e.en),
-                        ),
-                        title: Text(e.en, style: const TextStyle(fontWeight: FontWeight.w700)),
-                        subtitle: Text(e.tr),
-                      ),
-                  ],
+                  const SizedBox(height: 10),
+                  ...topicGuideCards(context, topic, onSpeak: (en) => ref.read(speechProvider).say(en)),
                 ],
               ),
             ),
@@ -1126,6 +1076,71 @@ class TopicScreen extends ConsumerWidget {
       ),
     );
   }
+}
+
+/// "Olumlu: I do" → "**Olumlu:** I do": a short label before a colon reads
+/// as the rule's title. Rules that already use markdown stay as they are.
+String _boldLead(String rule) {
+  if (rule.contains('*')) return rule;
+  final m = RegExp(r'^([^:]{1,24}):\s+(.+)$').firstMatch(rule);
+  return m == null ? rule : '**${m[1]}:** ${m[2]}';
+}
+
+/// A grammar note as guide cards: the explanation, its rules (coloured
+/// bullets, formulas as chips) and its examples (with a speaker button).
+List<Widget> topicGuideCards(
+  BuildContext context,
+  GrammarTopic topic, {
+  required void Function(String en) onSpeak,
+}) {
+  final body = topic.body.trim();
+  final rules = [
+    for (final r in topic.rules)
+      if (r.trim().isNotEmpty)
+        parseMarkdown('- ${_boldLead(r.replaceAll('\n', ' ').trim())}', guide: true).first,
+  ];
+  Widget gap(Widget w) => Padding(padding: const EdgeInsets.only(bottom: 16), child: w);
+  return [
+    if (body.isNotEmpty)
+      gap(
+        GuideCard.topic(
+          context,
+          key: const Key('note-explain'),
+          title: 'Konu anlatımı',
+          topic: GuideTopic.goal,
+          child: MarkdownText(body, guide: true, color: guideLook(GuideTopic.goal, context.palette).color),
+        ),
+      ),
+    if (rules.isNotEmpty)
+      gap(
+        GuideCard.topic(
+          context,
+          key: const Key('note-rules'),
+          title: 'Kurallar',
+          topic: GuideTopic.rule,
+          child: MdBlocksView(blocks: rules, color: guideLook(GuideTopic.rule, context.palette).color),
+        ),
+      ),
+    if (topic.examples.isNotEmpty)
+      gap(
+        GuideCard.topic(
+          context,
+          key: const Key('note-examples'),
+          title: 'Örnekler',
+          topic: GuideTopic.example,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              for (final e in topic.examples)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: ExampleBox(en: e.en, tr: e.tr, onSpeak: () => onSpeak(e.en)),
+                ),
+            ],
+          ),
+        ),
+      ),
+  ];
 }
 
 /// English diary: one entry per day, with a daily prompt and offline checks
