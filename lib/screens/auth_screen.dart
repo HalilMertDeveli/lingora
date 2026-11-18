@@ -266,11 +266,11 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
             ),
-            // Small phone with the keyboard open: the pinned button left
-            // about 200 px for the form and covered the password field (QA,
-            // 480x800). The keyboard's own action submits meanwhile; the
-            // button is back as soon as the keyboard closes.
-            if (!_keyboardCramped(context))
+            // Keyboard open: the pinned button covered the password field (QA:
+            // 480x800 emulator and a real Galaxy M22). The keyboard's own
+            // action moves on and submits meanwhile; the button is back as soon
+            // as the keyboard closes.
+            if (MediaQuery.viewInsetsOf(context).bottom == 0)
               Padding(
                 padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
                 child: SizedBox(
@@ -300,12 +300,6 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
   }
-}
-
-/// True when the open keyboard leaves less than 420 dp of the screen.
-bool _keyboardCramped(BuildContext context) {
-  final keyboard = MediaQuery.viewInsetsOf(context).bottom;
-  return keyboard > 0 && MediaQuery.sizeOf(context).height - keyboard < 420;
 }
 
 class _ModeSwitch extends StatelessWidget {

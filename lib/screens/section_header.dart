@@ -81,11 +81,17 @@ class SectionHeader extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 12),
-          // Narrow screens (256 dp, QA): smaller icon and an icon-only "Atla",
-          // or the row overflowed.
+          // Narrow screens or large text: smaller icon and an icon-only "Atla".
+          // Otherwise the row overflowed (256 dp) or the title broke inside a
+          // word ("Temelle/r" at font 1.3 on a Galaxy M22, QA).
           LayoutBuilder(
             builder: (context, box) {
-              final narrow = box.maxWidth < 260;
+              final status = completed ? 'Tamamlandı' : (open ? '%$percent' : 'Kilitli');
+              final skip = !section.parallel && !sectionSkipFinished(section, progress);
+              final narrow =
+                  box.maxWidth < 260 ||
+                  _titleRoom(context, box.maxWidth, status: status, skip: skip) <
+                      _longestWord(context, sectionLabel(section), t.titleMedium);
               return Row(
                 children: [
                   Icon(
@@ -111,11 +117,11 @@ class SectionHeader extends ConsumerWidget {
                   ),
                   SizedBox(width: narrow ? 8 : 12),
                   Text(
-                    completed ? 'Tamamlandı' : (open ? '%$percent' : 'Kilitli'),
+                    status,
                     style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
                   ),
                   // "Bölümü atla": the summary explains the exam and starts it.
-                  if (!section.parallel && !sectionSkipFinished(section, progress)) ...[
+                  if (skip) ...[
                     const SizedBox(width: 8),
                     Material(
                       color: _color,
@@ -161,6 +167,32 @@ class SectionHeader extends ConsumerWidget {
       ),
     );
   }
+}
+
+double _textWidth(BuildContext context, String text, TextStyle? style) {
+  final painter = TextPainter(
+    text: TextSpan(text: text, style: DefaultTextStyle.of(context).style.merge(style)),
+    textScaler: MediaQuery.textScalerOf(context),
+    textDirection: TextDirection.ltr,
+    maxLines: 1,
+  )..layout();
+  final w = painter.width;
+  painter.dispose();
+  return w;
+}
+
+/// Width of the longest word of [text]: the title must fit it on a line.
+double _longestWord(BuildContext context, String text, TextStyle? style) =>
+    text.split(' ').map((w) => _textWidth(context, w, style)).fold(0.0, (a, b) => a > b ? a : b);
+
+/// Room left for the title in the full layout (34 dp icon, the status text
+/// and the "Atla" button with its label).
+double _titleRoom(BuildContext context, double width, {required String status, required bool skip}) {
+  final statusWidth = _textWidth(context, status, const TextStyle(fontWeight: FontWeight.w800));
+  final skipWidth = skip
+      ? 8 + 20 + 18 + 2 + _textWidth(context, 'Atla', const TextStyle(fontWeight: FontWeight.w800))
+      : 0.0;
+  return width - 34 - 12 - 12 - statusWidth - skipWidth;
 }
 
 /// "Bölüm 2 · A1 · Günlük hayat".

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -49,7 +51,27 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObserver {
+  /// Ambient loops on the tab roots (tea steam, the active node, the invite
+  /// bubble) pause after this long without a touch. The path redrew about 50
+  /// times a second while the phone just lay there (QA, Galaxy M22).
+  static const idleAfter = Duration(seconds: 20);
+
+  /// Whether the tab roots may animate; see [idleAfter].
+  final awake = ValueNotifier<bool>(true);
+  Timer? _sleep;
+
+  void _wake() {
+    awake.value = true;
+    _sleep?.cancel();
+    _sleep = Timer(idleAfter, () => awake.value = false);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _wake();
+  }
+
   late String _trackId;
   late List<AppTab> _tabs;
   int _index = 0;
@@ -65,6 +87,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _wake();
     _reset(ref.read(trackProvider));
     _restoreTab();
     WidgetsBinding.instance.addPostFrameCallback((_) => _settleLeague());
@@ -127,6 +151,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _sleep?.cancel();
+    awake.dispose();
     for (final n in _reselected.values) {
       n.dispose();
     }
@@ -177,6 +204,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   void _select(int i) {
+    _wake();
     if (i == _index) {
       final nav = _currentNavigator;
       if (nav != null && nav.canPop()) {
@@ -257,42 +285,56 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       onPopInvokedWithResult: (didPop, _) {
         if (!didPop) _back();
       },
-      child: Scaffold(
-        body: IndexedStack(
-          index: _index,
-          children: [
-            for (final (i, tab) in _tabs.indexed)
-              if (_opened.contains(tab))
-                TickerMode(
-                  enabled: i == _index,
-                  child: FadeThroughIn(
-                    active: i == _index,
-                    child: TabScope(
-                      reselected: _reselectOf(tab),
-                      child: TabNavigator(
-                        key: _keyOf(tab),
-                        root: (_) => Scaffold(appBar: const LingoraTopBar(), body: _root(tab)),
+      // Any touch wakes the paused loops before a scroll or tap needs them.
+      child: Listener(
+        behavior: HitTestBehavior.translucent,
+        onPointerDown: (_) => _wake(),
+        child: Scaffold(
+          body: IndexedStack(
+            index: _index,
+            children: [
+              for (final (i, tab) in _tabs.indexed)
+                if (_opened.contains(tab))
+                  TickerMode(
+                    enabled: i == _index,
+                    child: FadeThroughIn(
+                      active: i == _index,
+                      child: TabScope(
+                        reselected: _reselectOf(tab),
+                        child: TabNavigator(
+                          key: _keyOf(tab),
+                          root: (_) => Scaffold(
+                            appBar: const LingoraTopBar(),
+                            // Only the root page pauses: inner pages (timed games,
+                            // a chat waiting for its reply) keep running.
+                            body: ValueListenableBuilder<bool>(
+                              valueListenable: awake,
+                              builder: (_, on, child) => TickerMode(enabled: on, child: child!),
+                              child: _root(tab),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                )
-              else
-                const SizedBox.shrink(),
-          ],
-        ),
-        bottomNavigationBar: KeyedSubtree(
-          key: _barKey,
-          // Tab labels are single words that cannot wrap: with the largest font
-          // on a narrow phone "Görevler" was cut in half (QA, 720x1280 with the
-          // largest display size), so their scaling is capped there.
-          child: LayoutBuilder(
-            builder: (context, box) => MediaQuery.withClampedTextScaling(
-              maxScaleFactor: box.maxWidth < 340 ? 1.0 : 1.3,
-              child: NavigationBar(
-                key: const Key('bottom-nav'),
-                selectedIndex: _index,
-                onDestinationSelected: _select,
-                destinations: [for (final tab in _tabs) _destination(tab)],
+                  )
+                else
+                  const SizedBox.shrink(),
+            ],
+          ),
+          bottomNavigationBar: KeyedSubtree(
+            key: _barKey,
+            // Tab labels are single words that cannot wrap: with the largest font
+            // on a narrow phone "Görevler" was cut in half (QA, 720x1280 with the
+            // largest display size), so their scaling is capped there.
+            child: LayoutBuilder(
+              builder: (context, box) => MediaQuery.withClampedTextScaling(
+                maxScaleFactor: box.maxWidth < 340 ? 1.0 : 1.3,
+                child: NavigationBar(
+                  key: const Key('bottom-nav'),
+                  selectedIndex: _index,
+                  onDestinationSelected: _select,
+                  destinations: [for (final tab in _tabs) _destination(tab)],
+                ),
               ),
             ),
           ),
