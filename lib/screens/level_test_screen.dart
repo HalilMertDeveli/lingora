@@ -125,6 +125,18 @@ class _LevelTestScreenState extends ConsumerState<LevelTestScreen> {
   bool _playing = false;
   int _plays = 0;
 
+  /// The last answer is in: further taps (a double tap on "Testi bitir") do nothing.
+  bool _finishing = false;
+
+  /// An answer was taken and the next question is not drawn yet: a second
+  /// tap in the same frame would answer a question the learner never saw.
+  bool _answering = false;
+
+  void _holdUntilNextFrame() {
+    _answering = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) => _answering = false);
+  }
+
   static const _maxPlays = 2;
 
   @override
@@ -141,7 +153,9 @@ class _LevelTestScreenState extends ConsumerState<LevelTestScreen> {
       bank,
       start: levelTestStart(p.levelReports),
       fallbackStart: ref.read(placementProvider)?.level ?? Cefr.a2,
-      seed: now.year * 12 + now.month,
+      // A new order on every start: quitting halfway (which keeps the
+      // month's attempt) must not show the same questions again.
+      seed: now.millisecondsSinceEpoch ~/ 1000,
     );
     _shown = _session!.current;
   }
@@ -171,12 +185,16 @@ class _LevelTestScreenState extends ConsumerState<LevelTestScreen> {
 
   void _next() {
     final s = _session!;
+    if (_finishing || _answering || s.isFinished) return;
+    _holdUntilNextFrame();
     _stopAudio();
     s.answer(_picked ?? -1);
     _advance();
   }
 
   void _skipListening() {
+    if (_finishing || _answering || _session!.isFinished) return;
+    _holdUntilNextFrame();
     _stopAudio();
     _session!.skip(LevelSkill.listening);
     _advance();
@@ -196,10 +214,17 @@ class _LevelTestScreenState extends ConsumerState<LevelTestScreen> {
   }
 
   void _finish() {
+    if (_finishing) return;
+    _finishing = true;
     final s = _session!;
     final now = ref.read(clockProvider)();
     final report = s.report(dayKey(now), seconds: DateTime.now().difference(_started).inSeconds);
-    ref.read(progressProvider.notifier).addLevelReport(report);
+    if (!ref.read(progressProvider.notifier).addLevelReport(report)) {
+      // E.g. this month's test was already synced from another phone.
+      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+        const SnackBar(content: Text('Bu ayın testi zaten çözülmüş; bu sonuç karneye eklenmedi.')),
+      );
+    }
     Navigator.of(
       context,
     ).pushReplacement(MaterialPageRoute<void>(builder: (_) => const LevelReportScreen(justFinished: true)));
@@ -211,49 +236,83 @@ class _LevelTestScreenState extends ConsumerState<LevelTestScreen> {
     if (_session == null && bank.hasValue) _start(bank.requireValue);
     final s = _session;
     final q = _shown;
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          tooltip: 'Testi kapat',
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: LinearProgressIndicator(
-            value: s == null || s.planned == 0 ? 0 : s.answers.length / s.planned,
-            minHeight: 10,
-            backgroundColor: Brand.line,
+    final started = s != null && s.answers.isNotEmpty && !_finishing;
+    return PopScope(
+      canPop: !started,
+      onPopInvokedWithResult: (didPop, _) async {
+        if (didPop) return;
+        if (await _confirmLeave() && context.mounted) Navigator.of(context).pop();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.close),
+            tooltip: 'Testi kapat',
+            onPressed: () => Navigator.of(context).maybePop(),
+          ),
+          title: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: LinearProgressIndicator(
+              value: s == null || s.planned == 0 ? 0 : s.answers.length / s.planned,
+              minHeight: 10,
+              backgroundColor: Brand.line,
+            ),
           ),
         ),
-      ),
-      body: SafeArea(
-        child: s == null || q == null
-            ? Center(
-                child: bank.hasError ? const Text('Sorular yüklenemedi.') : const CircularProgressIndicator(),
-              )
-            : Padding(
-                padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
-                child: Column(
-                  children: [
-                    Expanded(child: _question(context, s, q)),
-                    FilledButton(
-                      key: const Key('level-next'),
-                      onPressed: _picked == null ? null : _next,
-                      child: Text(s.answers.length + 1 >= s.planned ? 'Testi bitir' : 'Devam'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        _picked = -1;
-                        _next();
-                      },
-                      child: const Text('Bilmiyorum'),
-                    ),
-                  ],
+        body: SafeArea(
+          child: s == null || q == null
+              ? Center(
+                  child: bank.hasError
+                      ? const Text('Sorular yüklenemedi.')
+                      : const CircularProgressIndicator(),
+                )
+              : Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+                  child: Column(
+                    children: [
+                      Expanded(child: _question(context, s, q)),
+                      FilledButton(
+                        key: const Key('level-next'),
+                        onPressed: _picked == null ? null : _next,
+                        child: Text(s.answers.length + 1 >= s.planned ? 'Testi bitir' : 'Devam'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          if (_answering) return;
+                          _picked = -1;
+                          _next();
+                        },
+                        child: const Text('Bilmiyorum'),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+        ),
       ),
     );
+  }
+
+  /// Leaving halfway loses the answers (the month's attempt stays).
+  Future<bool> _confirmLeave() async {
+    _stopAudio();
+    final leave = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Testten çıkılsın mı?'),
+        content: const Text(
+          'Cevapların kaydedilmez. Bu ayın hakkın gitmez; testi sonra baştan çözebilirsin.',
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Devam et')),
+          TextButton(
+            key: const Key('level-leave'),
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Çık'),
+          ),
+        ],
+      ),
+    );
+    return leave ?? false;
   }
 
   Widget _question(BuildContext context, LevelTestSession s, LevelItem q) {

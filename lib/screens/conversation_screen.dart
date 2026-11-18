@@ -5,6 +5,7 @@ import '../core/speech_evidence.dart';
 import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../data/scenarios.dart';
+import '../services/app_settings_link.dart';
 import '../services/billing/premium.dart';
 import '../services/conversation.dart';
 import '../services/speech.dart';
@@ -197,6 +198,12 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
   bool _done = false;
   String? _error;
 
+  /// "Bitir" ran: XP is counted once and nothing is sent any more.
+  bool _finished = false;
+
+  /// The microphone permission is missing: the error offers the settings.
+  bool _micDenied = false;
+
   /// Voice coach: tap the mic, speak, the message goes by itself and the
   /// reply is read aloud. Off = the text fallback (type, or dictate and edit).
   bool _voice = true;
@@ -233,7 +240,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
 
   Future<void> _send() async {
     final text = _input.text.trim();
-    if (text.isEmpty || _waiting) return;
+    if (text.isEmpty || _waiting || _finished) return;
     final guesses = _guesses;
     _guesses = null;
     _input.clear();
@@ -248,6 +255,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       );
       _waiting = true;
       _error = null;
+      _micDenied = false;
     });
     _scrollDown();
     try {
@@ -276,6 +284,16 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
         if (e.freeQuotaUsed) _freeLeft = 0;
       });
       if (e.freeQuotaUsed) await _freeTasteOver();
+    } on Object {
+      // A malformed answer must not leave the chat stuck on "yazıyor…".
+      if (!mounted) return;
+      final failed = _messages.removeLast();
+      setState(() {
+        _input.text = text;
+        _guesses = failed.spoken ? guesses : null;
+        _waiting = false;
+        _error = CallableConversationService.messageForCode('internal');
+      });
     }
     _scrollDown();
   }
@@ -304,9 +322,13 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     if (_waiting) return;
     if (!await _speech.canListen) {
       if (!mounted) return;
+      final denied = speechIssue.value == SpeechIssues.noMicPermission;
       setState(() {
         _voice = false; // the text fallback
-        _error = 'Mikrofon kullanılamıyor; yazarak devam edebilirsin.';
+        _micDenied = denied;
+        _error = denied
+            ? 'Mikrofon izni kapalı. Ayarlardan açabilir ya da yazarak devam edebilirsin.'
+            : 'Mikrofon kullanılamıyor; yazarak devam edebilirsin.';
       });
       return;
     }
@@ -331,12 +353,13 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
               ? null
               : (heard.isEmpty ? [(words: _input.text, confidence: null)] : heard);
         });
-        if (_voice && _input.text.trim().isNotEmpty) _send();
+        if (_voice && !_finished && _input.text.trim().isNotEmpty) _send();
       },
     );
   }
 
   void _finish() {
+    if (_finished) return;
     if (_listening) _speech.stopListening();
     final userTurns = _messages.where((m) => m.fromUser).length;
     final corrections = _messages.where((m) => m.correction != null).length;
@@ -344,6 +367,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       Navigator.pop(context);
       return;
     }
+    _finished = true;
     ref
         .read(progressProvider.notifier)
         .completeNode(
@@ -425,7 +449,22 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
             if (_error != null)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(_error!, style: TextStyle(color: Brand.error)),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(_error!, style: TextStyle(color: Brand.error)),
+                    ),
+                    if (_micDenied)
+                      TextButton(
+                        key: const Key('mic-settings'),
+                        onPressed: () {
+                          setState(() => _micDenied = false);
+                          openAppSettings();
+                        },
+                        child: const Text('Ayarlar'),
+                      ),
+                  ],
+                ),
               ),
             Container(
               padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
