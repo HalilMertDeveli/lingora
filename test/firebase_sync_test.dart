@@ -214,6 +214,16 @@ void main() {
       expect(c.read(progressSyncProvider).state, SyncState.synced);
     });
 
+    test('paused (account deletion): the deleted document is not written back', () async {
+      final c = await start(const Progress(onboarded: true, totalXp: 42));
+      expect((await db.doc('users/u1').get()).exists, true);
+      c.read(progressSyncProvider.notifier).pause();
+      await db.doc('users/u1').delete(); // what deleteAccount does on the server
+      c.read(progressProvider.notifier).applySynced(const Progress(onboarded: true, totalXp: 50));
+      await settle();
+      expect((await db.doc('users/u1').get()).exists, false);
+    });
+
     test('pull on sign-in merges the cloud copy without losing anything', () async {
       await db.doc('users/u1').set({
         'schemaVersion': 1,

@@ -204,3 +204,15 @@ test("server-only collections are closed", async () => {
     await assertFails(setDoc(doc(db("alice"), path), { x: 1 }));
   }
 });
+
+test("users: a deleted account cannot write its progress back", async () => {
+  await assertSucceeds(setDoc(doc(db("erin"), "users/erin"), progressDoc()));
+  await env.withSecurityRulesDisabled(async (ctx) => {
+    await setDoc(doc(ctx.firestore(), "deletedAccounts/erin"), { at: Timestamp.now() });
+  });
+  // Another phone still holds a valid token for the deleted account.
+  await assertFails(setDoc(doc(db("erin"), "users/erin"), progressDoc()));
+  // The tombstone itself is server-only.
+  await assertFails(getDoc(doc(db("erin"), "deletedAccounts/erin")));
+  await assertFails(deleteDoc(doc(db("erin"), "deletedAccounts/erin")));
+});

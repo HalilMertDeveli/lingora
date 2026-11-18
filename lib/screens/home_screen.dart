@@ -282,24 +282,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         bottomNavigationBar: KeyedSubtree(
           key: _barKey,
-          // One-line labels: with the largest system text "Görevler" broke
-          // into two clipped lines on small phones.
-          child: MediaQuery.withClampedTextScaling(
-            maxScaleFactor: 1.15,
-            child: NavigationBar(
-              key: const Key('bottom-nav'),
-              // When a tab is narrower than its longest label ("Görevler",
-              // ~56dp at normal text; largest display size on a small
-              // phone) the labels would wrap: icons only (they keep their
-              // names for TalkBack).
-              labelBehavior:
-                  MediaQuery.sizeOf(context).width / _tabs.length <
-                      MediaQuery.textScalerOf(context).clamp(maxScaleFactor: 1.15).scale(navLabelWidth)
-                  ? NavigationDestinationLabelBehavior.alwaysHide
-                  : null,
-              selectedIndex: _index,
-              onDestinationSelected: _select,
-              destinations: [for (final tab in _tabs) _destination(tab)],
+          // Tab labels are single words that cannot wrap: with the largest font
+          // on a narrow phone "Görevler" was cut in half (QA, 720x1280 with the
+          // largest display size), so their scaling is capped there.
+          child: LayoutBuilder(
+            builder: (context, box) => MediaQuery.withClampedTextScaling(
+              maxScaleFactor: box.maxWidth < 340 ? 1.0 : 1.3,
+              child: NavigationBar(
+                key: const Key('bottom-nav'),
+                // Narrower still (largest display size on a 480px phone,
+                // ~51dp a tab): even unscaled labels would wrap, so icons
+                // only (they keep their names for TalkBack).
+                labelBehavior: box.maxWidth / _tabs.length < navLabelWidth
+                    ? NavigationDestinationLabelBehavior.alwaysHide
+                    : null,
+                selectedIndex: _index,
+                onDestinationSelected: _select,
+                destinations: [for (final tab in _tabs) _destination(tab)],
+              ),
             ),
           ),
         ),

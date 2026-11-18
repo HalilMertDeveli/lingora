@@ -21,6 +21,10 @@ class _AuthScreenState extends State<AuthScreen> {
   final _email = TextEditingController();
   final _password = TextEditingController();
   final _password2 = TextEditingController();
+  // Explicit next-field focus: on a real Samsung phone the keyboard's
+  // "İleri" closed the keyboard instead of moving on (QA, Galaxy M22).
+  final _passwordFocus = FocusNode(debugLabel: 'auth-password');
+  final _password2Focus = FocusNode(debugLabel: 'auth-password2');
   late bool _register = widget.register;
   bool _hidden = true;
   bool _busy = false;
@@ -31,6 +35,8 @@ class _AuthScreenState extends State<AuthScreen> {
     _email.dispose();
     _password.dispose();
     _password2.dispose();
+    _passwordFocus.dispose();
+    _password2Focus.dispose();
     super.dispose();
   }
 
@@ -98,188 +104,208 @@ class _AuthScreenState extends State<AuthScreen> {
         child: Column(
           children: [
             Expanded(
-              child: ListView(
-                padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              _register ? 'Hesabını oluştur' : 'Tekrar hoş geldin!',
-                              style: t.headlineMedium,
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              _register
-                                  ? 'İlerlemen hesabına bağlansın, telefonunu değiştirsen de kaybolmasın.'
-                                  : 'Öğrenmeye kaldığın yerden devam edelim.',
-                              style: t.bodyLarge?.copyWith(color: p.muted, height: 1.4),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      // Pofuduk with his phone: the account illustration.
-                      Image.asset(
-                        pofudukAccount,
-                        key: const Key('auth-illustration'),
-                        width: context.isKid ? 104 : 80,
-                        height: context.isKid ? 104 : 80,
-                        semanticLabel: 'Pofuduk ve telefonu',
-                        errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  _ModeSwitch(
-                    register: _register,
-                    onChanged: _busy
-                        ? null
-                        : (r) => setState(() {
-                            _register = r;
-                            _error = null;
-                          }),
-                  ),
-                  const SizedBox(height: 20),
-                  _Label('E-posta'),
-                  _Field(
-                    key: const ValueKey('auth-email'),
-                    controller: _email,
-                    icon: Icons.mail_outline_rounded,
-                    hint: 'ornek@eposta.com',
-                    keyboardType: TextInputType.emailAddress,
-                    autofillHints: const [AutofillHints.email],
-                    action: TextInputAction.next,
-                  ),
-                  const SizedBox(height: 16),
-                  _Label('Şifre'),
-                  _Field(
-                    key: const ValueKey('auth-password'),
-                    controller: _password,
-                    icon: Icons.lock_outline_rounded,
-                    hint: _register ? 'En az 6 karakter' : 'Şifren',
-                    obscure: _hidden,
-                    autofillHints: [_register ? AutofillHints.newPassword : AutofillHints.password],
-                    action: _register ? TextInputAction.next : TextInputAction.done,
-                    onSubmitted: _register ? null : (_) => _submit(),
-                    trailing: IconButton(
-                      key: const ValueKey('auth-toggle-password'),
-                      tooltip: _hidden ? 'Şifreyi göster' : 'Şifreyi gizle',
-                      icon: Icon(
-                        _hidden ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                        color: p.mascot,
-                      ),
-                      onPressed: () => setState(() => _hidden = !_hidden),
-                    ),
-                  ),
-                  if (_register) ...[
-                    const SizedBox(height: 16),
-                    _Label('Şifre (tekrar)'),
-                    _Field(
-                      key: const ValueKey('auth-password2'),
-                      controller: _password2,
-                      icon: Icons.lock_outline_rounded,
-                      hint: 'Şifreni tekrar yaz',
-                      obscure: _hidden,
-                      autofillHints: const [AutofillHints.newPassword],
-                      action: TextInputAction.done,
-                      onSubmitted: (_) => _submit(),
-                    ),
-                  ] else
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        key: const ValueKey('auth-forgot'),
-                        style: TextButton.styleFrom(foregroundColor: p.mascot),
-                        onPressed: _busy ? null : _forgot,
-                        child: const Text('Şifremi unuttum', style: TextStyle(fontWeight: FontWeight.w700)),
-                      ),
-                    ),
-                  if (_error != null)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: Text(
-                        _error!,
-                        key: const ValueKey('auth-error'),
-                        style: TextStyle(color: p.error, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  const SizedBox(height: 24),
-                  Row(
-                    children: [
-                      Expanded(child: Divider(color: p.line)),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Text('ya da şununla devam et', style: TextStyle(color: p.muted)),
-                      ),
-                      Expanded(child: Divider(color: p.line)),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: _ProviderButton(
-                          key: const ValueKey('auth-google'),
-                          label: 'Google',
-                          // Google's own "G" mark, unaltered, on white (see docs/assets.md).
-                          leading: Container(
-                            width: 28,
-                            height: 28,
-                            padding: const EdgeInsets.all(3),
-                            decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-                            child: Image.asset('assets/brand/google_g.png', semanticLabel: 'Google logosu'),
+              // One autofill group: without it Android commits the autofill
+              // context on every field change, and on a real Samsung phone the
+              // keyboard's "İleri" closed the keyboard instead of moving on.
+              child: AutofillGroup(
+                child: ListView(
+                  padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                _register ? 'Hesabını oluştur' : 'Tekrar hoş geldin!',
+                                style: t.headlineMedium,
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                _register
+                                    ? 'İlerlemen hesabına bağlansın, telefonunu değiştirsen de kaybolmasın.'
+                                    : 'Öğrenmeye kaldığın yerden devam edelim.',
+                                style: t.bodyLarge?.copyWith(color: p.muted, height: 1.4),
+                              ),
+                            ],
                           ),
-                          onPressed: _busy ? null : () => _run(widget.service.signInWithGoogle),
+                        ),
+                        const SizedBox(width: 8),
+                        // Pofuduk with his phone: the account illustration.
+                        Image.asset(
+                          pofudukAccount,
+                          key: const Key('auth-illustration'),
+                          width: context.isKid ? 104 : 80,
+                          height: context.isKid ? 104 : 80,
+                          semanticLabel: 'Pofuduk ve telefonu',
+                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    _ModeSwitch(
+                      register: _register,
+                      onChanged: _busy
+                          ? null
+                          : (r) => setState(() {
+                              _register = r;
+                              _error = null;
+                            }),
+                    ),
+                    const SizedBox(height: 20),
+                    _Label('E-posta'),
+                    _Field(
+                      key: const ValueKey('auth-email'),
+                      controller: _email,
+                      icon: Icons.mail_outline_rounded,
+                      hint: 'ornek@eposta.com',
+                      keyboardType: TextInputType.emailAddress,
+                      autofillHints: const [AutofillHints.email],
+                      action: TextInputAction.next,
+                      onEditingComplete: _passwordFocus.requestFocus,
+                    ),
+                    const SizedBox(height: 16),
+                    _Label('Şifre'),
+                    _Field(
+                      key: const ValueKey('auth-password'),
+                      controller: _password,
+                      focusNode: _passwordFocus,
+                      icon: Icons.lock_outline_rounded,
+                      hint: _register ? 'En az 6 karakter' : 'Şifren',
+                      obscure: _hidden,
+                      autofillHints: [_register ? AutofillHints.newPassword : AutofillHints.password],
+                      action: _register ? TextInputAction.next : TextInputAction.done,
+                      onSubmitted: _register ? null : (_) => _submit(),
+                      onEditingComplete: _register ? _password2Focus.requestFocus : null,
+                      trailing: IconButton(
+                        key: const ValueKey('auth-toggle-password'),
+                        tooltip: _hidden ? 'Şifreyi göster' : 'Şifreyi gizle',
+                        icon: Icon(
+                          _hidden ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                          color: p.mascot,
+                        ),
+                        onPressed: () => setState(() => _hidden = !_hidden),
+                      ),
+                    ),
+                    if (_register) ...[
+                      const SizedBox(height: 16),
+                      _Label('Şifre (tekrar)'),
+                      _Field(
+                        key: const ValueKey('auth-password2'),
+                        controller: _password2,
+                        focusNode: _password2Focus,
+                        icon: Icons.lock_outline_rounded,
+                        hint: 'Şifreni tekrar yaz',
+                        obscure: _hidden,
+                        autofillHints: const [AutofillHints.newPassword],
+                        action: TextInputAction.done,
+                        onSubmitted: (_) => _submit(),
+                      ),
+                    ] else
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          key: const ValueKey('auth-forgot'),
+                          style: TextButton.styleFrom(foregroundColor: p.mascot),
+                          onPressed: _busy ? null : _forgot,
+                          child: const Text('Şifremi unuttum', style: TextStyle(fontWeight: FontWeight.w700)),
                         ),
                       ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: _ProviderButton(
-                          key: const ValueKey('auth-phone'),
-                          label: 'Telefon',
-                          leading: Icon(Icons.smartphone_rounded, color: p.mascot, size: 26),
-                          onPressed: _busy ? null : _phone,
+                    if (_error != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                          _error!,
+                          key: const ValueKey('auth-error'),
+                          style: TextStyle(color: p.error, fontWeight: FontWeight.w600),
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
-              child: SizedBox(
-                width: double.infinity,
-                height: 54,
-                child: FilledButton(
-                  key: const ValueKey('auth-submit'),
-                  style: FilledButton.styleFrom(
-                    backgroundColor: p.mascot,
-                    foregroundColor: p.onMascot,
-                    shape: const StadiumBorder(),
-                    textStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
-                  ),
-                  onPressed: _busy ? null : _submit,
-                  child: _busy
-                      ? SizedBox(
-                          width: 22,
-                          height: 22,
-                          child: CircularProgressIndicator(strokeWidth: 2.5, color: p.onMascot),
-                        )
-                      : Text(_register ? 'Hesap oluştur' : 'Giriş yap'),
+                    const SizedBox(height: 24),
+                    Row(
+                      children: [
+                        Expanded(child: Divider(color: p.line)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Text('ya da şununla devam et', style: TextStyle(color: p.muted)),
+                        ),
+                        Expanded(child: Divider(color: p.line)),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _ProviderButton(
+                            key: const ValueKey('auth-google'),
+                            label: 'Google',
+                            // Google's own "G" mark, unaltered, on white (see docs/assets.md).
+                            leading: Container(
+                              width: 28,
+                              height: 28,
+                              padding: const EdgeInsets.all(3),
+                              decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                              child: Image.asset('assets/brand/google_g.png', semanticLabel: 'Google logosu'),
+                            ),
+                            onPressed: _busy ? null : () => _run(widget.service.signInWithGoogle),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _ProviderButton(
+                            key: const ValueKey('auth-phone'),
+                            label: 'Telefon',
+                            leading: Icon(Icons.smartphone_rounded, color: p.mascot, size: 26),
+                            onPressed: _busy ? null : _phone,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
+            // Small phone with the keyboard open: the pinned button left
+            // about 200 px for the form and covered the password field (QA,
+            // 480x800). The keyboard's own action submits meanwhile; the
+            // button is back as soon as the keyboard closes.
+            if (!_keyboardCramped(context))
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 54,
+                  child: FilledButton(
+                    key: const ValueKey('auth-submit'),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: p.mascot,
+                      foregroundColor: p.onMascot,
+                      shape: const StadiumBorder(),
+                      textStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
+                    ),
+                    onPressed: _busy ? null : _submit,
+                    child: _busy
+                        ? SizedBox(
+                            width: 22,
+                            height: 22,
+                            child: CircularProgressIndicator(strokeWidth: 2.5, color: p.onMascot),
+                          )
+                        : Text(_register ? 'Hesap oluştur' : 'Giriş yap'),
+                  ),
+                ),
+              ),
           ],
         ),
       ),
     );
   }
+}
+
+/// True when the open keyboard leaves less than 420 dp of the screen.
+bool _keyboardCramped(BuildContext context) {
+  final keyboard = MediaQuery.viewInsetsOf(context).bottom;
+  return keyboard > 0 && MediaQuery.sizeOf(context).height - keyboard < 420;
 }
 
 class _ModeSwitch extends StatelessWidget {
@@ -349,6 +375,8 @@ class _Field extends StatelessWidget {
     this.autofillHints,
     this.action,
     this.onSubmitted,
+    this.onEditingComplete,
+    this.focusNode,
     this.trailing,
   });
   final TextEditingController controller;
@@ -359,6 +387,8 @@ class _Field extends StatelessWidget {
   final Iterable<String>? autofillHints;
   final TextInputAction? action;
   final ValueChanged<String>? onSubmitted;
+  final VoidCallback? onEditingComplete;
+  final FocusNode? focusNode;
   final Widget? trailing;
 
   @override
@@ -374,7 +404,9 @@ class _Field extends StatelessWidget {
       keyboardType: keyboardType,
       autofillHints: autofillHints,
       textInputAction: action,
+      focusNode: focusNode,
       onSubmitted: onSubmitted,
+      onEditingComplete: onEditingComplete,
       autocorrect: false,
       enableSuggestions: !obscure,
       decoration: InputDecoration(

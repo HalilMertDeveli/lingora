@@ -30,11 +30,15 @@ final _vocab = VocabBundle.fromJson(
 final _now = DateTime(2026, 11, 11, 9);
 
 /// Pumps the whole app (already onboarded) and returns its container.
-Future<ProviderContainer> _pumpShell(WidgetTester tester, [Progress? progress]) async {
+Future<ProviderContainer> _pumpShell(
+  WidgetTester tester, [
+  Progress? progress,
+  Size size = const Size(420, 800),
+]) async {
   final p = progress ?? const Progress(onboarded: true, remindersEnabled: false);
   SharedPreferences.setMockInitialValues({'progress_v1': jsonEncode(p.toJson())});
   final prefs = await SharedPreferences.getInstance();
-  await tester.binding.setSurfaceSize(const Size(420, 800));
+  await tester.binding.setSurfaceSize(size);
   addTearDown(() => tester.binding.setSurfaceSize(null));
   tester.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(
     disableAnimations: true,
@@ -89,6 +93,25 @@ Progress _withDone(int count, {List<String> mistakes = const []}) => Progress(
 
 void main() {
   group('tab sets', () {
+    testWidgets('largest font on a narrow phone: top bar and tab labels fit', (tester) async {
+      // 720x1280 at the largest display size is 288 dp wide (QA, API 28).
+      tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      await _pumpShell(tester, null, const Size(288, 576));
+      expect(tester.takeException(), isNull); // no RenderFlex overflow in the top bar
+      // Tab labels are not scaled up there ("Görevler" wrapped and was cut).
+      final label = find.descendant(of: _bar, matching: find.text('Görevler'));
+      expect(MediaQuery.textScalerOf(tester.element(label)).scale(10), 10);
+    });
+
+    testWidgets('largest font on a normal phone: tab labels still grow', (tester) async {
+      tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      await _pumpShell(tester);
+      final label = find.descendant(of: _bar, matching: find.text('Görevler'));
+      expect(MediaQuery.textScalerOf(tester.element(label)).scale(10), 13);
+    });
+
     testWidgets('general tracks: Öğren · Pratik · Lig · Görevler · Profil', (tester) async {
       await _pumpShell(tester);
       expect(_labels(tester), ['Öğren', 'Pratik', 'Lig', 'Görevler', 'Profil']);

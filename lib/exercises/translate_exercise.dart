@@ -45,6 +45,9 @@ class _TranslateExerciseState extends State<TranslateExercise> {
   @override
   Widget build(BuildContext context) {
     final ex = widget.ex;
+    // Short phones (720x1280 at 320 dpi is 640 dp): with the full gaps the
+    // last row of the word bank sat under the Kontrol et bar, out of sight.
+    final compact = MediaQuery.sizeOf(context).height < 700;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -65,9 +68,9 @@ class _TranslateExerciseState extends State<TranslateExercise> {
             ),
           ],
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: compact ? 12 : 24),
         Container(
-          constraints: const BoxConstraints(minHeight: 110),
+          constraints: BoxConstraints(minHeight: compact ? 84 : 110),
           padding: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
             border: Border(
@@ -88,7 +91,7 @@ class _TranslateExerciseState extends State<TranslateExercise> {
             ],
           ),
         ),
-        const SizedBox(height: 28),
+        SizedBox(height: compact ? 14 : 28),
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 8,

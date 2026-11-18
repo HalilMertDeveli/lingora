@@ -113,10 +113,11 @@ class _CourseBadgeState extends ConsumerState<CourseBadge> with SingleTickerProv
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(color: c.withValues(alpha: p.isDark ? 0.45 : 0.3)),
                 ),
-                // Too narrow for the name (small phone, largest display
-                // size): the course tile alone, never drawn over the streak.
+                // Largest font on a narrow phone: the counters leave too
+                // little room, so only the course picture stays (the
+                // semantics label still names the course).
                 child: LayoutBuilder(
-                  builder: (context, box) => box.maxWidth < compactCourseBadgeWidth
+                  builder: (context, box) => box.maxWidth < 96
                       ? CourseTile(track, size: 30)
                       : Row(
                           mainAxisSize: MainAxisSize.min,
@@ -130,6 +131,11 @@ class _CourseBadgeState extends ConsumerState<CourseBadge> with SingleTickerProv
                                 children: [
                                   Text(
                                     'KURSUN',
+                                    // One line: wrapping overflowed the top bar with the
+                                    // largest font on a narrow phone.
+                                    maxLines: 1,
+                                    softWrap: false,
+                                    overflow: TextOverflow.clip,
                                     style: TextStyle(
                                       color: c,
                                       fontSize: 9.5,
@@ -165,9 +171,6 @@ class _CourseBadgeState extends ConsumerState<CourseBadge> with SingleTickerProv
     );
   }
 }
-
-/// Below this width the badge shows only the course tile.
-const compactCourseBadgeWidth = 64.0;
 
 /// Whether the badge hint is up right now (not stored: the stored part is
 /// [CourseShelf.hintArmed]).

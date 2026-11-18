@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legal_links.dart';
 import '../services/growth/remote_flags.dart';
 import '../theme.dart';
 import 'consent_sheet.dart';
@@ -45,6 +46,21 @@ class GrowthProfileSection extends ConsumerWidget {
         Text('Gizlilik', style: t.titleLarge),
         const SizedBox(height: 12),
         const AnalyticsConsentTile(),
+        const SizedBox(height: 12),
+        TapCard(
+          key: const ValueKey('privacy-policy-link'),
+          onTap: () => openExternalLink(context, privacyPolicyUrl),
+          child: Row(
+            children: [
+              const Glyph(emoji: '🔒', icon: Icons.privacy_tip_outlined),
+              const SizedBox(width: 12),
+              const Expanded(
+                child: Text('Gizlilik Politikası', style: TextStyle(fontWeight: FontWeight.w700)),
+              ),
+              Icon(Icons.open_in_new_rounded, color: Brand.muted),
+            ],
+          ),
+        ),
       ],
     );
   }
