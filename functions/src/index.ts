@@ -7,6 +7,7 @@ import { setGlobalOptions } from "firebase-functions/v2";
 import { defineSecret } from "firebase-functions/params";
 import { logger } from "firebase-functions";
 import { CallableRequest, HttpsError, onCall } from "firebase-functions/v2/https";
+import { onMessagePublished } from "firebase-functions/v2/pubsub";
 import { onSchedule } from "firebase-functions/v2/scheduler";
 
 import * as account from "./account.js";
@@ -16,6 +17,7 @@ import * as conversation from "./converse.js";
 import * as karne from "./conversation_report.js";
 import * as family from "./family.js";
 import * as league from "./league.js";
+import * as play from "./play.js";
 import * as purchase from "./purchase.js";
 import * as rehearsal from "./rehearsal.js";
 
@@ -96,8 +98,26 @@ export const verifyPurchase = onCall((req) =>
     // Only the emulator grants Premium without a real Play check.
     testMode: process.env.FUNCTIONS_EMULATOR === "true",
     now: new Date(),
+    play: playApi(),
   }),
 );
+
+let playClient: play.PlayApi | undefined;
+function playApi(): play.PlayApi {
+  return (playClient ??= play.createPlayApi());
+}
+
+/** Play Real-time developer notifications (topic play-rtdn, docs/play-satin-alma-kurulum.md). */
+export const playRtdn = onMessagePublished({ topic: "play-rtdn", retry: true }, async (event) => {
+  let msg: purchase.DeveloperNotification | undefined;
+  try {
+    msg = event.data.message.json as purchase.DeveloperNotification;
+  } catch {
+    msg = undefined;
+  }
+  const outcome = await purchase.handleRtdn(getFirestore(), playApi(), msg, new Date());
+  logger.info("play_rtdn", { outcome, messageId: event.data.message.messageId });
+});
 
 // Dilmaç Kurumsal (orgs, seats, classes, assignments): orgs_api.ts, docs/kurumsal.md.
 export * from "./orgs_api.js";

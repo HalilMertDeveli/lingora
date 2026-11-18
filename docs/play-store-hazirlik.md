@@ -47,7 +47,7 @@ Play Console politika merkezi. Mağaza metinleri için [magaza/play-store.md](ma
 
 | Durum | Madde | Ayrıntı |
 |---|---|---|
-| ❌ | **Satın alma doğrulaması** | `functions/src/purchase.ts` `verifyPurchase`, emülatör dışında `play_verification_not_configured` hatası veriyor. Yani **gerçek satın alma Premium açmıyor**. Çıkıştan önce Google Play Developer API doğrulaması (servis hesabı + androidpublisher) ve RTDN (Pub/Sub) bağlanmalı. Ayrıntılar kod içindeki TODO'da. |
+| ✅ (kod) / ❌ (kurulum) | **Satın alma doğrulaması** | `verifyPurchase` artık Google Play Developer API ile doğruluyor, satın almayı onaylıyor; `playRtdn` (Pub/Sub `play-rtdn`) yenileme, iptal, ek süre, askı ve iadeleri izliyor. Senin yapacağın kurulum (servis hesabı izni, API, Pub/Sub, RTDN, ürünler, test kullanıcıları): **docs/play-satin-alma-kurulum.md**. |
 | ❌ | Ürünler | Play Console > Para kazanma > Abonelikler / Uygulama içi ürünler: `lib/services/billing/products.dart`'taki ürün kimliklerini birebir oluştur. Fiyatları ve deneme süresini gir. |
 
 ## 5. Play Console'da senin yapacakların (sıra önerisi)
