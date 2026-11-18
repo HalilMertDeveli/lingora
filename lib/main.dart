@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -103,6 +104,11 @@ class LingoraApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Dilmaç',
       debugShowCheckedModeBanner: false,
+      // Turkish date and time pickers, and Turkish names for the built-in
+      // buttons TalkBack reads ("Geri", not "Back").
+      locale: const Locale('tr'),
+      supportedLocales: const [Locale('tr')],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: buildTheme(mode: settings.mode, brightness: brightness, palette: palette),
       builder: (context, child) => AppResumeWatcher(
         child: PaletteScope(

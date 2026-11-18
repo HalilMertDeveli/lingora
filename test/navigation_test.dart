@@ -410,4 +410,11 @@ void main() {
     final streak = tester.getRect(find.byKey(const Key('topbar-streak')));
     expect(chip.right, lessThanOrEqualTo(streak.left + 0.5));
   });
+
+  testWidgets('pickers and built-in buttons are Turkish', (tester) async {
+    await _pumpShell(tester);
+    final l = MaterialLocalizations.of(tester.element(_bar));
+    expect(l.okButtonLabel.toUpperCase(), 'TAMAM');
+    expect(l.backButtonTooltip, 'Geri');
+  });
 }
