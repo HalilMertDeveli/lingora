@@ -104,4 +104,20 @@ void main() {
       expect(FamilyException('invalid-argument', r).message, isNot(generic), reason: r);
     }
   });
+
+  testWidgets('small phone, large text, keyboard up: the input stays visible', (tester) async {
+    final o = await overrides(tester, speech: VoiceSpeech());
+    await tester.binding.setSurfaceSize(const Size(320, 533));
+    tester.view.viewInsets = const FakeViewPadding(bottom: 600);
+    addTearDown(tester.view.resetViewInsets);
+    tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    await tester.pumpWidget(chatApp(o));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('chat-goal')), findsNothing);
+    await tester.tap(find.byKey(const Key('to-text')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('chat-input')).hitTestable(), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
 }

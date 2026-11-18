@@ -389,6 +389,9 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
   @override
   Widget build(BuildContext context) {
     final s = widget.scenario;
+    // With the keyboard up (small phone, large text) the pinned goal would
+    // leave no room for the input itself; it comes back when typing ends.
+    final typing = MediaQuery.viewInsetsOf(context).bottom > 0;
     return Scaffold(
       appBar: AppBar(
         title: Text('${kidEmoji(s.emoji)}${s.title}'),
@@ -397,16 +400,18 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
-              child: Text(
-                '${kidEmoji('🎯')}${s.goal}\nKarşındaki: ${s.partner}',
-                style: const TextStyle(fontWeight: FontWeight.w600, height: 1.4),
+            if (!typing)
+              Container(
+                key: const Key('chat-goal'),
+                width: double.infinity,
+                margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
+                child: Text(
+                  '${kidEmoji('🎯')}${s.goal}\nKarşındaki: ${s.partner}',
+                  style: const TextStyle(fontWeight: FontWeight.w600, height: 1.4),
+                ),
               ),
-            ),
             if (_freeLeft case final left?)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
