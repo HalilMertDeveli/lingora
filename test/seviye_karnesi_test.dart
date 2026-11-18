@@ -45,14 +45,29 @@ LevelReport _report(String day, Cefr? overall, Map<LevelSkill, Cefr?> skills) =>
 void main() {
   group('skill scoring', () {
     test('half right at or above a level gives that level', () {
-      expect(estimateSkillLevel([(Cefr.a2, true), (Cefr.b1, true), (Cefr.b2, false), (Cefr.b1, true)]), Cefr.b1);
-      expect(estimateSkillLevel([(Cefr.a2, true), (Cefr.b1, true), (Cefr.b2, true), (Cefr.c1, false)]), Cefr.b2);
-      expect(estimateSkillLevel([(Cefr.a2, true), (Cefr.b1, true), (Cefr.b2, true), (Cefr.c1, true)]), Cefr.c1);
+      expect(
+        estimateSkillLevel([(Cefr.a2, true), (Cefr.b1, true), (Cefr.b2, false), (Cefr.b1, true)]),
+        Cefr.b1,
+      );
+      expect(
+        estimateSkillLevel([(Cefr.a2, true), (Cefr.b1, true), (Cefr.b2, true), (Cefr.c1, false)]),
+        Cefr.b2,
+      );
+      expect(
+        estimateSkillLevel([(Cefr.a2, true), (Cefr.b1, true), (Cefr.b2, true), (Cefr.c1, true)]),
+        Cefr.c1,
+      );
     });
 
     test('a beginner stays below A1 and nothing answered is no level', () {
-      expect(estimateSkillLevel([(Cefr.a2, false), (Cefr.a1, false), (Cefr.a1, false), (Cefr.a1, false)]), isNull);
-      expect(estimateSkillLevel([(Cefr.a2, false), (Cefr.a1, true), (Cefr.a2, false), (Cefr.a1, true)]), Cefr.a1);
+      expect(
+        estimateSkillLevel([(Cefr.a2, false), (Cefr.a1, false), (Cefr.a1, false), (Cefr.a1, false)]),
+        isNull,
+      );
+      expect(
+        estimateSkillLevel([(Cefr.a2, false), (Cefr.a1, true), (Cefr.a2, false), (Cefr.a1, true)]),
+        Cefr.a1,
+      );
       expect(estimateSkillLevel(const []), isNull);
     });
 
@@ -166,7 +181,9 @@ void main() {
   });
 
   group('30-day gate', () {
-    final reports = [_report('2026-10-20', Cefr.b1, {LevelSkill.grammar: Cefr.b1})];
+    final reports = [
+      _report('2026-10-20', Cefr.b1, {LevelSkill.grammar: Cefr.b1}),
+    ];
 
     test('open with no reports', () {
       expect(canTakeLevelTest(const [], DateTime(2026, 11, 18)), isTrue);
@@ -245,7 +262,10 @@ void main() {
   group('trends and suggestions', () {
     test('change since last month per skill', () {
       final prev = _report('2026-10-01', Cefr.a2, {LevelSkill.grammar: Cefr.a2, LevelSkill.reading: Cefr.b1});
-      final cur = _report('2026-11-01', Cefr.b1, {LevelSkill.grammar: Cefr.b1, LevelSkill.listening: Cefr.a2});
+      final cur = _report('2026-11-01', Cefr.b1, {
+        LevelSkill.grammar: Cefr.b1,
+        LevelSkill.listening: Cefr.a2,
+      });
       expect(skillChange(cur, prev, LevelSkill.grammar), 1);
       expect(skillChange(cur, prev, LevelSkill.listening), isNull);
       expect(skillChange(cur, null, LevelSkill.grammar), isNull);
@@ -286,11 +306,9 @@ void main() {
           clockProvider.overrideWithValue(() => now ?? DateTime(2026, 11, 18)),
           premiumProvider.overrideWithValue(premium),
           myDisplayNameProvider.overrideWithValue('Deniz'),
-          levelTestBankProvider.overrideWith((ref) async => _bank(const [
-            LevelSkill.grammar,
-            LevelSkill.vocabulary,
-            LevelSkill.reading,
-          ])),
+          levelTestBankProvider.overrideWith(
+            (ref) async => _bank(const [LevelSkill.grammar, LevelSkill.vocabulary, LevelSkill.reading]),
+          ),
           grammarLessonsProvider.overrideWith((ref) async => const []),
           notesProvider.overrideWith((ref) => Completer<NotesBundle>().future),
           karneListeningNodesProvider.overrideWith((ref) async => const []),
@@ -346,11 +364,7 @@ void main() {
     });
 
     testWidgets('the intro start button waits for the gate', (tester) async {
-      await pump(
-        tester,
-        const LevelTestIntroScreen(),
-        reports: [_report('2026-11-10', Cefr.b1, const {})],
-      );
+      await pump(tester, const LevelTestIntroScreen(), reports: [_report('2026-11-10', Cefr.b1, const {})]);
       final button = tester.widget<FilledButton>(find.byKey(const Key('level-test-start')));
       expect(button.onPressed, isNull);
       expect(find.textContaining('10 Aralık 2026'), findsOneWidget);

@@ -145,8 +145,14 @@ class _CurrentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = Theme.of(context).textTheme;
     final level = report.overall;
-    final measured = [for (final s in LevelSkill.values) if (report.skills.containsKey(s)) s];
-    final missing = [for (final s in LevelSkill.values) if (!report.skills.containsKey(s)) s];
+    final measured = [
+      for (final s in LevelSkill.values)
+        if (report.skills.containsKey(s)) s,
+    ];
+    final missing = [
+      for (final s in LevelSkill.values)
+        if (!report.skills.containsKey(s)) s,
+    ];
     return TapCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,7 +182,10 @@ class _CurrentCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('TAHMİNİ SEVİYE', style: t.labelMedium?.copyWith(color: Brand.muted, letterSpacing: 1)),
+                    Text(
+                      'TAHMİNİ SEVİYE',
+                      style: t.labelMedium?.copyWith(color: Brand.muted, letterSpacing: 1),
+                    ),
                     Text(level == null ? 'A1 öncesi' : '${level.code} · ${level.name}', style: t.titleLarge),
                     Text(longDateTr(report.date), style: TextStyle(color: Brand.muted, fontSize: 13)),
                   ],
@@ -219,7 +228,10 @@ class _SkillRow extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(width: 26, child: Text(skill.emoji, style: const TextStyle(fontSize: 18))),
-          SizedBox(width: 86, child: Text(skill.title, style: const TextStyle(fontWeight: FontWeight.w700))),
+          SizedBox(
+            width: 86,
+            child: Text(skill.title, style: const TextStyle(fontWeight: FontWeight.w700)),
+          ),
           Expanded(
             child: Row(
               children: [
@@ -262,9 +274,9 @@ class _NextTest extends StatelessWidget {
     if (canTakeLevelTest(reports, now)) {
       return OutlinedButton.icon(
         key: const Key('karne-start-test'),
-        onPressed: () => Navigator.of(context).push(
-          MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => const LevelTestIntroScreen()),
-        ),
+        onPressed: () => Navigator.of(
+          context,
+        ).push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => const LevelTestIntroScreen())),
         icon: const Icon(Icons.speed_rounded),
         label: Text(reports.isEmpty ? 'Aylık testi başlat (≈15 dk)' : 'Bu ayın testini çöz (≈15 dk)'),
       );
@@ -457,14 +469,21 @@ class _HistoryPainter extends CustomPainter {
     }
 
     for (final e in skillColors.entries) {
-      series((r) => r.skills[e.key] == null ? null : levelRank(r.skills[e.key]!.level), e.value.withValues(alpha: 0.7), 1.5);
+      series(
+        (r) => r.skills[e.key] == null ? null : levelRank(r.skills[e.key]!.level),
+        e.value.withValues(alpha: 0.7),
+        1.5,
+      );
     }
     series((r) => levelRank(r.overall), overall, 3);
   }
 
   void _text(Canvas canvas, String s, Offset at, double size) {
     final tp = TextPainter(
-      text: TextSpan(text: s, style: TextStyle(color: ink, fontSize: size)),
+      text: TextSpan(
+        text: s,
+        style: TextStyle(color: ink, fontSize: size),
+      ),
       textDirection: TextDirection.ltr,
     )..layout();
     tp.paint(canvas, at);
@@ -529,13 +548,19 @@ class _Trends extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(width: 26, child: Text(emoji, style: const TextStyle(fontSize: 18))),
-          Expanded(child: Text(title, style: const TextStyle(fontWeight: FontWeight.w700))),
+          Expanded(
+            child: Text(title, style: const TextStyle(fontWeight: FontWeight.w700)),
+          ),
           Text('$before → $after', style: const TextStyle(fontWeight: FontWeight.w800)),
           const SizedBox(width: 8),
           Icon(icon, color: color, size: 20),
           SizedBox(
             width: 70,
-            child: Text(word, textAlign: TextAlign.right, style: TextStyle(color: color, fontSize: 12)),
+            child: Text(
+              word,
+              textAlign: TextAlign.right,
+              style: TextStyle(color: color, fontSize: 12),
+            ),
           ),
         ],
       ),
@@ -567,26 +592,38 @@ class _Suggestions extends ConsumerWidget {
           final picks = lessons.where((l) => l.level == sg.target.code && !p.isDone(lessonNodeId(l))).take(2);
           for (final l in picks) {
             tiles.add(
-              _tile('${l.emoji} ${l.title}', 'Gramer Yolu · ${l.level}. $why',
-                  notes == null ? null : () => push(GrammarLessonScreen(lesson: l, notes: notes))),
+              _tile(
+                '${l.emoji} ${l.title}',
+                'Gramer Yolu · ${l.level}. $why',
+                notes == null ? null : () => push(GrammarLessonScreen(lesson: l, notes: notes)),
+              ),
             );
           }
         case LevelSkill.listening:
           final picks = listening.where((n) => n.cefr == sg.target.code && !p.isDone(n.id)).take(2);
           for (final n in picks) {
             tiles.add(
-              _tile('🎧 ${n.title}', 'Dinleme · ${n.cefr}. $why',
-                  () => push(ListeningScreen(node: n, color: Brand.primary))),
+              _tile(
+                '🎧 ${n.title}',
+                'Dinleme · ${n.cefr}. $why',
+                () => push(ListeningScreen(node: n, color: Brand.primary)),
+              ),
             );
           }
         case LevelSkill.reading:
           tiles.add(
-            _tile('📖 Okuma hikâyeleri', 'Seviyene uygun kısa hikâyeler. $why',
-                () => Navigator.of(context)
-                    .push(MaterialPageRoute<void>(builder: (_) => const ReadingLibraryScreen()))),
+            _tile(
+              '📖 Okuma hikâyeleri',
+              'Seviyene uygun kısa hikâyeler. $why',
+              () =>
+                  Navigator.of(context)
+                      .push(MaterialPageRoute<void>(builder: (_) => const ReadingLibraryScreen())),
+            ),
           );
         case LevelSkill.vocabulary:
-          tiles.add(_tile('🔤 Tekrar kartları', 'Her gün kelime tekrarı. $why', () => openReviewCards(context)));
+          tiles.add(
+            _tile('🔤 Tekrar kartları', 'Her gün kelime tekrarı. $why', () => openReviewCards(context)),
+          );
       }
     }
     if (tiles.isEmpty) {
@@ -627,7 +664,8 @@ class LevelReportProfileCard extends ConsumerWidget {
     final latest = reports.lastOrNull;
     return TapCard(
       key: const Key('profile-karne'),
-      onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const LevelReportScreen())),
+      onTap: () =>
+          Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const LevelReportScreen())),
       child: Row(
         children: [
           IconBadge(icon: Icons.insights_rounded, emoji: '📈', color: Brand.tone(Brand.primary), size: 44),

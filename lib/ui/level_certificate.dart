@@ -35,7 +35,10 @@ class LevelCertificate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final level = report.overall;
-    final skills = [for (final s in LevelSkill.values) if (report.skills[s] case final sc?) (s, sc)];
+    final skills = [
+      for (final s in LevelSkill.values)
+        if (report.skills[s] case final sc?) (s, sc),
+    ];
     return SizedBox.fromSize(
       size: certificateSize,
       child: DecoratedBox(
@@ -148,7 +151,10 @@ class LevelCertificate extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    Text(longDateTr(report.date), style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700)),
+                    Text(
+                      longDateTr(report.date),
+                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
+                    ),
                     const SizedBox(height: 8),
                     const Divider(height: 1, color: Color(0x332B1B6E)),
                     const SizedBox(height: 6),

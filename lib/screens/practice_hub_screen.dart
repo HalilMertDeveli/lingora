@@ -257,7 +257,9 @@ class PracticeHubScreen extends ConsumerWidget {
             color: Brand.primary,
             title: 'Seviye Karnesi',
             subtitle: 'Ayda bir 15 dakikalık test, tahmini seviye ve paylaşılabilir sertifika',
-            onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const LevelReportScreen())),
+            onTap: () =>
+                Navigator.of(context)
+                    .push(MaterialPageRoute<void>(builder: (_) => const LevelReportScreen())),
           ),
         ],
       ),

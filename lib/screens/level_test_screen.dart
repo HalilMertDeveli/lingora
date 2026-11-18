@@ -29,9 +29,7 @@ final levelTestBankProvider = FutureProvider<List<LevelItem>>((ref) async {
 Map<LevelSkill, Cefr> levelTestStart(List<LevelReport> reports) {
   if (reports.isEmpty) return const {};
   final last = sortedReports(reports).last;
-  return {
-    for (final e in last.skills.entries) e.key: e.value.level ?? Cefr.a1,
-  };
+  return {for (final e in last.skills.entries) e.key: e.value.level ?? Cefr.a1};
 }
 
 /// Intro before the monthly test: what it measures, how long, the gate.
@@ -90,14 +88,13 @@ class LevelTestIntroScreen extends ConsumerWidget {
                 key: const Key('level-test-start'),
                 onPressed: open
                     ? () => Navigator.of(context).pushReplacement(
-                        MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => const LevelTestScreen()),
+                        MaterialPageRoute<void>(
+                          fullscreenDialog: true,
+                          builder: (_) => const LevelTestScreen(),
+                        ),
                       )
                     : null,
-                child: Text(
-                  open
-                      ? 'Teste başla'
-                      : 'Sonraki test: ${longDateTr(nextLevelTestDay(reports)!)}',
-                ),
+                child: Text(open ? 'Teste başla' : 'Sonraki test: ${longDateTr(nextLevelTestDay(reports)!)}'),
               ),
             ],
           ),
@@ -203,9 +200,9 @@ class _LevelTestScreenState extends ConsumerState<LevelTestScreen> {
     final now = ref.read(clockProvider)();
     final report = s.report(dayKey(now), seconds: DateTime.now().difference(_started).inSeconds);
     ref.read(progressProvider.notifier).addLevelReport(report);
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute<void>(builder: (_) => const LevelReportScreen(justFinished: true)),
-    );
+    Navigator.of(
+      context,
+    ).pushReplacement(MaterialPageRoute<void>(builder: (_) => const LevelReportScreen(justFinished: true)));
   }
 
   @override
@@ -267,7 +264,11 @@ class _LevelTestScreenState extends ConsumerState<LevelTestScreen> {
           children: [
             Text(
               '${q.skill.emoji}  ${q.skill.caps}',
-              style: t.labelLarge?.copyWith(color: Brand.primary, fontWeight: FontWeight.w900, letterSpacing: 1),
+              style: t.labelLarge?.copyWith(
+                color: Brand.primary,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 1,
+              ),
             ),
             const Spacer(),
             Text('${s.answers.length + 1} / ${s.planned}', style: TextStyle(color: Brand.muted)),
