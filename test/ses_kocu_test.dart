@@ -412,6 +412,23 @@ void main() {
     expect(unitForWord('they', units)?.id, 'th_voiced');
     expect(unitForWord('Wednesday', units)?.id, isNotNull);
     expect(unitForWord('xyz', units), isNull);
+
+    // A word used in a unit's sentences (as a whole word) picks that unit.
+    PronUnit unit(String id, String sentence) => PronUnit(
+      id: id,
+      emoji: '',
+      title: id,
+      sound: '',
+      summary: '',
+      how: const [],
+      turkish: '',
+      mistake: '',
+      pairs: const [],
+      sentences: [PronSentence(sentence, '')],
+    );
+    final synthetic = [unit('a', 'Unpleasant days.'), unit('b', 'Please sit down.')];
+    expect(unitForWord('please', synthetic)?.id, 'b');
+    expect(unitForWord('Pleas', synthetic), isNull);
   });
 
   test('voice coach roles exist on both sides', () {

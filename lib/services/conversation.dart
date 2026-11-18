@@ -386,8 +386,9 @@ class DemoConversationReportService implements ConversationReportService {
 /// Live karne when the chat is live, the offline one for the demo.
 final conversationReportServiceProvider = Provider<ConversationReportService>((ref) {
   final functions = ref.watch(functionsProvider);
-  if (!ref.watch(conversationServiceProvider).isLive || functions == null)
+  if (!ref.watch(conversationServiceProvider).isLive || functions == null) {
     return DemoConversationReportService();
+  }
   return CallableConversationReportService(
     (name, data) async => (await functions.httpsCallable(name).call<Object?>(data)).data,
   );

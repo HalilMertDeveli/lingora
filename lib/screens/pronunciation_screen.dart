@@ -722,9 +722,9 @@ PronUnit? unitForWord(String word, List<PronUnit> units) {
     if (u.pairs.any((p) => p.a.toLowerCase() == w || p.b.toLowerCase() == w)) return u;
   }
   if (w.contains('th')) return byId(_voicedTh.contains(w) ? 'th_voiced' : 'th_voiceless');
+  final asWord = RegExp(r'\b' + RegExp.escape(w) + r'\b', caseSensitive: false);
   for (final u in units) {
-    if (u.sentences.any((s) => RegExp('\b${RegExp.escape(w)}\b', caseSensitive: false).hasMatch(s.en)))
-      return u;
+    if (u.sentences.any((s) => asWord.hasMatch(s.en))) return u;
   }
   if (w.startsWith('w') || w.contains('v')) return byId('w_v');
   if (w.endsWith('ed')) return byId('ed_endings');
