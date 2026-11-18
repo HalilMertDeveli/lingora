@@ -38,6 +38,9 @@ abstract final class PaywallPlacement {
 
   /// A Premium-only Mağaza item.
   static const shop = 'shop';
+
+  /// The Premium part of the Seviye Karnesi (history, trends, suggestions).
+  static const levelReport = 'level_report';
 }
 
 class AnalyticsEvent {

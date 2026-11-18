@@ -14,6 +14,7 @@ import 'conversation_screen.dart';
 import 'error_analysis_screen.dart';
 import 'exam_screen.dart';
 import 'lesson_screen.dart';
+import 'level_report_screen.dart';
 import 'notes_screen.dart';
 import 'placement_screen.dart';
 import 'pronunciation_screen.dart';
@@ -248,6 +249,17 @@ class PracticeHubScreen extends ConsumerWidget {
             title: 'Seviye testi',
             subtitle: 'Seviyeni ölç, sana uygun yerden başla',
             onTap: () => fullScreen(const PlacementIntroScreen()),
+          ),
+          _HubTile(
+            key: const Key('hub-karne'),
+            icon: Icons.insights_rounded,
+            emoji: '📈',
+            color: Brand.primary,
+            title: 'Seviye Karnesi',
+            subtitle: 'Ayda bir 15 dakikalık test, tahmini seviye ve paylaşılabilir sertifika',
+            onTap: () =>
+                Navigator.of(context)
+                    .push(MaterialPageRoute<void>(builder: (_) => const LevelReportScreen())),
           ),
         ],
       ),

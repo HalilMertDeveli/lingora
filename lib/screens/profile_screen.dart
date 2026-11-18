@@ -15,6 +15,7 @@ import 'growth_profile_section.dart';
 import 'family_screen.dart';
 import 'friends_screen.dart';
 import 'contacts_friends_screen.dart';
+import 'level_report_screen.dart';
 import 'onboarding_screen.dart';
 import 'paywall_screen.dart';
 import 'profile_header.dart';
@@ -165,6 +166,8 @@ class ProfileScreen extends ConsumerWidget {
         Text('Seviye testi', style: t.titleLarge),
         const SizedBox(height: 12),
         const PlacementProfileCard(),
+        const SizedBox(height: 10),
+        const LevelReportProfileCard(),
         const SizedBox(height: 24),
         Text('Günlük hedef', style: t.titleLarge),
         const SizedBox(height: 12),

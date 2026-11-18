@@ -1,8 +1,8 @@
 // AI conversation proxy for the "Konuş" tab (port of the old Supabase Edge
 // Function in server/supabase/functions/converse). The app sends
 // { scenarioId, messages: [{ role, content }] } and gets back
-// { reply, correction, tip_tr, done, remaining }. Premium only, with a daily
-// message quota.
+// { reply, correction, tip_tr, done, remaining, free }. Premium gets a daily
+// message quota; free users get a small daily taste (FREE_DAILY_MESSAGE_LIMIT).
 import Anthropic from "@anthropic-ai/sdk";
 import { FieldValue, Firestore, Timestamp } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
@@ -17,6 +17,8 @@ export const MAX_MESSAGES = 20;
 export const MAX_CHARS = 400;
 /** Learner messages per user per Turkish day. */
 export const DAILY_MESSAGE_LIMIT = 60;
+/** Learner messages per Turkish day without Premium (the "free taste"). */
+export const FREE_DAILY_MESSAGE_LIMIT = 3;
 
 // The model must answer in exactly this shape.
 const REPLY_SCHEMA = {
@@ -44,6 +46,8 @@ export interface ConverseReply {
   tip_tr: string;
   done: boolean;
   remaining: number;
+  /** True when this turn came out of the free daily taste. */
+  free: boolean;
 }
 
 /** The parts of the Anthropic client this module uses (mockable in tests). */
@@ -81,16 +85,20 @@ export async function hasPremium(db: Firestore, uid: string, now: Date): Promise
   return on && !!expires && expires.toMillis() > now.getTime();
 }
 
-/** Counts one message against today's quota; returns how many are left. */
-async function takeQuota(db: Firestore, uid: string, now: Date): Promise<number> {
+/**
+ * Counts one message against today's quota ([limit] per Turkish day); returns
+ * how many are left. Free and Premium share the counter, so buying Premium
+ * mid-day keeps the messages already used.
+ */
+async function takeQuota(db: Firestore, uid: string, now: Date, limit: number, free: boolean): Promise<number> {
   const ref = db.doc(`usage/${uid}`);
   const day = dayKey(now);
   return db.runTransaction(async (tx) => {
     const u = (await tx.get(ref)).data();
     const used = u?.day === day ? ((u.count as number) ?? 0) : 0;
-    if (used >= DAILY_MESSAGE_LIMIT) throw new HttpsError("resource-exhausted", "daily_quota");
+    if (used >= limit) throw new HttpsError("resource-exhausted", free ? "free_quota" : "daily_quota");
     tx.set(ref, { day, count: used + 1 });
-    return DAILY_MESSAGE_LIMIT - used - 1;
+    return limit - used - 1;
   });
 }
 
@@ -114,8 +122,8 @@ export async function converse(
   const messages = parseMessages(body.messages);
   if (!scenario || !messages) throw new HttpsError("invalid-argument", "invalid_request");
 
-  if (!(await hasPremium(db, uid, now))) throw new HttpsError("permission-denied", "premium_required");
-  const remaining = await takeQuota(db, uid, now);
+  const free = !(await hasPremium(db, uid, now));
+  const remaining = await takeQuota(db, uid, now, free ? FREE_DAILY_MESSAGE_LIMIT : DAILY_MESSAGE_LIMIT, free);
 
   try {
     const response = await client.beta.messages.create({
@@ -133,7 +141,7 @@ export async function converse(
       },
     });
 
-    if (response.stop_reason === "refusal") return { ...REFUSAL_REPLY, remaining };
+    if (response.stop_reason === "refusal") return { ...REFUSAL_REPLY, remaining, free };
     const text = response.content.find((b) => b.type === "text");
     if (!text || text.type !== "text") throw new HttpsError("unavailable", "empty_response");
     const parsed = JSON.parse(text.text) as Record<string, unknown>;
@@ -143,6 +151,7 @@ export async function converse(
       tip_tr: String(parsed.tip_tr ?? ""),
       done: Boolean(parsed.done),
       remaining,
+      free,
     };
   } catch (error) {
     // A failed turn should not cost the learner a message.

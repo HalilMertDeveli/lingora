@@ -618,6 +618,8 @@ void main() {
       await tester.pumpWidget(app(overrides, const PaywallScreen()));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('plan-familyYearly')), findsNothing);
+      // The goal hero and value line can push it below the fold.
+      await tester.scrollUntilVisible(find.textContaining('bu sürümde satın alınamaz'), 300);
       expect(find.textContaining('bu sürümde satın alınamaz'), findsOneWidget);
     });
 
@@ -630,7 +632,9 @@ void main() {
       );
       await tester.pumpWidget(app(overrides, const PaywallScreen(showFamily: true)));
       await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(find.text('₺900,00 / yıl · 5 kişiye kadar'), 300);
       expect(find.text('₺900,00 / yıl · 5 kişiye kadar'), findsOneWidget);
+      await tester.scrollUntilVisible(find.text('Aile · ₺900,00'), 300);
       await tester.tap(find.text('Aile · ₺900,00'));
       await tester.pumpAndSettle();
       expect(billing.bought, ['lingora_premium_family_yearly']);

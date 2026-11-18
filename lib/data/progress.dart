@@ -13,6 +13,7 @@ import '../services/billing/premium_perks.dart' show goldMultiplierProvider;
 
 import 'catalog.dart';
 import 'league.dart';
+import 'level_report.dart';
 import 'quests.dart';
 import 'review_grade.dart';
 import 'wallet.dart';
@@ -86,7 +87,11 @@ class Progress {
     this.removedWords = const {},
     this.wallet = const Wallet(),
     this.learnGoal,
+    this.levelReports = const [],
   });
+
+  /// Seviye Karnesi results, oldest first (lib/data/level_report.dart).
+  final List<LevelReport> levelReports;
 
   /// Altın and Mağaza items (lib/data/wallet.dart).
   final Wallet wallet;
@@ -330,6 +335,7 @@ class Progress {
     Map<String, int>? removedWords,
     Wallet? wallet,
     LearnGoal? learnGoal,
+    List<LevelReport>? levelReports,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -370,6 +376,7 @@ class Progress {
     removedWords: removedWords ?? this.removedWords,
     wallet: wallet ?? this.wallet,
     learnGoal: learnGoal ?? this.learnGoal,
+    levelReports: levelReports ?? this.levelReports,
   );
 
   Map<String, dynamic> toJson() => {
@@ -412,6 +419,7 @@ class Progress {
     'removedWords': removedWords,
     'wallet': wallet.toJson(),
     'learnGoal': ?learnGoal?.toJson(),
+    'levelReports': [for (final r in levelReports) r.toJson()],
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -467,6 +475,10 @@ class Progress {
     learnGoal: j['learnGoal'] is Map
         ? LearnGoal.fromJson(Map<String, dynamic>.from(j['learnGoal'] as Map))
         : null,
+    levelReports: [
+      for (final r in (j['levelReports'] as List?) ?? const [])
+        if (r is Map) LevelReport.fromJson(Map<String, dynamic>.from(r)),
+    ],
   );
 }
 
@@ -889,6 +901,14 @@ class ProgressNotifier extends Notifier<Progress> {
       if ((completed[id] ?? 0) == 0) completed[id] = 1;
     }
     _save(state.copyWith(completed: completed));
+  }
+
+  /// Saves a Seviye Karnesi result. Ignored while the 30-day gate is closed
+  /// (one test per [levelTestCooldownDays]).
+  bool addLevelReport(LevelReport report) {
+    if (!canTakeLevelTest(state.levelReports, _now())) return false;
+    _save(state.copyWith(levelReports: mergeLevelReports(state.levelReports, [report])));
+    return true;
   }
 
   /// Keeps the best mock exam score for [examId].
