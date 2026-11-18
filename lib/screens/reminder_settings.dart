@@ -13,6 +13,7 @@ String formatMinutes(int minutes) =>
 Future<void> enableReminders(BuildContext context, WidgetRef ref) async {
   final granted = await ref.read(notificationServiceProvider).requestPermission();
   ref.read(progressProvider.notifier).setReminders(enabled: granted);
+  ref.invalidate(notificationsAllowedProvider);
   if (!granted && context.mounted) {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Bildirim izni verilmedi. Telefon ayarlarından açabilirsin.')),
@@ -113,6 +114,21 @@ class ReminderSettings extends ConsumerWidget {
             value: on,
             onChanged: (v) => v ? enableReminders(context, ref) : notifier.setReminders(enabled: false),
           ),
+          // On, but this phone does not allow notifications (switched on on
+          // another phone, or turned off in system settings): say so.
+          if (on && ref.watch(notificationsAllowedProvider).value == false)
+            ListTile(
+              key: const ValueKey('reminder-permission-missing'),
+              leading: Icon(Icons.notifications_off_rounded, color: Brand.error),
+              title: const Text(
+                'Bu telefonda bildirim izni kapalı; hatırlatma gelmez.',
+                style: TextStyle(fontWeight: FontWeight.w700),
+              ),
+              trailing: TextButton(
+                onPressed: () => enableReminders(context, ref),
+                child: const Text('İzin ver'),
+              ),
+            ),
           ListTile(
             enabled: on,
             leading: Icon(Icons.schedule_rounded, color: Brand.primary),

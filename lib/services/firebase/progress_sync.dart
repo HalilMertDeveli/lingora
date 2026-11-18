@@ -193,6 +193,18 @@ class ProgressSync extends Notifier<SyncStatus> {
     }
   }
 
+  /// Stops watching and writing `users/{uid}` until the provider rebuilds
+  /// (sign-out/sign-in or [ref.invalidate]). Used while the account is being
+  /// deleted: otherwise the listener sees the deleted document and uploads
+  /// the device copy again with the still-valid login token.
+  void pause() {
+    _sub?.cancel();
+    _sub = null;
+    _timer?.cancel();
+    _timer = null;
+    _doc = null;
+  }
+
   void _setSynced() {
     _lastSynced = ref.read(clockProvider)();
     state = SyncStatus(SyncState.synced, lastSyncedAt: _lastSynced);

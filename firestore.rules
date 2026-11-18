@@ -42,7 +42,11 @@ service cloud.firestore {
 
     match /users/{uid} {
       allow read: if isOwner(uid);
-      allow create, update: if isOwner(uid) && validUserDoc() && hasAccount();
+      // deletedAccounts/{uid}: written by deleteAccount. Another phone still
+      // signed in to the deleted account (its token lives up to an hour) must
+      // not write the progress back.
+      allow create, update: if isOwner(uid) && validUserDoc() && hasAccount()
+        && !exists(/databases/$(database)/documents/deletedAccounts/$(uid));
       allow delete: if false;
     }
 

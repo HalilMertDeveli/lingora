@@ -43,6 +43,45 @@ Future<void> _pumpAuth(WidgetTester tester, AccountService service, {Brightness 
 
 void main() {
   group('AuthScreen', () {
+    testWidgets('"İleri" on the keyboard: e-mail → password → password again', (tester) async {
+      // On a real Samsung phone (Galaxy M22) the next action closed the keyboard.
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: buildTheme(brightness: Brightness.light),
+          builder: (_, child) =>
+              PaletteScope(palette: Palette.of(AppMode.adult, Brightness.light), child: child!),
+          home: AuthScreen(service: AccountService(MockFirebaseAuth()), register: true),
+        ),
+      );
+      await tester.pump();
+      String? focused() => FocusManager.instance.primaryFocus?.debugLabel;
+      await tester.tap(find.byKey(const ValueKey('auth-email')));
+      await tester.pump();
+      await tester.testTextInput.receiveAction(TextInputAction.next);
+      await tester.pumpAndSettle();
+      expect(focused(), 'auth-password');
+      await tester.testTextInput.receiveAction(TextInputAction.next);
+      await tester.pumpAndSettle();
+      expect(focused(), 'auth-password2');
+    });
+
+    testWidgets('small phone, keyboard open: the pinned button gives the form its room', (tester) async {
+      // 480x800 at 1.5x = 320x533 dp; the keyboard takes about half (QA).
+      tester.view.devicePixelRatio = 1.5;
+      tester.view.physicalSize = const Size(480, 800);
+      addTearDown(tester.view.reset);
+      await _pumpAuth(tester, AccountService(MockFirebaseAuth()));
+      expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
+      tester.view.viewInsets = const FakeViewPadding(bottom: 260 * 1.5);
+      await tester.pump();
+      expect(find.byKey(const ValueKey('auth-submit')), findsNothing);
+      // The keyboard closes: the button is back.
+      tester.view.viewInsets = FakeViewPadding.zero;
+      await tester.pump();
+      expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
     testWidgets('sign-in form: Turkish texts, e-mail, password, Google and phone only', (tester) async {
       await _pumpAuth(tester, AccountService(MockFirebaseAuth()));
       expect(find.text('Tekrar hoş geldin!'), findsOneWidget);
@@ -178,6 +217,6 @@ void main() {
     await tester.pump();
     final button = tester.widget<FilledButton>(find.byKey(const ValueKey('account-sign-in')));
     expect(button.onPressed, isNull);
-    expect(find.text('Hesap hazırlanıyor…'), findsOneWidget);
+    expect(find.textContaining('Hesap hazırlanıyor…'), findsOneWidget);
   });
 }

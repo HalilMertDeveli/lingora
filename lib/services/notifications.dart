@@ -169,3 +169,19 @@ final notificationServiceProvider = Provider<NotificationService>(
     onTap: (payload) => ref.read(pendingNavTargetProvider.notifier).open(NavTarget.parse(payload)),
   ),
 );
+
+/// Whether this phone lets Dilmaç show notifications: false when the user
+/// turned them off in system settings or never granted them here (reminders
+/// switched on on another phone come with the synced progress). Null when
+/// unknown (not Android, tests). Re-read whenever the profile is opened.
+final notificationsAllowedProvider = FutureProvider.autoDispose<bool?>((ref) async {
+  if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return null;
+  try {
+    return await FlutterLocalNotificationsPlugin()
+        .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+        ?.areNotificationsEnabled();
+  } catch (e) {
+    debugPrint('notification permission check failed: $e');
+    return null;
+  }
+});

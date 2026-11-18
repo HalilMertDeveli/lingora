@@ -113,43 +113,55 @@ class _CourseBadgeState extends ConsumerState<CourseBadge> with SingleTickerProv
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(color: c.withValues(alpha: p.isDark ? 0.45 : 0.3)),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CourseTile(track, size: 30),
-                    const SizedBox(width: 7),
-                    Flexible(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'KURSUN',
-                            style: TextStyle(
-                              color: c,
-                              fontSize: 9.5,
-                              height: 1.1,
-                              letterSpacing: 0.8,
-                              fontWeight: FontWeight.w900,
+                // Largest font on a narrow phone: the counters leave too
+                // little room, so only the course picture stays (the
+                // semantics label still names the course).
+                child: LayoutBuilder(
+                  builder: (context, box) => box.maxWidth < 96
+                      ? CourseTile(track, size: 30)
+                      : Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            CourseTile(track, size: 30),
+                            const SizedBox(width: 7),
+                            Flexible(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'KURSUN',
+                                    // One line: wrapping overflowed the top bar with the
+                                    // largest font on a narrow phone.
+                                    maxLines: 1,
+                                    softWrap: false,
+                                    overflow: TextOverflow.clip,
+                                    style: TextStyle(
+                                      color: c,
+                                      fontSize: 9.5,
+                                      height: 1.1,
+                                      letterSpacing: 0.8,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                  Text(
+                                    look.short,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      color: p.ink,
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 14,
+                                      height: 1.2,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          Text(
-                            look.short,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: p.ink,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 14,
-                              height: 1.2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 2),
-                    Icon(Icons.unfold_more_rounded, size: 20, color: c),
-                  ],
+                            const SizedBox(width: 2),
+                            Icon(Icons.unfold_more_rounded, size: 20, color: c),
+                          ],
+                        ),
                 ),
               ),
             ),

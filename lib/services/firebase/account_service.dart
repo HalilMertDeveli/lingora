@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,10 +22,13 @@ class AccountException implements Exception {
 /// the account already exists, we sign into it instead; the progress on this
 /// device is then merged into that account by the sync (nothing is lost).
 class AccountService {
-  AccountService(this._auth, {Future<AuthCredential?> Function()? googleCredential})
+  AccountService(this._auth, {Future<AuthCredential?> Function()? googleCredential, this._deleteServerData})
     : _googleCredential = googleCredential ?? _nativeGoogleCredential;
 
   final FirebaseAuth _auth;
+
+  /// Calls the `deleteAccount` function (all server data and the Auth user).
+  final Future<void> Function()? _deleteServerData;
   final Future<AuthCredential?> Function() _googleCredential;
 
   User? get _user => _auth.currentUser;
@@ -157,6 +161,26 @@ class AccountService {
     }
     await _auth.signOut();
   });
+
+  /// Deletes the account and everything the server keeps about it (Google
+  /// Play account deletion policy), then signs out; a fresh guest account is
+  /// created right after. Progress on this device is not touched.
+  Future<void> deleteAccount() async {
+    final delete = _deleteServerData;
+    if (delete == null || _user == null) {
+      throw const AccountException('Hesap silme şu an kullanılamıyor. Lütfen daha sonra tekrar dene.');
+    }
+    try {
+      await delete();
+    } on FirebaseFunctionsException catch (e) {
+      debugPrint('deleteAccount failed: ${e.code} ${e.message}');
+      throw AccountException(deleteAccountErrorTr(e.code));
+    } catch (e) {
+      debugPrint('deleteAccount failed: $e');
+      throw AccountException(deleteAccountErrorTr('unknown'));
+    }
+    await signOut();
+  }
 
   /// The native SDKs reject an empty password with a non-Firebase error
   /// (shown as "Bir sorun oluştu"); say what is missing instead.
@@ -294,8 +318,29 @@ String? normalizePhoneTr(String raw) {
 /// Account actions, or null when Firebase is off.
 final accountServiceProvider = Provider<AccountService?>((ref) {
   final auth = ref.watch(firebaseAuthProvider);
-  return auth == null ? null : AccountService(auth);
+  final functions = ref.watch(functionsProvider);
+  if (auth == null) return null;
+  return AccountService(
+    auth,
+    deleteServerData: functions == null
+        ? null
+        : () => functions
+              .httpsCallable(
+                'deleteAccount',
+                options: HttpsCallableOptions(timeout: const Duration(seconds: 120)),
+              )
+              .call<Object?>(),
+  );
 });
+
+/// Turkish message for a failed `deleteAccount` call ([code] of the
+/// FirebaseFunctionsException).
+String deleteAccountErrorTr(String code) => switch (code) {
+  'unavailable' || 'deadline-exceeded' =>
+    'İnternet bağlantısı yok ya da çok yavaş. Hesabın silinmedi; bağlanınca tekrar dene.',
+  'unauthenticated' => 'Oturumun sona ermiş. Tekrar giriş yapıp yeniden dene.',
+  _ => 'Hesabın şu an silinemedi. Lütfen biraz sonra tekrar dene.',
+};
 
 /// Keeps a user signed in: when Firebase is on and nobody is signed in, an
 /// anonymous account is created (retried every 30 s while offline).
