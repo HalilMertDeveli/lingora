@@ -6,7 +6,9 @@ import '../data/listening.dart';
 import '../data/topic_themes.dart';
 import '../models/course.dart';
 import '../theme.dart';
-import '../ui/markdown_text.dart';
+import '../ui/guide_view.dart';
+import 'topic_guide.dart' show GuideHeader;
+import 'unit_guide_parts.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/tea_art.dart';
@@ -987,7 +989,6 @@ Future<void> showUnitGuide(
   showDragHandle: true,
   useRootNavigator: true,
   builder: (c) {
-    final t = Theme.of(c).textTheme;
     final color = Brand.tone(unit.color);
     final phrases = unitPhrases(unit);
     return DraggableScrollableSheet(
@@ -997,63 +998,40 @@ Future<void> showUnitGuide(
       builder: (_, scroll) => ListView(
         key: const Key('unit-guide'),
         controller: scroll,
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
         children: [
-          Text(
-            'ÜNİTE $index REHBERİ',
-            style: TextStyle(color: color, fontWeight: FontWeight.w900, letterSpacing: 1),
-          ),
-          const SizedBox(height: 4),
-          Text(unit.title, style: t.headlineSmall),
-          const SizedBox(height: 4),
-          Text(unit.description, style: TextStyle(color: Brand.muted, height: 1.4)),
-          const SizedBox(height: 18),
-          if (unit.hasGuide) ...[
-            Text('Konu anlatımı', style: t.titleMedium),
-            const SizedBox(height: 4),
-            KeyedSubtree(key: const Key('unit-guide-text'), child: MarkdownText(unit.guide!)),
-            const SizedBox(height: 18),
-          ],
+          GuideHeader(unit: unit, index: index, label: 'REHBER'),
+          const SizedBox(height: 16),
+          if (unit.hasGuide)
+            KeyedSubtree(
+              key: const Key('unit-guide-text'),
+              child: GuideView(unit.guide!, color: color),
+            ),
           if (phrases.isNotEmpty) ...[
-            Text('Anahtar ifadeler', style: t.titleMedium),
-            const SizedBox(height: 8),
-            TapCard(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-              child: Column(
-                children: [
-                  for (final (en, tr) in phrases)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 6),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Text(en, style: const TextStyle(fontWeight: FontWeight.w700)),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Text(tr, style: TextStyle(color: Brand.muted)),
-                          ),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
+            GuideCard.topic(
+              c,
+              key: const Key('unit-guide-phrases'),
+              title: 'Anahtar ifadeler',
+              topic: GuideTopic.words,
+              child: PhraseList(phrases: phrases),
             ),
-            const SizedBox(height: 18),
+            const SizedBox(height: 16),
           ],
-          Text('Bu ünitedeki adımlar', style: t.titleMedium),
-          const SizedBox(height: 8),
-          for (final n in unit.nodes)
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: Icon(switch (stateOf(n)) {
-                NodeState.done => Icons.check_circle_rounded,
-                NodeState.active => nodeIcon(n.type),
-                NodeState.locked => Icons.lock_outline_rounded,
-              }, color: stateOf(n) == NodeState.locked ? Brand.muted : color),
-              title: Text(n.title),
-              subtitle: n.description.isEmpty ? null : Text(n.description),
+          GuideCard.topic(
+            c,
+            key: const Key('unit-guide-steps'),
+            title: 'Bu ünitedeki adımlar',
+            topic: GuideTopic.steps,
+            child: NodeSteps(
+              nodes: unit.nodes,
+              stateOf: (n) => switch (stateOf(n)) {
+                NodeState.locked => 0,
+                NodeState.active => 1,
+                NodeState.done => 2,
+              },
+              iconOf: (n) => nodeIcon(n.type),
             ),
+          ),
         ],
       ),
     );
