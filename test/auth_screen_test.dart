@@ -46,6 +46,13 @@ Future<void> _pumpAuth(
   await tester.pump();
 }
 
+/// The submit button inside the scrolling form (where it sits while the
+/// keyboard is open) rather than pinned under it.
+final _submitInForm = find.descendant(
+  of: find.byType(ListView),
+  matching: find.byKey(const ValueKey('auth-submit')),
+);
+
 void main() {
   group('AuthScreen', () {
     testWidgets('"İleri" on the keyboard: e-mail → password → password again', (tester) async {
@@ -79,11 +86,14 @@ void main() {
       expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
       tester.view.viewInsets = const FakeViewPadding(bottom: 260 * 1.5);
       await tester.pump();
-      expect(find.byKey(const ValueKey('auth-submit')), findsNothing);
-      // The keyboard closes: the button is back.
+      // Not pinned over the fields: at the end of the form, reached by scrolling.
+      await tester.scrollUntilVisible(_submitInForm, 200, scrollable: find.byType(Scrollable).first);
+      expect(_submitInForm, findsOneWidget);
+      // The keyboard closes: the button is pinned again.
       tester.view.viewInsets = FakeViewPadding.zero;
       await tester.pump();
       expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
+      expect(_submitInForm, findsNothing);
       expect(tester.takeException(), isNull);
     });
 
@@ -97,7 +107,12 @@ void main() {
       expect(find.byKey(const ValueKey('auth-submit')), findsOneWidget);
       tester.view.viewInsets = const FakeViewPadding(bottom: 330 * 720 / 384);
       await tester.pump();
+      // Not pinned over the fields any more: it is reached by scrolling the form.
       expect(find.byKey(const ValueKey('auth-submit')), findsNothing);
+      await tester.scrollUntilVisible(_submitInForm, 200, scrollable: find.byType(Scrollable).first);
+      expect(_submitInForm, findsOneWidget);
+      // The fields above it stay in the form, nothing covers the password.
+      expect(find.byKey(const ValueKey('auth-password')), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
 
