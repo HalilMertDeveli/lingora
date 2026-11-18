@@ -9,6 +9,7 @@ import 'package:lingora/data/course_repository.dart';
 import 'package:lingora/data/notes_repository.dart';
 import 'package:lingora/data/placement.dart';
 import 'package:lingora/data/progress.dart';
+import 'package:lingora/goals/learn_goal.dart';
 import 'package:lingora/main.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/models/exam.dart';
@@ -112,7 +113,8 @@ Future<Progress> _saved() async {
 }
 
 Future<void> _toLevelStep(WidgetTester tester) async {
-  for (var i = 0; i < 4; i++) {
+  // welcome, audience, course, daily goal, "Hedefin ne?" (adults).
+  for (var i = 0; i < 5; i++) {
     await tester.tap(find.text('Devam'));
     await tester.pumpAndSettle();
   }
@@ -159,6 +161,28 @@ void main() {
     final p = await _saved();
     expect(p.trackId, 'tr_en');
     expect(p.completed, isEmpty);
+  });
+
+  testWidgets('"Hedefin ne?" (adults) is saved with the progress', (tester) async {
+    await _pump(tester, {});
+    for (var i = 0; i < 4; i++) {
+      await tester.tap(find.text('Devam'));
+      await tester.pumpAndSettle();
+    }
+    expect(find.text('Hedefin ne?'), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('goal-exam')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('goal-exam-date')), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('goal-interview')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
+    expect(find.text('Neden İngilizce öğreniyorsun?'), findsOneWidget);
+    await tester.tap(find.text('Sıfırdan başla'));
+    await tester.pumpAndSettle();
+    final p = await _saved();
+    expect(p.learnGoal?.kind, GoalKind.interview);
+    expect(p.trackId, 'tr_en');
   });
 
   testWidgets('closing the test returns to onboarding', (tester) async {

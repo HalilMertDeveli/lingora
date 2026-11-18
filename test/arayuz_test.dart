@@ -165,6 +165,14 @@ void main() {
       await tester.tap(find.byKey(Key('unit-guide-${unit.id}')));
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('unit-guide')), findsOneWidget);
+      // The steps card sits under the header and the phrases card.
+      await tester.scrollUntilVisible(
+        find.text('Bu ünitedeki adımlar'),
+        300,
+        scrollable: find
+            .descendant(of: find.byKey(const Key('unit-guide')), matching: find.byType(Scrollable))
+            .first,
+      );
       expect(find.text('Bu ünitedeki adımlar'), findsOneWidget);
       final phrases = unitPhrases(unit);
       expect(phrases, isNotEmpty);

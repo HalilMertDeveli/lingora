@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../core/tr_errors.dart';
 import '../study/tr_error_log.dart';
 import '../models/notes.dart';
+import '../goals/learn_goal.dart';
 import '../models/study_plan.dart';
 import '../services/billing/premium_perks.dart' show goldMultiplierProvider;
 
@@ -85,6 +86,7 @@ class Progress {
     this.userNotes = const [],
     this.removedWords = const {},
     this.wallet = const Wallet(),
+    this.learnGoal,
     this.levelReports = const [],
   });
 
@@ -93,6 +95,9 @@ class Progress {
 
   /// Altın and Mağaza items (lib/data/wallet.dart).
   final Wallet wallet;
+
+  /// "Hedefin ne?" (onboarding / Profil), null until chosen.
+  final LearnGoal? learnGoal;
 
   /// Selected course or exam (see catalog.dart).
   final String trackId;
@@ -329,6 +334,7 @@ class Progress {
     List<UserNote>? userNotes,
     Map<String, int>? removedWords,
     Wallet? wallet,
+    LearnGoal? learnGoal,
     List<LevelReport>? levelReports,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
@@ -369,6 +375,7 @@ class Progress {
     userNotes: userNotes ?? this.userNotes,
     removedWords: removedWords ?? this.removedWords,
     wallet: wallet ?? this.wallet,
+    learnGoal: learnGoal ?? this.learnGoal,
     levelReports: levelReports ?? this.levelReports,
   );
 
@@ -411,6 +418,7 @@ class Progress {
     'userNotes': [for (final n in userNotes) n.toJson()],
     'removedWords': removedWords,
     'wallet': wallet.toJson(),
+    'learnGoal': ?learnGoal?.toJson(),
     'levelReports': [for (final r in levelReports) r.toJson()],
   };
 
@@ -464,6 +472,9 @@ class Progress {
     wallet: j['wallet'] is Map
         ? Wallet.fromJson(Map<String, dynamic>.from(j['wallet'] as Map))
         : const Wallet(),
+    learnGoal: j['learnGoal'] is Map
+        ? LearnGoal.fromJson(Map<String, dynamic>.from(j['learnGoal'] as Map))
+        : null,
     levelReports: [
       for (final r in (j['levelReports'] as List?) ?? const [])
         if (r is Map) LevelReport.fromJson(Map<String, dynamic>.from(r)),
@@ -862,6 +873,9 @@ class ProgressNotifier extends Notifier<Progress> {
       keys.isEmpty ? map : ({...map}..removeWhere((k, _) => keys.contains(k)));
 
   void setTrack(String id) => _save(state.copyWith(trackId: id));
+
+  /// Sets the learner's goal ("Hedefin ne?").
+  void setLearnGoal(LearnGoal goal) => _save(state.copyWith(learnGoal: goal));
 
   /// Sets up or changes the study plan; null removes it.
   void setStudyPlan(StudyPlan? plan) =>
