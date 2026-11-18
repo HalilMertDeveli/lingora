@@ -15,13 +15,17 @@ import 'placement.dart';
 
 /// Skills the monthly test measures.
 enum LevelSkill {
-  grammar('Dil bilgisi', '🧩'),
-  vocabulary('Kelime', '🔤'),
-  reading('Okuma', '📖'),
-  listening('Dinleme', '🎧');
+  grammar('Dil bilgisi', 'DİL BİLGİSİ', '🧩'),
+  vocabulary('Kelime', 'KELİME', '🔤'),
+  reading('Okuma', 'OKUMA', '📖'),
+  listening('Dinleme', 'DİNLEME', '🎧');
 
-  const LevelSkill(this.title, this.emoji);
+  const LevelSkill(this.title, this.caps, this.emoji);
   final String title;
+
+  /// [title] in capitals with the Turkish dotted İ (Dart's toUpperCase
+  /// would give "DIL").
+  final String caps;
   final String emoji;
 }
 

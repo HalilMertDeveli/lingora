@@ -266,7 +266,7 @@ class _LevelTestScreenState extends ConsumerState<LevelTestScreen> {
         Row(
           children: [
             Text(
-              '${q.skill.emoji}  ${q.skill.title.toUpperCase()}',
+              '${q.skill.emoji}  ${q.skill.caps}',
               style: t.labelLarge?.copyWith(color: Brand.primary, fontWeight: FontWeight.w900, letterSpacing: 1),
             ),
             const Spacer(),

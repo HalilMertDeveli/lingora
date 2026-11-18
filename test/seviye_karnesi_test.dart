@@ -107,6 +107,11 @@ void main() {
       expect(r.total, 12);
     });
 
+    test('skill labels use the Turkish dotted capital İ', () {
+      expect(LevelSkill.grammar.caps, 'DİL BİLGİSİ');
+      expect(LevelSkill.listening.caps, 'DİNLEME');
+    });
+
     test('a bank without a skill only measures the others', () {
       final s = LevelTestSession(_bank([LevelSkill.grammar, LevelSkill.reading]));
       expect(s.planned, 8);
