@@ -98,6 +98,6 @@ App Store (ileride) için 100 karakterlik alan önerisi:
 - Reklam içeriyor mu: **Hayır**.
 - Uygulama içi satın alımlar: **Evet** (abonelik).
 - Veri güvenliği formu: `gizlilik-politikasi.md` ve `veri-guvenligi.md`'ye göre doldur.
-- Gizlilik politikası URL'si: `gizlilik-politikasi.md` yayınlandığı adres
+- Gizlilik politikası URL'si: `https://dilbaz-3392e.web.app/gizlilik`; hesap silme URL'si: `https://dilbaz-3392e.web.app/hesap-silme` (bkz. `hosting/README.md`)
   (ör. Firebase Hosting `https://<proje>.web.app/gizlilik`).
 - İletişim e-postası: sahibin destek adresi.

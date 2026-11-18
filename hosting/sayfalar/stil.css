@@ -1,0 +1,153 @@
+/* Dilmaç yasal sayfaları. Renkler lib/theme.dart (açık / koyu palet) ile aynı. */
+:root {
+  --bg: #faf4ea;
+  --card: #fffcf7;
+  --surface: #f4ecdf;
+  --ink: #2a1e16;
+  --muted: #75665a;
+  --line: #e8dcca;
+  --primary: #a63f1b;
+  --accent: #c07812;
+  --accent-bg: #fbefd9;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17120f;
+    --card: #211a16;
+    --surface: #2b231d;
+    --ink: #f2e9de;
+    --muted: #b2a292;
+    --line: #3a2f27;
+    --primary: #e99460;
+    --accent: #edb04f;
+    --accent-bg: #33270f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+}
+
+a { color: var(--primary); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.ust {
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+
+.ust > div, main, footer {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ust > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 60px;
+  flex-wrap: wrap;
+}
+
+.marka {
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.marka span { color: var(--primary); }
+
+.ust nav { display: flex; gap: 16px; font-size: 0.95rem; }
+.ust nav a { text-decoration: none; font-weight: 600; }
+.ust nav a[aria-current="page"] { color: var(--ink); }
+
+main { padding-top: 28px; padding-bottom: 40px; }
+
+h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.015em; }
+h2 { font-size: 1.3rem; margin: 36px 0 8px; padding-top: 4px; }
+h3 { font-size: 1.05rem; margin: 22px 0 4px; }
+
+.tarih { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; }
+
+.kutu {
+  background: var(--accent-bg);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 18px 0;
+}
+
+.kutu > :first-child { margin-top: 0; }
+.kutu > :last-child { margin-bottom: 0; }
+
+.kartlar { display: grid; gap: 14px; margin: 24px 0; }
+
+.kart {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.kart:hover { border-color: var(--primary); }
+.kart strong { display: block; font-size: 1.1rem; color: var(--primary); }
+.kart span { color: var(--muted); }
+
+ol.adim { padding-left: 1.4em; }
+ol.adim li { margin: 6px 0; }
+
+.yol {
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tablo { overflow-x: auto; margin: 12px 0; }
+
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { background: var(--surface); }
+
+.icindekiler {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+}
+
+.icindekiler ol { margin: 6px 0; padding-left: 1.3em; columns: 2 240px; }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  padding-bottom: 32px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+footer p { margin: 4px 0; }
+
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  h1 { font-size: 1.55rem; }
+}

@@ -1,202 +1,31 @@
-# Dilmaç Gizlilik Politikası ve KVKK Aydınlatma Metni (TASLAK)
+# Dilmaç Gizlilik Politikası ve KVKK Aydınlatma Metni
 
-> **Taslak.** Yayından önce köşeli parantezli alanları doldur ve bir hukukçuya
-> kontrol ettir. Metin uygulamanın bugünkü davranışına göre yazıldı
-> (bkz. `docs/analitik.md`, `docs/firebase.md`, `docs/abonelik.md`); yeni bir veri
-> akışı eklendiğinde güncellenmelidir.
+**Yayınlanan metin artık burada değil:** [`hosting/sayfalar/gizlilik.html`](../../hosting/sayfalar/gizlilik.html)
+(adres: `https://dilbaz-3392e.web.app/gizlilik`). Hesap silme sayfası:
+[`hosting/sayfalar/hesap-silme.html`](../../hosting/sayfalar/hesap-silme.html)
+(`https://dilbaz-3392e.web.app/hesap-silme`). Derleme ve yayın: [`hosting/README.md`](../../hosting/README.md).
 
-Son güncelleme: [GG.AA.YYYY]
+İki kopya birbirinden kopmasın diye metin yalnızca HTML'de tutulur. Bu dosya, yayından önce
+yapılacakları ve son sürümde nelerin değiştiğini izler.
 
-## 1. Veri sorumlusu
+## Yayından önce
 
-6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında veri sorumlusu:
-**[Ad Soyad / Şirket unvanı]**, [adres], e-posta: **[destek@alanadi]**
-("Dilmaç", "biz").
+- [ ] İletişim e-postasını ver: `hosting/site.json` > `iletisimEposta` ya da `ILETISIM_EPOSTA`
+      ortam değişkeni (tek yer tutucu: `{{ILETISIM_EPOSTA}}`). Kişisel adres yerine destek adresi.
+- [ ] Hukukçu kontrolü: özellikle yurt dışına aktarım (KVKK m. 9, standart sözleşmenin imzalanıp
+      Kurum'a bildirilmesi) ve Çocuk modu / hedef kitle kararı (`docs/play-store-hazirlik.md` §3).
+- [ ] `firebase deploy --project prod --only hosting:yasal`, sonra iki adresi Play Console'a gir.
 
-Dilmaç, Türkçe konuşanlara İngilizce öğreten bir mobil uygulamadır. Bu metin
-uygulamayı kullanırken hangi verilerin işlendiğini, neden işlendiğini ve
-haklarını açıklar.
+## 18 Kasım 2026 sürümünde değişenler (taslağa göre)
 
-## 2. Kısaca
-
-- Hesap açmadan kullanabilirsin; ilerlemen **cihazında** tutulur.
-- Reklam yok; verilerini satmayız, reklam için kullanmayız.
-- Kullanım istatistikleri **yalnızca izin verirsen** toplanır ve istediğin an kapatılabilir.
-- Yazdıkların ve ses kayıtların bizim sunucularımızda saklanmaz.
-
-## 3. Hangi verileri, neden işliyoruz?
-
-### 3.1 Yalnızca cihazında kalan veriler
-
-İlerleme (tamamlanan dersler, XP, seri, günlük hedef), sınav sonuçları, kelime
-kartları ve notlar, günlük (diary) yazıları, hata istatistikleri, bildirim ve
-uygulama ayarları, analiz izni kararın, rastgele üretilen bir kurulum kimliği.
-Bu veriler telefonunun uygulama alanında saklanır; uygulamayı silince silinir.
-**Hukuki sebep:** sözleşmenin ifası (hizmeti sunmak), KVKK m. 5/2-c.
-
-### 3.2 Mikrofon ve konuşma tanıma
-
-Konuşma ve telaffuz alıştırmalarında mikrofon yalnızca sen düğmeye bastığında
-açılır. Ses, telefonundaki konuşma tanıma hizmetine (Android'de genellikle
-Google) iletilir ve metne çevrilir; Dilmaç ses kaydı saklamaz ve sunucularına
-göndermez. Sesli okuma (metinden sese) cihazda yapılır. İzni Android
-ayarlarından istediğin zaman geri alabilirsin.
-
-### 3.3 Hesap ve bulut yedekleme (isteğe bağlı)
-
-Hesap bağlarsan (Google ile ya da e-posta ile) Firebase Authentication
-(Google LLC) kullanılır: kullanıcı kimliği (uid), e-posta, ad (Google'dan
-geliyorsa) işlenir. Bulut yedekleme açıksa ilerleme özetin (3.1'deki
-ilerleme, XP, görünen adın) Cloud Firestore'da saklanır; böylece başka bir
-cihazda devam edebilirsin. Misafir (anonim) hesap da oluşturulabilir.
-**Hukuki sebep:** sözleşmenin ifası, m. 5/2-c.
-
-### 3.4 Haftalık lig
-
-Lige katılırsan takma adın, seçtiğin simge ve haftalık XP'n aynı gruptaki
-(en fazla 15 kişi) diğer kullanıcılara gösterilir. Gerçek adını takma ad olarak
-kullanmak zorunda değilsin.
-
-### 3.5 Yapay zekâ sohbet partneri (Premium)
-
-Canlı sohbette yazdığın mesajlar ve seçtiğin senaryo, cevap üretmek için
-sunucumuz (Google Cloud Functions, Avrupa bölgesi) üzerinden Anthropic PBC'nin
-Claude yapay zekâ hizmetine gönderilir. Mesajlar Dilmaç tarafından
-saklanmaz; yalnızca günlük kullanım sayısı (kota için) tutulur. Anthropic,
-API üzerinden gelen verileri kendi politikası gereği model eğitiminde
-kullanmaz ve sınırlı bir süre güvenlik amacıyla saklayabilir. Sohbete kişisel
-bilgilerini (TC kimlik no, adres, sağlık bilgisi vb.) yazmamanı öneririz.
-**Hukuki sebep:** sözleşmenin ifası, m. 5/2-c; yurt dışına aktarım için 6. bölüm.
-
-### 3.6 Satın almalar
-
-Premium aboneliği Google Play üzerinden satılır. Ödeme bilgilerin (kart vb.)
-Google tarafından işlenir; biz görmeyiz. Aboneliği doğrulamak için Google
-Play'in verdiği satın alma belirteci (token), ürün kimliği ve abonelik bitiş
-tarihi işlenir; belirtecin yalnızca özeti (hash) ve Premium durumu
-(`entitlements`) saklanır. **Hukuki sebep:** sözleşmenin ifası (m. 5/2-c) ve
-hukuki yükümlülük (m. 5/2-ç, vergi/muhasebe kayıtları Google Play tarafından tutulur).
-
-### 3.7 Davet programı
-
-Davet kodun hesabınla ilişkilendirilir. Bir kod kullanıldığında: kodu kullanan
-ve davet eden hesapların kimlikleri, tarih, kurulum kimliğinin özeti (aynı
-cihazda tekrar kullanımı önlemek için) ve verilen Premium günleri saklanır.
-Davet ettiğin kişinin adı ya da e-postası sana gösterilmez.
-**Hukuki sebep:** sözleşmenin ifası (m. 5/2-c) ve kötüye kullanımı önlemede
-meşru menfaat (m. 5/2-f).
-
-### 3.8 Kullanım istatistikleri (yalnızca izinle)
-
-İzin verirsen Google Firebase Analytics ile anonim kullanım olayları
-toplanır: hangi ekranların açıldığı, ders başlatma/bitirme, doğruluk yüzdesi,
-seçilen kurs, Premium ekranının görülmesi ve satın alma adımları, uygulamaya
-geri dönüş aralığı. Firebase bunlara cihazına özel rastgele bir analiz
-kimliği, cihaz modeli, işletim sistemi sürümü, dil ve yaklaşık ülke bilgisi
-ekler. **Gönderilmeyenler:** adın, e-postan, kullanıcı kimliğin, yazdıkların,
-ses kayıtların, davet kodların, kesin konumun, reklam kimliğin.
-Veriler reklam ya da profil çıkarma için kullanılmaz; saklama süresi 2 aydır.
-**Hukuki sebep:** açık rıza (m. 5/1). Rızanı Profil > Gizlilik'ten istediğin an
-geri alabilirsin; geri aldığında toplama durur ve cihazdaki analiz kimliği silinir.
-
-### 3.9 Uygulama yapılandırması (Remote Config)
-
-Uygulama, ayarları (ör. hangi Premium ekranı düzeninin gösterileceği)
-Firebase Remote Config'ten okur. Bunun için Firebase kurulum kimliği
-işlenir; kişisel veri gönderilmez. **Hukuki sebep:** meşru menfaat (m. 5/2-f).
-
-### 3.10 Arkadaşlar ve rehberden arkadaş bulma (isteğe bağlı)
-
-Hesabın varsa arkadaş ekleyebilirsin: 8 haneli arkadaş kodunla ya da rehberinden.
-Arkadaş olduğun kişi görünen adını, simgeni, profil fotoğrafını, günlük hedefini
-tamamlayıp tamamlamadığını ve ortak serinizi görür.
-
-**Rehberden bul** yalnızca sen düğmeye bastığında ve rehber (Kişiler) iznini
-verdiğinde çalışır; izni vermezsen kodla eklemeye devam edersin. Rehberin
-**telefonunda kalır**: kişilerin adları ve numaraları Dilmaç'a ya da başka bir
-yere yüklenmez. Numaralar telefonunda E.164 biçimine çevrilip uygulamaya özgü
-bir önekle tek yönlü özetlenir (SHA-256); yalnızca bu özetler, numarasıyla
-bulunmayı seçen Dilmaç kullanıcılarının özetleriyle tek tek karşılaştırılır.
-Eşleşen kişilerin adını yine rehberindeki hâliyle görürsün. Telefon numarası çok
-kısa bir sayı olduğundan bu özet gizli bir şifre sayılmaz; koruma, listenin
-kimseye açılmaması ve yalnızca tek tek sorgulanabilmesiyle sağlanır.
-
-**Telefon numaramla bulunabilirim** seçeneği varsayılan olarak kapalıdır. Açarsan
-yalnızca telefonla girişte doğrulanmış numaranın özeti ve kullanıcı kimliğin
-(uid) saklanır (`phoneIndex`); numaran açık hâliyle saklanmaz. Kapatınca kayıt
-silinir. Numaranı rehberinde kayıtlı tutan bir Dilmaç kullanıcısı seni bulup
-arkadaşlık isteği gönderebilir; istekte gönderenin görünen adı ve simgesi
-bulunur, kabul edersen arkadaş olursunuz, reddedersen istek silinir.
-**Hukuki sebep:** açık rıza (m. 5/1; düğmeye basman ve seçeneği açman) ve
-sözleşmenin ifası (m. 5/2-c).
-
-## 4. Kimlerle paylaşıyoruz?
-
-Yalnızca hizmeti sunmak için gerekli hizmet sağlayıcılarla (veri işleyen):
-
-| Alıcı | Ne için | Konum |
-| --- | --- | --- |
-| Google LLC / Google Ireland (Firebase Auth, Firestore, Cloud Functions, Analytics, Remote Config) | Hesap, yedekleme, sunucu, izinli istatistik | AB (europe-west1) ve ABD |
-| Google Play | Abonelik satışı ve doğrulama | Küresel |
-| Anthropic PBC | Yapay zekâ sohbet cevapları (Premium) | ABD |
-
-Yasal zorunluluk hâlinde yetkili kamu kurumlarıyla paylaşılabilir. Verilerini
-satmayız.
-
-## 5. Saklama süreleri
-
-- Cihazdaki veriler: uygulamayı silene ya da Profil'den sıfırlayana kadar.
-- Hesap ve bulut yedeği: hesabını silene kadar; silme talebinden sonra en geç 30 gün.
-- Satın alma doğrulama kayıtları: abonelik süresince ve sonrasında yasal süre boyunca.
-- Davet kayıtları: kötüye kullanımı önlemek için en fazla 2 yıl.
-- Analiz verileri: 2 ay (Firebase saklama ayarı).
-- Sunucu günlükleri (hata kayıtları): en fazla 30 gün.
-
-## 6. Yurt dışına aktarım
-
-Hizmet sağlayıcılarımızın bir kısmı (Google, Anthropic) verileri Türkiye dışında
-(AB ve ABD) işler. Bu aktarımlar KVKK m. 9 kapsamında, Kurul'un ilan ettiği
-standart sözleşmeler ve/veya aktarım anındaki açık rızan ile yapılır.
-[Hukukçu kontrolü: standart sözleşmenin imzalanıp Kurum'a bildirildiğini doğrula.]
-
-## 7. Çocuklar
-
-Dilmaç 13 yaş ve üzeri kullanıcılar içindir. 13 yaş altındaki çocukların
-uygulamayı bir ebeveyn gözetiminde, hesap bağlamadan kullanmasını öneririz.
-Ebeveynsen ve çocuğuna ait veri işlendiğini düşünüyorsan bize yaz; sileriz.
-
-## 8. Güvenlik
-
-Sunucu ile iletişim şifrelidir (HTTPS/TLS). Firestore'da her kullanıcı yalnızca
-kendi verisini okuyabilir; Premium ve davet kayıtlarını yalnızca sunucu
-yazabilir. Hiçbir yöntem %100 güvenli değildir; bir ihlal olursa KVKK'ya uygun
-şekilde Kurul'a ve sana bildiririz.
-
-## 9. Hakların (KVKK m. 11)
-
-Kişisel verilerinin işlenip işlenmediğini öğrenme, bilgi isteme, amacını
-öğrenme, aktarıldığı kişileri bilme, düzeltilmesini, silinmesini ya da yok
-edilmesini isteme, bunların aktarılan kişilere bildirilmesini isteme, otomatik
-analiz sonucu aleyhine bir sonuca itiraz etme ve zarara uğrarsan tazminat
-isteme haklarına sahipsin.
-
-Başvurunu **[destek@alanadi]** adresine, kayıtlı e-posta adresinden ya da
-kimliğini doğrulayan bir yolla gönderebilirsin; en geç 30 gün içinde
-ücretsiz yanıtlarız. Yanıtımızdan memnun kalmazsan Kişisel Verileri Koruma
-Kurulu'na şikâyette bulunabilirsin.
-
-Uygulama içinden:
-
-- Kullanım istatistiği izni: Profil > Gizlilik.
-- İlerlemeyi sıfırlama: Profil > İlerlemeyi sıfırla.
-- Hesaptan çıkış: Profil > Hesap. [Hesap silme özelliği eklendiğinde: Profil > Hesap > Hesabı sil.]
-- Abonelik iptali: Google Play > Ödemeler ve abonelikler > Abonelikler.
-
-## 10. Değişiklikler
-
-Bu metni güncellediğimizde uygulamada ve bu sayfada duyururuz. Önemli
-değişikliklerde (ör. yeni bir veri türü) yeniden izin isteriz.
-
-## 11. İletişim
-
-[Ad Soyad / Şirket], [adres], **[destek@alanadi]**
+- Veri sorumlusu: yayıncı **Dilmaç Studio**; adres alanı kaldırıldı, iletişim tek e-posta.
+- Uygulama içi silme artık gerçek: **Profil > Hesap > Hesabımı sil**; ayrı hesap silme sayfası eklendi.
+- Reklam yok, **reklam kimliği (AD_ID) okunmuyor** bölümü eklendi.
+- **Profil fotoğrafı** (küçültülmüş JPEG, Firestore'da; arkadaşlar ve lig görür; misafirde cihazda kalır).
+- Rehber: yalnızca istek üzerine, numaraların tuzlu SHA-256 özetleri; adlar ve ham numaralar gönderilmez.
+- Mikrofon: konuşma tanıma cihazda; **Sesli Konuşma Koçu ve Mülakat Provası metni** (ses değil)
+  sunucuya ve Anthropic'e gider; Mülakat Provası geçmişi hesap silinene kadar saklanır.
+- Yazma değerlendirmesi, aile paketi ve kurum / okul lisansı (kurumun gördüğü sınırlı özet) eklendi.
+- Telefon numarasıyla giriş, lig ve sıralamada ülke bilgisi eklendi.
+- Saklama süreleri ve silme sonrası kalan kayıtlar (`functions/src/account.ts`) netleşti.
+- Çocuklar: hedef kitle 13+, Çocuk modu ebeveyn gözetiminde.

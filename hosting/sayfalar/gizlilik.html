@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gizlilik Politikası · Dilmaç</title>
+  <meta name="description" content="Dilmaç gizlilik politikası ve KVKK aydınlatma metni.">
+  <link rel="stylesheet" href="/stil.css">
+</head>
+<body>
+  <header class="ust">
+    <div>
+      <a class="marka" href="/">Dilma<span>ç</span></a>
+      <nav aria-label="Sayfalar">
+        <a href="/gizlilik" aria-current="page">Gizlilik</a>
+        <a href="/hesap-silme">Hesap silme</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Gizlilik Politikası ve KVKK Aydınlatma Metni</h1>
+    <p class="tarih">Son güncelleme: 18 Kasım 2026</p>
+
+    <div class="kutu">
+      <p><strong>Kısaca</strong></p>
+      <ul>
+        <li>Hesap açmadan kullanabilirsin; o zaman ilerlemen yalnızca <strong>telefonunda</strong> tutulur.</li>
+        <li><strong>Reklam yok.</strong> Reklam kimliği (Advertising ID) kullanmayız, verilerini satmayız.</li>
+        <li>Kullanım istatistikleri <strong>yalnızca izin verirsen</strong> toplanır; izni istediğin an geri alırsın.</li>
+        <li>Konuşma tanıma telefonunda yapılır; <strong>ses kaydın sunucumuza gelmez.</strong></li>
+        <li>Rehberin telefonunda kalır; yalnızca sen istersen numaraların tek yönlü özetleri (hash) karşılaştırılır.</li>
+        <li>Hesabını uygulamada <span class="yol">Profil &gt; Hesap &gt; Hesabımı sil</span> ile hemen silebilirsin.</li>
+      </ul>
+    </div>
+
+    <nav class="icindekiler" aria-label="İçindekiler">
+      <strong>İçindekiler</strong>
+      <ol>
+        <li><a href="#sorumlu">Veri sorumlusu</a></li>
+        <li><a href="#veriler">Hangi verileri neden işliyoruz?</a></li>
+        <li><a href="#reklam">Reklam ve reklam kimliği</a></li>
+        <li><a href="#paylasim">Kimlerle paylaşıyoruz?</a></li>
+        <li><a href="#saklama">Saklama süreleri</a></li>
+        <li><a href="#aktarim">Yurt dışına aktarım</a></li>
+        <li><a href="#cocuklar">Çocuklar ve Çocuk modu</a></li>
+        <li><a href="#guvenlik">Güvenlik</a></li>
+        <li><a href="#haklar">Hakların ve kontrollerin</a></li>
+        <li><a href="#degisiklik">Değişiklikler</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="sorumlu">1. Veri sorumlusu</h2>
+    <p>6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında veri sorumlusu
+      Dilmaç uygulamasının yayıncısı <strong>Dilmaç Studio</strong>'dur ("Dilmaç", "biz").
+      İletişim: <a href="mailto:{{ILETISIM_EPOSTA}}">{{ILETISIM_EPOSTA}}</a>.</p>
+    <p>Dilmaç, Türkçe konuşanlara İngilizce öğreten bir mobil uygulamadır. Bu metin, uygulamayı
+      kullanırken hangi verilerin işlendiğini, neden işlendiğini ve haklarını açıklar.</p>
+
+    <h2 id="veriler">2. Hangi verileri neden işliyoruz?</h2>
+
+    <h3>2.1 Yalnızca telefonunda kalan veriler</h3>
+    <p>İlerleme (tamamlanan dersler, XP, seri, günlük hedef), sınav sonuçları, kelime kartları ve
+      notlar, günlük (diary) yazıları, hata istatistikleri, bildirim ve uygulama ayarları, analiz
+      izni kararın ve rastgele üretilen bir kurulum kimliği. Bunlar telefonunun uygulama alanında
+      saklanır; uygulamayı kaldırınca silinir.
+      <strong>Hukuki sebep:</strong> sözleşmenin ifası (KVKK m. 5/2-c).</p>
+
+    <h3>2.2 Mikrofon ve konuşma tanıma</h3>
+    <p>Mikrofon yalnızca konuşma alıştırmalarında, Sesli Konuşma Koçu'nda ve Mülakat Provası'nda,
+      sen mikrofon düğmesine dokunduğunda açılır. Sesin, telefonundaki konuşma tanıma hizmeti
+      (Android'de genellikle Google) tarafından <strong>telefonunda metne çevrilir</strong>.
+      Dilmaç ses kaydı tutmaz ve sesini sunucularına göndermez. Sesli okuma (metinden sese) da
+      telefonunda yapılır.</p>
+    <p>Sesli Konuşma Koçu ve Mülakat Provası'nda ise konuşmanın <strong>metne çevrilmiş hâli</strong>
+      (ses değil) değerlendirme için sunucumuza ve yapay zekâ sağlayıcımıza gönderilir; ayrıntılar
+      2.6'da. Mikrofon iznini Android ayarlarından istediğin zaman geri alabilirsin; o zaman yazarak
+      devam edebilirsin.</p>
+
+    <h3>2.3 Hesap ve bulut yedekleme (isteğe bağlı)</h3>
+    <p>Hesap açarsan (Google ile, e-posta ile ya da telefon numarasıyla) Firebase Authentication
+      (Google) kullanılır: kullanıcı kimliği (uid), e-posta adresi ya da telefon numarası ve
+      Google'dan geliyorsa adın işlenir. Bulut yedekleme açıksa ilerleme özetin Cloud Firestore'da
+      saklanır; böylece başka bir telefonda devam edebilirsin. Misafir (anonim) hesap da
+      kullanılabilir.
+      <strong>Hukuki sebep:</strong> sözleşmenin ifası (m. 5/2-c).</p>
+
+    <h3>2.4 Profil ve profil fotoğrafı</h3>
+    <p>Hesabın varsa görünen adın, seçtiğin simge veya avatar ve isteğe bağlı olarak bir
+      <strong>profil fotoğrafı</strong> saklanır. Fotoğraf, telefonunda küçültülüp sıkıştırıldıktan
+      sonra (birkaç KB) profilinle birlikte Cloud Firestore'a yüklenir. Fotoğrafı yalnızca sen
+      seçersen ekleriz; galeri veya kamera erişimi yalnızca o an kullanılır. Profilini arkadaşların
+      ve lig grubundaki kullanıcılar görür. Misafir olarak eklediğin fotoğraf yalnızca telefonunda
+      kalır. Fotoğrafı istediğin an kaldırabilir ya da yerine bir avatar seçebilirsin; hesabını
+      silince fotoğraf da silinir.
+      <strong>Hukuki sebep:</strong> açık rıza (m. 5/1; fotoğrafı kendin eklemen) ve sözleşmenin
+      ifası (m. 5/2-c).</p>
+
+    <h3>2.5 Lig, sıralamalar ve arkadaşlar</h3>
+    <p>Lige katılırsan görünen adın, simgen veya fotoğrafın, ülken ve haftalık XP'n aynı lig
+      grubundaki ve sıralamadaki diğer kullanıcılara gösterilir. Gerçek adını kullanmak zorunda
+      değilsin. Arkadaş eklersen (8 haneli arkadaş koduyla ya da rehberden) arkadaşların görünen
+      adını, simgeni, fotoğrafını, günlük hedefini tamamlayıp tamamlamadığını ve ortak serinizi
+      görür. Kullanıcılar arasında serbest mesajlaşma yoktur; yalnızca hazır tezahüratlar
+      gönderilebilir.</p>
+    <p><strong>Rehberden bul</strong> yalnızca sen düğmeye bastığında ve Kişiler iznini verdiğinde
+      çalışır. Rehberin <strong>telefonunda kalır</strong>: kişilerin adları ve numaraları hiçbir
+      sunucuya yüklenmez. Numaralar telefonunda uygulamaya özgü bir önekle tek yönlü özetlenir
+      (SHA-256) ve yalnızca bu özetler, numarasıyla bulunmayı seçmiş Dilmaç kullanıcılarının
+      özetleriyle tek tek karşılaştırılır; eşleşmeyenler saklanmaz. Telefon numarası kısa bir sayı
+      olduğundan bu özet tek başına gizli bir şifre sayılmaz; koruma, listenin kimseye açılmaması ve
+      yalnızca tek tek sorgulanabilmesiyle sağlanır.</p>
+    <p><strong>Telefon numaramla bulunabilirim</strong> seçeneği varsayılan olarak kapalıdır. Açarsan
+      yalnızca doğrulanmış numaranın özeti ve kullanıcı kimliğin saklanır; numaran açık hâliyle
+      saklanmaz. Kapatınca kayıt silinir.
+      <strong>Hukuki sebep:</strong> açık rıza (m. 5/1) ve sözleşmenin ifası (m. 5/2-c).</p>
+
+    <h3>2.6 Yapay zekâ özellikleri</h3>
+    <p>Şu özellikler cevap ve değerlendirme üretmek için yapay zekâ kullanır: yapay zekâ sohbet
+      partneri, <strong>Sesli Konuşma Koçu</strong>, <strong>Mülakat Provası</strong> ve yazma
+      değerlendirmesi. Bunları kullandığında yazdığın ya da konuşma tanımanın metne çevirdiği
+      cümleler, seçtiğin senaryo ve (Ses Koçu'nda) telefonundaki konuşma tanımanın emin olamadığı
+      kelimeler, sunucumuz (Google Cloud Functions, Avrupa bölgesi) üzerinden
+      <strong>Anthropic PBC</strong>'nin Claude yapay zekâ hizmetine gönderilir.
+      <strong>Ses kaydı gönderilmez.</strong></p>
+    <ul>
+      <li>Sohbet, Ses Koçu ve yazma değerlendirmesi metinleri Dilmaç tarafından saklanmaz;
+        yalnızca kota için günlük kullanım sayısı tutulur.</li>
+      <li>Mülakat Provası'nda cevaplarının metni ve sana verilen analiz, geçmiş provalarını
+        görebilmen için hesabında saklanır ve hesabını silince silinir.</li>
+      <li>Anthropic, API üzerinden gelen verileri kendi politikası gereği model eğitiminde
+        kullanmaz; güvenlik amacıyla sınırlı bir süre saklayabilir.</li>
+    </ul>
+    <p>Bu özelliklere kişisel bilgilerini (TC kimlik numarası, adres, sağlık bilgisi vb.) yazmamanı
+      öneririz.
+      <strong>Hukuki sebep:</strong> sözleşmenin ifası (m. 5/2-c); yurt dışına aktarım için
+      <a href="#aktarim">6. bölüm</a>.</p>
+
+    <h3>2.7 Satın almalar</h3>
+    <p>Premium abonelik ve sınav paketleri Google Play üzerinden satılır. Ödeme bilgilerini (kart
+      vb.) Google işler; biz görmeyiz. Satın almayı doğrulamak için Google Play'in verdiği satın alma
+      belirteci (token), ürün kimliği ve bitiş tarihi işlenir; belirtecin özeti ve Premium durumun
+      saklanır.
+      <strong>Hukuki sebep:</strong> sözleşmenin ifası (m. 5/2-c) ve hukuki yükümlülük
+      (m. 5/2-ç).</p>
+
+    <h3>2.8 Aile paketi ve kurum / okul lisansı</h3>
+    <p>Aile paketine bir davet koduyla katılırsan hesabın paket sahibinin paketiyle
+      ilişkilendirilir. Bir kurumun (okul, şirket, otel) koduyla katılırsan kurumun yöneticisi veya
+      öğretmenin görünen adını, sınıfını ve sınırlı bir ilerleme özetini (ör. tamamlanan ders, XP,
+      ödevler) görür. Günlük yazıların, notların, kelime listelerin, hataların ve sohbetlerin
+      kurumla paylaşılmaz.
+      <strong>Hukuki sebep:</strong> sözleşmenin ifası (m. 5/2-c).</p>
+
+    <h3>2.9 Davet programı</h3>
+    <p>Bir davet kodu kullanıldığında kodu kullanan ve davet eden hesapların kimlikleri, tarih,
+      kurulum kimliğinin özeti (aynı telefonda tekrar kullanımı önlemek için) ve verilen Premium
+      günleri saklanır. Davet ettiğin kişinin adı ya da e-postası sana gösterilmez.
+      <strong>Hukuki sebep:</strong> sözleşmenin ifası (m. 5/2-c) ve kötüye kullanımı önlemede
+      meşru menfaat (m. 5/2-f).</p>
+
+    <h3>2.10 Kullanım istatistikleri (yalnızca izinle)</h3>
+    <p>İzin verirsen Google Firebase Analytics ile kullanım olayları toplanır: açılan ekranlar,
+      ders başlatma ve bitirme, doğruluk yüzdesi, seçilen kurs, Premium ekranının görülmesi ve
+      satın alma adımları, uygulamaya dönüş aralığı. Firebase bunlara rastgele bir analiz kimliği,
+      cihaz modeli, işletim sistemi sürümü, dil ve yaklaşık ülke bilgisi ekler.
+      <strong>Gönderilmeyenler:</strong> adın, e-postan, telefon numaran, kullanıcı kimliğin,
+      yazdıkların, ses kayıtların, fotoğrafın, kesin konumun ve reklam kimliğin. Veriler reklam ya da
+      profil çıkarma için kullanılmaz.
+      <strong>Hukuki sebep:</strong> açık rıza (m. 5/1). İzni <span class="yol">Profil &gt;
+      Gizlilik</span> bölümünden istediğin an geri alabilirsin; geri aldığında toplama durur ve
+      telefonundaki analiz kimliği silinir.</p>
+
+    <h3>2.11 Uygulama yapılandırması</h3>
+    <p>Uygulama bazı ayarları Firebase Remote Config'ten okur. Bunun için Firebase kurulum kimliği
+      işlenir; kişisel veri gönderilmez.
+      <strong>Hukuki sebep:</strong> meşru menfaat (m. 5/2-f).</p>
+
+    <h2 id="reklam">3. Reklam ve reklam kimliği</h2>
+    <p>Dilmaç'ta reklam yoktur. Uygulama reklam kimliğini (Android Advertising ID) okumaz; bu izin
+      uygulamadan çıkarılmıştır. Verilerini reklam, profil çıkarma veya satış için kullanmayız ve
+      üçüncü taraflara satmayız.</p>
+
+    <h2 id="paylasim">4. Kimlerle paylaşıyoruz?</h2>
+    <p>Yalnızca hizmeti sunmak için gerekli hizmet sağlayıcılarla (veri işleyen):</p>
+    <div class="tablo">
+      <table>
+        <thead>
+          <tr><th>Alıcı</th><th>Ne için</th><th>Konum</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Analytics, Remote Config)</td>
+            <td>Hesap, yedekleme, profil, sunucu, izinli istatistik</td>
+            <td>AB (europe-west1) ve ABD</td>
+          </tr>
+          <tr>
+            <td>Google Play</td>
+            <td>Satın alma ve doğrulama</td>
+            <td>Küresel</td>
+          </tr>
+          <tr>
+            <td>Anthropic PBC</td>
+            <td>Yapay zekâ sohbeti, Ses Koçu, Mülakat Provası ve yazma değerlendirmesi</td>
+            <td>ABD</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Bunun dışında yalnızca yasal zorunluluk hâlinde yetkili kamu kurumlarıyla paylaşılabilir.
+      Diğer kullanıcıların gördükleri 2.4, 2.5 ve 2.8'de anlatılmıştır.</p>
+
+    <h2 id="saklama">5. Saklama süreleri</h2>
+    <ul>
+      <li><strong>Telefonundaki veriler:</strong> uygulamayı kaldırana ya da Profil'den sıfırlayana kadar.</li>
+      <li><strong>Hesap, profil, fotoğraf, bulut yedeği, arkadaşlıklar, lig ve prova geçmişi:</strong> hesabını
+        silene kadar. Uygulama içinden silmede bu veriler hemen silinir; e-postayla gelen silme
+        isteklerini en geç 30 gün içinde yerine getiririz. Ayrıntılar:
+        <a href="/hesap-silme">Hesap silme</a>.</li>
+      <li><strong>Satın alma doğrulama kayıtları:</strong> abonelik süresince; vergi ve muhasebe kayıtları
+        Google Play tarafından yasal süre boyunca tutulur.</li>
+      <li><strong>Davet kayıtları:</strong> kötüye kullanımı önlemek için en fazla 2 yıl.</li>
+      <li><strong>Analiz verileri:</strong> 2 ay (Firebase saklama ayarı).</li>
+      <li><strong>Sunucu günlükleri (hata kayıtları):</strong> en fazla 30 gün.</li>
+    </ul>
+
+    <h2 id="aktarim">6. Yurt dışına aktarım</h2>
+    <p>Hizmet sağlayıcılarımızın bir kısmı (Google, Anthropic) verileri Türkiye dışında (AB ve ABD)
+      işler. Bu aktarımlar KVKK m. 9 kapsamında, Kişisel Verileri Koruma Kurulu'nun ilan ettiği
+      standart sözleşmeler ve/veya ilgili özelliği kullanırken verdiğin açık rıza ile yapılır.</p>
+
+    <h2 id="cocuklar">7. Çocuklar ve Çocuk modu</h2>
+    <p>Dilmaç'ın hedef kitlesi 13 yaş ve üzeridir. Uygulamadaki <strong>Çocuk modu</strong>
+      (ilkokul, ortaokul ve LGS), bir ebeveynin çocuğu için kurduğu ve
+      <strong>ebeveyn gözetiminde</strong> kullanılması gereken bir moddur. 13 yaşından küçük
+      çocukların hesap açmamasını, lig, arkadaş ve yapay zekâ özelliklerini ebeveyn olmadan
+      kullanmamasını ve profil fotoğrafı eklememesini öneririz. Ebeveynsen ve çocuğuna ait veri
+      işlendiğini düşünüyorsan <a href="mailto:{{ILETISIM_EPOSTA}}">{{ILETISIM_EPOSTA}}</a>
+      adresine yaz; sileriz.</p>
+
+    <h2 id="guvenlik">8. Güvenlik</h2>
+    <p>Sunucuyla iletişim şifrelidir (HTTPS/TLS). Firestore'da her kullanıcı yalnızca kendi verisini
+      okuyabilir; Premium, davet ve kurum kayıtlarını yalnızca sunucu yazabilir. Hiçbir yöntem
+      %100 güvenli değildir; bir ihlal olursa KVKK'ya uygun şekilde Kurul'a ve sana bildiririz.</p>
+
+    <h2 id="haklar">9. Hakların ve kontrollerin</h2>
+    <p>KVKK m. 11 uyarınca kişisel verilerinin işlenip işlenmediğini öğrenme, bilgi isteme, işleme
+      amacını ve aktarıldığı kişileri öğrenme, düzeltilmesini, silinmesini ya da yok edilmesini
+      isteme, bunların aktarılan kişilere bildirilmesini isteme, otomatik analiz sonucu aleyhine
+      bir sonuca itiraz etme ve zarara uğrarsan tazminat isteme haklarına sahipsin.</p>
+    <p>Başvurunu <a href="mailto:{{ILETISIM_EPOSTA}}">{{ILETISIM_EPOSTA}}</a> adresine, hesabına
+      kayıtlı e-posta adresinden ya da kimliğini doğrulayan bir yolla gönderebilirsin; en geç 30 gün
+      içinde ücretsiz yanıtlarız. Yanıtımızdan memnun kalmazsan Kişisel Verileri Koruma Kurulu'na
+      şikâyette bulunabilirsin.</p>
+    <p>Uygulama içinden:</p>
+    <ul>
+      <li>Hesabı ve sunucudaki tüm verileri silme: <span class="yol">Profil &gt; Hesap &gt; Hesabımı sil</span>
+        (<a href="/hesap-silme">ayrıntılar</a>).</li>
+      <li>Kullanım istatistiği izni: <span class="yol">Profil &gt; Gizlilik</span>.</li>
+      <li>Telefon numarasıyla bulunma: Arkadaşlar ekranındaki <em>Telefon numaramla bulunabilirim</em> seçeneği.</li>
+      <li>Profil fotoğrafını değiştirme veya kaldırma: Profil ekranında fotoğrafına dokun &gt; <em>Fotoğrafı kaldır</em>.</li>
+      <li>İlerlemeyi sıfırlama: <span class="yol">Profil &gt; İlerlemeyi sıfırla</span>.</li>
+      <li>Abonelik iptali: Google Play &gt; Ödemeler ve abonelikler &gt; Abonelikler.</li>
+    </ul>
+
+    <h2 id="degisiklik">10. Değişiklikler</h2>
+    <p>Bu metni güncellediğimizde uygulamada ve bu sayfada duyururuz. Önemli değişikliklerde (ör. yeni
+      bir veri türü) yeniden izin isteriz.</p>
+
+    <h2 id="iletisim">11. İletişim</h2>
+    <p>Dilmaç Studio · <a href="mailto:{{ILETISIM_EPOSTA}}">{{ILETISIM_EPOSTA}}</a></p>
+  </main>
+
+  <footer>
+    <p>Dilmaç, Dilmaç Studio tarafından yayımlanır.</p>
+    <p><a href="/">Ana sayfa</a> · <a href="/hesap-silme">Hesap silme</a></p>
+  </footer>
+</body>
+</html>

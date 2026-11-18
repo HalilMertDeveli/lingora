@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hesap ve veri silme · Dilmaç</title>
+  <meta name="description" content="Dilmaç hesabını ve verilerini uygulamadan ya da e-postayla nasıl silebileceğin.">
+  <link rel="stylesheet" href="/stil.css">
+</head>
+<body>
+  <header class="ust">
+    <div>
+      <a class="marka" href="/">Dilma<span>ç</span></a>
+      <nav aria-label="Sayfalar">
+        <a href="/gizlilik">Gizlilik</a>
+        <a href="/hesap-silme" aria-current="page">Hesap silme</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Dilmaç hesabını ve verilerini silme</h1>
+    <p class="tarih">Dilmaç (yayıncı: Dilmaç Studio) · Son güncelleme: 18 Kasım 2026</p>
+
+    <p>Dilmaç hesabını ve sunucularımızda tuttuğumuz verilerini istediğin zaman silebilirsin.
+      İki yol var: uygulamanın içinden (hemen) ya da uygulama olmadan e-postayla.</p>
+
+    <h2 id="uygulamadan">1. Uygulamadan silme (önerilen, hemen)</h2>
+    <ol class="adim">
+      <li>Dilmaç uygulamasını aç ve hesabına giriş yap.</li>
+      <li>Alttaki menüden <strong>Profil</strong> sekmesine git.</li>
+      <li><strong>Hesap</strong> bölümünde <strong>Hesabımı sil</strong> düğmesine dokun.</li>
+      <li>Açılan pencerede silmeyi onayla.</li>
+    </ol>
+    <p>Kısa yol: <span class="yol">Profil &gt; Hesap &gt; Hesabımı sil</span>. İnternet bağlantısı gerekir.
+      Onayladığın anda hesabın ve aşağıda sayılan veriler sunucularımızdan silinir.</p>
+
+    <h2 id="eposta">2. Uygulama olmadan, e-postayla silme</h2>
+    <p>Uygulaman yüklü değilse ya da giriş yapamıyorsan
+      <a href="mailto:{{ILETISIM_EPOSTA}}?subject=Hesap%20silme%20talebi">{{ILETISIM_EPOSTA}}</a>
+      adresine yaz:</p>
+    <ul>
+      <li>Konu: <strong>Hesap silme talebi</strong></li>
+      <li>Mümkünse hesabına bağlı <strong>e-posta adresinden</strong> yaz (Google ile girdiysen o
+        Google hesabının adresi). Telefon numarasıyla girdiysen numaranı belirt.</li>
+      <li>Biliyorsan arkadaş kodunu ya da lig adını ekle; hesabını bulmamızı kolaylaştırır.</li>
+    </ul>
+    <p>Hesabın sana ait olduğunu doğrulamak için gerekirse sana yanıt veririz. Talebini doğruladıktan
+      sonra, <strong>en geç 30 gün içinde</strong> hesabını uygulamadaki silmeyle aynı kapsamda
+      sileriz ve sana bilgi veririz. Hesabını silmeden yalnızca bazı verilerinin silinmesini de
+      aynı adresten isteyebilirsin.</p>
+
+    <h2 id="silinenler">3. Neler silinir?</h2>
+    <ul>
+      <li>Hesabın (giriş bilgilerin: e-posta, telefon numarası veya Google bağlantısı)</li>
+      <li>Bulut ilerleme yedeği (dersler, XP, seri, hedefler)</li>
+      <li>Profilin: görünen ad, simge veya avatar, <strong>profil fotoğrafı</strong></li>
+      <li>Arkadaşlıklar, arkadaş kodu, arkadaşlık istekleri, tezahüratlar ve
+        "telefon numaramla bulunabilirim" kaydı</li>
+      <li>Lig ve sıralama kayıtların</li>
+      <li>Mülakat Provası geçmişin (cevap metinleri ve analizler)</li>
+      <li>Yapay zekâ özelliklerinin kullanım sayaçları</li>
+      <li>Aile paketi ve kurum / okul üyeliğin, Premium durumun ve satın almanla hesabın arasındaki bağ</li>
+    </ul>
+
+    <h2 id="kalanlar">4. Neler kalır, ne kadar süre?</h2>
+    <div class="tablo">
+      <table>
+        <thead>
+          <tr><th>Veri</th><th>Neden</th><th>Süre</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Silinmiş hesap işareti (yalnızca hesap kimliği ve silme tarihi)</td>
+            <td>Silinen hesabın verilerinin eski bir telefondan yeniden yüklenmesini önlemek</td>
+            <td>Süresiz; kişisel içerik yok</td>
+          </tr>
+          <tr>
+            <td>Davet kodu kullanım kaydı ve kurulum kimliğinin özeti (hash)</td>
+            <td>Aynı telefonla yeni hesap açıp davet ödülünü tekrar almayı önlemek</td>
+            <td>En fazla 2 yıl</td>
+          </tr>
+          <tr>
+            <td>Sunucu günlükleri (hata kayıtları)</td>
+            <td>Teknik güvenlik ve hata ayıklama</td>
+            <td>En fazla 30 gün</td>
+          </tr>
+          <tr>
+            <td>İzinli kullanım istatistikleri (Firebase Analytics)</td>
+            <td>Hesabına bağlı değildir</td>
+            <td>2 ay sonra kendiliğinden silinir</td>
+          </tr>
+          <tr>
+            <td>Satın alma, fatura ve ödeme kayıtları</td>
+            <td>Google Play tarafından tutulur; vergi ve muhasebe yükümlülükleri</td>
+            <td>Google Play'in yasal saklama süresi</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="kutu">
+      <p><strong>Önemli</strong></p>
+      <ul>
+        <li><strong>Abonelik iptal edilmez.</strong> Hesabı silmek Google Play aboneliğini durdurmaz.
+          Ücretlendirilmemek için önce Google Play &gt; Ödemeler ve abonelikler &gt; Abonelikler
+          bölümünden iptal et.</li>
+        <li><strong>Telefonundaki ilerleme</strong> hesap silinince silinmez; onu da silmek için
+          <span class="yol">Profil &gt; İlerlemeyi sıfırla</span> ya da uygulamayı kaldır.
+          Hesap açmadan (misafir olarak) kullandıysan verilerin yalnızca telefonundadır; uygulamayı
+          kaldırmak hepsini siler.</li>
+        <li>Silme <strong>geri alınamaz</strong>. Daha sonra aynı e-postayla yeni bir hesap açabilirsin,
+          ama eski ilerlemen geri gelmez.</li>
+      </ul>
+    </div>
+
+    <p>Hangi verileri neden işlediğimizin tamamı: <a href="/gizlilik">Gizlilik Politikası</a>.</p>
+  </main>
+
+  <footer>
+    <p>Dilmaç, Dilmaç Studio tarafından yayımlanır.</p>
+    <p><a href="/">Ana sayfa</a> · <a href="/gizlilik">Gizlilik Politikası</a> ·
+      <a href="mailto:{{ILETISIM_EPOSTA}}">{{ILETISIM_EPOSTA}}</a></p>
+  </footer>
+</body>
+</html>

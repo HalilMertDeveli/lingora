@@ -2,5 +2,14 @@
   "projects": {
     "default": "demo-lingora",
     "prod": "dilbaz-3392e"
+  },
+  "targets": {
+    "dilbaz-3392e": {
+      "hosting": {
+        "yasal": [
+          "dilbaz-3392e"
+        ]
+      }
+    }
   }
 }

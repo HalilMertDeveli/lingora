@@ -1,0 +1,4 @@
+{
+  "_aciklama": "Yasal sayfalardaki tek değişken. Yayından önce iletisimEposta'yı gerçek destek adresiyle değiştir ya da ILETISIM_EPOSTA ortam değişkeniyle ver (bkz. hosting/README.md).",
+  "iletisimEposta": "{{ILETISIM_EPOSTA}}"
+}
