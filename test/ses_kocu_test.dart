@@ -341,7 +341,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsOneWidget);
       expect(find.text(freeTastePitch), findsOneWidget);
-      expect(find.byKey(const ValueKey('paywall-voice-coach')), findsOneWidget);
+      expect(find.text('Sesli konuşma koçu + konuşma karnesi'), findsOneWidget);
 
       await tester.tap(find.byTooltip('Kapat'));
       await tester.pumpAndSettle();

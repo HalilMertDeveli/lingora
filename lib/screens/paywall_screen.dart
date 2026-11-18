@@ -159,7 +159,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       Text('Premium ile', style: Theme.of(context).textTheme.titleMedium),
       const SizedBox(height: 8),
       for (final f in PremiumFeature.values) _FeatureRow(f, highlighted: f == widget.feature),
-      const _VoiceCoachRow(),
+      for (final b in extraPremiumBullets) _ExtraBulletRow(b),
       const SizedBox(height: 14),
       _FreeBox(),
       const SizedBox(height: 18),
@@ -408,13 +408,23 @@ String? personalLine(({int wrong, int locked}) week) {
   return null;
 }
 
-/// Sesli Konuşma Koçu bullet (lib/screens/conversation_screen.dart).
-class _VoiceCoachRow extends StatelessWidget {
-  const _VoiceCoachRow();
+/// Extra Premium bullets drawn right after the [PremiumFeature] rows
+/// (emoji, title, description). Shared with the hedef-paketleri branch.
+const extraPremiumBullets = <(String emoji, String title, String description)>[
+  (
+    '🎙️',
+    'Sesli konuşma koçu + konuşma karnesi',
+    'Garson, mülakatçı, resepsiyon: sesli konuş, cevabı sesli duy. Sonunda hatalı cümlelerin ve '
+        'telefonun zor anladığı kelimelerle karnen hazır.',
+  ),
+];
+
+class _ExtraBulletRow extends StatelessWidget {
+  const _ExtraBulletRow(this.bullet);
+  final (String emoji, String title, String description) bullet;
 
   @override
   Widget build(BuildContext context) => Container(
-    key: const ValueKey('paywall-voice-coach'),
     margin: const EdgeInsets.only(bottom: 8),
     padding: const EdgeInsets.all(12),
     decoration: BoxDecoration(
@@ -425,19 +435,15 @@ class _VoiceCoachRow extends StatelessWidget {
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Glyph(emoji: '🎙️', icon: Icons.record_voice_over_rounded, size: 26),
+        Glyph(emoji: bullet.$1, icon: Icons.check_circle_outline_rounded, size: 26),
         const SizedBox(width: 12),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Sesli konuşma koçu ve karne', style: TextStyle(fontWeight: FontWeight.w800)),
+              Text(bullet.$2, style: const TextStyle(fontWeight: FontWeight.w800)),
               const SizedBox(height: 2),
-              Text(
-                'Garson, mülakatçı, resepsiyon: konuş, cevabı sesli duy. Sonunda hatalı cümlelerin ve '
-                'zorlandığın kelimelerle karnen hazır.',
-                style: TextStyle(color: Brand.muted, fontSize: 13),
-              ),
+              Text(bullet.$3, style: TextStyle(color: Brand.muted, fontSize: 13)),
             ],
           ),
         ),
