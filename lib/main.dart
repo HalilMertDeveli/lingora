@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/app_resume.dart';
 import 'core/frame_stats.dart';
 import 'core/startup_trace.dart';
 import 'data/app_settings.dart';
@@ -23,6 +25,7 @@ import 'services/billing/premium_perks.dart';
 import 'services/friends.dart';
 import 'services/growth/growth.dart';
 import 'services/league_remote.dart';
+import 'services/rehearsal_cloud.dart';
 import 'services/showcase.dart';
 import 'services/speech.dart';
 import 'theme.dart';
@@ -76,6 +79,8 @@ class LingoraApp extends ConsumerWidget {
     ref.listen(premiumControllerProvider, (_, _) {});
     // Premium's monthly streak freezes go into the wallet by themselves.
     ref.listen(premiumPerksSyncProvider, (_, _) {});
+    // Mülakat Provası history comes back from the account on a new phone.
+    ref.listen(rehearsalCloudSyncProvider, (_, _) {});
     // Analytics consent sync + churn signals (no-op without analytics).
     ref.listen(growthSignalsProvider, (_, _) {});
     final settings = ref.watch(appSettingsProvider);
@@ -99,15 +104,22 @@ class LingoraApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Dilmaç',
       debugShowCheckedModeBanner: false,
+      // Turkish date and time pickers, and Turkish names for the built-in
+      // buttons TalkBack reads ("Geri", not "Back").
+      locale: const Locale('tr'),
+      supportedLocales: const [Locale('tr')],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: buildTheme(mode: settings.mode, brightness: brightness, palette: palette),
-      builder: (context, child) => PaletteScope(
-        palette: palette,
-        child: MascotOutfitScope(
-          accessory: outfit,
-          pofuduk: kidOutfit,
-          child: settings.reduceMotion
-              ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
-              : child!,
+      builder: (context, child) => AppResumeWatcher(
+        child: PaletteScope(
+          palette: palette,
+          child: MascotOutfitScope(
+            accessory: outfit,
+            pofuduk: kidOutfit,
+            child: settings.reduceMotion
+                ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
+                : child!,
+          ),
         ),
       ),
       home: ConsentGate(child: onboarded ? const HomeScreen() : const OnboardingScreen()),

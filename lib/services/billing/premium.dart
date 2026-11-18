@@ -5,6 +5,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/app_resume.dart';
 import '../../data/progress.dart';
 import '../../kurum/kurum.dart' show licensePremiumProvider;
 import '../growth/analytics.dart';
@@ -140,8 +141,10 @@ class PremiumController extends Notifier<PremiumState> {
       }
     });
     final cached = _readCache();
-    if (cached.active) {
-      // Re-confirm a cached subscription quietly (extends the cache).
+    // Re-confirm a known subscription quietly (extends the cache). Also
+    // after the cached period ran out: a renewed plan must not look free
+    // until the user finds "Satın alımları geri yükle".
+    if (cached.active || ref.read(prefsProvider).containsKey(_cacheKey)) {
       Future.microtask(() async {
         try {
           if (await billing.isAvailable()) await billing.restore();
@@ -386,7 +389,10 @@ final premiumProvider = Provider<bool>((ref) {
   if (ref.watch(licensePremiumProvider)) return true;
   final s = ref.watch(premiumControllerProvider);
   if (!s.active) return false;
-  return s.expiresAt == null || s.expiresAt!.isAfter(ref.read(clockProvider)());
+  final now = ref.read(clockProvider)();
+  // Turns false by itself when the period ends while the app is open.
+  recheckAt(ref, s.expiresAt, now);
+  return s.expiresAt == null || s.expiresAt!.isAfter(now);
 });
 
 /// Free mock exams used today (resets at local midnight).

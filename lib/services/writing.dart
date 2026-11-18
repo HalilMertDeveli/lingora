@@ -122,7 +122,7 @@ class CallableWritingService implements WritingService {
         'text': text,
       }).timeout(const Duration(seconds: 90));
     } on FirebaseFunctionsException catch (e) {
-      throw WritingException(messageForCode(e.code));
+      throw WritingException(messageForCode(e.code, reason: e.message));
     } on Exception {
       throw const WritingException('Bağlantı kurulamadı. Yerel kontrol yine de çalışıyor.');
     }
@@ -130,11 +130,11 @@ class CallableWritingService implements WritingService {
   }
 
   /// Turkish message for a callable error code.
-  static String messageForCode(String code) => switch (code) {
+  static String messageForCode(String code, {String? reason}) => switch (code) {
     'resource-exhausted' => 'Bugünlük yazma geri bildirimi hakkın doldu. Yarın tekrar dene.',
     'permission-denied' => 'Yapay zekâ geri bildirimi Premium üyelere açık.',
     'not-found' => 'Bu görev için geri bildirim henüz hazır değil.',
-    _ => CallableConversationService.messageForCode(code),
+    _ => CallableConversationService.messageForCode(code, reason: reason),
   };
 }
 

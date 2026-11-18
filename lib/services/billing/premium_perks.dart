@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/app_resume.dart';
 import '../../data/app_settings.dart';
 import '../../data/progress.dart';
 import '../../data/wallet.dart';
@@ -144,6 +145,11 @@ const premiumFreezesPerMonth = 2;
 /// Premium may keep this many freezes (bought ones stop at [maxFreezes]).
 const premiumMaxFreezes = maxFreezes + premiumFreezesPerMonth;
 
+/// [Wallet.freezeBought] key of the Premium freezes. One shared key (not the
+/// device id): two phones, a reinstall or a grant made before the first sync
+/// all write the same total, and the max-merge keeps it once.
+const premiumFreezeSource = 'premium';
+
 /// One-off wallet key of a month's Premium freezes, e.g. `pfz:2026-11`.
 String premiumFreezeKey(DateTime now) => 'pfz:${now.year}-${now.month.toString().padLeft(2, '0')}';
 
@@ -158,10 +164,15 @@ int grantMonthlyFreezes(Ref ref) {
   if (w.once.containsKey(key)) return 0;
   final add = (premiumMaxFreezes - w.freezes).clamp(0, premiumFreezesPerMonth);
   final today = dayKey(now);
-  ref.read(progressProvider.notifier).updateWallet((w, device) {
+  ref.read(progressProvider.notifier).updateWallet((w, _) {
     final marked = w.pruned(today).copyWith(once: {...w.once, key: today});
     if (add == 0) return marked;
-    return marked.copyWith(freezeBought: {...w.freezeBought, device: (w.freezeBought[device] ?? 0) + add});
+    return marked.copyWith(
+      freezeBought: {
+        ...w.freezeBought,
+        premiumFreezeSource: (w.freezeBought[premiumFreezeSource] ?? 0) + add,
+      },
+    );
   });
   return add;
 }
@@ -169,6 +180,8 @@ int grantMonthlyFreezes(Ref ref) {
 /// Grants the month's freezes whenever Premium is (or becomes) active.
 /// Listened to in main.dart.
 final premiumPerksSyncProvider = Provider<void>((ref) {
+  // Also on resume: a new month may have started while the app slept.
+  ref.watch(appResumeProvider);
   if (!ref.watch(premiumProvider)) return;
   Future.microtask(() {
     if (ref.mounted) grantMonthlyFreezes(ref);

@@ -405,6 +405,23 @@ void main() {
       expect(c.read(progressProvider).totalXp, 300);
     });
 
+    test("another account signing in on this phone does not get the first account's progress", () async {
+      await db.doc('users/u1').set({'clientUpdatedAt': 1, 'progress': remoteProgress});
+      final c = await start(const Progress(onboarded: true), account);
+      expect(c.read(progressProvider).totalXp, 300);
+      users.add(guest);
+      await settle();
+      expect(c.read(progressProvider).totalXp, 300, reason: 'kept on the phone after signing out');
+      users.add(const AppUser(uid: 'u2', isAnonymous: false, providers: ['password']));
+      await settle();
+      expect(c.read(progressProvider).totalXp, 0);
+      expect(c.read(progressProvider).completed, isEmpty);
+      final doc = (await db.doc('users/u2').get()).data()!;
+      expect(doc['totalXp'], 0, reason: "u1's XP and gold are not copied into u2");
+      // u1 itself is untouched.
+      expect((await db.doc('users/u1').get()).data()!['progress'], remoteProgress);
+    });
+
     test('signing out stops syncing and keeps the phone data', () async {
       final c = await start(const Progress(onboarded: true, totalXp: 7), account);
       expect(c.read(progressSyncProvider).state, SyncState.synced);

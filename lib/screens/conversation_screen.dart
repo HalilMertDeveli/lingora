@@ -5,6 +5,7 @@ import '../core/speech_evidence.dart';
 import '../core/tr_errors.dart';
 import '../data/progress.dart';
 import '../data/scenarios.dart';
+import '../services/app_settings_link.dart';
 import '../services/billing/premium.dart';
 import '../services/conversation.dart';
 import '../services/speech.dart';
@@ -197,6 +198,12 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
   bool _done = false;
   String? _error;
 
+  /// "Bitir" ran: XP is counted once and nothing is sent any more.
+  bool _finished = false;
+
+  /// The microphone permission is missing: the error offers the settings.
+  bool _micDenied = false;
+
   /// Voice coach: tap the mic, speak, the message goes by itself and the
   /// reply is read aloud. Off = the text fallback (type, or dictate and edit).
   bool _voice = true;
@@ -233,7 +240,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
 
   Future<void> _send() async {
     final text = _input.text.trim();
-    if (text.isEmpty || _waiting) return;
+    if (text.isEmpty || _waiting || _finished) return;
     final guesses = _guesses;
     _guesses = null;
     _input.clear();
@@ -248,6 +255,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       );
       _waiting = true;
       _error = null;
+      _micDenied = false;
     });
     _scrollDown();
     try {
@@ -276,6 +284,16 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
         if (e.freeQuotaUsed) _freeLeft = 0;
       });
       if (e.freeQuotaUsed) await _freeTasteOver();
+    } on Object {
+      // A malformed answer must not leave the chat stuck on "yazıyor…".
+      if (!mounted) return;
+      final failed = _messages.removeLast();
+      setState(() {
+        _input.text = text;
+        _guesses = failed.spoken ? guesses : null;
+        _waiting = false;
+        _error = CallableConversationService.messageForCode('internal');
+      });
     }
     _scrollDown();
   }
@@ -304,9 +322,13 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     if (_waiting) return;
     if (!await _speech.canListen) {
       if (!mounted) return;
+      final denied = speechIssue.value == SpeechIssues.noMicPermission;
       setState(() {
         _voice = false; // the text fallback
-        _error = 'Mikrofon kullanılamıyor; yazarak devam edebilirsin.';
+        _micDenied = denied;
+        _error = denied
+            ? 'Mikrofon izni kapalı. Ayarlardan açabilir ya da yazarak devam edebilirsin.'
+            : 'Mikrofon kullanılamıyor; yazarak devam edebilirsin.';
       });
       return;
     }
@@ -331,12 +353,13 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
               ? null
               : (heard.isEmpty ? [(words: _input.text, confidence: null)] : heard);
         });
-        if (_voice && _input.text.trim().isNotEmpty) _send();
+        if (_voice && !_finished && _input.text.trim().isNotEmpty) _send();
       },
     );
   }
 
   void _finish() {
+    if (_finished) return;
     if (_listening) _speech.stopListening();
     final userTurns = _messages.where((m) => m.fromUser).length;
     final corrections = _messages.where((m) => m.correction != null).length;
@@ -344,6 +367,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       Navigator.pop(context);
       return;
     }
+    _finished = true;
     ref
         .read(progressProvider.notifier)
         .completeNode(
@@ -362,79 +386,139 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     );
   }
 
+  /// Back or ✕ in a started chat: end it with the karne, or leave.
+  Future<void> _confirmLeave() async {
+    final choice = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Sohbetten çıkılsın mı?'),
+        content: const Text("Çıkarsan bu sohbetin XP'si ve karnesi kaydedilmez."),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, 'stay'), child: const Text('Devam et')),
+          TextButton(
+            key: const Key('chat-leave'),
+            onPressed: () => Navigator.pop(context, 'leave'),
+            child: const Text('Çık'),
+          ),
+          FilledButton(
+            key: const Key('chat-leave-finish'),
+            onPressed: () => Navigator.pop(context, 'finish'),
+            child: const Text('Bitir, karnemi gör'),
+          ),
+        ],
+      ),
+    );
+    if (!mounted) return;
+    if (choice == 'finish' && !_waiting) {
+      _finish();
+    } else if (choice == 'leave') {
+      if (_listening) await _speech.stopListening();
+      _finished = true; // nothing is sent any more
+      if (mounted) Navigator.of(context).pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = widget.scenario;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('${kidEmoji(s.emoji)}${s.title}'),
-        actions: [TextButton(onPressed: _waiting ? null : _finish, child: const Text('Bitir'))],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
-              child: Text(
-                '${kidEmoji('🎯')}${s.goal}\nKarşındaki: ${s.partner}',
-                style: const TextStyle(fontWeight: FontWeight.w600, height: 1.4),
-              ),
-            ),
-            if (_freeLeft case final left?)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  left > 0 ? 'Ücretsiz: bugün $left mesajın kaldı' : 'Bugünkü ücretsiz mesajların bitti',
-                  key: const Key('free-left'),
-                  style: TextStyle(color: Brand.accent, fontWeight: FontWeight.w700, fontSize: 13),
+    // With the keyboard up (small phone, large text) the pinned goal would
+    // leave no room for the input itself; it comes back when typing ends.
+    final typing = MediaQuery.viewInsetsOf(context).bottom > 0;
+    final talked = _messages.any((m) => m.fromUser);
+    return PopScope(
+      // Leaving a started chat loses its messages and karne: ask first.
+      canPop: !talked || _finished,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _confirmLeave();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('${kidEmoji(s.emoji)}${s.title}'),
+          actions: [TextButton(onPressed: _waiting ? null : _finish, child: const Text('Bitir'))],
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              if (!typing)
+                Container(
+                  key: const Key('chat-goal'),
+                  width: double.infinity,
+                  margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
+                  child: Text(
+                    '${kidEmoji('🎯')}${s.goal}\nKarşındaki: ${s.partner}',
+                    style: const TextStyle(fontWeight: FontWeight.w600, height: 1.4),
+                  ),
+                ),
+              if (_freeLeft case final left?)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    left > 0 ? 'Ücretsiz: bugün $left mesajın kaldı' : 'Bugünkü ücretsiz mesajların bitti',
+                    key: const Key('free-left'),
+                    style: TextStyle(color: Brand.accent, fontWeight: FontWeight.w700, fontSize: 13),
+                  ),
+                ),
+              Expanded(
+                child: ListView(
+                  controller: _scroll,
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                  children: [
+                    for (var i = 0; i < _messages.length; i++)
+                      PopIn(key: ValueKey(i), from: 0.85, child: _bubble(i)),
+                    if (_waiting)
+                      Padding(
+                        padding: EdgeInsets.only(top: 4),
+                        child: Row(
+                          children: [
+                            SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)),
+                            SizedBox(width: 10),
+                            Text('yazıyor…', style: TextStyle(color: Brand.muted)),
+                          ],
+                        ),
+                      ),
+                    if (_done)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: PressableButton(
+                          label: 'HEDEF TAMAM · KARNEMİ GÖR',
+                          color: Brand.success,
+                          onPressed: _finish,
+                        ),
+                      ),
+                  ],
                 ),
               ),
-            Expanded(
-              child: ListView(
-                controller: _scroll,
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-                children: [
-                  for (var i = 0; i < _messages.length; i++)
-                    PopIn(key: ValueKey(i), from: 0.85, child: _bubble(i)),
-                  if (_waiting)
-                    Padding(
-                      padding: EdgeInsets.only(top: 4),
-                      child: Row(
-                        children: [
-                          SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)),
-                          SizedBox(width: 10),
-                          Text('yazıyor…', style: TextStyle(color: Brand.muted)),
-                        ],
+              if (_error != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(_error!, style: TextStyle(color: Brand.error)),
                       ),
-                    ),
-                  if (_done)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12),
-                      child: PressableButton(
-                        label: 'HEDEF TAMAM · KARNEMİ GÖR',
-                        color: Brand.success,
-                        onPressed: _finish,
-                      ),
-                    ),
-                ],
+                      if (_micDenied)
+                        TextButton(
+                          key: const Key('mic-settings'),
+                          onPressed: () {
+                            setState(() => _micDenied = false);
+                            openAppSettings();
+                          },
+                          child: const Text('Ayarlar'),
+                        ),
+                    ],
+                  ),
+                ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
+                decoration: BoxDecoration(
+                  border: Border(top: BorderSide(color: Brand.line, width: 2)),
+                ),
+                child: _voice ? _voiceBar() : _textBar(),
               ),
-            ),
-            if (_error != null)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(_error!, style: TextStyle(color: Brand.error)),
-              ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
-              decoration: BoxDecoration(
-                border: Border(top: BorderSide(color: Brand.line, width: 2)),
-              ),
-              child: _voice ? _voiceBar() : _textBar(),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

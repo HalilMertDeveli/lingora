@@ -13,6 +13,7 @@ import 'package:lingora/data/shop_catalog.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/screens/lesson_screen.dart';
 import 'package:lingora/screens/paywall_screen.dart';
+import 'package:lingora/services/billing/entitlement_backend.dart';
 import 'package:lingora/services/billing/premium.dart';
 import 'package:lingora/services/billing/premium_perks.dart';
 import 'package:lingora/services/growth/remote_flags.dart';
@@ -402,6 +403,24 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsNothing);
       expect(c.read(paywallPacerProvider).snoozed, isTrue);
+    });
+
+    testWidgets('Premium alınınca kilitli açıklama hemen açılır', (tester) async {
+      final c = await pump(tester);
+      await answerWrong(tester);
+      expect(find.byKey(const Key('why-wrong-locked')), findsOneWidget);
+      c
+          .read(premiumControllerProvider.notifier)
+          .applyServer(
+            ServerEntitlement(premium: true, status: 'active', expiresAt: _now.add(const Duration(days: 30))),
+          );
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('why-wrong-locked')), findsNothing);
+      expect(find.text('salım, yayım'), findsOneWidget);
+      // No paywall any more: the learner just bought Premium.
+      await tester.pump(const Duration(seconds: 2));
+      await tester.pumpAndSettle();
+      expect(find.byType(PaywallScreen), findsNothing);
     });
 
     testWidgets('Premium: sınır yok, kart yok', (tester) async {

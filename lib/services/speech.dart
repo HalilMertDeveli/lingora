@@ -342,10 +342,13 @@ class SpeechService {
         : listenTimes(target.split(RegExp(r'\s+')).length);
     try {
       final locale = await _englishLocaleId();
+      final joiner = TranscriptJoiner();
       await _stt.listen(
         onResult: (r) {
           final guesses = [for (final a in r.alternates) a.recognizedWords];
-          final words = bestTranscription(target, guesses.isEmpty ? [r.recognizedWords] : guesses);
+          final words = joiner.add(
+            bestTranscription(target, guesses.isEmpty ? [r.recognizedWords] : guesses),
+          );
           if (words.isNotEmpty) _heardSomething = true;
           onWords(words);
           if (r.finalResult) {
@@ -400,6 +403,41 @@ extension SpeakingTarget on SpeechService {
 }
 
 final speechProvider = Provider<SpeechService>((ref) => SpeechService());
+
+/// Joins a dictation session's partial results into one text. Some
+/// recognizers (Galaxy M22, Android 13) start a new segment after each pause
+/// and report only that segment, first as empty: without joining, every
+/// pause erased what was said before it.
+class TranscriptJoiner {
+  final _done = <String>[];
+  String _current = '';
+
+  /// Takes the next partial (or final) result; returns the whole text so far.
+  String add(String words) {
+    final w = words.trim();
+    if (w.isEmpty) {
+      _close();
+    } else if (_current.isNotEmpty && !_continues(w)) {
+      _close();
+      _current = w;
+    } else {
+      _current = w;
+    }
+    return [..._done, if (_current.isNotEmpty) _current].join(' ');
+  }
+
+  /// [w] grows or revises the current segment: same first word, or the
+  /// segment is still too short to tell a revision from a new one.
+  bool _continues(String w) =>
+      _firstWord(w) == _firstWord(_current) || _current.split(RegExp(r'\s+')).length < 3;
+
+  static String _firstWord(String s) => s.split(RegExp(r'\s+')).first.toLowerCase();
+
+  void _close() {
+    if (_current.isNotEmpty) _done.add(_current);
+    _current = '';
+  }
+}
 
 /// Plays the lines of a listening dialogue one after another: each call
 /// completes when the line has been heard.

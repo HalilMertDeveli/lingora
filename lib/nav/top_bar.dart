@@ -39,50 +39,55 @@ class StatsBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final p = ref.watch(progressProvider);
     final now = ref.watch(clockProvider)();
-    return Row(
-      children: [
-        const Flexible(child: CourseBadge()),
-        const SizedBox(width: 4),
-        _Stat(
-          key: const Key('topbar-streak'),
-          icon: Icons.local_fire_department,
-          color: Brand.streak,
-          value: p.streakAt(now),
-          tooltip: 'Seri',
-          onTap: () => showTopPanel(context, const StreakPanel()),
-        ),
-        _Stat(
-          key: const Key('topbar-xp'),
-          icon: Icons.bolt,
-          color: Brand.xp,
-          value: p.totalXp,
-          tooltip: 'XP',
-          onTap: () => showTopPanel(context, const XpPanel()),
-        ),
-        // Altın balance: opens the Mağaza.
-        Tooltip(
-          message: 'Altın · Mağaza',
-          child: InkWell(
-            key: const Key('topbar-gold'),
-            borderRadius: BorderRadius.circular(12),
-            onTap: () => openShop(context),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
-              child: GoldAmount(p.wallet.balance, size: 16),
+    // The bar has a fixed height and short numbers: with the largest system
+    // text the course chip collapsed onto the streak (480x800 phones).
+    return MediaQuery.withClampedTextScaling(
+      maxScaleFactor: 1.15,
+      child: Row(
+        children: [
+          const Flexible(child: CourseBadge()),
+          const SizedBox(width: 4),
+          _Stat(
+            key: const Key('topbar-streak'),
+            icon: Icons.local_fire_department,
+            color: Brand.streak,
+            value: p.streakAt(now),
+            tooltip: 'Seri',
+            onTap: () => showTopPanel(context, const StreakPanel()),
+          ),
+          _Stat(
+            key: const Key('topbar-xp'),
+            icon: Icons.bolt,
+            color: Brand.xp,
+            value: p.totalXp,
+            tooltip: 'XP',
+            onTap: () => showTopPanel(context, const XpPanel()),
+          ),
+          // Altın balance: opens the Mağaza.
+          Tooltip(
+            message: 'Altın · Mağaza',
+            child: InkWell(
+              key: const Key('topbar-gold'),
+              borderRadius: BorderRadius.circular(12),
+              onTap: () => openShop(context),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+                child: GoldAmount(p.wallet.balance, size: 16),
+              ),
             ),
           ),
-        ),
-        // Profile shortcut: the learner's photo or Mağaza avatar in their frame.
-        Tooltip(
-          message: 'Profil',
-          child: InkWell(
-            key: const Key('topbar-profile'),
-            customBorder: const CircleBorder(),
-            onTap: () => ref.read(pendingNavTargetProvider.notifier).open(const NavTarget(AppTab.profile)),
-            child: const Padding(padding: EdgeInsets.all(4), child: MyAvatar(size: 32)),
+          // Profile shortcut: the learner's photo or Mağaza avatar in their frame.
+          Tooltip(
+            message: 'Profil',
+            child: InkWell(
+              key: const Key('topbar-profile'),
+              customBorder: const CircleBorder(),
+              onTap: () => ref.read(pendingNavTargetProvider.notifier).open(const NavTarget(AppTab.profile)),
+              child: const Padding(padding: EdgeInsets.all(4), child: MyAvatar(size: 32)),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

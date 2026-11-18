@@ -13,16 +13,25 @@ abstract class VoiceRecorder {
   /// recording is not possible (no permission, web, no microphone).
   Future<bool> start(String name);
 
-  /// Stops and returns the file path, or null when nothing was recorded.
+  /// Stops and returns the file path, or null when nothing (or only
+  /// silence, see [recordingLooksEmpty]) was recorded.
   Future<String?> stop();
 
   /// Stops and deletes the current recording.
   Future<void> cancel();
 }
 
+/// The recording got (almost) no audio: a few frames for many seconds.
+/// Happens when the phone gives the microphone to speech recognition
+/// instead (Samsung Galaxy M22, Android 13: only the capture started last
+/// hears anything). At 64 kbps a real answer is about 8 KB a second.
+bool recordingLooksEmpty(int bytes, Duration elapsed) =>
+    elapsed >= const Duration(seconds: 2) && bytes < elapsed.inMilliseconds * 2;
+
 class DeviceVoiceRecorder implements VoiceRecorder {
   AudioRecorder? _rec;
   String? _path;
+  DateTime? _started;
 
   /// Folder for the recordings: app documents/prova (kept across sessions).
   static Future<Directory> folder() async {
@@ -44,6 +53,7 @@ class DeviceVoiceRecorder implements VoiceRecorder {
         path: path,
       );
       _path = path;
+      _started = DateTime.now();
       return true;
     } catch (e) {
       debugPrint('Recording failed: $e');
@@ -58,7 +68,13 @@ class DeviceVoiceRecorder implements VoiceRecorder {
       _path = null;
       if (path == null) return null;
       final f = File(path);
-      return f.existsSync() && f.lengthSync() > 0 ? path : null;
+      if (!f.existsSync() || f.lengthSync() == 0) return null;
+      final started = _started;
+      if (started != null && recordingLooksEmpty(f.lengthSync(), DateTime.now().difference(started))) {
+        f.deleteSync();
+        return null;
+      }
+      return path;
     } catch (e) {
       debugPrint('Stop recording failed: $e');
       return null;

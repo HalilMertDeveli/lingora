@@ -119,7 +119,7 @@ class CallableConversationService implements ConversationService {
       if (e.code == 'resource-exhausted' && e.message == ConversationException.freeQuotaCode) {
         throw const ConversationException(freeQuotaMessage, code: ConversationException.freeQuotaCode);
       }
-      throw ConversationException(messageForCode(e.code));
+      throw ConversationException(messageForCode(e.code, reason: e.message));
     } on Exception {
       throw const ConversationException('Bağlantı kurulamadı. İnternetini kontrol et.');
     }
@@ -136,11 +136,18 @@ class CallableConversationService implements ConversationService {
 
   static const freeQuotaMessage = 'Bugünkü 3 ücretsiz mesajını kullandın.';
 
-  /// Turkish message for a callable error code.
-  static String messageForCode(String code) => switch (code) {
+  /// Reasons the functions send with "unavailable" (functions/src/*.ts). Any
+  /// other "unavailable" comes from the phone: no connection.
+  static const serverBusyReasons = {'upstream_busy', 'upstream_error', 'empty_response', 'refused'};
+
+  static const offlineMessage = 'Bağlantı kurulamadı. İnternetini kontrol et.';
+
+  /// Turkish message for a callable error [code] and the server's [reason].
+  static String messageForCode(String code, {String? reason}) => switch (code) {
     'resource-exhausted' => 'Bugünlük konuşma hakkın doldu. Yarın tekrar dene.',
     'permission-denied' => 'Yapay zekâ ile konuşma Premium üyelere açık.',
     'unauthenticated' => 'Konuşmak için önce giriş yapmalısın.',
+    'unavailable' when reason != null && !serverBusyReasons.contains(reason) => offlineMessage,
     'unavailable' || 'deadline-exceeded' => 'Sunucu şu an yoğun. Biraz sonra tekrar dene.',
     _ => 'Sunucu hatası. Biraz sonra tekrar dene.',
   };
@@ -354,7 +361,7 @@ class CallableConversationReportService implements ConversationReportService {
       throw ConversationException(
         e.code == 'resource-exhausted'
             ? 'Bugünkü karne hakkın doldu. Yarın yeni bir sohbetle tekrar dene.'
-            : CallableConversationService.messageForCode(e.code),
+            : CallableConversationService.messageForCode(e.code, reason: e.message),
       );
     } on Exception {
       throw const ConversationException('Bağlantı kurulamadı. İnternetini kontrol et.');

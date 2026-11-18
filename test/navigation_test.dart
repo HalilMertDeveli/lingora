@@ -452,4 +452,41 @@ void main() {
       expect(_selected(tester), 0);
     });
   });
+
+  testWidgets('small phone, largest text and display size: bars do not overflow', (tester) async {
+    tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    await _pumpShell(tester);
+    // The bars only (the Öğren path itself is checked elsewhere).
+    await _tapTab(tester, AppTab.profile);
+    tester.view.physicalSize = const Size(768, 1281);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+    await tester.binding.setSurfaceSize(null);
+    await tester.pumpAndSettle();
+    expect(tester.takeException(), isNull);
+    expect(_navBar(tester).labelBehavior, NavigationDestinationLabelBehavior.alwaysHide);
+    // The course chip is only its tile and stays left of the streak.
+    final chip = tester.getRect(find.byKey(const Key('topbar-track')));
+    final streak = tester.getRect(find.byKey(const Key('topbar-streak')));
+    expect(chip.right, lessThanOrEqualTo(streak.left + 0.5));
+  });
+
+  testWidgets('pickers and built-in buttons are Turkish', (tester) async {
+    await _pumpShell(tester);
+    final l = MaterialLocalizations.of(tester.element(_bar));
+    expect(l.okButtonLabel.toUpperCase(), 'TAMAM');
+    expect(l.backButtonTooltip, 'Geri');
+  });
+
+  testWidgets('a 320dp phone at normal text keeps the tab labels', (tester) async {
+    await _pumpShell(tester);
+    tester.view.physicalSize = const Size(960, 1600);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+    await tester.binding.setSurfaceSize(null);
+    await tester.pumpAndSettle();
+    expect(_navBar(tester).labelBehavior, isNull);
+    expect(tester.takeException(), isNull);
+  });
 }

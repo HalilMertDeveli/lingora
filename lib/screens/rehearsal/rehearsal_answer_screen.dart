@@ -27,6 +27,16 @@ String newRehearsalId(DateTime now) => 'r${now.millisecondsSinceEpoch.toRadixStr
 /// (recorded to a local file, with the phone's speech recognition writing
 /// the transcript) or by typing. No options to pick from. At the end the
 /// answers are analysed and the analysis opens.
+/// Set when this phone recorded only silence next to speech recognition:
+/// later answers are not recorded, so the recognizer hears all of them.
+const recordingOffKey = 'prova_recording_off_v1';
+
+/// Pause before the recognizer is started again while recording.
+const listenRestartDelay = Duration(milliseconds: 400);
+
+/// Silent recognizer restarts allowed in a row before it is left off.
+const maxSilentRestarts = 5;
+
 class RehearsalAnswerScreen extends ConsumerStatefulWidget {
   const RehearsalAnswerScreen({
     super.key,
@@ -71,9 +81,25 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   String? _error;
   bool _needsPremium = false;
 
+  /// A step is running: a second tap (on "Bitir ve analiz et" or "Tekrar
+  /// dene") must not add the answer twice or spend a second analysis.
+  bool _advancing = false;
+
+  late final VoiceRecorder _recorder = ref.read(voiceRecorderProvider);
+  late final SpeechService _speechService = ref.read(speechProvider);
+
+  /// Recognizer restarts in a row that heard nothing.
+  int _silentRestarts = 0;
+  bool _inFlight = false;
+
+  /// Something would be lost by leaving now.
+  bool get _hasWork => _answers.isNotEmpty || _text.text.trim().isNotEmpty || _audio != null || _recording;
+
   @override
   void initState() {
     super.initState();
+    _recorder;
+    _speechService;
     final retry = widget.retrySession;
     if (retry != null) {
       _answers.addAll(retry.answers);
@@ -87,15 +113,18 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
 
   @override
   void dispose() {
+    // Leaving while recording (back, app closed): the microphone must stop.
+    // No ref here (the element is going away): the services were kept.
     if (_recording) {
-      ref.read(voiceRecorderProvider).cancel();
-      ref.read(speechProvider).stopListening();
+      _recorder.cancel();
+      _speechService.stopListening();
     }
     _text.dispose();
     super.dispose();
   }
 
   Future<void> _toggleMic() async {
+    _silentRestarts = 0;
     if (_recording) {
       await _stop();
       return;
@@ -107,7 +136,9 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
       return;
     }
     if (_audio != null || _text.text.trim().isNotEmpty) _retake();
-    final recorded = await ref.read(voiceRecorderProvider).start('${_id}_$_index');
+    final recorded =
+        !(ref.read(prefsProvider).getBool(recordingOffKey) ?? false) &&
+        await ref.read(voiceRecorderProvider).start('${_id}_$_index');
     if (!mounted) return;
     setState(() {
       _recording = true;
@@ -121,25 +152,48 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   /// answering it is started again and the text keeps growing.
   void _listen() {
     final speech = ref.read(speechProvider);
+    var heard = false;
     speech.listen(
       onWords: (w) {
         if (!mounted) return;
+        heard = true;
+        _silentRestarts = 0;
         setState(() => _text.text = [_heardBefore, w].where((s) => s.isNotEmpty).join(' '));
       },
       onDone: () {
         if (!mounted || !_recording) return;
         _heardBefore = _text.text.trim();
-        _listen();
+        // A recognizer that stops at once ("busy" on Samsung, no network)
+        // must not be restarted in a tight loop: wait a moment, and give up
+        // after a few silent tries (the recording itself goes on and the
+        // learner can type).
+        if (!heard && ++_silentRestarts > maxSilentRestarts) return;
+        Future<void>.delayed(listenRestartDelay, () {
+          if (mounted && _recording) _listen();
+        });
       },
     );
   }
 
   Future<void> _stop() async {
+    final started = _audio != null; // the recorder said it was recording
     setState(() => _recording = false);
     await ref.read(speechProvider).stopListening();
     final path = await ref.read(voiceRecorderProvider).stop();
     if (!mounted) return;
     setState(() => _audio = path);
+    if (started && path == null && !ref.read(prefsProvider).containsKey(recordingOffKey)) {
+      // This phone gives the microphone to speech recognition only: record
+      // no more, so the recognizer always hears the whole answer.
+      ref.read(prefsProvider).setBool(recordingOffKey, true);
+      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Bu telefon konuşma tanıma sırasında ses kaydına izin vermiyor; cevapların yazıya dökülerek saklanacak.',
+          ),
+        ),
+      );
+    }
   }
 
   /// Throws the current answer away: counts as help (not unaided).
@@ -158,6 +212,16 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   }
 
   Future<void> _next() async {
+    if (_advancing || _inFlight) return;
+    _advancing = true;
+    try {
+      await _nextStep();
+    } finally {
+      _advancing = false;
+    }
+  }
+
+  Future<void> _nextStep() async {
     if (_recording) await _stop();
     final text = _text.text.trim();
     _answers.add(
@@ -185,6 +249,16 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   }
 
   Future<void> _analyse() async {
+    if (_inFlight) return;
+    _inFlight = true;
+    try {
+      await _analyseOnce();
+    } finally {
+      _inFlight = false;
+    }
+  }
+
+  Future<void> _analyseOnce() async {
     final store = ref.read(rehearsalProvider.notifier);
     final earlier = ref.read(rehearsalProvider);
     var session =
@@ -229,7 +303,46 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
         _error = e.message;
         _needsPremium = e.premiumRequired;
       });
+    } on Object {
+      // Never a spinner forever: the answers are saved, the learner may retry.
+      if (!mounted) return;
+      setState(() {
+        _analysing = false;
+        _error = 'Bir sorun oldu. Cevabın kaydedildi, tekrar dene.';
+      });
     }
+  }
+
+  /// Leaving halfway: the answers are not analysed and their recordings
+  /// (kept only on this phone) are deleted, so nothing is left behind.
+  Future<void> _confirmLeave() async {
+    final leave = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Provadan çıkılsın mı?'),
+        content: const Text('Bu provadaki cevapların ve ses kayıtların silinir.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Devam et')),
+          TextButton(
+            key: const Key('prova-leave'),
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Çık'),
+          ),
+        ],
+      ),
+    );
+    if (leave != true || !mounted) return;
+    if (_recording) await _stop();
+    for (final path in [for (final a in _answers) a.audioPath, _audio]) {
+      if (path == null || path.isEmpty) continue;
+      try {
+        File(path).deleteSync();
+      } catch (_) {}
+    }
+    _answers.clear();
+    _text.clear();
+    _audio = null;
+    if (mounted) Navigator.of(context).pop();
   }
 
   /// Tags and gaps of the analyses before this one (not its own on a retry).
@@ -294,155 +407,161 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
         ),
       );
     }
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
-          children: [
-            Text(
-              'Soru ${_index + 1} / ${widget.questions.length} · ${_q.category.label}',
-              style: TextStyle(color: p.muted, fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 8),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Text(
-                    _q.text,
-                    key: const Key('prova-question'),
-                    style: Theme.of(context).textTheme.titleLarge,
+    return PopScope(
+      canPop: !_hasWork,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _confirmLeave();
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text(title)),
+        body: SafeArea(
+          child: ListView(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+            children: [
+              Text(
+                'Soru ${_index + 1} / ${widget.questions.length} · ${_q.category.label}',
+                style: TextStyle(color: p.muted, fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 8),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      _q.text,
+                      key: const Key('prova-question'),
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   ),
-                ),
-                IconButton(
-                  tooltip: 'Soruyu dinle',
-                  icon: const Icon(Icons.volume_up_rounded),
-                  onPressed: () => ref.read(speechProvider).say(_q.text),
+                  IconButton(
+                    tooltip: 'Soruyu dinle',
+                    icon: const Icon(Icons.volume_up_rounded),
+                    onPressed: () => ref.read(speechProvider).say(_q.text),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 6),
+              Text(
+                'Kendi cümlelerinle cevap ver. Şık yok; yanlış yapmaktan korkma, hatalarından çalışacağız.',
+                style: TextStyle(color: p.muted),
+              ),
+              if (_hint) ...[
+                const SizedBox(height: 10),
+                Container(
+                  key: const Key('prova-hint-text'),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(color: p.accentBg, borderRadius: BorderRadius.circular(12)),
+                  child: Text('İpucu: ${_q.hintTr}'),
                 ),
               ],
-            ),
-            const SizedBox(height: 6),
-            Text(
-              'Kendi cümlelerinle cevap ver. Şık yok; yanlış yapmaktan korkma, hatalarından çalışacağız.',
-              style: TextStyle(color: p.muted),
-            ),
-            if (_hint) ...[
-              const SizedBox(height: 10),
-              Container(
-                key: const Key('prova-hint-text'),
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(color: p.accentBg, borderRadius: BorderRadius.circular(12)),
-                child: Text('İpucu: ${_q.hintTr}'),
-              ),
-            ],
-            const SizedBox(height: 20),
-            if (!_typing) ...[
-              Center(
-                child: ValueListenableBuilder<double>(
-                  valueListenable: speechLevel,
-                  builder: (context, level, _) => GestureDetector(
-                    key: const Key('prova-mic'),
-                    onTap: _toggleMic,
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 120),
-                      width: 96 + (_recording ? level * 24 : 0),
-                      height: 96 + (_recording ? level * 24 : 0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _recording ? p.error : p.primary,
-                      ),
-                      child: Icon(
-                        _recording ? Icons.stop_rounded : Icons.mic_rounded,
-                        color: Colors.white,
-                        size: 44,
+              const SizedBox(height: 20),
+              if (!_typing) ...[
+                Center(
+                  child: ValueListenableBuilder<double>(
+                    valueListenable: speechLevel,
+                    builder: (context, level, _) => GestureDetector(
+                      key: const Key('prova-mic'),
+                      onTap: _toggleMic,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 120),
+                        width: 96 + (_recording ? level * 24 : 0),
+                        height: 96 + (_recording ? level * 24 : 0),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _recording ? p.error : p.primary,
+                        ),
+                        child: Icon(
+                          _recording ? Icons.stop_rounded : Icons.mic_rounded,
+                          color: Colors.white,
+                          size: 44,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Center(
-                child: Text(
-                  _recording
-                      ? 'Dinliyorum… bitince dur\'a bas.'
-                      : _audio != null
-                      ? 'Kaydedildi. Metni kontrol et, gerekirse düzelt.'
-                      : 'Mikrofona dokun ve anlat.',
-                  style: TextStyle(color: p.muted),
+                const SizedBox(height: 8),
+                Center(
+                  child: Text(
+                    _recording
+                        ? 'Dinliyorum… bitince dur\'a bas.'
+                        : _audio != null
+                        ? 'Kaydedildi. Metni kontrol et, gerekirse düzelt.'
+                        : 'Mikrofona dokun ve anlat.',
+                    style: TextStyle(color: p.muted),
+                  ),
+                ),
+                ValueListenableBuilder<String?>(
+                  valueListenable: speechIssue,
+                  builder: (context, issue, _) => issue == null
+                      ? const SizedBox.shrink()
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Text(
+                            issue,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: p.error),
+                          ),
+                        ),
+                ),
+                const SizedBox(height: 12),
+              ],
+              TextField(
+                key: const Key('prova-answer-field'),
+                controller: _text,
+                minLines: 4,
+                maxLines: 10,
+                maxLength: 1500,
+                onChanged: (_) => setState(() {}),
+                decoration: InputDecoration(
+                  labelText: _typing ? 'Cevabını yaz (İngilizce)' : 'Söylediklerin (dökümü)',
+                  border: const OutlineInputBorder(),
                 ),
               ),
-              ValueListenableBuilder<String?>(
-                valueListenable: speechIssue,
-                builder: (context, issue, _) => issue == null
-                    ? const SizedBox.shrink()
-                    : Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Text(
-                          issue,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: p.error),
-                        ),
-                      ),
+              Wrap(
+                spacing: 8,
+                runSpacing: 4,
+                children: [
+                  TextButton.icon(
+                    key: const Key('prova-type'),
+                    icon: Icon(_typing ? Icons.mic_rounded : Icons.keyboard_rounded),
+                    label: Text(_typing ? 'Sesle cevapla' : 'Yazarak cevapla'),
+                    onPressed: () async {
+                      if (_recording) await _stop();
+                      setState(() => _typing = !_typing);
+                    },
+                  ),
+                  if (!_hint)
+                    TextButton.icon(
+                      key: const Key('prova-hint'),
+                      icon: const Icon(Icons.lightbulb_outline_rounded),
+                      label: const Text('İpucu'),
+                      onPressed: () => setState(() => _hint = true),
+                    ),
+                  if (_text.text.isNotEmpty && !_recording)
+                    TextButton.icon(
+                      key: const Key('prova-retake'),
+                      icon: const Icon(Icons.restart_alt_rounded),
+                      label: const Text('Baştan'),
+                      onPressed: _retake,
+                    ),
+                ],
               ),
               const SizedBox(height: 12),
+              FilledButton(
+                key: const Key('prova-next'),
+                onPressed: words >= minAnswerWords ? _next : null,
+                child: Text(_last ? 'Bitir ve analiz et' : 'Sonraki soru'),
+              ),
+              if (words < minAnswerWords && _text.text.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(top: 6),
+                  child: Text(
+                    'Biraz daha anlat (en az $minAnswerWords kelime).',
+                    style: TextStyle(color: p.muted),
+                  ),
+                ),
             ],
-            TextField(
-              key: const Key('prova-answer-field'),
-              controller: _text,
-              minLines: 4,
-              maxLines: 10,
-              maxLength: 1500,
-              onChanged: (_) => setState(() {}),
-              decoration: InputDecoration(
-                labelText: _typing ? 'Cevabını yaz (İngilizce)' : 'Söylediklerin (dökümü)',
-                border: const OutlineInputBorder(),
-              ),
-            ),
-            Wrap(
-              spacing: 8,
-              runSpacing: 4,
-              children: [
-                TextButton.icon(
-                  key: const Key('prova-type'),
-                  icon: Icon(_typing ? Icons.mic_rounded : Icons.keyboard_rounded),
-                  label: Text(_typing ? 'Sesle cevapla' : 'Yazarak cevapla'),
-                  onPressed: () async {
-                    if (_recording) await _stop();
-                    setState(() => _typing = !_typing);
-                  },
-                ),
-                if (!_hint)
-                  TextButton.icon(
-                    key: const Key('prova-hint'),
-                    icon: const Icon(Icons.lightbulb_outline_rounded),
-                    label: const Text('İpucu'),
-                    onPressed: () => setState(() => _hint = true),
-                  ),
-                if (_text.text.isNotEmpty && !_recording)
-                  TextButton.icon(
-                    key: const Key('prova-retake'),
-                    icon: const Icon(Icons.restart_alt_rounded),
-                    label: const Text('Baştan'),
-                    onPressed: _retake,
-                  ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            FilledButton(
-              key: const Key('prova-next'),
-              onPressed: words >= minAnswerWords ? _next : null,
-              child: Text(_last ? 'Bitir ve analiz et' : 'Sonraki soru'),
-            ),
-            if (words < minAnswerWords && _text.text.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.only(top: 6),
-                child: Text(
-                  'Biraz daha anlat (en az $minAnswerWords kelime).',
-                  style: TextStyle(color: p.muted),
-                ),
-              ),
-          ],
+          ),
         ),
       ),
     );

@@ -19,6 +19,9 @@ const userDocFields = ['schemaVersion', 'progress', 'totalXp', 'displayName', 'c
 
 const _metaKey = 'progress_sync_meta_v1';
 
+/// Uid of the account this phone's progress was last synced with.
+const _ownerKey = 'progress_sync_owner_v1';
+
 enum SyncState {
   /// Firebase is not configured: progress lives only on this device.
   off,
@@ -93,6 +96,24 @@ class ProgressSync extends Notifier<SyncStatus> {
     if (guest) return const SyncStatus(SyncState.guest);
 
     _doc = db.collection('users').doc(uid);
+    final prefs = ref.read(prefsProvider);
+    final owner = prefs.getString(_ownerKey);
+    if (owner != null && owner != uid) {
+      // The phone's copy belongs to another account (signed out, then a
+      // different one signed in): start clean instead of merging it into
+      // this account. A guest's first sign-in (no owner yet) still merges.
+      Future.microtask(() {
+        if (!ref.mounted) return;
+        _applying = true;
+        try {
+          ref.read(progressProvider.notifier).reset();
+        } finally {
+          _applying = false;
+        }
+        prefs.remove(_metaKey);
+      });
+    }
+    prefs.setString(_ownerKey, uid);
     _sub = _doc!.snapshots().listen(_onRemote, onError: _onError);
     ref.onDispose(() {
       _sub?.cancel();

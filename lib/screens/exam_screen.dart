@@ -522,7 +522,9 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     final ss = (_secondsLeft % 60).toString().padLeft(2, '0');
     final right = _picked == q.answer;
     // The options' Turkish only after a mistake.
-    final gloss = _revealed && !right && !_glossLocked
+    // Unlocks at once when Premium is bought from the locked card.
+    final glossLocked = _glossLocked && !ref.watch(premiumProvider);
+    final gloss = _revealed && !right && !glossLocked
         ? ref.watch(optionGlossesProvider).value?.of(q.id, q.options.length)
         : null;
     final glossOpen = _glossOpen ?? true;
@@ -614,7 +616,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                       if (gloss != null) ...[
                         OptionGlossToggle(open: glossOpen, onChanged: (v) => setState(() => _glossOpen = v)),
                         const SizedBox(height: 10),
-                      ] else if (_revealed && !right && _glossLocked) ...[
+                      ] else if (_revealed && !right && glossLocked) ...[
                         const LockedWhyWrong(),
                         const SizedBox(height: 12),
                       ],
@@ -919,6 +921,7 @@ class _ReviewGlossState extends ConsumerState<_ReviewGloss> {
   @override
   Widget build(BuildContext context) => switch (_allowed) {
     true => widget.child,
+    false when ref.watch(premiumProvider) => widget.child,
     false => const LockedWhyWrong(),
     null => const SizedBox.shrink(),
   };

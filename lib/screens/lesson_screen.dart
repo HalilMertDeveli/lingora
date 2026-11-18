@@ -29,6 +29,7 @@ import '../exercises/translate_exercise.dart';
 import '../exercises/write_exercise.dart';
 import '../models/course.dart';
 import '../services/growth/analytics.dart';
+import '../services/billing/premium.dart';
 import '../services/billing/premium_perks.dart';
 import '../services/growth/paywall_trigger.dart';
 import '../study/answer_recorder.dart';
@@ -574,7 +575,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         locked: locked,
         onReady: onReady,
         gloss: ref.watch(optionGlossesProvider).value?.of(_current.key, ex.options.length),
-        glossLocked: _glossLocked,
+        // Unlocks at once when Premium is bought from the locked card.
+        glossLocked: _glossLocked && !ref.watch(premiumProvider),
       ),
       ExerciseType.write => WriteExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.shadow => ShadowExercise(

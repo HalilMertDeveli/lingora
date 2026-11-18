@@ -320,6 +320,35 @@ void main() {
       return ProviderScope.containerOf(tester.element(find.byType(MaterialApp)));
     }
 
+    testWidgets('a double tap on Bilmiyorum answers only the question on screen', (tester) async {
+      final c = await pump(tester, const LevelTestScreen());
+      await tester.tap(find.text('Bilmiyorum'));
+      await tester.tap(find.text('Bilmiyorum'), warnIfMissed: false);
+      await tester.pumpAndSettle();
+      expect(c.read(progressProvider).levelReports, isEmpty);
+      // One answer recorded, not two.
+      expect(find.byType(LinearProgressIndicator), findsOneWidget);
+      final bar = tester.widget<LinearProgressIndicator>(find.byType(LinearProgressIndicator));
+      expect(bar.value, closeTo(1 / 12, 1e-9));
+    });
+
+    testWidgets('leaving halfway asks first', (tester) async {
+      await pump(tester, const LevelTestScreen());
+      await tester.tap(find.text('Bilmiyorum'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byTooltip('Testi kapat'));
+      await tester.pumpAndSettle();
+      expect(find.text('Testten çıkılsın mı?'), findsOneWidget);
+      await tester.tap(find.text('Devam et'));
+      await tester.pumpAndSettle();
+      expect(find.byType(LevelTestScreen), findsOneWidget);
+      await tester.tap(find.byTooltip('Testi kapat'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('level-leave')));
+      await tester.pumpAndSettle();
+      expect(find.byType(LevelTestScreen), findsNothing);
+    });
+
     testWidgets('taking the test saves a report and shows the karne', (tester) async {
       final c = await pump(tester, const LevelTestScreen());
       var guard = 0;

@@ -760,7 +760,7 @@ class _ItemCard extends ConsumerWidget {
         key: ValueKey('shop-claim-${item.id}'),
         style: FilledButton.styleFrom(padding: pad, backgroundColor: Rarity.premium.color),
         onPressed: () async {
-          if (wallet.claimPremium(item, premium: true) != BuyResult.bought) return;
+          if (wallet.claimPremium(item, premium: ref.read(premiumProvider)) != BuyResult.bought) return;
           final use = await showPurchaseCelebration(context, item);
           if (use == true) {
             wallet.equip(item);
