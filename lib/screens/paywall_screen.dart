@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/text.dart';
+import '../data/progress.dart' show clockProvider;
+import '../goals/goal_paywall_copy.dart';
+import '../goals/learn_goal.dart';
 import '../services/billing/family.dart';
 import '../services/billing/premium.dart';
 import '../services/billing/premium_perks.dart';
@@ -31,12 +34,14 @@ Future<GateResult> requirePremium(
   PremiumFeature feature, {
   String? freeAlternative,
   String? placement,
+  String? pitch,
 }) async {
   if (ref.read(premiumProvider)) return GateResult.premium;
   final choseFree = await Navigator.of(context).push<bool>(
     MaterialPageRoute<bool>(
       fullscreenDialog: true,
-      builder: (_) => PaywallScreen(feature: feature, freeAlternative: freeAlternative, placement: placement),
+      builder: (_) =>
+          PaywallScreen(feature: feature, freeAlternative: freeAlternative, placement: placement, pitch: pitch),
     ),
   );
   if (!context.mounted) return GateResult.closed;
@@ -55,6 +60,12 @@ const freeItems = [
   'Hesapla bulut yedekleme ve cihazlar arası devam',
 ];
 
+/// Premium bullets that are not a [PremiumFeature] (no gate of their own),
+/// drawn after the feature rows: (emoji, title, description).
+const extraPremiumBullets = <(String, String, String)>[
+  ('🎙️', 'Sesli konuşma koçu + konuşma karnesi', 'Sesli konuş, telaffuz ve akıcılık geri bildirimi al.'),
+];
+
 class PaywallScreen extends ConsumerStatefulWidget {
   const PaywallScreen({
     super.key,
@@ -62,7 +73,12 @@ class PaywallScreen extends ConsumerStatefulWidget {
     this.freeAlternative,
     this.placement,
     this.showFamily = false,
+    this.pitch,
   });
+
+  /// One highlighted line under the hero, from where it was opened
+  /// (e.g. "Bugünkü 3 ücretsiz mesajını kullandın.").
+  final String? pitch;
 
   /// The feature the user tried to open (highlighted), if any.
   final PremiumFeature? feature;
@@ -144,10 +160,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     final flags = ref.watch(remoteFlagsProvider);
     // Variant "b" (Remote Config A/B test): plans before the feature list.
     final plansFirst = _variant == 'b' && !premium;
+    final copy = goalPaywallCopy(ref.watch(learnGoalProvider), ref.read(clockProvider)(), variantB: _variant == 'b');
     final features = [
       Text('Premium ile', style: Theme.of(context).textTheme.titleMedium),
       const SizedBox(height: 8),
-      for (final f in PremiumFeature.values) _FeatureRow(f, highlighted: f == widget.feature),
+      for (final f in [...copy.focus, ...PremiumFeature.values.where((f) => !copy.focus.contains(f))])
+        _FeatureRow(f, highlighted: f == widget.feature || (widget.feature == null && copy.focus.contains(f))),
+      for (final (emoji, title, description) in extraPremiumBullets)
+        _BulletRow(emoji: emoji, title: title, description: description),
       const SizedBox(height: 14),
       _FreeBox(),
       const SizedBox(height: 18),
@@ -166,7 +186,16 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
           children: [
-            _header(context, premium),
+            _header(context, premium, copy),
+            if (!premium) ...[
+              for (final line in copy.outcomes) _Outcome(line),
+              if (widget.pitch case final p? when p != paywallValueLine) ...[
+                const SizedBox(height: 10),
+                _Pitch(p, key: const ValueKey('paywall-pitch')),
+              ],
+              const SizedBox(height: 10),
+              const _Pitch(paywallValueLine, key: ValueKey('paywall-value-line')),
+            ],
             if (!premium)
               if (personalLine(whyWrongWeek(ref.watch(whyWrongQuotaProvider))) case final line?) ...[
                 const SizedBox(height: 12),
@@ -191,7 +220,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     );
   }
 
-  Widget _header(BuildContext context, bool premium) => Row(
+  Widget _header(BuildContext context, bool premium, GoalPaywallCopy copy) => Row(
     children: [
       Mascot(mood: premium ? Mood.cheer : Mood.happy, size: 80),
       const SizedBox(width: 12),
@@ -200,17 +229,16 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              premium
-                  ? 'Premium aktif'
-                  : _variant == 'b'
-                  ? 'Konuşarak öğren, sınırsız deneme çöz'
-                  : 'Daha fazla konuş, daha çok deneme çöz',
+              premium ? 'Premium aktif' : copy.title,
+              key: const ValueKey('paywall-title'),
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 4),
             Text(
-              widget.feature == null || premium
+              premium
                   ? 'Temel öğrenme her zaman ücretsiz. Premium, maliyeti yüksek ekstraları açar.'
+                  : widget.feature == null
+                  ? copy.subtitle
                   : '“${widget.feature!.title}” Premium ile açılır. Temel öğrenme her zaman ücretsiz.',
               style: TextStyle(color: Brand.muted),
             ),
@@ -292,6 +320,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     // length always comes from Play, never from this app.
     final trialDays = flags.trialDays > 0 ? (selected?.freeTrialDays ?? 0) : 0;
     return [
+      if (available != true) _PriceAnchor(trialDays: flags.trialDays),
       if (available == null)
         const Center(
           child: Padding(padding: EdgeInsets.all(16), child: CircularProgressIndicator()),
@@ -393,6 +422,116 @@ String? personalLine(({int wrong, int locked}) week) {
     return "Bu hafta ${week.wrong} yanlışının açıklamasını gördün. Premium'da günlük sınır yok.";
   }
   return null;
+}
+
+/// One goal outcome under the hero ("Sınava kadar her gün ne çalışacağın belli").
+class _Outcome extends StatelessWidget {
+  const _Outcome(this.text);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(top: 6),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(Icons.check_circle_rounded, size: 18, color: Brand.success),
+        const SizedBox(width: 8),
+        Expanded(child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, height: 1.3))),
+      ],
+    ),
+  );
+}
+
+/// A highlighted line: the value line or a caller's pitch.
+class _Pitch extends StatelessWidget {
+  const _Pitch(this.text, {super.key});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(color: Brand.accentBg, borderRadius: BorderRadius.circular(14)),
+    child: Row(
+      children: [
+        Icon(Icons.record_voice_over_rounded, color: Brand.ink),
+        const SizedBox(width: 10),
+        Expanded(child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, height: 1.3))),
+      ],
+    ),
+  );
+}
+
+/// Display-only prices while Google Play's are not loaded. Buying always
+/// uses the store's own prices.
+class _PriceAnchor extends StatelessWidget {
+  const _PriceAnchor({required this.trialDays});
+  final int trialDays;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    key: const ValueKey('paywall-price-anchor'),
+    margin: const EdgeInsets.only(bottom: 10),
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(
+      color: Brand.card,
+      border: Border.all(color: Brand.primary, width: 2),
+      borderRadius: BorderRadius.circular(14),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('Yıllık plan önerilir', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16)),
+        const SizedBox(height: 2),
+        Text(paywallPriceAnchor, style: const TextStyle(fontWeight: FontWeight.w700)),
+        if (trialDays > 0)
+          Text(
+            'Yıllık planda $trialDays gün ücretsiz dene; deneme bitmeden iptal edersen ücret alınmaz.',
+            style: TextStyle(color: Brand.success, fontWeight: FontWeight.w800),
+          ),
+        const SizedBox(height: 4),
+        Text(
+          'Kesin fiyatı Google Play gösterir; ödeme ondan önce alınmaz.',
+          style: TextStyle(color: Brand.muted, fontSize: 12),
+        ),
+      ],
+    ),
+  );
+}
+
+class _BulletRow extends StatelessWidget {
+  const _BulletRow({required this.emoji, required this.title, required this.description});
+  final String emoji;
+  final String title;
+  final String description;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    margin: const EdgeInsets.only(bottom: 8),
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: Brand.card,
+      border: Border.all(color: Brand.line, width: 2),
+      borderRadius: BorderRadius.circular(14),
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Glyph(emoji: emoji, icon: Icons.check_circle_outline_rounded, size: 26),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title, style: const TextStyle(fontWeight: FontWeight.w800)),
+              const SizedBox(height: 2),
+              Text(description, style: TextStyle(color: Brand.muted, fontSize: 13)),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 class _Personal extends StatelessWidget {

@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/app_settings.dart';
 import '../data/placement.dart';
 import '../data/progress.dart';
+import '../goals/goal_picker.dart';
+import '../goals/learn_goal.dart';
 import '../services/firebase/account_service.dart';
 import '../services/firebase/firebase_providers.dart';
 import '../services/growth/analytics.dart';
@@ -32,8 +34,18 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   int _page = 0;
   int _goal = 20;
   LearnReason _reason = LearnReason.general;
+  LearnGoal? _learnGoal;
 
-  static const _pageCount = 5;
+  /// Pages in order; Çocuk modu skips "Hedefin ne?" (exam and interview
+  /// goals are for adults).
+  List<String> _steps(bool kid) => [
+    'welcome',
+    'audience',
+    'course',
+    'goal',
+    if (!kid) 'target',
+    'level',
+  ];
 
   void _next() => _pages.nextPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut);
 
@@ -42,6 +54,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     final progress = ref.read(progressProvider.notifier);
     applyPlacement(progress, plan);
     progress.finishOnboarding(_goal);
+    if (_learnGoal case final g? when !ref.read(appSettingsProvider).isKid) progress.setLearnGoal(g);
     logEvent(ref, AnalyticsEvent.trackChosen(plan.trackId, source: 'onboarding'));
     logEvent(ref, AnalyticsEvent.onboardingComplete(method: method, dailyGoal: _goal, track: plan.trackId));
   }
@@ -66,11 +79,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     );
   }
 
-  /// Page names for `onboarding_step`; extra pages are logged as `step_<i>`.
-  static const _stepNames = ['welcome', 'audience', 'course', 'goal', 'level'];
-
-  void _logStep(int i) =>
-      logEvent(ref, AnalyticsEvent.onboardingStep(i < _stepNames.length ? _stepNames[i] : 'step_$i', i));
+  /// Page names for `onboarding_step`.
+  void _logStep(int i) {
+    final names = _steps(ref.read(appSettingsProvider).isKid);
+    logEvent(ref, AnalyticsEvent.onboardingStep(i < names.length ? names[i] : 'step_$i', i));
+  }
 
   @override
   void initState() {
@@ -86,6 +99,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final kid = ref.watch(appSettingsProvider.select((s) => s.isKid));
+    final pageCount = _steps(kid).length;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -108,7 +123,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: LinearProgressIndicator(
-                        value: (_page + 1) / _pageCount,
+                        value: (_page + 1) / pageCount,
                         minHeight: Brand.isKid ? 10 : 6,
                         backgroundColor: Brand.line,
                       ),
@@ -130,11 +145,20 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     const _AudiencePick(),
                     const _CoursePick(),
                     _GoalPick(goal: _goal, onChanged: (g) => setState(() => _goal = g)),
+                    if (!kid)
+                      _TargetPick(
+                        goal: _learnGoal,
+                        now: ref.read(clockProvider)(),
+                        onChanged: (g) => setState(() {
+                          if (g.kind != _learnGoal?.kind) _reason = g.kind.reason;
+                          _learnGoal = g;
+                        }),
+                      ),
                     _LevelStep(reason: _reason, onChanged: (r) => setState(() => _reason = r)),
                   ],
                 ),
               ),
-              if (_page < _pageCount - 1)
+              if (_page < pageCount - 1)
                 FilledButton(onPressed: _next, child: const Text('Devam'))
               else ...[
                 FilledButton(onPressed: _startTest, child: const Text('Seviyeni ölç')),
@@ -322,6 +346,34 @@ class _GoalPick extends StatelessWidget {
               ),
             ),
           ),
+      ],
+    );
+  }
+}
+
+/// "Hedefin ne?" (adults only): drives the home goal card, the paywall copy
+/// and the exam countdown plan. Optional; changeable in Profil.
+class _TargetPick extends StatelessWidget {
+  const _TargetPick({required this.goal, required this.now, required this.onChanged});
+  final LearnGoal? goal;
+  final DateTime now;
+  final ValueChanged<LearnGoal> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return ListView(
+      key: const ValueKey('onboarding-target'),
+      padding: const EdgeInsets.only(top: 32),
+      children: [
+        Text('Hedefin ne?', style: t.headlineSmall),
+        const SizedBox(height: 6),
+        Text(
+          'Planını ve önerilerini buna göre kurarız. İstediğin zaman profilden değiştirebilirsin.',
+          style: t.bodyMedium?.copyWith(color: Brand.muted),
+        ),
+        const SizedBox(height: 20),
+        GoalPicker(goal: goal, now: now, onChanged: onChanged),
       ],
     );
   }

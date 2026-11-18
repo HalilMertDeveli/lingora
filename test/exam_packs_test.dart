@@ -489,6 +489,42 @@ void main() {
       expect(find.textContaining('Senin: '), findsNWidgets(2));
     });
 
+    testWidgets('YDS: the first full mock is free, then the pack or Premium', (tester) async {
+      final exam = readExam('yds');
+      final overrides = await widgetOverrides(
+        tester,
+        PackBilling(),
+        extra: [examProvider('yds').overrideWith((ref) async => exam)],
+      );
+      await tester.pumpWidget(app(overrides, const ExamHomeScreen(examId: 'yds', view: ExamHomeView.mocks)));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('free-first-mock')), findsOneWidget);
+      expect(find.text('İlk tam denemen ücretsiz'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('free-first-mock')));
+      await tester.pumpAndSettle();
+      expect(find.text('Başla'), findsOneWidget);
+      await tester.tap(find.text('Vazgeç'));
+      await tester.pumpAndSettle();
+
+      // Once a full mock is finished (a best score), the free card is gone.
+      final c = ProviderScope.containerOf(tester.element(find.byType(ExamHomeScreen)));
+      c.read(progressProvider.notifier).recordExam('yds_m1', 40);
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('free-first-mock')), findsNothing);
+    });
+
+    testWidgets('LGS has no free full mock', (tester) async {
+      final exam = readExam('lgs');
+      final overrides = await widgetOverrides(
+        tester,
+        PackBilling(),
+        extra: [examProvider('lgs').overrideWith((ref) async => exam)],
+      );
+      await tester.pumpWidget(app(overrides, const ExamHomeScreen(examId: 'lgs')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('free-first-mock')), findsNothing);
+    });
+
     testWidgets('YDS result shows a score estimate', (tester) async {
       final pack = readPack(ExamPack.yds);
       final mock = pack.mocks.first;

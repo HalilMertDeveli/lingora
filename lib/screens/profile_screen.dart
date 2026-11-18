@@ -22,6 +22,7 @@ import 'placement_screen.dart';
 import 'reminder_settings.dart';
 import 'shop_screen.dart';
 import 'study/methods_screen.dart';
+import '../goals/goal_picker.dart';
 
 const _weekdays = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
 
@@ -187,6 +188,13 @@ class ProfileScreen extends ConsumerWidget {
         Text('Görünüm', style: t.titleLarge),
         const SizedBox(height: 12),
         const AppearanceSettings(),
+        // "Hedefin ne?", changeable any time (not in Çocuk modu).
+        if (!Brand.isKid) ...[
+          const SizedBox(height: 24),
+          Text('Hedefim', style: t.titleLarge),
+          const SizedBox(height: 12),
+          const GoalProfileTile(),
+        ],
         const GrowthProfileSection(),
         const SizedBox(height: 16),
         TapCard(
