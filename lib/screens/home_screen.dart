@@ -281,11 +281,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         bottomNavigationBar: KeyedSubtree(
           key: _barKey,
-          child: NavigationBar(
-            key: const Key('bottom-nav'),
-            selectedIndex: _index,
-            onDestinationSelected: _select,
-            destinations: [for (final tab in _tabs) _destination(tab)],
+          // Tab labels are single words that cannot wrap: with the largest font
+          // on a narrow phone "Görevler" was cut in half (QA, 720x1280 with the
+          // largest display size), so their scaling is capped there.
+          child: LayoutBuilder(
+            builder: (context, box) => MediaQuery.withClampedTextScaling(
+              maxScaleFactor: box.maxWidth < 340 ? 1.0 : 1.3,
+              child: NavigationBar(
+                key: const Key('bottom-nav'),
+                selectedIndex: _index,
+                onDestinationSelected: _select,
+                destinations: [for (final tab in _tabs) _destination(tab)],
+              ),
+            ),
           ),
         ),
       ),
