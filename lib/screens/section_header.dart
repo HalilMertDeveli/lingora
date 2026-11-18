@@ -81,63 +81,81 @@ class SectionHeader extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Row(
-            children: [
-              Icon(
-                completed
-                    ? Icons.verified_rounded
-                    : open
-                    ? Icons.flag_circle_rounded
-                    : Icons.lock_rounded,
-                key: completed ? Key('section-completed-${section.id}') : null,
-                color: completed ? Brand.success : (open ? _color : Brand.muted),
-                size: 34,
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(sectionLabel(section), style: t.titleMedium),
-                    const SizedBox(height: 8),
-                    GlossyProgress(value: ratio, height: 10, color: _color),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 12),
-              Text(
-                completed ? 'Tamamlandı' : (open ? '%$percent' : 'Kilitli'),
-                style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
-              ),
-              // "Bölümü atla": the summary explains the exam and starts it.
-              if (!section.parallel && !sectionSkipFinished(section, progress)) ...[
-                const SizedBox(width: 8),
-                Material(
-                  color: _color,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  child: InkWell(
-                    key: Key('section-skip-quick-${section.id}'),
-                    borderRadius: BorderRadius.circular(12),
-                    onTap: () => showSectionSummary(context, section, open: open),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.fast_forward_rounded, color: Colors.white, size: 18),
-                          const SizedBox(width: 2),
-                          Text(
-                            'Atla',
-                            semanticsLabel: open ? 'Bu bölümü sınavla atla' : 'Sınavla bu bölüme atla',
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
-                          ),
-                        ],
-                      ),
+          // Narrow screens (256 dp, QA): smaller icon and an icon-only "Atla",
+          // or the row overflowed.
+          LayoutBuilder(
+            builder: (context, box) {
+              final narrow = box.maxWidth < 260;
+              return Row(
+                children: [
+                  Icon(
+                    completed
+                        ? Icons.verified_rounded
+                        : open
+                        ? Icons.flag_circle_rounded
+                        : Icons.lock_rounded,
+                    key: completed ? Key('section-completed-${section.id}') : null,
+                    color: completed ? Brand.success : (open ? _color : Brand.muted),
+                    size: narrow ? 26 : 34,
+                  ),
+                  SizedBox(width: narrow ? 8 : 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(sectionLabel(section), style: t.titleMedium),
+                        const SizedBox(height: 8),
+                        GlossyProgress(value: ratio, height: 10, color: _color),
+                      ],
                     ),
                   ),
-                ),
-              ],
-            ],
+                  SizedBox(width: narrow ? 8 : 12),
+                  Text(
+                    completed ? 'Tamamlandı' : (open ? '%$percent' : 'Kilitli'),
+                    style: TextStyle(fontWeight: FontWeight.w800, color: Brand.muted),
+                  ),
+                  // "Bölümü atla": the summary explains the exam and starts it.
+                  if (!section.parallel && !sectionSkipFinished(section, progress)) ...[
+                    const SizedBox(width: 8),
+                    Material(
+                      color: _color,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      child: InkWell(
+                        key: Key('section-skip-quick-${section.id}'),
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () => showSectionSummary(context, section, open: open),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: narrow ? 6 : 10, vertical: 6),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              narrow
+                                  ? Icon(
+                                      Icons.fast_forward_rounded,
+                                      color: Colors.white,
+                                      size: 18,
+                                      semanticLabel: open
+                                          ? 'Bu bölümü sınavla atla'
+                                          : 'Sınavla bu bölüme atla',
+                                    )
+                                  : const Icon(Icons.fast_forward_rounded, color: Colors.white, size: 18),
+                              if (!narrow) ...[
+                                const SizedBox(width: 2),
+                                Text(
+                                  'Atla',
+                                  semanticsLabel: open ? 'Bu bölümü sınavla atla' : 'Sınavla bu bölüme atla',
+                                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
+              );
+            },
           ),
         ],
       ),

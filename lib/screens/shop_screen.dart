@@ -138,16 +138,26 @@ class _LookCard extends ConsumerWidget {
                   ),
                   if (hasPhoto && avatar != null) ...[
                     const SizedBox(height: 8),
-                    SegmentedButton<bool>(
-                      key: const ValueKey('shop-face'),
-                      showSelectedIcon: false,
-                      style: const ButtonStyle(visualDensity: VisualDensity.compact),
-                      segments: [
-                        const ButtonSegment(value: false, label: Text('Fotoğraf')),
-                        ButtonSegment(value: true, label: Text('${avatar.emoji} Avatar')),
-                      ],
-                      selected: {prefersAvatar(w)},
-                      onSelectionChanged: (s) => ref.read(goldWalletProvider).useAvatarFace(s.first),
+                    // Scales down instead of wrapping on a narrow phone (QA).
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: SegmentedButton<bool>(
+                        key: const ValueKey('shop-face'),
+                        showSelectedIcon: false,
+                        style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                        segments: [
+                          const ButtonSegment(
+                            value: false,
+                            label: Text('Fotoğraf', maxLines: 1, softWrap: false),
+                          ),
+                          ButtonSegment(
+                            value: true,
+                            label: Text('${avatar.emoji} Avatar', maxLines: 1, softWrap: false),
+                          ),
+                        ],
+                        selected: {prefersAvatar(w)},
+                        onSelectionChanged: (s) => ref.read(goldWalletProvider).useAvatarFace(s.first),
+                      ),
                     ),
                   ],
                   if (w.freezes > 0) ...[

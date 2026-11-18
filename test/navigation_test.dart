@@ -104,6 +104,17 @@ void main() {
       expect(MediaQuery.textScalerOf(tester.element(label)).scale(10), 10);
     });
 
+    testWidgets('256 dp wide phone (480x800 at 300 dpi): the path fits', (tester) async {
+      // QA (qa-premium): the daily goal card and the section header overflowed.
+      tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      await _pumpShell(tester, null, const Size(256, 560));
+      expect(tester.takeException(), isNull);
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, -300));
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+    });
+
     testWidgets('largest font on a normal phone: tab labels still grow', (tester) async {
       tester.platformDispatcher.textScaleFactorTestValue = 1.3;
       addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
