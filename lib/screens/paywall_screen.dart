@@ -102,6 +102,7 @@ class PaywallScreen extends ConsumerStatefulWidget {
       placement ??
       switch (feature) {
         PremiumFeature.aiConversation => PaywallPlacement.aiChat,
+        PremiumFeature.interviewRehearsal => PaywallPlacement.interviewRehearsal,
         PremiumFeature.unlimitedMockExams => PaywallPlacement.mockExam,
         PremiumFeature.errorAnalytics => PaywallPlacement.errorAnalysis,
         PremiumFeature.whyWrong => PaywallPlacement.whyWrong,

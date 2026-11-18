@@ -30,6 +30,9 @@ abstract final class PaywallPlacement {
   static const mockExam = 'mock_exam';
   static const errorAnalysis = 'error_analysis';
 
+  /// Mülakat Provası after the free first rehearsal.
+  static const interviewRehearsal = 'interview_rehearsal';
+
   /// The day's free "Neden yanlış?" explanations were used up.
   static const whyWrong = 'why_wrong';
 
