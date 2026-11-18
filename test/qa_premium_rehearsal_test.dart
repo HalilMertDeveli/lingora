@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/data/rehearsal.dart';
+import 'package:lingora/screens/rehearsal/rehearsal_answer_screen.dart';
 import 'package:lingora/screens/rehearsal/rehearsal_screen.dart';
 import 'package:lingora/services/billing/premium.dart';
 import 'package:lingora/services/firebase/firebase_providers.dart';
@@ -17,6 +18,7 @@ import 'package:lingora/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'premium_test.dart' show FakeBilling;
+import 'ses_kocu_test.dart' show VoiceSpeech;
 import 'widget_test.dart' show FakeSpeech;
 
 /// The demo analysis, counting the calls.
@@ -140,5 +142,43 @@ void main() {
     expect(s.analysis!.summaryTr, 'Özet');
     // A second run adds nothing.
     expect(c.read(rehearsalProvider.notifier).mergeFromCloud([s]), 0);
+  });
+
+  testWidgets('a recognizer that stops at once is not restarted in a tight loop', (tester) async {
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 2.6;
+    addTearDown(tester.view.reset);
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    // Ready, but every listen ends at once with nothing heard (Samsung "busy").
+    final speech = VoiceSpeech();
+    final c = ProviderContainer(
+      overrides: [
+        prefsProvider.overrideWithValue(prefs),
+        clockProvider.overrideWithValue(() => _now),
+        speechProvider.overrideWithValue(speech),
+        voiceRecorderProvider.overrideWithValue(NoVoiceRecorder()),
+        rehearsalServiceProvider.overrideWithValue(CountingRehearsal()),
+        billingServiceProvider.overrideWithValue(FakeBilling()),
+        premiumDevOverrideProvider.overrideWithValue(true),
+      ],
+    );
+    addTearDown(c.dispose);
+    await tester.pumpWidget(
+      UncontrolledProviderScope(
+        container: c,
+        child: MaterialApp(theme: buildTheme(), home: const RehearsalHomeScreen()),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('prova-start')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('prova-mic')));
+    await tester.pump();
+    for (var i = 0; i < 20; i++) {
+      await tester.pump(const Duration(milliseconds: 500));
+    }
+    expect(speech.listens, maxSilentRestarts + 1);
+    expect(find.text('Soru 1 / 2 · Motivasyon'), findsOneWidget, reason: 'still on the first question');
   });
 }

@@ -27,6 +27,12 @@ String newRehearsalId(DateTime now) => 'r${now.millisecondsSinceEpoch.toRadixStr
 /// (recorded to a local file, with the phone's speech recognition writing
 /// the transcript) or by typing. No options to pick from. At the end the
 /// answers are analysed and the analysis opens.
+/// Pause before the recognizer is started again while recording.
+const listenRestartDelay = Duration(milliseconds: 400);
+
+/// Silent recognizer restarts allowed in a row before it is left off.
+const maxSilentRestarts = 5;
+
 class RehearsalAnswerScreen extends ConsumerStatefulWidget {
   const RehearsalAnswerScreen({
     super.key,
@@ -74,6 +80,12 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   /// A step is running: a second tap (on "Bitir ve analiz et" or "Tekrar
   /// dene") must not add the answer twice or spend a second analysis.
   bool _advancing = false;
+
+  late final VoiceRecorder _recorder = ref.read(voiceRecorderProvider);
+  late final SpeechService _speechService = ref.read(speechProvider);
+
+  /// Recognizer restarts in a row that heard nothing.
+  int _silentRestarts = 0;
   bool _inFlight = false;
 
   /// Something would be lost by leaving now.
@@ -82,6 +94,8 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   @override
   void initState() {
     super.initState();
+    _recorder;
+    _speechService;
     final retry = widget.retrySession;
     if (retry != null) {
       _answers.addAll(retry.answers);
@@ -95,15 +109,18 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
 
   @override
   void dispose() {
+    // Leaving while recording (back, app closed): the microphone must stop.
+    // No ref here (the element is going away): the services were kept.
     if (_recording) {
-      ref.read(voiceRecorderProvider).cancel();
-      ref.read(speechProvider).stopListening();
+      _recorder.cancel();
+      _speechService.stopListening();
     }
     _text.dispose();
     super.dispose();
   }
 
   Future<void> _toggleMic() async {
+    _silentRestarts = 0;
     if (_recording) {
       await _stop();
       return;
@@ -129,15 +146,25 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   /// answering it is started again and the text keeps growing.
   void _listen() {
     final speech = ref.read(speechProvider);
+    var heard = false;
     speech.listen(
       onWords: (w) {
         if (!mounted) return;
+        heard = true;
+        _silentRestarts = 0;
         setState(() => _text.text = [_heardBefore, w].where((s) => s.isNotEmpty).join(' '));
       },
       onDone: () {
         if (!mounted || !_recording) return;
         _heardBefore = _text.text.trim();
-        _listen();
+        // A recognizer that stops at once ("busy" on Samsung, no network)
+        // must not be restarted in a tight loop: wait a moment, and give up
+        // after a few silent tries (the recording itself goes on and the
+        // learner can type).
+        if (!heard && ++_silentRestarts > maxSilentRestarts) return;
+        Future<void>.delayed(listenRestartDelay, () {
+          if (mounted && _recording) _listen();
+        });
       },
     );
   }
