@@ -280,7 +280,9 @@ void main() {
       expect(saved.answers.map((a) => a.typed), [true, true]);
       expect(saved.analysis!.tags, contains('past_simple'));
 
-      await tester.scrollUntilVisible(find.byKey(const Key('prova-to-home')), 300);
+      await tester.scrollUntilVisible(find.byKey(const Key('prova-to-home')), 200);
+      await tester.ensureVisible(find.byKey(const Key('prova-to-home')));
+      await tester.pumpAndSettle();
       await tester.tap(find.byKey(const Key('prova-to-home')));
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('prova-today-card')), findsOneWidget);

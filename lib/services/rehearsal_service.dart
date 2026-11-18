@@ -138,6 +138,11 @@ class DemoRehearsalService implements RehearsalService {
       throw const RehearsalException('Cevabın çok kısa. Biraz daha anlat: en az birkaç cümle.');
     }
     final sentences = [for (final a in request.answers) ..._sentences(a.answer)];
+    // A past-time cue counts only within the same answer.
+    final pastAnswer = {
+      for (final a in request.answers)
+        for (final s in _sentences(a.answer)) s: _pastCue.hasMatch(a.answer),
+    };
 
     final past = <GrammarExample>[];
     final articles = <GrammarExample>[];
@@ -145,7 +150,7 @@ class DemoRehearsalService implements RehearsalService {
     final fixed = <String, String>{}; // sentence -> corrected
     for (final s in sentences) {
       var out = s;
-      final cue = _pastCue.hasMatch(all);
+      final cue = pastAnswer[s] ?? false;
       for (final m in _subjectVerb.allMatches(s)) {
         final p = _past[m.group(2)];
         if (cue && p != null) {
@@ -191,9 +196,12 @@ class DemoRehearsalService implements RehearsalService {
     ];
 
     final hasI = RegExp(r'\bI\s+(\w+ed|made|built|wrote|led|did|was responsible|designed)\b').hasMatch(all);
-    final weSentence = sentences.firstWhere((s) => RegExp(r'^\s*We\b').hasMatch(s), orElse: () => '');
+    final weSentence = sentences.firstWhere(
+      (s) => RegExp(r'\bwe\b', caseSensitive: false).hasMatch(s),
+      orElse: () => '',
+    );
     final gaps = [
-      if (!hasI)
+      if (!hasI && weSentence.isNotEmpty)
         ContentGap(
           type: 'contribution',
           quote: weSentence,

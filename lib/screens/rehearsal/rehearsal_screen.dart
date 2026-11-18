@@ -428,7 +428,8 @@ class _RehearsalCompareScreenState extends ConsumerState<RehearsalCompareScreen>
     }
     final c = RehearsalComparison(state.first!, state.latest!, state.tasks);
     final unaidedAnswers = [
-      for (final s in state.sessions.skip(1))
+      // New interviews only: a retell is already a task above.
+      for (final s in state.sessions.skip(1).where((s) => s.kind == RehearsalKind.interview))
         for (final a in s.answers)
           if (a.unaided) a,
     ];
