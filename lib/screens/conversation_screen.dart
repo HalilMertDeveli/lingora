@@ -386,99 +386,142 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     );
   }
 
+  /// Back or ✕ in a started chat: end it with the karne, or leave.
+  Future<void> _confirmLeave() async {
+    final choice = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Sohbetten çıkılsın mı?'),
+        content: const Text(
+          'Çıkarsan bu sohbetin XP'
+          'si ve karnesi kaydedilmez.',
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, 'stay'), child: const Text('Devam et')),
+          TextButton(
+            key: const Key('chat-leave'),
+            onPressed: () => Navigator.pop(context, 'leave'),
+            child: const Text('Çık'),
+          ),
+          FilledButton(
+            key: const Key('chat-leave-finish'),
+            onPressed: () => Navigator.pop(context, 'finish'),
+            child: const Text('Bitir, karnemi gör'),
+          ),
+        ],
+      ),
+    );
+    if (!mounted) return;
+    if (choice == 'finish' && !_waiting) {
+      _finish();
+    } else if (choice == 'leave') {
+      if (_listening) await _speech.stopListening();
+      _finished = true; // nothing is sent any more
+      if (mounted) Navigator.of(context).pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = widget.scenario;
     // With the keyboard up (small phone, large text) the pinned goal would
     // leave no room for the input itself; it comes back when typing ends.
     final typing = MediaQuery.viewInsetsOf(context).bottom > 0;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('${kidEmoji(s.emoji)}${s.title}'),
-        actions: [TextButton(onPressed: _waiting ? null : _finish, child: const Text('Bitir'))],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            if (!typing)
-              Container(
-                key: const Key('chat-goal'),
-                width: double.infinity,
-                margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
-                child: Text(
-                  '${kidEmoji('🎯')}${s.goal}\nKarşındaki: ${s.partner}',
-                  style: const TextStyle(fontWeight: FontWeight.w600, height: 1.4),
+    final talked = _messages.any((m) => m.fromUser);
+    return PopScope(
+      // Leaving a started chat loses its messages and karne: ask first.
+      canPop: !talked || _finished,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _confirmLeave();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('${kidEmoji(s.emoji)}${s.title}'),
+          actions: [TextButton(onPressed: _waiting ? null : _finish, child: const Text('Bitir'))],
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              if (!typing)
+                Container(
+                  key: const Key('chat-goal'),
+                  width: double.infinity,
+                  margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
+                  child: Text(
+                    '${kidEmoji('🎯')}${s.goal}\nKarşındaki: ${s.partner}',
+                    style: const TextStyle(fontWeight: FontWeight.w600, height: 1.4),
+                  ),
                 ),
-              ),
-            if (_freeLeft case final left?)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  left > 0 ? 'Ücretsiz: bugün $left mesajın kaldı' : 'Bugünkü ücretsiz mesajların bitti',
-                  key: const Key('free-left'),
-                  style: TextStyle(color: Brand.accent, fontWeight: FontWeight.w700, fontSize: 13),
+              if (_freeLeft case final left?)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    left > 0 ? 'Ücretsiz: bugün $left mesajın kaldı' : 'Bugünkü ücretsiz mesajların bitti',
+                    key: const Key('free-left'),
+                    style: TextStyle(color: Brand.accent, fontWeight: FontWeight.w700, fontSize: 13),
+                  ),
                 ),
-              ),
-            Expanded(
-              child: ListView(
-                controller: _scroll,
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-                children: [
-                  for (var i = 0; i < _messages.length; i++)
-                    PopIn(key: ValueKey(i), from: 0.85, child: _bubble(i)),
-                  if (_waiting)
-                    Padding(
-                      padding: EdgeInsets.only(top: 4),
-                      child: Row(
-                        children: [
-                          SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)),
-                          SizedBox(width: 10),
-                          Text('yazıyor…', style: TextStyle(color: Brand.muted)),
-                        ],
-                      ),
-                    ),
-                  if (_done)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12),
-                      child: PressableButton(
-                        label: 'HEDEF TAMAM · KARNEMİ GÖR',
-                        color: Brand.success,
-                        onPressed: _finish,
-                      ),
-                    ),
-                ],
-              ),
-            ),
-            if (_error != null)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
+              Expanded(
+                child: ListView(
+                  controller: _scroll,
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
                   children: [
-                    Expanded(
-                      child: Text(_error!, style: TextStyle(color: Brand.error)),
-                    ),
-                    if (_micDenied)
-                      TextButton(
-                        key: const Key('mic-settings'),
-                        onPressed: () {
-                          setState(() => _micDenied = false);
-                          openAppSettings();
-                        },
-                        child: const Text('Ayarlar'),
+                    for (var i = 0; i < _messages.length; i++)
+                      PopIn(key: ValueKey(i), from: 0.85, child: _bubble(i)),
+                    if (_waiting)
+                      Padding(
+                        padding: EdgeInsets.only(top: 4),
+                        child: Row(
+                          children: [
+                            SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)),
+                            SizedBox(width: 10),
+                            Text('yazıyor…', style: TextStyle(color: Brand.muted)),
+                          ],
+                        ),
+                      ),
+                    if (_done)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: PressableButton(
+                          label: 'HEDEF TAMAM · KARNEMİ GÖR',
+                          color: Brand.success,
+                          onPressed: _finish,
+                        ),
                       ),
                   ],
                 ),
               ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
-              decoration: BoxDecoration(
-                border: Border(top: BorderSide(color: Brand.line, width: 2)),
+              if (_error != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(_error!, style: TextStyle(color: Brand.error)),
+                      ),
+                      if (_micDenied)
+                        TextButton(
+                          key: const Key('mic-settings'),
+                          onPressed: () {
+                            setState(() => _micDenied = false);
+                            openAppSettings();
+                          },
+                          child: const Text('Ayarlar'),
+                        ),
+                    ],
+                  ),
+                ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
+                decoration: BoxDecoration(
+                  border: Border(top: BorderSide(color: Brand.line, width: 2)),
+                ),
+                child: _voice ? _voiceBar() : _textBar(),
               ),
-              child: _voice ? _voiceBar() : _textBar(),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

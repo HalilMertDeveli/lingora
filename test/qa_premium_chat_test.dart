@@ -120,4 +120,59 @@ void main() {
     expect(find.byKey(const Key('chat-input')).hitTestable(), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets('back in a started chat asks first; Bitir from the dialog opens the karne', (tester) async {
+    await tester.pumpWidget(
+      chatApp(await overrides(tester, speech: VoiceSpeech(heard: [(words: 'Hello', confidence: 0.9)]))),
+    );
+    await tester.pumpAndSettle();
+    final nav = tester.state<NavigatorState>(find.byType(Navigator));
+    // Nothing said yet: back just leaves (nothing is lost).
+    expect(await nav.maybePop(), isFalse, reason: 'only route');
+    await tester.tap(find.byKey(const Key('voice-mic')));
+    await tester.pumpAndSettle();
+
+    await nav.maybePop();
+    await tester.pumpAndSettle();
+    expect(find.text('Sohbetten çıkılsın mı?'), findsOneWidget);
+    await tester.tap(find.text('Devam et'));
+    await tester.pumpAndSettle();
+    expect(find.byType(ConversationScreen), findsOneWidget);
+
+    await nav.maybePop();
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('chat-leave-finish')));
+    await tester.pumpAndSettle();
+    expect(find.byType(ConversationScreen), findsNothing);
+    expect(find.text('Konuşma karnesi'), findsOneWidget);
+  });
+
+  testWidgets('leaving a started chat from the dialog closes it', (tester) async {
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: await overrides(tester, speech: VoiceSpeech(heard: [(words: 'Hello', confidence: 0.9)])),
+        child: MaterialApp(
+          home: Builder(
+            builder: (context) => TextButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (_) => ConversationScreen(scenario: scenarioById('cafe'))),
+              ),
+              child: const Text('open'),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('open'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('voice-mic')));
+    await tester.pumpAndSettle();
+    await tester.binding.handlePopRoute();
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('chat-leave')));
+    await tester.pumpAndSettle();
+    expect(find.byType(ConversationScreen), findsNothing);
+    expect(find.text('Sohbetten çıkılsın mı?'), findsNothing);
+    expect(find.text('open'), findsOneWidget);
+  });
 }
