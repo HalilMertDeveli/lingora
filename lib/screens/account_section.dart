@@ -37,7 +37,8 @@ class AccountSection extends ConsumerWidget {
       SyncState.syncing => (Icons.cloud_sync_outlined, Brand.primary, 'Hesabınla eşitleniyor…'),
       SyncState.error => (Icons.cloud_off, Brand.error, 'Şu an kaydedilemedi, tekrar denenecek'),
       SyncState.guest => (Icons.phone_android, Brand.muted, 'İlerlemen yalnızca bu telefonda'),
-      _ => (Icons.cloud_off, Brand.muted, 'Hesap hazırlanıyor…'),
+      // Shown until the guest account exists; that needs a connection.
+      _ => (Icons.cloud_off, Brand.muted, 'Hesap hazırlanıyor… İnternete bağlanınca giriş yapabilirsin.'),
     };
     final signedIn = user != null && !user.isAnonymous;
 
@@ -83,10 +84,7 @@ class AccountSection extends ConsumerWidget {
                 label: const Text('Çıkış yap'),
                 onPressed: () => _run(context, service.signOut),
               ),
-            if (signedIn) ...[
-              const SizedBox(height: 4),
-              DeleteAccountButton(service: service),
-            ],
+            if (signedIn) ...[const SizedBox(height: 4), DeleteAccountButton(service: service)],
           ],
         ],
       ),
@@ -106,15 +104,17 @@ Future<void> _run(BuildContext context, Future<void> Function() action) async {
 
 /// "Hesabımı sil": asks once, then deletes the account and its cloud data
 /// (Google Play account deletion policy). Ignores taps while it runs.
-class DeleteAccountButton extends StatefulWidget {
+class DeleteAccountButton extends ConsumerStatefulWidget {
   const DeleteAccountButton({super.key, required this.service});
   final AccountService service;
 
   @override
-  State<DeleteAccountButton> createState() => _DeleteAccountButtonState();
+  ConsumerState<DeleteAccountButton> createState() => _DeleteAccountButtonState();
 }
 
-class _DeleteAccountButtonState extends State<DeleteAccountButton> {
+class _DeleteAccountButtonState extends ConsumerState<DeleteAccountButton> {
+  // A real red: Brand.error is the gentle blue used for wrong answers.
+  static const _danger = Color(0xFFB3261E);
   bool _busy = false;
 
   Future<void> _delete() async {
@@ -134,7 +134,7 @@ class _DeleteAccountButtonState extends State<DeleteAccountButton> {
           TextButton(onPressed: () => Navigator.of(ctx).pop(false), child: const Text('Vazgeç')),
           FilledButton(
             key: const ValueKey('delete-account-confirm'),
-            style: FilledButton.styleFrom(backgroundColor: Brand.error, foregroundColor: Colors.white),
+            style: FilledButton.styleFrom(backgroundColor: _danger, foregroundColor: Colors.white),
             onPressed: () => Navigator.of(ctx).pop(true),
             child: const Text('Kalıcı olarak sil'),
           ),
@@ -143,14 +143,17 @@ class _DeleteAccountButtonState extends State<DeleteAccountButton> {
     );
     if (ok != true || !mounted) return;
     setState(() => _busy = true);
+    // Keep the sync from writing users/{uid} back while it is deleted.
+    final sync = ref.read(progressSyncProvider.notifier);
+    sync.pause();
     try {
       await widget.service.deleteAccount();
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Hesabın ve bulut verilerin silindi.')),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Hesabın ve bulut verilerin silindi.')));
       }
     } on AccountException catch (e) {
+      ref.invalidate(progressSyncProvider); // not deleted: sync again
       if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
     } finally {
       if (mounted) setState(() => _busy = false);
@@ -160,7 +163,7 @@ class _DeleteAccountButtonState extends State<DeleteAccountButton> {
   @override
   Widget build(BuildContext context) => TextButton.icon(
     key: const ValueKey('account-delete'),
-    style: TextButton.styleFrom(foregroundColor: Brand.error),
+    style: TextButton.styleFrom(foregroundColor: _danger),
     onPressed: _busy ? null : _delete,
     icon: _busy
         ? const SizedBox.square(dimension: 18, child: CircularProgressIndicator(strokeWidth: 2))

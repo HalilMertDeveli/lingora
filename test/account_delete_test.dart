@@ -3,23 +3,35 @@ import 'dart:async';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/screens/account_section.dart';
 import 'package:lingora/services/firebase/account_service.dart';
 import 'package:lingora/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> _pump(WidgetTester tester, AccountService service) async {
+  SharedPreferences.setMockInitialValues({});
   await tester.pumpWidget(
-    MaterialApp(
-      theme: buildTheme(brightness: Brightness.light),
-      builder: (_, child) => PaletteScope(palette: Palette.of(AppMode.adult, Brightness.light), child: child!),
-      home: Scaffold(body: Center(child: DeleteAccountButton(service: service))),
+    ProviderScope(
+      overrides: [prefsProvider.overrideWithValue(await SharedPreferences.getInstance())],
+      child: MaterialApp(
+        theme: buildTheme(brightness: Brightness.light),
+        builder: (_, child) =>
+            PaletteScope(palette: Palette.of(AppMode.adult, Brightness.light), child: child!),
+        home: Scaffold(
+          body: Center(child: DeleteAccountButton(service: service)),
+        ),
+      ),
     ),
   );
 }
 
-MockFirebaseAuth _signedIn() => MockFirebaseAuth(signedIn: true, mockUser: MockUser(uid: 'u1', email: 'a@b.co'));
+MockFirebaseAuth _signedIn() => MockFirebaseAuth(
+  signedIn: true,
+  mockUser: MockUser(uid: 'u1', email: 'a@b.co'),
+);
 
 void main() {
   test('deleteAccount calls the server once, then signs out', () async {
@@ -39,7 +51,9 @@ void main() {
     );
     await expectLater(
       service.deleteAccount(),
-      throwsA(isA<AccountException>().having((e) => e.message, 'message', contains('İnternet bağlantısı yok'))),
+      throwsA(
+        isA<AccountException>().having((e) => e.message, 'message', contains('İnternet bağlantısı yok')),
+      ),
     );
     expect(auth.currentUser, isNotNull);
   });

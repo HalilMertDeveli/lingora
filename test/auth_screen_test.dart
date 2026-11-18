@@ -178,6 +178,6 @@ void main() {
     await tester.pump();
     final button = tester.widget<FilledButton>(find.byKey(const ValueKey('account-sign-in')));
     expect(button.onPressed, isNull);
-    expect(find.text('Hesap hazırlanıyor…'), findsOneWidget);
+    expect(find.textContaining('Hesap hazırlanıyor…'), findsOneWidget);
   });
 }

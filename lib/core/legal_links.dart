@@ -18,8 +18,7 @@ Future<void> openExternalLink(BuildContext context, String url) async {
     ok = false;
   }
   if (!ok && context.mounted) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Bağlantı açılamadı. Tarayıcıda şu adresi aç: $url')),
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text('Bağlantı açılamadı. Tarayıcıda şu adresi aç: $url')));
   }
 }

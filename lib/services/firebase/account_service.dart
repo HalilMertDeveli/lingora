@@ -22,11 +22,8 @@ class AccountException implements Exception {
 /// the account already exists, we sign into it instead; the progress on this
 /// device is then merged into that account by the sync (nothing is lost).
 class AccountService {
-  AccountService(
-    this._auth, {
-    Future<AuthCredential?> Function()? googleCredential,
-    this._deleteServerData,
-  }) : _googleCredential = googleCredential ?? _nativeGoogleCredential;
+  AccountService(this._auth, {Future<AuthCredential?> Function()? googleCredential, this._deleteServerData})
+    : _googleCredential = googleCredential ?? _nativeGoogleCredential;
 
   final FirebaseAuth _auth;
 
@@ -328,7 +325,10 @@ final accountServiceProvider = Provider<AccountService?>((ref) {
     deleteServerData: functions == null
         ? null
         : () => functions
-              .httpsCallable('deleteAccount', options: HttpsCallableOptions(timeout: const Duration(seconds: 120)))
+              .httpsCallable(
+                'deleteAccount',
+                options: HttpsCallableOptions(timeout: const Duration(seconds: 120)),
+              )
               .call<Object?>(),
   );
 });
