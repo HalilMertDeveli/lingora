@@ -18,6 +18,8 @@ import '../ui/my_avatar.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/stoic_card.dart';
+import 'invite_nudge.dart';
+import 'sync_status_line.dart';
 
 /// Accuracy from which the end screen cheers (big hop) instead of a wave.
 const successAccuracy = 90;
@@ -216,6 +218,9 @@ class _LessonResultScreenState extends State<LessonResultScreen> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
+                const SizedBox(height: 6),
+                // Where this lesson is saved: phone only, account, or waiting.
+                const SyncStatusLine(center: true),
                 if (widget.quote case final quote?) ...[
                   const SizedBox(height: 16),
                   Flexible(
@@ -227,6 +232,14 @@ class _LessonResultScreenState extends State<LessonResultScreen> {
                         child: StoicResultCard(quote: quote, stats: widget.stoicStats),
                       ),
                     ),
+                  ),
+                ],
+                // A perfect run is a good moment to bring a friend (paced, never for kids).
+                if (widget.perfect && widget.quote == null) ...[
+                  const SizedBox(height: 14),
+                  // Scrolls instead of overflowing on short screens (with the sync line).
+                  const Flexible(
+                    child: SingleChildScrollView(child: InviteNudge(place: InviteNudgePlace.perfectLesson)),
                   ),
                 ],
                 const Spacer(),
@@ -327,6 +340,9 @@ class _StreakCelebrationScreenState extends State<StreakCelebrationScreen> {
               if (streakOfferMilestones.contains(streak)) ...[
                 const SizedBox(height: 16),
                 _MilestoneOffer(streak: streak),
+              ] else if (streak >= 3) ...[
+                const SizedBox(height: 16),
+                const InviteNudge(place: InviteNudgePlace.streak),
               ],
               const Spacer(),
               PressableButton(

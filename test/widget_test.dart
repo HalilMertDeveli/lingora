@@ -70,31 +70,29 @@ void main() {
   testWidgets('onboarding leads to the learning path', (tester) async {
     await pumpApp(tester, {});
     expect(find.text('Dilmaç'), findsOneWidget);
-    await tester.tap(find.text('Devam'));
+    await tester.tap(find.text('Başla'));
     await tester.pumpAndSettle();
-    expect(find.text('Kimin için?'), findsOneWidget);
-    await tester.tap(find.text('Devam'));
+    expect(find.text('Ne için İngilizce?'), findsOneWidget);
+    await tester.tap(find.text('Genel İngilizce'));
+    await tester.pump();
+    await tester.tap(find.text('İlk derse başla'));
     await tester.pumpAndSettle();
-    expect(find.text('Ne öğrenmek istiyorsun?'), findsOneWidget);
-    await tester.tap(find.text('Devam'));
+    // The short first lesson opens right away; leaving it lands on the path.
+    expect(find.text('“merhaba” hangisi?'), findsOneWidget);
+    await tester.tap(find.byKey(const Key('session-close')));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Ciddi'));
-    await tester.tap(find.text('Devam'));
-    await tester.pumpAndSettle();
-    expect(find.text('Hedefin ne?'), findsOneWidget);
-    await tester.tap(find.text('Devam'));
-    await tester.pumpAndSettle();
-    expect(find.text('Neden İngilizce öğreniyorsun?'), findsOneWidget);
-    await tester.tap(find.text('Sıfırdan başla'));
+    await tester.tap(find.text('Çık'));
     await tester.pumpAndSettle();
 
     expect(find.text('Merhaba!'), findsOneWidget);
     expect(find.text('Selamlaşma'), findsOneWidget);
-    expect(find.text('0 / 30 XP'), findsOneWidget);
+    // The daily goal is not asked on the first run: the default for now.
+    expect(find.text('0 / 20 XP'), findsOneWidget);
   });
 
   testWidgets('reminder prompt enables reminders and schedules them', (tester) async {
-    await pumpApp(tester, {'progress_v1': '{"onboarded": true}'});
+    // Asked from the second lesson on (not on the first run).
+    await pumpApp(tester, {'progress_v1': '{"onboarded": true, "lessonsDone": 2}'});
     expect(find.text('Her gün hatırlatayım mı?'), findsOneWidget);
     expect(notifications.last, isEmpty);
     await tester.tap(find.text('Aç'));
@@ -104,7 +102,7 @@ void main() {
   });
 
   testWidgets('denied permission keeps reminders off', (tester) async {
-    await pumpApp(tester, {'progress_v1': '{"onboarded": true}'});
+    await pumpApp(tester, {'progress_v1': '{"onboarded": true, "lessonsDone": 2}'});
     notifications.grant = false;
     await tester.tap(find.text('Aç'));
     await tester.pumpAndSettle();

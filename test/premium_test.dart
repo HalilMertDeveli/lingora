@@ -18,6 +18,7 @@ import 'package:lingora/services/billing/entitlement_backend.dart';
 import 'package:lingora/services/billing/premium.dart';
 import 'package:lingora/services/conversation.dart';
 import 'package:lingora/services/speech.dart';
+import 'package:lingora/voice/talk_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Store double: [owned] products are re-delivered on restore; [autoResult]
@@ -592,7 +593,8 @@ void main() {
       expect(container.read(conversationServiceProvider), isA<LiveFake>());
     });
 
-    testWidgets('Premium users talk to the live AI directly', (tester) async {
+    // Premium gets the natural voice partner (lib/voice/talk_screen.dart).
+    testWidgets('Premium users talk to the live AI directly, with the natural voice partner', (tester) async {
       final overrides = [
         ...await widgetOverrides(tester, FakeBilling(), dev: true),
         conversationServiceProvider.overrideWithValue(LiveFake()),
@@ -603,8 +605,8 @@ void main() {
       await tester.tap(find.text(scenario.title));
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsNothing);
-      final container = ProviderScope.containerOf(tester.element(find.byType(ConversationScreen)));
-      expect(container.read(conversationServiceProvider), isA<LiveFake>());
+      expect(find.byType(TalkScreen), findsOneWidget);
+      expect(find.byType(ConversationScreen), findsNothing);
     });
 
     testWidgets('first mock exam of the day is free, the second needs Premium', (tester) async {

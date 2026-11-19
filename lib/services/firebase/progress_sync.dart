@@ -79,6 +79,7 @@ class ProgressSync extends Notifier<SyncStatus> {
   bool _applying = false;
   int _uploads = 0;
   DateTime? _lastSynced;
+  bool _adoptEpoch = false;
 
   @override
   SyncStatus build() {
@@ -107,13 +108,16 @@ class ProgressSync extends Notifier<SyncStatus> {
         if (!ref.mounted) return;
         _applying = true;
         try {
-          ref.read(progressProvider.notifier).reset();
+          ref.read(progressProvider.notifier).clearForAccountSwitch();
         } finally {
           _applying = false;
         }
         prefs.remove(_metaKey);
       });
     }
+    // A guest's first sign-in merges into the account: a reset made as a
+    // guest must not wipe the account's own progress (see [_onRemote]).
+    _adoptEpoch = owner == null;
     prefs.setString(_ownerKey, uid);
     _sub = _doc!.snapshots().listen(_onRemote, onError: _onError);
     ref.onDispose(() {
@@ -149,13 +153,18 @@ class ProgressSync extends Notifier<SyncStatus> {
     final data = snap.data();
     final rawProgress = data?['progress'];
     if (data == null || rawProgress is! Map) {
+      _adoptEpoch = false;
       _schedule(immediately: true);
       return;
     }
     final remote = progressFromFirestore(Map<String, dynamic>.from(rawProgress));
     final remoteAt = (data['clientUpdatedAt'] as num?)?.toInt() ?? 0;
     final localAt = _localUpdatedAt;
-    final local = ref.read(progressProvider);
+    var local = ref.read(progressProvider);
+    if (_adoptEpoch) {
+      _adoptEpoch = false;
+      local = local.copyWith(resetAt: remote.resetAt);
+    }
     final merged = mergeProgress(local, remote, localNewer: localAt >= remoteAt);
 
     if (canonicalProgress(merged) != canonicalProgress(local)) {

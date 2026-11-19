@@ -213,13 +213,13 @@ void main() {
       expect(Brand.palette, Palette.kidDark);
     });
 
-    testWidgets('onboarding asks who it is for and switches the look at once', (tester) async {
+    testWidgets('the onboarding goal switches the look at once', (tester) async {
       await pumpApp(tester, {});
-      await tester.tap(find.text('Devam'));
+      await tester.tap(find.text('Başla'));
       await tester.pumpAndSettle();
-      expect(find.text('Kimin için?'), findsOneWidget);
+      expect(find.text('Ne için İngilizce?'), findsOneWidget);
       expect(Brand.isKid, isFalse);
-      await tester.tap(find.text('Ebeveyn olarak, çocuğumla birlikte'));
+      await tester.tap(find.text('Ebeveyn olarak, çocuğumla'));
       await tester.pumpAndSettle();
       expect(Brand.isKid, isTrue);
       final prefs = await SharedPreferences.getInstance();

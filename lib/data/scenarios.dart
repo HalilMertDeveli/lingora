@@ -14,6 +14,7 @@ class Scenario {
     required this.opening,
     required this.openingTr,
     this.level = 'A2',
+    this.apiFields,
     // Named parameters cannot be private.
     // ignore: prefer_initializing_formals
   }) : _emoji = emoji;
@@ -35,6 +36,14 @@ class Scenario {
   final String opening;
   final String openingTr;
   final String level;
+
+  /// What the server is told about this chat instead of the scenario id:
+  /// free talk (`mode`, `topic`) or a character (`characterId`), see
+  /// lib/voice/voice_catalog.dart.
+  final Map<String, Object?>? apiFields;
+
+  /// The fields that name this chat for the converse/talk/report functions.
+  Map<String, Object?> get api => apiFields ?? {'scenarioId': id};
 }
 
 const scenarios = [

@@ -35,6 +35,16 @@ Future<void> pickReminderTime(BuildContext context, WidgetRef ref) async {
   }
 }
 
+/// Whether to ask about reminders now: not on the first run, but once the
+/// learner has come back on another day or finished a second lesson (a
+/// reminder means something then), and only until they answered.
+bool reminderPromptDue(Progress p, DateTime now) {
+  if (p.remindersEnabled != null) return false;
+  if (p.lessonsDone >= 2) return true;
+  final today = dayKey(now);
+  return p.xpByDay.keys.any((d) => d.compareTo(today) < 0);
+}
+
 /// One-time card on the learning path asking whether to enable reminders.
 class ReminderPromptCard extends ConsumerWidget {
   const ReminderPromptCard({super.key});
@@ -42,7 +52,7 @@ class ReminderPromptCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final p = ref.watch(progressProvider);
-    if (p.remindersEnabled != null) return const SizedBox.shrink();
+    if (!reminderPromptDue(p, ref.watch(clockProvider)())) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: TapCard(

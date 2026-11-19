@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/app_settings.dart';
+import '../data/first_lesson.dart';
 import '../data/placement.dart';
 import '../data/progress.dart';
-import '../goals/goal_picker.dart';
 import '../goals/learn_goal.dart';
 import '../services/firebase/account_service.dart';
 import '../services/firebase/firebase_providers.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
-import '../ui/flag.dart';
 import '../ui/mascot.dart';
 import 'auth_screen.dart';
+import 'lesson_screen.dart';
 import 'placement_screen.dart';
 
 const dailyGoals = [
@@ -22,6 +22,49 @@ const dailyGoals = [
   (50, 'Yoğun', 'Günde ~25 dakika'),
 ];
 
+/// Set when onboarding ends without asking the daily goal: the path's daily
+/// goal card asks for it later, once the learner has done a few lessons.
+const dailyGoalPendingKey = 'daily_goal_pending_v1';
+
+/// The one question of the first run: what the learner is here for. It sets
+/// the look (Ebeveyn gözetimli mod, AppMode.kid), the course and the goal card at once; everything
+/// else (account, reminders, daily goal, level test) is asked later, at a
+/// natural moment.
+enum StartGoal {
+  general('🌍', 'Genel İngilizce', 'Sıfırdan ya da yeniden, günlük hayat için'),
+  speaking('🗣️', 'Konuşmak / seyahat', 'Günlük konuşma ve yolculuk'),
+  exam('📝', 'YDS / YÖKDİL', 'Sınava hazırlık, tarihe göre plan'),
+  interview('💼', 'İş görüşmesi', 'Mülakata hazır gir'),
+  lgs('🏫', "LGS'ye hazırlık", '8. sınıf İngilizcesi, sade ve renkli görünüm'),
+  kid('👪', 'Ebeveyn olarak, çocuğumla', 'Ebeveyn hesabıyla, ebeveyn gözetiminde');
+
+  const StartGoal(this.emoji, this.title, this.subtitle);
+  final String emoji;
+  final String title;
+  final String subtitle;
+
+  /// LGS and the parent-led option use Ebeveyn gözetimli mod (AppMode.kid: no AI,
+  /// no friends, no exam or job goals). Play target audience is 13+ (decision a).
+  AppMode get mode => this == lgs || this == kid ? AppMode.kid : AppMode.adult;
+
+  LearnReason get reason => switch (this) {
+    exam => LearnReason.academic,
+    interview => LearnReason.work,
+    lgs => LearnReason.school,
+    general || speaking || kid => LearnReason.general,
+  };
+
+  /// The "Hedefin ne?" goal (adults only).
+  GoalKind? get goalKind => switch (this) {
+    general => GoalKind.general,
+    speaking => GoalKind.speaking,
+    exam => GoalKind.exam,
+    interview => GoalKind.interview,
+    lgs || kid => null,
+  };
+}
+
+/// First run: welcome → one goal → the first lesson at once.
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -32,51 +75,81 @@ class OnboardingScreen extends ConsumerStatefulWidget {
 class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final _pages = PageController();
   int _page = 0;
-  int _goal = 20;
-  LearnReason _reason = LearnReason.general;
-  LearnGoal? _learnGoal;
+  StartGoal? _goal;
 
-  /// Pages in order; Çocuk modu skips "Hedefin ne?" (exam and interview
-  /// goals are for adults).
-  List<String> _steps(bool kid) => ['welcome', 'audience', 'course', 'goal', if (!kid) 'target', 'level'];
+  static const _steps = ['welcome', 'goal'];
+
+  /// Welcome, goal, first lesson.
+  static const _totalSteps = 3;
 
   void _next() => _pages.nextPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut);
 
-  /// Applies the chosen plan (track + known nodes), then leaves onboarding.
-  void _finish(PlacementRecommendation plan, {required String method}) {
-    final progress = ref.read(progressProvider.notifier);
-    applyPlacement(progress, plan);
-    progress.finishOnboarding(_goal);
-    if (_learnGoal case final g? when !ref.read(appSettingsProvider).isKid) progress.setLearnGoal(g);
-    logEvent(ref, AnalyticsEvent.trackChosen(plan.trackId, source: 'onboarding'));
-    logEvent(ref, AnalyticsEvent.onboardingComplete(method: method, dailyGoal: _goal, track: plan.trackId));
+  void _pick(StartGoal g) {
+    setState(() => _goal = g);
+    // The look changes at once, so the lesson already has it.
+    ref.read(appSettingsProvider.notifier).setMode(g.mode);
   }
 
-  void _fromScratch() => _finish(
-    recommend(level: null, reason: _reason, courseUnits: const [], lessons: const []),
-    method: 'scratch',
-  );
+  /// Track and goal from the choice.
+  void _applyGoal(StartGoal g, PlacementRecommendation plan) {
+    final progress = ref.read(progressProvider.notifier);
+    applyPlacement(progress, plan);
+    if (g.goalKind case final kind?) {
+      progress.setLearnGoal(LearnGoal(kind: kind, at: ref.read(clockProvider)().millisecondsSinceEpoch));
+    }
+    logEvent(ref, AnalyticsEvent.trackChosen(plan.trackId, source: 'onboarding'));
+  }
 
+  void _finish({required String method, required String track}) {
+    ref.read(prefsProvider).setBool(dailyGoalPendingKey, true);
+    final goal = ref.read(progressProvider).dailyGoal;
+    ref.read(progressProvider.notifier).finishOnboarding(goal);
+    logEvent(ref, AnalyticsEvent.onboardingComplete(method: method, dailyGoal: goal, track: track));
+  }
+
+  /// The first lesson right away (a beginner's start, no level yet).
+  /// Onboarding ends when the lesson closes, finished or left: its result
+  /// screens then return to the path.
+  Future<void> _startFirstLesson() async {
+    final g = _goal;
+    if (g == null) return;
+    final plan = recommend(level: null, reason: g.reason, courseUnits: const [], lessons: const []);
+    _applyGoal(g, plan);
+    logEvent(ref, AnalyticsEvent.onboardingStep('first_lesson', _steps.length));
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        fullscreenDialog: true,
+        builder: (_) => LessonScreen(
+          nodeId: firstLessonId,
+          title: firstLessonTitle,
+          items: firstLessonItems(),
+          color: Brand.primary,
+        ),
+      ),
+    );
+    if (!mounted) return;
+    _finish(method: 'first_lesson', track: plan.trackId);
+  }
+
+  /// "İngilizcem var": the level test instead of the first lesson.
   void _startTest() {
+    final g = _goal ?? StartGoal.general;
     logEvent(ref, AnalyticsEvent.placementStart());
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => PlacementTestScreen(
-          reason: _reason,
+          reason: g.reason,
           onDone: (ctx, plan) {
             Navigator.of(ctx).popUntil((r) => r.isFirst);
-            _finish(plan, method: 'placement');
+            _applyGoal(g, plan);
+            _finish(method: 'placement', track: plan.trackId);
           },
         ),
       ),
     );
   }
 
-  /// Page names for `onboarding_step`.
-  void _logStep(int i) {
-    final names = _steps(ref.read(appSettingsProvider).isKid);
-    logEvent(ref, AnalyticsEvent.onboardingStep(i < names.length ? names[i] : 'step_$i', i));
-  }
+  void _logStep(int i) => logEvent(ref, AnalyticsEvent.onboardingStep(_steps[i], i));
 
   @override
   void initState() {
@@ -92,8 +165,6 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final kid = ref.watch(appSettingsProvider.select((s) => s.isKid));
-    final pageCount = _steps(kid).length;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -105,6 +176,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   if (_page > 0)
                     IconButton(
                       icon: const Icon(Icons.arrow_back),
+                      tooltip: 'Geri',
                       onPressed: () => _pages.previousPage(
                         duration: const Duration(milliseconds: 280),
                         curve: Curves.easeOut,
@@ -116,7 +188,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: LinearProgressIndicator(
-                        value: (_page + 1) / pageCount,
+                        value: (_page + 1) / _totalSteps,
                         minHeight: Brand.isKid ? 10 : 6,
                         backgroundColor: Brand.line,
                       ),
@@ -135,28 +207,28 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   },
                   children: [
                     const _Welcome(),
-                    const _AudiencePick(),
-                    const _CoursePick(),
-                    _GoalPick(goal: _goal, onChanged: (g) => setState(() => _goal = g)),
-                    if (!kid)
-                      _TargetPick(
-                        goal: _learnGoal,
-                        now: ref.read(clockProvider)(),
-                        onChanged: (g) => setState(() {
-                          if (g.kind != _learnGoal?.kind) _reason = g.kind.reason;
-                          _learnGoal = g;
-                        }),
-                      ),
-                    _LevelStep(reason: _reason, onChanged: (r) => setState(() => _reason = r)),
+                    _GoalStep(goal: _goal, onChanged: _pick),
                   ],
                 ),
               ),
-              if (_page < pageCount - 1)
-                FilledButton(onPressed: _next, child: const Text('Devam'))
+              if (_page == 0)
+                FilledButton(
+                  key: const ValueKey('onboarding-next'),
+                  onPressed: _next,
+                  child: const Text('Başla'),
+                )
               else ...[
-                FilledButton(onPressed: _startTest, child: const Text('Seviyeni ölç')),
-                const SizedBox(height: 8),
-                OutlinedButton(onPressed: _fromScratch, child: const Text('Sıfırdan başla')),
+                FilledButton(
+                  key: const ValueKey('onboarding-start'),
+                  onPressed: _goal == null ? null : _startFirstLesson,
+                  child: const Text('İlk derse başla'),
+                ),
+                const SizedBox(height: 4),
+                TextButton(
+                  key: const ValueKey('onboarding-placement'),
+                  onPressed: _startTest,
+                  child: const Text('İngilizcem var, seviyemi ölçeyim'),
+                ),
               ],
               if (_page == 0) const _SignInLink(),
             ],
@@ -255,207 +327,52 @@ class _Welcome extends StatelessWidget {
   }
 }
 
-class _CoursePick extends StatelessWidget {
-  const _CoursePick();
+/// The one goal question. A choice applies its look at once.
+class _GoalStep extends StatelessWidget {
+  const _GoalStep({required this.goal, required this.onChanged});
+  final StartGoal? goal;
+  final ValueChanged<StartGoal> onChanged;
 
   @override
   Widget build(BuildContext context) {
     final t = Theme.of(context).textTheme;
     return ListView(
-      padding: const EdgeInsets.only(top: 32),
+      key: const ValueKey('onboarding-goal'),
+      padding: const EdgeInsets.only(top: 24),
       children: [
-        Text('Ne öğrenmek istiyorsun?', style: t.headlineSmall),
-        const SizedBox(height: 20),
-        TapCard(
-          selected: true,
-          child: ListTile(
-            leading: const FlagIcon('assets/flags/gb.png', width: 36),
-            title: Text('İngilizce', style: TextStyle(fontWeight: FontWeight.w800)),
-            subtitle: Text('Türkçe konuşanlar için'),
-            trailing: Icon(Icons.check_circle, color: Brand.primary),
-          ),
-        ),
-        const SizedBox(height: 12),
-        for (final (flag, name) in const [
-          ('assets/flags/es.png', 'İspanyolca'),
-          ('assets/flags/fr.png', 'Fransızca'),
-        ])
-          Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: Opacity(
-              opacity: 0.45,
-              child: TapCard(
-                child: ListTile(
-                  leading: FlagIcon(flag, width: 36),
-                  title: Text(name, style: const TextStyle(fontWeight: FontWeight.w800)),
-                  subtitle: const Text('Yakında'),
-                ),
-              ),
-            ),
-          ),
-      ],
-    );
-  }
-}
-
-class _GoalPick extends StatelessWidget {
-  const _GoalPick({required this.goal, required this.onChanged});
-  final int goal;
-  final ValueChanged<int> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = Theme.of(context).textTheme;
-    return ListView(
-      padding: const EdgeInsets.only(top: 32),
-      children: [
-        const Center(child: Mascot(mood: Mood.joy, size: 100, decorative: true)),
-        Text('Günlük hedefin ne olsun?', style: t.headlineSmall),
+        Text('Ne için İngilizce?', style: t.headlineSmall),
         const SizedBox(height: 6),
         Text(
-          'İstediğin zaman profilden değiştirebilirsin.',
+          "Birini seç, hemen 2–3 dakikalık ilk dersine başla. Gerisini sonra Profil'den "
+          'değiştirebilirsin.',
           style: t.bodyMedium?.copyWith(color: Brand.muted),
         ),
-        const SizedBox(height: 20),
-        for (final (xp, name, hint) in dailyGoals)
+        const SizedBox(height: 16),
+        for (final g in StartGoal.values)
           Padding(
-            padding: const EdgeInsets.only(bottom: 12),
+            padding: const EdgeInsets.only(bottom: 10),
             child: TapCard(
-              selected: goal == xp,
-              onTap: () => onChanged(xp),
+              key: ValueKey('start-goal-${g.name}'),
+              selected: goal == g,
+              onTap: () => onChanged(g),
               child: Row(
                 children: [
+                  Text(g.emoji, style: const TextStyle(fontSize: 26)),
+                  const SizedBox(width: 14),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(name, style: t.titleMedium),
-                        Text(hint, style: t.bodySmall?.copyWith(color: Brand.muted)),
+                        Text(g.title, style: t.titleMedium),
+                        Text(g.subtitle, style: t.bodySmall?.copyWith(color: Brand.muted)),
                       ],
                     ),
                   ),
-                  Text('$xp XP / gün', style: t.titleSmall?.copyWith(color: Brand.muted)),
+                  if (goal == g) Icon(Icons.check_circle, color: Brand.primary),
                 ],
               ),
             ),
           ),
-      ],
-    );
-  }
-}
-
-/// "Hedefin ne?" (adults only): drives the home goal card, the paywall copy
-/// and the exam countdown plan. Optional; changeable in Profil.
-class _TargetPick extends StatelessWidget {
-  const _TargetPick({required this.goal, required this.now, required this.onChanged});
-  final LearnGoal? goal;
-  final DateTime now;
-  final ValueChanged<LearnGoal> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = Theme.of(context).textTheme;
-    return ListView(
-      key: const ValueKey('onboarding-target'),
-      padding: const EdgeInsets.only(top: 32),
-      children: [
-        Text('Hedefin ne?', style: t.headlineSmall),
-        const SizedBox(height: 6),
-        Text(
-          'Planını ve önerilerini buna göre kurarız. İstediğin zaman profilden değiştirebilirsin.',
-          style: t.bodyMedium?.copyWith(color: Brand.muted),
-        ),
-        const SizedBox(height: 20),
-        GoalPicker(goal: goal, now: now, onChanged: onChanged),
-      ],
-    );
-  }
-}
-
-/// Optional placement step: why the user learns, then test or skip.
-class _LevelStep extends StatelessWidget {
-  const _LevelStep({required this.reason, required this.onChanged});
-  final LearnReason reason;
-  final ValueChanged<LearnReason> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = Theme.of(context).textTheme;
-    return ListView(
-      padding: const EdgeInsets.only(top: 24),
-      children: [
-        Text('Neden İngilizce öğreniyorsun?', style: t.headlineSmall),
-        const SizedBox(height: 6),
-        Text(
-          'Biraz biliyorsan kısa bir seviye testiyle bildiğin yerleri atlayabilirsin. '
-          "İstersen sıfırdan başla; testi sonra Profil'den de çözebilirsin.",
-          style: t.bodyMedium?.copyWith(color: Brand.muted),
-        ),
-        const SizedBox(height: 16),
-        ReasonPicker(selected: reason, onChanged: onChanged),
-      ],
-    );
-  }
-}
-
-/// "Kimin için?": picks the look. Applies at once so the rest of onboarding
-/// already previews it; changeable later in Profil > Görünüm.
-class _AudiencePick extends ConsumerWidget {
-  const _AudiencePick();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final t = Theme.of(context).textTheme;
-    final mode = ref.watch(appSettingsProvider.select((s) => s.mode));
-    Widget option(AppMode m, IconData icon, String emoji, String title, String hint) => Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: TapCard(
-        selected: mode == m,
-        onTap: () => ref.read(appSettingsProvider.notifier).setMode(m),
-        child: Row(
-          children: [
-            IconBadge(icon: icon, emoji: emoji, size: 44),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: t.titleMedium),
-                  const SizedBox(height: 2),
-                  Text(hint, style: t.bodySmall),
-                ],
-              ),
-            ),
-            if (mode == m) Icon(Icons.check_circle, color: Brand.primary),
-          ],
-        ),
-      ),
-    );
-    return ListView(
-      padding: const EdgeInsets.only(top: 32),
-      children: [
-        Text('Kimin için?', style: t.headlineSmall),
-        const SizedBox(height: 6),
-        Text(
-          'Görünümü buna göre ayarlarız. İstediğin zaman profilden değiştirebilirsin.',
-          style: t.bodyMedium?.copyWith(color: Brand.muted),
-        ),
-        const SizedBox(height: 20),
-        option(
-          AppMode.adult,
-          Icons.school_outlined,
-          '🎓',
-          'Kendim için',
-          'Lise, üniversite, iş ve sınavlar. Sade ve odaklı görünüm.',
-        ),
-        option(
-          AppMode.kid,
-          Icons.family_restroom_rounded,
-          '👪',
-          'Ebeveyn olarak, çocuğumla birlikte',
-          'Ebeveyn hesabıyla, ebeveyn gözetiminde: ortaokul ve LGS konuları, maskotlu renkli görünüm. '
-              'Arkadaş ekleme ve yapay zekâ özellikleri kapalı.',
-        ),
       ],
     );
   }

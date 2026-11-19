@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/app_settings.dart';
 import '../data/rehearsal.dart';
-import 'conversation.dart' show CallableConversationService, CallableInvoker;
+import 'conversation.dart' show CallableConversationService, CallableInvoker, aiGuardMessage, aiInvoker;
 import 'firebase/firebase_providers.dart';
+import 'growth/referral.dart' show installIdProvider;
 
 class RehearsalException implements Exception {
   const RehearsalException(this.message, {this.premiumRequired = false});
@@ -53,8 +54,8 @@ abstract class RehearsalService {
 class CallableRehearsalService implements RehearsalService {
   CallableRehearsalService(this._invoke);
 
-  CallableRehearsalService.firebase(FirebaseFunctions functions)
-    : this((name, data) async => (await functions.httpsCallable(name).call<Object?>(data)).data);
+  CallableRehearsalService.firebase(FirebaseFunctions functions, {String? installId})
+    : this(aiInvoker(functions, installId: installId));
 
   final CallableInvoker _invoke;
 
@@ -83,6 +84,7 @@ class CallableRehearsalService implements RehearsalService {
   }
 
   static String messageForCode(String code, {String? reason}) => switch (code) {
+    _ when aiGuardMessage(reason) != null => aiGuardMessage(reason)!,
     'permission-denied' => 'Ücretsiz ilk provanı kullandın. Yeni provalar Premium\'a açık.',
     'failed-precondition' => 'Cevabın çok kısa. Biraz daha anlat: en az birkaç cümle.',
     'resource-exhausted' => 'Bugünlük prova analizi hakkın doldu. Yarın tekrar dene.',
@@ -334,5 +336,5 @@ final rehearsalServiceProvider = Provider<RehearsalService>((ref) {
   if (ref.watch(appSettingsProvider.select((s) => s.isKid))) return DemoRehearsalService();
   final functions = ref.watch(functionsProvider);
   if (functions == null || ref.watch(currentUidProvider) == null) return DemoRehearsalService();
-  return CallableRehearsalService.firebase(functions);
+  return CallableRehearsalService.firebase(functions, installId: ref.read(installIdProvider));
 });

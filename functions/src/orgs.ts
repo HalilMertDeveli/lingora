@@ -28,6 +28,7 @@ import {
 } from "firebase-admin/firestore";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { inTx, parkedGrant, recomputedEntitlement } from "./entitlement.js";
 import { speakingFor } from "./speaking_stats.js";
 
 export type OrgType = "kurum" | "okul";
@@ -174,10 +175,13 @@ function grantOrgPremium(
     const exp = current.get("expiresAt") as Timestamp | undefined;
     if (exp && exp.toMillis() >= planExpiresAt.toMillis()) return;
   }
+  // A shorter running grant (e.g. a monthly subscription) is parked, so losing the seat gives it back.
+  const parked = parkedGrant(current.data(), "org", new Date());
   // Merge, never a full set: other writers' fields (exam `packs`, `family`) must survive.
   tx.set(
     ref,
     {
+      ...(parked ? { previous: parked } : {}),
       active: true,
       premium: true,
       status: "active",
@@ -192,19 +196,24 @@ function grantOrgPremium(
   );
 }
 
-function revokeOrgPremium(tx: Transaction, ref: DocumentReference, current: DocumentSnapshot, orgId: string, now: Date) {
-  if (!current.exists || current.get("source") !== "org" || current.get("orgId") !== orgId) return;
-  tx.set(
-    ref,
-    {
-      active: false,
-      premium: false,
-      status: "expired",
-      expiresAt: Timestamp.fromDate(now),
-      updatedAt: FieldValue.serverTimestamp(),
-    },
-    { merge: true },
-  );
+/**
+ * Reads (inside [tx], before any write) what [uid] keeps after losing the
+ * seat in [orgId]: undefined when the org grant is not the effective one.
+ */
+async function orgFallback(tx: Transaction, db: Firestore, uid: string, current: DocumentSnapshot, orgId: string, now: Date) {
+  if (!current.exists) return undefined;
+  if (current.get("source") === "org" && current.get("orgId") === orgId) {
+    return recomputedEntitlement(db, uid, now, inTx(tx), current.data(), "org");
+  }
+  // Another source took over and parked the org grant: drop it.
+  if ((current.get("previous") as Rec | undefined)?.source === "org") {
+    return { previous: FieldValue.delete(), updatedAt: FieldValue.serverTimestamp() };
+  }
+  return undefined;
+}
+
+function revokeOrgPremium(tx: Transaction, ref: DocumentReference, fallback: Rec | undefined) {
+  if (fallback) tx.set(ref, fallback, { merge: true });
 }
 
 // ----------------------------------------------------------------- orgs ----
@@ -455,10 +464,11 @@ async function removeFromOrg(db: Firestore, orgId: string, uid: string, now: Dat
     const entRef = db.doc(`entitlements/${uid}`);
     const [member, ent] = await Promise.all([tx.get(memberRef), tx.get(entRef)]);
     if (!member.exists) throw new HttpsError("not-found", "not_a_member");
+    const fallback = await orgFallback(tx, db, uid, ent, orgId, now);
     tx.delete(memberRef);
     tx.delete(db.doc(`memberships/${uid}`));
     if (member.get("seat") === true) tx.update(db.doc(`orgs/${orgId}`), { seatsUsed: FieldValue.increment(-1) });
-    revokeOrgPremium(tx, entRef, ent, orgId, now);
+    revokeOrgPremium(tx, entRef, fallback);
   });
 }
 
@@ -504,13 +514,14 @@ export async function setMemberRole(db: Firestore, caller: Caller, data: unknown
     if (old === "admin" && admins.size < 2) throw new HttpsError("failed-precondition", "last_admin");
     const hadSeat = member.get("seat") === true;
     const seat = usesSeat(role);
+    const fallback = !seat && hadSeat ? await orgFallback(tx, db, uid, ent, orgId, now) : undefined;
     if (seat && !hadSeat) {
       if ((org.get("seatsUsed") ?? 0) >= org.get("seats")) throw new HttpsError("resource-exhausted", "no_seats");
       tx.update(orgRef, { seatsUsed: FieldValue.increment(1) });
       grantOrgPremium(tx, entRef, ent, orgId, org.get("planExpiresAt"));
     } else if (!seat && hadSeat) {
       tx.update(orgRef, { seatsUsed: FieldValue.increment(-1) });
-      revokeOrgPremium(tx, entRef, ent, orgId, now);
+      revokeOrgPremium(tx, entRef, fallback);
     }
     tx.update(memberRef, { role, seat });
     tx.update(db.doc(`memberships/${uid}`), { role });

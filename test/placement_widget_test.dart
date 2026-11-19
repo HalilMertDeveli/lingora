@@ -112,23 +112,23 @@ Future<Progress> _saved() async {
   return Progress.fromJson(jsonDecode(raw) as Map<String, dynamic>);
 }
 
-Future<void> _toLevelStep(WidgetTester tester) async {
-  // welcome, audience, course, daily goal, "Hedefin ne?" (adults).
-  for (var i = 0; i < 5; i++) {
-    await tester.tap(find.text('Devam'));
-    await tester.pumpAndSettle();
-  }
-  expect(find.text('Neden İngilizce öğreniyorsun?'), findsOneWidget);
-  expect(find.text('Sıfırdan başla'), findsOneWidget);
+/// Welcome, then the one goal page; the level test is its secondary link.
+Future<void> _toGoalStep(WidgetTester tester) async {
+  await tester.tap(find.text('Başla'));
+  await tester.pumpAndSettle();
+  expect(find.text('Ne için İngilizce?'), findsOneWidget);
+  expect(find.text(_measure), findsOneWidget);
 }
+
+const _measure = 'İngilizcem var, seviyemi ölçeyim';
 
 void main() {
   testWidgets('onboarding placement test skips known parts and picks the track', (tester) async {
     await _pump(tester, {});
-    await _toLevelStep(tester);
-    await tester.tap(find.text('Akademik / YDS'));
+    await _toGoalStep(tester);
+    await tester.tap(find.byKey(const ValueKey('start-goal-exam')));
     await tester.pump();
-    await tester.tap(find.text('Seviyeni ölç'));
+    await tester.tap(find.text(_measure));
     await tester.pumpAndSettle();
 
     final asked = await _answerAll(tester, right: true);
@@ -141,6 +141,7 @@ void main() {
     final p = await _saved();
     expect(p.onboarded, isTrue);
     expect(p.trackId, 'yds');
+    expect(p.learnGoal?.kind, GoalKind.exam);
     expect(p.isDone('u12c'), isTrue);
     expect(p.isDone('gl_past_modals'), isTrue);
     expect(p.totalXp, 0);
@@ -149,8 +150,8 @@ void main() {
 
   testWidgets('a beginner is told it is fine to start from scratch', (tester) async {
     await _pump(tester, {});
-    await _toLevelStep(tester);
-    await tester.tap(find.text('Seviyeni ölç'));
+    await _toGoalStep(tester);
+    await tester.tap(find.text(_measure));
     await tester.pumpAndSettle();
     await _answerAll(tester, right: false);
     expect(find.text('Sıfırdan başlıyoruz'), findsOneWidget);
@@ -163,22 +164,19 @@ void main() {
     expect(p.completed, isEmpty);
   });
 
-  testWidgets('"Hedefin ne?" (adults) is saved with the progress', (tester) async {
+  testWidgets('the onboarding goal (adults) is saved with the progress', (tester) async {
     await _pump(tester, {});
-    for (var i = 0; i < 4; i++) {
-      await tester.tap(find.text('Devam'));
-      await tester.pumpAndSettle();
-    }
-    expect(find.text('Hedefin ne?'), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('goal-exam')));
+    await _toGoalStep(tester);
+    await tester.tap(find.byKey(const ValueKey('start-goal-exam')));
     await tester.pumpAndSettle();
-    expect(find.byKey(const ValueKey('goal-exam-date')), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('goal-interview')));
+    await tester.tap(find.byKey(const ValueKey('start-goal-interview')));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Devam'));
+    await tester.tap(find.byKey(const ValueKey('onboarding-start')));
     await tester.pumpAndSettle();
-    expect(find.text('Neden İngilizce öğreniyorsun?'), findsOneWidget);
-    await tester.tap(find.text('Sıfırdan başla'));
+    // The first lesson opens at once; leaving it ends onboarding too.
+    await tester.tap(find.byKey(const Key('session-close')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Çık'));
     await tester.pumpAndSettle();
     final p = await _saved();
     expect(p.learnGoal?.kind, GoalKind.interview);
@@ -187,12 +185,12 @@ void main() {
 
   testWidgets('closing the test returns to onboarding', (tester) async {
     await _pump(tester, {});
-    await _toLevelStep(tester);
-    await tester.tap(find.text('Seviyeni ölç'));
+    await _toGoalStep(tester);
+    await tester.tap(find.text(_measure));
     await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Testi kapat'));
     await tester.pumpAndSettle();
-    expect(find.text('Neden İngilizce öğreniyorsun?'), findsOneWidget);
+    expect(find.text('Ne için İngilizce?'), findsOneWidget);
   });
 
   testWidgets('the test can be retaken from the profile', (tester) async {

@@ -30,6 +30,8 @@ import 'quests_screen.dart';
 import 'session_resume.dart';
 import 'vocab/dev_scenario_screen.dart';
 import 'vocab/vocab_home_screen.dart';
+import 'daily_reading_screen.dart';
+import 'exam_season_card.dart';
 
 export '../nav/top_bar.dart' show StatsBar, trackIcon;
 
@@ -399,6 +401,9 @@ class _LearnRoot extends ConsumerWidget {
         const OrgAssignmentsCard(),
         // "Hedefin ne?": exam countdown or interview rehearsal entry.
         const GoalHomeCard(),
+        // Exam season ("Sınava kadar Premium") and Günün okuması: shrink to nothing when idle.
+        const ExamSeasonCard(),
+        const DailyReadingCard(),
         Expanded(
           child: switch (track.kind) {
             TrackKind.exam => switch (ref.watch(hasExamPathProvider(track.id))) {

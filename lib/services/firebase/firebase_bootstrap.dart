@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -33,12 +34,34 @@ Future<bool> initFirebase(FirebaseMode mode) async {
       await _useEmulators(_app!);
     } else {
       await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+      await _activateAppCheck();
     }
     return true;
   } catch (e, st) {
     debugPrint('Firebase disabled, staying offline: $e');
     debugPrintStack(stackTrace: st, maxFrames: 5);
     return false;
+  }
+}
+
+/// Firebase App Check: the AI Cloud Functions only answer the genuine app
+/// (functions/src/ai_guard.ts, docs/ai-maliyet-korumasi.md). Release builds
+/// use Play Integrity; debug and profile builds use the debug provider (its
+/// token is printed in logcat once and registered in the Firebase console).
+/// The emulators do not check App Check, so emulator mode skips it.
+Future<void> _activateAppCheck() async {
+  if (kIsWeb) return;
+  final mobile =
+      defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS;
+  if (!mobile) return;
+  try {
+    await FirebaseAppCheck.instance.activate(
+      providerAndroid: kReleaseMode ? const AndroidPlayIntegrityProvider() : const AndroidDebugProvider(),
+      providerApple: kReleaseMode ? const AppleDeviceCheckProvider() : const AppleDebugProvider(),
+    );
+  } catch (e) {
+    // Without a token the AI features answer "app_check_required"; the rest works.
+    debugPrint('App Check not active: $e');
   }
 }
 

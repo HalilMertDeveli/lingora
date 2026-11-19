@@ -12,7 +12,20 @@ class ServerEntitlement {
     this.source,
     this.familyOwnerUid,
     this.familyRole,
-  });
+    bool? packsKnown,
+    this.packsRevoked = const {},
+  }) : _packsKnown = packsKnown; // ignore: prefer_initializing_formals
+
+  final bool? _packsKnown;
+
+  /// The server sent its full list of packs (a `packs` map, even an empty
+  /// one): then [packs] is authoritative and a pack missing from it is not
+  /// owned (e.g. refunded). Built by hand, only a non-empty list counts.
+  bool get packsKnown => _packsKnown ?? packs.isNotEmpty;
+
+  /// Packs the server explicitly marked as not owned (`false`: refunded or
+  /// revoked).
+  final Set<String> packsRevoked;
 
   final bool premium;
 
@@ -52,6 +65,14 @@ class ServerEntitlement {
         final Map<Object?, Object?> m => {
           for (final e in m.entries)
             if (e.value == true) '${e.key}',
+        },
+        _ => const {},
+      },
+      packsKnown: j['packs'] is Map,
+      packsRevoked: switch (j['packs']) {
+        final Map<Object?, Object?> m => {
+          for (final e in m.entries)
+            if (e.value == false) '${e.key}',
         },
         _ => const {},
       },

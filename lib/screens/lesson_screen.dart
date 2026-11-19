@@ -44,6 +44,7 @@ import '../nav/flow.dart';
 import 'lesson_result_screen.dart';
 import 'mistake_nudge_screen.dart';
 import 'paywall_screen.dart';
+import 'report_question_sheet.dart';
 
 const baseLessonXp = 10;
 const perfectBonusXp = 5;
@@ -601,6 +602,18 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     };
   }
 
+  /// What a "Bildir" report of the current question carries.
+  ReportTarget _reportTarget() {
+    final item = _current;
+    return ReportTarget(
+      questionId: item.key,
+      lessonId: nodeOfKey(item.key),
+      question: questionTextOf(item.ex),
+      answer: _answerText,
+      correct: _lastCorrect,
+    );
+  }
+
   /// The right answer after a mistake; exam questions name the letter too.
   String _shownAnswer(Exercise ex) {
     final i = ex.answerIndex;
@@ -682,7 +695,14 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                   child: SingleChildScrollView(
                     key: ValueKey(_pos),
                     padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
-                    child: Shake(trigger: _shake, child: _exercise()),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Shake(trigger: _shake, child: _exercise()),
+                        // "Bildir": on the question and, after checking, on its explanation.
+                        ReportQuestionButton(target: _reportTarget),
+                      ],
+                    ),
                   ),
                 ),
               ),

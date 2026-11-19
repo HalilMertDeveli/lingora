@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/app_resume.dart';
+import 'core/app_update.dart';
 import 'core/frame_stats.dart';
 import 'core/legacy_emoji.dart';
 import 'core/startup_trace.dart';
@@ -28,6 +29,7 @@ import 'services/billing/premium_perks.dart';
 import 'services/friends.dart';
 import 'services/growth/analytics.dart';
 import 'services/growth/crash_reporting.dart';
+import 'services/growth/funnel_stats.dart';
 import 'services/growth/growth.dart';
 import 'services/growth/review_prompt.dart';
 import 'services/league_remote.dart';
@@ -105,6 +107,8 @@ class LingoraApp extends ConsumerWidget {
     ref.listen(growthSignalsProvider, (_, _) {});
     // Crash reports follow the same consent; the uid is the only identifier.
     ref.listen(crashReportingSyncProvider, (_, _) {});
+    // Owner dashboard funnel counters (consent only, no identifiers).
+    ref.listen(funnelStatsProvider, (_, _) {});
     final settings = ref.watch(appSettingsProvider);
     final brightness = switch (settings.theme) {
       ThemePref.light => Brightness.light,
@@ -138,9 +142,12 @@ class LingoraApp extends ConsumerWidget {
           child: MascotOutfitScope(
             accessory: outfit,
             pofuduk: kidOutfit,
-            child: settings.reduceMotion
-                ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
-                : child!,
+            // "Lütfen güncelle" screen / new-version banner (config/app).
+            child: UpdateGate(
+              child: settings.reduceMotion
+                  ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
+                  : child!,
+            ),
           ),
         ),
       ),

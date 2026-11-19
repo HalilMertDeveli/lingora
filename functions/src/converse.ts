@@ -4,10 +4,11 @@
 // { reply, correction, tip_tr, done, remaining, free }. Premium gets a daily
 // message quota; free users get a small daily taste (FREE_DAILY_MESSAGE_LIMIT).
 import Anthropic from "@anthropic-ai/sdk";
-import { FieldValue, Firestore, Timestamp } from "firebase-admin/firestore";
+import { FieldValue, Firestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { hasPremium } from "./entitlement.js";
 import { SCENARIOS, systemPrompt } from "./scenarios.js";
 import { dayKey } from "./week.js";
 
@@ -15,8 +16,8 @@ import { dayKey } from "./week.js";
 export const MODEL = "claude-sonnet-5-5";
 export const MAX_MESSAGES = 20;
 export const MAX_CHARS = 400;
-/** Learner messages per user per Turkish day. */
-export const DAILY_MESSAGE_LIMIT = 60;
+/** Learner messages per Turkish day with Premium. Hands-free talk has short turns; the real Premium limit is the talk fair-use time (talk.ts). */
+export const DAILY_MESSAGE_LIMIT = 300;
 /** Learner messages per Turkish day without Premium (the "free taste"). */
 export const FREE_DAILY_MESSAGE_LIMIT = 3;
 
@@ -77,20 +78,15 @@ export function parseMessages(raw: unknown): Message[] | null {
   return out;
 }
 
-/** True if entitlements/{uid} grants Premium at [now]. */
-export async function hasPremium(db: Firestore, uid: string, now: Date): Promise<boolean> {
-  const e = (await db.doc(`entitlements/${uid}`).get()).data();
-  const expires = e?.expiresAt as Timestamp | undefined;
-  const on = e?.active === true || e?.premium === true;
-  return on && !!expires && expires.toMillis() > now.getTime();
-}
+/** Premium from any source (store, family, org seat, kurum licence, invites): entitlement.ts. */
+export { hasPremium };
 
 /**
  * Counts one message against today's quota ([limit] per Turkish day); returns
  * how many are left. Free and Premium share the counter, so buying Premium
  * mid-day keeps the messages already used.
  */
-async function takeQuota(db: Firestore, uid: string, now: Date, limit: number, free: boolean): Promise<number> {
+export async function takeQuota(db: Firestore, uid: string, now: Date, limit: number, free: boolean): Promise<number> {
   const ref = db.doc(`usage/${uid}`);
   const day = dayKey(now);
   return db.runTransaction(async (tx) => {
@@ -102,7 +98,7 @@ async function takeQuota(db: Firestore, uid: string, now: Date, limit: number, f
   });
 }
 
-async function refundQuota(db: Firestore, uid: string, now: Date): Promise<void> {
+export async function refundQuota(db: Firestore, uid: string, now: Date): Promise<void> {
   const ref = db.doc(`usage/${uid}`);
   await db.runTransaction(async (tx) => {
     const u = (await tx.get(ref)).data();

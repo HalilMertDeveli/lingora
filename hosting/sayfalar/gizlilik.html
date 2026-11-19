@@ -28,7 +28,7 @@
         <li>Hesap açmadan kullanabilirsin; o zaman ilerlemen yalnızca <strong>telefonunda</strong> tutulur.</li>
         <li><strong>Reklam yok.</strong> Reklam kimliği (Advertising ID) kullanmayız, verilerini satmayız.</li>
         <li>Kullanım istatistikleri <strong>yalnızca izin verirsen</strong> toplanır; izni istediğin an geri alırsın.</li>
-        <li>Konuşma tanıma telefonunda yapılır; <strong>ses kaydın sunucumuza gelmez.</strong></li>
+        <li><strong>Ses kaydın Dilmaç sunucularına gelmez.</strong> Konuşma tanımayı telefonunun konuşma tanıma hizmeti (Android'de genellikle Google) yapar; bu hizmet sesi Google sunucularında işleyebilir. Mülakat Provası'nın ses kayıtları yalnızca telefonunda saklanır.</li>
         <li>Rehberin telefonunda kalır; yalnızca sen istersen numaraların tek yönlü özetleri (hash) karşılaştırılır.</li>
         <li>Hesabını uygulamada <span class="yol">Profil &gt; Hesap &gt; Hesabımı sil</span> ile hemen silebilirsin.</li>
       </ul>
@@ -43,7 +43,7 @@
         <li><a href="#paylasim">Kimlerle paylaşıyoruz?</a></li>
         <li><a href="#saklama">Saklama süreleri</a></li>
         <li><a href="#aktarim">Yurt dışına aktarım</a></li>
-        <li><a href="#cocuklar">Çocuklar ve Çocuk modu</a></li>
+        <li><a href="#cocuklar">Çocuklar ve ebeveyn gözetimli mod</a></li>
         <li><a href="#guvenlik">Güvenlik</a></li>
         <li><a href="#haklar">Hakların ve kontrollerin</a></li>
         <li><a href="#degisiklik">Değişiklikler</a></li>
@@ -70,9 +70,19 @@
     <h3>2.2 Mikrofon ve konuşma tanıma</h3>
     <p>Mikrofon yalnızca konuşma alıştırmalarında, Sesli Konuşma Koçu'nda ve Mülakat Provası'nda,
       sen mikrofon düğmesine dokunduğunda açılır. Sesin, telefonundaki konuşma tanıma hizmeti
-      (Android'de genellikle Google) tarafından <strong>telefonunda metne çevrilir</strong>.
-      Dilmaç ses kaydı tutmaz ve sesini sunucularına göndermez. Sesli okuma (metinden sese) da
-      telefonunda yapılır.</p>
+      (Android'de genellikle Google) tarafından <strong>metne çevrilir</strong>. Telefonunda
+      çevrimdışı dil paketi yoksa bu hizmet sesi işlemek için <strong>Google'ın sunucularına
+      gönderebilir</strong>; bu işlem Dilmaç'ın değil Google'ın kontrolündedir ve Google'ın kendi
+      gizlilik koşullarına tabidir. Dilmaç sesini kendi sunucularına göndermez.</p>
+    <p><strong>Mülakat Provası'nda</strong> cevaplarını dinleyip ilk ve son provanı
+      karşılaştırabilmen için ses kayıtların <strong>yalnızca telefonunda</strong> (uygulamanın
+      kendi alanında) dosya olarak saklanır; sunucuya yüklenmez. Bu kayıtlar hesabından çıkınca,
+      telefonda başka bir hesap açılınca ya da hesabını silince telefondan da silinir;
+      uygulamayı kaldırınca da silinir.</p>
+    <p>Sesli okuma (metinden sese) çoğunlukla telefonunun ses motoruyla yapılır. Yapay zekâyla
+      sesli konuşmada ise yapay zekânın İngilizce cevap <strong>metni</strong>, seslendirilmek
+      üzere sunucumuz üzerinden Google Cloud Text-to-Speech hizmetine gönderilir; senin sesin
+      gönderilmez.</p>
     <p>Sesli Konuşma Koçu ve Mülakat Provası'nda ise konuşmanın <strong>metne çevrilmiş hâli</strong>
       (ses değil) değerlendirme için sunucumuza ve yapay zekâ sağlayıcımıza gönderilir; ayrıntılar
       2.6'da. Mikrofon iznini Android ayarlarından istediğin zaman geri alabilirsin; o zaman yazarak
@@ -217,7 +227,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Analytics, Crashlytics, Remote Config)</td>
+            <td>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Analytics, Crashlytics, Remote Config, Cloud Text-to-Speech)</td>
             <td>Hesap, yedekleme, profil, sunucu, izinli istatistik</td>
             <td>AB (europe-west1) ve ABD</td>
           </tr>
@@ -239,7 +249,9 @@
 
     <h2 id="saklama">5. Saklama süreleri</h2>
     <ul>
-      <li><strong>Telefonundaki veriler:</strong> uygulamayı kaldırana ya da Profil'den sıfırlayana kadar.</li>
+      <li><strong>Telefonundaki veriler:</strong> uygulamayı kaldırana ya da Profil'den sıfırlayana kadar.
+        Mülakat Provası metinleri ve ses kayıtları ayrıca hesaptan çıkınca, başka hesap açılınca ve
+        hesap silinince telefondan silinir.</li>
       <li><strong>Hesap, profil, fotoğraf, bulut yedeği, arkadaşlıklar, lig ve prova geçmişi:</strong> hesabını
         silene kadar. Uygulama içinden silmede bu veriler hemen silinir; e-postayla gelen silme
         isteklerini en geç 30 gün içinde yerine getiririz. Ayrıntılar:
