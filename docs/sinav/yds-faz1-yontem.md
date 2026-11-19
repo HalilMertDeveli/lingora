@@ -155,7 +155,7 @@ Dosyayı `pubspec.yaml`'a siz ekleyin.
 
 **Erişim:** Profil → "Nasıl öğretiyoruz?". Ayrıca her özelliğin yanında küçük bir "?" bulunur ve ilgili karta götürür.
 
-**Kartlar:** Her kart 3 satırdan oluşur: **Ne?** / **Neden?** (tek cümlelik bulgu + kaynak adı) / **Dilmaç'ta nerede?**
+**Kartlar:** Her kart 3 satırdan oluşur: **Ne?** / **Neden?** (tek cümlelik bulgu + kaynak adı) / **Çenebaz'da nerede?**
 
 1. **Aralıklı tekrar:** Unutmadan hemen önce tekrar etmek, aynı süreyi tek seferde harcamaktan daha kalıcıdır. Kaynak: Cepeda vd. 2008; Dunlosky vd. 2013. Yeri: Tekrar kartları, hata defteri.
 2. **Kendini sınama:** Hatırlamaya çalışmak, yeniden okumaktan daha iyi öğretir. Kaynak: Roediger & Karpicke 2006; Adesope vd. 2017. Yeri: Dersler, ön test, kartlar.

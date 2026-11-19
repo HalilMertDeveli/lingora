@@ -6,7 +6,7 @@ import '../theme.dart';
 
 /// KVKK-friendly explanation shown before asking (and in Profil).
 const analyticsConsentText =
-    'Dilmaç\'ı geliştirmek için hangi ekranların kullanıldığını ve nerede zorlanıldığını '
+    'Çenebaz\'ı geliştirmek için hangi ekranların kullanıldığını ve nerede zorlanıldığını '
     'anonim olarak ölçmek istiyoruz (ör. "ders bitti", "okuma açıldı"). '
     'Uygulama çökerse ya da bir hata olursa, hatayı düzeltebilmek için hata kaydı (cihaz modeli, '
     'Android sürümü, hatanın yeri) ve giriş yaptıysan hesap kimliğin de gönderilir. '

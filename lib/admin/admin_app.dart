@@ -73,7 +73,7 @@ class AdminApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-    title: 'Dilmaç Kurumsal',
+    title: 'Çenebaz Kurumsal',
     debugShowCheckedModeBanner: false,
     theme: _panelTheme(),
     locale: const Locale('tr'),
@@ -242,7 +242,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
   );
 }
 
-/// Dilmaç staff see every org; an org admin or teacher goes straight to
+/// Çenebaz staff see every org; an org admin or teacher goes straight to
 /// their org; a fresh account enters its admin code first.
 class OrgPickerPage extends ConsumerWidget {
   const OrgPickerPage({super.key});
@@ -324,7 +324,7 @@ class _JoinAsAdminPageState extends ConsumerState<JoinAsAdminPage> {
         const BrandTitle(),
         const SizedBox(height: 16),
         const Text(
-          'Bu hesap henüz bir kuruma bağlı değil. Dilmaç ekibinin size verdiği yönetici kodunu '
+          'Bu hesap henüz bir kuruma bağlı değil. Çenebaz ekibinin size verdiği yönetici kodunu '
           '(ya da kurumunuzun öğretmen kodunu) girin.',
           textAlign: TextAlign.center,
         ),
@@ -355,7 +355,7 @@ class _JoinAsAdminPageState extends ConsumerState<JoinAsAdminPage> {
   );
 }
 
-/// Dilmaç staff: all orgs, create one, change seats or plan end.
+/// Çenebaz staff: all orgs, create one, change seats or plan end.
 class StaffOrgsPage extends ConsumerWidget {
   const StaffOrgsPage({super.key, required this.orgs});
   final List<OrgSummary> orgs;
@@ -413,7 +413,7 @@ class StaffOrgsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
     appBar: AppBar(
-      title: const Text('Dilmaç Kurumsal · Kurumlar'),
+      title: const Text('Çenebaz Kurumsal · Kurumlar'),
       actions: [
         TextButton.icon(
           key: const Key('staff-leads'),

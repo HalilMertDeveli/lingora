@@ -1,8 +1,10 @@
 <div align="center">
 
-# Dilmaç
+# Çenebaz
 
-### Türkler için, Türkçe düşünerek İngilizce
+### İngilizceyi konuşarak öğren
+
+Türkler için, Türkçe düşünerek İngilizce.
 
 **Can yok · ceza yok · reklam yok.** Her yanlışın arkasındaki Türkçe alışkanlığı gösteren, A1'den C1'e kadar giden
 bir öğrenme yolu. Sıfırdan başlayan biri için YDS/YÖKDİL'e 52 haftalık bir program ve LGS hazırlığı da içinde.
@@ -23,7 +25,7 @@ bir öğrenme yolu. Sıfırdan başlayan biri için YDS/YÖKDİL'e 52 haftalık 
 
 ## İçindekiler
 
-1. [Dilmaç nedir, neden var?](#1-dilbaz-nedir-neden-var)
+1. [Çenebaz nedir, neden var?](#1-çenebaz-nedir-neden-var)
 2. [Rakamlarla](#2-rakamlarla)
 3. [Ekranlar](#3-ekranlar)
 4. [Öğrenme mantığı](#4-öğrenme-mantığı)
@@ -40,9 +42,9 @@ bir öğrenme yolu. Sıfırdan başlayan biri için YDS/YÖKDİL'e 52 haftalık 
 
 ---
 
-## 1. Dilmaç nedir, neden var?
+## 1. Çenebaz nedir, neden var?
 
-Dilmaç ("dili güzel, lafı akıcı"), Türkçe konuşanlar için yazılmış bir İngilizce öğrenme uygulamasıdır. Flutter ile
+Çenebaz ("konuşmayı seven, çenesi düşük"), Türkçe konuşanlar için yazılmış bir İngilizce öğrenme uygulamasıdır. Flutter ile
 yazıldı; Android, iOS ve web'de çalışır.
 
 Yaygın dil uygulamaları bütün dünyaya aynı dersi verir. Türk öğrencinin hataları ise kendine özgüdür: Türkçe yapıdan
@@ -55,7 +57,7 @@ gelen birkaç kalıp hata defalarca yapılır. Örnekler:
 | "Hatayı çözmek" | *solve the bug* | fix the bug |
 | "Ben ... yaşındayım" | *I have 20 years* | I am 20 |
 
-Dilmaç bunun üzerine kurulu:
+Çenebaz bunun üzerine kurulu:
 
 - **Türk hata dedektörü:** 106 kural, yazdığın cümledeki Türkçe kaynaklı hatayı yakalar ve neden yanlış olduğunu
   Türkçe açıklar.
@@ -475,7 +477,7 @@ Proje: `dilbaz-3392e`. Cloud Functions TypeScript ile yazıldı, `functions/` kl
 | `assessWriting` | Yazma görevini ölçütlerle değerlendirir (Premium, günde 20, ölçütler sunucuda) |
 | `verifyPurchase` | Google Play satın almasını doğrular, hakları (`entitlements`) yazar |
 | `createFamilyInvite`, `redeemFamilyCode`, `getFamily`... | Aile planı (koltuklar, davet kodu) |
-| `orgs_api` | Dilmaç Kurumsal: kurum, koltuk, kod, sınıf, ödev |
+| `orgs_api` | Çenebaz Kurumsal: kurum, koltuk, kod, sınıf, ödev |
 | `referral_api` | Davet programı |
 
 - **Firestore koleksiyonları:** `users`, `entitlements`, `leagues`, `leagueState`, `memberships`, `orgs`, `orgCodes`.
@@ -491,10 +493,10 @@ Proje: `dilbaz-3392e`. Cloud Functions TypeScript ile yazıldı, `functions/` kl
 ## 11. Gelir modeli
 
 - **Ücretsiz:** Bütün dersler, sınav yolları, bölüm denemeleri, tekrar kartları ve hata defteri. Reklam yok.
-- **Dilmaç Premium (aylık/yıllık):** yapay zekâ sohbeti, yapay zekâ yazma geri bildirimi, detaylı hata analizi,
+- **Çenebaz Premium (aylık/yıllık):** yapay zekâ sohbeti, yapay zekâ yazma geri bildirimi, detaylı hata analizi,
   sınırsız deneme. (Hesapla ilerleme eşitleme Premium değildir, giriş yapan herkese ücretsizdir.)
 - **Aile planı** ve **sınav paketleri:** YDS paketi 23 tam deneme içerir, LGS paketi de var.
-- **Dilmaç Kurumsal:** okul ve şirketler için koltuk, sınıf ve ödev; web yönetim paneli.
+- **Çenebaz Kurumsal:** okul ve şirketler için koltuk, sınıf ve ödev; web yönetim paneli.
 - **Ayrıntılar:** [docs/gelir-plani.md](docs/gelir-plani.md) · [docs/abonelik.md](docs/abonelik.md) ·
   [docs/kurumsal.md](docs/kurumsal.md)
 
@@ -570,13 +572,15 @@ flutter run --dart-define=LINGORA_FIREBASE=emulator
 <details>
 <summary><b>Teknik kimlikler neden "lingora"?</b></summary>
 
-Uygulamanın adı Dilmaç'tır. Bazı teknik kimlikler eski adla kaldı, çünkü bunları değiştirmek Firebase'i ve
-abonelikleri bozar:
+Uygulamanın adı Çenebaz'dır (önceki adlar: Lingora, Dilbaz, Dilmaç; "Dilmaç" tescilli bir marka olduğu için
+bırakıldı). Bazı teknik kimlikler eski adla kaldı, çünkü bunları değiştirmek Firebase'i ve abonelikleri bozar:
 - Dart paket adı `lingora`
 - `com.lingora.lingora`: Android `applicationId` ve iOS bundle id
 - Play ürün kimlikleri `lingora_premium_*`, `lingora_pack_*`
 - Firestore alan adları ve analitik olay adları
 - GitHub repo adı
+- Firebase projesi `dilbaz-3392e` ve adresleri (`dilbaz-3392e.web.app`)
+- Destek e-postası `dilmac.destek@gmail.com`
 
 </details>
 

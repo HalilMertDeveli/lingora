@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../services/firebase/firebase_providers.dart';
 import '../theme.dart';
 
-/// Panel: the owner's daily/weekly sales and usage counts (Dilmaç staff only).
+/// Panel: the owner's daily/weekly sales and usage counts (Çenebaz staff only).
 ///
 /// Data: `getStats` callable over `stats/daily/days/{yyyy-mm-dd}`
 /// (functions/src/stats.ts). Aggregated counts only, no user data.
@@ -170,7 +170,7 @@ class _StatsPageState extends ConsumerState<StatsPage> {
     final data = ref.watch(statsDataProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dilmaç · Panel'),
+        title: const Text('Çenebaz · Panel'),
         actions: [
           IconButton(
             tooltip: 'Yenile',
@@ -187,7 +187,7 @@ class _StatsPageState extends ConsumerState<StatsPage> {
             children: [
               Text(
                 e is FirebaseFunctionsException && e.code == 'permission-denied'
-                    ? 'Bu sayfayı yalnızca Dilmaç ekibi görebilir.'
+                    ? 'Bu sayfayı yalnızca Çenebaz ekibi görebilir.'
                     : 'İstatistikler yüklenemedi.',
               ),
               const SizedBox(height: 12),

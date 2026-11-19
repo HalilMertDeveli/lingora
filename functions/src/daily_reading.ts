@@ -144,7 +144,7 @@ export function systemPrompt(level: Level, kind: ReadingKind, topic: string): st
     kind === "story"
       ? "a short original story with a clear beginning, middle and end"
       : "a short made-up local news-style article (a light, positive community story)";
-  return `You write daily English reading practice for Turkish learners in the Dilmaç app.
+  return `You write daily English reading practice for Turkish learners in the Çenebaz app.
 
 Write ${form} at CEFR ${level}, ${min}-${max} words, about: ${topic}.
 

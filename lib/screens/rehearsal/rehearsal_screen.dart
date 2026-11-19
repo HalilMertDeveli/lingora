@@ -80,7 +80,7 @@ class RehearsalHomeScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 8),
             const Text(
-              'Kendini ve bir projeni İngilizce anlat: sesli ya da yazarak. Dilmaç nerede takıldığını, '
+              'Kendini ve bir projeni İngilizce anlat: sesli ya da yazarak. Çenebaz nerede takıldığını, '
               'hangi hatayı tekrarladığını gösterir; ertesi günün çalışması senin cevabından çıkar.',
             ),
             const SizedBox(height: 12),
@@ -104,7 +104,7 @@ class RehearsalHomeScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'Ses kaydın yalnızca bu telefonda kalır (hesaptan çıkınca silinir); Dilmaç sunucusuna '
+              'Ses kaydın yalnızca bu telefonda kalır (hesaptan çıkınca silinir); Çenebaz sunucusuna '
               'sadece yazıya dökülmüş metin gider. Konuşmayı telefonunun konuşma tanıma hizmeti '
               '(genellikle Google) yazıya çevirir.',
               style: TextStyle(color: p.muted, fontSize: 12),

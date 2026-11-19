@@ -1,4 +1,4 @@
-// Dilmaç Dünya Ligi: weekly groups of up to 100 signed-in learners from any
+// Çenebaz Dünya Ligi: weekly groups of up to 100 signed-in learners from any
 // country, ten tiers Bronz -> Elmas. lib/data/league.dart has the same tier
 // list and zone rules for the on-device preview.
 //
@@ -27,7 +27,7 @@ const MAX_NAME = 24;
 const MAX_AVATAR = 8;
 /** Thumbnail photo the app sends on join: a small JPEG, base64. */
 export const MAX_PHOTO_BYTES = 8 * 1024;
-const DEFAULT_NAME = "Dilmaç öğrencisi";
+const DEFAULT_NAME = "Çenebaz öğrencisi";
 const DEFAULT_AVATAR = "⭐";
 
 export interface LeagueResult {

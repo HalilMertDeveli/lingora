@@ -238,8 +238,8 @@ test("only known catalog ids are accepted, each in its own slot", async () => {
     showcase({ mascot: "mx_yok" }),
     showcase({ pofuduk: "px_yok" }),
     showcase({ theme: "av_kedi" }), // a known avatar as the theme
-    showcase({ mascot: "px_kep" }), // a Pofuduk outfit on Dilbaz
-    showcase({ pofuduk: "mx_tac" }), // a Dilbaz outfit on Pofuduk
+    showcase({ mascot: "px_kep" }), // a Pofuduk outfit on Çaycı Dayı
+    showcase({ pofuduk: "mx_tac" }), // a Çaycı Dayı outfit on Pofuduk
     showcase({ theme: 42 }),
   ];
   for (const s of bad) {

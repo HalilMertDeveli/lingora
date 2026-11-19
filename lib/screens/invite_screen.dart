@@ -87,7 +87,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
             Text('Birlikte öğrenin, ikiniz de kazanın', style: t.titleLarge, textAlign: TextAlign.center),
             const SizedBox(height: 6),
             Text(
-              'Arkadaşın Dilmaç\'a katılıp kodunu girer ve ilk dersini bitirirse ikiniz de 7 gün Premium kazanırsınız. '
+              'Arkadaşın Çenebaz\'a katılıp kodunu girer ve ilk dersini bitirirse ikiniz de 7 gün Premium kazanırsınız. '
               'Ödeme bilgisi istenmez, süre bitince kendiliğinden ücretsiz sürüme dönülür.',
               style: TextStyle(color: Brand.muted, height: 1.35),
               textAlign: TextAlign.center,
@@ -97,7 +97,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
               const _Box(
                 icon: Icons.cloud_off_rounded,
                 text:
-                    'Davet programı için internet bağlantısı ve bir Dilmaç hesabı gerekir. '
+                    'Davet programı için internet bağlantısı ve bir Çenebaz hesabı gerekir. '
                     'Profil > Hesap bölümünden hesabını bağlayıp tekrar dene.',
               )
             else ...[

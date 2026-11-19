@@ -2,7 +2,7 @@ import '../models/course.dart';
 import 'practice.dart';
 
 /// The first lesson, right after the goal is chosen (~2–3 minutes): a few
-/// greetings, then the moment that makes Dilmaç different: a mistake Turkish
+/// greetings, then the moment that makes Çenebaz different: a mistake Turkish
 /// speakers make ("I am agree") and why it is wrong, in Turkish.
 ///
 /// It lives in code, not in the course files: it is part of the first run,
@@ -16,7 +16,7 @@ const firstLessonTitle = 'İlk ders';
 const firstLessonAgreeWhy =
     'Türkçede "katılıyorum" derken sondaki "-um" ekini İngilizcede "am" ile karşılamak isteriz. '
     'Ama "agree" zaten bir fiil: "katılmak". O yüzden "I agree" yeterli, "I am agree" yanlış. '
-    'Dilmaç bu tür Türkçe düşünmekten gelen hataları yakalar ve böyle açıklar.';
+    'Çenebaz bu tür Türkçe düşünmekten gelen hataları yakalar ve böyle açıklar.';
 
 final List<Exercise> _exercises = [
   const Exercise(

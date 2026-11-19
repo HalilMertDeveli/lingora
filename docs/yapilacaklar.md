@@ -44,8 +44,8 @@ Bir maddeyi bitirdiğinde `[x]` ile işaretle.
 
 ### İş ve marka
 
-- [ ] **"Dilmaç" adını TÜRKPATENT'te ve Play Store'da arat.** Marka başvurusu yapmak isteyebilirsin.
-- [ ] **Dilmaç Kurumsal için şirket ve fatura bilgilerini belirle:** şahıs/şirket, vergi, e-fatura. Ayrıntılar [kurumsal.md](kurumsal.md)'de.
+- [ ] **"Çenebaz" adını TÜRKPATENT'te ve Play Store'da arat.** Marka başvurusu yapmak isteyebilirsin. ("Dilmaç" tescilli bir marka çıktı: TÜRKPATENT 2024/123451, sınıf 9/35/41/42; bu yüzden ad Çenebaz oldu.)
+- [ ] **Çenebaz Kurumsal için şirket ve fatura bilgilerini belirle:** şahıs/şirket, vergi, e-fatura. Ayrıntılar [kurumsal.md](kurumsal.md)'de.
 - [ ] *(İsteğe bağlı)* **iOS:** Apple Developer hesabı (yıllık 99 $) ve derleme için bir Mac gerekir.
 
 ### İçerik incelemesi (senin gözün)

@@ -9,7 +9,7 @@ import 'quests.dart';
 
 /// Short Stoic sayings shown between exercises and on the lesson result
 /// screen. English from public domain translations, Turkish written for
-/// Dilmaç (sources: docs/stoaci-sozler.md).
+/// Çenebaz (sources: docs/stoaci-sozler.md).
 class StoicQuote {
   const StoicQuote({
     required this.id,

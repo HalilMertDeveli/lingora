@@ -1,4 +1,4 @@
-# Dilmaç kapalı test: yönlendirmesiz kullanıcı testi
+# Çenebaz kapalı test: yönlendirmesiz kullanıcı testi
 
 Bu belge kapalı testteki 12 kişilik grup için. Amaç uygulamayı **hiç yardım almadan**
 kullanırken nerede takıldığınızı ve hangi açıklamayı anlamadığınızı görmek. Doğru ya
@@ -7,7 +7,7 @@ da yanlış kullanım yok: takıldığınız her yer bizim hatamız.
 ## Testi yürütecek kişi için (gözlemci)
 
 - Telefonu kullanıcıya verin, uygulamayı **ilk kez** açmasını sağlayın (önceden
-  yüklüyse: Ayarlar > Uygulamalar > Dilmaç > Depolama > Verileri temizle).
+  yüklüyse: Ayarlar > Uygulamalar > Çenebaz > Depolama > Verileri temizle).
 - Görevleri sırayla, aşağıdaki cümlelerle okuyun. **İpucu vermeyin**, düğme
   göstermeyin. Kullanıcı sorarsa: "Sen ne yapardın?" deyin.
 - Kullanıcıdan düşündüklerini **sesli söylemesini** isteyin ("Şimdi şuna
@@ -93,7 +93,7 @@ Aşağıdaki metni test sonrası kullanıcıya WhatsApp / e-posta ile gönderin 
 Google Formu'na kopyalayın.
 
 ```
-Dilmaç kapalı test – geri bildirim
+Çenebaz kapalı test – geri bildirim
 
 Adın (isteğe bağlı):
 Hangisi sana uyuyor?  ( ) Tam başlangıç  ( ) YDS/YÖKDİL adayı  ( ) LGS öğrencisi / ebeveyni
@@ -110,7 +110,7 @@ Telefon modelin:
 9) Yarın tekrar açar mısın? (1 = hiç, 5 = kesinlikle)  1 2 3 4 5
 10) Eklemek istediğin her şey:
 
-Teşekkürler! Yanıtların yalnızca Dilmaç'ı geliştirmek için kullanılır.
+Teşekkürler! Yanıtların yalnızca Çenebaz'ı geliştirmek için kullanılır.
 ```
 
 ## Bulguları toplama

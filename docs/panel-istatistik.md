@@ -1,8 +1,8 @@
 # Satış ve kullanım paneli
 
-Yönetim panelinde (Flutter web, `lib/admin/`) Dilmaç ekibi hesabıyla
+Yönetim panelinde (Flutter web, `lib/admin/`) Çenebaz ekibi hesabıyla
 giriş yapınca **Kurumlar** sayfasının üstünde **Panel** düğmesi çıkar.
-Panel günlük ve haftalık sayıları gösterir. Yalnızca Dilmaç ekibi
+Panel günlük ve haftalık sayıları gösterir. Yalnızca Çenebaz ekibi
 (`config/lingoraAdmins.uids` listesindekiler ya da `isLingoraAdmin` claim'i
 olanlar) görebilir; kurum yöneticileri ve öğretmenler göremez.
 

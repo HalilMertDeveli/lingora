@@ -1,6 +1,6 @@
 import '../../core/emoji_compat.dart';
 
-/// Dilmaç Premium subscription products.
+/// Çenebaz Premium subscription products.
 ///
 /// The ids must match the subscription product ids created in Google Play
 /// Console (Monetize > Products > Subscriptions); each one has a single,
@@ -56,7 +56,7 @@ enum PremiumPlan {
 
   /// Personal plans shown as choices on the paywall, in order (the family
   /// plan has its own card). Yearly comes first and is preselected: the
-  /// subscription is Dilmaç's main revenue and yearly is the best value.
+  /// subscription is Çenebaz's main revenue and yearly is the best value.
   static const personal = [yearly, monthly];
 
   /// Preselected on the paywall.

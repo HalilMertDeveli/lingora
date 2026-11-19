@@ -1,4 +1,4 @@
-// Dilmaç Kurumsal web panel. Build and deploy (docs/kurumsal.md):
+// Çenebaz Kurumsal web panel. Build and deploy (docs/kurumsal.md):
 //
 //   flutter build web -t lib/admin/main_admin.dart --dart-define=LINGORA_FIREBASE=prod \
 //     -o <repo>/build/admin

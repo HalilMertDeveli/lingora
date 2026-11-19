@@ -528,7 +528,7 @@ ThemeData buildTheme({
   );
 }
 
-/// Dilmaç's press effect, "jelibon": the child squashes softly while held
+/// Çenebaz's press effect, "jelibon": the child squashes softly while held
 /// and springs back with a small wobble when released. Nothing moves when
 /// animations are reduced. [amount] scales the squash (cards use less).
 class JellyPress extends StatefulWidget {

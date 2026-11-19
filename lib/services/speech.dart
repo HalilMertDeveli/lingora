@@ -67,7 +67,7 @@ abstract final class SpeechIssues {
       'Telefonunda İngilizce ses paketi yok. Ayarlar > Erişilebilirlik > Metin okuma çıktısı bölümünden '
       'İngilizce ses verilerini indir.';
   static const noMicPermission =
-      'Mikrofon izni verilmedi. Ayarlar > Uygulamalar > Dilmaç > İzinler bölümünden mikrofonu aç.';
+      'Mikrofon izni verilmedi. Ayarlar > Uygulamalar > Çenebaz > İzinler bölümünden mikrofonu aç.';
   static const noRecognizer = 'Bu cihazda ses tanıma kullanılamıyor.';
   static const notHeard = 'Seni duyamadım. Telefonu biraz daha yakına al ve daha yüksek sesle söyle.';
   static const network = 'Ses tanıma için internet bağlantısı gerekiyor.';

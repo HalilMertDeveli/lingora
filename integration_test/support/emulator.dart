@@ -194,7 +194,7 @@ AuthCredential fakeGoogleCredential(String sub, String email) => GoogleAuthProvi
 
 int _devices = 0;
 
-/// One phone running Dilmaç: its own FirebaseApp (so its own signed-in
+/// One phone running Çenebaz: its own FirebaseApp (so its own signed-in
 /// user and Firestore cache), empty storage and the app's providers.
 ///
 /// Only one device may be alive at a time (SharedPreferences is global);

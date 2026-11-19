@@ -93,7 +93,7 @@ export function lastDays(now: Date, n: number): string[] {
   return out;
 }
 
-/** { days? } -> StatsResult. Dilmaç staff (the owner) only. */
+/** { days? } -> StatsResult. Çenebaz staff (the owner) only. */
 export async function getStats(db: Firestore, caller: Caller, data: unknown, now: Date): Promise<StatsResult> {
   if (!(await isLingoraAdmin(db, caller))) throw new HttpsError("permission-denied", "lingora_admin_only");
   const raw = (data as { days?: unknown } | null)?.days;

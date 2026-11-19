@@ -1,6 +1,6 @@
 rules_version = '2';
 
-// Dilmaç Firestore rules. The server-side data (leagues, entitlements,
+// Çenebaz Firestore rules. The server-side data (leagues, entitlements,
 // quotas) is written only by Cloud Functions through the Admin SDK, which
 // bypasses these rules. Clients may write only their own users/{uid} doc.
 service cloud.firestore {
@@ -81,7 +81,7 @@ service cloud.firestore {
       }
     }
 
-    // ---- Dilmaç Kurumsal (functions/src/orgs.ts, docs/kurumsal.md) ----
+    // ---- Çenebaz Kurumsal (functions/src/orgs.ts, docs/kurumsal.md) ----
     // Org data is read and written only through the org* callables, which
     // filter the progress report (KVKK: no diary, notes or chats). A user may
     // read which org they belong to.
@@ -97,7 +97,7 @@ service cloud.firestore {
     match /orgCodes/{code} {
       allow read, write: if false;
     }
-    // ---- end Dilmaç Kurumsal ----
+    // ---- end Çenebaz Kurumsal ----
 
     // ---- Friends (lib/services/friends.dart, docs/firebase-backend.md) ----
     // Works without Cloud Functions. Knowing a friend's code, or accepting
@@ -587,10 +587,10 @@ service cloud.firestore {
     // ---- Soru bildirimleri (Bildir) ----
     // lib/services/question_reports.dart: a learner flags a question ("Cevap
     // hatalı", "Başka cevap da doğru", "Açıklama anlaşılmıyor"). Anyone signed
-    // in (guests too) may file one; only Dilmaç staff read and triage them in
+    // in (guests too) may file one; only Çenebaz staff read and triage them in
     // the panel (lib/admin/reports_page.dart).
 
-    // Dilmaç staff: the isLingoraAdmin claim or config/lingoraAdmins.uids
+    // Çenebaz staff: the isLingoraAdmin claim or config/lingoraAdmins.uids
     // (the same test as isLingoraAdmin() in functions/src/orgs.ts).
     function isStaff() {
       return signedIn() && (request.auth.token.get('isLingoraAdmin', false) == true
@@ -707,7 +707,7 @@ service cloud.firestore {
     }
 
     // Owner dashboard counters (functions/src/stats.ts), aggregated only.
-    // Read through the getStats callable (Dilmaç staff); never by clients.
+    // Read through the getStats callable (Çenebaz staff); never by clients.
     match /stats/{document=**} {
       allow read, write: if false;
     }

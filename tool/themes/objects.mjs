@@ -1,4 +1,4 @@
-// Dilmaç topic-theme objects: original flat vector drawings, written by hand
+// Çenebaz topic-theme objects: original flat vector drawings, written by hand
 // for this project (no third-party artwork). One 64×64 viewBox per object.
 //
 // Style guide (docs/tasarim/temalar.md):

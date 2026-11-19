@@ -10,7 +10,7 @@
 //                                `previous` (a grant another source took over)
 //   purchases/{hash}             Play / emulator subscriptions: `entitledUntil`
 //   families/{ownerUid}          family member seat (entitlements.family)
-//   memberships + orgs/{orgId}   Dilmaç Kurumsal seat (members/{uid}.seat)
+//   memberships + orgs/{orgId}   Çenebaz Kurumsal seat (members/{uid}.seat)
 //   licenses/{uid}               Kurum lisansı seat (licenseCodes/{code}.claimedBy)
 //
 // Invite rewards (source "referral") live only in entitlements/{uid} (top

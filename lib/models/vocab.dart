@@ -1,5 +1,5 @@
 /// Yazılımcı İngilizcesi: English vocabulary for Turkish software developers
-/// (assets/vocab/software.json, written for Dilmaç).
+/// (assets/vocab/software.json, written for Çenebaz).
 library;
 
 import '../core/emoji_compat.dart';

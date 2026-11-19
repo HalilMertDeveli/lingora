@@ -7,9 +7,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Dilmaç</string>
+	<string>Çenebaz</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Rehberindeki Dilmaç kullanan arkadaşlarını bulmak için kullanılır. Rehberin telefonunda kalır; yalnızca numaraların tek yönlü şifresi (hash) karşılaştırılır.</string>
+	<string>Rehberindeki Çenebaz kullanan arkadaşlarını bulmak için kullanılır. Rehberin telefonunda kalır; yalnızca numaraların tek yönlü şifresi (hash) karşılaştırılır.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Profil fotoğrafı çekmek için kamera kullanılır.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -25,7 +25,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Dilmaç</string>
+	<string>Çenebaz</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

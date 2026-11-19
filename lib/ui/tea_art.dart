@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 import 'motion.dart';
 
-/// Dilmaç's own drawings, all vector (no assets): the thin-waisted tea glass
+/// Çenebaz's own drawings, all vector (no assets): the thin-waisted tea glass
 /// used as a path node, the double teapot (reward), the tulip (unit test), a
 /// rising steam curl, the İznik tile motif and the small district scenes on
 /// section cards. See docs/tasarim.md, "Çay kimliği".

@@ -689,7 +689,7 @@ final classReportSyncProvider = Provider<void>((ref) {
 });
 
 /// The name the user chose in Profil, or empty: pre-fills the name fields.
-/// Never the generic fallback ("Dilmaç öğrencisi") or a Google account name.
+/// Never the generic fallback ("Çenebaz öğrencisi") or a Google account name.
 final kurumNameHintProvider = Provider<String>(
   (ref) => (ref.watch(profileProvider.select((p) => p.name)) ?? '').trim(),
 );

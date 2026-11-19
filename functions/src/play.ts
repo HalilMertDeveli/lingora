@@ -1,4 +1,4 @@
-// Google Play Developer API (androidpublisher v3) — the small part Dilmaç uses.
+// Google Play Developer API (androidpublisher v3) — the small part Çenebaz uses.
 //
 // Authenticates with the Cloud Functions runtime service account through
 // Application Default Credentials: no key file anywhere. That account must be

@@ -5,7 +5,7 @@ import 'learn_goal.dart';
 
 /// The value line under the hero, always shown without Premium.
 const paywallValueLine =
-    "Özel hoca saati 500 TL. Dilmaç'ta her gün sınırsız konuşma, ayda bir ders fiyatına.";
+    "Özel hoca saati 500 TL. Çenebaz'da her gün sınırsız konuşma, ayda bir ders fiyatına.";
 
 /// Price anchor shown only while the store's real prices are not loaded
 /// (the buttons always use Google Play's prices).

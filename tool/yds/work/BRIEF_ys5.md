@@ -1,6 +1,6 @@
 # Brief: ys5 "Kelime bankası 1" unit writer
 
-You write ONE (or two) units of a new YDS section for Dilmaç, a Turkish-speaking learners' English app.
+You write ONE (or two) units of a new YDS section for Çenebaz, a Turkish-speaking learners' English app.
 Learner: finished A1–A2 general course, now A2→B1, preparing for YDS (Turkish academic English exam).
 All content must be ORIGINAL (no copied dictionary examples, no ÖSYM questions). Turkish text uses proper
 Turkish characters (ç ğ ı ö ş ü İ). English uses British spelling (behaviour, analyse) consistently.

@@ -182,7 +182,7 @@ class _LeagueScreenState extends ConsumerState<LeagueScreen> {
             switch (view) {
               WorldLive(:final league) =>
                 'Bu hafta ${league.countries > 1 ? '${league.countries} ülkeden ' : ''}'
-                    '${league.members.length} Dilmaç kullanıcısıyla yarışıyorsun.',
+                    '${league.members.length} Çenebaz kullanıcısıyla yarışıyorsun.',
               WorldGuest() => 'Örnek tablo: rakipler bu cihazda simüle edilir.',
               WorldNeedsJoin() => '',
               WorldOffline() => 'Çevrimdışı mod: rakipler bu cihazda simüle edilir.',
@@ -362,7 +362,7 @@ class _GuestCard extends ConsumerWidget {
       title: 'Dünya Ligi',
       text:
           'Her hafta farklı ülkelerden 100 kişilik bir grupta haftalık XP ile yarış. '
-          'Katılmak için ücretsiz bir Dilmaç hesabıyla giriş yap (Google, e-posta ya da telefon).',
+          'Katılmak için ücretsiz bir Çenebaz hesabıyla giriş yap (Google, e-posta ya da telefon).',
       action: service == null
           ? null
           : FilledButton.icon(

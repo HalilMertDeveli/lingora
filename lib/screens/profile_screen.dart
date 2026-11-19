@@ -119,7 +119,7 @@ class ProfileScreen extends ConsumerWidget {
         // Learning apart from XP: only spaced passes and fixed mistakes.
         const RealProgressSection(),
         const SizedBox(height: 24),
-        Text('Dilmaç Premium', style: t.titleLarge),
+        Text('Çenebaz Premium', style: t.titleLarge),
         const SizedBox(height: 12),
         TapCard(
           key: const ValueKey('profile-premium'),

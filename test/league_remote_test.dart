@@ -129,8 +129,13 @@ Future<void> pumpLeague(WidgetTester tester, List<Override> o) async {
 void main() {
   test('leagueDisplayName shows only the first name', () {
     expect(leagueDisplayName('Mert Develi'), 'Mert');
-    expect(leagueDisplayName('  '), 'Dilmaç öğrencisi');
-    expect(leagueDisplayName(null), 'Dilmaç öğrencisi');
+    expect(leagueDisplayName('  '), 'Çenebaz öğrencisi');
+    expect(leagueDisplayName(null), 'Çenebaz öğrencisi');
+  });
+
+  test('the generic name stored before the rename shows the current one', () {
+    expect(shownName('Dilmaç öğrencisi'), 'Çenebaz öğrencisi');
+    expect(shownName('Zeynep'), 'Zeynep');
   });
 
   test('ten tiers and the same zones as the server', () {

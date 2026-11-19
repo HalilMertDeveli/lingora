@@ -37,7 +37,7 @@ test("parseJoinInput cleans names and checks country and photo", () => {
     photo: null,
     look: null,
   });
-  assert.equal(parseJoinInput({}).name, "Dilmaç öğrencisi");
+  assert.equal(parseJoinInput({}).name, "Çenebaz öğrencisi");
   assert.equal(parseJoinInput({}).country, null);
   assert.equal(parseJoinInput({ name: "x".repeat(50) }).name.length, 24);
   assert.throws(() => parseJoinInput({ name: "   " }));

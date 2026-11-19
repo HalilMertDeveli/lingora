@@ -6,7 +6,7 @@ import 'phone_numbers.dart';
 /// Firestore read; docs/arkadaslar.md).
 const maxContactLookups = 500;
 
-/// A phone-book entry whose number belongs to a discoverable Dilmaç user.
+/// A phone-book entry whose number belongs to a discoverable Çenebaz user.
 class ContactOnApp {
   const ContactOnApp({required this.name, required this.uid});
 
@@ -15,7 +15,7 @@ class ContactOnApp {
   final String uid;
 }
 
-/// The phone book split into people on Dilmaç and everyone else.
+/// The phone book split into people on Çenebaz and everyone else.
 class ContactBook {
   const ContactBook({required this.onApp, required this.others, this.truncated = false});
   final List<ContactOnApp> onApp;

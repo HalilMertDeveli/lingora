@@ -11,8 +11,8 @@ Bu belge, gerçek Google Play satın almalarının Premium açması için **seni
 - `playRtdn` (Pub/Sub, `play-rtdn` konusu): Google'ın gerçek zamanlı
   bildirimlerini dinler. Yenileme, iptal, ödeme sorunu (grace / on hold),
   süre bitişi ve iade olduğunda Premium'u günceller veya kapatır.
-- Bir satın alma jetonu yalnızca **bir** Dilmaç hesabına bağlanır. Başka
-  hesap aynı jetonu denerse "Bu abonelik başka bir Dilmaç hesabına bağlı"
+- Bir satın alma jetonu yalnızca **bir** Çenebaz hesabına bağlanır. Başka
+  hesap aynı jetonu denerse "Bu abonelik başka bir Çenebaz hesabına bağlı"
   hatası görür.
 - Hiçbir anahtar dosyası yoktur: sunucu, Cloud Functions'ın kendi servis
   hesabıyla (Application Default Credentials) giriş yapar.
@@ -53,7 +53,7 @@ gcloud services enable androidpublisher.googleapis.com --project dilbaz-3392e
 Play Console > **Kullanıcılar ve izinler** > **Yeni kullanıcıları davet et**:
 
 1. E-posta: 1. adımdaki hesap (`1069247179653-compute@developer.gserviceaccount.com`).
-2. **Uygulama izinleri** sekmesi > **Uygulama ekle** > Dilmaç'ı seç.
+2. **Uygulama izinleri** sekmesi > **Uygulama ekle** > Çenebaz'ı seç.
 3. Şu iki izni işaretle:
    - **Finansal verileri, siparişleri ve iptal anketi yanıtlarını görüntüleme**
    - **Siparişleri ve abonelikleri yönetme**
@@ -89,7 +89,7 @@ gcloud pubsub topics add-iam-policy-binding play-rtdn --project dilbaz-3392e --m
 
 ## 5. Konuyu Play Console'a bağla
 
-Play Console > Dilmaç > **Para kazanma kurulumu** (Monetization setup) >
+Play Console > Çenebaz > **Para kazanma kurulumu** (Monetization setup) >
 **Google Play Faturalandırma** > **Gerçek zamanlı geliştirici bildirimleri**:
 
 1. Konu adı: `projects/dilbaz-3392e/topics/play-rtdn`

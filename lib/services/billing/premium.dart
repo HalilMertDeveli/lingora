@@ -305,7 +305,7 @@ class PremiumController extends Notifier<PremiumState> {
           busy: false,
           pending: false,
           error: () => e.code == 'already-exists'
-              ? 'Bu abonelik başka bir Dilmaç hesabına bağlı.'
+              ? 'Bu abonelik başka bir Çenebaz hesabına bağlı.'
               : 'Satın alma doğrulanamadı. Ücret alındıysa "Satın alımları geri yükle"yi dene.',
         );
         return;

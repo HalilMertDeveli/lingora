@@ -10,7 +10,7 @@ yayımlanmadan kullanılabilir. Ayar Firestore'daki tek bir belgededir.
 | --- | --- | --- |
 | `minVersionCode` | sayı | Bu sürüm kodunun **altındaki** uygulamalar kapanmayan "Lütfen güncelle" ekranı gösterir. Tek düğme Google Play sayfasını açar. |
 | `recommendedVersionCode` | sayı | Bu kodun altındakiler (ama en düşüğün üstündekiler) üstte kapatılabilir bir "Yeni sürüm hazır" şeridi görür. Kullanıcı kapatırsa aynı öneri bir daha gösterilmez; daha yüksek bir öneri yazıldığında yeniden çıkar. |
-| `message` | metin | Engelleme ekranındaki açıklama (Türkçe). Boş bırakılırsa hazır metin kullanılır: "Dilmaç'ın bu sürümü artık desteklenmiyor…" |
+| `message` | metin | Engelleme ekranındaki açıklama (Türkçe). Boş bırakılırsa hazır metin kullanılır: "Çenebaz'ın bu sürümü artık desteklenmiyor…" |
 
 **Sürüm kodu** `pubspec.yaml` içindeki `version: 0.1.0+N` satırındaki `N`'dir
 (Play Console > Uygulama paketleri'nde "Sürüm kodu" olarak da görünür).

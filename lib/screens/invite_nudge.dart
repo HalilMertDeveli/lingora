@@ -13,7 +13,7 @@ import 'invite_screen.dart';
 /// Opens the system share sheet with the invite message and Play link.
 Future<void> shareInvite(WidgetRef ref, InviteInfo info) async {
   logEvent(ref, AnalyticsEvent.inviteShare());
-  await SharePlus.instance.share(ShareParams(text: inviteShareText(info), subject: 'Dilmaç daveti'));
+  await SharePlus.instance.share(ShareParams(text: inviteShareText(info), subject: 'Çenebaz daveti'));
 }
 
 /// Whether the invite programme may be shown at all: the Remote Config flag

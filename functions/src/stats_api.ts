@@ -12,7 +12,7 @@ export const countFunnel = onCall({ region: "europe-west1", maxInstances: 5 }, (
   return stats.countFunnel(getFirestore(), req.data, new Date());
 });
 
-/** { days? } -> { days: [{ day, counts }], premiumActiveNow } (Dilmaç staff only). */
+/** { days? } -> { days: [{ day, counts }], premiumActiveNow } (Çenebaz staff only). */
 export const getStats = onCall({ region: "europe-west1", maxInstances: 2 }, (req) => {
   if (!req.auth) throw new HttpsError("unauthenticated", "sign_in_required");
   return stats.getStats(getFirestore(), { uid: req.auth.uid, claims: req.auth.token }, req.data, new Date());

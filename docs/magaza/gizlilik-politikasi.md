@@ -1,4 +1,4 @@
-# Dilmaç Gizlilik Politikası ve KVKK Aydınlatma Metni
+# Çenebaz Gizlilik Politikası ve KVKK Aydınlatma Metni
 
 **Yayınlanan metin artık burada değil:** [`hosting/sayfalar/gizlilik.html`](../../hosting/sayfalar/gizlilik.html)
 (adres: `https://dilbaz-3392e.web.app/gizlilik`). Hesap silme sayfası:
@@ -17,7 +17,7 @@ yapılacakları ve son sürümde nelerin değiştiğini izler.
 
 ## 18 Kasım 2026 sürümünde değişenler (taslağa göre)
 
-- Veri sorumlusu: yayıncı **Dilmaç Studio**; adres alanı kaldırıldı, iletişim tek e-posta.
+- Veri sorumlusu: yayıncı **Çenebaz Studio**; adres alanı kaldırıldı, iletişim tek e-posta.
 - Uygulama içi silme artık gerçek: **Profil > Hesap > Hesabımı sil**; ayrı hesap silme sayfası eklendi.
 - Reklam yok, **reklam kimliği (AD_ID) okunmuyor** bölümü eklendi.
 - **Profil fotoğrafı** (küçültülmüş JPEG, Firestore'da; arkadaşlar ve lig görür; misafirde cihazda kalır).

@@ -1,4 +1,4 @@
-/// Data layer of the Dilmaç Kurumsal web panel: thin wrappers around the
+/// Data layer of the Çenebaz Kurumsal web panel: thin wrappers around the
 /// org* callables in functions/src/orgs.ts (report shape: orgReport()).
 library;
 
@@ -39,7 +39,7 @@ class OrgSummary {
   final int seatsUsed;
   final DateTime planExpiresAt;
 
-  /// The viewer's role (null for Dilmaç staff looking at any org).
+  /// The viewer's role (null for Çenebaz staff looking at any org).
   final OrgRole? role;
 
   String get typeLabel => isSchool ? 'Okul' : 'Kurum';
@@ -369,7 +369,7 @@ abstract interface class AdminApi {
   });
   Future<void> deleteAssignment(String orgId, String assignmentId);
 
-  // Dilmaç staff: quote requests and trial codes (functions/src/sales.ts).
+  // Çenebaz staff: quote requests and trial codes (functions/src/sales.ts).
   Future<List<Lead>> listLeads();
   Future<void> updateLead(String id, {LeadStatus? status, String? note});
   Future<void> deleteLead(String id);
@@ -389,8 +389,8 @@ class AdminException implements Exception {
   String get message => switch (code) {
     'invalid_code' => 'Kod geçersiz ya da iptal edilmiş.',
     'already_in_org' => 'Bu hesap zaten başka bir kuruma bağlı.',
-    'plan_expired' => 'Kurumun planı sona ermiş. Dilmaç ile iletişime geçin.',
-    'no_seats' => 'Boş koltuk kalmadı. Koltuk eklemek için Dilmaç ile iletişime geçin.',
+    'plan_expired' => 'Kurumun planı sona ermiş. Çenebaz ile iletişime geçin.',
+    'no_seats' => 'Boş koltuk kalmadı. Koltuk eklemek için Çenebaz ile iletişime geçin.',
     'seats_below_used' => 'Koltuk sayısı, kullanılan koltuktan az olamaz.',
     'last_admin' => 'Kurumda en az bir yönetici kalmalı.',
     'use_leave' => 'Kendinizi buradan çıkaramazsınız.',
@@ -398,7 +398,7 @@ class AdminException implements Exception {
     'too_many_classes' => 'Sınıf sınırına ulaşıldı.',
     'too_many_assignments' => 'Bu sınıf için ödev sınırına ulaşıldı.',
     'not_your_class' || 'not_allowed' || 'permission-denied' => 'Bu işlem için yetkiniz yok.',
-    'lingora_admin_only' => 'Bu işlemi yalnızca Dilmaç ekibi yapabilir.',
+    'lingora_admin_only' => 'Bu işlemi yalnızca Çenebaz ekibi yapabilir.',
     'lead_not_found' => 'Talep bulunamadı; silinmiş olabilir.',
     'bad_org' || 'bad_students' || 'bad_teachers' => 'Kurum adı ve koltuk sayılarını kontrol edin.',
     'unauthenticated' => 'Oturumunuz kapanmış. Lütfen yeniden giriş yapın.',

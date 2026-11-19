@@ -16,7 +16,7 @@ const certificateSize = Size(360, 450);
 const certificatePixelRatio = 3.0;
 
 /// The shareable Seviye Karnesi card: name, estimated level, date, the
-/// Dilmaç mark and a footnote that it is not an official certificate.
+/// Çenebaz mark and a footnote that it is not an official certificate.
 /// Colours are fixed (not the theme's) so every share looks the same.
 class LevelCertificate extends StatelessWidget {
   const LevelCertificate({super.key, required this.name, required this.report, this.kid = false});
@@ -78,7 +78,7 @@ class LevelCertificate extends StatelessWidget {
                         const SizedBox(width: 10),
                         const Expanded(
                           child: Text(
-                            'Dilmaç',
+                            'Çenebaz',
                             maxLines: 1,
                             overflow: TextOverflow.fade,
                             softWrap: false,
@@ -159,7 +159,7 @@ class LevelCertificate extends StatelessWidget {
                     const Divider(height: 1, color: Color(0x332B1B6E)),
                     const SizedBox(height: 6),
                     const Text(
-                      'Dilmaç ile ölçüldü. Uygulama içi kısa bir uyarlamalı testin tahminidir; '
+                      'Çenebaz ile ölçüldü. Uygulama içi kısa bir uyarlamalı testin tahminidir; '
                       'resmî bir dil sertifikası değildir.',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 9.5, color: Color(0xFF5A4E86), height: 1.3),
@@ -187,8 +187,8 @@ Future<List<int>> certificatePng(GlobalKey boundaryKey) async {
 /// Writes the certificate to a temporary PNG and opens the share sheet.
 Future<void> shareCertificate(GlobalKey boundaryKey, LevelReport report, {Rect? origin}) => sharePng(
   boundaryKey,
-  fileName: 'dilmac_seviye_${report.day}.png',
-  text: 'Dilmaç ile ölçülen tahmini İngilizce seviyem: ${levelLabel(report.overall)}',
+  fileName: 'cenebaz_seviye_${report.day}.png',
+  text: 'Çenebaz ile ölçülen tahmini İngilizce seviyem: ${levelLabel(report.overall)}',
   origin: origin,
 );
 

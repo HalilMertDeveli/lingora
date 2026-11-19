@@ -23,7 +23,7 @@ Map<String, dynamic> _saved(SharedPreferences p) =>
 
 Future<void> _toGoalPage(WidgetTester tester) async {
   await pumpApp(tester, {});
-  expect(find.text('Dilmaç'), findsOneWidget);
+  expect(find.text('Çenebaz'), findsOneWidget);
   await tester.tap(find.byKey(const ValueKey('onboarding-next')));
   await tester.pumpAndSettle();
   expect(find.text('Ne için İngilizce?'), findsOneWidget);

@@ -457,7 +457,7 @@ void main() {
       final mallory = await track(Person.email(emu, 'mallory@test.dev', 'Mallory'));
       await ali.api.setDiscoverable(true);
 
-      // Zeynep's phone book: Ali (saved her own way), her mother (not on Dilmaç).
+      // Zeynep's phone book: Ali (saved her own way), her mother (not on Çenebaz).
       final book = await findContactsOnApp(zeynep.api, [
         const PhoneContact(name: 'Ali Okul', numbers: ['0532 111 22 33']),
         const PhoneContact(name: 'Annem', numbers: ['0535 000 00 00']),

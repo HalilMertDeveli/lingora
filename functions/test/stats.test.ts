@@ -78,7 +78,7 @@ test("lastDays lists Turkish days oldest first", () => {
   assert.deepEqual(lastDays(new Date("2026-03-01T21:30:00Z"), 2), ["2026-03-01", "2026-03-02"]);
 });
 
-test("getStats is for Dilmaç staff only and returns every day, empty ones too", async () => {
+test("getStats is for Çenebaz staff only and returns every day, empty ones too", async () => {
   await countFunnel(db, { step: "first_open" }, now);
   await countFunnel(db, { step: "return_d1" }, new Date(now.getTime() - DAY));
   await db.doc("entitlements/a").set({ active: true, expiresAt: Timestamp.fromMillis(now.getTime() + DAY) });

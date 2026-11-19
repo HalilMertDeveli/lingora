@@ -18,11 +18,15 @@ cümle içinde geçer (doldurma sayılmasın).
 ## Uygulama adı (≤ 30)
 
 ```
-Dilmaç: İngilizce Konuşma, YDS
+Çenebaz: İngilizce Konuşma YDS
 ```
 
-30 karakter. Yedekler (A/B için): `Dilmaç: İngilizce Konuş & Öğren` (31, sığmaz),
-`Dilmaç - İngilizce Konuşma` (26).
+30 karakter. "Çenebaz" 7 harf olduğu için eski başlıktaki virgül düştü (`Çenebaz: İngilizce Konuşma, YDS`
+31, sığmaz). Yedekler (A/B için): `Çenebaz: İngilizce Konuş, YDS` (29), `Çenebaz - İngilizce Konuşma` (27).
+
+Slogan (adın ilk geçtiği yerlerde): **Çenebaz — İngilizceyi konuşarak öğren**. Uzun açıklamaya
+konmadı: ilk satırları Türkçe konuşanlara özgü hatalarla açmak sahip kararı. Öne çıkan görselde
+(1024×500) kullanılabilir.
 
 ## Kısa açıklama (≤ 80)
 
@@ -35,7 +39,7 @@ Dilmaç: İngilizce Konuşma, YDS
 ## Uzun açıklama (≤ 4000)
 
 ```
-"I am agree" neden yanlış? "He go" neden "He goes" olmalı? Dilmaç, Türkçe konuşanların İngilizcede en sık yaptığı hataları yakalar ve her birini Türkçe açıklar. Mikrofona konuş ya da yaz; hatanı anında, Türkçe açıklamasıyla gör. Kısa günlük derslerle kelime ve gramer çalış, İngilizce konuşma pratiği yap, YDS, YÖKDİL ve LGS İngilizce sınavlarına hazırlan.
+"I am agree" neden yanlış? "He go" neden "He goes" olmalı? Çenebaz, Türkçe konuşanların İngilizcede en sık yaptığı hataları yakalar ve her birini Türkçe açıklar. Mikrofona konuş ya da yaz; hatanı anında, Türkçe açıklamasıyla gör. Kısa günlük derslerle kelime ve gramer çalış, İngilizce konuşma pratiği yap, YDS, YÖKDİL ve LGS İngilizce sınavlarına hazırlan.
 
 TÜRKLER İÇİN HATA DEDEKTÖRÜ
 • "I am agree", "He go", "I am student" gibi Türkçe kaynaklı hataları yakalar: be fiili, -s takısı, the/a, zamanlar, kelime sırası.
@@ -75,19 +79,19 @@ MOTİVASYON
 • Derslerde can sistemi yok: yanlış yapmak dersi kesmez. Uygulamada reklam yok.
 • Hatırlatıcı: seçtiğin saatte kısa bir bildirim.
 
-DİLMAÇ PREMIUM (İSTEĞE BAĞLI)
+ÇENEBAZ PREMIUM (İSTEĞE BAĞLI)
 Öğrenmek için Premium gerekmez; dersler, gramer yolu, notlar, kelime tekrarı, okuma ve telaffuz ücretsizdir. Premium şunları açar: yapay zekâ konuşma partneri, mülakat provasının tamamı, sınırsız "Neden yanlış?" açıklaması, sınırsız deneme ve tam deneme paketleri, detaylı hata analizi ve tahmini sınav puanı, aylık seviye karnesi.
 Premium aylık veya yıllık abonelikle alınır. Abonelik, iptal edilmedikçe her dönem sonunda Google Play hesabından otomatik yenilenir; istediğin zaman Google Play > Ödemeler ve abonelikler bölümünden iptal edebilirsin.
 
 GİZLİLİĞİNE SAYGI
 İlerlemen cihazında tutulur; istersen hesabını bağlayıp buluta yedekleyebilirsin. Kullanım istatistikleri ve çökme raporları yalnızca izin verirsen toplanır, reklam için kullanılmaz. Hesabını uygulamanın içinden silebilirsin.
 
-Dilmaç 13 yaş ve üzeri öğrenciler ve yetişkinler içindir. Ebeveyn gözetimli mod, ebeveynin kendi hesabıyla çocuğuyla birlikte kullanması içindir; bu modda yapay zekâ ve arkadaş özellikleri kapalıdır.
+Çenebaz 13 yaş ve üzeri öğrenciler ve yetişkinler içindir. Ebeveyn gözetimli mod, ebeveynin kendi hesabıyla çocuğuyla birlikte kullanması içindir; bu modda yapay zekâ ve arkadaş özellikleri kapalıdır.
 
 Bugün başla: her gün birkaç dakika İngilizce konuş.
 ```
 
-3580 karakter (aşağıdaki kontrolle sayıldı). İlk satırlar Türkçe konuşanlara özgü hatalarla açılır (sahip kararı: ana ayırt edici özellik). Fiyat yazılmaz; Play fiyatı kendisi gösterir.
+3583 karakter (aşağıdaki kontrolle sayıldı). İlk satırlar Türkçe konuşanlara özgü hatalarla açılır (sahip kararı: ana ayırt edici özellik). Fiyat yazılmaz; Play fiyatı kendisi gösterir.
 
 İddiaların dayanağı:
 

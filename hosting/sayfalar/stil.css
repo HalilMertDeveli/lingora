@@ -1,4 +1,4 @@
-/* Dilmaç yasal sayfaları. Renkler lib/theme.dart (açık / koyu palet) ile aynı. */
+/* Çenebaz yasal sayfaları. Renkler lib/theme.dart (açık / koyu palet) ile aynı. */
 :root {
   --bg: #faf4ea;
   --card: #fffcf7;
@@ -152,7 +152,7 @@ footer p { margin: 4px 0; }
   h1 { font-size: 1.55rem; }
 }
 
-/* ---- Dilmaç Kurumsal (kurumsal.html) ---- */
+/* ---- Çenebaz Kurumsal (kurumsal.html) ---- */
 main.genis { max-width: 880px; }
 
 .giris { padding: 12px 0 8px; }

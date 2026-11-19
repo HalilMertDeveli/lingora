@@ -30,7 +30,7 @@ const talkXp = 15;
 
 /// Paywall line when the free daily taste of the voice chat is used up.
 const talkFreeTastePitch =
-    "Özel hoca saati 500 TL. Dilmaç Premium'da gerçek bir insan gibi konuşan sesli partnerin her gün yanında.";
+    "Özel hoca saati 500 TL. Çenebaz Premium'da gerçek bir insan gibi konuşan sesli partnerin her gün yanında.";
 
 /// The parts a voice chat needs from the phone; tests replace them.
 class TalkIo {

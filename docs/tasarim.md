@@ -1,6 +1,6 @@
-# Dilmaç tasarım sistemi
+# Çenebaz tasarım sistemi
 
-Dilmaç'ın **varsayılan görünümü yetişkin** (sade, sakin, üniversite öğrencisi ve çalışanlar için).
+Çenebaz'ın **varsayılan görünümü yetişkin** (sade, sakin, üniversite öğrencisi ve çalışanlar için).
 **Çocuk modu** isteğe bağlıdır ve eski oyunsu görünümü (büyük ve hareketli Pofuduk maskotu, emoji, çay kutlaması, zıplayan
 animasyonlar) geri getirir. Her iki mod da **açık** ve **koyu** temada çalışır.
 
@@ -112,7 +112,7 @@ Tekil görüntüler `docs/tasarim/` altında: `once-*`, `yetiskin-acik-*`, `yeti
 
 ## Arayüz animasyonları (feature/arayuz-animasyon)
 
-Referans uygulamanın davranış tarifi ve Dilmaç karşılıkları: [arayuz-referans.md](arayuz-referans.md).
+Referans uygulamanın davranış tarifi ve Çenebaz karşılıkları: [arayuz-referans.md](arayuz-referans.md).
 
 - Oturum parçaları `lib/ui/session.dart`: `SessionHeader`, `SessionProgressBar` (seri vurgusu), `CheckBar`, `AnswerFeedbackPanel`. Yeni bir cevap-kontrol ekranı bunları kullanmalı.
 - Yol haritası parçaları `lib/screens/path_map.dart`: `TeaNode`, `TeaInvite`, `LessonCard`, `UnitBand`, `showUnitGuide` (aşağıda "Çay kimliği").
@@ -126,7 +126,7 @@ Her ünite kendi konusunun nesneleriyle çizilir; çay yalnızca selamlaşma, mi
 
 ## Çay kimliği (feature/ozgun-tasarim)
 
-PR #26 arayüzü referans uygulamaya fazla benzetmişti. Bu bölüm Dilmaç'ın kendi kimliğini anlatır: bir çay bahçesinde yürüyüş.
+PR #26 arayüzü referans uygulamaya fazla benzetmişti. Bu bölüm Çenebaz'ın kendi kimliğini anlatır: bir çay bahçesinde yürüyüş.
 
 **Renkler** (`lib/theme.dart`): çay kırmızısı / kehribar (`primary`, `success`), İznik lacivertı (`error`, `info`), krem kâğıt (`background`, `card`) ve Lexigo turuncusu (`mascot`). Açık ve koyu tema; Çocuk modu daha canlı. Yanlış cevap rengi kırmızı değil, yumuşak lacivert.
 
