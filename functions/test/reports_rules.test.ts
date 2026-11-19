@@ -14,7 +14,6 @@ import {
   collection,
   deleteDoc,
   doc,
-  Firestore,
   getDoc,
   getDocs,
   serverTimestamp,
@@ -84,7 +83,9 @@ const report = (uid: string, extra: Record<string, unknown> = {}) => ({
 const firstLimit = { windowStart: serverTimestamp(), count: 1, last: serverTimestamp(), n: 1 };
 
 /** The app's write: the limit doc and the report together. */
-function file(f: Firestore, uid: string, n: number, limit: Record<string, unknown>, data = report(uid)) {
+type Db = ReturnType<typeof guest>;
+
+function file(f: Db, uid: string, n: number, limit: Record<string, unknown>, data = report(uid)) {
   const b = writeBatch(f);
   b.set(doc(f, `reportLimits/${uid}`), limit);
   b.set(doc(f, `reports/${uid}_${n}`), data);
