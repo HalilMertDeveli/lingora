@@ -64,8 +64,10 @@ class _InviteNudgeBodyState extends ConsumerState<_InviteNudgeBody> {
     final prefs = ref.read(prefsProvider);
     final now = ref.read(clockProvider)();
     final last = prefs.getInt(InviteNudge.shownKey);
-    final due = last == null ||
-        now.difference(DateTime.fromMillisecondsSinceEpoch(last)) >= const Duration(days: InviteNudge.gapDays);
+    final due =
+        last == null ||
+        now.difference(DateTime.fromMillisecondsSinceEpoch(last)) >=
+            const Duration(days: InviteNudge.gapDays);
     final flags = ref.read(remoteFlagsProvider);
     _show = due && flags.referralEnabled && !ref.read(appSettingsProvider).isKid;
     if (_show) prefs.setInt(InviteNudge.shownKey, now.millisecondsSinceEpoch);
@@ -75,7 +77,9 @@ class _InviteNudgeBodyState extends ConsumerState<_InviteNudgeBody> {
     final service = ref.read(referralServiceProvider);
     if (service != null) {
       try {
-        final info = await service.myInvite(deviceId: ref.read(installIdProvider)).timeout(const Duration(seconds: 6));
+        final info = await service
+            .myInvite(deviceId: ref.read(installIdProvider))
+            .timeout(const Duration(seconds: 6));
         await shareInvite(ref, info);
         return;
       } on Object {

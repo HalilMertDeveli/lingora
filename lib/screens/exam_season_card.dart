@@ -29,11 +29,14 @@ class _ExamSeasonCardState extends ConsumerState<ExamSeasonCard> {
     final ms = ref.read(prefsProvider).getInt(ExamSeasonCard.dismissedKey);
     if (ms == null) return false;
     final now = ref.read(clockProvider)();
-    return now.difference(DateTime.fromMillisecondsSinceEpoch(ms)) < const Duration(days: ExamSeasonCard.snoozeDays);
+    return now.difference(DateTime.fromMillisecondsSinceEpoch(ms)) <
+        const Duration(days: ExamSeasonCard.snoozeDays);
   }
 
   void _dismiss() {
-    ref.read(prefsProvider).setInt(ExamSeasonCard.dismissedKey, ref.read(clockProvider)().millisecondsSinceEpoch);
+    ref
+        .read(prefsProvider)
+        .setInt(ExamSeasonCard.dismissedKey, ref.read(clockProvider)().millisecondsSinceEpoch);
     setState(() {});
   }
 
@@ -98,7 +101,10 @@ class _ExamSeasonCardState extends ConsumerState<ExamSeasonCard> {
             TextButton(
               key: const ValueKey('exam-season-cta'),
               onPressed: () => _open(w),
-              child: const Text('İncele', style: TextStyle(color: gold, fontWeight: FontWeight.w900)),
+              child: const Text(
+                'İncele',
+                style: TextStyle(color: gold, fontWeight: FontWeight.w900),
+              ),
             ),
             IconButton(
               key: const ValueKey('exam-season-dismiss'),

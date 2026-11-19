@@ -57,9 +57,17 @@ DailyReading reading(String date, String level, {String title = 'The Lost Umbrel
     DailyGloss(word: 'smile', meaningTr: 'gülümseme'),
   ],
   questions: const [
-    DailyQuestion(question: 'What did she find?', options: ['A cat', 'An umbrella', 'A key', 'A book'], answer: 1),
+    DailyQuestion(
+      question: 'What did she find?',
+      options: ['A cat', 'An umbrella', 'A key', 'A book'],
+      answer: 1,
+    ),
     DailyQuestion(question: 'Was it sunny?', options: ['Yes', 'No', 'Snowy', 'Windy'], answer: 1),
-    DailyQuestion(question: 'Who found it?', options: ['A neighbour', 'A teacher', 'A child', 'A dog'], answer: 0),
+    DailyQuestion(
+      question: 'Who found it?',
+      options: ['A neighbour', 'A teacher', 'A child', 'A dog'],
+      answer: 0,
+    ),
   ],
   talkPrompt: 'Have you ever lost something?',
 );
@@ -131,7 +139,9 @@ void main() {
             'promoOfferId': ' yds-2027 ',
           },
           'lgs': {'enabled': false},
-          'toefl': {'dates': ['2027-01-01']},
+          'toefl': {
+            'dates': ['2027-01-01'],
+          },
         },
       });
       expect(s['yds']!.dates, ['2027-04-04']);
@@ -162,8 +172,20 @@ void main() {
     });
 
     test('the goal decides the exam, else the exam track', () {
-      expect(campaignExamFor(goal: const LearnGoal(kind: GoalKind.exam, exam: GoalExam.yokdil), trackId: 'lgs'), 'yokdil');
-      expect(campaignExamFor(goal: const LearnGoal(kind: GoalKind.speaking), trackId: 'lgs'), 'lgs');
+      expect(
+        campaignExamFor(
+          goal: const LearnGoal(kind: GoalKind.exam, exam: GoalExam.yokdil),
+          trackId: 'lgs',
+        ),
+        'yokdil',
+      );
+      expect(
+        campaignExamFor(
+          goal: const LearnGoal(kind: GoalKind.speaking),
+          trackId: 'lgs',
+        ),
+        'lgs',
+      );
       expect(campaignExamFor(trackId: 'yds'), 'yds');
       expect(campaignExamFor(trackId: 'general'), isNull);
     });
@@ -172,7 +194,11 @@ void main() {
   group('exam season card', () {
     final inWindow = DateTime(2027, 2, 15, 12); // YDS 41 days away
 
-    Future<ProviderContainer> pumpCard(WidgetTester tester, {bool premium = false, Map<String, Object> prefs = const {}}) async {
+    Future<ProviderContainer> pumpCard(
+      WidgetTester tester, {
+      bool premium = false,
+      Map<String, Object> prefs = const {},
+    }) async {
       await tester.pumpWidget(
         host(await overrides(tester, at: inWindow, premium: premium, prefs: prefs), const ExamSeasonCard()),
       );
@@ -253,7 +279,9 @@ void main() {
     });
 
     Future<ProviderContainer> make({DailyReadingSource? source, Map<String, Object> prefs = const {}}) async {
-      final c = ProviderContainer(overrides: await overrides(null, daily: source, prefs: prefs));
+      final c = ProviderContainer(
+        overrides: await overrides(null, daily: source, prefs: prefs),
+      );
       addTearDown(c.dispose);
       return c;
     }
@@ -308,9 +336,14 @@ void main() {
   group('daily reading screen', () {
     final src = FakeDailySource({'2026-11-19_A2': reading('2026-11-19', 'A2')});
 
-    testWidgets('shows the text, the glossary and the questions; answering all marks it read', (tester) async {
+    testWidgets('shows the text, the glossary and the questions; answering all marks it read', (
+      tester,
+    ) async {
       await tester.pumpWidget(
-        ProviderScope(overrides: await overrides(tester, daily: src), child: const MaterialApp(home: DailyReadingScreen())),
+        ProviderScope(
+          overrides: await overrides(tester, daily: src),
+          child: const MaterialApp(home: DailyReadingScreen()),
+        ),
       );
       await tester.pumpAndSettle();
       expect(find.text('The Lost Umbrella'), findsOneWidget);
@@ -383,14 +416,19 @@ void main() {
       await tester.pumpWidget(host(await overrides(tester, daily: src), const DailyReadingCard()));
       await tester.pumpAndSettle();
       expect(find.text('Günün okuması · A2'), findsOneWidget);
-      containerOf(tester, DailyReadingCard).read(dailyReadDoneProvider.notifier).mark(reading('2026-11-19', 'A2'));
+      containerOf(
+        tester,
+        DailyReadingCard,
+      ).read(dailyReadDoneProvider.notifier).mark(reading('2026-11-19', 'A2'));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('daily-reading-card')), findsNothing);
     });
 
     test('topics are clipped to the server limit on a word boundary', () {
       expect(TalkTopic.clip('  Short   title '), 'Short title');
-      final long = TalkTopic.clip('A very long title about a lost umbrella that travels all around the old city');
+      final long = TalkTopic.clip(
+        'A very long title about a lost umbrella that travels all around the old city',
+      );
       expect(long.length, lessThanOrEqualTo(TalkTopic.maxTopicChars));
       expect(long.endsWith(' '), isFalse);
       expect(long, 'A very long title about a lost umbrella that travels all');
@@ -414,14 +452,19 @@ void main() {
       expect(shown, today.millisecondsSinceEpoch);
 
       await tester.pumpWidget(const SizedBox());
-      await tester.pumpWidget(
-        host(await overrides(tester, prefs: {InviteNudge.shownKey: shown!}), nudge),
-      );
+      await tester.pumpWidget(host(await overrides(tester, prefs: {InviteNudge.shownKey: shown!}), nudge));
       expect(find.byKey(const ValueKey('invite-nudge-perfectLesson')), findsNothing);
 
       await tester.pumpWidget(const SizedBox());
       await tester.pumpWidget(
-        host(await overrides(tester, at: today.add(const Duration(days: 3)), prefs: {InviteNudge.shownKey: shown}), nudge),
+        host(
+          await overrides(
+            tester,
+            at: today.add(const Duration(days: 3)),
+            prefs: {InviteNudge.shownKey: shown},
+          ),
+          nudge,
+        ),
       );
       expect(find.byKey(const ValueKey('invite-nudge-perfectLesson')), findsOneWidget);
     });
@@ -430,7 +473,12 @@ void main() {
       await tester.pumpWidget(
         host(
           await overrides(tester, prefs: kidSettings),
-          const Column(children: [InviteNudge(place: InviteNudgePlace.streak), GrowthProfileSection()]),
+          const Column(
+            children: [
+              InviteNudge(place: InviteNudgePlace.streak),
+              GrowthProfileSection(),
+            ],
+          ),
         ),
       );
       await tester.pumpAndSettle();

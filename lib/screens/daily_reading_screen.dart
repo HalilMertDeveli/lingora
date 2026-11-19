@@ -35,7 +35,10 @@ class DailyReadingCard extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Günün okuması · ${r.level}', style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 15)),
+                  Text(
+                    'Günün okuması · ${r.level}',
+                    style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 15),
+                  ),
                   Text(
                     r.title,
                     maxLines: 1,
@@ -96,7 +99,10 @@ class _DailyReadingScreenState extends ConsumerState<DailyReadingScreen> {
             const SizedBox(height: 16),
             if (reading == null)
               today.isLoading
-                  ? const Padding(padding: EdgeInsets.all(32), child: Center(child: CircularProgressIndicator()))
+                  ? const Padding(
+                      padding: EdgeInsets.all(32),
+                      child: Center(child: CircularProgressIndicator()),
+                    )
                   : const _Empty()
             else
               _ReadingBody(key: ValueKey(reading.id), reading: reading),
@@ -150,7 +156,10 @@ class _ReadingBodyState extends ConsumerState<_ReadingBody> {
 
   /// The text with the glossed words in bold.
   List<TextSpan> _spans(String paragraph) {
-    final words = [for (final g in r.glossary) if (g.word.isNotEmpty) RegExp.escape(g.word)];
+    final words = [
+      for (final g in r.glossary)
+        if (g.word.isNotEmpty) RegExp.escape(g.word),
+    ];
     if (words.isEmpty) return [TextSpan(text: paragraph)];
     final re = RegExp('(${words.join('|')})', caseSensitive: false);
     final out = <TextSpan>[];
@@ -172,7 +181,10 @@ class _ReadingBodyState extends ConsumerState<_ReadingBody> {
   @override
   Widget build(BuildContext context) {
     final t = Theme.of(context).textTheme;
-    final right = [for (final e in _picked.entries) if (r.questions[e.key].answer == e.value) e.key].length;
+    final right = [
+      for (final e in _picked.entries)
+        if (r.questions[e.key].answer == e.value) e.key,
+    ].length;
     final finished = _picked.length == r.questions.length;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -193,7 +205,10 @@ class _ReadingBodyState extends ConsumerState<_ReadingBody> {
             ),
           ),
         if (r.summaryTr.isNotEmpty)
-          Text('Özet: ${r.summaryTr}', style: TextStyle(color: Brand.muted, fontStyle: FontStyle.italic)),
+          Text(
+            'Özet: ${r.summaryTr}',
+            style: TextStyle(color: Brand.muted, fontStyle: FontStyle.italic),
+          ),
         const SizedBox(height: 20),
         Text('Kelimeler', style: t.titleMedium),
         const SizedBox(height: 8),
@@ -208,7 +223,10 @@ class _ReadingBodyState extends ConsumerState<_ReadingBody> {
                   Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(text: g.word, style: const TextStyle(fontWeight: FontWeight.w900)),
+                        TextSpan(
+                          text: g.word,
+                          style: const TextStyle(fontWeight: FontWeight.w900),
+                        ),
                         TextSpan(text: '  ${g.meaningTr}'),
                       ],
                     ),
@@ -271,7 +289,8 @@ class _TalkButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final launch = ref.watch(talkAboutLauncherProvider);
-    if (launch == null || ref.watch(appSettingsProvider.select((s) => s.isKid))) return const SizedBox.shrink();
+    if (launch == null || ref.watch(appSettingsProvider.select((s) => s.isKid)))
+      return const SizedBox.shrink();
     final premium = ref.watch(premiumProvider);
     return FilledButton.icon(
       key: const ValueKey('daily-talk'),
@@ -322,7 +341,9 @@ class _History extends ConsumerWidget {
               onTap: () => onOpen(r),
               child: Row(
                 children: [
-                  Expanded(child: Text('${r.date} · ${r.title}', maxLines: 1, overflow: TextOverflow.ellipsis)),
+                  Expanded(
+                    child: Text('${r.date} · ${r.title}', maxLines: 1, overflow: TextOverflow.ellipsis),
+                  ),
                   if (done.contains(r.id)) Icon(Icons.check_circle_rounded, color: Brand.success, size: 20),
                 ],
               ),

@@ -18,7 +18,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// whole text for a richer prompt if the server later accepts it.
 /// While no launcher is registered the "Bunu konuşalım" button stays hidden.
 class TalkTopic {
-  const TalkTopic({required this.topic, this.context = '', this.opener = '', this.level, this.source = 'daily_reading'});
+  const TalkTopic({
+    required this.topic,
+    this.context = '',
+    this.opener = '',
+    this.level,
+    this.source = 'daily_reading',
+  });
 
   static const maxTopicChars = 60;
 

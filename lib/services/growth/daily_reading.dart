@@ -32,7 +32,12 @@ class DailyGloss {
 }
 
 class DailyQuestion {
-  const DailyQuestion({required this.question, required this.options, required this.answer, this.explanationTr = ''});
+  const DailyQuestion({
+    required this.question,
+    required this.options,
+    required this.answer,
+    this.explanationTr = '',
+  });
   final String question;
   final List<String> options;
   final int answer;
@@ -187,7 +192,9 @@ class DailyReadingCache {
       _all().values.where((r) => r.level == level).toList()..sort((a, b) => b.date.compareTo(a.date));
 }
 
-final dailyReadingCacheProvider = Provider<DailyReadingCache>((ref) => DailyReadingCache(ref.watch(prefsProvider)));
+final dailyReadingCacheProvider = Provider<DailyReadingCache>(
+  (ref) => DailyReadingCache(ref.watch(prefsProvider)),
+);
 
 /// The band suggested for the learner: the last Seviye Karnesi, else a guess
 /// from the track (YDS → B2, LGS → A2), else A2.

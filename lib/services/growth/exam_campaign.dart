@@ -83,7 +83,11 @@ Map<String, ExamCampaign> parseExamCampaigns(Map<String, dynamic>? doc) {
   return {
     for (final MapEntry(:key, :value) in defaultExamCampaigns.entries)
       key: switch (exams[key]) {
-        final Map<dynamic, dynamic> m => ExamCampaign.fromJson(key, m.cast<String, dynamic>(), fallback: value),
+        final Map<dynamic, dynamic> m => ExamCampaign.fromJson(
+          key,
+          m.cast<String, dynamic>(),
+          fallback: value,
+        ),
         _ => value,
       },
   };

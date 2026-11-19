@@ -43,7 +43,8 @@ class ReferralException implements Exception {
     'own_code' => 'Kendi davet kodunu kullanamazsın.',
     'already_redeemed' => 'Bu hesap daha önce bir davet kodu kullandı.',
     'device_used' => 'Bu cihazda daha önce bir davet kodu kullanıldı.',
-    'same_device' => 'Bu kod davet eden kişinin kullandığı bir telefonda kullanılamaz. Kendi telefonundan dene.',
+    'same_device' =>
+      'Bu kod davet eden kişinin kullandığı bir telefonda kullanılamaz. Kendi telefonundan dene.',
     'mutual_invite' => 'Seni davet eden kişinin kodunu karşılıklı kullanamazsın.',
     'not_new_user' => 'Davet kodları yalnızca yeni hesaplarda (ilk 14 gün) kullanılabilir.',
     'sign_in_required' => 'Davet kodu kullanmak için önce Profil > Hesap bölümünden giriş yap.',
@@ -98,7 +99,10 @@ class CallableReferralService implements ReferralService {
   @override
   Future<InviteStatus> redeem(String code, {required String deviceId}) async {
     try {
-      final res = await _functions.httpsCallable('redeemInvite').call<Object?>({'code': code, 'deviceId': deviceId});
+      final res = await _functions.httpsCallable('redeemInvite').call<Object?>({
+        'code': code,
+        'deviceId': deviceId,
+      });
       final data = res.data;
       // Servers before the first-lesson rule rewarded at once.
       return data is Map ? InviteStatus.byName(data['status'] ?? 'rewarded') : InviteStatus.rewarded;
