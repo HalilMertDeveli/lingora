@@ -1,9 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:audioplayers/audioplayers.dart';
+import 'package:crypto/crypto.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/core/voice_key.dart';
+import 'package:lingora/core/voice_manifest.dart';
 import 'package:lingora/services/voice_pack.dart';
 
 class _Bundle extends CachingAssetBundle {
@@ -55,6 +58,40 @@ void main() {
     test('no pack bundled: everything falls back', () async {
       final pack = VoicePack(bundle: _Bundle(null));
       expect(await pack.assetFor('Good morning'), isNull);
+    });
+
+    test('bundled first, then downloaded, else the phone voice', () async {
+      final bundled = voiceKey('Good morning');
+      final downloaded = voiceKey('Good evening');
+      final pack = VoicePack(
+        bundle: _Bundle(jsonEncode({bundled: 'matilda'})),
+        downloaded: (k) => k == downloaded ? '/data/voice/$k.mp3' : null,
+      );
+      expect(((await pack.sourceFor('Good morning'))! as AssetSource).path, 'voice/$bundled.mp3');
+      expect(
+        ((await pack.sourceFor('Good evening'))! as DeviceFileSource).path,
+        '/data/voice/$downloaded.mp3',
+      );
+      expect(await pack.sourceFor('Good night'), isNull);
+    });
+
+    test('downloadable recordings in voice/ are indexed, listed in the manifest and not bundled', () {
+      final bundled = (jsonDecode(File('assets/voice/index.json').readAsStringSync()) as Map).keys.toSet();
+      final remote = (jsonDecode(File('voice/index.json').readAsStringSync()) as Map).keys.toSet();
+      final files = {
+        for (final f in Directory('voice').listSync().whereType<File>().where((f) => f.path.endsWith('.mp3')))
+          f.uri.pathSegments.last.replaceAll('.mp3', ''),
+      };
+      expect(files, remote);
+      final manifest = VoiceManifest.parse(File('assets/voice_manifest.json').readAsStringSync());
+      for (final k in remote) {
+        final entry = manifest[k];
+        expect(entry, isNotNull, reason: '$k missing from the manifest: dart run tool/voice_manifest.dart');
+        final bytes = File('voice/$k.mp3').readAsBytesSync();
+        expect(bytes.length, entry!.size, reason: k);
+        expect(sha256.convert(bytes).toString().substring(0, hashLength), entry.hash, reason: k);
+      }
+      expect(manifest.files.where((f) => bundled.contains(f.key)), isEmpty);
     });
 
     test('every indexed recording exists and no recording is unindexed', () {
