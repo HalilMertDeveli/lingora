@@ -576,6 +576,25 @@ service cloud.firestore {
       allow create, update: if false;
     }
 
+    // "Günün okuması": daily/{yyyy-mm-dd} and daily/{date}/levels/{A1..C1},
+    // written once a day by generateDailyReadings (functions/src/daily_reading.ts).
+    match /daily/{date} {
+      allow read: if signedIn();
+      allow write: if false;
+
+      match /levels/{level} {
+        allow read: if signedIn();
+        allow write: if false;
+      }
+    }
+
+    // Exam-season campaign schedule (lib/services/growth/exam_campaign.dart),
+    // edited by the owner in the console. Other config/* docs stay server-only.
+    match /config/examCampaigns {
+      allow get: if signedIn();
+      allow list, write: if false;
+    }
+
     // Everything else (quotas, purchase tokens, counters) is server-only.
     match /{document=**} {
       allow read, write: if false;
