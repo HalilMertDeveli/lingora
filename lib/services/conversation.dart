@@ -5,6 +5,7 @@ import '../core/speech_evidence.dart';
 import '../core/tr_errors.dart';
 import '../data/scenarios.dart';
 import 'firebase/firebase_providers.dart';
+import 'growth/referral.dart' show installIdProvider;
 
 class ChatMessage {
   const ChatMessage({
@@ -91,14 +92,30 @@ abstract class ConversationService {
 /// Calls a callable Cloud Function with JSON-like data and returns its result.
 typedef CallableInvoker = Future<Object?> Function(String name, Map<String, Object?> data);
 
+/// Messages for the AI cost guard reasons (functions/src/ai_guard.ts); null
+/// for any other reason.
+String? aiGuardMessage(String? reason) => switch (reason) {
+  'app_check_required' =>
+    "Bu özellik yalnızca Google Play'den yüklenen güncel uygulamada çalışır. Uygulamayı güncelle.",
+  'ai_budget' => "Yapay zekâ bugün çok yoğun. Yarın tekrar dene.",
+  _ => null,
+};
+
+/// Calls an AI Cloud Function with this installation's random id added
+/// ([installIdProvider]); the server caps free AI use per install, so new
+/// guest accounts on one phone share it (functions/src/ai_guard.ts).
+CallableInvoker aiInvoker(FirebaseFunctions functions, {String? installId}) =>
+    (name, data) async =>
+        (await functions.httpsCallable(name).call<Object?>({...data, 'installId': ?installId})).data;
+
 /// Talks to the `converse` Cloud Function (functions/src/converse.ts), which
 /// checks Premium and the daily quota and calls Claude. The Anthropic API key
 /// stays on the server.
 class CallableConversationService implements ConversationService {
   CallableConversationService(this._invoke);
 
-  CallableConversationService.firebase(FirebaseFunctions functions)
-    : this((name, data) async => (await functions.httpsCallable(name).call<Object?>(data)).data);
+  CallableConversationService.firebase(FirebaseFunctions functions, {String? installId})
+    : this(aiInvoker(functions, installId: installId));
 
   final CallableInvoker _invoke;
 
@@ -144,6 +161,7 @@ class CallableConversationService implements ConversationService {
 
   /// Turkish message for a callable error [code] and the server's [reason].
   static String messageForCode(String code, {String? reason}) => switch (code) {
+    _ when aiGuardMessage(reason) != null => aiGuardMessage(reason)!,
     'resource-exhausted' => 'Bugünlük konuşma hakkın doldu. Yarın tekrar dene.',
     'permission-denied' => 'Yapay zekâ ile konuşma Premium üyelere açık.',
     'unauthenticated' => 'Konuşmak için önce giriş yapmalısın.',
@@ -283,7 +301,7 @@ class DemoConversationService implements ConversationService {
 final conversationServiceProvider = Provider<ConversationService>((ref) {
   final functions = ref.watch(functionsProvider);
   if (functions == null || ref.watch(currentUidProvider) == null) return DemoConversationService();
-  return CallableConversationService.firebase(functions);
+  return CallableConversationService.firebase(functions, installId: ref.read(installIdProvider));
 });
 
 // ------------------------------------------------------------------ karne
@@ -365,7 +383,7 @@ class CallableConversationReportService implements ConversationReportService {
       }).timeout(const Duration(seconds: 90));
     } on FirebaseFunctionsException catch (e) {
       throw ConversationException(
-        e.code == 'resource-exhausted'
+        e.code == 'resource-exhausted' && aiGuardMessage(e.message) == null
             ? 'Bugünkü karne hakkın doldu. Yarın yeni bir sohbetle tekrar dene.'
             : CallableConversationService.messageForCode(e.code, reason: e.message),
       );
@@ -402,7 +420,5 @@ final conversationReportServiceProvider = Provider<ConversationReportService>((r
   if (!ref.watch(conversationServiceProvider).isLive || functions == null) {
     return DemoConversationReportService();
   }
-  return CallableConversationReportService(
-    (name, data) async => (await functions.httpsCallable(name).call<Object?>(data)).data,
-  );
+  return CallableConversationReportService(aiInvoker(functions, installId: ref.read(installIdProvider)));
 });

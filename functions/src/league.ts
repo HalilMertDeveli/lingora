@@ -227,6 +227,8 @@ export async function joinLeague(db: Firestore, uid: string, input: JoinInput, n
     tx.set(counterRef, { openGroup: group, openCount: count + 1 });
     tx.set(db.doc(`leagues/${groupId}/members/${uid}`), {
       ...memberProfile(input),
+      // Lets deleteAccount find every past group's row (collection group query).
+      uid,
       xp: 0,
       joinedAt: Timestamp.fromDate(now),
       updatedAt: Timestamp.fromDate(now),

@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/scenarios.dart';
 import '../services/conversation.dart';
 import '../services/firebase/firebase_providers.dart';
+import '../services/growth/referral.dart' show installIdProvider;
 
 /// One event of a streamed reply.
 sealed class TalkEvent {
@@ -103,11 +104,13 @@ typedef CallableStreamer = Stream<CallablePart> Function(String name, Map<String
 class CallableTalkService implements TalkService {
   CallableTalkService(this._stream, this._invoke);
 
-  CallableTalkService.firebase(FirebaseFunctions functions)
+  /// [installId] goes with every turn: the server caps free AI use per
+  /// install (functions/src/ai_guard.ts).
+  CallableTalkService.firebase(FirebaseFunctions functions, {String? installId})
     : this(
         (name, data) => functions
             .httpsCallable(name, options: HttpsCallableOptions(timeout: const Duration(seconds: 90)))
-            .stream<Object?, Object?>(data)
+            .stream<Object?, Object?>({...data, 'installId': ?installId})
             .map(
               (r) => switch (r) {
                 Chunk(:final partialData) => (done: false, data: partialData),
@@ -259,5 +262,5 @@ class DemoTalkService implements TalkService {
 final talkServiceProvider = Provider<TalkService>((ref) {
   final functions = ref.watch(functionsProvider);
   if (functions == null || ref.watch(currentUidProvider) == null) return DemoTalkService();
-  return CallableTalkService.firebase(functions);
+  return CallableTalkService.firebase(functions, installId: ref.read(installIdProvider));
 });
