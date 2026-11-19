@@ -8,7 +8,9 @@ import 'progress.dart';
 /// playful one (Pofuduk, emoji, tea celebrations, bouncy motion).
 enum AppMode {
   adult('Yetişkin'),
-  kid('Çocuk');
+  // Shown as "Ebeveyn gözetimli mod": used with a parent's account, under
+  // the parent's supervision (Play target audience is 13+; no AI, no friends).
+  kid('Ebeveyn gözetimli');
 
   const AppMode(this.label);
   final String label;

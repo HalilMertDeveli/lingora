@@ -32,6 +32,7 @@ import '../services/growth/analytics.dart';
 import '../services/billing/premium.dart';
 import '../services/billing/premium_perks.dart';
 import '../services/growth/paywall_trigger.dart';
+import '../services/growth/review_prompt.dart';
 import '../study/answer_recorder.dart';
 import '../theme.dart';
 import '../ui/motion.dart';
@@ -480,6 +481,17 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final dueMistakes = widget.mode == LessonMode.lesson && !autoPaywall
         ? _dueMistakes()
         : const <LessonItem>[];
+    // A happy moment (perfect lesson, unit test passed, 7+ day streak) may ask for
+    // a Play review back on the path; never in the same chain as a paywall.
+    final moment = autoPaywall
+        ? null
+        : reviewMomentFor(
+            perfect: perfect,
+            unitTest: widget.mode == LessonMode.test,
+            streak: reward.streak,
+            streakExtended: reward.streakExtended,
+          );
+    final askReview = moment == null ? null : ref.read(reviewPromptProvider);
     // Result, then streak, then daily goal and quests, then (after a run of lessons) a break reminder,
     // then (sometimes) a closable paywall; the last
     // "Devam" goes straight back to the path.
@@ -514,7 +526,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
           ),
         ),
       if (autoPaywall) (_) => const PaywallScreen(placement: PaywallPlacement.afterLessons),
-    ]);
+    ], onDone: askReview == null ? null : () => askReview(moment!));
   }
 
   /// Due notebook questions for the "Bunlar senin hataların" reminder, or

@@ -23,6 +23,8 @@ plugins {
     // START: FlutterFire Configuration
     id("com.google.gms.google-services") version("4.3.15") apply false
     // END: FlutterFire Configuration
+    // Uploads the R8 mapping file on release builds so Crashlytics stack traces are readable.
+    id("com.google.firebase.crashlytics") version "3.0.6" apply false
     id("org.jetbrains.kotlin.android") version "2.4.0" apply false
 }
 

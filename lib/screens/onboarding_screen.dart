@@ -450,10 +450,11 @@ class _AudiencePick extends ConsumerWidget {
         ),
         option(
           AppMode.kid,
-          Icons.child_care_rounded,
-          '🧒',
-          'Çocuğum için (Çocuk modu)',
-          'İlkokul, ortaokul ve LGS. Maskot, renkler ve kutlamalarla eğlenceli görünüm.',
+          Icons.family_restroom_rounded,
+          '👪',
+          'Ebeveyn olarak, çocuğumla birlikte',
+          'Ebeveyn hesabıyla, ebeveyn gözetiminde: ortaokul ve LGS konuları, maskotlu renkli görünüm. '
+              'Arkadaş ekleme ve yapay zekâ özellikleri kapalı.',
         ),
       ],
     );

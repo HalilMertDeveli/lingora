@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/speech_evidence.dart';
 import '../core/tr_errors.dart';
+import '../data/app_settings.dart';
 import '../data/scenarios.dart';
 import 'firebase/firebase_providers.dart';
 
@@ -281,6 +282,8 @@ class DemoConversationService implements ConversationService {
 /// the offline demo. (Premium itself is checked by the server; the
 /// conversation screen gates it in the UI.)
 final conversationServiceProvider = Provider<ConversationService>((ref) {
+  // Ebeveyn gözetimli modda yapay zekâ özellikleri kapalı (yalnızca hazır senaryo).
+  if (ref.watch(appSettingsProvider.select((s) => s.isKid))) return DemoConversationService();
   final functions = ref.watch(functionsProvider);
   if (functions == null || ref.watch(currentUidProvider) == null) return DemoConversationService();
   return CallableConversationService.firebase(functions);

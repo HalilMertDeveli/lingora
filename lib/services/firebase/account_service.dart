@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../growth/crash_reporting.dart';
 import 'firebase_config.dart';
 import 'firebase_providers.dart';
 
@@ -175,7 +176,8 @@ class AccountService {
     } on FirebaseFunctionsException catch (e) {
       debugPrint('deleteAccount failed: ${e.code} ${e.message}');
       throw AccountException(deleteAccountErrorTr(e.code));
-    } catch (e) {
+    } catch (e, st) {
+      CrashReporter.nonFatal(e, st, reason: 'account_delete');
       debugPrint('deleteAccount failed: $e');
       throw AccountException(deleteAccountErrorTr('unknown'));
     }
@@ -225,7 +227,8 @@ class AccountService {
     } on FirebaseAuthException catch (e) {
       debugPrint('Auth error: ${e.code} ${e.message}');
       throw AccountException(authErrorTr(authErrorCode(e)));
-    } catch (e) {
+    } catch (e, st) {
+      CrashReporter.nonFatal(e, st, reason: 'account');
       debugPrint('Account error: $e');
       // Keep a short reason on screen so a failure on a real phone can be
       // reported; the generic text alone hid every cause.

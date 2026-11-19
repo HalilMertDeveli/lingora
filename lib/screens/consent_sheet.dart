@@ -8,9 +8,11 @@ import '../theme.dart';
 const analyticsConsentText =
     'Dilmaç\'ı geliştirmek için hangi ekranların kullanıldığını ve nerede zorlanıldığını '
     'anonim olarak ölçmek istiyoruz (ör. "ders bitti", "okuma açıldı"). '
+    'Uygulama çökerse ya da bir hata olursa, hatayı düzeltebilmek için hata kaydı (cihaz modeli, '
+    'Android sürümü, hatanın yeri) ve giriş yaptıysan hesap kimliğin de gönderilir. '
     'Adın, e-postan, yazdıkların, ses kayıtların ve konum bilgin gönderilmez; reklam '
     'kimliği kullanılmaz ve veriler reklam için kullanılmaz. Veriler Google Firebase Analytics '
-    'ile işlenir. İzin vermesen de uygulamanın tamamını kullanabilirsin; kararını istediğin '
+    've Crashlytics ile işlenir. İzin vermesen de uygulamanın tamamını kullanabilirsin; kararını istediğin '
     'zaman Profil > Gizlilik bölümünden değiştirebilirsin.';
 
 /// Asks once, with two equal choices and no pre-selected answer.

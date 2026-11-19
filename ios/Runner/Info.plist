@@ -79,6 +79,9 @@
 	<!-- Firebase Analytics stays off until the user agrees (docs/analitik.md). -->
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
 	<false/>
+	<!-- Crashlytics follows the same consent (lib/services/growth/crash_reporting.dart). -->
+	<key>FirebaseCrashlyticsCollectionEnabled</key>
+	<false/>
 	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
 	<false/>
 	<key>GOOGLE_ANALYTICS_DEFAULT_ALLOW_ANALYTICS_STORAGE</key>

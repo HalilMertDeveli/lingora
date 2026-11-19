@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart' show StringCharacters;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/progress.dart';
+import '../growth/crash_reporting.dart';
 import 'account_service.dart';
 import 'firebase_providers.dart';
 import 'progress_merge.dart';
@@ -203,7 +204,8 @@ class ProgressSync extends Notifier<SyncStatus> {
       }, SetOptions(mergeFields: userDocFields));
       _uploads--;
       if (ref.mounted && _doc == doc && _timer == null && _uploads == 0) _setSynced();
-    } catch (e) {
+    } catch (e, st) {
+      CrashReporter.nonFatal(e, st, reason: 'progress_upload');
       _uploads--;
       if (ref.mounted && _doc == doc) {
         _onError(e);

@@ -2,6 +2,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/tr_errors.dart';
+import '../data/app_settings.dart';
 import '../models/course.dart';
 import 'conversation.dart';
 import 'firebase/firebase_providers.dart';
@@ -141,6 +142,8 @@ class CallableWritingService implements WritingService {
 /// The writing feedback service, or null when Firebase is off or nobody is
 /// signed in (the exercise then uses [localWritingCheck] only).
 final writingServiceProvider = Provider<WritingService?>((ref) {
+  // Ebeveyn gözetimli modda yapay zekâ özellikleri kapalı (yalnızca hazır senaryo).
+  if (ref.watch(appSettingsProvider.select((s) => s.isKid))) return null;
   final functions = ref.watch(functionsProvider);
   if (functions == null || ref.watch(currentUidProvider) == null) return null;
   return CallableWritingService.firebase(functions);

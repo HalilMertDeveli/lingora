@@ -219,7 +219,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Kimin için?'), findsOneWidget);
       expect(Brand.isKid, isFalse);
-      await tester.tap(find.text('Çocuğum için (Çocuk modu)'));
+      await tester.tap(find.text('Ebeveyn olarak, çocuğumla birlikte'));
       await tester.pumpAndSettle();
       expect(Brand.isKid, isTrue);
       final prefs = await SharedPreferences.getInstance();

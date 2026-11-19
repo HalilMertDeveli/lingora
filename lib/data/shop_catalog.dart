@@ -29,7 +29,7 @@ enum ShopCategory {
     avatar => 'Profilin, üst bar, ders sonu, lig satırın ve arkadaşlarının listesi',
     frame => 'Avatarının ya da fotoğrafının çevresinde: profil, üst bar, ders sonu, lig ve arkadaşlar',
     mascot => 'Çaycı Dayı\'nın göründüğü her yer (yetişkin modu)',
-    pofuduk => 'Pofuduk\'un göründüğü her yer (Çocuk modu)',
+    pofuduk => 'Pofuduk\'un göründüğü her yer (ebeveyn gözetimli mod)',
     theme => 'Bütün uygulama: butonlar, seçimler ve vurgular',
     freeze => 'Bir gün çalışamazsan serini otomatik korur',
   };

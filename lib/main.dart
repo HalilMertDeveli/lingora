@@ -23,7 +23,10 @@ import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
 import 'services/billing/premium_perks.dart';
 import 'services/friends.dart';
+import 'services/growth/analytics.dart';
+import 'services/growth/crash_reporting.dart';
 import 'services/growth/growth.dart';
+import 'services/growth/review_prompt.dart';
 import 'services/league_remote.dart';
 import 'services/rehearsal_cloud.dart';
 import 'services/showcase.dart';
@@ -44,6 +47,16 @@ Future<void> main() async {
   final firebase = initFirebase(mode).whenComplete(() => StartupTrace.mark('firebase'));
   final prefs = await SharedPreferences.getInstance();
   StartupTrace.mark('prefs');
+  // Crash reports: hooks now, Firebase Crashlytics once Firebase is ready.
+  // Production builds only, and only with the analytics consent.
+  CrashReporter.install(consent: prefs.getBool(AnalyticsConsent.key));
+  // The review prompt waits a few days after the first launch.
+  ReviewPolicy(prefs).markFirstSeen(DateTime.now());
+  if (mode == FirebaseMode.prod) {
+    firebase.then((ok) {
+      if (ok) CrashReporter.attach(FirebaseCrashSink());
+    });
+  }
   WidgetsBinding.instance.addPostFrameCallback((_) => StartupTrace.mark('first_frame'));
   runApp(
     ProviderScope(
@@ -83,6 +96,8 @@ class LingoraApp extends ConsumerWidget {
     ref.listen(rehearsalCloudSyncProvider, (_, _) {});
     // Analytics consent sync + churn signals (no-op without analytics).
     ref.listen(growthSignalsProvider, (_, _) {});
+    // Crash reports follow the same consent; the uid is the only identifier.
+    ref.listen(crashReportingSyncProvider, (_, _) {});
     final settings = ref.watch(appSettingsProvider);
     final brightness = switch (settings.theme) {
       ThemePref.light => Brightness.light,

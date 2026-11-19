@@ -37,6 +37,8 @@ dependencies:
   timezone: ^0.11.2
   url_launcher: ^6.3.3
   web: ^1.1.1
+  firebase_crashlytics: ^6.1.0
+  in_app_review: ^2.0.12
 
 dev_dependencies:
   flutter_test:
