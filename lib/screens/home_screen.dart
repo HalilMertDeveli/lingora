@@ -12,6 +12,7 @@ import '../data/progress.dart';
 import '../data/resume.dart';
 import '../goals/goal_card.dart';
 import '../nav/nav_target.dart';
+import '../nav/on_reveal.dart';
 import '../nav/tab_navigator.dart';
 import '../nav/course_badge.dart' show showCourseHintIfArmed;
 import '../nav/top_bar.dart';
@@ -68,6 +69,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
     awake.value = true;
     _sleep?.cancel();
     _sleep = Timer(idleAfter, () => awake.value = false);
+  }
+
+  final _reveal = RevealWatch();
+
+  // Back from a full-screen flow (lesson, paywall…): wake the tab roots, or a
+  // paused path keeps showing what it had (even a spinner) until a touch.
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_reveal.revealed(context)) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => mounted ? _wake() : null);
+    }
   }
 
   @override
