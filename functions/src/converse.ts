@@ -4,10 +4,11 @@
 // { reply, correction, tip_tr, done, remaining, free }. Premium gets a daily
 // message quota; free users get a small daily taste (FREE_DAILY_MESSAGE_LIMIT).
 import Anthropic from "@anthropic-ai/sdk";
-import { FieldValue, Firestore, Timestamp } from "firebase-admin/firestore";
+import { FieldValue, Firestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { hasPremium } from "./entitlement.js";
 import { SCENARIOS, systemPrompt } from "./scenarios.js";
 import { dayKey } from "./week.js";
 
@@ -77,13 +78,8 @@ export function parseMessages(raw: unknown): Message[] | null {
   return out;
 }
 
-/** True if entitlements/{uid} grants Premium at [now]. */
-export async function hasPremium(db: Firestore, uid: string, now: Date): Promise<boolean> {
-  const e = (await db.doc(`entitlements/${uid}`).get()).data();
-  const expires = e?.expiresAt as Timestamp | undefined;
-  const on = e?.active === true || e?.premium === true;
-  return on && !!expires && expires.toMillis() > now.getTime();
-}
+/** Premium from any source (store, family, org seat, kurum licence, invites): entitlement.ts. */
+export { hasPremium };
 
 /**
  * Counts one message against today's quota ([limit] per Turkish day); returns

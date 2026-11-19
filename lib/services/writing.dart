@@ -5,6 +5,7 @@ import '../core/tr_errors.dart';
 import '../models/course.dart';
 import 'conversation.dart';
 import 'firebase/firebase_providers.dart';
+import 'growth/referral.dart' show installIdProvider;
 
 /// One correction in AI writing feedback: [from] → [to], why in Turkish, and
 /// its error type (one of [writingFocusTypes] or "other").
@@ -108,8 +109,8 @@ abstract class WritingService {
 class CallableWritingService implements WritingService {
   CallableWritingService(this._invoke);
 
-  CallableWritingService.firebase(FirebaseFunctions functions)
-    : this((name, data) async => (await functions.httpsCallable(name).call<Object?>(data)).data);
+  CallableWritingService.firebase(FirebaseFunctions functions, {String? installId})
+    : this(aiInvoker(functions, installId: installId));
 
   final CallableInvoker _invoke;
 
@@ -131,6 +132,7 @@ class CallableWritingService implements WritingService {
 
   /// Turkish message for a callable error code.
   static String messageForCode(String code, {String? reason}) => switch (code) {
+    _ when aiGuardMessage(reason) != null => aiGuardMessage(reason)!,
     'resource-exhausted' => 'Bugünlük yazma geri bildirimi hakkın doldu. Yarın tekrar dene.',
     'permission-denied' => 'Yapay zekâ geri bildirimi Premium üyelere açık.',
     'not-found' => 'Bu görev için geri bildirim henüz hazır değil.',
@@ -143,5 +145,5 @@ class CallableWritingService implements WritingService {
 final writingServiceProvider = Provider<WritingService?>((ref) {
   final functions = ref.watch(functionsProvider);
   if (functions == null || ref.watch(currentUidProvider) == null) return null;
-  return CallableWritingService.firebase(functions);
+  return CallableWritingService.firebase(functions, installId: ref.read(installIdProvider));
 });

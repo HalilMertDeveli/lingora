@@ -12,13 +12,23 @@
 // shortens an active Premium that another source granted for longer.
 //
 // purchases/{sha256(token)} (server only) binds a purchase token to one uid:
-//   { uid, productId, kind: "subscription" | "pack" | "test", purchaseToken?, createdAt, updatedAt? }
+//   { uid, productId, kind: "subscription" | "pack" | "test", purchaseToken?, createdAt, updatedAt?,
+//     entitledUntil? (subscriptions: the Premium end this token grants on its own, entitlement.ts) }
+//
+// Exam packs, contract with the app (exam_packs.dart):
+//   entitlements/{uid}.packs       { [examId]: boolean }  examId "yds" | "lgs"
+//   entitlements/{uid}.packTokens  { [examId]: tokenHash } the purchase that granted it
+// A grant writes `true`; a refund / void / cancellation writes `false` and
+// removes packTokens.{examId}. The key is never deleted: every examId present
+// is authoritative (true = owned, false = revoked); a doc without `packs`
+// says nothing about packs. The callable result carries the same map.
 import { createHash } from "node:crypto";
 
 import { DocumentData, DocumentSnapshot, FieldValue, Firestore, Timestamp, Transaction } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { inTx, recomputedEntitlement } from "./entitlement.js";
 import { FAMILY_PRODUCT, FAMILY_SEATS } from "./family.js";
 import { PACKAGE_NAME, PlayApi, PlayApiError, SubscriptionAccess, subscriptionAccess } from "./play.js";
 
@@ -209,6 +219,12 @@ export async function syncSubscription(
     const family = productId === FAMILY_PRODUCT ? (await tx.get(db.doc(`families/${uid}`))).data() : undefined;
     const memberUids = Object.keys((family?.members as Record<string, unknown>) ?? {});
     const memberEnts = await Promise.all(memberUids.map((m) => tx.get(db.doc(`entitlements/${m}`))));
+    const end = access.entitled ? access.expiresAt : Math.min(access.expiresAt || now.getTime(), now.getTime());
+    // Reads before any write: what is left when this purchase stops granting.
+    const mine = current?.source === "play" && current?.purchaseTokenHash === hash;
+    const fallback =
+      !access.entitled && mine ? await recomputedEntitlement(db, uid, now, inTx(tx), current, null, hash) : undefined;
+    const memberFallbacks = await familyFallbacks(tx, db, uid, memberEnts, end, now);
 
     tx.set(
       tokenRef,
@@ -218,13 +234,18 @@ export async function syncSubscription(
         kind: "subscription",
         purchaseToken,
         playState: access.playState,
+        // Per-source record of this subscription (entitlement.ts reads it).
+        entitledUntil: Timestamp.fromMillis(end),
         updatedAt: FieldValue.serverTimestamp(),
         ...(bound.exists ? {} : { createdAt: FieldValue.serverTimestamp() }),
       },
       { merge: true },
     );
 
-    const next = applySubscription(tx, db, uid, current, hash, productId, access, now, family, memberEnts);
+    const next = applySubscription(tx, db, uid, current, hash, productId, access, now, family, memberEnts, {
+      fallback,
+      memberFallbacks,
+    });
     return {
       outcome: next.outcome,
       uid,
@@ -250,6 +271,7 @@ function applySubscription(
   now: Date,
   family: DocumentData | undefined,
   memberEnts: DocumentSnapshot[],
+  recomputed: { fallback?: DocumentData; memberFallbacks: Map<string, DocumentData> },
 ): { outcome: string; ent: DocumentData | undefined } {
   const entRef = db.doc(`entitlements/${uid}`);
   const mine = current?.source === "play" && current?.purchaseTokenHash === hash;
@@ -282,7 +304,7 @@ function applySubscription(
     }
     if (isFamily) {
       ent.family = { ownerUid: uid, role: "owner" };
-      writeFamilyOwner(tx, db, uid, family, memberEnts, access.expiresAt, now);
+      writeFamilyOwner(tx, db, uid, family, memberEnts, access.expiresAt, now, recomputed.memberFallbacks);
     }
     tx.set(entRef, ent, { merge: true });
     return { outcome: "granted", ent: { ...current, ...ent } };
@@ -291,18 +313,13 @@ function applySubscription(
   // Not entitled. Only the purchase that granted the current Premium may end it.
   if (!mine) return { outcome: access.status === "pending" ? "pending" : "unchanged", ent: current };
   const end = Math.min(access.expiresAt || now.getTime(), now.getTime());
-  const prev = current?.previous as DocumentData | undefined;
+  // The best other running source (a parked grant, an org seat, a family,
+  // another subscription), recomputed in syncSubscription; else Premium off.
+  const fallback = recomputed.fallback;
   const ent: DocumentData =
-    prev && ms(prev.expiresAt) > now.getTime()
-      ? {
-          active: true,
-          premium: true,
-          status: "active",
-          source: prev.source ?? FieldValue.delete(),
-          productId: prev.productId ?? FieldValue.delete(),
-          expiresAt: prev.expiresAt,
-        }
-      : { active: false, premium: false, status: access.status, expiresAt: Timestamp.fromMillis(end) };
+    fallback?.active === true
+      ? { ...fallback }
+      : { ...fallback, active: false, premium: false, status: access.status, expiresAt: Timestamp.fromMillis(end) };
   Object.assign(ent, {
     playExpiresAt: Timestamp.fromMillis(end),
     purchaseTokenHash: FieldValue.delete(),
@@ -311,10 +328,10 @@ function applySubscription(
     playState: access.playState,
     updatedAt: FieldValue.serverTimestamp(),
   });
-  if (isFamily) writeFamilyOwner(tx, db, uid, family, memberEnts, end, now);
+  if (isFamily) writeFamilyOwner(tx, db, uid, family, memberEnts, end, now, recomputed.memberFallbacks);
   tx.set(entRef, ent, { merge: true });
   const merged: DocumentData = { ...current, ...ent };
-  if (!prev || ms(prev.expiresAt) <= now.getTime()) Object.assign(merged, { active: false, premium: false });
+  if (ent.active !== true) Object.assign(merged, { active: false, premium: false });
   return { outcome: "revoked", ent: merged };
 }
 
@@ -472,17 +489,32 @@ async function grantTestPurchase(
     const family = productId === FAMILY_PRODUCT ? (await tx.get(familyRef)).data() : undefined;
     const memberUids = Object.keys((family?.members as Record<string, unknown>) ?? {});
     const memberEnts = await Promise.all(memberUids.map((m) => tx.get(db.doc(`entitlements/${m}`))));
-    if (!bound.exists) tx.set(tokenRef, { uid, productId, kind: "test", createdAt: FieldValue.serverTimestamp() });
+    const pack = Object.hasOwn(PACK_PRODUCTS, productId) ? PACK_PRODUCTS[productId] : undefined;
+    const purchased = now + PRODUCTS[productId] * DAY_MS;
+    tx.set(
+      tokenRef,
+      {
+        uid,
+        productId,
+        kind: "test",
+        ...(pack ? {} : { entitledUntil: Timestamp.fromMillis(purchased) }),
+        ...(bound.exists ? {} : { createdAt: FieldValue.serverTimestamp() }),
+      },
+      { merge: true },
+    );
 
     const packs = packsOf(current);
-    const pack = PACK_PRODUCTS[productId];
     if (pack) {
       packs[pack] = true;
-      tx.set(entRef, { packs: { [pack]: true }, updatedAt: FieldValue.serverTimestamp() }, { merge: true });
+      // Same shape as syncPack, so a refund in the emulator removes it too.
+      tx.set(
+        entRef,
+        { packs: { [pack]: true }, packTokens: { [pack]: tokenHash(purchaseToken) }, updatedAt: FieldValue.serverTimestamp() },
+        { merge: true },
+      );
       return resultOf({ ...current, packs }, nowDate, productId);
     }
 
-    const purchased = now + PRODUCTS[productId] * DAY_MS;
     const expiresAt = Math.max(purchased, premiumUntil(current, nowDate));
     const ent: DocumentData = {
       active: true,
@@ -504,6 +536,28 @@ async function grantTestPurchase(
 }
 
 /**
+ * Reads (inside [tx], before any write) what each family member of
+ * [ownerUid] keeps once the family plan ends at [end]. Empty while it runs.
+ */
+async function familyFallbacks(
+  tx: Transaction,
+  db: Firestore,
+  ownerUid: string,
+  memberEnts: DocumentSnapshot[],
+  end: number,
+  now: Date,
+): Promise<Map<string, DocumentData>> {
+  const out = new Map<string, DocumentData>();
+  if (end > now.getTime()) return out;
+  for (const snap of memberEnts) {
+    const e = snap.data();
+    if (e?.source !== "family" || e?.family?.ownerUid !== ownerUid) continue;
+    out.set(snap.id, await recomputedEntitlement(db, snap.id, now, inTx(tx), e, "family"));
+  }
+  return out;
+}
+
+/**
  * Creates or updates families/{ownerUid} and moves the Premium end of every
  * member that got Premium from this family to [expiresAt] (ended if that is
  * not after [now]).
@@ -516,6 +570,7 @@ function writeFamilyOwner(
   memberEnts: DocumentSnapshot[],
   expiresAt: number,
   now: Date,
+  fallbacks: Map<string, DocumentData> = new Map(),
 ): void {
   const until = Timestamp.fromMillis(expiresAt);
   const on = expiresAt > now.getTime();
@@ -535,6 +590,12 @@ function writeFamilyOwner(
     // Members whose Premium came from elsewhere are left alone.
     const e = snap.data();
     if (e?.source !== "family" || e?.family?.ownerUid !== ownerUid) continue;
+    // Plan over: the member keeps whatever else they have (own subscription, invite days, org seat).
+    const fallback = on ? undefined : fallbacks.get(snap.id);
+    if (fallback) {
+      tx.set(snap.ref, fallback, { merge: true });
+      continue;
+    }
     tx.set(
       snap.ref,
       {
