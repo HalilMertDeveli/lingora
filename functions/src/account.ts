@@ -26,6 +26,7 @@ const UID_DOCS = [
   "voiceUsage",
   "referrals",
   "rehearsals",
+  "speakingStats",
 ];
 
 /** Collections with a field that holds the owner's uid. */
@@ -68,6 +69,16 @@ export async function deleteUserData(db: Firestore, uid: string): Promise<Delete
   const ship = (await db.doc(`memberships/${uid}`).get()).data();
   if (typeof ship?.orgId === "string") {
     await db.doc(`orgs/${ship.orgId}/members/${uid}`).delete();
+    docs++;
+  }
+
+  // Class summaries (Kurum lisansı): the student's own doc and the teacher's
+  // speaking copy in each class they joined (classLinks itself is in UID_DOCS).
+  const links = (await db.doc(`classLinks/${uid}`).get()).get("codes");
+  for (const code of Array.isArray(links) ? links : []) {
+    if (typeof code !== "string" || !/^[A-HJ-NP-Z2-9]{8}$/.test(code)) continue;
+    await db.doc(`classes/${code}/members/${uid}`).delete();
+    await db.doc(`classes/${code}/speaking/${uid}`).delete();
     docs++;
   }
 

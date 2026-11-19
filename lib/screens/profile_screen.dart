@@ -21,6 +21,7 @@ import 'paywall_screen.dart';
 import 'profile_header.dart';
 import 'placement_screen.dart';
 import 'reminder_settings.dart';
+import 'voice_packs_settings.dart';
 import 'shop_screen.dart';
 import 'study/methods_screen.dart';
 import '../goals/goal_picker.dart';
@@ -187,6 +188,8 @@ class ProfileScreen extends ConsumerWidget {
         const SizedBox(height: 12),
         const ReminderSettings(),
         const SizedBox(height: 24),
+        // Ses: shown only when there are downloadable recordings.
+        const VoicePacksSettings(),
         const KurumSection(),
         Text('Görünüm', style: t.titleLarge),
         const SizedBox(height: 12),

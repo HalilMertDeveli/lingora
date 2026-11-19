@@ -37,6 +37,7 @@ dependencies:
   timezone: ^0.11.2
   url_launcher: ^6.3.3
   web: ^1.1.1
+  connectivity_plus: ^7.3.2
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,8 @@ flutter:
   assets:
     - assets/sfx/
     - assets/voice/
+    # Downloadable recordings (tool/voice_manifest.dart, docs/ses.md).
+    - assets/voice_manifest.json
     - assets/courses/
     - assets/courses/tr_en/
     # Path outlines of the courses (tool/build_course_index.dart).

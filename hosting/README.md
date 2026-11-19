@@ -8,6 +8,10 @@ Varsayılan Firebase Hosting sitesinde (`dilbaz-3392e.web.app`) yayınlanır:
 | `https://dilbaz-3392e.web.app/` | `sayfalar/index.html` |
 | `https://dilbaz-3392e.web.app/gizlilik` | `sayfalar/gizlilik.html` |
 | `https://dilbaz-3392e.web.app/hesap-silme` | `sayfalar/hesap-silme.html` |
+| `https://dilbaz-3392e.web.app/kurumsal` | `sayfalar/kurumsal.html` (Dilmaç Kurumsal tanıtım ve teklif formu) |
+
+Teklif formu `POST /api/kurumsal-talep` adresine gönderir; `firebase.json` bunu `submitLead`
+fonksiyonuna yönlendirir (europe-west1). Ayrıntılar: `docs/kurumsal-satis.md`.
 
 Uygulama bu adreslere `lib/core/legal_links.dart` üzerinden bağlanır.
 Play Console'a girilecekler: gizlilik politikası URL'si `…/gizlilik`, hesap silme URL'si `…/hesap-silme`.
