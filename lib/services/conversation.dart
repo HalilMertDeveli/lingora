@@ -353,9 +353,15 @@ class CallableConversationReportService implements ConversationReportService {
     final Object? raw;
     try {
       raw = await _invoke('conversationReport', {
-        'scenarioId': scenario.id,
+        ...scenario.api,
         'messages': [for (final m in recent) m.toApi()],
         'pronunciation': [for (final e in collectEvidence(history, max: 30)) e.toJson()],
+        // Recasts the voice partner made silently during the chat (talk).
+        'corrections': [
+          for (final m in recent)
+            if (m.fromUser && m.correction != null)
+              {'original': m.text, 'corrected': m.correction, 'tip_tr': m.tipTr ?? ''},
+        ],
       }).timeout(const Duration(seconds: 90));
     } on FirebaseFunctionsException catch (e) {
       throw ConversationException(
