@@ -342,6 +342,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
               child: Row(
                 children: [
                   IconButton(
+                    tooltip: 'Kapat',
                     icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () => Navigator.pop(context),
                   ),
@@ -806,7 +807,7 @@ class _ExampleLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Row(
     children: [
-      IconButton.filledTonal(onPressed: onSpeak, icon: const Icon(Icons.volume_up_rounded)),
+      IconButton.filledTonal(tooltip: 'Dinle', onPressed: onSpeak, icon: const Icon(Icons.volume_up_rounded)),
       const SizedBox(width: 8),
       Expanded(
         child: Text.rich(

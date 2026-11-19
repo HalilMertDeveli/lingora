@@ -171,6 +171,7 @@ class _SpeedMatchScreenState extends ConsumerState<SpeedMatchScreen> {
               Row(
                 children: [
                   IconButton(
+                    tooltip: 'Kapat',
                     icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () {
                       _timer?.cancel();

@@ -178,8 +178,18 @@ class _Option extends StatelessWidget {
               border: Border.all(color: marked ? color : p.line, width: 1.5),
             ),
             child: switch (state) {
-              _OptionState.right => Icon(Icons.check_rounded, size: 20, color: onColor(color)),
-              _OptionState.wrong => Icon(Icons.close_rounded, size: 20, color: onColor(color)),
+              _OptionState.right => Icon(
+                Icons.check_rounded,
+                size: 20,
+                color: onColor(color),
+                semanticLabel: 'Doğru',
+              ),
+              _OptionState.wrong => Icon(
+                Icons.close_rounded,
+                size: 20,
+                color: onColor(color),
+                semanticLabel: 'Yanlış',
+              ),
               _ => Text(
                 letter,
                 style: TextStyle(fontWeight: FontWeight.w900, color: marked ? onColor(color) : p.muted),

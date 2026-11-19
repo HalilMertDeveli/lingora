@@ -208,6 +208,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
               child: Row(
                 children: [
                   IconButton(
+                    tooltip: 'Kapat',
                     icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () {
                       _clearResume();

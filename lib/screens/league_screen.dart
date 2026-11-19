@@ -543,7 +543,8 @@ class _Row extends ConsumerWidget {
         ? Brand.success
         : inDemotionZone(tier, rank, size)
         ? _moveDownColor
-        : Brand.muted;
+        // On the user's tinted row grey was 4.4:1 (QA contrast check).
+        : (entry.isUser ? Brand.ink : Brand.muted);
     return Container(
       margin: const EdgeInsets.only(bottom: 4),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),

@@ -48,20 +48,25 @@ class MicButton extends StatelessWidget {
                 ),
               ),
             ),
-          Material(
-            color: fill,
-            shape: const CircleBorder(),
-            child: InkWell(
-              key: inkKey,
-              customBorder: const CircleBorder(),
-              onTap: onTap,
-              child: SizedBox(
-                width: size,
-                height: size,
-                child: Icon(
-                  listening ? Icons.stop_rounded : Icons.mic_rounded,
-                  color: color == null || listening ? Brand.onPrimary : onColor(fill),
-                  size: size / 2,
+          // TalkBack read an unnamed button here (QA).
+          Semantics(
+            button: true,
+            label: listening ? 'Dinlemeyi durdur' : 'Mikrofon: konuş',
+            child: Material(
+              color: fill,
+              shape: const CircleBorder(),
+              child: InkWell(
+                key: inkKey,
+                customBorder: const CircleBorder(),
+                onTap: onTap,
+                child: SizedBox(
+                  width: size,
+                  height: size,
+                  child: Icon(
+                    listening ? Icons.stop_rounded : Icons.mic_rounded,
+                    color: color == null || listening ? Brand.onPrimary : onColor(fill),
+                    size: size / 2,
+                  ),
                 ),
               ),
             ),

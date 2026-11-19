@@ -625,6 +625,7 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       const SizedBox(width: 6),
       IconButton.filled(
         key: const Key('talk-send'),
+        tooltip: 'Gönder',
         onPressed: _turns.phase == TalkPhase.thinking ? null : _sendTyped,
         icon: const Icon(Icons.send_rounded),
       ),
@@ -682,107 +683,118 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
     const fg = Colors.white;
     return Scaffold(
       backgroundColor: const Color(0xFF14202B),
+      // Scrolls when the largest font makes it taller than a small phone
+      // (it overflowed by 27 dp at 360x640, QA); otherwise fills the screen.
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
-          child: Column(
-            children: [
-              Text(
-                name,
-                style: const TextStyle(color: fg, fontSize: 28, fontWeight: FontWeight.w800),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                c?.role ?? widget.scenario.title,
-                style: TextStyle(color: fg.withValues(alpha: 0.7), fontSize: 15),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                clock,
-                key: const Key('call-clock'),
-                style: TextStyle(color: fg.withValues(alpha: 0.7)),
-              ),
-              const Spacer(),
-              _CallAvatar(emoji: c?.emoji ?? widget.scenario.emoji, phase: _turns.phase),
-              const SizedBox(height: 24),
-              DefaultTextStyle.merge(
-                style: const TextStyle(color: fg),
-                child: Text(
-                  switch (_turns.phase) {
-                    TalkPhase.listening => 'Dinliyorum…',
-                    TalkPhase.thinking => 'Düşünüyor…',
-                    TalkPhase.speaking => 'Konuşuyor…',
-                    TalkPhase.muted => 'Sessizde',
-                    TalkPhase.idle => 'Konuşmak için mikrofona dokun',
-                  },
-                  key: const Key('call-status'),
-                  style: const TextStyle(color: fg, fontSize: 17, fontWeight: FontWeight.w600),
-                ),
-              ),
-              if (_error != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Text(
-                    _error!,
-                    key: const Key('talk-error'),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Color(0xFFFFB4A8)),
+        child: LayoutBuilder(
+          builder: (context, box) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: box.maxHeight),
+              child: IntrinsicHeight(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
+                  child: Column(
+                    children: [
+                      Text(
+                        name,
+                        style: const TextStyle(color: fg, fontSize: 28, fontWeight: FontWeight.w800),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        c?.role ?? widget.scenario.title,
+                        style: TextStyle(color: fg.withValues(alpha: 0.7), fontSize: 15),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        clock,
+                        key: const Key('call-clock'),
+                        style: TextStyle(color: fg.withValues(alpha: 0.7)),
+                      ),
+                      const Spacer(),
+                      _CallAvatar(emoji: c?.emoji ?? widget.scenario.emoji, phase: _turns.phase),
+                      const SizedBox(height: 24),
+                      DefaultTextStyle.merge(
+                        style: const TextStyle(color: fg),
+                        child: Text(
+                          switch (_turns.phase) {
+                            TalkPhase.listening => 'Dinliyorum…',
+                            TalkPhase.thinking => 'Düşünüyor…',
+                            TalkPhase.speaking => 'Konuşuyor…',
+                            TalkPhase.muted => 'Sessizde',
+                            TalkPhase.idle => 'Konuşmak için mikrofona dokun',
+                          },
+                          key: const Key('call-status'),
+                          style: const TextStyle(color: fg, fontSize: 17, fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      if (_error != null)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12),
+                          child: Text(
+                            _error!,
+                            key: const Key('talk-error'),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(color: Color(0xFFFFB4A8)),
+                          ),
+                        ),
+                      const Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _CallButton(
+                            key: const Key('call-mute'),
+                            icon: _muted ? Icons.mic_off_rounded : Icons.mic_rounded,
+                            label: _muted ? 'Sesi aç' : 'Sessiz',
+                            active: _muted,
+                            onTap: () {
+                              setState(() => _muted = !_muted);
+                              unawaited(_turns.setMuted(_muted));
+                            },
+                          ),
+                          _CallButton(
+                            key: const Key('call-talk'),
+                            icon: Icons.record_voice_over_rounded,
+                            label: 'Konuş',
+                            onTap: _muted || _turns.phase == TalkPhase.thinking
+                                ? null
+                                : () => unawaited(_turns.tapMic()),
+                          ),
+                          _CallButton(
+                            key: const Key('call-speaker'),
+                            icon: _earpiece ? Icons.phone_in_talk_rounded : Icons.volume_up_rounded,
+                            label: _earpiece ? 'Ahize' : 'Hoparlör',
+                            active: !_earpiece,
+                            onTap: () {
+                              setState(() => _earpiece = !_earpiece);
+                              unawaited(_io.setEarpiece?.call(_earpiece));
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 28),
+                      Semantics(
+                        button: true,
+                        label: 'Kapat',
+                        child: InkResponse(
+                          key: const Key('call-hangup'),
+                          onTap: () {
+                            Haptics.tap();
+                            _finish();
+                          },
+                          radius: 44,
+                          child: Container(
+                            width: 76,
+                            height: 76,
+                            decoration: const BoxDecoration(color: Color(0xFFE5484D), shape: BoxShape.circle),
+                            child: const Icon(Icons.call_end_rounded, color: Colors.white, size: 36),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _CallButton(
-                    key: const Key('call-mute'),
-                    icon: _muted ? Icons.mic_off_rounded : Icons.mic_rounded,
-                    label: _muted ? 'Sesi aç' : 'Sessiz',
-                    active: _muted,
-                    onTap: () {
-                      setState(() => _muted = !_muted);
-                      unawaited(_turns.setMuted(_muted));
-                    },
-                  ),
-                  _CallButton(
-                    key: const Key('call-talk'),
-                    icon: Icons.record_voice_over_rounded,
-                    label: 'Konuş',
-                    onTap: _muted || _turns.phase == TalkPhase.thinking
-                        ? null
-                        : () => unawaited(_turns.tapMic()),
-                  ),
-                  _CallButton(
-                    key: const Key('call-speaker'),
-                    icon: _earpiece ? Icons.phone_in_talk_rounded : Icons.volume_up_rounded,
-                    label: _earpiece ? 'Ahize' : 'Hoparlör',
-                    active: !_earpiece,
-                    onTap: () {
-                      setState(() => _earpiece = !_earpiece);
-                      unawaited(_io.setEarpiece?.call(_earpiece));
-                    },
-                  ),
-                ],
               ),
-              const SizedBox(height: 28),
-              Semantics(
-                button: true,
-                label: 'Kapat',
-                child: InkResponse(
-                  key: const Key('call-hangup'),
-                  onTap: () {
-                    Haptics.tap();
-                    _finish();
-                  },
-                  radius: 44,
-                  child: Container(
-                    width: 76,
-                    height: 76,
-                    decoration: const BoxDecoration(color: Color(0xFFE5484D), shape: BoxShape.circle),
-                    child: const Icon(Icons.call_end_rounded, color: Colors.white, size: 36),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -859,7 +871,8 @@ class _CallAvatar extends StatelessWidget {
         ),
       ),
       alignment: Alignment.center,
-      child: Text(emoji, style: const TextStyle(fontSize: 64)),
+      // Decoration: the name above already says who is calling.
+      child: ExcludeSemantics(child: Text(emoji, style: const TextStyle(fontSize: 64))),
     );
   }
 }

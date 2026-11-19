@@ -57,19 +57,41 @@ class ProfileScreen extends ConsumerWidget {
         const SizedBox(height: 24),
         Text('İstatistikler', style: t.titleLarge),
         const SizedBox(height: 12),
-        GridView.count(
-          crossAxisCount: 2,
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          mainAxisSpacing: 12,
-          crossAxisSpacing: 12,
-          childAspectRatio: 2.2,
-          children: [
-            _StatCard(Icons.local_fire_department, Brand.streak, '${p.streakAt(now)}', 'Günlük seri'),
-            _StatCard(Icons.bolt, Brand.xp, '${p.totalXp}', 'Toplam XP'),
-            _StatCard(Icons.menu_book_rounded, Brand.primary, '${p.lessonsDone}', 'Bitirilen ders'),
-            _StatCard(Icons.track_changes, Brand.success, '%$accuracy', 'Doğruluk'),
-          ],
+        // Two per row, never shorter than the old 2.2 ratio grid but taller
+        // when the text needs it (the fixed grid cut the labels at the
+        // largest font on a 360 dp phone, QA).
+        LayoutBuilder(
+          builder: (context, box) {
+            final minHeight = (box.maxWidth - 12) / 2 / 2.2;
+            Widget row(Widget a, Widget b) => IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: minHeight),
+                      child: a,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(child: b),
+                ],
+              ),
+            );
+            return Column(
+              children: [
+                row(
+                  _StatCard(Icons.local_fire_department, Brand.streak, '${p.streakAt(now)}', 'Günlük seri'),
+                  _StatCard(Icons.bolt, Brand.xp, '${p.totalXp}', 'Toplam XP'),
+                ),
+                const SizedBox(height: 12),
+                row(
+                  _StatCard(Icons.menu_book_rounded, Brand.primary, '${p.lessonsDone}', 'Bitirilen ders'),
+                  _StatCard(Icons.track_changes, Brand.success, '%$accuracy', 'Doğruluk'),
+                ),
+              ],
+            );
+          },
         ),
         const SizedBox(height: 12),
         // The Mağaza: Altın balance and what it buys.

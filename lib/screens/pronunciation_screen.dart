@@ -403,6 +403,7 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
               child: Row(
                 children: [
                   IconButton(
+                    tooltip: 'Kapat',
                     icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () => Navigator.pop(context),
                   ),

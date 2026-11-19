@@ -587,6 +587,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
         icon: Icon(Icons.record_voice_over_rounded, color: Brand.primary),
       ),
       IconButton(
+        tooltip: _listening ? 'Dinlemeyi durdur' : 'Konuş',
         onPressed: _mic,
         icon: Icon(
           _listening ? Icons.stop_circle_rounded : Icons.mic_rounded,
@@ -609,6 +610,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       ),
       const SizedBox(width: 6),
       IconButton.filled(
+        tooltip: 'Gönder',
         key: const Key('chat-send'),
         onPressed: _waiting ? null : _send,
         icon: const Icon(Icons.send_rounded),

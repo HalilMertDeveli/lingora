@@ -613,6 +613,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> with Widg
                 child: Row(
                   children: [
                     IconButton(
+                      tooltip: 'Kapat',
                       icon: Icon(Icons.close, color: Brand.muted),
                       onPressed: _quit,
                     ),
@@ -710,10 +711,23 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> with Widg
                                           shape: BoxShape.circle,
                                           color: (_optionColor(i) ?? Brand.line).withValues(alpha: 0.25),
                                         ),
-                                        child: Text(
-                                          _letters[i],
-                                          style: const TextStyle(fontWeight: FontWeight.w900),
-                                        ),
+                                        // After "Kontrol", a mark as well as the colour.
+                                        child: _revealed && i == q.answer
+                                            ? const Icon(
+                                                Icons.check_rounded,
+                                                size: 20,
+                                                semanticLabel: 'Doğru',
+                                              )
+                                            : _revealed && i == _picked
+                                            ? const Icon(
+                                                Icons.close_rounded,
+                                                size: 20,
+                                                semanticLabel: 'Yanlış',
+                                              )
+                                            : Text(
+                                                _letters[i],
+                                                style: const TextStyle(fontWeight: FontWeight.w900),
+                                              ),
                                       ),
                                       const SizedBox(width: 12),
                                       Expanded(
@@ -957,8 +971,10 @@ class ExamResultScreen extends StatelessWidget {
 Future<void> showMockLimitSheet(BuildContext context) => showModalBottomSheet<void>(
   context: context,
   showDragHandle: true,
+  // Grows and scrolls at the largest font instead of cutting its end off.
+  isScrollControlled: true,
   builder: (c) => SafeArea(
-    child: Padding(
+    child: SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Column(
         key: const Key('mock-limit-sheet'),

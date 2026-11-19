@@ -12,8 +12,11 @@ Future<bool> confirmQuitFlow(BuildContext context, {required String title, requi
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
+    // At the largest font on a 360 dp phone the sheet did not fit its
+    // default 9/16 height and cut off both buttons (QA): let it grow, scroll.
+    isScrollControlled: true,
     builder: (c) => SafeArea(
-      child: Padding(
+      child: SingleChildScrollView(
         key: const Key('quit-sheet'),
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
         child: Column(

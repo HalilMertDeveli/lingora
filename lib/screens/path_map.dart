@@ -691,6 +691,12 @@ class _BandPattern extends StatelessWidget {
 }
 
 /// "Bu üniteyi atla" on a unit band: the skip exam with five hearts.
+/// [c] deep enough for 4.5:1 text on white (HSL lightness at most 0.3).
+Color _deep(Color c) {
+  final h = HSLColor.fromColor(c);
+  return h.lightness > 0.3 ? h.withLightness(0.3).toColor() : c;
+}
+
 class _SkipButton extends StatelessWidget {
   const _SkipButton({super.key, required this.color, required this.onTap});
   final Color color;
@@ -714,7 +720,8 @@ class _SkipButton extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 'Atla',
-                style: TextStyle(color: color, fontWeight: FontWeight.w800),
+                // Light unit colours were 3.4:1 on the white chip (QA).
+                style: TextStyle(color: _deep(color), fontWeight: FontWeight.w800),
               ),
             ],
           ),
@@ -732,7 +739,9 @@ class _GuideButton extends StatelessWidget {
   Widget build(BuildContext context) => Tooltip(
     message: 'Ünite rehberi',
     child: Material(
-      color: Colors.white.withValues(alpha: 0.18),
+      // A darker, not lighter, wash under the white label: white on a
+      // lightened unit colour was 4.3:1 (QA contrast check).
+      color: Colors.black.withValues(alpha: 0.16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
         side: BorderSide(color: Colors.white.withValues(alpha: 0.45), width: 2),
