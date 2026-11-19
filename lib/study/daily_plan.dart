@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import '../core/emoji_compat.dart';
 import '../data/placement.dart' show Cefr;
 import '../data/progress.dart';
 import '../models/course.dart';
@@ -22,9 +23,12 @@ enum PlanBlock {
   mock('Deneme', '⏱️'),
   mockReview('Deneme analizi', '🔬');
 
-  const PlanBlock(this.title, this.emoji);
+  const PlanBlock(this.title, this._emoji);
   final String title;
-  final String emoji;
+  final String _emoji;
+
+  /// Safe on Android 7–9 (see emoji_compat.dart).
+  String get emoji => legacyEmoji(_emoji);
 }
 
 enum DayKind { normal, light, mock, afterMock }

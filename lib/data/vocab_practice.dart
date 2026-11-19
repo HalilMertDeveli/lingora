@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../core/spelling.dart';
 import '../models/vocab.dart';
 import 'progress.dart';
@@ -27,7 +28,7 @@ const knownBox = 3;
 Future<VocabBundle> loadVocab(AssetBundle bundle) async =>
     VocabBundle.fromJson(jsonDecode(await bundle.loadString(vocabAsset)) as Map<String, dynamic>);
 
-final vocabProvider = FutureProvider<VocabBundle>((ref) => loadVocab(rootBundle));
+final vocabProvider = FutureProvider<VocabBundle>((ref) => loadVocab(appBundle));
 
 enum VocabStatus { unknown, learning, known }
 

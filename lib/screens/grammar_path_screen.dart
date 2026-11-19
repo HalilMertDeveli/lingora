@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../data/formula_colors.dart';
 import '../data/notes_practice.dart';
 import '../data/practice.dart';
@@ -26,7 +26,7 @@ Future<List<GrammarLesson>> loadLessons(AssetBundle bundle) async {
   return raw.map((l) => GrammarLesson.fromJson(l as Map<String, dynamic>)).toList();
 }
 
-final grammarLessonsProvider = FutureProvider<List<GrammarLesson>>((ref) => loadLessons(rootBundle));
+final grammarLessonsProvider = FutureProvider<List<GrammarLesson>>((ref) => loadLessons(appBundle));
 
 String lessonNodeId(GrammarLesson l) => 'gl_${l.id}';
 
@@ -437,7 +437,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
       const Mascot(mood: Mood.happy, size: 110, decorative: true),
       if (l.tip != null) ...[
         const SizedBox(height: 16),
-        _InfoBox(icon: '🧠', title: 'Hafıza ipucu', text: l.tip!, color: Brand.accent),
+        _InfoBox(icon: legacyEmoji('🧠'), title: 'Hafıza ipucu', text: l.tip!, color: Brand.accent),
       ],
     ],
   );

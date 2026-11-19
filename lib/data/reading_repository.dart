@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../models/reading.dart';
 
 List<ReadingStory> parseStories(String json) =>
@@ -50,4 +51,4 @@ Future<List<ReadingStory>> loadStories(AssetBundle bundle) async {
   return stories;
 }
 
-final storiesProvider = FutureProvider<List<ReadingStory>>((ref) => loadStories(rootBundle));
+final storiesProvider = FutureProvider<List<ReadingStory>>((ref) => loadStories(appBundle));

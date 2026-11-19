@@ -1,4 +1,5 @@
 import '../data/practice.dart';
+import '../core/emoji_compat.dart';
 import '../data/progress.dart';
 import '../models/course.dart';
 import '../models/vocab.dart';
@@ -14,9 +15,12 @@ enum MistakeReason {
   time('Süre yetmedi', '⏱️'),
   guess('Tahmin ettim', '🎲');
 
-  const MistakeReason(this.label, this.emoji);
+  const MistakeReason(this.label, this._emoji);
   final String label;
-  final String emoji;
+  final String _emoji;
+
+  /// Safe on Android 7–9 (see emoji_compat.dart).
+  String get emoji => legacyEmoji(_emoji);
 
   static MistakeReason? byName(String? name) => values.where((r) => r.name == name).firstOrNull;
 

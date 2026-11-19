@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../models/course.dart';
 import 'catalog.dart';
 import 'course_repository.dart';
@@ -112,7 +112,7 @@ String? pathCourseId(Track t) => switch (t.kind) {
 final trackOutlineProvider = FutureProvider.family<Course?, String>((ref, trackId) async {
   final id = pathCourseId(trackById(trackId));
   if (id == null) return null;
-  return loadCourseOutline(rootBundle, id);
+  return loadCourseOutline(appBundle, id);
 });
 
 /// Done and total steps of a track's path.

@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/app_resume.dart';
 import 'core/frame_stats.dart';
+import 'core/legacy_emoji.dart';
 import 'core/startup_trace.dart';
 import 'data/app_settings.dart';
 import 'data/gold_wallet.dart';
@@ -45,7 +46,8 @@ Future<void> main() async {
   // analytics, billing) start when firebaseReadyProvider turns true.
   final mode = FirebaseMode.fromEnvironment;
   final firebase = initFirebase(mode).whenComplete(() => StartupTrace.mark('firebase'));
-  final prefs = await SharedPreferences.getInstance();
+  // Android 7–9: emoji they cannot draw are swapped (lib/core/legacy_emoji.dart).
+  final (prefs, _) = await (SharedPreferences.getInstance(), detectLegacyEmoji()).wait;
   StartupTrace.mark('prefs');
   // Crash reports: hooks now, Firebase Crashlytics once Firebase is ready.
   // Production builds only, and only with the analytics consent.

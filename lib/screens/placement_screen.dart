@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/placement.dart';
@@ -14,7 +14,7 @@ import 'grammar_path_screen.dart' show grammarLessonsProvider, levelColor;
 /// Called when the user picks a plan on the result screen.
 typedef PlacementDone = void Function(BuildContext context, PlacementRecommendation plan);
 
-final _generalCourseProvider = FutureProvider<Course>((ref) => loadCourse(rootBundle, defaultTrackId));
+final _generalCourseProvider = FutureProvider<Course>((ref) => loadCourse(appBundle, defaultTrackId));
 
 /// First-section ("Temeller") units of the general course as node-id lists,
 /// for the recommendation.

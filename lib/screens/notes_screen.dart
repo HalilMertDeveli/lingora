@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/emoji_compat.dart';
 import '../core/tr_errors.dart';
 import '../data/notes_index.dart';
 import '../data/notes_practice.dart';
@@ -547,7 +548,7 @@ void showNoteWordSheet(BuildContext context, WidgetRef ref, NoteWord w) => showM
           ],
           if (w.story != null) ...[
             const SizedBox(height: 12),
-            Text('${kidEmoji('🧠')}Hafıza ipucu: ${w.story}'),
+            Text('${kidEmoji(legacyEmoji('🧠'))}Hafıza ipucu: ${w.story}'),
           ],
           if (isOwnWord(w)) ...[
             const SizedBox(height: 12),
@@ -1326,7 +1327,7 @@ class _GrammarPathCard extends ConsumerWidget {
         children: [
           Row(
             children: [
-              const Glyph(emoji: '🧭', icon: Icons.route_outlined, size: 30),
+              Glyph(emoji: legacyEmoji('🧭'), icon: Icons.route_outlined, size: 30),
               const SizedBox(width: 10),
               Expanded(child: Text('Gramer Yolu', style: Theme.of(context).textTheme.titleLarge)),
               Text(

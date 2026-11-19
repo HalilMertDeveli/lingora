@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../models/course.dart';
@@ -51,7 +52,7 @@ Future<List<VocabEntry>?> loadYdsVocab(AssetBundle bundle) async {
 
 const ydsVocabAsset = 'assets/vocab/yds.json';
 
-final ydsVocabProvider = FutureProvider<List<VocabEntry>?>((ref) => loadYdsVocab(rootBundle));
+final ydsVocabProvider = FutureProvider<List<VocabEntry>?>((ref) => loadYdsVocab(appBundle));
 
 /// Word cards [course] offers for the lessons done in [p], in path order.
 /// On the YDS path, [ydsCards] (yds.json) join once a lesson of their

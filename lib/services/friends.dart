@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/emoji_compat.dart';
 import '../data/progress.dart';
 import 'contacts/phone_numbers.dart';
 import 'firebase/firebase_providers.dart';
@@ -48,7 +49,7 @@ const _avatars = ['🦊', '🐢', '🦉', '🐼', '🐝', '🐬', '🦁', '🐧'
 
 /// A stable animal for a uid, so friends are easy to tell apart.
 String friendAvatar(String uid) =>
-    _avatars[uid.codeUnits.fold<int>(0, (a, b) => (a * 31 + b) & 0xffff) % _avatars.length];
+    legacyEmoji(_avatars[uid.codeUnits.fold<int>(0, (a, b) => (a * 31 + b) & 0xffff) % _avatars.length]);
 
 String pairIdOf(String a, String b) => a.compareTo(b) < 0 ? '${a}_$b' : '${b}_$a';
 

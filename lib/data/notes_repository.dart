@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../models/notes.dart';
 
 /// Loads the notes imported from Notion (see tool/import_notes.js).
@@ -22,4 +23,4 @@ Future<NotesBundle> loadNotes(AssetBundle bundle) async {
   );
 }
 
-final notesProvider = FutureProvider<NotesBundle>((ref) => loadNotes(rootBundle));
+final notesProvider = FutureProvider<NotesBundle>((ref) => loadNotes(appBundle));

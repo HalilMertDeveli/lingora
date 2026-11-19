@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 
+import '../core/emoji_compat.dart';
 import '../data/shop_catalog.dart';
 import '../theme.dart';
 import 'avatar.dart';
@@ -271,7 +272,7 @@ class ShopItemPreview extends StatelessWidget {
         color: const Color(0xFF4FA3E0).withValues(alpha: 0.15),
         shape: BoxShape.circle,
       ),
-      child: Text(item.emoji ?? '🧊', style: TextStyle(fontSize: size * 0.5)),
+      child: Text(item.emoji ?? legacyEmoji('🧊'), style: TextStyle(fontSize: size * 0.5)),
     ),
   };
 }
