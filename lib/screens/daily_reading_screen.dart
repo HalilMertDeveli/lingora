@@ -289,8 +289,9 @@ class _TalkButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final launch = ref.watch(talkAboutLauncherProvider);
-    if (launch == null || ref.watch(appSettingsProvider.select((s) => s.isKid)))
+    if (launch == null || ref.watch(appSettingsProvider.select((s) => s.isKid))) {
       return const SizedBox.shrink();
+    }
     final premium = ref.watch(premiumProvider);
     return FilledButton.icon(
       key: const ValueKey('daily-talk'),

@@ -12,7 +12,6 @@ import 'package:lingora/screens/exam_season_card.dart';
 import 'package:lingora/screens/growth_profile_section.dart';
 import 'package:lingora/screens/invite_nudge.dart';
 import 'package:lingora/screens/invite_screen.dart';
-import 'package:lingora/services/billing/billing_service.dart';
 import 'package:lingora/services/billing/premium.dart';
 import 'package:lingora/services/growth/analytics.dart';
 import 'package:lingora/services/growth/daily_reading.dart';
