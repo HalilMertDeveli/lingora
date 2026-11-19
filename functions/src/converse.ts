@@ -15,8 +15,8 @@ import { dayKey } from "./week.js";
 export const MODEL = "claude-sonnet-5-5";
 export const MAX_MESSAGES = 20;
 export const MAX_CHARS = 400;
-/** Learner messages per user per Turkish day. */
-export const DAILY_MESSAGE_LIMIT = 60;
+/** Learner messages per Turkish day with Premium. Hands-free talk has short turns; the real Premium limit is the talk fair-use time (talk.ts). */
+export const DAILY_MESSAGE_LIMIT = 300;
 /** Learner messages per Turkish day without Premium (the "free taste"). */
 export const FREE_DAILY_MESSAGE_LIMIT = 3;
 
@@ -90,7 +90,7 @@ export async function hasPremium(db: Firestore, uid: string, now: Date): Promise
  * how many are left. Free and Premium share the counter, so buying Premium
  * mid-day keeps the messages already used.
  */
-async function takeQuota(db: Firestore, uid: string, now: Date, limit: number, free: boolean): Promise<number> {
+export async function takeQuota(db: Firestore, uid: string, now: Date, limit: number, free: boolean): Promise<number> {
   const ref = db.doc(`usage/${uid}`);
   const day = dayKey(now);
   return db.runTransaction(async (tx) => {
@@ -102,7 +102,7 @@ async function takeQuota(db: Firestore, uid: string, now: Date, limit: number, f
   });
 }
 
-async function refundQuota(db: Firestore, uid: string, now: Date): Promise<void> {
+export async function refundQuota(db: Firestore, uid: string, now: Date): Promise<void> {
   const ref = db.doc(`usage/${uid}`);
   await db.runTransaction(async (tx) => {
     const u = (await tx.get(ref)).data();

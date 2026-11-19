@@ -23,6 +23,7 @@ const UID_DOCS = [
   "usageWriting",
   "reportUsage",
   "usageRehearsal",
+  "voiceUsage",
   "referrals",
   "rehearsals",
 ];
