@@ -297,6 +297,9 @@ const _homophones = {
 
 String _homophone(String w) => _homophones[w] ?? w;
 
+/// [a] and [b] are written differently but sound the same (to / two).
+bool sameSound(String a, String b) => _homophone(a) == _homophone(b);
+
 /// A rough sound key: consonants as they sound to a Turkish ear ("th" may
 /// come out as "t" or "d"), vowels dropped after the first letter, doubles
 /// collapsed. "think" and "tink", "this" and "dis", "very" and "wery",

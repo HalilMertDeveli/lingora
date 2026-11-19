@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/pronunciation_feedback.dart';
 import '../core/spoken_match.dart';
 import '../core/text.dart';
 import '../data/progress.dart';
 import '../data/quests.dart';
 import '../exercises/common.dart' show SpeakerButton;
+import '../exercises/hands_free.dart';
 import '../exercises/speak_mic.dart';
 import '../models/pronunciation.dart';
 import '../services/speech.dart';
@@ -16,6 +18,7 @@ import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../ui/pronunciation_score.dart';
 import 'lesson_result_screen.dart';
 
 Future<List<PronUnit>> loadPronUnits(AssetBundle bundle) async =>
@@ -223,18 +226,30 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
   String _heard = '';
   bool _passedThis = false;
   int _speakPassed = 0;
+  List<SpeechGuess> _guesses = const [];
+  bool _noSpeech = false;
+  late final HandsFreeTurn _turn;
+
+  @override
+  void initState() {
+    super.initState();
+    _turn = HandsFreeTurn(speech: _speech, player: ref.read(linePlayerProvider));
+  }
 
   PronUnit get u => widget.unit;
+  bool get _handsFree => ref.read(handsFreeProvider);
   _Step get _step => _steps[_i];
   int get _listenTotal => u.pairs.length;
 
   @override
   void dispose() {
+    _turn.cancel();
     if (_listening) _speech.stopListening();
     super.dispose();
   }
 
   void _next() {
+    _turn.cancel();
     if (_listening) _speech.stopListening();
     if (_passedThis) _speakPassed++;
     if (_i + 1 >= _steps.length) {
@@ -248,8 +263,55 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
       _attempted = false;
       _heard = '';
       _passedThis = false;
+      _guesses = const [];
+      _noSpeech = false;
     });
-    if (_step.kind != _Kind.explain) _speech.say(_step.target);
+    // Hands-free: the word is read out, then the microphone opens.
+    if (_step.kind == _Kind.speak && _handsFree && !_micUnavailable) {
+      _autoListen(prompt: _step.target);
+    } else if (_step.kind != _Kind.explain) {
+      _speech.say(_step.target);
+    }
+  }
+
+  Future<void> _autoListen({String? prompt}) async {
+    setState(() {
+      _noSpeech = false;
+      _heard = '';
+    });
+    final target = _step.target;
+    await _turn.run(
+      target: target,
+      prompt: prompt,
+      onListening: () {
+        if (mounted) setState(() => _listening = true);
+      },
+      onWords: (w) {
+        if (mounted) setState(() => _heard = w);
+      },
+      onDone: ({required bool noSpeech}) {
+        if (!mounted) return;
+        if (noSpeech) {
+          setState(() {
+            _listening = false;
+            _noSpeech = true;
+          });
+        } else {
+          _judge(target);
+        }
+      },
+    );
+  }
+
+  void _judge(String target) {
+    final passed = coachMatch(target, _heard).passed;
+    setState(() {
+      _listening = false;
+      _attempted = true;
+      _guesses = lastRecognition.value;
+      _passedThis = _passedThis || passed;
+    });
+    passed ? Haptics.success() : Haptics.tap();
   }
 
   void _pick(String word) {
@@ -271,28 +333,28 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
       await _speech.stopListening();
       return;
     }
+    _turn.cancel();
     if (!await _speech.canListen) {
       if (mounted) setState(() => _micUnavailable = true);
+      return;
+    }
+    if (_handsFree) {
+      handsFreeMicRefused = false;
+      await _autoListen();
       return;
     }
     setState(() {
       _listening = true;
       _heard = '';
     });
+    final target = _step.target;
     await _speech.listenTo(
-      _step.target,
+      target,
       onWords: (w) {
         if (mounted) setState(() => _heard = w);
       },
       onDone: () {
-        if (!mounted) return;
-        final passed = coachMatch(_step.target, _heard).passed;
-        setState(() {
-          _listening = false;
-          _attempted = true;
-          _passedThis = _passedThis || passed;
-        });
-        passed ? Haptics.success() : Haptics.tap();
+        if (mounted) _judge(target);
       },
     );
   }
@@ -615,6 +677,14 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
     );
   }
 
+  /// From a Telaffuz puanı tip: the coach unit for that sound (not this one).
+  void _openUnit(String unitId) {
+    if (unitId == u.id) return;
+    final unit = ref.read(pronUnitsProvider).value?.where((x) => x.id == unitId).firstOrNull;
+    if (unit == null) return;
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => PronunciationUnitScreen(unit: unit)));
+  }
+
   Widget _speak(_Step s) {
     final feedback = _attempted && !_listening
         ? speakFeedback(target: s.target, heard: _heard, pair: s.pair)
@@ -657,7 +727,20 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
             child: MicButton(listening: _listening, color: _coachColor, onTap: _toggleMic),
           ),
           const SizedBox(height: 6),
-          if (!_listening && match != null && match.heard.isNotEmpty) SpokenWordsView(match: match),
+          if (_listening && _handsFree) ...[const ListeningIndicator(), const SizedBox(height: 6)],
+          if (_noSpeech && !_listening) ...[
+            NoSpeechHint(onRetry: () => _autoListen()),
+            const SizedBox(height: 6),
+          ],
+          if (!_listening && match != null && match.heard.isNotEmpty) ...[
+            SpokenWordsView(match: match),
+            const SizedBox(height: 8),
+            PronunciationScoreCard(
+              feedback: pronunciationFeedback(s.target, _guesses, heard: _heard),
+              onOpenUnit: _openUnit,
+            ),
+            const SizedBox(height: 6),
+          ],
           Text(
             _listening
                 ? (_heard.isEmpty ? 'Dinliyorum… Şimdi söyle.' : '“$_heard”')

@@ -19,6 +19,10 @@ ekstraları açar.
 | | 🪙 **2 kat altın** (ders, görev, lig, seri ödülleri) |
 | | 🦅 **Premium avatar ve çerçeveler** (Mağaza'da "Premium" rozetli) |
 | | 🎯 **Tüm tam deneme paketleri** (paketler tek tek de satın alınabilir, bölüm 7) |
+| Telaffuz puanının özeti + **ilk zor kelime** | 🎯 **Telaffuz puanı** tam ayrıntı: her zor kelimede ses ipucu, doğru telaffuz, koç dersi |
+| "Neden yanlış?" açıklamasının kendisi | 🙋 **"Neden yanlış?" sorusuna devam**: Anlamadım / Daha basit anlat / kendi sorun (günde 30) |
+| Haftalık koç mesajının özeti + **en sık hata** | 🗓️ **Haftalık koç mesajı**: en sık 3 hata, ne düzeldi, tek dokunuşla odak alıştırması |
+| **Kilometre taşı paylaşım kartı** (seviye, seri, kelime) | 🖼️ **Aylık paylaşım kartı** (ayın aktif günleri, XP grafiği, seviye değişimi) |
 | Sohbet senaryolarının **demo modu** (hazır senaryo + kural tabanlı düzeltme) | |
 | Türk hata dedektörü ve profilde **en sık 3 hata** | |
 | Hesapla **bulut yedekleme** ve cihazlar arası devam (giriş yapan herkes) | |
@@ -202,6 +206,10 @@ istemci ücretsiz kullanabilir.
 | `lib/services/billing/premium.dart` | `PremiumController`, `premiumProvider`, geliştirici anahtarı, deneme kotası |
 | `lib/screens/paywall_screen.dart` | Paywall ve `requirePremium(...)` kapısı |
 | `lib/screens/error_analysis_screen.dart` | Premium: detaylı hata analizi |
+| `lib/core/pronunciation_feedback.dart`, `lib/ui/pronunciation_score.dart` | Telaffuz puanı (kelime kelime doğru / şu ses zor / anlaşılmadı) |
+| `lib/services/explain_more.dart`, `lib/ui/explain_more.dart`, `functions/src/explain_more.ts` | "Neden yanlış?" sorusuna devam |
+| `lib/study/weekly_coach.dart`, `lib/screens/weekly_coach_card.dart` | Haftalık koç mesajı |
+| `lib/data/share_card.dart`, `lib/ui/share_card.dart` | Paylaşım kartı (kilometre taşı / aylık) |
 | `test/premium_test.dart` | Sahte mağaza/sunucu ile testler |
 
 Firebase bağlantısı: `entitlementBackendProvider` varsayılan olarak `null`dır
@@ -411,14 +419,19 @@ lisans test hesabı kullan.
 
 | Ayrıcalık | Nasıl çalışır | Kod |
 | --- | --- | --- |
-| "Neden yanlış?" | Ücretsiz: günde 3 farklı soru (aynı soru tekrar hak harcamaz). Sonrakilerde bulanık önizleme + Premium kartı. Premium: sınırsız. | `WhyWrongQuota` |
+| "Neden yanlış?" | Ücretsiz: günde 3 farklı soru (aynı soru tekrar hak harcamaz). Sonrakilerde öğrenme döngüsü yine tamamlanır: sorunun açıklaması + **tek satırlık temel neden** (doğru şıkkın "Doğru: …" satırı, yoksa açıklamanın ilk cümlesi, `basicWhyLine`). Şıkların Türkçesi ve her şıkkın neden olmadığı bulanık; küçük Premium kartı **açıklamanın altında**. Premium: sınırsız tam açıklama + soruya devam. | `WhyWrongQuota`, `LockedWhyWrong` |
 | 2 kat altın | Ders/hatasız/günlük hedef/seri ödülleri, görevler, lig ve `GoldWallet.earn`. Bir kez verilen ödüller (onceKey) iki katıyla birlikte yine bir kez verilir. Ders sonunda "Premium ×2" satırı görünür. | `goldMultiplierProvider` |
 | Ayda 2 seri dondurma | Premium aktifken her takvim ayında bir kez cüzdana eklenir (`pfz:YYYY-AA` anahtarı, ilerlemeyle senkronlanır). Stok Premium'da en fazla 4. | `grantMonthlyFreezes` |
 | Premium avatar/çerçeve | Mağaza'da "Premium" rozetli; herkes üstünde deneyebilir, yalnızca Premium altınsız alır. Alınan ürün Premium bitse de kalır. | `ShopItem.premiumOnly` |
+| Telaffuz puanı | Bölüm 12.1. Ücretsiz: sayımlar + ilk zor kelime; Premium: her kelimede ses ipucu ve koç dersi. | `PronunciationScoreCard` |
+| "Neden yanlış?" sorusuna devam | Bölüm 12.2. Ücretsiz kullanıcı düğmeye basınca Premium kartını görür. | `ExplainMoreBox`, `explainMore` |
+| Haftalık koç mesajı | Bölüm 12.3. Ücretsiz: haftanın sayıları + en sık hata, gerisi bulanık. | `WeeklyCoachCard` |
+| Aylık paylaşım kartı | Bölüm 12.4. Kilometre taşı kartı herkese açık. | `ShareCardScreen` |
 
-Paywall'ın kendiliğinden açıldığı anlar: günlük mini deneme hakkı bitince,
-"Neden yanlış?" günlük hakkı bitince (yanlış cevaptan kısa süre sonra) ve
-ders serisinden sonra (`paywall_after_lessons`). 7, 30 ve 100 günlük seride
+Paywall'ın kendiliğinden açıldığı anlar: günlük mini deneme hakkı bitince ve
+ders serisinden sonra. "Neden yanlış?" hakkı bitince paywall **kendiliğinden
+açılmaz**: soru cevaplanırken ya da açıklaması okunurken hiçbir teklif araya
+girmez, yalnızca açıklamadan sonra küçük bir kart çıkar. Ders serisinden sonra (`paywall_after_lessons`). 7, 30 ve 100 günlük seride
 kutlama ekranının altında yumuşak bir öneri kartı çıkar (tam ekran paywall değil).
 
 Rahatsız etmeme kuralları (`PaywallPacer`): kendiliğinden açılan tam ekran
@@ -428,3 +441,81 @@ gösterilmez. Kullanıcının kendi açtığı paywall (düğme, kart) sınırla
 dolunca mini deneme için tam ekran yerine küçük bir alt sayfa çıkar. Gösterimler
 `paywall_view` / `premium_offer_view` olaylarıyla `placement` kırılımında
 kaydedilir (docs/analitik.md).
+
+## 12. Premium güçlendirmeleri (Telaffuz puanı, soruya devam, koç mesajı, paylaşım kartı)
+
+### 12.1. Telaffuz puanı
+
+Telaffuz koçunun "Söyle" adımlarında ve derslerdeki "Bu cümleyi sesli oku"
+alıştırmalarında, konuştuktan sonra çıkar. Tamamen cihazda hesaplanır
+(`pronunciationFeedback`): telefonun konuşma tanıma sonucu, tanıyıcının diğer
+tahminleri (`lastRecognition`) ve hedef cümle kelime kelime hizalanır.
+
+- **Doğru**: tanıyıcı kelimeyi aynen yazdı (sesteşler, rakamlar dahil: two/2).
+- **Şu ses zor**: benzer sesli başka bir kelime yazdı ("three" yerine "tree")
+  ya da diğer tahmini öyle duydu (sheep / ship).
+- **Anlaşılmadı**: kelimeye benzeyen hiçbir şey duyulmadı.
+
+Uydurma yüzde yoktur ("%83 akıcılık" gibi). Sadece bu üç kategorinin sayısı
+gösterilir; tanıyıcının kendi güveni 0,5'in altındaysa sayı değil, "telefon
+emin olamadı" notu çıkar. Her zor kelimede olası Türk konuşucu sorunu adlandırılır
+(th, w/v, kısa/uzun ünlü, geniş a, kelime sonu ünsüz, sp/st başı, -ed, ng,
+okunmayan harf) ve hoparlör düğmesi doğru telaffuzu çalar: kayıtlı ses varsa
+o, yoksa telefonun konuşma motoru. Hiçbir şey duyulmadıysa sorun yalnızca
+yazılıştan tahmin edilir ve "Olası neden" diye işaretlenir.
+
+Ücretsiz: sayımlar ve ilk zor kelime (ipucu olmadan) + Premium kartı.
+Premium: her zor kelime, ses ipucu ve ilgili koç dersine geçiş.
+
+### 12.2. "Neden yanlış?" sorusuna devam
+
+Deneme/sınav ekranında yanlış cevaptan sonra ve sonuç ekranındaki yanlış
+soruların içinde "Hâlâ takıldın mı?" kutusu: **Anlamadım**, **Daha basit
+anlat**, **Soru sor** (en çok 200 karakter). Bir soruda en çok 3 devam sorusu.
+
+Sunucu: `explainMore` callable (`functions/src/explain_more.ts`). Girdi: soru
+(okuma parçası 600 karakterle kısaltılmış), şıklar, doğru cevap, öğrencinin
+cevabı, uygulamanın açıklaması, mod, isteğe bağlı metin ve önceki en çok 3
+soru-cevap. Çıktı: `{ answer_tr, remaining }`, en çok 4 kısa Türkçe cümle.
+Model `claude-sonnet-5-5`, `effort: low`, JSON şeması. Premium değilse
+`permission-denied/premium_required` (model çağrılmaz). Günlük sınır
+`DAILY_EXPLAIN_LIMIT = 30` (`explainUsage/{uid}`, başarısız çağrı iade edilir,
+hesap silinince silinir). Çocuk modunda kutu hiç görünmez (yapay zekâ sohbeti yok).
+
+Ücretsiz kullanıcı düğmeye basınca Premium kartını görür.
+
+### 12.3. Haftalık koç mesajı
+
+Pazartesiden itibaren Öğren (yolun üstü) ve Pratik sekmesinde bir kart:
+geçen haftanın (pazartesi–pazar) **en sık 3 hatası** (konu, soru tipi ya da
+yazarken yapılan Türk hata kalıbı; aynı türden en çok 2), **ne düzeldi**
+(önceki haftaya göre kendi sayılarıyla: "geçen hafta 10 soruda 5 yanlış, bu
+hafta 10 soruda 2 yanlış") ve **tek dokunuşla başlayan odak alıştırması**
+(hata analizindeki hedefli alıştırmanın aynısı, `openFocusDrill`).
+
+Yapay zekâ kullanılmaz: veriler cevap kaydından (`study_log_v1`) ve hata
+dedektörü geçmişinden (`tr_error_log_v1`) cihazda hesaplanır; maliyet sıfır
+ve hiçbir şey uydurulamaz. Geçen hafta en az 10 cevap yoksa kart çıkmaz.
+Kapatılınca o hafta bir daha görünmez (`weekly_coach_seen_v1`).
+
+Bildirim: günlük hatırlatma açıksa pazartesi 10:00'da "Haftalık koç mesajın
+hazır" (id 300). Profil > hatırlatma ayarlarında "Pazartesi koç mesajı"
+anahtarıyla kapatılabilir (`weekly_coach_notify_v1`, varsayılan açık).
+
+Ücretsiz: haftanın sayıları + en sık hata; gerisi bulanık + Premium kartı.
+Çocuk modunda kart Pofuduk'la çıkar (Çaycı Dayı yok), yapay zekâ yok.
+
+### 12.4. Paylaşım kartı
+
+Seviye Karnesi ekranında "Paylaşım kartı oluştur" (karne yokken "Serini
+paylaş"). 1080 × 1350 PNG, sistem paylaşım menüsüyle (Instagram, WhatsApp…).
+Üzerinde uygulama adı ve Google Play bağlantısı (`lib/core/app_links.dart`,
+mağaza sayfası yayına girene kadar yer tutucu; paket kimliği kesin).
+
+- **Kilometre taşı** (herkese): "B1'e çıktım!" (son iki karne arasında seviye
+  arttıysa), yoksa "Seviyem: A2" ya da "30 günlük seri!", seri ve öğrenilen
+  kelime sayısı (tekrar kutusunda "biliyor" olanlar).
+- **Aylık kart** (Premium): ayın adı, aktif gün sayısı, günlük XP grafiği,
+  ayın XP'si ve seviye değişimi (A2 → B1).
+
+Çocuk modunda kartta Pofuduk vardır.

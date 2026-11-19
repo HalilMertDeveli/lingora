@@ -348,15 +348,12 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   }
 
   /// Uses one of today's free "Neden yanlış?" explanations for the current
-  /// question. False when they are used up: the question shows the locked
-  /// card, and the paywall may open by itself (paced, see PaywallPacer).
+  /// question. False when they are used up: the feedback shows the basic
+  /// reason and a small Premium card under the explanation. Nothing opens by
+  /// itself: answering and reading are never interrupted.
   bool _claimGloss() {
     if (_gloss() == null) return true;
-    if (ref.read(whyWrongQuotaProvider.notifier).claim(_current.key)) return true;
-    Future<void>.delayed(const Duration(milliseconds: 1200), () {
-      if (mounted) maybeAutoPaywall(context, ref, PaywallPlacement.whyWrong);
-    });
-    return false;
+    return ref.read(whyWrongQuotaProvider.notifier).claim(_current.key);
   }
 
   void _skip() {
@@ -600,6 +597,21 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   /// wrong), or "Neden yanlış?" after a wrong English sentence.
   Widget? _feedbackDetail(Exercise ex) {
     final explanation = ex.explanation?.trim() ?? '';
+    final locked =
+        ex.type == ExerciseType.choice && !_lastCorrect! && _glossLocked && !ref.watch(premiumProvider);
+    if (locked) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (explanation.isNotEmpty) ...[ChoiceExplanation(text: explanation), const SizedBox(height: 10)],
+          LockedWhyWrong(
+            compact: true,
+            basic: basicWhyLine(_gloss(), ex.answerIndex, explanation: explanation),
+          ),
+        ],
+      );
+    }
     if (ex.type == ExerciseType.choice && explanation.isNotEmpty) return ChoiceExplanation(text: explanation);
     if (ex.type == ExerciseType.write && (ex.model?.isNotEmpty ?? false)) {
       return WritingModelText(model: ex.model!);

@@ -57,12 +57,17 @@ Future<GateResult> requirePremium(
 const freeItems = [
   'Tüm dersler, gramer yolu ve notlar',
   'Okuma, telaffuz ve kelime tekrarı',
+  'Telaffuz puanı özeti ve kilometre taşı paylaşım kartı',
   'Sınav konu pratiği + günde $freeMockExamsPerDay mini deneme',
   'Günde $freeWhyWrongPerDay "Neden yanlış?" açıklaması',
   'Sohbet senaryoları (demo modu)',
   'Hata dedektörü ve en sık 3 hatan',
   'Hesapla bulut yedekleme ve cihazlar arası devam',
 ];
+
+/// Feature rows drawn in full on the paywall; later ones (not the opened
+/// feature nor the goal's focus) are one title line.
+const paywallFullFeatureRows = 6;
 
 /// Premium bullets that are not a [PremiumFeature] (no gate of their own),
 /// drawn after the feature rows: (emoji, title, description).
@@ -108,6 +113,10 @@ class PaywallScreen extends ConsumerStatefulWidget {
         PremiumFeature.whyWrong => PaywallPlacement.whyWrong,
         PremiumFeature.premiumAvatars => PaywallPlacement.shop,
         PremiumFeature.levelReport => PaywallPlacement.levelReport,
+        PremiumFeature.pronunciationScore => PaywallPlacement.pronunciationScore,
+        PremiumFeature.explainMore => PaywallPlacement.explainMore,
+        PremiumFeature.weeklyCoach => PaywallPlacement.weeklyCoach,
+        PremiumFeature.monthlyShareCard => PaywallPlacement.shareCard,
         PremiumFeature.streakFreezes || PremiumFeature.doubleGold || null => PaywallPlacement.profile,
       };
 
@@ -178,10 +187,15 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     final features = [
       Text('Premium ile', style: Theme.of(context).textTheme.titleMedium),
       const SizedBox(height: 8),
-      for (final f in [...copy.focus, ...PremiumFeature.values.where((f) => !copy.focus.contains(f))])
+      for (final (i, f) in [
+        ...copy.focus,
+        ...PremiumFeature.values.where((f) => !copy.focus.contains(f)),
+      ].indexed)
         _FeatureRow(
           f,
           highlighted: f == widget.feature || (widget.feature == null && copy.focus.contains(f)),
+          // The list is long: after the first ones, a title line is enough.
+          compact: i >= paywallFullFeatureRows && f != widget.feature && !copy.focus.contains(f),
         ),
       for (final (emoji, title, description) in extraPremiumBullets)
         _BulletRow(emoji: emoji, title: title, description: description),
@@ -663,37 +677,57 @@ class _Unavailable extends StatelessWidget {
 }
 
 class _FeatureRow extends StatelessWidget {
-  const _FeatureRow(this.feature, {required this.highlighted});
+  const _FeatureRow(this.feature, {required this.highlighted, this.compact = false});
   final PremiumFeature feature;
   final bool highlighted;
 
+  /// Title only (the description is read out by screen readers).
+  final bool compact;
+
   @override
-  Widget build(BuildContext context) => Container(
-    margin: const EdgeInsets.only(bottom: 8),
-    padding: const EdgeInsets.all(12),
-    decoration: BoxDecoration(
-      color: highlighted ? Brand.primary.withValues(alpha: 0.08) : Brand.card,
-      border: Border.all(color: highlighted ? Brand.primary : Brand.line, width: 2),
-      borderRadius: BorderRadius.circular(14),
-    ),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Glyph(emoji: feature.emoji, icon: Icons.check_circle_outline_rounded, size: 26),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
+  Widget build(BuildContext context) => compact
+      ? Semantics(
+          label: '${feature.title}. ${feature.description}',
+          excludeSemantics: true,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(12, 2, 12, 6),
+            child: Row(
+              children: [
+                Glyph(emoji: feature.emoji, icon: Icons.check_circle_outline_rounded, size: 20),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(feature.title, style: const TextStyle(fontWeight: FontWeight.w700)),
+                ),
+              ],
+            ),
+          ),
+        )
+      : Container(
+          margin: const EdgeInsets.only(bottom: 8),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: highlighted ? Brand.primary.withValues(alpha: 0.08) : Brand.card,
+            border: Border.all(color: highlighted ? Brand.primary : Brand.line, width: 2),
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(feature.title, style: const TextStyle(fontWeight: FontWeight.w800)),
-              const SizedBox(height: 2),
-              Text(feature.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
+              Glyph(emoji: feature.emoji, icon: Icons.check_circle_outline_rounded, size: 26),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(feature.title, style: const TextStyle(fontWeight: FontWeight.w800)),
+                    const SizedBox(height: 2),
+                    Text(feature.description, style: TextStyle(color: Brand.muted, fontSize: 13)),
+                  ],
+                ),
+              ),
             ],
           ),
-        ),
-      ],
-    ),
-  );
+        );
 }
 
 class _FreeBox extends StatelessWidget {

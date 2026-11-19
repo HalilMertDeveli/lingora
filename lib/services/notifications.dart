@@ -10,6 +10,12 @@ import '../nav/nav_target.dart';
 const reminderBaseId = 100;
 const reminderDays = 7;
 
+/// The Monday "Haftalık koç mesajın hazır" notification.
+const weeklyCoachNotificationId = 300;
+
+/// Hour of the Monday coach notification.
+const weeklyCoachHour = 10;
+
 /// Id once used for "hearts refilled" alerts; still cancelled for old installs.
 const _legacyHeartsId = 200;
 
@@ -39,7 +45,11 @@ const _nudges = [
 /// Daily reminders are one-off notifications for the next [reminderDays]
 /// days (not a repeating alarm) so today's can be skipped once the user has
 /// already practiced. Re-planned whenever progress changes.
-List<PlannedNotification> planNotifications(Progress p, DateTime now) {
+///
+/// With [weeklyCoach] the next Monday also gets the coach message
+/// notification (only while reminders are on: the learner agreed to
+/// notifications there).
+List<PlannedNotification> planNotifications(Progress p, DateTime now, {bool weeklyCoach = false}) {
   if (p.remindersEnabled != true) return const [];
   final out = <PlannedNotification>[];
   final practicedToday = p.lastActiveDay == dayKey(now);
@@ -58,6 +68,19 @@ List<PlannedNotification> planNotifications(Progress p, DateTime now) {
     out.add(PlannedNotification(reminderBaseId + i, when, title, body, payload: target.payload));
   }
 
+  if (weeklyCoach) {
+    var monday = DateTime(now.year, now.month, now.day - (now.weekday - 1), weeklyCoachHour);
+    if (!monday.isAfter(now)) monday = DateTime(monday.year, monday.month, monday.day + 7, weeklyCoachHour);
+    out.add(
+      PlannedNotification(
+        weeklyCoachNotificationId,
+        monday,
+        'Haftalık koç mesajın hazır 🗓️',
+        'Geçen haftanın en sık hataları ve bu haftanın odağı seni bekliyor.',
+        payload: target.payload,
+      ),
+    );
+  }
   return out;
 }
 
@@ -151,6 +174,7 @@ class NotificationService {
         await _plugin.cancel(id: reminderBaseId + i);
       }
       await _plugin.cancel(id: _legacyHeartsId);
+      await _plugin.cancel(id: weeklyCoachNotificationId);
       for (final n in plan) {
         await _plugin.zonedSchedule(
           id: n.id,

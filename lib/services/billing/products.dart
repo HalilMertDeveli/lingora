@@ -168,6 +168,28 @@ enum PremiumFeature {
     'Aylık seviye karnesi',
     'Ay ay seviye grafiğin, beceri gidişatın ve sonraki ay için mevcut derslerden çalışma önerileri.',
     '📈',
+  ),
+  pronunciationScore(
+    'Telaffuz puanı',
+    'Konuştuğun her cümlede hangi kelimenin doğru anlaşıldığı, hangisinin zor ya da anlaşılmadığı; th, w/v, '
+        'uzun ünlü gibi zor sesin ipucu ve doğru telaffuz. Yüzde uydurmaz. Ücretsiz sürümde ilk kelime.',
+    '🎯',
+  ),
+  explainMore(
+    '"Neden yanlış?" sorusuna devam',
+    '"Anlamadım", "Daha basit anlat" ya da kendi sorun: yapay zekâ o sorunun açıklamasını kısa ve sade Türkçeyle '
+        'yeniden anlatır.',
+    '🙋',
+  ),
+  weeklyCoach(
+    'Haftalık koç mesajı',
+    'Her pazartesi: haftanın en sık 3 hatası, neyin düzeldiği ve tek dokunuşla başlayan bir odak önerisi.',
+    '🗓️',
+  ),
+  monthlyShareCard(
+    'Aylık paylaşım kartı',
+    'Seviye, seri, ayın aktif günleri ve öğrendiğin kelimelerle zengin aylık kart. Temel kilometre taşı kartı herkese açık.',
+    '🖼️',
   );
 
   const PremiumFeature(this.title, this.description, this.emoji);

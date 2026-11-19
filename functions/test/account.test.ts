@@ -20,6 +20,7 @@ test("deletes every document of the learner and keeps other people's", async () 
   await db.doc("users/other").set({ progress: { xp: 5 } });
   await db.doc("profiles/me").set({ name: "Ben" });
   await db.doc("usage/me").set({ day: "2026-11-18", count: 2 });
+  await db.doc("explainUsage/me").set({ day: "2026-11-18", count: 4 });
   await db.doc("rehearsals/me/items/a").set({ score: 3 });
   await db.doc("friendCodes/ABCDEFGH").set({ uid: "me", name: "Ben" });
   await db.doc("friendCodes/HGFEDCBA").set({ uid: "other", name: "O" });
@@ -41,6 +42,7 @@ test("deletes every document of the learner and keeps other people's", async () 
     "users/me/notes/n1",
     "profiles/me",
     "usage/me",
+    "explainUsage/me",
     "rehearsals/me/items/a",
     "friendCodes/ABCDEFGH",
     "friendships/me_other",

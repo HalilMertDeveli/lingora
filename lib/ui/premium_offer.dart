@@ -97,10 +97,18 @@ class _PremiumOfferCardState extends ConsumerState<PremiumOfferCard> {
   }
 }
 
-/// "Neden yanlış?" after the day's free ones: a blurred stand-in for the
-/// explanation (never the real text) and the Premium card.
+/// "Neden yanlış?" after the day's free ones. The learning loop still
+/// closes: [basic] (one Turkish line, the rule and the right form) is always
+/// shown in clear; the full explanation (every option in Turkish and why it
+/// does not fit) is a blurred stand-in (never the real text) under a small
+/// Premium card. It is placed after the question's explanation, never
+/// between the learner and the options. [compact] drops the blurred preview
+/// (the lesson's feedback panel is short).
 class LockedWhyWrong extends ConsumerWidget {
-  const LockedWhyWrong({super.key});
+  const LockedWhyWrong({super.key, this.basic, this.compact = false});
+
+  final String? basic;
+  final bool compact;
 
   static const _placeholder = [
     'Bu şık cümlenin anlamına uymuyor, çünkü',
@@ -127,40 +135,49 @@ class LockedWhyWrong extends ConsumerWidget {
             ),
           ],
         ),
+        if (basic case final b? when b.trim().isNotEmpty) ...[
+          const SizedBox(height: 4),
+          Text(
+            b,
+            key: const Key('why-wrong-basic'),
+            style: TextStyle(color: p.ink, height: 1.35),
+          ),
+        ],
         const SizedBox(height: 6),
-        ExcludeSemantics(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 4.5, sigmaY: 4.5),
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                color: p.card,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    for (final line in _placeholder)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 4),
-                        child: Text(
-                          line,
-                          style: TextStyle(color: p.muted, fontStyle: FontStyle.italic),
+        if (!compact)
+          ExcludeSemantics(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: ImageFiltered(
+                imageFilter: ImageFilter.blur(sigmaX: 4.5, sigmaY: 4.5),
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  color: p.card,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (final line in _placeholder)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 4),
+                          child: Text(
+                            line,
+                            style: TextStyle(color: p.muted, fontStyle: FontStyle.italic),
+                          ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        const SizedBox(height: 8),
+        if (!compact) const SizedBox(height: 8),
         PremiumOfferCard(
           placement: PaywallPlacement.whyWrong,
           dense: true,
           icon: Icons.lock_rounded,
           title: trial > 0
-              ? 'Premium ile her yanlışın açıklamasını gör · $trial gün ücretsiz dene'
-              : 'Premium ile her yanlışın açıklamasını gör',
+              ? "Her şıkkın Türkçesi ve neden olmadığı Premium'da · $trial gün ücretsiz dene"
+              : "Her şıkkın Türkçesi ve neden olmadığı Premium'da",
           body: 'Bugünkü $freeWhyWrongPerDay ücretsiz açıklamanı kullandın. Yarın yenilenir.',
         ),
       ],

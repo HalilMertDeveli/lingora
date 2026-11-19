@@ -15,6 +15,7 @@ import { stubClaude, stubClaudeEnabled } from "./ai_stub.js";
 import * as writing from "./assess_writing.js";
 import * as conversation from "./converse.js";
 import * as karne from "./conversation_report.js";
+import * as explain from "./explain_more.js";
 import * as family from "./family.js";
 import * as league from "./league.js";
 import * as play from "./play.js";
@@ -78,6 +79,12 @@ export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 
 export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
   const uid = requireUid(req);
   return karne.conversationReport(getFirestore(), claudeClient(), uid, req.data, new Date());
+});
+
+/** { question, options, answer, picked?, explanation, mode, text?, history? } -> { answer_tr, remaining } ("Neden yanlış?" follow-up, Premium) */
+export const explainMore = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 60 }, (req) => {
+  const uid = requireUid(req);
+  return explain.explainMore(getFirestore(), claudeClient(), uid, req.data, new Date());
 });
 
 /** { taskId, text } -> { scores, corrections, next_tr, remaining } (general course writing tasks) */

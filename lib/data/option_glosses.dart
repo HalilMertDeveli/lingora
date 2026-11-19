@@ -55,6 +55,19 @@ class OptionGloss {
   }
 }
 
+/// The free one-line reason after the day's "Neden yanlış?" uses: the
+/// gloss's line for the right option ("Doğru: …", the rule and the right
+/// form), else the first sentence of [explanation]; null when neither
+/// exists (the right answer is shown anyway).
+String? basicWhyLine(OptionGloss? gloss, int? answer, {String explanation = ''}) {
+  final line = answer == null ? null : gloss?.whyOf(answer);
+  if (line != null) return line.startsWith('Doğru') ? line : 'Doğru: $line';
+  final e = explanation.trim();
+  if (e.isEmpty) return null;
+  final end = e.indexOf(RegExp(r'[.!?](\s|$)'));
+  return end < 0 ? e : e.substring(0, end + 1);
+}
+
 /// Every gloss file's entries, by question key.
 class OptionGlosses {
   const OptionGlosses(this._raw);

@@ -1,0 +1,11 @@
+/// The app's public name and store link, for share images and texts.
+library;
+
+const appDisplayName = 'Dilmaç';
+
+/// Google Play listing. Placeholder until the store listing is live: the
+/// package id is final, so the link works as soon as the app is published.
+const playStoreLink = 'https://play.google.com/store/apps/details?id=com.lingora.lingora';
+
+/// [playStoreLink] without the scheme, short enough to print on an image.
+const playStoreLinkShort = 'play.google.com · Dilmaç';

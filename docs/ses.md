@@ -36,3 +36,37 @@ API anahtarı `ELEVENLABS_API_KEY` ortam değişkeninden ya da `%USERPROFILE%\.d
 - `D:\DilmacSes\voice\`: 1.613 dosya, ~27 MB, kendi `index.json`'ı ile; depoda değil. İlk dinlemede indirilmek üzere barındırılacak (ayrı iş). Kurs sırasında s5u9 ünitesinin ortasına kadar.
 - Harcanan: 99.978 karakter (603 yeniden kayıt 9.859 + yeni kayıtlar 90.119). Hesap sayacı 18 Kasım akşamı 44.082 kullanılmış, 78.146 kalan gösteriyor (Creator, 122.228 aylık); sayaç metin uzunluğundan az ya da geç düşüyor, bu yüzden bütçe metin uzunluğuyla tutuldu.
 - Kursun kaydı olmayan kısmı: ~4.700 metin, ~244.000 karakter. Kalanlar sonraki aylarda `--overflow` ile üretilmeli.
+
+## Eller serbest konuşma (otomatik dinleme)
+
+Derslerdeki "Bu cümleyi sesli oku" ve gölgeleme (3. adım) alıştırmalarında ve
+Telaffuz koçunun "Söyle" adımlarında mikrofona basmak gerekmez
+(`lib/exercises/hands_free.dart`, `HandsFreeTurn`):
+
+1. Cümle (kayıt ya da telefonun sesi) **sonuna kadar** çalınır
+   (`linePlayerProvider.sayLine`); uygulama ses çalarken asla dinlemez (yankı yok).
+2. Mikrofon kendiliğinden açılır, "Dinliyorum" göstergesi titreşir.
+3. İlk kelime duyulduktan sonra **1 sn sessizlik** (`endOfSpeechSilence`)
+   turu bitirir; tanıyıcının son sonucu gelince cevap otomatik kontrol edilir.
+   Konuşmanın başındaki sessizlik turu bitirmez: eklentinin `pauseFor` süresi
+   dinlemenin başından sayıldığı için bu sayaç uygulamada tutulur.
+4. **7 sn** (`noSpeechTimeout`) hiç kelime yoksa nazik bir ipucu ve tek
+   "Tekrar dene" düğmesi çıkar; "Şu an konuşamıyorum" yine durur.
+5. Mikrofon izni/tanıyıcı yoksa düğmeli akış sürer; o oturumda bir daha
+   kendiliğinden denenmez (izin penceresi tekrar tekrar açılmasın).
+6. Mikrofona dokunmak her zaman çalışır (erişilebilirlik); dinlerken dokunmak
+   turu hemen bitirir.
+
+Ayar: Profil > Görünüm > "Konuşma alıştırmalarında otomatik dinle"
+(`hands_free_listen_v1`, varsayılan açık). Kapalıyken eski düğmeli akış
+(uzun duraklama süreleri, `listenTimes`) aynen çalışır.
+
+### Mikrofonsuz eşdeğer yol
+
+Konuşma alıştırmasında her zaman iki çıkış vardır, ikisi de cezasızdır:
+
+- **Yazarak cevapla**: cümle yazılır, konuşmayla aynı hoşgörüyle (büyük
+  harf, noktalama, kısaltma) kontrol edilir ve normal bir cevap gibi sayılır.
+- **Şu an konuşamıyorum**: soru çözülmüş sayılır; yanlış, can kaybı ya da
+  "hatasız" bonusu kaybı yoktur. XP ve seri, cevaplanmış gibi aynıdır
+  (`test/konusma_esdeger_test.dart`).

@@ -383,27 +383,28 @@ void main() {
       expect(c.read(whyWrongQuotaProvider.notifier).leftToday, 0);
     });
 
-    testWidgets('hak bitince bulanık önizleme ve deneme vurgulu kart; paywall günde bir kez', (tester) async {
-      final c = await pump(tester);
-      await answerWrong(tester);
-      expect(find.byKey(const Key('why-wrong-locked')), findsOneWidget);
-      expect(find.text('salım, yayım'), findsNothing, reason: 'gerçek açıklama hiç çizilmez');
-      expect(find.byKey(const Key('option-gloss-why')), findsNothing);
-      expect(
-        find.textContaining('Premium ile her yanlışın açıklamasını gör · 7 gün ücretsiz dene'),
-        findsOneWidget,
-      );
-      expect(find.text('7 GÜN ÜCRETSİZ DENE'), findsOneWidget);
-      // The paywall opens by itself a moment later (first time today).
-      await tester.pump(const Duration(seconds: 2));
-      await tester.pumpAndSettle();
-      expect(find.byType(PaywallScreen), findsOneWidget);
-      expect(c.read(paywallPacerProvider).canAutoShow, isFalse);
-      await tester.tap(find.byTooltip('Kapat'));
-      await tester.pumpAndSettle();
-      expect(find.byType(PaywallScreen), findsNothing);
-      expect(c.read(paywallPacerProvider).snoozed, isTrue);
-    });
+    testWidgets(
+      'hak bitince temel neden, bulanık önizleme ve deneme vurgulu kart; paywall kendiliğinden açılmaz',
+      (tester) async {
+        final c = await pump(tester);
+        await answerWrong(tester);
+        expect(find.byKey(const Key('why-wrong-locked')), findsOneWidget);
+        expect(
+          find.byKey(const Key('why-wrong-basic')),
+          findsOneWidget,
+          reason: 'öğrenme döngüsü tamamlanır',
+        );
+        expect(find.text('salım, yayım'), findsNothing, reason: 'şıkların Türkçesi Premium');
+        expect(find.byKey(const Key('option-gloss-why')), findsNothing);
+        expect(find.textContaining("Premium'da · 7 gün ücretsiz dene"), findsOneWidget);
+        expect(find.text('7 GÜN ÜCRETSİZ DENE'), findsOneWidget);
+        // Answering and reading are never interrupted.
+        await tester.pump(const Duration(seconds: 2));
+        await tester.pumpAndSettle();
+        expect(find.byType(PaywallScreen), findsNothing);
+        expect(c.read(paywallPacerProvider).canAutoShow, isTrue);
+      },
+    );
 
     testWidgets('Premium alınınca kilitli açıklama hemen açılır', (tester) async {
       final c = await pump(tester);

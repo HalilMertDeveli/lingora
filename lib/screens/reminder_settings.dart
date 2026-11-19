@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/progress.dart';
 import '../services/notifications.dart';
+import '../study/weekly_coach.dart' show weeklyCoachNotifyProvider;
 import '../theme.dart';
 
 String formatMinutes(int minutes) =>
@@ -138,6 +139,14 @@ class ReminderSettings extends ConsumerWidget {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Brand.primary),
             ),
             onTap: () => pickReminderTime(context, ref),
+          ),
+          SwitchListTile(
+            key: const ValueKey('weekly-coach-notify'),
+            secondary: Icon(Icons.event_note_rounded, color: Brand.primary),
+            title: const Text('Pazartesi koç mesajı', style: TextStyle(fontWeight: FontWeight.w700)),
+            subtitle: const Text('Haftanın özeti hazır olunca haber ver'),
+            value: on && ref.watch(weeklyCoachNotifyProvider),
+            onChanged: on ? (v) => ref.read(weeklyCoachNotifyProvider.notifier).set(v) : null,
           ),
         ],
       ),

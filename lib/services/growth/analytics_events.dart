@@ -44,6 +44,18 @@ abstract final class PaywallPlacement {
 
   /// The Premium part of the Seviye Karnesi (history, trends, suggestions).
   static const levelReport = 'level_report';
+
+  /// Telaffuz puanı: the free preview's Premium card.
+  static const pronunciationScore = 'pronunciation_score';
+
+  /// A follow-up question on "Neden yanlış?" (Anlamadım, Daha basit anlat).
+  static const explainMore = 'explain_more';
+
+  /// The Monday coach message's free teaser.
+  static const weeklyCoach = 'weekly_coach';
+
+  /// The richer monthly share card.
+  static const shareCard = 'share_card';
 }
 
 class AnalyticsEvent {

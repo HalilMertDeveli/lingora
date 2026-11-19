@@ -3,23 +3,39 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/core/spoken_match.dart';
 import 'package:lingora/exercises/common.dart' show Grader;
+import 'package:lingora/exercises/hands_free.dart';
 import 'package:lingora/exercises/speak_exercise.dart';
 import 'package:lingora/exercises/speak_mic.dart';
+import 'package:lingora/data/progress.dart' show prefsProvider;
 import 'package:lingora/models/course.dart';
 import 'package:lingora/screens/pronunciation_screen.dart' show coachMatch;
+import 'package:lingora/services/billing/premium.dart';
 import 'package:lingora/services/speech.dart';
 import 'package:lingora/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class _HandsFree extends HandsFreeSetting {
+  _HandsFree(this.on);
+  final bool on;
+  @override
+  bool build() => on;
+}
 
 /// Speech recognition driven by the test: words arrive when the test says.
 class _LiveSpeech implements SpeechService {
+  _LiveSpeech({this.mic = true});
+  final bool mic;
+  final said = <String>[];
   int listens = 0;
+  int stops = 0;
   void Function(String)? _onWords;
   void Function()? _onDone;
 
   @override
-  Future<void> say(String text, {String lang = 'en', bool slow = false, double rate = 1}) async {}
+  Future<void> say(String text, {String lang = 'en', bool slow = false, double rate = 1}) async =>
+      said.add(text);
   @override
-  Future<bool> get canListen async => true;
+  Future<bool> get canListen async => mic;
   @override
   Future<void> listen({required void Function(String) onWords, required void Function() onDone}) async {
     listens++;
@@ -35,7 +51,10 @@ class _LiveSpeech implements SpeechService {
   }
 
   @override
-  Future<void> stopListening() async => done();
+  Future<void> stopListening() async {
+    stops++;
+    done();
+  }
 }
 
 Future<void> _pump(
@@ -44,10 +63,18 @@ Future<void> _pump(
   String text = 'I am twenty one years old.',
   void Function(Grader?)? onReady,
   VoidCallback? onSkip,
+  bool handsFree = false,
 }) async {
+  SharedPreferences.setMockInitialValues({});
+  final prefs = await SharedPreferences.getInstance();
   await tester.pumpWidget(
     ProviderScope(
-      overrides: [speechProvider.overrideWithValue(speech)],
+      overrides: [
+        speechProvider.overrideWithValue(speech),
+        handsFreeProvider.overrideWith(() => _HandsFree(handsFree)),
+        premiumProvider.overrideWithValue(false),
+        prefsProvider.overrideWithValue(prefs),
+      ],
       child: MaterialApp(
         theme: buildTheme(),
         home: Scaffold(
@@ -262,6 +289,76 @@ void main() {
       await _say(tester, speech, 'good morning');
       expect(find.byKey(const Key('speak-skip-offer')), findsNothing);
       expect(find.text('Harika, hepsini duydum!'), findsOneWidget);
+    });
+
+    group('hands-free', () {
+      setUp(() => handsFreeMicRefused = false);
+
+      testWidgets('reads the sentence, listens by itself and ends after the silence', (tester) async {
+        final speech = _LiveSpeech();
+        Grader? grader;
+        await _pump(tester, speech, text: 'Good morning', handsFree: true, onReady: (g) => grader = g);
+        await tester.pump();
+        expect(speech.said, ['Good morning'], reason: 'the prompt plays before listening');
+        expect(speech.listens, 1);
+        expect(find.byKey(const Key('hands-free-listening')), findsOneWidget);
+        speech.words('good');
+        await tester.pump(const Duration(milliseconds: 600));
+        speech.words('good morning');
+        await tester.pump(const Duration(milliseconds: 600));
+        expect(speech.stops, 0, reason: 'still talking: the silence timer restarted');
+        await tester.pump(endOfSpeechSilence);
+        expect(speech.stops, 1);
+        await tester.pump();
+        expect(grader, isNotNull);
+        expect(grader!(), isTrue);
+        expect(find.byKey(const Key('hands-free-listening')), findsNothing);
+      });
+
+      testWidgets('no speech: a gentle hint and one retry, the skip stays', (tester) async {
+        final speech = _LiveSpeech();
+        await _pump(tester, speech, handsFree: true);
+        await tester.pump();
+        await tester.pump(noSpeechTimeout);
+        await tester.pump();
+        expect(find.byKey(const Key('hands-free-no-speech')), findsOneWidget);
+        expect(find.text('Şu an konuşamıyorum'), findsOneWidget);
+        await tester.tap(find.byKey(const Key('hands-free-retry')));
+        await tester.pump();
+        expect(speech.listens, 2);
+        expect(find.byKey(const Key('hands-free-no-speech')), findsNothing);
+        expect(find.byKey(const Key('hands-free-listening')), findsOneWidget);
+        speech.done();
+        await tester.pumpAndSettle();
+      });
+
+      testWidgets('no microphone: the button flow stays and nothing listens', (tester) async {
+        final speech = _LiveSpeech(mic: false);
+        await _pump(tester, speech, handsFree: true);
+        await tester.pump();
+        expect(speech.listens, 0);
+        expect(find.byKey(const Key('hands-free-listening')), findsNothing);
+        expect(find.byIcon(Icons.mic_rounded), findsOneWidget);
+      });
+
+      testWidgets('a manual tap still works and also ends by itself', (tester) async {
+        final speech = _LiveSpeech(mic: false);
+        await _pump(tester, speech, text: 'Good morning', handsFree: true);
+        await tester.pump();
+        expect(handsFreeMicRefused, isTrue);
+        await tester.pumpWidget(const SizedBox());
+        final live = _LiveSpeech();
+        await _pump(tester, live, text: 'Good morning', handsFree: true);
+        await tester.pump();
+        expect(live.listens, 0, reason: 'refused once this run: no new automatic tries');
+        await tester.tap(find.byIcon(Icons.mic_rounded));
+        await tester.pump();
+        expect(live.listens, 1);
+        live.words('good morning');
+        await tester.pump(endOfSpeechSilence);
+        await tester.pump();
+        expect(find.text('Harika, hepsini duydum!'), findsOneWidget);
+      });
     });
 
     testWidgets('SpokenWordsView marks heard words green', (tester) async {
