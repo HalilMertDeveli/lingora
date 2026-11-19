@@ -22,6 +22,7 @@ import * as league from "./league.js";
 import * as play from "./play.js";
 import * as purchase from "./purchase.js";
 import * as rehearsal from "./rehearsal.js";
+import * as speaking from "./speaking_stats.js";
 
 initializeApp();
 setGlobalOptions({ region: "europe-west1", maxInstances: 10 });
@@ -107,7 +108,12 @@ export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 
 export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, async (req) => {
   const now = new Date();
   const uid = await guardAi(req, now);
-  return karne.conversationReport(getFirestore(), claudeClient(), uid, req.data, now);
+  const result = await karne.conversationReport(getFirestore(), claudeClient(), uid, req.data, now);
+  // Teacher report (speaking_stats.ts); never fails the learner's karne.
+  await speaking
+    .recordSpeaking(getFirestore(), uid, req.data, result, now)
+    .catch((e) => logger.error("recordSpeaking failed", e));
+  return result;
 });
 
 /** { taskId, text } -> { scores, corrections, next_tr, remaining } (general course writing tasks) */
@@ -153,6 +159,9 @@ export const playRtdn = onMessagePublished({ topic: "play-rtdn", retry: true }, 
 
 // Dilmaç Kurumsal (orgs, seats, classes, assignments): orgs_api.ts, docs/kurumsal.md.
 export * from "./orgs_api.js";
+
+// Kurumsal sales: quote form (submitLead), leads and trial codes for staff (sales_api.ts).
+export * from "./sales_api.js";
 
 // Invite programme: getInviteCode, redeemInvite (functions/src/referral_api.ts).
 export * from "./referral_api.js";

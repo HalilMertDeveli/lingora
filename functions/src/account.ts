@@ -61,6 +61,10 @@ export const PERSONAL_DATA: Record<string, string> = {
   orgs: "createdBy anonymised",
   orgCodes: "createdBy anonymised",
   "classes/*/members": "the learner's own row deleted in every joined class (classLinks)",
+  speaking: "classes/*/speaking/{uid}: the teacher's copy, deleted in every joined class",
+  speakingStats: "deleted",
+  leads: "no uid: sales quote requests from the public /kurumsal page (staff delete them)",
+  leadRate: "no uid: hashed-IP daily counters for the quote form",
   classes: "classes the account teaches deleted with their rows",
   licenseCodes: "seat released (claimedBy cleared), the org can hand it out again",
   config: "uid removed from config/lingoraAdmins",
@@ -86,6 +90,7 @@ const UID_DOCS = [
   "usageRehearsal",
   "referrals",
   "rehearsals",
+  "speakingStats",
 ];
 
 /** Collections with a field that holds the owner's uid; the documents are deleted. */
@@ -150,14 +155,16 @@ export async function deleteUserData(db: Firestore, uid: string, now: Date = new
     docs++;
   }
 
-  // Kurum lisansı: the learner's rows in joined classes, and the seat.
+  // Kurum lisansı: the learner's summary and the teacher's speaking copy in
+  // each joined class (classLinks itself is in UID_DOCS), and the seat.
   const links = (await db.doc(`classLinks/${uid}`).get()).get("codes");
   for (const code of Array.isArray(links) ? links : []) {
     if (typeof code !== "string" || !/^[A-Z0-9]{1,16}$/.test(code)) continue;
-    const row = db.doc(`classes/${code}/members/${uid}`);
-    if ((await row.get()).exists) {
-      await row.delete();
-      docs++;
+    for (const row of [db.doc(`classes/${code}/members/${uid}`), db.doc(`classes/${code}/speaking/${uid}`)]) {
+      if ((await row.get()).exists) {
+        await row.delete();
+        docs++;
+      }
     }
   }
   const seats = await db.collection("licenseCodes").where("claimedBy", "==", uid).get();

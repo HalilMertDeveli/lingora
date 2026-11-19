@@ -231,6 +231,7 @@ class ClassScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final room = ref.watch(teacherClassesProvider).value?.where((c) => c.code == code).firstOrNull;
     final members = ref.watch(classMembersProvider(code));
+    final speaking = ref.watch(classSpeakingProvider(code)).value ?? const <String, SpeakingSummary>{};
     final now = ref.read(clockProvider)();
     final t = Theme.of(context).textTheme;
     return Scaffold(
@@ -308,6 +309,7 @@ class ClassScreen extends ConsumerWidget {
               ),
               AsyncData(value: final list) => _MembersView(
                 members: list,
+                speaking: speaking,
                 now: now,
                 onRemove: (m) => _remove(context, ref, m),
               ),
@@ -322,9 +324,15 @@ class ClassScreen extends ConsumerWidget {
 }
 
 class _MembersView extends StatelessWidget {
-  const _MembersView({required this.members, required this.now, required this.onRemove});
+  const _MembersView({
+    required this.members,
+    required this.now,
+    required this.onRemove,
+    this.speaking = const {},
+  });
 
   final List<ClassMember> members;
+  final Map<String, SpeakingSummary> speaking;
   final DateTime now;
   final void Function(ClassMember) onRemove;
 
@@ -333,10 +341,18 @@ class _MembersView extends StatelessWidget {
     final t = Theme.of(context).textTheme;
     final top = classTopErrors(members);
     final weekTotal = members.fold<int>(0, (s, m) => s + m.stats.weekXpAt(now));
+    final talkers = [for (final m in members) ?speaking[m.uid]];
+    final talkMinutes = talkers.fold<int>(0, (s, v) => s + v.minutes);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text('${members.length} öğrenci · bu hafta toplam $weekTotal XP', style: t.titleMedium),
+        if (talkers.isNotEmpty)
+          Text(
+            '🎙️ ${talkers.length} öğrenci konuşma pratiği yaptı · toplam yaklaşık $talkMinutes dk',
+            key: const Key('class-speaking-total'),
+            style: TextStyle(color: Brand.muted, fontSize: 13),
+          ),
         if (top.isNotEmpty) ...[
           const SizedBox(height: 8),
           Text('Sınıfın en sık hataları', style: TextStyle(color: Brand.muted, fontSize: 13)),
@@ -372,6 +388,8 @@ class _MembersView extends StatelessWidget {
                           'Sık hata: ${m.stats.topErrors.map(errorLabel).join(', ')}',
                           style: TextStyle(color: Brand.muted, fontSize: 13),
                         ),
+                      if (speaking[m.uid] case final v?)
+                        SpeakingLines(key: Key('member-speaking-${m.uid}'), v: v),
                     ],
                   ),
                 ),
@@ -387,6 +405,38 @@ class _MembersView extends StatelessWidget {
           const SizedBox(height: 8),
         ],
       ],
+    );
+  }
+}
+
+/// A student's voice-coach stats under their class summary.
+class SpeakingLines extends StatelessWidget {
+  const SpeakingLines({super.key, required this.v});
+  final SpeakingSummary v;
+
+  @override
+  Widget build(BuildContext context) {
+    final muted = TextStyle(color: Brand.muted, fontSize: 13);
+    final last = v.lastAt;
+    return Padding(
+      padding: const EdgeInsets.only(top: 6),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '🎙️ ${v.conversations} konuşma · yaklaşık ${v.minutes} dk'
+            '${last == null ? '' : ' · son ${last.day}.${last.month.toString().padLeft(2, '0')}'}',
+            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+          ),
+          if (v.lastSummary.isNotEmpty) Text('Son karne: ${v.lastSummary}', style: muted),
+          if (v.recentMistakes.isNotEmpty)
+            Text(
+              'Son düzeltmeler: ${v.recentMistakes.map((e) => '"${e.original}" → "${e.corrected}"').join(' · ')}',
+              style: muted,
+            ),
+          if (v.weakWords.isNotEmpty) Text('Telaffuzda zorlandığı: ${v.weakWords.join(', ')}', style: muted),
+        ],
+      ),
     );
   }
 }

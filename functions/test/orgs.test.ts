@@ -350,6 +350,7 @@ test("report: aggregated progress only, never diary or notes (KVKK)", async () =
       "lastActiveDay",
       "lessonsDone",
       "role",
+      "speaking", // voice-coach summary only (speaking_stats.ts teacherView)
       "streak",
       "synced",
       "totalXp",

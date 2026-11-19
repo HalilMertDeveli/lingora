@@ -57,6 +57,16 @@ Map<String, Object?> reportJson() => {
       'weekXp': 90,
       'lastActiveDay': '2026-11-10',
       'assignments': {'a1': 'done'},
+      'speaking': {
+        'conversations': 3,
+        'minutes': 12,
+        'lastAt': DateTime(2026, 11, 9, 18).millisecondsSinceEpoch,
+        'lastSummary': 'Akıcı konuştun. Geçmiş zamanı çalış.',
+        'recentMistakes': [
+          {'original': 'I go yesterday', 'corrected': 'I went yesterday'},
+        ],
+        'weakWords': ['thought'],
+      },
     },
     {
       'uid': 'u2',
@@ -161,6 +171,50 @@ class FakeAdminApi implements AdminApi {
 
   @override
   Future<void> deleteAssignment(String orgId, String assignmentId) async {}
+
+  List<Lead> leads = [
+    Lead.fromJson({
+      'id': 'l1',
+      'org': 'Başarı Dershanesi',
+      'name': 'Ayşe Yılmaz',
+      'phone': '0532 000 00 00',
+      'email': '',
+      'students': 120,
+      'city': 'Eskişehir',
+      'message': 'LGS grubu için',
+      'status': 'yeni',
+      'note': '',
+      'createdAt': DateTime(2026, 11, 18).millisecondsSinceEpoch,
+    }),
+  ];
+
+  @override
+  Future<List<Lead>> listLeads() async => leads;
+
+  @override
+  Future<void> updateLead(String id, {LeadStatus? status, String? note}) async =>
+      calls.add('lead $id ${status?.name} $note');
+
+  @override
+  Future<void> deleteLead(String id) async => calls.add('lead-delete $id');
+
+  @override
+  Future<TrialCodes> createTrial({
+    required String org,
+    required int students,
+    int teachers = 1,
+    String? leadId,
+  }) async {
+    calls.add('trial $org $students $teachers $leadId');
+    return TrialCodes.fromJson({
+      'batch': 'deneme-basari-2026-11-19-1234',
+      'expiresAt': DateTime(2026, 12, 19, 23, 59).millisecondsSinceEpoch,
+      'codes': [
+        {'code': 'TEAC2345ABCD', 'role': 'teacher'},
+        {'code': 'STUD2345ABCD', 'role': 'student'},
+      ],
+    });
+  }
 }
 
 class FakeAuth implements AdminAuth {
@@ -293,5 +347,57 @@ void main() {
     await tester.pumpAndSettle();
     expect(api.calls, contains('code member null'));
     expect(find.text('NEWC-0DE2'), findsOneWidget);
+  });
+
+  testWidgets('people table: speaking stats of a member', (tester) async {
+    final api = FakeAdminApi()
+      ..orgs = OrgList(
+        lingoraAdmin: false,
+        orgs: [OrgSummary.fromJson((reportJson()['org'] as Map).cast<String, Object?>())],
+      );
+    await pumpPanel(tester, api, user: _admin);
+    await tester.tap(find.text('Kişiler'));
+    await tester.pumpAndSettle();
+    expect(find.text('Konuşma'), findsOneWidget);
+    expect(find.text('3 · ~12 dk'), findsOneWidget);
+    await tester.ensureVisible(find.text('3 · ~12 dk'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('3 · ~12 dk'));
+    await tester.pumpAndSettle();
+    expect(find.text('Akıcı konuştun. Geçmiş zamanı çalış.'), findsOneWidget);
+    expect(find.text('• "I go yesterday" → "I went yesterday"'), findsOneWidget);
+    expect(find.text('thought'), findsOneWidget);
+  });
+
+  testWidgets('staff: leads list, status and a trial from a lead', (tester) async {
+    final api = FakeAdminApi()
+      ..orgs = OrgList(
+        lingoraAdmin: true,
+        orgs: [OrgSummary.fromJson((reportJson()['org'] as Map).cast<String, Object?>())],
+      );
+    await pumpPanel(tester, api, user: _admin);
+    await tester.tap(find.byKey(const Key('staff-leads')));
+    await tester.pumpAndSettle();
+    expect(find.text('Başarı Dershanesi'), findsOneWidget);
+    expect(find.text('1 yeni talep · toplam 1'), findsOneWidget);
+    expect(find.text('0532 000 00 00'), findsOneWidget);
+
+    await tester.tap(find.byKey(const Key('lead-status-l1')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Arandı').last);
+    await tester.pumpAndSettle();
+    expect(api.calls, contains('lead l1 arandi null'));
+
+    await tester.tap(find.byKey(const Key('lead-trial-l1')));
+    await tester.pumpAndSettle();
+    // 120 students asked; a trial is capped at 60.
+    expect(find.widgetWithText(TextField, '60'), findsOneWidget);
+    await tester.enterText(find.byKey(const Key('trial-students')), '20');
+    await tester.tap(find.byKey(const Key('trial-create')));
+    await tester.pumpAndSettle();
+    expect(api.calls, contains('trial Başarı Dershanesi 20 1 l1'));
+    expect(find.text('2 deneme kodu hazır'), findsOneWidget);
+    expect(find.textContaining('TEAC-2345-ABCD  Öğretmen'), findsOneWidget);
+    expect(find.textContaining('son gün 19.12.2026'), findsOneWidget);
   });
 }
