@@ -163,8 +163,18 @@ void main() {
     });
 
     test('same day: the exact review time decides', () {
-      const a = Progress(wordBox: {'w': 0}, wordDue: {'w': '2026-11-19'}, wordLast: {'w': '2026-11-19'}, wordAt: {'w': 900});
-      const b = Progress(wordBox: {'w': 3}, wordDue: {'w': '2026-11-26'}, wordLast: {'w': '2026-11-19'}, wordAt: {'w': 100});
+      const a = Progress(
+        wordBox: {'w': 0},
+        wordDue: {'w': '2026-11-19'},
+        wordLast: {'w': '2026-11-19'},
+        wordAt: {'w': 900},
+      );
+      const b = Progress(
+        wordBox: {'w': 3},
+        wordDue: {'w': '2026-11-26'},
+        wordLast: {'w': '2026-11-19'},
+        wordAt: {'w': 100},
+      );
       expect(mergeProgress(a, b, localNewer: false).wordBox['w'], 0);
       expect(mergeProgress(b, a, localNewer: true).wordBox['w'], 0);
     });

@@ -831,9 +831,8 @@ class RehearsalStore extends Notifier<RehearsalState> {
     }
   }
 
-  void _setOwner(AppUser user) => ref
-      .read(prefsProvider)
-      .setString(_ownerKey, jsonEncode({'uid': user.uid, 'guest': user.isAnonymous}));
+  void _setOwner(AppUser user) =>
+      ref.read(prefsProvider).setString(_ownerKey, jsonEncode({'uid': user.uid, 'guest': user.isAnonymous}));
 
   void _wipe(RehearsalState s) {
     ref.read(prefsProvider).remove(_key);

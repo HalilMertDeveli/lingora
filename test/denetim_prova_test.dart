@@ -54,17 +54,20 @@ void main() {
     await pumpEventQueue();
   }
 
-  test("another account on the same phone does not see the first one's rehearsals; they are deleted", () async {
-    final c = await start({}, ayse);
-    c.read(rehearsalProvider.notifier).putSession(session('s1'));
-    expect(c.read(rehearsalProvider).sessions, hasLength(1));
-    await signIn(mehmet);
-    expect(c.read(rehearsalProvider).sessions, isEmpty);
-    expect(wiped, ['/prova/s1.m4a']);
-    // Ayşe signing in again does not get them back from this phone.
-    await signIn(ayse);
-    expect(c.read(rehearsalProvider).sessions, isEmpty);
-  });
+  test(
+    "another account on the same phone does not see the first one's rehearsals; they are deleted",
+    () async {
+      final c = await start({}, ayse);
+      c.read(rehearsalProvider.notifier).putSession(session('s1'));
+      expect(c.read(rehearsalProvider).sessions, hasLength(1));
+      await signIn(mehmet);
+      expect(c.read(rehearsalProvider).sessions, isEmpty);
+      expect(wiped, ['/prova/s1.m4a']);
+      // Ayşe signing in again does not get them back from this phone.
+      await signIn(ayse);
+      expect(c.read(rehearsalProvider).sessions, isEmpty);
+    },
+  );
 
   test('signing out (a new guest) clears them too', () async {
     final c = await start({}, ayse);
@@ -86,9 +89,7 @@ void main() {
   });
 
   test('rehearsals saved before owners existed go to the first account seen', () async {
-    final c = await start({
-      'rehearsal_v1': '{"s":[${_json(session('old'))}],"t":[]}',
-    }, ayse);
+    final c = await start({'rehearsal_v1': '{"s":[${_json(session('old'))}],"t":[]}'}, ayse);
     expect(c.read(rehearsalProvider).sessions.single.id, 'old');
     await signIn(mehmet);
     expect(c.read(rehearsalProvider).sessions, isEmpty);

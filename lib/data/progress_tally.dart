@@ -137,7 +137,9 @@ Progress stampTally(Progress p, String device) {
       if (e.value - (base[e.key] ?? 0) - (others[e.key] ?? 0) case final v when v > 0) e.key: v,
   };
   if (mine.isNotEmpty) devices[device] = mine;
-  return p.copyWith(tally: ProgressTally(base: base, devices: devices));
+  return p.copyWith(
+    tally: ProgressTally(base: base, devices: devices),
+  );
 }
 
 /// Adds two copies' additive numbers without counting anything twice:

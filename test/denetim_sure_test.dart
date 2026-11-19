@@ -58,7 +58,13 @@ void main() {
         container: c,
         child: MaterialApp(
           theme: buildTheme(),
-          home: const ExamSessionScreen(exam: _exam, questions: _qs, mock: true, title: 'Deneme', nodeId: 'm1'),
+          home: const ExamSessionScreen(
+            exam: _exam,
+            questions: _qs,
+            mock: true,
+            title: 'Deneme',
+            nodeId: 'm1',
+          ),
         ),
       ),
     );

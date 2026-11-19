@@ -1171,9 +1171,8 @@ class ProgressNotifier extends Notifier<Progress> {
   /// The learner's "İlerlemeyi sıfırla": starts over on every device. The
   /// reset time travels with the progress, so a copy from before it (another
   /// phone, the cloud) is discarded on sync instead of bringing it back.
-  void reset() => _save(
-    Progress(onboarded: true, tally: ProgressTally.empty, resetAt: _now().millisecondsSinceEpoch),
-  );
+  void reset() =>
+      _save(Progress(onboarded: true, tally: ProgressTally.empty, resetAt: _now().millisecondsSinceEpoch));
 
   /// Drops this phone's copy because another account signed in (see
   /// ProgressSync). Unlike [reset], the account's own progress is kept.
