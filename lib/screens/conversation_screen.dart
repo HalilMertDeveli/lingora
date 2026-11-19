@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/speech_evidence.dart';
 import '../core/tr_errors.dart';
+import '../data/app_settings.dart';
 import '../data/progress.dart';
 import '../data/scenarios.dart';
 import '../services/app_settings_link.dart';
@@ -18,6 +19,8 @@ import '../ui/motion.dart';
 import 'conversation_report_screen.dart';
 import 'paywall_screen.dart';
 import 'pronunciation_screen.dart';
+import '../voice/natural_talk_section.dart';
+import '../voice/talk_screen.dart';
 
 const conversationXp = 15;
 
@@ -33,7 +36,9 @@ class ConversationHomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final live = ref.watch(conversationServiceProvider).isLive;
+    // Çocuk modu never talks to the live AI: the scripted demo only.
+    final kid = ref.watch(appSettingsProvider.select((s) => s.isKid));
+    final live = ref.watch(conversationServiceProvider).isLive && !kid;
     final premium = ref.watch(premiumProvider);
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
@@ -98,6 +103,7 @@ class ConversationHomeScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 12),
         ],
+        if (!kid) ...[const NaturalTalkSection(), const SizedBox(height: 12), const SectionLabel('SAHNELER')],
         const SizedBox(height: 12),
         for (final s in scenarios)
           Padding(
@@ -138,15 +144,22 @@ class ConversationHomeScreen extends ConsumerWidget {
 /// Premium all day, free users for a daily taste of [freeChatMessagesPerDay]
 /// messages (the server counts), after which the paywall opens.
 Future<void> openConversation(BuildContext context, WidgetRef ref, Scenario s) async {
+  final kid = ref.read(appSettingsProvider).isKid;
   final live = ref.read(conversationServiceProvider).isLive;
   // Remote Config can switch the live AI off (cost/incident); the demo stays.
-  final demo = live && !ref.read(remoteFlagsProvider).aiChatEnabled;
+  // Çocuk modu always gets the scripted demo: no live AI chat for kids.
+  final demo = kid || (live && !ref.read(remoteFlagsProvider).aiChatEnabled);
   logEvent(ref, AnalyticsEvent.featureUse(live && !demo ? AppFeature.aiChat : AppFeature.demoChat));
+  // Premium: the natural voice partner (hands-free, neural voice, barge-in).
+  if (live && !demo && ref.read(premiumProvider)) {
+    await openTalk(context, ref, s);
+    return;
+  }
   final screen = ConversationScreen(scenario: s);
   await Navigator.of(context).push(
     MaterialPageRoute<void>(
       fullscreenDialog: true,
-      builder: (_) => demo
+      builder: (_) => demo || !live
           ? ProviderScope(
               overrides: [
                 conversationServiceProvider.overrideWithValue(DemoConversationService()),

@@ -29,6 +29,7 @@ import 'exam_pack_screen.dart';
 import 'paywall_screen.dart';
 import '../services/explain_more.dart';
 import '../ui/explain_more.dart';
+import 'report_question_sheet.dart';
 
 /// A wrong answer as the "Neden yanlış?" follow-up sends it.
 ExplainQuestion _explainQuestion(ExamQuestion q, int? picked) => ExplainQuestion(
@@ -760,6 +761,15 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> with Widg
                                 ),
                                 const SizedBox(height: 6),
                                 Text(q.explanation, style: const TextStyle(height: 1.4)),
+                                ReportQuestionButton(
+                                  target: () => ReportTarget(
+                                    questionId: q.id,
+                                    lessonId: widget.nodeId ?? widget.exam.id,
+                                    question: q.text,
+                                    answer: _picked == null ? null : _letters[_picked!],
+                                    correct: right,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -1060,6 +1070,15 @@ class _ReviewTile extends ConsumerWidget {
               const SizedBox(height: 12),
               ExplainMoreBox(question: _explainQuestion(q, picked)),
             ],
+            ReportQuestionButton(
+              target: () => ReportTarget(
+                questionId: q.id,
+                lessonId: q.section ?? '',
+                question: q.text,
+                answer: picked == null ? null : _letters[picked!],
+                correct: picked == null ? null : ok,
+              ),
+            ),
             if (gloss != null) ...[
               const SizedBox(height: 12),
               Text(

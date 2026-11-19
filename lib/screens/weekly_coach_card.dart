@@ -31,9 +31,10 @@ String coachRange(String from, String to) {
 /// week's numbers and the first mistake, the rest under a Premium card.
 /// Çocuk modu gets Pofuduk (through [Mascot]) and no AI.
 class WeeklyCoachCard extends ConsumerWidget {
-  const WeeklyCoachCard({super.key, this.bottom = 16});
+  const WeeklyCoachCard({super.key, this.top = 0, this.bottom = 16});
 
-  /// Space under the card when it shows.
+  /// Space above and under the card, only when it shows.
+  final double top;
   final double bottom;
 
   @override
@@ -126,7 +127,7 @@ class WeeklyCoachCard extends ConsumerWidget {
     ];
 
     return Padding(
-      padding: EdgeInsets.only(bottom: bottom),
+      padding: EdgeInsets.only(top: top, bottom: bottom),
       child: Container(
         key: const Key('weekly-coach'),
         padding: const EdgeInsets.fromLTRB(14, 12, 6, 14),

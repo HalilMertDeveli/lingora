@@ -2,7 +2,9 @@
 // The app sends { scenarioId, messages: [{ role, content }], pronunciation:
 // [{ word, heard?, confidence? }] } and gets back { mistakes: [{ original,
 // corrected, explanation_tr }], summary_tr, weak_words: [{ word, heard,
-// confidence }], remaining }.
+// confidence }], remaining }. Voice chats may also send { mode: "free" | characterId,
+// topic, level, goal } instead of scenarioId, and the in-flow corrections
+// { corrections: [{ original, corrected, tip_tr }] } (talk.ts recasts).
 //
 // Grammar feedback comes from Claude. Pronunciation does NOT: weak_words is
 // only the on-device speech-recognition evidence the app sent (low
@@ -14,7 +16,8 @@ import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
 import { ClaudeClient, hasPremium, MAX_CHARS, MODEL } from "./converse.js";
-import { SCENARIOS, ScenarioPrompt } from "./scenarios.js";
+import { ScenarioPrompt } from "./scenarios.js";
+import { reportScene, resolveContext } from "./talk_context.js";
 import { dayKey } from "./week.js";
 
 export const REPORT_MAX_MESSAGES = 40;
@@ -163,6 +166,28 @@ const clean = (v: unknown, max: number) => (typeof v === "string" ? v.trim().sli
 const same = (a: string, b: string) =>
   a.toLowerCase().replace(/[^a-z0-9]/g, "") === b.toLowerCase().replace(/[^a-z0-9]/g, "");
 
+/**
+ * Corrections collected silently during a voice chat ({ original, corrected,
+ * tip_tr }), kept only for sentences the learner really said.
+ */
+export function cleanCorrections(raw: unknown, lines: Line[]): Mistake[] {
+  if (!Array.isArray(raw)) return [];
+  const said = lines.filter((l) => l.role === "user").map((l) => l.content);
+  const out: Mistake[] = [];
+  for (const e of raw.slice(0, 40)) {
+    if (typeof e !== "object" || e === null) continue;
+    const r = e as Record<string, unknown>;
+    const original = clean(r.original, MAX_CHARS);
+    const corrected = clean(r.corrected, MAX_CHARS);
+    if (!original || !corrected || same(original, corrected)) continue;
+    if (!said.some((t) => same(t, original))) continue;
+    if (out.some((m) => same(m.original, original))) continue;
+    out.push({ original, corrected, explanation_tr: clean(r.tip_tr, 300) });
+    if (out.length >= MAX_MISTAKES) break;
+  }
+  return out;
+}
+
 export async function conversationReport(
   db: Firestore,
   client: ClaudeClient,
@@ -171,12 +196,15 @@ export async function conversationReport(
   now: Date,
 ): Promise<ConversationReport> {
   const body = (typeof data === "object" && data !== null ? data : {}) as Record<string, unknown>;
-  const scenario = SCENARIOS[String(body.scenarioId)];
+  // A role-play scenario, free talk or a character (talk_context.ts).
+  const ctx = resolveContext(body);
+  const scenario = ctx ? reportScene(ctx) : null;
   const lines = parseTranscript(body.messages);
   if (!scenario || !lines) throw new HttpsError("invalid-argument", "invalid_request");
 
   const learnerText = lines.filter((l) => l.role === "user").map((l) => l.content).join("\n");
   const weak_words = cleanWeakWords(body.pronunciation, learnerText);
+  const inFlow = cleanCorrections(body.corrections, lines);
   const premium = await hasPremium(db, uid, now);
   const remaining = await takeReportQuota(db, uid, now, premium ? DAILY_REPORT_LIMIT : FREE_DAILY_REPORT_LIMIT);
 
@@ -195,7 +223,7 @@ export async function conversationReport(
     });
 
     if (response.stop_reason === "refusal") {
-      return { mistakes: [], summary_tr: "Bu sohbet için karne hazırlanamadı.", weak_words, remaining };
+      return { mistakes: inFlow, summary_tr: "Bu sohbet için karne hazırlanamadı.", weak_words, remaining };
     }
     const text = response.content.find((b) => b.type === "text");
     if (!text || text.type !== "text") throw new HttpsError("unavailable", "empty_response");
@@ -209,6 +237,11 @@ export async function conversationReport(
       if (!original || !corrected || same(original, corrected)) continue;
       mistakes.push({ original, corrected, explanation_tr: clean(r.explanation_tr, 300) });
       if (mistakes.length >= MAX_MISTAKES) break;
+    }
+    // Recasts the partner made during the chat, which the review may have skipped.
+    for (const m of inFlow) {
+      if (mistakes.length >= MAX_MISTAKES) break;
+      if (!mistakes.some((x) => same(x.original, m.original))) mistakes.push(m);
     }
     return { mistakes, summary_tr: clean(parsed.summary_tr, 600), weak_words, remaining };
   } catch (error) {

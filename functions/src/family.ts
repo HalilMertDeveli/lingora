@@ -6,10 +6,18 @@
 // Firestore (server-only, see firestore.rules catch-all):
 //   families/{ownerUid}: { ownerUid, seats, expiresAt, members: { uid: { joinedAt } }, code?, codeExpiresAt? }
 //   familyCodes/{code}:  { ownerUid, expiresAt }
+//
+// A member's own Premium (Play, invite days, org seat) is never lost by
+// joining: when the family grant takes over the top level of
+// entitlements/{uid}, the running one is parked in `previous`, and leaving,
+// removal or the plan ending recomputes the entitlement from every source
+// (entitlement.ts).
 import { randomInt } from "node:crypto";
 
 import { DocumentData, FieldValue, Firestore, Timestamp, Transaction } from "firebase-admin/firestore";
 import { HttpsError } from "firebase-functions/v2/https";
+
+import { inTx, parkedGrant, recomputedEntitlement } from "./entitlement.js";
 
 export const FAMILY_PRODUCT = "lingora_premium_family_yearly";
 
@@ -122,6 +130,8 @@ export async function redeemFamilyCode(
     const ownUntil = ownOn ? ms(ent?.expiresAt) : 0;
     // Keep a longer Premium the user already has from somewhere else.
     if (ownUntil < famUntil || ent?.source === "family") {
+      const parked = parkedGrant(ent, "family", now);
+      if (parked) update.previous = parked;
       Object.assign(update, {
         active: true,
         premium: true,
@@ -144,7 +154,13 @@ export async function redeemFamilyCode(
 }
 
 /** Removes [memberUid] from the family of [ownerUid] inside [tx] (reads first). */
-async function dropMember(tx: Transaction, db: Firestore, ownerUid: string, memberUid: string): Promise<boolean> {
+async function dropMember(
+  tx: Transaction,
+  db: Firestore,
+  ownerUid: string,
+  memberUid: string,
+  now: Date,
+): Promise<boolean> {
   const ref = familyRef(db, ownerUid);
   const entRef = db.doc(`entitlements/${memberUid}`);
   const fam = (await tx.get(ref)).data();
@@ -152,14 +168,19 @@ async function dropMember(tx: Transaction, db: Firestore, ownerUid: string, memb
   const listed = !!fam && memberUid in ((fam.members as Record<string, unknown>) ?? {});
   const linked = ent?.family?.ownerUid === ownerUid && ent?.family?.role === "member";
   if (!listed && !linked) return false;
+  // Reads before any write: what the member still has without this family.
+  const fallback =
+    linked && ent?.source === "family"
+      ? await recomputedEntitlement(db, memberUid, now, inTx(tx), ent, "family")
+      : undefined;
   if (listed) {
     tx.update(ref, { [`members.${memberUid}`]: FieldValue.delete(), updatedAt: FieldValue.serverTimestamp() });
   }
   if (linked) {
     const update: DocumentData = { family: FieldValue.delete(), updatedAt: FieldValue.serverTimestamp() };
-    if (ent?.source === "family") {
-      Object.assign(update, { active: false, premium: false, status: "expired", expiresAt: Timestamp.now() });
-    }
+    if (fallback) Object.assign(update, fallback);
+    // Another source took over while in the family and parked the family grant.
+    else if ((ent?.previous as DocumentData | undefined)?.source === "family") update.previous = FieldValue.delete();
     tx.set(entRef, update, { merge: true });
   }
   return true;
@@ -170,6 +191,7 @@ export async function removeFamilyMember(
   db: Firestore,
   ownerUid: string,
   data: unknown,
+  now: Date = new Date(),
 ): Promise<{ removed: boolean }> {
   const d = (typeof data === "object" && data !== null ? data : {}) as Record<string, unknown>;
   const memberUid = d.memberUid;
@@ -177,17 +199,17 @@ export async function removeFamilyMember(
     throw new HttpsError("invalid-argument", "invalid_member");
   }
   if (memberUid === ownerUid) throw new HttpsError("invalid-argument", "cannot_remove_owner");
-  const removed = await db.runTransaction((tx) => dropMember(tx, db, ownerUid, memberUid));
+  const removed = await db.runTransaction((tx) => dropMember(tx, db, ownerUid, memberUid, now));
   if (!removed) throw new HttpsError("not-found", "not_a_member");
   return { removed };
 }
 
 /** A member leaves the family they joined. */
-export async function leaveFamily(db: Firestore, uid: string): Promise<{ left: boolean }> {
+export async function leaveFamily(db: Firestore, uid: string, now: Date = new Date()): Promise<{ left: boolean }> {
   const ent = (await db.doc(`entitlements/${uid}`).get()).data();
   const ownerUid = ent?.family?.role === "member" ? (ent.family.ownerUid as string) : null;
   if (!ownerUid) throw new HttpsError("failed-precondition", "not_in_family");
-  return { left: await db.runTransaction((tx) => dropMember(tx, db, ownerUid, uid)) };
+  return { left: await db.runTransaction((tx) => dropMember(tx, db, ownerUid, uid, now)) };
 }
 
 export interface FamilyMember {

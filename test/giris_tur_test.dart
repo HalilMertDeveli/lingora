@@ -16,8 +16,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final _now = DateTime(2026, 11, 16, 12);
 
-Future<SharedPreferences> _pumpNudge(WidgetTester tester, List<Override> overrides) async {
-  SharedPreferences.setMockInitialValues({});
+Future<SharedPreferences> _pumpNudge(
+  WidgetTester tester,
+  List<Override> overrides, {
+  int lessonsDone = 1,
+}) async {
+  SharedPreferences.setMockInitialValues({'progress_v1': '{"onboarded": true, "lessonsDone": $lessonsDone}'});
   final prefs = await SharedPreferences.getInstance();
   await tester.pumpWidget(
     ProviderScope(
@@ -45,7 +49,8 @@ void main() {
   group('sign-in reminder', () {
     testWidgets('a guest is told progress may be lost, and can sign in', (tester) async {
       await _pumpNudge(tester, _guest());
-      expect(find.text('İlerlemen kaybolmasın'), findsOneWidget);
+      expect(find.text('İlerlemeni kaybetme'), findsOneWidget);
+      expect(find.textContaining('İlk dersin bitti!'), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('account-nudge-sign-in')));
       await tester.pumpAndSettle();
       expect(find.byType(AuthScreen), findsOneWidget);
@@ -57,6 +62,11 @@ void main() {
       await tester.pump();
       expect(find.byKey(const ValueKey('account-nudge')), findsNothing);
       expect(prefs.getInt(accountNudgeUntilKey), _now.add(accountNudgeSnooze).millisecondsSinceEpoch);
+    });
+
+    testWidgets('asked after the first lesson, not before', (tester) async {
+      await _pumpNudge(tester, _guest(), lessonsDone: 0);
+      expect(find.byKey(const ValueKey('account-nudge')), findsNothing);
     });
 
     testWidgets('signed-in learners and builds without Firebase never see it', (tester) async {

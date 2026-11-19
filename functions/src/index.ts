@@ -11,9 +11,11 @@ import { onMessagePublished } from "firebase-functions/v2/pubsub";
 import { onSchedule } from "firebase-functions/v2/scheduler";
 
 import * as account from "./account.js";
-import { stubClaude, stubClaudeEnabled } from "./ai_stub.js";
+import * as aiGuard from "./ai_guard.js";
+import { stubClaude, stubClaudeEnabled, stubTts } from "./ai_stub.js";
 import * as writing from "./assess_writing.js";
 import * as conversation from "./converse.js";
+import { hasPremium } from "./entitlement.js";
 import * as daily from "./daily_reading.js";
 import * as karne from "./conversation_report.js";
 import * as explain from "./explain_more.js";
@@ -23,6 +25,8 @@ import * as play from "./play.js";
 import * as purchase from "./purchase.js";
 import * as rehearsal from "./rehearsal.js";
 import * as speaking from "./speaking_stats.js";
+import * as talking from "./talk.js";
+import * as tts from "./tts.js";
 
 initializeApp();
 setGlobalOptions({ region: "europe-west1", maxInstances: 10 });
@@ -32,8 +36,35 @@ let claude: conversation.ClaudeClient | undefined;
 
 /** The Claude client: the real one, or the QA fake inside the emulator only (see ai_stub.ts). */
 function claudeClient(): conversation.ClaudeClient {
-  claude ??= stubClaudeEnabled() ? stubClaude() : new Anthropic({ apiKey: anthropicApiKey.value() });
+  // Metered: every response's cost feeds the daily circuit breaker (ai_guard.ts).
+  claude ??= aiGuard.meteredClient(
+    stubClaudeEnabled() ? stubClaude() : new Anthropic({ apiKey: anthropicApiKey.value() }),
+    getFirestore(),
+  );
   return claude;
+}
+
+/**
+ * App Check, the daily spend circuit breaker and the per-install free limit,
+ * in front of every AI callable (ai_guard.ts). Returns the caller's uid.
+ */
+async function guardAi(req: CallableRequest, now: Date, opts: { countFreeUse?: boolean } = {}): Promise<string> {
+  const uid = requireUid(req);
+  const db = getFirestore();
+  const data = (typeof req.data === "object" && req.data !== null ? req.data : {}) as Record<string, unknown>;
+  await aiGuard.checkAiCall(
+    db,
+    {
+      uid,
+      appVerified: req.app !== undefined,
+      // Not counted against the per-install free limit (warm-up, Premium-only voice).
+      installId: opts.countFreeUse === false ? undefined : data.installId,
+      premium: await hasPremium(db, uid, now),
+      emulator: process.env.FUNCTIONS_EMULATOR === "true",
+    },
+    now,
+  );
+  return uid;
 }
 
 function requireUid(req: CallableRequest): string {
@@ -88,15 +119,48 @@ export const generateDailyReadings = onSchedule(
 );
 
 /** { scenarioId, messages } -> { reply, correction, tip_tr, done, remaining, free } */
-export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
-  const uid = requireUid(req);
-  return conversation.converse(getFirestore(), claudeClient(), uid, req.data, new Date());
+export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, async (req) => {
+  const now = new Date();
+  const uid = await guardAi(req, now);
+  return conversation.converse(getFirestore(), claudeClient(), uid, req.data, now);
+});
+
+let ttsClient: tts.TtsClient | undefined;
+/** Google Cloud TTS (Chirp 3 HD), or the silent fake inside the emulator with LINGORA_AI_STUB=1. */
+function textToSpeech(): tts.TtsClient {
+  ttsClient ??= stubClaudeEnabled() ? stubTts() : tts.googleTts();
+  return ttsClient;
+}
+
+/**
+ * Doğal konuşma (talk.ts), a streaming callable: { scenarioId | mode: "free" |
+ * characterId, topic?, level?, goal?, voice?, messages } -> chunks { type:
+ * "sentence", i, text, audio } then { reply, correction, tip_tr, done,
+ * remaining, free, voice, talkSecondsLeft, timing }.
+ */
+export const talk = onCall(
+  { secrets: [anthropicApiKey], timeoutSeconds: 90, memory: "512MiB", concurrency: 40 },
+  async (req, res) => {
+    const now = new Date();
+    const warm = (req.data as { warm?: unknown } | null)?.warm === true;
+    const uid = await guardAi(req, now, { countFreeUse: !warm });
+    if (warm) return talking.warmTalk(claudeClient(), textToSpeech());
+    const send = req.acceptsStreaming ? (c: talking.TalkSentence) => res?.sendChunk(c) : null;
+    return talking.talk(getFirestore(), claudeClient(), textToSpeech(), uid, req.data, now, send);
+  },
+);
+
+/** { text, voice?, rate? } -> { audio: base64 MP3 | null, cached, reason? } (Premium neural voice) */
+export const speak = onCall({ timeoutSeconds: 30, concurrency: 40 }, async (req) => {
+  const now = new Date();
+  const uid = await guardAi(req, now, { countFreeUse: false });
+  return tts.speak(getFirestore(), textToSpeech(), uid, req.data, now);
 });
 
 /** { scenarioId, messages, pronunciation } -> { mistakes, summary_tr, weak_words, remaining } (voice coach karne) */
 export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, async (req) => {
-  const uid = requireUid(req);
   const now = new Date();
+  const uid = await guardAi(req, now);
   const result = await karne.conversationReport(getFirestore(), claudeClient(), uid, req.data, now);
   // Teacher report (speaking_stats.ts); never fails the learner's karne.
   await speaking
@@ -112,15 +176,17 @@ export const explainMore = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 
 });
 
 /** { taskId, text } -> { scores, corrections, next_tr, remaining } (general course writing tasks) */
-export const assessWriting = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, (req) => {
-  const uid = requireUid(req);
-  return writing.assessWriting(getFirestore(), claudeClient(), uid, req.data, new Date());
+export const assessWriting = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, async (req) => {
+  const now = new Date();
+  const uid = await guardAi(req, now);
+  return writing.assessWriting(getFirestore(), claudeClient(), uid, req.data, now);
 });
 
 /** { rehearsalId, kind, items: [{ question, answer }], previousTags?, previousGaps? } -> analysis (Mülakat Provası) */
-export const analyzeRehearsal = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 120 }, (req) => {
-  const uid = requireUid(req);
-  return rehearsal.analyzeRehearsal(getFirestore(), claudeClient(), uid, req.data, new Date());
+export const analyzeRehearsal = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 120 }, async (req) => {
+  const now = new Date();
+  const uid = await guardAi(req, now);
+  return rehearsal.analyzeRehearsal(getFirestore(), claudeClient(), uid, req.data, now);
 });
 
 /** { productId, purchaseToken } -> { active, productId, expiresAt?, packs } (subscriptions, family plan, exam packs) */

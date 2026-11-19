@@ -31,7 +31,9 @@ import '../data/topic_themes.dart';
 import 'lesson_screen.dart';
 import 'path_map.dart';
 import 'account_nudge.dart';
+import 'daily_goal_sheet.dart';
 import 'reminder_settings.dart';
+import 'today_start_card.dart';
 import 'section_header.dart';
 import 'skip_exam_card.dart';
 import 'exam_screen.dart';
@@ -766,8 +768,10 @@ class _PathListState extends ConsumerState<_PathList> {
               children: [
                 const AccountNudgeCard(),
                 if (!AccountNudgeCard.visible(ref)) const ReminderPromptCard(),
+                // "Bugün ne yapacağım?": review → lesson → listening, one BAŞLA.
+                const TodayStartCard(),
                 const _DailyGoalCard(),
-                const Padding(padding: EdgeInsets.only(top: 12), child: WeeklyCoachCard(bottom: 0)),
+                const WeeklyCoachCard(top: 12, bottom: 0),
                 if (ref.watch(trackProvider).id == 'pro_tourism') const GuestFlagsCard(),
                 const SizedBox(height: 20),
                 for (final section in course.sections) ...[
@@ -1140,7 +1144,12 @@ class _DailyGoalCard extends ConsumerWidget {
     final p = ref.watch(progressProvider);
     final today = p.xpOn(ref.watch(clockProvider)());
     final ratio = (today / p.dailyGoal).clamp(0.0, 1.0);
+    // The goal is not asked on the first run; after a few lessons, here.
+    final ask = dailyGoalAskDue(ref);
     return TapCard(
+      key: const Key('daily-goal-card'),
+      selected: ask,
+      onTap: () => showDailyGoalSheet(context, ref),
       child: Row(
         children: [
           // The day's glass fills up with the daily goal.
@@ -1160,7 +1169,11 @@ class _DailyGoalCard extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  ratio >= 1 ? 'Günlük hedef tamam!' : 'Günlük hedef',
+                  ask
+                      ? 'Günlük hedefini seç'
+                      : ratio >= 1
+                      ? 'Günlük hedef tamam!'
+                      : 'Günlük hedef',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 8),
