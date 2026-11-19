@@ -8,6 +8,7 @@ import '../theme.dart';
 import 'admin_api.dart';
 import 'dashboard.dart';
 import 'stats_panel.dart';
+import 'sales_pages.dart';
 import 'widgets.dart';
 
 /// The panel's server API, or null when Firebase is off.
@@ -413,6 +414,19 @@ class StaffOrgsPage extends ConsumerWidget {
     appBar: AppBar(
       title: const Text('Dilmaç Kurumsal · Kurumlar'),
       actions: [
+        TextButton.icon(
+          key: const Key('staff-leads'),
+          onPressed: () =>
+              Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const LeadsPage())),
+          icon: const Icon(Icons.inbox_outlined),
+          label: const Text('Talepler'),
+        ),
+        TextButton.icon(
+          key: const Key('staff-trial'),
+          onPressed: () => showTrialFlow(context, ref),
+          icon: const Icon(Icons.card_giftcard),
+          label: const Text('Deneme kodu'),
+        ),
         // Owner dashboard (stats_panel.dart): staff only, like this page.
         TextButton.icon(
           key: const ValueKey('open-stats'),

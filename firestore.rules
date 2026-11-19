@@ -550,6 +550,14 @@ service cloud.firestore {
         allow update: if isMe() && validMember() && request.resource.data.joinedAt == resource.data.joinedAt;
         allow delete: if isMe() || isClassOwner();
       }
+
+      // Voice-coach stats for the teacher (functions/src/speaking_stats.ts):
+      // written only by the server, and only while members/{uid} exists.
+      // The student or the teacher removes it when the student leaves.
+      match /speaking/{memberUid} {
+        allow read, delete: if (signedIn() && request.auth.uid == memberUid) || isClassOwner();
+        allow create, update: if false;
+      }
     }
 
     // The classes a user joined, so another phone keeps reporting.
@@ -575,6 +583,10 @@ service cloud.firestore {
       allow read, delete: if isOwner(uid);
       allow create, update: if false;
     }
+
+    // Kurumsal sales (functions/src/sales.ts): leads/{id} quote requests,
+    // leadRate/{key} counters and speakingStats/{uid} are server-only through
+    // the catch-all below. Staff read leads via the leadList callable.
 
     // Forced update (docs/zorunlu-guncelleme.md): every app reads the minimum
     // and recommended version at start, even before signing in. Only the

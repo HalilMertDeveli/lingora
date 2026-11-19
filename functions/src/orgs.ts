@@ -28,6 +28,8 @@ import {
 } from "firebase-admin/firestore";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { speakingFor } from "./speaking_stats.js";
+
 export type OrgType = "kurum" | "okul";
 export type Role = "admin" | "teacher" | "member";
 export type AssignmentKind = "lesson" | "grammar" | "exam";
@@ -756,6 +758,11 @@ export async function orgReport(db: Firestore, caller: Caller, data: unknown, no
     db,
     memberDocs.map((m) => m.id),
   );
+  // Voice-coach stats (speaking_stats.ts): only for people who joined this org.
+  const speech = await speakingFor(
+    db,
+    memberDocs.map((m) => m.id),
+  );
   const names = new Map(memberSnap.docs.map((m) => [m.id, m.get("displayName") as string]));
 
   const members = memberDocs.map((m) => {
@@ -771,6 +778,7 @@ export async function orgReport(db: Firestore, caller: Caller, data: unknown, no
       joinedAt: (m.get("joinedAt") as Timestamp | undefined)?.toMillis() ?? 0,
       synced: p !== undefined,
       ...progressSummary(p, now),
+      speaking: speech.get(m.id) ?? null,
       assignments: status,
     };
   });
