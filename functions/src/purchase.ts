@@ -54,7 +54,7 @@ export function parsePurchaseInput(data: unknown): { productId: string; purchase
   if (d.platform !== undefined && d.platform !== "android") {
     throw new HttpsError("invalid-argument", "unsupported_platform");
   }
-  if (typeof d.productId !== "string" || !(d.productId in PRODUCTS || d.productId in PACK_PRODUCTS)) {
+  if (typeof d.productId !== "string" || !(Object.hasOwn(PRODUCTS, d.productId) || Object.hasOwn(PACK_PRODUCTS, d.productId))) {
     throw new HttpsError("invalid-argument", "unknown_product");
   }
   const token = d.purchaseToken;
@@ -114,7 +114,7 @@ export async function verifyPurchase(db: Firestore, uid: string, data: unknown, 
   const { productId, purchaseToken } = parsePurchaseInput(data);
   if (opts.testMode) return grantTestPurchase(db, uid, productId, purchaseToken, opts.now);
   if (!opts.play) throw new HttpsError("unimplemented", "play_verification_not_configured");
-  if (productId in PACK_PRODUCTS) {
+  if (Object.hasOwn(PACK_PRODUCTS, productId)) {
     return syncPack(db, opts.play, purchaseToken, productId, opts.now, { caller: uid });
   }
   const r = await syncSubscription(db, opts.play, purchaseToken, opts.now, { caller: uid, productId });
@@ -181,7 +181,7 @@ export async function syncSubscription(
   const access = subscriptionAccess(sub, Object.keys(PRODUCTS), now);
   if (opts.revoke) Object.assign(access, { entitled: false, status: "expired", needsAck: false });
   const productId = access.productId;
-  if (!productId || !(productId in PRODUCTS)) {
+  if (!productId || !Object.hasOwn(PRODUCTS, productId)) {
     if (opts.caller) throw new HttpsError("invalid-argument", "unknown_product");
     return { outcome: "unknown_product" };
   }
@@ -192,13 +192,15 @@ export async function syncSubscription(
 
   const out = await db.runTransaction(async (tx): Promise<SyncOutcome> => {
     const bound = await tx.get(tokenRef);
+    const linkedUid = linkedRef ? (await tx.get(linkedRef)).get("uid") as string | undefined : undefined;
     let uid = bound.get("uid") as string | undefined;
     if (opts.caller) {
       // One purchase, one account.
       if (uid && uid !== opts.caller) throw new HttpsError("already-exists", "token_in_use");
+      if (linkedUid && linkedUid !== opts.caller) throw new HttpsError("already-exists", "token_in_use");
       uid = opts.caller;
     } else if (!uid && linkedRef) {
-      uid = (await tx.get(linkedRef)).get("uid") as string | undefined;
+      uid = linkedUid;
     }
     if (!uid) return { outcome: "unbound" };
 
@@ -422,7 +424,7 @@ export async function handleRtdn(db: Firestore, play: PlayApi, msg: DeveloperNot
     }
     const one = msg.oneTimeProductNotification;
     if (one) {
-      if (!validToken(one.purchaseToken) || !one.sku || !(one.sku in PACK_PRODUCTS)) return "ignored:product";
+      if (!validToken(one.purchaseToken) || !one.sku || !Object.hasOwn(PACK_PRODUCTS, one.sku)) return "ignored:product";
       await syncPack(db, play, one.purchaseToken, one.sku, now, {});
       return "pack:synced";
     }

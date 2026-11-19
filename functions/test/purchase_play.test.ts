@@ -208,6 +208,20 @@ test("notifications for tokens nobody verified yet change nothing", async () => 
   assert.equal(await rtdn({ voidedPurchaseNotification: { purchaseToken: token, productType: 1 } }), "voided:unbound");
 });
 
+test("an upgrade cannot be claimed by another account before its notification arrives", async () => {
+  play.subs.set(token, sub("ACTIVE", now.getTime() + 30 * DAY));
+  await buy("owner");
+  const upgraded = "upgrade-token-other-account";
+  play.subs.set(upgraded, sub("ACTIVE", now.getTime() + 366 * DAY, { linkedPurchaseToken: token }, "lingora_premium_yearly"));
+  await rejectsWith(buy("other", "lingora_premium_yearly", upgraded), "already-exists", "token_in_use");
+  assert.equal(await ent("other"), undefined);
+  assert.equal((await db.doc(`purchases/${tokenHash(upgraded)}`).get()).exists, false);
+  assert.equal(play.acks.length, 1);
+  const restored = await buy("owner", "lingora_premium_yearly", upgraded);
+  assert.equal(restored.active, true);
+  assert.equal((await db.doc(`purchases/${tokenHash(upgraded)}`).get()).get("uid"), "owner");
+});
+
 test("an upgrade token is bound to the owner of the token it replaces", async () => {
   play.subs.set(token, sub("ACTIVE", now.getTime() + 30 * DAY));
   await buy("u");
