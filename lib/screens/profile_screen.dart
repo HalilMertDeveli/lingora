@@ -232,7 +232,10 @@ class ProfileScreen extends ConsumerWidget {
               context: context,
               builder: (c) => AlertDialog(
                 title: const Text('İlerleme sıfırlansın mı?'),
-                content: const Text('Tüm XP, seri ve tamamlanan dersler silinir. Bu işlem geri alınamaz.'),
+                content: const Text(
+                  'Tüm XP, seri ve tamamlanan dersler silinir; hesabınla eşitlenen diğer cihazlarında da '
+                  'sıfırlanır. Bu işlem geri alınamaz.',
+                ),
                 actions: [
                   TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Vazgeç')),
                   TextButton(
