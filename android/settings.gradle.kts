@@ -21,7 +21,7 @@ plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
     id("com.android.application") version "9.1.0" apply false
     // START: FlutterFire Configuration
-    id("com.google.gms.google-services") version("4.3.15") apply false
+    id("com.google.gms.google-services") version("4.4.4") apply false
     // END: FlutterFire Configuration
     // Uploads the R8 mapping file on release builds so Crashlytics stack traces are readable.
     id("com.google.firebase.crashlytics") version "3.0.6" apply false
