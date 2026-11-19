@@ -145,6 +145,7 @@ class MemberRow {
     required this.weekXp,
     required this.lastActiveDay,
     required this.assignments,
+    this.speaking,
   });
 
   factory MemberRow.fromJson(Map<String, Object?> j) => MemberRow(
@@ -166,6 +167,7 @@ class MemberRow {
           orElse: () => AssignmentStatus.open,
         ),
     },
+    speaking: j['speaking'] is Map ? MemberSpeaking.fromJson(_map(j['speaking'])) : null,
   );
 
   final String uid;
@@ -185,8 +187,121 @@ class MemberRow {
   final String? lastActiveDay;
   final Map<String, AssignmentStatus> assignments;
 
+  /// Voice-coach stats; null when the person never asked for a speaking karne.
+  final MemberSpeaking? speaking;
+
   int get assignmentsDone => assignments.values.where((s) => s == AssignmentStatus.done).length;
   int get assignmentsLate => assignments.values.where((s) => s == AssignmentStatus.late).length;
+}
+
+/// speaking_stats.ts teacherView(): minutes, conversations, latest karne.
+class MemberSpeaking {
+  const MemberSpeaking({
+    required this.conversations,
+    required this.minutes,
+    this.lastAt,
+    this.lastSummary = '',
+    this.recentMistakes = const [],
+    this.weakWords = const [],
+  });
+
+  factory MemberSpeaking.fromJson(Map<String, Object?> j) => MemberSpeaking(
+    conversations: _int(j['conversations']),
+    minutes: _int(j['minutes']),
+    lastAt: _int(j['lastAt']) > 0 ? _ms(j['lastAt']) : null,
+    lastSummary: j['lastSummary'] as String? ?? '',
+    recentMistakes: [
+      for (final m in _list(j['recentMistakes'])) '"${m['original'] ?? ''}" → "${m['corrected'] ?? ''}"',
+    ],
+    weakWords: [for (final w in (j['weakWords'] as List? ?? const [])) '$w'],
+  );
+
+  final int conversations;
+  final int minutes;
+  final DateTime? lastAt;
+  final String lastSummary;
+
+  /// "original" → "corrected", newest first.
+  final List<String> recentMistakes;
+  final List<String> weakWords;
+}
+
+/// A quote request from the /kurumsal page (functions/src/sales.ts).
+class Lead {
+  const Lead({
+    required this.id,
+    required this.org,
+    required this.name,
+    required this.phone,
+    required this.email,
+    required this.students,
+    required this.city,
+    required this.message,
+    required this.status,
+    required this.note,
+    required this.createdAt,
+    this.trialBatch,
+  });
+
+  factory Lead.fromJson(Map<String, Object?> j) => Lead(
+    id: j['id'] as String,
+    org: j['org'] as String? ?? '',
+    name: j['name'] as String? ?? '',
+    phone: j['phone'] as String? ?? '',
+    email: j['email'] as String? ?? '',
+    students: _int(j['students']),
+    city: j['city'] as String? ?? '',
+    message: j['message'] as String? ?? '',
+    status: LeadStatus.parse(j['status']),
+    note: j['note'] as String? ?? '',
+    createdAt: _ms(j['createdAt']),
+    trialBatch: j['trialBatch'] as String?,
+  );
+
+  final String id;
+  final String org;
+  final String name;
+  final String phone;
+  final String email;
+  final int students;
+  final String city;
+  final String message;
+  final LeadStatus status;
+  final String note;
+  final DateTime createdAt;
+  final String? trialBatch;
+}
+
+enum LeadStatus {
+  yeni('Yeni'),
+  arandi('Arandı'),
+  deneme('Denemede'),
+  musteri('Müşteri'),
+  kapandi('Kapandı');
+
+  const LeadStatus(this.label);
+  final String label;
+
+  static LeadStatus parse(Object? v) => values.firstWhere((s) => s.name == v, orElse: () => yeni);
+}
+
+/// trialCreate's answer: 30-day seat codes (licenseCodes, docs/kurumlar.md).
+class TrialCodes {
+  const TrialCodes({required this.batch, required this.expiresAt, required this.codes});
+
+  factory TrialCodes.fromJson(Map<String, Object?> j) => TrialCodes(
+    batch: j['batch'] as String? ?? '',
+    expiresAt: _ms(j['expiresAt']),
+    codes: [for (final c in _list(j['codes'])) (code: c['code'] as String, teacher: c['role'] == 'teacher')],
+  );
+
+  final String batch;
+  final DateTime expiresAt;
+  final List<({String code, bool teacher})> codes;
+
+  /// XXXX-XXXX-XXXX, as the licence script prints them.
+  static String pretty(String c) =>
+      c.length == 12 ? '${c.substring(0, 4)}-${c.substring(4, 8)}-${c.substring(8)}' : c;
 }
 
 class OrgReport {
@@ -253,6 +368,17 @@ abstract interface class AdminApi {
     required DateTime dueAt,
   });
   Future<void> deleteAssignment(String orgId, String assignmentId);
+
+  // Dilmaç staff: quote requests and trial codes (functions/src/sales.ts).
+  Future<List<Lead>> listLeads();
+  Future<void> updateLead(String id, {LeadStatus? status, String? note});
+  Future<void> deleteLead(String id);
+  Future<TrialCodes> createTrial({
+    required String org,
+    required int students,
+    int teachers = 1,
+    String? leadId,
+  });
 }
 
 /// A refused call with a Turkish message for the panel.
@@ -273,6 +399,8 @@ class AdminException implements Exception {
     'too_many_assignments' => 'Bu sınıf için ödev sınırına ulaşıldı.',
     'not_your_class' || 'not_allowed' || 'permission-denied' => 'Bu işlem için yetkiniz yok.',
     'lingora_admin_only' => 'Bu işlemi yalnızca Dilmaç ekibi yapabilir.',
+    'lead_not_found' => 'Talep bulunamadı; silinmiş olabilir.',
+    'bad_org' || 'bad_students' || 'bad_teachers' => 'Kurum adı ve koltuk sayılarını kontrol edin.',
     'unauthenticated' => 'Oturumunuz kapanmış. Lütfen yeniden giriş yapın.',
     final c when c.startsWith('invalid_') => 'Lütfen alanları kontrol edin.',
     _ => 'İşlem tamamlanamadı. Bağlantınızı kontrol edip tekrar deneyin.',
@@ -392,4 +520,25 @@ class CallableAdminApi implements AdminApi {
   @override
   Future<void> deleteAssignment(String orgId, String assignmentId) =>
       _call('orgDeleteAssignment', {'orgId': orgId, 'assignmentId': assignmentId});
+
+  @override
+  Future<List<Lead>> listLeads() async =>
+      _list((await _call('leadList'))['leads']).map(Lead.fromJson).toList();
+
+  @override
+  Future<void> updateLead(String id, {LeadStatus? status, String? note}) =>
+      _call('leadUpdate', {'id': id, 'status': ?status?.name, 'note': ?note});
+
+  @override
+  Future<void> deleteLead(String id) => _call('leadDelete', {'id': id});
+
+  @override
+  Future<TrialCodes> createTrial({
+    required String org,
+    required int students,
+    int teachers = 1,
+    String? leadId,
+  }) async => TrialCodes.fromJson(
+    await _call('trialCreate', {'org': org, 'students': students, 'teachers': teachers, 'leadId': ?leadId}),
+  );
 }

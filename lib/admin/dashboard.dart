@@ -415,6 +415,7 @@ class _PeopleSectionState extends ConsumerState<PeopleSection> {
                 col('7 gün XP', numeric: true),
                 col('Seri', numeric: true),
                 col('Son aktif'),
+                col('Konuşma'),
                 col('Ödev'),
                 const DataColumn(label: Text('')),
               ],
@@ -443,6 +444,20 @@ class _PeopleSectionState extends ConsumerState<PeopleSection> {
                       DataCell(Text('${m.weekXp}')),
                       DataCell(Text('${m.streak} gün')),
                       DataCell(Text(fmtDayKey(m.lastActiveDay))),
+                      DataCell(
+                        m.speaking == null
+                            ? const Text('—')
+                            : Text(
+                                '${m.speaking!.conversations} · ~${m.speaking!.minutes} dk',
+                                style: TextStyle(color: Brand.primary, decoration: TextDecoration.underline),
+                              ),
+                        onTap: m.speaking == null
+                            ? null
+                            : () => showDialog<void>(
+                                context: context,
+                                builder: (_) => SpeakingDialog(name: m.displayName, s: m.speaking!),
+                              ),
+                      ),
                       DataCell(
                         Text(
                           m.assignments.isEmpty
@@ -1096,4 +1111,51 @@ class _CodeDialogState extends State<_CodeDialog> {
       ],
     );
   }
+}
+
+/// A person's voice-coach stats (speaking_stats.ts teacherView): no transcript.
+class SpeakingDialog extends StatelessWidget {
+  const SpeakingDialog({super.key, required this.name, required this.s});
+  final String name;
+  final MemberSpeaking s;
+
+  @override
+  Widget build(BuildContext context) => AlertDialog(
+    title: Text('$name · konuşma pratiği'),
+    content: SizedBox(
+      width: 420,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${s.conversations} konuşma · yaklaşık ${s.minutes} dakika'
+            '${s.lastAt == null ? '' : ' · son ${fmtDate(s.lastAt!)}'}',
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          if (s.lastSummary.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            Text('Son karne', style: TextStyle(color: Brand.muted, fontSize: 12)),
+            Text(s.lastSummary),
+          ],
+          if (s.recentMistakes.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            Text('Son düzeltmeler', style: TextStyle(color: Brand.muted, fontSize: 12)),
+            for (final m in s.recentMistakes) Text('• $m'),
+          ],
+          if (s.weakWords.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            Text('Telaffuzda zorlandığı kelimeler', style: TextStyle(color: Brand.muted, fontSize: 12)),
+            Text(s.weakWords.join(', ')),
+          ],
+          const SizedBox(height: 12),
+          Text(
+            'Süre, konuşmanın uzunluğundan tahmin edilir. Konuşma metninin kendisi paylaşılmaz.',
+            style: TextStyle(color: Brand.muted, fontSize: 12),
+          ),
+        ],
+      ),
+    ),
+    actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('Kapat'))],
+  );
 }

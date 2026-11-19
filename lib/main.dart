@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -28,6 +30,7 @@ import 'services/league_remote.dart';
 import 'services/rehearsal_cloud.dart';
 import 'services/showcase.dart';
 import 'services/speech.dart';
+import 'services/voice_library.dart';
 import 'theme.dart';
 import 'ui/motion.dart';
 import 'ui/shop_visuals.dart';
@@ -57,6 +60,8 @@ Future<void> main() async {
       child: const LingoraApp(),
     ),
   );
+  // Course audio not in the bundle: downloaded on Wi-Fi, after startup.
+  unawaited(Future<void>.delayed(const Duration(seconds: 8), VoiceLibrary.instance.init));
 }
 
 class LingoraApp extends ConsumerWidget {

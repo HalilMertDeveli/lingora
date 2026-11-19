@@ -151,3 +151,89 @@ footer p { margin: 4px 0; }
   body { font-size: 16px; }
   h1 { font-size: 1.55rem; }
 }
+
+/* ---- Dilmaç Kurumsal (kurumsal.html) ---- */
+main.genis { max-width: 880px; }
+
+.giris { padding: 12px 0 8px; }
+.etiket {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.giris h1 { font-size: 2.2rem; max-width: 24ch; }
+.ozet { font-size: 1.1rem; color: var(--muted); max-width: 60ch; }
+
+.dugmeler { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 8px; }
+.dugme {
+  display: inline-block;
+  border: 2px solid var(--primary);
+  background: var(--primary);
+  color: var(--card);
+  font: inherit;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.dugme:hover { filter: brightness(1.08); text-decoration: none; }
+.dugme:disabled { opacity: 0.6; cursor: progress; }
+.dugme.ikincil { background: transparent; color: var(--primary); }
+
+.kartlar.ucli { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+div.kart:hover { border-color: var(--line); }
+
+.iki { display: grid; gap: 18px; grid-template-columns: 1.4fr 1fr; align-items: start; }
+.ornek p { margin: 4px 0; font-size: 0.95rem; }
+.soluk { color: var(--muted); font-size: 0.95rem; }
+
+details {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin: 8px 0;
+}
+summary { cursor: pointer; font-weight: 700; }
+details p { margin: 8px 0 4px; }
+
+.form {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 16px 0 8px;
+}
+.alanlar { display: grid; gap: 12px 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.form label { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 12px; }
+.form input:not([type="checkbox"]), .form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 12px;
+  font: inherit;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.form input:focus, .form textarea:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+.form .onay { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; }
+.form .onay input { margin-top: 6px; width: 18px; height: 18px; flex: none; }
+.form .gizli { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.not { color: var(--muted); font-size: 0.9rem; margin: 0 0 14px; }
+.durum { margin: 12px 0 0; font-weight: 600; min-height: 1.4em; }
+.durum.tamam { color: var(--primary); }
+.durum.hata { color: #b3261e; }
+
+@media (max-width: 640px) {
+  .iki { grid-template-columns: 1fr; }
+  .giris h1 { font-size: 1.7rem; }
+}
