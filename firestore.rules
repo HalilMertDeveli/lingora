@@ -607,6 +607,21 @@ service cloud.firestore {
     // leadRate/{key} counters and speakingStats/{uid} are server-only through
     // the catch-all below. Staff read leads via the leadList callable.
 
+    // Forced update (docs/zorunlu-guncelleme.md): every app reads the minimum
+    // and recommended version at start, even before signing in. Only the
+    // owner changes it, in the Firebase console. Other config/ documents
+    // (config/lingoraAdmins) stay server-only through the catch-all.
+    match /config/app {
+      allow get: if true;
+      allow list, write: if false;
+    }
+
+    // Owner dashboard counters (functions/src/stats.ts), aggregated only.
+    // Read through the getStats callable (Dilmaç staff); never by clients.
+    match /stats/{document=**} {
+      allow read, write: if false;
+    }
+
     // Everything else (quotas, purchase tokens, counters) is server-only.
     match /{document=**} {
       allow read, write: if false;

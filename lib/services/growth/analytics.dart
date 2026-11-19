@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/progress.dart';
 import 'analytics_events.dart';
+import 'funnel_stats.dart';
 
 export 'analytics_events.dart';
 
@@ -82,11 +83,15 @@ final analyticsBufferProvider = Provider<List<AnalyticsEvent>>((ref) => []);
 /// yes. While the question is still open, events wait in a small in-memory
 /// buffer: sent if the user agrees, dropped if not.
 class AnalyticsService {
-  AnalyticsService(this._sink, this._consent, this._buffer);
+  AnalyticsService(this._sink, this._consent, this._buffer, {this.onSent});
 
   final AnalyticsSink? _sink;
   final bool? _consent;
   final List<AnalyticsEvent> _buffer;
+
+  /// Told about every event that was really sent (the owner dashboard's
+  /// funnel counters, funnel_stats.dart).
+  final void Function(AnalyticsEvent e)? onSent;
   static const maxBuffered = 30;
 
   bool get enabled => _sink != null && _consent == true;
@@ -102,6 +107,15 @@ class AnalyticsService {
     sink.log(e.name, e.params).catchError((Object err) {
       if (kDebugMode) debugPrint('analytics: $err');
     });
+    _tell(e);
+  }
+
+  void _tell(AnalyticsEvent e) {
+    try {
+      onSent?.call(e);
+    } catch (err) {
+      if (kDebugMode) debugPrint('analytics onSent: $err');
+    }
   }
 
   void setUserProperty(String name, String? value) {
@@ -115,6 +129,7 @@ final analyticsProvider = Provider<AnalyticsService>(
     ref.watch(analyticsSinkProvider),
     ref.watch(analyticsConsentProvider),
     ref.watch(analyticsBufferProvider),
+    onSent: (e) => ref.read(funnelStatsProvider.notifier).onAnalyticsEvent(e),
   ),
 );
 
@@ -130,8 +145,10 @@ final analyticsConsentSyncProvider = Provider<void>((ref) {
     final waiting = List.of(buffer);
     buffer.clear();
     if (now) {
+      final funnel = ref.read(funnelStatsProvider.notifier);
       for (final e in waiting) {
         sink.log(e.name, e.params).catchError((Object _) {});
+        funnel.onAnalyticsEvent(e);
       }
     } else if (before == true) {
       // Withdrawn: delete the instance id and the analytics data on the device.

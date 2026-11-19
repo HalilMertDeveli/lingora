@@ -28,6 +28,7 @@ A/B deneyi ve "Arkadaşını davet et" programının kuralları.
 | `lib/screens/consent_sheet.dart` | İzin ekranı (`ConsentGate`) ve Profil anahtarı |
 | `lib/screens/invite_screen.dart`, `growth_profile_section.dart` | "Arkadaşını davet et" ve Profil > Gizlilik |
 | `functions/src/referral.ts`, `referral_api.ts` | `getInviteCode`, `redeemInvite` callable'ları |
+| `lib/services/growth/funnel_stats.dart`, `functions/src/stats.ts` | Sahip paneli için izinli, kimliksiz günlük sayaçlar (`docs/panel-istatistik.md`) |
 | `test/growth_test.dart`, `functions/test/referral.test.ts` | Testler |
 
 Analiz ve Remote Config yalnızca `--dart-define=LINGORA_FIREBASE=prod` ile
