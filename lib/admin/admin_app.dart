@@ -7,6 +7,7 @@ import '../services/firebase/firebase_providers.dart';
 import '../theme.dart';
 import 'admin_api.dart';
 import 'dashboard.dart';
+import 'stats_panel.dart';
 import 'widgets.dart';
 
 /// The panel's server API, or null when Firebase is off.
@@ -412,6 +413,14 @@ class StaffOrgsPage extends ConsumerWidget {
     appBar: AppBar(
       title: const Text('Dilmaç Kurumsal · Kurumlar'),
       actions: [
+        // Owner dashboard (stats_panel.dart): staff only, like this page.
+        TextButton.icon(
+          key: const ValueKey('open-stats'),
+          onPressed: () =>
+              Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const StatsPage())),
+          icon: const Icon(Icons.insights_outlined),
+          label: const Text('Panel'),
+        ),
         IconButton(
           tooltip: 'Yenile',
           onPressed: () => ref.invalidate(orgListProvider),

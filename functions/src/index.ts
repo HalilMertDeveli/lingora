@@ -152,3 +152,6 @@ export const deleteAccount = onCall({ timeoutSeconds: 120 }, async (req) => {
   }
   return result;
 });
+
+// Owner dashboard (admin panel > Panel): functions/src/stats_api.ts.
+export * from "./stats_api.js";
