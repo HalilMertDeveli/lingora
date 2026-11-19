@@ -208,9 +208,27 @@ void main() {
       );
       expect((await teacher.members(room.code).first).single.stats.streak, 3);
 
+      // The server's speaking copy (speaking_stats.ts) reaches the teacher...
+      await db.doc('classes/${room.code}/speaking/elif').set({
+        'conversations': 2,
+        'minutes': 9,
+        'lastAt': Timestamp.fromDate(now),
+        'lastSummary': 'İyi gitti.',
+        'recentMistakes': [
+          {'original': 'I go', 'corrected': 'I went'},
+        ],
+        'weakWords': ['thought'],
+      });
+      final talk = (await teacher.speaking(room.code).first)['elif']!;
+      expect(talk.conversations, 2);
+      expect(talk.minutes, 9);
+      expect(talk.recentMistakes.single.corrected, 'I went');
+
+      // ...and leaves with the student.
       await student.leaveClass(room.code);
       expect(await student.myClassCodes().first, isEmpty);
       expect(await teacher.members(room.code).first, isEmpty);
+      expect(await teacher.speaking(room.code).first, isEmpty);
     });
 
     test('a removed student stops reporting; closed classes take nobody new', () async {
@@ -219,7 +237,9 @@ void main() {
       final room = await teacher.createClass(name: '8-B', teacherName: 'Ayşe', org: 'Deneme Ortaokulu');
       final student = FirestoreKurumApi(db, 'mert');
       await student.joinClass(room.code, name: 'Mert', stats: stats);
+      await db.doc('classes/${room.code}/speaking/mert').set({'conversations': 1, 'minutes': 2});
       await teacher.removeMember(room.code, 'mert');
+      expect(await teacher.speaking(room.code).first, isEmpty);
       expect(await student.publish(room.code, stats), isFalse);
       expect(await student.myClassCodes().first, isEmpty);
 
@@ -344,6 +364,16 @@ void main() {
             topErrors: ['tense'],
           ),
         );
+        await db.doc('classes/${room.code}/speaking/elif').set({
+          'conversations': 3,
+          'minutes': 14,
+          'lastAt': Timestamp.fromDate(DateTime(2026, 11, 17, 20)),
+          'lastSummary': 'Akıcı konuştun. Geçmiş zamanı çalış.',
+          'recentMistakes': [
+            {'original': 'I go yesterday', 'corrected': 'I went yesterday'},
+          ],
+          'weakWords': ['thought', 'three'],
+        });
         return room.code;
       }))!;
       await pump(
@@ -365,6 +395,13 @@ void main() {
       expect(find.textContaining('🔥 5 gün seri · 2 ünite · 9 ders · bu hafta 120 XP'), findsOneWidget);
       expect(find.byKey(const Key('class-error-tense')), findsOneWidget);
       expect(find.textContaining('Zaman uyumu · 2 öğrenci'), findsOneWidget);
+      // Voice-coach stats only for Elif, who practised.
+      expect(find.textContaining('1 öğrenci konuşma pratiği yaptı · toplam yaklaşık 14 dk'), findsOneWidget);
+      expect(find.byType(SpeakingLines), findsOneWidget);
+      expect(find.textContaining('3 konuşma · yaklaşık 14 dk · son 17.11'), findsOneWidget);
+      expect(find.textContaining('Son karne: Akıcı konuştun.'), findsOneWidget);
+      expect(find.textContaining('"I go yesterday" → "I went yesterday"'), findsOneWidget);
+      expect(find.textContaining('Telaffuzda zorlandığı: thought, three'), findsOneWidget);
     });
   });
 }

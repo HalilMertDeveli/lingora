@@ -3,6 +3,9 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
+  "storage": {
+    "rules": "storage.rules"
+  },
   "functions": [
     {
       "source": "functions",
@@ -27,6 +30,15 @@
       "public": "build/hosting",
       "cleanUrls": true,
       "trailingSlash": false,
+      "rewrites": [
+        {
+          "source": "/api/kurumsal-talep",
+          "function": {
+            "functionId": "submitLead",
+            "region": "europe-west1"
+          }
+        }
+      ],
       "predeploy": [
         "node \"$PROJECT_DIR/hosting/build.mjs\""
       ],
@@ -100,6 +112,9 @@
     },
     "functions": {
       "port": 5001
+    },
+    "storage": {
+      "port": 9199
     },
     "ui": {
       "enabled": false

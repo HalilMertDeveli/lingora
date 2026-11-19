@@ -22,6 +22,7 @@ import 'profile_header.dart';
 import 'placement_screen.dart';
 import 'real_progress_section.dart';
 import 'reminder_settings.dart';
+import 'voice_packs_settings.dart';
 import 'shop_screen.dart';
 import 'study/methods_screen.dart';
 import 'sync_status_line.dart';
@@ -194,6 +195,8 @@ class ProfileScreen extends ConsumerWidget {
         const SizedBox(height: 12),
         const ReminderSettings(),
         const SizedBox(height: 24),
+        // Ses: shown only when there are downloadable recordings.
+        const VoicePacksSettings(),
         const KurumSection(),
         Text('Görünüm', style: t.titleLarge),
         const SizedBox(height: 12),
