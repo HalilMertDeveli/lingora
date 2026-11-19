@@ -25,12 +25,12 @@ Firebase Functions emülatöründeki yapay zekâ taklidi (`ai_stub.ts`) yalnızc
 
 | # | Dosya | Ekran | Başlık | Alt yazı |
 | --- | --- | --- | --- | --- |
-| 1 | `01_konusma.png` | Konuşma: "Kafede sipariş", Türkçe düzeltme balonu | **İngilizce konuşarak öğren** | Hatanı anında, Türkçe açıklamayla düzeltir |
-| 2 | `02_neden_yanlis.png` | YDS sorusu, yanlış cevap ve Türkçe açıklama | **Hatanı Türkçe anlatır** | Her yanlışın nedeni Türkçe açıklanır |
+| 1 | `01_konusma.png` | Konuşma: "Kafede sipariş", Türkçe düzeltme balonu | **Türklerin hatasını yakalar** | “she want” neden yanlış? Türkçe açıklar |
+| 2 | `02_neden_yanlis.png` | YDS sorusu, yanlış cevap ve Türkçe açıklama | **YDS’de neden yanlış?** | Her şıkkın nedeni Türkçe açıklanır |
 | 3 | `03_yol.png` | Öğren sekmesi, YDS yolu (Ünite 11) | **Günde birkaç dakika** | Kısa dersler, ünite ünite ilerle |
 | 4 | `04_yds.png` | YDS "Bugün" planı ve blokları | **YDS ve YÖKDİL'e hazırlan** | 52 haftalık plan, günlük çalışma blokları |
 | 5 | `05_mulakat.png` | Mülakat provası girişi | **İngilizce mülakat provası** | Cevabını kaydet, takıldığın yeri çalış |
-| 6 | `06_kelime.png` | Pratik merkezi: Bugün, Konuşma, Telaffuz, Tekrar | **Konuş, dinle, tekrar et** | Telaffuz koçu ve tekrar kartları |
+| 6 | `06_kelime.png` | Pratik merkezi: Bugün, Konuşma, Telaffuz, Tekrar | **Konuş, dinle, tekrar et** | Telaffuz koçu ve kelime tekrarı tek yerde |
 | 7 | `07_gramer.png` | Ünite rehberi: Sıfat cümlecikleri | **Gramer, Türkçe anlatımla** | Örnek cümleler ve hafıza ipuçları |
 | 8 | `08_lig_seri.png` | Lig: Bronz Ligi, arkadaşlar | **Her gün biraz, birlikte** | Haftalık lig, görevler ve seri |
 
@@ -39,6 +39,10 @@ Premium yapay zekâ partneri aynı ekranda aynı balonla düzeltir. Başlık bu 
 yapay zekâ iddiası taşımaz; yapay zekâ mağaza metninde ve öne çıkan grafikte anlatılır.
 
 Notlar:
+
+- Kurallar (sahip onayı): her görsel tek bir somut faydayı gösterir; yalnızca gerçek uygulama
+  ekranı; doğrulanmamış puan, başarı garantisi ya da "% daha hızlı" gibi iddia yok.
+- Ana ayırt edici özellik Türkçe konuşanlara özgü hatalar: 1. görsel buna ayrıldı.
 
 - Sıralama dönüşüme göre: ilk iki görsel aramada da görünür; ana değer önerisi
   (yapay zekâyla konuşma + Türkçe açıklama) ilk ikide.

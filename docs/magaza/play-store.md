@@ -27,15 +27,20 @@ Dilmaç: İngilizce Konuşma, YDS
 ## Kısa açıklama (≤ 80)
 
 ```
-Yapay zekâyla İngilizce konuşma pratiği; YDS, YÖKDİL, LGS, kelime ve gramer.
+İngilizce hatanı Türkçe açıklar: konuşma pratiği, YDS, YÖKDİL, LGS, kelime.
 ```
 
-76 karakter. Yedek: `İngilizceyi konuşarak öğren: hatalarını Türkçe açıklayan yapay zekâ partneri.` (77)
+75 karakter. Yedek: `Yapay zekâyla İngilizce konuşma pratiği; YDS, YÖKDİL, LGS, kelime ve gramer.` (76)
 
 ## Uzun açıklama (≤ 4000)
 
 ```
-Dilmaç, Türkçe konuşanlar için İngilizce konuşma pratiğine odaklanan bir dil öğrenme uygulamasıdır. Mikrofona konuş ya da yaz; yapay zekâ konuşma partnerin sana cevap versin, hatanı anında Türkçe açıklasın. Kısa günlük derslerle kelime ve gramer çalış, YDS, YÖKDİL ve LGS İngilizce sınavlarına hazırlan.
+"I am agree" neden yanlış? "He go" neden "He goes" olmalı? Dilmaç, Türkçe konuşanların İngilizcede en sık yaptığı hataları yakalar ve her birini Türkçe açıklar. Mikrofona konuş ya da yaz; hatanı anında, Türkçe açıklamasıyla gör. Kısa günlük derslerle kelime ve gramer çalış, İngilizce konuşma pratiği yap, YDS, YÖKDİL ve LGS İngilizce sınavlarına hazırlan.
+
+TÜRKLER İÇİN HATA DEDEKTÖRÜ
+• "I am agree", "He go", "I am student" gibi Türkçe kaynaklı hataları yakalar: be fiili, -s takısı, the/a, zamanlar, kelime sırası.
+• Her yanlışta "Neden yanlış?" açıklaması: doğru cevap, şıkların Türkçesi ve kuralın Türkçe özeti (ücretsiz sürümde günde 3, Premium'da sınırsız).
+• Sohbette ve yazdığın cümlelerde de çalışır: "Daha doğal" önerisiyle düzeltilmiş cümleyi gösterir.
 
 YAPAY ZEKÂ İLE İNGİLİZCE KONUŞMA (PREMIUM)
 • Kafede, otelde, doktorda, iş görüşmesinde: gerçek sahnelerde serbest sohbet.
@@ -47,10 +52,6 @@ YAPAY ZEKÂ İLE İNGİLİZCE KONUŞMA (PREMIUM)
 • Kendini ve projelerini İngilizce anlat, cevabını kaydet.
 • Takıldığın yerlerden günlük çalışma çıkar, ilk ve son kaydını yan yana dinle.
 • İlk prova ücretsiz; devamı Premium.
-
-TÜRKLER İÇİN HATA DEDEKTÖRÜ
-• Türkçe konuşanların en sık yaptığı hataları (the/a, -s takısı, zamanlar, kelime sırası) yakalar.
-• Her yanlışta "Neden yanlış?" açıklaması: doğru cevabın ve şıkların Türkçesi (ücretsiz sürümde günde 3, Premium'da sınırsız).
 
 YDS, YÖKDİL VE LGS İNGİLİZCE
 • YDS ve YÖKDİL için konu konu gramer, kelime, okuma ve çeviri soruları; 52 haftalık çalışma planı.
@@ -86,12 +87,13 @@ Dilmaç 13 yaş ve üzeri öğrenciler ve yetişkinler içindir. Ebeveyn gözeti
 Bugün başla: her gün birkaç dakika İngilizce konuş.
 ```
 
-3374 karakter (aşağıdaki kontrolle sayıldı). Fiyat yazılmaz; Play fiyatı kendisi gösterir.
+3580 karakter (aşağıdaki kontrolle sayıldı). İlk satırlar Türkçe konuşanlara özgü hatalarla açılır (sahip kararı: ana ayırt edici özellik). Fiyat yazılmaz; Play fiyatı kendisi gösterir.
 
 İddiaların dayanağı:
 
 | İddia | Uygulamadaki yeri |
 | --- | --- |
+| "I am agree", "He go", "I am student" yakalanır | `lib/core/tr_errors.dart` (`be_agree`, -s takısı, `to be` kuralları) |
 | Yapay zekâ konuşma partneri, anında Türkçe düzeltme, sohbet karnesi | `conversation_screen.dart`, `functions/src/converse.ts`, `conversation_report_screen.dart` (Premium) |
 | Mikrofona konuşma (konuşma tanıma cihazda) | `speech.dart`, `speak_mic.dart` |
 | Mülakat provası, ilk prova ücretsiz | `screens/rehearsal/`, `PremiumFeature.interviewRehearsal` |
@@ -106,8 +108,8 @@ der, çünkü bugün cevap yazılı gelir.
 
 ## Öne çıkan özellik listesi (görseller ve web için)
 
-1. Yapay zekâ ile İngilizce konuşma pratiği (Premium)
-2. Hatanı Türkçe açıklayan hata dedektörü
+1. Türkçe konuşanların hatalarını Türkçe açıklayan hata dedektörü
+2. Yapay zekâ ile İngilizce konuşma pratiği (Premium)
 3. YDS, YÖKDİL ve LGS İngilizce hazırlığı
 4. İngilizce mülakat provası
 5. Kelime kartları ve aralıklı tekrar
