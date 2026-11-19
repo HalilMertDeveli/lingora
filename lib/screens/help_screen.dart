@@ -74,7 +74,7 @@ final supportInfoProvider = FutureProvider<SupportInfo>((ref) async {
 /// `+` literally).
 Uri supportMailUri(SupportInfo info, String? uid) {
   final body = [
-    'Merhaba Dilmaç ekibi,',
+    'Merhaba Çenebaz ekibi,',
     '',
     '(Sorununu buraya yaz. Ekran görüntüsü eklemek çok yardımcı olur.)',
     '',
@@ -87,7 +87,7 @@ Uri supportMailUri(SupportInfo info, String? uid) {
     'Kullanıcı kimliği: ${uid ?? 'giriş yok'}',
   ].join('\n');
   String enc(String s) => Uri.encodeComponent(s);
-  return Uri.parse('mailto:$destekEposta?subject=${enc('Dilmaç destek')}&body=${enc(body)}');
+  return Uri.parse('mailto:$destekEposta?subject=${enc('Çenebaz destek')}&body=${enc(body)}');
 }
 
 class HelpScreen extends ConsumerStatefulWidget {

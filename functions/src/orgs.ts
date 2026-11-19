@@ -1,4 +1,4 @@
-// Dilmaç Kurumsal: organisations (hotels, companies, schools), seats, join
+// Çenebaz Kurumsal: organisations (hotels, companies, schools), seats, join
 // codes, classes, assignments and a privacy-filtered progress report.
 // Docs: docs/kurumsal.md. Callables are wired in orgs_api.ts.
 //
@@ -38,7 +38,7 @@ export type AssignmentStatus = "done" | "open" | "late";
 
 export interface Caller {
   uid: string;
-  /** Auth token claims; `isLingoraAdmin: true` marks a Dilmaç staff account. */
+  /** Auth token claims; `isLingoraAdmin: true` marks a Çenebaz staff account. */
   claims?: Record<string, unknown>;
 }
 
@@ -124,7 +124,7 @@ async function requireLingoraAdmin(db: Firestore, caller: Caller): Promise<void>
 }
 
 interface Access {
-  /** "admin" also for Dilmaç staff, who can manage every org. */
+  /** "admin" also for Çenebaz staff, who can manage every org. */
   role: Role;
   staff: boolean;
 }
@@ -239,7 +239,7 @@ function orgInfo(s: DocumentSnapshot): OrgInfo {
   };
 }
 
-/** {name, type, seats, planExpiresAt} -> {orgId, adminCode}. Dilmaç staff only. */
+/** {name, type, seats, planExpiresAt} -> {orgId, adminCode}. Çenebaz staff only. */
 export async function createOrg(db: Firestore, caller: Caller, data: unknown, now: Date) {
   await requireLingoraAdmin(db, caller);
   const d = rec(data);
@@ -265,7 +265,7 @@ export async function createOrg(db: Firestore, caller: Caller, data: unknown, no
   return { orgId: ref.id, adminCode };
 }
 
-/** {orgId, name?, seats?, planExpiresAt?} -> OrgInfo. Dilmaç staff only; renews members' Premium. */
+/** {orgId, name?, seats?, planExpiresAt?} -> OrgInfo. Çenebaz staff only; renews members' Premium. */
 export async function updateOrg(db: Firestore, caller: Caller, data: unknown, now: Date) {
   await requireLingoraAdmin(db, caller);
   const d = rec(data);
@@ -316,7 +316,7 @@ async function syncOrgEntitlements(db: Firestore, orgId: string, expiry: Timesta
   }
 }
 
-/** {} -> {lingoraAdmin, orgs}: every org for Dilmaç staff, else the ones the caller manages. */
+/** {} -> {lingoraAdmin, orgs}: every org for Çenebaz staff, else the ones the caller manages. */
 export async function listOrgs(db: Firestore, caller: Caller, _data: unknown, _now: Date) {
   if (await isLingoraAdmin(db, caller)) {
     const all = await db.collection("orgs").orderBy("createdAt", "desc").limit(500).get();

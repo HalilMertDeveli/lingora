@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../services/friends.dart';
 import '../services/profile.dart';
 
-/// True while friends would see only the generic name ("Dilmaç öğrencisi").
+/// True while friends would see only the generic name ("Çenebaz öğrencisi").
 bool needsFriendName(WidgetRef ref) =>
     isDefaultFriendName(ref.read(friendsApiProvider)?.myName ?? ref.read(myDisplayNameProvider));
 

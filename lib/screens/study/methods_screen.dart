@@ -8,7 +8,7 @@ void openMethods(BuildContext context, {String? focus}) =>
     Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => MethodsScreen(focus: focus)));
 
 /// "Nasıl öğretiyoruz?": each method in three lines: Ne? / Neden? /
-/// Dilmaç'ta nerede?
+/// Çenebaz'da nerede?
 class MethodsScreen extends StatefulWidget {
   const MethodsScreen({super.key, this.focus});
   final String? focus;
@@ -40,7 +40,7 @@ class _MethodsScreenState extends State<MethodsScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'Dilmaç\'daki YDS programı öğrenme üzerine yapılmış araştırmalara dayanıyor. '
+            'Çenebaz\'daki YDS programı öğrenme üzerine yapılmış araştırmalara dayanıyor. '
             'Hangi yöntemi neden ve nerede kullandığımızı kısaca anlattık.',
             style: Theme.of(context).textTheme.bodyLarge,
           ),

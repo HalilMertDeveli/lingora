@@ -13,7 +13,7 @@ import 'nav_target.dart';
 
 /// Top bar of every tab root: the course badge on the left (opens Kurslarım,
 /// see course_badge.dart), streak and XP on the right (each opens its own panel). There are
-/// no hearts: mistakes are never punished in Dilmaç.
+/// no hearts: mistakes are never punished in Çenebaz.
 class LingoraTopBar extends StatelessWidget implements PreferredSizeWidget {
   const LingoraTopBar({super.key});
 

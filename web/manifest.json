@@ -1,11 +1,11 @@
 {
-    "name": "Dilmaç",
-    "short_name": "Dilmaç",
+    "name": "Çenebaz",
+    "short_name": "Çenebaz",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#F17F04",
     "theme_color": "#F17F04",
-    "description": "Dilmaç kurumsal yönetim paneli",
+    "description": "Çenebaz kurumsal yönetim paneli",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

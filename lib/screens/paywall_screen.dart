@@ -214,7 +214,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           icon: const Icon(Icons.close_rounded),
           onPressed: () => Navigator.of(context).maybePop(),
         ),
-        title: const Text('Dilmaç Premium'),
+        title: const Text('Çenebaz Premium'),
       ),
       body: SafeArea(
         child: ListView(
@@ -628,7 +628,7 @@ class _Unavailable extends StatelessWidget {
   static const _tips = [
     'İnternet bağlantını kontrol et.',
     "Play Store'u aç ve Google hesabınla oturum açık olduğundan emin ol.",
-    "Dilmaç'ı Play Store'dan yükle; başka yerden kurulan sürümlerde satın alma çalışmaz.",
+    "Çenebaz'ı Play Store'dan yükle; başka yerden kurulan sürümlerde satın alma çalışmaz.",
     'Play Store güncel değilse güncelle, sonra tekrar dene.',
   ];
 

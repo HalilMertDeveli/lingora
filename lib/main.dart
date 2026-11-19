@@ -128,7 +128,7 @@ class LingoraApp extends ConsumerWidget {
     SpeechService.englishLocale = settings.accent.locale;
     ref.listen(examPackControllerProvider, (_, _) {});
     return MaterialApp(
-      title: 'Dilmaç',
+      title: 'Çenebaz',
       debugShowCheckedModeBanner: false,
       // Turkish date and time pickers, and Turkish names for the built-in
       // buttons TalkBack reads ("Geri", not "Back").

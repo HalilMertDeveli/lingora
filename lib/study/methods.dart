@@ -1,4 +1,4 @@
-// "Nasıl öğretiyoruz?": the learning methods behind Dilmaç's YDS plan, in
+// "Nasıl öğretiyoruz?": the learning methods behind Çenebaz's YDS plan, in
 // plain Turkish (docs/sinav/yds-faz1-yontem.md §6). Each card says what the
 // method is, why (one finding and its source) and where it works in the app.
 // The wording never claims more than the research write-up does.
@@ -33,7 +33,7 @@ class StudyMethod {
   /// Neden? One finding and its source.
   final String why;
 
-  /// Dilmaç'ta nerede?
+  /// Çenebaz'da nerede?
   final String where;
 }
 

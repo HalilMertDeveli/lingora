@@ -12,18 +12,18 @@ import '../theme.dart';
 import 'friend_name_prompt.dart';
 import 'friends_screen.dart';
 
-/// Play link shared with phone-book contacts who do not use Dilmaç.
+/// Play link shared with phone-book contacts who do not use Çenebaz.
 const dilmacPlayLink = 'https://play.google.com/store/apps/details?id=com.lingora.lingora';
 
-/// Invitation for a contact who is not on Dilmaç: the Play link and, when
+/// Invitation for a contact who is not on Çenebaz: the Play link and, when
 /// there is one, the user's friend code to type after installing.
 String contactInviteText(String? friendCode) =>
-    "Dilmaç'ta birlikte İngilizce çalışalım, ortak seri yapalım! Uygulamayı indir: $dilmacPlayLink"
+    "Çenebaz'da birlikte İngilizce çalışalım, ortak seri yapalım! Uygulamayı indir: $dilmacPlayLink"
     "${friendCode == null ? '' : ' Sonra Arkadaşlar bölümüne kodumu yaz: $friendCode'}";
 
 enum _Stage { intro, loading, denied, blocked, done, error }
 
-/// "Rehberden bul": people in the phone book who use Dilmaç (and chose to
+/// "Rehberden bul": people in the phone book who use Çenebaz (and chose to
 /// be findable by number), friend requests to them and invitations for the
 /// rest. The phone book stays on the phone; only salted hashes of the
 /// numbers are looked up (docs/arkadaslar.md).
@@ -113,7 +113,7 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
       }
       text = contactInviteText(code);
     }
-    await SharePlus.instance.share(ShareParams(text: text, subject: 'Dilmaç daveti'));
+    await SharePlus.instance.share(ShareParams(text: text, subject: 'Çenebaz daveti'));
   }
 
   @override
@@ -128,7 +128,7 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
                 padding: EdgeInsets.all(16),
                 child: FriendsBox(
                   icon: Icons.group_rounded,
-                  text: 'Rehberden arkadaş bulmak için bir Dilmaç hesabıyla giriş yap.',
+                  text: 'Rehberden arkadaş bulmak için bir Çenebaz hesabıyla giriş yap.',
                 ),
               )
             : ListView(
@@ -139,7 +139,7 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
                     const SizedBox(height: 8),
                     Text(
                       'Rehberin telefonunda kalır. Numaralar telefonunda tek yönlü bir şifreyle (hash) '
-                      'karıştırılır; yalnızca bu şifreler, numarasıyla bulunmayı seçen Dilmaç kullanıcılarıyla '
+                      'karıştırılır; yalnızca bu şifreler, numarasıyla bulunmayı seçen Çenebaz kullanıcılarıyla '
                       'karşılaştırılır. Hiçbir isim ya da numara sunucuya yüklenmez.',
                       style: TextStyle(color: Brand.muted, height: 1.35),
                       textAlign: TextAlign.center,
@@ -216,13 +216,13 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
       for (final r in ref.watch(incomingRequestsProvider).value ?? const <FriendRequest>[]) r.from: r,
     };
     return [
-      Text("Dilmaç'ta olanlar", style: t.titleMedium),
+      Text("Çenebaz'da olanlar", style: t.titleMedium),
       const SizedBox(height: 8),
       if (book.onApp.isEmpty)
         const FriendsBox(
           key: ValueKey('contacts-none'),
           icon: Icons.search_off_rounded,
-          text: 'Rehberinde, numarasıyla bulunmayı açmış bir Dilmaç kullanıcısı yok. Aşağıdan davet edebilirsin.',
+          text: 'Rehberinde, numarasıyla bulunmayı açmış bir Çenebaz kullanıcısı yok. Aşağıdan davet edebilirsin.',
         ),
       for (final c in book.onApp)
         _ContactRow(
@@ -268,7 +268,7 @@ class _ContactsFriendsScreenState extends ConsumerState<ContactsFriendsScreen> {
       Text('Davet et', style: t.titleMedium),
       const SizedBox(height: 4),
       Text(
-        'Bu kişiler Dilmaç kullanmıyor ya da numarasıyla bulunmayı açmamış.',
+        'Bu kişiler Çenebaz kullanmıyor ya da numarasıyla bulunmayı açmamış.',
         style: TextStyle(color: Brand.muted, fontSize: 12),
       ),
       const SizedBox(height: 8),
@@ -417,7 +417,7 @@ class _DiscoverableTileState extends ConsumerState<DiscoverableTile> {
       title: const Text('Telefon numaramla bulunabilirim'),
       subtitle: Text(
         verified
-            ? 'Açıkken numaranı rehberinde kayıtlı olan Dilmaç kullanıcıları seni bulup arkadaşlık isteği '
+            ? 'Açıkken numaranı rehberinde kayıtlı olan Çenebaz kullanıcıları seni bulup arkadaşlık isteği '
                   'gönderebilir. Numaran açık hâliyle saklanmaz.'
             : 'Bu seçenek, numarasını telefonla girişte doğrulamış hesaplarda açılır.',
         style: TextStyle(color: Brand.muted, fontSize: 12, height: 1.3),

@@ -8,7 +8,7 @@ görseli, adı ya da kodu kullanılmaz. Ayrıntılı maskot ve bayrak notları i
 
 | Dosya | Kaynak | Lisans |
 | --- | --- | --- |
-| `assets/gold/altin.svg` | Dilmaç için elle çizildi (2026-11-17): altın para, yüzünde kabartma ince belli çay bardağı. | Projenin kendi çizimi; atıf gerekmez, ticari kullanım serbest. |
+| `assets/gold/altin.svg` | Çenebaz için elle çizildi (2026-11-17): altın para, yüzünde kabartma ince belli çay bardağı. | Projenin kendi çizimi; atıf gerekmez, ticari kullanım serbest. |
 
 Arama notu: OpenGameArt'ta CC0 lisanslı altın para ikonları var (ör.
 "Gold Coin/Token", BizmasterStudios, CC0,

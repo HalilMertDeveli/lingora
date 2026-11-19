@@ -149,7 +149,7 @@ final installIdProvider = Provider<String>((ref) {
   return id;
 });
 
-/// Dilmaç on Google Play.
+/// Çenebaz on Google Play.
 const dilmacPlayStoreUrl = 'https://play.google.com/store/apps/details?id=com.lingora.lingora';
 
 /// [dilmacPlayStoreUrl] carrying [code] as an install referrer (for a later
@@ -159,7 +159,7 @@ String invitePlayLink(String code) => '$dilmacPlayStoreUrl&referrer=invite%3D$co
 /// Text shared with friends (share sheet): the code, the reward rule and
 /// the Play link. The code is entered in Profil > Arkadaşını davet et.
 String inviteShareText(InviteInfo info) =>
-    'Dilmaç ile her gün birkaç dakika İngilizce çalışıyorum ve gerçekten işe yarıyor!\n'
+    'Çenebaz ile her gün birkaç dakika İngilizce çalışıyorum ve gerçekten işe yarıyor!\n'
     'Kısa dersler, konuşma pratiği, sınav hazırlığı; temel öğrenme ücretsiz.\n\n'
     'Davet kodum: ${info.code}\n'
     'Uygulamayı indir, Profil > Arkadaşını davet et bölümüne kodu gir ve ilk dersini bitir: '

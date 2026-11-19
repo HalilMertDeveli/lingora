@@ -1,6 +1,6 @@
 # Altın ve Mağaza
 
-Altın, Dilmaç'ın oyun içi para birimidir. **Yalnızca çalışarak kazanılır, gerçek
+Altın, Çenebaz'ın oyun içi para birimidir. **Yalnızca çalışarak kazanılır, gerçek
 parayla satılmaz.** Gelirin ana kaynağı abonelik; Altın ve Mağaza bir motivasyon
 aracıdır. Can/kalp sistemi ve reklam yoktur.
 

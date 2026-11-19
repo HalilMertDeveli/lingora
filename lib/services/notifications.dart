@@ -97,7 +97,7 @@ class NotificationService {
   String? _applied;
 
   /// Android fixes a channel's sound when the channel is first created, so
-  /// Dilmaç's own reminder sound needs a new channel id; the old one is
+  /// Çenebaz's own reminder sound needs a new channel id; the old one is
   /// deleted on start.
   static const reminderChannelId = 'reminders_v2';
   static const _oldChannelIds = ['reminders'];
@@ -162,7 +162,7 @@ class NotificationService {
     }
   }
 
-  /// Replaces Dilmaç's scheduled notifications with [plan] (no-op if
+  /// Replaces Çenebaz's scheduled notifications with [plan] (no-op if
   /// nothing changed since the last call).
   Future<void> apply(List<PlannedNotification> plan) async {
     final signature = plan.join(';');
@@ -200,7 +200,7 @@ final notificationServiceProvider = Provider<NotificationService>(
   ),
 );
 
-/// Whether this phone lets Dilmaç show notifications: false when the user
+/// Whether this phone lets Çenebaz show notifications: false when the user
 /// turned them off in system settings or never granted them here (reminders
 /// switched on on another phone come with the synced progress). Null when
 /// unknown (not Android, tests). Re-read whenever the profile is opened.

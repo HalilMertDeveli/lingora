@@ -280,7 +280,7 @@ class ClassScreen extends ConsumerWidget {
                         onPressed: () => SharePlus.instance.share(
                           ShareParams(
                             text:
-                                '${room?.name ?? 'Sınıfımıza'} katılmak için Dilmaç uygulamasında Profil → '
+                                '${room?.name ?? 'Sınıfımıza'} katılmak için Çenebaz uygulamasında Profil → '
                                 '"Sınıf koduyla katıl" bölümüne şu kodu gir: $code',
                           ),
                         ),

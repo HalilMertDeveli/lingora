@@ -417,7 +417,7 @@ void main() {
       expect(find.text('B2'), findsOneWidget);
       expect(find.text('18 Kasım 2026'), findsOneWidget);
       expect(find.textContaining('resmî bir dil sertifikası değildir'), findsOneWidget);
-      expect(find.textContaining('Dilmaç ile ölçüldü'), findsOneWidget);
+      expect(find.textContaining('Çenebaz ile ölçüldü'), findsOneWidget);
       // Kid mode: Pofuduk, not Çaycı Dayı.
       expect(find.bySemanticsLabel('Pofuduk'), findsOneWidget);
       expect(find.byKey(const ValueKey('dilbaz-logo')), findsNothing);

@@ -1,6 +1,6 @@
 # Google Play hazırlık listesi
 
-QA turu (qa-ucretsiz, 2026-11-18) sonunda Dilmaç'ın Play Store'a çıkışı için durum.
+QA turu (qa-ucretsiz, 2026-11-18) sonunda Çenebaz'ın Play Store'a çıkışı için durum.
 ✅ hazır · ❌ eksik (yapılması gereken yazılı) · ⚠️ karar ya da kontrol gerekiyor.
 
 Kaynaklar: [Core App Quality](https://developer.android.com/docs/quality-guidelines/core-app-quality),

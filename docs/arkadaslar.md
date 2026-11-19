@@ -64,7 +64,7 @@ de aynı gün hedefini tamamlayınca 1 olur.
 - **Numara özeti gizli değildir.** Türkiye'de cep numarası uzayı küçüktür (~10⁹); tuz uygulamanın içinde
   durduğundan özetler kaba kuvvetle çözülebilir. Bu yüzden asıl koruma özetin gizliliği değil, **dizinin
   listelenememesi**dir: biri tek tek `get` ile numara deneyebilir ama hangi numaraların kayıtlı olduğunu toplu
-  göremez. Numarası bilinen birinin Dilmaç kullanıp kullanmadığı (ve uid'i) öğrenilebilir; bunu yalnızca
+  göremez. Numarası bilinen birinin Çenebaz kullanıp kullanmadığı (ve uid'i) öğrenilebilir; bunu yalnızca
   seçeneği açanlar kabul eder ve ekranda açıkça yazılır.
 - **Toplu deneme (enumeration) maliyeti.** Kural tarafında hız sınırı yoktur (Cloud Functions yok). Hesabı olan
   biri döngüyle çok sayıda `get` yapabilir. Spark'ta günlük 50.000 okuma kotası vardır; kötüye kullanım kotayı
@@ -89,5 +89,5 @@ de aynı gün hedefini tamamlayınca 1 olur.
   Bekleyen istekte gönderen henüz arkadaş olmadığı için profili okunamaz; istekteki ad gösterilir.
 - Kullanıcı Profil'de adını değiştirince `friendNameSyncProvider` arkadaş kodunu ve üyesi olduğu her arkadaşlıktaki
   `names.{uid}` alanını günceller (kurallar yalnızca kendi girdisine izin verir; kural değişikliği gerekmedi).
-- Ad hâlâ varsayılansa ("Dilmaç öğrencisi") kod oluşturmadan, kodla eklemeden, istek göndermeden, istek kabul
+- Ad hâlâ varsayılansa ("Çenebaz öğrencisi") kod oluşturmadan, kodla eklemeden, istek göndermeden, istek kabul
   etmeden ve davet paylaşmadan önce "Arkadaşların seni hangi adla görsün?" diye sorulur; ad Profil adına kaydedilir.

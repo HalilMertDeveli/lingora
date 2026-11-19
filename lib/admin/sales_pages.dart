@@ -1,4 +1,4 @@
-/// Dilmaç staff only: quote requests from the /kurumsal page ("Talepler") and
+/// Çenebaz staff only: quote requests from the /kurumsal page ("Talepler") and
 /// 30-day trial seat codes ("Deneme kodu"). Server side: functions/src/sales.ts.
 library;
 
@@ -335,7 +335,7 @@ class TrialCodesDialog extends StatelessWidget {
 
   /// Plain text to paste into a message to the school: one code per line.
   String get text => [
-    '$org · Dilmaç deneme kodları (son gün ${fmtDate(trial.expiresAt)})',
+    '$org · Çenebaz deneme kodları (son gün ${fmtDate(trial.expiresAt)})',
     for (final c in trial.codes) '${TrialCodes.pretty(c.code)}  ${c.teacher ? 'Öğretmen' : 'Öğrenci'}',
   ].join('\n');
 

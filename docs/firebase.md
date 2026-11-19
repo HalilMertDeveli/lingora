@@ -1,6 +1,6 @@
 # Firebase (istemci)
 
-Dilmaç varsayılan olarak gerçek Firebase projesine (`dilbaz-3392e`) bağlanır. Mod derleme sırasında
+Çenebaz varsayılan olarak gerçek Firebase projesine (`dilbaz-3392e`) bağlanır. Mod derleme sırasında
 `--dart-define=LINGORA_FIREBASE=...` ile değiştirilebilir:
 
 | Değer | Ne olur |

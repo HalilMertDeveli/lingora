@@ -375,7 +375,7 @@ class CountUp extends StatelessWidget {
   );
 }
 
-/// Dilmaç's one-shot celebration over [child]: steam rises from the bottom
+/// Çenebaz's one-shot celebration over [child]: steam rises from the bottom
 /// like from a fresh glass, sugar cubes tumble down and tulip petals drift.
 /// Our own painter, no assets. Nothing is drawn when animations are reduced.
 class TeaCelebration extends StatefulWidget {

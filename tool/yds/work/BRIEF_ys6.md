@@ -1,6 +1,6 @@
 # Brief: ys6 "Okuma evi 1" unit writer
 
-You write ONE or TWO units of a new YDS reading section for Dilmaç (English app for Turkish speakers).
+You write ONE or TWO units of a new YDS reading section for Çenebaz (English app for Turkish speakers).
 Learner: finished the general course A1–A2 and is now A2→B1, doing the ys5 word bank in parallel
 (800 words: `assets/vocab/yds.json`, unit lists in `tool/yds/work/words.json`). Goal: intensive reading of
 YDS-like texts (science news, health, history, society, environment, technology, biography).

@@ -1,4 +1,4 @@
-// Dilmaç Cloud Functions (2nd gen). Deploy steps: docs/firebase-backend.md.
+// Çenebaz Cloud Functions (2nd gen). Deploy steps: docs/firebase-backend.md.
 import Anthropic from "@anthropic-ai/sdk";
 import { initializeApp } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
@@ -216,7 +216,7 @@ export const playRtdn = onMessagePublished({ topic: "play-rtdn", retry: true }, 
   logger.info("play_rtdn", { outcome, messageId: event.data.message.messageId });
 });
 
-// Dilmaç Kurumsal (orgs, seats, classes, assignments): orgs_api.ts, docs/kurumsal.md.
+// Çenebaz Kurumsal (orgs, seats, classes, assignments): orgs_api.ts, docs/kurumsal.md.
 export * from "./orgs_api.js";
 
 // Kurumsal sales: quote form (submitLead), leads and trial codes for staff (sales_api.ts).

@@ -161,7 +161,7 @@ Bireysel Premium yıllık 599,99 TL'dir (`docs/gelir-plani.md`). Okul fiyatı bu
 
 ## 6. KVKK ve gizlilik notu
 
-Okul ya da kurum **veri sorumlusu**, Dilmaç ise öğretmene sınıf özeti göstermesi bakımından **veri
+Okul ya da kurum **veri sorumlusu**, Çenebaz ise öğretmene sınıf özeti göstermesi bakımından **veri
 işleyen** sıfatındadır. Bu bir hukuki görüş değildir: sözleşme öncesinde bir hukuk danışmanıyla teyit edin.
 
 **Öğretmenin gördüğü ve göremediği**
@@ -186,7 +186,7 @@ Teknik güvenceler:
 - Ad alanı yalnızca ilk adla doldurulur, öğrenci isterse takma ad yazabilir. Okul öğrencilere "tam adını
   yazma" diye yönlendirmelidir.
 - 18 yaş altı öğrencilerde, veli bilgilendirmesi ve gerektiğinde açık rıza okulun sorumluluğundadır.
-  Sözleşmeye bir **aydınlatma metni örneği** eklenir. Örnek cümle: "Dilmaç uygulamasında çocuğunuzun seri,
+  Sözleşmeye bir **aydınlatma metni örneği** eklenir. Örnek cümle: "Çenebaz uygulamasında çocuğunuzun seri,
   tamamladığı ünite, haftalık XP ve en sık hata türleri, eğitimin takibi amacıyla yalnızca İngilizce
   öğretmeniyle paylaşılır. Notları, günlüğü, yazışmaları ve iletişim bilgileri paylaşılmaz."
 - Uygulamada reklam yoktur. Sınıf özelliğinde öğrenciler birbirini göremez ve aralarında mesajlaşma yoktur.

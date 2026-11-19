@@ -157,7 +157,7 @@ export async function deleteUserData(db: Firestore, uid: string, now: Date = new
     docs++;
   }
 
-  // Dilmaç Kurumsal: frees the seat (seatsUsed - 1) in the same transaction.
+  // Çenebaz Kurumsal: frees the seat (seatsUsed - 1) in the same transaction.
   const ship = (await db.doc(`memberships/${uid}`).get()).data();
   if (typeof ship?.orgId === "string") {
     await ignoreErrors(() => orgs.leaveOrg(db, { uid }, {}, now));

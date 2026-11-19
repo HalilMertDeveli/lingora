@@ -28,7 +28,7 @@ const _playStoreMarketUrl = 'market://details?id=$playStorePackage';
 
 /// The default text of the blocking screen when `message` is empty.
 const defaultUpdateMessage =
-    'Dilmaç\'ın bu sürümü artık desteklenmiyor. Kaldığın yerden devam etmek için '
+    'Çenebaz\'ın bu sürümü artık desteklenmiyor. Kaldığın yerden devam etmek için '
     'uygulamayı Google Play\'den güncelle. İlerlemen kaybolmaz.';
 
 /// How often the document is read again when the app comes back to the
@@ -179,7 +179,7 @@ Future<void> openPlayStore(BuildContext context) async {
   }
   if (context.mounted) {
     ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-      const SnackBar(content: Text('Google Play açılamadı. Play Store\'da "Dilmaç" diye arat.')),
+      const SnackBar(content: Text('Google Play açılamadı. Play Store\'da "Çenebaz" diye arat.')),
     );
   }
 }
@@ -270,7 +270,7 @@ class UpdateBanner extends StatelessWidget {
           children: [
             Icon(Icons.system_update_rounded, color: Brand.primary),
             const SizedBox(width: 12),
-            const Expanded(child: Text('Dilmaç\'ın yeni sürümü hazır.')),
+            const Expanded(child: Text('Çenebaz\'ın yeni sürümü hazır.')),
             TextButton(
               key: const ValueKey('update-banner-store'),
               onPressed: () => openPlayStore(context),

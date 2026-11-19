@@ -390,7 +390,7 @@ void main() {
       await pumpApp(tester, const SizedBox(height: 900, child: ShareCardScreen()), prefsValues: seeded());
       expect(find.byKey(const Key('share-card')), findsOneWidget);
       expect(find.text("B1'e çıktım!"), findsOneWidget);
-      expect(find.text('Dilmaç'), findsOneWidget);
+      expect(find.text('Çenebaz'), findsOneWidget);
       expect(find.byKey(const Key('share-card-share')), findsOneWidget);
       await tester.tap(find.text('Aylık kart'));
       await tester.pumpAndSettle();

@@ -202,7 +202,7 @@ class ExamPackController extends Notifier<ExamPackState> {
         _fail(
           pack,
           e.code == 'already-exists'
-              ? 'Bu paket başka bir Dilmaç hesabına bağlı.'
+              ? 'Bu paket başka bir Çenebaz hesabına bağlı.'
               : 'Satın alma doğrulanamadı. Ücret alındıysa "Satın alımları geri yükle"yi dene.',
         );
         return;

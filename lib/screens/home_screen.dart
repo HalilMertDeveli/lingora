@@ -393,7 +393,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
 const navLabelWidth = 58.0;
 
 /// "Öğren" tab root: the track's home (path, exam, notes) under the
-/// Dilmaç Kurumsal assignments card. An exam track shows its study path
+/// Çenebaz Kurumsal assignments card. An exam track shows its study path
 /// (LGS → exam_lgs) when one is shipped, else its question bank home.
 class _LearnRoot extends ConsumerWidget {
   const _LearnRoot();
@@ -403,7 +403,7 @@ class _LearnRoot extends ConsumerWidget {
     final track = ref.watch(trackProvider);
     return Column(
       children: [
-        // Dilmaç Kurumsal: shrinks to nothing without assignments.
+        // Çenebaz Kurumsal: shrinks to nothing without assignments.
         const OrgAssignmentsCard(),
         // "Hedefin ne?": exam countdown or interview rehearsal entry.
         const GoalHomeCard(),

@@ -4,7 +4,7 @@
 //   - a role-play scenario (scenarios.ts),
 //   - "Serbest sohbet": free talk on a topic the learner picks or says,
 //   - a character preset (taxi driver, barista, HR manager, ...).
-// Characters and voices are original to Dilmaç. Ids must match
+// Characters and voices are original to Çenebaz. Ids must match
 // lib/voice/voice_catalog.dart.
 
 import { SCENARIOS, ScenarioPrompt } from "./scenarios.js";

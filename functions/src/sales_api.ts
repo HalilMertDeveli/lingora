@@ -1,4 +1,4 @@
-// HTTP and callable wrappers for Dilmaç Kurumsal sales (logic: sales.ts).
+// HTTP and callable wrappers for Çenebaz Kurumsal sales (logic: sales.ts).
 import { Firestore, getFirestore } from "firebase-admin/firestore";
 import { CallableRequest, HttpsError, onCall, onRequest } from "firebase-functions/v2/https";
 
@@ -34,7 +34,7 @@ function staffCallable<T>(handler: Handler<T>) {
   });
 }
 
-// Admin panel (lib/admin), Dilmaç staff only: "Talepler" and "Deneme kodu".
+// Admin panel (lib/admin), Çenebaz staff only: "Talepler" and "Deneme kodu".
 export const leadList = staffCallable(sales.listLeads);
 export const leadUpdate = staffCallable(sales.updateLead);
 export const leadDelete = staffCallable(sales.deleteLead);

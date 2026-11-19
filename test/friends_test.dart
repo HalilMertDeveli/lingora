@@ -360,7 +360,7 @@ void main() {
   group('FriendsScreen', () {
     testWidgets('guests are asked to link an account', (tester) async {
       await pumpScreen(tester);
-      expect(find.textContaining('ücretsiz bir Dilmaç hesabı'), findsOneWidget);
+      expect(find.textContaining('ücretsiz bir Çenebaz hesabı'), findsOneWidget);
       expect(find.byKey(const ValueKey('friend-code-field')), findsNothing);
     });
 

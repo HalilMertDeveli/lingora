@@ -14,7 +14,7 @@ import '../ui/motion.dart';
 import '../ui/tea_art.dart';
 import '../ui/theme_art.dart';
 
-/// Building blocks of the learning path, Dilmaç's tea-house walk (see
+/// Building blocks of the learning path, Çenebaz's tea-house walk (see
 /// docs/tasarim.md, "Çay kimliği"): tea glass nodes on a winding lane, the
 /// teapot reward, the tulip test, Çaycı Dayı's "bir çay daha" invite, the
 /// unit band with its tile motif, the lesson card and the unit guide.

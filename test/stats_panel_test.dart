@@ -81,7 +81,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.text('Dilmaç · Panel'), findsOneWidget);
+    expect(find.text('Çenebaz · Panel'), findsOneWidget);
     expect(
       find.descendant(of: find.byKey(const ValueKey('stat-premium')), matching: find.text('120')),
       findsOneWidget,

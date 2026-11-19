@@ -1,4 +1,4 @@
-// Speaking stats for teachers (Dilmaç Kurumsal, docs/kurumsal-satis.md).
+// Speaking stats for teachers (Çenebaz Kurumsal, docs/kurumsal-satis.md).
 //
 // Every voice-coach karne (conversationReport) adds one conversation to
 //   speakingStats/{uid}   {conversations, minutes, lastAt, lastSummary,

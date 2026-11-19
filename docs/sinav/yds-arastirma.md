@@ -4,7 +4,7 @@ Bu belge, sıfırdan başlayıp **bir yıl boyunca günde 3–4 saat** çalışa
 
 Her bölüm üç parçadan oluşur:
 - **Bulgu:** araştırma ne diyor.
-- **Karar:** Dilmaç'ta ne yapıyoruz.
+- **Karar:** Çenebaz'da ne yapıyoruz.
 - **Uygulamada:** hangi ekran ya da özellik bunu yapıyor.
 
 Kaynaklar en sonda numaralıdır ve metinde `[n]` olarak anılır.

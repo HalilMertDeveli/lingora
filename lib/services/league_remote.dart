@@ -211,7 +211,7 @@ class FirebaseLeagueApi implements LeagueApi {
           for (final d in s.docs)
             RemoteMember(
               uid: d.id,
-              name: d.data()['name'] as String? ?? '?',
+              name: shownName(d.data()['name'] as String? ?? '?'),
               avatar: d.data()['avatar'] as String? ?? '⭐',
               xp: (d.data()['xp'] as num?)?.toInt() ?? 0,
               country: d.data()['country'] as String?,
@@ -247,8 +247,15 @@ final leagueApiProvider = Provider<LeagueApi?>((ref) {
 /// Name shown to other league members.
 String leagueDisplayName(String? displayName) {
   final first = displayName?.trim().split(RegExp(r'\s+')).first ?? '';
-  return first.isEmpty ? 'Dilmaç öğrencisi' : first.substring(0, min(first.length, 24));
+  return first.isEmpty ? 'Çenebaz öğrencisi' : first.substring(0, min(first.length, 24));
 }
+
+/// The generic name before the app was renamed. League and friend documents
+/// written earlier still carry it; [shownName] swaps it for the current one.
+const legacyDefaultName = 'Dilmaç öğrencisi';
+
+/// A stored member or friend name as shown in the app.
+String shownName(String name) => name == legacyDefaultName ? leagueDisplayName(null) : name;
 
 // ---- Country ----
 

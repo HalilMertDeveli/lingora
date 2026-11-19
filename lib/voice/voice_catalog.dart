@@ -32,7 +32,7 @@ const defaultVoiceId = 'us_aoede';
 NeuralVoice voiceById(String? id) => neuralVoices.where((v) => v.id == id).firstOrNull ?? neuralVoices.first;
 
 /// A conversation partner with their own voice, manner and opening line.
-/// Original Dilmaç characters; the server keeps the prompt for each id
+/// Original Çenebaz characters; the server keeps the prompt for each id
 /// (`CHARACTERS` in functions/src/talk_context.ts).
 class Character {
   const Character({

@@ -8,7 +8,7 @@ import '../../theme.dart';
 import '../grammar_path_screen.dart';
 import 'rehearsal_screen.dart';
 
-/// "Dilmaç takıldığın yeri gösteriyor": the analysis of one rehearsal,
+/// "Çenebaz takıldığın yeri gösteriyor": the analysis of one rehearsal,
 /// quoting the learner's own words. Free for the first rehearsal.
 class RehearsalAnalysisScreen extends ConsumerWidget {
   const RehearsalAnalysisScreen({super.key, required this.sessionId});

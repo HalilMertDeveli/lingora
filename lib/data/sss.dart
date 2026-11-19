@@ -26,7 +26,7 @@ const sssListesi = <Sss>[
     soru: 'Premium aboneliğimi nasıl iptal ederim?',
     cevap:
         'Abonelikler Google Play üzerinden yönetilir. Play Store uygulamasını aç, sağ üstteki profil '
-        'resmine dokun, Ödemeler ve abonelikler > Abonelikler bölümünden Dilmaç\'ı seç ve "Aboneliği '
+        'resmine dokun, Ödemeler ve abonelikler > Abonelikler bölümünden Çenebaz\'ı seç ve "Aboneliği '
         'iptal et"e dokun. İptal ettiğinde Premium, ödediğin dönemin sonuna kadar açık kalır. '
         'Uygulamayı silmek aboneliği iptal etmez.',
     etiketler: ['abonelik', 'iptal', 'premium', 'durdur', 'yenileme', 'google play'],
@@ -79,7 +79,7 @@ const sssListesi = <Sss>[
     baslik: 'Ses ve mikrofon',
     soru: 'Mikrofon çalışmıyor, konuştuğumu algılamıyor.',
     cevap:
-        '1) Telefonun Ayarlar > Uygulamalar > Dilmaç > İzinler bölümünden Mikrofon iznini aç. '
+        '1) Telefonun Ayarlar > Uygulamalar > Çenebaz > İzinler bölümünden Mikrofon iznini aç. '
         '2) Konuşma tanıma Google\'ın ses hizmetini kullanır: Google uygulamasının ve "Google Konuşma '
         'Hizmetleri"nin güncel ve açık olduğundan emin ol. 3) İnternet bağlantını kontrol et. '
         '4) Mikrofona dokunduktan sonra kısa bir an bekleyip net ve normal hızda konuş; ortam '
@@ -91,7 +91,7 @@ const sssListesi = <Sss>[
     baslik: 'Ses ve mikrofon',
     soru: 'Ses gelmiyor, İngilizce okunuşları duyamıyorum.',
     cevap:
-        'Önce telefonun medya sesini (yalnızca zil sesini değil) aç ve sessiz modu kontrol et. Dilmaç\'ın '
+        'Önce telefonun medya sesini (yalnızca zil sesini değil) aç ve sessiz modu kontrol et. Çenebaz\'ın '
         'Görünüm ayarlarında ses efektlerinin açık olduğuna bak. Okunuşların bir kısmı telefonun metin '
         'okuma motoruyla çalınır: Ayarlar > Erişilebilirlik > Metin okuma çıkışı bölümünde "Google '
         'Konuşma Hizmetleri"ni seç ve İngilizce ses verisini indir. Bluetooth cihaz bağlıysa ses oraya '
@@ -128,7 +128,7 @@ const sssListesi = <Sss>[
     soru: 'Çocuk modu nedir, çocuğum tek başına kullanabilir mi?',
     cevap:
         'Çocuk modu Profil > Görünüm bölümünden açılır. Daha sade bir görünüm, çocuklara uygun dersler '
-        've maskot Pofuduk gelir; arkadaş ekleme kapanır, fotoğraf ve bayraklar gizlenir. Dilmaç çocuklar için bir ebeveyn '
+        've maskot Pofuduk gelir; arkadaş ekleme kapanır, fotoğraf ve bayraklar gizlenir. Çenebaz çocuklar için bir ebeveyn '
         'ya da öğretmen gözetiminde kullanılmak üzere tasarlandı: hesabı, satın alımları ve ayarları bir '
         'yetişkin yönetmeli. Çocuk modunu yalnızca bir yetişkin kapatmalı.',
     etiketler: ['çocuk', 'ebeveyn', 'veli', 'gözetim', 'yaş', 'pofuduk', 'kid'],
@@ -140,8 +140,8 @@ const sssListesi = <Sss>[
     soru: 'Hatırlatma bildirimleri gelmiyor ya da çok geliyor.',
     cevap:
         'Profil > Bildirimler bölümünden günlük hatırlatmayı açıp kapatabilir ve saatini seçebilirsin. '
-        'Bildirim gelmiyorsa telefonun Ayarlar > Uygulamalar > Dilmaç > Bildirimler bölümünden izni aç. '
-        'Bazı telefonlarda pil tasarrufu bildirimleri geciktirir: Ayarlar > Pil bölümünden Dilmaç için '
+        'Bildirim gelmiyorsa telefonun Ayarlar > Uygulamalar > Çenebaz > Bildirimler bölümünden izni aç. '
+        'Bazı telefonlarda pil tasarrufu bildirimleri geciktirir: Ayarlar > Pil bölümünden Çenebaz için '
         '"Kısıtlama yok" seç.',
     etiketler: ['bildirim', 'hatırlatma', 'alarm', 'saat', 'pil'],
   ),

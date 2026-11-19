@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/app_links.dart';
 import '../data/app_settings.dart';
 import '../data/first_lesson.dart';
 import '../data/placement.dart';
@@ -272,7 +273,7 @@ class _SignInLink extends ConsumerWidget {
   }
 }
 
-/// Dilmaç brand mark: Çaycı Dayı on his orange tile, the same art as the
+/// Çenebaz brand mark: Çaycı Dayı on his orange tile, the same art as the
 /// app icon.
 class LingoraLogo extends StatelessWidget {
   const LingoraLogo({super.key, this.size = 96});
@@ -284,7 +285,7 @@ class LingoraLogo extends StatelessWidget {
     key: const ValueKey('dilbaz-logo'),
     width: size,
     height: size,
-    semanticLabel: 'Dilmaç',
+    semanticLabel: 'Çenebaz',
     errorBuilder: (_, _, _) => SizedBox(width: size, height: size),
   );
 }
@@ -313,7 +314,13 @@ class _Welcome extends StatelessWidget {
             ],
           ),
         const SizedBox(height: 28),
-        Text('Dilmaç', style: t.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
+        Text(appDisplayName, style: t.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
+        const SizedBox(height: 4),
+        Text(
+          appTagline,
+          textAlign: TextAlign.center,
+          style: t.titleSmall?.copyWith(color: Brand.primary, fontWeight: FontWeight.w700),
+        ),
         const SizedBox(height: 10),
         Text(
           context.isKid

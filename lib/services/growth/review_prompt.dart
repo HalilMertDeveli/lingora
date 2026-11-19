@@ -33,7 +33,7 @@ final reviewRequesterProvider = Provider<ReviewRequester?>(
   (ref) => !kIsWeb && (Platform.isAndroid || Platform.isIOS) ? InAppReviewRequester() : null,
 );
 
-/// When Dilmaç may ask for a review:
+/// When Çenebaz may ask for a review:
 /// - only at a happy moment ([ReviewMoment]),
 /// - never in the first [settleIn] after the first launch,
 /// - at most once per [cooldown],

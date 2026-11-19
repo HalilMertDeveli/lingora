@@ -1,16 +1,16 @@
-# Dilmaç Kurumsal: satış sayfası
+# Çenebaz Kurumsal: satış sayfası
 
 > Dershane, okul ya da şirket ziyaretinde gösterilecek tek sayfa. Altta, sahibin bilmesi gereken
 > süreç ve teknik notlar var (bunlar müşteriye gösterilmez).
 
 ---
 
-## Dilmaç Kurumsal
+## Çenebaz Kurumsal
 
 **Öğrencileriniz İngilizceyi konuşarak çalışsın, siz ilerlemeyi görün.**
 
-Dilmaç, Türkçe konuşanlar için hazırlanmış bir İngilizce uygulamasıdır. Kurumsal pakette her öğrenci
-Dilmaç Premium kullanır, öğretmen de sınıfının ilerlemesini telefonundan izler.
+Çenebaz (İngilizceyi konuşarak öğren), Türkçe konuşanlar için hazırlanmış bir İngilizce uygulamasıdır. Kurumsal pakette her öğrenci
+Çenebaz Premium kullanır, öğretmen de sınıfının ilerlemesini telefonundan izler.
 
 ### Öğrenci ne yapar?
 - Günde 5–10 dakikalık kısa dersler: kelime, gramer, okuma, telaffuz.
@@ -62,10 +62,10 @@ kodlar kendiliğinden kapanır.
 
 ### Talepler (lead) nereye düşer?
 - Form `POST /api/kurumsal-talep` → `submitLead` fonksiyonu → Firestore `leads/`. **E-posta gönderilmez.**
-- Görmek için yönetim paneli (Flutter web, `lib/admin`) → Dilmaç ekibi hesabıyla giriş → **Talepler**.
+- Görmek için yönetim paneli (Flutter web, `lib/admin`) → Çenebaz ekibi hesabıyla giriş → **Talepler**.
   Durum (Yeni, Arandı, Denemede, Müşteri, Kapandı), not ekleme, silme (KVKK silme talebi) ve
   **"Deneme kodu üret"** buradadır.
-- Uygulamadan hiç kimse `leads/` okuyamaz (kural); yalnızca `leadList` callable'ı ve yalnızca Dilmaç
+- Uygulamadan hiç kimse `leads/` okuyamaz (kural); yalnızca `leadList` callable'ı ve yalnızca Çenebaz
   yöneticisi (`config/lingoraAdmins` ya da `isLingoraAdmin` claim).
 
 ### Deneme kodu

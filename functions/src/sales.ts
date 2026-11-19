@@ -1,9 +1,9 @@
-// Dilmaç Kurumsal sales: quote requests from the /kurumsal page and 30-day
+// Çenebaz Kurumsal sales: quote requests from the /kurumsal page and 30-day
 // trial seat codes (docs/kurumsal-satis.md).
 //
 //   leads/{id}        {org, name, phone, email, students, city, message,
 //                      consentVersion, consentAt, createdAt, status, note, source}
-//                     Written only by submitLead, read only by Dilmaç staff
+//                     Written only by submitLead, read only by Çenebaz staff
 //                     through leadList (catch-all rule: no client access).
 //   leadRate/{key}    {day, count, expireAt}: per-IP (hashed) and global daily
 //                     counters. No IP address is stored.

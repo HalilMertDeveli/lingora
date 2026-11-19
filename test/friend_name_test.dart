@@ -52,6 +52,7 @@ void main() {
     test('isDefaultFriendName', () {
       expect(isDefaultFriendName(defaultFriendName), isTrue);
       expect(isDefaultFriendName('Arkadaş'), isTrue);
+      expect(isDefaultFriendName('Dilmaç öğrencisi'), isTrue);
       expect(isDefaultFriendName('Zeynep'), isFalse);
     });
   });

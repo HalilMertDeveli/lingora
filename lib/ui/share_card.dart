@@ -13,7 +13,7 @@ import 'premium_offer.dart';
 
 /// The shareable progress image (4:5, rendered at 3× = 1080 × 1350 px).
 /// Fixed colours so every share looks the same; Çocuk modu shows Pofuduk
-/// instead of the Dilmaç mark.
+/// instead of the Çenebaz mark.
 class ShareCard extends StatelessWidget {
   const ShareCard({super.key, required this.data, this.kid = false});
 
@@ -68,16 +68,22 @@ class ShareCard extends StatelessWidget {
                           appDisplayName,
                           style: TextStyle(fontSize: 19, fontWeight: FontWeight.w900, color: _orange),
                         ),
-                        const Spacer(),
-                        if (d.month != null)
-                          Text(
-                            d.month!.toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 1.2,
-                            ),
-                          ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: d.month == null
+                              ? const SizedBox.shrink()
+                              : Text(
+                                  d.month!.toUpperCase(),
+                                  textAlign: TextAlign.end,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w900,
+                                    letterSpacing: 1.2,
+                                  ),
+                                ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 16),
@@ -254,7 +260,7 @@ class _ShareCardScreenState extends ConsumerState<ShareCardScreen> {
     try {
       await sharePng(
         _key,
-        fileName: 'dilmac_${data.monthly ? 'aylik' : 'basari'}.png',
+        fileName: 'cenebaz_${data.monthly ? 'aylik' : 'basari'}.png',
         text: '${data.headline} $appDisplayName ile İngilizce öğreniyorum: $playStoreLink',
         origin: origin,
       );

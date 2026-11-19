@@ -28,7 +28,7 @@ const conversationXp = 15;
 const freeChatMessagesPerDay = 3;
 
 /// Shown on the paywall once the free daily taste is used up.
-const freeTastePitch = "Özel hoca saati 500 TL. Dilmaç'ta her gün sınırsız konuşma, ayda bir ders fiyatına.";
+const freeTastePitch = "Özel hoca saati 500 TL. Çenebaz'da her gün sınırsız konuşma, ayda bir ders fiyatına.";
 
 /// "Konuş" tab: pick a role-play scenario.
 class ConversationHomeScreen extends ConsumerWidget {

@@ -11,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'widget_test.dart' show pumpApp;
 
-/// Dilmaç's own identity (docs/tasarim.md, "Çay kimliği"): districts,
+/// Çenebaz's own identity (docs/tasarim.md, "Çay kimliği"): districts,
 /// palettes, the two hosts per mode, accent and guest flags.
 void main() {
   test('sections walk through districts: Mahalle, Çarşı, Vapur… and wrap after eight', () {

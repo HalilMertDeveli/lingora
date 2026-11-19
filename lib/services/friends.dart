@@ -8,7 +8,7 @@ import '../core/emoji_compat.dart';
 import '../data/progress.dart';
 import 'contacts/phone_numbers.dart';
 import 'firebase/firebase_providers.dart';
-import 'league_remote.dart' show leagueDisplayName;
+import 'league_remote.dart' show leagueDisplayName, legacyDefaultName, shownName;
 import 'profile.dart' show myDisplayNameProvider;
 
 /// Friends and the shared daily streak. Everything goes straight to
@@ -100,7 +100,7 @@ class Friendship {
     return Friendship(
       pairId: pairId,
       friendUid: other,
-      name: names[other] as String? ?? 'Arkadaş',
+      name: shownName(names[other] as String? ?? 'Arkadaş'),
       avatar: avatars[other] as String? ?? '⭐',
       myDay: n(done[me]),
       friendDay: n(done[other]),
@@ -166,7 +166,7 @@ class FriendRequest {
     return FriendRequest(
       from: from,
       to: to,
-      name: d['name'] as String? ?? 'Arkadaş',
+      name: shownName(d['name'] as String? ?? 'Arkadaş'),
       avatar: d['avatar'] as String? ?? '⭐',
     );
   }
@@ -604,7 +604,8 @@ final friendGoalSyncProvider = Provider<void>((ref) {
 final defaultFriendName = leagueDisplayName(null);
 
 /// True when friends would see only the generic name: ask for a name first.
-bool isDefaultFriendName(String name) => name == defaultFriendName || name == 'Arkadaş';
+bool isDefaultFriendName(String name) =>
+    name == defaultFriendName || name == legacyDefaultName || name == 'Arkadaş';
 
 /// Keeps the name friends see up to date: after the user renames
 /// themselves in Profil, their code and every friendship get the new name
