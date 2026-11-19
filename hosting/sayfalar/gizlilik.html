@@ -20,7 +20,7 @@
 
   <main>
     <h1>Gizlilik Politikası ve KVKK Aydınlatma Metni</h1>
-    <p class="tarih">Son güncelleme: 18 Kasım 2026</p>
+    <p class="tarih">Son güncelleme: 19 Kasım 2026</p>
 
     <div class="kutu">
       <p><strong>Kısaca</strong></p>
@@ -171,6 +171,14 @@
       <strong>Hukuki sebep:</strong> açık rıza (m. 5/1). İzni <span class="yol">Profil &gt;
       Gizlilik</span> bölümünden istediğin an geri alabilirsin; geri aldığında toplama durur ve
       telefonundaki analiz kimliği silinir.</p>
+    <p><strong>Hata ve çökme raporları (aynı izinle):</strong> izin verdiysen uygulama çöktüğünde ya da
+      satın alma, eşitleme veya hesap işlemlerinde bir hata olduğunda Google Firebase Crashlytics'e bir
+      hata raporu gider: hatanın yeri (yığın izi), cihaz modeli, işletim sistemi sürümü, uygulama
+      sürümü, boş bellek gibi teşhis bilgileri ve rastgele bir Crashlytics kurulum kimliği. Hesabına
+      giriş yaptıysan hatayı hesabındaki sorunla eşleştirebilmek için yalnızca Firebase kullanıcı
+      kimliğin (rastgele bir kod; adın ya da e-postan değil) eklenir. Yazdıkların, ses kayıtların ve
+      konumun gönderilmez. <strong>Hukuki sebep:</strong> açık rıza (m. 5/1). İzni geri aldığında
+      çökme raporları da kapanır ve gönderilmemiş raporlar silinir.</p>
 
     <h3>2.11 Uygulama yapılandırması</h3>
     <p>Uygulama bazı ayarları Firebase Remote Config'ten okur. Bunun için Firebase kurulum kimliği
@@ -191,7 +199,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Analytics, Remote Config)</td>
+            <td>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Analytics, Crashlytics, Remote Config)</td>
             <td>Hesap, yedekleme, profil, sunucu, izinli istatistik</td>
             <td>AB (europe-west1) ve ABD</td>
           </tr>
@@ -222,6 +230,7 @@
         Google Play tarafından yasal süre boyunca tutulur.</li>
       <li><strong>Davet kayıtları:</strong> kötüye kullanımı önlemek için en fazla 2 yıl.</li>
       <li><strong>Analiz verileri:</strong> 2 ay (Firebase saklama ayarı).</li>
+      <li><strong>Çökme ve hata raporları:</strong> 90 gün (Crashlytics).</li>
       <li><strong>Sunucu günlükleri (hata kayıtları):</strong> en fazla 30 gün.</li>
     </ul>
 
@@ -230,12 +239,14 @@
       işler. Bu aktarımlar KVKK m. 9 kapsamında, Kişisel Verileri Koruma Kurulu'nun ilan ettiği
       standart sözleşmeler ve/veya ilgili özelliği kullanırken verdiğin açık rıza ile yapılır.</p>
 
-    <h2 id="cocuklar">7. Çocuklar ve Çocuk modu</h2>
-    <p>Dilmaç'ın hedef kitlesi 13 yaş ve üzeridir. Uygulamadaki <strong>Çocuk modu</strong>
-      (ilkokul, ortaokul ve LGS), bir ebeveynin çocuğu için kurduğu ve
-      <strong>ebeveyn gözetiminde</strong> kullanılması gereken bir moddur. 13 yaşından küçük
-      çocukların hesap açmamasını, lig, arkadaş ve yapay zekâ özelliklerini ebeveyn olmadan
-      kullanmamasını ve profil fotoğrafı eklememesini öneririz. Ebeveynsen ve çocuğuna ait veri
+    <h2 id="cocuklar">7. Çocuklar ve ebeveyn gözetimli mod</h2>
+    <p>Dilmaç çocuklara yönelik bir uygulama değildir; hedef kitlesi 13 yaş ve üzeridir. Uygulamadaki
+      <strong>Ebeveyn gözetimli mod</strong>, bir ebeveynin <strong>kendi hesabıyla</strong> açıp
+      çocuğuyla birlikte, <strong>ebeveyn gözetiminde</strong> kullanması için tasarlanmış bir
+      görünümdür (ortaokul ve LGS konuları, maskotlu renkli görünüm). Bu modda arkadaş ekleme,
+      dünya ligi ve yapay zekâ özellikleri (sohbet partneri, yazma değerlendirmesi, Mülakat Provası)
+      kapalıdır; konuşma alıştırmaları yalnızca hazır senaryolarla çalışır. 13 yaşından küçük
+      çocukların kendi adına hesap açmamasını ve profil fotoğrafı eklememesini rica ederiz. Ebeveynsen ve çocuğuna ait veri
       işlendiğini düşünüyorsan <a href="mailto:dilmac.destek@gmail.com">dilmac.destek@gmail.com</a>
       adresine yaz; sileriz.</p>
 

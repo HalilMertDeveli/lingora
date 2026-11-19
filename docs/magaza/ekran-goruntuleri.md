@@ -1,36 +1,67 @@
-# Ekran görüntüsü planı
+# Ekran görüntüsü planı ve öne çıkan grafik
 
-Play Console: telefon için en az 2, en fazla 8 ekran görüntüsü (önerilen 8),
-9:16 dikey, en az 1080×1920 px. Her görselde üstte kısa bir Türkçe başlık
-(en fazla ~5 kelime), altında gerçek uygulama ekranı. Arka plan marka moru
-(`#6C4CF1`) ile açık yüzey (`#F7F6FB`) arasında değişir; yazı tipi uygulamadakiyle aynı.
-Tasarım yenilemesi (`docs/tasarim.md`) birleştikten sonra çekilmeli.
+Play Console: telefon için 2–8 ekran görüntüsü (8 kullanıyoruz), PNG/JPEG, 9:16 dikey,
+**1080×1920** (uzun kenar kısa kenarın en fazla 2 katı olmalı; 1080×2400 gibi
+oranlar reddedilir). Her görselde üstte kısa bir Türkçe başlık (en fazla ~5 kelime) ve
+altında küçük bir açıklama; altında gerçek uygulama ekranı.
 
-Çekim: `flutter run --release` ile gerçek cihaz ya da masaüstü (Windows) pencere
-1080×1920'ye ayarlanarak; durum çubuğu temiz (saat 09:41, tam pil, bildirim yok).
-Örnek kullanıcı adı "Deniz", seri 12 gün, XP gerçekçi. Kişisel veri, gerçek
-e-posta görünmez.
+Hazır dosyalar (repo dışında): **`D:\Lingora\_cikti\magaza\`**
 
-| # | Ekran | Başlık (üst yazı) | Alt yazı (isteğe bağlı) | Hazırlık |
+| Dosya | Boyut |
+| --- | --- |
+| `01_konusma.png` … `08_lgs_seri.png` | 1080×1920, başlıklı |
+| `ham/` | Başlıksız ham emülatör ekranları (aynı sıra) |
+| `ikon_512.png` | 512×512, 32 bit PNG (Çaycı Dayı uygulama simgesi, `assets/icon/icon.png`) |
+| `one_cikan_1024x500.png` | 1024×500 öne çıkan grafik |
+
+Çekim: Android 16 emülatörü (`pixel` profili, 1080×1920, 420 dpi), debug derleme,
+`--dart-define=LINGORA_FIREBASE=off --dart-define=LINGORA_PREMIUM=1`. Firebase
+kapalı olduğu için hiçbir veri gerçek projeye (`dilbaz-3392e`) gitmez; Premium
+bayrağı yalnızca release dışı derlemelerde çalışır. Yapay zekâ sohbeti ekranı bu
+modda uygulamanın gerçek sohbet arayüzünü hazır senaryo cevaplarıyla gösterir;
+Firebase Functions emülatöründeki yapay zekâ taklidi (`ai_stub.ts`) yalnızca
+"[stub]" metni döndürdüğü için mağaza görseline uygun değil. Durum çubuğu temiz,
+örnek seri ve XP cihazdaki yerel ilerlemeye yazıldı; kişisel veri yok.
+
+| # | Dosya | Ekran | Başlık | Alt yazı |
 | --- | --- | --- | --- | --- |
-| 1 | Ana sayfa / öğrenme yolu | **Günde 5 dakikada İngilizce** | Can yok, ceza yok, reklam yok | Genel İngilizce, 2. ünite ortası, seri 12 |
-| 2 | Ders, yanlış cevap + "Neden yanlış?" | **Hatanı Türkçe anlatır** | Türklere özel hata dedektörü | Çeviri sorusu, "the" eksik hatası |
-| 3 | Seviye testi sonucu | **Seviyeni ölç, doğru yerden başla** | | A2 sonucu ve önerilen yol |
-| 4 | Sınav: YDS/LGS ana ekranı | **YDS, YÖKDİL ve LGS pratiği** | Konu konu açıklamalı | YDS seçili, konu listesi |
-| 5 | Okuma: hikâye + kelime kartı | **Hikâyelerle oku, kelime topla** | | Kelime dokunulmuş, alt sayfa açık |
-| 6 | Telaffuz ünitesi | **Doğru telaffuz, adım adım** | | "th" sesi ünitesi |
-| 7 | Sohbet senaryosu (yapay zekâ) | **Yapay zekâ ile konuş** | Premium | Kafe senaryosu, düzeltme balonu görünür |
-| 8 | Profil: seri, lig, davet | **Serini koru, arkadaşını davet et** | İkiniz de 7 gün Premium | Haftalık grafik dolu, davet kartı görünür |
+| 1 | `01_konusma.png` | Sohbet senaryosu, düzeltme balonu görünür | **İngilizce konuşarak öğren** | Yapay zekâ partnerin hatanı Türkçe açıklar (Premium) |
+| 2 | `02_neden_yanlis.png` | Ders, yanlış cevap + "Neden yanlış?" | **Hatanı Türkçe anlatır** | Türkçe konuşanlara özel hata dedektörü |
+| 3 | `03_yol.png` | Öğren sekmesi, öğrenme yolu | **Günde birkaç dakika** | Kısa dersler, günlük hedef, seri |
+| 4 | `04_yds.png` | YDS / YÖKDİL "Bugün" planı | **YDS ve YÖKDİL'e hazırlan** | 52 haftalık plan, günlük mini deneme |
+| 5 | `05_mulakat.png` | Mülakat provası | **İngilizce mülakat provası** | Cevabını kaydet, takıldığın yeri çalış |
+| 6 | `06_kelime.png` | Pratik merkezi: konuşma, telaffuz, tekrar | **Konuş, dinle, tekrar et** | Telaffuz koçu ve kelime kartları |
+| 7 | `07_gramer.png` | Gramer yolu / konu notu | **Gramer, Türkçe anlatımla** | Örnek cümleler ve hafıza ipuçları |
+| 8 | `08_lgs_seri.png` | Lig ve seri | **Her gün biraz, birlikte** | Haftalık lig, görevler, seri |
 
 Notlar:
 
-- Sıralama dönüşüme göre: ilk üç görsel aramada görünür; değer önerisi
-  (ücretsiz + Türklere özel) ilk ikide olmalı.
-- Premium özelliği gösteren görselde "Premium" etiketi açıkça yazılır (yanıltıcı
-  olmasın).
-- **Öne çıkan grafik** (1024×500): logo + "Dilmaç: İngilizce Öğren" + "Günde 5
-  dakika. Can sistemi yok." ve maskot.
-- **Uygulama simgesi** 512×512, mevcut "L" logosu.
-- İsteğe bağlı tanıtım videosu (30 sn): ders → hata açıklaması → seri → sınav pratiği.
-- Play mağaza kaydı deneyi (Store listing experiment): görsel 1 için "Günde 5
-  dakikada İngilizce" vs "Türkler için İngilizce" başlıklarını dene.
+- Sıralama dönüşüme göre: ilk iki görsel aramada da görünür; ana değer önerisi
+  (yapay zekâyla konuşma + Türkçe açıklama) ilk ikide.
+- Premium özelliği gösteren görselde alt yazıda "(Premium)" yazar (yanıltıcı olmasın).
+- Görsellerde ebeveyn gözetimli mod ya da çocuklara yönelik ifade kullanılmaz; hedef
+  kitle 13+ (`play-store.md`). Pofuduk yalnızca uygulamanın kendi ekranında küçük
+  göründüğü kadar yer alır, kapak karakteri değildir.
+- Yeniden üretmek: `D:\Lingora\_cikti\magaza\uret.sh` (ffmpeg; Inter yazı tipi
+  `assets/fonts/`). Ham ekranları değiştirip betiği yeniden çalıştırmak yeter.
+
+## Öne çıkan grafik (1024×500)
+
+Konsept: marka turuncusu (`#F17F04`, uygulama simgesinin zemini) üzerinde solda
+Çaycı Dayı simgesi, sağda iki satır metin:
+
+- Büyük: **İngilizce konuşarak öğren**
+- Küçük: **Yapay zekâ partneri · YDS · YÖKDİL · LGS**
+
+Play bu görseli bazı yerlerde kırptığı ve üstüne oynat düğmesi koyabildiği için
+önemli öğeler ortadaki güvenli alanda; kenarlarda yalnızca zemin var. Metin,
+uygulama adını tekrar etmez (Play adı zaten gösterir). Dosya:
+`one_cikan_1024x500.png`.
+
+## İleride
+
+- Mağaza kaydı deneyi (Store listing experiment): görsel 1 için "İngilizce konuşarak
+  öğren" ile "YDS ve YÖKDİL'e hazırlan" başlıklarını karşılaştır.
+- `dogal-konusma` (canlı sesli sohbet) yayımlanınca görsel 1'i sesli sohbet
+  ekranıyla yenile.
+- İsteğe bağlı 30 sn tanıtım videosu: sohbet → hata açıklaması → seri → sınav pratiği.

@@ -1,103 +1,147 @@
-# Google Play mağaza kaydı (Türkçe)
+# Google Play mağaza kaydı (Türkçe, ASO)
 
-Play Console > Mağazada bulunma > Ana mağaza kaydı. Karakter sınırları Play'in
-güncel sınırlarıdır (başlık 30, kısa açıklama 80, uzun açıklama 4000).
-Mağaza metninde rakip uygulama adı, "en iyi / 1 numara" gibi kanıtlanamayan
-iddialar, emoji yığını ve fiyat bilgisi kullanılmaz (Play politikası).
+Play Console > Büyüme > Mağazada bulunma > Ana mağaza kaydı. Sınırlar: başlık 30,
+kısa açıklama 80, uzun açıklama 4000 karakter. Karakter sayıları aşağıda
+`node` ile sayıldı (Türkçe harfler tek karakter).
+
+Kurallar (Play meta veri politikası): rakip uygulama adı yok, "en iyi / 1 numara /
+garantili puan" gibi kanıtlanamayan iddia yok, fiyat ve indirim yok, emoji yığını yok,
+büyük harfle bağırma yok. Her iddia uygulamada bugün olan bir özelliğe dayanır;
+Premium'a özel olanlar "Premium" diye yazılır.
+
+Anahtar kelimeler ve yerleri: **İngilizce konuşma** (başlık, kısa, uzun), **YDS** (başlık,
+kısa, uzun), **YÖKDİL**, **LGS İngilizce**, **İngilizce mülakat**, **kelime**, **gramer**
+(kısa ve uzun açıklama). Play'de ayrı anahtar kelime alanı yok; arama başlık, kısa ve
+uzun açıklamadaki kelimelerden yapılır. Uzun açıklamada her ana kelime 2–4 kez, doğal
+cümle içinde geçer (doldurma sayılmasın).
 
 ## Uygulama adı (≤ 30)
 
 ```
-Dilmaç: İngilizce Öğren
+Dilmaç: İngilizce Konuşma, YDS
 ```
 
-(24 karakter.) Yedek: `Dilmaç - İngilizce Dersleri` (28).
+30 karakter. Yedekler (A/B için): `Dilmaç: İngilizce Konuş & Öğren` (31, sığmaz),
+`Dilmaç - İngilizce Konuşma` (26).
 
 ## Kısa açıklama (≤ 80)
 
 ```
-Günde 5 dakikada İngilizce. Can sistemi yok, temel öğrenme her zaman ücretsiz.
+Yapay zekâyla İngilizce konuşma pratiği; YDS, YÖKDİL, LGS, kelime ve gramer.
 ```
 
-(78 karakter.) A/B için yedek: `Türkler için İngilizce: kısa dersler, telaffuz, okuma, YDS ve LGS pratiği.` (74)
+76 karakter. Yedek: `İngilizceyi konuşarak öğren: hatalarını Türkçe açıklayan yapay zekâ partneri.` (77)
 
 ## Uzun açıklama (≤ 4000)
 
 ```
-Dilmaç, Türkçe konuşanlar için hazırlanmış kısa ve eğlenceli İngilizce dersleri sunar. Her gün birkaç dakika ayır, adım adım ilerle. Hata yapmak öğrenmenin parçası: can sistemi yok, ceza yok, reklam yok.
+Dilmaç, Türkçe konuşanlar için İngilizce konuşma pratiğine odaklanan bir dil öğrenme uygulamasıdır. Mikrofona konuş ya da yaz; yapay zekâ konuşma partnerin sana cevap versin, hatanı anında Türkçe açıklasın. Kısa günlük derslerle kelime ve gramer çalış, YDS, YÖKDİL ve LGS İngilizce sınavlarına hazırlan.
 
-NEDEN LINGORA?
-• Türkçe konuşanlara özel: Türklerin en sık yaptığı hataları (the/a, -s takısı, zamanlar, kelime sırası) yakalayan hata dedektörü, her yanlışta "Neden yanlış?" açıklaması.
-• Temel öğrenme her zaman ücretsiz: tüm dersler, gramer yolu, notlar, kelime tekrarı, okuma ve telaffuz.
-• Kısa dersler: 5 dakikada bir ders bitir, günlük hedefini kendin belirle.
-• Seviyeni ölç: kısa seviye testiyle sana uygun yerden başla.
+YAPAY ZEKÂ İLE İNGİLİZCE KONUŞMA (PREMIUM)
+• Kafede, otelde, doktorda, iş görüşmesinde: gerçek sahnelerde serbest sohbet.
+• Cümleni söyle; konuşma tanıma metne çevirir, yapay zekâ partnerin cevap verir ve yanlışını Türkçe açıklamayla düzeltir.
+• Sohbet sonunda kısa karne: güçlü yanların ve üzerinde çalışman gereken kalıplar.
+• Ücretsiz sürümde hazır sohbet senaryoları ve telaffuz alıştırmaları her zaman açık.
 
-NELER VAR?
-• Genel İngilizce (A1–A2): günlük hayat, tanışma, alışveriş, yol tarifi.
-• Mesleki yollar: Turizm İngilizcesi (resepsiyon, restoran, rehberlik) ve İş Görüşmesi İngilizcesi.
-• Sınav hazırlığı: YDS/YÖKDİL ve LGS için konu konu açıklamalı pratik, günde bir ücretsiz mini deneme.
-• Okuma: seviyene göre kısa hikâyeler, dokunarak kelime anlamı, kelimeyi notlarına ekleme.
-• Telaffuz: zor sesler, dinle-tekrar et, konuşma alıştırmaları.
-• Gramer yolu ve notlar: konu anlatımı, örnek cümleler, kelime kartları, aralıklı tekrar.
-• Sohbet senaryoları: kafede, otelde, iş görüşmesinde konuşma pratiği.
-• Günlük seri, görevler ve haftalık lig: arkadaşça rekabetle motivasyonunu koru.
-• Hatırlatıcılar: seçtiğin saatte nazik bir hatırlatma.
+İNGİLİZCE MÜLAKAT PROVASI
+• Kendini ve projelerini İngilizce anlat, cevabını kaydet.
+• Takıldığın yerlerden günlük çalışma çıkar, ilk ve son kaydını yan yana dinle.
+• İlk prova ücretsiz; devamı Premium.
 
-LINGORA PREMIUM (İSTEĞE BAĞLI)
-Öğrenmek için Premium gerekmez. Premium, maliyeti yüksek ekstraları açar:
-• Yapay zekâ sohbet partneri: her senaryoda serbest konuşma ve anında Türkçe düzeltme.
-• Sınırsız mini deneme sınavı (YDS/YÖKDİL, LGS).
-• Detaylı hata analizi: tüm hata kategorileri, oranlar ve çalışma ipuçları.
-Premium aylık veya yıllık abonelikle alınır. Abonelik, iptal edilmedikçe her dönem sonunda Google Play hesabından otomatik yenilenir; istediğin zaman Google Play > Ödemeler ve abonelikler bölümünden iptal edebilirsin. Ücretsiz deneme sunulduğunda, deneme bitmeden iptal edersen ücret alınmaz.
+TÜRKLER İÇİN HATA DEDEKTÖRÜ
+• Türkçe konuşanların en sık yaptığı hataları (the/a, -s takısı, zamanlar, kelime sırası) yakalar.
+• Her yanlışta "Neden yanlış?" açıklaması: doğru cevabın ve şıkların Türkçesi (ücretsiz sürümde günde 3, Premium'da sınırsız).
 
-ARKADAŞINI DAVET ET
-Davet kodunu paylaş; arkadaşın katılıp kodu girdiğinde ikiniz de 7 gün Premium kazanın.
+YDS, YÖKDİL VE LGS İNGİLİZCE
+• YDS ve YÖKDİL için konu konu gramer, kelime, okuma ve çeviri soruları; 52 haftalık çalışma planı.
+• LGS İngilizce için ünite ünite pratik.
+• Günde bir ücretsiz mini deneme; tam deneme paketleri ve sınırsız deneme Premium'da.
+• Sınav günü geri sayımı ve haftalık hedefler.
+
+KELİME VE GRAMER
+• Kısa dersler: birkaç dakikada bir ders bitir, günlük hedefini kendin seç.
+• Gramer yolu ve notlar: konu anlatımı, örnek cümleler, hafıza ipuçları.
+• Kelime kartları ve aralıklı tekrar: unutmaya başladığın kelime zamanında karşına gelir.
+• Okuma: seviyene göre kısa hikâyeler; kelimeye dokun, anlamını gör, notlarına ekle.
+• Telaffuz koçu: th, w/v, ship/sheep gibi zor sesleri dinle ve söyle.
+
+SEVİYENİ ÖLÇ, DOĞRU YERDEN BAŞLA
+• Kısa seviye testiyle bildiklerini atla.
+• Genel İngilizce (A1'den ileri seviyeye), Turizm İngilizcesi, İş İngilizcesi ve yazılımcılar için İngilizce yolları.
+
+MOTİVASYON
+• Günlük seri, görevler, haftalık lig ve arkadaşlarla ortak seri.
+• Derslerde can sistemi yok: yanlış yapmak dersi kesmez. Uygulamada reklam yok.
+• Hatırlatıcı: seçtiğin saatte kısa bir bildirim.
+
+DİLMAÇ PREMIUM (İSTEĞE BAĞLI)
+Öğrenmek için Premium gerekmez; dersler, gramer yolu, notlar, kelime tekrarı, okuma ve telaffuz ücretsizdir. Premium şunları açar: yapay zekâ konuşma partneri, mülakat provasının tamamı, sınırsız "Neden yanlış?" açıklaması, sınırsız deneme ve tam deneme paketleri, detaylı hata analizi ve tahmini sınav puanı, aylık seviye karnesi.
+Premium aylık veya yıllık abonelikle alınır. Abonelik, iptal edilmedikçe her dönem sonunda Google Play hesabından otomatik yenilenir; istediğin zaman Google Play > Ödemeler ve abonelikler bölümünden iptal edebilirsin.
 
 GİZLİLİĞİNE SAYGI
-İlerlemen cihazında tutulur; istersen hesabını bağlayıp buluta yedekleyebilirsin. Anonim kullanım istatistikleri yalnızca izin verirsen toplanır, reklam için kullanılmaz. Ayrıntılar gizlilik politikamızda.
+İlerlemen cihazında tutulur; istersen hesabını bağlayıp buluta yedekleyebilirsin. Kullanım istatistikleri ve çökme raporları yalnızca izin verirsen toplanır, reklam için kullanılmaz. Hesabını uygulamanın içinden silebilirsin.
 
-Bugün başla: günde 5 dakika, adım adım İngilizce.
+Dilmaç 13 yaş ve üzeri öğrenciler ve yetişkinler içindir. Ebeveyn gözetimli mod, ebeveynin kendi hesabıyla çocuğuyla birlikte kullanması içindir; bu modda yapay zekâ ve arkadaş özellikleri kapalıdır.
+
+Bugün başla: her gün birkaç dakika İngilizce konuş.
 ```
 
-(~2.400 karakter.) Fiyat yazılmaz; Play fiyatı kendisi gösterir.
+3374 karakter (aşağıdaki kontrolle sayıldı). Fiyat yazılmaz; Play fiyatı kendisi gösterir.
 
-## Anahtar kelimeler
+İddiaların dayanağı:
 
-Play'de ayrı anahtar kelime alanı yoktur; arama, başlık + kısa + uzun açıklamadaki
-kelimelerden yapılır. Metinde doğal geçmesi gerekenler:
+| İddia | Uygulamadaki yeri |
+| --- | --- |
+| Yapay zekâ konuşma partneri, anında Türkçe düzeltme, sohbet karnesi | `conversation_screen.dart`, `functions/src/converse.ts`, `conversation_report_screen.dart` (Premium) |
+| Mikrofona konuşma (konuşma tanıma cihazda) | `speech.dart`, `speak_mic.dart` |
+| Mülakat provası, ilk prova ücretsiz | `screens/rehearsal/`, `PremiumFeature.interviewRehearsal` |
+| "Neden yanlış?" ücretsizde günde 3 | `PremiumFeature.whyWrong` |
+| 52 haftalık YDS planı, günde bir ücretsiz mini deneme | `assets/plans/`, `study/year_plan.dart`, `exam_screen.dart` |
+| Can sistemi yok (derslerde), reklam yok | Can yalnızca isteğe bağlı atlama sınavında var; reklam SDK'sı yok |
+| Ebeveyn gözetimli modda yapay zekâ ve arkadaş ekleme kapalı | `conversationServiceProvider`, `writingServiceProvider`, `rehearsalServiceProvider`, `friends_screen.dart` |
 
-- Ana: İngilizce öğren, İngilizce dersleri, İngilizce kelime, İngilizce gramer
-- Sınav: YDS, YÖKDİL, LGS İngilizce, deneme sınavı
-- Beceri: İngilizce konuşma, telaffuz, İngilizce okuma, hikâye
-- Meslek: turizm İngilizcesi, iş görüşmesi İngilizce
-- Uzun kuyruk: Türkler için İngilizce, sıfırdan İngilizce, günlük İngilizce, A1 A2
+Not: "Canlı sesli sohbet" (`dogal-konusma` dalı) birleşip yayımlanınca ilk paragraf
+"sesli sohbet" diye güçlendirilebilir; o zamana kadar metin "mikrofona konuş ya da yaz"
+der, çünkü bugün cevap yazılı gelir.
 
-App Store (ileride) için 100 karakterlik alan önerisi:
-`ingilizce,öğren,ders,kelime,gramer,yds,yökdil,lgs,konuşma,telaffuz,okuma,sınav,turizm`
+## Öne çıkan özellik listesi (görseller ve web için)
 
-## Öne çıkan özellik listesi (kısa maddeler; görseller ve web için)
+1. Yapay zekâ ile İngilizce konuşma pratiği (Premium)
+2. Hatanı Türkçe açıklayan hata dedektörü
+3. YDS, YÖKDİL ve LGS İngilizce hazırlığı
+4. İngilizce mülakat provası
+5. Kelime kartları ve aralıklı tekrar
+6. Gramer yolu ve notlar
+7. Kısa günlük dersler, seri ve lig
+8. Reklam yok, derslerde can sistemi yok
 
-1. Türkçe konuşanlara özel hata dedektörü
-2. Can sistemi yok, reklam yok
-3. Temel öğrenme her zaman ücretsiz
-4. 5 dakikalık dersler, günlük hedef ve seri
-5. Seviye testiyle doğru yerden başla
-6. YDS/YÖKDİL ve LGS pratiği
-7. Okuma, telaffuz ve gramer yolu
-8. Yapay zekâ sohbet partneri (Premium)
-
-## Kategori ve diğer alanlar
+## Kategori, hedef kitle ve uygulama içeriği
 
 - Kategori: **Eğitim**. Etiketler: Dil öğrenme, Eğitim.
-- İçerik derecelendirmesi anketi: Eğitim uygulaması; kullanıcılar arası
-  serbest iletişim yok (lig yalnızca takma ad ve XP gösterir), yapay zekâ
-  sohbeti eğitim amaçlı ve filtreli. Beklenen sonuç: **3+ / Herkes**.
-- Hedef kitle: 13 yaş ve üzeri (LGS öğrencileri dahil). 13 yaş altı hedef
-  kitle seçilirse "Aileler" politikası ve ek yükümlülükler devreye girer;
-  şimdilik seçme.
-- Reklam içeriyor mu: **Hayır**.
-- Uygulama içi satın alımlar: **Evet** (abonelik).
-- Veri güvenliği formu: `gizlilik-politikasi.md` ve `veri-guvenligi.md`'ye göre doldur.
-- Gizlilik politikası URL'si: `https://dilbaz-3392e.web.app/gizlilik`; hesap silme URL'si: `https://dilbaz-3392e.web.app/hesap-silme` (bkz. `hosting/README.md`)
-  (ör. Firebase Hosting `https://<proje>.web.app/gizlilik`).
-- İletişim e-postası: sahibin destek adresi.
+- **Hedef kitle: 13–15, 16–17, 18 ve üzeri.** 13 yaş altı yaş grupları **seçilmez**
+  (karar a, `docs/play-store-hazirlik.md` §3). "Uygulamanız çocukların ilgisini
+  çekebilir mi?" sorusuna dürüst cevap: LGS içeriği nedeniyle ortaokul öğrencileri
+  (13–14) hedefte; 13 yaş altı hedeflenmiyor. Mağaza metni ve görseller çocuklara
+  yönelik pazarlama yapmaz (çizgi film karakteri öne çıkarılmaz, "çocuğunuz için"
+  denmez); ebeveyn gözetimli mod yalnızca bir cümleyle ve ebeveyne hitaben anılır.
+- İçerik derecelendirmesi anketi: Eğitim; kullanıcılar arası serbest iletişim yok (lig
+  yalnızca takma ad ve XP, arkadaşlar yalnızca hazır tezahürat), yapay zekâ sohbeti eğitim
+  amaçlı. Beklenen sonuç: **3+ / Herkes**.
+- Reklam içeriyor mu: **Hayır**. Reklam kimliği: **Hayır**.
+- Uygulama içi satın alımlar: **Evet** (abonelik, sınav paketleri, Altın).
+- Veri güvenliği formu: `veri-guvenligi.md` (Crashlytics satırları eklendi).
+- Gizlilik politikası: `https://dilbaz-3392e.web.app/gizlilik`; hesap silme:
+  `https://dilbaz-3392e.web.app/hesap-silme`.
+- İletişim e-postası: dilmac.destek@gmail.com.
+
+## Görseller
+
+Plan ve başlıklar: `ekran-goruntuleri.md`. Hazır dosyalar (repo dışında):
+`D:\Lingora\_cikti\magaza\` (8 telefon ekran görüntüsü, `ikon_512.png`,
+`one_cikan_1024x500.png`).
+
+## Karakter sınırı kontrolü
+
+```
+node -e "const s=require('fs').readFileSync('docs/magaza/play-store.md','utf8');const b=[...s.matchAll(/\`\`\`\n([\s\S]*?)\n\`\`\`/g)].map(m=>m[1]);console.log(b.slice(0,3).map(x=>[...x].length))"
+```
