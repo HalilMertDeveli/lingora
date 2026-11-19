@@ -25,6 +25,8 @@ class AccountNudgeCard extends ConsumerStatefulWidget {
     if (ref.watch(accountServiceProvider) == null) return false;
     final user = ref.watch(authStateProvider).value;
     if (user == null || !user.isAnonymous) return false;
+    // Asked after the first lesson, when there is progress to keep.
+    if (ref.watch(progressProvider.select((p) => p.lessonsDone)) == 0) return false;
     final until = ref.watch(prefsProvider).getInt(accountNudgeUntilKey) ?? 0;
     return ref.watch(clockProvider)().millisecondsSinceEpoch >= until;
   }
@@ -68,7 +70,7 @@ class _AccountNudgeCardState extends ConsumerState<AccountNudgeCard> {
                 const SizedBox(width: 10),
                 const Expanded(
                   child: Text(
-                    'İlerlemen kaybolmasın',
+                    'İlerlemeni kaybetme',
                     style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
                   ),
                 ),
@@ -76,7 +78,10 @@ class _AccountNudgeCardState extends ConsumerState<AccountNudgeCard> {
             ),
             const SizedBox(height: 6),
             Text(
-              p.lessonsDone > 0
+              p.lessonsDone == 1
+                  ? 'İlk dersin bitti! Şu an misafirsin; ilerlemen yalnızca bu telefonda. Giriş yap, '
+                        'telefonunu değiştirsen de kaldığın yerden devam et.'
+                  : p.lessonsDone > 0
                   ? 'Şu an misafirsin; ${p.lessonsDone} dersin yalnızca bu telefonda. Giriş yap, telefonunu '
                         'değiştirsen de kaldığın yerden devam et.'
                   : 'Şu an misafirsin; ilerlemen yalnızca bu telefonda. Google, e-posta ya da telefonla giriş '

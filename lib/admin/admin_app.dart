@@ -7,6 +7,7 @@ import '../services/firebase/firebase_providers.dart';
 import '../theme.dart';
 import 'admin_api.dart';
 import 'dashboard.dart';
+import 'reports_page.dart';
 import 'stats_panel.dart';
 import 'sales_pages.dart';
 import 'widgets.dart';
@@ -434,6 +435,14 @@ class StaffOrgsPage extends ConsumerWidget {
               Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const StatsPage())),
           icon: const Icon(Icons.insights_outlined),
           label: const Text('Panel'),
+        ),
+        // Staff only: question reports from the app ("Bildir").
+        TextButton.icon(
+          key: const Key('open-reports'),
+          onPressed: () =>
+              Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const ReportsPage())),
+          icon: const Icon(Icons.flag_outlined),
+          label: const Text('Bildirimler'),
         ),
         IconButton(
           tooltip: 'Yenile',

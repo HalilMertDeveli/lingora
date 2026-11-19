@@ -194,6 +194,26 @@ flowchart LR
     H --> I[Yolda sıradaki derse dönüş]
 ```
 
+### İlk açılış ve "Bugün ne yapacağım?"
+
+- **İlk açılış:** karşılama → tek soru ("Ne için İngilizce?": Genel, Konuşma, YDS, İş görüşmesi, LGS, Çocuğum
+  için) → hemen 2–3 dakikalık ilk ders. İlk derste Türkçe düşünmekten gelen bir hata ("I am agree") ve nedeni
+  Türkçe açıklanır. Hesap, hatırlatma ve günlük hedef sonra, yerinde sorulur: ilk dersten sonra "İlerlemeni
+  kaybetme", ikinci dersten ya da ertesi günden sonra hatırlatma, birkaç dersten sonra günlük hedef.
+- **Bugün ne yapacağım?** (Öğren sekmesinin üstünde): gerçekten bekleyen tekrarlardan, yoldaki sıradaki dersten
+  ve hedeften kurulan kısa bir sıra (ör. "5 dk tekrar → 1 ders → kısa dinleme"). Tek BAŞLA adımları arka arkaya
+  açar; bir adım ancak gerçekten yapılınca (kart değerlendirildi, ders bitti…) işaretlenir. YDS planı olanlar
+  haftalık plana buradan geçer.
+- **Gerçek ilerleme** (Profil): XP'den ayrı, yalnızca dürüst sinyaller: aralıklı tekrarda geçilen kelimeler,
+  son 7 günde karıştırılıp sonraki bir gün yeniden çözülen sorulardan artık doğru yapılanlar, hata defterinden
+  çıkan sorular. Yüzde ya da tahmin yok.
+- **Bildir:** her sorunun ve açıklamasının altında. Üç seçenek (Cevap hatalı / Başka cevap da doğru / Açıklama
+  anlaşılmıyor) ve isteğe bağlı not; soru, ders, cevap ve sürüm kendiliğinden eklenir. Kayıtlar `reports/`'a
+  gider (günde 20, 10 saniyede bir), yalnızca yönetim panelindeki **Bildirimler** listesinde okunur.
+- **Yedek durumu:** Profil'de ve ders sonunda gerçek eşitleme durumundan tek satır: "Bu telefonda kayıtlı (giriş
+  yapınca yedeklenir)", "Hesabına yedeklendi · az önce" ya da "İnternet gelince yedeklenecek".
+- Kapalı test için yönlendirmesiz kullanıcı testi: [docs/kullanici-testi.md](docs/kullanici-testi.md).
+
 ### Çalışma günü (YDS "Bugün")
 
 Uygulama, seçilen süreye göre (30 dakika – 4 saat) günü bloklara böler: **tekrar kartları → yeni ders → okuma → soru →
