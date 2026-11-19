@@ -134,11 +134,11 @@ class SpeechService {
       await _stopVoice();
       // A studio recording of this sentence, when there is one.
       if (lang != 'tr' && !kIsWeb) {
-        final asset = await _pack.assetFor(text);
+        final source = await _pack.sourceFor(text);
         if (id != _request) return;
-        if (asset != null) {
+        if (source != null) {
           final p = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
-          await p.setSource(AssetSource(asset));
+          await p.setSource(source);
           await p.setPlaybackRate(slow ? slowRecordingRate : rate.clamp(0.5, 1.5));
           final heard = wait ? _ended(p) : null;
           await p.resume();
