@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/legacy_emoji.dart';
 import '../../data/course_repository.dart';
 import '../../data/placement.dart';
 import '../../data/practice.dart';
@@ -36,7 +36,7 @@ void openToday(BuildContext context) =>
     Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const TodayScreen()));
 
 /// The general course, loaded for the plan's general-course weeks.
-final generalCourseProvider = FutureProvider<Course>((ref) => loadCourse(rootBundle, 'tr_en'));
+final generalCourseProvider = FutureProvider<Course>((ref) => loadCourse(appBundle, 'tr_en'));
 
 /// Everything "Bugün" needs that comes from assets: the year plan and the
 /// units of the general course and the YDS path, by id.

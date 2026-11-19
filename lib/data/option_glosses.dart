@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
+
 /// Turkish glosses of exam options, kept beside the content so the questions
 /// themselves never change: `assets/option_glosses/<exam>.json` maps a
 /// question key (a path exercise's "nodeId#index", or an exam bank
@@ -116,4 +118,4 @@ Future<OptionGlosses> loadOptionGlosses(AssetBundle bundle) async {
   }
 }
 
-final optionGlossesProvider = FutureProvider<OptionGlosses>((ref) => loadOptionGlosses(rootBundle));
+final optionGlossesProvider = FutureProvider<OptionGlosses>((ref) => loadOptionGlosses(appBundle));

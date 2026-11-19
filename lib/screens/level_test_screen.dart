@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/level_report.dart';
@@ -17,7 +17,7 @@ import 'level_report_screen.dart';
 /// course. Tests override this with a small bank.
 final levelTestBankProvider = FutureProvider<List<LevelItem>>((ref) async {
   final placement = await ref.watch(placementBankProvider.future);
-  final course = await loadCourse(rootBundle, defaultTrackId);
+  final course = await loadCourse(appBundle, defaultTrackId);
   return [
     for (final q in placement) LevelItem.fromPlacement(q),
     ...listeningItems([for (final s in course.sections) ...s.nodes]),

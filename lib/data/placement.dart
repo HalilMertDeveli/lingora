@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../models/grammar_lesson.dart';
 import 'catalog.dart';
 import 'progress.dart';
@@ -69,7 +69,7 @@ List<PlacementQuestion> parsePlacementBank(String raw) =>
     (jsonDecode(raw) as List).map((q) => PlacementQuestion.fromJson(q as Map<String, dynamic>)).toList();
 
 final placementBankProvider = FutureProvider<List<PlacementQuestion>>(
-  (ref) async => parsePlacementBank(await rootBundle.loadString('assets/placement/questions.json')),
+  (ref) async => parsePlacementBank(await appBundle.loadString('assets/placement/questions.json')),
 );
 
 /// Most questions in one test.

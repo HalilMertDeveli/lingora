@@ -3,14 +3,18 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 
+import '../core/emoji_compat.dart';
 import 'progress.dart';
 import 'showcase_data.dart';
 import 'quests.dart' show stableHash;
 
 class LeagueTier {
-  const LeagueTier(this.name, this.emoji, this.color);
+  const LeagueTier(this.name, this._emoji, this.color);
   final String name;
-  final String emoji;
+  final String _emoji;
+
+  /// Safe on Android 7–9 (see emoji_compat.dart).
+  String get emoji => legacyEmoji(_emoji);
   final Color color;
 }
 
@@ -143,7 +147,7 @@ List<LeagueEntry> rivals({required int tier, required DateTime weekStart, requir
       () {
         final name =
             '${_firstNames[rnd.nextInt(_firstNames.length)]} ${String.fromCharCode(65 + rnd.nextInt(26))}.';
-        final avatar = _avatars[rnd.nextInt(_avatars.length)];
+        final avatar = legacyEmoji(_avatars[rnd.nextInt(_avatars.length)]);
         final country = _countries[rnd.nextInt(_countries.length)];
         // About one in four rivals barely plays.
         final active = rnd.nextDouble() > 0.25;

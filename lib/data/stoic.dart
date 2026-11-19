@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../core/legacy_emoji.dart';
 import 'progress.dart';
 import 'quests.dart';
 
@@ -67,7 +67,7 @@ List<StoicQuote> parseStoicQuotes(String raw) {
 const stoicAsset = 'assets/quotes/stoic.json';
 
 final stoicQuotesProvider = FutureProvider<List<StoicQuote>>(
-  (ref) async => parseStoicQuotes(await rootBundle.loadString(stoicAsset)),
+  (ref) async => parseStoicQuotes(await appBundle.loadString(stoicAsset)),
 );
 
 /// Recently shown quote ids, newest last.

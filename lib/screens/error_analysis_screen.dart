@@ -4,6 +4,7 @@ import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/emoji_compat.dart';
 import '../data/course_repository.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
@@ -519,7 +520,7 @@ class _WeakPoints extends StatelessWidget {
         title: 'Zayıf noktaların',
         subtitle: 'En az $minAnswersForWeak soru çözdüğün konu ve tipler, en düşük doğruluk önce.',
         icon: Icons.trending_down_rounded,
-        emoji: '🧩',
+        emoji: legacyEmoji('🧩'),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

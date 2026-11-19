@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import '../core/emoji_compat.dart';
 import '../models/course.dart';
 import 'placement.dart';
 
@@ -20,13 +21,16 @@ enum LevelSkill {
   reading('Okuma', 'OKUMA', '📖'),
   listening('Dinleme', 'DİNLEME', '🎧');
 
-  const LevelSkill(this.title, this.caps, this.emoji);
+  const LevelSkill(this.title, this.caps, this._emoji);
   final String title;
 
   /// [title] in capitals with the Turkish dotted İ (Dart's toUpperCase
   /// would give "DIL").
   final String caps;
-  final String emoji;
+  final String _emoji;
+
+  /// Safe on Android 7–9 (see emoji_compat.dart).
+  String get emoji => legacyEmoji(_emoji);
 }
 
 /// Days between two monthly tests.

@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/app_resume.dart';
 import 'core/app_update.dart';
 import 'core/frame_stats.dart';
+import 'core/legacy_emoji.dart';
 import 'core/startup_trace.dart';
 import 'data/app_settings.dart';
 import 'data/gold_wallet.dart';
@@ -26,8 +27,11 @@ import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
 import 'services/billing/premium_perks.dart';
 import 'services/friends.dart';
+import 'services/growth/analytics.dart';
+import 'services/growth/crash_reporting.dart';
 import 'services/growth/funnel_stats.dart';
 import 'services/growth/growth.dart';
+import 'services/growth/review_prompt.dart';
 import 'services/league_remote.dart';
 import 'services/rehearsal_cloud.dart';
 import 'services/showcase.dart';
@@ -47,8 +51,19 @@ Future<void> main() async {
   // analytics, billing) start when firebaseReadyProvider turns true.
   final mode = FirebaseMode.fromEnvironment;
   final firebase = initFirebase(mode).whenComplete(() => StartupTrace.mark('firebase'));
-  final prefs = await SharedPreferences.getInstance();
+  // Android 7–9: emoji they cannot draw are swapped (lib/core/legacy_emoji.dart).
+  final (prefs, _) = await (SharedPreferences.getInstance(), detectLegacyEmoji()).wait;
   StartupTrace.mark('prefs');
+  // Crash reports: hooks now, Firebase Crashlytics once Firebase is ready.
+  // Production builds only, and only with the analytics consent.
+  CrashReporter.install(consent: prefs.getBool(AnalyticsConsent.key));
+  // The review prompt waits a few days after the first launch.
+  ReviewPolicy(prefs).markFirstSeen(DateTime.now());
+  if (mode == FirebaseMode.prod) {
+    firebase.then((ok) {
+      if (ok) CrashReporter.attach(FirebaseCrashSink());
+    });
+  }
   WidgetsBinding.instance.addPostFrameCallback((_) => StartupTrace.mark('first_frame'));
   runApp(
     ProviderScope(
@@ -90,6 +105,8 @@ class LingoraApp extends ConsumerWidget {
     ref.listen(rehearsalCloudSyncProvider, (_, _) {});
     // Analytics consent sync + churn signals (no-op without analytics).
     ref.listen(growthSignalsProvider, (_, _) {});
+    // Crash reports follow the same consent; the uid is the only identifier.
+    ref.listen(crashReportingSyncProvider, (_, _) {});
     // Owner dashboard funnel counters (consent only, no identifiers).
     ref.listen(funnelStatsProvider, (_, _) {});
     final settings = ref.watch(appSettingsProvider);

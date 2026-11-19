@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'core/emoji_compat.dart';
 import 'data/app_settings.dart';
 import 'ui/transitions.dart';
 
@@ -691,7 +692,7 @@ class Glyph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (context.isKid) return Text(emoji, style: TextStyle(fontSize: size));
+    if (context.isKid) return Text(legacyEmoji(emoji), style: TextStyle(fontSize: size));
     return Icon(icon, size: size * 0.9, color: color ?? context.palette.primary);
   }
 }
@@ -715,7 +716,7 @@ class IconBadge extends StatelessWidget {
         width: size,
         height: size,
         child: Center(
-          child: Text(emoji!, style: TextStyle(fontSize: size * 0.7)),
+          child: Text(legacyEmoji(emoji!), style: TextStyle(fontSize: size * 0.7)),
         ),
       );
     }

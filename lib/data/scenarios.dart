@@ -1,22 +1,30 @@
+import '../core/emoji_compat.dart';
+
 /// Role-play scenarios for conversation practice. The server keeps its own
 /// prompt for each id (functions/src/scenarios.ts), so
 /// the app can never change what the AI is told.
+
 class Scenario {
   const Scenario({
     required this.id,
     required this.title,
-    required this.emoji,
+    required String emoji,
     required this.goal,
     required this.partner,
     required this.opening,
     required this.openingTr,
     this.level = 'A2',
     this.apiFields,
-  });
+    // Named parameters cannot be private.
+    // ignore: prefer_initializing_formals
+  }) : _emoji = emoji;
 
   final String id;
   final String title;
-  final String emoji;
+  final String _emoji;
+
+  /// Safe on Android 7–9 (see emoji_compat.dart).
+  String get emoji => legacyEmoji(_emoji);
 
   /// What the learner should achieve, in Turkish.
   final String goal;

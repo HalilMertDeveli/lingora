@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/emoji_compat.dart';
 import '../data/gold_wallet.dart';
 import '../data/progress.dart';
 import '../data/shop_catalog.dart';
@@ -163,7 +164,7 @@ class _LookCard extends ConsumerWidget {
                   if (w.freezes > 0) ...[
                     const SizedBox(height: 6),
                     Text(
-                      '🧊 Seri dondurma: ${w.freezes}',
+                      '${legacyEmoji('🧊')} Seri dondurma: ${w.freezes}',
                       key: const ValueKey('shop-freezes'),
                       style: TextStyle(color: Brand.muted, fontSize: 12),
                     ),
@@ -504,7 +505,7 @@ class _LivePreview extends ConsumerWidget {
       ShopCategory.theme => _ThemeSample(accent: item.accent!),
       ShopCategory.freeze => Row(
         children: [
-          const Text('🔥🧊', style: TextStyle(fontSize: 32)),
+          Text(legacyEmoji('🔥🧊'), style: const TextStyle(fontSize: 32)),
           const SizedBox(width: 12),
           Expanded(
             child: Text(

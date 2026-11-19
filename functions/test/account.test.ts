@@ -135,6 +135,9 @@ test("seeds every per-user collection and leaves nothing that names the account"
     "classes/KLASKOD2/members/other": { name: "O", streak: 1 },
     "classes/KLASKOD2/speaking/me": { conversations: 2 },
     "speakingStats/me": { conversations: 2, lastSummary: "x" },
+    "reportLimits/me": { n: 1, count: 1 },
+    "reports/me_1": { uid: "me", reason: "unclear", note: "benim notum", questionId: "q1", status: "yeni" },
+    "reports/x_1": { uid: "x", reason: "unclear", questionId: "q2", status: "bakildi", statusBy: "me" },
     "classes/BENIMKOD": { ownerUid: "me", name: "Benim", teacherName: "Ben", org: "Okul", open: true },
     "classes/BENIMKOD/members/stu": { name: "S", streak: 0 },
     "usage/me": { day: "x", count: 1 },
@@ -142,8 +145,6 @@ test("seeds every per-user collection and leaves nothing that names the account"
     "reportUsage/me": { day: "x", count: 1 },
     "usageRehearsal/me": { count: 1 },
     "explainUsage/me": { day: "x", count: 1 },
-    "reportLimits/me": { n: 1 },
-    "reports/me_1": { uid: "me", reason: "wrong_answer", questionId: "q1" },
     "referrals/me": { code: "ABCDEFG" },
     "inviteCodes/ABCDEFG": { uid: "me" },
     "inviteCodes/HJKMNPQ": { uid: "other" },
@@ -190,6 +191,7 @@ test("seeds every per-user collection and leaves nothing that names the account"
     "classes/KLASKOD2/members/me",
     "classes/KLASKOD2/speaking/me",
     "speakingStats/me",
+    "reportLimits/me",
     "classes/BENIMKOD",
     "classes/BENIMKOD/members/stu",
     "usage/me",
@@ -197,7 +199,6 @@ test("seeds every per-user collection and leaves nothing that names the account"
     "reportUsage/me",
     "usageRehearsal/me",
     "explainUsage/me",
-    "reportLimits/me",
     "referrals/me",
     "inviteCodes/ABCDEFG",
     "rehearsals/me/items/r",
@@ -229,9 +230,12 @@ test("seeds every per-user collection and leaves nothing that names the account"
   assert.equal((await db.doc("orgs/o1/assignments/a1").get()).get("createdBy"), "deleted");
   assert.equal((await db.doc("orgCodes/ORGKOD22").get()).get("createdBy"), "deleted");
   assert.equal((await db.doc("referralDevices/h1").get()).get("uid"), "deleted");
-  assert.equal((await db.doc("reports/me_1").get()).get("uid"), "deleted");
-  assert.equal((await db.doc("reports/me_1").get()).get("questionId"), "q1");
   assert.deepEqual((await db.doc("config/lingoraAdmins").get()).get("uids"), ["staff"]);
+  const report = (await db.doc("reports/me_1").get()).data();
+  assert.equal(report?.uid, "deleted");
+  assert.equal(report?.note, undefined);
+  assert.equal(report?.questionId, "q1");
+  assert.equal((await db.doc("reports/x_1").get()).get("statusBy"), "deleted");
   // Kept on purpose.
   assert.equal(await exists("referralRedemptions/me"), true);
   assert.equal(await exists("deletedAccounts/me"), true);

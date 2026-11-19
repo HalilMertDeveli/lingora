@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/placement.dart' show Cefr;
@@ -25,7 +25,7 @@ import 'study/srs_review_screen.dart';
 /// Listening nodes of the general course (for study suggestions). Tests
 /// override it.
 final karneListeningNodesProvider = FutureProvider<List<PathNode>>((ref) async {
-  final course = await loadCourse(rootBundle, defaultTrackId);
+  final course = await loadCourse(appBundle, defaultTrackId);
   return [
     for (final s in course.sections)
       for (final n in s.nodes)

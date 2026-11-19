@@ -15,13 +15,14 @@ Genel:
 | --- | --- | --- | --- | --- |
 | Kişisel bilgiler > E-posta adresi | Evet (hesap bağlanırsa) | Hayır | İsteğe bağlı | Hesap yönetimi |
 | Kişisel bilgiler > Ad | Evet (Google adı / lig takma adı) | Hayır | İsteğe bağlı | Uygulama işlevselliği, hesap yönetimi |
-| Kişisel bilgiler > Kullanıcı kimlikleri | Evet | Hayır | İsteğe bağlı (hesap) | Uygulama işlevselliği, hesap yönetimi, sahtekârlığı önleme (davet) |
+| Kişisel bilgiler > Kullanıcı kimlikleri | Evet (Firebase uid; analiz izni verildiyse çökme raporlarına da eklenir) | Hayır | İsteğe bağlı (hesap) | Uygulama işlevselliği, hesap yönetimi, sahtekârlığı önleme (davet), analiz (çökme raporu) |
 | Finansal bilgiler > Satın alma geçmişi | Evet | Hayır | İsteğe bağlı | Uygulama işlevselliği (Premium) |
 | Mesajlar > Diğer uygulama içi mesajlar | Evet: yapay zekâ sohbeti, Ses Koçu, Mülakat Provası ve yazma değerlendirmesi metinleri (yazılan ya da konuşma tanımanın metne çevirdiği cevaplar, ses değil); Mülakat Provası metni ve analizi hesap silinene kadar saklanır | Evet (Anthropic, hizmet sağlayıcı)* | İsteğe bağlı | Uygulama işlevselliği |
 | Ses > Ses kayıtları | Hayır: ses Dilmaç sunucusuna ve Anthropic'e gitmez, yalnızca metin gider. Konuşma tanımayı Android'in konuşma tanıma hizmeti (genellikle Google) yapar; çevrimdışı paket yoksa sesi Google sunucularında işleyebilir (Dilmaç'ın değil sistemin hizmeti; gizlilik politikası 2.2'de açıkça yazıyor). Mülakat Provası ses kayıtları yalnızca cihazda dosya olarak saklanır (cihazdan çıkmadığı için Play tanımında "toplama" sayılmaz); hesaptan çıkınca, hesap değişince ve hesap silinince silinir | – | – | – |
 | Uygulama etkinliği > Uygulama etkileşimleri | Evet (izinle) | Hayır | İsteğe bağlı | Analiz |
-| Uygulama bilgileri ve performansı > Kilitlenme günlükleri | Hayır (Crashlytics yok) | – | – | – |
-| Cihaz veya diğer kimlikler | Evet (Firebase kurulum/analiz kimliği, rastgele kurulum kimliği özeti) | Hayır | Analiz isteğe bağlı | Analiz, sahtekârlığı önleme, uygulama işlevselliği |
+| Uygulama bilgileri ve performansı > Kilitlenme günlükleri | **Evet** (Firebase Crashlytics, yalnızca analiz izniyle; kapalı başlar) | Hayır | İsteğe bağlı | Analiz (uygulama kararlılığı) |
+| Uygulama bilgileri ve performansı > Teşhis | **Evet** (Crashlytics hata raporlarındaki cihaz modeli, Android sürümü, bellek/disk durumu, yığın izi; aynı izinle) | Hayır | İsteğe bağlı | Analiz (uygulama kararlılığı) |
+| Cihaz veya diğer kimlikler | Evet (Firebase kurulum/analiz kimliği, Crashlytics kurulum kimliği, rastgele kurulum kimliği özeti) | Hayır | Analiz isteğe bağlı | Analiz, sahtekârlığı önleme, uygulama işlevselliği |
 | Kişiler (rehber) | Evet, **yalnızca geçici işleme** ("processed ephemerally"): numaraların tuzlu SHA-256 özetleri tek tek sorgu için gönderilir, saklanmaz; adlar ve ham numaralar gönderilmez | Hayır | İsteğe bağlı | Uygulama işlevselliği (arkadaş bulma) |
 | Fotoğraflar ve videolar > Fotoğraflar | Evet (yalnızca kullanıcı profil fotoğrafı eklerse; küçültülmüş JPEG, hesaba kaydedilir) | Hayır | İsteğe bağlı | Uygulama işlevselliği (profil) |
 | Kişisel bilgiler > Telefon numarası | Evet, yalnızca "Telefon numaramla bulunabilirim" açıksa ve yalnızca tuzlu SHA-256 özeti | Hayır | İsteğe bağlı | Uygulama işlevselliği (arkadaş bulma) |
@@ -41,3 +42,16 @@ seçmek de doğrudur. Emin değilsen "Evet" seçmek daha güvenli.
   rehberindeki, uygulamayı kullanan ve bulunmayı kabul etmiş kişileri arkadaş olarak bulmak."
 - Telefon numarası (özet) yalnızca kullanıcı "Telefon numaramla bulunabilirim" seçeneğini açarsa yazılır; numara
   telefonla girişte doğrulanmış olmalıdır (kurallar bunu denetler).
+
+## Crashlytics (çökme ve hata raporları)
+
+- Kod: `lib/services/growth/crash_reporting.dart`. Yalnızca `prod` derlemede ve yalnızca kullanıcı analiz
+  iznine "İzin ver" dediyse açılır (`AndroidManifest.xml` ve `Info.plist`'te
+  `firebase_crashlytics_collection_enabled` / `FirebaseCrashlyticsCollectionEnabled` = false ile kapalı başlar).
+  İzin metni (`consent_sheet.dart`) çökme raporlarını ve hesap kimliğini açıkça söyler.
+- Gönderilen: Flutter ve platform hataları (fatal), satın alma / eşitleme / hesap işlemlerindeki
+  hatalar (non-fatal, sabit bir `reason` anahtarıyla; kullanıcı metni yok), cihaz teşhis bilgisi,
+  giriş yapılmışsa yalnızca Firebase uid (`setUserIdentifier`). Ad, e-posta, yazılan metin, ses yok.
+- İzin geri alınınca toplama kapanır ve gönderilmemiş raporlar silinir (`deleteUnsentReports`).
+- Formda: "Kilitlenme günlükleri" ve "Teşhis" = toplanıyor, paylaşılmıyor, isteğe bağlı, amaç "Analiz".
+  "Veriler aktarım sırasında şifreleniyor" yanıtı değişmez.

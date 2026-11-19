@@ -97,10 +97,10 @@ class _FriendsScreenState extends ConsumerState<FriendsScreen> {
             if (Brand.isKid)
               const FriendsBox(
                 key: ValueKey('friends-kid'),
-                icon: Icons.child_care_rounded,
+                icon: Icons.family_restroom_rounded,
                 text:
-                    'Çocuk modunda arkadaş ekleme kapalı. Bir yetişkin Profil > Görünüm bölümünden '
-                    'Çocuk modunu kapatabilir.',
+                    'Ebeveyn gözetimli modda arkadaş ekleme kapalı. Ebeveyn, Profil > Görünüm bölümünden '
+                    'bu modu kapatabilir.',
               )
             else if (api == null)
               const _NoAccount()

@@ -3,21 +3,28 @@
 // method is, why (one finding and its source) and where it works in the app.
 // The wording never claims more than the research write-up does.
 
+import '../core/emoji_compat.dart';
+
 /// Research write-up the cards come from.
 const methodsSourceDoc = 'docs/sinav/yds-arastirma.md (§2 yöntemler, §3 yöntem → özellik)';
 
 class StudyMethod {
   const StudyMethod({
     required this.id,
-    required this.emoji,
+    required String emoji,
     required this.title,
     required this.what,
     required this.why,
     required this.where,
-  });
+    // Named parameters cannot be private.
+    // ignore: prefer_initializing_formals
+  }) : _emoji = emoji;
 
   final String id;
-  final String emoji;
+  final String _emoji;
+
+  /// Safe on Android 7–9 (see emoji_compat.dart).
+  String get emoji => legacyEmoji(_emoji);
   final String title;
 
   /// Ne?

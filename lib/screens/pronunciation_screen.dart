@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../core/pronunciation_feedback.dart';
 import '../core/spoken_match.dart';
 import '../core/text.dart';
@@ -24,7 +24,7 @@ import 'lesson_result_screen.dart';
 Future<List<PronUnit>> loadPronUnits(AssetBundle bundle) async =>
     parsePronUnits(await bundle.loadString('assets/pronunciation/units.json'));
 
-final pronUnitsProvider = FutureProvider<List<PronUnit>>((ref) => loadPronUnits(rootBundle));
+final pronUnitsProvider = FutureProvider<List<PronUnit>>((ref) => loadPronUnits(appBundle));
 
 Color get _coachColor => Brand.tone(const Color(0xFFFF7A1A));
 

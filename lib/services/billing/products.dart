@@ -1,3 +1,5 @@
+import '../../core/emoji_compat.dart';
+
 /// Dilmaç Premium subscription products.
 ///
 /// The ids must match the subscription product ids created in Google Play
@@ -5,6 +7,7 @@
 /// auto-renewing base plan. Real prices are set in Play Console; the values
 /// below are only the suggested Turkish prices documented in docs/abonelik.md
 /// and are never shown to the user as an offer.
+
 enum PremiumPlan {
   monthly(id: 'lingora_premium_monthly', label: 'Aylık', period: 'ay', suggestedPriceTl: 129.99, days: 31),
   yearly(id: 'lingora_premium_yearly', label: 'Yıllık', period: 'yıl', suggestedPriceTl: 799.99, days: 366),
@@ -192,10 +195,13 @@ enum PremiumFeature {
     '🖼️',
   );
 
-  const PremiumFeature(this.title, this.description, this.emoji);
+  const PremiumFeature(this.title, this.description, this._emoji);
   final String title;
   final String description;
-  final String emoji;
+  final String _emoji;
+
+  /// Safe on Android 7–9 (see emoji_compat.dart).
+  String get emoji => legacyEmoji(_emoji);
 }
 
 /// Free mini mock exams per day (all exams together) without Premium.

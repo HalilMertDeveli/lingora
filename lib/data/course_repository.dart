@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
 import '../core/startup_trace.dart';
 import '../models/course.dart';
 import '../models/exam.dart';
@@ -222,10 +223,10 @@ final trackProvider = Provider<Track>(
 );
 
 /// Study path of an exam track by track id; null without one.
-final examPathProvider = FutureProvider.family<Course?, String>((ref, id) => loadExamPath(rootBundle, id));
+final examPathProvider = FutureProvider.family<Course?, String>((ref, id) => loadExamPath(appBundle, id));
 
 /// Whether an exam track has a study path (see [hasExamPath]).
-final hasExamPathProvider = FutureProvider.family<bool, String>((ref, id) => hasExamPath(rootBundle, id));
+final hasExamPathProvider = FutureProvider.family<bool, String>((ref, id) => hasExamPath(appBundle, id));
 
 /// Course for the learning path: the selected course, an exam track's study
 /// path (its progress is kept apart by its own node ids), or the general
@@ -239,7 +240,7 @@ final courseProvider = FutureProvider<Course>((ref) async {
     final path = await ref.watch(examPathProvider(track.id).future);
     if (path != null) return path;
   }
-  return loadCourse(rootBundle, track.kind == TrackKind.course ? track.id : defaultTrackId);
+  return loadCourse(appBundle, track.kind == TrackKind.course ? track.id : defaultTrackId);
 });
 
 /// What the learning path draws: the outline of [courseProvider]'s course
@@ -257,7 +258,7 @@ final courseOutlineProvider = FutureProvider<Course>((ref) async {
       : track.kind == TrackKind.course
       ? track.id
       : defaultTrackId;
-  final outline = await loadCourseOutline(rootBundle, id);
+  final outline = await loadCourseOutline(appBundle, id);
   if (outline != null) {
     StartupTrace.mark('course_outline');
     return outline;
@@ -265,4 +266,4 @@ final courseOutlineProvider = FutureProvider<Course>((ref) async {
   return ref.watch(courseProvider.future);
 });
 
-final examProvider = FutureProvider.family<Exam, String>((ref, id) => loadExam(rootBundle, id));
+final examProvider = FutureProvider.family<Exam, String>((ref, id) => loadExam(appBundle, id));
