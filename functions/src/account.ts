@@ -40,6 +40,7 @@ export const PERSONAL_DATA: Record<string, string> = {
   usageWriting: "deleted",
   reportUsage: "deleted",
   usageRehearsal: "deleted",
+  voiceUsage: "deleted",
   referrals: "deleted",
   rehearsals: "deleted with items",
   friendCodes: "deleted (uid field)",
@@ -76,6 +77,7 @@ export const PERSONAL_DATA: Record<string, string> = {
   daily: "no uid: Günün okuması, shared by everyone (daily_reading.ts)",
   levels: "daily/*/levels: shared readings, no uid",
   stats: "no uid: aggregated daily counters (stats.ts)",
+  ttsCache: "no uid: shared MP3 cache keyed by text hash, expires by TTL (tts.ts)",
 };
 
 /** Single documents keyed by uid. */
@@ -91,6 +93,7 @@ const UID_DOCS = [
   "usageWriting",
   "reportUsage",
   "usageRehearsal",
+  "voiceUsage",
   "referrals",
   "rehearsals",
   "speakingStats",
