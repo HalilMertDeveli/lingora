@@ -75,8 +75,8 @@ class PracticeHubScreen extends ConsumerWidget {
             style: TextStyle(color: Brand.muted),
           ),
           const SizedBox(height: 16),
-          // The YDS daily plan; other tracks see it once a plan exists.
-          if (track.id == 'yds' || p.studyPlan != null) ...[const TodayCard(), const SizedBox(height: 16)],
+          // The day's plan lives on Öğren ("Bugün ne yapacağım?", which also
+          // opens the weekly YDS plan), so there is one "Bugün", not two.
           // Mülakat Provası: the day's study from the learner's own answer.
           const RehearsalTodayCard(),
           const SectionLabel('KONUŞ VE DİNLE'),
