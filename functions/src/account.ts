@@ -73,6 +73,9 @@ export const PERSONAL_DATA: Record<string, string> = {
   referralDevices: "kept: abuse prevention, uid anonymised",
   aiDevices: "no uid: per-install free AI counters (ai_guard.ts)",
   aiSpend: "no uid: daily AI cost totals (ai_guard.ts)",
+  daily: "no uid: Günün okuması, shared by everyone (daily_reading.ts)",
+  levels: "daily/*/levels: shared readings, no uid",
+  stats: "no uid: aggregated daily counters (stats.ts)",
 };
 
 /** Single documents keyed by uid. */

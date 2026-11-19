@@ -16,6 +16,7 @@ import { stubClaude, stubClaudeEnabled } from "./ai_stub.js";
 import * as writing from "./assess_writing.js";
 import * as conversation from "./converse.js";
 import { hasPremium } from "./entitlement.js";
+import * as daily from "./daily_reading.js";
 import * as karne from "./conversation_report.js";
 import * as family from "./family.js";
 import * as league from "./league.js";
@@ -94,6 +95,22 @@ export const settleLeagues = onSchedule(
   async () => {
     const n = await league.settleFinishedWeeks(getFirestore(), new Date());
     logger.info(`settled ${n} league groups`);
+  },
+);
+
+/** "Günün okuması": one reading per CEFR band, written once a day for everyone (daily_reading.ts). */
+export const generateDailyReadings = onSchedule(
+  {
+    schedule: "every day 00:20",
+    timeZone: "Europe/Istanbul",
+    secrets: [anthropicApiKey],
+    timeoutSeconds: 540,
+    retryCount: 2,
+  },
+  async () => {
+    const r = await daily.generateDailyReadings(getFirestore(), claudeClient(), new Date());
+    logger.info("daily_readings", r);
+    if (r.failed.length) throw new Error(`daily readings failed: ${r.failed.join(",")}`);
   },
 );
 
@@ -193,3 +210,6 @@ export const deleteAccount = onCall({ timeoutSeconds: 120 }, async (req) => {
   }
   return result;
 });
+
+// Owner dashboard (admin panel > Panel): functions/src/stats_api.ts.
+export * from "./stats_api.js";

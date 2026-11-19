@@ -104,7 +104,9 @@ class RehearsalHomeScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'Ses kaydın yalnızca telefonunda kalır; sunucuya sadece yazıya dökülmüş metin gider.',
+              'Ses kaydın yalnızca bu telefonda kalır (hesaptan çıkınca silinir); Dilmaç sunucusuna '
+              'sadece yazıya dökülmüş metin gider. Konuşmayı telefonunun konuşma tanıma hizmeti '
+              '(genellikle Google) yazıya çevirir.',
               style: TextStyle(color: p.muted, fontSize: 12),
             ),
           ] else ...[

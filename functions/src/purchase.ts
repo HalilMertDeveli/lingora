@@ -31,6 +31,7 @@ import { HttpsError } from "firebase-functions/v2/https";
 import { inTx, recomputedEntitlement } from "./entitlement.js";
 import { FAMILY_PRODUCT, FAMILY_SEATS } from "./family.js";
 import { PACKAGE_NAME, PlayApi, PlayApiError, SubscriptionAccess, subscriptionAccess } from "./play.js";
+import { countInTx } from "./stats.js";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -225,6 +226,8 @@ export async function syncSubscription(
     const fallback =
       !access.entitled && mine ? await recomputedEntitlement(db, uid, now, inTx(tx), current, null, hash) : undefined;
     const memberFallbacks = await familyFallbacks(tx, db, uid, memberEnts, end, now);
+    // Owner dashboard: each purchase counts once, the first time it gives access.
+    const firstGrant = access.entitled && bound.get("statsCounted") !== true;
 
     tx.set(
       tokenRef,
@@ -238,9 +241,11 @@ export async function syncSubscription(
         entitledUntil: Timestamp.fromMillis(end),
         updatedAt: FieldValue.serverTimestamp(),
         ...(bound.exists ? {} : { createdAt: FieldValue.serverTimestamp() }),
+        ...(firstGrant ? { statsCounted: true } : {}),
       },
       { merge: true },
     );
+    if (firstGrant) countInTx(tx, db, "purchase_verified", now);
 
     const next = applySubscription(tx, db, uid, current, hash, productId, access, now, family, memberEnts, {
       fallback,
@@ -373,6 +378,7 @@ export async function syncPack(
     const entRef = db.doc(`entitlements/${uid}`);
     const current = (await tx.get(entRef)).data();
     const packs = packsOf(current);
+    const firstGrant = state === 0 && bound.get("statsCounted") !== true;
     tx.set(
       tokenRef,
       {
@@ -383,9 +389,11 @@ export async function syncPack(
         purchaseState: state ?? null,
         updatedAt: FieldValue.serverTimestamp(),
         ...(bound.exists ? {} : { createdAt: FieldValue.serverTimestamp() }),
+        ...(firstGrant ? { statsCounted: true } : {}),
       },
       { merge: true },
     );
+    if (firstGrant) countInTx(tx, db, "purchase_verified", now);
     if (state === 0) {
       packs[pack] = true;
       tx.set(
@@ -498,10 +506,12 @@ async function grantTestPurchase(
         productId,
         kind: "test",
         ...(pack ? {} : { entitledUntil: Timestamp.fromMillis(purchased) }),
-        ...(bound.exists ? {} : { createdAt: FieldValue.serverTimestamp() }),
+        ...(bound.exists ? {} : { createdAt: FieldValue.serverTimestamp(), statsCounted: true }),
       },
       { merge: true },
     );
+    // Owner dashboard: each purchase counts once.
+    if (!bound.exists) countInTx(tx, db, "purchase_verified", nowDate);
 
     const packs = packsOf(current);
     if (pack) {

@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/app_resume.dart';
+import 'core/app_update.dart';
 import 'core/frame_stats.dart';
 import 'core/startup_trace.dart';
 import 'data/app_settings.dart';
@@ -23,11 +26,13 @@ import 'services/billing/exam_packs.dart';
 import 'services/billing/premium.dart';
 import 'services/billing/premium_perks.dart';
 import 'services/friends.dart';
+import 'services/growth/funnel_stats.dart';
 import 'services/growth/growth.dart';
 import 'services/league_remote.dart';
 import 'services/rehearsal_cloud.dart';
 import 'services/showcase.dart';
 import 'services/speech.dart';
+import 'services/voice_library.dart';
 import 'theme.dart';
 import 'ui/motion.dart';
 import 'ui/shop_visuals.dart';
@@ -57,6 +62,8 @@ Future<void> main() async {
       child: const LingoraApp(),
     ),
   );
+  // Course audio not in the bundle: downloaded on Wi-Fi, after startup.
+  unawaited(Future<void>.delayed(const Duration(seconds: 8), VoiceLibrary.instance.init));
 }
 
 class LingoraApp extends ConsumerWidget {
@@ -83,6 +90,8 @@ class LingoraApp extends ConsumerWidget {
     ref.listen(rehearsalCloudSyncProvider, (_, _) {});
     // Analytics consent sync + churn signals (no-op without analytics).
     ref.listen(growthSignalsProvider, (_, _) {});
+    // Owner dashboard funnel counters (consent only, no identifiers).
+    ref.listen(funnelStatsProvider, (_, _) {});
     final settings = ref.watch(appSettingsProvider);
     final brightness = switch (settings.theme) {
       ThemePref.light => Brightness.light,
@@ -116,9 +125,12 @@ class LingoraApp extends ConsumerWidget {
           child: MascotOutfitScope(
             accessory: outfit,
             pofuduk: kidOutfit,
-            child: settings.reduceMotion
-                ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
-                : child!,
+            // "Lütfen güncelle" screen / new-version banner (config/app).
+            child: UpdateGate(
+              child: settings.reduceMotion
+                  ? MediaQuery(data: MediaQuery.of(context).copyWith(disableAnimations: true), child: child!)
+                  : child!,
+            ),
           ),
         ),
       ),

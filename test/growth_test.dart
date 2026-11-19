@@ -61,16 +61,28 @@ class FakeRemote implements RemoteConfigSource {
 
 class FakeReferral implements ReferralService {
   final redeemed = <String>[];
+  final inviteDevices = <String?>[];
   String? failWith;
+  InviteStatus status = InviteStatus.none;
+
+  /// What redeem() answers: pending until the first lesson.
+  InviteStatus redeemAs = InviteStatus.pending;
 
   @override
-  Future<InviteInfo> myInvite() async => const InviteInfo(code: 'K7M3QXA', rewardedThisMonth: 2);
+  Future<InviteInfo> myInvite({String? deviceId}) async {
+    inviteDevices.add(deviceId);
+    return const InviteInfo(code: 'K7M3QXA', rewardedThisMonth: 2);
+  }
 
   @override
-  Future<void> redeem(String code, {required String deviceId}) async {
+  Future<InviteStatus> redeem(String code, {required String deviceId}) async {
     if (failWith case final r?) throw ReferralException(r);
     redeemed.add('$code@$deviceId');
+    return status = redeemAs;
   }
+
+  @override
+  Future<InviteStatus> myStatus() async => status;
 }
 
 /// A store whose yearly plan comes with a 7-day free trial.

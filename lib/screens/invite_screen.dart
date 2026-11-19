@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../services/growth/analytics.dart';
 import '../services/growth/referral.dart';
 import '../theme.dart';
+import 'invite_nudge.dart' show shareInvite;
 
 /// "Arkadaşını davet et": the user's code, a share button and a field to
-/// redeem a friend's code. Both sides get 7 days of Premium.
+/// redeem a friend's code. Both sides get 7 days of Premium once the friend
+/// has finished their first lesson (functions/src/referral.ts).
 class InviteScreen extends ConsumerStatefulWidget {
   const InviteScreen({super.key});
 
@@ -21,12 +22,16 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
   Future<InviteInfo>? _info;
   bool _busy = false;
   String? _error;
-  bool _redeemed = false;
+  InviteStatus _status = InviteStatus.none;
 
   @override
   void initState() {
     super.initState();
-    _info = ref.read(referralServiceProvider)?.myInvite();
+    final service = ref.read(referralServiceProvider);
+    _info = service?.myInvite(deviceId: ref.read(installIdProvider));
+    service?.myStatus().then((s) {
+      if (mounted && _status == InviteStatus.none) setState(() => _status = s);
+    }, onError: (Object _) {});
   }
 
   @override
@@ -35,10 +40,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
     super.dispose();
   }
 
-  Future<void> _share(InviteInfo info) async {
-    logEvent(ref, AnalyticsEvent.inviteShare());
-    await SharePlus.instance.share(ShareParams(text: inviteShareText(info), subject: 'Dilmaç daveti'));
-  }
+  Future<void> _share(InviteInfo info) => shareInvite(ref, info);
 
   Future<void> _redeem(ReferralService service) async {
     final code = _code.text.trim();
@@ -48,9 +50,9 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
       _error = null;
     });
     try {
-      await service.redeem(code, deviceId: ref.read(installIdProvider));
+      final status = await service.redeem(code, deviceId: ref.read(installIdProvider));
       logEvent(ref, AnalyticsEvent.inviteRedeem('ok'));
-      if (mounted) setState(() => _redeemed = true);
+      if (mounted) setState(() => _status = status);
     } on ReferralException catch (e) {
       logEvent(ref, AnalyticsEvent.inviteRedeem(e.reason));
       if (mounted) setState(() => _error = e.message);
@@ -85,7 +87,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
             Text('Birlikte öğrenin, ikiniz de kazanın', style: t.titleLarge, textAlign: TextAlign.center),
             const SizedBox(height: 6),
             Text(
-              'Arkadaşın Dilmaç\'a katılıp kodunu girdiğinde ikiniz de 7 gün Premium kazanırsınız. '
+              'Arkadaşın Dilmaç\'a katılıp kodunu girer ve ilk dersini bitirirse ikiniz de 7 gün Premium kazanırsınız. '
               'Ödeme bilgisi istenmez, süre bitince kendiliğinden ücretsiz sürüme dönülür.',
               style: TextStyle(color: Brand.muted, height: 1.35),
               textAlign: TextAlign.center,
@@ -103,8 +105,16 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
               const SizedBox(height: 24),
               Text('Davet kodun mu var?', style: t.titleMedium),
               const SizedBox(height: 8),
-              if (_redeemed)
+              if (_status == InviteStatus.pending)
                 _Box(
+                  key: const ValueKey('invite-pending'),
+                  icon: Icons.hourglass_top_rounded,
+                  color: Brand.successBg,
+                  text: 'Kod kabul edildi! İlk dersini bitirdiğinde ikiniz de 7 gün Premium kazanırsınız.',
+                )
+              else if (_status == InviteStatus.rewarded)
+                _Box(
+                  key: const ValueKey('invite-rewarded'),
                   icon: Icons.celebration_rounded,
                   color: Brand.successBg,
                   text: 'Kod kabul edildi! 7 günlük Premium birkaç saniye içinde hesabına tanımlanır.',
@@ -135,7 +145,9 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
             ],
             const SizedBox(height: 24),
             Text(
-              'Kurallar: Kod yalnızca yeni hesaplarda (ilk 14 gün), hesap ve cihaz başına bir kez kullanılabilir. '
+              'Kurallar: Kod yalnızca yeni hesaplarda (ilk 14 gün), hesap ve cihaz başına bir kez ve davet edenin '
+              'telefonu dışında kullanılabilir. Ödül, arkadaşın ilk dersini bitirince ikinize de tanımlanır; '
+              'süren bir Premium kısalmaz, uzar. '
               'Davet eden kişi ayda en fazla 5 ödül kazanır. Kötüye kullanımda ödüller geri alınabilir.',
               style: TextStyle(color: Brand.muted, fontSize: 12, height: 1.35),
             ),
@@ -211,7 +223,7 @@ class _InviteScreenState extends ConsumerState<InviteScreen> {
 }
 
 class _Box extends StatelessWidget {
-  const _Box({required this.icon, required this.text, this.color});
+  const _Box({super.key, required this.icon, required this.text, this.color});
   final IconData icon;
   final String text;
   final Color? color;
