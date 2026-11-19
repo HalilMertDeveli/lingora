@@ -226,3 +226,16 @@ otomatik doldurmak (`play_install_referrer` paketi).
 6. Firebase Analytics'i Play Console'a bağla (gelir raporları için).
 7. Gizlilik politikasını (`docs/magaza/gizlilik-politikasi.md`) kendi
    bilgilerinle tamamlayıp yayınla ve bağlantısını Play Console'a gir.
+
+## Çökme raporları (Crashlytics) ve değerlendirme isteği
+
+- **Crashlytics** analizle **aynı izne** bağlıdır (`lib/services/growth/crash_reporting.dart`):
+  izin yoksa hiçbir rapor gönderilmez, izin geri alınınca toplama kapanır ve
+  gönderilmemiş raporlar silinir. Analizden tek farkı: giriş yapılmışsa rapora
+  Firebase uid eklenir (`setUserIdentifier`), hatayı hesaptaki sorunla eşleştirmek
+  için. Analytics'te `setUserId` hâlâ hiç çağrılmaz. Yalnızca `prod` derlemede.
+- Non-fatal anahtarları: `billing_load`, `billing_buy`, `billing_restore`,
+  `progress_upload`, `account_delete`, `account`. Yeni anahtar eklerken kullanıcı
+  metni koyma; sabit bir kısa ad kullan.
+- **Değerlendirme isteği** (`review_prompt.dart`) olay göndermez; kuralları
+  `docs/play-store-hazirlik.md` §1'de.

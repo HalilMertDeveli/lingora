@@ -53,8 +53,9 @@ typedef EndStep = Widget Function(VoidCallback next);
 /// is a single pop back to the path: nothing of the lesson stays behind.
 ///
 /// Returns the first push's future (completes when the first step is
-/// replaced or closed).
-Future<void> showEndSequence(NavigatorState nav, List<EndStep> steps) {
+/// replaced or closed). [onDone] runs after the last step closed (e.g. the
+/// review prompt, back on the path).
+Future<void> showEndSequence(NavigatorState nav, List<EndStep> steps, {VoidCallback? onDone}) {
   assert(steps.isNotEmpty);
   var current = 0;
   Route<void> routeFor(int index) => MaterialPageRoute<void>(
@@ -67,6 +68,7 @@ Future<void> showEndSequence(NavigatorState nav, List<EndStep> steps) {
         nav.pushReplacement(routeFor(current));
       } else {
         nav.pop();
+        onDone?.call();
       }
     }),
   );

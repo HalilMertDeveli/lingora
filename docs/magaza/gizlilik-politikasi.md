@@ -12,7 +12,7 @@ yapılacakları ve son sürümde nelerin değiştiğini izler.
 
 - [x] İletişim e-postası: **dilmac.destek@gmail.com** (sayfalara yazıldı).
 - [ ] Hukukçu kontrolü: özellikle yurt dışına aktarım (KVKK m. 9, standart sözleşmenin imzalanıp
-      Kurum'a bildirilmesi) ve Çocuk modu / hedef kitle kararı (`docs/play-store-hazirlik.md` §3).
+      Kurum'a bildirilmesi) ve ebeveyn gözetimli mod / hedef kitle kararı (karar a: 13+) (`docs/play-store-hazirlik.md` §3).
 - [ ] `firebase deploy --project prod --only hosting:yasal`, sonra iki adresi Play Console'a gir.
 
 ## 18 Kasım 2026 sürümünde değişenler (taslağa göre)
@@ -32,4 +32,4 @@ yapılacakları ve son sürümde nelerin değiştiğini izler.
 - Yazma değerlendirmesi, aile paketi ve kurum / okul lisansı (kurumun gördüğü sınırlı özet) eklendi.
 - Telefon numarasıyla giriş, lig ve sıralamada ülke bilgisi eklendi.
 - Saklama süreleri ve silme sonrası kalan kayıtlar (`functions/src/account.ts`) netleşti.
-- Çocuklar: hedef kitle 13+, Çocuk modu ebeveyn gözetiminde.
+- Çocuklar: hedef kitle 13+; ebeveyn gözetimli mod ebeveyn hesabıyla, ebeveyn gözetiminde kullanılır.

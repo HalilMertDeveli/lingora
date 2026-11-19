@@ -27,7 +27,7 @@ const dailyGoals = [
 const dailyGoalPendingKey = 'daily_goal_pending_v1';
 
 /// The one question of the first run: what the learner is here for. It sets
-/// the look (Çocuk modu), the course and the goal card at once; everything
+/// the look (Ebeveyn gözetimli mod, AppMode.kid), the course and the goal card at once; everything
 /// else (account, reminders, daily goal, level test) is asked later, at a
 /// natural moment.
 enum StartGoal {
@@ -35,15 +35,16 @@ enum StartGoal {
   speaking('🗣️', 'Konuşmak / seyahat', 'Günlük konuşma ve yolculuk'),
   exam('📝', 'YDS / YÖKDİL', 'Sınava hazırlık, tarihe göre plan'),
   interview('💼', 'İş görüşmesi', 'Mülakata hazır gir'),
-  lgs('🏫', "LGS'ye hazırlık", 'Ortaokul öğrencisi için, Çocuk modunda'),
-  kid('🧒', 'Çocuğum için', 'Çocuk modu: ebeveynle birlikte, sade ve renkli');
+  lgs('🏫', "LGS'ye hazırlık", '8. sınıf İngilizcesi, sade ve renkli görünüm'),
+  kid('👪', 'Ebeveyn olarak, çocuğumla', 'Ebeveyn hesabıyla, ebeveyn gözetiminde');
 
   const StartGoal(this.emoji, this.title, this.subtitle);
   final String emoji;
   final String title;
   final String subtitle;
 
-  /// LGS and children use Çocuk modu (parent-led; no exam or job goals).
+  /// LGS and the parent-led option use Ebeveyn gözetimli mod (AppMode.kid: no AI,
+  /// no friends, no exam or job goals). Play target audience is 13+ (decision a).
   AppMode get mode => this == lgs || this == kid ? AppMode.kid : AppMode.adult;
 
   LearnReason get reason => switch (this) {

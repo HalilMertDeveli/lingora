@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/legacy_emoji.dart';
+
 /// The 52-week YDS programme (assets/plans/yds_1_yil.json, written by
 /// yds-arastirma from docs/sinav/yds-1-yil.md).
 
@@ -196,4 +198,4 @@ Future<YearPlan?> loadYearPlan(AssetBundle bundle) async {
   }
 }
 
-final yearPlanProvider = FutureProvider<YearPlan?>((ref) => loadYearPlan(rootBundle));
+final yearPlanProvider = FutureProvider<YearPlan?>((ref) => loadYearPlan(appBundle));

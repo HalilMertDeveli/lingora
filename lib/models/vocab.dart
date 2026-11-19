@@ -2,6 +2,8 @@
 /// (assets/vocab/software.json, written for Dilmaç).
 library;
 
+import '../core/emoji_compat.dart';
+
 /// Where an example sentence would appear in a developer's working day.
 enum VocabContext {
   kodYorumu('kod_yorumu', 'Kod yorumu', '💬'),
@@ -17,10 +19,13 @@ enum VocabContext {
   akademik('akademik', 'Akademik metin', '📚'),
   haber('haber', 'Haber', '📰');
 
-  const VocabContext(this.key, this.label, this.emoji);
+  const VocabContext(this.key, this.label, this._emoji);
   final String key;
   final String label;
-  final String emoji;
+  final String _emoji;
+
+  /// Safe on Android 7–9 (see emoji_compat.dart).
+  String get emoji => legacyEmoji(_emoji);
 
   /// Sentences written in the team's tools: commits, reviews and tickets.
   bool get isWritten => this == commit || this == pr || this == ticket;

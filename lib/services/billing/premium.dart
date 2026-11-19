@@ -9,6 +9,7 @@ import '../../core/app_resume.dart';
 import '../../data/progress.dart';
 import '../../kurum/kurum.dart' show licensePremiumProvider;
 import '../growth/analytics.dart';
+import '../growth/crash_reporting.dart';
 import 'billing_service.dart';
 import 'entitlement_backend.dart';
 import 'iap_billing_service.dart';
@@ -197,7 +198,8 @@ class PremiumController extends Notifier<PremiumState> {
       final available = await _billing.isAvailable();
       final products = available ? await _billing.loadProducts(PremiumPlan.ids) : const <StoreProduct>[];
       state = state.copyWith(storeAvailable: available && products.isNotEmpty, products: products);
-    } on Object catch (e) {
+    } on Object catch (e, st) {
+      CrashReporter.nonFatal(e, st, reason: 'billing_load');
       state = state.copyWith(storeAvailable: false, error: () => _describe(e));
     }
   }
@@ -207,7 +209,8 @@ class PremiumController extends Notifier<PremiumState> {
     state = state.copyWith(busy: true, error: () => null, message: () => null, justPurchased: false);
     try {
       await _billing.buy(plan.id);
-    } on Object catch (e) {
+    } on Object catch (e, st) {
+      CrashReporter.nonFatal(e, st, reason: 'billing_buy');
       state = state.copyWith(busy: false, error: () => _describe(e));
     }
   }
@@ -229,7 +232,8 @@ class PremiumController extends Notifier<PremiumState> {
           message: () => 'Bu Google hesabında geri yüklenecek aktif abonelik bulunamadı.',
         );
       }
-    } on Object catch (e) {
+    } on Object catch (e, st) {
+      CrashReporter.nonFatal(e, st, reason: 'billing_restore');
       state = state.copyWith(busy: false, error: () => _describe(e));
     } finally {
       _restoring = false;

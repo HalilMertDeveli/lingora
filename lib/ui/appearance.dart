@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/app_settings.dart';
 import '../theme.dart';
 
-/// Profil > Görünüm: Çocuk modu switch and light/dark choice.
+/// Profil > Görünüm: Ebeveyn gözetimli mod (AppMode.kid) switch and light/dark choice.
 class AppearanceSettings extends ConsumerWidget {
   const AppearanceSettings({super.key});
 
@@ -21,8 +21,12 @@ class AppearanceSettings extends ConsumerWidget {
           SwitchListTile(
             key: const ValueKey('kid-mode-switch'),
             contentPadding: EdgeInsets.zero,
-            title: Text('Çocuk modu', style: t.titleMedium),
-            subtitle: Text('Maskot, emojiler ve kutlamalarla daha eğlenceli görünüm.', style: t.bodySmall),
+            title: Text('Ebeveyn gözetimli mod', style: t.titleMedium),
+            subtitle: Text(
+              'Ebeveyn hesabıyla, çocuğunla birlikte kullanım için: maskotlu renkli görünüm; '
+              'arkadaş ekleme ve yapay zekâ özellikleri kapalı.',
+              style: t.bodySmall,
+            ),
             value: s.isKid,
             onChanged: (v) => n.setMode(v ? AppMode.kid : AppMode.adult),
           ),

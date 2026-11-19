@@ -1,5 +1,6 @@
 import 'package:flutter/painting.dart';
 
+import '../core/emoji_compat.dart';
 import 'wallet.dart';
 
 /// Mağaza categories, in tab order.
@@ -29,7 +30,7 @@ enum ShopCategory {
     avatar => 'Profilin, üst bar, ders sonu, lig satırın ve arkadaşlarının listesi',
     frame => 'Avatarının ya da fotoğrafının çevresinde: profil, üst bar, ders sonu, lig ve arkadaşlar',
     mascot => 'Çaycı Dayı\'nın göründüğü her yer (yetişkin modu)',
-    pofuduk => 'Pofuduk\'un göründüğü her yer (Çocuk modu)',
+    pofuduk => 'Pofuduk\'un göründüğü her yer (ebeveyn gözetimli mod)',
     theme => 'Bütün uygulama: butonlar, seçimler ve vurgular',
     freeze => 'Bir gün çalışamazsan serini otomatik korur',
   };
@@ -55,8 +56,11 @@ enum FrameMotion { none, spin, pulse }
 /// Where a mascot accessory sits on the Çaycı Dayı tile (fractions of its
 /// side) and how big it is.
 class MascotAccessory {
-  const MascotAccessory(this.emoji, this.x, this.y, this.size);
-  final String emoji;
+  const MascotAccessory(this._emoji, this.x, this.y, this.size);
+  final String _emoji;
+
+  /// Safe on Android 7–9 (see emoji_compat.dart).
+  String get emoji => legacyEmoji(_emoji);
   final double x;
   final double y;
   final double size;
@@ -87,7 +91,7 @@ class ShopItem {
     required this.category,
     required this.name,
     required this.price,
-    this.emoji,
+    String? emoji,
     this.frame,
     this.accessory,
     this.accent,
@@ -95,7 +99,9 @@ class ShopItem {
     Rarity? rarity,
     // Named parameters cannot be private.
     // ignore: prefer_initializing_formals
-  }) : _rarity = rarity;
+  }) : _rarity = rarity,
+       // ignore: prefer_initializing_formals
+       _emoji = emoji;
 
   final Rarity? _rarity;
 
@@ -120,8 +126,10 @@ class ShopItem {
   /// Gold; 0 means everyone has it from the start.
   final int price;
 
-  /// Avatar face / freeze icon.
-  final String? emoji;
+  final String? _emoji;
+
+  /// Avatar face / freeze icon (safe on Android 7–9, see emoji_compat.dart).
+  String? get emoji => _emoji == null ? null : legacyEmoji(_emoji);
   final FrameStyle? frame;
   final MascotAccessory? accessory;
   final ThemeAccent? accent;

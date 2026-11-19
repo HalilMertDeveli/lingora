@@ -1,6 +1,7 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/app_settings.dart';
 import '../data/rehearsal.dart';
 import 'conversation.dart' show CallableConversationService, CallableInvoker, aiGuardMessage, aiInvoker;
 import 'firebase/firebase_providers.dart';
@@ -331,6 +332,8 @@ class DemoRehearsalService implements RehearsalService {
 
 /// The analysis service: the Cloud Function when signed in, else the demo.
 final rehearsalServiceProvider = Provider<RehearsalService>((ref) {
+  // Ebeveyn gözetimli modda yapay zekâ özellikleri kapalı (yalnızca hazır senaryo).
+  if (ref.watch(appSettingsProvider.select((s) => s.isKid))) return DemoRehearsalService();
   final functions = ref.watch(functionsProvider);
   if (functions == null || ref.watch(currentUidProvider) == null) return DemoRehearsalService();
   return CallableRehearsalService.firebase(functions, installId: ref.read(installIdProvider));

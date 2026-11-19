@@ -10,6 +10,7 @@ import '../services/billing/premium.dart';
 import '../services/billing/premium_perks.dart';
 import '../services/growth/analytics.dart';
 import '../services/growth/remote_flags.dart';
+import '../services/growth/review_prompt.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
@@ -132,6 +133,8 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     _pacer = ref.read(paywallPacerProvider);
     _variant = ref.read(remoteFlagsProvider).paywallVariant;
     _wasPremium = ref.read(premiumProvider);
+    // No review prompt right after a paywall.
+    ref.read(reviewPolicyProvider).markPaywall(ref.read(clockProvider)());
     if (!_wasPremium) {
       _analytics.log(AnalyticsEvent.paywallView(placement: widget.resolvedPlacement, variant: _variant));
     }
