@@ -164,6 +164,8 @@ Future<void> main(List<String> args) async {
   final overflowDir = overflowPath == null ? null : Directory(overflowPath);
   final overflowIndexFile = overflowDir == null ? null : File('${overflowDir.path}/index.json');
   final overflowIndex = overflowIndexFile == null ? <String, String>{} : _readIndex(overflowIndexFile);
+  // Recordings moved out of the app bundle by tool/voice_manifest.dart.
+  final downloadIndex = _readIndex(File('voice/index.json'));
   final regenDone = File('.dart_tool/voice_regen_done.txt');
   final done = regen && regenDone.existsSync() ? regenDone.readAsLinesSync().toSet() : <String>{};
 
@@ -183,7 +185,7 @@ Future<void> main(List<String> args) async {
       final k = voiceKey(key);
       if (index.containsKey(k)) {
         if (regen && !done.contains(k)) again.putIfAbsent(key, () => value);
-      } else if (!overflowIndex.containsKey(k) && (all || wanted.contains(u['id']))) {
+      } else if (!overflowIndex.containsKey(k) && !downloadIndex.containsKey(k) && (all || wanted.contains(u['id']))) {
         todo.putIfAbsent(key, () => value);
         unitOf.putIfAbsent(key, () => u['id'] as String);
       }
