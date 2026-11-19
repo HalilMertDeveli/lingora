@@ -14,6 +14,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { readFileSync } from "node:fs";
 
 import type { ClaudeClient } from "./converse.js";
+import type { TtsClient } from "./tts.js";
 
 export type StubMode = "ok" | "busy" | "apierr" | "crash" | "refuse" | "slow";
 const MODES: StubMode[] = ["ok", "busy", "apierr", "crash", "refuse", "slow"];
@@ -95,6 +96,53 @@ export function pickMode(text: string, file: string | undefined): StubMode {
   return "ok";
 }
 
+/**
+ * Fake neural voice for the emulator (same opt-in as the fake Claude): a
+ * silent MP3 as long as the sentence would take to say, after
+ * LINGORA_TTS_STUB_MS of pretend synthesis time.
+ */
+export function stubTts(
+  env: NodeJS.ProcessEnv = process.env,
+  sleep: (ms: number) => Promise<void> = (ms) => new Promise((r) => setTimeout(r, ms)),
+): TtsClient {
+  // One MPEG-1 Layer III frame, 128 kbps, 44.1 kHz, mono, all-zero data: 26 ms of silence.
+  const frame = Buffer.alloc(417);
+  frame.set([0xff, 0xfb, 0x90, 0xc4]);
+  return {
+    async synthesize(req) {
+      const delay = Number(env.LINGORA_TTS_STUB_MS ?? 0) || 0;
+      if (delay) await sleep(delay);
+      const frames = Math.max(10, Math.round((req.text.length / 14 / req.rate) * 38));
+      return Buffer.concat(Array.from({ length: frames }, () => frame));
+    },
+  };
+}
+
+/**
+ * A streamed answer (talk.ts): the JSON in small text deltas. With
+ * LINGORA_AI_STUB_DELAY_MS the first delta waits that long (time to first
+ * token) and later ones a tenth of it, to try the app's timing on a phone.
+ */
+async function* streamOf(
+  json: string,
+  refuse: boolean,
+  env: NodeJS.ProcessEnv,
+  sleep: (ms: number) => Promise<void>,
+): AsyncGenerator<Record<string, unknown>> {
+  const delay = Number(env.LINGORA_AI_STUB_DELAY_MS ?? 0) || 0;
+  yield { type: "message_start", message: { id: "msg_stub", content: [] } };
+  if (!refuse) {
+    yield { type: "content_block_start", index: 0, content_block: { type: "text", text: "" } };
+    for (let i = 0; i < json.length; i += 12) {
+      if (delay) await sleep(i === 0 ? delay : Math.round(delay / 10));
+      yield { type: "content_block_delta", index: 0, delta: { type: "text_delta", text: json.slice(i, i + 12) } };
+    }
+    yield { type: "content_block_stop", index: 0 };
+  }
+  yield { type: "message_delta", delta: { stop_reason: refuse ? "refusal" : "end_turn" }, usage: { output_tokens: 0 } };
+  yield { type: "message_stop" };
+}
+
 /** The fake client. [sleep] is injectable so tests do not wait. */
 export function stubClaude(
   env: NodeJS.ProcessEnv = process.env,
@@ -115,6 +163,7 @@ export function stubClaude(
     }
     const format = (params.output_config as { format?: { schema?: Schema } } | undefined)?.format;
     const body = sampleFromSchema(format?.schema ?? { type: "object", properties: { reply: { type: "string" } } });
+    if (params.stream === true) return streamOf(JSON.stringify(body), mode === "refuse", env, sleep);
     return {
       id: "msg_stub",
       type: "message",

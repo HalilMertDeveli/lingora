@@ -11,7 +11,7 @@ import { onMessagePublished } from "firebase-functions/v2/pubsub";
 import { onSchedule } from "firebase-functions/v2/scheduler";
 
 import * as account from "./account.js";
-import { stubClaude, stubClaudeEnabled } from "./ai_stub.js";
+import { stubClaude, stubClaudeEnabled, stubTts } from "./ai_stub.js";
 import * as writing from "./assess_writing.js";
 import * as conversation from "./converse.js";
 import * as daily from "./daily_reading.js";
@@ -22,6 +22,8 @@ import * as play from "./play.js";
 import * as purchase from "./purchase.js";
 import * as rehearsal from "./rehearsal.js";
 import * as speaking from "./speaking_stats.js";
+import * as talking from "./talk.js";
+import * as tts from "./tts.js";
 
 initializeApp();
 setGlobalOptions({ region: "europe-west1", maxInstances: 10 });
@@ -91,6 +93,34 @@ export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 
   const uid = requireUid(req);
   return conversation.converse(getFirestore(), claudeClient(), uid, req.data, new Date());
 });
+
+let ttsClient: tts.TtsClient | undefined;
+/** Google Cloud TTS (Chirp 3 HD), or the silent fake inside the emulator with LINGORA_AI_STUB=1. */
+function textToSpeech(): tts.TtsClient {
+  ttsClient ??= stubClaudeEnabled() ? stubTts() : tts.googleTts();
+  return ttsClient;
+}
+
+/**
+ * Doğal konuşma (talk.ts), a streaming callable: { scenarioId | mode: "free" |
+ * characterId, topic?, level?, goal?, voice?, messages } -> chunks { type:
+ * "sentence", i, text, audio } then { reply, correction, tip_tr, done,
+ * remaining, free, voice, talkSecondsLeft, timing }.
+ */
+export const talk = onCall(
+  { secrets: [anthropicApiKey], timeoutSeconds: 90, memory: "512MiB", concurrency: 40 },
+  (req, res) => {
+    const uid = requireUid(req);
+    if ((req.data as { warm?: unknown } | null)?.warm === true) return talking.warmTalk(claudeClient(), textToSpeech());
+    const send = req.acceptsStreaming ? (c: talking.TalkSentence) => res?.sendChunk(c) : null;
+    return talking.talk(getFirestore(), claudeClient(), textToSpeech(), uid, req.data, new Date(), send);
+  },
+);
+
+/** { text, voice?, rate? } -> { audio: base64 MP3 | null, cached, reason? } (Premium neural voice) */
+export const speak = onCall({ timeoutSeconds: 30, concurrency: 40 }, (req) =>
+  tts.speak(getFirestore(), textToSpeech(), requireUid(req), req.data, new Date()),
+);
 
 /** { scenarioId, messages, pronunciation } -> { mistakes, summary_tr, weak_words, remaining } (voice coach karne) */
 export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, async (req) => {
