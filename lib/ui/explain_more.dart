@@ -153,6 +153,7 @@ class _ExplainMoreBoxState extends ConsumerState<ExplainMoreBox> {
                 hintText: 'Bu soruyla ilgili ne sormak istersin?',
                 isDense: true,
                 suffixIcon: IconButton(
+                  tooltip: 'Gönder',
                   key: const Key('explain-send'),
                   icon: const Icon(Icons.send_rounded),
                   onPressed: _asking ? null : () => _ask(ExplainMode.question),

@@ -662,18 +662,24 @@ class _TapCardState extends State<TapCard> {
       ),
       boxShadow: softShadow(p, pressed: _down, lift: tappable ? 1 : 0.5),
     );
-    return JellyPress(
-      amount: 0.35,
-      onTap: widget.onTap,
-      onDown: (v) {
-        if (v != _down) setState(() => _down = v);
-      },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 120),
-        decoration: deco,
-        padding: widget.padding,
-        // Lets ListTiles inside paint their ink above the card colour.
-        child: Material(type: MaterialType.transparency, child: widget.child),
+    // The picked card is told apart by its border colour only: say it to
+    // TalkBack too ("seçili").
+    return Semantics(
+      selected: widget.selected ? true : null,
+      button: tappable ? true : null,
+      child: JellyPress(
+        amount: 0.35,
+        onTap: widget.onTap,
+        onDown: (v) {
+          if (v != _down) setState(() => _down = v);
+        },
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 120),
+          decoration: deco,
+          padding: widget.padding,
+          // Lets ListTiles inside paint their ink above the card colour.
+          child: Material(type: MaterialType.transparency, child: widget.child),
+        ),
       ),
     );
   }

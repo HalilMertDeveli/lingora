@@ -63,7 +63,7 @@ class _MatchExerciseState extends ConsumerState<MatchExercise> {
     }
   }
 
-  Widget _cell(String text, int pair, {required bool isLeft}) {
+  Widget _cell(String text, int pair, {required bool isLeft, required double textWidth}) {
     final matched = _matched.contains(pair);
     final selected = isLeft ? _selLeft == pair : _selRight == pair;
     final wrong = _wrong != null && (isLeft ? _wrong!.$1 == pair : _wrong!.$2 == pair);
@@ -88,16 +88,22 @@ class _MatchExerciseState extends ConsumerState<MatchExercise> {
               child: ConstrainedBox(
                 constraints: const BoxConstraints(minHeight: 28),
                 child: Center(
-                  child: Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: wrong ? Brand.error : Brand.ink,
-                    ),
+                  child: Builder(
+                    builder: (context) {
+                      final style = TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: wrong ? Brand.error : Brand.ink,
+                      );
+                      return Text(
+                        text,
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        textScaler: wholeWordScaler(context, text, style, textWidth),
+                        style: style,
+                      );
+                    },
                   ),
                 ),
               ),
@@ -115,18 +121,33 @@ class _MatchExerciseState extends ConsumerState<MatchExercise> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const ExerciseTitle('Eşleri bul'),
-        // One row per line so a two-line card makes its neighbour just as tall.
-        for (var k = 0; k < _left.length; k++)
-          IntrinsicHeight(
-            child: Row(
+        LayoutBuilder(
+          builder: (context, box) {
+            // Card width less its padding (14) and selected border (2) on each side.
+            final textWidth = (box.maxWidth - 12) / 2 - 32;
+            return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Expanded(child: _cell(pairs[_left[k]].$1, _left[k], isLeft: true)),
-                const SizedBox(width: 12),
-                Expanded(child: _cell(pairs[_right[k]].$2, _right[k], isLeft: false)),
+                // One row per line so a two-line card makes its neighbour just as tall.
+                for (var k = 0; k < _left.length; k++)
+                  IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          child: _cell(pairs[_left[k]].$1, _left[k], isLeft: true, textWidth: textWidth),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _cell(pairs[_right[k]].$2, _right[k], isLeft: false, textWidth: textWidth),
+                        ),
+                      ],
+                    ),
+                  ),
               ],
-            ),
-          ),
+            );
+          },
+        ),
       ],
     );
   }

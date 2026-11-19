@@ -230,24 +230,23 @@ class TodayStartCard extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
+            // Side by side when they fit; the count drops under the title
+            // otherwise (the largest font broke "yapacağı / m?", QA).
+            Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 8,
               children: [
-                Expanded(
-                  child: Text(
-                    seq.allDone
-                        ? (kid ? 'Bugünlük tamam! 🎉' : 'Bugünlük tamam')
-                        : (kid ? 'Bugün ne yapalım?' : 'Bugün ne yapacağım?'),
-                    style: t.titleMedium,
-                  ),
+                Text(
+                  seq.allDone
+                      ? (kid ? 'Bugünlük tamam! 🎉' : 'Bugünlük tamam')
+                      : (kid ? 'Bugün ne yapalım?' : 'Bugün ne yapacağım?'),
+                  style: t.titleMedium,
                 ),
-                const SizedBox(width: 8),
-                Flexible(
-                  child: Text(
-                    '${seq.doneCount}/${seq.steps.length}${seq.allDone ? '' : ' · ~${seq.minutesLeft} dk'}',
-                    key: const Key('today-progress'),
-                    textAlign: TextAlign.end,
-                    style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800),
-                  ),
+                Text(
+                  '${seq.doneCount}/${seq.steps.length}${seq.allDone ? '' : ' · ~${seq.minutesLeft} dk'}',
+                  key: const Key('today-progress'),
+                  style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800),
                 ),
               ],
             ),

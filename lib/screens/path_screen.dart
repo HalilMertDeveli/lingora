@@ -1071,22 +1071,27 @@ class _UnitMap extends StatelessWidget {
                           },
                         ),
                         const SizedBox(height: 4),
+                        // The node above is the button TalkBack reads (with this
+                        // title); the caption is a second, small touch area only.
                         GestureDetector(
                           behavior: HitTestBehavior.opaque,
+                          excludeFromSemantics: true,
                           onTap: () => onNode(node, state),
-                          child: Text(
-                            node.title,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: active ? FontWeight.w800 : FontWeight.w600,
-                              color: switch (state) {
-                                NodeState.active => color,
-                                NodeState.done => Brand.ink,
-                                NodeState.locked => Brand.muted,
-                              },
+                          child: ExcludeSemantics(
+                            child: Text(
+                              node.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: active ? FontWeight.w800 : FontWeight.w600,
+                                color: switch (state) {
+                                  NodeState.active => color,
+                                  NodeState.done => Brand.ink,
+                                  NodeState.locked => Brand.muted,
+                                },
+                              ),
                             ),
                           ),
                         ),

@@ -47,17 +47,24 @@ class NaturalTalkSection extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 10),
-        SizedBox(
-          height: 128,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              for (final c in charactersFor(goal))
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: _CharacterCard(character: c),
-                ),
-            ],
+        // As tall as the tallest card needs (at least the old 128): a fixed
+        // height cut the names at the largest font (QA, 69 dp overflow).
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (final c in charactersFor(goal))
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(minHeight: 128),
+                      child: _CharacterCard(character: c),
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: 10),
@@ -94,11 +101,15 @@ class _CharacterCard extends ConsumerWidget {
                 InkResponse(
                   key: Key('character-voice-${c.id}'),
                   onTap: () => showVoiceSettingsSheet(context, character: c),
-                  child: Icon(
-                    Icons.graphic_eq_rounded,
-                    size: 20,
-                    color: Brand.muted,
-                    semanticLabel: 'Ses seç',
+                  // A 48 dp target around the small icon.
+                  child: Padding(
+                    padding: const EdgeInsets.all(14),
+                    child: Icon(
+                      Icons.graphic_eq_rounded,
+                      size: 20,
+                      color: Brand.muted,
+                      semanticLabel: 'Ses seç',
+                    ),
                   ),
                 ),
               ],

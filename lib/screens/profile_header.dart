@@ -147,39 +147,42 @@ class ProfileHeader extends ConsumerWidget {
     final choice = await showModalBottomSheet<String>(
       context: context,
       showDragHandle: true,
+      isScrollControlled: true,
       builder: (c) => SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              key: const ValueKey('avatar-gallery'),
-              leading: const Icon(Icons.photo_library_rounded),
-              title: const Text('Galeriden seç'),
-              onTap: () => Navigator.pop(c, 'gallery'),
-            ),
-            ListTile(
-              key: const ValueKey('avatar-camera'),
-              leading: const Icon(Icons.photo_camera_rounded),
-              title: const Text('Fotoğraf çek'),
-              onTap: () => Navigator.pop(c, 'camera'),
-            ),
-            if (hasPhoto)
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
               ListTile(
-                key: const ValueKey('avatar-remove'),
-                leading: Icon(Icons.delete_outline_rounded, color: Brand.error),
-                title: Text('Fotoğrafı kaldır', style: TextStyle(color: Brand.error)),
-                onTap: () => Navigator.pop(c, 'remove'),
+                key: const ValueKey('avatar-gallery'),
+                leading: const Icon(Icons.photo_library_rounded),
+                title: const Text('Galeriden seç'),
+                onTap: () => Navigator.pop(c, 'gallery'),
               ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 4, 16, 12),
-              child: Text(
-                account
-                    ? 'Fotoğrafın hesabına kaydedilir; arkadaşların ve diğer telefonların görür.'
-                    : 'Misafir olarak fotoğrafın yalnızca bu cihazda kalır.',
-                style: TextStyle(color: Brand.muted, fontSize: 12),
+              ListTile(
+                key: const ValueKey('avatar-camera'),
+                leading: const Icon(Icons.photo_camera_rounded),
+                title: const Text('Fotoğraf çek'),
+                onTap: () => Navigator.pop(c, 'camera'),
               ),
-            ),
-          ],
+              if (hasPhoto)
+                ListTile(
+                  key: const ValueKey('avatar-remove'),
+                  leading: Icon(Icons.delete_outline_rounded, color: Brand.error),
+                  title: Text('Fotoğrafı kaldır', style: TextStyle(color: Brand.error)),
+                  onTap: () => Navigator.pop(c, 'remove'),
+                ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 12),
+                child: Text(
+                  account
+                      ? 'Fotoğrafın hesabına kaydedilir; arkadaşların ve diğer telefonların görür.'
+                      : 'Misafir olarak fotoğrafın yalnızca bu cihazda kalır.',
+                  style: TextStyle(color: Brand.muted, fontSize: 12),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
