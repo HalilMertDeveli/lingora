@@ -73,6 +73,13 @@ class ExamPackState {
 class ExamPackController extends Notifier<ExamPackState> {
   static const _cacheKey = 'packs.owned';
 
+  /// Packs granted on the store's word while the server was unreachable;
+  /// kept until the server confirms or revokes them.
+  static const _unverifiedKey = 'packs.unverified';
+
+  Set<String> get _unverified => {...?ref.read(prefsProvider).getStringList(_unverifiedKey)};
+  set _unverified(Set<String> s) => ref.read(prefsProvider).setStringList(_unverifiedKey, s.toList()..sort());
+
   BillingService get _billing => ref.read(billingServiceProvider);
   bool _restoring = false;
   bool _restoredSomething = false;
@@ -182,6 +189,7 @@ class ExamPackController extends Notifier<ExamPackState> {
       try {
         final e = await backend.verify(productId: pack.id, purchaseToken: p.token!);
         if (!ref.mounted) return;
+        if (e.packs.contains(pack.examId)) _unverified = _unverified..remove(pack.examId);
         if (!e.packs.contains(pack.examId)) {
           _fail(
             pack,
@@ -200,6 +208,7 @@ class ExamPackController extends Notifier<ExamPackState> {
         return;
       } on Object {
         // Server unreachable: trust the store; the next restore re-verifies.
+        _unverified = _unverified..add(pack.examId);
       }
     }
     if (!ref.mounted) return;
@@ -222,11 +231,19 @@ class ExamPackController extends Notifier<ExamPackState> {
 
   void _onServer(ServerEntitlement? e) {
     if (e == null) return;
-    // The server is authoritative once it has seen packs (refunds remove
-    // them); a document without any pack doesn't wipe a store-only grant
-    // that hasn't been verified yet.
-    if (e.packs.isEmpty) return;
-    _setOwned({...e.packs.where((k) => ExamPack.values.any((p) => p.examId == k))});
+    // The server's pack list is authoritative whenever it sent one, even an
+    // empty one (the last pack refunded). A document without a pack list
+    // (e.g. Premium only) changes nothing.
+    if (!e.packsKnown) return;
+    final server = {...e.packs.where((k) => ExamPack.values.any((p) => p.examId == k))};
+    // Store-only grants the server has not seen yet stay until it confirms
+    // or revokes them.
+    final waiting = {
+      for (final k in _unverified)
+        if (!server.contains(k) && !e.packsRevoked.contains(k)) k,
+    };
+    _unverified = waiting;
+    _setOwned({...server, ...waiting});
   }
 
   static String _describe(Object e) =>

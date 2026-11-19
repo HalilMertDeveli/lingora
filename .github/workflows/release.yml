@@ -1,4 +1,4 @@
-name: Release APK
+name: Release (AAB + APK)
 
 on:
   push:
@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   apk:
-    name: Build release APK
+    name: Build release AAB and APK
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -44,16 +44,30 @@ jobs:
 
       - run: flutter pub get
 
-      # Gerçek imza anahtarı eklendiğinde (README > "Sürüm imzalama") bu adım
-      # ANDROID_KEYSTORE_BASE64 secret'ından key.properties üretir. Secret yoksa
-      # build.gradle.kts'teki debug imzası kullanılır.
-      - name: Prepare signing (optional)
+      # ANDROID_KEYSTORE_BASE64 secret'ından key.properties üretir (README >
+      # "Sürüm imzalama"). Sürüm etiketinde (v*) dört secret'ın hepsi ŞART: biri
+      # eksikse iş burada başarısız olur, debug imzalı paket yayınlanmaz. main'de
+      # ve elle çalıştırmada secret yoksa debug imzalı test paketi derlenir.
+      - name: Prepare signing
         env:
+          IS_RELEASE_TAG: ${{ startsWith(github.ref, 'refs/tags/v') }}
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
+          missing=""
+          for v in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD; do
+            [ -n "${!v}" ] || missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then
+            if [ "$IS_RELEASE_TAG" = "true" ]; then
+              echo "::error::Sürüm etiketi için imza secret'ları eksik:$missing. Debug imzalı sürüm yayınlanmaz."
+              exit 1
+            fi
+            echo "::warning::İmza secret'ları eksik:$missing; debug imzalı TEST paketi derleniyor (Play'e yüklenemez)."
+            exit 0
+          fi
           if [ -n "$ANDROID_KEYSTORE_BASE64" ]; then
             echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
             {
@@ -63,19 +77,33 @@ jobs:
               echo "keyPassword=$ANDROID_KEY_PASSWORD"
             } > android/key.properties
             echo "Release keystore hazır."
-          else
-            echo "Keystore secret'ı yok; debug imzasıyla derleniyor."
           fi
 
-      - name: Build APK
+      - name: Build AAB (Google Play)
+        run: flutter build appbundle --release
+
+      - name: Build APK (sideload test)
         run: flutter build apk --release
+
+      # Etikette paketin gerçekten yükleme anahtarıyla imzalandığını doğrula.
+      - name: Verify release signature
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          cert=$(keytool -printcert -jarfile build/app/outputs/bundle/release/app-release.aab)
+          echo "$cert" | head -5
+          if [ -z "$cert" ] || echo "$cert" | grep -qE "CN=Android Debug|Not a signed jar"; then
+            echo "::error::AAB yükleme anahtarıyla imzalanmamış (debug ya da imzasız)."
+            exit 1
+          fi
 
       - name: Name APK
         id: apk
         run: |
           name="lingora-${GITHUB_REF_NAME//\//-}-${GITHUB_SHA::7}.apk"
           cp build/app/outputs/flutter-apk/app-release.apk "$name"
+          cp build/app/outputs/bundle/release/app-release.aab "${name%.apk}.aab"
           echo "path=$name" >> "$GITHUB_OUTPUT"
+          echo "aab=${name%.apk}.aab" >> "$GITHUB_OUTPUT"
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v7
@@ -85,9 +113,19 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: lingora-aab
+          path: ${{ steps.apk.outputs.aab }}
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v3
         with:
-          files: ${{ steps.apk.outputs.path }}
+          files: |
+            ${{ steps.apk.outputs.path }}
+            ${{ steps.apk.outputs.aab }}
           generate_release_notes: true

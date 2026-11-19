@@ -418,8 +418,11 @@ void main() {
       expect(c.read(progressProvider).completed, isEmpty);
       final doc = (await db.doc('users/u2').get()).data()!;
       expect(doc['totalXp'], 0, reason: "u1's XP and gold are not copied into u2");
-      // u1 itself is untouched.
-      expect((await db.doc('users/u1').get()).data()!['progress'], remoteProgress);
+      // u1 itself keeps its progress (the first sync only adds the tally).
+      final u1 = (await db.doc('users/u1').get()).data()!['progress'] as Map<String, dynamic>;
+      expect(u1['totalXp'], 300);
+      expect(u1['completed'], {'cloud': 1});
+      expect(u1['dailyGoal'], 50);
     });
 
     test('signing out stops syncing and keeps the phone data', () async {
