@@ -190,6 +190,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       borderRadius: BorderRadius.circular(8),
                       child: LinearProgressIndicator(
                         value: (_page + 1) / _totalSteps,
+                        // TalkBack read a bare "33" here.
+                        semanticsLabel: 'Adım ${_page + 1} / $_totalSteps',
                         minHeight: Brand.isKid ? 10 : 6,
                         backgroundColor: Brand.line,
                       ),

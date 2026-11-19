@@ -353,6 +353,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
               child: Row(
                 children: [
                   IconButton(
+                    tooltip: 'Kapat',
                     icon: Icon(Icons.close, color: Brand.muted),
                     onPressed: () => Navigator.pop(context),
                   ),
@@ -520,8 +521,10 @@ class _WordListScreenState extends ConsumerState<WordListScreen> {
 void showNoteWordSheet(BuildContext context, WidgetRef ref, NoteWord w) => showModalBottomSheet<void>(
   context: context,
   showDragHandle: true,
+  // Grows and scrolls at the largest font instead of cutting its end off.
+  isScrollControlled: true,
   builder: (sheet) => SafeArea(
-    child: Padding(
+    child: SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -531,6 +534,7 @@ void showNoteWordSheet(BuildContext context, WidgetRef ref, NoteWord w) => showM
             children: [
               Expanded(child: Text(w.en, style: Theme.of(sheet).textTheme.headlineSmall)),
               IconButton.filledTonal(
+                tooltip: 'Dinle',
                 onPressed: () => ref.read(speechProvider).say(w.en),
                 icon: const Icon(Icons.volume_up_rounded),
               ),

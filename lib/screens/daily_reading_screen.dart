@@ -256,7 +256,16 @@ class _ReadingBodyState extends ConsumerState<_ReadingBody> {
                   _ => null,
                 },
                 onTap: () => _pick(qi, oi),
-                child: Text(o),
+                // Right / wrong also as an icon, not by the background colour alone.
+                child: Row(
+                  children: [
+                    Expanded(child: Text(o)),
+                    if (_picked[qi] != null && oi == q.answer)
+                      Icon(Icons.check_circle_rounded, color: Brand.success, size: 20, semanticLabel: 'Doğru')
+                    else if (_picked[qi] == oi)
+                      Icon(Icons.cancel_rounded, color: Brand.error, size: 20, semanticLabel: 'Yanlış'),
+                  ],
+                ),
               ),
             ),
           if (_picked.containsKey(qi) && q.explanationTr.isNotEmpty)

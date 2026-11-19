@@ -123,37 +123,65 @@ class SectionHeader extends ConsumerWidget {
                   // "Bölümü atla": the summary explains the exam and starts it.
                   if (skip) ...[
                     const SizedBox(width: 8),
-                    Material(
-                      color: _color,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      child: InkWell(
-                        key: Key('section-skip-quick-${section.id}'),
-                        borderRadius: BorderRadius.circular(12),
+                    // A 48 dp touch target around the small button (it was
+                    // 30 dp with the largest font, QA); the look is the same.
+                    Semantics(
+                      button: true,
+                      label: open ? 'Bu bölümü sınavla atla' : 'Sınavla bu bölüme atla',
+                      onTap: () => showSectionSummary(context, section, open: open),
+                      excludeSemantics: true,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
                         onTap: () => showSectionSummary(context, section, open: open),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: narrow ? 6 : 10, vertical: 6),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              narrow
-                                  ? Icon(
-                                      Icons.fast_forward_rounded,
-                                      color: Colors.white,
-                                      size: 18,
-                                      semanticLabel: open
-                                          ? 'Bu bölümü sınavla atla'
-                                          : 'Sınavla bu bölüme atla',
-                                    )
-                                  : const Icon(Icons.fast_forward_rounded, color: Colors.white, size: 18),
-                              if (!narrow) ...[
-                                const SizedBox(width: 2),
-                                Text(
-                                  'Atla',
-                                  semanticsLabel: open ? 'Bu bölümü sınavla atla' : 'Sınavla bu bölüme atla',
-                                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+                          child: Center(
+                            widthFactor: 1,
+                            heightFactor: 1,
+                            child: Material(
+                              color: _color,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              child: InkWell(
+                                key: Key('section-skip-quick-${section.id}'),
+                                borderRadius: BorderRadius.circular(12),
+                                onTap: () => showSectionSummary(context, section, open: open),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: narrow ? 6 : 10, vertical: 6),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      narrow
+                                          ? Icon(
+                                              Icons.fast_forward_rounded,
+                                              color: Colors.white,
+                                              size: 18,
+                                              semanticLabel: open
+                                                  ? 'Bu bölümü sınavla atla'
+                                                  : 'Sınavla bu bölüme atla',
+                                            )
+                                          : const Icon(
+                                              Icons.fast_forward_rounded,
+                                              color: Colors.white,
+                                              size: 18,
+                                            ),
+                                      if (!narrow) ...[
+                                        const SizedBox(width: 2),
+                                        Text(
+                                          'Atla',
+                                          semanticsLabel: open
+                                              ? 'Bu bölümü sınavla atla'
+                                              : 'Sınavla bu bölüme atla',
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
+                                      ],
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            ],
+                              ),
+                            ),
                           ),
                         ),
                       ),

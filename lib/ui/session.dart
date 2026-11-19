@@ -466,62 +466,87 @@ class _AnswerFeedbackPanelState extends State<AnswerFeedbackPanel> with SingleTi
           boxShadow: softShadow(p, tint: fg, lift: 1.4),
         ),
         padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+        // At most ~3/4 of the screen: with the largest font a long
+        // explanation pushed "Devam" off the bottom (QA, 360x640). The
+        // text scrolls; "Devam" always stays.
+        constraints: BoxConstraints(maxHeight: MediaQuery.sizeOf(context).height * 0.72),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                PopIn(
-                  child: Icon(
-                    ok ? Icons.check_circle_rounded : Icons.lightbulb_circle_rounded,
-                    color: fg,
-                    size: 36,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (!ok)
-                        Text(
-                          softRetries[_seed % softRetries.length],
-                          key: const Key('feedback-soft'),
-                          style: TextStyle(
-                            color: fg.withValues(alpha: 0.85),
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600,
+            Flexible(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // One node read out as it appears: the verdict, the line and the
+                    // answer, so TalkBack users hear it without hunting for it.
+                    Semantics(
+                      container: true,
+                      liveRegion: true,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          PopIn(
+                            // The verdict in words for TalkBack: the praise line alone
+                            // ("Damlaya damlaya göl olur!") does not say "right".
+                            child: Icon(
+                              ok ? Icons.check_circle_rounded : Icons.lightbulb_circle_rounded,
+                              color: fg,
+                              size: 36,
+                              semanticLabel: ok ? 'Doğru' : 'Yanlış',
+                            ),
                           ),
-                        ),
-                      Text(
-                        widget.title ?? (ok ? praiseFor(_seed) : 'Doğru cevap:'),
-                        key: const Key('feedback-title'),
-                        style: TextStyle(color: fg, fontSize: 20, fontWeight: FontWeight.w900),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (!ok)
+                                  Text(
+                                    softRetries[_seed % softRetries.length],
+                                    key: const Key('feedback-soft'),
+                                    style: TextStyle(
+                                      color: fg.withValues(alpha: 0.85),
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                Text(
+                                  widget.title ?? (ok ? praiseFor(_seed) : 'Doğru cevap:'),
+                                  key: const Key('feedback-title'),
+                                  style: TextStyle(color: fg, fontSize: 20, fontWeight: FontWeight.w900),
+                                ),
+                                if (widget.answer != null && widget.answer!.isNotEmpty)
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 4),
+                                    child: Text(
+                                      widget.answer!,
+                                      style: TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
+                          ExcludeSemantics(
+                            child: Mascot(mood: ok ? Mood.joy : Mood.sad, size: 64, react: true),
+                          ),
+                        ],
                       ),
-                      if (widget.answer != null && widget.answer!.isNotEmpty)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4),
-                          child: Text(
-                            widget.answer!,
-                            style: TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w600),
-                          ),
+                    ),
+                    if (widget.detail != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxHeight: 200),
+                          child: SingleChildScrollView(child: widget.detail),
                         ),
-                    ],
-                  ),
-                ),
-                Mascot(mood: ok ? Mood.joy : Mood.sad, size: 64, react: true),
-              ],
-            ),
-            if (widget.detail != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: 200),
-                  child: SingleChildScrollView(child: widget.detail),
+                      ),
+                  ],
                 ),
               ),
+            ),
             const SizedBox(height: 12),
             Row(
               children: [

@@ -70,9 +70,16 @@ class StatsBar extends ConsumerWidget {
               key: const Key('topbar-gold'),
               borderRadius: BorderRadius.circular(12),
               onTap: () => openShop(context),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
-                child: GoldAmount(p.wallet.balance, size: 16),
+              child: ConstrainedBox(
+                constraints: _minTap,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+                  child: Semantics(
+                    label: 'Altın: ${p.wallet.balance}',
+                    excludeSemantics: true,
+                    child: GoldAmount(p.wallet.balance, size: 16, color: Brand.ink),
+                  ),
+                ),
               ),
             ),
           ),
@@ -83,7 +90,7 @@ class StatsBar extends ConsumerWidget {
               key: const Key('topbar-profile'),
               customBorder: const CircleBorder(),
               onTap: () => ref.read(pendingNavTargetProvider.notifier).open(const NavTarget(AppTab.profile)),
-              child: const Padding(padding: EdgeInsets.all(4), child: MyAvatar(size: 32)),
+              child: const Padding(padding: EdgeInsets.all(8), child: MyAvatar(size: 32)),
             ),
           ),
         ],
@@ -91,6 +98,9 @@ class StatsBar extends ConsumerWidget {
     );
   }
 }
+
+/// 48 dp touch targets (Core App Quality); the bar is 56 dp tall.
+const _minTap = BoxConstraints(minWidth: 48, minHeight: 48);
 
 class _Stat extends StatelessWidget {
   const _Stat({
@@ -113,17 +123,25 @@ class _Stat extends StatelessWidget {
     child: InkWell(
       borderRadius: BorderRadius.circular(12),
       onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
-        child: Row(
-          children: [
-            Icon(icon, color: color, size: 24),
-            const SizedBox(width: 4),
-            Text(
-              '$value',
-              style: TextStyle(color: color, fontWeight: FontWeight.w800, fontSize: 16),
-            ),
-          ],
+      child: ConstrainedBox(
+        constraints: _minTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, color: color, size: 24),
+              const SizedBox(width: 4),
+              // The icon carries the colour; the number is ink so it reads
+              // (orange / amber digits on cream were 3.2–3.5:1).
+              Text(
+                '$value',
+                // TalkBack read a bare "0": say what the number is.
+                semanticsLabel: '$tooltip: $value',
+                style: TextStyle(color: Brand.ink, fontWeight: FontWeight.w800, fontSize: 16),
+              ),
+            ],
+          ),
         ),
       ),
     ),

@@ -981,8 +981,10 @@ class _SparklesState extends State<_Sparkles> with SingleTickerProviderStateMixi
 Future<void> showGoldHelp(BuildContext context) => showModalBottomSheet<void>(
   context: context,
   showDragHandle: true,
+  // Grows and scrolls at the largest font instead of cutting its end off.
+  isScrollControlled: true,
   builder: (c) => SafeArea(
-    child: Padding(
+    child: SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
       child: Column(
         mainAxisSize: MainAxisSize.min,

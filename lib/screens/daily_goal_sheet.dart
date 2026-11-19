@@ -21,10 +21,12 @@ Future<void> showDailyGoalSheet(BuildContext context, WidgetRef ref) async {
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
+    // Grows and scrolls at the largest font instead of cutting its end off.
+    isScrollControlled: true,
     builder: (c) {
       final t = Theme.of(c).textTheme;
       return SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           key: const Key('daily-goal-sheet'),
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
           child: Column(
