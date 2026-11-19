@@ -122,7 +122,8 @@ Dilmaç, kurumla yalnızca **öğrenme ilerlemesini** paylaşır:
 |---|---|
 | Kurumda görünen ad (kişinin katılırken yazdığı) | Günlük (diary) yazıları |
 | Rol ve sınıf | Kişisel notlar, kendi kelime listesi |
-| Tamamlanan ders sayısı, toplam XP, son 7 gün XP | Yapay zekâ konuşma içerikleri |
+| Tamamlanan ders sayısı, toplam XP, son 7 gün XP | Yapay zekâ konuşmalarının tamamı |
+| Ses Koçu özeti: konuşma sayısı, tahmini dakika, son karne özeti ve düzeltmeler (`docs/kurumsal-satis.md`) | |
 | Seri ve son aktif gün | Hata listeleri ve hata istatistikleri |
 | Ödev durumu (tamamlandı / bekliyor / gecikti) | E-posta, telefon, cihaz bilgisi |
 

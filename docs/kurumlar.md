@@ -170,9 +170,10 @@ işleyen** sıfatındadır. Bu bir hukuki görüş değildir: sözleşme öncesi
 |---|---|
 | Öğrencinin sınıf için yazdığı ad (ilk ad ya da takma ad) | E-posta, telefon, hesap adı, profil fotoğrafı |
 | Seri (gün) | Günlük (diary), kişisel notlar, kelime listesi |
-| Tamamlanan ünite ve ders sayısı | Yapay zekâ konuşmaları, yazılan cevapların metni |
+| Tamamlanan ünite ve ders sayısı | Yapay zekâ konuşmalarının tamamı, yazılan cevapların metni |
 | Bu haftanın XP'si | Konum, cihaz ve reklam kimliği |
 | En sık 3 hata **türü** (ör. "Zaman uyumu"; cevabın kendisi değil) | Başka sınıflardaki ya da başka okullardaki öğrenciler |
+| Ses Koçu özeti: konuşma sayısı, tahmini dakika, son karne özeti, son 3 düzeltilen cümle, zorlandığı kelimeler (`classes/{kod}/speaking/{uid}`, yalnızca sunucu yazar; bkz. `docs/kurumsal-satis.md`) | |
 
 Teknik güvenceler:
 - Özet belgesi kuralca yalnızca yukarıdaki alanları kabul eder. E-posta veya telefon alanı yazılmaya

@@ -196,6 +196,53 @@ ClassStats classStatsOf(Progress p, Course? course, DateTime now) {
   );
 }
 
+/// A student's voice-coach stats as the teacher sees them:
+/// `classes/{code}/speaking/{uid}`, written only by the server
+/// (functions/src/speaking_stats.ts) after each speaking karne, and only while
+/// the student is in the class. No transcript.
+class SpeakingSummary {
+  const SpeakingSummary({
+    required this.conversations,
+    required this.minutes,
+    this.lastAt,
+    this.lastSummary = '',
+    this.recentMistakes = const [],
+    this.weakWords = const [],
+  });
+
+  factory SpeakingSummary.fromJson(Map<String, Object?> j) => SpeakingSummary(
+    conversations: (j['conversations'] as num?)?.toInt() ?? 0,
+    minutes: (j['minutes'] as num?)?.toInt() ?? 0,
+    lastAt: switch (j['lastAt']) {
+      final Timestamp t => t.toDate(),
+      final DateTime d => d,
+      _ => null,
+    },
+    lastSummary: j['lastSummary'] as String? ?? '',
+    recentMistakes: [
+      for (final m in (j['recentMistakes'] as List? ?? const []))
+        if (m is Map && m['original'] is String && m['corrected'] is String)
+          (original: m['original'] as String, corrected: m['corrected'] as String),
+    ],
+    weakWords: [for (final w in (j['weakWords'] as List? ?? const [])) '$w'],
+  );
+
+  final int conversations;
+
+  /// Estimated from the conversation's length (about 100 words a minute).
+  final int minutes;
+  final DateTime? lastAt;
+
+  /// The latest karne's two-sentence Turkish summary.
+  final String lastSummary;
+
+  /// The latest corrected sentences, newest first.
+  final List<({String original, String corrected})> recentMistakes;
+
+  /// Words the speech recognizer struggled with most often.
+  final List<String> weakWords;
+}
+
 class ClassMember {
   const ClassMember({required this.uid, required this.name, required this.stats, this.updatedAt});
 
@@ -245,6 +292,9 @@ abstract interface class KurumApi {
   Future<void> setOpen(String code, bool open);
   Future<void> deleteClass(String code);
   Stream<List<ClassMember>> members(String code);
+
+  /// Voice-coach stats by student uid (only students who practised).
+  Stream<Map<String, SpeakingSummary>> speaking(String code);
   Future<void> removeMember(String code, String memberUid);
 
   // Student.
@@ -408,6 +458,13 @@ class FirestoreKurumApi implements KurumApi {
     for (final m in members.docs) {
       batch.delete(m.reference);
     }
+    try {
+      for (final s in (await _class(code).collection('speaking').get()).docs) {
+        batch.delete(s.reference);
+      }
+    } on FirebaseException {
+      // Rules without the speaking collection yet: nothing to delete.
+    }
     batch.delete(_class(code));
     await batch.commit();
   });
@@ -429,7 +486,28 @@ class FirestoreKurumApi implements KurumApi {
       );
 
   @override
-  Future<void> removeMember(String code, String memberUid) => _guard(() => _member(code, memberUid).delete());
+  Stream<Map<String, SpeakingSummary>> speaking(String code) =>
+      _class(code)
+          .collection('speaking')
+          .snapshots()
+          .map((q) => {for (final d in q.docs) d.id: SpeakingSummary.fromJson(d.data())});
+
+  @override
+  Future<void> removeMember(String code, String memberUid) => _guard(() async {
+    await _member(code, memberUid).delete();
+    await _dropSpeaking([_class(code).collection('speaking').doc(memberUid)]);
+  });
+
+  /// Best effort: the server stops copying once members/{uid} is gone anyway.
+  Future<void> _dropSpeaking(List<DocumentReference<Map<String, dynamic>>> refs) async {
+    for (final r in refs) {
+      try {
+        await r.delete();
+      } on FirebaseException {
+        // Rules not deployed yet, or already gone.
+      }
+    }
+  }
 
   @override
   Stream<List<String>> myClassCodes() =>
@@ -486,6 +564,8 @@ class FirestoreKurumApi implements KurumApi {
       // Already removed by the teacher (then reading it is denied).
       if (e.code != 'permission-denied' && e.code != 'not-found') rethrow;
     }
+    // The teacher's copy of the speaking stats goes with the student.
+    await _dropSpeaking([_class(code).collection('speaking').doc(uid)]);
     await _setCodes([
       for (final c in await _codes())
         if (c != code) c,
@@ -545,6 +625,14 @@ final classMembersProvider = StreamProvider.family<List<ClassMember>, String>((r
   final api = ref.watch(kurumApiProvider);
   if (api == null) return Stream.value(const []);
   return api.members(code);
+});
+
+/// Voice-coach stats of a class's students (teacher only).
+final classSpeakingProvider = StreamProvider.family<Map<String, SpeakingSummary>, String>((ref, code) {
+  final api = ref.watch(kurumApiProvider);
+  if (api == null) return Stream.value(const {});
+  // Older rules without the speaking collection: just show nothing.
+  return api.speaking(code).handleError((Object _) {});
 });
 
 /// The classes the student joined, with their names.
