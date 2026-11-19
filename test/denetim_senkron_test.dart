@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/data/progress_tally.dart';
-import 'package:lingora/data/review_grade.dart';
 import 'package:lingora/services/firebase/progress_merge.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

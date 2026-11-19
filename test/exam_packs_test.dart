@@ -203,6 +203,7 @@ Future<List<Override>> widgetOverrides(
   PackBilling billing, {
   bool dev = false,
   List<Override> extra = const [],
+  DateTime Function()? clock,
 }) async {
   await tester.binding.setSurfaceSize(const Size(420, 2400));
   addTearDown(() => tester.binding.setSurfaceSize(null));
@@ -214,7 +215,7 @@ Future<List<Override>> widgetOverrides(
   final prefs = await SharedPreferences.getInstance();
   return [
     prefsProvider.overrideWithValue(prefs),
-    clockProvider.overrideWithValue(() => now),
+    clockProvider.overrideWithValue(clock ?? () => now),
     billingServiceProvider.overrideWithValue(billing),
     premiumDevOverrideProvider.overrideWithValue(dev),
     for (final p in ExamPack.values) examPackContentProvider(p).overrideWith((ref) async => readPack(p)),
@@ -438,10 +439,12 @@ void main() {
     ) async {
       final exam = readExam('lgs');
       final pack = readPack(ExamPack.lgs);
+      var clockNow = now;
       final overrides = await widgetOverrides(
         tester,
         PackBilling(),
         dev: true,
+        clock: () => clockNow,
         extra: [examProvider('lgs').overrideWith((ref) async => exam)],
       );
       await tester.pumpWidget(app(overrides, const ExamHomeScreen(examId: 'lgs')));
@@ -452,6 +455,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(ExamSessionScreen), findsOneWidget);
       expect(find.text('15:00'), findsOneWidget);
+      // The clock counts down to the mock's end time.
+      clockNow = clockNow.add(const Duration(seconds: 1));
       await tester.pump(const Duration(seconds: 1));
       expect(find.text('14:59'), findsOneWidget);
 

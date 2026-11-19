@@ -14,7 +14,7 @@ class ServerEntitlement {
     this.familyRole,
     bool? packsKnown,
     this.packsRevoked = const {},
-  }) : _packsKnown = packsKnown;
+  }) : _packsKnown = packsKnown; // ignore: prefer_initializing_formals
 
   final bool? _packsKnown;
 
