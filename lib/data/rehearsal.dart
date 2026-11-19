@@ -1,8 +1,12 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../services/firebase/firebase_providers.dart' show AppUser, authStateProvider;
 import 'progress.dart';
 
 /// Mülakat Provası: the learner answers interview questions in their own
@@ -764,12 +768,89 @@ class RehearsalComparison {
   ];
 }
 
+/// Deletes the recordings at [paths] (missing files are fine).
+typedef RecordingWiper = Future<void> Function(Iterable<String> paths);
+
+Future<void> _deleteRecordings(Iterable<String> paths) async {
+  if (kIsWeb) return;
+  for (final p in paths) {
+    try {
+      final f = File(p);
+      if (f.existsSync()) f.deleteSync();
+    } catch (e) {
+      debugPrint('Recording not deleted: $e');
+    }
+  }
+}
+
+/// How rehearsal recordings are deleted (tests replace it).
+final recordingWiperProvider = Provider<RecordingWiper>((ref) => _deleteRecordings);
+
+/// The learner's rehearsals on this phone: answers, analyses and the paths
+/// of their recordings. They belong to one account at a time
+/// ([_ownerKey]): another account signing in on this phone (or signing out,
+/// which makes a new guest) neither sees nor keeps them; they are deleted
+/// together with the recordings. A guest's rehearsals move to the account
+/// the guest signs in to, like the progress does. Rehearsals saved before
+/// they had an owner belong to the first account seen.
 class RehearsalStore extends Notifier<RehearsalState> {
   static const _key = 'rehearsal_v1';
 
+  /// `{uid, guest}` of the account the stored rehearsals belong to.
+  static const _ownerKey = 'rehearsal_owner_v1';
+
   @override
   RehearsalState build() {
-    final raw = ref.read(prefsProvider).getString(_key);
+    final user = ref.watch(authStateProvider.select((s) => s.value));
+    final prefs = ref.read(prefsProvider);
+    final stored = _read(prefs.getString(_key));
+    final owner = _owner();
+    if (user == null) {
+      // Firebase off (no accounts on this phone) or between accounts: only
+      // rehearsals no account owns are shown.
+      return owner == null ? stored : const RehearsalState();
+    }
+    if (owner == null || owner.uid == user.uid || (owner.guest && !user.isAnonymous)) {
+      _setOwner(user);
+      return stored;
+    }
+    // Another account's (or an earlier guest's) rehearsals: gone from here.
+    _wipe(stored);
+    _setOwner(user);
+    return const RehearsalState();
+  }
+
+  ({String uid, bool guest})? _owner() {
+    final raw = ref.read(prefsProvider).getString(_ownerKey);
+    if (raw == null) return null;
+    try {
+      final j = jsonDecode(raw) as Map<String, dynamic>;
+      return (uid: j['uid'] as String, guest: j['guest'] == true);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  void _setOwner(AppUser user) => ref
+      .read(prefsProvider)
+      .setString(_ownerKey, jsonEncode({'uid': user.uid, 'guest': user.isAnonymous}));
+
+  void _wipe(RehearsalState s) {
+    ref.read(prefsProvider).remove(_key);
+    final paths = [
+      for (final x in s.sessions)
+        for (final a in x.answers) ?a.audioPath,
+    ];
+    if (paths.isNotEmpty) unawaited(ref.read(recordingWiperProvider)(paths));
+  }
+
+  /// Deletes every rehearsal and recording on this phone (account deletion).
+  void clearLocal() {
+    _wipe(state);
+    state = const RehearsalState();
+  }
+
+  static RehearsalState _read(String? raw) {
     if (raw == null) return const RehearsalState();
     try {
       final j = jsonDecode(raw) as Map<String, dynamic>;
