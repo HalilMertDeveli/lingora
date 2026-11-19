@@ -43,6 +43,8 @@ class ReferralException implements Exception {
     'own_code' => 'Kendi davet kodunu kullanamazsın.',
     'already_redeemed' => 'Bu hesap daha önce bir davet kodu kullandı.',
     'device_used' => 'Bu cihazda daha önce bir davet kodu kullanıldı.',
+    'same_device' =>
+      'Bu kod davet eden kişinin kullandığı bir telefonda kullanılamaz. Kendi telefonundan dene.',
     'mutual_invite' => 'Seni davet eden kişinin kodunu karşılıklı kullanamazsın.',
     'not_new_user' => 'Davet kodları yalnızca yeni hesaplarda (ilk 14 gün) kullanılabilir.',
     'sign_in_required' => 'Davet kodu kullanmak için önce Profil > Hesap bölümünden giriş yap.',
@@ -54,11 +56,30 @@ class ReferralException implements Exception {
   String toString() => 'ReferralException($reason)';
 }
 
-abstract class ReferralService {
-  Future<InviteInfo> myInvite();
+/// Where the user's own redemption stands.
+enum InviteStatus {
+  /// No code used.
+  none,
 
-  /// Redeems [code]; Premium arrives through `entitlements/{uid}`.
-  Future<void> redeem(String code, {required String deviceId});
+  /// Code accepted; both get Premium after the user's first lesson.
+  pending,
+
+  /// Premium granted.
+  rewarded;
+
+  static InviteStatus byName(Object? name) => values.where((v) => v.name == name).firstOrNull ?? none;
+}
+
+abstract class ReferralService {
+  /// The user's code; [deviceId] lets the server refuse it on this phone.
+  Future<InviteInfo> myInvite({String? deviceId});
+
+  /// Redeems [code]. Premium arrives through `entitlements/{uid}` once the
+  /// user has finished their first lesson ([InviteStatus.pending] until then).
+  Future<InviteStatus> redeem(String code, {required String deviceId});
+
+  /// The user's own redemption.
+  Future<InviteStatus> myStatus();
 }
 
 class CallableReferralService implements ReferralService {
@@ -66,9 +87,9 @@ class CallableReferralService implements ReferralService {
   final FirebaseFunctions _functions;
 
   @override
-  Future<InviteInfo> myInvite() async {
+  Future<InviteInfo> myInvite({String? deviceId}) async {
     try {
-      final res = await _functions.httpsCallable('getInviteCode').call<Object?>();
+      final res = await _functions.httpsCallable('getInviteCode').call<Object?>({'deviceId': ?deviceId});
       return InviteInfo.fromJson(res.data! as Map<Object?, Object?>);
     } on FirebaseFunctionsException catch (e) {
       throw ReferralException(_reason(e));
@@ -76,9 +97,26 @@ class CallableReferralService implements ReferralService {
   }
 
   @override
-  Future<void> redeem(String code, {required String deviceId}) async {
+  Future<InviteStatus> redeem(String code, {required String deviceId}) async {
     try {
-      await _functions.httpsCallable('redeemInvite').call<Object?>({'code': code, 'deviceId': deviceId});
+      final res = await _functions.httpsCallable('redeemInvite').call<Object?>({
+        'code': code,
+        'deviceId': deviceId,
+      });
+      final data = res.data;
+      // Servers before the first-lesson rule rewarded at once.
+      return data is Map ? InviteStatus.byName(data['status'] ?? 'rewarded') : InviteStatus.rewarded;
+    } on FirebaseFunctionsException catch (e) {
+      throw ReferralException(_reason(e));
+    }
+  }
+
+  @override
+  Future<InviteStatus> myStatus() async {
+    try {
+      final res = await _functions.httpsCallable('getInviteStatus').call<Object?>();
+      final data = res.data;
+      return data is Map ? InviteStatus.byName(data['status']) : InviteStatus.none;
     } on FirebaseFunctionsException catch (e) {
       throw ReferralException(_reason(e));
     }
@@ -111,11 +149,19 @@ final installIdProvider = Provider<String>((ref) {
   return id;
 });
 
-/// Text shared with friends. The code is entered in the app (Profil >
-/// Arkadaşını davet et); the Play link carries it as an install referrer
-/// for a later automatic step.
+/// Dilmaç on Google Play.
+const dilmacPlayStoreUrl = 'https://play.google.com/store/apps/details?id=com.lingora.lingora';
+
+/// [dilmacPlayStoreUrl] carrying [code] as an install referrer (for a later
+/// automatic step; today the friend types the code).
+String invitePlayLink(String code) => '$dilmacPlayStoreUrl&referrer=invite%3D$code';
+
+/// Text shared with friends (share sheet): the code, the reward rule and
+/// the Play link. The code is entered in Profil > Arkadaşını davet et.
 String inviteShareText(InviteInfo info) =>
-    'Dilmaç ile İngilizce öğreniyorum: kısa dersler, can sistemi yok, temel öğrenme ücretsiz. '
-    'Uygulamayı indir, Profil > Arkadaşını davet et bölümüne ${info.code} kodunu gir; '
-    'ikimiz de ${info.rewardDays} gün Premium kazanalım! '
-    'https://play.google.com/store/apps/details?id=com.lingora.lingora&referrer=invite%3D${info.code}';
+    'Dilmaç ile her gün birkaç dakika İngilizce çalışıyorum ve gerçekten işe yarıyor!\n'
+    'Kısa dersler, konuşma pratiği, sınav hazırlığı; temel öğrenme ücretsiz.\n\n'
+    'Davet kodum: ${info.code}\n'
+    'Uygulamayı indir, Profil > Arkadaşını davet et bölümüne kodu gir ve ilk dersini bitir: '
+    'ikimiz de ${info.rewardDays} gün Premium kazanalım.\n\n'
+    '${invitePlayLink(info.code)}';

@@ -28,6 +28,7 @@ A/B deneyi ve "Arkadaşını davet et" programının kuralları.
 | `lib/screens/consent_sheet.dart` | İzin ekranı (`ConsentGate`) ve Profil anahtarı |
 | `lib/screens/invite_screen.dart`, `growth_profile_section.dart` | "Arkadaşını davet et" ve Profil > Gizlilik |
 | `functions/src/referral.ts`, `referral_api.ts` | `getInviteCode`, `redeemInvite` callable'ları |
+| `lib/services/growth/funnel_stats.dart`, `functions/src/stats.ts` | Sahip paneli için izinli, kimliksiz günlük sayaçlar (`docs/panel-istatistik.md`) |
 | `test/growth_test.dart`, `functions/test/referral.test.ts` | Testler |
 
 Analiz ve Remote Config yalnızca `--dart-define=LINGORA_FIREBASE=prod` ile
@@ -80,7 +81,7 @@ Huni: `onboarding_step(0)` → `onboarding_step(4)` → `onboarding_complete` �
 
 | Olay | Parametreler | Ne zaman |
 | --- | --- | --- |
-| `paywall_view` | `placement` (profile, after_lessons, ai_chat, mock_exam, error_analysis, writing_feedback, why_wrong, streak_milestone, shop), `variant` (a, b) | Paywall Premium olmayan kullanıcıya göründü |
+| `paywall_view` | `placement` (profile, after_lessons, ai_chat, mock_exam, error_analysis, writing_feedback, why_wrong, streak_milestone, shop, exam_season, daily_reading_talk), `variant` (a, b) | Paywall Premium olmayan kullanıcıya göründü |
 | `premium_offer_view` | `placement` (why_wrong, streak_milestone, mock_exam) | Ekran içi küçük Premium kartı göründü (kilitli "Neden yanlış?", seri kutlaması, deneme hakkı bitti) |
 | `paywall_close` | `placement`, `variant` | Paywall satın almadan kapandı |
 
@@ -108,7 +109,7 @@ Firebase'in Play bağlantısından (otomatik `in_app_purchase`) okunur.
 | Olay | Parametreler | Ne zaman |
 | --- | --- | --- |
 | `invite_share` | – | Davet metni paylaşım sayfası açıldı |
-| `invite_redeem` | `result` (ok ya da hata kodu: invalid_code, own_code, already_redeemed, device_used, mutual_invite, not_new_user, sign_in_required, offline) | Davet kodu girildi |
+| `invite_redeem` | `result` (ok ya da hata kodu: invalid_code, own_code, already_redeemed, device_used, mutual_invite, not_new_user, sign_in_required, same_device, offline) | Davet kodu girildi |
 
 ### Kullanıcı özellikleri
 
@@ -168,8 +169,9 @@ Console'da devre dışı bırak; `trial_days=0` yalnızca duyuruyu kapatır.
 ## 6. Davet programı ("Arkadaşını davet et") {#davet}
 
 Her kullanıcının 7 karakterlik bir davet kodu vardır (karışan harfler yok:
-0/O, 1/I/L). Yeni bir kullanıcı kodu Profil > Arkadaşını davet et'e girince
-**ikisi de 7 gün Premium** kazanır.
+0/O, 1/I/L). Yeni bir kullanıcı kodu Profil > Arkadaşını davet et'e girer ve
+**ilk dersini bitirince ikisi de 7 gün Premium** kazanır. Kampanya ayrıntıları:
+[buyume-kampanya.md](buyume-kampanya.md).
 
 Akış:
 
@@ -178,9 +180,11 @@ Akış:
 2. Kullanıcı paylaş düğmesiyle (`share_plus`) metni gönderir. Metin kodu ve
    Play Store bağlantısını (`&referrer=invite%3DKOD`) içerir.
 3. Arkadaş uygulamayı kurar, hesabını bağlar ve kodu girer → `redeemInvite({code, deviceId})`.
-4. Sunucu tek işlemde (transaction) kuralları denetler ve iki tarafın
-   `entitlements/{uid}` belgesine yazar:
-   `{active: true, source: "referral", productId: "referral", expiresAt}`.
+   Sunucu kuralları denetler ve `referralRedemptions/{uid}` belgesini `status: "pending"` yazar.
+4. Arkadaşın eşitlenen ilerlemesinde ilk ders görününce (`users/{uid}.progress.lessonsDone` 0 → 1+)
+   `inviteFirstLesson` tetikleyicisi tek işlemde iki tarafın `entitlements/{uid}` belgesine yazar:
+   `{active: true, source: "invite", productId: "referral", expiresAt}` (ilk dersi zaten bitmişse
+   ödül `redeemInvite` içinde hemen verilir). Eski kayıtlarda `source: "referral"` olabilir.
    Uygulama bu belgeyi zaten dinlediği için Premium kendiliğinden açılır.
    Ücretli aboneliği süren kullanıcıda kaynak/ürün değişmez, bitişe 7 gün eklenir.
 
@@ -193,6 +197,7 @@ Kötüye kullanım sınırları (`functions/src/referral.ts`):
 | Yalnızca yeni hesaplar: ilk 14 gün | `not_new_user` |
 | Misafir (anonim) hesap kullanamaz; Google/e-posta ile bağlı hesap gerekir | `sign_in_required` |
 | Kendi kodun olmaz | `own_code` |
+| Davet edenin kullandığı telefonda olmaz (`getInviteCode` kurulum kimliğinin özetini saklar, en çok 5) | `same_device` |
 | A, B'yi davet ettiyse B, A'yı davet edemez | `mutual_invite` |
 | Davet eden ayda en fazla **5** ödül kazanır (Türkiye saatine göre takvim ayı); sınırdan sonra yeni gelen yine ödül alır, davet eden almaz | – |
 
