@@ -77,6 +77,8 @@ export const PERSONAL_DATA: Record<string, string> = {
   daily: "no uid: Günün okuması, shared by everyone (daily_reading.ts)",
   levels: "daily/*/levels: shared readings, no uid",
   stats: "no uid: aggregated daily counters (stats.ts)",
+  reportLimits: "deleted",
+  reports: "question reports kept for staff: uid anonymised, free-text note removed; statusBy anonymised",
   ttsCache: "no uid: shared MP3 cache keyed by text hash, expires by TTL (tts.ts)",
 };
 
@@ -97,6 +99,7 @@ const UID_DOCS = [
   "referrals",
   "rehearsals",
   "speakingStats",
+  "reportLimits",
 ];
 
 /** Collections with a field that holds the owner's uid; the documents are deleted. */
@@ -121,6 +124,7 @@ const ANONYMISE: Array<[collectionGroup: string, field: string, value: string, u
   ["assignments", "createdBy", DELETED, "orgs/"],
   ["classes", "teacherUid", "", "orgs/"],
   ["referralDevices", "uid", DELETED, ""],
+  ["reports", "statusBy", DELETED, ""],
 ];
 
 export interface DeleteResult {
@@ -200,6 +204,12 @@ export async function deleteUserData(db: Firestore, uid: string, now: Date = new
       await d.ref.update({ [field]: value });
       docs++;
     }
+  }
+  // Question reports stay for content fixes, without who sent them or their note.
+  const reports = await db.collection("reports").where("uid", "==", uid).get();
+  for (const r of reports.docs) {
+    await r.ref.update({ uid: DELETED, note: FieldValue.delete() });
+    docs++;
   }
   const admins = db.doc("config/lingoraAdmins");
   const adminUids = (await admins.get()).get("uids");
