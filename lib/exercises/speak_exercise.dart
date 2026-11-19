@@ -241,8 +241,11 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
                 listening: _listening,
                 heard: _heard,
                 match: match,
-                issue: issue ?? (_unavailable ? SpeechIssues.noRecognizer : null),
-                idle: 'Mikrofona dokun ve konuş',
+                // The no-speech hint already says it was not heard: once is enough.
+                issue: _noSpeech && !_listening && issue == SpeechIssues.notHeard
+                    ? null
+                    : issue ?? (_unavailable ? SpeechIssues.noRecognizer : null),
+                idle: _noSpeech && !widget.locked ? '' : 'Mikrofona dokun ve konuş',
               ),
               textAlign: TextAlign.center,
               style: TextStyle(

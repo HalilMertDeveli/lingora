@@ -72,6 +72,10 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   final _text = TextEditingController();
   int _index = 0;
   bool _recording = false;
+
+  /// The microphone was used on this screen: before that, [speechIssue] still
+  /// holds another screen's problem ("Seni duyamadım" on arrival, QA).
+  bool _listened = false;
   bool _typing = false;
   bool _hint = false;
   int _retakes = 0;
@@ -142,6 +146,7 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
     if (!mounted) return;
     setState(() {
       _recording = true;
+      _listened = true;
       _audio = recorded ? '' : null;
       _heardBefore = _text.text.trim();
     });
@@ -238,6 +243,7 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
     if (!_last) {
       setState(() {
         _index++;
+        _listened = false;
         _text.clear();
         _audio = null;
         _hint = false;
@@ -492,7 +498,7 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
                 ),
                 ValueListenableBuilder<String?>(
                   valueListenable: speechIssue,
-                  builder: (context, issue, _) => issue == null
+                  builder: (context, issue, _) => issue == null || !_listened
                       ? const SizedBox.shrink()
                       : Padding(
                           padding: const EdgeInsets.only(top: 8),

@@ -75,7 +75,8 @@ class ConversationHomeScreen extends ConsumerWidget {
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    'Demo modu: cevaplar hazır senaryodan gelir. Yapay zekâ sohbeti sunucu bağlanınca açılır.',
+                    // Kid mode is a choice, not a missing server: say so.
+                    kid ? 'Ebeveyn gözetimli modda yapay zekâ kapalı: cevaplar hazır senaryodan gelir.' : 'Demo modu: cevaplar hazır senaryodan gelir. Yapay zekâ sohbeti sunucu bağlanınca açılır.',
                     style: TextStyle(fontSize: 13),
                   ),
                 ),

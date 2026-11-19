@@ -251,7 +251,10 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
                 listening: _listening,
                 heard: _heard,
                 match: _match,
-                issue: issue ?? (_unavailable ? SpeechIssues.noRecognizer : null),
+                // The no-speech hint already says it was not heard: once is enough.
+                issue: _noSpeech && !_listening && issue == SpeechIssues.notHeard
+                    ? null
+                    : issue ?? (_unavailable ? SpeechIssues.noRecognizer : null),
                 idle: '',
               ),
               textAlign: TextAlign.center,

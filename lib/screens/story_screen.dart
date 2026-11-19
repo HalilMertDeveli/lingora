@@ -32,9 +32,9 @@ class StoryScreen extends ConsumerStatefulWidget {
 
 class _StoryScreenState extends ConsumerState<StoryScreen> {
   final _scroll = ScrollController();
-  late final DateTime _started = DateTime.now().subtract(
-    Duration(seconds: widget.resume?.elapsedSeconds ?? 0),
-  );
+
+  /// Set in [initState]: a lazy initialiser would start the clock at its first read.
+  late final DateTime _started;
   final Set<int> _translated = {};
   late final SpeechService _speech = ref.read(speechProvider);
 
@@ -65,6 +65,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
   @override
   void initState() {
     super.initState();
+    _started = DateTime.now().subtract(Duration(seconds: widget.resume?.elapsedSeconds ?? 0));
     final saved = widget.resume;
     if (saved != null) {
       _shown = saved.shown.clamp(0, _steps.length - 1);

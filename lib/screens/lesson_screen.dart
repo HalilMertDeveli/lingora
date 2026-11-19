@@ -130,9 +130,11 @@ class LessonScreen extends ConsumerStatefulWidget {
 class _LessonScreenState extends ConsumerState<LessonScreen> {
   late final List<LessonItem> _queue = [...widget.items, ...?widget.resume?.requeued];
   late final int _total = widget.items.length;
-  late final DateTime _started = DateTime.now().subtract(
-    Duration(seconds: widget.resume?.snapshot.elapsedSeconds ?? 0),
-  );
+
+  /// When the session started (minus time spent before a resume). Set in
+  /// [initState]: a lazy initialiser starts the clock at its first read, which
+  /// for a session that is never saved (the first lesson) is the result (0:00).
+  late final DateTime _started;
 
   /// When the current question was shown (time per question).
   DateTime _shownAt = DateTime.now();
@@ -171,6 +173,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   @override
   void initState() {
     super.initState();
+    _started = DateTime.now().subtract(Duration(seconds: widget.resume?.snapshot.elapsedSeconds ?? 0));
     final saved = widget.resume?.snapshot;
     if (saved == null) {
       logEvent(ref, AnalyticsEvent.lessonStart(widget.nodeId, mode: widget.mode.name));

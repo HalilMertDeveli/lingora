@@ -117,7 +117,8 @@ class CallableTalkService implements TalkService {
                 Result(:final result) => (done: true, data: result.data),
               },
             ),
-        (name, data) async => (await functions.httpsCallable(name).call<Object?>(data)).data,
+        (name, data) async =>
+            (await functions.httpsCallable(name).call<Object?>({...data, 'installId': ?installId})).data,
       );
 
   final CallableStreamer _stream;
@@ -129,6 +130,7 @@ class CallableTalkService implements TalkService {
   @override
   Stream<TalkEvent> talk(TalkRequest req) async* {
     var sent = 0;
+    var finished = false;
     try {
       await for (final r in _stream('talk', req.toApi()).timeout(const Duration(seconds: 60))) {
         if (!r.done) {
@@ -138,29 +140,21 @@ class CallableTalkService implements TalkService {
             yield s;
           }
         } else {
-          final j = Map<String, Object?>.from(r.data as Map);
-          // Clients that cannot stream get every sentence here.
-          if (sent == 0) {
-            for (final raw in (j['sentences'] as List? ?? const [])) {
-              final s = _sentence(raw);
-              if (s != null) yield s;
-            }
-          }
-          final timing = j['timing'] is Map ? Map<String, Object?>.from(j['timing'] as Map) : const {};
-          yield TalkDoneEvent(
-            ChatTurn(
-              reply: j['reply'] as String? ?? '',
-              correction: _nonEmpty(j['correction']),
-              tipTr: _nonEmpty(j['tip_tr']),
-              done: j['done'] as bool? ?? false,
-              remaining: (j['remaining'] as num?)?.toInt(),
-              free: j['free'] as bool? ?? false,
-            ),
-            neural: j['voice'] == 'neural',
-            talkSecondsLeft: (j['talkSecondsLeft'] as num?)?.toInt(),
-            serverFirstAudioMs: (timing['firstAudioMs'] as num?)?.toInt(),
-          );
+          finished = true;
+          yield* _result(r.data, sentencesSent: sent);
         }
+      }
+      if (!finished) {
+        // The Android plugin (cloud_functions 7.0.1, StreamResponseSubscriber)
+        // ends the stream quietly on a server error instead of failing it:
+        // the free-quota paywall and every error message were lost and the
+        // chat waited forever (QA, emulator). Nothing was said yet, so ask
+        // once more without streaming: its error (or reply) arrives intact.
+        if (sent > 0) throw FirebaseFunctionsException(code: 'unavailable', message: 'stream_cut');
+        yield* _result(
+          await _invoke('talk', req.toApi()).timeout(const Duration(seconds: 60)),
+          sentencesSent: 0,
+        );
       }
     } on FirebaseFunctionsException catch (e) {
       if (e.code == 'resource-exhausted' && e.message == ConversationException.freeQuotaCode) {
@@ -180,6 +174,31 @@ class CallableTalkService implements TalkService {
     } on Exception {
       throw const ConversationException(CallableConversationService.offlineMessage);
     }
+  }
+
+  Stream<TalkEvent> _result(Object? data, {required int sentencesSent}) async* {
+    final j = Map<String, Object?>.from(data as Map);
+    // Clients that cannot stream get every sentence here.
+    if (sentencesSent == 0) {
+      for (final raw in (j['sentences'] as List? ?? const [])) {
+        final s = _sentence(raw);
+        if (s != null) yield s;
+      }
+    }
+    final timing = j['timing'] is Map ? Map<String, Object?>.from(j['timing'] as Map) : const {};
+    yield TalkDoneEvent(
+      ChatTurn(
+        reply: j['reply'] as String? ?? '',
+        correction: _nonEmpty(j['correction']),
+        tipTr: _nonEmpty(j['tip_tr']),
+        done: j['done'] as bool? ?? false,
+        remaining: (j['remaining'] as num?)?.toInt(),
+        free: j['free'] as bool? ?? false,
+      ),
+      neural: j['voice'] == 'neural',
+      talkSecondsLeft: (j['talkSecondsLeft'] as num?)?.toInt(),
+      serverFirstAudioMs: (timing['firstAudioMs'] as num?)?.toInt(),
+    );
   }
 
   @override

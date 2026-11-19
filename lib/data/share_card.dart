@@ -75,7 +75,7 @@ ShareCardData buildShareCard(Progress p, DateTime now, {bool monthly = false}) {
       ? 'Seviyem: ${level.code}'
       : streak >= 2
       ? '$streak günlük seri!'
-      : "İngilizce'ye başladım!";
+      : 'İngilizceye başladım!';
   if (!monthly) {
     return ShareCardData(
       headline: headline,
