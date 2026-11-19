@@ -7,7 +7,10 @@ import { verifyPurchase } from "../src/purchase.js";
 import {
   MAX_REWARDS_PER_MONTH,
   REWARD_DAYS,
+  completeInviteReward,
   getInviteCode,
+  inviteStatus,
+  lessonsDoneOf,
   monthKey,
   normalizeCode,
   redeemInvite,
@@ -24,6 +27,19 @@ const ctx = (over: Partial<{ now: Date; accountCreatedAt: Date; signInProvider: 
   ...over,
 });
 const device = (n: number | string) => `device-${n}-0123456789`;
+
+/** The friend's synced progress after their first lesson. */
+async function firstLesson(uid: string, at = now) {
+  await db.doc(`users/${uid}`).set({ progress: { lessonsDone: 1 } }, { merge: true });
+  return completeInviteReward(db, uid, at);
+}
+
+/** Redeems and finishes the first lesson. */
+async function redeemAndLearn(uid: string, code: string, dev: string, c = ctx()) {
+  const r = await redeemInvite(db, uid, { code, deviceId: dev }, c);
+  assert.equal(r.status, "pending");
+  return firstLesson(uid, c.now);
+}
 
 beforeEach(clearFirestore);
 
@@ -51,22 +67,84 @@ test("getInviteCode creates one stable code per user", async () => {
   assert.notEqual(b.code, a.code);
 });
 
-test("redeeming gives both users 7 days of Premium", async () => {
+test("both users get 7 days of Premium after the friend's first lesson", async () => {
   const { code } = await getInviteCode(db, "alice", now);
   const r = await redeemInvite(db, "bob", { code: code.toLowerCase(), deviceId: device(1) }, ctx());
   assert.equal(r.ok, true);
-  assert.equal(r.inviterRewarded, true);
-  assert.equal(r.expiresAt, now.getTime() + REWARD_DAYS * DAY);
+  assert.equal(r.status, "pending");
+  assert.equal(r.expiresAt, undefined);
+  assert.equal((await inviteStatus(db, "bob")).status, "pending");
+  // Nothing yet: bob has not finished a lesson.
+  assert.equal((await db.doc("entitlements/bob").get()).exists, false);
+  assert.equal((await db.doc("entitlements/alice").get()).exists, false);
+  assert.equal(await completeInviteReward(db, "bob", now), null);
+
+  const reward = await firstLesson("bob");
+  assert.deepEqual(reward, { expiresAt: now.getTime() + REWARD_DAYS * DAY, inviterRewarded: true });
   for (const uid of ["alice", "bob"]) {
     const e = (await db.doc(`entitlements/${uid}`).get()).data()!;
     assert.equal(e.active, true);
-    assert.equal(e.source, "referral");
+    assert.equal(e.source, "invite");
     assert.equal(e.productId, "referral");
     assert.equal((e.expiresAt as Timestamp).toMillis(), now.getTime() + REWARD_DAYS * DAY);
   }
+  assert.equal((await inviteStatus(db, "bob")).status, "rewarded");
   const info = await getInviteCode(db, "alice", now);
   assert.equal(info.rewardedThisMonth, 1);
   assert.equal(info.totalRewarded, 1);
+  // Idempotent: a second sync does not add another week.
+  assert.equal(await firstLesson("bob"), null);
+  const e = (await db.doc("entitlements/bob").get()).data()!;
+  assert.equal((e.expiresAt as Timestamp).toMillis(), now.getTime() + REWARD_DAYS * DAY);
+});
+
+test("a friend who already finished a lesson is rewarded at once", async () => {
+  const { code } = await getInviteCode(db, "alice", now);
+  await db.doc("users/bob").set({ progress: { lessonsDone: 3 } });
+  const r = await redeemInvite(db, "bob", { code, deviceId: device(1) }, ctx());
+  assert.equal(r.status, "rewarded");
+  assert.equal(r.inviterRewarded, true);
+  assert.equal(r.expiresAt, now.getTime() + REWARD_DAYS * DAY);
+  assert.equal((await db.doc("entitlements/alice").get()).get("source"), "invite");
+  assert.equal(await completeInviteReward(db, "bob", now), null);
+});
+
+test("lessonsDoneOf reads the synced progress snapshot", () => {
+  assert.equal(lessonsDoneOf(undefined), 0);
+  assert.equal(lessonsDoneOf({}), 0);
+  assert.equal(lessonsDoneOf({ progress: { lessonsDone: "5" } }), 0);
+  assert.equal(lessonsDoneOf({ progress: { lessonsDone: 2 } }), 2);
+});
+
+test("an invite redeemed before this rule counts as rewarded", async () => {
+  await db.doc("referralRedemptions/old").set({ inviterUid: "alice", code: "ABCDEFG", inviterRewarded: true });
+  assert.equal((await inviteStatus(db, "old")).status, "rewarded");
+  assert.equal(await completeInviteReward(db, "old", now), null);
+  assert.equal((await inviteStatus(db, "nobody")).status, "none");
+});
+
+test("a friend cannot redeem on the inviter's own phone", async () => {
+  const { code } = await getInviteCode(db, "alice", now, device("alice-phone"));
+  await rejectsWith(
+    redeemInvite(db, "bob", { code, deviceId: device("alice-phone") }, ctx()),
+    "failed-precondition",
+    "same_device",
+  );
+  // A phone alice uses later is remembered too.
+  await getInviteCode(db, "alice", now, device("alice-tablet"));
+  await rejectsWith(
+    redeemInvite(db, "bob", { code, deviceId: device("alice-tablet") }, ctx()),
+    "failed-precondition",
+    "same_device",
+  );
+  const r = await redeemInvite(db, "bob", { code, deviceId: device("bob-phone") }, ctx());
+  assert.equal(r.status, "pending");
+});
+
+test("the inviter's device list stays small", async () => {
+  for (let i = 0; i < 8; i++) await getInviteCode(db, "alice", now, device(`a${i}`));
+  const hashes = (await db.doc("referrals/alice").get()).get("deviceHashes") as string[];
+  assert.equal(hashes.length, 5);
 });
 
 test("one redemption per account and per device", async () => {
@@ -107,8 +185,8 @@ test("rejects own code, unknown codes, mutual invites, old and anonymous account
 test("an inviter earns at most MAX_REWARDS_PER_MONTH rewards a month", async () => {
   const { code } = await getInviteCode(db, "alice", now);
   for (let i = 0; i < MAX_REWARDS_PER_MONTH + 1; i++) {
-    const r = await redeemInvite(db, `friend${i}`, { code, deviceId: device(i) }, ctx());
-    assert.equal(r.inviterRewarded, i < MAX_REWARDS_PER_MONTH, `friend${i}`);
+    const r = await redeemAndLearn(`friend${i}`, code, device(i));
+    assert.equal(r?.inviterRewarded, i < MAX_REWARDS_PER_MONTH, `friend${i}`);
     // The new user is always rewarded.
     assert.equal((await db.doc(`entitlements/friend${i}`).get()).get("active"), true);
   }
@@ -118,8 +196,8 @@ test("an inviter earns at most MAX_REWARDS_PER_MONTH rewards a month", async () 
 
   // Next month the counter starts again.
   const later = new Date("2026-12-02T09:00:00Z");
-  const r = await redeemInvite(db, "next", { code, deviceId: device("next") }, ctx({ now: later, accountCreatedAt: later }));
-  assert.equal(r.inviterRewarded, true);
+  const r = await redeemAndLearn("next", code, device("next"), ctx({ now: later, accountCreatedAt: later }));
+  assert.equal(r?.inviterRewarded, true);
 });
 
 test("a running paid subscription is extended, not replaced", async () => {
@@ -129,9 +207,31 @@ test("a running paid subscription is extended, not replaced", async () => {
   });
   const paidUntil = ((await db.doc("entitlements/alice").get()).get("expiresAt") as Timestamp).toMillis();
   const { code } = await getInviteCode(db, "alice", now);
-  await redeemInvite(db, "bob", { code, deviceId: device(1) }, ctx());
+  await redeemAndLearn("bob", code, device(1));
   const e = (await db.doc("entitlements/alice").get()).data()!;
   assert.equal(e.source, "test");
   assert.equal(e.productId, "lingora_premium_monthly");
   assert.equal((e.expiresAt as Timestamp).toMillis(), paidUntil + REWARD_DAYS * DAY);
+});
+
+test("a longer open-ended Premium is never shortened", async () => {
+  await db.doc("entitlements/alice").set({ active: true, premium: true, source: "test", productId: "lifetime" });
+  const { code } = await getInviteCode(db, "alice", now);
+  await redeemAndLearn("bob", code, device(1));
+  const e = (await db.doc("entitlements/alice").get()).data()!;
+  assert.equal(e.expiresAt, undefined);
+  assert.equal(e.productId, "lifetime");
+});
+
+test("an expired invite Premium restarts from today", async () => {
+  await db.doc("entitlements/alice").set({
+    active: true,
+    source: "invite",
+    productId: "referral",
+    expiresAt: Timestamp.fromMillis(now.getTime() - DAY),
+  });
+  const { code } = await getInviteCode(db, "alice", now);
+  await redeemAndLearn("bob", code, device(1));
+  const e = (await db.doc("entitlements/alice").get()).data()!;
+  assert.equal((e.expiresAt as Timestamp).toMillis(), now.getTime() + REWARD_DAYS * DAY);
 });

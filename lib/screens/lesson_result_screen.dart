@@ -18,6 +18,7 @@ import '../ui/my_avatar.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/stoic_card.dart';
+import 'invite_nudge.dart';
 
 /// Accuracy from which the end screen cheers (big hop) instead of a wave.
 const successAccuracy = 90;
@@ -229,6 +230,11 @@ class _LessonResultScreenState extends State<LessonResultScreen> {
                     ),
                   ),
                 ],
+                // A perfect run is a good moment to bring a friend (paced, never for kids).
+                if (widget.perfect && widget.quote == null) ...[
+                  const SizedBox(height: 14),
+                  const InviteNudge(place: InviteNudgePlace.perfectLesson),
+                ],
                 const Spacer(),
                 PressableButton(
                   label: 'DEVAM',
@@ -327,6 +333,9 @@ class _StreakCelebrationScreenState extends State<StreakCelebrationScreen> {
               if (streakOfferMilestones.contains(streak)) ...[
                 const SizedBox(height: 16),
                 _MilestoneOffer(streak: streak),
+              ] else if (streak >= 3) ...[
+                const SizedBox(height: 16),
+                const InviteNudge(place: InviteNudgePlace.streak),
               ],
               const Spacer(),
               PressableButton(

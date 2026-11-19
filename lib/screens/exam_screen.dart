@@ -11,6 +11,7 @@ import '../data/progress.dart';
 import '../models/exam.dart';
 import '../study/analysis.dart' show markAndSkipSeconds;
 import '../study/answer_recorder.dart';
+import '../study/mock_attempt.dart';
 import '../study/question_types.dart';
 import 'study/mock_report_screen.dart';
 import '../models/exam_pack.dart';
@@ -294,9 +295,11 @@ class ExamSessionScreen extends ConsumerStatefulWidget {
   ConsumerState<ExamSessionScreen> createState() => _ExamSessionScreenState();
 }
 
-class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
+class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> with WidgetsBindingObserver {
   final ExamAnswers _answers = {};
-  final _started = DateTime.now();
+  late DateTime _started = _clock();
+
+  DateTime _clock() => ref.read(clockProvider)();
 
   /// Time spent on each question (mocks allow going back and forth).
   final Map<int, Duration> _times = {};
@@ -318,7 +321,46 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   bool _glossLocked = false;
   int _shake = 0;
   Timer? _timer;
-  late int _secondsLeft = (widget.minutes ?? widget.exam.mockMinutes) * 60;
+  bool _finished = false;
+
+  /// A mock's end time: the clock counts down to it (not tick by tick), so
+  /// time away from the app (suspended, a call, killed) is not extra time.
+  late DateTime _deadline;
+  late final MockAttempts _attempts = MockAttempts(ref.read(prefsProvider));
+  String get _attemptId => widget.nodeId ?? widget.fullMock?.id ?? widget.exam.id;
+  int get _secondsLeft => widget.mock ? secondsLeft(_deadline, _clock()) : 0;
+
+  /// Keeps the attempt (end time, answers, place) for a reopened mock.
+  void _persist() {
+    if (!widget.mock || _finished) return;
+    _attempts.save(
+      _attemptId,
+      MockAttempt(
+        questionIds: [for (final q in widget.questions) q.id],
+        startedAt: _started,
+        deadline: _deadline,
+        answers: Map.of(_answers),
+        pos: _pos,
+      ),
+    );
+  }
+
+  int _shownSeconds = -1;
+
+  void _tick() {
+    if (!mounted || _finished) return;
+    final left = _secondsLeft;
+    if (left <= 0) {
+      _finish();
+    } else if (left != _shownSeconds) {
+      setState(() => _shownSeconds = left);
+    }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _tick();
+  }
 
   ExamQuestion get _q => widget.questions[_pos];
 
@@ -326,16 +368,31 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   void initState() {
     super.initState();
     if (widget.mock) {
-      _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-        if (!mounted) return;
-        setState(() => _secondsLeft--);
-        if (_secondsLeft <= 0) _finish();
-      });
+      final saved = _attempts.load(_attemptId, [for (final q in widget.questions) q.id]);
+      if (saved != null) {
+        // The same mock reopened (e.g. after the app was closed): continue it.
+        _started = saved.startedAt;
+        _deadline = saved.deadline;
+        _answers.addAll({
+          for (final e in saved.answers.entries)
+            if (e.key >= 0 && e.key < widget.questions.length) e.key: e.value,
+        });
+        _pos = saved.pos.clamp(0, widget.questions.length - 1);
+        _picked = _answers[_pos];
+      } else {
+        _deadline = _started.add(Duration(minutes: widget.minutes ?? widget.exam.mockMinutes));
+      }
+      _persist();
+      WidgetsBinding.instance.addObserver(this);
+      _timer = Timer.periodic(const Duration(milliseconds: 500), (_) => _tick());
+      // Time ran out while the app was closed: score what was answered.
+      if (_secondsLeft <= 0) WidgetsBinding.instance.addPostFrameCallback((_) => _tick());
     }
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _timer?.cancel();
     super.dispose();
   }
@@ -350,6 +407,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
         _picked == null ? _answers.remove(_pos) : _answers[_pos] = _picked!;
       }
     });
+    _persist();
   }
 
   /// Mock exams: move freely between questions; blanks are allowed.
@@ -360,6 +418,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
       _pos = pos;
       _picked = _answers[pos];
     });
+    _persist();
   }
 
   /// The "2 minutes" rule in a mock: time to mark and skip (reading has
@@ -415,9 +474,11 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
   }
 
   void _finish() {
-    if (_timer == null && widget.mock) return; // already finished
+    if (_finished) return;
+    _finished = true;
     _timer?.cancel();
     _timer = null;
+    if (widget.mock) _attempts.clear(_attemptId);
     final qs = widget.questions;
     _leave();
     // A practice set logs only the questions reached.
@@ -439,7 +500,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     final percent = qs.isEmpty ? 0 : (correct * 100 / qs.length).round();
     final notifier = ref.read(progressProvider.notifier);
     final nodeId = widget.nodeId;
-    if (nodeId != null) notifier.recordMock(nodeId, percent, DateTime.now().difference(_started));
+    if (nodeId != null) notifier.recordMock(nodeId, percent, _clock().difference(_started));
     // A path's mock leaves the question bank's mini mock score alone; a pack
     // mock keeps its own best score wherever it was opened from.
     if (widget.mock && (nodeId == null || widget.fullMock != null)) {
@@ -461,7 +522,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
             mock: full,
             answers: _answers,
             xp: reward.xp,
-            duration: DateTime.now().difference(_started),
+            duration: _clock().difference(_started),
             reportSource: logSource,
           ),
         ),
@@ -476,7 +537,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
           answers: _answers,
           xp: reward.xp,
           mock: widget.mock,
-          duration: DateTime.now().difference(_started),
+          duration: _clock().difference(_started),
           reportSource: widget.mock ? logSource : null,
         ),
       ),
@@ -512,6 +573,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
     );
     if (quit && mounted) {
       _timer?.cancel();
+      if (widget.mock) _attempts.clear(_attemptId);
       Navigator.of(context).pop();
     }
   }

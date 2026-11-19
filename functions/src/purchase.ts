@@ -21,6 +21,7 @@ import { HttpsError } from "firebase-functions/v2/https";
 
 import { FAMILY_PRODUCT, FAMILY_SEATS } from "./family.js";
 import { PACKAGE_NAME, PlayApi, PlayApiError, SubscriptionAccess, subscriptionAccess } from "./play.js";
+import { countInTx } from "./stats.js";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -207,6 +208,8 @@ export async function syncSubscription(
     const family = productId === FAMILY_PRODUCT ? (await tx.get(db.doc(`families/${uid}`))).data() : undefined;
     const memberUids = Object.keys((family?.members as Record<string, unknown>) ?? {});
     const memberEnts = await Promise.all(memberUids.map((m) => tx.get(db.doc(`entitlements/${m}`))));
+    // Owner dashboard: each purchase counts once, the first time it gives access.
+    const firstGrant = access.entitled && bound.get("statsCounted") !== true;
 
     tx.set(
       tokenRef,
@@ -218,9 +221,11 @@ export async function syncSubscription(
         playState: access.playState,
         updatedAt: FieldValue.serverTimestamp(),
         ...(bound.exists ? {} : { createdAt: FieldValue.serverTimestamp() }),
+        ...(firstGrant ? { statsCounted: true } : {}),
       },
       { merge: true },
     );
+    if (firstGrant) countInTx(tx, db, "purchase_verified", now);
 
     const next = applySubscription(tx, db, uid, current, hash, productId, access, now, family, memberEnts);
     return {
@@ -354,6 +359,7 @@ export async function syncPack(
     const entRef = db.doc(`entitlements/${uid}`);
     const current = (await tx.get(entRef)).data();
     const packs = packsOf(current);
+    const firstGrant = state === 0 && bound.get("statsCounted") !== true;
     tx.set(
       tokenRef,
       {
@@ -364,9 +370,11 @@ export async function syncPack(
         purchaseState: state ?? null,
         updatedAt: FieldValue.serverTimestamp(),
         ...(bound.exists ? {} : { createdAt: FieldValue.serverTimestamp() }),
+        ...(firstGrant ? { statsCounted: true } : {}),
       },
       { merge: true },
     );
+    if (firstGrant) countInTx(tx, db, "purchase_verified", now);
     if (state === 0) {
       packs[pack] = true;
       tx.set(
@@ -470,7 +478,10 @@ async function grantTestPurchase(
     const family = productId === FAMILY_PRODUCT ? (await tx.get(familyRef)).data() : undefined;
     const memberUids = Object.keys((family?.members as Record<string, unknown>) ?? {});
     const memberEnts = await Promise.all(memberUids.map((m) => tx.get(db.doc(`entitlements/${m}`))));
-    if (!bound.exists) tx.set(tokenRef, { uid, productId, kind: "test", createdAt: FieldValue.serverTimestamp() });
+    if (!bound.exists) {
+      tx.set(tokenRef, { uid, productId, kind: "test", statsCounted: true, createdAt: FieldValue.serverTimestamp() });
+      countInTx(tx, db, "purchase_verified", nowDate);
+    }
 
     const packs = packsOf(current);
     const pack = PACK_PRODUCTS[productId];
