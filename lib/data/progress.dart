@@ -15,11 +15,13 @@ import '../services/billing/premium_perks.dart' show goldMultiplierProvider;
 import 'catalog.dart';
 import 'league.dart';
 import 'level_report.dart';
+import 'progress_tally.dart';
 import 'quests.dart';
 import 'review_grade.dart';
 import 'wallet.dart';
 
 export 'review_grade.dart' show ReviewGrade;
+export 'progress_tally.dart' show ProgressTally;
 
 /// Most questions kept in the error notebook (oldest dropped first).
 const maxMistakes = 300;
@@ -89,7 +91,25 @@ class Progress {
     this.wallet = const Wallet(),
     this.learnGoal,
     this.levelReports = const [],
+    this.tally,
+    this.resetAt = 0,
+    this.wordAt = const {},
   });
+
+  /// Per-device counters behind the additive numbers, so two devices' work
+  /// adds up on sync (lib/data/progress_tally.dart). Null in copies saved
+  /// before it existed.
+  final ProgressTally? tally;
+
+  /// When the learner last reset their progress (ms since epoch, 0 = never).
+  /// On sync a copy from before the reset is discarded, so another device
+  /// cannot bring the old progress back.
+  final int resetAt;
+
+  /// When each word was last reviewed (ms since epoch). Two devices' reviews
+  /// of the same word are merged by the latest one ([wordLast] has the day
+  /// only); missing in copies saved before it existed.
+  final Map<String, int> wordAt;
 
   /// Seviye Karnesi results, oldest first (lib/data/level_report.dart).
   final List<LevelReport> levelReports;
@@ -337,6 +357,9 @@ class Progress {
     Wallet? wallet,
     LearnGoal? learnGoal,
     List<LevelReport>? levelReports,
+    ProgressTally? tally,
+    int? resetAt,
+    Map<String, int>? wordAt,
   }) => Progress(
     onboarded: onboarded ?? this.onboarded,
     dailyGoal: dailyGoal ?? this.dailyGoal,
@@ -378,6 +401,9 @@ class Progress {
     wallet: wallet ?? this.wallet,
     learnGoal: learnGoal ?? this.learnGoal,
     levelReports: levelReports ?? this.levelReports,
+    tally: tally ?? this.tally,
+    resetAt: resetAt ?? this.resetAt,
+    wordAt: wordAt ?? this.wordAt,
   );
 
   Map<String, dynamic> toJson() => {
@@ -421,6 +447,9 @@ class Progress {
     'wallet': wallet.toJson(),
     'learnGoal': ?learnGoal?.toJson(),
     'levelReports': [for (final r in levelReports) r.toJson()],
+    'tally': ?tally?.toJson(),
+    'resetAt': resetAt,
+    'wordAt': wordAt,
   };
 
   factory Progress.fromJson(Map<String, dynamic> j) => Progress(
@@ -480,6 +509,12 @@ class Progress {
       for (final r in (j['levelReports'] as List?) ?? const [])
         if (r is Map) LevelReport.fromJson(Map<String, dynamic>.from(r)),
     ],
+    tally: ProgressTally.fromJson(j['tally']),
+    resetAt: (j['resetAt'] as num?)?.toInt() ?? 0,
+    wordAt: {
+      for (final e in ((j['wordAt'] as Map?) ?? const {}).entries)
+        if (e.value is num) e.key as String: (e.value as num).toInt(),
+    },
   );
 }
 
@@ -552,11 +587,11 @@ class ProgressNotifier extends Notifier<Progress> {
   @override
   Progress build() {
     final raw = _prefs.getString(_key);
-    if (raw == null) return const Progress();
+    if (raw == null) return const Progress(tally: ProgressTally.empty);
     try {
-      return Progress.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+      return migrateTally(Progress.fromJson(jsonDecode(raw) as Map<String, dynamic>));
     } catch (_) {
-      return const Progress();
+      return const Progress(tally: ProgressTally.empty);
     }
   }
 
@@ -574,8 +609,10 @@ class ProgressNotifier extends Notifier<Progress> {
           if (recent(c)) c,
       ],
     );
-    state = pruned;
-    _prefs.setString(_key, jsonEncode(pruned.toJson()));
+    // This device's share of the additive numbers, for the sync merge.
+    final stamped = stampTally(pruned, device);
+    state = stamped;
+    _prefs.setString(_key, jsonEncode(stamped.toJson()));
   }
 
   void finishOnboarding(int dailyGoal) => _save(state.copyWith(onboarded: true, dailyGoal: dailyGoal));
@@ -953,6 +990,7 @@ class ProgressNotifier extends Notifier<Progress> {
         wordBox: {...state.wordBox, id: box},
         wordDue: {...state.wordDue, id: due},
         wordLast: {...state.wordLast, id: dayKey(now)},
+        wordAt: {...state.wordAt, id: now.millisecondsSinceEpoch},
       ),
     );
   }
@@ -978,6 +1016,7 @@ class ProgressNotifier extends Notifier<Progress> {
           id: dayKey(now.add(Duration(days: next.days))),
         },
         wordLast: {...state.wordLast, id: dayKey(now)},
+        wordAt: {...state.wordAt, id: now.millisecondsSinceEpoch},
       ),
     );
     if (!fresh || !countNew) return;
@@ -990,8 +1029,15 @@ class ProgressNotifier extends Notifier<Progress> {
   /// today's review queue.
   void triageWord(String id, {required bool known}) {
     final box = known ? 3 : 0;
-    final due = dayKey(_now().add(Duration(days: reviewIntervals[box])));
-    _save(state.copyWith(wordBox: {...state.wordBox, id: box}, wordDue: {...state.wordDue, id: due}));
+    final now = _now();
+    final due = dayKey(now.add(Duration(days: reviewIntervals[box])));
+    _save(
+      state.copyWith(
+        wordBox: {...state.wordBox, id: box},
+        wordDue: {...state.wordDue, id: due},
+        wordAt: {...state.wordAt, id: now.millisecondsSinceEpoch},
+      ),
+    );
   }
 
   void saveDiary(String day, String text) {
@@ -1071,6 +1117,7 @@ class ProgressNotifier extends Notifier<Progress> {
         wordBox: box,
         wordDue: due,
         wordLast: {...state.wordLast}..remove(id),
+        wordAt: {...state.wordAt}..remove(id),
         removedWords: {
           ...state.removedWords,
           for (final w in removed) w.en.trim().toLowerCase(): _now().millisecondsSinceEpoch,
@@ -1125,9 +1172,20 @@ class ProgressNotifier extends Notifier<Progress> {
   /// lib/services/firebase/progress_sync.dart).
   void applySynced(Progress merged) => _save(merged);
 
+  /// The learner's "İlerlemeyi sıfırla": starts over on every device. The
+  /// reset time travels with the progress, so a copy from before it (another
+  /// phone, the cloud) is discarded on sync instead of bringing it back.
   void reset() {
     ref.read(learningEvidenceProvider.notifier).reset();
-    _save(const Progress(onboarded: true));
+    _save(Progress(onboarded: true, tally: ProgressTally.empty, resetAt: _now().millisecondsSinceEpoch));
+  }
+
+  /// Drops this phone's copy because another account signed in (see
+  /// ProgressSync). Unlike [reset], the account's own progress is kept.
+  /// The on-device learning evidence belonged to the other account.
+  void clearForAccountSwitch() {
+    ref.read(learningEvidenceProvider.notifier).reset();
+    _save(const Progress(onboarded: true, tally: ProgressTally.empty));
   }
 
   /// "Gerçek ilerleme": a word known on a later day than it was last seen.

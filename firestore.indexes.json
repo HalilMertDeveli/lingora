@@ -1,6 +1,14 @@
 {
   "indexes": [
     {
+      "collectionGroup": "entitlements",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "active", "order": "ASCENDING" },
+        { "fieldPath": "expiresAt", "order": "ASCENDING" }
+      ]
+    },
+    {
       "collectionGroup": "reports",
       "queryScope": "COLLECTION",
       "fields": [

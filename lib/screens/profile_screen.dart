@@ -12,6 +12,7 @@ import '../ui/gold_coin.dart';
 import 'account_section.dart';
 import 'error_analysis_screen.dart';
 import 'growth_profile_section.dart';
+import 'help_screen.dart';
 import 'family_screen.dart';
 import 'friends_screen.dart';
 import 'contacts_friends_screen.dart';
@@ -233,6 +234,30 @@ class ProfileScreen extends ConsumerWidget {
             ],
           ),
         ),
+        const SizedBox(height: 12),
+        TapCard(
+          key: const ValueKey('profile-help'),
+          onTap: () => openHelp(context),
+          child: Row(
+            children: [
+              const Glyph(emoji: '🛟', icon: Icons.help_outline_rounded),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Yardım ve SSS', style: t.titleMedium),
+                    Text(
+                      'Abonelik, ses, mikrofon, hesap… ya da bize yaz',
+                      style: TextStyle(color: Brand.muted),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.chevron_right_rounded, color: Brand.muted),
+            ],
+          ),
+        ),
         const SizedBox(height: 32),
         OutlinedButton.icon(
           icon: Icon(Icons.restart_alt, color: Brand.error),
@@ -242,7 +267,10 @@ class ProfileScreen extends ConsumerWidget {
               context: context,
               builder: (c) => AlertDialog(
                 title: const Text('İlerleme sıfırlansın mı?'),
-                content: const Text('Tüm XP, seri ve tamamlanan dersler silinir. Bu işlem geri alınamaz.'),
+                content: const Text(
+                  'Tüm XP, seri ve tamamlanan dersler silinir; hesabınla eşitlenen diğer cihazlarında da '
+                  'sıfırlanır. Bu işlem geri alınamaz.',
+                ),
                 actions: [
                   TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Vazgeç')),
                   TextButton(

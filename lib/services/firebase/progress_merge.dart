@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import '../../data/level_report.dart';
 import '../../data/progress.dart';
+import '../../data/progress_tally.dart';
 import '../../models/notes.dart';
 import '../../data/wallet.dart';
 import '../../goals/learn_goal.dart';
@@ -10,8 +11,13 @@ import '../../models/study_plan.dart';
 /// Merges two copies of the user's progress (this device and the cloud) so
 /// that nothing earned is ever lost:
 ///
-/// * counters and achievements (XP, completed nodes, lesson/answer counts,
-///   quest counters, exam bests, error stats) take the maximum per key;
+/// * a copy from before a progress reset ([Progress.resetAt]) is discarded:
+///   the copy with the later reset is taken as it is;
+/// * additive numbers (XP, XP per day, completed nodes, lesson/answer
+///   counts, quest counters, reading words, error stats) add up per device
+///   without counting anything twice ([mergeTallies]); copies without a
+///   tally fall back to the maximum;
+/// * exam bests take the maximum per key;
 /// * collections the user builds up (claimed quests, diary days) are
 ///   united;
 /// * own words and own notes are united per item, the later edit winning;
@@ -23,6 +29,8 @@ import '../../models/study_plan.dart';
 /// * the Altın wallet is merged by [mergeWallets] (no gold is lost);
 /// * Seviye Karnesi reports are united per day ([mergeLevelReports]).
 Progress mergeProgress(Progress local, Progress remote, {required bool localNewer}) {
+  // A reset wins over everything from before it, on any device.
+  if (local.resetAt != remote.resetAt) return local.resetAt > remote.resetAt ? local : remote;
   final newer = localNewer ? local : remote;
   final older = localNewer ? remote : local;
 
@@ -39,25 +47,27 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
   final cmp = la.compareTo(ra);
   final streakFrom = cmp > 0 ? local : (cmp < 0 ? remote : (local.streak >= remote.streak ? local : remote));
 
-  // Spaced repetition: per word, the copy with the later due day.
+  // Spaced repetition: per word, the copy reviewed last (see [laterReview]).
   final wordBox = <String, int>{};
   final wordDue = <String, String>{};
   final wordLast = <String, String>{};
+  final wordAt = <String, int>{};
   for (final id in {
     ...local.wordBox.keys,
     ...remote.wordBox.keys,
     ...local.wordDue.keys,
     ...remote.wordDue.keys,
   }) {
-    final ld = local.wordDue[id];
-    final rd = remote.wordDue[id];
-    final useRemote = ld == null || (rd != null && (rd.compareTo(ld) > 0 || (rd == ld && !localNewer)));
+    final useRemote = laterReview(remote, local, id, aNewer: !localNewer);
     final src = useRemote ? remote : local;
-    final due = useRemote ? rd : ld;
     if (src.wordBox[id] case final b?) wordBox[id] = b;
-    if (due != null) wordDue[id] = due;
+    if (src.wordDue[id] case final d?) wordDue[id] = d;
     if (src.wordLast[id] case final l?) wordLast[id] = l;
+    if (src.wordAt[id] case final t?) wordAt[id] = t;
   }
+
+  // Additive numbers: per-device counters, nothing lost or counted twice.
+  final sums = mergeTallies(local, remote);
 
   // League: the later week wins; same week → the newer copy.
   final lw = local.leagueWeek ?? '';
@@ -85,7 +95,9 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     if (have == null || n.updatedAt > have.updatedAt) notes[n.id] = n;
   }
 
-  return Progress(
+  final merged = Progress(
+    resetAt: local.resetAt,
+    wordAt: wordAt,
     onboarded: local.onboarded || remote.onboarded,
     dailyGoal: newer.dailyGoal,
     totalXp: maxInt(local.totalXp, remote.totalXp),
@@ -139,6 +151,26 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     // Seviye Karnesi: one report per day, united.
     levelReports: mergeLevelReports(local.levelReports, remote.levelReports),
   );
+  return withCounts(merged, sums.counts).copyWith(tally: sums.tally);
+}
+
+/// Whether [a]'s review of word [id] is later than [b]'s: by the last review
+/// day, then the exact review time (copies saved before [Progress.wordAt]
+/// have none), then the later due day (the old rule); on a full tie,
+/// [aNewer] (whether [a] is the copy changed last).
+bool laterReview(Progress a, Progress b, String id, {required bool aNewer}) {
+  int cmp<T extends Comparable<T>>(T? x, T? y) =>
+      x == null ? (y == null ? 0 : -1) : (y == null ? 1 : x.compareTo(y));
+  if (!a.wordBox.containsKey(id) && !a.wordDue.containsKey(id)) return false;
+  if (!b.wordBox.containsKey(id) && !b.wordDue.containsKey(id)) return true;
+  for (final c in [
+    cmp<String>(a.wordLast[id], b.wordLast[id]),
+    cmp<num>(a.wordAt[id], b.wordAt[id]),
+    cmp<String>(a.wordDue[id], b.wordDue[id]),
+  ]) {
+    if (c != 0) return c > 0;
+  }
+  return aNewer;
 }
 
 LearnGoal? _laterGoal(LearnGoal? a, LearnGoal? b) {

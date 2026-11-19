@@ -18,7 +18,7 @@ Genel:
 | Kişisel bilgiler > Kullanıcı kimlikleri | Evet | Hayır | İsteğe bağlı (hesap) | Uygulama işlevselliği, hesap yönetimi, sahtekârlığı önleme (davet) |
 | Finansal bilgiler > Satın alma geçmişi | Evet | Hayır | İsteğe bağlı | Uygulama işlevselliği (Premium) |
 | Mesajlar > Diğer uygulama içi mesajlar | Evet: yapay zekâ sohbeti, Ses Koçu, Mülakat Provası ve yazma değerlendirmesi metinleri (yazılan ya da konuşma tanımanın metne çevirdiği cevaplar, ses değil); Mülakat Provası metni ve analizi hesap silinene kadar saklanır | Evet (Anthropic, hizmet sağlayıcı)* | İsteğe bağlı | Uygulama işlevselliği |
-| Ses > Ses kayıtları | Hayır (konuşma tanıma cihazda; ses Dilmaç sunucusuna ve Anthropic'e gitmez, yalnızca metin gider) | – | – | – |
+| Ses > Ses kayıtları | Hayır: ses Dilmaç sunucusuna ve Anthropic'e gitmez, yalnızca metin gider. Konuşma tanımayı Android'in konuşma tanıma hizmeti (genellikle Google) yapar; çevrimdışı paket yoksa sesi Google sunucularında işleyebilir (Dilmaç'ın değil sistemin hizmeti; gizlilik politikası 2.2'de açıkça yazıyor). Mülakat Provası ses kayıtları yalnızca cihazda dosya olarak saklanır (cihazdan çıkmadığı için Play tanımında "toplama" sayılmaz); hesaptan çıkınca, hesap değişince ve hesap silinince silinir | – | – | – |
 | Uygulama etkinliği > Uygulama etkileşimleri | Evet (izinle) | Hayır | İsteğe bağlı | Analiz |
 | Uygulama bilgileri ve performansı > Kilitlenme günlükleri | Hayır (Crashlytics yok) | – | – | – |
 | Cihaz veya diğer kimlikler | Evet (Firebase kurulum/analiz kimliği, rastgele kurulum kimliği özeti) | Hayır | Analiz isteğe bağlı | Analiz, sahtekârlığı önleme, uygulama işlevselliği |

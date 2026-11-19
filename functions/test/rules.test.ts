@@ -216,3 +216,34 @@ test("users: a deleted account cannot write its progress back", async () => {
   await assertFails(getDoc(doc(db("erin"), "deletedAccounts/erin")));
   await assertFails(deleteDoc(doc(db("erin"), "deletedAccounts/erin")));
 });
+
+test("daily readings: any signed-in learner reads, nobody writes", async () => {
+  await env.withSecurityRulesDisabled(async (ctx) => {
+    const f = ctx.firestore();
+    await setDoc(doc(f, "daily/2026-11-19"), { date: "2026-11-19", levels: ["B1"] });
+    await setDoc(doc(f, "daily/2026-11-19/levels/B1"), { title: "x" });
+  });
+  for (const reader of [db("alice"), guestDb("guest")]) {
+    await assertSucceeds(getDoc(doc(reader, "daily/2026-11-19")));
+    await assertSucceeds(getDoc(doc(reader, "daily/2026-11-19/levels/B1")));
+    await assertSucceeds(getDocs(collection(reader, "daily/2026-11-19/levels")));
+  }
+  await assertFails(getDoc(doc(db(), "daily/2026-11-19/levels/B1")));
+  await assertFails(setDoc(doc(db("alice"), "daily/2026-11-19/levels/B1"), { title: "y" }));
+  await assertFails(setDoc(doc(db("alice"), "daily/2026-11-20"), { date: "2026-11-20" }));
+  await assertFails(deleteDoc(doc(db("alice"), "daily/2026-11-19")));
+});
+
+test("config: only the exam campaign schedule is readable", async () => {
+  await env.withSecurityRulesDisabled(async (ctx) => {
+    const f = ctx.firestore();
+    await setDoc(doc(f, "config/examCampaigns"), { exams: {} });
+    await setDoc(doc(f, "config/lingoraAdmins"), { uids: ["x"] });
+  });
+  await assertSucceeds(getDoc(doc(db("alice"), "config/examCampaigns")));
+  await assertSucceeds(getDoc(doc(guestDb("guest"), "config/examCampaigns")));
+  await assertFails(getDoc(doc(db(), "config/examCampaigns")));
+  await assertFails(setDoc(doc(db("alice"), "config/examCampaigns"), { exams: {} }));
+  await assertFails(getDoc(doc(db("alice"), "config/lingoraAdmins")));
+  await assertFails(getDocs(collection(db("alice"), "config")));
+});

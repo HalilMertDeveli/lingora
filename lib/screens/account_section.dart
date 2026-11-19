@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/rehearsal.dart';
 import '../services/firebase/account_service.dart';
 import '../services/firebase/firebase_providers.dart';
 import '../services/firebase/progress_sync.dart';
@@ -128,7 +129,8 @@ class _DeleteAccountButtonState extends ConsumerState<DeleteAccountButton> {
           'arkadaşlıklar, lig kaydı ve satın alım kayıtları. Bu geri alınamaz.\n\n'
           'Google Play aboneliğin varsa silme işlemi onu iptal etmez; Google Play > Ödemeler ve '
           'abonelikler bölümünden iptal et.\n\n'
-          'Bu telefondaki ilerlemen silinmez; onu da silmek için uygulamayı kaldırabilirsin.',
+          'Bu telefondaki Mülakat Provası kayıtların ve ses kayıtların da silinir. Bu telefondaki '
+          'ilerlemen silinmez; onu da silmek için uygulamayı kaldırabilirsin.',
         ),
         actions: [
           TextButton(onPressed: () => Navigator.of(ctx).pop(false), child: const Text('Vazgeç')),
@@ -148,9 +150,12 @@ class _DeleteAccountButtonState extends ConsumerState<DeleteAccountButton> {
     final messenger = ScaffoldMessenger.of(context);
     // Keep the sync from writing users/{uid} back while it is deleted.
     final sync = ref.read(progressSyncProvider.notifier);
+    final rehearsals = ref.read(rehearsalProvider.notifier);
     sync.pause();
     try {
       await widget.service.deleteAccount();
+      // Mülakat Provası answers and recordings on this phone go too.
+      rehearsals.clearLocal();
       messenger.showSnackBar(const SnackBar(content: Text('Hesabın ve bulut verilerin silindi.')));
     } on AccountException catch (e) {
       if (mounted) ref.invalidate(progressSyncProvider); // not deleted: sync again
