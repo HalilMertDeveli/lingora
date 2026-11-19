@@ -221,3 +221,18 @@ Scenario characterScenario(Character c, {bool call = false, String topic = ''}) 
 String _topicEn(String topic) =>
     [...everydayTopics, ...academicTopics, ...workTopics].where((t) => t.tr == topic).firstOrNull?.en ??
     topic;
+
+/// Short backchannels a listener says while thinking ("Mm-hm."). Neutral, so
+/// they fit good and bad news alike.
+const backchannels = ['Mm-hm.', 'Right…', 'Okay.', 'I see.', 'Hmm.', 'Ah, okay.'];
+
+/// The backchannels for a partner: the neutral ones plus a character's own.
+List<String> backchannelsFor(Character? c) => [
+  ...backchannels,
+  ...switch (c?.id) {
+    'taxi_london' => const ['Right, mate.'],
+    'hostel_zoe' => const ['Oh, right.'],
+    'hr_manager' || 'lecturer' => const ['Mm, interesting.'],
+    _ => const <String>[],
+  },
+];

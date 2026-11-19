@@ -11,11 +11,15 @@ import { cleanCorrections, conversationReport } from "../src/conversation_report
 import { ClaudeClient, FREE_DAILY_MESSAGE_LIMIT, MODEL } from "../src/converse.js";
 import {
   estimateTurnSeconds,
+  relevantCorrection,
   FAIR_USE_SECONDS,
   ReplyExtractor,
   SentenceSplitter,
   talk,
+  TALK_MAX_TOKENS,
+  TALK_MODEL,
   TalkSentence,
+  warmTalk,
 } from "../src/talk.js";
 import {
   CHARACTERS,
@@ -102,20 +106,33 @@ test("ReplyExtractor decodes the reply while the JSON streams in", () => {
   assert.equal(y.push('e9!"'), "é!");
 });
 
-test("SentenceSplitter cuts at sentence ends, keeps abbreviations and joins tiny pieces", () => {
+test("SentenceSplitter: the first piece goes at the first clause, later ones at sentence ends", () => {
   const s = new SentenceSplitter();
-  assert.deepEqual(s.push("Oh! Nice to meet you, Mr. Brown. How "), ["Oh! Nice to meet you, Mr. Brown."]);
-  assert.deepEqual(s.push("are you? I'm "), ["How are you?"]);
+  // "Oh!" alone is too short; the first clause after a few words goes at once.
+  assert.deepEqual(s.push("Oh! Nice to meet you, Mr. Brown. How "), ["Oh! Nice to meet you,", "Mr. Brown."]);
+  // Later pieces: whole sentences, a short clause does not cut them.
+  assert.deepEqual(s.push("are you, by the way? I'm "), ["How are you, by the way?"]);
   assert.deepEqual(s.push("fine"), []);
   assert.deepEqual(s.flush(), ["I'm fine"]);
   assert.deepEqual(s.flush(), []);
+});
+
+test("SentenceSplitter: a long first sentence without punctuation goes after 8 words", () => {
+  const s = new SentenceSplitter();
+  assert.deepEqual(s.push("So you went to the stadium with your friends and "), [
+    "So you went to the stadium with your",
+  ]);
+  assert.deepEqual(s.push("watched the derby? Wow."), ["friends and watched the derby?"]);
+  assert.deepEqual(s.flush(), ["Wow."]);
+  // A short reaction is not cut at its comma.
+  assert.deepEqual(new SentenceSplitter().push("Oh, nice! Which team?"), ["Oh, nice!"]);
 });
 
 test("talk streams sentences with neural audio for Premium, in order", async () => {
   await grantPremium("u");
   const { client, calls } = streamingClient(
     reply("Oh, you like football? Which team do you support? I love Fenerbahçe.", {
-      correction: "I like football very much.",
+      correction: "I like football a lot.",
       tip_tr: "Nokta",
     }),
   );
@@ -129,7 +146,7 @@ test("talk streams sentences with neural audio for Premium, in order", async () 
   assert.deepEqual(chunks.map((c) => c.i), [0, 1, 2]);
   assert.equal(Buffer.from(chunks[0].audio!, "base64").toString(), "mp3:Oh, you like football?");
   assert.equal(r.reply, "Oh, you like football? Which team do you support? I love Fenerbahçe.");
-  assert.equal(r.correction, "I like football very much.");
+  assert.equal(r.correction, "I like football a lot.");
   assert.equal(r.voice, "neural");
   assert.equal(r.free, false);
   assert.equal(r.sentences, undefined);
@@ -138,10 +155,15 @@ test("talk streams sentences with neural audio for Premium, in order", async () 
   assert.equal(ttsCalls[0].rate, rateForLevel("A2"));
   assert.equal(ttsCalls[0].voiceName, VOICES.us_aoede.name);
   const p = calls[0];
-  assert.equal(p.model, MODEL);
+  // Live turns: the fast model, no thinking; the karne keeps Sonnet (MODEL).
+  assert.equal(p.model, TALK_MODEL);
+  assert.equal(TALK_MODEL, "claude-haiku-5-5");
+  assert.notEqual(MODEL, TALK_MODEL);
+  assert.equal(p.max_tokens, TALK_MAX_TOKENS);
   assert.equal(p.stream, true);
-  assert.deepEqual(p.thinking, { type: "between_tools" });
-  assert.equal(p.fallbacks, "default");
+  assert.deepEqual(p.thinking, { type: "disabled" });
+  assert.equal((p.output_config as { effort: string }).effort, "low");
+  assert.equal(p.fallbacks, undefined, "Haiku 5.5 has no server-side refusal fallback");
   assert.match(String(p.system), /football/);
   assert.match(String(p.system), /A2/);
 });
@@ -347,4 +369,58 @@ test("karne: in-flow corrections and free-talk/character contexts", async () => 
   assert.match(String(calls[0].system), /Emma/);
   assert.match(String(calls[0].system), /travel/);
   await rejectsWith(conversationReport(db, client, "u", { characterId: "x", messages: lines }, NOW), "invalid-argument");
+});
+
+test("warmTalk opens the TTS and Claude connections and never fails", async () => {
+  let ttsWarm = 0;
+  let counted = 0;
+  const client = {
+    beta: {
+      messages: {
+        countTokens: async () => {
+          counted++;
+          throw new Error("offline");
+        },
+      },
+    },
+  } as unknown as ClaudeClient;
+  const tts: TtsClient = { synthesize: async () => Buffer.alloc(0), warm: async () => void ttsWarm++ };
+  assert.deepEqual(await warmTalk(client, tts), { warm: true });
+  assert.equal(ttsWarm, 1);
+  assert.equal(counted, 1);
+  assert.deepEqual(await warmTalk({ beta: { messages: {} } } as unknown as ClaudeClient, fakeTts().tts), { warm: true });
+});
+
+test("a reply cut off after the spoken part is kept (feedback skipped)", async () => {
+  await grantPremium("u");
+  const cut = JSON.stringify({ reply: "Great, see you then!", correction: "" }).slice(0, -8);
+  const { client } = streamingClient(cut, "max_tokens");
+  const r = await talk(db, client, fakeTts().tts, "u", freeTalk, NOW, null);
+  assert.equal(r.reply, "Great, see you then!");
+  assert.equal(r.correction, "");
+  const broken = streamingClient('{"reply": "Hel', "max_tokens");
+  await rejectsWith(talk(db, broken.client, fakeTts().tts, "u", freeTalk, NOW, null), "unavailable");
+});
+
+test("relevantCorrection keeps only fixes of the last message", () => {
+  const last = "My favourite team is Fenerbahce";
+  assert.equal(relevantCorrection(last, "I like football very much. Yesterday I went to the stadium."), "");
+  assert.equal(relevantCorrection("Thank you, have a nice day", "Thank you, have a nice day."), "");
+  assert.equal(relevantCorrection("I am agree with you", "I agree with you."), "I agree with you.");
+  assert.equal(
+    relevantCorrection("I am working as software developer since four years", "I have been working as a software developer for four years."),
+    "I have been working as a software developer for four years.",
+  );
+  assert.equal(relevantCorrection("anything", ""), "");
+});
+
+test("a stale correction from an earlier turn is dropped", async () => {
+  await grantPremium("u");
+  const { client } = streamingClient(
+    reply("Oh, Fenerbahçe! Great team.", { correction: "Yesterday I went to the stadium.", tip_tr: "Geçmiş zaman" }),
+  );
+  const body = { ...freeTalk, messages: [...freeTalk.messages.slice(0, 1), { role: "user", content: "My team is Fenerbahce" }] };
+  const r = await talk(db, client, fakeTts().tts, "u", body, NOW, null);
+  assert.equal(r.correction, "");
+  assert.equal(r.tip_tr, "");
 });

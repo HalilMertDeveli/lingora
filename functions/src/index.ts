@@ -94,6 +94,7 @@ export const talk = onCall(
   { secrets: [anthropicApiKey], timeoutSeconds: 90, memory: "512MiB", concurrency: 40 },
   (req, res) => {
     const uid = requireUid(req);
+    if ((req.data as { warm?: unknown } | null)?.warm === true) return talking.warmTalk(claudeClient(), textToSpeech());
     const send = req.acceptsStreaming ? (c: talking.TalkSentence) => res?.sendChunk(c) : null;
     return talking.talk(getFirestore(), claudeClient(), textToSpeech(), uid, req.data, new Date(), send);
   },

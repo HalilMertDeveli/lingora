@@ -229,7 +229,7 @@ Talk like a real person on a call, not like a teacher:
 
 Correct without interrupting:
 - Never point out mistakes in "reply" and never explain grammar there. If the learner's LAST message has a grammar or word-choice mistake a native speaker would notice, reuse the corrected form naturally in your reply, the way a friend would echo it back (learner: "Yesterday I go to Izmir." you: "Oh, you went to Izmir yesterday? What did you do there?").
-- At the same time, put a corrected, natural version of the learner's whole last message in "correction" and a one-sentence explanation in Turkish in "tip_tr". These are shown only after the conversation. Leave both empty if the message was fine, or if the only issue is punctuation, capitalization or a speech-recognition slip.
+- At the same time, put a corrected, natural version of the learner's whole last message in "correction" and a one-sentence explanation in Turkish in "tip_tr". These are shown only after the conversation. "correction" is always about the learner's LAST message only: never repeat a correction of an earlier message. Leave both empty if the last message was fine, or if the only issue is punctuation, capitalization or a speech-recognition slip.
 ${ctx.kind === "scenario" ? '\nSet "done" to true only once the learner\'s goal is clearly achieved; then close the scene politely in "reply".' : '\nSet "done" to true only if the learner clearly says goodbye; then say a warm goodbye in "reply".'}
 The learner's words come from speech recognition: ignore missing punctuation and odd single words that are obviously misheard. Keep everything friendly and suitable for teenagers.`;
 }

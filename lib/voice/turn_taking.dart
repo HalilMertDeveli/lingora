@@ -23,7 +23,7 @@ enum TalkPhase {
 /// One sentence of the partner's reply: neural audio when the server sent
 /// it, otherwise the phone reads [text] aloud.
 class SpokenSentence {
-  const SpokenSentence(this.text, {this.audio, this.rate = 1});
+  const SpokenSentence(this.text, {this.audio, this.rate = 1, this.ack = false});
   final String text;
 
   /// MP3 bytes (Premium neural voice), or null for the phone's own voice.
@@ -31,6 +31,9 @@ class SpokenSentence {
 
   /// Speed for the phone voice (slower for A1-A2).
   final double rate;
+
+  /// A short backchannel ("Mm-hm.") played while the real reply is on its way.
+  final bool ack;
 }
 
 /// The speech recognizer, as the turn-taker sees it.
@@ -67,7 +70,9 @@ class TurnConfig {
   const TurnConfig({
     this.handsFree = true,
     this.bargeIn = true,
-    this.endOfTurn = const Duration(milliseconds: 1000),
+    this.endOfTurn = const Duration(milliseconds: 700),
+    this.unfinishedExtra = const Duration(milliseconds: 500),
+    this.ackDelay = const Duration(milliseconds: 300),
     this.speechLevel = 0.35,
     this.echoTail = const Duration(milliseconds: 250),
     this.idleRestarts = 2,
@@ -83,6 +88,14 @@ class TurnConfig {
   /// Silence after the last heard word that ends the learner's turn.
   final Duration endOfTurn;
 
+  /// Extra wait when the learner stopped on a word that needs more after it
+  /// ("and", "because", "the", "um"…): they are probably still thinking.
+  final Duration unfinishedExtra;
+
+  /// A backchannel plays this long after the learner's turn if the reply has
+  /// not started yet.
+  final Duration ackDelay;
+
   /// Loudness (0..1) that counts as the learner still speaking.
   final double speechLevel;
 
@@ -92,6 +105,53 @@ class TurnConfig {
 
   /// How often listening restarts by itself when nothing at all is said.
   final int idleRestarts;
+}
+
+const _unfinishedWords = {
+  'and',
+  'but',
+  'or',
+  'so',
+  'because',
+  'the',
+  'a',
+  'an',
+  'to',
+  'of',
+  'with',
+  'my',
+  'your',
+  'i',
+  'um',
+  'uh',
+  'er',
+  'erm',
+  'if',
+  'when',
+  'that',
+  'is',
+  'are',
+  'was',
+  'were',
+  'in',
+  'on',
+  'at',
+  'for',
+  'about',
+  'then',
+  'very',
+  'like',
+  'want',
+  'think',
+  'will',
+  'can',
+  'some',
+};
+
+/// True when [words] stop on a word that usually has more after it.
+bool soundsUnfinished(String words) {
+  final last = RegExp(r"[a-z']+").allMatches(words.toLowerCase()).lastOrNull?[0];
+  return last != null && _unfinishedWords.contains(last);
 }
 
 /// True when [heard] is most likely the partner's own voice ([spoken])
@@ -121,6 +181,8 @@ class TurnTaker extends ChangeNotifier {
     required this.onUserTurn,
     this.onBargeIn,
     this.onLatency,
+    this.onFirstSentence,
+    this.pickAck,
     this._config = const TurnConfig(),
     DateTime Function()? now,
   }) : _now = now ?? DateTime.now;
@@ -140,6 +202,13 @@ class TurnTaker extends ChangeNotifier {
   /// Time from the end of the learner's speech to the first sound of the reply.
   final void Function(Duration latency)? onLatency;
 
+  /// Time from the end of the learner's speech to the first sentence of the
+  /// real reply (not counting a backchannel).
+  final void Function(Duration latency)? onFirstSentence;
+
+  /// A backchannel in the partner's voice ("Mm-hm."), or null for none.
+  final SpokenSentence? Function()? pickAck;
+
   final DateTime Function() _now;
 
   TalkPhase _phase = TalkPhase.idle;
@@ -157,6 +226,8 @@ class TurnTaker extends ChangeNotifier {
   int _played = 0;
   bool _detecting = false;
   bool _closed = false;
+  bool _gotReal = false;
+  Timer? _ack;
   String _lastPartner = '';
   final _queue = <SpokenSentence>[];
 
@@ -207,7 +278,8 @@ class TurnTaker extends ChangeNotifier {
     _lastActivity = _now();
     if (!_config.handsFree) return; // push-to-talk: the learner taps to send
     _silence?.cancel();
-    _silence = Timer(_config.endOfTurn, _endTurn);
+    final extra = soundsUnfinished(_words) ? _config.unfinishedExtra : Duration.zero;
+    _silence = Timer(_config.endOfTurn + extra, _endTurn);
   }
 
   void _onListenerEnd() {
@@ -252,7 +324,10 @@ class TurnTaker extends ChangeNotifier {
     _queue.clear();
     _set(TalkPhase.thinking);
     unawaited(listener.stop());
+    _gotReal = false;
     onUserTurn(_turn, text);
+    _ack?.cancel();
+    if (pickAck != null) _ack = Timer(_config.ackDelay, _playAck);
   }
 
   /// A typed turn (the text fallback): sent like a spoken one, no echo check.
@@ -296,6 +371,12 @@ class TurnTaker extends ChangeNotifier {
   void addSentence(int turn, SpokenSentence s) {
     if (_closed || turn != _replyTurn) return;
     _lastPartner = '$_lastPartner ${s.text}'.trim();
+    if (!_gotReal) {
+      _gotReal = true;
+      _ack?.cancel();
+      final end = _endOfSpeech;
+      if (end != null) onFirstSentence?.call(_now().difference(end));
+    }
     if (_phase == TalkPhase.thinking) {
       _lastPartner = s.text;
       final end = _endOfSpeech;
@@ -303,6 +384,18 @@ class TurnTaker extends ChangeNotifier {
       _set(TalkPhase.speaking);
     }
     _queue.add(s);
+    unawaited(_pump());
+  }
+
+  /// The reply is late: a short backchannel fills the gap, as people do.
+  void _playAck() {
+    if (_closed || _phase != TalkPhase.thinking || _gotReal || _queue.isNotEmpty || _playing) return;
+    final s = pickAck?.call();
+    if (s == null) return;
+    final end = _endOfSpeech;
+    if (end != null) onLatency?.call(_now().difference(end));
+    _set(TalkPhase.speaking);
+    _queue.add(SpokenSentence(s.text, audio: s.audio, rate: s.rate, ack: true));
     unawaited(_pump());
   }
 
@@ -316,6 +409,7 @@ class TurnTaker extends ChangeNotifier {
   /// The reply to [turn] failed: back to idle (the screen shows the error).
   void replyFailed(int turn) {
     if (turn != _replyTurn) return;
+    _ack?.cancel();
     _replyTurn = null;
     _queue.clear();
     unawaited(_stopDetector());
@@ -330,6 +424,8 @@ class TurnTaker extends ChangeNotifier {
     _replyDone = false;
     _played = 0;
     _endOfSpeech = null;
+    _gotReal = true; // nothing to acknowledge
+    _ack?.cancel();
     _set(TalkPhase.thinking);
     addSentence(_turn, s);
     replyComplete(_turn);
@@ -347,7 +443,7 @@ class TurnTaker extends ChangeNotifier {
     await out.play(s);
     _playing = false;
     if (turn != _replyTurn || _closed) return; // interrupted meanwhile
-    _played++;
+    if (!s.ack) _played++;
     if (_queue.isNotEmpty) {
       unawaited(_pump());
     } else if (_replyDone) {
@@ -373,6 +469,7 @@ class TurnTaker extends ChangeNotifier {
   }
 
   Future<void> _interrupt() async {
+    _ack?.cancel();
     final turn = _replyTurn;
     _replyTurn = null; // the rest of this reply is not played
     _queue.clear();
@@ -417,6 +514,7 @@ class TurnTaker extends ChangeNotifier {
   Future<void> close() async {
     if (_closed) return;
     _closed = true;
+    _ack?.cancel();
     _silence?.cancel();
     _restart?.cancel();
     _queue.clear();

@@ -2,6 +2,7 @@
 // barge-in, echo), the streamed talk client, voice settings and the screens.
 // Nothing here touches a real microphone, speaker or server.
 import 'dart:async';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:cloud_functions/cloud_functions.dart';
@@ -19,6 +20,7 @@ import 'package:lingora/screens/conversation_screen.dart';
 import 'package:lingora/services/billing/premium.dart';
 import 'package:lingora/services/conversation.dart';
 import 'package:lingora/services/speech.dart';
+import 'package:lingora/voice/ack_picker.dart';
 import 'package:lingora/voice/talk_screen.dart';
 import 'package:lingora/voice/talk_service.dart';
 import 'package:lingora/voice/turn_taking.dart';
@@ -110,7 +112,11 @@ class FakeBargeIn implements BargeInDetector {
 }
 
 class Rig {
-  Rig(FakeAsync async, {TurnConfig config = const TurnConfig()}) {
+  Rig(
+    FakeAsync async, {
+    TurnConfig config = const TurnConfig(endOfTurn: Duration(milliseconds: 1000)),
+    this.acks,
+  }) {
     turns = TurnTaker(
       listener: listener,
       out: out,
@@ -119,6 +125,8 @@ class Rig {
       onUserTurn: (turn, text) => sent.add((turn, text)),
       onBargeIn: (turn, heard) => barged.add((turn, heard)),
       onLatency: latencies.add,
+      onFirstSentence: firstReal.add,
+      pickAck: acks?.pick,
       now: () => DateTime(2026).add(async.elapsed),
     );
   }
@@ -129,6 +137,8 @@ class Rig {
   final sent = <(int, String)>[];
   final barged = <(int, int)>[];
   final latencies = <Duration>[];
+  final firstReal = <Duration>[];
+  final AckPicker? acks;
 }
 
 void main() {
@@ -177,7 +187,7 @@ void main() {
         final r = Rig(async, config: const TurnConfig(endOfTurn: Duration(milliseconds: 800)));
         r.turns.listen();
         async.flushMicrotasks();
-        r.listener.say('Yesterday I');
+        r.listener.say('Yesterday we went');
         async.elapse(const Duration(milliseconds: 600));
         r.listener.level(0.6); // still talking
         async.elapse(const Duration(milliseconds: 600));
@@ -185,7 +195,7 @@ void main() {
         async.elapse(const Duration(milliseconds: 100));
         expect(r.sent, isEmpty);
         async.elapse(const Duration(milliseconds: 150));
-        expect(r.sent.single.$2, 'Yesterday I');
+        expect(r.sent.single.$2, 'Yesterday we went');
       });
     });
 
@@ -350,6 +360,89 @@ void main() {
         async.flushMicrotasks();
         expect(r.out.played, isEmpty);
       });
+    });
+  });
+
+  group('faster replies', () {
+    test('a late reply gets an instant backchannel; the real reply follows it', () {
+      fakeAsync((async) {
+        final r = Rig(async, config: const TurnConfig(), acks: AckPicker(['Mm-hm.']));
+        r.turns.listen();
+        async.flushMicrotasks();
+        r.listener.say('I went to Izmir');
+        async.elapse(const Duration(milliseconds: 700)); // default pause
+        expect(r.sent.single.$2, 'I went to Izmir');
+        async.elapse(const Duration(milliseconds: 299));
+        expect(r.out.played, isEmpty);
+        async.elapse(const Duration(milliseconds: 1));
+        expect(r.out.played, ['Mm-hm.']);
+        expect(r.turns.phase, TalkPhase.speaking);
+        expect(r.latencies.single, const Duration(milliseconds: 1000)); // 700 pause + 300
+        async.elapse(const Duration(milliseconds: 500));
+        r.turns.addSentence(1, const SpokenSentence('Oh, nice!'));
+        r.turns.replyComplete(1);
+        expect(r.firstReal.single, const Duration(milliseconds: 1500));
+        r.out.finish(); // the backchannel ends
+        async.flushMicrotasks();
+        expect(r.out.played, ['Mm-hm.', 'Oh, nice!']);
+        // A barge-in now counts only real sentences as heard.
+        r.bargeIn.speak();
+        async.flushMicrotasks();
+        expect(r.barged.single, (1, 0));
+      });
+    });
+
+    test('no backchannel when the reply is already there', () {
+      fakeAsync((async) {
+        final r = Rig(async, config: const TurnConfig(), acks: AckPicker(['Mm-hm.']));
+        r.turns.submitText('Hi');
+        async.elapse(const Duration(milliseconds: 200));
+        r.turns.addSentence(1, const SpokenSentence('Hello!'));
+        async.elapse(const Duration(seconds: 1));
+        expect(r.out.played, ['Hello!']);
+        expect(r.latencies.single, const Duration(milliseconds: 200));
+      });
+    });
+
+    test('a turn ending on "and", "because", "um"… waits a bit longer', () {
+      fakeAsync((async) {
+        final r = Rig(async, config: const TurnConfig());
+        r.turns.listen();
+        async.flushMicrotasks();
+        r.listener.say('I like football because');
+        async.elapse(const Duration(milliseconds: 900));
+        expect(r.sent, isEmpty);
+        r.listener.say('I like football because it is fun');
+        async.elapse(const Duration(milliseconds: 700));
+        expect(r.sent.single.$2, 'I like football because it is fun');
+      });
+      expect(soundsUnfinished('I want to go to the'), isTrue);
+      expect(soundsUnfinished('um'), isTrue);
+      expect(soundsUnfinished('I went to London.'), isFalse);
+    });
+
+    test('AckPicker never repeats the last one and carries the neural audio', () {
+      final picker = AckPicker(['Mm-hm.', 'Right…', 'Okay.'], random: Random(1));
+      picker.setAudio('Okay.', Uint8List.fromList([1, 2]));
+      String? last;
+      for (var i = 0; i < 50; i++) {
+        final s = picker.pick()!;
+        expect(s.text, isNot(last));
+        expect(s.ack, isTrue);
+        if (s.text == 'Okay.') expect(s.audio, [1, 2]);
+        last = s.text;
+      }
+      expect(AckPicker(['Only.']).pick(), isNotNull);
+      final one = AckPicker(['Only.'])..pick();
+      expect(one.pick(), isNull, reason: 'never twice in a row');
+      expect(backchannelsFor(characterById('taxi_london')), contains('Right, mate.'));
+    });
+
+    test('latencyStats: median and p90', () {
+      expect(latencyStats([]), isNull);
+      final st = latencyStats([900, 100, 500, 300, 700, 200, 400, 800, 600, 1000])!;
+      expect(st.median, 600);
+      expect(st.p90, 900);
     });
   });
 

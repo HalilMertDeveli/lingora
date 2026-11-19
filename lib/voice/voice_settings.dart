@@ -13,7 +13,7 @@ class VoiceSettings {
     this.characterVoices = const {},
     this.handsFree = true,
     this.bargeIn = true,
-    this.pauseMs = 1000,
+    this.pauseMs = 700,
     this.level,
   });
 
@@ -36,7 +36,7 @@ class VoiceSettings {
   /// CEFR level the partner speaks at ("A2"); null = from the level karne.
   final String? level;
 
-  static const pauseChoices = [800, 1000, 1200, 1500];
+  static const pauseChoices = [700, 1000, 1200, 1500];
 
   String voiceFor(Character? c) => c == null ? voice : (characterVoices[c.id] ?? c.voice);
 
@@ -80,7 +80,7 @@ class VoiceSettings {
     },
     handsFree: j['handsFree'] as bool? ?? true,
     bargeIn: j['bargeIn'] as bool? ?? true,
-    pauseMs: ((j['pauseMs'] as num?)?.toInt() ?? 1000).clamp(600, 2000),
+    pauseMs: ((j['pauseMs'] as num?)?.toInt() ?? 700).clamp(600, 2000),
     level: const {'A1', 'A2', 'B1', 'B2', 'C1'}.contains(j['level']) ? j['level'] as String : null,
   );
 }

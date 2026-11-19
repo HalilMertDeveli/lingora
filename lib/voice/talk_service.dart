@@ -88,6 +88,9 @@ abstract class TalkService {
   /// The neural voice for [text] (opening lines, replays); null = use the
   /// phone's voice (free users, offline, caps).
   Future<Uint8List?> speak(String text, {String? voice, double rate = 1});
+
+  /// The call is starting: wake the server and open its connections early.
+  Future<void> warm();
 }
 
 /// One message of a streaming callable: a chunk, or (last) its result.
@@ -176,6 +179,15 @@ class CallableTalkService implements TalkService {
     }
   }
 
+  @override
+  Future<void> warm() async {
+    try {
+      await _invoke('talk', {'warm': true}).timeout(const Duration(seconds: 10));
+    } on Object {
+      // Only an optimisation.
+    }
+  }
+
   static TalkSentenceEvent? _sentence(Object? raw) {
     if (raw is! Map) return null;
     final text = raw['text'];
@@ -237,6 +249,9 @@ class DemoTalkService implements TalkService {
 
   @override
   Future<Uint8List?> speak(String text, {String? voice, double rate = 1}) async => null;
+
+  @override
+  Future<void> warm() async {}
 }
 
 /// The live `talk` function when Firebase is ready and someone is signed in,

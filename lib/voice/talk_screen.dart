@@ -19,6 +19,7 @@ import '../services/conversation.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 import '../ui/motion.dart';
+import 'ack_picker.dart';
 import 'talk_service.dart';
 import 'turn_taking.dart';
 import 'voice_catalog.dart';
@@ -117,6 +118,8 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
   final _input = TextEditingController();
   final _messages = <ChatMessage>[];
   final _latencies = <int>[];
+  final _firstSentence = <int>[];
+  late final AckPicker _acks = AckPicker(backchannelsFor(_character));
 
   /// The partner's reply being streamed (index in [_messages]).
   int? _replyIndex;
@@ -147,6 +150,11 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       onUserTurn: _onUserTurn,
       onBargeIn: _onBargeIn,
       onLatency: _onLatency,
+      onFirstSentence: (d) {
+        _firstSentence.add(d.inMilliseconds);
+        debugPrint('[talk-latency] end-of-speech→first-real-sentence ${d.inMilliseconds} ms');
+      },
+      pickAck: () => _acks.pick(rate: _rate),
     )..addListener(_changed);
     _earpiece = widget.call;
     if (widget.call) {
@@ -176,6 +184,15 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       });
     }
     final opening = widget.scenario.opening;
+    // Pre-warm while the opening line is fetched: the talk function and its
+    // TTS/Claude connections, and the backchannels in the partner's voice
+    // (synthesized once, then cached on the server).
+    unawaited(_service.warm());
+    if (_premium) {
+      for (final phrase in _acks.phrases) {
+        unawaited(_service.speak(phrase, voice: _voice, rate: _rate).then((a) => _acks.setAudio(phrase, a)));
+      }
+    }
     final audio = _premium ? await _service.speak(opening, voice: _voice, rate: _rate) : null;
     if (!mounted || _finished) return;
     _turns.say(SpokenSentence(opening, audio: audio, rate: _rate));
@@ -324,10 +341,11 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
     unawaited(_turns.close());
     unawaited(_stream?.cancel());
     final userTurns = _messages.where((m) => m.fromUser).length;
-    if (_latencies.isNotEmpty) {
-      final sorted = [..._latencies]..sort();
+    if (latencyStats(_latencies) case final a?) {
+      final r = latencyStats(_firstSentence);
       debugPrint(
-        '[talk-latency] median ${sorted[sorted.length ~/ 2]} ms over ${sorted.length} turns: $sorted',
+        '[talk-latency] ${_latencies.length} turns. first audio median ${a.median} p90 ${a.p90} ms; '
+        'first real sentence median ${r?.median} p90 ${r?.p90} ms. all: $_latencies / $_firstSentence',
       );
     }
     if (userTurns == 0) {

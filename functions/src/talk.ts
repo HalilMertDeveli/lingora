@@ -23,7 +23,6 @@ import {
   DAILY_MESSAGE_LIMIT,
   FREE_DAILY_MESSAGE_LIMIT,
   hasPremium,
-  MODEL,
   parseMessages,
   refundQuota,
   takeQuota,
@@ -40,6 +39,14 @@ import {
   TtsClient,
   voiceFor,
 } from "./tts.js";
+
+/**
+ * Live voice turns use the fast model; the end-of-call karne
+ * (conversation_report.ts) keeps the stronger MODEL (Sonnet).
+ */
+export const TALK_MODEL = "claude-haiku-5-5";
+/** A reply is 1-3 short sentences plus the silent correction: small is fast. */
+export const TALK_MAX_TOKENS = 400;
 
 /** Premium fair use: estimated minutes of conversation per Turkish day. */
 export const FAIR_USE_MINUTES = 45;
@@ -137,30 +144,69 @@ export class ReplyExtractor {
 
 const ABBREVIATIONS = /\b(?:Mr|Mrs|Ms|Dr|St|Prof|Mt|vs|etc|e\.g|i\.e)\.$/i;
 
+/** Words before a clause break (comma etc.) that make the FIRST chunk worth speaking on its own. */
+export const FIRST_CLAUSE_WORDS = 3;
+/** Without any punctuation, the first chunk goes after this many words. */
+export const FIRST_CHUNK_MAX_WORDS = 8;
+/** Later chunks break at a clause only when the sentence is this long. */
+export const LONG_CLAUSE_WORDS = 12;
+
+const words = (t: string) => t.trim().split(/\s+/).filter(Boolean).length;
+
 /**
- * Cuts streamed text into sentences for speech. A sentence ends at . ! or ?
- * (plus closing quotes) followed by a space; very short pieces ("Oh!") wait
- * for the next sentence so the voice does not sound choppy.
+ * Cuts streamed text into pieces for speech. The first piece goes out as
+ * early as it sounds natural: at the first sentence end, the first clause
+ * break (comma, semicolon, colon, dash) after a few words, or after
+ * [FIRST_CHUNK_MAX_WORDS] words. Later pieces are whole sentences (long ones
+ * break at a clause). Tiny pieces ("Oh!") wait so the voice is not choppy.
  */
 export class SentenceSplitter {
   private buf = "";
+  private first = true;
 
   push(text: string): string[] {
     this.buf += text;
     const out: string[] = [];
-    const re = /[.!?]+["')\]]*\s+/g;
-    let from = 0;
-    let m: RegExpExecArray | null;
-    while ((m = re.exec(this.buf))) {
-      const end = m.index + m[0].length;
-      const candidate = this.buf.slice(from, end).trim();
-      if (ABBREVIATIONS.test(this.buf.slice(from, m.index + 1).trim())) continue;
-      if (candidate.split(/\s+/).length < 2) continue; // too short: join with the next
-      out.push(candidate);
-      from = end;
+    for (let cut = this.nextCut(); cut > 0; cut = this.nextCut()) {
+      out.push(this.buf.slice(0, cut).trim());
+      this.buf = this.buf.slice(cut);
+      this.first = false;
     }
-    this.buf = this.buf.slice(from);
     return out;
+  }
+
+  /** Index just after the next piece in [buf], or -1. */
+  private nextCut(): number {
+    const buf = this.buf;
+    let best = -1;
+    const take = (i: number) => {
+      if (best < 0 || i < best) best = i;
+    };
+    const sentence = /[.!?]+["')\]]*\s+/g;
+    for (let m: RegExpExecArray | null; (m = sentence.exec(buf)); ) {
+      const head = buf.slice(0, m.index + 1).trim();
+      if (ABBREVIATIONS.test(head) || words(head) < 2) continue;
+      take(m.index + m[0].length);
+      break;
+    }
+    const clause = /[,;:—–]\s+/g;
+    const minWords = this.first ? FIRST_CLAUSE_WORDS : LONG_CLAUSE_WORDS;
+    for (let m: RegExpExecArray | null; (m = clause.exec(buf)); ) {
+      if (words(buf.slice(0, m.index)) < minWords) continue;
+      take(m.index + m[0].length);
+      break;
+    }
+    if (this.first) {
+      const w = /\S+\s+/g;
+      let n = 0;
+      for (let m: RegExpExecArray | null; (m = w.exec(buf)); ) {
+        if (++n === FIRST_CHUNK_MAX_WORDS) {
+          take(m.index + m[0].length);
+          break;
+        }
+      }
+    }
+    return best;
   }
 
   /** Whatever is left once the reply is complete. */
@@ -171,6 +217,24 @@ export class SentenceSplitter {
   }
 }
 
+const wordList = (t: string) => t.toLowerCase().match(/[a-z0-9']+/g) ?? [];
+
+/**
+ * The model's correction only when it is about the learner's LAST message:
+ * not empty, not the same sentence again, and sharing most of its words. The
+ * fast model sometimes repeats an earlier turn's correction; that would pin
+ * the wrong fix on this sentence in the karne.
+ */
+export function relevantCorrection(learner: string, correction: string): string {
+  const fix = correction.trim();
+  const said = wordList(learner);
+  const fixed = wordList(fix);
+  if (!fix || said.length === 0 || said.join(" ") === fixed.join(" ")) return "";
+  const inFix = new Set(fixed);
+  const shared = said.filter((w) => inFix.has(w)).length;
+  return shared / said.length >= 0.5 ? fix : "";
+}
+
 /** Rough seconds of conversation one turn took: the learner speaking slowly, the partner, short gaps. */
 export function estimateTurnSeconds(learnerText: string, reply: string, rate: number): number {
   const learnerWords = learnerText.trim().split(/\s+/).filter(Boolean).length;
@@ -178,6 +242,21 @@ export function estimateTurnSeconds(learnerText: string, reply: string, rate: nu
 }
 
 type Send = (chunk: TalkSentence) => unknown;
+
+/**
+ * `talk` with { warm: true }: the call is starting. Wakes this instance and
+ * opens the TTS and Claude connections now (a free token count), so the
+ * learner's first turn does not pay for it.
+ */
+export async function warmTalk(client: ClaudeClient, tts: TtsClient): Promise<{ warm: true }> {
+  await Promise.all([
+    tts.warm?.().catch(() => undefined),
+    client.beta.messages
+      .countTokens?.({ model: TALK_MODEL, messages: [{ role: "user", content: "hi" }] })
+      .catch(() => undefined),
+  ]);
+  return { warm: true };
+}
 
 export async function talk(
   db: Firestore,
@@ -236,14 +315,13 @@ export async function talk(
 
   try {
     const stream = await client.beta.messages.create({
-      model: MODEL,
-      max_tokens: 1000,
+      model: TALK_MODEL,
+      max_tokens: TALK_MAX_TOKENS,
       stream: true,
-      betas: ["server-side-fallback-2026-07-01"],
-      fallbacks: "default",
       cache_control: { type: "ephemeral" },
-      // No thinking: a spoken reply must start fast.
-      thinking: { type: "between_tools" },
+      // No thinking: a spoken reply must start fast. (Haiku 5.5 has no
+      // server-side refusal fallback; a refusal gets REFUSAL_REPLY below.)
+      thinking: { type: "disabled" },
       system: talkSystemPrompt(ctx),
       messages,
       output_config: {
@@ -285,10 +363,17 @@ export async function talk(
       if (!sentences.length) emit(REFUSAL_REPLY);
     } else {
       for (const s of splitter.flush()) emit(s);
-      const parsed = JSON.parse(json) as Record<string, unknown>;
+      let parsed: Record<string, unknown>;
+      try {
+        parsed = JSON.parse(json) as Record<string, unknown>;
+      } catch {
+        // Cut off after the reply (max_tokens): keep what was said, skip the feedback.
+        if (!extractor.done || !sentences.length) throw new HttpsError("unavailable", "empty_response");
+        parsed = { reply: sentences.map((s) => s.text).join(" ") };
+      }
       reply = speakableText(String(parsed.reply ?? ""));
-      correction = String(parsed.correction ?? "").trim();
-      tipTr = String(parsed.tip_tr ?? "").trim();
+      correction = relevantCorrection(messages[messages.length - 1].content, String(parsed.correction ?? ""));
+      tipTr = correction ? String(parsed.tip_tr ?? "").trim() : "";
       done = Boolean(parsed.done);
       if (!sentences.length && reply) emit(reply);
     }

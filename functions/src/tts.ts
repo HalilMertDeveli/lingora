@@ -36,6 +36,8 @@ export interface TtsRequest {
 /** Turns text into MP3 bytes. Faked in tests; never called for real there. */
 export interface TtsClient {
   synthesize(req: TtsRequest): Promise<Buffer>;
+  /** Gets credentials and a connection ready before the first sentence. */
+  warm?(): Promise<void>;
 }
 
 const TTS_URL = "https://texttospeech.googleapis.com/v1/text:synthesize";
@@ -44,6 +46,10 @@ const TTS_URL = "https://texttospeech.googleapis.com/v1/text:synthesize";
 export function googleTts(): TtsClient {
   const auth = new GoogleAuth({ scopes: ["https://www.googleapis.com/auth/cloud-platform"] });
   return {
+    async warm() {
+      const client = await auth.getClient();
+      await client.getAccessToken();
+    },
     async synthesize(req) {
       const client = await auth.getClient();
       const res = await client.request<{ audioContent?: string }>({
