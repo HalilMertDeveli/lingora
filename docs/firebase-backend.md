@@ -53,6 +53,21 @@ Hepsi çağrılabilir (callable) fonksiyondur ve giriş yapmış kullanıcı ist
   `expiresAt` gelecekte) yoksa `permission-denied`; günde 60 mesaj kotası dolunca `resource-exhausted`;
   Anthropic hatasında `unavailable` ve o mesaj kotadan düşülmez. API anahtarı Secret Manager'daki
   `ANTHROPIC_API_KEY` gizli değerinden okunur.
+- **`talk` (akışlı callable) — Doğal konuşma** (`functions/src/talk.ts`, `talk_context.ts`, `tts.ts`):
+  `{scenarioId | mode: "free" | characterId, topic?, level?, goal?, voice?, messages}`. Claude
+  (`claude-sonnet-5-5`, düşünme kapalı `between_tools`, low effort, JSON şeması) akışla okunur; yanıtın
+  `reply` alanı yazılırken cümle cümle bölünür ve her cümle `{type: "sentence", i, text, audio}` parçası
+  olarak gönderilir (`audio`: Chirp 3 HD MP3, base64; ücretsiz kullanıcıda `null`, telefon sesi okur).
+  Sonuç: `{reply, correction, tip_tr, done, remaining, free, voice, talkSecondsLeft, timing}`. Düzeltmeler
+  sohbet içinde söylenmez (doğal tekrar, "recast"); `correction`/`tip_tr` karneye gider. Ücretsiz: günde 3
+  mesaj (`usage/{uid}`, `converse` ile ortak). Premium: günde 45 dakika adil kullanım
+  (`voiceUsage/{uid}.talkSeconds`, aşınca `resource-exhausted` / `fair_use`) ve günde 30.000 yeni TTS
+  karakteri (`voiceUsage/{uid}.ttsChars`; aşınca hata değil, telefon sesine düşer). Karakterler (Alfie,
+  Maya, Daniel Reed, Emma, Dr. Eleanor Hughes, Zoe) ve 8 ses `talk_context.ts` içinde. Her tur
+  `talk_turn` günlüğüne `firstTextMs`/`firstAudioMs`/`totalMs` yazar.
+- **`speak {text, voice?, rate?}` → `{audio | null, cached, reason?}`**: Premium'a Chirp 3 HD sesi
+  (açılış cümleleri, tekrar dinleme). Aynı cümle `ttsCache/{sha256}` içinde önbellekte (60 gün,
+  `expireAt` alanına Firestore TTL kuralı eklenebilir). ElevenLabs canlı sohbette kullanılmaz.
 - **`assessWriting {taskId, text}` → `{scores{task,accuracy,range,coherence}, corrections[{from,to,why_tr,type}], next_tr, remaining}`**:
   Genel kursun `write` alıştırmaları için yapay zekâ geri bildirimi (`functions/src/assess_writing.ts`,
   docs/genel-mufredat.md §3). Görev ve rubrik sunucuda (`functions/src/writing_tasks.ts`, anahtar
@@ -116,6 +131,14 @@ Emülatörde gerçek Claude ile konuşmak istersen `functions/.secret.local` dos
    servis hesabına uygulama için "finansal verileri görüntüleme / siparişleri yönetme" izni ver, Google Play
    Android Developer API'yi aç ve `functions/src/purchase.ts` içindeki TODO'yu tamamla (abonelik durumu,
    bitiş tarihi, onaylama, gerçek zamanlı bildirimler).
+
+**Doğal konuşma için (talk/speak):** Cloud Text-to-Speech API'yi aç ve fonksiyonları yayınla:
+```bash
+gcloud services enable texttospeech.googleapis.com --project dilbaz-3392e
+firebase deploy --only functions:talk,functions:speak,functions:conversationReport,functions:converse,functions:deleteAccount --project prod
+```
+Fonksiyonlar varsayılan servis hesabıyla (ADC) çağırır; ek anahtar gerekmez. İstersen Firestore TTL
+kuralı: koleksiyon `ttsCache`, alan `expireAt`.
 
 Maliyet notu: `converse` her mesajda yaklaşık 2–3 bin girdi ve birkaç yüz çıktı jetonu kullanır. Günlük
 kota (`DAILY_MESSAGE_LIMIT`) ve model `functions/src/converse.ts` içinde tek satırlık ayarlardır; daha
