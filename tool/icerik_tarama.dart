@@ -285,8 +285,9 @@ bool isTurkish(String s) {
     if (_turkishLetters.hasMatch(w) && RegExp(r'^[A-ZÇĞİÖŞÜ]').hasMatch(bare)) continue;
     if (_turkishLetters.hasMatch(w) ||
         _turkishWords.contains(lower) ||
-        (lower.length >= 5 && _turkishSuffixWord.hasMatch(lower)))
+        (lower.length >= 5 && _turkishSuffixWord.hasMatch(lower))) {
       tr++;
+    }
   }
   if (tr / words.length >= 0.25) return true;
   // Hiç İngilizce işlev kelimesi yok ama Türkçe iz var
@@ -611,8 +612,9 @@ List<Issue> checkCommon(String s, {bool code = false}) {
     if (_repeatOk.contains(w) || _numberWords.contains(w)) continue;
     // Özel isim tekrarı (Santorio Santorio, River River) bilerek olabilir
     final parts = m.group(0)!.split(RegExp(r'\s+'));
-    if (parts.length == 2 && parts[0] == parts[1] && RegExp(r'^\p{Lu}', unicode: true).hasMatch(parts[0]))
+    if (parts.length == 2 && parts[0] == parts[1] && RegExp(r'^\p{Lu}', unicode: true).hasMatch(parts[0])) {
       continue;
+    }
     // "do you know who she is? She is" gibi büyük harfle yeni cümle değil, aynı satır
     if (s.substring(m.start, m.end).contains('\n')) continue;
     out.add(
@@ -632,8 +634,9 @@ List<Issue> checkCommon(String s, {bool code = false}) {
     if (m.group(0) == '.,') {
       // Kısaltma sonrası virgül (Bros., D.C., Jr.) normaldir
       final w = RegExp(r'([A-Za-z.]+)$').firstMatch(s.substring(0, m.start))?.group(1) ?? '';
-      if (_abbrevBeforeDot.contains(w.toLowerCase()) || RegExp(r'^[A-Z]').hasMatch(w) && w.length <= 5)
+      if (_abbrevBeforeDot.contains(w.toLowerCase()) || RegExp(r'^[A-Z]').hasMatch(w) && w.length <= 5) {
         continue;
+      }
     }
     out.add(
       Issue(
@@ -739,19 +742,22 @@ List<Issue> checkCommon(String s, {bool code = false}) {
     final next = m.group(2)!;
     final before = s.substring(0, m.start);
     // Büyük harfli A cümle ortasında (Plan A, Vitamin A) → atla
-    if (art.startsWith('A') && before.trim().isNotEmpty && !RegExp(r'[.!?:\n"“]\s*$').hasMatch(before))
+    if (art.startsWith('A') && before.trim().isNotEmpty && !RegExp(r'[.!?:\n"“]\s*$').hasMatch(before)) {
       continue;
+    }
     if (next == blankWord || next.toLowerCase() == 'blank') continue;
     // "a/an", "a or an", tırnak içinde tanımlık anlatımı
     if (RegExp(r'^(or|and|vs|/)$', caseSensitive: false).hasMatch(next)) continue;
     final after = s.substring(m.end);
-    if (after.startsWith('/') || before.endsWith('/') || before.endsWith('‘') || before.endsWith("'"))
+    if (after.startsWith('/') || before.endsWith('/') || before.endsWith('‘') || before.endsWith("'")) {
       continue;
+    }
     if (RegExp(
       r'(letter|option|vitamin|grade|type|plan|part|section|exercise|row|column|point|class|level|band)\s*$',
       caseSensitive: false,
-    ).hasMatch(before))
+    ).hasMatch(before)) {
       continue;
+    }
     // Tek harf / sayı-harf (a B, an A+)
     if (next.length == 1) continue;
     final want = articleFor(next);
@@ -844,8 +850,9 @@ List<Issue> checkSentence(String s, {bool code = false, bool expectCapital = tru
       if (m.group(2) == '.' &&
           (_abbrevBeforeDot.contains(w) ||
               _abbrevBeforeDot.contains(w.replaceAll(RegExp(r'\.$'), '')) ||
-              w.contains('.')))
+              w.contains('.'))) {
         continue;
+      }
       if (w.length == 1) continue; // baş harfler
       out.add(
         Issue(
@@ -1021,8 +1028,9 @@ class SpellModel {
       if (_base(stem) || _base('${stem}e') || _base('${stem}y')) return true;
       if (stem.length >= 3 &&
           stem[stem.length - 1] == stem[stem.length - 2] &&
-          _base(stem.substring(0, stem.length - 1)))
+          _base(stem.substring(0, stem.length - 1))) {
         return true;
+      }
       if (suf.startsWith('i') && _base('${stem}y')) return true;
     }
     const prefixes = [
@@ -1071,8 +1079,9 @@ class SpellModel {
       if (_base(w.substring(0, i)) &&
           f(w.substring(0, i)) >= 3 &&
           _base(w.substring(i)) &&
-          f(w.substring(i)) >= 3)
+          f(w.substring(i)) >= 3) {
         return true;
+      }
     }
     return false;
   }
@@ -1177,8 +1186,9 @@ class SpellModel {
     for (var i = 0; i < longer.length; i++) {
       if (longer.substring(0, i) + longer.substring(i + 1) == shorter) {
         // silinen/eklenen harf komşusuyla aynı mı?
-        if ((i > 0 && longer[i - 1] == longer[i]) || (i + 1 < longer.length && longer[i + 1] == longer[i]))
+        if ((i > 0 && longer[i - 1] == longer[i]) || (i + 1 < longer.length && longer[i + 1] == longer[i])) {
           return true;
+        }
       }
     }
     return false;
@@ -1534,8 +1544,9 @@ void extractFile(String relPath, dynamic json, Extraction ex) {
 bool _turkishList(List list) {
   final strs = list.whereType<String>().toList();
   if (strs.any(isTurkish) ||
-      strs.any((s) => _turkishLetters.hasMatch(s) && !RegExp(r'^[A-ZÇĞİÖŞÜ]').hasMatch(s)))
+      strs.any((s) => _turkishLetters.hasMatch(s) && !RegExp(r'^[A-ZÇĞİÖŞÜ]').hasMatch(s))) {
     return true;
+  }
   // choices: [{text: ...}]
   final texts = list.whereType<Map>().map((m) => m['text']).whereType<String>().toList();
   return texts.any(isTurkish);
