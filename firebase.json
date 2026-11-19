@@ -27,6 +27,15 @@
       "public": "build/hosting",
       "cleanUrls": true,
       "trailingSlash": false,
+      "rewrites": [
+        {
+          "source": "/api/kurumsal-talep",
+          "function": {
+            "functionId": "submitLead",
+            "region": "europe-west1"
+          }
+        }
+      ],
       "predeploy": [
         "node \"$PROJECT_DIR/hosting/build.mjs\""
       ],
