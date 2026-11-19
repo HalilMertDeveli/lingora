@@ -1,0 +1,20 @@
+rules_version = '2';
+
+// Cloud Storage of dilbaz-3392e. Only the course audio lives here
+// (docs/ses.md): anyone may read it, without signing in, so the app can
+// download it before the learner has an account. Nobody writes through the
+// client API; the recordings are uploaded with gsutil (tool/upload_voice.dart),
+// which uses IAM and is not subject to these rules.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /voice/{file} {
+      allow get: if true;
+      allow list: if false;
+      allow write: if false;
+    }
+
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}
