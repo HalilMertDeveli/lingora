@@ -137,6 +137,11 @@
     <ul>
       <li>Sohbet, Ses Koçu ve yazma değerlendirmesi metinleri Dilmaç tarafından saklanmaz;
         yalnızca kota için günlük kullanım sayısı tutulur.</li>
+      <li>Ses Koçu karnesi istediğinde hesabında kısa bir <strong>konuşma özeti</strong> tutulur:
+        konuşma sayısı, konuşmanın uzunluğundan tahmin edilen dakika, son karnenin iki cümlelik
+        özeti, son 5 düzeltilen cümlen ve telaffuzda en çok zorlandığın kelimeler. Konuşmanın
+        tamamı tutulmaz. Bu özet yalnızca katıldığın sınıfın öğretmeni ya da kurumunun yöneticisi
+        tarafından görülür (bkz. 2.8) ve hesabını silince silinir.</li>
       <li>Mülakat Provası'nda cevaplarının metni ve sana verilen analiz, geçmiş provalarını
         görebilmen için hesabında saklanır ve hesabını silince silinir.</li>
       <li>Anthropic, API üzerinden gelen verileri kendi politikası gereği model eğitiminde
@@ -159,8 +164,10 @@
     <p>Aile paketine bir davet koduyla katılırsan hesabın paket sahibinin paketiyle
       ilişkilendirilir. Bir kurumun (okul, şirket, otel) koduyla katılırsan kurumun yöneticisi veya
       öğretmenin görünen adını, sınıfını ve sınırlı bir ilerleme özetini (ör. tamamlanan ders, XP,
-      ödevler) görür. Günlük yazıların, notların, kelime listelerin, hataların ve sohbetlerin
-      kurumla paylaşılmaz.
+      ödevler, en sık hata türleri) görür. Ses Koçu'nu kullanırsan buna 2.6'daki konuşma özeti
+      (konuşma sayısı, tahmini dakika, son karne özeti, son düzeltmeler ve zorlandığın kelimeler)
+      eklenir. Günlük yazıların, notların, kelime listelerin ve sohbetlerin tamamı kurumla
+      paylaşılmaz. Sınıftan ya da kurumdan ayrıldığında öğretmenin erişimi o anda biter.
       <strong>Hukuki sebep:</strong> sözleşmenin ifası (m. 5/2-c).</p>
 
     <h3>2.9 Davet programı</h3>
@@ -186,6 +193,17 @@
     <p>Uygulama bazı ayarları Firebase Remote Config'ten okur. Bunun için Firebase kurulum kimliği
       işlenir; kişisel veri gönderilmez.
       <strong>Hukuki sebep:</strong> meşru menfaat (m. 5/2-f).</p>
+
+    <h3 id="kurumsal-form">2.12 Kurumsal teklif formu</h3>
+    <p>Bir okul, dershane ya da şirket adına <a href="/kurumsal">Dilmaç Kurumsal</a> sayfasındaki
+      teklif formunu doldurursan kurum adı, yetkili adı soyadı, telefon ve/veya e-posta, yaklaşık
+      öğrenci sayısı, şehir, mesajın ve onay tarihi saklanır. Bu bilgiler yalnızca seninle iletişime
+      geçip teklif ve deneme hazırlamak için kullanılır; pazarlama listesine eklenmez, kimseyle
+      paylaşılmaz ve yalnızca Dilmaç ekibi görür. Kötüye kullanımı önlemek için IP adresinin o güne
+      özel tek yönlü özeti 2 gün tutulur; IP adresinin kendisi saklanmaz.
+      <strong>Hukuki sebep:</strong> bir sözleşmenin kurulmasıyla doğrudan ilgili olması
+      (m. 5/2-c) ve formda verdiğin onay. Silinmesini istersen
+      <a href="mailto:dilmac.destek@gmail.com">dilmac.destek@gmail.com</a> adresine yaz.</p>
 
     <h2 id="reklam">3. Reklam ve reklam kimliği</h2>
     <p>Dilmaç'ta reklam yoktur. Uygulama reklam kimliğini (Android Advertising ID) okumaz; bu izin
@@ -233,6 +251,10 @@
       <li><strong>Satın alma doğrulama kayıtları:</strong> abonelik süresince; vergi ve muhasebe kayıtları
         Google Play tarafından yasal süre boyunca tutulur.</li>
       <li><strong>Davet kayıtları:</strong> kötüye kullanımı önlemek için en fazla 2 yıl.</li>
+      <li><strong>Ses Koçu konuşma özeti:</strong> hesabını silene kadar; sınıftaki kopyası sınıftan
+        ayrılınca ya da sınıf silinince silinir.</li>
+      <li><strong>Kurumsal teklif formu:</strong> son görüşmeden itibaren en fazla 2 yıl ya da
+        istediğin anda.</li>
       <li><strong>Analiz verileri:</strong> 2 ay (Firebase saklama ayarı).</li>
       <li><strong>Sunucu günlükleri (hata kayıtları):</strong> en fazla 30 gün.</li>
     </ul>
