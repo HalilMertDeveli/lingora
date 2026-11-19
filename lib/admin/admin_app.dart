@@ -7,6 +7,7 @@ import '../services/firebase/firebase_providers.dart';
 import '../theme.dart';
 import 'admin_api.dart';
 import 'dashboard.dart';
+import 'reports_page.dart';
 import 'widgets.dart';
 
 /// The panel's server API, or null when Firebase is off.
@@ -412,6 +413,14 @@ class StaffOrgsPage extends ConsumerWidget {
     appBar: AppBar(
       title: const Text('Dilmaç Kurumsal · Kurumlar'),
       actions: [
+        // Staff only: question reports from the app ("Bildir").
+        TextButton.icon(
+          key: const Key('open-reports'),
+          onPressed: () =>
+              Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const ReportsPage())),
+          icon: const Icon(Icons.flag_outlined),
+          label: const Text('Bildirimler'),
+        ),
         IconButton(
           tooltip: 'Yenile',
           onPressed: () => ref.invalidate(orgListProvider),

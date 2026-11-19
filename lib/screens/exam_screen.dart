@@ -26,6 +26,7 @@ import '../nav/flow.dart';
 import '../exercises/option_gloss.dart';
 import 'exam_pack_screen.dart';
 import 'paywall_screen.dart';
+import 'report_question_sheet.dart';
 
 const _letters = ['A', 'B', 'C', 'D', 'E'];
 
@@ -693,6 +694,15 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> {
                                 ),
                                 const SizedBox(height: 6),
                                 Text(q.explanation, style: const TextStyle(height: 1.4)),
+                                ReportQuestionButton(
+                                  target: () => ReportTarget(
+                                    questionId: q.id,
+                                    lessonId: widget.nodeId ?? widget.exam.id,
+                                    question: q.text,
+                                    answer: _picked == null ? null : _letters[_picked!],
+                                    correct: right,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -972,6 +982,15 @@ class _ReviewTile extends ConsumerWidget {
             ),
             const SizedBox(height: 6),
             Text(q.explanation, style: const TextStyle(height: 1.4)),
+            ReportQuestionButton(
+              target: () => ReportTarget(
+                questionId: q.id,
+                lessonId: q.section ?? '',
+                question: q.text,
+                answer: picked == null ? null : _letters[picked!],
+                correct: picked == null ? null : ok,
+              ),
+            ),
             if (gloss != null) ...[
               const SizedBox(height: 12),
               Text(

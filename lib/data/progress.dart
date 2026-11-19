@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/tr_errors.dart';
+import '../study/learning_evidence.dart';
 import '../study/tr_error_log.dart';
 import '../models/notes.dart';
 import '../goals/learn_goal.dart';
@@ -789,6 +790,7 @@ class ProgressNotifier extends Notifier<Progress> {
     if (!state.mistakes.contains(key)) return;
     final run = (state.mistakeRun[key] ?? 0) + 1;
     if (run >= mistakeClearRun) {
+      ref.read(learningEvidenceProvider.notifier).clearMistake(key, dayKey(_now()));
       clearMistake(key);
       return;
     }
@@ -939,6 +941,7 @@ class ProgressNotifier extends Notifier<Progress> {
   /// [weakSpelling]: known, but typed with a small spelling slip. The word
   /// stays in its box and comes back tomorrow to practise the spelling.
   void reviewWord(String id, {required bool known, bool weakSpelling = false}) {
+    _noteSpacedPass(id, known: known);
     final now = _now();
     final old = state.wordBox[id] ?? 0;
     final box = known ? (weakSpelling ? old : min(old + 1, reviewIntervals.length - 1)) : max(0, old - 2);
@@ -964,6 +967,7 @@ class ProgressNotifier extends Notifier<Progress> {
   /// counts as a new word of the day.
   void gradeWord(String id, ReviewGrade grade, {bool countNew = false}) {
     final fresh = !state.wordBox.containsKey(id);
+    _noteSpacedPass(id, known: grade.known);
     final now = _now();
     final next = scheduleReview(state.wordBox[id], grade);
     _save(
@@ -1121,7 +1125,18 @@ class ProgressNotifier extends Notifier<Progress> {
   /// lib/services/firebase/progress_sync.dart).
   void applySynced(Progress merged) => _save(merged);
 
-  void reset() => _save(const Progress(onboarded: true));
+  void reset() {
+    ref.read(learningEvidenceProvider.notifier).reset();
+    _save(const Progress(onboarded: true));
+  }
+
+  /// "Gerçek ilerleme": a word known on a later day than it was last seen.
+  void _noteSpacedPass(String id, {required bool known}) {
+    final today = dayKey(_now());
+    if (isSpacedPass(known: known, lastSeen: state.wordLast[id], today: today)) {
+      ref.read(learningEvidenceProvider.notifier).passWord(id, today);
+    }
+  }
 }
 
 final progressProvider = NotifierProvider<ProgressNotifier, Progress>(ProgressNotifier.new);

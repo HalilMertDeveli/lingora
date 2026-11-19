@@ -18,6 +18,7 @@ import '../ui/my_avatar.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/stoic_card.dart';
+import 'sync_status_line.dart';
 
 /// Accuracy from which the end screen cheers (big hop) instead of a wave.
 const successAccuracy = 90;
@@ -216,6 +217,9 @@ class _LessonResultScreenState extends State<LessonResultScreen> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
+                const SizedBox(height: 6),
+                // Where this lesson is saved: phone only, account, or waiting.
+                const SyncStatusLine(center: true),
                 if (widget.quote case final quote?) ...[
                   const SizedBox(height: 16),
                   Flexible(

@@ -576,6 +576,96 @@ service cloud.firestore {
       allow create, update: if false;
     }
 
+    // ---- Soru bildirimleri (Bildir) ----
+    // lib/services/question_reports.dart: a learner flags a question ("Cevap
+    // hatalı", "Başka cevap da doğru", "Açıklama anlaşılmıyor"). Anyone signed
+    // in (guests too) may file one; only Dilmaç staff read and triage them in
+    // the panel (lib/admin/reports_page.dart).
+
+    // Dilmaç staff: the isLingoraAdmin claim or config/lingoraAdmins.uids
+    // (the same test as isLingoraAdmin() in functions/src/orgs.ts).
+    function isStaff() {
+      return signedIn() && (request.auth.token.get('isLingoraAdmin', false) == true
+        || (exists(/databases/$(database)/documents/config/lingoraAdmins)
+          && request.auth.uid in get(/databases/$(database)/documents/config/lingoraAdmins).data.get('uids', [])));
+    }
+
+    // Rate limit, written in the same transaction as each report: one report
+    // per 10 seconds, at most 20 a day. n counts every report ever and names
+    // the report ({uid}_{n}), so one request cannot file more than one.
+    match /reportLimits/{uid} {
+      function limitShape(d) {
+        return d.keys().hasOnly(['windowStart', 'count', 'last', 'n'])
+          && d.keys().hasAll(['windowStart', 'count', 'last', 'n'])
+          && d.windowStart is timestamp && d.last is timestamp
+          && d.count is int && d.n is int
+          && d.last == request.time;
+      }
+
+      function sameWindow(d, old) {
+        return request.time < old.windowStart + duration.value(1, 'd')
+          && d.windowStart == old.windowStart
+          && d.count == old.count + 1
+          && d.count <= 20;
+      }
+
+      function newWindow(d, old) {
+        return request.time >= old.windowStart + duration.value(1, 'd')
+          && d.windowStart == request.time
+          && d.count == 1;
+      }
+
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid) && limitShape(request.resource.data)
+        && request.resource.data.windowStart == request.time
+        && request.resource.data.count == 1
+        && request.resource.data.n == 1;
+      allow update: if isOwner(uid) && limitShape(request.resource.data)
+        && request.time >= resource.data.last + duration.value(10, 's')
+        && request.resource.data.n == resource.data.n + 1
+        && (sameWindow(request.resource.data, resource.data)
+          || newWindow(request.resource.data, resource.data));
+      allow delete: if false;
+    }
+
+    match /reports/{reportId} {
+      function validReport() {
+        let d = request.resource.data;
+        return d.keys().hasOnly(['uid', 'reason', 'note', 'questionId', 'lessonId', 'answer', 'correct',
+            'appVersion', 'question', 'track', 'createdAt', 'status'])
+          && d.keys().hasAll(['uid', 'reason', 'questionId', 'lessonId', 'appVersion', 'createdAt', 'status'])
+          && d.uid == request.auth.uid
+          && d.reason in ['wrong_answer', 'other_correct', 'unclear']
+          && d.questionId is string && d.questionId.size() > 0 && d.questionId.size() <= 120
+          && d.lessonId is string && d.lessonId.size() <= 80
+          && d.appVersion is string && d.appVersion.size() > 0 && d.appVersion.size() <= 40
+          && (!('note' in d) || (d.note is string && d.note.size() <= 500))
+          && (!('answer' in d) || (d.answer is string && d.answer.size() <= 300))
+          && (!('question' in d) || (d.question is string && d.question.size() <= 400))
+          && (!('track' in d) || (d.track is string && d.track.size() <= 40))
+          && (!('correct' in d) || d.correct is bool)
+          && d.createdAt == request.time
+          && d.status == 'yeni';
+      }
+
+      // The limit doc as it is after this request: it must have been written
+      // by it (last == now), and its counter names this report.
+      function pairedWithLimit() {
+        let limit = getAfter(/databases/$(database)/documents/reportLimits/$(request.auth.uid)).data;
+        return limit.last == request.time && reportId == request.auth.uid + '_' + string(limit.n);
+      }
+
+      allow create: if signedIn() && validReport() && pairedWithLimit();
+      allow read: if isStaff();
+      allow update: if isStaff()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'statusAt', 'statusBy'])
+        && request.resource.data.status in ['yeni', 'bakildi', 'duzeltildi']
+        && request.resource.data.statusAt == request.time
+        && request.resource.data.statusBy == request.auth.uid;
+      allow delete: if false;
+    }
+    // ---- end Soru bildirimleri ----
+
     // Everything else (quotas, purchase tokens, counters) is server-only.
     match /{document=**} {
       allow read, write: if false;

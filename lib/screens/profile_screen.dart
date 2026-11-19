@@ -20,9 +20,11 @@ import 'onboarding_screen.dart';
 import 'paywall_screen.dart';
 import 'profile_header.dart';
 import 'placement_screen.dart';
+import 'real_progress_section.dart';
 import 'reminder_settings.dart';
 import 'shop_screen.dart';
 import 'study/methods_screen.dart';
+import 'sync_status_line.dart';
 import '../goals/goal_picker.dart';
 
 const _weekdays = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
@@ -46,6 +48,8 @@ class ProfileScreen extends ConsumerWidget {
         // it must not hide below the settings.
         const SizedBox(height: 24),
         Text('Hesap', style: t.titleLarge),
+        const SizedBox(height: 6),
+        const SyncStatusLine(),
         const SizedBox(height: 12),
         const AccountSection(),
         const SizedBox(height: 24),
@@ -110,6 +114,9 @@ class ProfileScreen extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 12),
+        // Learning apart from XP: only spaced passes and fixed mistakes.
+        const RealProgressSection(),
+        const SizedBox(height: 24),
         Text('Dilmaç Premium', style: t.titleLarge),
         const SizedBox(height: 12),
         TapCard(
