@@ -18,6 +18,7 @@ import * as conversation from "./converse.js";
 import { hasPremium } from "./entitlement.js";
 import * as daily from "./daily_reading.js";
 import * as karne from "./conversation_report.js";
+import * as explain from "./explain_more.js";
 import * as family from "./family.js";
 import * as league from "./league.js";
 import * as play from "./play.js";
@@ -166,6 +167,12 @@ export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSe
     .recordSpeaking(getFirestore(), uid, req.data, result, now)
     .catch((e) => logger.error("recordSpeaking failed", e));
   return result;
+});
+
+/** { question, options, answer, picked?, explanation, mode, text?, history? } -> { answer_tr, remaining } ("Neden yanlış?" follow-up, Premium) */
+export const explainMore = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 60 }, (req) => {
+  const uid = requireUid(req);
+  return explain.explainMore(getFirestore(), claudeClient(), uid, req.data, new Date());
 });
 
 /** { taskId, text } -> { scores, corrections, next_tr, remaining } (general course writing tasks) */

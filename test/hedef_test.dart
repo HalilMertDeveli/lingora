@@ -172,6 +172,7 @@ void main() {
     test('speaking and general', () {
       expect(goalPaywallCopy(const LearnGoal(kind: GoalKind.speaking), at).focus, [
         PremiumFeature.aiConversation,
+        PremiumFeature.pronunciationScore,
       ]);
       expect(goalPaywallCopy(null, at).title, 'Daha fazla konuş, daha çok deneme çöz');
       expect(goalPaywallCopy(null, at, variantB: true).title, 'Konuşarak öğren, sınırsız deneme çöz');

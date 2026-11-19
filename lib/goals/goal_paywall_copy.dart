@@ -49,6 +49,7 @@ GoalPaywallCopy goalPaywallCopy(LearnGoal? goal, DateTime now, {bool variantB = 
           PremiumFeature.unlimitedMockExams,
           PremiumFeature.errorAnalytics,
           PremiumFeature.whyWrong,
+          PremiumFeature.explainMore,
         ],
         outcomes: const [
           'Sınava kadar her gün ne çalışacağın belli',
@@ -70,8 +71,11 @@ GoalPaywallCopy goalPaywallCopy(LearnGoal? goal, DateTime now, {bool variantB = 
       return const GoalPaywallCopy(
         title: 'Konuşarak öğren: her gün sınırsız sohbet',
         subtitle: 'Seyahatte ve günlük hayatta rahat konuş; hatalarını anında Türkçe düzeltelim.',
-        focus: [PremiumFeature.aiConversation],
-        outcomes: ['Otelde, restoranda, yolda: her senaryoda serbest konuşma'],
+        focus: [PremiumFeature.aiConversation, PremiumFeature.pronunciationScore],
+        outcomes: [
+          'Otelde, restoranda, yolda: her senaryoda serbest konuşma',
+          'Hangi kelimeyi zor söylediğini ve doğrusunu duy',
+        ],
       );
     case GoalKind.general || null:
       return GoalPaywallCopy(

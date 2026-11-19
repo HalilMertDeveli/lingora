@@ -13,6 +13,7 @@ import '../services/billing/premium.dart';
 import '../services/profile.dart';
 import '../theme.dart';
 import '../ui/level_certificate.dart';
+import '../ui/share_card.dart';
 import '../ui/mascot.dart';
 import 'grammar_path_screen.dart' show GrammarLessonScreen, grammarLessonsProvider, levelColor, lessonNodeId;
 import 'level_test_screen.dart';
@@ -88,6 +89,14 @@ class LevelReportScreen extends ConsumerWidget {
               label: const Text('Sertifikayı gör ve paylaş'),
             ),
           ],
+          const SizedBox(height: 8),
+          OutlinedButton.icon(
+            key: const Key('karne-share-card'),
+            onPressed: () =>
+                Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const ShareCardScreen())),
+            icon: const Icon(Icons.ios_share_rounded),
+            label: Text(latest == null ? 'Serini paylaş' : 'Paylaşım kartı oluştur'),
+          ),
           const SizedBox(height: 12),
           _NextTest(reports: reports, now: now),
           if (latest != null) ...[

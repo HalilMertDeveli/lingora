@@ -185,15 +185,29 @@ Future<List<int>> certificatePng(GlobalKey boundaryKey) async {
 }
 
 /// Writes the certificate to a temporary PNG and opens the share sheet.
-Future<void> shareCertificate(GlobalKey boundaryKey, LevelReport report, {Rect? origin}) async {
+Future<void> shareCertificate(GlobalKey boundaryKey, LevelReport report, {Rect? origin}) => sharePng(
+  boundaryKey,
+  fileName: 'dilmac_seviye_${report.day}.png',
+  text: 'Dilmaç ile ölçülen tahmini İngilizce seviyem: ${levelLabel(report.overall)}',
+  origin: origin,
+);
+
+/// Renders the [RepaintBoundary] under [boundaryKey] to a temporary PNG and
+/// opens the system share sheet (Instagram, WhatsApp…) with it and [text].
+Future<void> sharePng(
+  GlobalKey boundaryKey, {
+  required String fileName,
+  required String text,
+  Rect? origin,
+}) async {
   final bytes = await certificatePng(boundaryKey);
   final dir = await getTemporaryDirectory();
-  final file = File('${dir.path}/dilmac_seviye_${report.day}.png');
+  final file = File('${dir.path}/$fileName');
   await file.writeAsBytes(bytes, flush: true);
   await SharePlus.instance.share(
     ShareParams(
       files: [XFile(file.path, mimeType: 'image/png')],
-      text: 'Dilmaç ile ölçülen tahmini İngilizce seviyem: ${levelLabel(report.overall)}',
+      text: text,
       sharePositionOrigin: origin,
     ),
   );

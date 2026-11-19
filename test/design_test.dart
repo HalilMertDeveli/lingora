@@ -240,11 +240,13 @@ void main() {
       await tester.tap(toggle);
       await tester.pumpAndSettle();
       expect(Brand.isKid, isTrue);
-      expect(find.text('Görünüm', skipOffstage: false), findsOneWidget, reason: 'still on the Profil tab');
+      expect(toggle, findsOneWidget, reason: 'still on the Profil tab');
 
+      await tester.ensureVisible(find.text('Koyu'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('Koyu'));
       await tester.pumpAndSettle();
-      expect(Theme.of(tester.element(find.text('Görünüm', skipOffstage: false))).brightness, Brightness.dark);
+      expect(Theme.of(tester.element(toggle)).brightness, Brightness.dark);
       expect(Brand.palette, Palette.kidDark);
       expect(tester.takeException(), isNull);
     });

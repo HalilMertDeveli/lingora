@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/app_settings.dart';
+import '../exercises/hands_free.dart';
 import '../theme.dart';
 
 /// Profil > Görünüm: Ebeveyn gözetimli mod (AppMode.kid) switch and light/dark choice.
@@ -59,6 +60,18 @@ class AppearanceSettings extends ConsumerWidget {
             subtitle: Text('Doğru cevapta ve kutlamalarda kısa bir tık sesi.', style: t.bodySmall),
             value: s.sound,
             onChanged: n.setSound,
+          ),
+          SwitchListTile(
+            key: const ValueKey('hands-free-switch'),
+            contentPadding: EdgeInsets.zero,
+            title: Text('Konuşma alıştırmalarında otomatik dinle', style: t.titleMedium),
+            subtitle: Text(
+              'Cümle okunduktan sonra mikrofon kendiliğinden açılır, susunca cevabın kontrol edilir. '
+              'Kapalıyken mikrofona dokunarak konuşursun.',
+              style: t.bodySmall,
+            ),
+            value: ref.watch(handsFreeProvider),
+            onChanged: ref.read(handsFreeProvider.notifier).set,
           ),
           SwitchListTile(
             key: const ValueKey('reduce-motion-switch'),

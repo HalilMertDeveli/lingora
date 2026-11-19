@@ -25,6 +25,7 @@ import 'study/notebook_screen.dart';
 import 'study/srs_review_screen.dart';
 import 'study/today_screen.dart';
 import '../study/review_queue.dart';
+import 'weekly_coach_card.dart';
 
 /// "Pratik" tab: every practice tool in one place, whatever track is open.
 ///
@@ -79,6 +80,7 @@ class PracticeHubScreen extends ConsumerWidget {
           // opens the weekly YDS plan), so there is one "Bugün", not two.
           // Mülakat Provası: the day's study from the learner's own answer.
           const RehearsalTodayCard(),
+          const WeeklyCoachCard(),
           const SectionLabel('KONUŞ VE DİNLE'),
           const SizedBox(height: 8),
           _HubTile(

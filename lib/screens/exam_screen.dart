@@ -27,7 +27,18 @@ import '../nav/flow.dart';
 import '../exercises/option_gloss.dart';
 import 'exam_pack_screen.dart';
 import 'paywall_screen.dart';
+import '../services/explain_more.dart';
+import '../ui/explain_more.dart';
 import 'report_question_sheet.dart';
+
+/// A wrong answer as the "Neden yanlış?" follow-up sends it.
+ExplainQuestion _explainQuestion(ExamQuestion q, int? picked) => ExplainQuestion(
+  question: explainQuestionText(q.text, passage: q.passage),
+  options: q.options,
+  answer: q.answer,
+  picked: picked,
+  explanation: q.explanation,
+);
 
 const _letters = ['A', 'B', 'C', 'D', 'E'];
 
@@ -432,12 +443,9 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> with Widg
     // "Neden yanlış?": free a few times a day, unlimited with Premium.
     var locked = false;
     if (!right && ref.read(optionGlossesProvider).value?.of(_q.id, _q.options.length) != null) {
+      // Used up: the basic reason and a small card after the explanation;
+      // nothing opens by itself.
       locked = !ref.read(whyWrongQuotaProvider.notifier).claim(_q.id);
-      if (locked) {
-        Future<void>.delayed(const Duration(milliseconds: 1200), () {
-          if (mounted) maybeAutoPaywall(context, ref, PaywallPlacement.whyWrong);
-        });
-      }
     }
     setState(() {
       _revealed = true;
@@ -679,9 +687,6 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> with Widg
                       if (gloss != null) ...[
                         OptionGlossToggle(open: glossOpen, onChanged: (v) => setState(() => _glossOpen = v)),
                         const SizedBox(height: 10),
-                      ] else if (_revealed && !right && glossLocked) ...[
-                        const LockedWhyWrong(),
-                        const SizedBox(height: 12),
                       ],
                       Shake(
                         trigger: _shake,
@@ -769,6 +774,22 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> with Widg
                             ),
                           ),
                         ),
+                      if (_revealed && !right && glossLocked) ...[
+                        const SizedBox(height: 12),
+                        LockedWhyWrong(
+                          basic: basicWhyLine(
+                            ref.watch(optionGlossesProvider).value?.of(q.id, q.options.length),
+                            q.answer,
+                          ),
+                        ),
+                      ],
+                      if (_revealed && !right) ...[
+                        const SizedBox(height: 12),
+                        ExplainMoreBox(
+                          key: ValueKey(('explain', q.id)),
+                          question: _explainQuestion(q, _picked),
+                        ),
+                      ],
                     ],
                   ),
                 ),
@@ -965,8 +986,9 @@ Future<void> showMockLimitSheet(BuildContext context) => showModalBottomSheet<vo
 /// A reviewed wrong answer's "Neden yanlış?": built only when its tile is
 /// opened, so only opened ones use the day's free explanations.
 class _ReviewGloss extends ConsumerStatefulWidget {
-  const _ReviewGloss({required this.id, required this.child});
+  const _ReviewGloss({required this.id, required this.child, this.basic});
   final String id;
+  final String? basic;
   final Widget child;
 
   @override
@@ -994,7 +1016,7 @@ class _ReviewGlossState extends ConsumerState<_ReviewGloss> {
   Widget build(BuildContext context) => switch (_allowed) {
     true => widget.child,
     false when ref.watch(premiumProvider) => widget.child,
-    false => const LockedWhyWrong(),
+    false => LockedWhyWrong(basic: widget.basic),
     null => const SizedBox.shrink(),
   };
 }
@@ -1044,6 +1066,10 @@ class _ReviewTile extends ConsumerWidget {
             ),
             const SizedBox(height: 6),
             Text(q.explanation, style: const TextStyle(height: 1.4)),
+            if (picked != null && !ok) ...[
+              const SizedBox(height: 12),
+              ExplainMoreBox(question: _explainQuestion(q, picked)),
+            ],
             ReportQuestionButton(
               target: () => ReportTarget(
                 questionId: q.id,
@@ -1062,6 +1088,7 @@ class _ReviewTile extends ConsumerWidget {
               const SizedBox(height: 6),
               _ReviewGloss(
                 id: q.id,
+                basic: basicWhyLine(gloss, q.answer),
                 child: OptionGlossList(
                   options: q.options,
                   gloss: gloss,

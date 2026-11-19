@@ -4,7 +4,6 @@ import '../data/option_glosses.dart';
 import '../models/course.dart';
 import '../theme.dart';
 import '../ui/markdown_text.dart';
-import '../ui/premium_offer.dart';
 import 'common.dart';
 import 'option_gloss.dart';
 
@@ -104,10 +103,9 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
         if (showGloss) ...[
           OptionGlossToggle(open: glossOpen, onChanged: (v) => setState(() => _glossOpen = v)),
           const SizedBox(height: 10),
-        ] else if (wrongWithGloss) ...[
-          const LockedWhyWrong(),
-          const SizedBox(height: 12),
         ],
+        // Locked: the basic reason and the Premium card sit under the
+        // explanation in the feedback panel (LessonScreen), not here.
         for (final (i, option) in ex.options.indexed)
           Padding(
             padding: const EdgeInsets.only(bottom: 10),

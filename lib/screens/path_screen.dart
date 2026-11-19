@@ -40,6 +40,7 @@ import 'exam_screen.dart';
 import 'listening_screen.dart';
 import 'story_screen.dart';
 import 'topic_guide.dart';
+import 'weekly_coach_card.dart';
 
 export 'path_map.dart' show NodeState;
 
@@ -770,6 +771,7 @@ class _PathListState extends ConsumerState<_PathList> {
                 // "Bugün ne yapacağım?": review → lesson → listening, one BAŞLA.
                 const TodayStartCard(),
                 const _DailyGoalCard(),
+                const WeeklyCoachCard(top: 12, bottom: 0),
                 if (ref.watch(trackProvider).id == 'pro_tourism') const GuestFlagsCard(),
                 const SizedBox(height: 20),
                 for (final section in course.sections) ...[

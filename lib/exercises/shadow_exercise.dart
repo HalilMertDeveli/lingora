@@ -6,6 +6,7 @@ import '../models/course.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 import 'common.dart';
+import 'hands_free.dart';
 import 'speak_mic.dart';
 
 /// Share of the sentence's words that must be recognized when shadowing
@@ -43,19 +44,81 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
   String _heard = '';
   SpokenMatch? _match;
   int _failures = 0;
+  bool _noSpeech = false;
+  late final HandsFreeTurn _turn;
+
+  bool get _handsFree => ref.read(handsFreeProvider);
+
+  @override
+  void initState() {
+    super.initState();
+    _turn = HandsFreeTurn(speech: _speech, player: ref.read(linePlayerProvider));
+  }
 
   void _play() => _speech.say(widget.ex.text!, rate: widget.ex.rate);
+
+  /// Hands-free shadowing: the audio plays to its end, then the microphone
+  /// opens by itself.
+  Future<void> _autoListen({bool withAudio = true}) async {
+    setState(() {
+      _noSpeech = false;
+      _heard = '';
+    });
+    await _turn.run(
+      target: widget.ex.text!,
+      prompt: withAudio ? widget.ex.text : null,
+      promptRate: widget.ex.rate,
+      onListening: () {
+        if (!mounted) return;
+        setState(() {
+          _listening = true;
+          _match = null;
+        });
+      },
+      onWords: (w) {
+        if (mounted) setState(() => _heard = w);
+      },
+      onDone: ({required bool noSpeech}) {
+        if (!mounted) return;
+        if (noSpeech) {
+          setState(() {
+            _listening = false;
+            _noSpeech = true;
+          });
+        } else {
+          _judge();
+        }
+      },
+    );
+  }
+
+  void _judge() {
+    final match = matchSpoken(widget.ex.text!, [_heard]);
+    final good = match.heard.isNotEmpty && (match.passed || match.score >= shadowPassRatio);
+    setState(() {
+      _listening = false;
+      _match = match;
+      if (!good) _failures++;
+    });
+    widget.onReady(match.heard.isEmpty ? null : () => good);
+  }
 
   Future<void> _record() async {
     if (_listening) {
       await _speech.stopListening();
       return;
     }
+    _turn.cancel();
     if (!await _speech.canListen) {
       setState(() {
         _unavailable = true;
         _failures++;
       });
+      return;
+    }
+    if (_handsFree) {
+      handsFreeMicRefused = false;
+      await _autoListen(withAudio: false);
       return;
     }
     setState(() {
@@ -69,21 +132,14 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
         if (mounted) setState(() => _heard = w);
       },
       onDone: () {
-        if (!mounted) return;
-        final match = matchSpoken(widget.ex.text!, [_heard]);
-        final good = match.heard.isNotEmpty && (match.passed || match.score >= shadowPassRatio);
-        setState(() {
-          _listening = false;
-          _match = match;
-          if (!good) _failures++;
-        });
-        widget.onReady(match.heard.isEmpty ? null : () => good);
+        if (mounted) _judge();
       },
     );
   }
 
   @override
   void dispose() {
+    _turn.cancel();
     if (_listening) _speech.stopListening();
     super.dispose();
   }
@@ -153,13 +209,16 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
                 ? null
                 : () {
                     setState(() => _step++);
-                    _play();
+                    // The last step listens by itself after the audio.
+                    _step == 2 && _handsFree ? _autoListen() : _play();
                   },
             child: Text(_step == 0 ? 'Metni göster ve tekrar dinle' : 'Şimdi sıra sende'),
           )
         else ...[
           Text(
-            'Sesi dinle, biter bitmez mikrofona dokun ve aynı hızla, aynı vurguyla söyle.',
+            _handsFree
+                ? 'Sesi dinle; bitince mikrofon kendiliğinden açılır. Aynı hızla, aynı vurguyla söyle.'
+                : 'Sesi dinle, biter bitmez mikrofona dokun ve aynı hızla, aynı vurguyla söyle.',
             textAlign: TextAlign.center,
             style: TextStyle(color: Brand.muted),
           ),
@@ -180,6 +239,9 @@ class _ShadowExerciseState extends ConsumerState<ShadowExercise> {
               onTap: widget.locked ? null : _record,
             ),
           ),
+          if (_listening && _handsFree) const ListeningIndicator(),
+          if (_noSpeech && !_listening && !widget.locked)
+            NoSpeechHint(onRetry: () => _autoListen(withAudio: false)),
           if (!_listening && (_match?.heard.isNotEmpty ?? false)) SpokenWordsView(match: _match!),
           const SizedBox(height: 8),
           ValueListenableBuilder<String?>(

@@ -30,6 +30,7 @@ import 'quests_screen.dart';
 import 'session_resume.dart';
 import 'vocab/dev_scenario_screen.dart';
 import 'vocab/vocab_home_screen.dart';
+import '../study/weekly_coach.dart' show weeklyCoachNotifyProvider;
 import 'daily_reading_screen.dart';
 import 'exam_season_card.dart';
 
@@ -105,12 +106,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
     }
     // Keep scheduled reminders in sync with progress (e.g. skip today's
     // reminder once a lesson is done).
-    ref.listenManual<Progress>(
-      progressProvider,
-      (_, next) =>
-          ref.read(notificationServiceProvider).apply(planNotifications(next, ref.read(clockProvider)())),
-      fireImmediately: true,
-    );
+    void replan() => ref
+        .read(notificationServiceProvider)
+        .apply(
+          planNotifications(
+            ref.read(progressProvider),
+            ref.read(clockProvider)(),
+            weeklyCoach: ref.read(weeklyCoachNotifyProvider),
+          ),
+        );
+    ref.listenManual<Progress>(progressProvider, (_, _) => replan(), fireImmediately: true);
+    ref.listenManual<bool>(weeklyCoachNotifyProvider, (_, _) => replan());
     ref.listenManual<Track>(trackProvider, (_, next) {
       if (next.id != _trackId) {
         setState(() => _reset(next));

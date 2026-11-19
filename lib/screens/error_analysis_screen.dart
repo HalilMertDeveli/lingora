@@ -1230,32 +1230,43 @@ class _Plan extends ConsumerWidget {
     );
   }
 
-  void _drill(BuildContext context, FocusItem f) {
-    final items = drillItems(
-      course,
-      unitId: f.unitId,
-      typeKey: f.typeKey,
-      wrongKeys: insights.wrongKeys,
-      seenUnits: insights.seenUnits,
-    );
-    if (items.isEmpty) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('${f.label}: bu kursta yeterli soru bulunamadı.')));
-      return;
-    }
-    final color = course.units.where((u) => u.id == f.unitId).firstOrNull?.color ?? Brand.error;
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        fullscreenDialog: true,
-        builder: (_) => LessonScreen(
-          nodeId: 'targeted_review',
-          title: '${f.label} alıştırması',
-          items: items,
-          color: Brand.tone(color),
-          mode: LessonMode.practice,
-          logSource: 'targeted',
-        ),
-      ),
-    );
+  void _drill(BuildContext context, FocusItem f) =>
+      openFocusDrill(context, course, f, wrongKeys: insights.wrongKeys, seenUnits: insights.seenUnits);
+}
+
+/// Starts the targeted drill of a focus item (topic or question type); a
+/// snackbar when the course has too few questions for it.
+void openFocusDrill(
+  BuildContext context,
+  Course course,
+  FocusItem f, {
+  Set<String> wrongKeys = const {},
+  Set<String> seenUnits = const {},
+}) {
+  final items = drillItems(
+    course,
+    unitId: f.unitId,
+    typeKey: f.typeKey,
+    wrongKeys: wrongKeys,
+    seenUnits: seenUnits,
+  );
+  if (items.isEmpty) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text('${f.label}: bu kursta yeterli soru bulunamadı.')));
+    return;
   }
+  final color = course.units.where((u) => u.id == f.unitId).firstOrNull?.color ?? Brand.error;
+  Navigator.of(context).push(
+    MaterialPageRoute<void>(
+      fullscreenDialog: true,
+      builder: (_) => LessonScreen(
+        nodeId: 'targeted_review',
+        title: '${f.label} alıştırması',
+        items: items,
+        color: Brand.tone(color),
+        mode: LessonMode.practice,
+        logSource: 'targeted',
+      ),
+    ),
+  );
 }
