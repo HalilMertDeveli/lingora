@@ -163,7 +163,7 @@ void main() {
 
   testWidgets('Günün okuması: "Dinle" reads the text aloud, "Durdur" stops it', (tester) async {
     final lines = _Lines(hold: true);
-    final src = FakeDailySource({'2026-11-19_A2': reading('2026-11-19', 'A2')});
+    final src = FakeDailySource({'2026-11-19_A1': reading('2026-11-19', 'A1')});
     await tester.pumpWidget(
       ProviderScope(
         overrides: [

@@ -4,9 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../data/course_repository.dart' show courseOutlineProvider;
 import '../../data/level_report.dart';
 import '../../data/placement.dart' show Cefr;
 import '../../data/progress.dart';
+import '../../data/sections.dart' show mainSections, sectionReach;
+import '../../models/course.dart' show Course;
 import '../firebase/firebase_providers.dart';
 
 /// "Günün okuması": a short original text per CEFR band, written once a day
@@ -196,16 +199,41 @@ final dailyReadingCacheProvider = Provider<DailyReadingCache>(
   (ref) => DailyReadingCache(ref.watch(prefsProvider)),
 );
 
-/// The band suggested for the learner: the last Seviye Karnesi, else a guess
-/// from the track (YDS → B2, LGS → A2), else A2.
-String suggestedDailyLevel(Progress p) {
+/// The reading band of a course CEFR label ("A2+–B1" → A2, "C2" → C1);
+/// null when it names none.
+String? dailyBandOf(String cefr) {
+  final m = RegExp(r'[ABC][12]').firstMatch(cefr.toUpperCase());
+  if (m == null) return null;
+  final band = m.group(0)!;
+  return band == 'C2' ? 'C1' : band;
+}
+
+/// The CEFR band of the section the learner is on in [course] (the
+/// furthest one open, as the path shows it); null when no section names one.
+String? courseDailyLevel(Course course, Progress p) {
+  final main = mainSections(course);
+  if (main.isEmpty) return null;
+  final reach = sectionReach(course, p);
+  final pos = main.indexWhere((s) => s.index == reach);
+  for (var i = pos < 0 ? main.length - 1 : pos; i >= 0; i--) {
+    if (dailyBandOf(main[i].cefr) case final band?) return band;
+  }
+  return null;
+}
+
+/// The band suggested for the learner: the last Seviye Karnesi, else the
+/// level of the course section they are on ([courseLevel]), else a guess
+/// from the track (YDS → B2, LGS → A2), else A1: a learner nothing is known
+/// about yet is a beginner (A2 was too hard on "A1 · Bölüm 1").
+String suggestedDailyLevel(Progress p, {String? courseLevel}) {
   final reports = sortedReports(p.levelReports);
   final measured = reports.isEmpty ? null : reports.last.overall;
   if (measured != null) return measured.code;
+  if (courseLevel != null && dailyReadingLevels.contains(courseLevel)) return courseLevel;
   return switch (p.trackId) {
     'yds' => Cefr.b2.code,
     'lgs' => Cefr.a2.code,
-    _ => Cefr.a2.code,
+    _ => Cefr.a1.code,
   };
 }
 
@@ -217,7 +245,9 @@ class DailyLevelNotifier extends Notifier<String> {
   String build() {
     final picked = ref.read(prefsProvider).getString(key);
     if (picked != null && dailyReadingLevels.contains(picked)) return picked;
-    return suggestedDailyLevel(ref.watch(progressProvider));
+    final p = ref.watch(progressProvider);
+    final course = ref.watch(courseOutlineProvider).value;
+    return suggestedDailyLevel(p, courseLevel: course == null ? null : courseDailyLevel(course, p));
   }
 
   void pick(String level) {

@@ -17,6 +17,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 const _track = String.fromEnvironment('PERF_TRACK', defaultValue: 'tr_en');
 const _doneUnits = int.fromEnvironment('PERF_DONE_UNITS');
 
+/// Daily reminder at this minute of the day (e.g. 1200 = 20:00); none without.
+const _reminder = int.fromEnvironment('PERF_REMINDER_MIN', defaultValue: -1);
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
@@ -28,7 +31,12 @@ Future<void> main() async {
     };
     await prefs.setString(
       'progress_v1',
-      jsonEncode({'onboarded': true, 'trackId': _track, 'completed': done}),
+      jsonEncode({
+        'onboarded': true,
+        'trackId': _track,
+        'completed': done,
+        if (_reminder >= 0) ...{'remindersEnabled': true, 'reminderMinutes': _reminder},
+      }),
     );
     debugPrint('PERF seeded $_track with ${done.length} finished steps');
   }

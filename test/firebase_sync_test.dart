@@ -69,7 +69,9 @@ void main() {
         claimed: ['2026-11-09:q2'],
       );
       final m = mergeProgress(local, remote, localNewer: true);
-      expect(m.totalXp, 300);
+      // The days add up to 320: the total is never below them (the league
+      // reports the week from the days).
+      expect(m.totalXp, 320);
       expect(m.xpByDay, {'2026-11-08': 200, '2026-11-09': 50, '2026-11-10': 70});
       expect(m.completed, {'a': 1, 'b': 3, 'c': 2});
       expect(m.lessonsDone, 9);

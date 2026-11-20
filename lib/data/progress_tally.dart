@@ -168,12 +168,43 @@ Progress stampTally(Progress p, String device) {
     ...x,
     for (final e in y.entries) e.key: max(e.value, x[e.key] ?? 0),
   };
-  final tally = ProgressTally(
-    base: maxMap(ta.base, tb.base),
-    devices: {
-      for (final d in {...ta.devices.keys, ...tb.devices.keys})
-        d: maxMap(ta.devices[d] ?? const {}, tb.devices[d] ?? const {}),
-    },
+  final tally = consistentXp(
+    ProgressTally(
+      base: maxMap(ta.base, tb.base),
+      devices: {
+        for (final d in {...ta.devices.keys, ...tb.devices.keys})
+          d: maxMap(ta.devices[d] ?? const {}, tb.devices[d] ?? const {}),
+      },
+    ),
   );
   return (counts: tally.totals, tally: tally);
+}
+
+/// XP of the days in [counts] (the `d:<day>` keys).
+int _dayXp(Map<String, int> counts) =>
+    counts.entries.where((e) => e.key.startsWith('d:')).fold(0, (a, e) => a + e.value);
+
+/// [t] with its base XP raised so the total XP is never below the XP of the
+/// days. Bases merge per key by the maximum, so two copies with different
+/// days (a guest's copy merged into the account) could keep every day but
+/// only the larger copy's total: the weekly league XP then exceeded the
+/// total in the top bar.
+ProgressTally consistentXp(ProgressTally t) {
+  final totals = t.totals;
+  final missing = _dayXp(totals) - (totals['xp'] ?? 0);
+  if (missing <= 0) return t;
+  return ProgressTally(base: {...t.base, 'xp': (t.base['xp'] ?? 0) + missing}, devices: t.devices);
+}
+
+/// [p] with [consistentXp] applied (a copy stored before the fix heals on load).
+Progress healXp(Progress p) {
+  final missing = p.xpByDay.values.fold(0, (a, v) => a + v) - p.totalXp;
+  if (missing <= 0) return p;
+  final t = p.tally;
+  return p.copyWith(
+    totalXp: p.totalXp + missing,
+    tally: t == null
+        ? null
+        : ProgressTally(base: {...t.base, 'xp': (t.base['xp'] ?? 0) + missing}, devices: t.devices),
+  );
 }

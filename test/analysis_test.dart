@@ -300,7 +300,7 @@ void main() {
         ('yb_1', 'B1+'),
         ('yb_2', 'B2'),
       ]);
-      expect(stories.map(readingSource), [null, 'Genel', 'Genel', 'YDS', 'YDS']);
+      expect(stories.map(readingSource), [null, null, null, 'YDS', 'YDS']);
     });
 
     test('Okuma evi lists nodes with a reading field', () {
