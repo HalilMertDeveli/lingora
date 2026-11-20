@@ -2,6 +2,7 @@
 // messages on every AI screen instead of "too short" or "quota used".
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/services/conversation.dart';
+import 'package:lingora/services/explain_more.dart';
 import 'package:lingora/services/rehearsal_service.dart';
 import 'package:lingora/services/writing.dart';
 
@@ -19,6 +20,13 @@ void main() {
     );
     expect(CallableWritingService.messageForCode('resource-exhausted', reason: 'ai_budget'), budget);
     expect(CallableRehearsalService.messageForCode('resource-exhausted', reason: 'ai_budget'), budget);
+    // "Neden yanlış?" ek açıklama used to say "hakkın doldu" when the whole
+    // AI budget was spent.
+    expect(CallableExplainMoreService.messageForCode('resource-exhausted', reason: 'ai_budget'), budget);
+    expect(
+      CallableExplainMoreService.messageForCode('resource-exhausted', reason: 'explain_quota'),
+      contains('ek açıklama hakkın doldu'),
+    );
   });
 
   test('other reasons keep the existing texts', () {

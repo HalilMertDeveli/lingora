@@ -9,6 +9,12 @@ import '../theme.dart';
 import '../ui/motion.dart';
 import 'paywall_screen.dart';
 
+/// Who runs the family, as the start of "… aile planındasın" (genitive).
+String familyOwnerLabel(String? ownerName) {
+  final name = ownerName?.trim() ?? '';
+  return name.isEmpty ? 'Bir Çenebaz kullanıcısının' : '$name adlı kişinin';
+}
+
 String _date(DateTime d) =>
     '${d.day.toString().padLeft(2, '0')}.${d.month.toString().padLeft(2, '0')}.${d.year}';
 
@@ -231,7 +237,8 @@ class _FamilyScreenState extends ConsumerState<FamilyScreen> {
 
   List<Widget> _member(FamilyInfo info) => [
     _Box(
-      '${info.ownerName ?? 'Bir Çenebaz kullanıcısının'} aile planındasın. Premium'
+      // "Ayşe aile planındasın" reads wrong; Turkish needs the genitive.
+      '${familyOwnerLabel(info.ownerName)} aile planındasın. Premium'
       '${info.expiresAt == null ? '' : ' ${_date(info.expiresAt!)} tarihine kadar'} açık.',
       color: Brand.successBg,
     ),

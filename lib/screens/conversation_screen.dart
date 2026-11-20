@@ -28,6 +28,11 @@ const conversationXp = 15;
 const freeChatMessagesPerDay = 3;
 
 /// Shown on the paywall once the free daily taste is used up.
+/// Under the chat once the free daily taste is over and the paywall was closed.
+String freeTasteOverMessage({required bool learnerSpoke}) => learnerSpoke
+    ? 'Bugünkü $freeChatMessagesPerDay ücretsiz mesajını kullandın. "Bitir" ile karneni alabilirsin.'
+    : "Bugünkü ücretsiz yapay zekâ hakkın doldu. Yarın yine konuşabilirsin; Premium'la her gün sınırsız.";
+
 const freeTastePitch = "Özel hoca saati 500 TL. Çenebaz'da her gün sınırsız konuşma, ayda bir ders fiyatına.";
 
 /// "Konuş" tab: pick a role-play scenario.
@@ -376,8 +381,9 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
         _freeLeft = null;
         _error = null;
       } else {
-        _error =
-            'Bugünkü $freeChatMessagesPerDay ücretsiz mesajını kullandın. "Bitir" ile karneni alabilirsin.';
+        // No karne for a chat that never started (the free messages went
+        // elsewhere, or the phone's shared daily AI cap was reached).
+        _error = freeTasteOverMessage(learnerSpoke: _messages.any((m) => m.fromUser));
       }
     });
   }

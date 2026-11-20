@@ -441,6 +441,24 @@ void main() {
       expect(find.textContaining('geri yüklenecek aktif abonelik bulunamadı'), findsOneWidget);
     });
 
+    testWidgets('restore without Google Play says Play is unreachable, not "nothing found"', (tester) async {
+      final billing = FakeBilling(available: false)..owned.add('lingora_premium_yearly');
+      await tester.pumpWidget(app(await widgetOverrides(tester, billing), const PaywallScreen()));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('Satın alımları geri yükle'),
+        300,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Satın alımları geri yükle'));
+      await tester.pump();
+      await tester.pump(restoreSettle);
+      await tester.pumpAndSettle();
+      expect(find.textContaining('kontrol edilemedi', skipOffstage: false), findsOneWidget);
+      expect(find.textContaining('bulunamadı'), findsNothing);
+    });
+
     testWidgets('pending payment is explained', (tester) async {
       final billing = FakeBilling()..autoResult = StorePurchaseStatus.pending;
       await tester.pumpWidget(app(await widgetOverrides(tester, billing), const PaywallScreen()));

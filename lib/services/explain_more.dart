@@ -2,7 +2,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/course.dart';
-import 'conversation.dart' show CallableConversationService, CallableInvoker;
+import 'conversation.dart' show CallableConversationService, CallableInvoker, aiGuardMessage;
 import 'firebase/firebase_providers.dart';
 
 /// What the learner asks after "Neden yanlış?".
@@ -129,6 +129,7 @@ class CallableExplainMoreService implements ExplainMoreService {
   }
 
   static String messageForCode(String code, {String? reason}) => switch (code) {
+    _ when aiGuardMessage(reason) != null => aiGuardMessage(reason)!,
     'resource-exhausted' => 'Bugünkü ek açıklama hakkın doldu. Yarın yine sorabilirsin.',
     // Only Premium learners call it, so this means the server has not
     // confirmed the membership (yet): no "server error" wording.

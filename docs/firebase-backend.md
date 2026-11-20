@@ -105,6 +105,12 @@ Sonra uygulamayı `--dart-define=LINGORA_FIREBASE=emulator` ile çalıştır (bk
 Emülatörde gerçek Claude ile konuşmak istersen `functions/.secret.local` dosyasına
 `ANTHROPIC_API_KEY=...` yaz (git'e girmez); yoksa `converse` yalnızca doğrulama ve kota hatalarını gösterir.
 
+Emülatörde gerçek sinirsel ses (Chirp 3 HD) için: `gcloud auth login` ile giriş yapılmış olsun ve
+emülatörü `LINGORA_TTS_QUOTA_PROJECT=<Text-to-Speech API açık proje>` ortam değişkeniyle başlat.
+`speak`/`talk` sesi senin gcloud jetonunla ve bu projenin kotasıyla üretir (yalnızca sentez; projeye bir şey
+yazılmaz). Değişken yoksa `demo-lingora` için kimlik olmadığından ses telefonun kendi sesine düşer
+("Project demo-lingora not found"). Bu yol yalnızca `FUNCTIONS_EMULATOR=true` iken çalışır, üretimde kapalıdır.
+
 ## Yayına alma (sahibin yapacakları)
 
 1. Giriş yap: `firebase login`

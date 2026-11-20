@@ -80,6 +80,14 @@ void main() {
     expect(find.textContaining('Mikrofon izni kapalı'), findsOneWidget);
   });
 
+  test('free taste over: no "Bitir ile karneni" for a chat that never started', () {
+    // The phone's shared daily AI cap (or messages spent in another chat)
+    // can end the taste before the learner said anything here.
+    expect(freeTasteOverMessage(learnerSpoke: true), contains('karneni'));
+    expect(freeTasteOverMessage(learnerSpoke: false), isNot(contains('karne')));
+    expect(freeTasteOverMessage(learnerSpoke: false), contains('Premium'));
+  });
+
   test('no connection is not reported as a busy server', () async {
     Future<String> messageFor(String code, String reason) async {
       final service = CallableConversationService(

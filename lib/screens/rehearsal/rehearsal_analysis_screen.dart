@@ -102,7 +102,14 @@ class RehearsalAnalysisScreen extends ConsumerWidget {
             key: const Key('prova-to-home'),
             onPressed: () {
               final nav = Navigator.of(context);
-              nav.pushReplacement(MaterialPageRoute<void>(builder: (_) => const RehearsalHomeScreen()));
+              // Every way here starts from the Prova home, which is right
+              // below: going back to it avoids a second copy on the stack
+              // (its back arrow then seemed to do nothing).
+              if (nav.canPop()) {
+                nav.pop();
+              } else {
+                nav.pushReplacement(MaterialPageRoute<void>(builder: (_) => const RehearsalHomeScreen()));
+              }
             },
             child: Text(followUp ? 'Prova sayfasına dön' : 'Yarınki çalışmanı gör'),
           ),

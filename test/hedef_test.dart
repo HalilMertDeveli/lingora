@@ -142,6 +142,13 @@ void main() {
   group('paywall copy per goal', () {
     final at = DateTime(2026, 11, 18, 20);
 
+    test('a pitch with its own tutor comparison replaces the value line (no double "500 TL")', () {
+      expect(pitchReplacesValueLine(null), isFalse);
+      expect(pitchReplacesValueLine(paywallValueLine), isFalse); // shown once, as the value line
+      expect(pitchReplacesValueLine("Özel hoca saati 500 TL. Sesli partnerin her gün yanında."), isTrue);
+      expect(pitchReplacesValueLine('Sınava kadar sınırsız deneme.'), isFalse);
+    });
+
     test('exam with a date counts the days', () {
       final c = goalPaywallCopy(examGoal(date: '2027-01-04'), at);
       expect(c.title, "YDS'ye 47 gün kaldı, planın hazır.");

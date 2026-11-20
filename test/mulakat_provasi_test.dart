@@ -291,6 +291,9 @@ void main() {
       await tester.tap(find.byKey(const Key('prova-to-home')));
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('prova-today-card')), findsOneWidget);
+      // Back on the same Prova home, not a second copy stacked on it.
+      expect(find.byType(RehearsalHomeScreen, skipOffstage: false), findsOneWidget);
+      expect(find.byKey(const Key('prova-analysis'), skipOffstage: false), findsNothing);
       await tester.tap(find.byKey(const Key('prova-today-card')));
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsOneWidget);
