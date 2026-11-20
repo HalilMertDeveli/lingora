@@ -331,6 +331,13 @@ void main() {
   });
 
   group('SrsReviewScreen', () {
+    testWidgets('no cards today: an empty state, not a full progress bar with 0 / 0', (tester) async {
+      await pumpApp(tester, const SrsReviewScreen(newPerDay: 3), progress: const Progress());
+      expect(find.byKey(const Key('srs-progress')), findsNothing);
+      expect(find.text('0 / 0'), findsNothing);
+      expect(find.textContaining('Bugünlük kart yok'), findsOneWidget);
+    });
+
     testWidgets('a session ends in a summary with gold, paid once a day', (tester) async {
       final c = await pumpApp(
         tester,

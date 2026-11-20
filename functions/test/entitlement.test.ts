@@ -2,7 +2,7 @@
 import assert from "node:assert/strict";
 import { beforeEach, test } from "node:test";
 
-import { Timestamp } from "firebase-admin/firestore";
+import { FieldValue, Timestamp } from "firebase-admin/firestore";
 
 import { effectivePremium, hasPremium, premiumGrants } from "../src/entitlement.js";
 import { createFamilyInvite, FAMILY_PRODUCT, leaveFamily, redeemFamilyCode, removeFamilyMember } from "../src/family.js";
@@ -70,6 +70,38 @@ test("an org seat counts even when entitlements/{uid} says nothing", async () =>
   assert.equal(await hasPremium(db, "boss", now), false);
   await db.doc(`orgs/${orgId}`).update({ planExpiresAt: Timestamp.fromDate(later(-1)) });
   assert.equal(await hasPremium(db, "ali", now), false);
+});
+
+test("owner's family doc ended but member doc not updated -> no Premium (stale member date is not trusted)", async () => {
+  await familyWith("kid");
+  assert.equal(await hasPremium(db, "kid", now), true);
+  // Only families/{owner} is moved; entitlements/kid still says "active until next year".
+  await db.doc("families/owner").update({ expiresAt: Timestamp.fromDate(later(-1)) });
+  assert.equal((await ent("kid"))?.active, true);
+  assert.equal(await hasPremium(db, "kid", now), false);
+  assert.equal((await premiumGrants(db, "kid", now)).some((g) => g.source === "family"), false);
+});
+
+test("member removed from families/{owner} without their doc rewritten -> no Premium", async () => {
+  await familyWith("kid");
+  await db.doc("families/owner").update({ "members.kid": FieldValue.delete() });
+  assert.equal(await hasPremium(db, "kid", now), false);
+});
+
+test("a family grant parked in `previous` also follows the live family doc", async () => {
+  await familyWith("kid");
+  const e = (await ent("kid"))!;
+  await db.doc("entitlements/kid").set({
+    ...e,
+    source: "referral",
+    active: true,
+    premium: true,
+    expiresAt: Timestamp.fromDate(later(-2)),
+    previous: { source: "family", productId: FAMILY_PRODUCT, expiresAt: e.expiresAt },
+  });
+  assert.equal((await effectivePremium(db, "kid", now))?.source, "family"); // plan still runs
+  await db.doc("families/owner").update({ expiresAt: Timestamp.fromDate(later(-1)) });
+  assert.equal(await hasPremium(db, "kid", now), false);
 });
 
 test("a family seat counts while the owner's plan runs", async () => {

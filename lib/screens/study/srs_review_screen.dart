@@ -139,7 +139,7 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
       _take(q);
     }
     final finished = _pos >= _cards.length;
-    final progress = _cards.isEmpty ? 1.0 : (_pos / _cards.length).clamp(0.0, 1.0);
+    final progress = _cards.isEmpty ? 0.0 : (_pos / _cards.length).clamp(0.0, 1.0);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tekrar kartları'),
@@ -157,22 +157,24 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: GlossyProgress(
-                      key: const Key('srs-progress'),
-                      value: progress,
-                      color: Brand.success,
+              // No cards today: no full bar and "0 / 0", only the empty state.
+              if (_cards.isNotEmpty)
+                Row(
+                  children: [
+                    Expanded(
+                      child: GlossyProgress(
+                        key: const Key('srs-progress'),
+                        value: progress,
+                        color: Brand.success,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 12),
-                  Text(
-                    '${min(_pos + 1, _cards.length)} / ${_cards.length}',
-                    style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800),
-                  ),
-                ],
-              ),
+                    const SizedBox(width: 12),
+                    Text(
+                      '${min(_pos + 1, _cards.length)} / ${_cards.length}',
+                      style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w800),
+                    ),
+                  ],
+                ),
               const SizedBox(height: 12),
               if (_queue!.reviewDay)
                 Container(
