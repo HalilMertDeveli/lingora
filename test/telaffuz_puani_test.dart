@@ -77,6 +77,21 @@ void main() {
       expect(none.words.every((w) => w.verdict == WordVerdict.unclear), isTrue);
     });
 
+    test('a long sentence from the room is not an attempt at the word', () {
+      // Galaxy QA: auto-listen heard someone nearby and blamed the learner's th.
+      final f = pronunciationFeedback('think', [
+        (words: 'Infinity customer service taking today because of my cell phone number', confidence: 0.8),
+      ]);
+      expect(f.nothingHeard, isTrue);
+      expect(f.words.single.verdict, WordVerdict.unclear);
+      // A short slip is still feedback, and a sentence with the word in it is fine.
+      expect(
+        word(pronunciationFeedback('think', [(words: 'sink', confidence: 0.8)]), 'think').heardAs,
+        'sink',
+      );
+      expect(pronunciationFeedback('think', [(words: 'I think so', confidence: 0.9)]).allClear, isTrue);
+    });
+
     test('low recognizer confidence is a note, not a score', () {
       final f = pronunciationFeedback('Good morning', [(words: 'good morning', confidence: 0.31)]);
       expect(f.lowConfidence, isTrue);

@@ -67,10 +67,11 @@ const sssListesi = <Sss>[
     baslik: 'Kurum',
     soru: 'Okulumun / kurumumun verdiği kodu nereye yazarım?',
     cevap:
-        'Profil > Kurum koduyla katıl bölümüne öğretmeninin ya da kurumunun verdiği kodu yaz. Kurum '
-        'lisansı varsa Premium kendiliğinden açılır. Kurum yalnızca ders, XP, seri ve ödev durumunu '
-        'görür; notların, yazdıkların ve ses kayıtların paylaşılmaz. Kurumdan ayrılmak için aynı bölümü '
-        'kullan.',
+        'Profil > Okul ve kurum bölümünde: okulun ya da kurumun bir lisans kodu verdiyse "Lisans kodu '
+        'gir"e, öğretmenin 8 karakterlik bir sınıf kodu verdiyse "Sınıf koduyla katıl"a dokun. Lisans '
+        'varsa Premium kendiliğinden açılır. Öğretmenin yalnızca ders, XP, seri ve ödev durumunu görür; '
+        'notların, yazdıkların ve ses kayıtların paylaşılmaz. Sınıftan ayrılmak için aynı bölümde sınıfa '
+        'dokunup "Sınıftan ayrıl"ı seç.',
     etiketler: ['kurum', 'okul', 'öğretmen', 'sınıf', 'kod', 'lisans', 'şirket'],
   ),
 
@@ -125,12 +126,12 @@ const sssListesi = <Sss>[
   // ---- Çocuk modu ----
   Sss(
     baslik: 'Çocuk modu',
-    soru: 'Çocuk modu nedir, çocuğum tek başına kullanabilir mi?',
+    soru: 'Ebeveyn gözetimli mod (çocuk modu) nedir, çocuğum tek başına kullanabilir mi?',
     cevap:
-        'Çocuk modu Profil > Görünüm bölümünden açılır. Daha sade bir görünüm, çocuklara uygun dersler '
-        've maskot Pofuduk gelir; arkadaş ekleme kapanır, fotoğraf ve bayraklar gizlenir. Çenebaz çocuklar için bir ebeveyn '
+        'Profil > Görünüm > "Ebeveyn gözetimli mod" anahtarıyla açılır. Daha sade bir görünüm, çocuklara uygun dersler '
+        've maskot Pofuduk gelir; arkadaş ekleme ve yapay zekâ özellikleri kapanır, fotoğraf ve bayraklar gizlenir. Çenebaz çocuklar için bir ebeveyn '
         'ya da öğretmen gözetiminde kullanılmak üzere tasarlandı: hesabı, satın alımları ve ayarları bir '
-        'yetişkin yönetmeli. Çocuk modunu yalnızca bir yetişkin kapatmalı.',
+        'yetişkin yönetmeli. Bu modu yalnızca bir yetişkin kapatmalı.',
     etiketler: ['çocuk', 'ebeveyn', 'veli', 'gözetim', 'yaş', 'pofuduk', 'kid'],
   ),
 

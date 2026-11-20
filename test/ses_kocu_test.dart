@@ -417,6 +417,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('no-weak-words')), findsOneWidget);
       expect(find.textContaining('sesli konuşmadın'), findsOneWidget);
+      // Galaxy QA: no 'the phone struggled with these words' over an empty list.
+      expect(find.textContaining('bu kelimelerde zorlandı'), findsNothing);
       expect(find.byKey(const Key('practise-all')), findsNothing);
     });
   });

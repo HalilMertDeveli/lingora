@@ -191,6 +191,26 @@ void main() {
     // Inner pages are not paused: only the tab roots are.
   });
 
+  testWidgets('idle: a touch on a dialog over the tab root wakes it too', (tester) async {
+    // QA on a Galaxy M22: after picking a reminder time the Profile kept
+    // showing the old time, because the paused root (and its Riverpod
+    // listeners) only woke on touches below the dialog.
+    await _pumpShell(tester);
+    final glass = find.byKey(const Key('daily-glass'));
+    showDialog<void>(
+      context: tester.element(glass),
+      builder: (_) => const AlertDialog(content: Text('qa-dialog')),
+    );
+    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 21));
+    expect(TickerMode.valuesOf(tester.element(glass)).enabled, isFalse);
+    final g = await tester.startGesture(tester.getCenter(find.text('qa-dialog')));
+    await tester.pump();
+    expect(TickerMode.valuesOf(tester.element(glass)).enabled, isTrue);
+    await g.up();
+    await tester.pumpAndSettle();
+  });
+
   testWidgets('inner pages keep the bottom bar and survive tab switches', (tester) async {
     await _pumpShell(tester);
     await _tapTab(tester, AppTab.practice);

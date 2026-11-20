@@ -14,6 +14,7 @@ import '../services/growth/review_prompt.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import 'conversation_screen.dart' show freeChatMessagesPerDay;
 import 'family_screen.dart';
 
 enum GateResult {
@@ -61,7 +62,7 @@ const freeItems = [
   'Telaffuz puanı özeti ve kilometre taşı paylaşım kartı',
   'Sınav konu pratiği + günde $freeMockExamsPerDay mini deneme',
   'Günde $freeWhyWrongPerDay "Neden yanlış?" açıklaması',
-  'Sohbet senaryoları (demo modu)',
+  'Sohbet senaryoları: günde $freeChatMessagesPerDay ücretsiz yapay zekâ mesajı',
   'Hata dedektörü ve en sık 3 hatan',
   'Hesapla bulut yedekleme ve cihazlar arası devam',
 ];

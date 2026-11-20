@@ -15,6 +15,8 @@
 /// heard the issue is only a guess from the spelling, and says so.
 library;
 
+import 'dart:math' as math;
+
 import '../services/speech.dart' show SpeechGuess;
 import 'spelling.dart' show damerauLevenshtein;
 import 'spoken_match.dart';
@@ -248,7 +250,13 @@ PronunciationFeedback pronunciationFeedback(String target, List<SpeechGuess> gue
   final got = spokenWords(said);
   final conf = guesses.isEmpty ? null : guesses.first.confidence;
   final low = conf != null && conf > 0 && conf < 0.5;
-  if (got.isEmpty) {
+  // Someone else talking nearby: with auto-listen the Galaxy picked up a whole
+  // sentence from the room ("Infinity customer service taking today…") for
+  // "think" and blamed the learner's th. A long transcript without a single
+  // target word is not an attempt at it; it reads as "not heard clearly".
+  final offTarget =
+      got.length >= math.max(4, 3 * want.length) && !want.any((w) => got.any((g) => _exact(w, g)));
+  if (got.isEmpty || offTarget) {
     return PronunciationFeedback(
       heard: '',
       words: [

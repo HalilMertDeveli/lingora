@@ -281,7 +281,7 @@ class TodayStartCard extends ConsumerWidget {
                   ),
                 if (!seq.allDone) ...[
                   const SizedBox(width: 10),
-                  Flexible(
+                  Expanded(
                     flex: 2,
                     child: FilledButton(
                       key: const Key('today-start'),
