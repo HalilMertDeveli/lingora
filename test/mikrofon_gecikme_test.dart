@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/exercises/hands_free.dart';
+import 'package:lingora/services/conversation.dart';
 import 'package:lingora/services/mic_access.dart';
 import 'package:lingora/services/speech.dart';
+import 'package:lingora/voice/talk_service.dart';
 import 'package:lingora/voice/voice_io.dart';
 import 'package:record/record.dart';
 
@@ -60,5 +64,35 @@ void main() {
       // Taking it paused the partner's greeting a quarter second in.
       expect(bargeInRecordConfig.audioInterruption, AudioInterruptionMode.none);
     });
+  });
+
+  test('the app may switch speaker / earpiece (MODIFY_AUDIO_SETTINGS)', () {
+    // Galaxy M22: 'Audio Settings Permission Denial: setMode() / setSpeakerphoneOn()',
+    // and the voice chat partner played from the earpiece.
+    final manifest = File('android/app/src/main/AndroidManifest.xml').readAsStringSync();
+    expect(manifest, contains('android.permission.MODIFY_AUDIO_SETTINGS'));
+  });
+
+  test('a failed turn does not poison the chat: same-role neighbours are joined', () {
+    // Galaxy QA: 'Medical… I have a medical issue' failed, the next turn was a
+    // second user message in a row, and every later turn got invalid_request.
+    final msgs = apiMessages(const [
+      ChatMessage(fromUser: false, text: 'Hi! Let us talk about music.'),
+      ChatMessage(fromUser: true, text: 'I like pop'),
+      ChatMessage(fromUser: true, text: ' every day '),
+      ChatMessage(fromUser: true, text: '  '),
+    ]);
+    expect(msgs, [
+      {'role': 'assistant', 'content': 'Hi! Let us talk about music.'},
+      {'role': 'user', 'content': 'I like pop every day'},
+    ]);
+    expect(
+      apiMessages([for (var i = 0; i < 30; i++) ChatMessage(fromUser: i.isOdd, text: 'm$i')]).length,
+      20,
+    );
+  });
+
+  test('the fair-use stop does not send the learner to typing, which hits the same limit', () {
+    expect(fairUseMessage, isNot(contains('yazarak')));
   });
 }

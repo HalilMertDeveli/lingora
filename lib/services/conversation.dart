@@ -44,6 +44,27 @@ class ChatMessage {
   Map<String, String> toApi() => {'role': fromUser ? 'user' : 'assistant', 'content': text};
 }
 
+/// The chat as the AI endpoints take it: the last [max] messages, with two
+/// learner messages in a row (one whose reply failed, then the next) joined
+/// into one. The server rejects same-role neighbours as invalid_request, and
+/// after one failed turn every later turn failed too: "Sunucu hatası" for the
+/// rest of the chat (QA, Galaxy M22).
+List<Map<String, String>> apiMessages(List<ChatMessage> history, {int max = 20}) {
+  final recent = history.length > max ? history.sublist(history.length - max) : history;
+  final out = <Map<String, String>>[];
+  for (final m in recent) {
+    final text = m.text.trim();
+    if (text.isEmpty) continue;
+    final role = m.fromUser ? 'user' : 'assistant';
+    if (out.isNotEmpty && out.last['role'] == role) {
+      out.last = {'role': role, 'content': '${out.last['content']} $text'};
+    } else {
+      out.add({'role': role, 'content': text});
+    }
+  }
+  return out;
+}
+
 /// The partner's answer plus feedback on the learner's last message.
 class ChatTurn {
   const ChatTurn({
@@ -126,12 +147,11 @@ class CallableConversationService implements ConversationService {
   @override
   Future<ChatTurn> send(Scenario scenario, List<ChatMessage> history) async {
     // Only the most recent turns are sent; the server enforces limits too.
-    final recent = history.length > 20 ? history.sublist(history.length - 20) : history;
     final Object? raw;
     try {
       raw = await _invoke('converse', {
         'scenarioId': scenario.id,
-        'messages': [for (final m in recent) m.toApi()],
+        'messages': apiMessages(history),
       }).timeout(const Duration(seconds: 90));
     } on FirebaseFunctionsException catch (e) {
       if (e.code == 'resource-exhausted' && e.message == ConversationException.freeQuotaCode) {

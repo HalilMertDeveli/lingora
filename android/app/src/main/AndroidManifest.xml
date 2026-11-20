@@ -2,6 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Speaking exercises: microphone + speech recognition. -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- Voice chat: speaker/earpiece and voice-call mode (setMode, setSpeakerphoneOn).
+         Without it Android denied both and the partner played from the earpiece
+         even on the loudspeaker setting (QA, Galaxy M22). Normal permission, no dialog. -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <!-- Rehberden bul: read only, asked when the user taps the button (docs/arkadaslar.md). -->
     <uses-permission android:name="android.permission.READ_CONTACTS"/>

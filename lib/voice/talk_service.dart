@@ -59,13 +59,12 @@ class TalkRequest {
   final String? voice;
 
   Map<String, Object?> toApi() {
-    final recent = history.length > 20 ? history.sublist(history.length - 20) : history;
     return {
       ...scenario.api,
       'level': ?level,
       'goal': goal,
       'voice': ?voice,
-      'messages': [for (final m in recent) m.toApi()],
+      'messages': apiMessages(history),
     };
   }
 }
@@ -73,10 +72,11 @@ class TalkRequest {
 /// Codes of the Premium fair-use stop (functions/src/talk.ts).
 const fairUseCode = 'fair_use';
 
-/// Shown when today's fair-use talking time is used up.
+/// Shown when today's fair-use talking time is used up. Typing in a voice
+/// chat hits the same limit (functions/src/talk.ts), so it points elsewhere.
 const fairUseMessage =
     'Bugün 45 dakika konuştun, harika iş! Sesin biraz dinlensin; yarın kaldığımız yerden devam edelim. '
-    'İstersen yazarak devam edebilirsin.';
+    'Bu arada derslere, okumaya ve telaffuz koçuna devam edebilirsin.';
 
 abstract class TalkService {
   /// True when replies come from the real AI.
