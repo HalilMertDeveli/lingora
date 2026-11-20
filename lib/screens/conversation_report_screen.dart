@@ -111,11 +111,15 @@ class _ConversationReportScreenState extends ConsumerState<ConversationReportScr
           for (final (i, m) in r.mistakes.indexed) _MistakeCard(m, key: ValueKey('mistake-$i')),
         const SizedBox(height: 20),
         Text('Telaffuzu zayıf kelimeler', style: Theme.of(context).textTheme.titleMedium),
-        const SizedBox(height: 4),
-        Text(
-          'Telefonun konuşma tanıması bu kelimelerde zorlandı (sen düzelttin ya da emin olamadı).',
-          style: TextStyle(color: Brand.muted, fontSize: 13),
-        ),
+        // Only above an actual list: over "you did not speak" it read as if
+        // the phone had struggled with words never said (QA, Galaxy M22).
+        if (r.weakWords.isNotEmpty) ...[
+          const SizedBox(height: 4),
+          Text(
+            'Telefonun konuşma tanıması bu kelimelerde zorlandı (sen düzelttin ya da emin olamadı).',
+            style: TextStyle(color: Brand.muted, fontSize: 13),
+          ),
+        ],
         const SizedBox(height: 8),
         if (r.weakWords.isEmpty)
           Text(
