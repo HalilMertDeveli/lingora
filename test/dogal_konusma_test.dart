@@ -115,6 +115,19 @@ class FakeBargeIn implements BargeInDetector {
   void speak() => _onSpeech?.call();
 }
 
+/// A partner whose reply arrives only when the test says so.
+class _SlowChat implements ConversationService {
+  final reply = Completer<ChatTurn>();
+  final sent = <List<ChatMessage>>[];
+  @override
+  bool get isLive => true;
+  @override
+  Future<ChatTurn> send(Scenario scenario, List<ChatMessage> history) {
+    sent.add(List.of(history));
+    return reply.future;
+  }
+}
+
 /// Eller serbest: no press-to-talk anywhere in the voice chat.
 void _expectNoMicButton() {
   for (final icon in [Icons.mic, Icons.mic_rounded, Icons.mic_none_rounded, Icons.mic_off_rounded]) {
@@ -335,6 +348,38 @@ void main() {
         async.elapse(const Duration(milliseconds: 300));
         expect(r.listener.starts, 1);
         expect(r.turns.phase, TalkPhase.listening);
+      });
+    });
+  });
+
+  group('TurnTaker typed turns', () {
+    test('typing while the partner speaks cuts the partner off and sends', () {
+      fakeAsync((async) {
+        final r = Rig(async);
+        r.turns.say(const SpokenSentence('Hi! What would you like?'));
+        async.flushMicrotasks();
+        expect(r.turns.phase, TalkPhase.speaking);
+        bool? sent;
+        r.turns.submitText('A latte please').then((v) => sent = v);
+        async.flushMicrotasks();
+        expect(sent, isTrue);
+        expect(r.sent.single.$2, 'A latte please');
+        expect(r.out.stops, greaterThan(0), reason: 'the partner stopped talking');
+        expect(r.turns.phase, TalkPhase.thinking);
+      });
+    });
+
+    test('while the reply is on its way a typed turn is refused (the screen keeps the text)', () {
+      fakeAsync((async) {
+        final r = Rig(async);
+        r.turns.submitText('Hello');
+        async.flushMicrotasks();
+        expect(r.turns.phase, TalkPhase.thinking);
+        bool? sent;
+        r.turns.submitText('Are you there?').then((v) => sent = v);
+        async.flushMicrotasks();
+        expect(sent, isFalse);
+        expect(r.sent, hasLength(1));
       });
     });
   });
@@ -702,6 +747,41 @@ void main() {
       await tester.tap(find.text('Bitir'));
       await tester.pumpAndSettle();
       expect(find.byType(ConversationReportScreen), findsOneWidget);
+    });
+
+    testWidgets('typing while the partner speaks sends the text; it is never lost', (tester) async {
+      final listener = FakeListener();
+      final out = FakeOut();
+      final chat = _SlowChat();
+      final o = await overrides(tester, listener: listener, out: out, talk: DemoTalkService(chat));
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: o,
+          child: MaterialApp(home: TalkScreen(scenario: characterScenario(characterById('emma')!))),
+        ),
+      );
+      await tester.pump();
+      await tester.pump();
+      expect(find.textContaining('Konuşuyor'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('talk-to-text')));
+      await tester.pump();
+      await tester.enterText(find.byKey(const Key('talk-input')), 'A latte please');
+      await tester.testTextInput.receiveAction(TextInputAction.send);
+      await tester.pump();
+      expect(chat.sent.single.last.text, 'A latte please', reason: 'sent, not dropped');
+      expect(find.text('A latte please'), findsOneWidget, reason: 'shown as the learner message');
+      expect(tester.widget<TextField>(find.byKey(const Key('talk-input'))).controller!.text, isEmpty);
+
+      // The reply is on its way: a new text stays in the field.
+      await tester.enterText(find.byKey(const Key('talk-input')), 'And a cookie');
+      await tester.testTextInput.receiveAction(TextInputAction.send);
+      await tester.pump();
+      expect(chat.sent, hasLength(1));
+      expect(tester.widget<TextField>(find.byKey(const Key('talk-input'))).controller!.text, 'And a cookie');
+      chat.reply.complete(const ChatTurn(reply: 'Great, one latte coming up.'));
+      await tester.pump(const Duration(seconds: 2));
+      await tester.pumpWidget(const SizedBox());
+      await tester.pump(const Duration(seconds: 5));
     });
 
     testWidgets('phone call: no transcript during the call, mute and hang up, then the karne', (

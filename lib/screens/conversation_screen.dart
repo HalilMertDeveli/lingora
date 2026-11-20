@@ -359,6 +359,16 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
   /// The free daily taste is used up: the paywall, with the private-tutor
   /// comparison. After buying, the same message can simply be sent again.
   Future<void> _freeTasteOver() async {
+    if (ref.read(premiumProvider)) {
+      // Premium on this phone, but the server still counts a free user: say
+      // so instead of a silent loop.
+      setState(() {
+        _error =
+            'Bugünkü ücretsiz mesajlarını kullandın; Premium üyeliğin sunucuda henüz görünmüyor. '
+            'Biraz sonra tekrar dene ya da "Bitir" ile karneni al.';
+      });
+      return;
+    }
     final gate = await requirePremium(context, ref, PremiumFeature.aiConversation, pitch: freeTastePitch);
     if (!mounted) return;
     setState(() {
@@ -432,8 +442,14 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     }
   }
 
+  /// The keyboard opened: keep the partner's last line in sight.
+  double _lastInset = 0;
+
   @override
   Widget build(BuildContext context) {
+    final inset = MediaQuery.viewInsetsOf(context).bottom;
+    if (inset > _lastInset) _scrollDown();
+    _lastInset = inset;
     final s = widget.scenario;
     // With the keyboard up (small phone, large text) the pinned goal would
     // leave no room for the input itself; it comes back when typing ends.

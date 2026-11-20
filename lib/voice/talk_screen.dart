@@ -339,7 +339,7 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       if (ex?.freeQuotaUsed ?? false) _freeLeft = 0;
     });
     if (ex?.freeQuotaUsed ?? false) {
-      if (_premium) {
+      if (ref.read(premiumProvider)) {
         // Premium on this phone, but the server still counts a free user:
         // say so instead of "Premium açıldı" in a loop.
         setState(() {
@@ -357,8 +357,10 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       );
       if (!mounted) return;
       setState(() {
+        // Never "Premium açıldı" here: only the server's answer to the next
+        // message says whether the entitlement is there.
         _error = gate == GateResult.premium
-            ? 'Premium açıldı! Kaldığın yerden konuşmaya devam et.'
+            ? null
             : 'Bugünkü ücretsiz mesajlarını kullandın. "Bitir" ile karneni alabilirsin.';
         if (gate == GateResult.premium) _freeLeft = null;
       });
@@ -508,6 +510,7 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
   }
 
   Widget _chatScreen(BuildContext context) {
+    _keyboardScroll(context);
     final s = widget.scenario;
     return Scaffold(
       appBar: AppBar(
@@ -684,7 +687,7 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
           key: const Key('talk-input'),
           controller: _input,
           textInputAction: TextInputAction.send,
-          onSubmitted: (_) => _sendTyped(),
+          onSubmitted: (_) => unawaited(_sendTyped()),
           maxLength: 400,
           decoration: const InputDecoration(
             hintText: 'İngilizce yaz…',
@@ -697,17 +700,33 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       IconButton.filled(
         key: const Key('talk-send'),
         tooltip: 'Gönder',
-        onPressed: _turns.phase == TalkPhase.thinking ? null : _sendTyped,
+        onPressed: _turns.phase == TalkPhase.thinking ? null : () => unawaited(_sendTyped()),
         icon: const Icon(Icons.send_rounded),
       ),
     ],
   );
 
-  void _sendTyped() {
+  /// Sends the typed text. While the partner speaks it is cut off and the
+  /// text goes; while the reply is on its way the text stays in the field.
+  /// The field is cleared only when the text was really sent.
+  Future<void> _sendTyped() async {
     final text = _input.text.trim();
     if (text.isEmpty) return;
-    _input.clear();
-    unawaited(_turns.submitText(text));
+    if (await _turns.submitText(text)) {
+      if (_input.text.trim() == text) _input.clear();
+    } else if (mounted && !_finished) {
+      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+        const SnackBar(content: Text('Cevap geliyor; mesajın burada duruyor, birazdan gönderebilirsin.')),
+      );
+    }
+  }
+
+  /// The keyboard opened: keep the partner's last line in sight.
+  double _lastInset = 0;
+  void _keyboardScroll(BuildContext context) {
+    final inset = MediaQuery.viewInsetsOf(context).bottom;
+    if (inset > _lastInset) _scrollDown();
+    _lastInset = inset;
   }
 
   Widget _bubble(int i) {

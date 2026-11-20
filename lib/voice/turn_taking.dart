@@ -326,9 +326,16 @@ class TurnTaker extends ChangeNotifier {
   }
 
   /// A typed turn (the text fallback): sent like a spoken one, no echo check.
-  Future<void> submitText(String text) async {
+  /// While the partner speaks it is cut off first (like barge-in). False
+  /// when nothing was sent (empty, closed, or the reply is still on its
+  /// way): the screen keeps the text then.
+  Future<bool> submitText(String text) async {
     final t = text.trim();
-    if (t.isEmpty || _closed || _phase == TalkPhase.thinking || _phase == TalkPhase.speaking) return;
+    if (t.isEmpty || _closed || _phase == TalkPhase.thinking) return false;
+    // Only a backchannel plays: the real reply is still on its way.
+    if (_phase == TalkPhase.speaking && !_gotReal) return false;
+    if (_phase == TalkPhase.speaking) await _interrupt(listenAfter: false);
+    if (_closed || _phase == TalkPhase.thinking) return false;
     _restart?.cancel();
     if (_phase == TalkPhase.listening) await listener.stop();
     _speechEndedAt = null;
@@ -336,6 +343,7 @@ class TurnTaker extends ChangeNotifier {
     _words = t;
     _lastActivity = _now();
     _endTurn();
+    return true;
   }
 
   /// Nothing was heard after the automatic restarts: the screen offers
@@ -464,7 +472,7 @@ class TurnTaker extends ChangeNotifier {
     if (_phase == TalkPhase.speaking) unawaited(_interrupt());
   }
 
-  Future<void> _interrupt() async {
+  Future<void> _interrupt({bool listenAfter = true}) async {
     _ack?.cancel();
     final turn = _replyTurn;
     _replyTurn = null; // the rest of this reply is not played
@@ -474,7 +482,7 @@ class TurnTaker extends ChangeNotifier {
     _speechEndedAt = _now();
     if (turn != null) onBargeIn?.call(turn, _played);
     _set(TalkPhase.idle);
-    await listen();
+    if (listenAfter) await listen();
   }
 
   Future<void> _stopDetector() async {
