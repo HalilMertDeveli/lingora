@@ -154,7 +154,7 @@ class AutoListen extends ChangeNotifier {
     final prompt = _prompt;
     if (withPrompt && prompt != null) {
       _set(ListenPhase.prompting);
-      await player.sayLine(prompt, rate: _rate);
+      await player.sayBeforeListening(prompt, rate: _rate);
       if (id != _run) return;
     }
     await _listen(id);

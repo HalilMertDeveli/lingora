@@ -22,6 +22,9 @@ import 'premium_test.dart' show FakeSpeech;
 /// Records the lines; with [hold] each line waits until [release]d, like a
 /// real voice that takes a while to speak.
 class _Lines implements LinePlayer {
+  @override
+  Future<void> sayBeforeListening(String text, {double rate = 1}) => sayLine(text, rate: rate);
+
   _Lines({this.hold = false});
   final bool hold;
   final played = <(String, double)>[];
