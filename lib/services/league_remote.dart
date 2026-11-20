@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/misc.dart' show ProviderListenable;
+import 'package:flutter_riverpod/misc.dart' show ProviderException, ProviderListenable;
 import 'package:image/image.dart' as img;
 
 import '../data/league.dart';
@@ -20,8 +20,9 @@ import 'showcase.dart' show myShowcaseProvider;
 /// Dünya Ligi: weekly groups of up to 100 signed-in learners from every
 /// country (functions/src/league.ts, docs/firebase-backend.md).
 ///
-/// - Without Firebase, offline or in Çocuk modu the league screen shows the
-///   simulated league from data/league.dart.
+/// - Without Firebase (local builds) or in Çocuk modu the league screen
+///   shows the simulated league from data/league.dart. With Firebase it is
+///   never simulated: loading and errors (with a retry) have their own views.
 /// - A guest sees that table as a preview and is asked to sign in.
 /// - An account joins once (after reading what others will see) and is
 ///   then placed in a group every week automatically.
@@ -305,17 +306,59 @@ final worldLeagueStateProvider = StreamProvider<WorldLeagueState?>((ref) {
   final api = ref.watch(leagueApiProvider);
   final uid = ref.watch(accountUidProvider);
   if (api == null || uid == null) return Stream.value(null);
-  return api.state(uid).handleError((Object _) {});
-});
+  // Errors stay errors (swallowing them left the league loading for
+  // ever) and show at once: the screen offers the retry.
+  return api.state(uid);
+}, retry: (_, _) => null);
 
 /// What the league screen shows.
 sealed class WorldLeagueView {
   const WorldLeagueView();
 }
 
-/// Simulated league: no Firebase, no connection or Çocuk modu.
+/// Simulated league: no Firebase (local builds, tests) or Çocuk modu.
 class WorldOffline extends WorldLeagueView {
   const WorldOffline();
+}
+
+/// The Dünya Ligi is on its way (Firebase, sign-in, the seat or the first
+/// rows still loading).
+class WorldLoading extends WorldLeagueView {
+  const WorldLoading();
+}
+
+/// The Dünya Ligi could not be loaded: a Turkish [message] and a retry,
+/// never simulated rivals passed off as the real ones.
+class WorldError extends WorldLeagueView {
+  const WorldError(this.message);
+  final String message;
+}
+
+/// What the league screen shows for [value]: loading (also while retrying
+/// after an error) until there is a view, and an unexpected failure as
+/// [WorldError].
+WorldLeagueView worldLeagueViewOf(AsyncValue<WorldLeagueView> value) {
+  if (value.hasError && !value.isLoading) return WorldError(leagueErrorMessage(value.error!));
+  final view = value.value;
+  if (view == null || (value.isLoading && view is WorldError)) return const WorldLoading();
+  return view;
+}
+
+/// A league failure in Turkish for the learner.
+String leagueErrorMessage(Object error) {
+  // A failed leagueState read reaches the league wrapped by Riverpod.
+  while (error is ProviderException) {
+    error = error.exception;
+  }
+  final code = error is FirebaseException ? error.code : null;
+  return switch (code) {
+    'unavailable' ||
+    'deadline-exceeded' => 'İnternet bağlantısı kurulamadı. Bağlantını kontrol edip yeniden dene.',
+    'permission-denied' ||
+    'unauthenticated' => 'Hesabın doğrulanamadı. Yeniden dene; sürerse çıkış yapıp tekrar giriş yap.',
+    _ when error is TimeoutException => 'Sunucu yanıt vermedi. Biraz sonra yeniden dene.',
+    _ => 'Dünya Ligi şu an yüklenemedi. Biraz sonra yeniden dene.',
+  };
 }
 
 /// Signed out or a guest: the preview table and a sign-in button.
@@ -353,35 +396,81 @@ Future<LeagueSeat?> joinWorldLeague(ProviderReader read) async {
 
 /// The league the screen shows. Live while it is on screen only, so the
 /// 100 rows are read when someone looks at them.
+///
+/// While something is still loading nothing is emitted (the screen shows
+/// [WorldLoading]); a failure becomes [WorldError].
 final worldLeagueProvider = StreamProvider.autoDispose<WorldLeagueView>((ref) async* {
-  if (Brand.isKid || !ref.watch(leagueOnlineProvider)) {
+  if (Brand.isKid) {
     yield const WorldOffline();
     return;
   }
+  if (!ref.watch(leagueOnlineProvider)) {
+    // Firebase still starting up is not "offline".
+    if (ref.watch(firebaseInitProvider).isLoading) return;
+    yield const WorldOffline();
+    return;
+  }
+  if (ref.watch(authStateProvider).isLoading) return;
   final api = ref.watch(leagueApiProvider);
   final uid = ref.watch(accountUidProvider);
   if (api == null || uid == null) {
     yield const WorldGuest();
     return;
   }
-  final state = await ref.watch(worldLeagueStateProvider.future);
-  if (state == null || state.optedOut) {
-    yield WorldNeedsJoin(tier: state?.tier ?? 0);
+
+  // Only what decides the seat: an XP report also rewrites leagueState and
+  // must not start the league over.
+  final ({bool exists, bool optedOut, int tier, String? groupId, String? weekKey}) state;
+  try {
+    state = await ref.watch(
+      worldLeagueStateProvider.selectAsync(
+        (s) => (
+          exists: s != null,
+          optedOut: s?.optedOut ?? false,
+          tier: s?.tier ?? 0,
+          groupId: s?.groupId,
+          weekKey: s?.weekKey,
+        ),
+      ),
+    );
+  } catch (e) {
+    debugPrint('League state failed: $e');
+    yield WorldError(leagueErrorMessage(e));
+    return;
+  }
+  if (!state.exists || state.optedOut) {
+    yield WorldNeedsJoin(tier: state.tier);
     return;
   }
 
   final LeagueSeat seat;
-  try {
-    // Idempotent; also refreshes name, photo and country, and opens the
-    // new week's group after Monday.
-    seat = (await joinWorldLeague(ref.read))!;
-  } catch (e) {
-    debugPrint('League join failed: $e');
-    yield const WorldOffline(); // offline or server error: simulated league
-    return;
+  final groupId = state.groupId;
+  if (groupId != null && state.weekKey == trWeekKey(ref.read(clockProvider)())) {
+    // Seated this week: show the group right away and refresh the row's
+    // name, photo and look in the background (a cold server start takes
+    // seconds).
+    seat = LeagueSeat(groupId: groupId, weekKey: state.weekKey!, tier: state.tier);
+    unawaited(
+      joinWorldLeague(ref.read)
+          .then<void>((_) {}, onError: (Object e) => debugPrint('League refresh failed: $e')),
+    );
+  } else {
+    try {
+      // Opens the new week's group after Monday.
+      seat = (await joinWorldLeague(ref.read).timeout(const Duration(seconds: 30)))!;
+    } catch (e) {
+      debugPrint('League join failed: $e');
+      yield WorldError(leagueErrorMessage(e));
+      return;
+    }
   }
-  await for (final members in api.members(seat.groupId)) {
-    yield WorldLive(RemoteLeague(seat: seat, uid: uid, members: members));
+  try {
+    await for (final members in api.members(seat.groupId)) {
+      yield WorldLive(RemoteLeague(seat: seat, uid: uid, members: members));
+    }
+  } catch (e) {
+    debugPrint('League members failed: $e');
+    yield WorldError(leagueErrorMessage(e));
   }
 });
 
