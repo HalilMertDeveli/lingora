@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:firebase_core/firebase_core.dart' show FirebaseException;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show Override;
@@ -18,9 +19,18 @@ import 'package:lingora/ui/country_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FakeLeagueApi implements LeagueApi {
-  FakeLeagueApi(this.rows, {this.failJoin = false});
+  FakeLeagueApi(this.rows, {this.failJoin = false, this.membersError, this.stateError, this.silent = false});
   final List<RemoteMember> rows;
   final bool failJoin;
+
+  /// Thrown by the members stream (e.g. PERMISSION_DENIED).
+  final Object? membersError;
+
+  /// Thrown by the leagueState stream.
+  final Object? stateError;
+
+  /// The leagueState stream never answers (a slow first load).
+  final bool silent;
   final _states = StreamController<WorldLeagueState?>.broadcast();
   WorldLeagueState? _last;
   final joins = <({String name, String? country, String? photo})>[];
@@ -58,10 +68,13 @@ class FakeLeagueApi implements LeagueApi {
   Future<void> leave() async => left++;
 
   @override
-  Stream<List<RemoteMember>> members(String groupId) => Stream.value(rows);
+  Stream<List<RemoteMember>> members(String groupId) =>
+      membersError == null ? Stream.value(rows) : Stream.error(membersError!);
 
   @override
   Stream<WorldLeagueState?> state(String uid) async* {
+    if (stateError != null) throw stateError!;
+    if (silent) await Completer<void>().future;
     yield _last;
     yield* _states.stream;
   }
@@ -70,6 +83,7 @@ class FakeLeagueApi implements LeagueApi {
 // Tuesday 12:00 (Turkish time) of the week starting Monday 2026-11-09.
 final now = DateTime.utc(2026, 11, 10, 9);
 const joined = WorldLeagueState(tier: 2, groupId: '2026-11-09_2_0', weekKey: '2026-11-09');
+const lastWeek = WorldLeagueState(tier: 2, groupId: '2026-11-02_2_0', weekKey: '2026-11-02');
 const me = AppUser(uid: 'me', isAnonymous: false, displayName: 'Mert Develi');
 
 List<Override> overrides(SharedPreferences prefs, {LeagueApi? api, AppUser? user = me, bool online = true}) =>
@@ -212,11 +226,74 @@ void main() {
     expect(league.countries, 3);
   });
 
-  test('a failed join falls back to the simulated league', () async {
+  test('seated this week, a failed join still shows the live group', () async {
     final api = FakeLeagueApi(rows, failJoin: true)..emit(joined);
     final c = await container(api: api);
     addTearDown(c.dispose);
-    expect(await viewOf(c), isA<WorldOffline>());
+    final view = await viewOf(c);
+    expect(view, isA<WorldLive>());
+    expect((view as WorldLive).league.table.map((e) => e.name), ['Burak', 'Ayşe', 'Sen']);
+    expect(api.joins, hasLength(1)); // the background refresh was tried
+  });
+
+  test('a failed join for a new week is an error, never simulated rivals', () async {
+    final api = FakeLeagueApi(rows, failJoin: true)..emit(lastWeek);
+    final c = await container(api: api);
+    addTearDown(c.dispose);
+    final view = await viewOf(c);
+    expect(view, isA<WorldError>());
+    expect((view as WorldError).message, contains('yeniden dene'));
+  });
+
+  test('a denied members read is an error with a Turkish message', () async {
+    final api = FakeLeagueApi(
+      rows,
+      membersError: FirebaseException(plugin: 'cloud_firestore', code: 'permission-denied'),
+    )..emit(joined);
+    final c = await container(api: api);
+    addTearDown(c.dispose);
+    final view = await viewOf(c);
+    expect(view, isA<WorldError>());
+    expect((view as WorldError).message, contains('Hesabın doğrulanamadı'));
+  });
+
+  test('a failing leagueState read is an error, not endless loading', () async {
+    final api = FakeLeagueApi(
+      rows,
+      stateError: FirebaseException(plugin: 'cloud_firestore', code: 'unavailable'),
+    );
+    final c = await container(api: api);
+    addTearDown(c.dispose);
+    final view = await viewOf(c);
+    expect(view, isA<WorldError>());
+    expect((view as WorldError).message, contains('İnternet bağlantısı'));
+  });
+
+  test('an XP report rewriting leagueState does not start the league over', () async {
+    final api = FakeLeagueApi(rows)..emit(joined);
+    final c = await container(api: api);
+    addTearDown(c.dispose);
+    final sub = c.listen(worldLeagueProvider, (_, _) {});
+    addTearDown(sub.close);
+    expect(await c.read(worldLeagueProvider.future), isA<WorldLive>());
+    // Same seat, a new object (addLeagueXp writes xpMinute, lastXpAt, ...).
+    api.emit(WorldLeagueState(tier: 2, groupId: joined.groupId, weekKey: joined.weekKey));
+    await Future<void>.delayed(Duration.zero);
+    await Future<void>.delayed(Duration.zero);
+    expect(api.joins, hasLength(1));
+    expect(c.read(worldLeagueProvider).isLoading, isFalse);
+    expect(c.read(worldLeagueProvider).value, isA<WorldLive>());
+  });
+
+  test('loading and errors map to their own views', () {
+    expect(worldLeagueViewOf(const AsyncLoading()), isA<WorldLoading>());
+    expect(worldLeagueViewOf(const AsyncData(WorldGuest())), isA<WorldGuest>());
+    expect(worldLeagueViewOf(AsyncError(Exception('x'), StackTrace.empty)), isA<WorldError>());
+    expect(leagueErrorMessage(TimeoutException('slow')), contains('yanıt vermedi'));
+    expect(
+      leagueErrorMessage(FirebaseFunctionsException(code: 'internal', message: 'x')),
+      contains('yüklenemedi'),
+    );
   });
 
   testWidgets('XP sync reports the weekly total, or takes a seat in a new week', (tester) async {
@@ -358,6 +435,55 @@ void main() {
     expect(find.textContaining('giriş yap'), findsOneWidget);
     await tester.scrollUntilVisible(find.textContaining('Örnek tablo'), 400, scrollable: vertical);
     expect(find.textContaining('Örnek tablo'), findsOneWidget);
+  });
+
+  testWidgets('while the league loads the screen says so, not "Çevrimdışı mod"', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: overrides(prefs, api: FakeLeagueApi(rows, silent: true)),
+        child: const MaterialApp(home: Scaffold(body: LeagueScreen())),
+      ),
+    );
+    await tester.pump(const Duration(milliseconds: 100));
+    expect(find.byKey(const ValueKey('league-loading')), findsOneWidget);
+    expect(find.textContaining('Çevrimdışı mod'), findsNothing);
+    expect(find.text('Sen'), findsNothing); // no simulated rivals
+  });
+
+  testWidgets('Firebase still starting up is loading, not offline', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          ...overrides(prefs, online: false, user: null),
+          firebaseInitProvider.overrideWith((ref) => Completer<bool>().future),
+        ],
+        child: const MaterialApp(home: Scaffold(body: LeagueScreen())),
+      ),
+    );
+    await tester.pump(const Duration(milliseconds: 100));
+    expect(find.byKey(const ValueKey('league-loading')), findsOneWidget);
+    expect(find.textContaining('Çevrimdışı mod'), findsNothing);
+  });
+
+  testWidgets('an error shows a Turkish message and retries', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    final api = FakeLeagueApi(rows, failJoin: true)..emit(lastWeek);
+    await pumpLeague(tester, overrides(prefs, api: api));
+    expect(find.text('Dünya Ligi yüklenemedi'), findsOneWidget);
+    expect(find.textContaining('Çevrimdışı mod'), findsNothing);
+    expect(find.text('Sen'), findsNothing);
+    expect(api.joins, hasLength(1));
+    await tester.tap(find.byKey(const ValueKey('league-retry')));
+    await tester.pump();
+    expect(find.byKey(const ValueKey('league-loading')), findsOneWidget); // retrying
+    await tester.pumpAndSettle();
+    expect(api.joins, hasLength(2));
+    expect(find.byKey(const ValueKey('league-error')), findsOneWidget);
   });
 
   testWidgets('league screen stays simulated without Firebase', (tester) async {

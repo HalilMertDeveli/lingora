@@ -58,7 +58,8 @@ class _LeagueScreenState extends ConsumerState<LeagueScreen> {
   Widget build(BuildContext context) {
     final p = ref.watch(progressProvider);
     final now = ref.watch(clockProvider)();
-    final view = ref.watch(worldLeagueProvider).value ?? const WorldOffline();
+    // Loading and errors are their own states: never the simulated league.
+    final view = worldLeagueViewOf(ref.watch(worldLeagueProvider));
     final live = view is WorldLive ? view.league : null;
     final tier = switch (view) {
       WorldLive(:final league) => league.tier,
@@ -69,8 +70,8 @@ class _LeagueScreenState extends ConsumerState<LeagueScreen> {
     final country = ref.watch(leagueCountryProvider);
     final List<LeagueEntry>? table = switch (view) {
       WorldLive(:final league) => league.table,
-      WorldNeedsJoin() => null,
-      _ => standings(
+      WorldNeedsJoin() || WorldLoading() || WorldError() => null,
+      WorldGuest() || WorldOffline() => standings(
         tier: tier,
         weekStart: weekStart(now),
         now: now,
@@ -164,6 +165,8 @@ class _LeagueScreenState extends ConsumerState<LeagueScreen> {
           const SizedBox(height: 12),
           if (view is WorldGuest) ...[const _GuestCard(), const SizedBox(height: 12)],
           if (view is WorldNeedsJoin) const _JoinCard(),
+          if (view is WorldLoading) const _LoadingCard(),
+          if (view is WorldError) _ErrorCard(message: view.message),
           if (table != null)
             for (var i = 0; i < table.length; i++) ...[
               if (i == zones.promote && zones.promote > 0) const _ZoneLine('↑ YÜKSELME BÖLGESİ', null),
@@ -184,7 +187,7 @@ class _LeagueScreenState extends ConsumerState<LeagueScreen> {
                 'Bu hafta ${league.countries > 1 ? '${league.countries} ülkeden ' : ''}'
                     '${league.members.length} Çenebaz kullanıcısıyla yarışıyorsun.',
               WorldGuest() => 'Örnek tablo: rakipler bu cihazda simüle edilir.',
-              WorldNeedsJoin() => '',
+              WorldNeedsJoin() || WorldLoading() || WorldError() => '',
               WorldOffline() => 'Çevrimdışı mod: rakipler bu cihazda simüle edilir.',
             },
             textAlign: TextAlign.center,
@@ -377,6 +380,46 @@ class _GuestCard extends ConsumerWidget {
   }
 }
 
+/// The Dünya Ligi is loading (a cold server start can take a few seconds).
+class _LoadingCard extends StatelessWidget {
+  const _LoadingCard();
+
+  @override
+  Widget build(BuildContext context) => const _InfoCard(
+    key: ValueKey('league-loading'),
+    emoji: '🌍',
+    title: 'Dünya Ligi',
+    text: 'Grubun yükleniyor…',
+    extra: Padding(
+      padding: EdgeInsets.only(top: 12),
+      child: Center(child: CircularProgressIndicator()),
+    ),
+  );
+}
+
+/// The Dünya Ligi could not be loaded: say so and offer a retry.
+class _ErrorCard extends ConsumerWidget {
+  const _ErrorCard({required this.message});
+  final String message;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) => _InfoCard(
+    key: const ValueKey('league-error'),
+    emoji: '⚠️',
+    title: 'Dünya Ligi yüklenemedi',
+    text: message,
+    action: FilledButton.icon(
+      key: const ValueKey('league-retry'),
+      onPressed: () {
+        if (ref.read(worldLeagueStateProvider).hasError) ref.invalidate(worldLeagueStateProvider);
+        ref.invalidate(worldLeagueProvider);
+      },
+      icon: const Icon(Icons.refresh_rounded),
+      label: const Text('Yeniden dene'),
+    ),
+  );
+}
+
 /// First visit with an account: what others will see, then join.
 class _JoinCard extends ConsumerStatefulWidget {
   const _JoinCard();
@@ -459,6 +502,7 @@ class _JoinCardState extends ConsumerState<_JoinCard> {
 
 class _InfoCard extends StatelessWidget {
   const _InfoCard({
+    super.key,
     required this.emoji,
     required this.title,
     required this.text,
