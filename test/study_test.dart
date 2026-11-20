@@ -10,6 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/course_repository.dart';
 import 'package:lingora/data/exam_path.dart';
+import 'package:lingora/data/mistake_card.dart';
 import 'package:lingora/data/practice.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/data/sections.dart';
@@ -93,6 +94,15 @@ Future<ProviderContainer> pumpApp(
   await tester.pumpAndSettle();
   return c;
 }
+
+/// [p] with its course words as cards made from mistakes: "Tekrar kartları"
+/// shows only those (cards come from the learner's mistakes).
+Progress withMistakeDeck(Progress p) => p.copyWith(
+  mistakeCards: [
+    for (final c in courseWordCards(yds, p))
+      MistakeCardInfo(id: c.id, en: c.en, tr: c.tr, why: 'Kelime hatası.', day: today, kind: 'Kelime'),
+  ],
+);
 
 /// The first [n] vocabulary lessons of the YDS path, done.
 Progress vocabDone(int n) {
@@ -547,7 +557,8 @@ void main() {
 
     testWidgets('Tekrar kartları: recall, turn, grade; then the notebook questions due', (tester) async {
       final mistake = itemKey(yds.allNodes.firstWhere((n) => n.type == NodeType.lesson).id, 0);
-      final progress = vocabDone(1).copyWith(mistakes: [mistake], mistakeDue: {mistake: today});
+      final progress = withMistakeDeck(vocabDone(1))
+          .copyWith(mistakes: [mistake], mistakeDue: {mistake: today});
       final c = await pumpApp(tester, const SrsReviewScreen(newPerDay: 2), progress: progress);
       final first = tester.widget<Text>(find.byKey(const Key('srs-front'))).data!;
       expect(find.byKey(const Key('srs-hint')), findsOneWidget);
@@ -581,10 +592,9 @@ void main() {
       await pumpApp(
         tester,
         const SrsReviewScreen(),
-        progress: p.copyWith(
-          wordBox: {for (final c in cards) c.id: 1},
-          wordDue: {for (final c in cards) c.id: today},
-        ),
+        progress: withMistakeDeck(
+          p,
+        ).copyWith(wordBox: {for (final c in cards) c.id: 1}, wordDue: {for (final c in cards) c.id: today}),
       );
       expect(find.text('Bugün tekrar günü: yeni kelime azaltıldı'), findsOneWidget);
     });

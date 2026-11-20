@@ -36,6 +36,9 @@ import '../services/growth/review_prompt.dart';
 import '../study/answer_recorder.dart';
 import '../theme.dart';
 import '../services/explain_more.dart';
+import '../study/mistake_cards.dart';
+import '../study/mistake_reasons.dart' show unitOfItem;
+import '../study/review_queue.dart' show ydsVocabProvider;
 import '../ui/explain_more.dart';
 import '../ui/motion.dart';
 import '../ui/hearts.dart';
@@ -351,8 +354,55 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
           _current.key,
           picked: _current.ex.type == ExerciseType.choice ? _pickedOption : null,
         );
+        _saveMistakeCard();
       }
     }
+  }
+
+  /// Word meanings for mistake cards, read once per lesson.
+  Map<String, String>? _meanings;
+
+  /// AI analyses asked for this lesson's mistake cards (Premium).
+  int _aiCards = 0;
+
+  /// Mistake cards a lesson may have analysed by AI on its own, so the
+  /// learner's daily "Anlamadım" answers are not spent by one bad lesson.
+  static const maxAiCardsPerLesson = 5;
+
+  /// "Tekrar kartları" come from mistakes: the item this wrong answer was
+  /// about becomes a card with a short reason (rule-based; with Premium the
+  /// option's own reason, then the AI analysis when it arrives).
+  void _saveMistakeCard() {
+    final course = ref.read(courseProvider).value;
+    if (course == null) return;
+    final item = _current;
+    final ex = item.ex;
+    final premium = ref.read(premiumProvider);
+    final picked = ex.type == ExerciseType.choice ? _pickedOption : null;
+    final card = mistakeCardFor(
+      ex,
+      key: item.key,
+      course: course,
+      day: dayKey(ref.read(clockProvider)()),
+      picked: picked,
+      typed: _answerText,
+      gloss: _gloss(),
+      unitId: unitOfItem(course, item.key)?.id,
+      meanings: _meanings ??= wordMeanings(course, ydsCards: ref.read(ydsVocabProvider).value ?? const []),
+      premium: premium,
+    );
+    if (card == null) return;
+    final notifier = ref.read(progressProvider.notifier)..addMistakeCard(card);
+    if (!premium || context.isKid || _aiCards >= maxAiCardsPerLesson) return;
+    final question = explainQuestionOf(ex, picked: picked);
+    final service = ref.read(explainMoreServiceProvider);
+    if (question == null || service == null) return;
+    _aiCards++;
+    // Fire and forget: the rule-based reason stays when it fails (offline,
+    // quota, the server not seeing Premium).
+    service
+        .ask(question, ExplainMode.why)
+        .then((a) => notifier.setMistakeCardWhy(card.id, a.text), onError: (Object _) {});
   }
 
   /// The option glosses of the current (wrongly answered) question, if any.

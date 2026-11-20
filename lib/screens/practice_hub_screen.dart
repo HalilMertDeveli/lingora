@@ -114,7 +114,7 @@ class PracticeHubScreen extends ConsumerWidget {
             color: Brand.success,
             title: 'Tekrar kartları',
             subtitle: cardCount == 0
-                ? 'Kelime dersi bitirdikçe kartların gelir'
+                ? 'Derste yanlış yaptıkların burada kart olur'
                 : 'Bugün $cardCount kart: aralıklı tekrar',
             badge: cardCount > 0 ? '$cardCount' : null,
             onTap: () => openReviewCards(context, newPerDay: newPerDay),

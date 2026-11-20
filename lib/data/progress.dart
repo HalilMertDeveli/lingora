@@ -15,6 +15,7 @@ import '../services/billing/premium_perks.dart' show goldMultiplierProvider;
 import 'catalog.dart';
 import 'league.dart';
 import 'level_report.dart';
+import 'mistake_card.dart';
 import 'progress_tally.dart';
 import 'quests.dart';
 import 'review_grade.dart';
@@ -87,6 +88,8 @@ class Progress {
     this.mistakeReason = const {},
     this.mistakeNote = const {},
     this.mistakePicked = const {},
+    this.mistakeDay = const {},
+    this.mistakeCards = const [],
     this.userNotes = const [],
     this.removedWords = const {},
     this.wallet = const Wallet(),
@@ -172,6 +175,20 @@ class Progress {
   /// its options), so the notebook can show "Senin cevabın" and why it is
   /// wrong. Missing for questions saved before it was kept, or blank ones.
   final Map<String, int> mistakePicked;
+
+  /// Day of the last wrong answer per notebook question (`yyyy-MM-dd`).
+  final Map<String, String> mistakeDay;
+
+  /// "Tekrar kartları" made from wrong answers, oldest first.
+  final List<MistakeCardInfo> mistakeCards;
+
+  /// [mistakeCards] by id.
+  MistakeCardInfo? mistakeCard(String id) {
+    for (final c in mistakeCards) {
+      if (c.id == id) return c;
+    }
+    return null;
+  }
 
   /// The learner's own notes in "Notlarım", deleted ones as tombstones.
   final List<UserNote> userNotes;
@@ -359,6 +376,8 @@ class Progress {
     Map<String, String>? mistakeReason,
     Map<String, String>? mistakeNote,
     Map<String, int>? mistakePicked,
+    Map<String, String>? mistakeDay,
+    List<MistakeCardInfo>? mistakeCards,
     List<UserNote>? userNotes,
     Map<String, int>? removedWords,
     Wallet? wallet,
@@ -404,6 +423,8 @@ class Progress {
     mistakeReason: mistakeReason ?? this.mistakeReason,
     mistakeNote: mistakeNote ?? this.mistakeNote,
     mistakePicked: mistakePicked ?? this.mistakePicked,
+    mistakeDay: mistakeDay ?? this.mistakeDay,
+    mistakeCards: mistakeCards ?? this.mistakeCards,
     userNotes: userNotes ?? this.userNotes,
     removedWords: removedWords ?? this.removedWords,
     wallet: wallet ?? this.wallet,
@@ -451,6 +472,8 @@ class Progress {
     'mistakeReason': mistakeReason,
     'mistakeNote': mistakeNote,
     'mistakePicked': mistakePicked,
+    'mistakeDay': mistakeDay,
+    'mistakeCards': [for (final c in mistakeCards) c.toJson()],
     'userNotes': [for (final n in userNotes) n.toJson()],
     'removedWords': removedWords,
     'wallet': wallet.toJson(),
@@ -505,6 +528,8 @@ class Progress {
       for (final e in ((j['mistakePicked'] as Map?) ?? const {}).entries)
         if (e.value is num) '${e.key}': (e.value as num).toInt(),
     },
+    mistakeDay: (j['mistakeDay'] as Map?)?.cast<String, String>() ?? const {},
+    mistakeCards: [for (final c in (j['mistakeCards'] as List?) ?? const []) ?MistakeCardInfo.fromJson(c)],
     userNotes: [
       for (final n in (j['userNotes'] as List?) ?? const []) UserNote.fromJson(n as Map<String, dynamic>),
     ],
@@ -809,6 +834,7 @@ class ProgressNotifier extends Notifier<Progress> {
           ..._without(state.mistakePicked, [...dropped, key]),
           key: ?picked,
         },
+        mistakeDay: {..._without(state.mistakeDay, dropped), key: dayKey(_now())},
       ),
     );
   }
@@ -876,6 +902,7 @@ class ProgressNotifier extends Notifier<Progress> {
         mistakeReason: _without(state.mistakeReason, [key]),
         mistakeNote: _without(state.mistakeNote, [key]),
         mistakePicked: _without(state.mistakePicked, [key]),
+        mistakeDay: _without(state.mistakeDay, [key]),
       ),
     );
   }
@@ -927,6 +954,30 @@ class ProgressNotifier extends Notifier<Progress> {
       ),
     );
     return add.length;
+  }
+
+  /// Makes (or refreshes) the review card of a wrong answer. A card seen
+  /// again keeps its review box; a new one waits for "Tekrar kartları" as a
+  /// new card. An AI reason is not replaced by a rule-based one.
+  void addMistakeCard(MistakeCardInfo card) {
+    final old = state.mistakeCard(card.id);
+    final kept = old != null && old.ai && !card.ai ? card.copyWith(why: old.why, ai: true) : card;
+    var list = [...state.mistakeCards.where((c) => c.id != card.id), kept];
+    if (list.length > maxMistakeCards) list = list.sublist(list.length - maxMistakeCards);
+    _save(state.copyWith(mistakeCards: list));
+  }
+
+  /// The AI analysis of a mistake card's error (Premium).
+  void setMistakeCardWhy(String id, String why) {
+    final old = state.mistakeCard(id);
+    if (old == null || why.trim().isEmpty) return;
+    _save(
+      state.copyWith(
+        mistakeCards: [
+          for (final c in state.mistakeCards) c.id == id ? c.copyWith(why: why.trim(), ai: true) : c,
+        ],
+      ),
+    );
   }
 
   static Map<String, V> _without<V>(Map<String, V> map, List<String> keys) =>

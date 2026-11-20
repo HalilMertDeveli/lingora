@@ -145,6 +145,13 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     mistakeReason: {for (final k in newer.mistakes) k: ?(newer.mistakeReason[k] ?? older.mistakeReason[k])},
     mistakeNote: {for (final k in newer.mistakes) k: ?(newer.mistakeNote[k] ?? older.mistakeNote[k])},
     mistakePicked: {for (final k in newer.mistakes) k: ?(newer.mistakePicked[k] ?? older.mistakePicked[k])},
+    mistakeDay: {for (final k in newer.mistakes) k: ?(newer.mistakeDay[k] ?? older.mistakeDay[k])},
+    // Cards from mistakes: united by id, the newer copy's version wins.
+    mistakeCards: [
+      for (final c in older.mistakeCards)
+        if (newer.mistakeCard(c.id) == null) c,
+      ...newer.mistakeCards,
+    ],
     // Altın: grow-only counters per device, owned items united (wallet.dart).
     wallet: mergeWallets(local.wallet, remote.wallet),
     // The goal: the later choice wins (either copy may not have one yet).

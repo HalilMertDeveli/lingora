@@ -37,7 +37,8 @@ enum MistakeKind {
     QType.sentenceCompletion => grammar,
     // A grammar unit's "Ünitenin kelimeleri" asks single content words: a
     // word mistake, not a rule one.
-    QType.grammar || QType.cloze => structureOptions(options) ? grammar : vocabulary,
+    // Without options (a study-log entry) the type decides.
+    QType.grammar || QType.cloze => options.isEmpty || structureOptions(options) ? grammar : vocabulary,
     QType.translation || QType.restatement => meaning,
     QType.reading || QType.dialogue || QType.paragraphCompletion || QType.irrelevantSentence => reading,
     QType.other => structureOptions(options) ? grammar : vocabulary,

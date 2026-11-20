@@ -10,18 +10,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/course_repository.dart';
+import 'package:lingora/data/mistake_card.dart';
 import 'package:lingora/data/option_glosses.dart';
 import 'package:lingora/data/practice.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/screens/lesson_screen.dart';
 import 'package:lingora/screens/study/notebook_screen.dart';
+import 'package:lingora/screens/study/srs_review_screen.dart';
 import 'package:lingora/services/billing/premium.dart';
 import 'package:lingora/services/explain_more.dart';
 import 'package:lingora/services/firebase/progress_merge.dart';
 import 'package:lingora/services/notifications.dart';
 import 'package:lingora/services/speech.dart';
+import 'package:lingora/study/mistake_cards.dart';
 import 'package:lingora/study/mistake_diagnosis.dart';
+import 'package:lingora/study/study_state.dart';
 import 'package:lingora/study/question_types.dart';
 import 'package:lingora/study/review_queue.dart' show ydsVocabProvider;
 import 'package:lingora/theme.dart';
@@ -49,6 +53,15 @@ LessonItem vocabItem() {
   final lesson = unit.nodes.firstWhere((n) => n.type == NodeType.lesson);
   final i = lesson.exercises.indexWhere((e) => e.type == ExerciseType.choice);
   return (key: itemKey(lesson.id, i), ex: lesson.exercises[i]);
+}
+
+/// Another vocabulary choice question of the same lesson.
+String vocabItem2() {
+  final unit = yds.units.firstWhere((u) => u.id == 'ys2u1');
+  final lesson = unit.nodes.firstWhere((n) => n.type == NodeType.lesson);
+  final first = lesson.exercises.indexWhere((e) => e.type == ExerciseType.choice);
+  final i = lesson.exercises.indexWhere((e) => e.type == ExerciseType.choice, first + 1);
+  return itemKey(lesson.id, i);
 }
 
 Map<String, Object?> glossFor(Exercise ex) => {
@@ -84,11 +97,15 @@ Future<ProviderContainer> pump(
   WidgetTester tester,
   Widget home, {
   Progress progress = const Progress(onboarded: true, remindersEnabled: false),
+  List<AnswerLog> log = const [],
   bool premium = false,
   Map<String, Object?> glosses = const {},
   List<Override> overrides = const [],
 }) async {
-  SharedPreferences.setMockInitialValues({'progress_v1': jsonEncode(progress.toJson())});
+  SharedPreferences.setMockInitialValues({
+    'progress_v1': jsonEncode(progress.toJson()),
+    'study_log_v1': jsonEncode(StudyLog(answers: log).toJson()),
+  });
   final prefs = await SharedPreferences.getInstance();
   await tester.binding.setSurfaceSize(const Size(420, 2400));
   addTearDown(() => tester.binding.setSurfaceSize(null));
@@ -343,6 +360,205 @@ void main() {
     });
   });
 
+  group('cards from mistakes', () {
+    test('a word question: the right word, its sentence and why the pick was wrong', () {
+      final c = mistakeCardFor(_choice, key: 'ys2u1l1#0', course: yds, day: '2026-11-20', picked: 0)!;
+      expect(c.id, 'ydm_irrigation');
+      expect(c.en, 'irrigation');
+      expect(c.example, 'Farmers depend on an ancient irrigation system that carries water to their fields.');
+      expect(c.why, contains('“emission” bu cümleye uymuyor'));
+      expect(c.kind, 'Kelime');
+      // The Turkish comes from the gloss when there is one.
+      final g = mistakeCardFor(
+        _choice,
+        key: 'k',
+        course: yds,
+        day: 'd',
+        picked: 0,
+        gloss: OptionGloss.parse({
+          'tr': ['salım', 'arşiv', 'sulama', 'keşif', 'çömlek'],
+        }, 5),
+      )!;
+      expect(g.tr, 'sulama');
+    });
+
+    test('a structure question gets its own card; reading and match get none', () {
+      const grammar = Exercise(
+        type: ExerciseType.choice,
+        question: 'She ---- to school every day.',
+        options: ['go', 'goes to', 'is going to', 'gone'],
+        answerIndex: 1,
+        qtype: 'grammar',
+      );
+      final g = mistakeCardFor(grammar, key: 'k', course: yds, day: 'd', picked: 0)!;
+      expect(g.id, startsWith(mistakeCardPrefix));
+      expect(g.kind, 'Gramer kuralı');
+      const reading = Exercise(
+        type: ExerciseType.choice,
+        question: 'What is the main idea?',
+        passage: 'A long text.',
+        options: ['a', 'b', 'c', 'd'],
+        answerIndex: 0,
+        qtype: 'reading',
+      );
+      expect(mistakeCardFor(reading, key: 'k', course: yds, day: 'd'), isNull);
+      const match = Exercise(type: ExerciseType.match, pairs: [('köprü', 'bridge')]);
+      expect(mistakeCardFor(match, key: 'k', course: yds, day: 'd'), isNull);
+    });
+
+    test("a translation mistake keeps the right sentence and the learner's own", () {
+      const tr = Exercise(
+        type: ExerciseType.translate,
+        prompt: 'Ben öğrenciyim.',
+        answers: ['I am a student.'],
+      );
+      final c = mistakeCardFor(tr, key: 'k', course: yds, day: 'd', typed: 'I student')!;
+      expect((c.en, c.tr), ('I am a student.', 'Ben öğrenciyim.'));
+      expect(c.why, contains('“I student”'));
+    });
+
+    test('the AI reason is kept when the same mistake comes again', () async {
+      SharedPreferences.setMockInitialValues({});
+      final prefs = await SharedPreferences.getInstance();
+      final c = ProviderContainer(
+        overrides: [prefsProvider.overrideWithValue(prefs), clockProvider.overrideWithValue(() => now)],
+      );
+      addTearDown(c.dispose);
+      final n = c.read(progressProvider.notifier);
+      const card = MistakeCardInfo(id: 'ydm_x', en: 'x', tr: 'y', why: 'kural', day: '2026-11-20');
+      n.addMistakeCard(card);
+      n.setMistakeCardWhy('ydm_x', 'Kelime: yapay zekâ açıklaması.');
+      n.addMistakeCard(card.copyWith(day: '2026-11-21'));
+      final p = c.read(progressProvider);
+      expect(p.mistakeCards, hasLength(1));
+      expect(
+        (p.mistakeCard('ydm_x')!.why, p.mistakeCard('ydm_x')!.ai),
+        ('Kelime: yapay zekâ açıklaması.', true),
+      );
+      final back = Progress.fromJson(jsonDecode(jsonEncode(p.toJson())) as Map<String, dynamic>);
+      expect(back.mistakeCard('ydm_x')!.day, '2026-11-21');
+      final merged = mergeProgress(back, const Progress(), localNewer: false);
+      expect(merged.mistakeCards.map((c) => c.id), ['ydm_x']);
+    });
+
+    testWidgets('Tekrar kartları show only mistake cards, with why on the back', (tester) async {
+      // Every lesson of the course done, but no mistakes: no word cards.
+      final done = Progress(
+        onboarded: true,
+        remindersEnabled: false,
+        completed: {for (final n in yds.allNodes) n.id: 1},
+      );
+      await pump(tester, const SrsReviewScreen(), progress: done);
+      expect(find.byKey(const Key('srs-front')), findsNothing);
+      expect(find.textContaining('yanlış yaptığın kelime ve kalıplar'), findsOneWidget);
+
+      await tester.pumpWidget(const SizedBox());
+      await pump(
+        tester,
+        const SrsReviewScreen(),
+        progress: done.copyWith(
+          mistakeCards: const [
+            MistakeCardInfo(
+              id: 'ydm_irrigation',
+              en: 'irrigation',
+              tr: 'sulama',
+              why: '“emission” bu cümleye uymuyor.',
+              day: '2026-11-20',
+              kind: 'Kelime',
+            ),
+          ],
+        ),
+      );
+      expect(tester.widget<Text>(find.byKey(const Key('srs-front'))).data, 'irrigation');
+      expect(find.text('1 / 1'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('srs-show')));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Neden yanlıştı'), findsWidgets);
+      expect(find.textContaining('“emission” bu cümleye uymuyor.'), findsOneWidget);
+    });
+
+    testWidgets('a wrong answer in a lesson makes a card; Premium fills in the AI reason', (tester) async {
+      final fake = FakeExplain();
+      final c = await pump(
+        tester,
+        LessonScreen(
+          nodeId: 'ys2u1l1',
+          title: 'Test',
+          items: const [(key: 'ys2u1l1#0', ex: _choice)],
+          color: Brand.primary,
+        ),
+        premium: true,
+        overrides: [explainMoreServiceProvider.overrideWithValue(fake)],
+      );
+      await tester.tap(find.byKey(const Key('choice-option-0')));
+      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('check')));
+      await tester.pumpAndSettle();
+      final card = c.read(progressProvider).mistakeCard('ydm_irrigation')!;
+      expect(card.ai, isTrue);
+      expect(card.why, contains('sulama taşır'));
+    });
+
+    testWidgets('free: the card keeps the rule-based reason and no AI call', (tester) async {
+      final fake = FakeExplain();
+      final c = await pump(
+        tester,
+        LessonScreen(
+          nodeId: 'ys2u1l1',
+          title: 'Test',
+          items: const [(key: 'ys2u1l1#0', ex: _choice)],
+          color: Brand.primary,
+        ),
+        overrides: [explainMoreServiceProvider.overrideWithValue(fake)],
+      );
+      await tester.tap(find.byKey(const Key('choice-option-0')));
+      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('check')));
+      await tester.pumpAndSettle();
+      final card = c.read(progressProvider).mistakeCard('ydm_irrigation')!;
+      expect(card.ai, isFalse);
+      expect(card.why, contains('“emission” bu cümleye uymuyor'));
+      expect(fake.asked, isEmpty);
+    });
+  });
+
+  group('notebook details', () {
+    testWidgets('own note and label stay; week summary, date, example and count', (tester) async {
+      final item = vocabItem();
+      final wrong = item.ex.answerIndex == 0 ? 1 : 0;
+      final second = vocabItem2();
+      await pump(
+        tester,
+        const NotebookScreen(),
+        progress: Progress(
+          onboarded: true,
+          remindersEnabled: false,
+          mistakes: [item.key, second],
+          mistakeDue: {item.key: '2026-11-21', second: '2026-11-21'},
+          mistakePicked: {item.key: wrong},
+          mistakeDay: {item.key: '2026-11-20'},
+          mistakeReason: {item.key: 'vocab'},
+          mistakeNote: {item.key: 'Anlamını karıştırdım'},
+        ),
+        log: [
+          for (var i = 0; i < 3; i++)
+            AnswerLog(key: 'a$i', day: '2026-11-19', correct: false, seconds: 30, type: 'vocabulary'),
+          const AnswerLog(key: 'b', day: '2026-11-18', correct: false, seconds: 30, type: 'grammar'),
+          const AnswerLog(key: 'c', day: '2026-11-10', correct: false, seconds: 30, type: 'grammar'),
+        ],
+      );
+      expect(find.text('Kelime (3) · Gramer kuralı (1)'), findsOneWidget);
+      expect(find.textContaining('geçen haftadan 3 fazla'), findsOneWidget);
+      expect(find.text('Senin notun: “Anlamını karıştırdım”'), findsOneWidget);
+      expect(find.byKey(const Key('mistake-own-label')), findsOneWidget);
+      expect(find.text('Son yanlış: 20 Kas'), findsOneWidget);
+      expect(find.byKey(const Key('mistake-example')), findsWidgets);
+      expect(find.text('Defterinde bu türden 2 hata var.'), findsNWidgets(2));
+      // The own-words field is still there to edit.
+      expect(find.byKey(const Key('mistake-note')), findsOneWidget);
+    });
+  });
+
   group('lesson, wrong answer', () {
     LessonScreen lesson() => LessonScreen(
       nodeId: 'ys2u1l1',
@@ -372,7 +588,9 @@ void main() {
       await tester.ensureVisible(find.byKey(const Key('explain-confused')));
       await tester.tap(find.byKey(const Key('explain-confused')));
       await tester.pumpAndSettle();
-      expect(fake.asked, [(ExplainMode.confused, 0)]);
+      // The mistake card was analysed on its own first (Premium), then the
+      // learner asked "Anlamadım".
+      expect(fake.asked, [(ExplainMode.why, 0), (ExplainMode.confused, 0)]);
     });
 
     testWidgets('free: the explanation only, no AI box', (tester) async {
