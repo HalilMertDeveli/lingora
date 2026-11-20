@@ -1,4 +1,5 @@
 import '../data/mistake_card.dart';
+import '../data/progress.dart';
 import '../data/option_glosses.dart';
 import '../models/course.dart';
 import '../models/vocab.dart';
@@ -137,6 +138,46 @@ MistakeCardInfo? mistakeCardFor(
     default:
       return null;
   }
+}
+
+/// The learner's mistakes as every screen counts them (Pratik, Profil,
+/// hata defteri), from [Progress] only, so the screens never disagree.
+class MistakeTotals {
+  const MistakeTotals({required this.notebook, required this.cards, required this.missedOnce});
+
+  /// From [p].
+  factory MistakeTotals.of(Progress p) => MistakeTotals(
+    notebook: p.mistakes.length,
+    cards: p.mistakeCards.length,
+    missedOnce: p.mistakeMisses.length,
+  );
+
+  /// Questions in the error notebook.
+  final int notebook;
+
+  /// "Tekrar kartları" made from wrong answers.
+  final int cards;
+
+  /// Questions answered wrong but not (yet) saved in the notebook: a
+  /// question is saved at its [mistakeSaveMisses]th wrong answer.
+  final int missedOnce;
+
+  bool get none => notebook == 0 && cards == 0 && missedOnce == 0;
+
+  /// Pratik's "Hatalarını çalış" line when nothing is due today.
+  String get practiceLine => notebook > 0
+      ? 'Hata defterinde $notebook soru, sırası gelince döner'
+      : cards > 0
+      ? 'Hata defteri boş; yanlışların $cards tekrar kartında'
+      : missedOnce > 0
+      ? '$missedOnce soruyu karıştırdın; yine yanlış olursa deftere girer'
+      : 'Şu an çalışılacak hata yok';
+
+  /// Profil's line when no sentence-error category is recorded yet.
+  String? get profileLine => none
+      ? null
+      : 'Hata defterinde $notebook soru, tekrar kartlarında $cards yanlışın var. '
+            'Cümle kurarken yaptığın hatalar (ek, sıra, yazım) da burada toplanır.';
 }
 
 /// The review cards of [cards] as "Tekrar kartları" word cards.

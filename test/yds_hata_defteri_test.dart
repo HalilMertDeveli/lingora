@@ -522,6 +522,29 @@ void main() {
     });
   });
 
+  group('one count of mistakes for every screen', () {
+    test('Pratik and Profil read the same totals', () {
+      const none = Progress();
+      expect(MistakeTotals.of(none).practiceLine, 'Şu an çalışılacak hata yok');
+      expect(MistakeTotals.of(none).profileLine, isNull);
+
+      // Missed once (not yet in the notebook): neither says "no mistakes".
+      const once = Progress(mistakeMisses: {'q#1': 1});
+      expect(MistakeTotals.of(once).practiceLine, contains('1 soruyu karıştırdın'));
+      expect(MistakeTotals.of(once).profileLine, isNotNull);
+
+      const withCards = Progress(
+        mistakeCards: [MistakeCardInfo(id: 'ydm_a', en: 'a', tr: 'b', why: 'w', day: 'd')],
+      );
+      expect(MistakeTotals.of(withCards).practiceLine, contains('1 tekrar kartında'));
+      expect(MistakeTotals.of(withCards).profileLine, contains('tekrar kartlarında 1'));
+
+      const notebook = Progress(mistakes: ['q#1', 'q#2']);
+      expect(MistakeTotals.of(notebook).practiceLine, 'Hata defterinde 2 soru, sırası gelince döner');
+      expect(MistakeTotals.of(notebook).profileLine, startsWith('Hata defterinde 2 soru'));
+    });
+  });
+
   group('notebook details', () {
     testWidgets('own note and label stay; week summary, date, example and count', (tester) async {
       final item = vocabItem();
