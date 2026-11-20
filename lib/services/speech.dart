@@ -153,6 +153,7 @@ class SpeechService {
     double rate = 1,
     double pitch = 1,
     bool wait = false,
+    Duration lead = Duration.zero,
   }) async {
     final id = ++_request;
     final locale = lang == 'tr' ? 'tr-TR' : englishLocale;
@@ -167,7 +168,9 @@ class SpeechService {
           final p = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
           await p.setSource(source);
           await p.setPlaybackRate(slow ? slowRecordingRate : rate.clamp(0.5, 1.5));
-          final heard = wait ? _ended(p) : null;
+          final heard = wait
+              ? _ended(p, lead: lead, rate: slow ? slowRecordingRate : rate.clamp(0.5, 1.5))
+              : null;
           await p.resume();
           await heard;
           return;
@@ -179,7 +182,7 @@ class SpeechService {
         if (id != _request) return; // a newer sentence was asked for meanwhile
         if (path != null) {
           final p = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
-          final heard = wait ? _ended(p) : null;
+          final heard = wait ? _ended(p, lead: lead * synthLeadShare) : null;
           await p.play(DeviceFileSource(path));
           await heard;
           return;
@@ -195,11 +198,38 @@ class SpeechService {
     }
   }
 
-  /// Completes when [p] finishes or is stopped (at most a minute later).
-  Future<void> _ended(AudioPlayer p) => p.onPlayerStateChanged
-      .firstWhere((s) => s == PlayerState.completed || s == PlayerState.stopped)
-      .timeout(const Duration(minutes: 1), onTimeout: () => PlayerState.stopped)
-      .then((_) {}, onError: (Object _) {});
+  /// Completes when [p] finishes or is stopped (at most a minute later), or
+  /// [lead] before the end of the file: a recording ends in a short silence
+  /// and the phone's recognizer needs about a quarter second to open the
+  /// microphone, so a listening turn can start while that silence plays.
+  Future<void> _ended(AudioPlayer p, {Duration lead = Duration.zero, num rate = 1}) {
+    final ended = p.onPlayerStateChanged
+        .firstWhere((s) => s == PlayerState.completed || s == PlayerState.stopped)
+        .timeout(const Duration(minutes: 1), onTimeout: () => PlayerState.stopped)
+        .then((_) {}, onError: (Object _) {});
+    if (lead <= Duration.zero) return ended;
+    final done = Completer<void>();
+    Timer? early;
+    StreamSubscription<Duration>? positions;
+    var timed = false;
+    void finish() {
+      early?.cancel();
+      unawaited(positions?.cancel());
+      if (!done.isCompleted) done.complete();
+    }
+
+    unawaited(ended.then((_) => finish()));
+    // Timed from the first real position, not from resume(): the phone's
+    // player starts a few hundred milliseconds after it is asked to.
+    positions = p.onPositionChanged.listen((pos) async {
+      if (timed || pos <= Duration.zero) return;
+      timed = true;
+      final total = await p.getDuration();
+      if (total == null || done.isCompleted) return;
+      early = Timer(earlyEnd(total, pos, rate: rate, lead: lead), finish);
+    }, onError: (Object _) {});
+    return done.future;
+  }
 
   Future<void> _stopVoice() async {
     try {
@@ -508,7 +538,30 @@ class TranscriptJoiner {
 /// completes when the line has been heard.
 abstract interface class LinePlayer {
   Future<void> sayLine(String text, {double rate = 1, double pitch = 1});
+
+  /// [sayLine] for a prompt the learner answers aloud right after: completes
+  /// [promptListenLead] before the recording's end, while its closing silence
+  /// plays, so the microphone is open when the voice stops.
+  Future<void> sayBeforeListening(String text, {double rate = 1});
   Future<void> stopLine();
+}
+
+/// How long before a prompt recording's end the listening turn starts. The
+/// bundled recordings end in 250 to 330 ms of silence, and the recognizer
+/// took about 250 ms from start to the first microphone bytes (QA, Galaxy
+/// M22): starting this early opens the microphone as the voice ends,
+/// instead of about 0.6 s later, without the app hearing its own voice.
+const promptListenLead = Duration(milliseconds: 250);
+
+/// The part of [promptListenLead] used for the phone engine's own audio
+/// files, whose closing silence is shorter than the recordings'.
+const synthLeadShare = 0.5;
+
+/// When to stop waiting for a file of [total] length that is at [pos]
+/// (played at [rate]): [lead] before its end, at once if that has passed.
+Duration earlyEnd(Duration total, Duration pos, {num rate = 1, required Duration lead}) {
+  final left = (total - pos) * (1 / (rate <= 0 ? 1 : rate)) - lead;
+  return left.isNegative ? Duration.zero : left;
 }
 
 /// Slow reading (the turtle button) on the phone's speech engine: about a
@@ -537,6 +590,9 @@ class _SpeechLines implements LinePlayer {
   Future<void> sayLine(String text, {double rate = 1, double pitch = 1}) =>
       _speech._speak(text, rate: rate, pitch: pitch, wait: true);
   @override
+  Future<void> sayBeforeListening(String text, {double rate = 1}) =>
+      _speech._speak(text, rate: rate, wait: true, lead: promptListenLead);
+  @override
   Future<void> stopLine() async {
     _speech._request++;
     await _speech._stopVoice();
@@ -548,6 +604,8 @@ class _SayLines implements LinePlayer {
   final SpeechService _speech;
   @override
   Future<void> sayLine(String text, {double rate = 1, double pitch = 1}) => _speech.say(text, rate: rate);
+  @override
+  Future<void> sayBeforeListening(String text, {double rate = 1}) => _speech.say(text, rate: rate);
   @override
   Future<void> stopLine() async {}
 }

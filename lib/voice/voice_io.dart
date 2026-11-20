@@ -252,6 +252,24 @@ double pcmDbfs(Uint8List bytes) {
 
 /// Barge-in on Android/iOS: an echo-cancelled, noise-suppressed microphone
 /// stream (voice-communication source) runs only while the partner speaks.
+/// The barge-in microphone: echo-cancelled voice-call input, and no audio
+/// focus (see [RecordBargeIn]).
+const bargeInRecordConfig = RecordConfig(
+  encoder: AudioEncoder.pcm16bits,
+  sampleRate: 16000,
+  numChannels: 1,
+  echoCancel: true,
+  noiseSuppress: true,
+  // No audio focus: taking it paused the partner's voice a quarter
+  // second in, and the turn waited for an end that never came (QA,
+  // Galaxy M22: the greeting stopped, "Konuşuyor…" for 28 s).
+  audioInterruption: AudioInterruptionMode.none,
+  androidConfig: AndroidRecordConfig(
+    audioSource: AndroidAudioSource.voiceCommunication,
+    manageBluetooth: false,
+  ),
+);
+
 class RecordBargeIn implements BargeInDetector {
   AudioRecorder? _rec;
   StreamSubscription<Uint8List>? _sub;
@@ -263,19 +281,7 @@ class RecordBargeIn implements BargeInDetector {
     final rec = _rec = AudioRecorder();
     try {
       if (!await rec.hasPermission(request: false)) return;
-      final stream = await rec.startStream(
-        const RecordConfig(
-          encoder: AudioEncoder.pcm16bits,
-          sampleRate: 16000,
-          numChannels: 1,
-          echoCancel: true,
-          noiseSuppress: true,
-          androidConfig: AndroidRecordConfig(
-            audioSource: AndroidAudioSource.voiceCommunication,
-            manageBluetooth: false,
-          ),
-        ),
-      );
+      final stream = await rec.startStream(bargeInRecordConfig);
       final vad = BargeInVad();
       _fired = false;
       _sub = stream.listen((chunk) {
