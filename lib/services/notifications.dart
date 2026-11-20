@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart' show MethodChannel;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timezone/timezone.dart' as tz;
@@ -84,9 +85,38 @@ List<PlannedNotification> planNotifications(Progress p, DateTime now, {bool week
   return out;
 }
 
+/// How late a reminder may come: Android delivers it within this window
+/// after the chosen time (see [narrowReminderWindows]).
+const reminderWindow = Duration(minutes: 10);
+
+/// Moves the plugin's inexact alarms for [plan] into a [reminderWindow]
+/// starting at each chosen time (MainActivity.narrowReminderWindows).
+///
+/// An inexact alarm days ahead may otherwise come up to an hour late, and
+/// exact alarms need SCHEDULE_EXACT_ALARM, which Play does not allow for a
+/// learning reminder (and Android takes it back on every app update). A
+/// window of ten minutes is not an exact alarm and needs no permission.
+Future<void> narrowReminderWindows(List<PlannedNotification> plan) async {
+  if (kIsWeb || defaultTargetPlatform != TargetPlatform.android || plan.isEmpty) return;
+  try {
+    await const MethodChannel('lingora/reminder_window').invokeMethod<int>('narrow', {
+      'ids': [for (final n in plan) n.id],
+      'at': [for (final n in plan) n.when.millisecondsSinceEpoch],
+      'windowMs': reminderWindow.inMilliseconds,
+    });
+  } catch (e) {
+    // The plugin's inexact alarm stays: late, but it still comes.
+    debugPrint('reminder window failed: $e');
+  }
+}
+
 /// Schedules local notifications on the device.
 class NotificationService {
-  NotificationService({this.onTap});
+  NotificationService({this.onTap, Future<void> Function(List<PlannedNotification> plan)? narrow})
+    : _narrow = narrow ?? narrowReminderWindows;
+
+  /// Tightens the delivery window of what [apply] scheduled.
+  final Future<void> Function(List<PlannedNotification> plan) _narrow;
 
   /// Called with the payload of a tapped notification, also when the tap
   /// launched the app.
@@ -184,9 +214,12 @@ class NotificationService {
           // An absolute instant; UTC avoids needing the device's zone name.
           scheduledDate: tz.TZDateTime.from(n.when, tz.UTC),
           notificationDetails: _details,
+          // Inexact: no exact-alarm permission. [_narrow] then moves it into
+          // a short window at the chosen time.
           androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
         );
       }
+      await _narrow(plan);
     } catch (e) {
       _applied = null; // retry on the next change
       debugPrint('notification scheduling failed: $e');

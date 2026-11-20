@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart' show WidgetsBinding;
 
 /// Cold-start timeline: `main()` → prefs → first frame → course → path.
 ///
@@ -31,4 +32,17 @@ abstract final class StartupTrace {
     if (!kReleaseMode) Timeline.instantSync('startup:$name');
     if (_print) debugPrint('STARTUP $name ${_clock.elapsedMilliseconds}');
   }
+}
+
+/// Pause after the first frame before start-up work nothing on screen needs
+/// (Firebase, scheduling reminders). On Android Flutter runs Dart on the
+/// main thread, so a plugin's main-thread work stalls the path while it is
+/// being drawn.
+const startupSettleDelay = Duration(milliseconds: 1500);
+
+/// Runs [work] once the first frame is on screen and [delay] has passed.
+Future<T> afterFirstFrames<T>(Future<T> Function() work, {Duration delay = startupSettleDelay}) async {
+  await WidgetsBinding.instance.waitUntilFirstFrameRasterized;
+  await Future<void>.delayed(delay);
+  return work();
 }

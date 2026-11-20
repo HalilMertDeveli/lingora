@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/startup_trace.dart' show startupSettleDelay;
 import '../data/catalog.dart';
 import '../data/course_repository.dart';
 import '../data/gold_wallet.dart';
@@ -65,6 +66,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
   /// Whether the tab roots may animate; see [idleAfter].
   final awake = ValueNotifier<bool>(true);
   Timer? _sleep;
+
+  /// The first reminder plan, once the path is on screen.
+  Timer? _firstPlan;
 
   /// Any touch on the screen counts, also on a dialog, sheet or picker over a
   /// tab root: those sit above the shell's own [Listener], and a root paused
@@ -138,7 +142,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
             weeklyCoach: ref.read(weeklyCoachNotifyProvider),
           ),
         );
-    ref.listenManual<Progress>(progressProvider, (_, _) => replan(), fireImmediately: true);
+    ref.listenManual<Progress>(progressProvider, (_, _) => replan());
+    // The first plan waits until the path is drawn: the plugin's Android
+    // side (channels, alarms, its JSON store) runs on the main thread.
+    _firstPlan = Timer(startupSettleDelay, replan);
     ref.listenManual<bool>(weeklyCoachNotifyProvider, (_, _) => replan());
     ref.listenManual<Track>(trackProvider, (_, next) {
       if (next.id != _trackId) {
@@ -184,6 +191,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     GestureBinding.instance.pointerRouter.removeGlobalRoute(_onAnyPointer);
+    _firstPlan?.cancel();
     _sleep?.cancel();
     awake.dispose();
     for (final n in _reselected.values) {

@@ -45,15 +45,19 @@ Future<void> main() async {
   StartupTrace.start();
   WidgetsFlutterBinding.ensureInitialized();
   FrameStats.start();
-  // Firebase is the real project unless built with
-  // --dart-define=LINGORA_FIREBASE=off|emulator. The first frame does not
-  // wait for it: the path is local, and Firebase users (sync, accounts,
-  // analytics, billing) start when firebaseReadyProvider turns true.
-  final mode = FirebaseMode.fromEnvironment;
-  final firebase = initFirebase(mode).whenComplete(() => StartupTrace.mark('firebase'));
   // Android 7–9: emoji they cannot draw are swapped (lib/core/legacy_emoji.dart).
   final (prefs, _) = await (SharedPreferences.getInstance(), detectLegacyEmoji()).wait;
   StartupTrace.mark('prefs');
+  // Firebase is the real project unless built with
+  // --dart-define=LINGORA_FIREBASE=off|emulator. Nothing on screen waits for
+  // it: the path is local, and Firebase users (sync, accounts, analytics,
+  // billing) start when firebaseReadyProvider turns true. It starts once the
+  // path is on screen ([firebaseStartDelay]): its Android side runs on the
+  // main thread, which Flutter shares with Dart, and starting it together
+  // with prefs held the first frames for seconds ("Skipped 151 frames").
+  final mode = FirebaseMode.fromEnvironment;
+  final firebase = afterFirstFrames(() => initFirebase(mode))
+      .whenComplete(() => StartupTrace.mark('firebase'));
   // Crash reports: hooks now, Firebase Crashlytics once Firebase is ready.
   // Production builds only, and only with the analytics consent.
   CrashReporter.install(consent: prefs.getBool(AnalyticsConsent.key));

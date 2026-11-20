@@ -12,7 +12,8 @@ DevTools zaman çizelgesine bir olay yazar (profile). Uygulama
 | İşaret | Anlamı |
 |---|---|
 | `main` | Dart `main()` başladı |
-| `prefs` / `firebase` | SharedPreferences ve Firebase hazır (ikisi birlikte istenir) |
+| `prefs` | SharedPreferences hazır |
+| `firebase` | Firebase hazır. İlk kareden ~1,5 sn sonra başlar (`afterFirstFrames`): Android tarafı ana iş parçacığında çalışır ve yolun çizimini durduruyordu |
 | `first_frame` | İlk Flutter karesi çizildi |
 | `asset_manifest` | Varlık listesi okundu |
 | `course_outline` | Yolun özeti (`assets/course_index/`) hazır |
@@ -28,6 +29,7 @@ flutter build apk --release --target-platform android-x64 -t tool/perf/startup_m
 bash tool/perf/measure_startup.sh build/app/outputs/flutter-apk/app-release.apk 15 com.lingora.lingora
 ```
 
+- `--dart-define=PERF_REMINDER_MIN=1380` günlük hatırlatmayı (23:00) da açar; `adb shell dumpsys alarm` ile 10 dakikalık pencere görülebilir.
 - `startup_main.dart`, ilk açılışta onboarding'i geçmiş bir öğrenci yazar
   (`PERF_TRACK` parçası, ilk `PERF_DONE_UNITS` ünitesi bitmiş). Sonraki her
   soğuk açılış doğrudan yol ekranına gider.

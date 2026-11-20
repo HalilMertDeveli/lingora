@@ -286,29 +286,29 @@ void main() {
     }
 
     test("loads today's reading for the learner's band and caches it", () async {
-      final src = FakeDailySource({'2026-11-19_A2': reading('2026-11-19', 'A2')});
+      final src = FakeDailySource({'2026-11-19_A1': reading('2026-11-19', 'A1')});
       final c = await make(source: src);
-      expect(c.read(dailyLevelProvider), 'A2'); // general course, no report yet
+      expect(c.read(dailyLevelProvider), 'A1'); // general course, Bölüm 1, no report yet
       final r = await c.read(dailyReadingProvider.future);
       expect(r!.date, '2026-11-19');
-      expect(c.read(dailyReadingCacheProvider).latest('A2', '2026-11-19')!.date, '2026-11-19');
+      expect(c.read(dailyReadingCacheProvider).latest('A1', '2026-11-19')!.date, '2026-11-19');
       // A second read comes from the phone.
       c.invalidate(dailyReadingProvider);
       await c.read(dailyReadingProvider.future);
-      expect(src.calls, ['2026-11-19/A2']);
+      expect(src.calls, ['2026-11-19/A1']);
     });
 
     test("falls back to yesterday's before today's is written", () async {
-      final src = FakeDailySource({'2026-11-18_A2': reading('2026-11-18', 'A2')});
+      final src = FakeDailySource({'2026-11-18_A1': reading('2026-11-18', 'A1')});
       final c = await make(source: src);
       expect((await c.read(dailyReadingProvider.future))!.date, '2026-11-18');
-      expect(src.calls, ['2026-11-19/A2', '2026-11-18/A2']);
+      expect(src.calls, ['2026-11-19/A1', '2026-11-18/A1']);
     });
 
     test('offline: the newest copy on the phone', () async {
-      final c0 = await make(source: FakeDailySource({'2026-11-17_A2': reading('2026-11-17', 'A2')}));
+      final c0 = await make(source: FakeDailySource({'2026-11-17_A1': reading('2026-11-17', 'A1')}));
       // Seed the cache, then go offline (same prefs).
-      c0.read(dailyReadingCacheProvider).put(reading('2026-11-17', 'A2'), '2026-11-19');
+      c0.read(dailyReadingCacheProvider).put(reading('2026-11-17', 'A1'), '2026-11-19');
       final prefs = c0.read(prefsProvider);
       final c = ProviderContainer(
         overrides: [
@@ -333,7 +333,7 @@ void main() {
   });
 
   group('daily reading screen', () {
-    final src = FakeDailySource({'2026-11-19_A2': reading('2026-11-19', 'A2')});
+    final src = FakeDailySource({'2026-11-19_A1': reading('2026-11-19', 'A1')});
 
     testWidgets('shows the text, the glossary and the questions; answering all marks it read', (
       tester,
@@ -354,7 +354,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('3 sorudan 2 doğru!'), findsOneWidget);
       final c = containerOf(tester, DailyReadingScreen);
-      expect(c.read(dailyReadDoneProvider), contains('2026-11-19_A2'));
+      expect(c.read(dailyReadDoneProvider), contains('2026-11-19_A1'));
     });
 
     testWidgets('"Bunu konuşalım" is hidden until the voice chat registers a launcher', (tester) async {
@@ -382,7 +382,7 @@ void main() {
       expect(got!.topic, 'The Lost Umbrella');
       expect(got!.context, contains('umbrella'));
       expect(got!.opener, 'Have you ever lost something?');
-      expect(got!.level, 'A2');
+      expect(got!.level, 'A1');
     });
 
     testWidgets('free users see a locked button that opens the paywall', (tester) async {
@@ -414,11 +414,11 @@ void main() {
     testWidgets('the Öğren card hides once today is read', (tester) async {
       await tester.pumpWidget(host(await overrides(tester, daily: src), const DailyReadingCard()));
       await tester.pumpAndSettle();
-      expect(find.text('Günün okuması · A2'), findsOneWidget);
+      expect(find.text('Günün okuması · A1'), findsOneWidget);
       containerOf(
         tester,
         DailyReadingCard,
-      ).read(dailyReadDoneProvider.notifier).mark(reading('2026-11-19', 'A2'));
+      ).read(dailyReadDoneProvider.notifier).mark(reading('2026-11-19', 'A1'));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('daily-reading-card')), findsNothing);
     });

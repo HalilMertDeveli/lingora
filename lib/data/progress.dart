@@ -589,7 +589,7 @@ class ProgressNotifier extends Notifier<Progress> {
     final raw = _prefs.getString(_key);
     if (raw == null) return const Progress(tally: ProgressTally.empty);
     try {
-      return migrateTally(Progress.fromJson(jsonDecode(raw) as Map<String, dynamic>));
+      return healXp(migrateTally(Progress.fromJson(jsonDecode(raw) as Map<String, dynamic>)));
     } catch (_) {
       return const Progress(tally: ProgressTally.empty);
     }
