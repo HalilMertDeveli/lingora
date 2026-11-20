@@ -1,4 +1,4 @@
-// Doğal konuşma: the turn-taking state machine (hands-free, push-to-talk,
+// Doğal konuşma: the turn-taking state machine (hands-free,
 // barge-in, echo), the streamed talk client, voice settings and the screens.
 // Nothing here touches a real microphone, speaker or server.
 import 'dart:async';
@@ -96,6 +96,9 @@ class FakeBargeIn implements BargeInDetector {
   int stops = 0;
   bool get on => _onSpeech != null;
 
+  /// A slow release of the microphone (a real recorder takes a moment).
+  Completer<void>? release;
+
   @override
   Future<void> start(void Function() onSpeech) async {
     starts++;
@@ -106,9 +109,19 @@ class FakeBargeIn implements BargeInDetector {
   Future<void> stop() async {
     stops++;
     _onSpeech = null;
+    await release?.future;
   }
 
   void speak() => _onSpeech?.call();
+}
+
+/// Eller serbest: no press-to-talk anywhere in the voice chat.
+void _expectNoMicButton() {
+  for (final icon in [Icons.mic, Icons.mic_rounded, Icons.mic_none_rounded, Icons.mic_off_rounded]) {
+    expect(find.byIcon(icon), findsNothing);
+  }
+  expect(find.byKey(const Key('talk-mic')), findsNothing);
+  expect(find.byKey(const Key('call-talk')), findsNothing);
 }
 
 class Rig {
@@ -199,7 +212,7 @@ void main() {
       });
     });
 
-    test('silence without words restarts listening a few times, then waits for a tap', () {
+    test('silence without words restarts listening a few times, then gives up (typing offered)', () {
       fakeAsync((async) {
         final r = Rig(async);
         r.turns.listen();
@@ -214,9 +227,12 @@ void main() {
         async.elapse(const Duration(seconds: 2));
         expect(r.turns.phase, TalkPhase.idle);
         expect(r.listener.starts, 3);
-        r.turns.tapMic();
+        expect(r.turns.gaveUp, isTrue);
+        // Back from typing (or the settings): listening again without a tap.
+        r.turns.resume();
         async.flushMicrotasks();
         expect(r.turns.phase, TalkPhase.listening);
+        expect(r.turns.gaveUp, isFalse);
       });
     });
 
@@ -288,14 +304,14 @@ void main() {
       });
     });
 
-    test('tapping the mic while the partner speaks interrupts too', () {
+    test('"Sözünü kes" while the partner speaks interrupts and listens', () {
       fakeAsync((async) {
         final r = Rig(async, config: const TurnConfig(bargeIn: false));
         r.turns.submitText('Hi');
         r.turns.addSentence(1, const SpokenSentence('Hello! How are you today?'));
         async.flushMicrotasks();
         expect(r.bargeIn.starts, 0);
-        r.turns.tapMic();
+        r.turns.interrupt();
         async.flushMicrotasks();
         expect(r.turns.phase, TalkPhase.listening);
         expect(r.barged.single, (1, 0));
@@ -303,27 +319,27 @@ void main() {
     });
   });
 
-  group('TurnTaker push-to-talk and mute', () {
-    test('push-to-talk: no auto-send on a pause, tap sends, no auto-listen after the reply', () {
+  group('TurnTaker microphone hand-over', () {
+    test('the recognizer starts only after the barge-in recorder let go of the microphone', () {
       fakeAsync((async) {
-        final r = Rig(async, config: const TurnConfig(handsFree: false));
-        r.turns.tapMic();
+        final r = Rig(async);
+        r.bargeIn.release = Completer<void>();
+        r.turns.say(const SpokenSentence('Hi! How was your day?'));
         async.flushMicrotasks();
-        r.listener.say('I would like a coffee');
-        async.elapse(const Duration(seconds: 3));
-        expect(r.sent, isEmpty);
-        r.turns.tapMic();
-        expect(r.sent.single.$2, 'I would like a coffee');
-        r.turns.addSentence(1, const SpokenSentence('Sure thing.'));
-        r.turns.replyComplete(1);
-        async.flushMicrotasks();
+        expect(r.bargeIn.starts, 1);
         r.out.finish();
         async.elapse(const Duration(seconds: 2));
-        expect(r.turns.phase, TalkPhase.idle);
+        expect(r.bargeIn.stops, 1);
+        expect(r.listener.starts, 0, reason: 'the recorder still holds the microphone');
+        r.bargeIn.release!.complete();
+        async.elapse(const Duration(milliseconds: 300));
         expect(r.listener.starts, 1);
+        expect(r.turns.phase, TalkPhase.listening);
       });
     });
+  });
 
+  group('TurnTaker mute', () {
     test('mute closes the microphone until unmuted, also when muted mid-reply', () {
       fakeAsync((async) {
         final r = Rig(async);
@@ -588,7 +604,6 @@ void main() {
     const s = VoiceSettings(
       voice: 'gb_leda',
       characterVoices: {'emma': 'us_puck'},
-      handsFree: false,
       bargeIn: false,
       pauseMs: 1200,
       level: 'A2',
@@ -598,7 +613,6 @@ void main() {
     expect(back.voiceFor(characterById('emma')), 'us_puck');
     expect(back.voiceFor(characterById('taxi_london')), 'gb_fenrir');
     expect(back.turnConfig.endOfTurn, const Duration(milliseconds: 1200));
-    expect(back.turnConfig.handsFree, isFalse);
     expect(back.level, 'A2');
     expect(VoiceSettings.fromJson({'voice': 'eleven_x', 'level': 'Z'}).voice, defaultVoiceId);
     expect(deviceRateFor('A1'), lessThan(deviceRateFor('B1')));
@@ -674,6 +688,8 @@ void main() {
       out.finish();
       await tester.pump(const Duration(milliseconds: 300));
       expect(find.text('Dinliyorum…'), findsOneWidget);
+      expect(listener.starts, 1, reason: 'listening opened by itself');
+      _expectNoMicButton();
       listener.say('I go to Izmir');
       await tester.pump(const Duration(milliseconds: 1100));
       expect(chat.sent.single.last.text, 'I go to Izmir');
@@ -710,9 +726,11 @@ void main() {
       out.finish();
       await tester.pump(const Duration(milliseconds: 300));
       expect(find.text('Dinliyorum…'), findsOneWidget);
+      expect(listener.starts, 1, reason: 'the call listens by itself');
+      _expectNoMicButton();
       await tester.tap(find.byKey(const Key('call-mute')));
       await tester.pump();
-      expect(find.text('Sessizde'), findsOneWidget);
+      expect(find.text('Dinleme duraklatıldı'), findsOneWidget);
       await tester.tap(find.byKey(const Key('call-mute')));
       await tester.pump();
       listener.say('Sure I have time');

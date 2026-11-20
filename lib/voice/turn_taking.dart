@@ -4,7 +4,8 @@ import 'package:flutter/foundation.dart';
 
 /// Who has the floor in a voice conversation.
 enum TalkPhase {
-  /// Nobody: waiting for a tap (push-to-talk, an error, or a long silence).
+  /// Nobody: between turns, after an error, or after a long silence (then
+  /// the learner may type, or hear the partner's last line again).
   idle,
 
   /// "Dinliyorum": the learner speaks.
@@ -68,7 +69,6 @@ abstract interface class BargeInDetector {
 /// Settings of the turn-taker (tunable in the voice settings).
 class TurnConfig {
   const TurnConfig({
-    this.handsFree = true,
     this.bargeIn = true,
     this.endOfTurn = const Duration(milliseconds: 700),
     this.unfinishedExtra = const Duration(milliseconds: 500),
@@ -77,10 +77,6 @@ class TurnConfig {
     this.echoTail = const Duration(milliseconds: 250),
     this.idleRestarts = 2,
   });
-
-  /// Listen again by itself after each reply, and end the learner's turn
-  /// after a pause. Off = push-to-talk: tap to speak, tap to send.
-  final bool handsFree;
 
   /// The learner may interrupt the partner by speaking.
   final bool bargeIn;
@@ -276,7 +272,6 @@ class TurnTaker extends ChangeNotifier {
 
   void _activity() {
     _lastActivity = _now();
-    if (!_config.handsFree) return; // push-to-talk: the learner taps to send
     _silence?.cancel();
     final extra = soundsUnfinished(_words) ? _config.unfinishedExtra : Duration.zero;
     _silence = Timer(_config.endOfTurn + extra, _endTurn);
@@ -288,8 +283,8 @@ class TurnTaker extends ChangeNotifier {
       _endTurn();
       return;
     }
-    // Nothing said: keep the line open a little longer, then wait for a tap.
-    if (_config.handsFree && _emptyRestarts < _config.idleRestarts) {
+    // Nothing said: keep the line open a little longer, then offer typing.
+    if (_emptyRestarts < _config.idleRestarts) {
       _emptyRestarts++;
       _set(TalkPhase.idle);
       _restart = Timer(const Duration(milliseconds: 300), listen);
@@ -343,26 +338,21 @@ class TurnTaker extends ChangeNotifier {
     _endTurn();
   }
 
-  /// Mic button: start listening, or (while listening) send what was said;
-  /// while the partner speaks, interrupt.
-  Future<void> tapMic() async {
-    switch (_phase) {
-      case TalkPhase.idle:
-        _emptyRestarts = 0;
-        await listen();
-      case TalkPhase.listening:
-        if (_words.isEmpty) {
-          _silence?.cancel();
-          _set(TalkPhase.idle);
-          await listener.stop();
-        } else {
-          _endTurn();
-        }
-      case TalkPhase.speaking:
-        await _interrupt();
-      case TalkPhase.thinking || TalkPhase.muted:
-        break;
-    }
+  /// Nothing was heard after the automatic restarts: the screen offers
+  /// typing (or hearing the partner's last line again).
+  bool get gaveUp => _phase == TalkPhase.idle && _emptyRestarts >= _config.idleRestarts && _replyTurn == null;
+
+  /// Listening again after a pause (back from typing, the permission was
+  /// granted, the app came back): no button needed.
+  Future<void> resume() async {
+    if (_closed || _phase != TalkPhase.idle) return;
+    _emptyRestarts = 0;
+    await listen();
+  }
+
+  /// "Sözünü kes": stops the partner and listens.
+  Future<void> interrupt() async {
+    if (_phase == TalkPhase.speaking) await _interrupt();
   }
 
   // ------------------------------------------------------------- speaking
@@ -403,7 +393,7 @@ class TurnTaker extends ChangeNotifier {
   void replyComplete(int turn) {
     if (turn != _replyTurn) return;
     _replyDone = true;
-    if (!_playing && _queue.isEmpty) _afterSpeaking();
+    if (!_playing && _queue.isEmpty) unawaited(_afterSpeaking());
   }
 
   /// The reply to [turn] failed: back to idle (the screen shows the error).
@@ -447,21 +437,27 @@ class TurnTaker extends ChangeNotifier {
     if (_queue.isNotEmpty) {
       unawaited(_pump());
     } else if (_replyDone) {
-      _afterSpeaking();
+      unawaited(_afterSpeaking());
     }
   }
 
-  void _afterSpeaking() {
-    unawaited(_stopDetector());
+  Future<void> _afterSpeaking() async {
     _speechEndedAt = _now();
     _replyTurn = null;
+    _emptyRestarts = 0;
     if (_mutedPending) {
       _mutedPending = false;
+      unawaited(_stopDetector());
       _set(TalkPhase.muted);
       return;
     }
     _set(TalkPhase.idle);
-    if (_config.handsFree && !_closed) _restart = Timer(_config.echoTail, listen);
+    // The barge-in recorder must have let go of the microphone before the
+    // phone's recognizer starts (Samsung: error_audio / error_client).
+    await _stopDetector();
+    if (!_closed && _phase == TalkPhase.idle && _replyTurn == null) {
+      _restart = Timer(_config.echoTail, listen);
+    }
   }
 
   void _onBargeIn() {
@@ -503,7 +499,8 @@ class TurnTaker extends ChangeNotifier {
       _mutedPending = false;
       if (_phase != TalkPhase.muted) return;
       _set(TalkPhase.idle);
-      if (_config.handsFree) await listen();
+      _emptyRestarts = 0;
+      await listen();
     }
   }
 

@@ -10,15 +10,42 @@ import 'package:lingora/data/progress.dart' show prefsProvider;
 import 'package:lingora/models/course.dart';
 import 'package:lingora/screens/pronunciation_screen.dart' show coachMatch;
 import 'package:lingora/services/billing/premium.dart';
+import 'package:lingora/services/mic_access.dart';
 import 'package:lingora/services/speech.dart';
 import 'package:lingora/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class _HandsFree extends HandsFreeSetting {
-  _HandsFree(this.on);
-  final bool on;
+/// The microphone permission, driven by the test.
+class _FakeMic implements MicAccess {
+  _FakeMic(this.now, {this.afterRequest = MicStatus.granted});
+  MicStatus now;
+  final MicStatus afterRequest;
+  int requests = 0;
+  int settingsOpened = 0;
   @override
-  bool build() => on;
+  Future<MicStatus> status() async => now;
+  @override
+  Future<MicStatus> request() async {
+    requests++;
+    return now = afterRequest;
+  }
+
+  @override
+  Future<void> openSettings() async => settingsOpened++;
+}
+
+/// Speaking screens show no microphone button (nor a microphone icon).
+void _expectNoMicIcons() {
+  for (final icon in [
+    Icons.mic,
+    Icons.mic_rounded,
+    Icons.mic_none_rounded,
+    Icons.mic_off_rounded,
+    Icons.mic_outlined,
+    Icons.keyboard_voice_rounded,
+  ]) {
+    expect(find.byIcon(icon), findsNothing, reason: 'no press-to-talk: $icon');
+  }
 }
 
 /// Speech recognition driven by the test: words arrive when the test says.
@@ -63,7 +90,7 @@ Future<void> _pump(
   String text = 'I am twenty one years old.',
   void Function(Grader?)? onReady,
   VoidCallback? onSkip,
-  bool handsFree = false,
+  MicAccess? mic,
 }) async {
   SharedPreferences.setMockInitialValues({});
   final prefs = await SharedPreferences.getInstance();
@@ -71,7 +98,7 @@ Future<void> _pump(
     ProviderScope(
       overrides: [
         speechProvider.overrideWithValue(speech),
-        handsFreeProvider.overrideWith(() => _HandsFree(handsFree)),
+        micAccessProvider.overrideWithValue(mic ?? _FakeMic(MicStatus.granted)),
         premiumProvider.overrideWithValue(false),
         prefsProvider.overrideWithValue(prefs),
       ],
@@ -93,8 +120,8 @@ Future<void> _pump(
   await tester.pump();
 }
 
+/// The learner says [words] in the turn that opened by itself.
 Future<void> _say(WidgetTester tester, _LiveSpeech speech, String words) async {
-  await tester.tap(find.byIcon(Icons.mic_rounded));
   await tester.pump();
   speech.words(words);
   await tester.pump();
@@ -230,15 +257,25 @@ void main() {
     });
   });
 
-  group('speak exercise', () {
-    testWidgets('shows words live while listening and the level ring', (tester) async {
+  group('speak exercise (eller serbest)', () {
+    testWidgets('reads the sentence and listens by itself; no microphone button anywhere', (tester) async {
+      final speech = _LiveSpeech();
+      await _pump(tester, speech, text: 'Good morning');
+      await tester.pump();
+      expect(speech.said, ['Good morning'], reason: 'the prompt plays before listening');
+      expect(speech.listens, 1, reason: 'no tap needed');
+      expect(find.byKey(const Key('hands-free-listening')), findsOneWidget);
+      _expectNoMicIcons();
+      speech.done();
+      await tester.pump();
+    });
+
+    testWidgets('shows words live while listening and the level pill', (tester) async {
       final speech = _LiveSpeech();
       await _pump(tester, speech);
-      await tester.tap(find.byIcon(Icons.mic_rounded));
       await tester.pump();
-      expect(find.text('Dinliyorum… Şimdi söyle.'), findsOneWidget);
+      expect(find.text('Şimdi söyle.'), findsOneWidget);
       expect(find.byKey(const Key('mic-level')), findsOneWidget);
-
       speechLevel.value = 0.8;
       speech.words('I am');
       await tester.pump();
@@ -248,7 +285,25 @@ void main() {
       expect(find.text('“I\'m 21 years”'), findsOneWidget);
       speech.done();
       await tester.pumpAndSettle();
-      expect(find.byKey(const Key('mic-level')), findsNothing);
+      expect(find.byKey(const Key('hands-free-listening')), findsNothing);
+    });
+
+    testWidgets('ends after the silence and grades by itself', (tester) async {
+      final speech = _LiveSpeech();
+      Grader? grader;
+      await _pump(tester, speech, text: 'Good morning', onReady: (g) => grader = g);
+      await tester.pump();
+      speech.words('good');
+      await tester.pump(const Duration(milliseconds: 600));
+      speech.words('good morning');
+      await tester.pump(const Duration(milliseconds: 600));
+      expect(speech.stops, 0, reason: 'still talking: the silence timer restarted');
+      await tester.pump(endOfSpeechSilence);
+      expect(speech.stops, 1);
+      await tester.pump();
+      expect(grader, isNotNull);
+      expect(grader!(), isTrue);
+      expect(find.text('Harika, hepsini duydum!'), findsOneWidget);
     });
 
     testWidgets('accepts a contraction, digits and a missing word; shows the missed word in red', (
@@ -265,100 +320,111 @@ void main() {
       expect(find.textContaining('Güzel'), findsOneWidget);
     });
 
-    testWidgets('after two failed tries the skip is offered up front', (tester) async {
+    testWidgets('"Tekrar dinle ve söyle" plays again and listens again; two misses offer the skip', (
+      tester,
+    ) async {
       final speech = _LiveSpeech();
       var skipped = false;
       await _pump(tester, speech, onSkip: () => skipped = true);
       expect(find.byKey(const Key('speak-skip-offer')), findsNothing);
       expect(find.text('Şu an konuşamıyorum'), findsOneWidget);
-
       await _say(tester, speech, 'hello');
       expect(find.byKey(const Key('speak-skip-offer')), findsNothing);
-      await _say(tester, speech, '');
-      expect(find.text(SpeechIssues.notHeard), findsOneWidget, reason: 'nothing heard: get closer');
+      await tester.tap(find.byKey(const Key('say-again')));
+      await tester.pump();
+      await tester.pump();
+      expect(speech.listens, 2);
+      expect(speech.said.length, 2, reason: 'the sentence is read again first');
+      await _say(tester, speech, 'hello');
       expect(find.byKey(const Key('speak-skip-offer')), findsOneWidget);
+      await tester.ensureVisible(find.byKey(const Key('speak-skip-offer')));
       await tester.tap(find.byKey(const Key('speak-skip-offer')));
       expect(skipped, isTrue);
     });
 
-    testWidgets('a good try does not count as a failure', (tester) async {
+    testWidgets('nothing heard: listens again by itself with a hint, then offers typing', (tester) async {
       final speech = _LiveSpeech();
-      await _pump(tester, speech, text: 'Good morning');
-      await _say(tester, speech, 'good morning');
-      await _say(tester, speech, 'good morning');
-      await _say(tester, speech, 'good morning');
-      expect(find.byKey(const Key('speak-skip-offer')), findsNothing);
-      expect(find.text('Harika, hepsini duydum!'), findsOneWidget);
-    });
-
-    group('hands-free', () {
-      setUp(() => handsFreeMicRefused = false);
-
-      testWidgets('reads the sentence, listens by itself and ends after the silence', (tester) async {
-        final speech = _LiveSpeech();
-        Grader? grader;
-        await _pump(tester, speech, text: 'Good morning', handsFree: true, onReady: (g) => grader = g);
-        await tester.pump();
-        expect(speech.said, ['Good morning'], reason: 'the prompt plays before listening');
-        expect(speech.listens, 1);
-        expect(find.byKey(const Key('hands-free-listening')), findsOneWidget);
-        speech.words('good');
-        await tester.pump(const Duration(milliseconds: 600));
-        speech.words('good morning');
-        await tester.pump(const Duration(milliseconds: 600));
-        expect(speech.stops, 0, reason: 'still talking: the silence timer restarted');
-        await tester.pump(endOfSpeechSilence);
-        expect(speech.stops, 1);
-        await tester.pump();
-        expect(grader, isNotNull);
-        expect(grader!(), isTrue);
-        expect(find.byKey(const Key('hands-free-listening')), findsNothing);
-      });
-
-      testWidgets('no speech: a gentle hint and one retry, the skip stays', (tester) async {
-        final speech = _LiveSpeech();
-        await _pump(tester, speech, handsFree: true);
-        await tester.pump();
+      await _pump(tester, speech);
+      await tester.pump();
+      for (var i = 1; i <= autoRetries; i++) {
         await tester.pump(noSpeechTimeout);
         await tester.pump();
         expect(find.byKey(const Key('hands-free-no-speech')), findsOneWidget);
-        expect(find.text('Şu an konuşamıyorum'), findsOneWidget);
-        await tester.tap(find.byKey(const Key('hands-free-retry')));
-        await tester.pump();
-        expect(speech.listens, 2);
-        expect(find.byKey(const Key('hands-free-no-speech')), findsNothing);
-        expect(find.byKey(const Key('hands-free-listening')), findsOneWidget);
-        speech.done();
-        await tester.pumpAndSettle();
-      });
+        expect(find.textContaining('Tekrar dinliyorum'), findsOneWidget);
+        await tester.pump(autoRetryPause);
+        expect(speech.listens, 1 + i, reason: 'listening again without a tap');
+      }
+      await tester.pump(noSpeechTimeout);
+      await tester.pump();
+      expect(speech.listens, 1 + autoRetries, reason: 'bounded');
+      expect(find.byKey(const Key('auto-listen-gave-up')), findsOneWidget);
+      expect(find.byKey(const Key('speak-type')), findsOneWidget);
+      expect(find.byKey(const Key('speak-skip-offer')), findsOneWidget);
+      _expectNoMicIcons();
+      await tester.ensureVisible(find.byKey(const Key('speak-type')));
+      await tester.tap(find.byKey(const Key('speak-type')));
+      await tester.pump();
+      expect(find.byKey(const Key('speak-type-field')), findsOneWidget);
+    });
 
-      testWidgets('no microphone: the button flow stays and nothing listens', (tester) async {
-        final speech = _LiveSpeech(mic: false);
-        await _pump(tester, speech, handsFree: true);
-        await tester.pump();
-        expect(speech.listens, 0);
-        expect(find.byKey(const Key('hands-free-listening')), findsNothing);
-        expect(find.byIcon(Icons.mic_rounded), findsOneWidget);
-      });
+    testWidgets('a recognizer error is retried by itself too', (tester) async {
+      final speech = _LiveSpeech();
+      await _pump(tester, speech);
+      await tester.pump();
+      speechIssue.value = SpeechIssues.forError('error_server', heardSomething: false);
+      speech.done();
+      await tester.pump();
+      expect(find.textContaining(SpeechIssues.server), findsOneWidget);
+      await tester.pump(autoRetryPause);
+      expect(speech.listens, 2);
+      speech.done();
+      await tester.pumpAndSettle();
+    });
 
-      testWidgets('a manual tap still works and also ends by itself', (tester) async {
-        final speech = _LiveSpeech(mic: false);
-        await _pump(tester, speech, text: 'Good morning', handsFree: true);
-        await tester.pump();
-        expect(handsFreeMicRefused, isTrue);
-        await tester.pumpWidget(const SizedBox());
-        final live = _LiveSpeech();
-        await _pump(tester, live, text: 'Good morning', handsFree: true);
-        await tester.pump();
-        expect(live.listens, 0, reason: 'refused once this run: no new automatic tries');
-        await tester.tap(find.byIcon(Icons.mic_rounded));
-        await tester.pump();
-        expect(live.listens, 1);
-        live.words('good morning');
-        await tester.pump(endOfSpeechSilence);
-        await tester.pump();
-        expect(find.text('Harika, hepsini duydum!'), findsOneWidget);
-      });
+    testWidgets('permission: asked before listening; refused for good shows the settings button', (
+      tester,
+    ) async {
+      final speech = _LiveSpeech();
+      final mic = _FakeMic(MicStatus.denied, afterRequest: MicStatus.blocked);
+      await _pump(tester, speech, mic: mic);
+      await tester.pump();
+      expect(mic.requests, 1, reason: 'the permission is asked before the recognizer starts');
+      expect(speech.listens, 0);
+      expect(find.byKey(const Key('mic-blocked')), findsOneWidget);
+      await tester.tap(find.byKey(const Key('mic-settings')));
+      expect(mic.settingsOpened, 1);
+      // Turned on in the settings: back in the app it listens by itself.
+      mic.now = MicStatus.granted;
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+      await tester.pump();
+      await tester.pump();
+      expect(speech.listens, 1);
+      speech.done();
+      await tester.pumpAndSettle();
+    });
+
+    testWidgets('permission granted in the dialog: listening starts right away', (tester) async {
+      final speech = _LiveSpeech();
+      final mic = _FakeMic(MicStatus.denied, afterRequest: MicStatus.granted);
+      await _pump(tester, speech, mic: mic);
+      await tester.pump();
+      await tester.pump();
+      expect(mic.requests, 1);
+      expect(speech.listens, 1);
+      speech.done();
+      await tester.pumpAndSettle();
+    });
+
+    testWidgets('no recognizer: nothing listens, the fallbacks stay', (tester) async {
+      final speech = _LiveSpeech(mic: false);
+      await _pump(tester, speech);
+      await tester.pump();
+      expect(speech.listens, 0);
+      expect(find.byKey(const Key('hands-free-listening')), findsNothing);
+      expect(find.byKey(const Key('speak-type')), findsOneWidget);
+      expect(find.byKey(const Key('speak-skip-offer')), findsOneWidget);
+      _expectNoMicIcons();
     });
 
     testWidgets('SpokenWordsView marks heard words green', (tester) async {

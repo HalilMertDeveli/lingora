@@ -145,8 +145,9 @@ void main() {
 
     // Speaking drills: the fake has no microphone, so the step can be skipped.
     expect(find.text('Söyle'), findsOneWidget);
-    await tester.tap(find.byIcon(Icons.mic_rounded));
+    // No microphone button: it tried to listen by itself and says why not.
     await tester.pumpAndSettle();
+    expect(find.byIcon(Icons.mic_rounded), findsNothing);
     expect(find.text('Mikrofon kullanılamıyor'), findsOneWidget);
     for (var i = 0; i < 3; i++) {
       await tester.tap(find.text('Devam'));

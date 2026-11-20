@@ -10,6 +10,8 @@ import 'package:lingora/services/billing/family.dart';
 import 'package:lingora/services/conversation.dart';
 import 'package:lingora/services/speech.dart';
 
+import 'package:lingora/services/mic_access.dart';
+
 import 'ses_kocu_test.dart' show FakeChat, VoiceSpeech, chatApp, overrides;
 
 /// A server answer the app cannot parse (e.g. a field of the wrong type).
@@ -19,6 +21,17 @@ class BrokenChat extends FakeChat {
     sent.add(List.of(history));
     throw TypeError();
   }
+}
+
+/// The microphone permission was refused for good.
+class _BlockedMic implements MicAccess {
+  const _BlockedMic();
+  @override
+  Future<MicStatus> status() async => MicStatus.blocked;
+  @override
+  Future<MicStatus> request() async => MicStatus.blocked;
+  @override
+  Future<void> openSettings() async {}
 }
 
 void main() {
@@ -49,8 +62,6 @@ void main() {
       chatApp(await overrides(tester, speech: VoiceSpeech(heard: [(words: 'Hello', confidence: 0.9)]))),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key('voice-mic')));
-    await tester.pumpAndSettle();
     final container = ProviderScope.containerOf(tester.element(find.byType(ConversationScreen)));
     final before = container.read(progressProvider).totalXp;
 
@@ -61,10 +72,8 @@ void main() {
   });
 
   testWidgets('a denied microphone offers the settings and the text fallback', (tester) async {
-    speechIssue.value = SpeechIssues.noMicPermission;
-    await tester.pumpWidget(chatApp(await overrides(tester, speech: VoiceSpeech(ready: false))));
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key('voice-mic')));
+    final o = await overrides(tester, speech: VoiceSpeech());
+    await tester.pumpWidget(chatApp([...o, micAccessProvider.overrideWithValue(const _BlockedMic())]));
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('chat-input')), findsOneWidget);
     expect(find.byKey(const Key('mic-settings')), findsOneWidget);
@@ -122,14 +131,13 @@ void main() {
   });
 
   testWidgets('back in a started chat asks first; Bitir from the dialog opens the karne', (tester) async {
-    await tester.pumpWidget(
-      chatApp(await overrides(tester, speech: VoiceSpeech(heard: [(words: 'Hello', confidence: 0.9)]))),
-    );
+    final speech = VoiceSpeech(heard: [(words: 'Hello', confidence: 0.9)], manual: true);
+    await tester.pumpWidget(chatApp(await overrides(tester, speech: speech)));
     await tester.pumpAndSettle();
     final nav = tester.state<NavigatorState>(find.byType(Navigator));
     // Nothing said yet: back just leaves (nothing is lost).
     expect(await nav.maybePop(), isFalse, reason: 'only route');
-    await tester.tap(find.byKey(const Key('voice-mic')));
+    speech.talk();
     await tester.pumpAndSettle();
 
     await nav.maybePop();
@@ -165,8 +173,6 @@ void main() {
       ),
     );
     await tester.tap(find.text('open'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key('voice-mic')));
     await tester.pumpAndSettle();
     await tester.binding.handlePopRoute();
     await tester.pumpAndSettle();

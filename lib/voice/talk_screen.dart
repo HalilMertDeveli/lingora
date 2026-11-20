@@ -13,9 +13,9 @@ import '../data/scenarios.dart';
 import '../goals/learn_goal.dart';
 import '../screens/conversation_report_screen.dart';
 import '../screens/paywall_screen.dart';
-import '../services/app_settings_link.dart';
 import '../services/billing/premium.dart';
 import '../services/conversation.dart';
+import '../services/mic_access.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 import '../ui/motion.dart';
@@ -48,7 +48,12 @@ final talkIoProvider = Provider<TalkIo Function({required bool call, required bo
   final speech = ref.watch(speechProvider);
   final lines = ref.watch(linePlayerProvider);
   return ({required bool call, required bool bargeIn}) {
-    final out = AudioVoiceOut(lines, earpiece: call, communication: bargeIn || call);
+    final out = AudioVoiceOut(
+      lines,
+      earpiece: call,
+      communication: bargeIn || call,
+      phoneVoiceFile: (text, rate) => speech.lineFile(text, rate: rate),
+    );
     return TalkIo(
       listener: SpeechTurnListener(speech),
       out: out,
@@ -125,7 +130,11 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
   int? _replyIndex;
   StreamSubscription<TalkEvent>? _stream;
   String? _error;
-  bool _micDenied = false;
+
+  /// The microphone permission is missing: the error offers to fix it
+  /// (asking again, or the settings when it was refused for good).
+  MicStatus? _micProblem;
+  late final AppLifecycleListener _life = AppLifecycleListener(onResume: _resumed);
   bool _typing = false;
   bool _done = false;
   bool _finished = false;
@@ -169,20 +178,56 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _open());
   }
 
-  /// Checks the microphone, then the partner says the opening line.
-  Future<void> _open() async {
-    final speech = ref.read(speechProvider);
-    if (!await speech.canListen) {
-      if (!mounted) return;
+  /// Asks for the microphone (once), then checks the recognizer. False
+  /// when the learner cannot be heard: the error says why and what to do.
+  Future<bool> _micReady() async {
+    final mic = ref.read(micAccessProvider);
+    var status = await mic.status();
+    if (status == MicStatus.denied) status = await mic.request();
+    if (!mounted) return false;
+    if (status != MicStatus.granted) {
+      setState(() {
+        _typing = !widget.call;
+        _micProblem = status;
+        _error = status == MicStatus.blocked
+            ? 'Mikrofon izni kapalı. Ayarlar > İzinler > Mikrofon bölümünden aç; dönünce kendiliğinden dinlerim.'
+            : 'Seni duyabilmem için mikrofon izni gerekiyor.';
+      });
+      return false;
+    }
+    if (!await ref.read(speechProvider).canListen) {
+      if (!mounted) return false;
       final denied = speechIssue.value == SpeechIssues.noMicPermission;
       setState(() {
         _typing = !widget.call;
-        _micDenied = denied;
+        _micProblem = denied ? MicStatus.denied : null;
         _error = denied
-            ? 'Mikrofon izni kapalı. Ayarlardan açabilir ya da yazarak devam edebilirsin.'
+            ? 'Seni duyabilmem için mikrofon izni gerekiyor.'
             : 'Mikrofon kullanılamıyor; yazarak devam edebilirsin.';
       });
+      return false;
     }
+    if (_micProblem != null && mounted) {
+      setState(() {
+        _micProblem = null;
+        _error = null;
+        _typing = false;
+      });
+    }
+    return true;
+  }
+
+  /// Back from the settings (or the dialog): listen if the microphone works now.
+  Future<void> _resumed() async {
+    if (_micProblem == null || _finished) return;
+    if (await _micReady()) unawaited(_turns.resume());
+  }
+
+  /// Checks the microphone, then the partner says the opening line; the
+  /// microphone opens by itself when it ends.
+  Future<void> _open() async {
+    _life;
+    await _micReady();
     final opening = widget.scenario.opening;
     // Pre-warm while the opening line is fetched: the talk function and its
     // TTS/Claude connections, and the backchannels in the partner's voice
@@ -214,7 +259,6 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
     final spoken = !_typing;
     setState(() {
       _error = null;
-      _micDenied = false;
       _messages.add(
         ChatMessage(
           fromUser: true,
@@ -295,6 +339,16 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       if (ex?.freeQuotaUsed ?? false) _freeLeft = 0;
     });
     if (ex?.freeQuotaUsed ?? false) {
+      if (_premium) {
+        // Premium on this phone, but the server still counts a free user:
+        // say so instead of "Premium açıldı" in a loop.
+        setState(() {
+          _error =
+              'Bugünkü ücretsiz mesajlarını kullandın; Premium üyeliğin sunucuda henüz görünmüyor. '
+              'Biraz sonra tekrar dene ya da "Bitir" ile karneni al.';
+        });
+        return;
+      }
       final gate = await requirePremium(
         context,
         ref,
@@ -304,9 +358,17 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       if (!mounted) return;
       setState(() {
         _error = gate == GateResult.premium
-            ? 'Premium açıldı! Mikrofona dokun, kaldığın yerden devam et.'
+            ? 'Premium açıldı! Kaldığın yerden konuşmaya devam et.'
             : 'Bugünkü ücretsiz mesajlarını kullandın. "Bitir" ile karneni alabilirsin.';
         if (gate == GateResult.premium) _freeLeft = null;
+      });
+      if (gate == GateResult.premium && !_typing) unawaited(_turns.resume());
+      return;
+    }
+    // Any other failure: the learner says it again, no tap needed.
+    if (!_typing && !_finished) {
+      Future<void>.delayed(const Duration(milliseconds: 600), () {
+        if (mounted && !_finished) unawaited(_turns.resume());
       });
     }
   }
@@ -373,6 +435,7 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
 
   @override
   void dispose() {
+    _life.dispose();
     _tick?.cancel();
     unawaited(_stream?.cancel());
     _turns
@@ -391,10 +454,15 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
     TalkPhase.listening => _turns.words.isEmpty ? 'Dinliyorum…' : '“${_turns.words}”',
     TalkPhase.thinking => 'Düşünüyor…',
     TalkPhase.speaking => _settings.bargeIn && _premium ? 'Konuşuyor… (sözünü kesebilirsin)' : 'Konuşuyor…',
-    TalkPhase.muted => 'Mikrofon kapalı',
-    TalkPhase.idle =>
-      _settings.handsFree ? 'Devam etmek için mikrofona dokun.' : 'Konuşmak için dokun, bitince yine dokun.',
+    TalkPhase.muted => 'Dinleme duraklatıldı',
+    TalkPhase.idle => _idleText,
   };
+
+  String get _idleText => _micProblem != null
+      ? 'Mikrofon izni bekleniyor'
+      : _turns.gaveUp
+      ? 'Seni duyamadım. Son cümleye dokunursan tekrar söyler ve dinlerim; ya da yazarak cevap ver.'
+      : 'Birazdan dinliyorum…';
 
   @override
   Widget build(BuildContext context) {
@@ -413,8 +481,8 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       TalkPhase.listening => (Icons.hearing_rounded, Brand.success),
       TalkPhase.thinking => (Icons.more_horiz_rounded, Brand.accent),
       TalkPhase.speaking => (Icons.graphic_eq_rounded, Brand.primary),
-      TalkPhase.muted => (Icons.mic_off_rounded, Brand.error),
-      TalkPhase.idle => (Icons.touch_app_rounded, Brand.muted),
+      TalkPhase.muted => (Icons.voice_over_off_rounded, Brand.error),
+      TalkPhase.idle => (Icons.hearing_disabled_rounded, Brand.muted),
     };
     return Semantics(
       liveRegion: true,
@@ -510,66 +578,66 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
             style: TextStyle(color: Brand.error),
           ),
         ),
-        if (_micDenied)
-          TextButton(
-            onPressed: () {
-              setState(() => _micDenied = false);
-              openAppSettings();
-            },
-            child: const Text('Ayarlar'),
-          ),
+        if (_micProblem != null) _micFixButton(null),
       ],
     ),
   );
 
+  /// No button to press: the microphone opens by itself after the partner
+  /// has spoken, and the turn goes when the learner stops talking.
+  Widget _micFixButton(Color? color) {
+    final blocked = _micProblem == MicStatus.blocked;
+    return TextButton(
+      key: const Key('talk-mic-fix'),
+      style: color == null ? null : TextButton.styleFrom(foregroundColor: color),
+      onPressed: () async {
+        if (blocked) {
+          await ref.read(micAccessProvider).openSettings();
+        } else if (await _micReady()) {
+          unawaited(_turns.resume());
+        }
+      },
+      child: Text(blocked ? 'Ayarları aç' : 'İzin ver'),
+    );
+  }
+
   Widget _voiceBar() {
-    final settings = ref.watch(voiceSettingsProvider);
     final listening = _turns.phase == TalkPhase.listening;
+    final speaking = _turns.phase == TalkPhase.speaking;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         _phaseChip(),
         const SizedBox(height: 8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        _ListenOrb(phase: _turns.phase),
+        const SizedBox(height: 4),
+        Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 4,
           children: [
-            IconButton(
+            TextButton.icon(
               key: const Key('talk-to-text'),
-              tooltip: 'Yazarak konuş',
               onPressed: () => setState(() => _typing = true),
               icon: const Icon(Icons.keyboard_alt_outlined),
+              label: const Text('Yazarak cevapla'),
             ),
-            _BigMic(
-              phase: _turns.phase,
-              onTap: _turns.phase == TalkPhase.thinking ? null : () => unawaited(_turns.tapMic()),
-            ),
-            IconButton(
-              key: const Key('talk-handsfree'),
-              tooltip: settings.handsFree ? 'Eller serbest açık' : 'Bas-konuş',
-              onPressed: () {
-                final on = !settings.handsFree;
-                ref.read(voiceSettingsProvider.notifier).setHandsFree(on);
-                _turns.config = ref.read(voiceSettingsProvider).turnConfig;
-                if (on && _turns.phase == TalkPhase.idle) unawaited(_turns.listen());
-              },
-              icon: Icon(
-                settings.handsFree ? Icons.all_inclusive_rounded : Icons.push_pin_outlined,
-                color: settings.handsFree ? Brand.primary : Brand.muted,
+            if (speaking)
+              TextButton.icon(
+                key: const Key('talk-interrupt'),
+                onPressed: () => unawaited(_turns.interrupt()),
+                icon: const Icon(Icons.front_hand_rounded),
+                label: const Text('Sözünü kes'),
               ),
-            ),
+            if (!widget.call && !listening && !speaking)
+              TextButton.icon(
+                key: const Key('talk-call'),
+                onPressed: _switchToCall,
+                icon: const Icon(Icons.call_rounded),
+                label: const Text('Telefonla konuş'),
+              ),
           ],
         ),
-        Text(
-          settings.handsFree ? 'Eller serbest: konuş, durunca gönderilir.' : 'Bas-konuş modu',
-          style: TextStyle(color: Brand.muted, fontSize: 12),
-        ),
-        if (!widget.call && !listening)
-          TextButton.icon(
-            key: const Key('talk-call'),
-            onPressed: _switchToCall,
-            icon: const Icon(Icons.call_rounded),
-            label: const Text('Telefonla konuş'),
-          ),
+        Text('Eller serbest: konuş, susunca gönderilir.', style: TextStyle(color: Brand.muted, fontSize: 12)),
         if (kDebugMode && _latencies.isNotEmpty)
           Text('gecikme: ${_latencies.last} ms', style: TextStyle(color: Brand.muted, fontSize: 11)),
       ],
@@ -605,7 +673,10 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       IconButton(
         key: const Key('talk-to-voice'),
         tooltip: 'Sesli konuş',
-        onPressed: () => setState(() => _typing = false),
+        onPressed: () async {
+          setState(() => _typing = false);
+          if (await _micReady()) unawaited(_turns.resume());
+        },
         icon: Icon(Icons.record_voice_over_rounded, color: Brand.primary),
       ),
       Expanded(
@@ -720,8 +791,8 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
                             TalkPhase.listening => 'Dinliyorum…',
                             TalkPhase.thinking => 'Düşünüyor…',
                             TalkPhase.speaking => 'Konuşuyor…',
-                            TalkPhase.muted => 'Sessizde',
-                            TalkPhase.idle => 'Konuşmak için mikrofona dokun',
+                            TalkPhase.muted => 'Dinleme duraklatıldı',
+                            TalkPhase.idle => _idleText,
                           },
                           key: const Key('call-status'),
                           style: const TextStyle(color: fg, fontSize: 17, fontWeight: FontWeight.w600),
@@ -737,14 +808,15 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
                             style: const TextStyle(color: Color(0xFFFFB4A8)),
                           ),
                         ),
+                      if (_micProblem != null) _micFixButton(fg),
                       const Spacer(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           _CallButton(
                             key: const Key('call-mute'),
-                            icon: _muted ? Icons.mic_off_rounded : Icons.mic_rounded,
-                            label: _muted ? 'Sesi aç' : 'Sessiz',
+                            icon: _muted ? Icons.voice_over_off_rounded : Icons.record_voice_over_rounded,
+                            label: _muted ? 'Devam et' : 'Duraklat',
                             active: _muted,
                             onTap: () {
                               setState(() => _muted = !_muted);
@@ -752,12 +824,12 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
                             },
                           ),
                           _CallButton(
-                            key: const Key('call-talk'),
-                            icon: Icons.record_voice_over_rounded,
-                            label: 'Konuş',
-                            onTap: _muted || _turns.phase == TalkPhase.thinking
-                                ? null
-                                : () => unawaited(_turns.tapMic()),
+                            key: const Key('call-interrupt'),
+                            icon: Icons.front_hand_rounded,
+                            label: 'Sözünü kes',
+                            onTap: _turns.phase == TalkPhase.speaking
+                                ? () => unawaited(_turns.interrupt())
+                                : null,
                           ),
                           _CallButton(
                             key: const Key('call-speaker'),
@@ -802,46 +874,43 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
   }
 }
 
-class _BigMic extends StatelessWidget {
-  const _BigMic({required this.phase, required this.onTap});
+/// The microphone's state, not a button: it pulses with the learner's
+/// voice while listening.
+class _ListenOrb extends StatelessWidget {
+  const _ListenOrb({required this.phase});
   final TalkPhase phase;
-  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final listening = phase == TalkPhase.listening;
     final speaking = phase == TalkPhase.speaking;
-    final color = listening ? Brand.error : (speaking ? Brand.accent : Brand.primary);
-    return ValueListenableBuilder<double>(
-      valueListenable: speechLevel,
-      builder: (context, level, _) => Semantics(
-        button: true,
-        label: listening ? 'Gönder' : (speaking ? 'Sözünü kes' : 'Konuş'),
-        child: InkResponse(
-          key: const Key('talk-mic'),
-          onTap: onTap,
-          radius: 48,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 120),
-            width: 76,
-            height: 76,
-            decoration: BoxDecoration(
-              color: onTap == null ? Brand.line : color,
-              shape: BoxShape.circle,
-              boxShadow: [
-                if (listening)
-                  BoxShadow(
-                    color: color.withValues(alpha: 0.35),
-                    blurRadius: 8 + 24 * level,
-                    spreadRadius: 2 + 10 * level,
-                  ),
-              ],
-            ),
-            child: Icon(
-              listening ? Icons.send_rounded : (speaking ? Icons.front_hand_rounded : Icons.mic_rounded),
-              color: Colors.white,
-              size: 34,
-            ),
+    final color = listening ? Brand.error : (speaking ? Brand.primary : Brand.line);
+    return ExcludeSemantics(
+      child: ValueListenableBuilder<double>(
+        valueListenable: speechLevel,
+        builder: (context, level, _) => AnimatedContainer(
+          key: const Key('talk-orb'),
+          duration: const Duration(milliseconds: 120),
+          width: 64,
+          height: 64,
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: listening ? 0.9 : 0.35),
+            shape: BoxShape.circle,
+            boxShadow: [
+              if (listening)
+                BoxShadow(
+                  color: color.withValues(alpha: 0.35),
+                  blurRadius: 8 + 24 * level,
+                  spreadRadius: 2 + 10 * level,
+                ),
+            ],
+          ),
+          child: Icon(
+            listening
+                ? Icons.hearing_rounded
+                : (speaking ? Icons.graphic_eq_rounded : Icons.more_horiz_rounded),
+            color: Colors.white,
+            size: 30,
           ),
         ),
       ),
@@ -911,7 +980,15 @@ class _CallButton extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           ExcludeSemantics(
-            child: Text(label, style: const TextStyle(color: Colors.white70, fontSize: 13)),
+            child: SizedBox(
+              width: 84,
+              child: Text(
+                label,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                style: const TextStyle(color: Colors.white70, fontSize: 13),
+              ),
+            ),
           ),
         ],
       ),
@@ -919,7 +996,7 @@ class _CallButton extends StatelessWidget {
   );
 }
 
-/// Ses ayarları: the partner's voice, hands-free, pause length, barge-in and
+/// Ses ayarları: the partner's voice, pause length, barge-in and
 /// the level the partner speaks at.
 Future<void> showVoiceSettingsSheet(BuildContext context, {Character? character}) =>
     showModalBottomSheet<void>(
@@ -973,14 +1050,6 @@ class VoiceSettingsSheet extends ConsumerWidget {
               ],
             ),
             const Divider(height: 24),
-            SwitchListTile(
-              key: const Key('voice-handsfree'),
-              contentPadding: EdgeInsets.zero,
-              title: const Text('Eller serbest'),
-              subtitle: const Text('Konuş, sustuğunda gönderilsin. Kapalıyken bas-konuş.'),
-              value: s.handsFree,
-              onChanged: n.setHandsFree,
-            ),
             SwitchListTile(
               key: const Key('voice-bargein'),
               contentPadding: EdgeInsets.zero,

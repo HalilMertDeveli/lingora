@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/progress.dart';
 import '../../data/rehearsal.dart';
+import '../../exercises/hands_free.dart' show ListeningIndicator, SayAgainButton;
+import '../../services/mic_access.dart';
 import '../../services/rehearsal_service.dart';
 import '../../services/speech.dart';
 import '../../services/voice_recorder.dart';
@@ -34,8 +37,13 @@ const recordingOffKey = 'prova_recording_off_v1';
 /// Pause before the recognizer is started again while recording.
 const listenRestartDelay = Duration(milliseconds: 400);
 
-/// Silent recognizer restarts allowed in a row before it is left off.
-const maxSilentRestarts = 5;
+/// Silent recognizer restarts allowed in a row before it is left off
+/// (nothing said at all: the learner is offered typing).
+const maxSilentRestarts = 3;
+
+/// Silent recognizer sessions after the learner has spoken that end the
+/// answer by themselves (each one is several seconds of silence).
+const answerEndsAfterSilences = 1;
 
 class RehearsalAnswerScreen extends ConsumerStatefulWidget {
   const RehearsalAnswerScreen({
@@ -94,6 +102,18 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
 
   /// Recognizer restarts in a row that heard nothing.
   int _silentRestarts = 0;
+
+  /// Silent sessions since the learner last spoke.
+  int _silentAfterSpeech = 0;
+
+  /// Nothing was heard after the automatic restarts: type or listen again.
+  bool _gaveUp = false;
+
+  /// The microphone permission is off for good: the settings button shows.
+  bool _micBlocked = false;
+
+  /// Guards the automatic start (question audio, then recording).
+  int _run = 0;
   bool _inFlight = false;
 
   /// Something would be lost by leaving now.
@@ -109,6 +129,11 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
       _answers.addAll(retry.answers);
       _analysing = true;
       WidgetsBinding.instance.addPostFrameCallback((_) => _analyse());
+    } else {
+      // Eller serbest: the question is read out, then recording starts.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _begin();
+      });
     }
   }
 
@@ -119,6 +144,7 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
   void dispose() {
     // Leaving while recording (back, app closed): the microphone must stop.
     // No ref here (the element is going away): the services were kept.
+    _run++;
     if (_recording) {
       _recorder.cancel();
       _speechService.stopListening();
@@ -127,18 +153,43 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
     super.dispose();
   }
 
-  Future<void> _toggleMic() async {
-    _silentRestarts = 0;
-    if (_recording) {
-      await _stop();
+  /// The learner's turn: the permission (asked once), the question read
+  /// aloud, then recording and recognition start by themselves.
+  Future<void> _begin({bool withQuestion = true}) async {
+    final id = ++_run;
+    if (_typing || _recording || _analysing) return;
+    setState(() {
+      _gaveUp = false;
+      _micBlocked = false;
+    });
+    final mic = ref.read(micAccessProvider);
+    var status = await mic.status();
+    if (status == MicStatus.denied) status = await mic.request();
+    if (!mounted || id != _run) return;
+    if (status != MicStatus.granted) {
+      setState(() {
+        _micBlocked = status == MicStatus.blocked;
+        _typing = true;
+      });
       return;
     }
+    if (withQuestion) {
+      await ref.read(linePlayerProvider).sayLine(_q.text);
+      if (!mounted || id != _run) return;
+    }
+    await _startRecording(id);
+  }
+
+  Future<void> _startRecording(int id) async {
+    _silentRestarts = 0;
+    _silentAfterSpeech = 0;
     final speech = ref.read(speechProvider);
     if (!await speech.canListen) {
       if (!mounted) return;
       setState(() => _typing = true);
       return;
     }
+    if (!mounted || id != _run || _recording || _typing) return;
     if (_audio != null || _text.text.trim().isNotEmpty) _retake();
     final recorded =
         !(ref.read(prefsProvider).getBool(recordingOffKey) ?? false) &&
@@ -147,6 +198,7 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
     setState(() {
       _recording = true;
       _listened = true;
+      _gaveUp = false;
       _audio = recorded ? '' : null;
       _heardBefore = _text.text.trim();
     });
@@ -163,6 +215,7 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
         if (!mounted) return;
         heard = true;
         _silentRestarts = 0;
+        _silentAfterSpeech = 0;
         setState(() => _text.text = [_heardBefore, w].where((s) => s.isNotEmpty).join(' '));
       },
       onDone: () {
@@ -172,7 +225,17 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
         // must not be restarted in a tight loop: wait a moment, and give up
         // after a few silent tries (the recording itself goes on and the
         // learner can type).
-        if (!heard && ++_silentRestarts > maxSilentRestarts) return;
+        if (!heard && _text.text.trim().isNotEmpty) {
+          // Spoke, then stayed quiet: the answer is complete.
+          if (++_silentAfterSpeech >= answerEndsAfterSilences) {
+            _stop();
+            return;
+          }
+        } else if (!heard && ++_silentRestarts > maxSilentRestarts) {
+          _stop();
+          setState(() => _gaveUp = true);
+          return;
+        }
         Future<void>.delayed(listenRestartDelay, () {
           if (mounted && _recording) _listen();
         });
@@ -241,14 +304,17 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
       ),
     );
     if (!_last) {
+      _run++;
       setState(() {
         _index++;
+        _gaveUp = false;
         _listened = false;
         _text.clear();
         _audio = null;
         _hint = false;
         _retakes = 0;
       });
+      if (!_typing) unawaited(_begin());
       return;
     }
     await _analyse();
@@ -338,6 +404,7 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
       ),
     );
     if (leave != true || !mounted) return;
+    _run++;
     if (_recording) await _stop();
     for (final path in [for (final a in _answers) a.audioPath, _audio]) {
       if (path == null || path.isEmpty) continue;
@@ -462,40 +529,24 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
               ],
               const SizedBox(height: 20),
               if (!_typing) ...[
-                Center(
-                  child: ValueListenableBuilder<double>(
-                    valueListenable: speechLevel,
-                    builder: (context, level, _) => GestureDetector(
-                      key: const Key('prova-mic'),
-                      onTap: _toggleMic,
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 120),
-                        width: 96 + (_recording ? level * 24 : 0),
-                        height: 96 + (_recording ? level * 24 : 0),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: _recording ? p.error : p.primary,
-                        ),
-                        child: Icon(
-                          _recording ? Icons.stop_rounded : Icons.mic_rounded,
-                          color: Colors.white,
-                          size: 44,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                if (_recording) const ListeningIndicator(),
                 const SizedBox(height: 8),
                 Center(
                   child: Text(
                     _recording
-                        ? 'Dinliyorum… bitince dur\'a bas.'
-                        : _audio != null
+                        ? 'Anlat; bitince birkaç saniye sus, cevabın kendiliğinden kaydedilir.'
+                        : _gaveUp
+                        ? 'Seni duyamadım. Soruyu tekrar dinleyebilir ya da yazarak cevaplayabilirsin.'
+                        : _audio != null || _text.text.trim().isNotEmpty
                         ? 'Kaydedildi. Metni kontrol et, gerekirse düzelt.'
-                        : 'Mikrofona dokun ve anlat.',
+                        : 'Soru okununca mikrofon kendiliğinden açılır.',
+                    key: const Key('prova-status'),
+                    textAlign: TextAlign.center,
                     style: TextStyle(color: p.muted),
                   ),
                 ),
+                if (_gaveUp && !_recording)
+                  SayAgainButton(label: 'Soruyu tekrar dinle', onPressed: () => _begin()),
                 ValueListenableBuilder<String?>(
                   valueListenable: speechIssue,
                   builder: (context, issue, _) => issue == null || !_listened
@@ -511,6 +562,25 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
                 ),
                 const SizedBox(height: 12),
               ],
+              if (_micBlocked)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Column(
+                    key: const Key('mic-blocked'),
+                    children: [
+                      Text(
+                        'Mikrofon izni kapalı. Sesle cevaplamak için Ayarlar > İzinler > Mikrofon bölümünden aç.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: p.muted),
+                      ),
+                      FilledButton.tonal(
+                        key: const Key('mic-settings'),
+                        onPressed: ref.read(micAccessProvider).openSettings,
+                        child: const Text('Ayarları aç'),
+                      ),
+                    ],
+                  ),
+                ),
               TextField(
                 key: const Key('prova-answer-field'),
                 controller: _text,
@@ -529,11 +599,13 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
                 children: [
                   TextButton.icon(
                     key: const Key('prova-type'),
-                    icon: Icon(_typing ? Icons.mic_rounded : Icons.keyboard_rounded),
+                    icon: Icon(_typing ? Icons.record_voice_over_rounded : Icons.keyboard_rounded),
                     label: Text(_typing ? 'Sesle cevapla' : 'Yazarak cevapla'),
                     onPressed: () async {
+                      _run++;
                       if (_recording) await _stop();
                       setState(() => _typing = !_typing);
+                      if (!_typing) await _begin(withQuestion: false);
                     },
                   ),
                   if (!_hint)
@@ -548,7 +620,10 @@ class _RehearsalAnswerScreenState extends ConsumerState<RehearsalAnswerScreen> {
                       key: const Key('prova-retake'),
                       icon: const Icon(Icons.restart_alt_rounded),
                       label: const Text('Baştan'),
-                      onPressed: _retake,
+                      onPressed: () {
+                        _retake();
+                        if (!_typing) _begin(withQuestion: false);
+                      },
                     ),
                 ],
               ),

@@ -13,6 +13,7 @@ import '../exercises/common.dart' show SpeakerButton;
 import '../exercises/hands_free.dart';
 import '../exercises/speak_mic.dart';
 import '../models/pronunciation.dart';
+import '../services/mic_access.dart';
 import '../services/speech.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
@@ -220,37 +221,45 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
   int _shake = 0;
 
   // Speaking.
-  bool _listening = false;
   bool _attempted = false;
-  bool _micUnavailable = false;
   String _heard = '';
   bool _passedThis = false;
   int _speakPassed = 0;
   List<SpeechGuess> _guesses = const [];
-  bool _noSpeech = false;
-  late final HandsFreeTurn _turn;
+  late final AutoListen _mic;
+
+  bool get _listening => _mic.listening;
+  bool get _micUnavailable => _mic.phase == ListenPhase.unavailable;
 
   @override
   void initState() {
     super.initState();
-    _turn = HandsFreeTurn(speech: _speech, player: ref.read(linePlayerProvider));
+    _mic = AutoListen(speech: _speech, player: ref.read(linePlayerProvider), mic: ref.read(micAccessProvider))
+      ..addListener(_micChanged);
+    // The permission dialog comes now, before the first "Söyle" step.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _mic.prepare();
+    });
+  }
+
+  void _micChanged() {
+    if (mounted) setState(() => _heard = _mic.words);
   }
 
   PronUnit get u => widget.unit;
-  bool get _handsFree => ref.read(handsFreeProvider);
   _Step get _step => _steps[_i];
   int get _listenTotal => u.pairs.length;
 
   @override
   void dispose() {
-    _turn.cancel();
-    if (_listening) _speech.stopListening();
+    _mic
+      ..removeListener(_micChanged)
+      ..dispose();
     super.dispose();
   }
 
   void _next() {
-    _turn.cancel();
-    if (_listening) _speech.stopListening();
+    _mic.cancel();
     if (_passedThis) _speakPassed++;
     if (_i + 1 >= _steps.length) {
       _finish();
@@ -259,54 +268,29 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
     setState(() {
       _i++;
       _picked = null;
-      _listening = false;
       _attempted = false;
       _heard = '';
       _passedThis = false;
       _guesses = const [];
-      _noSpeech = false;
     });
     // Hands-free: the word is read out, then the microphone opens.
-    if (_step.kind == _Kind.speak && _handsFree && !_micUnavailable) {
+    if (_step.kind == _Kind.speak && !_micUnavailable) {
       _autoListen(prompt: _step.target);
     } else if (_step.kind != _Kind.explain) {
       _speech.say(_step.target);
     }
   }
 
-  Future<void> _autoListen({String? prompt}) async {
-    setState(() {
-      _noSpeech = false;
-      _heard = '';
-    });
+  void _autoListen({String? prompt}) {
     final target = _step.target;
-    await _turn.run(
-      target: target,
-      prompt: prompt,
-      onListening: () {
-        if (mounted) setState(() => _listening = true);
-      },
-      onWords: (w) {
-        if (mounted) setState(() => _heard = w);
-      },
-      onDone: ({required bool noSpeech}) {
-        if (!mounted) return;
-        if (noSpeech) {
-          setState(() {
-            _listening = false;
-            _noSpeech = true;
-          });
-        } else {
-          _judge(target);
-        }
-      },
-    );
+    _mic.start(target: target, prompt: prompt, onHeard: (heard) => _judge(target, heard));
   }
 
-  void _judge(String target) {
-    final passed = coachMatch(target, _heard).passed;
+  void _judge(String target, String heard) {
+    if (!mounted) return;
+    final passed = coachMatch(target, heard).passed;
     setState(() {
-      _listening = false;
+      _heard = heard;
       _attempted = true;
       _guesses = lastRecognition.value;
       _passedThis = _passedThis || passed;
@@ -326,37 +310,6 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
       }
     });
     right ? Haptics.success() : Haptics.error();
-  }
-
-  Future<void> _toggleMic() async {
-    if (_listening) {
-      await _speech.stopListening();
-      return;
-    }
-    _turn.cancel();
-    if (!await _speech.canListen) {
-      if (mounted) setState(() => _micUnavailable = true);
-      return;
-    }
-    if (_handsFree) {
-      handsFreeMicRefused = false;
-      await _autoListen();
-      return;
-    }
-    setState(() {
-      _listening = true;
-      _heard = '';
-    });
-    final target = _step.target;
-    await _speech.listenTo(
-      target,
-      onWords: (w) {
-        if (mounted) setState(() => _heard = w);
-      },
-      onDone: () {
-        if (mounted) _judge(target);
-      },
-    );
   }
 
   void _finish() {
@@ -718,21 +671,14 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
           PopIn(
             child: _box(
               color: Brand.accent,
-              icon: Icons.mic_off_rounded,
+              icon: Icons.hearing_disabled_rounded,
               title: 'Mikrofon kullanılamıyor',
               text: 'Sorun değil: kelimeyi dinle, yüksek sesle birkaç kez tekrar et ve devam et.',
             ),
           )
         else ...[
-          Center(
-            child: MicButton(listening: _listening, color: _coachColor, onTap: _toggleMic),
-          ),
+          AutoListenStatus(listen: _mic, showWords: false, again: false),
           const SizedBox(height: 6),
-          if (_listening && _handsFree) ...[const ListeningIndicator(), const SizedBox(height: 6)],
-          if (_noSpeech && !_listening) ...[
-            NoSpeechHint(onRetry: () => _autoListen()),
-            const SizedBox(height: 6),
-          ],
           if (!_listening && match != null && match.heard.isNotEmpty) ...[
             SpokenWordsView(match: match),
             const SizedBox(height: 8),
@@ -745,12 +691,14 @@ class _PronunciationUnitScreenState extends ConsumerState<PronunciationUnitScree
           Text(
             _listening
                 ? (_heard.isEmpty ? 'Dinliyorum… Şimdi söyle.' : '“$_heard”')
-                : _attempted
-                ? (_heard.isEmpty ? '' : '“$_heard”')
-                : 'Mikrofona dokun ve söyle',
+                : (_attempted && _heard.isNotEmpty ? '“$_heard”' : ''),
             textAlign: TextAlign.center,
             style: TextStyle(color: Brand.muted, fontSize: 16),
           ),
+          if (!_listening && _mic.phase != ListenPhase.prompting) ...[
+            const SizedBox(height: 4),
+            SayAgainButton(onPressed: () => _autoListen(prompt: s.target)),
+          ],
         ],
         if (feedback != null) ...[
           const SizedBox(height: 16),
@@ -830,65 +778,63 @@ class PronunciationWordsScreen extends ConsumerStatefulWidget {
 class _PronunciationWordsScreenState extends ConsumerState<PronunciationWordsScreen> {
   late final SpeechService _speech = ref.read(speechProvider);
   late int _i = widget.initial.clamp(0, widget.words.length - 1);
-  bool _listening = false;
-  bool _micUnavailable = false;
   String _heard = '';
   SpokenMatch? _match;
+  late final AutoListen _mic;
 
+  bool get _listening => _mic.listening;
+  bool get _micUnavailable => _mic.phase == ListenPhase.unavailable;
   String get _word => widget.words[_i];
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _speech.say(_word));
+    _mic = AutoListen(speech: _speech, player: ref.read(linePlayerProvider), mic: ref.read(micAccessProvider))
+      ..addListener(_micChanged);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _listenFor();
+    });
+  }
+
+  void _micChanged() {
+    if (mounted) setState(() => _heard = _mic.words);
   }
 
   @override
   void dispose() {
-    if (_listening) _speech.stopListening();
+    _mic
+      ..removeListener(_micChanged)
+      ..dispose();
     super.dispose();
   }
 
-  void _go(int i) {
-    if (_listening) _speech.stopListening();
-    setState(() {
-      _i = i;
-      _listening = false;
-      _heard = '';
-      _match = null;
-    });
-    _speech.say(_word);
-  }
-
-  Future<void> _mic() async {
-    if (_listening) {
-      await _speech.stopListening();
-      return;
-    }
-    if (!await _speech.canListen) {
-      if (mounted) setState(() => _micUnavailable = true);
-      return;
-    }
-    setState(() {
-      _listening = true;
-      _heard = '';
-      _match = null;
-    });
-    await _speech.listenTo(
-      _word,
-      onWords: (w) {
-        if (mounted) setState(() => _heard = w);
-      },
-      onDone: () {
+  /// The word is read out, then the microphone opens by itself.
+  void _listenFor() {
+    final word = _word;
+    setState(() => _match = null);
+    _mic.start(
+      target: word,
+      prompt: word,
+      onHeard: (heard) {
         if (!mounted) return;
-        final m = coachMatch(_word, _heard);
+        final m = coachMatch(word, heard);
         setState(() {
-          _listening = false;
+          _heard = heard;
           _match = m;
         });
         m.passed ? Haptics.success() : Haptics.tap();
       },
     );
+  }
+
+  void _go(int i) {
+    _mic.cancel();
+    setState(() {
+      _i = i;
+      _heard = '';
+      _match = null;
+    });
+    _listenFor();
   }
 
   @override
@@ -917,21 +863,20 @@ class _PronunciationWordsScreenState extends ConsumerState<PronunciationWordsScr
             const SizedBox(height: 8),
             Center(child: SpeakerButton(text: _word)),
             const SizedBox(height: 20),
-            Center(
-              child: MicButton(listening: _listening, onTap: _mic, inkKey: const Key('drill-mic')),
-            ),
+            AutoListenStatus(listen: _mic, showWords: false),
             const SizedBox(height: 12),
             Text(
               _micUnavailable
                   ? 'Mikrofon kullanılamıyor. Kelimeyi dinleyip sesli tekrar edebilirsin.'
                   : _match == null && !_listening
-                  ? 'Mikrofona dokun ve kelimeyi söyle.'
+                  ? ''
                   : _listening
                   ? spokenStatus(listening: true, heard: _heard, match: null, issue: null, idle: '')
                   : speakFeedback(target: _word, heard: _heard),
               key: const Key('drill-feedback'),
               textAlign: TextAlign.center,
             ),
+            if (_match != null && !_listening) SayAgainButton(onPressed: _listenFor),
             if (unit != null) ...[
               const SizedBox(height: 24),
               OutlinedButton.icon(

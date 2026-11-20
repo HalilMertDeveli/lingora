@@ -22,12 +22,19 @@ import 'package:lingora/services/speech.dart';
 import 'premium_test.dart' show FakeBilling, now, prefsWith;
 
 /// A microphone that "hears" [heard] (the recognizer's guesses, favourite first).
+///
+/// Hands-free: the screens listen by themselves, so [heard] is said once
+/// (later turns hear silence). With [manual] the learner only speaks when
+/// the test calls [talk].
 class VoiceSpeech implements SpeechService {
-  VoiceSpeech({this.heard = const [], this.ready = true});
+  VoiceSpeech({this.heard = const [], this.ready = true, this.manual = false});
   List<SpeechGuess> heard;
   final bool ready;
+  final bool manual;
   final said = <String>[];
   int listens = 0;
+  void Function(String)? _words;
+  void Function()? _done;
 
   @override
   Future<void> say(String text, {String lang = 'en', bool slow = false, double rate = 1}) async =>
@@ -38,13 +45,37 @@ class VoiceSpeech implements SpeechService {
   Future<void> listen({required void Function(String) onWords, required void Function() onDone}) async {
     listens++;
     lastRecognition.value = const [];
-    if (heard.isNotEmpty) onWords(heard.first.words);
-    lastRecognition.value = heard;
+    if (manual) {
+      _words = onWords;
+      _done = onDone;
+      return;
+    }
+    _deliver(onWords, onDone);
+  }
+
+  void _deliver(void Function(String) onWords, void Function() onDone) {
+    final h = heard;
+    heard = const [];
+    if (h.isNotEmpty) onWords(h.first.words);
+    lastRecognition.value = h;
     onDone();
   }
 
+  /// [manual]: the learner says [heard] now (in the open listening turn).
+  void talk() {
+    final w = _words, d = _done;
+    _words = null;
+    _done = null;
+    if (w != null && d != null) _deliver(w, d);
+  }
+
   @override
-  Future<void> stopListening() async {}
+  Future<void> stopListening() async {
+    final d = _done;
+    _words = null;
+    _done = null;
+    d?.call();
+  }
 }
 
 class FakeChat implements ConversationService {
@@ -258,12 +289,10 @@ void main() {
       final chat = FakeChat();
       await tester.pumpWidget(chatApp(await overrides(tester, speech: speech, chat: chat)));
       await tester.pumpAndSettle();
-      expect(speech.said, [scenarioById('cafe').opening], reason: 'the opening is read aloud');
-      expect(find.byKey(const Key('voice-mic')), findsOneWidget);
+      expect(speech.said.first, scenarioById('cafe').opening, reason: 'the opening is read aloud');
+      // No microphone button: the microphone opened by itself after the opening.
+      expect(find.byIcon(Icons.mic_rounded), findsNothing);
       expect(find.byKey(const Key('chat-input')), findsNothing);
-
-      await tester.tap(find.byKey(const Key('voice-mic')));
-      await tester.pumpAndSettle();
       expect(chat.sent, hasLength(1));
       final mine = chat.sent.single.last;
       expect((mine.text, mine.fromUser, mine.spoken), ("I'd like a coffee", true, true));
@@ -273,8 +302,8 @@ void main() {
       expect(speech.said.last, 'Lovely. Anything to eat?');
     });
 
-    testWidgets('text fallback: type and send; dictation fixed by hand becomes evidence', (tester) async {
-      final speech = VoiceSpeech(heard: [(words: 'I have tree brothers', confidence: 0.5)]);
+    testWidgets('text fallback: type and send; back to voice listens by itself', (tester) async {
+      final speech = VoiceSpeech(heard: [(words: 'I have tree brothers', confidence: 0.5)], manual: true);
       final chat = FakeChat();
       await tester.pumpWidget(chatApp(await overrides(tester, speech: speech, chat: chat)));
       await tester.pumpAndSettle();
@@ -287,26 +316,20 @@ void main() {
       expect(chat.sent.last.last.spoken, isFalse);
       expect(chat.sent.last.last.evidence, isEmpty);
 
-      await tester.tap(find.byIcon(Icons.mic_rounded));
-      await tester.pumpAndSettle();
-      expect(chat.sent, hasLength(1), reason: 'in text mode dictation waits for the send button');
-      expect(find.text('I have tree brothers'), findsOneWidget);
-      await tester.enterText(find.byKey(const Key('chat-input')), 'I have three brothers');
-      await tester.tap(find.byKey(const Key('chat-send')));
-      await tester.pumpAndSettle();
-      expect(chat.sent.last.last.evidence, [
-        const WeakWordEvidence(word: 'three', heard: 'tree', confidence: 0.5),
-      ]);
-
+      expect(find.byIcon(Icons.mic_rounded), findsNothing, reason: 'no dictation button');
+      final before = speech.listens;
       await tester.tap(find.byKey(const Key('to-voice')));
+      await tester.pump();
+      await tester.pump();
+      expect(speech.listens, before + 1, reason: 'listening opens by itself');
+      speech.talk();
       await tester.pumpAndSettle();
-      expect(find.byKey(const Key('voice-mic')), findsOneWidget);
+      expect(chat.sent, hasLength(2));
+      expect(chat.sent.last.last.spoken, isTrue);
     });
 
     testWidgets('no microphone: falls back to typing', (tester) async {
       await tester.pumpWidget(chatApp(await overrides(tester, speech: VoiceSpeech(ready: false))));
-      await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('voice-mic')));
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('chat-input')), findsOneWidget);
       expect(find.text('Mikrofon kullanılamıyor; yazarak devam edebilirsin.'), findsOneWidget);
@@ -321,13 +344,11 @@ void main() {
       );
       await tester.pumpWidget(chatApp(o));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('voice-mic')));
-      await tester.pumpAndSettle();
       expect(find.text('Ücretsiz: bugün 2 mesajın kaldı'), findsOneWidget);
 
       final o2 = await overrides(
         tester,
-        speech: speech,
+        speech: VoiceSpeech(heard: [(words: 'Hello', confidence: 0.9)]),
         chat: FakeChat(
           error: const ConversationException(
             CallableConversationService.freeQuotaMessage,
@@ -335,9 +356,8 @@ void main() {
           ),
         ),
       );
+      await tester.pumpWidget(const SizedBox()); // a new chat, not the same screen
       await tester.pumpWidget(chatApp(o2, id: 'hotel_reception'));
-      await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('voice-mic')));
       await tester.pumpAndSettle();
       expect(find.byType(PaywallScreen), findsOneWidget);
       expect(find.text(freeTastePitch), findsOneWidget);
@@ -356,8 +376,6 @@ void main() {
       final report = FakeReport();
       await tester.pumpWidget(chatApp(await overrides(tester, speech: speech, report: report)));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('voice-mic')));
-      await tester.pumpAndSettle();
       await tester.tap(find.text('Bitir'));
       await tester.pumpAndSettle();
 
@@ -370,6 +388,8 @@ void main() {
       expect(find.textContaining('“tree” olarak anlaşıldı'), findsOneWidget);
       expect(find.textContaining('güven %41'), findsOneWidget);
 
+      // Saying it: the drill reads the word, then listens by itself.
+      speech.heard = [(words: 'three', confidence: 0.9)];
       await tester.tap(find.byKey(const Key('practise-all')));
       await tester.pumpAndSettle();
       expect(find.byType(PronunciationWordsScreen), findsOneWidget);
@@ -377,11 +397,7 @@ void main() {
       expect(tester.widget<Text>(find.byKey(const Key('drill-word'))).data, 'three');
       expect(speech.said.last, 'three');
       expect(find.byKey(const Key('drill-unit')), findsOneWidget, reason: 'three is in the th unit');
-
-      // Saying it: the target word is heard.
-      speech.heard = [(words: 'three', confidence: 0.9)];
-      await tester.tap(find.byKey(const Key('drill-mic')));
-      await tester.pumpAndSettle();
+      expect(find.byIcon(Icons.mic_rounded), findsNothing);
       expect(find.text('Harika! Çok net anlaşıldı.'), findsOneWidget);
     });
 

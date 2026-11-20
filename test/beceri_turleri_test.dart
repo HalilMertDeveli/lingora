@@ -478,9 +478,12 @@ void main() {
       await tester.pump();
       expect(find.text('3. Hemen ardından söyle'), findsOneWidget);
       final heard = speech.said.length;
+      expect(speech.said.last.$1, 'Would you like to come with us?', reason: 'step 3 plays, then listens');
+      await tester.pumpAndSettle();
       await tester.tap(find.byKey(const Key('shadow-replay')));
+      await tester.pumpAndSettle();
       expect(speech.said.length, heard + 1);
-      await tester.tap(find.byKey(const Key('shadow-mic')));
+      // No microphone button: it listened by itself after the audio.
       await tester.pumpAndSettle();
       await tester.tap(find.text('Kontrol et'));
       await tester.pumpAndSettle();
@@ -494,7 +497,7 @@ void main() {
       await tester.pump();
       await tester.tap(find.byKey(const Key('shadow-next')));
       await tester.pump();
-      await tester.tap(find.byKey(const Key('shadow-mic')));
+      // No microphone button: it listened by itself after the audio.
       await tester.pumpAndSettle();
       await tester.tap(find.text('Kontrol et'));
       await tester.pumpAndSettle();
