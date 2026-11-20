@@ -4,8 +4,15 @@ import 'learn_goal.dart';
 /// Paywall hero copy that follows the learner's goal ("Hedefin ne?").
 
 /// The value line under the hero, always shown without Premium.
-const paywallValueLine =
-    "Özel hoca saati 500 TL. Çenebaz'da her gün sınırsız konuşma, ayda bir ders fiyatına.";
+const paywallValueLine = "$paywallTutorAnchor. Çenebaz'da her gün sınırsız konuşma, ayda bir ders fiyatına.";
+
+/// The tutor-price comparison the value line and some feature pitches open
+/// with; the paywall shows it once.
+const paywallTutorAnchor = 'Özel hoca saati 500 TL';
+
+/// A pitch that already makes the tutor comparison replaces the value line.
+bool pitchReplacesValueLine(String? pitch) =>
+    pitch != null && pitch != paywallValueLine && pitch.startsWith(paywallTutorAnchor);
 
 /// Price anchor shown only while the store's real prices are not loaded
 /// (the buttons always use Google Play's prices).

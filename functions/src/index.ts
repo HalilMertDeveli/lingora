@@ -128,7 +128,12 @@ export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 
 let ttsClient: tts.TtsClient | undefined;
 /** Google Cloud TTS (Chirp 3 HD), or the silent fake inside the emulator with LINGORA_AI_STUB=1. */
 function textToSpeech(): tts.TtsClient {
-  ttsClient ??= stubClaudeEnabled() ? stubTts() : tts.googleTts();
+  const localQuota = tts.localTtsQuotaProject();
+  ttsClient ??= stubClaudeEnabled()
+    ? stubTts()
+    : localQuota
+      ? tts.localGcloudTts(localQuota)
+      : tts.googleTts();
   return ttsClient;
 }
 

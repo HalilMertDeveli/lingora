@@ -34,6 +34,12 @@ final billingServiceProvider = Provider<BillingService>((ref) {
 /// purchases before saying there was nothing to restore.
 const restoreSettle = Duration(seconds: 2);
 
+/// Restore tapped while Google Play can't be reached.
+const restoreUnavailableMessage =
+    "Google Play'e ulaşılamadığı için satın alımlar kontrol edilemedi. Play Store'da Google hesabınla "
+    'oturum açık olsun, internetini kontrol edip tekrar dene. Hesabınla giriş yaptıysan Premium\'un '
+    'zaten hesabında saklı.';
+
 /// Extra days the offline cache keeps Premium after a period ends, so a
 /// renewal that hasn't been re-confirmed yet doesn't lock the user out.
 const offlineGraceDays = 3;
@@ -221,6 +227,13 @@ class PremiumController extends Notifier<PremiumState> {
     _restoring = true;
     _restoredSomething = false;
     try {
+      // Without Play (no Google account, offline, sideloaded) the store can't
+      // re-deliver anything; "no subscription found" would wrongly alarm a
+      // subscriber.
+      if (!await _billing.isAvailable()) {
+        state = state.copyWith(busy: false, storeAvailable: false, message: () => restoreUnavailableMessage);
+        return;
+      }
       await _billing.restore();
       await Future<void>.delayed(restoreSettle);
       if (_restoring) {

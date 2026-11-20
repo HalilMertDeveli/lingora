@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/data/scenarios.dart';
 import 'package:lingora/screens/conversation_screen.dart';
+import 'package:lingora/screens/paywall_screen.dart' show freeItems;
 import 'package:lingora/services/billing/family.dart';
 import 'package:lingora/services/conversation.dart';
 import 'package:lingora/services/speech.dart';
@@ -69,6 +70,20 @@ void main() {
     expect(find.byKey(const Key('chat-input')), findsOneWidget);
     expect(find.byKey(const Key('mic-settings')), findsOneWidget);
     expect(find.textContaining('Mikrofon izni kapalı'), findsOneWidget);
+  });
+
+  test('free taste over: no "Bitir ile karneni" for a chat that never started', () {
+    // The phone's shared daily AI cap (or messages spent in another chat)
+    // can end the taste before the learner said anything here.
+    expect(freeTasteOverMessage(learnerSpoke: true), contains('karneni'));
+    expect(freeTasteOverMessage(learnerSpoke: false), isNot(contains('karne')));
+    expect(freeTasteOverMessage(learnerSpoke: false), contains('Premium'));
+  });
+
+  test('paywall free list: real AI messages, not "demo"', () {
+    final chat = freeItems.singleWhere((s) => s.startsWith('Sohbet'));
+    expect(chat, isNot(contains('demo')));
+    expect(chat, contains('$freeChatMessagesPerDay yapay zekâ mesajı'));
   });
 
   test('no connection is not reported as a busy server', () async {

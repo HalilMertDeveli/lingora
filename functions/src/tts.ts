@@ -72,6 +72,82 @@ export function googleTts(): TtsClient {
   };
 }
 
+/**
+ * Local QA only: the project whose TTS quota the emulator may use. The
+ * `demo-lingora` emulator has no credentials, so real voices need the
+ * developer's own gcloud login plus a quota project with the TTS API on.
+ * Never active in production: requires FUNCTIONS_EMULATOR=true (set only by the
+ * Firebase emulator) AND an explicit LINGORA_TTS_QUOTA_PROJECT opt-in.
+ */
+export function localTtsQuotaProject(env: NodeJS.ProcessEnv = process.env): string | undefined {
+  if (env.FUNCTIONS_EMULATOR !== "true") return undefined;
+  const project = env.LINGORA_TTS_QUOTA_PROJECT?.trim();
+  return project ? project : undefined;
+}
+
+/** `gcloud auth print-access-token` of the developer's own login (no credentials in the repo). */
+async function gcloudAccessToken(): Promise<string> {
+  const { exec } = await import("node:child_process");
+  return new Promise((resolve, reject) => {
+    // A fixed command (no user input); exec finds gcloud.cmd on Windows too.
+    exec("gcloud auth print-access-token", { timeout: 60_000 }, (err, out) => {
+      const token = String(out ?? "").trim();
+      if (err || !token) reject(err ?? new Error("tts: no gcloud token"));
+      else resolve(token);
+    });
+  });
+}
+
+/**
+ * Emulator-only Google TTS client: the developer's gcloud token, billed to
+ * [quotaProject] (`x-goog-user-project`). Tokens are reused for 45 minutes.
+ */
+export function localGcloudTts(
+  quotaProject: string,
+  token: () => Promise<string> = gcloudAccessToken,
+  fetchFn: typeof fetch = fetch,
+  clock: () => number = Date.now,
+): TtsClient {
+  // One gcloud call at a time: a reply's sentences are synthesized in
+  // parallel, and gcloud is slow (seconds) on a busy laptop.
+  let cached: { value: Promise<string>; at: number } | undefined;
+  const accessToken = () => {
+    if (!cached || clock() - cached.at > 45 * 60_000) {
+      const value = token();
+      cached = { value, at: clock() };
+      value.catch(() => {
+        if (cached?.value === value) cached = undefined; // try again next time
+      });
+    }
+    return cached.value;
+  };
+  return {
+    async warm() {
+      await accessToken();
+    },
+    async synthesize(req) {
+      const res = await fetchFn(TTS_URL, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${await accessToken()}`,
+          "x-goog-user-project": quotaProject,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          input: { text: req.text },
+          voice: { languageCode: req.languageCode, name: req.voiceName },
+          audioConfig: { audioEncoding: "MP3", ...(req.rate !== 1 ? { speakingRate: req.rate } : {}) },
+        }),
+        signal: AbortSignal.timeout(10_000),
+      });
+      if (!res.ok) throw new Error(`tts: http ${res.status}`);
+      const b64 = ((await res.json()) as { audioContent?: string }).audioContent;
+      if (!b64) throw new Error("tts: empty audio");
+      return Buffer.from(b64, "base64");
+    },
+  };
+}
+
 /** Speaking rate for a CEFR level: slower for beginners. */
 export function rateForLevel(level: string): number {
   return level === "A1" ? 0.85 : level === "A2" ? 0.92 : 1;

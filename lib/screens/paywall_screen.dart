@@ -61,7 +61,7 @@ const freeItems = [
   'Telaffuz puanı özeti ve kilometre taşı paylaşım kartı',
   'Sınav konu pratiği + günde $freeMockExamsPerDay mini deneme',
   'Günde $freeWhyWrongPerDay "Neden yanlış?" açıklaması',
-  'Sohbet senaryoları (demo modu)',
+  'Sohbet senaryoları: her gün 3 yapay zekâ mesajı ve konuşma karnesi',
   'Hata dedektörü ve en sık 3 hatan',
   'Hesapla bulut yedekleme ve cihazlar arası devam',
 ];
@@ -227,8 +227,11 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 const SizedBox(height: 10),
                 _Pitch(p, key: const ValueKey('paywall-pitch')),
               ],
-              const SizedBox(height: 10),
-              const _Pitch(paywallValueLine, key: ValueKey('paywall-value-line')),
+              // The voice pitch also opens with "Özel hoca saati 500 TL": once is enough.
+              if (!pitchReplacesValueLine(widget.pitch)) ...[
+                const SizedBox(height: 10),
+                const _Pitch(paywallValueLine, key: ValueKey('paywall-value-line')),
+              ],
             ],
             if (!premium)
               if (personalLine(whyWrongWeek(ref.watch(whyWrongQuotaProvider))) case final line?) ...[

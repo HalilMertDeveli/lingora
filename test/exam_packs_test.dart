@@ -244,6 +244,12 @@ void main() {
         expect(c.optionCount, bank.optionCount);
         // YDS: 20 YDS mocks + 3 YÖKDİL-format mocks (Faz 4c).
         expect(c.mocks, hasLength(pack == ExamPack.yds ? 23 : 4));
+        // The shop/paywall copy counts the mocks the pack really has (said "8" for 23).
+        expect(pack.summary, startsWith('${c.mocks.length} tam deneme'));
+        expect(
+          PremiumFeature.unlimitedMockExams.description,
+          contains(pack == ExamPack.yds ? 'YDS/YÖKDİL ${c.mocks.length}×' : 'LGS ${c.mocks.length}×'),
+        );
         expect(
           c.sections.map((s) => s.id).toSet(),
           pack == ExamPack.yds ? {...layout.keys, ...yokdilLayout.keys} : layout.keys.toSet(),
@@ -580,7 +586,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(family.redeemed, 'abcd-efgh');
       expect(find.textContaining('Premium açıldı'), findsOneWidget);
-      expect(find.textContaining('Ayşe aile planındasın'), findsOneWidget);
+      expect(find.textContaining('Ayşe adlı kişinin aile planındasın'), findsOneWidget);
       final c = ProviderScope.containerOf(tester.element(find.byType(FamilyScreen)));
       expect(c.read(premiumProvider), isTrue);
       expect(c.read(premiumControllerProvider).productId, PremiumPlan.familyYearly.id);
