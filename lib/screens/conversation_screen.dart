@@ -6,7 +6,6 @@ import '../core/tr_errors.dart';
 import '../data/app_settings.dart';
 import '../data/progress.dart';
 import '../data/scenarios.dart';
-import '../services/app_settings_link.dart';
 import '../services/billing/premium.dart';
 import '../services/conversation.dart';
 import '../services/speech.dart';
@@ -14,7 +13,8 @@ import '../services/growth/analytics.dart';
 import '../services/growth/remote_flags.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
-import '../exercises/speak_mic.dart';
+import '../exercises/hands_free.dart';
+import '../services/mic_access.dart';
 import '../ui/motion.dart';
 import 'conversation_report_screen.dart';
 import 'paywall_screen.dart';
@@ -213,19 +213,23 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
   ];
   final Set<int> _showTr = {};
   bool _waiting = false;
-  bool _listening = false;
   bool _done = false;
   String? _error;
 
   /// "Bitir" ran: XP is counted once and nothing is sent any more.
   bool _finished = false;
 
-  /// The microphone permission is missing: the error offers the settings.
-  bool _micDenied = false;
-
-  /// Voice coach: tap the mic, speak, the message goes by itself and the
-  /// reply is read aloud. Off = the text fallback (type, or dictate and edit).
+  /// Voice coach: the partner's line is read aloud, then the microphone
+  /// opens by itself; when the learner stops talking the message goes.
+  /// Off = the text fallback (type and send).
   bool _voice = true;
+  late final AutoListen _mic = AutoListen(
+    speech: _speech,
+    player: ref.read(linePlayerProvider),
+    mic: ref.read(micAccessProvider),
+    // Free speech: a longer pause before the turn ends.
+    silence: const Duration(milliseconds: 1600),
+  )..addListener(_micChanged);
 
   /// The recognizer's guesses for the text now in the input (null once typed over).
   List<SpeechGuess>? _guesses;
@@ -236,12 +240,51 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _speech.say(widget.scenario.opening));
+    WidgetsBinding.instance.addPostFrameCallback((_) => _partnerSays(widget.scenario.opening));
+  }
+
+  void _micChanged() {
+    if (!mounted) return;
+    setState(() {
+      final phase = _mic.phase;
+      // Back from the settings with the permission: voice again.
+      if (phase == ListenPhase.listening) _voice = true;
+      if (_voice && _mic.listening) _input.text = _mic.words;
+      // Cannot be heard: the text fallback, with the reason (and the
+      // permission notice above it).
+      if (_voice &&
+          const {ListenPhase.unavailable, ListenPhase.blocked, ListenPhase.denied}.contains(phase)) {
+        _voice = false;
+        if (phase == ListenPhase.unavailable) _error = 'Mikrofon kullanılamıyor; yazarak devam edebilirsin.';
+      }
+    });
+  }
+
+  /// The partner's line is read aloud; in voice mode the microphone opens
+  /// when it ends.
+  void _partnerSays(String line) {
+    if (_voice && !_finished && !_done) {
+      _mic.start(prompt: line, onHeard: _heardTurn);
+    } else {
+      _speech.say(line);
+    }
+  }
+
+  void _heardTurn(String words) {
+    if (!mounted || _finished) return;
+    final heard = lastRecognition.value;
+    setState(() {
+      _input.text = words.trim();
+      _guesses = heard.isEmpty ? [(words: _input.text, confidence: null)] : heard;
+    });
+    if (_input.text.isNotEmpty) _send();
   }
 
   @override
   void dispose() {
-    _speech.stopListening();
+    _mic
+      ..removeListener(_micChanged)
+      ..dispose();
     _input.dispose();
     _scroll.dispose();
     super.dispose();
@@ -274,7 +317,6 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       );
       _waiting = true;
       _error = null;
-      _micDenied = false;
     });
     _scrollDown();
     try {
@@ -291,7 +333,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       });
       turn.correction == null ? Haptics.success() : Haptics.tap();
       ref.read(progressProvider.notifier).recordTrErrors(detectTrErrors(text), text: text);
-      _speech.say(turn.reply);
+      _partnerSays(turn.reply);
     } on ConversationException catch (e) {
       if (!mounted) return;
       final failed = _messages.removeLast();
@@ -300,6 +342,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
         _guesses = failed.spoken ? guesses : null;
         _waiting = false;
         _error = e.message;
+        _voice = false; // the text stays in the input, ready to send again
         if (e.freeQuotaUsed) _freeLeft = 0;
       });
       if (e.freeQuotaUsed) await _freeTasteOver();
@@ -311,6 +354,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
         _input.text = text;
         _guesses = failed.spoken ? guesses : null;
         _waiting = false;
+        _voice = false;
         _error = CallableConversationService.messageForCode('internal');
       });
     }
@@ -320,6 +364,16 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
   /// The free daily taste is used up: the paywall, with the private-tutor
   /// comparison. After buying, the same message can simply be sent again.
   Future<void> _freeTasteOver() async {
+    if (ref.read(premiumProvider)) {
+      // Premium on this phone, but the server still counts a free user: say
+      // so instead of a silent loop.
+      setState(() {
+        _error =
+            'Bugünkü ücretsiz mesajlarını kullandın; Premium üyeliğin sunucuda henüz görünmüyor. '
+            'Biraz sonra tekrar dene ya da "Bitir" ile karneni al.';
+      });
+      return;
+    }
     final gate = await requirePremium(context, ref, PremiumFeature.aiConversation, pitch: freeTastePitch);
     if (!mounted) return;
     setState(() {
@@ -334,53 +388,9 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     });
   }
 
-  Future<void> _mic() async {
-    if (_listening) {
-      await _speech.stopListening();
-      return;
-    }
-    if (_waiting) return;
-    if (!await _speech.canListen) {
-      if (!mounted) return;
-      final denied = speechIssue.value == SpeechIssues.noMicPermission;
-      setState(() {
-        _voice = false; // the text fallback
-        _micDenied = denied;
-        _error = denied
-            ? 'Mikrofon izni kapalı. Ayarlardan açabilir ya da yazarak devam edebilirsin.'
-            : 'Mikrofon kullanılamıyor; yazarak devam edebilirsin.';
-      });
-      return;
-    }
-    // Voice mode starts fresh; in text mode dictation is added to what is typed.
-    final before = _voice ? '' : _input.text.trim();
-    setState(() {
-      _listening = true;
-      _error = null;
-      if (_voice) _input.clear();
-    });
-    await _speech.listen(
-      onWords: (w) {
-        if (mounted) setState(() => _input.text = before.isEmpty ? w : '$before $w');
-      },
-      onDone: () {
-        if (!mounted) return;
-        final heard = lastRecognition.value;
-        setState(() {
-          _listening = false;
-          // Evidence only when the whole input came from this recording.
-          _guesses = before.isNotEmpty || _input.text.trim().isEmpty
-              ? null
-              : (heard.isEmpty ? [(words: _input.text, confidence: null)] : heard);
-        });
-        if (_voice && !_finished && _input.text.trim().isNotEmpty) _send();
-      },
-    );
-  }
-
   void _finish() {
     if (_finished) return;
-    if (_listening) _speech.stopListening();
+    _mic.cancel();
     final userTurns = _messages.where((m) => m.fromUser).length;
     final corrections = _messages.where((m) => m.correction != null).length;
     if (userTurns == 0) {
@@ -432,14 +442,20 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     if (choice == 'finish' && !_waiting) {
       _finish();
     } else if (choice == 'leave') {
-      if (_listening) await _speech.stopListening();
+      _mic.cancel();
       _finished = true; // nothing is sent any more
       if (mounted) Navigator.of(context).pop();
     }
   }
 
+  /// The keyboard opened: keep the partner's last line in sight.
+  double _lastInset = 0;
+
   @override
   Widget build(BuildContext context) {
+    final inset = MediaQuery.viewInsetsOf(context).bottom;
+    if (inset > _lastInset) _scrollDown();
+    _lastInset = inset;
     final s = widget.scenario;
     // With the keyboard up (small phone, large text) the pinned goal would
     // leave no room for the input itself; it comes back when typing ends.
@@ -518,17 +534,13 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
                       Expanded(
                         child: Text(_error!, style: TextStyle(color: Brand.error)),
                       ),
-                      if (_micDenied)
-                        TextButton(
-                          key: const Key('mic-settings'),
-                          onPressed: () {
-                            setState(() => _micDenied = false);
-                            openAppSettings();
-                          },
-                          child: const Text('Ayarlar'),
-                        ),
                     ],
                   ),
+                ),
+              if (!_voice && const {ListenPhase.blocked, ListenPhase.denied}.contains(_mic.phase))
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  child: AutoListenStatus(listen: _mic),
                 ),
               Container(
                 padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
@@ -544,41 +556,30 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     );
   }
 
-  /// Voice mode: one big microphone; what is heard shows live above it.
+  /// Voice mode: no button to press. The microphone opens by itself after
+  /// the partner's line; what is heard shows live.
   Widget _voiceBar() => Column(
     mainAxisSize: MainAxisSize.min,
     children: [
-      ValueListenableBuilder<String?>(
-        valueListenable: speechIssue,
-        builder: (context, issue, _) => Text(
-          _listening
-              ? (_input.text.isEmpty ? 'Dinliyorum… İngilizce konuş.' : '“${_input.text}”')
-              : _waiting
-              ? 'Gönderildi, cevap bekleniyor…'
-              : issue ?? 'Mikrofona dokun ve İngilizce konuş. Cevabı sesli duyacaksın.',
+      if (_mic.phase != ListenPhase.idle && !_waiting) AutoListenStatus(listen: _mic, again: false),
+      if (_mic.phase == ListenPhase.idle || _waiting)
+        Text(
+          _waiting ? 'Gönderildi, cevap bekleniyor…' : 'Karşındaki konuşunca mikrofon kendiliğinden açılır.',
           key: const Key('voice-status'),
           textAlign: TextAlign.center,
-          style: TextStyle(color: _listening ? Brand.ink : Brand.muted),
+          style: TextStyle(color: Brand.muted),
         ),
-      ),
       const SizedBox(height: 6),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            key: const Key('to-text'),
-            tooltip: 'Yazarak konuş',
-            onPressed: _listening ? null : () => setState(() => _voice = false),
-            icon: const Icon(Icons.keyboard_alt_outlined),
-          ),
-          MicButton(
-            listening: _listening,
-            onTap: _waiting ? null : _mic,
-            size: 72,
-            inkKey: const Key('voice-mic'),
-          ),
-          const SizedBox(width: 48),
-        ],
+      Center(
+        child: TextButton.icon(
+          key: const Key('to-text'),
+          onPressed: () {
+            _mic.cancel();
+            setState(() => _voice = false);
+          },
+          icon: const Icon(Icons.keyboard_alt_outlined),
+          label: const Text('Yazarak cevapla'),
+        ),
       ),
     ],
   );
@@ -589,16 +590,16 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       IconButton(
         key: const Key('to-voice'),
         tooltip: 'Sesli konuş',
-        onPressed: _listening ? null : () => setState(() => _voice = true),
+        onPressed: _waiting
+            ? null
+            : () {
+                setState(() {
+                  _voice = true;
+                  _error = null;
+                });
+                _mic.start(onHeard: _heardTurn);
+              },
         icon: Icon(Icons.record_voice_over_rounded, color: Brand.primary),
-      ),
-      IconButton(
-        tooltip: _listening ? 'Dinlemeyi durdur' : 'Konuş',
-        onPressed: _mic,
-        icon: Icon(
-          _listening ? Icons.stop_circle_rounded : Icons.mic_rounded,
-          color: _listening ? Brand.error : Brand.primary,
-        ),
       ),
       Expanded(
         child: TextField(
@@ -658,7 +659,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
                   Padding(
                     padding: const EdgeInsets.only(right: 6, top: 2),
                     child: Icon(
-                      Icons.mic_none_rounded,
+                      Icons.graphic_eq_rounded,
                       size: 16,
                       color: Brand.onPrimary,
                       semanticLabel: 'sesli',

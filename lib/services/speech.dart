@@ -59,6 +59,27 @@ String? pickEnglishLocale(String wanted, List<String> available) {
   return null;
 }
 
+/// A voice chat switched Android's global audio mode to a call
+/// (IN_COMMUNICATION, set through audioplayers' AudioContext, which changes
+/// the AudioManager for the whole app). [restoreNormalAudioMode] puts it back.
+bool callAudioModeSet = false;
+
+/// Voice chats that use call audio right now (they keep the mode).
+int callAudioUsers = 0;
+
+/// Back to MODE_NORMAL after a voice chat, so the phone's speech recognizer
+/// and the lesson audio work as usual (Samsung kept the call mode).
+Future<void> restoreNormalAudioMode() async {
+  if (!callAudioModeSet) return;
+  callAudioModeSet = false;
+  if (kIsWeb || !Platform.isAndroid) return;
+  try {
+    await AudioPlayer.global.setAudioContext(AudioContext());
+  } catch (e) {
+    debugPrint('Audio mode reset failed: $e');
+  }
+}
+
 /// Turkish texts for [speechIssue].
 abstract final class SpeechIssues {
   static const noEngine =
@@ -75,6 +96,9 @@ abstract final class SpeechIssues {
       'Telefonunda İngilizce ses tanıma paketi yok gibi görünüyor. Google uygulamasını aç: profil resmin > '
       'Ayarlar > Google Asistan ya da Ses > Çevrimdışı konuşma tanıma bölümünden "English (US)" paketini indir.';
   static const busy = 'Ses tanıma şu an meşgul. Birkaç saniye sonra tekrar dene.';
+  static const server = 'Ses tanıma hizmeti şu an cevap vermedi. Tekrar dinliyorum.';
+  static const client = 'Ses tanıma bir an takıldı. Tekrar dinliyorum.';
+  static const audio = 'Mikrofon açılamadı; başka bir uygulama kullanıyor olabilir. Tekrar deniyorum.';
 
   /// Turkish text for a speech_to_text error code; unknown codes stay
   /// visible so a failure on a real phone can be reported.
@@ -84,6 +108,9 @@ abstract final class SpeechIssues {
     'error_permission' || 'error_insufficient_permissions' => noMicPermission,
     'error_language_not_supported' || 'error_language_unavailable' => noEnglishRecognizer,
     'error_busy' || 'error_recognizer_busy' || 'error_too_many_requests' => busy,
+    'error_server' => server,
+    'error_client' => client,
+    'error_audio' => audio,
     _ => 'Ses tanıma çalışmadı ($code). Tekrar dene.',
   };
   static const notHeardClearly = 'Tam anlayamadım. Biraz daha yavaş ve net söyleyip tekrar dene.';
@@ -126,6 +153,7 @@ class SpeechService {
     double rate = 1,
     double pitch = 1,
     bool wait = false,
+    Duration lead = Duration.zero,
   }) async {
     final id = ++_request;
     final locale = lang == 'tr' ? 'tr-TR' : englishLocale;
@@ -140,7 +168,9 @@ class SpeechService {
           final p = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
           await p.setSource(source);
           await p.setPlaybackRate(slow ? slowRecordingRate : rate.clamp(0.5, 1.5));
-          final heard = wait ? _ended(p) : null;
+          final heard = wait
+              ? _ended(p, lead: lead, rate: slow ? slowRecordingRate : rate.clamp(0.5, 1.5))
+              : null;
           await p.resume();
           await heard;
           return;
@@ -152,7 +182,7 @@ class SpeechService {
         if (id != _request) return; // a newer sentence was asked for meanwhile
         if (path != null) {
           final p = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
-          final heard = wait ? _ended(p) : null;
+          final heard = wait ? _ended(p, lead: lead * synthLeadShare) : null;
           await p.play(DeviceFileSource(path));
           await heard;
           return;
@@ -168,11 +198,38 @@ class SpeechService {
     }
   }
 
-  /// Completes when [p] finishes or is stopped (at most a minute later).
-  Future<void> _ended(AudioPlayer p) => p.onPlayerStateChanged
-      .firstWhere((s) => s == PlayerState.completed || s == PlayerState.stopped)
-      .timeout(const Duration(minutes: 1), onTimeout: () => PlayerState.stopped)
-      .then((_) {}, onError: (Object _) {});
+  /// Completes when [p] finishes or is stopped (at most a minute later), or
+  /// [lead] before the end of the file: a recording ends in a short silence
+  /// and the phone's recognizer needs about a quarter second to open the
+  /// microphone, so a listening turn can start while that silence plays.
+  Future<void> _ended(AudioPlayer p, {Duration lead = Duration.zero, num rate = 1}) {
+    final ended = p.onPlayerStateChanged
+        .firstWhere((s) => s == PlayerState.completed || s == PlayerState.stopped)
+        .timeout(const Duration(minutes: 1), onTimeout: () => PlayerState.stopped)
+        .then((_) {}, onError: (Object _) {});
+    if (lead <= Duration.zero) return ended;
+    final done = Completer<void>();
+    Timer? early;
+    StreamSubscription<Duration>? positions;
+    var timed = false;
+    void finish() {
+      early?.cancel();
+      unawaited(positions?.cancel());
+      if (!done.isCompleted) done.complete();
+    }
+
+    unawaited(ended.then((_) => finish()));
+    // Timed from the first real position, not from resume(): the phone's
+    // player starts a few hundred milliseconds after it is asked to.
+    positions = p.onPositionChanged.listen((pos) async {
+      if (timed || pos <= Duration.zero) return;
+      timed = true;
+      final total = await p.getDuration();
+      if (total == null || done.isCompleted) return;
+      early = Timer(earlyEnd(total, pos, rate: rate, lead: lead), finish);
+    }, onError: (Object _) {});
+    return done.future;
+  }
 
   Future<void> _stopVoice() async {
     try {
@@ -242,6 +299,12 @@ class SpeechService {
 
   // ---------------------------------------------------------------- listening
 
+  /// Recognizer errors worth one quiet new try right away (Samsung's
+  /// recognizer reports them now and then at the start).
+  static const _retryOnce = {'error_server', 'error_client'};
+  bool _retried = false;
+  void Function()? _retry;
+
   void Function()? _onDone;
   bool _heardSomething = false;
   Timer? _doneFallback;
@@ -305,6 +368,14 @@ class SpeechService {
 
   void _error(SpeechRecognitionError e) {
     debugPrint('Speech recognition error: ${e.errorMsg}');
+    final retry = _retry;
+    if (!_heardSomething && !_retried && retry != null && _retryOnce.contains(e.errorMsg)) {
+      _retried = true;
+      _doneFallback?.cancel();
+      _onDone = null; // the new try reports instead
+      Future<void>.delayed(const Duration(milliseconds: 300), retry);
+      return;
+    }
     final issue = SpeechIssues.forError(e.errorMsg, heardSomething: _heardSomething);
     // Words were heard before the error: judge them instead of hiding them.
     if (!(_heardSomething && e.errorMsg == 'error_no_match')) speechIssue.value = issue;
@@ -324,9 +395,19 @@ class SpeechService {
 
   /// Listens in English, reporting partial text, and calls [onDone] when
   /// recognition stops, also after an error or when nothing was heard.
-  Future<void> listen({required void Function(String words) onWords, required void Function() onDone}) async {
-    final target = _target;
+  Future<void> listen({required void Function(String words) onWords, required void Function() onDone}) {
+    _retried = false;
+    return _listen(_target, onWords: onWords, onDone: onDone);
+  }
+
+  Future<void> _listen(
+    String? target, {
+    required void Function(String words) onWords,
+    required void Function() onDone,
+  }) async {
     _target = null;
+    _retry = null;
+    if (callAudioUsers == 0) await restoreNormalAudioMode();
     if (!await canListen) {
       onDone();
       return;
@@ -337,6 +418,7 @@ class SpeechService {
     lastRecognition.value = const [];
     _finish(); // a previous session that never reported back
     _onDone = onDone;
+    _retry = () => _listen(target, onWords: onWords, onDone: onDone);
     final times = target == null
         ? (pause: const Duration(seconds: 4), total: const Duration(seconds: 20))
         : listenTimes(target.split(RegExp(r'\s+')).length);
@@ -384,6 +466,19 @@ class SpeechService {
     } catch (_) {}
     // Some recognizers never send "done" after a manual stop.
     Future<void>.delayed(const Duration(milliseconds: 1000), _finish);
+  }
+}
+
+/// The phone voice as a file, for a voice chat's own player.
+extension PhoneVoiceFile on SpeechService {
+  /// The phone voice's audio file for [text] (Android), so a voice chat can
+  /// play it on its own player (the earpiece in phone-call mode); null when
+  /// it cannot be written, and off Android.
+  Future<String?> lineFile(String text, {double rate = 1}) async {
+    if (kIsWeb || !Platform.isAndroid || runtimeType != SpeechService) return null;
+    final locale = SpeechService.englishLocale;
+    if (!await _hasVoice(locale)) return null;
+    return _synthesize(text, locale, 0.45 * rate, 1);
   }
 }
 
@@ -443,7 +538,30 @@ class TranscriptJoiner {
 /// completes when the line has been heard.
 abstract interface class LinePlayer {
   Future<void> sayLine(String text, {double rate = 1, double pitch = 1});
+
+  /// [sayLine] for a prompt the learner answers aloud right after: completes
+  /// [promptListenLead] before the recording's end, while its closing silence
+  /// plays, so the microphone is open when the voice stops.
+  Future<void> sayBeforeListening(String text, {double rate = 1});
   Future<void> stopLine();
+}
+
+/// How long before a prompt recording's end the listening turn starts. The
+/// bundled recordings end in 250 to 330 ms of silence, and the recognizer
+/// took about 250 ms from start to the first microphone bytes (QA, Galaxy
+/// M22): starting this early opens the microphone as the voice ends,
+/// instead of about 0.6 s later, without the app hearing its own voice.
+const promptListenLead = Duration(milliseconds: 250);
+
+/// The part of [promptListenLead] used for the phone engine's own audio
+/// files, whose closing silence is shorter than the recordings'.
+const synthLeadShare = 0.5;
+
+/// When to stop waiting for a file of [total] length that is at [pos]
+/// (played at [rate]): [lead] before its end, at once if that has passed.
+Duration earlyEnd(Duration total, Duration pos, {num rate = 1, required Duration lead}) {
+  final left = (total - pos) * (1 / (rate <= 0 ? 1 : rate)) - lead;
+  return left.isNegative ? Duration.zero : left;
 }
 
 /// Slow reading (the turtle button) on the phone's speech engine: about a
@@ -472,6 +590,9 @@ class _SpeechLines implements LinePlayer {
   Future<void> sayLine(String text, {double rate = 1, double pitch = 1}) =>
       _speech._speak(text, rate: rate, pitch: pitch, wait: true);
   @override
+  Future<void> sayBeforeListening(String text, {double rate = 1}) =>
+      _speech._speak(text, rate: rate, wait: true, lead: promptListenLead);
+  @override
   Future<void> stopLine() async {
     _speech._request++;
     await _speech._stopVoice();
@@ -483,6 +604,8 @@ class _SayLines implements LinePlayer {
   final SpeechService _speech;
   @override
   Future<void> sayLine(String text, {double rate = 1, double pitch = 1}) => _speech.say(text, rate: rate);
+  @override
+  Future<void> sayBeforeListening(String text, {double rate = 1}) => _speech.say(text, rate: rate);
   @override
   Future<void> stopLine() async {}
 }

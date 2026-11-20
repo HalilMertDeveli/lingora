@@ -16,9 +16,11 @@ import '../services/growth/analytics.dart';
 import '../theme.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
+import '../ui/tea_art.dart' show LanePainter;
 import '../ui/timeline.dart';
 import 'lesson_result_screen.dart';
 import 'lesson_screen.dart';
+import 'path_map.dart' show laneOffset, laneSwing;
 import 'notes_screen.dart' show TopicScreen;
 
 Future<List<GrammarLesson>> loadLessons(AssetBundle bundle) async {
@@ -60,14 +62,114 @@ const roleNames = {
   PartRole.other: '',
 };
 
-/// All lessons as a path from A1 to C1. Nothing is locked; the next
-/// unfinished lesson is highlighted.
-class GrammarPathScreen extends ConsumerWidget {
+/// Levels of the grammar path, in learning order.
+const grammarLevels = ['A1', 'A2', 'B1', 'B2', 'C1'];
+
+int _levelRank(String level) {
+  final i = grammarLevels.indexOf(level);
+  return i < 0 ? grammarLevels.length : i;
+}
+
+/// The lessons in learning order: by level (A1 → C1), keeping the file's
+/// order inside a level. The order is derived here; lessons.json is not
+/// reordered.
+List<GrammarLesson> orderedLessons(List<GrammarLesson> all) {
+  final indexed = all.indexed.toList()
+    ..sort((a, b) {
+      final byLevel = _levelRank(a.$2.level).compareTo(_levelRank(b.$2.level));
+      return byLevel != 0 ? byLevel : a.$1.compareTo(b.$1);
+    });
+  return [for (final (_, l) in indexed) l];
+}
+
+/// One level of the path ("A1 · Temeller") with its lessons in order.
+class GrammarLevelGroup {
+  const GrammarLevelGroup({required this.level, required this.title, required this.lessons});
+  final String level;
+  final String title;
+  final List<GrammarLesson> lessons;
+
+  int doneCount(Progress p) => lessons.where((l) => p.isDone(lessonNodeId(l))).length;
+}
+
+/// [ordered] lessons (see [orderedLessons]) grouped by level. The group is
+/// named after the level's own unit ("A1 · Temeller"), else the level.
+List<GrammarLevelGroup> grammarLevelGroups(List<GrammarLesson> ordered) {
+  final byLevel = <String, List<GrammarLesson>>{};
+  for (final l in ordered) {
+    byLevel.putIfAbsent(l.level, () => []).add(l);
+  }
+  return [
+    for (final MapEntry(key: level, value: lessons) in byLevel.entries)
+      GrammarLevelGroup(
+        level: level,
+        title: lessons.map((l) => l.unit).firstWhere((u) => u.startsWith(level), orElse: () => level),
+        lessons: lessons,
+      ),
+  ];
+}
+
+/// The first unfinished lesson in learning order, or null when all are done.
+GrammarLesson? nextGrammarLesson(List<GrammarLesson> ordered, Progress p) =>
+    ordered.where((l) => !p.isDone(lessonNodeId(l))).firstOrNull;
+
+/// The lesson to suggest after [lesson]: the next unfinished one further on,
+/// else the first unfinished one before it.
+GrammarLesson? lessonAfter(List<GrammarLesson> ordered, GrammarLesson lesson, Progress p) {
+  final i = ordered.indexWhere((l) => l.id == lesson.id);
+  bool open(GrammarLesson l) => l.id != lesson.id && !p.isDone(lessonNodeId(l));
+  return ordered.skip(i + 1).where(open).firstOrNull ?? ordered.take(max(0, i)).where(open).firstOrNull;
+}
+
+/// All lessons as a path from A1 to C1: numbered steps on a winding lane,
+/// one section per level with its progress. Nothing is locked; the next
+/// unfinished lesson is highlighted and the screen opens on it.
+class GrammarPathScreen extends ConsumerStatefulWidget {
   const GrammarPathScreen({super.key, required this.notes});
   final NotesBundle notes;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<GrammarPathScreen> createState() => _GrammarPathScreenState();
+}
+
+class _GrammarPathScreenState extends ConsumerState<GrammarPathScreen> {
+  final _nextKey = GlobalKey();
+  bool _scrolled = false;
+
+  /// The lesson just finished here: the "Sıradaki konu" card then says so
+  /// and suggests the step after it.
+  GrammarLesson? _justDone;
+
+  void _scrollToNext({bool animate = true}) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final ctx = _nextKey.currentContext;
+      if (ctx == null || !mounted) return;
+      Scrollable.ensureVisible(
+        ctx,
+        alignment: 0.35,
+        duration: animate ? const Duration(milliseconds: 350) : Duration.zero,
+      );
+    });
+  }
+
+  Future<void> _open(GrammarLesson lesson, List<GrammarLesson> ordered) async {
+    logEventFrom(context, AnalyticsEvent.featureUse(AppFeature.grammar));
+    final wasDone = ref.read(progressProvider).isDone(lessonNodeId(lesson));
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        fullscreenDialog: true,
+        builder: (_) => GrammarLessonScreen(lesson: lesson, notes: widget.notes),
+      ),
+    );
+    if (!mounted) return;
+    final p = ref.read(progressProvider);
+    if (wasDone || !p.isDone(lessonNodeId(lesson))) return;
+    setState(() => _justDone = lesson);
+    _scrollToNext();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final lessons = ref.watch(grammarLessonsProvider);
     final p = ref.watch(progressProvider);
     return Scaffold(
@@ -76,9 +178,18 @@ class GrammarPathScreen extends ConsumerWidget {
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Dersler yüklenemedi: $e')),
         data: (all) {
-          final done = all.where((l) => p.isDone(lessonNodeId(l))).length;
-          final next = all.indexWhere((l) => !p.isDone(lessonNodeId(l)));
-          final units = <String>{for (final l in all) l.unit}.toList();
+          final ordered = orderedLessons(all);
+          final groups = grammarLevelGroups(ordered);
+          final done = ordered.where((l) => p.isDone(lessonNodeId(l))).length;
+          final justDone = _justDone;
+          final next = justDone != null && p.isDone(lessonNodeId(justDone))
+              ? lessonAfter(ordered, justDone, p)
+              : nextGrammarLesson(ordered, p);
+          final stepOf = {for (final (i, l) in ordered.indexed) l.id: i + 1};
+          if (!_scrolled && next != null) {
+            _scrolled = true;
+            _scrollToNext(animate: false);
+          }
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
             children: [
@@ -99,7 +210,8 @@ class GrammarPathScreen extends ConsumerWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          'Ders notlarından hazırlanan, A1\'den C1\'e sıralı dersler.',
+                          'Ders notlarından hazırlanan, A1\'den C1\'e sıralı dersler. '
+                          'Sırayla ilerle; istediğin adımı yine de açabilirsin.',
                           style: TextStyle(color: Brand.muted, fontSize: 13),
                         ),
                       ],
@@ -107,25 +219,33 @@ class GrammarPathScreen extends ConsumerWidget {
                   ),
                 ],
               ),
-              for (final unit in units) ...[
+              if (next != null) ...[
+                const SizedBox(height: 14),
+                _ContinueCard(
+                  lesson: next,
+                  step: stepOf[next.id]!,
+                  justDone: justDone,
+                  onTap: () => _open(next, ordered),
+                ),
+              ],
+              for (final g in groups) ...[
                 const SizedBox(height: 18),
-                _UnitBanner(unit: unit, level: all.firstWhere((l) => l.unit == unit).level),
-                const SizedBox(height: 6),
-                for (final l in all.where((l) => l.unit == unit))
-                  _LessonTile(
-                    lesson: l,
-                    done: p.isDone(lessonNodeId(l)),
-                    isNext: next >= 0 && all[next].id == l.id,
-                    onTap: () {
-                      logEventFrom(context, AnalyticsEvent.featureUse(AppFeature.grammar));
-                      Navigator.of(context).push(
-                        MaterialPageRoute<void>(
-                          fullscreenDialog: true,
-                          builder: (_) => GrammarLessonScreen(lesson: l, notes: notes),
-                        ),
-                      );
-                    },
-                  ),
+                _UnitBanner(
+                  key: ValueKey('grammar-level-${g.level}'),
+                  unit: g.title,
+                  level: g.level,
+                  progress: '${g.doneCount(p)}/${g.lessons.length}',
+                ),
+                const SizedBox(height: 10),
+                _GrammarLane(
+                  lessons: g.lessons,
+                  level: g.level,
+                  stepOf: stepOf,
+                  isDone: (l) => p.isDone(lessonNodeId(l)),
+                  next: next,
+                  nextKey: _nextKey,
+                  onTap: (l) => _open(l, ordered),
+                ),
               ],
             ],
           );
@@ -135,85 +255,292 @@ class GrammarPathScreen extends ConsumerWidget {
   }
 }
 
+/// "Sıradaki konu": the next unfinished step, one tap away.
+class _ContinueCard extends StatelessWidget {
+  const _ContinueCard({required this.lesson, required this.step, required this.onTap, this.justDone});
+  final GrammarLesson lesson;
+  final int step;
+  final VoidCallback onTap;
+
+  /// The lesson just finished, if any: named above the suggestion.
+  final GrammarLesson? justDone;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = levelColor(lesson.level);
+    return TapCard(
+      key: const ValueKey('grammar-continue'),
+      selected: true,
+      color: c,
+      onTap: onTap,
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (justDone != null) ...[
+                  Text(
+                    '${justDone!.title} tamam!',
+                    key: const ValueKey('grammar-just-done'),
+                    style: TextStyle(color: Brand.muted, fontWeight: FontWeight.w700, fontSize: 13),
+                  ),
+                  const SizedBox(height: 2),
+                ],
+                Text(
+                  'SIRADAKİ KONU · ADIM $step',
+                  style: TextStyle(color: c, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1.1),
+                ),
+                const SizedBox(height: 2),
+                Text(lesson.title, style: Theme.of(context).textTheme.titleMedium),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Icon(Icons.play_circle_fill_rounded, color: c, size: 34),
+        ],
+      ),
+    );
+  }
+}
+
 class _UnitBanner extends StatelessWidget {
-  const _UnitBanner({required this.unit, required this.level});
+  const _UnitBanner({super.key, required this.unit, required this.level, required this.progress});
   final String unit;
   final String level;
+
+  /// "6/16": finished lessons of the level.
+  final String progress;
 
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     decoration: context.lingora.hero(_levelColors[level] ?? Brand.primary),
-    child: Text(
-      unit,
-      style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w900),
+    child: Row(
+      children: [
+        Expanded(
+          child: Text(
+            unit,
+            style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w900),
+          ),
+        ),
+        Text(
+          progress,
+          key: ValueKey('grammar-level-progress-$level'),
+          style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w900),
+        ),
+      ],
     ),
   );
 }
 
-class _LessonTile extends StatelessWidget {
-  const _LessonTile({required this.lesson, required this.done, required this.isNext, required this.onTap});
-  final GrammarLesson lesson;
-  final bool done;
-  final bool isNext;
-  final VoidCallback onTap;
+/// The lessons of one level as numbered steps on a winding lane (the same
+/// S-curve as the learning path). A lesson from another unit of the level
+/// ("Çeviri Atölyesi") gets a small label over its first step.
+class _GrammarLane extends StatelessWidget {
+  const _GrammarLane({
+    required this.lessons,
+    required this.level,
+    required this.stepOf,
+    required this.isDone,
+    required this.next,
+    required this.nextKey,
+    required this.onTap,
+  });
+
+  final List<GrammarLesson> lessons;
+  final String level;
+  final Map<String, int> stepOf;
+  final bool Function(GrammarLesson) isDone;
+  final GrammarLesson? next;
+  final GlobalKey nextKey;
+  final void Function(GrammarLesson) onTap;
+
+  static const _node = 60.0;
+  static const _colWidth = 170.0;
 
   @override
   Widget build(BuildContext context) {
-    final c = levelColor(lesson.level);
-    return Padding(
-      padding: const EdgeInsets.only(top: 8),
-      child: TapCard(
-        selected: isNext,
-        color: c,
-        onTap: onTap,
-        child: Row(
-          children: [
-            Pulse(
-              enabled: isNext,
-              child: Container(
-                width: 46,
-                height: 46,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: done ? Brand.success : c.withValues(alpha: 0.12),
-                  shape: BoxShape.circle,
-                ),
-                child: done
-                    ? Icon(Icons.check_rounded, color: onColor(Brand.success))
-                    : context.isKid
-                    ? Text(lesson.emoji, style: const TextStyle(fontSize: 22))
-                    : Text(
-                        lesson.level,
-                        style: TextStyle(color: c, fontWeight: FontWeight.w700, fontSize: 13),
-                      ),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    final c = levelColor(level);
+    final p = context.palette;
+    final scaler = MediaQuery.textScalerOf(context);
+    final titleRoom = scaler.scale(13) * 1.4 * 2 + 6;
+    final tagRoom = scaler.scale(11) * 1.4 + 14;
+    return LayoutBuilder(
+      builder: (context, box) {
+        final w = box.maxWidth;
+        final swing = laneSwing(w);
+        final centres = <Offset>[];
+        final rows = <Widget>[];
+        var y = 0.0;
+        for (final (i, l) in lessons.indexed) {
+          final done = isDone(l);
+          final isNext = next?.id == l.id;
+          final newUnit = i > 0 && l.unit != lessons[i - 1].unit;
+          final label = newUnit ? tagRoom : 0.0;
+          final above = isNext ? tagRoom : 0.0;
+          final height = label + above + _node + titleRoom + 10;
+          final dx = laneOffset(i, mirror: _levelRank(level).isOdd) * swing;
+          final left = (w / 2 + dx - _colWidth / 2).clamp(0.0, max(0.0, w - _colWidth)).toDouble();
+          centres.add(Offset(w / 2 + dx, y + label + above + _node / 2));
+          y += height;
+          rows.add(
+            SizedBox(
+              key: isNext ? nextKey : null,
+              height: height,
+              child: Stack(
+                clipBehavior: Clip.none,
                 children: [
-                  Text(lesson.title, style: Theme.of(context).textTheme.titleMedium),
-                  Text(
-                    lesson.summary,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Brand.muted, fontSize: 13),
+                  if (newUnit)
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      top: 0,
+                      child: Text(
+                        l.unit,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: c, fontWeight: FontWeight.w900, fontSize: 12),
+                      ),
+                    ),
+                  Positioned(
+                    left: left,
+                    width: _colWidth,
+                    top: label,
+                    child: Column(
+                      children: [
+                        if (isNext)
+                          Container(
+                            height: tagRoom - 6,
+                            margin: const EdgeInsets.only(bottom: 6),
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                            decoration: BoxDecoration(color: c, borderRadius: BorderRadius.circular(10)),
+                            child: Text(
+                              'SIRADAKİ',
+                              style: TextStyle(color: onColor(c), fontWeight: FontWeight.w900, fontSize: 11),
+                            ),
+                          ),
+                        _StepNode(
+                          lesson: l,
+                          step: stepOf[l.id]!,
+                          done: done,
+                          isNext: isNext,
+                          color: c,
+                          size: _node,
+                          onTap: () => onTap(l),
+                        ),
+                        const SizedBox(height: 4),
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          excludeFromSemantics: true,
+                          onTap: () => onTap(l),
+                          child: ExcludeSemantics(
+                            // On the page colour, so the lane does not run through the words.
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                              decoration: BoxDecoration(
+                                color: Brand.background,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                l.title,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: isNext ? FontWeight.w800 : FontWeight.w600,
+                                  color: isNext ? c : Brand.ink,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-            if (isNext)
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                decoration: BoxDecoration(color: c, borderRadius: BorderRadius.circular(10)),
-                child: Text(
-                  'SIRADAKİ',
-                  style: TextStyle(color: onColor(c), fontWeight: FontWeight.w900, fontSize: 11),
+          );
+        }
+        return Stack(
+          children: [
+            Positioned.fill(
+              child: CustomPaint(
+                painter: LanePainter(
+                  points: centres,
+                  lane: Color.alphaBlend(c.withValues(alpha: p.isDark ? 0.12 : 0.08), p.surface),
+                  dash: c.withValues(alpha: 0.45),
                 ),
               ),
+            ),
+            Column(children: rows),
           ],
+        );
+      },
+    );
+  }
+}
+
+/// One step of the grammar path: the step number in a circle (the lesson's
+/// emoji in kid mode), a check when done, filled when it is next.
+class _StepNode extends StatelessWidget {
+  const _StepNode({
+    required this.lesson,
+    required this.step,
+    required this.done,
+    required this.isNext,
+    required this.color,
+    required this.size,
+    required this.onTap,
+  });
+
+  final GrammarLesson lesson;
+  final int step;
+  final bool done;
+  final bool isNext;
+  final Color color;
+  final double size;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = color;
+    final fill = done
+        ? Brand.success
+        : (isNext ? c : Color.alphaBlend(c.withValues(alpha: 0.12), Brand.card));
+    final fg = done || isNext ? onColor(fill) : c;
+    return Semantics(
+      button: true,
+      label: 'Adım $step: ${lesson.title}',
+      value: done ? 'Bitti' : (isNext ? 'Sıradaki' : null),
+      child: JellyPress(
+        amount: 0.8,
+        onTap: onTap,
+        child: Pulse(
+          enabled: isNext,
+          child: Container(
+            key: ValueKey('grammar-step-${lesson.id}'),
+            width: size,
+            height: size,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: fill,
+              shape: BoxShape.circle,
+              border: Border.all(color: isNext ? Brand.card : c.withValues(alpha: 0.35), width: 3),
+              boxShadow: isNext ? [BoxShadow(color: c.withValues(alpha: 0.35), blurRadius: 14)] : null,
+            ),
+            child: done
+                ? Icon(Icons.check_rounded, color: fg, size: 30)
+                : context.isKid
+                ? Text(lesson.emoji, style: const TextStyle(fontSize: 24))
+                : ExcludeSemantics(
+                    child: Text(
+                      '$step',
+                      style: TextStyle(color: fg, fontWeight: FontWeight.w900, fontSize: 18),
+                    ),
+                  ),
+          ),
         ),
       ),
     );

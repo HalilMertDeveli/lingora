@@ -58,9 +58,15 @@ class SpeechTurnListener implements TurnListener {
 /// the phone's echo canceller knows what is being played and removes it from
 /// the barge-in microphone.
 class AudioVoiceOut implements VoiceOut {
-  AudioVoiceOut(this._lines, {this._earpiece = false, this._communication = true});
+  AudioVoiceOut(this._lines, {this._earpiece = false, this._communication = true, this.phoneVoiceFile});
 
   final LinePlayer _lines;
+
+  /// Writes the phone voice's audio for a text-only sentence (free users get
+  /// no neural audio), so it plays on this player too: in phone-call mode
+  /// that is the earpiece, and the speaker switch works.
+  final Future<String?> Function(String text, double rate)? phoneVoiceFile;
+  bool _callUser = false;
   bool _earpiece;
   bool _communication;
   AudioPlayer? _player;
@@ -69,13 +75,27 @@ class AudioVoiceOut implements VoiceOut {
   Completer<void>? _playing;
 
   bool get earpiece => _earpiece;
+  bool get _callMode => _communication || _earpiece;
 
   /// Switches between the earpiece and the loudspeaker (phone-call mode).
   Future<void> setRoute({required bool earpiece, bool? communication}) async {
     _earpiece = earpiece;
     _communication = communication ?? _communication;
     final p = _player;
-    if (p != null) await p.setAudioContext(_context());
+    if (p != null) await _apply(p);
+  }
+
+  /// Sets the player's audio context; a call context changes Android's
+  /// global audio mode, which [dispose] puts back.
+  Future<void> _apply(AudioPlayer p) async {
+    if (_callMode) {
+      callAudioModeSet = true;
+      if (!_callUser) {
+        _callUser = true;
+        callAudioUsers++;
+      }
+    }
+    await p.setAudioContext(_context());
   }
 
   AudioContext _context() => AudioContext(
@@ -97,15 +117,24 @@ class AudioVoiceOut implements VoiceOut {
     final existing = _player;
     if (existing != null) return existing;
     final p = AudioPlayer()..setReleaseMode(ReleaseMode.stop);
-    await p.setAudioContext(_context());
+    await _apply(p);
     return _player = p;
   }
 
   @override
   Future<void> play(SpokenSentence s) async {
     final audio = s.audio;
-    if (audio == null || kIsWeb) {
+    if (kIsWeb) {
       await _lines.sayLine(s.text, rate: s.rate);
+      return;
+    }
+    if (audio == null) {
+      final file = _callMode ? await phoneVoiceFile?.call(s.text, s.rate) : null;
+      if (file == null) {
+        await _lines.sayLine(s.text, rate: s.rate);
+      } else {
+        await _playFile(DeviceFileSource(file), s);
+      }
       return;
     }
     try {
@@ -115,15 +144,25 @@ class AudioVoiceOut implements VoiceOut {
       // A few rotating files: the player reads one while the next is written.
       final file = File('${dir.path}/s${_file++ % 6}.mp3');
       await file.writeAsBytes(audio, flush: true);
+      await _playFile(DeviceFileSource(file.path), s, player: p);
+    } catch (e) {
+      debugPrint('Neural voice failed, phone voice instead: $e');
+      await _lines.sayLine(s.text, rate: s.rate);
+    }
+  }
+
+  Future<void> _playFile(Source source, SpokenSentence s, {AudioPlayer? player}) async {
+    try {
+      final p = player ?? await _ensurePlayer();
       final done = _playing = Completer<void>();
       final sub = p.onPlayerStateChanged.listen((st) {
         if ((st == PlayerState.completed || st == PlayerState.stopped) && !done.isCompleted) done.complete();
       });
-      await p.play(DeviceFileSource(file.path));
+      await p.play(source);
       await done.future.timeout(const Duration(seconds: 40), onTimeout: () {});
       await sub.cancel();
     } catch (e) {
-      debugPrint('Neural voice failed, phone voice instead: $e');
+      debugPrint('Voice chat playback failed, phone voice instead: $e');
       await _lines.sayLine(s.text, rate: s.rate);
     }
   }
@@ -138,10 +177,23 @@ class AudioVoiceOut implements VoiceOut {
     await _lines.stopLine();
   }
 
+  /// Ends the chat's audio: the player goes and Android's audio mode goes
+  /// back to normal (a call context is global and would otherwise stay).
   Future<void> dispose() async {
     await stop();
-    await _player?.dispose();
+    final p = _player;
     _player = null;
+    if (p != null) {
+      try {
+        if (_callMode) await p.setAudioContext(AudioContext());
+      } catch (_) {}
+      await p.dispose();
+    }
+    if (_callUser) {
+      _callUser = false;
+      callAudioUsers--;
+    }
+    if (callAudioUsers == 0) await restoreNormalAudioMode();
   }
 }
 
@@ -200,6 +252,24 @@ double pcmDbfs(Uint8List bytes) {
 
 /// Barge-in on Android/iOS: an echo-cancelled, noise-suppressed microphone
 /// stream (voice-communication source) runs only while the partner speaks.
+/// The barge-in microphone: echo-cancelled voice-call input, and no audio
+/// focus (see [RecordBargeIn]).
+const bargeInRecordConfig = RecordConfig(
+  encoder: AudioEncoder.pcm16bits,
+  sampleRate: 16000,
+  numChannels: 1,
+  echoCancel: true,
+  noiseSuppress: true,
+  // No audio focus: taking it paused the partner's voice a quarter
+  // second in, and the turn waited for an end that never came (QA,
+  // Galaxy M22: the greeting stopped, "Konuşuyor…" for 28 s).
+  audioInterruption: AudioInterruptionMode.none,
+  androidConfig: AndroidRecordConfig(
+    audioSource: AndroidAudioSource.voiceCommunication,
+    manageBluetooth: false,
+  ),
+);
+
 class RecordBargeIn implements BargeInDetector {
   AudioRecorder? _rec;
   StreamSubscription<Uint8List>? _sub;
@@ -211,19 +281,7 @@ class RecordBargeIn implements BargeInDetector {
     final rec = _rec = AudioRecorder();
     try {
       if (!await rec.hasPermission(request: false)) return;
-      final stream = await rec.startStream(
-        const RecordConfig(
-          encoder: AudioEncoder.pcm16bits,
-          sampleRate: 16000,
-          numChannels: 1,
-          echoCancel: true,
-          noiseSuppress: true,
-          androidConfig: AndroidRecordConfig(
-            audioSource: AndroidAudioSource.voiceCommunication,
-            manageBluetooth: false,
-          ),
-        ),
-      );
+      final stream = await rec.startStream(bargeInRecordConfig);
       final vad = BargeInVad();
       _fired = false;
       _sub = stream.listen((chunk) {

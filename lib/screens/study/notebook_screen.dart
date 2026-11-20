@@ -6,6 +6,13 @@ import '../../data/practice.dart';
 import '../../data/progress.dart';
 import '../../models/course.dart';
 import '../../study/analysis.dart';
+import '../../data/option_glosses.dart';
+import '../../services/billing/premium.dart';
+import '../../services/explain_more.dart';
+import '../../data/mistake_card.dart';
+import '../../study/answer_recorder.dart' show nodeOfKey;
+import '../../study/mistake_cards.dart' show filledSentence;
+import '../../study/mistake_diagnosis.dart';
 import '../../study/mistake_reasons.dart';
 import '../../study/mixed_review.dart';
 import '../../study/question_types.dart';
@@ -13,6 +20,7 @@ import '../../study/review_queue.dart';
 import '../../study/year_plan.dart';
 import '../../study/study_state.dart';
 import '../../theme.dart';
+import '../../ui/mistake_inspect.dart';
 import '../lesson_screen.dart';
 import '../topic_guide.dart';
 import 'methods_screen.dart';
@@ -40,6 +48,13 @@ class NotebookScreen extends ConsumerWidget {
     final untagged = all.where((it) => !p.mistakeReason.containsKey(it.key)).toList();
     final tagged = all.where((it) => p.mistakeReason.containsKey(it.key)).toList();
     final due = mistakeItems(course, p.mistakesDue(today), limit: 20);
+    // How many notebook questions share each kind of mistake.
+    final kindCounts = <MistakeKind, int>{};
+    for (final it in all) {
+      final unit = unitOfItem(course, it.key);
+      final d = diagnoseMistake(it.ex, unitId: unit?.id);
+      if (d != null) kindCounts[d.kind] = (kindCounts[d.kind] ?? 0) + 1;
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Hata defteri'),
@@ -55,6 +70,8 @@ class NotebookScreen extends ConsumerWidget {
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
         children: [
           _Analysis(log: log, course: course),
+          const SizedBox(height: 12),
+          _WeekKinds(log: log, today: ref.watch(clockProvider)()),
           const SizedBox(height: 12),
           FilledButton.icon(
             key: const Key('notebook-due'),
@@ -89,12 +106,12 @@ class NotebookScreen extends ConsumerWidget {
               style: TextStyle(color: Brand.muted, fontSize: 13),
             ),
             const SizedBox(height: 8),
-            for (final it in untagged) _MistakeCard(item: it, course: course),
+            for (final it in untagged) _MistakeCard(item: it, course: course, sameKind: kindCounts),
             if (tagged.isNotEmpty) ...[
               const SizedBox(height: 8),
               SectionLabel('ETİKETLENENLER (${tagged.length})'),
               const SizedBox(height: 8),
-              for (final it in tagged) _MistakeCard(item: it, course: course),
+              for (final it in tagged) _MistakeCard(item: it, course: course, sameKind: kindCounts),
             ],
           ],
           const SizedBox(height: 8),
@@ -222,10 +239,142 @@ class _Analysis extends ConsumerWidget {
   }
 }
 
+/// "Neden yanlış?" on a notebook card: the kind of mistake the app found and
+/// the reason (the learner's own option's reason with Premium, the rule for
+/// the kind otherwise), then why the right option fits.
+class _WhyBox extends StatelessWidget {
+  const _WhyBox({required this.diagnosis, required this.premium});
+  final MistakeDiagnosis diagnosis;
+  final bool premium;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.palette;
+    final d = diagnosis;
+    final right = d.rightWhy;
+    return Container(
+      key: const Key('mistake-why'),
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: p.card.withValues(alpha: 0.7),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: p.line),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Hata türü: ',
+                  style: TextStyle(color: p.muted, fontWeight: FontWeight.w700),
+                ),
+                TextSpan(
+                  text: d.kind.label,
+                  style: TextStyle(color: p.primary, fontWeight: FontWeight.w900),
+                ),
+              ],
+            ),
+            key: const Key('mistake-kind'),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            premium ? d.reason : d.kind.rule,
+            key: const Key('mistake-reason'),
+            style: TextStyle(color: p.ink, height: 1.35),
+          ),
+          if (right != null && right.trim().isNotEmpty) ...[
+            const SizedBox(height: 4),
+            Text(
+              right,
+              style: TextStyle(color: p.ink, height: 1.35, fontWeight: FontWeight.w600),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+const _months = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
+
+/// "20 Kas" for `2026-11-20`.
+String _dayLabel(String day) {
+  final d = DateTime.tryParse(day);
+  return d == null ? day : '${d.day} ${_months[d.month - 1]}';
+}
+
+/// Top of the notebook: this week's wrong answers by kind of mistake, most
+/// frequent first, and the change from the week before.
+class _WeekKinds extends StatelessWidget {
+  const _WeekKinds({required this.log, required this.today});
+  final List<AnswerLog> log;
+  final DateTime today;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.palette;
+    final weekStart = dayKey(today.subtract(const Duration(days: 6)));
+    final lastStart = dayKey(today.subtract(const Duration(days: 13)));
+    final week = <MistakeKind, int>{};
+    var last = 0;
+    for (final a in log) {
+      if (a.correct) continue;
+      final t = QType.byName(a.type);
+      if (t == null) continue;
+      if (a.day.compareTo(weekStart) >= 0) {
+        final k = MistakeKind.of(t);
+        week[k] = (week[k] ?? 0) + 1;
+      } else if (a.day.compareTo(lastStart) >= 0) {
+        last++;
+      }
+    }
+    final total = week.values.fold(0, (a, b) => a + b);
+    final top = week.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
+    final diff = total - last;
+    return TapCard(
+      key: const Key('notebook-week'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Bu hafta hataların', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 6),
+          if (total == 0)
+            Text('Bu hafta sınav tipi soruda yanlışın yok.', style: TextStyle(color: p.muted))
+          else ...[
+            Text(
+              top.map((e) => '${e.key.label} (${e.value})').join(' · '),
+              key: const Key('notebook-week-top'),
+              style: TextStyle(fontWeight: FontWeight.w800, color: p.ink),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              last == 0
+                  ? 'Toplam $total yanlış.'
+                  : diff < 0
+                  ? 'Toplam $total yanlış; geçen haftadan ${-diff} az. İyi gidiyor.'
+                  : diff == 0
+                  ? 'Toplam $total yanlış; geçen haftayla aynı.'
+                  : 'Toplam $total yanlış; geçen haftadan $diff fazla. En sık türe odaklan.',
+              key: const Key('notebook-week-trend'),
+              style: TextStyle(color: p.muted, fontSize: 13),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
 class _MistakeCard extends ConsumerStatefulWidget {
-  const _MistakeCard({required this.item, required this.course});
+  const _MistakeCard({required this.item, required this.course, this.sameKind = const {}});
   final LessonItem item;
   final Course course;
+
+  /// Notebook questions per kind of mistake.
+  final Map<MistakeKind, int> sameKind;
 
   @override
   ConsumerState<_MistakeCard> createState() => _MistakeCardState();
@@ -263,7 +412,24 @@ class _MistakeCardState extends ConsumerState<_MistakeCard> {
           widget.course,
           ydsCards: ref.read(ydsVocabProvider).value ?? const [],
         );
-        final added = ref.read(progressProvider.notifier).queueWords(cards.map((c) => c.id));
+        final notifier = ref.read(progressProvider.notifier);
+        // Cards come from mistakes: these words become mistake cards.
+        final day = dayKey(ref.read(clockProvider)());
+        for (final c in cards) {
+          notifier.addMistakeCard(
+            MistakeCardInfo(
+              id: c.id,
+              en: c.en,
+              tr: c.tr,
+              why: 'Yanlış yaptığın bir soruda geçti; anlamını bilmiyordun.',
+              day: day,
+              example: c.example,
+              kind: MistakeKind.vocabulary.label,
+              source: widget.item.key,
+            ),
+          );
+        }
+        final added = notifier.queueWords(cards.map((c) => c.id));
         messenger.showSnackBar(
           SnackBar(
             content: Text(
@@ -313,6 +479,21 @@ class _MistakeCardState extends ConsumerState<_MistakeCard> {
     final unit = unitOfItem(widget.course, widget.item.key);
     final type = exerciseType(ex, unitId: unit?.id);
     final question = ex.question ?? ex.prompt ?? ex.text ?? '';
+    final picked = p.mistakePicked[widget.item.key];
+    final premium = ref.watch(premiumProvider);
+    final diagnosis = diagnoseMistake(
+      ex,
+      picked: picked,
+      gloss: ref.watch(optionGlossesProvider).value?.of(widget.item.key, ex.options.length),
+      unitId: unit?.id,
+    );
+    final explain = explainQuestionOf(ex, picked: picked);
+    final explanation = ex.explanation?.trim() ?? '';
+    final day = p.mistakeDay[widget.item.key];
+    final node = widget.course.allNodes.where((n) => n.id == nodeOfKey(widget.item.key)).firstOrNull;
+    final rightExample = diagnosis == null ? null : filledSentence(ex.question, ex.options[ex.answerIndex!]);
+    final note = p.mistakeNote[widget.item.key];
+    final same = diagnosis == null ? 0 : widget.sameKind[diagnosis.kind] ?? 0;
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TapCard(
@@ -321,18 +502,98 @@ class _MistakeCardState extends ConsumerState<_MistakeCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              {if (type != null) type.label, ?unit?.title}.join(' · '),
+              {if (type != null) type.label, ?unit?.title, ?node?.title}.join(' · '),
               style: TextStyle(color: Brand.muted, fontSize: 12, fontWeight: FontWeight.w700),
             ),
+            if (day != null)
+              Text(
+                'Son yanlış: ${_dayLabel(day)}',
+                key: const Key('mistake-day'),
+                style: TextStyle(color: Brand.muted, fontSize: 12),
+              ),
+            if (note != null && note.trim().isNotEmpty) ...[
+              const SizedBox(height: 6),
+              Text(
+                'Senin notun: “${note.trim()}”',
+                key: const Key('mistake-own-note'),
+                style: const TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.w700),
+              ),
+            ],
+            if (reason != null) ...[
+              const SizedBox(height: 4),
+              Text(
+                'Etiketin: ${reason.emoji} ${reason.label}',
+                key: const Key('mistake-own-label'),
+                style: const TextStyle(fontWeight: FontWeight.w700),
+              ),
+            ],
             const SizedBox(height: 4),
             Text(question, maxLines: 3, overflow: TextOverflow.ellipsis),
             const SizedBox(height: 4),
-            Text('Doğrusu: ${ex.displayAnswer}', style: const TextStyle(fontWeight: FontWeight.w800)),
-            if (reason != null && (ex.explanation?.isNotEmpty ?? false)) ...[
+            if (diagnosis?.picked case final yours?)
+              Text(
+                'Senin cevabın: $yours',
+                key: const Key('mistake-picked'),
+                style: TextStyle(fontWeight: FontWeight.w700, color: Brand.tone(Brand.error)),
+              ),
+            Text(
+              'Doğrusu: ${diagnosis?.answer ?? ex.displayAnswer}',
+              key: const Key('mistake-answer'),
+              style: TextStyle(fontWeight: FontWeight.w800, color: Brand.tone(Brand.success)),
+            ),
+            if (diagnosis != null) ...[
+              const SizedBox(height: 8),
+              _WhyBox(diagnosis: diagnosis, premium: premium),
+            ],
+            if (rightExample != null) ...[
+              const SizedBox(height: 6),
+              Text(
+                'Doğru örnek: $rightExample',
+                key: const Key('mistake-example'),
+                style: TextStyle(color: Brand.tone(Brand.success), fontSize: 13.5),
+              ),
+            ],
+            if (same > 1) ...[
               const SizedBox(height: 4),
-              Text(ex.explanation!, style: TextStyle(color: Brand.muted, fontSize: 13)),
+              Text(
+                'Defterinde bu türden $same hata var.',
+                key: const Key('mistake-same-kind'),
+                style: TextStyle(color: Brand.muted, fontSize: 12.5),
+              ),
+            ],
+            if (unit != null && unit.hasGuide)
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  key: const Key('mistake-guide'),
+                  icon: const Icon(Icons.menu_book_rounded, size: 18),
+                  label: Text('Konu anlatımı: ${unit.title}'),
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      fullscreenDialog: true,
+                      builder: (_) => TopicGuideScreen(unit: unit, index: 1),
+                    ),
+                  ),
+                ),
+              ),
+            if (explanation.isNotEmpty) ...[
+              const SizedBox(height: 6),
+              Text(
+                explanation,
+                key: const Key('mistake-explanation'),
+                style: TextStyle(color: Brand.muted, fontSize: 13),
+              ),
+            ],
+            if (explain != null) ...[
+              const SizedBox(height: 8),
+              MistakeInspect(key: ValueKey('inspect-${widget.item.key}'), question: explain),
             ],
             const SizedBox(height: 8),
+            Text(
+              'Sence neden yanıldın?',
+              style: TextStyle(color: Brand.muted, fontSize: 12, fontWeight: FontWeight.w700),
+            ),
+            const SizedBox(height: 4),
             Wrap(
               spacing: 6,
               runSpacing: 6,

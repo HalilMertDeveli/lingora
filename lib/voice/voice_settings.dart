@@ -11,7 +11,6 @@ class VoiceSettings {
   const VoiceSettings({
     this.voice = defaultVoiceId,
     this.characterVoices = const {},
-    this.handsFree = true,
     this.bargeIn = true,
     this.pauseMs = 700,
     this.level,
@@ -22,10 +21,6 @@ class VoiceSettings {
 
   /// A different voice for a character (character id -> voice id).
   final Map<String, String> characterVoices;
-
-  /// Eller serbest: listen again by itself and end a turn after a pause.
-  /// Off = bas-konuş (push-to-talk).
-  final bool handsFree;
 
   /// The learner may interrupt the partner by speaking.
   final bool bargeIn;
@@ -40,8 +35,9 @@ class VoiceSettings {
 
   String voiceFor(Character? c) => c == null ? voice : (characterVoices[c.id] ?? c.voice);
 
+  /// Eller serbest is the only mode: listening opens by itself and a turn
+  /// ends after the pause (an old "handsFree" value is ignored).
   TurnConfig get turnConfig => TurnConfig(
-    handsFree: handsFree,
     bargeIn: bargeIn,
     endOfTurn: Duration(milliseconds: pauseMs),
   );
@@ -49,7 +45,6 @@ class VoiceSettings {
   VoiceSettings copyWith({
     String? voice,
     Map<String, String>? characterVoices,
-    bool? handsFree,
     bool? bargeIn,
     int? pauseMs,
     String? level,
@@ -57,7 +52,6 @@ class VoiceSettings {
   }) => VoiceSettings(
     voice: voice ?? this.voice,
     characterVoices: characterVoices ?? this.characterVoices,
-    handsFree: handsFree ?? this.handsFree,
     bargeIn: bargeIn ?? this.bargeIn,
     pauseMs: pauseMs ?? this.pauseMs,
     level: clearLevel ? null : (level ?? this.level),
@@ -66,7 +60,6 @@ class VoiceSettings {
   Map<String, Object?> toJson() => {
     'voice': voice,
     'characterVoices': characterVoices,
-    'handsFree': handsFree,
     'bargeIn': bargeIn,
     'pauseMs': pauseMs,
     'level': level,
@@ -78,7 +71,6 @@ class VoiceSettings {
       for (final e in (j['characterVoices'] as Map? ?? const {}).entries)
         if (e.key is String && e.value is String) e.key as String: voiceById(e.value as String).id,
     },
-    handsFree: j['handsFree'] as bool? ?? true,
     bargeIn: j['bargeIn'] as bool? ?? true,
     pauseMs: ((j['pauseMs'] as num?)?.toInt() ?? 700).clamp(600, 2000),
     level: const {'A1', 'A2', 'B1', 'B2', 'C1'}.contains(j['level']) ? j['level'] as String : null,
@@ -107,7 +99,6 @@ class VoiceSettingsNotifier extends Notifier<VoiceSettings> {
   void setVoice(String id) => _save(state.copyWith(voice: voiceById(id).id));
   void setCharacterVoice(String characterId, String voiceId) =>
       _save(state.copyWith(characterVoices: {...state.characterVoices, characterId: voiceById(voiceId).id}));
-  void setHandsFree(bool on) => _save(state.copyWith(handsFree: on));
   void setBargeIn(bool on) => _save(state.copyWith(bargeIn: on));
   void setPause(int ms) => _save(state.copyWith(pauseMs: ms));
   void setLevel(String? level) =>

@@ -24,8 +24,12 @@ class ChoiceExercise extends StatefulWidget {
     required this.onReady,
     this.gloss,
     this.glossLocked = false,
+    this.onPicked,
   });
   final Exercise ex;
+
+  /// The option index the learner tapped (for the notebook's "Senin cevabın").
+  final ValueChanged<int>? onPicked;
 
   /// Turkish of the options, shown once answered (see [OptionGloss]).
   final OptionGloss? gloss;
@@ -57,6 +61,7 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
   void _pick(int i) {
     if (widget.locked) return;
     setState(() => _picked = i);
+    widget.onPicked?.call(i);
     widget.onReady(() => _picked == widget.ex.answerIndex);
   }
 

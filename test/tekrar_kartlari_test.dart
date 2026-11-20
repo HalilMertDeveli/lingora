@@ -20,7 +20,7 @@ import 'package:lingora/ui/mascot.dart';
 import 'package:lingora/ui/review_card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'study_test.dart' show container, inDays, pumpApp, today, vocabDone;
+import 'study_test.dart' show container, inDays, pumpApp, today, vocabDone, withMistakeDeck;
 import 'widget_test.dart' show FakeSpeech;
 
 const _card = ReviewCardData(
@@ -332,7 +332,11 @@ void main() {
 
   group('SrsReviewScreen', () {
     testWidgets('a session ends in a summary with gold, paid once a day', (tester) async {
-      final c = await pumpApp(tester, const SrsReviewScreen(newPerDay: 3), progress: vocabDone(1));
+      final c = await pumpApp(
+        tester,
+        const SrsReviewScreen(newPerDay: 3),
+        progress: withMistakeDeck(vocabDone(1)),
+      );
       expect(find.byKey(const Key('srs-progress')), findsOneWidget);
       final words = <String>[];
       // Right, left, right: the forgotten card comes back at the end.
@@ -358,7 +362,8 @@ void main() {
       final c2 = await pumpApp(
         tester,
         const SrsReviewScreen(newPerDay: 6),
-        progress: vocabDone(1).copyWith(wallet: p.wallet, wordBox: p.wordBox, wordDue: p.wordDue),
+        progress: withMistakeDeck(vocabDone(1))
+            .copyWith(wallet: p.wallet, wordBox: p.wordBox, wordDue: p.wordDue),
       );
       while (find.byKey(const Key('review-card')).evaluate().isNotEmpty) {
         await tester.drag(find.byKey(const Key('review-card')), const Offset(300, 0));

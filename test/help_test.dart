@@ -35,6 +35,17 @@ void main() {
     }
   });
 
+  test('answers point at the labels the Profile actually shows', () {
+    // Galaxy QA: the FAQ sent people to "Kurum koduyla katıl" and "Çocuk modu",
+    // which the Profile no longer has (it shows "Okul ve kurum" and "Ebeveyn gözetimli mod").
+    final all = sssListesi.map((q) => q.cevap).join(' ');
+    expect(all, isNot(contains('Kurum koduyla katıl')));
+    expect(all, contains('Lisans kodu'));
+    expect(all, contains('Sınıf koduyla katıl'));
+    expect(all, contains('Ebeveyn gözetimli mod'));
+    expect(all, isNot(contains('Çocuk modu Profil')));
+  });
+
   test('search needs every word and returns all for an empty query', () {
     expect(searchSss(''), sssListesi);
     expect(searchSss('  '), sssListesi);

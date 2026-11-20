@@ -84,7 +84,7 @@ String? turnaroundSentence(MistakeTurnaround t) {
   if (t.missed == 0) return null;
   if (t.retried == 0) {
     return 'Son 7 günde karıştırdığın ${t.missed} soru henüz yeniden sorulmadı. '
-        'Hatalarını çalış\'ta sırası gelince döner.';
+        'Sırası gelince tekrar kartlarında ve hata defterinde döner.';
   }
   return 'Son 7 günde karıştırıp sonraki bir gün yeniden çözdüğün ${t.retried} sorunun '
       '${t.nowRight}\'${_suffix(t.nowRight)} artık doğru yapıyorsun.';

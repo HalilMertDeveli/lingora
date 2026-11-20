@@ -62,8 +62,7 @@ Future<ProviderContainer> _pump(WidgetTester tester, RehearsalService service) a
   await tester.pumpAndSettle();
   await tester.tap(find.byKey(const Key('prova-start')));
   await tester.pumpAndSettle();
-  await tester.tap(find.byKey(const Key('prova-mic'))); // no mic in tests: typing
-  await tester.pumpAndSettle();
+  // No recognizer in tests: the screen falls back to typing by itself.
   return c;
 }
 
@@ -173,13 +172,15 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('prova-start')));
     await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key('prova-mic')));
-    await tester.pump();
+    // No microphone button: the question is read, then it listens by itself.
+    expect(find.byIcon(Icons.mic_rounded), findsNothing);
     for (var i = 0; i < 20; i++) {
       await tester.pump(const Duration(milliseconds: 500));
     }
     expect(speech.listens, maxSilentRestarts + 1);
     expect(find.text('Soru 1 / 2 · Motivasyon'), findsOneWidget, reason: 'still on the first question');
+    expect(find.textContaining('Seni duyamadım'), findsOneWidget, reason: 'typing is offered');
+    expect(find.byKey(const Key('prova-type')), findsOneWidget);
   });
 
   test('a recording with a few frames for many seconds counts as empty', () {
@@ -223,21 +224,20 @@ void main() {
     );
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('prova-start')));
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key('prova-mic'))); // start
-    await tester.pump(const Duration(milliseconds: 100));
-    await tester.tap(find.byKey(const Key('prova-mic'))); // stop: silence came back
-    await tester.pumpAndSettle();
+    // Recording starts by itself after the question; the learner keeps talking.
+    for (var i = 0; i < 4; i++) {
+      await tester.pump(const Duration(milliseconds: 300));
+    }
+    expect(recorder.starts, 1);
+    await tester.tap(find.byKey(const Key('prova-next'))); // stop: silence came back
+    for (var i = 0; i < 4; i++) {
+      await tester.pump(const Duration(milliseconds: 300));
+    }
     expect(prefs.getBool(recordingOffKey), isTrue);
     expect(find.textContaining('ses kaydına izin vermiyor'), findsOneWidget);
-
-    await tester.tap(find.byKey(const Key('prova-next')));
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key('prova-mic')));
-    await tester.pump(const Duration(milliseconds: 100));
     expect(recorder.starts, 1, reason: 'the second answer is not recorded');
-    await tester.tap(find.byKey(const Key('prova-mic')));
-    await tester.pumpAndSettle();
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(seconds: 5));
   });
 }
 

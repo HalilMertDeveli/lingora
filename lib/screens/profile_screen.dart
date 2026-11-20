@@ -28,6 +28,7 @@ import 'shop_screen.dart';
 import 'study/methods_screen.dart';
 import 'sync_status_line.dart';
 import '../goals/goal_picker.dart';
+import '../study/mistake_cards.dart' show MistakeTotals;
 
 const _weekdays = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
 
@@ -403,8 +404,11 @@ class _ErrorStatsCard extends StatelessWidget {
           SizedBox(width: 12),
           Expanded(
             child: Text(
-              'Henüz kayıtlı hata yok. Ders, günlük ve sohbette yaptığın hatalar burada toplanır; '
-              'en sık olanlara özel ipuçları göreceksin.',
+              // Same counts as Pratik and the notebook (MistakeTotals).
+              MistakeTotals.of(progress).profileLine ??
+                  'Henüz kayıtlı hata yok. Ders, günlük ve sohbette yaptığın hatalar burada toplanır; '
+                      'en sık olanlara özel ipuçları göreceksin.',
+              key: const Key('profile-mistake-line'),
               style: TextStyle(color: Brand.muted),
             ),
           ),

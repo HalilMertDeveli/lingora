@@ -490,7 +490,7 @@ class _ExamSessionScreenState extends ConsumerState<ExamSessionScreen> with Widg
     if (widget.mock) {
       for (var i = 0; i < qs.length; i++) {
         if (qs[i].id.contains('#') && _answers[i] != qs[i].answer) {
-          ref.read(progressProvider.notifier).addMistake(qs[i].id);
+          ref.read(progressProvider.notifier).addMistake(qs[i].id, picked: _answers[i]);
         }
       }
     }

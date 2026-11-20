@@ -50,6 +50,9 @@ List<(String cefr, Map<String, dynamic> unit)> _generalUnits() {
 }
 
 class _Lines implements LinePlayer {
+  @override
+  Future<void> sayBeforeListening(String text, {double rate = 1}) => sayLine(text, rate: rate);
+
   final played = <(String, double, double)>[];
   int stops = 0;
   @override

@@ -573,6 +573,13 @@ void main() {
       expect(freeItems, contains('Hesapla bulut yedekleme ve cihazlar arası devam'));
     });
 
+    test('the free list names the real daily AI chat taste, not a "demo"', () {
+      // Galaxy QA: a free account got real AI replies with "bugün 2 mesajın kaldı",
+      // while the paywall called the free chat a demo.
+      expect(freeItems.join(' '), isNot(contains('demo')));
+      expect(freeItems, contains('Sohbet senaryoları: günde 3 ücretsiz yapay zekâ mesajı'));
+    });
+
     testWidgets('the paywall lists cloud backup under free', (tester) async {
       await tester.pumpWidget(app(await widgetOverrides(tester, FakeBilling()), const PaywallScreen()));
       await tester.pumpAndSettle();

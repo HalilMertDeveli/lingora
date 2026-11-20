@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/pronunciation_feedback.dart';
 import '../core/spoken_match.dart';
 import '../models/course.dart';
+import '../services/mic_access.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 import '../ui/pronunciation_score.dart';
@@ -34,132 +35,71 @@ class SpeakExercise extends ConsumerStatefulWidget {
 }
 
 class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
-  bool _listening = false;
-  bool _unavailable = false;
   String _heard = '';
   SpokenMatch? _match;
   PronunciationFeedback? _score;
   int _failures = 0;
-  bool _noSpeech = false;
 
   /// "Yazarak cevapla": the equal path without a microphone (no permission,
   /// a noisy place, recognition failing). The typed sentence is graded with
   /// the same tolerance as speech and counts like a spoken answer.
   bool _typing = false;
   final _typed = TextEditingController();
-  late final SpeechService _speech;
-  late final HandsFreeTurn _turn;
+  late final AutoListen _mic;
 
-  bool get _handsFree => ref.read(handsFreeProvider);
+  bool get _listening => _mic.listening;
 
   @override
   void initState() {
     super.initState();
-    _speech = ref.read(speechProvider);
-    _turn = HandsFreeTurn(speech: _speech, player: ref.read(linePlayerProvider));
+    _mic = AutoListen(
+      speech: ref.read(speechProvider),
+      player: ref.read(linePlayerProvider),
+      mic: ref.read(micAccessProvider),
+    )..addListener(_changed);
     // Hands-free: the sentence is read out, then the microphone opens.
-    if (!widget.locked && _handsFree) {
+    if (!widget.locked) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) _autoListen(prompt: widget.ex.text);
+        if (mounted) _mic.start(target: widget.ex.text!, prompt: widget.ex.text, onHeard: _judge);
       });
     }
   }
 
-  Future<void> _autoListen({String? prompt}) async {
+  void _changed() {
+    if (!mounted) return;
     setState(() {
-      _noSpeech = false;
-      _heard = '';
+      _heard = _mic.words;
+      // Speaking does not work right now: the skip is offered up front.
+      if (const {ListenPhase.gaveUp, ListenPhase.unavailable, ListenPhase.blocked}.contains(_mic.phase)) {
+        if (_failures < skipOfferAfter) _failures = skipOfferAfter;
+      }
     });
-    await _turn.run(
-      target: widget.ex.text!,
-      prompt: prompt,
-      onListening: () {
-        if (!mounted) return;
-        setState(() {
-          _listening = true;
-          _match = null;
-          _score = null;
-        });
-      },
-      onWords: (w) {
-        if (mounted) setState(() => _heard = w);
-      },
-      onDone: ({required bool noSpeech}) {
-        if (!mounted) return;
-        if (noSpeech) {
-          setState(() {
-            _listening = false;
-            _noSpeech = true;
-          });
-          return;
-        }
-        _judge();
-      },
-    );
   }
 
-  void _judge() {
-    final match = matchSpoken(widget.ex.text!, [_heard]);
+  void _again() {
     setState(() {
-      _listening = false;
+      _match = null;
+      _score = null;
+    });
+    widget.onReady(null);
+    _mic.again();
+  }
+
+  void _judge(String heard) {
+    if (!mounted) return;
+    final match = matchSpoken(widget.ex.text!, [heard]);
+    setState(() {
+      _heard = heard;
       _match = match;
-      _score = pronunciationFeedback(widget.ex.text!, lastRecognition.value, heard: _heard);
+      _score = pronunciationFeedback(widget.ex.text!, lastRecognition.value, heard: heard);
       if (!match.passed) _failures++;
     });
     widget.onReady(match.heard.isEmpty ? null : () => match.passed);
   }
 
-  Future<void> _toggle() async {
-    final speech = _speech;
-    if (_listening) {
-      await speech.stopListening();
-      return;
-    }
-    if (_handsFree) {
-      _turn.cancel();
-      if (!await speech.canListen) {
-        setState(() {
-          _unavailable = true;
-          _failures++;
-        });
-        return;
-      }
-      handsFreeMicRefused = false;
-      await _autoListen();
-      return;
-    }
-    if (!await speech.canListen) {
-      setState(() {
-        _unavailable = true;
-        _failures++;
-      });
-      return;
-    }
-    setState(() {
-      _listening = true;
-      _heard = '';
-      _match = null;
-      _score = null;
-    });
-    await speech.listenTo(
-      widget.ex.text!,
-      onWords: (w) {
-        if (mounted) setState(() => _heard = w);
-      },
-      onDone: () {
-        if (mounted) _judge();
-      },
-    );
-  }
-
   void _startTyping() {
-    _turn.cancel();
-    if (_listening) _speech.stopListening();
-    setState(() {
-      _typing = true;
-      _listening = false;
-      _noSpeech = false;
-    });
+    _mic.cancel();
+    setState(() => _typing = true);
     widget.onReady(null);
   }
 
@@ -171,8 +111,9 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
   @override
   void dispose() {
     _typed.dispose();
-    _turn.cancel();
-    if (_listening) _speech.stopListening();
+    _mic
+      ..removeListener(_changed)
+      ..dispose();
     super.dispose();
   }
 
@@ -180,6 +121,7 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
   Widget build(BuildContext context) {
     final ex = widget.ex;
     final match = _match;
+    final busy = _mic.phase == ListenPhase.listening || _mic.phase == ListenPhase.prompting;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -216,13 +158,8 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
           const SizedBox(height: 16),
           if (!widget.locked) SpeakSkipButton(failures: _failures, onSkip: widget.onSkip),
         ] else ...[
-          Center(
-            child: MicButton(listening: _listening, onTap: widget.locked ? null : _toggle),
-          ),
-          const SizedBox(height: 8),
-          if (_listening && _handsFree) ...[const ListeningIndicator(), const SizedBox(height: 6)],
-          if (_noSpeech && !_listening && !widget.locked) ...[
-            NoSpeechHint(onRetry: () => _autoListen()),
+          if (!widget.locked) ...[
+            AutoListenStatus(listen: _mic, showWords: false),
             const SizedBox(height: 6),
           ],
           if (!_listening && match != null && match.heard.isNotEmpty) ...[
@@ -241,11 +178,9 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
                 listening: _listening,
                 heard: _heard,
                 match: match,
-                // The no-speech hint already says it was not heard: once is enough.
-                issue: _noSpeech && !_listening && issue == SpeechIssues.notHeard
-                    ? null
-                    : issue ?? (_unavailable ? SpeechIssues.noRecognizer : null),
-                idle: _noSpeech && !widget.locked ? '' : 'Mikrofona dokun ve konuş',
+                // The microphone panel already explains a missed try.
+                issue: match == null ? null : issue,
+                idle: '',
               ),
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -254,6 +189,10 @@ class _SpeakExerciseState extends ConsumerState<SpeakExercise> {
               ),
             ),
           ),
+          if (!widget.locked && match != null && !busy) ...[
+            const SizedBox(height: 4),
+            SayAgainButton(onPressed: _again),
+          ],
           const SizedBox(height: 16),
           if (!widget.locked) ...[
             Center(
