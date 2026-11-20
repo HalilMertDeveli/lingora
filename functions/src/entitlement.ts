@@ -96,9 +96,14 @@ export async function premiumGrants(
     add({ source: kind === "test" ? "test" : "play", until, productId: (p.get("productId") as string) ?? null });
   }
 
-  if (!opts.excludeToken || ent?.purchaseTokenHash !== opts.excludeToken) add(topLevel(ent, now));
+  // A family seat is never taken from the member's own copy of the end date:
+  // only the live families/{owner} doc (plan running + member listed) counts,
+  // below. A stale member doc (plan ended or seat removed without that doc
+  // being rewritten) must not keep Premium.
+  const isFamily = (e: DocumentData | undefined) => e?.source === "family";
+  if ((!opts.excludeToken || ent?.purchaseTokenHash !== opts.excludeToken) && !isFamily(ent)) add(topLevel(ent, now));
   const prev = ent?.previous as DocumentData | undefined;
-  if (prev) {
+  if (prev && !isFamily(prev)) {
     const hash = prev.purchaseTokenHash as string | undefined;
     // A Play grant parked in `previous` counts only while its token still does.
     const stale = (hash !== undefined && subs.has(hash) && subs.get(hash)! <= now) || (hash !== undefined && hash === opts.excludeToken);
