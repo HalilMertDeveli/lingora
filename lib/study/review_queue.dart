@@ -134,7 +134,8 @@ class ReviewQueue {
 /// Words started on [day].
 int newWordsOn(Progress p, String day) => p.counters['$day:$newWordsMetric'] ?? 0;
 
-/// Today's queue for [course]: due cards, then up to [newPerDay] new cards
+/// Today's queue for [course] ([cards], or every word of the lessons done):
+/// due cards, then up to [newPerDay] new cards
 /// (fewer on a review day), and the notebook questions due.
 ReviewQueue reviewQueue(
   Course course,
@@ -143,8 +144,11 @@ ReviewQueue reviewQueue(
   int newPerDay = defaultNewWordsPerDay,
   List<VocabEntry> ydsCards = const [],
   bool everyUnit = false,
+  List<WordCard>? cards,
 }) {
-  final cards = courseWordCards(course, p, ydsCards: ydsCards, everyUnit: everyUnit);
+  // [cards]: the deck to use (the app passes the cards made from mistakes);
+  // without it, every word of the lessons done.
+  cards ??= courseWordCards(course, p, ydsCards: ydsCards, everyUnit: everyUnit);
   final due = [
     for (final c in cards)
       if (p.wordDue[c.id] case final d? when d.compareTo(today) <= 0) c,

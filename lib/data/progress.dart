@@ -15,6 +15,7 @@ import '../services/billing/premium_perks.dart' show goldMultiplierProvider;
 import 'catalog.dart';
 import 'league.dart';
 import 'level_report.dart';
+import 'mistake_card.dart';
 import 'progress_tally.dart';
 import 'quests.dart';
 import 'review_grade.dart';
@@ -86,6 +87,9 @@ class Progress {
     this.readingWords = 0,
     this.mistakeReason = const {},
     this.mistakeNote = const {},
+    this.mistakePicked = const {},
+    this.mistakeDay = const {},
+    this.mistakeCards = const [],
     this.userNotes = const [],
     this.removedWords = const {},
     this.wallet = const Wallet(),
@@ -166,6 +170,25 @@ class Progress {
 
   /// The learner's own note on a notebook question (at most 140 letters).
   final Map<String, String> mistakeNote;
+
+  /// The option the learner last picked on a notebook question (index into
+  /// its options), so the notebook can show "Senin cevabın" and why it is
+  /// wrong. Missing for questions saved before it was kept, or blank ones.
+  final Map<String, int> mistakePicked;
+
+  /// Day of the last wrong answer per notebook question (`yyyy-MM-dd`).
+  final Map<String, String> mistakeDay;
+
+  /// "Tekrar kartları" made from wrong answers, oldest first.
+  final List<MistakeCardInfo> mistakeCards;
+
+  /// [mistakeCards] by id.
+  MistakeCardInfo? mistakeCard(String id) {
+    for (final c in mistakeCards) {
+      if (c.id == id) return c;
+    }
+    return null;
+  }
 
   /// The learner's own notes in "Notlarım", deleted ones as tombstones.
   final List<UserNote> userNotes;
@@ -352,6 +375,9 @@ class Progress {
     int? readingWords,
     Map<String, String>? mistakeReason,
     Map<String, String>? mistakeNote,
+    Map<String, int>? mistakePicked,
+    Map<String, String>? mistakeDay,
+    List<MistakeCardInfo>? mistakeCards,
     List<UserNote>? userNotes,
     Map<String, int>? removedWords,
     Wallet? wallet,
@@ -396,6 +422,9 @@ class Progress {
     readingWords: readingWords ?? this.readingWords,
     mistakeReason: mistakeReason ?? this.mistakeReason,
     mistakeNote: mistakeNote ?? this.mistakeNote,
+    mistakePicked: mistakePicked ?? this.mistakePicked,
+    mistakeDay: mistakeDay ?? this.mistakeDay,
+    mistakeCards: mistakeCards ?? this.mistakeCards,
     userNotes: userNotes ?? this.userNotes,
     removedWords: removedWords ?? this.removedWords,
     wallet: wallet ?? this.wallet,
@@ -442,6 +471,9 @@ class Progress {
     'readingWords': readingWords,
     'mistakeReason': mistakeReason,
     'mistakeNote': mistakeNote,
+    'mistakePicked': mistakePicked,
+    'mistakeDay': mistakeDay,
+    'mistakeCards': [for (final c in mistakeCards) c.toJson()],
     'userNotes': [for (final n in userNotes) n.toJson()],
     'removedWords': removedWords,
     'wallet': wallet.toJson(),
@@ -492,6 +524,12 @@ class Progress {
     readingWords: j['readingWords'] as int? ?? 0,
     mistakeReason: (j['mistakeReason'] as Map?)?.cast<String, String>() ?? const {},
     mistakeNote: (j['mistakeNote'] as Map?)?.cast<String, String>() ?? const {},
+    mistakePicked: {
+      for (final e in ((j['mistakePicked'] as Map?) ?? const {}).entries)
+        if (e.value is num) '${e.key}': (e.value as num).toInt(),
+    },
+    mistakeDay: (j['mistakeDay'] as Map?)?.cast<String, String>() ?? const {},
+    mistakeCards: [for (final c in (j['mistakeCards'] as List?) ?? const []) ?MistakeCardInfo.fromJson(c)],
     userNotes: [
       for (final n in (j['userNotes'] as List?) ?? const []) UserNote.fromJson(n as Map<String, dynamic>),
     ],
@@ -777,8 +815,9 @@ class ProgressNotifier extends Notifier<Progress> {
 
   /// Puts a question the user got wrong into the error notebook. It comes
   /// back after a day; a question already there starts its run of right
-  /// answers again but keeps its stage.
-  void addMistake(String key) {
+  /// answers again but keeps its stage. [picked] is the option chosen on a
+  /// choice question, kept for the notebook's "Senin cevabın".
+  void addMistake(String key, {int? picked}) {
     var list = [...state.mistakes.where((k) => k != key), key];
     final dropped = list.length > maxMistakes ? list.sublist(0, list.length - maxMistakes) : const <String>[];
     if (dropped.isNotEmpty) list = list.sublist(dropped.length);
@@ -789,6 +828,13 @@ class ProgressNotifier extends Notifier<Progress> {
         mistakeStage: {..._without(state.mistakeStage, dropped), key: state.mistakeStage[key] ?? 0},
         mistakeDue: {..._without(state.mistakeDue, dropped), key: due},
         mistakeRun: {..._without(state.mistakeRun, dropped), key: 0},
+        mistakeReason: _without(state.mistakeReason, dropped),
+        mistakeNote: _without(state.mistakeNote, dropped),
+        mistakePicked: {
+          ..._without(state.mistakePicked, [...dropped, key]),
+          key: ?picked,
+        },
+        mistakeDay: {..._without(state.mistakeDay, dropped), key: dayKey(_now())},
       ),
     );
   }
@@ -797,15 +843,15 @@ class ProgressNotifier extends Notifier<Progress> {
   /// the notebook goes back to its start ([addMistake]); any other one is
   /// counted and saved at its [mistakeSaveMisses]th wrong answer, so a single
   /// slip does not fill the notebook. Returns whether it is in the notebook.
-  bool recordWrong(String key) {
+  bool recordWrong(String key, {int? picked}) {
     if (state.mistakes.contains(key)) {
-      addMistake(key);
+      addMistake(key, picked: picked);
       return true;
     }
     final misses = (state.mistakeMisses[key] ?? 0) + 1;
     if (misses >= mistakeSaveMisses) {
       _save(state.copyWith(mistakeMisses: _without(state.mistakeMisses, [key])));
-      addMistake(key);
+      addMistake(key, picked: picked);
       return true;
     }
     // Re-inserted last, so the oldest counts are the ones dropped.
@@ -855,6 +901,8 @@ class ProgressNotifier extends Notifier<Progress> {
         mistakeRun: _without(state.mistakeRun, [key]),
         mistakeReason: _without(state.mistakeReason, [key]),
         mistakeNote: _without(state.mistakeNote, [key]),
+        mistakePicked: _without(state.mistakePicked, [key]),
+        mistakeDay: _without(state.mistakeDay, [key]),
       ),
     );
   }
@@ -906,6 +954,30 @@ class ProgressNotifier extends Notifier<Progress> {
       ),
     );
     return add.length;
+  }
+
+  /// Makes (or refreshes) the review card of a wrong answer. A card seen
+  /// again keeps its review box; a new one waits for "Tekrar kartları" as a
+  /// new card. An AI reason is not replaced by a rule-based one.
+  void addMistakeCard(MistakeCardInfo card) {
+    final old = state.mistakeCard(card.id);
+    final kept = old != null && old.ai && !card.ai ? card.copyWith(why: old.why, ai: true) : card;
+    var list = [...state.mistakeCards.where((c) => c.id != card.id), kept];
+    if (list.length > maxMistakeCards) list = list.sublist(list.length - maxMistakeCards);
+    _save(state.copyWith(mistakeCards: list));
+  }
+
+  /// The AI analysis of a mistake card's error (Premium).
+  void setMistakeCardWhy(String id, String why) {
+    final old = state.mistakeCard(id);
+    if (old == null || why.trim().isEmpty) return;
+    _save(
+      state.copyWith(
+        mistakeCards: [
+          for (final c in state.mistakeCards) c.id == id ? c.copyWith(why: why.trim(), ai: true) : c,
+        ],
+      ),
+    );
   }
 
   static Map<String, V> _without<V>(Map<String, V> map, List<String> keys) =>

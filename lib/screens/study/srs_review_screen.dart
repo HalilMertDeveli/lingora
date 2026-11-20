@@ -10,6 +10,7 @@ import '../../data/notes_repository.dart';
 import '../../data/progress.dart';
 import '../../data/review_grade.dart';
 import '../../study/daily_plan.dart' show inMaintenance;
+import '../../study/mistake_cards.dart';
 import '../../study/review_card_data.dart';
 import '../../study/review_queue.dart';
 import '../../study/year_plan.dart';
@@ -40,6 +41,9 @@ final reviewQueueProvider = Provider.family<ReviewQueue?, int>((ref, newPerDay) 
     // After the year plan, new cards come from every bank, not only the
     // units reached.
     everyUnit: ref.watch(inMaintenanceProvider),
+    // Cards come from the learner's own wrong answers, not from every word
+    // (old auto-made cards of never-missed words are simply not shown).
+    cards: mistakeWordCards(ref.watch(progressProvider.select((p) => p.mistakeCards))),
   );
 });
 
@@ -193,7 +197,12 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
     final fresh = _fresh.contains(c.id) && !_again.contains(c.id);
     return ReviewDeck(
       key: ValueKey('card-$_pos'),
-      card: reviewCardFor(c, entries: entries, notes: notes),
+      card: reviewCardFor(
+        c,
+        entries: entries,
+        notes: notes,
+        why: ref.read(progressProvider).mistakeCard(c.id)?.why,
+      ),
       behind: _cards.length - _pos - 1,
       color: Brand.primary,
       badge: (label: fresh ? 'YENİ' : 'TEKRAR', color: fresh ? Brand.accent : Brand.primary),
@@ -214,7 +223,7 @@ class _SrsReviewScreenState extends ConsumerState<SrsReviewScreen> {
           if (nothing)
             EmptyState(
               message: mistakes == 0
-                  ? 'Bugünlük kart yok. Kelime dersi bitirdikçe yeni kartlar gelir.'
+                  ? 'Bugünlük kart yok. Derslerde yanlış yaptığın kelime ve kalıplar burada kart olur.'
                   : 'Bugünlük kelime kartı yok; hata defterinde soruların seni bekliyor.',
             )
           else

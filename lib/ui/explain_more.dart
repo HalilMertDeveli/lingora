@@ -167,7 +167,7 @@ class _ExplainMoreBoxState extends ConsumerState<ExplainMoreBox> {
               spacing: 8,
               runSpacing: 6,
               children: [
-                for (final m in ExplainMode.values)
+                for (final m in ExplainMode.followUps)
                   if (!(m == ExplainMode.question && _typing))
                     ActionChip(
                       key: Key('explain-${m.name}'),
@@ -175,6 +175,7 @@ class _ExplainMoreBoxState extends ConsumerState<ExplainMoreBox> {
                         ExplainMode.confused => Icons.help_outline_rounded,
                         ExplainMode.simpler => Icons.child_care_rounded,
                         ExplainMode.question => Icons.edit_rounded,
+                        ExplainMode.why => Icons.search_rounded,
                       }, size: 18),
                       label: Text(m.label),
                       onPressed: () => _ask(m),

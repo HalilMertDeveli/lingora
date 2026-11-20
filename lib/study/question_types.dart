@@ -154,6 +154,16 @@ QType questionType({
   return (unitId?.startsWith('ys1') ?? false) ? QType.grammar : QType.vocabulary;
 }
 
+/// Whether [options] are structure (grammar) choices: some option has more
+/// than one word, or every option holds a function word. Single content
+/// words are a word (vocabulary) choice.
+bool structureOptions(List<String> options) {
+  if (options.isEmpty) return false;
+  List<String> words(String o) => o.toLowerCase().trim().split(RegExp(r'\s+'));
+  return options.any((o) => words(o).length > 1) ||
+      options.every((o) => words(o).any(_functionWords.contains));
+}
+
 /// Exam whose question mix a mock or estimate follows.
 enum ExamMix {
   yds,

@@ -74,7 +74,14 @@ bool containsWord(String text, String word) {
 /// ([entries]: example with its translation, common mistake) and the
 /// learner's notebook ([notes]: dictionary example and memory trick, or a
 /// grammar pattern whose example uses the word).
-ReviewCardData reviewCardFor(WordCard c, {Map<String, VocabEntry> entries = const {}, NotesBundle? notes}) {
+/// [why]: the reason of the mistake the card was made from ("Neden
+/// yanlıştı"), shown in the card's note slot instead of a tip.
+ReviewCardData reviewCardFor(
+  WordCard c, {
+  Map<String, VocabEntry> entries = const {},
+  NotesBundle? notes,
+  String? why,
+}) {
   final entry = entries[c.id] ?? entries[_norm(c.en)];
   final key = _norm(c.en);
   NoteWord? noteWord;
@@ -89,7 +96,9 @@ ReviewCardData reviewCardFor(WordCard c, {Map<String, VocabEntry> entries = cons
   String? note;
   String? noteLabel;
   NoteExample? patternExample;
-  if (entry?.tip case final tip?) {
+  if (why != null && why.trim().isNotEmpty) {
+    (note, noteLabel) = (why.trim(), 'Neden yanlıştı');
+  } else if (entry?.tip case final tip?) {
     (note, noteLabel) = (tip, 'Sık hata');
   } else if (noteWord?.story case final story?) {
     (note, noteLabel) = (story, 'Hafıza ipucu');

@@ -24,6 +24,7 @@ import 'speed_match_screen.dart';
 import 'study/notebook_screen.dart';
 import 'study/srs_review_screen.dart';
 import 'study/today_screen.dart';
+import '../study/mistake_cards.dart' show MistakeTotals;
 import '../study/review_queue.dart';
 import 'weekly_coach_card.dart';
 
@@ -114,7 +115,7 @@ class PracticeHubScreen extends ConsumerWidget {
             color: Brand.success,
             title: 'Tekrar kartları',
             subtitle: cardCount == 0
-                ? 'Kelime dersi bitirdikçe kartların gelir'
+                ? 'Derste yanlış yaptıkların burada kart olur'
                 : 'Bugün $cardCount kart: aralıklı tekrar',
             badge: cardCount > 0 ? '$cardCount' : null,
             onTap: () => openReviewCards(context, newPerDay: newPerDay),
@@ -127,9 +128,7 @@ class PracticeHubScreen extends ConsumerWidget {
             title: 'Hatalarını çalış',
             subtitle: mistakes > 0
                 ? '$mistakes soru bugün tekrar zamanında'
-                : p.mistakes.isEmpty
-                ? 'Şu an çalışılacak hata yok'
-                : 'Hata defterinde ${p.mistakes.length} soru, sırası gelince döner',
+                : MistakeTotals.of(p).practiceLine,
             badge: mistakes > 0 ? '$mistakes' : null,
             onTap: mistakeQueue.isEmpty
                 ? null
