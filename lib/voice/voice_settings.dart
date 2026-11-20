@@ -40,6 +40,7 @@ class VoiceSettings {
   TurnConfig get turnConfig => TurnConfig(
     bargeIn: bargeIn,
     endOfTurn: Duration(milliseconds: pauseMs),
+    confirmDelay: utteranceConfirmDelay,
   );
 
   VoiceSettings copyWith({

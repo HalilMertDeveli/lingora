@@ -66,6 +66,13 @@ abstract interface class BargeInDetector {
   Future<void> stop();
 }
 
+/// How long "Şunu mu dedin?" shows a recognised utterance before it is sent
+/// by itself in the free voice conversation. Far-field room speech (other
+/// people talking) is recognised as loud and confident as the learner
+/// (Galaxy M22: rmsdB 7-10, confidence 0.92), so the learner gets a moment
+/// to cancel it. Lesson speaking exercises do not use it.
+const utteranceConfirmDelay = Duration(seconds: 2);
+
 /// Settings of the turn-taker (tunable in the voice settings).
 class TurnConfig {
   const TurnConfig({
@@ -76,6 +83,7 @@ class TurnConfig {
     this.speechLevel = 0.35,
     this.echoTail = const Duration(milliseconds: 100),
     this.idleRestarts = 2,
+    this.confirmDelay = Duration.zero,
   });
 
   /// The learner may interrupt the partner by speaking.
@@ -104,6 +112,10 @@ class TurnConfig {
 
   /// How often listening restarts by itself when nothing at all is said.
   final int idleRestarts;
+
+  /// A spoken turn waits this long as [TurnTaker.pending] ("Şunu mu
+  /// dedin?") before it is sent; zero sends at once. Typed turns never wait.
+  final Duration confirmDelay;
 }
 
 const _unfinishedWords = {
@@ -227,6 +239,9 @@ class TurnTaker extends ChangeNotifier {
   bool _closed = false;
   bool _gotReal = false;
   Timer? _ack;
+  String? _pending;
+  Timer? _confirm;
+  int _pendingSerial = 0;
   String _lastPartner = '';
   final _queue = <SpokenSentence>[];
 
@@ -235,6 +250,18 @@ class TurnTaker extends ChangeNotifier {
   /// What the learner has said so far in this turn.
   String get words => _words;
   TurnConfig get config => _config;
+
+  /// A spoken turn waiting for "Şunu mu dedin?": sent by itself after
+  /// [TurnConfig.confirmDelay] ([confirmPending] sends it now, [cancelPending]
+  /// drops it). The microphone stays open meanwhile; a new utterance
+  /// replaces it and starts the countdown again.
+  String? get pending => _pending;
+
+  /// Changes whenever [pending] gets a new text (restarts the countdown).
+  int get pendingSerial => _pendingSerial;
+
+  /// The countdown runs (it pauses while new words come in).
+  bool get pendingCounting => _confirm?.isActive ?? false;
 
   set config(TurnConfig c) {
     _config = c;
@@ -265,6 +292,9 @@ class TurnTaker extends ChangeNotifier {
     final text = w.trim();
     if (text == _words) return;
     _words = text;
+    // Someone speaks again while "Şunu mu dedin?" waits: nothing is sent
+    // until this new utterance ends (then it replaces the waiting one).
+    if (_pending != null && text.isNotEmpty) _confirm?.cancel();
     _activity();
     notifyListeners();
   }
@@ -286,6 +316,13 @@ class TurnTaker extends ChangeNotifier {
       _endTurn();
       return;
     }
+    if (_pending != null) {
+      // The recognizer stopped by itself while "Şunu mu dedin?" waits: keep
+      // listening hands-free (a new utterance may replace the waiting one).
+      _restart?.cancel();
+      _restart = Timer(const Duration(milliseconds: 300), _reopen);
+      return;
+    }
     // Nothing said: keep the line open a little longer, then offer typing.
     if (_emptyRestarts < _config.idleRestarts) {
       _emptyRestarts++;
@@ -296,8 +333,9 @@ class TurnTaker extends ChangeNotifier {
     }
   }
 
-  /// The learner's turn is over: hand it to [onUserTurn].
-  void _endTurn() {
+  /// The learner's turn is over: hand it to [onUserTurn] (a spoken one
+  /// waits as [pending] first when [TurnConfig.confirmDelay] is set).
+  void _endTurn({bool typed = false}) {
     _silence?.cancel();
     if (_phase != TalkPhase.listening || _words.isEmpty) return;
     final text = _words;
@@ -313,7 +351,64 @@ class TurnTaker extends ChangeNotifier {
       notifyListeners();
       return;
     }
+    if (!typed && _config.confirmDelay > Duration.zero) {
+      _hold(text);
+      return;
+    }
     _endOfSpeech = _lastActivity ?? _now();
+    _send(text);
+  }
+
+  /// "Şunu mu dedin?": [text] waits, the microphone listens on.
+  void _hold(String text) {
+    _pending = text;
+    _pendingSerial++;
+    _words = '';
+    _lastActivity = null;
+    _emptyRestarts = 0;
+    _restart?.cancel();
+    _confirm?.cancel();
+    _confirm = Timer(_config.confirmDelay, confirmPending);
+    notifyListeners();
+    // The recognizer usually stops after a final result: open it again.
+    unawaited(listener.stop().then((_) => _reopen()));
+  }
+
+  /// Starts the recognizer again inside the same listening phase.
+  Future<void> _reopen() async {
+    if (_closed || _phase != TalkPhase.listening || _pending == null) return;
+    await listener.start(onWords: _onWords, onLevel: _onLevel, onEnd: _onListenerEnd);
+  }
+
+  /// Sends the waiting utterance now (the learner tapped it, or the
+  /// countdown ran out). Words heard since then replace it: the strip
+  /// shows them, and a tap sends what is shown.
+  void confirmPending() {
+    if (_pending == null || _closed || _phase != TalkPhase.listening) return;
+    final text = _words.isNotEmpty ? _words : _pending!;
+    _clearPending();
+    _restart?.cancel();
+    _silence?.cancel();
+    _words = '';
+    _endOfSpeech = _now();
+    _send(text);
+  }
+
+  /// "İptal": the waiting utterance is dropped and listening goes on.
+  Future<void> cancelPending() async {
+    if (_pending == null) return;
+    _clearPending();
+    notifyListeners();
+    if (_phase == TalkPhase.idle) await resume();
+  }
+
+  void _clearPending() {
+    _confirm?.cancel();
+    _confirm = null;
+    _pending = null;
+  }
+
+  void _send(String text) {
     _emptyRestarts = 0;
     _turn++;
     _replyTurn = _turn;
@@ -340,12 +435,13 @@ class TurnTaker extends ChangeNotifier {
     if (_phase == TalkPhase.speaking) await _interrupt(listenAfter: false);
     if (_closed || _phase == TalkPhase.thinking) return false;
     _restart?.cancel();
+    _clearPending(); // the typed text answers instead
     if (_phase == TalkPhase.listening) await listener.stop();
     _speechEndedAt = null;
     _phase = TalkPhase.listening;
     _words = t;
     _lastActivity = _now();
-    _endTurn();
+    _endTurn(typed: true);
     return true;
   }
 
@@ -504,6 +600,7 @@ class TurnTaker extends ChangeNotifier {
       if (_phase == TalkPhase.muted) return;
       _silence?.cancel();
       _restart?.cancel();
+      _clearPending();
       final wasListening = _phase == TalkPhase.listening;
       if (_phase == TalkPhase.listening || _phase == TalkPhase.idle) _set(TalkPhase.muted);
       _mutedPending = !wasListening && _phase != TalkPhase.muted;
@@ -525,6 +622,7 @@ class TurnTaker extends ChangeNotifier {
     if (_closed) return;
     _closed = true;
     _ack?.cancel();
+    _clearPending();
     _silence?.cancel();
     _restart?.cancel();
     _queue.clear();

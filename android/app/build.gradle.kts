@@ -69,6 +69,14 @@ android {
                 signingConfigs.getByName("debug")
             }
         }
+        // Flutter's profile type starts from debug (debug keys). With the upload
+        // key it installs over the release build and the other way round (a
+        // debug-signed profile APK on the phone blocked the release smoke test).
+        getByName("profile") {
+            if (keystorePropertiesFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
+        }
     }
 }
 
