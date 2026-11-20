@@ -292,6 +292,122 @@ void main() {
     });
   });
 
+  group('TurnTaker "Şunu mu dedin?"', () {
+    const confirm = TurnConfig(endOfTurn: Duration(milliseconds: 1000), confirmDelay: utteranceConfirmDelay);
+
+    Rig heard(FakeAsync async, String text) {
+      final r = Rig(async, config: confirm);
+      r.turns.listen();
+      async.flushMicrotasks();
+      r.listener.say(text);
+      async.elapse(const Duration(milliseconds: 1050));
+      return r;
+    }
+
+    test('the free voice conversation waits 2 seconds by default', () {
+      expect(utteranceConfirmDelay, const Duration(seconds: 2));
+      expect(const VoiceSettings().turnConfig.confirmDelay, utteranceConfirmDelay);
+      expect(const TurnConfig().confirmDelay, Duration.zero, reason: 'nothing else waits');
+    });
+
+    test('a recognised utterance waits, then goes by itself after 2 s', () {
+      fakeAsync((async) {
+        final r = heard(async, 'I am glad giving you your time');
+        expect(r.sent, isEmpty);
+        expect(r.turns.pending, 'I am glad giving you your time');
+        expect(r.turns.pendingCounting, isTrue);
+        expect(r.turns.phase, TalkPhase.listening);
+        expect(r.listener.active, isTrue, reason: 'still listening hands-free');
+        async.elapse(const Duration(milliseconds: 1900));
+        expect(r.sent, isEmpty);
+        async.elapse(const Duration(milliseconds: 150));
+        expect(r.sent, [(1, 'I am glad giving you your time')]);
+        expect(r.turns.pending, isNull);
+        expect(r.turns.phase, TalkPhase.thinking);
+      });
+    });
+
+    test('İptal drops it and keeps listening; nothing is sent', () {
+      fakeAsync((async) {
+        final r = heard(async, 'Minneapolis');
+        final starts = r.listener.starts;
+        r.turns.cancelPending();
+        async.elapse(const Duration(seconds: 5));
+        expect(r.sent, isEmpty);
+        expect(r.turns.pending, isNull);
+        expect(r.turns.phase, TalkPhase.listening);
+        expect(r.listener.active, isTrue);
+        expect(r.listener.starts, starts, reason: 'the microphone stayed open');
+        // The learner's own answer still goes.
+        r.listener.say('I would like a coffee');
+        async.elapse(const Duration(milliseconds: 1050));
+        async.elapse(utteranceConfirmDelay);
+        expect(r.sent, [(1, 'I would like a coffee')]);
+      });
+    });
+
+    test('tapping the text sends it at once', () {
+      fakeAsync((async) {
+        final r = heard(async, 'A table for two');
+        r.turns.confirmPending();
+        expect(r.sent, [(1, 'A table for two')]);
+        expect(r.turns.phase, TalkPhase.thinking);
+        async.elapse(const Duration(seconds: 3));
+        expect(r.sent, hasLength(1), reason: 'the countdown does not send it again');
+      });
+    });
+
+    test('a new utterance while waiting replaces the text and restarts the countdown', () {
+      fakeAsync((async) {
+        final r = heard(async, 'metal glass');
+        final first = r.turns.pendingSerial;
+        async.elapse(const Duration(milliseconds: 1500));
+        r.listener.say('Can I get');
+        expect(r.turns.pendingCounting, isFalse, reason: 'nothing goes while someone speaks');
+        async.elapse(const Duration(milliseconds: 700));
+        r.listener.say('Can I get the bill');
+        async.elapse(const Duration(milliseconds: 1050));
+        expect(r.sent, isEmpty);
+        expect(r.turns.pending, 'Can I get the bill');
+        expect(r.turns.pendingSerial, greaterThan(first));
+        async.elapse(const Duration(milliseconds: 1900));
+        expect(r.sent, isEmpty, reason: 'the countdown started again');
+        async.elapse(const Duration(milliseconds: 150));
+        expect(r.sent, [(1, 'Can I get the bill')]);
+      });
+    });
+
+    test('the recognizer stopping by itself while waiting opens again', () {
+      fakeAsync((async) {
+        final r = heard(async, 'Hello');
+        final starts = r.listener.starts;
+        r.listener.end();
+        async.elapse(const Duration(milliseconds: 350));
+        expect(r.listener.starts, starts + 1);
+        expect(r.turns.phase, TalkPhase.listening);
+        expect(r.turns.pending, 'Hello');
+      });
+    });
+
+    test('typed turns and mute never wait', () {
+      fakeAsync((async) {
+        final r = heard(async, 'room noise');
+        r.turns.submitText('Typed answer');
+        async.flushMicrotasks();
+        expect(r.sent, [(1, 'Typed answer')]);
+        expect(r.turns.pending, isNull);
+        async.elapse(const Duration(seconds: 3));
+        expect(r.sent, hasLength(1));
+
+        final m = heard(async, 'room noise');
+        m.turns.setMuted(true);
+        async.elapse(const Duration(seconds: 3));
+        expect(m.sent, isEmpty);
+        expect(m.turns.pending, isNull);
+      });
+    });
+  });
+
   group('TurnTaker barge-in', () {
     test('speaking over the partner stops the voice and listens; the rest of the reply is dropped', () {
       fakeAsync((async) {
@@ -754,7 +870,14 @@ void main() {
       _expectNoMicButton();
       listener.say('I go to Izmir');
       await tester.pump(const Duration(milliseconds: 1100));
+      // "Şunu mu dedin?" first: it goes by itself after the countdown.
+      expect(find.text('Şunu mu dedin?'), findsOneWidget);
+      expect(find.text('“I go to Izmir”'), findsOneWidget);
+      expect(chat.sent, isEmpty);
+      _expectNoMicButton();
+      await tester.pump(utteranceConfirmDelay);
       expect(chat.sent.single.last.text, 'I go to Izmir');
+      expect(find.text('Şunu mu dedin?'), findsNothing);
       await tester.pump(const Duration(milliseconds: 800)); // demo delay
       expect(find.text('Oh, you went to Izmir? What did you do?'), findsOneWidget);
       // No lecture in the chat: the correction waits for the karne.
@@ -830,8 +953,23 @@ void main() {
       expect(find.text('Dinleme duraklatıldı'), findsOneWidget);
       await tester.tap(find.byKey(const Key('call-mute')));
       await tester.pump();
+      // Room speech heard as the learner: cancelled, the call listens on.
+      listener.say('Minneapolis');
+      await tester.pump(const Duration(milliseconds: 1100));
+      expect(find.text('“Minneapolis”'), findsOneWidget);
+      expect(find.bySemanticsLabel(RegExp('^İptal')), findsOneWidget);
+      await tester.tap(find.byKey(const Key('talk-confirm-cancel')));
+      await tester.pump(const Duration(seconds: 3));
+      expect(find.byKey(const Key('talk-confirm')), findsNothing);
+      expect(find.text('Dinliyorum…'), findsOneWidget);
+      _expectNoMicButton();
+      // Tapping the text sends it at once.
       listener.say('Sure I have time');
       await tester.pump(const Duration(milliseconds: 1100));
+      await tester.tap(find.byKey(const Key('talk-confirm-send')));
+      await tester.pump();
+      expect(find.byKey(const Key('talk-confirm')), findsNothing);
+      expect(find.text('Dinliyorum…'), findsNothing, reason: 'sent: the partner answers');
       await tester.pump(const Duration(milliseconds: 800));
       expect(find.text('Sure I have time'), findsNothing);
       await tester.tap(find.byKey(const Key('call-hangup')));

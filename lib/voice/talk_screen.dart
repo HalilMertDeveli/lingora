@@ -244,8 +244,17 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
   }
 
   void _changed() {
+    // "Şunu mu dedin?" got a new text: keep the recognizer's guesses for it
+    // (the microphone listens on, so they change before it is sent).
+    if (_turns.pendingSerial != _heldSerial) {
+      _heldSerial = _turns.pendingSerial;
+      _heldGuesses = lastRecognition.value;
+    }
     if (mounted) setState(() {});
   }
+
+  int _heldSerial = 0;
+  List<SpeechGuess> _heldGuesses = const [];
 
   void _onLatency(Duration d) {
     _latencies.add(d.inMilliseconds);
@@ -255,8 +264,8 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
   // ----------------------------------------------------------------- turns
 
   void _onUserTurn(int turn, String text) {
-    final heard = lastRecognition.value;
     final spoken = !_typing;
+    final heard = spoken && _turns.config.confirmDelay > Duration.zero ? _heldGuesses : lastRecognition.value;
     setState(() {
       _error = null;
       _messages.add(
@@ -610,6 +619,7 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        if (_turns.pending != null) _confirmStrip(),
         _phaseChip(),
         const SizedBox(height: 8),
         _ListenOrb(phase: _turns.phase),
@@ -646,6 +656,20 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
       ],
     );
   }
+
+  /// "Şunu mu dedin?": the recognised utterance waits a moment before it is
+  /// sent, so room speech heard as the learner can be cancelled. Tapping the
+  /// text sends it now; it goes by itself when the bar runs out.
+  Widget _confirmStrip({bool onDark = false}) => _ConfirmStrip(
+    key: const Key('talk-confirm'),
+    text: _turns.words.isNotEmpty ? _turns.words : _turns.pending!,
+    serial: _turns.pendingSerial,
+    counting: _turns.pendingCounting,
+    delay: _turns.config.confirmDelay,
+    onDark: onDark,
+    onSend: _turns.confirmPending,
+    onCancel: () => unawaited(_turns.cancelPending()),
+  );
 
   Future<void> _switchToCall() async {
     if (!_premium) {
@@ -817,6 +841,8 @@ class _TalkScreenState extends ConsumerState<TalkScreen> {
                           style: const TextStyle(color: fg, fontSize: 17, fontWeight: FontWeight.w600),
                         ),
                       ),
+                      if (_turns.pending != null)
+                        Padding(padding: const EdgeInsets.only(top: 16), child: _confirmStrip(onDark: true)),
                       if (_error != null)
                         Padding(
                           padding: const EdgeInsets.only(top: 12),
@@ -1119,3 +1145,114 @@ class VoiceSettingsSheet extends ConsumerWidget {
 
 /// True in Çocuk modu: no live AI chat and no voice partner there.
 bool talkHiddenForKids(WidgetRef ref) => ref.read(appSettingsProvider).isKid;
+
+/// "Şunu mu dedin? “…”" with a countdown bar: tap the text to send it now,
+/// "İptal" to drop it (listening goes on, no button needed).
+class _ConfirmStrip extends StatelessWidget {
+  const _ConfirmStrip({
+    super.key,
+    required this.text,
+    required this.serial,
+    required this.counting,
+    required this.delay,
+    required this.onDark,
+    required this.onSend,
+    required this.onCancel,
+  });
+
+  final String text;
+  final int serial;
+  final bool counting;
+  final Duration delay;
+  final bool onDark;
+  final VoidCallback onSend;
+  final VoidCallback onCancel;
+
+  @override
+  Widget build(BuildContext context) {
+    final fg = onDark ? Colors.white : Brand.ink;
+    final soft = onDark ? Colors.white.withValues(alpha: 0.7) : Brand.muted;
+    final track = onDark ? Colors.white.withValues(alpha: 0.2) : Brand.line;
+    final secs = delay.inSeconds;
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+        color: onDark ? Colors.white.withValues(alpha: 0.08) : Brand.card,
+        border: Border.all(color: track, width: 2),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Semantics(
+              button: true,
+              liveRegion: true,
+              label:
+                  'Şunu mu dedin? “$text”. Göndermek için dokun; $secs saniye içinde kendiliğinden gönderilir.',
+              excludeSemantics: true,
+              child: InkWell(
+                key: const Key('talk-confirm-send'),
+                borderRadius: const BorderRadius.horizontal(left: Radius.circular(14)),
+                onTap: onSend,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 10, 8, 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('Şunu mu dedin?', style: TextStyle(color: soft, fontSize: 13)),
+                      const SizedBox(height: 2),
+                      Text(
+                        '“$text”',
+                        key: const Key('talk-confirm-text'),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: fg, fontSize: 16, fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(height: 8),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: counting
+                            ? TweenAnimationBuilder<double>(
+                                key: ValueKey(serial),
+                                tween: Tween(begin: 1, end: 0),
+                                duration: delay,
+                                builder: (_, v, _) => LinearProgressIndicator(
+                                  value: v,
+                                  minHeight: 4,
+                                  color: onDark ? Colors.white : Brand.primary,
+                                  backgroundColor: track,
+                                ),
+                              )
+                            : LinearProgressIndicator(
+                                value: 1,
+                                minHeight: 4,
+                                color: soft,
+                                backgroundColor: track,
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Semantics(
+            button: true,
+            label: 'İptal: bunu gönderme, dinlemeye devam et',
+            excludeSemantics: true,
+            child: TextButton(
+              key: const Key('talk-confirm-cancel'),
+              onPressed: onCancel,
+              style: TextButton.styleFrom(
+                foregroundColor: onDark ? Colors.white : Brand.error,
+                minimumSize: const Size(72, 48),
+              ),
+              child: const Text('İptal', style: TextStyle(fontWeight: FontWeight.w800)),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
