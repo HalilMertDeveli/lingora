@@ -366,7 +366,9 @@ void main() {
       await tester.tap(find.byTooltip('Kapat'));
       await tester.pumpAndSettle();
       expect(find.byType(ConversationScreen), findsOneWidget);
-      expect(find.textContaining('karneni alabilirsin'), findsOneWidget);
+      // Nothing was said in this chat: no karne to offer (the taste went elsewhere).
+      expect(find.text(freeTasteOverMessage(learnerSpoke: false)), findsOneWidget);
+      expect(find.textContaining('karneni alabilirsin'), findsNothing);
     });
   });
 
