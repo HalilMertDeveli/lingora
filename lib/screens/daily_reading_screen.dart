@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/app_settings.dart';
 import '../services/billing/premium.dart' show premiumProvider;
 import '../services/growth/daily_reading.dart';
+import '../services/read_aloud.dart';
+import '../services/speech.dart';
 import '../services/talk_about.dart';
 import '../theme.dart';
 import '../ui/premium_offer.dart' show openPaywall;
@@ -148,6 +150,33 @@ class _ReadingBodyState extends ConsumerState<_ReadingBody> {
 
   DailyReading get r => widget.reading;
 
+  late final _sentences = splitSentences(r.text);
+
+  /// Sentence being read aloud, or null.
+  int? _reading;
+
+  late final _aloud = ReadAloud(
+    ref.read(linePlayerProvider),
+    onSentence: (i) {
+      if (mounted) setState(() => _reading = i);
+    },
+  );
+
+  @override
+  void dispose() {
+    _aloud.stop();
+    super.dispose();
+  }
+
+  void _toggleListen() {
+    if (_aloud.playing) {
+      _aloud.stop();
+      setState(() => _reading = null);
+    } else {
+      _aloud.play(_sentences);
+    }
+  }
+
   void _pick(int q, int option) {
     if (_picked.containsKey(q)) return;
     setState(() => _picked[q] = option);
@@ -195,6 +224,18 @@ class _ReadingBodyState extends ConsumerState<_ReadingBody> {
         ),
         const SizedBox(height: 4),
         Text(r.title, key: const ValueKey('daily-reading-title'), style: t.headlineSmall),
+        const SizedBox(height: 8),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: FilledButton.tonalIcon(
+            key: const ValueKey('daily-reading-listen'),
+            onPressed: _sentences.isEmpty ? null : _toggleListen,
+            icon: Icon(_aloud.playing ? Icons.stop_rounded : Icons.volume_up_rounded),
+            label: Text(
+              _aloud.playing ? 'Durdur · cümle ${(_reading ?? 0) + 1}/${_sentences.length}' : 'Dinle',
+            ),
+          ),
+        ),
         const SizedBox(height: 12),
         for (final para in r.text.split(RegExp(r'\n\s*\n')))
           Padding(

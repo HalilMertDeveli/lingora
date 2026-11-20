@@ -7,6 +7,7 @@ import '../data/progress.dart';
 import '../data/reading_repository.dart';
 import '../models/notes.dart';
 import '../models/reading.dart';
+import '../services/read_aloud.dart';
 import '../services/speech.dart';
 import '../services/growth/analytics.dart';
 import '../theme.dart';
@@ -195,9 +196,36 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
   /// First-try score kept while the text is shown after a listen-first quiz.
   int? _heardScore;
 
+  /// Reads the whole text sentence by sentence ("Önce dinle", the
+  /// headphones and the play button).
+  late final _aloud = ReadAloud(
+    ref.read(linePlayerProvider),
+    onSentence: (i) {
+      if (mounted) setState(() => _sentence = i ?? 0);
+    },
+  );
+
+  @override
+  void dispose() {
+    _aloud.stop();
+    super.dispose();
+  }
+
+  /// One sentence (the sentence button, previous / next).
   void _say(int i) {
+    _aloud.cancel();
     setState(() => _sentence = i.clamp(0, _sentences.length - 1));
     _speech.say(_sentences[_sentence], slow: _slow);
+  }
+
+  void _playAll({int? from}) {
+    setState(() {});
+    _aloud.play(_sentences, from: from ?? _sentence, slow: _slow);
+  }
+
+  void _stopReading() {
+    _aloud.stop();
+    setState(() {});
   }
 
   void _openWord(ReadingToken t) {
@@ -261,7 +289,10 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
               isSelected: _listening,
               icon: const Icon(Icons.headphones_rounded),
               selectedIcon: Icon(Icons.headphones_rounded, color: color),
-              onPressed: () => setState(() => _listening = !_listening),
+              onPressed: () {
+                setState(() => _listening = !_listening);
+                _listening ? _playAll() : _stopReading();
+              },
             ),
         ],
       ),
@@ -302,11 +333,15 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
               avatar: const Icon(Icons.hearing_rounded, size: 18),
               label: const Text('Önce dinle'),
               selected: _listenFirst,
-              onSelected: (on) => setState(() {
-                _listenFirst = on;
-                _listening = on || _listening;
-                _sentence = 0;
-              }),
+              onSelected: (on) {
+                setState(() {
+                  _listenFirst = on;
+                  _listening = on || _listening;
+                  _sentence = 0;
+                });
+                // Listening first means hearing the text now, from the start.
+                on ? _playAll(from: 0) : _stopReading();
+              },
             ),
           ),
         const SizedBox(height: 8),
@@ -315,7 +350,8 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
           decoration: BoxDecoration(color: Brand.surface, borderRadius: BorderRadius.circular(14)),
           child: Text(
             _hidden
-                ? 'Metin gizli. Alttaki düğmeyle cümle cümle dinle, sonra soruları cevapla; metin sorulardan sonra açılır.'
+                ? 'Metin gizli. Hikâye cümle cümle okunuyor; alttaki düğmelerle durdurup tekrar dinleyebilirsin. '
+                      'Sonra soruları cevapla; metin sorulardan sonra açılır.'
                 : _heardScore != null
                 ? 'Dinlediğin metin bu. Bilmediğin kelimelere dokun, sonra bitir.'
                 : '${kidEmoji('👆')}Her kelimeye dokunabilirsin. Altı noktalı olanların bu hikâyeye özel Türkçe notu var. '
@@ -357,10 +393,13 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
           PressableButton(
             label: 'SORULARA GEÇ',
             color: color,
-            onPressed: () => setState(() {
-              _listening = false;
-              _quiz = true;
-            }),
+            onPressed: () {
+              _aloud.stop();
+              setState(() {
+                _listening = false;
+                _quiz = true;
+              });
+            },
           ),
       ],
     );
@@ -418,6 +457,12 @@ class _StoryReaderScreenState extends ConsumerState<StoryReaderScreen> {
             tooltip: 'Sonraki cümle',
             onPressed: _sentence < _sentences.length - 1 ? () => _say(_sentence + 1) : null,
             icon: const Icon(Icons.skip_next_rounded),
+          ),
+          IconButton(
+            key: const Key('reading-play-all'),
+            tooltip: _aloud.playing ? 'Durdur' : 'Buradan sona kadar dinle',
+            onPressed: _aloud.playing ? _stopReading : _playAll,
+            icon: Icon(_aloud.playing ? Icons.pause_rounded : Icons.play_arrow_rounded),
           ),
           IconButton(
             tooltip: 'Yavaş oku',
