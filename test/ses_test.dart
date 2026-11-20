@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lingora/exercises/hands_free.dart';
 import 'package:lingora/exercises/speak_exercise.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/services/notifications.dart';
@@ -81,37 +82,35 @@ void main() {
   });
 
   group('speaking', () {
-    testWidgets('nothing heard: the button comes back and says why', (tester) async {
+    testWidgets('nothing heard: listens again by itself, says why, then offers typing', (tester) async {
       Object? ready = 'unset';
-      final speech = _SilentSpeech(issue: SpeechIssues.notHeard);
+      final speech = _SilentSpeech(issue: SpeechIssues.network);
       await _pump(tester, speech, onReady: (c) => ready = c);
-      await tester.tap(find.byIcon(Icons.mic_rounded));
       await tester.pump();
-      expect(speech.listens, 1);
-      expect(find.text(SpeechIssues.notHeard), findsOneWidget);
-      expect(find.byIcon(Icons.mic_rounded), findsOneWidget, reason: 'not stuck in "Dinliyorum…"');
-      expect(ready, isNull, reason: 'no answer to check yet');
-
-      // A second try works the same way.
-      await tester.tap(find.byIcon(Icons.mic_rounded));
-      await tester.pump();
-      expect(speech.listens, 2);
+      expect(speech.listens, 1, reason: 'no tap needed');
+      expect(find.textContaining(SpeechIssues.network), findsOneWidget);
+      expect(ready, 'unset', reason: 'no answer to check yet');
+      await tester.pump(autoRetryPause);
+      expect(speech.listens, 2, reason: 'a second try by itself');
+      await tester.pump(autoRetryPause);
+      expect(speech.listens, 1 + autoRetries);
+      await tester.pump(autoRetryPause);
+      expect(speech.listens, 1 + autoRetries, reason: 'bounded');
+      expect(find.byKey(const Key('auto-listen-gave-up')), findsOneWidget);
+      expect(find.byKey(const Key('speak-type')), findsOneWidget);
     });
 
-    testWidgets('no microphone permission: tells where to turn it on, and retries on tap', (tester) async {
+    testWidgets('no microphone permission: says so and offers to allow it, no microphone button', (
+      tester,
+    ) async {
       final speech = _SilentSpeech(ready: false, issue: SpeechIssues.noMicPermission);
       await _pump(tester, speech);
-      await tester.tap(find.byIcon(Icons.mic_rounded));
       await tester.pump();
-      expect(find.text(SpeechIssues.noMicPermission), findsOneWidget);
-      await tester.tap(find.byIcon(Icons.mic_rounded));
+      expect(find.byKey(const Key('mic-denied')), findsOneWidget);
+      expect(find.byIcon(Icons.mic_rounded), findsNothing);
+      await tester.tap(find.byKey(const Key('mic-allow')));
       await tester.pump();
-      expect(find.text(SpeechIssues.noMicPermission), findsOneWidget);
-    });
-
-    testWidgets('idle: invites to speak', (tester) async {
-      await _pump(tester, _SilentSpeech());
-      expect(find.text('Mikrofona dokun ve konuş'), findsOneWidget);
+      expect(find.byKey(const Key('mic-denied')), findsOneWidget);
     });
   });
 
@@ -139,7 +138,10 @@ void main() {
     expect(f('error_network'), SpeechIssues.network);
     expect(f('error_language_unavailable'), SpeechIssues.noEnglishRecognizer);
     expect(f('error_recognizer_busy'), SpeechIssues.busy);
-    expect(f('error_client'), contains('(error_client)'));
+    expect(f('error_server'), SpeechIssues.server);
+    expect(f('error_client'), SpeechIssues.client);
+    expect(f('error_audio'), SpeechIssues.audio);
+    expect(f('error_strange'), contains('(error_strange)'));
     expect(SpeechIssues.forError('error_no_match', heardSomething: true), SpeechIssues.notHeardClearly);
   });
 }

@@ -82,7 +82,7 @@ const sssListesi = <Sss>[
         '1) Telefonun Ayarlar > Uygulamalar > Çenebaz > İzinler bölümünden Mikrofon iznini aç. '
         '2) Konuşma tanıma Google\'ın ses hizmetini kullanır: Google uygulamasının ve "Google Konuşma '
         'Hizmetleri"nin güncel ve açık olduğundan emin ol. 3) İnternet bağlantını kontrol et. '
-        '4) Mikrofona dokunduktan sonra kısa bir an bekleyip net ve normal hızda konuş; ortam '
+        '4) Mikrofon kendiliğinden açılıp "Dinliyorum" görününce net ve normal hızda konuş; ortam '
         'gürültülüyse sessiz bir yere geç. 5) Bluetooth kulaklık bağlıysa bir kez çıkarıp tekrar dene. '
         'Olmazsa her konuşma alıştırmasında yazarak devam edebilirsin.',
     etiketler: ['mikrofon', 'konuşma', 'ses tanıma', 'izin', 'algılamıyor', 'telaffuz'],

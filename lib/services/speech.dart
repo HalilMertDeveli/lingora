@@ -59,6 +59,27 @@ String? pickEnglishLocale(String wanted, List<String> available) {
   return null;
 }
 
+/// A voice chat switched Android's global audio mode to a call
+/// (IN_COMMUNICATION, set through audioplayers' AudioContext, which changes
+/// the AudioManager for the whole app). [restoreNormalAudioMode] puts it back.
+bool callAudioModeSet = false;
+
+/// Voice chats that use call audio right now (they keep the mode).
+int callAudioUsers = 0;
+
+/// Back to MODE_NORMAL after a voice chat, so the phone's speech recognizer
+/// and the lesson audio work as usual (Samsung kept the call mode).
+Future<void> restoreNormalAudioMode() async {
+  if (!callAudioModeSet) return;
+  callAudioModeSet = false;
+  if (kIsWeb || !Platform.isAndroid) return;
+  try {
+    await AudioPlayer.global.setAudioContext(AudioContext());
+  } catch (e) {
+    debugPrint('Audio mode reset failed: $e');
+  }
+}
+
 /// Turkish texts for [speechIssue].
 abstract final class SpeechIssues {
   static const noEngine =
@@ -75,6 +96,9 @@ abstract final class SpeechIssues {
       'Telefonunda İngilizce ses tanıma paketi yok gibi görünüyor. Google uygulamasını aç: profil resmin > '
       'Ayarlar > Google Asistan ya da Ses > Çevrimdışı konuşma tanıma bölümünden "English (US)" paketini indir.';
   static const busy = 'Ses tanıma şu an meşgul. Birkaç saniye sonra tekrar dene.';
+  static const server = 'Ses tanıma hizmeti şu an cevap vermedi. Tekrar dinliyorum.';
+  static const client = 'Ses tanıma bir an takıldı. Tekrar dinliyorum.';
+  static const audio = 'Mikrofon açılamadı; başka bir uygulama kullanıyor olabilir. Tekrar deniyorum.';
 
   /// Turkish text for a speech_to_text error code; unknown codes stay
   /// visible so a failure on a real phone can be reported.
@@ -84,6 +108,9 @@ abstract final class SpeechIssues {
     'error_permission' || 'error_insufficient_permissions' => noMicPermission,
     'error_language_not_supported' || 'error_language_unavailable' => noEnglishRecognizer,
     'error_busy' || 'error_recognizer_busy' || 'error_too_many_requests' => busy,
+    'error_server' => server,
+    'error_client' => client,
+    'error_audio' => audio,
     _ => 'Ses tanıma çalışmadı ($code). Tekrar dene.',
   };
   static const notHeardClearly = 'Tam anlayamadım. Biraz daha yavaş ve net söyleyip tekrar dene.';
@@ -242,6 +269,12 @@ class SpeechService {
 
   // ---------------------------------------------------------------- listening
 
+  /// Recognizer errors worth one quiet new try right away (Samsung's
+  /// recognizer reports them now and then at the start).
+  static const _retryOnce = {'error_server', 'error_client'};
+  bool _retried = false;
+  void Function()? _retry;
+
   void Function()? _onDone;
   bool _heardSomething = false;
   Timer? _doneFallback;
@@ -305,6 +338,14 @@ class SpeechService {
 
   void _error(SpeechRecognitionError e) {
     debugPrint('Speech recognition error: ${e.errorMsg}');
+    final retry = _retry;
+    if (!_heardSomething && !_retried && retry != null && _retryOnce.contains(e.errorMsg)) {
+      _retried = true;
+      _doneFallback?.cancel();
+      _onDone = null; // the new try reports instead
+      Future<void>.delayed(const Duration(milliseconds: 300), retry);
+      return;
+    }
     final issue = SpeechIssues.forError(e.errorMsg, heardSomething: _heardSomething);
     // Words were heard before the error: judge them instead of hiding them.
     if (!(_heardSomething && e.errorMsg == 'error_no_match')) speechIssue.value = issue;
@@ -324,9 +365,19 @@ class SpeechService {
 
   /// Listens in English, reporting partial text, and calls [onDone] when
   /// recognition stops, also after an error or when nothing was heard.
-  Future<void> listen({required void Function(String words) onWords, required void Function() onDone}) async {
-    final target = _target;
+  Future<void> listen({required void Function(String words) onWords, required void Function() onDone}) {
+    _retried = false;
+    return _listen(_target, onWords: onWords, onDone: onDone);
+  }
+
+  Future<void> _listen(
+    String? target, {
+    required void Function(String words) onWords,
+    required void Function() onDone,
+  }) async {
     _target = null;
+    _retry = null;
+    if (callAudioUsers == 0) await restoreNormalAudioMode();
     if (!await canListen) {
       onDone();
       return;
@@ -337,6 +388,7 @@ class SpeechService {
     lastRecognition.value = const [];
     _finish(); // a previous session that never reported back
     _onDone = onDone;
+    _retry = () => _listen(target, onWords: onWords, onDone: onDone);
     final times = target == null
         ? (pause: const Duration(seconds: 4), total: const Duration(seconds: 20))
         : listenTimes(target.split(RegExp(r'\s+')).length);
@@ -384,6 +436,19 @@ class SpeechService {
     } catch (_) {}
     // Some recognizers never send "done" after a manual stop.
     Future<void>.delayed(const Duration(milliseconds: 1000), _finish);
+  }
+}
+
+/// The phone voice as a file, for a voice chat's own player.
+extension PhoneVoiceFile on SpeechService {
+  /// The phone voice's audio file for [text] (Android), so a voice chat can
+  /// play it on its own player (the earpiece in phone-call mode); null when
+  /// it cannot be written, and off Android.
+  Future<String?> lineFile(String text, {double rate = 1}) async {
+    if (kIsWeb || !Platform.isAndroid || runtimeType != SpeechService) return null;
+    final locale = SpeechService.englishLocale;
+    if (!await _hasVoice(locale)) return null;
+    return _synthesize(text, locale, 0.45 * rate, 1);
   }
 }
 

@@ -263,9 +263,7 @@ void main() {
       final c = await pump(tester);
       await tester.tap(find.byKey(const Key('prova-start')));
       await tester.pumpAndSettle();
-      // No microphone in tests: typing is the fallback.
-      await tester.tap(find.byKey(const Key('prova-mic')));
-      await tester.pumpAndSettle();
+      // No microphone in tests: the screen falls back to typing by itself.
       await tester.enterText(
         find.byKey(const Key('prova-answer-field')),
         'I am Mert, I am backend developer.',

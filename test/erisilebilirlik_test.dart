@@ -17,7 +17,7 @@ import 'package:lingora/data/course_repository.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/exercises/choice_exercise.dart';
 import 'package:lingora/exercises/common.dart';
-import 'package:lingora/exercises/speak_mic.dart';
+import 'package:lingora/exercises/hands_free.dart';
 import 'package:lingora/main.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/screens/conversation_screen.dart';
@@ -473,10 +473,8 @@ void main() {
         ),
       );
       expect(find.bySemanticsLabel('Dinle'), findsOneWidget);
-      await tester.pumpWidget(
-        const MaterialApp(home: Scaffold(body: MicButton(listening: false, onTap: null))),
-      );
-      expect(find.bySemanticsLabel('Mikrofon: konuş'), findsOneWidget);
+      await tester.pumpWidget(const MaterialApp(home: Scaffold(body: ListeningIndicator())));
+      expect(find.bySemanticsLabel('Dinliyorum'), findsOneWidget);
       await tester.pumpWidget(
         ProviderScope(
           overrides: [speechProvider.overrideWithValue(FakeSpeech())],

@@ -98,7 +98,7 @@ class RehearsalHomeScreen extends ConsumerWidget {
             const SizedBox(height: 20),
             FilledButton.icon(
               key: const Key('prova-start'),
-              icon: const Icon(Icons.mic_rounded),
+              icon: const Icon(Icons.play_arrow_rounded),
               label: const Text('İlk provayı başlat'),
               onPressed: () => _startFirst(context),
             ),
@@ -526,7 +526,7 @@ class _RehearsalCompareScreenState extends ConsumerState<RehearsalCompareScreen>
             ListTile(
               dense: true,
               contentPadding: EdgeInsets.zero,
-              leading: Icon(Icons.mic_rounded, color: p.success),
+              leading: Icon(Icons.record_voice_over_rounded, color: p.success),
               title: Text('Cevap: ${a.question}'),
               subtitle: Text('${countWords(a.answer)} kelime, ipucusuz ve tek seferde'),
             ),
