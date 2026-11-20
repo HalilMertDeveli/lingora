@@ -45,11 +45,6 @@ const _choice = Exercise(
   answerIndex: 1,
 );
 
-class _HandsFree extends HandsFreeSetting {
-  @override
-  bool build() => true;
-}
-
 /// A microphone that never hears anything.
 class _SilentMic implements SpeechService {
   void Function()? _onDone;
@@ -164,7 +159,6 @@ void main() {
       ProviderScope(
         overrides: [
           speechProvider.overrideWithValue(_SilentMic()),
-          handsFreeProvider.overrideWith(_HandsFree.new),
           premiumProvider.overrideWithValue(false),
           prefsProvider.overrideWithValue(prefs),
         ],

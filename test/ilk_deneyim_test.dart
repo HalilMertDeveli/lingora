@@ -219,6 +219,15 @@ void main() {
       expect(find.byKey(const Key('today-card')), findsNothing);
     });
 
+    testWidgets('BAŞLA fills its share of the row and ends at the card edge', (tester) async {
+      // Galaxy QA: a loose Flexible left the button floating mid-card with a gap on the right.
+      await pumpApp(tester, {'progress_v1': '{"onboarded": true, "remindersEnabled": false}'});
+      final card = tester.getRect(find.byKey(const Key('today-start-card')));
+      final button = tester.getRect(find.byKey(const Key('today-start')));
+      expect(button.width, greaterThan(card.width * 0.5));
+      expect(card.right - button.right, lessThan(40));
+    });
+
     testWidgets('BAŞLA opens the first step; leaving it pauses the run', (tester) async {
       await pumpApp(tester, {'progress_v1': '{"onboarded": true, "remindersEnabled": false}'});
       await tester.tap(find.textContaining('BAŞLA'));

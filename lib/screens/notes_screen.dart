@@ -675,10 +675,13 @@ class _CountPill extends StatelessWidget {
 
 /// One grammar topic as a list card: its number in the notebook, title, source.
 class _TopicCard extends StatelessWidget {
-  const _TopicCard({required this.topic, required this.all, this.number});
+  const _TopicCard({required this.topic, required this.all, this.number, this.step});
   final GrammarTopic topic;
   final List<GrammarTopic> all;
   final String? number;
+
+  /// Step of the Gramer Yolu that teaches this topic, if any.
+  final int? step;
 
   @override
   Widget build(BuildContext context) {
@@ -687,6 +690,7 @@ class _TopicCard extends StatelessWidget {
       if (number == null) t.category,
       if (t.rules.isNotEmpty) '${t.rules.length} kural',
       '${t.examples.length} örnek',
+      if (step != null) 'Gramer Yolu adım $step',
     ];
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
@@ -722,17 +726,17 @@ class _TopicCard extends StatelessWidget {
 /// Grammar notes as a numbered notebook: chapters in curriculum order
 /// (1. Temeller, 2. To be…), topics numbered inside (1.1, 1.2…), with a
 /// table of contents that jumps to a chapter.
-class GrammarListScreen extends StatefulWidget {
+class GrammarListScreen extends ConsumerStatefulWidget {
   const GrammarListScreen({super.key, required this.notes, this.initialCategory, this.initialQuery = ''});
   final NotesBundle notes;
   final String? initialCategory;
   final String initialQuery;
 
   @override
-  State<GrammarListScreen> createState() => _GrammarListScreenState();
+  ConsumerState<GrammarListScreen> createState() => _GrammarListScreenState();
 }
 
-class _GrammarListScreenState extends State<GrammarListScreen> {
+class _GrammarListScreenState extends ConsumerState<GrammarListScreen> {
   late String _query = widget.initialQuery;
   late final _search = TextEditingController(text: widget.initialQuery);
   final _keys = <String, GlobalKey>{};
@@ -764,6 +768,14 @@ class _GrammarListScreenState extends State<GrammarListScreen> {
   @override
   Widget build(BuildContext context) {
     final sections = grammarSections(widget.notes.topics, query: _query);
+    // The first Gramer Yolu step built on each topic.
+    final ordered = orderedLessons(ref.watch(grammarLessonsProvider).value ?? const <GrammarLesson>[]);
+    final stepOfTopic = <String, int>{};
+    for (final (i, l) in ordered.indexed) {
+      for (final id in l.noteIds) {
+        stepOfTopic.putIfAbsent(id, () => i + 1);
+      }
+    }
     final chapterNo = {for (var i = 0; i < _chapters.length; i++) _chapters[i].title: i + 1};
     final topicNo = {
       for (final c in _chapters)
@@ -800,6 +812,10 @@ class _GrammarListScreenState extends State<GrammarListScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
+                        if (_query.trim().isEmpty) ...[
+                          _GrammarPathCard(notes: widget.notes),
+                          const SizedBox(height: 4),
+                        ],
                         for (final s in sections) ...[
                           _SectionHeader(
                             key: _key(s.title),
@@ -808,7 +824,12 @@ class _GrammarListScreenState extends State<GrammarListScreen> {
                             number: chapterNo[s.title],
                           ),
                           for (final t in s.items)
-                            _TopicCard(topic: t, all: widget.notes.topics, number: topicNo[t.id]),
+                            _TopicCard(
+                              topic: t,
+                              all: widget.notes.topics,
+                              number: topicNo[t.id],
+                              step: stepOfTopic[t.id],
+                            ),
                         ],
                       ],
                     ),
@@ -1318,10 +1339,10 @@ class _GrammarPathCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final lessons = ref.watch(grammarLessonsProvider).value ?? const <GrammarLesson>[];
+    final lessons = orderedLessons(ref.watch(grammarLessonsProvider).value ?? const <GrammarLesson>[]);
     final p = ref.watch(progressProvider);
     final done = lessons.where((l) => p.isDone(lessonNodeId(l))).length;
-    final next = lessons.where((l) => !p.isDone(lessonNodeId(l))).firstOrNull;
+    final next = nextGrammarLesson(lessons, p);
     return TapCard(
       selected: true,
       color: Brand.primary,
@@ -1359,7 +1380,10 @@ class _GrammarPathCard extends ConsumerWidget {
                 Glyph(emoji: next.emoji, icon: Icons.play_lesson_outlined, size: 22),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: Text('Sıradaki: ${next.title}', style: const TextStyle(fontWeight: FontWeight.w700)),
+                  child: Text(
+                    'Sıradaki · Adım ${lessons.indexOf(next) + 1}: ${next.title}',
+                    style: const TextStyle(fontWeight: FontWeight.w700),
+                  ),
                 ),
                 Icon(Icons.play_circle_fill_rounded, color: Brand.primary, size: 30),
               ],

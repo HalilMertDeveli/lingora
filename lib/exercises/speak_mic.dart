@@ -4,79 +4,6 @@ import '../core/spoken_match.dart';
 import '../services/speech.dart';
 import '../theme.dart';
 
-/// Round microphone button with a ring that grows with the voice while
-/// listening, so the learner sees they are being heard.
-class MicButton extends StatelessWidget {
-  const MicButton({
-    super.key,
-    required this.listening,
-    required this.onTap,
-    this.size = 96,
-    this.color,
-    this.inkKey,
-  });
-  final bool listening;
-  final VoidCallback? onTap;
-  final double size;
-  final Color? color;
-
-  /// Key of the tappable area (tests find the button by it).
-  final Key? inkKey;
-
-  @override
-  Widget build(BuildContext context) {
-    final fill = listening ? Brand.error : (color ?? Brand.primary);
-    final ring = size * 0.45;
-    return SizedBox(
-      width: size + ring,
-      height: size + ring,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          if (listening)
-            ValueListenableBuilder<double>(
-              valueListenable: speechLevel,
-              builder: (context, level, _) => AnimatedContainer(
-                key: const Key('mic-level'),
-                duration: const Duration(milliseconds: 120),
-                curve: Curves.easeOut,
-                width: size + ring * level,
-                height: size + ring * level,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: fill.withValues(alpha: 0.12 + 0.18 * level),
-                ),
-              ),
-            ),
-          // TalkBack read an unnamed button here (QA).
-          Semantics(
-            button: true,
-            label: listening ? 'Dinlemeyi durdur' : 'Mikrofon: konuş',
-            child: Material(
-              color: fill,
-              shape: const CircleBorder(),
-              child: InkWell(
-                key: inkKey,
-                customBorder: const CircleBorder(),
-                onTap: onTap,
-                child: SizedBox(
-                  width: size,
-                  height: size,
-                  child: Icon(
-                    listening ? Icons.stop_rounded : Icons.mic_rounded,
-                    color: color == null || listening ? Brand.onPrimary : onColor(fill),
-                    size: size / 2,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 /// The target sentence with the words that were not heard in red: what to
 /// say again, not a score.
 class SpokenWordsView extends StatelessWidget {
@@ -113,7 +40,7 @@ String spokenStatus({
   required String? issue,
   required String idle,
 }) {
-  if (listening) return heard.isEmpty ? 'Dinliyorum… Şimdi söyle.' : '“$heard”';
+  if (listening) return heard.isEmpty ? 'Şimdi söyle.' : '“$heard”';
   if (issue != null) return issue;
   if (match == null) return idle;
   if (match.heard.isEmpty) return SpeechIssues.notHeard;

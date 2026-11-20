@@ -144,16 +144,21 @@ class _CourseBadgeState extends ConsumerState<CourseBadge> with SingleTickerProv
                                       fontWeight: FontWeight.w900,
                                     ),
                                   ),
-                                  Text(
-                                    look.short,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      color: p.ink,
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 14,
-                                      height: 1.2,
-                                    ),
+                                  LayoutBuilder(
+                                    builder: (context, name) {
+                                      final style = TextStyle(
+                                        color: p.ink,
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 14,
+                                        height: 1.2,
+                                      );
+                                      return Text(
+                                        fittedCourseName(context, look.short, style, name.maxWidth),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: style,
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
@@ -296,4 +301,24 @@ class _Notch extends CustomPainter {
 
   @override
   bool shouldRepaint(_Notch old) => old.color != color;
+}
+
+/// The course name for the top bar chip: whole when it fits, else its first
+/// word ("Genel İngilizce" → "Genel"), so a growing XP or gold count does not
+/// leave a cut "Genel İ…" next to the flag (QA, Galaxy M22).
+String fittedCourseName(BuildContext context, String name, TextStyle style, double maxWidth) {
+  bool fits(String s) {
+    final painter = TextPainter(
+      text: TextSpan(text: s, style: DefaultTextStyle.of(context).style.merge(style)),
+      textScaler: MediaQuery.textScalerOf(context),
+      textDirection: TextDirection.ltr,
+      maxLines: 1,
+    )..layout();
+    final ok = painter.width <= maxWidth;
+    painter.dispose();
+    return ok;
+  }
+
+  if (!maxWidth.isFinite || fits(name)) return name;
+  return name.split(' ').first;
 }

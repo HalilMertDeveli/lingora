@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -65,6 +66,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
   final awake = ValueNotifier<bool>(true);
   Timer? _sleep;
 
+  /// Any touch on the screen counts, also on a dialog, sheet or picker over a
+  /// tab root: those sit above the shell's own [Listener], and a root paused
+  /// behind them kept showing the old value after the dialog closed (the
+  /// reminder time stayed 19:00 after picking 09:51, QA Galaxy M22).
+  void _onAnyPointer(PointerEvent e) {
+    if (e is PointerDownEvent) _wake();
+  }
+
   void _wake() {
     awake.value = true;
     _sleep?.cancel();
@@ -104,6 +113,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    GestureBinding.instance.pointerRouter.addGlobalRoute(_onAnyPointer);
     _wake();
     _reset(ref.read(trackProvider));
     _restoreTab();
@@ -173,6 +183,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    GestureBinding.instance.pointerRouter.removeGlobalRoute(_onAnyPointer);
     _sleep?.cancel();
     awake.dispose();
     for (final n in _reselected.values) {
