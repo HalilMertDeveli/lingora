@@ -144,6 +144,7 @@ Progress mergeProgress(Progress local, Progress remote, {required bool localNewe
     mistakeRun: {for (final k in newer.mistakes) k: ?newer.mistakeRun[k]},
     mistakeReason: {for (final k in newer.mistakes) k: ?(newer.mistakeReason[k] ?? older.mistakeReason[k])},
     mistakeNote: {for (final k in newer.mistakes) k: ?(newer.mistakeNote[k] ?? older.mistakeNote[k])},
+    mistakePicked: {for (final k in newer.mistakes) k: ?(newer.mistakePicked[k] ?? older.mistakePicked[k])},
     // Altın: grow-only counters per device, owned items united (wallet.dart).
     wallet: mergeWallets(local.wallet, remote.wallet),
     // The goal: the later choice wins (either copy may not have one yet).

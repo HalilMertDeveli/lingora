@@ -35,6 +35,8 @@ import '../services/growth/paywall_trigger.dart';
 import '../services/growth/review_prompt.dart';
 import '../study/answer_recorder.dart';
 import '../theme.dart';
+import '../services/explain_more.dart';
+import '../ui/explain_more.dart';
 import '../ui/motion.dart';
 import '../ui/hearts.dart';
 import '../ui/premium_offer.dart';
@@ -158,6 +160,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
 
   /// English sentence the user built or typed (translate, listen).
   String _answerText = '';
+
+  /// Option tapped on a choice question (kept in the notebook when wrong).
+  int? _pickedOption;
 
   /// "Neden yanlış?" content after a wrong English answer.
   WhyWrongSection? _why;
@@ -341,7 +346,12 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       // Practised, not graded: nothing for the mistakes notebook. Others are
       // saved there after [mistakeSaveMisses] wrong answers (the lesson
       // already asks them again at the end).
-      if (!ungradedTypes.contains(_current.ex.type)) notifier.recordWrong(_current.key);
+      if (!ungradedTypes.contains(_current.ex.type)) {
+        notifier.recordWrong(
+          _current.key,
+          picked: _current.ex.type == ExerciseType.choice ? _pickedOption : null,
+        );
+      }
     }
   }
 
@@ -381,6 +391,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       _lastCorrect = null;
       _glossLocked = false;
       _answerText = '';
+      _pickedOption = null;
       _why = null;
       _spelling = null;
     });
@@ -590,6 +601,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         gloss: ref.watch(optionGlossesProvider).value?.of(_current.key, ex.options.length),
         // Unlocks at once when Premium is bought from the locked card.
         glossLocked: _glossLocked && !ref.watch(premiumProvider),
+        onPicked: (i) => _pickedOption = i,
       ),
       ExerciseType.write => WriteExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.shadow => ShadowExercise(
@@ -637,6 +649,21 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
             compact: true,
             basic: basicWhyLine(_gloss(), ex.answerIndex, explanation: explanation),
           ),
+        ],
+      );
+    }
+    // Premium, after a wrong choice answer: the full explanation, then
+    // "Anlamadım / Daha basit anlat / Soru sor" (explainMore).
+    final explain = ex.type == ExerciseType.choice && !_lastCorrect! && ref.watch(premiumProvider)
+        ? explainQuestionOf(ex, picked: _pickedOption)
+        : null;
+    if (explain != null) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (explanation.isNotEmpty) ...[ChoiceExplanation(text: explanation), const SizedBox(height: 10)],
+          ExplainMoreBox(key: ValueKey('explain-$_pos'), question: explain),
         ],
       );
     }

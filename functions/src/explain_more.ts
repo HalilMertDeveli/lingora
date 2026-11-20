@@ -4,6 +4,8 @@
 //   { question, options, answer, picked?, explanation, mode, text?, history? }
 // and gets back { answer_tr, remaining }: a short, simple Turkish answer about
 // that exact question. Premium only, with a daily cap (explainUsage/{uid}).
+// Mode "why" is the error notebook's "İncele": what kind of mistake it was and
+// why the learner's option is wrong.
 import Anthropic from "@anthropic-ai/sdk";
 import { FieldValue, Firestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
@@ -21,7 +23,7 @@ export const MAX_TEXT_CHARS = 200;
 /** Earlier follow-ups on the same question sent back for context. */
 export const MAX_HISTORY = 3;
 
-export const MODES = ["confused", "simpler", "question"] as const;
+export const MODES = ["confused", "simpler", "question", "why"] as const;
 export type ExplainMode = (typeof MODES)[number];
 
 const ANSWER_SCHEMA = {
@@ -98,7 +100,13 @@ export function explainPrompt(r: ExplainRequest): string {
       ? "The learner says: \"Anlamadım\" (I didn't understand). Explain it again in a different, clearer way, with one small example."
       : r.mode === "simpler"
         ? "The learner says: \"Daha basit anlat\" (explain more simply). Explain it as simply as possible, as if to a 12-year-old, in 2-3 sentences."
-        : `The learner asks:\n<learner_question>${r.text}</learner_question>`;
+        : r.mode === "why"
+          ? "The learner reviews this mistake in their error notebook and asks why they got it wrong. " +
+            "Start with the kind of mistake in Turkish, exactly one of: \"Kelime\", \"Gramer kuralı\", " +
+            "\"Okuma / çeldirici\", \"Çeviri / anlam\", followed by a colon. Then say why the learner's " +
+            "option looks tempting but does not fit, why the correct option fits, and give one short tip " +
+            "for similar questions. At most 4 short sentences."
+          : `The learner asks:\n<learner_question>${r.text}</learner_question>`;
   const earlier = r.history.length
     ? `\n<earlier>\n${r.history.map((h) => `Learner: ${h.q}\nYou: ${h.a}`).join("\n")}\n</earlier>`
     : "";

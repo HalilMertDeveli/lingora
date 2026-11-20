@@ -83,6 +83,19 @@ test("the prompt carries the question, both answers and the follow-up", () => {
   assert.match(EXPLAIN_SYSTEM, /Answer in Turkish, short and simple/);
 });
 
+test("the notebook's \"why\" mode asks for the kind of mistake, needing no text", () => {
+  const r = parseExplainRequest({ ...request, mode: "why" });
+  assert.ok(r);
+  assert.equal(r.mode, "why");
+  assert.equal(r.text, "");
+  const p = explainPrompt(r);
+  assert.match(p, /error notebook/);
+  assert.match(p, /Gramer kuralı/);
+  assert.match(p, /Okuma \/ çeldirici/);
+  assert.match(p, /Learner's answer: A/);
+  assert.doesNotMatch(p, /<learner_question>/);
+});
+
 test("Premium gets a short Turkish answer and the quota counts down", async () => {
   await grantPremium("u");
   const { client, calls } = fakeClient(() => jsonReply({ answer_tr: "  She tek kişi, o yüzden goes.  " }));

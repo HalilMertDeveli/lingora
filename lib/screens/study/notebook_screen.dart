@@ -6,6 +6,10 @@ import '../../data/practice.dart';
 import '../../data/progress.dart';
 import '../../models/course.dart';
 import '../../study/analysis.dart';
+import '../../data/option_glosses.dart';
+import '../../services/billing/premium.dart';
+import '../../services/explain_more.dart';
+import '../../study/mistake_diagnosis.dart';
 import '../../study/mistake_reasons.dart';
 import '../../study/mixed_review.dart';
 import '../../study/question_types.dart';
@@ -13,6 +17,7 @@ import '../../study/review_queue.dart';
 import '../../study/year_plan.dart';
 import '../../study/study_state.dart';
 import '../../theme.dart';
+import '../../ui/mistake_inspect.dart';
 import '../lesson_screen.dart';
 import '../topic_guide.dart';
 import 'methods_screen.dart';
@@ -222,6 +227,65 @@ class _Analysis extends ConsumerWidget {
   }
 }
 
+/// "Neden yanlış?" on a notebook card: the kind of mistake the app found and
+/// the reason (the learner's own option's reason with Premium, the rule for
+/// the kind otherwise), then why the right option fits.
+class _WhyBox extends StatelessWidget {
+  const _WhyBox({required this.diagnosis, required this.premium});
+  final MistakeDiagnosis diagnosis;
+  final bool premium;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.palette;
+    final d = diagnosis;
+    final right = d.rightWhy;
+    return Container(
+      key: const Key('mistake-why'),
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: p.card.withValues(alpha: 0.7),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: p.line),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Hata türü: ',
+                  style: TextStyle(color: p.muted, fontWeight: FontWeight.w700),
+                ),
+                TextSpan(
+                  text: d.kind.label,
+                  style: TextStyle(color: p.primary, fontWeight: FontWeight.w900),
+                ),
+              ],
+            ),
+            key: const Key('mistake-kind'),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            premium ? d.reason : d.kind.rule,
+            key: const Key('mistake-reason'),
+            style: TextStyle(color: p.ink, height: 1.35),
+          ),
+          if (right != null && right.trim().isNotEmpty) ...[
+            const SizedBox(height: 4),
+            Text(
+              right,
+              style: TextStyle(color: p.ink, height: 1.35, fontWeight: FontWeight.w600),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
 class _MistakeCard extends ConsumerStatefulWidget {
   const _MistakeCard({required this.item, required this.course});
   final LessonItem item;
@@ -313,6 +377,16 @@ class _MistakeCardState extends ConsumerState<_MistakeCard> {
     final unit = unitOfItem(widget.course, widget.item.key);
     final type = exerciseType(ex, unitId: unit?.id);
     final question = ex.question ?? ex.prompt ?? ex.text ?? '';
+    final picked = p.mistakePicked[widget.item.key];
+    final premium = ref.watch(premiumProvider);
+    final diagnosis = diagnoseMistake(
+      ex,
+      picked: picked,
+      gloss: ref.watch(optionGlossesProvider).value?.of(widget.item.key, ex.options.length),
+      unitId: unit?.id,
+    );
+    final explain = explainQuestionOf(ex, picked: picked);
+    final explanation = ex.explanation?.trim() ?? '';
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TapCard(
@@ -327,12 +401,39 @@ class _MistakeCardState extends ConsumerState<_MistakeCard> {
             const SizedBox(height: 4),
             Text(question, maxLines: 3, overflow: TextOverflow.ellipsis),
             const SizedBox(height: 4),
-            Text('Doğrusu: ${ex.displayAnswer}', style: const TextStyle(fontWeight: FontWeight.w800)),
-            if (reason != null && (ex.explanation?.isNotEmpty ?? false)) ...[
-              const SizedBox(height: 4),
-              Text(ex.explanation!, style: TextStyle(color: Brand.muted, fontSize: 13)),
+            if (diagnosis?.picked case final yours?)
+              Text(
+                'Senin cevabın: $yours',
+                key: const Key('mistake-picked'),
+                style: TextStyle(fontWeight: FontWeight.w700, color: Brand.tone(Brand.error)),
+              ),
+            Text(
+              'Doğrusu: ${diagnosis?.answer ?? ex.displayAnswer}',
+              key: const Key('mistake-answer'),
+              style: TextStyle(fontWeight: FontWeight.w800, color: Brand.tone(Brand.success)),
+            ),
+            if (diagnosis != null) ...[
+              const SizedBox(height: 8),
+              _WhyBox(diagnosis: diagnosis, premium: premium),
+            ],
+            if (explanation.isNotEmpty) ...[
+              const SizedBox(height: 6),
+              Text(
+                explanation,
+                key: const Key('mistake-explanation'),
+                style: TextStyle(color: Brand.muted, fontSize: 13),
+              ),
+            ],
+            if (explain != null) ...[
+              const SizedBox(height: 8),
+              MistakeInspect(key: ValueKey('inspect-${widget.item.key}'), question: explain),
             ],
             const SizedBox(height: 8),
+            Text(
+              'Sence neden yanıldın?',
+              style: TextStyle(color: Brand.muted, fontSize: 12, fontWeight: FontWeight.w700),
+            ),
+            const SizedBox(height: 4),
             Wrap(
               spacing: 6,
               runSpacing: 6,
