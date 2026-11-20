@@ -350,6 +350,23 @@ void main() {
         expect(r.turns.phase, TalkPhase.listening);
       });
     });
+
+    test('the recorder lets go during the echo tail, not before it (QA, Galaxy M22)', () {
+      fakeAsync((async) {
+        final r = Rig(async);
+        r.bargeIn.release = Completer<void>();
+        r.turns.say(const SpokenSentence('Hi! How was your day?'));
+        async.flushMicrotasks();
+        r.out.finish();
+        // The recorder takes 150 ms to stop, the echo tail is 100 ms: the
+        // microphone opens after 150 ms, not 250.
+        async.elapse(const Duration(milliseconds: 150));
+        r.bargeIn.release!.complete();
+        async.flushMicrotasks();
+        expect(r.listener.starts, 1);
+        expect(const TurnConfig().echoTail, lessThanOrEqualTo(const Duration(milliseconds: 100)));
+      });
+    });
   });
 
   group('TurnTaker typed turns', () {

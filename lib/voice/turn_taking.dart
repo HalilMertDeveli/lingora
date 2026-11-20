@@ -74,7 +74,7 @@ class TurnConfig {
     this.unfinishedExtra = const Duration(milliseconds: 500),
     this.ackDelay = const Duration(milliseconds: 300),
     this.speechLevel = 0.35,
-    this.echoTail = const Duration(milliseconds: 250),
+    this.echoTail = const Duration(milliseconds: 100),
     this.idleRestarts = 2,
   });
 
@@ -96,7 +96,10 @@ class TurnConfig {
   final double speechLevel;
 
   /// Wait after the partner stops before the microphone opens, so the room's
-  /// echo of the last word is not heard as the learner.
+  /// echo of the last word is not heard as the learner. The player reports
+  /// the end only after the recording's own closing silence, so a short wait
+  /// is enough: 250 ms here plus the barge-in microphone's stop made the
+  /// learner's turn start about 0.6 s after the partner (QA, Galaxy M22).
   final Duration echoTail;
 
   /// How often listening restarts by itself when nothing at all is said.
@@ -461,11 +464,13 @@ class TurnTaker extends ChangeNotifier {
     }
     _set(TalkPhase.idle);
     // The barge-in recorder must have let go of the microphone before the
-    // phone's recognizer starts (Samsung: error_audio / error_client).
-    await _stopDetector();
-    if (!_closed && _phase == TalkPhase.idle && _replyTurn == null) {
-      _restart = Timer(_config.echoTail, listen);
-    }
+    // phone's recognizer starts (Samsung: error_audio / error_client). It
+    // stops during the echo tail instead of before it.
+    final released = _stopDetector();
+    final tail = Completer<void>();
+    _restart = Timer(_config.echoTail, tail.complete);
+    await Future.wait([released, tail.future]);
+    if (!_closed && _phase == TalkPhase.idle && _replyTurn == null) unawaited(listen());
   }
 
   void _onBargeIn() {

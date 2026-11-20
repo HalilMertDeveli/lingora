@@ -308,7 +308,8 @@ class SpeechService {
   void Function()? _onDone;
   bool _heardSomething = false;
   Timer? _doneFallback;
-  String? _localeId;
+  Future<String>? _localeId;
+  bool _noEnglishRecognizer = false;
 
   /// The sentence the next [listen] expects (see [SpeakingTarget.listenTo]):
   /// sets how long to listen and picks the best of the recognizer's guesses.
@@ -318,6 +319,9 @@ class SpeechService {
     if (_sttReady) return true;
     try {
       _sttReady = await _stt.initialize(onStatus: _status, onError: _error);
+      // Looked up now, not on the first listening turn: it took 160 ms there
+      // between the partner's last word and the open microphone (QA, Galaxy M22).
+      if (_sttReady) unawaited(_englishLocaleId());
     } catch (_) {
       _sttReady = false;
     }
@@ -336,22 +340,23 @@ class SpeechService {
 
   /// The English locale the phone's recognizer offers, looked up once: a
   /// Turkish phone may only have en-GB, or "en" alone.
-  Future<String> _englishLocaleId() async {
-    final known = _localeId;
-    if (known != null) return known;
+  Future<String> _englishLocaleId() => _localeId ??= _lookUpEnglishLocale();
+
+  Future<String> _lookUpEnglishLocale() async {
     var pick = englishLocale.replaceAll('-', '_');
     try {
       final locales = await _stt.locales().timeout(const Duration(seconds: 3));
       final found = pickEnglishLocale(englishLocale, [for (final l in locales) l.localeId]);
       if (found == null) {
-        // Languages are listed but no English: tell where to get it, then try anyway.
-        speechIssue.value = SpeechIssues.noEnglishRecognizer;
+        // Languages are listed but no English: tell where to get it (on each
+        // listening turn, see _listen), then try anyway.
+        _noEnglishRecognizer = true;
       } else {
         pick = found;
       }
       debugPrint('Speech locale $pick of ${locales.length}');
     } catch (_) {}
-    return _localeId = pick;
+    return pick;
   }
 
   void _status(String status) {
@@ -424,6 +429,7 @@ class SpeechService {
         : listenTimes(target.split(RegExp(r'\s+')).length);
     try {
       final locale = await _englishLocaleId();
+      if (_noEnglishRecognizer) speechIssue.value = SpeechIssues.noEnglishRecognizer;
       final joiner = TranscriptJoiner();
       await _stt.listen(
         onResult: (r) {
