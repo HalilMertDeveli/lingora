@@ -110,7 +110,7 @@ testleri ve gerçek projede elle deneme listesi: `docs/giris-testleri.md`.
    ```
 
    ```bash
-   flutterfire configure --project=<proje-id> --out=lib/services/firebase/firebase_options_prod.dart --platforms=android,ios,web --android-package-name=com.lingora.lingora --ios-bundle-id=com.lingora.lingora
+   flutterfire configure --project=<proje-id> --out=lib/services/firebase/firebase_options_prod.dart --platforms=android,ios,web --android-package-name=com.cenebaz.app --ios-bundle-id=com.lingora.lingora
    ```
 
    Bu komut yer tutucu `firebase_options_prod.dart` dosyasını gerçek değerlerle değiştirir ve
@@ -135,7 +135,7 @@ testleri ve gerçek projede elle deneme listesi: `docs/giris-testleri.md`.
 
 ## Gerçek proje: dilbaz-3392e
 
-- Kayıtlı uygulamalar: Android `com.lingora.lingora`, iOS `com.lingora.lingora`, web. Teknik kimlikler eski adla kalır.
+- Kayıtlı uygulamalar: Android `com.cenebaz.app` (Play paketi, `1:1069247179653:android:0427bc7e71ed6fa87ab2ec`), eski Android `com.lingora.lingora` (Play'de başkasına ait, kullanılmıyor), iOS `com.lingora.lingora`, web. Android `namespace` ve Kotlin paketi eski adla kalır.
 - Giriş yöntemleri açık: anonim, e-posta/şifre, Google, telefon. Google için web OAuth istemcisi
   `googleServerClientId` varsayılanında (`firebase_config.dart`).
 - Android debug anahtarının SHA-1/SHA-256'sı projeye ekli. **Yayın (release) anahtarı oluşturulunca onun SHA-1 ve

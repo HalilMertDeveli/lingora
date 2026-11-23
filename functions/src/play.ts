@@ -7,7 +7,7 @@
 import { GoogleAuth } from "google-auth-library";
 
 /** Android application id (android/app/build.gradle.kts). */
-export const PACKAGE_NAME = "com.lingora.lingora";
+export const PACKAGE_NAME = "com.cenebaz.app";
 
 const SCOPE = "https://www.googleapis.com/auth/androidpublisher";
 const BASE = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${PACKAGE_NAME}/purchases`;

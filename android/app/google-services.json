@@ -7,6 +7,58 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1069247179653:android:0427bc7e71ed6fa87ab2ec",
+        "android_client_info": {
+          "package_name": "com.cenebaz.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069247179653-ga14jucj0p5vfijmf36gfh0ptfn735gu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cenebaz.app",
+            "certificate_hash": "9ca2e5841a550c564ba34d0a5731a524af23cc9f"
+          }
+        },
+        {
+          "client_id": "1069247179653-u3ifmmop4eo3kllcrec7jnemt56uqved.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cenebaz.app",
+            "certificate_hash": "5d492d78409d3cad9503555ca499b7cc8a531b82"
+          }
+        },
+        {
+          "client_id": "1069247179653-1tfadmvakc5s1p6n7qn4mnglmo6klu7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEKLLeu9wMSXdxBCHiFPSO-DM1KXKUoZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069247179653-1tfadmvakc5s1p6n7qn4mnglmo6klu7u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1069247179653-0q27dfl370j718k61bb5l9qo3mrcsurm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lingora.lingora"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1069247179653:android:b043565aa877166d7ab2ec",
         "android_client_info": {
           "package_name": "com.lingora.lingora"
@@ -19,6 +71,14 @@
           "android_info": {
             "package_name": "com.lingora.lingora",
             "certificate_hash": "9ca2e5841a550c564ba34d0a5731a524af23cc9f"
+          }
+        },
+        {
+          "client_id": "1069247179653-ol6t1vlg0e4f9vi98fhl9o3cst1e1hrf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lingora.lingora",
+            "certificate_hash": "5d492d78409d3cad9503555ca499b7cc8a531b82"
           }
         },
         {

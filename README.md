@@ -575,7 +575,7 @@ flutter run --dart-define=LINGORA_FIREBASE=emulator
 Uygulamanın adı Çenebaz'dır (önceki adlar: Lingora, Dilbaz, Dilmaç; "Dilmaç" tescilli bir marka olduğu için
 bırakıldı). Bazı teknik kimlikler eski adla kaldı, çünkü bunları değiştirmek Firebase'i ve abonelikleri bozar:
 - Dart paket adı `lingora`
-- `com.lingora.lingora`: Android `applicationId` ve iOS bundle id
+- `com.cenebaz.app`: Android `applicationId` (Play paketi; `com.lingora.lingora` Play'de alınmıştı). `com.lingora.lingora`: Android `namespace`/Kotlin paketi ve iOS bundle id
 - Play ürün kimlikleri `lingora_premium_*`, `lingora_pack_*`
 - Firestore alan adları ve analitik olay adları
 - GitHub repo adı

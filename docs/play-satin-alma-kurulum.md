@@ -18,7 +18,7 @@ Bu belge, gerçek Google Play satın almalarının Premium açması için **seni
   hesabıyla (Application Default Credentials) giriş yapar.
 
 Aşağıdaki adımları sırayla yap. Proje: **dilbaz-3392e**, paket adı:
-**com.lingora.lingora**.
+**com.cenebaz.app** (`com.lingora.lingora` Play'de başkasına ait olduğu için kullanılamadı).
 
 ---
 
@@ -108,8 +108,8 @@ bir harf farkı bile satın almayı bozar.
 
 | Ürün kimliği | Ne |
 |---|---|
-| `lingora_premium_monthly` | Aylık Premium |
-| `lingora_premium_yearly` | Yıllık Premium (7 günlük deneme teklifi: docs/abonelik.md §3.1) |
+| `lingora_premium_monthly` | Aylık Premium, **149 TL / ay** |
+| `lingora_premium_yearly` | Yıllık Premium, **899 TL / yıl** (~75 TL/ay, aylığa göre ~%50 tasarruf; 7 günlük deneme teklifi: docs/abonelik.md §3.1) |
 | `lingora_premium_family_yearly` | Aile planı, yıllık |
 
 **Para kazanma > Uygulama içi ürünler** (tek seferlik, tüketilmeyen):

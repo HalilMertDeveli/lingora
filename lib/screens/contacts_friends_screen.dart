@@ -13,7 +13,7 @@ import 'friend_name_prompt.dart';
 import 'friends_screen.dart';
 
 /// Play link shared with phone-book contacts who do not use Çenebaz.
-const dilmacPlayLink = 'https://play.google.com/store/apps/details?id=com.lingora.lingora';
+const dilmacPlayLink = 'https://play.google.com/store/apps/details?id=com.cenebaz.app';
 
 /// Invitation for a contact who is not on Çenebaz: the Play link and, when
 /// there is one, the user's friend code to type after installing.
