@@ -33,7 +33,10 @@ void main() {
     final fair = aiGuardMessage('monthly_fair_use')!;
     expect(fair, contains('adil kullanım'));
     expect(fair, contains('Ay sonuna kadar'));
-    expect(CallableConversationService.messageForCode('resource-exhausted', reason: 'monthly_fair_use'), fair);
+    expect(
+      CallableConversationService.messageForCode('resource-exhausted', reason: 'monthly_fair_use'),
+      fair,
+    );
     expect(CallableWritingService.messageForCode('resource-exhausted', reason: 'monthly_fair_use'), fair);
     expect(CallableRehearsalService.messageForCode('resource-exhausted', reason: 'monthly_fair_use'), fair);
     expect(CallableExplainMoreService.messageForCode('resource-exhausted', reason: 'monthly_fair_use'), fair);
