@@ -4,7 +4,8 @@ import 'learn_goal.dart';
 /// Paywall hero copy that follows the learner's goal ("Hedefin ne?").
 
 /// The value line under the hero, always shown without Premium.
-const paywallValueLine = "$paywallTutorAnchor. Çenebaz'da her gün sınırsız konuşma, ayda bir ders fiyatına.";
+const paywallValueLine =
+    "$paywallTutorAnchor. Çenebaz'da her gün yapay zekâyla konuşma pratiği, ayda bir ders fiyatına.";
 
 /// The tutor-price comparison the value line and some feature pitches open
 /// with; the paywall shows it once.
@@ -76,7 +77,7 @@ GoalPaywallCopy goalPaywallCopy(LearnGoal? goal, DateTime now, {bool variantB = 
       );
     case GoalKind.speaking:
       return const GoalPaywallCopy(
-        title: 'Konuşarak öğren: her gün sınırsız sohbet',
+        title: 'Konuşarak öğren: her gün yapay zekâyla sohbet',
         subtitle: 'Seyahatte ve günlük hayatta rahat konuş; hatalarını anında Türkçe düzeltelim.',
         focus: [PremiumFeature.aiConversation, PremiumFeature.pronunciationScore],
         outcomes: [
