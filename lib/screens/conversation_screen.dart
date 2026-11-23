@@ -33,7 +33,7 @@ String freeTasteOverMessage({required bool learnerSpoke}) => learnerSpoke
     ? 'Bugünkü $freeChatMessagesPerDay ücretsiz mesajını kullandın. "Bitir" ile karneni alabilirsin.'
     : "Bugünkü ücretsiz yapay zekâ hakkın doldu. Yarın yine konuşabilirsin; Premium'la her gün sınırsız.";
 
-const freeTastePitch = "Özel hoca saati 500 TL. Çenebaz'da her gün sınırsız konuşma, ayda bir ders fiyatına.";
+const freeTastePitch = "Özel hoca saati 500 TL. Çenebaz'da her gün konuşma pratiği, ayda bir ders fiyatına.";
 
 /// "Konuş" tab: pick a role-play scenario.
 class ConversationHomeScreen extends ConsumerWidget {

@@ -199,6 +199,8 @@ test("server-only collections are closed", async () => {
     "leagueWeeks/2026-11-09_0",
     "families/alice",
     "familyCodes/ABCDEFGH",
+    "aiUserSpend/alice_2026-11",
+    "aiSpend/2026-11-19_0",
   ]) {
     await assertFails(getDoc(doc(db("alice"), path)));
     await assertFails(setDoc(doc(db("alice"), path), { x: 1 }));

@@ -145,6 +145,8 @@ test("seeds every per-user collection and leaves nothing that names the account"
     "reportUsage/me": { day: "x", count: 1 },
     "usageRehearsal/me": { count: 1 },
     "explainUsage/me": { day: "x", count: 1 },
+    "aiUserSpend/me_2026-11": { uid: "me", month: "2026-11", usd: 1.5, calls: 3 },
+    "aiUserSpend/other_2026-11": { uid: "other", month: "2026-11", usd: 1, calls: 1 },
     "referrals/me": { code: "ABCDEFG" },
     "inviteCodes/ABCDEFG": { uid: "me" },
     "inviteCodes/HJKMNPQ": { uid: "other" },
@@ -199,6 +201,7 @@ test("seeds every per-user collection and leaves nothing that names the account"
     "reportUsage/me",
     "usageRehearsal/me",
     "explainUsage/me",
+    "aiUserSpend/me_2026-11",
     "referrals/me",
     "inviteCodes/ABCDEFG",
     "rehearsals/me/items/r",
@@ -214,7 +217,7 @@ test("seeds every per-user collection and leaves nothing that names the account"
   ]) {
     assert.equal(await exists(p), false, p);
   }
-  for (const p of ["classes/KLASKOD2/members/other", "inviteCodes/HJKMNPQ", "leagues/2026-W40_0_0/members/x", "orgs/o1/members/y"]) {
+  for (const p of ["classes/KLASKOD2/members/other", "inviteCodes/HJKMNPQ", "aiUserSpend/other_2026-11", "leagues/2026-W40_0_0/members/x", "orgs/o1/members/y"]) {
     assert.equal(await exists(p), true, p);
   }
   // Finding 10: the seat is freed together with the removal.

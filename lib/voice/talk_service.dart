@@ -75,7 +75,7 @@ const fairUseCode = 'fair_use';
 /// Shown when today's fair-use talking time is used up. Typing in a voice
 /// chat hits the same limit (functions/src/talk.ts), so it points elsewhere.
 const fairUseMessage =
-    'Bugün 45 dakika konuştun, harika iş! Sesin biraz dinlensin; yarın kaldığımız yerden devam edelim. '
+    'Bugün 30 dakika konuştun, harika iş! Sesin biraz dinlensin; yarın kaldığımız yerden devam edelim. '
     'Bu arada derslere, okumaya ve telaffuz koçuna devam edebilirsin.';
 
 abstract class TalkService {

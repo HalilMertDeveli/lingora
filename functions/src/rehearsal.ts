@@ -13,6 +13,7 @@ import { FieldValue, Firestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { premiumDailyLimit, THROTTLED } from "./ai_guard.js";
 import { ClaudeClient, hasPremium, MODEL } from "./converse.js";
 import { dayKey } from "./week.js";
 
@@ -342,17 +343,20 @@ export function cleanAnalysis(raw: Record<string, unknown>, req: RehearsalReques
 async function takeQuota(db: Firestore, uid: string, premium: boolean, req: RehearsalRequest, now: Date) {
   const ref = db.doc(`usageRehearsal/${uid}`);
   const day = dayKey(now);
+  const q = premium
+    ? await premiumDailyLimit(db, uid, now, DAILY_REHEARSAL_LIMIT, THROTTLED.rehearsal, "daily_quota")
+    : null;
   return db.runTransaction(async (tx) => {
     const u = (await tx.get(ref)).data() ?? {};
     const freeUsed = (u.freeUsed as number | undefined) ?? 0;
-    if (!premium) {
+    if (!q) {
       if (req.kind !== "first" || freeUsed >= FREE_REHEARSALS) throw new HttpsError("permission-denied", "premium_required");
       tx.set(ref, { freeUsed: freeUsed + 1 }, { merge: true });
       const freeLeft: number | null = FREE_REHEARSALS - freeUsed - 1;
       return { freeLeft, free: true };
     }
     const used = u.day === day ? ((u.count as number) ?? 0) : 0;
-    if (used >= DAILY_REHEARSAL_LIMIT) throw new HttpsError("resource-exhausted", "daily_quota");
+    if (used >= q.limit) throw q.error();
     tx.set(ref, { day, count: used + 1 }, { merge: true });
     const freeLeft: number | null = null;
     return { freeLeft, free: false };

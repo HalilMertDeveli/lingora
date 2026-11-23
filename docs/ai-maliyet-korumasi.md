@@ -1,8 +1,8 @@
-# Yapay zekâ maliyet koruması (App Check, cihaz sınırı, günlük bütçe)
+# Yapay zekâ maliyet koruması (App Check, cihaz sınırı, günlük bütçe, aylık adil kullanım)
 
-Yapay zekâ çağıran Cloud Functions (`converse`, `conversationReport`,
-`assessWriting`, `analyzeRehearsal`) Claude'a gitmeden önce üç kontrolden geçer
-(`functions/src/ai_guard.ts`):
+Yapay zekâ çağıran Cloud Functions (`converse`, `talk`, `conversationReport`,
+`explainMore`, `assessWriting`, `analyzeRehearsal`) Claude'a gitmeden önce bu
+kontrollerden geçer (`functions/src/ai_guard.ts`):
 
 1. **Firebase App Check**: yalnızca Google Play'den yüklenen gerçek uygulama
    çağırabilir (Android'de Play Integrity). Token yoksa cevap
@@ -16,6 +16,30 @@ Yapay zekâ çağıran Cloud Functions (`converse`, `conversationReport`,
    `freeDailyUsd`'yi geçince ücretsiz kullanıcılar, `dailyUsd`'yi geçince
    herkes o gün için `resource-exhausted / ai_budget` alır. Yeni gün (Türkiye
    saati) sıfırdan başlar.
+4. **Premium için aylık adil kullanım**: aynı maliyet kullanıcı başına
+   `aiUserSpend/{uid}_{yyyy-aa}` belgesine de eklenir (`usd`, `calls`,
+   `updatedAt`; Türkiye saatine göre ay). Bir Premium kullanıcının bu ayki
+   yapay zekâ maliyeti `premiumMonthlyUsd`'ye (varsayılan 4 $) ulaşınca
+   günlük yapay zekâ hakları ay sonuna kadar azalır. Bu bir engel değil,
+   yavaşlatmadır; dersler ve yapay zekâ kullanmayan özellikler etkilenmez.
+   Azaltılmış hak da dolunca cevap `resource-exhausted / monthly_fair_use`
+   olur ve uygulama şu mesajı gösterir: "Bu ay yapay zekâ kullanımın adil
+   kullanım sınırını aştı. Ay sonuna kadar günlük hakların azaltıldı; dersler
+   ve diğer özellikler sınırsız açık." Yeni ay sıfırdan başlar. Ücretsiz
+   kullanıcıların sınırları değişmez.
+
+   | Günlük hak (Premium) | Normal | Aylık sınır aşılınca |
+   | --- | --- | --- |
+   | Sesli konuşma (`talk`) | 30 dakika | 10 dakika |
+   | Mesaj (`converse` + `talk`, ortak) | 300 | 50 |
+   | Ek açıklama (`explainMore`) | 30 | 10 |
+   | Yazma geri bildirimi (`assessWriting`) | 20 | 5 |
+   | Konuşma karnesi (`conversationReport`) | 10 | 3 |
+   | Mülakat provası analizi (`analyzeRehearsal`) | 8 | 2 |
+
+   Değerler `ai_guard.ts` içindeki `THROTTLED` ve
+   `PREMIUM_MONTHLY_USD_CAP` sabitlerinde. `aiUserSpend` yalnızca sunucuya
+   açık (firestore.rules varsayılan kapalı kuralı) ve hesap silinince silinir.
 
 ## Ayarlar: `config/aiGuard` (Firestore, isteğe bağlı)
 
@@ -28,6 +52,7 @@ Hiç yoksa varsayılanlar geçerli. Değişiklik en geç 1 dakikada etkili olur.
 | `deviceFreeDaily` | `20` | Bir kurulumun günlük ücretsiz yapay zekâ çağrısı. |
 | `freeDailyUsd` | `30` | Bu kadar dolar harcandıktan sonra ücretsiz kullanıcılara yapay zekâ kapanır. |
 | `dailyUsd` | `150` | Bu kadar dolar harcandıktan sonra herkese kapanır (acil fren). |
+| `premiumMonthlyUsd` | `4` | Bir Premium kullanıcının bu ayki yapay zekâ maliyeti bu kadar dolara ulaşınca günlük hakları ay sonuna kadar azalır. |
 
 Fiyatlar `ai_guard.ts` içindeki `PRICE` sabitinde (claude-sonnet-5-5: girdi
 2 $, çıktı 10 $ / milyon token). Model değişirse orayı da güncelleyin.
@@ -67,7 +92,8 @@ Fiyatlar `ai_guard.ts` içindeki `PRICE` sabitinde (claude-sonnet-5-5: girdi
 
 - Fonksiyon emülatöründe `appCheck` varsayılanı `"off"`; uygulama emülatör
   modunda App Check'i hiç başlatmaz. CI'daki testler (`npm test`) etkilenmez.
-- Testler: `functions/test/ai_guard.test.ts`, `test/ai_guard_messages_test.dart`.
+- Testler: `functions/test/ai_guard.test.ts`, `functions/test/monthly_fair_use.test.ts`,
+  `test/ai_guard_messages_test.dart`.
 
 ## Uygulama tarafı
 

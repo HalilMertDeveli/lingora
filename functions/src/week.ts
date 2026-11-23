@@ -17,6 +17,12 @@ export function dayKey(now: Date): string {
   return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`;
 }
 
+/** "yyyy-mm" of the Turkish calendar month containing [now]. */
+export function monthKey(now: Date): string {
+  const d = trDate(now);
+  return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}`;
+}
+
 /** dayKey of the Monday that starts the league week containing [now]. */
 export function weekKey(now: Date): string {
   const d = trDate(now);

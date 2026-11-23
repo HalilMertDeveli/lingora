@@ -120,6 +120,10 @@ String? aiGuardMessage(String? reason) => switch (reason) {
   'app_check_required' =>
     "Bu özellik yalnızca Google Play'den yüklenen güncel uygulamada çalışır. Uygulamayı güncelle.",
   'ai_budget' => "Yapay zekâ bugün çok yoğun. Yarın tekrar dene.",
+  // Premium over the monthly AI fair-use cost: lower daily limits until the month ends.
+  'monthly_fair_use' =>
+    'Bu ay yapay zekâ kullanımın adil kullanım sınırını aştı. Ay sonuna kadar günlük hakların azaltıldı; '
+        'dersler ve diğer özellikler sınırsız açık.',
   _ => null,
 };
 

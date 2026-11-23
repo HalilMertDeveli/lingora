@@ -230,7 +230,7 @@ test("the daily character budget switches to the phone voice, not an error", asy
   assert.equal(calls.length, 0);
 });
 
-test("Premium fair use: 45 minutes a day, then a friendly stop until tomorrow", async () => {
+test("Premium fair use: 30 minutes a day, then a friendly stop until tomorrow", async () => {
   await grantPremium("u");
   await db.doc("voiceUsage/u").set({ day: "2026-11-19", ttsChars: 0, talkSeconds: FAIR_USE_SECONDS });
   const { client, calls } = streamingClient(reply("Hi!"));

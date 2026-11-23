@@ -29,6 +29,19 @@ void main() {
     );
   });
 
+  test('the monthly fair-use throttle explains itself on every AI screen', () {
+    final fair = aiGuardMessage('monthly_fair_use')!;
+    expect(fair, contains('adil kullanım'));
+    expect(fair, contains('Ay sonuna kadar'));
+    expect(
+      CallableConversationService.messageForCode('resource-exhausted', reason: 'monthly_fair_use'),
+      fair,
+    );
+    expect(CallableWritingService.messageForCode('resource-exhausted', reason: 'monthly_fair_use'), fair);
+    expect(CallableRehearsalService.messageForCode('resource-exhausted', reason: 'monthly_fair_use'), fair);
+    expect(CallableExplainMoreService.messageForCode('resource-exhausted', reason: 'monthly_fair_use'), fair);
+  });
+
   test('other reasons keep the existing texts', () {
     expect(aiGuardMessage('free_quota'), isNull);
     expect(
