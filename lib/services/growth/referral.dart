@@ -150,7 +150,7 @@ final installIdProvider = Provider<String>((ref) {
 });
 
 /// Çenebaz on Google Play.
-const dilmacPlayStoreUrl = 'https://play.google.com/store/apps/details?id=com.lingora.lingora';
+const dilmacPlayStoreUrl = 'https://play.google.com/store/apps/details?id=com.cenebaz.app';
 
 /// [dilmacPlayStoreUrl] carrying [code] as an install referrer (for a later
 /// automatic step; today the friend types the code).

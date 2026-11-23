@@ -9,8 +9,8 @@ import '../../core/emoji_compat.dart';
 /// and are never shown to the user as an offer.
 
 enum PremiumPlan {
-  monthly(id: 'lingora_premium_monthly', label: 'Aylık', period: 'ay', suggestedPriceTl: 129.99, days: 31),
-  yearly(id: 'lingora_premium_yearly', label: 'Yıllık', period: 'yıl', suggestedPriceTl: 799.99, days: 366),
+  monthly(id: 'lingora_premium_monthly', label: 'Aylık', period: 'ay', suggestedPriceTl: 149.00, days: 31),
+  yearly(id: 'lingora_premium_yearly', label: 'Yıllık', period: 'yıl', suggestedPriceTl: 899.00, days: 366),
 
   /// Family plan: the buyer plus up to [familySeats] - 1 people they invite
   /// with a code (needs the Firebase backend, see docs/abonelik.md).

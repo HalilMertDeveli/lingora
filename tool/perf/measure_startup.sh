@@ -10,7 +10,7 @@
 set -euo pipefail
 APK=$1
 RUNS=${2:-7}
-PKG=${3:-com.lingora.lingora.perf}
+PKG=${3:-com.cenebaz.app.perf}
 ADB=${ADB:-adb}
 DEV=${DEV:-emulator-5554}
 A="$ADB -s $DEV"

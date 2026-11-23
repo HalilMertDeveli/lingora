@@ -14,7 +14,7 @@ Bir maddeyi bitirdiğinde `[x]` ile işaretle.
 
 ### Mağazaya çıkış için şart
 
-- [ ] **Google Play Console hesabı aç.** Tek seferlik 25 $ ücreti var. Uygulamayı `com.lingora.lingora` paketiyle oluştur.
+- [ ] **Google Play Console hesabı aç.** Tek seferlik 25 $ ücreti var. Uygulamayı `com.cenebaz.app` paketiyle oluştur.
 - [ ] **Abonelik ürünlerini Play Console'da tanımla.**
   - Ürünler: `lingora_premium_monthly`, `lingora_premium_yearly`, aile planı ve sınav paketleri. Ürün kimlikleri [abonelik.md](abonelik.md)'de yazıyor.
   - Fiyatları sen belirle.

@@ -19,7 +19,7 @@ Reklam kullanılmaz: uygulamanın "sakin, premium" hissini bozar ve Türkiye'de 
 
 ## Fiyat önerisi (başlangıç)
 
-- Premium: aylık 79,99 TL, yıllık 599,99 TL (aylık ~50 TL); 7 gün ücretsiz deneme.
+- Premium: aylık 149 TL, yıllık 899 TL (aylık ~75 TL, aylığa göre ~%50 tasarruf); 7 gün ücretsiz deneme.
 - Aile: yıllık 899,99 TL.
 - Sınav paketi: 149,99 TL (YDS/YÖKDİL tam set), 99,99 TL (LGS tam set).
 - Kurumsal: kişi başı yıllık 300–600 TL (adet indirimi), 10 kişilik deneme.

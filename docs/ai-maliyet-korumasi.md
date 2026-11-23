@@ -43,7 +43,7 @@ Fiyatlar `ai_guard.ts` içindeki `PRICE` sabitinde (claude-sonnet-5-5: girdi
    uygulamayı bir Google Cloud projesine bağlayın: `dilbaz-3392e` projesini
    seçin ("Link a Cloud project").
 2. **Firebase konsolu > App Check > Apps > Android uygulaması
-   (`com.lingora.lingora`)**: sağlayıcı olarak **Play Integrity**'yi kaydedin.
+   (`com.cenebaz.app`)**: sağlayıcı olarak **Play Integrity**'yi kaydedin.
    İstenirse uygulama imzalama anahtarının **SHA-256** parmak izini girin
    (Play Console > Uygulama bütünlüğü > Uygulama imzalama > "App signing key
    certificate"). Yükleme anahtarı değil, Play'in imzalama anahtarı.

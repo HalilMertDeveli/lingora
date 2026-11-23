@@ -46,8 +46,8 @@ ve paywall'daki `freeItems` (`lib/screens/paywall_screen.dart`).
 
 | Ürün kimliği | Tür | Önerilen fiyat |
 | --- | --- | --- |
-| `lingora_premium_monthly` | Abonelik, 1 aylık otomatik yenilenen temel plan | **129,99 TL / ay** |
-| `lingora_premium_yearly` | Abonelik, 1 yıllık otomatik yenilenen temel plan | **799,99 TL / yıl** (~66,67 TL/ay, aylığa göre ~%49 tasarruf) |
+| `lingora_premium_monthly` | Abonelik, 1 aylık otomatik yenilenen temel plan | **149 TL / ay** |
+| `lingora_premium_yearly` | Abonelik, 1 yıllık otomatik yenilenen temel plan | **899 TL / yıl** (~75 TL/ay, aylığa göre ~%50 tasarruf) |
 | `lingora_premium_family_yearly` | Abonelik, 1 yıllık otomatik yenilenen temel plan; **5 kişiye kadar** (alan + 4 davetli), bkz. bölüm 8 | **1.199,99 TL / yıl** (kişi başı ~240 TL/yıl) |
 | `lingora_pack_yds_full` | **Tek seferlik** uygulama içi ürün (tüketilemez), bkz. bölüm 7 | **149,99 TL** |
 | `lingora_pack_lgs_full` | **Tek seferlik** uygulama içi ürün (tüketilemez), bkz. bölüm 7 | **99,99 TL** |
@@ -86,7 +86,7 @@ Henüz Google Play geliştirici hesabı yok; sırasıyla:
    Kimlik doğrulamasını tamamla.
 2. **Ödeme profili** oluştur (Ayarlar > Ödeme profili). Abonelik satmak için
    şart; banka hesabını ve vergi bilgilerini gir.
-3. **Uygulamayı oluştur**, paket adı: `com.lingora.lingora`
+3. **Uygulamayı oluştur**, paket adı: `com.cenebaz.app`
    (`android/app/build.gradle.kts` içindeki `applicationId`).
 4. **İmzalı bir sürümü** (AAB) en az **Dahili test** kanalına yükle. Google Play,
    faturalandırma iznini (`com.android.vending.BILLING`, `in_app_purchase`

@@ -26,7 +26,7 @@ DevTools zaman çizelgesine bir olay yazar (profile). Uygulama
 flutter build apk --release --target-platform android-x64 -t tool/perf/startup_main.dart \
   --dart-define=LINGORA_STARTUP_TRACE=true --dart-define=LINGORA_FIREBASE=emulator \
   --dart-define=PERF_TRACK=yds --dart-define=PERF_DONE_UNITS=20
-bash tool/perf/measure_startup.sh build/app/outputs/flutter-apk/app-release.apk 15 com.lingora.lingora
+bash tool/perf/measure_startup.sh build/app/outputs/flutter-apk/app-release.apk 15 com.cenebaz.app
 ```
 
 - `--dart-define=PERF_REMINDER_MIN=1380` günlük hatırlatmayı (23:00) da açar; `adb shell dumpsys alarm` ile 10 dakikalık pencere görülebilir.

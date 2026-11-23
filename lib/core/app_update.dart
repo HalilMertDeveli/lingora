@@ -22,7 +22,7 @@ import 'app_resume.dart';
 /// build without Firebase never block the app.
 
 /// Play Store page of the app.
-const playStorePackage = 'com.lingora.lingora';
+const playStorePackage = 'com.cenebaz.app';
 const playStoreUrl = 'https://play.google.com/store/apps/details?id=$playStorePackage';
 const _playStoreMarketUrl = 'market://details?id=$playStorePackage';
 

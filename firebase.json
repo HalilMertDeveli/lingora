@@ -126,7 +126,7 @@
       "android": {
         "default": {
           "projectId": "dilbaz-3392e",
-          "appId": "1:1069247179653:android:b043565aa877166d7ab2ec",
+          "appId": "1:1069247179653:android:0427bc7e71ed6fa87ab2ec",
           "fileOutput": "android/app/google-services.json"
         }
       },
@@ -134,7 +134,7 @@
         "lib/services/firebase/firebase_options_prod.dart": {
           "projectId": "dilbaz-3392e",
           "configurations": {
-            "android": "1:1069247179653:android:b043565aa877166d7ab2ec",
+            "android": "1:1069247179653:android:0427bc7e71ed6fa87ab2ec",
             "ios": "1:1069247179653:ios:4c89849928c7ad9d7ab2ec",
             "web": "1:1069247179653:web:bb64aecb0fc86b437ab2ec"
           }
