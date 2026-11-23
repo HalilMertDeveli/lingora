@@ -60,8 +60,10 @@ Hepsi çağrılabilir (callable) fonksiyondur ve giriş yapmış kullanıcı ist
   olarak gönderilir (`audio`: Chirp 3 HD MP3, base64; ücretsiz kullanıcıda `null`, telefon sesi okur).
   Sonuç: `{reply, correction, tip_tr, done, remaining, free, voice, talkSecondsLeft, timing}`. Düzeltmeler
   sohbet içinde söylenmez (doğal tekrar, "recast"); `correction`/`tip_tr` karneye gider. Ücretsiz: günde 3
-  mesaj (`usage/{uid}`, `converse` ile ortak). Premium: günde 45 dakika adil kullanım
-  (`voiceUsage/{uid}.talkSeconds`, aşınca `resource-exhausted` / `fair_use`) ve günde 30.000 yeni TTS
+  mesaj (`usage/{uid}`, `converse` ile ortak). Premium: günde 30 dakika adil kullanım
+  (`voiceUsage/{uid}.talkSeconds`, aşınca `resource-exhausted` / `fair_use`; aylık adil kullanım
+  sınırını aşan Premium kullanıcıda ay sonuna kadar günde 10 dakika ve 50 mesaj, aşınca
+  `resource-exhausted` / `monthly_fair_use`, bkz. docs/ai-maliyet-korumasi.md) ve günde 30.000 yeni TTS
   karakteri (`voiceUsage/{uid}.ttsChars`; aşınca hata değil, telefon sesine düşer). Karakterler (Alfie,
   Maya, Daniel Reed, Emma, Dr. Eleanor Hughes, Zoe) ve 8 ses `talk_context.ts` içinde. Her tur
   `talk_turn` günlüğüne `firstTextMs`/`firstAudioMs`/`totalMs` yazar.

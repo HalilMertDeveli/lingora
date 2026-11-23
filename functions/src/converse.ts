@@ -8,6 +8,7 @@ import { FieldValue, Firestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { premiumDailyLimit, THROTTLED } from "./ai_guard.js";
 import { hasPremium } from "./entitlement.js";
 import { SCENARIOS, systemPrompt } from "./scenarios.js";
 import { dayKey } from "./week.js";
@@ -84,18 +85,32 @@ export { hasPremium };
 /**
  * Counts one message against today's quota ([limit] per Turkish day); returns
  * how many are left. Free and Premium share the counter, so buying Premium
- * mid-day keeps the messages already used.
+ * mid-day keeps the messages already used. [error] overrides the error thrown
+ * at the limit (the monthly fair-use throttle, ai_guard.ts).
  */
-export async function takeQuota(db: Firestore, uid: string, now: Date, limit: number, free: boolean): Promise<number> {
+export async function takeQuota(
+  db: Firestore,
+  uid: string,
+  now: Date,
+  limit: number,
+  free: boolean,
+  error?: () => HttpsError,
+): Promise<number> {
   const ref = db.doc(`usage/${uid}`);
   const day = dayKey(now);
   return db.runTransaction(async (tx) => {
     const u = (await tx.get(ref)).data();
     const used = u?.day === day ? ((u.count as number) ?? 0) : 0;
-    if (used >= limit) throw new HttpsError("resource-exhausted", free ? "free_quota" : "daily_quota");
+    if (used >= limit) throw error ? error() : new HttpsError("resource-exhausted", free ? "free_quota" : "daily_quota");
     tx.set(ref, { day, count: used + 1 });
     return limit - used - 1;
   });
+}
+
+/** takeQuota for Premium: DAILY_MESSAGE_LIMIT, or THROTTLED.messages over the monthly fair-use cost. */
+export async function premiumMessageQuota(db: Firestore, uid: string, now: Date): Promise<number> {
+  const q = await premiumDailyLimit(db, uid, now, DAILY_MESSAGE_LIMIT, THROTTLED.messages, "daily_quota");
+  return takeQuota(db, uid, now, q.limit, false, q.error);
 }
 
 export async function refundQuota(db: Firestore, uid: string, now: Date): Promise<void> {
@@ -119,7 +134,9 @@ export async function converse(
   if (!scenario || !messages) throw new HttpsError("invalid-argument", "invalid_request");
 
   const free = !(await hasPremium(db, uid, now));
-  const remaining = await takeQuota(db, uid, now, free ? FREE_DAILY_MESSAGE_LIMIT : DAILY_MESSAGE_LIMIT, free);
+  const remaining = free
+    ? await takeQuota(db, uid, now, FREE_DAILY_MESSAGE_LIMIT, true)
+    : await premiumMessageQuota(db, uid, now);
 
   try {
     const response = await client.beta.messages.create({

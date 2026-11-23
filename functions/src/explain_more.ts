@@ -11,6 +11,7 @@ import { FieldValue, Firestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { premiumDailyLimit, THROTTLED } from "./ai_guard.js";
 import { ClaudeClient, hasPremium, MODEL } from "./converse.js";
 import { dayKey } from "./week.js";
 
@@ -124,12 +125,13 @@ ${ask}`;
 async function takeExplainQuota(db: Firestore, uid: string, now: Date): Promise<number> {
   const ref = db.doc(`explainUsage/${uid}`);
   const day = dayKey(now);
+  const q = await premiumDailyLimit(db, uid, now, DAILY_EXPLAIN_LIMIT, THROTTLED.explain, "explain_quota");
   return db.runTransaction(async (tx) => {
     const u = (await tx.get(ref)).data();
     const used = u?.day === day ? ((u.count as number) ?? 0) : 0;
-    if (used >= DAILY_EXPLAIN_LIMIT) throw new HttpsError("resource-exhausted", "explain_quota");
+    if (used >= q.limit) throw q.error();
     tx.set(ref, { day, count: used + 1 });
-    return DAILY_EXPLAIN_LIMIT - used - 1;
+    return q.limit - used - 1;
   });
 }
 

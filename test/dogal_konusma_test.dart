@@ -758,7 +758,7 @@ void main() {
 
       final fair = await fail('resource-exhausted', 'fair_use');
       expect(fair.code, fairUseCode);
-      expect(fair.message, contains('45 dakika'));
+      expect(fair.message, contains('30 dakika'));
       expect((await fail('resource-exhausted', 'free_quota')).freeQuotaUsed, isTrue);
       expect((await fail('unavailable', 'upstream_busy')).message, contains('yoğun'));
     });

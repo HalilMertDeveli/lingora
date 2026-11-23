@@ -75,6 +75,7 @@ export const PERSONAL_DATA: Record<string, string> = {
   referralDevices: "kept: abuse prevention, uid anonymised",
   aiDevices: "no uid: per-install free AI counters (ai_guard.ts)",
   aiSpend: "no uid: daily AI cost totals (ai_guard.ts)",
+  aiUserSpend: "deleted (uid field): monthly AI cost per learner (ai_guard.ts)",
   daily: "no uid: Günün okuması, shared by everyone (daily_reading.ts)",
   levels: "daily/*/levels: shared readings, no uid",
   stats: "no uid: aggregated daily counters (stats.ts)",
@@ -115,6 +116,8 @@ const OWNED_BY_FIELD: Array<[collection: string, field: string]> = [
   ["purchases", "uid"],
   // Invite code: otherwise a later redeem would grant days to the deleted uid.
   ["inviteCodes", "uid"],
+  // Monthly AI cost per learner ({uid}_{yyyy-mm}, ai_guard.ts).
+  ["aiUserSpend", "uid"],
   // Kurum classes the account teaches (with the students' rows in them).
   ["classes", "ownerUid"],
 ];

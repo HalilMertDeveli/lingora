@@ -13,6 +13,7 @@ import { FieldValue, Firestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { premiumDailyLimit, THROTTLED } from "./ai_guard.js";
 import { ClaudeClient, hasPremium, MODEL } from "./converse.js";
 import { dayKey } from "./week.js";
 import { FOCUS_TYPES, WRITING_TASKS, WritingTask } from "./writing_tasks.js";
@@ -121,12 +122,13 @@ const clampScore = (v: unknown) => Math.max(0, Math.min(3, Math.round(Number(v) 
 async function takeQuota(db: Firestore, uid: string, now: Date): Promise<number> {
   const ref = db.doc(`usageWriting/${uid}`);
   const day = dayKey(now);
+  const q = await premiumDailyLimit(db, uid, now, DAILY_WRITING_LIMIT, THROTTLED.writing, "daily_quota");
   return db.runTransaction(async (tx) => {
     const u = (await tx.get(ref)).data();
     const used = u?.day === day ? ((u.count as number) ?? 0) : 0;
-    if (used >= DAILY_WRITING_LIMIT) throw new HttpsError("resource-exhausted", "daily_quota");
+    if (used >= q.limit) throw q.error();
     tx.set(ref, { day, count: used + 1 });
-    return DAILY_WRITING_LIMIT - used - 1;
+    return q.limit - used - 1;
   });
 }
 

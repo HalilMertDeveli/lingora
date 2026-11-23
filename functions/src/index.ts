@@ -35,13 +35,11 @@ const anthropicApiKey = defineSecret("ANTHROPIC_API_KEY");
 let claude: conversation.ClaudeClient | undefined;
 
 /** The Claude client: the real one, or the QA fake inside the emulator only (see ai_stub.ts). */
-function claudeClient(): conversation.ClaudeClient {
-  // Metered: every response's cost feeds the daily circuit breaker (ai_guard.ts).
-  claude ??= aiGuard.meteredClient(
-    stubClaudeEnabled() ? stubClaude() : new Anthropic({ apiKey: anthropicApiKey.value() }),
-    getFirestore(),
-  );
-  return claude;
+function claudeClient(uid?: string): conversation.ClaudeClient {
+  claude ??= stubClaudeEnabled() ? stubClaude() : new Anthropic({ apiKey: anthropicApiKey.value() });
+  // Metered: every response's cost feeds the daily circuit breaker and, for a
+  // learner's call, their monthly fair-use total (ai_guard.ts).
+  return aiGuard.meteredClient(claude, getFirestore(), () => new Date(), uid);
 }
 
 /**
@@ -122,7 +120,7 @@ export const generateDailyReadings = onSchedule(
 export const converse = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, async (req) => {
   const now = new Date();
   const uid = await guardAi(req, now);
-  return conversation.converse(getFirestore(), claudeClient(), uid, req.data, now);
+  return conversation.converse(getFirestore(), claudeClient(uid), uid, req.data, now);
 });
 
 let ttsClient: tts.TtsClient | undefined;
@@ -149,9 +147,9 @@ export const talk = onCall(
     const now = new Date();
     const warm = (req.data as { warm?: unknown } | null)?.warm === true;
     const uid = await guardAi(req, now, { countFreeUse: !warm });
-    if (warm) return talking.warmTalk(claudeClient(), textToSpeech());
+    if (warm) return talking.warmTalk(claudeClient(uid), textToSpeech());
     const send = req.acceptsStreaming ? (c: talking.TalkSentence) => res?.sendChunk(c) : null;
-    return talking.talk(getFirestore(), claudeClient(), textToSpeech(), uid, req.data, now, send);
+    return talking.talk(getFirestore(), claudeClient(uid), textToSpeech(), uid, req.data, now, send);
   },
 );
 
@@ -166,7 +164,7 @@ export const speak = onCall({ timeoutSeconds: 30, concurrency: 40 }, async (req)
 export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, async (req) => {
   const now = new Date();
   const uid = await guardAi(req, now);
-  const result = await karne.conversationReport(getFirestore(), claudeClient(), uid, req.data, now);
+  const result = await karne.conversationReport(getFirestore(), claudeClient(uid), uid, req.data, now);
   // Teacher report (speaking_stats.ts); never fails the learner's karne.
   await speaking
     .recordSpeaking(getFirestore(), uid, req.data, result, now)
@@ -177,21 +175,21 @@ export const conversationReport = onCall({ secrets: [anthropicApiKey], timeoutSe
 /** { question, options, answer, picked?, explanation, mode, text?, history? } -> { answer_tr, remaining } ("Neden yanlış?" follow-up, Premium) */
 export const explainMore = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 60 }, (req) => {
   const uid = requireUid(req);
-  return explain.explainMore(getFirestore(), claudeClient(), uid, req.data, new Date());
+  return explain.explainMore(getFirestore(), claudeClient(uid), uid, req.data, new Date());
 });
 
 /** { taskId, text } -> { scores, corrections, next_tr, remaining } (general course writing tasks) */
 export const assessWriting = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 90 }, async (req) => {
   const now = new Date();
   const uid = await guardAi(req, now);
-  return writing.assessWriting(getFirestore(), claudeClient(), uid, req.data, now);
+  return writing.assessWriting(getFirestore(), claudeClient(uid), uid, req.data, now);
 });
 
 /** { rehearsalId, kind, items: [{ question, answer }], previousTags?, previousGaps? } -> analysis (Mülakat Provası) */
 export const analyzeRehearsal = onCall({ secrets: [anthropicApiKey], timeoutSeconds: 120 }, async (req) => {
   const now = new Date();
   const uid = await guardAi(req, now);
-  return rehearsal.analyzeRehearsal(getFirestore(), claudeClient(), uid, req.data, now);
+  return rehearsal.analyzeRehearsal(getFirestore(), claudeClient(uid), uid, req.data, now);
 });
 
 /** { productId, purchaseToken } -> { active, productId, expiresAt?, packs } (subscriptions, family plan, exam packs) */

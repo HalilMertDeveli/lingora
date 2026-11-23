@@ -15,6 +15,7 @@ import { FieldValue, Firestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { premiumDailyLimit, THROTTLED } from "./ai_guard.js";
 import { ClaudeClient, hasPremium, MAX_CHARS, MODEL } from "./converse.js";
 import { ScenarioPrompt } from "./scenarios.js";
 import { reportScene, resolveContext } from "./talk_context.js";
@@ -142,13 +143,17 @@ function transcriptText(lines: Line[]): string {
   return lines.map((l) => `${l.role === "user" ? "LEARNER" : "PARTNER"}: ${l.content}`).join("\n");
 }
 
-async function takeReportQuota(db: Firestore, uid: string, now: Date, limit: number): Promise<number> {
+async function takeReportQuota(db: Firestore, uid: string, now: Date, premium: boolean): Promise<number> {
   const ref = db.doc(`reportUsage/${uid}`);
   const day = dayKey(now);
+  const q = premium
+    ? await premiumDailyLimit(db, uid, now, DAILY_REPORT_LIMIT, THROTTLED.report, "report_quota")
+    : { limit: FREE_DAILY_REPORT_LIMIT, error: () => new HttpsError("resource-exhausted", "report_quota") };
+  const limit = q.limit;
   return db.runTransaction(async (tx) => {
     const u = (await tx.get(ref)).data();
     const used = u?.day === day ? ((u.count as number) ?? 0) : 0;
-    if (used >= limit) throw new HttpsError("resource-exhausted", "report_quota");
+    if (used >= limit) throw q.error();
     tx.set(ref, { day, count: used + 1 });
     return limit - used - 1;
   });
@@ -206,7 +211,7 @@ export async function conversationReport(
   const weak_words = cleanWeakWords(body.pronunciation, learnerText);
   const inFlow = cleanCorrections(body.corrections, lines);
   const premium = await hasPremium(db, uid, now);
-  const remaining = await takeReportQuota(db, uid, now, premium ? DAILY_REPORT_LIMIT : FREE_DAILY_REPORT_LIMIT);
+  const remaining = await takeReportQuota(db, uid, now, premium);
 
   try {
     const response = await client.beta.messages.create({

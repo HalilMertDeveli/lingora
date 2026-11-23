@@ -12,12 +12,14 @@
 //
 // Free users keep their 3 messages a day (shared with `converse`) and hear the
 // phone's own voice (audio: null). Premium gets the neural voice and a
-// fair-use time of FAIR_USE_MINUTES a day.
+// fair-use time of FAIR_USE_MINUTES a day (THROTTLED.talkMinutes and
+// THROTTLED.messages once over the monthly fair-use cost, ai_guard.ts).
 import Anthropic from "@anthropic-ai/sdk";
 import { Firestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions";
 import { HttpsError } from "firebase-functions/v2/https";
 
+import { monthlyFairUseError, premiumThrottled, THROTTLED } from "./ai_guard.js";
 import {
   ClaudeClient,
   DAILY_MESSAGE_LIMIT,
@@ -49,7 +51,7 @@ export const TALK_MODEL = "claude-haiku-5-5";
 export const TALK_MAX_TOKENS = 400;
 
 /** Premium fair use: estimated minutes of conversation per Turkish day. */
-export const FAIR_USE_MINUTES = 45;
+export const FAIR_USE_MINUTES = 30;
 export const FAIR_USE_SECONDS = FAIR_USE_MINUTES * 60;
 
 const REPLY_SCHEMA = {
@@ -276,10 +278,22 @@ export async function talk(
 
   const free = !(await hasPremium(db, uid, now));
   const usage = free ? null : await readVoiceUsage(db, uid, now);
-  if (usage && usage.talkSeconds >= FAIR_USE_SECONDS) {
-    throw new HttpsError("resource-exhausted", "fair_use");
+  // Over the monthly fair-use cost: shorter talk time and fewer messages a day.
+  const throttled = !free && (await premiumThrottled(db, uid, now));
+  const fairUseSeconds = throttled ? THROTTLED.talkMinutes * 60 : FAIR_USE_SECONDS;
+  if (usage && usage.talkSeconds >= fairUseSeconds) {
+    throw throttled ? monthlyFairUseError() : new HttpsError("resource-exhausted", "fair_use");
   }
-  const remaining = await takeQuota(db, uid, now, free ? FREE_DAILY_MESSAGE_LIMIT : DAILY_MESSAGE_LIMIT, free);
+  const remaining = free
+    ? await takeQuota(db, uid, now, FREE_DAILY_MESSAGE_LIMIT, true)
+    : await takeQuota(
+        db,
+        uid,
+        now,
+        throttled ? THROTTLED.messages : DAILY_MESSAGE_LIMIT,
+        false,
+        throttled ? monthlyFairUseError : undefined,
+      );
 
   const voice = voiceFor(body.voice, ctx.voice);
   const rate = rateForLevel(ctx.level);
@@ -399,7 +413,7 @@ export async function talk(
       remaining,
       free,
       voice: neural && sentences.some((s) => s.audio) ? "neural" : "device",
-      talkSecondsLeft: used === null ? null : Math.max(0, FAIR_USE_SECONDS - used),
+      talkSecondsLeft: used === null ? null : Math.max(0, fairUseSeconds - used),
       timing,
       ...(send ? {} : { sentences }),
     };
