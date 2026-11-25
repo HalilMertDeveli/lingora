@@ -595,6 +595,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     // Result, then streak, then daily goal and quests, then (after a run of lessons) a break reminder,
     // then (sometimes) a closable paywall; the last
     // "Devam" goes straight back to the path.
+    // Read before the routes are built: the builders run after this screen is gone.
+    final stoicStats = resultQuote == null
+        ? null
+        : StoicStats.of(ref.read(progressProvider), ref.read(clockProvider)());
     showEndSequence(nav, [
       (next) => LessonResultScreen(
         reward: reward,
@@ -603,9 +607,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         perfect: perfect,
         bestCombo: _bestCombo,
         quote: resultQuote,
-        stoicStats: resultQuote == null
-            ? null
-            : StoicStats.of(ref.read(progressProvider), ref.read(clockProvider)()),
+        stoicStats: stoicStats,
         showStreak: !reward.streakExtended,
         showQuests: !hasQuestStep(reward),
         onContinue: next,
