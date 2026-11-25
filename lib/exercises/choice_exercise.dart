@@ -25,8 +25,23 @@ class ChoiceExercise extends StatefulWidget {
     this.gloss,
     this.glossLocked = false,
     this.onPicked,
+    this.eliminated = const {},
+    this.wink,
+    this.lastPicked,
   });
   final Exercise ex;
+
+  /// On a retried test, the option that "winks" (glows twice) when a question
+  /// missed before comes back: the right one, as a nudge. Null = no wink.
+  final int? wink;
+
+  /// On a retried test, the wrong option picked on this question last time
+  /// ("Geçen sefer bunu seçmiştin").
+  final int? lastPicked;
+
+  /// Wrong options greyed out on a retried test (lib/data/test_retry.dart):
+  /// crossed out and not tappable.
+  final Set<int> eliminated;
 
   /// The option index the learner tapped (for the notebook's "Senin cevabın").
   final ValueChanged<int>? onPicked;
@@ -122,7 +137,10 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
               gloss: showGloss && glossOpen
                   ? optionGlossFor(widget.gloss, i, answer: ex.answerIndex ?? -1, picked: _picked)
                   : null,
-              onTap: widget.locked ? null : () => _pick(i),
+              eliminated: widget.eliminated.contains(i) && _stateOf(i) == _OptionState.idle,
+              wink: !widget.locked && widget.wink == i,
+              lastPick: !widget.locked && widget.lastPicked == i && widget.lastPicked != ex.answerIndex,
+              onTap: widget.locked || widget.eliminated.contains(i) ? null : () => _pick(i),
             ),
           ),
       ],
@@ -147,9 +165,21 @@ class _Option extends StatelessWidget {
     required this.state,
     this.onTap,
     this.gloss,
+    this.eliminated = false,
+    this.wink = false,
+    this.lastPick = false,
   });
   final String letter;
+
+  /// Glows twice to nudge the learner (see [ChoiceExercise.wink]).
+  final bool wink;
+
+  /// Marked "Geçen sefer bunu seçmiştin".
+  final bool lastPick;
   final String text;
+
+  /// Greyed out on a retried test ("2 şık elendi").
+  final bool eliminated;
 
   /// Turkish of the option, under its text.
   final Widget? gloss;
@@ -165,7 +195,7 @@ class _Option extends StatelessWidget {
       _ => p.primary,
     };
     final marked = state != _OptionState.idle;
-    return TapCard(
+    final card = TapCard(
       selected: marked,
       color: color,
       onTap: onTap,
@@ -211,8 +241,23 @@ class _Option extends StatelessWidget {
                 children: [
                   Text(
                     text,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, height: 1.3, color: p.ink),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      height: 1.3,
+                      color: p.ink,
+                      decoration: eliminated ? TextDecoration.lineThrough : null,
+                    ),
                   ),
+                  if (lastPick)
+                    Padding(
+                      key: const Key('choice-last-pick'),
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text(
+                        'Geçen sefer bunu seçmiştin',
+                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: p.error),
+                      ),
+                    ),
                   ?gloss,
                 ],
               ),
@@ -220,6 +265,12 @@ class _Option extends StatelessWidget {
           ),
         ],
       ),
+    );
+    if (wink) return OptionWink(child: card);
+    if (!eliminated) return card;
+    return Semantics(
+      label: 'Elendi',
+      child: Opacity(opacity: 0.4, child: card),
     );
   }
 }
@@ -249,6 +300,86 @@ class ChoiceExplanation extends StatelessWidget {
             child: Text(text, style: TextStyle(height: 1.4, color: p.ink)),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// A soft glow that blinks twice around an option, then stays faintly lit:
+/// the right option "winking" on a question missed in an earlier attempt.
+/// With animations turned off it is lit at once, without blinking.
+class OptionWink extends StatefulWidget {
+  const OptionWink({super.key, required this.child});
+  final Widget child;
+
+  /// Whole wink: a short wait, then two blinks.
+  static const duration = Duration(milliseconds: 2400);
+
+  @override
+  State<OptionWink> createState() => _OptionWinkState();
+}
+
+class _OptionWinkState extends State<OptionWink> with SingleTickerProviderStateMixin {
+  late final _controller = AnimationController(vsync: this, duration: OptionWink.duration);
+
+  /// Glow strength: wait, blink, blink, then a faint glow that stays.
+  late final Animation<double> _glow = TweenSequence<double>([
+    TweenSequenceItem(tween: ConstantTween(0), weight: 25),
+    for (var i = 0; i < 2; i++) ...[
+      TweenSequenceItem(
+        tween: Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: Curves.easeOut)),
+        weight: 15,
+      ),
+      TweenSequenceItem(
+        tween: Tween(begin: 1.0, end: 0.0).chain(CurveTween(curve: Curves.easeIn)),
+        weight: 15,
+      ),
+    ],
+    TweenSequenceItem(tween: Tween(begin: 0.0, end: 0.45), weight: 15),
+  ]).animate(_controller);
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (MediaQuery.disableAnimationsOf(context)) {
+      _controller.value = 1;
+    } else if (_controller.status == AnimationStatus.dismissed) {
+      _controller.forward();
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final glow = context.palette.accent;
+    return Semantics(
+      label: 'Göz kırpan şık',
+      child: AnimatedBuilder(
+        animation: _glow,
+        child: widget.child,
+        builder: (context, child) {
+          final t = _glow.value;
+          return Container(
+            key: const Key('choice-wink'),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(Radii.lg),
+              border: Border.all(color: glow.withValues(alpha: t), width: 2.5),
+              boxShadow: [
+                BoxShadow(
+                  color: glow.withValues(alpha: 0.5 * t),
+                  blurRadius: 14 * t,
+                  spreadRadius: 1,
+                ),
+              ],
+            ),
+            child: child,
+          );
+        },
       ),
     );
   }

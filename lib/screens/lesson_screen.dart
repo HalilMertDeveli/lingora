@@ -16,6 +16,7 @@ import '../data/quests.dart';
 import '../data/resume.dart';
 import '../data/skip_exam.dart';
 import '../data/stoic.dart';
+import '../data/test_retry.dart';
 import '../exercises/choice_exercise.dart';
 import '../exercises/common.dart';
 import '../exercises/fill_blank_exercise.dart';
@@ -38,12 +39,14 @@ import '../theme.dart';
 import '../services/explain_more.dart';
 import '../study/mistake_cards.dart';
 import '../study/mistake_reasons.dart' show unitOfItem;
+import '../study/question_types.dart' show exerciseType;
 import '../study/review_queue.dart' show ydsVocabProvider;
 import '../ui/explain_more.dart';
 import '../ui/motion.dart';
 import '../ui/hearts.dart';
 import '../ui/premium_offer.dart';
 import '../ui/session.dart';
+import '../ui/test_retry_widgets.dart';
 import '../ui/why_wrong.dart';
 import '../nav/flow.dart';
 import 'lesson_result_screen.dart';
@@ -177,6 +180,21 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   String? _resumeTrack;
   late final ResumeStore _resumeStore = ref.read(resumeStoreProvider);
   AppLifecycleListener? _lifecycle;
+
+  /// A test with a pass mark (not a skip exam): failed attempts are kept and
+  /// make the next one a little kinder (lib/data/test_retry.dart).
+  bool get _gated => widget.mode == LessonMode.test && widget.hearts == null;
+
+  /// Help from earlier failed attempts of this test; null for other sessions.
+  late final RetryHelp? _help = _gated
+      ? RetryHelp(ref.read(testRetryStoreProvider).load(widget.nodeId))
+      : null;
+  int get _passPercent => _help?.passPercent ?? testPassPercent;
+
+  /// Questions answered wrong in this attempt, and the option picked on them.
+  final List<LessonItem> _missed = [];
+  final Map<String, int> _wrongPicks = {};
+  final Map<String, TestHint?> _hints = {};
 
   @override
   void initState() {
@@ -330,6 +348,12 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         if (metric != null) _questStats[metric] = (_questStats[metric] ?? 0) + 1;
       } else {
         _mistakes++;
+        if (_gated) {
+          _missed.add(_current);
+          if (_current.ex.type == ExerciseType.choice && _pickedOption != null) {
+            _wrongPicks[_current.key] = _pickedOption!;
+          }
+        }
         _combo = 0;
         _shake++;
         if (_hasHearts && _heartsLeft > 0) _heartsLeft--;
@@ -492,14 +516,28 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     }
 
     // Skip exams are passed by their hearts, other tests by the pass mark.
-    if (widget.mode == LessonMode.test && !_hasHearts && _accuracy < testPassPercent) {
+    // From the third attempt on the mark is a little lower, never gone.
+    if (_gated && _accuracy < _passPercent) {
+      final record = ref
+          .read(testRetryStoreProvider)
+          .recordFail(widget.nodeId, _missed.map((it) => it.key), _wrongPicks);
+      final course = ref.read(courseProvider).value;
+      final unit = course == null ? null : unitOfItem(course, widget.nodeId);
       nav.pushReplacement(
         MaterialPageRoute<void>(
-          builder: (_) => TestFailedScreen(accuracy: _accuracy, onRetry: widget.retry == null ? null : retry),
+          builder: (_) => TestFailedScreen(
+            accuracy: _accuracy,
+            passPercent: _passPercent,
+            onRetry: widget.retry == null ? null : retry,
+            topics: missSummary(_missed, course: course, testNodeId: widget.nodeId),
+            rule: guideRule(unit?.guide),
+            nextAttempt: record.nextAttempt,
+          ),
         ),
       );
       return;
     }
+    if (_gated) ref.read(testRetryStoreProvider).clear(widget.nodeId);
 
     final xp = switch (widget.mode) {
       LessonMode.lesson => baseLessonXp + (perfect ? perfectBonusXp : 0),
@@ -557,6 +595,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     // Result, then streak, then daily goal and quests, then (after a run of lessons) a break reminder,
     // then (sometimes) a closable paywall; the last
     // "Devam" goes straight back to the path.
+    // Read before the routes are built: the builders run after this screen is gone.
+    final stoicStats = resultQuote == null
+        ? null
+        : StoicStats.of(ref.read(progressProvider), ref.read(clockProvider)());
     showEndSequence(nav, [
       (next) => LessonResultScreen(
         reward: reward,
@@ -565,9 +607,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         perfect: perfect,
         bestCombo: _bestCombo,
         quote: resultQuote,
-        stoicStats: resultQuote == null
-            ? null
-            : StoicStats.of(ref.read(progressProvider), ref.read(clockProvider)()),
+        stoicStats: stoicStats,
         showStreak: !reward.streakExtended,
         showQuests: !hasQuestStep(reward),
         onContinue: next,
@@ -617,6 +657,30 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     }
   }
 
+  /// The "İpucu" of a question missed in an earlier attempt (cached).
+  TestHint? _hintOf(LessonItem item) => _hints.putIfAbsent(item.key, () {
+    final course = ref.read(courseProvider).value;
+    final unit = course == null ? null : unitOfItem(course, item.key);
+    return hintFor(
+      item.ex,
+      guide: unit?.guide,
+      type: exerciseType(item.ex, unitId: unit?.id),
+    );
+  });
+
+  /// Over a question of a retried test: "İpucu" and how many options were
+  /// greyed out, when it was missed before.
+  Widget? _retryHelp() {
+    final help = _help;
+    final item = _current;
+    if (help == null || !help.hintsFor(item.key)) return null;
+    return TestHintButton(
+      key: ValueKey('hint-$_pos'),
+      hint: _hintOf(item),
+      eliminated: help.eliminatedFor(item).length,
+    );
+  }
+
   Widget _exercise() {
     final ex = _current.ex;
     final locked = _lastCorrect != null;
@@ -652,6 +716,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         // Unlocks at once when Premium is bought from the locked card.
         glossLocked: _glossLocked && !ref.watch(premiumProvider),
         onPicked: (i) => _pickedOption = i,
+        eliminated: _help?.eliminatedFor(_current) ?? const {},
+        wink: _help?.winkFor(_current),
+        lastPicked: _help?.lastPickFor(_current),
       ),
       ExerciseType.write => WriteExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.shadow => ShadowExercise(
@@ -790,6 +857,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
+                        if (_pos == 0 && (_help?.attempt ?? 1) >= hintFromAttempt) RetryBanner(help: _help!),
+                        ?_retryHelp(),
                         Shake(trigger: _shake, child: _exercise()),
                         // "Bildir": on the question and, after checking, on its explanation.
                         ReportQuestionButton(target: _reportTarget),
