@@ -16,6 +16,7 @@ class WordBank extends StatelessWidget {
     required this.chosen,
     required this.onChanged,
     this.locked = false,
+    this.capitalizeFirst = false,
   });
 
   /// The tiles, already in the order they are shown.
@@ -24,8 +25,19 @@ class WordBank extends StatelessWidget {
   final ValueChanged<List<int>> onChanged;
   final bool locked;
 
+  /// Shows the first word of the answer line with a capital letter (the
+  /// tiles of a dinle-yaz bank are lower case, so the capital gives nothing
+  /// away). Display only: checking ignores case.
+  final bool capitalizeFirst;
+
   /// The sentence the learner built so far.
-  static String sentence(List<String> words, List<int> chosen) => chosen.map((i) => words[i]).join(' ');
+  static String sentence(List<String> words, List<int> chosen, {bool capitalizeFirst = false}) {
+    final text = chosen.map((i) => words[i]).join(' ');
+    return capitalizeFirst ? capitalized(text) : text;
+  }
+
+  /// [text] with its first letter in upper case.
+  static String capitalized(String text) => text.isEmpty ? text : text[0].toUpperCase() + text.substring(1);
 
   void _set(List<int> next) {
     if (!locked) onChanged(next);
@@ -36,7 +48,7 @@ class WordBank extends StatelessWidget {
     // Short phones (720x1280 at 320 dpi is 640 dp): with the full gaps the
     // last row of the word bank sat under the Kontrol et bar, out of sight.
     final compact = MediaQuery.sizeOf(context).height < 700;
-    final built = sentence(words, chosen);
+    final built = sentence(words, chosen, capitalizeFirst: capitalizeFirst);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -57,13 +69,16 @@ class WordBank extends StatelessWidget {
               spacing: 8,
               runSpacing: 8,
               children: [
-                for (final i in chosen)
+                for (final (n, i) in chosen.indexed)
                   PopIn(
                     key: ValueKey(i),
                     from: 0.7,
                     child: Semantics(
                       hint: 'Cevaptan çıkar',
-                      child: WordChip(words[i], onTap: () => _set([...chosen]..remove(i))),
+                      child: WordChip(
+                        n == 0 && capitalizeFirst ? capitalized(words[i]) : words[i],
+                        onTap: () => _set([...chosen]..remove(i)),
+                      ),
                     ),
                   ),
               ],
@@ -142,11 +157,24 @@ const _fillers = [
   'have', 'has', 'do', 'can', 'will', 'was', 'go', 'my', 'your', 'with', 'from', 'for', 'at', 'here',
 ];
 
-/// The tiles for building [sentence]: its words plus two (up to three words)
-/// or three distractors, shuffled. Depends only on [sentence], so the same
-/// exercise always shows the same bank (screenshots, retries, tests).
+/// [sentenceTiles] in lower case, so the capital of the first word does not
+/// give away which tile starts the sentence. "I" (and "I'm", "I'll"…) stays,
+/// and so does a word capitalised mid-sentence: that is a name ("Ali",
+/// "London"). A name as the very first word cannot be told apart and is
+/// lower-cased too; checking ignores case anyway.
+List<String> bankTiles(String sentence) => [
+  for (final (i, w) in sentenceTiles(sentence).indexed)
+    w == 'I' || w.startsWith("I'") || w.startsWith('I’') || (i > 0 && w != w.toLowerCase())
+        ? w
+        : w.toLowerCase(),
+];
+
+/// The tiles for building [sentence]: its words ([bankTiles]) plus two (up
+/// to three words) or three distractors, shuffled. Depends only on
+/// [sentence], so the same exercise always shows the same bank (screenshots,
+/// retries, tests).
 List<String> sentenceBank(String sentence) {
-  final tiles = sentenceTiles(sentence);
+  final tiles = bankTiles(sentence);
   final used = {for (final t in tiles) normalizeAnswer(t)};
   final want = tiles.length <= 3 ? 2 : 3;
   final picked = <String>[];

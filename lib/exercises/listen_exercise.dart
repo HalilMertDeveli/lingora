@@ -58,7 +58,7 @@ class _ListenExerciseState extends ConsumerState<ListenExercise> {
 
   void _built(List<int> chosen) {
     setState(() => _chosen = chosen);
-    final text = WordBank.sentence(_bank, chosen);
+    final text = WordBank.sentence(_bank, chosen, capitalizeFirst: true);
     widget.onText?.call(text);
     // Tiles are real words: no spelling slip to forgive, so a distractor one
     // letter off ("an" for "a") is simply wrong.
@@ -88,7 +88,13 @@ class _ListenExerciseState extends ConsumerState<ListenExercise> {
         ),
         SizedBox(height: _useBank ? 20 : 32),
         if (_useBank)
-          WordBank(words: _bank, chosen: _chosen, locked: widget.locked, onChanged: _built)
+          WordBank(
+            words: _bank,
+            chosen: _chosen,
+            locked: widget.locked,
+            onChanged: _built,
+            capitalizeFirst: true,
+          )
         else
           TextField(
             key: const Key('listen-field'),

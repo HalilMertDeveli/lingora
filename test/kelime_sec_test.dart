@@ -85,18 +85,30 @@ void main() {
       ]);
       expect(sentenceTiles('Good morning, thank you!'), ['Good', 'morning', 'thank', 'you']);
     });
+    test('bank tiles are lower case except I and names', () {
+      expect(bankTiles("Good morning, I'm Ali from London."), [
+        'good',
+        'morning',
+        "I'm",
+        'Ali',
+        'from',
+        'London',
+      ]);
+      expect(bankTiles('I think you are right'), ['I', 'think', 'you', 'are', 'right']);
+      expect(WordBank.sentence(['good', 'morning'], [0, 1], capitalizeFirst: true), 'Good morning');
+    });
 
     test('the sentence words plus distractors that are not in it, always the same', () {
       final bank = sentenceBank('You are a teacher');
-      expect(bank, containsAll(['You', 'are', 'a', 'teacher']));
+      expect(bank, containsAll(['you', 'are', 'a', 'teacher']));
       expect(bank.length, 4 + 3);
-      final extra = [...bank]..removeWhere(['You', 'are', 'a', 'teacher'].contains);
+      final extra = [...bank]..removeWhere(['you', 'are', 'a', 'teacher'].contains);
       expect(extra.map((w) => w.toLowerCase()).toSet().intersection({'you', 'are', 'a', 'teacher'}), isEmpty);
       expect(sentenceBank('You are a teacher'), bank);
       // Short sentences get two distractors; confusers come first.
       final short = sentenceBank('Good morning');
       expect(short.length, 4);
-      expect(short, containsAll(['Good', 'morning', 'well', 'evening']));
+      expect(short, containsAll(['good', 'morning', 'well', 'evening']));
     });
   });
 
@@ -121,9 +133,11 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(TextField), findsNothing);
       expect(find.byKey(const Key('listen-use-keyboard')), findsOneWidget);
+      expect(_tile('Good'), findsNothing);
+      expect(_tile('good'), findsOneWidget);
       expect(p.grader, isNull);
 
-      await tester.tap(_tile('Good'));
+      await tester.tap(_tile('good'));
       await tester.pumpAndSettle();
       await tester.tap(_tile('morning'));
       await tester.pumpAndSettle();
@@ -134,10 +148,10 @@ void main() {
       // Tapping an answered tile puts it back in the bank.
       await tester.tap(_answered('Good'));
       await tester.pumpAndSettle();
-      expect(p.text, 'morning');
+      expect(p.text, 'Morning');
       expect(_answered('Good'), findsNothing);
       expect(p.grader!(), isFalse);
-      await tester.tap(_answered('morning'));
+      await tester.tap(_answered('Morning'));
       await tester.pumpAndSettle();
       expect(p.grader, isNull);
     });
@@ -148,11 +162,11 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(_tile('morning'));
       await tester.pumpAndSettle();
-      await tester.tap(_tile('Good'));
+      await tester.tap(_tile('good'));
       await tester.pumpAndSettle();
       expect(p.grader!(), isFalse);
 
-      await tester.tap(_answered('morning'));
+      await tester.tap(_answered('Morning'));
       await tester.pumpAndSettle();
       await tester.tap(_tile('evening'));
       await tester.pumpAndSettle();
@@ -190,7 +204,7 @@ void main() {
       final p = await _pump(tester, (p) => _listenWidget(p, ex: long));
       await tester.tap(find.byKey(const Key('listen-use-bank')));
       await tester.pumpAndSettle();
-      for (final w in sentenceTiles(long.text!)) {
+      for (final w in bankTiles(long.text!)) {
         await tester.tap(_tile(w).first);
         await tester.pumpAndSettle();
       }
