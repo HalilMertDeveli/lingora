@@ -17,8 +17,8 @@ class RetryBanner extends StatelessWidget {
     final lines = [
       if (help.eased) 'Bu denemede geçme sınırı %${help.passPercent}.',
       eliminates
-          ? 'Daha önce takıldığın sorularda ipucu var ve bazı yanlış şıklar elendi.'
-          : 'Daha önce takıldığın sorularda “İpucu” düğmesi var.',
+          ? 'Daha önce takıldığın sorularda doğru şık sana göz kırpacak, bazı yanlış şıklar elendi.'
+          : 'Daha önce takıldığın sorularda doğru şık sana göz kırpacak, “İpucu” da var.',
     ];
     return Container(
       key: const Key('retry-banner'),

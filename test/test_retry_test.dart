@@ -322,6 +322,22 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('retry-banner')), findsOneWidget);
       expect(find.textContaining('%$easedPassPercent'), findsNothing);
+      // The right option winks; the wrong one picked last time is marked.
+      expect(find.byKey(const Key('choice-wink')), findsOneWidget);
+      expect(
+        find.descendant(
+          of: find.byKey(const Key('choice-option-1')),
+          matching: find.byKey(const Key('choice-wink')),
+        ),
+        findsNothing,
+      );
+      expect(
+        find.descendant(
+          of: find.byKey(const Key('choice-option-1')),
+          matching: find.byKey(const Key('choice-last-pick')),
+        ),
+        findsOneWidget,
+      );
       expect(find.byKey(const Key('hint-card')), findsNothing);
       await tester.tap(find.byKey(const Key('hint-button')));
       await tester.pumpAndSettle();

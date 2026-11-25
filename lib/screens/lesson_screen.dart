@@ -717,6 +717,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         glossLocked: _glossLocked && !ref.watch(premiumProvider),
         onPicked: (i) => _pickedOption = i,
         eliminated: _help?.eliminatedFor(_current) ?? const {},
+        wink: _help?.winkFor(_current),
+        lastPicked: _help?.lastPickFor(_current),
       ),
       ExerciseType.write => WriteExercise(key: key, ex: ex, locked: locked, onReady: onReady),
       ExerciseType.shadow => ShadowExercise(

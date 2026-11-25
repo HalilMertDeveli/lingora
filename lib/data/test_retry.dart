@@ -15,7 +15,8 @@ import 'progress.dart';
 //
 // * Attempt 1: no help, pass with [testPassPercent].
 // * Attempt [hintFromAttempt]+: questions missed before show "İpucu" (a short
-//   rule and a note about the wrong options; never the answer).
+//   rule and a note about the wrong options), the right option "winks" (glows
+//   twice) and the wrong one picked last time is marked.
 // * Attempt [eliminateFromAttempt]+: also up to [maxEliminatedOptions] wrong
 //   options of those questions are greyed out, and the pass mark drops to
 //   [easedPassPercent].
@@ -130,6 +131,13 @@ class RetryHelp {
 
   /// Whether question [key] gets "İpucu" (missed before, hints are on).
   bool hintsFor(String key) => attempt >= hintFromAttempt && record.missed.containsKey(key);
+
+  /// The option of [item] that winks when the question comes back: the right
+  /// one, on questions missed before (from [hintFromAttempt] on).
+  int? winkFor(LessonItem item) => hintsFor(item.key) ? item.ex.answerIndex : null;
+
+  /// The wrong option picked on [item] last time, on a question missed before.
+  int? lastPickFor(LessonItem item) => hintsFor(item.key) ? record.picked[item.key] : null;
 
   /// Options of [item] greyed out on this attempt (none for most questions).
   Set<int> eliminatedFor(LessonItem item) {
