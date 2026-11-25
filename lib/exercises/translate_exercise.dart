@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../core/text.dart';
 import '../models/course.dart';
 import '../theme.dart';
-import '../ui/motion.dart';
 import 'common.dart';
+import 'word_bank.dart';
 
 /// Build the translation by tapping words from a shuffled word bank.
 class TranslateExercise extends StatefulWidget {
@@ -32,21 +32,19 @@ class _TranslateExerciseState extends State<TranslateExercise> {
     widget.ex.tokens,
     'bank:${widget.ex.text ?? ''}:${widget.ex.tokens.join(' ')}',
   );
-  final List<int> _chosen = [];
+  List<int> _chosen = const [];
 
-  void _update(VoidCallback change) {
+  void _changed(List<int> chosen) {
     if (widget.locked) return;
-    setState(change);
-    final text = _chosen.map((i) => _bank[i]).join(' ');
+    setState(() => _chosen = chosen);
+    final text = WordBank.sentence(_bank, chosen);
     widget.onText?.call(text);
-    widget.onReady(_chosen.isEmpty ? null : () => matchesAny(text, widget.ex.answers));
+    widget.onReady(chosen.isEmpty ? null : () => matchesAny(text, widget.ex.answers));
   }
 
   @override
   Widget build(BuildContext context) {
     final ex = widget.ex;
-    // Short phones (720x1280 at 320 dpi is 640 dp): with the full gaps the
-    // last row of the word bank sat under the Kontrol et bar, out of sight.
     final compact = MediaQuery.sizeOf(context).height < 700;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,38 +67,7 @@ class _TranslateExerciseState extends State<TranslateExercise> {
           ],
         ),
         SizedBox(height: compact ? 12 : 24),
-        Container(
-          constraints: BoxConstraints(minHeight: compact ? 84 : 110),
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(color: Brand.line, width: 2),
-              bottom: BorderSide(color: Brand.line, width: 2),
-            ),
-          ),
-          child: Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [
-              for (final i in _chosen)
-                PopIn(
-                  key: ValueKey(i),
-                  from: 0.7,
-                  child: WordChip(_bank[i], onTap: () => _update(() => _chosen.remove(i))),
-                ),
-            ],
-          ),
-        ),
-        SizedBox(height: compact ? 14 : 28),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 8,
-          runSpacing: 10,
-          children: [
-            for (var i = 0; i < _bank.length; i++)
-              WordChip(_bank[i], hidden: _chosen.contains(i), onTap: () => _update(() => _chosen.add(i))),
-          ],
-        ),
+        WordBank(words: _bank, chosen: _chosen, locked: widget.locked, onChanged: _changed),
       ],
     );
   }
