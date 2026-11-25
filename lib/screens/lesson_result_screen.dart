@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/stoic.dart';
+import '../data/test_retry.dart';
 import '../nav/flow.dart';
 import '../theme.dart';
 import '../data/wallet.dart' show GoldReason;
@@ -18,6 +19,7 @@ import '../ui/my_avatar.dart';
 import '../ui/mascot.dart';
 import '../ui/motion.dart';
 import '../ui/stoic_card.dart';
+import '../ui/test_retry_widgets.dart';
 import 'invite_nudge.dart';
 import 'sync_status_line.dart';
 
@@ -615,43 +617,93 @@ class BreakReminderScreen extends StatelessWidget {
 
 /// Shown when a unit test ends below the pass mark.
 class TestFailedScreen extends StatelessWidget {
-  const TestFailedScreen({super.key, required this.accuracy, this.onRetry});
+  const TestFailedScreen({
+    super.key,
+    required this.accuracy,
+    this.onRetry,
+    this.passPercent = testPassPercent,
+    this.topics = const [],
+    this.rule,
+    this.nextAttempt = 1,
+  });
   final int accuracy;
   final VoidCallback? onRetry;
 
+  /// Pass mark of the attempt that just ended.
+  final int passPercent;
+
+  /// "Hatalarının özeti": topics missed most (none: no summary).
+  final List<MissedTopic> topics;
+
+  /// The unit's short rule, under the topics.
+  final String? rule;
+
+  /// The attempt "Tekrar dene" starts (1-based); from [hintFromAttempt] on it
+  /// comes with hints.
+  final int nextAttempt;
+
   @override
-  Widget build(BuildContext context) => Scaffold(
-    body: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            const Spacer(),
-            const Mascot(mood: Mood.sad, size: 150, react: true),
-            const SizedBox(height: 12),
-            Text('Az kaldı!', style: Theme.of(context).textTheme.headlineSmall),
-            const SizedBox(height: 10),
-            Text(
-              '%$accuracy doğru yaptın. Geçmek için %$testPassPercent gerekiyor.\n'
-              'Sık takıldığın sorular "Hatalarını çalış" listesine eklenir.',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
-            ),
-            const Spacer(),
-            if (onRetry != null) ...[
-              PressableButton(label: 'TEKRAR DENE', onPressed: onRetry),
-              const SizedBox(height: 12),
+  Widget build(BuildContext context) {
+    final withHints = nextAttempt >= hintFromAttempt;
+    final next = nextAttemptLine(nextAttempt);
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 12),
+                      const Mascot(mood: Mood.sad, size: 130, react: true),
+                      const SizedBox(height: 12),
+                      Text('Az kaldı!', style: Theme.of(context).textTheme.headlineSmall),
+                      const SizedBox(height: 10),
+                      Text(
+                        '%$accuracy doğru yaptın. Geçmek için %$passPercent gerekiyor.\n'
+                        'Sık takıldığın sorular "Hatalarını çalış" listesine eklenir.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Brand.muted, fontSize: 16, height: 1.4),
+                      ),
+                      if (topics.isNotEmpty) ...[
+                        const SizedBox(height: 16),
+                        MissSummaryCard(topics: topics, rule: rule),
+                      ],
+                      if (onRetry != null && next.isNotEmpty) ...[
+                        const SizedBox(height: 12),
+                        Text(
+                          next,
+                          key: const Key('next-attempt-line'),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Brand.muted, fontSize: 15, height: 1.4),
+                        ),
+                      ],
+                      const SizedBox(height: 12),
+                    ],
+                  ),
+                ),
+              ),
+              if (onRetry != null) ...[
+                PressableButton(
+                  key: const Key('test-retry'),
+                  label: withHints ? 'TEKRAR DENE (İPUÇLARIYLA)' : 'TEKRAR DENE',
+                  onPressed: onRetry,
+                ),
+                const SizedBox(height: 12),
+              ],
+              PressableButton(
+                label: 'ŞİMDİLİK ÇIK',
+                outlined: true,
+                onPressed: () => Navigator.of(context).pop(),
+              ),
             ],
-            PressableButton(
-              label: 'ŞİMDİLİK ÇIK',
-              outlined: true,
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ],
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 /// Shown when a skip exam ("Atlama sınavı") runs out of hearts. Nothing on

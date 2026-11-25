@@ -25,8 +25,13 @@ class ChoiceExercise extends StatefulWidget {
     this.gloss,
     this.glossLocked = false,
     this.onPicked,
+    this.eliminated = const {},
   });
   final Exercise ex;
+
+  /// Wrong options greyed out on a retried test (lib/data/test_retry.dart):
+  /// crossed out and not tappable.
+  final Set<int> eliminated;
 
   /// The option index the learner tapped (for the notebook's "Senin cevabın").
   final ValueChanged<int>? onPicked;
@@ -122,7 +127,8 @@ class _ChoiceExerciseState extends State<ChoiceExercise> {
               gloss: showGloss && glossOpen
                   ? optionGlossFor(widget.gloss, i, answer: ex.answerIndex ?? -1, picked: _picked)
                   : null,
-              onTap: widget.locked ? null : () => _pick(i),
+              eliminated: widget.eliminated.contains(i) && _stateOf(i) == _OptionState.idle,
+              onTap: widget.locked || widget.eliminated.contains(i) ? null : () => _pick(i),
             ),
           ),
       ],
@@ -147,9 +153,13 @@ class _Option extends StatelessWidget {
     required this.state,
     this.onTap,
     this.gloss,
+    this.eliminated = false,
   });
   final String letter;
   final String text;
+
+  /// Greyed out on a retried test ("2 şık elendi").
+  final bool eliminated;
 
   /// Turkish of the option, under its text.
   final Widget? gloss;
@@ -165,7 +175,7 @@ class _Option extends StatelessWidget {
       _ => p.primary,
     };
     final marked = state != _OptionState.idle;
-    return TapCard(
+    final card = TapCard(
       selected: marked,
       color: color,
       onTap: onTap,
@@ -211,7 +221,13 @@ class _Option extends StatelessWidget {
                 children: [
                   Text(
                     text,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, height: 1.3, color: p.ink),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      height: 1.3,
+                      color: p.ink,
+                      decoration: eliminated ? TextDecoration.lineThrough : null,
+                    ),
                   ),
                   ?gloss,
                 ],
@@ -220,6 +236,11 @@ class _Option extends StatelessWidget {
           ),
         ],
       ),
+    );
+    if (!eliminated) return card;
+    return Semantics(
+      label: 'Elendi',
+      child: Opacity(opacity: 0.4, child: card),
     );
   }
 }
