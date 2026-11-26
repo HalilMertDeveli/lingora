@@ -71,7 +71,11 @@ CourseLook courseLook(Track t) => switch (t.id) {
     short: 'Yazılım kelimeleri',
     forWhom: 'Yazılım dünyasının kelimelerini hızlıca öğrenmek isteyenler için.',
     level: 'B1+',
-    highlights: ['Kelime haritası: bildiklerini ayıkla', 'Aralıklı tekrar kartları', 'Commit, PR, stand-up dili'],
+    highlights: [
+      'Kelime haritası: bildiklerini ayıkla',
+      'Aralıklı tekrar kartları',
+      'Commit, PR, stand-up dili',
+    ],
   ),
   'yds' => const CourseLook(
     color: Color(0xFFD9480F),
@@ -188,7 +192,12 @@ class CourseShelfNotifier extends Notifier<CourseShelf> {
 
   /// Puts [trackId] on the shelf, selects it and arms the badge hint.
   void add(String trackId) {
-    _save(state.copyWith(added: state.added.contains(trackId) ? null : [...state.added, trackId], hintArmed: true));
+    _save(
+      state.copyWith(
+        added: state.added.contains(trackId) ? null : [...state.added, trackId],
+        hintArmed: true,
+      ),
+    );
     ref.read(progressProvider.notifier).setTrack(trackId);
   }
 
@@ -232,7 +241,11 @@ List<String> followedTrackIds({
 String lastStudiedLabel(int? millis, DateTime now) {
   if (millis == null) return 'Henüz çalışılmadı';
   final then = DateTime.fromMillisecondsSinceEpoch(millis);
-  final days = DateTime(now.year, now.month, now.day).difference(DateTime(then.year, then.month, then.day)).inDays;
+  final days = DateTime(
+    now.year,
+    now.month,
+    now.day,
+  ).difference(DateTime(then.year, then.month, then.day)).inDays;
   if (days <= 0) return 'Son çalışma: bugün';
   if (days == 1) return 'Son çalışma: dün';
   if (days < 7) return 'Son çalışma: $days gün önce';

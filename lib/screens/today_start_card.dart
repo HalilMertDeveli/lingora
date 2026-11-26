@@ -139,7 +139,8 @@ final todaySequenceProvider = Provider<TodaySequence?>((ref) {
 /// Opens [kind]'s activity. Returns false when there is nothing to open.
 Future<bool> launchTodayStep(BuildContext context, WidgetRef ref, TodayStepKind kind) async {
   final nav = Navigator.of(context, rootNavigator: true);
-  Future<void> full(Widget screen) => nav.push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => screen));
+  Future<void> full(Widget screen) =>
+      nav.push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => screen));
   final p = ref.read(progressProvider);
   final today = dayKey(ref.read(clockProvider)());
   switch (kind) {
@@ -224,7 +225,8 @@ class TodayStartCard extends ConsumerWidget {
     }
     if (seq == null || seq.isEmpty) return const SizedBox.shrink();
     final showPlan =
-        ref.watch(trackProvider).id == 'yds' || ref.watch(progressProvider.select((p) => p.studyPlan != null));
+        ref.watch(trackProvider).id == 'yds' ||
+        ref.watch(progressProvider.select((p) => p.studyPlan != null));
     final t = Theme.of(context).textTheme;
     final kid = context.isKid;
     return Padding(
@@ -294,10 +296,12 @@ class TodayStartCard extends ConsumerWidget {
                         minimumSize: const Size(64, 44),
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                       ),
-                      onPressed: () => Navigator.of(
-                        context,
-                        rootNavigator: true,
-                      ).push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => const TodayRunScreen())),
+                      onPressed: () => Navigator.of(context, rootNavigator: true).push(
+                        MaterialPageRoute<void>(
+                          fullscreenDialog: true,
+                          builder: (_) => const TodayRunScreen(),
+                        ),
+                      ),
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(seq.doneCount == 0 ? 'BAŞLA' : 'DEVAM ET', maxLines: 1),
@@ -329,12 +333,19 @@ class _StepChip extends StatelessWidget {
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (step.done) ...[Icon(Icons.check_rounded, size: 16, color: Brand.success), const SizedBox(width: 4)],
+        if (step.done) ...[
+          Icon(Icons.check_rounded, size: 16, color: Brand.success),
+          const SizedBox(width: 4),
+        ],
         Flexible(
           child: Text(
             step.title,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, color: step.done ? Brand.success : null),
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 13,
+              color: step.done ? Brand.success : null,
+            ),
           ),
         ),
       ],

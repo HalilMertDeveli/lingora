@@ -51,7 +51,9 @@ Future<ProviderContainer> _pump(
   final prefs = await SharedPreferences.getInstance();
   await tester.binding.setSurfaceSize(const Size(420, 860));
   addTearDown(() => tester.binding.setSurfaceSize(null));
-  tester.platformDispatcher.accessibilityFeaturesTestValue = FakeAccessibilityFeatures(disableAnimations: !animations);
+  tester.platformDispatcher.accessibilityFeaturesTestValue = FakeAccessibilityFeatures(
+    disableAnimations: !animations,
+  );
   addTearDown(tester.platformDispatcher.clearAccessibilityFeaturesTestValue);
   final container = ProviderContainer(
     overrides: [
@@ -162,14 +164,19 @@ void main() {
       final dev = find.byKey(const Key('course-card-pro_dev'));
       expect(dev, findsOneWidget);
       expect(find.descendant(of: dev, matching: find.text('Son çalışma: bugün')), findsOneWidget);
-      expect(find.descendant(of: dev, matching: find.textContaining('1/${_dev.allNodes.length} adım')), findsOneWidget);
+      expect(
+        find.descendant(of: dev, matching: find.textContaining('1/${_dev.allNodes.length} adım')),
+        findsOneWidget,
+      );
 
       await _scrollTo(tester, find.byKey(const Key('course-add-yds')));
       expect(find.text('YENİ BİR KURS EKLE'), findsOneWidget);
       expect(find.byKey(const Key('course-add-pro_dev')), findsNothing, reason: 'already followed');
     });
 
-    testWidgets('"Devam et" on another course switches to it and keeps every course\'s progress', (tester) async {
+    testWidgets('"Devam et" on another course switches to it and keeps every course\'s progress', (
+      tester,
+    ) async {
       final devNode = _dev.allNodes.first.id;
       final generalNode = _general.allNodes.first.id;
       final c = await _pump(

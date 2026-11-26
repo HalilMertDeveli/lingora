@@ -184,8 +184,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     IconButton(
                       icon: const Icon(Icons.arrow_back),
                       tooltip: 'Geri',
-                      onPressed: () =>
-                          _pages.previousPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut),
+                      onPressed: () => _pages.previousPage(
+                        duration: const Duration(milliseconds: 280),
+                        curve: Curves.easeOut,
+                      ),
                     )
                   else
                     const SizedBox(width: 48),
@@ -219,7 +221,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 ),
               ),
               if (_page == 0)
-                FilledButton(key: const ValueKey('onboarding-next'), onPressed: _next, child: const Text('Başla'))
+                FilledButton(
+                  key: const ValueKey('onboarding-next'),
+                  onPressed: _next,
+                  child: const Text('Başla'),
+                )
               else ...[
                 FilledButton(
                   key: const ValueKey('onboarding-start'),
@@ -264,7 +270,9 @@ class _SignInLink extends ConsumerWidget {
           final ok = await Navigator.of(context)
               .push(MaterialPageRoute<bool>(builder: (_) => AuthScreen(service: service)));
           if (ok == true) {
-            messenger.showSnackBar(const SnackBar(content: Text('Giriş yapıldı. İlerlemen bu hesaba bağlı.')));
+            messenger.showSnackBar(
+              const SnackBar(content: Text('Giriş yapıldı. İlerlemen bu hesaba bağlı.')),
+            );
           }
         },
         child: const Text('Zaten hesabın var mı? Giriş yap'),

@@ -152,7 +152,10 @@ void main() {
       expect(choice.ex.options[choice.ex.answerIndex!], 'I agree with you.');
       expect(choice.ex.explanation, contains('"agree" zaten bir fiil'));
       // The learner can build the mistake too, and gets "Neden yanlış?".
-      expect(items.any((i) => i.ex.tokens.contains('am') && i.ex.answers.contains('I agree with you')), isTrue);
+      expect(
+        items.any((i) => i.ex.tokens.contains('am') && i.ex.answers.contains('I agree with you')),
+        isTrue,
+      );
     });
 
     testWidgets('"I am agree" shows why it is wrong, in Turkish', (tester) async {
@@ -168,7 +171,12 @@ void main() {
           ],
           child: MaterialApp(
             theme: buildTheme(),
-            home: LessonScreen(nodeId: firstLessonId, title: firstLessonTitle, items: [item], color: Colors.indigo),
+            home: LessonScreen(
+              nodeId: firstLessonId,
+              title: firstLessonTitle,
+              items: [item],
+              color: Colors.indigo,
+            ),
           ),
         ),
       );
@@ -196,7 +204,10 @@ void main() {
         reminderPromptDue(const Progress(onboarded: true, lessonsDone: 1, xpByDay: {'2026-11-18': 10}), now),
         isTrue,
       );
-      expect(reminderPromptDue(const Progress(onboarded: true, lessonsDone: 5, remindersEnabled: false), now), isFalse);
+      expect(
+        reminderPromptDue(const Progress(onboarded: true, lessonsDone: 5, remindersEnabled: false), now),
+        isFalse,
+      );
     });
 
     testWidgets('the daily goal is asked on the path after a few lessons', (tester) async {
@@ -226,7 +237,9 @@ void main() {
   });
 
   group('Bugün on Öğren', () {
-    testWidgets('one card with the sequence and a single BAŞLA; Pratik has no second "Bugün"', (tester) async {
+    testWidgets('one card with the sequence and a single BAŞLA; Pratik has no second "Bugün"', (
+      tester,
+    ) async {
       await pumpApp(tester, {'progress_v1': '{"onboarded": true, "remindersEnabled": false}'});
       expect(find.byKey(const Key('today-start-card')), findsOneWidget);
       expect(find.text('Bugün ne yapacağım?'), findsOneWidget);

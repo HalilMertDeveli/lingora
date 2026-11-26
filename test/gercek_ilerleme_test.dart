@@ -19,10 +19,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 AnswerLog _a(String key, String day, bool ok) => AnswerLog(key: key, day: day, correct: ok, seconds: 5);
 
-Future<ProviderContainer> _container(DateTime Function() clock, [Map<String, Object> prefs = const {}]) async {
+Future<ProviderContainer> _container(
+  DateTime Function() clock, [
+  Map<String, Object> prefs = const {},
+]) async {
   SharedPreferences.setMockInitialValues(prefs);
   final p = await SharedPreferences.getInstance();
-  final c = ProviderContainer(overrides: [prefsProvider.overrideWithValue(p), clockProvider.overrideWithValue(clock)]);
+  final c = ProviderContainer(
+    overrides: [prefsProvider.overrideWithValue(p), clockProvider.overrideWithValue(clock)],
+  );
   addTearDown(c.dispose);
   return c;
 }
@@ -30,7 +35,9 @@ Future<ProviderContainer> _container(DateTime Function() clock, [Map<String, Obj
 void main() {
   group('Bugün sequence', () {
     test('review → lesson → listening from what is due', () {
-      final s = buildTodaySequence(const TodayInputs(cardsDue: 12, nextLesson: 'Tanışma', listening: 'Kafede'));
+      final s = buildTodaySequence(
+        const TodayInputs(cardsDue: 12, nextLesson: 'Tanışma', listening: 'Kafede'),
+      );
       expect(s.summary, '5 dk tekrar → 1 ders → kısa dinleme');
       expect(s.steps.first.detail, '12 kart');
       expect(s.doneCount, 0);
@@ -161,7 +168,10 @@ void main() {
 
     test('XP plays no part', () {
       final now = DateTime(2026, 11, 19);
-      const e = LearningEvidence(wordsPassed: {'a': '2026-11-01', 'b': '2026-11-18'}, mistakesCleared: {'q': 'x'});
+      const e = LearningEvidence(
+        wordsPassed: {'a': '2026-11-01', 'b': '2026-11-18'},
+        mistakesCleared: {'q': 'x'},
+      );
       final r = realProgress(e, const StudyLog(), now);
       expect(r.wordsPassed, 2);
       expect(r.wordsPassedThisWeek, 1);
@@ -173,14 +183,23 @@ void main() {
   group('sync status', () {
     final now = DateTime(2026, 11, 19, 12);
     test('one honest line per real state', () {
-      expect(syncStatusText(const SyncStatus(SyncState.guest), now), 'Bu telefonda kayıtlı (giriş yapınca yedeklenir)');
+      expect(
+        syncStatusText(const SyncStatus(SyncState.guest), now),
+        'Bu telefonda kayıtlı (giriş yapınca yedeklenir)',
+      );
       expect(syncStatusText(const SyncStatus(SyncState.off), now), 'Bu telefonda kayıtlı');
       expect(
-        syncStatusText(SyncStatus(SyncState.synced, lastSyncedAt: now.subtract(const Duration(seconds: 20))), now),
+        syncStatusText(
+          SyncStatus(SyncState.synced, lastSyncedAt: now.subtract(const Duration(seconds: 20))),
+          now,
+        ),
         'Hesabına yedeklendi · az önce',
       );
       expect(
-        syncStatusText(SyncStatus(SyncState.synced, lastSyncedAt: now.subtract(const Duration(minutes: 5))), now),
+        syncStatusText(
+          SyncStatus(SyncState.synced, lastSyncedAt: now.subtract(const Duration(minutes: 5))),
+          now,
+        ),
         'Hesabına yedeklendi · 5 dk önce',
       );
       expect(syncStatusText(const SyncStatus(SyncState.pending), now), 'İnternet gelince yedeklenecek');
