@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/app_links.dart';
 import '../data/app_settings.dart';
+import '../data/course_shelf.dart';
 import '../data/first_lesson.dart';
 import '../data/placement.dart';
 import '../data/progress.dart';
@@ -129,6 +130,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       ),
     );
     if (!mounted) return;
+    // The first lesson is off the path, but it is real study: the course
+    // counts as started (Kurslarım) once it is finished.
+    if (ref.read(progressProvider).completed.containsKey(firstLessonId)) {
+      ref.read(courseShelfProvider.notifier).markStudied();
+    }
     _finish(method: 'first_lesson', track: plan.trackId);
   }
 
@@ -178,10 +184,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     IconButton(
                       icon: const Icon(Icons.arrow_back),
                       tooltip: 'Geri',
-                      onPressed: () => _pages.previousPage(
-                        duration: const Duration(milliseconds: 280),
-                        curve: Curves.easeOut,
-                      ),
+                      onPressed: () =>
+                          _pages.previousPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOut),
                     )
                   else
                     const SizedBox(width: 48),
@@ -215,11 +219,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 ),
               ),
               if (_page == 0)
-                FilledButton(
-                  key: const ValueKey('onboarding-next'),
-                  onPressed: _next,
-                  child: const Text('Başla'),
-                )
+                FilledButton(key: const ValueKey('onboarding-next'), onPressed: _next, child: const Text('Başla'))
               else ...[
                 FilledButton(
                   key: const ValueKey('onboarding-start'),
@@ -264,9 +264,7 @@ class _SignInLink extends ConsumerWidget {
           final ok = await Navigator.of(context)
               .push(MaterialPageRoute<bool>(builder: (_) => AuthScreen(service: service)));
           if (ok == true) {
-            messenger.showSnackBar(
-              const SnackBar(content: Text('Giriş yapıldı. İlerlemen bu hesaba bağlı.')),
-            );
+            messenger.showSnackBar(const SnackBar(content: Text('Giriş yapıldı. İlerlemen bu hesaba bağlı.')));
           }
         },
         child: const Text('Zaten hesabın var mı? Giriş yap'),

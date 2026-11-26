@@ -71,11 +71,7 @@ CourseLook courseLook(Track t) => switch (t.id) {
     short: 'Yazılım kelimeleri',
     forWhom: 'Yazılım dünyasının kelimelerini hızlıca öğrenmek isteyenler için.',
     level: 'B1+',
-    highlights: [
-      'Kelime haritası: bildiklerini ayıkla',
-      'Aralıklı tekrar kartları',
-      'Commit, PR, stand-up dili',
-    ],
+    highlights: ['Kelime haritası: bildiklerini ayıkla', 'Aralıklı tekrar kartları', 'Commit, PR, stand-up dili'],
   ),
   'yds' => const CourseLook(
     color: Color(0xFFD9480F),
@@ -166,7 +162,7 @@ class CourseShelfNotifier extends Notifier<CourseShelf> {
   CourseShelf build() {
     // Whenever XP is earned, the selected track was just studied.
     ref.listen(progressProvider.select((p) => p.totalXp), (prev, next) {
-      if (prev != null && next > prev) _stampStudied();
+      if (prev != null && next > prev) markStudied();
     });
     final raw = ref.read(prefsProvider).getString(key);
     if (raw == null) return const CourseShelf();
@@ -182,7 +178,9 @@ class CourseShelfNotifier extends Notifier<CourseShelf> {
     ref.read(prefsProvider).setString(key, jsonEncode(s.toJson()));
   }
 
-  void _stampStudied() {
+  /// Stamps the selected track as studied now. Also called after the
+  /// onboarding first lesson, which can end before this notifier listens.
+  void markStudied() {
     final id = ref.read(progressProvider).trackId;
     final now = ref.read(clockProvider)().millisecondsSinceEpoch;
     _save(state.copyWith(lastStudied: {...state.lastStudied, id: now}));
@@ -190,12 +188,7 @@ class CourseShelfNotifier extends Notifier<CourseShelf> {
 
   /// Puts [trackId] on the shelf, selects it and arms the badge hint.
   void add(String trackId) {
-    _save(
-      state.copyWith(
-        added: state.added.contains(trackId) ? null : [...state.added, trackId],
-        hintArmed: true,
-      ),
-    );
+    _save(state.copyWith(added: state.added.contains(trackId) ? null : [...state.added, trackId], hintArmed: true));
     ref.read(progressProvider.notifier).setTrack(trackId);
   }
 
@@ -239,11 +232,7 @@ List<String> followedTrackIds({
 String lastStudiedLabel(int? millis, DateTime now) {
   if (millis == null) return 'Henüz çalışılmadı';
   final then = DateTime.fromMillisecondsSinceEpoch(millis);
-  final days = DateTime(
-    now.year,
-    now.month,
-    now.day,
-  ).difference(DateTime(then.year, then.month, then.day)).inDays;
+  final days = DateTime(now.year, now.month, now.day).difference(DateTime(then.year, then.month, then.day)).inDays;
   if (days <= 0) return 'Son çalışma: bugün';
   if (days == 1) return 'Son çalışma: dün';
   if (days < 7) return 'Son çalışma: $days gün önce';

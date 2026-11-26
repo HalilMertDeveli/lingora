@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/course_repository.dart';
+import '../data/first_lesson.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/sections.dart';
@@ -64,6 +65,13 @@ Set<String> finishedToday(Progress p, DayBaseline? base, String today) {
   };
 }
 
+/// Lessons among the nodes [done] today. The onboarding first lesson is off
+/// the path but still today's lesson.
+int lessonsFinished(Set<String> done, Map<String, NodeType> types) {
+  const lessonTypes = {NodeType.lesson, NodeType.test, NodeType.story};
+  return done.where((id) => id == firstLessonId || lessonTypes.contains(types[id])).length;
+}
+
 /// New words a day: the study plan's, else the default.
 final _newPerDayProvider = Provider<int>((ref) {
   final hasPlan = ref.watch(progressProvider.select((p) => p.studyPlan != null));
@@ -108,7 +116,6 @@ final todayInputsProvider = Provider<TodayInputs?>((ref) {
   final log = ref.watch(studyLogProvider);
   final done = finishedToday(p, ref.watch(dayBaselineProvider), today);
   final types = {for (final n in course.allNodes) n.id: n.type};
-  const lessonTypes = {NodeType.lesson, NodeType.test, NodeType.story};
   return TodayInputs(
     cardsDue: queue?.due.length ?? 0,
     mistakesDue: queue?.mistakes.length ?? 0,
@@ -116,7 +123,7 @@ final todayInputsProvider = Provider<TodayInputs?>((ref) {
         p.wordLast.values.where((d) => d == today).length +
         log.answers.where((a) => a.day == today && a.source == 'practice').length,
     nextLesson: targets.lesson?.title,
-    lessonsToday: done.where((id) => lessonTypes.contains(types[id])).length,
+    lessonsToday: lessonsFinished(done, types),
     listening: targets.listening?.title,
     listenedToday: done.any((id) => types[id] == NodeType.listening),
     readingWordsToday: p.readingWordsOn(today),
@@ -132,8 +139,7 @@ final todaySequenceProvider = Provider<TodaySequence?>((ref) {
 /// Opens [kind]'s activity. Returns false when there is nothing to open.
 Future<bool> launchTodayStep(BuildContext context, WidgetRef ref, TodayStepKind kind) async {
   final nav = Navigator.of(context, rootNavigator: true);
-  Future<void> full(Widget screen) =>
-      nav.push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => screen));
+  Future<void> full(Widget screen) => nav.push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => screen));
   final p = ref.read(progressProvider);
   final today = dayKey(ref.read(clockProvider)());
   switch (kind) {
@@ -218,8 +224,7 @@ class TodayStartCard extends ConsumerWidget {
     }
     if (seq == null || seq.isEmpty) return const SizedBox.shrink();
     final showPlan =
-        ref.watch(trackProvider).id == 'yds' ||
-        ref.watch(progressProvider.select((p) => p.studyPlan != null));
+        ref.watch(trackProvider).id == 'yds' || ref.watch(progressProvider.select((p) => p.studyPlan != null));
     final t = Theme.of(context).textTheme;
     final kid = context.isKid;
     return Padding(
@@ -289,12 +294,10 @@ class TodayStartCard extends ConsumerWidget {
                         minimumSize: const Size(64, 44),
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                       ),
-                      onPressed: () => Navigator.of(context, rootNavigator: true).push(
-                        MaterialPageRoute<void>(
-                          fullscreenDialog: true,
-                          builder: (_) => const TodayRunScreen(),
-                        ),
-                      ),
+                      onPressed: () => Navigator.of(
+                        context,
+                        rootNavigator: true,
+                      ).push(MaterialPageRoute<void>(fullscreenDialog: true, builder: (_) => const TodayRunScreen())),
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(seq.doneCount == 0 ? 'BAŞLA' : 'DEVAM ET', maxLines: 1),
@@ -326,19 +329,12 @@ class _StepChip extends StatelessWidget {
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (step.done) ...[
-          Icon(Icons.check_rounded, size: 16, color: Brand.success),
-          const SizedBox(width: 4),
-        ],
+        if (step.done) ...[Icon(Icons.check_rounded, size: 16, color: Brand.success), const SizedBox(width: 4)],
         Flexible(
           child: Text(
             step.title,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 13,
-              color: step.done ? Brand.success : null,
-            ),
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, color: step.done ? Brand.success : null),
           ),
         ),
       ],

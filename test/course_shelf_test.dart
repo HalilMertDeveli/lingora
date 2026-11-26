@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/app_settings.dart';
+import 'package:lingora/data/catalog.dart';
 import 'package:lingora/data/course_repository.dart';
 import 'package:lingora/data/course_shelf.dart';
 import 'package:lingora/data/progress.dart';
@@ -13,6 +14,7 @@ import 'package:lingora/main.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/models/vocab.dart';
 import 'package:lingora/nav/course_badge.dart';
+import 'package:lingora/screens/my_courses_screen.dart';
 import 'package:lingora/services/notifications.dart';
 import 'package:lingora/services/speech.dart';
 import 'package:lingora/ui/first_tour.dart';
@@ -49,9 +51,7 @@ Future<ProviderContainer> _pump(
   final prefs = await SharedPreferences.getInstance();
   await tester.binding.setSurfaceSize(const Size(420, 860));
   addTearDown(() => tester.binding.setSurfaceSize(null));
-  tester.platformDispatcher.accessibilityFeaturesTestValue = FakeAccessibilityFeatures(
-    disableAnimations: !animations,
-  );
+  tester.platformDispatcher.accessibilityFeaturesTestValue = FakeAccessibilityFeatures(disableAnimations: !animations);
   addTearDown(tester.platformDispatcher.clearAccessibilityFeaturesTestValue);
   final container = ProviderContainer(
     overrides: [
@@ -118,6 +118,13 @@ void main() {
       expect(lastStudiedLabel(ago(15), now), 'Son çalışma: 2 hafta önce');
     });
 
+    test('a course studied before any path step says so, not "Henüz başlamadın"', () {
+      final t = trackById('tr_en');
+      expect(progressLine(t, (done: 0, total: 10)), 'Henüz başlamadın · 10 adım');
+      expect(progressLine(t, (done: 0, total: 10), studied: true), 'Başladın · yolda 10 adım');
+      expect(progressLine(t, (done: 5, total: 10), studied: true), '%50 tamamlandı · 5/10 adım');
+    });
+
     test('the shelf survives a JSON round trip', () {
       const s = CourseShelf(added: ['yds'], lastStudied: {'yds': 5}, hintArmed: false);
       final back = CourseShelf.fromJson(jsonDecode(jsonEncode(s.toJson())) as Map<String, dynamic>);
@@ -155,19 +162,14 @@ void main() {
       final dev = find.byKey(const Key('course-card-pro_dev'));
       expect(dev, findsOneWidget);
       expect(find.descendant(of: dev, matching: find.text('Son çalışma: bugün')), findsOneWidget);
-      expect(
-        find.descendant(of: dev, matching: find.textContaining('1/${_dev.allNodes.length} adım')),
-        findsOneWidget,
-      );
+      expect(find.descendant(of: dev, matching: find.textContaining('1/${_dev.allNodes.length} adım')), findsOneWidget);
 
       await _scrollTo(tester, find.byKey(const Key('course-add-yds')));
       expect(find.text('YENİ BİR KURS EKLE'), findsOneWidget);
       expect(find.byKey(const Key('course-add-pro_dev')), findsNothing, reason: 'already followed');
     });
 
-    testWidgets('"Devam et" on another course switches to it and keeps every course\'s progress', (
-      tester,
-    ) async {
+    testWidgets('"Devam et" on another course switches to it and keeps every course\'s progress', (tester) async {
       final devNode = _dev.allNodes.first.id;
       final generalNode = _general.allNodes.first.id;
       final c = await _pump(

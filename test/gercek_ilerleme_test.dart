@@ -4,7 +4,9 @@ import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/core/app_version.dart';
+import 'package:lingora/data/first_lesson.dart';
 import 'package:lingora/data/progress.dart';
+import 'package:lingora/models/course.dart';
 import 'package:lingora/goals/learn_goal.dart';
 import 'package:lingora/screens/sync_status_line.dart';
 import 'package:lingora/screens/today_start_card.dart';
@@ -17,15 +19,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 AnswerLog _a(String key, String day, bool ok) => AnswerLog(key: key, day: day, correct: ok, seconds: 5);
 
-Future<ProviderContainer> _container(
-  DateTime Function() clock, [
-  Map<String, Object> prefs = const {},
-]) async {
+Future<ProviderContainer> _container(DateTime Function() clock, [Map<String, Object> prefs = const {}]) async {
   SharedPreferences.setMockInitialValues(prefs);
   final p = await SharedPreferences.getInstance();
-  final c = ProviderContainer(
-    overrides: [prefsProvider.overrideWithValue(p), clockProvider.overrideWithValue(clock)],
-  );
+  final c = ProviderContainer(overrides: [prefsProvider.overrideWithValue(p), clockProvider.overrideWithValue(clock)]);
   addTearDown(c.dispose);
   return c;
 }
@@ -33,9 +30,7 @@ Future<ProviderContainer> _container(
 void main() {
   group('Bugün sequence', () {
     test('review → lesson → listening from what is due', () {
-      final s = buildTodaySequence(
-        const TodayInputs(cardsDue: 12, nextLesson: 'Tanışma', listening: 'Kafede'),
-      );
+      final s = buildTodaySequence(const TodayInputs(cardsDue: 12, nextLesson: 'Tanışma', listening: 'Kafede'));
       expect(s.summary, '5 dk tekrar → 1 ders → kısa dinleme');
       expect(s.steps.first.detail, '12 kart');
       expect(s.doneCount, 0);
@@ -75,6 +70,13 @@ void main() {
       final s = buildTodaySequence(const TodayInputs(reviewedToday: 5, lessonsToday: 1, listenedToday: true));
       expect(s.allDone, isTrue);
       expect(s.next, isNull);
+    });
+
+    test("the onboarding first lesson counts as today's lesson", () {
+      const types = {'u1l1': NodeType.lesson, 'u1c': NodeType.chest};
+      expect(lessonsFinished({'u1c'}, types), 0);
+      expect(lessonsFinished({firstLessonId}, types), 1);
+      expect(lessonsFinished({firstLessonId, 'u1l1', 'u1c'}, types), 2);
     });
 
     test('nodes finished today come from the start-of-day baseline', () {
@@ -159,10 +161,7 @@ void main() {
 
     test('XP plays no part', () {
       final now = DateTime(2026, 11, 19);
-      const e = LearningEvidence(
-        wordsPassed: {'a': '2026-11-01', 'b': '2026-11-18'},
-        mistakesCleared: {'q': 'x'},
-      );
+      const e = LearningEvidence(wordsPassed: {'a': '2026-11-01', 'b': '2026-11-18'}, mistakesCleared: {'q': 'x'});
       final r = realProgress(e, const StudyLog(), now);
       expect(r.wordsPassed, 2);
       expect(r.wordsPassedThisWeek, 1);
@@ -174,23 +173,14 @@ void main() {
   group('sync status', () {
     final now = DateTime(2026, 11, 19, 12);
     test('one honest line per real state', () {
-      expect(
-        syncStatusText(const SyncStatus(SyncState.guest), now),
-        'Bu telefonda kayıtlı (giriş yapınca yedeklenir)',
-      );
+      expect(syncStatusText(const SyncStatus(SyncState.guest), now), 'Bu telefonda kayıtlı (giriş yapınca yedeklenir)');
       expect(syncStatusText(const SyncStatus(SyncState.off), now), 'Bu telefonda kayıtlı');
       expect(
-        syncStatusText(
-          SyncStatus(SyncState.synced, lastSyncedAt: now.subtract(const Duration(seconds: 20))),
-          now,
-        ),
+        syncStatusText(SyncStatus(SyncState.synced, lastSyncedAt: now.subtract(const Duration(seconds: 20))), now),
         'Hesabına yedeklendi · az önce',
       );
       expect(
-        syncStatusText(
-          SyncStatus(SyncState.synced, lastSyncedAt: now.subtract(const Duration(minutes: 5))),
-          now,
-        ),
+        syncStatusText(SyncStatus(SyncState.synced, lastSyncedAt: now.subtract(const Duration(minutes: 5))), now),
         'Hesabına yedeklendi · 5 dk önce',
       );
       expect(syncStatusText(const SyncStatus(SyncState.pending), now), 'İnternet gelince yedeklenecek');

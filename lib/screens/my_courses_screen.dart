@@ -33,11 +33,7 @@ Future<void> openMyCourses(BuildContext context, WidgetRef ref) async {
       reverseTransitionDuration: const Duration(milliseconds: 220),
       pageBuilder: (_, _, _) => const MyCoursesScreen(),
       transitionsBuilder: (context, anim, _, child) {
-        final curved = CurvedAnimation(
-          parent: anim,
-          curve: Curves.easeOutCubic,
-          reverseCurve: Curves.easeInCubic,
-        );
+        final curved = CurvedAnimation(parent: anim, curve: Curves.easeOutCubic, reverseCurve: Curves.easeInCubic);
         return FadeTransition(
           opacity: curved,
           child: SlideTransition(
@@ -101,6 +97,7 @@ class MyCoursesScreen extends ConsumerWidget {
         track: t,
         stats: stats[t.id],
         lastStudied: lastStudiedLabel(shelf.lastStudied[t.id], now),
+        studied: shelf.lastStudied.containsKey(t.id),
         onContinue: () => pick(t),
       ),
     );
@@ -121,6 +118,7 @@ class MyCoursesScreen extends ConsumerWidget {
                     track: trackById(current),
                     stats: stats[current],
                     lastStudied: lastStudiedLabel(shelf.lastStudied[current], now),
+                    studied: shelf.lastStudied.containsKey(current),
                     onContinue: () {
                       final kind = trackById(current).kind;
                       Navigator.of(context).pop();
@@ -191,10 +189,7 @@ class _Header extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Semantics(
-                  header: true,
-                  child: Text('Kurslarım', style: Theme.of(context).textTheme.headlineSmall),
-                ),
+                Semantics(header: true, child: Text('Kurslarım', style: Theme.of(context).textTheme.headlineSmall)),
                 Text('Hangi kursla devam etmek istersin?', style: TextStyle(color: p.muted)),
               ],
             ),
@@ -270,11 +265,12 @@ String _percent(TrackStats s) {
   return '%${(statsFraction(s) * 100).round().clamp(1, 99)}';
 }
 
-/// One line on a track's progress for cards and screen readers.
-String progressLine(Track t, TrackStats? s) {
+/// One line on a track's progress for cards and screen readers. [studied]:
+/// XP was earned in it (the first lesson, practice) before any path step.
+String progressLine(Track t, TrackStats? s, {bool studied = false}) {
   if (pathCourseId(t) == null) return 'Kendi hızında çalış';
   if (s == null) return 'Hazırlanıyor…';
-  if (s.done == 0) return 'Henüz başlamadın · ${s.total} adım';
+  if (s.done == 0) return studied ? 'Başladın · yolda ${s.total} adım' : 'Henüz başlamadın · ${s.total} adım';
   return '${_percent(s)} tamamlandı · ${s.done}/${s.total} adım';
 }
 
@@ -305,10 +301,14 @@ class _CurrentCard extends StatelessWidget {
     required this.stats,
     required this.lastStudied,
     required this.onContinue,
+    this.studied = false,
   });
   final Track track;
   final TrackStats? stats;
   final String lastStudied;
+
+  /// XP was earned in this course (see [progressLine]).
+  final bool studied;
   final VoidCallback onContinue;
 
   @override
@@ -321,13 +321,11 @@ class _CurrentCard extends StatelessWidget {
     final hasPath = pathCourseId(track) != null;
     return Semantics(
       container: true,
-      label: 'Şu an çalıştığın kurs: ${track.title}. ${progressLine(track, s)}. $lastStudied.',
+      label: 'Şu an çalıştığın kurs: ${track.title}. ${progressLine(track, s, studied: studied)}. $lastStudied.',
       child: Container(
         key: const Key('course-current'),
         decoration: deco.copyWith(
-          boxShadow: [
-            BoxShadow(color: bg.withValues(alpha: 0.35), blurRadius: 18, offset: const Offset(0, 8)),
-          ],
+          boxShadow: [BoxShadow(color: bg.withValues(alpha: 0.35), blurRadius: 18, offset: const Offset(0, 8))],
         ),
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 14),
         child: Column(
@@ -345,11 +343,7 @@ class _CurrentCard extends StatelessWidget {
                       children: [
                         Text(
                           track.title,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w900,
-                          ),
+                          style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900),
                         ),
                         const SizedBox(height: 2),
                         Text(
@@ -361,9 +355,7 @@ class _CurrentCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                const ExcludeSemantics(
-                  child: Icon(Icons.check_circle_rounded, color: Colors.white, size: 26),
-                ),
+                const ExcludeSemantics(child: Icon(Icons.check_circle_rounded, color: Colors.white, size: 26)),
               ],
             ),
             const SizedBox(height: 14),
@@ -375,11 +367,7 @@ class _CurrentCard extends StatelessWidget {
                   if (look.level.isNotEmpty)
                     _Chip(look.level, color: Colors.white, background: Colors.white.withValues(alpha: 0.18)),
                   if (track.badge != null)
-                    _Chip(
-                      track.badge!,
-                      color: Colors.white,
-                      background: Colors.white.withValues(alpha: 0.18),
-                    ),
+                    _Chip(track.badge!, color: Colors.white, background: Colors.white.withValues(alpha: 0.18)),
                 ],
               ),
             ),
@@ -393,14 +381,11 @@ class _CurrentCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      progressLine(track, s),
+                      progressLine(track, s, studied: studied),
                       style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 13),
                     ),
                   ),
-                  Text(
-                    lastStudied,
-                    style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 12),
-                  ),
+                  Text(lastStudied, style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 12)),
                 ],
               ),
             ),
@@ -439,10 +424,7 @@ class _HeroBar extends StatelessWidget {
     curve: Curves.easeOutCubic,
     builder: (_, v, _) => Container(
       height: 10,
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.25),
-        borderRadius: BorderRadius.circular(10),
-      ),
+      decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.25), borderRadius: BorderRadius.circular(10)),
       alignment: Alignment.centerLeft,
       child: FractionallySizedBox(
         widthFactor: v == 0 ? 0.02 : v,
@@ -462,10 +444,14 @@ class _FollowedCard extends StatelessWidget {
     required this.stats,
     required this.lastStudied,
     required this.onContinue,
+    this.studied = false,
   });
   final Track track;
   final TrackStats? stats;
   final String lastStudied;
+
+  /// XP was earned in this course (see [progressLine]).
+  final bool studied;
   final VoidCallback onContinue;
 
   @override
@@ -477,7 +463,7 @@ class _FollowedCard extends StatelessWidget {
     return Semantics(
       container: true,
       button: true,
-      label: '${track.title}. ${progressLine(track, s)}. $lastStudied. Bu kursa geçmek için dokun.',
+      label: '${track.title}. ${progressLine(track, s, studied: studied)}. $lastStudied. Bu kursa geçmek için dokun.',
       excludeSemantics: true,
       child: TapCard(
         key: Key('course-card-${track.id}'),
@@ -518,7 +504,7 @@ class _FollowedCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        progressLine(track, s),
+                        progressLine(track, s, studied: studied),
                         style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, color: p.ink),
                       ),
                       Text(lastStudied, style: TextStyle(color: p.muted, fontSize: 12)),
@@ -845,11 +831,7 @@ class _CurtainState extends State<_Curtain> with SingleTickerProviderStateMixin 
                         Text(
                           widget.track.title,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w900,
-                          ),
+                          style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w900),
                         ),
                         const SizedBox(height: 4),
                         Text(

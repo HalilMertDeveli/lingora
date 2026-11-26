@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lingora/data/course_shelf.dart';
 import 'package:lingora/data/first_lesson.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/goals/learn_goal.dart';
@@ -65,6 +66,38 @@ void main() {
       expect(find.text('Her gün hatırlatayım mı?'), findsNothing);
     });
 
+    testWidgets('a finished first lesson marks the course as studied; leaving it does not', (tester) async {
+      await _toGoalPage(tester);
+      await tester.tap(find.byKey(const ValueKey('start-goal-general')));
+      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('onboarding-start')));
+      await tester.pumpAndSettle();
+      await _quitLesson(tester);
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(CourseShelfNotifier.key);
+      final last = raw == null ? const {} : (jsonDecode(raw) as Map)['last'] as Map;
+      expect(last, isEmpty, reason: 'left, not finished');
+    });
+
+    testWidgets('finishing the first lesson stamps the course on the shelf', (tester) async {
+      // The lesson's own finish records first_lesson; seeded here to keep the test short.
+      await pumpApp(tester, {
+        'progress_v1': jsonEncode({
+          'completed': {firstLessonId: 1},
+        }),
+      });
+      await tester.tap(find.byKey(const ValueKey('onboarding-next')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('start-goal-general')));
+      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('onboarding-start')));
+      await tester.pumpAndSettle();
+      await _quitLesson(tester);
+      final prefs = await SharedPreferences.getInstance();
+      final shelf = jsonDecode(prefs.getString(CourseShelfNotifier.key)!) as Map<String, dynamic>;
+      expect((shelf['last'] as Map).keys, contains('tr_en'));
+    });
+
     testWidgets('YDS goal: exam goal, beginner start towards YDS', (tester) async {
       await _toGoalPage(tester);
       await tester.tap(find.byKey(const ValueKey('start-goal-exam')));
@@ -119,10 +152,7 @@ void main() {
       expect(choice.ex.options[choice.ex.answerIndex!], 'I agree with you.');
       expect(choice.ex.explanation, contains('"agree" zaten bir fiil'));
       // The learner can build the mistake too, and gets "Neden yanlış?".
-      expect(
-        items.any((i) => i.ex.tokens.contains('am') && i.ex.answers.contains('I agree with you')),
-        isTrue,
-      );
+      expect(items.any((i) => i.ex.tokens.contains('am') && i.ex.answers.contains('I agree with you')), isTrue);
     });
 
     testWidgets('"I am agree" shows why it is wrong, in Turkish', (tester) async {
@@ -138,12 +168,7 @@ void main() {
           ],
           child: MaterialApp(
             theme: buildTheme(),
-            home: LessonScreen(
-              nodeId: firstLessonId,
-              title: firstLessonTitle,
-              items: [item],
-              color: Colors.indigo,
-            ),
+            home: LessonScreen(nodeId: firstLessonId, title: firstLessonTitle, items: [item], color: Colors.indigo),
           ),
         ),
       );
@@ -171,10 +196,7 @@ void main() {
         reminderPromptDue(const Progress(onboarded: true, lessonsDone: 1, xpByDay: {'2026-11-18': 10}), now),
         isTrue,
       );
-      expect(
-        reminderPromptDue(const Progress(onboarded: true, lessonsDone: 5, remindersEnabled: false), now),
-        isFalse,
-      );
+      expect(reminderPromptDue(const Progress(onboarded: true, lessonsDone: 5, remindersEnabled: false), now), isFalse);
     });
 
     testWidgets('the daily goal is asked on the path after a few lessons', (tester) async {
@@ -204,9 +226,7 @@ void main() {
   });
 
   group('Bugün on Öğren', () {
-    testWidgets('one card with the sequence and a single BAŞLA; Pratik has no second "Bugün"', (
-      tester,
-    ) async {
+    testWidgets('one card with the sequence and a single BAŞLA; Pratik has no second "Bugün"', (tester) async {
       await pumpApp(tester, {'progress_v1': '{"onboarded": true, "remindersEnabled": false}'});
       expect(find.byKey(const Key('today-start-card')), findsOneWidget);
       expect(find.text('Bugün ne yapacağım?'), findsOneWidget);
