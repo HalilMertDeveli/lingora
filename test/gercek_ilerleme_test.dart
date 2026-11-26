@@ -4,7 +4,9 @@ import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/core/app_version.dart';
+import 'package:lingora/data/first_lesson.dart';
 import 'package:lingora/data/progress.dart';
+import 'package:lingora/models/course.dart';
 import 'package:lingora/goals/learn_goal.dart';
 import 'package:lingora/screens/sync_status_line.dart';
 import 'package:lingora/screens/today_start_card.dart';
@@ -75,6 +77,13 @@ void main() {
       final s = buildTodaySequence(const TodayInputs(reviewedToday: 5, lessonsToday: 1, listenedToday: true));
       expect(s.allDone, isTrue);
       expect(s.next, isNull);
+    });
+
+    test("the onboarding first lesson counts as today's lesson", () {
+      const types = {'u1l1': NodeType.lesson, 'u1c': NodeType.chest};
+      expect(lessonsFinished({'u1c'}, types), 0);
+      expect(lessonsFinished({firstLessonId}, types), 1);
+      expect(lessonsFinished({firstLessonId, 'u1l1', 'u1c'}, types), 2);
     });
 
     test('nodes finished today come from the start-of-day baseline', () {

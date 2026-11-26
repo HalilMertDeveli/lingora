@@ -166,7 +166,7 @@ class CourseShelfNotifier extends Notifier<CourseShelf> {
   CourseShelf build() {
     // Whenever XP is earned, the selected track was just studied.
     ref.listen(progressProvider.select((p) => p.totalXp), (prev, next) {
-      if (prev != null && next > prev) _stampStudied();
+      if (prev != null && next > prev) markStudied();
     });
     final raw = ref.read(prefsProvider).getString(key);
     if (raw == null) return const CourseShelf();
@@ -182,7 +182,9 @@ class CourseShelfNotifier extends Notifier<CourseShelf> {
     ref.read(prefsProvider).setString(key, jsonEncode(s.toJson()));
   }
 
-  void _stampStudied() {
+  /// Stamps the selected track as studied now. Also called after the
+  /// onboarding first lesson, which can end before this notifier listens.
+  void markStudied() {
     final id = ref.read(progressProvider).trackId;
     final now = ref.read(clockProvider)().millisecondsSinceEpoch;
     _save(state.copyWith(lastStudied: {...state.lastStudied, id: now}));

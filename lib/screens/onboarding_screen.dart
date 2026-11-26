@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/app_links.dart';
 import '../data/app_settings.dart';
+import '../data/course_shelf.dart';
 import '../data/first_lesson.dart';
 import '../data/placement.dart';
 import '../data/progress.dart';
@@ -129,6 +130,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       ),
     );
     if (!mounted) return;
+    // The first lesson is off the path, but it is real study: the course
+    // counts as started (Kurslarım) once it is finished.
+    if (ref.read(progressProvider).completed.containsKey(firstLessonId)) {
+      ref.read(courseShelfProvider.notifier).markStudied();
+    }
     _finish(method: 'first_lesson', track: plan.trackId);
   }
 

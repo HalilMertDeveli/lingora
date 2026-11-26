@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingora/data/app_settings.dart';
+import 'package:lingora/data/catalog.dart';
 import 'package:lingora/data/course_repository.dart';
 import 'package:lingora/data/course_shelf.dart';
 import 'package:lingora/data/progress.dart';
@@ -13,6 +14,7 @@ import 'package:lingora/main.dart';
 import 'package:lingora/models/course.dart';
 import 'package:lingora/models/vocab.dart';
 import 'package:lingora/nav/course_badge.dart';
+import 'package:lingora/screens/my_courses_screen.dart';
 import 'package:lingora/services/notifications.dart';
 import 'package:lingora/services/speech.dart';
 import 'package:lingora/ui/first_tour.dart';
@@ -116,6 +118,13 @@ void main() {
       expect(lastStudiedLabel(ago(1), now), 'Son çalışma: dün');
       expect(lastStudiedLabel(ago(3), now), 'Son çalışma: 3 gün önce');
       expect(lastStudiedLabel(ago(15), now), 'Son çalışma: 2 hafta önce');
+    });
+
+    test('a course studied before any path step says so, not "Henüz başlamadın"', () {
+      final t = trackById('tr_en');
+      expect(progressLine(t, (done: 0, total: 10)), 'Henüz başlamadın · 10 adım');
+      expect(progressLine(t, (done: 0, total: 10), studied: true), 'Başladın · yolda 10 adım');
+      expect(progressLine(t, (done: 5, total: 10), studied: true), '%50 tamamlandı · 5/10 adım');
     });
 
     test('the shelf survives a JSON round trip', () {

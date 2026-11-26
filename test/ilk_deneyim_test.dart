@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lingora/data/course_shelf.dart';
 import 'package:lingora/data/first_lesson.dart';
 import 'package:lingora/data/progress.dart';
 import 'package:lingora/goals/learn_goal.dart';
@@ -63,6 +64,38 @@ void main() {
       // On the path now: no reminder or account card before any lesson.
       expect(find.text('Merhaba!'), findsWidgets);
       expect(find.text('Her gün hatırlatayım mı?'), findsNothing);
+    });
+
+    testWidgets('a finished first lesson marks the course as studied; leaving it does not', (tester) async {
+      await _toGoalPage(tester);
+      await tester.tap(find.byKey(const ValueKey('start-goal-general')));
+      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('onboarding-start')));
+      await tester.pumpAndSettle();
+      await _quitLesson(tester);
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(CourseShelfNotifier.key);
+      final last = raw == null ? const {} : (jsonDecode(raw) as Map)['last'] as Map;
+      expect(last, isEmpty, reason: 'left, not finished');
+    });
+
+    testWidgets('finishing the first lesson stamps the course on the shelf', (tester) async {
+      // The lesson's own finish records first_lesson; seeded here to keep the test short.
+      await pumpApp(tester, {
+        'progress_v1': jsonEncode({
+          'completed': {firstLessonId: 1},
+        }),
+      });
+      await tester.tap(find.byKey(const ValueKey('onboarding-next')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('start-goal-general')));
+      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('onboarding-start')));
+      await tester.pumpAndSettle();
+      await _quitLesson(tester);
+      final prefs = await SharedPreferences.getInstance();
+      final shelf = jsonDecode(prefs.getString(CourseShelfNotifier.key)!) as Map<String, dynamic>;
+      expect((shelf['last'] as Map).keys, contains('tr_en'));
     });
 
     testWidgets('YDS goal: exam goal, beginner start towards YDS', (tester) async {

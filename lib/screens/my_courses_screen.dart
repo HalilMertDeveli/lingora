@@ -101,6 +101,7 @@ class MyCoursesScreen extends ConsumerWidget {
         track: t,
         stats: stats[t.id],
         lastStudied: lastStudiedLabel(shelf.lastStudied[t.id], now),
+        studied: shelf.lastStudied.containsKey(t.id),
         onContinue: () => pick(t),
       ),
     );
@@ -121,6 +122,7 @@ class MyCoursesScreen extends ConsumerWidget {
                     track: trackById(current),
                     stats: stats[current],
                     lastStudied: lastStudiedLabel(shelf.lastStudied[current], now),
+                    studied: shelf.lastStudied.containsKey(current),
                     onContinue: () {
                       final kind = trackById(current).kind;
                       Navigator.of(context).pop();
@@ -270,11 +272,12 @@ String _percent(TrackStats s) {
   return '%${(statsFraction(s) * 100).round().clamp(1, 99)}';
 }
 
-/// One line on a track's progress for cards and screen readers.
-String progressLine(Track t, TrackStats? s) {
+/// One line on a track's progress for cards and screen readers. [studied]:
+/// XP was earned in it (the first lesson, practice) before any path step.
+String progressLine(Track t, TrackStats? s, {bool studied = false}) {
   if (pathCourseId(t) == null) return 'Kendi hızında çalış';
   if (s == null) return 'Hazırlanıyor…';
-  if (s.done == 0) return 'Henüz başlamadın · ${s.total} adım';
+  if (s.done == 0) return studied ? 'Başladın · yolda ${s.total} adım' : 'Henüz başlamadın · ${s.total} adım';
   return '${_percent(s)} tamamlandı · ${s.done}/${s.total} adım';
 }
 
@@ -305,10 +308,14 @@ class _CurrentCard extends StatelessWidget {
     required this.stats,
     required this.lastStudied,
     required this.onContinue,
+    this.studied = false,
   });
   final Track track;
   final TrackStats? stats;
   final String lastStudied;
+
+  /// XP was earned in this course (see [progressLine]).
+  final bool studied;
   final VoidCallback onContinue;
 
   @override
@@ -321,7 +328,8 @@ class _CurrentCard extends StatelessWidget {
     final hasPath = pathCourseId(track) != null;
     return Semantics(
       container: true,
-      label: 'Şu an çalıştığın kurs: ${track.title}. ${progressLine(track, s)}. $lastStudied.',
+      label:
+          'Şu an çalıştığın kurs: ${track.title}. ${progressLine(track, s, studied: studied)}. $lastStudied.',
       child: Container(
         key: const Key('course-current'),
         decoration: deco.copyWith(
@@ -393,7 +401,7 @@ class _CurrentCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      progressLine(track, s),
+                      progressLine(track, s, studied: studied),
                       style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 13),
                     ),
                   ),
@@ -462,10 +470,14 @@ class _FollowedCard extends StatelessWidget {
     required this.stats,
     required this.lastStudied,
     required this.onContinue,
+    this.studied = false,
   });
   final Track track;
   final TrackStats? stats;
   final String lastStudied;
+
+  /// XP was earned in this course (see [progressLine]).
+  final bool studied;
   final VoidCallback onContinue;
 
   @override
@@ -477,7 +489,8 @@ class _FollowedCard extends StatelessWidget {
     return Semantics(
       container: true,
       button: true,
-      label: '${track.title}. ${progressLine(track, s)}. $lastStudied. Bu kursa geçmek için dokun.',
+      label:
+          '${track.title}. ${progressLine(track, s, studied: studied)}. $lastStudied. Bu kursa geçmek için dokun.',
       excludeSemantics: true,
       child: TapCard(
         key: Key('course-card-${track.id}'),
@@ -518,7 +531,7 @@ class _FollowedCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        progressLine(track, s),
+                        progressLine(track, s, studied: studied),
                         style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, color: p.ink),
                       ),
                       Text(lastStudied, style: TextStyle(color: p.muted, fontSize: 12)),

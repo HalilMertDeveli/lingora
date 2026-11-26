@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/course_repository.dart';
+import '../data/first_lesson.dart';
 import '../data/practice.dart';
 import '../data/progress.dart';
 import '../data/sections.dart';
@@ -64,6 +65,13 @@ Set<String> finishedToday(Progress p, DayBaseline? base, String today) {
   };
 }
 
+/// Lessons among the nodes [done] today. The onboarding first lesson is off
+/// the path but still today's lesson.
+int lessonsFinished(Set<String> done, Map<String, NodeType> types) {
+  const lessonTypes = {NodeType.lesson, NodeType.test, NodeType.story};
+  return done.where((id) => id == firstLessonId || lessonTypes.contains(types[id])).length;
+}
+
 /// New words a day: the study plan's, else the default.
 final _newPerDayProvider = Provider<int>((ref) {
   final hasPlan = ref.watch(progressProvider.select((p) => p.studyPlan != null));
@@ -108,7 +116,6 @@ final todayInputsProvider = Provider<TodayInputs?>((ref) {
   final log = ref.watch(studyLogProvider);
   final done = finishedToday(p, ref.watch(dayBaselineProvider), today);
   final types = {for (final n in course.allNodes) n.id: n.type};
-  const lessonTypes = {NodeType.lesson, NodeType.test, NodeType.story};
   return TodayInputs(
     cardsDue: queue?.due.length ?? 0,
     mistakesDue: queue?.mistakes.length ?? 0,
@@ -116,7 +123,7 @@ final todayInputsProvider = Provider<TodayInputs?>((ref) {
         p.wordLast.values.where((d) => d == today).length +
         log.answers.where((a) => a.day == today && a.source == 'practice').length,
     nextLesson: targets.lesson?.title,
-    lessonsToday: done.where((id) => lessonTypes.contains(types[id])).length,
+    lessonsToday: lessonsFinished(done, types),
     listening: targets.listening?.title,
     listenedToday: done.any((id) => types[id] == NodeType.listening),
     readingWordsToday: p.readingWordsOn(today),
